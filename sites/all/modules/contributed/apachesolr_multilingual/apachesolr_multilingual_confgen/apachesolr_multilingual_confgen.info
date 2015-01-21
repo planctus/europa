@@ -1,0 +1,22 @@
+name = Apache Solr Multilingual Confgen
+description = Apache Solr Config Generator Add-On for Multilingual and non-English search with Solr
+package = Search Toolkit
+core = "7.x"
+
+configure = admin/config/search/apachesolr/confgen/multilingual
+
+dependencies[] = apachesolr_multilingual
+dependencies[] = apachesolr_confgen
+
+files[] = apachesolr_multilingual_confgen.admin.inc
+files[] = apachesolr_multilingual_confgen.module
+files[] = apachesolr_multilingual_confgen.generator.inc
+files[] = apachesolr_multilingual_confgen.variable.inc
+files[] = tests/solr_multilingual.test
+
+; Information added by drupal.org packaging script on 2012-09-18
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "apachesolr_multilingual"
+datestamp = "1347969409"
+

@@ -1,0 +1,21 @@
+--- sites/all/modules/contributed/webform/webform.module.old	2013-01-03 16:38:38.027106913 +0100
++++ sites/all/modules/contributed/webform/webform.module	2013-01-03 16:22:41.322095149 +0100
+@@ -1622,8 +1622,16 @@
+     }
+     elseif (isset($allowed_roles[2])) {
+       // The "authenticated user" role is allowed to submit and the user is currently logged-out.
+-      $login = url('user/login', array('query' => drupal_get_destination()));
+-      $register = url('user/register', array('query' => drupal_get_destination()));
++      // ecas login handling 
++      if(module_exists('ecas')) {
++        $account_request_url = variable_get('ecas_account_request_url', ECAS_DEFAULT_ACCOUNT_REQUEST_URL);
++        $login = url('ecas', array('absolute' => TRUE));
++        $register = str_replace('%local_ecas_url%', $login, $account_request_url);
++      }
++      else {
++        $login = url('user/login', array('query' => drupal_get_destination()));
++        $register = url('user/register', array('query' => drupal_get_destination()));      
++      }
+       if (variable_get('user_register', 1) == 0) {
+         $message = t('You must <a href="!login">login</a> to view this form.', array('!login' => $login));
+       }
