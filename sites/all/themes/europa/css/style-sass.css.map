@@ -3,7 +3,7 @@
 	"file": "style-sass.css",
 	"sources": [
 		"../sass/app.scss",
-		"../sass/bootstrap.scss",
+		"../sass/_bootstrap.scss",
 		"../sass/_mixins.scss",
 		"../sass/base/_font.scss",
 		"../sass/base/_global.scss",
