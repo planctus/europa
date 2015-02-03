@@ -45,6 +45,7 @@ module.exports = function (grunt) {
           // includes files within path and its sub-directories
           {expand: true, src: ['sass/**'], dest: 'styleguide/assets/'},
           {expand: true, src: ['bootstrap-sass/**'], dest: 'styleguide/assets/'},
+          {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
         ],
       },
     },
