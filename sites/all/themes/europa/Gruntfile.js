@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['**/*.{scss,sass}'],
-        tasks: ['sass', 'styleguide:dev', 'copy'],
+        tasks: ['sass', 'kss', 'copy'],
         options: {
           livereload: true,
         }
@@ -24,18 +24,14 @@ module.exports = function (grunt) {
         },
       }
     },
-    styleguide: {
-      dev: {
-        options: {
-          template: {
-            src: 'styleguide/template/custom'
-          },
-          framework: {
-            name: 'kss'
-          }
-        },
+    kss: {
+      options: {
+        template: 'styleguide/template/custom',
+        css:      'css/style-sass.css'
+      },
+      dist: {
         files: {
-          'styleguide/assets': 'sass/app.scss'
+          'styleguide/assets': ['sass']
         }
       }
     },
@@ -46,6 +42,7 @@ module.exports = function (grunt) {
           {expand: true, src: ['sass/**'], dest: 'styleguide/assets/'},
           {expand: true, src: ['bootstrap-sass/**'], dest: 'styleguide/assets/'},
           {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
+          {expand: true, src: ['css/**'], dest: 'styleguide/assets/'},
         ],
       },
     },
@@ -54,8 +51,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-styleguide');
+  grunt.loadNpmTasks('grunt-kss');
 
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('styleguide', ['kss']);
 
 };
