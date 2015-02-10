@@ -27,9 +27,10 @@ blockquote {
       content: '';
       display: block;
       position: absolute;
-      background: url('../images/quote.png') no-repeat;
+      background: url('../images/svg/quote.svg') no-repeat;
+      background-size: 60px;
       width: 30px;
-      height: 22px;
+      height: 23px;
     }
 
     &:before {
@@ -41,6 +42,18 @@ blockquote {
       background-position: -31px 0;
       bottom: 0;
       right: 0;
+    }
+  }
+}
+
+// State
+.no-svg {
+  blockquote {
+    p {
+      &:before,
+      &:after {
+        background-image: url('../images/png/quote.png');
+      }
     }
   }
 }

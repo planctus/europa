@@ -5033,9 +5033,10 @@ blockquote {
       content: '';
       display: block;
       position: absolute;
-      background: url('../images/quote.png') no-repeat;
+      background: url('../images/svg/quote.svg') no-repeat;
+      background-size: 60px;
       width: 30px;
-      height: 22px; }
+      height: 23px; }
     blockquote p:before {
       top: 4px;
       left: 0; }
@@ -5043,6 +5044,9 @@ blockquote {
       background-position: -31px 0;
       bottom: 0;
       right: 0; }
+
+.no-svg blockquote p:before, .no-svg blockquote p:after {
+  background-image: url('../images/png/quote.png'); }
 
 .container-fluid {
   max-width: 1170px; }
