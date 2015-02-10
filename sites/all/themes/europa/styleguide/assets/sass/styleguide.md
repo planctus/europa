@@ -1,1 +1,1 @@
-Styleguide containing components from EUREKA project
+Styleguide containing Next Europa platform components
