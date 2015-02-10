@@ -37,6 +37,7 @@ stylesheets[all][] = css/style-sass.css
 ;scripts[] = bootstrap/js/scrollspy.js
 ;scripts[] = bootstrap/js/tab.js
 ;scripts[] = bootstrap/js/transition.js
+scripts[] = js/modernizr.js
 
 ; ========================================
 ; Settings
