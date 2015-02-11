@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|(gt IEMobile 7)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>KSS: Living Style Guide</title>
+  <title>Europa Style Guide</title>
 
   <meta name="description" content="">
   <meta name="generator" content="kss-node">
@@ -20,7 +20,7 @@
 
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
-    <h1 class="kss-doc-title">kss-node<br>Style Guide</h1>
+    <h1 class="kss-doc-title">Europa<br>Style Guide</h1>
   </header>
   <nav class="kss-nav">
     <ul class="kss-nav__menu">
@@ -67,8 +67,14 @@
               </a>
             </li>
             <li class="kss-nav__menu-item">
-              <a href="section-text.html#kssref-text.paragraphs">
+              <a href="section-text.html#kssref-text.lists">
                 <span class="kss-nav__ref">3.4</span
+                ><span class="kss-nav__name">Lists</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-text.html#kssref-text.paragraphs">
+                <span class="kss-nav__ref">3.5</span
                 ><span class="kss-nav__name">Paragraphs</span>
               </a>
             </li>
@@ -239,16 +245,109 @@ the heading tag</p>
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Example
+          Examples
+        </div>
+        <div class="kss-modifier__default-name kss-style">
+          Default styling
         </div>
         <div class="kss-modifier__example">
-          <a href="href">Link element</a>
+          <a href="href" class=>Link element</a>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          :hover
+        </div>
+        <div class="kss-modifier__description kss-style">
+          Hover state
+        </div>
+        <div class="kss-modifier__example">
+          <a href="href" class=pseudo-class-hover>Link element</a>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          :visited
+        </div>
+        <div class="kss-modifier__description kss-style">
+          Visited state
+        </div>
+        <div class="kss-modifier__example">
+          <a href="href" class=pseudo-class-visited>Link element</a>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          :active
+        </div>
+        <div class="kss-modifier__description kss-style">
+          Active state
+        </div>
+        <div class="kss-modifier__example">
+          <a href="href" class=pseudo-class-active>Link element</a>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          :focus
+        </div>
+        <div class="kss-modifier__description kss-style">
+          Focus state
+        </div>
+        <div class="kss-modifier__example">
+          <a href="href" class=pseudo-class-focus>Link element</a>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot;&gt;Link element&lt;/a&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot; class=&gt;Link element&lt;/a&gt;
+</code></pre>
+      </div>
+
+      </section>
+      <section id="kssref-text.lists" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-text.lists">
+          <span class="kss-title__ref">3.4</span
+          >Lists
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ol>
+
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
 </code></pre>
       </div>
 
@@ -258,7 +357,7 @@ the heading tag</p>
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-text.paragraphs">
-          <span class="kss-title__ref">3.4</span
+          <span class="kss-title__ref">3.5</span
           >Paragraphs
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
@@ -272,12 +371,16 @@ the heading tag</p>
           Example
         </div>
         <div class="kss-modifier__example">
-          <p>Paragraph example</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dictum mi. Donec leo ipsum, dictum quis libero vitae, aliquet fermentum tellus. Curabitur vitae enim commodo diam scelerisque commodo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod metus est, a sollicitudin lacus suscipit et. Nunc dignissim tincidunt urna, eget convallis diam facilisis at.</p>
+<p>Ac tincidunt vut nisi placerat mattis turpis, cum lacus. Urna elementum tortor enim montes, dignissim ac dapibus est, aliquet rhoncus non pid sagittis platea ridiculus, integer. Montes turpis, velit montes? Aenean, et in massa magnis adipiscing, natoque enim! Ac, scelerisque. Dignissim? Mauris? Nincidunt amet, lacus enim eros penatibus, cum hac?</p>
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p&gt;Paragraph example&lt;/p&gt;</code></pre>
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dictum mi. Donec leo ipsum, dictum quis libero vitae, aliquet fermentum tellus. Curabitur vitae enim commodo diam scelerisque commodo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod metus est, a sollicitudin lacus suscipit et. Nunc dignissim tincidunt urna, eget convallis diam facilisis at.&lt;/p&gt;
+&lt;p&gt;Ac tincidunt vut nisi placerat mattis turpis, cum lacus. Urna elementum tortor enim montes, dignissim ac dapibus est, aliquet rhoncus non pid sagittis platea ridiculus, integer. Montes turpis, velit montes? Aenean, et in massa magnis adipiscing, natoque enim! Ac, scelerisque. Dignissim? Mauris? Nincidunt amet, lacus enim eros penatibus, cum hac?&lt;/p&gt;
+</code></pre>
       </div>
 
       </section>

@@ -2,6 +2,11 @@
 //
 // Markup: link.html
 //
+// :hover - Hover state
+// :visited - Visited state
+// :active - Active state
+// :focus - Focus state
+//
 // Styleguide text.link
 
 a {
@@ -11,6 +16,9 @@ a {
   &:active,
   &:focus {
     color: $blue;
+    text-decoration: none;
+  }
+  &:hover {
     text-decoration: none;
   }
 }

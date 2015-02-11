@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     watch: {
       sass: {
         files: ['**/*.{scss,sass}'],
-        tasks: ['sass', 'kss', 'copy'],
+        tasks: ['sass', 'kss', 'copy:main'],
         options: {
           livereload: true,
         }
@@ -39,6 +39,13 @@ module.exports = function (grunt) {
       main: {
         files: [
           // includes files within path and its sub-directories
+          {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
+          {expand: true, src: ['css/**'], dest: 'styleguide/assets/'},
+        ],
+      },
+      all: {
+        files: [
+          // includes files within path and its sub-directories
           {expand: true, src: ['sass/**'], dest: 'styleguide/assets/'},
           {expand: true, src: ['bootstrap-sass/**'], dest: 'styleguide/assets/'},
           {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
@@ -55,5 +62,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('styleguide', ['kss']);
+  grunt.registerTask('copyall', ['copy:all']);
 
 };
