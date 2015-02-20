@@ -1,5 +1,5 @@
 name = DTT announcement
-description = Announcement content type.
+description = Announcement content type
 core = 7.x
 package = DTT
 version = 7.x-1.0
