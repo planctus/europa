@@ -27,7 +27,8 @@ module.exports = function (grunt) {
     kss: {
       options: {
         template: 'styleguide/template/custom',
-        css:      'css/style-sass.css'
+        css:      'css/style-sass.css',
+        js:       'sass/vendor/js/guide-scripts.js'
       },
       dist: {
         files: {

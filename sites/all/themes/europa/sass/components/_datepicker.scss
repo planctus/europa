@@ -1,6 +1,8 @@
 // Datepicker
 //
-// Example included does not look well because the CSS rules are overrides over default jQuery date popup skin.
+// This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.
+// Also, it assumes that the default CSS styles from jQuery UI are included as well.
+// The CSS applied from styleguide is an override over the default CSS of jQuery UI.
 //
 // Markup: datepicker.html
 //
@@ -24,29 +26,23 @@
     background: #393939;
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 0 !important;
   }
 
-  //  arrow back
-  .ui-icon-circle-triangle-w {
+  .ui-datepicker-prev span {
     background: url('../images/png/arrow-left.png') no-repeat;
+    width: 9px;
   }
 
-  //  arrow forwards 
-  .ui-icon-circle-triangle-e {
+  .ui-datepicker-next span {
     background: url('../images/png/arrow-right.png') no-repeat;
+    width: 9px;
   }
 
   .ui-datepicker-next-hover,
   .ui-datepicker-prev-hover {
     background: none;
     border: none;
-  }
-  .ui-datepicker-next-hover {
-    right: 2px;
-  }
-  .ui-datepicker-prev-hover {
-    left: 2px;
   }
 
   .ui-datepicker-month,
@@ -59,11 +55,15 @@
     height: 35px;
   }
 
+  .ui-datepicker-month {
+    margin-right: 4px !important;
+  }
+
   table.ui-datepicker-calendar {
     background: #eaeaea;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    margin-bottom: 10px;
+    border-bottom: 10px solid transparent;
 
     th {
       font-size: 16px;
