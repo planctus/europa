@@ -3,6 +3,8 @@
 // This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.
 // Also, it assumes that the default CSS styles from jQuery UI are included as well.
 // The CSS applied from styleguide is an override over the default CSS of jQuery UI.
+// <pre><script src="public/js/jquery-1.9.1.min.js"></script></pre>
+// <pre><script src="public/js/jquery.ui.core.min.js"></script></pre>
 //
 // Markup: datepicker.html
 //
@@ -15,7 +17,7 @@
 .ui-datepicker {
   border: none;
   border-radius: 0;
-  font-family: Arial;
+  font-family: $font-family-sans-serif;
   padding: 0;
 
   .ui-datepicker-title select {
@@ -29,31 +31,19 @@
     padding: 0 !important;
   }
 
-  .ui-datepicker-prev span {
-    background: url('../images/svg/arrow.svg') no-repeat;
-    width: 9px;
-    top: 0 !important;
-
-    /* For CSS3 Savvy Browsers */
-    -ms-transform: rotate(-180deg); /* IE 9 */
-    -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
-    transform: rotate(-180deg);
-
-    /* IE8+ - must be on one line, unfortunately */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=3.6739403974420594e-16, M21=-3.6739403974420594e-16, M22=-1, SizingMethod='auto expand')";
-
-    /* IE6 and 7 */
-    filter: progid:DXImageTransform.Microsoft.Matrix(
-                    M11=-1,
-                    M12=3.6739403974420594e-16,
-                    M21=-3.6739403974420594e-16,
-                    M22=-1,
-                    SizingMethod='auto expand');
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    .ui-icon {
+      width: 9px;
+      background: url('../images/svg/arrow.svg') no-repeat;
+    }
   }
 
-  .ui-datepicker-next span {
-    background: url('../images/svg/arrow.svg') no-repeat;
-    width: 9px;
+  .ui-datepicker-prev {
+    .ui-icon {
+      top: 0 !important;
+      @include rotate(-180deg);
+    }
   }
 
   .ui-datepicker-next-hover,
@@ -108,7 +98,10 @@
 }
 
 .no-svg {
-  .ui-datepicker-prev span, .ui-datepicker-next span {
-    background: url('../images/png/arrow.png') no-repeat;
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    .ui-icon {
+      background: url('../images/png/arrow.png') no-repeat;
+    }
   }
 }

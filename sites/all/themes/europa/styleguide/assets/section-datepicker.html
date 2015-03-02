@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="public/kss.css">
   <link rel="stylesheet" href="css/style-sass.css">
 
+
+  <script src="public/js/jquery-1.9.1.min.js"></script>
+  <script src="public/js/jquery.ui.core.min.js"></script>
 </head>
 <body id="kss-node">
 
@@ -77,7 +80,8 @@
         <p>This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.
 Also, it assumes that the default CSS styles from jQuery UI are included as well.
 The CSS applied from styleguide is an override over the default CSS of jQuery UI.</p>
-
+<pre><script src="public/js/jquery-1.9.1.min.js"></script></pre>
+<pre><script src="public/js/jquery.ui.core.min.js"></script></pre>
       </div>
     </div>
 
@@ -86,16 +90,26 @@ The CSS applied from styleguide is an override over the default CSS of jQuery UI
           Example
         </div>
         <div class="kss-modifier__example">
-          <link rel="stylesheet" href="sass/vendor/css/jquery.ui.core.min.css">
-<link rel="stylesheet" href="sass/vendor/css/jquery.ui.datepicker.min.css">
-<p>Date: <input type="text" id="datepicker"></p>
+          <script src="public/js/components/datepicker/jquery.ui.datepicker.min.js"></script>
+<script src="public/js/components/datepicker/datepicker.js"></script>
+<link rel="stylesheet" href="public/css/jquery.ui.core.min.css">
+<link rel="stylesheet" href="public/css/jquery.ui.datepicker.min.css">
+
+<label for="datepicker">Date:</label>
+<input class="form-control" type="text" id="datepicker">
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;sass/vendor/css/jquery.ui.core.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;sass/vendor/css/jquery.ui.datepicker.min.css&quot;&gt;
-&lt;p&gt;Date: &lt;input type=&quot;text&quot; id=&quot;datepicker&quot;&gt;&lt;/p&gt;</code></pre>
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;script src=&quot;public/js/components/datepicker/jquery.ui.datepicker.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;public/js/components/datepicker/datepicker.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.core.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.datepicker.min.css&quot;&gt;
+
+&lt;label for=&quot;datepicker&quot;&gt;Date:&lt;/label&gt;
+&lt;input class=&quot;form-control&quot; type=&quot;text&quot; id=&quot;datepicker&quot;&gt;
+</code></pre>
       </div>
 
       </div>
@@ -104,9 +118,6 @@ The CSS applied from styleguide is an override over the default CSS of jQuery UI
 <!-- SCRIPTS -->
 <script src="public/kss.js"></script>
 <script src="public/prettify.js"></script>
-<script src="public/js/jquery-1.9.1.min.js"></script>
-<script src="public/js/jquery.ui.core.min.js"></script>
-<script src="public/js/jquery.ui.datepicker.min.js"></script>
 <script>
   prettyPrint();
 </script>

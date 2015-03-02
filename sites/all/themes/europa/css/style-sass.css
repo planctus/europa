@@ -5032,7 +5032,7 @@ blockquote {
 .ui-datepicker {
   border: none;
   border-radius: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   padding: 0; }
   .ui-datepicker .ui-datepicker-title select {
     margin: 0; }
@@ -5041,28 +5041,15 @@ blockquote {
     border: none;
     border-radius: 0;
     padding: 0 !important; }
-  .ui-datepicker .ui-datepicker-prev span {
-    background: url('../images/svg/arrow.svg') no-repeat;
+  .ui-datepicker .ui-datepicker-prev .ui-icon, .ui-datepicker .ui-datepicker-next .ui-icon {
     width: 9px;
+    background: url('../images/svg/arrow.svg') no-repeat; }
+  .ui-datepicker .ui-datepicker-prev .ui-icon {
     top: 0 !important;
-    /* For CSS3 Savvy Browsers */
-    -ms-transform: rotate(-180deg);
-    /* IE 9 */
     -webkit-transform: rotate(-180deg);
-    /* Chrome, Safari, Opera */
-    transform: rotate(-180deg);
-    /* IE8+ - must be on one line, unfortunately */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=3.6739403974420594e-16, M21=-3.6739403974420594e-16, M22=-1, SizingMethod='auto expand')";
-    /* IE6 and 7 */
-    filter: progid:DXImageTransform.Microsoft.Matrix(
-                    M11=-1,
-                    M12=3.6739403974420594e-16,
-                    M21=-3.6739403974420594e-16,
-                    M22=-1,
-                    SizingMethod='auto expand'); }
-  .ui-datepicker .ui-datepicker-next span {
-    background: url('../images/svg/arrow.svg') no-repeat;
-    width: 9px; }
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg); }
   .ui-datepicker .ui-datepicker-next-hover, .ui-datepicker .ui-datepicker-prev-hover {
     background: none;
     border: none;
@@ -5096,7 +5083,7 @@ blockquote {
     background: #fed500;
     color: #000; }
 
-.no-svg .ui-datepicker-prev span, .no-svg .ui-datepicker-next span {
+.no-svg .ui-datepicker-prev .ui-icon, .no-svg .ui-datepicker-next .ui-icon {
   background: url('../images/png/arrow.png') no-repeat; }
 
 /*# sourceMappingURL=style-sass.css.map */
