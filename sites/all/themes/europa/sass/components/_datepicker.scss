@@ -3,8 +3,6 @@
 // This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.
 // Also, it assumes that the default CSS styles from jQuery UI are included as well.
 // The CSS applied from styleguide is an override over the default CSS of jQuery UI.
-// <pre><script src="public/js/jquery-1.9.1.min.js"></script></pre>
-// <pre><script src="public/js/jquery.ui.core.min.js"></script></pre>
 //
 // Markup: datepicker.html
 //
@@ -20,8 +18,10 @@
   font-family: $font-family-sans-serif;
   padding: 0;
 
-  .ui-datepicker-title select {
-    margin: 0;
+  .ui-datepicker-title {
+    select {
+      margin: 0;
+    }
   }
 
   .ui-datepicker-header {
@@ -33,7 +33,7 @@
 
   .ui-datepicker-prev,
   .ui-datepicker-next {
-    .ui-icon {
+    .ui-icon{
       width: 9px;
       background: url('../images/svg/arrow.svg') no-repeat;
     }
@@ -45,6 +45,7 @@
       @include rotate(-180deg);
     }
   }
+
 
   .ui-datepicker-next-hover,
   .ui-datepicker-prev-hover {
