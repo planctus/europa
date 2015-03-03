@@ -1,0 +1,7 @@
+name = nexteuropa_publication
+description = This is the publication feature for the NextEuropa
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+project = nexteuropa_publication
+features[features_api][] = api:2

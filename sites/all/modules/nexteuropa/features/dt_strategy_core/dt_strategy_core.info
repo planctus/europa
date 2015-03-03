@@ -5,5 +5,9 @@ dependencies[] = dt_core
 package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0
 php = 5.2.4
+<<<<<<< HEAD
 project = dt_strategy_core
+=======
+dependencies[] = dt_core
+>>>>>>> 645272918d58f8fae35846d81fb31357cebceb7d
 features[features_api][] = api:2
