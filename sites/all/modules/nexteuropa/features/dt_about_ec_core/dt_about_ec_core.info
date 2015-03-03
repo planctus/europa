@@ -1,5 +1,5 @@
 name = About EC Core
-description = This is core feature for the About EC class.
+description = This is the core feature for the About EC class.
 core = 7.x
 package = NextEuropa Digital Transformation About EC
 version = 7.x-1.0
