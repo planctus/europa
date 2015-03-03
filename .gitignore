@@ -10,3 +10,7 @@ _db_dumps
 
 # Sublime Ignore
 *.sublime-*
+
+# PhpStrom .idea
+.idea/
+
