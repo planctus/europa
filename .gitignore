@@ -7,3 +7,6 @@ sites/*/private
 
 # Ignore path to db dumps
 _db_dumps
+
+# Sublime Ignore
+*.sublime-*
