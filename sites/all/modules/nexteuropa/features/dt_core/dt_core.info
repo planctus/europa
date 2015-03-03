@@ -1,0 +1,7 @@
+name = NextEuropa Digital Transformation Core
+description = NextEuropa .
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+php = 5.2.4
+project = dt_core
