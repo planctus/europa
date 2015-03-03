@@ -1,8 +1,8 @@
 // Datepicker
 //
-// This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.
-// Also, it assumes that the default CSS styles from jQuery UI are included as well.
-// The CSS applied from styleguide is an override over the default CSS of jQuery UI.
+// This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.<br/>
+// Also, it assumes that the default CSS styles from jQuery UI are included as well.<br/>
+// The CSS applied from styleguide is an override over the default CSS of jQuery UI.<br/>
 //
 // Markup: datepicker.html
 //
@@ -10,6 +10,7 @@
 
 #ui-datepicker-div {
   border: none;
+  width: 100%;
 }
 
 .ui-datepicker {
@@ -41,11 +42,10 @@
 
   .ui-datepicker-prev {
     .ui-icon {
-      top: 0 !important;
+      left: 20px;
       @include rotate(-180deg);
     }
   }
-
 
   .ui-datepicker-next-hover,
   .ui-datepicker-prev-hover {
@@ -62,6 +62,7 @@
     font-size: 18px;
     font-weight: normal;
     height: 35px;
+    width: 100% !important;
   }
 
   .ui-datepicker-month {
@@ -86,6 +87,7 @@
     color: #404040;
     text-align: center;
     margin: 1px;
+    padding: 5px 10px;
   }
 
   .ui-state-active {
@@ -99,10 +101,51 @@
 }
 
 .no-svg {
-  .ui-datepicker-prev,
+  .ui-datepicker-prev {
+    .ui-icon {
+      background-image: url('../images/png/arrow-left.png');
+    }
+  }
   .ui-datepicker-next {
     .ui-icon {
-      background: url('../images/png/arrow.png') no-repeat;
+      background-image: url('../images/png/arrow.png');
+    }
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  #ui-datepicker-div {
+    width: auto !important;
+  }
+
+  .ui-datepicker {
+    .ui-datepicker-prev {
+      .ui-icon {
+        top: 0;
+      }
+    }
+    .ui-datepicker-month,
+    .ui-datepicker-year {
+      width: 49% !important;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  #ui-datepicker-div {
+    width: 100% !important;
+    left: 0 !important;
+  }
+  .ui-datepicker {
+    .ui-datepicker-next {
+      .ui-icon {
+        top: 30px;
+      }
+    }
+    .ui-datepicker-prev {
+      .ui-icon {
+        top: 20px;
+      }
     }
   }
 }
