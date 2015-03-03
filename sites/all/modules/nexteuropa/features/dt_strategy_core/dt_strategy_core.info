@@ -1,0 +1,8 @@
+name = Strategy Core
+description = This is the core feature for the Strategy class.
+core = 7.x
+package = NextEuropa Digital Transformation Strategy
+version = 7.x-1.0
+project = dt_strategy_core
+php = 5.2.4
+features[features_api][] = api:2
