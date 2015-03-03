@@ -1,5 +1,5 @@
 name = Homepage Core
-description = NextEuropa Digital Transformation homepage class feature
+description = This is the core feature for the Homepage class
 core = 7.x
 package = NextEuropa Digital Transformation Homepage
 version = 7.x-1.0
