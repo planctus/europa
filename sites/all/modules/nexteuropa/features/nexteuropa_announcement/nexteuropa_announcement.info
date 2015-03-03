@@ -1,7 +1,7 @@
-name = nexteuropa_announcement
-description = Announcement Class
+name = NextEuropa Announcement
+description = NextEuropa Announcement Content Type
 core = 7.x
-package = NextEuropa Digital Transformation
+package = NextEuropa
 version = 7.x-1.0
 project = nexteuropa_announcement
 dependencies[] = cce_basic_config
