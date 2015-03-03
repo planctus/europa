@@ -5,3 +5,4 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 php = 5.2.4
 project = dt_core
+features[features_api][] = api:2
