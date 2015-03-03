@@ -1,5 +1,5 @@
-name = NextEuropa Digital Transformation Core
-description = NextEuropa .
+name = Core
+description = This is the core feature of the Digital Transformation instances.
 core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0
