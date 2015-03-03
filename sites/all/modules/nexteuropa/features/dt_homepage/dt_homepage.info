@@ -1,0 +1,7 @@
+name = Homepage Core
+description = NextEuropa Digital Transformation homepage class feature
+core = 7.x
+package = NextEuropa Digital Transformation Homepage
+version = 7.x-1.0
+php = 5.2.4
+project = dt_homepage
