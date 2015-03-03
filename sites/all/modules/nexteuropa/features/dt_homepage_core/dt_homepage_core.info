@@ -5,4 +5,5 @@ package = NextEuropa Digital Transformation Homepage
 version = 7.x-1.0
 php = 5.2.4
 project = dt_homepage_core
+dependencies[] = dt_coredependencies[] = dt_core
 features[features_api][] = api:2
