@@ -44,14 +44,20 @@
           <span class="kss-nav__ref">2</span
           ><span class="kss-nav__name">Footer</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-forms.html">
           <span class="kss-nav__ref">3</span
           ><span class="kss-nav__name">Form Elements</span>
         </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-forms.html#kssref-forms.select">
+                <span class="kss-nav__ref">3.1</span
+                ><span class="kss-nav__name">Select</span>
+              </a>
+            </li>
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-siteheader.html">
@@ -70,20 +76,42 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-footer" class="kss-section kss-section--depth-1">
+      <div     id="kssref-forms" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-footer">
-          <span class="kss-title__ref">2</span
-          >Footer
+        <a class="kss-title__permalink" href="#kssref-forms">
+          <span class="kss-title__ref">3</span
+          >Form Elements
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>A majority of buttons in the site are built from the same base class.</p>
+        <p>Base form element are styled using @code.form-control@code class taken from bootstrap.
+Please see bootstrap documentation page for more details <a href="http://getbootstrap.com/css/#forms">http://getbootstrap.com/css/#forms</a></p>
+
+      </div>
+    </div>
+
+
+      </div>
+      <section id="kssref-forms.select" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-forms.select">
+          <span class="kss-title__ref">3.1</span
+          >Select
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+      <div class="kss-description">
+        <p>Base form element are styled using @code.form-control@code class taken from bootstrap.
+Please see bootstrap documentation page for more details <a href="http://getbootstrap.com/css/#forms">http://getbootstrap.com/css/#forms</a></p>
 
       </div>
     </div>
@@ -93,25 +121,29 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <footer class="footer">
-  <div class="container-fluid">
-    <p>Footer content</p>
-  </div>
-</footer>
+          <select class="form-control">
+  <option>One</option>
+  <option>Two</option>
+  <option>Three</option>
+  <option>Four</option>
+  <option>Five</option>
+</select>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;p&gt;Footer content&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/footer&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;select class=&quot;form-control&quot;&gt;
+  &lt;option&gt;One&lt;/option&gt;
+  &lt;option&gt;Two&lt;/option&gt;
+  &lt;option&gt;Three&lt;/option&gt;
+  &lt;option&gt;Four&lt;/option&gt;
+  &lt;option&gt;Five&lt;/option&gt;
+&lt;/select&gt;
 </code></pre>
       </div>
 
-      </div>
+      </section>
 </article>
 
 <!-- SCRIPTS -->

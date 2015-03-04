@@ -1,0 +1,12 @@
+// Form Elements
+//
+// Base form element are styled using @code.form-control@code class taken from bootstrap.
+// Please see bootstrap documentation page for more details http://getbootstrap.com/css/#forms
+//
+// Styleguide forms
+
+.form-control {
+  padding: 0 10px;
+  font-size: $font-size-little;
+  border-radius: 0;
+}
