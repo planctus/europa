@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DTT announcement feature.
+ */
+
+include_once 'dtt_announcement.features.inc';
