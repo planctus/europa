@@ -19,5 +19,7 @@
 }
 
 .no-svg {
-  background-image: url('../images/svg/logo.png');
+  .logo {
+    background-image: url('../images/svg/logo.png');
+  }
 }
