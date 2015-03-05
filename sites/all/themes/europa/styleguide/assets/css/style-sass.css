@@ -5051,7 +5051,9 @@ blockquote {
       display: block;
       height: 100%;
       width: 50px;
-      top: 0; }
+      top: 0;
+      background: none;
+      border: none; }
       .ui-datepicker .ui-datepicker-header .ui-datepicker-prev:hover, .ui-datepicker .ui-datepicker-header .ui-datepicker-next:hover {
         cursor: pointer; }
       .ui-datepicker .ui-datepicker-header .ui-datepicker-prev .ui-icon, .ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon {
@@ -5076,6 +5078,11 @@ blockquote {
       line-height: inherit;
       margin: -1px 50px 0;
       height: 100%; }
+      .ui-datepicker .ui-datepicker-header .ui-datepicker-title span, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
+        color: #fff; }
+      .ui-datepicker .ui-datepicker-header .ui-datepicker-title span {
+        font-weight: normal;
+        font-size: 0.8em; }
       .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
         background: #4f4f4f;
         color: #fff;
@@ -5087,6 +5094,7 @@ blockquote {
         .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:first-child {
           border-right: 2px solid #686868; }
   .ui-datepicker table.ui-datepicker-calendar {
+    width: auto !important;
     background: #eaeaea;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
