@@ -6,4 +6,13 @@
 //
 // Styleguide footer.small
 
+.region-footer-small {
+  background: $blue;
+  padding: 60px 0;
+  color: #fff;
+  font-size: $font-size-small;
 
+  a {
+    color: #fff;
+  }
+}

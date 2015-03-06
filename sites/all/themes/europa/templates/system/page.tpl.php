@@ -184,7 +184,12 @@
 </section>
 
 <footer class="footer">
-  <div class="container-fluid">
-    <?php print render($page['footer']); ?>
-  </div>
+    <div class="container-fluid">
+        <?php print render($page['footer']); ?>
+    </div>
+    <?php if (!empty($page['footer_small'])): ?>
+        <div class="container-fluid">
+            <?php print render($page['footer_small']); ?>
+        </div>
+    <?php endif; ?>
 </footer>

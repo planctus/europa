@@ -16,6 +16,7 @@ regions[content] = Content
 regions[sidebar_first] = Sidebar
 regions[sidebar_second] = Second column
 regions[footer] = Footer
+regions[footer_small] = Footer small
 
 ; ========================================
 ; Stylesheets

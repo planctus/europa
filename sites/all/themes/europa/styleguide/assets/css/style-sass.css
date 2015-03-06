@@ -5026,6 +5026,14 @@ blockquote {
   .footer a {
     color: #fff; }
 
+.region-footer-small {
+  background: #006fb4;
+  padding: 60px 0;
+  color: #fff;
+  font-size: 13px; }
+  .region-footer-small a {
+    color: #fff; }
+
 #ui-datepicker-div {
   border: none;
   width: 100%; }
