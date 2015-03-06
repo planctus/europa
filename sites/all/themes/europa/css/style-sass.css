@@ -5027,12 +5027,23 @@ blockquote {
     color: #fff; }
 
 .region-footer-small {
-  background: #006fb4;
+  background: #004494;
   padding: 60px 0;
   color: #fff;
   font-size: 13px; }
   .region-footer-small a {
     color: #fff; }
+  .region-footer-small h2 {
+    color: #fff;
+    display: inline-block;
+    float: left;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 15px 0 5px 0; }
+  .region-footer-small .block-menu ul li {
+    display: inline-block; }
+    .region-footer-small .block-menu ul li a {
+      padding-top: 10px; }
 
 #ui-datepicker-div {
   border: none;
