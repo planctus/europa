@@ -8,7 +8,6 @@ project = dt_core
 features[features_api][] = api:2
 dependencies[] = features
 dependencies[] = link
-dependencies[] = taxonomy
 dependencies[] = text
 features[field_base][] = field_core_introduction
 features[field_base][] = field_core_related_links

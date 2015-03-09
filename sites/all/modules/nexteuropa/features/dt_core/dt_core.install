@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Digital Transformation Core install file.
+ */
 
 /**
  * Implements hook_install().
