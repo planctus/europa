@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dtt_announcement.strongarm.inc
+ * nexteuropa_announcement.strongarm.inc
  */
 
 /**

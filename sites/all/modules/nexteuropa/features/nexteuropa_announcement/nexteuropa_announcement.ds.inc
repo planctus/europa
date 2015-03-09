@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dtt_announcement.ds.inc
+ * nexteuropa_announcement.ds.inc
  */
 
 /**

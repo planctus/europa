@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dtt_announcement.features.field_instance.inc
+ * nexteuropa_announcement.features.field_instance.inc
  */
 
 /**

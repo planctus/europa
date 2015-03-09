@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dtt_announcement.features.taxonomy.inc
+ * nexteuropa_announcement.features.taxonomy.inc
  */
 
 /**
