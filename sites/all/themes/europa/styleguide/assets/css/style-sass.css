@@ -5101,7 +5101,8 @@ blockquote {
     border-bottom: 10px solid transparent; }
     .ui-datepicker table.ui-datepicker-calendar th {
       font-size: 16px;
-      font-weight: normal; }
+      font-weight: normal;
+      background: none; }
   .ui-datepicker .ui-state-default {
     border: none;
     background: #fff;
