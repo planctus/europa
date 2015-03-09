@@ -5090,7 +5090,9 @@ blockquote {
         height: 100%;
         width: 49% !important;
         margin: 0;
-        display: inline-block; }
+        display: inline-block;
+        float: none;
+        padding-right: 0; }
         .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:first-child {
           border-right: 2px solid #686868; }
   .ui-datepicker table.ui-datepicker-calendar {
@@ -5111,7 +5113,8 @@ blockquote {
     margin: 1px;
     padding: 5px 10px; }
   .ui-datepicker .ui-state-active {
-    border: 2px solid #0b64b2; }
+    border: 2px solid #0b64b2;
+    padding: 3px 10px; }
   .ui-datepicker .ui-state-highlight {
     background: #fed500;
     color: #000; }

@@ -95,6 +95,8 @@ $datepicker-color-background: #eaeaea;
         width: 49% !important;
         margin: 0;
         display: inline-block;
+        float: none;
+        padding-right: 0;
         @extend .form-control;
 
         &:first-child {
@@ -129,6 +131,7 @@ $datepicker-color-background: #eaeaea;
 
   .ui-state-active {
     border: 2px solid #0b64b2;
+    padding: 3px 10px;
   }
 
   .ui-state-highlight {
