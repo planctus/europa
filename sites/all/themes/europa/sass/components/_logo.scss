@@ -18,6 +18,15 @@
   background: url('../images/svg/logo.svg') no-repeat;
 }
 
+@include breakpoint(screen-sm-min) {
+  .logo {
+    width: 218px;
+    height: 60px;
+  }
+}
+
 .no-svg {
-  background-image: url('../images/svg/logo.png');
+  .logo {
+    background-image: url('../images/svg/logo.png');
+  }
 }

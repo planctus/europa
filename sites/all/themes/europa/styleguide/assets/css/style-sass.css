@@ -4993,12 +4993,18 @@ blockquote {
   height: 45px;
   background: url('../images/svg/logo.svg') no-repeat; }
 
-.no-svg {
+@media (min-width: 768px) {
+  .logo {
+    width: 218px;
+    height: 60px; }
+ }
+
+.no-svg .logo {
   background-image: url('../images/svg/logo.png'); }
 
 .site-header .site-header__logo {
-  margin-top: 15px;
-  margin-bottom: 15px; }
+  margin-top: 0.8em;
+  margin-bottom: 0.8em; }
 
 .page-header {
   background: #006fb4;
