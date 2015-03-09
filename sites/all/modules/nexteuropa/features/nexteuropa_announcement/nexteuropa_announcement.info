@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = nexteuropa_announcement
 dependencies[] = cce_basic_config
 dependencies[] = ds
+dependencies[] = dt_core
 dependencies[] = field_group
 dependencies[] = link
 dependencies[] = mediafield
