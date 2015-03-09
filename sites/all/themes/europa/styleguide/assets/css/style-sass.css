@@ -5075,8 +5075,7 @@ blockquote {
     .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
       right: 0; }
     .ui-datepicker .ui-datepicker-header .ui-datepicker-title {
-      line-height: inherit;
-      margin: -1px 50px 0;
+      margin: 0 50px;
       height: 100%; }
       .ui-datepicker .ui-datepicker-header .ui-datepicker-title span, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
         color: #fff; }
