@@ -4,6 +4,7 @@
  * Implements hook_install().
  */
 function dt_core_install() {
+  module_enable(array('nexteuropa_announcement'));
 }
 
 /**
@@ -22,11 +23,4 @@ function dt_core_enable() {
  * Implements hook_disable().
  */
 function dt_core_disable() {
-}
-
-/**
- * Enabling the nexteuropa_announcement feature.
- */
-function dt_core_update_7101() {
-  module_enable(array('nexteuropa_announcement'));
 }
