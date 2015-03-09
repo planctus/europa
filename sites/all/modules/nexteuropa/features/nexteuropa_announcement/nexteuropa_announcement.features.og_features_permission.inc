@@ -7,7 +7,7 @@
 /**
  * Implements hook_og_features_default_permissions().
  */
-function dtt_announcement_og_features_default_permissions() {
+function nexteuropa_announcement_og_features_default_permissions() {
   $permissions = array();
 
   // Exported og permission: 'node:editorial_team:create announcement content'

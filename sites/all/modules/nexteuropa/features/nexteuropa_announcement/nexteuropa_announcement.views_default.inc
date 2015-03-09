@@ -7,7 +7,7 @@
 /**
  * Implements hook_views_default_views().
  */
-function dtt_announcement_views_default_views() {
+function nexteuropa_announcement_views_default_views() {
   $export = array();
 
   $view = new view();

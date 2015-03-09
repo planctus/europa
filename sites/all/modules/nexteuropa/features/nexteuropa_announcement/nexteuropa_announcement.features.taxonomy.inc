@@ -7,7 +7,7 @@
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function dtt_announcement_taxonomy_default_vocabularies() {
+function nexteuropa_announcement_taxonomy_default_vocabularies() {
   return array(
     'subjects' => array(
       'name' => 'Subjects',

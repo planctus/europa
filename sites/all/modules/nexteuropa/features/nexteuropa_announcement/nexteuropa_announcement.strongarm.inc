@@ -7,7 +7,7 @@
 /**
  * Implements hook_strongarm().
  */
-function dtt_announcement_strongarm() {
+function nexteuropa_announcement_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

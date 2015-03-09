@@ -7,7 +7,7 @@
 /**
  * Implements hook_field_default_field_instances().
  */
-function dtt_announcement_field_default_field_instances() {
+function nexteuropa_announcement_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'comment-comment_node_announcement-comment_body'
