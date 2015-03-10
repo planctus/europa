@@ -185,17 +185,8 @@
 
 <footer class="footer">
     <?php if (!empty($page['footer'])): ?>
-        <div class="footer__large">
-            <div class="container-fluid">
-                <?php print render($page['footer']); ?>
-            </div>
-        </div>
-    <?php endif; ?>
-    <?php if (!empty($page['footer_small'])): ?>
-        <div class="footer__small">
-            <div class="container-fluid">
-                <?php print render($page['footer_small']); ?>
-            </div>
+        <div class="container-fluid">
+            <?php print render($page['footer']); ?>
         </div>
     <?php endif; ?>
 </footer>

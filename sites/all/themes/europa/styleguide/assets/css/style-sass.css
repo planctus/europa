@@ -5018,43 +5018,33 @@ blockquote {
     font-size: 26px; }
 
 .footer {
-  background: #006fb4;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  font-size: 13px; }
-  .footer a {
-    color: #fff; }
-
-.footer__small {
   background: #004494;
   padding: 60px 0;
   color: #fff;
   font-size: 13px; }
-  .footer__small a {
+  .footer a {
     color: #fff; }
-  .footer__small h2 {
+  .footer label {
     color: #fff;
-    display: inline-block;
-    float: left;
     font-size: 13px;
     font-weight: normal;
-    padding: 14px 10px 5px 0; }
-  .footer__small p {
+    float: left;
+    padding: 10px 10px 5px 0; }
+  .footer p {
     padding-top: 10px; }
 
-ul.menu.nav li {
+.footer__menu li {
   display: inline-block; }
-  ul.menu.nav li:first-child > a {
+  .footer__menu li:first-child > a {
     padding-left: 0; }
-  ul.menu.nav li a {
+  .footer__menu li a {
     padding-top: 10px; }
-    ul.menu.nav li a:hover {
+    .footer__menu li a:hover {
       background: none;
       text-decoration: underline; }
 
-.blue-bottom {
-  border-bottom: 1px solid #4d7cb4; }
+.footer__menu--bottom-border {
+  border-bottom: 1px solid aliceblue; }
 
 #ui-datepicker-div {
   border: none;

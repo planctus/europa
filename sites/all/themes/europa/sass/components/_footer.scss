@@ -1,27 +1,56 @@
 // Footer
 //
-// A majority of buttons in the site are built from the same base class.
+// Footer component, aka "small footer component".
 //
 // Markup: footer.html
 //
 // Styleguide footer
 
+$footer-white-font: #fff;
+
 .footer {
-  background: $blue;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
+  background: $blue-dark;
+  padding: 60px 0;
+  color: $footer-white-font;
   font-size: $font-size-small;
 
   a {
-    color: #fff;
+    color: $footer-white-font;
+  }
+
+  label {
+    color: $footer-white-font;
+    font-size: 13px;
+    font-weight: normal;
+    float: left;
+    padding: 10px 10px 5px 0;
+  }
+
+  p {
+    padding-top: 10px;
   }
 }
 
-.footer__small {
+.footer__menu {
+  li {
+    display: inline-block;
 
+    &:first-child > a {
+      padding-left: 0;
+    }
+
+    a {
+      padding-top: 10px;
+
+      &:hover {
+        background: none;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
-.footer__large {
-
+.footer__menu--bottom-border {
+  border-bottom: 1px solid aliceblue;
 }
+
