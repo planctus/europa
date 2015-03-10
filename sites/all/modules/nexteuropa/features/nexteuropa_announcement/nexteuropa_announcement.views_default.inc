@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.views_default.inc
+ * nexteuropa_announcement.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function dtt_announcement_views_default_views() {
+function nexteuropa_announcement_views_default_views() {
   $export = array();
 
   $view = new view();

@@ -1,11 +1,12 @@
 name = Announcement
-description = Container for the Announcement Content Type
+description = This is the Announcement feature for the NextEuropa
 core = 7.x
 package = Nexteuropa Digital Transformation
 version = 7.x-1.0
 project = nexteuropa_announcement
 dependencies[] = cce_basic_config
 dependencies[] = ds
+dependencies[] = dt_core
 dependencies[] = field_group
 dependencies[] = link
 dependencies[] = mediafield

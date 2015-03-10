@@ -4,4 +4,4 @@
  * Code for the DTT announcement feature.
  */
 
-include_once 'dtt_announcement.features.inc';
+include_once 'nexteuropa_announcement.features.inc';

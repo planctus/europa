@@ -1,10 +1,13 @@
 <?php
+/**
+ * @file
+ * Digital Transformation Core install file.
+ */
 
 /**
  * Implements hook_install().
  */
 function dt_core_install() {
-  module_enable(array('nexteuropa_announcement'));
 }
 
 /**
