@@ -7,7 +7,7 @@
 /**
  * Implements hook_install().
  */
-function nexteuropa_pages_install() {
+function nexteuropa_page_install() {
 
   // Apply default NextEuropa configuration to "Basic Page" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('page');
@@ -16,7 +16,7 @@ function nexteuropa_pages_install() {
 /**
  * Removing obsolete User Tasks group and field.
  */
-function nexteuropa_pages_update_7101() {
+function nexteuropa_page_update_7101() {
   // Remove field.
   $field_name = 'field_core_user_tasks';
   if (field_info_field($field_name) !== NULL) {
