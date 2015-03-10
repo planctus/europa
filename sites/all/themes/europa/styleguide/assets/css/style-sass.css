@@ -5029,22 +5029,40 @@ blockquote {
     font-size: 13px;
     font-weight: normal;
     float: left;
-    padding: 10px 10px 5px 0; }
+    padding-right: 10px; }
   .footer p {
     padding-top: 10px; }
 
-.footer__menu li {
-  display: inline-block; }
-  .footer__menu li:first-child > a {
-    padding-left: 0; }
-  .footer__menu li a {
-    padding-top: 10px; }
-    .footer__menu li a:hover {
-      background: none;
-      text-decoration: underline; }
+.footer-menu {
+  padding-left: 0; }
+  .footer-menu li {
+    display: inline-block; }
+    .footer-menu li:first-child > a {
+      padding-left: 0; }
+    .footer-menu li a {
+      padding-top: 10px; }
+      .footer-menu li a:hover {
+        background: none;
+        text-decoration: underline; }
+  .footer-menu__item {
+    margin-right: 10px; }
+  .footer-menu__bottom-border {
+    border-bottom: 1px solid #4d7cb4;
+    padding-bottom: 15px; }
 
-.footer__menu--bottom-border {
-  border-bottom: 1px solid aliceblue; }
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 0; }
+    .footer label {
+      float: none;
+      text-align: center;
+      width: 100%; }
+    .footer p {
+      text-align: center; }
+
+  .footer-menu {
+    text-align: center; }
+ }
 
 #ui-datepicker-div {
   border: none;

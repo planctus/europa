@@ -1,6 +1,6 @@
 // Footer
 //
-// Footer component, aka "small footer component".
+// AKA "small footer component".
 //
 // Markup: footer.html
 //
@@ -23,7 +23,7 @@ $footer-white-font: #fff;
     font-size: 13px;
     font-weight: normal;
     float: left;
-    padding: 10px 10px 5px 0;
+    padding-right: 10px;
   }
 
   p {
@@ -31,7 +31,9 @@ $footer-white-font: #fff;
   }
 }
 
-.footer__menu {
+.footer-menu {
+  padding-left: 0;
+
   li {
     display: inline-block;
 
@@ -48,9 +50,34 @@ $footer-white-font: #fff;
       }
     }
   }
+
+  &__item {
+    margin-right: 10px;
+  }
+
+  &__bottom-border {
+    border-bottom: 1px solid #4d7cb4;
+    padding-bottom: 15px;
+  }
 }
 
-.footer__menu--bottom-border {
-  border-bottom: 1px solid aliceblue;
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 0;
+
+    label {
+      float: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .footer-menu {
+    text-align: center;
+  }
 }
 
