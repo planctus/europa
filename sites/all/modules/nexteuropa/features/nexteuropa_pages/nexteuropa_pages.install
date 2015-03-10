@@ -4,7 +4,6 @@
  * NextEuropa pages install file.
  */
 
-
 /**
  * Implements hook_install().
  */
