@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * NextEuropa Priority install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_priority_install() {
+  // Apply default NextEuropa configuration to "Priority" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
+}
