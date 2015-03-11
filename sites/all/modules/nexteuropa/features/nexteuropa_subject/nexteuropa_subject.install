@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * NextEuropa Subject install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_subject_install() {
+  // Apply default NextEuropa configuration to "Subject" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('subject');
+}
