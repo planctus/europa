@@ -1,16 +1,19 @@
-# Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
-
-# Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
-
-# Ignore sites.php
-sites/sites.php
+# Ignore path to db dumps
+_db_dumps
 
 # Sublime Ignore
 *.sublime-*
 
 # PhpStrom .idea
 .idea/
+
+.svn
 bin
+vendor
+build
+build.properties.local
+tmp
+platform
+project/settings.php
+project/files
+project/settings.php
