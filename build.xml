@@ -129,6 +129,7 @@
             <available file="${drupal.settings.dir}/settings.php" type="file" />
             <then>
                 <echo message="Creating backup of settings.php file" />
+                <mkdir dir="${project.basedir}/${phing.project.tmp.dir}" />
                 <chmod file="${drupal.settings.dir}/settings.php" mode="0777" failonerror="false" verbose="false" quiet="true" />
                 <copy file="${drupal.settings.dir}/settings.php" toDir="${project.basedir}/${phing.project.tmp.dir}" />
             </then>
