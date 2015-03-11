@@ -1,0 +1,71 @@
+# The name of the project
+phing.project.name = Wrapper for Drupal
+
+# The location of Phing and Drush
+phing.bin = ${project.basedir}/bin/phing
+drush.bin = ${project.basedir}/bin/drush
+composer.bin = composer.phar
+
+# The build location
+phing.project.build.dir = build
+
+# Temporary folder
+phing.project.tmp.dir = tmp
+
+# The URL of the MULTISITE SVN repository
+multisite.repo.root = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE
+multisite.repo.branch = trunk
+multisite.repo.url = ${multisite.repo.root}/${multisite.repo.branch}
+
+# The version of Drupal for the project
+drupal.version = 7.34
+
+# The install profile to use
+drupal.profile.name = minimal
+
+# Development / testing modules to enable
+drupal.modules =
+
+# The site name to use. Use 'all' if you do not use a multisite installation.
+drupal.site.name = all
+
+# The database url to use for site installs
+drupal.db.type = mysql
+drupal.db.user = root
+drupal.db.password =
+drupal.db.host = 127.0.0.1
+drupal.db.port = 3306
+drupal.db.name = drupal_demo
+drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
+
+# Template to generate the distro.make file
+drush.distro.template = api = 2${line.separator}\
+core = 7.x${line.separator}\
+${line.separator}\
+projects[drupal][type] = core${line.separator}\
+projects[drupal][version] = ${drupal.version}${line.separator}
+
+# Paths
+project.code.dir = ${project.basedir}/${phing.project.build.dir}
+platform.code.dir = ${project.basedir}/${phing.project.platform.dir}
+
+drupal.distro.make.file = distro.make
+drupal.profile.dir = ${project.code.dir}/profiles
+drupal.platform.profile.dir = ${platform.code.dir}/profiles
+
+drupal.sites.dir = ${project.code.dir}/sites
+drupal.settings.dir = ${drupal.sites.dir}/default
+drupal.files.dir = ${drupal.settings.dir}/files
+
+drupal.site.dir = ${drupal.sites.dir}/${drupal.site.name}
+drupal.libraries.dir = ${drupal.site.dir}/libraries
+drupal.modules.dir = ${drupal.site.dir}/modules
+drupal.themes.dir = ${drupal.site.dir}/themes
+
+# Test related settings. This is for local testing, not needed on continuousphp.
+behat.bin = ${project.basedir}/bin/behat
+behat.dir = ${project.basedir}/tests
+behat.yml = ${behat.dir}/behat.yml
+behat.base_url = http://localhost
+
+server.docroot = /home/cphp/var/www
