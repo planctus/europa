@@ -173,6 +173,9 @@
         <drush command="site-install" assume="yes" root="${project.basedir}/${phing.project.build.dir}" bin="${drush.bin}">
             <option name="db-url" value="${drupal.db.url}"/>
             <option name="site-name" value="${phing.project.name}"/>
+            <option name="account-name" value="${drupal.admin.username}"/>
+            <option name="account-pass" value="${drupal.admin.password}"/>
+            <option name="account-mail" value="${drupal.admin.email}"/>
             <param>${drupal.profile.name}</param>
             <param>--quiet</param>
         </drush>
@@ -235,7 +238,7 @@
 
     <target name="install"
             description="Install the Drupal site"
-            depends="install-drupal, enable-drupal-modules" />
+            depends="files-directory, install-drupal, enable-drupal-modules" />
 
     <target name="test"
             description="Run tests."
