@@ -18,6 +18,27 @@
       });
       // /Gallery carrousel
 
+      // Tooltips
+      $('[data-toggle="tooltip"]').tooltip();
+      // /Tooltips
+
+      // Back on top link
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+          $('.btn-back-top').fadeIn(200);
+        }
+        else {
+          $('.btn-back-top').fadeOut(200);
+        }
+      });
+
+      $('.btn-back-top').on("click", function(e) {
+        e.preventDefault();
+        $('html,body').animate({scrollTop: 0}, 300);
+        $(this).blur();
+        return false;
+      });
+      // /Back on top link
 
       // Gallery add media form
       $('.node-gallerymedia #add_picture').click(function(e) {

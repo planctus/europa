@@ -187,21 +187,48 @@ function cce_basic_config_menu_link_alter(&$item) {
   // Rewrite links only for the user-menu menu.
   // Don't rewrite if menu link was edited (customized=1).
   if (isset($item['menu_name']) && $item['menu_name'] == 'user-menu') {
-    // Don't rewrite if menu link was edited (customized=1).
-    // (!isset ($item['customized'] case when the field is reseted).
     if ((isset ($item['customized']) && $item['customized'] == 0) || !isset ($item['customized'])) {
       $link_path = $item['link_path'];
 
-      $user_classes = 'btn btn-default btn-xs';
       switch ($link_path) {
         case 'user':
-          $item['options']['attributes']['class'] = $user_classes;
+          $item['options']['attributes']['title'] = t('My account');
+          $item['options']['attributes']['class'] = 'btn btn-default';
           $item['options']['attributes']['data-image'] = 'user';
+          $item['options']['attributes']['data-display-title'] = 0;
+          $item['options']['attributes']['data-toggle'] = 'tooltip';
+          $item['options']['attributes']['data-placement'] = 'bottom';
+          $item['options']['attributes']['data-container'] = 'body';
           break;
 
         case 'user/logout':
-          $item['options']['attributes']['class'] = $user_classes;
+          $item['options']['attributes']['title'] = t('Log out');
+          $item['options']['attributes']['class'] = 'btn btn-default';
           $item['options']['attributes']['data-image'] = 'log-out';
+          $item['options']['attributes']['data-display-title'] = 0;
+          $item['options']['attributes']['data-toggle'] = 'tooltip';
+          $item['options']['attributes']['data-placement'] = 'bottom';
+          $item['options']['attributes']['data-container'] = 'body';
+          break;
+
+        case 'manage-translate':
+          $item['options']['attributes']['title'] = t('Manage translation tasks');
+          $item['options']['attributes']['class'] = 'btn btn-default';
+          $item['options']['attributes']['data-image'] = 'flag';
+          $item['options']['attributes']['data-display-title'] = 0;
+          $item['options']['attributes']['data-toggle'] = 'tooltip';
+          $item['options']['attributes']['data-placement'] = 'bottom';
+          $item['options']['attributes']['data-container'] = 'body';
+          break;
+
+        case 'translate':
+          $item['options']['attributes']['title'] = t('Translate');
+          $item['options']['attributes']['class'] = 'btn btn-default';
+          $item['options']['attributes']['data-image'] = 'globe';
+          $item['options']['attributes']['data-display-title'] = 0;
+          $item['options']['attributes']['data-toggle'] = 'tooltip';
+          $item['options']['attributes']['data-placement'] = 'bottom';
+          $item['options']['attributes']['data-container'] = 'body';
           break;
 
         default:
@@ -231,7 +258,7 @@ function cce_basic_config_block_view($delta = '') {
     case 'footer_ipg':
       $menu_service_tools = menu_tree('menu-service-tools');
       $block['subject'] = 'Latest update';
-      $block['content'] = t('Last update:') . ' ' . date('d/m/Y') . ' | <a href="#top-page">Top</a> | ' . drupal_render($menu_service_tools);
+      $block['content'] = t('Last update:') . ' ' . date('d/m/Y') . ' | <a href="#top-page">'.t('Top').'</a> | ' . drupal_render($menu_service_tools);
       break;
   }
   return $block;
@@ -242,10 +269,40 @@ function cce_basic_config_block_view($delta = '') {
  *
  * Force field_tags to be unlock.
  */
-function cce_basic_config_field_default_fields_alter(&$fields) {
+function cce_basic_config_field_default_fields_instances_alter(&$fields) {
   foreach ($fields as $key => $field) {
     if ($field['field_config']['field_name'] == 'field_tags') {
       $fields[$key]['field_config']['locked'] = '0';
     }
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Changes the label of the title attributes field supplied by the Menu
+ * Attributes module so it doesn't collide with the label of the node title.
+ * This is needed to be able to use these fields in Behat tests.
+ *
+ * @todo Remove this if upstream issue #2412221 gets accepted.
+ *
+ * @see https://www.drupal.org/node/2412221
+ */
+function cce_basic_config_form_node_form_alter(&$form, $form_state) {
+  $form['#after_build'][] = 'cce_basic_config_form_node_form_after_build';
+}
+
+/**
+ * Form after build handler for cce_basic_config_form_node_form_alter().
+ *
+ * Alters the node form after it gets altered by the Menu Attributes module.
+ *
+ * @see cce_basic_config_form_node_form_alter()
+ */
+function cce_basic_config_form_node_form_after_build($form_element) {
+  if (!empty($form_element['menu']['link']['options']['attributes']['title']['#title'])) {
+    $form_element['menu']['link']['options']['attributes']['title']['#title'] = t('Title attribute');
+  }
+
+  return $form_element;
 }

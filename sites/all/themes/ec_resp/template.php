@@ -199,8 +199,6 @@ function ec_resp_preprocess_node(&$variables) {
   if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
     unset($variables['content']['links']['comment']['#links']['comment-add']);
   }
-  unset($variables['content']['comments']);
-  unset($variables['content']['links']);
 
   switch ($variables['type']) {
     case 'idea':
@@ -212,6 +210,18 @@ function ec_resp_preprocess_node(&$variables) {
       unset($variables['content']['field_video_upload']);
       break;
 
+  }
+
+  // Display last update date
+  if ($variables['display_submitted']) {
+    $node = $variables['node'];
+    // Append the revision information to the submitted by text.
+    $revision_account = user_load($node->revision_uid);
+    $variables['revision_name'] = theme('username', array('account' => $revision_account));
+    $variables['revision_date'] = format_date($node->changed);
+    $variables['submitted'] .= "<br>".t('Last modified by !revision-name on !revision-date', array(
+      '!name' => $variables['name'], '!date' => $variables['date'], '!revision-name' => $variables['revision_name'], '!revision-date' => $variables['revision_date'])
+    );
   }
 
 }
@@ -1243,7 +1253,7 @@ function ec_resp_breadcrumb($variables) {
 function ec_resp_preprocess_admin_menu_icon(&$variables) {
   $theme_path = drupal_get_path('theme', 'ec_resp');
   $logo_url = file_create_url($theme_path . '/images/favicon.png');
-  $variables['src'] = preg_replace('@^https?:@', 'http:', $logo_url);
+  $variables['src'] = preg_replace('@^https?:@', '', $logo_url);
 }
 
 /**
@@ -1483,6 +1493,41 @@ function ec_resp_preprocess_block(&$variables) {
 
     }
   }
+}
+
+/**
+ * Returns HTML for a dropdown.
+ */
+function ec_resp_dropdown($variables) {
+  $items = $variables['items'];
+  $attributes = array();
+  $output = "";
+
+  if (!empty($items)) {
+    if (theme_get_setting('disable_dropdown_menu')) {
+      $output .= "<ul>";
+    }
+    else {
+      $output .= "<ul class='dropdown-menu'>";
+      $num_items = count($items);
+      foreach ($items as $i => $item) {
+        $data = '';
+        if (is_array($item)) {
+          foreach ($item as $key => $value) {
+            if ($key == 'data') {
+              $data = $value;
+            }
+          }
+        }
+        else {
+          $data = $item;
+        }
+        $output .= '<li>' . $data . "</li>\n";
+      }
+      $output .= "</ul>";
+    }
+  }
+  return $output;
 }
 
 /**

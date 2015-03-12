@@ -66,7 +66,6 @@ function nexteuropa_editorial_install() {
 
     // Workbench Moderation.
     'view all unpublished content',
-    'bypass workbench moderation',
     'view moderation history',
     'view moderation messages',
     'use workbench_moderation my drafts tab',

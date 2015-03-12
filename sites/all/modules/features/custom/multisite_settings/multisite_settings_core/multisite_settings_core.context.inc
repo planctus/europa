@@ -94,7 +94,7 @@ function multisite_settings_core_context_default_contexts() {
           'delta' => 'sort',
           'region' => 'sidebar_right',
           'weight' => '-10',
-        ),        
+        ),
       ),
     ),
   );
@@ -128,6 +128,12 @@ function multisite_settings_core_context_default_contexts() {
           'region' => 'tools',
           'weight' => 1,
         ),
+        'create-content-button' => array(
+          'module' => 'multisite_create_button',
+          'delta' => 'create-content-button',
+          'region' => 'tools',
+          'weight' => '2',
+        ),
         'locale-language' => array(
           'module' => 'locale',
           'delta' => 'language',
@@ -139,6 +145,12 @@ function multisite_settings_core_context_default_contexts() {
           'delta' => 'main-menu',
           'region' => 'featured',
           'weight' => '-10',
+        ),
+        'easy_breadcrumb-easy_breadcrumb' => array(
+          'module' => 'easy_breadcrumb',
+          'delta' => 'easy_breadcrumb',
+          'region' => 'featured',
+          'weight' => '-11',
         ),
         'print-print-links' => array(
           'module' => 'print',
