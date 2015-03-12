@@ -7,10 +7,20 @@
 
 include_once 'multisite_notifications_core.features.inc';
 
+
+/**
+ * Implements hook_subscriptions_queue_alter().
+ */
 function multisite_notifications_core_subscriptions_queue_alter(&$event) {
+
+  // no notification for nodes from workbench_moderation_store (=updating_live_revision) 
+  if (isset ($event['node']->workbench_moderation['updating_live_revision']) && $event['node']->workbench_moderation['updating_live_revision']){
+    $event = NULL;
+  }
+  
   // only send notification if the state of the content is published
   if (isset($event['node']->workbench_moderation_state_new)) { // content has a worbench moderation workflow
-    if ($event['node']->workbench_moderation_state_new != 'published')  {
+    if ($event['node']->workbench_moderation_state_new != workbench_moderation_state_published())  {
       $event = NULL;
     }
   }
@@ -26,6 +36,7 @@ function multisite_notifications_core_subscriptions_queue_alter(&$event) {
  * Implements hook_init().
  */
 function multisite_notifications_core_init() {
+
   drupal_add_js(drupal_get_path('module', 'multisite_notifications_core') . '/js/multisite_notifications_core.js');
   drupal_add_css(drupal_get_path('module', 'multisite_notifications_core') . '/css/multisite_notifications_core.css');
 }
@@ -51,8 +62,7 @@ function multisite_notifications_core_menu() {
     'description' => 'Confirmation for unsubscribing',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('multisite_notifications_core_unsubscribe_form'),
-    'access callback' => 'user_access',
-    'access arguments' => array('view subscription block'),
+    'access callback' => TRUE,
     'weight' => 0,
     'type' => MENU_CALLBACK,
   );
