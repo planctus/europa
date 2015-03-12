@@ -177,14 +177,13 @@
             <option name="account-pass" value="${drupal.admin.password}"/>
             <option name="account-mail" value="${drupal.admin.email}"/>
             <param>${drupal.profile.name}</param>
-            <param>--quiet</param>
         </drush>
     </target>
 
     <!-- Enable modules. -->
     <target name="enable-drupal-modules" description="Enable Drupal modules." depends="install-drupal">
         <drush command="pm-enable" assume="yes" root="${project.basedir}/${phing.project.build.dir}" bin="${drush.bin}">
-            <param>calculator</param>
+            <param>${drupal.modules}</param>
             <param>--quiet</param>
         </drush>
     </target>
