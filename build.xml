@@ -41,9 +41,15 @@
             command="make"
             assume="yes"
             bin="${drush.bin}"
+            pipe="yes"
             root="${phing.project.build.dir}">
             <param>${drupal.platform.profile.dir}/${drupal.profile.name}/build.make</param>
             <param>${phing.project.build.dir}</param>
+            <!--
+              High concurrency used because of make problems.
+              @see https://github.com/drush-ops/drush/issues/985
+            -->
+            <option name="concurrency">11</option>
         </drush>
 
         <echo msg="Copy platform files." />
