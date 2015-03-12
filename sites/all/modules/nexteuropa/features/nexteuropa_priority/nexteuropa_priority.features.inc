@@ -18,7 +18,7 @@ function nexteuropa_priority_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function nexteuropa_priority_node_info() {
   $items = array(
-    'class' => array(
+    'priority' => array(
       'name' => t('Priority'),
       'base' => 'node_content',
       'description' => t('Priority content type for NextEuropa.'),

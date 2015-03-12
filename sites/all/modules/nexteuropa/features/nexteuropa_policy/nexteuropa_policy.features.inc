@@ -18,7 +18,7 @@ function nexteuropa_policy_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function nexteuropa_policy_node_info() {
   $items = array(
-    'class' => array(
+    'policy' => array(
       'name' => t('Policy'),
       'base' => 'node_content',
       'description' => t('Policy content type for NextEuropa.'),

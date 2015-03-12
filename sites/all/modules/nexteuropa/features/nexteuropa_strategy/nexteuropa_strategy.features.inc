@@ -18,7 +18,7 @@ function nexteuropa_strategy_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function nexteuropa_strategy_node_info() {
   $items = array(
-    'class' => array(
+    'strategy' => array(
       'name' => t('Strategy'),
       'base' => 'node_content',
       'description' => t('Strategy content type for NextEuropa.'),

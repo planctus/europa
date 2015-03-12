@@ -18,7 +18,7 @@ function nexteuropa_subject_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function nexteuropa_subject_node_info() {
   $items = array(
-    'class' => array(
+    'subject' => array(
       'name' => t('Subject'),
       'base' => 'node_content',
       'description' => t('Subject content type for NextEuropa.'),
