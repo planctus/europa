@@ -14,7 +14,7 @@ class Config extends ConfigBase {
   /**
    * Apply default NextEuropa configuration to a specific content type,
    * it is usually called into hook_install().
-   * @see: nexteuropa_pages_install()
+   * @see: nexteuropa_page_install()
    *
    * @param $type
    */
