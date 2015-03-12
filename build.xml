@@ -203,6 +203,8 @@
         <echo message="Deleting platform files." />
         <delete dir="${project.basedir}/${phing.project.platform.dir}" includeemptydirs="true" failonerror="false" />
         <svncheckout
+             username="${multisite.repo.user}"
+             password="${multisite.repo.password}"
              repositoryurl="${multisite.repo.url}"
              todir="${project.basedir}/${phing.project.platform.dir}"
              force="true"/>
