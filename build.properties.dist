@@ -23,7 +23,7 @@ multisite.repo.password = pass
 drupal.version = 7.34
 
 # The install profile to use
-drupal.profile.name = minimal
+drupal.profile.name = multisite_drupal_standard
 
 # Development / testing modules to enable
 drupal.modules =
