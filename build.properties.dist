@@ -16,6 +16,8 @@ phing.project.tmp.dir = tmp
 multisite.repo.root = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE
 multisite.repo.branch = trunk
 multisite.repo.url = ${multisite.repo.root}/${multisite.repo.branch}
+multisite.repo.user = user
+multisite.repo.password = pass
 
 # The version of Drupal for the project
 drupal.version = 7.34
