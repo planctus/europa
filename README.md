@@ -11,18 +11,20 @@
 *   RUN: composer install
 
 
-## To build your local environment:
+## To build your local dev site:
 
 *   Create your build.properties.local from build.properties.dist
 *   Change settings in build.properties.local to match your environment.
-*   RUN: bin/phing build-dev install
+*   RUN: bin/phing build-dev
 
 ### This will:
 
 *   Check out the branch of MULTISITE set in the properties file from SVN.
 *   Make the Drupal installation into the build folder based on the build.make file of the installation profile set in the properties file.
-*   Install the Drupal site.
 
+## To install your local dev site:
+
+*   RUN: bin/phing build-dev install
 
 ## Re-build the environment:
 
