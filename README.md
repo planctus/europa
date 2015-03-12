@@ -15,7 +15,7 @@
 
 *   Create your build.properties.local from build.properties.dist
 *   Change settings in build.properties.local to match your environment.
-*   RUN: bin/phing build-dev
+*   RUN: <code>bin/phing build-dev</code>
 
 ### This will:
 
@@ -24,11 +24,11 @@
 
 ## To install your local dev site:
 
-*   RUN: bin/phing build-dev install
+*   RUN: <code>bin/phing install</code>
 
 ## Re-build the environment:
 
-*   RUN: bin/phing rebuild-dev
+*   RUN: <code>bin/phing rebuild-dev</code>
 
 ### This will:
 
