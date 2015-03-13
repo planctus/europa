@@ -41,20 +41,32 @@
           <span class="kss-nav__ref">2</span
           ><span class="kss-nav__name">Form</span>
         </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-form.html#kssref-form.form-group">
+                <span class="kss-nav__ref">2.1</span
+                ><span class="kss-nav__name">Form Group</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-form.html#kssref-form.label">
+                <span class="kss-nav__ref">2.2</span
+                ><span class="kss-nav__name">Label</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-form.html#kssref-form.text-input">
+                <span class="kss-nav__ref">2.3</span
+                ><span class="kss-nav__name">Text Input</span>
+              </a>
+            </li>
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-siteheader.html">
           <span class="kss-nav__ref">3</span
           ><span class="kss-nav__name">Site header</span>
         </a>
-        <ul class="kss-nav__menu-child">
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader.logo">
-                <span class="kss-nav__ref">3.1</span
-                ><span class="kss-nav__name">Logo</span>
-              </a>
-            </li>
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-text.html">
@@ -67,13 +79,13 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-siteheader" class="kss-section kss-section--depth-1">
+      <div     id="kssref-form" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-siteheader">
-          <span class="kss-title__ref">3</span
-          >Site header
+        <a class="kss-title__permalink" href="#kssref-form">
+          <span class="kss-title__ref">2</span
+          >Form
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
@@ -81,46 +93,20 @@
 
     </div>
 
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    
-  </div>
-</header>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    
-  &lt;/div&gt;
-&lt;/header&gt;
-</code></pre>
-      </div>
 
       </div>
-      <section id="kssref-siteheader.logo" class="kss-section kss-section--depth-2">
+      <section id="kssref-form.form-group" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader.logo">
-          <span class="kss-title__ref">3.1</span
-          >Logo
+        <a class="kss-title__permalink" href="#kssref-form.form-group">
+          <span class="kss-title__ref">2.1</span
+          >Form Group
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h2>
 
 
-      <div class="kss-description">
-        <p>Ec logo</p>
-
-      </div>
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -128,14 +114,78 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <a href="link-to-homepage" class="logo" title="Home"></a>
+          <form>
+  <div class="form-group">
+
+  </div>
+</form>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;link-to-homepage&quot; class=&quot;logo&quot; title=&quot;Home&quot;&gt;&lt;/a&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+
+  &lt;/div&gt;
+&lt;/form&gt;
 </code></pre>
+      </div>
+
+      </section>
+      <section id="kssref-form.label" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-form.label">
+          <span class="kss-title__ref">2.2</span
+          >Label
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <label for="example-input-id">Some Label</label>
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;label for=&quot;example-input-id&quot;&gt;Some Label&lt;/label&gt;</code></pre>
+      </div>
+
+      </section>
+      <section id="kssref-form.text-input" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-form.text-input">
+          <span class="kss-title__ref">2.3</span
+          >Text Input
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <input type="text" class="form-control" placeholder="Some text."/>
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Some text.&quot;/&gt;</code></pre>
       </div>
 
       </section>

@@ -1,0 +1,13 @@
+// Label
+//
+// Markup: html/label.html
+//
+// Styleguide form.label
+
+.label {
+  font-size: bold;
+}
+
+label {
+  @extend .label;
+}

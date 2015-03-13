@@ -192,7 +192,7 @@ td, th {
   .btn > .caret, .dropup > .btn > .caret {
     border-top-color: #000 !important; }
 
-  .label {
+  .label, label {
     border: 1px solid #000; }
 
   .table {
@@ -3504,7 +3504,7 @@ tbody.collapse.in {
     background-color: #fff;
     cursor: not-allowed; }
 
-.label {
+.label, label {
   display: inline;
   padding: 0.2em 0.6em 0.3em;
   font-size: 75%;
@@ -3515,9 +3515,9 @@ tbody.collapse.in {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25em; }
-  .label:empty {
+  .label:empty, label:empty {
     display: none; }
-  .btn .label {
+  .btn .label, .btn label {
     position: relative;
     top: -1px; }
 
@@ -4983,6 +4983,18 @@ blockquote {
 
 .no-svg blockquote p:before, .no-svg blockquote p:after {
   background-image: url('../images/png/quote.png'); }
+
+.form-control {
+  border: #f00; }
+
+.label, label {
+  font-size: bold; }
+
+.text-input {
+  border: #ff0; }
+
+.form-group {
+  background-color: #ccc; }
 
 .container-fluid {
   max-width: 1170px; }

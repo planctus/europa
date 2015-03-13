@@ -1,0 +1,13 @@
+// Legend
+//
+// Markup: html/legend.html
+//
+// Styleguide form.legend
+
+.legend {
+  color: #abc;
+}
+
+legend {
+  @extend .legend;
+}
