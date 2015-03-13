@@ -21,7 +21,7 @@ function nexteuropa_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'body',
       1 => 'field_core_introduction',
@@ -31,7 +31,8 @@ function nexteuropa_announcement_field_group_info() {
       5 => 'field_announcement_image',
       6 => 'field_announcemnt_img_prominence',
       7 => 'field_announcement_contact',
-      8 => 'group_announcement_related',
+      8 => 'field_announcement_resp_org',
+      9 => 'group_announcement_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -56,7 +57,7 @@ function nexteuropa_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Metadata',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -92,8 +93,8 @@ function nexteuropa_announcement_field_group_info() {
       1 => 'field_announcement_subjects',
       2 => 'field_announcement_announcements',
       3 => 'field_policies',
-      4 => 'field_related_topics',
-      5 => 'field_commissioner',
+      4 => 'field_commissioner',
+      5 => 'field_related_topics',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
