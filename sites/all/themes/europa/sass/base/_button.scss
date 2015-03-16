@@ -1,0 +1,13 @@
+/*
+Form Group
+
+Markup: html/button.html
+
+Styleguide form.button
+*/
+.button {
+  color: red;
+}
+button {
+  @extend .button;
+}

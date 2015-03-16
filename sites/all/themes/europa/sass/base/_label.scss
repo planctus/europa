@@ -1,15 +1,15 @@
-// Label
-//
-// Markup: html/label.html
-//
-// Styleguide form.label
+/*
+Label
+
+Markup: html/label.html
+
+Styleguide form.label
+*/
 
 .label {
-<<<<<<< HEAD
-  font-size: bold;
-=======
-
->>>>>>> 2e23b994a90dd62c8130af571b4929331ff78de3
+  color: $form-item-text-color;
+  font-size: $form-item-label-font-size;
+  padding: 0;
 }
 
 label {

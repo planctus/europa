@@ -1,13 +1,19 @@
-// Text Input
-//
-// Markup: html/text-input.html
-//
-// Styleguide form.text-input
+/*
+Text Input
 
+Markup: html/text-input.html
+
+Styleguide form.text-input
+*/
 .text-input {
-  border: #ff0;
-<<<<<<< HEAD
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
-=======
+
+.text-input .disabled {
+  background-color: $form-item-background-color-disabled;
 }
->>>>>>> 2e23b994a90dd62c8130af571b4929331ff78de3
+
+input {
+  @extend .text-input;
+}

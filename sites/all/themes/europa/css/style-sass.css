@@ -2061,10 +2061,10 @@ output {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
   .form-control:focus {
-    border-color: #66afe9;
+    border-color: #ffd617;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 214, 23, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 214, 23, 0.6); }
   .form-control::-moz-placeholder {
     color: #999;
     opacity: 1; }
@@ -4950,6 +4950,13 @@ a {
 ul, ol {
   padding-left: 40px; }
 
+/*
+Blockquote
+
+Markup: html/blockquote.html
+
+Styleguide text.blockquote
+*/
 blockquote {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
@@ -4984,20 +4991,68 @@ blockquote {
 .no-svg blockquote p:before, .no-svg blockquote p:after {
   background-image: url('../images/png/quote.png'); }
 
+/*
+Form
+
+Styleguide form
+*/
 .form-control {
-  border: #f00; }
+  background-color: #fff;
+  color: #404040;
+  border: 1px solid #b3b4b5;
+  border-radius: 0; }
+  .form-control.focus {
+    border-color: #ffd617;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
 
-<<<<<<< HEAD
+/*
+Label
+
+Markup: html/label.html
+
+Styleguide form.label
+*/
 .label, label {
-  font-size: bold; }
+  color: #404040;
+  font-size: 16px;
+  padding: 0; }
 
-=======
->>>>>>> 2e23b994a90dd62c8130af571b4929331ff78de3
-.text-input {
-  border: #ff0; }
+/*
+Form Group
 
+Markup: html/button.html
+
+Styleguide form.button
+*/
+.button, button {
+  color: red; }
+
+/*
+Text Input
+
+Markup: html/text-input.html
+
+Styleguide form.text-input
+*/
+.text-input, input {
+  margin-top: 15px;
+  margin-bottom: 20px; }
+
+.text-input .disabled, input .disabled {
+  background-color: #e2e2e2; }
+
+/*
+Form Group
+
+Markup: html/form-group.html
+
+Styleguide form.form-group
+*/
 .form-group {
-  background-color: #ccc; }
+  background-color: #fff;
+  line-height: 24px;
+  font-size: 16px; }
 
 .container-fluid {
   max-width: 1170px; }

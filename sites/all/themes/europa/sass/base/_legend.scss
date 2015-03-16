@@ -1,11 +1,13 @@
-// Legend
-//
-// Markup: html/legend.html
-//
-// Styleguide form.legend
+/*
+Legend
+
+Markup: html/legend.html
+
+Styleguide form.legend
+*/
 
 .legend {
-  color: #abc;
+  font-size: $form-item-legend-font-size;
 }
 
 legend {
