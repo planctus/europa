@@ -9,7 +9,7 @@
  */
 function nexteuropa_department_strongarm() {
   $export = array();
-  
+
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -56,7 +56,7 @@ function nexteuropa_department_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'language' => array(
           'weight' => '1',
@@ -73,20 +73,6 @@ function nexteuropa_department_strongarm() {
   $strongarm->name = 'language_content_type_department';
   $strongarm->value = '4';
   $export['language_content_type_department'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_department';
-  $strongarm->value = array();
-  $export['menu_options_department'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_department';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_department'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

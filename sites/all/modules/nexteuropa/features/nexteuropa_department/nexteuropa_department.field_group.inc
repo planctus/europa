@@ -23,7 +23,8 @@ function nexteuropa_department_field_group_info() {
     'label' => 'CTA',
     'weight' => '3',
     'children' => array(
-      0 => 'field_cta',
+      0 => 'field_core_cta',
+      1 => 'field_core_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -40,6 +41,60 @@ function nexteuropa_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_person|node|department|form';
+  $field_group->group_name = 'group_person';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Leadership & Organisation',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_core_commissioner',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-person field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_person|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_priorities|node|department|form';
+  $field_group->group_name = 'group_priorities';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Responsibilities, tasks',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_priorities',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-priorities field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_priorities|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_profile_information|node|department|form';
   $field_group->group_name = 'group_profile_information';
   $field_group->entity_type = 'node';
@@ -50,9 +105,9 @@ function nexteuropa_department_field_group_info() {
     'label' => 'Profile information',
     'weight' => '2',
     'children' => array(
-      0 => 'field_ec_organisation',
-      1 => 'field_abbreviation',
-      2 => 'field_introduction',
+      0 => 'field_core_introduction',
+      1 => 'field_core_abbreviation',
+      2 => 'field_core_ecorganisation',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -65,6 +120,33 @@ function nexteuropa_department_field_group_info() {
     ),
   );
   $export['group_profile_information|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_topics|node|department|form';
+  $field_group->group_name = 'group_topics';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Topics',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_core_topics',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-topics field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_topics|node|department|form'] = $field_group;
 
   return $export;
 }
