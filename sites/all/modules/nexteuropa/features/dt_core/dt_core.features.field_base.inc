@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dtt_core.features.field_base.inc
+ * dt_core.features.field_base.inc
  */
 
 /**
@@ -70,43 +70,49 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_abbreviation'
-  $field_bases['field_core_abbreviation'] = array(
+  // Exported field_base: 'field_core_user_tasks'
+  $field_bases['field_core_user_tasks'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_abbreviation',
+    'field_name' => 'field_core_user_tasks',
     'foreign keys' => array(
-      'format' => array(
+      'tid' => array(
         'columns' => array(
-          'format' => 'format',
+          'tid' => 'tid',
         ),
-        'table' => 'filter_format',
+        'table' => 'taxonomy_term_data',
       ),
     ),
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'taxonomy',
     'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'core_user_tasks',
+          'parent' => 0,
+        ),
+      ),
       'entity_translation_sync' => FALSE,
-      'max_length' => 255,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_core_ec_organisation'
+  // Exported field_base: 'field_ec_organisation'
   $field_bases['field_core_ec_organisation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_ec_organisation',
+    'field_name' => 'field_core_ec_organisation',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
