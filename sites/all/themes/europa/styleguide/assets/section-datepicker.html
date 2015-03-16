@@ -38,14 +38,14 @@
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Datepicker</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-footer.html">
           <span class="kss-nav__ref">2</span
           ><span class="kss-nav__name">Footer</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-forms.html">
@@ -70,20 +70,22 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-footer" class="kss-section kss-section--depth-1">
+      <div     id="kssref-datepicker" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-footer">
-          <span class="kss-title__ref">2</span
-          >Footer
+        <a class="kss-title__permalink" href="#kssref-datepicker">
+          <span class="kss-title__ref">1</span
+          >Datepicker
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>A majority of buttons in the site are built from the same base class.</p>
+        <p>This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.<br/>
+Also, it assumes that the default CSS styles from jQuery UI are included as well.<br/>
+The CSS applied from styleguide is an override over the default CSS of jQuery UI.<br/></p>
 
       </div>
     </div>
@@ -93,21 +95,25 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <footer class="footer">
-  <div class="container-fluid">
-    <p>Footer content</p>
-  </div>
-</footer>
+          <script src="public/js/components/datepicker/jquery.ui.datepicker.min.js"></script>
+<script src="public/js/components/datepicker/datepicker.js"></script>
+<link rel="stylesheet" href="public/css/jquery.ui.core.min.css">
+<link rel="stylesheet" href="public/css/jquery.ui.datepicker.min.css">
+
+<label for="datepicker">Date:</label>
+<input class="form-control" type="text" id="datepicker">
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;p&gt;Footer content&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/footer&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;script src=&quot;public/js/components/datepicker/jquery.ui.datepicker.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;public/js/components/datepicker/datepicker.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.core.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.datepicker.min.css&quot;&gt;
+
+&lt;label for=&quot;datepicker&quot;&gt;Date:&lt;/label&gt;
+&lt;input class=&quot;form-control&quot; type=&quot;text&quot; id=&quot;datepicker&quot;&gt;
 </code></pre>
       </div>
 
