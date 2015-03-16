@@ -9,7 +9,7 @@ Styleguide form
   color: $form-item-text-color;
   border: 1px solid $form-item-border-color;
   border-radius: 0;
-  &.focus {
+  &:focus {
     border-color: $input-border-focus;
     @include box-shadow(none);
   }
