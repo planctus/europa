@@ -1,0 +1,13 @@
+// Select
+//
+// Markup: html/select.html
+//
+// Styleguide form.select
+
+.select {
+  color: #0f0;
+}
+
+select {
+  @extend .select;
+}

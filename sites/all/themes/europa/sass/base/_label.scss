@@ -1,0 +1,17 @@
+/*
+Label
+
+Markup: html/label.html
+
+Styleguide form.label
+*/
+
+.label {
+  color: $form-item-text-color;
+  font-size: $form-item-label-font-size;
+  padding: 0;
+}
+
+label {
+  @extend .label;
+}

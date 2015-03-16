@@ -1,0 +1,13 @@
+/*
+Textarea
+
+Markup: html/textarea.html
+
+Styleguide form.textarea
+*/
+.textarea {
+  color: #abcdef;
+}
+textarea {
+  @extend .textarea;
+}

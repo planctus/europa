@@ -47,6 +47,18 @@ $font-size-h6:            0.778em;
 $font-weight-normal:      400;
 $font-weight-bold:        600;
 
+// Form colors.
+$form-item-text-color:                #404040;
+$form-item-border-color:              #b3b4b5;
+$input-border-focus:                  #ffd617;
+$form-item-background-color:          #fff;
+$form-item-background-color-disabled: #e2e2e2;
+
+// Fonts sizing.
+$form-group-line-height:              24px;
+$form-item-label-font-size:           16px;
+$form-item-legend-font-size:          16px;
+
 // In order to override the 'default!', bootstrap variables have to be added
 // after the overrides
 @import "../bootstrap-sass/bootstrap/variables";

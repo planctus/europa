@@ -1,0 +1,19 @@
+/*
+Text Input
+
+Markup: html/text-input.html
+
+Styleguide form.text-input
+*/
+.text-input {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.text-input .disabled {
+  background-color: $form-item-background-color-disabled;
+}
+
+input {
+  @extend .text-input;
+}
