@@ -86,35 +86,6 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_ec_organisation'
-  $field_bases['field_core_ec_organisation'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_ec_organisation',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'Directorate-General (policy)' => 'Directorate-General (policy)',
-        'Directorate-General (operational)' => 'Directorate-General (operational)',
-        'Service department' => 'Service department',
-        'Executive agency' => 'Executive agency',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_core_ecorganisation'
   $field_bases['field_core_ecorganisation'] = array(
     'active' => 1,

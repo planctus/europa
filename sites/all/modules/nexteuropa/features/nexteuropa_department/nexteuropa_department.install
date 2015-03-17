@@ -1,10 +1,14 @@
 <?php
+/**
+ * @file
+ * nexteuropa_department.install
+ */
 
 /**
  * Implements hook_install().
  */
 function nexteuropa_department_install() {
 
-  // Apply default NextEuropa configuration to "Basic Page" content type.
+  // Apply default NextEuropa configuration to "Department" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
 }
