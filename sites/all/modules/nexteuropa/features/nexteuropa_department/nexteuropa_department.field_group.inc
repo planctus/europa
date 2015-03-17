@@ -23,15 +23,14 @@ function nexteuropa_department_field_group_info() {
     'label' => 'CTA',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_cta',
-      1 => 'field_core_link',
+      0 => 'field_core_link',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-cta field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -53,12 +52,12 @@ function nexteuropa_department_field_group_info() {
     'children' => array(
       0 => 'field_core_commissioner',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-person field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -80,12 +79,12 @@ function nexteuropa_department_field_group_info() {
     'children' => array(
       0 => 'field_core_priorities',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-priorities field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -109,14 +108,15 @@ function nexteuropa_department_field_group_info() {
       1 => 'field_core_abbreviation',
       2 => 'field_core_ecorganisation',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Profile information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-profile-information field-group-fieldset',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_profile_information|node|department|form'] = $field_group;
@@ -136,12 +136,12 @@ function nexteuropa_department_field_group_info() {
     'children' => array(
       0 => 'field_core_topics',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-topics field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
