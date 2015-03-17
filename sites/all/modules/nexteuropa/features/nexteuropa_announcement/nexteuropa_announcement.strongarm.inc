@@ -56,13 +56,13 @@ function nexteuropa_announcement_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '5',
-        ),
-        'scheduler_settings' => array(
           'weight' => '6',
         ),
-        'language' => array(
+        'scheduler_settings' => array(
           'weight' => '7',
+        ),
+        'language' => array(
+          'weight' => '29',
         ),
       ),
       'display' => array(),
@@ -76,6 +76,17 @@ function nexteuropa_announcement_strongarm() {
   $strongarm->name = 'language_content_type_announcement';
   $strongarm->value = '4';
   $export['language_content_type_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_announcement';
+  $strongarm->value = array(
+    0 => 'promote',
+    1 => 'moderation',
+    2 => 'revision',
+  );
+  $export['node_options_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
