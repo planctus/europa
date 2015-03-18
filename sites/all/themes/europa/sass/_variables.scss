@@ -48,15 +48,18 @@ $font-weight-normal:      400;
 $font-weight-bold:        600;
 
 // Form colors.
-$form-item-text-color:                #404040;
-$form-item-border-color:              #b3b4b5;
-$input-border-focus:                  #ffd617;
-$form-item-background-color:          #fff;
-$form-item-background-color-disabled: #e2e2e2;
+$form-control-text-color:                 #404040;
+$form-control-text-color-focus:           #000000;
+$form-control-text-color-disabled:        #b3b4b5;
+$form-control-border-color:               #b3b4b5;
+$form-control-border-color-focus:         #ffd617;
+$form-control-background-color:           #ffffff;
+$form-control-background-color-disabled:  #e2e2e2;
+$state-danger-text:                       #ff2423;
 
 // Fonts sizing.
 $form-group-line-height:              24px;
-$form-item-label-font-size:           16px;
+$form-group-font-size:           16px;
 $form-item-legend-font-size:          16px;
 
 // In order to override the 'default!', bootstrap variables have to be added

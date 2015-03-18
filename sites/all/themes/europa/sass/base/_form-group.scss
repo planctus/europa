@@ -3,16 +3,12 @@ Form Group
 
 Markup: html/form-group.html
 
-.has-error - Error: the filed contains an error.
-
 Styleguide form.form-group
 */
 
 .form-group {
+  font-family: $font-family-sans-serif;
   background-color: #fff;
   line-height: $form-group-line-height;
-  font-size: $form-item-label-font-size;
-  &.has-error {
-
-  }
+  font-size: $form-group-font-size;
 }

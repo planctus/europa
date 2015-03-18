@@ -1,0 +1,14 @@
+/*
+Help Block
+
+Markup: html/help_block.html
+
+Styleguide form.help-block
+*/
+.help-block {
+  font-family: $font-family-sans-serif;
+  color: #575757;
+  .disabled & {
+    color: $form-control-text-color-disabled;
+  }
+}

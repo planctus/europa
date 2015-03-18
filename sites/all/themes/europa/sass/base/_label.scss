@@ -7,9 +7,12 @@ Styleguide form.label
 */
 
 .label {
-  color: $form-item-text-color;
-  font-size: $form-item-label-font-size;
+  color: $form-control-text-color;
+  font-size: $form-group-font-size;
   padding: 0;
+  .disabled & {
+    color: $form-control-text-color-disabled;
+  }
 }
 
 label {
