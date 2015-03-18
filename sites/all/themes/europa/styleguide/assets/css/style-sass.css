@@ -5004,6 +5004,7 @@ Styleguide form
   margin-top: 15px;
   margin-bottom: 20px; }
   .form-control:focus, .form-control.focused, .has-error .form-control:focus {
+    color: #000000;
     border-color: #ffd617;
     -webkit-box-shadow: none;
     box-shadow: none; }
@@ -5054,6 +5055,36 @@ Styleguide form.help-block
   color: #575757; }
   .disabled .help-block {
     color: #b3b4b5; }
+  .has-error .help-block {
+    color: #575757; }
+
+/*
+Form Field Feedback
+
+Markup: html/form_field_feedback.html
+
+Styleguide form.form-field-feedback
+*/
+.form-field-feedback {
+  color: #575757;
+  font-family: Arial, sans-serif; }
+  .disabled .form-field-feedback {
+    color: #b3b4b5; }
+  .has-error .form-field-feedback {
+    color: #575757;
+    background-color: #e2e2e2;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; }
+    .has-error .form-field-feedback:before {
+      content: '';
+      background: url("../images/svg/error.svg");
+      background-size: 30px;
+      width: 30px;
+      height: 30px;
+      margin-right: 12px; }
 
 /*
 Form Group

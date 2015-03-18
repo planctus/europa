@@ -14,6 +14,7 @@ Styleguide form
   &:focus,
   &.focused,
   .has-error &:focus {
+    color: $form-control-text-color-focus;
     border-color: $form-control-border-color-focus;
     @include box-shadow(none);
   }

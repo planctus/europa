@@ -48,14 +48,23 @@ $font-weight-normal:      400;
 $font-weight-bold:        600;
 
 // Form colors.
-$form-control-text-color:                 #404040;
-$form-control-text-color-focus:           #000000;
-$form-control-text-color-disabled:        #b3b4b5;
-$form-control-border-color:               #b3b4b5;
-$form-control-border-color-focus:         #ffd617;
-$form-control-background-color:           #ffffff;
-$form-control-background-color-disabled:  #e2e2e2;
-$state-danger-text:                       #ff2423;
+$form-control-text-color:                     #404040;
+$form-control-text-color-focus:               #000000;
+$form-control-text-color-disabled:            #b3b4b5;
+$form-control-border-color:                   #b3b4b5;
+$form-control-border-color-focus:             #ffd617;
+$form-control-background-color:               #ffffff;
+$form-control-background-color-disabled:      #e2e2e2;
+$state-danger-text:                           #ff2423;
+$form-group-help-block-text-color:            #575757;
+$form-group-help-block-text-color-disabled:   $form-control-text-color-disabled;
+$form-group-help-block-text-color-has-error:  $form-group-help-block-text-color;
+$form-group-feedback-text-color:              #575757;
+$form-group-feedback-text-color-disabled:     $form-control-text-color-disabled;
+$form-group-feedback-text-color-has-error:    $form-group-help-block-text-color;
+$form-group-feedback-background-color:        #e2e2e2;
+$form-group-feedback-icon-size:               30px;
+
 
 // Fonts sizing.
 $form-group-line-height:              24px;
