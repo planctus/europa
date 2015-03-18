@@ -5003,7 +5003,7 @@ Styleguide form
   border-radius: 0;
   margin-top: 15px;
   margin-bottom: 20px; }
-  .form-control:focus, .form-control.focused, .has-error .form-control:focus {
+  .form-control:focus, .form-control.focus, .has-error .form-control:focus {
     color: #000000;
     border-color: #ffd617;
     -webkit-box-shadow: none;
@@ -5043,6 +5043,18 @@ Markup: html/text-input.html
 
 Styleguide form.text-input
 */
+/*
+Drop down selector
+
+Markup: html/select.html
+
+Styleguide form.select
+*/
+.select:hover, select:hover, .select.hover, select.hover {
+  border-color: #006fb4; }
+.select.down, select.down {
+  border-color: #575757; }
+
 /*
 Help Block
 

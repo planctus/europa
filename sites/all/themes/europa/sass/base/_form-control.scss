@@ -11,13 +11,17 @@ Styleguide form
   border-radius: 0;
   margin-top: 15px;
   margin-bottom: 20px;
+
+  // Focus state.
   &:focus,
-  &.focused,
+  &.focus,
   .has-error &:focus {
     color: $form-control-text-color-focus;
     border-color: $form-control-border-color-focus;
     @include box-shadow(none);
   }
+
+  // Disabled modifier.
   &.disabled {
     color: $form-control-text-color-disabled;
     background-color: $form-control-background-color-disabled;

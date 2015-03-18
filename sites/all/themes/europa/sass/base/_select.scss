@@ -1,11 +1,23 @@
-// Select
-//
-// Markup: html/select.html
-//
-// Styleguide form.select
+/*
+Drop down selector
+
+Markup: html/select.html
+
+Styleguide form.select
+*/
 
 .select {
-  color: #0f0;
+
+  // Hover state.
+  &:hover,
+  &.hover {
+    border-color: $form-control-border-select-color-hover;
+  }
+
+  // Down state.
+  &.down {
+    border-color: $form-control-border-select-color-down;
+  }
 }
 
 select {
