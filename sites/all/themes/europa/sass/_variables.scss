@@ -48,24 +48,52 @@ $font-weight-normal:      400;
 $font-weight-bold:        600;
 
 // Form colors.
-$form-control-text-color:                     #404040;
-$form-control-text-color-focus:               #000000;
-$form-control-text-color-disabled:            #b3b4b5;
-$form-control-border-color:                   #b3b4b5;
-$form-control-border-color-focus:             #ffd617;
-$form-control-border-select-color-hover:      #006fb4;
-$form-control-border-select-color-down:       #575757;
-$form-control-background-color:               #ffffff;
-$form-control-background-color-disabled:      #e2e2e2;
-$state-danger-text:                           #ff2423;
-$form-group-help-block-text-color:            #575757;
-$form-group-help-block-text-color-disabled:   $form-control-text-color-disabled;
-$form-group-help-block-text-color-has-error:  $form-group-help-block-text-color;
-$form-group-feedback-text-color:              #575757;
-$form-group-feedback-text-color-disabled:     $form-control-text-color-disabled;
-$form-group-feedback-text-color-has-error:    $form-group-help-block-text-color;
-$form-group-feedback-background-color:        #e2e2e2;
-$form-group-feedback-icon-size:               30px;
+$form-control-text-color:                         #404040;
+$form-control-text-color-focus:                   #000000;
+$form-control-text-color-disabled:                #b3b4b5;
+$form-control-border-color:                       #b3b4b5;
+$form-control-border-color-focus:                 #ffd617;
+$form-control-background-color:                   #ffffff;
+$form-control-background-color-disabled:          #e2e2e2;
+$state-danger-text:                               #ff2423;
+
+
+// Select.
+$form-control-border-select-color-hover:          #006fb4;
+$form-control-border-select-color-down:           #575757;
+
+
+// Checkbox.
+// Unchecked.
+$form-checkbox-color-unchecked:                   #575757;
+$form-checkbox-background-color-unchecked:        #ececec;
+// Unchecked, hover.
+$form-checkbox-color-unchecked-hover:             $form-checkbox-color-unchecked;
+$form-checkbox-border-color-unchecked-hover:      #006fb4;
+$form-checkbox-background-color-unchecked-hover:  #ffffff;
+// Checked.
+$form-checkbox-color-checked:                     #ffffff;
+$form-checkbox-background-color-checked:          #006fb4;
+// Checked, hover.
+$form-checkbox-color-checked-hover:               $form-checkbox-color-checked;
+$form-checkbox-border-color-checked-hover:        #ffffff;
+$form-checkbox-background-color-checked-hover:    $form-checkbox-background-color-checked;
+// Icon size.
+$form-checkbox-icon-size:                         20px;
+
+
+// Help block.
+$form-group-help-block-text-color:                #575757;
+$form-group-help-block-text-color-disabled:       $form-control-text-color-disabled;
+$form-group-help-block-text-color-has-error:      $form-group-help-block-text-color;
+
+
+// Form field feedback.
+$form-group-feedback-text-color:                  #575757;
+$form-group-feedback-text-color-disabled:         $form-control-text-color-disabled;
+$form-group-feedback-text-color-has-error:        $form-group-help-block-text-color;
+$form-group-feedback-background-color:            #e2e2e2;
+$form-group-feedback-icon-size:                   30px;
 
 
 // Fonts sizing.

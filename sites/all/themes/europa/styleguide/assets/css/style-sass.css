@@ -5056,6 +5056,121 @@ Styleguide form.select
   border-color: #575757; }
 
 /*
+Checkbox
+
+Markup: html/checkbox.html
+
+Styleguide form.checkbox
+*/
+/*
+ * Please
+ * @see http://bootsnipp.com/snippets/featured/funky-radio-buttons
+ * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
+ */
+.checkbox {
+  margin-bottom: 6px; }
+  .checkbox label {
+    color: #575757;
+    height: 44px;
+    line-height: 44px;
+    display: block;
+    text-align: left;
+    border: transparent solid 1px;
+    border-radius: 0; }
+  .checkbox input {
+    margin: 1px 0 0 13px; }
+  .checkbox input[type="checkbox"] {
+    height: 44px;
+    line-height: 40px;
+    margin-left: -9999px;
+    position: relative;
+    float: left; }
+    .checkbox input[type="checkbox"]:not(checked) + label {
+      background-color: #ececec;
+      padding-left: 50px; }
+      .checkbox input[type="checkbox"]:not(checked) + label:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        left: 20px;
+        background: url(../images/png/checkbox-radio.png) no-repeat;
+        background-size: auto 20px; }
+    .checkbox input[type="checkbox"]:checked + label {
+      color: #ffffff;
+      background-color: #006fb4; }
+      .checkbox input[type="checkbox"]:checked + label:before {
+        background-position: -20px 0; }
+    .checkbox input[type="checkbox"]:hover:not(checked) + label {
+      color: #575757;
+      border: #006fb4 solid 1px;
+      background-color: #ffffff; }
+    .checkbox input[type="checkbox"]:hover:checked + label {
+      color: #ffffff;
+      border: #ffffff solid 1px;
+      background-color: #006fb4; }
+
+/*
+Radio
+
+Markup: html/radio.html
+
+Styleguide form.radio
+*/
+/*
+ * Please
+ * @see http://bootsnipp.com/snippets/featured/funky-radio-buttons
+ * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
+ */
+.radio {
+  margin-bottom: 6px; }
+  .radio label {
+    color: #575757;
+    height: 44px;
+    line-height: 44px;
+    display: block;
+    text-align: left;
+    border: transparent solid 1px;
+    border-radius: 0; }
+  .radio input {
+    margin: 1px 0 0 13px; }
+  .radio input[type="radio"] {
+    height: 44px;
+    line-height: 40px;
+    margin-left: -9999px;
+    position: relative;
+    float: left; }
+    .radio input[type="radio"]:not(checked) + label {
+      background-color: #ececec;
+      padding-left: 50px; }
+      .radio input[type="radio"]:not(checked) + label:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        top: 12px;
+        left: 20px;
+        background: url(../images/png/checkbox-radio.png) no-repeat;
+        background-size: auto 20px;
+        background-position: -40px 0; }
+    .radio input[type="radio"]:checked + label {
+      color: #ffffff;
+      background-color: #006fb4; }
+      .radio input[type="radio"]:checked + label:before {
+        background-position: -60px 0; }
+    .radio input[type="radio"]:hover:not(checked) + label {
+      color: #575757;
+      border: #006fb4 solid 1px;
+      background-color: #ffffff; }
+    .radio input[type="radio"]:hover:checked + label {
+      color: #ffffff;
+      border: #ffffff solid 1px;
+      background-color: #006fb4; }
+
+/*
 Help Block
 
 Markup: html/help_block.html

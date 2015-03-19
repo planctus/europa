@@ -187,41 +187,62 @@
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Examples
-        </div>
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
+          Example
         </div>
         <div class="kss-modifier__example">
-          <div class="checkbox">
-  <label>
-    <input type="checkbox" class="" value="">
-    Some checkbox text here.
-  </label>
+          <div class="form-group">
+  <div class="checkbox">
+    <input type="checkbox" id="cb-example-1" value="">
+    <label for="cb-example-1">Default checkbox</label>
+  </div>
 </div>
-        </div>
-        <div class="kss-modifier__name kss-style">
-          .disabled
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Disabled
-        </div>
-        <div class="kss-modifier__example">
-          <div class="checkbox">
-  <label>
-    <input type="checkbox" class="disabled" value="">
-    Some checkbox text here.
-  </label>
+
+<div class="form-group">
+  <div class="checkbox">
+    <input type="checkbox" id="cb-example-2" value="" checked>
+    <label for="cb-example-2">Checked multiple option 1.</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" id="cb-example-3" value="">
+    <label for="cb-example-3">Unchecked multiple option 2.</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" id="cb-example-4" value="" checked>
+    <label for="cb-example-4">Checked multiple option 3.</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" id="cb-example-5" value="" checked>
+    <label for="cb-example-5">Checked multiple option 4.</label>
+  </div>
 </div>
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;label&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;&quot; value=&quot;&quot;&gt;
-    Some checkbox text here.
-  &lt;/label&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;form-group&quot;&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;cb-example-1&quot; value=&quot;&quot;&gt;
+    &lt;label for=&quot;cb-example-1&quot;&gt;Default checkbox&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;cb-example-2&quot; value=&quot;&quot; checked&gt;
+    &lt;label for=&quot;cb-example-2&quot;&gt;Checked multiple option 1.&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;cb-example-3&quot; value=&quot;&quot;&gt;
+    &lt;label for=&quot;cb-example-3&quot;&gt;Unchecked multiple option 2.&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;cb-example-4&quot; value=&quot;&quot; checked&gt;
+    &lt;label for=&quot;cb-example-4&quot;&gt;Checked multiple option 3.&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;cb-example-5&quot; value=&quot;&quot; checked&gt;
+    &lt;label for=&quot;cb-example-5&quot;&gt;Checked multiple option 4.&lt;/label&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
 
@@ -437,32 +458,36 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="form-group **validation-state**">
-  <fieldset>
-    <legend>Do you smoke?</legend>
-    <p class="help-block">This is some placeholder help text.</p>
-    <input type="radio" name="field-name" id="field-ID-1" value="value-1">
-    <label for="field-ID-1" >yes</label>
-    <input type="radio" name="field-name" id="field-ID-2" value="value-2">
-    <label for="field-ID-2" >no</label>
-  </fieldset>
+          <div class="form-group">
+  <label for="field-ID-1">Radio buttons</label>
+  <div class="radio">
+    <input name="optionsRadios" type="radio" id="rd-example-1" value="" checked>
+    <label for="rd-example-1">Checked multiple option 1.</label>
+  </div>
+  <div class="radio">
+    <input name="optionsRadios" type="radio" id="rd-example-2" value="">
+    <label for="rd-example-2">Unchecked multiple option 2.</label>
+  </div>
   <p class="form-field-feedback">Some feedback message</p>
 </div>
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;form-group **validation-state**&quot;&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;Do you smoke?&lt;/legend&gt;
-    &lt;p class=&quot;help-block&quot;&gt;This is some placeholder help text.&lt;/p&gt;
-    &lt;input type=&quot;radio&quot; name=&quot;field-name&quot; id=&quot;field-ID-1&quot; value=&quot;value-1&quot;&gt;
-    &lt;label for=&quot;field-ID-1&quot; &gt;yes&lt;/label&gt;
-    &lt;input type=&quot;radio&quot; name=&quot;field-name&quot; id=&quot;field-ID-2&quot; value=&quot;value-2&quot;&gt;
-    &lt;label for=&quot;field-ID-2&quot; &gt;no&lt;/label&gt;
-  &lt;/fieldset&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;field-ID-1&quot;&gt;Radio buttons&lt;/label&gt;
+  &lt;div class=&quot;radio&quot;&gt;
+    &lt;input name=&quot;optionsRadios&quot; type=&quot;radio&quot; id=&quot;rd-example-1&quot; value=&quot;&quot; checked&gt;
+    &lt;label for=&quot;rd-example-1&quot;&gt;Checked multiple option 1.&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;radio&quot;&gt;
+    &lt;input name=&quot;optionsRadios&quot; type=&quot;radio&quot; id=&quot;rd-example-2&quot; value=&quot;&quot;&gt;
+    &lt;label for=&quot;rd-example-2&quot;&gt;Unchecked multiple option 2.&lt;/label&gt;
+  &lt;/div&gt;
   &lt;p class=&quot;form-field-feedback&quot;&gt;Some feedback message&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
       </div>
 
       </section>
