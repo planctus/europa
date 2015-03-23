@@ -21,17 +21,10 @@ function nexteuropa_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'body',
       1 => 'field_core_introduction',
-      2 => 'field_core_related_links',
-      3 => 'field_announcement_info',
-      4 => 'field_announcement_media',
-      5 => 'field_announcement_image',
-      6 => 'field_announcemnt_img_prominence',
-      7 => 'field_announcement_contact',
-      8 => 'group_announcement_related',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -48,6 +41,34 @@ function nexteuropa_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_context_info|node|announcement|form';
+  $field_group->group_name = 'group_announcement_context_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Context information',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_announcement_info',
+      1 => 'field_core_link',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-announcement-context-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_announcement_context_info|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_announcement_metadata|node|announcement|form';
   $field_group->group_name = 'group_announcement_metadata';
   $field_group->entity_type = 'node';
@@ -56,11 +77,11 @@ function nexteuropa_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Metadata',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
+      2 => 'field_core_location',
       3 => 'language',
     ),
     'format_type' => 'tab',
@@ -83,29 +104,59 @@ function nexteuropa_announcement_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'announcement';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_announcement_content';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related content',
-    'weight' => '11',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_announcement_departments',
-      1 => 'field_announcement_subjects',
-      2 => 'field_announcement_announcements',
-      3 => 'field_policies',
-      4 => 'field_related_topics',
-      5 => 'field_commissioner',
+      0 => 'field_announcement_contact',
+      1 => 'field_core_topics',
+      2 => 'field_core_commissioner',
+      3 => 'field_core_policy',
+      4 => 'field_core_department',
+      5 => 'field_core_announcement',
+      6 => 'field_core_subject',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-announcement-related field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
   );
   $export['group_announcement_related|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_media|node|announcement|form';
+  $field_group->group_name = 'group_media';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Featured Media',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_announcement_media',
+      1 => 'field_announcement_image',
+      2 => 'field_announcemnt_img_prominence',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-media field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_media|node|announcement|form'] = $field_group;
 
   return $export;
 }
