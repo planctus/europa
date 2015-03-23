@@ -47,6 +47,9 @@ $font-size-h6:            0.778em;
 $font-weight-normal:      400;
 $font-weight-bold:        600;
 
+// Form control
+$form-control-height:                             44px;
+
 // Form colors.
 $form-control-text-color:                         #404040;
 $form-control-text-color-focus:                   #000000;
@@ -61,25 +64,6 @@ $state-danger-text:                               #ff2423;
 // Select.
 $form-control-border-select-color-hover:          #006fb4;
 $form-control-border-select-color-down:           #575757;
-
-
-// Checkbox.
-// Unchecked.
-$form-checkbox-color-unchecked:                   #575757;
-$form-checkbox-background-color-unchecked:        #ececec;
-// Unchecked, hover.
-$form-checkbox-color-unchecked-hover:             $form-checkbox-color-unchecked;
-$form-checkbox-border-color-unchecked-hover:      #006fb4;
-$form-checkbox-background-color-unchecked-hover:  #ffffff;
-// Checked.
-$form-checkbox-color-checked:                     #ffffff;
-$form-checkbox-background-color-checked:          #006fb4;
-// Checked, hover.
-$form-checkbox-color-checked-hover:               $form-checkbox-color-checked;
-$form-checkbox-border-color-checked-hover:        #ffffff;
-$form-checkbox-background-color-checked-hover:    $form-checkbox-background-color-checked;
-// Icon size.
-$form-checkbox-icon-size:                         20px;
 
 
 // Help block.

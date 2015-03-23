@@ -9,11 +9,11 @@ Styleguide form.form-field-feedback
   color: $form-group-feedback-text-color;
   font-family: $font-family-sans-serif;
 
-  .disabled & {
+  &.is-disabled {
     color: $form-group-feedback-text-color-disabled;
   }
 
-  .has-error & {
+  &.has-error {
     color: $form-group-feedback-text-color-has-error;
     background-color: $form-group-feedback-background-color;
     padding: 12px;

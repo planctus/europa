@@ -8,10 +8,10 @@ Styleguide form.help-block
 .help-block {
   font-family: $font-family-sans-serif;
   color: $form-group-help-block-text-color;
-  .disabled & {
+  &.is-disabled {
     color: $form-group-help-block-text-color-disabled;
   }
-  .has-error & {
+  &.has-error {
     // Disable settings of base Bootstrap.
     color: $form-group-help-block-text-color-has-error;
   }

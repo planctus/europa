@@ -10,12 +10,12 @@ Styleguide form.select
 
   // Hover state.
   &:hover,
-  &.hover {
+  &.is-hovered {
     border-color: $form-control-border-select-color-hover;
   }
 
   // Down state.
-  &.down {
+  &.is-down {
     border-color: $form-control-border-select-color-down;
   }
 }

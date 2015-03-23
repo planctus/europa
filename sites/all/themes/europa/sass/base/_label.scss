@@ -10,7 +10,8 @@ Styleguide form.label
   color: $form-control-text-color;
   font-size: $form-group-font-size;
   padding: 0;
-  .disabled & {
+  margin-bottom: 10px;
+  &.is-disabled {
     color: $form-control-text-color-disabled;
   }
 }

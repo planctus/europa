@@ -12,14 +12,38 @@ Styleguide form.checkbox
  * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
  */
 
+// Variables
+
+// Unchecked.
+$form-checkbox-color-unchecked:                   #575757;
+$form-checkbox-background-color-unchecked:        #ececec;
+
+// Unchecked, hover.
+$form-checkbox-color-unchecked-hover:             $form-checkbox-color-unchecked;
+$form-checkbox-border-color-unchecked-hover:      #006fb4;
+$form-checkbox-background-color-unchecked-hover:  #ffffff;
+
+// Checked.
+$form-checkbox-color-checked:                     #ffffff;
+$form-checkbox-background-color-checked:          #006fb4;
+
+// Checked, hover.
+$form-checkbox-color-checked-hover:               $form-checkbox-color-checked;
+$form-checkbox-border-color-checked-hover:        #ffffff;
+$form-checkbox-background-color-checked-hover:    $form-checkbox-background-color-checked;
+
+// Icon size.
+$form-checkbox-icon-size:                         20px;
+
+// Component
 .checkbox {
   margin-bottom: 6px;
 
   // Label in every browser.
   label {
     color: $form-checkbox-color-unchecked;
-    height: 44px;
-    line-height: 44px;
+    height: $form-control-height;
+    line-height: $form-control-height;
     display: block;
     text-align: left;
     border: transparent solid 1px;
@@ -32,7 +56,7 @@ Styleguide form.checkbox
 
   // Checkbox.
   input[type="checkbox"] {
-    height: 44px;
+    height: $form-control-height;
     line-height: 40px;
     margin-left: -9999px;
     position: relative;
@@ -70,14 +94,14 @@ Styleguide form.checkbox
     // Hover state, not checked.
     &:hover:not(checked)+label {
       color: $form-checkbox-color-unchecked-hover;
-      border: $form-checkbox-border-color-unchecked-hover solid 1px;
+      border: $form-checkbox-border-color-unchecked-hover solid 2px;
       background-color: $form-checkbox-background-color-unchecked-hover;
     }
 
     // Hover state, checked.
     &:hover:checked+label {
       color: $form-checkbox-color-checked-hover;
-      border: $form-checkbox-border-color-checked-hover solid 1px;
+      border: $form-checkbox-border-color-checked-hover solid 2px;
       background-color: $form-checkbox-background-color-checked-hover;
     }
   }

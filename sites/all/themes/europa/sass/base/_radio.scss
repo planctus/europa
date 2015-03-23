@@ -18,11 +18,11 @@ Styleguide form.radio
   // Label in every browser.
   label {
     color: $form-checkbox-color-unchecked;
-    height: 44px;
-    line-height: 44px;
+    height: $form-control-height;
+    line-height: $form-control-height;
     display: block;
     text-align: left;
-    border: transparent solid 1px;
+    border: transparent solid 2px;
     border-radius: 0;
   }
 
@@ -32,8 +32,8 @@ Styleguide form.radio
 
   // Checkbox.
   input[type="radio"] {
-    height: 44px;
-    line-height: 40px;
+    height: $form-control-height;
+    line-height: $form-control-height;
     margin-left: -9999px;
     position: relative;
     float: left;
@@ -71,14 +71,14 @@ Styleguide form.radio
     // Hover state, not checked.
     &:hover:not(checked)+label {
       color: $form-checkbox-color-unchecked-hover;
-      border: $form-checkbox-border-color-unchecked-hover solid 1px;
+      border: $form-checkbox-border-color-unchecked-hover solid 2px;
       background-color: $form-checkbox-background-color-unchecked-hover;
     }
 
     // Hover state, checked.
     &:hover:checked+label {
       color: $form-checkbox-color-checked-hover;
-      border: $form-checkbox-border-color-checked-hover solid 1px;
+      border: $form-checkbox-border-color-checked-hover solid 2px;
       background-color: $form-checkbox-background-color-checked-hover;
     }
   }

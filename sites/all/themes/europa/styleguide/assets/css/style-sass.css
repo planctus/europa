@@ -4889,6 +4889,11 @@ button.close {
     display: none !important; }
  }
 
+/* 
+Text styling
+
+Styleguide text
+*/
 body {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -4902,6 +4907,22 @@ body {
     body {
       font-size: 18px; } }
 
+/* Headings
+
+  Site headings. They also can be applied by adding a class with the name of
+  the heading tag
+
+  Markup: html/headings.html
+
+  .h1 - Heading 1
+  .h2 - Heading 2
+  .h3 - Heading 3
+  .h4 - Heading 4
+  .h5 - Heading 5
+  .h6 - Heading 6
+
+  Styleguide text.headings
+*/
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 0.4em 0 1em;
   margin: 0; }
@@ -5001,14 +5022,15 @@ Styleguide form
   background-color: #ffffff;
   border: 1px solid #b3b4b5;
   border-radius: 0;
-  margin-top: 15px;
-  margin-bottom: 20px; }
-  .form-control:focus, .form-control.focus, .has-error .form-control:focus {
+  margin-bottom: 20px;
+  height: 44px;
+  line-height: 44px; }
+  .form-control:focus, .form-control.is-focused, .has-error .form-control:focus {
     color: #000000;
     border-color: #ffd617;
     -webkit-box-shadow: none;
     box-shadow: none; }
-  .form-control.disabled {
+  .form-control.is-disabled {
     color: #b3b4b5;
     background-color: #e2e2e2; }
 
@@ -5022,8 +5044,9 @@ Styleguide form.label
 .label, label {
   color: #404040;
   font-size: 16px;
-  padding: 0; }
-  .disabled .label, .disabled label {
+  padding: 0;
+  margin-bottom: 10px; }
+  .label.is-disabled, label.is-disabled {
     color: #b3b4b5; }
 
 /*
@@ -5050,9 +5073,9 @@ Markup: html/select.html
 
 Styleguide form.select
 */
-.select:hover, select:hover, .select.hover, select.hover {
+.select:hover, select:hover, .select.is-hovered, select.is-hovered {
   border-color: #006fb4; }
-.select.down, select.down {
+.select.is-down, select.is-down {
   border-color: #575757; }
 
 /*
@@ -5105,11 +5128,11 @@ Styleguide form.checkbox
         background-position: -20px 0; }
     .checkbox input[type="checkbox"]:hover:not(checked) + label {
       color: #575757;
-      border: #006fb4 solid 1px;
+      border: #006fb4 solid 2px;
       background-color: #ffffff; }
     .checkbox input[type="checkbox"]:hover:checked + label {
       color: #ffffff;
-      border: #ffffff solid 1px;
+      border: #ffffff solid 2px;
       background-color: #006fb4; }
 
 /*
@@ -5132,13 +5155,13 @@ Styleguide form.radio
     line-height: 44px;
     display: block;
     text-align: left;
-    border: transparent solid 1px;
+    border: transparent solid 2px;
     border-radius: 0; }
   .radio input {
     margin: 1px 0 0 13px; }
   .radio input[type="radio"] {
     height: 44px;
-    line-height: 40px;
+    line-height: 44px;
     margin-left: -9999px;
     position: relative;
     float: left; }
@@ -5163,11 +5186,11 @@ Styleguide form.radio
         background-position: -60px 0; }
     .radio input[type="radio"]:hover:not(checked) + label {
       color: #575757;
-      border: #006fb4 solid 1px;
+      border: #006fb4 solid 2px;
       background-color: #ffffff; }
     .radio input[type="radio"]:hover:checked + label {
       color: #ffffff;
-      border: #ffffff solid 1px;
+      border: #ffffff solid 2px;
       background-color: #006fb4; }
 
 /*
@@ -5180,9 +5203,9 @@ Styleguide form.help-block
 .help-block {
   font-family: Arial, sans-serif;
   color: #575757; }
-  .disabled .help-block {
+  .help-block.is-disabled {
     color: #b3b4b5; }
-  .has-error .help-block {
+  .help-block.has-error {
     color: #575757; }
 
 /*
@@ -5195,9 +5218,9 @@ Styleguide form.form-field-feedback
 .form-field-feedback {
   color: #575757;
   font-family: Arial, sans-serif; }
-  .disabled .form-field-feedback {
+  .form-field-feedback.is-disabled {
     color: #b3b4b5; }
-  .has-error .form-field-feedback {
+  .form-field-feedback.has-error {
     color: #575757;
     background-color: #e2e2e2;
     padding: 12px;
@@ -5205,7 +5228,7 @@ Styleguide form.form-field-feedback
     flex-direction: row;
     justify-content: flex-start;
     align-items: center; }
-    .has-error .form-field-feedback:before {
+    .form-field-feedback.has-error:before {
       content: '';
       background: url("../images/svg/error.svg");
       background-size: 30px;
