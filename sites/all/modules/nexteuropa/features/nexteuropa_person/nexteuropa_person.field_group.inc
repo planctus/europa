@@ -194,7 +194,7 @@ function nexteuropa_person_field_group_info() {
     'children' => array(
       0 => 'field_core_priorities',
       1 => 'field_person_declaration',
-      2 => 'field_person_responsability',
+      2 => 'field_person_responsibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
