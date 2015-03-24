@@ -107,7 +107,7 @@ function nexteuropa_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_department',
     'label' => 'Departments',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
