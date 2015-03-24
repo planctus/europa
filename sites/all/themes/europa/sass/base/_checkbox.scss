@@ -46,7 +46,7 @@ $form-checkbox-icon-size:                         20px;
     line-height: $form-control-height;
     display: block;
     text-align: left;
-    border: transparent solid 1px;
+    border: transparent solid 2px;
     border-radius: 0;
   }
 
@@ -76,7 +76,7 @@ $form-checkbox-icon-size:                         20px;
         height: $form-checkbox-icon-size;
         top: 12px;
         left: 20px;
-        background: url(../images/png/checkbox-radio.png) no-repeat;
+        background: url(../images/svg/checkbox-radio.svg) no-repeat;
         background-size: auto $form-checkbox-icon-size;
       }
     }
@@ -103,6 +103,17 @@ $form-checkbox-icon-size:                         20px;
       color: $form-checkbox-color-checked-hover;
       border: $form-checkbox-border-color-checked-hover solid 2px;
       background-color: $form-checkbox-background-color-checked-hover;
+    }
+  }
+}
+
+
+.no-svg {
+  .checkbox {
+    input[type="checkbox"] {
+      &:before {
+        background-image: url(../images/png/checkbox-radio.png);
+      }
     }
   }
 }

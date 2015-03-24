@@ -5020,7 +5020,7 @@ Styleguide form
 .form-control {
   color: #404040;
   background-color: #ffffff;
-  border: 1px solid #b3b4b5;
+  border: 2px solid #b3b4b5;
   border-radius: 0;
   margin-bottom: 20px;
   height: 44px;
@@ -5098,7 +5098,7 @@ Styleguide form.checkbox
     line-height: 44px;
     display: block;
     text-align: left;
-    border: transparent solid 1px;
+    border: transparent solid 2px;
     border-radius: 0; }
   .checkbox input {
     margin: 1px 0 0 13px; }
@@ -5119,7 +5119,7 @@ Styleguide form.checkbox
         height: 20px;
         top: 12px;
         left: 20px;
-        background: url(../images/png/checkbox-radio.png) no-repeat;
+        background: url(../images/svg/checkbox-radio.svg) no-repeat;
         background-size: auto 20px; }
     .checkbox input[type="checkbox"]:checked + label {
       color: #ffffff;
@@ -5134,6 +5134,9 @@ Styleguide form.checkbox
       color: #ffffff;
       border: #ffffff solid 2px;
       background-color: #006fb4; }
+
+.no-svg .checkbox input[type="checkbox"]:before {
+  background-image: url(../images/png/checkbox-radio.png); }
 
 /*
 Radio
@@ -5176,7 +5179,7 @@ Styleguide form.radio
         height: 20px;
         top: 12px;
         left: 20px;
-        background: url(../images/png/checkbox-radio.png) no-repeat;
+        background: url(../images/svg/checkbox-radio.svg) no-repeat;
         background-size: auto 20px;
         background-position: -40px 0; }
     .radio input[type="radio"]:checked + label {
@@ -5192,6 +5195,9 @@ Styleguide form.radio
       color: #ffffff;
       border: #ffffff solid 2px;
       background-color: #006fb4; }
+
+.no-svg .checkbox input[type="checkbox"]:before {
+  background-image: url(../images/png/checkbox-radio.png); }
 
 /*
 Help Block
