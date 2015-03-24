@@ -22,7 +22,7 @@ function nexteuropa_announcement_context_default_contexts() {
         'announcement' => 'announcement',
       ),
       'options' => array(
-        'node_form' => '1',
+        'node_form' => '0',
       ),
     ),
   );
