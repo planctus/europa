@@ -921,11 +921,6 @@ function nexteuropa_announcement_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_maxlength' => 128,
