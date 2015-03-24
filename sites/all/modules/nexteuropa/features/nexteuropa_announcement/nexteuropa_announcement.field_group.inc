@@ -158,5 +158,34 @@ function nexteuropa_announcement_field_group_info() {
   );
   $export['group_media|node|announcement|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_scheduler|node|announcement|form';
+  $field_group->group_name = 'group_scheduler';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Page settings',
+    'weight' => '8',
+    'children' => array(
+      0 => 'path',
+      1 => 'scheduler_settings',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Page settings',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-scheduler field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_scheduler|node|announcement|form'] = $field_group;
+
   return $export;
 }
