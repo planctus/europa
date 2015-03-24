@@ -1100,7 +1100,7 @@ function nexteuropa_person_field_default_field_instances() {
   t('Portrait photo');
   t('Priorities');
   t('Related Topics');
-  t('Responsabilities');
+  t('Responsibilities');
   t('Status');
   t('Tagline');
   t('Title');

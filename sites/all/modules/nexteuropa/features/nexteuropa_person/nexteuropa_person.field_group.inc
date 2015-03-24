@@ -182,14 +182,14 @@ function nexteuropa_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_person_responsability|node|person|form';
-  $field_group->group_name = 'group_person_responsability';
+  $field_group->identifier = 'group_person_responsibility|node|person|form';
+  $field_group->group_name = 'group_person_responsibility';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'person';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Responsabilities',
+    'label' => 'Responsibilities',
     'weight' => '3',
     'children' => array(
       0 => 'field_core_priorities',
@@ -201,12 +201,12 @@ function nexteuropa_person_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-person-responsability field-group-tab',
+        'classes' => 'group-person-responsibility field-group-tab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_person_responsability|node|person|form'] = $field_group;
+  $export['group_person_responsibility|node|person|form'] = $field_group;
 
   return $export;
 }
