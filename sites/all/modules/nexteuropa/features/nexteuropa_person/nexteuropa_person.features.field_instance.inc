@@ -827,8 +827,8 @@ function nexteuropa_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_responsability'
-  $field_instances['node-person-field_person_responsability'] = array(
+  // Exported field_instance: 'node-person-field_person_responsibility'
+  $field_instances['node-person-field_person_responsibility'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
@@ -856,8 +856,8 @@ function nexteuropa_person_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_person_responsability',
-    'label' => 'Responsabilities',
+    'field_name' => 'field_person_responsibility',
+    'label' => 'Responsibilities',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(

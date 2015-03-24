@@ -262,13 +262,13 @@ function nexteuropa_person_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_person_responsability'
-  $field_bases['field_person_responsability'] = array(
+  // Exported field_base: 'field_person_responsibility'
+  $field_bases['field_person_responsibility'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_person_responsability',
+    'field_name' => 'field_person_responsibility',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
