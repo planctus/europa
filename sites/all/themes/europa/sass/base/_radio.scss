@@ -12,10 +12,11 @@ Styleguide form.radio
  * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
  */
 
+// Component
 .radio {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  margin-top: 0;
 
-  // Label in every browser.
   label {
     color: $form-checkbox-color-unchecked;
     height: $form-control-height;
@@ -29,11 +30,10 @@ Styleguide form.radio
   input {
     margin: 1px 0 0 13px;
   }
-
-  // Checkbox.
+  
+  // Radio
   input[type="radio"] {
     height: $form-control-height;
-    line-height: $form-control-height;
     margin-left: -9999px;
     position: relative;
     float: left;
@@ -41,8 +41,7 @@ Styleguide form.radio
     // Default state.
     &:not(checked)+label {
       background-color: $form-checkbox-background-color-unchecked;
-      // border: solid 1px;
-      padding-left: 50px;
+      padding-left: 2.778em;
 
       &:before {
         content: '';
@@ -50,11 +49,10 @@ Styleguide form.radio
         display: block;
         width: $form-checkbox-icon-size;
         height: $form-checkbox-icon-size;
-        top: 12px;
-        left: 20px;
-        background: url(../images/svg/checkbox-radio.svg) no-repeat;
+        top: 0.8em;
+        left: 1em;
+        background: url(../images/svg/radio-unchecked.svg) no-repeat;
         background-size: auto $form-checkbox-icon-size;
-        background-position: -2*$form-checkbox-icon-size 0;
       }
     }
 
@@ -64,7 +62,7 @@ Styleguide form.radio
       background-color: $form-checkbox-background-color-checked;
 
       &:before {
-        background-position: -3*$form-checkbox-icon-size 0;
+        background-image: url(../images/svg/radio-checked.svg);
       }
     }
 
@@ -88,7 +86,14 @@ Styleguide form.radio
   .checkbox {
     input[type="checkbox"] {
       &:before {
-        background-image: url(../images/png/checkbox-radio.png);
+        background-image: url(../images/png/checkbox-radio.png) !important;
+      }
+
+      // Checked state.
+      &:checked+label {
+        &:before {
+          background-position: -3*$form-checkbox-icon-size 0;
+        }
       }
     }
   }

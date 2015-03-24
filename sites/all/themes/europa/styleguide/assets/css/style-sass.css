@@ -838,7 +838,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 1.428571429;
-  color: #333333;
+  color: #404040;
   background-color: #fff; }
 
 input, button, select, textarea {
@@ -2261,7 +2261,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373; }
+  color: gray; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -2463,19 +2463,19 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 
 .btn-danger {
   color: #fff;
-  background-color: #da2131;
-  border-color: #c41e2c; }
+  background-color: #ff2423;
+  border-color: #ff0b09; }
   .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     color: #fff;
-    background-color: #ae1a27;
-    border-color: #8f1620; }
+    background-color: #ef0100;
+    border-color: #cb0100; }
   .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
     background-image: none; }
   .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
-    background-color: #da2131;
-    border-color: #c41e2c; }
+    background-color: #ff2423;
+    border-color: #ff0b09; }
   .btn-danger .badge {
-    color: #da2131;
+    color: #ff2423;
     background-color: #fff; }
 
 .btn-link {
@@ -3552,9 +3552,9 @@ a.label:hover, a.label:focus {
     background-color: #c9880b; }
 
 .label-danger {
-  background-color: #da2131; }
+  background-color: #ff2423; }
   .label-danger[href]:hover, .label-danger[href]:focus {
-    background-color: #ae1a27; }
+    background-color: #ef0100; }
 
 .badge {
   display: inline-block;
@@ -3637,7 +3637,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #333333; }
+    color: #404040; }
 
 a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   border-color: #006fb4; }
@@ -3772,7 +3772,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-danger {
-  background-color: #da2131; }
+  background-color: #ff2423; }
   .progress-striped .progress-bar-danger {
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -4889,13 +4889,15 @@ button.close {
     display: none !important; }
  }
 
+.radio + .radio, .checkbox + .checkbox {
+  margin-top: auto; }
+
 /* 
 Text styling
 
 Styleguide text
 */
 body {
-  font-family: Arial, sans-serif;
   font-weight: 400;
   line-height: 1.667;
   overflow-x: hidden;
@@ -4956,6 +4958,18 @@ h6, .h6 {
   text-decoration: uppercase;
   color: #222222; }
 
+/* 
+Link
+
+Markup: html/link.html
+
+:hover - Hover state
+:visited - Visited state
+:active - Active state
+:focus - Focus state
+
+Styleguide text.link 
+*/
 a {
   text-decoration: underline; }
   a:hover, a:active, a:focus {
@@ -5018,15 +5032,17 @@ Form
 Styleguide form
 */
 .form-control {
-  color: #404040;
+  color: #575757;
   background-color: #ffffff;
   border: 2px solid #b3b4b5;
   border-radius: 0;
-  margin-bottom: 20px;
-  height: 44px;
-  line-height: 44px; }
+  margin-bottom: 1.1em;
+  height: 2.75em;
+  font-size: 0.889em;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
   .form-control:focus, .form-control.is-focused, .has-error .form-control:focus {
-    color: #000000;
+    color: #000;
     border-color: #ffd617;
     -webkit-box-shadow: none;
     box-shadow: none; }
@@ -5042,10 +5058,12 @@ Markup: html/label.html
 Styleguide form.label
 */
 .label, label {
-  color: #404040;
-  font-size: 16px;
+  color: #575757;
+  font-size: 0.889em;
+  display: block;
+  text-align: left;
   padding: 0;
-  margin-bottom: 10px; }
+  margin-bottom: 0.556em; }
   .label.is-disabled, label.is-disabled {
     color: #b3b4b5; }
 
@@ -5091,11 +5109,12 @@ Styleguide form.checkbox
  * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
  */
 .checkbox {
-  margin-bottom: 6px; }
+  margin-bottom: 2px;
+  margin-top: 0; }
   .checkbox label {
     color: #575757;
-    height: 44px;
-    line-height: 44px;
+    height: 2.75em;
+    line-height: 2.75em;
     display: block;
     text-align: left;
     border: transparent solid 2px;
@@ -5103,40 +5122,41 @@ Styleguide form.checkbox
   .checkbox input {
     margin: 1px 0 0 13px; }
   .checkbox input[type="checkbox"] {
-    height: 44px;
-    line-height: 40px;
+    height: 2.75em;
     margin-left: -9999px;
     position: relative;
     float: left; }
     .checkbox input[type="checkbox"]:not(checked) + label {
       background-color: #ececec;
-      padding-left: 50px; }
+      padding-left: 2.778em; }
       .checkbox input[type="checkbox"]:not(checked) + label:before {
         content: '';
         position: absolute;
         display: block;
-        width: 20px;
-        height: 20px;
-        top: 12px;
-        left: 20px;
-        background: url(../images/svg/checkbox-radio.svg) no-repeat;
-        background-size: auto 20px; }
+        width: 1.25em;
+        height: 1.25em;
+        top: 0.75em;
+        left: 1em;
+        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background-size: auto 1.25em; }
     .checkbox input[type="checkbox"]:checked + label {
       color: #ffffff;
       background-color: #006fb4; }
       .checkbox input[type="checkbox"]:checked + label:before {
-        background-position: -20px 0; }
+        background-image: url(../images/svg/checkbox-checked.svg); }
     .checkbox input[type="checkbox"]:hover:not(checked) + label {
       color: #575757;
       border: #006fb4 solid 2px;
       background-color: #ffffff; }
     .checkbox input[type="checkbox"]:hover:checked + label {
       color: #ffffff;
-      border: #ffffff solid 2px;
+      border: #ffd617 solid 2px;
       background-color: #006fb4; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png); }
+  background-image: url(../images/png/checkbox-radio.png) !important; }
+.no-svg .checkbox input[type="checkbox"]:checked + label:before {
+  background-position: -1.25em 0; }
 
 /*
 Radio
@@ -5151,11 +5171,12 @@ Styleguide form.radio
  * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
  */
 .radio {
-  margin-bottom: 6px; }
+  margin-bottom: 2px;
+  margin-top: 0; }
   .radio label {
     color: #575757;
-    height: 44px;
-    line-height: 44px;
+    height: 2.75em;
+    line-height: 2.75em;
     display: block;
     text-align: left;
     border: transparent solid 2px;
@@ -5163,55 +5184,58 @@ Styleguide form.radio
   .radio input {
     margin: 1px 0 0 13px; }
   .radio input[type="radio"] {
-    height: 44px;
-    line-height: 44px;
+    height: 2.75em;
     margin-left: -9999px;
     position: relative;
     float: left; }
     .radio input[type="radio"]:not(checked) + label {
       background-color: #ececec;
-      padding-left: 50px; }
+      padding-left: 2.778em; }
       .radio input[type="radio"]:not(checked) + label:before {
         content: '';
         position: absolute;
         display: block;
-        width: 20px;
-        height: 20px;
-        top: 12px;
-        left: 20px;
-        background: url(../images/svg/checkbox-radio.svg) no-repeat;
-        background-size: auto 20px;
-        background-position: -40px 0; }
+        width: 1.25em;
+        height: 1.25em;
+        top: 0.8em;
+        left: 1em;
+        background: url(../images/svg/radio-unchecked.svg) no-repeat;
+        background-size: auto 1.25em; }
     .radio input[type="radio"]:checked + label {
       color: #ffffff;
       background-color: #006fb4; }
       .radio input[type="radio"]:checked + label:before {
-        background-position: -60px 0; }
+        background-image: url(../images/svg/radio-checked.svg); }
     .radio input[type="radio"]:hover:not(checked) + label {
       color: #575757;
       border: #006fb4 solid 2px;
       background-color: #ffffff; }
     .radio input[type="radio"]:hover:checked + label {
       color: #ffffff;
-      border: #ffffff solid 2px;
+      border: #ffd617 solid 2px;
       background-color: #006fb4; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png); }
+  background-image: url(../images/png/checkbox-radio.png) !important; }
+.no-svg .checkbox input[type="checkbox"]:checked + label:before {
+  background-position: -3.75em 0; }
 
 /*
 Help Block
 
-Markup: html/help_block.html
+Markup: html/help-block.html
 
 Styleguide form.help-block
 */
 .help-block {
+  margin-top: 0;
+  margin-bottom: 0.556em;
   font-family: Arial, sans-serif;
-  color: #575757; }
-  .help-block.is-disabled {
+  color: #575757;
+  font-size: 0.889em; }
+  .disabled .help-block {
     color: #b3b4b5; }
-  .help-block.has-error {
+  .has-error .help-block {
     color: #575757; }
 
 /*
@@ -5250,10 +5274,7 @@ Markup: html/form-group.html
 Styleguide form.form-group
 */
 .form-group {
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  line-height: 24px;
-  font-size: 16px; }
+  margin-bottom: 1.667em; }
 
 .container-fluid {
   max-width: 1170px; }

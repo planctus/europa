@@ -9,9 +9,10 @@ Styleguide form
   background-color: $form-control-background-color;
   border: 2px solid $form-control-border-color;
   border-radius: 0;
-  margin-bottom: 20px;
+  margin-bottom: 1.1em;
   height: $form-control-height;
-  line-height: $form-control-height;
+  font-size: $font-size-little;
+  @include box-shadow(none);
 
   // Focus state.
   &:focus,
@@ -24,7 +25,7 @@ Styleguide form
 
   // Disabled modifier.
   &.is-disabled {
-    color: $form-control-text-color-disabled;
+    color: $form-control-color-disabled;
     background-color: $form-control-background-color-disabled;
   }
 }

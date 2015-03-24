@@ -12,34 +12,11 @@ Styleguide form.checkbox
  * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
  */
 
-// Variables
-
-// Unchecked.
-$form-checkbox-color-unchecked:                   #575757;
-$form-checkbox-background-color-unchecked:        #ececec;
-
-// Unchecked, hover.
-$form-checkbox-color-unchecked-hover:             $form-checkbox-color-unchecked;
-$form-checkbox-border-color-unchecked-hover:      #006fb4;
-$form-checkbox-background-color-unchecked-hover:  #ffffff;
-
-// Checked.
-$form-checkbox-color-checked:                     #ffffff;
-$form-checkbox-background-color-checked:          #006fb4;
-
-// Checked, hover.
-$form-checkbox-color-checked-hover:               $form-checkbox-color-checked;
-$form-checkbox-border-color-checked-hover:        #ffffff;
-$form-checkbox-background-color-checked-hover:    $form-checkbox-background-color-checked;
-
-// Icon size.
-$form-checkbox-icon-size:                         20px;
-
 // Component
 .checkbox {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  margin-top: 0;
 
-  // Label in every browser.
   label {
     color: $form-checkbox-color-unchecked;
     height: $form-control-height;
@@ -57,7 +34,6 @@ $form-checkbox-icon-size:                         20px;
   // Checkbox.
   input[type="checkbox"] {
     height: $form-control-height;
-    line-height: 40px;
     margin-left: -9999px;
     position: relative;
     float: left;
@@ -65,8 +41,7 @@ $form-checkbox-icon-size:                         20px;
     // Default state.
     &:not(checked)+label {
       background-color: $form-checkbox-background-color-unchecked;
-      // border: solid 1px;
-      padding-left: 50px;
+      padding-left: 2.778em;
 
       &:before {
         content: '';
@@ -74,9 +49,9 @@ $form-checkbox-icon-size:                         20px;
         display: block;
         width: $form-checkbox-icon-size;
         height: $form-checkbox-icon-size;
-        top: 12px;
-        left: 20px;
-        background: url(../images/svg/checkbox-radio.svg) no-repeat;
+        top: 0.8em;
+        left: 1em;
+        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
         background-size: auto $form-checkbox-icon-size;
       }
     }
@@ -87,7 +62,7 @@ $form-checkbox-icon-size:                         20px;
       background-color: $form-checkbox-background-color-checked;
 
       &:before {
-        background-position: -$form-checkbox-icon-size 0;
+        background-image: url(../images/svg/checkbox-checked.svg);
       }
     }
 
@@ -112,7 +87,13 @@ $form-checkbox-icon-size:                         20px;
   .checkbox {
     input[type="checkbox"] {
       &:before {
-        background-image: url(../images/png/checkbox-radio.png);
+        background-image: url(../images/png/checkbox-radio.png) !important;
+      }
+
+      &:checked+label {
+        &:before {
+          background-position: -$form-checkbox-icon-size 0;
+        }
       }
     }
   }
