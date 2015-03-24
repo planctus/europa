@@ -11,3 +11,9 @@ function nexteuropa_strategy_install() {
   // Apply default NextEuropa configuration to "Strategy" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('strategy');
 }
+
+/**
+ * Implements hook_uninstall().
+ */
+function nexteuropa_strategy_uninstall() {
+}

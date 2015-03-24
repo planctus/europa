@@ -12,3 +12,9 @@ function nexteuropa_department_install() {
   // Apply default NextEuropa configuration to "Department" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
 }
+
+/**
+ * Implements hook_uninstall().
+ */
+function nexteuropa_department_uninstall() {
+}
