@@ -1,7 +1,7 @@
 /*
 Footer
 
-A majority of buttons in the site are built from the same base class.
+Site-wide footer component
 
 Markup: html/footer.html
 
@@ -25,7 +25,7 @@ $footer-white-font: #fff;
     font-size: 13px;
     font-weight: normal;
     float: left;
-    padding-right: 10px;
+    padding: 15px 10px 0 0;
   }
 
   p {
@@ -37,8 +37,6 @@ $footer-white-font: #fff;
   padding-left: 0;
 
   li {
-    display: inline-block;
-
     &:first-child > a {
       padding-left: 0;
     }
@@ -53,13 +51,9 @@ $footer-white-font: #fff;
     }
   }
 
-  &__item {
-    margin-right: 10px;
-  }
-
   &__bottom-border {
     border-bottom: 1px solid #4d7cb4;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
   }
 }
 

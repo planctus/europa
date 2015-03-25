@@ -111,6 +111,24 @@ function nexteuropa_core_context_default_contexts() {
           'region' => 'header_bottom',
           'weight' => '-10',
         ),
+        'menu-menu-european-commission-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-european-commission-links',
+          'region' => 'footer',
+          'weight' => '-33',
+        ),
+        'menu-menu-service-tools' => array(
+          'module' => 'menu',
+          'delta' => 'menu-service-tools',
+          'region' => 'footer',
+          'weight' => '-32',
+        ),
+        'bean-copyright' => array(
+          'module' => 'bean',
+          'delta' => 'copyright',
+          'region' => 'footer',
+          'weight' => '-31',
+        ),
       ),
     ),
   );

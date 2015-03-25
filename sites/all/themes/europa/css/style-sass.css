@@ -4892,6 +4892,9 @@ button.close {
 .radio + .radio, .checkbox + .checkbox {
   margin-top: auto; }
 
+ul.list-inline > li {
+  display: inline-block; }
+
 /*
 Text styling
 
@@ -5342,7 +5345,7 @@ Styleguide: siteheader
 /*
 Footer
 
-A majority of buttons in the site are built from the same base class.
+Site-wide footer component
 
 Markup: html/footer.html
 
@@ -5360,26 +5363,22 @@ Styleguide footer
     font-size: 13px;
     font-weight: normal;
     float: left;
-    padding-right: 10px; }
+    padding: 15px 10px 0 0; }
   .footer p {
     padding-top: 10px; }
 
 .footer-menu {
   padding-left: 0; }
-  .footer-menu li {
-    display: inline-block; }
-    .footer-menu li:first-child > a {
-      padding-left: 0; }
-    .footer-menu li a {
-      padding-top: 10px; }
-      .footer-menu li a:hover {
-        background: none;
-        text-decoration: underline; }
-  .footer-menu__item {
-    margin-right: 10px; }
+  .footer-menu li:first-child > a {
+    padding-left: 0; }
+  .footer-menu li a {
+    padding-top: 10px; }
+    .footer-menu li a:hover {
+      background: none;
+      text-decoration: underline; }
   .footer-menu__bottom-border {
     border-bottom: 1px solid #4d7cb4;
-    padding-bottom: 15px; }
+    padding-bottom: 5px; }
 
 @media (max-width: 600px) {
   .footer {

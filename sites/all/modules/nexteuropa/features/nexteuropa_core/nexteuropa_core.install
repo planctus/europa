@@ -89,3 +89,41 @@ function nexteuropa_core_install() {
   multisite_config_service('version_management')->enableVersionManagement('article');
 }
 
+/**
+ * Initial creation of menu items for the EC social networks menu
+ */
+function nexteuropa_core_update_7101() {
+    _nexteuropa_core_menu_european_commission_links();
+}
+
+/**
+ * Creates the menu items for menu-european-commission-links
+ */
+function _nexteuropa_core_menu_european_commission_links() {
+    // Facebook link
+    $item = array(
+        'menu_name' => 'menu-european-commission-links',
+        'weight' => 0,
+        'link_title' => t('Facebook'),
+        'link_path' => 'https://www.facebook.com/EuropeanCommission',
+    );
+    menu_link_save($item);
+
+    // Twitter link
+    $item = array(
+        'menu_name' => 'menu-european-commission-links',
+        'weight' => 1,
+        'link_title' => t('Twitter'),
+        'link_path' => 'https://twitter.com/eu_commission',
+    );
+    menu_link_save($item);
+
+    // Other social media link
+    $item = array(
+        'menu_name' => 'menu-european-commission-links',
+        'weight' => 2,
+        'link_title' => t('Other social media'),
+        'link_path' => '#',
+    );
+    menu_link_save($item);
+}

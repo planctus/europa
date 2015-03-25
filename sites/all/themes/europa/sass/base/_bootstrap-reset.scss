@@ -4,3 +4,7 @@
 .checkbox + .checkbox {
   margin-top: auto;
 }
+
+ul.list-inline > li {
+  display: inline-block;
+}
