@@ -19,8 +19,6 @@
 @import "base/select";
 @import "base/checkbox";
 @import "base/radio";
-@import "base/help-block";
-@import "base/feedback-message";
 @import "base/form-group";
 
 // Layout
@@ -32,6 +30,8 @@
 @import "components/page-header";
 @import "components/footer";
 @import "components/datepicker";
+@import "components/feedback-message";
+@import "components/help-block";
 
 
 // TODO
