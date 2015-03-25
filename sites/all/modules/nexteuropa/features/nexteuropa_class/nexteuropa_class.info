@@ -3,6 +3,7 @@ description = Class content type for NextEuropa.
 core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0-dev
+php = 5.2.4
 project = nexteuropa_class
 dependencies[] = dt_core
 features[features_api][] = api:2

@@ -3,7 +3,7 @@ Logo
 
 Ec logo
 
-Markup: logo.html
+Markup: html/logo.html
 
 Styleguide siteheader.logo
 */
@@ -18,6 +18,13 @@ Styleguide siteheader.logo
   height: 45px;
 
   background: url('../images/svg/logo.svg') no-repeat;
+}
+
+@include breakpoint(screen-sm-min) {
+  .logo {
+    width: 218px;
+    height: 60px;
+  }
 }
 
 .no-svg {

@@ -13,7 +13,7 @@ Styleguide form.feedback-message
     color: $form-group-feedback-text-color-disabled;
   }
 
-  &.has-error {
+  &.is-error {
     color: $form-group-feedback-text-color-has-error;
     background-color: $form-group-feedback-background-color;
     padding: 12px;

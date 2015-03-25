@@ -11,3 +11,12 @@ function nexteuropa_subject_install() {
   // Apply default NextEuropa configuration to "Subject" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('subject');
 }
+
+/**
+ * Implements hook_uninstall().
+ */
+function nexteuropa_subject_uninstall() {
+  $path = drupal_get_path('module', 'nexteuropa_subject') . '/nexteuropa_subject.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
