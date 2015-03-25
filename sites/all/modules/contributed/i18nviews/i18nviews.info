@@ -26,7 +26,9 @@ files[] = includes/i18nviews_handler_filter_taxonomy_term_language.inc
 files[] = includes/i18nviews_handler_filter_term_node_tid_depth.inc
 files[] = includes/i18nviews_plugin_argument_validate_i18n_taxonomy_term.inc
 files[] = includes/i18nviews_plugin_localization_i18nstrings.inc
-; Information added by drush on 2015-01-20
+
+; Information added by drush on 2015-03-25
 version = "26bd52c4664b0fec8155273f0c0f3ab8a5a2ef66"
 project = "i18nviews"
-datestamp = "1421750890"
+datestamp = "1427290055"
+

@@ -4,35 +4,18 @@
 // Importing bootstrap variables
 @import "mixins";
 
+
 // Base
-@import "base/bootstrap-reset";
+@import "base/font";
 @import "base/global";
-@import "base/headings";
-@import "base/link";
+@import "base/headers";
 @import "base/paragraphs";
-@import "base/lists";
-@import "base/blockquote";
-@import "base/form-control";
-@import "base/label";
-@import "base/button";
-@import "base/text-input";
-@import "base/select";
-@import "base/checkbox";
-@import "base/radio";
-@import "base/form-group";
 
 // Layout
 @import "layout/container-fluid";
 
 // Components
 @import "components/logo";
-@import "components/skip-link";
-@import "components/site-header";
+@import "components/banner";
 @import "components/page-header";
 @import "components/footer";
-@import "components/datepicker";
-@import "components/feedback-message";
-@import "components/help-block";
-
-
-// TODO

@@ -1400,11 +1400,6 @@ class PHPVideoToolkit {
    * @return boolean FALSE on error encountered, TRUE otherwise
    */
   public function setAudioBitRate($bitrate) {
-//			validate input
-    if (!in_array(intval($bitrate), array(16, 32, 64, 128, 160, 256, 320))) {
-      // return $this->_raiseError('setAudioBitRate_valid_bitrate', array('bitrate'=>$bitrate));
-// <-			exits
-    }
     return $this->addCommand('-ab', $bitrate);
   }
 
@@ -1770,8 +1765,8 @@ class PHPVideoToolkit {
     // See http://ffmpeg.org/trac/ffmpeg/wiki/Seeking%20with%20FFmpeg
     $seconds = $this->formatTimecode($extract_begin_timecode, $timecode_format, '%st', $frames_per_second);
     if ($seconds > 5) {
-      $this->addCommand('-ss', $this->formatTimecode($seconds - 5, $timecode_format, '%hh:%mm:%ss:%ms', $frames_per_second), TRUE);
-      $this->addCommand('-ss', $this->formatTimecode(5, $timecode_format, '%hh:%mm:%ss:%ms', $frames_per_second), FALSE);
+      $this->addCommand('-ss', $this->formatTimecode($seconds - 5, $timecode_format, '%hh:%mm:%ss.%ms', $frames_per_second), TRUE);
+      $this->addCommand('-ss', $this->formatTimecode(5, $timecode_format, '%hh:%mm:%ss.%ms', $frames_per_second), FALSE);
     }
     else {
       $this->addCommand('-ss', $extract_begin_timecode);
@@ -2729,24 +2724,21 @@ class PHPVideoToolkit {
       }
       if ($size !== FALSE) {
         $dim = explode('x', substr($size, 1, -1));
+        $floatratio = NULL;
         if (($boundry = strpos($ratio, ':')) !== FALSE) {
-          $ratio = substr($ratio, 1, $boundry - 1) / substr($ratio, $boundry + 1, -1);
-          $new_width = round($dim[1] * $ratio);
-// 						make sure new width is an even number
-          $ceiled = ceil($new_width);
-          $new_width = $ceiled % 2 !== 0 ? floor($new_width) : $ceiled;
-          if ($new_width != $dim[0]) {
-            $this->setVideoDimensions($new_width, $dim[1]);
-          }
+          $floatratio = substr($ratio, 1, $boundry - 1) / substr($ratio, $boundry + 1, -1);
         }
         elseif (strpos($ratio, '.') !== FALSE) {
-          $ratio = floatval($ratio);
-          $new_width = $dim[1] * $ratio;
-// 						make sure new width is an even number
-          $ceiled = ceil($new_width);
-          $new_width = $ceiled % 2 !== 0 ? floor($new_width) : $ceiled;
-          if ($new_width != $dim[0]) {
-            $this->setVideoDimensions($new_width, $dim[1]);
+          $floatratio = floatval(trim($ratio, '\''));
+        }
+
+        if ($floatratio !== NULL) {
+          $new_height = $dim[0] / $floatratio;
+// 						make sure new height is an even number
+          $ceiled = ceil($new_height);
+          $new_height = $ceiled % 2 !== 0 ? floor($new_height) : $ceiled;
+          if ($new_height != $dim[1]) {
+            $this->setVideoDimensions($dim[0], $new_height);
           }
         }
       }

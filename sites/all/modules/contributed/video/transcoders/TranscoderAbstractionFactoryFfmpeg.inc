@@ -56,8 +56,21 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
 
     $this->multipass = TRUE;
     $this->outputextension = NULL;
+    $clipstart = NULL;
+    $cliplength = NULL;
+    $hasvideo = empty($options['skip_video']);
+    $hasaudio = empty($options['skip_audio']);
+
+    $this->setAspectRatioOptions($options);
+
     foreach ($options as $key => $value) {
       if (empty($value) || $value === 'none') {
+        continue;
+      }
+      if (strncmp($key, 'audio_', 6) === 0 && !$hasaudio) {
+        continue;
+      }
+      if (strncmp($key, 'video_', 6) === 0 && !$hasvideo) {
         continue;
       }
 
@@ -67,7 +80,9 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
           $result = $this->transcoder->setVideoFrameRate($value);
           break;
         case 'video_codec':
-          $result = $this->transcoder->setVideoCodec($value);
+          if ($hasvideo) {
+            $result = $this->transcoder->setVideoCodec($value);
+          }
           break;
         case 'video_preset':
           $result = $this->transcoder->setVideoPreset($value);
@@ -87,16 +102,12 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
           break;
         case 'audio_bitrate':
           if ($value < 1000) {
-            $value *= 1000;
+            $value .= 'k';
           }
           $result = $this->transcoder->setAudioBitRate($value);
           break;
         case 'video_bitrate':
           $result = $this->transcoder->setVideoBitRate($value);
-          break;
-        case 'wxh':
-          $dimension = explode('x', trim($value));
-          $result = $this->transcoder->setVideoDimensions($dimension[0], $dimension[1]);
           break;
         case 'pixel_format':
           $result = $this->transcoder->setPixelFormat($value);
@@ -115,6 +126,35 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
         case 'video_quality':
           $result = $this->transcoder->setConstantQuality($value * 20); // phpVideoToolkit expects 1 to 100 range.
           break;
+        case 'clip_start':
+          if (preg_match('#^(\d+)$#', $value)) {
+            $clipstart = intval($value);
+          }
+          else {
+            $clipstart = $this->transcoder->formatTimecode($value, '%hh:%mm:%ss.%ms', '%st');
+          }
+          break;
+        case 'clip_length':
+          if (preg_match('#^(\d+)$#', $value)) {
+            $cliplength = intval($value);
+          }
+          else {
+            $cliplength = $this->transcoder->formatTimecode($value, '%hh:%mm:%ss.%ms', '%st');
+          }
+          break;
+        case 'skip_video':
+          $result = $this->transcoder->addCommand('-vn');
+          $this->multipass = FALSE;
+          break;
+        case 'skip_audio':
+          $result = $this->transcoder->addCommand('-an');
+          break;
+      }
+
+      if ($cliplength !== NULL && $clipstart !== NULL) {
+        $result = $this->transcoder->extractSegment($clipstart, $clipstart + $cliplength, '%st', FALSE, FALSE);
+        $cliplength = NULL;
+        $clipstart = NULL;
       }
 
       if ($result !== PHPVideoToolkit::RESULT_OK) {
@@ -336,28 +376,37 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
 
   public function getCodecs() {
     $info = $this->getCachedFFmpegInfo();
-    $codecs = array('decode' => array(), 'encode' => array());
-    foreach ($info['codecs'] as $key => $value) {
-      $codecs['encode'][$key] = array();
-      $codecs['decode'][$key] = array();
-      foreach ($value as $codec_key => $codec) {
-        if ($codec['encode']) {
-          $codecs['encode'][$key][$codec_key] = $codec['fullname'];
+    $codecs = array(
+      'decode' => array('audio' => array(), 'video' => array()),
+      'encode' => array('audio' => array(), 'video' => array()),
+    );
+
+    if (!empty($info['codecs'])) {
+      foreach ($info['codecs'] as $key => $value) {
+        $codecs['encode'][$key] = array();
+        $codecs['decode'][$key] = array();
+        foreach ($value as $codec_key => $codec) {
+          if ($codec['encode']) {
+            $codecs['encode'][$key][$codec_key] = $codec['fullname'];
+          }
+          if ($codec['decode']) {
+            $codecs['decode'][$key][$codec_key] = $codec['fullname'];
+          }
         }
-        if ($codec['decode']) {
-          $codecs['decode'][$key][$codec_key] = $codec['fullname'];
-        }
+        uasort($codecs['encode'][$key], 'strnatcasecmp');
+        uasort($codecs['encode'][$key], 'strnatcasecmp');
       }
     }
-
-    uasort($codecs['encode']['video'], 'strnatcasecmp');
-    uasort($codecs['encode']['audio'], 'strnatcasecmp');
 
     return $codecs;
   }
 
   public function getAvailableFormats($type = FALSE) {
     $info = $this->getCachedFFmpegInfo();
+    if (empty($info['formats'])) {
+      return array();
+    }
+
     $formats = array();
     switch ($type) {
       case FALSE:
@@ -396,6 +445,9 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
 
   public function getPixelFormats() {
     $info = $this->getCachedFFmpegInfo();
+    if (empty($info['pixelformats'])) {
+      return array();
+    }
     return array_keys($info['pixelformats']);
   }
 
@@ -594,5 +646,100 @@ class TranscoderAbstractionFactoryFfmpeg extends TranscoderAbstractionFactory im
     parent::reset($keepinput);
     $this->transcoder->reset($keepinput);
     $this->multipass = NULL;
+  }
+
+  /**
+   * Whether the transcoder works by sending jobs to an external system.
+   *
+   * True for transcoders like Zencoder, false for transcoders like FFmpeg.
+   */
+  public function isOffSite() {
+    return FALSE;
+  }
+
+  /**
+   * Set aspect ratio and size related transcoder options.
+   */
+  private function setAspectRatioOptions(array $options) {
+    $targetdimensions = explode('x', $options['wxh'], 2);
+    $file_info = $this->getFileInfo();
+    $sourcedimensions = array(
+      intval($file_info['video']['dimensions']['width']),
+      intval($file_info['video']['dimensions']['height'])
+    );
+
+    // If no change is necessary, just return.
+    if ($targetdimensions == $sourcedimensions) {
+      return;
+    }
+
+    $targetaspect = round($targetdimensions[0] / $targetdimensions[1], 4);
+    $sourceaspect = round($sourcedimensions[0] / $sourcedimensions[1], 4);
+
+    $aspectmode = !empty($options['video_aspectmode']) ? $options['video_aspectmode'] : 'preserve';
+    switch ($aspectmode) {
+      default:
+      case 'preserve':
+        if ($sourceaspect >= $targetaspect) {
+          // Source video is wider than destination.
+          // Decrease the height.
+          $factor = $targetdimensions[0] < $sourcedimensions[0] ? $targetdimensions[0] / $sourcedimensions[0] : $sourcedimensions[0] / $targetdimensions[0];
+          $width = $targetdimensions[0];
+          $height = $sourcedimensions[1] * $factor;
+        }
+        else {
+          $factor = $targetdimensions[1] < $sourcedimensions[1] ? $targetdimensions[1] / $sourcedimensions[1] : $sourcedimensions[1] / $targetdimensions[1];
+          $width = $sourcedimensions[0] * $factor;
+          $height = $targetdimensions[1];
+        }
+
+        $width = video_utility::roundToEvenNumber($width);
+        $height = video_utility::roundToEvenNumber($height);
+
+        if ($width != $sourcedimensions[0] || $height != $sourcedimensions[1]) {
+          $this->transcoder->addCommand('-vf', 'scale='.$width.':'.$height);
+        }
+        break;
+
+      case 'crop':
+        if ($sourceaspect >= $targetaspect) {
+          // Source video is wider than destination.
+          // Cut off left and right.
+          $factor = $targetdimensions[1] < $sourcedimensions[1] ? $targetdimensions[1] / $sourcedimensions[1] : $sourcedimensions[1] / $targetdimensions[1];
+          $width = round($factor * $sourcedimensions[0]);
+          $height = $sourcedimensions[1];
+        }
+        else {
+          $factor = $targetdimensions[0] < $sourcedimensions[0] ? $targetdimensions[0] / $sourcedimensions[0] : $sourcedimensions[0] / $targetdimensions[0];
+          $width = $sourcedimensions[0];
+          $height = round($factor * $sourcedimensions[1]);
+        }
+        $this->transcoder->addCommand('-vf', 'crop='.$width.':'.$height.',scale='.$targetdimensions[0].':'.$targetdimensions[1]);
+        break;
+
+      case 'pad':
+        if ($sourceaspect >= $targetaspect) {
+          // Source video is wider than destination.
+          // Add padding to top and bottom.
+          $factor = $targetdimensions[1] > $sourcedimensions[1] ? $targetdimensions[1] / $sourcedimensions[1] : $sourcedimensions[1] / $targetdimensions[1];
+          $width = $sourcedimensions[0];
+          $height = round($factor * $sourcedimensions[1]);
+          $x = 0;
+          $y = ($height - $sourcedimensions[1]) / 2;
+        }
+        else {
+          $factor = $targetdimensions[0] > $sourcedimensions[0] ? $targetdimensions[0] / $sourcedimensions[0] : $sourcedimensions[0] / $targetdimensions[0];
+          $width = round($factor * $sourcedimensions[0]);
+          $height = $sourcedimensions[1];
+          $x = ($width - $sourcedimensions[0]) / 2;
+          $y = 0;
+        }
+        $this->transcoder->addCommand('-vf', 'pad='.$width.':'.$height.':'.$x.':'.$y.',scale='.$targetdimensions[0].':'.$targetdimensions[1]);
+        break;
+
+      case 'stretch':
+        $result = $this->transcoder->setVideoDimensions($targetdimensions[0], $targetdimensions[1]);
+        break;
+    }
   }
 }

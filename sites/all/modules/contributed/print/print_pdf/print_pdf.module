@@ -204,7 +204,7 @@ function print_pdf_requirements($phase) {
         }
 
         // Is the file there?
-        if (isset($tool[1]) && (!is_file($tool[1]) || !is_readable($tool[1]))) {
+        if (!is_file($tool[1]) || !is_readable($tool[1])) {
           $requirements['print_pdf_tool'] = array(
             'title' => $t('Printer, email and PDF versions - PDF generation library'),
             'value' => $t('File not found'),

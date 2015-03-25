@@ -1,16 +1,12 @@
-/*
-Logo
+// Logo
+//
+// A majority of buttons in the site are built from the same base class.
+//
+// Markup:
+// <a href="link-to-homepage" class="logo" title="Home"></a>
+//
+// Styleguide 1.1
 
-Ec logo
-
-Markup: html/logo.html
-
-Styleguide siteheader.logo
-*/
-
-
-// Component
-// --------------------------------------------------
 .logo {
   display: block;
 
@@ -18,10 +14,4 @@ Styleguide siteheader.logo
   height: 45px;
 
   background: url('../images/svg/logo.svg') no-repeat;
-}
-
-.no-svg {
-  .logo {
-    background-image: url('../images/svg/logo.png');
-  }
 }

@@ -40,11 +40,11 @@ function video_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  $items['video/embed/%node/%/%'] = array(
+  $items['video/embed/%/%/%/%/%'] = array(
     'page callback' => 'video_file_embed',
     'file' => 'video.pages.inc',
-    'page arguments' => array(2, 3, 4),
-    'access arguments' => array('access content'),
+    'page arguments' => array(3, 2, 4, 5, 6),
+    'access arguments' => array('access content'), // field_access() deferred to page callback
     'type' => MENU_CALLBACK,
   );
   return $items;
@@ -92,7 +92,7 @@ function video_theme() {
     'file' => 'video.theme.inc',
   );
   $theme['video_formatter_thumbnail'] = array(
-    'variables' => array('item' => NULL, 'path' => NULL, 'image_style' => NULL, 'entity' => NULL, 'entity_type' => NULL, 'field' => NULL, 'instance' => NULL),
+    'variables' => array('item' => NULL, 'path' => NULL, 'image_style' => NULL, 'entity' => NULL, 'entity_type' => NULL, 'field' => NULL, 'instance' => NULL, 'colorbox' => NULL),
     'file' => 'video.theme.inc',
   );
   $theme['video_widget'] = array(
@@ -112,8 +112,9 @@ function video_theme() {
   // Lets setup our themes for our players
   // We include video.utility.inc here, because when upgrading the autoload cache is not updated yet.
   module_load_include('utility.inc', 'video');
-  $players = video_utility::getVideoPlayers();
-  foreach ($players as $tpl => $value) {
+  $players = array_keys(video_utility::getVideoPlayers());
+  $players[] = 'video_play_html5_audio';
+  foreach ($players as $tpl) {
     $theme[$tpl] = array(
       'variables' => array('item' => NULL, 'width' => NULL, 'height' => NULL),
       'template' => str_replace('_', '-', $tpl),
@@ -145,6 +146,11 @@ function video_theme() {
  * Add a generic preprocess function to all video theme methods.
  */
 function video_theme_registry_alter(&$registry) {
+  // After upgrades, this class may not yet be in the class registry,
+  // so load the include explicitly.
+  if (!class_exists('video_utility', TRUE)) {
+    module_load_include('utility.inc', 'video');
+  }
   $players = video_utility::getVideoPlayers();
   $templates = array_keys($players);
   $templates[] = 'video_flv';

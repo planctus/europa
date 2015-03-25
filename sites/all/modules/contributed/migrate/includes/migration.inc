@@ -137,6 +137,23 @@ abstract class Migration extends MigrationBase {
     if (empty($allFieldMappings)) {
       $this->allFieldMappings = array_merge($this->getCodedFieldMappings(),
                                             $this->getStoredFieldMappings());
+      // If there are multiple mappings of a given source field to no
+      // destination field, keep only the last (so the UI can override a source
+      // field DNM that was defined in code).
+      $no_destination = array();
+      foreach ($this->allFieldMappings as $destination_field => $mapping) {
+        // If the source field is not mapped to a destination field, the
+        // array index is integer.
+        if (is_int($destination_field)) {
+          $source_field = $mapping->getSourceField();
+          if (isset($no_destination[$source_field])) {
+            unset($this->allFieldMappings[$no_destination[$source_field]]);
+            unset($no_destination[$source_field]);
+          }
+          $no_destination[$source_field] = $destination_field;
+        }
+      }
+
       // Make sure primary fields come before their subfields
       ksort($this->allFieldMappings);
     }
@@ -235,7 +252,7 @@ abstract class Migration extends MigrationBase {
     try {
       // Remove map and message tables
       $migration = self::getInstance($machine_name);
-      if (method_exists($migration, 'getMap')) {
+      if ($migration && method_exists($migration, 'getMap')) {
         $migration->getMap()->destroy();
       }
 
@@ -677,8 +694,8 @@ abstract class Migration extends MigrationBase {
     }
     catch (Exception $e) {
       self::displayMessage(
-        t('Migration failed with source plugin exception: !e',
-          array('!e' => $e->getMessage())));
+        t('Migration failed with source plugin exception: %e, in %file:%line',
+          array('%e' => $e->getMessage(), '%file' => $e->getFile(), '%line' => $e->getLine())));
       return MigrationBase::RESULT_FAILED;
     }
     while ($this->source->valid()) {
@@ -755,8 +772,8 @@ abstract class Migration extends MigrationBase {
       }
       catch (Exception $e) {
         self::displayMessage(
-          t('Migration failed with source plugin exception: !e',
-            array('!e' => $e->getMessage())));
+          t('Migration failed with source plugin exception: %e, in %file:%line',
+            array('%e' => $e->getMessage(), '%file' => $e->getFile(), '%line' => $e->getLine())));
         return MigrationBase::RESULT_FAILED;
       }
     }
@@ -1186,7 +1203,7 @@ abstract class Migration extends MigrationBase {
 
         // If there's a source mapping, and a source value in the data row, copy
         // to the destination
-        if ($source && property_exists($this->sourceValues, $source)) {
+        if ($source && isset($this->sourceValues->{$source})) {
           $destination_values = $this->sourceValues->$source;
         }
         // Otherwise, apply the default value (if any)
@@ -1272,7 +1289,8 @@ abstract class Migration extends MigrationBase {
         }
         // We've seen a subfield, so add as an array value.
         else {
-          $this->destinationValues->{$destination_field}[] = $destination_values;
+          $this->destinationValues->{$destination_field} = array_merge(
+            (array)$destination_values, $this->destinationValues->{$destination_field});
         }
       }
     }
@@ -1341,7 +1359,9 @@ abstract class Migration extends MigrationBase {
           break;
         }
       }
-      if ($continue || empty($source_key)) {
+      // Occasionally $source_key comes through with an empty string.
+      $sanity_check = array_filter($source_key);
+      if ($continue || empty($source_key) || empty($sanity_check)) {
         continue;
       }
       // Loop through each source migration, checking for an existing dest ID.
@@ -1531,9 +1551,7 @@ abstract class DynamicMigration extends Migration {
     parent::__construct($arguments);
     if (variable_get('migrate_deprecation_warnings', 1) &&
         !self::$deprecationWarning) {
-      self::displayMessage(t('The DynamicMigration class is no longer necessary ' .
-        'and is now deprecated - please derive your migration classes directly ' .
-        'from Migration.'));
+      self::displayMessage(t('The DynamicMigration class is no longer necessary and is now deprecated - please derive your migration classes directly from Migration.'));
       self::$deprecationWarning = TRUE;
     }
   }

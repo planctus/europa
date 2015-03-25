@@ -3,7 +3,7 @@
  * @file
  * Pages for managing migration processes.
  */
- 
+
 /**
  * Form for managing migration groups.
  */
@@ -64,6 +64,9 @@ function migrate_ui_migrate_dashboard($form, &$form_state) {
       $complete = TRUE;
       foreach ($machine_names as $machine_name) {
         $migration = Migration::getInstance($machine_name);
+        if (!$migration) {
+          continue;
+        }
         if (method_exists($migration, 'sourceCount') && method_exists($migration, 'processedCount')) {
           $source_count = $migration->sourceCount();
           $processed_count = $migration->processedCount();
@@ -122,7 +125,6 @@ function migrate_ui_migrate_dashboard($form, &$form_state) {
  */
 function migrate_ui_migrate_group($form, &$form_state, $group_name) {
   $group = MigrateGroup::getInstance($group_name);
-  drupal_set_title($group->getTitle());
   $build = array();
 
   $header = array(
@@ -130,10 +132,10 @@ function migrate_ui_migrate_group($form, &$form_state, $group_name) {
     'status' => array('data' => t('Status')),
     'importrows' => array('data' => t('Items')),
     'imported' => array('data' => t('Imported')),
+    'unprocessed' => array('data' => t('Unprocessed')),
   );
   if (user_access(MIGRATE_ACCESS_ADVANCED)) {
     $header += array(
-      'unprocessed' => array('data' => t('Unprocessed')),
       'messages' => array('data' => t('Messages')),
       'lastthroughput' => array('data' => t('Throughput')),
       'lastimported' => array('data' => t('Last imported')),
@@ -199,8 +201,10 @@ function migrate_ui_migrate_group($form, &$form_state, $group_name) {
 
     $row['status'] = $status;
     $machine_name = $migration->getMachineName();
+    $name_length = strlen($machine_name);
     $group_length = strlen($group_name);
-    if (!strncasecmp($group_name, $machine_name, $group_length)) {
+    if ($name_length != $group_length &&
+        !strncasecmp($group_name, $machine_name, $group_length)) {
       $display_name = substr($machine_name, $group_length);
     }
     else {
@@ -210,9 +214,8 @@ function migrate_ui_migrate_group($form, &$form_state, $group_name) {
       l($display_name, "admin/content/migrate/groups/$group_name/$machine_name");
     $row['importrows'] = $total;
     $row['imported'] = $imported;
+    $row['unprocessed'] = $unprocessed;
     if (user_access(MIGRATE_ACCESS_ADVANCED)) {
-      $row['unprocessed'] = $unprocessed;
-
       if (is_subclass_of($migration, 'Migration')) {
         $num_messages = $migration->messageCount();
         $row['messages'] = $num_messages ?
@@ -324,47 +327,46 @@ function _migrate_ui_migrate_operations() {
     '#postfix' => '</p>',
   );
 
-  if (user_access(MIGRATE_ACCESS_ADVANCED)) {
-    $operations['options'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Options'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
-    $operations['options']['update'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Update'),
-      '#description' => t('Check this box to update all previously-imported content
-        in addition to importing new content. Leave unchecked to only import
-        new content'),
-    );
-    $operations['options']['force'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Ignore dependencies'),
-      '#description' => t('Check this box to ignore dependencies when running imports
-        - all tasks will run whether or not their dependent tasks have
-        completed.'),
-    );
-    $operations['options']['limit'] = array(
-      '#tree' => TRUE,
-      '#type' => 'fieldset',
-      '#attributes' => array('class' => array('container-inline')),
-      'value' => array(
-        '#type' => 'textfield',
-        '#title' => t('Limit to:'),
-        '#size' => 10,
+  $operations['options'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#access' => user_access(MIGRATE_ACCESS_ADVANCED),
+  );
+  $operations['options']['update'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Update'),
+    '#description' => t('Check this box to update all previously-imported content
+      in addition to importing new content. Leave unchecked to only import
+      new content'),
+  );
+  $operations['options']['force'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Ignore dependencies'),
+    '#description' => t('Check this box to ignore dependencies when running imports
+      - all tasks will run whether or not their dependent tasks have
+      completed.'),
+  );
+  $operations['options']['limit'] = array(
+    '#tree' => TRUE,
+    '#type' => 'fieldset',
+    '#attributes' => array('class' => array('container-inline')),
+    'value' => array(
+      '#type' => 'textfield',
+      '#title' => t('Limit to:'),
+      '#size' => 10,
+    ),
+    'unit' => array(
+      '#type' => 'select',
+      '#options' => array(
+        'items' => t('items'),
+        'seconds' => t('seconds'),
       ),
-      'unit' => array(
-        '#type' => 'select',
-        '#options' => array(
-          'items' => t('items'),
-          'seconds' => t('seconds'),
-        ),
-        '#description' => t('Set a limit of how many items to process for
-          each migration task, or how long each should run.'),
-      ),
-    );
-  }
+      '#description' => t('Set a limit of how many items to process for
+        each migration task, or how long each should run.'),
+    ),
+  );
 
   return $operations;
 }
@@ -417,12 +419,9 @@ function _migrate_ui_selected_migrations($values) {
 function migrate_ui_migrate_submit($form, &$form_state) {
   $values = $form_state['values'];
   $operation = $values['operation'];
-  if (isset($values['limit'])) {
-    $limit = $values['limit'];
-  }
-  else {
-    $limit = '';
-  }
+
+  $limit = $values['limit'];
+
   if (isset($values['update'])) {
     $update = $values['update'];
   }
@@ -439,7 +438,7 @@ function migrate_ui_migrate_submit($form, &$form_state) {
   $operations = array();
 
   // Rollback in reverse order.
-  if ($operation == 'rollback') {
+  if (in_array($operation, array('rollback_immediate', 'deregister'))) {
     $machine_names = array_reverse($machine_names);
   }
 
@@ -454,30 +453,32 @@ function migrate_ui_migrate_submit($form, &$form_state) {
   $drush_arguments = array();
   foreach ($machine_names as $machine_name) {
     $migration = Migration::getInstance($machine_name);
-    switch ($operation) {
-      case 'import_immediate':
-        // Update (if necessary) once, before starting
-        if ($update && method_exists($migration, 'prepareUpdate')) {
-          $migration->prepareUpdate();
-        }
-        $operations[] = array('migrate_ui_batch', array('import', $machine_name, $limit, $force));
-        break;
-      case 'rollback_immediate':
-        $operations[] = array('migrate_ui_batch', array('rollback', $machine_name, $limit, $force));
-        break;
-      case 'import_background':
-      case 'rollback_background':
-        $drush_arguments[] = $machine_name;
-        break;
-      case 'stop':
-        $migration->stopProcess();
-        break;
-      case 'reset':
-        $migration->resetStatus();
-        break;
-      case 'deregister':
-        migrate_ui_deregister_migration($machine_name);
-        break;
+    if ($migration) {
+      switch ($operation) {
+        case 'import_immediate':
+          // Update (if necessary) once, before starting
+          if ($update && method_exists($migration, 'prepareUpdate')) {
+            $migration->prepareUpdate();
+          }
+          $operations[] = array('migrate_ui_batch', array('import', $machine_name, $limit, $force));
+          break;
+        case 'rollback_immediate':
+          $operations[] = array('migrate_ui_batch', array('rollback', $machine_name, $limit, $force));
+          break;
+        case 'import_background':
+        case 'rollback_background':
+          $drush_arguments[] = $machine_name;
+          break;
+        case 'stop':
+          $migration->stopProcess();
+          break;
+        case 'reset':
+          $migration->resetStatus();
+          break;
+        case 'deregister':
+          migrate_ui_deregister_migration($machine_name);
+          break;
+      }
     }
   }
 
@@ -496,7 +497,7 @@ function migrate_ui_migrate_submit($form, &$form_state) {
   }
   elseif (count($drush_arguments) > 0) {
     $drush_path = trim(variable_get('migrate_drush_path', ''));
-    $uri = 'http://' . $_SERVER['HTTP_HOST'];
+    $uri = $GLOBALS['base_url'];
     $uid = $GLOBALS['user']->uid;
     if ($operation == 'import_background') {
       $command = 'mi';
@@ -526,8 +527,7 @@ function migrate_ui_migrate_submit($form, &$form_state) {
     $drush_command .= " >$log_file 2>&1 &";
     exec($drush_command, $output, $status);
     if (variable_get('migrate_drush_mail', 0)) {
-      drupal_set_message('Your operation is running in the background. You will ' .
-        'receive an email message when it is complete.');
+      drupal_set_message('Your operation is running in the background. You will receive an email message when it is complete.');
     }
     else {
       drupal_set_message('Your operation is running in the background. You may '.
@@ -537,6 +537,8 @@ function migrate_ui_migrate_submit($form, &$form_state) {
 }
 
 /**
+ * Implements callback_batch_operation().
+ *
  * Process all enabled migration processes in a browser, using the Batch API
  * to break it into manageable chunks.
  *
@@ -559,6 +561,10 @@ function migrate_ui_batch($operation, $machine_name, $limit, $force = FALSE, &$c
   }
 
   $migration = Migration::getInstance($machine_name);
+  if (!$migration) {
+    $context['finished'] = 1;
+    return;
+  }
 
   // Messages generated by migration processes will be captured in this global
   global $_migrate_messages;
@@ -599,11 +605,13 @@ function migrate_ui_batch($operation, $machine_name, $limit, $force = FALSE, &$c
       }
       break;
     case MigrationBase::RESULT_SKIPPED:
-      $_migrate_messages[] = t("Skipped !name due to unfulfilled dependencies: !depends",
-        array(
-          '!name' => $machine_name,
-          '!depends' => implode(", ", $migration->incompleteDependencies()),
-        ));
+      $_migrate_messages[] = array(
+        'message' => t("Skipped !name due to unfulfilled dependencies: !depends",
+          array(
+            '!name' => $machine_name,
+            '!depends' => implode(", ", $migration->incompleteDependencies()),
+          ))
+        );
       $context['finished'] = 1;
       break;
     case MigrationBase::RESULT_STOPPED:
@@ -617,20 +625,22 @@ function migrate_ui_batch($operation, $machine_name, $limit, $force = FALSE, &$c
   }
 
   // Add any messages generated in this batch to the cumulative list
-  foreach ($_migrate_messages as $message) {
-    $context['results'][] = $message;
+  foreach ($_migrate_messages as $message_data) {
+    $context['results'][] = $message_data;
   }
 
   // While in progress, show the cumulative list of messages
   $full_message = '';
-  foreach ($context['results'] as $message) {
-    $full_message .= $message . '<br />';
+  foreach ($context['results'] as $message_data) {
+    $full_message .= $message_data['message'] . '<br />';
   }
   $context['message'] = $full_message;
 }
 
 /**
- * Batch API finished callback - report results
+ * Implements callback_batch_finished().
+ *
+ * Report results.
  *
  * @param $success
  *  Ignored
@@ -641,17 +651,37 @@ function migrate_ui_batch($operation, $machine_name, $limit, $force = FALSE, &$c
  */
 function migrate_ui_batch_finish($success, $results, $operations) {
   unset($results['stopped']);
-  if (user_access(MIGRATE_ACCESS_ADVANCED)) {
-    foreach ($results as $result) {
-      drupal_set_message($result);
+
+  foreach ($results as $result) {
+    // Migration::progressMessage() uses message levels that don't match what
+    // drupal_set_message() expects.
+    if (isset($result['level'])) {
+      if ($result['level'] == 'completed') {
+        $level = 'status';
+      }
+      elseif ($result['level'] == 'failed') {
+        $level = 'error';
+      }
+      else {
+        $level = $result['level'];
+      }
     }
+    else {
+      $level = NULL;
+    }
+
+    drupal_set_message($result['message'], $level);
   }
 }
 
 function migrate_ui_capture_message($message, $level) {
   if ($level != 'debug') {
+    // Store each message as an array with keys 'message' and 'level'.
     global $_migrate_messages;
-    $_migrate_messages[] = $message;
+    $_migrate_messages[] = array(
+      'message' => $message,
+      'level' => $level,
+    );
   }
 }
 
@@ -659,10 +689,9 @@ function migrate_ui_capture_message($message, $level) {
  * Menu callback function for migration view page.
  */
 function migrate_migration_info($form, $form_state, $group_name, $migration_name) {
-  drupal_set_title($migration_name);
   $migration = Migration::getInstance($migration_name);
 
-  $has_mappings = method_exists($migration, 'getFieldMappings');
+  $has_mappings = $migration && method_exists($migration, 'getFieldMappings');
   $form = array();
 
   if ($has_mappings) {
@@ -694,6 +723,10 @@ function migrate_migration_info($form, $form_state, $group_name, $migration_name
     '#title' => t('Overview'),
     '#group' => 'detail',
   );
+
+  if (!$migration) {
+    return $form;
+  }
 
   $team = array();
   foreach ($migration->getTeam() as $member) {
@@ -951,6 +984,9 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
   );
 
   $migration = Migration::getInstance($migration_name);
+  if (!$migration) {
+    return $form;
+  }
 
   $source_migration_options = array('-1' => t(''),);
   $all_dependencies = array();
@@ -964,7 +1000,7 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
 
   if (is_a($migration, 'Migration')) {
     $source_fields = $migration->getSource()->fields();
-    $dest_fields = $migration->getDestination()->fields();
+    $dest_fields = $migration->getDestination()->fields($migration);
     $dest_key = $migration->getDestination()->getKeySchema();
     $field_mappings = $migration->getFieldMappings();
 
@@ -972,12 +1008,7 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
       '#type' => 'fieldset',
       '#title' => t('Field mappings'),
       '#collapsible' => TRUE,
-      '#description' => t('For each field available in your Drupal destination, ' .
-        'select the source field used to populate it. You can enter a default ' .
-        'value to be applied to the destination when there is no source field, ' .
-        'or the source field is empty in a given source item. Check the DNM ' .
-        '(Do Not Migrate) box for destination fields you do not want populated ' .
-        'by migration.'),
+      '#description' => t('For each field available in your Drupal destination, select the source field used to populate it. You can enter a default value to be applied to the destination when there is no source field, or the source field is empty in a given source item. Check the DNM (Do Not Migrate) box for destination fields you do not want populated by migration. Note that any changes you make here override any field mappings defined by the underlying migration module. Clicking the Revert button will remove all such overrides.'),
       '#theme' => array('migrate_ui_field_mapping_form'),
       '#prefix' => '<div id="field-mappings">',
       '#suffix' => '</div>',
@@ -987,8 +1018,7 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
       '#type' => 'fieldset',
       '#title' => t('Source fields'),
       '#collapsible' => TRUE,
-      '#description' => t('Check off any source fields that are not being mapped ' .
-        'to destination fields. They will be removed from the select lists above.'),
+      '#description' => t('Check off any source fields that are not being mapped to destination fields. They will be removed from the select lists above.'),
     );
 
     $base_options = array(
@@ -1047,16 +1077,17 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
         '#type' => 'checkbox',
         '#title' => $label,
         '#default_value' => $dnm_value,
-        '#ajax' => array(
-          'callback' => 'migrate_ui_dnm_changed',
-          'wrapper' => 'field-mappings',
-        ),
       );
     }
 
+    if (isset($field_mappings['is_new'])) {
+      $default_is_new = $field_mappings['is_new']->getDefaultValue();
+    } else {
+      $default_is_new = 0;
+    }
     foreach ($dest_fields as $name => $description) {
-      // Don't map the destination key
-      if (isset($dest_key[$name])) {
+      // Don't map the destination key unless is_new = 1 (ie, TRUE)
+      if (isset($dest_key[$name]) && $default_is_new == 0) {
         continue;
       }
 
@@ -1112,10 +1143,6 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
       $form['field_mappings'][$name]['issue_group'] = array(
         '#type' => 'checkbox',
         '#default_value' => $dnm_value,
-        '#ajax' => array(
-          'callback' => 'migrate_ui_dnm_changed',
-          'wrapper' => 'field-mappings',
-        ),
       );
 
       $form['field_mappings'][$name]['mapping'] = array(
@@ -1124,24 +1151,12 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
                       array('!description' => $description, '!field_name' => $name)),
         '#options' => $options,
         '#default_value' => $default_mapping,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
       );
 
       $form['field_mappings'][$name]['default_value'] = array(
         '#type' => 'textfield',
         '#default_value' => $default_value,
         '#size' => 20,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
       );
 
       $source_migration = NULL;
@@ -1155,34 +1170,25 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
         '#type' => 'select',
         '#options' => $source_migration_options,
         '#default_value' => $source_migration,
-        '#states' => array(
-          'disabled' => array(
-            ':input[name="field_mappings[' . $name . '][issue_group]"]' =>
-              array('checked' => TRUE),
-          ),
-        ),
       );
     }
   }
+
+  unset($source_migration_options[-1]);
+  unset($source_migration_options[$migration_name]);
 
   $form['dependencies'] = array(
     '#type' => 'fieldset',
     '#title' => t('Dependencies'),
     '#collapsible' => TRUE,
-    '#collapsed' => is_a($migration, 'Migration') ? TRUE : FALSE,
+    '#collapsed' => is_a($migration, 'Migration'),
     '#theme' => 'migrate_ui_field_mapping_dependencies',
-    '#description' => t('Set any dependencies on other migrations here. A ' .
-      '<em>hard dependency</em> means that this migration is not allowed ' .
-      'to run until the dependent migration has completed (without forcing '.
-      'it). A <em>soft dependency</em> places no such requirement - it simply ' .
-      'affects the default order of migration. Note that any migrations that ' .
-      'would lead to circular dependencies are not listed here.'),
+    '#description' => t('Set any dependencies on other migrations here. A <em>hard dependency</em> means that this migration is not allowed to run until the dependent migration has completed (without forcing it). A <em>soft dependency</em> places no such requirement - it simply affects the default order of migration. Note that any migrations that would lead to circular dependencies are not listed here.'),
   );
 
   // Get the list of possible dependencies - it's the same as the list of
   // possible source migrations, minus the empty choice and ourselves.
-  unset($source_migration_options[-1]);
-  unset($source_migration_options[$migration_name]);
+
   $dependency_options = array(
     0 => t('None'),
     1 => t('Hard'),
@@ -1195,7 +1201,6 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
                                                         $all_dependencies);
   $source_migration_options = array_diff_key($source_migration_options,
     $descendent_migrations);
-
   foreach ($source_migration_options as $machine_name) {
     if (in_array($machine_name, $migration->getHardDependencies())) {
       $default_value = 1;
@@ -1218,6 +1223,13 @@ function migrate_ui_edit_mappings($form, $form_state, $group_name,
     '#type' => 'submit',
     '#value' => t('Apply changes'),
   );
+
+  $form['revert'] = array(
+    '#type' => 'submit',
+    '#value' => t('Revert'),
+    '#submit' => array('migrate_ui_edit_mappings_revert'),
+  );
+
   return $form;
 }
 
@@ -1239,15 +1251,6 @@ function _migrate_ui_get_descendents($migration_name, array $all_dependencies) {
     }
   }
   return $descendents;
-}
-
-/**
- * Selects the field mapping fieldset for re-rendering
- *
- * @return array
- */
-function migrate_ui_dnm_changed(&$form, &$form_state) {
-  return $form['field_mappings'];
 }
 
 /**
@@ -1278,6 +1281,11 @@ function migrate_ui_edit_mappings_submit(&$form, &$form_state) {
     $existing_mappings = $migration->getFieldMappings();
     $coded_mappings = $migration->getCodedFieldMappings();
     foreach ($form_state['values']['field_mappings'] as $destination_field => $info) {
+      // Treat an empty string for the default value as NULL.
+      if ($info['default_value'] === '') {
+        $info['default_value'] = NULL;
+      }
+
       // If this mapping matches a coded mapping but not a stored mapping, remove
       // it entirely (don't store it in the database) so the coded mapping is not
       // overwritten.
@@ -1294,9 +1302,17 @@ function migrate_ui_edit_mappings_submit(&$form, &$form_state) {
         if ($info['source_migration'] == '-1') {
           $info['source_migration'] = NULL;
         }
+        if ($info['issue_group'] == 0 && $coded_mappings[$destination_field]->getIssueGroup() != t('DNM') ||
+            $info['issue_group'] == 1 && $coded_mappings[$destination_field]->getIssueGroup() == t('DNM')) {
+          $dnm_matches = TRUE;
+        }
+        else {
+          $dnm_matches = FALSE;
+        }
         if ($info['mapping'] == $coded_source_field &&
             $info['default_value'] == $coded_default_value &&
-            $info['source_migration'] == $coded_source_migration) {
+            $info['source_migration'] == $coded_source_migration &&
+            $dnm_matches) {
           continue;
         }
       }
@@ -1367,19 +1383,34 @@ function migrate_ui_edit_mappings_submit(&$form, &$form_state) {
 
     // Handle any source fields marked DNM.
     foreach ($form_state['values']['source_fields'] as $source_field => $value) {
-      if ($value) {
-        // But if there in the coded mappings we have this field mapped to no
-        // destination field, then let that mapping stand.
-        $already_ignored = FALSE;
-        foreach ($coded_mappings as $destination_field => $mapping) {
-          if (is_numeric($destination_field) &&
-              $mapping->getSourceField() == $source_field) {
-            $already_ignored = TRUE;
+      // Is this field ignored in the code?
+      $code_ignored = FALSE;
+      foreach ($coded_mappings as $destination_field => $mapping) {
+        if (is_numeric($destination_field) &&
+            $mapping->getSourceField() == $source_field) {
+          $code_ignored = TRUE;
+        }
+      }
+      // If it is marked DNM in the UI, but is not ignored in the code,
+      // generate a DNM mapping.
+      if ($value && !$code_ignored) {
+        $mapping = new MigrateFieldMapping(NULL, $source_field);
+        $mapping->issueGroup(t('DNM'));
+        $arguments['field_mappings'][] = $mapping;
+      }
+      // If it is marked DNM in the code, but is unchecked in the UI, see if
+      // it's mapped to a destination field through the UI. If not, generate
+      // an empty mapping without the DNM so it's available to be mapped.
+      elseif (!$value && $code_ignored) {
+        $mapping_found = FALSE;
+        foreach ($field_mappings as $destination_field => $mapped_source_field) {
+          if ($source_field == $mapped_source_field) {
+            $mapping_found = TRUE;
+            break;
           }
         }
-        if (!$already_ignored) {
+        if (!$mapping_found) {
           $mapping = new MigrateFieldMapping(NULL, $source_field);
-          $mapping->issueGroup(t('DNM'));
           $arguments['field_mappings'][] = $mapping;
         }
       }
@@ -1387,12 +1418,14 @@ function migrate_ui_edit_mappings_submit(&$form, &$form_state) {
   }
 
   $arguments['dependencies'] = $arguments['soft_dependencies'] = array();
-  foreach ($form_state['values']['dependencies'] as $dependency => $value) {
-    if ($value == 1) {
-      $arguments['dependencies'][] = $dependency;
-    }
-    elseif ($value == 2) {
-      $arguments['soft_dependencies'][] = $dependency;
+  if (isset($form_state['values']['dependencies'])) {
+    foreach ($form_state['values']['dependencies'] as $dependency => $value) {
+      if ($value == 1) {
+        $arguments['dependencies'][] = $dependency;
+      }
+      elseif ($value == 2) {
+        $arguments['soft_dependencies'][] = $dependency;
+      }
     }
   }
 
@@ -1401,6 +1434,24 @@ function migrate_ui_edit_mappings_submit(&$form, &$form_state) {
   drupal_set_message(t('Migration changes applied.'));
   $form_state['redirect'] =
     "admin/content/migrate/groups/$group_name/$machine_name";
+}
+
+/**
+ * Revert callback for the edit mappings form. Remove any field mappings that
+ * were defined through the UI.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function migrate_ui_edit_mappings_revert(&$form, &$form_state) {
+  $machine_name = $form_state['values']['machine_name'];
+  db_delete('migrate_field_mapping')
+    ->condition('machine_name', $machine_name)
+    ->execute();
+  // Note that not all field mappings in the database came from the UI - they
+  // may also have been passed through a hook_migrate_api registration, so
+  // reregister the migration to restore those mappings.
+  migrate_static_registration(array($machine_name));
 }
 
 /**
@@ -1447,19 +1498,19 @@ function theme_migrate_ui_field_mapping_form($variables) {
 function theme_migrate_ui_field_mapping_dependencies($variables) {
   $output = '';
   $form = $variables['dependencies'];
+  $header = array(t('Migration'), t('Dependency'));
+  $rows = array();
   $elements = element_children($form);
-  if (!empty($elements)) {
-    $rows = array();
-    foreach ($elements as $mapping_key) {
-      $row = array();
-      $title = $form[$mapping_key]['#title'];
-      unset($form[$mapping_key]['#title']);
-      $row[] = $title;
-      $row[] = drupal_render($form[$mapping_key]);
-      $rows[] = $row;
-    }
-    $output .= theme('table', array('rows' => $rows));
+  foreach ($elements as $mapping_key) {
+    $row = array();
+    $title = $form[$mapping_key]['#title'];
+    unset($form[$mapping_key]['#title']);
+    $row[] = $title;
+    $row[] = drupal_render($form[$mapping_key]);
+    $rows[] = $row;
   }
+  $output .= theme('table', array('rows' => $rows, 'header' => $header, 'empty' => t('No other migrations were found.')));
+
   $output .= drupal_render_children($form);
   return $output;
 }
@@ -1473,13 +1524,23 @@ function migrate_ui_messages($group_name, $migration_name) {
 
   $build = $rows = array();
 
-  $header = array(
-    array('data' => t('Source ID'), 'field' => 'sourceid1', 'sort' => 'asc'),
-    array('data' => t('Level'), 'field' => 'level'),
-    array('data' => t('Message'), 'field' => 'message'),
-  );
-
   $migration = Migration::getInstance($migration_name);
+  if (!$migration) {
+    return $build;
+  }
+
+  $source_key = $migration->getMap()->getSourceKey();
+  $source_key_map = $migration->getMap()->getSourceKeyMap();
+  $source_key_map_flipped = array_flip($source_key_map);
+
+  $header = array();
+  // Add a table header for each source key in the migration's map.
+  foreach ($source_key as $key => $map_info) {
+    $header[] = array('data' => $map_info['description'], 'field' => $source_key_map[$key], 'sort' => 'asc');
+  }
+
+  $header[] = array('data' => t('Level'), 'field' => 'level');
+  $header[] = array('data' => t('Message'), 'field' => 'message');
 
   // TODO: need a general MigrateMap API
   $messages = $migration->getMap()->getConnection()
@@ -1493,11 +1554,19 @@ function migrate_ui_messages($group_name, $migration_name) {
 
   foreach ($messages as $message) {
     $classes[] = $message->level <= MigrationBase::MESSAGE_WARNING ? 'migrate-error' : '';
-    $rows[] = array(
-      array('data' => $message->sourceid1, 'class' => $classes), // TODO: deal with compound keys
-      array('data' => $migration->getMessageLevelName($message->level), 'class' => $classes),
-      array('data' => $message->message, 'class' => $classes),
-    );
+    $row = array();
+    // Add a table column for each source key.
+    foreach ($source_key_map_flipped as $source_key => $source_field) {
+      $row[] = array(
+        'data' => $message->{$source_key},
+        'class' => $classes,
+      );
+    }
+    $row[] = array('data' => $migration->getMessageLevelName($message->level), 'class' => $classes);
+    $row[] = array('data' => $message->message, 'class' => $classes);
+
+    $rows[] = $row;
+
     unset($classes);
   }
 
@@ -1560,7 +1629,7 @@ function migrate_ui_configure_form($form, &$form_state) {
 
   $build['registration']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Register statically-defined classes'),
+    '#value' => t('Register statically defined classes'),
     '#submit' => array('migrate_ui_configure_register_submit'),
   );
 
@@ -1600,8 +1669,7 @@ function migrate_ui_configure_form($form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('Warn on usage of deprecated patterns'),
     '#default_value' => variable_get('migrate_deprecation_warnings', 1),
-    '#description' => t('When checked, you will receive warnings when using ' .
-      'methods and patterns that are deprecated as of Migrate 2.6.'),
+    '#description' => t('When checked, you will receive warnings when using methods and patterns that are deprecated as of Migrate 2.6.'),
   );
   $build['settings']['submit'] = array(
     '#type' => 'submit',
@@ -1614,7 +1682,7 @@ function migrate_ui_configure_form($form, &$form_state) {
   $drush_validated = FALSE;
   if ($drush_path) {
     // Try running a drush status command to verify it's properly configured.
-    $uri = 'http://' . $_SERVER['HTTP_HOST'];
+    $uri = $GLOBALS['base_url'];
     $uid = $GLOBALS['user']->uid;
     $command = "$drush_path status --user=$uid --uri=$uri --root=" . DRUPAL_ROOT;
     exec($command, $output, $status);
@@ -1630,9 +1698,7 @@ function migrate_ui_configure_form($form, &$form_state) {
       }
     }
     if ($drush_validated) {
-      $description = t('Configure the use of <a href="@drush">drush</a> ' .
-          'version @version to run import and rollback operations in the ' .
-          'background.',
+      $description = t('Configure the use of <a href="@drush">drush</a> version @version to run import and rollback operations in the background.',
         array(
           '@drush' => 'http://drupal.org/project/drush',
           '@version' => $version,
@@ -1640,10 +1706,7 @@ function migrate_ui_configure_form($form, &$form_state) {
       );
     }
     else {
-      $description = t('<a href="@drush">Drush</a> is misconfigured on the server. ' .
-        'Please review the <a href="@config">documentation</a> ' .
-        'on <a href="@dorg">drupal.org</a>, and make sure everything is set up ' .
-        'correctly.',
+      $description = t('<a href="@drush">Drush</a> is misconfigured on the server. Please review the <a href="@config">documentation</a> on <a href="@dorg">drupal.org</a>, and make sure everything is set up correctly.',
         array(
           '@drush' => 'http://drupal.org/project/drush',
           '@config' => 'http://drupal.org/node/1958170',
@@ -1652,11 +1715,7 @@ function migrate_ui_configure_form($form, &$form_state) {
     }
   }
   else {
-    $description = t('To enable running operations in the background with '.
-        '<a href="@drush">drush</a>, (which is ' .
-        '<a href="@recommended">recommended</a>), some configuration ' .
-        'must be done on the server. See the <a href="@config">documentation</a> ' .
-        'on <a href="@dorg">drupal.org</a>.',
+    $description = t('To enable running operations in the background with <a href="@drush">drush</a>, (which is <a href="@recommended">recommended</a>), some configuration must be done on the server. See the <a href="@config">documentation</a> on <a href="@dorg">drupal.org</a>.',
       array(
         '@drush' => 'http://drupal.org/project/drush',
         '@recommended' => 'http://drupal.org/node/1806824',
@@ -1685,15 +1744,13 @@ function migrate_ui_configure_form($form, &$form_state) {
       '#options' => $options,
       '#default_value' => variable_get('migrate_import_method', 0),
       '#title' => t('Import method'),
-      '#description' => t('Choose whether the dashboard will perform ' .
-        'operations immediately, in the background via drush, or offer a choice.'),
+      '#description' => t('Choose whether the dashboard will perform operations immediately, in the background via drush, or offer a choice.'),
     );
 
     $build['drush']['migrate_drush_mail'] = array(
       '#type' => 'checkbox',
       '#default_value' => variable_get('migrate_drush_mail', 0),
-      '#title' => t('Send email notification when a background operation ' .
-                    'completes.'),
+      '#title' => t('Send email notification when a background operation completes.'),
     );
 
     $build['drush']['migrate_drush_mail_subject'] = array(
@@ -1712,8 +1769,7 @@ function migrate_ui_configure_form($form, &$form_state) {
       '#type' => 'textarea',
       '#rows' => 10,
       '#default_value' => variable_get('migrate_drush_mail_body',
-        t('The migration operation is complete. Please review the results on ' .
-          'your dashboard')),
+        t('The migration operation is complete. Please review the results on your dashboard')),
       '#title' => t('Body'),
       '#states' => array(
         'visible' => array(
@@ -1732,10 +1788,7 @@ function migrate_ui_configure_form($form, &$form_state) {
   $build['handlers'] = array(
     '#type' => 'fieldset',
     '#title' => t('Handlers'),
-    '#description' => t('In some cases, such as when a field handler for a ' .
-      'contributed module is implemented in both migrate_extras and the module ' .
-      'itself, you may need to disable a particular handler. In this case, you ' .
-      'may uncheck the undesired handler below.'),
+    '#description' => t('In some cases, such as when a field handler for a contributed module is implemented in both migrate_extras and the module itself, you may need to disable a particular handler. In this case, you may uncheck the undesired handler below.'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );

@@ -78,15 +78,24 @@ function theme_video_formatter_player(array $variables) {
     }
   }
 
-  $extension = video_utility::getExtension($item['playablefiles'][0]->uri);
-  $defaults = video_utility::getVideoExtensions();
-  $theme_function = variable_get('video_extension_' . $extension, $defaults[$extension]);
-
-  if ($theme_function == 'video_play_flv') {
-    $theme_function = 'video_flv';
-  }
-  if ($theme_function == 'video_play_html5') {
-    $theme_function = 'video_html5';
+  // Determine theme function based on the playable files.
+  // If one of the video types is configured to use an HTML5 player then the
+  // HTML5 theme function is used.
+  // If the last or only video type is configured to use an FLV player then the
+  // FLV theme function is used.
+  // In all other cases the player configured for the last or only video type
+  // is used.
+  $defaults = video_utility::getVideoExtensionPlayers();
+  foreach ($item['playablefiles'] as $playablefile) {
+    $extension = video_utility::getExtension($playablefile->uri);
+    $theme_function = variable_get('video_extension_' . $extension, $defaults[$extension]);
+    if ($theme_function == 'video_play_html5') {
+      $theme_function = 'video_html5';
+      break;
+    }
+    elseif ($theme_function == 'video_play_flv') {
+      $theme_function = 'video_flv';
+    }
   }
 
   return theme($theme_function, array('item' => $item, 'width' => $player_width, 'height' => $player_height, 'entity' => $variables['entity'], 'entity_type' => $variables['entity_type']));
@@ -129,6 +138,9 @@ function theme_video_formatter_thumbnail($variables) {
     $options = $variables['path']['options'];
     // When displaying an image inside a link, the html option must be TRUE.
     $options['html'] = TRUE;
+    if (!empty($variables['colorbox'])) {
+      $options['attributes'] = array('class' => array('colorbox-load'));
+    }
     $output = l($output, $path, $options);
   }
 
@@ -267,6 +279,10 @@ function theme_video_html5($variables) {
       $variables['files'] = $files;
       return theme('video_play_html5', $variables);
 
+    case 'audio':
+      $variables['files'] = $files;
+      return theme('video_play_html5_audio', $variables);
+
     case 'videojs':
       $items = video_utility::objectToArray($files);
       if (!empty($item['thumbnailfile'])) {
@@ -280,6 +296,11 @@ function theme_video_html5($variables) {
         'height' => $variables['height'],
       );
       return theme('videojs', array('items' => $items, 'player_id' => 'video-' . $item['fid'], 'attributes' => $attributes, 'entity' => $variables['entity'], 'entity_type' => $variables['entity_type']));
+
+    case 'mediaelement':
+      $file = reset($files);
+
+      return theme('mediaelement_video', array('attributes' => array('src' => file_create_url($file->uri), 'height' => $variables['height'], 'width' => $variables['width']), 'settings' => array('download_link' => FALSE)));
   }
 }
 

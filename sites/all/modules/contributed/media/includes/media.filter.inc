@@ -251,7 +251,6 @@ function media_parse_css_declarations($declarations) {
  */
 function media_token_to_markup($match, $wysiwyg = FALSE) {
   $settings = array();
-
   $match = str_replace("[[", "", $match);
   $match = str_replace("]]", "", $match);
   $tag = $match[0];
@@ -380,7 +379,6 @@ function media_token_to_markup($match, $wysiwyg = FALSE) {
     // Display the field elements.
     $element = array();
     $element['content']['file'] = media_get_file_without_label($file, $tag_info['view_mode'], $settings);
-
     // Overwrite or set the file #alt attribute if it has been set in this
     // instance.
     if (!empty($element['content']['file']['#attributes']['alt'])) {
@@ -394,7 +392,6 @@ function media_token_to_markup($match, $wysiwyg = FALSE) {
     field_attach_prepare_view('file', array($file->fid => $file), $tag_info['view_mode']);
     entity_prepare_view('file', array($file->fid => $file));
     $element['content'] += field_attach_view('file', $file, $tag_info['view_mode']);
-
     if (count(element_children($element['content'])) > 1) {
       // Add surrounding divs to group them together.
       // We dont want divs when there are no additional fields to allow files
@@ -407,7 +404,6 @@ function media_token_to_markup($match, $wysiwyg = FALSE) {
       );
     }
   }
-
   drupal_alter('media_token_to_markup', $element, $tag_info, $settings);
   return drupal_render($element);
 }
@@ -638,7 +634,9 @@ function media_format_form($form, $form_state, $file) {
   field_attach_form('file', $file, $form['options']['fields'], $form_state);
   $instance = field_info_instances('file', $file->type);
   foreach ($instance as $field_name => $field_value) {
-    $form['options']['fields'][$field_name]['#access'] = !empty($instance[$field_name]['settings']['wysiwyg_override']);
+    if (isset($instance[$field_name]['settings']) && isset($instance[$field_name]['settings']['wysiwyg_override']) && !$instance[$field_name]['settings']['wysiwyg_override']) {
+      unset($form['options']['fields'][$field_name]);
+    }
   }
 
   // Similar to a form_alter, but we want this to run first so that
@@ -670,8 +668,8 @@ function media_get_file_without_label($file, $view_mode, $settings = array()) {
   // support simple formatters that don't do this, set the element attributes to
   // what was requested, but not if the formatter applied its own logic for
   // element attributes.
-  if (!isset($element['#item']['attributes']) && isset($settings['attributes'])) {
-    $element['#item']['attributes'] = $settings['attributes'];
+  if (!isset($element['#attributes']) && isset($settings['attributes'])) {
+    $element['#attributes'] = $settings['attributes'];
 
     // While this function may be called for any file type, images are a common
     // use-case. theme_image() and theme_image_style() require the 'alt'

@@ -25,6 +25,17 @@ class EntityTranslationNodeHandler extends EntityTranslationDefaultHandler {
   }
 
   /**
+   * @see EntityTranslationHandlerInterface::getCurrentEntityRevision()
+   */
+  public function getCurrentEntityRevision() {
+    // Workbench moderation integration -> 1.x.
+    if (module_exists('workbench_moderation') && function_exists('workbench_moderation_node_current_load')) {
+      return workbench_moderation_node_current_load($this->getEntity());
+    }
+    return parent::getCurrentEntityRevision();
+  }
+
+  /**
    * @see EntityTranslationDefaultHandler::getAccess()
    */
   public function getAccess($op) {
@@ -76,7 +87,7 @@ class EntityTranslationNodeHandler extends EntityTranslationDefaultHandler {
   /**
    * @see EntityTranslationDefaultHandler::entityFormLanguageWidgetSubmit()
    */
-  function entityFormLanguageWidgetSubmit($form, &$form_state) {
+  public function entityFormLanguageWidgetSubmit($form, &$form_state) {
     $this->updateFormLanguage($form_state);
   }
 
@@ -92,7 +103,9 @@ class EntityTranslationNodeHandler extends EntityTranslationDefaultHandler {
 
     if (!$this->isTranslationForm()) {
       // Inherit entity authoring information for the original values.
-      $values['name'] = $form_state['values']['name'];
+      if (isset($form_state['values']['name'])) {
+        $values['name'] = $form_state['values']['name'];
+      }
       if (!empty($form_state['values']['date'])) {
         $values['created'] = $form_state['values']['date'];
       }

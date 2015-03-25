@@ -29,7 +29,9 @@ features[variable][] = node_preview_news
 features[variable][] = node_submitted_news
 features[views_view][] = free_pager_section_browser
 
-; Information added by drush on 2015-01-20
+
+; Information added by drush on 2015-03-25
 version = "698effdfaf7573426ce24acf0ec622bfbf75fc73"
 project = "freepager"
-datestamp = "1421750885"
+datestamp = "1427290051"
+

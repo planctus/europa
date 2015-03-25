@@ -52,26 +52,20 @@
      * @param content
      */
     replacePlaceholderWithToken: function(content) {
-      Drupal.settings.tagmap = [];
-
-      // Convert all xhtml markup to html for cleaner matching/replacing.
-      content = content.replace(/[\s]\/\>/g, '>');
-
-      // Re-build the macros in case any element has changed in the editor.
-      $('.media-element', content).each(function(i, el) {
-        // TODO zero-index wrapper indices.
-        var startTag = Drupal.media.filter.getWrapperStart(i + 1),
-          endTag = Drupal.media.filter.getWrapperEnd(i + 1),
-          macro = Drupal.media.filter.create_macro($(el));
-
-        Drupal.settings.tagmap[macro] = el.outerHTML;
-
-        content = content
-          .replace(el.outerHTML, macro)
-          .replace(startTag, '')
-          .replace(endTag, '');
-      });
-
+      var tagmap = Drupal.media.filter.ensure_tagmap();
+      var i = 1;
+      for (var macro in tagmap) {
+        var startTag = Drupal.media.filter.getWrapperStart(i), endTag = Drupal.media.filter.getWrapperEnd(i);
+        var startPos = content.indexOf(startTag), endPos = content.indexOf(endTag);
+        if (startPos !== -1 && endPos !== -1) {
+          // If the placeholder wrappers are empty, remove the macro too.
+          if (endPos - startPos - startTag.length === 0) {
+            macro = '';
+          }
+          content = content.substr(0, startPos) + macro + content.substr(endPos + (new String(endTag)).length);
+        }
+        i++;
+      }
       return content;
     },
 

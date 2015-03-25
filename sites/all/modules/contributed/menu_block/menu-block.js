@@ -11,8 +11,6 @@ Drupal.behaviors.menu_block = {
     // Show the "display options" if javascript is on.
     $('.form-item-display-options.form-type-radios>label', context).addClass('element-invisible');
     $('.form-item-display-options.form-type-radios', context).show();
-    // Make the radio set into a jQuery UI buttonset.
-    $('#edit-display-options', context).buttonset();
 
     // Override the default show/hide animation for Form API states.
     $('#menu-block-settings', context).bind('state:visible', function(e) {

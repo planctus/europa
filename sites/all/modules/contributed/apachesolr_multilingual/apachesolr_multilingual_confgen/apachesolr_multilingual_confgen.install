@@ -30,3 +30,20 @@ function apachesolr_multilingual_confgen_disable() {
 
 
 // TODO delete variables on uninstall
+
+/**
+ * Register spell checker variables
+ */
+function apachesolr_multilingual_confgen_update_7100() {
+  // see apachesolr_multilingual_confgen_update_7101()
+  // module_load_include('module', 'apachesolr_multilingual_confgen');
+  // apachesolr_multiligual_confgen_register_multilingual_variables();
+}
+
+/**
+ * Register lowerCase variables
+ */
+function apachesolr_multilingual_confgen_update_7101() {
+  module_load_include('module', 'apachesolr_multilingual_confgen');
+  apachesolr_multiligual_confgen_register_multilingual_variables();
+}

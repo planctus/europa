@@ -5,19 +5,14 @@ core = "7.x"
 
 configure = admin/config/search/apachesolr/multilingual
 
-dependencies[] = apachesolr
-dependencies[] = apachesolr_search
-dependencies[] = facetapi
-dependencies[] = i18n_variable
+dependencies[] = apachesolr_search (>=1.5)
 dependencies[] = locale
 
-files[] = apachesolr_multilingual.admin.inc
-files[] = apachesolr_multilingual.module
-files[] = apachesolr_multilingual.variable.inc
+files[] = DrupalApacheSolrMultilingualService.php
 
-; Information added by drupal.org packaging script on 2012-09-18
-version = "7.x-1.0-alpha2"
+; Information added by Drupal.org packaging script on 2014-08-05
+version = "7.x-1.2"
 core = "7.x"
 project = "apachesolr_multilingual"
-datestamp = "1347969409"
+datestamp = "1407224330"
 

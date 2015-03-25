@@ -5,9 +5,10 @@ core = 7.x
 dependencies[] = og (2.x)
 dependencies[] = workbench_moderation
 
-; Information added by drupal.org packaging script on 2013-10-26
+
+; Information added by drush on 2015-03-25
 version = "7.x-2.0-beta1+0-dev"
 core = "7.x"
 project = "workbench_og"
-datestamp = "1382797188"
+datestamp = "1427290165"
 
