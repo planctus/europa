@@ -5261,9 +5261,9 @@ Styleguide form.feedback-message
     .feedback-message.has-error:before {
       content: '';
       background: url("../images/svg/error.svg");
-      background-size: 30px;
-      width: 30px;
-      height: 30px;
+      background-size: 1.5em;
+      width: 1.5em;
+      height: 1.5em;
       margin-right: 12px; }
 
 /*
