@@ -32,10 +32,9 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -96,12 +95,9 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 13,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'node',
@@ -156,11 +152,8 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 8,
       ),
     ),
@@ -219,7 +212,7 @@ function nexteuropa_person_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 12,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -269,9 +262,8 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 10,
       ),
     ),
@@ -348,9 +340,8 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 11,
       ),
     ),
@@ -420,9 +411,8 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 9,
       ),
     ),
@@ -494,7 +484,7 @@ function nexteuropa_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'node',
@@ -567,7 +557,7 @@ function nexteuropa_person_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -643,10 +633,9 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -692,7 +681,7 @@ function nexteuropa_person_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -780,7 +769,7 @@ function nexteuropa_person_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 5,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -852,7 +841,7 @@ function nexteuropa_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'node',
@@ -932,10 +921,9 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 7,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -980,10 +968,9 @@ function nexteuropa_person_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'node',
@@ -1060,7 +1047,7 @@ function nexteuropa_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -1091,7 +1078,7 @@ function nexteuropa_person_field_default_field_instances() {
   t('Biography intro');
   t('Body');
   t('CV');
-  t('Declaration of interest');
+  t('Declaration of interest	');
   t('Departments');
   t('Documents');
   t('First Name');
