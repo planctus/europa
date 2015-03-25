@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function nexteuropa_announcement_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -22,7 +25,7 @@ function nexteuropa_announcement_ctools_plugin_api($module = NULL, $api = NULL) 
 /**
  * Implements hook_views_api().
  */
-function nexteuropa_announcement_views_api($module = NULL, $api = NULL) {
+function nexteuropa_announcement_views_api() {
   return array("api" => "3.0");
 }
 

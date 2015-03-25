@@ -13,55 +13,6 @@ function nexteuropa_announcement_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_announcement';
-  $strongarm->value = '0';
-  $export['comment_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_announcement';
-  $strongarm->value = '0';
-  $export['comment_anonymous_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_announcement';
-  $strongarm->value = 1;
-  $export['comment_default_mode_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_announcement';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_announcement';
-  $strongarm->value = 1;
-  $export['comment_form_location_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_announcement';
-  $strongarm->value = '1';
-  $export['comment_preview_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_announcement';
-  $strongarm->value = 1;
-  $export['comment_subject_field_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__announcement';
   $strongarm->value = array(
     'view_modes' => array(
@@ -69,7 +20,7 @@ function nexteuropa_announcement_strongarm() {
         'custom_settings' => TRUE,
       ),
       'teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -93,10 +44,16 @@ function nexteuropa_announcement_strongarm() {
         'custom_settings' => FALSE,
       ),
       'grid_view' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'list_view' => array(
+        'custom_settings' => FALSE,
+      ),
+      'meta' => array(
         'custom_settings' => TRUE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(
@@ -105,13 +62,13 @@ function nexteuropa_announcement_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'scheduler_settings' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'language' => array(
-          'weight' => '7',
+          'weight' => '29',
         ),
       ),
       'display' => array(),
@@ -125,20 +82,6 @@ function nexteuropa_announcement_strongarm() {
   $strongarm->name = 'language_content_type_announcement';
   $strongarm->value = '4';
   $export['language_content_type_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_announcement';
-  $strongarm->value = array();
-  $export['menu_options_announcement'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_announcement';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

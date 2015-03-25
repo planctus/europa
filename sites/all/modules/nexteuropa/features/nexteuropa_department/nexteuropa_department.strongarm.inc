@@ -17,7 +17,7 @@ function nexteuropa_department_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => TRUE,
@@ -44,9 +44,15 @@ function nexteuropa_department_strongarm() {
         'custom_settings' => FALSE,
       ),
       'list_view' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'meta' => array(
+        'custom_settings' => TRUE,
+      ),
+      'title' => array(
         'custom_settings' => FALSE,
       ),
     ),
