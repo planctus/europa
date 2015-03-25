@@ -3,6 +3,7 @@ description = This is the Announcement feature for the NextEuropa
 core = 7.x
 package = Nexteuropa Digital Transformation
 version = 7.x-1.0
+php = 5.2.4
 project = nexteuropa_announcement
 dependencies[] = dt_core
 features[context][] = announcement

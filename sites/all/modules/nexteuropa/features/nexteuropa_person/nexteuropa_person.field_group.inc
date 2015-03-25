@@ -21,7 +21,7 @@ function nexteuropa_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => ' ',
-    'weight' => '53',
+    'weight' => '9',
     'children' => array(
       0 => 'body',
     ),
@@ -48,7 +48,7 @@ function nexteuropa_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Biography',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_person_biography_intro',
     ),
@@ -75,7 +75,7 @@ function nexteuropa_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Curriculum Vitae',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_person_cv',
     ),
@@ -102,7 +102,7 @@ function nexteuropa_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_person_document',
     ),
@@ -162,7 +162,7 @@ function nexteuropa_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_topics',
       1 => 'field_core_department',
@@ -198,12 +198,13 @@ function nexteuropa_person_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Responsibilities',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-person-responsibility field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-person-responsibility field-group-tab',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_person_responsibility|node|person|form'] = $field_group;

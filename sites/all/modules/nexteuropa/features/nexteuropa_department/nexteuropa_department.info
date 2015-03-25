@@ -3,6 +3,7 @@ description = Container for the Department content type
 core = 7.x
 package = Nexteuropa Digital Transformation
 version = 7.x-1.0
+php = 5.2.4
 project = nexteuropa_department
 dependencies[] = dt_core
 dependencies[] = nexteuropa_person
