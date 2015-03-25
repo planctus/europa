@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * NextEuropa announcement install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_announcement_install() {
+
+  // Apply default NextEuropa configuration to "Announcement" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+}

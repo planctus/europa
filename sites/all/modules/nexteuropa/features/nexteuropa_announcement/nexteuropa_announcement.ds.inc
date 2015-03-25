@@ -18,12 +18,12 @@ function nexteuropa_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'comments' => array(
-      'weight' => '13',
+      'weight' => '12',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -37,48 +37,18 @@ function nexteuropa_announcement_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|announcement|grid_view';
+  $ds_fieldsetting->id = 'node|announcement|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'announcement';
-  $ds_fieldsetting->view_mode = 'grid_view';
+  $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'post_date' => array(
-      'weight' => '2',
+    'changed_date' => array(
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
     ),
   );
-  $export['node|announcement|grid_view'] = $ds_fieldsetting;
-
-  $ds_fieldsetting = new stdClass();
-  $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|announcement|list_view';
-  $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'announcement';
-  $ds_fieldsetting->view_mode = 'list_view';
-  $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h2',
-        'class' => '',
-      ),
-    ),
-    'post_date' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_long',
-    ),
-  );
-  $export['node|announcement|list_view'] = $ds_fieldsetting;
+  $export['node|announcement|teaser'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -101,34 +71,32 @@ function nexteuropa_announcement_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_announcement_type',
         1 => 'post_date',
-        2 => 'field_location',
-        3 => 'title',
-        4 => 'field_related_topics',
-        5 => 'field_announcement_departments',
-        6 => 'field_commissioner',
-        7 => 'field_announcement_image',
+        2 => 'title',
+        3 => 'field_core_commissioner',
+        4 => 'field_core_subject',
+        5 => 'field_core_department',
+        6 => 'field_announcement_image',
+        7 => 'field_core_introduction',
         8 => 'body',
         9 => 'field_announcement_info',
-        10 => 'field_policies',
+        10 => 'field_core_link',
         11 => 'field_announcement_media',
-        12 => 'field_announcement_announcements',
-        13 => 'comments',
+        12 => 'comments',
       ),
     ),
     'fields' => array(
       'field_announcement_type' => 'ds_content',
       'post_date' => 'ds_content',
-      'field_location' => 'ds_content',
       'title' => 'ds_content',
-      'field_related_topics' => 'ds_content',
-      'field_announcement_departments' => 'ds_content',
-      'field_commissioner' => 'ds_content',
+      'field_core_commissioner' => 'ds_content',
+      'field_core_subject' => 'ds_content',
+      'field_core_department' => 'ds_content',
       'field_announcement_image' => 'ds_content',
+      'field_core_introduction' => 'ds_content',
       'body' => 'ds_content',
       'field_announcement_info' => 'ds_content',
-      'field_policies' => 'ds_content',
+      'field_core_link' => 'ds_content',
       'field_announcement_media' => 'ds_content',
-      'field_announcement_announcements' => 'ds_content',
       'comments' => 'ds_content',
     ),
     'classes' => array(),
@@ -145,29 +113,21 @@ function nexteuropa_announcement_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|announcement|grid_view';
+  $ds_layout->id = 'node|announcement|meta';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
-  $ds_layout->view_mode = 'grid_view';
+  $ds_layout->view_mode = 'meta';
   $ds_layout->layout = 'ds_1col_wrapper';
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_announcement_image',
-        1 => 'field_announcement_type',
-        2 => 'post_date',
-        3 => 'field_location',
-        4 => 'title',
-        5 => 'field_core_introduction',
+        0 => 'field_core_topics',
+        1 => 'title_field',
       ),
     ),
     'fields' => array(
-      'field_announcement_image' => 'ds_content',
-      'field_announcement_type' => 'ds_content',
-      'post_date' => 'ds_content',
-      'field_location' => 'ds_content',
-      'title' => 'ds_content',
-      'field_core_introduction' => 'ds_content',
+      'field_core_topics' => 'ds_content',
+      'title_field' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -179,33 +139,31 @@ function nexteuropa_announcement_ds_layout_settings_info() {
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
-  $export['node|announcement|grid_view'] = $ds_layout;
+  $export['node|announcement|meta'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|announcement|list_view';
+  $ds_layout->id = 'node|announcement|teaser';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
-  $ds_layout->view_mode = 'list_view';
+  $ds_layout->view_mode = 'teaser';
   $ds_layout->layout = 'ds_1col_wrapper';
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_announcement_image',
-        1 => 'field_announcement_type',
-        2 => 'post_date',
-        3 => 'field_location',
-        4 => 'title',
-        5 => 'field_related_topics',
+        0 => 'field_announcement_type',
+        1 => 'changed_date',
+        2 => 'title_field',
+        3 => 'field_core_introduction',
+        4 => 'field_core_topics',
       ),
     ),
     'fields' => array(
-      'field_announcement_image' => 'ds_content',
       'field_announcement_type' => 'ds_content',
-      'post_date' => 'ds_content',
-      'field_location' => 'ds_content',
-      'title' => 'ds_content',
-      'field_related_topics' => 'ds_content',
+      'changed_date' => 'ds_content',
+      'title_field' => 'ds_content',
+      'field_core_introduction' => 'ds_content',
+      'field_core_topics' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -217,7 +175,7 @@ function nexteuropa_announcement_ds_layout_settings_info() {
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
-  $export['node|announcement|list_view'] = $ds_layout;
+  $export['node|announcement|teaser'] = $ds_layout;
 
   return $export;
 }
