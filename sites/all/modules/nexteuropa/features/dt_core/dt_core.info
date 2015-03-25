@@ -23,4 +23,7 @@ features[field_base][] = field_core_priorities
 features[field_base][] = field_core_subject
 features[field_base][] = field_core_topics
 features[field_base][] = field_core_user_tasks
+features[user_role][] = tester
+features_exclude[dependencies][list] = list
+features_exclude[taxonomy][core_user_tasks] = core_user_tasks
 features[taxonomy][] = subjects
