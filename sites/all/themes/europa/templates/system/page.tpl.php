@@ -144,8 +144,9 @@
 <?php endif; ?>
 
 <section class="main-content">
-  <div class="container-fluid">
+  <a id="main-content" tabindex="-1"></a>
 
+  <div class="container-fluid">
     <div class="row">
 
       <?php if (!empty($page['sidebar_first'])): ?>
@@ -158,8 +159,6 @@
         <?php if (!empty($page['highlighted'])): ?>
           <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
         <?php endif; ?>
-
-        <a id="main-content"></a>
 
         <?php print $messages; ?>
         <?php if (!empty($tabs)): ?>
