@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the NextEuropa Policy feature.
+ */
+
+include_once 'nexteuropa_policy.features.inc';

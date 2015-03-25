@@ -1,0 +1,10 @@
+name = NextEuropa Pages
+description = NextEuropa Pages feature.
+core = 7.x
+package = NextEuropa
+version = 7.x-1.0-dev
+project = nexteuropa_page
+dependencies[] = dt_core
+features[features_api][] = api:2
+features[field_instance][] = node-page-field_core_introduction
+features[field_instance][] = node-page-field_core_related_links

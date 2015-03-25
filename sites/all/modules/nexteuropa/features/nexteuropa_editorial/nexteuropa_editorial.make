@@ -1,8 +1,3 @@
-; =====================================================================
-; This makefile is not actually used at the moment.
-; For more information please visit:
-; https://webgate.ec.europa.eu/CITnet/jira/browse/MULTISITE-5238
-; =====================================================================
 
 api = 2
 core = 7.x

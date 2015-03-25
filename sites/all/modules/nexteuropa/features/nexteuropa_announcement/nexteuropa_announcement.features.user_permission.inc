@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.features.user_permission.inc
+ * nexteuropa_announcement.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function dtt_announcement_user_default_permissions() {
+function nexteuropa_announcement_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'create announcement content'.

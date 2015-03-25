@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.features.field_base.inc
+ * nexteuropa_announcement.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function dtt_announcement_field_default_field_bases() {
+function nexteuropa_announcement_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_announcement_announcements'

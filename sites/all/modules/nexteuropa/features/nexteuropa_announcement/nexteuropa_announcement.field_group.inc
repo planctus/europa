@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.field_group.inc
+ * nexteuropa_announcement.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dtt_announcement_field_group_info() {
+function nexteuropa_announcement_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();

@@ -1,8 +1,3 @@
-; =====================================================================
-; This makefile is not actually used at the moment.
-; For more information please visit:
-; https://webgate.ec.europa.eu/CITnet/jira/browse/MULTISITE-5238
-; =====================================================================
 
 api = 2
 core = 7.x
@@ -24,9 +19,6 @@ projects[ds][version] = 2.6
 
 projects[entitycache][subdir] = contrib
 projects[entitycache][version] = 1.2
-
-projects[migrate][subdir] = contrib
-projects[migrate][version] = 2.6-rc1
 
 projects[smart_trim][subdir] = contrib
 projects[smart_trim][version] = 1.4

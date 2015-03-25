@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.strongarm.inc
+ * nexteuropa_announcement.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function dtt_announcement_strongarm() {
+function nexteuropa_announcement_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

@@ -37,3 +37,4 @@ dependencies[] = translation
 features[features_api][] = api:2
 features[field_base][] = title_field
 mtime = 1420721417
+registry_autoload[] = PSR-4

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dtt_announcement.features.og_features_permission.inc
+ * nexteuropa_announcement.features.og_features_permission.inc
  */
 
 /**
  * Implements hook_og_features_default_permissions().
  */
-function dtt_announcement_og_features_default_permissions() {
+function nexteuropa_announcement_og_features_default_permissions() {
   $permissions = array();
 
   // Exported og permission: 'node:editorial_team:create announcement content'
