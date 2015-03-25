@@ -1,11 +1,25 @@
-// Select
-//
-// Base form element are styled using @code.form-control@code class taken from bootstrap.
-// Please see bootstrap documentation page for more details http://getbootstrap.com/css/#forms
-//
-// Markup: select.html
-//
-// Styleguide forms.select
+/*
+Select
+
+Markup: html/select.html
+
+Styleguide form.select
+*/
+
+.select {
+
+  // Hover state.
+  &:hover,
+  &.is-hovered {
+    border-color: $form-control-border-select-color-hover;
+  }
+
+  // Down state.
+  &.is-down {
+    border-color: $form-control-border-select-color-down;
+  }
+}
 
 select {
+  @extend .select;
 }
