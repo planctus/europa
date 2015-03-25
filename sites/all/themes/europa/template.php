@@ -27,7 +27,7 @@ function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
   if ($node_form_sidebar) {
     foreach ($node_form_sidebar as $field_name) {
       $form[$field_name]['#group'] = NULL;
-    }    
+    }
   }
 }
 
@@ -35,19 +35,19 @@ function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Preprocessor for theme('node_form').
  */
 function europa_preprocess_node_form(&$variables) {
-  
-  $i = 100;  
+
+  $i = 100;
   $variables['sidebar'] = array();
   $node_form_sidebar = theme_get_setting('node_form_sidebar');
   if ($node_form_sidebar) {
     foreach ($node_form_sidebar as $field_name) {
       if (isset($variables['form'][$field_name])) {
         $variables['form'][$field_name]['#weight'] = $i++;
-        $variables['sidebar'][$field_name] = $variables['form'][$field_name];    
+        $variables['sidebar'][$field_name] = $variables['form'][$field_name];
         hide($variables['form'][$field_name]);
       }
-    }    
-  }  
+    }
+  }
   // Extract the form buttons, and put them in independent variable.
   $variables['buttons'] = $variables['form']['actions'];
   hide($variables['form']['actions']);
@@ -94,7 +94,7 @@ function europa_menu_tree__secondary(&$variables) {
   //        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $toggle . ' <b class="caret"></b></a>
   //        <ul class="dropdown-menu">' . $variables['tree'] . '</ul>
   //      </li>
-  //    </ul>'; 
+  //    </ul>';
 }
 
 /**
@@ -134,7 +134,7 @@ function europa_easy_breadcrumb($variables) {
         $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
       }
     }
-    
+
     $html .= '</ol>';
   }
 
@@ -163,4 +163,148 @@ function europa_preprocess_image(&$variables) {
  */
 function europa_bootstrap_colorize_text_alter(&$texts) {
   $texts['contains'][t('Save')] = 'primary';
+}
+
+/**
+ * Overrides theme_form_element().
+ */
+function europa_form_element(&$variables) {
+  $element = &$variables['element'];
+  $is_checkbox = FALSE;
+  $is_radio = FALSE;
+  $feedback_message = FALSE;
+
+  // This function is invoked as theme wrapper, but the rendered form element
+  // may not necessarily have been processed by form_builder().
+  $element += array(
+    '#title_display' => 'before',
+  );
+
+  // Add element #id for #type 'item'.
+  if (isset($element['#markup']) && !empty($element['#id'])) {
+    $attributes['id'] = $element['#id'];
+  }
+
+  // Check for errors and set correct error class.
+  if (isset($element['#parents']) && form_get_error($element)) {
+    $attributes['class'][] = 'has-error';
+    $feedback_message = '<p class="feedback-message has-error">' . form_get_error($element) . '</p>';
+  }
+
+  if (!empty($element['#type'])) {
+    $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
+  }
+  if (!empty($element['#name'])) {
+    $attributes['class'][] = 'form-item-' . strtr($element['#name'], array(
+        ' ' => '-',
+        '_' => '-',
+        '[' => '-',
+        ']' => '',
+      ));
+  }
+  // Add a class for disabled elements to facilitate cross-browser styling.
+  if (!empty($element['#attributes']['disabled'])) {
+    $attributes['class'][] = 'form-disabled';
+  }
+  if (!empty($element['#autocomplete_path']) && drupal_valid_path($element['#autocomplete_path'])) {
+    $attributes['class'][] = 'form-autocomplete';
+  }
+  $attributes['class'][] = 'form-item';
+
+  // See http://getbootstrap.com/css/#forms-controls.
+  if (isset($element['#type'])) {
+    if ($element['#type'] == "radio") {
+      $attributes['class'][] = 'radio';
+      $is_radio = TRUE;
+    }
+    elseif ($element['#type'] == "checkbox") {
+      $attributes['class'][] = 'checkbox';
+      $is_checkbox = TRUE;
+    }
+    else {
+      $attributes['class'][] = 'form-group';
+    }
+  }
+
+  // Putting description into variable since it is not going to change.
+  // Here Bootstrap tooltips have been removed since in current implemenation we
+  // will use descriptions that are displayed under <label> element.
+
+  if (!empty($element['#description'])) {
+    $description = '<p class="help-block">' . $element['#description'] . '</p>';
+  }
+
+  $output = '<div' . drupal_attributes($attributes) . '>' . "\n";
+
+  // If #title is not set, we don't display any label or required marker.
+  if (!isset($element['#title'])) {
+    $element['#title_display'] = 'none';
+  }
+
+  $prefix = '';
+  $suffix = '';
+  if (isset($element['#field_prefix']) || isset($element['#field_suffix'])) {
+    // Determine if "#input_group" was specified.
+    if (!empty($element['#input_group'])) {
+      $prefix .= '<div class="input-group">';
+      $prefix .= isset($element['#field_prefix']) ? '<span class="input-group-addon">' . $element['#field_prefix'] . '</span>' : '';
+      $suffix .= isset($element['#field_suffix']) ? '<span class="input-group-addon">' . $element['#field_suffix'] . '</span>' : '';
+      $suffix .= '</div>';
+    }
+    else {
+      $prefix .= isset($element['#field_prefix']) ? $element['#field_prefix'] : '';
+      $suffix .= isset($element['#field_suffix']) ? $element['#field_suffix'] : '';
+    }
+  }
+
+  switch ($element['#title_display']) {
+    case 'before':
+    case 'invisible':
+      $output .= ' ' . theme('form_element_label', $variables);
+
+      if (!empty($description)) {
+        $output .= $description;
+      }
+
+      $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
+      break;
+
+    case 'after':
+
+      if ($is_radio || $is_checkbox) {
+        $output .= ' ' . $prefix . $element['#children'] . $suffix;
+      }
+      else {
+        $variables['#children'] = ' ' . $prefix . $element['#children'] . $suffix;
+      }
+
+      $output .= ' ' . theme('form_element_label', $variables) . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
+      break;
+
+    case 'none':
+    case 'attribute':
+      // Output no label and no required marker, only the children.
+      if (!empty($description)) {
+        $output .= $description;
+      }
+
+      $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
+      break;
+  }
+
+  $output .= "</div>\n";
+
+  return $output;
 }

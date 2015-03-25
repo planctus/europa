@@ -1,12 +1,31 @@
-// Form Elements
-//
-// Base form element are styled using @code.form-control@code class taken from bootstrap.
-// Please see bootstrap documentation page for more details http://getbootstrap.com/css/#forms
-//
-// Styleguide forms
+/*
+Form
+
+Styleguide form
+*/
 
 .form-control {
-  padding: 0 10px;
-  font-size: $font-size-little;
+  color: $form-control-text-color;
+  background-color: $form-control-background-color;
+  border: 2px solid $form-control-border-color;
   border-radius: 0;
+  margin-bottom: 1.1em;
+  height: $form-control-height;
+  font-size: $font-size-little;
+  @include box-shadow(none);
+
+  // Focus state.
+  &:focus,
+  &.is-focused,
+  .has-error &:focus {
+    color: $form-control-text-color-focus;
+    border-color: $form-control-border-color-focus;
+    @include box-shadow(none);
+  }
+
+  // Disabled modifier.
+  &.is-disabled {
+    color: $form-control-color-disabled;
+    background-color: $form-control-background-color-disabled;
+  }
 }
