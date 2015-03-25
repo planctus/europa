@@ -4892,7 +4892,7 @@ button.close {
 .radio + .radio, .checkbox + .checkbox {
   margin-top: auto; }
 
-/* 
+/*
 Text styling
 
 Styleguide text
@@ -4978,10 +4978,24 @@ a {
   a:hover {
     text-decoration: none; }
 
+/*
+Paragraphs
+
+Markup: html/paragraphs.html
+
+Styleguide text.paragraphs
+*/
 .paragraph, p, .region-content ul, .region-content ol, blockquote {
   font-family: Georgia, "Times New Roman", Times, serif;
   margin-bottom: 1.7em; }
 
+/*
+Lists
+
+Markup: html/lists.html
+
+Styleguide text.lists
+*/
 ul, ol {
   padding-left: 40px; }
 
@@ -5239,7 +5253,7 @@ Styleguide form.help-block
     color: #575757; }
 
 /*
-Form Field Feedback
+Feedback message
 
 Markup: html/feedback-message.html
 
@@ -5279,6 +5293,15 @@ Styleguide form.form-group
 .container-fluid {
   max-width: 1170px; }
 
+/*
+Logo
+
+Ec logo
+
+Markup: logo.html
+
+Styleguide siteheader.logo
+*/
 .logo {
   display: block;
   width: 170px;
@@ -5288,6 +5311,13 @@ Styleguide form.form-group
 .no-svg .logo {
   background-image: url('../images/svg/logo.png'); }
 
+/*
+Site header
+
+Markup: site-header.html
+
+Styleguide: siteheader
+*/
 .site-header .site-header__logo {
   margin-top: 15px;
   margin-bottom: 15px; }
@@ -5309,6 +5339,15 @@ Styleguide form.form-group
   .page-header__bottom {
     font-size: 26px; }
 
+/*
+Footer
+
+A majority of buttons in the site are built from the same base class.
+
+Markup: footer.html
+
+Styleguide footer
+*/
 .footer {
   background: #006fb4;
   padding-top: 20px;
@@ -5318,6 +5357,17 @@ Styleguide form.form-group
   .footer a {
     color: #fff; }
 
+/*
+Datepicker
+
+This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.<br/>
+Also, it assumes that the default CSS styles from jQuery UI are included as well.<br/>
+The CSS applied from styleguide is an override over the default CSS of jQuery UI.<br/>
+
+Markup: datepicker.html
+
+Styleguide datepicker
+*/
 #ui-datepicker-div {
   border: none;
   width: 100%; }
