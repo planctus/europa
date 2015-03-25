@@ -172,6 +172,7 @@ function europa_form_element(&$variables) {
   $element = &$variables['element'];
   $is_checkbox = FALSE;
   $is_radio = FALSE;
+  $feedback_message = FALSE;
 
   // This function is invoked as theme wrapper, but the rendered form element
   // may not necessarily have been processed by form_builder().
@@ -187,6 +188,7 @@ function europa_form_element(&$variables) {
   // Check for errors and set correct error class.
   if (isset($element['#parents']) && form_get_error($element)) {
     $attributes['class'][] = 'has-error';
+    $feedback_message = '<p class="feedback-message has-error">' . form_get_error($element) . '</p>';
   }
 
   if (!empty($element['#type'])) {
@@ -265,6 +267,10 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
       break;
 
     case 'after':
@@ -275,7 +281,12 @@ function europa_form_element(&$variables) {
       else {
         $variables['#children'] = ' ' . $prefix . $element['#children'] . $suffix;
       }
+
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
       break;
 
     case 'none':
@@ -286,6 +297,10 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+
+      //if (form_get_error($element)) {
+        $output .= $feedback_message;
+      //}
       break;
   }
 

@@ -5135,7 +5135,7 @@ Styleguide form.checkbox
         display: block;
         width: 1.25em;
         height: 1.25em;
-        top: 0.75em;
+        top: 0.8em;
         left: 1em;
         background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
         background-size: auto 1.25em; }
@@ -5241,16 +5241,16 @@ Styleguide form.help-block
 /*
 Form Field Feedback
 
-Markup: html/form_field_feedback.html
+Markup: html/feedback-message.html
 
-Styleguide form.form-field-feedback
+Styleguide form.feedback-message
 */
-.form-field-feedback {
+.feedback-message {
   color: #575757;
   font-family: Arial, sans-serif; }
-  .form-field-feedback.is-disabled {
+  .feedback-message.is-disabled {
     color: #b3b4b5; }
-  .form-field-feedback.has-error {
+  .feedback-message.has-error {
     color: #575757;
     background-color: #e2e2e2;
     padding: 12px;
@@ -5258,7 +5258,7 @@ Styleguide form.form-field-feedback
     flex-direction: row;
     justify-content: flex-start;
     align-items: center; }
-    .form-field-feedback.has-error:before {
+    .feedback-message.has-error:before {
       content: '';
       background: url("../images/svg/error.svg");
       background-size: 30px;
@@ -5274,7 +5274,7 @@ Markup: html/form-group.html
 Styleguide form.form-group
 */
 .form-group {
-  margin-bottom: 1.667em; }
+  margin-bottom: 1.7em; }
 
 .container-fluid {
   max-width: 1170px; }
