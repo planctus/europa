@@ -524,7 +524,8 @@ function nexteuropa_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcemnt_img_prominence'
+  // Exported field_instance:
+  // 'node-announcement-field_announcemnt_img_prominence'.
   $field_instances['node-announcement-field_announcemnt_img_prominence'] = array(
     'bundle' => 'announcement',
     'default_value' => array(

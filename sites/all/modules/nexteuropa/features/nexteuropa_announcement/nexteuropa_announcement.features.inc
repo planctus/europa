@@ -25,7 +25,7 @@ function nexteuropa_announcement_ctools_plugin_api($module = NULL, $api = NULL) 
 /**
  * Implements hook_views_api().
  */
-function nexteuropa_announcement_views_api($module = NULL, $api = NULL) {
+function nexteuropa_announcement_views_api() {
   return array("api" => "3.0");
 }
 

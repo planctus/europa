@@ -1091,7 +1091,7 @@ function nexteuropa_person_field_default_field_instances() {
   t('Biography intro');
   t('Body');
   t('CV');
-  t('Declaration of interest	');
+  t('Declaration of interest');
   t('Departments');
   t('Documents');
   t('First Name');
