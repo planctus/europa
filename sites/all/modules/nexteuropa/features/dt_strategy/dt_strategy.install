@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * dt Strategy install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_strategy_install() {
+  // Apply default dt configuration to "Strategy" content type.
+  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('strategy');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_core_uninstall() {
+  $path = drupal_get_path('module', 'strategy') . '/strategy.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Strategy %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
