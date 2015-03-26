@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Class feature.
+ */
+
+include_once 'dt_class.features.inc';
