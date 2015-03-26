@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_person.features.inc
+ * dt_person.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function nexteuropa_person_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_person_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -22,7 +22,7 @@ function nexteuropa_person_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function nexteuropa_person_node_info() {
+function dt_person_node_info() {
   $items = array(
     'person' => array(
       'name' => t('Person'),

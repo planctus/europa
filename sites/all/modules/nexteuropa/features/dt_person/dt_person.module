@@ -4,4 +4,4 @@
  * Code for the Person feature.
  */
 
-include_once 'nexteuropa_person.features.inc';
+include_once 'dt_person.features.inc';

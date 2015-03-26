@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_person.features.field_base.inc
+ * dt_person.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function nexteuropa_person_field_default_field_bases() {
+function dt_person_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_person_biography_intro'

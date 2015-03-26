@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_person.features.field_instance.inc
+ * dt_person.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function nexteuropa_person_field_default_field_instances() {
+function dt_person_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-person-body'
