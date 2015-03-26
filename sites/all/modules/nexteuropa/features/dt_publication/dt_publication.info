@@ -1,9 +1,9 @@
-name = Topic
-description = Topic content type for NextEuropa.
+name = Publication
+description = Publication content type related settings.
 core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0-dev
-project = nexteuropa_topic
+project = dt_publication
 dependencies[] = dt_core
 features[features_api][] = api:2
-features[node][] = topic
+features[node][] = publication

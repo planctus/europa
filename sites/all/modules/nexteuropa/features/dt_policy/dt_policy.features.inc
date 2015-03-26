@@ -5,15 +5,6 @@
  */
 
 /**
- * Implements hook_ctools_plugin_api().
- */
-function dt_policy_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => "1");
-  }
-}
-
-/**
  * Implements hook_node_info().
  */
 function dt_policy_node_info() {
@@ -21,7 +12,7 @@ function dt_policy_node_info() {
     'policy' => array(
       'name' => t('Policy'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Policy content type for dt.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

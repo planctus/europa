@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * dt_priority.features.inc
+ * dt_strategy.features.inc
  */
 
 /**
  * Implements hook_node_info().
  */
-function dt_priority_node_info() {
+function dt_strategy_node_info() {
   $items = array(
-    'priority' => array(
-      'name' => t('Priority'),
+    'strategy' => array(
+      'name' => t('Strategy'),
       'base' => 'node_content',
-      'description' => t('Priority content type for dt.'),
+      'description' => t('Strategy content type for dt.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
