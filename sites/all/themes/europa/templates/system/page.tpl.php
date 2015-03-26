@@ -76,117 +76,116 @@
 ?>
 
 <header class="site-header" role="banner">
-    <div class="container-fluid">
-        <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
+  <div class="container-fluid">
+    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
 
-        <?php if (!empty($page['header'])): ?>
-            <div class="top-bar pull-right">
-                <?php print render($page['header']); ?>
-            </div>
-        <?php endif; ?>
-    </div>
+    <?php if (!empty($page['header'])): ?>
+      <div class="top-bar pull-right">
+        <?php print render($page['header']); ?>
+      </div>
+    <?php endif; ?>
+  </div>
 </header>
 
 <?php if (!empty($page['header_bottom'])): ?>
-    <nav role="navigation">
-        <div class="container-fluid">
-            <?php print render($page['header_bottom']); ?>
-        </div>
-    </nav>
+  <nav role="navigation">
+    <div class="container-fluid">
+      <?php print render($page['header_bottom']); ?>
+    </div>
+  </nav>
 <?php endif; ?>
 
 <div class="page-header">
-    <div class="container-fluid">
-        <span class="page-header__top">First line</span>
+  <div class="container-fluid">
+    <span class="page-header__top">First line</span>
 
-        <?php print render($title_prefix); ?>
-        <h1>
-        <span class="page-header__main">
-          <?php if (drupal_is_front_page() && !empty($site_name)): ?>
-              <?php print $site_name; ?>
-          <?php elseif (!empty($title)): ?>
-              <?php print $title; ?>
-          <?php endif; ?>
-        </span>
-            <span class="page-header__bottom">Second line</span>
-        </h1>
-        <?php print render($title_suffix); ?>
-    </div>
+    <?php print render($title_prefix); ?>
+    <h1>
+    <span class="page-header__main">
+      <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+          <?php print $site_name; ?>
+      <?php elseif (!empty($title)): ?>
+          <?php print $title; ?>
+      <?php endif; ?>
+    </span>
+        <span class="page-header__bottom">Second line</span>
+    </h1>
+    <?php print render($title_suffix); ?>
+  </div>
 </div>
 
 <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-    <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+  <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
-            <div class="navbar-collapse collapse">
-                <nav role="navigation">
-                    <?php if (!empty($primary_nav)): ?>
-                        <?php print render($primary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($secondary_nav)): ?>
-                        <?php print render($secondary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($page['navigation'])): ?>
-                        <?php print render($page['navigation']); ?>
-                    <?php endif; ?>
-                </nav>
-            </div>
-        </div>
-    </section>
+      <div class="navbar-collapse collapse">
+        <nav role="navigation">
+          <?php if (!empty($primary_nav)): ?>
+            <?php print render($primary_nav); ?>
+          <?php endif; ?>
+          <?php if (!empty($secondary_nav)): ?>
+            <?php print render($secondary_nav); ?>
+          <?php endif; ?>
+          <?php if (!empty($page['navigation'])): ?>
+            <?php print render($page['navigation']); ?>
+          <?php endif; ?>
+        </nav>
+      </div>
+    </div>
+  </section>
 <?php endif; ?>
 
 <section class="main-content">
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <div class="row">
 
-        <div class="row">
+      <?php if (!empty($page['sidebar_first'])): ?>
+        <aside class="col-sm-3" role="complementary">
+          <?php print render($page['sidebar_first']); ?>
+        </aside>  <!-- /#sidebar-first -->
+      <?php endif; ?>
 
-            <?php if (!empty($page['sidebar_first'])): ?>
-                <aside class="col-sm-3" role="complementary">
-                    <?php print render($page['sidebar_first']); ?>
-                </aside>  <!-- /#sidebar-first -->
-            <?php endif; ?>
+      <section<?php print $content_column_class; ?>>
+        <?php if (!empty($page['highlighted'])): ?>
+          <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+        <?php endif; ?>
 
-            <section<?php print $content_column_class; ?>>
-                <?php if (!empty($page['highlighted'])): ?>
-                    <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-                <?php endif; ?>
+        <a id="main-content"></a>
 
-                <a id="main-content"></a>
+        <?php print $messages; ?>
+        <?php if (!empty($tabs)): ?>
+            <?php print render($tabs); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['help'])): ?>
+            <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (!empty($action_links)): ?>
+            <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+        <?php print render($page['content']); ?>
+      </section>
 
-                <?php print $messages; ?>
-                <?php if (!empty($tabs)): ?>
-                    <?php print render($tabs); ?>
-                <?php endif; ?>
-                <?php if (!empty($page['help'])): ?>
-                    <?php print render($page['help']); ?>
-                <?php endif; ?>
-                <?php if (!empty($action_links)): ?>
-                    <ul class="action-links"><?php print render($action_links); ?></ul>
-                <?php endif; ?>
-                <?php print render($page['content']); ?>
-            </section>
-
-            <?php if (!empty($page['sidebar_second'])): ?>
-                <aside class="col-sm-3" role="complementary">
-                    <?php print render($page['sidebar_second']); ?>
-                </aside>  <!-- /#sidebar-second -->
-            <?php endif; ?>
-        </div>
+      <?php if (!empty($page['sidebar_second'])): ?>
+        <aside class="col-sm-3" role="complementary">
+          <?php print render($page['sidebar_second']); ?>
+        </aside>  <!-- /#sidebar-second -->
+      <?php endif; ?>
     </div>
+  </div>
 </section>
 
 <footer class="footer">
-    <?php if (!empty($page['footer'])): ?>
-        <div class="container-fluid">
-            <?php print render($page['footer']); ?>
-        </div>
-    <?php endif; ?>
+  <?php if (!empty($page['footer'])): ?>
+    <div class="container-fluid">
+      <?php print render($page['footer']); ?>
+    </div>
+  <?php endif; ?>
 </footer>
