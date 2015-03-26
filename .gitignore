@@ -8,9 +8,6 @@ sites/*/private
 # Ignore sites.php
 sites/sites.php
 
-# Ignore path to db dumps
-_db_dumps
-
 # Sublime Ignore
 *.sublime-*
 
