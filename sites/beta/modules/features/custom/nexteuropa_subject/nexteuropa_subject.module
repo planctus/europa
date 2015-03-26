@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the NextEuropa Subject feature.
- */
-
-include_once 'nexteuropa_subject.features.inc';

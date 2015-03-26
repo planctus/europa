@@ -5003,9 +5003,42 @@ h6, .h6 {
   height: 45px;
   background: url('../images/svg/logo.svg') no-repeat; }
 
+<<<<<<< HEAD
 .banner .banner__logo {
   margin-top: 15px;
   margin-bottom: 15px; }
+=======
+@media (min-width: 768px) {
+  .logo {
+    width: 218px;
+    height: 60px; }
+ }
+
+.no-svg .logo {
+  background-image: url('../images/svg/logo.png'); }
+
+.skip-link, #skip-link {
+  position: fixed;
+  top: 1.5em;
+  left: 1.5em;
+  z-index: 1060; }
+  .skip-link a, #skip-link a {
+    color: #fff;
+    background: #006fb4;
+    padding: 8px;
+    border: 4px solid #ffd617; }
+
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader
+*/
+.site-header .site-header__logo {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em; }
+>>>>>>> develop
 
 .page-header {
   background: #006fb4;
