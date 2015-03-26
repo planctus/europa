@@ -51,9 +51,9 @@ files[] = views/handlers/tmgmt_handler_field_tmgmt_job_item_count.inc
 files[] = views/plugins/tmgmt_views_job_access.inc
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "7.x-1.0-rc1+13-dev"
 core = "7.x"
 project = "tmgmt"
-datestamp = "1427290097"
+datestamp = "1427368448"
 

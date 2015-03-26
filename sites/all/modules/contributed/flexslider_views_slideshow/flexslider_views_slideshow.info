@@ -11,8 +11,8 @@ files[] = flexslider_views_slideshow.views_slideshow.inc
 files[] = theme/flexslider_views_slideshow.theme.inc
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "0b1f8e7e24c168d1820ccded63c319327d57a97e"
 project = "flexslider_views_slideshow"
-datestamp = "1427290049"
+datestamp = "1427368376"
 

@@ -19,9 +19,9 @@ files[] = views/handlers/tmgmt_node_handler_filter_node_translatable_types.inc
 files[] = views/handlers/tmgmt_node_handler_filter_missing_translation.inc
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "7.x-1.0-rc1+13-dev"
 core = "7.x"
 project = "tmgmt"
-datestamp = "1427290097"
+datestamp = "1427368448"
 

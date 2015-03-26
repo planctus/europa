@@ -9,8 +9,8 @@ files[] = freepager_plugin_display_pagerblock.inc
 stylesheets[all][] = freepager.css
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "698effdfaf7573426ce24acf0ec622bfbf75fc73"
 project = "freepager"
-datestamp = "1427290051"
+datestamp = "1427368380"
 

@@ -31,9 +31,9 @@ features[page_manager_handlers][] = node_view_panel_context
 features[rules_config][] = rules_og_new_content_message
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "7.x-2.7+19-dev"
 core = "7.x"
 project = "og"
-datestamp = "1427290164"
+datestamp = "1427368517"
 

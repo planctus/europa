@@ -7,8 +7,8 @@ dependencies[] = views
 files[] = views/plugins/views_plugin_style_xhtml.inc
 
 
-; Information added by drush on 2015-03-25
+; Information added by drush on 2015-03-26
 version = "6e9b6b980fc2826b09391ae1c2ec0c5a85c6c24a"
 project = "views_datasource"
-datestamp = "1427290115"
+datestamp = "1427368476"
 

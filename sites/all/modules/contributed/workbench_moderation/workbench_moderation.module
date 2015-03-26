@@ -406,9 +406,6 @@ function workbench_moderation_permission() {
   $permissions['use workbench_moderation needs review tab'] = array(
     'title' => t('Use "Needs review" workbench tab')
   );
-$permissions['Access to unpublished file'] = array(
-   'title' => t('View unpublished file'),
- );
 
   // Per-node-type, per-transition permissions. Used by workbench_moderation_state_allowed().
   $node_types = workbench_moderation_moderate_node_types();
@@ -1148,11 +1145,8 @@ function workbench_moderation_state_allowed($account, $from_state, $to_state, $n
     return TRUE;
   }
 
-  $return = FALSE;
-  drupal_alter('workbench_moderation_states_allowed', $account, $node_type, $return);
-
   // Default return.
-  return $return;
+  return FALSE;
 }
 
 /**
@@ -2511,61 +2505,4 @@ function workbench_moderation_node_export_node_import_alter(&$node, $original_no
     return;
   }
   $node->revision = 1;
-}
-
-/**
- * Implements hook_file_download().
- */
-function workbench_moderation_file_download($uri) {
-
-  // Find the nodes that have this file attached to.
-  $query = db_select('file_usage', 'fu');
-  $query->addField('fu', 'id');
-  $query->addField('fu', 'fid');
-  $query->join('file_managed', 'fm', 'fm.fid = fu.fid');
-  $query->condition('fm.uri', $uri, '=');
-  $query->condition('fu.type', 'node', '=');
-  $result = $query->execute();
-
-  foreach ($result as $record) {
-    // Find file header.
-    $headers = file_get_content_headers(file_load($record->fid));
-
-    // If the user have access to the unpublished private files show all files.
-    if (user_access('Access to unpublished file')) {
-      return $headers;
-    }
-  }
-}
-
-function workbench_moderation_node_grants($user, $op) {
-  $grants['workbench_moderation'] = array_keys($user->roles);
-  return $grants;
-}
-
-/**
-* Implements hook_node_access_records().
-*
-* This function supplies the workbench moderation grants for unpublished content.
-* workbench_moderation adds the 'view all unpublished content' permission so it
-* captures and returns the role IDs which include that permission.
-*/
-function workbench_moderation_node_access_records($node) {
-  if ($node->status)
-  {
-    // it's published, default handling is okay
-    return;
-  }
-  $result = db_query("SELECT rid FROM {role_permission} WHERE permission = ('view all unpublished content')");
-  foreach ($result as $grant) {
-    $grants[] = array(
-      'realm'        => 'workbench_moderation',
-      'gid'          => $grant->rid,
-      'grant_view'   => 1,
-      'grant_update' => 0,
-      'grant_delete' => 0,
-      'priority'     => 0,
-    );
-  }
-  return !empty($grants) ? $grants : array();
 }
