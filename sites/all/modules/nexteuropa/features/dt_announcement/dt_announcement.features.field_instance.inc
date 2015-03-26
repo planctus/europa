@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_announcement.features.field_instance.inc
+ * dt_announcement.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function nexteuropa_announcement_field_default_field_instances() {
+function dt_announcement_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'comment-comment_node_announcement-comment_body'
@@ -524,8 +524,7 @@ function nexteuropa_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-announcement-field_announcemnt_img_prominence'.
+  // Exported field_instance: 'node-announcement-field_announcemnt_img_prominence'
   $field_instances['node-announcement-field_announcemnt_img_prominence'] = array(
     'bundle' => 'announcement',
     'default_value' => array(
@@ -922,6 +921,11 @@ function nexteuropa_announcement_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_maxlength' => 128,

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_announcement.ds.inc
+ * dt_announcement.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function nexteuropa_announcement_ds_field_settings_info() {
+function dt_announcement_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
@@ -56,7 +56,7 @@ function nexteuropa_announcement_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function nexteuropa_announcement_ds_layout_settings_info() {
+function dt_announcement_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();

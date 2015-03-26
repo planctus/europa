@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_announcement.context.inc
+ * dt_announcement.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function nexteuropa_announcement_context_default_contexts() {
+function dt_announcement_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();

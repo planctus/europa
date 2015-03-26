@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_announcement.features.inc
+ * dt_announcement.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function nexteuropa_announcement_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_announcement_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -25,14 +25,14 @@ function nexteuropa_announcement_ctools_plugin_api($module = NULL, $api = NULL) 
 /**
  * Implements hook_views_api().
  */
-function nexteuropa_announcement_views_api() {
+function dt_announcement_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function nexteuropa_announcement_node_info() {
+function dt_announcement_node_info() {
   $items = array(
     'announcement' => array(
       'name' => t('Announcement'),
