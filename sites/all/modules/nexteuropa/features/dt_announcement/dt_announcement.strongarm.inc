@@ -92,12 +92,6 @@ function dt_announcement_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
-      'grid_view' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_view' => array(
-        'custom_settings' => FALSE,
-      ),
       'meta' => array(
         'custom_settings' => TRUE,
       ),

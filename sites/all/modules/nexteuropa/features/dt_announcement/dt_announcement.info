@@ -1,5 +1,5 @@
 name = Announcement
-description = This is the Announcement feature for the NextEuropa
+description = Announcement content type related settings.
 core = 7.x
 package = Nexteuropa Digital Transformation
 version = 7.x-1.0

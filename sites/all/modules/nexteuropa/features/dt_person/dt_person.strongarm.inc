@@ -92,12 +92,6 @@ function dt_person_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
-      'grid_view' => array(
-        'custom_settings' => FALSE,
-      ),
-      'list_view' => array(
-        'custom_settings' => FALSE,
-      ),
       'title' => array(
         'custom_settings' => FALSE,
       ),

@@ -1,10 +1,10 @@
 name = Department
-description = Container for the Department content type
+description = Department content type related settings.
 core = 7.x
 package = Nexteuropa Digital Transformation
 version = 7.x-1.0
 project = dt_department
-dependencies[] = nexteuropa_person
+dependencies[] = dt_person
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
