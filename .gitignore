@@ -5,8 +5,8 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 
-# Ignore path to db dumps
-_db_dumps
+# Ignore sites.php
+sites/sites.php
 
 # Sublime Ignore
 *.sublime-*
