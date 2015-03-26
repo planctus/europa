@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_department.features.field_instance.inc
+ * dt_department.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function nexteuropa_department_field_default_field_instances() {
+function dt_department_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-department-field_core_abbreviation'

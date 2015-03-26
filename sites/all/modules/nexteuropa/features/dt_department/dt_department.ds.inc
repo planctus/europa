@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_department.ds.inc
+ * dt_department.ds.inc
  */
 
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function nexteuropa_department_ds_layout_settings_info() {
+function dt_department_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();

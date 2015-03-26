@@ -1,14 +1,63 @@
 <?php
 /**
  * @file
- * nexteuropa_department.strongarm.inc
+ * dt_department.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function nexteuropa_department_strongarm() {
+function dt_department_strongarm() {
   $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_department';
+  $strongarm->value = '0';
+  $export['comment_anonymous_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_department';
+  $strongarm->value = 1;
+  $export['comment_default_mode_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_department';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_department';
+  $strongarm->value = '0';
+  $export['comment_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_department';
+  $strongarm->value = 1;
+  $export['comment_form_location_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_department';
+  $strongarm->value = '1';
+  $export['comment_preview_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_department';
+  $strongarm->value = 1;
+  $export['comment_subject_field_department'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -79,6 +128,20 @@ function nexteuropa_department_strongarm() {
   $strongarm->name = 'language_content_type_department';
   $strongarm->value = '4';
   $export['language_content_type_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_department';
+  $strongarm->value = array();
+  $export['menu_options_department'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_department';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_department'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

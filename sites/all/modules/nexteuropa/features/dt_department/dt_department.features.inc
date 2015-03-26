@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nexteuropa_department.features.inc
+ * dt_department.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function nexteuropa_department_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_department_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -22,14 +22,14 @@ function nexteuropa_department_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_views_api().
  */
-function nexteuropa_department_views_api($module = NULL, $api = NULL) {
+function dt_department_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function nexteuropa_department_node_info() {
+function dt_department_node_info() {
   $items = array(
     'department' => array(
       'name' => t('Department'),
