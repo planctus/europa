@@ -18,7 +18,7 @@ function europa_theme() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter()
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
 
@@ -35,7 +35,6 @@ function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Preprocessor for theme('node_form').
  */
 function europa_preprocess_node_form(&$variables) {
-
   $i = 100;
   $variables['sidebar'] = array();
   $node_form_sidebar = theme_get_setting('node_form_sidebar');
@@ -53,9 +52,8 @@ function europa_preprocess_node_form(&$variables) {
   hide($variables['form']['actions']);
 }
 
-
 /**
- * Overrides theme_form_required_marker()
+ * Overrides theme_form_required_marker().
  */
 function europa_form_required_marker($variables) {
   // This is also used in the installer, pre-database setup.
@@ -85,27 +83,17 @@ function europa_preprocess_node(&$vars) {
  */
 function europa_menu_tree__secondary(&$variables) {
   return '<ul class="menu nav navbar-nav secondary">' . $variables['tree'] . '</ul>';
-  // global $user;
-  // $username = format_username($user);
-  // $toggle = t('Hello, !name', array('!name' => "<b>{$username}</b>"));
-  // return '
-  //    <ul class="nav navbar-nav navbar-right">
-  //      <li class="dropdown">
-  //        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $toggle . ' <b class="caret"></b></a>
-  //        <ul class="dropdown-menu">' . $variables['tree'] . '</ul>
-  //      </li>
-  //    </ul>';
 }
 
 /**
- * Implements preprocess for theme('easy_breadcrumb')
+ * Implements preprocess for theme('easy_breadcrumb').
  */
 function europa_preprocess_easy_breadcrumb(&$variables) {
   $variables['separator'] = '&raquo;';
 }
 
 /**
- * Overrides theme('easy_breadcrumb')
+ * Overrides theme('easy_breadcrumb').
  */
 function europa_easy_breadcrumb($variables) {
 
@@ -143,12 +131,13 @@ function europa_easy_breadcrumb($variables) {
 
 /**
  * Implements hook_preprocess_image().
-*/
+ */
 function europa_preprocess_image(&$variables) {
-  // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
+  // Fix issue between print module and bootstrap theme, print module put
+  // a string instead of an array in $variables['attributes']['class'].
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if(isset($variables['attributes']['class'])) {
-      if(is_array($variables['attributes']['class'])) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
       }
       else {
@@ -268,9 +257,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
 
     case 'after':
@@ -284,9 +271,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
 
     case 'none':
@@ -298,9 +283,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
   }
 
@@ -313,12 +296,12 @@ function europa_form_element(&$variables) {
  * Europa theme wrapper function for the service tools menu links.
  */
 function europa_menu_tree__menu_service_tools(&$variables) {
-    return '<ul class="menu nav footer-menu list-inline">' . $variables['tree'] . '</ul>';
+  return '<ul class="menu nav footer-menu list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
  * Europa theme wrapper function for the EC menu links.
  */
 function europa_menu_tree__menu_european_commission_links(&$variables) {
-    return '<ul class="menu nav footer-menu list-inline footer-menu__bottom-border">' . $variables['tree'] . '</ul>';
+  return '<ul class="menu nav footer-menu list-inline footer-menu__bottom-border">' . $variables['tree'] . '</ul>';
 }
