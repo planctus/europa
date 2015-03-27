@@ -30,6 +30,9 @@ function dt_core_install() {
   // Enable europa theme.
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
+
+  // Removing THIS SHIT
+  variable_set('cce_basic_config_admin_pages', array());
 }
 
 /**
@@ -66,4 +69,10 @@ function dt_core_update_7102() {
 function dt_core_update_7103() {
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
+}
+
+
+// Removing SHITIEST THING THAT WASTED OUR DAY
+function dt_core_update_7104() {
+  variable_set('cce_basic_config_admin_pages', array());
 }
