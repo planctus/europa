@@ -103,12 +103,17 @@ $datepicker-color-background: #eaeaea;
         &:first-child {
           border-right: 2px solid $datepicker-color-select-separator;
         }
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+        }
       }
     }
   }
 
   table.ui-datepicker-calendar {
-    width: auto !important;
     background: $datepicker-color-background;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
@@ -157,6 +162,12 @@ $datepicker-color-background: #eaeaea;
 @include breakpoint(screen-xs-min) {
   #ui-datepicker-div {
     width: auto;
+  }
+  
+  .ui-datepicker {
+    table.ui-datepicker-calendar {
+      width: auto !important;
+    }
   }
 }
 

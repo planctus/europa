@@ -5402,8 +5402,9 @@ Styleguide datepicker
         padding-right: 0; }
         .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:first-child {
           border-right: 2px solid #686868; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:hover, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:active, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
+          color: #fff; }
   .ui-datepicker table.ui-datepicker-calendar {
-    width: auto !important;
     background: #eaeaea;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
@@ -5434,6 +5435,9 @@ Styleguide datepicker
 @media (min-width: 480px) {
   #ui-datepicker-div {
     width: auto; }
+
+  .ui-datepicker table.ui-datepicker-calendar {
+    width: auto !important; }
  }
 
 @media (max-width: 479px) {
