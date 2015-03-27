@@ -188,7 +188,7 @@ function europa_form_element(&$variables) {
   // Check for errors and set correct error class.
   if (isset($element['#parents']) && form_get_error($element)) {
     $attributes['class'][] = 'has-error';
-    $feedback_message = '<p class="feedback-message has-error">' . form_get_error($element) . '</p>';
+    $feedback_message = '<p class="feedback-message is-error">' . form_get_error($element) . '</p>';
   }
 
   if (!empty($element['#type'])) {
