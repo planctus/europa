@@ -1,0 +1,46 @@
+.inpage-navigation--list {
+  z-index: 2000; }
+
+.inpage-navigation {
+  cursor: pointer;
+  z-index: 100;
+  max-width: 228px;
+  padding-bottom: 1px; }
+  .inpage-navigation .container {
+    width: auto; }
+  .inpage-navigation.affix-top .nav li.active a, .inpage-navigation.affix-bottom .nav li.active a {
+    color: black !important; }
+  .inpage-navigation.affix-top .nav li.active a:hover, .inpage-navigation.affix-bottom .nav li.active a:hover {
+    color: #006fb4 !important; }
+  .inpage-navigation.affix {
+    top: 30px; }
+  .inpage-navigation.affix .nav li:hover, .inpage-navigation.affix .nav li:active, .inpage-navigation.affix .nav li:focus {
+    color: #006fb4;
+    text-decoration: underline; }
+  .inpage-navigation.affix .nav li.active:before {
+    background: none repeat scroll 0 0 #006fb4;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -10px;
+    position: absolute;
+    top: -2px;
+    width: 2px; }
+  .inpage-navigation.affix-bottom {
+    position: absolute;
+    bottom: 30px; }
+  .inpage-navigation .block-title {
+    background: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .05em;
+    color: #575757;
+    text-transform: uppercase;
+    margin-top: 10px; }
+
+.navigation-place {
+  padding: 20px 0 20px 20px;
+  margin-bottom: 0; }
+
+.navbar-toggle {
+  top: 10px; }

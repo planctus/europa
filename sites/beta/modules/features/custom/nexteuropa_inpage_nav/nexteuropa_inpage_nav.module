@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ * Nexteuropa inline page navigation
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function nexteuropa_inpage_nav_block_info() {
+    $blocks = array();
+    $blocks['inline_navigation']['info'] = t('Page Contents');
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function nexteuropa_inpage_nav_block_view($delta = '') {
+    $block = array();
+
+    if ($delta === "inline_navigation") {
+        drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') .'/assets/js/inpage_nav.js');
+        $items = array();
+
+        $node = menu_get_object('node');
+        $reaction = context_get_plugin('reaction', 'block');
+
+        if ($node->title) {
+            drupal_add_js(array('inpage_navigation' => array('node_title' => $node->title)), 'setting');
+        }
+
+        if ($node && ($context_blocks = $reaction->block_list('content'))) {
+            foreach ($context_blocks as $key => $current_block) {
+                if ($key == 'system_main') {
+                    $content_node = $current_block->content['nodes'][$node->nid];
+                    $title = isset($content_node['body']['#title']) ? $content_node['body']['#title'] : FALSE;
+                }
+                else {
+                    $title = isset($current_block->info) && $current_block->info ? $current_block->info : FALSE;
+                }
+                if ($title) {
+                    $fragment = str_replace('_', '-', ('block-' . $current_block->module . '-' . $current_block->delta));
+                    $items[$key] = '<a href="#' . $fragment . '">' . $title . '</a>';
+                }
+            }
+        }
+
+        if (!empty($items)) {
+            $block['subject'] = t('Page Contents');
+            $variables = array(
+                'items' => $items,
+                'attributes' => array(
+                    'class' => 'nav nav-stacked',
+                ),
+            );
+            $block['content'] = theme('inpage_nav_block',
+                array(
+                    'vars' => $variables,
+                    'node_title' => $node->title
+                )
+            );
+        }
+    }
+
+    return $block;
+}
+
+/**
+ * Implements hook_theme().
+ * Used to wrap the items in a specific class BEM way
+ */
+function nexteuropa_inpage_nav_theme() {
+    return array(
+        'inpage_nav_block' => array(
+            'template' => "templates/" . 'inpage_nav_block',
+            'vars' => NULL
+        )
+    );
+}
+
+/**
+ * Helper: returns the markup for a specified region.
+ */
+function _get_region_markup($region) {
+    $blocks = block_list($region);
+    $renderable = _block_get_renderable_array($blocks);
+    return drupal_render($renderable);
+}
+
+/**
+ * Helper: returns the list of heading anchors in the markup.
+ */
+function _extract_anchors($markup) {
+    $pattern = "/<h2>(.+?)<\/h2>/";
+    preg_match_all($pattern, $markup, $matches);
+    $anchors = array();
+    foreach ($matches[1] as $i => $id) {
+        $anchors[] = array(
+            'href' => '#' . $id,
+            'title' => $id,
+        );
+    }
+    return $anchors;
+}
