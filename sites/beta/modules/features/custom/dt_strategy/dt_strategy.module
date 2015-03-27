@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the dt Strategy feature.
- */
-
-include_once 'dt_strategy.features.inc';
