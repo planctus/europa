@@ -9,13 +9,13 @@
  */
 function dt_subject_install() {
   // Apply default dt configuration to "Subject" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('subject');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('subject');
 }
 
 /**
  * Implements hook_uninstall().
  */
-function dt_core_uninstall() {
+function subject_uninstall() {
   $path = drupal_get_path('module', 'subject') . '/subject.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));

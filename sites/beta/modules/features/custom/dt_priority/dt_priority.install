@@ -9,13 +9,13 @@
  */
 function dt_priority_install() {
   // Apply default dt configuration to "Priority" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('priority');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
 }
 
 /**
  * Implements hook_uninstall().
  */
-function dt_core_uninstall() {
+function priority_uninstall() {
   $path = drupal_get_path('module', 'priority') . '/priority.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
