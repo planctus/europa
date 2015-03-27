@@ -18,7 +18,7 @@ function europa_theme() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter()
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
 
@@ -27,7 +27,7 @@ function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
   if ($node_form_sidebar) {
     foreach ($node_form_sidebar as $field_name) {
       $form[$field_name]['#group'] = NULL;
-    }    
+    }
   }
 }
 
@@ -35,19 +35,18 @@ function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Preprocessor for theme('node_form').
  */
 function europa_preprocess_node_form(&$variables) {
-  
-  $i = 100;  
+  $i = 100;
   $variables['sidebar'] = array();
   $node_form_sidebar = theme_get_setting('node_form_sidebar');
   if ($node_form_sidebar) {
     foreach ($node_form_sidebar as $field_name) {
       if (isset($variables['form'][$field_name])) {
         $variables['form'][$field_name]['#weight'] = $i++;
-        $variables['sidebar'][$field_name] = $variables['form'][$field_name];    
+        $variables['sidebar'][$field_name] = $variables['form'][$field_name];
         hide($variables['form'][$field_name]);
       }
-    }    
-  }  
+    }
+  }
   // Extract the form buttons, and put them in independent variable.
   $variables['buttons'] = $variables['form']['actions'];
   hide($variables['form']['actions']);
@@ -55,7 +54,7 @@ function europa_preprocess_node_form(&$variables) {
 
 
 /**
- * Overrides theme_form_required_marker()
+ * Overrides theme_form_required_marker().
  */
 function europa_form_required_marker($variables) {
   // This is also used in the installer, pre-database setup.
@@ -77,13 +76,13 @@ function europa_preprocess_node(&$vars) {
       '!username' => $vars['name'],
       '!datetime' => $vars['date'],
     ));
-    
-    // Display last update date
+
+    // Display last update date.
     $node = $vars['node'];
     $revision_account = user_load($node->revision_uid);
     $vars['revision_name'] = theme('username', array('account' => $revision_account));
     $vars['revision_date'] = format_date($node->changed);
-    $vars['submitted'] .= "<br>".t('Last modified by !revision-name on !revision-date', array(
+    $vars['submitted'] .= "<br>" . t('Last modified by !revision-name on !revision-date', array(
       '!name' => $vars['name'], '!date' => $vars['date'], '!revision-name' => $vars['revision_name'], '!revision-date' => $vars['revision_date'])
     );
   }
@@ -94,27 +93,17 @@ function europa_preprocess_node(&$vars) {
  */
 function europa_menu_tree__secondary(&$variables) {
   return '<ul class="menu nav navbar-nav secondary">' . $variables['tree'] . '</ul>';
-  // global $user;
-  // $username = format_username($user);
-  // $toggle = t('Hello, !name', array('!name' => "<b>{$username}</b>"));
-  // return '
-  //    <ul class="nav navbar-nav navbar-right">
-  //      <li class="dropdown">
-  //        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $toggle . ' <b class="caret"></b></a>
-  //        <ul class="dropdown-menu">' . $variables['tree'] . '</ul>
-  //      </li>
-  //    </ul>'; 
 }
 
 /**
- * Implements preprocess for theme('easy_breadcrumb')
+ * Implements preprocess for theme('easy_breadcrumb').
  */
 function europa_preprocess_easy_breadcrumb(&$variables) {
   $variables['separator'] = '&raquo;';
 }
 
 /**
- * Overrides theme('easy_breadcrumb')
+ * Overrides theme('easy_breadcrumb').
  */
 function europa_easy_breadcrumb($variables) {
 
@@ -143,7 +132,7 @@ function europa_easy_breadcrumb($variables) {
         $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
       }
     }
-    
+
     $html .= '</ol>';
   }
 
@@ -152,12 +141,13 @@ function europa_easy_breadcrumb($variables) {
 
 /**
  * Implements hook_preprocess_image().
-*/
+ */
 function europa_preprocess_image(&$variables) {
-  // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
+  // Fix issue between print module and bootstrap theme, print module put
+  // a string instead of an array in $variables['attributes']['class'].
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if(isset($variables['attributes']['class'])) {
-      if(is_array($variables['attributes']['class'])) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
       }
       else {
