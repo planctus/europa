@@ -71,8 +71,9 @@ function dt_core_update_7103() {
   variable_set('theme_default', 'europa');
 }
 
-
-// Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE)
+/**
+ * Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE)
+ */
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
 }
