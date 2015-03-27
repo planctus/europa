@@ -5313,20 +5313,54 @@ Styleguide: siteheader
 /*
 Footer
 
-A majority of buttons in the site are built from the same base class.
+Site-wide footer component
 
 Markup: html/footer.html
 
 Styleguide footer
 */
 .footer {
-  background: #006fb4;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background: #004494;
+  padding: 60px 0;
   color: #fff;
   font-size: 13px; }
   .footer a {
     color: #fff; }
+  .footer label {
+    color: #fff;
+    font-size: 13px;
+    font-weight: normal;
+    float: left;
+    padding: 15px 10px 0 0; }
+  .footer p {
+    padding-top: 10px; }
+
+.footer-menu {
+  padding-left: 0; }
+  .footer-menu li:first-child > a {
+    padding-left: 0; }
+  .footer-menu li a {
+    padding-top: 10px; }
+    .footer-menu li a:hover {
+      background: none;
+      text-decoration: underline; }
+  .footer-menu__bottom-border {
+    border-bottom: 1px solid #4d7cb4;
+    padding-bottom: 5px; }
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 0; }
+    .footer label {
+      float: none;
+      text-align: center;
+      width: 100%; }
+    .footer p {
+      text-align: center; }
+
+  .footer-menu {
+    text-align: center; }
+ }
 
 /*
 Datepicker
