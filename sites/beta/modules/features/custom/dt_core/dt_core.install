@@ -72,7 +72,9 @@ function dt_core_update_7103() {
 }
 
 
-// Removing SHITIEST THING THAT WASTED OUR DAY
+/**
+ * Removing SHITIEST THING THAT WASTED OUR DAY
+ */
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
 }
