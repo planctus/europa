@@ -16,7 +16,6 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_core_abbreviation
 features[field_base][] = field_core_commissioner
-features[field_base][] = field_core_department
 features[field_base][] = field_core_ecorganisation
 features[field_base][] = field_core_introduction
 features[field_base][] = field_core_link

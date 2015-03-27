@@ -12,6 +12,7 @@ features[ctools][] = views:views_default:3.0
 features[ds_layout_settings][] = node|department|full
 features[ds_layout_settings][] = node|department|meta
 features[features_api][] = api:2
+features[field_base][] = field_core_department
 features[field_group][] = group_cta|node|department|form
 features[field_group][] = group_person|node|department|form
 features[field_group][] = group_priorities|node|department|form
