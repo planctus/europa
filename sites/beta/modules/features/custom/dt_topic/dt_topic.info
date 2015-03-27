@@ -6,5 +6,5 @@ version = 7.x-1.0-dev
 project = dt_topic
 dependencies[] = dt_core
 features[features_api][] = api:2
-features[field_base][] = field_core_topic
+features[field_base][] = field_core_topics
 features[node][] = topic

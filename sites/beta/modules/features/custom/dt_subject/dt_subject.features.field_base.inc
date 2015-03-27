@@ -18,40 +18,32 @@ function dt_subject_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_subject',
     'foreign keys' => array(
-      'node' => array(
+      'tid' => array(
         'columns' => array(
-          'target_id' => 'nid',
+          'tid' => 'tid',
         ),
-        'table' => 'node',
+        'table' => 'taxonomy_term_data',
       ),
     ),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'taxonomy',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'subject' => 'subject',
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'subjects',
+          'parent' => 0,
         ),
       ),
-      'target_type' => 'node',
+      'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'taxonomy_term_reference',
   );
 
   return $field_bases;

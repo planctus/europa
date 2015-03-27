@@ -10,13 +10,13 @@
 function dt_topic_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_topic'
-  $field_bases['field_core_topic'] = array(
+  // Exported field_base: 'field_core_topics'
+  $field_bases['field_core_topics'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_topic',
+    'field_name' => 'field_core_topics',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(

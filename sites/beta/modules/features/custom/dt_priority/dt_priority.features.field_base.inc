@@ -10,13 +10,13 @@
 function dt_priority_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_priority'
-  $field_bases['field_core_priority'] = array(
+  // Exported field_base: 'field_core_priorities'
+  $field_bases['field_core_priorities'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_priority',
+    'field_name' => 'field_core_priorities',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(
