@@ -31,7 +31,7 @@ function dt_core_install() {
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
 
-  // Removing THIS SHIT
+  // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!)
   variable_set('cce_basic_config_admin_pages', array());
 }
 
@@ -72,7 +72,7 @@ function dt_core_update_7103() {
 }
 
 
-// Removing SHITIEST THING THAT WASTED OUR DAY
+// Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE)
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
 }
