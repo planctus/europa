@@ -8,7 +8,7 @@
  * Implements hook_install().
  */
 function dt_core_install() {
-  // Those are basic configuration features for each class
+  // Those are basic configuration features for each class.
   $dt_classes = array(
     'dt_homepage_core',
     'dt_aboutec_core',
@@ -16,18 +16,18 @@ function dt_core_install() {
   );
   module_enable($dt_classes);
 
-  // Enabling functional features
+  // Enabling functional features.
   $features = array(
     'dt_announcement',
   );
   module_enable($features);
 
-  // Reverting feature components that have overriden state after installing
+  // Reverting feature components that have overriden state after installing.
   features_revert(array(
     'dt_core' => array('taxonomy', 'user_role'),
   ));
 
-  // Enable europa theme
+  // Enable europa theme.
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
 }
@@ -48,7 +48,7 @@ function dt_core_update_7101() {
   $slices = array(
     'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core'
+    'dt_strategy_core',
   );
   module_enable($slices);
 }
