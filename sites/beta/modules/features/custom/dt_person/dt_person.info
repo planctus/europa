@@ -11,6 +11,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_layout_settings][] = node|person|meta
 features[features_api][] = api:2
+features[field_base][] = field_core_commissioner
 features[field_base][] = field_person_biography_intro
 features[field_base][] = field_person_cv
 features[field_base][] = field_person_declaration
