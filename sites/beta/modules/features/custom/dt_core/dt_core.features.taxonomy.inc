@@ -9,7 +9,7 @@
  */
 function dt_core_taxonomy_default_vocabularies() {
   return array(
-    'subjects' => array(
+    'subjects' => (object) array(
       'name' => 'Subjects',
       'machine_name' => 'subjects',
       'description' => '',

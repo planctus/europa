@@ -11,7 +11,7 @@ function dt_core_user_default_roles() {
   $roles = array();
 
   // Exported role: tester.
-  $roles['tester'] = array(
+  $roles['tester'] = (object) array(
     'name' => 'tester',
     'weight' => 5,
   );
