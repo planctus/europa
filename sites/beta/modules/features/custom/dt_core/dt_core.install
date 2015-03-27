@@ -77,3 +77,19 @@ function dt_core_update_7103() {
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
 }
+
+
+/**
+ * Enabling adressfield and inline_entity_form
+ */
+function dt_core_update_7105() {
+  module_enable(array('addressfield', 'inline_entity_form'));
+}
+
+
+/**
+ * Enabling DT contact feature containing contact content type
+ */
+function dt_core_update_7106() {
+  module_enable(array('dt_contact'));
+}
