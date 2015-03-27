@@ -9,7 +9,7 @@
  */
 function dt_publication_install() {
   // Apply default dt configuration to "Publication" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('publication');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('publication');
 }
 
 /**

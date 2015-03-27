@@ -9,7 +9,7 @@
  */
 function dt_topic_install() {
   // Apply default dt configuration to "Topic" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('topic');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('topic');
 }
 
 /**

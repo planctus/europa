@@ -9,7 +9,7 @@
  */
 function dt_priority_install() {
   // Apply default dt configuration to "Priority" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('priority');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
 }
 
 /**

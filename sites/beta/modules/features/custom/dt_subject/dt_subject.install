@@ -9,7 +9,7 @@
  */
 function dt_subject_install() {
   // Apply default dt configuration to "Subject" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('subject');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('subject');
 }
 
 /**

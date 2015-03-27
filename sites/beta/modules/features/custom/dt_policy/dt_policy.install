@@ -9,7 +9,7 @@
  */
 function dt_policy_install() {
   // Apply default dt configuration to "Policy" content type.
-  multisite_config_service('dt_core')->applyDefaultConfigurationToContentType('policy');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy');
 }
 
 /**
