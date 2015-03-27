@@ -12,17 +12,24 @@ function dt_core_install() {
   $dt_classes = array(
     'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core'
+    'dt_strategy_core',
   );
-
   module_enable($dt_classes);
 
   // Enabling functional features
   $features = array(
-    'dt_announcement'
+    'dt_announcement',
   );
-
   module_enable($features);
+
+  // Reverting feature components that have overriden state after installing
+  features_revert(array(
+    'dt_core' => array('taxonomy', 'user_role'),
+  ));
+
+  // Enable europa theme
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }
 
 /**
@@ -43,7 +50,6 @@ function dt_core_update_7101() {
     'dt_aboutec_core',
     'dt_strategy_core'
   );
-
   module_enable($slices);
 }
 
@@ -52,4 +58,12 @@ function dt_core_update_7101() {
  */
 function dt_core_update_7102() {
   module_enable(array('dt_announcement'));
+}
+
+/**
+ * Enable Europa theme
+ */
+function dt_core_update_7103() {
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }

@@ -1,7 +1,7 @@
 name = Person
 description = Person content type related settings.
 core = 7.x
-package = Nexteuropa Digital Transformation
+package = NextEuropa Digital Transformation About the EC
 version = 7.x-1.0
 project = dt_person
 dependencies[] = dt_core
