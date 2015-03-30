@@ -8,9 +8,13 @@ composer.bin = composer.phar
 
 # The build location
 phing.project.build.dir = build
+phing.project.distro.dir = docroot
 
 # Temporary folder
 phing.project.tmp.dir = tmp
+
+# Temporary folder
+phing.project.platform.dir = platform
 
 # The URL of the MULTISITE SVN repository
 multisite.repo.root = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE
@@ -26,7 +30,7 @@ drupal.version = 7.34
 drupal.profile.name = multisite_drupal_standard
 
 # Development / testing modules to enable
-drupal.modules =
+drupal.modules = dt_core
 
 # The site name to use. Use 'all' if you do not use a multisite installation.
 drupal.site.name = all
@@ -37,7 +41,7 @@ drupal.db.user = root
 drupal.db.password =
 drupal.db.host = 127.0.0.1
 drupal.db.port = 3306
-drupal.db.name = drupal_demo
+drupal.db.name = drupal
 drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
 
 # Admin user.
@@ -53,21 +57,31 @@ projects[drupal][type] = core${line.separator}\
 projects[drupal][version] = ${drupal.version}${line.separator}
 
 # Paths
-project.code.dir = ${project.basedir}/${phing.project.build.dir}
-platform.code.dir = ${project.basedir}/${phing.project.platform.dir}
-
 drupal.distro.make.file = distro.make
-drupal.profile.dir = ${project.code.dir}/profiles
-drupal.platform.profile.dir = ${platform.code.dir}/profiles
 
-drupal.sites.dir = ${project.code.dir}/sites
-drupal.settings.dir = ${drupal.sites.dir}/default
-drupal.files.dir = ${drupal.settings.dir}/files
+platform.code.dir = ${project.basedir}/${phing.project.platform.dir}
+platform.profile.dir = ${platform.code.dir}/profiles
 
-drupal.site.dir = ${drupal.sites.dir}/${drupal.site.name}
-drupal.libraries.dir = ${drupal.site.dir}/libraries
-drupal.modules.dir = ${drupal.site.dir}/modules
-drupal.themes.dir = ${drupal.site.dir}/themes
+dev.code.dir = ${project.basedir}/${phing.project.build.dir}
+dev.drupal.profile.dir = ${dev.code.dir}/profiles
+dev.drupal.sites.dir = ${dev.code.dir}/sites
+dev.drupal.settings.dir = ${dev.drupal.sites.dir}/default
+dev.drupal.files.dir = ${dev.drupal.settings.dir}/files
+dev.drupal.site.dir = ${dev.drupal.sites.dir}/${drupal.site.name}
+dev.drupal.libraries.dir = ${dev.drupal.site.dir}/libraries
+dev.drupal.modules.dir = ${dev.drupal.site.dir}/modules
+dev.drupal.themes.dir = ${dev.drupal.site.dir}/themes
+
+
+distro.code.dir = ${project.basedir}/${phing.project.distro.dir}
+distro.drupal.profile.dir = ${distro.code.dir}/profiles
+distro.drupal.sites.dir = ${distro.code.dir}/sites
+distro.drupal.settings.dir = ${distro.drupal.sites.dir}/default
+distro.drupal.files.dir = ${distro.drupal.settings.dir}/files
+distro.drupal.site.dir = ${distro.drupal.sites.dir}/${drupal.site.name}
+distro.drupal.libraries.dir = ${distro.drupal.site.dir}/libraries
+distro.drupal.modules.dir = ${distro.drupal.site.dir}/modules
+distro.drupal.themes.dir = ${distro.drupal.site.dir}/themes
 
 # Test related settings. This is for local testing, not needed on continuousphp.
 behat.bin = ${project.basedir}/bin/behat
@@ -75,4 +89,4 @@ behat.dir = ${project.basedir}/tests
 behat.yml = ${behat.dir}/behat.yml
 behat.base_url = http://localhost
 
-server.docroot = /home/cphp/var/www
+server.docroot = /var/www
