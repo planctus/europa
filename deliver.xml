@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Deliver to Acquia Cloud" default="deliver">
+  <target name="deliver" description="Deliver code to Acquia repository">
+    <property name="acquia.docroot" value="${project.basedir}/acquia-cloud/docroot" />
+    <echo msg="Copy files to acquia-cloud/docroot." />
+    <copy todir="${acquia.docroot}">
+        <fileset dir="${dev.code.dir}">
+          <patternset>
+            <exclude name="**/settings.php"/>
+            <exclude name="**/sites.php/"/>
+          </patternset>
+      </fileset>
+    </copy>
+  </target>
+</project>
