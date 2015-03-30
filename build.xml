@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <project name="${drupal.profile.name}" default="help">
-
     <!-- If `build.properties.local` exists then we want it badly -->
     <if>
         <available file="build.properties.local"/>
@@ -12,6 +11,7 @@
     <property file="build.properties"/>
 
     <target name="help" description="Phing target list">
+      <echo msg="${project.code.dir}" />
         <exec executable="${phing.bin}"
               passthru="true">
             <arg value="-l"/>
@@ -22,8 +22,34 @@
         <taskdef name="drush" classname="DrushTask" />
     </target>
 
+    <!-- Initializes veriables to build dev environment. -->
+    <target name="init-dev-properties">
+      <property name="project.code.dir" value="${project.basedir}/${phing.project.build.dir}" override="true"/>
+      <property name="drupal.profile.dir" value="${dev.drupal.profile.dir}" override="true"/>
+      <property name="drupal.sites.dir" value="${dev.drupal.sites.dir}" override="true"/>
+      <property name="drupal.settings.dir" value="${dev.drupal.settings.dir}" override="true"/>
+      <property name="drupal.files.dir" value="${dev.drupal.files.dir}" override="true"/>
+      <property name="drupal.site.dir" value="${dev.drupal.site.dir}" override="true"/>
+      <property name="drupal.libraries.dir" value="${dev.drupal.libraries.dir}" override="true"/>
+      <property name="drupal.modules.dir" value="${dev.drupal.modules.dir}" override="true"/>
+      <property name="drupal.themes.dir" value="${dev.drupal.themes.dir}" override="true"/>
+    </target>
+
+    <!-- Initializes veriables to build production environment. -->
+    <target name="init-distro-properties">
+      <property name="project.code.dir" value="${project.basedir}/${phing.project.distro.dir}" override="true"/>
+      <property name="drupal.profile.dir" value="${distro.drupal.profile.dir}" override="true"/>
+      <property name="drupal.sites.dir" value="${distro.drupal.sites.dir}" override="true"/>
+      <property name="drupal.settings.dir" value="${distro.drupal.settings.dir}" override="true"/>
+      <property name="drupal.files.dir" value="${distro.drupal.files.dir}" override="true"/>
+      <property name="drupal.site.dir" value="${distro.drupal.site.dir}" override="true"/>
+      <property name="drupal.libraries.dir" value="${distro.drupal.libraries.dir}" override="true"/>
+      <property name="drupal.modules.dir" value="${distro.drupal.modules.dir}" override="true"/>
+      <property name="drupal.themes.dir" value="${distro.drupal.themes.dir}" override="true"/>
+    </target>
+
     <!-- Execute drush make file and download profile. -->
-    <target name="drush-distro" depends="init">
+    <target name="drush-make" depends="init">
         <if>
             <available file="${drupal.settings.dir}" type="dir" />
             <then>
@@ -34,7 +60,7 @@
         </if>
 
         <echo msg="Delete previous build." />
-        <delete dir="${phing.project.build.dir}" includeemptydirs="true" failonerror="false" />
+        <delete dir="${project.code.dir}" includeemptydirs="true" failonerror="false" />
 
         <echo msg="Make the distribution." />
         <drush
@@ -42,9 +68,9 @@
             assume="yes"
             bin="${drush.bin}"
             pipe="yes"
-            root="${phing.project.build.dir}">
-            <param>${drupal.platform.profile.dir}/${drupal.profile.name}/build.make</param>
-            <param>${phing.project.build.dir}</param>
+            root="${project.code.dir}">
+            <param>${platform.profile.dir}/${drupal.profile.name}/build.make</param>
+            <param>${project.code.dir}</param>
             <!--
               High concurrency used because of make problems.
               @see https://github.com/drush-ops/drush/issues/985
@@ -53,7 +79,7 @@
         </drush>
 
         <echo msg="Copy platform files." />
-        <copy todir="${phing.project.build.dir}">
+        <copy todir="${project.code.dir}">
             <fileset dir="${phing.project.platform.dir}">
               <patternset>
                 <exclude name="**/*.svn"/>
@@ -69,14 +95,14 @@
     </target>
 
     <!-- Link custom modules. -->
-    <target name="link-modules" depends="init,drush-distro">
+    <target name="link-modules" depends="init,drush-make">
         <symlink link="${drupal.modules.dir}/project" target="../../../../modules" />
         <symlink link="${drupal.themes.dir}/project" target="../../../../themes" />
         <symlink link="${drupal.libraries.dir}/project" target="../../../../libraries" />
     </target>
 
     <!-- Copy custom modules. -->
-    <target name="copy-modules" depends="init,drush-distro">
+    <target name="copy-modules" depends="init,drush-make">
         <copy todir="${drupal.modules.dir}">
             <fileset dir="modules" />
         </copy>
@@ -93,7 +119,7 @@
     </target>
 
     <!-- Link test files into the build root. -->
-    <target name="link-tests" depends="init,drush-distro">
+    <target name="link-tests" depends="init,drush-make">
         <if>
             <not>
                 <available file="${project.basedir}/tests/behat.yml" type="file" />
@@ -227,15 +253,19 @@
 
     <target name="build-dev"
             description="Build a local Drupal site in order to dev"
-            depends="init, init-platform, drush-distro, link-modules, link-tests, files-directory, create-settings.php" />
+            depends="init, init-dev-properties, init-platform, drush-make, link-modules, link-tests, files-directory, create-settings.php" />
 
     <target name="rebuild-dev"
             description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
-            depends="init, backup-site-settings, update-platform, drush-distro, link-modules, link-tests, files-directory, create-settings.php, restore-site-settings" />
+            depends="init, init-dev-properties, backup-site-settings, update-platform, drush-make, link-modules, link-tests, files-directory, create-settings.php, restore-site-settings" />
 
     <target name="build-dist"
             description="Build the Drupal site in order to install it"
-            depends="init, drush-distro, copy-modules, files-directory, create-settings.php" />
+            depends="init, init-distro-properties, init-platform, drush-make, copy-modules, files-directory, create-settings.php" />
+
+    <target name="rebuild-dist"
+            description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
+            depends="init, init-distro-properties, backup-site-settings, update-platform, drush-make, copy-modules, files-directory, create-settings.php, restore-site-settings" />
 
     <target name="install"
             description="Install the Drupal site"
