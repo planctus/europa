@@ -11,6 +11,7 @@ _db_dumps
 bin
 vendor
 build
+docroot
 build.properties.local
 tmp
 platform
