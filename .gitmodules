@@ -1,0 +1,3 @@
+[submodule "aquia-cloud"]
+	path = aquia-cloud
+	url = beta@svn-3992.devcloud.hosting.acquia.com:beta.git

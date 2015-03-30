@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="${drupal.profile.name}" default="help">
+<project name="${phing.project.name}" default="help">
+    <import file="deliver.xml" optional="true"/>
     <!-- If `build.properties.local` exists then we want it badly -->
     <if>
         <available file="build.properties.local"/>
