@@ -52,6 +52,17 @@
     <!-- Execute drush make file and download profile. -->
     <target name="drush-make" depends="init">
         <if>
+            <not>
+                <available file="${phing.project.platform.dir}" type="dir" />
+            </not>
+            <then>
+                <echo message="Platform not initialized. Proceed by initializing the platform." />
+                <phingcall target="init-platform" />
+                <phingcall target="patch-platform" />
+            </then>
+        </if>
+
+        <if>
             <available file="${drupal.settings.dir}" type="dir" />
             <then>
               <chmod mode="0777" failonerror="false" verbose="false" quiet="true">
@@ -80,38 +91,27 @@
         </drush>
 
         <echo msg="Copy platform files." />
+        <phingcall target="clean-platform" />
         <copy todir="${project.code.dir}">
-            <fileset dir="${phing.project.platform.dir}">
-              <patternset>
-                <exclude name="**/*.svn"/>
-                <exclude name="**/automation/"/>
-                <exclude name="crawling_scripts/"/>
-                <exclude name="custom_subsites/"/>
-                <exclude name="deploy_scripts/"/>
-                <exclude name="dev/"/>
-                <exclude name="**/*.sh"/>
-              </patternset>
-          </fileset>
+            <fileset dir="${phing.project.platform.dir}" />
         </copy>
     </target>
 
     <!-- Link custom modules. -->
-    <target name="link-modules" depends="init,drush-make">
-        <symlink link="${drupal.modules.dir}/project" target="../../../../modules" />
-        <symlink link="${drupal.themes.dir}/project" target="../../../../themes" />
-        <symlink link="${drupal.libraries.dir}/project" target="../../../../libraries" />
+    <target name="link-project" depends="init,drush-make">
+        <symlink link="${dev.drupal.sites.dir}/${drupal.site.name}" target="../../${phing.project.project.dir}" />
     </target>
 
     <!-- Copy custom modules. -->
-    <target name="copy-modules" depends="init,drush-make">
+    <target name="copy-project" depends="init,drush-make">
         <copy todir="${drupal.modules.dir}">
-            <fileset dir="modules" />
+            <fileset dir="${phing.project.project.dir}/modules" />
         </copy>
         <copy todir="${drupal.themes.dir}">
-            <fileset dir="themes" />
+            <fileset dir="${phing.project.project.dir}/themes" />
         </copy>
         <copy todir="${drupal.libraries.dir}">
-            <fileset dir="libraries" />
+            <fileset dir="${phing.project.project.dir}/libraries" />
         </copy>
     </target>
 
@@ -225,23 +225,25 @@
     </target>
 
     <!-- svncheckout platform files from SVN. -->
-    <target name="init-platform" description="Export multisite from SVN" depends="init">
+    <target name="init-platform" description="Export Multisite from SVN" depends="init">
         <echo message="Deleting platform files." />
         <delete dir="${project.basedir}/${phing.project.platform.dir}" includeemptydirs="true" failonerror="false" />
         <svncheckout
              repositoryurl="${multisite.repo.url}"
              todir="${project.basedir}/${phing.project.platform.dir}"
              force="true"/>
+        <phingcall target="clean-platform" />
     </target>
 
     <!-- Update platform files from SVN. -->
-    <target name="update-platform" description="Update multisite from SVN" depends="init">
+    <target name="update-platform" description="Update Multisite from SVN" depends="init">
         <if>
           <available file="${project.basedir}/${phing.project.platform.dir}" type="dir" />
           <then>
             <echo message="Update platform files from SVN." />
             <svnupdate
                  todir="${project.basedir}/${phing.project.platform.dir}" />
+            <phingcall target="clean-platform" />
          </then>
          <else>
            <echo message="Nothing to update. Proceed by initializing the platform." />
@@ -250,21 +252,42 @@
       </if>
     </target>
 
+    <target name="patch-platform" description="Applies patches to Multisite" depends="init">
+        <echo message="Patching Multisite." />
+    </target>
+
+    <target name="clean-platform" description="Remove unnecessary files from Multisite" depends="init">
+        <echo message="Cleaning Multisite." />
+        <delete includeemptydirs="true" failonerror="false" >
+          <fileset dir="${phing.project.platform.dir}" defaultexcludes="false">
+              <patternset>
+                <include name="**/*.svn"/>
+                <include name="**/automation/"/>
+                <include name="crawling_scripts/"/>
+                <include name="custom_subsites/"/>
+                <include name="deploy_scripts/"/>
+                <include name="dev/"/>
+                <include name="**/*.sh"/>
+              </patternset>
+          </fileset>
+        </delete>
+    </target>
+
     <target name="build-dev"
             description="Build a local Drupal site in order to dev"
-            depends="init, init-dev-properties, init-platform, drush-make, link-modules, link-tests, files-directory, create-settings.php" />
+            depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-settings.php" />
 
     <target name="rebuild-dev"
             description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
-            depends="init, init-dev-properties, backup-site-settings, update-platform, drush-make, link-modules, link-tests, files-directory, create-settings.php, restore-site-settings" />
+            depends="init, init-dev-properties, backup-site-settings, drush-make, link-project, link-tests, files-directory, create-settings.php, restore-site-settings" />
 
     <target name="build-dist"
             description="Build the Drupal site in order to install it"
-            depends="init, init-distro-properties, init-platform, drush-make, copy-modules, files-directory, create-settings.php" />
+            depends="init, init-distro-properties, drush-make, copy-project, files-directory, create-settings.php" />
 
     <target name="rebuild-dist"
             description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
-            depends="init, init-distro-properties, backup-site-settings, update-platform, drush-make, copy-modules, files-directory, create-settings.php, restore-site-settings" />
+            depends="init, init-distro-properties, backup-site-settings, drush-make, copy-project, files-directory, create-settings.php, restore-site-settings" />
 
     <target name="install"
             description="Install the Drupal site"

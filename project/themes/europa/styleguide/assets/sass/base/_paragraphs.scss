@@ -1,0 +1,14 @@
+// Paragraphs
+//
+// Markup: <p>Paragraph example</p>
+//
+// Styleguide text.paragraphs
+
+.paragraph {
+  font-family: $font-family-serif;
+  margin-bottom: 1.7em;
+}
+
+p {
+  @extend .paragraph;
+}
