@@ -73,8 +73,8 @@ projects[webform][patch][] = ../multisite_drupal_core/patches/webform-use_ecas_l
 projects[workbench_access][patch][] = ../multisite_drupal_core/patches/workbench_access-fix_php_issues-4517.patch
 projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-001-wm-field_translations-2285931-1.patch
 projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-002-attachment_fix-1084436-47.patch
-projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-004-workbench_moderation-5054.patch
-projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-005-workbench_moderation.rules-5054.patch
+;projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-004-workbench_moderation-5054.patch
+;projects[workbench_moderation][patch][] = ../multisite_drupal_core/patches/workbench_moderation-005-workbench_moderation.rules-5054.patch
 projects[wysiwyg][patch][] = ../multisite_drupal_core/patches/wysiwyg-ckeditor_ie_fix-1914904-5.patch
 projects[wysiwyg][patch][] = ../multisite_drupal_core/patches/wysiwyg-local_css_file_paths-1793704-14.patch
 projects[colorbox][patch][] = ../multisite_drupal_core/patches/colorbox-xss_colorbox-insert-image_tpl-1656.patch
@@ -88,4 +88,3 @@ projects[drupal][patch][] = ../multisite_drupal_core/patches/taxonomy-xss_taxono
 projects[views][patch][] = ../multisite_drupal_core/patches/views-xss_views-more_tpl-1661.patch
 projects[views][patch][] = ../multisite_drupal_core/patches/views-xss_views-view-summary_tpl-1663.patch
 projects[views][patch][] = ../multisite_drupal_core/patches/xss_views-view-summary-unformatted_tpl-1662.patch
-
