@@ -14,6 +14,8 @@
 
 ### Initalize platform for your project:
 
+This has been already done. It only needs to be done again only on platform update.
+
 * Run <code>bin/phing init-platform</code>
 
 #### This will:
@@ -38,24 +40,47 @@ The platform folder is version controlled so changes to the platform files can b
 
 ## Re-build the environment:
 
+This needs to be performed in case you want to rebuild your development environment without re-installing the database. (Updating the platform for example.)
+
 *   RUN: <code>bin/phing rebuild-dev</code>
 
 #### This will:
 
 *   Backup settings.php
-*   Update the branch of MULTISITE set in the properties file from SVN.
 *   Make the Drupal profile into the build folder based on the build.make file of the installation profile set in the properties file.
 *   Restore settings.php
 
-## To build your production codebase:
-*   RUN: <code>bin/phing build-distr</code>
+## Package your production codebase:
+*   RUN: <code>bin/phing package</code>
 
 #### This will:
 
-*   Check out the branch of MULTISITE set in the properties file from SVN.
 *   Make the Drupal profile into the distro folder based on the build.make file of the installation profile set in the properties file.
 *   Copy your custom modules, themes and libraries into the built Drupal instance
 
 ## To install your production site:
 
 *   RUN: <code>bin/phing install-distr</code>
+
+## Deliver production codebase to the Acquia Cloud:
+
+In order to do this you need to have read/write access to the Acquia Cloud repository and you need to <code>git submodule init</code> for the first time the acquia-cloud submodule in the project.
+
+*   RUN: <code>bin/phing deliver</code>
+
+#### This will:
+
+*   Copy your previously packaged (!) codebase from docroot to the acquia-cloud/docroot in the acquia-cloud submodule.
+
+#####From the submodule:
+
+*   Stages all changes
+*   Commits changes to master branch of the Acquia Cloud repository
+*   Creates a tag with a name you input when prompted
+*   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
+
+#### Important!
+
+I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized in every branch separately. (AFAIK not tested).
+
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the master branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.

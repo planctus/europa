@@ -103,14 +103,14 @@
     </target>
 
     <!-- Copy custom modules. -->
-    <target name="copy-project" depends="init,drush-make">
-        <copy todir="${drupal.modules.dir}">
+    <target name="copy-project" depends="init, init-distro-properties">
+        <copy todir="${drupal.modules.dir}" overwrite="true">
             <fileset dir="${phing.project.project.dir}/modules" />
         </copy>
-        <copy todir="${drupal.themes.dir}">
+        <copy todir="${drupal.themes.dir}" overwrite="true">
             <fileset dir="${phing.project.project.dir}/themes" />
         </copy>
-        <copy todir="${drupal.libraries.dir}">
+        <copy todir="${drupal.libraries.dir}" overwrite="true">
             <fileset dir="${phing.project.project.dir}/libraries" />
         </copy>
     </target>
@@ -311,13 +311,9 @@
             description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
             depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-sites.php" />
 
-    <target name="build-dist"
+    <target name="package"
             description="Build the Drupal site in order to install it"
-            depends="init, init-distro-properties, drush-make, copy-project, files-directory, create-settings.php" />
-
-    <target name="rebuild-dist"
-            description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
-            depends="init, init-distro-properties, backup-site-settings, drush-make, copy-project, files-directory, create-settings.php, restore-site-settings" />
+            depends="init, init-distro-properties, drush-make, copy-project" />
 
     <target name="install"
             description="Install the Drupal site"
@@ -326,10 +322,6 @@
     <target name="install-dev"
             description="Install the Dev Drupal site"
             depends="init-dev-properties, install" />
-
-    <target name="install-dist"
-            description="Install the Dev Drupal site"
-            depends="init-distro-properties, install" />
 
     <target name="test"
             description="Run tests."
