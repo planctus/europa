@@ -4,6 +4,55 @@
  * template.php
  */
 
+
+/**
+ * Implements hook_theme().
+ */
+function europa_theme() {
+    return array(
+        'node_form' => array(
+            'render element' => 'form',
+            'template' => 'node-form',
+            'path' => drupal_get_path('module', 'europa') . '/theme',
+        ),
+    );
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function europa_form_node_form_alter(&$form, &$form_state, $form_id) {
+
+    // Eventually remove field from vertical tabs or other similar groupings.
+    $node_form_sidebar = theme_get_setting('node_form_sidebar');
+    if ($node_form_sidebar) {
+        foreach ($node_form_sidebar as $field_name) {
+            $form[$field_name]['#group'] = NULL;
+        }
+    }
+}
+
+/**
+ * Preprocessor for theme('node_form').
+ */
+function europa_preprocess_node_form(&$variables) {
+    $i = 100;
+    $variables['sidebar'] = array();
+    $node_form_sidebar = theme_get_setting('node_form_sidebar');
+    if ($node_form_sidebar) {
+        foreach ($node_form_sidebar as $field_name) {
+            if (isset($variables['form'][$field_name])) {
+                $variables['form'][$field_name]['#weight'] = $i++;
+                $variables['sidebar'][$field_name] = $variables['form'][$field_name];
+                hide($variables['form'][$field_name]);
+            }
+        }
+    }
+    // Extract the form buttons, and put them in independent variable.
+    $variables['buttons'] = $variables['form']['actions'];
+    hide($variables['form']['actions']);
+}
+
 /**
  * Overrides theme_form_required_marker().
  */
