@@ -4889,8 +4889,227 @@ button.close {
     display: none !important; }
  }
 
+/*
+Blockquote
+
+Markup: html/blockquote.html
+
+Styleguide text.blockquote
+*/
+blockquote {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 1.333em;
+  color: #575757;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.6em 1.5em;
+  clear: both;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  display: inline-block; }
+  blockquote p {
+    line-height: inherit; }
+    blockquote p:before, blockquote p:after {
+      content: '';
+      display: block;
+      position: absolute;
+      background: url('../images/svg/quote.svg') no-repeat;
+      background-size: 60px;
+      width: 30px;
+      height: 23px; }
+    blockquote p:before {
+      top: 4px;
+      left: 0; }
+    blockquote p:after {
+      background-position: -31px 0;
+      bottom: 0;
+      right: 0; }
+
+.no-svg blockquote p:before, .no-svg blockquote p:after {
+  background-image: url('../images/png/quote.png'); }
+
 .radio + .radio, .checkbox + .checkbox {
   margin-top: auto; }
+
+ul.list-inline > li {
+  display: inline-block; }
+
+.row {
+  padding: 15px 0; }
+
+/*
+Button
+
+Markup: html/button.html
+
+Styleguide form.button
+*/
+.button, button, input[type="button"] {
+  color: red; }
+
+/*
+Checkbox
+
+Markup: html/checkbox.html
+
+Styleguide form.checkbox
+*/
+/*
+ * Please
+ * @see http://bootsnipp.com/snippets/featured/funky-radio-buttons
+ * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
+ */
+.checkbox {
+  margin-bottom: 2px;
+  margin-top: 0; }
+  .checkbox label {
+    color: #575757;
+    height: 2.75em;
+    line-height: 2.75em;
+    display: block;
+    text-align: left;
+    border: transparent solid 2px;
+    border-radius: 0; }
+  .checkbox input {
+    margin: 1px 0 0 13px; }
+  .checkbox input[type="checkbox"] {
+    height: 2.75em;
+    margin-left: -9999px;
+    position: relative;
+    float: left; }
+    .checkbox input[type="checkbox"]:not(checked) + label {
+      background-color: #ececec;
+      padding-left: 2.778em; }
+      .checkbox input[type="checkbox"]:not(checked) + label:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 1.25em;
+        height: 1.25em;
+        top: 0.8em;
+        left: 1em;
+        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background-size: auto 1.25em; }
+    .checkbox input[type="checkbox"]:checked + label {
+      color: #ffffff;
+      background-color: #006fb4; }
+      .checkbox input[type="checkbox"]:checked + label:before {
+        background-image: url(../images/svg/checkbox-checked.svg); }
+    .checkbox input[type="checkbox"]:hover:not(checked) + label {
+      color: #575757;
+      border: #006fb4 solid 2px;
+      background-color: #ffffff; }
+    .checkbox input[type="checkbox"]:hover:checked + label {
+      color: #ffffff;
+      border: #ffd617 solid 2px;
+      background-color: #006fb4; }
+
+.no-svg .checkbox input[type="checkbox"]:before {
+  background-image: url(../images/png/checkbox-radio.png) !important; }
+.no-svg .checkbox input[type="checkbox"]:checked + label:before {
+  background-position: -1.25em 0; }
+
+/*@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-regular-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-regular-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-regular-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-regular-webfont.svg#ec_square_sans_proregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-italic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-italic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-italic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-italic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-italic-webfont.svg#ec_square_sans_proitalic') format('svg');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-meditalic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-meditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-meditalic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-meditalic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-meditalic-webfont.svg#ec_square_sans_proMdIt') format('svg');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-medium-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-medium-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-medium-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-medium-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-medium-webfont.svg#ec_square_sans_promedium') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-bolditalic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-bolditalic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-bolditalic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-bolditalic-webfont.svg#ec_square_sans_probold_italic') format('svg');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'ECSquareSansPro';
+  src: url('../fonts/ecsquaresanspro-bold-webfont.eot');
+  src: url('../fonts/ecsquaresanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro-bold-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro-bold-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro-bold-webfont.svg#ec_square_sans_probold') format('svg');
+  font-weight: 800;
+  font-style: normal;
+}*/
+/*
+Form
+
+Styleguide form
+*/
+.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
+  color: #575757;
+  background-color: #ffffff;
+  border: 2px solid #b3b4b5;
+  border-radius: 0;
+  margin-bottom: 1.1em;
+  height: 2.75em;
+  font-size: 0.889em;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+  .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .form-control.is-focused, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-focused, .has-error .form-control:focus, .has-error .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .has-error select:focus {
+    color: #000;
+    border-color: #ffd617;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .form-control.is-disabled, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
+    color: #b3b4b5;
+    background-color: #e2e2e2; }
+
+/*
+Form Group
+
+Markup: html/form-group.html
+
+Styleguide form.form-group
+*/
+.form-group {
+  margin-bottom: 1.7em; }
 
 /*
 Text styling
@@ -4958,6 +5177,23 @@ h6, .h6 {
   text-decoration: uppercase;
   color: #222222; }
 
+/*
+Label
+
+Markup: html/label.html
+
+Styleguide form.label
+*/
+.label, label {
+  color: #575757;
+  font-size: 0.889em;
+  display: block;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 0.556em; }
+  .label.is-disabled, label.is-disabled {
+    color: #b3b4b5; }
+
 /* 
 Link
 
@@ -4979,17 +5215,6 @@ a {
     text-decoration: none; }
 
 /*
-Paragraphs
-
-Markup: html/paragraphs.html
-
-Styleguide text.paragraphs
-*/
-.paragraph, p, .region-content ul, .region-content ol, blockquote {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  margin-bottom: 1.7em; }
-
-/*
 Lists
 
 Markup: html/lists.html
@@ -5000,177 +5225,15 @@ ul, ol {
   padding-left: 40px; }
 
 /*
-Blockquote
+Paragraphs
 
-Markup: html/blockquote.html
+Markup: html/paragraphs.html
 
-Styleguide text.blockquote
+Styleguide text.paragraphs
 */
-blockquote {
+.paragraph, blockquote, .region-content ul, .region-content ol, p {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 1.333em;
-  color: #575757;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0.6em 1.5em;
-  clear: both;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  display: inline-block; }
-  blockquote p {
-    line-height: inherit; }
-    blockquote p:before, blockquote p:after {
-      content: '';
-      display: block;
-      position: absolute;
-      background: url('../images/svg/quote.svg') no-repeat;
-      background-size: 60px;
-      width: 30px;
-      height: 23px; }
-    blockquote p:before {
-      top: 4px;
-      left: 0; }
-    blockquote p:after {
-      background-position: -31px 0;
-      bottom: 0;
-      right: 0; }
-
-.no-svg blockquote p:before, .no-svg blockquote p:after {
-  background-image: url('../images/png/quote.png'); }
-
-/*
-Form
-
-Styleguide form
-*/
-.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
-  color: #575757;
-  background-color: #ffffff;
-  border: 2px solid #b3b4b5;
-  border-radius: 0;
-  margin-bottom: 1.1em;
-  height: 2.75em;
-  font-size: 0.889em;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-  .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .form-control.is-focused, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-focused, .has-error .form-control:focus, .has-error .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .has-error select:focus {
-    color: #000;
-    border-color: #ffd617;
-    -webkit-box-shadow: none;
-    box-shadow: none; }
-  .form-control.is-disabled, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
-    color: #b3b4b5;
-    background-color: #e2e2e2; }
-
-/*
-Label
-
-Markup: html/label.html
-
-Styleguide form.label
-*/
-.label, label {
-  color: #575757;
-  font-size: 0.889em;
-  display: block;
-  text-align: left;
-  padding: 0;
-  margin-bottom: 0.556em; }
-  .label.is-disabled, label.is-disabled {
-    color: #b3b4b5; }
-
-/*
-Button
-
-Markup: html/button.html
-
-Styleguide form.button
-*/
-.button, button, input[type="button"] {
-  color: red; }
-
-/*
-Text Input
-
-Markup: html/text-input.html
-
-Styleguide form.text-input
-*/
-/*
-Select
-
-Markup: html/select.html
-
-Styleguide form.select
-*/
-.select:hover, select:hover, .select.is-hovered, select.is-hovered {
-  border-color: #006fb4; }
-.select.is-down, select.is-down {
-  border-color: #575757; }
-
-/*
-Checkbox
-
-Markup: html/checkbox.html
-
-Styleguide form.checkbox
-*/
-/*
- * Please
- * @see http://bootsnipp.com/snippets/featured/funky-radio-buttons
- * @see http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953
- */
-.checkbox {
-  margin-bottom: 2px;
-  margin-top: 0; }
-  .checkbox label {
-    color: #575757;
-    height: 2.75em;
-    line-height: 2.75em;
-    display: block;
-    text-align: left;
-    border: transparent solid 2px;
-    border-radius: 0; }
-  .checkbox input {
-    margin: 1px 0 0 13px; }
-  .checkbox input[type="checkbox"] {
-    height: 2.75em;
-    margin-left: -9999px;
-    position: relative;
-    float: left; }
-    .checkbox input[type="checkbox"]:not(checked) + label {
-      background-color: #ececec;
-      padding-left: 2.778em; }
-      .checkbox input[type="checkbox"]:not(checked) + label:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 1.25em;
-        height: 1.25em;
-        top: 0.8em;
-        left: 1em;
-        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
-        background-size: auto 1.25em; }
-    .checkbox input[type="checkbox"]:checked + label {
-      color: #ffffff;
-      background-color: #006fb4; }
-      .checkbox input[type="checkbox"]:checked + label:before {
-        background-image: url(../images/svg/checkbox-checked.svg); }
-    .checkbox input[type="checkbox"]:hover:not(checked) + label {
-      color: #575757;
-      border: #006fb4 solid 2px;
-      background-color: #ffffff; }
-    .checkbox input[type="checkbox"]:hover:checked + label {
-      color: #ffffff;
-      border: #ffd617 solid 2px;
-      background-color: #006fb4; }
-
-.no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png) !important; }
-.no-svg .checkbox input[type="checkbox"]:checked + label:before {
-  background-position: -1.25em 0; }
+  margin-bottom: 1.7em; }
 
 /*
 Radio
@@ -5235,132 +5298,41 @@ Styleguide form.radio
   background-position: -3.75em 0; }
 
 /*
-Form Group
+Select
 
-Markup: html/form-group.html
+Markup: html/select.html
 
-Styleguide form.form-group
+Styleguide form.select
 */
-.form-group {
-  margin-bottom: 1.7em; }
+.select:hover, select:hover, .select.is-hovered, select.is-hovered {
+  border-color: #006fb4; }
+.select.is-down, select.is-down {
+  border-color: #575757; }
 
+/*
+Text Input
+
+Markup: html/text-input.html
+
+Styleguide form.text-input
+*/
+/*
+Textarea
+
+Markup: html/textarea.html
+
+Styleguide form.textarea
+*/
 .container-fluid {
   max-width: 1170px; }
 
-/*
-Logo
-
-Ec logo
-
-Markup: html/logo.html
-
-Styleguide siteheader.logo
-*/
-.logo {
-  display: block;
-  width: 170px;
-  height: 45px;
-  background: url('../images/svg/logo.svg') no-repeat; }
-
-@media (min-width: 768px) {
-  .logo {
-    width: 218px;
-    height: 60px; }
- }
-
-.no-svg .logo {
-  background-image: url('../images/svg/logo.png'); }
-
-.skip-link, #skip-link {
-  position: fixed;
-  top: 1.5em;
-  left: 1.5em;
-  z-index: 1060; }
-  .skip-link a, #skip-link a {
-    color: #fff;
-    background: #006fb4;
-    padding: 8px;
-    border: 4px solid #ffd617; }
-
-/*
-Site header
-
-Markup: html/site-header.html
-
-Styleguide: siteheader
-*/
-.site-header .site-header__logo {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em; }
-
-.page-header {
-  background: #006fb4;
+.breadcrumb {
+  font-size: 0.933em;
+  line-height: 30px;
+  height: 30px;
   margin: 0;
-  padding: 30px 0; }
-  .page-header h1 {
-    margin: 0; }
-  .page-header__top, .page-header__main, .page-header__bottom {
-    color: #fff;
-    display: block;
-    width: 100%; }
-  .page-header__top {
-    text-transform: uppercase; }
-  .page-header__main {
-    line-height: 1.428571429; }
-  .page-header__bottom {
-    font-size: 26px; }
-
-/*
-Footer
-
-Site-wide footer component
-
-Markup: html/footer.html
-
-Styleguide footer
-*/
-.footer {
-  background: #004494;
-  padding: 60px 0;
-  color: #fff;
-  font-size: 13px; }
-  .footer a {
-    color: #fff; }
-  .footer label {
-    color: #fff;
-    font-size: 13px;
-    font-weight: normal;
-    float: left;
-    padding: 15px 10px 0 0; }
-  .footer p {
-    padding-top: 10px; }
-
-.footer-menu {
-  padding-left: 0; }
-  .footer-menu li:first-child > a {
-    padding-left: 0; }
-  .footer-menu li a {
-    padding-top: 10px; }
-    .footer-menu li a:hover {
-      background: none;
-      text-decoration: underline; }
-  .footer-menu__bottom-border {
-    border-bottom: 1px solid #4d7cb4;
-    padding-bottom: 5px; }
-
-@media (max-width: 600px) {
-  .footer {
-    padding: 20px 0; }
-    .footer label {
-      float: none;
-      text-align: center;
-      width: 100%; }
-    .footer p {
-      text-align: center; }
-
-  .footer-menu {
-    text-align: center; }
- }
+  padding: 0;
+  border-top: 1px solid #c2d2e6; }
 
 /*
 Datepicker
@@ -5508,6 +5480,58 @@ Styleguide form.feedback-message
       margin-right: 12px; }
 
 /*
+Footer
+
+Site-wide footer component
+
+Markup: html/footer.html
+
+Styleguide footer
+*/
+.footer {
+  background: #004494;
+  padding: 60px 0;
+  color: #fff;
+  font-size: 13px; }
+  .footer a {
+    color: #fff; }
+  .footer label {
+    color: #fff;
+    font-size: 13px;
+    font-weight: normal;
+    float: left;
+    padding: 15px 10px 0 0; }
+  .footer p {
+    padding-top: 10px; }
+
+.footer-menu {
+  padding-left: 0; }
+  .footer-menu li:first-child > a {
+    padding-left: 0; }
+  .footer-menu li a {
+    padding-top: 10px; }
+    .footer-menu li a:hover {
+      background: none;
+      text-decoration: underline; }
+  .footer-menu__bottom-border {
+    border-bottom: 1px solid #4d7cb4;
+    padding-bottom: 5px; }
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 0; }
+    .footer label {
+      float: none;
+      text-align: center;
+      width: 100%; }
+    .footer p {
+      text-align: center; }
+
+  .footer-menu {
+    text-align: center; }
+ }
+
+/*
 Help Block
 
 Markup: html/help-block.html
@@ -5524,5 +5548,125 @@ Styleguide form.help-block
     color: #b3b4b5; }
   .has-error .help-block {
     color: #575757; }
+
+/*
+Inpage navigation
+
+Floating menu containing links to headings in a long page.
+
+Markup: inpage-nav.html
+
+Styleguide inpagenav
+
+*/
+.inpage-nav--list {
+  z-index: 2000; }
+
+.inpage-nav {
+  cursor: pointer;
+  z-index: 100;
+  max-width: 228px;
+  padding-bottom: 1px; }
+  .inpage-nav .container {
+    width: auto; }
+  .inpage-nav.affix-top .nav li.active a, .inpage-nav.affix-bottom .nav li.active a {
+    color: #000 !important; }
+  .inpage-nav.affix-top .nav li.active a:hover, .inpage-nav.affix-bottom .nav li.active a:hover {
+    color: #006fb4 !important; }
+  .inpage-nav.affix {
+    top: 30px; }
+  .inpage-nav.affix .nav li:hover, .inpage-nav.affix .nav li:active, .inpage-nav.affix .nav li:focus {
+    color: #006fb4;
+    text-decoration: underline; }
+  .inpage-nav.affix .nav li.active:before {
+    background: none repeat scroll 0 0 #006fb4;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -10px;
+    position: absolute;
+    top: -2px;
+    width: 2px; }
+  .inpage-nav.affix-bottom {
+    position: absolute;
+    bottom: 30px; }
+  .inpage-nav .block-title {
+    background: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #575757;
+    text-transform: uppercase;
+    margin-top: 10px; }
+
+.navigation-place {
+  padding: 20px 0 20px 20px;
+  margin-bottom: 0; }
+
+.navbar-toggle {
+  top: 10px; }
+
+/*
+Logo
+
+Ec logo
+
+Markup: html/logo.html
+
+Styleguide siteheader.logo
+*/
+.logo {
+  display: block;
+  width: 170px;
+  height: 45px;
+  background: url('../images/svg/logo.svg') no-repeat; }
+
+@media (min-width: 768px) {
+  .logo {
+    width: 218px;
+    height: 60px; }
+ }
+
+.no-svg .logo {
+  background-image: url('../images/svg/logo.png'); }
+
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader
+*/
+.site-header .site-header__logo {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em; }
+
+.page-header {
+  background: #006fb4;
+  margin: 0;
+  padding: 30px 0; }
+  .page-header h1 {
+    margin: 0; }
+  .page-header__top, .page-header__main, .page-header__bottom {
+    color: #fff;
+    display: block;
+    width: 100%; }
+  .page-header__top {
+    text-transform: uppercase; }
+  .page-header__main {
+    line-height: 1.428571429; }
+  .page-header__bottom {
+    font-size: 26px; }
+
+.skip-link, #skip-link {
+  position: fixed;
+  top: 1.5em;
+  left: 1.5em;
+  z-index: 1060; }
+  .skip-link a, #skip-link a {
+    color: #fff;
+    background: #006fb4;
+    padding: 8px;
+    border: 4px solid #ffd617; }
 
 /*# sourceMappingURL=style-sass.css.map */

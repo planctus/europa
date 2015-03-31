@@ -96,7 +96,7 @@ function dt_department_strongarm() {
         'custom_settings' => TRUE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(

@@ -1,9 +1,13 @@
 name = About the EC Core
 description = This is the core feature for the About the EC class.
 core = 7.x
-dependencies[] = dt_core
 package = NextEuropa Digital Transformation About the EC
 version = 7.x-1.0
-php = 5.2.4
 project = dt_aboutec_core
+dependencies[] = dt_core
+features[context][] = about_ec_landing_page
+features[ctools][] = context:context:3
 features[features_api][] = api:2
+features_exclude[dependencies][context] = context
+features_exclude[dependencies][views] = views
+features_exclude[dependencies][nexteuropa_inpage_nav] = nexteuropa_inpage_nav

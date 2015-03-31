@@ -30,14 +30,14 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
             drupal_add_js(array('inpage_navigation' => array('node_title' => $node->title)), 'setting');
         }
 
-        if ($node && ($context_blocks = $reaction->block_list('content'))) {
+        if ($node && ($context_blocks = $reaction->block_list('content_bottom'))) {
             foreach ($context_blocks as $key => $current_block) {
                 if ($key == 'system_main') {
                     $content_node = $current_block->content['nodes'][$node->nid];
                     $title = isset($content_node['body']['#title']) ? $content_node['body']['#title'] : FALSE;
                 }
                 else {
-                    $title = isset($current_block->info) && $current_block->info ? $current_block->info : FALSE;
+                    $title = isset($current_block->subject) && $current_block->subject ? $current_block->subject : FALSE;
                 }
                 if ($title) {
                     $fragment = str_replace('_', '-', ('block-' . $current_block->module . '-' . $current_block->delta));

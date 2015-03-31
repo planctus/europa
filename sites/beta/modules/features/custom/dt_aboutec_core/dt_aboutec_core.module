@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the About the EC Core feature.
  */
+
+include_once 'dt_aboutec_core.features.inc';
