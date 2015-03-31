@@ -215,7 +215,7 @@
 
     <!-- Install drupal. -->
     <target name="install-drupal" description="Run the install." depends="init">
-        <drush command="site-install" assume="yes" root="${project.code.dir}" bin="${drush.bin}" verbose="true">
+        <drush command="site-install" assume="yes" root="${project.code.dir}" bin="${drush.bin}" verbose="false">
             <option name="db-url" value="${drupal.db.url}"/>
             <option name="site-name" value="BETA"/>
             <option name="account-name" value="${drupal.admin.username}"/>
@@ -228,7 +228,7 @@
 
     <!-- Enable modules. -->
     <target name="enable-drupal-modules" description="Enable Drupal modules." depends="install-drupal">
-        <drush command="pm-enable" assume="yes" root="${drupal.settings.dir}" bin="${drush.bin}">
+        <drush command="pm-enable" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
             <param>${drupal.modules}</param>
             <param>--quiet</param>
         </drush>
