@@ -228,7 +228,7 @@
 
     <!-- Enable modules. -->
     <target name="enable-drupal-modules" description="Enable Drupal modules." depends="install-drupal">
-        <drush command="pm-enable" assume="yes" root="${project.code.dir}" bin="${drush.bin}">
+        <drush command="pm-enable" assume="yes" root="${drupal.settings.dir}" bin="${drush.bin}">
             <param>${drupal.modules}</param>
             <param>--quiet</param>
         </drush>
