@@ -16,4 +16,5 @@ build.properties.local
 tmp
 platform
 project/settings.php
+project/sites.php
 project/files

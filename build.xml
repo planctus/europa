@@ -152,8 +152,26 @@
     <!-- Manipulate settings.php file. -->
     <target name="create-settings.php" depends="init">
         <echo msg="Copying default.settings.php file to settings.php..." />
-        <copy file="${drupal.settings.dir}/default.settings.php" tofile="${drupal.settings.dir}/settings.php" />
+        <copy file="${drupal.sites.dir}/default/default.settings.php" tofile="${drupal.settings.dir}/settings.php" haltonerror="false"/>
         <chmod file="${drupal.settings.dir}/settings.php" mode="0775" failonerror="true" />
+    </target>
+
+    <!-- Manipulate settings.php file. -->
+    <target name="create-sites.php" depends="init">
+        <echo msg="Copying example.sites.php file to sites.php..." />
+        <delete file="${phing.project.build.dir}/sites/sites.php" failonerror="false" />
+        <copy file="${phing.project.build.dir}/sites/example.sites.php" tofile="${phing.project.build.dir}/sites/sites.php" />
+        <chmod file="${phing.project.build.dir}/sites/sites.php" mode="0775" failonerror="true" />
+        <property name="host" value="${base_url}">
+          <filterchain>
+            <replaceregexp>
+              <regexp pattern="http://" replace="" ignoreCase="true"/>
+              <regexp pattern="https://" replace="" ignoreCase="true"/>
+              <regexp pattern="/" replace="." ignoreCase="true"/>
+            </replaceregexp>
+          </filterchain>
+        </property>
+        <append destFile="${phing.project.build.dir}/sites/sites.php" text="${line.separator}$sites['${host}'] = '${drupal.site.name}';" />
     </target>
 
     <!-- Backup settings.php file. -->
@@ -203,6 +221,7 @@
             <option name="account-name" value="${drupal.admin.username}"/>
             <option name="account-pass" value="${drupal.admin.password}"/>
             <option name="account-mail" value="${drupal.admin.email}"/>
+            <option name="sites-subdir" value="${drupal.site.name}"/>
             <param>${drupal.profile.name}</param>
         </drush>
     </target>
@@ -286,11 +305,11 @@
 
     <target name="build-dev"
             description="Build a local Drupal site in order to dev"
-            depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-settings.php" />
+            depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-settings.php, create-sites.php" />
 
     <target name="rebuild-dev"
             description="Re-build a local Drupal site in order to dev, keeps settings.php and files intact."
-            depends="init, init-dev-properties, backup-site-settings, drush-make, link-project, link-tests, files-directory, create-settings.php, restore-site-settings" />
+            depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-sites.php" />
 
     <target name="build-dist"
             description="Build the Drupal site in order to install it"
