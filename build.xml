@@ -254,6 +254,17 @@
 
     <target name="patch-platform" description="Applies patches to Multisite" depends="init">
         <echo message="Patching Multisite." />
+        <!-- Apply patches -->
+        <foreach param="filename" absparam="absfilename" target="apply-patch">
+           <fileset dir="${phing.project.patches.dir}">
+               <include name="*.patch" />
+           </fileset>
+        </foreach>
+    </target>
+
+    <target name="apply-patch" >
+        <echo msg="Applying patch: ${absfilename}" />
+        <exec command="patch --directory=${project.basedir} --batch -p1 --backup --input=${absfilename}" passthru="true" />
     </target>
 
     <target name="clean-platform" description="Remove unnecessary files from Multisite" depends="init">

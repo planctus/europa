@@ -19,6 +19,9 @@ phing.project.platform.dir = platform
 # Platform folder
 phing.project.project.dir = project
 
+# Platform folder
+phing.project.patches.dir = patches
+
 # The URL of the MULTISITE SVN repository
 multisite.repo.root = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE
 multisite.repo.branch = trunk
