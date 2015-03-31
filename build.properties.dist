@@ -13,8 +13,11 @@ phing.project.distro.dir = docroot
 # Temporary folder
 phing.project.tmp.dir = tmp
 
-# Temporary folder
+# Platform folder
 phing.project.platform.dir = platform
+
+# Platform folder
+phing.project.project.dir = project
 
 # The URL of the MULTISITE SVN repository
 multisite.repo.root = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE
@@ -33,15 +36,15 @@ drupal.profile.name = multisite_drupal_standard
 drupal.modules = dt_core
 
 # The site name to use. Use 'all' if you do not use a multisite installation.
-drupal.site.name = all
+drupal.site.name = project
 
 # The database url to use for site installs
 drupal.db.type = mysql
 drupal.db.user = root
-drupal.db.password =
+drupal.db.password = ubuntu
 drupal.db.host = 127.0.0.1
 drupal.db.port = 3306
-drupal.db.name = drupal
+drupal.db.name = drupal_demo
 drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
 
 # Admin user.
@@ -89,4 +92,4 @@ behat.dir = ${project.basedir}/tests
 behat.yml = ${behat.dir}/behat.yml
 behat.base_url = http://localhost
 
-server.docroot = /var/www
+server.docroot = /home/cphp/var/www

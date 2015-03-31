@@ -5,14 +5,17 @@
     <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
     <echo msg="Delete acquia-cloud/docroot." />
-    <!-- <delete includeemptydirs="true" failonerror="false">
+    <delete includeemptydirs="true" failonerror="false">
       <fileset dir="${acquia.docroot}">
         <patternset>
           <exclude name="files"/>
           <exclude name="sites/*/files"/>
+          <exclude name="sites/*/private"/>
+          <exclude name="**/settings.php"/>
+          <exclude name="**/sites.php/"/>
         </patternset>
       </fileset>
-    </delete> -->
+    </delete>
     <echo msg="Copy files to acquia-cloud/docroot." />
     <copy todir="${acquia.docroot}">
         <fileset dir="${distro.code.dir}">

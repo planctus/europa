@@ -1,0 +1,91 @@
+--- libraries/phpvideotoolkit/phpvideotoolkit.php5.php	2013-03-07 14:36:52.000000000 +0100
++++ libraries/phpvideotoolkit/phpvideotoolkit.php5.php	2013-03-07 15:23:17.000000000 +0100
+@@ -1214,88 +1214,6 @@
+   }
+ 
+   /**
+-   * Streams a FLV file from a given point. You can control bandwidth, cache and session options.
+-   * Inspired by xmoov-php
+-   * @see http://xmoov.com/
+-   * @access public
+-   * @param integer $seek_pos The position in the file to seek to.
+-   * @param array|boolean $bandwidth_options If a boolean value, FALSE then no bandwidth limiting will take place.
+-   * 		If TRUE then bandwidth limiting will take place with packet_size = 90 and packet_interval = 0.3.
+-   * 		If an array the following values are default packet_size = 90 and packet_interval = 0.3, you will also
+-   * 		have to set active = TRUE, ie array('active'=>true, 'packet_size'=>90, 'packet_interval'=>0.3)
+-   * @param boolean $allow_cache If TRUE the file will be allowed to cache in the browser, if FALSE then it won't
+-   * @return boolean
+-   */
+-  public function flvStreamSeek($seek_pos=0, $bandwidth_options=array(), $allow_cache=TRUE) {
+-// 			check for input file
+-    if (!$this->_input_file) {
+-//				input file not valid
+-      return $this->_raiseError('streamFLV_no_input');
+-// <-			exits
+-    }
+-// 			make the pos safe
+-    $seek_pos = intval($seek_pos);
+-// 			absorb the bandwidth options
+-    $bandwidth_options = is_array($bandwidth_options) ? array_merge(array('active' => FALSE, 'packet_size' => 90, 'packet_interval' => 0.3), $bandwidth_options) : array('active' => $bandwidth_options, 'packet_size' => 90, 'packet_interval' => 0.3);
+-// 			if this file is not allowed to be cached send cache headers for all browsers.
+-    if (!$allow_cache) {
+-      session_cache_limiter('nocache');
+-      header('Expires: Thu, 19 Nov 1981 08:52:00 GMT');
+-      header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+-      header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+-      header('Pragma: no-cache');
+-    }
+-// 			open file
+-    $handle = fopen($this->_input_file, 'rb');
+-    $file_size = filesize($this->_input_file) - (($seek_pos > 0) ? $seek_pos + 1 : 0);
+-// 			send the flv headers
+-    header('Content-Type: video/x-flv');
+-    header('Content-Disposition: attachment; filename="' . basename($this->_input_file) . '"');
+-    header('Content-Length: ' . $file_size);
+-// 			flv format header
+-    if ($seek_pos != 0) {
+-      print('FLV');
+-      print(pack('C', 1));
+-      print(pack('C', 1));
+-      print(pack('N', 9));
+-      print(pack('N', 9));
+-    }
+-// 			seek to the required point
+-    if (fseek($handle, $seek_pos) === -1) {
+-//				input file not valid
+-      return $this->_raiseError('streamFLV_passed_eof');
+-// <-			exits
+-    }
+-// 			if bandwidth control is active then workout the options
+-    if ($bandwidth_options['active']) {
+-      $packet_interval = intval($bandwidth_options['packet_interval']);
+-      $packet_size = intval($bandwidth_options['packet_size']) * 1042;
+-    }
+-// 			output the file
+-    while (!feof($handle)) {
+-// 				limit the bandwidth
+-      if ($bandwidth_options['active'] && $packet_interval > 0) {
+-// 					output the required packet
+-        $time_start = self::microtimeFloat();
+-        echo fread($handle, $packet_size);
+-        $time_stop = self::microtimeFloat();
+-// 					delay the output
+-        $time_difference = $time_stop - $time_start;
+-        if ($time_difference < $packet_interval) {
+-          usleep(($packet_interval * 1000000) - ($time_difference * 1000000));
+-        }
+-      }
+-// 				no bandwidth limiting
+-      else {
+-        echo fread($handle, $file_size);
+-      }
+-    }
+-// 			close the file
+-    fclose($handle);
+-    return TRUE;
+-  }
+-
+-  /**
+    * This is an alias for setFormat, but restricts it to audio only formats.
+    *
+    * @access public
