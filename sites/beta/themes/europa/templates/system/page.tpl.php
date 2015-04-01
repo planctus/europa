@@ -171,7 +171,7 @@
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
         <?php print render($page['content']); ?>
-	<?php print render($page['content_bottom']); ?>
+	    <?php print render($page['content_bottom']); ?>
       </section>
 
       <?php if (!empty($page['sidebar_second'])): ?>
