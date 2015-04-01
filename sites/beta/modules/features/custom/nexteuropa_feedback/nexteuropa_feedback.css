@@ -1,0 +1,56 @@
+#feedback-trigger {
+  color: #006fb4;
+  display: block;
+  padding: 12px 0 10px
+}
+
+.feedback-form-content-inner {
+  margin: 1em 0 2em
+}
+
+#feedback-text {
+  font-weight: bold;
+  margin-bottom: .5em
+}
+
+#feedback-accordion {
+  margin-bottom: 1em;
+  border: 1px solid #575757
+}
+
+#feedback-accordion .accordion-group {
+  border-top: 1px solid #575757;
+  padding: 10px
+}
+
+#feedback-accordion .accordion-group:first-child {
+  border-top: none
+}
+
+#feedback-accordion .accordion-group .accordion-toggle {
+  background: url('images/svg/checkbox-checked.svg') no-repeat 0 0;
+  line-height: 20px;
+  padding-left: 25px;
+  color: #006fb4;
+  font-weight: bold;
+  display: block;
+  text-decoration: none
+}
+
+#feedback-accordion .accordion-group .accordion-toggle.collapsed {
+  background: url('images/svg/checkbox-unchecked.svg') no-repeat 0 0;
+  color: #404040;
+  font-weight: 400
+}
+
+#feedback-accordion .accordion-group .accordion-toggle.collapsed:focus {
+  text-decoration: underline
+}
+
+#feedback-accordion .accordion-group .accordion-body {
+  padding-left: 25px
+}
+
+#feedback-accordion .accordion-group .accordion-body .accordion-inner {
+  margin-top: 15px
+}

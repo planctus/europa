@@ -16,6 +16,7 @@ regions[content] = Content
 regions[content_bottom] = Content bottom
 regions[sidebar_first] = Sidebar
 regions[sidebar_second] = Second column
+regions[footer_top] = Footer Top
 regions[footer] = Footer
 
 ; ========================================
