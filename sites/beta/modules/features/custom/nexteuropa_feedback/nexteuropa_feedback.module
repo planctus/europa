@@ -214,7 +214,6 @@ function nexteuropa_feedback_block_view($delta = '') {
   switch ($delta) {
     case 'nexteuropa_feedback':
       drupal_add_css(drupal_get_path('module', 'nexteuropa_feedback') .'/nexteuropa_feedback.css');
-      drupal_add_css(drupal_get_path('module', 'nexteuropa_feedback') .'/style.css');
       drupal_add_js(drupal_get_path('module', 'nexteuropa_feedback') .'/nexteuropa_feedback.js','file');
       $block['content'] = nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form'));
       break;

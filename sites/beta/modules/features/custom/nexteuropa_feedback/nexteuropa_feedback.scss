@@ -1,0 +1,122 @@
+#footer {
+  background: #006fb4;
+  border-top: 1px solid #006fb4;
+  margin: 0;
+  font-size: 16px;
+  padding-bottom: 24px;
+
+  form {
+    margin: 0;
+  }
+}
+
+.region-footer-top-wrapper {
+  background: #fff;
+  &:hover,
+  &:active,
+  &:focus,
+  &.region-open {
+    background: #f2f2f2;
+  }
+}
+
+.region-footer-top {
+  min-height: 40px;
+}
+
+// Footer bottom
+.region-footer-wrapper {
+  color:#fff;
+  padding: 12px 0 10px;
+  overflow: hidden;
+  line-height: 1;
+  .nav {
+    margin-top: 24px;
+    & > li {
+      float: left;
+      clear: both;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 12px;
+      white-space: nowrap;
+
+      & > a {
+        color: #fff;
+        padding: 0;
+        display: inline;
+        font-weight: normal;
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+          background: none;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Feedback form
+#feedback-trigger {
+  color: #006fb4;
+  display: block;
+  padding: 12px 0 10px;
+}
+
+.feedback-form-content-inner {
+  margin: 1em 0 2em;
+}
+
+#feedback-text {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+#feedback-accordion {
+  margin-bottom: 1em;
+  border: 1px solid #575757;
+
+  .accordion-group {
+    border-top: 1px solid #575757;
+    padding:10px;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    .accordion-toggle {
+      background: url('images/svg/checkbox-checked.svg') no-repeat 0 0;
+      line-height: 20px;
+      padding-left: 25px;
+      color: #006fb4;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      text-decoration: none;
+
+      &.collapsed {
+        background: url('images/svg/checkbox-unchecked.svg') no-repeat 0 0;
+        color: #404040;
+        font-weight: 400;
+
+        &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .accordion-body {
+      padding-left: 25px;
+      .accordion-inner {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #feedback-text {
+    margin-left: 35px;
+  }
+}
