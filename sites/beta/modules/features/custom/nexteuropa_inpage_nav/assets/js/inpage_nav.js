@@ -61,7 +61,7 @@
                     $pageNavBlock.addClass("navbar-toggle collapsed")
                         .attr({
                             "data-toggle":"collapse",
-                            "data-target":".inpage-nav--list",
+                            "data-target":".inpage-nav__list",
                             "aria-expanded":"false",
                             "aria-controls":"navbar"
                         });
@@ -71,7 +71,7 @@
                 // desktop
                 match : function() {
                     $pageNavBlock.removeClass("navbar-toggle collapsed");
-                    $pageNavBlock.children("nav").removeClass("navbar-default navbar-fixed-top");
+                    $pageNavBlock.children("nav").removeClass("navbar-default--blue navbar-fixed-top");
                     $pageNavBlock.attr({
                         "data-toggle":"",
                         "data-target":"",
@@ -84,19 +84,62 @@
 
                 // mobile
                 unmatch : function() {
+                    Drupal.resizeButton();
                     $pageNavBlock.addClass("navbar-toggle collapsed")
                         .attr({
                             "data-toggle":"collapse",
-                            "data-target":".inpage-nav--list",
+                            "data-target":".inpage-nav__list",
                             "aria-expanded":"false",
                             "aria-controls":"navbar"
                         });
-                    $pageNavBlock.children("nav").addClass("navbar-default navbar-fixed-top");
+                    $pageNavBlock.children("nav").addClass("navbar-default--blue navbar-fixed-top");
                     $pageNavBlock.prev("h2").hide();
                     $(".navigation-place").show();
+                }
+            });
+
+            // the button has to be full height
+            Drupal.resizeButton();
+
+            // changing the color of the bar depending on the stete
+            $(".navbar-toggle").on("click",function(){
+                var $this = $(this);
+                if(Drupal.navListCollapsed()){
+                    $this.parent().find(".navbar-header").css({
+                        "background":"#ececec",
+                        "color":"#575757"
+                    });
+                    $this.parent().find(".navigation-place").text("On this page");
+                    $this.find(".arrow-down").hide();
+                    $this.find(".close-text").show();
+                } else {
+                    $this.parent().find(".navbar-header").css({
+                        "background":"#004494",
+                        "color":"#fff"
+                    });
+                    $this.parent().find(".navigation-place").text(nodeTitle);
+                    $this.find(".arrow-down").show();
+                    $this.find(".close-text").hide();
                 }
             });
         }
     }
 
+    Drupal.resizeButton = function() {
+        var button, selectHeight, btnObj;
+        button = $(".inpage-nav").find("button");
+        btnObj = $(button);
+        selectHeight = btnObj.parent(".navbar-header").outerHeight();
+        btnObj.outerHeight(selectHeight);
+        btnObj.css({
+            "min-width":selectHeight
+        });
+    }
+
+    // TRUE when open
+    Drupal.navListCollapsed = function() {
+        var list = $('.inpage-nav__list');
+        var listCollapsed = list.hasClass('collapse in');
+        return !listCollapsed;
+    }
 })(jQuery);
