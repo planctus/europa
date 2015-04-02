@@ -13,18 +13,18 @@
  */
 function nexteuropa_feedback_menu() {
   $items['admin/config/system/nexteuropa-feedback-settings'] = array(
-    'title' => t('Nexteuropa Feedback Component'),
+    'access arguments' => array('administer site configuration'),
     'description' => t('Setting the ID of the form to take the feedback from the component'),
+    'file' => 'nexteuropa_feedback.admin.inc',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('nexteuropa_feedback_settings'),
-    'access arguments' => array('administer site configuration'),
+    'title' => t('Nexteuropa Feedback Component'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'nexteuropa_feedback.admin.inc',
   );
   $items['nexteuropa-feedback-newform'] = array(
-    'title' => t('Generating new form'),
-    'page callback' => '_nexteuropa_feedback_newform',
     'access arguments' => array('access content'),
+    'page callback' => '_nexteuropa_feedback_newform',
+    'title' => t('Generating new form'),
     'type' => MENU_CALLBACK,
   );
 
@@ -210,11 +210,13 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
   if (!empty($values)) {
     $result = drupal_http_request($url, $options);
     if ($result && $result->code == '200' && $result->status_message == 'OK') {
-      drupal_add_library('system', 'drupal.ajax');
+      drupal_add_js('misc/ajax.js');
       $new_form_link = array(
         '#type' => 'link',
         '#title' => t("Give more feedback"),
-        '#href' => "nexteuropa-feedback-newform",
+        '#href' => "nexteuropa-feedback-newform/nojs/",
+        '#attributes' => array('class' => 'use-ajax'),
+        '#suffix' => "<div id='new-feedback-form'></div>"
       );
 
       $feedback_message = '<div id="feedback-message" class="messages status">' .
@@ -233,17 +235,17 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
 
 }
 
-function _nexteuropa_feedback_newform() {
-  drupal_goto();
-//  $result = array(
-//    '#type' => 'ajax',
-//    '#commands' => array(
-//      ajax_command_replace("#feedback-message", nexteuropa_feedback_form_theme($form)),
-//    ),
-//  );
-//  return $result;
-//  $form['rebuild'] = TRUE;
-//  return nexteuropa_feedback_form_theme($form);
+function _nexteuropa_feedback_newform($type = 'ajax') {
+  if ($type == 'ajax') {
+    $commands = array();
+    $commands[] = ajax_command_remove("#feedback-message");
+    $commands[] = ajax_command_append("#block-nexteuropa-feedback-nexteuropa-feedback",
+      nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form')));
+    ajax_deliver(array('#type' => 'ajax', '#commands' => $commands));
+  } else {
+    drupal_goto();
+    drupal_set_message(t("New form has been loaded."));
+  }
 }
 
 /**

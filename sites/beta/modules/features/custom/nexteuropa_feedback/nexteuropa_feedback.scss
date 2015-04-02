@@ -115,8 +115,19 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 959px) {
   #feedback-text {
     margin-left: 35px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  #feedback-text {
+    float: left;
+    width: 85px;
+    padding-top: 8px;
+  }
+  #feedback-accordion {
+    overflow: hidden;
   }
 }
