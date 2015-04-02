@@ -184,8 +184,9 @@
 </section>
 
 <?php if (!empty($page['footer_top'])): ?>
-  <footer id="footer">
-    <div class="region-footer-top-wrapper">
+  <footer class="feedback-component">
+<!--    <div class="region-footer-top-wrapper">-->
+    <div class="feedback-component__wrapper">
       <div class="container">
         <?php print render($page['footer_top']); ?>
       </div>

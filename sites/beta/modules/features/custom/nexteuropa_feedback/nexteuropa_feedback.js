@@ -18,7 +18,7 @@
                     if ($submitButton.is(':hidden')) {
                         $submitButton.show();
                     }
-                    $('#footer').velocity("scroll", {easing:'ease', duration: 400});
+                    $('.feedback-component').velocity("scroll", {easing:'ease', duration: 400});
                 });
                 // Set feedbck type based on accordion state.
                 $accordionWrapper.on('shown.bs.collapse', function () {
@@ -33,8 +33,8 @@
 
                 // Toggle class on feedback open
                 $('#feedback-trigger').click(function() {
-                    $('.region-footer-top-wrapper').toggleClass('region-open');
-                    $('#footer').velocity("scroll", {easing:'ease', duration: 350});
+                    $('.feedback-component__wrapper').toggleClass('region-open');
+                    $('.feedback-component').velocity("scroll", {easing:'ease', duration: 350});
                 });
 
             });

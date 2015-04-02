@@ -1,4 +1,4 @@
-#footer {
+.feedback-component {
   background: #006fb4;
   border-top: 1px solid #006fb4;
   margin: 0;
@@ -10,7 +10,7 @@
   }
 }
 
-.region-footer-top-wrapper {
+.feedback-component__wrapper {
   background: #fff;
   &:hover,
   &:active,

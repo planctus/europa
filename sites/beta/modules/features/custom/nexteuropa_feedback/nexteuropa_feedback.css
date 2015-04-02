@@ -1,15 +1,15 @@
-#footer {
+.feedback-component {
   background: #006fb4;
   border-top: 1px solid #006fb4;
   margin: 0;
   font-size: 16px;
   padding-bottom: 24px; }
-  #footer form {
+  .feedback-component form {
     margin: 0; }
 
-.region-footer-top-wrapper {
+.feedback-component__wrapper {
   background: #fff; }
-  .region-footer-top-wrapper:hover, .region-footer-top-wrapper:active, .region-footer-top-wrapper:focus, .region-footer-top-wrapper.region-open {
+  .feedback-component__wrapper:hover, .feedback-component__wrapper:active, .feedback-component__wrapper:focus, .feedback-component__wrapper.region-open {
     background: #f2f2f2; }
 
 .region-footer-top {
