@@ -9,17 +9,14 @@ Styleguide messages
 */
 
 .messages {
-  color: $messages-text-color;
+  background: #fff;
   border: 2px solid;
-  border-color: $green;
+  border-color: $blue;
+  color: $messages-text-color;
   font-family: $font-family-sans-serif;
   font-size: $messages-text-size;
-
+  margin-bottom: 10px;
   padding: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
 
   h3 {
     font-size: $messages-heading-size;
@@ -31,35 +28,37 @@ Styleguide messages
   }
 
   &:before {
-    content: '';
-    background: url("../images/svg/messages-success.svg");
+    background: url("../images/svg/messages-info.svg");
     background-position: 0px -0.45em;
     background-repeat: no-repeat;
     background-size: $messages-icon-size;
-    width: $messages-icon-size;
+    content: '';
+    float: left;
     height: $messages-icon-size;
     margin-right: 12px;
+    line-height: 100%;
+    width: $messages-icon-size;
   }
 
-  &.is-success {
-    @extend .messages;
-  }
-
-  &.is-info {
-    border-color: $blue;
+  &.success {
+    border-color: $green;
     &:before {
-      background-image: url("../images/svg/messages-info.svg");
+      background-image: url("../images/svg/messages-success.svg");
     }
   }
 
-  &.is-warning {
+  &.info {
+    @extend .messages;
+  }
+
+  &.warning {
     border-color: $yellow;
     &:before {
       background-image: url("../images/svg/messages-warning.svg");
     }
   }
 
-  &.is-error {
+  &.error {
     border-color: #da2131;
     &:before {
       background-image: url("../images/svg/messages-error.svg");
@@ -73,19 +72,19 @@ Styleguide messages
       background: url("../images/png/messages-success.png");
     }
 
-    &.is-info {
+    &.info {
       &:before {
         background-image: url("../images/png/messages-info.png");
       }
     }
 
-    &.is-warning {
+    &.warning {
       &:before {
         background-image: url("../images/png/messages-warning.png");
       }
     }
 
-    &.is-error {
+    &.error {
       &:before {
         background-image: url("../images/png/messages-error.png");
       }
