@@ -4,3 +4,6 @@ sass/app.css
 
 # Ignore generated styleguide files
 styleguide/assets/*
+
+# Ignore css.map
+css/*css.map
