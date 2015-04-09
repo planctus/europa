@@ -1,10 +1,11 @@
 name = Priority
 description = Priority content type related settings.
 core = 7.x
-package = NextEuropa Digital Transformation
+package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0-dev
 project = dt_priority
 dependencies[] = dt_core
+features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_core_priorities
