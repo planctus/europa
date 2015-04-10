@@ -42,7 +42,6 @@ scripts[] = bootstrap-sass/js/bootstrap/transition.js
 scripts[] = js/modernizr.js
 scripts[] = js/enquire.min.js
 scripts[] = js/velocity.min.js
-scripts[] = js/feedback.js
 
 ; ========================================
 ; Settings

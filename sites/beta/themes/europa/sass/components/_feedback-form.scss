@@ -18,7 +18,7 @@
   text-decoration: none;
   color: $brand-primary;
   display: block;
-  padding: 12px 0 10px;
+  padding: 0.667em 0 0.556em;
 
   &:hover,
   &:active,
@@ -28,12 +28,13 @@
 }
 
 .feedback-form-content-inner {
-  margin: 1em 0 2em;
+  margin: 0.8em 0 2em;
 }
 
 .feedback__text {
   font-weight: bold;
   margin-bottom: 0.5em;
+  margin-left: 1.944em;
 }
 
 #feedback-accordion {
@@ -78,18 +79,13 @@
   }
 }
 
-@media (max-width: 959px) {
-  .feedback__text {
-    margin-left: 35px;
-  }
-}
-
-@media screen and (min-width: 960px) {
+@include breakpoint(screen-sm-min) {
   .feedback__text {
     float: left;
-    width: 85px;
+    width: 180px;
     padding-top: 8px;
   }
+
   #feedback-accordion {
     overflow: hidden;
   }

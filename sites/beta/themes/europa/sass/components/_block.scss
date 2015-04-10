@@ -1,9 +1,16 @@
 .block--full-width {
-  margin-left: -100%;
-  margin-right: -100%;
+  margin-left: -$grid-gutter-width / 2;
+  margin-right: -$grid-gutter-width / 2;
 
   & > * {
     margin: 0 auto !important;
     @extend .container-fluid;
+  }
+}
+
+@include breakpoint(screen-lg-min) {
+  .block--full-width {
+    margin-left: -100%;
+    margin-right: -100%;
   }
 }

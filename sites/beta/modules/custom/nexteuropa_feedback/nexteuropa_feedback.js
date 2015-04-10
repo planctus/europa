@@ -29,19 +29,22 @@
         $accordionWrapper.on('shown.bs.collapse', function () {
           $('input[name="feedback_type"]').val($('.in' , this).attr('id'));
         });
+
         // Hide submit button when no accordion elements are open
         $accordionWrapper.on('hidden.bs.collapse', function() {
-          if ($('.accordion-body', this).children(':visible').length == 1) {
+          if ($('.accordion-body', this).children(':visible').length == 0) {
             $submitButton.hide();
+            console.log('true');
           }
         });
 
         // Toggle class on feedback open
-        $('#feedback-trigger').click(function() {
+        $('.feedback__trigger').click(function() {
           $feedbackForm.parent().toggleClass('is-open');
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
         });
       });
+
       var currentType = $('input[name="feedback_type"]').val();
       var $feedbackActiveCollapsed = $('#feedback-form-content, #'+currentType+'');
 
