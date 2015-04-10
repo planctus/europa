@@ -102,7 +102,7 @@ function dt_person_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '1',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

@@ -199,6 +199,34 @@ function dt_person_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_person_intro'
+  $field_bases['field_person_intro'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_person_intro',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'mr' => 'Mr',
+        'mrs' => 'Mrs',
+        'ms' => 'Miss',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_person_last_name'
   $field_bases['field_person_last_name'] = array(
     'active' => 1,
@@ -291,6 +319,45 @@ function dt_person_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_person_role'
+  $field_bases['field_person_role'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_person_role',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'president' => 'President',
+        'first_vice_president' => 'First Vice-President',
+        'high_representitive' => 'High Representative',
+        'vice_president' => 'Vice-President',
+        'commissioner' => 'Commissioner',
+        'head_cabinet' => 'Head of Cabinet',
+        'deputy_head_cabinet' => 'Deputy Head of Cabinet',
+        'senior_adviser' => 'Senior Adviser',
+        'director' => 'Director',
+        'adviser' => 'Adviser',
+        'member' => 'Member',
+        'hearing_officer' => 'Hearing Officer',
+        'assistant' => 'Assistant',
+        'archivist' => 'Archivist',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_person_status'
   $field_bases['field_person_status'] = array(
     'active' => 1,
@@ -346,52 +413,6 @@ function dt_person_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_core_commissioner'
-  $field_bases['field_core_commissioner'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_commissioner',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'direction' => 'ASC',
-          'property' => 'title',
-          'type' => 'property',
-        ),
-        'target_bundles' => array(
-          'person' => 'person',
-        ),
-      ),
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
   );
 
   return $field_bases;
