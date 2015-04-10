@@ -88,10 +88,10 @@ settings[bootstrap_region_well-footer] = ''
 
 ; Tooltips
 ; --------------
-settings[bootstrap_tooltip_enabled] = 1
-settings[bootstrap_tooltip_descriptions] = 1
+settings[bootstrap_tooltip_enabled] = 0
+settings[bootstrap_tooltip_descriptions] = 0
 settings[bootstrap_tooltip_descriptions_length] = 200
-settings[bootstrap_tooltip_animation] = 1
+settings[bootstrap_tooltip_animation] = 0
 settings[bootstrap_tooltip_html] = 0
 settings[bootstrap_tooltip_placement] = 'auto bottom'
 settings[bootstrap_tooltip_selector] = ''
@@ -100,6 +100,10 @@ settings[bootstrap_tooltip_trigger]['focus'] = 'focus'
 settings[bootstrap_tooltip_trigger]['click'] = 'click'
 settings[bootstrap_tooltip_delay] = 150
 settings[bootstrap_tooltip_container] = 'body'
+
+; Popover
+; --------------
+settings[bootstrap_popover_enabled] = 0
 
 ; Breadcrumbs
 ; --------------
