@@ -34,7 +34,7 @@ stylesheets[all][] = css/style-sass.css
 scripts[] = bootstrap-sass/js/bootstrap/collapse.js
 scripts[] = bootstrap-sass/js/bootstrap/dropdown.js
 ;scripts[] = bootstrap-sass/js/bootstrap/modal.js
-;scripts[] = bootstrap-sass/js/bootstrap/tooltip.js
+scripts[] = bootstrap-sass/js/bootstrap/tooltip.js
 ;scripts[] = bootstrap-sass/js/bootstrap/popover.js
 scripts[] = bootstrap-sass/js/bootstrap/scrollspy.js
 scripts[] = bootstrap-sass/js/bootstrap/tab.js
@@ -42,6 +42,7 @@ scripts[] = bootstrap-sass/js/bootstrap/transition.js
 scripts[] = js/modernizr.js
 scripts[] = js/enquire.min.js
 scripts[] = js/velocity.min.js
+scripts[] = js/feedback.js
 
 ; ========================================
 ; Settings

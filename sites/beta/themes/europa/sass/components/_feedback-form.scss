@@ -1,9 +1,5 @@
 .feedback-form {
   margin: 0;
-
-  form {
-    margin: 0;
-  }
 }
 
 .feedback-form__wrapper {
@@ -17,56 +13,25 @@
   }
 }
 
-.region-footer-top {
-  min-height: 40px;
-}
-
-// Footer bottom
-.region-footer-wrapper {
-  color:#fff;
-  padding: 12px 0 10px;
-  overflow: hidden;
-  line-height: 1;
-  .nav {
-    margin-top: 24px;
-    & > li {
-      float: left;
-      clear: both;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 12px;
-      white-space: nowrap;
-
-      & > a {
-        color: #fff;
-        padding: 0;
-        display: inline;
-        font-weight: normal;
-        &:hover,
-        &:active,
-        &:focus {
-          color: #fff;
-          background: none;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-}
-
 // Feedback form
-#feedback-trigger {
+.feedback__trigger {
   text-decoration: none;
   color: $brand-primary;
   display: block;
   padding: 12px 0 10px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 .feedback-form-content-inner {
   margin: 1em 0 2em;
 }
 
-#feedback-text {
+.feedback__text {
   font-weight: bold;
   margin-bottom: 0.5em;
 }
@@ -84,7 +49,7 @@
     }
 
     .accordion-toggle {
-      background: url('images/svg/checkbox-checked--blue.svg') no-repeat 0 0;
+      background: url('../images/svg/checkbox-checked--blue.svg') no-repeat;
       line-height: 20px;
       padding-left: 25px;
       color: $brand-primary;
@@ -94,7 +59,7 @@
       text-decoration: none;
 
       &.collapsed {
-        background: url('images/svg/checkbox-unchecked--grey.svg') no-repeat 0 0;
+        background: url('../images/svg/checkbox-unchecked--grey.svg') no-repeat;
         color: #404040;
         font-weight: 400;
 

@@ -5487,8 +5487,6 @@ Styleguide form.feedback-message
 
 .feedback-form {
   margin: 0; }
-  .feedback-form form {
-    margin: 0; }
 
 .feedback-form__wrapper {
   border-top: 1px solid #006fb4;
@@ -5496,43 +5494,18 @@ Styleguide form.feedback-message
   .feedback-form__wrapper:hover, .feedback-form__wrapper:active, .feedback-form__wrapper:focus, .feedback-form__wrapper.is-open {
     background: #f2f2f2; }
 
-.region-footer-top {
-  min-height: 40px; }
-
-.region-footer-wrapper {
-  color: #fff;
-  padding: 12px 0 10px;
-  overflow: hidden;
-  line-height: 1; }
-  .region-footer-wrapper .nav {
-    margin-top: 24px; }
-    .region-footer-wrapper .nav > li {
-      float: left;
-      clear: both;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 12px;
-      white-space: nowrap; }
-      .region-footer-wrapper .nav > li > a {
-        color: #fff;
-        padding: 0;
-        display: inline;
-        font-weight: normal; }
-        .region-footer-wrapper .nav > li > a:hover, .region-footer-wrapper .nav > li > a:active, .region-footer-wrapper .nav > li > a:focus {
-          color: #fff;
-          background: none;
-          text-decoration: underline; }
-
-#feedback-trigger {
+.feedback__trigger {
   text-decoration: none;
   color: #006fb4;
   display: block;
   padding: 12px 0 10px; }
+  .feedback__trigger:hover, .feedback__trigger:active, .feedback__trigger:focus {
+    text-decoration: underline; }
 
 .feedback-form-content-inner {
   margin: 1em 0 2em; }
 
-#feedback-text {
+.feedback__text {
   font-weight: bold;
   margin-bottom: 0.5em; }
 
@@ -5545,7 +5518,7 @@ Styleguide form.feedback-message
     #feedback-accordion .accordion-group:first-child {
       border-top: none; }
     #feedback-accordion .accordion-group .accordion-toggle {
-      background: url('images/svg/checkbox-checked--blue.svg') no-repeat 0 0;
+      background: url('../images/svg/checkbox-checked--blue.svg') no-repeat;
       line-height: 20px;
       padding-left: 25px;
       color: #006fb4;
@@ -5554,7 +5527,7 @@ Styleguide form.feedback-message
       display: block;
       text-decoration: none; }
       #feedback-accordion .accordion-group .accordion-toggle.collapsed {
-        background: url('images/svg/checkbox-unchecked--grey.svg') no-repeat 0 0;
+        background: url('../images/svg/checkbox-unchecked--grey.svg') no-repeat;
         color: #404040;
         font-weight: 400; }
         #feedback-accordion .accordion-group .accordion-toggle.collapsed:focus {

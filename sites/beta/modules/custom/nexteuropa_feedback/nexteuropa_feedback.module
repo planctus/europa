@@ -110,7 +110,7 @@ function nexteuropa_feedback_form_theme($form) {
   $accordion['compliment']['content'] = drupal_render($form['accordion']['compliment_group']);
 
   $static['feedback-trigger'] = array(
-    '#markup' => '<a href="#feedback-form-content" id="feedback-trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
+    '#markup' => '<a href="#feedback-form-content" class="feedback__trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
   );
   $static['feedback-text'] = array(
     '#markup' => '<div class="feedback__text">' . t('I have a') . '</div>',
