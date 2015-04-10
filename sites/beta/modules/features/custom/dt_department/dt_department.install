@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * DT Department install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_department_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_department_uninstall() {
+  $path = drupal_get_path('module', 'dt_department') . '/dt_department.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing field_department_contact field as it becomes field_core_contact on DT project level (dt_core)
+ */
+function dt_department_update_7101() {
+  field_delete_field("field_department_contact");
+}
