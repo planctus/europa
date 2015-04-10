@@ -38,6 +38,8 @@ function nexteuropa_feedback_form($form_state) {
   global $language;
   global $base_root;
 
+  $form['#attributes']['class'][] = 'feedback-form';
+
   $form['#token'] = FALSE;
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
@@ -111,7 +113,7 @@ function nexteuropa_feedback_form_theme($form) {
     '#markup' => '<a href="#feedback-form-content" id="feedback-trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
   );
   $static['feedback-text'] = array(
-    '#markup' => '<div id="feedback-text">' . t('I have a') . '</div>',
+    '#markup' => '<div class="feedback__text">' . t('I have a') . '</div>',
     '#prefix' => '<div id="feedback-form-content" class="collapse"><div class="feedback-form-content-inner">',
   );
   $actions = drupal_render($form['actions']);
@@ -138,29 +140,25 @@ function nexteuropa_feedback_form_validate($form, &$form_state) {
   switch ($form_state['values']['feedback_type']) {
     case 'problem':
       if ($form_state['values']['what_were_you_doing'] == '') {
-        form_set_error('what_were_you_doing', ' ');
-        $form_state['complete form']['accordion']['problem_group']['what_were_you_doing']['#description'] = t('Please fill in this field');
+        form_set_error('what_were_you_doing', 'Please fill in this field');
         $error = TRUE;
       }
       if ($form_state['values']['what_didnt_work'] == '') {
-        form_set_error('what_didnt_work', ' ');
-        $form_state['complete form']['accordion']['problem_group']['what_didnt_work']['#description'] = t('Please fill in this field');
+        form_set_error('what_didnt_work', 'Please fill in this field');
         $error = TRUE;
       }
       break;
 
     case 'suggestion':
       if ($form_state['values']['suggestion'] == '') {
-        form_set_error('suggestion', ' ');
-        $form_state['complete form']['accordion']['suggestion_group']['suggestion']['#description'] = t('Please fill in this field');
+        form_set_error('suggestion', 'Please fill in this field');
         $error = TRUE;
       }
       break;
 
     case 'compliment':
       if ($form_state['values']['compliment'] == '') {
-        form_set_error('compliment', ' ');
-        $form_state['complete form']['accordion']['compliment_group']['compliment']['#description'] = t('Please fill in this fieldf');
+        form_set_error('compliment', 'Please fill in this field');
         $error = TRUE;
       }
       break;
@@ -264,10 +262,20 @@ function nexteuropa_feedback_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'nexteuropa_feedback':
-      drupal_add_css(drupal_get_path('module', 'nexteuropa_feedback') .'/nexteuropa_feedback.css');
-      drupal_add_js(drupal_get_path('module', 'nexteuropa_feedback') .'/nexteuropa_feedback.js','file');
+      //drupal_add_js(drupal_get_path('module', 'nexteuropa_feedback') .'/nexteuropa_feedback.js','file');
       $block['content'] = nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form'));
       break;
   }
   return $block;
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function nexteuropa_feedback_preprocess_block(&$vars) {
+  $block = $vars['block'];
+
+  if ($block->delta == 'nexteuropa_feedback') {
+    $vars['classes_array'][] = 'feedback-form__wrapper';
+  }
 }

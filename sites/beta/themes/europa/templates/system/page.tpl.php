@@ -184,15 +184,13 @@
 </section>
 
 <?php if (!empty($page['footer_top'])): ?>
-  <footer class="feedback-component">
-<!--    <div class="region-footer-top-wrapper">-->
-    <div class="feedback-component__wrapper">
-      <div class="container">
-        <?php print render($page['footer_top']); ?>
-      </div>
+  <footer class="footer-top">
+    <div class="container-fluid">
+      <?php print render($page['footer_top']); ?>
     </div>
   </footer>
 <?php endif; ?>
+
 <footer class="footer">
   <div class="container-fluid">
     <?php print render($page['footer']); ?>

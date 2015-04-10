@@ -47,52 +47,13 @@ scripts[] = js/velocity.min.js
 ; Settings
 ; ========================================
 
-; Node form sidebar
-; --------------
-settings[node_form_sidebar][] = language
-settings[node_form_sidebar][] = group_content_access
-settings[node_form_sidebar][] = options
-settings[node_form_sidebar][] = revision_information
-settings[node_form_sidebar][] = og_group_ref
-settings[node_form_sidebar][] = menu
-settings[node_form_sidebar][] = author
-settings[node_form_sidebar][] = path
-settings[node_form_sidebar][] = scheduler_settings
-settings[node_form_sidebar][] = print
-settings[node_form_sidebar][] = comment_settings
-
-
-; Navbar
-; --------------
-settings[bootstrap_navbar_position] = 'static-top'
-settings[bootstrap_navbar_inverse] = 1
-
-; Grid
-; --------------
-settings[bootstrap_grid_columns] = 12
-settings[bootstrap_grid_class_prefix] = 'col-md'
-settings[bootstrap_region_grid-sidebar_first] = 3
-settings[bootstrap_region_grid-sidebar_second] = 6
-settings[bootstrap_region_grid_dynamic-content][sidebar_first] = 'sidebar_first'
-settings[bootstrap_region_grid_dynamic-content][sidebar_second] = 'sidebar_second'
-
-; Region Wells
-; --------------
-settings[bootstrap_region_well-navigation] = ''
-settings[bootstrap_region_well-header] = ''
-settings[bootstrap_region_well-highlighted] = ''
-settings[bootstrap_region_well-help] = ''
-settings[bootstrap_region_well-content] = ''
-settings[bootstrap_region_well-sidebar_first] = ''
-settings[bootstrap_region_well-sidebar_second] = ''
-settings[bootstrap_region_well-footer] = ''
 
 ; Tooltips
 ; --------------
-settings[bootstrap_tooltip_enabled] = 1
-settings[bootstrap_tooltip_descriptions] = 1
+settings[bootstrap_tooltip_enabled] = 0
+settings[bootstrap_tooltip_descriptions] = 0
 settings[bootstrap_tooltip_descriptions_length] = 200
-settings[bootstrap_tooltip_animation] = 1
+settings[bootstrap_tooltip_animation] = 0
 settings[bootstrap_tooltip_html] = 0
 settings[bootstrap_tooltip_placement] = 'auto bottom'
 settings[bootstrap_tooltip_selector] = ''
@@ -101,6 +62,10 @@ settings[bootstrap_tooltip_trigger]['focus'] = 'focus'
 settings[bootstrap_tooltip_trigger]['click'] = 'click'
 settings[bootstrap_tooltip_delay] = 150
 settings[bootstrap_tooltip_container] = 'body'
+
+; Popover
+; --------------
+settings[bootstrap_popover_enabled] = 0
 
 ; Breadcrumbs
 ; --------------

@@ -1,22 +1,19 @@
-.feedback-component {
-  background: #006fb4;
-  border-top: 1px solid #006fb4;
+.feedback-form {
   margin: 0;
-  font-size: 16px;
-  padding-bottom: 24px;
 
   form {
     margin: 0;
   }
 }
 
-.feedback-component__wrapper {
+.feedback-form__wrapper {
+  border-top: 1px solid $brand-primary;
   background: #fff;
   &:hover,
   &:active,
   &:focus,
-  &.region-open {
-    background: #f2f2f2;
+  &.is-open {
+    background: $grey-lightest;
   }
 }
 
@@ -59,7 +56,8 @@
 
 // Feedback form
 #feedback-trigger {
-  color: #006fb4;
+  text-decoration: none;
+  color: $brand-primary;
   display: block;
   padding: 12px 0 10px;
 }
@@ -86,17 +84,17 @@
     }
 
     .accordion-toggle {
-      background: url('images/svg/checkbox-checked.svg') no-repeat 0 0;
+      background: url('images/svg/checkbox-checked--blue.svg') no-repeat 0 0;
       line-height: 20px;
       padding-left: 25px;
-      color: #006fb4;
+      color: $brand-primary;
       text-decoration: none;
       font-weight: bold;
       display: block;
       text-decoration: none;
 
       &.collapsed {
-        background: url('images/svg/checkbox-unchecked.svg') no-repeat 0 0;
+        background: url('images/svg/checkbox-unchecked--grey.svg') no-repeat 0 0;
         color: #404040;
         font-weight: 400;
 
@@ -116,13 +114,13 @@
 }
 
 @media (max-width: 959px) {
-  #feedback-text {
+  .feedback__text {
     margin-left: 35px;
   }
 }
 
 @media screen and (min-width: 960px) {
-  #feedback-text {
+  .feedback__text {
     float: left;
     width: 85px;
     padding-top: 8px;
