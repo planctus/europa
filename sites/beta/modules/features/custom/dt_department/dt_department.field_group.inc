@@ -51,6 +51,7 @@ function dt_department_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_department_contact',
+      1 => 'field_core_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -107,9 +108,9 @@ function dt_department_field_group_info() {
       0 => 'field_core_priorities',
       1 => 'field_department_intro_sentence',
       2 => 'field_department_main_tasks',
-      3 => 'field_department_tasks_desc',
-      4 => 'field_department_plans_reports',
-      5 => 'field_department_related_tasks',
+      3 => 'field_department_plans_reports',
+      4 => 'field_department_related_tasks',
+      5 => 'field_department_tasks_desc',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
