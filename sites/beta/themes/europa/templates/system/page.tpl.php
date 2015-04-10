@@ -183,6 +183,14 @@
   </div>
 </section>
 
+<?php if (!empty($page['footer_top'])): ?>
+  <footer class="footer-top">
+    <div class="container-fluid">
+      <?php print render($page['footer_top']); ?>
+    </div>
+  </footer>
+<?php endif; ?>
+
 <footer class="footer">
   <div class="container-fluid">
     <?php print render($page['footer']); ?>

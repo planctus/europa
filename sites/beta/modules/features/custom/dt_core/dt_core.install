@@ -19,6 +19,7 @@ function dt_core_install() {
   // Enabling functional features.
   $features = array(
     'dt_announcement',
+    'dt_contact',
   );
   module_enable($features);
 
@@ -92,4 +93,11 @@ function dt_core_update_7105() {
  */
 function dt_core_update_7106() {
   module_enable(array('dt_contact'));
+}
+
+/**
+ * Enabling Nexteuropa feedback form
+ */
+function dt_core_update_7107() {
+  module_enable(array('nexteuropa_feedback'));
 }
