@@ -51,17 +51,6 @@ scripts[] = js/velocity.min.js
 ; Tooltips
 ; --------------
 settings[bootstrap_tooltip_enabled] = 0
-settings[bootstrap_tooltip_descriptions] = 0
-settings[bootstrap_tooltip_descriptions_length] = 200
-settings[bootstrap_tooltip_animation] = 0
-settings[bootstrap_tooltip_html] = 0
-settings[bootstrap_tooltip_placement] = 'auto bottom'
-settings[bootstrap_tooltip_selector] = ''
-settings[bootstrap_tooltip_trigger]['hover'] = 'hover'
-settings[bootstrap_tooltip_trigger]['focus'] = 'focus'
-settings[bootstrap_tooltip_trigger]['click'] = 'click'
-settings[bootstrap_tooltip_delay] = 150
-settings[bootstrap_tooltip_container] = 'body'
 
 ; Popover
 ; --------------
