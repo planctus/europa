@@ -18,7 +18,6 @@
 //@import "base/legend"; -> $form-item-legend-font-size variable is lost during merge
 @import "base/link";
 @import "base/lists";
-@import "base/messages";
 @import "base/paragraphs";
 @import "base/radio";
 @import "base/select";
@@ -38,6 +37,7 @@
 @import "components/help-block";
 @import "components/inpage-nav";
 @import "components/logo";
+@import "components/messages";
 @import "components/site-header";
 @import "components/page-header";
 @import "components/skip-link";

@@ -1,8 +1,7 @@
 // Bootstrap overrides and new variables
 
 // Colors
-$grey-base:              #000;
-$grey-darker:            #404040;
+$grey-base:              #404040;
 $grey-dark:              #575757;
 $grey:                   #b3b4b5;
 $grey-light:             #e2e2e2;
@@ -28,7 +27,7 @@ $brand-info:             $grey-dark;
 $brand-warning:          $yellow-dark;
 $brand-danger:           $red;
 
-$text-color:             $grey-darker;
+$text-color:             $grey-base;
 
 // Typegraphy
 $font-family-sans-serif:  Arial, sans-serif;
@@ -56,7 +55,7 @@ $form-control-height:                             2.750em; //44px basing on form
 $form-control-color-disabled:                     $grey;
 
 $form-control-text-color:                         $grey-dark;
-$form-control-text-color-focus:                   $grey-base;
+$form-control-text-color-focus:                   #000;
 $form-control-border-color:                       $grey;
 $form-control-border-color-focus:                 $yellow-light;
 $form-control-background-color:                   #ffffff;

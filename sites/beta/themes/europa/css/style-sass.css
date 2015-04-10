@@ -5151,12 +5151,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 h1, .h1 {
   font-size: 2.222em;
   font-weight: 600;
-  color: #000; }
+  color: #404040; }
 
 h2, .h2 {
   font-size: 1.667em;
   font-weight: 600;
-  color: #000; }
+  color: #404040; }
 
 h3, .h3 {
   font-size: 1.556em;
@@ -5223,62 +5223,6 @@ Styleguide text.lists
 */
 ul, ol {
   padding-left: 40px; }
-
-/*
-
-Messages
-
-Markup: html/messages.html
-
-Styleguide messages
-
-*/
-.messages, .messages.info {
-  background: #fff;
-  border: 2px solid;
-  border-color: #006fb4;
-  color: #000;
-  font-family: Arial, sans-serif;
-  font-size: 0.933em;
-  margin-bottom: 10px;
-  padding: 12px; }
-  .messages h3, .messages.info h3 {
-    font-size: 0.889em;
-    font-weight: bold; }
-  .messages ul > li, .messages.info ul > li {
-    list-style: none; }
-  .messages:before, .messages.info:before {
-    background: url("../images/svg/messages-info.svg");
-    background-position: 0px -0.45em;
-    background-repeat: no-repeat;
-    background-size: 2em;
-    content: '';
-    float: left;
-    height: 2em;
-    margin-right: 12px;
-    line-height: 100%;
-    width: 2em; }
-  .messages.success {
-    border-color: #467a39; }
-    .messages.success:before {
-      background-image: url("../images/svg/messages-success.svg"); }
-  .messages.warning {
-    border-color: #ffc412; }
-    .messages.warning:before {
-      background-image: url("../images/svg/messages-warning.svg"); }
-  .messages.error {
-    border-color: #da2131; }
-    .messages.error:before {
-      background-image: url("../images/svg/messages-error.svg"); }
-
-.no-svg .messages:before {
-  background: url("../images/png/messages-success.png"); }
-.no-svg .messages.info:before, .no-svg .info.messages:before {
-  background-image: url("../images/png/messages-info.png"); }
-.no-svg .messages.warning:before {
-  background-image: url("../images/png/messages-warning.png"); }
-.no-svg .messages.error:before {
-  background-image: url("../images/png/messages-error.png"); }
 
 /*
 Paragraphs
@@ -5760,6 +5704,64 @@ Styleguide siteheader.logo
 
 .no-svg .logo {
   background-image: url('../images/svg/logo.png'); }
+
+/*
+
+Messages
+
+Markup: html/messages.html
+
+Styleguide messages
+
+*/
+.messages, .messages.info {
+  background: #fff;
+  border: 2px solid;
+  border-color: #006fb4;
+  color: #404040;
+  font-family: Arial, sans-serif;
+  font-size: 0.933em;
+  margin-bottom: 10px;
+  padding: 12px; }
+  .messages h3, .messages.info h3 {
+    font-size: 0.889em;
+    font-weight: bold; }
+  .messages ul, .messages.info ul {
+    padding-left: 4em; }
+    .messages ul li, .messages.info ul li {
+      margin-bottom: 0.5em; }
+  .messages:before, .messages.info:before {
+    background: url("../images/svg/messages-info.svg");
+    background-position: 0px -0.45em;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    content: '';
+    float: left;
+    height: 2em;
+    margin-right: 12px;
+    line-height: 100%;
+    width: 2em; }
+  .messages.success {
+    border-color: #467a39; }
+    .messages.success:before {
+      background-image: url("../images/svg/messages-success.svg"); }
+  .messages.warning {
+    border-color: #ffc412; }
+    .messages.warning:before {
+      background-image: url("../images/svg/messages-warning.svg"); }
+  .messages.error {
+    border-color: #da2131; }
+    .messages.error:before {
+      background-image: url("../images/svg/messages-error.svg"); }
+
+.no-svg .messages:before {
+  background: url("../images/png/messages-success.png"); }
+.no-svg .messages.info:before, .no-svg .info.messages:before {
+  background-image: url("../images/png/messages-info.png"); }
+.no-svg .messages.warning:before {
+  background-image: url("../images/png/messages-warning.png"); }
+.no-svg .messages.error:before {
+  background-image: url("../images/png/messages-error.png"); }
 
 /*
 Site header
