@@ -104,12 +104,6 @@ $form-group-feedback-text-color-has-error:        $form-group-help-block-text-co
 $form-group-feedback-background-color:            #e2e2e2;
 $form-group-feedback-icon-size:                   1.5em;
 
-// Messages
-$messages-text-color: $grey-base;
-$messages-heading-size: $font-size-little;
-$messages-text-size: $font-size-xsmall;
-$messages-icon-size: 2em;
-
 // In order to override the 'default!', bootstrap variables have to be added
 // after the overrides
 @import "../bootstrap-sass/bootstrap/variables";

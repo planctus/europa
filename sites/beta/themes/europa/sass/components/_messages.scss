@@ -7,6 +7,10 @@ Markup: html/messages.html
 Styleguide messages
 
 */
+$messages-text-color: $grey-base;
+$messages-heading-size: $font-size-little;
+$messages-text-size: $font-size-xsmall;
+$messages-icon-size: 2em;
 
 .messages {
   background: #fff;
@@ -15,8 +19,8 @@ Styleguide messages
   color: $messages-text-color;
   font-family: $font-family-sans-serif;
   font-size: $messages-text-size;
-  margin-bottom: 10px;
-  padding: 12px;
+  margin-bottom: 0.556em;
+  padding: 0.667em;
 
   h3 {
     font-size: $messages-heading-size;
@@ -33,16 +37,13 @@ Styleguide messages
   }
 
   &:before {
-    background: url("../images/svg/messages-info.svg");
-    background-position: 0px -0.45em;
-    background-repeat: no-repeat;
-    background-size: $messages-icon-size;
-    content: '';
+    background: url("../images/svg/messages-info.svg") no-repeat;
     float: left;
     height: $messages-icon-size;
-    margin-right: 12px;
-    line-height: 100%;
+    margin-right: 0.667em;
+    margin-top: -0.15em;
     width: $messages-icon-size;
+    content: '';
   }
 
   &.success {
@@ -74,10 +75,10 @@ Styleguide messages
 .no-svg {
   .messages {
     &:before {
-      background: url("../images/png/messages-success.png");
+      background: url("../images/png/messages-info.png");
     }
 
-    &.info {
+    &.success {
       &:before {
         background-image: url("../images/png/messages-info.png");
       }
