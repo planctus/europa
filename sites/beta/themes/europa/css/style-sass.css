@@ -5151,12 +5151,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 h1, .h1 {
   font-size: 2.222em;
   font-weight: 600;
-  color: #000; }
+  color: #404040; }
 
 h2, .h2 {
   font-size: 1.667em;
   font-weight: 600;
-  color: #000; }
+  color: #404040; }
 
 h3, .h3 {
   font-size: 1.556em;
@@ -5704,6 +5704,62 @@ Styleguide siteheader.logo
 
 .no-svg .logo {
   background-image: url('../images/svg/logo.png'); }
+
+/*
+
+Messages
+
+Markup: html/messages.html
+
+Styleguide messages
+
+*/
+.messages, .messages.info {
+  background: #fff;
+  border: 2px solid;
+  border-color: #006fb4;
+  color: #404040;
+  font-family: Arial, sans-serif;
+  font-size: 0.933em;
+  margin-bottom: 0.556em;
+  padding: 0.667em; }
+  .messages h3, .messages.info h3 {
+    font-size: 0.889em;
+    font-weight: bold; }
+  .messages ul, .messages.info ul {
+    padding-left: 4em;
+    margin-bottom: 0; }
+    .messages ul li, .messages.info ul li {
+      margin-bottom: 0.5em; }
+  .messages:before, .messages.info:before {
+    background: url("../images/svg/messages-info.svg") no-repeat;
+    float: left;
+    height: 2em;
+    margin-right: 0.667em;
+    margin-top: -0.15em;
+    width: 2em;
+    content: ''; }
+  .messages.success {
+    border-color: #467a39; }
+    .messages.success:before {
+      background-image: url("../images/svg/messages-success.svg"); }
+  .messages.warning {
+    border-color: #ffc412; }
+    .messages.warning:before {
+      background-image: url("../images/svg/messages-warning.svg"); }
+  .messages.error {
+    border-color: #da2131; }
+    .messages.error:before {
+      background-image: url("../images/svg/messages-error.svg"); }
+
+.no-svg .messages:before {
+  background: url("../images/png/messages-info.png"); }
+.no-svg .messages.success:before {
+  background-image: url("../images/png/messages-info.png"); }
+.no-svg .messages.warning:before {
+  background-image: url("../images/png/messages-warning.png"); }
+.no-svg .messages.error:before {
+  background-image: url("../images/png/messages-error.png"); }
 
 /*
 Site header

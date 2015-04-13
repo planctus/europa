@@ -14,6 +14,7 @@ module.exports = function (grunt) {
       }
     },
 
+    clean: ['styleguide/assets'],
     sass: {
       options: {
         sourceMap: true
@@ -35,7 +36,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    clean: ['styleguide/assets'],
     copy: {
       main: {
         files: [
@@ -59,9 +59,9 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-kss');
 
