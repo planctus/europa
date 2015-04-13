@@ -5727,7 +5727,8 @@ Styleguide messages
     font-size: 0.889em;
     font-weight: bold; }
   .messages ul, .messages.info ul {
-    padding-left: 4em; }
+    padding-left: 4em;
+    margin-bottom: 0; }
     .messages ul li, .messages.info ul li {
       margin-bottom: 0.5em; }
   .messages:before, .messages.info:before {
