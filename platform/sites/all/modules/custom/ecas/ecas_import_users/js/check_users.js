@@ -1,4 +1,4 @@
-﻿/**
+/**
  *  This javascript file adds a "Select All" button to the form that allows
  *  an administrator to select the ECAS users he wishes to import.
  */

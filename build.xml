@@ -247,10 +247,24 @@
     <target name="init-platform" description="Export Multisite from SVN" depends="init">
         <echo message="Deleting platform files." />
         <delete dir="${project.basedir}/${phing.project.platform.dir}" includeemptydirs="true" failonerror="false" />
-        <svncheckout
-             repositoryurl="${multisite.repo.url}"
-             todir="${project.basedir}/${phing.project.platform.dir}"
-             force="true"/>
+        <if>
+          <equals arg1="${multisite.vcs}" arg2="git" />
+          <then>
+            <mkdir dir="${project.basedir}/${phing.project.platform.dir}" />
+            <gitclone
+                  repository="${multisite.git.url}"
+                  targetPath="${project.basedir}/${phing.project.platform.dir}" />
+          </then>
+          <elseif>
+          <equals arg1="${foo}" arg2="svn" />
+            <then>
+             <svncheckout
+                  repositoryurl="${multisite.svn.url}"
+                  todir="${project.basedir}/${phing.project.platform.dir}"
+                  force="true"/>
+            </then>
+          </elseif>
+        </if>
         <phingcall target="clean-platform" />
     </target>
 
