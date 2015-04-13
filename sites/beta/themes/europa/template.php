@@ -5,15 +5,6 @@
  */
 
 /**
- * Implements template_preprocess_page().
- */
-function europa_preprocess_page(&$vars) {
-  drupal_set_message('status message', 'status');
-  drupal_set_message('warning message', 'warning');
-  drupal_set_message('error message', 'error');
-}
-
-/**
  * Implements template_preprocess_block().
  */
 function europa_preprocess_block(&$vars) {
