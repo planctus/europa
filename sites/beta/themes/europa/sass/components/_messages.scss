@@ -27,15 +27,6 @@ $messages-icon-size: 2em;
     font-weight: bold;
   }
 
-  ul {
-    padding-left: 4em;
-    margin-bottom: 0;
-    
-    li {
-      margin-bottom: 0.5em;
-    }
-  }
-
   &:before {
     background: url("../images/svg/messages-info.svg") no-repeat;
     float: left;
@@ -46,15 +37,11 @@ $messages-icon-size: 2em;
     content: '';
   }
 
-  &.success {
+  &.status {
     border-color: $green;
     &:before {
       background-image: url("../images/svg/messages-success.svg");
     }
-  }
-
-  &.info {
-    @extend .messages;
   }
 
   &.warning {
@@ -72,13 +59,22 @@ $messages-icon-size: 2em;
   }
 }
 
+.messages__list {
+  padding-left: 4em;
+  margin-bottom: 0;
+}
+
+.messages__list-item {
+  margin-bottom: 0.5em;
+}
+
 .no-svg {
   .messages {
     &:before {
       background: url("../images/png/messages-info.png");
     }
 
-    &.success {
+    &.status {
       &:before {
         background-image: url("../images/png/messages-info.png");
       }
@@ -94,6 +90,16 @@ $messages-icon-size: 2em;
       &:before {
         background-image: url("../images/png/messages-error.png");
       }
+    }
+  }
+}
+
+// Drupal Overrides
+.messages {
+  ul {
+    @extend .messages__list;
+    li {
+      @extend .messages__list-item;
     }
   }
 }
