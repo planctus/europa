@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * DT person install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_person_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_person_uninstall() {
+  $path = drupal_get_path('module', 'dt_person') . '/dt_person.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Updating the fields definition of the person content type.
+ */
+function dt_person_update_7101() {
+  features_revert(array('dt_person' => array('field_base', 'field_instance', 'field_group')));
+}
