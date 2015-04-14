@@ -66,7 +66,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-kss');
 
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('styleguide', ['clean','sass','kss']);
+  grunt.registerTask('styleguide', ['clean', 'sass', 'kss', 'copy:main']);
   grunt.registerTask('copyall', ['copy:all']);
 
 };
