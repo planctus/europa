@@ -2,6 +2,7 @@
   Drupal.behaviors.nexteuropa_feedback = {
     attach: function(context) {
       var $feedbackForm = $('#nexteuropa-feedback-form');
+      var $feedbackFormWrapper = $('.feedback-form__wrapper');
 
       $feedbackForm.once('feedback', function() {
         var $submitButton = $('.form-submit', this),
@@ -40,13 +41,12 @@
 
         // Toggle class on feedback open
         $('.feedback-form__trigger').click(function() {
-          $('.feedback-form__wrapper').toggleClass('is-open');
+          $feedbackFormWrapper.toggleClass('is-open');
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
         });
       });
       
       // Removing is-open class when new form is loaded
-      var $feedbackFormWrapper = $('.feedback-form__wrapper');
       if ($feedbackFormWrapper.find('.feedback-form').length) {
         $feedbackFormWrapper.removeClass('is-open');
       }
