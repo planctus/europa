@@ -6,6 +6,7 @@
             !     `--------------'           ) (      | !
                                              '-'      !
 
+
 ## Set up your environment:
 
 *   RUN: <code>composer install</code>
@@ -14,16 +15,22 @@
 
 ### Initalize platform for your project:
 
-This has been already done. It only needs to be done again only on platform update.
-
-* Run <code>bin/phing init-platform</code>
+* Run <code>git submodule init</code>
 
 #### This will:
 
-*   Check out the branch of MULTISITE set in the properties file from SVN into the platform folder.
-*   Delete unnecessary folders from the platform folder.
+*   Initialize the submodule <code>platform</code> that contains the MULTISITE platform. By default the submodule is using the develop branch of the platform-dev repository.
+*   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
 
-The platform folder is version controlled so changes to the platform files can be applied and versioned. These changes should be stored in the form of patch files in the patches folder of the project. To apply patches after your platform is initalized run:  <code>bin/phing patch-platform</code>
+##### In case the platform needs to be updated:
+*   In the platform folder: <code>git pull</code> (or whatever the update means, checkout another branch for example).
+*   In the root folder: <code>git add platform</code> to add the change to the projects repository.
+
+More on git submodules here: http://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+##### In cases when the platform needs to be altered (quick bug fixes etc)
+
+Changes should be stored in the form of patch files in the patches folder of the project. To apply patches after your platform is initalized run:  <code>bin/phing patch-platform</code>
 
 ## To build your local dev site:
 

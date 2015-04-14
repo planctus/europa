@@ -91,9 +91,8 @@
         </drush>
 
         <echo msg="Copy platform files." />
-        <phingcall target="clean-platform" />
         <copy todir="${project.code.dir}">
-            <fileset dir="${phing.project.platform.dir}" />
+            <fileset dir="${phing.project.platform.dir}" excludes="*.sh" defaultexcludes="true"/>
         </copy>
     </target>
 
@@ -243,48 +242,6 @@
               passthru="true" />
     </target>
 
-    <!-- svncheckout platform files from SVN. -->
-    <target name="init-platform" description="Export Multisite from SVN" depends="init">
-        <echo message="Deleting platform files." />
-        <delete dir="${project.basedir}/${phing.project.platform.dir}" includeemptydirs="true" failonerror="false" />
-        <if>
-          <equals arg1="${multisite.vcs}" arg2="git" />
-          <then>
-            <mkdir dir="${project.basedir}/${phing.project.platform.dir}" />
-            <gitclone
-                  repository="${multisite.git.url}"
-                  targetPath="${project.basedir}/${phing.project.platform.dir}" />
-          </then>
-          <elseif>
-          <equals arg1="${foo}" arg2="svn" />
-            <then>
-             <svncheckout
-                  repositoryurl="${multisite.svn.url}"
-                  todir="${project.basedir}/${phing.project.platform.dir}"
-                  force="true"/>
-            </then>
-          </elseif>
-        </if>
-        <phingcall target="clean-platform" />
-    </target>
-
-    <!-- Update platform files from SVN. -->
-    <target name="update-platform" description="Update Multisite from SVN" depends="init">
-        <if>
-          <available file="${project.basedir}/${phing.project.platform.dir}" type="dir" />
-          <then>
-            <echo message="Update platform files from SVN." />
-            <svnupdate
-                 todir="${project.basedir}/${phing.project.platform.dir}" />
-            <phingcall target="clean-platform" />
-         </then>
-         <else>
-           <echo message="Nothing to update. Proceed by initializing the platform." />
-           <phingcall target="init-platform" />
-         </else>
-      </if>
-    </target>
-
     <target name="patch-platform" description="Applies patches to Multisite" depends="init">
         <echo message="Patching Multisite." />
         <!-- Apply patches -->
@@ -298,23 +255,6 @@
     <target name="apply-patch" >
         <echo msg="Applying patch: ${absfilename}" />
         <exec command="patch --directory=${project.basedir} --batch -p1 --backup --input=${absfilename}" passthru="true" />
-    </target>
-
-    <target name="clean-platform" description="Remove unnecessary files from Multisite" depends="init">
-        <echo message="Cleaning Multisite." />
-        <delete includeemptydirs="true" failonerror="false" >
-          <fileset dir="${phing.project.platform.dir}" defaultexcludes="false">
-              <patternset>
-                <include name="**/*.svn"/>
-                <include name="**/automation/"/>
-                <include name="crawling_scripts/"/>
-                <include name="custom_subsites/"/>
-                <include name="deploy_scripts/"/>
-                <include name="dev/"/>
-                <include name="**/*.sh"/>
-              </patternset>
-          </fileset>
-        </delete>
     </target>
 
     <target name="build-dev"

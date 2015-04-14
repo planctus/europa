@@ -1,5 +1,5 @@
-diff --git a/platform/profiles/multisite_drupal_core/patches.make b/platform/profiles/multisite_drupal_core/patches.make
-index 0f7c38a..919eb0f 100644
+diff --git a/platform/profiles/multisite_drupal_core/patches.make b/profiles/multisite_drupal_core/patches.make
+index 3a6d77d..1616a88 100644
 --- a/platform/profiles/multisite_drupal_core/patches.make
 +++ b/platform/profiles/multisite_drupal_core/patches.make
 @@ -73,8 +73,8 @@ projects[webform][patch][] = ../multisite_drupal_core/patches/webform-use_ecas_l
