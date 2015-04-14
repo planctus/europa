@@ -3,5 +3,5 @@
 	url = beta@svn-3992.devcloud.hosting.acquia.com:beta.git
 [submodule "platform"]
 	path = platform
-	url = https://kugleta@webgate.ec.europa.eu/CITnet/stash/scm/nexteuropa/platform-dev.git
+	url = https://webgate.ec.europa.eu/CITnet/stash/scm/nexteuropa/platform-dev.git
 	branch = develop
