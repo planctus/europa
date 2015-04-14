@@ -15,14 +15,14 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'description for search',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -82,14 +82,13 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'shareable excerpt or quote',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -149,14 +148,13 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Information about the lead paragraph',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -216,14 +214,14 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'description of the issue that prompted the priority',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -271,7 +269,7 @@ function dt_priority_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 15,
+        'rows' => 5,
       ),
       'type' => 'text_textarea',
       'weight' => 37,
@@ -283,14 +281,13 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'keywords for search',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -357,7 +354,7 @@ function dt_priority_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -412,51 +409,6 @@ function dt_priority_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_priority_policy'
-  $field_instances['node-priority-field_priority_policy'] = array(
-    'bundle' => 'priority',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_priority_policy',
-    'label' => 'Policies',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'apply_chosen' => '',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 39,
-    ),
-  );
-
   // Exported field_instance: 'node-priority-field_priority_type'
   $field_instances['node-priority-field_priority_type'] = array(
     'bundle' => 'priority',
@@ -466,14 +418,14 @@ function dt_priority_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'meta type',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -541,10 +493,9 @@ function dt_priority_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -591,10 +542,9 @@ function dt_priority_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'og_ui',
         'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -647,13 +597,13 @@ function dt_priority_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'title of the priority',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -718,13 +668,19 @@ function dt_priority_field_default_field_instances() {
   t('Excerpt');
   t('Group content visibility');
   t('Groups audience');
+  t('Information about the lead paragraph');
   t('Intro');
   t('Issue');
   t('Keyword');
   t('Name');
   t('Objectives');
-  t('Policies');
   t('Type');
+  t('description for search');
+  t('description of the issue that prompted the priority');
+  t('keywords for search');
+  t('meta type');
+  t('shareable excerpt or quote');
+  t('title of the priority');
 
   return $field_instances;
 }
