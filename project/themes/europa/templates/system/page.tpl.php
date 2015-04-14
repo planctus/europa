@@ -80,9 +80,9 @@
     <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
-    <div class="top-bar pull-right">
+    <section class="top-bar pull-right" aria-label="Site tools">
       <?php print render($page['header']); ?>
-    </div>
+    </section>
     <?php endif; ?>
   </div>
 </header>
@@ -144,8 +144,9 @@
 <?php endif; ?>
 
 <section class="main-content">
-  <div class="container-fluid">
+  <a id="main-content" tabindex="-1"></a>
 
+  <div class="container-fluid">
     <div class="row">
 
       <?php if (!empty($page['sidebar_first'])): ?>
@@ -159,8 +160,6 @@
           <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
         <?php endif; ?>
 
-        <a id="main-content"></a>
-
         <?php print $messages; ?>
         <?php if (!empty($tabs)): ?>
           <?php print render($tabs); ?>
@@ -172,6 +171,7 @@
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
         <?php print render($page['content']); ?>
+	<?php print render($page['content_bottom']); ?>
       </section>
 
       <?php if (!empty($page['sidebar_second'])): ?>
@@ -182,6 +182,14 @@
     </div>
   </div>
 </section>
+
+<?php if (!empty($page['footer_top'])): ?>
+  <footer class="footer-top">
+    <div class="container-fluid">
+      <?php print render($page['footer_top']); ?>
+    </div>
+  </footer>
+<?php endif; ?>
 
 <footer class="footer">
   <div class="container-fluid">
