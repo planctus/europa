@@ -20,3 +20,13 @@ function priority_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_priority_update_7101() {
+  features_revert_module('dt_priority');
+  features_revert(array(
+    'dt_priority' => array('field_base', 'field_instance', 'field_group', 'variable'),
+  ));
+}
