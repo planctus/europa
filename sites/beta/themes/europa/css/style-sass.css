@@ -5330,7 +5330,8 @@ Styleguide form.textarea
   margin-left: -15px;
   margin-right: -15px; }
   .block--full-width > * {
-    margin: 0 auto !important; }
+    margin-left: auto !important;
+    margin-right: auto !important; }
 
 @media (min-width: 1200px) {
   .block--full-width {
@@ -5339,7 +5340,7 @@ Styleguide form.textarea
  }
 
 .breadcrumb {
-  font-size: 0.933em;
+  font-size: 0.778em;
   line-height: 30px;
   height: 30px;
   margin: 0;
@@ -5715,14 +5716,14 @@ Styleguide messages
 
 */
 .messages {
-  background: #fff;
   border: 2px solid;
   border-color: #006fb4;
   color: #404040;
   font-family: Arial, sans-serif;
-  font-size: 0.933em;
-  margin-bottom: 0.556em;
-  padding: 0.667em; }
+  font-size: 0.778em;
+  margin: 1em 0;
+  padding: 1em 4em;
+  position: relative; }
   .messages h3 {
     font-size: 0.889em;
     font-weight: bold; }
@@ -5733,7 +5734,14 @@ Styleguide messages
     margin-right: 0.667em;
     margin-top: -0.15em;
     width: 2em;
-    content: ''; }
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%); }
   .messages.status {
     border-color: #467a39; }
     .messages.status:before {
@@ -5748,11 +5756,13 @@ Styleguide messages
       background-image: url("../images/svg/messages-error.svg"); }
 
 .messages__list, .messages ul {
-  padding-left: 4em;
+  padding-left: 14px;
   margin-bottom: 0; }
 
 .messages__list-item, .messages ul li {
-  margin-bottom: 0.5em; }
+  margin-top: 0.5em; }
+  .messages__list-item:first-child, .messages ul li:first-child {
+    margin-top: 0; }
 
 .no-svg .messages:before {
   background: url("../images/png/messages-info.png"); }
