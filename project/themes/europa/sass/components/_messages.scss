@@ -9,18 +9,18 @@ Styleguide messages
 */
 $messages-text-color: $grey-base;
 $messages-heading-size: $font-size-little;
-$messages-text-size: $font-size-xsmall;
+$messages-text-size: $font-size-little;
 $messages-icon-size: 2em;
 
 .messages {
-  background: #fff;
   border: 2px solid;
   border-color: $blue;
   color: $messages-text-color;
   font-family: $font-family-sans-serif;
   font-size: $messages-text-size;
-  margin-bottom: 0.556em;
-  padding: 0.667em;
+  margin: 1em 0;
+  padding: 1em 4em;
+  position: relative;
 
   h3 {
     font-size: $messages-heading-size;
@@ -35,6 +35,10 @@ $messages-icon-size: 2em;
     margin-top: -0.15em;
     width: $messages-icon-size;
     content: '';
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    @include translate(0,-50%);
   }
 
   &.status {
@@ -60,12 +64,15 @@ $messages-icon-size: 2em;
 }
 
 .messages__list {
-  padding-left: 4em;
+  padding-left: 14px;
   margin-bottom: 0;
 }
 
 .messages__list-item {
-  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .no-svg {

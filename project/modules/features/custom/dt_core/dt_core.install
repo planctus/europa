@@ -32,6 +32,9 @@ function dt_core_install() {
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
 
+  // Enabling admin theme for node pages
+  variable_set('node_admin_theme', 1);
+
   // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!)
   variable_set('cce_basic_config_admin_pages', array());
 }
@@ -100,4 +103,11 @@ function dt_core_update_7106() {
  */
 function dt_core_update_7107() {
   module_enable(array('nexteuropa_feedback'));
+}
+
+/**
+ * Enabling admin theme for node pages
+ */
+function dt_core_update_7108() {
+  variable_set('node_admin_theme', 1);
 }

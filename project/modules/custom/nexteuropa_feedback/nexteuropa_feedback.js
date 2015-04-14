@@ -2,10 +2,11 @@
   Drupal.behaviors.nexteuropa_feedback = {
     attach: function(context) {
       var $feedbackForm = $('#nexteuropa-feedback-form');
+      var $feedbackFormWrapper = $('.feedback-form__wrapper');
 
       $feedbackForm.once('feedback', function() {
         var $submitButton = $('.form-submit', this),
-            $accordionWrapper = $('#feedback-accordion');
+            $accordionWrapper = $('#feedback-form__accordion');
 
         $submitButton.hide();
         $('.accordion-body', this).removeClass('in');
@@ -39,14 +40,19 @@
         });
 
         // Toggle class on feedback open
-        $('.feedback__trigger').click(function() {
-          $feedbackForm.parent().toggleClass('is-open');
+        $('.feedback-form__trigger').click(function() {
+          $feedbackFormWrapper.toggleClass('is-open');
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
         });
       });
+      
+      // Removing is-open class when new form is loaded
+      if ($feedbackFormWrapper.find('.feedback-form').length) {
+        $feedbackFormWrapper.removeClass('is-open');
+      }
 
       var currentType = $('input[name="feedback_type"]').val();
-      var $feedbackActiveCollapsed = $('#feedback-form-content, #'+currentType+'');
+      var $feedbackActiveCollapsed = $('#feedback-form__content, #'+currentType+'');
 
       // Initializing collapse plugin so that it works on browsers without css3 transitions
       $feedbackActiveCollapsed.collapse({toggle: false});
