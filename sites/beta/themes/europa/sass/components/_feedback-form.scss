@@ -14,11 +14,12 @@
 }
 
 // Feedback form
-.feedback__trigger {
+.feedback-form__trigger {
   text-decoration: none;
   color: $brand-primary;
   display: block;
   padding: 0.667em 0 0.556em;
+  font-size: $font-size-little;
 
   &:hover,
   &:active,
@@ -27,17 +28,18 @@
   }
 }
 
-.feedback-form-content-inner {
+.feedback-form__content {
   margin: 0.8em 0 2em;
 }
 
-.feedback__text {
+.feedback-form__text {
   font-weight: bold;
   margin-bottom: 0.5em;
   margin-left: 1.944em;
 }
 
-#feedback-accordion {
+// Bootstrap accordion
+#feedback-form__accordion {
   margin-bottom: 1em;
   border: 1px solid #575757;
 
@@ -58,6 +60,7 @@
       font-weight: bold;
       display: block;
       text-decoration: none;
+      font-size: $font-size-little;
 
       &.collapsed {
         background: url('../images/svg/checkbox-unchecked--grey.svg') no-repeat;
@@ -80,13 +83,18 @@
 }
 
 @include breakpoint(screen-sm-min) {
-  .feedback__text {
+  .feedback-form__text {
     float: left;
-    width: 180px;
+    width: 10.111em;
     padding-top: 8px;
   }
 
-  #feedback-accordion {
+  .feedback-form__btn {
+    margin-left: 12.055em;
+    font-size: 1em; // TEMP, until buttons have styling
+  }
+
+  #feedback-form__accordion {
     overflow: hidden;
   }
 }
