@@ -16,6 +16,7 @@
 ### Initalize platform for your project:
 
 * Run <code>git submodule init</code>
+* Run <code>git submodule update</code>
 
 #### This will:
 
