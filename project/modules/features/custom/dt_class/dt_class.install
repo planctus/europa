@@ -18,5 +18,16 @@ function dt_class_install() {
 function dt_class_uninstall() {
   $path = drupal_get_path('module', 'dt_class') . '/dt_class.info';
   $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Class feature to take new fields for sure.
+ */
+function dt_class_update_7101() {
+  features_revert_module('dt_class');
+  // The fields need component-based way
+  features_revert(array(
+    'dt_class' => array('field_instance', 'variable'),
+  ));
 }
