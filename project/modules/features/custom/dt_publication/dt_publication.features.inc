@@ -5,6 +5,18 @@
  */
 
 /**
+ * Implements hook_ctools_plugin_api().
+ */
+function dt_publication_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_node_info().
  */
 function dt_publication_node_info() {
