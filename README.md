@@ -24,7 +24,7 @@
 *   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
 
 ##### In case the platform needs to be updated:
-*   Maybe the platform is not in the *development* branch, so do this `cd platform; git checkout develop`.
+*   Maybe the platform is not in the *develop* branch, so do this `cd platform; git checkout develop`.
 *   In the platform folder: <code>git pull</code> (or whatever the update means, checkout another branch for example).
 *   In the root folder: <code>git add platform</code> to add the change to the projects repository.
 
