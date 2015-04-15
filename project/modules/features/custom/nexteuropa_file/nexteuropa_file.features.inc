@@ -1,16 +1,13 @@
 <?php
 /**
  * @file
- * dt_publication.features.inc
+ * nexteuropa_file.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_publication_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "field_group" && $api == "field_group") {
-    return array("version" => "1");
-  }
+function nexteuropa_file_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -19,12 +16,13 @@ function dt_publication_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function dt_publication_node_info() {
+function nexteuropa_file_node_info() {
   $items = array(
-    'publication' => array(
-      'name' => t('Publication'),
+    'file' => array(
+      'name' => t('File'),
       'base' => 'node_content',
-      'description' => t('Publication content type for dt.'),
+      'description' => t('A file can be any file that can be published and that users can view or download. 
+A file is usually part of a publication.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

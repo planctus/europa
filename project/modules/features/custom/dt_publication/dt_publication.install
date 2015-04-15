@@ -10,6 +10,14 @@
 function dt_publication_install() {
   // Apply default dt configuration to "Publication" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('publication');
+
+  // Import "Publication Types" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_publication' => array('taxonomy')));
+  // Import publication_types vocabulary's terms.
+  Migration::getInstance('DTPublicationPublicationTypes')->processImport();
 }
 
 /**

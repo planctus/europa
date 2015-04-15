@@ -111,3 +111,17 @@ function dt_core_update_7107() {
 function dt_core_update_7108() {
   variable_set('node_admin_theme', 1);
 }
+
+/**
+ * Enabling DT publication feature containing contact content type.
+ */
+function dt_core_update_7109() {
+  module_enable(array('dt_publication'));
+}
+
+/**
+ * Enabling the file content type feature.
+ */
+function dt_core_update_7110() {
+  module_enable(array('nexteuropa_file'));
+}

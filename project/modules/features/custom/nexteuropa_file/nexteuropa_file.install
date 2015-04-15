@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Digital Transformation File install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_file_install() {
+  // Reverting feature components that have overriden state after installing.
+  features_revert(array(
+    'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
+  ));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function nexteuropa_file_uninstall() {
+  $path = drupal_get_path('module', 'nexteuropa_file') . '/nexteuropa_file.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa File %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
