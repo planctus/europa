@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the DT Policy stage feature.
- */
-
-include_once 'dt_policy_stage.features.inc';

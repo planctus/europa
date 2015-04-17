@@ -13,7 +13,6 @@ dependencies[] = dt_policy_detail
 dependencies[] = dt_policy_follow
 dependencies[] = dt_policy_input
 dependencies[] = dt_policy_next_step
-dependencies[] = dt_policy_stage
 dependencies[] = text
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
