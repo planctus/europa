@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * DT Policy stage install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_stage_install() {
+  // Apply default dt configuration to "Policy stage" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_stage');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_stage_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_stage') . '/dt_policy_stage.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Policy stage %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
