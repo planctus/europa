@@ -26,14 +26,5 @@ function dt_publication_install() {
 function dt_publication_uninstall() {
   $path = drupal_get_path('module', 'dt_publication') . '/dt_publication.info';
   $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Publication %v feature is uninstalled on your site.', array('%v' => $info['version'])));
-}
-
-/**
- * Implements hook_uninstall().
- */
-function dt_publication_uninstall() {
-  $path = drupal_get_path('module', 'publication') . '/publication.info';
-  $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Publication %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
