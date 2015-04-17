@@ -114,3 +114,10 @@ function dt_core_update_7107() {
 function dt_core_update_7108() {
   variable_set('node_admin_theme', 1);
 }
+
+/**
+ * Enabling Announcements feature.
+ */
+function dt_core_update_7109() {
+  module_enable(array('nexteuropa_page'));
+}
