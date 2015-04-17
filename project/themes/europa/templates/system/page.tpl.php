@@ -95,25 +95,6 @@
 </nav>
 <?php endif; ?>
 
-<div class="page-header">
-  <div class="container-fluid">
-    <span class="page-header__top">First line</span>
-
-    <?php print render($title_prefix); ?>
-    <h1>
-        <span class="page-header__main">
-          <?php if (drupal_is_front_page() && !empty($site_name)): ?>
-            <?php print $site_name; ?>
-          <?php elseif (!empty($title)): ?>
-            <?php print $title; ?>
-          <?php endif; ?>
-        </span>
-        <span class="page-header__bottom">Second line</span>
-    </h1>
-    <?php print render($title_suffix); ?>
-  </div>
-</div>
-
 <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
   <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
     <div class="container-fluid">
@@ -144,7 +125,28 @@
 <?php endif; ?>
 
 <section class="main-content">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container-fluid">
+      <span class="page-header__top">First line</span>
+
+      <?php print render($title_prefix); ?>
+      <h1>
+          <span class="page-header__main">
+            <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+              <?php print $site_name; ?>
+            <?php elseif (!empty($title)): ?>
+              <?php print $title; ?>
+            <?php endif; ?>
+          </span>
+          <span class="page-header__bottom">Second line</span>
+      </h1>
+      <?php print render($title_suffix); ?>
+    </div>
+  </div>
   <a id="main-content" tabindex="-1"></a>
+
 
   <div class="container-fluid">
     <div class="row">

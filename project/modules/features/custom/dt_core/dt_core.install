@@ -19,7 +19,10 @@ function dt_core_install() {
   // Enabling functional features.
   $features = array(
     'dt_announcement',
+    'dt_class',
     'dt_contact',
+    'dt_publication',
+    'nexteuropa_file',
   );
   module_enable($features);
 
@@ -32,7 +35,7 @@ function dt_core_install() {
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
 
-  // Enabling admin theme for node pages
+  // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
 
   // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!)
@@ -49,7 +52,7 @@ function dt_core_uninstall() {
 }
 
 /**
- * Enabling About the EC and Strategy classes and also Homepage Core feature
+ * Enabling About the EC and Strategy classes and also Homepage Core feature.
  */
 function dt_core_update_7101() {
   $slices = array(
@@ -61,14 +64,14 @@ function dt_core_update_7101() {
 }
 
 /**
- * Enabling Announcements feature
+ * Enabling Announcements feature.
  */
 function dt_core_update_7102() {
   module_enable(array('dt_announcement'));
 }
 
 /**
- * Enable Europa theme
+ * Enable Europa theme.
  */
 function dt_core_update_7103() {
   theme_enable(array('europa'));
@@ -76,7 +79,7 @@ function dt_core_update_7103() {
 }
 
 /**
- * Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE)
+ * Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
  */
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
@@ -84,7 +87,7 @@ function dt_core_update_7104() {
 
 
 /**
- * Enabling adressfield and inline_entity_form
+ * Enabling adressfield and inline_entity_form.
  */
 function dt_core_update_7105() {
   module_enable(array('addressfield', 'inline_entity_form'));
@@ -92,36 +95,22 @@ function dt_core_update_7105() {
 
 
 /**
- * Enabling DT contact feature containing contact content type
+ * Enabling DT contact feature containing contact content type.
  */
 function dt_core_update_7106() {
   module_enable(array('dt_contact'));
 }
 
 /**
- * Enabling Nexteuropa feedback form
+ * Enabling Nexteuropa feedback form.
  */
 function dt_core_update_7107() {
   module_enable(array('nexteuropa_feedback'));
 }
 
 /**
- * Enabling admin theme for node pages
+ * Enabling admin theme for node pages.
  */
 function dt_core_update_7108() {
   variable_set('node_admin_theme', 1);
-}
-
-/**
- * Enabling DT publication feature containing contact content type.
- */
-function dt_core_update_7109() {
-  module_enable(array('dt_publication'));
-}
-
-/**
- * Enabling the file content type feature.
- */
-function dt_core_update_7110() {
-  module_enable(array('nexteuropa_file'));
 }
