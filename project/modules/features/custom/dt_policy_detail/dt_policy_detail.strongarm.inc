@@ -71,7 +71,10 @@ function dt_policy_detail_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '6',
+        ),
+        'language' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(),

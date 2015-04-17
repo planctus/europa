@@ -77,7 +77,7 @@ function dt_policy_stage_strongarm() {
           'weight' => '1',
         ),
         'language' => array(
-          'weight' => '4',
+          'weight' => '1',
         ),
       ),
       'display' => array(),

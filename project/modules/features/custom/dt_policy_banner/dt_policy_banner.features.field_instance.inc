@@ -59,7 +59,7 @@ function dt_policy_banner_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 4,
     ),
     'widget_type' => 'options_select',
   );

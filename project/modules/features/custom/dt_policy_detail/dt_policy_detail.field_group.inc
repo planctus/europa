@@ -24,7 +24,9 @@ function dt_policy_detail_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'body',
-      1 => 'path',
+      1 => 'group_content_access',
+      2 => 'path',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -53,8 +55,8 @@ function dt_policy_detail_field_group_info() {
     'children' => array(
       0 => 'field_policy_detail_body',
       1 => 'field_policy_detail_objectives',
-      2 => 'title',
-      3 => 'field_policy_detail_additional',
+      2 => 'field_policy_detail_additional',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -71,13 +71,13 @@ function dt_policy_input_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '8',
         ),
         'scheduler_settings' => array(
           'weight' => '1',
         ),
         'language' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

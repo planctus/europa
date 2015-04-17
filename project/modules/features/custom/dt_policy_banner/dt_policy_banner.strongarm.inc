@@ -71,7 +71,7 @@ function dt_policy_banner_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '6',
         ),
         'scheduler_settings' => array(
           'weight' => '1',

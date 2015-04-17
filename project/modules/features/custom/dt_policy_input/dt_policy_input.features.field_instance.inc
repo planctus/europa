@@ -51,7 +51,7 @@ function dt_policy_input_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 9,
     ),
   );
 
@@ -377,7 +377,7 @@ function dt_policy_input_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 7,
     ),
     'widget_type' => 'options_select',
   );
