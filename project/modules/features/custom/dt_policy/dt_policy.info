@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0-dev
 project = dt_policy
+dependencies[] = dt_announcement
 dependencies[] = dt_contact
 dependencies[] = dt_core
 dependencies[] = dt_department

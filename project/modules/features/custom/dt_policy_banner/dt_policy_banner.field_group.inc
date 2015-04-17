@@ -13,6 +13,33 @@ function dt_policy_banner_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_banner_common|node|policy_banner|form';
+  $field_group->group_name = 'group_policy_banner_common';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_banner';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Common',
+    'weight' => '0',
+    'children' => array(
+      0 => 'title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-banner-common field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_banner_common|node|policy_banner|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_banner_metadata|node|policy_banner|form';
   $field_group->group_name = 'group_policy_banner_metadata';
   $field_group->entity_type = 'node';
