@@ -16,7 +16,7 @@ function dt_core_ds_view_modes_info() {
   $ds_view_mode->label = 'Meta';
   $ds_view_mode->entities = array(
     'node' => 'node',
-    'file' => 'file',
+    'taxonomy_term' => 'taxonomy_term',
   );
   $export['meta'] = $ds_view_mode;
 
@@ -26,6 +26,7 @@ function dt_core_ds_view_modes_info() {
   $ds_view_mode->label = 'Title';
   $ds_view_mode->entities = array(
     'node' => 'node',
+    'taxonomy_term' => 'taxonomy_term',
   );
   $export['title'] = $ds_view_mode;
 
