@@ -1,6 +1,6 @@
 [submodule "acquia-cloud"]
 	path = acquia-cloud
-	url = beta@svn-3992.devcloud.hosting.acquia.com:beta.git
+	url = ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git
 [submodule "platform"]
 	path = platform
 	url = https://webgate.ec.europa.eu/CITnet/stash/scm/nexteuropa/platform-dev.git
