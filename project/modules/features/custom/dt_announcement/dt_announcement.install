@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * DT Announcement content type install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_announcement_install() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_announcement_uninstall() {
+  $path = drupal_get_path('module', 'dt_announcement') . '/dt_announcement.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Announcement feature to take new fields for sure.
+ */
+function dt_announcement_update_7101() {
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}

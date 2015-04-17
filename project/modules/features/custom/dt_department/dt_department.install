@@ -8,7 +8,8 @@
  * Implements hook_install().
  */
 function dt_department_install() {
-
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
 }
 
 /**
@@ -21,8 +22,23 @@ function dt_department_uninstall() {
 }
 
 /**
- * Removing field_department_contact field as it becomes field_core_contact on DT project level (dt_core)
+ * Removing field_department_contact field as it becomes field_core_contact on DT project level (dt_core).
  */
 function dt_department_update_7101() {
   field_delete_field("field_department_contact");
+}
+
+/**
+ * Reverting DT Department feature to take new fields for sure.
+ */
+function dt_department_update_7102() {
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_department' => array('field_instance', 'variable'),
+  ));
 }

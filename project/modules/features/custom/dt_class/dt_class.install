@@ -26,7 +26,7 @@ function dt_class_uninstall() {
  */
 function dt_class_update_7101() {
   features_revert_module('dt_class');
-  // The fields need component-based way
+  // The fields need component-based way.
   features_revert(array(
     'dt_class' => array('field_instance', 'variable'),
   ));

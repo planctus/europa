@@ -15,7 +15,7 @@ function dt_subject_install() {
 /**
  * Implements hook_uninstall().
  */
-function subject_uninstall() {
+function dt_subject_uninstall() {
   $path = drupal_get_path('module', 'subject') . '/subject.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
