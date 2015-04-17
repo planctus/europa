@@ -52,10 +52,11 @@ function dt_policy_stage_field_group_info() {
     'label' => 'Meta data',
     'weight' => '6',
     'children' => array(
-      0 => 'body',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'body',
       2 => 'path',
-      3 => 'language',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

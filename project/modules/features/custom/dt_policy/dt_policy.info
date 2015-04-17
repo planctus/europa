@@ -41,7 +41,6 @@ features[field_group][] = group_policy_metadata|node|policy|form
 features[field_group][] = group_policy_next_steps|node|policy|form
 features[field_group][] = group_policy_other_relations|node|policy|form
 features[field_group][] = group_policy_related|node|policy|form
-features[field_instance][] = node-policy-field_core_announcement
 features[field_instance][] = node-policy-field_core_department
 features[field_instance][] = node-policy-field_core_topics
 features[field_instance][] = node-policy-field_policy_area

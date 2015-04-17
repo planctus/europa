@@ -23,16 +23,16 @@ function dt_policy_next_step_field_group_info() {
     'label' => 'Common',
     'weight' => '1',
     'children' => array(
-      0 => 'field_policy_next_steps_when',
-      1 => 'field_policy_next_steps_steps',
+      0 => 'field_policy_next_steps_steps',
+      1 => 'field_policy_next_steps_when',
       2 => 'title',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-policy-next-steps-common field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),

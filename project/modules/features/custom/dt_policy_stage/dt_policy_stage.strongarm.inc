@@ -74,7 +74,7 @@ function dt_policy_stage_strongarm() {
           'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'language' => array(
           'weight' => '1',

@@ -23,10 +23,11 @@ function dt_policy_detail_field_group_info() {
     'label' => 'Meta data',
     'weight' => '1',
     'children' => array(
-      0 => 'body',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'body',
       2 => 'path',
-      3 => 'language',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -53,9 +54,9 @@ function dt_policy_detail_field_group_info() {
     'label' => 'Common',
     'weight' => '0',
     'children' => array(
-      0 => 'field_policy_detail_body',
-      1 => 'field_policy_detail_objectives',
-      2 => 'field_policy_detail_additional',
+      0 => 'field_policy_detail_additional',
+      1 => 'field_policy_detail_body',
+      2 => 'field_policy_detail_objectives',
       3 => 'title',
     ),
     'format_type' => 'tab',
