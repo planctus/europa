@@ -10,54 +10,63 @@
 function dt_policy_banner_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_banner-body'
-  $field_instances['node-policy_banner-body'] = array(
+  // Exported field_instance: 'node-policy_banner-group_content_access'
+  $field_instances['node-policy_banner-group_content_access'] = array(
     'bundle' => 'policy_banner',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
+        'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => TRUE,
     'settings' => array(
-      'display_summary' => TRUE,
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
       ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
     ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+    'widget_type' => 'options_select',
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
+  t('Group content visibility');
 
   return $field_instances;
 }

@@ -71,7 +71,13 @@ function dt_policy_follow_strongarm() {
           'weight' => '6',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '2',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '1',
+        ),
+        'language' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(),
@@ -83,7 +89,7 @@ function dt_policy_follow_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_policy_follow';
-  $strongarm->value = '0';
+  $strongarm->value = 4;
   $export['language_content_type_policy_follow'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -105,7 +111,8 @@ function dt_policy_follow_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_policy_follow';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_policy_follow'] = $strongarm;
 

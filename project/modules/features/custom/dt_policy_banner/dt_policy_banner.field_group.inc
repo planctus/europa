@@ -50,8 +50,10 @@ function dt_policy_banner_field_group_info() {
     'label' => 'Meta data',
     'weight' => '1',
     'children' => array(
-      0 => 'body',
-      1 => 'path',
+      0 => 'group_content_access',
+      1 => 'body',
+      2 => 'path',
+      3 => 'scheduler_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
