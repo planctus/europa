@@ -36,7 +36,7 @@
     <exec dir="${acquia.repo}" command="git add -A"></exec>
     <gitcommit
         repository="${acquia.repo}"
-        message="Packaged by Phing from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+        message="Packaged by Phing in project BETA from ${BRANCHNAME} on ${DATE}" allFiles="true" />
 
     <input propertyname="TAG">Please provide a tag name:</input>
     <gittag repository="${acquia.repo}" name="${TAG}" />
