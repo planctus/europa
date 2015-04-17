@@ -274,6 +274,50 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-policy-field_policy_detail'
+  $field_instances['node-policy-field_policy_detail'] = array(
+    'bundle' => 'policy',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_policy_detail',
+    'label' => 'Featured video or image or slideshow',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete_tags',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-policy-field_policy_follow'
   $field_instances['node-policy-field_policy_follow'] = array(
     'bundle' => 'policy',
@@ -618,6 +662,7 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Featured video or image or slideshow');
   t('For the beta, this is manually, but post-beta, this will be a reference to other content types.
 ');
   t('Group content visibility');
