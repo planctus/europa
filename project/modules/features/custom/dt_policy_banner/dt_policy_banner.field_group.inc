@@ -25,12 +25,12 @@ function dt_policy_banner_field_group_info() {
     'children' => array(
       0 => 'title',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-policy-banner-common field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
