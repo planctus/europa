@@ -4940,14 +4940,64 @@ ul.list-inline > li {
   padding: 15px 0; }
 
 /*
-Button
+Buttons
 
-Markup: html/button.html
+Custom bootstrap buttons styling
 
-Styleguide form.button
+Markup: html/btn.html
+
+.btn-default   - Button default
+.btn-primary   - Button primary
+.btn-secondary - Button secondary
+.btn-ctn       - Button call for action
+
+Styleguide buttons
 */
-.button, button, input[type="button"] {
-  color: red; }
+.btn {
+  line-height: 1;
+  border-radius: 0;
+  border-width: 2px;
+  font-weight: 600;
+  padding: 0.8em 1em;
+  font-size: 0.889em;
+  text-decoration: none; }
+  .btn:hover, .btn:active, .btn:focus {
+    text-decoration: underline;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .btn:focus {
+    outline: 2px solid #ffd617;
+    border-color: #ffd617; }
+  .btn.btn-default {
+    border-color: #006fb4;
+    color: #006fb4; }
+    .btn.btn-default:hover {
+      background: #006fb4;
+      color: #fff; }
+    .btn.btn-default:active, .btn.btn-default:focus {
+      background: #fff;
+      color: #006fb4; }
+  .btn.btn-primary {
+    border-color: #006fb4; }
+    .btn.btn-primary:hover, .btn.btn-primary:active {
+      background: #fff;
+      color: #006fb4; }
+    .btn.btn-primary:focus {
+      color: #fff;
+      background: #006fb4; }
+  .btn.btn-secondary {
+    border-color: #fff;
+    background: #fff;
+    color: #006fb4; }
+  .btn.btn-ctn {
+    background: #ffd617;
+    color: #404040; }
+    .btn.btn-ctn:hover, .btn.btn-ctn:active {
+      border-color: #404040;
+      background: #fff; }
+    .btn.btn-ctn:focus {
+      border-color: #404040;
+      outline-color: #404040; }
 
 /*
 Checkbox
