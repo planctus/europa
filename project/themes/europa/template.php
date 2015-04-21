@@ -16,6 +16,28 @@ function europa_preprocess_block(&$vars) {
 }
 
 /**
+ * Implements template_preprocess_views_view().
+ */
+function europa_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+
+  if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
+    $vars['classes_array'][] = 'listing';
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function europa_preprocess_views_view_unformatted(&$vars) {
+  $view = $vars['view'];
+
+  $vars['additional_classes'][] = 'listing__item';
+  $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
+}
+
+
+/**
  * Implements hook_theme().
  */
 function europa_theme() {
