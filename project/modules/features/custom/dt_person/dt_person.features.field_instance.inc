@@ -179,61 +179,6 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_core_priorities'
-  $field_instances['node-person-field_core_priorities'] = array(
-    'bundle' => 'person',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 8,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 10,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 48,
-    ),
-  );
-
   // Exported field_instance: 'node-person-field_core_topics'
   $field_instances['node-person-field_core_topics'] = array(
     'bundle' => 'person',
@@ -1235,7 +1180,6 @@ function dt_person_field_default_field_instances() {
   t('Introduction');
   t('Last Name');
   t('Portrait photo');
-  t('Priorities');
   t('Related Topics');
   t('Responsibilities');
   t('Role');
