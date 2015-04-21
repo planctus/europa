@@ -18,12 +18,12 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '2',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'comments' => array(
-      'weight' => '12',
+      'weight' => '11',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -65,14 +65,16 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left_header' => array(
         0 => 'field_announcement_type',
         1 => 'post_date',
-        2 => 'title',
-        3 => 'field_core_commissioner',
+        2 => 'field_core_location',
+        3 => 'title',
+      ),
+      'central' => array(
         4 => 'field_core_subject',
         5 => 'field_core_department',
         6 => 'field_core_introduction',
@@ -84,22 +86,26 @@ function dt_announcement_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'ds_content',
-      'post_date' => 'ds_content',
-      'title' => 'ds_content',
-      'field_core_commissioner' => 'ds_content',
-      'field_core_subject' => 'ds_content',
-      'field_core_department' => 'ds_content',
-      'field_core_introduction' => 'ds_content',
-      'body' => 'ds_content',
-      'field_announcement_info' => 'ds_content',
-      'field_core_link' => 'ds_content',
-      'field_announcement_media' => 'ds_content',
-      'comments' => 'ds_content',
+      'field_announcement_type' => 'left_header',
+      'post_date' => 'left_header',
+      'field_core_location' => 'left_header',
+      'title' => 'left_header',
+      'field_core_subject' => 'central',
+      'field_core_department' => 'central',
+      'field_core_introduction' => 'central',
+      'body' => 'central',
+      'field_announcement_info' => 'central',
+      'field_core_link' => 'central',
+      'field_announcement_media' => 'central',
+      'comments' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'left' => 'div',
+      'central' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
