@@ -1,10 +1,10 @@
 name = DT Policy banner
 description = Policy banner content type related settings.
 core = 7.x
-package = NextEuropa Digital Transformation
+package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0-dev
 project = dt_policy_banner
-dependencies[] = dt_core
+dependencies[] = dt_policy
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

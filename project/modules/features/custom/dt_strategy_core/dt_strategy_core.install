@@ -1,3 +1,16 @@
-<?php 
+<?php
+/**
+ * @file
+ * NextEuropa Digital Transformation Strategy Core install file.
+ */
 
-
+/**
+ * Implements hook_install().
+ */
+function dt_strategy_install() {
+  // Enabling functional features.
+  $features = array(
+    'dt_policy',
+  );
+  module_enable($features);
+}

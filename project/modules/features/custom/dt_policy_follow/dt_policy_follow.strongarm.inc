@@ -74,7 +74,7 @@ function dt_policy_follow_strongarm() {
           'weight' => '6',
         ),
         'scheduler_settings' => array(
-          'weight' => '7',
+          'weight' => '1',
         ),
         'language' => array(
           'weight' => '5',

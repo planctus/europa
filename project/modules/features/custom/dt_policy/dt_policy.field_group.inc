@@ -76,7 +76,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_policy_detail',
     ),
@@ -103,7 +103,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Follow',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_policy_follow',
     ),
@@ -176,6 +176,33 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_input|node|policy|form';
+  $field_group->group_name = 'group_policy_input';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Policy input',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_policy_input',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-input field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_input|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_key_files|node|policy|form';
   $field_group->group_name = 'group_policy_key_files';
   $field_group->entity_type = 'node';
@@ -236,7 +263,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta data',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'group_content_access',
       1 => 'path',
@@ -266,7 +293,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Next steps',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_policy_next_steps',
     ),
@@ -326,6 +353,8 @@ function dt_policy_field_group_info() {
       0 => 'field_policy_priority',
       1 => 'field_policy_area',
       2 => 'field_core_topics',
+      3 => 'field_strategy_priority',
+      4 => 'field_strategy_policy_area',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

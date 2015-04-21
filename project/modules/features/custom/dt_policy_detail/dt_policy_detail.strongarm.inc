@@ -76,9 +76,6 @@ function dt_policy_detail_strongarm() {
         'language' => array(
           'weight' => '5',
         ),
-        'scheduler_settings' => array(
-          'weight' => '7',
-        ),
       ),
       'display' => array(),
     ),
