@@ -49,7 +49,7 @@ function dt_publication_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 7,
     ),
   );
@@ -93,7 +93,7 @@ function dt_publication_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 6,
     ),
   );
@@ -101,6 +101,7 @@ function dt_publication_field_default_field_instances() {
   // Exported field_instance: 'node-publication-field_nexteuropa_file'
   $field_instances['node-publication-field_nexteuropa_file'] = array(
     'bundle' => 'publication',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -130,9 +131,12 @@ function dt_publication_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'inline_entity_form',
+      'module' => 'entityreference',
       'settings' => array(
         'fields' => array(),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
         'type_settings' => array(
           'allow_existing' => 1,
           'delete_references' => 0,
@@ -142,7 +146,7 @@ function dt_publication_field_default_field_instances() {
           'override_labels' => 0,
         ),
       ),
-      'type' => 'inline_entity_form',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 16,
     ),
   );
