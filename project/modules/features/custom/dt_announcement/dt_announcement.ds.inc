@@ -42,7 +42,7 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'changed_date' => array(
+    'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
@@ -115,21 +115,27 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'meta';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'field_core_topics',
-        1 => 'title_field',
+      'meta' => array(
+        0 => 'field_announcement_type',
+        1 => 'post_date',
+      ),
+      'main' => array(
+        2 => 'title_field',
       ),
     ),
     'fields' => array(
-      'field_core_topics' => 'ds_content',
-      'title_field' => 'ds_content',
+      'field_announcement_type' => 'meta',
+      'post_date' => 'meta',
+      'title_field' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'meta' => 'div',
+      'main' => 'div',
+      'second' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -145,27 +151,33 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'meta' => array(
         0 => 'field_announcement_type',
-        1 => 'changed_date',
+        1 => 'post_date',
+      ),
+      'main' => array(
         2 => 'title_field',
         3 => 'field_core_introduction',
-        4 => 'field_core_topics',
+      ),
+      'second' => array(
+        4 => 'field_announcement_image',
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'ds_content',
-      'changed_date' => 'ds_content',
-      'title_field' => 'ds_content',
-      'field_core_introduction' => 'ds_content',
-      'field_core_topics' => 'ds_content',
+      'field_announcement_type' => 'meta',
+      'post_date' => 'meta',
+      'title_field' => 'main',
+      'field_core_introduction' => 'main',
+      'field_announcement_image' => 'second',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'meta' => 'div',
+      'main' => 'div',
+      'second' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

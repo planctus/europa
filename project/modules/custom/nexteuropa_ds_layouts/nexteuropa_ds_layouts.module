@@ -23,5 +23,17 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'image' => TRUE,
   );
 
+  $layouts['ne_2col_stacked'] = array(
+    'label' => t('NE: 2col stacked'),
+    'path' => $path . '/layouts/ne_2col_stacked',
+    'regions' => array(
+      'meta' => t('Meta'),
+      'main' => t('Main'),
+      'second' => t('Second'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
   return $layouts;
 }
