@@ -10,6 +10,7 @@ dependencies[] = ds
 dependencies[] = entityreference
 dependencies[] = inline_entity_form
 dependencies[] = link
+dependencies[] = metatag
 dependencies[] = nexteuropa_core
 dependencies[] = nexteuropa_ds_layouts
 dependencies[] = nexteuropa_editorial
