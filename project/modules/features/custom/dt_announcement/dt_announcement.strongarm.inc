@@ -108,10 +108,13 @@ function dt_announcement_strongarm() {
           'weight' => '7',
         ),
         'scheduler_settings' => array(
-          'weight' => '8',
+          'weight' => '34',
         ),
         'language' => array(
-          'weight' => '29',
+          'weight' => '31',
+        ),
+        'metatags' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(),

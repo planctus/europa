@@ -32,3 +32,20 @@ function dt_announcement_update_7101() {
     'dt_announcement' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Subject removed since it is substituted by Topics.
+ */
+function dt_announcement_update_7102() {
+    // Remove the field.
+  $field_name = "field_core_subject";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
