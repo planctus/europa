@@ -5725,7 +5725,8 @@ Styleguide messages
 
 .messages__list, .messages ul {
   padding-left: 14px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-family: Arial, sans-serif; }
 
 .messages__list-item, .messages ul li {
   margin-top: 0.5em; }
