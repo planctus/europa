@@ -108,15 +108,6 @@ function dt_contact_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_contact';
-  $strongarm->value = array(
-    0 => 'status',
-  );
-  $export['node_options_contact'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_contact';
   $strongarm->value = '1';
   $export['node_preview_contact'] = $strongarm;

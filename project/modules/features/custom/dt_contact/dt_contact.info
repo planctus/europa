@@ -34,7 +34,6 @@ features[variable][] = field_bundle_settings_node__contact
 features[variable][] = language_content_type_contact
 features[variable][] = menu_options_contact
 features[variable][] = menu_parent_contact
-features[variable][] = node_options_contact
 features[variable][] = node_preview_contact
 features[variable][] = node_submitted_contact
 features_exclude[dependencies][addressfield] = addressfield
