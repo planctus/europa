@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * dt_policy_next_step.features.field_instance.inc
+ * dt_policy_implementation.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function dt_policy_next_step_field_default_field_instances() {
+function dt_policy_implementation_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_next_step-body'
-  $field_instances['node-policy_next_step-body'] = array(
-    'bundle' => 'policy_next_step',
+  // Exported field_instance: 'node-policy_implementation-body'
+  $field_instances['node-policy_implementation-body'] = array(
+    'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -22,7 +22,7 @@ function dt_policy_next_step_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -31,7 +31,7 @@ function dt_policy_next_step_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -55,19 +55,19 @@ function dt_policy_next_step_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_next_step-field_policy_next_step_steps'
-  $field_instances['node-policy_next_step-field_policy_next_step_steps'] = array(
-    'bundle' => 'policy_next_step',
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_introduction'
+  $field_instances['node-policy_implementation-field_policy_imp_introduction'] = array(
+    'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Steps in bullets.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -77,9 +77,9 @@ function dt_policy_next_step_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_policy_next_step_steps',
-    'label' => 'Steps in bullet',
-    'required' => 1,
+    'field_name' => 'field_policy_imp_introduction',
+    'label' => 'Introduction',
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -118,23 +118,23 @@ function dt_policy_next_step_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-policy_next_step-field_policy_next_step_when'
-  $field_instances['node-policy_next_step-field_policy_next_step_when'] = array(
-    'bundle' => 'policy_next_step',
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_link'
+  $field_instances['node-policy_implementation-field_policy_imp_link'] = array(
+    'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'link_default',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -144,57 +144,45 @@ function dt_policy_next_step_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_policy_next_step_when',
-    'label' => 'When/timeframe',
-    'required' => 1,
+    'field_name' => 'field_policy_imp_link',
+    'label' => 'Link',
+    'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
       ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-policy_next_step-group_content_access'
-  $field_instances['node-policy_next_step-group_content_access'] = array(
-    'bundle' => 'policy_next_step',
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'
+  $field_instances['node-policy_implementation-field_policy_imp_status'] = array(
+    'bundle' => 'policy_implementation',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 'proposed',
       ),
     ),
     'deleted' => 0,
@@ -205,7 +193,7 @@ function dt_policy_next_step_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -215,37 +203,122 @@ function dt_policy_next_step_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Group content visibility',
-    'required' => TRUE,
+    'field_name' => 'field_policy_imp_status',
+    'label' => 'Status',
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-    ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 7,
     ),
-    'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_next_step-title_field'
-  $field_instances['node-policy_next_step-title_field'] = array(
-    'bundle' => 'policy_next_step',
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_type'
+  $field_instances['node-policy_implementation-field_policy_imp_type'] = array(
+    'bundle' => 'policy_implementation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_policy_imp_type',
+    'label' => 'Implementation type',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-policy_implementation-field_task_shortcut'
+  $field_instances['node-policy_implementation-field_task_shortcut'] = array(
+    'bundle' => 'policy_implementation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_task_shortcut',
+    'label' => 'Task shortcut',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-policy_implementation-title_field'
+  $field_instances['node-policy_implementation-title_field'] = array(
+    'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -254,7 +327,7 @@ function dt_policy_next_step_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -282,18 +355,19 @@ function dt_policy_next_step_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 6,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Group content visibility');
-  t('Steps in bullet');
-  t('Steps in bullets.');
+  t('Implementation type');
+  t('Introduction');
+  t('Link');
+  t('Status');
+  t('Task shortcut');
   t('Title');
-  t('When/timeframe');
 
   return $field_instances;
 }

@@ -54,136 +54,247 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_banner'
-  $field_bases['field_policy_banner'] = array(
+  // Exported field_base: 'field_policy_author'
+  $field_bases['field_policy_author'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_banner',
+    'field_name' => 'field_policy_author',
     'foreign keys' => array(
-      'node' => array(
+      'format' => array(
         'columns' => array(
-          'target_id' => 'nid',
+          'format' => 'format',
         ),
-        'table' => 'node',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'policy_banner' => 'policy_banner',
-        ),
-      ),
-      'target_type' => 'node',
+      'max_length' => 255,
     ),
-    'translatable' => 0,
-    'type' => 'entityreference',
+    'translatable' => 1,
+    'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_commissioner'
-  $field_bases['field_policy_commissioner'] = array(
+  // Exported field_base: 'field_policy_author_gender'
+  $field_bases['field_policy_author_gender'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_commissioner',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
+    'field_name' => 'field_policy_author_gender',
+    'foreign keys' => array(),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'list',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'person' => 'person',
-        ),
+      'allowed_values' => array(
+        'female' => 'female',
+        'male' => 'male',
+        'other' => 'other',
       ),
-      'target_type' => 'node',
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 0,
-    'type' => 'entityreference',
+    'translatable' => 1,
+    'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_policy_detail'
-  $field_bases['field_policy_detail'] = array(
+  // Exported field_base: 'field_policy_caption'
+  $field_bases['field_policy_caption'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_detail',
+    'field_name' => 'field_policy_caption',
     'foreign keys' => array(
-      'node' => array(
+      'format' => array(
         'columns' => array(
-          'target_id' => 'nid',
+          'format' => 'format',
         ),
-        'table' => 'node',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'policy_detail' => 'policy_detail',
-        ),
-      ),
-      'target_type' => 'node',
+      'max_length' => 255,
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_policy_detail_additional'
+  $field_bases['field_policy_detail_additional'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_detail_additional',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_with_summary',
+  );
+
+  // Exported field_base: 'field_policy_detail_body'
+  $field_bases['field_policy_detail_body'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_detail_body',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_policy_detail_file'
+  $field_bases['field_policy_detail_file'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_detail_file',
+    'foreign keys' => array(
+      'fid' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 1,
+    'type' => 'file',
+  );
+
+  // Exported field_base: 'field_policy_detail_objectives'
+  $field_bases['field_policy_detail_objectives'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_detail_objectives',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_policy_featured_file'
+  $field_bases['field_policy_featured_file'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_featured_file',
+    'foreign keys' => array(
+      'fid' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'file',
   );
 
   // Exported field_base: 'field_policy_follow'
@@ -265,7 +376,7 @@ function dt_policy_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'page' => 'page',
+          'policy_implementation' => 'policy_implementation',
         ),
       ),
       'target_type' => 'node',
@@ -347,48 +458,91 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_next_steps'
-  $field_bases['field_policy_next_steps'] = array(
+  // Exported field_base: 'field_policy_paragraph'
+  $field_bases['field_policy_paragraph'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_paragraph',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_policy_quote'
+  $field_bases['field_policy_quote'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_quote',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_policy_sharable_banner'
+  $field_bases['field_policy_sharable_banner'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_next_steps',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
+    'field_name' => 'field_policy_sharable_banner',
+    'foreign keys' => array(),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'list',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'policy_next_steps' => 'policy_next_steps',
-        ),
+      'allowed_values' => array(
+        'no sharable banner' => 'no sharable banner',
+        'audiovisual + paragraph' => 'audiovisual + paragraph',
+        'quote' => 'quote',
       ),
-      'target_type' => 'node',
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 0,
-    'type' => 'entityreference',
+    'translatable' => 1,
+    'type' => 'list_text',
   );
 
   return $field_bases;

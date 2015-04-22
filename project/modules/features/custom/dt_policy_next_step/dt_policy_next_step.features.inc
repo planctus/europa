@@ -21,8 +21,8 @@ function dt_policy_next_step_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function dt_policy_next_step_node_info() {
   $items = array(
-    'policy_next_steps' => array(
-      'name' => t('Policy next steps'),
+    'policy_next_step' => array(
+      'name' => t('Policy next step'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

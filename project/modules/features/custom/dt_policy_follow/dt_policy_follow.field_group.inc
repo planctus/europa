@@ -13,15 +13,40 @@ function dt_policy_follow_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_policy_follow_common|node|policy_follow|form';
-  $field_group->group_name = 'group_policy_follow_common';
+  $field_group->identifier = 'group_content_tabgroup|node|policy_follow|form';
+  $field_group->group_name = 'group_content_tabgroup';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'policy_follow';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Common',
+    'label' => 'Content',
     'weight' => '0',
+    'children' => array(
+      0 => 'group_policy_follow_common',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-content-tabgroup field-group-tabs',
+      ),
+    ),
+  );
+  $export['group_content_tabgroup|node|policy_follow|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_follow_common|node|policy_follow|form';
+  $field_group->group_name = 'group_policy_follow_common';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_follow';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Common',
+    'weight' => '1',
     'children' => array(
       0 => 'field_policy_follow_type',
       1 => 'field_policy_follow_link',
@@ -55,8 +80,7 @@ function dt_policy_follow_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'group_content_access',
-      2 => 'path',
-      3 => 'language',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

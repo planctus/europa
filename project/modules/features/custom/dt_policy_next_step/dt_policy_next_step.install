@@ -18,5 +18,13 @@ function dt_policy_next_step_install() {
 function dt_policy_next_step_uninstall() {
   $path = drupal_get_path('module', 'dt_policy_next_step') . '/dt_policy_next_step.info';
   $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Policy next_step %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Policy next step %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Remove previous defined fileds.
+ */
+function dt_policy_next_step_update_7101() {
+  field_delete_field("field_policy_next_steps_steps");
+  field_delete_field("field_policy_next_steps_when");
 }

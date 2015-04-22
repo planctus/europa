@@ -10,13 +10,13 @@
 function dt_policy_next_step_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_policy_next_steps_steps'
-  $field_bases['field_policy_next_steps_steps'] = array(
+  // Exported field_base: 'field_policy_next_step_steps'
+  $field_bases['field_policy_next_step_steps'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_next_steps_steps',
+    'field_name' => 'field_policy_next_step_steps',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -35,17 +35,17 @@ function dt_policy_next_step_field_default_field_bases() {
     'settings' => array(
       'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_next_steps_when'
-  $field_bases['field_policy_next_steps_when'] = array(
+  // Exported field_base: 'field_policy_next_step_when'
+  $field_bases['field_policy_next_step_when'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_next_steps_when',
+    'field_name' => 'field_policy_next_step_when',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(

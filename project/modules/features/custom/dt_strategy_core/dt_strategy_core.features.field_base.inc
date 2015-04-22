@@ -45,7 +45,7 @@ function dt_strategy_core_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'policy' => 'policy',
+          'priority' => 'priority',
         ),
       ),
       'target_type' => 'node',

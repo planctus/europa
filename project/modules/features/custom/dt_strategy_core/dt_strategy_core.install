@@ -13,4 +13,16 @@ function dt_strategy_install() {
     'dt_policy',
   );
   module_enable($features);
+
+  // Feature reverting.
+  features_revert_module('dt_strategy');
+  features_revert_module('dt_policy');
+}
+
+/**
+ * Feature reverting.
+ */
+function dt_strategy_update_7101() {
+  features_revert_module('dt_strategy');
+  features_revert_module('dt_policy');
 }

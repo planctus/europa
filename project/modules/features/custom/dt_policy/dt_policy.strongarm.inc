@@ -22,13 +22,13 @@ function dt_policy_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'language' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
       ),
       'display' => array(),
