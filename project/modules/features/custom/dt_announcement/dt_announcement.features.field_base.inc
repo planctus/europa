@@ -171,33 +171,6 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_announcemnt_img_prominence'
-  $field_bases['field_announcemnt_img_prominence'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_announcemnt_img_prominence',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'main' => 'Main content',
-        'context' => 'Context',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_core_announcement'
   $field_bases['field_core_announcement'] = array(
     'active' => 1,

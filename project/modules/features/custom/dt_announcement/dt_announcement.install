@@ -37,10 +37,15 @@ function dt_announcement_update_7101() {
  * Subject removed since it is substituted by Topics.
  */
 function dt_announcement_update_7102() {
-    // Remove the field.
-  $field_name = "field_core_subject";
-  if (field_info_field($field_name) !== NULL) {
-    field_delete_field($field_name);
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_core_subject',
+    'field_announcemnt_img_prominence',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
   }
 
   features_revert_module('dt_announcement');

@@ -152,7 +152,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 5,
     ),
   );
 
@@ -424,7 +424,7 @@ function dt_announcement_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_announcement_type',
-    'label' => 'Announcement_type',
+    'label' => 'Announcement type',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -438,60 +438,6 @@ function dt_announcement_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-announcement-field_announcemnt_img_prominence'
-  $field_instances['node-announcement-field_announcemnt_img_prominence'] = array(
-    'bundle' => 'announcement',
-    'default_value' => array(
-      0 => array(
-        'value' => 'context',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'This option influences the template. We have 3 variations of the detail page template that give either more or less prominence to the featured media. The editor should indicate how important it is: \'main content\' (translates into full width banner/ column width image) or \'context\'.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_announcemnt_img_prominence',
-    'label' => 'Featured image prominence',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 7,
     ),
   );
 
@@ -554,7 +500,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -620,7 +566,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 20,
     ),
   );
 
@@ -756,11 +702,6 @@ function dt_announcement_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'rel_remove' => 'default',
       'title' => 'optional',
       'title_maxlength' => 128,
@@ -827,6 +768,62 @@ function dt_announcement_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-announcement-field_core_persons'
+  $field_instances['node-announcement-field_core_persons'] = array(
+    'bundle' => 'announcement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 27,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_core_persons',
+    'label' => 'Persons',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 19,
     ),
   );
 
@@ -958,131 +955,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance: 'node-announcement-group_content_access'
-  $field_instances['node-announcement-group_content_access'] = array(
-    'bundle' => 'announcement',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Group content visibility',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 33,
-    ),
-  );
-
-  // Exported field_instance: 'node-announcement-og_group_ref'
-  $field_instances['node-announcement-og_group_ref'] = array(
-    'bundle' => 'announcement',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Groups audience',
-    'required' => FALSE,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 32,
+      'weight' => 18,
     ),
   );
 
@@ -1154,7 +1027,7 @@ function dt_announcement_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A summary of the announcement. Used as an abstract of the article on the top of the article page. Could appear in list views or on the main news page.');
-  t('Announcement_type');
+  t('Announcement type');
   t('Announcements');
   t('Background/additional information');
   t('Body');
@@ -1163,15 +1036,12 @@ function dt_announcement_field_default_field_instances() {
   t('Contains background information on the subject that can not be automatically pulled onto the page by linking to associated subjects, departments, policies,...');
   t('Departments');
   t('Featured image');
-  t('Featured image prominence');
   t('Featured media');
-  t('Group content visibility');
-  t('Groups audience');
   t('Links');
   t('Location');
+  t('Persons');
   t('Policies');
   t('Summary');
-  t('This option influences the template. We have 3 variations of the detail page template that give either more or less prominence to the featured media. The editor should indicate how important it is: \'main content\' (translates into full width banner/ column width image) or \'context\'.');
   t('Title');
   t('Topics');
 
