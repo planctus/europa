@@ -8,6 +8,7 @@ dependencies[] = dt_announcement
 dependencies[] = dt_contact
 dependencies[] = dt_core
 dependencies[] = dt_department
+dependencies[] = dt_person
 dependencies[] = dt_policy_follow
 dependencies[] = dt_policy_implementation
 dependencies[] = dt_policy_input
