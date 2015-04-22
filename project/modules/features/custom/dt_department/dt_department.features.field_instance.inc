@@ -91,6 +91,7 @@ function dt_department_field_default_field_instances() {
   // Exported field_instance: 'node-department-field_core_contact'
   $field_instances['node-department-field_core_contact'] = array(
     'bundle' => 'department',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -132,9 +133,12 @@ function dt_department_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'inline_entity_form',
+      'module' => 'entityreference',
       'settings' => array(
         'fields' => array(),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
         'type_settings' => array(
           'allow_existing' => 1,
           'delete_references' => 0,
@@ -144,7 +148,7 @@ function dt_department_field_default_field_instances() {
           'override_labels' => 1,
         ),
       ),
-      'type' => 'inline_entity_form',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 10,
     ),
   );
