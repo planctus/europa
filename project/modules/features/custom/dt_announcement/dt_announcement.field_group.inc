@@ -29,6 +29,7 @@ function dt_announcement_field_group_info() {
       3 => 'field_core_introduction',
       4 => 'title_field',
       5 => 'field_announcement_department',
+      6 => 'field_announcement_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
