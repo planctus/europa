@@ -138,8 +138,8 @@ function dt_department_field_group_info() {
     'label' => 'Leadership & Organisation',
     'weight' => '5',
     'children' => array(
-      0 => 'field_person_persons',
-      1 => 'field_department_organigram',
+      0 => 'field_department_organigram',
+      1 => 'field_core_persons',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

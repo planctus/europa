@@ -42,3 +42,10 @@ function dt_department_update_7102() {
     'dt_department' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Removing field_person_persons field as it was a mistake.
+ */
+function dt_department_update_7103() {
+  field_delete_field("field_person_persons");
+}
