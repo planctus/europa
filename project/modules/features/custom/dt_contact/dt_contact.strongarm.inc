@@ -71,10 +71,13 @@ function dt_contact_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '7',
         ),
         'language' => array(
-          'weight' => '3',
+          'weight' => '4',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '7',
         ),
       ),
       'display' => array(),

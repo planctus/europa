@@ -51,7 +51,7 @@ function dt_contact_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 20,
     ),
   );
 
@@ -91,7 +91,7 @@ function dt_contact_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 4,
+      'weight' => 15,
     ),
   );
 
@@ -146,7 +146,7 @@ function dt_contact_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 3,
+      'weight' => 14,
     ),
   );
 
@@ -190,7 +190,7 @@ function dt_contact_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 2,
+      'weight' => 13,
     ),
   );
 
@@ -289,7 +289,7 @@ function dt_contact_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_contact_postal_mail',
-    'label' => 'Postal mail',
+    'label' => 'Postal address',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -300,7 +300,7 @@ function dt_contact_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
-        'default_country' => '',
+        'default_country' => 'BE',
         'format_handlers' => array(
           'address' => 'address',
           'address-hide-postal-code' => 0,
@@ -317,6 +317,49 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-contact-title_field'
+  $field_instances['node-contact-title_field'] = array(
+    'bundle' => 'contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 19,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
@@ -324,7 +367,8 @@ function dt_contact_field_default_field_instances() {
   t('Link to form');
   t('Online contact');
   t('Phone number');
-  t('Postal mail');
+  t('Postal address');
+  t('Title');
 
   return $field_instances;
 }
