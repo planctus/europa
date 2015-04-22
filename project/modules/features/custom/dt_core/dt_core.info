@@ -28,7 +28,6 @@ features[field_base][] = field_core_contact
 features[field_base][] = field_core_ecorganisation
 features[field_base][] = field_core_introduction
 features[field_base][] = field_core_link
-features[field_base][] = field_core_location
 features[field_base][] = field_core_subject
 features[taxonomy][] = subjects
 features[user_role][] = tester

@@ -27,9 +27,8 @@ function dt_announcement_field_group_info() {
       1 => 'field_announcement_contact',
       2 => 'field_announcement_type',
       3 => 'field_core_introduction',
-      4 => 'field_core_location',
-      5 => 'title_field',
-      6 => 'field_announcement_department',
+      4 => 'title_field',
+      5 => 'field_announcement_department',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -86,8 +85,7 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'field_core_location',
-      3 => 'language',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

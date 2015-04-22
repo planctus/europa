@@ -28,7 +28,7 @@ function nexteuropa_page_update_7101() {
 /**
  * Removing obsolete Tag field from page only.
  */
-function nexteuropa_page_update_7101() {
+function nexteuropa_page_update_7102() {
   // Remove field.
   if ($instance = field_info_instance('node', 'field_tags', 'page')) {
     field_delete_instance($instance);

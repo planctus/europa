@@ -41,6 +41,7 @@ function dt_announcement_update_7102() {
   $fields_to_remove = array(
     'field_core_subject',
     'field_announcemnt_img_prominence',
+    'field_core_location',
   );
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
