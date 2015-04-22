@@ -10,50 +10,6 @@
 function dt_policy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy-field_core_commissioners'
-  $field_instances['node-policy-field_core_commissioners'] = array(
-    'bundle' => 'policy',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Add a <a href="/node/add/person" target="_blank">Person</a>',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_commissioners',
-    'label' => 'Responsible commissioner(s)',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-policy-field_core_department'
   $field_instances['node-policy-field_core_department'] = array(
     'bundle' => 'policy',
@@ -1157,7 +1113,6 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a <a href="/node/add/department" target="_blank">Department</a>');
-  t('Add a <a href="/node/add/person" target="_blank">Person</a>');
   t('Add an <a href="/node/add/policy-implementation" target="_blank">Implementation</a>');
   t('Additional details');
   t('Author');
@@ -1184,7 +1139,6 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>');
   t('Policy input');
   t('Priority/ies');
   t('Quote');
-  t('Responsible commissioner(s)');
   t('Responsible department(s)');
   t('Sharable banner');
   t('Social media profile(s)');

@@ -23,12 +23,12 @@ function dt_policy_implementation_field_group_info() {
     'label' => 'Content',
     'weight' => '6',
     'children' => array(
-      0 => 'title_field',
-      1 => 'field_policy_imp_status',
-      2 => 'field_policy_imp_introduction',
+      0 => 'field_policy_imp_introduction',
+      1 => 'field_policy_imp_link',
+      2 => 'field_policy_imp_status',
       3 => 'field_policy_imp_type',
-      4 => 'field_policy_imp_link',
-      5 => 'field_task_shortcut',
+      4 => 'field_task_shortcut',
+      5 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -54,7 +54,10 @@ function dt_policy_implementation_field_group_info() {
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '7',
-    'children' => array(),
+    'children' => array(
+      0 => 'group_content_access',
+      1 => 'language',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -81,6 +84,7 @@ function dt_policy_implementation_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'path',
+      1 => 'scheduler_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
