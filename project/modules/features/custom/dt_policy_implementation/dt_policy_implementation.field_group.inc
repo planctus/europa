@@ -45,6 +45,58 @@ function dt_policy_implementation_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_imp_editorial|node|policy_implementation|form';
+  $field_group->group_name = 'group_policy_imp_editorial';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_implementation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_policy_imp_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial settings',
+    'weight' => '7',
+    'children' => array(),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-imp-editorial field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_imp_editorial|node|policy_implementation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_imp_page|node|policy_implementation|form';
+  $field_group->group_name = 'group_policy_imp_page';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_implementation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Page settings',
+    'weight' => '2',
+    'children' => array(
+      0 => 'path',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-imp-page field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_imp_page|node|policy_implementation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_imp_tabgroup|node|policy_implementation|form';
   $field_group->group_name = 'group_policy_imp_tabgroup';
   $field_group->entity_type = 'node';
