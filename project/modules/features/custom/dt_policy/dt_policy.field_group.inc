@@ -23,17 +23,18 @@ function dt_policy_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_editorial_settings',
-      1 => 'group_policy_banner',
-      2 => 'group_policy_common',
-      3 => 'group_policy_details',
-      4 => 'group_policy_follow',
-      5 => 'group_policy_implementation',
-      6 => 'group_policy_input',
+      0 => 'group_policy_banner',
+      1 => 'group_policy_common',
+      2 => 'group_policy_details',
+      3 => 'group_policy_follow',
+      4 => 'group_policy_implementation',
+      5 => 'group_policy_input',
+      6 => 'group_policy_key_files',
       7 => 'group_policy_latest',
       8 => 'group_policy_next_steps',
       9 => 'group_policy_other_relations',
       10 => 'group_policy_related',
+      11 => 'group_policy_editorial',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -194,6 +195,34 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_editorial|node|policy|form';
+  $field_group->group_name = 'group_policy_editorial';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial settings',
+    'weight' => '12',
+    'children' => array(
+      0 => 'group_content_access',
+      1 => 'language',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-editorial field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_editorial|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_follow|node|policy|form';
   $field_group->group_name = 'group_policy_follow';
   $field_group->entity_type = 'node';
@@ -307,10 +336,10 @@ function dt_policy_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'policy';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Key files',
-    'weight' => '2',
+    'weight' => '11',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -431,6 +460,34 @@ function dt_policy_field_group_info() {
     ),
   );
   $export['group_policy_other_relations|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_page|node|policy|form';
+  $field_group->group_name = 'group_policy_page';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Page settings',
+    'weight' => '1',
+    'children' => array(
+      0 => 'path',
+      1 => 'scheduler_settings',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-page field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_page|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
