@@ -148,7 +148,7 @@ function dt_department_field_default_field_instances() {
           'override_labels' => 1,
         ),
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 10,
     ),
   );

@@ -8,6 +8,7 @@ dependencies[] = dt_aboutec_core
 dependencies[] = dt_person
 dependencies[] = dt_priority
 dependencies[] = dt_topic
+dependencies[] = field_group
 features[context][] = departments_landing_page
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
