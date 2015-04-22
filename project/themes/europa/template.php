@@ -63,8 +63,24 @@ function europa_form_required_marker($variables) {
   return '<span' . drupal_attributes($attributes) . '></span>';
 }
 
+function europa_preprocess_page(&$vars) {
+  $node = &$vars['node'];
+
+  // nodes excluded that are not using DS
+  $node_type_list = array('class', 'page');
+
+  if(isset($node) && !in_array($node->type, $node_type_list)) {
+    // This disables message-printing on ALL page displays
+    $vars['show_messages'] = FALSE;
+
+    // Add ds_node true to the node object
+    //$node->ds_node = TRUE;
+    $vars['ds_node'] = TRUE;
+  }
+}
+
 /**
- * Implementation of preprocess_node().
+ * Implements template_preprocess_node().
  */
 function europa_preprocess_node(&$vars) {
   $vars['submitted'] = '';
@@ -74,7 +90,10 @@ function europa_preprocess_node(&$vars) {
       '!datetime' => $vars['date'],
     ));
   }
+
+  $vars['messages'] = theme('status_messages');
 }
+
 
 /**
  * Bootstrap theme wrapper function for the primary menu links.

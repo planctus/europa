@@ -73,6 +73,7 @@
  *
  * @ingroup themeable
  */
+
 ?>
 
 <header class="site-header" role="banner">
@@ -162,7 +163,10 @@
           <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
         <?php endif; ?>
 
-        <?php print $messages; ?>
+        <?php if (!empty($messages)): ?>
+          <?php print $messages; ?>
+        <?php endif; ?>
+
         <?php if (!empty($tabs)): ?>
           <?php print render($tabs); ?>
         <?php endif; ?>
