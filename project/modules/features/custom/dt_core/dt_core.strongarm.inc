@@ -35,14 +35,14 @@ function dt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_mail';
-  $strongarm->value = 'admin@example.com';
+  $strongarm->value = 'DIGIT-FPFIS-SUPPORT@ec.europa.eu';
   $export['site_mail'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
-  $strongarm->value = 'BETA';
+  $strongarm->value = 'Beta';
   $export['site_name'] = $strongarm;
 
   $strongarm = new stdClass();
