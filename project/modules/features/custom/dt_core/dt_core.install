@@ -121,3 +121,12 @@ function dt_core_update_7108() {
 function dt_core_update_7109() {
   module_enable(array('nexteuropa_page'));
 }
+
+/**
+ * Delete subjects vocabulary.
+ */
+function dt_core_update_7110() {
+  if ($voc = taxonomy_vocabulary_machine_name_load('subjects')) {
+    taxonomy_vocabulary_delete($voc->vid);
+  }
+}

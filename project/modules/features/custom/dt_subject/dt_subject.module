@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the dt Subject feature.
- */
-
-include_once 'dt_subject.features.inc';

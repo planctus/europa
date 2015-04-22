@@ -20,7 +20,6 @@ features[field_base][] = field_person_first_name
 features[field_base][] = field_person_gender
 features[field_base][] = field_person_intro
 features[field_base][] = field_person_last_name
-features[field_base][] = field_person_persons
 features[field_base][] = field_person_photo
 features[field_base][] = field_person_responsibility
 features[field_base][] = field_person_role
