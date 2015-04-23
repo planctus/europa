@@ -341,7 +341,7 @@ function dt_publication_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 11,
     ),
     'widget_type' => 'options_select',
   );
@@ -401,7 +401,7 @@ function dt_publication_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 

@@ -30,7 +30,7 @@ function dt_publication_uninstall() {
 }
 
 /**
- * Removing group_publication_metadata field group.
+ * Removing group_publication_metadata and group_scheduler field groups.
  */
 function dt_publication_update_7101() {
   $metadata_group = field_group_load_field_group('group_publication_metadata', 'node', 'publication', 'form');
@@ -57,4 +57,14 @@ function dt_publication_update_7103() {
   features_revert(array(
     'dt_class' => array('field_instance', 'field_base', 'variable'),
   ));
+}
+
+/**
+ * Removing group_publication_common and group_publication_files field groups.
+ */
+function dt_publication_update_7104() {
+  $group_publication_common = field_group_load_field_group('group_publication_common', 'node', 'publication', 'form');
+  $group_publication_files = field_group_load_field_group('group_publication_files', 'node', 'publication', 'form');
+  field_group_group_export_delete($group_publication_common, FALSE);
+  field_group_group_export_delete($group_publication_files, FALSE);
 }

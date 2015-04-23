@@ -23,10 +23,10 @@ function dt_publication_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_publication_contact',
-      1 => 'group_publication_related',
+      0 => 'group_editorial_settings',
+      1 => 'group_publication_contact',
       2 => 'group_publication_content',
-      3 => 'group_editorial_settings',
+      3 => 'group_publication_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -53,7 +53,8 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'language',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

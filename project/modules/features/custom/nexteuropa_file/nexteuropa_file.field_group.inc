@@ -26,13 +26,11 @@ function nexteuropa_file_field_group_info() {
       0 => 'group_editorial_settings',
       1 => 'group_file_file',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tabs',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => '',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-content-tabgroup field-group-fieldset',
-        'required_fields' => 1,
+        'classes' => '',
       ),
     ),
   );
@@ -46,7 +44,7 @@ function nexteuropa_file_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'file';
   $field_group->mode = 'form';
-  $field_group->parent_name = '_add_new_group';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '2',
@@ -73,7 +71,7 @@ function nexteuropa_file_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'file';
   $field_group->mode = 'form';
-  $field_group->parent_name = '_add_new_group';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'File',
     'weight' => '1',
