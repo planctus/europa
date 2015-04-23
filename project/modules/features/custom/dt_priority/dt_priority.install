@@ -37,7 +37,7 @@ function dt_priority_update_7101() {
 }
 
 /**
- * Kezword and description removed since it will be provided by the metatag.
+ * Keyword and description removed since it will be provided by the metatag.
  */
 function dt_priority_update_7102() {
   // Remove the field.
@@ -57,8 +57,8 @@ function dt_priority_update_7102() {
  * Removing group_priority_other and group_priority_meta field groups.
  */
 function dt_priority_update_7103() {
-  $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'publication', 'form');
-  $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'publication', 'form');
+  $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'priority', 'form');
+  $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'priority', 'form');
   field_group_group_export_delete($group_priority_other, FALSE);
   field_group_group_export_delete($group_priority_meta, FALSE);
 }
