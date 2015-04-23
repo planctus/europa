@@ -77,3 +77,18 @@ function dt_priority_update_7104() {
     ),
   ));
 }
+
+/**
+ * Field field_priority_type removed.
+ */
+function dt_priority_update_7105() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_priority_type',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+}

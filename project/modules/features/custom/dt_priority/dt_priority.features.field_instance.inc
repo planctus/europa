@@ -277,77 +277,6 @@ function dt_priority_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_priority_type'
-  $field_instances['node-priority-field_priority_type'] = array(
-    'bundle' => 'priority',
-    'default_value' => array(
-      0 => array(
-        'value' => 'Political priority',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'meta type',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_priority_type',
-    'label' => 'Type',
-    'required' => 1,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 34,
-    ),
-  );
-
   // Exported field_instance: 'node-priority-title_field'
   $field_instances['node-priority-title_field'] = array(
     'bundle' => 'priority',
@@ -425,9 +354,7 @@ function dt_priority_field_default_field_instances() {
   t('Issue');
   t('Name');
   t('Objectives');
-  t('Type');
   t('description of the issue that prompted the priority');
-  t('meta type');
   t('shareable excerpt or quote');
   t('title of the priority');
 
