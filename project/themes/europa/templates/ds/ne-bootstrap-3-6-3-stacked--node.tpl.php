@@ -17,21 +17,27 @@
       <<?php print $left_header_wrapper; ?> class="col-sm-9 <?php print $left_header_classes; ?>">
         <?php print $left_header; ?>
       </<?php print $left_header_wrapper; ?>>
-      <<?php print $right_header_wrapper; ?> class="col-sm-3 <?php print $right_header_classes; ?>">
-        <?php print $right_header; ?>
-      </<?php print $right_header_wrapper; ?>>
+
+      <?php if(!empty($right_header)): ?>
+        <<?php print $right_header_wrapper; ?> class="col-sm-3 <?php print $right_header_classes; ?>">
+          <?php print $right_header; ?>
+        </<?php print $right_header_wrapper; ?>>
+      <?php endif; ?>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-12"><?php print $messages; ?></div>
+      <?php if (!empty($messages)): ?>
+        <?php print $messages; ?>
+      <?php endif; ?>
+
       <a id="main-content" tabindex="-1"></a>
       <<?php print $left_wrapper; ?> class="col-sm-3 <?php print $left_classes; ?>">
         <?php print $left; ?>
       </<?php print $left_wrapper; ?>>
-      <<?php print $central_wrapper; ?> class="col-sm-6 <?php print $central_classes; ?>">
+      <section class="col-sm-6 <?php print $central_classes; ?>">
         <?php print $central; ?>
-      </<?php print $central_wrapper; ?>>
+      </section>
       <<?php print $right_wrapper; ?> class="col-sm-3 <?php print $right_classes; ?>">
         <?php print $right; ?>
       </<?php print $right_wrapper; ?>>
