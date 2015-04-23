@@ -23,11 +23,10 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'image' => TRUE,
   );
 
-  $layouts['ne_2col_stacked'] = array(
-    'label' => t('NE: 2col stacked'),
-    'path' => $path . '/layouts/ne_2col_stacked',
+  $layouts['ne_2col'] = array(
+    'label' => t('NE: 2col'),
+    'path' => $path . '/layouts/ne_2col',
     'regions' => array(
-      'meta' => t('Meta'),
       'main' => t('Main'),
       'second' => t('Second'),
     ),
