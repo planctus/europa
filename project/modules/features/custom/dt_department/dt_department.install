@@ -49,3 +49,17 @@ function dt_department_update_7102() {
 function dt_department_update_7103() {
   field_delete_field("field_person_persons");
 }
+
+/**
+ * Reverting DT Department feature to take new fields for sure.
+ */
+function dt_department_update_7104() {
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_department' => array('field_instance', 'variable'),
+}

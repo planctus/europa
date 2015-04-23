@@ -43,6 +43,7 @@ function nexteuropa_page_update_7103() {
   $type = 'page';
   $fieldgroups_to_remove = array(
     'group_page_metadata',
+    'group_page_content',
   );
 
   foreach ($fieldgroups_to_remove as $group_name) {

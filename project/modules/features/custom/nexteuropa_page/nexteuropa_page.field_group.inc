@@ -25,6 +25,7 @@ function nexteuropa_page_field_group_info() {
     'children' => array(
       0 => 'group_page_content',
       1 => 'group_editorial_settings',
+      2 => 'group_page_main',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -47,7 +48,7 @@ function nexteuropa_page_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '3',
+    'weight' => '13',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -65,6 +66,36 @@ function nexteuropa_page_field_group_info() {
     ),
   );
   $export['group_editorial_settings|node|page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_main|node|page|form';
+  $field_group->group_name = 'group_page_main';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '11',
+    'children' => array(
+      0 => 'body',
+      1 => 'title_field',
+      2 => 'field_core_introduction',
+      3 => 'field_core_link',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-page-main field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_page_main|node|page|form'] = $field_group;
 
   return $export;
 }
