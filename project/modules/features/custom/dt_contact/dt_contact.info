@@ -1,4 +1,4 @@
-name = DT Contact
+name = Contact
 description = Contact content type related settings
 core = 7.x
 package = NextEuropa Digital Transformation
@@ -52,6 +52,7 @@ features_exclude[dependencies][list] = list
 features_exclude[dependencies][options] = options
 features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][nexteuropa_editorial] = nexteuropa_editorial
+features_exclude[dependencies][entityreference] = entityreference
 features_exclude[field_instance][node-contact-group_content_access] = node-contact-group_content_access
 features_exclude[field_instance][node-contact-og_group_ref] = node-contact-og_group_ref
 features_exclude[variable][node_options_contact] = node_options_contact

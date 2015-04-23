@@ -322,7 +322,7 @@ function dt_contact_field_default_field_instances() {
     'bundle' => 'contact',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Name of office, organisation or person the contact details refer to.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -339,18 +339,45 @@ function dt_contact_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'title_field',
-    'label' => 'Title',
-    'required' => TRUE,
+    'label' => 'Name',
+    'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'hide_label' => array(
-        'entity' => FALSE,
-        'page' => FALSE,
+        'entity' => 0,
+        'page' => 0,
       ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'size' => 60,
@@ -365,10 +392,11 @@ function dt_contact_field_default_field_instances() {
   t('Body');
   t('E-mail address');
   t('Link to form');
+  t('Name');
+  t('Name of office, organisation or person the contact details refer to.');
   t('Online contact');
   t('Phone number');
   t('Postal address');
-  t('Title');
 
   return $field_instances;
 }
