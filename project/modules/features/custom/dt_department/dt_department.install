@@ -62,4 +62,5 @@ function dt_department_update_7104() {
   // The fields need component-based way.
   features_revert(array(
     'dt_department' => array('field_instance', 'variable'),
+  ));
 }
