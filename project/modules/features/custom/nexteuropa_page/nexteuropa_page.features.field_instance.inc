@@ -13,11 +13,7 @@ function nexteuropa_page_field_default_field_instances() {
   // Exported field_instance: 'node-page-field_core_introduction'
   $field_instances['node-page-field_core_introduction'] = array(
     'bundle' => 'page',
-    'default_value' => array(
-      0 => array(
-        'value' => 'Short introduction for the page.',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
