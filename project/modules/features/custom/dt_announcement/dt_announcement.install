@@ -71,4 +71,10 @@ function dt_announcement_update_7103() {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
     field_group_group_export_delete($group, FALSE);
   }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_group', 'variable'),
+  ));
 }
