@@ -17,9 +17,6 @@
     </<?php print $second_wrapper; ?>>
   <?php endif; ?>
   <<?php print $main_wrapper; ?> class="listing__column-main column-main <?php print $main_classes; ?>">
-    <div class="listing__item-meta meta">
-      <?php print $meta; ?>
-    </div>
     <?php print $main; ?>
   </<?php print $main_wrapper; ?>>
 </<?php print $layout_wrapper ?>>
