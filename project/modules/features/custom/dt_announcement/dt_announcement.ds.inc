@@ -43,9 +43,46 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'post_date' => array(
-      'weight' => '1',
+      'weight' => '12',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'listing__meta-item',
+          'fi-at' => '',
+          'fi-def-at' => TRUE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_announcement_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'listing__meta-item listing__meta-item--type',
+          'fi-at' => '',
+          'fi-def-at' => TRUE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h3',
+          'fi-cl' => 'listing__title',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
   );
   $export['node|announcement|teaser'] = $ds_fieldsetting;
@@ -121,25 +158,24 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'meta';
-  $ds_layout->layout = 'ne_2col_stacked';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'meta' => array(
-        0 => 'field_announcement_type',
-        1 => 'post_date',
-      ),
       'main' => array(
-        2 => 'title_field',
+        0 => 'group_announcement_meta',
+        1 => 'title_field',
+        2 => 'field_announcement_type',
+        3 => 'post_date',
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'meta',
-      'post_date' => 'meta',
+      'group_announcement_meta' => 'main',
       'title_field' => 'main',
+      'field_announcement_type' => 'main',
+      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'meta' => 'div',
       'main' => 'div',
       'second' => 'div',
     ),
@@ -157,31 +193,30 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col_stacked';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'meta' => array(
-        0 => 'field_announcement_type',
-        1 => 'post_date',
-      ),
       'main' => array(
-        2 => 'title_field',
-        3 => 'field_core_introduction',
+        0 => 'group_announcement_meta',
+        1 => 'title_field',
+        2 => 'field_core_introduction',
+        4 => 'field_announcement_type',
+        5 => 'post_date',
       ),
       'second' => array(
-        4 => 'field_announcement_image',
+        3 => 'field_announcement_image',
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'meta',
-      'post_date' => 'meta',
+      'group_announcement_meta' => 'main',
       'title_field' => 'main',
       'field_core_introduction' => 'main',
       'field_announcement_image' => 'second',
+      'field_announcement_type' => 'main',
+      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'meta' => 'div',
       'main' => 'div',
       'second' => 'div',
     ),

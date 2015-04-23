@@ -99,6 +99,66 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_meta|node|announcement|meta';
+  $field_group->group_name = 'group_announcement_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_announcement_type',
+      1 => 'post_date',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'listing__meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_meta|node|announcement|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_meta|node|announcement|teaser';
+  $field_group->group_name = 'group_announcement_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_announcement_type',
+      1 => 'post_date',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'listing__meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_meta|node|announcement|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_announcement_related|node|announcement|form';
   $field_group->group_name = 'group_announcement_related';
   $field_group->entity_type = 'node';

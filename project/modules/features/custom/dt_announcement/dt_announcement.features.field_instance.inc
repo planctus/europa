@@ -1232,7 +1232,7 @@ function dt_announcement_field_default_field_instances() {
         'settings' => array(
           'title_class' => '',
           'title_link' => 'content',
-          'title_style' => 'h2',
+          'title_style' => '_none',
         ),
         'type' => 'title_linked',
         'weight' => 2,
