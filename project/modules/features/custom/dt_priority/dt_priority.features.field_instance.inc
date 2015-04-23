@@ -10,73 +10,6 @@
 function dt_priority_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-priority-field_priority_description'
-  $field_instances['node-priority-field_priority_description'] = array(
-    'bundle' => 'priority',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'description for search',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_priority_description',
-    'label' => 'Description',
-    'required' => 1,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 35,
-    ),
-  );
-
   // Exported field_instance: 'node-priority-field_priority_excerpt'
   $field_instances['node-priority-field_priority_excerpt'] = array(
     'bundle' => 'priority',
@@ -139,7 +72,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 36,
+      'weight' => 35,
     ),
   );
 
@@ -272,73 +205,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 37,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority-field_priority_keyword'
-  $field_instances['node-priority-field_priority_keyword'] = array(
-    'bundle' => 'priority',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'keywords for search',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_priority_keyword',
-    'label' => 'Keyword',
-    'required' => 1,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 36,
     ),
   );
 
@@ -405,7 +272,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 38,
+      'weight' => 37,
     ),
   );
 
@@ -476,7 +343,7 @@ function dt_priority_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 34,
     ),
   );
 
@@ -528,7 +395,7 @@ function dt_priority_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 6,
     ),
     'widget_type' => 'options_select',
   );
@@ -588,7 +455,7 @@ function dt_priority_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -664,20 +531,16 @@ function dt_priority_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Description');
   t('Excerpt');
   t('Group content visibility');
   t('Groups audience');
   t('Information about the lead paragraph');
   t('Intro');
   t('Issue');
-  t('Keyword');
   t('Name');
   t('Objectives');
   t('Type');
-  t('description for search');
   t('description of the issue that prompted the priority');
-  t('keywords for search');
   t('meta type');
   t('shareable excerpt or quote');
   t('title of the priority');

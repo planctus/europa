@@ -53,10 +53,10 @@ function dt_priority_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '3',
+          'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'language' => array(
           'weight' => '4',
