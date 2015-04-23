@@ -24,8 +24,7 @@ function dt_priority_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_priority_content',
-      1 => 'group_priority_meta',
-      2 => 'group_editorial_settings',
+      1 => 'group_editorial_settings',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -84,10 +83,10 @@ function dt_priority_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_priority_excerpt',
-      2 => 'field_priority_intro',
-      3 => 'field_priority_issue',
-      4 => 'field_priority_objective',
-      5 => 'field_priority_type',
+      2 => 'field_priority_issue',
+      3 => 'field_priority_objective',
+      4 => 'field_priority_type',
+      5 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

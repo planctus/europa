@@ -42,6 +42,7 @@ function dt_priority_update_7101() {
 function dt_priority_update_7102() {
   // Remove the field.
   $fields_to_remove = array(
+    'field_priority_intro',
     'field_priority_keyword',
     'field_priority_description',
   );
@@ -60,4 +61,19 @@ function dt_priority_update_7103() {
   $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'publication', 'form');
   field_group_group_export_delete($group_priority_other, FALSE);
   field_group_group_export_delete($group_priority_meta, FALSE);
+}
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_priority_update_7104() {
+  features_revert_module('dt_priority');
+  features_revert(array(
+    'dt_priority' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
 }
