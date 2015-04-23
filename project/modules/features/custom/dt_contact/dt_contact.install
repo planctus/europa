@@ -51,3 +51,13 @@ function dt_contact_update_7102() {
     'dt_contact' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Removing field_contact_online_contact.
+ */
+function dt_contact_update_7103() {
+  $field_name = 'field_contact_online_contact';
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
