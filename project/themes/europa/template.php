@@ -65,6 +65,7 @@ function europa_form_required_marker($variables) {
 
 function europa_preprocess_page(&$vars) {
   $node = &$vars['node'];
+  $vars['ds_node'] = FALSE;
 
   // nodes excluded that are not using DS
   $node_type_list = array('class', 'page');
@@ -74,7 +75,6 @@ function europa_preprocess_page(&$vars) {
     $vars['show_messages'] = FALSE;
 
     // Add ds_node true to the node object
-    //$node->ds_node = TRUE;
     $vars['ds_node'] = TRUE;
   }
 }
