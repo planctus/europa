@@ -5,6 +5,7 @@ package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0
 project = dt_priority
 dependencies[] = dt_core
+dependencies[] = field_group
 dependencies[] = text
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1

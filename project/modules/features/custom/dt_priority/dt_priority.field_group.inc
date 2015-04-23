@@ -26,13 +26,11 @@ function dt_priority_field_group_info() {
       0 => 'group_priority_content',
       1 => 'group_editorial_settings',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tabs',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => '',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-content-tabgroup field-group-fieldset',
-        'required_fields' => 1,
+        'classes' => '',
       ),
     ),
   );
