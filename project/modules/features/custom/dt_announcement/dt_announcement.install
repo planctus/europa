@@ -55,3 +55,20 @@ function dt_announcement_update_7102() {
     'dt_announcement' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Removing group_announcement_metadata and group_scheduler field groups.
+ */
+function dt_announcement_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'announcement';
+  $fieldgroups_to_remove = array(
+    'group_announcement_metadata',
+    'group_scheduler',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+}
