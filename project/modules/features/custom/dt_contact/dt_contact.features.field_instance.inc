@@ -150,50 +150,6 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-field_contact_online_contact'
-  $field_instances['node-contact-field_contact_online_contact'] = array(
-    'bundle' => 'contact',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_contact_online_contact',
-    'label' => 'Online contact',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 13,
-    ),
-  );
-
   // Exported field_instance: 'node-contact-field_contact_phone_number'
   $field_instances['node-contact-field_contact_phone_number'] = array(
     'bundle' => 'contact',
@@ -394,7 +350,6 @@ function dt_contact_field_default_field_instances() {
   t('Link to form');
   t('Name');
   t('Name of office, organisation or person the contact details refer to.');
-  t('Online contact');
   t('Phone number');
   t('Postal address');
 
