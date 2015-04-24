@@ -1,0 +1,37 @@
+/*
+Meta
+
+Meta is a component that is used for displaying meta information in single pages and listings
+It could also be reused in blocks
+
+Markup: html/meta.html
+
+Styleguide meta
+*/
+
+.meta {
+  color: $grey-base;
+  line-height: 1.3;
+  font-size: $font-size-xsmall;
+  letter-spacing: 0.02777778em;
+}
+
+.meta__item {
+  &:before {
+    content: "|";
+    color: $grey;
+    margin: 0 0.8em;
+    position: relative;
+    top: -1px;
+  }
+
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.meta__item--type {
+  text-transform: uppercase;
+}
