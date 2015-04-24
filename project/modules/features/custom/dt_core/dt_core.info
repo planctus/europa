@@ -17,6 +17,7 @@ dependencies[] = nexteuropa_editorial
 dependencies[] = nexteuropa_feedback
 dependencies[] = nexteuropa_multilingual
 dependencies[] = nexteuropa_page
+dependencies[] = nexteuropa_inpage_nav
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = ds:ds:1
