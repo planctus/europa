@@ -13,29 +13,31 @@ function dt_class_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_class_departments|node|class|form';
-  $field_group->group_name = 'group_class_departments';
+  $field_group->identifier = 'group_class_content|node|class|form';
+  $field_group->group_name = 'group_class_content';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'class';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
-    'label' => 'Departments',
-    'weight' => '5',
+    'label' => 'Content',
+    'weight' => '16',
     'children' => array(
-      0 => 'field_core_department',
+      0 => 'title_field',
+      1 => 'field_class_notification',
+      2 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-class-departments field-group-tab',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_class_departments|node|class|form'] = $field_group;
+  $export['group_class_content|node|class|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -45,10 +47,10 @@ function dt_class_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'class';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Link groups',
-    'weight' => '3',
+    'weight' => '17',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -65,76 +67,19 @@ function dt_class_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_class_metadata|node|class|form';
-  $field_group->group_name = 'group_class_metadata';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'class';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Meta data',
-    'weight' => '7',
-    'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'path',
-      3 => 'scheduler_settings',
-      4 => 'language',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-class-metadata field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_class_metadata|node|class|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_class_profile_information|node|class|form';
-  $field_group->group_name = 'group_class_profile_information';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'class';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Profile information',
-    'weight' => '1',
-    'children' => array(
-      0 => 'field_class_introduction',
-      1 => 'field_class_notification',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-class-profile-information field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_class_profile_information|node|class|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_class_related|node|class|form';
   $field_group->group_name = 'group_class_related';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'class';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '6',
+    'weight' => '20',
     'children' => array(
       0 => 'field_class_related_links',
+      1 => 'field_core_department',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -151,29 +96,60 @@ function dt_class_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_class_topics|node|class|form';
-  $field_group->group_name = 'group_class_topics';
+  $field_group->identifier = 'group_content_tabgroup|node|class|form';
+  $field_group->group_name = 'group_content_tabgroup';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'class';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Topics',
-    'weight' => '4',
+    'label' => 'Content',
+    'weight' => '0',
     'children' => array(
-      0 => 'field_core_topics',
+      0 => 'group_class_content',
+      1 => 'group_class_link_group',
+      2 => 'group_class_related',
+      3 => 'group_editorial_settings',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_content_tabgroup|node|class|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_settings|node|class|form';
+  $field_group->group_name = 'group_editorial_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'class';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial settings',
+    'weight' => '21',
+    'children' => array(
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-class-topics field-group-tab',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_class_topics|node|class|form'] = $field_group;
+  $export['group_editorial_settings|node|class|form'] = $field_group;
 
   return $export;
 }
