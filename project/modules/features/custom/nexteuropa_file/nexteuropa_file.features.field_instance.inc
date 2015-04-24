@@ -69,48 +69,8 @@ function nexteuropa_file_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-field_file_lang_specific'
-  $field_instances['node-file-field_file_lang_specific'] = array(
-    'bundle' => 'file',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'For example: images are not language specific. This implies that there won\'t be different versions available for each language.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_file_lang_specific',
-    'label' => 'Is the file language specific?',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 3,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('File');
-  t('For example: images are not language specific. This implies that there won\'t be different versions available for each language.');
-  t('Is the file language specific?');
-
   return $field_instances;
 }
