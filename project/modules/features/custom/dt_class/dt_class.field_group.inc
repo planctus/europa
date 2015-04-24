@@ -27,12 +27,12 @@ function dt_class_field_group_info() {
       1 => 'field_class_notification',
       2 => 'field_core_introduction',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-class-content field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -106,20 +106,16 @@ function dt_class_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_class_departments',
+      0 => 'group_class_content',
       1 => 'group_class_link_group',
       2 => 'group_class_related',
-      3 => 'group_class_topics',
-      4 => 'group_class_content',
-      5 => 'group_editorial_settings',
+      3 => 'group_editorial_settings',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tabs',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => '',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-content-tabgroup field-group-fieldset',
-        'required_fields' => 1,
+        'classes' => '',
       ),
     ),
   );
@@ -143,12 +139,12 @@ function dt_class_field_group_info() {
       2 => 'scheduler_settings',
       3 => 'language',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-editorial-settings field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
