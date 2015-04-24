@@ -19,8 +19,13 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
         'weight' => 11,
       ),
       'full' => array(
@@ -79,85 +84,14 @@ function dt_department_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-department-field_core_commissioner'
-  $field_instances['node-department-field_core_commissioner'] = array(
-    'bundle' => 'department',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'list_view' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_commissioner',
-    'label' => 'Commissioner',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'apply_chosen' => '',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
   // Exported field_instance: 'node-department-field_core_contact'
   $field_instances['node-department-field_core_contact'] = array(
     'bundle' => 'department',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -199,9 +133,12 @@ function dt_department_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'inline_entity_form',
+      'module' => 'entityreference',
       'settings' => array(
         'fields' => array(),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
         'type_settings' => array(
           'allow_existing' => 1,
           'delete_references' => 0,
@@ -211,7 +148,7 @@ function dt_department_field_default_field_instances() {
           'override_labels' => 1,
         ),
       ),
-      'type' => 'inline_entity_form',
+      'type' => 'entityreference_autocomplete',
       'weight' => 10,
     ),
   );
@@ -225,8 +162,9 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_list_default',
         'weight' => 12,
       ),
       'full' => array(
@@ -276,7 +214,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 10,
+      'weight' => 1,
     ),
   );
 
@@ -289,8 +227,17 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_options' => array(),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 10,
       ),
       'full' => array(
@@ -366,7 +313,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 3,
     ),
   );
 
@@ -379,8 +326,9 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 16,
       ),
       'full' => array(
@@ -449,42 +397,29 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_priorities'
-  $field_instances['node-department-field_core_priorities'] = array(
+  // Exported field_instance: 'node-department-field_core_persons'
+  $field_instances['node-department-field_core_persons'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
-    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'full' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 10,
+        'weight' => 29,
       ),
-      'list_view' => array(
+      'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -494,19 +429,14 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
+    'field_name' => 'field_core_persons',
+    'label' => 'Persons',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -514,13 +444,12 @@ function dt_department_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 25,
     ),
   );
 
@@ -534,8 +463,11 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 15,
       ),
       'full' => array(
@@ -685,8 +617,9 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_list_default',
         'weight' => 18,
       ),
       'full' => array(
@@ -726,6 +659,62 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-department-field_department_organigram'
+  $field_instances['node-department-field_department_organigram'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_department_organigram',
+    'label' => 'Organisation chart',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 26,
+    ),
+  );
+
   // Exported field_instance: 'node-department-field_department_plans_reports'
   $field_instances['node-department-field_department_plans_reports'] = array(
     'bundle' => 'department',
@@ -735,8 +724,17 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_options' => array(),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 20,
       ),
       'full' => array(
@@ -814,8 +812,9 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 23,
       ),
       'full' => array(
@@ -880,8 +879,17 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_options' => array(),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 19,
       ),
       'full' => array(
@@ -958,8 +966,17 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_options' => array(),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 21,
       ),
       'full' => array(
@@ -1108,15 +1125,15 @@ function dt_department_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Acronym');
-  t('Commissioner');
   t('Contact');
   t('EC Organisation');
   t('Intro sentence');
   t('Introduction');
   t('Link');
   t('Main tasks');
+  t('Organisation chart');
+  t('Persons');
   t('Plans and reports');
-  t('Priorities');
   t('Related tasks');
   t('Tasks description');
   t('Title');

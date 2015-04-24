@@ -13,12 +13,43 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_content_tabgroup|node|department|form';
+  $field_group->group_name = 'group_content_tabgroup';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_cta',
+      1 => 'group_department_contact',
+      2 => 'group_person',
+      3 => 'group_priorities',
+      4 => 'group_profile_information',
+      5 => 'group_topics',
+      6 => 'group_editorial_settings',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-content-tabgroup field-group-tabs',
+      ),
+    ),
+  );
+  $export['group_content_tabgroup|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cta|node|department|form';
   $field_group->group_name = 'group_cta';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'CTA',
     'weight' => '2',
@@ -45,13 +76,12 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Contact',
     'weight' => '6',
     'children' => array(
-      0 => 'field_department_contact',
-      1 => 'field_core_contact',
+      0 => 'field_core_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -68,17 +98,48 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_settings|node|department|form';
+  $field_group->group_name = 'group_editorial_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial settings',
+    'weight' => '7',
+    'children' => array(
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-editorial-settings field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_editorial_settings|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person|node|department|form';
   $field_group->group_name = 'group_person';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Leadership & Organisation',
     'weight' => '5',
     'children' => array(
-      0 => 'field_core_commissioner',
+      0 => 'field_department_organigram',
+      1 => 'field_core_persons',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -100,17 +161,16 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Responsibilities, tasks',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_priorities',
-      1 => 'field_department_intro_sentence',
-      2 => 'field_department_main_tasks',
-      3 => 'field_department_plans_reports',
-      4 => 'field_department_related_tasks',
-      5 => 'field_department_tasks_desc',
+      0 => 'field_department_intro_sentence',
+      1 => 'field_department_main_tasks',
+      2 => 'field_department_plans_reports',
+      3 => 'field_department_related_tasks',
+      4 => 'field_department_tasks_desc',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -132,7 +192,7 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Profile information',
     'weight' => '1',
@@ -140,6 +200,7 @@ function dt_department_field_group_info() {
       0 => 'field_core_abbreviation',
       1 => 'field_core_ecorganisation',
       2 => 'field_core_introduction',
+      3 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -162,7 +223,7 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Topics',
     'weight' => '4',

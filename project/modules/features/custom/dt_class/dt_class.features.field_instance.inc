@@ -10,73 +10,6 @@
 function dt_class_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-class-field_class_introduction'
-  $field_instances['node-class-field_class_introduction'] = array(
-    'bundle' => 'class',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_class_introduction',
-    'label' => 'Introduction',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-class-field_class_notification'
   $field_instances['node-class-field_class_notification'] = array(
     'bundle' => 'class',
@@ -140,7 +73,7 @@ function dt_class_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -195,7 +128,7 @@ function dt_class_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 11,
+      'weight' => 7,
     ),
   );
 
@@ -239,7 +172,74 @@ function dt_class_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 10,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-class-field_core_introduction'
+  $field_instances['node-class-field_core_introduction'] = array(
+    'bundle' => 'class',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_core_introduction',
+    'label' => 'Introduction',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
     ),
   );
 
@@ -268,7 +268,7 @@ function dt_class_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
-    'label' => 'EU Topics',
+    'label' => 'Topics',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -283,62 +283,8 @@ function dt_class_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 13,
+      'weight' => 5,
     ),
-  );
-
-  // Exported field_instance: 'node-class-group_content_access'
-  $field_instances['node-class-group_content_access'] = array(
-    'bundle' => 'class',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'group_content_access',
-    'label' => 'Group content visibility',
-    'required' => TRUE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'type' => 'list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 2,
-    ),
-    'widget_type' => 'options_select',
   );
 
   // Exported field_instance: 'node-class-title_field'
@@ -380,7 +326,7 @@ function dt_class_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -388,13 +334,12 @@ function dt_class_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Departments');
   t('Departments are related to class.');
-  t('EU Topics');
-  t('Group content visibility');
   t('Introduction');
   t('Notification');
   t('Related links');
   t('Related links to the class.');
   t('Title');
+  t('Topics');
 
   return $field_instances;
 }
