@@ -17,6 +17,7 @@ Styleguide meta
 }
 
 .meta__item {
+  display: inline-block;
   &:before {
     content: "|";
     color: $grey;

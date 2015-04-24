@@ -5737,14 +5737,16 @@ Styleguide meta
   font-size: 0.778em;
   letter-spacing: 0.02777778em; }
 
-.meta__item:before {
-  content: "|";
-  color: #b3b4b5;
-  margin: 0 0.8em;
-  position: relative;
-  top: -1px; }
-.meta__item:first-child:before {
-  display: none; }
+.meta__item {
+  display: inline-block; }
+  .meta__item:before {
+    content: "|";
+    color: #b3b4b5;
+    margin: 0 0.8em;
+    position: relative;
+    top: -1px; }
+  .meta__item:first-child:before {
+    display: none; }
 
 .meta__item--type {
   text-transform: uppercase; }
