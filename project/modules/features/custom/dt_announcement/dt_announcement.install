@@ -32,3 +32,49 @@ function dt_announcement_update_7101() {
     'dt_announcement' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Subject removed since it is substituted by Topics.
+ */
+function dt_announcement_update_7102() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_core_subject',
+    'field_announcemnt_img_prominence',
+    'field_core_location',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing group_announcement_metadata and group_scheduler field groups.
+ */
+function dt_announcement_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'announcement';
+  $fieldgroups_to_remove = array(
+    'group_announcement_metadata',
+    'group_scheduler',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_group', 'variable'),
+  ));
+}

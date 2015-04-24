@@ -53,13 +53,13 @@ function dt_publication_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
         'scheduler_settings' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'language' => array(
-          'weight' => '11',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
