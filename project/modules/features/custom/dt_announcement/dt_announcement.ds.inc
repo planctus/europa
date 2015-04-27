@@ -18,12 +18,12 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '2',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'comments' => array(
-      'weight' => '12',
+      'weight' => '11',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -42,10 +42,47 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'changed_date' => array(
-      'weight' => '1',
+    'post_date' => array(
+      'weight' => '12',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'listing__meta-item',
+          'fi-at' => '',
+          'fi-def-at' => TRUE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_announcement_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'listing__meta-item listing__meta-item--type',
+          'fi-at' => '',
+          'fi-def-at' => TRUE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h3',
+          'fi-cl' => 'listing__title',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
   );
   $export['node|announcement|teaser'] = $ds_fieldsetting;
@@ -65,22 +102,21 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left_header' => array(
         0 => 'field_announcement_type',
         1 => 'post_date',
         2 => 'title',
         3 => 'field_core_commissioner',
-        4 => 'field_core_subject',
-        5 => 'field_core_department',
-        6 => 'field_core_introduction',
-        7 => 'body',
-        8 => 'field_announcement_info',
-        9 => 'field_core_link',
-        10 => 'field_announcement_media',
-        11 => 'comments',
+        4 => 'field_core_department',
+        5 => 'field_core_introduction',
+        6 => 'body',
+        7 => 'field_announcement_info',
+        8 => 'field_core_link',
+        9 => 'field_announcement_media',
+        10 => 'comments',
       ),
     ),
     'fields' => array(
@@ -88,7 +124,6 @@ function dt_announcement_ds_layout_settings_info() {
       'post_date' => 'ds_content',
       'title' => 'ds_content',
       'field_core_commissioner' => 'ds_content',
-      'field_core_subject' => 'ds_content',
       'field_core_department' => 'ds_content',
       'field_core_introduction' => 'ds_content',
       'body' => 'ds_content',
@@ -99,7 +134,11 @@ function dt_announcement_ds_layout_settings_info() {
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'left' => 'div',
+      'central' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -115,21 +154,26 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'meta';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'field_core_topics',
+      'main' => array(
+        0 => 'group_announcement_meta',
         1 => 'title_field',
+        2 => 'field_announcement_type',
+        3 => 'post_date',
       ),
     ),
     'fields' => array(
-      'field_core_topics' => 'ds_content',
-      'title_field' => 'ds_content',
+      'group_announcement_meta' => 'main',
+      'title_field' => 'main',
+      'field_announcement_type' => 'main',
+      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'main' => 'div',
+      'second' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -145,27 +189,32 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'field_announcement_type',
-        1 => 'changed_date',
-        2 => 'title_field',
-        3 => 'field_core_introduction',
-        4 => 'field_core_topics',
+      'main' => array(
+        0 => 'group_announcement_meta',
+        1 => 'title_field',
+        2 => 'field_core_introduction',
+        4 => 'field_announcement_type',
+        5 => 'post_date',
+      ),
+      'second' => array(
+        3 => 'field_announcement_image',
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'ds_content',
-      'changed_date' => 'ds_content',
-      'title_field' => 'ds_content',
-      'field_core_introduction' => 'ds_content',
-      'field_core_topics' => 'ds_content',
+      'group_announcement_meta' => 'main',
+      'title_field' => 'main',
+      'field_core_introduction' => 'main',
+      'field_announcement_image' => 'second',
+      'field_announcement_type' => 'main',
+      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'main' => 'div',
+      'second' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
