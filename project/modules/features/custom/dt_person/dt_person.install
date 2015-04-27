@@ -57,3 +57,10 @@ function dt_person_update_7103() {
     field_delete_field($field_name);
   }
 }
+
+/**
+ * Reverting the feature after updates in fields and field groups.
+ */
+function dt_person_update_7104() {
+  features_revert_module('dt_person');
+}
