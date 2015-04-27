@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * DT person install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_person_install() {
+  // Apply default configuration to "Person" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_person_uninstall() {
+  $path = drupal_get_path('module', 'dt_person') . '/dt_person.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Person %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Updating the fields definition of the person content type.
+ */
+function dt_person_update_7101() {
+  features_revert(
+    array(
+      'dt_person' => array('field_base', 'field_instance', 'field_group'),
+    )
+  );
+}
+
+/**
+ * Reverting DT Person feature to take new fields for sure.
+ */
+function dt_person_update_7102() {
+  // Apply default configuration to "Person" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+
+  // Reverting feature.
+  features_revert_module('dt_person');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_person' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removed Priorities.
+ */
+function dt_person_update_7103() {
+  // Remove the field.
+  $field_name = "field_core_priorities";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}

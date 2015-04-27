@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * dt Publication install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_publication_install() {
+  // Apply default dt configuration to "Publication" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('publication');
+
+  // Import "Publication Types" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_publication' => array('taxonomy')));
+  // Import publication_types vocabulary's terms.
+  Migration::getInstance('DTPublicationPublicationTypes')->processImport();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_publication_uninstall() {
+  $path = drupal_get_path('module', 'dt_publication') . '/dt_publication.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Publication %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing group_publication_metadata and group_scheduler field groups.
+ */
+function dt_publication_update_7101() {
+  $metadata_group = field_group_load_field_group('group_publication_metadata', 'node', 'publication', 'form');
+  $scheduler_group = field_group_load_field_group('group_scheduler', 'node', 'publication', 'form');
+  field_group_group_export_delete($metadata_group, FALSE);
+  field_group_group_export_delete($scheduler_group, FALSE);
+}
+
+/**
+ * Removing the field_core_file field which is simple file field.
+ */
+function dt_publication_update_7102() {
+  if ($instance = field_info_instance('node', 'field_core_file', 'publication')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Reverting the feature after changes.
+ */
+function dt_publication_update_7103() {
+  features_revert_module('dt_publication');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_class' => array('field_instance', 'field_base', 'variable'),
+  ));
+}
+
+/**
+ * Removing group_publication_common and group_publication_files field groups.
+ */
+function dt_publication_update_7104() {
+  $group_publication_common = field_group_load_field_group('group_publication_common', 'node', 'publication', 'form');
+  $group_publication_files = field_group_load_field_group('group_publication_files', 'node', 'publication', 'form');
+  field_group_group_export_delete($group_publication_common, FALSE);
+  field_group_group_export_delete($group_publication_files, FALSE);
+}

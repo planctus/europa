@@ -1,0 +1,62 @@
+<?php
+/**
+ * @file
+ * NextEuropa pages install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_page_install() {
+
+  // Apply default NextEuropa configuration to "Basic Page" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('page');
+}
+
+/**
+ * Removing obsolete User Tasks group and field.
+ */
+function nexteuropa_page_update_7101() {
+  // Remove field.
+  $field_name = 'field_core_user_tasks';
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+
+/**
+ * Removing obsolete Tag field from page only.
+ */
+function nexteuropa_page_update_7102() {
+  // Remove field.
+  if ($instance = field_info_instance('node', 'field_tags', 'page')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Removing group_page_metadata field groups.
+ */
+function nexteuropa_page_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'page';
+  $fieldgroups_to_remove = array(
+    'group_page_metadata',
+    'group_page_content',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+  features_revert_module('nexteuropa_page');
+  features_revert(array(
+    'nexteuropa_page' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}

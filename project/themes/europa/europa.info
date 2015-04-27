@@ -1,0 +1,68 @@
+name = Europa
+description = NextEuropa base theme, based on Bootstrap 3.
+base theme = bootstrap
+core = 7.x
+php = 5.3.0
+
+; ========================================
+; Regions
+; ========================================
+regions[navigation] = Navigation
+regions[header] = Header
+regions[header_bottom] = Header bottom
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[content_bottom] = Content bottom
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+regions[footer_top] = Footer Top
+regions[footer] = Footer
+
+; ========================================
+; Stylesheets
+; ========================================
+stylesheets[all][] = css/style-sass.css
+
+; ========================================
+; Scripts
+; ========================================
+;scripts[] = bootstrap-sass/js/bootstrap/affix.js
+;scripts[] = bootstrap-sass/js/bootstrap/alert.js
+;scripts[] = bootstrap-sass/js/bootstrap/button.js
+;scripts[] = bootstrap-sass/js/bootstrap/carousel.js
+scripts[] = bootstrap-sass/js/bootstrap/collapse.js
+scripts[] = bootstrap-sass/js/bootstrap/dropdown.js
+;scripts[] = bootstrap-sass/js/bootstrap/modal.js
+scripts[] = bootstrap-sass/js/bootstrap/tooltip.js
+;scripts[] = bootstrap-sass/js/bootstrap/popover.js
+scripts[] = bootstrap-sass/js/bootstrap/scrollspy.js
+scripts[] = bootstrap-sass/js/bootstrap/tab.js
+scripts[] = bootstrap-sass/js/bootstrap/transition.js
+scripts[] = js/modernizr.js
+scripts[] = js/enquire.min.js
+scripts[] = js/velocity.min.js
+
+; ========================================
+; Settings
+; ========================================
+
+
+; Tooltips
+; --------------
+settings[bootstrap_tooltip_enabled] = 0
+
+; Popover
+; --------------
+settings[bootstrap_popover_enabled] = 0
+
+; Breadcrumbs
+; --------------
+settings[bootstrap_breadcrumb] = 0
+settings[bootstrap_breadcrumb_home] = 1
+settings[bootstrap_breadcrumb_title] = 1
+
+; Advanced
+; --------------
+settings[bootstrap_cdn] = ""
+

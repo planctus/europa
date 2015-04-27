@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Deliver to Acquia Cloud" default="deliver">
+  <target name="deliver" description="Deliver code to Acquia repository">
+    <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
+    <property name="acquia.docroot" value="${acquia.repo}/docroot" />
+
+    <gitpull
+        repository="${acquia.repo}"
+        refspec="master:master" tags="true" force="true" />
+
+    <echo msg="Delete acquia-cloud/docroot." />
+    <delete includeemptydirs="true" failonerror="false">
+      <fileset dir="${acquia.docroot}">
+        <patternset>
+          <exclude name="files"/>
+          <exclude name="sites/*/files"/>
+          <exclude name="sites/*/private"/>
+          <exclude name="**/settings.php"/>
+          <exclude name="**/sites.php/"/>
+        </patternset>
+      </fileset>
+    </delete>
+    <echo msg="Copy files to acquia-cloud/docroot." />
+    <copy todir="${acquia.docroot}">
+        <fileset dir="${distro.code.dir}">
+          <patternset>
+            <exclude name="**/settings.php"/>
+            <exclude name="**/sites.php/"/>
+            <exclude name="sites/*/files"/>
+          </patternset>
+      </fileset>
+    </copy>
+
+    <tstamp>
+      <format property="DATE" pattern="%c" locale="nl_NL"/>
+    </tstamp>
+
+    <!-- commit all modified / deleted files -->
+    <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
+    <exec dir="${acquia.repo}" command="git add -A"></exec>
+    <gitcommit
+        repository="${acquia.repo}"
+        message="Packaged by Phing in project BETA from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+
+    <!-- Get previous tagnames -->
+    <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
+    <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
+    <input propertyname="TAG">Please provide a tag name:</input>
+    <gittag repository="${acquia.repo}" name="${TAG}" />
+    <gitpush
+        repository="${acquia.repo}"
+        refspec="master:master" tags="true" />
+  </target>
+
+</project>
