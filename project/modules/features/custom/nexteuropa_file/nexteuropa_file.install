@@ -24,7 +24,7 @@ function nexteuropa_file_uninstall() {
 }
 
 /**
- * Removing the field_file_lang_specific field
+ * Removing the field_file_lang_specific field.
  */
 function nexteuropa_file_update_7101() {
   // Remove the field.
@@ -44,14 +44,10 @@ function nexteuropa_file_update_7101() {
   ));
 }
 
+/**
+ * Reverting the nexteuropa_file fields configurations.
+ */
 function nexteuropa_file_update_7102() {
-  // Removing deprecated fields.
-  $fields_to_remove = array('field_nexteuropa_file');
-  foreach ($fields_to_remove as $field_name) {
-    if (field_info_field($field_name) !== NULL) {
-      field_delete_field($field_name);
-    }
-  }
   features_revert(array(
     'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
   ));
