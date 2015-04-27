@@ -10,38 +10,38 @@
 function dt_core_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Editor.
-  $formats['editor'] = (object) array(
-    'format' => 'editor',
-    'name' => 'Editor',
+  // Exported format: DT Editor.
+  $formats['dt_editor'] = (object) array(
+    'format' => 'dt_editor',
+    'name' => 'DT Editor',
     'cache' => 1,
     'status' => 1,
     'weight' => -10,
     'filters' => array(
+      'filter_autop' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
       'filter_url' => array(
-        'weight' => -48,
+        'weight' => 0,
         'status' => 1,
         'settings' => array(
           'filter_url_length' => 72,
         ),
       ),
-      'filter_autop' => array(
-        'weight' => -47,
+      'video_filter' => array(
+        'weight' => 0,
         'status' => 1,
         'settings' => array(),
       ),
       'media_filter' => array(
-        'weight' => -46,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'video_filter' => array(
-        'weight' => -45,
+        'weight' => 2,
         'status' => 1,
         'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
-        'weight' => -42,
+        'weight' => 10,
         'status' => 1,
         'settings' => array(),
       ),

@@ -140,3 +140,16 @@ function dt_core_update_7111() {
     drupal_uninstall_modules(array('dashboard'));
   }
 }
+
+/**
+ * Deleting custom "editor" profile and changing it to dt_editor.
+ * Reason: wysiwyg module is throwing error in the features_rebuild hook.
+ * Overlapping "editor" name.
+ */
+function dt_core_update_7112() {
+  features_revert(array(
+    'dt_core' => array('dependencies', 'user_role', 'filter', 'wysiwyg'),
+  ));
+  wysiwyg_profile_delete("editor");
+  wysiwyg_profile_cache_clear();
+}

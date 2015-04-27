@@ -10,9 +10,9 @@
 function dt_core_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: editor
-  $profiles['editor'] = (object) array(
-    'format' => 'editor',
+  // Exported profile: dt_editor
+  $profiles['dt_editor'] = (object) array(
+    'format' => 'dt_editor',
     'editor' => 'ckeditor',
     'settings' => array(
       'default' => 1,
@@ -41,9 +41,16 @@ function dt_core_wysiwyg_default_profiles() {
           'ShowBlocks' => 1,
           'RemoveFormat' => 1,
           'Format' => 1,
+          'Font' => 1,
           'Table' => 1,
           'Find' => 1,
           'SpellChecker' => 1,
+        ),
+        'drupal_path' => array(
+          'Link' => 1,
+        ),
+        'drupal' => array(
+          'media' => 1,
         ),
       ),
       'toolbar_loc' => 'top',
@@ -52,7 +59,7 @@ function dt_core_wysiwyg_default_profiles() {
       'resizing' => 1,
       'verify_html' => 1,
       'preformatted' => 0,
-      'convert_fonts_to_spans' => 0,
+      'convert_fonts_to_spans' => 1,
       'remove_linebreaks' => 1,
       'apply_source_formatting' => 0,
       'paste_auto_cleanup_on_paste' => 1,
