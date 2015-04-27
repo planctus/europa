@@ -102,13 +102,13 @@ function nexteuropa_file_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'language' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '3',
         ),
       ),
       'display' => array(
@@ -126,8 +126,29 @@ function nexteuropa_file_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_file';
+  $strongarm->value = '1';
+  $export['i18n_node_extended_file'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_file';
+  $strongarm->value = array();
+  $export['i18n_node_options_file'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_file';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_file'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_file';
-  $strongarm->value = '2';
+  $strongarm->value = '4';
   $export['language_content_type_file'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -150,6 +171,7 @@ function nexteuropa_file_strongarm() {
   $strongarm->name = 'node_options_file';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_file'] = $strongarm;
 

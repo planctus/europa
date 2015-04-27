@@ -31,3 +31,52 @@ function dt_class_update_7101() {
     'dt_class' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Field field_class_introduction removed replaced by core field.
+ */
+function dt_class_update_7102() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_class_introduction',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+}
+
+/**
+ * Removing group_class_profile_information and group_class_metadata field groups.
+ */
+function dt_class_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'class';
+  $fieldgroups_to_remove = array(
+    'group_class_profile_information',
+    'group_class_metadata',
+    'group_class_topics',
+    'group_class_departments',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+}
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_class_update_7104() {
+  features_revert_module('dt_class');
+  features_revert(array(
+    'dt_class' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}

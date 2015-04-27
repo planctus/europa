@@ -73,6 +73,7 @@
  *
  * @ingroup themeable
  */
+
 ?>
 
 <header class="site-header" role="banner">
@@ -125,64 +126,85 @@
 <?php endif; ?>
 
 <section class="main-content">
-
-  <!-- Page Header -->
-  <div class="page-header">
-    <div class="container-fluid">
-      <span class="page-header__top">First line</span>
-
-      <?php print render($title_prefix); ?>
-      <h1>
-          <span class="page-header__main">
-            <?php if (drupal_is_front_page() && !empty($site_name)): ?>
-              <?php print $site_name; ?>
-            <?php elseif (!empty($title)): ?>
-              <?php print $title; ?>
-            <?php endif; ?>
-          </span>
-          <span class="page-header__bottom">Second line</span>
-      </h1>
-      <?php print render($title_suffix); ?>
-    </div>
-  </div>
-  <a id="main-content" tabindex="-1"></a>
-
-
+  <!-- Generic sections -->
   <div class="container-fluid">
-    <div class="row">
+    <?php if (!empty($tabs)): ?>
+      <?php print render($tabs); ?>
+    <?php endif; ?>
 
-      <?php if (!empty($page['sidebar_first'])): ?>
-        <aside class="col-sm-3" role="complementary">
-          <?php print render($page['sidebar_first']); ?>
-        </aside>  <!-- /#sidebar-first -->
-      <?php endif; ?>
+    <?php if (!empty($page['help'])): ?>
+      <?php print render($page['help']); ?>
+    <?php endif; ?>
 
-      <section<?php print $content_column_class; ?>>
-        <?php if (!empty($page['highlighted'])): ?>
-          <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-        <?php endif; ?>
-
-        <?php print $messages; ?>
-        <?php if (!empty($tabs)): ?>
-          <?php print render($tabs); ?>
-        <?php endif; ?>
-        <?php if (!empty($page['help'])): ?>
-          <?php print render($page['help']); ?>
-        <?php endif; ?>
-        <?php if (!empty($action_links)): ?>
-          <ul class="action-links"><?php print render($action_links); ?></ul>
-        <?php endif; ?>
-        <?php print render($page['content']); ?>
-	<?php print render($page['content_bottom']); ?>
-      </section>
-
-      <?php if (!empty($page['sidebar_second'])): ?>
-        <aside class="col-sm-3" role="complementary">
-          <?php print render($page['sidebar_second']); ?>
-        </aside>  <!-- /#sidebar-second -->
-      <?php endif; ?>
-    </div>
+    <?php if (!empty($action_links)): ?>
+      <ul class="action-links"><?php print render($action_links); ?></ul>
+    <?php endif; ?>
   </div>
+
+  <!-- Display Suite main content -->
+  <?php if($ds_node): ?>
+
+    <?php print render($page['content']); ?>
+
+    <div class="container-fluid">
+      <?php print render($page['content_bottom']); ?>
+    </div>
+
+  <!-- Non Display Suite main content -->
+  <?php else: ?>
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container-fluid">
+        <span class="page-header__top">First line</span>
+
+        <?php print render($title_prefix); ?>
+        <h1>
+            <span class="page-header__main">
+              <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+                <?php print $site_name; ?>
+              <?php elseif (!empty($title)): ?>
+                <?php print $title; ?>
+              <?php endif; ?>
+            </span>
+            <span class="page-header__bottom">Second line</span>
+        </h1>
+        <?php print render($title_suffix); ?>
+      </div>
+    </div>
+    <a id="main-content" tabindex="-1"></a>
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <?php if (!empty($page['sidebar_first'])): ?>
+          <aside class="col-sm-3" role="complementary">
+            <?php print render($page['sidebar_first']); ?>
+          </aside>  <!-- /#sidebar-first -->
+        <?php endif; ?>
+
+        <section<?php print $content_column_class; ?>>
+          <?php if (!empty($page['highlighted'])): ?>
+            <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+          <?php endif; ?>
+
+          <?php if (!empty($messages)): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
+
+          <?php print render($page['content']); ?>
+
+          <?php print render($page['content_bottom']); ?>
+        </section>
+
+        <?php if (!empty($page['sidebar_second'])): ?>
+          <aside class="col-sm-3" role="complementary">
+            <?php print render($page['sidebar_second']); ?>
+          </aside>  <!-- /#sidebar-second -->
+        <?php endif; ?>
+      </div>
+    </div>
+  <?php endif; ?>
 </section>
 
 <?php if (!empty($page['footer_top'])): ?>

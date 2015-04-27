@@ -46,3 +46,14 @@ function dt_person_update_7102() {
     'dt_person' => array('field_instance', 'variable'),
   ));
 }
+
+/**
+ * Removed Priorities.
+ */
+function dt_person_update_7103() {
+  // Remove the field.
+  $field_name = "field_core_priorities";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}

@@ -179,61 +179,6 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_core_priorities'
-  $field_instances['node-person-field_core_priorities'] = array(
-    'bundle' => 'person',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 8,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 10,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
-    'required' => 1,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 48,
-    ),
-  );
-
   // Exported field_instance: 'node-person-field_core_topics'
   $field_instances['node-person-field_core_topics'] = array(
     'bundle' => 'person',
@@ -273,7 +218,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
     'label' => 'Related Topics',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -325,7 +270,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_biography_intro',
     'label' => 'Biography intro',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -474,7 +419,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_declaration',
     'label' => 'Declaration of interest	',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'description_field' => 1,
       'entity_translation_sync' => FALSE,
@@ -618,7 +563,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_first_name',
     'label' => 'First Name',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -696,7 +641,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_gender',
     'label' => 'Gender',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -740,7 +685,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_intro',
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -788,7 +733,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_last_name',
     'label' => 'Last Name',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -1026,7 +971,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_role',
     'label' => 'Role',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1076,7 +1021,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_status',
     'label' => 'Status',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1123,7 +1068,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_tagline',
     'label' => 'Tagline',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -1235,7 +1180,6 @@ function dt_person_field_default_field_instances() {
   t('Introduction');
   t('Last Name');
   t('Portrait photo');
-  t('Priorities');
   t('Related Topics');
   t('Responsibilities');
   t('Role');
