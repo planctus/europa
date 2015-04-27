@@ -1,0 +1,5 @@
+name = DT Policy Next Step Field
+description = Defines a field next step.
+core = 7.x
+package = NextEuropa Digital Transformation Strategy
+dependency = field
