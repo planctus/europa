@@ -301,56 +301,6 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_policy_key_files|node|policy|form';
-  $field_group->group_name = 'group_policy_key_files';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'policy';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Key files',
-    'weight' => '11',
-    'children' => array(),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-policy-key-files field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_policy_key_files|node|policy|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_policy_latest|node|policy|form';
-  $field_group->group_name = 'group_policy_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'policy';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Latest',
-    'weight' => '10',
-    'children' => array(),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-policy-latest field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_policy_latest|node|policy|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_next_steps|node|policy|form';
   $field_group->group_name = 'group_policy_next_steps';
   $field_group->entity_type = 'node';
