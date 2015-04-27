@@ -64,3 +64,43 @@ function dt_person_update_7103() {
 function dt_person_update_7104() {
   features_revert_module('dt_person');
 }
+
+/**
+ * Removing obsolete fields and field groups.
+ */
+function dt_person_update_7105() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_person_intro',
+    'field_person_status',
+    'field_person_intro',
+    'field_person_responsibility',
+    'field_person_declaration',
+    'field_person_biography_intro',
+    'field_person_cv',
+    'field_person_document',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  // Remove the fieldgroups.
+  $type = 'person';
+  $fieldgroups_to_remove = array(
+    'group_body',
+    'group_person_responsibility',
+    'group_person_biography',
+    'group_person_cv',
+    'group_person_documents',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
