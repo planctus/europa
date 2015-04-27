@@ -26,15 +26,15 @@ function dt_policy_field_group_info() {
       0 => 'group_policy_banner',
       1 => 'group_policy_common',
       2 => 'group_policy_details',
-      3 => 'group_policy_follow',
-      4 => 'group_policy_implementation',
-      5 => 'group_policy_input',
-      6 => 'group_policy_key_files',
-      7 => 'group_policy_latest',
-      8 => 'group_policy_next_steps',
-      9 => 'group_policy_other_relations',
-      10 => 'group_policy_related',
-      11 => 'group_policy_editorial',
+      3 => 'group_policy_editorial',
+      4 => 'group_policy_follow',
+      5 => 'group_policy_implementation',
+      6 => 'group_policy_input',
+      7 => 'group_policy_key_files',
+      8 => 'group_policy_latest',
+      9 => 'group_policy_next_steps',
+      10 => 'group_policy_other_relations',
+      11 => 'group_policy_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -87,11 +87,11 @@ function dt_policy_field_group_info() {
     'label' => 'Banner',
     'weight' => '4',
     'children' => array(
-      0 => 'field_policy_sharable_banner',
+      0 => 'field_policy_caption',
       1 => 'field_policy_featured_file',
-      2 => 'field_policy_caption',
-      3 => 'field_policy_paragraph',
-      4 => 'field_policy_quote',
+      2 => 'field_policy_paragraph',
+      3 => 'field_policy_quote',
+      4 => 'field_policy_sharable_banner',
       5 => 'group_policy_author',
     ),
     'format_type' => 'tab',
@@ -147,10 +147,10 @@ function dt_policy_field_group_info() {
     'label' => 'Details',
     'weight' => '9',
     'children' => array(
-      0 => 'field_policy_detail_body',
-      1 => 'field_policy_detail_objectives',
-      2 => 'field_policy_detail_additional',
-      3 => 'field_policy_detail_file',
+      0 => 'field_policy_detail_additional',
+      1 => 'field_policy_detail_body',
+      2 => 'field_policy_detail_file',
+      3 => 'field_policy_detail_objectives',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -258,9 +258,7 @@ function dt_policy_field_group_info() {
   $field_group->data = array(
     'label' => 'Policy input',
     'weight' => '5',
-    'children' => array(
-      0 => 'field_policy_input',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -362,7 +360,9 @@ function dt_policy_field_group_info() {
   $field_group->data = array(
     'label' => 'Next steps',
     'weight' => '7',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_policy_next_steps',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -389,7 +389,6 @@ function dt_policy_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_commissioners',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

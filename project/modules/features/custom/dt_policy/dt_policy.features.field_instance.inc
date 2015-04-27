@@ -794,6 +794,46 @@ Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>',
     ),
   );
 
+  // Exported field_instance: 'node-policy-field_policy_next_steps'
+  $field_instances['node-policy-field_policy_next_steps'] = array(
+    'bundle' => 'policy',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'dt_policy_next_step',
+        'settings' => array(),
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_policy_next_steps',
+    'label' => 'Next steps',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'dt_policy_next_step',
+      'settings' => array(
+        'size' => 255,
+      ),
+      'type' => 'dt_policy_next_step_widget',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-policy-field_policy_paragraph'
   $field_instances['node-policy-field_policy_paragraph'] = array(
     'bundle' => 'policy',
@@ -1110,6 +1150,49 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
     'widget_type' => 'options_select',
   );
 
+  // Exported field_instance: 'node-policy-title_field'
+  $field_instances['node-policy-title_field'] = array(
+    'bundle' => 'policy',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'title_field',
+    'label' => 'Title',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => FALSE,
+        'page' => FALSE,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -5,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a <a href="/node/add/department" target="_blank">Department</a>');
@@ -1129,6 +1212,7 @@ Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>');
 Add a <a href="/node/add/topic" target="_blank">Topic</a>');
   t('Introduction');
   t('Introduction text to policy.');
+  t('Next steps');
   t('Objectives');
   t('Paragraph');
   t('Part of topic(s)');
@@ -1142,6 +1226,7 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>');
   t('Responsible department(s)');
   t('Sharable banner');
   t('Social media profile(s)');
+  t('Title');
 
   return $field_instances;
 }

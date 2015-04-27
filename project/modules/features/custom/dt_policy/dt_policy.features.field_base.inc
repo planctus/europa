@@ -458,6 +458,29 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_policy_next_steps'
+  $field_bases['field_policy_next_steps'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_next_steps',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'when_timeframe' => array(
+        0 => 'when_timeframe',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'dt_policy_next_step',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'dt_policy_next_step_field',
+  );
+
   // Exported field_base: 'field_policy_paragraph'
   $field_bases['field_policy_paragraph'] = array(
     'active' => 1,
