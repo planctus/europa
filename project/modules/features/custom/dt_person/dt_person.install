@@ -4,12 +4,23 @@
  * DT person install file.
  */
 
+function _import_person_roles() {
+  // Import "Person roles" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_person' => array('taxonomy')));
+  // Import person_roles vocabulary terms.
+  Migration::getInstance('DTPersonRolesMigrator')->processImport();
+}
+
 /**
  * Implements hook_install().
  */
 function dt_person_install() {
   // Apply default configuration to "Person" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+  _import_person_roles();
 }
 
 /**
@@ -120,12 +131,5 @@ function dt_person_update_7106() {
  * Importing initial set of person roles taxonomy terms.
  */
 function dt_person_update_7107() {
-  // Import "Person roles" terms.
-  // Force registration of migration classes.
-  migrate_static_registration();
-  // Make sure that destination vocabularies exists.
-  features_revert(array('dt_person' => array('taxonomy')));
-  // Import person_roles vocabulary terms.
-  Migration::getInstance('DTPersonRolesMigrator')->processImport();
-  features_revert_module('dt_person');
+  _import_person_roles();
 }
