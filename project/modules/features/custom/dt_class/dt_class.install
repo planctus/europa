@@ -10,6 +10,7 @@
 function dt_class_install() {
   // Apply default configuration to "Class" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
 }
 
 /**
@@ -70,6 +71,22 @@ function dt_class_update_7103() {
  * Reverting the feature to match all fields from the code base.
  */
 function dt_class_update_7104() {
+  features_revert_module('dt_class');
+  features_revert(array(
+    'dt_class' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_class_update_7105() {
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
   features_revert_module('dt_class');
   features_revert(array(
     'dt_class' => array(

@@ -29,6 +29,14 @@ function dt_class_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'class_link_group' => array(
+      'name' => t('Temporary class link group'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Group title'),
+      'help' => '',
+    ),
   );
   drupal_alter('node_info', $items);
   return $items;
