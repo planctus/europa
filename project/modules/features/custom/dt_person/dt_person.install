@@ -115,3 +115,17 @@ function dt_person_update_7106() {
   // Reverting feature to add the same field from the features exports.
   features_revert_module('dt_person');
 }
+
+/**
+ * Importing initial set of person roles taxonomy terms.
+ */
+function dt_person_update_7107() {
+  // Import "Person roles" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_person' => array('taxonomy')));
+  // Import person_roles vocabulary terms.
+  Migration::getInstance('DTPersonRolesMigrator')->processImport();
+  features_revert_module('dt_person');
+}
