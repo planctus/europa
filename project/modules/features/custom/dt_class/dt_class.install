@@ -11,6 +11,22 @@ function dt_class_install() {
   // Apply default configuration to "Class" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class');
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
+
+  // Unlock body field.
+  // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
+  $field_name = 'body';
+  $field = field_read_field($field_name);
+  $field['locked'] = 0;
+  field_update_field($field);
+
+  // Delete body instance.
+  // @see http://dropbucket.org/node/1534
+  $entity_type = 'node';
+  $bundle_name = 'class_link_group';
+  $field_name  = 'body';
+  if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
+    field_delete_instance($instance);
+  }
 }
 
 /**
@@ -96,4 +112,25 @@ function dt_class_update_7105() {
       'variable',
     ),
   ));
+}
+
+/**
+ * Removing field instance body from temporary class link group.
+ */
+function dt_class_update_7106() {
+  // Unlock body field.
+  // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
+  $field_name = 'body';
+  $field = field_read_field($field_name);
+  $field['locked'] = 0;
+  field_update_field($field);
+
+  // Delete body instance.
+  // @see http://dropbucket.org/node/1534
+  $entity_type = 'node';
+  $bundle_name = 'class_link_group';
+  $field_name  = 'body';
+  if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
+    field_delete_instance($instance);
+  }
 }

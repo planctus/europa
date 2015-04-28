@@ -120,10 +120,10 @@ function dt_class_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '6',
+          'weight' => '3',
         ),
         'language' => array(
           'weight' => '3',
@@ -143,7 +143,13 @@ function dt_class_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '2',
+          'weight' => '4',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '5',
+        ),
+        'language' => array(
+          'weight' => '1',
         ),
       ),
       'display' => array(),
@@ -162,7 +168,7 @@ function dt_class_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_class_link_group';
-  $strongarm->value = '0';
+  $strongarm->value = 4;
   $export['language_content_type_class_link_group'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -199,6 +205,8 @@ function dt_class_strongarm() {
   $strongarm->name = 'node_options_class_link_group';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'moderation',
+    2 => 'revision',
   );
   $export['node_options_class_link_group'] = $strongarm;
 

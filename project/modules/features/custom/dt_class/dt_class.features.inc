@@ -32,7 +32,7 @@ function dt_class_node_info() {
     'class_link_group' => array(
       'name' => t('Temporary class link group'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('DT Temporary  class link group content type.'),
       'has_title' => '1',
       'title_label' => t('Group title'),
       'help' => '',
