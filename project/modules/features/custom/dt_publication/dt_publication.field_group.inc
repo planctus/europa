@@ -83,6 +83,7 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'field_publication_summary',
       1 => 'field_publication_type',
+      2 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -166,7 +167,7 @@ function dt_publication_field_group_info() {
     'label' => 'Files',
     'weight' => '2',
     'children' => array(
-      0 => 'field_core_file',
+      0 => 'field_nexteuropa_file',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -193,8 +194,8 @@ function dt_publication_field_group_info() {
     'label' => 'Meta data',
     'weight' => '3',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'og_group_ref',
       2 => 'path',
       3 => 'scheduler_settings',
       4 => 'language',
