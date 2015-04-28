@@ -291,7 +291,7 @@ function dt_person_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 56,
+      'weight' => 55,
     ),
   );
 
@@ -578,13 +578,13 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For example: president, vice-president, commissioner, etc.',
+    'description' => 'Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'full' => array(
         'label' => 'above',
@@ -599,6 +599,7 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_role',
     'label' => 'Role',
@@ -782,8 +783,8 @@ function dt_person_field_default_field_instances() {
   t('Body');
   t('Contact');
   t('Departments');
+  t('Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'');
   t('First Name');
-  t('For example: president, vice-president, commissioner, etc.');
   t('Gender');
   t('Last Name');
   t('Link to an existing profile');

@@ -213,36 +213,33 @@ function dt_person_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_person_role',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
-        'president' => 'President',
-        'first_vice_president' => 'First Vice-President',
-        'high_representitive' => 'High Representative',
-        'vice_president' => 'Vice-President',
-        'commissioner' => 'Commissioner',
-        'head_cabinet' => 'Head of Cabinet',
-        'deputy_head_cabinet' => 'Deputy Head of Cabinet',
-        'senior_adviser' => 'Senior Adviser',
-        'director' => 'Director',
-        'adviser' => 'Adviser',
-        'member' => 'Member',
-        'hearing_officer' => 'Hearing Officer',
-        'assistant' => 'Assistant',
-        'archivist' => 'Archivist',
+        0 => array(
+          'vocabulary' => 'person_roles',
+          'parent' => 0,
+        ),
       ),
-      'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
+      'options_list_callback' => 'i18n_taxonomy_allowed_values',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'taxonomy_term_reference',
   );
 
   // Exported field_base: 'field_person_tagline'

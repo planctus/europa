@@ -104,3 +104,14 @@ function dt_person_update_7105() {
   // Reverting feature.
   features_revert_module('dt_person');
 }
+
+/**
+ * Changing field type of field_person_role from selectlist to taxonomy term reference.
+ */
+function dt_person_update_7106() {
+  if (field_info_field("field_person_role") !== NULL ) {
+    field_delete_field("field_person_role");
+  }
+  // Reverting feature to add the same field from the features exports.
+  features_revert_module('dt_person');
+}
