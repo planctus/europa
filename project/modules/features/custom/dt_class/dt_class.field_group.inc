@@ -23,8 +23,8 @@ function dt_class_field_group_info() {
     'label' => 'Content',
     'weight' => '16',
     'children' => array(
-      0 => 'field_class_notification',
-      1 => 'title_field',
+      0 => 'title_field',
+      1 => 'field_class_notification',
       2 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
@@ -52,9 +52,9 @@ function dt_class_field_group_info() {
     'label' => 'Content',
     'weight' => '6',
     'children' => array(
-      0 => 'field_class_link_explanation',
-      1 => 'field_class_link_legacy_link',
-      2 => 'title_field',
+      0 => 'title_field',
+      1 => 'field_class_link_explanation',
+      2 => 'field_class_link_legacy_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -106,7 +106,7 @@ function dt_class_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '20',
+    'weight' => '18',
     'children' => array(
       0 => 'field_class_related_links',
       1 => 'field_core_department',
@@ -135,7 +135,7 @@ function dt_class_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
       0 => 'group_class_link_content',
       1 => 'group_editorial_settings',
@@ -191,8 +191,10 @@ function dt_class_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '7',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -217,10 +219,12 @@ function dt_class_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '21',
+    'weight' => '19',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

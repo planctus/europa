@@ -120,13 +120,13 @@ function dt_class_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '3',
+          'weight' => '1',
         ),
         'language' => array(
-          'weight' => '3',
+          'weight' => '-2',
         ),
       ),
       'display' => array(),
@@ -143,10 +143,10 @@ function dt_class_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '4',
+          'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '5',
+          'weight' => '4',
         ),
         'language' => array(
           'weight' => '1',

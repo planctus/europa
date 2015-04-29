@@ -39,6 +39,7 @@ features[field_instance][] = node-class-title_field
 features[field_instance][] = node-class_link_group-field_class_link_explanation
 features[field_instance][] = node-class_link_group-field_class_link_legacy_link
 features[field_instance][] = node-class_link_group-group_content_access
+features[field_instance][] = node-class_link_group-og_group_ref
 features[field_instance][] = node-class_link_group-title_field
 features[node][] = class
 features[node][] = class_link_group
