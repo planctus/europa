@@ -5,11 +5,47 @@
  */
 
 /**
+ * Helper function to import person roles.
+ */
+function _dt_person_roles_import() {
+  // Import "Person roles" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_person' => array('taxonomy')));
+  // Import person_roles vocabulary terms.
+  Migration::getInstance('DTPersonRolesMigrator')->processImport();
+}
+
+/**
+ * Helper function to remove body field.
+ */
+function _dt_person_remove_body_field() {
+  // Unlock body field.
+  // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
+  $field_name = 'body';
+  $field = field_read_field($field_name);
+  $field['locked'] = 0;
+  field_update_field($field);
+
+  // Delete body instance.
+  // @see http://dropbucket.org/node/1534
+  $entity_type = 'node';
+  $bundle_name = 'person';
+  $field_name  = 'body';
+  if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
  * Implements hook_install().
  */
 function dt_person_install() {
   // Apply default configuration to "Person" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+  _dt_person_roles_import();
+  _dt_person_remove_body_field();
 }
 
 /**
@@ -56,4 +92,76 @@ function dt_person_update_7103() {
   if (field_info_field($field_name) !== NULL) {
     field_delete_field($field_name);
   }
+}
+
+/**
+ * Reverting the feature after updates in fields and field groups.
+ */
+function dt_person_update_7104() {
+  features_revert_module('dt_person');
+}
+
+/**
+ * Removing obsolete fields and field groups.
+ */
+function dt_person_update_7105() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_person_intro',
+    'field_person_status',
+    'field_person_intro',
+    'field_person_responsibility',
+    'field_person_declaration',
+    'field_person_biography_intro',
+    'field_person_cv',
+    'field_person_document',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  // Remove the fieldgroups.
+  $type = 'person';
+  $fieldgroups_to_remove = array(
+    'group_body',
+    'group_person_responsibility',
+    'group_person_biography',
+    'group_person_cv',
+    'group_person_documents',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
+
+/**
+ * Changing field type of field_person_role from select list to taxonomy.
+ */
+function dt_person_update_7106() {
+  if (field_info_field("field_person_role") !== NULL) {
+    field_delete_field("field_person_role");
+  }
+  // Reverting feature to add the same field from the features exports.
+  features_revert_module('dt_person');
+}
+
+/**
+ * Importing initial set of person roles taxonomy terms.
+ */
+function dt_person_update_7107() {
+  _dt_person_roles_import();
+}
+
+/**
+ * Unlock and removing body field.
+ */
+function dt_person_update_7108() {
+  _dt_person_remove_body_field();
 }
