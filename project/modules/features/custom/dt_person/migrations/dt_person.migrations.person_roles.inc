@@ -1,12 +1,23 @@
 <?php
 /**
+ * @file
+ * Person roles migration definition.
+ */
+
+/**
  * Import terms on "Person roles" vocabulary.
  */
 class DTPersonRolesMigration extends Migration {
 
+  /**
+   * Constructor of person roles migration.
+   *
+   * @param array $arguments
+   *   Migration parameters.
+   */
   public function __construct($arguments) {
     parent::__construct($arguments);
-    
+
     $this->description = t('Import "Person roles" terms');
     $this->map = new MigrateSQLMap($this->machineName,
       array(
@@ -26,5 +37,4 @@ class DTPersonRolesMigration extends Migration {
 
     $this->addFieldMapping('name', 'name');
   }
-
 }

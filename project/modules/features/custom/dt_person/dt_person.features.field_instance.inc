@@ -123,117 +123,6 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_core_department'
-  $field_instances['node-person-field_core_department'] = array(
-    'bundle' => 'person',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 4,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_department',
-    'label' => 'Departments',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 45,
-    ),
-  );
-
-  // Exported field_instance: 'node-person-field_core_topics'
-  $field_instances['node-person-field_core_topics'] = array(
-    'bundle' => 'person',
-    'default_value' => NULL,
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_core_topics',
-    'label' => 'Related Topics',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 44,
-    ),
-  );
-
   // Exported field_instance: 'node-person-field_person_existing_profile'
   $field_instances['node-person-field_person_existing_profile'] = array(
     'bundle' => 'person',
@@ -323,10 +212,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_first_name',
     'label' => 'First Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -355,11 +245,6 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -400,10 +285,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 5,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_gender',
     'label' => 'Gender',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -445,10 +331,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 1,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_last_name',
     'label' => 'Last Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -477,11 +364,6 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -603,7 +485,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_role',
     'label' => 'Role',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -646,10 +528,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 7,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_tagline',
     'label' => 'Tagline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -678,11 +561,6 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -914,7 +792,6 @@ function dt_person_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Contact');
-  t('Departments');
   t('Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'');
   t('Feminine version');
   t('First Name');
@@ -924,7 +801,6 @@ function dt_person_field_default_field_instances() {
   t('Please provide a link to the existing page of the person profile');
   t('Plural form');
   t('Portrait photo');
-  t('Related Topics');
   t('Role');
   t('Tagline');
   t('Title');

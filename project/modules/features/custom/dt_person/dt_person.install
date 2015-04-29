@@ -4,7 +4,10 @@
  * DT person install file.
  */
 
-function _import_person_roles() {
+/**
+ * Helper function to import person roles.
+ */
+function _dt_person_roles_import() {
   // Import "Person roles" terms.
   // Force registration of migration classes.
   migrate_static_registration();
@@ -15,12 +18,34 @@ function _import_person_roles() {
 }
 
 /**
+ * Helper function to remove body field.
+ */
+function _dt_person_remove_body_field() {
+  // Unlock body field.
+  // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
+  $field_name = 'body';
+  $field = field_read_field($field_name);
+  $field['locked'] = 0;
+  field_update_field($field);
+
+  // Delete body instance.
+  // @see http://dropbucket.org/node/1534
+  $entity_type = 'node';
+  $bundle_name = 'person';
+  $field_name  = 'body';
+  if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
  * Implements hook_install().
  */
 function dt_person_install() {
   // Apply default configuration to "Person" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
-  _import_person_roles();
+  _dt_person_roles_import();
+  _dt_person_remove_body_field();
 }
 
 /**
@@ -117,10 +142,10 @@ function dt_person_update_7105() {
 }
 
 /**
- * Changing field type of field_person_role from selectlist to taxonomy term reference.
+ * Changing field type of field_person_role from select list to taxonomy.
  */
 function dt_person_update_7106() {
-  if (field_info_field("field_person_role") !== NULL ) {
+  if (field_info_field("field_person_role") !== NULL) {
     field_delete_field("field_person_role");
   }
   // Reverting feature to add the same field from the features exports.
@@ -131,5 +156,12 @@ function dt_person_update_7106() {
  * Importing initial set of person roles taxonomy terms.
  */
 function dt_person_update_7107() {
-  _import_person_roles();
+  _dt_person_roles_import();
+}
+
+/**
+ * Unlock and removing body field.
+ */
+function dt_person_update_7108() {
+  _dt_person_remove_body_field();
 }
