@@ -123,7 +123,7 @@ function dt_class_strongarm() {
           'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'language' => array(
           'weight' => '-2',
@@ -146,7 +146,7 @@ function dt_class_strongarm() {
           'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'language' => array(
           'weight' => '1',

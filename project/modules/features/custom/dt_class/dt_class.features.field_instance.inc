@@ -381,7 +381,7 @@ function dt_class_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => -1,
     ),
     'widget_type' => 'options_select',
   );
