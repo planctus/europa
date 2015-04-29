@@ -105,10 +105,13 @@ function dt_person_strongarm() {
           'weight' => '10',
         ),
         'scheduler_settings' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'language' => array(
           'weight' => '5',
+        ),
+        'metatags' => array(
+          'weight' => '40',
         ),
       ),
       'display' => array(),
