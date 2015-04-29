@@ -24,7 +24,7 @@ function nexteuropa_file_uninstall() {
 }
 
 /**
- * Removing the field_file_lang_specific field
+ * Removing the field_file_lang_specific field.
  */
 function nexteuropa_file_update_7101() {
   // Remove the field.
@@ -41,5 +41,14 @@ function nexteuropa_file_update_7101() {
   // The fields need component-based way.
   features_revert(array(
     'nexteuropa_file' => array('field_instance'),
+  ));
+}
+
+/**
+ * Reverting the nexteuropa_file fields configurations.
+ */
+function nexteuropa_file_update_7102() {
+  features_revert(array(
+    'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
   ));
 }
