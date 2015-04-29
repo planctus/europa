@@ -32,16 +32,8 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'in_page_navigation' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'related_announcements' => array(
-      'weight' => '5',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -54,6 +46,14 @@ function dt_announcement_ds_field_settings_info() {
           'ow-at' => '',
           'ow-def-at' => FALSE,
         ),
+      ),
+    ),
+    'in_page_navigation' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'title' => array(
@@ -80,6 +80,22 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_announcement_info' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb-el' => 'h3',
+          'lb-at' => 'name="background"',
+          'lb-col' => TRUE,
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
     'field_announcement_type' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -87,6 +103,33 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'span',
           'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Commissioner',
+        ),
+      ),
+    ),
+    'field_core_link' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb-el' => 'h4',
+          'lb-col' => TRUE,
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -305,28 +348,42 @@ function dt_announcement_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_announcement_meta',
-        1 => 'title',
-        2 => 'field_core_introduction',
-        6 => 'field_announcement_type',
-        7 => 'post_date',
+        1 => 'field_announcement_type',
+        2 => 'title',
+        3 => 'field_core_introduction',
+        8 => 'post_date',
       ),
       'left' => array(
-        3 => 'in_page_navigation',
+        4 => 'in_page_navigation',
       ),
       'central' => array(
-        4 => 'body',
-        5 => 'related_announcements',
+        5 => 'group_announcement_related',
+        6 => 'field_announcement_image',
+        7 => 'body',
+        9 => 'field_announcement_info',
+        10 => 'field_core_link',
+        11 => 'related_announcements',
+        12 => 'field_core_topics',
+        13 => 'field_core_persons',
+        14 => 'field_core_department',
       ),
     ),
     'fields' => array(
       'group_announcement_meta' => 'left_header',
+      'field_announcement_type' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'in_page_navigation' => 'left',
+      'group_announcement_related' => 'central',
+      'field_announcement_image' => 'central',
       'body' => 'central',
-      'related_announcements' => 'central',
-      'field_announcement_type' => 'left_header',
       'post_date' => 'left_header',
+      'field_announcement_info' => 'central',
+      'field_core_link' => 'central',
+      'related_announcements' => 'central',
+      'field_core_topics' => 'central',
+      'field_core_persons' => 'central',
+      'field_core_department' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

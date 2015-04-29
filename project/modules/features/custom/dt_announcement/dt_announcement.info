@@ -37,6 +37,7 @@ features[field_group][] = group_announcement_meta|node|announcement|full
 features[field_group][] = group_announcement_meta|node|announcement|meta
 features[field_group][] = group_announcement_meta|node|announcement|teaser
 features[field_group][] = group_announcement_related|node|announcement|form
+features[field_group][] = group_announcement_related|node|announcement|full
 features[field_group][] = group_content_tabgroup|node|announcement|form
 features[field_group][] = group_editorial_settings|node|announcement|form
 features[field_group][] = group_media|node|announcement|form
