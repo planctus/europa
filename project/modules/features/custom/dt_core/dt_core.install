@@ -140,3 +140,15 @@ function dt_core_update_7111() {
     drupal_uninstall_modules(array('dashboard'));
   }
 }
+
+/**
+ * Enabling Metatag modules.
+ */
+function dt_core_update_7112() {
+  $meta_modules = array(
+    'metatag',
+    'metatag_views',
+    'metatag_opengraph',
+  );
+  module_enable($meta_modules);
+}
