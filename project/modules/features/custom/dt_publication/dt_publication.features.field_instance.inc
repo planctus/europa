@@ -49,23 +49,26 @@ function dt_publication_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_file'
-  $field_instances['node-publication-field_core_file'] = array(
+  // Exported field_instance: 'node-publication-field_core_files'
+  $field_instances['node-publication-field_core_files'] = array(
     'bundle' => 'publication',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 2,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -75,41 +78,23 @@ function dt_publication_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_core_file',
-    'label' => 'File',
-    'required' => 1,
+    'field_name' => 'field_core_files',
+    'label' => 'Files',
+    'required' => 0,
     'settings' => array(
-      'description_field' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
-      'file_extensions' => 'odt ods odp pdf svg mp3 mp4',
-      'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'entityreference',
       'settings' => array(
-        'allowed_schemes' => array(
-          'node' => 0,
-          'private' => 'private',
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 'audio',
-          'document' => 'document',
-          'image' => 'image',
-          'video' => 'video',
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'upload' => 'upload',
-        ),
-        'progress_indicator' => 'throbber',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
       ),
-      'type' => 'media_generic',
-      'weight' => 17,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 4,
     ),
   );
 
@@ -153,7 +138,7 @@ function dt_publication_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -196,7 +181,7 @@ function dt_publication_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 7,
     ),
   );
@@ -264,7 +249,7 @@ function dt_publication_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 2,
     ),
   );
 
@@ -304,7 +289,7 @@ function dt_publication_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 1,
     ),
   );
 
@@ -356,7 +341,7 @@ function dt_publication_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 11,
     ),
     'widget_type' => 'options_select',
   );
@@ -416,7 +401,7 @@ function dt_publication_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -459,7 +444,7 @@ function dt_publication_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -469,7 +454,7 @@ function dt_publication_field_default_field_instances() {
   t('Contact information');
   t('Departments');
   t('Departments or organisations connected to this content.');
-  t('File');
+  t('Files');
   t('Group content visibility');
   t('Groups audience');
   t('Publication type');

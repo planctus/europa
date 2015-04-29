@@ -105,10 +105,13 @@ function dt_department_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'language' => array(
-          'weight' => '7',
+          'weight' => '9',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(),
@@ -120,7 +123,7 @@ function dt_department_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_department';
-  $strongarm->value = '4';
+  $strongarm->value = 4;
   $export['language_content_type_department'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -136,13 +139,6 @@ function dt_department_strongarm() {
   $strongarm->name = 'menu_parent_department';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_department'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_department';
-  $strongarm->value = array();
-  $export['node_options_department'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
