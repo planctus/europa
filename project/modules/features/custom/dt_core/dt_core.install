@@ -121,3 +121,15 @@ function dt_core_update_7108() {
 function dt_core_update_7109() {
   module_enable(array('nexteuropa_page'));
 }
+
+/**
+ * Enabling Metatag modules.
+ */
+function dt_core_update_7112() {
+  $meta_modules = array(
+    'metatag',
+    'metatag_views',
+    'metatag_opengraph',
+  );
+  module_enable($meta_modules);
+}
