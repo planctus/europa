@@ -135,7 +135,7 @@ function dt_core_update_7110() {
  * Disable and uninstall the dashboard module.
  */
 function dt_core_update_7111() {
-  if( module_exists('dashboard')) {
+  if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
@@ -143,8 +143,6 @@ function dt_core_update_7111() {
 
 /**
  * Deleting custom "editor" profile and changing it to dt_editor.
- * Reason: wysiwyg module is throwing error in the features_rebuild hook.
- * Overlapping "editor" name.
  */
 function dt_core_update_7112() {
   features_revert(array(
@@ -152,4 +150,16 @@ function dt_core_update_7112() {
   ));
   wysiwyg_profile_delete("editor");
   wysiwyg_profile_cache_clear();
+}
+
+/**
+ * Enabling Metatag modules.
+ */
+function dt_core_update_7113() {
+  $meta_modules = array(
+    'metatag',
+    'metatag_views',
+    'metatag_opengraph',
+  );
+  module_enable($meta_modules);
 }
