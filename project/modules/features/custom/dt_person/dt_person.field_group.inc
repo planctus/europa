@@ -23,9 +23,10 @@ function dt_person_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '9',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'scheduler_settings',
-      2 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -107,13 +108,13 @@ function dt_person_field_group_info() {
     'label' => 'Profile',
     'weight' => '1',
     'children' => array(
-      0 => 'field_person_existing_profile',
-      1 => 'field_person_first_name',
-      2 => 'field_person_gender',
-      3 => 'field_person_last_name',
-      4 => 'field_person_photo',
-      5 => 'field_person_role',
-      6 => 'field_person_tagline',
+      0 => 'field_person_first_name',
+      1 => 'field_person_gender',
+      2 => 'field_person_last_name',
+      3 => 'field_person_photo',
+      4 => 'field_person_tagline',
+      5 => 'field_person_existing_profile',
+      6 => 'field_person_role',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -141,8 +142,7 @@ function dt_person_field_group_info() {
     'label' => 'Technical fields',
     'weight' => '6',
     'children' => array(
-      0 => 'body',
-      1 => 'title_field',
+      0 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
