@@ -123,10 +123,13 @@ function dt_class_strongarm() {
           'weight' => '1',
         ),
         'scheduler_settings' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'language' => array(
           'weight' => '-2',
+        ),
+        'metatags' => array(
+          'weight' => '40',
         ),
       ),
       'display' => array(),

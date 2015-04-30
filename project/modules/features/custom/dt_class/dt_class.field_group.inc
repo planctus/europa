@@ -23,8 +23,8 @@ function dt_class_field_group_info() {
     'label' => 'Content',
     'weight' => '16',
     'children' => array(
-      0 => 'field_class_notification',
-      1 => 'title_field',
+      0 => 'title_field',
+      1 => 'field_class_notification',
       2 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
@@ -221,9 +221,10 @@ function dt_class_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '19',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'scheduler_settings',
-      2 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
