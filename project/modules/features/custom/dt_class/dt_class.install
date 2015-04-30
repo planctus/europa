@@ -50,74 +50,9 @@ function dt_class_update_7101() {
 }
 
 /**
- * Field field_class_introduction removed replaced by core field.
+ * Updating definition of the Class content type.
  */
 function dt_class_update_7102() {
-  // Remove the field.
-  $fields_to_remove = array(
-    'field_class_introduction',
-  );
-  foreach ($fields_to_remove as $field_name) {
-    if (field_info_field($field_name) !== NULL) {
-      field_delete_field($field_name);
-    }
-  }
-}
-
-/**
- * Removing group_class_profile_information and group_class_metadata field groups.
- */
-function dt_class_update_7103() {
-  // Remove the fieldgroups.
-  $type = 'class';
-  $fieldgroups_to_remove = array(
-    'group_class_profile_information',
-    'group_class_metadata',
-    'group_class_topics',
-    'group_class_departments',
-  );
-
-  foreach ($fieldgroups_to_remove as $group_name) {
-    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
-    field_group_group_export_delete($group, FALSE);
-  }
-}
-
-/**
- * Reverting the feature to match all fields from the code base.
- */
-function dt_class_update_7104() {
-  features_revert_module('dt_class');
-  features_revert(array(
-    'dt_class' => array(
-      'field_base',
-      'field_instance',
-      'field_group',
-      'variable',
-    ),
-  ));
-}
-
-/**
- * Reverting the feature to match all fields from the code base.
- */
-function dt_class_update_7105() {
-  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
-  features_revert_module('dt_class');
-  features_revert(array(
-    'dt_class' => array(
-      'field_base',
-      'field_instance',
-      'field_group',
-      'variable',
-    ),
-  ));
-}
-
-/**
- * Removing field instance body from temporary class link group.
- */
-function dt_class_update_7106() {
   // Unlock body field.
   // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
   $field_name = 'body';
@@ -133,15 +68,23 @@ function dt_class_update_7106() {
   if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
     field_delete_instance($instance);
   }
-}
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_class_introduction',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
 
-/**
- * Removing group_page_settings field groups from the class content type.
- */
-function dt_class_update_7107() {
   // Remove the fieldgroups.
   $type = 'class';
   $fieldgroups_to_remove = array(
+    'group_class_profile_information',
+    'group_class_metadata',
+    'group_class_topics',
+    'group_class_departments',
     'group_page_settings',
   );
 
@@ -149,13 +92,8 @@ function dt_class_update_7107() {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
     field_group_group_export_delete($group, FALSE);
   }
-}
 
-/**
- * Removing group_page_settings field groups from the class link group content type.
- */
-function dt_class_update_7108() {
-  // Remove the fieldgroups.
+  // Remove the fieldgroups at the class link group.
   $type = 'class_link_group';
   $fieldgroups_to_remove = array(
     'group_page_settings',
@@ -166,6 +104,14 @@ function dt_class_update_7108() {
     field_group_group_export_delete($group, FALSE);
   }
 
-  // Reverting feature components that have overriden state after installing.
-  features_revert(array('dt_class'));
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
+  features_revert_module('dt_class');
+  features_revert(array(
+    'dt_class' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
 }
