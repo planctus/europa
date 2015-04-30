@@ -82,12 +82,11 @@ function dt_announcement_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
-          'dt_editor' => 'dt_editor',
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -98,9 +97,6 @@ function dt_announcement_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => -6,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -8,
@@ -435,10 +431,11 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_announcement_location',
     'label' => 'Location',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -589,10 +586,11 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_announcement_type',
     'label' => 'Announcement type',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -772,10 +770,11 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 3,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_introduction',
     'label' => 'Summary',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(

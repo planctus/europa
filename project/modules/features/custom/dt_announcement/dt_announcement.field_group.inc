@@ -23,13 +23,13 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'title_field',
-      1 => 'body',
-      2 => 'field_announcement_contact',
-      3 => 'field_announcement_type',
-      4 => 'field_core_introduction',
-      5 => 'field_announcement_department',
-      6 => 'field_announcement_location',
+      0 => 'body',
+      1 => 'field_announcement_contact',
+      2 => 'field_announcement_department',
+      3 => 'field_announcement_location',
+      4 => 'field_announcement_type',
+      5 => 'title_field',
+      6 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -70,35 +70,6 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_context_info|node|announcement|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_announcement_metadata|node|announcement|form';
-  $field_group->group_name = 'group_announcement_metadata';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'announcement';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Metadata',
-    'weight' => '6',
-    'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'language',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-announcement-metadata field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_announcement_metadata|node|announcement|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -175,9 +146,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
-      2 => 'field_core_policy',
-      3 => 'field_core_topics',
-      4 => 'field_core_persons',
+      2 => 'field_core_persons',
+      3 => 'field_core_policy',
+      4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -233,10 +204,9 @@ function dt_announcement_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '6',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      0 => 'group_content_access',
+      1 => 'scheduler_settings',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
