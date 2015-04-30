@@ -387,7 +387,7 @@ function dt_department_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'btn btn-primary',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
