@@ -74,61 +74,6 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_announcement_metadata|node|announcement|form';
-  $field_group->group_name = 'group_announcement_metadata';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'announcement';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Metadata',
-    'weight' => '6',
-    'children' => array(),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-announcement-metadata field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_announcement_metadata|node|announcement|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_announcement_meta|node|announcement|full';
-  $field_group->group_name = 'group_announcement_meta';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'announcement';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Meta',
-    'weight' => '0',
-    'children' => array(
-      0 => 'field_announcement_type',
-      1 => 'post_date',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $export['group_announcement_meta|node|announcement|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_announcement_meta|node|announcement|meta';
   $field_group->group_name = 'group_announcement_meta';
   $field_group->entity_type = 'node';
@@ -220,37 +165,6 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_announcement_related|node|announcement|full';
-  $field_group->group_name = 'group_announcement_related';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'announcement';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Related',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_core_department',
-      1 => 'field_core_persons',
-      2 => 'field_core_topics',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Related',
-      'instance_settings' => array(
-        'classes' => 'field--full-width',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $export['group_announcement_related|node|announcement|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_content_tabgroup|node|announcement|form';
   $field_group->group_name = 'group_content_tabgroup';
   $field_group->entity_type = 'node';
@@ -292,7 +206,8 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'language',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
