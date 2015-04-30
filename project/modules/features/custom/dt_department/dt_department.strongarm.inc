@@ -113,6 +113,9 @@ function dt_department_strongarm() {
         'scheduler_settings' => array(
           'weight' => '12',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(),
     ),

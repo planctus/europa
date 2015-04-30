@@ -23,13 +23,11 @@ function dt_department_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_cta',
-      1 => 'group_department_contact',
+      0 => 'group_department_contact',
+      1 => 'group_editorial_settings',
       2 => 'group_person',
       3 => 'group_priorities',
       4 => 'group_profile_information',
-      5 => 'group_topics',
-      6 => 'group_editorial_settings',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -199,10 +197,11 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Leadership & Organisation',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_department_organigram',
-      1 => 'field_core_persons',
+      0 => 'field_core_persons',
+      1 => 'field_department_organigram',
+      2 => 'field_department_action_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -227,13 +226,16 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Responsibilities, tasks',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_department_intro_sentence',
-      1 => 'field_department_main_tasks',
-      2 => 'field_department_plans_reports',
-      3 => 'field_department_related_tasks',
-      4 => 'field_department_tasks_desc',
+      0 => 'field_core_topics',
+      1 => 'field_department_intro_sentence',
+      2 => 'field_department_main_tasks',
+      3 => 'field_department_plans_reports',
+      4 => 'field_department_related_tasks',
+      5 => 'field_department_tasks_desc',
+      6 => 'field_department_work_areas_sent',
+      7 => 'field_core_priorities',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -260,10 +262,12 @@ function dt_department_field_group_info() {
     'label' => 'Profile information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_core_abbreviation',
-      1 => 'field_core_ecorganisation',
-      2 => 'field_core_introduction',
-      3 => 'title_field',
+      0 => 'title_field',
+      1 => 'field_core_abbreviation',
+      2 => 'field_core_ecorganisation',
+      3 => 'field_core_introduction',
+      4 => 'field_core_link',
+      5 => 'field_core_legacy_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
