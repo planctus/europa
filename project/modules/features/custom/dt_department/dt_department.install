@@ -71,7 +71,7 @@ function dt_department_update_7104() {
 function dt_department_update_7105() {
   // Remove the field.
   $fields_to_remove = array(
-
+    'field_department_main_tasks',
   );
 
   foreach ($fields_to_remove as $field_name) {
