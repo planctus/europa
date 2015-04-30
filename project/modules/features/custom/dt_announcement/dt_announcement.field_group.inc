@@ -23,13 +23,13 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'body',
-      1 => 'field_announcement_contact',
-      2 => 'field_announcement_department',
-      3 => 'field_announcement_location',
-      4 => 'field_announcement_type',
-      5 => 'title_field',
-      6 => 'field_core_introduction',
+      0 => 'title_field',
+      1 => 'body',
+      2 => 'field_announcement_contact',
+      3 => 'field_announcement_type',
+      4 => 'field_core_introduction',
+      5 => 'field_announcement_department',
+      6 => 'field_announcement_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -146,9 +146,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
-      2 => 'field_core_persons',
-      3 => 'field_core_policy',
-      4 => 'field_core_topics',
+      2 => 'field_core_policy',
+      3 => 'field_core_topics',
+      4 => 'field_core_persons',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -204,9 +204,10 @@ function dt_announcement_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '6',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'scheduler_settings',
-      2 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -108,7 +108,7 @@ function dt_announcement_strongarm() {
           'weight' => '7',
         ),
         'scheduler_settings' => array(
-          'weight' => '33',
+          'weight' => '34',
         ),
         'language' => array(
           'weight' => '31',
