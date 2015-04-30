@@ -38,12 +38,12 @@ function nexteuropa_page_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => '',
+        'wrapper' => 'h2',
         'class' => '',
         'ft' => array(),
       ),

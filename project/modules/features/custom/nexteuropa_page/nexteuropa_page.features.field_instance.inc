@@ -28,7 +28,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'meta' => array(
         'label' => 'above',
@@ -107,7 +107,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'meta' => array(
         'label' => 'above',
@@ -166,10 +166,10 @@ function nexteuropa_page_field_default_field_instances() {
         'weight' => 2,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
