@@ -85,7 +85,7 @@ function dt_class_update_7102() {
     'group_class_metadata',
     'group_class_topics',
     'group_class_departments',
-    'group_page_settings'
+    'group_page_settings',
   );
 
   foreach ($fieldgroups_to_remove as $group_name) {
