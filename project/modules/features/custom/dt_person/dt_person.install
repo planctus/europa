@@ -84,29 +84,15 @@ function dt_person_update_7102() {
 }
 
 /**
- * Removed Priorities.
+ * Applying multiple changes to person content type.
  */
 function dt_person_update_7103() {
-  // Remove the field.
-  $field_name = "field_core_priorities";
-  if (field_info_field($field_name) !== NULL) {
-    field_delete_field($field_name);
-  }
-}
+  // Removing the body field
+  _dt_person_remove_body_field();
 
-/**
- * Reverting the feature after updates in fields and field groups.
- */
-function dt_person_update_7104() {
-  features_revert_module('dt_person');
-}
-
-/**
- * Removing obsolete fields and field groups.
- */
-function dt_person_update_7105() {
-  // Remove the field.
+  // Removing a list of fields.
   $fields_to_remove = array(
+    'field_core_priorities',
     'field_person_intro',
     'field_person_status',
     'field_person_intro',
@@ -115,53 +101,43 @@ function dt_person_update_7105() {
     'field_person_biography_intro',
     'field_person_cv',
     'field_person_document',
+    'field_person_role',
   );
+
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
     }
   }
 
-  // Remove the fieldgroups.
-  $type = 'person';
+  $instances = array(
+    'field_core_topics',
+    'field_core_department'
+  );
+  foreach ($instances as $field_instance) {
+    if ($instance = field_info_instance('node', $field_instance, 'person')) {
+      field_delete_instance($instance);
+    }
+  }
+
+  // Removing a list of groups.
   $fieldgroups_to_remove = array(
     'group_body',
     'group_person_responsibility',
     'group_person_biography',
     'group_person_cv',
     'group_person_documents',
+    'group_person_related',
   );
 
   foreach ($fieldgroups_to_remove as $group_name) {
-    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    $group = field_group_load_field_group($group_name, 'node', 'person', 'form');
     field_group_group_export_delete($group, FALSE);
   }
 
+  // Importing terms in vocabulary person roles
+  _dt_person_roles_import();
+
   // Reverting feature.
   features_revert_module('dt_person');
-}
-
-/**
- * Changing field type of field_person_role from select list to taxonomy.
- */
-function dt_person_update_7106() {
-  if (field_info_field("field_person_role") !== NULL) {
-    field_delete_field("field_person_role");
-  }
-  // Reverting feature to add the same field from the features exports.
-  features_revert_module('dt_person');
-}
-
-/**
- * Importing initial set of person roles taxonomy terms.
- */
-function dt_person_update_7107() {
-  _dt_person_roles_import();
-}
-
-/**
- * Unlock and removing body field.
- */
-function dt_person_update_7108() {
-  _dt_person_remove_body_field();
 }
