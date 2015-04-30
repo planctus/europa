@@ -59,6 +59,7 @@ function dt_core_update_7101() {
     'dt_homepage_core',
     'dt_aboutec_core',
     'dt_strategy_core',
+    'dt_announcement',
   );
   module_enable($slices);
 }
@@ -79,87 +80,29 @@ function dt_core_update_7103() {
 }
 
 /**
- * Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
+ * Various updates.
  */
 function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
-}
-
-
-/**
- * Enabling adressfield and inline_entity_form.
- */
-function dt_core_update_7105() {
-  module_enable(array('addressfield', 'inline_entity_form'));
-}
-
-
-/**
- * Enabling DT contact feature containing contact content type.
- */
-function dt_core_update_7106() {
-  module_enable(array('dt_contact'));
-}
-
-/**
- * Enabling Nexteuropa feedback form.
- */
-function dt_core_update_7107() {
-  module_enable(array('nexteuropa_feedback'));
-}
-
-/**
- * Enabling admin theme for node pages.
- */
-function dt_core_update_7108() {
   variable_set('node_admin_theme', 1);
-}
-
-/**
- * Enabling Announcements feature.
- */
-function dt_core_update_7109() {
-  module_enable(array('nexteuropa_page'));
-}
-
-/**
- * Delete subjects vocabulary.
- */
-function dt_core_update_7110() {
-  if ($voc = taxonomy_vocabulary_machine_name_load('subjects')) {
-    taxonomy_vocabulary_delete($voc->vid);
-  }
-}
-
-/**
- * Disable and uninstall the dashboard module.
- */
-function dt_core_update_7111() {
-  if (module_exists('dashboard')) {
-    module_disable(array('dashboard'));
-    drupal_uninstall_modules(array('dashboard'));
-  }
-}
-
-/**
- * Deleting custom "editor" profile and changing it to dt_editor.
- */
-function dt_core_update_7112() {
-  features_revert(array(
-    'dt_core' => array('dependencies', 'user_role', 'filter', 'wysiwyg'),
-  ));
-  wysiwyg_profile_delete("editor");
-  wysiwyg_profile_cache_clear();
-}
-
-/**
- * Enabling Metatag modules.
- */
-function dt_core_update_7113() {
-  $meta_modules = array(
+  $modules = array(
+    'addressfield',
+    'inline_entity_form',
+    'dt_contact',
+    'nexteuropa_feedback',
+    'nexteuropa_page',
     'metatag',
     'metatag_views',
     'metatag_opengraph',
   );
-  module_enable($meta_modules);
+  module_enable($modules);
+
+  if ($voc = taxonomy_vocabulary_machine_name_load('subjects')) {
+    taxonomy_vocabulary_delete($voc->vid);
+  }
+
+  if (module_exists('dashboard')) {
+    module_disable(array('dashboard'));
+    drupal_uninstall_modules(array('dashboard'));
+  }
 }
