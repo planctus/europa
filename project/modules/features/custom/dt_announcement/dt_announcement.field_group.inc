@@ -23,13 +23,13 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'body',
-      1 => 'field_announcement_contact',
-      2 => 'field_announcement_type',
-      3 => 'field_core_introduction',
-      4 => 'title_field',
-      5 => 'field_announcement_department',
-      6 => 'field_announcement_location',
+      0 => 'title_field',
+      1 => 'body',
+      2 => 'field_announcement_contact',
+      3 => 'field_announcement_department',
+      4 => 'field_announcement_location',
+      5 => 'field_announcement_type',
+      6 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -83,11 +83,7 @@ function dt_announcement_field_group_info() {
   $field_group->data = array(
     'label' => 'Metadata',
     'weight' => '6',
-    'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'language',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -99,6 +95,36 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_metadata|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_meta|node|announcement|full';
+  $field_group->group_name = 'group_announcement_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_announcement_type',
+      1 => 'post_date',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_meta|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +146,7 @@ function dt_announcement_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'listing__meta',
+        'classes' => 'meta',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -150,7 +176,7 @@ function dt_announcement_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'listing__meta',
+        'classes' => 'meta',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -175,9 +201,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
-      2 => 'field_core_policy',
-      3 => 'field_core_topics',
-      4 => 'field_core_persons',
+      2 => 'field_core_persons',
+      3 => 'field_core_policy',
+      4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -190,6 +216,37 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_related|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_related|node|announcement|full';
+  $field_group->group_name = 'group_announcement_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_department',
+      1 => 'field_core_persons',
+      2 => 'field_core_topics',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Related',
+      'instance_settings' => array(
+        'classes' => 'field--full-width',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_related|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -233,10 +290,9 @@ function dt_announcement_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '6',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'og_group_ref',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
