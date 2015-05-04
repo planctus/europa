@@ -5768,7 +5768,8 @@ Styleguide messages
   font-size: 0.889em;
   margin: 1em 0;
   padding: 1em 4em;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .messages h3 {
     font-size: 0.889em;
     font-weight: bold; }
