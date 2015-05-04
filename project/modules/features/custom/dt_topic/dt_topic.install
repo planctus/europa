@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * dt Topic install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_topic_install() {
+  // Apply default dt configuration to "Topic" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('topic');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_topic_uninstall() {
+  $path = drupal_get_path('module', 'topic') . '/topic.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Topic %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}

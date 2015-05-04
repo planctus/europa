@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Define Display Suite layouts.
+ *
+ * @return array
+ *   A collection of layouts.
+ */
+function nexteuropa_ds_layouts_ds_layout_info() {
+  $path = drupal_get_path('module', 'nexteuropa_ds_layouts');
+
+  $layouts['ne_bootstrap_3_6_3_stacked'] = array(
+    'label' => t('NE Bootstrap: 3-6-3 stacked'),
+    'path' => $path . '/layouts/ne_bootstrap_3_6_3_stacked',
+    'regions' => array(
+      'left_header' => t('Left Header'),
+      'right_header' => t('Right Header'),
+      'left' => t('Left'),
+      'central' => t('Middle'),
+      'right' => t('Right'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
+  $layouts['ne_bootstrap_3_9_stacked'] = array(
+    'label' => t('NE Bootstrap: 3-9 stacked'),
+    'path' => $path . '/layouts/ne_bootstrap_3_9_stacked',
+    'regions' => array(
+      'left_header' => t('Left Header'),
+      'right_header' => t('Right Header'),
+      'left' => t('Left'),
+      'central' => t('Middle'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
+  $layouts['ne_2col'] = array(
+    'label' => t('NE: 2col'),
+    'path' => $path . '/layouts/ne_2col',
+    'regions' => array(
+      'main' => t('Main'),
+      'second' => t('Second'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
+  return $layouts;
+}

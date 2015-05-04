@@ -1,0 +1,97 @@
+<?php
+/**
+ * @file
+ * DT Department install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_department_install() {
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_department_uninstall() {
+  $path = drupal_get_path('module', 'dt_department') . '/dt_department.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing field_department_contact field as it becomes field_core_contact on DT project level (dt_core).
+ */
+function dt_department_update_7101() {
+  field_delete_field("field_department_contact");
+}
+
+/**
+ * Reverting DT Department feature to take new fields for sure.
+ */
+function dt_department_update_7102() {
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_department' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing field_person_persons field as it was a mistake.
+ */
+function dt_department_update_7103() {
+  field_delete_field("field_person_persons");
+}
+
+/**
+ * Reverting DT Department feature to take new fields for sure.
+ */
+function dt_department_update_7104() {
+  // Apply default configuration to "Department" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_department' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing obsolete fields and field groups.
+ */
+function dt_department_update_7105() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_department_main_tasks',
+  );
+
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  // Remove the fieldgroups.
+  $type = 'department';
+  $fieldgroups_to_remove = array(
+    'group_cta',
+    'group_topics',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+}

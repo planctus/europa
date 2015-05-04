@@ -1,0 +1,17 @@
+.field--full-width {
+  margin-left: -$grid-gutter-width / 2;
+  margin-right: -$grid-gutter-width / 2;
+
+  & > * {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    @extend .container-fluid;
+  }
+}
+
+@include breakpoint(screen-lg-min) {
+  .field--full-width {
+    margin-left: -100%;
+    margin-right: -100%;
+  }
+}

@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Code for the Person feature.
+ */
+
+include_once 'dt_person.features.inc';
+
+/**
+ * Implements hook_migrate_api().
+ */
+function dt_person_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Including taxonomy terms in the Person roles vocabulary.'),
+      ),
+    ),
+    'migrations' => array(
+      'DTPersonRolesMigrator' => array(
+        'class_name' => 'DTPersonRolesMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}

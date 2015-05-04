@@ -1,0 +1,43 @@
+/*
+Listing
+
+Listing components
+
+Markup: html/listing.html
+
+Styleguide listing
+*/
+
+.listing {
+}
+
+.listing__item {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 1px solid $grey-light;
+  overflow: hidden;
+  @extend .row;
+}
+
+.listing__column-main {
+  @extend .col-sm-9;
+}
+
+.listing__column-second {
+  float: right;
+  @extend .col-sm-3;
+}
+
+.listing__title {
+  color: $grey-base;
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+      color: $grey-base;
+    }
+  }
+}
