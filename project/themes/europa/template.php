@@ -317,15 +317,15 @@ function europa_form_element(&$variables) {
 /**
  * Europa theme wrapper function for the service tools menu links.
  */
-function europa_menu_tree__menu_service_tools(&$variables) {
-  return '<ul class="menu nav footer-menu list-inline">' . $variables['tree'] . '</ul>';
+function europa_menu_tree__menu_dt_service_links(&$variables) {
+  return '<ul class="footer__menu menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
  * Europa theme wrapper function for the EC menu links.
  */
-function europa_menu_tree__menu_european_commission_links(&$variables) {
-  return '<ul class="menu nav footer-menu list-inline footer-menu__bottom-border">' . $variables['tree'] . '</ul>';
+function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
+  return '<ul class="footer__menu is-underlined menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
