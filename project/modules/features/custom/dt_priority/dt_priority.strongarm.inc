@@ -61,6 +61,9 @@ function dt_priority_strongarm() {
         'language' => array(
           'weight' => '4',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(),
     ),

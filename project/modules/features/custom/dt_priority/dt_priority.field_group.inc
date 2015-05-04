@@ -23,8 +23,9 @@ function dt_priority_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_priority_content',
+      0 => 'group_priority_related',
       1 => 'group_editorial_settings',
+      2 => 'group_priority_content',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -47,7 +48,7 @@ function dt_priority_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -83,8 +84,7 @@ function dt_priority_field_group_info() {
       1 => 'field_priority_excerpt',
       2 => 'field_priority_issue',
       3 => 'field_priority_objective',
-      4 => 'field_priority_type',
-      5 => 'field_core_introduction',
+      4 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -159,6 +159,36 @@ function dt_priority_field_group_info() {
     ),
   );
   $export['group_priority_other|node|priority|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_priority_related|node|priority|form';
+  $field_group->group_name = 'group_priority_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Related content',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_persons',
+      1 => 'field_core_department',
+      2 => 'field_core_priorities',
+      3 => 'field_core_topics',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-priority-related field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_priority_related|node|priority|form'] = $field_group;
 
   return $export;
 }
