@@ -26,10 +26,10 @@ function dt_announcement_field_group_info() {
       0 => 'title_field',
       1 => 'body',
       2 => 'field_announcement_contact',
-      3 => 'field_announcement_type',
-      4 => 'field_core_introduction',
-      5 => 'field_announcement_department',
-      6 => 'field_announcement_location',
+      3 => 'field_announcement_department',
+      4 => 'field_announcement_location',
+      5 => 'field_announcement_type',
+      6 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,7 +91,7 @@ function dt_announcement_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'listing__meta',
+        'classes' => 'meta',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -121,7 +121,7 @@ function dt_announcement_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'listing__meta',
+        'classes' => 'meta',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -146,9 +146,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
-      2 => 'field_core_policy',
-      3 => 'field_core_topics',
-      4 => 'field_core_persons',
+      2 => 'field_core_persons',
+      3 => 'field_core_policy',
+      4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

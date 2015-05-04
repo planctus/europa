@@ -63,7 +63,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -147,7 +147,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -204,7 +204,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'meta' => array(
         'label' => 'above',
@@ -258,9 +258,13 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'above',
@@ -337,7 +341,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 7,
       ),
       'meta' => array(
         'label' => 'above',
@@ -352,9 +356,10 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 15,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_announcement_info',
-    'label' => 'Background/additional information',
+    'label' => 'Background information',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -416,7 +421,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'meta' => array(
         'label' => 'above',
@@ -495,12 +500,9 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
-        'weight' => 11,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'meta' => array(
         'label' => 'above',
@@ -627,7 +629,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -690,10 +692,10 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 5,
+        'weight' => 13,
       ),
       'meta' => array(
         'label' => 'above',
@@ -754,7 +756,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -836,7 +838,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 10,
+        'weight' => 8,
       ),
       'meta' => array(
         'label' => 'above',
@@ -851,9 +853,10 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 26,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_link',
-    'label' => 'Links',
+    'label' => 'Sources',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -902,10 +905,13 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 27,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 12,
       ),
       'meta' => array(
         'label' => 'above',
@@ -962,7 +968,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1022,10 +1028,13 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 19,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 11,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1214,7 +1223,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1267,7 +1276,7 @@ function dt_announcement_field_default_field_instances() {
   t('A summary of the announcement. Used as an abstract of the article on the top of the article page. Could appear in list views or on the main news page.');
   t('Announcement type');
   t('Announcements');
-  t('Background/additional information');
+  t('Background information');
   t('Body');
   t('Comment');
   t('Contact press officer');
@@ -1277,11 +1286,11 @@ function dt_announcement_field_default_field_instances() {
   t('Featured media');
   t('Group content visibility');
   t('Groups audience');
-  t('Links');
   t('Location');
   t('Persons');
   t('Policies');
   t('Responsible department');
+  t('Sources');
   t('Summary');
   t('Title');
   t('Topics');
