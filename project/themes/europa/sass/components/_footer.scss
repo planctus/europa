@@ -10,7 +10,7 @@ Styleguide footer
 
 $footer-white-font: #fff;
 
-.footer { 
+.footer {
   background: $blue-dark;
   padding: 60px 0;
   color: $footer-white-font;
@@ -28,12 +28,13 @@ $footer-white-font: #fff;
     padding: 15px 10px 0 0;
   }
 
-  p {
-    padding-top: 10px;
-  }
 }
 
-.footer-menu {
+.footer__disclaimer {
+  padding-top: 3px;
+}
+
+.footer__menu {
   padding-left: 0;
 
   li {
@@ -44,17 +45,17 @@ $footer-white-font: #fff;
     a {
       padding-top: 10px;
 
-      &:hover {
-        background: none;
-        text-decoration: underline;
+      &:hover, &:focus {
+        background: none transparent;
+        text-decoration: none;
       }
     }
   }
+}
 
-  &__bottom-border {
-    border-bottom: 1px solid #4d7cb4;
-    padding-bottom: 5px;
-  }
+.is-underlined {
+  border-bottom: 1px solid #4d7cb4;
+  padding-bottom: 5px;
 }
 
 @media (max-width: 600px) {
@@ -67,12 +68,12 @@ $footer-white-font: #fff;
       width: 100%;
     }
 
-    p {
+    .footer__disclaimer {
       text-align: center;
     }
   }
 
-  .footer-menu {
+  .footer__menu {
     text-align: center;
   }
 }

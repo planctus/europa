@@ -5602,14 +5602,59 @@ Styleguide form.feedback-message
     overflow: hidden; }
  }
 
+/*
+Footer
+
+Site-wide footer component
+
+Markup: html/footer.html
+
+Styleguide footer
+*/
 .footer {
-  background: #006fb4;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background: #004494;
+  padding: 60px 0;
   color: #fff;
   font-size: 13px; }
   .footer a {
     color: #fff; }
+  .footer label {
+    color: #fff;
+    font-size: 13px;
+    font-weight: normal;
+    float: left;
+    padding: 15px 10px 0 0; }
+
+.footer__disclaimer {
+  padding-top: 3px; }
+
+.footer__menu {
+  padding-left: 0; }
+  .footer__menu li:first-child > a {
+    padding-left: 0; }
+  .footer__menu li a {
+    padding-top: 10px; }
+    .footer__menu li a:hover, .footer__menu li a:focus {
+      background: none transparent;
+      text-decoration: none; }
+
+.is-underlined {
+  border-bottom: 1px solid #4d7cb4;
+  padding-bottom: 5px; }
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 0; }
+    .footer label {
+      float: none;
+      text-align: center;
+      width: 100%; }
+    .footer .footer__disclaimer {
+      text-align: center; }
+
+  .footer__menu {
+    text-align: center; }
+ }
 
 /*
 Help Block
