@@ -55,12 +55,12 @@ function dt_priority_field_group_info() {
       2 => 'scheduler_settings',
       3 => 'language',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-editorial-settings field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
