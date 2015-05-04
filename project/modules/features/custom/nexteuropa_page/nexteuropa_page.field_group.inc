@@ -49,10 +49,10 @@ function nexteuropa_page_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '13',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      0 => 'language',
+      1 => 'og_group_ref',
+      2 => 'group_content_access',
+      3 => 'scheduler_settings',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -79,9 +79,9 @@ function nexteuropa_page_field_group_info() {
     'label' => 'Content',
     'weight' => '11',
     'children' => array(
-      0 => 'body',
-      1 => 'title_field',
-      2 => 'field_core_introduction',
+      0 => 'title_field',
+      1 => 'field_core_introduction',
+      2 => 'body',
       3 => 'field_core_link',
     ),
     'format_type' => 'fieldset',

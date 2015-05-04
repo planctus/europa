@@ -28,6 +28,7 @@ features[field_instance][] = node-page-field_core_link
 features[field_instance][] = node-page-title_field
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][features] = features
+features_exclude[dependencies][field_group] = field_group
 features_exclude[dependencies][link] = link
 features_exclude[dependencies][nexteuropa_multilingual] = nexteuropa_multilingual
 features_exclude[dependencies][ds] = ds
