@@ -14,9 +14,12 @@ Styleguide listing
 .listing__item {
   padding-top: 1em;
   padding-bottom: 1em;
-  border-top: 1px solid $grey-light;
+  border-bottom: 1px solid $grey-light;
   overflow: hidden;
   @extend .row;
+  &:first-child {
+    border-top: 1px solid $grey-light;
+  }
 }
 
 .listing__column-main {
@@ -39,5 +42,27 @@ Styleguide listing
       text-decoration: underline;
       color: $grey-base;
     }
+  }
+}
+
+
+/*
+Listing title
+
+Listing components
+
+Markup: html/listing--title.html
+
+Styleguide listing.title
+*/
+.listing--title {
+  .listing__item {
+    display: block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .listing__title {
+    padding: 0;
+    font-size: 1em;
   }
 }
