@@ -12,21 +12,6 @@ function dt_announcement_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|announcement|default';
-  $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'announcement';
-  $ds_fieldsetting->view_mode = 'default';
-  $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-  );
-  $export['node|announcement|default'] = $ds_fieldsetting;
-
-  $ds_fieldsetting = new stdClass();
-  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|announcement|full';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'announcement';
@@ -141,45 +126,6 @@ function dt_announcement_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|announcement|meta';
-  $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'announcement';
-  $ds_fieldsetting->view_mode = 'meta';
-  $ds_fieldsetting->settings = array(
-    'post_date' => array(
-      'weight' => '21',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_long',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_announcement_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-  );
-  $export['node|announcement|meta'] = $ds_fieldsetting;
-
-  $ds_fieldsetting = new stdClass();
-  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|announcement|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'announcement';
@@ -234,108 +180,10 @@ function dt_announcement_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function dt_announcement_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'related_announcements';
-  $ds_field->label = 'Related Announcements';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'announcement|*';
-  $ds_field->properties = array(
-    'block' => 'views|announcements-block',
-    'block_render' => '1',
-  );
-  $export['related_announcements'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_announcement_ds_layout_settings_info() {
   $export = array();
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|announcement|default';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'announcement';
-  $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'left_header' => array(
-        0 => 'title',
-        3 => 'field_core_introduction',
-      ),
-      'left' => array(
-        1 => 'og_group_ref',
-        4 => 'group_content_access',
-        5 => 'field_announcement_info',
-        6 => 'field_announcement_media',
-        7 => 'field_announcement_image',
-        8 => 'field_announcemnt_img_prominence',
-      ),
-      'central' => array(
-        2 => 'body',
-        11 => 'field_core_location',
-        12 => 'field_core_topics',
-        13 => 'field_core_policy',
-        14 => 'field_core_department',
-        15 => 'field_core_announcement',
-        16 => 'field_core_subject',
-        17 => 'field_core_link',
-      ),
-      'right' => array(
-        9 => 'field_announcement_contact',
-      ),
-      'right_header' => array(
-        10 => 'field_announcement_type',
-      ),
-    ),
-    'fields' => array(
-      'title' => 'left_header',
-      'og_group_ref' => 'left',
-      'body' => 'central',
-      'field_core_introduction' => 'left_header',
-      'group_content_access' => 'left',
-      'field_announcement_info' => 'left',
-      'field_announcement_media' => 'left',
-      'field_announcement_image' => 'left',
-      'field_announcemnt_img_prominence' => 'left',
-      'field_announcement_contact' => 'right',
-      'field_announcement_type' => 'right_header',
-      'field_core_location' => 'central',
-      'field_core_topics' => 'central',
-      'field_core_policy' => 'central',
-      'field_core_department' => 'central',
-      'field_core_announcement' => 'central',
-      'field_core_subject' => 'central',
-      'field_core_link' => 'central',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'left_header' => 'div',
-      'right_header' => 'div',
-      'left' => 'div',
-      'central' => 'div',
-      'right' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
-  );
-  $export['node|announcement|default'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
