@@ -38,9 +38,6 @@
       <?php endif; ?>
 
       <a id="main-content" tabindex="-1"></a>
-      <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
-        <?php print $left; ?>
-      </<?php print $left_wrapper; ?>>
       <section class="col-lg-9 <?php print $central_classes; ?>">
         <?php print $central; ?>
       </section>
