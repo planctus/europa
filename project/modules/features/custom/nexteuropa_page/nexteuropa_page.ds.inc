@@ -17,10 +17,33 @@ function nexteuropa_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'page';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'in_page_navigation' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'field_core_link' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
   );
   $export['node|page|default'] = $ds_fieldsetting;
@@ -168,12 +191,20 @@ function nexteuropa_page_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'title',
       ),
+      'right_header' => array(
+        1 => 'field_core_link',
+      ),
+      'left' => array(
+        2 => 'in_page_navigation',
+      ),
       'central' => array(
-        1 => 'body',
+        3 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
+      'field_core_link' => 'right_header',
+      'in_page_navigation' => 'left',
       'body' => 'central',
     ),
     'classes' => array(),
