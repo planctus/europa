@@ -1284,8 +1284,6 @@ function dt_announcement_field_default_field_instances() {
   t('Departments');
   t('Featured image');
   t('Featured media');
-  t('Group content visibility');
-  t('Groups audience');
   t('Location');
   t('Persons');
   t('Policies');
