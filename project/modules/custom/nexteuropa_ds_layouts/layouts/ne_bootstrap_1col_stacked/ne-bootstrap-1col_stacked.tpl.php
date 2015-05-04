@@ -24,15 +24,9 @@
       <?php print $top; ?>
     </<?php print $top_wrapper; ?>>
 
-    <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
-      <?php print $left; ?>
-    </<?php print $left_wrapper; ?>>
-    <<?php print $central_wrapper; ?> class="col-lg-6 <?php print $central_classes; ?>">
+    <<?php print $central_wrapper; ?> class="col-lg-9 <?php print $central_classes; ?>">
       <?php print $central; ?>
     </<?php print $central_wrapper; ?>>
-    <<?php print $right_wrapper; ?> class="col-lg-3 <?php print $right_classes; ?>">
-      <?php print $right; ?>
-    </<?php print $right_wrapper; ?>>
   </div>
 </<?php print $layout_wrapper ?>>
 
