@@ -38,9 +38,9 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'image' => TRUE,
   );
 
-  $layouts['ne_bootstrap_1col'] = array(
-    'label' => t('NE Bootstrap: 1col'),
-    'path' => $path . '/layouts/ne_bootstrap_1col',
+  $layouts['ne_bootstrap_1col_stacked'] = array(
+    'label' => t('NE Bootstrap: 1col stacked'),
+    'path' => $path . '/layouts/ne_bootstrap_1col_stacked',
     'regions' => array(
       'left_header' => t('Left Header'),
       'right_header' => t('Right Header'),
