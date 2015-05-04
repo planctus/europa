@@ -15,6 +15,7 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'regions' => array(
       'left_header' => t('Left Header'),
       'right_header' => t('Right Header'),
+      'top' => t('Top'),
       'left' => t('Left'),
       'central' => t('Middle'),
       'right' => t('Right'),
@@ -29,8 +30,22 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'regions' => array(
       'left_header' => t('Left Header'),
       'right_header' => t('Right Header'),
+      'top' => t('Top'),
       'left' => t('Left'),
       'central' => t('Middle'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
+  $layouts['ne_bootstrap_1col'] = array(
+    'label' => t('NE Bootstrap: 1col'),
+    'path' => $path . '/layouts/ne_bootstrap_1col',
+    'regions' => array(
+      'left_header' => t('Left Header'),
+      'right_header' => t('Right Header'),
+      'top' => t('Top'),
+      'central' => t('Main'),
     ),
     'form' => TRUE,
     'image' => TRUE,
