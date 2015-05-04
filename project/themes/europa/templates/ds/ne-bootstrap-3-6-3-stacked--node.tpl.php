@@ -14,15 +14,17 @@
   <!-- Page Header -->
   <div class="page-header">
     <div class="container-fluid">
-      <<?php print $left_header_wrapper; ?> class="col-sm-9 <?php print $left_header_classes; ?>">
-        <?php print $left_header; ?>
-      </<?php print $left_header_wrapper; ?>>
+      <div class="row padding-reset">
+        <<?php print $left_header_wrapper; ?> class="col-lg-9 <?php print $left_header_classes; ?>">
+          <?php print $left_header; ?>
+        </<?php print $left_header_wrapper; ?>>
 
-      <?php if(!empty($right_header)): ?>
-        <<?php print $right_header_wrapper; ?> class="col-sm-3 <?php print $right_header_classes; ?>">
-          <?php print $right_header; ?>
-        </<?php print $right_header_wrapper; ?>>
-      <?php endif; ?>
+        <?php if(!empty($right_header)): ?>
+          <<?php print $right_header_wrapper; ?> class="col-lg-3 <?php print $right_header_classes; ?>">
+            <?php print $right_header; ?>
+          </<?php print $right_header_wrapper; ?>>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
   <div class="container-fluid">
@@ -32,13 +34,13 @@
       <?php endif; ?>
 
       <a id="main-content" tabindex="-1"></a>
-      <<?php print $left_wrapper; ?> class="col-sm-3 <?php print $left_classes; ?>">
+      <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
         <?php print $left; ?>
       </<?php print $left_wrapper; ?>>
-      <section class="col-sm-6 <?php print $central_classes; ?>">
+      <section class="col-lg-6 <?php print $central_classes; ?>">
         <?php print $central; ?>
       </section>
-      <<?php print $right_wrapper; ?> class="col-sm-3 <?php print $right_classes; ?>">
+      <<?php print $right_wrapper; ?> class="col-lg-3 <?php print $right_classes; ?>">
         <?php print $right; ?>
       </<?php print $right_wrapper; ?>>
     </div>

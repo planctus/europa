@@ -102,7 +102,16 @@ function dt_person_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '11',
+          'weight' => '10',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '8',
+        ),
+        'language' => array(
+          'weight' => '5',
+        ),
+        'metatags' => array(
+          'weight' => '40',
         ),
       ),
       'display' => array(),
@@ -114,7 +123,7 @@ function dt_person_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_person';
-  $strongarm->value = '0';
+  $strongarm->value = 4;
   $export['language_content_type_person'] = $strongarm;
 
   $strongarm = new stdClass();

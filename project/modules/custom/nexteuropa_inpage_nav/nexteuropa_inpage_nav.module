@@ -19,7 +19,12 @@ function nexteuropa_inpage_nav_block_info() {
  * Implements hook_block_view().
  */
 function nexteuropa_inpage_nav_block_view($delta = '') {
-  $block = array();
+    $block = array();
+    $block['content'] = array();
+
+    if ($delta === "inline_navigation") {
+        drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') .'/assets/js/inpage_nav.js');
+        $items = array();
 
   if ($delta === "inline_navigation") {
     $items = array();

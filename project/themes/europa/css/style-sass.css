@@ -1222,15 +1222,15 @@ pre {
     .container {
       width: 1170px; } }
 
-.container-fluid, .block--full-width > * {
+.container-fluid, .block--full-width > *, .field--full-width > * {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container-fluid:before, .block--full-width > :before, .container-fluid:after, .block--full-width > :after {
+  .container-fluid:before, .block--full-width > :before, .field--full-width > :before, .container-fluid:after, .block--full-width > :after, .field--full-width > :after {
     content: " ";
     display: table; }
-  .container-fluid:after, .block--full-width > :after {
+  .container-fluid:after, .block--full-width > :after, .field--full-width > :after {
     clear: both; }
 
 .row, .listing__item {
@@ -3070,11 +3070,11 @@ tbody.collapse.in {
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
       max-height: 200px; } }
 
-.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .block--full-width > * > .navbar-header, .container-fluid > .navbar-collapse, .block--full-width > * > .navbar-collapse {
+.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .block--full-width > * > .navbar-header, .field--full-width > * > .navbar-header, .container-fluid > .navbar-collapse, .block--full-width > * > .navbar-collapse, .field--full-width > * > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px; }
   @media (min-width: 768px) {
-    .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .block--full-width > * > .navbar-header, .container-fluid > .navbar-collapse, .block--full-width > * > .navbar-collapse {
+    .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .block--full-width > * > .navbar-header, .field--full-width > * > .navbar-header, .container-fluid > .navbar-collapse, .block--full-width > * > .navbar-collapse, .field--full-width > * > .navbar-collapse {
       margin-right: 0;
       margin-left: 0; } }
 
@@ -3114,7 +3114,7 @@ tbody.collapse.in {
   .navbar-brand > img {
     display: block; }
   @media (min-width: 768px) {
-    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .block--full-width.navbar > * .navbar-brand {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .block--full-width.navbar > * .navbar-brand, .field--full-width.navbar > * .navbar-brand {
       margin-left: -15px; }
  }
 
@@ -3605,14 +3605,14 @@ a.badge:hover, a.badge:focus {
     font-weight: 200; }
   .jumbotron > hr {
     border-top-color: #d5d5d5; }
-  .container .jumbotron, .container-fluid .jumbotron, .block--full-width > * .jumbotron {
+  .container .jumbotron, .container-fluid .jumbotron, .block--full-width > * .jumbotron, .field--full-width > * .jumbotron {
     border-radius: 6px; }
   .jumbotron .container {
     max-width: 100%; }
   @media screen and (min-width: 768px) {
     .jumbotron {
       padding: 48px 0; }
-      .container .jumbotron, .container-fluid .jumbotron, .block--full-width > * .jumbotron {
+      .container .jumbotron, .container-fluid .jumbotron, .block--full-width > * .jumbotron, .field--full-width > * .jumbotron {
         padding-left: 60px;
         padding-right: 60px; }
       .jumbotron h1, .jumbotron .h1 {
@@ -4889,6 +4889,9 @@ button.close {
     display: none !important; }
  }
 
+.padding-reset {
+  padding: 0 !important; }
+
 img {
   height: auto;
   display: block;
@@ -5348,7 +5351,7 @@ Markup: html/textarea.html
 
 Styleguide form.textarea
 */
-.container-fluid, .block--full-width > * {
+.container-fluid, .block--full-width > *, .field--full-width > * {
   max-width: 1170px; }
 
 .block--full-width {
@@ -5487,6 +5490,19 @@ Styleguide datepicker
 @media (max-width: 479px) {
   #ui-datepicker-div {
     left: 0 !important; }
+ }
+
+.field--full-width {
+  margin-left: -15px;
+  margin-right: -15px; }
+  .field--full-width > * {
+    margin-left: auto !important;
+    margin-right: auto !important; }
+
+@media (min-width: 1200px) {
+  .field--full-width {
+    margin-left: -100%;
+    margin-right: -100%; }
  }
 
 /*
@@ -5696,24 +5712,6 @@ Styleguide listing
       text-decoration: underline;
       color: #404040; }
 
-.listing__meta {
-  color: #404040;
-  line-height: 1.3;
-  font-size: 0.778em;
-  letter-spacing: 0.02777778em; }
-
-.listing__meta-item:before {
-  content: "|";
-  color: #b3b4b5;
-  margin: 0 1em;
-  position: relative;
-  top: -1px; }
-.listing__meta-item:first-child:before {
-  display: none; }
-
-.listing__meta-item--type {
-  text-transform: uppercase; }
-
 .logo {
   display: block;
   width: 170px;
@@ -5722,6 +5720,36 @@ Styleguide listing
 
 .no-svg {
   background-image: url('../images/svg/logo.png'); }
+
+/*
+Meta
+
+Meta is a component that is used for displaying meta information in single pages and listings
+It could also be reused in blocks
+
+Markup: html/meta.html
+
+Styleguide meta
+*/
+.meta {
+  color: #404040;
+  line-height: 1.3;
+  font-size: 0.778em;
+  letter-spacing: 0.02777778em; }
+
+.meta__item {
+  display: inline-block; }
+  .meta__item:before {
+    content: "|";
+    color: #b3b4b5;
+    margin: 0 0.8em;
+    position: relative;
+    top: -1px; }
+  .meta__item:first-child:before {
+    display: none; }
+
+.meta__item--type {
+  text-transform: uppercase; }
 
 /*
 
@@ -5796,13 +5824,12 @@ Styleguide messages
   margin-bottom: 15px; }
 
 .page-header {
-  background: #006fb4;
+  background: #f2f2f2;
   margin: 0;
   padding: 30px 0; }
   .page-header h1 {
     margin: 0; }
   .page-header__top, .page-header__main, .page-header__bottom {
-    color: #fff;
     display: block;
     width: 100%; }
   .page-header__top {
