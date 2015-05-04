@@ -27,6 +27,9 @@ function dt_topic_strongarm() {
         'language' => array(
           'weight' => '5',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(),
     ),

@@ -1130,7 +1130,7 @@ function dt_announcement_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 0,
     ),
   );
 
@@ -1202,7 +1202,7 @@ function dt_announcement_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 32,
+      'weight' => -1,
     ),
   );
 
@@ -1284,6 +1284,8 @@ function dt_announcement_field_default_field_instances() {
   t('Departments');
   t('Featured image');
   t('Featured media');
+  t('Group content visibility');
+  t('Groups audience');
   t('Location');
   t('Persons');
   t('Policies');
