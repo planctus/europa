@@ -10,12 +10,16 @@ Styleguide context-nav
 }
 
 .context-nav__label {
-  @extend .col-lg-3;
+  display: block;
+  @extend .col-xs-12;
+  @extend .col-md-3;
 }
 
 .context-nav__items {
-  display: inline-block;
-  @extend .col-lg-9;
+  display: block;
+  margin-bottom: 0.778em;
+  @extend .col-xs-12;
+  @extend .col-md-9;
 }
 
 .context-nav__item {
@@ -28,5 +32,11 @@ Styleguide context-nav
     &:before {
       display: none;
     }
+  }
+}
+
+@include breakpoint(screen-md-min){
+  .context-nav__items {
+    margin-bottom: 0;
   }
 }
