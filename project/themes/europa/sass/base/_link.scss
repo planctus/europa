@@ -10,15 +10,10 @@
 // Styleguide text.link
 
 a {
-  text-decoration: underline;
-
   &:hover,
   &:active,
   &:focus {
-    color: $blue;
-    text-decoration: none;
-  }
-  &:hover {
-    text-decoration: none;
+    color: $grey-base;
+    text-decoration: underline;
   }
 }

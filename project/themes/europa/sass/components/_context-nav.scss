@@ -1,0 +1,32 @@
+/*
+Contextual navigation
+
+Markup: html/context-nav.html
+
+Styleguide context-nav
+*/
+.context-nav {
+  @extend .row;
+}
+
+.context-nav__label {
+  @extend .col-lg-3;
+}
+
+.context-nav__items {
+  display: inline-block;
+  @extend .col-lg-9;
+}
+
+.context-nav__item {
+  display: inline-block;
+  &:before {
+    content: ", ";
+  }
+
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
