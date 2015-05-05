@@ -1,8 +1,11 @@
 (function ($) {
     Drupal.behaviors.inpage_navigation = {
         attach: function (context) {
+
             var $pageNavBlock = $('.inpage-nav');
             var pageNavBlockHeight = $pageNavBlock.height();
+            var pageNavBlockTitle = $pageNavBlock.parent().siblings("h3.block-title");
+            var pageNavInfo = $(".navigation-place");
             $pageNavBlock.once('page-navigation', function () {
 
                 // Page navigation scroll spy
@@ -46,13 +49,13 @@
             // Page title vs section title
             if (typeof Drupal.settings.inpage_navigation.node_title != 'undefined') {
                 var nodeTitle = Drupal.settings.inpage_navigation.node_title;
-                $(".navigation-place").text(nodeTitle);
+                pageNavInfo.text(nodeTitle);
             }
 
             $(".inpage-nav").on("activate.bs.scrollspy", function(){
                 var currentItem = $(".nav li.active > a").text();
                 if (currentItem) {
-                    $(".navigation-place").text(currentItem);
+                    pageNavInfo.text(currentItem);
                 }
             });
 
@@ -65,7 +68,7 @@
                             "aria-expanded":"false",
                             "aria-controls":"navbar"
                         });
-                    $pageNavBlock.prev("h2").hide();
+                    pageNavBlockTitle.hide();
                 },
 
                 // desktop
@@ -78,8 +81,8 @@
                         "aria-expanded":"",
                         "aria-controls":""
                     });
-                    $pageNavBlock.prev("h2").show();
-                    $(".navigation-place").hide();
+                    pageNavBlockTitle.show();
+                    pageNavInfo.hide();
                 },
 
                 // mobile
@@ -93,8 +96,8 @@
                             "aria-controls":"navbar"
                         });
                     $pageNavBlock.children("nav").addClass("navbar-default--blue navbar-fixed-top");
-                    $pageNavBlock.prev("h2").hide();
-                    $(".navigation-place").show();
+                    pageNavBlockTitle.hide();
+                    pageNavInfo.show();
                 }
             });
 

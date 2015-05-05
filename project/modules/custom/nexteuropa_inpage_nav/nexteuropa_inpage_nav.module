@@ -19,39 +19,38 @@ function nexteuropa_inpage_nav_block_info() {
  * Implements hook_block_view().
  */
 function nexteuropa_inpage_nav_block_view($delta = '') {
-    $block = array();
-    $block['content'] = array();
-
-    if ($delta === "inline_navigation") {
-        drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') .'/assets/js/inpage_nav.js');
-        $items = array();
+  $block = array();
 
   if ($delta === "inline_navigation") {
+    $block['content'] = array();
     $items = array();
 
     $node = menu_get_object('node');
-    $content_markup = _get_region_markup('content');
-    if (!empty($content_markup)) {
-      $headings = _extract_anchors($content_markup);
-      foreach ($headings as $heading) {
-        $items[] = '<a href="' . $heading['href'] . '">' . $heading['title'] . '</a>';
-      }
+    if(!$node) {
+      
+      return $block;
     }
-    // Content bottom region block titles.
-    $reaction = context_get_plugin('reaction', 'block');
-    if ($node && ($context_blocks = $reaction->block_list('content_bottom'))) {
-      drupal_add_js(array('inpage_navigation' => array('node_title' => $node->title)), 'setting');
-      foreach ($context_blocks as $key => $current_block) {
-        if ($key == 'system_main') {
-          $content_node = $current_block->content['nodes'][$node->nid];
-          $title = isset($content_node['body']['#title']) ? $content_node['body']['#title'] : FALSE;
+    $layout = ds_get_layout('node', $node->type, 'full');
+    $scope = 'central';
+    if (!empty($layout) && isset($layout['settings']['regions'][$scope])) {
+      $region = $layout['settings']['regions'][$scope];
+      foreach ($region as $element) {
+        // Get anchored headings from body field.
+        if ($element == 'body') {
+          $node_wrapper = entity_metadata_wrapper('node', $node);
+          $body = $node_wrapper->body->value->value();
+          $headings = _extract_anchors($body);
+          foreach ($headings as $heading) {
+            $items[] = '<a href="#' . $heading['id'] . '">' . $heading['label'] . '</a>';
+          }
         }
-        else {
-          $title = isset($current_block->subject) && $current_block->subject ? $current_block->subject : FALSE;
-        }
-        if ($title) {
-          $fragment = str_replace('_', '-', ('block-' . $current_block->module . '-' . $current_block->delta));
-          $items[$key] = '<a href="#' . $fragment . '">' . $title . '</a>';
+
+        // If group, check if group label has id attribute to be used as anchor.
+        if (preg_match('/group*/', $element)) {
+          $group = field_group_load_field_group($element, 'node', $node->type, 'full');
+          if ($group_anchor = nexteuropa_inpage_nav_group_anchor($group)) {
+            $items[$element] = '<a href="#' . $group_anchor['id'] . '">' . $group_anchor['label'] . '</a>';
+          }
         }
       }
     }
@@ -59,6 +58,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
     if (!empty($items)) {
       // Include js.
       drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') . '/assets/js/inpage_nav.js');
+      drupal_add_js(array('inpage_navigation' => array('node_title' => $node->title)), 'setting');
 
       $block['subject'] = t('Page Contents');
       $variables = array(
@@ -74,12 +74,44 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
         )
       );
     }
-    // kpr($headings);
-    // kpr($node);
-    // kpr($block);
   }
 
   return $block;
+}
+
+/**
+ * Verifies if a field_group is subject of inpage navigation.
+ */
+function nexteuropa_inpage_nav_group_anchor($group) {
+  $pattern = '/id=[\'\"]{0,1}(\w+)/';
+  if (
+    $group->format_settings['instance_settings']['show_label'] &&
+    $group->format_settings['instance_settings']['label_element'] == NEXTEUROPA_INPAGE_NAV_DEPTH &&
+    preg_match($pattern, $group->format_settings['instance_settings']['attributes'], $matches)
+  ) {
+
+    return array(
+      'id' => $matches[1],
+      'label' => isset($group->format_settings['instance_settings']['label']) ? $group->format_settings['instance_settings']['label'] : $group->label,
+    );
+  }
+  return FALSE;
+}
+
+/**
+ * Helper: returns the list of heading anchors in the markup.
+ */
+function _extract_anchors($markup) {
+  $pattern = "/<" . NEXTEUROPA_INPAGE_NAV_DEPTH . ".*?id=\"(.*)\".*?>(.*)<\/" . NEXTEUROPA_INPAGE_NAV_DEPTH . ">/";
+  preg_match_all($pattern, $markup, $matches);
+  $anchors = array();
+  foreach ($matches[1] as $i => $id) {
+    $anchors[] = array(
+      'id' => $id,
+      'label' => $matches[2][$i],
+    );
+  }
+  return $anchors;
 }
 
 /**
@@ -94,29 +126,4 @@ function nexteuropa_inpage_nav_theme() {
       'vars' => NULL
     )
   );
-}
-
-/**
- * Helper: returns the markup for a specified region.
- */
-function _get_region_markup($region) {
-  $blocks = block_list($region);
-  $renderable = _block_get_renderable_array($blocks);
-  return drupal_render($renderable);
-}
-
-/**
- * Helper: returns the list of heading anchors in the markup.
- */
-function _extract_anchors($markup) {
-  $pattern = "/<" . NEXTEUROPA_INPAGE_NAV_DEPTH . ">(.+?)<\/" . NEXTEUROPA_INPAGE_NAV_DEPTH . ">/";
-  preg_match_all($pattern, $markup, $matches);
-  $anchors = array();
-  foreach ($matches[1] as $i => $id) {
-    $anchors[] = array(
-      'href' => '#' . $id,
-      'title' => $id,
-    );
-  }
-  return $anchors;
 }
