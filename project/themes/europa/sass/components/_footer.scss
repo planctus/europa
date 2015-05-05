@@ -14,7 +14,6 @@ $footer-white-font: #fff;
   background: $blue-dark;
   padding: 60px 0;
   color: $footer-white-font;
-  font-size: $font-size-small;
 
   a {
     color: $footer-white-font;
@@ -25,12 +24,13 @@ $footer-white-font: #fff;
     font-size: 19px;
     font-weight: normal;
     float: left;
-    padding: 15px 10px 0 0;
+    padding: 15px 15px 0 0;
   }
 
 }
 
 .footer__disclaimer {
+  font-size: 17px;
   padding-top: 3px;
 }
 

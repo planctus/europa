@@ -135,7 +135,7 @@ function dt_core_update_7110() {
  * Disable and uninstall the dashboard module.
  */
 function dt_core_update_7111() {
-  if( module_exists('dashboard')) {
+  if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
@@ -151,4 +151,13 @@ function dt_core_update_7112() {
     'metatag_opengraph',
   );
   module_enable($meta_modules);
+}
+
+/**
+ * Introducing changes related to the sitewide footer.
+ */
+function dt_core_update_7113() {
+  features_revert(array(
+    'dt_core' => array('menu_links', 'menu_custom', 'context'),
+  ));
 }
