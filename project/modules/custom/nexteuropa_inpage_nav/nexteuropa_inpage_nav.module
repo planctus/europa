@@ -51,7 +51,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           $weight = isset($field_info['display']['full']) ? $field_info['display']['full']['weight'] : $field_info['display']['default']['weight'];
           $body_heading_count = 1;
           foreach ($headings as $heading) {
-            $items['body_' . $body_heading_count]['weight'] = $weight;
+            $items['body_' . $body_heading_count]['weight'] = $weight + $body_heading_count;
             $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '">' . $heading['label'] . '</a>';
             $body_heading_count++;
           }
