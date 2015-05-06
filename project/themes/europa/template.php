@@ -486,3 +486,35 @@ function europa_html_head_alter(&$head_elements) {
     $head_elements[] = $element;
   }
 }
+
+/**
+ * Helper function for display 'title' view mode field.
+ */
+function _europa_field_component_listing_title($variables) {
+  $output = '';
+  // Render the items.
+  $output .= '<ul class="listing--title">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
+  }
+  $output .= '</ul>';
+  return $output;
+}
+
+/**
+ * Override of theme_field().
+ */
+function europa_field($variables) {
+  $element = $variables['element'];
+  $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
+
+  // Entity reference fields.
+  if ($field_type == 'entityreference') {
+    $first_node = reset(reset($element[0]));
+    $view_mode = isset($first_node['#view_mode']) ? $first_node['#view_mode'] : NULL;
+    if ($view_mode == 'title') {
+      return _europa_field_component_listing_title($variables);
+    }
+  }
+  return '';
+}

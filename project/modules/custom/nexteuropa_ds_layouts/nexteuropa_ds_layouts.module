@@ -62,5 +62,15 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'image' => TRUE,
   );
 
+  $layouts['ne_1col'] = array(
+    'label' => t('NE: 1col'),
+    'path' => $path . '/layouts/ne_1col',
+    'regions' => array(
+      'main' => t('Main'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
   return $layouts;
 }
