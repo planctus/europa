@@ -4962,6 +4962,7 @@ Markup: html/btn.html
 Styleguide buttons
 */
 .btn {
+  margin-bottom: 1em;
   line-height: 1;
   border-radius: 0;
   border-width: 2px;
@@ -5006,6 +5007,23 @@ Styleguide buttons
     .btn.btn-ctn:focus {
       border-color: #404040;
       outline-color: #404040; }
+
+/*
+Button group
+
+Custom bootstrap button group
+
+Markup: html/btn-group.html
+
+Styleguide buttons.group
+*/
+.btn-group {
+  margin-top: 1em; }
+  .btn-group .btn {
+    margin-right: 1em;
+    margin-bottom: 0; }
+    .btn-group .btn:last-child {
+      margin-right: 0; }
 
 /*
 Checkbox
