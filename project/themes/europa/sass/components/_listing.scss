@@ -9,6 +9,7 @@ Styleguide listing
 */
 
 .listing {
+  padding: 0;
 }
 
 .listing__item {
@@ -16,6 +17,8 @@ Styleguide listing
   padding-bottom: 1em;
   border-bottom: 1px solid $grey-light;
   overflow: hidden;
+  list-style: none;
+  list-style-image: none;
   @extend .row;
   &:first-child {
     border-top: 1px solid $grey-light;
@@ -33,15 +36,20 @@ Styleguide listing
 
 .listing__title {
   color: $grey-base;
-  a {
-    text-decoration: none;
+  font-family: $font-family-sans-serif;
+  @extend .h3;
+}
 
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline;
-      color: $grey-base;
-    }
+a.listing__title,
+.listing__title a {
+  text-decoration: none;
+  color: $brand-primary;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+    color: $grey-base;
   }
 }
 
@@ -57,12 +65,13 @@ Styleguide listing.title
 */
 .listing--title {
   .listing__item {
-    display: block;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0;
+    margin: auto;
   }
   .listing__title {
-    padding: 0;
+    display: block;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
     margin-top: 0.2em;
     font-size: 1em;
   }

@@ -911,20 +911,20 @@ hr {
   overflow: visible;
   clip: auto; }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .listing__title, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
-  h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+  h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .listing__title small, .h3 .small, .listing__title .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
     font-weight: normal;
     line-height: 1;
     color: #777777; }
 
-h1, .h1, h2, .h2, h3, .h3 {
+h1, .h1, h2, .h2, h3, .h3, .listing__title {
   margin-top: 21px;
   margin-bottom: 10.5px; }
-  h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .h3 .small {
+  h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .listing__title small, .h3 .small, .listing__title .small {
     font-size: 65%; }
 
 h4, .h4, h5, .h5, h6, .h6 {
@@ -939,7 +939,7 @@ h1, .h1 {
 h2, .h2 {
   font-size: 1.667em; }
 
-h3, .h3 {
+h3, .h3, .listing__title {
   font-size: 1.556em; }
 
 h4, .h4 {
@@ -5216,7 +5216,7 @@ body {
 
   Styleguide text.headings
 */
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .listing__title, .h4, .h5, .h6 {
   padding: 0.4em 0 1em;
   margin: 0; }
 
@@ -5230,7 +5230,7 @@ h2, .h2 {
   font-weight: 600;
   color: #404040; }
 
-h3, .h3 {
+h3, .h3, .listing__title {
   font-size: 1.556em;
   font-weight: 600;
   color: #222222; }
@@ -5713,11 +5713,16 @@ Markup: html/listing.html
 
 Styleguide listing
 */
+.listing {
+  padding: 0; }
+
 .listing__item {
   padding-top: 1em;
   padding-bottom: 1em;
   border-bottom: 1px solid #e2e2e2;
-  overflow: hidden; }
+  overflow: hidden;
+  list-style: none;
+  list-style-image: none; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
 
@@ -5725,12 +5730,15 @@ Styleguide listing
   float: right; }
 
 .listing__title {
-  color: #404040; }
-  .listing__title a {
-    text-decoration: none; }
-    .listing__title a:hover, .listing__title a:active, .listing__title a:focus {
-      text-decoration: underline;
-      color: #404040; }
+  color: #404040;
+  font-family: Arial, sans-serif; }
+
+a.listing__title, .listing__title a {
+  text-decoration: none;
+  color: #006fb4; }
+  a.listing__title:hover, a.listing__title:active, a.listing__title:focus, .listing__title a:hover, .listing__title a:active, .listing__title a:focus {
+    text-decoration: underline;
+    color: #404040; }
 
 /*
 Listing title
@@ -5742,11 +5750,12 @@ Markup: html/listing--title.html
 Styleguide listing.title
 */
 .listing--title .listing__item {
-  display: block;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em; }
-.listing--title .listing__title {
   padding: 0;
+  margin: auto; }
+.listing--title .listing__title {
+  display: block;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
   margin-top: 0.2em;
   font-size: 1em; }
 
