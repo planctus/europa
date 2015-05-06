@@ -31,11 +31,11 @@
     <div class="row">
       <section class="col-lg-12 <?php print $top_classes; ?>">
         <?php print $top; ?>
-      </section>
 
-      <?php if (!empty($messages)): ?>
-        <?php print $messages; ?>
-      <?php endif; ?>
+        <?php if (!empty($messages)): ?>
+          <?php print $messages; ?>
+        <?php endif; ?>
+      </section>
 
       <a id="main-content" tabindex="-1"></a>
       <section class="col-lg-9 <?php print $central_classes; ?>">
