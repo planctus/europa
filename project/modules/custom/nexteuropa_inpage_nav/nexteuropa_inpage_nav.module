@@ -32,7 +32,6 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
     }
     $layout = ds_get_layout('node', $node->type, 'full');
     $layout_field_settings = ds_get_field_settings('node', $node->type, 'full');
-
     // DS region to work with.
     $scope = 'central';
     if (!empty($layout) && isset($layout['settings']['fields'])) {
@@ -48,10 +47,11 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           $node_wrapper = entity_metadata_wrapper('node', $node);
           $body = $node_wrapper->body->value->value();
           $headings = _nexteuropa_inpage_nav_markup_anchor($body);
+          $field_info = field_info_instance('node', $element, $node->type);
+          $weight = isset($field_info['display']['full']) ? $field_info['display']['full']['weight'] : $field_info['display']['default']['weight'];
           $body_heading_count = 1;
           foreach ($headings as $heading) {
-            $field_info = field_info_instance('node', $element, $node->type);
-            $items['body_' . $body_heading_count]['weight'] = $field_info['display']['full']['weight'];
+            $items['body_' . $body_heading_count]['weight'] = $weight;
             $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '">' . $heading['label'] . '</a>';
             $body_heading_count++;
           }
