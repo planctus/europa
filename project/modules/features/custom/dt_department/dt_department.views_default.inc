@@ -110,7 +110,7 @@ function dt_department_views_default_views() {
     5 => 0,
     7 => 0,
   );
-  /* Filter criterion: : field_core_ecorganisation (field_core_ecorganisation) */
+  /* Filter criterion: Content: Department type (field_core_ecorganisation) */
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';

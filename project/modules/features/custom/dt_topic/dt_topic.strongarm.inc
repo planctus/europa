@@ -19,9 +19,6 @@ function dt_topic_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'title' => array(
-        'custom_settings' => TRUE,
-      ),
       'full' => array(
         'custom_settings' => FALSE,
       ),
@@ -45,6 +42,9 @@ function dt_topic_strongarm() {
       ),
       'meta' => array(
         'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
         'custom_settings' => FALSE,

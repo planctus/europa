@@ -165,7 +165,10 @@ function dt_department_field_group_info() {
   $field_group->data = array(
     'label' => 'Meta',
     'weight' => '0',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_core_abbreviation',
+      1 => 'field_core_ecorganisation',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Meta',
