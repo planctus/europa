@@ -492,7 +492,6 @@ function europa_html_head_alter(&$head_elements) {
  */
 function _europa_field_component_listing_title($variables) {
   $output = '';
-  // Render the items.
   $output .= '<ul class="listing--title">';
   foreach ($variables['items'] as $delta => $item) {
     $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
@@ -508,13 +507,14 @@ function europa_field($variables) {
   $element = $variables['element'];
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
 
-  // Entity reference fields.
-  if ($field_type == 'entityreference') {
-    $first_node = reset(reset($element[0]));
-    $view_mode = isset($first_node['#view_mode']) ? $first_node['#view_mode'] : NULL;
-    if ($view_mode == 'title') {
-      return _europa_field_component_listing_title($variables);
-    }
+  switch ($field_type) {
+    case 'entityreference':
+      // First node from entity reference.
+      $first_node = reset(reset($element[0]));
+      $first_node_view_mode = isset($first_node['#view_mode']) ? $first_node['#view_mode'] : NULL;
+      if (!is_null($first_node_view_mode) && $first_node_view_mode == 'title') {
+        return _europa_field_component_listing_title($variables);
+      }
+      break;
   }
-  return '';
 }
