@@ -42,15 +42,7 @@ Styleguide listing
 
 a.listing__title,
 .listing__title a {
-  text-decoration: none;
   color: $brand-primary;
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: underline;
-    color: $grey-base;
-  }
 }
 
 
