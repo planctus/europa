@@ -5619,13 +5619,13 @@ Styleguide footer
     color: #fff; }
   .footer label {
     color: #fff;
-    font-size: 19px;
+    font-size: 1.05em;
     font-weight: normal;
     float: left;
     padding: 15px 15px 0 0; }
 
 .footer__disclaimer {
-  font-size: 17px;
+  font-size: 0.95em;
   padding-top: 3px;
   margin-bottom: 0; }
 
@@ -5635,7 +5635,7 @@ Styleguide footer
     padding-left: 0; }
   .footer__menu li a {
     padding-top: 10px;
-    font-size: 17px; }
+    font-size: 0.95em; }
     .footer__menu li a:hover, .footer__menu li a:focus {
       background: none transparent;
       text-decoration: none; }

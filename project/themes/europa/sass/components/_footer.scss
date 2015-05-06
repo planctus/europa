@@ -21,7 +21,7 @@ $footer-white-font: #fff;
 
   label {
     color: $footer-white-font;
-    font-size: 19px;
+    font-size: 1.05em;
     font-weight: normal;
     float: left;
     padding: 15px 15px 0 0;
@@ -30,7 +30,7 @@ $footer-white-font: #fff;
 }
 
 .footer__disclaimer {
-  font-size: 17px;
+  font-size: 0.95em;
   padding-top: 3px;
   margin-bottom: 0;
 }
@@ -45,7 +45,7 @@ $footer-white-font: #fff;
 
     a {
       padding-top: 10px;
-      font-size: 17px;
+      font-size: 0.95em;
 
       &:hover, &:focus {
         background: none transparent;
