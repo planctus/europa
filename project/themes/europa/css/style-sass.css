@@ -5639,52 +5639,16 @@ Markup: inpage-nav.html
 Styleguide inpagenav
 
 */
-.inpage-nav--list {
-  z-index: 2000; }
+.inpage-nav.is-collapsed .inpage-nav__help {
+  display: block; }
+.inpage-nav.is-collapsed .inpage-nav__current {
+  display: none; }
 
-.inpage-nav {
-  cursor: pointer;
-  z-index: 100;
-  max-width: 228px;
-  padding-bottom: 1px; }
-  .inpage-nav .container {
-    width: auto; }
-  .inpage-nav.affix-top .nav li.active a, .inpage-nav.affix-bottom .nav li.active a {
-    color: #000 !important; }
-  .inpage-nav.affix-top .nav li.active a:hover, .inpage-nav.affix-bottom .nav li.active a:hover {
-    color: #006fb4 !important; }
-  .inpage-nav.affix {
-    top: 30px; }
-  .inpage-nav.affix .nav li:hover, .inpage-nav.affix .nav li:active, .inpage-nav.affix .nav li:focus {
-    color: #006fb4;
-    text-decoration: underline; }
-  .inpage-nav.affix .nav li.active:before {
-    background: none repeat scroll 0 0 #006fb4;
-    content: "";
-    display: block;
-    height: 100%;
-    left: -10px;
-    position: absolute;
-    top: -2px;
-    width: 2px; }
-  .inpage-nav.affix-bottom {
-    position: absolute;
-    bottom: 30px; }
-  .inpage-nav .block-title {
-    background: none;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    color: #575757;
-    text-transform: uppercase;
-    margin-top: 10px; }
+.inpage-nav__title {
+  display: block; }
 
-.navigation-place {
-  padding: 20px 0 20px 20px;
-  margin-bottom: 0; }
-
-.navbar-toggle {
-  top: 10px; }
+.inpage-nav__help {
+  display: none; }
 
 /*
 Listing

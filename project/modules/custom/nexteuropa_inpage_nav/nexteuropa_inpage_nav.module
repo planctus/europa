@@ -115,13 +115,13 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
       $variables = array(
         'items' => $sorted,
         'attributes' => array(
-          'class' => 'nav nav-stacked',
+          'class' => 'nav navbar-nav navbar-stacked',
         ),
       );
       $block['content'] = theme('inpage_nav_block',
         array(
-          'vars' => $variables,
-          'node_title' => $node->title
+          'links' => theme('item_list', $variables),
+          'title' => $node->title
         )
       );
     }
