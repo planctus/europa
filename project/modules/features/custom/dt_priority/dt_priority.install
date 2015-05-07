@@ -25,13 +25,6 @@ function dt_priority_uninstall() {
  * Reverting the feature to match all fields from the code base.
  */
 function dt_priority_update_7101() {
-  _dt_priority_revert();
-}
-
-/**
- * Keyword and description removed since it will be provided by the metatag.
- */
-function dt_priority_update_7102() {
   // Remove the field.
   $fields_to_remove = array(
     'field_priority_intro',
@@ -43,29 +36,10 @@ function dt_priority_update_7102() {
       field_delete_field($field_name);
     }
   }
-}
-
-/**
- * Removing group_priority_other and group_priority_meta field groups.
- */
-function dt_priority_update_7103() {
   $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'priority', 'form');
   $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'priority', 'form');
   field_group_group_export_delete($group_priority_other, FALSE);
   field_group_group_export_delete($group_priority_meta, FALSE);
-}
-
-/**
- * Reverting the feature to match all fields from the code base.
- */
-function dt_priority_update_7104() {
-  _dt_priority_revert();
-}
-
-/**
- * Field field_priority_type removed.
- */
-function dt_priority_update_7105() {
   // Remove the field.
   $fields_to_remove = array(
     'field_priority_type',
@@ -75,19 +49,7 @@ function dt_priority_update_7105() {
       field_delete_field($field_name);
     }
   }
-}
-
-/**
- * Reverting the feature to match all fields from the code base.
- */
-function dt_priority_update_7106() {
-  _dt_priority_revert();
-}
-
-/**
- * Reverts the feature dt_priority.
- */
-function _dt_priority_revert() {
+  // Revert.
   features_revert_module('dt_priority');
   features_revert(array(
     'dt_priority' => array(
