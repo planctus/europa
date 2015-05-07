@@ -33,16 +33,6 @@ Styleguide listing
 
 .listing__title {
   color: $grey-base;
-  a {
-    text-decoration: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline;
-      color: $grey-base;
-    }
-  }
 }
 
 

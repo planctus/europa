@@ -23,11 +23,11 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'title_field',
-      1 => 'body',
-      2 => 'field_announcement_contact',
-      3 => 'field_announcement_type',
-      4 => 'field_core_introduction',
+      0 => 'body',
+      1 => 'field_announcement_contact',
+      2 => 'field_announcement_type',
+      3 => 'field_core_introduction',
+      4 => 'title_field',
       5 => 'field_announcement_department',
       6 => 'field_announcement_location',
     ),
@@ -54,7 +54,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Context information',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_announcement_info',
       1 => 'field_core_link',
@@ -70,6 +70,37 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_context_info|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_contextual|node|announcement|full';
+  $field_group->group_name = 'group_announcement_contextual';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_department',
+      1 => 'field_core_topics',
+      2 => 'field_core_persons',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contextual navigation',
+      'instance_settings' => array(
+        'classes' => 'context-nav',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_contextual|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -172,7 +203,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Related content',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
@@ -205,11 +236,12 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_announcement_content',
-      1 => 'group_announcement_context_info',
-      2 => 'group_announcement_related',
-      3 => 'group_editorial_settings',
-      4 => 'group_media',
+      0 => 'metatags',
+      1 => 'group_announcement_content',
+      2 => 'group_announcement_context_info',
+      3 => 'group_announcement_related',
+      4 => 'group_editorial_settings',
+      5 => 'group_media',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -232,10 +264,10 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'og_group_ref',
       2 => 'scheduler_settings',
       3 => 'language',
     ),
@@ -262,7 +294,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Featured Media',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_announcement_image',
       1 => 'field_announcement_media',
