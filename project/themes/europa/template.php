@@ -7,14 +7,14 @@
  /**
   * Implements template_preprocess_field().
   */
-  function europa_preprocess_field(&$vars) {
-    if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
-      $field_value = $vars['element']['#items'][0]['value'];
-      $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+function europa_preprocess_field(&$vars) {
+  if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
+    $field_value = $vars['element']['#items'][0]['value'];
+    $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
 
-      $vars['items'][0]['#markup'] = $field_value_stripped;
-    }
+    $vars['items'][0]['#markup'] = $field_value_stripped;
   }
+}
 
 /**
  * Implements template_preprocess_block().
