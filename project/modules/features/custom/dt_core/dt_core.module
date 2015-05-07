@@ -5,3 +5,32 @@
  */
 
 include_once 'dt_core.features.inc';
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'entityreference') {
+    if ($context['field']['settings']['target_type'] == 'node' && !empty($context['field']['settings']['handler_settings']['target_bundles'])) {
+      $types = $context['field']['settings']['handler_settings']['target_bundles'];
+      $types_count = count($types);
+      $links = '';
+      $i = 0;
+      $separator = ',';
+      foreach ($types as $machine_name) {
+        $type = node_type_get_type($machine_name);
+        $current_separator = $types_count > 1 && $i == $types_count - 2 ? ' ' . t('or') : $separator;
+        $links .= l($type->name, 'node/add/' . $machine_name, array('attributes' => array('target' => '_blank'))) . $current_separator . ' ';
+        $i++;
+      }
+      $links = rtrim($links, $separator . ' ');
+      $description = '<p>' . t('In case the content you try to refer to does not exist yet you can create it by going to !links.', array('!links' => $links)) . '</p>';
+      if (isset($element['target_id'])) {
+        $element['target_id']['#description'] = $description . $element['target_id']['#description'];
+      }
+      else {
+        $element['#description'] = $description . $element['#description'];
+      }
+    }
+  }
+}

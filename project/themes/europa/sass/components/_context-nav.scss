@@ -1,0 +1,42 @@
+/*
+Contextual navigation
+
+Markup: html/context-nav.html
+
+Styleguide context-nav
+*/
+.context-nav {
+  @extend .row;
+}
+
+.context-nav__label {
+  display: block;
+  @extend .col-xs-12;
+  @extend .col-md-3;
+}
+
+.context-nav__items {
+  display: block;
+  margin-bottom: 0.778em;
+  @extend .col-xs-12;
+  @extend .col-md-9;
+}
+
+.context-nav__item {
+  display: inline-block;
+  &:before {
+    content: ", ";
+  }
+
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint(screen-md-min){
+  .context-nav__items {
+    margin-bottom: 0;
+  }
+}

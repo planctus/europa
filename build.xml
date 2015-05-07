@@ -65,7 +65,7 @@
         <if>
             <available file="${drupal.settings.dir}" type="dir" />
             <then>
-              <chmod mode="0777" failonerror="false" verbose="false" quiet="true">
+              <chmod mode="0777" failonerror="false" verbose="true" quiet="true">
                 <fileset dir="${drupal.settings.dir}" />
               </chmod>
             </then>
@@ -80,6 +80,7 @@
             assume="yes"
             bin="${drush.bin}"
             pipe="yes"
+            verbose="true"
             root="${project.code.dir}">
             <param>${platform.profile.dir}/${drupal.profile.name}/build.make</param>
             <param>${project.code.dir}</param>
@@ -214,7 +215,7 @@
 
     <!-- Install drupal. -->
     <target name="install-drupal" description="Run the install." depends="init">
-        <drush command="site-install" assume="yes" root="${project.code.dir}" bin="${drush.bin}" verbose="false">
+        <drush command="site-install" assume="yes" root="${project.code.dir}" bin="${drush.bin}">
             <option name="db-url" value="${drupal.db.url}"/>
             <option name="site-name" value="BETA"/>
             <option name="account-name" value="${drupal.admin.username}"/>
@@ -229,7 +230,6 @@
     <target name="enable-drupal-modules" description="Enable Drupal modules." depends="install-drupal">
         <drush command="pm-enable" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
             <param>${drupal.modules}</param>
-            <param>--quiet</param>
         </drush>
     </target>
 

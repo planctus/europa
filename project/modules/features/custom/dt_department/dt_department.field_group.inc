@@ -13,12 +13,41 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_content_tabgroup|node|department|form';
+  $field_group->group_name = 'group_content_tabgroup';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_department_contact',
+      1 => 'group_editorial_settings',
+      2 => 'group_person',
+      3 => 'group_priorities',
+      4 => 'group_profile_information',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-content-tabgroup field-group-tabs',
+      ),
+    ),
+  );
+  $export['group_content_tabgroup|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cta|node|department|form';
   $field_group->group_name = 'group_cta';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'CTA',
     'weight' => '2',
@@ -45,13 +74,12 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_department_contact',
-      1 => 'field_core_contact',
+      0 => 'field_core_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -68,17 +96,175 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_contact|node|department|full';
+  $field_group->group_name = 'group_department_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_contact',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'classes' => '',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => 'name="contact"',
+      ),
+    ),
+  );
+  $export['group_department_contact|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_leadership|node|department|full';
+  $field_group->group_name = 'group_department_leadership';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Leadership & Organisation',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_core_persons',
+      1 => 'field_department_organigram',
+      2 => 'field_department_action_link',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Leadership & Organisation',
+      'instance_settings' => array(
+        'classes' => '',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => 'name="leadership"',
+      ),
+    ),
+  );
+  $export['group_department_leadership|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_meta|node|department|full';
+  $field_group->group_name = 'group_department_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_core_abbreviation',
+      1 => 'field_core_ecorganisation',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_department_meta|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_responsibilit|node|department|full';
+  $field_group->group_name = 'group_department_responsibilit';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Responsibilities',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_core_topics',
+      1 => 'field_department_intro_sentence',
+      2 => 'field_department_plans_reports',
+      3 => 'field_department_related_tasks',
+      4 => 'field_department_tasks_desc',
+      5 => 'field_department_work_areas_sent',
+      6 => 'field_core_priorities',
+      7 => 'field_department_tasks',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Responsibilities',
+      'instance_settings' => array(
+        'classes' => '',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => 'name="resposibilities"',
+      ),
+    ),
+  );
+  $export['group_department_responsibilit|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_settings|node|department|form';
+  $field_group->group_name = 'group_editorial_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial settings',
+    'weight' => '6',
+    'children' => array(
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-editorial-settings field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_editorial_settings|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person|node|department|form';
   $field_group->group_name = 'group_person';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Leadership & Organisation',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_core_commissioner',
+      0 => 'field_core_persons',
+      1 => 'field_department_organigram',
+      2 => 'field_department_action_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -100,17 +286,20 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Responsibilities, tasks',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_core_priorities',
+      0 => 'field_core_topics',
       1 => 'field_department_intro_sentence',
       2 => 'field_department_main_tasks',
       3 => 'field_department_plans_reports',
       4 => 'field_department_related_tasks',
       5 => 'field_department_tasks_desc',
+      6 => 'field_department_work_areas_sent',
+      7 => 'field_core_priorities',
+      8 => 'field_department_tasks',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -132,14 +321,17 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Profile information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_core_abbreviation',
-      1 => 'field_core_ecorganisation',
-      2 => 'field_core_introduction',
+      0 => 'title_field',
+      1 => 'field_core_abbreviation',
+      2 => 'field_core_ecorganisation',
+      3 => 'field_core_introduction',
+      4 => 'field_core_link',
+      5 => 'field_core_legacy_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -162,7 +354,7 @@ function dt_department_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'department';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Topics',
     'weight' => '4',

@@ -115,3 +115,41 @@ function dt_core_update_7107() {
 function dt_core_update_7108() {
   variable_set('node_admin_theme', 1);
 }
+
+/**
+ * Enabling Announcements feature.
+ */
+function dt_core_update_7109() {
+  module_enable(array('nexteuropa_page'));
+}
+
+/**
+ * Delete subjects vocabulary.
+ */
+function dt_core_update_7110() {
+  if ($voc = taxonomy_vocabulary_machine_name_load('subjects')) {
+    taxonomy_vocabulary_delete($voc->vid);
+  }
+}
+
+/**
+ * Disable and uninstall the dashboard module.
+ */
+function dt_core_update_7111() {
+  if( module_exists('dashboard')) {
+    module_disable(array('dashboard'));
+    drupal_uninstall_modules(array('dashboard'));
+  }
+}
+
+/**
+ * Enabling Metatag modules.
+ */
+function dt_core_update_7112() {
+  $meta_modules = array(
+    'metatag',
+    'metatag_views',
+    'metatag_opengraph',
+  );
+  module_enable($meta_modules);
+}

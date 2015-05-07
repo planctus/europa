@@ -14,8 +14,8 @@ regions[highlighted] = Highlighted
 regions[help] = Help
 regions[content] = Content
 regions[content_bottom] = Content bottom
-regions[sidebar_first] = Sidebar
-regions[sidebar_second] = Second column
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
 regions[footer_top] = Footer Top
 regions[footer] = Footer
 

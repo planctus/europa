@@ -18,11 +18,11 @@ function dt_announcement_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_announcement_contact',
     'foreign keys' => array(
-      'users' => array(
+      'node' => array(
         'columns' => array(
-          'target_id' => 'uid',
+          'target_id' => 'nid',
         ),
-        'table' => 'users',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
@@ -44,9 +44,55 @@ function dt_announcement_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'person' => 'person',
+        ),
       ),
-      'target_type' => 'user',
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_announcement_department'
+  $field_bases['field_announcement_department'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_announcement_department',
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'department' => 'department',
+        ),
+      ),
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
@@ -114,6 +160,36 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_announcement_location'
+  $field_bases['field_announcement_location'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_announcement_location',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_announcement_media'
   $field_bases['field_announcement_media'] = array(
     'active' => 1,
@@ -163,33 +239,6 @@ function dt_announcement_field_default_field_bases() {
         'press_release' => 'press release',
         'speech' => 'speech',
         'news_article' => 'news article',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_announcemnt_img_prominence'
-  $field_bases['field_announcemnt_img_prominence'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_announcemnt_img_prominence',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'main' => 'Main content',
-        'context' => 'Context',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
