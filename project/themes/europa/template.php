@@ -68,7 +68,7 @@ function europa_preprocess_page(&$vars) {
   $vars['ds_node'] = FALSE;
 
   // nodes excluded that are not using DS
-  $node_type_list = array('class', 'page');
+  $node_type_list = array('class');
 
   if(isset($node) && !in_array($node->type, $node_type_list)) {
     // This disables message-printing on ALL page displays

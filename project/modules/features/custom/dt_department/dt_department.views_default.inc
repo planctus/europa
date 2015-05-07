@@ -91,7 +91,7 @@ function dt_department_views_default_views() {
     5 => 0,
     7 => 0,
   );
-  /* Filter criterion: Content: Main tasks (field_department_main_tasks) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_department_main_tasks_value']['id'] = 'field_department_main_tasks_value';
   $handler->display->display_options['filters']['field_department_main_tasks_value']['table'] = 'field_data_field_department_main_tasks';
   $handler->display->display_options['filters']['field_department_main_tasks_value']['field'] = 'field_department_main_tasks_value';
@@ -110,7 +110,7 @@ function dt_department_views_default_views() {
     5 => 0,
     7 => 0,
   );
-  /* Filter criterion: Content: EC Organisation (field_core_ecorganisation) */
+  /* Filter criterion: Content: Department type (field_core_ecorganisation) */
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';

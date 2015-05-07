@@ -14,9 +14,12 @@ Styleguide listing
 .listing__item {
   padding-top: 1em;
   padding-bottom: 1em;
-  border-top: 1px solid $grey-light;
+  border-bottom: 1px solid $grey-light;
   overflow: hidden;
   @extend .row;
+  &:first-child {
+    border-top: 1px solid $grey-light;
+  }
 }
 
 .listing__column-main {
@@ -30,41 +33,27 @@ Styleguide listing
 
 .listing__title {
   color: $grey-base;
-  a {
-    text-decoration: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline;
-      color: $grey-base;
-    }
-  }
 }
 
-.listing__meta {
-  color: $grey-base;
-  line-height: 1.3;
-  font-size: $font-size-xsmall;
-  letter-spacing: 0.02777778em;
-}
 
-.listing__meta-item {
-  &:before {
-    content: "|";
-    color: $grey;
-    margin: 0 1em;
-    position: relative;
-    top: -1px;
+/*
+Listing title
+
+Listing components
+
+Markup: html/listing--title.html
+
+Styleguide listing.title
+*/
+.listing--title {
+  .listing__item {
+    display: block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
   }
-
-  &:first-child {
-    &:before {
-      display: none;
-    }
+  .listing__title {
+    padding: 0;
+    margin-top: 0.2em;
+    font-size: 1em;
   }
-}
-
-.listing__meta-item--type {
-  text-transform: uppercase;
 }
