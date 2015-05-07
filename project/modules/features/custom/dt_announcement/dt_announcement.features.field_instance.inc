@@ -63,7 +63,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -147,7 +147,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -204,7 +204,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function dt_announcement_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'meta' => array(
         'label' => 'above',
@@ -341,7 +341,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'meta' => array(
         'label' => 'above',
@@ -421,7 +421,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'meta' => array(
         'label' => 'above',
@@ -502,7 +502,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -629,7 +629,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -695,7 +695,7 @@ function dt_announcement_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 13,
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'above',
@@ -838,7 +838,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'meta' => array(
         'label' => 'above',
@@ -911,7 +911,7 @@ function dt_announcement_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 12,
+        'weight' => 6,
       ),
       'meta' => array(
         'label' => 'above',
@@ -968,7 +968,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1034,7 +1034,7 @@ function dt_announcement_field_default_field_instances() {
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 11,
+        'weight' => 4,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1100,7 +1100,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1130,7 +1130,7 @@ function dt_announcement_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 0,
     ),
   );
 
@@ -1152,7 +1152,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1202,7 +1202,7 @@ function dt_announcement_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 32,
+      'weight' => -1,
     ),
   );
 
@@ -1223,7 +1223,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1284,6 +1284,8 @@ function dt_announcement_field_default_field_instances() {
   t('Departments');
   t('Featured image');
   t('Featured media');
+  t('Group content visibility');
+  t('Groups audience');
   t('Location');
   t('Persons');
   t('Policies');
