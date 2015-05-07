@@ -62,7 +62,7 @@ function dt_priority_strongarm() {
           'weight' => '4',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '2',
         ),
       ),
       'display' => array(),

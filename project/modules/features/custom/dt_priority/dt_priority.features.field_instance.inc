@@ -10,6 +10,51 @@
 function dt_priority_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-priority-field_core_announcement'
+  $field_instances['node-priority-field_core_announcement'] = array(
+    'bundle' => 'priority',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_announcement',
+    'label' => 'Latest',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-priority-field_core_department'
   $field_instances['node-priority-field_core_department'] = array(
     'bundle' => 'priority',
@@ -51,7 +96,7 @@ function dt_priority_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -124,7 +169,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 34,
+      'weight' => 33,
     ),
   );
 
@@ -173,8 +218,8 @@ function dt_priority_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_priorities'
-  $field_instances['node-priority-field_core_priorities'] = array(
+  // Exported field_instance: 'node-priority-field_core_policy'
+  $field_instances['node-priority-field_core_policy'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
@@ -187,7 +232,7 @@ function dt_priority_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -198,54 +243,9 @@ function dt_priority_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority-field_core_topics'
-  $field_instances['node-priority-field_core_topics'] = array(
-    'bundle' => 'priority',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_topics',
-    'label' => 'Topics',
-    'required' => 0,
+    'field_name' => 'field_core_policy',
+    'label' => 'Policies',
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -325,7 +325,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
@@ -392,7 +392,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 36,
+      'weight' => 35,
     ),
   );
 
@@ -459,7 +459,7 @@ function dt_priority_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
@@ -511,7 +511,7 @@ function dt_priority_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
     'widget_type' => 'options_select',
   );
@@ -571,7 +571,7 @@ function dt_priority_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -653,11 +653,11 @@ function dt_priority_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Issue');
+  t('Latest');
   t('Name');
   t('Objectives');
   t('Persons');
-  t('Priorities');
-  t('Topics');
+  t('Policies');
   t('description of the issue that prompted the priority');
   t('shareable excerpt or quote');
   t('title of the priority');
