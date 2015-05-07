@@ -418,10 +418,15 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 29,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -576,8 +581,9 @@ function dt_announcement_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_list_default',
         'weight' => 19,
       ),
       'teaser' => array(
@@ -1038,11 +1044,8 @@ function dt_announcement_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1230,8 +1233,8 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'title',
         'settings' => array(
           'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
+          'title_link' => 'content',
+          'title_style' => '_none',
         ),
         'type' => 'title_linked',
         'weight' => 1,
