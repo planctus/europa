@@ -25,15 +25,7 @@ function dt_priority_uninstall() {
  * Reverting the feature to match all fields from the code base.
  */
 function dt_priority_update_7101() {
-  features_revert_module('dt_priority');
-  features_revert(array(
-    'dt_priority' => array(
-      'field_base',
-      'field_instance',
-      'field_group',
-      'variable',
-    ),
-  ));
+  _dt_priority_revert();
 }
 
 /**
@@ -67,15 +59,7 @@ function dt_priority_update_7103() {
  * Reverting the feature to match all fields from the code base.
  */
 function dt_priority_update_7104() {
-  features_revert_module('dt_priority');
-  features_revert(array(
-    'dt_priority' => array(
-      'field_base',
-      'field_instance',
-      'field_group',
-      'variable',
-    ),
-  ));
+  _dt_priority_revert();
 }
 
 /**
@@ -91,4 +75,26 @@ function dt_priority_update_7105() {
       field_delete_field($field_name);
     }
   }
+}
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_priority_update_7106() {
+  _dt_priority_revert();
+}
+
+/**
+ * Reverts the feature dt_priority.
+ */
+function _dt_priority_revert() {
+  features_revert_module('dt_priority');
+  features_revert(array(
+    'dt_priority' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
 }

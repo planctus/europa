@@ -23,9 +23,9 @@ function dt_priority_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_priority_related',
-      1 => 'group_editorial_settings',
-      2 => 'group_priority_content',
+      0 => 'group_editorial_settings',
+      1 => 'group_priority_content',
+      2 => 'group_priority_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
