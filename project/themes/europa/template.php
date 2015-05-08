@@ -501,6 +501,22 @@ function europa_html_head_alter(&$head_elements) {
 }
 
 /**
+ * Helper function for display 'meta' view mode field.
+ */
+function _europa_field_component_listing($variables) {
+  $output = '';
+  $output .= '<div class="listing">';
+
+  $path = '';
+  foreach ($variables['items'] as $delta => $item) {
+    $path = url('node/' . key($item['node']));
+    $output .= '<div class="listing__item"><a href="' . $path . '">' . drupal_render($item) . '</a></div>';
+  }
+  $output .= '</div>';
+  return $output;
+}
+
+/**
  * Helper function for display 'title' view mode field.
  */
 function _europa_field_component_listing_title($variables) {
@@ -519,15 +535,24 @@ function _europa_field_component_listing_title($variables) {
 function europa_field($variables) {
   $element = $variables['element'];
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
-
   switch ($field_type) {
     case 'entityreference':
       // First node from entity reference.
       $first_node = reset(reset($element[0]));
       $first_node_view_mode = isset($first_node['#view_mode']) ? $first_node['#view_mode'] : NULL;
-      if (!is_null($first_node_view_mode) && $first_node_view_mode == 'title') {
-        return _europa_field_component_listing_title($variables);
+      if (!is_null($first_node_view_mode)) {
+        switch ($first_node_view_mode) {
+          case 'title':
+            return _europa_field_component_listing_title($variables);
+
+            break;
+          case 'meta':
+            return _europa_field_component_listing($variables);
+
+            break;
+        }
       }
+
       break;
   }
 }

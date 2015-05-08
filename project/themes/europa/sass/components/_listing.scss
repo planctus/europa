@@ -7,6 +7,8 @@ Markup: html/listing.html
 
 Styleguide listing
 */
+$padding-top-listing__title: 0.9em;
+$padding-bottom-listing__title: 0.7em;
 
 .listing {
 }
@@ -37,8 +39,8 @@ Styleguide listing
   color: $grey-base;
   font-family: $font-family-sans-serif;
   font-size: 1em;
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
+  padding-top: $padding-top-listing__title;
+  padding-bottom: $padding-bottom-listing__title;
   @extend .h3;
 
   & + * {
@@ -74,9 +76,8 @@ Styleguide listing.title
   a.listing__title,
   .listing__title a {
     display: block;
-    padding-top: 0.7em;
-    padding-bottom: 0.7em;
-    margin-top: 0.2em;
+    padding-top: $padding-top-listing__title;
+    padding-bottom: $padding-bottom-listing__title;
     color: $brand-primary;
   }
 }
