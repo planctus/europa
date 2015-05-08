@@ -5756,6 +5756,9 @@ Styleguide listing
   .listing__title + * {
     font-size: 0.889em; }
 
+.listing--no-padding {
+  padding-left: 0 !important; }
+
 /*
 Listing title
 
