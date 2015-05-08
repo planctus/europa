@@ -8,6 +8,7 @@
   * Implements template_preprocess_field().
   */
 function europa_preprocess_field(&$vars) {
+  // Changing label for the field to display stripped out values
   if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
     $field_value = $vars['element']['#items'][0]['value'];
     $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
@@ -504,7 +505,7 @@ function europa_html_head_alter(&$head_elements) {
  */
 function _europa_field_component_listing_title($variables) {
   $output = '';
-  $output .= '<ul class="listing--title">';
+  $output .= '<ul class="listing listing--title">';
   foreach ($variables['items'] as $delta => $item) {
     $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
   }

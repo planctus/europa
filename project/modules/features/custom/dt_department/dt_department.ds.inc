@@ -36,12 +36,7 @@ function dt_department_ds_field_settings_info() {
     'field_core_topics' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'btn-list',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
+          'func' => 'theme_field',
         ),
       ),
     ),

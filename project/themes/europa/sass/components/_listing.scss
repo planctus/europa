@@ -9,7 +9,6 @@ Styleguide listing
 */
 
 .listing {
-  padding: 0;
 }
 
 .listing__item {
@@ -37,12 +36,14 @@ Styleguide listing
 .listing__title {
   color: $grey-base;
   font-family: $font-family-sans-serif;
+  font-size: 1em;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
   @extend .h3;
-}
 
-a.listing__title,
-.listing__title a {
-  color: $brand-primary;
+  & + * {
+    font-size: $font-size-little;
+  }
 }
 
 
@@ -56,15 +57,22 @@ Markup: html/listing--title.html
 Styleguide listing.title
 */
 .listing--title {
+  padding: 0 0 0 15px;
   .listing__item {
     padding: 0;
     margin: auto;
   }
+
   .listing__title {
+    padding: 0;
+  }
+
+  a.listing__title,
+  .listing__title a {
     display: block;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     margin-top: 0.2em;
-    font-size: 1em;
+    color: $brand-primary;
   }
 }

@@ -5734,9 +5734,6 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-.listing {
-  padding: 0; }
-
 .listing__item {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -5752,10 +5749,12 @@ Styleguide listing
 
 .listing__title {
   color: #404040;
-  font-family: Arial, sans-serif; }
-
-a.listing__title, .listing__title a {
-  color: #006fb4; }
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em; }
+  .listing__title + * {
+    font-size: 0.889em; }
 
 /*
 Listing title
@@ -5766,15 +5765,19 @@ Markup: html/listing--title.html
 
 Styleguide listing.title
 */
-.listing--title .listing__item {
-  padding: 0;
-  margin: auto; }
-.listing--title .listing__title {
-  display: block;
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
-  margin-top: 0.2em;
-  font-size: 1em; }
+.listing--title {
+  padding: 0 0 0 15px; }
+  .listing--title .listing__item {
+    padding: 0;
+    margin: auto; }
+  .listing--title .listing__title {
+    padding: 0; }
+  .listing--title a.listing__title, .listing--title .listing__title a {
+    display: block;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin-top: 0.2em;
+    color: #006fb4; }
 
 .logo {
   display: block;
