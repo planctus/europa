@@ -73,7 +73,7 @@ function dt_department_ds_field_settings_info() {
           'lb' => 'Related links',
           'fis' => TRUE,
           'fis-el' => 'ul',
-          'fis-cl' => 'listing listing--title',
+          'fis-cl' => 'listing listing--title listing--no-padding',
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
@@ -82,6 +82,13 @@ function dt_department_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_field',
         ),
       ),
     ),
@@ -94,6 +101,24 @@ function dt_department_ds_field_settings_info() {
           'fis-cl' => 'btn-group',
           'fis-at' => '',
           'fis-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_priorities' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
         ),
       ),
     ),
