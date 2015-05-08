@@ -23,6 +23,6 @@ function dt_date_format_date_formats() {
  */
 function dt_date_format_date_format_types() {
   return array(
-    'ec_date_j_f_y' => t('EC date format (j F Y)'),
+    'ec_date_j_f_y' => t('EC date format'),
   );
 }
