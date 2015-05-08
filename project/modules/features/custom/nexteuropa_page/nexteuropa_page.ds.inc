@@ -18,7 +18,7 @@ function nexteuropa_page_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'in_page_navigation' => array(
-      'weight' => '2',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -190,19 +190,21 @@ function nexteuropa_page_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'title',
+        1 => 'field_core_introduction',
       ),
       'right_header' => array(
-        1 => 'field_core_link',
+        2 => 'field_core_link',
       ),
       'left' => array(
-        2 => 'in_page_navigation',
+        3 => 'in_page_navigation',
       ),
       'central' => array(
-        3 => 'body',
+        4 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
       'field_core_link' => 'right_header',
       'in_page_navigation' => 'left',
       'body' => 'central',
@@ -211,6 +213,7 @@ function nexteuropa_page_ds_layout_settings_info() {
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
+      'top' => 'div',
       'left' => 'div',
       'central' => 'div',
       'right' => 'div',

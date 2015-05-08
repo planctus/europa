@@ -14,7 +14,7 @@ function nexteuropa_page_install() {
 }
 
 /**
- * Removing obsolete User Tasks group and field.
+ * Implements hook_update().
  */
 function nexteuropa_page_update_7101() {
   // Remove field.
@@ -22,23 +22,10 @@ function nexteuropa_page_update_7101() {
   if (field_info_field($field_name) !== NULL) {
     field_delete_field($field_name);
   }
-}
-
-
-/**
- * Removing obsolete Tag field from page only.
- */
-function nexteuropa_page_update_7102() {
-  // Remove field.
+  // Remove field instance.
   if ($instance = field_info_instance('node', 'field_tags', 'page')) {
     field_delete_instance($instance);
   }
-}
-
-/**
- * Removing group_page_metadata field groups.
- */
-function nexteuropa_page_update_7103() {
   // Remove the fieldgroups.
   $type = 'page';
   $fieldgroups_to_remove = array(
