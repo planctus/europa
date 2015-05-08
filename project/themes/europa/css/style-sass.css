@@ -5259,6 +5259,13 @@ a {
 ul, ol {
   padding-left: 40px; }
 
+.navbar-toggle {
+  border-radius: 0px;
+  border: none; }
+
+.navbar-collapse, .navbar-fixed-top, .navbar {
+  border: none; }
+
 .paragraph, blockquote, .region-content ul, .region-content ol, p {
   font-family: Georgia, "Times New Roman", Times, serif;
   margin-bottom: 1.7em; }
@@ -5639,16 +5646,75 @@ Markup: inpage-nav.html
 Styleguide inpagenav
 
 */
-.inpage-nav.is-collapsed .inpage-nav__help {
+.inpage-nav.is-collapsed .inpage-nav__help, .inpage-nav.is-collapsed .inpage-nav__close-text {
   display: block; }
-.inpage-nav.is-collapsed .inpage-nav__current {
+.inpage-nav.is-collapsed .inpage-nav__collapse-icon, .inpage-nav.is-collapsed .inpage-nav__current {
+  display: none; }
+.inpage-nav.is-collapsed .inpage-nav__header {
+  background-color: #ececec; }
+
+.inpage-nav__navbar {
+  background-color: #004494;
+  color: #ffffff; }
+
+.inpage-nav__header .inpage-nav__current {
+  color: #ffffff; }
+.inpage-nav__header .inpage-nav__help {
+  display: none;
+  background-color: #ececec;
+  font-size: 15px;
+  text-transform: uppercase; }
+
+.inpage-nav__toggle {
+  height: 100%;
+  margin: 0px;
+  border: none;
+  background-color: #023066;
+  padding: 14.5px 15px; }
+
+.inpage-nav__block-title {
   display: none; }
 
 .inpage-nav__title {
-  display: block; }
+  display: block;
+  font-size: 19px; }
 
-.inpage-nav__help {
-  display: none; }
+.inpage-nav__close-text {
+  display: none;
+  font-size: 15px;
+  line-height: 21px; }
+
+.inpage-nav__collapse-icon {
+  display: block;
+  background: url('../images/png/arrow-thick-down.png') no-repeat center center;
+  width: 21px;
+  height: 21px; }
+
+.inpage-nav__list {
+  font-size: 15px; }
+  .inpage-nav__list li > a:link {
+    color: #ffffff; }
+
+@media (min-width: 768px) {
+  .inpage-nav__navbar {
+    position: relative;
+    background: none; }
+
+  .inpage-nav__list li {
+    float: none;
+    line-height: 1;
+    font-size: 15px; }
+    .inpage-nav__list li a:link {
+      color: #404040;
+      text-decoration: none;
+      font-weight: bold; }
+
+  .inpage-nav__block-title {
+    display: inherit; }
+
+  .inpage-nav__header, .inpage-nav__title {
+    display: none; }
+ }
 
 /*
 Listing

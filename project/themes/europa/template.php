@@ -13,6 +13,11 @@ function europa_preprocess_block(&$vars) {
   if ($block->delta == 'nexteuropa_feedback') {
     $vars['classes_array'][] = 'block--full-width';
   }
+
+  if ($block->delta == 'inline_navigation') {
+    $vars['classes_array'][] = 'inpage-nav__wrapper';
+    $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
+  }
 }
 
 /**
@@ -41,13 +46,13 @@ function europa_preprocess_views_view_unformatted(&$vars) {
  * Implements hook_theme().
  */
 function europa_theme() {
-    return array(
-        'node_form' => array(
-            'render element' => 'form',
-            'template' => 'node-form',
-            'path' => drupal_get_path('module', 'europa') . '/theme',
-        ),
-    );
+  return array(
+    'node_form' => array(
+      'render element' => 'form',
+      'template' => 'node-form',
+      'path' => drupal_get_path('module', 'europa') . '/theme',
+    ),
+  );
 }
 
 /**
@@ -63,18 +68,21 @@ function europa_form_required_marker($variables) {
   return '<span' . drupal_attributes($attributes) . '></span>';
 }
 
+/**
+ * Implements template_preprocess_page().
+ */
 function europa_preprocess_page(&$vars) {
   $node = &$vars['node'];
   $vars['ds_node'] = FALSE;
 
-  // nodes excluded that are not using DS
+  // Nodes excluded that are not using DS.
   $node_type_list = array('class');
 
-  if(isset($node) && !in_array($node->type, $node_type_list)) {
-    // This disables message-printing on ALL page displays
+  if (isset($node) && !in_array($node->type, $node_type_list)) {
+    // This disables message-printing on ALL page displays.
     $vars['show_messages'] = FALSE;
 
-    // Add ds_node true to the node object
+    // Add ds_node true to the node object.
     $vars['ds_node'] = TRUE;
   }
 }
@@ -148,12 +156,12 @@ function europa_easy_breadcrumb($variables) {
 
 /**
  * Implements hook_preprocess_image().
-*/
+ */
 function europa_preprocess_image(&$variables) {
   // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if(isset($variables['attributes']['class'])) {
-      if(is_array($variables['attributes']['class'])) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
       }
       else {
@@ -272,10 +280,7 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
-
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
 
     case 'after':
@@ -288,10 +293,7 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
-
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
 
     case 'none':
@@ -302,10 +304,7 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
-
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
+      $output .= $feedback_message;
       break;
   }
 

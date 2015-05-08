@@ -11,23 +11,26 @@
 
         // Page navigation scroll spy
         $('body').scrollspy({
-            target: '.inpage-nav',
-            offset: 400
+            target: '.inpage-nav'
         });
 
         $navBar.on('shown.bs.collapse', function() {
           $inPage.addClass('is-collapsed');
         });
+
         $navBar.on('hide.bs.collapse', function() {
           $inPage.removeClass('is-collapsed');
         });
 
-        $inPage.on("activate.bs.scrollspy", function(e){
-          console.log("tt");
+        $inPage.on("activate.bs.scrollspy", function(e) {
+          // Set current heading as title for In page nav navbar title.
+          $navBarCurrent.text($("li.active > a", $navBar).text());
+        });
+
+        $(window).scroll(function(e) {
+          // Clear title for In page nav navbar title if nothing selected.
           var currentItem = $("li.active > a", $navBar);
-          if (currentItem.length > 0) {
-            $navBarCurrent.text(currentItem.text());
-          } else {
+          if (currentItem.length == 0) {
             $navBarCurrent.text(title);
           }
         });

@@ -10,170 +10,97 @@ Styleguide inpagenav
 */
 .inpage-nav {
  &.is-collapsed {
-   .inpage-nav__help {
+   .inpage-nav__help,
+   .inpage-nav__close-text {
      display: block;
    }
+   .inpage-nav__collapse-icon,
    .inpage-nav__current {
      display: none;
+   }
+   .inpage-nav__header{
+     background-color: $grey-lighter;
    }
  }
 }
 .inpage-nav__navbar {
+  background-color: $blue-dark;
+  color: #ffffff;
 
+}
+.inpage-nav__header{
+  .inpage-nav__current {
+    color: #ffffff;
+  }
+
+  .inpage-nav__help {
+    display: none;
+    background-color: $grey-lighter;
+    font-size: $font-size-base;
+    text-transform: uppercase;
+  }
+}
+
+.inpage-nav__toggle {
+  height: 100%;
+  margin: 0px;
+  border: none;
+  background-color: $blue-darkest;
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+}
+
+.inpage-nav__block-title {
+  display: none;
 }
 
 .inpage-nav__title {
   display: block;
+  font-size: $font-size-large;
 }
 
-.inpage-nav__help {
+.inpage-nav__close-text {
   display: none;
+  font-size: $font-size-base;
+  line-height: $line-height-computed;
 }
 
-// .inpage-nav {
-//   cursor: pointer;
-//   z-index: 100;
-//
-//   .container {
-//     width: auto;
-//   }
-//
-//   &.affix-top .nav li.active a,
-//   &.affix-bottom .nav li.active a {
-//     color: #000 !important
-//   }
-//
-//   &.affix-top .nav li.active a:hover,
-//   &.affix-bottom .nav li.active a:hover {
-//     color: #006fb4 !important
-//   }
-//
-//   &.affix {
-//     top: 30px
-//   }
-//
-//   &.affix .nav li:hover,
-//   &.affix .nav li:active,
-//   &.affix .nav li:focus {
-//     color: #006fb4;
-//     text-decoration: underline
-//   }
-//
-//   &.affix .nav li.active:before {
-//     background: none repeat scroll 0 0 #006fb4;
-//     content: "";
-//     display: block;
-//     height: 100%;
-//     left: -10px;
-//     position: absolute;
-//     top: -2px;
-//     width: 2px
-//   }
-//
-//   &.affix-bottom {
-//     position: absolute;
-//     bottom: 30px
-//   }
-//
-//   .block-title {
-//     background: none;
-//     font-size: 14px;
-//     font-weight: 400;
-//     letter-spacing: .05em;
-//     color: #575757;
-//     text-transform: uppercase;
-//     margin-top: 10px
-//   }
-//
-//   max-width: 228px;
-//   padding-bottom: 1px;
-//
-//   .close-text {
-//     color: #fff;
-//     display: none;
-//     font-size:0.7em;
-//     font-weight: normal;
-//     padding: 5px 15px;
-//   }
-// }
-//
-// .inpage-nav__list {
-//   background: $blue-dark;
-//   border: none;
-//   z-index: 2000;
-//
-//   .nav > li {
-//     border-bottom: 1px solid #023066;
-//
-//     & > a {
-//       text-decoration: none;
-//       font-size: 0.8em;
-//       font-weight: normal;
-//
-//       &:hover {
-//         background: none;
-//       }
-//     }
-//   }
-// }
-//
-// @include breakpoint(screen-xs-min) {
-//   .inpage-nav__list{
-//     background: inherit;
-//     .nav > li {
-//       border: none;
-//
-//       & > a {
-//         text-decoration: underline;
-//
-//         &:hover {
-//           background: inherit;
-//         }
-//       }
-//     }
-//   }
-// }
-//
-// .navbar-default--blue {
-//   @extend .navbar-default;
-//   background: $blue-dark;
-//   border: none;
-//   color: #fff;
-//   font-weight: bold;
-//
-//   .navbar-toggle {
-//     background: #023066;
-//     border: none;
-//     margin: 0;
-//     right: 0;
-//     top: 0;
-//
-//     //clearing all radius items
-//     @include border-top-radius(0);
-//     @include border-right-radius(0);
-//     @include border-bottom-radius(0);
-//     @include border-left-radius(0);
-//
-//     &:hover,
-//     &:focus {
-//       background: #023066;
-//     }
-//   }
-//
-//   a {
-//     color: #fff;
-//   }
-// }
-//
-// .navigation-place {
-//   padding: 10px;
-//   margin-bottom: 0;
-// }
-//
-// .arrow-down {
-//   background-image: url('../images/png/arrow-thick-down.png');
-//   display: block;
-//   margin: auto;
-//   height: 7px;
-//   width: 9px;
-// }
+.inpage-nav__collapse-icon {
+  display: block;
+  background: url('../images/png/arrow-thick-down.png') no-repeat center center;
+  width: $line-height-computed;
+  height: $line-height-computed;
+}
+
+.inpage-nav__list {
+  font-size: $font-size-base;
+  li > a:link {
+    color: #ffffff;
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .inpage-nav__navbar {
+    position: relative;
+    background: none;
+  }
+
+  .inpage-nav__list li {
+    float: none;
+    line-height: 1;
+    font-size: $font-size-base;
+    a:link {
+     color: $grey-base;
+     text-decoration: none;
+     font-weight: bold;
+    }
+  }
+
+  .inpage-nav__block-title {
+    display: inherit;
+  }
+  .inpage-nav__header,
+  .inpage-nav__title
+  {
+    display: none;
+  }
+}
