@@ -5,6 +5,7 @@ package = NextEuropa
 version = 7.x-1.0
 project = nexteuropa_page
 dependencies[] = dt_core
+dependencies[] = field_group
 dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
