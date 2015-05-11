@@ -5635,26 +5635,28 @@ Styleguide footer
 .footer {
   background: #004494;
   padding: 60px 0;
-  color: #fff;
-  font-size: 13px; }
+  color: #fff; }
   .footer a {
     color: #fff; }
   .footer label {
     color: #fff;
-    font-size: 13px;
+    font-size: 1.05em;
     font-weight: normal;
     float: left;
-    padding: 15px 10px 0 0; }
+    padding: 15px 15px 0 0; }
 
 .footer__disclaimer {
-  padding-top: 3px; }
+  font-size: 0.95em;
+  padding-top: 3px;
+  margin-bottom: 0; }
 
 .footer__menu {
   padding-left: 0; }
   .footer__menu li:first-child > a {
     padding-left: 0; }
   .footer__menu li a {
-    padding-top: 10px; }
+    padding-top: 10px;
+    font-size: 0.95em; }
     .footer__menu li a:hover, .footer__menu li a:focus {
       background: none transparent;
       text-decoration: none; }
@@ -5694,6 +5696,120 @@ Styleguide form.help-block
     color: #b3b4b5; }
   .has-error .help-block {
     color: #575757; }
+
+/*
+Icon
+
+Social network icons
+
+Markup: html/icon--social.html
+
+Styleguide icon
+*/
+.icon, .icon--social, .icon--social--blogger::before, .icon--social--blogger:hover::before, .icon--social--facebook::before, .icon--social--facebook:hover::before, .icon--social--flickr::before, .icon--social--flickr:hover::before, .icon--social--gplus::before, .icon--social--gplus:hover::before, .icon--social--linkedin::before, .icon--social--linkedin:hover::before, .icon--social--pinterest::before, .icon--social--pinterest:hover::before, .icon--social--rss::before, .icon--social--rss:hover::before, .icon--social--skype::before, .icon--social--skype:hover::before, .icon--social--twitter::before, .icon--social--twitter:hover::before, .icon--social--youtube::before, .icon--social--youtube:hover::before {
+  content: '';
+  display: block;
+  float: left;
+  position: relative;
+  top: -5px; }
+  .icon:hover, .icon--social:hover, .icon--social--blogger:hover::before, .icon--social--facebook:hover::before, .icon--social--flickr:hover::before, .icon--social--gplus:hover::before, .icon--social--linkedin:hover::before, .icon--social--pinterest:hover::before, .icon--social--rss:hover::before, .icon--social--skype:hover::before, .icon--social--twitter:hover::before, .icon--social--youtube:hover::before {
+    cursor: pointer; }
+
+.icon--social, .icon--social--blogger::before, .icon--social--blogger:hover::before, .icon--social--facebook::before, .icon--social--facebook:hover::before, .icon--social--flickr::before, .icon--social--flickr:hover::before, .icon--social--gplus::before, .icon--social--gplus:hover::before, .icon--social--linkedin::before, .icon--social--linkedin:hover::before, .icon--social--pinterest::before, .icon--social--pinterest:hover::before, .icon--social--rss::before, .icon--social--rss:hover::before, .icon--social--skype::before, .icon--social--skype:hover::before, .icon--social--twitter::before, .icon--social--twitter:hover::before, .icon--social--youtube::before, .icon--social--youtube:hover::before {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 5px 0; }
+
+.icon--social--blogger::before {
+  background: url('../images/svg/icons/social/blogger.svg') no-repeat; }
+.icon--social--blogger:hover::before {
+  background-image: url('../images/svg/icons/social/blogger_hover.svg'); }
+
+.icon--social--facebook::before {
+  background: url('../images/svg/icons/social/facebook.svg') no-repeat; }
+.icon--social--facebook:hover::before {
+  background-image: url('../images/svg/icons/social/facebook_hover.svg'); }
+
+.icon--social--flickr::before {
+  background: url('../images/svg/icons/social/flick.svg') no-repeat; }
+.icon--social--flickr:hover::before {
+  background-image: url('../images/svg/icons/social/flick_hover.svg'); }
+
+.icon--social--gplus::before {
+  background: url('../images/svg/icons/social/gplus.svg') no-repeat; }
+.icon--social--gplus:hover::before {
+  background-image: url('../images/svg/icons/social/gplus_hover.svg'); }
+
+.icon--social--linkedin::before {
+  background: url('../images/svg/icons/social/linkedin.svg') no-repeat; }
+.icon--social--linkedin:hover::before {
+  background-image: url('../images/svg/icons/social/linkedin_hover.svg'); }
+
+.icon--social--pinterest::before {
+  background: url('../images/svg/icons/social/pinterest.svg') no-repeat; }
+.icon--social--pinterest:hover::before {
+  background-image: url('../images/svg/icons/social/pinterest_hover.svg'); }
+
+.icon--social--rss::before {
+  background: url('../images/svg/icons/social/rss.svg') no-repeat; }
+.icon--social--rss:hover::before {
+  background-image: url('../images/svg/icons/social/rss_hover.svg'); }
+
+.icon--social--skype::before {
+  background: url('../images/svg/icons/social/skype.svg') no-repeat; }
+.icon--social--skype:hover::before {
+  background-image: url('../images/svg/icons/social/skype_hover.svg'); }
+
+.icon--social--twitter::before {
+  background: url('../images/svg/icons/social/twitter.svg') no-repeat; }
+.icon--social--twitter:hover::before {
+  background-image: url('../images/svg/icons/social/twitter_hover.svg'); }
+
+.icon--social--youtube::before {
+  background: url('../images/svg/icons/social/youtube.svg') no-repeat; }
+.icon--social--youtube:hover::before {
+  background-image: url('../images/svg/icons/social/youtube_hover.svg'); }
+
+.no-svg .icon--social--blogger::before {
+  background-image: url('../images/png/icons/social/blogger.png'); }
+.no-svg .icon--social--blogger:hover::before {
+  background-image: url('../images/png/icons/social/blogger_hover.png'); }
+.no-svg .icon--social--facebook::before {
+  background-image: url('../images/png/icons/social/facebook.png'); }
+.no-svg .icon--social--facebook:hover::before {
+  background-image: url('../images/png/icons/social/facebook_hover.png'); }
+.no-svg .icon--social--flickr::before {
+  background-image: url('../images/png/icons/social/flickr.png'); }
+.no-svg .icon--social--flickr:hover::before {
+  background-image: url('../images/png/icons/social/flickr_hover.png'); }
+.no-svg .icon--social--gplus::before {
+  background-image: url('../images/png/icons/social/gplus.png'); }
+.no-svg .icon--social--gplus:hover::before {
+  background-image: url('../images/png/icons/social/gplus_hover.png'); }
+.no-svg .icon--social--linkedin::before {
+  background-image: url('../images/png/icons/social/linkedin.png'); }
+.no-svg .icon--social--linkedin:hover::before {
+  background-image: url('../images/png/icons/social/linkedin_hover.png'); }
+.no-svg .icon--social--pinterest::before {
+  background-image: url('../images/png/icons/social/pinterest.png'); }
+.no-svg .icon--social--pinterest:hover::before {
+  background-image: url('../images/png/icons/social/pinterest_hover.png'); }
+.no-svg .icon--social--rss::before {
+  background-image: url('../images/png/icons/social/rss.png'); }
+.no-svg .icon--social--rss:hover::before {
+  background-image: url('../images/png/icons/social/rss_hover.png'); }
+.no-svg .icon--social--skype::before {
+  background-image: url('../images/png/icons/social/skype.png'); }
+.no-svg .icon--social--skype:hover::before {
+  background-image: url('../images/png/icons/social/skype_hover.png'); }
+.no-svg .icon--social--twitter::before {
+  background-image: url('../images/png/icons/social/twitter.png'); }
+.no-svg .icon--social--twitter:hover::before {
+  background-image: url('../images/png/icons/social/twitter_hover.png'); }
+.no-svg .icon--social--youtube::before {
+  background-image: url('../images/png/icons/social/youtube.png'); }
+.no-svg .icon--social--youtube:hover::before {
+  background-image: url('../images/png/icons/social/youtube_hover.png'); }
 
 /*
 Inpage navigation
