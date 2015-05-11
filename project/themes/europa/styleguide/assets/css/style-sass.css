@@ -5734,26 +5734,37 @@ Markup: html/listing.html
 Styleguide listing
 */
 .listing__item {
-  padding-top: 1em;
-  padding-bottom: 1em;
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;
   list-style: none;
-  list-style-image: none; }
+  list-style-image: none;
+  padding-top: 0;
+  padding-bottom: 0; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
+  .listing__item:hover .listing__title, .listing__item:active .listing__title, .listing__item:focus .listing__title {
+    text-decoration: underline;
+    color: #404040; }
+
+.listing__item-link {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: block;
+  overflow: hidden;
+  color: #404040; }
 
 .listing__column-second {
   float: right; }
 
 .listing__title {
-  color: #404040;
+  color: #006fb4;
   font-family: Arial, sans-serif;
   font-size: 1em;
   padding-top: 0.9em;
-  padding-bottom: 0.7em; }
+  padding-bottom: 0; }
   .listing__title + * {
-    font-size: 0.889em; }
+    font-size: 0.889em;
+    padding-top: 0.7em; }
 
 .listing--no-padding {
   padding-left: 0 !important; }
@@ -5770,7 +5781,6 @@ Styleguide listing.title
 .listing--title {
   padding: 0 0 0 15px; }
   .listing--title .listing__item {
-    padding: 0;
     margin: auto; }
   .listing--title .listing__title {
     padding: 0; }
