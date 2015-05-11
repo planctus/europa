@@ -103,7 +103,6 @@ function europa_preprocess_node(&$vars) {
       '!datetime' => $vars['date'],
     ));
   }
-
   $vars['messages'] = theme('status_messages');
 }
 
@@ -507,10 +506,8 @@ function _europa_field_component_listing($variables) {
   $output = '';
   $output .= '<div class="listing">';
 
-  $path = '';
   foreach ($variables['items'] as $delta => $item) {
-    $path = url('node/' . key($item['node']));
-    $output .= '<div class="listing__item"><a href="' . $path . '">' . drupal_render($item) . '</a></div>';
+    $output .= '<div class="listing__item">' . drupal_render($item) . '</div>';
   }
   $output .= '</div>';
   return $output;
