@@ -11,6 +11,7 @@ features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
+features[ds_field_settings][] = node|announcement|default
 features[ds_field_settings][] = node|announcement|full
 features[ds_field_settings][] = node|announcement|meta
 features[ds_field_settings][] = node|announcement|teaser

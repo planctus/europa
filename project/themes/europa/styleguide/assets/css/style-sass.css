@@ -911,20 +911,20 @@ hr {
   overflow: visible;
   clip: auto; }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .listing__title, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
-  h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+  h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .listing__title small, .h3 .small, .listing__title .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
     font-weight: normal;
     line-height: 1;
     color: #777777; }
 
-h1, .h1, h2, .h2, h3, .h3 {
+h1, .h1, h2, .h2, h3, .h3, .listing__title {
   margin-top: 21px;
   margin-bottom: 10.5px; }
-  h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .h3 .small {
+  h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .listing__title small, .h3 .small, .listing__title .small {
     font-size: 65%; }
 
 h4, .h4, h5, .h5, h6, .h6 {
@@ -939,7 +939,7 @@ h1, .h1 {
 h2, .h2 {
   font-size: 1.667em; }
 
-h3, .h3 {
+h3, .h3, .listing__title {
   font-size: 1.556em; }
 
 h4, .h4 {
@@ -4962,6 +4962,7 @@ Markup: html/btn.html
 Styleguide buttons
 */
 .btn {
+  margin-bottom: 1em;
   line-height: 1;
   border-radius: 0;
   border-width: 2px;
@@ -5006,6 +5007,22 @@ Styleguide buttons
     .btn.btn-ctn:focus {
       border-color: #404040;
       outline-color: #404040; }
+
+/*
+Button group
+
+Custom bootstrap button group
+
+Markup: html/btn-group.html
+
+Styleguide buttons.group
+*/
+.btn-group {
+  margin-top: 1em; }
+  .btn-group .btn {
+    margin-right: 0.4em; }
+    .btn-group .btn:last-child {
+      margin-right: 0; }
 
 /*
 Checkbox
@@ -5198,8 +5215,8 @@ body {
 
   Styleguide text.headings
 */
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  padding: 0.4em 0 1em;
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .listing__title, .h4, .h5, .h6 {
+  padding: 1em 0;
   margin: 0; }
 
 h1, .h1 {
@@ -5212,7 +5229,7 @@ h2, .h2 {
   font-weight: 600;
   color: #404040; }
 
-h3, .h3 {
+h3, .h3, .listing__title {
   font-size: 1.556em;
   font-weight: 600;
   color: #222222; }
@@ -5256,7 +5273,7 @@ ul, ol {
   padding-left: 40px; }
 
 .paragraph, blockquote, .region-content ul, .region-content ol, p {
-  margin-bottom: 1.7em; }
+  margin-bottom: 0.8em; }
 
 /*
 Radio
@@ -5717,18 +5734,40 @@ Markup: html/listing.html
 Styleguide listing
 */
 .listing__item {
-  padding-top: 1em;
-  padding-bottom: 1em;
   border-bottom: 1px solid #e2e2e2;
-  overflow: hidden; }
+  overflow: hidden;
+  list-style: none;
+  list-style-image: none;
+  padding-top: 0;
+  padding-bottom: 0; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
+  .listing__item:hover .listing__title, .listing__item:active .listing__title, .listing__item:focus .listing__title {
+    text-decoration: underline;
+    color: #404040; }
+
+.listing__item-link {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: block;
+  overflow: hidden;
+  color: #404040; }
 
 .listing__column-second {
   float: right; }
 
 .listing__title {
-  color: #404040; }
+  color: #006fb4;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  padding-top: 0.9em;
+  padding-bottom: 0; }
+  .listing__title + * {
+    font-size: 0.889em;
+    padding-top: 0.7em; }
+
+.listing--no-padding {
+  padding-left: 0 !important; }
 
 /*
 Listing title
@@ -5739,14 +5778,17 @@ Markup: html/listing--title.html
 
 Styleguide listing.title
 */
-.listing--title .listing__item {
-  display: block;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em; }
-.listing--title .listing__title {
-  padding: 0;
-  margin-top: 0.2em;
-  font-size: 1em; }
+.listing--title {
+  padding: 0 0 0 15px; }
+  .listing--title .listing__item {
+    margin: auto; }
+  .listing--title .listing__title {
+    padding: 0; }
+  .listing--title a.listing__title, .listing--title .listing__title a {
+    display: block;
+    padding-top: 0.9em;
+    padding-bottom: 0.7em;
+    color: #006fb4; }
 
 .logo {
   display: block;

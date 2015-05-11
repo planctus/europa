@@ -5,6 +5,52 @@
  */
 
 /**
+ * Implements hook_ds_field_settings_info().
+ */
+function dt_person_ds_field_settings_info() {
+  $export = array();
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|meta';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'meta';
+  $ds_fieldsetting->settings = array(
+    'field_person_first_name' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_last_name' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_role' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|person|meta'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_person_ds_layout_settings_info() {
@@ -16,28 +62,37 @@ function dt_person_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'person';
   $ds_layout->view_mode = 'meta';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'field_person_first_name',
-        1 => 'field_person_last_name',
+      'main' => array(
+        0 => 'group_person_meta',
+        1 => 'group_person_name',
+        3 => 'field_person_first_name',
+        4 => 'field_person_last_name',
+        5 => 'field_person_role',
+      ),
+      'second' => array(
         2 => 'field_person_photo',
-        3 => 'field_core_topics',
       ),
     ),
     'fields' => array(
-      'field_person_first_name' => 'ds_content',
-      'field_person_last_name' => 'ds_content',
-      'field_person_photo' => 'ds_content',
-      'field_core_topics' => 'ds_content',
+      'group_person_meta' => 'main',
+      'group_person_name' => 'main',
+      'field_person_photo' => 'second',
+      'field_person_first_name' => 'main',
+      'field_person_last_name' => 'main',
+      'field_person_role' => 'main',
     ),
     'classes' => array(),
-    'wrappers' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+      'second' => 'div',
+    ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
-    'layout_attributes_merge' => TRUE,
-    'layout_link_attribute' => FALSE,
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
   $export['node|person|meta'] = $ds_layout;

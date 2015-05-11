@@ -12,6 +12,21 @@ function dt_announcement_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|announcement|default';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'announcement';
+  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|announcement|default'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|announcement|full';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'announcement';
@@ -262,6 +277,11 @@ function dt_announcement_ds_field_settings_info() {
           'fi-def-at' => TRUE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'field_announcement_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_announcement_type' => array(

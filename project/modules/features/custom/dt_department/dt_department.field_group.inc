@@ -115,7 +115,7 @@ function dt_department_field_group_info() {
         'classes' => '',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'h3',
+        'label_element' => 'h2',
         'attributes' => 'name="contact"',
       ),
     ),
@@ -146,7 +146,7 @@ function dt_department_field_group_info() {
         'classes' => '',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'h3',
+        'label_element' => 'h2',
         'attributes' => 'name="leadership"',
       ),
     ),
@@ -186,6 +186,36 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_meta|node|department|meta';
+  $field_group->group_name = 'group_department_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_core_abbreviation',
+      1 => 'field_core_ecorganisation',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_department_meta|node|department|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_department_responsibilit|node|department|full';
   $field_group->group_name = 'group_department_responsibilit';
   $field_group->entity_type = 'node';
@@ -202,8 +232,8 @@ function dt_department_field_group_info() {
       3 => 'field_department_related_tasks',
       4 => 'field_department_tasks_desc',
       5 => 'field_department_work_areas_sent',
-      6 => 'field_core_priorities',
-      7 => 'field_department_tasks',
+      6 => 'field_department_tasks',
+      7 => 'field_core_priorities',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -212,7 +242,7 @@ function dt_department_field_group_info() {
         'classes' => '',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'h3',
+        'label_element' => 'h2',
         'attributes' => 'name="resposibilities"',
       ),
     ),
