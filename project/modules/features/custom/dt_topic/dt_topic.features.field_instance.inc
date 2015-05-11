@@ -143,6 +143,12 @@ function dt_topic_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'title_field',
