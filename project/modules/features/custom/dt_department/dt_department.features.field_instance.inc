@@ -43,13 +43,9 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -637,7 +633,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
+          'links' => 0,
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
@@ -1470,13 +1466,9 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => 'content',
-          'title_style' => 'h3',
-        ),
-        'type' => 'title_linked',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'teaser' => array(

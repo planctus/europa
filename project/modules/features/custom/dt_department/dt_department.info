@@ -99,5 +99,6 @@ features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][title] = title
 features_exclude[dependencies][smart_trim] = smart_trim
 features_exclude[dependencies][i18n_taxonomy] = i18n_taxonomy
+features_exclude[dependencies][og_ui] = og_ui
 features_exclude[field_base][field_core_contact] = field_core_contact
 features_exclude[variable][node_options_department] = node_options_department
