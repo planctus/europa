@@ -14,8 +14,13 @@
             target: '.inpage-nav'
         });
 
+        $navBar.on('show.bs.collapse', function() {
+          $inPage.addClass('is-collapsing');
+        });
+
         $navBar.on('shown.bs.collapse', function() {
           $inPage.addClass('is-collapsed');
+          $inPage.removeClass('is-collapsing');
         });
 
         $navBar.on('hide.bs.collapse', function() {
@@ -35,19 +40,14 @@
           }
         });
 
-        enquire.register("screen and (min-width: 768px)", {
-          setup : function() {
-
-          },
-
-          // desktop
-          match : function() {
-
-          },
-
+        enquire.register("screen and (max-width: 768px)", {
           // mobile
+          match : function() {
+            $('body').addClass('is-inpage-nav-navbar');
+          },
+          // desktop
           unmatch : function() {
-
+            $('body').removeClass('is-inpage-nav-navbar');
           }
         });
       });

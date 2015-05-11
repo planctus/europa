@@ -6,7 +6,7 @@
 ?>
 <div class="inpage-nav">
     <nav class="navbar navbar-default navbar-fixed-top inpage-nav__navbar">
-        <div class="container">
+        <div class="container inpage-nav__container">
             <div class="navbar-header inpage-nav__header"  data-toggle="collapse" data-target="#inpage-navigation-list" aria-expanded="false" aria-controls="navbar">
                 <button type="button" class="navbar-toggle collapsed inpage-nav__toggle">
                     <span class="sr-only"><?php print t("Toggle navigation"); ?></span>

@@ -9,7 +9,8 @@ Styleguide inpagenav
 
 */
 .inpage-nav {
- &.is-collapsed {
+ &.is-collapsed,
+ &.is-collapsing {
    .inpage-nav__help,
    .inpage-nav__close-text {
      display: block;
@@ -39,14 +40,12 @@ Styleguide inpagenav
     font-size: $font-size-base;
     text-transform: uppercase;
   }
-}
 
-.inpage-nav__toggle {
-  height: 100%;
-  margin: 0px;
-  border: none;
-  background-color: $blue-darkest;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  .inpage-nav__toggle {
+    @extend .btn;
+    @extend .btn-primary;
+    margin: 0;
+  }
 }
 
 .inpage-nav__block-title {
@@ -56,6 +55,8 @@ Styleguide inpagenav
 .inpage-nav__title {
   display: block;
   font-size: $font-size-large;
+  padding: 15px;
+  line-height: 21px;
 }
 
 .inpage-nav__close-text {
@@ -72,9 +73,31 @@ Styleguide inpagenav
 }
 
 .inpage-nav__list {
-  font-size: $font-size-base;
-  li > a:link {
-    color: #ffffff;
+  ul {
+    margin: 0px;
+    li {
+      font-size: $font-size-base;
+      line-height: 21px;
+      padding: 0;
+      & > .inpage_nav__list__item {
+        padding: 1em 0 1em 1em;
+        border-top: 1px solid $blue-darkest;
+        margin: 0 1em;
+        &:link,
+        &:visited,
+        &:hover,
+        &:active {
+          color: #ffffff;
+        }
+        &:hover,
+        &:active {
+          text-decoration: underline;
+        }
+      }
+      &.active > a.inpage_nav__list__item{
+         background: none;
+      }
+    }
   }
 }
 
@@ -82,25 +105,65 @@ Styleguide inpagenav
   .inpage-nav__navbar {
     position: relative;
     background: none;
+
+    .inpage-nav__list li {
+      float: none;
+      font-size: 1em;
+
+      & > .inpage_nav__list__item{
+        &:link, &:visited {
+          border: none;
+          color: $grey-base;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 0px;
+          margin: 0px;
+          margin-top: 20px;
+        }
+        &:hover, &:active {
+          text-decoration: underline;
+          color: $blue;
+        }
+      }
+
+      &.active {
+        .inpage_nav__list__item {
+          color: $blue;
+          background: none;
+        }
+        &:before {
+          background: none repeat scroll 0 0 $blue;
+          content: "";
+          display: block;
+          height: 100%;
+          left: -10px;
+          position: absolute;
+          top: -2px;
+          width: 2px;
+        }
+      }
+    }
   }
 
-  .inpage-nav__list li {
-    float: none;
-    line-height: 1;
-    font-size: $font-size-base;
-    a:link {
-     color: $grey-base;
-     text-decoration: none;
-     font-weight: bold;
-    }
+  .inpage-nav__container {
+    padding: 0;
+    width: auto;
   }
 
   .inpage-nav__block-title {
     display: inherit;
+    font-size: $font-size-base;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: $grey-dark;
   }
   .inpage-nav__header,
   .inpage-nav__title
   {
     display: none;
   }
+}
+
+.is-inpage-nav-navbar {
+  margin-top: 50px;
 }
