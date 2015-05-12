@@ -1,6 +1,6 @@
 // Link
 //
-// Markup: link.html
+// Markup: html/link.html
 //
 // :hover - Hover state
 // :visited - Visited state
@@ -16,4 +16,20 @@ a {
     color: $grey-base;
     text-decoration: underline;
   }
+
+  &[href^="http"],
+  &[href^="https"] {
+    &:after {
+      @extend .icon;
+      @extend .icon--external;
+      display: inline-block;
+      font-size: 75%;
+      margin-left: 0.4em;
+      margin-right: 0.2em;
+    }
+  }
+}
+
+p a {
+  text-decoration: underline;
 }
