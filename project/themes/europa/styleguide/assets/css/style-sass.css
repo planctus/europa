@@ -5939,4 +5939,7 @@ Styleguide: icon
 .icon--external, a[href^="http"]:after, a[href^="https"]:after {
   content: '\e601'; }
 
+.icon--external:before {
+  content: '\e601'; }
+
 /*# sourceMappingURL=style-sass.css.map */
