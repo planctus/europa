@@ -5008,13 +5008,13 @@ Styleguide buttons
       outline-color: #404040; }
 
 /*
-Button list
+Button block
 
-Button list component
+Button block component
 
-Markup: html/btn-list.html
+Markup: html/btn-block.html
 
-Styleguide buttons.btn-list
+Styleguide buttons.btn-block
 */
 .btn-block {
   width: 100%;
