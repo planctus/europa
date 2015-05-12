@@ -49,7 +49,7 @@
 
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
-    <label<?php print $title_attributes; ?>><?php print $title; ?></label>
+    <label class="footer__label" <?php print $title_attributes; ?>><?php print $title; ?></label>
   <?php endif;?>
   <?php print render($title_suffix); ?>
 
