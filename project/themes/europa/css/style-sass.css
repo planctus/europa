@@ -5274,6 +5274,9 @@ a[href^="http"]:after, a[href^="https"]:after {
   margin-left: 0.4em;
   margin-right: 0.2em; }
 
+p a {
+  text-decoration: underline; }
+
 ul, ol {
   padding-left: 40px; }
 
