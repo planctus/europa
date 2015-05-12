@@ -5008,6 +5008,23 @@ Styleguide buttons
       outline-color: #404040; }
 
 /*
+Button list
+
+Button list component
+
+Markup: html/btn-list.html
+
+Styleguide buttons.btn-list
+*/
+.btn-block {
+  width: 100%;
+  max-width: 450px;
+  text-align: left; }
+  .btn-block + .btn-block {
+    margin-top: 0;
+    border-top: none; }
+
+/*
 Checkbox
 
 Markup: html/checkbox.html
@@ -5135,11 +5152,6 @@ Styleguide form.checkbox
   font-weight: 800;
   font-style: normal;
 }*/
-@font-face {
-  font-family: 'EuropaIcons';
-  src: url('../fonts/europa-icons/europa-icons.eot');
-  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
-
 /*
 Form
 
@@ -5257,10 +5269,8 @@ a:hover, a:active, a:focus {
   color: #404040;
   text-decoration: underline; }
 a[href^="http"]:after, a[href^="https"]:after {
-  font-family: 'EuropaIcons';
-  content: '\e601';
   display: inline-block;
-  font-size: 80%;
+  font-size: 75%;
   margin-left: 0.4em;
   margin-right: 0.2em; }
 
@@ -5667,7 +5677,7 @@ Inpage navigation
 
 Floating menu containing links to headings in a long page.
 
-Markup: inpage-nav.html
+Markup: html/inpage-nav.html
 
 Styleguide inpagenav
 
@@ -5898,5 +5908,32 @@ Styleguide messages
     background: #006fb4;
     padding: 8px;
     border: 4px solid #ffd617; }
+
+/*
+Icon
+
+Markup: html/icon.html
+
+.icon--external - External link icon
+
+Styleguide: icon
+*/
+@font-face {
+  font-family: 'EuropaIcons';
+  src: url('../fonts/europa-icons/europa-icons.eot');
+  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
+
+.icon, a[href^="http"]:after, a[href^="https"]:after {
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon--external, a[href^="http"]:after, a[href^="https"]:after {
+  content: '\e601'; }
 
 /*# sourceMappingURL=style-sass.css.map */
