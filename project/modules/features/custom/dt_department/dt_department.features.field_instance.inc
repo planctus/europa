@@ -268,7 +268,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'list_view' => array(
