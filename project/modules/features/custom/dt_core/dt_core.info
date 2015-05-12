@@ -8,6 +8,7 @@ dependencies[] = addressfield
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = ds_extras
+dependencies[] = dt_date_format
 dependencies[] = entityreference
 dependencies[] = inline_entity_form
 dependencies[] = link
