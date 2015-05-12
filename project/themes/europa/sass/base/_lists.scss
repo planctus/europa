@@ -13,5 +13,8 @@ ol {
   ul,
   ol {
     @extend .paragraph;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
   }
 }

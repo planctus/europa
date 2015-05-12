@@ -11,6 +11,7 @@ $padding-top-listing__title: 0.9em;
 $padding-bottom-listing__title: 0.7em;
 
 .listing {
+  @extend .container-fluid;
 }
 
 .listing__item {
@@ -41,10 +42,17 @@ $padding-bottom-listing__title: 0.7em;
   display: block;
   overflow: hidden;
   color: $grey-base;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 .listing__column-main {
   @extend .col-sm-9;
+  padding-left: 0;
 }
 
 .listing__column-second {
@@ -80,8 +88,12 @@ Markup: html/listing--title.html
 
 Styleguide listing.title
 */
-.listing--title {
+.listing--title,
+ul.listing--title {
   padding: 0 0 0 15px;
+  margin-left: 0;
+  margin-right: 0;
+  
   .listing__item {
     margin: auto;
   }
