@@ -35,7 +35,6 @@
         $accordionWrapper.on('hidden.bs.collapse', function() {
           if ($('.accordion-body', this).children(':visible').length == 0) {
             $submitButton.hide();
-            console.log('true');
           }
         });
 
@@ -45,11 +44,11 @@
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
         });
       });
-      
-      // Removing is-open class when new form is loaded
-      if ($feedbackFormWrapper.find('.feedback-form').length) {
+
+      // Remove is-open class when button for loading new form is clicked
+      $('.feedback__message a').click(function(){
         $feedbackFormWrapper.removeClass('is-open');
-      }
+      });
 
       var currentType = $('input[name="feedback_type"]').val();
       var $feedbackActiveCollapsed = $('#feedback-form__content, #'+currentType+'');

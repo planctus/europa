@@ -5605,6 +5605,9 @@ Styleguide form.feedback-message
   margin-bottom: 0.5em;
   margin-left: 1.944em; }
 
+.feedback-form__btn {
+  width: 12em; }
+
 #feedback-form__accordion {
   margin-bottom: 1em;
   border: 1px solid #575757; }
