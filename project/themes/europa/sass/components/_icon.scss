@@ -33,7 +33,13 @@ Styleguide: icon
 .icon--external {
   content: '\e601';
 }
-
 .icon--external:before {
-  content: '\e601';
+  @extend .icon--external;
+}
+
+.icon--spinner {
+  content: '\e984';
+}
+.icon--spinner:before {
+  @extend .icon--spinner;
 }

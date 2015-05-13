@@ -5939,10 +5939,11 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--external, a[href^="http"]:after, a[href^="https"]:after {
+.icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
   content: '\e601'; }
 
-.icon--external:before {
-  content: '\e601'; }
+.icon--spinner, .icon--spinner:before {
+  content: '\e984'; }
+
 
 /*# sourceMappingURL=style-sass.css.map */

@@ -4,6 +4,17 @@
  * template.php
  */
 
+ /**
+  * Implements hook_js_alter().
+  */
+ function europa_js_alter(&$js) {
+   $base_theme_path = drupal_get_path('theme', 'bootstrap');
+
+   unset(
+     $js[$base_theme_path . '/js/misc/ajax.js']
+   );
+ }
+
 /**
  * Implements template_preprocess_block().
  */
