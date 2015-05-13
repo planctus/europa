@@ -62,7 +62,7 @@ function dt_announcement_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
-      'format' => 'ds_post_date_medium',
+      'format' => 'ds_post_date_ec_date_j_f_y',
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -214,7 +214,7 @@ function dt_announcement_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '21',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_ec_date_j_f_y',
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -266,7 +266,7 @@ function dt_announcement_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '12',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_ec_date_j_f_y',
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
