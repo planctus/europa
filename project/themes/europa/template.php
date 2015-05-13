@@ -24,6 +24,11 @@ function europa_preprocess_views_view(&$vars) {
   if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
     $vars['classes_array'][] = 'listing';
   }
+
+  // Checking if exposed filters are set and add variable that stores active filters.
+  if (module_exists('exposed_filter_data')) {
+    $vars['active_filters'] = get_exposed_filter_output();
+  }
 }
 
 /**
@@ -34,6 +39,11 @@ function europa_preprocess_views_view_unformatted(&$vars) {
 
   $vars['additional_classes'][] = 'listing__item';
   $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
+
+  // Checking if exposed filters are set and add variable that stores active filters.
+  if (module_exists('exposed_filter_data')) {
+    $vars['active_filters'] = get_exposed_filter_output();
+  }
 }
 
 
@@ -41,13 +51,13 @@ function europa_preprocess_views_view_unformatted(&$vars) {
  * Implements hook_theme().
  */
 function europa_theme() {
-    return array(
-        'node_form' => array(
-            'render element' => 'form',
-            'template' => 'node-form',
-            'path' => drupal_get_path('module', 'europa') . '/theme',
-        ),
-    );
+  return array(
+    'node_form' => array(
+      'render element' => 'form',
+      'template' => 'node-form',
+      'path' => drupal_get_path('module', 'europa') . '/theme',
+    ),
+  );
 }
 
 /**
@@ -76,6 +86,20 @@ function europa_preprocess_page(&$vars) {
 
     // Add ds_node true to the node object
     $vars['ds_node'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for views exposed form.
+ */
+function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    // Button value change on all the views exposed forms is due to a
+    // design/ux requirement which uses the 'Refine results' label for all the
+    // filter forms.
+    $form['submit']['#value'] = t('Refine results');
+    $form['submit']['#attributes']['class'][] = 'btn-primary';
+    $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
   }
 }
 
@@ -129,7 +153,7 @@ function europa_easy_breadcrumb($variables) {
       $it = $breadcrumb[$i];
       $content = decode_entities($it['content']);
       if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class'])))  . '</li>';
+        $html .= '<li>' . l($content, $it['url'] , array('attributes' => array('class' => $it['class']))) . '</li>';
       }
       else {
         $class = implode(' ', $it['class']);
@@ -152,8 +176,8 @@ function europa_easy_breadcrumb($variables) {
 function europa_preprocess_image(&$variables) {
   // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if(isset($variables['attributes']['class'])) {
-      if(is_array($variables['attributes']['class'])) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
       }
       else {
