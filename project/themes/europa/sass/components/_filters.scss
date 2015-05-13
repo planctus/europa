@@ -1,0 +1,81 @@
+/*
+Filters
+
+Filters implementation
+Drupal implementation guidelines can be found [PLACEHOLDER FOR GUIDELINES ON IMPLEMENTATION]
+
+
+Styleguide forms.filters
+*/
+
+.filters {
+  background: $grey-lighter;
+  margin-left: -($grid-gutter-width / 2);
+  margin-right: -($grid-gutter-width / 2);
+  padding: ($grid-gutter-width / 2);
+}
+
+@include breakpoint(screen-sm-min) {
+  .filters {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.filters__btn-submit {
+  width: 100%;
+}
+
+.filters__result-count {
+  overflow: hidden;
+  padding: 0 0 1em;
+  line-height: 1;
+}
+
+.filters__btn-collapse {
+  float: right;
+}
+
+.filters__close {
+  text-decoration: none;
+  color: $brand-primary !important;
+  opacity: 1 !important;
+  text-shadow: none;
+  font-size: 1em;
+  font-weight: $font-weight-normal;
+
+  &:after {
+    content: "";
+    background: url('../images/svg/arrow-up--blue.svg') no-repeat;
+    height: 8px;
+    width: 10px;
+    margin-left: 5px;
+    display: inline-block;
+    text-decoration: none !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .filters__close {
+    &:after {
+      height: 9px;
+      width: 12px;
+    }
+  }
+}
+
+.filter__items-number,
+.filters__items-name {
+  font-size: $font-size-h1;
+}
+
+.filter__items-number {
+  margin-right: 0.333em;
+}

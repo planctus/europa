@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Provides simple way to print exposed filter data
+ */
+
+/**
+ * Implementation of hook_theme().
+ */
+function exposed_filter_data_theme() {
+  return array(
+    'exposed_filter_data' => array(
+      'template' => 'exposed_filter_data',
+      'variables' => array(
+        'view' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_preprocess().
+ */
+function exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
+  // Add the CSS.
+  drupal_add_css(drupal_get_path('module', 'exposed_filter_data') . '/exposed_filter_data.css');
+  $view = $vars['view'];
+
+  // In case no view - get the current view.
+  if ($view == NULL) {
+    $view = views_get_current_view();
+  }
+
+  // Make a variable out of each filter.
+  if (isset($view->exposed_input)) {
+    foreach ($view->exposed_input as $filter => $value) {
+      $vars[$filter] = $value;
+      $pretty_filter_key = _pretty_filter($filter);
+      $vars['exposed_filters'][$pretty_filter_key] = _get_field_name($filter, $value, $view);
+    }
+  }
+}
+
+/**
+ * Helper to get the human pretty name of a given field by value.
+ * @param $value
+ * @param $filter
+ * @param $view
+ * @return string
+ */
+function _get_field_name($filter, $value, $view) {
+  foreach ($view->exposed_raw_input as $filter_key => $filter_data) {
+    if ($filter === $filter_key) {
+      switch ($filter) {
+        case "title":
+          $pretty_name = $filter_data;
+          return $pretty_name;
+
+        case "keywords":
+          $pretty_name = $filter_data;
+          return $pretty_name;
+
+        case "type":
+          $pretty_name = $view->filter['field_announcement_type_value']->value_options[$filter_data];
+          return $pretty_name;
+
+        case "related_departments":
+          $department = entity_load_single('node', $filter_data);
+          $pretty_name = $department->title;
+          return $pretty_name;
+
+        case "publish_date":
+          $pretty_name = t("Between") . " "
+            . $view->exposed_raw_input['publish_date']['min'] . " "
+            . t("and") . " " . $view->exposed_raw_input['publish_date']['max'];
+          return $pretty_name;
+      }
+    }
+  }
+}
+
+/**
+ * Prettify the filter name.
+ * @param $filter
+ * @param $view
+ */
+function _pretty_filter($filter) {
+  $pretty_filter = str_replace("_", " ", strtolower($filter));
+  return $pretty_filter;
+}
+
+/**
+ * Simple call to the theme, easy to be used in a view header.
+ */
+function get_exposed_filter_output() {
+  return theme('exposed_filter_data');
+}
