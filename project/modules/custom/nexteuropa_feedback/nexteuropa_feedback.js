@@ -3,12 +3,17 @@
     attach: function(context) {
       var $feedbackForm = $('#nexteuropa-feedback-form');
       var $feedbackFormWrapper = $('.feedback-form__wrapper');
+      var currentType = $('input[name="feedback_type"]').val();
 
       $feedbackForm.once('feedback', function() {
         var $submitButton = $('.form-submit', this),
             $accordionWrapper = $('#feedback-form__accordion');
 
-        $submitButton.hide();
+        // Checking if value of the hidden field is 'feedback'
+        if(currentType == 'feedback') {
+          $submitButton.hide();
+        }
+
         $('.accordion-body', this).removeClass('in');
         $('.accordion-toggle', this).addClass('collapsed');
 
@@ -50,7 +55,6 @@
         $feedbackFormWrapper.removeClass('is-open');
       });
 
-      var currentType = $('input[name="feedback_type"]').val();
       var $feedbackActiveCollapsed = $('#feedback-form__content, #'+currentType+'');
 
       // Initializing collapse plugin so that it works on browsers without css3 transitions
@@ -62,7 +66,11 @@
         $('.feedback-processed .messages').hide();
 
         // Showing active tab after ajax call with empty field
-        $feedbackActiveCollapsed.collapse('toggle');
+        $feedbackActiveCollapsed.show();
+        $feedbackActiveCollapsed.addClass('is-not-animating').collapse('show');
+        $feedbackActiveCollapsed.on('shown.bs.collapse', function(){
+          $(this).removeClass('is-not-animating').removeAttr('style');
+        });
         $('#' + currentType).siblings('.accordion-heading').children().removeClass('collapsed');
       }
     }

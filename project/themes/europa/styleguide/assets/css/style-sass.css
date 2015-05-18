@@ -4892,6 +4892,11 @@ button.close {
 .padding-reset {
   padding: 0 !important; }
 
+.is-not-animating {
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none; }
+
 img {
   height: auto;
   display: block;
@@ -5608,6 +5613,9 @@ Styleguide form.feedback-message
 .feedback-form__btn {
   width: 12em; }
 
+.feedback-form__icon {
+  font-size: 0.778em; }
+
 #feedback-form__accordion {
   margin-bottom: 1em;
   border: 1px solid #575757; }
@@ -5936,6 +5944,8 @@ Styleguide: icon
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
+  margin-left: 4px;
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -5945,5 +5955,35 @@ Styleguide: icon
 .icon--spinner, .icon--spinner:before {
   content: '\e984'; }
 
+.is-spinning:before {
+  -webkit-animation: icon-spin-right 2s infinite linear;
+  -o-animation: icon-spin-right 2s infinite linear;
+  animation: icon-spin-right 2s infinite linear; }
+
+@-webkit-keyframes icon-spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes icon-spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 
 /*# sourceMappingURL=style-sass.css.map */

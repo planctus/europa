@@ -53,7 +53,7 @@ Drupal.ajax.prototype.beforeSend = function (xmlhttprequest, options) {
     $(this.element).after(this.progress.element);
   }
   else if (this.progress.type == 'throbber') {
-    this.progress.element = $('<div class="ajax-progress ajax-progress-throbber"><i class="icon icon--spinner is-spinning"></i></div>');
+    this.progress.element = $('<div class="ajax-progress ajax-progress-throbber"><i class="feedback-form__icon icon icon--spinner is-spinning"></i></div>');
     // If element is an input type, append after.
     if ($(this.element).is('input')) {
       if (this.progress.message) {
