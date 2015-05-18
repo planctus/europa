@@ -5265,6 +5265,13 @@ Styleguide form.label
   .label.is-disabled, label.is-disabled {
     color: #b3b4b5; }
 
+/*
+Link
+
+Markup: html/link.html
+
+Styleguide text.link
+*/
 a:hover, a:active, a:focus {
   color: #404040;
   text-decoration: underline; }
@@ -5277,9 +5284,23 @@ a[href^="http"]:after, a[href^="https"]:after {
 p a {
   text-decoration: underline; }
 
+/*
+Lists
+
+Markup: html/lists.html
+
+Styleguide text.lists
+*/
 ul, ol {
   padding-left: 40px; }
 
+/*
+Paragraphs
+
+Markup: html/paragraphs.html
+
+Styleguide text.paragraphs
+*/
 .paragraph, blockquote, .region-content ul, .region-content ol, p {
   margin-bottom: 1.7em; }
 
