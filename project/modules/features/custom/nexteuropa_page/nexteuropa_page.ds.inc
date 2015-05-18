@@ -18,7 +18,7 @@ function nexteuropa_page_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'in_page_navigation' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -33,12 +33,12 @@ function nexteuropa_page_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'fis' => TRUE,
           'fis-el' => 'ul',
-          'fis-cl' => '',
+          'fis-cl' => 'listing listing--title listing--no-padding',
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
           'fi-el' => 'li',
-          'fi-cl' => '',
+          'fi-cl' => 'listing__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -77,12 +77,12 @@ function nexteuropa_page_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'fis' => TRUE,
           'fis-el' => 'ul',
-          'fis-cl' => '',
+          'fis-cl' => 'listing listing--title listing--no-padding',
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
           'fi-el' => 'li',
-          'fi-cl' => '',
+          'fi-cl' => 'listing__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -231,26 +231,26 @@ function nexteuropa_page_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'body',
+      ),
       'left_header' => array(
-        0 => 'title',
-        1 => 'field_core_introduction',
+        1 => 'title',
+        2 => 'field_core_introduction',
       ),
       'right_header' => array(
-        2 => 'field_core_link',
+        3 => 'field_core_link',
       ),
       'left' => array(
-        3 => 'in_page_navigation',
-      ),
-      'central' => array(
-        4 => 'body',
+        4 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
+      'body' => 'central',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_link' => 'right_header',
       'in_page_navigation' => 'left',
-      'body' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
