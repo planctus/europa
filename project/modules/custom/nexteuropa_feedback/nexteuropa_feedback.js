@@ -68,6 +68,7 @@
         // Showing active tab after ajax call with empty field
         $feedbackActiveCollapsed.show();
         $feedbackActiveCollapsed.addClass('is-not-animating').collapse('show');
+        $feedbackForm.velocity("stop");
         $feedbackActiveCollapsed.on('shown.bs.collapse', function(){
           $(this).removeClass('is-not-animating').removeAttr('style');
         });

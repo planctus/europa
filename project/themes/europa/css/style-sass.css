@@ -5612,9 +5612,8 @@ Styleguide form.feedback-message
 
 .feedback-form__btn {
   width: 12em; }
-
-.feedback-form__icon {
-  font-size: 0.778em; }
+  .feedback-form__btn .icon, .feedback-form__btn a[href^="http"]:after, .feedback-form__btn a[href^="https"]:after {
+    font-size: 0.778em; }
 
 #feedback-form__accordion {
   margin-bottom: 1em;
