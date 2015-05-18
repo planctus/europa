@@ -13,6 +13,30 @@ function europa_preprocess_block(&$vars) {
   if ($block->delta == 'nexteuropa_feedback') {
     $vars['classes_array'][] = 'block--full-width';
   }
+
+  // Replace block-title class with block__title in order to keep BEM structure of classes.
+  $block_title_class = array_search('block-title', $vars['title_attributes_array']['class']);
+  if ($block_title_class !== FALSE) {
+    unset($vars['title_attributes_array']['class'][$block_title_class]);
+  }
+  $vars['title_attributes_array']['class'][] = 'block__title';
+
+  if (isset($block->bid)) {
+    // Check if the block is a exposed form.
+    // This is checked by looking at the $block->bid which in case
+    // of views exposed filters, always contains 'views--exp-' string.
+    if (strpos($block->bid, 'views--exp-') !== FALSE) {
+      $vars['classes_array'][] = 'filters';
+      $vars['title_attributes_array']['class'][] = 'filters__title';
+      $block->subject = t('Refine results');
+
+      // Passing block id to Drupal.settings in order to pass it through data attribute in the collapsible panel.
+      drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
+
+      // Adding filters.js file.
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
+    }
+  }
 }
 
 /**
@@ -39,11 +63,6 @@ function europa_preprocess_views_view_unformatted(&$vars) {
 
   $vars['additional_classes'][] = 'listing__item';
   $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
-
-  // Checking if exposed filters are set and add variable that stores active filters.
-  if (module_exists('exposed_filter_data')) {
-    $vars['active_filters'] = get_exposed_filter_output();
-  }
 }
 
 
@@ -100,7 +119,24 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#value'] = t('Refine results');
     $form['submit']['#attributes']['class'][] = 'btn-primary';
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
+    $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
+    $form['type']['#options']['All'] = t("All types");
+    $form['related_departments']['#options']['All'] = t("All departments");
+    $form['published_before']['min']['#title'] = "";
+    $form['published_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
+}
+
+/**
+ * Implements hook_date_popup_process_alter().
+ * @param $element
+ * @param $form_state
+ * @param $context
+ */
+function europa_date_popup_process_alter(&$element, &$form_state, $context) {
+  // Removing the description from the datepicker.
+  unset($element['date']['#description']);
+  unset($element['time']['#description']);
 }
 
 /**
