@@ -11,7 +11,6 @@ $padding-top-listing__title: 0.9em;
 $padding-bottom-listing__title: 0.7em;
 
 .listing {
-  @extend .container-fluid;
 }
 
 .listing__item {
@@ -21,7 +20,6 @@ $padding-bottom-listing__title: 0.7em;
   list-style-image: none;
   padding-top: 0;
   padding-bottom: 0;
-  @extend .row;
   &:first-child {
     border-top: 1px solid $grey-light;
   }
@@ -51,13 +49,15 @@ $padding-bottom-listing__title: 0.7em;
 }
 
 .listing__column-main {
-  @extend .col-sm-9;
+  float: left;
+  width: 75%;
   padding-left: 0;
 }
 
 .listing__column-second {
   float: right;
-  @extend .col-sm-3;
+  padding-left: 15px;
+  width: 25%;
 }
 
 .listing__title {
@@ -91,12 +91,6 @@ Styleguide listing.title
 .listing--title,
 ul.listing--title {
   padding: 0 0 0 15px;
-  margin-left: 0;
-  margin-right: 0;
-  
-  .listing__item {
-    margin: auto;
-  }
 
   .listing__title {
     padding: 0;
