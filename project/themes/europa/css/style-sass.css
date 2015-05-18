@@ -5008,6 +5008,23 @@ Styleguide buttons
       outline-color: #404040; }
 
 /*
+Button block
+
+Button block component
+
+Markup: html/btn-block.html
+
+Styleguide buttons.btn-block
+*/
+.btn-block {
+  width: 100%;
+  max-width: 450px;
+  text-align: left; }
+  .btn-block + .btn-block {
+    margin-top: 0;
+    border-top: none; }
+
+/*
 Checkbox
 
 Markup: html/checkbox.html
@@ -5071,44 +5088,44 @@ Styleguide form.checkbox
 
 /*@font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-regular-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-regular-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-regular-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-regular-webfont.svg#ec_square_sans_proregular') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-regular-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-regular-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-regular-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-regular-webfont.svg#ec_square_sans_proregular') format('svg');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-italic-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-italic-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-italic-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-italic-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-italic-webfont.svg#ec_square_sans_proitalic') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-italic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-italic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-italic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-italic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-italic-webfont.svg#ec_square_sans_proitalic') format('svg');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-meditalic-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-meditalic-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-meditalic-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-meditalic-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-meditalic-webfont.svg#ec_square_sans_proMdIt') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-meditalic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-meditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-meditalic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-meditalic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-meditalic-webfont.svg#ec_square_sans_proMdIt') format('svg');
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-medium-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-medium-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-medium-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-medium-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-medium-webfont.svg#ec_square_sans_promedium') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-medium-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-medium-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-medium-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-medium-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-medium-webfont.svg#ec_square_sans_promedium') format('svg');
   font-weight: 600;
   font-style: normal;
 }
@@ -5116,22 +5133,22 @@ Styleguide form.checkbox
 
 @font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-bolditalic-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-bolditalic-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-bolditalic-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-bolditalic-webfont.svg#ec_square_sans_probold_italic') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-bolditalic-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bolditalic-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bolditalic-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bolditalic-webfont.svg#ec_square_sans_probold_italic') format('svg');
   font-weight: 800;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'ECSquareSansPro';
-  src: url('../fonts/ecsquaresanspro-bold-webfont.eot');
-  src: url('../fonts/ecsquaresanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/ecsquaresanspro-bold-webfont.woff') format('woff'),
-  url('../fonts/ecsquaresanspro-bold-webfont.ttf') format('truetype'),
-  url('../fonts/ecsquaresanspro-bold-webfont.svg#ec_square_sans_probold') format('svg');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-bold-webfont.eot');
+  src: url('../fonts/ecsquaresanspro/ecsquaresanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bold-webfont.woff') format('woff'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bold-webfont.ttf') format('truetype'),
+  url('../fonts/ecsquaresanspro/ecsquaresanspro-bold-webfont.svg#ec_square_sans_probold') format('svg');
   font-weight: 800;
   font-style: normal;
 }*/
@@ -5248,13 +5265,42 @@ Styleguide form.label
   .label.is-disabled, label.is-disabled {
     color: #b3b4b5; }
 
+/*
+Link
+
+Markup: html/link.html
+
+Styleguide text.link
+*/
 a:hover, a:active, a:focus {
   color: #404040;
   text-decoration: underline; }
+a[href^="http"]:after, a[href^="https"]:after {
+  display: inline-block;
+  font-size: 75%;
+  margin-left: 0.4em;
+  margin-right: 0.2em; }
 
+p a {
+  text-decoration: underline; }
+
+/*
+Lists
+
+Markup: html/lists.html
+
+Styleguide text.lists
+*/
 ul, ol {
   padding-left: 40px; }
 
+/*
+Paragraphs
+
+Markup: html/paragraphs.html
+
+Styleguide text.paragraphs
+*/
 .paragraph, blockquote, .region-content ul, .region-content ol, p {
   margin-bottom: 1.7em; }
 
@@ -5655,7 +5701,7 @@ Inpage navigation
 
 Floating menu containing links to headings in a long page.
 
-Markup: inpage-nav.html
+Markup: html/inpage-nav.html
 
 Styleguide inpagenav
 
@@ -5886,5 +5932,35 @@ Styleguide messages
     background: #006fb4;
     padding: 8px;
     border: 4px solid #ffd617; }
+
+/*
+Icon
+
+Markup: html/icon.html
+
+.icon--external - External link icon
+
+Styleguide: icon
+*/
+@font-face {
+  font-family: 'EuropaIcons';
+  src: url('../fonts/europa-icons/europa-icons.eot');
+  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
+
+.icon, a[href^="http"]:after, a[href^="https"]:after {
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon--external, a[href^="http"]:after, a[href^="https"]:after {
+  content: '\e601'; }
+
+.icon--external:before {
+  content: '\e601'; }
 
 /*# sourceMappingURL=style-sass.css.map */

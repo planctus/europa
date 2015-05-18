@@ -87,3 +87,24 @@ Styleguide buttons
     }
   }
 }
+
+/*
+Button block
+
+Button block component
+
+Markup: html/btn-block.html
+
+Styleguide buttons.btn-block
+*/
+
+.btn-block {
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+
+  & + .btn-block {
+    margin-top: 0;
+    border-top: none;
+  }
+}
