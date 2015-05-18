@@ -87,7 +87,6 @@ function nexteuropa_feedback_form($form_state) {
       'callback' => '_nexteuropa_feedback_send_webtools',
       'wrapper' => 'nexteuropa-feedback-form',
       'method' => 'replace',
-      //'effect' => 'fade',
     ),
   );
   return $form;
