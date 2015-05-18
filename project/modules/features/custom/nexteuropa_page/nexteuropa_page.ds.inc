@@ -33,12 +33,12 @@ function nexteuropa_page_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'fis' => TRUE,
           'fis-el' => 'ul',
-          'fis-cl' => '',
+          'fis-cl' => 'listing listing--title listing--no-padding',
           'fis-at' => '',
           'fis-def-at' => FALSE,
           'fi' => TRUE,
           'fi-el' => 'li',
-          'fi-cl' => '',
+          'fi-cl' => 'listing__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -61,7 +61,7 @@ function nexteuropa_page_ds_field_settings_info() {
       'format' => 'default',
     ),
     'title' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -71,21 +71,18 @@ function nexteuropa_page_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'comments' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'post_date' => array(
-      'weight' => '7',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+    'field_core_link' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => 'listing listing--title listing--no-padding',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
           'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
+          'fi-el' => 'li',
+          'fi-cl' => 'listing__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -185,35 +182,37 @@ function nexteuropa_page_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'page';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
+  $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'body',
+      ),
       'left_header' => array(
-        0 => 'title',
+        1 => 'title',
+        2 => 'field_core_introduction',
       ),
       'right_header' => array(
-        1 => 'field_core_link',
+        3 => 'field_core_link',
       ),
       'left' => array(
-        2 => 'in_page_navigation',
-      ),
-      'central' => array(
-        3 => 'body',
+        4 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
+      'body' => 'central',
       'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
       'field_core_link' => 'right_header',
       'in_page_navigation' => 'left',
-      'body' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
+      'top' => 'div',
       'left' => 'div',
       'central' => 'div',
-      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -229,37 +228,37 @@ function nexteuropa_page_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'page';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
+  $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'body',
+      ),
       'left_header' => array(
-        0 => 'group_page_meta',
         1 => 'title',
-        5 => 'post_date',
+        2 => 'field_core_introduction',
+      ),
+      'right_header' => array(
+        3 => 'field_core_link',
       ),
       'left' => array(
-        2 => 'in_page_navigation',
-      ),
-      'central' => array(
-        3 => 'body',
-        4 => 'comments',
+        4 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
-      'group_page_meta' => 'left_header',
-      'title' => 'left_header',
-      'in_page_navigation' => 'left',
       'body' => 'central',
-      'comments' => 'central',
-      'post_date' => 'left_header',
+      'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
+      'field_core_link' => 'right_header',
+      'in_page_navigation' => 'left',
     ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
+      'top' => 'div',
       'left' => 'div',
       'central' => 'div',
-      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
