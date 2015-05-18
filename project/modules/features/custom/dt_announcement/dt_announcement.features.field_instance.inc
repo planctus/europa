@@ -63,7 +63,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -147,7 +147,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -204,7 +204,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 17,
       ),
       'meta' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function dt_announcement_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 8,
+        'weight' => 4,
       ),
       'meta' => array(
         'label' => 'above',
@@ -345,7 +345,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 6,
       ),
       'meta' => array(
         'label' => 'above',
@@ -422,10 +422,15 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 29,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -434,10 +439,15 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '_none',
+        ),
+        'type' => 'title_linked',
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -506,7 +516,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 19,
       ),
       'meta' => array(
         'label' => 'above',
@@ -634,7 +644,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 21,
       ),
       'meta' => array(
         'label' => 'above',
@@ -843,7 +853,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 11,
+        'weight' => 7,
       ),
       'meta' => array(
         'label' => 'above',
@@ -973,7 +983,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1099,7 +1109,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1151,7 +1161,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1222,7 +1232,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'hidden',
