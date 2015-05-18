@@ -5037,7 +5037,8 @@ Styleguide buttons.group
 .btn-group {
   margin-top: 1em; }
   .btn-group .btn {
-    margin-right: 0.4em; }
+    margin-right: 0.4em;
+    margin-bottom: 0; }
     .btn-group .btn:last-child {
       margin-right: 0; }
 
