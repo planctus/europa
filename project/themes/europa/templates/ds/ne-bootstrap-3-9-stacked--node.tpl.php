@@ -30,11 +30,11 @@
   <div class="container-fluid">
     <div class="row">
       <section class="col-lg-12 <?php print $top_classes; ?>">
-        <?php print $top; ?>
-
         <?php if (!empty($messages)): ?>
           <?php print $messages; ?>
         <?php endif; ?>
+
+        <?php print $top; ?>
       </section>
 
       <a id="main-content" tabindex="-1"></a>
