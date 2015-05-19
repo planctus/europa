@@ -135,7 +135,7 @@ function dt_core_update_7110() {
  * Disable and uninstall the dashboard module.
  */
 function dt_core_update_7111() {
-  if( module_exists('dashboard')) {
+  if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
