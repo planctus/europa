@@ -115,15 +115,10 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
       $variables = array(
         'items' => $sorted,
         'attributes' => array(
-          'class' => 'nav navbar-nav navbar-stacked',
+          'class' => 'nav inpage-nav__list',
         ),
       );
-      $block['content'] = theme('inpage_nav_block',
-        array(
-          'links' => theme('item_list', $variables),
-          'title' => $node->title
-        )
-      );
+      $block['content'] = '<div class="inpage-nav">' . theme('item_list', $variables) . '</div>';
     }
   }
 
@@ -199,7 +194,7 @@ function nexteuropa_inpage_nav_theme() {
   return array(
     'inpage_nav_block' => array(
       'template' => "templates/" . 'inpage_nav_block',
-      'vars' => NULL
-    )
+      'vars' => NULL,
+    ),
   );
 }

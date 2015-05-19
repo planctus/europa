@@ -3,31 +3,47 @@
     attach: function (context) {
       $('.inpage-nav').once('page-navigation', function () {
         var $inPage = $(this);
-        var $navBar = $('.navbar', $inPage);
-        var $navBarCurrent = $('.inpage-nav__current', $inPage);
-        var $navBarTitle = $('.inpage-nav__title', $inPage);
-        var $navBarHelp = $('.inpage-nav__help', $inPage);
+        var $inPageList = $('.inpage-nav__list', $inPage);
+        console.log($inPage);
         var title = Drupal.settings.inpage_navigation.node_title;
+
+        // Clone block for navbar use on mobiles.
+        var $inPageNavBar = $inPage.clone();
+        $inPageNavBar.addClass('is-navbar');
+
+        var $navBar = $('.inpage-nav__navbar', $inPageNavBar);
+        var $navBarHeader = $('.inpage-nav__header', $navBar);
+        var $navBarList = $('.inpage-nav__list', $navBar);
+        var $navBarCurrent = $('.inpage-nav__current', $navBar);
+        var $navBarTitle = $('.inpage-nav__title', $navBar);
+        var $navBarHelp = $('.inpage-nav__help', $navBar);
+
+        $navBar.addClass('navbar navbar-default navbar-fixed-top');
+        $navBarHeader.addClass('navbar-header');
+        $navBarList.addClass('navbar-collapse collapse');
+        $('.nav', $navBarList).addClass('navbar-nav navbar-stacked');
 
         // Page navigation scroll spy
         $('body').scrollspy({
             target: '.inpage-nav'
         });
 
+        $('body').append($inPageNavBar);
+
         $navBar.on('show.bs.collapse', function() {
-          $inPage.addClass('is-collapsing');
+          $inPageNavBar.addClass('is-collapsing');
         });
 
         $navBar.on('shown.bs.collapse', function() {
-          $inPage.addClass('is-collapsed');
-          $inPage.removeClass('is-collapsing');
+          $inPageNavBar.addClass('is-collapsed');
+          $inPageNavBar.removeClass('is-collapsing');
         });
 
         $navBar.on('hide.bs.collapse', function() {
-          $inPage.removeClass('is-collapsed');
+          $inPageNavBar.removeClass('is-collapsed');
         });
 
-        $inPage.on("activate.bs.scrollspy", function(e) {
+        $inPageNavBar.on("activate.bs.scrollspy", function(e) {
           // Set current heading as title for In page nav navbar title.
           $navBarCurrent.text($("li.active > a", $navBar).text());
         });
