@@ -1,0 +1,3 @@
+name = DT Date format
+description = EC date format definition like j F Y.
+core = 7.x

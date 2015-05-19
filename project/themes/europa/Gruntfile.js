@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     kss: {
       options: {
         template: 'styleguide/template/custom',
-        css:      'css/style-sass.css'
+        css:      'public/css/style-sass.css'
       },
       dist: {
         files: {
@@ -40,20 +40,20 @@ module.exports = function (grunt) {
       main: {
         files: [
           // includes files within path and its sub-directories
-          {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['css/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['js/**'], dest: 'styleguide/assets/'}
+          {expand: true, src: ['images/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['css/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['js/**'], dest: 'styleguide/assets/public/'}
         ]
       },
       all: {
         files: [
           // includes files within path and its sub-directories
-          {expand: true, src: ['sass/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['bootstrap-sass/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['bootstrap/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['images/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['css/**'], dest: 'styleguide/assets/'},
-          {expand: true, src: ['js/**'], dest: 'styleguide/assets/'}
+          {expand: true, src: ['sass/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['bootstrap-sass/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['bootstrap/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['images/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['css/**'], dest: 'styleguide/assets/public/'},
+          {expand: true, src: ['js/**'], dest: 'styleguide/assets/public/'}
         ]
       }
     }

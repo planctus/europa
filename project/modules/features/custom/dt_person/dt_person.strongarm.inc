@@ -66,7 +66,7 @@ function dt_person_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'full' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'meta' => array(
         'custom_settings' => TRUE,

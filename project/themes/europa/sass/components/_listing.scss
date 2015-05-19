@@ -7,32 +7,75 @@ Markup: html/listing.html
 
 Styleguide listing
 */
+$padding-top-listing__title: 0.9em;
+$padding-bottom-listing__title: 0.7em;
 
 .listing {
 }
 
 .listing__item {
-  padding-top: 1em;
-  padding-bottom: 1em;
   border-bottom: 1px solid $grey-light;
   overflow: hidden;
-  @extend .row;
+  list-style: none;
+  list-style-image: none;
+  padding-top: 0;
+  padding-bottom: 0;
   &:first-child {
     border-top: 1px solid $grey-light;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    .listing__title {
+      text-decoration: underline;
+      color: $grey-base;
+    }
+  }
+}
+
+.listing__item-link {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: block;
+  overflow: hidden;
+  color: $grey-base;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
   }
 }
 
 .listing__column-main {
-  @extend .col-sm-9;
+  float: left;
+  width: 75%;
+  padding-left: 0;
 }
 
 .listing__column-second {
   float: right;
-  @extend .col-sm-3;
+  padding-left: 15px;
+  width: 25%;
 }
 
 .listing__title {
-  color: $grey-base;
+  color: $brand-primary;
+  font-family: $font-family-sans-serif;
+  font-size: 1em;
+  padding-top: $padding-top-listing__title;
+  padding-bottom: 0;
+  @extend .h3;
+
+  & + * {
+    font-size: $font-size-little;
+    padding-top: $padding-bottom-listing__title;
+  }
+}
+
+.listing--no-padding {
+  padding-left: 0 !important;
 }
 
 
@@ -45,15 +88,20 @@ Markup: html/listing--title.html
 
 Styleguide listing.title
 */
-.listing--title {
-  .listing__item {
-    display: block;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-  }
+.listing--title,
+ul.listing--title {
+  padding: 0 0 0 15px;
+
   .listing__title {
     padding: 0;
-    margin-top: 0.2em;
-    font-size: 1em;
+  }
+
+  a.listing__title,
+  .listing__title a {
+    display: block;
+    padding-top: $padding-top-listing__title;
+    padding-bottom: $padding-bottom-listing__title;
+    padding-right: 2em;
+    color: $brand-primary;
   }
 }

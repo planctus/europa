@@ -12,8 +12,8 @@ Markup: html/btn.html
 
 Styleguide buttons
 */
-
 .btn {
+  margin-bottom: 1em;
   line-height: 1;
   border-radius: 0;
   border-width: 2px;
@@ -85,5 +85,26 @@ Styleguide buttons
       border-color: $text-color;
       outline-color: $text-color;
     }
+  }
+}
+
+/*
+Button block
+
+Button block component
+
+Markup: html/btn-block.html
+
+Styleguide buttons.btn-block
+*/
+
+.btn-block {
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+
+  & + .btn-block {
+    margin-top: 0;
+    border-top: none;
   }
 }

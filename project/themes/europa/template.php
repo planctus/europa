@@ -4,6 +4,19 @@
  * template.php
  */
 
+ /**
+  * Implements template_preprocess_field().
+  */
+function europa_preprocess_field(&$vars) {
+  // Changing label for the field to display stripped out values.
+  if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
+    $field_value = $vars['element']['#items'][0]['value'];
+    $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+
+    $vars['items'][0]['#markup'] = $field_value_stripped;
+  }
+}
+
 /**
  * Implements template_preprocess_block().
  */
@@ -41,13 +54,13 @@ function europa_preprocess_views_view_unformatted(&$vars) {
  * Implements hook_theme().
  */
 function europa_theme() {
-    return array(
-        'node_form' => array(
-            'render element' => 'form',
-            'template' => 'node-form',
-            'path' => drupal_get_path('module', 'europa') . '/theme',
-        ),
-    );
+  return array(
+    'node_form' => array(
+      'render element' => 'form',
+      'template' => 'node-form',
+      'path' => drupal_get_path('module', 'europa') . '/theme',
+    ),
+  );
 }
 
 /**
@@ -63,18 +76,21 @@ function europa_form_required_marker($variables) {
   return '<span' . drupal_attributes($attributes) . '></span>';
 }
 
+/**
+ * Implements hook_preprocess_page().
+ */
 function europa_preprocess_page(&$vars) {
   $node = &$vars['node'];
   $vars['ds_node'] = FALSE;
 
-  // nodes excluded that are not using DS
+  // Nodes excluded that are not using DS.
   $node_type_list = array('class');
 
-  if(isset($node) && !in_array($node->type, $node_type_list)) {
-    // This disables message-printing on ALL page displays
+  if (isset($node) && !in_array($node->type, $node_type_list)) {
+    // This disables message-printing on ALL page displays.
     $vars['show_messages'] = FALSE;
 
-    // Add ds_node true to the node object
+    // Add ds_node true to the node object.
     $vars['ds_node'] = TRUE;
   }
 }
@@ -90,7 +106,6 @@ function europa_preprocess_node(&$vars) {
       '!datetime' => $vars['date'],
     ));
   }
-
   $vars['messages'] = theme('status_messages');
 }
 
@@ -148,12 +163,12 @@ function europa_easy_breadcrumb($variables) {
 
 /**
  * Implements hook_preprocess_image().
-*/
+ */
 function europa_preprocess_image(&$variables) {
   // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if(isset($variables['attributes']['class'])) {
-      if(is_array($variables['attributes']['class'])) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
       }
       else {
@@ -484,5 +499,61 @@ function europa_html_head_alter(&$head_elements) {
       $element['#attributes']['href'] = $europa_theme_png_path . $element['#attributes']['href'];
     }
     $head_elements[] = $element;
+  }
+}
+
+/**
+ * Helper function for display 'meta' view mode field.
+ */
+function _europa_field_component_listing($variables) {
+  $output = '';
+  $output .= '<div class="listing">';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<div class="listing__item">' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Helper function for display 'title' view mode field.
+ */
+function _europa_field_component_listing_title($variables) {
+  $output = '';
+  $output .= '<ul class="listing listing--title">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
+  }
+  $output .= '</ul>';
+  return $output;
+}
+
+/**
+ * Override of theme_field().
+ */
+function europa_field($variables) {
+  $element = $variables['element'];
+  $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
+  switch ($field_type) {
+    case 'entityreference':
+      // First node from entity reference.
+      $reference = array_shift($element[0]);
+      $first_node = is_array($reference) ? array_shift($reference) : NULL;
+      if (isset($first_node['#view_mode'])) {
+        switch ($first_node['#view_mode']) {
+          case 'title':
+            return _europa_field_component_listing_title($variables);
+
+          break;
+
+          case 'meta':
+            return _europa_field_component_listing($variables);
+
+          break;
+        }
+      }
+
+      break;
   }
 }
