@@ -4,4 +4,3 @@
 [submodule "platform"]
 	path = platform
 	url = https://webgate.ec.europa.eu/CITnet/stash/scm/nexteuropa/platform-dev.git
-	branch = develop
