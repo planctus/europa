@@ -62,12 +62,22 @@ function _get_field_name($filter, $value, $view) {
           return $pretty_name;
 
         case "type":
-          $pretty_name = $view->filter['field_announcement_type_value']->value_options[$filter_data];
+          if ($filter_data == t("All")) {
+            $pretty_name = t("All");
+          }
+          else {
+            $pretty_name = $view->filter['field_announcement_type_value']->value_options[$filter_data];
+          }
           return $pretty_name;
 
         case "related_departments":
-          $department = entity_load_single('node', $filter_data);
-          $pretty_name = $department->title;
+          if ($filter_data === t("All")) {
+            $pretty_name = $filter_data;
+          }
+          else {
+            $department = entity_load_single('node', $filter_data);
+            $pretty_name = $department->title;
+          }
           return $pretty_name;
 
         case "publish_date":
@@ -81,9 +91,9 @@ function _get_field_name($filter, $value, $view) {
 }
 
 /**
- * Prettify the filter name.
+ * Prettify filter.
  * @param $filter
- * @param $view
+ * @return mixed
  */
 function _pretty_filter($filter) {
   $pretty_filter = str_replace("_", " ", strtolower($filter));

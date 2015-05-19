@@ -6,7 +6,6 @@
 ?>
 <?php if (isset($exposed_filters)): ?>
   <div class="exposed_filter_data">
-    <div class="title"><?php print t('Filtered by:'); ?></div>
     <div class="content">
       <?php foreach ($exposed_filters as $filter => $value): ?>
         <?php if ($value): ?>
