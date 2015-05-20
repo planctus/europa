@@ -4,7 +4,9 @@
   <target name="deliver" description="Deliver code to Acquia repository">
     <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
-
+    <gitcheckout
+      repository="${acquia.repo}"
+      branchname="master" quiet="true" />
     <gitpull
         repository="${acquia.repo}"
         refspec="master:master" tags="true" force="true" />
