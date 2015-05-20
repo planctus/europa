@@ -3,12 +3,17 @@
     attach: function(context) {
       var $feedbackForm = $('#nexteuropa-feedback-form');
       var $feedbackFormWrapper = $('.feedback-form__wrapper');
+      var currentType = $('input[name="feedback_type"]').val();
 
       $feedbackForm.once('feedback', function() {
         var $submitButton = $('.form-submit', this),
             $accordionWrapper = $('#feedback-form__accordion');
 
-        $submitButton.hide();
+        // Checking if value of the hidden field is 'feedback'
+        if(currentType == 'feedback') {
+          $submitButton.hide();
+        }
+
         $('.accordion-body', this).removeClass('in');
         $('.accordion-toggle', this).addClass('collapsed');
 
@@ -35,7 +40,6 @@
         $accordionWrapper.on('hidden.bs.collapse', function() {
           if ($('.accordion-body', this).children(':visible').length == 0) {
             $submitButton.hide();
-            console.log('true');
           }
         });
 
@@ -45,13 +49,12 @@
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
         });
       });
-      
-      // Removing is-open class when new form is loaded
-      if ($feedbackFormWrapper.find('.feedback-form').length) {
-        $feedbackFormWrapper.removeClass('is-open');
-      }
 
-      var currentType = $('input[name="feedback_type"]').val();
+      // Remove is-open class when button for loading new form is clicked
+      $('.feedback__message a').click(function(){
+        $feedbackFormWrapper.removeClass('is-open');
+      });
+
       var $feedbackActiveCollapsed = $('#feedback-form__content, #'+currentType+'');
 
       // Initializing collapse plugin so that it works on browsers without css3 transitions
@@ -63,7 +66,12 @@
         $('.feedback-processed .messages').hide();
 
         // Showing active tab after ajax call with empty field
-        $feedbackActiveCollapsed.collapse('toggle');
+        $feedbackActiveCollapsed.show();
+        $feedbackActiveCollapsed.addClass('is-not-animating').collapse('show');
+        $feedbackForm.velocity("stop");
+        $feedbackActiveCollapsed.on('shown.bs.collapse', function(){
+          $(this).removeClass('is-not-animating').removeAttr('style');
+        });
         $('#' + currentType).siblings('.accordion-heading').children().removeClass('collapsed');
       }
     }

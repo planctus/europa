@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="public/kss.css">
-  <link rel="stylesheet" href="css/style-sass.css">
+  <link rel="stylesheet" href="public/css/style-sass.css">
 
 
   <script src="public/js/jquery-1.9.1.min.js"></script>
@@ -37,6 +37,12 @@
         <a href="section-buttons.html">
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Buttons</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-contextnav.html">
+          <span class="kss-nav__ref">2</span
+          ><span class="kss-nav__name">Contextual navigation</span>
         </a>
       </li>
       <li class="kss-nav__menu-item">
@@ -144,59 +150,18 @@
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Examples
-        </div>
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
+          Example
         </div>
         <div class="kss-modifier__example">
           <a href="href" class=>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :hover
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Hover state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-hover>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :visited
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Visited state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-visited>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :active
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Active state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-active>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :focus
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Focus state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-focus>Link element</a>
+<a href="http">External link</a>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
         <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot; class=&gt;Link element&lt;/a&gt;
+&lt;a href=&quot;http&quot;&gt;External link&lt;/a&gt;
 </code></pre>
       </div>
 
@@ -220,12 +185,34 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          html/ists.html NOT FOUND!
+          <ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<ol>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ol>
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">html/ists.html NOT FOUND!</code></pre>
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
       </div>
 
       </section>

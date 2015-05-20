@@ -43,6 +43,8 @@ scripts[] = js/modernizr.js
 scripts[] = js/enquire.min.js
 scripts[] = js/velocity.min.js
 
+scripts[] = js/misc/ajax.js
+
 ; ========================================
 ; Settings
 ; ========================================
@@ -65,4 +67,3 @@ settings[bootstrap_breadcrumb_title] = 1
 ; Advanced
 ; --------------
 settings[bootstrap_cdn] = ""
-

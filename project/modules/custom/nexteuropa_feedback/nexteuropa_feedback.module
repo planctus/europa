@@ -87,7 +87,6 @@ function nexteuropa_feedback_form($form_state) {
       'callback' => '_nexteuropa_feedback_send_webtools',
       'wrapper' => 'nexteuropa-feedback-form',
       'method' => 'replace',
-      'effect' => 'slide',
     ),
   );
   return $form;
@@ -232,9 +231,9 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
 function _nexteuropa_feedback_newform($type = 'ajax') {
   if ($type == 'ajax') {
     $commands = array();
-    $commands[] = ajax_command_remove(".feedback__message");
     $commands[] = ajax_command_append("#block-nexteuropa-feedback-nexteuropa-feedback .block__content",
       nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form')));
+    $commands[] = ajax_command_remove(".feedback__message");
     ajax_deliver(array('#type' => 'ajax', '#commands' => $commands));
   } else {
     drupal_goto();

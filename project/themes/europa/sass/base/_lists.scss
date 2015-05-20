@@ -1,8 +1,10 @@
-// Lists
-//
-// Markup: html/ists.html
-//
-// Styleguide text.lists
+/*
+Lists
+
+Markup: html/lists.html
+
+Styleguide text.lists
+*/
 
 ul,
 ol {
@@ -13,5 +15,8 @@ ol {
   ul,
   ol {
     @extend .paragraph;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
   }
 }
