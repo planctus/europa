@@ -79,9 +79,9 @@ function nexteuropa_page_field_group_info() {
     'label' => 'Content',
     'weight' => '11',
     'children' => array(
-      0 => 'body',
-      1 => 'title_field',
-      2 => 'field_core_introduction',
+      0 => 'title_field',
+      1 => 'field_core_introduction',
+      2 => 'body',
       3 => 'field_core_link',
     ),
     'format_type' => 'tab',
