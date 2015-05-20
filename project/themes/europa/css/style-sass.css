@@ -5588,30 +5588,6 @@ Styleguide datepicker
     left: 0 !important; }
  }
 
-.field--full-width {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding-left: 15px;
-  padding-right: 15px; }
-  .field--full-width > * {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0; }
-
-@media (min-width: 1200px) {
-  .field--full-width {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0; }
-
-  .col-lg-3 + .col-lg-9 .field--full-width {
-    position: relative;
-    left: -25%;
-    width: 125%; }
- }
-
 /*
 Feedback message
 
@@ -5714,6 +5690,104 @@ Styleguide form.feedback-message
     overflow: hidden; }
  }
 
+.field--full-width {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .field--full-width > * {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0; }
+
+@media (min-width: 1200px) {
+  .field--full-width {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+
+  .col-lg-3 + .col-lg-9 .field--full-width {
+    position: relative;
+    left: -25%;
+    width: 125%; }
+ }
+
+/*
+Filters
+
+Filters implementation
+Drupal implementation guidelines can be found [PLACEHOLDER FOR GUIDELINES ON IMPLEMENTATION]
+
+
+Styleguide forms.filters
+*/
+.filters {
+  background: #ececec;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 15px; }
+
+@media (min-width: 768px) {
+  .filters {
+    background: transparent;
+    margin: 0;
+    padding: 0; }
+ }
+
+.filters__filter {
+  width: 100%;
+  clear: both; }
+
+.filters__btn-submit {
+  width: 100%; }
+
+.filters__btn-reset {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 10px; }
+
+.filters__result-count {
+  overflow: hidden;
+  padding: 0 0 1em;
+  line-height: 1;
+  font-weight: bold; }
+
+.filters__btn-collapse {
+  float: right; }
+
+.filters__close {
+  text-decoration: none;
+  color: #006fb4 !important;
+  opacity: 1 !important;
+  text-shadow: none;
+  font-size: 1em;
+  font-weight: 400; }
+  .filters__close:after {
+    content: "";
+    background: url('../images/svg/arrow-up--blue.svg') no-repeat;
+    height: 8px;
+    width: 10px;
+    margin-left: 5px;
+    display: inline-block;
+    text-decoration: none !important; }
+  .filters__close:hover, .filters__close:active, .filters__close:focus {
+    text-decoration: underline; }
+
+@media (min-width: 480px) {
+  .filters__close:after {
+    height: 9px;
+    width: 12px; }
+ }
+
+.filter__items-number, .filters__items-name {
+  font-size: 2.222em; }
+
+.filter__items-number {
+  margin-right: 0.333em; }
+
 .footer {
   background: #006fb4;
   padding-top: 20px;
@@ -5740,6 +5814,69 @@ Styleguide form.help-block
     color: #b3b4b5; }
   .has-error .help-block {
     color: #575757; }
+
+/*
+Icon
+
+Markup: html/icon.html
+
+.icon--external - External link icon
+
+Styleguide: icon
+*/
+@font-face {
+  font-family: 'EuropaIcons';
+  src: url('../fonts/europa-icons/europa-icons.eot');
+  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
+
+.icon, a[href^="http"]:after, a[href^="https"]:after {
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 4px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
+  content: '\e601'; }
+
+.icon--spinner, .icon--spinner:before {
+  content: '\e984'; }
+
+.is-spinning:before {
+  -webkit-animation: icon-spin-right 2s infinite linear;
+  -o-animation: icon-spin-right 2s infinite linear;
+  animation: icon-spin-right 2s infinite linear; }
+
+@-webkit-keyframes icon-spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes icon-spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 
 /*
 Inpage navigation
@@ -6016,68 +6153,5 @@ Styleguide messages
     background: #006fb4;
     padding: 8px;
     border: 4px solid #ffd617; }
-
-/*
-Icon
-
-Markup: html/icon.html
-
-.icon--external - External link icon
-
-Styleguide: icon
-*/
-@font-face {
-  font-family: 'EuropaIcons';
-  src: url('../fonts/europa-icons/europa-icons.eot');
-  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
-
-.icon, a[href^="http"]:after, a[href^="https"]:after {
-  font-family: 'EuropaIcons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  margin-left: 4px;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
-  content: '\e601'; }
-
-.icon--spinner, .icon--spinner:before {
-  content: '\e984'; }
-
-.is-spinning:before {
-  -webkit-animation: icon-spin-right 2s infinite linear;
-  -o-animation: icon-spin-right 2s infinite linear;
-  animation: icon-spin-right 2s infinite linear; }
-
-@-webkit-keyframes icon-spin-right {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-
-  100% {
-    -webkit-transform: rotate(359deg);
-    -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg); } }
-
-@keyframes icon-spin-right {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-
-  100% {
-    -webkit-transform: rotate(359deg);
-    -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    transform: rotate(359deg); } }
 
 /*# sourceMappingURL=style-sass.css.map */

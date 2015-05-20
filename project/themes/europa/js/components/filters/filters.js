@@ -25,7 +25,8 @@
         }
 
         $(this).addClass('collapse');
-        $('.form-submit', this).removeClass('ctools-auto-submit-click');
+        $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+        $filters.find('form').removeClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
 
         $filters.on('show.bs.collapse', function(){
           $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +
@@ -40,14 +41,18 @@
         });
 
         if (typeof enquire !== 'undefined') {
-          enquire.register('screen and (min-width: 768px)', {
+            enquire.register('screen and (min-width: 768px)', {
             match : function() {
-              $('.form-submit', $filters).addClass('ctools-auto-submit-click js-hide');
+              $('.filters__btn-submit', $filters).addClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+              //$('.form-submit', $filters).addClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+              $filters.find('form').addClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
               $filters.removeAttr('style').removeClass('collapse in');
               $filters.children('.close').remove();
             },
             unmatch : function() {
-              $('.form-submit', $filters).removeClass('ctools-auto-submit-click js-hide');
+              $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+              // $('.form-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+              $filters.find('form').removeClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
               $filters.addClass('collapse');
               $('.filters__btn-collapse').show();
             }

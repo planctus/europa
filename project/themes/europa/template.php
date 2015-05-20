@@ -148,9 +148,9 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
     $form['type']['#options']['All'] = t("All types");
-    $form['related_departments']['#options']['All'] = t("All departments");
-    $form['published_before']['min']['#title'] = "";
-    $form['published_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
+    $form['department']['#options']['All'] = t("All departments");
+    $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
+    $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
 }
 
@@ -618,4 +618,13 @@ function europa_field($variables) {
 
       break;
   }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function europa_css_alter(&$css) {
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
+  );
 }
