@@ -28,6 +28,11 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Refine results';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear all';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -141,7 +146,13 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|created';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_core_department_target_id']['id'] = 'field_core_department_target_id';
+  $handler->display->display_options['relationships']['field_core_department_target_id']['table'] = 'field_data_field_core_department';
+  $handler->display->display_options['relationships']['field_core_department_target_id']['field'] = 'field_core_department_target_id';
+  $handler->display->display_options['relationships']['field_core_department_target_id']['label'] = 'Related departments';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -158,6 +169,107 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'announcement' => 'announcement',
+  );
+  /* Filter criterion: Search: Search Terms */
+  $handler->display->display_options['filters']['keys']['id'] = 'keys';
+  $handler->display->display_options['filters']['keys']['table'] = 'search_index';
+  $handler->display->display_options['filters']['keys']['field'] = 'keys';
+  $handler->display->display_options['filters']['keys']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['keys']['expose']['operator_id'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['label'] = 'Containing';
+  $handler->display->display_options['filters']['keys']['expose']['operator'] = 'keys_op';
+  $handler->display->display_options['filters']['keys']['expose']['identifier'] = 'contains';
+  $handler->display->display_options['filters']['keys']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Announcement type (field_announcement_type) */
+  $handler->display->display_options['filters']['field_announcement_type_value']['id'] = 'field_announcement_type_value';
+  $handler->display->display_options['filters']['field_announcement_type_value']['table'] = 'field_data_field_announcement_type';
+  $handler->display->display_options['filters']['field_announcement_type_value']['field'] = 'field_announcement_type_value';
+  $handler->display->display_options['filters']['field_announcement_type_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_announcement_type_value']['expose']['operator_id'] = 'field_announcement_type_value_op';
+  $handler->display->display_options['filters']['field_announcement_type_value']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['field_announcement_type_value']['expose']['operator'] = 'field_announcement_type_value_op';
+  $handler->display->display_options['filters']['field_announcement_type_value']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['field_announcement_type_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Departments (field_core_department) */
+  $handler->display->display_options['filters']['field_core_department_target_id']['id'] = 'field_core_department_target_id';
+  $handler->display->display_options['filters']['field_core_department_target_id']['table'] = 'field_data_field_core_department';
+  $handler->display->display_options['filters']['field_core_department_target_id']['field'] = 'field_core_department_target_id';
+  $handler->display->display_options['filters']['field_core_department_target_id']['relationship'] = 'field_core_department_target_id';
+  $handler->display->display_options['filters']['field_core_department_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['operator_id'] = 'field_core_department_target_id_op';
+  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['label'] = 'Related department';
+  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['operator'] = 'field_core_department_target_id_op';
+  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['identifier'] = 'department';
+  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['operator'] = '<';
+  $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['label'] = 'Published before';
+  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = 'date_filter_op';
+  $handler->display->display_options['filters']['date_filter']['expose']['identifier'] = 'date_before';
+  $handler->display->display_options['filters']['date_filter']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'node.created' => 'node.created',
+  );
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
+  $handler->display->display_options['filters']['date_filter_1']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter_1']['operator'] = '>';
+  $handler->display->display_options['filters']['date_filter_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter_1']['expose']['operator_id'] = 'date_filter_1_op';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['label'] = 'Published after';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['operator'] = 'date_filter_1_op';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['identifier'] = 'date_after';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['date_filter_1']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
+    'node.created' => 'node.created',
   );
   $handler->display->display_options['path'] = 'announcements';
   $export['announcements'] = $view;

@@ -725,6 +725,7 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 23,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_department',
     'label' => 'Departments',
