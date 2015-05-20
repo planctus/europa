@@ -5,6 +5,17 @@
  */
 
  /**
+  * Implements hook_js_alter().
+  */
+function europa_js_alter(&$js) {
+  $base_theme_path = drupal_get_path('theme', 'bootstrap');
+
+  unset(
+    $js[$base_theme_path . '/js/misc/ajax.js']
+  );
+}
+
+ /**
   * Implements template_preprocess_field().
   */
 function europa_preprocess_field(&$vars) {
@@ -165,7 +176,8 @@ function europa_easy_breadcrumb($variables) {
  * Implements hook_preprocess_image().
  */
 function europa_preprocess_image(&$variables) {
-  // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
+  // Fix issue between print module and bootstrap theme, print module put a
+  // string instead of an array in $variables['attributes']['class'].
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
     if (isset($variables['attributes']['class'])) {
       if (is_array($variables['attributes']['class'])) {
@@ -287,10 +299,8 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+      $output .= $feedback_message;
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
       break;
 
     case 'after':
@@ -303,10 +313,8 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
+      $output .= $feedback_message;
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
       break;
 
     case 'none':
@@ -317,10 +325,8 @@ function europa_form_element(&$variables) {
       }
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
+      $output .= $feedback_message;
 
-      //if (form_get_error($element)) {
-        $output .= $feedback_message;
-      //}
       break;
   }
 
@@ -545,12 +551,8 @@ function europa_field($variables) {
           case 'title':
             return _europa_field_component_listing_title($variables);
 
-          break;
-
           case 'meta':
             return _europa_field_component_listing($variables);
-
-          break;
         }
       }
 
