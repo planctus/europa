@@ -5673,10 +5673,6 @@ Styleguide forms.filters
 .filters__filter {
   width: 100%;
   clear: both; }
-  .filters__filter .container-inline-date .form-item, .filters__filter .container-inline-date .form-item input {
-    width: 100%; }
-  .filters__filter .container-inline-date .date-padding {
-    float: none; }
 
 .filters__btn-submit {
   width: 100%; }
