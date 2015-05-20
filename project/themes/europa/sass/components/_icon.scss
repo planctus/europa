@@ -27,7 +27,7 @@ Styleguide icon
   margin: 0 10px 5px 0;
 }
 
-.icon--social--blogger {
+.icon--blogger {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/blogger.svg') no-repeat;
@@ -39,7 +39,7 @@ Styleguide icon
   }
 }
 
-.icon--social--facebook {
+.icon--facebook {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/facebook.svg') no-repeat;
@@ -51,7 +51,7 @@ Styleguide icon
   }
 }
 
-.icon--social--flickr {
+.icon--flickr {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/flick.svg') no-repeat;
@@ -63,7 +63,7 @@ Styleguide icon
   }
 }
 
-.icon--social--gplus {
+.icon--gplus {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/gplus.svg') no-repeat;
@@ -75,7 +75,7 @@ Styleguide icon
   }
 }
 
-.icon--social--linkedin {
+.icon--linkedin {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/linkedin.svg') no-repeat;
@@ -87,7 +87,7 @@ Styleguide icon
   }
 }
 
-.icon--social--pinterest {
+.icon--pinterest {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/pinterest.svg') no-repeat;
@@ -99,7 +99,7 @@ Styleguide icon
   }
 }
 
-.icon--social--rss {
+.icon--rss {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/rss.svg') no-repeat;
@@ -111,7 +111,7 @@ Styleguide icon
   }
 }
 
-.icon--social--skype {
+.icon--skype {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/skype.svg') no-repeat;
@@ -123,7 +123,7 @@ Styleguide icon
   }
 }
 
-.icon--social--twitter {
+.icon--twitter {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/twitter.svg') no-repeat;
@@ -135,7 +135,7 @@ Styleguide icon
   }
 }
 
-.icon--social--youtube {
+.icon--youtube {
   &::before {
     @extend .icon--social;
     background: url('../images/svg/icons/social/youtube.svg') no-repeat;
@@ -148,7 +148,7 @@ Styleguide icon
 }
 
 .no-svg {
-  .icon--social--blogger {
+  .icon--blogger {
     &::before {
       background-image: url('../images/png/icons/social/blogger.png');
     }
@@ -158,7 +158,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--facebook {
+  .icon--facebook {
     &::before {
       background-image: url('../images/png/icons/social/facebook.png');
     }
@@ -168,7 +168,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--flickr {
+  .icon--flickr {
     &::before {
       background-image: url('../images/png/icons/social/flickr.png');
     }
@@ -178,7 +178,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--gplus {
+  .icon--gplus {
     &::before {
       background-image: url('../images/png/icons/social/gplus.png');
     }
@@ -188,7 +188,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--linkedin {
+  .icon--linkedin {
     &::before {
       background-image: url('../images/png/icons/social/linkedin.png');
     }
@@ -198,7 +198,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--pinterest {
+  .icon--pinterest {
     &::before {
       background-image: url('../images/png/icons/social/pinterest.png');
     }
@@ -208,7 +208,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--rss {
+  .icon--rss {
     &::before {
       background-image: url('../images/png/icons/social/rss.png');
     }
@@ -218,7 +218,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--skype {
+  .icon--skype {
     &::before {
       background-image: url('../images/png/icons/social/skype.png');
     }
@@ -228,7 +228,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--twitter {
+  .icon--twitter {
     &::before {
       background-image: url('../images/png/icons/social/twitter.png');
     }
@@ -238,7 +238,7 @@ Styleguide icon
     }
   }
 
-  .icon--social--youtube {
+  .icon--youtube {
     &::before {
       background-image: url('../images/png/icons/social/youtube.png');
     }

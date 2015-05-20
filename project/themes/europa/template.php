@@ -325,7 +325,7 @@ function europa_menu_tree__menu_dt_service_links(&$variables) {
  * Europa theme wrapper function for the EC menu links.
  */
 function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
-  return '<ul class="footer__menu is-underlined menu nav list-inline">' . $variables['tree'] . '</ul>';
+  return '<ul class="footer__menu footer__menu--underlined menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
