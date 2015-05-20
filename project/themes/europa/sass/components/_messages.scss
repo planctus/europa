@@ -67,6 +67,7 @@ $messages-icon-size: 2em;
 .messages__list {
   padding-left: 14px;
   margin-bottom: 0;
+  max-width: auto;
   font-family: $font-family-sans-serif;
 }
 

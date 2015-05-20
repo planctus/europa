@@ -4,6 +4,30 @@
  * template.php
  */
 
+ /**
+  * Implements hook_js_alter().
+  */
+function europa_js_alter(&$js) {
+  $base_theme_path = drupal_get_path('theme', 'bootstrap');
+
+  unset(
+    $js[$base_theme_path . '/js/misc/ajax.js']
+  );
+}
+
+ /**
+  * Implements template_preprocess_field().
+  */
+function europa_preprocess_field(&$vars) {
+  // Changing label for the field to display stripped out values.
+  if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
+    $field_value = $vars['element']['#items'][0]['value'];
+    $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+
+    $vars['items'][0]['#markup'] = $field_value_stripped;
+  }
+}
+
 /**
  * Implements template_preprocess_block().
  */
@@ -98,7 +122,6 @@ function europa_preprocess_node(&$vars) {
       '!datetime' => $vars['date'],
     ));
   }
-
   $vars['messages'] = theme('status_messages');
 }
 
@@ -158,7 +181,8 @@ function europa_easy_breadcrumb($variables) {
  * Implements hook_preprocess_image().
  */
 function europa_preprocess_image(&$variables) {
-  // Fix issue between print module and bootstrap theme, print module put a string instead of an array in $variables['attributes']['class']
+  // Fix issue between print module and bootstrap theme, print module put a
+  // string instead of an array in $variables['attributes']['class'].
   if ($shape = theme_get_setting('bootstrap_image_responsive')) {
     if (isset($variables['attributes']['class'])) {
       if (is_array($variables['attributes']['class'])) {
@@ -281,6 +305,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       $output .= $feedback_message;
+
       break;
 
     case 'after':
@@ -294,6 +319,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
       $output .= $feedback_message;
+
       break;
 
     case 'none':
@@ -305,6 +331,7 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       $output .= $feedback_message;
+
       break;
   }
 
@@ -487,11 +514,25 @@ function europa_html_head_alter(&$head_elements) {
 }
 
 /**
+ * Helper function for display 'meta' view mode field.
+ */
+function _europa_field_component_listing($variables) {
+  $output = '';
+  $output .= '<div class="listing">';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<div class="listing__item">' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+  return $output;
+}
+
+/**
  * Helper function for display 'title' view mode field.
  */
 function _europa_field_component_listing_title($variables) {
   $output = '';
-  $output .= '<ul class="listing--title">';
+  $output .= '<ul class="listing listing--title">';
   foreach ($variables['items'] as $delta => $item) {
     $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
   }
@@ -505,15 +546,21 @@ function _europa_field_component_listing_title($variables) {
 function europa_field($variables) {
   $element = $variables['element'];
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
-
   switch ($field_type) {
     case 'entityreference':
       // First node from entity reference.
-      $first_node = reset(reset($element[0]));
-      $first_node_view_mode = isset($first_node['#view_mode']) ? $first_node['#view_mode'] : NULL;
-      if (!is_null($first_node_view_mode) && $first_node_view_mode == 'title') {
-        return _europa_field_component_listing_title($variables);
+      $reference = array_shift($element[0]);
+      $first_node = is_array($reference) ? array_shift($reference) : NULL;
+      if (isset($first_node['#view_mode'])) {
+        switch ($first_node['#view_mode']) {
+          case 'title':
+            return _europa_field_component_listing_title($variables);
+
+          case 'meta':
+            return _europa_field_component_listing($variables);
+        }
       }
+
       break;
   }
 }

@@ -1,39 +1,36 @@
 <?php
 /**
  * @file
- * dt_announcement.context.inc
+ * dt_core.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function dt_announcement_context_default_contexts() {
+function dt_core_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'announcement';
+  $context->name = 'dt_core_sitewide';
   $context->description = '';
-  $context->tag = 'Beta';
+  $context->tag = 'Digital Transformation';
   $context->conditions = array(
-    'node' => array(
+    'sitewide' => array(
       'values' => array(
-        'announcement' => 'announcement',
-      ),
-      'options' => array(
-        'node_form' => '0',
+        1 => 1,
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-announcements-block' => array(
-          'module' => 'views',
-          'delta' => 'announcements-block',
-          'region' => 'content',
-          'weight' => '10',
+        'nexteuropa_feedback-nexteuropa_feedback' => array(
+          'module' => 'nexteuropa_feedback',
+          'delta' => 'nexteuropa_feedback',
+          'region' => 'footer_top',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -42,8 +39,8 @@ function dt_announcement_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Beta');
-  $export['announcement'] = $context;
+  t('Digital Transformation');
+  $export['dt_core_sitewide'] = $context;
 
   return $export;
 }
