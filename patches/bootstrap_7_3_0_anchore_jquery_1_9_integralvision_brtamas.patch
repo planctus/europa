@@ -4,10 +4,10 @@ Date:   Wed Sep 24 12:07:21 2014 +0200
 
     Anchor fix for js 1.9
 
-diff --git a/js/bootstrap.js b/js/bootstrap.js
+diff --git a/project/themes/bootstrap/js/bootstrap.js b/project/themes/bootstrap/js/bootstrap.js
 index 86bccbd..b4e26cb 100644
---- a/js/bootstrap.js
-+++ b/js/bootstrap.js
+--- a/project/themes/bootstrap/js/bootstrap.js
++++ b/project/themes/bootstrap/js/bootstrap.js
 @@ -144,7 +144,7 @@ var Drupal = Drupal || {};
                top: offset + 'px',
                zIndex: -1000
