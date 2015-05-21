@@ -36,55 +36,31 @@ function exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   if (isset($view->exposed_input)) {
     foreach ($view->exposed_input as $filter => $value) {
       $vars[$filter] = $value;
-      $pretty_filter_key = _pretty_filter($filter);
-      $vars['exposed_filters'][$pretty_filter_key] = _get_field_name($filter, $value, $view);
+      $pretty_filter_key = _get_pretty_filter($filter);
+      $vars['exposed_filters'][$pretty_filter_key] = _get_pretty_label($filter, $view);
     }
   }
 }
 
 /**
  * Helper to get the human pretty name of a given field by value.
- * @param $value
  * @param $filter
  * @param $view
- * @return string
+ * @return array
  */
-function _get_field_name($filter, $value, $view) {
-  foreach ($view->exposed_raw_input as $filter_key => $filter_data) {
-    if ($filter === $filter_key) {
-      switch ($filter) {
-        case "title":
-          $pretty_name = $filter_data;
-          return $pretty_name;
-
-        case "keywords":
-          $pretty_name = $filter_data;
-          return $pretty_name;
-
-        case "type":
-          if ($filter_data == t("All")) {
-            $pretty_name = t("All");
-          }
-          else {
-            $pretty_name = $view->filter['field_announcement_type_value']->value_options[$filter_data];
-          }
-          return $pretty_name;
-
-        case "related_departments":
-          if ($filter_data === t("All")) {
-            $pretty_name = $filter_data;
-          }
-          else {
-            $department = entity_load_single('node', $filter_data);
-            $pretty_name = $department->title;
-          }
-          return $pretty_name;
-
-        case "publish_date":
-          $pretty_name = t("Between") . " "
-            . $view->exposed_raw_input['publish_date']['min'] . " "
-            . t("and") . " " . $view->exposed_raw_input['publish_date']['max'];
-          return $pretty_name;
+function _get_pretty_label($filter, $view) {
+  foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
+    if ($filter_handler->options['expose']['identifier'] === $filter) {
+      $value = $filter_handler->value;
+      if (is_array($value)) {
+        $raw_val = reset($value);
+        if (isset($filter_handler->value_options[$raw_val])) {
+          $val = $filter_handler->value_options[$raw_val];
+          return $val;
+        }
+      }
+      else {
+        return $value;
       }
     }
   }
@@ -95,7 +71,7 @@ function _get_field_name($filter, $value, $view) {
  * @param $filter
  * @return mixed
  */
-function _pretty_filter($filter) {
+function _get_pretty_filter($filter) {
   $pretty_filter = str_replace("_", " ", strtolower($filter));
   return $pretty_filter;
 }
