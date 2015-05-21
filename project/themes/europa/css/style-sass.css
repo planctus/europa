@@ -5224,6 +5224,11 @@ body {
     body {
       font-size: 18px; } }
 
+/*
+Typography
+
+Styleguide text
+*/
 /* Headings
 
   Site headings. They also can be applied by adding a class with the name of
@@ -5322,6 +5327,7 @@ ul, ol {
 .region-content ul, .region-content ol {
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 30px !important;
   padding-left: 40px; }
 
 /*
@@ -5622,25 +5628,30 @@ Markup: html/feedback-message.html
 Styleguide form.feedback-message
 */
 .feedback-message {
-  color: #575757;
-  font-family: Arial, sans-serif; }
+  color: #575757; }
   .feedback-message.is-disabled {
     color: #b3b4b5; }
   .feedback-message.is-error {
     color: #575757;
     background-color: #e2e2e2;
-    padding: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center; }
+    padding: 12px; }
     .feedback-message.is-error:before {
       content: '';
-      background: url("../images/svg/error.svg");
+      background: url('../images/svg/error.svg') no-repeat;
       background-size: 1.5em;
       width: 1.5em;
       height: 1.5em;
-      margin-right: 12px; }
+      margin-right: 12px;
+      display: inline-block;
+      margin-bottom: -4px; }
+
+@media (min-width: 480px) {
+  .feedback-message.is-error:before {
+    margin-bottom: -6px; }
+ }
+
+.no-svg .feedback-message.is-error:before {
+  background-image: url('../images/png/error.png'); }
 
 .feedback-form {
   margin: 0; }
@@ -5819,7 +5830,7 @@ Styleguide listing
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
   .listing__item:hover .listing__title, .listing__item:active .listing__title, .listing__item:focus .listing__title {
-    text-decoration: underline;
+    border-bottom: 1px solid #404040;
     color: #404040; }
 
 .listing__item-link {
@@ -5846,7 +5857,8 @@ Styleguide listing
   font-family: Arial, sans-serif;
   font-size: 1em;
   padding-top: 0.9em;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  display: inline-block; }
   .listing__title + * {
     font-size: 0.889em;
     padding-top: 0.7em; }
@@ -5865,14 +5877,16 @@ Styleguide listing.title
 */
 .listing--title, ul.listing--title {
   padding: 0 0 0 15px; }
+  .listing--title .listing__item:hover .listing__title, .listing--title .listing__item:active .listing__title, .listing--title .listing__item:focus .listing__title, ul.listing--title .listing__item:hover .listing__title, ul.listing--title .listing__item:active .listing__title, ul.listing--title .listing__item:focus .listing__title {
+    border-bottom: none; }
   .listing--title .listing__title, ul.listing--title .listing__title {
-    padding: 0; }
+    padding: 0;
+    display: block; }
   .listing--title a.listing__title, .listing--title .listing__title a, ul.listing--title a.listing__title, ul.listing--title .listing__title a {
     display: block;
     padding-top: 0.9em;
     padding-bottom: 0.7em;
-    padding-right: 2em;
-    color: #006fb4; }
+    padding-right: 2em; }
 
 .logo {
   display: block;
@@ -5880,7 +5894,7 @@ Styleguide listing.title
   height: 45px;
   background: url('../images/svg/logo.svg') no-repeat; }
 
-.no-svg {
+.no-svg .logo {
   background-image: url('../images/svg/logo.png'); }
 
 /*
