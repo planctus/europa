@@ -6,7 +6,6 @@ version = 7.x-1.0
 project = dt_department
 dependencies[] = dt_aboutec_core
 dependencies[] = dt_person
-dependencies[] = dt_priority
 dependencies[] = dt_topic
 features[context][] = departments_landing_page
 features[ctools][] = context:context:3
