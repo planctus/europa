@@ -14,6 +14,41 @@ function nexteuropa_page_install() {
 }
 
 /**
+ * Implements hook_enable().
+ */
+function nexteuropa_page_enable() {
+  // Remove field.
+  $field_name = 'field_core_user_tasks';
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_tags', 'page')) {
+    field_delete_instance($instance);
+  }
+  // Remove the fieldgroups.
+  $type = 'page';
+  $fieldgroups_to_remove = array(
+    'group_page_metadata',
+    'group_page_content',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+  features_revert_module('nexteuropa_page');
+  features_revert(array(
+    'nexteuropa_page' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}
+
+/**
  * Remove obsolete fields and field groups.
  */
 function nexteuropa_page_update_7101() {
