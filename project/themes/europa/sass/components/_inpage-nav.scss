@@ -10,16 +10,25 @@ Styleguide inpagenav
 */
 
 .inpage-nav {
-  &.is-navbar {
-    .inpage-nav__header,
-    .inpage-nav__title {
+  &.inpage-nav__navbar-wrapper {
+    display: none;
+    &.is-active {
       display: inherit;
     }
-  }
-
-  .inpage-nav__header,
-  .inpage-nav__title {
-    display: none;
+    &.is-collapsed,
+    &.is-collapsing {
+      .inpage-nav__help,
+      .inpage-nav__close-text {
+         display: block;
+      }
+      .inpage-nav__collapse-icon,
+      .inpage-nav__current {
+       display: none;
+      }
+      .inpage-nav__header{
+       background-color: $grey-lighter;
+      }
+    }
   }
 
   .inpage-nav__container {
@@ -27,6 +36,49 @@ Styleguide inpagenav
     width: auto;
   }
 }
+
+.inpage-nav__navbar {
+  background-color: $blue-dark;
+  color: #ffffff;
+  .inpage-nav__header{
+    .inpage-nav__current {
+      color: #ffffff;
+    }
+
+    .inpage-nav__help {
+      display: none;
+      background-color: $grey-lighter;
+      font-size: $font-size-base;
+      text-transform: uppercase;
+    }
+
+    .inpage-nav__toggle {
+      @extend .btn;
+      @extend .btn-primary;
+      margin: 0;
+    }
+    .inpage-nav__title {
+      display: block;
+      font-size: $font-size-large;
+      padding: 15px;
+      line-height: 21px;
+    }
+
+    .inpage-nav__close-text {
+      display: none;
+      font-size: $font-size-base;
+      line-height: $line-height-computed;
+    }
+
+    .inpage-nav__collapse-icon {
+      display: block;
+      background: url('../images/png/arrow-thick-down.png') no-repeat center center;
+      width: $line-height-computed;
+      height: $line-height-computed;
+    }
+  }
+}
+
 
 .inpage-nav__block-title {
   display: inherit;
@@ -74,6 +126,10 @@ Styleguide inpagenav
   }
 }
 
-.navbar-toggle {
-  top: 10px;
+@include breakpoint(screen-lg-min){
+  .inpage-nav {
+    &.inpage-nav__navbar-wrapper.is-active {
+      display: none;
+    }
+  }
 }
