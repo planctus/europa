@@ -62,6 +62,12 @@
       <?php print $empty; ?>
     </div>
   <?php endif; ?>
+  <!--  $empty is not always working, adding custom check-->
+  <?php if ($view->total_rows == 0) : ?>
+    <div class="filters__result-count">
+      <p class="filters__empty"><?php echo t("No results for this query."); ?></p>
+    </div>
+  <?php endif; ?>
 
   <?php if ($pager): ?>
     <?php print $pager; ?>
