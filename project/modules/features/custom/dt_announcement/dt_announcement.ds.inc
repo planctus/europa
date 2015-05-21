@@ -279,19 +279,6 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_announcement_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => TRUE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -305,15 +292,15 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_announcement_location' => array(
+    'field_announcement_type' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
           'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
+          'fi-cl' => 'meta__item meta__item--type',
           'fi-at' => '',
-          'fi-def-at' => FALSE,
+          'fi-def-at' => TRUE,
           'fi-odd-even' => FALSE,
         ),
       ),
@@ -536,23 +523,21 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_announcement_meta',
-        1 => 'field_announcement_type',
-        2 => 'post_date',
-        3 => 'field_announcement_location',
-        4 => 'title_field',
-        5 => 'field_core_introduction',
+        0 => 'field_announcement_type',
+        1 => 'group_announcement_meta',
+        2 => 'title_field',
+        3 => 'post_date',
+        4 => 'field_core_introduction',
       ),
       'second' => array(
-        6 => 'field_announcement_image',
+        5 => 'field_announcement_image',
       ),
     ),
     'fields' => array(
-      'group_announcement_meta' => 'main',
       'field_announcement_type' => 'main',
-      'post_date' => 'main',
-      'field_announcement_location' => 'main',
+      'group_announcement_meta' => 'main',
       'title_field' => 'main',
+      'post_date' => 'main',
       'field_core_introduction' => 'main',
       'field_announcement_image' => 'second',
     ),
