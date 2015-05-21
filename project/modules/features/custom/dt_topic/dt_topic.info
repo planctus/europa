@@ -32,6 +32,4 @@ features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][ds] = ds
 features_exclude[dependencies][strongarm] = strongarm
-features_exclude[field_instance][node-topic-group_content_access] = node-topic-group_content_access
-features_exclude[field_instance][node-topic-og_group_ref] = node-topic-og_group_ref
 features_exclude[variable][node_options_topic] = node_options_topic

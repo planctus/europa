@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="public/kss.css">
-  <link rel="stylesheet" href="css/style-sass.css">
+  <link rel="stylesheet" href="public/css/style-sass.css">
 
 
   <script src="public/js/jquery-1.9.1.min.js"></script>
@@ -37,6 +37,12 @@
         <a href="section-buttons.html">
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Buttons</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-contextnav.html">
+          <span class="kss-nav__ref">2</span
+          ><span class="kss-nav__name">Contextual navigation</span>
         </a>
       </li>
       <li class="kss-nav__menu-item">
@@ -95,6 +101,12 @@
           ><span class="kss-nav__name">Site header</span>
         </a>
       </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-text.html">
+          <span class="kss-nav__ref">12</span
+          ><span class="kss-nav__name">Typography</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </div>
@@ -126,10 +138,10 @@
           <footer class="footer">
     <div class="container-fluid">
         <section>
-            <label>View the European Commission on :</label>
-            <ul class="footer__menu is-underlined menu nav list-inline">
-                <li><a href="https://www.facebook.com/EuropeanCommission" class="icon--social--facebook" target="_blank">Facebook</a></li>
-                <li><a href="https://twitter.com/eu_commission" class="icon--social--twitter">Twitter</a></li>
+            <label class="footer__label">View the European Commission on :</label>
+            <ul class="footer__menu footer__menu--underlined menu nav list-inline">
+                <li><a href="https://www.facebook.com/EuropeanCommission" class="icon--facebook" target="_blank">Facebook</a></li>
+                <li><a href="https://twitter.com/eu_commission" class="icon--twitter">Twitter</a></li>
                 <li><a href="/other-social-media">Other social media</a></li>
             </ul>
             <ul class="footer__menu menu nav list-inline">
@@ -148,10 +160,10 @@
         <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
     &lt;div class=&quot;container-fluid&quot;&gt;
         &lt;section&gt;
-            &lt;label&gt;View the European Commission on :&lt;/label&gt;
-            &lt;ul class=&quot;footer__menu is-underlined menu nav list-inline&quot;&gt;
-                &lt;li&gt;&lt;a href=&quot;https://www.facebook.com/EuropeanCommission&quot; class=&quot;icon--social--facebook&quot; target=&quot;_blank&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;https://twitter.com/eu_commission&quot; class=&quot;icon--social--twitter&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+            &lt;label class=&quot;footer__label&quot;&gt;View the European Commission on :&lt;/label&gt;
+            &lt;ul class=&quot;footer__menu footer__menu--underlined menu nav list-inline&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;https://www.facebook.com/EuropeanCommission&quot; class=&quot;icon--facebook&quot; target=&quot;_blank&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;https://twitter.com/eu_commission&quot; class=&quot;icon--twitter&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href=&quot;/other-social-media&quot;&gt;Other social media&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
             &lt;ul class=&quot;footer__menu menu nav list-inline&quot;&gt;

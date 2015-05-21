@@ -1,250 +1,76 @@
 /*
 Icon
 
-Social network icons
+Icons using europa icons font
 
-Markup: html/icon--social.html
+Markup: html/icon.html
 
-Styleguide icon
+.icon--external - External link icon
+
+Styleguide: icon
 */
 
+@font-face {
+  font-family: 'EuropaIcons';
+  src: url('../fonts/europa-icons/europa-icons.eot');
+  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/europa-icons/europa-icons.woff') format('woff'),
+  url('../fonts/europa-icons/europa-icons.ttf') format('truetype'),
+  url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg');
+}
+
 .icon {
-  content: '';
-  display: block;
-  float: left;
-  position: relative;
-  top: -5px;
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 4px;
+  line-height: 1;
 
-  &:hover {
-    cursor: pointer;
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Modifiers
+.icon--external {
+  content: '\e601';
+}
+.icon--external:before {
+  @extend .icon--external;
+}
+
+.icon--spinner {
+  content: '\e984';
+}
+.icon--spinner:before {
+  @extend .icon--spinner;
+}
+
+// States
+// creating spinning animation for icon
+.is-spinning:before {
+  @include animation(icon-spin-right 2s infinite linear);
+}
+
+@-webkit-keyframes icon-spin-right {
+  0% {
+    @include rotate(0deg);
+  }
+
+  100% {
+    @include rotate(359deg)
   }
 }
 
-.icon--social {
-  @extend .icon;
-  width: 40px;
-  height: 40px;
-  margin: 0 10px 5px 0;
-}
-
-.icon--blogger {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/blogger.svg') no-repeat;
+@keyframes icon-spin-right {
+  0% {
+    @include rotate(0deg);
   }
 
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/blogger_hover.svg');
-  }
-}
-
-.icon--facebook {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/facebook.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/facebook_hover.svg');
-  }
-}
-
-.icon--flickr {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/flick.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/flick_hover.svg');
-  }
-}
-
-.icon--gplus {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/gplus.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/gplus_hover.svg');
-  }
-}
-
-.icon--linkedin {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/linkedin.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/linkedin_hover.svg');
-  }
-}
-
-.icon--pinterest {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/pinterest.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/pinterest_hover.svg');
-  }
-}
-
-.icon--rss {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/rss.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/rss_hover.svg');
-  }
-}
-
-.icon--skype {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/skype.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/skype_hover.svg');
-  }
-}
-
-.icon--twitter {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/twitter.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/twitter_hover.svg');
-  }
-}
-
-.icon--youtube {
-  &::before {
-    @extend .icon--social;
-    background: url('../images/svg/icons/social/youtube.svg') no-repeat;
-  }
-
-  &:hover::before {
-    @extend .icon--social;
-    background-image: url('../images/svg/icons/social/youtube_hover.svg');
-  }
-}
-
-.no-svg {
-  .icon--blogger {
-    &::before {
-      background-image: url('../images/png/icons/social/blogger.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/blogger_hover.png');
-    }
-  }
-
-  .icon--facebook {
-    &::before {
-      background-image: url('../images/png/icons/social/facebook.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/facebook_hover.png');
-    }
-  }
-
-  .icon--flickr {
-    &::before {
-      background-image: url('../images/png/icons/social/flickr.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/flickr_hover.png');
-    }
-  }
-
-  .icon--gplus {
-    &::before {
-      background-image: url('../images/png/icons/social/gplus.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/gplus_hover.png');
-    }
-  }
-
-  .icon--linkedin {
-    &::before {
-      background-image: url('../images/png/icons/social/linkedin.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/linkedin_hover.png');
-    }
-  }
-
-  .icon--pinterest {
-    &::before {
-      background-image: url('../images/png/icons/social/pinterest.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/pinterest_hover.png');
-    }
-  }
-
-  .icon--rss {
-    &::before {
-      background-image: url('../images/png/icons/social/rss.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/rss_hover.png');
-    }
-  }
-
-  .icon--skype {
-    &::before {
-      background-image: url('../images/png/icons/social/skype.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/skype_hover.png');
-    }
-  }
-
-  .icon--twitter {
-    &::before {
-      background-image: url('../images/png/icons/social/twitter.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/twitter_hover.png');
-    }
-  }
-
-  .icon--youtube {
-    &::before {
-      background-image: url('../images/png/icons/social/youtube.png');
-    }
-
-    &:hover::before {
-      background-image: url('../images/png/icons/social/youtube_hover.png');
-    }
+  100% {
+    @include rotate(359deg)
   }
 }

@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="public/kss.css">
-  <link rel="stylesheet" href="css/style-sass.css">
+  <link rel="stylesheet" href="public/css/style-sass.css">
 
 
   <script src="public/js/jquery-1.9.1.min.js"></script>
@@ -37,6 +37,12 @@
         <a href="section-buttons.html">
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Buttons</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-contextnav.html">
+          <span class="kss-nav__ref">2</span
+          ><span class="kss-nav__name">Contextual navigation</span>
         </a>
       </li>
       <li class="kss-nav__menu-item">
@@ -93,16 +99,64 @@
           ><span class="kss-nav__name">Site header</span>
         </a>
       </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-text.html">
+          <span class="kss-nav__ref">12</span
+          ><span class="kss-nav__name">Typography</span>
+        </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-text.html#kssref-text-blockquote">
+                <span class="kss-nav__ref">12.1</span
+                ><span class="kss-nav__name">Blockquote</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-text.html#kssref-text-link">
+                <span class="kss-nav__ref">12.2</span
+                ><span class="kss-nav__name">Link</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-text.html#kssref-text-lists">
+                <span class="kss-nav__ref">12.3</span
+                ><span class="kss-nav__name">Lists</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-text.html#kssref-text-paragraphs">
+                <span class="kss-nav__ref">12.4</span
+                ><span class="kss-nav__name">Paragraphs</span>
+              </a>
+            </li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </div>
 <article role="main" class="kss-main">
 
-      <section id="kssref-text.blockquote" class="kss-section kss-section--depth-2">
+      <div     id="kssref-text" class="kss-section kss-section--depth-1">
+
+    <div class="kss-style">
+      <h1 class="kss-title kss-title--level-1">
+        <a class="kss-title__permalink" href="#kssref-text">
+          <span class="kss-title__ref">12</span
+          >Typography
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h1>
+
+
+    </div>
+
+
+      </div>
+      <section id="kssref-text-blockquote" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text.blockquote">
+        <a class="kss-title__permalink" href="#kssref-text-blockquote">
           <span class="kss-title__ref">12.1</span
           >Blockquote
           <span class="kss-title__permalink-hash">#permalink</span>
@@ -128,11 +182,11 @@
       </div>
 
       </section>
-      <section id="kssref-text.link" class="kss-section kss-section--depth-2">
+      <section id="kssref-text-link" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text.link">
+        <a class="kss-title__permalink" href="#kssref-text-link">
           <span class="kss-title__ref">12.2</span
           >Link
           <span class="kss-title__permalink-hash">#permalink</span>
@@ -144,68 +198,27 @@
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Examples
-        </div>
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
+          Example
         </div>
         <div class="kss-modifier__example">
-          <a href="href" class=>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :hover
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Hover state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-hover>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :visited
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Visited state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-visited>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :active
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Active state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-active>Link element</a>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          :focus
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Focus state
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=pseudo-class-focus>Link element</a>
+          <a href="href" class=[modifier class]>Link element</a>
+<a href="http">External link</a>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot; class=&gt;Link element&lt;/a&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot; class=[modifier class]&gt;Link element&lt;/a&gt;
+&lt;a href=&quot;http&quot;&gt;External link&lt;/a&gt;
 </code></pre>
       </div>
 
       </section>
-      <section id="kssref-text.lists" class="kss-section kss-section--depth-2">
+      <section id="kssref-text-lists" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text.lists">
+        <a class="kss-title__permalink" href="#kssref-text-lists">
           <span class="kss-title__ref">12.3</span
           >Lists
           <span class="kss-title__permalink-hash">#permalink</span>
@@ -251,11 +264,11 @@
       </div>
 
       </section>
-      <section id="kssref-text.paragraphs" class="kss-section kss-section--depth-2">
+      <section id="kssref-text-paragraphs" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text.paragraphs">
+        <a class="kss-title__permalink" href="#kssref-text-paragraphs">
           <span class="kss-title__ref">12.4</span
           >Paragraphs
           <span class="kss-title__permalink-hash">#permalink</span>
