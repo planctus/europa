@@ -161,7 +161,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="filters__result-count">
-@total announcements
+<span class="filter__items-number">@total announcements</span>
 </div>';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
