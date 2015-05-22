@@ -41,36 +41,13 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
 function dt_core_block_info() {
   $blocks['dt_block_copyright'] = array(
     'info' => t('Copyright paragraph'),
-    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+
+  $blocks['dt_block_footer_site_switcher'] = array(
+    'info' => t('Footer Site switcher'),
   );
 
   return $blocks;
-}
-
-/**
- * Implements hook_block_configure().
- */
-function dt_core_block_configure($delta = '') {
-  $form = array();
-  if ($delta == 'dt_block_copyright') {
-    $form['copyright_paragraph'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Copyright statement'),
-      '#size' => 60,
-      '#description' => t('Contains the copyright statement for the website shown in the footer.'),
-      '#default_value' => variable_get('copyright_paragraph', t('© European Commission copyright.')),
-    );
-  }
-  return $form;
-}
-
-/**
- * Implements hook_block_save().
- */
-function dt_core_block_save($delta = '', $edit = array()) {
-  if ($delta == 'dt_block_copyright') {
-    variable_set('copyright_paragraph', $edit['copyright_paragraph']);
-  }
 }
 
 /**
@@ -79,7 +56,10 @@ function dt_core_block_save($delta = '', $edit = array()) {
 function dt_core_block_view($delta = '') {
   switch ($delta) {
     case 'dt_block_copyright':
-      $block['subject'] = "";
+      $block['content'] = dt_core_get_blocks_content($delta);
+      break;
+
+    case 'dt_block_footer_site_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
       break;
   }
@@ -89,15 +69,25 @@ function dt_core_block_view($delta = '') {
 /**
  * A module-defined block content function.
  */
-function dt_core_get_blocks_content($which_block) {
-  switch ($which_block) {
+function dt_core_get_blocks_content($delta) {
+  switch ($delta) {
     case 'dt_block_copyright':
+      $license_link = l(t('EC license name'), '#');
       $result = array(
-        '#prefix' => "<div class='footer__disclaimer'>",
-        '#suffix' => "</div>",
-        '#markup' => variable_get('copyright_paragraph',
-          t("© European Commission copyright.")
-        ),
+        '#markup' =>
+          "<div class='footer__disclaimer'>" .
+            "<span>" .
+              t('© European Commission copyright. ') .
+            "</span>" .
+            "<span>" .
+              t('All content available under ') . $license_link .
+            "</span>" .
+          "</div>"
+      );
+      return $result;
+    case 'dt_block_footer_site_switcher':
+      $result = array(
+        '#markup' => l(t('The European Commission and its priorities'),t('http://ec.europa.eu/index_en.htm'),array('attributes' => array('class' => array('site-switcher','footer__site-switcher')))),
       );
       return $result;
   }

@@ -8,45 +8,45 @@ Markup: html/footer.html
 Styleguide footer
 */
 
-$footer-white-font: #fff;
-
 .footer {
-  background: $blue-dark;
-  padding: 60px 0;
-  color: $footer-white-font;
+  background: $brand-primary;
+  padding-bottom: 30px;
+  color: #fff;
+  font-size: $font-size-xsmall;
 
   a {
-    color: $footer-white-font;
+    color: #fff;
   }
 }
 
 .footer__label {
-  color: $footer-white-font;
-  font-size: $font-size-xsmall;
-  font-weight: normal;
-  float: left;
-  padding: 15px 15px 0 0;
+  display: block;
+  text-align: center;
 }
 
 .footer__disclaimer {
-  font-size: 0.723em;
+  text-align: center;
   padding-top: 3px;
-  margin-bottom: 0;
+  & > * {
+    width: 100%;
+    display: block;
+  }
 }
 
 .footer__menu {
   padding-left: 0;
+  text-align: center;
 
-  li {
+  .footer__menu-item {
     &:first-child > a {
       padding-left: 0;
     }
 
     a {
       padding-top: 10px;
-      font-size: $font-size-xsmall;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background: none transparent;
         text-decoration: none;
       }
@@ -59,23 +59,13 @@ $footer-white-font: #fff;
   padding-bottom: 5px;
 }
 
-@media (max-width: 600px) {
-  .footer {
-    padding: 20px 0;
-  }
-
-  .footer__label {
-    float: none;
-    text-align: center;
-    width: 100%;
-  }
-
-  .footer__disclaimer {
-    text-align: center;
-  }
-
-  .footer__menu {
-    text-align: center;
-  }
+.footer__site-switcher {
+  background: url('../images/svg/footer__logo.svg') no-repeat center 25px $brand-promo;
+  background-size: 80px 40px;
+  padding: 90px 30px 30px 30px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
-

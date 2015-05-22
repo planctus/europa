@@ -34,8 +34,16 @@ function europa_preprocess_field(&$vars) {
 function europa_preprocess_block(&$vars) {
   $block = $vars['block'];
 
-  if ($block->delta == 'nexteuropa_feedback') {
-    $vars['classes_array'][] = 'block--full-width';
+  switch ($block->delta) {
+    case 'nexteuropa_feedback':
+      $vars['classes_array'][] = 'block--full-width';
+      break;
+    case 'menu-dt-menu-social-media':
+      $block->subject = t('The European Commission on:');
+      break;
+    case 'menu-dt-service-links':
+      $block->subject = '';
+      break;
   }
 }
 
@@ -347,6 +355,28 @@ function europa_menu_tree__menu_dt_service_links(&$variables) {
  */
 function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
   return '<ul class="footer__menu footer__menu--underlined menu nav list-inline">' . $variables['tree'] . '</ul>';
+}
+
+function _europa_menu_link__footer(&$variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  $element['#attributes']['class'][] = 'footer__menu-item';
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+function europa_menu_link__menu_dt_service_links(&$variables) {
+  return _europa_menu_link__footer($variables);
+}
+
+function europa_menu_link__menu_dt_menu_social_media(&$variables) {
+  return _europa_menu_link__footer($variables);
 }
 
 /**
