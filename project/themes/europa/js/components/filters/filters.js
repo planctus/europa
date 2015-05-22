@@ -5,11 +5,16 @@
       // The script works for all filter blocks on current page
       var $filters      = $('.filters'),
           hideText      = Drupal.t('Hide'),
-          refineText    = Drupal.t('Refine');
+          refineText    = Drupal.t('Refine'),
+          clearAll      = Drupal.t('Clear all');
 
       // Hide filter button on ajax call
       if ($filters.is(':visible')) {
         $('.filters__btn-collapse', context).hide();
+      }
+
+      if ($(".region-sidebar-first").length > 0) {
+        $(".region-sidebar-first").removeClass("well");
       }
 
       $filters.once('filters', function(){
@@ -22,6 +27,13 @@
               refineText +
             '</button>'
           );
+          $('.filters__result-count').append("<button class='btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg'>" + clearAll +
+            '</button>'
+          );
+
+          $(".filters__btn-reset--small").on("click", function(){
+             $(".filters__btn-reset").trigger("click");
+          });
         }
 
         $(this).addClass('collapse');
@@ -33,11 +45,13 @@
             ' data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
             ' aria-expanded="true" aria-controls="collapseFilters">' + hideText + '</a>');
           $('.filters__btn-collapse').hide();
+          $('.filters__btn-reset--small').hide();
         });
 
         $filters.on('hide.bs.collapse', function(){
           $(this).children('.close').remove();
           $('.filters__btn-collapse').show();
+          $('.filters__btn-reset--small').show();
         });
 
         if (typeof enquire !== 'undefined') {
@@ -48,6 +62,7 @@
               $filters.find('form').addClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
               $filters.removeAttr('style').removeClass('collapse in');
               $filters.children('.close').remove();
+              $(".region-sidebar-first").addClass("well");
             },
             unmatch : function() {
               $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
@@ -55,6 +70,9 @@
               $filters.find('form').removeClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
               $filters.addClass('collapse');
               $('.filters__btn-collapse').show();
+              if ($(".region-sidebar-first").length > 0) {
+                $(".region-sidebar-first").removeClass("well");
+              }              
             }
           });
         }

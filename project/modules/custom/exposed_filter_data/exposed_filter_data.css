@@ -1,5 +1,5 @@
 .exposed_filter_data {
-  border-bottom: 1px black solid;
+  min-height: 60px;
 }
 .exposed_filter_data .title {
   font-weight: bold;

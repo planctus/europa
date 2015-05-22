@@ -5748,8 +5748,11 @@ Styleguide forms.filters
   display: block;
   position: relative;
   top: 10px; }
+  .filters__btn-reset--small {
+    float: right;
+    clear: both; }
 
-.filters__result-count {
+.filters__btn-reset .filters__result-count {
   overflow: hidden;
   padding: 0 0 1em;
   line-height: 1;
@@ -5791,6 +5794,9 @@ Styleguide forms.filters
 
 .filter__items-number {
   margin-right: 0.333em; }
+
+.views-exposed-form .views-exposed-widget {
+  padding: 0; }
 
 .footer {
   background: #006fb4;
