@@ -87,6 +87,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
     '#default_value' => isset($items[$delta]['steps_in_bullets']) ? $items[$delta]['steps_in_bullets'] : NULL,
     '#rows' => isset($settings['rows']) ? $settings['rows'] : 5,
     '#attributes' => array('class' => array('text-full')),
+    '#format' => 'full_html',
   );
 
   return $element;

@@ -1145,9 +1145,69 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 3,
     ),
     'widget_type' => 'options_select',
+  );
+
+  // Exported field_instance: 'node-policy-og_group_ref'
+  $field_instances['node-policy-og_group_ref'] = array(
+    'bundle' => 'policy',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
+    'required' => FALSE,
+    'settings' => array(
+      'behaviors' => array(
+        'og_widget' => array(
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
+      ),
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 2,
+    ),
   );
 
   // Exported field_instance: 'node-policy-title_field'
@@ -1189,7 +1249,7 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 
@@ -1207,6 +1267,7 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
   t('For the beta, this is manually, but post-beta, this will be a reference to other content types.
 Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>');
   t('Group content visibility');
+  t('Groups audience');
   t('Implementations');
   t('Indicates to which topic(s) the policy belongs.
 Add a <a href="/node/add/topic" target="_blank">Topic</a>');
