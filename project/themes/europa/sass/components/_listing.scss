@@ -28,7 +28,7 @@ $padding-bottom-listing__title: 0.7em;
   &:active,
   &:focus {
     .listing__title {
-      text-decoration: underline;
+      border-bottom: 1px solid $grey-base;
       color: $grey-base;
     }
   }
@@ -66,6 +66,7 @@ $padding-bottom-listing__title: 0.7em;
   font-size: 1em;
   padding-top: $padding-top-listing__title;
   padding-bottom: 0;
+  display: inline-block;
   @extend .h3;
 
   & + * {
@@ -92,8 +93,19 @@ Styleguide listing.title
 ul.listing--title {
   padding: 0 0 0 15px;
 
+  .listing__item {
+    &:hover,
+    &:active,
+    &:focus {
+      .listing__title {
+        border-bottom: none;
+      }
+    }
+  }
+
   .listing__title {
     padding: 0;
+    display: block;
   }
 
   a.listing__title,
@@ -102,6 +114,5 @@ ul.listing--title {
     padding-top: $padding-top-listing__title;
     padding-bottom: $padding-bottom-listing__title;
     padding-right: 2em;
-    color: $brand-primary;
   }
 }

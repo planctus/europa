@@ -137,8 +137,7 @@ function dt_person_field_group_info() {
     'label' => 'Name',
     'weight' => '1',
     'children' => array(
-      0 => 'field_person_first_name',
-      1 => 'field_person_last_name',
+      0 => 'title',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
