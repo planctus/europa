@@ -42,6 +42,20 @@ Styleguide: icon
   @extend .icon--external;
 }
 
+.icon--facebook {
+  content: '\e603';
+}
+.icon--facebook:before {
+  @extend .icon--facebook;
+}
+
+.icon--twitter {
+  content: '\e602';
+}
+.icon--twitter:before {
+  @extend .icon--twitter;
+}
+
 .icon--spinner {
   content: '\e984';
 }

@@ -5740,13 +5740,17 @@ Styleguide footer
   background: #004494;
   padding-bottom: 30px;
   color: #fff;
-  font-size: 0.778em; }
+  font-size: 0.889em; }
   .footer a {
-    color: #fff; }
+    color: #fff;
+    text-decoration: underline; }
+    .footer a:hover, .footer a:active, .footer a:focus {
+      text-decoration: none; }
 
 .footer__label {
   display: block;
-  text-align: center; }
+  text-align: center;
+  font-size: 14px; }
 
 .footer__disclaimer {
   text-align: center;
@@ -5778,7 +5782,8 @@ Styleguide footer
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  text-decoration: none; }
 
 /*
 Help Block
@@ -5828,6 +5833,12 @@ Styleguide: icon
 
 .icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
   content: '\e601'; }
+
+.icon--facebook, .icon--facebook:before {
+  content: '\e603'; }
+
+.icon--twitter, .icon--twitter:before {
+  content: '\e602'; }
 
 .icon--spinner, .icon--spinner:before {
   content: '\e984'; }

@@ -12,16 +12,24 @@ Styleguide footer
   background: $brand-primary;
   padding-bottom: 30px;
   color: #fff;
-  font-size: $font-size-xsmall;
+  font-size: $font-size-little;
 
   a {
     color: #fff;
+    text-decoration: underline;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
   }
 }
 
 .footer__label {
   display: block;
   text-align: center;
+  font-size: 14px;
 }
 
 .footer__disclaimer {
@@ -68,4 +76,5 @@ Styleguide footer
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 30px;
+  text-decoration: none;
 }
