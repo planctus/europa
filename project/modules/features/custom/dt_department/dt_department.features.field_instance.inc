@@ -43,13 +43,9 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -272,7 +268,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'list_view' => array(
@@ -430,7 +426,7 @@ function dt_department_field_default_field_instances() {
         'weight' => 16,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -461,13 +457,14 @@ function dt_department_field_default_field_instances() {
         'weight' => 16,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_link',
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'listing__title',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -636,9 +633,10 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => 1,
+          'links' => 0,
+          'view_mode' => 'title',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 8,
       ),
       'list_view' => array(
@@ -1099,7 +1097,7 @@ function dt_department_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_department_tasks',
     'label' => 'Main tasks',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1297,6 +1295,144 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-department-group_content_access'
+  $field_instances['node-department-group_content_access'] = array(
+    'bundle' => 'department',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 26,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 25,
+    ),
+    'widget_type' => 'options_select',
+  );
+
+  // Exported field_instance: 'node-department-og_group_ref'
+  $field_instances['node-department-og_group_ref'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 25,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
+    'required' => FALSE,
+    'settings' => array(
+      'behaviors' => array(
+        'og_widget' => array(
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
+      ),
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-department-title_field'
   $field_instances['node-department-title_field'] = array(
     'bundle' => 'department',
@@ -1330,13 +1466,9 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => 'content',
-          'title_style' => 'h3',
-        ),
-        'type' => 'title_linked',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -1488,6 +1620,8 @@ function dt_department_field_default_field_instances() {
   t('Department type');
   t('Description');
   t('E.g. \'DG ENER\'');
+  t('Group content visibility');
+  t('Groups audience');
   t('Introduction');
   t('Legacy links');
   t('Link');

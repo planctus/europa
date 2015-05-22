@@ -1,0 +1,74 @@
+/*
+Icon
+
+Markup: html/icon.html
+
+.icon--external - External link icon
+
+Styleguide: icon
+*/
+
+@font-face {
+  font-family: 'EuropaIcons';
+  src: url('../fonts/europa-icons/europa-icons.eot');
+  src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/europa-icons/europa-icons.woff') format('woff'),
+  url('../fonts/europa-icons/europa-icons.ttf') format('truetype'),
+  url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg');
+}
+
+.icon {
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 4px;
+  line-height: 1;
+
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Modifiers
+.icon--external {
+  content: '\e601';
+}
+.icon--external:before {
+  @extend .icon--external;
+}
+
+.icon--spinner {
+  content: '\e984';
+}
+.icon--spinner:before {
+  @extend .icon--spinner;
+}
+
+// States
+// creating spinning animation for icon
+.is-spinning:before {
+  @include animation(icon-spin-right 2s infinite linear);
+}
+
+@-webkit-keyframes icon-spin-right {
+  0% {
+    @include rotate(0deg);
+  }
+
+  100% {
+    @include rotate(359deg)
+  }
+}
+
+@keyframes icon-spin-right {
+  0% {
+    @include rotate(0deg);
+  }
+
+  100% {
+    @include rotate(359deg)
+  }
+}

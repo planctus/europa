@@ -136,7 +136,7 @@ function dt_core_update_7110() {
  * Disable and uninstall the dashboard module.
  */
 function dt_core_update_7111() {
-  if( module_exists('dashboard')) {
+  if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
@@ -152,4 +152,14 @@ function dt_core_update_7112() {
     'metatag_opengraph',
   );
   module_enable($meta_modules);
+}
+
+/**
+ * Enabling DT date formats module.
+ */
+function dt_core_update_7113() {
+  $modules = array(
+    'dt_date_format',
+  );
+  module_enable($modules);
 }
