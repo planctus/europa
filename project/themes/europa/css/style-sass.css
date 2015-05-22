@@ -5755,6 +5755,10 @@ Styleguide forms.filters
   line-height: 1;
   font-weight: bold; }
 
+.filters__empty {
+  display: block;
+  margin: 20px 0; }
+
 .filters__btn-collapse {
   float: right; }
 

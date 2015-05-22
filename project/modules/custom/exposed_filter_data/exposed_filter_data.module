@@ -53,11 +53,20 @@ function _get_pretty_label($filter, $view) {
     if ($filter_handler->options['expose']['identifier'] === $filter) {
       $value = $filter_handler->value;
       if (is_array($value)) {
-        $raw_val = reset($value);
-        if (isset($filter_handler->value_options[$raw_val])) {
-          $val = $filter_handler->value_options[$raw_val];
-          return $val;
+        if (isset($value['type']) && $value['type'] === "date") {
+          return $value['value'];
         }
+        $raw_vals = array();
+        $vals = array();
+        foreach ($value as $key => $val) {
+          $raw_vals[] = $val;
+        }
+        foreach ($raw_vals as $raw_val) {
+          if (isset($filter_handler->value_options[$raw_val])) {
+            $vals[] = $filter_handler->value_options[$raw_val];
+          }
+        }
+        return $vals;
       }
       else {
         return $value;
