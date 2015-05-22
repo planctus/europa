@@ -5740,6 +5740,9 @@ Styleguide forms.filters
   width: 100%;
   clear: both; }
 
+.filters__title {
+  margin-bottom: 20px; }
+
 .filters__btn-submit {
   width: 100%; }
 
