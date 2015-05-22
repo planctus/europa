@@ -7,7 +7,6 @@ Styleguide form.feedback-message
 */
 .feedback-message {
   color: $form-group-feedback-text-color;
-  font-family: $font-family-sans-serif;
 
   &.is-disabled {
     color: $form-group-feedback-text-color-disabled;
@@ -17,19 +16,37 @@ Styleguide form.feedback-message
     color: $form-group-feedback-text-color-has-error;
     background-color: $form-group-feedback-background-color;
     padding: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
 
     // Error icon.
     &:before {
       content: '';
-      background: url("../images/svg/error.svg");
+      background: url('../images/svg/error.svg') no-repeat;
       background-size: $form-group-feedback-icon-size;
       width: $form-group-feedback-icon-size;
       height: $form-group-feedback-icon-size;
       margin-right: 12px;
+      display: inline-block;
+      margin-bottom: -4px;
+    }
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .feedback-message {
+    &.is-error {
+      &:before {
+        margin-bottom: -6px;
+      }
+    }
+  }
+}
+
+.no-svg {
+  .feedback-message {
+    &.is-error {
+      &:before {
+        background-image: url('../images/png/error.png');
+      }
     }
   }
 }

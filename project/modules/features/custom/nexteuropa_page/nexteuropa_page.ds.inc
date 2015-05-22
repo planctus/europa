@@ -228,30 +228,8 @@ function nexteuropa_page_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'page';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
-    'regions' => array(
-      'central' => array(
-        0 => 'body',
-      ),
-      'left_header' => array(
-        1 => 'title',
-        2 => 'field_core_introduction',
-      ),
-      'right_header' => array(
-        3 => 'field_core_link',
-      ),
-      'left' => array(
-        4 => 'in_page_navigation',
-      ),
-    ),
-    'fields' => array(
-      'body' => 'central',
-      'title' => 'left_header',
-      'field_core_introduction' => 'left_header',
-      'field_core_link' => 'right_header',
-      'in_page_navigation' => 'left',
-    ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',
@@ -265,6 +243,24 @@ function nexteuropa_page_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'regions' => array(
+      'left_header' => array(
+        0 => 'title',
+        1 => 'field_core_introduction',
+      ),
+      'right_header' => array(
+        0 => 'field_core_link',
+      ),
+      'central' => array(
+        0 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
+      'field_core_link' => 'right_header',
+      'body' => 'central',
+    ),
   );
   $export['node|page|full'] = $ds_layout;
 
