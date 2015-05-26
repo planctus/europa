@@ -82,7 +82,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
   // Steps in bullets.
   $element['steps_in_bullets'] = array(
     '#title' => t('Step in bullets'),
-    '#type' => 'textarea',
+    '#type' => 'text_format',
     '#description' => t('Please give the steps in bullet bulleted list format.'),
     '#default_value' => isset($items[$delta]['steps_in_bullets']) ? $items[$delta]['steps_in_bullets'] : NULL,
     '#rows' => isset($settings['rows']) ? $settings['rows'] : 5,
@@ -101,14 +101,29 @@ function dt_policy_next_step_field_is_empty($item, $field) {
 }
 
 /**
+ * Implements hook_field_presave().
+ */
+function dt_policy_next_step_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  if ($field['type'] == 'dt_policy_next_step_field') {
+    foreach ($items as $delta => $item) {
+      // The hook_field_presave() called multiple times.
+      // Have to be sure if $item['steps_in_bullets']['value'] exits.
+      if (isset($item['steps_in_bullets']['value'])) {
+        $items[$delta]['steps_in_bullets'] = $item['steps_in_bullets']['value'];
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_field_validate().
  */
 function dt_policy_next_step_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
   foreach ($items as $delta => $item) {
     // Check the length on when/timeframe.
-    if (!empty($item['steps_in_bullets'])) {
-      if (!empty($field['settings']['max_length']) && drupal_strlen($item['steps_in_bullets']) > $field['settings']['max_length']) {
-        $errors[$field['field_name']][$langcode][$delta][] = array(
+    if (!empty($item['when_timeframe'])) {
+      if (!empty($field['settings']['max_length']) && drupal_strlen($item['when_timeframe']) > $field['settings']['max_length']) {
+        $errors[$field['when_timeframe']][$langcode][$delta][] = array(
           'error' => 'dt_policy_next_step_max_length',
           'message' => t('%name: the value may not be longer than %max characters.',
             array(
@@ -204,5 +219,6 @@ function theme_dt_policy_next_step_formatter_default($vars) {
   if (!empty($element['steps_in_bullets'])) {
     $output .= '<div class="steps-in-bullets">' . $element['steps_in_bullets'] . '</div>';
   }
+  kpr($output, 'Output');
   return $output;
 }
