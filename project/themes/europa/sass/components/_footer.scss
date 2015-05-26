@@ -122,6 +122,12 @@ a.footer__site-switcher {
   }
 }
 
+.no-svg {
+  .footer__site-switcher {
+    background-image: url('../images/png/footer__logo.png');
+  }
+}
+
 @include breakpoint(screen-sm-min) {
   .footer {
     text-align: left;

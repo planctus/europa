@@ -5816,6 +5816,9 @@ a.footer__site-switcher {
   a.footer__site-switcher:hover, a.footer__site-switcher:active, a.footer__site-switcher:focus {
     text-decoration: underline; }
 
+.no-svg .footer__site-switcher {
+  background-image: url('../images/png/footer__logo.png'); }
+
 @media (min-width: 768px) {
   .footer {
     text-align: left; }
@@ -5881,7 +5884,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after:after, a[href^="http"]:after, a[href^="https"]:after {
+.icon--after, a[href^="http"]:after, a[href^="https"]:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -5894,7 +5897,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--external:before {
+.icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
   content: '\e601'; }
 
 .icon--spinner:before {
