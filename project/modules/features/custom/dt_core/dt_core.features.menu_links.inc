@@ -51,6 +51,7 @@ function dt_core_menu_default_menu_links() {
         'data-remove-class' => 0,
       ),
       'identifier' => 'menu-dt-menu-social-media_other-social-media:http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -76,8 +77,7 @@ function dt_core_menu_default_menu_links() {
         'class' => array(
           0 => 'icon',
           1 => 'icon--twitter',
-          2 => 'icon--social',
-          3 => 'footer__icon--twitter',
+          2 => 'footer__icon--twitter',
         ),
         'data-remove-class' => 0,
       ),
