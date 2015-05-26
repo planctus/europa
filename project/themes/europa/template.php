@@ -98,19 +98,27 @@ function europa_form_required_marker($variables) {
 /**
  * Implements hook_preprocess_page().
  */
-function europa_preprocess_page(&$vars) {
-  $node = &$vars['node'];
-  $vars['ds_node'] = FALSE;
+function europa_preprocess_page(&$variables) {
+  $node = &$variables['node'];
+  $variables['ds_node'] = FALSE;
 
   // Nodes excluded that are not using DS.
   $node_type_list = array('class');
 
   if (isset($node) && !in_array($node->type, $node_type_list)) {
     // This disables message-printing on ALL page displays.
-    $vars['show_messages'] = FALSE;
+    $variables['show_messages'] = FALSE;
 
     // Add ds_node true to the node object.
-    $vars['ds_node'] = TRUE;
+    $variables['ds_node'] = TRUE;
+  }
+
+  // Set footer region column classes.
+  if (!empty($variables['page']['footer_right'])) {
+    $variables['footer_column_class'] = 'col-sm-8';
+  }
+  else {
+    $variables['footer_column_class'] = 'col-sm-12';
   }
 }
 
@@ -347,14 +355,14 @@ function europa_form_element(&$variables) {
  * Europa theme wrapper function for the service tools menu links.
  */
 function europa_menu_tree__menu_dt_service_links(&$variables) {
-  return '<ul class="footer__menu menu nav list-inline">' . $variables['tree'] . '</ul>';
+  return '<ul class="footer__menu footer__menu--separator menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
  * Europa theme wrapper function for the EC menu links.
  */
 function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
-  return '<ul class="footer__menu footer__menu--underlined menu nav list-inline">' . $variables['tree'] . '</ul>';
+  return '<ul class="footer__menu menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 function _europa_menu_link__footer(&$variables) {

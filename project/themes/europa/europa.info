@@ -18,6 +18,7 @@ regions[sidebar_first] = Sidebar first
 regions[sidebar_second] = Sidebar second
 regions[footer_top] = Footer Top
 regions[footer] = Footer
+regions[footer_right] = Footer right
 
 ; ========================================
 ; Stylesheets

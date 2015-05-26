@@ -10,9 +10,9 @@ Styleguide footer
 
 .footer {
   background: $brand-primary;
-  padding-bottom: 30px;
   color: #fff;
   font-size: $font-size-little;
+  text-align: center;
 
   a {
     color: #fff;
@@ -26,55 +26,123 @@ Styleguide footer
   }
 }
 
+.footer__column-main {
+  padding-bottom: 30px;
+}
+
+.footer__column-right {
+  padding-bottom: 30px;
+}
+
 .footer__label {
   display: block;
-  text-align: center;
   font-size: 14px;
+  margin-right: 20px;
 }
 
 .footer__disclaimer {
-  text-align: center;
-  padding-top: 3px;
+  padding-top: 8px;
   & > * {
     width: 100%;
     display: block;
   }
 }
 
+// Menus
 .footer__menu {
   padding-left: 0;
-  text-align: center;
+  margin: 0;
 
   .footer__menu-item {
+    margin-right: 15px;
+    margin-bottom: 0.5em;
+    padding: 0;
+
     &:first-child > a {
       padding-left: 0;
     }
 
     a {
-      padding-top: 10px;
-
+      padding: 0;
       &:hover,
+      &:active,
       &:focus {
-        background: none transparent;
-        text-decoration: none;
+        background: none;
       }
     }
   }
 }
 
-.footer__menu--underlined {
-  border-bottom: 1px solid #4d7cb4;
-  padding-bottom: 5px;
+.footer__menu--separator {
+  border-top: 1px solid #4d7cb4;
+  margin-top: 0.6em;
+  padding-top: 1.2em;
 }
 
+// Icons
+.footer__icon--facebook,
+.footer__icon--twitter {
+  &:before {
+    position: relative;
+    top: 4px;
+    margin-right: 8px !important;
+  }
+}
+
+.footer__icon--facebook {
+  &:before {
+    font-size: 22px;
+  }
+}
+
+.footer__icon--twitter {
+  &:before {
+    font-size: 18px;
+  }
+}
+
+// Site Switcher
 .footer__site-switcher {
-  background: url('../images/svg/footer__logo.svg') no-repeat center 25px $brand-promo;
+  background: url('../images/svg/footer__logo.svg') no-repeat center 25px $brand-political;
   background-size: 80px 40px;
   padding: 90px 30px 30px 30px;
   display: block;
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 30px;
+}
+
+a.footer__site-switcher {
   text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .footer {
+    text-align: left;
+  }
+
+  // Columns
+  .footer__column-main {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .footer__column-right {
+    padding-bottom: 0;
+    float: right;
+  }
+
+  .footer__label {
+    display: inline-block;
+
+    & ~ .footer__menu {
+      display: inline-block;
+    }
+  }
 }

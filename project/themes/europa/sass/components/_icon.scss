@@ -20,47 +20,64 @@ Styleguide: icon
 }
 
 .icon {
-  font-family: 'EuropaIcons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  margin-left: 4px;
-  line-height: 1;
+  &:before {
+    display: inline-block;
+    font-family: 'EuropaIcons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-right: 4px;
+    line-height: 1;
 
-  // Better Font Rendering
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.icon--after {
+  &:after {
+    display: inline-block;
+    font-family: 'EuropaIcons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-left: 4px;
+    line-height: 1;
+
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 // Modifiers
 .icon--external {
-  content: '\e601';
-}
-.icon--external:before {
-  @extend .icon--external;
-}
-
-.icon--facebook {
-  content: '\e603';
-}
-.icon--facebook:before {
-  @extend .icon--facebook;
-}
-
-.icon--twitter {
-  content: '\e602';
-}
-.icon--twitter:before {
-  @extend .icon--twitter;
+  &:before {
+    content: '\e601';
+  }
 }
 
 .icon--spinner {
-  content: '\e984';
+  &:before {
+    content: '\e984';
+  }
 }
-.icon--spinner:before {
-  @extend .icon--spinner;
+
+.icon--facebook {
+  &:before {
+    content: '\e603';
+  }
+}
+
+.icon--twitter {
+  &:before {
+    content: '\e602';
+  }
 }
 
 // States
