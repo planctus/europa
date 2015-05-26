@@ -18,10 +18,13 @@ function dt_core_menu_default_menu_links() {
     'link_title' => 'Facebook',
     'options' => array(
       'identifier' => 'menu-dt-menu-social-media_facebook:https://www.facebook.com/EuropeanCommission',
+      'alter' => TRUE,
       'attributes' => array(
         'data-display-title' => 1,
         'class' => array(
-          0 => 'icon--social--facebook',
+          0 => 'icon',
+          1 => 'icon--facebook',
+          2 => 'footer__icon--facebook',
         ),
         'data-remove-class' => 0,
       ),
@@ -67,10 +70,14 @@ function dt_core_menu_default_menu_links() {
     'link_title' => 'Twitter',
     'options' => array(
       'identifier' => 'menu-dt-menu-social-media_twitter:https://twitter.com/eu_commission',
+      'alter' => TRUE,
       'attributes' => array(
         'data-display-title' => 1,
         'class' => array(
-          0 => 'icon--social--twitter',
+          0 => 'icon',
+          1 => 'icon--twitter',
+          2 => 'icon--social',
+          3 => 'footer__icon--twitter',
         ),
         'data-remove-class' => 0,
       ),

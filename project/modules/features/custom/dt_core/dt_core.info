@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_core
 dependencies[] = addressfield
-dependencies[] = context
 dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = ds_extras
