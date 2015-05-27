@@ -24,6 +24,7 @@ function dt_toplink_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_top_link_content',
+      1 => 'group_editorial_settings',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -43,16 +44,23 @@ function dt_toplink_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'toplink';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '1',
-    'children' => array(),
-    'format_type' => 'tabs',
+    'weight' => '8',
+    'children' => array(
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
+    ),
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => '',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'classes' => 'group-editorial-settings field-group-tabs',
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
@@ -73,7 +81,7 @@ function dt_toplink_field_group_info() {
     'children' => array(
       0 => 'field_toplink_link',
       1 => 'field_toplink_description',
-      2 => 'title',
+      2 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
