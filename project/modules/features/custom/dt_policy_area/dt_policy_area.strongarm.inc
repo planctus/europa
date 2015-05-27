@@ -111,7 +111,10 @@ function dt_policy_area_strongarm() {
           'weight' => '2',
         ),
         'language' => array(
-          'weight' => '1',
+          'weight' => '9',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '12',
         ),
       ),
       'display' => array(
@@ -130,7 +133,7 @@ function dt_policy_area_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_policy_area';
-  $strongarm->value = '2';
+  $strongarm->value = 4;
   $export['language_content_type_policy_area'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -151,7 +154,10 @@ function dt_policy_area_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_policy_area';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_policy_area'] = $strongarm;
 
   $strongarm = new stdClass();

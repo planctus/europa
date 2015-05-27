@@ -50,7 +50,10 @@ function dt_policy_area_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '7',
     'children' => array(
-      0 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -78,8 +81,8 @@ function dt_policy_area_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_core_introduction',
-      1 => 'title_field',
-      2 => 'field_core_policy_areas',
+      1 => 'field_core_policy_areas',
+      2 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
