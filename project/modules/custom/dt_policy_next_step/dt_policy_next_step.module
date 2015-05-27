@@ -219,6 +219,5 @@ function theme_dt_policy_next_step_formatter_default($vars) {
   if (!empty($element['steps_in_bullets'])) {
     $output .= '<div class="steps-in-bullets">' . $element['steps_in_bullets'] . '</div>';
   }
-  kpr($output, 'Output');
   return $output;
 }

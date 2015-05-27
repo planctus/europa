@@ -15,7 +15,7 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add a <a href="/node/add/department" target="_blank">Department</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -33,6 +33,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_department',
     'label' => 'Responsible department(s)',
@@ -59,8 +60,7 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Indicates to which topic(s) the policy belongs.
-Add a <a href="/node/add/topic" target="_blank">Topic</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -78,6 +78,7 @@ Add a <a href="/node/add/topic" target="_blank">Topic</a>',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
     'label' => 'Part of topic(s)',
@@ -643,7 +644,7 @@ Add a <a href="/node/add/topic" target="_blank">Topic</a>',
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add an <a href="/node/add/policy-implementation" target="_blank">Implementation</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -661,6 +662,7 @@ Add a <a href="/node/add/topic" target="_blank">Topic</a>',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_implementations',
     'label' => 'Implementations',
@@ -687,8 +689,7 @@ Add a <a href="/node/add/topic" target="_blank">Topic</a>',
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For the beta, this is manually, but post-beta, this will be a reference to other content types.
-Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -706,6 +707,7 @@ Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_input',
     'label' => 'Policy input',
@@ -1011,8 +1013,7 @@ Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>',
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please define the parent elements of this policy.
-Add a <a href="/node/add/priority" target="_blank">Priority</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1030,10 +1031,11 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_strategy_policy_area',
     'label' => 'Policy area(s)',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1056,8 +1058,7 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please define the parent elements of this policy.
-Add a <a href="/node/add/priority" target="_blank">Priority</a>',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1075,10 +1076,11 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_strategy_priority',
     'label' => 'Priority/ies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1255,8 +1257,6 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add a <a href="/node/add/department" target="_blank">Department</a>');
-  t('Add an <a href="/node/add/policy-implementation" target="_blank">Implementation</a>');
   t('Additional details');
   t('Author');
   t('Author gender');
@@ -1264,21 +1264,15 @@ Add a <a href="/node/add/priority" target="_blank">Priority</a>',
   t('Details body');
   t('Featured audiovisual file');
   t('Featured video or image or slideshow');
-  t('For the beta, this is manually, but post-beta, this will be a reference to other content types.
-Add a <a href="/node/add/policy-input" target="_blank">Policy input</a>');
   t('Group content visibility');
   t('Groups audience');
   t('Implementations');
-  t('Indicates to which topic(s) the policy belongs.
-Add a <a href="/node/add/topic" target="_blank">Topic</a>');
   t('Introduction');
   t('Introduction text to policy.');
   t('Next steps');
   t('Objectives');
   t('Paragraph');
   t('Part of topic(s)');
-  t('Please define the parent elements of this policy.
-Add a <a href="/node/add/priority" target="_blank">Priority</a>');
   t('Please use <em>other</em> in case of a group or other entity.');
   t('Policy area(s)');
   t('Policy input');
