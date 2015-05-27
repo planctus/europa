@@ -108,3 +108,9 @@ $form-group-feedback-icon-size:                   1.5em;
 // In order to override the 'default!', bootstrap variables have to be added
 // after the overrides
 @import "../bootstrap-sass/bootstrap/variables";
+
+
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     $screen-lg-min;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;

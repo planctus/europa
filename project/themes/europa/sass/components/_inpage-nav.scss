@@ -21,12 +21,53 @@ Styleguide inpagenav
       .inpage-nav__close-text {
          display: block;
       }
-      .inpage-nav__collapse-icon,
       .inpage-nav__current {
        display: none;
       }
       .inpage-nav__header{
        background-color: $grey-lighter;
+       font-weight: normal;
+      }
+      .inpage-nav__toggle {
+        background-color: $grey;
+        border-color: $grey;
+
+        .inpage-nav__icon-arrow {
+          @include rotate(180deg);
+          color: $grey-dark;
+        }
+      }
+    }
+    .inpage-nav__header {
+      margin: 0;
+    }
+
+    .inpage-nav__list {
+      ul {
+        margin: 0px;
+        li {
+          font-size: $font-size-base;
+          line-height: 21px;
+          padding: 0;
+          & > .inpage_nav__list__item {
+            padding: 1em 0 1em 1em;
+            border-top: 1px solid $blue-darkest;
+            margin: 0 1em;
+            &:link,
+            &:visited,
+            &:hover,
+            &:active {
+              color: #ffffff;
+            }
+            &:hover,
+            &:active {
+              text-decoration: underline;
+            }
+          }
+          &.active > a.inpage_nav__list__item{
+             background: none;
+          }
+        }
       }
     }
   }
@@ -35,14 +76,25 @@ Styleguide inpagenav
     padding: 0;
     width: auto;
   }
+
+  .inpage-nav__list {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .inpage-nav__navbar {
   background-color: $blue-dark;
   color: #ffffff;
-  .inpage-nav__header{
+  .inpage-nav__header {
+    font-weight: bold;
     .inpage-nav__current {
       color: #ffffff;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      width: 100%;
+      overflow: hidden;
     }
 
     .inpage-nav__help {
@@ -50,36 +102,68 @@ Styleguide inpagenav
       background-color: $grey-lighter;
       font-size: $font-size-base;
       text-transform: uppercase;
+      color: $grey-dark;
     }
 
     .inpage-nav__toggle {
       @extend .btn;
-      @extend .btn-primary;
       margin: 0;
+      background-color: $blue-darkest;
+      border-color: $blue-darkest;
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none !important;
+        color: #ffffff;
+      }
     }
-    .inpage-nav__title {
-      display: block;
-      font-size: $font-size-large;
-      padding: 15px;
-      line-height: 21px;
-    }
-
     .inpage-nav__close-text {
       display: none;
       font-size: $font-size-base;
       line-height: $line-height-computed;
     }
 
-    .inpage-nav__collapse-icon {
+    .inpage-nav__icon-arrow {
       display: block;
-      background: url('../images/png/arrow-thick-down.png') no-repeat center center;
-      width: $line-height-computed;
-      height: $line-height-computed;
+      // width: $line-height-computed;
+      // height: $line-height-computed;
+      transition: all 0.3s ease 0s;
+      transform-origin: 50% 50%;
+      color: #ffffff;
+      font-size: $font-size-little;
+      margin: 3px;
+    }
+  }
+  .inpage-nav__title {
+    display: block;
+    font-size: $font-size-large;
+    padding: 15px;
+    line-height: 21px;
+    font-weight: bold;
+  }
+
+  .inpage-nav__list {
+    &.li {
+      &.active {
+        .inpage_nav__list__item {
+          color: inherit;
+          background: none;
+        }
+        &:before {
+          background: none;
+          content: none;
+        }
+      }
+      a.inpage_nav__list__item {
+        font-weight: normal;
+      }
     }
   }
 }
 
-
+.inpage-nav__current-wrapper {
+  overflow: hidden;
+}
 .inpage-nav__block-title {
   display: inherit;
   font-size: $font-size-base;
@@ -110,11 +194,11 @@ Styleguide inpagenav
 
   &.active {
     .inpage_nav__list__item {
-      color: $blue;
+      color: $brand-primary;
       background: none;
     }
     &:before {
-      background: none repeat scroll 0 0 $blue;
+      background: none repeat scroll 0 0 $brand-primary;
       content: "";
       display: block;
       height: 100%;
@@ -126,7 +210,13 @@ Styleguide inpagenav
   }
 }
 
-@include breakpoint(screen-lg-min){
+.inpage-nav__wrapper {
+  &.is-affixed {
+    top: 15px;
+  }
+}
+
+@include breakpoint(screen-lg-min) {
   .inpage-nav {
     &.inpage-nav__navbar-wrapper.is-active {
       display: none;

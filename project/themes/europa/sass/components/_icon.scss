@@ -4,6 +4,9 @@ Icon
 Markup: html/icon.html
 
 .icon--external - External link icon
+.icon--arrow-up - Arrow up icon
+.icon--arrow-down - Arrow down icon
+.icon--spinner - Spinner icon
 
 Styleguide: icon
 */
@@ -34,10 +37,24 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e601';
+  content: '\e603';
 }
 .icon--external:before {
   @extend .icon--external;
+}
+
+.icon--arrow-up {
+  content: '\e601';
+}
+.icon--arrow-up:before {
+  @extend .icon--arrow-up;
+}
+
+.icon--arrow-down {
+  content: '\e600';
+}
+.icon--arrow-down:before {
+  @extend .icon--arrow-down;
 }
 
 .icon--spinner {

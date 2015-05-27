@@ -108,7 +108,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
         }
       }
       // Include js.
-      drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') . '/assets/js/inpage_nav.js');
+      drupal_add_js(drupal_get_path('module', 'nexteuropa_inpage_nav') . '/js/inpage_nav.js');
       drupal_add_js(array('inpage_navigation' => array('node_title' => $node->title)), 'setting');
 
       $block['subject'] = t('Page Contents');
