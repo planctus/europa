@@ -18,7 +18,7 @@ function dt_toplink_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -91,9 +91,8 @@ function dt_toplink_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -151,10 +150,9 @@ function dt_toplink_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -201,10 +199,9 @@ function dt_toplink_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'og_ui',
         'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -260,10 +257,11 @@ function dt_toplink_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
