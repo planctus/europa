@@ -19,11 +19,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -69,7 +66,7 @@ function dt_topic_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -142,12 +139,16 @@ function dt_topic_field_default_field_instances() {
   // Exported field_instance: 'node-topic-field_core_link'
   $field_instances['node-topic-field_core_link'] = array(
     'bundle' => 'topic',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'url' => 'http://ec.europa.eu',
+      ),
+    ),
     'deleted' => 0,
-    'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC',
+    'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -182,12 +183,12 @@ function dt_topic_field_default_field_instances() {
       'display' => array(
         'url_cutoff' => 80,
       ),
-      'enable_tokens' => 1,
+      'enable_tokens' => 0,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'See what other EU institutions are doing in [current-page:title]',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -210,11 +211,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'teaser' => array(
@@ -261,11 +259,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -312,11 +307,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -363,11 +355,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -414,9 +403,9 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'i18n_taxonomy',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 10,
       ),
       'teaser' => array(
@@ -459,9 +448,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'teaser' => array(
@@ -537,9 +525,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 12,
       ),
       'teaser' => array(
@@ -615,9 +602,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'teaser' => array(
@@ -693,11 +679,8 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 9,
       ),
       'teaser' => array(
@@ -983,7 +966,7 @@ function dt_topic_field_default_field_instances() {
   t('Select a number of priorities related to this topic.');
   t('Select the commissioner responsible for this topic.');
   t('Targets');
-  t('The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC');
+  t('The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"');
   t('Topic specific tasks');
   t('What the Commission is doing');
 
