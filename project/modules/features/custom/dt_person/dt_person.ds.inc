@@ -17,15 +17,14 @@ function dt_person_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'person';
   $ds_fieldsetting->view_mode = 'meta';
   $ds_fieldsetting->settings = array(
-    'field_person_first_name' => array(
+    'title' => array(
+      'weight' => '12',
+      'label' => 'hidden',
+      'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
-    'field_person_last_name' => array(
-      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => '',
+        'class' => '',
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
@@ -68,9 +67,8 @@ function dt_person_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_person_meta',
         1 => 'group_person_name',
-        3 => 'field_person_first_name',
-        4 => 'field_person_last_name',
-        5 => 'field_person_role',
+        3 => 'title',
+        4 => 'field_person_role',
       ),
       'second' => array(
         2 => 'field_person_photo',
@@ -80,8 +78,7 @@ function dt_person_ds_layout_settings_info() {
       'group_person_meta' => 'main',
       'group_person_name' => 'main',
       'field_person_photo' => 'second',
-      'field_person_first_name' => 'main',
-      'field_person_last_name' => 'main',
+      'title' => 'main',
       'field_person_role' => 'main',
     ),
     'classes' => array(),

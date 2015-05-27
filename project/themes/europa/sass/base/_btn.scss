@@ -102,9 +102,13 @@ Styleguide buttons.btn-block
   width: 100%;
   max-width: 450px;
   text-align: left;
+  margin-bottom: -2px;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 
   & + .btn-block {
     margin-top: 0;
-    border-top: none;
   }
 }

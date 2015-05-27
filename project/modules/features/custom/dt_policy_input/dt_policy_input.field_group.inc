@@ -23,12 +23,12 @@ function dt_policy_input_field_group_info() {
     'label' => 'Content',
     'weight' => '8',
     'children' => array(
-      0 => 'field_policy_input_introduction',
-      1 => 'field_policy_input_link',
-      2 => 'field_policy_input_status',
-      3 => 'field_policy_input_task_cta',
-      4 => 'field_policy_input_type',
-      5 => 'title',
+      0 => 'title_field',
+      1 => 'field_policy_input_introduction',
+      2 => 'field_policy_input_link',
+      3 => 'field_policy_input_status',
+      4 => 'field_policy_input_task_cta',
+      5 => 'field_policy_input_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,8 +55,10 @@ function dt_policy_input_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '10',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -69,34 +71,6 @@ function dt_policy_input_field_group_info() {
     ),
   );
   $export['group_policy_input_editorial|node|policy_input|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_policy_input_page|node|policy_input|form';
-  $field_group->group_name = 'group_policy_input_page';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'policy_input';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Page settings',
-    'weight' => '2',
-    'children' => array(
-      0 => 'path',
-      1 => 'scheduler_settings',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-policy-banner-page field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_policy_input_page|node|policy_input|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
