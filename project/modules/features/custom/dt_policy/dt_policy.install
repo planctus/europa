@@ -27,6 +27,6 @@ function dt_policy_uninstall() {
 function dt_policy_update_7101() {
   field_delete_field('field_policy_priority');
   field_delete_field('field_policy_area');
-  module_enable('dt_policy_next_step');
+  module_enable(array('dt_policy_next_step'));
   features_revert_module('dt_policy');
 }
