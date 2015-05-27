@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the DT Policy follow feature.
- */
-
-include_once 'dt_policy_follow.features.inc';
