@@ -1,0 +1,41 @@
+/*
+Language select (Site)
+
+Language selector that is used across the whole site
+
+Markup: html/lang-select-site.html
+
+Styleguide: langselect
+*/
+
+.lang-select-site {
+  text-align: center;
+
+  .lang-select-site__link {
+    color: inherit;
+    display: inline-block;
+    text-align: center;
+    font-size: $font-size-little;
+    font-weight: bold;
+    padding: 7.5px 15px;
+    border: 2px solid transparent;
+
+    &:focus {
+      border-color: $yellow-light;
+    }
+  }
+
+  .lang-select-site__label {
+    margin-right: 0.556em;
+  }
+
+  .lang-select-site__code {
+    display: inline-block;
+    text-transform: uppercase;
+    background: url('../images/svg/icon-language.svg') no-repeat;
+    color: $brand-primary;
+    height: 26px;
+    width: 26px;
+    font-size: 14px;
+  }
+}

@@ -37,6 +37,25 @@ function europa_preprocess_block(&$vars) {
   if ($block->delta == 'nexteuropa_feedback') {
     $vars['classes_array'][] = 'block--full-width';
   }
+
+  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
+    // Initialize variables.
+    $code = '<span class="lang-select-site__code">' . $vars['elements']['code']['#markup'] . '</span>';
+    $label = '<span class="lang-select-site__label">' . $vars['elements']['label']['#markup'] . '</span>';
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('lang-select-site__link'),
+      ),
+      'query' => array(drupal_get_destination()),
+    );
+
+    // Add class to block.
+    $vars['classes_array'][] = 'lang-select-site';
+
+    // Add content to block.
+    $vars['content'] = l($label . $code, 'splash', $options);
+  }
 }
 
 /**

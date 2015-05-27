@@ -1,12 +1,16 @@
-// Site header
-//
-// Markup: html/site-header.html
-//
-// Styleguide: siteheader
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader
+*/
 
 .site-header {
+  background: $brand-primary;
+  color: #fff;
+  padding-top: 15px;
   .site-header__logo {
-    margin-top: 15px;
     margin-bottom: 15px;
   }
 }
