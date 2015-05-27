@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = dt_topic
 dependencies[] = dt_core
 dependencies[] = dt_priority
+dependencies[] = dt_toplink
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
