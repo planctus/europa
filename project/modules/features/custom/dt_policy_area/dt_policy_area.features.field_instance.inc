@@ -124,8 +124,8 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_policy_areas'
-  $field_instances['node-policy_area-field_core_policy_areas'] = array(
+  // Exported field_instance: 'node-policy_area-field_core_policy_area'
+  $field_instances['node-policy_area-field_core_policy_area'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -133,9 +133,12 @@ function dt_policy_area_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -146,8 +149,8 @@ function dt_policy_area_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_policy_areas',
-    'label' => 'Parent policy areas',
+    'field_name' => 'field_core_policy_area',
+    'label' => 'Parent policy area',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -162,7 +165,7 @@ function dt_policy_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => -3,
+      'weight' => -2,
     ),
   );
 
@@ -327,7 +330,7 @@ function dt_policy_area_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
-  t('Parent policy areas');
+  t('Parent policy area');
   t('Related person');
   t('Tagline or introduction. Maximum 300 characters.');
   t('Title');

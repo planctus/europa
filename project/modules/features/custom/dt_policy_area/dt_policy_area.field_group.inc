@@ -83,6 +83,7 @@ function dt_policy_area_field_group_info() {
       0 => 'field_core_introduction',
       1 => 'field_core_policy_areas',
       2 => 'title_field',
+      3 => 'field_core_policy_area',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
