@@ -82,6 +82,12 @@ Styleguide: icon
   }
 }
 
+.icon--language {
+  &:before {
+    content: '\e604';
+  }
+}
+
 // States
 // creating spinning animation for icon
 .is-spinning:before {

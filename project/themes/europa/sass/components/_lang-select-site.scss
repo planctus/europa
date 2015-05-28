@@ -32,10 +32,24 @@ Styleguide: langselect
   .lang-select-site__code {
     display: inline-block;
     text-transform: uppercase;
-    background: url('../images/svg/icon-language.svg') no-repeat;
+    position: relative;
     color: $brand-primary;
-    height: 26px;
-    width: 26px;
-    font-size: 14px;
+    width: $font-size-xsmall * 2;
+  }
+
+  .lang-select-site__code-text {
+    position: relative;
+    top: -3px;
+    font-size: $font-size-xsmall;
+  }
+
+  .lang-select-site__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    font-size: $font-size-xsmall * 2;
+    line-height: 1;
+    display: inline-block;
   }
 }

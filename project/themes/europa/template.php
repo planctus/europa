@@ -48,7 +48,7 @@ function europa_preprocess_block(&$vars) {
 
   if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
     // Initialize variables.
-    $code = '<span class="lang-select-site__code">' . $vars['elements']['code']['#markup'] . '</span>';
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $vars['elements']['code']['#markup'] . '</span></span>';
     $label = '<span class="lang-select-site__label">' . $vars['elements']['label']['#markup'] . '</span>';
     $options = array(
       'html' => TRUE,
