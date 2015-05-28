@@ -48,11 +48,8 @@ Styleguide forms.filters
   }
 }
 
-.filters__btn-reset
-
 .filters__result-count {
-  overflow: hidden;
-  padding: 0 0 1em;
+  padding: 1em 0 1em;
   line-height: 1;
   font-weight: bold;
 }
@@ -60,6 +57,7 @@ Styleguide forms.filters
 .filters__empty {
   display: block;
   margin: 20px 0;
+  font-weight: bold;
 }
 
 .filters__btn-collapse {

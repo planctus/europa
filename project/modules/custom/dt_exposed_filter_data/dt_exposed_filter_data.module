@@ -8,7 +8,7 @@
 /**
  * Implementation of hook_theme().
  */
-function exposed_filter_data_theme() {
+function dt_exposed_filter_data_theme() {
   return array(
     'exposed_filter_data' => array(
       'template' => 'exposed_filter_data',
@@ -22,9 +22,9 @@ function exposed_filter_data_theme() {
 /**
  * Implementation of hook_preprocess().
  */
-function exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
+function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   // Add the CSS.
-  drupal_add_css(drupal_get_path('module', 'exposed_filter_data') . '/exposed_filter_data.css');
+  drupal_add_css(drupal_get_path('module', 'dt_exposed_filter_data') . '/dt_exposed_filter_data.css');
   $view = $vars['view'];
 
   // In case no view - get the current view.
@@ -54,7 +54,9 @@ function _get_pretty_label($filter, $view) {
       $value = $filter_handler->value;
       if (is_array($value)) {
         if (isset($value['type']) && $value['type'] === "date") {
-          return $value['value'];
+          $date = strtotime($value['value']);
+          $date_formatted = format_date($date, 'ec_date_j_f_y');
+          return $date_formatted;
         }
         $raw_vals = array();
         $vals = array();

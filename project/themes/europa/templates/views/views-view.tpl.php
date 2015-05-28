@@ -38,15 +38,22 @@
       <?php print $header; ?>
     </div>
   <?php endif; ?>
-  <?php if ($active_filters): ?>
-    <?php print $active_filters; ?>
-  <?php endif; ?>
   <?php if ($exposed): ?>
     <div class="view-filters">
       <?php print $exposed; ?>
     </div>
   <?php endif; ?>
-
+  <?php if ($view->total_rows == 0) : ?>
+    <div class="filters__result-count">
+      <p class="filters__empty"><?php echo t("No @content_type.",
+          array(
+            '@content_type' => $content_types . "s"
+          )); ?></p>
+    </div>
+  <?php endif; ?>
+  <?php if (isset($active_filters)): ?>
+    <?php print $active_filters; ?>
+  <?php endif; ?>
   <?php if ($attachment_before): ?>
     <div class="attachment attachment-before">
       <?php print $attachment_before; ?>
@@ -62,13 +69,6 @@
       <?php print $empty; ?>
     </div>
   <?php endif; ?>
-  <!--  $empty is not always working, adding custom check-->
-  <?php if ($view->total_rows == 0) : ?>
-    <div class="filters__result-count">
-      <p class="filters__empty"><?php echo t("No results for this query."); ?></p>
-    </div>
-  <?php endif; ?>
-
   <?php if ($pager): ?>
     <?php print $pager; ?>
   <?php endif; ?>

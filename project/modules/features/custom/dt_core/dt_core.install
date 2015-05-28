@@ -162,3 +162,15 @@ function dt_core_update_7113() {
   );
   module_enable($modules);
 }
+
+/**
+ * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ */
+function dt_core_update_7115() {
+  $modules = array(
+    'dt_exposed_filter_data',
+  );
+  module_enable($modules);
+  // Reverting the features which contain the filters.
+  features_revert(array('dt_announcement', 'dt_department'));
+}

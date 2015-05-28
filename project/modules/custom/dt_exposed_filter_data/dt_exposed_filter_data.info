@@ -1,6 +1,7 @@
-name = "Exposed Filter Data"
+name = "Exposed Filter Data - Fork for DT project"
 description = "Provides simple way to print exposed filter data"
 dependencies[] = views
+dependencies[] = dt_date_format
 package = Views
 core = 7.x
 
