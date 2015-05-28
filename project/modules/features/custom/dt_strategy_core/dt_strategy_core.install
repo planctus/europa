@@ -8,7 +8,7 @@
 /**
  * Enabling policy_area content type.
  */
-function dt_core_update_7101() {
+function dt_strategy_core_update_7101() {
   // The features to enable.
   $features = array(
     'dt_policy_area',
