@@ -185,7 +185,7 @@ function dt_toplink_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 10,
     ),
     'widget_type' => 'options_select',
   );
@@ -245,7 +245,7 @@ function dt_toplink_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 

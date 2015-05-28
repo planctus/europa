@@ -13,17 +13,17 @@ function dt_topic_custom_formatters_defaults() {
   $formatter = new stdClass();
   $formatter->disabled = FALSE; /* Edit this to true to make a default formatter disabled initially */
   $formatter->api_version = 2;
-  $formatter->name = 'user_task_link';
-  $formatter->label = 'user_task_link';
-  $formatter->description = 'Linking directly to the value of field_user_task_link';
+  $formatter->name = 'top_task_link';
+  $formatter->label = 'top_task_link';
+  $formatter->description = 'Linking directly to the value of field_core_top_task_link attached to Top Tasks vocabulary.';
   $formatter->mode = 'php';
   $formatter->field_types = 'taxonomy_term_reference';
   $formatter->code = '$element = array();
 
 foreach ($variables[\'#items\'] as $delta => $item) {
  $term = taxonomy_term_load($item[\'tid\']);
- $link_field = field_get_items(\'taxonomy_term\', $term, \'field_user_task_link\');
- $link = field_view_value(\'taxonomy_term\', $term, \'field_user_task_link\', $link_field[0]);
+ $link_field = field_get_items(\'taxonomy_term\', $term, \'field_core_top_task_link\');
+ $link = field_view_value(\'taxonomy_term\', $term, \'field_core_top_task_link\', $link_field[0]);
  if(!empty($link[\'#element\'][\'url\'])) {
    $element[$delta] = array(
      \'#type\' => \'link\',
@@ -39,7 +39,7 @@ foreach ($variables[\'#items\'] as $delta => $item) {
 return $element;
 ';
   $formatter->fapi = '';
-  $export['user_task_link'] = $formatter;
+  $export['top_task_link'] = $formatter;
 
   return $export;
 }

@@ -22,7 +22,7 @@ function dt_toplink_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_toplink_node_info() {
   $items = array(
     'toplink' => array(
-      'name' => t('Top link'),
+      'name' => t('Topic Top Link'),
       'base' => 'node_content',
       'description' => t('Helper content type which resembles top task object. Used at least in topic content type to list related top links next to top tasks.'),
       'has_title' => '1',

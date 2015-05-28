@@ -200,6 +200,7 @@ function dt_topic_field_group_info() {
     'children' => array(
       0 => 'field_topic_tasks',
       1 => 'field_core_user_tasks',
+      2 => 'field_core_top_tasks',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

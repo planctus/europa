@@ -52,15 +52,15 @@ function dt_topic_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title',
         1 => 'field_core_introduction',
-        2 => 'field_core_user_tasks',
-        3 => 'field_core_link',
+        2 => 'field_core_link',
+        3 => 'field_core_top_tasks',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'field_core_introduction' => 'ds_content',
-      'field_core_user_tasks' => 'ds_content',
       'field_core_link' => 'ds_content',
+      'field_core_top_tasks' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
