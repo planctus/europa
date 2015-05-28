@@ -1,3 +1,20 @@
-<?php 
+<?php
 
+/**
+ * @file
+ * Digital Transformation Strategy Core install file.
+ */
 
+/**
+ * Enabling policy_area content type.
+ */
+function dt_strategy_core_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_policy_area',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  features_revert(array('dt_policy_area'));
+}
