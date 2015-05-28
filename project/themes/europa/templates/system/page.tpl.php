@@ -208,15 +208,24 @@
 </section>
 
 <?php if (!empty($page['footer_top'])): ?>
-  <footer class="footer-top">
+  <section class="footer-top">
     <div class="container-fluid">
       <?php print render($page['footer_top']); ?>
     </div>
-  </footer>
+  </section>
 <?php endif; ?>
 
 <footer class="footer">
   <div class="container-fluid">
-    <?php print render($page['footer']); ?>
+    <div class="row">
+      <?php if (!empty($page['footer_right'])): ?>
+        <aside class="col-sm-4 footer__column-right">
+          <?php print render($page['footer_right']); ?>
+        </aside>
+      <?php endif; ?>
+      <section class="<?php print $footer_column_class; ?> footer__column-main">
+        <?php print render($page['footer']); ?>
+      </section>
+    </div>
   </div>
 </footer>
