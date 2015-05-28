@@ -81,7 +81,7 @@
     <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
-    <section class="top-bar pull-right" aria-label="Site tools">
+    <section class="top-bar" aria-label="Site tools">
       <?php print render($page['header']); ?>
     </section>
     <?php endif; ?>

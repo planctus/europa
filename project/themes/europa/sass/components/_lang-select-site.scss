@@ -5,11 +5,14 @@ Language selector that is used across the whole site
 
 Markup: html/lang-select-site.html
 
-Styleguide: langselect
+Styleguide: siteheader.langselect
 */
 
 .lang-select-site {
   text-align: center;
+  position: absolute;
+  top: 30px;
+  right: 0;
 
   .lang-select-site__link {
     color: inherit;

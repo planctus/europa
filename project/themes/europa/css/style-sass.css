@@ -5436,6 +5436,11 @@ Styleguide form.textarea
   padding-top: 0;
   padding-bottom: 0; }
 
+.top-bar {
+  margin-top: 15px;
+  overflow: hidden;
+  width: 100%; }
+
 .block--full-width {
   margin-left: -15px;
   margin-right: -15px; }
@@ -6313,7 +6318,8 @@ Styleguide: siteheader
 .site-header {
   background: #004494;
   color: #fff;
-  padding-top: 15px; }
+  padding-top: 15px;
+  position: relative; }
   .site-header .site-header__logo {
     margin-bottom: 15px; }
 
@@ -6351,10 +6357,13 @@ Language selector that is used across the whole site
 
 Markup: html/lang-select-site.html
 
-Styleguide: langselect
+Styleguide: siteheader.langselect
 */
 .lang-select-site {
-  text-align: center; }
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  right: 0; }
   .lang-select-site .lang-select-site__link {
     color: inherit;
     display: inline-block;
