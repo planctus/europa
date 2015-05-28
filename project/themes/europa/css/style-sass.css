@@ -4972,7 +4972,7 @@ Styleguide buttons
   border-radius: 0;
   border-width: 2px;
   font-weight: 600;
-  padding: 0.8em 1em;
+  padding: 0.75em 1em;
   font-size: 0.889em;
   text-decoration: none; }
   .btn:hover, .btn:active, .btn:focus {
@@ -5031,6 +5031,20 @@ Styleguide buttons.btn-block
     margin-bottom: 10px; }
   .btn-block + .btn-block {
     margin-top: 0; }
+
+/*
+Button Search
+
+Button search component
+
+Markup: html/btn-search.html
+
+Styleguide buttons.btn-search
+*/
+.btn.btn-search {
+  border-color: #fff;
+  background: #e2e2e2;
+  color: #575757; }
 
 /*
 Button group
@@ -5694,7 +5708,7 @@ Styleguide form.feedback-message
 
 .feedback-form__btn {
   width: 12em; }
-  .feedback-form__btn .icon {
+  .feedback-form__btn .icon, .feedback-form__btn .search-form__btn {
     font-size: 0.778em; }
 
 #feedback-form__accordion {
@@ -5876,7 +5890,7 @@ Styleguide: icon
   src: url('../fonts/europa-icons/europa-icons.eot');
   src: url('../fonts/europa-icons/europa-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/europa-icons/europa-icons.woff') format('woff'), url('../fonts/europa-icons/europa-icons.ttf') format('truetype'), url('../fonts/europa-icons/europa-icons.svg#icomoon') format('svg'); }
 
-.icon:before {
+.icon:before, .search-form__btn:before {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -5916,6 +5930,9 @@ Styleguide: icon
 
 .icon--language:before {
   content: '\e604'; }
+
+.icon--search:before, .search-form__btn:before {
+  content: '\e605'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
@@ -6394,5 +6411,50 @@ Styleguide: siteheader.langselect
     font-size: 1.556em;
     line-height: 1;
     display: inline-block; }
+
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader.searchform
+*/
+.search-form {
+  overflow: hidden; }
+
+.search-form__textfield-wrapper, .search-form .form-type-textfield {
+  margin: 0;
+  width: 83%;
+  float: left; }
+
+.search-form__textfield {
+  margin: 0;
+  border-color: #fff; }
+
+.search-form__btn {
+  width: 17%;
+  float: left;
+  text-indent: 10em;
+  position: relative; }
+  .search-form__btn:before {
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5em;
+    width: 100%;
+    line-height: 1.6em; }
+
+@media (min-width: 480px) {
+  .search-form__textfield-wrapper, .search-form .form-type-textfield {
+    width: 67%; }
+
+  .search-form__btn {
+    text-indent: 0;
+    width: 33%; }
+    .search-form__btn:before {
+      display: none; }
+ }
+
 
 /*# sourceMappingURL=style-sass.css.map */

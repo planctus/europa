@@ -616,3 +616,13 @@ function europa_field($variables) {
       break;
   }
 }
+
+/**
+ * A search_form alteration.
+ */
+function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
+  $form['search_input_group']['#prefix'] = '';
+  $form['search_input_group']['#suffix'] = '';
+  $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
+  $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+}
