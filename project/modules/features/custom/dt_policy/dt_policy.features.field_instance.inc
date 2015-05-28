@@ -163,47 +163,7 @@ function dt_policy_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-policy-field_policy_author_gender'
-  $field_instances['node-policy-field_policy_author_gender'] = array(
-    'bundle' => 'policy',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please use <em>other</em> in case of a group or other entity.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_policy_author_gender',
-    'label' => 'Author gender',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 16,
     ),
   );
 
@@ -274,8 +234,8 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_additional'
-  $field_instances['node-policy-field_policy_detail_additional'] = array(
+  // Exported field_instance: 'node-policy-field_policy_detail_add_body'
+  $field_instances['node-policy-field_policy_detail_add_body'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
@@ -286,7 +246,7 @@ function dt_policy_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 25,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -295,9 +255,10 @@ function dt_policy_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_policy_detail_additional',
-    'label' => 'Additional details',
+    'field_name' => 'field_policy_detail_add_body',
+    'label' => 'Body',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -326,7 +287,6 @@ function dt_policy_field_default_field_instances() {
           ),
         ),
       ),
-      'display_summary' => 1,
       'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -335,11 +295,78 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+        'rows' => 5,
       ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 41,
+      'type' => 'text_textarea',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-policy-field_policy_detail_add_header'
+  $field_instances['node-policy-field_policy_detail_add_header'] = array(
+    'bundle' => 'policy',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_policy_detail_add_header',
+    'label' => 'Header',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 43,
     ),
   );
 
@@ -1213,15 +1240,15 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Additional details');
   t('Author');
-  t('Author gender');
+  t('Body');
   t('Caption');
   t('Details body');
   t('Featured audiovisual file');
   t('Featured video or image or slideshow');
   t('Group content visibility');
   t('Groups audience');
+  t('Header');
   t('Implementations');
   t('Introduction');
   t('Introduction text to policy.');
@@ -1229,7 +1256,6 @@ function dt_policy_field_default_field_instances() {
   t('Objectives');
   t('Paragraph');
   t('Part of topic(s)');
-  t('Please use <em>other</em> in case of a group or other entity.');
   t('Policy area(s)');
   t('Policy input');
   t('Priority/ies');

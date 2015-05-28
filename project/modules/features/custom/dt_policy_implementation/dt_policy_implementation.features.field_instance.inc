@@ -216,8 +216,8 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_task_shortcut'
-  $field_instances['node-policy_implementation-field_task_shortcut'] = array(
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_task'
+  $field_instances['node-policy_implementation-field_policy_imp_task'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
@@ -238,7 +238,7 @@ function dt_policy_implementation_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_task_shortcut',
+    'field_name' => 'field_policy_imp_task',
     'label' => 'Task shortcut',
     'required' => 0,
     'settings' => array(

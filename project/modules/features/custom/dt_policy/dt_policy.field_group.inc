@@ -27,12 +27,11 @@ function dt_policy_field_group_info() {
       1 => 'group_policy_common',
       2 => 'group_policy_details',
       3 => 'group_policy_editorial',
-      4 => 'group_policy_follow',
-      5 => 'group_policy_implementation',
-      6 => 'group_policy_input',
-      7 => 'group_policy_next_steps',
-      8 => 'group_policy_other_relations',
-      9 => 'group_policy_related',
+      4 => 'group_policy_implementation',
+      5 => 'group_policy_input',
+      6 => 'group_policy_next_steps',
+      7 => 'group_policy_other_relations',
+      8 => 'group_policy_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -43,6 +42,36 @@ function dt_policy_field_group_info() {
     ),
   );
   $export['group_content_tabgroup|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_additional_details|node|policy|form';
+  $field_group->group_name = 'group_policy_additional_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_policy_details';
+  $field_group->data = array(
+    'label' => 'Additional details',
+    'weight' => '41',
+    'children' => array(
+      0 => 'field_policy_detail_header',
+      1 => 'field_field_policy_detail_a_body',
+      2 => 'field_policy_detail_add_body',
+      3 => 'field_policy_detail_add_header',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-additional-details field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_additional_details|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -85,12 +114,12 @@ function dt_policy_field_group_info() {
     'label' => 'Banner',
     'weight' => '4',
     'children' => array(
-      0 => 'field_policy_caption',
-      1 => 'field_policy_featured_file',
-      2 => 'field_policy_paragraph',
-      3 => 'field_policy_quote',
-      4 => 'field_policy_sharable_banner',
-      5 => 'group_policy_author',
+      0 => 'field_policy_author',
+      1 => 'field_policy_caption',
+      2 => 'field_policy_featured_file',
+      3 => 'field_policy_paragraph',
+      4 => 'field_policy_quote',
+      5 => 'field_policy_sharable_banner',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -143,12 +172,12 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_policy_detail_additional',
-      1 => 'field_policy_detail_body',
-      2 => 'field_policy_detail_file',
-      3 => 'field_policy_detail_objectives',
+      0 => 'field_policy_detail_body',
+      1 => 'field_policy_detail_file',
+      2 => 'field_policy_detail_objectives',
+      3 => 'group_policy_additional_details',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -173,7 +202,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '12',
+    'weight' => '10',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',

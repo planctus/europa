@@ -98,35 +98,6 @@ function dt_policy_input_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_policy_input_task_cta'
-  $field_bases['field_policy_input_task_cta'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_policy_input_task_cta',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_policy_input_type'
   $field_bases['field_policy_input_type'] = array(
     'active' => 1,

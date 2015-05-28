@@ -28,7 +28,7 @@ function dt_policy_implementation_field_group_info() {
       2 => 'field_policy_imp_link',
       3 => 'field_policy_imp_status',
       4 => 'field_policy_imp_type',
-      5 => 'field_task_shortcut',
+      5 => 'field_policy_imp_task',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -84,34 +84,6 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_author_gender'
-  $field_bases['field_policy_author_gender'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_policy_author_gender',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'female' => 'female',
-        'male' => 'male',
-        'other' => 'other',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_policy_caption'
   $field_bases['field_policy_caption'] = array(
     'active' => 1,
@@ -142,13 +114,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_detail_additional'
-  $field_bases['field_policy_detail_additional'] = array(
+  // Exported field_base: 'field_policy_detail_add_body'
+  $field_bases['field_policy_detail_add_body'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_policy_detail_additional',
+    'field_name' => 'field_policy_detail_add_body',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(
@@ -168,7 +140,36 @@ function dt_policy_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
     ),
     'translatable' => 1,
-    'type' => 'text_with_summary',
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_policy_detail_add_header'
+  $field_bases['field_policy_detail_add_header'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_policy_detail_add_header',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_policy_detail_body'
