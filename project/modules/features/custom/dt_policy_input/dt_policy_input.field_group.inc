@@ -25,10 +25,10 @@ function dt_policy_input_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_policy_input_introduction',
-      2 => 'field_policy_input_link',
-      3 => 'field_policy_input_status',
-      4 => 'field_policy_input_task_cta',
-      5 => 'field_policy_input_type',
+      2 => 'field_policy_input_status',
+      3 => 'field_policy_input_type',
+      4 => 'field_core_link',
+      5 => 'field_policy_task_shortcut',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -25,10 +25,11 @@ function dt_policy_implementation_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_policy_imp_introduction',
-      2 => 'field_policy_imp_link',
-      3 => 'field_policy_imp_status',
-      4 => 'field_policy_imp_type',
-      5 => 'field_policy_imp_task',
+      2 => 'field_policy_imp_status',
+      3 => 'field_policy_imp_type',
+      4 => 'field_policy_imp_task',
+      5 => 'field_core_link',
+      6 => 'field_policy_task_shortcut',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
