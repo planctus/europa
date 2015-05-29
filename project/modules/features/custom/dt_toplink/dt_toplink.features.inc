@@ -1,19 +1,13 @@
 <?php
 /**
  * @file
- * dt_topic.features.inc
+ * dt_toplink.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_topic_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "custom_formatters" && $api == "custom_formatters") {
-    return array("version" => "2");
-  }
-  if ($module == "ds" && $api == "ds") {
-    return array("version" => "1");
-  }
+function dt_toplink_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -25,12 +19,12 @@ function dt_topic_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function dt_topic_node_info() {
+function dt_toplink_node_info() {
   $items = array(
-    'topic' => array(
-      'name' => t('Topic'),
+    'toplink' => array(
+      'name' => t('Topic Top Link'),
       'base' => 'node_content',
-      'description' => t('Topic content type for dt.'),
+      'description' => t('Helper content type which resembles top task object. Used at least in topic content type to list related top links next to top tasks.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

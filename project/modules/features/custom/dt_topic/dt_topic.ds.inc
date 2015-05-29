@@ -48,6 +48,20 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->view_mode = 'default';
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title',
+        1 => 'field_core_introduction',
+        2 => 'field_core_link',
+        3 => 'field_core_top_tasks',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'ds_content',
+      'field_core_introduction' => 'ds_content',
+      'field_core_link' => 'ds_content',
+      'field_core_top_tasks' => 'ds_content',
+    ),
     'classes' => array(),
     'wrappers' => array(
       'ds_content' => 'div',
