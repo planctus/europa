@@ -164,6 +164,21 @@ function dt_core_update_7113() {
 }
 
 /**
+ * Enabling 'topic' and 'toplink' content types.
+ */
+function dt_core_update_7114() {
+  // The features to enable.
+  $features = array(
+    'dt_topic',
+    'dt_toplink',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  features_revert(array('dt_topic', 'dt_toplink'));
+}
+
+/**
  * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
  */
 function dt_core_update_7115() {
