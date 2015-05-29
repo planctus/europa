@@ -29,9 +29,10 @@ function dt_policy_field_group_info() {
       3 => 'group_policy_editorial',
       4 => 'group_policy_implementation',
       5 => 'group_policy_input',
-      6 => 'group_policy_next_steps',
-      7 => 'group_policy_other_relations',
-      8 => 'group_policy_related',
+      6 => 'group_policy_keyfiles',
+      7 => 'group_policy_next_steps',
+      8 => 'group_policy_other_relations',
+      9 => 'group_policy_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -56,10 +57,8 @@ function dt_policy_field_group_info() {
     'label' => 'Additional details',
     'weight' => '41',
     'children' => array(
-      0 => 'field_policy_detail_header',
-      1 => 'field_field_policy_detail_a_body',
-      2 => 'field_policy_detail_add_body',
-      3 => 'field_policy_detail_add_header',
+      0 => 'field_policy_detail_add_body',
+      1 => 'field_policy_detail_add_header',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -246,6 +245,34 @@ function dt_policy_field_group_info() {
     ),
   );
   $export['group_policy_input|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_keyfiles|node|policy|form';
+  $field_group->group_name = 'group_policy_keyfiles';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Key files',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_policy_keyfiles',
+      1 => 'field_core_publication',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-policy-keyfiles field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_policy_keyfiles|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
