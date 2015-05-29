@@ -16,7 +16,7 @@ function dt_topic_install() {
  * Implements hook_uninstall().
  */
 function dt_topic_uninstall() {
-  $path = drupal_get_path('module', 'topic') . '/topic.info';
+  $path = drupal_get_path('module', 'topic') . '/dt_topic.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Topic %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }

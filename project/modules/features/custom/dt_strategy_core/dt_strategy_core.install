@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * NextEuropa Digital Transformation Strategy Core install file.
+ * Digital Transformation Strategy Core install file.
  */
 
 /**
  * Implements hook_install().
  */
-function dt_strategy_install() {
+function dt_strategy_core_install() {
   // Enabling functional features.
   $features = array(
     'dt_policy',
@@ -20,9 +20,19 @@ function dt_strategy_install() {
 }
 
 /**
- * Feature reverting.
+ * Enabling and reverting content types.
  */
-function dt_strategy_update_7101() {
-  features_revert_module('dt_strategy');
-  features_revert_module('dt_policy');
+function dt_strategy_core_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_policy_area',
+    'dt_strategy_core',
+    'dt_policy',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
 }
