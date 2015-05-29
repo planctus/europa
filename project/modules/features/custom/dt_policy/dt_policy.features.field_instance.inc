@@ -55,51 +55,6 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_publication'
-  $field_instances['node-policy-field_core_publication'] = array(
-    'bundle' => 'policy',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_publication',
-    'label' => 'Publication',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 18,
-    ),
-  );
-
   // Exported field_instance: 'node-policy-field_core_topics'
   $field_instances['node-policy-field_core_topics'] = array(
     'bundle' => 'policy',
@@ -1350,7 +1305,6 @@ function dt_policy_field_default_field_instances() {
   t('Policy area(s)');
   t('Policy input');
   t('Priority/ies');
-  t('Publication');
   t('Quote');
   t('Responsible department(s)');
   t('Sharable banner');

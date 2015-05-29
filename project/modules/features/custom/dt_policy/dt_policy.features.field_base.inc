@@ -451,6 +451,7 @@ function dt_policy_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'policy_keyfile' => 'policy_keyfile',
+          'publication' => 'publication',
         ),
       ),
       'target_type' => 'node',
