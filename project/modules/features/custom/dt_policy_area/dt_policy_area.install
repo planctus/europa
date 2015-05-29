@@ -16,7 +16,7 @@ function dt_policy_area_install() {
  * Implements hook_uninstall().
  */
 function dt_policy_area_uninstall() {
-  $path = drupal_get_path('module', 'topic') . '/dt_policy_area.info';
+  $path = drupal_get_path('module', 'dt_policy_area') . '/dt_policy_area.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('dt_policy_area %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
