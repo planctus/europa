@@ -56,14 +56,14 @@ Styleguide forms.filters
 
   &--small {
     float: right;
-    clear: both;
   }
 }
 
 .filters__result-count {
+  font-weight: bold;
   padding: 1em 0;
   line-height: 1;
-  font-weight: bold;
+  overflow: hidden;
 }
 
 .filters__empty {
@@ -109,6 +109,9 @@ Styleguide forms.filters
       width: 12px;
     }
   }
+  .filter__items-number {
+    padding-bottom: 0 !important;
+  }
 }
 
 .filter__items-number,
@@ -120,6 +123,7 @@ Styleguide forms.filters
   clear: both;
   display: block;
   margin-right: 0.333em;
+  padding-bottom: 0.5em;
 }
 
 //Drupal widgets styling hack

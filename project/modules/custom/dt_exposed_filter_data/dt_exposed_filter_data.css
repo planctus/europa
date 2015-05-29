@@ -1,6 +1,5 @@
 .exposed_filter_data {
     min-height: 60px;
-    overflow: hidden;
 }
 .exposed_filter_data .title {
     font-weight: bold;
