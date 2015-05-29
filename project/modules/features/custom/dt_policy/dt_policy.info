@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0-dev
 project = dt_policy
+php = 5.2.4
 dependencies[] = dt_contact
 dependencies[] = dt_department
 dependencies[] = dt_person
