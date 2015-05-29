@@ -22,6 +22,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_core_policy
+features[field_base][] = field_core_policies
 features[field_base][] = field_policy_author
 features[field_base][] = field_policy_caption
 features[field_base][] = field_policy_detail_add_body

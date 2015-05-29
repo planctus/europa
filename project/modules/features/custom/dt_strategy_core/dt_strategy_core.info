@@ -7,7 +7,5 @@ php = 5.2.4
 project = dt_strategy_core
 dependencies[] = dt_core
 features[features_api][] = api:2
-features[field_base][] = field_strategy_policy_area
-features[field_base][] = field_strategy_priority
 features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][features] = features
