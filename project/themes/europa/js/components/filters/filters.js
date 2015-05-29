@@ -54,6 +54,9 @@
           $('.filters__btn-reset--small').show();
         });
 
+        // Adding a wrapper to take the padding which is problematic for the bs.collapse.
+        $filters.wrapInner("<div class='filters__wrapper'></div>");
+
         if (typeof enquire !== 'undefined') {
             enquire.register('screen and (min-width: 768px)', {
             match : function() {
@@ -63,6 +66,10 @@
               $filters.removeAttr('style').removeClass('collapse in');
               $filters.children('.close').remove();
               $(".region-sidebar-first").addClass("well");
+              // When desktop, wrapper is not needed as the .well is back in the sidebar.
+              if ($(".filters__wrapper").length > 0) {
+                $(".filters__wrapper").children().unwrap("<div class='filters__wrapper'></div>");
+              }
             },
             unmatch : function() {
               $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
@@ -72,6 +79,7 @@
               $('.filters__btn-collapse').show();
               if ($(".region-sidebar-first").length > 0) {
                 $(".region-sidebar-first").removeClass("well");
+                $filters.wrapInner("<div class='filters__wrapper'></div>");
               }              
             }
           });

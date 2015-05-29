@@ -4,15 +4,27 @@ Filters
 Filters implementation
 Drupal implementation guidelines can be found [PLACEHOLDER FOR GUIDELINES ON IMPLEMENTATION]
 
-
 Styleguide forms.filters
+
 */
 
 .filters {
   background: $grey-lighter;
   margin-left: -($grid-gutter-width / 2);
   margin-right: -($grid-gutter-width / 2);
+}
+
+// Padding goes to a wrapper added with js.
+// Twitter bootstrap's collapsible twitching issue.
+.filters__wrapper {
   padding: ($grid-gutter-width / 2);
+}
+
+// And adding the padding back in case the wrapper is missing.
+.no-js {
+  .filters {
+    padding: ($grid-gutter-width / 2);
+  }
 }
 
 @include breakpoint(screen-sm-min) {
@@ -49,15 +61,15 @@ Styleguide forms.filters
 }
 
 .filters__result-count {
-  padding: 1em 0 1em;
+  padding: 1em 0;
   line-height: 1;
   font-weight: bold;
 }
 
 .filters__empty {
-  display: block;
-  margin: 20px 0;
   font-weight: bold;
+  display: inline;
+  margin: 0;
 }
 
 .filters__btn-collapse {
@@ -68,6 +80,7 @@ Styleguide forms.filters
   text-decoration: none;
   color: $brand-primary !important;
   opacity: 1 !important;
+  padding-top: 15px;
   text-shadow: none;
   font-size: 1em;
   font-weight: $font-weight-normal;
@@ -104,6 +117,8 @@ Styleguide forms.filters
 }
 
 .filter__items-number {
+  clear: both;
+  display: block;
   margin-right: 0.333em;
 }
 

@@ -47,7 +47,7 @@
     <div class="filters__result-count">
       <p class="filters__empty"><?php echo t("No @content_type.",
           array(
-            '@content_type' => $content_types . "s"
+            '@content_type' => $content_types
           )); ?></p>
     </div>
   <?php endif; ?>
