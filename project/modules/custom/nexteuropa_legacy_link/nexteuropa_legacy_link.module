@@ -8,9 +8,47 @@
  * Implements hook_node_view().
  */
 function nexteuropa_legacy_link_node_view($node, $view_mode, $langcode) {
+  $node = _nexteuropa_legacy_link_add_legacy($node);
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ */
+function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
+  foreach (element_children($output) as $field_name) {
+    $element = &$output[$field_name];
+    if ($element['#field_type'] == 'entityreference') {
+      $field = field_info_field($field_name);
+      // For entity reference fields targeting nodes.
+      if (!isset($field['settings']['target_type']) || $field['settings']['target_type'] !== 'node') {
+        continue;
+      }
+
+      $instance = field_info_instance('node', $field_name, $element['#bundle']);
+      $display = field_get_display($instance, $context['view_mode'], $element['#object']);
+      // If the item is linked to target entity override link with legacy link.
+      if (isset($display['settings']['link'])) {
+        foreach ($element['#items'] as $delta => $item) {
+          // Check if item has Legacy link.
+          $target_node = _nexteuropa_legacy_link_add_legacy($item['entity']);
+          if (isset($target_node->path['legacy'])) {
+            $element[$delta] = array('#markup' => l($target_node->title, $target_node->path['legacy']));
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Adds Legacy link to path array where applicable.
+ */
+function _nexteuropa_legacy_link_add_legacy($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if (isset($wrapper->field_core_legacy_link)) {
     $url = $wrapper->field_core_legacy_link->value()['url'];
     $node->path['legacy'] = $url;
   }
+
+  return $node;
 }
