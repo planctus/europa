@@ -33,6 +33,9 @@ function dt_strategy_core_update_7101() {
   $features = array(
     'dt_policy_area',
     'dt_strategy_core',
+    'dt_policy_implementation',
+    'dt_policy_keyfile',
+    'dt_policy_input',
     'dt_policy',
   );
   module_enable($features);

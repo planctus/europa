@@ -130,7 +130,7 @@ function dt_policy_keyfile_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => -4,
+      'weight' => 1,
     ),
   );
 
@@ -197,7 +197,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -238,7 +238,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => 2,
     ),
   );
 
