@@ -24,6 +24,7 @@ features[field_group][] = group_priority_related|node|priority|form
 features[field_instance][] = node-priority-field_core_announcement
 features[field_instance][] = node-priority-field_core_department
 features[field_instance][] = node-priority-field_core_introduction
+features[field_instance][] = node-priority-field_core_legacy_link
 features[field_instance][] = node-priority-field_core_persons
 features[field_instance][] = node-priority-field_core_policy
 features[field_instance][] = node-priority-field_core_priorities
