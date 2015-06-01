@@ -4,21 +4,25 @@
       // Saving .filters in variable as a generic element, so that
       // The script works for all filter blocks on current page
       var $filters      = $('.filters'),
-          hideText      = Drupal.t('Hide'),
-          refineText    = Drupal.t('Refine'),
-          clearAll      = Drupal.t('Clear all');
+        hideText      = Drupal.t('Hide'),
+        $exposedData  = $('.exposed_filter_data'),
+        $smallReset   = $('.filters__btn-reset--small'),
+        $filtersCount = $('.filters__result-count');
 
-      // ONCE
-      $filters.once('filters', function(){
+
+      $filters.once('filters', function() {
+        var $sidebarFirst = $(".region-sidebar-first");
+
+        if ($sidebarFirst.length > 0) {
+          $sidebarFirst.removeClass("well");
+        }
+
         // Including filter button.
         if ($('.filters__result-count').is(':visible') && $('.filters__btn-collapse').length == 0) {
           Drupal.addFiltersButtonCollapse();
         }
 
-        if ($(".region-sidebar-first").length > 0) {
-          $(".region-sidebar-first").removeClass("well");
-        }
-
+        // Small button emulating the original reset button.
         $(".filters__btn-reset--small").on("click", function(){
           $(".filters__btn-reset").trigger("click");
         });
@@ -29,6 +33,13 @@
         $(this).addClass('collapse');
         $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
         $filters.find('form').removeClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
+
+        if ($('.filters__btn-collapse').is(':visible')) {
+          // Clicking on the submit should collapse the filters.
+          $('.filters__btn-submit').click(function () {
+            $('.filters__btn-collapse').trigger("click");
+          });
+        }
 
         $filters.on('show.bs.collapse', function(){
           $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +
@@ -43,41 +54,37 @@
           $('.filters__btn-collapse').show();
           $('.filters__btn-reset--small').show();
         });
-
       }); // end of .once()
 
 
-      ////////////////////////////////////////////////////////////////////////////////////////////
-      ///// ALL THE TIME /////////////////////////////////////////////////////////////////////////
-      ////////////////////////////////////////////////////////////////////////////////////////////
+      // AJAX BEHAVIORS.
 
       // Filters responsive behavior.
       Drupal.filtersAdapt();
 
       // Including refine filter button.
-      if ($('.filters__result-count').is(':visible') && $('.filters__btn-collapse').length == 0) {
+      if ($filtersCount.is(':visible') && $('.filters__btn-collapse').length == 0) {
         Drupal.addFiltersButtonCollapse();
       }
 
       // Including reset button.
-      if ($('.filters__result-count').is(':visible') &&
-          $('.exposed_filter_data').length > 0 &&
-          $('.filters__btn-reset--small').length == 0) {
+      if ($filtersCount.is(':visible') &&
+        $exposedData.length > 0 &&
+        $smallReset.length == 0) {
         Drupal.addFiltersButtonReset();
       }
 
       // Scenario when firstly there are results, but not results on second go.
-      if ($('.exposed_filter_data').length > 0 &&
-          $('.exposed_filter_data').find('.content').html().trim() === "") {
-        $('.exposed_filter_data').hide();
+      if ($exposedData.length > 0 &&
+        $exposedData.find('.content').html().trim() === "") {
+        $exposedData.hide();
       }
 
-      if ($(".filters__btn-reset--small").length > 0) {
-        $(".filters__btn-reset--small").on("click", function(){
+      if ($smallReset.length > 0) {
+        $smallReset.on("click", function(){
           $(".filters__btn-reset").trigger("click");
         });
       }
-
     } /// end attached scope.
   };
 
@@ -97,24 +104,28 @@
           if ($(".filters__wrapper").length > 0) {
             $(".filters__wrapper").children().unwrap("<div class='filters__wrapper'></div>");
           }
+          //if ($('.filters__btn-collapse').is(':visible')) {
+          //  // Clicking on the submit should collapse the filters.
+          //  $('.filters__btn-submit').click(function () {
+          //    $('.filters__btn-collapse').trigger("click");
+          //  });
+          //}
         },
         // mobile
         unmatch : function() {
           $('.filters__btn-submit', $filters).removeClass('ctools-use-ajax ctools-auto-submit-click js-hide');
+          // Clicking on the submit should collapse the filters.
+          $('.filters__btn-submit').click(function () {
+            $('.filters__btn-collapse').trigger("click");
+          });
           $filters.find('form').removeClass('ctools-auto-submit-full-form ctools-auto-submit-processed');
           $filters.addClass('collapse');
           $('.filters__btn-collapse').show();
           if ($(".region-sidebar-first").length > 0 &&
-              $(".region-sidebar-first").hasClass('well') &&
-              $filters.children('.filters__wrapper').length == 0) {
+            $(".region-sidebar-first").hasClass('well') &&
+            $filters.children('.filters__wrapper').length == 0) {
             $(".region-sidebar-first").removeClass("well");
             $filters.wrapInner("<div class='filters__wrapper'></div>");
-          }
-          // Clicking on the submit should collapse the filters.
-          if ($filters.hasClass('collapse') && $filters.hasClass('in')){
-            $('.filters__btn-submit').click(function () {
-              $('.filters__btn-collapse').trigger("click");
-            });
           }
         }
       });

@@ -5636,30 +5636,6 @@ Styleguide datepicker
     left: 0 !important; }
  }
 
-.field--full-width {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding-left: 15px;
-  padding-right: 15px; }
-  .field--full-width > * {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0; }
-
-@media (min-width: 1200px) {
-  .field--full-width {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0; }
-
-  .col-lg-3 + .col-lg-9 .field--full-width {
-    position: relative;
-    left: -25%;
-    width: 125%; }
- }
-
 /*
 Feedback message
 
@@ -5766,6 +5742,129 @@ Styleguide form.feedback-message
   #feedback-form__accordion {
     overflow: hidden; }
  }
+
+.field--full-width {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .field--full-width > * {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0; }
+
+@media (min-width: 1200px) {
+  .field--full-width {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+
+  .col-lg-3 + .col-lg-9 .field--full-width {
+    position: relative;
+    left: -25%;
+    width: 125%; }
+ }
+
+/*
+Filters
+
+Filters implementation
+Drupal implementation guidelines can be found [PLACEHOLDER FOR GUIDELINES ON IMPLEMENTATION]
+
+Styleguide forms.filters
+
+*/
+.filters {
+  background: #ececec;
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.filters__wrapper {
+  padding: 15px; }
+
+.no-js .filters {
+  padding: 15px; }
+
+@media (min-width: 768px) {
+  .filters {
+    background: transparent;
+    margin: 0;
+    padding: 0; }
+ }
+
+.filters__filter {
+  width: 100%;
+  clear: both; }
+
+.filters__title {
+  margin-bottom: 20px; }
+
+.filters__btn-submit {
+  width: 100%; }
+
+.filters__btn-reset {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 10px; }
+  .filters__btn-reset--small {
+    float: right; }
+
+.filters__result-count {
+  font-weight: bold;
+  padding: 1em 0;
+  line-height: 1;
+  overflow: hidden; }
+
+.filters__empty {
+  font-weight: bold;
+  display: inline;
+  margin: 0; }
+
+.filters__btn-collapse {
+  float: right; }
+
+.filters__close {
+  text-decoration: none;
+  color: #004494 !important;
+  opacity: 1 !important;
+  padding-top: 15px;
+  text-shadow: none;
+  font-size: 1em;
+  font-weight: 400; }
+  .filters__close:after {
+    content: "";
+    background: url('../images/svg/arrow-up--blue.svg') no-repeat;
+    height: 8px;
+    width: 10px;
+    margin-left: 5px;
+    display: inline-block;
+    text-decoration: none !important; }
+  .filters__close:hover, .filters__close:active, .filters__close:focus {
+    text-decoration: underline; }
+
+@media (min-width: 480px) {
+  .filters__close:after {
+    height: 9px;
+    width: 12px; }
+
+  .filter__items-number {
+    padding-bottom: 0 !important; }
+ }
+
+.filter__items-number, .filters__items-name {
+  font-size: 2.222em; }
+
+.filter__items-number {
+  clear: both;
+  display: block;
+  margin-right: 0.333em;
+  padding-bottom: 0.5em; }
+
+.views-exposed-form .views-exposed-widget {
+  padding: 0; }
 
 /*
 Footer
