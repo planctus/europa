@@ -6394,7 +6394,7 @@ Styleguide: siteheader.langselect
 .lang-select-site {
   text-align: center;
   position: absolute;
-  top: 30px;
+  top: 0;
   right: 15px; }
   .lang-select-site .lang-select-site__link {
     color: inherit;
