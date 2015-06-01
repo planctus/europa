@@ -9,6 +9,16 @@
       });
     },
 
+    currentTitle: function($navBar, $navBarCurrent) {
+      // Clear title for In page nav navbar title if nothing selected.
+      var currentItem = $("li.active > a", $navBar);
+      if (currentItem.length == 0) {
+        $navBarCurrent.text(Drupal.settings.inpage_navigation.node_title);
+      } else {
+        $navBarCurrent.text(currentItem.text());
+      }
+    },
+
     attach: function (context) {
       $('.inpage-nav').once('page-navigation', function () {
         var $inPageActive = false;
@@ -32,6 +42,9 @@
         enquire.register("screen and (min-width: 1200px)", {
           // desktop
           match : function() {
+            $inPageBlock
+              .removeClass("affix affix-top affix-bottom is-fixed is-bottom");
+
             // Affix.
             Drupal.behaviors.inpage_navigation.fixWidth($inPageBlock, $inPageBlockParent);
             $inPageBlock.affix({
@@ -97,8 +110,6 @@
                 target: '.inpage-nav'
             });
 
-
-
             $navBar.on('show.bs.collapse', function() {
               $navBar.addClass('is-collapsing');
             });
@@ -113,18 +124,15 @@
             });
 
             $navBar.on("activate.bs.scrollspy", function(e) {
-              // Set current heading as title for In page nav navbar title.
-              $navBarCurrent.text($("li.active > a", $navBar).text());
+              // Set title to current;
+              Drupal.behaviors.inpage_navigation.currentTitle($navBar, $navBarCurrent);
             });
 
 
             $(window).scroll(function(e) {
               $window = $(this);
-              // Clear title for In page nav navbar title if nothing selected.
-              var currentItem = $("li.active > a", $navBar);
-              if (currentItem.length == 0) {
-                $navBarCurrent.text(title);
-              }
+              // Set title to current;
+              Drupal.behaviors.inpage_navigation.currentTitle($navBar, $navBarCurrent);
 
               // Show navbar if scroll is under the block.
               var docViewTop = $window.scrollTop();
