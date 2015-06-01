@@ -8,6 +8,7 @@
  * Implements hook_node_view().
  */
 function nexteuropa_legacy_link_node_view($node, $view_mode, $langcode) {
+  // Extend node object with Legacy link if it exists.
   $node = _nexteuropa_legacy_link_add_legacy($node);
 }
 
@@ -17,6 +18,7 @@ function nexteuropa_legacy_link_node_view($node, $view_mode, $langcode) {
 function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
   foreach (element_children($output) as $field_name) {
     $element = &$output[$field_name];
+    // Fix linked entity references to link to Legacy link and not to entity.
     if ($element['#field_type'] == 'entityreference') {
       $field = field_info_field($field_name);
       // Skip entity reference fields not targeting nodes.
@@ -41,7 +43,7 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
 }
 
 /**
- * Adds Legacy link to path array where applicable.
+ * Adds Legacy link to node path array where applicable.
  */
 function _nexteuropa_legacy_link_add_legacy($node) {
   // If Legacy link field is used add it to path array.
