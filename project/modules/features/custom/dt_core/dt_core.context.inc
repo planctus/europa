@@ -26,6 +26,18 @@ function dt_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'language_selector_site-language_selector_site' => array(
+          'module' => 'language_selector_site',
+          'delta' => 'language_selector_site',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
+          'module' => 'nexteuropa_europa_search',
+          'delta' => 'nexteuropa_europa_search_form',
+          'region' => 'header',
+          'weight' => '-9',
+        ),
         'nexteuropa_feedback-nexteuropa_feedback' => array(
           'module' => 'nexteuropa_feedback',
           'delta' => 'nexteuropa_feedback',
