@@ -116,7 +116,7 @@ function dt_department_field_group_info() {
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'name="contact"',
+        'attributes' => 'id="contact"',
       ),
     ),
   );
@@ -147,7 +147,7 @@ function dt_department_field_group_info() {
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'name="leadership"',
+        'attributes' => 'id="leadership"',
       ),
     ),
   );
@@ -243,7 +243,7 @@ function dt_department_field_group_info() {
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'name="resposibilities"',
+        'attributes' => 'id="resposibilities"',
       ),
     ),
   );
