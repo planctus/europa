@@ -7,6 +7,7 @@ project = dt_department
 dependencies[] = dt_aboutec_core
 dependencies[] = dt_person
 dependencies[] = dt_topic
+dependencies[] = nexteuropa_legacy_link
 features[context][] = departments_landing_page
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
