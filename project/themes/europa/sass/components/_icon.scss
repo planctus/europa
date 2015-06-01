@@ -95,7 +95,8 @@ Styleguide: icon
 }
 
 // States
-// creating spinning animation for icon
+// creating spinning animation for an icon
+// in order to enable spinning apend .is-spinning class next to the .icon class
 .is-spinning:before {
   @include animation(icon-spin-right 2s infinite linear);
 }

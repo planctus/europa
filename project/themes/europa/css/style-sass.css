@@ -5844,9 +5844,12 @@ Styleguide footer
   font-weight: bold; }
 
 a.footer__site-switcher {
-  text-decoration: none; }
+  text-decoration: none;
+  border: 2px solid transparent; }
   a.footer__site-switcher:hover, a.footer__site-switcher:active, a.footer__site-switcher:focus {
     text-decoration: underline; }
+  a.footer__site-switcher:focus {
+    border: 2px solid #ffd617; }
 
 .no-svg .footer__site-switcher {
   background-image: url('../images/png/footer__logo.png'); }
@@ -5867,6 +5870,18 @@ a.footer__site-switcher {
     display: inline-block; }
     .footer__label ~ .footer__menu {
       display: inline-block; }
+
+  .footer__disclaimer > * {
+    width: auto;
+    display: inline-block;
+    margin-right: 4px; }
+ }
+
+@media (min-width: 992px) {
+  .footer__site-switcher > * {
+    white-space: nowrap;
+    display: inline-block;
+    margin-right: 4px; }
  }
 
 /*

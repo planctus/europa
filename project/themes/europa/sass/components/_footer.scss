@@ -114,11 +114,16 @@ Styleguide footer
 
 a.footer__site-switcher {
   text-decoration: none;
+  border: 2px solid transparent;
 
   &:hover,
   &:active,
   &:focus {
     text-decoration: underline;
+  }
+
+  &:focus {
+    border: 2px solid $yellow-light;
   }
 }
 
@@ -149,6 +154,24 @@ a.footer__site-switcher {
 
     & ~ .footer__menu {
       display: inline-block;
+    }
+  }
+
+  .footer__disclaimer {
+    & > * {
+      width: auto;
+      display: inline-block;
+      margin-right: 4px;
+    }
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .footer__site-switcher {
+    & > * {
+      white-space: nowrap;
+      display: inline-block;
+      margin-right: 4px;
     }
   }
 }

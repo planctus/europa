@@ -56,9 +56,6 @@ function dt_core_block_info() {
 function dt_core_block_view($delta = '') {
   switch ($delta) {
     case 'dt_block_copyright':
-      $block['content'] = dt_core_get_blocks_content($delta);
-      break;
-
     case 'dt_block_footer_site_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
       break;
@@ -87,7 +84,18 @@ function dt_core_get_blocks_content($delta) {
       return $result;
     case 'dt_block_footer_site_switcher':
       $result = array(
-        '#markup' => l(t('The European Commission and its priorities'),t('http://ec.europa.eu/index_en.htm'),array('attributes' => array('class' => array('site-switcher','footer__site-switcher')))),
+        '#markup' => l(
+          t('<span>The European Commission </span><span>and its priorities</span>'),
+          t('http://ec.europa.eu/index_en.htm'),
+          array(
+            'attributes' => array(
+              'class' => array(
+                'site-switcher','footer__site-switcher'
+              )
+            ),
+            'html' => TRUE,
+          )
+        ),
       );
       return $result;
   }
