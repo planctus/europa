@@ -8,6 +8,7 @@ dependencies[] = dt_announcement
 dependencies[] = dt_core
 dependencies[] = dt_department
 dependencies[] = dt_person
+dependencies[] = nexteuropa_legacy_link
 dependencies[] = text
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1

@@ -87,7 +87,7 @@ function dt_person_update_7102() {
  * Applying multiple changes to person content type.
  */
 function dt_person_update_7103() {
-  // Removing the body field
+  // Removing the body field.
   _dt_person_remove_body_field();
 
   // Removing a list of fields.
@@ -112,7 +112,7 @@ function dt_person_update_7103() {
 
   $instances = array(
     'field_core_topics',
-    'field_core_department'
+    'field_core_department',
   );
   foreach ($instances as $field_instance) {
     if ($instance = field_info_instance('node', $field_instance, 'person')) {
@@ -135,9 +135,25 @@ function dt_person_update_7103() {
     field_group_group_export_delete($group, FALSE);
   }
 
-  // Importing terms in vocabulary person roles
+  // Importing terms in vocabulary person roles.
   _dt_person_roles_import();
 
   // Reverting feature.
   features_revert_module('dt_person');
+}
+
+/**
+ * Applying multiple changes to person content type.
+ */
+function dt_person_update_7104() {
+  // Removing a list of fields.
+  $fields_to_remove = array(
+    'field_person_existing_profile',
+  );
+
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
 }

@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = dt_person
 dependencies[] = dt_contact
 dependencies[] = dt_core
+dependencies[] = nexteuropa_legacy_link
 dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1

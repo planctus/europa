@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Nexteuropa Legacy link
+ */
+
+/**
+ * Implements hook_node_view().
+ */
+function nexteuropa_legacy_link_node_view($node, $view_mode, $langcode) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  if (isset($wrapper->field_core_legacy_link)) {
+    $url = $wrapper->field_core_legacy_link->value()['url'];
+    $node->path['legacy'] = $url;
+  }
+}
