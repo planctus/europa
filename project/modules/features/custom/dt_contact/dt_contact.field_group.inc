@@ -81,7 +81,6 @@ function dt_contact_field_group_info() {
     'children' => array(
       0 => 'field_contact_email_address',
       1 => 'field_contact_link_form',
-      2 => 'field_contact_online_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -109,9 +108,9 @@ function dt_contact_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_contact_contact',
-      1 => 'group_contact_online_contact',
-      2 => 'group_editorial_settings',
-      3 => 'group_contact_content',
+      1 => 'group_contact_content',
+      2 => 'group_contact_online_contact',
+      3 => 'group_editorial_settings',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(

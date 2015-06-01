@@ -180,3 +180,12 @@ function dt_core_update_7114() {
     features_revert_module($feature);
   }
 }
+
+/**
+  * Revering menu_links, menu_custom and context in dt_core
+  */
+function dt_core_update_7115() {
+   features_revert(array(
+     'dt_core' => array('menu_links', 'menu_custom', 'context'),
+   ));
+ }
