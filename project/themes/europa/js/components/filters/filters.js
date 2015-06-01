@@ -44,9 +44,7 @@
           $('.filters__btn-reset--small').show();
         });
 
-        // Responsive behavior.
-        //Drupal.filtersAdapt();
-      });
+      }); // end of .once()
 
 
       ////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,9 +111,11 @@
             $filters.wrapInner("<div class='filters__wrapper'></div>");
           }
           // Clicking on the submit should collapse the filters.
-          $('.filters__btn-submit').click(function () {
-            $('.filters__btn-collapse').trigger("click");
-          });
+          if ($filters.hasClass('collapse') && $filters.hasClass('in')){
+            $('.filters__btn-submit').click(function () {
+              $('.filters__btn-collapse').trigger("click");
+            });
+          }
         }
       });
     }
