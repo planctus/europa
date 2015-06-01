@@ -72,16 +72,14 @@ function dt_core_get_blocks_content($delta) {
       $license_link = l(t('EC license name'), '#');
       $result = array(
         '#markup' =>
-          "<div class='footer__disclaimer'>" .
-            "<span>" .
-              t('© European Commission copyright. ') .
-            "</span>" .
-            "<span>" .
-              t('All content available under ') . $license_link .
-            "</span>" .
-          "</div>"
+          "<div class='footer__disclaimer'><span>" .
+              t('© European Commission copyright.') .
+            "</span><span>"
+              . t('All content available under') . ' ' . $license_link .
+            "</span></div>"
       );
       return $result;
+
     case 'dt_block_footer_site_switcher':
       $result = array(
         '#markup' => l(
@@ -90,8 +88,8 @@ function dt_core_get_blocks_content($delta) {
           array(
             'attributes' => array(
               'class' => array(
-                'site-switcher','footer__site-switcher'
-              )
+                'site-switcher', 'footer__site-switcher',
+              ),
             ),
             'html' => TRUE,
           )
