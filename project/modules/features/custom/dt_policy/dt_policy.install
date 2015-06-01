@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dt Policy install file.
+ * Dt Policy install file.
  */
 
 /**
@@ -16,7 +16,7 @@ function dt_policy_install() {
  * Implements hook_uninstall().
  */
 function dt_policy_uninstall() {
-  $path = drupal_get_path('module', 'policy') . '/policy.info';
+  $path = drupal_get_path('module', 'dt_policy') . '/dt_policy.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Policy %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
@@ -25,8 +25,27 @@ function dt_policy_uninstall() {
  * Removing unnecessary field and reverting dt_policy feature.
  */
 function dt_policy_update_7101() {
-  field_delete_field('field_policy_priority');
-  field_delete_field('field_policy_area');
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_policy_priority',
+    'field_policy_area',
+    'field_strategy_priority',
+    'field_strategy_policy_area',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
   module_enable(array('dt_policy_next_step'));
-  features_revert_module('dt_policy');
+  $features = array(
+    'dt_policy',
+    'dt_policy_implementation',
+    'dt_policy_input',
+    'dt_policy_keyfile',
+  );
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
 }

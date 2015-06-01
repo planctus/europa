@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Top link feature.
+ */
+
+include_once 'dt_toplink.features.inc';

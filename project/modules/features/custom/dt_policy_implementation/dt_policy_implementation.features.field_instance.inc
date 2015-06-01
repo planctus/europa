@@ -10,6 +10,62 @@
 function dt_policy_implementation_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-policy_implementation-field_core_link'
+  $field_instances['node-policy_implementation-field_core_link'] = array(
+    'bundle' => 'policy_implementation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_link',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-policy_implementation-field_policy_imp_introduction'
   $field_instances['node-policy_implementation-field_policy_imp_introduction'] = array(
     'bundle' => 'policy_implementation',
@@ -74,61 +130,6 @@ function dt_policy_implementation_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_link'
-  $field_instances['node-policy_implementation-field_policy_imp_link'] = array(
-    'bundle' => 'policy_implementation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_policy_imp_link',
-    'label' => 'Link',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'none',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 10,
     ),
   );
 
@@ -216,8 +217,8 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_task_shortcut'
-  $field_instances['node-policy_implementation-field_task_shortcut'] = array(
+  // Exported field_instance: 'node-policy_implementation-field_policy_task_shortcut'
+  $field_instances['node-policy_implementation-field_policy_task_shortcut'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
     'deleted' => 0,
@@ -228,7 +229,7 @@ function dt_policy_implementation_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -237,8 +238,9 @@ function dt_policy_implementation_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_task_shortcut',
+    'field_name' => 'field_policy_task_shortcut',
     'label' => 'Task shortcut',
     'required' => 0,
     'settings' => array(
@@ -255,7 +257,7 @@ function dt_policy_implementation_field_default_field_instances() {
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

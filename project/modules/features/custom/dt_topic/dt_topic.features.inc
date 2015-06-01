@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function dt_topic_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "custom_formatters" && $api == "custom_formatters") {
+    return array("version" => "2");
+  }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }

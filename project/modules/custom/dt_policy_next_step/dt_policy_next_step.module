@@ -171,7 +171,6 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
  *
  * @param array $items
  *   Items to sanitize.
- *
  * @param string $langcode
  *   Language code.
  *
