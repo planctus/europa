@@ -73,13 +73,6 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
             $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list__item">' . $group_anchor['label'] . '</a>';
           }
         }
-
-        if (isset($items[$element])) {
-          $items[$element] = array(
-            'item' => $item,
-            'weight' => $weight,
-          );
-        }
       }
     }
 

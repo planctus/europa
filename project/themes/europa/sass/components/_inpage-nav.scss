@@ -19,6 +19,9 @@ Styleguide inpagenav
     }
     &.is-collapsed,
     &.is-collapsing {
+      .inpage-nav__navbar {
+        height: 100%;
+      }
       .inpage-nav__help,
       .inpage-nav__close-text {
          display: block;
@@ -45,30 +48,27 @@ Styleguide inpagenav
     }
 
     .inpage-nav__list {
-      ul {
-        margin: 0px;
-        li {
-          font-size: $font-size-base;
-          line-height: 21px;
-          padding: 0;
-          & > .inpage_nav__list__item {
-            padding: 1em 0 1em 1em;
-            border-top: 1px solid $blue-darkest;
-            margin: 0 1em;
-            &:link,
-            &:visited,
-            &:hover,
-            &:active {
-              color: #ffffff;
-            }
-            &:hover,
-            &:active {
-              text-decoration: underline;
-            }
+      li {
+        font-size: $font-size-base;
+        line-height: 21px;
+        padding: 0;
+        & > .inpage_nav__list__item {
+          padding: 1em 0 1em 1em;
+          border-top: 1px solid $blue-darkest;
+          margin: 0 1em;
+          &:link,
+          &:visited,
+          &:hover,
+          &:active {
+            color: #ffffff;
           }
-          &.active > a.inpage_nav__list__item{
-             background: none;
+          &:hover,
+          &:active {
+            text-decoration: underline;
           }
+        }
+        &.active > a.inpage_nav__list__item{
+           background: none;
         }
       }
     }
@@ -77,6 +77,7 @@ Styleguide inpagenav
   .inpage-nav__container {
     padding: 0;
     width: auto;
+    background-color: $blue-dark;
   }
 
   .inpage-nav__list {
@@ -86,7 +87,7 @@ Styleguide inpagenav
 }
 
 .inpage-nav__navbar {
-  background-color: $blue-dark;
+  background-color: #ffffff;
   color: #ffffff;
   .inpage-nav__header {
     font-weight: bold;
@@ -127,13 +128,12 @@ Styleguide inpagenav
 
     .inpage-nav__icon-arrow {
       display: block;
-      // width: $line-height-computed;
-      // height: $line-height-computed;
       transition: all 0.3s ease 0s;
       transform-origin: 50% 50%;
       color: #ffffff;
       font-size: $font-size-little;
-      margin: 3px;
+      margin: 5px;
+      font-size: 10px;
     }
   }
   .inpage-nav__title {
@@ -145,7 +145,8 @@ Styleguide inpagenav
   }
 
   .inpage-nav__list {
-    &.li {
+    margin: 0px !important;
+    li {
       &.active {
         .inpage_nav__list__item {
           color: inherit;
@@ -176,16 +177,17 @@ Styleguide inpagenav
 
 .inpage-nav__list li {
   font-size: 1em;
-
   & > .inpage_nav__list__item {
-    &:link, &:visited {
+    &:link, &:visited, &:focus {
       border: none;
+      outline: none;
       color: $grey-base;
       text-decoration: none;
       font-weight: bold;
-      padding: 0px;
+      padding: 4px 0px;
       margin: 0px;
-      margin-top: 20px;
+      margin-top: 15px;
+      background: none;
     }
     &:hover, &:active {
       text-decoration: underline;
@@ -194,27 +196,32 @@ Styleguide inpagenav
     }
   }
 
-  &.active {
+  &.active {;
     .inpage_nav__list__item {
       color: $brand-primary;
-      background: none;
+      background-color: $gray-lighter;
     }
     &:before {
-      background: none repeat scroll 0 0 $brand-primary;
+      // background: none repeat scroll 0 0 $brand-primary;
+      border-left: 2px solid $brand-primary;
+      background-color: $gray-lighter;
       content: "";
       display: block;
       height: 100%;
       left: -10px;
       position: absolute;
-      top: -2px;
-      width: 2px;
+      top: 0px;
+      width: 10px;
     }
   }
 }
 
 .inpage-nav__wrapper {
-  &.is-affixed {
+  &.is-fixed {
     top: 15px;
+  }
+  &.is-bottom {
+    position: absolute;
   }
 }
 

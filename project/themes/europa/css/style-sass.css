@@ -5777,6 +5777,8 @@ Styleguide inpagenav
   display: none; }
   .inpage-nav.inpage-nav__navbar-wrapper.is-active {
     display: inherit; }
+  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__navbar, .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__navbar {
+    height: 100%; }
   .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__help, .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__close-text, .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__help, .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__close-text {
     display: block; }
   .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__current, .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__current {
@@ -5795,31 +5797,30 @@ Styleguide inpagenav
       color: #575757; }
   .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__header {
     margin: 0; }
-  .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul {
-    margin: 0px; }
-    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li {
-      font-size: 15px;
-      line-height: 21px;
-      padding: 0; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item {
-        padding: 1em 0 1em 1em;
-        border-top: 1px solid #023066;
-        margin: 0 1em; }
-        .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:link, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:visited, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:hover, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:active {
-          color: #ffffff; }
-        .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:hover, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li > .inpage_nav__list__item:active {
-          text-decoration: underline; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list ul li.active > a.inpage_nav__list__item {
-        background: none; }
+  .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li {
+    font-size: 15px;
+    line-height: 21px;
+    padding: 0; }
+    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item {
+      padding: 1em 0 1em 1em;
+      border-top: 1px solid #023066;
+      margin: 0 1em; }
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:link, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:visited, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:hover, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:active {
+        color: #ffffff; }
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:hover, .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:active {
+        text-decoration: underline; }
+    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li.active > a.inpage_nav__list__item {
+      background: none; }
 .inpage-nav .inpage-nav__container {
   padding: 0;
-  width: auto; }
+  width: auto;
+  background-color: #004494; }
 .inpage-nav .inpage-nav__list {
   margin: 0;
   padding: 0; }
 
 .inpage-nav__navbar {
-  background-color: #004494;
+  background-color: #ffffff;
   color: #ffffff; }
   .inpage-nav__navbar .inpage-nav__header {
     font-weight: bold; }
@@ -5853,21 +5854,24 @@ Styleguide inpagenav
       transform-origin: 50% 50%;
       color: #ffffff;
       font-size: 0.889em;
-      margin: 3px; }
+      margin: 5px;
+      font-size: 10px; }
   .inpage-nav__navbar .inpage-nav__title {
     display: block;
     font-size: 19px;
     padding: 15px;
     line-height: 21px;
     font-weight: bold; }
-  .inpage-nav__navbar .inpage-nav__list.li.active .inpage_nav__list__item {
-    color: inherit;
-    background: none; }
-  .inpage-nav__navbar .inpage-nav__list.li.active:before {
-    background: none;
-    content: none; }
-  .inpage-nav__navbar .inpage-nav__list.li a.inpage_nav__list__item {
-    font-weight: normal; }
+  .inpage-nav__navbar .inpage-nav__list {
+    margin: 0px !important; }
+    .inpage-nav__navbar .inpage-nav__list li.active .inpage_nav__list__item {
+      color: inherit;
+      background: none; }
+    .inpage-nav__navbar .inpage-nav__list li.active:before {
+      background: none;
+      content: none; }
+    .inpage-nav__navbar .inpage-nav__list li a.inpage_nav__list__item {
+      font-weight: normal; }
 
 .inpage-nav__current-wrapper {
   overflow: hidden; }
@@ -5881,33 +5885,38 @@ Styleguide inpagenav
 
 .inpage-nav__list li {
   font-size: 1em; }
-  .inpage-nav__list li > .inpage_nav__list__item:link, .inpage-nav__list li > .inpage_nav__list__item:visited {
+  .inpage-nav__list li > .inpage_nav__list__item:link, .inpage-nav__list li > .inpage_nav__list__item:visited, .inpage-nav__list li > .inpage_nav__list__item:focus {
     border: none;
+    outline: none;
     color: #404040;
     text-decoration: none;
     font-weight: bold;
-    padding: 0px;
+    padding: 4px 0px;
     margin: 0px;
-    margin-top: 20px; }
+    margin-top: 15px;
+    background: none; }
   .inpage-nav__list li > .inpage_nav__list__item:hover, .inpage-nav__list li > .inpage_nav__list__item:active {
     text-decoration: underline;
     color: #006fb4;
     background: none; }
   .inpage-nav__list li.active .inpage_nav__list__item {
     color: #006fb4;
-    background: none; }
+    background-color: #eeeeee; }
   .inpage-nav__list li.active:before {
-    background: none repeat scroll 0 0 #006fb4;
+    border-left: 2px solid #006fb4;
+    background-color: #eeeeee;
     content: "";
     display: block;
     height: 100%;
     left: -10px;
     position: absolute;
-    top: -2px;
-    width: 2px; }
+    top: 0px;
+    width: 10px; }
 
-.inpage-nav__wrapper.is-affixed {
+.inpage-nav__wrapper.is-fixed {
   top: 15px; }
+.inpage-nav__wrapper.is-bottom {
+  position: absolute; }
 
 @media (min-width: 1200px) {
   .inpage-nav.inpage-nav__navbar-wrapper.is-active {
