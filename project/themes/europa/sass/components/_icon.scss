@@ -1,6 +1,8 @@
 /*
 Icon
 
+Icons using europa icons font
+
 Markup: html/icon.html
 
 .icon--external - External link icon
@@ -21,6 +23,26 @@ Styleguide: icon
 }
 
 .icon {
+  &:before {
+    display: inline-block;
+    font-family: 'EuropaIcons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-right: 4px;
+    line-height: 1;
+
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Should be used only with @extend
+.icon--after {
+  display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
   font-style: normal;
@@ -37,35 +59,59 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e603';
+  content: '\e601';
 }
-.icon--external:before {
-  @extend .icon--external;
+.icon--external {
+  &:before {
+    @extend .icon--external;
+  }
 }
 
 .icon--arrow-up {
-  content: '\e601';
-}
-.icon--arrow-up:before {
-  @extend .icon--arrow-up;
+  &:before {
+    content: '\e607';
+  }
 }
 
 .icon--arrow-down {
-  content: '\e600';
-}
-.icon--arrow-down:before {
-  @extend .icon--arrow-down;
+  &:before {
+    content: '\e606';
+  }
 }
 
 .icon--spinner {
-  content: '\e984';
+  &:before {
+    content: '\e984';
+  }
 }
-.icon--spinner:before {
-  @extend .icon--spinner;
+
+.icon--facebook {
+  &:before {
+    content: '\e603';
+  }
+}
+
+.icon--twitter {
+  &:before {
+    content: '\e602';
+  }
+}
+
+.icon--language {
+  &:before {
+    content: '\e604';
+  }
+}
+
+.icon--search {
+  &:before {
+    content: '\e605';
+  }
 }
 
 // States
-// creating spinning animation for icon
+// creating spinning animation for an icon
+// in order to enable spinning apend .is-spinning class next to the .icon class
 .is-spinning:before {
   @include animation(icon-spin-right 2s infinite linear);
 }

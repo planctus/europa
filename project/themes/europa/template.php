@@ -34,8 +34,37 @@ function europa_preprocess_field(&$vars) {
 function europa_preprocess_block(&$vars) {
   $block = $vars['block'];
 
-  if ($block->delta == 'nexteuropa_feedback') {
-    $vars['classes_array'][] = 'block--full-width';
+  switch ($block->delta) {
+    case 'nexteuropa_feedback':
+      $vars['classes_array'][] = 'block--full-width';
+      break;
+
+    case 'menu-dt-menu-social-media':
+      $block->subject = t('The European Commission on:');
+      break;
+
+    case 'menu-dt-service-links':
+      $block->subject = '';
+      break;
+  }
+
+  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
+    // Initialize variables.
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $vars['elements']['code']['#markup'] . '</span></span>';
+    $label = '<span class="lang-select-site__label">' . $vars['elements']['label']['#markup'] . '</span>';
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('lang-select-site__link'),
+      ),
+      'query' => array(drupal_get_destination()),
+    );
+
+    // Add class to block.
+    $vars['classes_array'][] = 'lang-select-site';
+
+    // Add content to block.
+    $vars['content'] = l($label . $code, 'splash', $options);
   }
 
   if ($block->delta == 'inline_navigation') {
@@ -95,19 +124,27 @@ function europa_form_required_marker($variables) {
 /**
  * Implements template_preprocess_page().
  */
-function europa_preprocess_page(&$vars) {
-  $node = &$vars['node'];
-  $vars['ds_node'] = FALSE;
+function europa_preprocess_page(&$variables) {
+  $node = &$variables['node'];
+  $variables['ds_node'] = FALSE;
 
   // Nodes excluded that are not using DS.
   $node_type_list = array('class');
 
   if (isset($node) && !in_array($node->type, $node_type_list)) {
     // This disables message-printing on ALL page displays.
-    $vars['show_messages'] = FALSE;
+    $variables['show_messages'] = FALSE;
 
     // Add ds_node true to the node object.
-    $vars['ds_node'] = TRUE;
+    $variables['ds_node'] = TRUE;
+  }
+
+  // Set footer region column classes.
+  if (!empty($variables['page']['footer_right'])) {
+    $variables['footer_column_class'] = 'col-sm-8';
+  }
+  else {
+    $variables['footer_column_class'] = 'col-sm-12';
   }
 }
 
@@ -160,7 +197,7 @@ function europa_easy_breadcrumb($variables) {
       $it = $breadcrumb[$i];
       $content = decode_entities($it['content']);
       if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class'])))  . '</li>';
+        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
       }
       else {
         $class = implode(' ', $it['class']);
@@ -343,15 +380,52 @@ function europa_form_element(&$variables) {
 /**
  * Europa theme wrapper function for the service tools menu links.
  */
-function europa_menu_tree__menu_service_tools(&$variables) {
-  return '<ul class="menu nav footer-menu list-inline">' . $variables['tree'] . '</ul>';
+function europa_menu_tree__menu_dt_service_links(&$variables) {
+  return '<ul class="footer__menu footer__menu--separator menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
 /**
  * Europa theme wrapper function for the EC menu links.
  */
-function europa_menu_tree__menu_european_commission_links(&$variables) {
-  return '<ul class="menu nav footer-menu list-inline footer-menu__bottom-border">' . $variables['tree'] . '</ul>';
+function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
+  return '<ul class="footer__menu menu nav list-inline">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Helper applying BEM to footer menu item links.
+ * @param $variables
+ * @return string
+ */
+function _europa_menu_link__footer(&$variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  $element['#attributes']['class'][] = 'footer__menu-item';
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
+ * Implements theme_menu_link().
+ * @param $variables
+ * @return string
+ */
+function europa_menu_link__menu_dt_service_links(&$variables) {
+  return _europa_menu_link__footer($variables);
+}
+
+/**
+ * Implements theme_menu_link().
+ * @param $variables
+ * @return string
+ */
+function europa_menu_link__menu_dt_menu_social_media(&$variables) {
+  return _europa_menu_link__footer($variables);
 }
 
 /**
@@ -563,4 +637,14 @@ function europa_field($variables) {
 
       break;
   }
+}
+
+/**
+ * A search_form alteration.
+ */
+function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
+  $form['search_input_group']['#prefix'] = '';
+  $form['search_input_group']['#suffix'] = '';
+  $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
+  $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
 }
