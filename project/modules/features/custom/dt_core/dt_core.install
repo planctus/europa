@@ -22,6 +22,7 @@ function dt_core_install() {
     'dt_class',
     'dt_contact',
     'dt_publication',
+    'dt_policy',
     'nexteuropa_file',
   );
   module_enable($features);
@@ -49,16 +50,6 @@ function dt_core_uninstall() {
   $path = drupal_get_path('module', 'dt_core') . '/dt_core.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
-}
-
-/**
- * Helper to revert all components within a feature.
- * @param $feature_machine_name
- */
-function _dt_feature_revert_all($feature_machine_name) {
-  $feature = features_get_features($feature_machine_name);
-  $components = array_keys($feature->info['features']);
-  features_revert(array($feature_machine_name => $components));
 }
 
 /**
@@ -186,14 +177,23 @@ function dt_core_update_7114() {
 
   // Reverting the features.
   foreach ($features as $feature) {
-    _dt_feature_revert_all($feature);
+    features_revert_module($feature);
   }
+}
+
+/**
+ * Revering menu_links, menu_custom and context in dt_core
+ */
+function dt_core_update_7115() {
+  features_revert(array(
+    'dt_core' => array('menu_links', 'menu_custom', 'context'),
+  ));
 }
 
 /**
  * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
  */
-function dt_core_update_7115() {
+function dt_core_update_7116() {
   $modules = array(
     'dt_exposed_filter_data',
   );
@@ -206,6 +206,6 @@ function dt_core_update_7115() {
   );
   // Reverting the features.
   foreach ($features as $feature) {
-    _dt_feature_revert_all($feature);
+    features_revert_module($feature);
   }
 }
