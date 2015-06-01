@@ -130,62 +130,7 @@ function dt_policy_keyfile_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => -4,
-    ),
-  );
-
-  // Exported field_instance: 'node-policy_keyfile-field_policy_keyfile_date'
-  $field_instances['node-policy_keyfile-field_policy_keyfile_date'] = array(
-    'bundle' => 'policy_keyfile',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_policy_keyfile_date',
-    'label' => 'Publication date',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => -2,
+      'weight' => 1,
     ),
   );
 
@@ -252,7 +197,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -293,7 +238,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => 2,
     ),
   );
 
@@ -462,7 +407,6 @@ function dt_policy_keyfile_field_default_field_instances() {
   t('Link to the document or file.');
   t('Manual link');
   t('Only use for infographics.');
-  t('Publication date');
   t('Summary');
   t('Summary or intro of the document item that clarifies it.');
   t('Title');
