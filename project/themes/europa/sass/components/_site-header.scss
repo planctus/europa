@@ -14,4 +14,8 @@ Styleguide: siteheader
   .site-header__logo {
     margin-bottom: 15px;
   }
+
+  & > .container-fluid {
+    position: relative;
+  }
 }

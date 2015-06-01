@@ -12,7 +12,7 @@ Styleguide: siteheader.langselect
   text-align: center;
   position: absolute;
   top: 30px;
-  right: 0;
+  right: $grid-gutter-width / 2;
 
   .lang-select-site__link {
     color: inherit;
@@ -54,5 +54,12 @@ Styleguide: siteheader.langselect
     font-size: $font-size-xsmall * 2;
     line-height: 1;
     display: inline-block;
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .lang-select-site {
+    position: static;
+    float: left;
   }
 }

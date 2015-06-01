@@ -60,5 +60,7 @@ Styleguide: siteheader.searchform
 }
 
 @include breakpoint(screen-md-min) {
-
+  .search-form {
+    width: 340px;
+  }
 }

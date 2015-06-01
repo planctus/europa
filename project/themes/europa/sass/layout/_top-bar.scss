@@ -2,4 +2,31 @@
   margin-top: 15px;
   overflow: hidden;
   width: 100%;
+
+  & > .region {
+    @extend .row;
+  }
+
+  .block-nexteuropa-europa-search {
+    // @extend .col-xs-9; - use when with Menu
+    @extend .col-xs-12;
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .top-bar {
+    width: auto;
+    float: right;
+
+    & > .region {
+      padding: 0;
+      margin: 0;
+    }
+
+    .block-nexteuropa-europa-search {
+      width: auto;
+      padding-left: 10px;
+      padding-right: 0;
+    }
+  }
 }

@@ -75,15 +75,24 @@
  */
 
 ?>
-
+<section class="notification">
+  <div class="container-fluid">
+    <span class="notification__label"><?php print t('Beta Notification'); ?></span>
+    <div class="notification__content">
+      <p>
+        <?php print t('The <a href="#">websites of the European Commission</a> are being merged here. Find out more about our <a href="#">digital transformation</a>.'); ?>
+      </p>
+    </div>
+  </div>
+</section>
 <header class="site-header" role="banner">
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
-    <section class="top-bar" aria-label="Site tools">
-      <?php print render($page['header']); ?>
-    </section>
+      <section class="top-bar" aria-label="Site tools">
+        <?php print render($page['header']); ?>
+      </section>
     <?php endif; ?>
   </div>
 </header>

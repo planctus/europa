@@ -1,0 +1,32 @@
+/*
+
+Notification
+
+Notification that appears at the top of the site
+
+Markup: html/notification.html
+
+Styleguide notification
+
+*/
+.notification {
+  background: $grey-lighter;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.notification__label {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 1.5em;
+}
+
+.notification__content {
+  display: inline-block;
+
+  p {
+    max-width: none;
+    margin: 0;
+  }
+}
