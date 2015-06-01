@@ -16,5 +16,5 @@ function dt_strategy_core_update_7101() {
   module_enable($features);
 
   // Reverting the features.
-  features_revert(array('dt_policy_area'));
+  features_revert_module('dt_policy_area');
 }
