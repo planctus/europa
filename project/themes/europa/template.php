@@ -38,9 +38,11 @@ function europa_preprocess_block(&$vars) {
     case 'nexteuropa_feedback':
       $vars['classes_array'][] = 'block--full-width';
       break;
+
     case 'menu-dt-menu-social-media':
       $block->subject = t('The European Commission on:');
       break;
+
     case 'menu-dt-service-links':
       $block->subject = '';
       break;
@@ -190,7 +192,7 @@ function europa_easy_breadcrumb($variables) {
       $it = $breadcrumb[$i];
       $content = decode_entities($it['content']);
       if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class'])))  . '</li>';
+        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
       }
       else {
         $class = implode(' ', $it['class']);
@@ -384,6 +386,11 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
   return '<ul class="footer__menu menu nav list-inline">' . $variables['tree'] . '</ul>';
 }
 
+/**
+ * Helper applying BEM to footer menu item links.
+ * @param $variables
+ * @return string
+ */
 function _europa_menu_link__footer(&$variables) {
   $element = $variables['element'];
   $sub_menu = '';
@@ -398,10 +405,20 @@ function _europa_menu_link__footer(&$variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
+/**
+ * Implements theme_menu_link().
+ * @param $variables
+ * @return string
+ */
 function europa_menu_link__menu_dt_service_links(&$variables) {
   return _europa_menu_link__footer($variables);
 }
 
+/**
+ * Implements theme_menu_link().
+ * @param $variables
+ * @return string
+ */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
   return _europa_menu_link__footer($variables);
 }
