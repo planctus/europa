@@ -77,5 +77,15 @@ function dt_topic_strongarm() {
   $strongarm->value = 4;
   $export['language_content_type_topic'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_topic';
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
+  $export['node_options_topic'] = $strongarm;
+
   return $export;
 }
