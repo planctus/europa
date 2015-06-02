@@ -23,6 +23,8 @@
       }
 
       // Removing things.
+      // Desktop first case.
+      $filters.find('.filters__btn-submit').hide();
 
       // Listeners.
       // Small button emulating the original reset button.
@@ -34,6 +36,7 @@
       $filters.once('filters', function() {
         if (typeof enquire !== 'undefined') {
           enquire.register('screen and (max-width: 768px)', {
+            // mobile
             match : function() {
               var $sidebarFirst = $(".region-sidebar-first");
 
