@@ -49,8 +49,8 @@ function _nexteuropa_legacy_link_add_legacy($node) {
   // If Legacy link field is used add it to path array.
   $wrapper = entity_metadata_wrapper('node', $node);
   if (isset($wrapper->field_core_legacy_link)) {
-    $url = $wrapper->field_core_legacy_link->value()['url'];
-    $node->path['legacy'] = $url;
+    $legacy_link = $wrapper->field_core_legacy_link->value();
+    $node->path['legacy'] = $legacy_link['url'];
   }
 
   return $node;
