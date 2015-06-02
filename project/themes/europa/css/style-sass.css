@@ -6373,6 +6373,17 @@ Styleguide: siteheader
   .site-header > .container-fluid, .block--full-width.site-header > *, .field--full-width.site-header > * {
     position: relative; }
 
+/*
+Page header
+
+Page header component
+
+Markup: html/page-header.html
+
+.page-header--featured - Featured Page Header
+
+Styleguide page-header
+*/
 .page-header {
   background: #f2f2f2;
   margin: 0;
@@ -6388,6 +6399,11 @@ Styleguide: siteheader
     line-height: 1.428571429; }
   .page-header__bottom {
     font-size: 26px; }
+  .page-header--featured, .front .page-header {
+    background: #004494;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1.5; }
 
 .skip-link, #skip-link {
   position: fixed;
