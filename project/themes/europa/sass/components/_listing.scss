@@ -56,8 +56,14 @@ $padding-bottom-listing__title: 0.7em;
 
 .listing__column-second {
   float: right;
-  padding-left: 15px;
-  width: 25%;
+  width: 100%;
+  margin: 0.2em 0 0.8em 0;
+
+  @include breakpoint(screen-xs-min) {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0;
+  }
 }
 
 .listing__title {

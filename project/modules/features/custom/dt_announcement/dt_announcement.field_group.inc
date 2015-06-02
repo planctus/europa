@@ -85,8 +85,8 @@ function dt_announcement_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_topics',
-      2 => 'field_core_persons',
+      1 => 'field_core_persons',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -115,8 +115,8 @@ function dt_announcement_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_announcement_type',
-      1 => 'field_announcement_location',
+      0 => 'field_announcement_location',
+      1 => 'field_announcement_type',
       2 => 'post_date',
     ),
     'format_type' => 'html-element',
