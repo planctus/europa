@@ -1,11 +1,11 @@
 (function ($) {
   Drupal.behaviors.europaComponents_filters = {
     attach: function (context, settings) {
-      var $filters      = $('.filters');
-      var refineText    = Drupal.t('Refine');
-      var hideText      = Drupal.t('Hide');
-      var clearAll      = Drupal.t('Clear all');
-      var $resultsCount = $('.filters__result-count');
+      var $filters      = $('.filters'),
+          refineText    = Drupal.t('Refine'),
+          hideText      = Drupal.t('Hide'),
+          clearAll      = Drupal.t('Clear all'),
+          $resultsCount = $('.filters__result-count');
 
       // On page load, only once. Does NOT run on ajax calls.
 
@@ -23,7 +23,6 @@
       }
 
       // Removing things.
-      $filters.find('.filters__btn-submit').hide();
 
       // Listeners.
       // Small button emulating the original reset button.
@@ -39,7 +38,7 @@
               var $sidebarFirst = $(".region-sidebar-first");
 
               // Adding things.
-              $('.filters__btn-submit', $filters).removeClass('js-hide').show();
+              $('.filters__btn-submit', $filters).removeClass('ctools-auto-submit-click').show();
               $('.filters__btn-collapse').show();
               $filters.wrapInner("<div class='filters__wrapper'></div>");
               $filters.addClass('collapse');
@@ -66,6 +65,7 @@
               if (!$sidebarFirst.hasClass('well')) {
                 $sidebarFirst.addClass('well');
               }
+              $('.filters__btn-submit', $filters).addClass('ctools-auto-submit-click')
 
               // Removing things.
               $filters.removeClass('collapse in');
@@ -77,7 +77,7 @@
             }
           });
         }
-        
+
         $filters.on('show.bs.collapse', function(){
           $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +
           ' data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
@@ -95,7 +95,12 @@
       }); // end of .once()
 
       // On page load and every other ajax call.
-
+      // First there are results, then there are no results.
+      var $exposedData = $('.exposed_filter_data');
+      if ($exposedData.length &&
+        $exposedData.find('.content').html().trim() === "") {
+        $exposedData.hide();
+      }
     }
   };
 })(jQuery);
