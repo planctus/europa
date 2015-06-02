@@ -95,3 +95,23 @@ function dt_department_update_7105() {
   // Reverting feature.
   features_revert_module('dt_department');
 }
+
+/**
+ * Removing obsolete field group.
+ */
+function dt_department_update_7106() {
+  // Remove the fieldgroups.
+  $type = 'department';
+  $fieldgroups_to_remove = array(
+    'group_cta',
+    'group_topics',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // Reverting feature.
+  features_revert_module('dt_department');
+}

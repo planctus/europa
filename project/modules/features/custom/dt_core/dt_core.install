@@ -182,7 +182,7 @@ function dt_core_update_7114() {
 }
 
 /**
- * Revering menu_links, menu_custom and context in dt_core
+ * Revering menu_links, menu_custom and context in dt_core.
  */
 function dt_core_update_7115() {
   features_revert(array(
@@ -191,9 +191,32 @@ function dt_core_update_7115() {
 }
 
 /**
- * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ * Enabling Legacy link module.
  */
 function dt_core_update_7116() {
+  $modules = array(
+    'nexteuropa_legacy_link',
+  );
+  module_enable($modules);
+
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ */
+function dt_core_update_7117() {
   $modules = array(
     'dt_exposed_filter_data',
   );
