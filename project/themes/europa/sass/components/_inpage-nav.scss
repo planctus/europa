@@ -217,10 +217,11 @@ Styleguide inpagenav
 }
 
 .inpage-nav__wrapper {
-  &.is-fixed {
+  &.affix,
+  &.affix-top {
     top: 15px;
   }
-  &.is-bottom {
+  &.affix-bottom {
     position: absolute;
   }
 }
