@@ -18,7 +18,7 @@ Styleguide buttons
   border-radius: 0;
   border-width: 2px;
   font-weight: $font-weight-bold;
-  padding: 0.8em 1em;
+  padding: 0.75em 1em;
   font-size: $font-size-little;
   text-decoration: none;
 
@@ -97,7 +97,6 @@ Markup: html/btn-block.html
 
 Styleguide buttons.btn-block
 */
-
 .btn-block {
   width: 100%;
   max-width: 450px;
@@ -111,4 +110,19 @@ Styleguide buttons.btn-block
   & + .btn-block {
     margin-top: 0;
   }
+}
+
+/*
+Button Search
+
+Button search component
+
+Markup: html/btn-search.html
+
+Styleguide buttons.btn-search
+*/
+.btn.btn-search {
+  border-color: #fff;
+  background: $grey-light;
+  color: $grey-dark;
 }

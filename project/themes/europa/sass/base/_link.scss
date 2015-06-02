@@ -17,7 +17,7 @@ a {
   &[href^="http"],
   &[href^="https"] {
     &:after {
-      @extend .icon;
+      @extend .icon--after;
       @extend .icon--external;
       display: inline-block;
       font-size: 75%;
