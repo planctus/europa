@@ -22,6 +22,7 @@ function dt_core_install() {
     'dt_class',
     'dt_contact',
     'dt_publication',
+    'dt_policy',
     'nexteuropa_file',
   );
   module_enable($features);
@@ -181,9 +182,18 @@ function dt_core_update_7114() {
 }
 
 /**
- * Enabling Legacy link module.
+ * Revering menu_links, menu_custom and context in dt_core.
  */
 function dt_core_update_7115() {
+  features_revert(array(
+    'dt_core' => array('menu_links', 'menu_custom', 'context'),
+  ));
+}
+
+/**
+ * Enabling Legacy link module.
+ */
+function dt_core_update_7116() {
   $modules = array(
     'nexteuropa_legacy_link',
   );
