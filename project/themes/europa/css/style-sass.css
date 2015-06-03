@@ -6202,11 +6202,6 @@ Styleguide listing
   float: right;
   width: 100%;
   margin: 0.2em 0 0.8em 0; }
-  @media (min-width: 480px) {
-    .listing__column-second {
-      width: 25%;
-      padding-left: 15px;
-      margin: 0; } }
 
 .listing__title {
   color: #004494;
@@ -6243,6 +6238,22 @@ Styleguide listing.title
     padding-top: 0.9em;
     padding-bottom: 0.7em;
     padding-right: 2em; }
+
+@media (min-width: 480px) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0; }
+    .listing--column-left .listing__column-second {
+      float: left;
+      padding-right: 15px;
+      padding-left: 0; }
+    .listing--column-left-person .listing__column-second {
+      float: left;
+      padding-right: 15px;
+      padding-left: 0;
+      width: 100px; }
+ }
 
 .logo {
   display: block;

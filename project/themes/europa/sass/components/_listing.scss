@@ -58,12 +58,6 @@ $padding-bottom-listing__title: 0.7em;
   float: right;
   width: 100%;
   margin: 0.2em 0 0.8em 0;
-
-  @include breakpoint(screen-xs-min) {
-    width: 25%;
-    padding-left: 15px;
-    margin: 0;
-  }
 }
 
 .listing__title {
@@ -120,5 +114,26 @@ ul.listing--title {
     padding-top: $padding-top-listing__title;
     padding-bottom: $padding-bottom-listing__title;
     padding-right: 2em;
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0;
+
+    .listing--column-left & {
+      float: left;
+      padding-right: 15px;
+      padding-left: 0;
+    }
+
+    .listing--column-left-person & {
+      float: left;
+      padding-right: 15px;
+      padding-left: 0;
+      width: 100px;
+    }
   }
 }

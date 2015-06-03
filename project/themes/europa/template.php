@@ -89,7 +89,6 @@ function europa_preprocess_views_view_unformatted(&$vars) {
   $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
 }
 
-
 /**
  * Implements hook_theme().
  */
