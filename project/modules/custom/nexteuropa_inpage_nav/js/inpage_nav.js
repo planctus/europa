@@ -60,7 +60,7 @@
 
             // Remove class that adds overflow: hidden to body
             $('body').removeClass('is-inpage-nav-open');
-
+            $inPageBlock.affix('checkPosition');
           },
 
           setup: function() {
