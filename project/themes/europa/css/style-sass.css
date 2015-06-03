@@ -6626,7 +6626,10 @@ Styleguide: siteheader.searchform
   width: 17%;
   float: left;
   text-indent: 10em;
-  position: relative; }
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 2.75em; }
   .search-form__btn:before {
     text-indent: 0;
     position: absolute;
