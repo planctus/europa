@@ -137,7 +137,7 @@
 <section class="main-content">
   <!-- Generic sections -->
   <div class="container-fluid">
-    <?php if (!empty($tabs)): ?>
+    <?php if (!$ds_node && !empty($tabs)): ?>
       <?php print render($tabs); ?>
     <?php endif; ?>
 

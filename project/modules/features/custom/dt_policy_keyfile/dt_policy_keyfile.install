@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * DT Policy key file install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_keyfile_install() {
+  // Apply default dt configuration to "Policy key file" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_keyfile');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_keyfile_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_keyfile') . '/dt_policy_keyfile.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Policy key file %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
