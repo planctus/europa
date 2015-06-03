@@ -87,7 +87,7 @@
 </section>
 <header class="site-header" role="banner">
   <div class="container-fluid">
-    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
+    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home - European Commission Beta'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
@@ -137,7 +137,7 @@
 <section class="main-content">
   <!-- Generic sections -->
   <div class="container-fluid">
-    <?php if (!empty($tabs)): ?>
+    <?php if (!$ds_node && !empty($tabs)): ?>
       <?php print render($tabs); ?>
     <?php endif; ?>
 
