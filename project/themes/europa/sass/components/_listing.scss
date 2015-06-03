@@ -127,13 +127,7 @@ ul.listing--title {
       float: left;
       padding-right: 15px;
       padding-left: 0;
-    }
-
-    .listing--column-left-person & {
-      float: left;
-      padding-right: 15px;
-      padding-left: 0;
-      width: 100px;
+      width: auto;
     }
   }
 }

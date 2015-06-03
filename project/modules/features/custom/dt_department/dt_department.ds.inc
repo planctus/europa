@@ -39,7 +39,7 @@ function dt_department_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
           'ow-el' => 'div',
-          'ow-cl' => 'listing--column-left-person',
+          'ow-cl' => 'listing--column-left',
           'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,

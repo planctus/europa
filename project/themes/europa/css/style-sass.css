@@ -6250,12 +6250,8 @@ Styleguide listing.title
     .listing--column-left .listing__column-second {
       float: left;
       padding-right: 15px;
-      padding-left: 0; }
-    .listing--column-left-person .listing__column-second {
-      float: left;
-      padding-right: 15px;
       padding-left: 0;
-      width: 100px; }
+      width: auto; }
  }
 
 .logo {
