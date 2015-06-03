@@ -5,9 +5,10 @@
           refineText    = Drupal.t('Refine'),
           hideText      = Drupal.t('Hide'),
           clearAll      = Drupal.t('Clear all'),
-          $resultsCount = $('.filters__result-count');
+          $resultsCount = $('.filters__result-count'),
+          $exposedData  = $('.exposed_filter_data');
 
-      // On page load, only once. Does NOT run on ajax calls.
+      // On page load and ajax calls.
 
       // Adding things.
       if ($resultsCount.is(':visible') && !$('.filters__btn-collapse').length) {
@@ -25,6 +26,11 @@
       // Removing things.
       // Desktop first case.
       $filters.find('.filters__btn-submit').hide();
+      // First there are results, then there are no results.
+      if ($exposedData.length &&
+        $exposedData.find('.content').html().trim() === "") {
+        $exposedData.hide();
+      }
 
       // Listeners.
       // Small button emulating the original reset button.
@@ -32,9 +38,10 @@
         $(".filters__btn-reset").trigger("click");
       });
 
-      // Runs on device width change. Does NOT run on ajax calls.
+      // Runs only once.
       $filters.once('filters', function() {
         if (typeof enquire !== 'undefined') {
+          // Runs on device width change.
           enquire.register('screen and (max-width: 768px)', {
             // mobile
             match : function() {
@@ -87,6 +94,7 @@
           ' aria-expanded="true" aria-controls="collapseFilters">' + hideText + '</a>');
           $('.filters__btn-collapse').hide();
           $('.filters__btn-reset--small').hide();
+          $filters.find('.filters__btn-submit').show();
         });
 
         $filters.on('hide.bs.collapse', function(){
@@ -94,16 +102,7 @@
           $('.filters__btn-collapse').show();
           $('.filters__btn-reset--small').show();
         });
-
       }); // end of .once()
-
-      // On page load and every other ajax call.
-      // First there are results, then there are no results.
-      var $exposedData = $('.exposed_filter_data');
-      if ($exposedData.length &&
-        $exposedData.find('.content').html().trim() === "") {
-        $exposedData.hide();
-      }
     }
   };
 })(jQuery);

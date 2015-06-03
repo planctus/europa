@@ -43,7 +43,7 @@
       <?php print $exposed; ?>
     </div>
   <?php endif; ?>
-  <?php if ($view->total_rows == 0) : ?>
+  <?php if (count($view->result) == 0) : ?>
     <div class="filters__result-count">
       <p class="filters__empty"><?php echo t("No @content_type.",
           array(
