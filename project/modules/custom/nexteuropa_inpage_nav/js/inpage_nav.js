@@ -37,6 +37,9 @@
           Drupal.behaviors.inpage_navigation.fixWidth($inPageBlock, $inPageBlockParent);
 
           inPageBlockTop = $inPageBlock.offset().top;
+
+          // Refresh scrollspy
+          $('body').scrollspy('refresh');
         });
 
         var $navBar = $('<div class="inpage-nav inpage-nav__navbar-wrapper"><nav class="navbar navbar-default navbar-fixed-top inpage-nav__navbar"><div class="container inpage-nav__container"><div class="navbar-header inpage-nav__header"  data-toggle="collapse" data-target="#inpage-navigation-list" aria-expanded="false" aria-controls="navbar"><button type="button" class="navbar-toggle collapsed inpage-nav__toggle"><span class="sr-only">' + Drupal.t("Toggle navigation") + '</span><span class="inpage-nav__icon-arrow icon icon--arrow-down"></span></button><span class="navbar-brand inpage-nav__help">' +  Drupal.t('On this page') + '</span><div class="inpage-nav__current-wrapper"><span class="navbar-brand inpage-nav__current">' +  title + '</span></div></div><div class="navbar-collapse collapse inpage-nav__list" id="inpage-navigation-list"><span class="inpage-nav__title" >' +  title + '</span>' + $inPage.html() + '</div></div></nav>'),
@@ -50,8 +53,14 @@
         enquire.register("screen and (min-width: 992px)", {
           // desktop
           match : function() {
+            // Adding function that is calculating and adding inpage-nav block
+            // width. This is due to usage of position: fixed on the inpage-nav
+            // element.
             Drupal.behaviors.inpage_navigation.fixWidth($inPageBlock, $inPageBlockParent);
+
+            // Remove class that adds overflow: hidden to body
             $('body').removeClass('is-inpage-nav-open');
+
           },
 
           setup: function() {
@@ -88,7 +97,7 @@
             $inPageBlock.affix({
               offset: {
                 top: function () {
-                  return (Math.floor($inPageBlock.parent().offset().top - 15));
+                  return (Math.floor($inPageBlock.parent().offset().top));
                 },
                 bottom: function () {
                   return ($('.footer').outerHeight(true) + $('.footer-top').outerHeight(true) + 20);
