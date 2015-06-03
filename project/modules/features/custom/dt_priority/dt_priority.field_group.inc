@@ -85,6 +85,7 @@ function dt_priority_field_group_info() {
       2 => 'field_priority_issue',
       3 => 'field_priority_objective',
       4 => 'field_core_introduction',
+      5 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -112,11 +113,11 @@ function dt_priority_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_persons',
-      1 => 'field_core_department',
-      2 => 'field_core_priorities',
-      3 => 'field_core_topics',
-      4 => 'field_core_announcement',
-      5 => 'field_core_policy',
+      1 => 'field_core_priorities',
+      2 => 'field_core_announcement',
+      3 => 'field_core_department',
+      4 => 'field_core_policy',
+      5 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

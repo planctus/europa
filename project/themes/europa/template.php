@@ -131,6 +131,10 @@ function europa_preprocess_page(&$variables) {
 
     // Add ds_node true to the node object.
     $variables['ds_node'] = TRUE;
+    // Add tabs to node object so we can put it in the DS template instead.
+    if (isset($variables['tabs'])) {
+      $node->local_tabs = drupal_render($variables['tabs']);
+    }
   }
 
   // Set footer region column classes.
@@ -154,6 +158,11 @@ function europa_preprocess_node(&$vars) {
     ));
   }
   $vars['messages'] = theme('status_messages');
+
+  // Override node_url if Legacy Link is set.
+  if (isset($vars['path']['legacy'])) {
+    $vars['node_url'] = $vars['path']['legacy'];
+  }
 }
 
 

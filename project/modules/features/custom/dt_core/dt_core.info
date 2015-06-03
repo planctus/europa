@@ -42,6 +42,7 @@ features[field_base][] = description_field
 features[field_base][] = field_core_abbreviation
 features[field_base][] = field_core_ecorganisation
 features[field_base][] = field_core_introduction
+features[field_base][] = field_core_legacy_link
 features[field_base][] = field_core_legacy_links
 features[field_base][] = field_core_link
 features[field_base][] = field_core_top_task_link
