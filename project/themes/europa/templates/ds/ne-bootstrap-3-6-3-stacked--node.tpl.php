@@ -14,31 +14,40 @@
   <!-- Page Header -->
   <div class="page-header">
     <div class="container-fluid">
-      <<?php print $left_header_wrapper; ?> class="col-sm-9 <?php print $left_header_classes; ?>">
-        <?php print $left_header; ?>
-      </<?php print $left_header_wrapper; ?>>
+      <div class="row padding-reset">
+        <<?php print $left_header_wrapper; ?> class="col-lg-9 <?php print $left_header_classes; ?>">
+          <?php print $left_header; ?>
+        </<?php print $left_header_wrapper; ?>>
 
-      <?php if(!empty($right_header)): ?>
-        <<?php print $right_header_wrapper; ?> class="col-sm-3 <?php print $right_header_classes; ?>">
-          <?php print $right_header; ?>
-        </<?php print $right_header_wrapper; ?>>
-      <?php endif; ?>
+        <?php if(!empty($right_header)): ?>
+          <<?php print $right_header_wrapper; ?> class="col-lg-3 <?php print $right_header_classes; ?>">
+            <?php print $right_header; ?>
+          </<?php print $right_header_wrapper; ?>>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <?php if (!empty($messages)): ?>
-        <?php print $messages; ?>
-      <?php endif; ?>
+      <section class="col-lg-12 <?php print $top_classes; ?>">
+        <?php if (!empty($local_tabs)): ?>
+          <?php print $local_tabs; ?>
+        <?php endif; ?>
+        <?php if (!empty($messages)): ?>
+          <?php print $messages; ?>
+        <?php endif; ?>
+
+        <?php print $top; ?>
+      </section>
 
       <a id="main-content" tabindex="-1"></a>
-      <<?php print $left_wrapper; ?> class="col-sm-3 <?php print $left_classes; ?>">
+      <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
         <?php print $left; ?>
       </<?php print $left_wrapper; ?>>
-      <section class="col-sm-6 <?php print $central_classes; ?>">
+      <section class="col-lg-6 <?php print $central_classes; ?>">
         <?php print $central; ?>
       </section>
-      <<?php print $right_wrapper; ?> class="col-sm-3 <?php print $right_classes; ?>">
+      <<?php print $right_wrapper; ?> class="col-lg-3 <?php print $right_classes; ?>">
         <?php print $right; ?>
       </<?php print $right_wrapper; ?>>
     </div>

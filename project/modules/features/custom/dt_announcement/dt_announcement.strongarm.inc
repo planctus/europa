@@ -105,16 +105,16 @@ function dt_announcement_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '34',
+          'weight' => '1',
         ),
         'language' => array(
-          'weight' => '31',
+          'weight' => '-2',
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '3',
         ),
       ),
       'display' => array(),

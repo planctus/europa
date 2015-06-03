@@ -1,12 +1,14 @@
-// Paragraphs
-//
-// Markup: paragraphs.html
-//
-// Styleguide text.paragraphs
+/*
+Paragraphs
+
+Markup: html/paragraphs.html
+
+Styleguide text.paragraphs
+*/
 
 .paragraph {
-  font-family: $font-family-serif;
-  margin-bottom: 1.7em;
+  margin-bottom: 0.8em;
+  max-width: 32em;
 }
 
 p {

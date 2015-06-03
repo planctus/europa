@@ -98,6 +98,64 @@ function dt_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_meta|node|person|meta';
+  $field_group->group_name = 'group_person_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_person_role',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_person_meta|node|person|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_name|node|person|meta';
+  $field_group->group_name = 'group_person_name';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Name',
+    'weight' => '1',
+    'children' => array(
+      0 => 'title',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Name',
+      'instance_settings' => array(
+        'classes' => 'listing__title',
+        'element' => 'h3',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_person_name|node|person|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person_profile|node|person|form';
   $field_group->group_name = 'group_person_profile';
   $field_group->entity_type = 'node';
@@ -108,13 +166,14 @@ function dt_person_field_group_info() {
     'label' => 'Profile',
     'weight' => '1',
     'children' => array(
-      0 => 'field_person_first_name',
-      1 => 'field_person_gender',
-      2 => 'field_person_last_name',
-      3 => 'field_person_photo',
-      4 => 'field_person_tagline',
-      5 => 'field_person_existing_profile',
-      6 => 'field_person_role',
+      0 => 'field_person_existing_profile',
+      1 => 'field_person_first_name',
+      2 => 'field_person_gender',
+      3 => 'field_person_last_name',
+      4 => 'field_person_photo',
+      5 => 'field_person_role',
+      6 => 'field_person_tagline',
+      7 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -75,15 +75,24 @@
  */
 
 ?>
-
+<section class="notification">
+  <div class="container-fluid">
+    <span class="notification__label"><?php print t('Beta Notification'); ?></span>
+    <div class="notification__content">
+      <p>
+        <?php print t('The <a href="#">websites of the European Commission</a> are being merged here. Find out more about our <a href="#">digital transformation</a>.'); ?>
+      </p>
+    </div>
+  </div>
+</section>
 <header class="site-header" role="banner">
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
-    <section class="top-bar pull-right" aria-label="Site tools">
-      <?php print render($page['header']); ?>
-    </section>
+      <section class="top-bar" aria-label="Site tools">
+        <?php print render($page['header']); ?>
+      </section>
     <?php endif; ?>
   </div>
 </header>
@@ -128,7 +137,7 @@
 <section class="main-content">
   <!-- Generic sections -->
   <div class="container-fluid">
-    <?php if (!empty($tabs)): ?>
+    <?php if (!$ds_node && !empty($tabs)): ?>
       <?php print render($tabs); ?>
     <?php endif; ?>
 
@@ -208,15 +217,24 @@
 </section>
 
 <?php if (!empty($page['footer_top'])): ?>
-  <footer class="footer-top">
+  <section class="footer-top">
     <div class="container-fluid">
       <?php print render($page['footer_top']); ?>
     </div>
-  </footer>
+  </section>
 <?php endif; ?>
 
 <footer class="footer">
   <div class="container-fluid">
-    <?php print render($page['footer']); ?>
+    <div class="row">
+      <?php if (!empty($page['footer_right'])): ?>
+        <aside class="col-sm-4 footer__column-right">
+          <?php print render($page['footer_right']); ?>
+        </aside>
+      <?php endif; ?>
+      <section class="<?php print $footer_column_class; ?> footer__column-main">
+        <?php print render($page['footer']); ?>
+      </section>
+    </div>
   </div>
 </footer>

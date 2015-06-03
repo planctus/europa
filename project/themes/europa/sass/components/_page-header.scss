@@ -1,6 +1,16 @@
-// Page header
+/*
+Page header
+
+Page header component
+
+Markup: html/page-header.html
+
+.page-header--featured - Featured Page Header
+
+Styleguide page-header
+*/
 .page-header {
-  background: $blue;
+  background: $grey-lightest;
   margin: 0;
   padding: 30px 0;
 
@@ -11,7 +21,6 @@
   &__top,
   &__main,
   &__bottom {
-    color: #fff;
     display: block;
     width: 100%;
   }
@@ -25,4 +34,16 @@
   &__bottom {
     font-size: 26px;
   }
+
+  &--featured {
+    background: $brand-primary;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+// Drupal.
+.front .page-header {
+  @extend .page-header--featured;
 }

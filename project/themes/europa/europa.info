@@ -18,6 +18,7 @@ regions[sidebar_first] = Sidebar first
 regions[sidebar_second] = Sidebar second
 regions[footer_top] = Footer Top
 regions[footer] = Footer
+regions[footer_right] = Footer right
 
 ; ========================================
 ; Stylesheets
@@ -43,6 +44,8 @@ scripts[] = js/modernizr.js
 scripts[] = js/enquire.min.js
 scripts[] = js/velocity.min.js
 
+scripts[] = js/misc/ajax.js
+
 ; ========================================
 ; Settings
 ; ========================================
@@ -65,4 +68,3 @@ settings[bootstrap_breadcrumb_title] = 1
 ; Advanced
 ; --------------
 settings[bootstrap_cdn] = ""
-

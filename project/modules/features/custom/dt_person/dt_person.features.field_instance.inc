@@ -21,7 +21,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
@@ -33,7 +33,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -67,20 +67,14 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_existing_profile'
-  $field_instances['node-person-field_person_existing_profile'] = array(
+  // Exported field_instance: 'node-person-field_core_legacy_link'
+  $field_instances['node-person-field_core_legacy_link'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please provide a link to the existing page of the person profile',
+    'description' => 'In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -95,9 +89,9 @@ function dt_person_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_person_existing_profile',
-    'label' => 'Link to an existing profile',
-    'required' => 1,
+    'field_name' => 'field_core_legacy_link',
+    'label' => 'Legacy link',
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
@@ -109,7 +103,7 @@ function dt_person_field_default_field_instances() {
       'display' => array(
         'url_cutoff' => 80,
       ),
-      'enable_tokens' => 0,
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
@@ -139,7 +133,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -149,11 +143,10 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'meta' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -214,7 +207,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'above',
@@ -226,7 +219,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 19,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -258,7 +251,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -268,11 +261,10 @@ function dt_person_field_default_field_instances() {
         'weight' => 1,
       ),
       'meta' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -332,7 +324,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -410,7 +402,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 11,
       ),
       'full' => array(
         'label' => 'above',
@@ -419,10 +411,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'meta' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 16,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -456,7 +449,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'inline',
@@ -469,7 +462,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 20,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -534,7 +527,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
@@ -546,7 +539,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -603,7 +596,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -656,7 +649,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'above',
@@ -668,7 +661,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 14,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -868,8 +861,7 @@ function dt_person_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Last Name');
-  t('Link to an existing profile');
-  t('Please provide a link to the existing page of the person profile');
+  t('Legacy link');
   t('Plural form');
   t('Portrait photo');
   t('Role');

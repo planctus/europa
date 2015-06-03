@@ -2,7 +2,7 @@
 //
 // Ec logo
 //
-// Markup: logo.html
+// Markup: html/logo.html
 //
 // Styleguide siteheader.logo
 
@@ -12,12 +12,14 @@
 .logo {
   display: block;
 
-  width: 170px;
-  height: 45px;
+  width: 140px;
+  height: 70px;
 
   background: url('../images/svg/logo.svg') no-repeat;
 }
 
 .no-svg {
-  background-image: url('../images/svg/logo.png');
+  .logo {
+    background-image: url('../images/png/logo.png');
+  }
 }

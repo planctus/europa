@@ -12,13 +12,13 @@ Markup: html/btn.html
 
 Styleguide buttons
 */
-
 .btn {
+  margin-bottom: 1em;
   line-height: 1;
   border-radius: 0;
   border-width: 2px;
   font-weight: $font-weight-bold;
-  padding: 0.8em 1em;
+  padding: 0.75em 1em;
   font-size: $font-size-little;
   text-decoration: none;
 
@@ -86,4 +86,43 @@ Styleguide buttons
       outline-color: $text-color;
     }
   }
+}
+
+/*
+Button block
+
+Button block component
+
+Markup: html/btn-block.html
+
+Styleguide buttons.btn-block
+*/
+.btn-block {
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  margin-bottom: -2px;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+
+  & + .btn-block {
+    margin-top: 0;
+  }
+}
+
+/*
+Button Search
+
+Button search component
+
+Markup: html/btn-search.html
+
+Styleguide buttons.btn-search
+*/
+.btn.btn-search {
+  border-color: #fff;
+  background: $grey-light;
+  color: $grey-dark;
 }

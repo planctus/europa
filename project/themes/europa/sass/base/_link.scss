@@ -1,24 +1,32 @@
-// Link
-//
-// Markup: link.html
-//
-// :hover - Hover state
-// :visited - Visited state
-// :active - Active state
-// :focus - Focus state
-//
-// Styleguide text.link
+/*
+Link
+
+Markup: html/link.html
+
+Styleguide text.link
+*/
 
 a {
-  text-decoration: underline;
-
   &:hover,
   &:active,
   &:focus {
-    color: $blue;
-    text-decoration: none;
+    color: $grey-base;
+    text-decoration: underline;
   }
-  &:hover {
-    text-decoration: none;
+
+  &[href^="http"],
+  &[href^="https"] {
+    &:after {
+      @extend .icon--after;
+      @extend .icon--external;
+      display: inline-block;
+      font-size: 75%;
+      margin-left: 0.4em;
+      margin-right: 0.2em;
+    }
   }
+}
+
+p a {
+  text-decoration: underline;
 }
