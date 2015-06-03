@@ -54,9 +54,9 @@
               $filters.addClass('collapse');
 
               // Removing things.
-              if ($sidebarFirst.length && $sidebarFirst.hasClass('well')) {
+              /*if ($sidebarFirst.length && $sidebarFirst.hasClass('well')) {
                 $sidebarFirst.removeClass("well");
-              }
+              }*/
 
               // Listeners.
               // Clicking on the submit should collapse the filters.
@@ -72,9 +72,9 @@
                 $filtersWrapper = $(".filters__wrapper");
 
               // Adding things.
-              if (!$sidebarFirst.hasClass('well')) {
+              /*if (!$sidebarFirst.hasClass('well')) {
                 $sidebarFirst.addClass('well');
-              }
+              }*/
               $('.filters__btn-submit', $filters).addClass('ctools-auto-submit-click')
 
               // Removing things.
