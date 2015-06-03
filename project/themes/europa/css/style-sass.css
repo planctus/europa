@@ -5827,13 +5827,14 @@ Styleguide forms.filters
   float: right; }
 
 .filters__close {
-  text-decoration: none;
   color: #004494 !important;
   opacity: 1 !important;
-  padding-top: 15px;
-  text-shadow: none;
   font-size: 1em;
-  font-weight: 400; }
+  font-weight: 400;
+  padding-top: 15px;
+  margin-right: 20px;
+  text-decoration: none;
+  text-shadow: none; }
   .filters__close:after {
     content: "";
     background: url('../images/svg/arrow-up--blue.svg') no-repeat;
