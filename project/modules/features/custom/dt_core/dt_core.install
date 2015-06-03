@@ -212,3 +212,14 @@ function dt_core_update_7116() {
     features_revert_module($feature);
   }
 }
+
+/**
+ * Enabling multisite_maxlength module.
+ */
+function dt_core_update_7117() {
+  $modules = array(
+    'multisite_maxlength',
+  );
+  module_enable($modules);
+  features_revert_module('nexteuropa_page');
+}
