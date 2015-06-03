@@ -31,7 +31,7 @@
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
-        <section class="col-lg-12 <?php print $top_classes; ?>">
+        <section class="col-md-12 <?php print $top_classes; ?>">
           <?php if (!empty($messages)): ?>
             <?php print $messages; ?>
           <?php endif; ?>
@@ -40,7 +40,7 @@
         </section>
 
         <a id="main-content" tabindex="-1"></a>
-        <section class="col-lg-12 <?php print $central_classes; ?>">
+        <section class="col-md-12 <?php print $central_classes; ?>">
           <?php print $central; ?>
         </section>
       </div>
