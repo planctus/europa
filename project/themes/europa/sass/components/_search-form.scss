@@ -27,6 +27,9 @@ Styleguide: siteheader.searchform
   float: left;
   text-indent: 10em;
   position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 2.75em;
 
   &:before {
     text-indent: 0;
