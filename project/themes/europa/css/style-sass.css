@@ -6263,6 +6263,19 @@ Styleguide inpagenav
     text-decoration: underline;
     color: #006fb4;
     background: none; }
+
+.inpage-nav__wrapper.affix, .inpage-nav__wrapper.affix-top {
+  position: relative; }
+
+.is-inpage-nav-open {
+  overflow: hidden; }
+  .is-inpage-nav-open .inpage-nav__navbar {
+    overflow: auto; }
+
+@media (min-width: 992px) {
+  .inpage-nav.inpage-nav__navbar-wrapper.is-active {
+    display: none; }
+
   .inpage-nav__list li.active .inpage_nav__list__item {
     color: #004494;
     background-color: #eeeeee; }
@@ -6277,14 +6290,12 @@ Styleguide inpagenav
     top: 0px;
     width: 10px; }
 
-.inpage-nav__wrapper.affix, .inpage-nav__wrapper.affix-top {
-  top: 15px; }
-.inpage-nav__wrapper.affix-bottom {
-  position: absolute; }
-
-@media (min-width: 1200px) {
-  .inpage-nav.inpage-nav__navbar-wrapper.is-active {
-    display: none; }
+  .inpage-nav__wrapper.affix, .inpage-nav__wrapper.affix-top {
+    top: 15px; }
+  .inpage-nav__wrapper.affix {
+    position: fixed; }
+  .inpage-nav__wrapper.affix-bottom {
+    position: absolute; }
  }
 
 /*

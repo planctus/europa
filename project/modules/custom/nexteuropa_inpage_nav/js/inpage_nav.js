@@ -47,24 +47,11 @@
 
         $('body').append($navBar);
 
-        enquire.register("screen and (min-width: 1200px)", {
+        enquire.register("screen and (min-width: 992px)", {
           // desktop
           match : function() {
-            //$inPageBlock.removeClass("affix affix-top affix-bottom is-fixed is-bottom");
-
             Drupal.behaviors.inpage_navigation.fixWidth($inPageBlock, $inPageBlockParent);
-
-            // Affix.
-            $inPageBlock.affix({
-              offset: {
-                top: function () {
-                  return (Math.floor($inPageBlock.parent().offset().top - 15));
-                },
-                bottom: function () {
-                  return ($('.footer').outerHeight(true) + $('.footer-top').outerHeight(true) + 20);
-                }
-              }
-            });
+            $('body').removeClass('is-inpage-nav-open');
           },
 
           setup: function() {
@@ -89,6 +76,7 @@
 
             $navBar.on('hide.bs.collapse', function() {
               $navBar.removeClass('is-collapsed');
+              $('body').removeClass('is-inpage-nav-open');
             });
 
             $navBar.on("activate.bs.scrollspy", function(e) {
@@ -96,6 +84,17 @@
               Drupal.behaviors.inpage_navigation.currentTitle($navBar, $navBarCurrent);
             });
 
+            // Affix.
+            $inPageBlock.affix({
+              offset: {
+                top: function () {
+                  return (Math.floor($inPageBlock.parent().offset().top - 15));
+                },
+                bottom: function () {
+                  return ($('.footer').outerHeight(true) + $('.footer-top').outerHeight(true) + 20);
+                }
+              }
+            });
 
             $(window).scroll(function(e) {
               $window = $(this);
@@ -123,11 +122,13 @@
               $('#inpage-navigation-list').collapse('hide');
             }
 
-            // Swicth off affix.
-            $(window).off('.affix');
-            $inPageBlock
-              .removeClass("affix affix-top affix-bottom is-fixed is-bottom")
-              .removeData("bs.affix");
+            $navBar.on('show.bs.collapse', function() {
+              $('body').addClass('is-inpage-nav-open');
+            });
+
+            $navBar.on('hide.bs.collapse', function() {
+              $('body').removeClass('is-inpage-nav-open');
+            });
           }
         });
       });
