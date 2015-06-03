@@ -48,11 +48,17 @@ function dt_info_homepage_ds_layout_settings_info() {
       ),
       'central' => array(
         1 => 'field_info_homepage_section_1',
+        2 => 'field_info_homepage_section_2',
+        3 => 'field_info_homepage_section_3',
+        4 => 'field_info_homepage_section_4',
       ),
     ),
     'fields' => array(
       'field_core_introduction' => 'left_header',
       'field_info_homepage_section_1' => 'central',
+      'field_info_homepage_section_2' => 'central',
+      'field_info_homepage_section_3' => 'central',
+      'field_info_homepage_section_4' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

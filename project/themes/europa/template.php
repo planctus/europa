@@ -397,6 +397,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
 
 /**
  * Helper applying BEM to footer menu item links.
+ *
  * @param $variables
  * @return string
  */
@@ -416,6 +417,7 @@ function _europa_menu_link__footer(&$variables) {
 
 /**
  * Implements theme_menu_link().
+ *
  * @param $variables
  * @return string
  */
@@ -425,6 +427,7 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
 
 /**
  * Implements theme_menu_link().
+ *
  * @param $variables
  * @return string
  */
@@ -594,27 +597,30 @@ function europa_html_head_alter(&$head_elements) {
 /**
  * Helper function for display 'meta' view mode field.
  */
-function _europa_field_component_listing($variables) {
-  $output = '';
-  $output .= '<div class="listing">';
+function _europa_field_component_listing($variables, $config) {
+  $config += array(
+    'modifier' => FALSE,
+    'listing_wrapper_element' => 'div',
+    'item_wrapper_element' => 'div',
+  );
+
+  $modifier_class = !$config['modifier'] ? '' : ' listing--' . $config['modifier'];
+  $output = '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
 
   foreach ($variables['items'] as $delta => $item) {
-    $output .= '<div class="listing__item">' . drupal_render($item) . '</div>';
-  }
-  $output .= '</div>';
-  return $output;
-}
+    switch ($config['modifier']) {
+      case 'title':
+        $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
+        break;
 
-/**
- * Helper function for display 'title' view mode field.
- */
-function _europa_field_component_listing_title($variables) {
-  $output = '';
-  $output .= '<ul class="listing listing--title">';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
+      default:
+        $rendered_item = drupal_render($item);
+        break;
+    }
+    $output .= '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
   }
-  $output .= '</ul>';
+  $output .= '</' . $config['listing_wrapper_element'] . '>';
+
   return $output;
 }
 
@@ -629,14 +635,22 @@ function europa_field($variables) {
       // First node from entity reference.
       $reference = array_shift($element[0]);
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
+      $settings = array();
+      // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
+        // kpr($variables);
         switch ($first_node['#view_mode']) {
           case 'title':
-            return _europa_field_component_listing_title($variables);
+            $settings['modifier'] = 'title';
+            $settings['listing_wrapper_element'] = 'ul';
+            $settings['item_wrapper_element'] = 'li';
+            break;
 
-          case 'meta':
-            return _europa_field_component_listing($variables);
+          case 'teaser':
+            $settings['modifier'] = 'teaser';
+            break;
         }
+        return _europa_field_component_listing($variables, $settings);
       }
 
       break;

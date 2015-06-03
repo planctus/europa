@@ -6242,6 +6242,15 @@ Styleguide listing.title
     padding-bottom: 0.7em;
     padding-right: 2em; }
 
+/*
+Listing teaser
+
+Listing components
+
+Markup: html/listing--teaser.html
+
+Styleguide listing.teaser
+*/
 .logo {
   display: block;
   width: 140px;
