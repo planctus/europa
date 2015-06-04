@@ -11,7 +11,7 @@ function dt_core_wysiwyg_default_profiles() {
   $profiles = array();
 
   // Exported profile: dt_editor
-  $profiles['dt_editor'] = (object) array(
+  $profiles['dt_editor'] = (array) array(
     'format' => 'dt_editor',
     'editor' => 'ckeditor',
     'settings' => array(
