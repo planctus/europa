@@ -1,5 +1,9 @@
 (function ($) {
   Drupal.behaviors.europaComponents_filters = {
+    hideFilterButtons: function() {
+      $('.filters .filters__btn-submit, .filters .filters__btn-reset').hide();
+    },
+
     attach: function (context, settings) {
       var $filters      = $('.filters'),
           refineText    = Drupal.t('Refine'),
@@ -26,9 +30,6 @@
           );
       }
 
-      // Removing things.
-      // Desktop first case.
-      $filters.find('.filters__btn-submit').hide();
       // First there are results, then there are no results.
       if ($exposedData.length &&
         $exposedData.find('.content').html().trim() === "") {
@@ -73,11 +74,19 @@
 
               // Removing things.
               $filters.removeClass('collapse in');
-              $filters.find('.filters__btn-submit').hide();
+
+              // Hiding filter buttons
+              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
+
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
                 $filtersWrapper.children().unwrap("<div class='filters__wrapper'></div>");
               }
+            },
+
+            setup: function() {
+              // Hiding filter buttons
+              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
             }
           });
         }

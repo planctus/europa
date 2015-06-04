@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides simple way to print exposed filter data
+ * Provides simple way to print exposed filter data.
  */
 
 /**
@@ -23,8 +23,6 @@ function dt_exposed_filter_data_theme() {
  * Implementation of hook_preprocess().
  */
 function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
-  // Add the CSS.
-  drupal_add_css(drupal_get_path('module', 'dt_exposed_filter_data') . '/dt_exposed_filter_data.css');
   $view = $vars['view'];
 
   // In case no view - get the current view.
