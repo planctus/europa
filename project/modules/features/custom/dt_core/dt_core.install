@@ -23,6 +23,7 @@ function dt_core_install() {
     'dt_contact',
     'dt_publication',
     'dt_policy',
+    'dt_topic',
     'nexteuropa_file',
   );
   module_enable($features);
