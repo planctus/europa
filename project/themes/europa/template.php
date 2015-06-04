@@ -66,6 +66,11 @@ function europa_preprocess_block(&$vars) {
     // Add content to block.
     $vars['content'] = l($label . $code, 'splash', $options);
   }
+
+  if ($block->delta == 'inline_navigation') {
+    $vars['classes_array'][] = 'inpage-nav__wrapper';
+    $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
+  }
 }
 
 /**
@@ -117,7 +122,7 @@ function europa_form_required_marker($variables) {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements template_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
   $node = &$variables['node'];

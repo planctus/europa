@@ -87,7 +87,7 @@
 </section>
 <header class="site-header" role="banner">
   <div class="container-fluid">
-    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home'); ?>"></a>
+    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home - European Commission Beta'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
@@ -182,35 +182,35 @@
     </div>
     <a id="main-content" tabindex="-1"></a>
 
-
-    <div class="container-fluid">
-      <div class="row">
-
-        <?php if (!empty($page['sidebar_first'])): ?>
-          <aside class="col-sm-3" role="complementary">
-            <?php print render($page['sidebar_first']); ?>
-          </aside>  <!-- /#sidebar-first -->
-        <?php endif; ?>
-
-        <section<?php print $content_column_class; ?>>
-          <?php if (!empty($page['highlighted'])): ?>
-            <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <?php if (!empty($page['sidebar_first'])): ?>
+            <aside class="col-sm-3" role="complementary">
+              <?php print render($page['sidebar_first']); ?>
+            </aside>  <!-- /#sidebar-first -->
           <?php endif; ?>
 
-          <?php if (!empty($messages)): ?>
-            <?php print $messages; ?>
+          <section<?php print $content_column_class; ?>>
+            <?php if (!empty($page['highlighted'])): ?>
+              <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+            <?php endif; ?>
+
+            <?php if (!empty($messages)): ?>
+              <?php print $messages; ?>
+            <?php endif; ?>
+
+            <?php print render($page['content']); ?>
+
+            <?php print render($page['content_bottom']); ?>
+          </section>
+
+          <?php if (!empty($page['sidebar_second'])): ?>
+            <aside class="col-sm-3" role="complementary">
+              <?php print render($page['sidebar_second']); ?>
+            </aside>  <!-- /#sidebar-second -->
           <?php endif; ?>
-
-          <?php print render($page['content']); ?>
-
-          <?php print render($page['content_bottom']); ?>
-        </section>
-
-        <?php if (!empty($page['sidebar_second'])): ?>
-          <aside class="col-sm-3" role="complementary">
-            <?php print render($page['sidebar_second']); ?>
-          </aside>  <!-- /#sidebar-second -->
-        <?php endif; ?>
+        </div>
       </div>
     </div>
   <?php endif; ?>
