@@ -6,6 +6,9 @@ Icons using europa icons font
 Markup: html/icon.html
 
 .icon--external - External link icon
+.icon--arrow-up - Arrow up icon
+.icon--arrow-down - Arrow down icon
+.icon--spinner - Spinner icon
 
 Styleguide: icon
 */
@@ -61,6 +64,18 @@ Styleguide: icon
 .icon--external {
   &:before {
     @extend .icon--external;
+  }
+}
+
+.icon--arrow-up {
+  &:before {
+    content: '\e607';
+  }
+}
+
+.icon--arrow-down {
+  &:before {
+    content: '\e606';
   }
 }
 

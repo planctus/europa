@@ -67,7 +67,8 @@ function europa_preprocess_block(&$vars) {
     $vars['content'] = l($label . $code, 'splash', $options);
   }
 
-  // Replace block-title class with block__title in order to keep BEM structure of classes.
+  // Replace block-title class with block__title in order to keep BEM structure
+  // of classes.
   $block_title_class = array_search('block-title', $vars['title_attributes_array']['class']);
   if ($block_title_class !== FALSE) {
     unset($vars['title_attributes_array']['class'][$block_title_class]);
@@ -83,12 +84,18 @@ function europa_preprocess_block(&$vars) {
       $vars['title_attributes_array']['class'][] = 'filters__title';
       $block->subject = t('Refine results');
 
-      // Passing block id to Drupal.settings in order to pass it through data attribute in the collapsible panel.
+      // Passing block id to Drupal.settings in order to pass it through data
+      // attribute in the collapsible panel.
       drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
 
       // Adding filters.js file.
       drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
     }
+  }
+
+  if ($block->delta == 'inline_navigation') {
+    $vars['classes_array'][] = 'inpage-nav__wrapper';
+    $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
   }
 }
 
@@ -102,7 +109,8 @@ function europa_preprocess_views_view(&$vars) {
     $vars['classes_array'][] = 'listing';
   }
 
-  // Checking if exposed filters are set and add variable that stores active filters.
+  // Checking if exposed filters are set and add variable that stores active
+  // filters.
   if (module_exists('exposed_filter_data') || module_exists('dt_exposed_filter_data')) {
     $vars['active_filters'] = get_exposed_filter_output();
   }
@@ -152,7 +160,7 @@ function europa_form_required_marker($variables) {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements template_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
   $node = &$variables['node'];

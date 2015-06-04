@@ -144,7 +144,7 @@ var Drupal = Drupal || {};
               top: offset + 'px',
               zIndex: -1000
             })
-            .appendTo('body');
+            .appendTo(document);
           $target.removeAttr(attr);
           var complete = function () {
             location.hash = element.hash;
