@@ -101,7 +101,9 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
       '#options' => array(
         'default' => t('Default'),
         'two_columns' => t('Two Columns'),
-        'row' => t('Row'),
+        'three_columns' => t('Three Columns'),
+        'row_two' => t('Row with two items'),
+        'row_three' => t('Row with three items'),
       ),
       '#default_value' => $settings['nexteuropa_ds_layouts_columns'],
     );
@@ -140,7 +142,6 @@ function nexteuropa_ds_layouts_preprocess_field(&$variables) {
     if (isset($info['display'][$view_mode]['settings'])) {
       $formatter_settings = $info['display'][$view_mode]['settings'] + $formatter_settings;
     }
-    // $formatter_settings = field_formatter_settings_get_instance_display_settings($entity_type, $field_name, $bundle, $view_mode);
     // Make the setting available in the field template.
     $variables['nexteuropa_ds_layouts_columns'] = $formatter_settings['nexteuropa_ds_layouts_columns'];
   }

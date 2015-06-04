@@ -399,6 +399,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * Helper applying BEM to footer menu item links.
  *
  * @param $variables
+ *
  * @return string
  */
 function _europa_menu_link__footer(&$variables) {
@@ -419,6 +420,7 @@ function _europa_menu_link__footer(&$variables) {
  * Implements theme_menu_link().
  *
  * @param $variables
+ *
  * @return string
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
@@ -429,6 +431,7 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
  * Implements theme_menu_link().
  *
  * @param $variables
+ *
  * @return string
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
@@ -600,26 +603,61 @@ function europa_html_head_alter(&$head_elements) {
 function _europa_field_component_listing($variables, $config) {
   $config += array(
     'modifier' => FALSE,
+    'layout' => 'default',
     'listing_wrapper_element' => 'div',
     'item_wrapper_element' => 'div',
   );
 
   $modifier_class = !$config['modifier'] ? '' : ' listing--' . $config['modifier'];
-  $output = '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
-
-  foreach ($variables['items'] as $delta => $item) {
-    switch ($config['modifier']) {
-      case 'title':
-        $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
-        break;
-
-      default:
-        $rendered_item = drupal_render($item);
-        break;
-    }
-    $output .= '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
+  $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
+  $columns_num = 1;
+  if ($config['layout'] == 'two_columns') {
+    $columns_num = 2;
   }
-  $output .= '</' . $config['listing_wrapper_element'] . '>';
+  elseif ($config['layout'] == 'three_columns') {
+    $columns_num = 3;
+  }
+
+  // Distribute them into columns.
+  $counter = 1;
+  $current_column = 0;
+  $total = count($variables['items']);
+  $columns = array();
+  $max_items_in_column = array();
+
+  for ($i = 0; $i < $columns_num; $i++) {
+    $max_items_in_column[] = floor(($total + $columns_num - ($i + 1)) / $columns_num);
+  }
+
+  $counter = 0;
+  for ($i = 0; $i < $columns_num; $i++) {
+    for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
+      $item = $variables['items'][$counter];
+      // Row content.
+      switch ($config['modifier']) {
+        case 'title':
+          $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
+          break;
+
+        default:
+          $rendered_item = drupal_render($item);
+          break;
+      }
+      $columns[$i][] = '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
+      $counter++;
+    }
+  }
+
+  // Assemble the markup.
+  $output = '<div class="listing__wrapper' . $wrapper_class . '">';
+  foreach ($columns as $column) {
+    $output .= '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
+    foreach ($column as $item) {
+      $output .= $item;
+    }
+    $output .= '</' . $config['listing_wrapper_element'] . '>';
+  }
+  $output .= '</div>';
 
   return $output;
 }
@@ -636,6 +674,9 @@ function europa_field($variables) {
       $reference = array_shift($element[0]);
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
       $settings = array();
+      if (isset($variables['nexteuropa_ds_layouts_columns'])) {
+        $settings['layout'] = $variables['nexteuropa_ds_layouts_columns'];
+      }
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
         // kpr($variables);

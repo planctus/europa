@@ -130,3 +130,44 @@ Styleguide listing.teaser
 ul.listing--teaser {
 
 }
+
+/*
+Listing layouts
+
+Listing components
+
+Markup: html/listing--teaser.html
+
+Styleguide listing.teaser
+*/
+.listing__wrapper--two_columns {
+  @extend .row;
+  .listing {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--three_columns {
+  @extend .row;
+  .listing {
+    @extend .col-md-4;
+  }
+}
+
+.listing__wrapper--row_two {
+  .listing {
+    @extend .row;
+  }
+  .listing__item {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--row_three {
+  .listing {
+    @extend .row;
+  }
+  .listing__item {
+    @extend .col-md-4;
+  }
+}
