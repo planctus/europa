@@ -72,7 +72,7 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
+    'description' => 'Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
     'display' => array(
       'default' => array(
         'label' => 'above',
