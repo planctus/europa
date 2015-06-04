@@ -50,6 +50,9 @@ scripts[] = js/misc/ajax.js
 ; Settings
 ; ========================================
 
+; Region Wells
+; --------------
+settings[bootstrap_region_well-sidebar_first] = ''
 
 ; Tooltips
 ; --------------

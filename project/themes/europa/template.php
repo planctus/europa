@@ -15,9 +15,9 @@ function europa_js_alter(&$js) {
   );
 }
 
- /**
-  * Implements template_preprocess_field().
-  */
+/**
+ * Implements template_preprocess_field().
+ */
 function europa_preprocess_field(&$vars) {
   // Changing label for the field to display stripped out values.
   if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
