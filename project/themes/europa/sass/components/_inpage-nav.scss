@@ -2,6 +2,8 @@
 Inpage navigation
 
 Floating menu containing links to headings in a long page.
+Styleguide implementation is not complete. TODO: Refactor Drupal js to be
+technology agnostic.
 
 Markup: html/inpage-nav.html
 
@@ -9,74 +11,249 @@ Styleguide inpagenav
 
 */
 
-.inpage-nav--list {
-  z-index: 2000;
-}
-
 .inpage-nav {
-  cursor: pointer;
-  z-index: 100;
+  &.inpage-nav__navbar-wrapper {
+    display: none;
+    &.is-active {
+      display: inherit;
+    }
+    &.is-collapsed,
+    &.is-collapsing {
+      .inpage-nav__navbar {
+        height: 100%;
+      }
+      .inpage-nav__help,
+      .inpage-nav__close-text {
+         display: block;
+      }
+      .inpage-nav__current {
+       display: none;
+      }
+      .inpage-nav__header{
+       background-color: $grey-lighter;
+       font-weight: normal;
+      }
+      .inpage-nav__toggle {
+        background-color: $grey;
+        border-color: $grey;
 
-  .container {
+        .inpage-nav__icon-arrow {
+          @include rotate(180deg);
+          color: $grey-dark;
+        }
+      }
+    }
+    .inpage-nav__header {
+      margin: 0;
+    }
+
+    .inpage-nav__list {
+      li {
+        font-size: $font-size-base;
+        line-height: 21px;
+        padding: 0;
+        & > .inpage_nav__list__item {
+          padding: 1em 0 1em 1em;
+          border-top: 1px solid $blue-darkest;
+          margin: 0 1em;
+          &:link,
+          &:visited,
+          &:hover,
+          &:active {
+            color: #ffffff;
+          }
+          &:hover,
+          &:active {
+            text-decoration: underline;
+          }
+        }
+        &.active > a.inpage_nav__list__item{
+           background: none;
+        }
+      }
+    }
+  }
+
+  .inpage-nav__container {
+    padding: 0;
     width: auto;
+    background-color: $blue-dark;
   }
 
-  &.affix-top .nav li.active a,
-  &.affix-bottom .nav li.active a {
-    color: #000 !important
+  .inpage-nav__list {
+    margin: 0;
+    padding: 0;
   }
+}
 
-  &.affix-top .nav li.active a:hover,
-  &.affix-bottom .nav li.active a:hover {
-    color: #006fb4 !important
+.inpage-nav__navbar {
+  background-color: #ffffff;
+  color: #ffffff;
+  .inpage-nav__header {
+    font-weight: bold;
+    .inpage-nav__current {
+      color: #ffffff;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .inpage-nav__help {
+      display: none;
+      background-color: $grey-lighter;
+      font-size: $font-size-base;
+      text-transform: uppercase;
+      color: $grey-dark;
+    }
+
+    .inpage-nav__toggle {
+      @extend .btn;
+      margin: 0;
+      background-color: $blue-darkest;
+      border-color: $blue-darkest;
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none !important;
+        color: #ffffff;
+      }
+    }
+    .inpage-nav__close-text {
+      display: none;
+      font-size: $font-size-base;
+      line-height: $line-height-computed;
+    }
+
+    .inpage-nav__icon-arrow {
+      display: block;
+      transition: all 0.3s ease 0s;
+      transform-origin: 50% 50%;
+      color: #ffffff;
+      font-size: $font-size-little;
+      margin: 5px;
+      font-size: 10px;
+    }
   }
-
-  &.affix {
-    top: 30px
-  }
-
-  &.affix .nav li:hover,
-  &.affix .nav li:active,
-  &.affix .nav li:focus {
-    color: #006fb4;
-    text-decoration: underline
-  }
-
-  &.affix .nav li.active:before {
-    background: none repeat scroll 0 0 #006fb4;
-    content: "";
+  .inpage-nav__title {
     display: block;
-    height: 100%;
-    left: -10px;
-    position: absolute;
-    top: -2px;
-    width: 2px
+    font-size: $font-size-large;
+    padding: 15px;
+    line-height: 21px;
+    font-weight: bold;
   }
 
-  &.affix-bottom {
-    position: absolute;
-    bottom: 30px
+  .inpage-nav__list {
+    margin: 0px !important;
+    li {
+      &.active {
+        .inpage_nav__list__item {
+          color: inherit;
+          background: none;
+        }
+        &:before {
+          background: none;
+          content: none;
+        }
+      }
+      a.inpage_nav__list__item {
+        font-weight: normal;
+      }
+    }
   }
-
-  .block-title {
-    background: none;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: .05em;
-    color: #575757;
-    text-transform: uppercase;
-    margin-top: 10px
-  }
-
-  max-width: 228px;
-  padding-bottom: 1px
 }
 
-.navigation-place {
-  padding: 20px 0 20px 20px;
-  margin-bottom: 0;
+.inpage-nav__current-wrapper {
+  overflow: hidden;
+}
+.inpage-nav__block-title {
+  display: inherit;
+  font-size: $font-size-base;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: $grey-dark;
 }
 
-.navbar-toggle {
-  top: 10px;
+.inpage-nav__list li {
+  font-size: 1em;
+  & > .inpage_nav__list__item {
+    &:link, &:visited, &:focus {
+      border: none;
+      outline: none;
+      color: $grey-base;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 4px 0px;
+      margin: 0px;
+      margin-top: 15px;
+      background: none;
+    }
+    &:hover, &:active {
+      text-decoration: underline;
+      color: $blue;
+      background: none;
+    }
+  }
+}
+
+.inpage-nav__wrapper {
+  &.affix,
+  &.affix-top {
+    position:relative;
+  }
+}
+
+.is-inpage-nav-open {
+  overflow: hidden;
+
+  .inpage-nav__navbar {
+    overflow: auto;
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .inpage-nav {
+    &.inpage-nav__navbar-wrapper.is-active {
+      display: none;
+    }
+  }
+
+  .inpage-nav__list {
+    li {
+      &.active {;
+        .inpage_nav__list__item {
+          color: $brand-primary;
+          background-color: $gray-lighter;
+        }
+        &:before {
+          // background: none repeat scroll 0 0 $brand-primary;
+          border-left: 2px solid $brand-primary;
+          background-color: $gray-lighter;
+          content: "";
+          display: block;
+          height: 100%;
+          left: -10px;
+          position: absolute;
+          top: 0px;
+          width: 10px;
+        }
+      }
+    }
+  }
+
+  .inpage-nav__wrapper {
+    &.affix,
+    &.affix-top {
+      top: 15px;
+    }
+
+    &.affix {
+      position: fixed;
+    }
+
+    &.affix-bottom {
+      position: absolute;
+    }
+  }
 }
