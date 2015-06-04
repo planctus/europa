@@ -1,5 +1,9 @@
 (function ($) {
   Drupal.behaviors.europaComponents_filters = {
+    hideFilterButtons: function() {
+      $('.filters .filters__btn-submit, .filters .filters__btn-reset').hide();
+    },
+
     attach: function (context, settings) {
       var $filters      = $('.filters'),
           refineText    = Drupal.t('Refine'),
@@ -12,20 +16,20 @@
 
       // Adding things.
       if ($resultsCount.is(':visible') && !$('.filters__btn-collapse').length) {
-        $resultsCount.append('<button class="btn btn-primary hidden-sm hidden-md hidden-lg filters__btn-collapse" type="button"' +
-          ' data-toggle="collapse" data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
-          ' aria-expanded="false" aria-controls="collapseFilters">' +
-          refineText +
-          '</button>'
-        );
-        $resultsCount.append("<button class='btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg'>" + clearAll +
-          '</button>'
-        );
+        $resultsCount
+          .append(
+            '<div class="btn-group">' +
+              '<button class="btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg">' + clearAll +
+              '</button>' +
+              '<button class="btn btn-primary hidden-sm hidden-md hidden-lg filters__btn-collapse" type="button"' +
+              ' data-toggle="collapse" data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
+              ' aria-expanded="false" aria-controls="collapseFilters">' +
+                refineText +
+              '</button>' +
+            '</div>'
+          );
       }
 
-      // Removing things.
-      // Desktop first case.
-      $filters.find('.filters__btn-submit').hide();
       // First there are results, then there are no results.
       if ($exposedData.length &&
         $exposedData.find('.content').html().trim() === "") {
@@ -70,11 +74,19 @@
 
               // Removing things.
               $filters.removeClass('collapse in');
-              $filters.find('.filters__btn-submit').hide();
+
+              // Hiding filter buttons
+              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
+
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
                 $filtersWrapper.children().unwrap("<div class='filters__wrapper'></div>");
               }
+            },
+
+            setup: function() {
+              // Hiding filter buttons
+              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
             }
           });
         }

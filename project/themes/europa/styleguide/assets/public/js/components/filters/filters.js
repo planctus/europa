@@ -12,15 +12,18 @@
 
       // Adding things.
       if ($resultsCount.is(':visible') && !$('.filters__btn-collapse').length) {
-        $resultsCount.append('<button class="btn btn-primary hidden-sm hidden-md hidden-lg filters__btn-collapse" type="button"' +
-          ' data-toggle="collapse" data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
-          ' aria-expanded="false" aria-controls="collapseFilters">' +
-          refineText +
-          '</button>'
-        );
-        $resultsCount.append("<button class='btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg'>" + clearAll +
-          '</button>'
-        );
+        $resultsCount
+          .append(
+            '<div class="btn-group">' +
+              '<button class="btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg">' + clearAll +
+              '</button>' +
+              '<button class="btn btn-primary hidden-sm hidden-md hidden-lg filters__btn-collapse" type="button"' +
+              ' data-toggle="collapse" data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
+              ' aria-expanded="false" aria-controls="collapseFilters">' +
+                refineText +
+              '</button>' +
+            '</div>'
+          );
       }
 
       // Removing things.

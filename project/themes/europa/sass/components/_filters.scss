@@ -27,14 +27,6 @@ Styleguide forms.filters
   }
 }
 
-@include breakpoint(screen-sm-min) {
-  .filters {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-  }
-}
-
 .filters__filter {
   width: 100%;
   clear: both;
@@ -64,6 +56,11 @@ Styleguide forms.filters
   padding: 1em 0;
   line-height: 1;
   overflow: hidden;
+
+  .btn-group {
+    float: right;
+    margin-top: 0;
+  }
 }
 
 .filters__empty {
@@ -103,6 +100,18 @@ Styleguide forms.filters
   }
 }
 
+.filter__items-number,
+.filters__items-name {
+  font-size: $font-size-h1;
+}
+
+.filter__items-number {
+  display: block;
+  margin-right: 0.333em;
+  float: left;
+  padding-bottom: 0.5em;
+}
+
 @include breakpoint(screen-xs-min) {
   .filters__close {
     &:after {
@@ -110,21 +119,14 @@ Styleguide forms.filters
       width: 12px;
     }
   }
-  .filter__items-number {
-    padding-bottom: 0 !important;
+}
+
+@include breakpoint(screen-sm-min) {
+  .filters {
+    background: transparent;
+    margin: 0;
+    padding: 0;
   }
-}
-
-.filter__items-number,
-.filters__items-name {
-  font-size: $font-size-h1;
-}
-
-.filter__items-number {
-  clear: both;
-  display: block;
-  margin-right: 0.333em;
-  padding-bottom: 0.5em;
 }
 
 //Drupal widgets styling hack
