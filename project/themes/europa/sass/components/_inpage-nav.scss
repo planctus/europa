@@ -113,6 +113,7 @@ Styleguide inpagenav
       margin: 0;
       background-color: $blue-darkest;
       border-color: $blue-darkest;
+      padding: 1em;
       &:hover,
       &:active,
       &:focus {
@@ -131,9 +132,11 @@ Styleguide inpagenav
       transition: all 0.3s ease 0s;
       transform-origin: 50% 50%;
       color: #ffffff;
-      font-size: $font-size-little;
-      margin: 5px;
+      margin: 5px 4px;
       font-size: 10px;
+      &:before {
+        margin-right: 0px;
+      }
     }
   }
   .inpage-nav__title {
