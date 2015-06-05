@@ -220,6 +220,36 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_topic_tasks|node|topic|default';
+  $field_group->group_name = 'group_topic_tasks';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tasks',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_top_tasks',
+      1 => 'related_topic_specific_tasks',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Tasks',
+      'instance_settings' => array(
+        'classes' => 'context-nav row',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_topic_tasks|node|topic|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_task|node|topic|form';
   $field_group->group_name = 'group_topic_task';
   $field_group->entity_type = 'node';
