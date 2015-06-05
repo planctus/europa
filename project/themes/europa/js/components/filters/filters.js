@@ -7,8 +7,7 @@
           refineText     = Drupal.t('Refine'),
           hideText       = Drupal.t('Hide'),
           clearAll       = Drupal.t('Clear all'),
-          $resultsCount  = $('.filters__result-count'),
-          $exposedData   = $('.exposed_filter_data');
+          $resultsCount  = $('.filters__result-count');
 
       // Function for hiding Submit and Reset buttons
       var hideMainFilterButtons = function() {
@@ -61,7 +60,8 @@
               $filters
                 .removeClass('collapse')
                 .addClass('collapse in')
-                .attr('aria-expanded', true);
+                .attr('aria-expanded', true)
+                .removeAttr('style');
 
               // Hiding filter buttons
               hideMainFilterButtons();

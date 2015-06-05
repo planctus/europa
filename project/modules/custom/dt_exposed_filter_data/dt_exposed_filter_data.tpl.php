@@ -5,20 +5,18 @@
  */
 ?>
 <?php if (isset($exposed_filters)): ?>
-  <div class="exposed_filter_data">
-    <div class="title"><?php print t('Filtered by:'); ?></div>
-    <div class="content">
-      <?php foreach ($exposed_filters as $filter => $value): ?>
-        <?php if ($value): ?>
-          <div class="filter"><div class="name"><?php print $filter; ?>: </div>
+  <div class="filters__active-facets">
+    <?php foreach ($exposed_filters as $filter => $value): ?>
+      <?php if ($value): ?>
+        <div class="facet-tag filters__facet-tag">
+          <span class="facet-tag__label filters__active-facet-label"><?php print $filter; ?></span>
           <?php if (is_array($value)): ?>
-            <div class="value"><?php print implode(', ', $value); ?></div>
+            <span class="facet-tag__value filters__active-facet-value"><?php print implode(', ', $value); ?></span>
           <?php else: ?>
-            <div class="value"><?php print $value; ?></div>
+          <span class="facet-tag__value filters__active-facet-value"><?php print $value; ?></span>
           <?php endif; ?>
-          </div>
-        <?php endif; ?>
-      <?php endforeach; ?>
-    </div>
+        </div>
+      <?php endif; ?>
+    <?php endforeach; ?>
   </div>
 <?php endif; ?>

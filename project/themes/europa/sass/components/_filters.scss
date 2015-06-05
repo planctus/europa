@@ -61,12 +61,14 @@ Styleguide forms.filters
     float: right;
     margin-top: 0;
   }
+
+  & + .filters__active-facets {
+    margin-top: -0.5em;
+  }
 }
 
-.filters__empty {
-  font-weight: bold;
-  display: inline;
-  margin: 0;
+.filters__active-facets {
+  padding:0 0 1em;
 }
 
 .filters__btn-collapse {
@@ -100,12 +102,12 @@ Styleguide forms.filters
   }
 }
 
-.filter__items-number,
+.filters__items-number,
 .filters__items-name {
   font-size: $font-size-h1;
 }
 
-.filter__items-number {
+.filters__items-number {
   display: block;
   margin-right: 0.333em;
   float: left;

@@ -1,20 +1,28 @@
 (function ($) {
   Drupal.behaviors.europaComponents_filters = {
-    hideFilterButtons: function() {
-      $('.filters .filters__btn-submit, .filters .filters__btn-reset').hide();
-    },
 
     attach: function (context, settings) {
-      var $filters      = $('.filters'),
-          refineText    = Drupal.t('Refine'),
-          hideText      = Drupal.t('Hide'),
-          clearAll      = Drupal.t('Clear all'),
-          $resultsCount = $('.filters__result-count'),
-          $exposedData  = $('.exposed_filter_data');
+      var $filters       = $('.filters'),
+          $filtersSubmit = $('.filters__btn-submit', $filters);
+          refineText     = Drupal.t('Refine'),
+          hideText       = Drupal.t('Hide'),
+          clearAll       = Drupal.t('Clear all'),
+          $resultsCount  = $('.filters__result-count');
 
-      // On page load and ajax calls.
+      // Function for hiding Submit and Reset buttons
+      var hideMainFilterButtons = function() {
+        $('.filters__btn-submit, .filters__btn-reset',$filters).hide();
+      }
 
-      // Adding things.
+      var hideFilterButtons = function() {
+        $('.filters__btn-collapse, .filters__btn-reset--small').hide();
+      }
+
+      var showFilterButtons = function() {
+        $('.filters__btn-collapse, .filters__btn-reset--small').show();
+      }
+
+      // Adding buttons for the filters
       if ($resultsCount.is(':visible') && !$('.filters__btn-collapse').length) {
         $resultsCount
           .append(
@@ -30,12 +38,6 @@
           );
       }
 
-      // First there are results, then there are no results.
-      if ($exposedData.length &&
-        $exposedData.find('.content').html().trim() === "") {
-        $exposedData.hide();
-      }
-
       // Listeners.
       // Small button emulating the original reset button.
       $(".filters__btn-reset--small").on("click", function(){
@@ -46,65 +48,72 @@
       $filters.once('filters', function() {
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
-          enquire.register('screen and (max-width: 768px)', {
-            // mobile
-            match : function() {
-              var $sidebarFirst = $(".region-sidebar-first");
-
-              // Adding things.
-              $('.filters__btn-submit', $filters).removeClass('ctools-auto-submit-click').show();
-              $('.filters__btn-collapse').show();
-              $filters.wrapInner("<div class='filters__wrapper'></div>");
-              $filters.addClass('collapse');
-
-              // Listeners.
-              // Clicking on the submit should collapse the filters.
-              $('.filters__btn-submit').click(function () {
-                $filters.removeClass('in');
-                $filters.children('.close').remove();
-              });
-
-            },
+          enquire.register('screen and (min-width: 768px)', {
             // desktop
-            unmatch : function() {
+            match : function() {
               var $sidebarFirst = $(".region-sidebar-first"),
                 $filtersWrapper = $(".filters__wrapper");
 
-              $('.filters__btn-submit', $filters).addClass('ctools-auto-submit-click')
+              $filtersSubmit.addClass('ctools-auto-submit-click');
 
-              // Removing things.
-              $filters.removeClass('collapse in');
+              // Opening filters when changing to desktop
+              $filters
+                .removeClass('collapse')
+                .addClass('collapse in')
+                .attr('aria-expanded', true);
 
               // Hiding filter buttons
-              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
+              hideMainFilterButtons();
 
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
                 $filtersWrapper.children().unwrap("<div class='filters__wrapper'></div>");
               }
             },
+            // mobile
+            unmatch : function() {
+              var $sidebarFirst = $(".region-sidebar-first");
+
+              // Showing buttons on viewport switch
+              showFilterButtons();
+
+              $filters.wrapInner("<div class='filters__wrapper'></div>");
+              $filters
+                .removeClass('collapse in')
+                .addClass('collapse')
+                .attr('aria-expanded', false);
+
+              $filtersSubmit.removeClass('ctools-auto-submit-click');
+            },
 
             setup: function() {
+              $filters.addClass('collapse');
               // Hiding filter buttons
-              Drupal.behaviors.europaComponents_filters.hideFilterButtons();
-            }
+              hideMainFilterButtons();
+              $filtersSubmit.removeClass('ctools-auto-submit-click').show();
+              $filters.wrapInner("<div class='filters__wrapper'></div>");
+
+              $filtersSubmit.click(function () {
+                if (!$filtersSubmit.hasClass('ctools-auto-submit-click')) {
+                  $filters.collapse('hide');
+                }
+              });
+
+              $filters.on('show.bs.collapse', function(){
+                $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +
+                ' data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
+                ' aria-expanded="true" aria-controls="collapseFilters">' + hideText + '</a>');
+                hideFilterButtons();
+                $filters.find('.filters__btn-submit').show();
+              });
+
+              $filters.on('hide.bs.collapse', function(){
+                $(this).children('.close').remove();
+                showFilterButtons();
+              });
+            },
           });
         }
-
-        $filters.on('show.bs.collapse', function(){
-          $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +
-          ' data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
-          ' aria-expanded="true" aria-controls="collapseFilters">' + hideText + '</a>');
-          $('.filters__btn-collapse').hide();
-          $('.filters__btn-reset--small').hide();
-          $filters.find('.filters__btn-submit').show();
-        });
-
-        $filters.on('hide.bs.collapse', function(){
-          $(this).children('.close').remove();
-          $('.filters__btn-collapse').show();
-          $('.filters__btn-reset--small').show();
-        });
       }); // end of .once()
     }
   };

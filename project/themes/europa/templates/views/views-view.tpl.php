@@ -45,10 +45,10 @@
   <?php endif; ?>
   <?php if (count($view->result) == 0) : ?>
     <div class="filters__result-count">
-      <p class="filters__empty"><?php echo t("No @content_type.",
-          array(
-            '@content_type' => $content_types
-          )); ?></p>
+      <span class="filters__items-number"><?php print t("No @content_type", array(
+          '@content_type' => $content_types,
+          )); ?>
+      </span>
     </div>
   <?php endif; ?>
   <?php if (isset($active_filters)): ?>

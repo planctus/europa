@@ -5827,11 +5827,11 @@ Styleguide forms.filters
   .filters__result-count .btn-group {
     float: right;
     margin-top: 0; }
+  .filters__result-count + .filters__active-facets {
+    margin-top: -0.5em; }
 
-.filters__empty {
-  font-weight: bold;
-  display: inline;
-  margin: 0; }
+.filters__active-facets {
+  padding: 0 0 1em; }
 
 .filters__btn-collapse {
   float: right; }
@@ -5856,10 +5856,10 @@ Styleguide forms.filters
   .filters__close:hover, .filters__close:active, .filters__close:focus {
     text-decoration: underline; }
 
-.filter__items-number, .filters__items-name {
+.filters__items-number, .filters__items-name {
   font-size: 2.222em; }
 
-.filter__items-number {
+.filters__items-number {
   display: block;
   margin-right: 0.333em;
   float: left;
@@ -6782,5 +6782,26 @@ Styleguide notification
   .notification__content p {
     max-width: none;
     margin: 0; }
+
+/*
+Facet tag
+
+Markup: html/facet-tag.html
+
+Styleguide forms.facettag
+*/
+.facet-tag {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em; }
+  .facet-tag > * {
+    display: inline-block; }
+
+.facet-tag__value {
+  background: #e2e2e2;
+  padding: 0 0.5em;
+  margin-left: 0.5em;
+  font-weight: bold;
+  border-radius: 0.9em; }
 
 /*# sourceMappingURL=style-sass.css.map */

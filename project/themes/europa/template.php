@@ -111,7 +111,7 @@ function europa_preprocess_views_view(&$vars) {
 
   // Checking if exposed filters are set and add variable that stores active
   // filters.
-  if (module_exists('exposed_filter_data') || module_exists('dt_exposed_filter_data')) {
+  if (module_exists('dt_exposed_filter_data')) {
     $vars['active_filters'] = get_exposed_filter_output();
   }
   $content_types = array();
