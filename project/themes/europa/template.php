@@ -120,10 +120,11 @@ function europa_preprocess_views_view(&$vars) {
     $content_type = $filter;
   }
 
+  kpr($vars);
   $vars['items_count'] = '';
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
-  if (in_array('listing', $vars['classes_array'])) {
+  if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
