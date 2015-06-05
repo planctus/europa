@@ -22,7 +22,7 @@
  * - $pager: The pager next/prev links to display, if any
  * - $exposed: Exposed widget form/info to display
  * - $feed_icon: Feed icon to display, if any
- * - $more: A link to view more, if any
+ * - $more: A link to view more, if any.
  *
  * @ingroup views_templates
  */
@@ -43,14 +43,14 @@
       <?php print $exposed; ?>
     </div>
   <?php endif; ?>
-  <?php if (count($view->result) == 0) : ?>
+  <?php if ($items_count): ?>
     <div class="filters__result-count">
-      <span class="filters__items-number"><?php print t("No @content_type", array(
-          '@content_type' => $content_types,
-          )); ?>
+      <span class="filters__items-number">
+          <?php print $items_count; ?>
       </span>
     </div>
   <?php endif; ?>
+
   <?php if (isset($active_filters)): ?>
     <?php print $active_filters; ?>
   <?php endif; ?>

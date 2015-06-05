@@ -114,12 +114,26 @@ function europa_preprocess_views_view(&$vars) {
   if (module_exists('dt_exposed_filter_data')) {
     $vars['active_filters'] = get_exposed_filter_output();
   }
-  $content_types = array();
+  $content_type = array();
   $content_type_filters = $view->filter['type']->value;
   foreach ($content_type_filters as $filter) {
-    $content_types = $filter;
+    $content_type = $filter;
   }
-  $vars['content_types'] = $content_types;
+
+  // Checking if .listing exists in classes_array so that result count can be
+  // displayed.
+  $vars['items_count'] = '';
+
+  if (in_array('listing', $vars['classes_array'])) {
+    if ($view->total_rows == 0) {
+      $items_count = t("No @content_types", array('@content_type' => $content_type));
+    }
+    else {
+      $items_count = $view->total_rows . ' ' . format_plural($view->total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
+    }
+
+    $vars['items_count'] = $items_count;
+  }
 }
 
 /**

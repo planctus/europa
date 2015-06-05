@@ -6799,7 +6799,7 @@ Styleguide forms.facettag
 
 .facet-tag__value {
   background: #e2e2e2;
-  padding: 0 0.5em;
+  padding: 0.1em 0.5em;
   margin-left: 0.5em;
   font-weight: bold;
   border-radius: 0.9em; }

@@ -60,7 +60,8 @@
               $filters
                 .removeClass('collapse')
                 .addClass('collapse in')
-                .attr('aria-expanded', true);
+                .attr('aria-expanded', true)
+                .removeAttr('style');
 
               // Hiding filter buttons
               hideMainFilterButtons();
