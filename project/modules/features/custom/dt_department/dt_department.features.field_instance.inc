@@ -760,75 +760,6 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_action_link'
-  $field_instances['node-department-field_department_action_link'] = array(
-    'bundle' => 'department',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 32,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 10,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_department_action_link',
-    'label' => 'Action link',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 28,
-    ),
-  );
-
   // Exported field_instance: 'node-department-field_department_intro_sentence'
   $field_instances['node-department-field_department_intro_sentence'] = array(
     'bundle' => 'department',
@@ -1124,6 +1055,74 @@ function dt_department_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'node-department-field_department_staff_search'
+  $field_instances['node-department-field_department_staff_search'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_department_staff_search',
+    'label' => 'Staff search link',
+    'required' => 1,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => '_blank',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'value',
+      'title_maxlength' => 128,
+      'title_value' => 'Staff Search Link',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 28,
     ),
   );
 
@@ -1682,7 +1681,6 @@ function dt_department_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Abbreviation');
-  t('Action link');
   t('Contact');
   t('Department name');
   t('Department type');
@@ -1705,6 +1703,7 @@ function dt_department_field_default_field_instances() {
   t('Related priorities');
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
+  t('Staff search link');
   t('Tasks description');
   t('Work areas sentence');
 

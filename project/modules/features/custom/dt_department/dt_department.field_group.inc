@@ -266,8 +266,8 @@ function dt_department_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_persons',
-      1 => 'field_department_action_link',
-      2 => 'field_department_organigram',
+      1 => 'field_department_organigram',
+      2 => 'field_department_staff_search',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
