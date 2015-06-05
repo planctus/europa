@@ -5,11 +5,26 @@
  */
 
 /**
+ * Helper function migrating department tasks.
+ */
+function _dt_department_migrate_department_tasks() {
+  // Import "Department tasks" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_department' => array('taxonomy')));
+  // Import department_tasks vocabulary's terms.
+  Migration::getInstance('DTDepartmentTasks')->processImport();
+}
+
+/**
  * Implements hook_install().
  */
 function dt_department_install() {
   // Apply default configuration to "Department" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+  // Migrating department tasks.
+  _dt_department_migrate_department_tasks();
 }
 
 /**
@@ -114,4 +129,11 @@ function dt_department_update_7106() {
 
   // Reverting feature.
   features_revert_module('dt_department');
+}
+
+/**
+ * Migrating deaprtment tasks.
+ */
+function dt_department_update_7107() {
+  _dt_department_migrate_department_tasks();
 }

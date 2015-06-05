@@ -104,7 +104,7 @@ function dt_department_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -338,7 +338,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -406,7 +406,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -475,7 +475,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -556,7 +556,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -825,7 +825,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
@@ -867,7 +867,7 @@ function dt_department_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_department_intro_sentence',
     'label' => 'Priorities introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -907,6 +907,74 @@ function dt_department_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'node-department-field_department_mission'
+  $field_instances['node-department-field_department_mission'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_department_mission',
+    'label' => 'Mission statement',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'value',
+      'title_maxlength' => 128,
+      'title_value' => 'Mission statement',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 24,
     ),
   );
 
@@ -1016,7 +1084,7 @@ function dt_department_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_department_plans_reports',
     'label' => 'Plans and reports',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -1055,75 +1123,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 26,
-    ),
-  );
-
-  // Exported field_instance: 'node-department-field_department_related_tasks'
-  $field_instances['node-department-field_department_related_tasks'] = array(
-    'bundle' => 'department',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 23,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 14,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_department_related_tasks',
-    'label' => 'Related tasks',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 27,
+      'weight' => 25,
     ),
   );
 
@@ -1175,7 +1175,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 2,
     ),
   );
 
@@ -1263,7 +1263,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 25,
+      'weight' => 23,
     ),
   );
 
@@ -1424,7 +1424,7 @@ function dt_department_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 11,
     ),
     'widget_type' => 'options_select',
   );
@@ -1497,7 +1497,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 24,
+      'weight' => 10,
     ),
   );
 
@@ -1690,19 +1690,19 @@ function dt_department_field_default_field_instances() {
   t('E.g. \'DG ENER\'');
   t('Group content visibility');
   t('Groups audience');
-  t('In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Introduction');
   t('Legacy link');
   t('Legacy links');
   t('Link');
   t('Main tasks');
+  t('Mission statement');
   t('Name');
   t('Organisation chart');
   t('Persons');
   t('Plans and reports');
+  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Priorities introduction');
   t('Related priorities');
-  t('Related tasks');
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
   t('Tasks description');
