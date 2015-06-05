@@ -215,8 +215,26 @@ function dt_core_update_7116() {
 }
 
 /**
- * DT Editor configurations.
+ * Revert updated feautres.
  */
 function dt_core_update_7117() {
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * DT Editor configurations.
+ */
+function dt_core_update_7118() {
   features_revert_module('dt_core');
 }
