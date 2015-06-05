@@ -18,9 +18,12 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of departments related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -70,7 +73,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -149,10 +152,9 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 14,
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -210,9 +212,12 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select the commissioner responsible for this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 6,
       ),
       'teaser' => array(
@@ -261,7 +266,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -306,9 +311,12 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of priorities related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -355,10 +363,9 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'custom_formatters',
         'settings' => array(),
-        'type' => 'custom_formatters_top_task_link',
-        'weight' => 15,
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -399,9 +406,12 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of other topics related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -450,7 +460,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -527,7 +537,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -604,7 +614,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -681,7 +691,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -733,7 +743,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 19,
       ),
       'full' => array(
         'label' => 'above',
@@ -800,7 +810,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 18,
       ),
       'full' => array(
         'label' => 'above',
@@ -877,7 +887,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',

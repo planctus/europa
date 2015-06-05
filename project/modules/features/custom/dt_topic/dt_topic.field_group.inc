@@ -101,6 +101,38 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_topic_contextual|node|topic|default';
+  $field_group->group_name = 'group_topic_contextual';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_priorities',
+      1 => 'field_core_topics',
+      2 => 'field_core_persons',
+      3 => 'field_core_department',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contextual navigation',
+      'instance_settings' => array(
+        'classes' => 'context-nav',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_topic_contextual|node|topic|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_details|node|topic|form';
   $field_group->group_name = 'group_topic_details';
   $field_group->entity_type = 'node';

@@ -46,25 +46,40 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'topic';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title',
-        1 => 'field_core_introduction',
-        2 => 'field_core_link',
-        3 => 'field_core_top_tasks',
+      'left_header' => array(
+        0 => 'group_topic_meta',
+        1 => 'title',
+        2 => 'field_core_introduction',
+        3 => 'content_type',
+      ),
+      'top' => array(
+        4 => 'group_topic_contextual',
+        5 => 'field_core_priorities',
+        6 => 'field_core_topics',
+        7 => 'field_core_persons',
+        8 => 'field_core_department',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_core_introduction' => 'ds_content',
-      'field_core_link' => 'ds_content',
-      'field_core_top_tasks' => 'ds_content',
+      'group_topic_meta' => 'left_header',
+      'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
+      'content_type' => 'left_header',
+      'group_topic_contextual' => 'top',
+      'field_core_priorities' => 'top',
+      'field_core_topics' => 'top',
+      'field_core_persons' => 'top',
+      'field_core_department' => 'top',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top' => 'div',
+      'central' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
