@@ -27,7 +27,6 @@
             $inPageBlockParent = $inPageBlock.parent(),
             inPageBlockHeight = $inPageBlock.height(),
             inPageBlockTop = $inPageBlock.offset().top,
-            inPageBlockParentTop = $inPageBlockParent.offset().top,
             $inPageList = $('.inpage-nav__list', $inPage),
             title = Drupal.settings.inpage_navigation.node_title;
 
@@ -37,6 +36,7 @@
           Drupal.behaviors.inpage_navigation.fixWidth($inPageBlock, $inPageBlockParent);
 
           inPageBlockTop = $inPageBlock.offset().top;
+          inPageBlockHeight = $inPageBlock.height();
 
           // Refresh scrollspy
           $('body').scrollspy('refresh');

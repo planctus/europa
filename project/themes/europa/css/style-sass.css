@@ -6207,7 +6207,8 @@ Styleguide inpagenav
     .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle {
       margin: 0;
       background-color: #023066;
-      border-color: #023066; }
+      border-color: #023066;
+      padding: 1em; }
       .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:hover, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus {
         text-decoration: none !important;
         color: #ffffff; }
@@ -6220,9 +6221,10 @@ Styleguide inpagenav
       transition: all 0.3s ease 0s;
       transform-origin: 50% 50%;
       color: #ffffff;
-      font-size: 0.889em;
-      margin: 5px;
+      margin: 5px 4px;
       font-size: 10px; }
+      .inpage-nav__navbar .inpage-nav__header .inpage-nav__icon-arrow:before {
+        margin-right: 0px; }
   .inpage-nav__navbar .inpage-nav__title {
     display: block;
     font-size: 19px;

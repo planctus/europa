@@ -72,7 +72,7 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
+    'description' => 'Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -347,6 +347,7 @@ function dt_person_field_default_field_instances() {
         'weight' => 2,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_photo',
     'label' => 'Portrait photo',
@@ -379,12 +380,10 @@ function dt_person_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'elibrary_browser_tab--media_browser_1' => 0,
-          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'upload' => 0,
+          'upload' => 'upload',
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 52,
@@ -862,6 +861,7 @@ function dt_person_field_default_field_instances() {
   t('Groups audience');
   t('Last Name');
   t('Legacy link');
+  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Plural form');
   t('Portrait photo');
   t('Role');
