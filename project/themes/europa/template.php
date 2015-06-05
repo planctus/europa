@@ -605,14 +605,17 @@ function europa_html_head_alter(&$head_elements) {
  */
 function _europa_field_component_listing($variables, $config) {
   $config += array(
-    'modifier' => FALSE,
+    'modifier' => 'default',
+    'wrapper_modifier' => '',
     'layout' => 'default',
     'listing_wrapper_element' => 'div',
     'item_wrapper_element' => 'div',
   );
 
-  $modifier_class = !$config['modifier'] ? '' : ' listing--' . $config['modifier'];
+  $modifier_class = ' ' . trim($config['modifier']);
   $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
+  $wrapper_class .= ' ' . trim($config['wrapper_modifier']);
+
   $columns_num = 1;
   if ($config['layout'] == 'two_columns') {
     $columns_num = 2;
@@ -677,21 +680,23 @@ function europa_field($variables) {
       $reference = array_shift($element[0]);
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
       $settings = array();
-      if (isset($variables['nexteuropa_ds_layouts_columns'])) {
-        $settings['layout'] = $variables['nexteuropa_ds_layouts_columns'];
-      }
+      $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
+      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
+
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
         // kpr($variables);
         switch ($first_node['#view_mode']) {
           case 'title':
-            $settings['modifier'] = 'title';
+            $settings['modifier'] . 'listing--title';
+            $settings['wrapper_modifier'] .= ' listing--title__wrapper';
             $settings['listing_wrapper_element'] = 'ul';
             $settings['item_wrapper_element'] = 'li';
             break;
 
           case 'teaser':
-            $settings['modifier'] = 'teaser';
+            $settings['modifier'] = 'listing--teaser';
+            $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
         return _europa_field_component_listing($variables, $settings);

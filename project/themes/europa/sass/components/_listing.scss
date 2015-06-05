@@ -131,6 +131,48 @@ ul.listing--teaser {
 
 }
 
+.listing__wrapper--hero {
+ .listing__title {
+   font-size: $font-size-h3 !important;
+   & + * {
+     font-size: inherit;
+   }
+ }
+}
+
+.listing__wrapper--highlight {
+  background-color: $grey-lighter;
+  padding: 60px 0 !important;
+}
+
+.listing__wrapper--cta {
+  a {
+    padding: 15px 30px;
+  }
+  .listing__item {
+    .listing__title,
+    a {
+      background-color: $brand-primary;
+      color: #ffffff;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      .listing__title {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.listing__wrapper--hero,
+.listing__wrapper--cta {
+  .listing__item {
+    border: none;
+  }
+}
 /*
 Listing layouts
 
@@ -140,33 +182,46 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+.listing__wrapper {
+  .listing__title {
+    font-size: $font-size-big;
+    & + * {
+      font-size: inherit;
+    }
+  }
+  padding: 30px 0;
+}
+.listing__wrapper--three_columns,
 .listing__wrapper--two_columns {
   @extend .row;
+}
+
+.listing__wrapper--two_columns {
   .listing {
     @extend .col-md-6;
   }
 }
 
 .listing__wrapper--three_columns {
-  @extend .row;
   .listing {
     @extend .col-md-4;
   }
 }
 
+.listing__wrapper--row_three,
 .listing__wrapper--row_two {
   .listing {
     @extend .row;
   }
+}
+
+.listing__wrapper--row_two {
   .listing__item {
     @extend .col-md-6;
   }
 }
 
 .listing__wrapper--row_three {
-  .listing {
-    @extend .row;
-  }
   .listing__item {
     @extend .col-md-4;
   }
