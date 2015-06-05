@@ -1,9 +1,12 @@
 <?php
+
 /**
  * @file
- * Basic template file
+ * Basic template file.
  */
+
 ?>
+
 <?php if (isset($exposed_filters)): ?>
   <div class="filters__active-facets">
     <?php foreach ($exposed_filters as $filter => $value): ?>

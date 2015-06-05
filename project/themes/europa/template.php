@@ -120,16 +120,18 @@ function europa_preprocess_views_view(&$vars) {
     $content_type = $filter;
   }
 
+  $vars['items_count'] = '';
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
-  $vars['items_count'] = '';
-
   if (in_array('listing', $vars['classes_array'])) {
-    if ($view->total_rows == 0) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+    if ($total_rows == 0) {
       $items_count = t("No @content_types", array('@content_type' => $content_type));
     }
     else {
-      $items_count = $view->total_rows . ' ' . format_plural($view->total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
+      $items_count = $total_rows . ' ' . format_plural($total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
     }
 
     $vars['items_count'] = $items_count;
@@ -194,6 +196,7 @@ function europa_preprocess_page(&$variables) {
       $node->local_tabs = drupal_render($variables['tabs']);
     }
   }
+
 
   // Set footer region column classes.
   if (!empty($variables['page']['footer_right'])) {
