@@ -6448,7 +6448,8 @@ Styleguide listing
   font-size: 1em;
   padding-top: 0.9em;
   padding-bottom: 0;
-  display: inline-block; }
+  display: inline-block;
+  border-bottom: 1px solid transparent; }
   .listing__title + * {
     font-size: 0.889em;
     padding-top: 0.7em; }

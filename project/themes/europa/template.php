@@ -120,7 +120,6 @@ function europa_preprocess_views_view(&$vars) {
     $content_type = $filter;
   }
 
-  kpr($vars);
   $vars['items_count'] = '';
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
