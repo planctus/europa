@@ -6389,14 +6389,30 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
-.listing__wrapper--hero .listing__title {
-  font-size: 1.556em !important; }
-  .listing__wrapper--hero .listing__title + * {
-    font-size: inherit; }
+.listing__wrapper--hero {
+  margin: 15px 0px !important; }
+  .listing__wrapper--hero .listing__title {
+    font-size: 1.556em !important;
+    padding-top: 0.2em;
+    padding-bottom: 0.4em; }
+    .listing__wrapper--hero .listing__title + * {
+      font-size: inherit; }
 
 .listing__wrapper--highlight {
   background-color: #ececec;
-  padding: 60px 0 !important; }
+  padding: 60px 0 !important;
+  margin-bottom: 30px; }
+  .listing__wrapper--highlight .listing__wrapper {
+    margin-bottom: 0px; }
+  .listing__wrapper--highlight .listing--footer {
+    margin: 15px 0px 0px; }
+    .listing__wrapper--highlight .listing--footer p {
+      margin: 0;
+      max-width: 100%;
+      text-align: right;
+      line-height: 1; }
+    .listing__wrapper--highlight .listing--footer .btn, .listing__wrapper--highlight .listing--footer .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .listing__wrapper--highlight .listing--footer .inpage-nav__toggle {
+      margin: 0px; }
 
 .listing__wrapper--cta a {
   padding: 15px 30px; }
@@ -6420,11 +6436,18 @@ Markup: html/listing--teaser.html
 Styleguide listing.teaser
 */
 .listing__wrapper {
-  padding: 30px 0; }
+  margin-bottom: 30px; }
+  .listing__wrapper .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em; }
   .listing__wrapper .listing__title {
-    font-size: 1.333em; }
+    font-size: 1.333em;
+    padding: 0.2em 0 0.4em 0; }
     .listing__wrapper .listing__title + * {
       font-size: inherit; }
+  .listing__wrapper p {
+    margin: 0;
+    padding: 0; }
 
 .logo {
   display: block;

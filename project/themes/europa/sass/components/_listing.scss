@@ -134,15 +134,35 @@ ul.listing--teaser {
 .listing__wrapper--hero {
  .listing__title {
    font-size: $font-size-h3 !important;
+   padding-top: 0.2em;
+   padding-bottom: 0.4em;
    & + * {
      font-size: inherit;
    }
  }
+ margin: 15px 0px !important;
 }
 
 .listing__wrapper--highlight {
   background-color: $grey-lighter;
   padding: 60px 0 !important;
+  margin-bottom: 30px;
+  .listing__wrapper {
+    margin-bottom: 0px;
+  }
+
+  .listing--footer {
+    margin: 15px 0px 0px;
+    p {
+      margin:0;
+      max-width: 100%;
+      text-align: right;
+      line-height: 1;
+    }
+    .btn {
+      margin: 0px;
+    }
+  }
 }
 
 .listing__wrapper--cta {
@@ -183,13 +203,23 @@ Markup: html/listing--teaser.html
 Styleguide listing.teaser
 */
 .listing__wrapper {
+  .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em;
+  }
   .listing__title {
     font-size: $font-size-big;
     & + * {
       font-size: inherit;
     }
+    padding: 0.2em 0 0.4em 0;
   }
-  padding: 30px 0;
+  // padding: 30px 0;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  margin-bottom: 30px;
 }
 .listing__wrapper--three_columns,
 .listing__wrapper--two_columns {
