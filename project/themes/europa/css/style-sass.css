@@ -4897,6 +4897,9 @@ Styleguide buttons
     .btn.btn-ctn:focus, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:focus {
       border-color: #404040;
       outline-color: #404040; }
+    .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after {
+      margin-left: 10px;
+      font-size: 0.8em; }
 
 /*
 Button block
@@ -5927,6 +5930,14 @@ Markup: html/icon.html
 .icon--arrow-up - Arrow up icon
 .icon--arrow-down - Arrow down icon
 .icon--spinner - Spinner icon
+.icon--search - Search icon
+.icon--language - Language icon
+.icon--facebook - Facebook icon
+.icon--twitter - Twitter icon
+.icon--up - Up icon
+.icon--right - Right icon
+.icon--down - Down icon
+.icon--left - Left icon
 
 Styleguide: icon
 */
@@ -5948,7 +5959,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, a[href^="http"]:after, a[href^="https"]:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, a[href^="http"]:after, a[href^="https"]:after, .listing__wrapper--cta .listing__title:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -5962,28 +5973,40 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
-  content: '\e601'; }
+  content: '\e604'; }
 
 .icon--arrow-up:before {
-  content: '\e607'; }
+  content: '\e60A'; }
 
 .icon--arrow-down:before {
-  content: '\e606'; }
+  content: '\e609'; }
 
 .icon--spinner:before {
   content: '\e984'; }
 
 .icon--facebook:before {
-  content: '\e603'; }
+  content: '\e606'; }
 
 .icon--twitter:before {
-  content: '\e602'; }
+  content: '\e605'; }
 
 .icon--language:before {
-  content: '\e604'; }
+  content: '\e607'; }
 
 .icon--search:before, .search-form__btn:before {
-  content: '\e605'; }
+  content: '\e608'; }
+
+.icon--up:before {
+  content: '\e602'; }
+
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .icon--right:before, .listing__wrapper--cta .listing__title:after {
+  content: '\e601'; }
+
+.icon--down:before {
+  content: '\e600'; }
+
+.icon--left:before {
+  content: '\e603'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
@@ -6422,6 +6445,9 @@ Styleguide listing.teaser
 .listing__wrapper--cta .listing__item:hover .listing__title, .listing__wrapper--cta .listing__item:active .listing__title, .listing__wrapper--cta .listing__item:focus .listing__title {
   color: #ffffff;
   text-decoration: underline; }
+.listing__wrapper--cta .listing__title:after {
+  margin-left: 10px;
+  font-size: 0.8em; }
 
 .listing__wrapper--hero .listing__item, .listing__wrapper--cta .listing__item {
   border: none; }
@@ -6611,6 +6637,8 @@ Styleguide page-header
     color: #fff;
     font-size: 30px;
     line-height: 1.5; }
+    .page-header--featured p, .front .page-header p {
+      margin: 0; }
 
 .skip-link, #skip-link {
   position: fixed;

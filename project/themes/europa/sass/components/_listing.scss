@@ -185,6 +185,14 @@ ul.listing--teaser {
       }
     }
   }
+  .listing__title {
+    &:after {
+      margin-left: 10px;
+      font-size: 0.8em;
+      @extend .icon--after;
+      @extend .icon--right;
+    }
+  }
 }
 
 .listing__wrapper--hero,
