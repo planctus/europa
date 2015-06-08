@@ -27,26 +27,31 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row">
-      <section class="col-lg-12 <?php print $top_classes; ?>">
-        <?php if (!empty($messages)): ?>
-          <?php print $messages; ?>
-        <?php endif; ?>
-        
-        <?php print $top; ?>
-      </section>
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <section class="col-md-12 <?php print $top_classes; ?>">
+          <?php if (!empty($local_tabs)): ?>
+            <?php print $local_tabs; ?>
+          <?php endif; ?>
+          <?php if (!empty($messages)): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
 
-      <a id="main-content" tabindex="-1"></a>
-      <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
-        <?php print $left; ?>
-      </<?php print $left_wrapper; ?>>
-      <section class="col-lg-6 <?php print $central_classes; ?>">
-        <?php print $central; ?>
-      </section>
-      <<?php print $right_wrapper; ?> class="col-lg-3 <?php print $right_classes; ?>">
-        <?php print $right; ?>
-      </<?php print $right_wrapper; ?>>
+          <?php print $top; ?>
+        </section>
+
+        <a id="main-content" tabindex="-1"></a>
+        <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
+          <?php print $left; ?>
+        </<?php print $left_wrapper; ?>>
+        <section class="col-md-6 <?php print $central_classes; ?>">
+          <?php print $central; ?>
+        </section>
+        <<?php print $right_wrapper; ?> class="col-lg-3 <?php print $right_classes; ?>">
+          <?php print $right; ?>
+        </<?php print $right_wrapper; ?>>
+      </div>
     </div>
   </div>
 </<?php print $layout_wrapper ?>>

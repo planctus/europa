@@ -27,20 +27,25 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row">
-      <section class="col-lg-12 <?php print $top_classes; ?>">
-        <?php if (!empty($messages)): ?>
-          <?php print $messages; ?>
-        <?php endif; ?>
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <section class="col-md-12 <?php print $top_classes; ?>">
+          <?php if (!empty($local_tabs)): ?>
+            <?php print $local_tabs; ?>
+          <?php endif; ?>
+          <?php if (!empty($messages)): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
 
-        <?php print $top; ?>
-      </section>
+          <?php print $top; ?>
+        </section>
 
-      <a id="main-content" tabindex="-1"></a>
-      <section class="col-lg-12 <?php print $central_classes; ?>">
-        <?php print $central; ?>
-      </section>
+        <a id="main-content" tabindex="-1"></a>
+        <section class="col-md-12 <?php print $central_classes; ?>">
+          <?php print $central; ?>
+        </section>
+      </div>
     </div>
   </div>
 </<?php print $layout_wrapper ?>>

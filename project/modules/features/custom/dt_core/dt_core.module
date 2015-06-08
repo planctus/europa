@@ -20,7 +20,7 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
       foreach ($types as $machine_name) {
         $type = node_type_get_type($machine_name);
         $current_separator = $types_count > 1 && $i == $types_count - 2 ? ' ' . t('or') : $separator;
-        $links .= l($type->name, 'node/add/' . $machine_name, array('attributes' => array('target' => '_blank'))) . $current_separator . ' ';
+        $links .= l($type->name, 'node/add/' . str_replace('_', '-', $machine_name), array('attributes' => array('target' => '_blank'))) . $current_separator . ' ';
         $i++;
       }
       $links = rtrim($links, $separator . ' ');
@@ -32,5 +32,69 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
         $element['#description'] = $description . $element['#description'];
       }
     }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function dt_core_block_info() {
+  $blocks['dt_block_copyright'] = array(
+    'info' => t('Copyright paragraph'),
+  );
+
+  $blocks['dt_block_footer_site_switcher'] = array(
+    'info' => t('Footer Site switcher'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function dt_core_block_view($delta = '') {
+  switch ($delta) {
+    case 'dt_block_copyright':
+    case 'dt_block_footer_site_switcher':
+      $block['content'] = dt_core_get_blocks_content($delta);
+      break;
+  }
+  return $block;
+}
+
+/**
+ * A module-defined block content function.
+ */
+function dt_core_get_blocks_content($delta) {
+  switch ($delta) {
+    case 'dt_block_copyright':
+      $license_link = l(t('EC license name'), '#');
+      $result = array(
+        '#markup' =>
+          "<div class='footer__disclaimer'><span>" .
+              t('© European Commission copyright.') .
+            "</span><span>"
+              . t('All content available under') . ' ' . $license_link .
+            "</span></div>"
+      );
+      return $result;
+
+    case 'dt_block_footer_site_switcher':
+      $result = array(
+        '#markup' => l(
+          t('<span>The European Commission </span><span>and its priorities</span>'),
+          t('http://ec.europa.eu/index_en.htm'),
+          array(
+            'attributes' => array(
+              'class' => array(
+                'site-switcher', 'footer__site-switcher',
+              ),
+            ),
+            'html' => TRUE,
+          )
+        ),
+      );
+      return $result;
   }
 }

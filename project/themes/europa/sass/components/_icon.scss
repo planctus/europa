@@ -1,9 +1,22 @@
 /*
 Icon
 
+Icons using europa icons font
+
 Markup: html/icon.html
 
 .icon--external - External link icon
+.icon--arrow-up - Arrow up icon
+.icon--arrow-down - Arrow down icon
+.icon--spinner - Spinner icon
+.icon--search - Search icon
+.icon--language - Language icon
+.icon--facebook - Facebook icon
+.icon--twitter - Twitter icon
+.icon--up - Up icon
+.icon--right - Right icon
+.icon--down - Down icon
+.icon--left - Left icon
 
 Styleguide: icon
 */
@@ -18,6 +31,26 @@ Styleguide: icon
 }
 
 .icon {
+  &:before {
+    display: inline-block;
+    font-family: 'EuropaIcons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-right: 4px;
+    line-height: 1;
+
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Should be used only with @extend
+.icon--after {
+  display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
   font-style: normal;
@@ -34,21 +67,83 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e601';
+  content: '\e604';
 }
-.icon--external:before {
-  @extend .icon--external;
+.icon--external {
+  &:before {
+    @extend .icon--external;
+  }
+}
+
+.icon--arrow-up {
+  &:before {
+    content: '\e60A';
+  }
+}
+
+.icon--arrow-down {
+  &:before {
+    content: '\e609';
+  }
 }
 
 .icon--spinner {
-  content: '\e984';
+  &:before {
+    content: '\e984';
+  }
 }
-.icon--spinner:before {
-  @extend .icon--spinner;
+
+.icon--facebook {
+  &:before {
+    content: '\e606';
+  }
+}
+
+.icon--twitter {
+  &:before {
+    content: '\e605';
+  }
+}
+
+.icon--language {
+  &:before {
+    content: '\e607';
+  }
+}
+
+.icon--search {
+  &:before {
+    content: '\e608';
+  }
+}
+
+.icon--up {
+  &:before {
+    content: '\e602';
+  }
+}
+
+.icon--right {
+  &:before {
+    content: '\e601';
+  }
+}
+
+.icon--down {
+  &:before {
+    content: '\e600';
+  }
+}
+
+.icon--left {
+  &:before {
+    content: '\e603';
+  }
 }
 
 // States
-// creating spinning animation for icon
+// creating spinning animation for an icon
+// in order to enable spinning apend .is-spinning class next to the .icon class
 .is-spinning:before {
   @include animation(icon-spin-right 2s infinite linear);
 }

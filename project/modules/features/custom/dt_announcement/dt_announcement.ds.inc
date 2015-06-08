@@ -34,11 +34,15 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'related_announcements' => array(
       'weight' => '8',
-      'label' => 'hidden',
+      'label' => 'above',
       'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'lb' => 'Related news',
+          'lb-el' => 'h2',
+          'lb-at' => 'id="related"',
+          'lb-col' => TRUE,
           'ow' => TRUE,
           'ow-el' => 'div',
           'ow-cl' => 'field--full-width',

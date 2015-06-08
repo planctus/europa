@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * The dt_toplink install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_toplink_install() {
+  // Apply default dt configuration to "Top link" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('toplink');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_toplink_uninstall() {
+  $path = drupal_get_path('module', 'toplink') . '/dt_toplink.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Top link %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}

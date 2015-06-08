@@ -22,6 +22,8 @@ function dt_core_install() {
     'dt_class',
     'dt_contact',
     'dt_publication',
+    'dt_policy',
+    'dt_topic',
     'nexteuropa_file',
   );
   module_enable($features);
@@ -161,4 +163,71 @@ function dt_core_update_7113() {
     'dt_date_format',
   );
   module_enable($modules);
+}
+
+/**
+ * Enabling 'topic' and 'toplink' content types.
+ */
+function dt_core_update_7114() {
+  // The features to enable.
+  $features = array(
+    'dt_topic',
+    'dt_toplink',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Revering menu_links, menu_custom and context in dt_core.
+ */
+function dt_core_update_7115() {
+  features_revert(array(
+    'dt_core' => array('menu_links', 'menu_custom', 'context'),
+  ));
+}
+
+/**
+ * Enabling Legacy link module.
+ */
+function dt_core_update_7116() {
+  $modules = array(
+    'nexteuropa_legacy_link',
+  );
+  module_enable($modules);
+
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Revert updated feautres.
+ */
+function dt_core_update_7117() {
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
 }
