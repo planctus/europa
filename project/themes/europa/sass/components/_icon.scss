@@ -6,6 +6,17 @@ Icons using europa icons font
 Markup: html/icon.html
 
 .icon--external - External link icon
+.icon--arrow-up - Arrow up icon
+.icon--arrow-down - Arrow down icon
+.icon--spinner - Spinner icon
+.icon--search - Search icon
+.icon--language - Language icon
+.icon--facebook - Facebook icon
+.icon--twitter - Twitter icon
+.icon--up - Up icon
+.icon--right - Right icon
+.icon--down - Down icon
+.icon--left - Left icon
 
 Styleguide: icon
 */
@@ -56,11 +67,23 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e601';
+  content: '\e604';
 }
 .icon--external {
   &:before {
     @extend .icon--external;
+  }
+}
+
+.icon--arrow-up {
+  &:before {
+    content: '\e60A';
+  }
+}
+
+.icon--arrow-down {
+  &:before {
+    content: '\e609';
   }
 }
 
@@ -72,25 +95,49 @@ Styleguide: icon
 
 .icon--facebook {
   &:before {
-    content: '\e603';
+    content: '\e606';
   }
 }
 
 .icon--twitter {
   &:before {
-    content: '\e602';
+    content: '\e605';
   }
 }
 
 .icon--language {
   &:before {
-    content: '\e604';
+    content: '\e607';
   }
 }
 
 .icon--search {
   &:before {
-    content: '\e605';
+    content: '\e608';
+  }
+}
+
+.icon--up {
+  &:before {
+    content: '\e602';
+  }
+}
+
+.icon--right {
+  &:before {
+    content: '\e601';
+  }
+}
+
+.icon--down {
+  &:before {
+    content: '\e600';
+  }
+}
+
+.icon--left {
+  &:before {
+    content: '\e603';
   }
 }
 

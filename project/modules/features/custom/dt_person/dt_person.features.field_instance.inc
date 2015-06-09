@@ -67,6 +67,61 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_core_legacy_link'
+  $field_instances['node-person-field_core_legacy_link'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_legacy_link',
+    'label' => 'Legacy link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 55,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_person_first_name'
   $field_instances['node-person-field_person_first_name'] = array(
     'bundle' => 'person',
@@ -301,6 +356,7 @@ function dt_person_field_default_field_instances() {
         'weight' => 2,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_person_photo',
     'label' => 'Portrait photo',
@@ -333,12 +389,10 @@ function dt_person_field_default_field_instances() {
           'video' => 0,
         ),
         'browser_plugins' => array(
-          'elibrary_browser_tab--media_browser_1' => 0,
-          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'upload' => 0,
+          'upload' => 'upload',
         ),
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 52,
@@ -815,6 +869,8 @@ function dt_person_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Last Name');
+  t('Legacy link');
+  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Plural form');
   t('Portrait photo');
   t('Role');

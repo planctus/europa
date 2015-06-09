@@ -23,6 +23,7 @@ function dt_core_install() {
     'dt_contact',
     'dt_publication',
     'dt_policy',
+    'dt_topic',
     'nexteuropa_file',
   );
   module_enable($features);
@@ -199,6 +200,24 @@ function dt_core_update_7116() {
   );
   module_enable($modules);
 
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Revert updated feautres.
+ */
+function dt_core_update_7117() {
   // The features to enable.
   $features = array(
     'dt_department',

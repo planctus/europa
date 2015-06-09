@@ -137,7 +137,9 @@
 
 
       <div class="kss-description">
-        <p>Floating menu containing links to headings in a long page.</p>
+        <p>Floating menu containing links to headings in a long page.
+Styleguide implementation is not complete. TODO: Refactor Drupal js to be
+technology agnostic.</p>
 
       </div>
     </div>
@@ -147,7 +149,7 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <script src="public/js/components/inpagenav/inpage_nav.js"></script>
+          <script src="../../../../../project/modules/custom/nexteuropa_inpage_nav/js/inpage_nav.js"></script>
 <div class="row">
     <div class="col-sm-8 main">
         <section id="heading-1">
@@ -167,38 +169,26 @@
         </section>
     </div>
     <div class="col-sm-3 col-sm-offset-1">
-        <section>
-            <h2>Page Contents</h2>
-            <div class="inpage-nav">
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".inpage-navigation--list" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <p class="navigation-place">Page contents</p>
-                        </div>
-                        <div class="inpage-nav--list navbar-collapse collapse">
-                            <ul class="nav nav-stacked">
-                                <li><a href="#heading-1">Headings 1</a></li>
-                                <li><a href="#heading-2">Headings 2</a></li>
-                                <li><a href="#heading-3">Headings 3</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </section>
+      <section class="inpage-nav__wrapper">
+        <h3 class="inpage-nav__block-title">Page Contents</h3>
+        <div>
+          <div class="inpage-nav">
+            <ul class="inpage-nav__list">
+              <li class="first"><a href="#heading-1" class="inpage_nav__list__item">Heading 1</a></li>
+              <li><a href="#heading-2" class="inpage_nav__list__item">Heading 2</a></li>
+              <li class="last"><a href="#heading-3" class="inpage_nav__list__item">Heading 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
 </div>
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;script src=&quot;public/js/components/inpagenav/inpage_nav.js&quot;&gt;&lt;/script&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;script src=&quot;../../../../../project/modules/custom/nexteuropa_inpage_nav/js/inpage_nav.js&quot;&gt;&lt;/script&gt;
 &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col-sm-8 main&quot;&gt;
         &lt;section id=&quot;heading-1&quot;&gt;
@@ -218,33 +208,21 @@
         &lt;/section&gt;
     &lt;/div&gt;
     &lt;div class=&quot;col-sm-3 col-sm-offset-1&quot;&gt;
-        &lt;section&gt;
-            &lt;h2&gt;Page Contents&lt;/h2&gt;
-            &lt;div class=&quot;inpage-nav&quot;&gt;
-                &lt;nav class=&quot;navbar navbar-default navbar-fixed-top&quot;&gt;
-                    &lt;div class=&quot;container&quot;&gt;
-                        &lt;div class=&quot;navbar-header&quot;&gt;
-                            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.inpage-navigation--list&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
-                                &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
-                                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-                                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-                                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-                            &lt;/button&gt;
-                            &lt;p class=&quot;navigation-place&quot;&gt;Page contents&lt;/p&gt;
-                        &lt;/div&gt;
-                        &lt;div class=&quot;inpage-nav--list navbar-collapse collapse&quot;&gt;
-                            &lt;ul class=&quot;nav nav-stacked&quot;&gt;
-                                &lt;li&gt;&lt;a href=&quot;#heading-1&quot;&gt;Headings 1&lt;/a&gt;&lt;/li&gt;
-                                &lt;li&gt;&lt;a href=&quot;#heading-2&quot;&gt;Headings 2&lt;/a&gt;&lt;/li&gt;
-                                &lt;li&gt;&lt;a href=&quot;#heading-3&quot;&gt;Headings 3&lt;/a&gt;&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/nav&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
+      &lt;section class=&quot;inpage-nav__wrapper&quot;&gt;
+        &lt;h3 class=&quot;inpage-nav__block-title&quot;&gt;Page Contents&lt;/h3&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;inpage-nav&quot;&gt;
+            &lt;ul class=&quot;inpage-nav__list&quot;&gt;
+              &lt;li class=&quot;first&quot;&gt;&lt;a href=&quot;#heading-1&quot; class=&quot;inpage_nav__list__item&quot;&gt;Heading 1&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#heading-2&quot; class=&quot;inpage_nav__list__item&quot;&gt;Heading 2&lt;/a&gt;&lt;/li&gt;
+              &lt;li class=&quot;last&quot;&gt;&lt;a href=&quot;#heading-3&quot; class=&quot;inpage_nav__list__item&quot;&gt;Heading 3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
     &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
       </div>
 
       </div>
