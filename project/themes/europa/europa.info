@@ -68,3 +68,16 @@ settings[bootstrap_breadcrumb_title] = 1
 ; Advanced
 ; --------------
 settings[bootstrap_cdn] = ""
+
+; Breakpoints
+; --------------
+breakpoints[wide] = only screen and (min-width: 992px)
+breakpoints[normal] = (min-width: 768px)
+breakpoints[medium] = (min-width: 480px)
+breakpoints[narrow] = (min-width: 320px)
+breakpoints[mobile] = (min-width: 0px)
+multipliers[wide][] = 2x
+multipliers[normal][] = 2x
+multipliers[medium][] = 2x
+multipliers[narrow][] = 2x
+multipliers[mobile][] = 2x
