@@ -26,12 +26,16 @@ foreach ($variables[\'#items\'] as $delta => $item) {
  $link = field_view_value(\'taxonomy_term\', $term, \'field_core_top_task_link\', $link_field[0]);
  if(!empty($link[\'#element\'][\'url\'])) {
    $element[$delta] = array(
+     \'#prefix\' => "<span class=\'btn btn-default btn-block\'>",
+     \'#suffix\' => \'</span>\',
      \'#type\' => \'link\',
      \'#title\' => $term->name,
      \'#href\' => $link[\'#element\'][\'url\'],
    );
  } else {
    $element[$delta] = array(
+     \'#prefix\' => "<span class=\'btn btn-default btn-block\'>",
+     \'#suffix\' => \'</span>\',
      \'#markup\' => $term->name,
    );
  }
