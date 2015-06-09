@@ -2,12 +2,14 @@
   Drupal.behaviors.europaComponents_filters = {
 
     attach: function (context, settings) {
-      var $filters       = $('.filters'),
-          $filtersSubmit = $('.filters__btn-submit', $filters);
-          refineText     = Drupal.t('Refine'),
-          hideText       = Drupal.t('Hide'),
-          clearAll       = Drupal.t('Clear all'),
-          $resultsCount  = $('.filters__result-count');
+      var $filters        = $('.filters'),
+          $filtersSubmit  = $('.filters__btn-submit', $filters),
+          filtersFormId   = $filters.find('form').attr('id');
+          refineText      = Drupal.t('Refine'),
+          hideText        = Drupal.t('Hide'),
+          clearAll        = Drupal.t('Clear all'),
+          $resultsCount   = $('.filters__result-count'),
+          $itemsNumber    = $('.filters__items-number');
 
       // Function for hiding Submit and Reset buttons
       var hideMainFilterButtons = function() {
@@ -45,7 +47,17 @@
       });
 
       // Runs only once.
+      // Add throbber next to content type and items count text
       $filters.once('filters', function() {
+        throbber = '<div class="ajax-progress ajax-progress-throbber"><i class="icon icon--spinner is-spinning"></i></div>';
+        $(document)
+          .ajaxStart(function(e) {
+            if (typeof e.currentTarget.activeElement.form != 'undefined' && e.currentTarget.activeElement.form.id === filtersFormId) {
+              $itemsNumber
+                .prepend(throbber);
+            }
+          });
+
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
           enquire.register('screen and (min-width: 768px)', {
