@@ -231,3 +231,10 @@ function dt_core_update_7117() {
     features_revert_module($feature);
   }
 }
+
+/**
+ * DT Editor configurations.
+ */
+function dt_core_update_7118() {
+  features_revert_module('dt_core');
+}
