@@ -182,10 +182,8 @@ function europa_preprocess_page(&$variables) {
   $node = &$variables['node'];
   $variables['ds_node'] = FALSE;
 
-  // Nodes excluded that are not using DS.
-  $node_type_list = array('class');
-
-  if (isset($node) && !in_array($node->type, $node_type_list)) {
+  // Check if Display Suite is handling node.
+  if (isset($node) && ds_get_layout('node', $node->type, 'full')) {
     // This disables message-printing on ALL page displays.
     $variables['show_messages'] = FALSE;
 

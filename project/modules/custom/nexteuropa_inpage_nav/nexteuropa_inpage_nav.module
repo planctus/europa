@@ -67,7 +67,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
 
         // If group, check if group label has id attribute to be used as anchor.
         if (preg_match('/group*/', $element) && $group = field_group_load_field_group($element, 'node', $node->type, 'full')) {
-          if ($group_anchor = _nexteuropa_inpage_nav_group_anchor($group)) {
+          if ($group_anchor = _nexteuropa_inpage_nav_group_anchor($group, $node)) {
             $items[$element]['weight'] = $group->weight;
             $items[$element]['children'] = $group->children;
             $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list__item">' . $group_anchor['label'] . '</a>';
@@ -121,8 +121,19 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
 /**
  * Verifies if a field_group is subject of inpage navigation.
  */
-function _nexteuropa_inpage_nav_group_anchor($group) {
+function _nexteuropa_inpage_nav_group_anchor($group, $node) {
+  // Check if group is not empty.
+  $empty = TRUE;
+  foreach ($group->children as $field) {
+    if (!empty($node->{$field})) {
+      $empty = FALSE;
+      break;
+    }
+  }
+
+  // Check if label is subject of inpage nav.
   if (
+    !$empty &&
     $group->format_settings['instance_settings']['show_label'] &&
     $group->format_settings['instance_settings']['label_element'] == NEXTEUROPA_INPAGE_NAV_DEPTH &&
     $id = _nexteuropa_inpage_nav_get_id($group->format_settings['instance_settings']['attributes'])
@@ -133,6 +144,7 @@ function _nexteuropa_inpage_nav_group_anchor($group) {
       'label' => isset($group->format_settings['instance_settings']['label']) ? $group->format_settings['instance_settings']['label'] : $group->label,
     );
   }
+
   return FALSE;
 }
 

@@ -6027,6 +6027,14 @@ Markup: html/icon.html
 .icon--arrow-up - Arrow up icon
 .icon--arrow-down - Arrow down icon
 .icon--spinner - Spinner icon
+.icon--search - Search icon
+.icon--language - Language icon
+.icon--facebook - Facebook icon
+.icon--twitter - Twitter icon
+.icon--up - Up icon
+.icon--right - Right icon
+.icon--down - Down icon
+.icon--left - Left icon
 
 Styleguide: icon
 */
@@ -6062,28 +6070,40 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
-  content: '\e601'; }
+  content: '\e604'; }
 
 .icon--arrow-up:before {
-  content: '\e607'; }
+  content: '\e60A'; }
 
 .icon--arrow-down:before {
-  content: '\e606'; }
+  content: '\e609'; }
 
 .icon--spinner:before {
   content: '\e984'; }
 
 .icon--facebook:before {
-  content: '\e603'; }
+  content: '\e606'; }
 
 .icon--twitter:before {
-  content: '\e602'; }
+  content: '\e605'; }
 
 .icon--language:before {
-  content: '\e604'; }
+  content: '\e607'; }
 
 .icon--search:before, .search-form__btn:before {
-  content: '\e605'; }
+  content: '\e608'; }
+
+.icon--up:before {
+  content: '\e602'; }
+
+.icon--right:before {
+  content: '\e601'; }
+
+.icon--down:before {
+  content: '\e600'; }
+
+.icon--left:before {
+  content: '\e603'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
@@ -6307,7 +6327,8 @@ Styleguide inpagenav
     .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle {
       margin: 0;
       background-color: #023066;
-      border-color: #023066; }
+      border-color: #023066;
+      padding: 1em; }
       .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:hover, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus {
         text-decoration: none !important;
         color: #ffffff; }
@@ -6320,9 +6341,10 @@ Styleguide inpagenav
       transition: all 0.3s ease 0s;
       transform-origin: 50% 50%;
       color: #ffffff;
-      font-size: 0.889em;
-      margin: 5px;
+      margin: 5px 4px;
       font-size: 10px; }
+      .inpage-nav__navbar .inpage-nav__header .inpage-nav__icon-arrow:before {
+        margin-right: 0px; }
   .inpage-nav__navbar .inpage-nav__title {
     display: block;
     font-size: 19px;

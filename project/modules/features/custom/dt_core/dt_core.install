@@ -23,6 +23,7 @@ function dt_core_install() {
     'dt_contact',
     'dt_publication',
     'dt_policy',
+    'dt_topic',
     'nexteuropa_file',
   );
   module_enable($features);
@@ -214,9 +215,27 @@ function dt_core_update_7116() {
 }
 
 /**
- * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ * Revert updated feautres.
  */
 function dt_core_update_7117() {
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ */
+function dt_core_update_7118() {
   $modules = array(
     'dt_exposed_filter_data',
   );
@@ -227,8 +246,4 @@ function dt_core_update_7117() {
     'dt_announcement',
     'dt_department',
   );
-  // Reverting the features.
-  foreach ($features as $feature) {
-    features_revert_module($feature);
-  }
 }
