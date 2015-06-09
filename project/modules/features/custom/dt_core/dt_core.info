@@ -10,6 +10,7 @@ dependencies[] = ds
 dependencies[] = ds_extras
 dependencies[] = dt_date_format
 ; dependencies[] = dt_topic
+dependencies[] = dt_exposed_filter_data
 dependencies[] = entityreference
 dependencies[] = inline_entity_form
 dependencies[] = language_selector_site
