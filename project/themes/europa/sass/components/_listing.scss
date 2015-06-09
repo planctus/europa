@@ -79,6 +79,13 @@ $padding-bottom-listing__title: 0.7em;
   padding-left: 0 !important;
 }
 
+@include breakpoint(screen-xs-min) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0;
+  }
+}
 
 /*
 Listing title
@@ -117,17 +124,26 @@ ul.listing--title {
   }
 }
 
-@include breakpoint(screen-xs-min) {
-  .listing__column-second {
-    width: 25%;
-    padding-left: 15px;
-    margin: 0;
+/*
+Listing column left
 
-    .listing--column-left & {
-      float: left;
-      padding-right: 15px;
-      padding-left: 0;
-      width: auto;
-    }
+Listing components
+
+Markup: html/listing--column-left.html
+
+Styleguide listing.column-left
+*/
+.listing--column-left {
+  .listing__column-main {
+    width: auto;
+    overflow: hidden;
+    float: none;
+  }
+
+  .listing__column-second {
+    width: auto;
+    float: left;
+    padding-right: 15px;
+    padding-left: 0;
   }
 }

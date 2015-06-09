@@ -6377,6 +6377,13 @@ Styleguide listing
 .listing--no-padding {
   padding-left: 0 !important; }
 
+@media (min-width: 480px) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0; }
+ }
+
 /*
 Listing title
 
@@ -6399,17 +6406,24 @@ Styleguide listing.title
     padding-bottom: 0.7em;
     padding-right: 2em; }
 
-@media (min-width: 480px) {
-  .listing__column-second {
-    width: 25%;
-    padding-left: 15px;
-    margin: 0; }
-    .listing--column-left .listing__column-second {
-      float: left;
-      padding-right: 15px;
-      padding-left: 0;
-      width: auto; }
- }
+/*
+Listing column left
+
+Listing components
+
+Markup: html/listing--column-left.html
+
+Styleguide listing.column-left
+*/
+.listing--column-left .listing__column-main {
+  width: auto;
+  overflow: hidden;
+  float: none; }
+.listing--column-left .listing__column-second {
+  width: auto;
+  float: left;
+  padding-right: 15px;
+  padding-left: 0; }
 
 .logo {
   display: block;
