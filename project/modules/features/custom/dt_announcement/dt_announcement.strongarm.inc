@@ -148,9 +148,8 @@ function dt_announcement_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_announcement';
   $strongarm->value = array(
-    0 => 'promote',
-    1 => 'moderation',
-    2 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_announcement'] = $strongarm;
 
