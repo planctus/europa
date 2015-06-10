@@ -1108,7 +1108,11 @@ function dt_announcement_field_default_field_instances() {
   // Exported field_instance: 'node-announcement-group_content_access'
   $field_instances['node-announcement-group_content_access'] = array(
     'bundle' => 'announcement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
