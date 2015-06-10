@@ -109,8 +109,8 @@ function dt_department_field_group_info() {
     'weight' => '7',
     'children' => array(
       0 => 'field_core_persons',
-      1 => 'field_department_organigram',
-      2 => 'field_department_action_link',
+      1 => 'field_department_action_link',
+      2 => 'field_department_organigram',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -199,14 +199,14 @@ function dt_department_field_group_info() {
     'label' => 'Responsibilities',
     'weight' => '6',
     'children' => array(
-      0 => 'field_department_work_areas_sent',
+      0 => 'field_core_priorities',
       1 => 'field_core_topics',
       2 => 'field_department_intro_sentence',
-      3 => 'field_core_priorities',
-      4 => 'field_department_tasks',
-      5 => 'field_department_tasks_desc',
-      6 => 'field_department_plans_reports',
-      7 => 'field_department_related_tasks',
+      3 => 'field_department_plans_reports',
+      4 => 'field_department_related_tasks',
+      5 => 'field_department_tasks',
+      6 => 'field_department_tasks_desc',
+      7 => 'field_department_work_areas_sent',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

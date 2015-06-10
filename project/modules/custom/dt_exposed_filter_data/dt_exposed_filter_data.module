@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * @file
+ * Provides simple way to print exposed filter data.
+ */
+
+/**
+ * Implementation of hook_theme().
+ */
+function dt_exposed_filter_data_theme() {
+  return array(
+    'exposed_filter_data' => array(
+      'template' => 'dt_exposed_filter_data',
+      'variables' => array(
+        'view' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_preprocess().
+ */
+function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
+  $view = $vars['view'];
+
+  // In case no view - get the current view.
+  if ($view == NULL) {
+    $view = views_get_current_view();
+  }
+
+  // Make a variable out of each filter.
+  if (isset($view->exposed_input)) {
+    foreach ($view->exposed_input as $filter => $value) {
+      $pretty = _get_pretty($filter, $view);
+      if (isset($pretty['filter'])) {
+        $vars[$filter] = $value;
+        $pretty_filter_key = $pretty['label'];
+        $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
+      }
+    }
+  }
+}
+
+/**
+ * Helper to get the human pretty name of a given field by value.
+ * @param $filter
+ * @param $view
+ * @return array
+ */
+function _get_pretty($filter, $view) {
+  $result = array();
+  foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
+    if ($filter_handler->options['expose']['identifier'] === $filter) {
+      $result['label'] = $filter_handler->options['expose']['label'];
+      $result['filter'] = array();
+      $value = $filter_handler->value;
+      if (is_array($value)) {
+        if (isset($value['type']) && $value['type'] === "date") {
+          $date = strtotime($value['value']);
+          $date_formatted = format_date($date, 'ec_date_j_f_y');
+          $result['filter'][] = $date_formatted;
+        }
+        $raw_vals = array();
+        foreach ($value as $key => $val) {
+          $raw_vals[] = $val;
+        }
+        foreach ($raw_vals as $raw_val) {
+          if (isset($filter_handler->value_options[$raw_val])) {
+            $result['filter'][] = $filter_handler->value_options[$raw_val];
+          }
+        }
+      }
+      else {
+        $result['filter'] = $value;
+      }
+    }
+  }
+
+  if (!empty($result)) {
+    return $result;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Simple call to the theme, easy to be used in a view header.
+ */
+function get_exposed_filter_output() {
+  return theme('exposed_filter_data');
+}

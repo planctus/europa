@@ -1689,7 +1689,6 @@ function dt_department_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
-  t('Legacy link');
   t('Legacy links');
   t('Link');
   t('Main tasks');
