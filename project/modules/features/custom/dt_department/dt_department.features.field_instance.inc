@@ -1690,9 +1690,7 @@ function dt_department_field_default_field_instances() {
   t('E.g. \'DG ENER\'');
   t('Group content visibility');
   t('Groups audience');
-  t('In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Introduction');
-  t('Legacy link');
   t('Legacy links');
   t('Link');
   t('Main tasks');

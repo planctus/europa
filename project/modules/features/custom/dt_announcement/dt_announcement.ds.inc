@@ -79,6 +79,11 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_announcement_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_announcement_info' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -89,6 +94,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'p',
           'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_announcement_location' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -112,6 +130,28 @@ function dt_announcement_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'lb-el' => 'span',
+          'lb-cl' => 'context-nav__label',
+          'lb-col' => TRUE,
+          'fis' => TRUE,
+          'fis-el' => 'div',
+          'fis-cl' => 'context-nav__items',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'context-nav__item',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb' => 'Commissioner',
           'lb-el' => 'span',
           'lb-cl' => 'context-nav__label',
           'lb-col' => TRUE,
@@ -164,41 +204,6 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'li',
           'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_announcement_location' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'lb' => 'Commissioner',
-          'lb-el' => 'span',
-          'lb-cl' => 'context-nav__label',
-          'lb-col' => TRUE,
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'context-nav__items',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'context-nav__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -283,17 +288,9 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'title_field' => array(
+    'field_announcement_image' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'h3',
-          'fi-cl' => 'listing__title',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
     'field_announcement_type' => array(
@@ -305,6 +302,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi-cl' => 'meta__item meta__item--type',
           'fi-at' => '',
           'fi-def-at' => TRUE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h3',
+          'fi-cl' => 'listing__title',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
       ),
@@ -431,8 +441,8 @@ function dt_announcement_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'field_announcement_type',
         1 => 'group_announcement_meta',
-        2 => 'title',
-        3 => 'post_date',
+        2 => 'post_date',
+        3 => 'title',
         4 => 'field_announcement_location',
         5 => 'field_core_introduction',
       ),
@@ -441,11 +451,11 @@ function dt_announcement_ds_layout_settings_info() {
         7 => 'field_core_topics',
         8 => 'field_announcement_image',
         9 => 'field_core_department',
-        12 => 'field_core_persons',
+        11 => 'field_core_persons',
       ),
       'central' => array(
         10 => 'body',
-        11 => 'field_announcement_info',
+        12 => 'field_announcement_info',
         13 => 'field_core_link',
         14 => 'related_announcements',
       ),
@@ -453,8 +463,8 @@ function dt_announcement_ds_layout_settings_info() {
     'fields' => array(
       'field_announcement_type' => 'left_header',
       'group_announcement_meta' => 'left_header',
-      'title' => 'left_header',
       'post_date' => 'left_header',
+      'title' => 'left_header',
       'field_announcement_location' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_announcement_contextual' => 'top',
@@ -462,8 +472,8 @@ function dt_announcement_ds_layout_settings_info() {
       'field_announcement_image' => 'top',
       'field_core_department' => 'top',
       'body' => 'central',
-      'field_announcement_info' => 'central',
       'field_core_persons' => 'top',
+      'field_announcement_info' => 'central',
       'field_core_link' => 'central',
       'related_announcements' => 'central',
     ),
