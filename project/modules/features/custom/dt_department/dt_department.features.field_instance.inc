@@ -360,7 +360,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'meta' => array(
         'label' => 'above',
@@ -859,7 +859,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1073,10 +1073,11 @@ function dt_department_field_default_field_instances() {
         'weight' => 36,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'link_default',
+        'weight' => 10,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1384,7 +1385,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1446,7 +1447,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1518,7 +1519,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'list_view' => array(
         'label' => 'hidden',
@@ -1689,6 +1690,7 @@ function dt_department_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
+  t('Legacy link');
   t('Legacy links');
   t('Link');
   t('Main tasks');
