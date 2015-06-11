@@ -477,11 +477,12 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_tagline',
     'label' => 'Tagline',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
+          'dt_editor' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -492,6 +493,9 @@ function dt_person_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => 5,
+            ),
+            'dt_editor' => array(
+              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -9,
@@ -651,7 +655,7 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Leave blank for general cases. Automatically taking values from Role+First name+Last name on first save. Could be changed at any time later.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -681,7 +685,7 @@ function dt_person_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
-          'editor' => 'editor',
+          'dt_editor' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -693,7 +697,7 @@ function dt_person_field_default_field_instances() {
             'basic_html' => array(
               'weight' => -6,
             ),
-            'editor' => array(
+            'dt_editor' => array(
               'weight' => -10,
             ),
             'filtered_html' => array(
@@ -869,6 +873,7 @@ function dt_person_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Last Name');
+  t('Leave blank for general cases. Automatically taking values from Role+First name+Last name on first save. Could be changed at any time later.');
   t('Legacy link');
   t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Plural form');
