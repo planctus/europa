@@ -206,6 +206,7 @@ function dt_department_field_group_info() {
       4 => 'field_department_work_areas_sent',
       5 => 'field_core_priorities',
       6 => 'field_department_tasks',
+      7 => 'field_department_mission',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

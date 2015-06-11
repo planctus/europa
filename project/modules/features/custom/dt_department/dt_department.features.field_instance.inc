@@ -856,10 +856,11 @@ function dt_department_field_default_field_instances() {
         'weight' => 35,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'type' => 'link_default',
+        'weight' => 13,
       ),
       'meta' => array(
         'label' => 'above',
@@ -996,7 +997,7 @@ function dt_department_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1077,7 +1078,7 @@ function dt_department_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'meta' => array(
         'label' => 'above',
