@@ -11,13 +11,14 @@ Styleguide icon.social
 .icon-social {
   &:before {
     content: '';
-    display: block;
-    float: left;
-    position: relative;
-    top: -5px;
+    display: inline-block;
+    // float: left;
+    // position: relative;
+    // top: -5px;
     width: 40px;
     height: 40px;
     margin: 0 10px 5px 0;
+    vertical-align: middle;
   }
 
   &:hover {

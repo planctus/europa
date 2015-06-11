@@ -20,11 +20,18 @@ function europa_js_alter(&$js) {
   */
 function europa_preprocess_field(&$vars) {
   // Changing label for the field to display stripped out values.
-  if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
-    $field_value = $vars['element']['#items'][0]['value'];
-    $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+  switch ($vars['element']['#field_name']) {
+    case 'field_core_ecorganisation':
+      $field_value = $vars['element']['#items'][0]['value'];
+      $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
 
-    $vars['items'][0]['#markup'] = $field_value_stripped;
+      $vars['items'][0]['#markup'] = $field_value_stripped;
+      break;
+
+    case 'field_core_social_network_links':
+      $vars['element']['before'] = t('Follow the latest progress and learn more about getting involved.');
+      $vars['element']['after'] = l(t('Other social networks'), '#');
+      break;
   }
 }
 

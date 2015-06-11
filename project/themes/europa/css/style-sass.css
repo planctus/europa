@@ -6047,13 +6047,11 @@ Styleguide icon.social
 */
 .icon-social:before {
   content: '';
-  display: block;
-  float: left;
-  position: relative;
-  top: -5px;
+  display: inline-block;
   width: 40px;
   height: 40px;
-  margin: 0 10px 5px 0; }
+  margin: 0 10px 5px 0;
+  vertical-align: middle; }
 .icon-social:hover {
   cursor: pointer; }
 
@@ -6704,5 +6702,35 @@ Styleguide notification
   .notification__content p {
     max-width: none;
     margin: 0; }
+
+/*
+Social Media
+
+Social Media Links
+
+Markup: html/social-media-links.html
+
+Styleguide social
+*/
+.social-media-links {
+  background-color: #ececec;
+  padding: 30px; }
+
+.social-media-links__list {
+  list-style-type: none;
+  padding: 0px !important; }
+
+.social-media-links__item {
+  margin-bottom: 0.7em; }
+  .social-media-links__item > a {
+    width: 100%;
+    display: block; }
+    .social-media-links__item > a:before {
+      margin-bottom: 0px; }
+    .social-media-links__item > a:after {
+      display: none; }
+  .social-media-links__item--noicon {
+    font-size: 0.8em;
+    margin-top: 1.2em; }
 
 /*# sourceMappingURL=style-sass.css.map */
