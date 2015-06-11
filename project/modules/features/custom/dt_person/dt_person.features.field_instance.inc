@@ -554,7 +554,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'group_content_access',
     'label' => 'Group content visibility',
-    'required' => 0,
+    'required' => TRUE,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
