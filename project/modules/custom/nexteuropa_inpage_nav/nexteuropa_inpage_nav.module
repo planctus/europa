@@ -35,9 +35,6 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
     // DS region to work with.
     $scope = 'central';
 
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    $body = $node_wrapper->body->value->value();
-
     if (!empty($layout) && isset($layout['settings']['fields'])) {
       foreach ($layout['settings']['fields'] as $element => $region) {
         if ($region !== $scope) {
@@ -48,6 +45,8 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
 
         // Get anchored headings from body field.
         if ($element == 'body') {
+          $node_wrapper = entity_metadata_wrapper('node', $node);
+          $body = $node_wrapper->body->value->value();
           $headings = _nexteuropa_inpage_nav_markup_anchor($body);
           $field_info = field_info_instance('node', $element, $node->type);
           $weight = isset($field_info['display']['full']) ? $field_info['display']['full']['weight'] : $field_info['display']['default']['weight'];
@@ -78,6 +77,8 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
       }
     }
     elseif (!empty($node->body)) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $body = $node_wrapper->body->value->value();
       $headings = _nexteuropa_inpage_nav_markup_anchor($body);
       $body_heading_count = 1;
       foreach ($headings as $heading) {
