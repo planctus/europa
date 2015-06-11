@@ -26,10 +26,10 @@ function dt_announcement_field_group_info() {
       0 => 'title_field',
       1 => 'body',
       2 => 'field_announcement_contact',
-      3 => 'field_announcement_department',
-      4 => 'field_announcement_location',
-      5 => 'field_announcement_type',
-      6 => 'field_core_introduction',
+      3 => 'field_announcement_type',
+      4 => 'field_core_introduction',
+      5 => 'field_announcement_department',
+      6 => 'field_announcement_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -85,8 +85,8 @@ function dt_announcement_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_topics',
-      2 => 'field_core_persons',
+      1 => 'field_core_persons',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -115,8 +115,8 @@ function dt_announcement_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_announcement_type',
-      1 => 'field_announcement_location',
+      0 => 'field_announcement_location',
+      1 => 'field_announcement_type',
       2 => 'post_date',
     ),
     'format_type' => 'html-element',
@@ -177,7 +177,8 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_announcement_location',
+      2 => 'post_date',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -208,9 +209,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_core_announcement',
       1 => 'field_core_department',
-      2 => 'field_core_persons',
-      3 => 'field_core_policy',
-      4 => 'field_core_topics',
+      2 => 'field_core_policy',
+      3 => 'field_core_topics',
+      4 => 'field_core_persons',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -237,12 +238,11 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'metatags',
-      1 => 'group_announcement_content',
-      2 => 'group_announcement_context_info',
-      3 => 'group_announcement_related',
-      4 => 'group_editorial_settings',
-      5 => 'group_media',
+      0 => 'group_announcement_content',
+      1 => 'group_announcement_context_info',
+      2 => 'group_announcement_related',
+      3 => 'group_editorial_settings',
+      4 => 'group_media',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(

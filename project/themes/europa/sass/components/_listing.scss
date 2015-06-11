@@ -56,8 +56,8 @@ $padding-bottom-listing__title: 0.7em;
 
 .listing__column-second {
   float: right;
-  padding-left: 15px;
-  width: 25%;
+  width: 100%;
+  margin: 0.2em 0 0.8em 0;
 }
 
 .listing__title {
@@ -67,6 +67,7 @@ $padding-bottom-listing__title: 0.7em;
   padding-top: $padding-top-listing__title;
   padding-bottom: 0;
   display: inline-block;
+  border-bottom: 1px solid transparent;
   @extend .h3;
 
   & + * {
@@ -79,6 +80,13 @@ $padding-bottom-listing__title: 0.7em;
   padding-left: 0 !important;
 }
 
+@include breakpoint(screen-xs-min) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0;
+  }
+}
 
 /*
 Listing title
@@ -114,5 +122,29 @@ ul.listing--title {
     padding-top: $padding-top-listing__title;
     padding-bottom: $padding-bottom-listing__title;
     padding-right: 2em;
+  }
+}
+
+/*
+Listing column left
+
+Listing components
+
+Markup: html/listing--column-left.html
+
+Styleguide listing.column-left
+*/
+.listing--column-left {
+  .listing__column-main {
+    width: auto;
+    overflow: hidden;
+    float: none;
+  }
+
+  .listing__column-second {
+    width: auto;
+    float: left;
+    padding-right: 15px;
+    padding-left: 0;
   }
 }
