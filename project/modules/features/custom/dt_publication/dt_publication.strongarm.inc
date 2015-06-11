@@ -61,6 +61,9 @@ function dt_publication_strongarm() {
         'language' => array(
           'weight' => '9',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(),
     ),

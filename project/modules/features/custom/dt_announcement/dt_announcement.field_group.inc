@@ -30,6 +30,7 @@ function dt_announcement_field_group_info() {
       4 => 'field_announcement_location',
       5 => 'field_announcement_type',
       6 => 'field_core_introduction',
+      7 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -207,9 +208,9 @@ function dt_announcement_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
-      1 => 'field_core_department',
-      2 => 'field_core_persons',
-      3 => 'field_core_policy',
+      1 => 'field_core_policy',
+      2 => 'field_core_department',
+      3 => 'field_core_persons',
       4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
@@ -269,8 +270,7 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

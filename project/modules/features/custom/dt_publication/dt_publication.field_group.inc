@@ -50,12 +50,7 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '24',
-    'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -80,11 +75,7 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Common',
     'weight' => '1',
-    'children' => array(
-      0 => 'field_publication_summary',
-      1 => 'field_publication_type',
-      2 => 'title_field',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -141,6 +132,7 @@ function dt_publication_field_group_info() {
       1 => 'field_publication_summary',
       2 => 'field_publication_type',
       3 => 'field_core_files',
+      4 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -166,9 +158,7 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Files',
     'weight' => '2',
-    'children' => array(
-      0 => 'field_nexteuropa_file',
-    ),
+    'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -194,11 +184,9 @@ function dt_publication_field_group_info() {
     'label' => 'Meta data',
     'weight' => '3',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'og_group_ref',
-      2 => 'path',
-      3 => 'scheduler_settings',
-      4 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
