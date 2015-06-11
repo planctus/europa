@@ -156,24 +156,9 @@ function dt_department_update_7106() {
 }
 
 /**
- * Helper function for removing taxonomy revision module schema.
- */
-function _dt_removing_taxonomy_revision() {
-  // Delete the unique key from the 'taxonomy_term_data' table.
-  db_drop_unique_key('taxonomy_term_data', 'revision_id');
-  // Delete the {revision_id} column from the {taxonomy_term_data} table.
-  db_drop_field('taxonomy_term_data', 'revision_id');
-  foreach (taxonomy_get_vocabularies() as $vocabulary) {
-    variable_del("taxonomy_revision_by_default[{$vocabulary->machine_name}]");
-  }
-}
-
-/**
  * Migrating department tasks, modified Action link to Staff search field.
  */
 function dt_department_update_7107() {
-  // Clean up data after taxonomy_revision shit.
-  _dt_removing_taxonomy_revision();
   // Delete department tasks terms.
   _dt_department_remove_all_department_tasks();
   // Now adding the terms.
