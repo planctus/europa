@@ -6715,10 +6715,10 @@ Styleguide social
 .social-media-links {
   background-color: #ececec;
   padding: 30px; }
-
-.social-media-links__list {
-  list-style-type: none;
-  padding: 0px !important; }
+  .social-media-links .social-media-links__list {
+    list-style-type: none;
+    padding: 0px !important;
+    margin: 0px !important; }
 
 .social-media-links__item {
   margin-bottom: 0.7em; }

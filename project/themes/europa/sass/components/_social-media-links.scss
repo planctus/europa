@@ -9,13 +9,13 @@ Styleguide social
 */
 
 .social-media-links {
- background-color: $grey-lighter;
- padding: 30px;
-}
-
-.social-media-links__list {
-  list-style-type: none;
-  padding: 0px !important;
+  background-color: $grey-lighter;
+  padding: 30px;
+  .social-media-links__list {
+    list-style-type: none;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
 }
 
 .social-media-links__item {
