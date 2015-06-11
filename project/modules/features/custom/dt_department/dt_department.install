@@ -159,10 +159,6 @@ function dt_department_update_7106() {
  * Migrating department tasks, modified Action link to Staff search field.
  */
 function dt_department_update_7107() {
-  // Delete department tasks terms.
-  _dt_department_remove_all_department_tasks();
-  // Now adding the terms.
-  _dt_department_migrate_department_tasks();
   field_delete_field("field_department_action_link");
   field_delete_field("field_department_related_tasks");
   // Reverting feature.
