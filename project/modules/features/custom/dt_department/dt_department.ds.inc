@@ -33,14 +33,20 @@ function dt_department_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_core_topics' => array(
+    'field_core_persons' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_field',
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'listing--column-left',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
         ),
       ),
     ),
-    'field_department_related_tasks' => array(
+    'field_core_priorities' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -56,6 +62,16 @@ function dt_department_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'field_department_mission' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_department_staff_search' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_core_abbreviation' => array(
@@ -84,6 +100,18 @@ function dt_department_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_legacy_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'div',
+          'fis-cl' => 'btn-group',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+        ),
+      ),
+    ),
     'field_core_link' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -97,43 +125,6 @@ function dt_department_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'li',
           'fi-cl' => 'listing__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_field',
-        ),
-      ),
-    ),
-    'field_core_legacy_links' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'btn-group',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_priorities' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -253,20 +244,20 @@ function dt_department_ds_layout_settings_info() {
       ),
       'central' => array(
         8 => 'group_department_responsibilit',
-        9 => 'field_department_work_areas_sent',
-        10 => 'group_department_leadership',
-        11 => 'field_core_persons',
-        12 => 'field_core_topics',
-        13 => 'group_department_contact',
-        14 => 'field_department_organigram',
-        15 => 'field_department_intro_sentence',
+        9 => 'group_department_leadership',
+        10 => 'field_department_work_areas_sent',
+        11 => 'field_core_topics',
+        12 => 'group_department_contact',
+        13 => 'field_core_persons',
+        14 => 'field_department_intro_sentence',
+        15 => 'field_department_organigram',
         16 => 'field_core_contact',
-        17 => 'field_department_action_link',
-        18 => 'field_core_priorities',
+        17 => 'field_core_priorities',
+        18 => 'field_department_staff_search',
         19 => 'field_department_tasks',
         20 => 'field_department_tasks_desc',
-        21 => 'field_department_plans_reports',
-        22 => 'field_department_related_tasks',
+        21 => 'field_department_mission',
+        22 => 'field_department_plans_reports',
       ),
     ),
     'fields' => array(
@@ -279,20 +270,20 @@ function dt_department_ds_layout_settings_info() {
       'field_core_link' => 'right_header',
       'in_page_navigation' => 'left',
       'group_department_responsibilit' => 'central',
-      'field_department_work_areas_sent' => 'central',
       'group_department_leadership' => 'central',
-      'field_core_persons' => 'central',
+      'field_department_work_areas_sent' => 'central',
       'field_core_topics' => 'central',
       'group_department_contact' => 'central',
-      'field_department_organigram' => 'central',
+      'field_core_persons' => 'central',
       'field_department_intro_sentence' => 'central',
+      'field_department_organigram' => 'central',
       'field_core_contact' => 'central',
-      'field_department_action_link' => 'central',
       'field_core_priorities' => 'central',
+      'field_department_staff_search' => 'central',
       'field_department_tasks' => 'central',
       'field_department_tasks_desc' => 'central',
+      'field_department_mission' => 'central',
       'field_department_plans_reports' => 'central',
-      'field_department_related_tasks' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
