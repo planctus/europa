@@ -270,7 +270,7 @@ function dt_announcement_field_default_field_instances() {
           ),
           'fallback_image_style' => '',
           'image_link' => '',
-          'picture_mapping' => 'announcement_header',
+          'picture_mapping' => 'header_image',
         ),
         'type' => 'picture',
         'weight' => 4,
@@ -295,7 +295,7 @@ function dt_announcement_field_default_field_instances() {
           ),
           'fallback_image_style' => '',
           'image_link' => '',
-          'picture_mapping' => 'announcement_teaser',
+          'picture_mapping' => 'teaser_image',
         ),
         'type' => 'picture',
         'weight' => 3,
@@ -1108,7 +1108,11 @@ function dt_announcement_field_default_field_instances() {
   // Exported field_instance: 'node-announcement-group_content_access'
   $field_instances['node-announcement-group_content_access'] = array(
     'bundle' => 'announcement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1141,7 +1145,7 @@ function dt_announcement_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'group_content_access',
     'label' => 'Group content visibility',
-    'required' => 0,
+    'required' => TRUE,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
