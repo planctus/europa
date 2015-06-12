@@ -572,3 +572,23 @@ function dt_social_network_links_preprocess_page(&$vars) {
   drupal_add_css(DT_SOCIAL_NETWORK_LINKS_CSS, $settings);
   drupal_add_css(drupal_get_path('module', 'dt_social_network_links') . '/css/dt_social_network_links.css');
 }
+
+/**
+ * Implements hook_migrate_api().
+ */
+function dt_social_network_links_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Stage initial content, social networks.'),
+      ),
+    ),
+    'migrations' => array(
+      'DTSocialNetworks' => array(
+        'class_name' => 'DTSocialNetworksMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}

@@ -18,3 +18,4 @@ features[field][] = taxonomy_term-social_networks-field_social_network_icon
 features[field][] = taxonomy_term-social_networks-name_field
 features[image][] = social_network_icon
 features[taxonomy][] = social_networks
+files[] = migrations/dt_social_network_links.migrations.social_networks.inc
