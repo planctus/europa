@@ -82,3 +82,11 @@ function nexteuropa_page_update_7101() {
     ),
   ));
 }
+
+/**
+ * Revert configurations.
+ */
+function nexteuropa_page_update_7102() {
+  features_revert_module('nexteuropa_page');
+  features_revert_module('dt_core');
+}

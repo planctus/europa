@@ -51,8 +51,9 @@ function nexteuropa_page_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      2 => 'field_core_in_page_navigation',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -83,7 +84,6 @@ function nexteuropa_page_field_group_info() {
       1 => 'title_field',
       2 => 'field_core_introduction',
       3 => 'field_core_link',
-      4 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
