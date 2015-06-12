@@ -103,7 +103,7 @@ function dt_core_get_blocks_content($delta) {
  * Helper to add initial set of buttons on the default profile of the Full HTML.
  */
 function dt_apply_wysiwyg_buttons() {
-  // Enable a set of CKEditor buttons for DT project on the "Full HTML" WYSIWYG profile.
+  // Enable a set of CKEditor buttons for DT project on the "Full HTML" profile.
 
   $default = array(
     'Anchor',
