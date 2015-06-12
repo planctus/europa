@@ -98,3 +98,46 @@ function dt_core_get_blocks_content($delta) {
       return $result;
   }
 }
+
+/**
+ * Helper to add initial set of buttons on the default profile of the Full HTML.
+ */
+function dt_apply_wysiwyg_buttons() {
+  // Enable a set of CKEditor buttons for DT project on the "Full HTML" WYSIWYG profile.
+
+  $default = array(
+    'Anchor',
+    'Bold',
+    'Italic',
+    'Underline',
+    'Format',
+    'JustifyBlock',
+    'JustifyCenter',
+    'JustifyLeft',
+    'JustifyRight',
+    'Indent',
+    'Outdent',
+    'Blockquote',
+    'Font',
+    'Table',
+    'BulletedList',
+    'NumberedList',
+    'Link',
+    'Unlink',
+    'Source',
+    'PasteFromWord',
+    'Undo',
+    'ShowBlocks',
+  );
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'default', $default);
+
+  $lite = array(
+    'lite_AcceptAll',
+    'lite_RejectOne',
+    'lite_RejectAll',
+    'lite_ToggleShow',
+    'lite_AcceptOne',
+    'lite_ToggleTracking'
+  );
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'lite', $lite);
+}
