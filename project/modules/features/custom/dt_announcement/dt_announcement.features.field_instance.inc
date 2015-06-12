@@ -892,12 +892,13 @@ function dt_announcement_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_introduction',
-    'label' => 'Summary',
+    'label' => 'Introduction',
     'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 0,
+          'dt_editor' => 0,
           'filtered_html' => 0,
           'full_html' => 'full_html',
           'plain_text' => 0,
@@ -908,6 +909,9 @@ function dt_announcement_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => 5,
+            ),
+            'dt_editor' => array(
+              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -9,
@@ -929,6 +933,10 @@ function dt_announcement_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -1394,12 +1402,12 @@ function dt_announcement_field_default_field_instances() {
   t('Featured media');
   t('Group content visibility');
   t('Groups audience');
+  t('Introduction');
   t('Location');
   t('Persons');
   t('Policies');
   t('Responsible department');
   t('Sources');
-  t('Summary');
   t('Title');
   t('Topics');
 
