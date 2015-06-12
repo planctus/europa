@@ -715,7 +715,10 @@ function europa_field($variables) {
   switch ($field_type) {
     case 'entityreference':
       // First node from entity reference.
-      $reference = array_shift($element[0]);
+      $reference = '';
+      if (isset($element[0])) {
+        $reference = array_shift($element[0]);
+      }
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
