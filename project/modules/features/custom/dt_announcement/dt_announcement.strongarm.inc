@@ -105,7 +105,7 @@ function dt_announcement_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
         'scheduler_settings' => array(
           'weight' => '1',
@@ -114,7 +114,7 @@ function dt_announcement_strongarm() {
           'weight' => '-2',
         ),
         'metatags' => array(
-          'weight' => '3',
+          'weight' => '2',
         ),
       ),
       'display' => array(),
@@ -126,7 +126,7 @@ function dt_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_announcement';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
