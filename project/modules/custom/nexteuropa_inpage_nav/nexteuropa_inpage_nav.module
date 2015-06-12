@@ -134,18 +134,9 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
  * Verifies if a field_group is subject of inpage navigation.
  */
 function _nexteuropa_inpage_nav_group_anchor($group, $node) {
-  // Check if group is not empty.
-  $empty = TRUE;
-  foreach ($group->children as $field) {
-    if (!empty($node->{$field})) {
-      $empty = FALSE;
-      break;
-    }
-  }
-
   // Check if label is subject of inpage nav.
   if (
-    !$empty &&
+    !_nexteuropa_inpage_nav_is_group_empty($group, $node) &&
     $group->format_settings['instance_settings']['show_label'] &&
     $group->format_settings['instance_settings']['label_element'] == NEXTEUROPA_INPAGE_NAV_DEPTH &&
     $id = _nexteuropa_inpage_nav_get_id($group->format_settings['instance_settings']['attributes'])
@@ -200,6 +191,32 @@ function _nexteuropa_inpage_nav_get_id($string) {
     return $matches[1];
   }
   return FALSE;
+}
+
+/**
+ * Verifies if a field_group is empty or not chacking also embedded group.
+ */
+function _nexteuropa_inpage_nav_is_group_empty($group, $node) {
+  // Check if group is not empty.
+  $empty = TRUE;
+  foreach ($group->children as $item) {
+    // Child is group.
+    if (preg_match('/^group_/', $item)) {
+      $childgroup = field_group_load_field_group($item, 'node', $node->type, 'full');
+      $empty = _nexteuropa_inpage_nav_is_group_empty($childgroup, $node);
+    }
+    // Child is field.
+    elseif (!empty($node->{$item})) {
+      $empty = FALSE;
+    }
+
+    if (!$empty) {
+      return FALSE;
+    }
+  }
+  // kpr($group);
+  // kpr($empty);
+  return TRUE;
 }
 
 /**

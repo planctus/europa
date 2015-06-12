@@ -247,6 +247,37 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_core_social_network_links'
+  $field_bases['field_core_social_network_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_social_network_links',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'enabled' => array(
+        0 => 'url',
+      ),
+      'social_network' => array(
+        0 => 'social_network',
+      ),
+      'title' => array(
+        0 => 'title',
+      ),
+      'url' => array(
+        0 => 'url',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'dt_social_network_links',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'social_network_link',
+  );
+
   // Exported field_base: 'field_core_top_task_link'
   $field_bases['field_core_top_task_link'] = array(
     'active' => 1,
