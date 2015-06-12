@@ -33,6 +33,47 @@ function dt_department_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'listing--column-left',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_priorities' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'ul',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'li',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_department_mission' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_department_staff_search' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_core_abbreviation' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -59,6 +100,18 @@ function dt_department_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_legacy_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'div',
+          'fis-cl' => 'btn-group',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+        ),
+      ),
+    ),
     'field_core_link' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -72,75 +125,6 @@ function dt_department_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'li',
           'fi-cl' => 'listing__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'listing--column-left',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_legacy_links' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'btn-group',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_priorities' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_department_mission' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'div',
-          'fi-cl' => 'btn btn-default',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_department_staff_search' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'div',
-          'fi-cl' => 'btn btn-default',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -246,8 +230,8 @@ function dt_department_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_department_meta',
-        1 => 'field_core_ecorganisation',
-        2 => 'title',
+        1 => 'title',
+        2 => 'field_core_ecorganisation',
         3 => 'field_core_introduction',
         4 => 'field_core_abbreviation',
         5 => 'field_core_legacy_links',
@@ -260,13 +244,13 @@ function dt_department_ds_layout_settings_info() {
       ),
       'central' => array(
         8 => 'group_department_responsibilit',
-        9 => 'field_department_work_areas_sent',
-        10 => 'group_department_leadership',
+        9 => 'group_department_leadership',
+        10 => 'field_department_work_areas_sent',
         11 => 'field_core_topics',
         12 => 'group_department_contact',
         13 => 'field_core_persons',
-        14 => 'field_department_organigram',
-        15 => 'field_department_intro_sentence',
+        14 => 'field_department_intro_sentence',
+        15 => 'field_department_organigram',
         16 => 'field_core_contact',
         17 => 'field_core_priorities',
         18 => 'field_department_staff_search',
@@ -278,21 +262,21 @@ function dt_department_ds_layout_settings_info() {
     ),
     'fields' => array(
       'group_department_meta' => 'left_header',
-      'field_core_ecorganisation' => 'left_header',
       'title' => 'left_header',
+      'field_core_ecorganisation' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_abbreviation' => 'left_header',
       'field_core_legacy_links' => 'left_header',
       'field_core_link' => 'right_header',
       'in_page_navigation' => 'left',
       'group_department_responsibilit' => 'central',
-      'field_department_work_areas_sent' => 'central',
       'group_department_leadership' => 'central',
+      'field_department_work_areas_sent' => 'central',
       'field_core_topics' => 'central',
       'group_department_contact' => 'central',
       'field_core_persons' => 'central',
-      'field_department_organigram' => 'central',
       'field_department_intro_sentence' => 'central',
+      'field_department_organigram' => 'central',
       'field_core_contact' => 'central',
       'field_core_priorities' => 'central',
       'field_department_staff_search' => 'central',

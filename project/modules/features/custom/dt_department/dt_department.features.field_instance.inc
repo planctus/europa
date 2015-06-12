@@ -882,7 +882,7 @@ function dt_department_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'btn btn-default',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -1100,7 +1100,7 @@ function dt_department_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'btn btn-default',
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
