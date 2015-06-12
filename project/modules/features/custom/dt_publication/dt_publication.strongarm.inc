@@ -56,10 +56,10 @@ function dt_publication_strongarm() {
           'weight' => '11',
         ),
         'scheduler_settings' => array(
-          'weight' => '12',
+          'weight' => '48',
         ),
         'language' => array(
-          'weight' => '9',
+          'weight' => '45',
         ),
         'metatags' => array(
           'weight' => '40',
