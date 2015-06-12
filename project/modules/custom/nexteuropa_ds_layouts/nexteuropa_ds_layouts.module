@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * Custom DS layouts and formatters for BEM.
+ */
+
+ require_once 'nexteuropa_ds_layouts.field.inc';
 
 /**
  * Define Display Suite layouts.
