@@ -258,12 +258,21 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
           'image_link' => '',
-          'image_style' => '',
+          'picture_mapping' => 'header_image',
         ),
-        'type' => 'image',
+        'type' => 'picture',
         'weight' => 4,
       ),
       'meta' => array(
@@ -274,12 +283,21 @@ function dt_announcement_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
           'image_link' => '',
-          'image_style' => 'thumbnail',
+          'picture_mapping' => 'teaser_image',
         ),
-        'type' => 'image',
+        'type' => 'picture',
         'weight' => 3,
       ),
     ),
@@ -720,6 +738,7 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 24,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_department',
     'label' => 'Departments',
@@ -1089,7 +1108,11 @@ function dt_announcement_field_default_field_instances() {
   // Exported field_instance: 'node-announcement-group_content_access'
   $field_instances['node-announcement-group_content_access'] = array(
     'bundle' => 'announcement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1122,7 +1145,7 @@ function dt_announcement_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'group_content_access',
     'label' => 'Group content visibility',
-    'required' => 0,
+    'required' => TRUE,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
