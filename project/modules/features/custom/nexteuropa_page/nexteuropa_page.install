@@ -88,4 +88,5 @@ function nexteuropa_page_update_7101() {
  */
 function nexteuropa_page_update_7102() {
   features_revert_module('nexteuropa_page');
+  features_revert_module('dt_core');
 }
