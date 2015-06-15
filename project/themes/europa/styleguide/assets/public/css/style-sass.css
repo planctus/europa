@@ -6547,8 +6547,6 @@ Styleguide listing.column-left
   .listing__wrapper--three_columns .listing__title, .listing__wrapper--two_columns .listing__title, .listing__wrapper--row_three .listing__title, .listing__wrapper--row_two .listing__title {
     font-size: 1.333em;
     margin: 0.2em 0 0.4em 0; }
-    .listing__wrapper--three_columns .listing__title + *, .listing__wrapper--two_columns .listing__title + *, .listing__wrapper--row_three .listing__title + *, .listing__wrapper--row_two .listing__title + * {
-      font-size: inherit; }
   .listing__wrapper--three_columns p, .listing__wrapper--two_columns p, .listing__wrapper--row_three p, .listing__wrapper--row_two p {
     margin: 0;
     padding: 0; }
@@ -6559,8 +6557,6 @@ Styleguide listing.column-left
     font-size: 1.556em !important;
     margin-top: 0.2em;
     margin-bottom: 0.4em; }
-    .listing__wrapper--hero .listing__title + * {
-      font-size: inherit; }
 
 .listing__wrapper--highlight {
   background-color: #ececec;
