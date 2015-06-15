@@ -708,7 +708,6 @@ function _europa_field_component_listing($variables, $config) {
   $modifier_class = ' ' . trim($config['modifier']);
   $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
   $wrapper_class .= ' ' . trim($config['wrapper_modifier']);
-
   $columns_num = 1;
   if ($config['layout'] == 'two_columns') {
     $columns_num = 2;
@@ -761,19 +760,6 @@ function _europa_field_component_listing($variables, $config) {
 }
 
 /**
- * Helper function for display 'title' view mode field.
- */
-function _europa_field_component_listing_title($variables) {
-  $output = '';
-  $output .= '<ul class="listing listing--title">';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
-  }
-  $output .= '</ul>';
-  return $output;
-}
-
-/**
  * Override of theme_field().
  */
 function europa_field($variables) {
@@ -787,7 +773,6 @@ function europa_field($variables) {
       $settings = array();
       $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
-
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
@@ -803,6 +788,8 @@ function europa_field($variables) {
             $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
+
+        return _europa_field_component_listing($variables, $settings);
       }
 
       break;

@@ -22,6 +22,7 @@ features[ds_field_settings][] = node|page|default
 features[ds_field_settings][] = node|page|meta
 features[ds_field_settings][] = node|page|teaser
 features[ds_layout_settings][] = node|page|default
+features[ds_layout_settings][] = node|page|full
 features[ds_layout_settings][] = node|page|meta
 features[ds_layout_settings][] = node|page|teaser
 features[features_api][] = api:2

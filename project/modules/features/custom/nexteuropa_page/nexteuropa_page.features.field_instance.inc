@@ -43,7 +43,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 16,
       ),
       'token' => array(
         'label' => 'above',
@@ -100,10 +100,9 @@ function nexteuropa_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'token' => array(
         'label' => 'hidden',
@@ -188,7 +187,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 17,
       ),
       'token' => array(
         'label' => 'above',
@@ -265,7 +264,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'token' => array(
         'label' => 'above',
@@ -332,7 +331,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'token' => array(
         'label' => 'above',
@@ -411,10 +410,11 @@ function nexteuropa_page_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'token' => array(
         'label' => 'above',

@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation Homepage
 version = 7.x-1.0
 project = dt_info_homepage
+dependencies[] = dt_class
 dependencies[] = dt_homepage_core
 dependencies[] = nexteuropa_page
 dependencies[] = text
