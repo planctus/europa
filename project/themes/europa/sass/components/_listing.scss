@@ -7,8 +7,8 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-$padding-top-listing__title: 0.9em;
-$padding-bottom-listing__title: 0.7em;
+$spacing-top-listing__title: 0.9em;
+$spacing-bottom-listing__title: 0.7em;
 
 .listing {
 }
@@ -64,15 +64,16 @@ $padding-bottom-listing__title: 0.7em;
   color: $brand-primary;
   font-family: $font-family-sans-serif;
   font-size: 1em;
-  padding-top: $padding-top-listing__title;
-  padding-bottom: 0;
+  margin-top: $spacing-top-listing__title;
+  margin-bottom: $spacing-bottom-listing__title;
+  padding: 0;
   display: inline-block;
   border-bottom: 1px solid transparent;
   @extend .h3;
 
   & + * {
     font-size: $font-size-little;
-    padding-top: $padding-bottom-listing__title;
+    margin-top: $spacing-top-listing__title;
   }
 }
 
@@ -119,8 +120,8 @@ ul.listing--title {
   a.listing__title,
   .listing__title a {
     display: block;
-    padding-top: $padding-top-listing__title;
-    padding-bottom: $padding-bottom-listing__title;
+    padding-top: $spacing-top-listing__title;
+    padding-bottom: $spacing-bottom-listing__title;
     padding-right: 2em;
   }
 }
@@ -163,7 +164,10 @@ Styleguide listing.column-left
   }
 }
 
-.listing__wrapper {
+.listing__wrapper--three_columns,
+.listing__wrapper--two_columns,
+.listing__wrapper--row_three,
+.listing__wrapper--row_two {
   .listing__item-link {
     padding-top: 0.85em;
     padding-bottom: 1em;
@@ -173,7 +177,7 @@ Styleguide listing.column-left
     & + * {
       font-size: inherit;
     }
-    padding: 0.2em 0 0.4em 0;
+    margin: 0.2em 0 0.4em 0;
   }
   p {
     margin: 0;
@@ -181,6 +185,7 @@ Styleguide listing.column-left
   }
   margin-bottom: 30px;
 }
+
 .listing__wrapper--three_columns,
 .listing__wrapper--two_columns {
   @extend .row;
@@ -220,8 +225,8 @@ Styleguide listing.column-left
 .listing__wrapper--hero {
  .listing__title {
    font-size: $font-size-h3 !important;
-   padding-top: 0.2em;
-   padding-bottom: 0.4em;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
    & + * {
      font-size: inherit;
    }
@@ -285,69 +290,5 @@ Styleguide listing.column-left
 .listing__wrapper--cta {
   .listing__item {
     border: none;
-  }
-}
-
-/*
-Listing layouts
-
-Listing components
-
-Markup: html/listing--teaser.html
-
-Styleguide listing.teaser
-*/
-.listing__wrapper {
-  .listing__item-link {
-    padding-top: 0.85em;
-    padding-bottom: 1em;
-  }
-  .listing__title {
-    font-size: $font-size-big;
-    & + * {
-      font-size: inherit;
-    }
-    padding: 0.2em 0 0.4em 0;
-  }
-  // padding: 30px 0;
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  margin-bottom: 30px;
-}
-.listing__wrapper--three_columns,
-.listing__wrapper--two_columns {
-  @extend .row;
-}
-
-.listing__wrapper--two_columns {
-  .listing {
-    @extend .col-md-6;
-  }
-}
-
-.listing__wrapper--three_columns {
-  .listing {
-    @extend .col-md-4;
-  }
-}
-
-.listing__wrapper--row_three,
-.listing__wrapper--row_two {
-  .listing {
-    @extend .row;
-  }
-}
-
-.listing__wrapper--row_two {
-  .listing__item {
-    @extend .col-md-6;
-  }
-}
-
-.listing__wrapper--row_three {
-  .listing__item {
-    @extend .col-md-4;
   }
 }
