@@ -448,7 +448,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'meta' => array(
         'label' => 'above',
@@ -766,6 +766,65 @@ function dt_department_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'node-department-field_core_social_network_links'
+  $field_instances['node-department-field_core_social_network_links'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'dt_social_network_links',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
+        'weight' => 19,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_social_network_links',
+    'label' => 'Social Network Links',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'social_network' => 0,
+      'title' => 0,
+      'url' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'dt_social_network_links',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'social_network_link_default',
+      'weight' => 11,
     ),
   );
 
@@ -1477,7 +1536,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1539,7 +1598,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1611,7 +1670,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 22,
       ),
       'list_view' => array(
         'label' => 'hidden',
@@ -1796,6 +1855,7 @@ function dt_department_field_default_field_instances() {
   t('Related priorities');
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
+  t('Social Network Links');
   t('Staff search link');
   t('Tasks description');
   t('Work areas sentence');
