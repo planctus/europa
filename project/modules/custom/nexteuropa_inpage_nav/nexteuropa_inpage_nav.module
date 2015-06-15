@@ -214,8 +214,7 @@ function _nexteuropa_inpage_nav_is_group_empty($group, $node) {
       return FALSE;
     }
   }
-  // kpr($group);
-  // kpr($empty);
+
   return TRUE;
 }
 

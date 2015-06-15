@@ -58,8 +58,8 @@ function dt_social_network_links_element_info() {
   $elements = array();
   $elements['social_network_link'] = array(
     '#input' => TRUE,
-    '#process' => array('social_network_link_field_process'),
-    '#element_validate' => array('social_network_link_field_validate'),
+    '#process' => array('dt_social_network_links_field_process'),
+    '#element_validate' => array('dt_social_network_links_field_validate'),
     '#theme_wrappers' => array('form_element'),
   );
 
@@ -67,26 +67,9 @@ function dt_social_network_links_element_info() {
 }
 
 /**
- * Implements hook_field_validate().
- */
-function social_network_link_field_validate($element, &$form_state) {
-  if (isset($element['#value']['social_network'])) {
-    if (empty($element['#value']['social_network'])) {
-      form_error($element['social_network'], t('Choose social network.'));
-    }
-  }
-  if (isset($element['#value']['url'])) {
-    if (empty($element['#value']['url'])) {
-      form_error($element['url'], t('The URL is empty.'));
-    }
-  }
-  return $element;
-}
-
-/**
  * Implements hook_field_process().
  */
-function social_network_link_field_process($element, $form_state, $complete_form) {
+function dt_social_network_links_field_process($element, $form_state, $complete_form) {
   $element['title'] = array(
     '#type' => 'textfield',
     '#title' => t('Title'),
@@ -113,7 +96,7 @@ function social_network_link_field_process($element, $form_state, $complete_form
 }
 
 /**
- * Implements hook_field_indo().
+ * Implements hook_field_info().
  */
 function dt_social_network_links_field_info() {
   return array(
@@ -137,7 +120,8 @@ function dt_social_network_links_field_info() {
 function dt_social_network_links_field_is_empty($item, $field) {
 
   if ($field['type'] == 'social_network_link') {
-    if (empty($item['url']) && empty($item['social_network'])) {
+    if (empty($item['url']) && (empty($item['social_network']) || $item['social_network'] == '0')) {
+
       return TRUE;
     }
   }
@@ -149,17 +133,13 @@ function dt_social_network_links_field_is_empty($item, $field) {
  * Implements hook_field_validate().
  */
 function dt_social_network_links_field_validate($obj_type, $object, $field, $instance, $langcode, &$items, &$errors) {
-
   if ($field['type'] == 'social_network_link') {
-
     foreach ($items as $delta => $item) {
-      if (isset($item['enabled']) && $item['enabled'] == 1) {
-        if (empty($item['url']) || empty($item['social_network'])) {
-          $errors[$field['field_name']][$langcode][$delta][] = array(
-            'error' => 'field_social_link_invalid',
-            'message' => t('Please set URL and choose social network'),
-          );
-        }
+      if (!dt_social_network_links_field_is_empty($item, $field) && (empty($item['url']) || empty($item['social_network']))) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'field_social_link_invalid',
+          'message' => t('Please set URL and choose social network'),
+        );
       }
     }
   }
