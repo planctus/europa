@@ -30,6 +30,12 @@ function dt_info_homepage_ds_field_settings_info() {
           'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'div',
+          'fi-cl' => 'pull-right',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
         ),
       ),
     ),
@@ -56,7 +62,7 @@ function dt_info_homepage_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<a class="btn btn-ctn " href="topics">Topics A-Z</a>',
+      'value' => '<a class="btn btn-ctn " href="/topics">Topics A-Z</a>',
       'format' => 'basic_html',
     ),
     'use_token' => 0,
