@@ -42,6 +42,9 @@ function dt_core_install() {
 
   // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!)
   variable_set('cce_basic_config_admin_pages', array());
+
+  // Applying a default set of buttons to the Full HTML profile.
+  dt_apply_wysiwyg_buttons();
 }
 
 /**
@@ -278,9 +281,32 @@ function dt_core_update_7120() {
 }
 
 /**
- * Enabling dt_social_network_links.
+ * Adding buttons to Full HTML. Removing dt_editor format and profile.
  */
 function dt_core_update_7121() {
+  $profile = 'dt_editor';
+  // Applying a default set of buttons to the Full HTML profile.
+  dt_apply_wysiwyg_buttons();
+
+  // Remove dt_editor from the wysiwyg profile.
+  if (wysiwyg_profile_load($profile)) {
+    wysiwyg_profile_delete($profile);
+  }
+
+  // Disable the filter format as well.
+  db_update('filter_format')
+    ->fields(array('status' => 0))
+    ->condition('format', $profile)
+    ->execute();
+
+  // Revert dt_core.
+  features_revert_module('dt_core');
+}
+
+/**
+ * Enabling dt_social_network_links.
+ */
+function dt_core_update_7122() {
   $modules = array(
     'dt_social_network_links',
   );
