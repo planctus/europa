@@ -87,39 +87,55 @@ function nexteuropa_ds_layouts_field_formatter_info() {
     'nexteuropa_ds_layouts_formatter_link_button_default' => array(
       'label' => 'Link button default',
       'field types' => array('link_field'),
-      'settings' => array(
-        'class' => 'btn btn-default',
-      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_primary' => array(
       'label' => 'Link button primary',
       'field types' => array('link_field'),
-      'settings' => array(
-        'class' => 'btn btn-primary',
-      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_secondary' => array(
       'label' => 'Link button secondary',
       'field types' => array('link_field'),
-      'settings' => array(
-        'class' => 'btn btn-secondary',
-      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_call_for_action' => array(
       'label' => 'Link button call for action',
       'field types' => array('link_field'),
-      'settings' => array(
-        'class' => 'btn btn-ctn',
-      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_block' => array(
       'label' => 'Link button block',
       'field types' => array('link_field'),
-      'settings' => array(
-        'class' => 'btn btn-default btn-block',
-      ),
     ),
   );
+}
+
+
+/**
+ * Helper function to select the right class.
+ *
+ * @param string $formatter
+ *   Formatter name.
+ *
+ * @return string
+ *   Class connected to formatter.
+ */
+function _nexteuropa_ds_layouts_field_formatter_view_classes($formatter) {
+  switch ($formatter) {
+    case 'nexteuropa_ds_layouts_formatter_link_button_default':
+      return 'btn btn-default';
+
+    case 'nexteuropa_ds_layouts_formatter_link_button_primary':
+      return 'btn btn-primary';
+
+    case 'nexteuropa_ds_layouts_formatter_link_button_secondary':
+      return 'btn btn-secondary';
+
+    case 'nexteuropa_ds_layouts_formatter_link_button_call_for_action':
+      return 'btn btn-ctn';
+
+    case 'nexteuropa_ds_layouts_formatter_link_button_block':
+      return 'btn btn-default btn-block';
+
+  }
+  return '';
 }
 
 /**
@@ -127,9 +143,12 @@ function nexteuropa_ds_layouts_field_formatter_info() {
  */
 function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
+  $formatter = $display['type'];
+
   foreach ($items as $delta => $item) {
     // Set attribute from formatter settings.
-    $item['attributes']['class'] = $display['settings']['class'];
+    $item['attributes']['class'] = _nexteuropa_ds_layouts_field_formatter_view_classes($formatter);
+
     // Call theme function of link module (theme_link_formatter_link_default).
     $elements[$delta] = array(
       '#theme' => 'link_formatter_link_default',
@@ -139,7 +158,7 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
     );
   }
   // Multiple field wrapper.
-  if ($field['cardinality'] == -1) {
+  if (($field['cardinality'] == -1) && ($formatter != 'nexteuropa_ds_layouts_formatter_link_button_block')) {
     $elements['#prefix'] = '<div class="btn-group">';
     $elements['#suffix'] = '</div>';
   }
