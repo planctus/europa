@@ -36,6 +36,7 @@ features[field_group][] = group_topic_related|node|topic|form
 features[field_group][] = group_topic_tasks|node|topic|default
 features[field_group][] = group_topic_task|node|topic|form
 features[field_instance][] = node-topic-field_core_department
+features[field_instance][] = node-topic-field_core_description
 features[field_instance][] = node-topic-field_core_introduction
 features[field_instance][] = node-topic-field_core_link
 features[field_instance][] = node-topic-field_core_persons

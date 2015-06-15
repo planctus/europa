@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_class.features.inc
+ * dt_info_homepage.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_class_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_info_homepage_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -22,22 +22,14 @@ function dt_class_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function dt_class_node_info() {
+function dt_info_homepage_node_info() {
   $items = array(
-    'class' => array(
-      'name' => t('Temporary class'),
+    'info_homepage' => array(
+      'name' => t('Information homepage'),
       'base' => 'node_content',
-      'description' => t('DT Temporary class content type.'),
+      'description' => t('Content type to serve as homepage for DT Information site.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'class_link_group' => array(
-      'name' => t('Temporary class link group'),
-      'base' => 'node_content',
-      'description' => t('DT Temporary  class link group content type.'),
-      'has_title' => '1',
-      'title_label' => t('Group title'),
       'help' => '',
     ),
   );

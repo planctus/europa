@@ -198,7 +198,7 @@ function europa_preprocess_page(&$variables) {
   }
 
   $node = &$variables['node'];
-  
+
   if (isset($node)) {
     // Adding generic introduction field to be later rendered in page template.
     $variables['field_core_introduction'] = field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden'));
@@ -800,6 +800,7 @@ function europa_field($variables) {
             $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
+        
         return _europa_field_component_listing($variables, $settings);
       }
 

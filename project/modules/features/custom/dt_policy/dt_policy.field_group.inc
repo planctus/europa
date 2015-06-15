@@ -119,6 +119,7 @@ function dt_policy_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_policy_introduction',
+      2 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -340,10 +341,9 @@ function dt_policy_field_group_info() {
     'label' => 'Relations with other content types',
     'weight' => '2',
     'children' => array(
-      0 => 'field_core_topics',
-      1 => 'field_strategy_priority',
-      2 => 'field_core_policy_areas',
-      3 => 'field_core_priorities',
+      0 => 'field_core_policy_areas',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

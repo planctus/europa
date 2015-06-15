@@ -27,6 +27,12 @@ function nexteuropa_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -37,7 +43,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 16,
       ),
       'token' => array(
         'label' => 'above',
@@ -94,10 +100,9 @@ function nexteuropa_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'token' => array(
         'label' => 'hidden',
@@ -148,7 +153,7 @@ function nexteuropa_page_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -182,7 +187,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 17,
       ),
       'token' => array(
         'label' => 'above',
@@ -222,7 +227,7 @@ function nexteuropa_page_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 15,
+      'weight' => 4,
     ),
   );
 
@@ -245,9 +250,8 @@ function nexteuropa_page_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'i18n_list_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'meta' => array(
@@ -260,7 +264,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'token' => array(
         'label' => 'above',
@@ -293,7 +297,7 @@ function nexteuropa_page_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 44,
+      'weight' => 9,
     ),
     'widget_type' => 'options_select',
   );
@@ -313,11 +317,8 @@ function nexteuropa_page_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'meta' => array(
@@ -330,7 +331,7 @@ function nexteuropa_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'token' => array(
         'label' => 'above',
@@ -374,7 +375,7 @@ function nexteuropa_page_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 43,
+      'weight' => 8,
     ),
   );
 
@@ -393,13 +394,8 @@ function nexteuropa_page_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 13,
       ),
       'meta' => array(
@@ -414,10 +410,11 @@ function nexteuropa_page_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'type' => 'text_default',
+        'weight' => 0,
       ),
       'token' => array(
         'label' => 'above',
