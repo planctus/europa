@@ -112,11 +112,11 @@ function nexteuropa_ds_layouts_field_formatter_info() {
         'class' => 'btn btn-ctn',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_listing_title' => array(
-      'label' => 'Link listing title',
+    'nexteuropa_ds_layouts_formatter_link_button_block' => array(
+      'label' => 'Link button block',
       'field types' => array('link_field'),
       'settings' => array(
-        'class' => 'listing__title',
+        'class' => 'btn btn-default btn-block',
       ),
     ),
   );
