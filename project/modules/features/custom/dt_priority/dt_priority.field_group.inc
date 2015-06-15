@@ -86,6 +86,7 @@ function dt_priority_field_group_info() {
       3 => 'field_priority_objective',
       4 => 'field_core_introduction',
       5 => 'field_core_legacy_link',
+      6 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -110,13 +111,13 @@ function dt_priority_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Related content',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_priorities',
-      2 => 'field_core_announcement',
-      3 => 'field_core_department',
-      4 => 'field_core_policy',
+      0 => 'field_core_announcement',
+      1 => 'field_core_persons',
+      2 => 'field_core_policy',
+      3 => 'field_core_priorities',
+      4 => 'field_core_department',
       5 => 'field_core_topics',
     ),
     'format_type' => 'tab',

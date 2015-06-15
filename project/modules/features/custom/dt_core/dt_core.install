@@ -229,24 +229,6 @@ function dt_core_update_7117() {
 }
 
 /**
- * Revert updated feautres.
- */
-function dt_core_update_7118() {
-  // The features to enable.
-  $features = array(
-    'dt_department',
-    'dt_person',
-    'dt_priority',
-  );
-  module_enable($features);
-
-  // Reverting the features.
-  foreach ($features as $feature) {
-    features_revert_module($feature);
-  }
-}
-
-/**
  * DT Editor configurations.
  */
 function dt_core_update_7118() {
@@ -282,8 +264,26 @@ function dt_core_update_7120() {
   $features = array(
     'dt_announcement',
     'dt_contact',
-    'dt_person'
+    'dt_person',
   );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Revert updated feautres.
+ */
+function dt_core_update_7121() {
+  // The features to enable.
+  $features = array(
+    'dt_department',
+    'dt_person',
+    'dt_priority',
+  );
+  module_enable($features);
 
   // Reverting the features.
   foreach ($features as $feature) {

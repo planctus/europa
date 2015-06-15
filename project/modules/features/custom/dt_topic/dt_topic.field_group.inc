@@ -25,10 +25,10 @@ function dt_topic_field_group_info() {
     'children' => array(
       0 => 'group_editorial_settings',
       1 => 'group_topic_content',
-      2 => 'group_topic_related',
+      2 => 'group_topic_details',
       3 => 'group_topic_policy_areas',
-      4 => 'group_topic_task',
-      5 => 'group_topic_details',
+      4 => 'group_topic_related',
+      5 => 'group_topic_task',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -85,6 +85,7 @@ function dt_topic_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_introduction',
+      2 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -168,9 +169,9 @@ function dt_topic_field_group_info() {
     'label' => 'Related',
     'weight' => '11',
     'children' => array(
-      0 => 'field_core_priorities',
-      1 => 'field_core_topics',
-      2 => 'field_core_persons',
+      0 => 'field_core_persons',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
       3 => 'field_core_department',
     ),
     'format_type' => 'tab',
@@ -199,8 +200,7 @@ function dt_topic_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_topic_tasks',
-      1 => 'field_core_user_tasks',
-      2 => 'field_core_top_tasks',
+      1 => 'field_core_top_tasks',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

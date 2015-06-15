@@ -26,6 +26,7 @@ function dt_class_field_group_info() {
       0 => 'title_field',
       1 => 'field_class_notification',
       2 => 'field_core_introduction',
+      3 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

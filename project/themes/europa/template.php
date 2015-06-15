@@ -499,9 +499,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
 
 /**
  * Helper applying BEM to footer menu item links.
- *
  * @param $variables
- *
  * @return string
  */
 function _europa_menu_link__footer(&$variables) {
@@ -520,9 +518,7 @@ function _europa_menu_link__footer(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
  * @param $variables
- *
  * @return string
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
@@ -531,9 +527,7 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
  * @param $variables
- *
  * @return string
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
@@ -763,7 +757,19 @@ function _europa_field_component_listing($variables, $config) {
     $output .= '</' . $config['listing_wrapper_element'] . '>';
   }
   $output .= '</div>';
+  return $output;
+}
 
+/**
+ * Helper function for display 'title' view mode field.
+ */
+function _europa_field_component_listing_title($variables) {
+  $output = '';
+  $output .= '<ul class="listing listing--title">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
+  }
+  $output .= '</ul>';
   return $output;
 }
 
@@ -784,7 +790,6 @@ function europa_field($variables) {
 
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
-        // kpr($variables);
         switch ($first_node['#view_mode']) {
           case 'title':
             $settings['modifier'] . 'listing--title';
@@ -798,7 +803,6 @@ function europa_field($variables) {
             $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
-        return _europa_field_component_listing($variables, $settings);
       }
 
       break;

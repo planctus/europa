@@ -6519,6 +6519,39 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+/*
+Listing layouts
+
+Listing components
+
+Markup: html/listing--column-left.html
+
+Styleguide listing.column-left
+*/
+.listing--column-left .listing__column-main {
+  width: auto;
+  overflow: hidden;
+  float: none; }
+.listing--column-left .listing__column-second {
+  width: auto;
+  float: left;
+  padding-right: 15px;
+  padding-left: 0; }
+
+.listing__wrapper {
+  margin-bottom: 30px; }
+  .listing__wrapper .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em; }
+  .listing__wrapper .listing__title {
+    font-size: 1.333em;
+    padding: 0.2em 0 0.4em 0; }
+    .listing__wrapper .listing__title + * {
+      font-size: inherit; }
+  .listing__wrapper p {
+    margin: 0;
+    padding: 0; }
+
 .listing__wrapper--hero {
   margin: 15px 0px !important; }
   .listing__wrapper--hero .listing__title {
@@ -6581,25 +6614,6 @@ Styleguide listing.teaser
   .listing__wrapper p {
     margin: 0;
     padding: 0; }
-
-/*
-Listing column left
-
-Listing components
-
-Markup: html/listing--column-left.html
-
-Styleguide listing.column-left
-*/
-.listing--column-left .listing__column-main {
-  width: auto;
-  overflow: hidden;
-  float: none; }
-.listing--column-left .listing__column-second {
-  width: auto;
-  float: left;
-  padding-right: 15px;
-  padding-left: 0; }
 
 .logo {
   display: block;
