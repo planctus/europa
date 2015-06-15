@@ -58,7 +58,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
         }
 
         // If field, check if label is matching our depth and id attribute.
-        if (isset($layout_field_settings[$element]) && $id = _nexteuropa_inpage_nav_field_anchor($layout_field_settings[$element], $node->{$element})) {
+        if (isset($node->{$element}) && isset($layout_field_settings[$element]) && $id = _nexteuropa_inpage_nav_field_anchor($layout_field_settings[$element], $node->{$element})) {
           // Get the field label.
           $field_info = field_info_instance('node', $element, $node->type);
           $items[$element]['weight'] = $field_info['display']['full']['weight'];
