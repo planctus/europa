@@ -317,7 +317,7 @@ function dt_core_update_7122() {
 /**
  * Enabling dt_social_network_links.
  */
-function dt_core_update_7122() {
+function dt_core_update_7123() {
   $modules = array(
     'dt_social_network_links',
   );
