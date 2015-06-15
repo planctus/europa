@@ -15,9 +15,9 @@ function europa_js_alter(&$js) {
   );
 }
 
- /**
-  * Implements template_preprocess_field().
-  */
+/**
+ * Implements template_preprocess_field().
+ */
 function europa_preprocess_field(&$vars) {
   // Changing label for the field to display stripped out values.
   if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
@@ -67,6 +67,32 @@ function europa_preprocess_block(&$vars) {
     $vars['content'] = l($label . $code, 'splash', $options);
   }
 
+  // Replace block-title class with block__title in order to keep BEM structure
+  // of classes.
+  $block_title_class = array_search('block-title', $vars['title_attributes_array']['class']);
+  if ($block_title_class !== FALSE) {
+    unset($vars['title_attributes_array']['class'][$block_title_class]);
+  }
+  $vars['title_attributes_array']['class'][] = 'block__title';
+
+  if (isset($block->bid)) {
+    // Check if the block is a exposed form.
+    // This is checked by looking at the $block->bid which in case
+    // of views exposed filters, always contains 'views--exp-' string.
+    if (strpos($block->bid, 'views--exp-') !== FALSE) {
+      $vars['classes_array'][] = 'filters';
+      $vars['title_attributes_array']['class'][] = 'filters__title';
+      $block->subject = t('Refine results');
+
+      // Passing block id to Drupal.settings in order to pass it through data
+      // attribute in the collapsible panel.
+      drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
+
+      // Adding filters.js file.
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
+    }
+  }
+
   if ($block->delta == 'inline_navigation') {
     $vars['classes_array'][] = 'inpage-nav__wrapper';
     $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
@@ -82,6 +108,34 @@ function europa_preprocess_views_view(&$vars) {
   if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
     $vars['classes_array'][] = 'listing';
   }
+
+  // Checking if exposed filters are set and add variable that stores active
+  // filters.
+  if (module_exists('dt_exposed_filter_data')) {
+    $vars['active_filters'] = get_exposed_filter_output();
+  }
+  $content_type = array();
+  $content_type_filters = $view->filter['type']->value;
+  foreach ($content_type_filters as $filter) {
+    $content_type = $filter;
+  }
+
+  $vars['items_count'] = '';
+  // Checking if .listing exists in classes_array so that result count can be
+  // displayed.
+  if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+    if ($total_rows == 0) {
+      $items_count = t("No @content_types", array('@content_type' => $content_type));
+    }
+    else {
+      $items_count = $total_rows . ' ' . format_plural($total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
+    }
+
+    $vars['items_count'] = $items_count;
+  }
 }
 
 /**
@@ -93,7 +147,6 @@ function europa_preprocess_views_view_unformatted(&$vars) {
   $vars['additional_classes'][] = 'listing__item';
   $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
 }
-
 
 /**
  * Implements hook_theme().
@@ -126,19 +179,16 @@ function europa_form_required_marker($variables) {
  */
 function europa_preprocess_page(&$variables) {
   $node = &$variables['node'];
-  $variables['ds_node'] = FALSE;
 
-  // Check if Display Suite is handling node.
-  if (isset($node) && ds_get_layout('node', $node->type, 'full')) {
-    // This disables message-printing on ALL page displays.
-    $variables['show_messages'] = FALSE;
-
-    // Add ds_node true to the node object.
-    $variables['ds_node'] = TRUE;
-    // Add tabs to node object so we can put it in the DS template instead.
-    if (isset($variables['tabs'])) {
-      $node->local_tabs = drupal_render($variables['tabs']);
-    }
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = ' class="col-md-6"';
+  }
+  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = ' class="col-md-9"';
+  }
+  else {
+    $variables['content_column_class'] = ' class="col-md-12"';
   }
 
   // Set footer region column classes.
@@ -148,6 +198,55 @@ function europa_preprocess_page(&$variables) {
   else {
     $variables['footer_column_class'] = 'col-sm-12';
   }
+
+  if (isset($node)) {
+    // Adding generic introduction field to be later rendered in page template.
+    $variables['field_core_introduction'] = field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden'));
+
+    // Check if Display Suite is handling node.
+    if (ds_get_layout('node', $node->type, 'full')) {
+      // This disables message-printing on ALL page displays.
+      $variables['show_messages'] = FALSE;
+
+      // Add tabs to node object so we can put it in the DS template instead.
+      if (isset($variables['tabs'])) {
+        $node->local_tabs = drupal_render($variables['tabs']);
+      }
+
+      $variables['theme_hook_suggestions'][] = 'page__ds_node';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for views exposed form.
+ */
+function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    // Button value change on all the views exposed forms is due to a
+    // design/ux requirement which uses the 'Refine results' label for all the
+    // filter forms.
+    $form['submit']['#value'] = t('Refine results');
+    $form['submit']['#attributes']['class'][] = 'btn-primary';
+    $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
+    $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
+    $form['type']['#options']['All'] = t("All types");
+    $form['department']['#options']['All'] = t("All departments");
+    $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
+    $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
+  }
+}
+
+/**
+ * Implements hook_date_popup_process_alter().
+ * @param $element
+ * @param $form_state
+ * @param $context
+ */
+function europa_date_popup_process_alter(&$element, &$form_state, $context) {
+  // Removing the description from the datepicker.
+  unset($element['date']['#description']);
+  unset($element['time']['#description']);
 }
 
 /**
@@ -400,9 +499,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
 
 /**
  * Helper applying BEM to footer menu item links.
- *
  * @param $variables
- *
  * @return string
  */
 function _europa_menu_link__footer(&$variables) {
@@ -421,9 +518,7 @@ function _europa_menu_link__footer(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
  * @param $variables
- *
  * @return string
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
@@ -432,9 +527,7 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
  * @param $variables
- *
  * @return string
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
@@ -664,7 +757,19 @@ function _europa_field_component_listing($variables, $config) {
     $output .= '</' . $config['listing_wrapper_element'] . '>';
   }
   $output .= '</div>';
+  return $output;
+}
 
+/**
+ * Helper function for display 'title' view mode field.
+ */
+function _europa_field_component_listing_title($variables) {
+  $output = '';
+  $output .= '<ul class="listing listing--title">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
+  }
+  $output .= '</ul>';
   return $output;
 }
 
@@ -685,7 +790,6 @@ function europa_field($variables) {
 
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
-        // kpr($variables);
         switch ($first_node['#view_mode']) {
           case 'title':
             $settings['modifier'] . 'listing--title';
@@ -699,11 +803,19 @@ function europa_field($variables) {
             $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
-        return _europa_field_component_listing($variables, $settings);
       }
 
       break;
   }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function europa_css_alter(&$css) {
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
+  );
 }
 
 /**

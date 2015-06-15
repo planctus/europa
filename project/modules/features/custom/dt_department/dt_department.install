@@ -5,11 +5,48 @@
  */
 
 /**
+ * Helper function to delete all department tasks taxonomy term.
+ *
+ * @see https://www.drupal.org/project/taxonomy_delete_all_terms
+ */
+function _dt_department_remove_all_department_tasks() {
+  $vocabulary_machine_name = 'department_tasks';
+  $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
+  $efq = new EntityFieldQuery();
+  $efq->entityCondition('entity_type', 'taxonomy_term');
+  $efq->propertyCondition('vid', $vocabulary->vid, '=');
+  $result = $efq->execute();
+  if (!isset($result['taxonomy_term'])) {
+    drupal_set_message(t('No terms to delete in vocabulary @voc.', array('@voc' => $vocabulary_machine_name)));
+  }
+  else {
+    foreach ($result['taxonomy_term'] as $term) {
+      taxonomy_term_delete($term->tid);
+    }
+  }
+}
+
+/**
+ * Helper function migrating department tasks.
+ */
+function _dt_department_migrate_department_tasks() {
+  // Import "Department tasks" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_department' => array('taxonomy')));
+  // Import department_tasks vocabulary's terms.
+  Migration::getInstance('DTDepartmentTasks')->processImport();
+}
+
+/**
  * Implements hook_install().
  */
 function dt_department_install() {
   // Apply default configuration to "Department" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('department');
+  // Migrating department tasks.
+  _dt_department_migrate_department_tasks();
 }
 
 /**
@@ -22,7 +59,9 @@ function dt_department_uninstall() {
 }
 
 /**
- * Removing field_department_contact field as it becomes field_core_contact on DT project level (dt_core).
+ * Removing field_department_contact field as it becomes field_core_contact.
+ *
+ * ... on DT project level (dt_core).
  */
 function dt_department_update_7101() {
   field_delete_field("field_department_contact");
@@ -112,6 +151,16 @@ function dt_department_update_7106() {
     field_group_group_export_delete($group, FALSE);
   }
 
+  // Reverting feature.
+  features_revert_module('dt_department');
+}
+
+/**
+ * Migrating department tasks, modified Action link to Staff search field.
+ */
+function dt_department_update_7107() {
+  field_delete_field("field_department_action_link");
+  field_delete_field("field_department_related_tasks");
   // Reverting feature.
   features_revert_module('dt_department');
 }

@@ -68,3 +68,10 @@ function dt_publication_update_7104() {
   field_group_group_export_delete($group_publication_common, FALSE);
   field_group_group_export_delete($group_publication_files, FALSE);
 }
+
+/**
+ * Removing field field_publication_summary.
+ */
+function dt_publication_update_7105() {
+  field_delete_field('field_publication_summary');
+}

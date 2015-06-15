@@ -10,13 +10,13 @@
 function dt_policy_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_policy'
-  $field_bases['field_core_policy'] = array(
+  // Exported field_base: 'field_core_policies'
+  $field_bases['field_core_policies'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_policy',
+    'field_name' => 'field_core_policies',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(
@@ -54,13 +54,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_policies'
-  $field_bases['field_core_policies'] = array(
+  // Exported field_base: 'field_core_policy'
+  $field_bases['field_core_policy'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_policies',
+    'field_name' => 'field_core_policy',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(

@@ -30,6 +30,7 @@ function dt_announcement_field_group_info() {
       4 => 'field_announcement_location',
       5 => 'field_announcement_type',
       6 => 'field_core_introduction',
+      7 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -85,8 +86,8 @@ function dt_announcement_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_topics',
-      2 => 'field_core_persons',
+      1 => 'field_core_persons',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -115,8 +116,8 @@ function dt_announcement_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_announcement_type',
-      1 => 'field_announcement_location',
+      0 => 'field_announcement_location',
+      1 => 'field_announcement_type',
       2 => 'post_date',
     ),
     'format_type' => 'html-element',
@@ -177,7 +178,8 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_announcement_location',
+      2 => 'post_date',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -207,9 +209,9 @@ function dt_announcement_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
-      1 => 'field_core_department',
-      2 => 'field_core_persons',
-      3 => 'field_core_policy',
+      1 => 'field_core_policy',
+      2 => 'field_core_department',
+      3 => 'field_core_persons',
       4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
@@ -237,12 +239,11 @@ function dt_announcement_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'metatags',
-      1 => 'group_announcement_content',
-      2 => 'group_announcement_context_info',
-      3 => 'group_announcement_related',
-      4 => 'group_editorial_settings',
-      5 => 'group_media',
+      0 => 'group_announcement_content',
+      1 => 'group_announcement_context_info',
+      2 => 'group_announcement_related',
+      3 => 'group_editorial_settings',
+      4 => 'group_media',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -311,35 +312,6 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_media|node|announcement|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_scheduler|node|announcement|form';
-  $field_group->group_name = 'group_scheduler';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'announcement';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Page settings',
-    'weight' => '8',
-    'children' => array(
-      0 => 'path',
-      1 => 'scheduler_settings',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'Page settings',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-scheduler field-group-tab',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_scheduler|node|announcement|form'] = $field_group;
 
   return $export;
 }

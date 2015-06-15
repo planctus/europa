@@ -226,9 +226,54 @@ function dt_core_update_7117() {
 }
 
 /**
- * Revert updated feautres.
+ * DT Editor configurations.
  */
 function dt_core_update_7118() {
+  features_revert_module('dt_core');
+}
+
+/**
+ * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ */
+function dt_core_update_7119() {
+  $modules = array(
+    'dt_exposed_filter_data',
+  );
+  module_enable($modules);
+
+  // The features to revert.
+  $features = array(
+    'dt_announcement',
+    'dt_department',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Reverts dt_announcement, dt_contact and dt_person.
+ */
+function dt_core_update_7120() {
+  // The features to revert.
+  $features = array(
+    'dt_announcement',
+    'dt_contact',
+    'dt_person',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Revert updated feautres.
+ */
+function dt_core_update_7121() {
   // The features to enable.
   $features = array(
     'dt_department',
