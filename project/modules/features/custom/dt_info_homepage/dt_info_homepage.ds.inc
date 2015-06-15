@@ -80,6 +80,37 @@ function dt_info_homepage_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|info_homepage|default';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'info_homepage';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left_header' => array(
+        0 => 'field_core_introduction',
+      ),
+    ),
+    'fields' => array(
+      'field_core_introduction' => 'left_header',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|info_homepage|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|info_homepage|full';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'info_homepage';
