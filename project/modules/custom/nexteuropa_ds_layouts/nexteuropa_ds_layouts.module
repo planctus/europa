@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Nexteuropa display suite settings and helpers.
+ */
 
 /**
  * Define Display Suite layouts.
@@ -73,4 +77,71 @@ function nexteuropa_ds_layouts_ds_layout_info() {
   );
 
   return $layouts;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function nexteuropa_ds_layouts_field_formatter_info() {
+  return array(
+    'nexteuropa_ds_layouts_formatter_link_button_default' => array(
+      'label' => 'Link button default',
+      'field types' => array('link_field'),
+      'settings' => array(
+        'class' => 'btn btn-default',
+      ),
+    ),
+    'nexteuropa_ds_layouts_formatter_link_button_primary' => array(
+      'label' => 'Link button primary',
+      'field types' => array('link_field'),
+      'settings' => array(
+        'class' => 'btn btn-primary',
+      ),
+    ),
+    'nexteuropa_ds_layouts_formatter_link_button_secondary' => array(
+      'label' => 'Link button secondary',
+      'field types' => array('link_field'),
+      'settings' => array(
+        'class' => 'btn btn-secondary',
+      ),
+    ),
+    'nexteuropa_ds_layouts_formatter_link_button_call_for_action' => array(
+      'label' => 'Link button call for action',
+      'field types' => array('link_field'),
+      'settings' => array(
+        'class' => 'btn btn-ctn',
+      ),
+    ),
+    'nexteuropa_ds_layouts_formatter_link_button_listing_title' => array(
+      'label' => 'Link listing title',
+      'field types' => array('link_field'),
+      'settings' => array(
+        'class' => 'listing__title',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    // Set attribute from formatter settings.
+    $item['attributes']['class'] = $display['settings']['class'];
+    // Call theme function of link module (theme_link_formatter_link_default).
+    $elements[$delta] = array(
+      '#theme' => 'link_formatter_link_default',
+      '#element' => $item,
+      '#field' => $instance,
+      '#display' => $display,
+    );
+  }
+  // Multiple field wrapper.
+  if ($field['cardinality'] == -1) {
+    $elements['#prefix'] = '<div class="btn-group">';
+    $elements['#suffix'] = '</div>';
+  }
+  return $elements;
 }
