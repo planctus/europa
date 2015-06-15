@@ -732,7 +732,7 @@ function _europa_field_component_listing($variables, $config) {
     for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
       $item = $variables['items'][$counter];
       // Row content.
-      switch ($config['modifier']) {
+      switch ($config['view_mode']) {
         case 'title':
           $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
           break;
@@ -771,6 +771,7 @@ function europa_field($variables) {
       $reference = array_shift($element[0]);
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
       $settings = array();
+      $settings['view_mode'] = $first_node['#view_mode'];
       $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
       // Custom listing settings based on view mode.
