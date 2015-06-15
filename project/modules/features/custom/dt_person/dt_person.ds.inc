@@ -30,6 +30,11 @@ function dt_person_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_person_photo' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_person_role' => array(
       'formatter_settings' => array(
         'ft' => array(

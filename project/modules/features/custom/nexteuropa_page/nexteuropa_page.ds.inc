@@ -50,10 +50,10 @@ function nexteuropa_page_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|page|full';
+  $ds_fieldsetting->id = 'node|page|meta';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'page';
-  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->view_mode = 'meta';
   $ds_fieldsetting->settings = array(
     'title' => array(
       'weight' => '0',
@@ -77,37 +77,6 @@ function nexteuropa_page_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => 'listing listing--title listing--no-padding',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => 'listing__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-  );
-  $export['node|page|full'] = $ds_fieldsetting;
-
-  $ds_fieldsetting = new stdClass();
-  $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|page|meta';
-  $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'page';
-  $ds_fieldsetting->view_mode = 'meta';
-  $ds_fieldsetting->settings = array(
-    'post_date' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_long',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
           'fi-el' => 'span',
           'fi-cl' => 'meta__item',
@@ -115,11 +84,6 @@ function nexteuropa_page_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
-      ),
-    ),
-    'title_field' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
   );
@@ -267,15 +231,13 @@ function nexteuropa_page_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_page_meta',
+        0 => 'title_field',
         1 => 'post_date',
-        2 => 'title_field',
       ),
     ),
     'fields' => array(
-      'group_page_meta' => 'main',
-      'post_date' => 'main',
       'title_field' => 'main',
+      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

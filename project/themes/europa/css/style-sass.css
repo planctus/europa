@@ -4784,7 +4784,6 @@ button.close {
 
 img {
   height: auto;
-  display: block;
   max-width: 100%; }
 
 /*
@@ -5653,30 +5652,6 @@ Styleguide datepicker
     left: 0 !important; }
  }
 
-.field--full-width {
-  margin-left: -15px;
-  margin-right: -15px;
-  padding-left: 15px;
-  padding-right: 15px; }
-  .field--full-width > * {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    padding-right: 0; }
-
-@media (min-width: 1200px) {
-  .field--full-width {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0; }
-
-  .col-lg-3 + .col-lg-9 .field--full-width {
-    position: relative;
-    left: -25%;
-    width: 125%; }
- }
-
 /*
 Feedback message
 
@@ -5783,6 +5758,130 @@ Styleguide form.feedback-message
   #feedback-form__accordion {
     overflow: hidden; }
  }
+
+.field--full-width {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .field--full-width > * {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0; }
+
+@media (min-width: 1200px) {
+  .field--full-width {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+
+  .col-lg-3 + .col-lg-9 .field--full-width {
+    position: relative;
+    left: -25%;
+    width: 125%; }
+ }
+
+/*
+Filters
+
+Filters implementation
+Drupal implementation guidelines can be found [PLACEHOLDER FOR GUIDELINES ON IMPLEMENTATION]
+
+Styleguide forms.filters
+
+*/
+.filters {
+  background: #ececec;
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.filters__wrapper {
+  padding: 15px; }
+
+.no-js .filters {
+  padding: 15px; }
+
+.filters__filter {
+  width: 100%;
+  clear: both; }
+
+.filters__title {
+  margin-bottom: 20px; }
+
+.filters__btn-submit {
+  width: 100%; }
+
+.filters__btn-reset {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 10px; }
+  .filters__btn-reset--small {
+    float: right; }
+
+.filters__result-count {
+  font-weight: bold;
+  padding: 1em 0;
+  line-height: 1;
+  overflow: hidden; }
+  .filters__result-count .btn-group {
+    float: right;
+    margin-top: 0; }
+  .filters__result-count + .filters__active-facets {
+    margin-top: -0.5em; }
+
+.filters__active-facets {
+  padding: 0 0 1em; }
+
+.filters__btn-collapse {
+  float: right; }
+
+.filters__close {
+  color: #004494 !important;
+  opacity: 1 !important;
+  font-size: 1em;
+  font-weight: 400;
+  padding-top: 32px;
+  margin-right: 20px;
+  text-decoration: none;
+  text-shadow: none; }
+  .filters__close:after {
+    content: "";
+    background: url('../images/svg/arrow-up--blue.svg') no-repeat;
+    height: 8px;
+    width: 10px;
+    margin-left: 5px;
+    display: inline-block;
+    text-decoration: none !important; }
+  .filters__close:hover, .filters__close:active, .filters__close:focus {
+    text-decoration: underline; }
+
+.filters__items-number, .filters__items-name {
+  font-size: 2.222em; }
+
+.filters__items-number {
+  display: block;
+  margin-right: 0.333em;
+  float: left;
+  padding-bottom: 0.5em; }
+
+@media (min-width: 480px) {
+  .filters__close:after {
+    height: 9px;
+    width: 12px; }
+ }
+
+@media (min-width: 768px) {
+  .filters {
+    background: transparent;
+    margin: 0;
+    padding: 0; }
+ }
+
+.views-exposed-form .views-exposed-widget {
+  padding: 0; }
 
 /*
 Footer
@@ -6364,8 +6463,8 @@ Styleguide listing
 
 .listing__column-second {
   float: right;
-  padding-left: 15px;
-  width: 25%; }
+  width: 100%;
+  margin: 0.2em 0 0.8em 0; }
 
 .listing__title {
   color: #004494;
@@ -6373,13 +6472,21 @@ Styleguide listing
   font-size: 1em;
   padding-top: 0.9em;
   padding-bottom: 0;
-  display: inline-block; }
+  display: inline-block;
+  border-bottom: 1px solid transparent; }
   .listing__title + * {
     font-size: 0.889em;
     padding-top: 0.7em; }
 
 .listing--no-padding {
   padding-left: 0 !important; }
+
+@media (min-width: 480px) {
+  .listing__column-second {
+    width: 25%;
+    padding-left: 15px;
+    margin: 0; }
+ }
 
 /*
 Listing title
@@ -6412,6 +6519,39 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+/*
+Listing layouts
+
+Listing components
+
+Markup: html/listing--column-left.html
+
+Styleguide listing.column-left
+*/
+.listing--column-left .listing__column-main {
+  width: auto;
+  overflow: hidden;
+  float: none; }
+.listing--column-left .listing__column-second {
+  width: auto;
+  float: left;
+  padding-right: 15px;
+  padding-left: 0; }
+
+.listing__wrapper {
+  margin-bottom: 30px; }
+  .listing__wrapper .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em; }
+  .listing__wrapper .listing__title {
+    font-size: 1.333em;
+    padding: 0.2em 0 0.4em 0; }
+    .listing__wrapper .listing__title + * {
+      font-size: inherit; }
+  .listing__wrapper p {
+    margin: 0;
+    padding: 0; }
+
 .listing__wrapper--hero {
   margin: 15px 0px !important; }
   .listing__wrapper--hero .listing__title {
@@ -6781,5 +6921,26 @@ Styleguide notification
   .notification__content p {
     max-width: none;
     margin: 0; }
+
+/*
+Facet tag
+
+Markup: html/facet-tag.html
+
+Styleguide forms.facettag
+*/
+.facet-tag {
+  display: inline-block;
+  margin-top: 0.5em;
+  margin-right: 0.5em; }
+  .facet-tag > * {
+    display: inline-block; }
+
+.facet-tag__value {
+  background: #e2e2e2;
+  padding: 0.1em 0.5em;
+  margin-left: 0.5em;
+  font-weight: bold;
+  border-radius: 0.9em; }
 
 /*# sourceMappingURL=style-sass.css.map */
