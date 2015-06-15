@@ -294,7 +294,7 @@ function dt_core_update_7121() {
 /**
  * Addinb buttons to Full HTML. Removing dt_editor format and profile.
  */
-function dt_core_update_7121() {
+function dt_core_update_7122() {
   $profile = 'dt_editor';
   // Applying a default set of buttons to the Full HTML profile.
   dt_apply_wysiwyg_buttons();
