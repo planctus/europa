@@ -53,6 +53,7 @@ function dt_department_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_core_contact',
+      1 => 'field_core_social_network_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -77,7 +78,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -98,6 +99,36 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_latest|node|department|full';
+  $field_group->group_name = 'group_department_latest';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Latest',
+    'weight' => '6',
+    'children' => array(
+      0 => 'group_latest_sidebar',
+      1 => 'group_latest_main',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Latest',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="latest"',
+      ),
+    ),
+  );
+  $export['group_department_latest|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_department_leadership|node|department|full';
   $field_group->group_name = 'group_department_leadership';
   $field_group->entity_type = 'node';
@@ -106,7 +137,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Leadership & Organisation',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_department_organigram',
@@ -197,16 +228,16 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Responsibilities',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_priorities',
       1 => 'field_core_topics',
       2 => 'field_department_intro_sentence',
-      3 => 'field_department_mission',
-      4 => 'field_department_plans_reports',
-      5 => 'field_department_tasks',
-      6 => 'field_department_tasks_desc',
-      7 => 'field_department_work_areas_sent',
+      3 => 'field_department_plans_reports',
+      4 => 'field_department_tasks',
+      5 => 'field_department_tasks_desc',
+      6 => 'field_department_work_areas_sent',
+      7 => 'field_department_mission',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -251,6 +282,62 @@ function dt_department_field_group_info() {
     ),
   );
   $export['group_editorial_settings|node|department|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_latest_main|node|department|full';
+  $field_group->group_name = 'group_latest_main';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_department_latest';
+  $field_group->data = array(
+    'label' => 'Main',
+    'weight' => '15',
+    'children' => array(),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Main',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_latest_main|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_latest_sidebar|node|department|full';
+  $field_group->group_name = 'group_latest_sidebar';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_department_latest';
+  $field_group->data = array(
+    'label' => 'Sidebar',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_core_social_network_links',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Sidebar',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__sidebar',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_latest_sidebar|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -328,13 +415,13 @@ function dt_department_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_abbreviation',
-      2 => 'field_core_ecorganisation',
-      3 => 'field_core_introduction',
-      4 => 'field_core_legacy_link',
+      1 => 'field_department_tasks',
+      2 => 'field_core_abbreviation',
+      3 => 'field_core_ecorganisation',
+      4 => 'field_core_introduction',
       5 => 'field_core_legacy_links',
       6 => 'field_core_link',
-      7 => 'field_department_tasks',
+      7 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
