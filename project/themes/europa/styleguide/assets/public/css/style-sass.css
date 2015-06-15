@@ -6444,7 +6444,7 @@ Styleguide listing
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
   .listing__item:hover .listing__title, .listing__item:active .listing__title, .listing__item:focus .listing__title {
-    border-bottom: 1px solid #404040;
+    text-decoration: underline;
     color: #404040; }
 
 .listing__item-link {
@@ -6473,8 +6473,7 @@ Styleguide listing
   margin-top: 0.9em;
   margin-bottom: 0.7em;
   padding: 0;
-  display: inline-block;
-  border-bottom: 1px solid transparent; }
+  display: inline-block; }
   .listing__title + * {
     font-size: 0.889em;
     margin-top: 0.9em; }
@@ -6501,9 +6500,10 @@ Styleguide listing.title
 .listing--title, ul.listing--title {
   padding: 0 0 0 15px; }
   .listing--title .listing__item:hover .listing__title, .listing--title .listing__item:active .listing__title, .listing--title .listing__item:focus .listing__title, ul.listing--title .listing__item:hover .listing__title, ul.listing--title .listing__item:active .listing__title, ul.listing--title .listing__item:focus .listing__title {
-    border-bottom: none; }
+    text-decoration: none; }
   .listing--title .listing__title, ul.listing--title .listing__title {
     padding: 0;
+    margin: 0;
     display: block; }
   .listing--title a.listing__title, .listing--title .listing__title a, ul.listing--title a.listing__title, ul.listing--title .listing__title a {
     display: block;
@@ -6551,8 +6551,16 @@ Styleguide listing.column-left
     margin: 0;
     padding: 0; }
 
+.listing__wrapper--row_three .listing__item {
+  margin-top: 15px; }
+  @media (min-width: 992px) {
+    .listing__wrapper--row_three .listing__item {
+      margin-top: 0px; } }
+
 .listing__wrapper--hero {
   margin: 15px 0px !important; }
+  .listing__wrapper--hero .listing__item {
+    margin-bottom: 15px; }
   .listing__wrapper--hero .listing__title {
     font-size: 1.556em !important;
     margin-top: 0.2em;
@@ -6580,11 +6588,14 @@ Styleguide listing.column-left
   background-color: #004494;
   color: #ffffff; }
 .listing__wrapper--cta .listing__item:hover .listing__title, .listing__wrapper--cta .listing__item:active .listing__title, .listing__wrapper--cta .listing__item:focus .listing__title {
-  color: #ffffff;
-  text-decoration: underline; }
+  color: #ffffff; }
 .listing__wrapper--cta .listing__title:after {
   margin-left: 10px;
-  font-size: 0.8em; }
+  font-size: 1.2em;
+  top: 4px;
+  position: relative; }
+.listing__wrapper--cta .listing__column-main {
+  width: 100%; }
 
 .listing__wrapper--hero .listing__item, .listing__wrapper--cta .listing__item {
   border: none; }

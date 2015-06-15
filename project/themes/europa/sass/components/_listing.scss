@@ -28,7 +28,7 @@ $spacing-bottom-listing__title: 0.7em;
   &:active,
   &:focus {
     .listing__title {
-      border-bottom: 1px solid $grey-base;
+      text-decoration: underline;
       color: $grey-base;
     }
   }
@@ -68,7 +68,6 @@ $spacing-bottom-listing__title: 0.7em;
   margin-bottom: $spacing-bottom-listing__title;
   padding: 0;
   display: inline-block;
-  border-bottom: 1px solid transparent;
   @extend .h3;
 
   & + * {
@@ -107,13 +106,14 @@ ul.listing--title {
     &:active,
     &:focus {
       .listing__title {
-        border-bottom: none;
+        text-decoration: none;
       }
     }
   }
 
   .listing__title {
     padding: 0;
+    margin: 0;
     display: block;
   }
 
@@ -216,10 +216,17 @@ Styleguide listing.column-left
 .listing__wrapper--row_three {
   .listing__item {
     @extend .col-md-4;
+    margin-top: 15px;
+    @include breakpoint(screen-md-min) {
+      margin-top: 0px;
+    }
   }
 }
 
 .listing__wrapper--hero {
+  .listing__item {
+    margin-bottom: 15px;
+  }
  .listing__title {
    font-size: $font-size-h3 !important;
    margin-top: 0.2em;
@@ -266,17 +273,21 @@ Styleguide listing.column-left
     &:focus {
       .listing__title {
         color: #ffffff;
-        text-decoration: underline;
       }
     }
   }
   .listing__title {
     &:after {
       margin-left: 10px;
-      font-size: 0.8em;
+      font-size: 1.2em;
+      top: 4px;
+      position: relative;
       @extend .icon--after;
       @extend .icon--right;
     }
+  }
+  .listing__column-main {
+    width: 100%;
   }
 }
 

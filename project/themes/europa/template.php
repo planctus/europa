@@ -778,7 +778,7 @@ function europa_field($variables) {
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
           case 'title':
-            $settings['modifier'] . 'listing--title';
+            $settings['modifier'] = 'listing--title';
             $settings['wrapper_modifier'] .= ' listing--title__wrapper';
             $settings['listing_wrapper_element'] = 'ul';
             $settings['item_wrapper_element'] = 'li';
