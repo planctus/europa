@@ -126,7 +126,21 @@ ul.listing--title {
 }
 
 /*
-Listing column left
+Listing teaser
+
+Listing components
+
+Markup: html/listing--teaser.html
+
+Styleguide listing.teaser
+*/
+.listing--teaser,
+ul.listing--teaser {
+
+}
+
+/*
+Listing layouts
 
 Listing components
 
@@ -146,5 +160,130 @@ Styleguide listing.column-left
     float: left;
     padding-right: 15px;
     padding-left: 0;
+  }
+}
+
+.listing__wrapper {
+  .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em;
+  }
+  .listing__title {
+    font-size: $font-size-big;
+    & + * {
+      font-size: inherit;
+    }
+    padding: 0.2em 0 0.4em 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  margin-bottom: 30px;
+}
+.listing__wrapper--three_columns,
+.listing__wrapper--two_columns {
+  @extend .row;
+}
+
+.listing__wrapper--two_columns {
+  .listing {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--three_columns {
+  .listing {
+    @extend .col-md-4;
+  }
+}
+
+.listing__wrapper--row_three,
+.listing__wrapper--row_two {
+  .listing {
+    @extend .row;
+  }
+}
+
+.listing__wrapper--row_two {
+  .listing__item {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--row_three {
+  .listing__item {
+    @extend .col-md-4;
+  }
+}
+
+.listing__wrapper--hero {
+ .listing__title {
+   font-size: $font-size-h3 !important;
+   padding-top: 0.2em;
+   padding-bottom: 0.4em;
+   & + * {
+     font-size: inherit;
+   }
+ }
+ margin: 15px 0px !important;
+}
+
+.listing__wrapper--highlight {
+  background-color: $grey-lighter;
+  padding: 60px 0 !important;
+  margin-bottom: 30px;
+  .listing__wrapper {
+    margin-bottom: 0px;
+  }
+
+  .listing--footer {
+    margin: 15px 0px 0px;
+    p {
+      margin:0;
+      max-width: 100%;
+      text-align: right;
+      line-height: 1;
+    }
+    .btn {
+      margin: 0px;
+    }
+  }
+}
+
+.listing__wrapper--cta {
+  a {
+    padding: 15px 30px;
+  }
+  .listing__item {
+    .listing__title,
+    a {
+      background-color: $brand-primary;
+      color: #ffffff;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      .listing__title {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+  .listing__title {
+    &:after {
+      margin-left: 10px;
+      font-size: 0.8em;
+      @extend .icon--after;
+      @extend .icon--right;
+    }
+  }
+}
+
+.listing__wrapper--hero,
+.listing__wrapper--cta {
+  .listing__item {
+    border: none;
   }
 }

@@ -124,8 +124,11 @@ Styleguide: icon
 }
 
 .icon--right {
+  content: '\e601';
+}
+.icon--right {
   &:before {
-    content: '\e601';
+    @extend .icon--right;
   }
 }
 

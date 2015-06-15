@@ -1,3 +1,41 @@
-<?php 
+<?php
+/**
+ * @file
+ * Digital Transformation Homepage Core install file.
+ */
 
+/**
+ * Implements hook_install().
+ */
+function dt_homepage_core_install() {
+  // Enabling functional features.
+  $features = array(
+    'dt_info_homepage',
+  );
+  module_enable($features);
+}
 
+/**
+ * Implements hook_uninstall().
+ */
+function dt_homepage_core_uninstall() {
+  $path = drupal_get_path('module', 'dt_homepage_core') . '/dt_homepage_core.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Homepage %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Enabling and reverting features.
+ */
+function dt_homepage_core_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_info_homepage',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}

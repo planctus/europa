@@ -85,6 +85,13 @@ Styleguide buttons
       border-color: $text-color;
       outline-color: $text-color;
     }
+
+    &:after {
+      margin-left: 10px;
+      font-size: 0.8em;
+      @extend .icon--after;
+      @extend .icon--right;
+    }
   }
 }
 

@@ -27,6 +27,7 @@ features[ds_layout_settings][] = node|page|teaser
 features[features_api][] = api:2
 features[field_group][] = group_content_tabgroup|node|page|form
 features[field_group][] = group_editorial_settings|node|page|form
+features[field_group][] = group_highlight|node|info_homepage|full
 features[field_group][] = group_page_main|node|page|form
 features[field_instance][] = node-page-field_core_in_page_navigation
 features[field_instance][] = node-page-field_core_introduction
