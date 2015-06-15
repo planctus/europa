@@ -178,20 +178,15 @@ function europa_form_required_marker($variables) {
  * Implements template_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
-  $node = &$variables['node'];
-  $variables['ds_node'] = FALSE;
-
-  // Check if Display Suite is handling node.
-  if (isset($node) && ds_get_layout('node', $node->type, 'full')) {
-    // This disables message-printing on ALL page displays.
-    $variables['show_messages'] = FALSE;
-
-    // Add ds_node true to the node object.
-    $variables['ds_node'] = TRUE;
-    // Add tabs to node object so we can put it in the DS template instead.
-    if (isset($variables['tabs'])) {
-      $node->local_tabs = drupal_render($variables['tabs']);
-    }
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = ' class="col-md-6"';
+  }
+  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = ' class="col-md-9"';
+  }
+  else {
+    $variables['content_column_class'] = ' class="col-md-12"';
   }
 
   // Set footer region column classes.
@@ -200,6 +195,26 @@ function europa_preprocess_page(&$variables) {
   }
   else {
     $variables['footer_column_class'] = 'col-sm-12';
+  }
+
+  $node = &$variables['node'];
+  
+  if (isset($node)) {
+    // Adding generic introduction field to be later rendered in page template.
+    $variables['field_core_introduction'] = field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden'));
+
+    // Check if Display Suite is handling node.
+    if (ds_get_layout('node', $node->type, 'full')) {
+      // This disables message-printing on ALL page displays.
+      $variables['show_messages'] = FALSE;
+
+      // Add tabs to node object so we can put it in the DS template instead.
+      if (isset($variables['tabs'])) {
+        $node->local_tabs = drupal_render($variables['tabs']);
+      }
+
+      $variables['theme_hook_suggestions'][] = 'page__ds_node';
+    }
   }
 }
 
