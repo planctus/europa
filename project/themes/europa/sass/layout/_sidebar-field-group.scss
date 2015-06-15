@@ -1,0 +1,11 @@
+.sidebar-field-group {
+  @extend .row;
+}
+
+.sidebar-field-group__main {
+  @extend .col-md-8;
+}
+
+.sidebar-field-group__sidebar {
+  @extend .col-md-4;
+}

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * nexteuropa_ds_layouts.module
+ * Nexteuropa display suite settings and helpers.
  */
 
 /**

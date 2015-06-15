@@ -313,3 +313,24 @@ function dt_core_update_7122() {
   // Revert dt_core.
   features_revert_module('dt_core');
 }
+
+/**
+ * Enabling dt_social_network_links.
+ */
+function dt_core_update_7122() {
+  $modules = array(
+    'dt_social_network_links',
+  );
+  module_enable($modules);
+
+  // The features to revert.
+  $features = array(
+    'dt_social_network_links',
+    'dt_department',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
