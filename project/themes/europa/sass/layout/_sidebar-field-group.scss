@@ -2,10 +2,19 @@
   @extend .row;
 }
 
+.sidebar-field-group--important {
+  padding-top: 30px;
+}
+
 .sidebar-field-group__main {
   @extend .col-md-8;
 }
 
 .sidebar-field-group__sidebar {
   @extend .col-md-4;
+}
+
+// Drupal.
+.front .sidebar-field-group {
+  @extend .sidebar-field-group--important;
 }
