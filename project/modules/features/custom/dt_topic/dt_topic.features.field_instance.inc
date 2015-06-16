@@ -82,6 +82,12 @@ function dt_topic_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 16,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -168,7 +174,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -194,20 +200,16 @@ function dt_topic_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 0,
-          'dt_editor' => 'dt_editor',
           'filtered_html' => 0,
           'full_html' => 'full_html',
           'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 1,
+        'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
               'weight' => -6,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -8,
@@ -222,13 +224,17 @@ function dt_topic_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -384,9 +390,12 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'view_mode' => 'meta',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 19,
       ),
       'teaser' => array(

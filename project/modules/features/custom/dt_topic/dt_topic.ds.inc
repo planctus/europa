@@ -18,7 +18,7 @@ function dt_topic_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'node_type' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -41,6 +41,24 @@ function dt_topic_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'field_core_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_policy_areas' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|topic|full'] = $ds_fieldsetting;
@@ -150,9 +168,9 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_topic_meta',
-        1 => 'title',
-        2 => 'node_type',
+        0 => 'node_type',
+        1 => 'group_topic_meta',
+        2 => 'title',
         3 => 'field_core_introduction',
       ),
       'central' => array(
@@ -172,9 +190,9 @@ function dt_topic_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
+      'node_type' => 'left_header',
       'group_topic_meta' => 'left_header',
       'title' => 'left_header',
-      'node_type' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_top_tasks' => 'central',
       'group_topic_contextual' => 'top',
