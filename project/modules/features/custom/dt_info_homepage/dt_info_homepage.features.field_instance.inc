@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * dt_policy_area.features.field_instance.inc
+ * dt_info_homepage.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function dt_policy_area_field_default_field_instances() {
+function dt_info_homepage_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_area-field_core_description'
-  $field_instances['node-policy_area-field_core_description'] = array(
-    'bundle' => 'policy_area',
+  // Exported field_instance: 'node-info_homepage-field_core_introduction'
+  $field_instances['node-info_homepage-field_core_introduction'] = array(
+    'bundle' => 'info_homepage',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -22,19 +22,20 @@ function dt_policy_area_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 0,
       ),
-      'teaser' => array(
+      'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_description',
-    'label' => 'Description',
+    'field_name' => 'field_core_introduction',
+    'label' => 'Introduction',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -64,165 +65,50 @@ function dt_policy_area_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -4,
+      'weight' => 13,
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_introduction'
-  $field_instances['node-policy_area-field_core_introduction'] = array(
-    'bundle' => 'policy_area',
+  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_1'
+  $field_instances['node-info_homepage-field_info_homepage_section_1'] = array(
+    'bundle' => 'info_homepage',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Tagline or introduction. Maximum 300 characters.',
+    'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_introduction',
-    'label' => 'Introduction',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'dt_editor' => 'dt_editor',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -6,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
-            ),
-            'filtered_html' => array(
-              'weight' => -8,
-            ),
-            'full_html' => array(
-              'weight' => -9,
-            ),
-            'plain_text' => array(
-              'weight' => -7,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => -3,
-    ),
-  );
-
-  // Exported field_instance: 'node-policy_area-field_core_persons'
-  $field_instances['node-policy_area-field_core_persons'] = array(
-    'bundle' => 'policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_persons',
-    'label' => 'Related person',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-policy_area-field_core_policy_area'
-  $field_instances['node-policy_area-field_core_policy_area'] = array(
-    'bundle' => 'policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'row_two',
+          'nexteuropa_ds_layouts_modifier' => 'listing__wrapper--hero',
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'entityreference_entity_view',
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_policy_area',
-    'label' => 'Parent policy area',
+    'field_name' => 'field_info_homepage_section_1',
+    'label' => 'Section One',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -237,13 +123,157 @@ function dt_policy_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => -2,
+      'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-group_content_access'
-  $field_instances['node-policy_area-group_content_access'] = array(
-    'bundle' => 'policy_area',
+  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_2'
+  $field_instances['node-info_homepage-field_info_homepage_section_2'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'two_columns',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 2,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_section_2',
+    'label' => 'Section Two',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_3'
+  $field_instances['node-info_homepage-field_info_homepage_section_3'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'two_columns',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 4,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_section_3',
+    'label' => 'Section Three',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_4'
+  $field_instances['node-info_homepage-field_info_homepage_section_4'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'row_three',
+          'nexteuropa_ds_layouts_modifier' => 'listing__wrapper--cta',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 4,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_section_4',
+    'label' => 'Section Four',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-info_homepage-group_content_access'
+  $field_instances['node-info_homepage-group_content_access'] = array(
+    'bundle' => 'info_homepage',
     'default_value' => array(
       0 => array(
         'value' => 0,
@@ -256,13 +286,13 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 4,
       ),
-      'teaser' => array(
+      'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -289,14 +319,14 @@ function dt_policy_area_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 7,
     ),
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_area-og_group_ref'
-  $field_instances['node-policy_area-og_group_ref'] = array(
-    'bundle' => 'policy_area',
+  // Exported field_instance: 'node-info_homepage-og_group_ref'
+  $field_instances['node-info_homepage-og_group_ref'] = array(
+    'bundle' => 'info_homepage',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -305,13 +335,13 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 14,
       ),
-      'teaser' => array(
+      'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'node',
@@ -349,29 +379,28 @@ function dt_policy_area_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 10,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-title_field'
-  $field_instances['node-policy_area-title_field'] = array(
-    'bundle' => 'policy_area',
+  // Exported field_instance: 'node-info_homepage-title_field'
+  $field_instances['node-info_homepage-title_field'] = array(
+    'bundle' => 'info_homepage',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -393,19 +422,19 @@ function dt_policy_area_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 12,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Description');
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
-  t('Parent policy area');
-  t('Related person');
-  t('Tagline or introduction. Maximum 300 characters.');
+  t('Section Four');
+  t('Section One');
+  t('Section Three');
+  t('Section Two');
   t('Title');
 
   return $field_instances;

@@ -419,9 +419,10 @@ function dt_department_field_group_info() {
       2 => 'field_core_abbreviation',
       3 => 'field_core_ecorganisation',
       4 => 'field_core_introduction',
-      5 => 'field_core_legacy_links',
-      6 => 'field_core_link',
-      7 => 'field_core_legacy_link',
+      5 => 'field_core_legacy_link',
+      6 => 'field_core_legacy_links',
+      7 => 'field_core_link',
+      8 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

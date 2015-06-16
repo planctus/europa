@@ -80,87 +80,84 @@ function nexteuropa_ds_layouts_ds_layout_info() {
 }
 
 /**
- * Implements hook_field_formatter_info().
+ * Implements hook_field_formatter_info_alter().
  */
-function nexteuropa_ds_layouts_field_formatter_info() {
-  return array(
-    'nexteuropa_ds_layouts_formatter_link_button_default' => array(
-      'label' => 'Link button default',
-      'field types' => array('link_field'),
-    ),
-    'nexteuropa_ds_layouts_formatter_link_button_primary' => array(
-      'label' => 'Link button primary',
-      'field types' => array('link_field'),
-    ),
-    'nexteuropa_ds_layouts_formatter_link_button_secondary' => array(
-      'label' => 'Link button secondary',
-      'field types' => array('link_field'),
-    ),
-    'nexteuropa_ds_layouts_formatter_link_button_call_for_action' => array(
-      'label' => 'Link button call for action',
-      'field types' => array('link_field'),
-    ),
-    'nexteuropa_ds_layouts_formatter_link_button_block' => array(
-      'label' => 'Link button block',
-      'field types' => array('link_field'),
-    ),
+function nexteuropa_ds_layouts_field_formatter_info_alter(&$info) {
+  $info['entityreference_entity_view']['settings'] += array(
+    'nexteuropa_ds_layouts_columns' => 'default',
+    'nexteuropa_ds_layouts_modifier' => '',
   );
 }
 
-
 /**
- * Helper function to select the right class.
- *
- * @param string $formatter
- *   Formatter name.
- *
- * @return string
- *   Class connected to formatter.
+ * Implements hook_field_formatter_settings_form_alter().
  */
-function _nexteuropa_ds_layouts_field_formatter_view_classes($formatter) {
-  switch ($formatter) {
-    case 'nexteuropa_ds_layouts_formatter_link_button_default':
-      return 'btn btn-default';
-
-    case 'nexteuropa_ds_layouts_formatter_link_button_primary':
-      return 'btn btn-primary';
-
-    case 'nexteuropa_ds_layouts_formatter_link_button_secondary':
-      return 'btn btn-secondary';
-
-    case 'nexteuropa_ds_layouts_formatter_link_button_call_for_action':
-      return 'btn btn-ctn';
-
-    case 'nexteuropa_ds_layouts_formatter_link_button_block':
-      return 'btn btn-default btn-block';
-
+function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_form, $context) {
+  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
+    $settings_form['nexteuropa_ds_layouts_columns'] = array(
+      '#type' => 'select',
+      '#title' => t('BEM: Listing layout'),
+      '#options' => array(
+        'default' => t('Default'),
+        'two_columns' => t('Two Columns'),
+        'three_columns' => t('Three Columns'),
+        'row_two' => t('Row with two items'),
+        'row_three' => t('Row with three items'),
+      ),
+      '#default_value' => $settings['nexteuropa_ds_layouts_columns'],
+    );
+    $settings_form['nexteuropa_ds_layouts_modifier'] = array(
+      '#type' => 'textfield',
+      '#title' => t('BEM: Modifier'),
+      '#default_value' => $settings['nexteuropa_ds_layouts_modifier'],
+      '#description' => t('Class names separated by spaces.'),
+    );
   }
-  return '';
 }
 
 /**
- * Implements hook_field_formatter_view().
+ * Implements hook_field_formatter_settings_summary_alter().
  */
-function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $elements = array();
-  $formatter = $display['type'];
+function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary, $context) {
+  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
+    if (isset($settings['nexteuropa_ds_layouts_columns'])) {
+      if (!empty($summary)) {
+        $summary .= '<br />';
+      }
+      $summary .= t('BEM: List layout') . ': ' . $settings['nexteuropa_ds_layouts_columns'];
+    }
 
-  foreach ($items as $delta => $item) {
-    // Set attribute from formatter settings.
-    $item['attributes']['class'] = _nexteuropa_ds_layouts_field_formatter_view_classes($formatter);
+    if (isset($settings['nexteuropa_ds_layouts_modifier']) && !empty($settings['nexteuropa_ds_layouts_modifier'])) {
+      if (!empty($summary)) {
+        $summary .= '<br />';
+      }
+      $summary .= t('BEM: Modifier') . ': ' . $settings['nexteuropa_ds_layouts_modifier'];
+    }
+  }
+}
 
-    // Call theme function of link module (theme_link_formatter_link_default).
-    $elements[$delta] = array(
-      '#theme' => 'link_formatter_link_default',
-      '#element' => $item,
-      '#field' => $instance,
-      '#display' => $display,
-    );
+/**
+ * Implements hook_preprocess_field().
+ */
+function nexteuropa_ds_layouts_preprocess_field(&$variables) {
+  if (isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'entityreference_entity_view') {
+    $entity_type = $variables['element']['#entity_type'];
+    $field_name  = $variables['element']['#field_name'];
+    $bundle      = $variables['element']['#bundle'];
+    $view_mode   = $variables['element']['#view_mode'];
+
+    // Fetch the instance settings and default display settings.
+    $info = field_info_instance($entity_type, $field_name, $bundle);
+    $formatter_settings = $info['display']['default']['settings'];
+    if (isset($info['display'][$view_mode]['settings'])) {
+      $formatter_settings = $info['display'][$view_mode]['settings'] + $formatter_settings;
+    }
+    // Make the setting available in the field template.
+    $variables['nexteuropa_ds_layouts_columns'] = $formatter_settings['nexteuropa_ds_layouts_columns'];
+    $variables['nexteuropa_ds_layouts_modifier'] = $formatter_settings['nexteuropa_ds_layouts_modifier'];
   }
-  // Multiple field wrapper.
-  if (($field['cardinality'] == -1) && ($formatter != 'nexteuropa_ds_layouts_formatter_link_button_block')) {
-    $elements['#prefix'] = '<div class="btn-group">';
-    $elements['#suffix'] = '</div>';
-  }
-  return $elements;
 }

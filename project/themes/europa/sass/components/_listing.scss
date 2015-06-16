@@ -7,8 +7,8 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-$padding-top-listing__title: 0.9em;
-$padding-bottom-listing__title: 0.7em;
+$spacing-top-listing__title: 0.9em;
+$spacing-bottom-listing__title: 0.7em;
 
 .listing {
 }
@@ -28,7 +28,7 @@ $padding-bottom-listing__title: 0.7em;
   &:active,
   &:focus {
     .listing__title {
-      border-bottom: 1px solid $grey-base;
+      text-decoration: underline;
       color: $grey-base;
     }
   }
@@ -64,15 +64,15 @@ $padding-bottom-listing__title: 0.7em;
   color: $brand-primary;
   font-family: $font-family-sans-serif;
   font-size: 1em;
-  padding-top: $padding-top-listing__title;
-  padding-bottom: 0;
+  margin-top: $spacing-top-listing__title;
+  margin-bottom: $spacing-bottom-listing__title;
+  padding: 0;
   display: inline-block;
-  border-bottom: 1px solid transparent;
   @extend .h3;
 
   & + * {
     font-size: $font-size-little;
-    padding-top: $padding-bottom-listing__title;
+    margin-top: $spacing-top-listing__title;
   }
 }
 
@@ -106,27 +106,42 @@ ul.listing--title {
     &:active,
     &:focus {
       .listing__title {
-        border-bottom: none;
+        text-decoration: none;
       }
     }
   }
 
   .listing__title {
     padding: 0;
+    margin: 0;
     display: block;
   }
 
   a.listing__title,
   .listing__title a {
     display: block;
-    padding-top: $padding-top-listing__title;
-    padding-bottom: $padding-bottom-listing__title;
+    padding-top: $spacing-top-listing__title;
+    padding-bottom: $spacing-bottom-listing__title;
     padding-right: 2em;
   }
 }
 
 /*
-Listing column left
+Listing teaser
+
+Listing components
+
+Markup: html/listing--teaser.html
+
+Styleguide listing.teaser
+*/
+.listing--teaser,
+ul.listing--teaser {
+
+}
+
+/*
+Listing layouts
 
 Listing components
 
@@ -146,5 +161,139 @@ Styleguide listing.column-left
     float: left;
     padding-right: 15px;
     padding-left: 0;
+  }
+}
+
+.listing__wrapper--three_columns,
+.listing__wrapper--two_columns,
+.listing__wrapper--row_three,
+.listing__wrapper--row_two {
+  .listing__item-link {
+    padding-top: 0.85em;
+    padding-bottom: 1em;
+  }
+  .listing__title {
+    font-size: $font-size-big;
+    margin: 0.2em 0 0.4em 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  margin-bottom: 30px;
+}
+
+.listing__wrapper--three_columns,
+.listing__wrapper--two_columns {
+  @extend .row;
+}
+
+.listing__wrapper--two_columns {
+  .listing {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--three_columns {
+  .listing {
+    @extend .col-md-4;
+  }
+}
+
+.listing__wrapper--row_three,
+.listing__wrapper--row_two {
+  .listing {
+    @extend .row;
+  }
+}
+
+.listing__wrapper--row_two {
+  .listing__item {
+    @extend .col-md-6;
+  }
+}
+
+.listing__wrapper--row_three {
+  .listing__item {
+    @extend .col-md-4;
+    margin-top: 15px;
+    @include breakpoint(screen-md-min) {
+      margin-top: 0px;
+    }
+  }
+}
+
+.listing__wrapper--hero {
+  .listing__item {
+    margin-bottom: 15px;
+  }
+ .listing__title {
+   font-size: $font-size-h2;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+ }
+ margin: 15px 0px !important;
+}
+
+.listing__wrapper--highlight {
+  background-color: $grey-lighter;
+  padding: 60px 0 !important;
+  margin-bottom: 30px;
+  .listing__wrapper {
+    margin-bottom: 0px;
+  }
+
+  .listing--footer {
+    margin: 15px 0px 0px;
+    p {
+      margin:0;
+      max-width: 100%;
+      text-align: right;
+      line-height: 1;
+    }
+    .btn {
+      margin: 0px;
+    }
+  }
+}
+
+.listing__wrapper--cta {
+  a {
+    padding: 15px 30px;
+  }
+  .listing__item {
+    .listing__title,
+    a {
+      background-color: $brand-primary;
+      color: #ffffff;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      .listing__title {
+        color: #ffffff;
+      }
+    }
+  }
+  .listing__title {
+    &:after {
+      margin-left: 10px;
+      font-size: 1.2em;
+      top: 4px;
+      position: relative;
+      @extend .icon--after;
+      @extend .icon--right;
+    }
+  }
+  .listing__column-main {
+    width: 100%;
+  }
+}
+
+.listing__wrapper--hero,
+.listing__wrapper--cta {
+  .listing__item {
+    border: none;
   }
 }
