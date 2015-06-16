@@ -17,6 +17,22 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'children_policy_areas' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'field--full-width',
+          'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'content_type_label' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -46,6 +62,27 @@ function dt_policy_area_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb' => 'Related commissioners',
+          'lb-el' => 'span',
+          'lb-cl' => 'context-nav__label',
+          'fis' => TRUE,
+          'fis-el' => 'div',
+          'fis-cl' => 'context-nav__items',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'context-nav__item',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|policy_area|full'] = $ds_fieldsetting;
 
@@ -57,6 +94,21 @@ function dt_policy_area_ds_field_settings_info() {
  */
 function dt_policy_area_ds_custom_fields_info() {
   $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'children_policy_areas';
+  $ds_field->label = 'Children policy areas';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'policy_area|*';
+  $ds_field->properties = array(
+    'block' => 'views|ba106683ecf39aa60372ee99a00fd9aa',
+    'block_render' => '1',
+  );
+  $export['children_policy_areas'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -97,16 +149,26 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_policy_area_meta',
-        1 => 'content_type_label',
         2 => 'title_field',
-        3 => 'field_core_introduction',
+        3 => 'content_type_label',
+        4 => 'field_core_introduction',
+      ),
+      'central' => array(
+        1 => 'children_policy_areas',
+      ),
+      'top' => array(
+        5 => 'group_policy_area_contextual',
+        6 => 'field_core_persons',
       ),
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
-      'content_type_label' => 'left_header',
+      'children_policy_areas' => 'central',
       'title_field' => 'left_header',
+      'content_type_label' => 'left_header',
       'field_core_introduction' => 'left_header',
+      'group_policy_area_contextual' => 'top',
+      'field_core_persons' => 'top',
     ),
     'classes' => array(),
     'wrappers' => array(
