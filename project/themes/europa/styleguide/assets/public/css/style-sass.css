@@ -5517,7 +5517,8 @@ Styleguide contextnav
   padding-bottom: 15px; }
 
 .context-nav__label {
-  display: block; }
+  display: block;
+  clear: both; }
 
 .context-nav__items {
   display: block;
