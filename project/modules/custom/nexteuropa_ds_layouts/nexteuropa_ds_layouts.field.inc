@@ -156,8 +156,10 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
               $label = $handler->getLabel($item['entity']);
               // Note the assignment ($url = ) here is intended to be an
               // assignment.
+              kpr($item['entity']);
               if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
-                $link = l($label, $uri['path'], $uri['options']);
+                $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
+                $link = l($label, $link_url, $uri['options']);
                 $element[$delta] = array(
                   '#markup' => '<span class="context-nav__item">' . $link . '</span>',
                 );
@@ -214,21 +216,18 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
           case 'taxonomy_term_reference':
             foreach ($items as $delta => $item) {
               $term = taxonomy_term_load($item['tid']);
+              $link = isset($term->legacy) ? $term->legacy : url('taxonomy/term/' . $item['tid']);
 
-              $link_field = field_get_items('taxonomy_term', $term, 'field_core_legacy_link');
-              $link = field_view_value('taxonomy_term', $term, 'field_core_legacy_link', $link_field[0]);
-              if (!empty($link['#element']['url'])) {
-                $element[$delta] = array(
-                  '#type' => 'link',
-                  '#title' => $term->name,
-                  '#href' => $link['#element']['url'],
-                  '#options' => array(
-                    'attributes' => array(
-                      'class' => _nexteuropa_ds_layouts_field_formatter_view_classes($formatter),
-                    ),
+              $element[$delta] = array(
+                '#type' => 'link',
+                '#title' => $term->name,
+                '#href' => $link,
+                '#options' => array(
+                  'attributes' => array(
+                    'class' => _nexteuropa_ds_layouts_field_formatter_view_classes($formatter),
                   ),
-                );
-              }
+                ),
+              );
             }
             break;
 

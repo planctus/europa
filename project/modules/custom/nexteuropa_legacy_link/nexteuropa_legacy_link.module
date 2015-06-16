@@ -52,16 +52,17 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
       }
       // Taxonomy term reference.
       else {
-        $excluded_fromatters = array('taxonomy_term_reference_plain', 'taxonomy_term_reference_rss_category');
-        if (in_array($display['type'], $excluded_fromatters)) {
-          continue;
-        }
+        $fromatters = array('taxonomy_term_reference_link');
+        if (in_array($display['type'], $fromatters)) {
+          foreach ($element['#items'] as $delta => $item) {
+            $term = taxonomy_term_load($item['tid']);
+            $link = isset($term->legacy) ? $term->legacy : url('taxonomy/term/' . $item['tid']);
 
-        foreach ($element['#items'] as $delta => $item) {
-          $term = taxonomy_term_load($item['tid']);
-          // Check if item has Legacy link.
-          if (isset($term->legacy)) {
-            $element[$delta] = array('#markup' => l($term->name, $term->legacy));
+            $element[$delta] = array(
+              '#type' => 'link',
+              '#title' => $term->name,
+              '#href' => $link,
+            );
           }
         }
       }
