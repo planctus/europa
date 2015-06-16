@@ -11,13 +11,11 @@ Styleguide icon.social
 .icon-social {
   &:before {
     content: '';
-    display: block;
-    float: left;
-    position: relative;
-    top: -5px;
+    display: inline-block;
     width: 40px;
     height: 40px;
     margin: 0 10px 5px 0;
+    vertical-align: middle;
   }
 
   &:hover {
@@ -107,7 +105,7 @@ Styleguide icon.social
 
 .icon-social--twitter {
   &:before {
-    background: url('../images/svg/icons/social/twitter.svg') no-repeat;
+    background: url('../images/svg/icons/social/twitter.svg') no-repeat #ffffff;
   }
 
   &:hover:before {

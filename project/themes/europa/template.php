@@ -20,11 +20,18 @@ function europa_js_alter(&$js) {
  */
 function europa_preprocess_field(&$vars) {
   // Changing label for the field to display stripped out values.
-  if ($vars['element']['#field_name'] == 'field_core_ecorganisation') {
-    $field_value = $vars['element']['#items'][0]['value'];
-    $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+  switch ($vars['element']['#field_name']) {
+    case 'field_core_ecorganisation':
+      $field_value = $vars['element']['#items'][0]['value'];
+      $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
 
-    $vars['items'][0]['#markup'] = $field_value_stripped;
+      $vars['items'][0]['#markup'] = $field_value_stripped;
+      break;
+
+    case 'field_core_social_network_links':
+      $vars['element']['before'] = t('Follow the latest progress and learn more about getting involved.');
+      $vars['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
+      break;
   }
 }
 
@@ -696,27 +703,66 @@ function europa_html_head_alter(&$head_elements) {
 /**
  * Helper function for display 'meta' view mode field.
  */
-function _europa_field_component_listing($variables) {
-  $output = '';
-  $output .= '<div class="listing">';
+function _europa_field_component_listing($variables, $config) {
+  $config += array(
+    'modifier' => 'default',
+    'wrapper_modifier' => '',
+    'layout' => 'default',
+    'listing_wrapper_element' => 'div',
+    'item_wrapper_element' => 'div',
+  );
 
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<div class="listing__item">' . drupal_render($item) . '</div>';
+  $modifier_class = ' ' . trim($config['modifier']);
+  $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
+  $wrapper_class .= ' ' . trim($config['wrapper_modifier']);
+  $columns_num = 1;
+  if ($config['layout'] == 'two_columns') {
+    $columns_num = 2;
+  }
+  elseif ($config['layout'] == 'three_columns') {
+    $columns_num = 3;
+  }
+
+  // Distribute them into columns.
+  $counter = 1;
+  $current_column = 0;
+  $total = count($variables['items']);
+  $columns = array();
+  $max_items_in_column = array();
+
+  for ($i = 0; $i < $columns_num; $i++) {
+    $max_items_in_column[] = floor(($total + $columns_num - ($i + 1)) / $columns_num);
+  }
+
+  $counter = 0;
+  for ($i = 0; $i < $columns_num; $i++) {
+    for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
+      $item = $variables['items'][$counter];
+      // Row content.
+      switch ($config['view_mode']) {
+        case 'title':
+          $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
+          break;
+
+        default:
+          $rendered_item = drupal_render($item);
+          break;
+      }
+      $columns[$i][] = '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
+      $counter++;
+    }
+  }
+
+  // Assemble the markup.
+  $output = '<div class="listing__wrapper' . $wrapper_class . '">';
+  foreach ($columns as $column) {
+    $output .= '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
+    foreach ($column as $item) {
+      $output .= $item;
+    }
+    $output .= '</' . $config['listing_wrapper_element'] . '>';
   }
   $output .= '</div>';
-  return $output;
-}
-
-/**
- * Helper function for display 'title' view mode field.
- */
-function _europa_field_component_listing_title($variables) {
-  $output = '';
-  $output .= '<ul class="listing listing--title">';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="listing__item"><h3 class="listing__title">' . drupal_render($item) . '</h3></li>';
-  }
-  $output .= '</ul>';
   return $output;
 }
 
@@ -731,14 +777,27 @@ function europa_field($variables) {
       // First node from entity reference.
       $reference = array_shift($element[0]);
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
+      $settings = array();
+      $settings['view_mode'] = $first_node['#view_mode'];
+      $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
+      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
+      // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
           case 'title':
-            return _europa_field_component_listing_title($variables);
+            $settings['modifier'] = 'listing--title';
+            $settings['wrapper_modifier'] .= ' listing--title__wrapper';
+            $settings['listing_wrapper_element'] = 'ul';
+            $settings['item_wrapper_element'] = 'li';
+            break;
 
-          case 'meta':
-            return _europa_field_component_listing($variables);
+          case 'teaser':
+            $settings['modifier'] = 'listing--teaser';
+            $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
+            break;
         }
+
+        return _europa_field_component_listing($variables, $settings);
       }
 
       break;
