@@ -4,6 +4,8 @@
  * Nexteuropa display suite settings and helpers.
  */
 
+require_once 'nexteuropa_ds_layouts.field.inc';
+
 /**
  * Define Display Suite layouts.
  *
@@ -77,87 +79,4 @@ function nexteuropa_ds_layouts_ds_layout_info() {
   );
 
   return $layouts;
-}
-
-/**
- * Implements hook_field_formatter_info_alter().
- */
-function nexteuropa_ds_layouts_field_formatter_info_alter(&$info) {
-  $info['entityreference_entity_view']['settings'] += array(
-    'nexteuropa_ds_layouts_columns' => 'default',
-    'nexteuropa_ds_layouts_modifier' => '',
-  );
-}
-
-/**
- * Implements hook_field_formatter_settings_form_alter().
- */
-function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_form, $context) {
-  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
-    $display = $context['instance']['display'][$context['view_mode']];
-    $settings = $display['settings'];
-    $settings_form['nexteuropa_ds_layouts_columns'] = array(
-      '#type' => 'select',
-      '#title' => t('BEM: Listing layout'),
-      '#options' => array(
-        'default' => t('Default'),
-        'two_columns' => t('Two Columns'),
-        'three_columns' => t('Three Columns'),
-        'row_two' => t('Row with two items'),
-        'row_three' => t('Row with three items'),
-      ),
-      '#default_value' => $settings['nexteuropa_ds_layouts_columns'],
-    );
-    $settings_form['nexteuropa_ds_layouts_modifier'] = array(
-      '#type' => 'textfield',
-      '#title' => t('BEM: Modifier'),
-      '#default_value' => $settings['nexteuropa_ds_layouts_modifier'],
-      '#description' => t('Class names separated by spaces.'),
-    );
-  }
-}
-
-/**
- * Implements hook_field_formatter_settings_summary_alter().
- */
-function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary, $context) {
-  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
-    $display = $context['instance']['display'][$context['view_mode']];
-    $settings = $display['settings'];
-    if (isset($settings['nexteuropa_ds_layouts_columns'])) {
-      if (!empty($summary)) {
-        $summary .= '<br />';
-      }
-      $summary .= t('BEM: List layout') . ': ' . $settings['nexteuropa_ds_layouts_columns'];
-    }
-
-    if (isset($settings['nexteuropa_ds_layouts_modifier']) && !empty($settings['nexteuropa_ds_layouts_modifier'])) {
-      if (!empty($summary)) {
-        $summary .= '<br />';
-      }
-      $summary .= t('BEM: Modifier') . ': ' . $settings['nexteuropa_ds_layouts_modifier'];
-    }
-  }
-}
-
-/**
- * Implements hook_preprocess_field().
- */
-function nexteuropa_ds_layouts_preprocess_field(&$variables) {
-  if (isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'entityreference_entity_view') {
-    $entity_type = $variables['element']['#entity_type'];
-    $field_name  = $variables['element']['#field_name'];
-    $bundle      = $variables['element']['#bundle'];
-    $view_mode   = $variables['element']['#view_mode'];
-
-    // Fetch the instance settings and default display settings.
-    $info = field_info_instance($entity_type, $field_name, $bundle);
-    $formatter_settings = $info['display']['default']['settings'];
-    if (isset($info['display'][$view_mode]['settings'])) {
-      $formatter_settings = $info['display'][$view_mode]['settings'] + $formatter_settings;
-    }
-    // Make the setting available in the field template.
-    $variables['nexteuropa_ds_layouts_columns'] = $formatter_settings['nexteuropa_ds_layouts_columns'];
-    $variables['nexteuropa_ds_layouts_modifier'] = $formatter_settings['nexteuropa_ds_layouts_modifier'];
-  }
 }
