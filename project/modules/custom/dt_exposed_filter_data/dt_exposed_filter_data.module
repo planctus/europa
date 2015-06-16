@@ -58,7 +58,9 @@ function _get_pretty($filter, $view) {
   $result = array();
   foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
     if ($filter_handler->options['expose']['identifier'] === $filter) {
+      // Combined filters will need custom handlig.
       $is_combined = $filter_handler->field == 'combine';
+
       $result['label'] = $is_combined ? t('containing') : $filter_handler->options['expose']['label'];
       $result['filter'] = array();
       $value = $filter_handler->value;
