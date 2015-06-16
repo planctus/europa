@@ -214,12 +214,10 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
           case 'taxonomy_term_reference':
             foreach ($items as $delta => $item) {
               $term = taxonomy_term_load($item['tid']);
-              kpr($term);
 
               $link_field = field_get_items('taxonomy_term', $term, 'field_core_legacy_link');
               $link = field_view_value('taxonomy_term', $term, 'field_core_legacy_link', $link_field[0]);
               if (!empty($link['#element']['url'])) {
-                kpr($link);
                 $element[$delta] = array(
                   '#type' => 'link',
                   '#title' => $term->name,
