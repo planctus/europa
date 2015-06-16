@@ -670,6 +670,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
@@ -851,6 +852,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
@@ -1081,6 +1083,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
@@ -1247,7 +1250,7 @@ function dt_department_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_department_staff_search',
     'label' => 'Staff search link',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => 'btn btn-default',
@@ -1272,7 +1275,9 @@ function dt_department_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'link_field',
       'weight' => 28,
     ),
