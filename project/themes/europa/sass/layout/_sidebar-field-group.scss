@@ -1,5 +1,9 @@
 .sidebar-field-group {
   @extend .row;
+
+  h2 {
+    @extend .col-md-12;
+  }
 }
 
 .sidebar-field-group__main {
