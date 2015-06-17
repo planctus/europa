@@ -334,3 +334,20 @@ function dt_core_update_7123() {
     features_revert_module($feature);
   }
 }
+
+/**
+ * Enabling dt_social_network_links.
+ */
+/*function dt_core_update_7124() {
+  // The features to revert.
+  $features = array(
+    'dt_department' => 'department',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature => $content_type) {
+    features_revert_module($feature);
+    // Copy the field content.
+    _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
+  }
+}*/
