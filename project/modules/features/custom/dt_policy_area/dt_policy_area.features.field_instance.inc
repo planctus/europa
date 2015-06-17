@@ -181,11 +181,9 @@ function dt_policy_area_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'nexteuropa_ds_layouts',
+        'settings' => array(),
+        'type' => 'context_nav_item',
         'weight' => 4,
       ),
       'teaser' => array(

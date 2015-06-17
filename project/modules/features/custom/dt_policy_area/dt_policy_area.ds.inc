@@ -65,21 +65,7 @@ function dt_policy_area_ds_field_settings_info() {
     'field_core_persons' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_expert',
           'lb' => 'Related commissioners',
-          'lb-el' => 'span',
-          'lb-cl' => 'context-nav__label',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'context-nav__items',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'context-nav__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
         ),
       ),
     ),

@@ -22,7 +22,7 @@ function dt_policy_area_uninstall() {
 }
 
 /**
- * DT Editor configurations.
+ * Reverting dt_policy module to set field display settings.
  */
 function dt_policy_area_update_7101() {
   features_revert_module('dt_policy_area');
