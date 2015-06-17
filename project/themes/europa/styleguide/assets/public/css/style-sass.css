@@ -5486,6 +5486,8 @@ Styleguide form.textarea
 
 .section-group {
   padding: 2em 0; }
+  .section-group:first-child {
+    padding-top: 0; }
   .section-group > *:first-child {
     margin-top: 0; }
   .section-group > *:last-child {
