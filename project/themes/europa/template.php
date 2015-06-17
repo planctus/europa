@@ -270,8 +270,8 @@ function europa_preprocess_node(&$vars) {
   $vars['messages'] = theme('status_messages');
 
   // Override node_url if Legacy Link is set.
-  if (isset($vars['path']['legacy'])) {
-    $vars['node_url'] = $vars['path']['legacy'];
+  if (isset($vars['legacy'])) {
+    $vars['node_url'] = $vars['legacy'];
   }
 }
 
