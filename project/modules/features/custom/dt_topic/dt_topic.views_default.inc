@@ -126,7 +126,6 @@ function dt_topic_views_default_views() {
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'topics';
   $export['topics'] = $view;
->>>>>>> develop
 
   return $export;
 }
