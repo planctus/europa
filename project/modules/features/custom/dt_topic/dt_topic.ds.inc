@@ -76,8 +76,8 @@ function dt_topic_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => '',
-        'class' => '',
+        'wrapper' => 'h3',
+        'class' => 'listing__title',
         'ft' => array(),
       ),
     ),

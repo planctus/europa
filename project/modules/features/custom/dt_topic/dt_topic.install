@@ -22,8 +22,24 @@ function dt_topic_uninstall() {
 }
 
 /**
- * Reverting the feature to configure the display suite field displays.
+ * Revert and enabling features.
  */
 function dt_topic_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_topic',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Reverting the feature to configure the display suite field displays.
+ */
+function dt_topic_update_7102() {
   features_revert_module('dt_topic');
 }

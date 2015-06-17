@@ -270,8 +270,8 @@ function europa_preprocess_node(&$vars) {
   $vars['messages'] = theme('status_messages');
 
   // Override node_url if Legacy Link is set.
-  if (isset($vars['path']['legacy'])) {
-    $vars['node_url'] = $vars['path']['legacy'];
+  if (isset($vars['legacy'])) {
+    $vars['node_url'] = $vars['legacy'];
   }
 }
 
@@ -746,7 +746,7 @@ function _europa_field_component_listing($variables, $config) {
     for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
       $item = $variables['items'][$counter];
       // Row content.
-      switch ($config['modifier']) {
+      switch ($config['view_mode']) {
         case 'title':
           $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
           break;
@@ -789,6 +789,7 @@ function europa_field($variables) {
       }
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
       $settings = array();
+      $settings['view_mode'] = $first_node['#view_mode'];
       $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
 
@@ -796,7 +797,7 @@ function europa_field($variables) {
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
           case 'title':
-            $settings['modifier'] . 'listing--title';
+            $settings['modifier'] = 'listing--title';
             $settings['wrapper_modifier'] .= ' listing--title__wrapper';
             $settings['listing_wrapper_element'] = 'ul';
             $settings['item_wrapper_element'] = 'li';

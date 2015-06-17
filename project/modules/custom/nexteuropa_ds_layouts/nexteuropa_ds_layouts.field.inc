@@ -19,23 +19,38 @@ function nexteuropa_ds_layouts_field_formatter_info() {
     ),
     'nexteuropa_ds_layouts_formatter_link_button_default' => array(
       'label' => 'Link button default',
-      'field types' => array('link_field'),
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_primary' => array(
       'label' => 'Link button primary',
-      'field types' => array('link_field'),
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_secondary' => array(
       'label' => 'Link button secondary',
-      'field types' => array('link_field'),
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_call_for_action' => array(
       'label' => 'Link button call for action',
-      'field types' => array('link_field'),
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
     ),
     'nexteuropa_ds_layouts_formatter_link_button_block' => array(
       'label' => 'Link button block',
-      'field types' => array('link_field'),
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
     ),
   );
 }
@@ -139,9 +154,11 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
             foreach ($items as $delta => $item) {
 
               $label = $handler->getLabel($item['entity']);
-              // Note the assignment ($url = ) here is intended to be an assignment.
+              // Note the assignment ($url = ) here is intended to be an
+              // assignment.
               if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
-                $link = l($label, $uri['path'], $uri['options']);
+                $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
+                $link = l($label, $link_url, $uri['options']);
                 $element[$delta] = array(
                   '#markup' => '<span class="context-nav__item">' . $link . '</span>',
                 );
@@ -178,17 +195,41 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
       case 'nexteuropa_ds_layouts_formatter_link_button_block':
         $formatter = $display['type'];
 
-        foreach ($items as $delta => $item) {
-          // Set attribute from formatter settings.
-          $item['attributes']['class'] = _nexteuropa_ds_layouts_field_formatter_view_classes($formatter);
+        switch ($field['type']) {
+          case 'link_field':
+            foreach ($items as $delta => $item) {
+              // Set attribute from formatter settings.
+              $item['attributes']['class'] = _nexteuropa_ds_layouts_field_formatter_view_classes($formatter);
 
-          // Call theme function of link module (theme_link_formatter_link_default).
-          $element[$delta] = array(
-            '#theme' => 'link_formatter_link_default',
-            '#element' => $item,
-            '#field' => $instance,
-            '#display' => $display,
-          );
+              // Call theme function of link module (theme_link_formatter_link_
+              // default).
+              $element[$delta] = array(
+                '#theme' => 'link_formatter_link_default',
+                '#element' => $item,
+                '#field' => $instance,
+                '#display' => $display,
+              );
+            }
+            break;
+
+          case 'taxonomy_term_reference':
+            foreach ($items as $delta => $item) {
+              $term = taxonomy_term_load($item['tid']);
+              $link = isset($term->legacy) ? $term->legacy : url('taxonomy/term/' . $item['tid']);
+
+              $element[$delta] = array(
+                '#type' => 'link',
+                '#title' => $term->name,
+                '#href' => $link,
+                '#options' => array(
+                  'attributes' => array(
+                    'class' => _nexteuropa_ds_layouts_field_formatter_view_classes($formatter),
+                  ),
+                ),
+              );
+            }
+            break;
+
         }
         // Multiple field wrapper.
         if (($field['cardinality'] == -1) && ($formatter != 'nexteuropa_ds_layouts_formatter_link_button_block')) {
