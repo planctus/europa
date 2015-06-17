@@ -236,8 +236,8 @@ function nexteuropa_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_core_link'
-  $field_instances['node-page-field_core_link'] = array(
+  // Exported field_instance: 'node-page-field_core_links'
+  $field_instances['node-page-field_core_links'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
     'deleted' => 0,
@@ -277,7 +277,7 @@ function nexteuropa_page_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_link',
+    'field_name' => 'field_core_links',
     'label' => 'Related content',
     'required' => 0,
     'settings' => array(

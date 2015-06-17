@@ -567,8 +567,8 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_link'
-  $field_instances['node-department-field_core_link'] = array(
+  // Exported field_instance: 'node-department-field_core_links'
+  $field_instances['node-department-field_core_links'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
     'deleted' => 0,
@@ -615,7 +615,7 @@ function dt_department_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_link',
+    'field_name' => 'field_core_links',
     'label' => 'Link',
     'required' => 0,
     'settings' => array(

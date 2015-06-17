@@ -102,7 +102,7 @@ function dt_department_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_link' => array(
+    'field_core_links' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -227,7 +227,7 @@ function dt_department_ds_layout_settings_info() {
         5 => 'field_core_legacy_links',
       ),
       'right_header' => array(
-        6 => 'field_core_link',
+        6 => 'field_core_links',
       ),
       'left' => array(
         7 => 'in_page_navigation',
@@ -261,7 +261,7 @@ function dt_department_ds_layout_settings_info() {
       'field_core_abbreviation' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_legacy_links' => 'left_header',
-      'field_core_link' => 'right_header',
+      'field_core_links' => 'right_header',
       'in_page_navigation' => 'left',
       'group_department_latest' => 'central',
       'field_department_work_areas_sent' => 'central',

@@ -83,7 +83,7 @@ function nexteuropa_page_field_group_info() {
       0 => 'body',
       1 => 'title_field',
       2 => 'field_core_introduction',
-      3 => 'field_core_link',
+      3 => 'field_core_links',
       4 => 'field_core_description',
     ),
     'format_type' => 'tab',

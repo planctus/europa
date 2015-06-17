@@ -336,12 +336,14 @@ function dt_core_update_7123() {
 }
 
 /**
- * Enabling dt_social_network_links.
+ * Copying field_core_link to field_core_links.
  */
-/*function dt_core_update_7124() {
+function dt_core_update_7124() {
   // The features to revert.
   $features = array(
     'dt_department' => 'department',
+    'dt_announcement' => 'announcement',
+    'nexteuropa_page' => 'page',
   );
 
   // Reverting the features.
@@ -350,4 +352,4 @@ function dt_core_update_7123() {
     // Copy the field content.
     _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
   }
-}*/
+}
