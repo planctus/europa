@@ -29,7 +29,7 @@ function dt_class_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -92,7 +92,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -140,7 +140,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -220,7 +220,7 @@ function dt_class_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 8,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -295,7 +295,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -351,7 +351,7 @@ function dt_class_field_default_field_instances() {
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 9,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -404,7 +404,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -460,7 +460,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -525,7 +525,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'hidden',

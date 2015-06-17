@@ -98,6 +98,35 @@ function dt_class_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_class_messages|node|class|full';
+  $field_group->group_name = 'group_class_messages';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'class';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Messages',
+    'weight' => '3',
+    'children' => array(
+      0 => 'work_in_progress',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Messages',
+      'instance_settings' => array(
+        'classes' => 'section-group',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_class_messages|node|class|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_class_related|node|class|form';
   $field_group->group_name = 'group_class_related';
   $field_group->entity_type = 'node';

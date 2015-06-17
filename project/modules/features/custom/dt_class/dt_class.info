@@ -29,6 +29,7 @@ features[field_base][] = field_link_groups
 features[field_group][] = group_class_content|node|class|form
 features[field_group][] = group_class_link_content|node|class_link_group|form
 features[field_group][] = group_class_link_group|node|class|form
+features[field_group][] = group_class_messages|node|class|full
 features[field_group][] = group_class_related|node|class|form
 features[field_group][] = group_content_tabgroup|node|class_link_group|form
 features[field_group][] = group_content_tabgroup|node|class|form
