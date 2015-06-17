@@ -346,7 +346,7 @@ function dt_class_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
-          'nexteuropa_ds_layouts_columns' => 'two_columns',
+          'nexteuropa_ds_layouts_columns' => 'row_two',
           'nexteuropa_ds_layouts_modifier' => 'listing__wrapper--bare',
           'view_mode' => 'teaser',
         ),

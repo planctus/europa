@@ -6546,6 +6546,9 @@ Styleguide listing.column-left
     font-size: 1.333em;
     margin: 0.2em 0 0.4em 0; }
 
+.listing__wrapper--row_two .listing__item:nth-child(odd) {
+  clear: left; }
+
 .listing__wrapper--row_three .listing__item {
   margin-top: 15px; }
   @media (min-width: 992px) {

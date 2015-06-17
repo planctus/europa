@@ -206,6 +206,9 @@ Styleguide listing.column-left
 .listing__wrapper--row_two {
   .listing__item {
     @extend .col-md-6;
+    &:nth-child(odd) {
+      clear: left;
+    }
   }
 }
 
