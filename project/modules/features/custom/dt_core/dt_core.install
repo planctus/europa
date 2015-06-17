@@ -347,9 +347,12 @@ function dt_core_update_7124() {
   );
 
   // Reverting the features.
+  features_revert_module('dt_core');
   foreach ($features as $feature => $content_type) {
     features_revert_module($feature);
+    drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
     // Copy the field content.
     _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
+    drupal_set_message(t('Copyied %content_type.', array('%content_type' => $content_type)));
   }
 }
