@@ -670,6 +670,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
@@ -851,6 +852,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
@@ -1081,6 +1083,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',

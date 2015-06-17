@@ -41,6 +41,12 @@ function dt_topic_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
     ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
@@ -55,9 +61,33 @@ function dt_topic_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_policy_areas' => array(
+    'field_core_link' => array(
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_topic_objectives' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_minimal',
+          'lb-col' => TRUE,
+        ),
+      ),
+    ),
+    'field_topic_targets' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_minimal',
+          'lb-col' => TRUE,
+        ),
       ),
     ),
   );
@@ -168,43 +198,57 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'node_type',
-        1 => 'group_topic_meta',
+        0 => 'group_topic_meta',
+        1 => 'node_type',
         2 => 'title',
         3 => 'field_core_introduction',
       ),
-      'central' => array(
-        4 => 'field_core_top_tasks',
-        8 => 'group_topic_policy_areas',
-        11 => 'field_core_policy_areas',
-        12 => 'field_topic_commission_actions',
-        13 => 'field_topic_objectives',
-        14 => 'field_core_link',
-      ),
       'top' => array(
-        5 => 'group_topic_contextual',
+        4 => 'group_topic_contextual',
         6 => 'field_core_priorities',
         7 => 'field_core_topics',
-        9 => 'field_core_persons',
-        10 => 'field_core_department',
+        10 => 'field_core_persons',
+        12 => 'field_core_department',
+      ),
+      'central' => array(
+        5 => 'group_topic_related_tasks',
+        8 => 'field_core_top_tasks',
+        9 => 'group_topic_policy_areas',
+        11 => 'group_topic_latest',
+        13 => 'group_topic_what_is_doing',
+        14 => 'field_topic_commission_actions',
+        15 => 'field_core_policy_areas',
+        16 => 'field_topic_objectives',
+        17 => 'group_latest_main',
+        18 => 'field_topic_targets',
+        19 => 'field_core_link',
+        20 => 'group_latest_sidebar',
+        21 => 'field_core_social_network_links',
       ),
     ),
     'fields' => array(
-      'node_type' => 'left_header',
       'group_topic_meta' => 'left_header',
+      'node_type' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'field_core_top_tasks' => 'central',
       'group_topic_contextual' => 'top',
+      'group_topic_related_tasks' => 'central',
       'field_core_priorities' => 'top',
       'field_core_topics' => 'top',
+      'field_core_top_tasks' => 'central',
       'group_topic_policy_areas' => 'central',
       'field_core_persons' => 'top',
+      'group_topic_latest' => 'central',
       'field_core_department' => 'top',
-      'field_core_policy_areas' => 'central',
+      'group_topic_what_is_doing' => 'central',
       'field_topic_commission_actions' => 'central',
+      'field_core_policy_areas' => 'central',
       'field_topic_objectives' => 'central',
+      'group_latest_main' => 'central',
+      'field_topic_targets' => 'central',
       'field_core_link' => 'central',
+      'group_latest_sidebar' => 'central',
+      'field_core_social_network_links' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
