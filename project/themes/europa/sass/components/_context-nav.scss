@@ -8,8 +8,7 @@ Styleguide contextnav
 
 .context-nav {
   @extend .row;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 2em 0;
 }
 
 .context-nav__label {

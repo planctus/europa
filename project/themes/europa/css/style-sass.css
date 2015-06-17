@@ -5486,8 +5486,6 @@ Styleguide form.textarea
 
 .section-group {
   padding: 2em 0; }
-  .section-group:first-child {
-    padding-top: 0; }
   .section-group > *:first-child {
     margin-top: 0; }
   .section-group > *:last-child {
@@ -5522,8 +5520,7 @@ Markup: html/context-nav.html
 Styleguide contextnav
 */
 .context-nav {
-  padding-top: 15px;
-  padding-bottom: 15px; }
+  padding: 2em 0; }
 
 .context-nav__label {
   display: block;
