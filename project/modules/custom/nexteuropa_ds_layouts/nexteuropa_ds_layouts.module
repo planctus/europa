@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Nexteuropa display suite settings and helpers.
+ * nexteuropa_ds_layouts.module
  */
 
-require_once 'nexteuropa_ds_layouts.field.inc';
+ require_once 'nexteuropa_ds_layouts.field.inc';
 
 /**
  * Define Display Suite layouts.
@@ -79,4 +79,17 @@ function nexteuropa_ds_layouts_ds_layout_info() {
   );
 
   return $layouts;
+}
+
+/**
+ * Implements hook_field_group_pre_render().
+ *
+ * Function that fungates as last resort to alter the pre_render build.
+ */
+function nexteuropa_ds_layouts_field_group_pre_render(&$element, $group, & $form) {
+  $group->format_settings['instance_settings']['classes'] .= ' section-group';
+  trim($group->format_settings['instance_settings']['classes']);
+
+  $group->classes .= ' section-group';
+  trim($group->classes);
 }
