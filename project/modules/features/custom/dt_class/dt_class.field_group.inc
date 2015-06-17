@@ -24,9 +24,8 @@ function dt_class_field_group_info() {
     'weight' => '16',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_class_notification',
-      2 => 'field_core_introduction',
-      3 => 'field_core_description',
+      1 => 'field_core_introduction',
+      2 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
