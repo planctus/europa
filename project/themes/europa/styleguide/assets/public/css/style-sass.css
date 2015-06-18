@@ -6548,9 +6548,11 @@ Styleguide listing.column-left
   .listing__wrapper--three_columns .listing__title, .listing__wrapper--two_columns .listing__title, .listing__wrapper--row_three .listing__title, .listing__wrapper--row_two .listing__title {
     font-size: 1.333em;
     margin: 0.2em 0 0.4em 0; }
-  .listing__wrapper--three_columns p, .listing__wrapper--two_columns p, .listing__wrapper--row_three p, .listing__wrapper--row_two p {
-    margin: 0;
-    padding: 0; }
+
+.listing__wrapper--row_two .listing__item:nth-child(odd) {
+  clear: left; }
+.listing__wrapper--row_two .listing__item:nth-child(even) {
+  float: none; }
 
 .listing__wrapper--row_three .listing__item {
   margin-top: 15px; }
@@ -6576,7 +6578,6 @@ Styleguide listing.column-left
   .listing__wrapper--highlight .listing--footer {
     margin: 15px 0px 0px; }
     .listing__wrapper--highlight .listing--footer p {
-      margin: 0;
       max-width: 100%;
       text-align: right;
       line-height: 1; }
@@ -6598,8 +6599,16 @@ Styleguide listing.column-left
 .listing__wrapper--cta .listing__column-main {
   width: 100%; }
 
-.listing__wrapper--hero .listing__item, .listing__wrapper--cta .listing__item {
+.listing__wrapper--bare p {
+  margin-bottom: 0.5em !important;
+  font-size: 1.222em; }
+
+.listing__wrapper--bare .listing__item, .listing__wrapper--hero .listing__item, .listing__wrapper--cta .listing__item {
   border: none; }
+
+.listing--teaser__wrapper p, .listing__wrapper--highlight p, .listing__wrapper--hero p, .listing__wrapper--cta p {
+  margin: 0;
+  padding: 0; }
 
 .logo {
   display: block;
@@ -6667,6 +6676,8 @@ Styleguide messages
   .messages h3 {
     font-size: 0.889em;
     font-weight: bold; }
+  .messages p {
+    max-width: 100%; }
   .messages:before {
     background: url("../images/svg/messages-info.svg") no-repeat;
     float: left;
@@ -6749,6 +6760,9 @@ Styleguide page-header
   padding: 30px 0; }
   .page-header h1 {
     margin: 0; }
+  .page-header p {
+    margin: 0;
+    font-size: 1.222em; }
   .page-header__top, .page-header__main, .page-header__bottom {
     display: block;
     width: 100%; }
@@ -6761,12 +6775,11 @@ Styleguide page-header
   .page-header--featured, .front .page-header {
     background: #004494;
     color: #fff;
-    font-size: 30px;
     line-height: 1.5; }
     .page-header--featured h2, .front .page-header h2 {
       color: #fff; }
     .page-header--featured p, .front .page-header p {
-      margin: 0; }
+      font-size: 30px; }
 
 .skip-link, #skip-link {
   position: fixed;

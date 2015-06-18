@@ -115,3 +115,20 @@ function dt_class_update_7102() {
     ),
   ));
 }
+
+/**
+ * Updating definition of the Class content type.
+ */
+function dt_class_update_7103() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_class_notification',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  features_revert_module('dt_class');
+}
