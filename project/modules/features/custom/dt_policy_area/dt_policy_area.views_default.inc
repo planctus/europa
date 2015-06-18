@@ -29,7 +29,8 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
@@ -78,7 +79,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="listing__item-link" title="[title]">
   <div class="listing__column-main column-main">
     <h3 class="listing__title">[title]</h3>
-    [field_core_description]
+    <div>[field_core_description]</div>
   </div>
 </a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -108,6 +109,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'policy' => 'policy',
     'policy_area' => 'policy_area',
   );
 

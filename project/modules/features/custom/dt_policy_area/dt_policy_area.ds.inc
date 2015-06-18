@@ -18,7 +18,7 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'children_policy_areas' => array(
-      'weight' => '0',
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -124,26 +124,28 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_policy_area_meta',
+        1 => 'content_type_label',
         2 => 'title_field',
-        3 => 'content_type_label',
-        4 => 'field_core_introduction',
-      ),
-      'central' => array(
-        1 => 'children_policy_areas',
+        3 => 'field_core_introduction',
       ),
       'top' => array(
-        5 => 'group_policy_area_contextual',
-        6 => 'field_core_persons',
+        4 => 'group_policy_area_contextual',
+        5 => 'field_core_persons',
+      ),
+      'central' => array(
+        6 => 'group_policy_area_section_group',
+        7 => 'children_policy_areas',
       ),
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
-      'children_policy_areas' => 'central',
-      'title_field' => 'left_header',
       'content_type_label' => 'left_header',
+      'title_field' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_area_contextual' => 'top',
       'field_core_persons' => 'top',
+      'group_policy_area_section_group' => 'central',
+      'children_policy_areas' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
