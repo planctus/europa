@@ -6150,15 +6150,23 @@ Markup: html/icon-social.html
 
 Styleguide icon.social
 */
-.icon-social:before {
-  content: '';
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin: 0 10px 5px 0;
-  vertical-align: middle; }
-.icon-social:hover {
-  cursor: pointer; }
+.icon-social {
+  position: relative;
+  padding-left: 50px;
+  padding-top: 5px;
+  min-height: 40px; }
+  .icon-social:before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 5px 0;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .icon-social:hover {
+    cursor: pointer; }
 
 .icon-social--blogger:before {
   background: url('../images/svg/icons/social/blogger.svg') no-repeat; }
