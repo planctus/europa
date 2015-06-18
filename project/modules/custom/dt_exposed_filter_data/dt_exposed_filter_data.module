@@ -6,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_theme().
+ * Implements hook_theme().
  */
 function dt_exposed_filter_data_theme() {
   return array(
@@ -20,7 +20,7 @@ function dt_exposed_filter_data_theme() {
 }
 
 /**
- * Implementation of hook_preprocess().
+ * Implements hook_preprocess().
  */
 function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   $view = $vars['view'];
@@ -45,15 +45,23 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
 
 /**
  * Helper to get the human pretty name of a given field by value.
- * @param $filter
- * @param $view
+ *
+ * @param array $filter
+ *   exposed filter
+ * @param object $view
+ *   View object
+ *
  * @return array
+ *   filter settings
  */
 function _get_pretty($filter, $view) {
   $result = array();
   foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
     if ($filter_handler->options['expose']['identifier'] === $filter) {
-      $result['label'] = $filter_handler->options['expose']['label'];
+      // Combined filters will need custom handlig.
+      $is_combined = $filter_handler->field == 'combine';
+
+      $result['label'] = $is_combined ? t('containing') : $filter_handler->options['expose']['label'];
       $result['filter'] = array();
       $value = $filter_handler->value;
       if (is_array($value)) {
@@ -73,7 +81,7 @@ function _get_pretty($filter, $view) {
         }
       }
       else {
-        $result['filter'] = $value;
+        $result['filter'] = $is_combined ? ('"' . $value . '"') : $value;
       }
     }
   }
