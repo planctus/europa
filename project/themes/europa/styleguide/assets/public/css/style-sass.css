@@ -5877,6 +5877,12 @@ Styleguide forms.filters
   float: left;
   padding-bottom: 0.5em; }
 
+.filters__btn-reset {
+  display: none; }
+
+.filters__btn-reset--small {
+  display: inline-block; }
+
 @media (min-width: 480px) {
   .filters__close:after {
     height: 9px;
@@ -5890,6 +5896,9 @@ Styleguide forms.filters
     padding: 0; }
 
   .filters__btn-reset--small, .filters__btn-collapse {
+    display: none; }
+
+  .js .filters__btn-reset, .js .filters__btn-submit {
     display: none; }
  }
 

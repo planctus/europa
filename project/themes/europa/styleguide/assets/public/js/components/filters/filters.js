@@ -76,7 +76,7 @@
                 .removeAttr('style');
 
               // Hiding filter buttons
-              hideMainFilterButtons();
+              //hideMainFilterButtons();
 
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
@@ -102,7 +102,7 @@
             setup: function() {
               $filters.addClass('collapse');
               // Hiding filter buttons
-              hideMainFilterButtons();
+              //hideMainFilterButtons();
               $filtersSubmit.removeClass('ctools-auto-submit-click').show();
               $filters.wrapInner("<div class='filters__wrapper'></div>");
 
