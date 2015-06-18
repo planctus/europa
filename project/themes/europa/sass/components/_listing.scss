@@ -32,6 +32,10 @@ $spacing-bottom-listing__title: 0.7em;
       color: $grey-base;
     }
   }
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .listing__item-link {
@@ -52,6 +56,7 @@ $spacing-bottom-listing__title: 0.7em;
   float: left;
   width: 75%;
   padding-left: 0;
+
 }
 
 .listing__column-second {
@@ -64,7 +69,6 @@ $spacing-bottom-listing__title: 0.7em;
   color: $brand-primary;
   font-family: $font-family-sans-serif;
   font-size: 1em;
-  margin-top: $spacing-top-listing__title;
   margin-bottom: $spacing-bottom-listing__title;
   padding: 0;
   display: inline-block;
@@ -72,7 +76,6 @@ $spacing-bottom-listing__title: 0.7em;
 
   & + * {
     font-size: $font-size-little;
-    margin-top: $spacing-top-listing__title;
   }
 }
 
@@ -176,6 +179,9 @@ Styleguide listing.column-left
     font-size: $font-size-big;
     margin: 0.2em 0 0.4em 0;
   }
+  p {
+    padding: 0;
+  }
   margin-bottom: 30px;
 }
 
@@ -206,12 +212,6 @@ Styleguide listing.column-left
 .listing__wrapper--row_two {
   .listing__item {
     @extend .col-md-6;
-    &:nth-child(odd) {
-      clear: left;
-    }
-    &:nth-child(even) {
-      float: none;
-    }
   }
 }
 
@@ -229,12 +229,12 @@ Styleguide listing.column-left
   .listing__item {
     margin-bottom: 15px;
   }
-  .listing__title {
-    font-size: $font-size-h2;
-    margin-top: 0.2em;
-    margin-bottom: 0.4em;
-  }
-  margin: 15px 0px !important;
+ .listing__title {
+   font-size: $font-size-h2;
+   margin-top: 0.2em;
+   margin-bottom: 0.4em;
+ }
+ margin: 15px 0px !important;
 }
 
 .listing__wrapper--highlight {
@@ -244,9 +244,11 @@ Styleguide listing.column-left
   .listing__wrapper {
     margin-bottom: 0px;
   }
+
   .listing--footer {
     margin: 15px 0px 0px;
     p {
+      margin:0;
       max-width: 100%;
       text-align: right;
       line-height: 1;
@@ -291,27 +293,9 @@ Styleguide listing.column-left
   }
 }
 
-.listing__wrapper--bare {
-  p {
-    margin-bottom: 0.5em !important;
-    font-size: $font-size-h4;
-  }
-}
-
-.listing__wrapper--bare,
 .listing__wrapper--hero,
 .listing__wrapper--cta {
   .listing__item {
     border: none;
-  }
-}
-
-.listing--teaser__wrapper,
-.listing__wrapper--highlight,
-.listing__wrapper--hero,
-.listing__wrapper--cta {
-  p {
-    margin: 0;
-    padding: 0;
   }
 }

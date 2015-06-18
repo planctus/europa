@@ -16,6 +16,7 @@ Styleguide meta
   font-size: $font-size-xsmall;
   letter-spacing: 0.02777778em;
   overflow: hidden;
+  margin-bottom: 0.9em;
 }
 
 .meta__item {
@@ -40,4 +41,9 @@ Styleguide meta
 
 .meta__item--type {
   text-transform: uppercase;
+}
+
+.meta--header {
+  font-size: $font-size-little;
+  margin-bottom: 0.3em;
 }

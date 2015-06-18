@@ -86,7 +86,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => 'section-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -109,14 +109,14 @@ function dt_department_field_group_info() {
     'label' => 'Latest',
     'weight' => '6',
     'children' => array(
-      0 => 'group_latest_sidebar',
-      1 => 'group_latest_main',
+      0 => 'group_latest_main',
+      1 => 'group_latest_sidebar',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group',
+        'classes' => 'sidebar-field-group section-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -147,7 +147,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Leadership & Organisation',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => 'section-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -177,7 +177,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
+        'classes' => 'meta meta--header',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -230,20 +230,20 @@ function dt_department_field_group_info() {
     'label' => 'Responsibilities',
     'weight' => '7',
     'children' => array(
-      0 => 'field_core_priorities',
-      1 => 'field_core_topics',
-      2 => 'field_department_intro_sentence',
-      3 => 'field_department_plans_reports',
-      4 => 'field_department_tasks',
-      5 => 'field_department_tasks_desc',
-      6 => 'field_department_work_areas_sent',
+      0 => 'field_core_topics',
+      1 => 'field_department_intro_sentence',
+      2 => 'field_department_plans_reports',
+      3 => 'field_department_tasks_desc',
+      4 => 'field_department_work_areas_sent',
+      5 => 'field_department_tasks',
+      6 => 'field_core_priorities',
       7 => 'field_department_mission',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Responsibilities',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => 'section-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
