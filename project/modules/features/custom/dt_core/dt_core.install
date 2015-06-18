@@ -274,7 +274,7 @@ function dt_core_update_7120() {
 }
 
 /**
- * Adding buttons to Full HTML. Removing dt_editor format and profile.
+ * Revert updated feautres.
  */
 function dt_core_update_7121() {
   // The features to enable.
