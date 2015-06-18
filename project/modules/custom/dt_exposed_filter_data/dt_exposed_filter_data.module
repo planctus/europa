@@ -68,7 +68,7 @@ function _get_pretty($filter, $view) {
         if (isset($value['type']) && $value['type'] === "date") {
           $date = strtotime($value['value']);
           $date_formatted = format_date($date, 'ec_date_j_f_y');
-          $result['filter'][] = $date_formatted;
+          $result['filter'][] = '"' . $date_formatted . '"';
         }
         $raw_vals = array();
         foreach ($value as $key => $val) {
@@ -76,11 +76,11 @@ function _get_pretty($filter, $view) {
         }
         foreach ($raw_vals as $raw_val) {
           if (isset($filter_handler->value_options[$raw_val])) {
-            $result['filter'][] = $filter_handler->value_options[$raw_val];
+            $result['filter'][] = '"' . $filter_handler->value_options[$raw_val] . '"';
           }
         }
       }
-      else {
+      elseif (!empty($value)) {
         $result['filter'] = $is_combined ? ('"' . $value . '"') : $value;
       }
     }

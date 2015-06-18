@@ -5883,11 +5883,14 @@ Styleguide forms.filters
     width: 12px; }
  }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .filters {
     background: transparent;
     margin: 0;
     padding: 0; }
+
+  .filters__btn-reset--small, .filters__btn-collapse {
+    display: none; }
  }
 
 .views-exposed-form .views-exposed-widget {
