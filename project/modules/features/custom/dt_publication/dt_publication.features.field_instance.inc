@@ -316,7 +316,7 @@ function dt_publication_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_publication_contact',
     'label' => 'Contact information',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,

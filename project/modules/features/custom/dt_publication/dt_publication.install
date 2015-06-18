@@ -75,3 +75,10 @@ function dt_publication_update_7104() {
 function dt_publication_update_7105() {
   field_delete_field('field_publication_summary');
 }
+
+/**
+ * Reverting the feature after changes.
+ */
+function dt_publication_update_7106() {
+  features_revert_module('dt_publication');
+}

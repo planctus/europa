@@ -5484,6 +5484,9 @@ Styleguide form.textarea
   margin-top: 60px;
   margin-bottom: 30px; }
 
+.sidebar-field-group--important, .front .sidebar-field-group {
+  padding-top: 30px; }
+
 .block--full-width {
   margin-left: -15px;
   margin-right: -15px; }
