@@ -123,11 +123,16 @@ Styleguide forms.filters
   }
 }
 
-@include breakpoint(screen-sm-min) {
+@include breakpoint(screen-md-min) {
   .filters {
     background: transparent;
     margin: 0;
     padding: 0;
+  }
+
+  .filters__btn-reset--small,
+  .filters__btn-collapse {
+    display: none;
   }
 }
 
