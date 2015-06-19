@@ -261,6 +261,10 @@ Styleguide listing.column-left
 .listing__wrapper--two-columns {
   .listing {
     margin-bottom: 2em;
+    @extend .col-sm-6;
+  }
+
+  .listing--title-large {
     @extend .col-md-6;
   }
 }
