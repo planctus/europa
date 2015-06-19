@@ -12,10 +12,6 @@
           $itemsNumber    = $('.filters__items-number');
 
       // Function for hiding Submit and Reset buttons
-      var hideMainFilterButtons = function() {
-        $('.filters__btn-submit, .filters__btn-reset',$filters).hide();
-      }
-
       var hideFilterButtons = function() {
         $('.filters__btn-collapse, .filters__btn-reset--small').hide();
       }
@@ -75,8 +71,9 @@
                 .attr('aria-expanded', true)
                 .removeAttr('style');
 
+
               // Hiding filter buttons
-              //hideMainFilterButtons();
+              hideFilterButtons();
 
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
@@ -88,7 +85,7 @@
               var $sidebarFirst = $(".region-sidebar-first");
 
               // Showing buttons on viewport switch
-              //showFilterButtons();
+              showFilterButtons();
 
               $filters.wrapInner("<div class='filters__wrapper'></div>");
               $filters
@@ -103,7 +100,7 @@
               $filters.addClass('collapse');
               // Hiding filter buttons
               //hideMainFilterButtons();
-              $filtersSubmit.removeClass('ctools-auto-submit-click').show();
+              $filtersSubmit.removeClass('ctools-auto-submit-click');
               $filters.wrapInner("<div class='filters__wrapper'></div>");
 
               $filtersSubmit.click(function () {
