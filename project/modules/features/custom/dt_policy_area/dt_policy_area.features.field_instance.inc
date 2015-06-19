@@ -113,6 +113,7 @@ function dt_policy_area_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
+          'dt_editor' => 'dt_editor',
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -123,6 +124,9 @@ function dt_policy_area_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => -6,
+            ),
+            'dt_editor' => array(
+              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -8,
