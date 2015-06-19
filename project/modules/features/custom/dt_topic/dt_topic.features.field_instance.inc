@@ -18,9 +18,19 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of departments related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -71,6 +81,12 @@ function dt_topic_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 16,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -152,12 +168,20 @@ function dt_topic_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
       'title' => array(
@@ -175,11 +199,10 @@ function dt_topic_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'dt_editor' => 'dt_editor',
-          'filtered_html' => 'filtered_html',
+          'basic_html' => 0,
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
@@ -187,9 +210,6 @@ function dt_topic_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => -6,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -8,
@@ -211,6 +231,10 @@ function dt_topic_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -230,11 +254,18 @@ function dt_topic_field_default_field_instances() {
     'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 23,
+      ),
+      'full' => array(
         'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 14,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -292,9 +323,19 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select the commissioner responsible for this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 6,
       ),
       'teaser' => array(
@@ -343,7 +384,19 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -388,9 +441,19 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of priorities related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -428,6 +491,65 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-topic-field_core_social_network_links'
+  $field_instances['node-topic-field_core_social_network_links'] = array(
+    'bundle' => 'topic',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'dt_social_network_links',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_social_network_links',
+    'label' => 'Social Network Links',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'social_network' => 0,
+      'title' => 0,
+      'url' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'dt_social_network_links',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'social_network_link_default',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-topic-field_core_top_tasks'
   $field_instances['node-topic-field_core_top_tasks'] = array(
     'bundle' => 'topic',
@@ -437,10 +559,17 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'custom_formatters',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'custom_formatters_top_task_link',
-        'weight' => 15,
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_ds_layouts',
+        'settings' => array(),
+        'type' => 'nexteuropa_ds_layouts_formatter_link_button_block',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -481,9 +610,19 @@ function dt_topic_field_default_field_instances() {
     'description' => 'Select a number of other topics related to this topic.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -530,9 +669,17 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
+        'type' => 'text_default',
+        'weight' => 20,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -607,9 +754,17 @@ function dt_topic_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -686,7 +841,14 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 22,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -763,7 +925,13 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -815,13 +983,13 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 18,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -882,13 +1050,13 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 17,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -959,10 +1127,16 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,

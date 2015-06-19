@@ -28,6 +28,10 @@ $messages-icon-size: 2em;
     font-weight: bold;
   }
 
+  p {
+    max-width: 100%;
+  }
+
   &:before {
     background: url("../images/svg/messages-info.svg") no-repeat;
     float: left;

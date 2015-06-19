@@ -32,6 +32,10 @@ $spacing-bottom-listing__title: 0.7em;
       color: $grey-base;
     }
   }
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .listing__item-link {
@@ -52,6 +56,7 @@ $spacing-bottom-listing__title: 0.7em;
   float: left;
   width: 75%;
   padding-left: 0;
+
 }
 
 .listing__column-second {
@@ -64,7 +69,6 @@ $spacing-bottom-listing__title: 0.7em;
   color: $brand-primary;
   font-family: $font-family-sans-serif;
   font-size: 1em;
-  margin-top: $spacing-top-listing__title;
   margin-bottom: $spacing-bottom-listing__title;
   padding: 0;
   display: inline-block;
@@ -72,7 +76,6 @@ $spacing-bottom-listing__title: 0.7em;
 
   & + * {
     font-size: $font-size-little;
-    margin-top: $spacing-top-listing__title;
   }
 }
 
@@ -177,7 +180,6 @@ Styleguide listing.column-left
     margin: 0.2em 0 0.4em 0;
   }
   p {
-    margin: 0;
     padding: 0;
   }
   margin-bottom: 30px;

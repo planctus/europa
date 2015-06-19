@@ -22,9 +22,9 @@ function dt_topic_uninstall() {
 }
 
 /**
- * Revert.
+ * Revert and enabling features.
  */
-function dt_topic_core_update_7101() {
+function dt_topic_update_7101() {
   // The features to enable.
   $features = array(
     'dt_topic',
@@ -35,4 +35,11 @@ function dt_topic_core_update_7101() {
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
+}
+
+/**
+ * Reverting the feature to configure the display suite field displays.
+ */
+function dt_topic_update_7102() {
+  features_revert_module('dt_topic');
 }
