@@ -260,6 +260,7 @@ Styleguide listing.column-left
 
 .listing__wrapper--two-columns {
   .listing {
+    margin-bottom: 2em;
     @extend .col-md-6;
   }
 }
@@ -293,5 +294,13 @@ Styleguide listing.column-left
   .listing__item {
     @extend .col-md-4;
     margin-top: 15px;
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .listing__wrapper--two-columns {
+    .listing {
+      margin-bottom: 0;
+    }
   }
 }

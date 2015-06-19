@@ -6645,6 +6645,9 @@ Styleguide listing.column-left
 .listing__wrapper--three-columns p, .listing__wrapper--two-columns p, .listing__wrapper--row-three p, .listing__wrapper--row-two p {
   padding: 0; }
 
+.listing__wrapper--two-columns .listing {
+  margin-bottom: 2em; }
+
 .listing__wrapper--row-two .listing__item:nth-child(odd) {
   clear: left; }
 .listing__wrapper--row-two .listing__item:nth-child(even) {
@@ -6652,6 +6655,11 @@ Styleguide listing.column-left
 
 .listing__wrapper--row-three .listing__item {
   margin-top: 15px; }
+
+@media (min-width: 992px) {
+  .listing__wrapper--two-columns .listing {
+    margin-bottom: 0; }
+ }
 
 .logo {
   display: block;
