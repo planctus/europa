@@ -93,15 +93,27 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
-.listing--large {
+.listing--title-large,
+.listing--title-medium {
+  .listing__title {
+    margin-top: 0.2em;
+    margin-bottom: 0.4em;
+  }
+}
+
+.listing--title-large {
   .listing__item {
     margin-bottom: 15px;
   }
 
   .listing__title {
     font-size: $font-size-h2;
-    margin-top: 0.2em;
-    margin-bottom: 0.4em;
+  }
+}
+
+.listing--title-medium {
+  .listing__title {
+    font-size: $font-size-h3;
   }
 }
 
@@ -234,7 +246,6 @@ Styleguide listing.column-left
 .listing__wrapper--row-three,
 .listing__wrapper--row-two {
   .listing__title {
-    font-size: $font-size-big;
     margin: 0.2em 0 0.4em 0;
   }
   p {

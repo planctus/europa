@@ -6548,12 +6548,17 @@ Styleguide listing
 .listing--no-border .listing__item {
   border: none; }
 
-.listing--large .listing__item {
-  margin-bottom: 15px; }
-.listing--large .listing__title {
-  font-size: 1.667em;
+.listing--title-large .listing__title, .listing--title-medium .listing__title {
   margin-top: 0.2em;
   margin-bottom: 0.4em; }
+
+.listing--title-large .listing__item {
+  margin-bottom: 15px; }
+.listing--title-large .listing__title {
+  font-size: 1.667em; }
+
+.listing--title-medium .listing__title {
+  font-size: 1.333em; }
 
 .listing--cta .listing__item-link {
   padding-right: 1.667em;
@@ -6636,7 +6641,6 @@ Styleguide listing.column-left
   padding-left: 0; }
 
 .listing__wrapper--three-columns .listing__title, .listing__wrapper--two-columns .listing__title, .listing__wrapper--row-three .listing__title, .listing__wrapper--row-two .listing__title {
-  font-size: 1.333em;
   margin: 0.2em 0 0.4em 0; }
 .listing__wrapper--three-columns p, .listing__wrapper--two-columns p, .listing__wrapper--row-three p, .listing__wrapper--row-two p {
   padding: 0; }
