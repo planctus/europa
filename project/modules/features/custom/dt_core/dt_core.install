@@ -13,6 +13,8 @@ function dt_core_install() {
     'dt_homepage_core',
     'dt_aboutec_core',
     'dt_strategy_core',
+    // Roles and permissions.
+    'dt_roles_permissions',
   );
   module_enable($dt_classes);
 
@@ -333,4 +335,11 @@ function dt_core_update_7123() {
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
+}
+
+/**
+ * Enable dt_roles_permissions module.
+ */
+function dt_core_update_7124() {
+  module_enable('dt_roles_permissions');
 }
