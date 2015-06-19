@@ -341,5 +341,5 @@ function dt_core_update_7123() {
  * Enable dt_roles_permissions module.
  */
 function dt_core_update_7124() {
-  module_enable('dt_roles_permissions');
+  module_enable(array('dt_roles_permissions'));
 }
