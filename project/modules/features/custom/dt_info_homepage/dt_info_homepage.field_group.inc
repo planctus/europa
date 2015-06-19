@@ -110,27 +110,83 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Highlight',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_info_homepage_section_3',
       1 => 'topics_atoz',
     ),
-    'format_type' => 'div',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Highlight',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => ' listing__wrapper--highlight block--full-width',
-        'description' => '',
+        'classes' => 'section__group section__group--full-width section__group--highlight-grey',
+        'element' => 'div',
         'show_label' => '0',
         'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'none',
+        'attributes' => '',
       ),
-      'formatter' => 'open',
     ),
   );
   $export['group_highlight|node|info_homepage|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_section_bot|node|info_homepage|full';
+  $field_group->group_name = 'group_info_homepage_section_bot';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Section bottom',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_info_homepage_section_4',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Section bottom',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_info_homepage_section_bot|node|info_homepage|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_section_top|node|info_homepage|full';
+  $field_group->group_name = 'group_info_homepage_section_top';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Section top',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_info_homepage_section_1',
+      1 => 'field_info_homepage_section_2',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Section top',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_info_homepage_section_top|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -208,7 +264,7 @@ function dt_info_homepage_field_group_info() {
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group',
+        'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
