@@ -114,7 +114,7 @@ function dt_class_field_group_info() {
     'format_settings' => array(
       'label' => 'Messages',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',

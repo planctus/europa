@@ -190,7 +190,7 @@ function dt_class_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '155',
+        'maxlength_js' => 155,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -347,7 +347,8 @@ function dt_class_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'row_two',
-          'nexteuropa_ds_layouts_modifier' => 'listing__wrapper--bare',
+          'nexteuropa_ds_layouts_modifier' => 'listing--no-border',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
