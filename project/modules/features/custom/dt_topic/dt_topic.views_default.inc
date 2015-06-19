@@ -48,36 +48,10 @@ function dt_topic_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Description */
-  $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
-  $handler->display->display_options['fields']['field_core_description']['table'] = 'field_data_field_core_description';
-  $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';
-  /* Field: Content: Introduction */
-  $handler->display->display_options['fields']['field_core_introduction']['id'] = 'field_core_introduction';
-  $handler->display->display_options['fields']['field_core_introduction']['table'] = 'field_data_field_core_introduction';
-  $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
-  /* Field: Content: Objectives */
-  $handler->display->display_options['fields']['field_topic_objectives']['id'] = 'field_topic_objectives';
-  $handler->display->display_options['fields']['field_topic_objectives']['table'] = 'field_data_field_topic_objectives';
-  $handler->display->display_options['fields']['field_topic_objectives']['field'] = 'field_topic_objectives';
-  /* Field: Content: Related top tasks */
-  $handler->display->display_options['fields']['field_core_top_tasks']['id'] = 'field_core_top_tasks';
-  $handler->display->display_options['fields']['field_core_top_tasks']['table'] = 'field_data_field_core_top_tasks';
-  $handler->display->display_options['fields']['field_core_top_tasks']['field'] = 'field_core_top_tasks';
-  $handler->display->display_options['fields']['field_core_top_tasks']['delta_offset'] = '0';
-  /* Field: Content: Targets */
-  $handler->display->display_options['fields']['field_topic_targets']['id'] = 'field_topic_targets';
-  $handler->display->display_options['fields']['field_topic_targets']['table'] = 'field_data_field_topic_targets';
-  $handler->display->display_options['fields']['field_topic_targets']['field'] = 'field_topic_targets';
-  /* Field: Content: What the Commission is doing */
-  $handler->display->display_options['fields']['field_topic_commission_actions']['id'] = 'field_topic_commission_actions';
-  $handler->display->display_options['fields']['field_topic_commission_actions']['table'] = 'field_data_field_topic_commission_actions';
-  $handler->display->display_options['fields']['field_topic_commission_actions']['field'] = 'field_topic_commission_actions';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'ASC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -113,12 +87,6 @@ function dt_topic_views_default_views() {
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'title' => 'title',
-    'field_core_description' => 'field_core_description',
-    'field_core_introduction' => 'field_core_introduction',
-    'field_topic_objectives' => 'field_topic_objectives',
-    'field_core_top_tasks' => 'field_core_top_tasks',
-    'field_topic_targets' => 'field_topic_targets',
-    'field_topic_commission_actions' => 'field_topic_commission_actions',
   );
 
   /* Display: Page */

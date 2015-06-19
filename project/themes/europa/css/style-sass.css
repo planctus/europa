@@ -6478,8 +6478,8 @@ Styleguide listing
     margin-bottom: 0; }
 
 .listing__item-link {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   display: block;
   overflow: hidden;
   color: #404040; }
@@ -6500,11 +6500,12 @@ Styleguide listing
   color: #004494;
   font-family: Arial, sans-serif;
   font-size: 1em;
-  margin-bottom: 0.7em;
   padding: 0;
-  display: inline-block; }
+  display: inline-block;
+  line-height: 1.3; }
   .listing__title + * {
-    font-size: 0.889em; }
+    font-size: 0.889em;
+    margin-top: 0.7em; }
 
 .listing--no-padding {
   padding-left: 0 !important; }
@@ -6548,6 +6549,9 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+.listing--teaser .listing__item-link, ul.listing--teaser .listing__item-link {
+  padding: 0.85em 0 1em 0; }
+
 /*
 Listing layouts
 
@@ -6569,9 +6573,6 @@ Styleguide listing.column-left
 
 .listing__wrapper--three_columns, .listing__wrapper--two_columns, .listing__wrapper--row_three, .listing__wrapper--row_two {
   margin-bottom: 30px; }
-  .listing__wrapper--three_columns .listing__item-link, .listing__wrapper--two_columns .listing__item-link, .listing__wrapper--row_three .listing__item-link, .listing__wrapper--row_two .listing__item-link {
-    padding-top: 0.85em;
-    padding-bottom: 1em; }
   .listing__wrapper--three_columns .listing__title, .listing__wrapper--two_columns .listing__title, .listing__wrapper--row_three .listing__title, .listing__wrapper--row_two .listing__title {
     font-size: 1.333em;
     margin: 0.2em 0 0.4em 0; }

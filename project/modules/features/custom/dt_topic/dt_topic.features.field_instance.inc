@@ -145,7 +145,7 @@ function dt_topic_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '155',
+        'maxlength_js' => 155,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -1239,6 +1239,7 @@ function dt_topic_field_default_field_instances() {
   t('Select a number of other topics related to this topic.');
   t('Select a number of priorities related to this topic.');
   t('Select the commissioner responsible for this topic.');
+  t('Social Network Links');
   t('Targets');
   t('The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"');
   t('Title');
