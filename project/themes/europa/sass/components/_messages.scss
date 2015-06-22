@@ -28,8 +28,10 @@ $messages-icon-size: 2em;
     font-weight: bold;
   }
 
-  p {
+  p,
+  ul {
     max-width: 100%;
+    margin-bottom: 0 !important;
   }
 
   &:before {
