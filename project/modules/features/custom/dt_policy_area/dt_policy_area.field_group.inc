@@ -141,6 +141,7 @@ function dt_policy_area_field_group_info() {
       1 => 'field_core_introduction',
       2 => 'field_core_policy_area',
       3 => 'field_core_description',
+      4 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
