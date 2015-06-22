@@ -72,7 +72,7 @@ function dt_department_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_link' => array(
+    'field_core_links' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -100,24 +100,6 @@ function dt_department_ds_field_settings_info() {
           'fis-cl' => 'btn-group',
           'fis-at' => '',
           'fis-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_links' => array(
-        'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
         ),
       ),
     ),
