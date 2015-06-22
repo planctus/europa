@@ -24,10 +24,10 @@ function dt_policy_keyfile_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_link',
+      1 => 'field_policy_keyfile_image',
       2 => 'field_policy_keyfile_type',
       3 => 'field_core_introduction',
-      4 => 'field_policy_keyfile_image',
+      4 => 'field_core_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -54,9 +54,10 @@ function dt_policy_keyfile_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '10',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'og_group_ref',
-      2 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

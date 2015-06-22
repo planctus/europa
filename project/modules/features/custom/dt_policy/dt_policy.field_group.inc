@@ -55,7 +55,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_policy_details';
   $field_group->data = array(
     'label' => 'Additional details',
-    'weight' => '42',
+    'weight' => '41',
     'children' => array(
       0 => 'field_policy_detail_add_body',
       1 => 'field_policy_detail_add_header',
@@ -315,6 +315,7 @@ function dt_policy_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
+      1 => 'field_core_persons',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

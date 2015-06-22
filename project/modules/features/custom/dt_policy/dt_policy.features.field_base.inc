@@ -345,7 +345,7 @@ function dt_policy_field_default_field_bases() {
   // Exported field_base: 'field_policy_implementations'
   $field_bases['field_policy_implementations'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_implementations',
@@ -590,7 +590,7 @@ function dt_policy_field_default_field_bases() {
   // Exported field_base: 'field_policy_sharable_banner'
   $field_bases['field_policy_sharable_banner'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_sharable_banner',

@@ -50,3 +50,4 @@ features_exclude[dependencies][nexteuropa_editorial] = nexteuropa_editorial
 features_exclude[dependencies][nexteuropa_multilingual] = nexteuropa_multilingual
 features_exclude[dependencies][og] = og
 features_exclude[dependencies][og_ui] = og_ui
+features_exclude[dependencies][image] = image
