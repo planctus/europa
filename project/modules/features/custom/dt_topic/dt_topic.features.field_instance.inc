@@ -934,7 +934,8 @@ function dt_topic_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => 'col-md-6',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => 'col-md-6',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',

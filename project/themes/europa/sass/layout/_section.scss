@@ -42,15 +42,15 @@
   }
 }
 
+.section__group--highlight-grey {
+  background-color: $grey-lighter;
+  padding: 3em 0;
+  overflow: hidden;
+}
+
 @include breakpoint(screen-lg-min) {
   .section__group--full-width {
     margin-left: -100%;
     margin-right: -100%;
   }
-}
-
-.section__group--highlight-grey {
-  background-color: $grey-lighter;
-  padding: 3em 0;
-  overflow: hidden;
 }

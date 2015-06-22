@@ -5515,16 +5515,16 @@ Styleguide form.textarea
     margin-left: auto !important;
     margin-right: auto !important; }
 
+.section__group--highlight-grey {
+  background-color: #ececec;
+  padding: 3em 0;
+  overflow: hidden; }
+
 @media (min-width: 1200px) {
   .section__group--full-width {
     margin-left: -100%;
     margin-right: -100%; }
  }
-
-.section__group--highlight-grey {
-  background-color: #ececec;
-  padding: 3em 0;
-  overflow: hidden; }
 
 .block--full-width {
   margin-left: -15px;
