@@ -49,6 +49,7 @@ features[field_group][] = group_topic_what_is_doing|node|topic|full
 features[field_instance][] = node-topic-field_core_department
 features[field_instance][] = node-topic-field_core_description
 features[field_instance][] = node-topic-field_core_introduction
+features[field_instance][] = node-topic-field_core_legacy_link
 features[field_instance][] = node-topic-field_core_link
 features[field_instance][] = node-topic-field_core_persons
 features[field_instance][] = node-topic-field_core_policy_areas

@@ -55,6 +55,7 @@ features[field_base][] = field_core_introduction
 features[field_base][] = field_core_legacy_link
 features[field_base][] = field_core_legacy_links
 features[field_base][] = field_core_link
+features[field_base][] = field_core_links
 features[field_base][] = field_core_social_network_links
 features[field_base][] = field_core_top_task_link
 features[field_base][] = field_core_top_tasks

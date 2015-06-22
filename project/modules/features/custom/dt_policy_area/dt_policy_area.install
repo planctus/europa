@@ -20,3 +20,10 @@ function dt_policy_area_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('dt_policy_area %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting dt_policy module to set field display settings.
+ */
+function dt_policy_area_update_7101() {
+  features_revert_module('dt_policy_area');
+}
