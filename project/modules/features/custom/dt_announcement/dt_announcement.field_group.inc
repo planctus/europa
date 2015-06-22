@@ -58,7 +58,7 @@ function dt_announcement_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_announcement_info',
-      1 => 'field_core_link',
+      1 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -343,3 +343,25 @@ function dt_core_update_7123() {
 function dt_core_update_7124() {
   module_enable(array('dt_roles_permissions'));
 }
+
+/**
+ * Copying field_core_link to field_core_links.
+ */
+function dt_core_update_7125() {
+  // The features to revert.
+  $features = array(
+    'dt_department' => 'department',
+    'dt_announcement' => 'announcement',
+    'nexteuropa_page' => 'page',
+  );
+
+  // Reverting the features.
+  features_revert_module('dt_core');
+  foreach ($features as $feature => $content_type) {
+    features_revert_module($feature);
+    drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
+    // Copy the field content.
+    _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
+    drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+  }
+}
