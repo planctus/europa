@@ -12,10 +12,6 @@
           $itemsNumber    = $('.filters__items-number');
 
       // Function for hiding Submit and Reset buttons
-      var hideMainFilterButtons = function() {
-        $('.filters__btn-submit, .filters__btn-reset',$filters).hide();
-      }
-
       var hideFilterButtons = function() {
         $('.filters__btn-collapse, .filters__btn-reset--small').hide();
       }
@@ -29,9 +25,9 @@
         $resultsCount
           .append(
             '<div class="btn-group">' +
-              '<button class="btn btn-default filters__btn-reset--small hidden-sm hidden-md hidden-lg">' + clearAll +
+              '<button class="btn btn-default filters__btn-reset--small">' + clearAll +
               '</button>' +
-              '<button class="btn btn-primary hidden-sm hidden-md hidden-lg filters__btn-collapse" type="button"' +
+              '<button class="btn btn-primary filters__btn-collapse" type="button"' +
               ' data-toggle="collapse" data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
               ' aria-expanded="false" aria-controls="collapseFilters">' +
                 refineText +
@@ -60,7 +56,7 @@
 
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
-          enquire.register('screen and (min-width: 768px)', {
+          enquire.register('screen and (min-width: 992px)', {
             // desktop
             match : function() {
               var $sidebarFirst = $(".region-sidebar-first"),
@@ -75,8 +71,9 @@
                 .attr('aria-expanded', true)
                 .removeAttr('style');
 
+
               // Hiding filter buttons
-              hideMainFilterButtons();
+              hideFilterButtons();
 
               $filters.children('.close').remove();
               if ($filtersWrapper.length) {
@@ -102,8 +99,8 @@
             setup: function() {
               $filters.addClass('collapse');
               // Hiding filter buttons
-              hideMainFilterButtons();
-              $filtersSubmit.removeClass('ctools-auto-submit-click').show();
+              //hideMainFilterButtons();
+              $filtersSubmit.removeClass('ctools-auto-submit-click');
               $filters.wrapInner("<div class='filters__wrapper'></div>");
 
               $filtersSubmit.click(function () {

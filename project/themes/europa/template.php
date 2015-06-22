@@ -114,6 +114,11 @@ function europa_preprocess_views_view(&$vars) {
 
   if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
     $vars['classes_array'][] = 'listing';
+
+    if (isset($view->style_plugin->row_plugin->options['view_mode'])) {
+      $view_mode = $view->style_plugin->row_plugin->options['view_mode'];
+      $vars['classes_array'][] = 'listing--' . $view_mode;
+    }
   }
 
   // Checking if exposed filters are set and add variable that stores active
@@ -185,17 +190,15 @@ function europa_form_required_marker($variables) {
  * Implements template_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
-  $node = &$variables['node'];
-
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = ' class="col-md-6"';
+    $variables['content_column_class'] = 'col-md-6';
   }
   elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = ' class="col-md-9"';
+    $variables['content_column_class'] = 'col-md-9';
   }
   else {
-    $variables['content_column_class'] = ' class="col-md-12"';
+    $variables['content_column_class'] = 'col-md-12';
   }
 
   // Set footer region column classes.
@@ -205,6 +208,8 @@ function europa_preprocess_page(&$variables) {
   else {
     $variables['footer_column_class'] = 'col-sm-12';
   }
+
+  $node = &$variables['node'];
 
   if (isset($node)) {
     // Adding generic introduction field to be later rendered in page template.
@@ -506,7 +511,9 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
 
 /**
  * Helper applying BEM to footer menu item links.
+ *
  * @param $variables
+ *
  * @return string
  */
 function _europa_menu_link__footer(&$variables) {
@@ -525,7 +532,9 @@ function _europa_menu_link__footer(&$variables) {
 
 /**
  * Implements theme_menu_link().
+ *
  * @param $variables
+ *
  * @return string
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
@@ -534,7 +543,9 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
 
 /**
  * Implements theme_menu_link().
+ *
  * @param $variables
+ *
  * @return string
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
@@ -701,7 +712,7 @@ function europa_html_head_alter(&$head_elements) {
 }
 
 /**
- * Helper function for display 'meta' view mode field.
+ * Helper function for display listings.
  */
 function _europa_field_component_listing($variables, $config) {
   $config += array(
@@ -715,11 +726,12 @@ function _europa_field_component_listing($variables, $config) {
   $modifier_class = ' ' . trim($config['modifier']);
   $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
   $wrapper_class .= ' ' . trim($config['wrapper_modifier']);
+
   $columns_num = 1;
-  if ($config['layout'] == 'two_columns') {
+  if ($config['layout'] == 'two-columns') {
     $columns_num = 2;
   }
-  elseif ($config['layout'] == 'three_columns') {
+  elseif ($config['layout'] == 'three-columns') {
     $columns_num = 3;
   }
 
@@ -763,6 +775,7 @@ function _europa_field_component_listing($variables, $config) {
     $output .= '</' . $config['listing_wrapper_element'] . '>';
   }
   $output .= '</div>';
+
   return $output;
 }
 
@@ -775,24 +788,36 @@ function europa_field($variables) {
   switch ($field_type) {
     case 'entityreference':
       // First node from entity reference.
-      $reference = array_shift($element[0]);
+      $reference = '';
+      if (isset($element[0])) {
+        $reference = array_shift($element[0]);
+      }
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
+      $layout_name = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
+      $layout_name_clean = str_replace('_', '-', $layout_name);
+
       $settings = array();
       $settings['view_mode'] = $first_node['#view_mode'];
-      $settings['layout'] = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
-      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
+      $settings['layout'] = $layout_name_clean;
+      $settings['modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
+      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
+
       // Custom listing settings based on view mode.
       if (isset($first_node['#view_mode'])) {
         switch ($first_node['#view_mode']) {
           case 'title':
-            $settings['modifier'] = 'listing--title';
+            $settings['modifier'] .= ' listing--title';
             $settings['wrapper_modifier'] .= ' listing--title__wrapper';
             $settings['listing_wrapper_element'] = 'ul';
             $settings['item_wrapper_element'] = 'li';
             break;
 
+          case 'meta':
+            $settings['modifier'] .= ' listing--meta';
+            $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
+
           case 'teaser':
-            $settings['modifier'] = 'listing--teaser';
+            $settings['modifier'] .= ' listing--teaser';
             $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
             break;
         }
