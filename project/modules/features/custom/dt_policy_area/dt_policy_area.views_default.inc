@@ -22,7 +22,7 @@ function dt_policy_area_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Policy areas';
+  $handler->display->display_options['css_class'] = 'listing--teaser';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -79,7 +79,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="listing__item-link" title="[title]">
   <div class="listing__column-main column-main">
     <h3 class="listing__title">[title]</h3>
-    <div>[field_core_description]</div>
+    <p>[field_core_description]</p>
   </div>
 </a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
