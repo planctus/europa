@@ -210,8 +210,8 @@ function _dt_core_field_value_copy($entity_type, $bundle, $source_field_name, $d
       // Check the source field for value.
       if (
         isset($entity_wrapper->$source_field_name)
-        && !empty($entity_wrapper->$source_field_name->value())
-        && empty($entity_wrapper->$destination_field_name->value())
+        && $entity_wrapper->$source_field_name->value()
+        && $entity_wrapper->$destination_field_name->value() == NULL
       ) {
         // Same cardinality.
         if ($source_field_is_multiple == $destination_field_is_multiple) {
