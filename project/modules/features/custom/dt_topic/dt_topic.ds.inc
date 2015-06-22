@@ -216,8 +216,8 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_topic_meta',
-        1 => 'node_type',
+        0 => 'node_type',
+        1 => 'group_topic_meta',
         2 => 'title',
         3 => 'field_core_introduction',
       ),
@@ -230,6 +230,7 @@ function dt_topic_ds_layout_settings_info() {
       ),
       'central' => array(
         6 => 'group_topic_related_tasks',
+<<<<<<< HEAD
         8 => 'group_topic_policy_areas',
         10 => 'group_topic_latest',
         12 => 'group_topic_what_is_doing',
@@ -243,11 +244,25 @@ function dt_topic_ds_layout_settings_info() {
         20 => 'field_core_link',
         21 => 'group_latest_sidebar',
         22 => 'field_core_social_network_links',
+=======
+        8 => 'field_core_top_tasks',
+        9 => 'group_topic_policy_areas',
+        11 => 'group_topic_latest',
+        13 => 'group_topic_what_is_doing',
+        14 => 'field_topic_commission_actions',
+        15 => 'field_core_policy_areas',
+        16 => 'field_topic_objectives',
+        17 => 'field_topic_targets',
+        18 => 'group_latest_main',
+        19 => 'field_core_link',
+        20 => 'group_latest_sidebar',
+        21 => 'field_core_social_network_links',
+>>>>>>> develop
       ),
     ),
     'fields' => array(
-      'group_topic_meta' => 'left_header',
       'node_type' => 'left_header',
+      'group_topic_meta' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_topic_contextual' => 'top',
@@ -264,8 +279,11 @@ function dt_topic_ds_layout_settings_info() {
       'field_topic_objectives' => 'central',
       'field_topic_targets' => 'central',
       'group_latest_main' => 'central',
+<<<<<<< HEAD
       'field_topic_tasks' => 'central',
       'field_core_top_tasks' => 'central',
+=======
+>>>>>>> develop
       'field_core_link' => 'central',
       'group_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',

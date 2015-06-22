@@ -103,6 +103,11 @@ function dt_class_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_link_groups' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|class|full'] = $ds_fieldsetting;
 
