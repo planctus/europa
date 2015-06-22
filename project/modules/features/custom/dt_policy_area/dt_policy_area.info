@@ -19,6 +19,7 @@ features[field_base][] = field_core_policy_area
 features[field_base][] = field_core_policy_areas
 features[field_instance][] = node-policy_area-field_core_description
 features[field_instance][] = node-policy_area-field_core_introduction
+features[field_instance][] = node-policy_area-field_core_legacy_link
 features[field_instance][] = node-policy_area-field_core_persons
 features[field_instance][] = node-policy_area-field_core_policy_area
 features[field_instance][] = node-policy_area-group_content_access
