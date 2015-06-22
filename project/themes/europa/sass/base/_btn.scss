@@ -95,6 +95,15 @@ Styleguide buttons
   }
 }
 
+
+// Class that can be also used on a button wrapper since there are sometimes
+// situations where button is wrapped in unnecessary markup coming from a CMS
+.btn--no-margin-bottom {
+  & * {
+    margin-bottom: 0 !important;
+  }
+}
+
 /*
 Button block
 

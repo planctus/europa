@@ -30,22 +30,24 @@
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
-        <section class="col-md-12 <?php print $top_classes; ?>">
-          <?php if (!empty($local_tabs)): ?>
-            <?php print $local_tabs; ?>
-          <?php endif; ?>
-          <?php if (!empty($messages)): ?>
-            <?php print $messages; ?>
-          <?php endif; ?>
+        <?php if(!empty($top) || !empty($local_tabs) || !empty($messages)): ?>
+          <section class="section col-md-12 <?php print $top_classes; ?>">
+            <?php if (!empty($local_tabs)): ?>
+              <?php print $local_tabs; ?>
+            <?php endif; ?>
+            <?php if (!empty($messages)): ?>
+              <?php print $messages; ?>
+            <?php endif; ?>
 
-          <?php print $top; ?>
-        </section>
+            <?php print $top; ?>
+          </section>
+        <?php endif; ?>
 
         <a id="main-content" tabindex="-1"></a>
         <<?php print $left_wrapper; ?> class="col-md-3 <?php print $left_classes; ?>">
           <?php print $left; ?>
         </<?php print $left_wrapper; ?>>
-        <section class="col-md-9 <?php print $central_classes; ?>">
+        <section class="section col-md-9 <?php print $central_classes; ?>">
           <?php print $central; ?>
         </section>
       </div>
