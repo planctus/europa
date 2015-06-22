@@ -249,6 +249,7 @@ function nexteuropa_ds_layouts_field_formatter_info_alter(&$info) {
   $info['entityreference_entity_view']['settings'] += array(
     'nexteuropa_ds_layouts_columns' => 'default',
     'nexteuropa_ds_layouts_modifier' => '',
+    'nexteuropa_ds_layouts_wrapper_modifier' => '',
   );
 }
 
@@ -271,10 +272,18 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
       ),
       '#default_value' => $settings['nexteuropa_ds_layouts_columns'],
     );
+
     $settings_form['nexteuropa_ds_layouts_modifier'] = array(
       '#type' => 'textfield',
-      '#title' => t('BEM: Modifier'),
+      '#title' => t('BEM: Listing Modifier'),
       '#default_value' => $settings['nexteuropa_ds_layouts_modifier'],
+      '#description' => t('Class names separated by spaces.'),
+    );
+
+    $settings_form['nexteuropa_ds_layouts_wrapper_modifier'] = array(
+      '#type' => 'textfield',
+      '#title' => t('BEM: Listing Wrapper Modifier'),
+      '#default_value' => $settings['nexteuropa_ds_layouts_wrapper_modifier'],
       '#description' => t('Class names separated by spaces.'),
     );
   }
@@ -298,7 +307,14 @@ function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary,
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: Modifier') . ': ' . $settings['nexteuropa_ds_layouts_modifier'];
+      $summary .= t('BEM: Listing Modifier') . ': ' . $settings['nexteuropa_ds_layouts_modifier'];
+    }
+
+    if (isset($settings['nexteuropa_ds_layouts_wrapper_modifier']) && !empty($settings['nexteuropa_ds_layouts_wrapper_modifier'])) {
+      if (!empty($summary)) {
+        $summary .= '<br />';
+      }
+      $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_ds_layouts_wrapper_modifier'];
     }
   }
 }
@@ -322,5 +338,6 @@ function nexteuropa_ds_layouts_preprocess_field(&$variables) {
     // Make the setting available in the field template.
     $variables['nexteuropa_ds_layouts_columns'] = $formatter_settings['nexteuropa_ds_layouts_columns'];
     $variables['nexteuropa_ds_layouts_modifier'] = $formatter_settings['nexteuropa_ds_layouts_modifier'];
+    $variables['nexteuropa_ds_layouts_wrapper_modifier'] = $formatter_settings['nexteuropa_ds_layouts_wrapper_modifier'];
   }
 }

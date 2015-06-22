@@ -86,7 +86,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -116,7 +116,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section-group',
+        'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -147,7 +147,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Leadership & Organisation',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -243,7 +243,7 @@ function dt_department_field_group_info() {
     'format_settings' => array(
       'label' => 'Responsibilities',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',

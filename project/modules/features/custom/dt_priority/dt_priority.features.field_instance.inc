@@ -37,7 +37,7 @@ function dt_priority_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_announcement',
     'label' => 'Latest',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -161,7 +161,7 @@ function dt_priority_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '',
+        'maxlength_js' => '155',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -373,7 +373,7 @@ function dt_priority_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_policy',
     'label' => 'Policies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -572,7 +572,7 @@ function dt_priority_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_priority_issue',
     'label' => 'Issue',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -639,7 +639,7 @@ function dt_priority_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_priority_objective',
     'label' => 'Objectives',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(

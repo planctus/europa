@@ -171,6 +171,7 @@ function dt_topic_field_group_info() {
       0 => 'title_field',
       1 => 'field_core_introduction',
       2 => 'field_core_description',
+      3 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -298,7 +299,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section-group',
+        'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -383,7 +384,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy areas',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -412,7 +413,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'Related Tasks',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -558,7 +559,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'What the Commission is doing',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',

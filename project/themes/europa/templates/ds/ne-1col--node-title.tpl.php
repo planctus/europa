@@ -10,7 +10,7 @@
 <?php if (isset($title_suffix['contextual_links'])): ?>
   <?php print render($title_suffix['contextual_links']); ?>
 <?php endif; ?>
-<a href="<?php print $node_url; ?>">
+<a href="<?php print $node_url; ?>" class="listing__item-link">
   <?php print $main; ?>
 </a>
 

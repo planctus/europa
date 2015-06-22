@@ -13,6 +13,8 @@ function dt_core_install() {
     'dt_homepage_core',
     'dt_aboutec_core',
     'dt_strategy_core',
+    // Roles and permissions.
+    'dt_roles_permissions',
   );
   module_enable($dt_classes);
 
@@ -336,9 +338,16 @@ function dt_core_update_7123() {
 }
 
 /**
- * Copying field_core_link to field_core_links.
+ * Enable dt_roles_permissions module.
  */
 function dt_core_update_7124() {
+  module_enable(array('dt_roles_permissions'));
+}
+
+/**
+ * Copying field_core_link to field_core_links.
+ */
+function dt_core_update_7125() {
   // The features to revert.
   $features = array(
     'dt_department' => 'department',
@@ -356,3 +365,5 @@ function dt_core_update_7124() {
     drupal_set_message(t('Copyied %content_type.', array('%content_type' => $content_type)));
   }
 }
+
+
