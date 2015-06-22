@@ -5491,12 +5491,12 @@ Styleguide form.textarea
   padding-top: 30px; }
 
 .section {
-  margin-bottom: 2em; }
+  padding-bottom: 1.667em; }
   .section ~ .section {
-    margin-top: 2em; }
+    padding-top: 1.667em; }
 
 .section__group {
-  padding: 2em 0; }
+  padding: 1.667em 0; }
   .section__group:first-child {
     padding-top: 0; }
   .section__group:last-child {
@@ -5554,16 +5554,15 @@ Markup: html/context-nav.html
 
 Styleguide contextnav
 */
-.context-nav {
-  padding: 2em 0; }
-
 .context-nav__label {
   display: block;
   clear: both; }
 
 .context-nav__items {
   display: block;
-  margin-bottom: 0.778em; }
+  margin-bottom: 0.556em; }
+  .context-nav__items:last-child {
+    margin-bottom: 0; }
 
 .context-nav__item {
   display: inline-block; }
@@ -6688,6 +6687,8 @@ Styleguide meta
   letter-spacing: 0.02777778em;
   overflow: hidden;
   margin-bottom: 0.9em; }
+  .meta p {
+    margin: 0; }
 
 .meta__item {
   float: left;
