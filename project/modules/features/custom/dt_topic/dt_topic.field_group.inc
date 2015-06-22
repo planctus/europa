@@ -406,13 +406,14 @@ function dt_topic_field_group_info() {
     'label' => 'Related Tasks',
     'weight' => '4',
     'children' => array(
-      0 => 'field_core_top_tasks',
+      0 => 'field_topic_tasks',
+      1 => 'field_core_top_tasks',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Related Tasks',
       'instance_settings' => array(
-        'classes' => 'section-group',
+        'classes' => 'section-group row',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
