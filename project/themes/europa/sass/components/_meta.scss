@@ -17,6 +17,10 @@ Styleguide meta
   letter-spacing: 0.02777778em;
   overflow: hidden;
   margin-bottom: 0.9em;
+
+  p {
+    margin: 0;
+  }
 }
 
 .meta__item {
