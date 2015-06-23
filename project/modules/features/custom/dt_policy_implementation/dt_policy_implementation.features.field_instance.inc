@@ -196,11 +196,7 @@ function dt_policy_implementation_field_default_field_instances() {
   // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'
   $field_instances['node-policy_implementation-field_policy_imp_status'] = array(
     'bundle' => 'policy_implementation',
-    'default_value' => array(
-      0 => array(
-        'value' => 'proposed',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -218,10 +214,11 @@ function dt_policy_implementation_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_imp_status',
     'label' => 'Status',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -231,6 +228,7 @@ function dt_policy_implementation_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
       'weight' => 8,

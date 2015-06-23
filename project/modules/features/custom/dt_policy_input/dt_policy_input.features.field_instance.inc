@@ -136,11 +136,7 @@ function dt_policy_input_field_default_field_instances() {
   // Exported field_instance: 'node-policy_input-field_policy_input_status'
   $field_instances['node-policy_input-field_policy_input_status'] = array(
     'bundle' => 'policy_input',
-    'default_value' => array(
-      0 => array(
-        'value' => 'announced',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -162,7 +158,7 @@ function dt_policy_input_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_policy_input_status',
     'label' => 'Status',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -174,7 +170,7 @@ function dt_policy_input_field_default_field_instances() {
         'apply_chosen' => '',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => -3,
     ),
   );
