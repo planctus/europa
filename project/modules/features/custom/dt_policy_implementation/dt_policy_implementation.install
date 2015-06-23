@@ -27,6 +27,7 @@ function dt_policy_implementation_uninstall() {
 function dt_policy_implementation_update_7101() {
   if (field_info_field('field_policy_task_shortcut') !== NULL) {
     field_delete_field('field_policy_task_shortcut');
+    field_purge_field('field_policy_task_shortcut');
   }
 
   features_revert_module('dt_policy_implementation');

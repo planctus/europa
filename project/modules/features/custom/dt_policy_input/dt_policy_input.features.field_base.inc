@@ -56,6 +56,7 @@ function dt_policy_input_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'planned' => 'planned',
         'announced' => 'announced',
         'open' => 'open',
         'closed' => 'closed',
