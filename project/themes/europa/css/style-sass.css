@@ -5209,14 +5209,15 @@ Styleguide text.link
 a:hover, a:active, a:focus {
   color: #404040;
   text-decoration: underline; }
-a[href^="http"]:after, a[href^="https"]:after {
+
+p a {
+  text-decoration: underline; }
+
+.is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after {
   display: inline-block;
   font-size: 75%;
   margin-left: 0.4em;
   margin-right: 0.2em; }
-
-p a {
-  text-decoration: underline; }
 
 /*
 Lists
@@ -6111,7 +6112,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, a[href^="http"]:after, a[href^="https"]:after, .listing--cta .listing__title:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .listing--cta .listing__title:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -6124,7 +6125,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--external, a[href^="http"]:after, a[href^="https"]:after, .icon--external:before {
+.icon--external, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .icon--external:before {
   content: '\e604'; }
 
 .icon--arrow-up:before {
@@ -6519,6 +6520,8 @@ Styleguide listing
   color: #404040; }
   .listing__item-link:hover, .listing__item-link:active, .listing__item-link:focus {
     text-decoration: none; }
+  .listing__item-link[href^="http"]:after {
+    display: none !important; }
 
 .listing__column-second {
   float: right;
