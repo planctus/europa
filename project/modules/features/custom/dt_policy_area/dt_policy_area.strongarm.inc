@@ -69,7 +69,7 @@ function dt_policy_area_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -120,6 +120,10 @@ function dt_policy_area_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'full' => array(
             'weight' => '4',
             'visible' => FALSE,
           ),
