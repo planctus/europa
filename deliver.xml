@@ -36,7 +36,7 @@
 
     <!-- Add latest code  -->
     <exec dir="${temp}" command="svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )"></exec>
-    <exec dir="${temp}" command="svn add ${folder}"></exec>
+    <exec dir="${temp}" command="svn add ${folder} --force"></exec>
   </target>
 
   <target name="deliver" description="Deliver code to Acquia repository">
