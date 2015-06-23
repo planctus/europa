@@ -219,62 +219,6 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_task_shortcut'
-  $field_instances['node-policy_implementation-field_policy_task_shortcut'] = array(
-    'bundle' => 'policy_implementation',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_policy_task_shortcut',
-    'label' => 'Task shortcut',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 11,
-    ),
-  );
-
   // Exported field_instance: 'node-policy_implementation-group_content_access'
   $field_instances['node-policy_implementation-group_content_access'] = array(
     'bundle' => 'policy_implementation',
@@ -440,7 +384,6 @@ function dt_policy_implementation_field_default_field_instances() {
   t('Introduction');
   t('Link');
   t('Status');
-  t('Task shortcut');
   t('Title');
 
   return $field_instances;

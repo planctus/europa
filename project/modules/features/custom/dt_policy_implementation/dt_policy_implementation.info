@@ -19,7 +19,6 @@ features[field_instance][] = node-policy_implementation-field_core_link
 features[field_instance][] = node-policy_implementation-field_policy_imp_introduction
 features[field_instance][] = node-policy_implementation-field_policy_imp_status
 features[field_instance][] = node-policy_implementation-field_policy_imp_type
-features[field_instance][] = node-policy_implementation-field_policy_task_shortcut
 features[field_instance][] = node-policy_implementation-group_content_access
 features[field_instance][] = node-policy_implementation-og_group_ref
 features[field_instance][] = node-policy_implementation-title_field

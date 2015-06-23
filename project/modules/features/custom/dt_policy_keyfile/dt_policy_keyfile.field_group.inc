@@ -25,9 +25,9 @@ function dt_policy_keyfile_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_policy_keyfile_image',
-      2 => 'field_policy_keyfile_type',
-      3 => 'field_core_introduction',
-      4 => 'field_core_link',
+      2 => 'field_core_introduction',
+      3 => 'field_core_link',
+      4 => 'field_policy_keyfile_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
