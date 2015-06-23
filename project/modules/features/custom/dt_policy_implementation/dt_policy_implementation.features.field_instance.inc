@@ -10,6 +10,64 @@
 function dt_policy_implementation_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-policy_implementation-field_core_legacy_link'
+  $field_instances['node-policy_implementation-field_core_legacy_link'] = array(
+    'bundle' => 'policy_implementation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_legacy_link',
+    'label' => 'Legacy link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-policy_implementation-field_core_link'
   $field_instances['node-policy_implementation-field_core_link'] = array(
     'bundle' => 'policy_implementation',
@@ -382,6 +440,7 @@ function dt_policy_implementation_field_default_field_instances() {
   t('Groups audience');
   t('Implementation type');
   t('Introduction');
+  t('Legacy link');
   t('Link');
   t('Status');
   t('Title');
