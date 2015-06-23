@@ -9,13 +9,16 @@
  * Implements hook_date_formats().
  */
 function dt_date_format_date_formats() {
-  return array(
-    array(
-      'type' => 'ec_date_j_f_y',
-      'format' => 'j F Y',
-      'locales' => array(),
-    ),
+  $formats = array();
+  $formats[] = array(
+    'type' => 'ec_date_j_f_y',
+    'format' => 'j F Y',
+    'locales' => array(),
   );
+  foreach ($formats as $format) {
+    variable_set('date_format_' . $format['type'], $format['format']);
+  }
+  return array($formats);
 }
 
 /**

@@ -20,3 +20,26 @@ function dt_topic_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('DT Topic %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Revert and enabling features.
+ */
+function dt_topic_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_topic',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Reverting the feature to configure the display suite field displays.
+ */
+function dt_topic_update_7102() {
+  features_revert_module('dt_topic');
+}

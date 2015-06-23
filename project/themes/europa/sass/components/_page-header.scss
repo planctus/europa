@@ -18,6 +18,11 @@ Styleguide page-header
     margin: 0;
   }
 
+  p {
+    margin: 0;
+    font-size: $font-size-h4;
+  }
+
   &__top,
   &__main,
   &__bottom {
@@ -38,8 +43,13 @@ Styleguide page-header
   &--featured {
     background: $brand-primary;
     color: #fff;
-    font-size: 30px;
     line-height: 1.5;
+    h2 {
+      color: #fff;
+    }
+    p {
+      font-size: 30px;
+    }
   }
 }
 

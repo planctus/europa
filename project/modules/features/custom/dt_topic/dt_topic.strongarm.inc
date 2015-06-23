@@ -20,7 +20,7 @@ function dt_topic_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -53,7 +53,7 @@ function dt_topic_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '6',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
           'weight' => '8',
@@ -62,7 +62,7 @@ function dt_topic_strongarm() {
           'weight' => '5',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '3',
         ),
       ),
       'display' => array(),
@@ -86,6 +86,27 @@ function dt_topic_strongarm() {
     1 => 'revision',
   );
   $export['node_options_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_topic_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_pattern';
+  $strongarm->value = 'topics/[node:source:title]';
+  $export['pathauto_node_topic_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_topic_und_pattern'] = $strongarm;
 
   return $export;
 }

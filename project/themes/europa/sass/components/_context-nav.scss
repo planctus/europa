@@ -8,21 +8,24 @@ Styleguide contextnav
 
 .context-nav {
   @extend .row;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .context-nav__label {
   display: block;
+  clear: both;
   @extend .col-xs-12;
   @extend .col-md-3;
 }
 
 .context-nav__items {
   display: block;
-  margin-bottom: 0.778em;
+  margin-bottom: 0.556em;
   @extend .col-xs-12;
   @extend .col-md-9;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .context-nav__item {

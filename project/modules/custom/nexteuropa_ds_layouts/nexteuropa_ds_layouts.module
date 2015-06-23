@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * nexteuropa_ds_layouts.module
+ */
+
+ require_once 'nexteuropa_ds_layouts.field.inc';
 
 /**
  * Define Display Suite layouts.
