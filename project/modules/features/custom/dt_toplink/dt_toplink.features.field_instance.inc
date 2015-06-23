@@ -10,19 +10,19 @@
 function dt_toplink_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-toplink-field_toplink_description'
-  $field_instances['node-toplink-field_toplink_description'] = array(
+  // Exported field_instance: 'node-toplink-field_core_description'
+  $field_instances['node-toplink-field_core_description'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -34,14 +34,13 @@ function dt_toplink_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_toplink_description',
+    'field_name' => 'field_core_description',
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
-          'dt_editor' => 'dt_editor',
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -51,19 +50,16 @@ function dt_toplink_field_default_field_instances() {
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => -6,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
+              'weight' => 5,
             ),
             'filtered_html' => array(
-              'weight' => -8,
-            ),
-            'full_html' => array(
               'weight' => -9,
             ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
             'plain_text' => array(
-              'weight' => -7,
+              'weight' => -8,
             ),
           ),
         ),
@@ -76,15 +72,19 @@ function dt_toplink_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -3,
+      'weight' => -1,
     ),
   );
 
-  // Exported field_instance: 'node-toplink-field_toplink_link'
-  $field_instances['node-toplink-field_toplink_link'] = array(
+  // Exported field_instance: 'node-toplink-field_core_legacy_link'
+  $field_instances['node-toplink-field_core_legacy_link'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,
     'deleted' => 0,
@@ -95,7 +95,7 @@ function dt_toplink_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 1,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -106,8 +106,8 @@ function dt_toplink_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_toplink_link',
-    'label' => 'Link',
+    'field_name' => 'field_core_legacy_link',
+    'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -120,7 +120,7 @@ function dt_toplink_field_default_field_instances() {
       'display' => array(
         'url_cutoff' => 80,
       ),
-      'enable_tokens' => 0,
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
@@ -133,9 +133,11 @@ function dt_toplink_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'link_field',
-      'weight' => -4,
+      'weight' => -3,
     ),
   );
 
@@ -161,7 +163,7 @@ function dt_toplink_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'node',
@@ -213,7 +215,7 @@ function dt_toplink_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'node',
@@ -273,7 +275,7 @@ function dt_toplink_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -304,7 +306,7 @@ function dt_toplink_field_default_field_instances() {
   t('Description');
   t('Group content visibility');
   t('Groups audience');
-  t('Link');
+  t('Legacy link');
   t('Title');
 
   return $field_instances;

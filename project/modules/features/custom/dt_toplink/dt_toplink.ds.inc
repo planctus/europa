@@ -36,19 +36,6 @@ function dt_toplink_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_toplink_description' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
   );
   $export['node|toplink|teaser'] = $ds_fieldsetting;
 
@@ -72,12 +59,12 @@ function dt_toplink_ds_layout_settings_info() {
     'regions' => array(
       'main' => array(
         0 => 'title',
-        1 => 'field_toplink_description',
+        1 => 'field_core_description',
       ),
     ),
     'fields' => array(
       'title' => 'main',
-      'field_toplink_description' => 'main',
+      'field_core_description' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
