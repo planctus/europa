@@ -196,7 +196,11 @@ function dt_policy_implementation_field_default_field_instances() {
   // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'
   $field_instances['node-policy_implementation-field_policy_imp_status'] = array(
     'bundle' => 'policy_implementation',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'null',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -218,7 +222,7 @@ function dt_policy_implementation_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_policy_imp_status',
     'label' => 'Status',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,

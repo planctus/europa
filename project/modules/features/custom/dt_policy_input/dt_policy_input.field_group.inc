@@ -28,7 +28,6 @@ function dt_policy_input_field_group_info() {
       2 => 'field_policy_input_status',
       3 => 'field_policy_input_type',
       4 => 'field_core_link',
-      5 => 'field_policy_task_shortcut',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -56,6 +56,7 @@ function dt_policy_implementation_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'null' => 'no status',
         'planned' => 'planned',
         'proposed' => 'proposed',
         'adopted' => 'adopted',
