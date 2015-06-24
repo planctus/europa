@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <project name="Deliver to Acquia Cloud" default="deliver">
+  <property name="temp" value="${project.basedir}/release" />
+  <property name="folderlist" value="libraries,modules,themes" />
+  <target name="release" description="Release code to MULTISITE SVN">
+    <!-- Checkout  -->
+    <svncheckout
+      repositoryurl="${phing.project.svn}"
+      todir="${temp}"/>
+
+    <!-- Update code  -->
+    <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+
+    <!-- Commit  -->
+    <input propertyname="commitmessage">Please provide a commit message:</input>
+    <echo msg="${commitmessage}" />
+    <svncommit
+      workingcopy="${temp}"
+      message="${commitmessage}" />
+    <echo message="Committed revision: ${svn.committedrevision}"/>
+
+    <!-- Delete temporary folder -->
+    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
+    <echo message="${temp} removed"/>
+  </target>
+
+  <target name="updatefolder" description="Update folder in MULTISITE SVN">
+    <!-- Delete previous code  -->
+    <delete dir="${temp}/${folder}" includeemptydirs="true" failonerror="true" />
+
+    <!-- Copy latest code  -->
+    <copy todir="${temp}/${folder}" overwrite="true">
+        <fileset dir="${phing.project.project.dir}/${folder}" />
+    </copy>
+
+    <!-- Add latest code  -->
+    <exec dir="${temp}" command="svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )"></exec>
+    <exec dir="${temp}" command="svn add ${folder} --force"></exec>
+  </target>
+
   <target name="deliver" description="Deliver code to Acquia repository">
     <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
