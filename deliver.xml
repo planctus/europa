@@ -15,13 +15,13 @@
     <!-- Commit  -->
     <input propertyname="commitmessage">Please provide a commit message:</input>
     <echo msg="${commitmessage}" />
-    <svncommit
+    <!-- <svncommit
       workingcopy="${temp}"
       message="${commitmessage}" />
-    <echo message="Committed revision: ${svn.committedrevision}"/>
+    <echo message="Committed revision: ${svn.committedrevision}"/> -->
 
     <!-- Delete temporary folder -->
-    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
+    <!-- <delete dir="${temp}" includeemptydirs="true" failonerror="true" /> -->
     <echo message="${temp} removed"/>
   </target>
 
@@ -31,7 +31,15 @@
 
     <!-- Copy latest code  -->
     <copy todir="${temp}/${folder}" overwrite="true">
-        <fileset dir="${phing.project.project.dir}/${folder}" />
+        <fileset dir="${phing.project.project.dir}/${folder}">
+          <patternset>
+            <exclude name="*/node_modules/**"/>
+            <exclude name="*/styleguide/**"/>
+            <exclude name="**/Gruntfile.js"/>
+            <exclude name="**/Watchfile"/>
+            <exclude name="**/package.json"/>
+          </patternset>
+        </fileset>
     </copy>
 
     <!-- Add latest code  -->
