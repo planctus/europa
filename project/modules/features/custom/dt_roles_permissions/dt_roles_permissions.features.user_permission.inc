@@ -10,6 +10,16 @@
 function dt_roles_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer permissions'.
+  $permissions['administer permissions'] = array(
+    'name' => 'administer permissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: 'access ecas import users function'.
   $permissions['access ecas import users function'] = array(
     'name' => 'access ecas import users function',
