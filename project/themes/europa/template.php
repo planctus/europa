@@ -805,7 +805,8 @@ function europa_field($variables) {
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
 
       // Custom listing settings based on view mode.
-      if (isset($first_node['#view_mode'])) {
+      $listing_view_modes = array('title', 'meta', 'teaser');
+      if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
         switch ($first_node['#view_mode']) {
           case 'title':
             $settings['modifier'] .= ' listing--title';
@@ -848,4 +849,84 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['#suffix'] = '';
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+}
+
+/**
+ * Helper for providing markup to file component.
+ * @param  object $file
+ * @param  array $url
+ * @return string
+ */
+function _europa_file_markup($file, $url) {
+  $file_class = '';
+  switch ($file->type) {
+    case 'image':
+      $file_class = 'file--image';
+      break;
+
+    case 'audio':
+      $file_class = 'file--audio';
+      break;
+
+    case 'video':
+      $file_class = 'file--video';
+      break;
+
+    default:
+      $file_class = 'file--document';
+      break;
+  }
+
+  $file_size = '<span class="file__size">' . format_size($file->filesize) . '</span>';
+  $file_name = $file->uri;
+  $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
+
+  $file_info = '<div class="file__info">' . $file_size . ' - ' . $file_extension . '</div>';
+
+  // Use the description as the link text if available.
+  if (!empty($file->description)) {
+    $file_title = '<span class="file__title">' . $file->description . '</span>';
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+  else {
+    $file_title = '<span class="file__title">' . $file->filename . '</span>';
+  }
+
+  $file_metadata = '<div class="file__metadata">' . $file_title . $file_info . '</div>';
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'class' => array('file__btn', 'btn', 'btn-default'),
+      'title' => check_plain($file->filename),
+    ),
+    'html' => TRUE,
+  );
+
+  $file_btn = l(t('Download'), $url['path'], array_merge($options, $url['options']));
+
+  return '<div class="file ' . $file_class . '">' . $file_metadata . $file_btn . '</div>';
+}
+
+/**
+ * Implements theme_file_link().
+ */
+function europa_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  return _europa_file_markup($file, $url);
+}
+
+/**
+ * Implements theme_file_entity_download_link().
+ */
+function europa_file_entity_download_link($variables) {
+  $file = $variables['file'];
+  $uri = file_entity_download_uri($file);
+
+  return _europa_file_markup($file, $uri);
 }

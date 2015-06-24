@@ -1,0 +1,60 @@
+/*
+File
+
+File component used to show info about the file that can be downloaded
+by clicking on the component
+
+Markup: html/file.html
+
+Styleguide file
+*/
+
+.file {
+  @extend .paragraph;
+  background: $grey-lighter;
+  padding: 1.333em 1.333em 1.333em 5em;
+  overflow: hidden;
+}
+
+.file__metadata {
+  line-height: 1;
+}
+
+.file__title {
+  font-weight: bold;
+  line-height: initial;
+}
+
+.file__language {
+  display: block;
+  line-height: initial;
+}
+
+.file__info {
+  font-size: $font-size-xsmall;
+  line-height: initial;
+  margin-top: 0.556em;
+}
+
+.file__btn {
+  margin-bottom: 0;
+  margin-top: 0.778em;
+  width: 10.5em;
+}
+
+@include breakpoint(screen-msm-min) {
+  .file__metadata,
+  .file__btn {
+    overflow: hidden;
+  }
+
+  .file__metadata {
+    float: left;
+    width: 15em;
+  }
+
+  .file__btn {
+    float: right;
+    margin-top: 0;
+  }
+}
