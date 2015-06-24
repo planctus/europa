@@ -7944,8 +7944,15 @@ Styleguide file
 */
 .file {
   background: #ececec;
-  padding: 1.333em 1.333em 1.333em 5em;
+  padding: 1.333em 1.333em 1.333em 1.333em;
   overflow: hidden; }
+
+.file__icon {
+  float: left;
+  margin-right: 1.333em; }
+  .file__icon:before {
+    color: #b3b4b5;
+    font-size: 2.778em; }
 
 .file__metadata {
   line-height: 1; }
