@@ -112,9 +112,8 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_publication_type',
-      2 => 'field_core_files',
-      3 => 'field_core_description',
-      4 => 'field_core_introduction',
+      2 => 'field_core_description',
+      3 => 'field_core_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -139,8 +138,10 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'File',
-    'weight' => '23',
-    'children' => array(),
+    'weight' => '22',
+    'children' => array(
+      0 => 'field_core_files',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -165,7 +166,9 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Publishing meta data',
     'weight' => '24',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_publication_date',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -189,7 +192,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Related content',
-    'weight' => '22',
+    'weight' => '23',
     'children' => array(
       0 => 'field_core_department',
       1 => 'field_core_topics',
