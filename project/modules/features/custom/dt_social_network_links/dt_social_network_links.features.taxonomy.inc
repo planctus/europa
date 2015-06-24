@@ -9,15 +9,15 @@
  */
 function dt_social_network_links_taxonomy_default_vocabularies() {
   return array(
-    'social_networks' => array(
+    'social_networks' => (object) array(
       'name' => 'Social Networks',
       'machine_name' => 'social_networks',
       'description' => 'List of social networks',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '1',
+      'weight' => 1,
       'language' => 'und',
-      'i18n_mode' => '0',
+      'i18n_mode' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

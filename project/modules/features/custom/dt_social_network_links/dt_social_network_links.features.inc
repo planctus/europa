@@ -26,10 +26,10 @@ function dt_social_network_links_image_default_styles() {
         'name' => 'image_scale',
         'data' => array(
           'width' => '',
-          'height' => '40',
+          'height' => 40,
           'upscale' => 1,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
