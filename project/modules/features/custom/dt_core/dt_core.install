@@ -238,7 +238,7 @@ function dt_core_update_7118() {
 }
 
 /**
- * Enabling dt_exposed_filter_data and reverting dt_announcement and dt_department.
+ * Enabling dt_exposed_filter_data.
  */
 function dt_core_update_7119() {
   $modules = array(
@@ -363,5 +363,10 @@ function dt_core_update_7125() {
     // Copy the field content.
     _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
     drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+
+    // Remove field instance.
+    if ($instance = field_info_instance('node', 'field_core_link', $content_type)) {
+      field_delete_instance($instance);
+    }
   }
 }
