@@ -3,6 +3,7 @@ description = Publication content type related settings.
 core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0-dev
+php = 5.2.4
 project = dt_publication
 dependencies[] = dt_core
 dependencies[] = dt_topic
