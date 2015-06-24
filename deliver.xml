@@ -15,13 +15,13 @@
     <!-- Commit  -->
     <input propertyname="commitmessage">Please provide a commit message:</input>
     <echo msg="${commitmessage}" />
-    <!-- <svncommit
+    <svncommit
       workingcopy="${temp}"
       message="${commitmessage}" />
-    <echo message="Committed revision: ${svn.committedrevision}"/> -->
+    <echo message="Committed revision: ${svn.committedrevision}"/>
 
     <!-- Delete temporary folder -->
-    <!-- <delete dir="${temp}" includeemptydirs="true" failonerror="true" /> -->
+    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
     <echo message="${temp} removed"/>
   </target>
 
@@ -42,8 +42,9 @@
         </fileset>
     </copy>
 
+    <!-- SVN remove locally deleted files  -->
+    <exec dir="${temp}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
     <!-- Add latest code  -->
-    <exec dir="${temp}" command="svn rm $( svn status | sed -e '/^!/!d' -e 's/^!//' )"></exec>
     <exec dir="${temp}" command="svn add ${folder} --force"></exec>
   </target>
 
