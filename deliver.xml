@@ -15,13 +15,13 @@
     <!-- Commit  -->
     <input propertyname="commitmessage">Please provide a commit message:</input>
     <echo msg="${commitmessage}" />
-    <!-- <svncommit
+    <svncommit
       workingcopy="${temp}"
       message="${commitmessage}" />
-    <echo message="Committed revision: ${svn.committedrevision}"/> -->
+    <echo message="Committed revision: ${svn.committedrevision}"/>
 
     <!-- Delete temporary folder -->
-    <!-- <delete dir="${temp}" includeemptydirs="true" failonerror="true" /> -->
+    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
     <echo message="${temp} removed"/>
   </target>
 
