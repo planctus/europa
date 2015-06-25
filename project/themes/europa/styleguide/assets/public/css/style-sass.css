@@ -6335,10 +6335,12 @@ Styleguide contextnav
 
 .context-nav__item {
   display: inline-block; }
-  .context-nav__item:before {
-    content: ", "; }
-  .context-nav__item:first-child:before {
-    display: none; }
+  .context-nav__item:after {
+    content: ",";
+    margin-right: 4px; }
+  .context-nav__item:last-child:after {
+    display: none;
+    margin-right: 0; }
 
 @media (min-width: 992px) {
   .context-nav__items {
