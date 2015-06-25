@@ -119,7 +119,7 @@ function dt_publication_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 155,
+        'maxlength_js' => '155',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -334,62 +334,6 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_date'
-  $field_instances['node-publication-field_publication_date'] = array(
-    'bundle' => 'publication',
-    'deleted' => 0,
-    'description' => 'This is the day when the content was first published.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_publication_date',
-    'label' => 'Publication date',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 49,
-    ),
-  );
-
   // Exported field_instance: 'node-publication-field_publication_type'
   $field_instances['node-publication-field_publication_type'] = array(
     'bundle' => 'publication',
@@ -595,10 +539,8 @@ function dt_publication_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
-  t('Publication date');
   t('Publication type');
   t('The team that can be contacted about the publication.');
-  t('This is the day when the content was first published.');
   t('Title');
   t('Topics');
   t('Topics related to this content.');

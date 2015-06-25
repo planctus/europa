@@ -63,15 +63,6 @@ class DTPublicationPublicationTypesMigration extends Migration {
     );
   }
 
-  /**
-   * Override source data.
-   *
-   * @param object $current_row
-   *   Row data for prepossessing.
-   *
-   * @return bool
-   *   Returned TRUE if data was processed.
-   */
   public function prepareRow($current_row) {
     // Always include this fragment at the beginning of every prepareRow()
     // implementation, so parent classes can ignore rows.
