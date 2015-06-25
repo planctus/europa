@@ -5599,7 +5599,8 @@ Styleguide buttons
     border-color: #ffd617; }
   .btn.btn-default, .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle {
     border-color: #004494;
-    color: #004494; }
+    color: #004494;
+    background: none; }
     .btn.btn-default:hover, .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle:hover {
       background: #004494;
       color: #fff; }
@@ -6132,7 +6133,7 @@ Markup: html/paragraphs.html
 Styleguide text.paragraphs
 */
 .paragraph, blockquote, .region-content ul,
-.region-content ol, p {
+.region-content ol, p, .file {
   margin-bottom: 0.8em;
   max-width: 32em; }
 
@@ -6861,6 +6862,9 @@ Markup: html/icon.html
 .icon--language - Language icon
 .icon--facebook - Facebook icon
 .icon--twitter - Twitter icon
+.icon--googleplus - G+ icon
+.icon--linkedin - Linkedin icon
+.icon--rss - RSS icon
 .icon--up - Up icon
 .icon--right - Right icon
 .icon--down - Down icon
@@ -6875,8 +6879,11 @@ Markup: html/icon.html
 .icon--multiple-files - Multiple files icon
 .icon--organigram - Organigram icon
 .icon--package - Package icon
-.icon--presentation - Presentation icon
+.icon--slides - Slides icon
 .icon--video - Video icon
+.icon--error - Error icon
+.icon--success - Success icon
+.icon--warning - Warning icon
 
 Styleguide: icon
 */
@@ -6898,7 +6905,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .listing--cta .listing__title:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .listing--cta .listing__title:after, .file__btn:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -6912,76 +6919,94 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--external, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .icon--external:before {
-  content: '\e604'; }
+  content: '\e61a'; }
 
 .icon--arrow-up:before {
-  content: '\e60A'; }
+  content: '\e61e'; }
 
 .icon--arrow-down:before {
-  content: '\e609'; }
+  content: '\e61d'; }
 
 .icon--spinner:before {
   content: '\e984'; }
 
 .icon--facebook:before {
-  content: '\e606'; }
-
-.icon--twitter:before {
   content: '\e605'; }
 
-.icon--language:before {
-  content: '\e607'; }
-
-.icon--search:before, .search-form__btn:before {
-  content: '\e608'; }
-
-.icon--up:before {
-  content: '\e602'; }
-
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .icon--right:before, .listing--cta .listing__title:after {
-  content: '\e601'; }
-
-.icon--down:before {
-  content: '\e600'; }
-
-.icon--left:before {
-  content: '\e603'; }
-
-.icon--file:before {
-  content: '\e60b'; }
-
-.icon--audio:before {
-  content: '\e60c'; }
-
-.icon--brochure:before {
-  content: '\e60d'; }
-
-.icon--edit:before {
-  content: '\e60e'; }
-
-.icon--image:before {
-  content: '\e60f'; }
-
-.icon--download:before {
-  content: '\e610'; }
-
-.icon--infographic:before {
-  content: '\e611'; }
-
-.icon--multiple-files:before {
-  content: '\e612'; }
-
-.icon--organigram:before {
+.icon--twitter:before {
   content: '\e613'; }
 
-.icon--package:before {
-  content: '\e614'; }
+.icon--googleplus:before {
+  content: '\e608'; }
 
-.icon--presentation:before {
+.icon--linkedin:before {
+  content: '\e60c'; }
+
+.icon--rss:before {
+  content: '\e60f'; }
+
+.icon--language:before {
+  content: '\e611'; }
+
+.icon--search:before, .search-form__btn:before {
+  content: '\e61c'; }
+
+.icon--up:before {
+  content: '\e618'; }
+
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .icon--right:before, .listing--cta .listing__title:after {
+  content: '\e617'; }
+
+.icon--down:before {
+  content: '\e616'; }
+
+.icon--left:before {
+  content: '\e619'; }
+
+.icon--file:before {
+  content: '\e606'; }
+
+.icon--audio:before {
+  content: '\e600'; }
+
+.icon--brochure:before {
+  content: '\e601'; }
+
+.icon--edit:before {
+  content: '\e603'; }
+
+.icon--image:before {
+  content: '\e609'; }
+
+.icon--download, .icon--download:before, .file__btn:after {
+  content: '\e602' !important; }
+
+.icon--infographic:before {
+  content: '\e60b'; }
+
+.icon--multiple-files:before {
   content: '\e615'; }
 
+.icon--organigram:before {
+  content: '\e60d'; }
+
+.icon--package:before {
+  content: '\e60e'; }
+
+.icon--slides:before {
+  content: '\e610'; }
+
 .icon--video:before {
-  content: '\e616'; }
+  content: '\e614'; }
+
+.icon--error:before {
+  content: '\e604'; }
+
+.icon--success:before {
+  content: '\e612'; }
+
+.icon--warning:before {
+  content: '\e615'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
@@ -7472,7 +7497,7 @@ Styleguide listing.title
 */
 .listing--title,
 ul.listing--title {
-  padding: 0 0 0 15px; }
+  padding: 0; }
   .listing--title .listing__item:hover .listing__title,
   .listing--title .listing__item:active .listing__title,
   .listing--title .listing__item:focus .listing__title,
@@ -7931,5 +7956,62 @@ Styleguide forms.facettag
   margin-left: 0.5em;
   font-weight: bold;
   border-radius: 0.9em; }
+
+/*
+File
+
+File component used to show info about the file that can be downloaded
+by clicking on the component
+
+Markup: html/file.html
+
+Styleguide file
+*/
+.file {
+  background: #ececec;
+  padding: 1.333em 1.333em 1.333em 1.333em;
+  overflow: hidden; }
+
+.file__icon {
+  float: left;
+  margin-right: 1.333em; }
+  .file__icon:before {
+    color: #b3b4b5;
+    font-size: 2.778em; }
+
+.file__metadata {
+  line-height: 1; }
+
+.file__title {
+  font-weight: bold;
+  line-height: initial; }
+
+.file__language {
+  font-weight: bold;
+  font-size: 0.889em;
+  display: block;
+  line-height: initial;
+  margin-top: 0.556em; }
+
+.file__info {
+  font-size: 0.778em;
+  line-height: initial;
+  margin-top: 0.556em; }
+
+.file__btn {
+  margin-bottom: 0;
+  margin-top: 0.778em;
+  width: 10.5em; }
+
+@media (min-width: 622px) {
+  .file__metadata,
+  .file__btn {
+    overflow: hidden; }
+  .file__metadata {
+    float: left;
+    width: 15em; }
+  .file__btn {
+    float: right;
+    margin-top: 0; } }
 
 /*# sourceMappingURL=style-sass.css.map */

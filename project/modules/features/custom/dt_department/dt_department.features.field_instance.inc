@@ -1087,7 +1087,7 @@ function dt_department_field_default_field_instances() {
           'nexteuropa_ds_layouts_columns' => 'default',
           'nexteuropa_ds_layouts_modifier' => '',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
-          'view_mode' => 'meta',
+          'view_mode' => 'file',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 9,
