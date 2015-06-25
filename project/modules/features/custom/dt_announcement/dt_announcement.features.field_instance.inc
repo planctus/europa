@@ -63,7 +63,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -147,7 +147,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'above',
@@ -204,7 +204,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -363,7 +363,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'meta' => array(
         'label' => 'above',
@@ -529,7 +529,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -602,7 +602,7 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 0,
       ),
       'meta' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'i18n_field',
         'settings' => array(),
         'type' => 'i18n_list_default',
@@ -657,7 +657,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -784,7 +784,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -843,7 +843,7 @@ function dt_announcement_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '155',
+        'maxlength_js' => 155,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -963,7 +963,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1093,7 +1093,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1223,7 +1223,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1275,7 +1275,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1346,7 +1346,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'hidden',

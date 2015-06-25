@@ -17,6 +17,11 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'latest_announcements_block' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'children_policy_areas' => array(
       'weight' => '5',
       'label' => 'hidden',
@@ -180,38 +185,38 @@ function dt_policy_area_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'latest_announcements_block',
+        7 => 'children_policy_areas',
+        8 => 'group_policy_area_latest',
+        9 => 'field_core_social_network_links',
+        10 => 'group_latest_main',
+        11 => 'group_latest_sidebar',
+      ),
       'left_header' => array(
-        0 => 'group_policy_area_meta',
-        1 => 'title_field',
+        1 => 'group_policy_area_meta',
         2 => 'content_type_label',
-        3 => 'field_core_introduction',
+        3 => 'title_field',
+        4 => 'field_core_introduction',
       ),
       'top' => array(
-        4 => 'group_policy_area_contextual',
+        5 => 'group_policy_area_contextual',
         6 => 'field_core_persons',
-      ),
-      'central' => array(
-        5 => 'group_policy_area_policy_areas',
-        7 => 'group_policy_area_latest',
-        8 => 'children_policy_areas',
-        9 => 'group_latest_main',
-        10 => 'group_latest_sidebar',
-        11 => 'field_core_social_network_links',
       ),
     ),
     'fields' => array(
+      'latest_announcements_block' => 'central',
       'group_policy_area_meta' => 'left_header',
-      'title_field' => 'left_header',
       'content_type_label' => 'left_header',
+      'title_field' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_area_contextual' => 'top',
-      'group_policy_area_policy_areas' => 'central',
       'field_core_persons' => 'top',
-      'group_policy_area_latest' => 'central',
       'children_policy_areas' => 'central',
+      'group_policy_area_latest' => 'central',
+      'field_core_social_network_links' => 'central',
       'group_latest_main' => 'central',
       'group_latest_sidebar' => 'central',
-      'field_core_social_network_links' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

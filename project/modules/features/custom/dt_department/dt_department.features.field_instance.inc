@@ -675,7 +675,7 @@ function dt_department_field_default_field_instances() {
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 8,
+        'weight' => 1,
       ),
       'meta' => array(
         'label' => 'above',
@@ -792,7 +792,7 @@ function dt_department_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 19,
+        'weight' => 1,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1090,7 +1090,7 @@ function dt_department_field_default_field_instances() {
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 9,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1234,7 +1234,7 @@ function dt_department_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 11,
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'above',

@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_topic
 dependencies[] = custom_formatters
-dependencies[] = dt_core
 dependencies[] = dt_policy_area
 dependencies[] = dt_priority
 dependencies[] = dt_toplink

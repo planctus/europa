@@ -184,6 +184,12 @@ function dt_policy_area_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 8,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
