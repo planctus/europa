@@ -14,19 +14,22 @@ a {
     text-decoration: underline;
   }
 
-  &[href^="http"],
-  &[href^="https"] {
-    &:after {
-      @extend .icon--after;
-      @extend .icon--external;
-      display: inline-block;
-      font-size: 75%;
-      margin-left: 0.4em;
-      margin-right: 0.2em;
-    }
+  &#{"[" + $external_link_pattern + "]"} {
+    @extend .is-external;
   }
 }
 
 p a {
   text-decoration: underline;
+}
+
+.is-external {
+  &:after {
+    @extend .icon--after;
+    @extend .icon--external;
+    display: inline-block;
+    font-size: 75%;
+    margin-left: 0.4em;
+    margin-right: 0.2em;
+  }
 }

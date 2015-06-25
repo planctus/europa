@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dt Topic install file.
+ * DT Topic install file.
  */
 
 /**
@@ -42,4 +42,14 @@ function dt_topic_update_7101() {
  */
 function dt_topic_update_7102() {
   features_revert_module('dt_topic');
+}
+
+/**
+ * Updating Topic content type nodes path aliases.
+ */
+function dt_topic_update_7103() {
+  $nodes = node_load_multiple(array(), array('type' => 'topic'));
+  foreach ($nodes as $node) {
+    pathauto_node_update_alias($node, 'update ');
+  }
 }
