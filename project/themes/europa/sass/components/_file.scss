@@ -49,6 +49,11 @@ Styleguide file
   margin-bottom: 0;
   margin-top: 0.778em;
   width: 10.5em;
+
+  &:after {
+    @extend .icon--after;
+    @extend .icon--download;
+  }
 }
 
 @include breakpoint(screen-msm-min) {
