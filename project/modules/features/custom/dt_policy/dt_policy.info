@@ -36,7 +36,6 @@ features[field_base][] = field_policy_paragraph
 features[field_base][] = field_policy_quote
 features[field_base][] = field_policy_sharable_banner
 features[field_group][] = group_content_tabgroup|node|policy|form
-features[field_group][] = group_policy_additional_details|node|policy|form
 features[field_group][] = group_policy_banner|node|policy|form
 features[field_group][] = group_policy_common|node|policy|form
 features[field_group][] = group_policy_details|node|policy|form
