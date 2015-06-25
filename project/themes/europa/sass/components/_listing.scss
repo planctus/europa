@@ -104,6 +104,13 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+.listing--no-link {
+  .listing__item {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
 .listing--title-large,
 .listing--title-medium {
   .listing__title {

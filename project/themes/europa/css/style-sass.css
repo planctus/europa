@@ -7443,6 +7443,10 @@ Styleguide listing
 .listing--no-border .listing__item {
   border: none; }
 
+.listing--no-link .listing__item {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+
 .listing--title-large .listing__title,
 .listing--title-medium .listing__title {
   margin-top: 0.2em;

@@ -420,7 +420,6 @@ function europa_form_element(&$variables) {
   // Putting description into variable since it is not going to change.
   // Here Bootstrap tooltips have been removed since in current implemenation we
   // will use descriptions that are displayed under <label> element.
-
   if (!empty($element['#description'])) {
     $description = '<p class="help-block">' . $element['#description'] . '</p>';
   }
@@ -512,7 +511,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * Helper applying BEM to footer menu item links.
  *
  * @param array $variables
- *   link render array
+ *   Link render array.
  *
  * @return string
  *   HTML markup
@@ -845,11 +844,17 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 
 /**
  * Helper for providing markup to file component.
- * @param  object $file
+ *
+ * @param object $file
+ *   File object.
+ *
  * @param  array $url
+ *   Url depending on field type.
+ *
  * @return string
+ *    HTML markup.
  */
-function _europa_file_markup($file, $url) {
+function _europa_file_markup($file, array $url) {
   $file_class = '';
   $file_icon_class = '';
   switch ($file->type) {
