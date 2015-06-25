@@ -210,10 +210,10 @@ function dt_policy_keyfile_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -226,7 +226,7 @@ function dt_policy_keyfile_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_policy_keyfile_type',
     'label' => 'Type',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -235,7 +235,8 @@ function dt_policy_keyfile_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
+        'apply_chosen' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
       'weight' => 2,
