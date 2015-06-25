@@ -108,6 +108,38 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_contextual|node|policy|full';
+  $field_group->group_name = 'group_policy_contextual';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_department',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
+      3 => 'field_core_persons',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contextual navigation',
+      'instance_settings' => array(
+        'classes' => 'context-nav',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_policy_contextual|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_details|node|policy|form';
   $field_group->group_name = 'group_policy_details';
   $field_group->entity_type = 'node';
@@ -248,6 +280,35 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_meta|node|policy|full';
+  $field_group->group_name = 'group_policy_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'content_type_label',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_policy_meta|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_next_steps|node|policy|form';
   $field_group->group_name = 'group_policy_next_steps';
   $field_group->entity_type = 'node';
@@ -328,6 +389,111 @@ function dt_policy_field_group_info() {
     ),
   );
   $export['group_policy_related|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_tab_actions|node|policy|full';
+  $field_group->group_name = 'group_policy_tab_actions';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_policy_tabs';
+  $field_group->data = array(
+    'label' => 'Actions',
+    'weight' => '4',
+    'children' => array(),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Actions',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_policy_tab_actions|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_tab_details|node|policy|full';
+  $field_group->group_name = 'group_policy_tab_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_policy_tabs';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '6',
+    'children' => array(),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_policy_tab_details|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_tab_latest|node|policy|full';
+  $field_group->group_name = 'group_policy_tab_latest';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_policy_tabs';
+  $field_group->data = array(
+    'label' => 'Latest',
+    'weight' => '5',
+    'children' => array(),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'label' => 'Latest',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_policy_tab_latest|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_tabs|node|policy|full';
+  $field_group->group_name = 'group_policy_tabs';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Horizontal tabs',
+    'weight' => '8',
+    'children' => array(
+      0 => 'group_policy_tab_actions',
+      1 => 'group_policy_tab_latest',
+      2 => 'group_policy_tab_details',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'label' => 'Horizontal tabs',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_policy_tabs|node|policy|full'] = $field_group;
 
   return $export;
 }
