@@ -6864,6 +6864,18 @@ Markup: html/icon.html
 .icon--right - Right icon
 .icon--down - Down icon
 .icon--left - Left icon
+.icon--file - File icon
+.icon--audio - Audio icon
+.icon--brochure - Brochure icon
+.icon--edit - Edit icon
+.icon--image - Image icon
+.icon--download - Download icon
+.icon--infographic - Infographic icon
+.icon--multiple-files - Multiple files icon
+.icon--organigram - Organigram icon
+.icon--package - Package icon
+.icon--presentation - Presentation icon
+.icon--video - Video icon
 
 Styleguide: icon
 */
@@ -6935,6 +6947,42 @@ a[href^="https"]:after, .icon--external:before {
 
 .icon--left:before {
   content: '\e603'; }
+
+.icon--file:before {
+  content: '\e60b'; }
+
+.icon--audio:before {
+  content: '\e60c'; }
+
+.icon--brochure:before {
+  content: '\e60d'; }
+
+.icon--edit:before {
+  content: '\e60e'; }
+
+.icon--image:before {
+  content: '\e60f'; }
+
+.icon--download:before {
+  content: '\e610'; }
+
+.icon--infographic:before {
+  content: '\e611'; }
+
+.icon--multiple-files:before {
+  content: '\e612'; }
+
+.icon--organigram:before {
+  content: '\e613'; }
+
+.icon--package:before {
+  content: '\e614'; }
+
+.icon--presentation:before {
+  content: '\e615'; }
+
+.icon--video:before {
+  content: '\e616'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
