@@ -213,7 +213,9 @@ function europa_preprocess_page(&$variables) {
 
   if (isset($node)) {
     // Adding generic introduction field to be later rendered in page template.
-    $variables['field_core_introduction'] = field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden'));
+    $variables['field_core_introduction'] = isset($node->field_core_introduction) ?
+      field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden')) :
+      NULL;
 
     // Check if Display Suite is handling node.
     if (ds_get_layout('node', $node->type, 'full')) {
@@ -231,7 +233,7 @@ function europa_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for views exposed form.
+ * Implements hook_form_BASE_FORM_ID_alter().
  */
 function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form') {
@@ -251,9 +253,6 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Implements hook_date_popup_process_alter().
- * @param $element
- * @param $form_state
- * @param $context
  */
 function europa_date_popup_process_alter(&$element, &$form_state, $context) {
   // Removing the description from the datepicker.
@@ -512,9 +511,11 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
 /**
  * Helper applying BEM to footer menu item links.
  *
- * @param $variables
+ * @param array $variables
+ *   link render array
  *
  * @return string
+ *   HTML markup
  */
 function _europa_menu_link__footer(&$variables) {
   $element = $variables['element'];
@@ -532,10 +533,6 @@ function _europa_menu_link__footer(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
- * @param $variables
- *
- * @return string
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
   return _europa_menu_link__footer($variables);
@@ -543,12 +540,9 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
 
 /**
  * Implements theme_menu_link().
- *
- * @param $variables
- *
- * @return string
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
+
   return _europa_menu_link__footer($variables);
 }
 
