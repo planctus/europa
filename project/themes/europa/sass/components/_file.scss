@@ -35,8 +35,11 @@ Styleguide file
 }
 
 .file__language {
+  font-weight: bold;
+  font-size: $font-size-little;
   display: block;
   line-height: initial;
+  margin-top: 0.556em;
 }
 
 .file__info {
