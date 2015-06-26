@@ -70,6 +70,35 @@ function dt_class_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_class_notification'
+  $field_bases['field_class_notification'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_class_notification',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_class_related_links'
   $field_bases['field_class_related_links'] = array(
     'active' => 1,
