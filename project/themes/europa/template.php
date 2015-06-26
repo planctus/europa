@@ -516,7 +516,7 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * @return string
  *   HTML markup
  */
-function _europa_menu_link__footer(&$variables) {
+function _europa_menu_link__footer(array &$variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -821,6 +821,25 @@ function europa_field($variables) {
 
       break;
   }
+
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+  }
+
+  // Render the items.
+  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= drupal_render($item);
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . $classes . '">' . $output . '</div>';
+
+  return $output;
 }
 
 /**
@@ -847,8 +866,7 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
  *
  * @param object $file
  *   File object.
- *
- * @param  array $url
+ * @param array $url
  *   Url depending on field type.
  *
  * @return string
