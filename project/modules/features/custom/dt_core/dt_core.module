@@ -266,9 +266,10 @@ function dt_core_path_update_relatives($path) {
 
     // Find parents based on field_core_parent.
     $parents = _dt_core_node_get_relatives($nid, 'parents', TRUE);
-
-    $GLOBALS['nodes_to_update_alias'] = array_merge($children, $parents);
-    watchdog('dt_core', serialize($GLOBALS['nodes_to_update_alias']), array(), WATCHDOG_NOTICE);
+    $relatives = array_merge($parents, $children);
+    if (!empty($relatives)) {
+      $GLOBALS['nodes_to_update_alias'][$nid] = $relatives;
+    }
   }
 }
 
@@ -296,7 +297,12 @@ function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_on
     ->fetchAssoc();
 
     $nids = $result ? array_values($result) : FALSE;
+    // Check if parent has already an alias.
+    if ($nids && $no_alias_only && drupal_get_path_alias('node/' . $nids[0]) != ('node/' . $nids[0])) {
+      return array();
+    }
   }
+  // Children need to be updated always.
   else {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
@@ -308,10 +314,11 @@ function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_on
 
   if ($nids) {
     foreach ($nids as $ref_nid) {
-      $affected_nodes[] = $ref_nid;
+
       if ($referenced = _dt_core_node_get_relatives($ref_nid, $direction, $no_alias_only)) {
-        $affected_nodes = array_merge($affected_nodes, $referenced);
+        $affected_nodes = array_merge($referenced, $affected_nodes);
       }
+      $affected_nodes[] = $ref_nid;
     }
   }
 
@@ -328,8 +335,16 @@ function dt_core_exit() {
 
   $nids_to_update = $GLOBALS['nodes_to_update_alias'];
   $GLOBALS['nodes_to_update_alias'] = array();
-
-  // Paths update using the multi update method of the pathauto module.
-  pathauto_node_update_alias_multiple($nids_to_update, 'update');
-  watchdog('dt_core', serialize($nids_to_update), array(), WATCHDOG_ERROR);
+  foreach ($nids_to_update as $nid => $relatives) {
+    // Paths update using the update method of the pathauto module.
+    // Doing it one by one to keep the order of items intact.
+    foreach ($relatives as $rel_nid) {
+      $node = node_load($rel_nid);
+      pathauto_node_update_alias($node, 'update');
+    }
+    // Update referring node as well as last.
+    $node = node_load($nid);
+    pathauto_node_update_alias($node, 'update');
+  }
+  // pathauto_node_update_alias_multiple($nids_to_update, 'update');
 }
