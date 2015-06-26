@@ -337,7 +337,7 @@ function dt_person_field_default_field_instances() {
         'weight' => 5,
       ),
       'meta' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'picture',
         'settings' => array(
           'colorbox_settings' => array(
