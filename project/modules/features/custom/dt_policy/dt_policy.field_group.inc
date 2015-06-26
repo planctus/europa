@@ -479,7 +479,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Horizontal tabs',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'group_policy_tab_actions',
       1 => 'group_policy_tab_details',
