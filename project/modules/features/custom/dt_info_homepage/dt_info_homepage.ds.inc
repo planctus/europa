@@ -39,26 +39,6 @@ function dt_info_homepage_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_info_homepage_section_1' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_2' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_3' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_4' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|info_homepage|full'] = $ds_fieldsetting;
 
@@ -143,14 +123,14 @@ function dt_info_homepage_ds_layout_settings_info() {
       ),
       'central' => array(
         1 => 'group_info_homepage_section_top',
-        2 => 'field_info_homepage_section_1',
-        3 => 'group_highlight',
-        4 => 'field_info_homepage_section_2',
-        5 => 'group_info_homepage_section_bot',
-        6 => 'field_info_homepage_section_3',
-        7 => 'field_info_homepage_section_4',
-        8 => 'topics_atoz',
-        9 => 'group_latest',
+        2 => 'group_highlight',
+        3 => 'field_info_homepage_section_1',
+        4 => 'group_info_homepage_section_bot',
+        5 => 'field_info_homepage_section_2',
+        6 => 'field_info_homepage_section_4',
+        7 => 'field_info_homepage_section_3',
+        8 => 'group_latest',
+        9 => 'topics_atoz',
         10 => 'group_latest_main',
         11 => 'group_latest_sidebar',
         12 => 'field_core_social_network_links',
@@ -159,14 +139,14 @@ function dt_info_homepage_ds_layout_settings_info() {
     'fields' => array(
       'field_core_introduction' => 'left_header',
       'group_info_homepage_section_top' => 'central',
-      'field_info_homepage_section_1' => 'central',
       'group_highlight' => 'central',
-      'field_info_homepage_section_2' => 'central',
+      'field_info_homepage_section_1' => 'central',
       'group_info_homepage_section_bot' => 'central',
-      'field_info_homepage_section_3' => 'central',
+      'field_info_homepage_section_2' => 'central',
       'field_info_homepage_section_4' => 'central',
-      'topics_atoz' => 'central',
+      'field_info_homepage_section_3' => 'central',
       'group_latest' => 'central',
+      'topics_atoz' => 'central',
       'group_latest_main' => 'central',
       'group_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',
