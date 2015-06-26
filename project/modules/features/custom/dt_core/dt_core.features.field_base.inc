@@ -342,9 +342,9 @@ function dt_core_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'basic_page' => 'basic_page',
           'class' => 'class',
           'department' => 'department',
-          'page' => 'page',
           'policy' => 'policy',
           'policy_area' => 'policy_area',
           'priority' => 'priority',

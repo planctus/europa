@@ -118,6 +118,7 @@ features[variable][] = easy_breadcrumb-title_segment_as_link
 features[variable][] = entity_translation_entity_types
 features[variable][] = menu_main_links_source
 features[variable][] = menu_secondary_links_source
+features[variable][] = pathauto_node_pattern
 features[variable][] = pathauto_reduce_ascii
 features[variable][] = pathauto_separator
 features[variable][] = pathauto_transliterate

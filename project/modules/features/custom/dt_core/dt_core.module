@@ -254,7 +254,7 @@ function dt_core_path_update($path) {
 }
 
 /**
- * Updates aliases of referenced nodes.
+ * Updates aliases of parent | child nodes.
  */
 function dt_core_path_update_relatives($path) {
   $source = explode('/', $path['source']);
@@ -314,7 +314,6 @@ function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_on
 
   if ($nids) {
     foreach ($nids as $ref_nid) {
-
       if ($referenced = _dt_core_node_get_relatives($ref_nid, $direction, $no_alias_only)) {
         $affected_nodes = array_merge($referenced, $affected_nodes);
       }

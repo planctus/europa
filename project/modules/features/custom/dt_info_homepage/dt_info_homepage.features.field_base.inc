@@ -46,7 +46,7 @@ function dt_info_homepage_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'class' => 'class',
-          'page' => 'page',
+          'basic_page' => 'basic_page',
         ),
       ),
       'target_type' => 'node',
@@ -91,7 +91,7 @@ function dt_info_homepage_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'class' => 'class',
-          'page' => 'page',
+          'basic_page' => 'basic_page',
         ),
       ),
       'target_type' => 'node',
@@ -136,7 +136,7 @@ function dt_info_homepage_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'class' => 'class',
-          'page' => 'page',
+          'basic_page' => 'basic_page',
         ),
       ),
       'target_type' => 'node',
@@ -181,7 +181,7 @@ function dt_info_homepage_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'class' => 'class',
-          'page' => 'page',
+          'basic_page' => 'basic_page',
         ),
       ),
       'target_type' => 'node',
