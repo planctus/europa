@@ -401,7 +401,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_policy_tabs';
   $field_group->data = array(
     'label' => 'Actions',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -427,7 +427,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_policy_tabs';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -453,7 +453,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_policy_tabs';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -479,17 +479,17 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Horizontal tabs',
-    'weight' => '8',
+    'weight' => '5',
     'children' => array(
       0 => 'group_policy_tab_actions',
-      1 => 'group_policy_tab_latest',
-      2 => 'group_policy_tab_details',
+      1 => 'group_policy_tab_details',
+      2 => 'group_policy_tab_latest',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
       'label' => 'Horizontal tabs',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => 'section__group',
       ),
     ),
   );
