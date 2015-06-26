@@ -402,7 +402,10 @@ function dt_policy_field_group_info() {
   $field_group->data = array(
     'label' => 'Actions',
     'weight' => '5',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_policy_implementations',
+      1 => 'policy_input_consultation',
+    ),
     'format_type' => 'htab',
     'format_settings' => array(
       'label' => 'Actions',
@@ -428,7 +431,9 @@ function dt_policy_field_group_info() {
   $field_group->data = array(
     'label' => 'Details',
     'weight' => '7',
-    'children' => array(),
+    'children' => array(
+      0 => 'policy_input_not_consultation',
+    ),
     'format_type' => 'htab',
     'format_settings' => array(
       'label' => 'Details',
@@ -479,7 +484,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Horizontal tabs',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'group_policy_tab_actions',
       1 => 'group_policy_tab_details',

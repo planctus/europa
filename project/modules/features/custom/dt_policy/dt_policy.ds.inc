@@ -17,6 +17,16 @@ function dt_policy_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'policy_input_consultation' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'policy_input_not_consultation' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type_label' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -41,11 +51,6 @@ function dt_policy_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => 'h1',
         'class' => '',
-        'ft' => array(),
-      ),
-    ),
-    'field_policy_input' => array(
-      'formatter_settings' => array(
         'ft' => array(),
       ),
     ),
@@ -98,40 +103,42 @@ function dt_policy_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'policy_input_not_consultation',
+        6 => 'field_policy_implementations',
+        7 => 'group_policy_tab_actions',
+        8 => 'policy_input_consultation',
+        9 => 'group_policy_tab_latest',
+        11 => 'group_policy_tabs',
+        12 => 'group_policy_tab_details',
+      ),
       'left_header' => array(
-        0 => 'group_policy_meta',
-        1 => 'title',
+        1 => 'group_policy_meta',
         2 => 'content_type_label',
-        3 => 'field_policy_introduction',
+        3 => 'title',
+        4 => 'field_policy_introduction',
       ),
       'top' => array(
-        4 => 'group_policy_contextual',
-        8 => 'field_core_priorities',
-        12 => 'field_core_topics',
-        13 => 'field_core_persons',
-        14 => 'field_core_department',
-      ),
-      'central' => array(
-        5 => 'field_policy_implementations',
-        6 => 'field_policy_input',
-        7 => 'group_policy_tab_actions',
-        9 => 'group_policy_tabs',
-        10 => 'group_policy_tab_latest',
-        11 => 'group_policy_tab_details',
+        5 => 'group_policy_contextual',
+        10 => 'field_core_priorities',
+        13 => 'field_core_topics',
+        14 => 'field_core_persons',
+        15 => 'field_core_department',
       ),
     ),
     'fields' => array(
+      'policy_input_not_consultation' => 'central',
       'group_policy_meta' => 'left_header',
-      'title' => 'left_header',
       'content_type_label' => 'left_header',
+      'title' => 'left_header',
       'field_policy_introduction' => 'left_header',
       'group_policy_contextual' => 'top',
       'field_policy_implementations' => 'central',
-      'field_policy_input' => 'central',
       'group_policy_tab_actions' => 'central',
+      'policy_input_consultation' => 'central',
+      'group_policy_tab_latest' => 'central',
       'field_core_priorities' => 'top',
       'group_policy_tabs' => 'central',
-      'group_policy_tab_latest' => 'central',
       'group_policy_tab_details' => 'central',
       'field_core_topics' => 'top',
       'field_core_persons' => 'top',
