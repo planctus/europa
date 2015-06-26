@@ -840,6 +840,9 @@ function europa_easy_breadcrumb($variables) {
       }
 
       $class = implode(' ', $classes);
+
+      // TODO:
+      // Check if the active class actually appears.
       $element_visibility = in_array('active', $classes) ? ' element-invisible' : '';
       $html .= '<li class="' . $class . $element_visibility . '">' . $full_item . '</li>';
     }
