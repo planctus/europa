@@ -823,10 +823,12 @@ function europa_field($variables) {
   }
 
   $output = '';
+  $classes = array();
 
   // Render the label, if it's not hidden.
   if (!$variables['label_hidden']) {
     $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    $classes[] = 'field--labeled';
   }
 
   // Render the items.
@@ -837,7 +839,7 @@ function europa_field($variables) {
   $output .= '</div>';
 
   // Render the top-level DIV.
-  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . $classes . '">' . $output . '</div>';
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
 
   return $output;
 }
