@@ -52,6 +52,7 @@ features[variable][] = menu_parent_policy_area
 features[variable][] = node_options_policy_area
 features[variable][] = node_preview_policy_area
 features[variable][] = node_submitted_policy_area
+features[variable][] = pathauto_node_policy_area_pattern
 features[views_view][] = policy_area_related_content
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][dt_person] = dt_person
