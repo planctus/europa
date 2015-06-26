@@ -30,13 +30,15 @@ Styleguide contextnav
 
 .context-nav__item {
   display: inline-block;
-  &:before {
-    content: ", ";
+  &:after {
+    content: ",";
+    margin-right: 4px;
   }
 
-  &:first-child {
-    &:before {
+  &:last-child {
+    &:after {
       display: none;
+      margin-right: 0;
     }
   }
 }
