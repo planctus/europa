@@ -886,7 +886,6 @@ function dt_class_field_default_field_instances() {
   t('Group title');
   t('Groups audience');
   t('Introduction');
-  t('Notification');
   t('Related links');
   t('Related links to the class.');
   t('Title');
