@@ -116,7 +116,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
       1 => 'field_core_priorities',
@@ -487,7 +487,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Horizontal tabs',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'group_policy_tab_actions',
       1 => 'group_policy_tab_details',
