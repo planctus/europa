@@ -20,3 +20,10 @@ function dt_policy_input_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Policy input %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting the feature to apply field settings and display configurations.
+ */
+function dt_policy_input_update_7101() {
+  features_revert_module('dt_policy_input');
+}

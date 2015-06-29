@@ -70,3 +70,10 @@ function dt_policy_update_7102() {
   }
   features_revert_module("dt_policy");
 }
+
+/**
+ * Reverting the feature to apply field and display settings configurations.
+ */
+function dt_policy_update_7103() {
+  features_revert_module('dt_policy');
+}
