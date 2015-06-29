@@ -1,10 +1,81 @@
+/*
+Breadcrumb
+
+Markup: html/breadcrumb.html
+
+Styleguide breadcrumb
+*/
+
 .breadcrumb {
-  font-size: $font-size-xsmall;
-  line-height: 30px;
+  background: $grey-lightest;
+  font-size: 0.833em;
 
-  height: 30px;
   margin: 0;
-  padding: 0;
+  padding: 0 ($grid-gutter-width / 2);
 
-  border-top: 1px solid #c2d2e6;
+  border-radius: 0;
+
+  ol,
+  ul {
+    list-style: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.breadcrumb__segment {
+  min-height: 2.778em;
+  display: none;
+}
+
+.breadcrumb__segment--last,
+.breadcrumb__segment--first {
+  display: inline-block;
+}
+
+.breadcrumb__segment--last {
+  &:before {
+    content: '...';
+    display: inline-block;
+  }
+
+  .breadcrumb__link {
+    &:before {
+      @extend .breadcrumb__link-arrow;
+      margin-right: 8px;
+    }
+  }
+}
+
+.breadcrumb__link-arrow {
+  @extend .icon--after;
+  @extend .icon--right;
+  color: $grey;
+  line-height: inherit !important;
+  margin-left: 8px !important;
+  font-weight: normal;
+  font-size: $font-size-xsmall;
+}
+
+.breadcrumb__link {
+  line-height: 3;
+  font-weight: bold;
+  margin-right: 8px;
+  &:after {
+    @extend .breadcrumb__link-arrow;
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .breadcrumb__segment {
+    display: inline-block;
+  }
+
+  .breadcrumb__segment--last,
+  .breadcrumb__segment--last .breadcrumb__link {
+    &:before {
+      display: none !important;
+    }
+  }
 }

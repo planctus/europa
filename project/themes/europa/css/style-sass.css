@@ -6308,13 +6308,59 @@ Styleguide form.textarea
     margin-left: -100%;
     margin-right: -100%; } }
 
+/*
+Breadcrumb
+
+Markup: html/breadcrumb.html
+
+Styleguide breadcrumb
+*/
 .breadcrumb {
-  font-size: 0.778em;
-  line-height: 30px;
-  height: 30px;
+  background: #f2f2f2;
+  font-size: 0.833em;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid #c2d2e6; }
+  padding: 0 15px;
+  border-radius: 0; }
+  .breadcrumb ol,
+  .breadcrumb ul {
+    list-style: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0; }
+
+.breadcrumb__segment {
+  min-height: 2.778em;
+  display: none; }
+
+.breadcrumb__segment--last,
+.breadcrumb__segment--first {
+  display: inline-block; }
+
+.breadcrumb__segment--last:before {
+  content: '...';
+  display: inline-block; }
+
+.breadcrumb__segment--last .breadcrumb__link:before {
+  margin-right: 8px; }
+
+.breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after {
+  color: #b3b4b5;
+  line-height: inherit !important;
+  margin-left: 8px !important;
+  font-weight: normal;
+  font-size: 0.778em; }
+
+.breadcrumb__link {
+  line-height: 3;
+  font-weight: bold;
+  margin-right: 8px; }
+
+@media (min-width: 480px) {
+  .breadcrumb__segment {
+    display: inline-block; }
+  .breadcrumb__segment--last:before,
+  .breadcrumb__segment--last .breadcrumb__link:before {
+    display: none !important; } }
 
 /*
 Contextual navigation
@@ -6898,7 +6944,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .listing--cta .listing__title:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after, .listing--cta .listing__title:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -6938,7 +6984,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e602'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .icon--right:before, .listing--cta .listing__title:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after, .icon--right:before, .listing--cta .listing__title:after {
   content: '\e601'; }
 
 .icon--down:before {

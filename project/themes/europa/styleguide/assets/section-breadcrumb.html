@@ -38,6 +38,8 @@
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Breadcrumb</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-buttons.html">
@@ -122,8 +124,6 @@
           <span class="kss-nav__ref">16</span
           ><span class="kss-nav__name">Social Media</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-text.html">
@@ -136,22 +136,18 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-social" class="kss-section kss-section--depth-1">
+      <div     id="kssref-breadcrumb" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-social">
-          <span class="kss-title__ref">16</span
-          >Social Media
+        <a class="kss-title__permalink" href="#kssref-breadcrumb">
+          <span class="kss-title__ref">1</span
+          >Breadcrumb
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
-      <div class="kss-description">
-        <p>Social Media Links</p>
-
-      </div>
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -159,27 +155,39 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="social-media-links">
-  <p>Follow the latest progress and learn more about getting involved.</p>
-  <ul class="social-media-links__list">
-    <li class="social-media-links__item"><a href="http://facebook.com" title="Facebook" class="icon-social icon-social--facebook">Facebook</a></li>
-    <li class="social-media-links__item"><a href="http://twitter.com" title="Twitter" class="icon-social icon-social--twitter">Twitter</a></li>
-    <li class="social-media-links__item social-media-links__item--noicon"><a href="#">Other social networks.</a></li>
-  </ul>
-</div>
+          <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <span class="element-invisible">You are here:</span>
+  <ol>
+    <li class="breadcrumb__segment breadcrumb__segment--first">
+      <a href="#" class="breadcrumb__link">European Commission</a>
+    </li>
+    <li class="breadcrumb__segment">
+      <a href="#" class="breadcrumb__link">Path 1</a>
+    </li>
+    <li class="breadcrumb__segment breadcrumb__segment--last">
+      <a href="#" class="breadcrumb__link">Path2</a>
+    </li>
+  </ol>
+</nav>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;social-media-links&quot;&gt;
-  &lt;p&gt;Follow the latest progress and learn more about getting involved.&lt;/p&gt;
-  &lt;ul class=&quot;social-media-links__list&quot;&gt;
-    &lt;li class=&quot;social-media-links__item&quot;&gt;&lt;a href=&quot;http://facebook.com&quot; title=&quot;Facebook&quot; class=&quot;icon-social icon-social--facebook&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
-    &lt;li class=&quot;social-media-links__item&quot;&gt;&lt;a href=&quot;http://twitter.com&quot; title=&quot;Twitter&quot; class=&quot;icon-social icon-social--twitter&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-    &lt;li class=&quot;social-media-links__item social-media-links__item--noicon&quot;&gt;&lt;a href=&quot;#&quot;&gt;Other social networks.&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;nav class=&quot;breadcrumb&quot; role=&quot;navigation&quot; aria-label=&quot;breadcrumbs&quot;&gt;
+  &lt;span class=&quot;element-invisible&quot;&gt;You are here:&lt;/span&gt;
+  &lt;ol&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--first&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;European Commission&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--last&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
 </code></pre>
       </div>
 

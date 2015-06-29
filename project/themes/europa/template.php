@@ -809,31 +809,29 @@ function europa_easy_breadcrumb($variables) {
     $html .= '<span class="element-invisible">' . t('You are here') . ':</span>';
     $html .= '<ol>';
 
-    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
+    for ($i = 0, $s = $segments_quantity; $i < $segments_quantity; ++$i) {
       $item = $breadcrumb[$i];
 
       // Removing classes from $item['class'] array and adding BEM classes.
       $classes = $item['class'];
-      $classes[] = 'breadcrumb__segment-' . ($i + 1);
+      // $classes[] = 'breadcrumb__segment-' . ($i + 1);
+      $classes[] = 'breadcrumb__segment';
+
+      $attributes = array(
+        'class' => array('breadcrumb__link'),
+      );
 
       if ($i == 0) {
         $classes[] = 'breadcrumb__segment--first';
-        $attributes = array('rel' => 'home');
+        $attributes += array('rel' => 'home');
       }
-      else {
-        // Add last class to penultimate item since last item is hidden.
-        if ($i == ($s - 1)) {
-          $classes[] = 'breadcrumb__segment--last';
-        }
+      elseif ($i == ($s - 1)) {
+        $classes[] = 'breadcrumb__segment--last';
       }
-
-      $attributes += array(
-        'class' => 'breadcrumb__link',
-      );
 
       $content = check_plain(decode_entities($item['content']));
       if (isset($item['url'])) {
-        $full_item = l($content, $it['url'], array('attributes' => $attributes));
+        $full_item = l($content, $item['url'], array('attributes' => $attributes));
       }
       else {
         $full_item = '<span class="' . $class . '">' . $content . '</span>';
