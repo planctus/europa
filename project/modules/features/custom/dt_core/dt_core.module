@@ -235,7 +235,7 @@ function _dt_core_field_value_copy($entity_type, $bundle, $source_field_name, $d
 }
 
 /**
- *
+ * Nodes that will have their alias re-generated on exit.
  */
 $GLOBALS['nodes_to_update_alias'] = array();
 
@@ -260,15 +260,33 @@ function dt_core_path_update_relatives($path) {
   $source = explode('/', $path['source']);
   if ($source[0] == 'node') {
     $nid = $source[1];
+    $node = node_load($nid);
 
-    // Find children based on field_core_parent.
-    $children = _dt_core_node_get_relatives($nid);
+    // URL pattern for node.
+    $pattern = pathauto_pattern_load_by_entity('node', $node->type);
+    // Fileds that are used in URL patterns to define hierarchy.
+    $parent_fields = array(
+      'field_core_parent',
+      'field_core_policy_area',
+    );
 
-    // Find parents based on field_core_parent.
-    $parents = _dt_core_node_get_relatives($nid, 'parents', TRUE);
-    $relatives = array_merge($parents, $children);
-    if (!empty($relatives)) {
-      $GLOBALS['nodes_to_update_alias'][$nid] = $relatives;
+    foreach ($parent_fields as $field_name) {
+      // Check if URL pattern uses parents URL.
+      $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
+      // If URL pattern does not rely on this field, skip.
+      if (!preg_match('/' . $pattern_segment . '/', $pattern)) {
+        continue;
+      }
+      // Find children based on field.
+      $children = _dt_core_node_get_relatives($nid, $field_name);
+
+      // Find parents based on field.
+      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
+
+      $relatives = array_merge($parents, $children);
+      if (!empty($relatives)) {
+        $GLOBALS['nodes_to_update_alias'][$nid] = $relatives;
+      }
     }
   }
 }
@@ -278,6 +296,8 @@ function dt_core_path_update_relatives($path) {
  *
  * @param int $nid
  *   Node id
+ * @param string $field_name
+ *   field name that is used for hierarchy
  * @param string $direction
  *   children or parents
  * @param bool $no_alias_only
@@ -286,12 +306,16 @@ function dt_core_path_update_relatives($path) {
  * @return array
  *   Node ids of children|parents
  */
-function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_only = FALSE) {
+function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children', $no_alias_only = FALSE) {
+  if (!isset($field_name)) {
+    return array();
+  }
+
   $affected_nodes = array();
 
   if ($direction == 'parents') {
-    $result = db_select('field_data_field_core_parent', 'p')
-    ->fields('p', array('field_core_parent_target_id'))
+    $result = db_select('field_data_' . $field_name, 'p')
+    ->fields('p', array($field_name . '_target_id'))
     ->condition('entity_id', $nid, '=')
     ->execute()
     ->fetchAssoc();
@@ -306,7 +330,7 @@ function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_on
   else {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-      ->fieldCondition('field_core_parent', 'target_id', $nid, '=');
+      ->fieldCondition($field_name, 'target_id', $nid, '=');
 
     $result = $query->execute();
     $nids = isset($result['node']) ? array_keys($result['node']) : FALSE;
@@ -314,7 +338,7 @@ function _dt_core_node_get_relatives($nid, $direction = 'children', $no_alias_on
 
   if ($nids) {
     foreach ($nids as $ref_nid) {
-      if ($referenced = _dt_core_node_get_relatives($ref_nid, $direction, $no_alias_only)) {
+      if ($referenced = _dt_core_node_get_relatives($ref_nid, $field_name, $direction, $no_alias_only)) {
         $affected_nodes = array_merge($referenced, $affected_nodes);
       }
       $affected_nodes[] = $ref_nid;
