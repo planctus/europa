@@ -1,16 +1,13 @@
 <?php
 /**
  * @file
- * dt_toplink.features.inc
+ * dt_page.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_toplink_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "ds" && $api == "ds") {
-    return array("version" => "1");
-  }
+function dt_page_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -22,12 +19,12 @@ function dt_toplink_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function dt_toplink_node_info() {
+function dt_page_node_info() {
   $items = array(
-    'toplink' => array(
-      'name' => t('Topic Top Link'),
+    'basic_page' => array(
+      'name' => t('Page'),
       'base' => 'node_content',
-      'description' => t('Helper content type which resembles top task object. Used at least in topic content type to list related top links next to top tasks.'),
+      'description' => t('Use <em>basic pages</em> for your static content, such as an \'About us\' page.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
