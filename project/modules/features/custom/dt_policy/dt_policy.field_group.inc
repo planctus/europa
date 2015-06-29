@@ -432,7 +432,10 @@ function dt_policy_field_group_info() {
     'label' => 'Details',
     'weight' => '7',
     'children' => array(
-      0 => 'policy_input_not_consultation',
+      0 => 'field_policy_detail_body',
+      1 => 'field_policy_detail_objectives',
+      2 => 'field_policy_keyfiles',
+      3 => 'policy_input_not_consultation',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
