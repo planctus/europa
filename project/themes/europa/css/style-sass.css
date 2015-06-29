@@ -6321,6 +6321,7 @@ Styleguide breadcrumb
 .breadcrumb {
   background: #ececec;
   font-size: 0.833em;
+  position: relative;
   margin: 0;
   padding: 0 15px;
   border-radius: 0; }
@@ -6333,37 +6334,93 @@ Styleguide breadcrumb
 
 .breadcrumb__segment {
   min-height: 2.778em;
-  display: none; }
+  display: none;
+  position: relative; }
 
-.breadcrumb__segment--last,
-.breadcrumb__segment--first {
-  display: inline-block; }
-
-.breadcrumb__segment--last:before {
-  content: '...';
-  display: inline-block; }
-
-.breadcrumb__segment--last .breadcrumb__link:before {
+.breadcrumb__link {
+  line-height: 2.778em;
+  font-weight: bold;
   margin-right: 8px; }
 
-.breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after {
+.breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after {
   color: #b3b4b5;
   line-height: inherit !important;
   margin-left: 8px !important;
   font-weight: normal;
   font-size: 0.778em; }
 
-.breadcrumb__link {
-  line-height: 3;
-  font-weight: bold;
-  margin-right: 8px; }
+.breadcrumb__segment--last,
+.breadcrumb__segment--first {
+  display: inline-block; }
+
+.no-js .breadcrumb__segment--first {
+  padding-right: 25px; }
+  .no-js .breadcrumb__segment--first:after {
+    content: '...';
+    display: inline-block; }
+  .no-js .breadcrumb__segment--first:before {
+    position: absolute;
+    right: 7px;
+    top: 25%; }
+
+/*
+Breadcrumb collapsible
+
+Markup: html/breadcrumb--collapsible.html
+
+Styleguide breadcrumb.collapsible
+*/
+.breadcrumb--collapsible .breadcrumb__btn-separator {
+  background: #e2e2e2;
+  line-height: 2.778em;
+  display: inline-block;
+  padding: 0 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer; }
+  .breadcrumb--collapsible .breadcrumb__btn-separator:hover,
+  .breadcrumb--collapsible .breadcrumb__btn-separator:active,
+  .breadcrumb--collapsible .breadcrumb__btn-separator:focus {
+    background: #fff; }
+
+.breadcrumb--collapsible .breadcrumb__segment {
+  width: 100%; }
+
+.breadcrumb--collapsible .breadcrumb__segment--first {
+  padding-right: 0; }
+  .breadcrumb--collapsible .breadcrumb__segment--first:before,
+  .breadcrumb--collapsible .breadcrumb__segment--first:after {
+    display: none; }
+
+.breadcrumb--collapsible .breadcrumb__segment--last {
+  padding-left: 52px; }
+
+.breadcrumb--collapsible.is-open .breadcrumb__segment {
+  display: inline-block; }
+
+.breadcrumb--collapsible.is-open .breadcrumb__segment--last {
+  -webkit-transition: all 0.25s ease 0s;
+  -o-transition: all 0.25s ease 0s;
+  transition: all 0.25s ease 0s;
+  padding-left: 0; }
 
 @media (min-width: 480px) {
   .breadcrumb__segment {
     display: inline-block; }
-  .breadcrumb__segment--last:before,
-  .breadcrumb__segment--last .breadcrumb__link:before {
-    display: none !important; } }
+  .breadcrumb__segment--first {
+    padding-right: 0; }
+    .breadcrumb__segment--first:after,
+    .breadcrumb__segment--first:before {
+      display: none !important; }
+  .breadcrumb--collapsible .breadcrumb__segment {
+    width: auto; }
+  .breadcrumb--collapsible .breadcrumb__btn-separator {
+    display: none; }
+  .breadcrumb--collapsible .breadcrumb__segment--first {
+    width: auto; }
+  .breadcrumb--collapsible .breadcrumb__segment--last {
+    padding-left: 0; } }
 
 /*
 Contextual navigation
@@ -6947,7 +7004,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after, .listing--cta .listing__title:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .listing--cta .listing__title:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -6987,7 +7044,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e602'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .breadcrumb__segment--last .breadcrumb__link:before, .breadcrumb__link:after, .icon--right:before, .listing--cta .listing__title:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .icon--right:before, .listing--cta .listing__title:after {
   content: '\e601'; }
 
 .icon--down:before {

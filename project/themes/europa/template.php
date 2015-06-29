@@ -96,7 +96,7 @@ function europa_preprocess_block(&$vars) {
       drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
 
       // Adding filters.js file.
-      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
     }
   }
 
@@ -805,7 +805,7 @@ function europa_easy_breadcrumb($variables) {
   $html = '';
 
   if ($segments_quantity > 0) {
-    $html .= '<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">';
+    $html .= '<nav id="breadcrumb" class="breadcrumb" role="navigation" aria-label="breadcrumbs">';
     $html .= '<span class="element-invisible">' . t('You are here') . ':</span>';
     $html .= '<ol>';
 
@@ -846,6 +846,8 @@ function europa_easy_breadcrumb($variables) {
     }
 
     $html .= '</ol></nav>';
+
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/breadcrumb.js');
   }
   return $html;
 }
