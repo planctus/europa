@@ -55,14 +55,14 @@ function dt_policy_input_views_default_views() {
   $handler->display->display_options['fields']['field_policy_input_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_policy_input_type']['element_label_colon'] = FALSE;
   /* Field: Content: Introduction */
-  $handler->display->display_options['fields']['field_policy_input_introduction']['id'] = 'field_policy_input_introduction';
-  $handler->display->display_options['fields']['field_policy_input_introduction']['table'] = 'field_data_field_policy_input_introduction';
-  $handler->display->display_options['fields']['field_policy_input_introduction']['field'] = 'field_policy_input_introduction';
-  $handler->display->display_options['fields']['field_policy_input_introduction']['label'] = '';
-  $handler->display->display_options['fields']['field_policy_input_introduction']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_policy_input_introduction']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_policy_input_introduction']['type'] = 'smart_trim_format';
-  $handler->display->display_options['fields']['field_policy_input_introduction']['settings'] = array(
+  $handler->display->display_options['fields']['field_core_introduction']['id'] = 'field_core_introduction';
+  $handler->display->display_options['fields']['field_core_introduction']['table'] = 'field_data_field_core_introduction';
+  $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
+  $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
+  $handler->display->display_options['fields']['field_core_introduction']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_core_introduction']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['field_core_introduction']['settings'] = array(
     'trim_length' => '300',
     'trim_type' => 'chars',
     'trim_suffix' => '...',
@@ -88,7 +88,7 @@ function dt_policy_input_views_default_views() {
   <div class="listing__column-main column-main">
    <div class="meta"><span class="meta__item meta__item--type">[field_policy_input_type]</span></div>
     <h3 class="listing__title">[title]</h3>
-    <p>[field_policy_input_introduction]</p>
+    <p>[field_core_introduction]</p>
   </div>
 </a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
