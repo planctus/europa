@@ -24,7 +24,7 @@ function dt_policy_input_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_policy_input_introduction',
+      1 => 'field_core_introduction',
       2 => 'field_policy_input_status',
       3 => 'field_policy_input_type',
       4 => 'field_core_link',

@@ -90,7 +90,7 @@ function dt_policy_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_policy_introduction',
+      1 => 'field_core_introduction',
       2 => 'field_core_description',
     ),
     'format_type' => 'tab',
@@ -116,7 +116,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_department',
       1 => 'field_core_priorities',
@@ -487,7 +487,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Horizontal tabs',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(
       0 => 'group_policy_tab_actions',
       1 => 'group_policy_tab_details',

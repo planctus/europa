@@ -30,19 +30,6 @@ function dt_policy_input_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_policy_input_introduction' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'field_policy_input_type' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -50,6 +37,19 @@ function dt_policy_input_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'span',
           'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -119,14 +119,14 @@ function dt_policy_input_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_policy_input_meta',
         1 => 'title_field',
-        2 => 'field_policy_input_introduction',
+        2 => 'field_core_introduction',
         3 => 'field_policy_input_type',
       ),
     ),
     'fields' => array(
       'group_policy_input_meta' => 'main',
       'title_field' => 'main',
-      'field_policy_input_introduction' => 'main',
+      'field_core_introduction' => 'main',
       'field_policy_input_type' => 'main',
     ),
     'classes' => array(),
