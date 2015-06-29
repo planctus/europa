@@ -365,15 +365,16 @@ function dt_core_exit() {
   $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
   $GLOBALS['dt_core_nodes_to_update_alias'] = array();
   foreach ($nids_to_update as $nid => $relatives) {
+    // Update referring node as well as last.
+    $relatives[] = $nid;
+
     // Paths update using the update method of the pathauto module.
-    // Doing it one by one to keep the order of items intact.
+    // Doing it one by one instead of using
+    // pathauto_node_update_alias_multiple() to keep the order of items intact.
     foreach ($relatives as $rel_nid) {
       $node = node_load($rel_nid);
       pathauto_node_update_alias($node, 'update');
     }
-    // Update referring node as well as last.
-    $node = node_load($nid);
-    pathauto_node_update_alias($node, 'update');
   }
 }
 
