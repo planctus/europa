@@ -97,7 +97,7 @@
 </header>
 
 <?php if (!empty($page['header_bottom'])): ?>
-<nav role="navigation">
+<nav class="page-navigation" role="navigation">
   <div class="container-fluid">
       <?php print render($page['header_bottom']); ?>
   </div>

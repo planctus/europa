@@ -6258,6 +6258,9 @@ Styleguide form.textarea
   margin-top: 60px;
   margin-bottom: 30px; }
 
+.page-navigation {
+  background: #f2f2f2; }
+
 .sidebar-field-group--important, .front .sidebar-field-group {
   padding-top: 30px; }
 
@@ -6316,7 +6319,7 @@ Markup: html/breadcrumb.html
 Styleguide breadcrumb
 */
 .breadcrumb {
-  background: #f2f2f2;
+  background: #ececec;
   font-size: 0.833em;
   margin: 0;
   padding: 0 15px;
