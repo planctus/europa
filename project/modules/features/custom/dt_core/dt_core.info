@@ -13,6 +13,7 @@ dependencies[] = ds_extras
 dependencies[] = dt_date_format
 dependencies[] = dt_exposed_filter_data
 dependencies[] = dt_social_network_links
+dependencies[] = easy_breadcrumb
 dependencies[] = entityreference
 dependencies[] = image
 dependencies[] = inline_entity_form
