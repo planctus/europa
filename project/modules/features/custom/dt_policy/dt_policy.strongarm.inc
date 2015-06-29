@@ -90,5 +90,26 @@ function dt_policy_strongarm() {
   );
   $export['node_options_policy'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_policy_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_policy_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_policy_pattern';
+  $strongarm->value = 'policies/[node:source:title]';
+  $export['pathauto_node_policy_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_policy_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_policy_und_pattern'] = $strongarm;
+
   return $export;
 }
