@@ -240,41 +240,42 @@ function _dt_core_field_value_copy($entity_type, $bundle, $source_field_name, $d
 $GLOBALS['nodes_to_update_alias'] = array();
 
 /**
+ * Fields that are used in URL patterns to define hierarchy.
+ */
+$GLOBALS['parent_fields'] = array(
+  'field_core_parent',
+  'field_core_policy_area',
+);
+
+/**
  * Implements function hook_path_insert().
  */
 function dt_core_path_insert($path) {
-  dt_core_path_update_relatives($path);
+  _dt_core_path_update_relatives($path);
 }
 
 /**
  * Implements function hook_path_update().
  */
 function dt_core_path_update($path) {
-  dt_core_path_update_relatives($path);
+  _dt_core_path_update_relatives($path);
 }
 
 /**
  * Updates aliases of parent | child nodes.
  */
-function dt_core_path_update_relatives($path) {
+function _dt_core_path_update_relatives($path) {
   $source = explode('/', $path['source']);
   if ($source[0] == 'node') {
     $nid = $source[1];
     $node = node_load($nid);
 
-    // URL pattern for node.
+    // URL pattern for node type.
     $pattern = pathauto_pattern_load_by_entity('node', $node->type);
-    // Fileds that are used in URL patterns to define hierarchy.
-    $parent_fields = array(
-      'field_core_parent',
-      'field_core_policy_area',
-    );
 
-    foreach ($parent_fields as $field_name) {
-      // Check if URL pattern uses parents URL.
-      $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
+    foreach ($GLOBALS['parent_fields'] as $field_name) {
       // If URL pattern does not rely on this field, skip.
-      if (!preg_match('/' . $pattern_segment . '/', $pattern)) {
+      if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
         continue;
       }
       // Find children based on field.
@@ -369,5 +370,51 @@ function dt_core_exit() {
     $node = node_load($nid);
     pathauto_node_update_alias($node, 'update');
   }
-  // pathauto_node_update_alias_multiple($nids_to_update, 'update');
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function dt_core_pathauto_alias_alter(&$alias, array &$context) {
+  // Remove duplicates that are a result of a prefix defined in th URL pattern.
+  // before the parent fields slug.
+  //
+  // For example:
+  // The pattern "prefix/[parent:url]/[title]" might result in an alias like
+  // "prefix/prefix/parent-title/title" if parent is of the same type since the
+  // prefix is added twice. We will remove the duplicate prefix now.
+
+  // We consider everything before the first token a prefix.
+  $pattern_prefix = explode('[', $context['pattern']);
+  $prefix = $pattern_prefix[0];
+
+  if (!empty($prefix)) {
+    // Check if it is subject of parent field.
+    foreach ($GLOBALS['parent_fields'] as $field_name) {
+      // If the URL pattern does rely on this field remove duplicate prefix.
+      if (_dt_core_parent_field_in_pattern($field_name, $context['pattern'])) {
+        $alias = str_replace($prefix . $prefix, $prefix, $alias);
+      }
+    }
+  }
+}
+
+/**
+ * Checks if a URL pattern is relying on a parent field.
+ *
+ * @param string $field_name
+ *   Field name
+ *
+ * @return mixed
+ *   string pattern token segment | bool FALSE
+ */
+function _dt_core_parent_field_in_pattern($field_name, $pattern) {
+  // Check if URL pattern uses parents URL.
+  $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
+  if (preg_match('/' . $pattern_segment . '/', $pattern)) {
+
+    return $pattern_segment;
+  }
+
+  return FALSE;
 }
