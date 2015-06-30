@@ -305,8 +305,7 @@ function europa_easy_breadcrumb($variables) {
 
   $html = '';
 
-  // We don't print out "Home" if it's the only breadcrumb component.
-  if ($segments_quantity > 1) {
+  if ($segments_quantity > 0) {
 
     $html .= '<ol class="breadcrumb">';
 
