@@ -288,13 +288,6 @@ function europa_menu_tree__secondary(&$variables) {
 }
 
 /**
- * Implements preprocess for theme('easy_breadcrumb').
- */
-function europa_preprocess_easy_breadcrumb(&$variables) {
-  $variables['separator'] = '&raquo;';
-}
-
-/**
  * Overrides theme('easy_breadcrumb').
  */
 function europa_easy_breadcrumb($variables) {
