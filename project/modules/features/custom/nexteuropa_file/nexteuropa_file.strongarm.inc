@@ -66,7 +66,7 @@ function nexteuropa_file_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -98,6 +98,9 @@ function nexteuropa_file_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'file' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -117,6 +120,10 @@ function nexteuropa_file_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'file' => array(
             'weight' => '0',
             'visible' => FALSE,
           ),
