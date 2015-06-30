@@ -35,6 +35,7 @@ dependencies[] = picture
 dependencies[] = retina_images
 dependencies[] = strongarm
 dependencies[] = text
+features[context][] = dt_core_non_homepage_pages
 features[context][] = dt_core_sitewide
 features[context][] = in_page_navigation
 features[ctools][] = context:context:3
