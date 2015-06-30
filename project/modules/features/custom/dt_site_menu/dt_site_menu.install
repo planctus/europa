@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * DT Site Menu install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_site_menu_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_site_menu_uninstall() {
+  $path = drupal_get_path('module', 'dt_site_menu') . '/dt_site_menu.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Site Menu %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
