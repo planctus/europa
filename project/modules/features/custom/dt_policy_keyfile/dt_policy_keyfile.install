@@ -20,3 +20,22 @@ function dt_policy_keyfile_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Policy key file %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Changing type of field_policy_keyfile_type.
+ */
+function dt_policy_keyfile_update_7101() {
+  if (field_info_field('field_policy_keyfile_type') !== NULL) {
+    field_delete_field('field_policy_keyfile_type');
+    field_purge_field('field_policy_keyfile_type');
+  }
+
+  features_revert_module('dt_policy_keyfile');
+}
+
+/**
+ * Reverting key file.
+ */
+function dt_policy_keyfile_update_7102() {
+  features_revert_module('dt_policy_keyfile');
+}
