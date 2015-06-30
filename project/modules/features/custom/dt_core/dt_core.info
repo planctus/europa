@@ -113,6 +113,7 @@ features[variable][] = easy_breadcrumb-excluded_paths
 features[variable][] = easy_breadcrumb-home_segment_title
 features[variable][] = easy_breadcrumb-include_home_segment
 features[variable][] = easy_breadcrumb-include_title_segment
+features[variable][] = easy_breadcrumb-segments_separator
 features[variable][] = easy_breadcrumb-title_from_page_when_available
 features[variable][] = easy_breadcrumb-title_segment_as_link
 features[variable][] = entity_translation_entity_types
