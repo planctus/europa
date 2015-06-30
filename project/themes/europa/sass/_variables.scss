@@ -51,6 +51,10 @@ $font-size-h6:            $font-size-xsmall;
 $font-weight-normal:      400;
 $font-weight-bold:        600;
 
+// Medium Small screen / tablet
+$screen-msm:                  622px !default;
+$screen-msm-min:              $screen-msm !default;
+
 // Form control
 $form-control-height:                             2.750em; //44px basing on form control base font size.
 
