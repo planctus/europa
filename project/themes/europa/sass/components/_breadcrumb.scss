@@ -26,10 +26,6 @@ $breadcrumb-heigth: 2.778em;
   }
 }
 
-.breadcrumb__segments-wrapper {
-  float: left;
-}
-
 .breadcrumb__segment {
   min-height: $breadcrumb-heigth;
   display: none;
@@ -38,12 +34,11 @@ $breadcrumb-heigth: 2.778em;
 
 .breadcrumb__link {
   display: inline-block;
-  line-height: $breadcrumb-heigth;
   font-weight: bold;
   margin-right: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding-top: 0.56em;
+  padding-bottom: 0.56em;
+
   &:after {
     @extend .breadcrumb__link-arrow;
   }
@@ -68,6 +63,10 @@ $breadcrumb-heigth: 2.778em;
 }
 
 @include breakpoint(screen-xs-min) {
+  .breadcrumb__link {
+    width: auto;
+  }
+
   .breadcrumb__segment {
     display: inline-block;
   }
@@ -158,6 +157,10 @@ Styleguide breadcrumb.collapsible
     }
   }
   @include breakpoint(screen-xs-min) {
+    .breadcrumb__segments-wrapper {
+      float: left;
+    }
+
     .breadcrumb__segment {
       width: auto;
 

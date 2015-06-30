@@ -86,6 +86,7 @@
               $breadcrumbButton.show();
               $breadcrumbSegments.removeClass('is-hidden');
 
+              $breadcrumbSegmentFirst.removeClass('breadcrumb__segment--next-hidden');
               $(window).off('resize');
             },
 
