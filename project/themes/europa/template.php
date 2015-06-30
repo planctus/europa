@@ -807,7 +807,7 @@ function europa_easy_breadcrumb($variables) {
   if ($segments_quantity > 0) {
     $html .= '<nav id="breadcrumb" class="breadcrumb" role="navigation" aria-label="breadcrumbs">';
     $html .= '<span class="element-invisible">' . t('You are here') . ':</span>';
-    $html .= '<ol>';
+    $html .= '<ol class="breadcrumb__segments-wrapper">';
 
     for ($i = 0, $s = $segments_quantity; $i < $segments_quantity; ++$i) {
       $item = $breadcrumb[$i];

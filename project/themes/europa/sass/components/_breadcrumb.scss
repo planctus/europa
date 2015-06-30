@@ -15,6 +15,7 @@ $breadcrumb-heigth: 2.778em;
   margin: 0;
   padding: 0 ($grid-gutter-width / 2);
   border-radius: 0;
+  overflow: hidden;
 
   ol,
   ul {
@@ -25,6 +26,10 @@ $breadcrumb-heigth: 2.778em;
   }
 }
 
+.breadcrumb__segments-wrapper {
+  float: left;
+}
+
 .breadcrumb__segment {
   min-height: $breadcrumb-heigth;
   display: none;
@@ -32,9 +37,13 @@ $breadcrumb-heigth: 2.778em;
 }
 
 .breadcrumb__link {
+  display: inline-block;
   line-height: $breadcrumb-heigth;
   font-weight: bold;
   margin-right: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:after {
     @extend .breadcrumb__link-arrow;
   }
@@ -48,6 +57,9 @@ $breadcrumb-heigth: 2.778em;
   margin-left: 8px !important;
   font-weight: normal;
   font-size: $font-size-xsmall;
+  // Width has to be defined, otherwise javascript has issues with calculating
+  // the breadcrumb segment width.
+  width: 11px;
 }
 
 .breadcrumb__segment--last,
@@ -55,9 +67,24 @@ $breadcrumb-heigth: 2.778em;
   display: inline-block;
 }
 
+@include breakpoint(screen-xs-min) {
+  .breadcrumb__segment {
+    display: inline-block;
+  }
+
+  .breadcrumb__segment--first {
+    padding-right: 0;
+    &:after,
+    &:before {
+      display: none !important;
+    }
+  }
+}
+
 .no-js {
   .breadcrumb__segment--first {
     padding-right: 25px;
+
     &:after {
       content: '...';
       display: inline-block;
@@ -130,24 +157,30 @@ Styleguide breadcrumb.collapsible
       padding-left: 0;
     }
   }
-}
-
-@include breakpoint(screen-xs-min) {
-  .breadcrumb__segment {
-    display: inline-block;
-  }
-
-  .breadcrumb__segment--first {
-    padding-right: 0;
-    &:after,
-    &:before {
-      display: none !important;
-    }
-  }
-
-  .breadcrumb--collapsible {
+  @include breakpoint(screen-xs-min) {
     .breadcrumb__segment {
       width: auto;
+
+      &.is-hidden {
+        display: none;
+      }
+
+      &.breadcrumb__segment--next-hidden {
+        padding-right: 25px;
+
+        &:after {
+          content: '...';
+          display: inline-block !important;
+        }
+
+        &:before {
+          @extend .breadcrumb__link-arrow;
+          display: inline-block !important;
+          position: absolute;
+          right: 7px;
+          top: 25%;
+        }
+      }
     }
 
     .breadcrumb__btn-separator {
