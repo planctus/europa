@@ -189,7 +189,7 @@ function dt_page_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select this checkbox in order to have In-page navigation enabled',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -228,7 +228,7 @@ function dt_page_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 10,
+      'weight' => 15,
     ),
   );
 
@@ -567,6 +567,7 @@ function dt_page_field_default_field_instances() {
   t('In page navigation');
   t('Introduction');
   t('Related content');
+  t('Select this checkbox in order to have In-page navigation enabled');
   t('Title');
 
   return $field_instances;
