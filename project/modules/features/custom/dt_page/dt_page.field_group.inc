@@ -1,22 +1,22 @@
 <?php
 /**
  * @file
- * dt_toplink.field_group.inc
+ * dt_page.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dt_toplink_field_group_info() {
+function dt_page_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_content_tabgroup|node|top_link|form';
+  $field_group->identifier = 'group_content_tabgroup|node|basic_page|form';
   $field_group->group_name = 'group_content_tabgroup';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'toplink';
+  $field_group->bundle = 'basic_page';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -24,7 +24,7 @@ function dt_toplink_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_editorial_settings',
-      1 => 'group_top_link_content',
+      1 => 'group_page_main',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -34,68 +34,69 @@ function dt_toplink_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|top_link|form'] = $field_group;
+  $export['group_content_tabgroup|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_editorial_settings|node|toplink|form';
+  $field_group->identifier = 'group_editorial_settings|node|basic_page|form';
   $field_group->group_name = 'group_editorial_settings';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'toplink';
+  $field_group->bundle = 'basic_page';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '8',
+    'weight' => '12',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      2 => 'field_core_in_page_navigation',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => 'group-editorial-settings field-group-tab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_editorial_settings|node|toplink|form'] = $field_group;
+  $export['group_editorial_settings|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_top_link_content|node|top_link|form';
-  $field_group->group_name = 'group_top_link_content';
+  $field_group->identifier = 'group_page_main|node|basic_page|form';
+  $field_group->group_name = 'group_page_main';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'toplink';
+  $field_group->bundle = 'basic_page';
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '7',
+    'weight' => '11',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_toplink_description',
-      2 => 'field_toplink_link',
-      3 => 'field_core_legacy_link',
-      4 => 'field_core_description',
+      1 => 'body',
+      2 => 'field_core_description',
+      3 => 'field_core_introduction',
+      4 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-top-link-content field-group-tab',
+        'classes' => 'group-page-main field-group-tab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_top_link_content|node|top_link|form'] = $field_group;
+  $export['group_page_main|node|basic_page|form'] = $field_group;
 
   return $export;
 }

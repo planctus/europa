@@ -111,6 +111,9 @@ $form-group-feedback-text-color-has-error:        $form-group-help-block-text-co
 $form-group-feedback-background-color:            #e2e2e2;
 $form-group-feedback-icon-size:                   1.5em;
 
+// Attribute selector for external links.
+$external_link_pattern: 'href^="http"';
+
 // In order to override the 'default!', bootstrap variables have to be added
 // after the overrides
 @import "../bootstrap-sass/bootstrap/variables";

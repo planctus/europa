@@ -1,72 +1,72 @@
 <?php
 /**
  * @file
- * dt_toplink.strongarm.inc
+ * dt_page.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function dt_toplink_strongarm() {
+function dt_page_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_toplink';
+  $strongarm->name = 'comment_anonymous_basic_page';
   $strongarm->value = '0';
-  $export['comment_anonymous_toplink'] = $strongarm;
+  $export['comment_anonymous_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_toplink';
+  $strongarm->name = 'comment_basic_page';
+  $strongarm->value = '0';
+  $export['comment_basic_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_basic_page';
   $strongarm->value = 1;
-  $export['comment_default_mode_toplink'] = $strongarm;
+  $export['comment_default_mode_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_toplink';
+  $strongarm->name = 'comment_default_per_page_basic_page';
   $strongarm->value = '50';
-  $export['comment_default_per_page_toplink'] = $strongarm;
+  $export['comment_default_per_page_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_toplink';
+  $strongarm->name = 'comment_form_location_basic_page';
   $strongarm->value = 1;
-  $export['comment_form_location_toplink'] = $strongarm;
+  $export['comment_form_location_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_toplink';
-  $strongarm->value = '0';
-  $export['comment_preview_toplink'] = $strongarm;
+  $strongarm->name = 'comment_preview_basic_page';
+  $strongarm->value = '1';
+  $export['comment_preview_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_toplink';
+  $strongarm->name = 'comment_subject_field_basic_page';
   $strongarm->value = 1;
-  $export['comment_subject_field_toplink'] = $strongarm;
+  $export['comment_subject_field_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_toplink';
-  $strongarm->value = '0';
-  $export['comment_toplink'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__toplink';
+  $strongarm->name = 'field_bundle_settings_node__basic_page';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -102,70 +102,91 @@ function dt_toplink_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
-        ),
-        'title' => array(
-          'weight' => '1',
+          'weight' => '7',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '6',
         ),
         'scheduler_settings' => array(
-          'weight' => '11',
+          'weight' => '14',
         ),
         'language' => array(
-          'weight' => '8',
+          'weight' => '11',
         ),
       ),
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__toplink'] = $strongarm;
+  $export['field_bundle_settings_node__basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_toplink';
+  $strongarm->name = 'language_content_type_basic_page';
   $strongarm->value = 4;
-  $export['language_content_type_toplink'] = $strongarm;
+  $export['language_content_type_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_toplink';
-  $strongarm->value = array();
-  $export['menu_options_toplink'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_toplink';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_toplink'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_toplink';
+  $strongarm->name = 'menu_options_basic_page';
   $strongarm->value = array(
-    0 => 'moderation',
-    1 => 'revision',
+    0 => 'main-menu',
   );
-  $export['node_options_toplink'] = $strongarm;
+  $export['menu_options_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_toplink';
-  $strongarm->value = '0';
-  $export['node_preview_toplink'] = $strongarm;
+  $strongarm->name = 'menu_parent_basic_page';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_basic_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_toplink';
+  $strongarm->name = 'node_options_basic_page';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'moderation',
+    2 => 'revision',
+  );
+  $export['node_options_basic_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_basic_page';
+  $strongarm->value = '1';
+  $export['node_preview_basic_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_basic_page';
   $strongarm->value = 0;
-  $export['node_submitted_toplink'] = $strongarm;
+  $export['node_submitted_basic_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_page_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_page_und_pattern'] = $strongarm;
 
   return $export;
 }

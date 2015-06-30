@@ -4,7 +4,6 @@ core = 7.x
 package = NextEuropa Digital Transformation Strategy
 version = 7.x-1.0
 project = dt_policy_area
-<<<<<<< HEAD
 dependencies[] = dt_strategy_core
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1

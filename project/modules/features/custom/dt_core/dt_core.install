@@ -27,6 +27,7 @@ function dt_core_install() {
     'dt_policy',
     'dt_topic',
     'nexteuropa_file',
+    'dt_page',
   );
   module_enable($features);
 
@@ -369,4 +370,11 @@ function dt_core_update_7125() {
       field_delete_instance($instance);
     }
   }
+}
+
+/**
+ * Enable dt_page module.
+ */
+function dt_core_update_7126() {
+  module_enable(array('dt_page'));
 }
