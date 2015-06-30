@@ -23,8 +23,8 @@ function dt_page_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_page_main',
-      1 => 'group_editorial_settings',
+      0 => 'group_editorial_settings',
+      1 => 'group_page_main',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
