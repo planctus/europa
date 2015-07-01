@@ -27,3 +27,10 @@ function dt_policy_area_uninstall() {
 function dt_policy_area_update_7101() {
   features_revert_module('dt_policy_area');
 }
+
+/**
+ * Reverting dt_policy changing the teaser to display description.
+ */
+function dt_policy_area_update_7101() {
+  features_revert_module('dt_policy_area');
+}
