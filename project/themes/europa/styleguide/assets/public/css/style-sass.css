@@ -6323,7 +6323,7 @@ Styleguide breadcrumb
   background: #ececec;
   font-size: 0.833em;
   position: relative;
-  margin: 0;
+  margin: 0 -15px;
   padding: 0 15px;
   border-radius: 0;
   overflow: hidden; }
@@ -6343,7 +6343,8 @@ Styleguide breadcrumb
   display: inline-block;
   font-weight: bold;
   margin-right: 8px;
-  padding-top: 0.5em;
+  padding-top: 0.82em;
+  padding-bottom: 0.42em;
   max-width: 100%; }
 
 .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
@@ -6358,11 +6359,31 @@ Styleguide breadcrumb
 .breadcrumb__segment--first {
   display: inline-block; }
 
+.no-js .breadcrumb__segment--first {
+  padding-right: 25px; }
+  .no-js .breadcrumb__segment--first:after {
+    content: '...';
+    display: inline-block;
+    position: relative;
+    top: -4px; }
+  .no-js .breadcrumb__segment--first:before {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%); }
+
 @media (min-width: 480px) {
   .breadcrumb__link {
     width: auto; }
     .breadcrumb__link:after {
-      position: static; }
+      position: static;
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0); }
   .breadcrumb__segment {
     display: inline-block; }
   .breadcrumb__segment--first {
@@ -6371,15 +6392,9 @@ Styleguide breadcrumb
     .breadcrumb__segment--first:before {
       display: none !important; } }
 
-.no-js .breadcrumb__segment--first {
-  padding-right: 25px; }
-  .no-js .breadcrumb__segment--first:after {
-    content: '...';
-    display: inline-block; }
-  .no-js .breadcrumb__segment--first:before {
-    position: absolute;
-    right: 7px;
-    top: 25%; }
+@media (min-width: 992px) {
+  .breadcrumb {
+    margin: 0; } }
 
 /*
 Breadcrumb collapsible
@@ -6408,7 +6423,11 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__link:after {
     position: absolute;
     right: 0;
-    top: 26%; }
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%); }
 
 .breadcrumb--collapsible .breadcrumb__text {
   display: inline-block;
@@ -6432,7 +6451,12 @@ Styleguide breadcrumb.collapsible
 .breadcrumb--collapsible.is-open .breadcrumb__link {
   padding-right: 0; }
   .breadcrumb--collapsible.is-open .breadcrumb__link:after {
-    position: static; }
+    display: inline;
+    position: static;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0); }
 
 .breadcrumb--collapsible.is-open .breadcrumb__text {
   display: inline;
@@ -6440,7 +6464,7 @@ Styleguide breadcrumb.collapsible
   overflow: visible; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__segment {
-  display: inline-block; }
+  display: block; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__segment--last {
   -webkit-transition: all 0.3s ease 0s;
@@ -6459,12 +6483,18 @@ Styleguide breadcrumb.collapsible
       padding-right: 25px; }
       .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:after {
         content: '...';
-        display: inline-block !important; }
+        display: inline-block !important;
+        position: relative;
+        top: -4px; }
       .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
         display: inline-block !important;
         position: absolute;
         right: 7px;
-        top: 25%; }
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        -o-transform: translate(0, -50%);
+        transform: translate(0, -50%); }
   .breadcrumb--collapsible .breadcrumb__btn-separator {
     display: none; }
   .breadcrumb--collapsible .breadcrumb__segment--first {

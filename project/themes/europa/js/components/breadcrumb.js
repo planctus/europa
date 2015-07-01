@@ -13,11 +13,6 @@
             $breadcrumbSegmentFirst = $breadcrumbSegmentsWrapper.children('.breadcrumb__segment--first'),
             $breadcrumbSegmentSecond = $breadcrumbSegmentFirst.next();
 
-        // Adding button to breadcrumb element that will be used for showing
-        // hidden breadcrumb elements.
-        $breadcrumbWrapper.append('<span class="breadcrumb__btn-separator">...</span>');
-        var $breadcrumbButton = $breadcrumbWrapper.find('.breadcrumb__btn-separator');
-
         // Calculating items that are not hidden
         var $breadcrumbVisibleSegments = $breadcrumbSegments.not('.is-hidden');
 
@@ -71,6 +66,13 @@
           $breadcrumbWrapper.addClass('is-open');
         }
 
+        // Adding button to breadcrumb element that will be used for showing
+        // hidden breadcrumb elements.
+        if ($breadcrumbSegments.length > 1) {
+          $breadcrumbWrapper.append('<span class="breadcrumb__btn-separator">...</span>');
+          var $breadcrumbButton = $breadcrumbWrapper.find('.breadcrumb__btn-separator');
+        }
+
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
           enquire.register(Drupal.europa.breakpoints.medium, {
@@ -95,10 +97,12 @@
             },
 
             setup: function() {
-              $breadcrumbButton.click(function(){
-                // Adding $(this) as a selector for the showBreadcrumbs function.
-                showBreadcrumbs($(this));
-              });
+              if ($breadcrumbButton) {
+                $breadcrumbButton.click(function(){
+                  // Adding $(this) as a selector for the showBreadcrumbs function.
+                  showBreadcrumbs($(this));
+                });
+              }
             },
           });
         }

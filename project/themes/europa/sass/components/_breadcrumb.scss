@@ -12,7 +12,7 @@ $breadcrumb-heigth: 2.778em;
   background: $grey-lighter;
   font-size: 0.833em;
   position: relative;
-  margin: 0;
+  margin: 0 -15px;
   padding: 0 ($grid-gutter-width / 2);
   border-radius: 0;
   overflow: hidden;
@@ -36,7 +36,8 @@ $breadcrumb-heigth: 2.778em;
   display: inline-block;
   font-weight: bold;
   margin-right: 8px;
-  padding-top: 0.5em;
+  padding-top: 0.82em;
+  padding-bottom: 0.42em;
   max-width: 100%;
 }
 
@@ -58,11 +59,33 @@ $breadcrumb-heigth: 2.778em;
   display: inline-block;
 }
 
+.no-js {
+  .breadcrumb__segment--first {
+    padding-right: 25px;
+
+    &:after {
+      content: '...';
+      display: inline-block;
+      position: relative;
+      top: -4px;
+    }
+
+    &:before {
+      @extend .breadcrumb__link-arrow;
+      position: absolute;
+      right: 7px;
+      top: 50%;
+      @include translate(0, -50%)
+    }
+  }
+}
+
 @include breakpoint(screen-xs-min) {
   .breadcrumb__link {
     width: auto;
     &:after {
       position: static;
+      @include translate(0, 0);
     }
   }
 
@@ -79,21 +102,9 @@ $breadcrumb-heigth: 2.778em;
   }
 }
 
-.no-js {
-  .breadcrumb__segment--first {
-    padding-right: 25px;
-
-    &:after {
-      content: '...';
-      display: inline-block;
-    }
-
-    &:before {
-      @extend .breadcrumb__link-arrow;
-      position: absolute;
-      right: 7px;
-      top: 25%;
-    }
+@include breakpoint(screen-md-min) {
+  .breadcrumb {
+    margin: 0;
   }
 }
 
@@ -135,7 +146,8 @@ Styleguide breadcrumb.collapsible
       @extend .breadcrumb__link-arrow;
       position: absolute;
       right: 0;
-      top: 26%;
+      top: 50%;
+      @include translate(0, -50%)
     }
   }
 
@@ -169,7 +181,9 @@ Styleguide breadcrumb.collapsible
     .breadcrumb__link {
       padding-right: 0;
       &:after {
+        display: inline;
         position: static;
+        @include translate(0, 0);
       }
     }
 
@@ -180,7 +194,7 @@ Styleguide breadcrumb.collapsible
     }
 
     .breadcrumb__segment {
-      display: inline-block;
+      display: block;
     }
 
     .breadcrumb__segment--last {
@@ -206,6 +220,8 @@ Styleguide breadcrumb.collapsible
         &:after {
           content: '...';
           display: inline-block !important;
+          position: relative;
+          top: -4px;
         }
 
         &:before {
@@ -213,7 +229,8 @@ Styleguide breadcrumb.collapsible
           display: inline-block !important;
           position: absolute;
           right: 7px;
-          top: 25%;
+          top: 50%;
+          @include translate(0, -50%)
         }
       }
     }
