@@ -32,3 +32,10 @@ function dt_policy_keyfile_update_7101() {
 
   features_revert_module('dt_policy_keyfile');
 }
+
+/**
+ * Reverting key file.
+ */
+function dt_policy_keyfile_update_7102() {
+  features_revert_module('dt_policy_keyfile');
+}
