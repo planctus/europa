@@ -79,6 +79,8 @@
               $breadcrumbWrapper.removeClass('is-open');
               $breadcrumbButton.hide();
 
+              toggleBreadcrumbSegments();
+
               $(window).resize(function() {
                 toggleBreadcrumbSegments();
               });
