@@ -549,7 +549,7 @@ function dt_page_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'settings' => array(),
-        'type' => 'hidden'
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'full' => array(
