@@ -829,9 +829,9 @@ function europa_easy_breadcrumb($variables) {
         $classes[] = 'breadcrumb__segment--last';
       }
 
-      $content = check_plain(decode_entities($item['content']));
+      $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
       if (isset($item['url'])) {
-        $full_item = l($content, $item['url'], array('attributes' => $attributes));
+        $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
       }
       else {
         $full_item = '<span class="' . $class . '">' . $content . '</span>';

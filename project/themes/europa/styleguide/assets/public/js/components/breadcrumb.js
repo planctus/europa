@@ -29,10 +29,7 @@
             breadcrumbCalculations.itemsWidth = 0;
             $breadcrumbSegments.not('.is-hidden').each(function(i){
               breadcrumbCalculations.itemsWidth += $(this).outerWidth(true);
-              console.log('width' + i + ' ' + $(this).outerWidth(true));
             });
-
-            console.log(breadcrumbCalculations);
 
             // Local variables
             var $lastHiddenItem = $breadcrumbSegments.siblings('.is-hidden').last(),

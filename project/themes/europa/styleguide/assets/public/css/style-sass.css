@@ -6342,10 +6342,10 @@ Styleguide breadcrumb
   display: inline-block;
   font-weight: bold;
   margin-right: 8px;
-  padding-top: 0.56em;
-  padding-bottom: 0.56em; }
+  padding-top: 0.5em;
+  max-width: 100%; }
 
-.breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
+.breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
   color: #b3b4b5;
   line-height: inherit !important;
   margin-left: 8px !important;
@@ -6360,6 +6360,8 @@ Styleguide breadcrumb
 @media (min-width: 480px) {
   .breadcrumb__link {
     width: auto; }
+    .breadcrumb__link:after {
+      position: static; }
   .breadcrumb__segment {
     display: inline-block; }
   .breadcrumb__segment--first {
@@ -6399,6 +6401,21 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__btn-separator:focus {
     background: #fff; }
 
+.breadcrumb--collapsible .breadcrumb__link {
+  padding-right: 17px;
+  position: relative; }
+  .breadcrumb--collapsible .breadcrumb__link:after {
+    position: absolute;
+    right: 0;
+    top: 26%; }
+
+.breadcrumb--collapsible .breadcrumb__text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; }
+
 .breadcrumb--collapsible .breadcrumb__segment {
   width: 100%; }
 
@@ -6410,6 +6427,16 @@ Styleguide breadcrumb.collapsible
 
 .breadcrumb--collapsible .breadcrumb__segment--last {
   padding-left: 52px; }
+
+.breadcrumb--collapsible.is-open .breadcrumb__link {
+  padding-right: 0; }
+  .breadcrumb--collapsible.is-open .breadcrumb__link:after {
+    position: static; }
+
+.breadcrumb--collapsible.is-open .breadcrumb__text {
+  display: inline;
+  white-space: normal;
+  overflow: visible; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__segment {
   display: inline-block; }
@@ -7026,7 +7053,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing--cta .listing__title:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing--cta .listing__title:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7066,7 +7093,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e602'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .breadcrumb__link:after, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing--cta .listing__title:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing--cta .listing__title:after {
   content: '\e601'; }
 
 .icon--down:before {
