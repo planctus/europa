@@ -288,13 +288,6 @@ function europa_menu_tree__secondary(&$variables) {
 }
 
 /**
- * Implements preprocess for theme('easy_breadcrumb').
- */
-function europa_preprocess_easy_breadcrumb(&$variables) {
-  $variables['separator'] = '&raquo;';
-}
-
-/**
  * Overrides theme('easy_breadcrumb').
  */
 function europa_easy_breadcrumb($variables) {
@@ -305,8 +298,7 @@ function europa_easy_breadcrumb($variables) {
 
   $html = '';
 
-  // We don't print out "Home" if it's the only breadcrumb component.
-  if ($segments_quantity > 1) {
+  if ($segments_quantity > 0) {
 
     $html .= '<ol class="breadcrumb">';
 

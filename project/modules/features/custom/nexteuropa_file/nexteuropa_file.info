@@ -40,6 +40,7 @@ features[variable][] = menu_parent_file
 features[variable][] = node_options_file
 features[variable][] = node_preview_file
 features[variable][] = node_submitted_file
+features[variable][] = pathauto_node_file_pattern
 features_exclude[dependencies][cce_basic_config] = cce_basic_config
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][features] = features
