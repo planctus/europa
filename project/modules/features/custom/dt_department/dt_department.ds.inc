@@ -33,11 +33,6 @@ function dt_department_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_core_abbreviation' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -49,6 +44,11 @@ function dt_department_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'field_core_contact' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_core_ecorganisation' => array(

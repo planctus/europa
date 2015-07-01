@@ -412,7 +412,6 @@ function europa_form_element(&$variables) {
   // Putting description into variable since it is not going to change.
   // Here Bootstrap tooltips have been removed since in current implemenation we
   // will use descriptions that are displayed under <label> element.
-
   if (!empty($element['#description'])) {
     $description = '<p class="help-block">' . $element['#description'] . '</p>';
   }
@@ -504,12 +503,12 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * Helper applying BEM to footer menu item links.
  *
  * @param array $variables
- *   link render array
+ *   Link render array.
  *
  * @return string
  *   HTML markup
  */
-function _europa_menu_link__footer(&$variables) {
+function _europa_menu_link__footer(array &$variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -814,6 +813,27 @@ function europa_field($variables) {
 
       break;
   }
+
+  $output = '';
+  $classes = array();
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    $classes[] = 'field--labeled';
+  }
+
+  // Render the items.
+  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= drupal_render($item);
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+
+  return $output;
 }
 
 /**
@@ -837,11 +857,16 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 
 /**
  * Helper for providing markup to file component.
- * @param  object $file
- * @param  array $url
+ *
+ * @param object $file
+ *   File object.
+ * @param array $url
+ *   Url depending on field type.
+ *
  * @return string
+ *    HTML markup.
  */
-function _europa_file_markup($file, $url) {
+function _europa_file_markup($file, array $url) {
   $file_class = '';
   $file_icon_class = '';
   switch ($file->type) {
