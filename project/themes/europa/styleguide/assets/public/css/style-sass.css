@@ -6442,9 +6442,9 @@ Styleguide breadcrumb.collapsible
   display: inline-block; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__segment--last {
-  -webkit-transition: all 0.25s ease 0s;
-  -o-transition: all 0.25s ease 0s;
-  transition: all 0.25s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
   padding-left: 0; }
 
 @media (min-width: 480px) {
