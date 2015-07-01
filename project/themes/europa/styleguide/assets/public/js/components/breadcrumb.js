@@ -18,9 +18,12 @@
         $breadcrumbWrapper.append('<span class="breadcrumb__btn-separator">...</span>');
         var $breadcrumbButton = $breadcrumbWrapper.find('.breadcrumb__btn-separator');
 
+        // Calculating items that are not hidden
+        var $breadcrumbVisibleSegments = $breadcrumbSegments.not('.is-hidden');
+
         // Hiding breadcrumb segments when there is not enough space.
         function toggleBreadcrumbSegments() {
-          $breadcrumbSegments.siblings(':not(.is-hidden)').each(function(){
+          for (var i = 0; i < $breadcrumbVisibleSegments.length; i++) {
             // Calculating sizes
             var breadcrumbCalculations = {};
             breadcrumbCalculations.wrapperWidth = $breadcrumbWrapper.width();
@@ -55,7 +58,9 @@
                 $breadcrumbSegmentFirst.removeClass('breadcrumb__segment--next-hidden');
               }
             }
-          });
+          }
+
+          $breadcrumbVisibleSegments = $breadcrumbSegments.not('.is-hidden');
         }
 
         // Showing all hidden breadcrumbs.
@@ -73,6 +78,8 @@
             match : function() {
               $breadcrumbWrapper.removeClass('is-open');
               $breadcrumbButton.hide();
+
+              toggleBreadcrumbSegments();
 
               $(window).resize(function() {
                 toggleBreadcrumbSegments();
