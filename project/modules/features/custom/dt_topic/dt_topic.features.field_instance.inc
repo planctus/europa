@@ -583,7 +583,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 23,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',

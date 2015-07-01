@@ -33,7 +33,7 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'related_announcements' => array(
-      'weight' => '10',
+      'weight' => '8',
       'label' => 'above',
       'format' => 'default',
       'formatter_settings' => array(
@@ -79,6 +79,11 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_announcement_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_announcement_info' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -89,6 +94,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'p',
           'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_announcement_location' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
