@@ -23,6 +23,7 @@ $breadcrumb-heigth: 2.778em;
     list-style-image: none;
     padding: 0;
     margin: 0;
+    width: 100%;
   }
 }
 
@@ -179,9 +180,9 @@ Styleguide breadcrumb.collapsible
   // List of breadcrumbs is open.
   &.is-open {
     .breadcrumb__link {
+      display: block;
       padding-right: 0;
       &:after {
-        display: inline;
         position: static;
         @include translate(0, 0);
       }
@@ -191,6 +192,7 @@ Styleguide breadcrumb.collapsible
       display: inline;
       white-space: normal;
       overflow: visible;
+      max-width: none;
     }
 
     .breadcrumb__segment {

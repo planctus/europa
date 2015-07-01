@@ -6332,7 +6332,8 @@ Styleguide breadcrumb
     list-style: none;
     list-style-image: none;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    width: 100%; }
 
 .breadcrumb__segment {
   min-height: 2.778em;
@@ -6449,9 +6450,9 @@ Styleguide breadcrumb.collapsible
   padding-left: 52px; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__link {
+  display: block;
   padding-right: 0; }
   .breadcrumb--collapsible.is-open .breadcrumb__link:after {
-    display: inline;
     position: static;
     -webkit-transform: translate(0, 0);
     -ms-transform: translate(0, 0);
@@ -6461,7 +6462,8 @@ Styleguide breadcrumb.collapsible
 .breadcrumb--collapsible.is-open .breadcrumb__text {
   display: inline;
   white-space: normal;
-  overflow: visible; }
+  overflow: visible;
+  max-width: none; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__segment {
   display: block; }
