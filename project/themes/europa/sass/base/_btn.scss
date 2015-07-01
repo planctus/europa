@@ -37,6 +37,7 @@ Styleguide buttons
   &.btn-default {
     border-color: $brand-primary;
     color: $brand-primary;
+    background: none;
 
     &:hover {
       background: $brand-primary;

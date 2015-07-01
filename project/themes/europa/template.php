@@ -287,6 +287,42 @@ function europa_menu_tree__secondary(&$variables) {
 }
 
 /**
+ * Overrides theme('easy_breadcrumb').
+ */
+/*function europa_easy_breadcrumb($variables) {
+
+  $breadcrumb = $variables['breadcrumb'];
+  $segments_quantity = $variables['segments_quantity'];
+  $separator = $variables['separator'];
+
+  $html = '';
+
+  if ($segments_quantity > 0) {
+
+    $html .= '<ol class="breadcrumb">';
+
+    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
+      $it = $breadcrumb[$i];
+      $content = decode_entities($it['content']);
+      if (isset($it['url'])) {
+        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
+      }
+      else {
+        $class = implode(' ', $it['class']);
+        $html .= '<li class="active ' . $class . '">' . $content . '</li>';
+      }
+      if ($i < $s) {
+        $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
+      }
+    }
+
+    $html .= '</ol>';
+  }
+
+  return $html;
+}*/
+
+/**
  * Implements hook_preprocess_image().
  */
 function europa_preprocess_image(&$variables) {
@@ -751,7 +787,8 @@ function europa_field($variables) {
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
 
       // Custom listing settings based on view mode.
-      if (isset($first_node['#view_mode'])) {
+      $listing_view_modes = array('title', 'meta', 'teaser');
+      if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
         switch ($first_node['#view_mode']) {
           case 'title':
             $settings['modifier'] .= ' listing--title';
@@ -850,4 +887,90 @@ function europa_easy_breadcrumb($variables) {
     drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/breadcrumb.js');
   }
   return $html;
+}
+
+/**
+ * Helper for providing markup to file component.
+ * @param  object $file
+ * @param  array $url
+ * @return string
+ */
+function _europa_file_markup($file, $url) {
+  $file_class = '';
+  $file_icon_class = '';
+  switch ($file->type) {
+    case 'image':
+      $file_class = 'file--image';
+      $file_icon_class = 'icon--image';
+      break;
+
+    case 'audio':
+      $file_class = 'file--audio';
+      $file_icon_class = 'icon--audio';
+      break;
+
+    case 'video':
+      $file_class = 'file--video';
+      $file_icon_class = 'icon--video';
+      break;
+
+    default:
+      $file_class = 'file--document';
+      $file_icon_class = 'icon--file';
+      break;
+  }
+
+  $file_icon = '<span class="file__icon icon ' . $file_icon_class . '"></span>';
+  $file_size = '<span class="file__size">' . format_size($file->filesize) . '</span>';
+  $file_name = $file->uri;
+  $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
+
+  $file_info = '<div class="file__info">' . $file_size . ' - ' . $file_extension . '</div>';
+
+  // Use the description as the link text if available.
+  if (!empty($file->description)) {
+    $file_title = '<span class="file__title">' . $file->description . '</span>';
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+  else {
+    $file_title = '<span class="file__title">' . $file->filename . '</span>';
+  }
+
+  $file_metadata = '<div class="file__metadata">' . $file_title . $file_info . '</div>';
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'class' => array('file__btn', 'btn', 'btn-default'),
+      'title' => check_plain($file->filename),
+    ),
+    'html' => TRUE,
+  );
+
+  $file_btn = l(t('Download'), $url['path'], array_merge($options, $url['options']));
+
+  return '<div class="file ' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
+}
+
+/**
+ * Implements theme_file_link().
+ */
+function europa_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  return _europa_file_markup($file, $url);
+}
+
+/**
+ * Implements theme_file_entity_download_link().
+ */
+function europa_file_entity_download_link($variables) {
+  $file = $variables['file'];
+  $uri = file_entity_download_uri($file);
+
+  return _europa_file_markup($file, $uri);
 }

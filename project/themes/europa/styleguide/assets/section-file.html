@@ -62,6 +62,8 @@
           <span class="kss-nav__ref">5</span
           ><span class="kss-nav__name">File</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-footer.html">
@@ -122,26 +124,6 @@
           <span class="kss-nav__ref">16</span
           ><span class="kss-nav__name">Site header</span>
         </a>
-        <ul class="kss-nav__menu-child">
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-langselect">
-                <span class="kss-nav__ref">16.1</span
-                ><span class="kss-nav__name">Language select (Site)</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-logo">
-                <span class="kss-nav__ref">16.2</span
-                ><span class="kss-nav__name">Logo</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-searchform">
-                <span class="kss-nav__ref">16.3</span
-                ><span class="kss-nav__name">Site header</span>
-              </a>
-            </li>
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-social.html">
@@ -160,58 +142,21 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-siteheader" class="kss-section kss-section--depth-1">
+      <div     id="kssref-file" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-siteheader">
-          <span class="kss-title__ref">16</span
-          >Site header
+        <a class="kss-title__permalink" href="#kssref-file">
+          <span class="kss-title__ref">5</span
+          >File
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    
-  </div>
-</header>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    
-  &lt;/div&gt;
-&lt;/header&gt;
-</code></pre>
-      </div>
-
-      </div>
-      <section id="kssref-siteheader-langselect" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-langselect">
-          <span class="kss-title__ref">16.1</span
-          >Language select (Site)
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
       <div class="kss-description">
-        <p>Language selector that is used across the whole site</p>
+        <p>File component used to show info about the file that can be downloaded
+by clicking on the component</p>
 
       </div>
     </div>
@@ -221,113 +166,33 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    <div class="lang-select-site">
-      <a href="" class="lang-select-site__link">
-        <span class="lang-select-site__link">English</span>
-        <span class="lang-select-site__code">
-          <span class="icon icon--language lang-select-site__icon"></span>
-          <span class="lang-select-site__code-text">en</span>
-        </span>
-      </a>
-    </div>
+          <div class="file [modifier class]">
+  <span class="file__icon icon icon--file"></span>
+  <div class="file__metadata">
+    <span class="file__title">File title example</span>
+    <span class="file__language">English</span>
+    <div class="file__info">200 kB - PDF - 4 pages</div>
   </div>
-</header>
+  <a class="file__btn btn btn-default">Download</a>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;div class=&quot;lang-select-site&quot;&gt;
-      &lt;a href=&quot;&quot; class=&quot;lang-select-site__link&quot;&gt;
-        &lt;span class=&quot;lang-select-site__link&quot;&gt;English&lt;/span&gt;
-        &lt;span class=&quot;lang-select-site__code&quot;&gt;
-          &lt;span class=&quot;icon icon--language lang-select-site__icon&quot;&gt;&lt;/span&gt;
-          &lt;span class=&quot;lang-select-site__code-text&quot;&gt;en&lt;/span&gt;
-        &lt;/span&gt;
-      &lt;/a&gt;
-    &lt;/div&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;file [modifier class]&quot;&gt;
+  &lt;span class=&quot;file__icon icon icon--file&quot;&gt;&lt;/span&gt;
+  &lt;div class=&quot;file__metadata&quot;&gt;
+    &lt;span class=&quot;file__title&quot;&gt;File title example&lt;/span&gt;
+    &lt;span class=&quot;file__language&quot;&gt;English&lt;/span&gt;
+    &lt;div class=&quot;file__info&quot;&gt;200 kB - PDF - 4 pages&lt;/div&gt;
   &lt;/div&gt;
-&lt;/header&gt;
+  &lt;a class=&quot;file__btn btn btn-default&quot;&gt;Download&lt;/a&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 
-      </section>
-      <section id="kssref-siteheader-logo" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-logo">
-          <span class="kss-title__ref">16.2</span
-          >Logo
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-      <div class="kss-description">
-        <p>Ec logo</p>
-
       </div>
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <a href="link-to-homepage" class="logo" title="Home"></a>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;link-to-homepage&quot; class=&quot;logo&quot; title=&quot;Home&quot;&gt;&lt;/a&gt;
-</code></pre>
-      </div>
-
-      </section>
-      <section id="kssref-siteheader-searchform" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-searchform">
-          <span class="kss-title__ref">16.3</span
-          >Site header
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    
-  </div>
-</header>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    
-  &lt;/div&gt;
-&lt;/header&gt;
-</code></pre>
-      </div>
-
-      </section>
 </article>
 
 <!-- SCRIPTS -->

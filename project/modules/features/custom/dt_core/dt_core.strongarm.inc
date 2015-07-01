@@ -150,9 +150,23 @@ function dt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 1;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-include_title_segment';
   $strongarm->value = 0;
   $export['easy_breadcrumb-include_title_segment'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-segments_separator';
+  $strongarm->value = '';
+  $export['easy_breadcrumb-segments_separator'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -195,6 +209,13 @@ function dt_core_strongarm() {
   $strongarm->name = 'menu_secondary_links_source';
   $strongarm->value = '';
   $export['menu_secondary_links_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_pattern';
+  $strongarm->value = 'content/[node:source:title]';
+  $export['pathauto_node_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

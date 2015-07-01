@@ -23,8 +23,8 @@ function dt_page_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_page_main',
-      1 => 'group_editorial_settings',
+      0 => 'group_editorial_settings',
+      1 => 'group_page_main',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -85,6 +85,7 @@ function dt_page_field_group_info() {
       2 => 'field_core_description',
       3 => 'field_core_introduction',
       4 => 'field_core_links',
+      5 => 'field_core_parent',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
