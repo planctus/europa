@@ -93,7 +93,7 @@ function dt_page_strongarm() {
         'custom_settings' => FALSE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
         'custom_settings' => FALSE,

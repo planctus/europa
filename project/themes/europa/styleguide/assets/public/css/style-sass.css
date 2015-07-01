@@ -5522,6 +5522,9 @@ Styleguide form.textarea
   padding: 3em 0;
   overflow: hidden; }
 
+.section__group--highlight-yellow {
+  background-color: #ffc412; }
+
 @media (min-width: 1200px) {
   .section__group--full-width {
     margin-left: -100%;
