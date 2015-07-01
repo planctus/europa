@@ -166,6 +166,12 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Messages */
+  $handler->display->display_options['empty']['messages']['id'] = 'messages';
+  $handler->display->display_options['empty']['messages']['table'] = 'views';
+  $handler->display->display_options['empty']['messages']['field'] = 'messages';
+  $handler->display->display_options['empty']['messages']['label'] = 'No recent news or publications';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_core_department_target_id']['id'] = 'field_core_department_target_id';

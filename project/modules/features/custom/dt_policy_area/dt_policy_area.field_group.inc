@@ -79,7 +79,7 @@ function dt_policy_area_field_group_info() {
   $field_group->parent_name = 'group_policy_area_latest';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '30',
+    'weight' => '36',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
@@ -224,8 +224,9 @@ function dt_policy_area_field_group_info() {
     'label' => 'Latest',
     'weight' => '5',
     'children' => array(
-      0 => 'group_latest_sidebar',
-      1 => 'group_latest_main',
+      0 => 'latest_announcements_block',
+      1 => 'group_latest_sidebar',
+      2 => 'group_latest_main',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
