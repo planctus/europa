@@ -63,6 +63,10 @@ function europa_preprocess_block(&$vars) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
+        'data-toggle' => 'popover',
+        'data-placement' => 'bottom',
+        'data-trigger' => 'focus',
+        'data-content' => t('This function is not yet working in Beta.'),
       ),
       'query' => array(drupal_get_destination()),
     );
@@ -72,6 +76,9 @@ function europa_preprocess_block(&$vars) {
 
     // Add content to block.
     $vars['content'] = l($label . $code, 'splash', $options);
+
+    // For Beta initial release only: preventing default click behavior.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
