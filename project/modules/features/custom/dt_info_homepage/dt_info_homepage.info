@@ -54,6 +54,7 @@ features[variable][] = menu_parent_info_homepage
 features[variable][] = node_options_info_homepage
 features[variable][] = node_preview_info_homepage
 features[variable][] = node_submitted_info_homepage
+features[variable][] = pathauto_node_info_homepage_pattern
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][ds] = ds
 features_exclude[dependencies][dt_core] = dt_core
