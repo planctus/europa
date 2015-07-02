@@ -111,9 +111,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'view_mode' => 'meta',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 8,
       ),
       'teaser' => array(
@@ -246,10 +250,14 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'view_mode' => 'file',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 10,
+        'type' => 'entityreference_entity_view',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -443,16 +451,10 @@ function dt_publication_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
-          'nexteuropa_ds_layouts_wrapper_modifier' => '',
-          'view_mode' => 'meta',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 7,
+        'module' => 'nexteuropa_ds_layouts',
+        'settings' => array(),
+        'type' => 'context_nav_item',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -555,9 +557,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'view_mode' => 'full',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 9,
       ),
       'teaser' => array(
@@ -604,10 +610,9 @@ function dt_publication_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 11,
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
