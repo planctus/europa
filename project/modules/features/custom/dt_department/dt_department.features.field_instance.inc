@@ -1256,7 +1256,7 @@ function dt_department_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_department_staff_search',
-    'label' => 'Search for staff',
+    'label' => 'Staff Search Link',
     'required' => 0,
     'settings' => array(
       'attributes' => array(
@@ -1274,7 +1274,7 @@ function dt_department_field_default_field_instances() {
       'rel_remove' => 'default',
       'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => 'Staff Search Link',
+      'title_value' => 'Search for staff',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -1867,6 +1867,7 @@ function dt_department_field_default_field_instances() {
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
   t('Social Network Links');
   t('Search for staff');
+  t('Staff Search Link');
   t('Tasks description');
   t('Work areas sentence');
 
