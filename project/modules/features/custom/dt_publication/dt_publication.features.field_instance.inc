@@ -84,8 +84,8 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_department'
-  $field_instances['node-publication-field_core_department'] = array(
+  // Exported field_instance: 'node-publication-field_core_departments'
+  $field_instances['node-publication-field_core_departments'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
@@ -108,7 +108,7 @@ function dt_publication_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_core_department',
+    'field_name' => 'field_core_departments',
     'label' => 'Departments',
     'required' => 0,
     'settings' => array(
@@ -123,8 +123,8 @@ function dt_publication_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 44,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 45,
     ),
   );
 

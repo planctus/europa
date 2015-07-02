@@ -20,6 +20,7 @@ features[ds_layout_settings][] = node|department|full
 features[ds_layout_settings][] = node|department|meta
 features[features_api][] = api:2
 features[field_base][] = field_core_department
+features[field_base][] = field_core_departments
 features[field_base][] = field_department_contact
 features[field_base][] = field_department_intro_sentence
 features[field_base][] = field_department_mission
