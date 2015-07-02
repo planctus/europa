@@ -106,6 +106,7 @@ function dt_publication_update_7106() {
  * Reverting feature.
  */
 function dt_publication_update_7107() {
+  features_revert_module('dt_department');
   features_revert_module('dt_publication');
   // Importing taxonomy terms to publication_origin.
   _dt_publication_import_taxonomy_terms();
