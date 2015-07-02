@@ -876,10 +876,11 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 2,
       ),
       'meta' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
