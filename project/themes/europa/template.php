@@ -739,7 +739,7 @@ function _europa_field_component_listing($variables, $config) {
       // Row content.
       switch ($config['view_mode']) {
         case 'title':
-          $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
+          $rendered_item = '' . drupal_render($item) . '';
           break;
 
         default:

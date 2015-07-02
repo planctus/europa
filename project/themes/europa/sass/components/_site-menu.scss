@@ -1,0 +1,12 @@
+.site-menu {
+  .js > & {
+    display: none;
+  }
+}
+
+.site-menu__row {
+  @extend .row--separated;
+  &:last-child {
+    border: none;
+  }
+}

@@ -160,8 +160,8 @@ function dt_class_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => 'h3',
-        'class' => 'listing__title',
+        'wrapper' => '',
+        'class' => '',
         'ft' => array(),
       ),
     ),

@@ -22,7 +22,7 @@ function dt_site_menu_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
+        'weight' => 9,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -32,7 +32,7 @@ function dt_site_menu_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'listing__title',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -53,6 +53,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
+      'class' => 'listing__title',
       'module' => 'link',
       'settings' => array(
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
@@ -75,12 +76,12 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_modifier' => 'listing--no-border',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 2,
+        'weight' => 5,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -118,7 +119,7 @@ function dt_site_menu_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -128,7 +129,7 @@ function dt_site_menu_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'listing__title',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -149,6 +150,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
+      'class' => 'listing__title',
       'module' => 'link',
       'settings' => array(
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
@@ -171,12 +173,12 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_modifier' => 'listing--no-border',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'weight' => 6,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -214,7 +216,7 @@ function dt_site_menu_field_default_field_instances() {
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'nexteuropa_ds_layouts_formatter_link_button_primary',
-        'weight' => 5,
+        'weight' => 10,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -266,7 +268,7 @@ function dt_site_menu_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 3,
+        'weight' => 9,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -276,7 +278,7 @@ function dt_site_menu_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'listing__title',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -297,6 +299,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
+      'class' => 'listing__title',
       'module' => 'link',
       'settings' => array(
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
