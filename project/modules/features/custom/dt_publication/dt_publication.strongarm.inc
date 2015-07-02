@@ -20,7 +20,7 @@ function dt_publication_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -47,6 +47,9 @@ function dt_publication_strongarm() {
         'custom_settings' => FALSE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
         'custom_settings' => FALSE,
       ),
     ),
