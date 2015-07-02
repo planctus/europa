@@ -861,7 +861,7 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
   // Popover to notify the user that the search is not fully functional.
-  $form['search_input_group']['QueryText']['#disabled'] = TRUE;
+  $form['search_input_group']['europa_search_submit']['#disabled'] = TRUE;
   $form['search_input_group']['QueryText']['#attributes']['data-toggle'][] = 'popover';
   $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
   $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
