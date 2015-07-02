@@ -92,4 +92,8 @@ function dt_publication_update_7107() {
   features_revert_module('dt_publication');
   // Copy content from field_core_department to field_core_department.
   _dt_core_field_value_copy('node', 'publication', 'field_core_department', 'field_core_departments');
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_department', 'publication')) {
+    field_delete_instance($instance);
+  }
 }
