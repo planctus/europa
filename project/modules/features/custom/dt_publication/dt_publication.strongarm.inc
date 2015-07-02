@@ -53,7 +53,7 @@ function dt_publication_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '11',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
           'weight' => '48',
@@ -62,7 +62,7 @@ function dt_publication_strongarm() {
           'weight' => '45',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '3',
         ),
       ),
       'display' => array(),

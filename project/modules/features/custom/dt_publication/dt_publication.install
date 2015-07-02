@@ -4,6 +4,8 @@
  * dt Publication install file.
  */
 
+use Drupal\taxonomy;
+
 /**
  * Implements hook_install().
  */
@@ -81,4 +83,13 @@ function dt_publication_update_7105() {
  */
 function dt_publication_update_7106() {
   features_revert_module('dt_publication');
+}
+
+/**
+ * Added taxonomy terms.
+ */
+function dt_publication_update_7107() {
+  features_revert_module('dt_publication');
+  // Add "Publication origin" terms.
+  createTaxonomyTerm('publication_origin', 'Test');
 }
