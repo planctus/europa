@@ -62,6 +62,8 @@
           <span class="kss-nav__ref">5</span
           ><span class="kss-nav__name">File</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-footer.html">
@@ -98,8 +100,6 @@
           <span class="kss-nav__ref">12</span
           ><span class="kss-nav__name">Messages</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-meta.html">
@@ -142,18 +142,23 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-messages" class="kss-section kss-section--depth-1">
+      <div     id="kssref-file" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-messages">
-          <span class="kss-title__ref">12</span
-          >Messages
+        <a class="kss-title__permalink" href="#kssref-file">
+          <span class="kss-title__ref">5</span
+          >File
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
+      <div class="kss-description">
+        <p>File component used to show info about the file that can be downloaded
+by clicking on the component</p>
+
+      </div>
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -161,66 +166,30 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="messages info">
-    <h3>Info message</h3>
-    <ul>
-        <li>Lorem ipsum lor sit amet, consectetur adipi</li>
-    </ul>
+          <div class="file [modifier class]">
+  <span class="file__icon icon icon--file"></span>
+  <div class="file__metadata">
+    <span class="file__title">File title example</span>
+    <span class="file__language">English</span>
+    <div class="file__info">200 kB - PDF - 4 pages</div>
+  </div>
+  <a class="file__btn btn btn-default">Download</a>
 </div>
-<br/>
-<div class="messages warning">
-    <h3>Warning message</h3>
-    <ul>
-        <li>Lorem ipsum lor sit amet, consectetur adipi</li>
-    </ul>
-</div>
-<br/>
-<div class="messages status">
-    <h3>Successful message</h3>
-    <ul>
-        <li>Lorem ipsum lor sit amet, consectetur adipi</li>
-    </ul>
-</div>
-<br/>
-<div class="messages error">
-    <h3>Error message</h3>
-    <ul>
-        <li>Lorem ipsum lor sit amet, consectetur adipi</li>
-    </ul>
-</div>
-<br/>
+
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;messages info&quot;&gt;
-    &lt;h3&gt;Info message&lt;/h3&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Lorem ipsum lor sit amet, consectetur adipi&lt;/li&gt;
-    &lt;/ul&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;file [modifier class]&quot;&gt;
+  &lt;span class=&quot;file__icon icon icon--file&quot;&gt;&lt;/span&gt;
+  &lt;div class=&quot;file__metadata&quot;&gt;
+    &lt;span class=&quot;file__title&quot;&gt;File title example&lt;/span&gt;
+    &lt;span class=&quot;file__language&quot;&gt;English&lt;/span&gt;
+    &lt;div class=&quot;file__info&quot;&gt;200 kB - PDF - 4 pages&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a class=&quot;file__btn btn btn-default&quot;&gt;Download&lt;/a&gt;
 &lt;/div&gt;
-&lt;br/&gt;
-&lt;div class=&quot;messages warning&quot;&gt;
-    &lt;h3&gt;Warning message&lt;/h3&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Lorem ipsum lor sit amet, consectetur adipi&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
-&lt;br/&gt;
-&lt;div class=&quot;messages status&quot;&gt;
-    &lt;h3&gt;Successful message&lt;/h3&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Lorem ipsum lor sit amet, consectetur adipi&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
-&lt;br/&gt;
-&lt;div class=&quot;messages error&quot;&gt;
-    &lt;h3&gt;Error message&lt;/h3&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Lorem ipsum lor sit amet, consectetur adipi&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
-&lt;br/&gt;</code></pre>
+</code></pre>
       </div>
 
       </div>

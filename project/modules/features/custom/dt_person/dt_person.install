@@ -165,3 +165,11 @@ function dt_person_update_7105() {
   module_enable(array('auto_entitylabel'));
   features_revert_module('dt_person');
 }
+
+/**
+ * Reverting dt_person.
+ */
+function dt_person_update_7106() {
+  // Reverting feature.
+  features_revert_module('dt_person');
+}

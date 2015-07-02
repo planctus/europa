@@ -74,6 +74,7 @@ features[variable][] = menu_parent_announcement
 features[variable][] = node_options_announcement
 features[variable][] = node_preview_announcement
 features[variable][] = node_submitted_announcement
+features[variable][] = pathauto_node_announcement_pattern
 features[views_view][] = announcements
 features_exclude[dependencies][cce_basic_config] = cce_basic_config
 features_exclude[dependencies][ds] = ds
