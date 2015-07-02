@@ -54,8 +54,8 @@
   <?php print $styles; ?>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
-    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/html5.js'; ?>"></script>  
-    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/respond.min.js'; ?>"></script>  
+    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/html5.js'; ?>"></script>
+    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/respond.min.js'; ?>"></script>
   <![endif]-->
   <?php print $scripts; ?>
 </head>
