@@ -23,9 +23,9 @@ function europa_preprocess_field(&$vars) {
   switch ($vars['element']['#field_name']) {
     case 'field_core_ecorganisation':
       $field_value = $vars['element']['#items'][0]['value'];
-      $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+      $field_value_stripped = explode(" (", $field_value);
 
-      $vars['items'][0]['#markup'] = $field_value_stripped;
+      $vars['items'][0]['#markup'] = $field_value_stripped[0];
       break;
 
     case 'field_core_social_network_links':
