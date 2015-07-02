@@ -20,6 +20,12 @@
     }
   }
 
+  @else if $point == screen-msm-min {
+    @media (min-width: $screen-msm-min) {
+      @content;
+    }
+  }
+
   @else if $point == screen-xs-min {
     @media (min-width: $screen-xs-min)  {
       @content;

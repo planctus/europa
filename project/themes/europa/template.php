@@ -63,6 +63,10 @@ function europa_preprocess_block(&$vars) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
+        'data-toggle' => 'popover',
+        'data-placement' => 'bottom',
+        'data-trigger' => 'focus',
+        'data-content' => t('This function is not yet working in Beta.'),
       ),
       'query' => array(drupal_get_destination()),
     );
@@ -72,6 +76,9 @@ function europa_preprocess_block(&$vars) {
 
     // Add content to block.
     $vars['content'] = l($label . $code, 'splash', $options);
+
+    // For Beta initial release only: preventing default click behavior.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
@@ -96,7 +103,7 @@ function europa_preprocess_block(&$vars) {
       drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
 
       // Adding filters.js file.
-      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
     }
   }
 
@@ -279,56 +286,11 @@ function europa_preprocess_node(&$vars) {
   }
 }
 
-
 /**
  * Bootstrap theme wrapper function for the primary menu links.
  */
 function europa_menu_tree__secondary(&$variables) {
   return '<ul class="menu nav navbar-nav secondary">' . $variables['tree'] . '</ul>';
-}
-
-/**
- * Implements preprocess for theme('easy_breadcrumb').
- */
-function europa_preprocess_easy_breadcrumb(&$variables) {
-  $variables['separator'] = '&raquo;';
-}
-
-/**
- * Overrides theme('easy_breadcrumb').
- */
-function europa_easy_breadcrumb($variables) {
-
-  $breadcrumb = $variables['breadcrumb'];
-  $segments_quantity = $variables['segments_quantity'];
-  $separator = $variables['separator'];
-
-  $html = '';
-
-  // We don't print out "Home" if it's the only breadcrumb component.
-  if ($segments_quantity > 1) {
-
-    $html .= '<ol class="breadcrumb">';
-
-    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
-      $it = $breadcrumb[$i];
-      $content = decode_entities($it['content']);
-      if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
-      }
-      else {
-        $class = implode(' ', $it['class']);
-        $html .= '<li class="active ' . $class . '">' . $content . '</li>';
-      }
-      if ($i < $s) {
-        $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
-      }
-    }
-
-    $html .= '</ol>';
-  }
-
-  return $html;
 }
 
 /**
@@ -420,7 +382,6 @@ function europa_form_element(&$variables) {
   // Putting description into variable since it is not going to change.
   // Here Bootstrap tooltips have been removed since in current implemenation we
   // will use descriptions that are displayed under <label> element.
-
   if (!empty($element['#description'])) {
     $description = '<p class="help-block">' . $element['#description'] . '</p>';
   }
@@ -512,12 +473,12 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * Helper applying BEM to footer menu item links.
  *
  * @param array $variables
- *   link render array
+ *   Link render array.
  *
  * @return string
  *   HTML markup
  */
-function _europa_menu_link__footer(&$variables) {
+function _europa_menu_link__footer(array &$variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -797,7 +758,8 @@ function europa_field($variables) {
       $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
 
       // Custom listing settings based on view mode.
-      if (isset($first_node['#view_mode'])) {
+      $listing_view_modes = array('title', 'meta', 'teaser');
+      if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
         switch ($first_node['#view_mode']) {
           case 'title':
             $settings['modifier'] .= ' listing--title';
@@ -821,6 +783,27 @@ function europa_field($variables) {
 
       break;
   }
+
+  $output = '';
+  $classes = array();
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    $classes[] = 'field--labeled';
+  }
+
+  // Render the items.
+  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= drupal_render($item);
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+
+  return $output;
 }
 
 /**
@@ -840,4 +823,160 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['#suffix'] = '';
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+  // Popover to notify the user that the search is not fully functional.
+  $form['search_input_group']['europa_search_submit']['#disabled'] = TRUE;
+  $form['search_input_group']['QueryText']['#attributes']['data-toggle'][] = 'popover';
+  $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
+  $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
+  $form['search_input_group']['QueryText']['#attributes']['data-content'][] = t('This function is not yet working in Beta.');
+}
+
+/**
+ * Implements theme_easy_breadcrumb().
+ */
+function europa_easy_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  $segments_quantity = $variables['segments_quantity'];
+  $html = '';
+
+  if ($segments_quantity > 0) {
+    $html .= '<nav id="breadcrumb" class="breadcrumb" role="navigation" aria-label="breadcrumbs">';
+    $html .= '<span class="element-invisible">' . t('You are here') . ':</span>';
+    $html .= '<ol class="breadcrumb__segments-wrapper">';
+
+    for ($i = 0, $s = $segments_quantity; $i < $segments_quantity; ++$i) {
+      $item = $breadcrumb[$i];
+
+      // Removing classes from $item['class'] array and adding BEM classes.
+      $classes = $item['class'];
+      // $classes[] = 'breadcrumb__segment-' . ($i + 1);
+      $classes[] = 'breadcrumb__segment';
+
+      $attributes = array(
+        'class' => array('breadcrumb__link'),
+      );
+
+      if ($i == 0) {
+        $classes[] = 'breadcrumb__segment--first';
+        $attributes += array('rel' => 'home');
+      }
+      elseif ($i == ($s - 1)) {
+        $classes[] = 'breadcrumb__segment--last';
+      }
+
+      $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
+      if (isset($item['url'])) {
+        // Ugly hotfix.
+        // TODO: Remove when https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457 is fixed.
+        $item['url'] = $item['url'] == '<front>' ? '' : $item['url'];
+        $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
+      }
+      else {
+        $full_item = '<span class="' . $class . '">' . $content . '</span>';
+      }
+
+      $class = implode(' ', $classes);
+
+      // TODO:
+      // Check if the active class actually appears.
+      $element_visibility = in_array('active', $classes) ? ' element-invisible' : '';
+      $html .= '<li class="' . $class . $element_visibility . '">' . $full_item . '</li>';
+    }
+
+    $html .= '</ol></nav>';
+
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/breadcrumb.js');
+  }
+  return $html;
+}
+
+/**
+ * Helper for providing markup to file component.
+ *
+ * @param object $file
+ *   File object.
+ * @param array $url
+ *   Url depending on field type.
+ *
+ * @return string
+ *    HTML markup.
+ */
+function _europa_file_markup($file, array $url) {
+  $file_class = '';
+  $file_icon_class = '';
+  switch ($file->type) {
+    case 'image':
+      $file_class = 'file--image';
+      $file_icon_class = 'icon--image';
+      break;
+
+    case 'audio':
+      $file_class = 'file--audio';
+      $file_icon_class = 'icon--audio';
+      break;
+
+    case 'video':
+      $file_class = 'file--video';
+      $file_icon_class = 'icon--video';
+      break;
+
+    default:
+      $file_class = 'file--document';
+      $file_icon_class = 'icon--file';
+      break;
+  }
+
+  $file_icon = '<span class="file__icon icon ' . $file_icon_class . '"></span>';
+  $file_size = '<span class="file__size">' . format_size($file->filesize) . '</span>';
+  $file_name = $file->uri;
+  $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
+
+  $file_info = '<div class="file__info">' . $file_size . ' - ' . $file_extension . '</div>';
+
+  // Use the description as the link text if available.
+  if (!empty($file->description)) {
+    $file_title = '<span class="file__title">' . $file->description . '</span>';
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+  else {
+    $file_title = '<span class="file__title">' . $file->filename . '</span>';
+  }
+
+  $file_metadata = '<div class="file__metadata">' . $file_title . $file_info . '</div>';
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'class' => array('file__btn', 'btn', 'btn-default'),
+      'title' => check_plain($file->filename),
+    ),
+    'html' => TRUE,
+  );
+
+  $file_btn = l(t('Download'), $url['path'], array_merge($options, $url['options']));
+
+  return '<div class="file ' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
+}
+
+/**
+ * Implements theme_file_link().
+ */
+function europa_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  return _europa_file_markup($file, $url);
+}
+
+/**
+ * Implements theme_file_entity_download_link().
+ */
+function europa_file_entity_download_link($variables) {
+  $file = $variables['file'];
+  $uri = file_entity_download_uri($file);
+
+  return _europa_file_markup($file, $uri);
 }

@@ -18,3 +18,4 @@ tmp
 project/settings.php
 project/sites.php
 project/files
+.DS_Store

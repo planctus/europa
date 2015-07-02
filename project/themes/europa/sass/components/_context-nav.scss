@@ -11,17 +11,17 @@ Styleguide contextnav
 }
 
 .context-nav__label {
-  display: block;
-  clear: both;
   @extend .col-xs-12;
   @extend .col-md-3;
+  display: block;
+  clear: both;
 }
 
 .context-nav__items {
-  display: block;
-  margin-bottom: 0.556em;
   @extend .col-xs-12;
   @extend .col-md-9;
+  display: block;
+  margin-bottom: 0.556em;
 
   &:last-child {
     margin-bottom: 0;
@@ -43,7 +43,7 @@ Styleguide contextnav
   }
 }
 
-@include breakpoint(screen-md-min){
+@include breakpoint(screen-md-min) {
   .context-nav__items {
     margin-bottom: 0;
   }

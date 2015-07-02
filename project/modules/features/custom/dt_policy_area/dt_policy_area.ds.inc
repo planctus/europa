@@ -103,7 +103,7 @@ function dt_policy_area_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_introduction' => array(
+    'field_core_description' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -239,12 +239,12 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'main' => array(
         0 => 'title',
-        1 => 'field_core_introduction',
+        1 => 'field_core_description',
       ),
     ),
     'fields' => array(
       'title' => 'main',
-      'field_core_introduction' => 'main',
+      'field_core_description' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

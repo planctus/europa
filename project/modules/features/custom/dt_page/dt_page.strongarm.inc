@@ -147,9 +147,8 @@ function dt_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_basic_page';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'moderation',
-    2 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_basic_page'] = $strongarm;
 
@@ -170,23 +169,9 @@ function dt_page_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_page_en_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_page_en_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_page_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_page_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_page_und_pattern';
-  $strongarm->value = '';
-  $export['pathauto_node_page_und_pattern'] = $strongarm;
+  $strongarm->name = 'pathauto_node_basic_page_pattern';
+  $strongarm->value = '[node:field-core-parent:url:path]/[node:source:title]';
+  $export['pathauto_node_basic_page_pattern'] = $strongarm;
 
   return $export;
 }

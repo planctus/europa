@@ -13,6 +13,43 @@ function dt_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'dt_core_non_homepage_pages';
+  $context->description = '';
+  $context->tag = 'Digital Transformation';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~<front>' => '~<front>',
+      ),
+    ),
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'easy_breadcrumb-easy_breadcrumb' => array(
+          'module' => 'easy_breadcrumb',
+          'delta' => 'easy_breadcrumb',
+          'region' => 'header_bottom',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Digital Transformation');
+  $export['dt_core_non_homepage_pages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'dt_core_sitewide';
   $context->description = '';
   $context->tag = 'Digital Transformation';
@@ -71,7 +108,7 @@ function dt_core_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
