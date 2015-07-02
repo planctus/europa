@@ -250,7 +250,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
+          'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
           'nexteuropa_ds_layouts_modifier' => '',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
