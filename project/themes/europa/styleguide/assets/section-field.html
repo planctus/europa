@@ -62,6 +62,8 @@
           <span class="kss-nav__ref">5</span
           ><span class="kss-nav__name">Field</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-file.html">
@@ -74,8 +76,6 @@
           <span class="kss-nav__ref">7</span
           ><span class="kss-nav__name">Footer</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-form.html">
@@ -142,70 +142,80 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-footer" class="kss-section kss-section--depth-1">
+      <div     id="kssref-field" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-footer">
-          <span class="kss-title__ref">7</span
-          >Footer
+        <a class="kss-title__permalink" href="#kssref-field">
+          <span class="kss-title__ref">5</span
+          >Field
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>Site-wide footer component</p>
+        <p>Drupal note:
+Field styling appearing in this styleguide is only valid for Default drupal field settings</p>
 
       </div>
     </div>
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Example
+          Examples
+        </div>
+        <div class="kss-modifier__default-name kss-style">
+          Default styling
         </div>
         <div class="kss-modifier__example">
-          <footer class="footer">
-    <div class="container-fluid">
-        <section>
-            <label class="footer__label">View the European Commission on :</label>
-            <ul class="footer__menu footer__menu--underlined menu nav list-inline">
-                <li><a href="https://www.facebook.com/EuropeanCommission" class="icon--facebook" target="_blank">Facebook</a></li>
-                <li><a href="https://twitter.com/eu_commission" class="icon--twitter">Twitter</a></li>
-                <li><a href="/other-social-media">Other social media</a></li>
-            </ul>
-            <ul class="footer__menu menu nav list-inline">
-                <li><a href="http://ec.europa.eu/geninfo/legal_notices_en.htm">Help</a></li>
-                <li><a href="http://ec.europa.eu/cookies/index_en.htm">Cookies and privacy notice</a></li>
-                <li><a href="http://ec.europa.eu/contact/index_en.htm">Legal statement</a></li>
-            </ul>
-            <p class="footer__disclaimer">© European Commission copyright. All content available under XX <a href="#">license</a>.</p>
-        </section>
-    </div>
-</footer>
+          <div class="field ">
+  <div class="field__label">Phone number</div>
+  <div class="field__items">
+    +48531555003
+  </div>
+</div>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          .field--labeled
+        </div>
+        <div class="kss-modifier__description kss-style">
+          External link icon
+        </div>
+        <div class="kss-modifier__example">
+          <div class="field field--labeled">
+  <div class="field__label">Phone number</div>
+  <div class="field__items">
+    +48531555003
+  </div>
+</div>
+
+        </div>
+        <div class="kss-modifier__name kss-style">
+          .field--labeled-align
+        </div>
+        <div class="kss-modifier__description kss-style">
+          Arrow up icon
+        </div>
+        <div class="kss-modifier__example">
+          <div class="field field--labeled-align">
+  <div class="field__label">Phone number</div>
+  <div class="field__items">
+    +48531555003
+  </div>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;footer class=&quot;footer&quot;&gt;
-    &lt;div class=&quot;container-fluid&quot;&gt;
-        &lt;section&gt;
-            &lt;label class=&quot;footer__label&quot;&gt;View the European Commission on :&lt;/label&gt;
-            &lt;ul class=&quot;footer__menu footer__menu--underlined menu nav list-inline&quot;&gt;
-                &lt;li&gt;&lt;a href=&quot;https://www.facebook.com/EuropeanCommission&quot; class=&quot;icon--facebook&quot; target=&quot;_blank&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;https://twitter.com/eu_commission&quot; class=&quot;icon--twitter&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;/other-social-media&quot;&gt;Other social media&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;ul class=&quot;footer__menu menu nav list-inline&quot;&gt;
-                &lt;li&gt;&lt;a href=&quot;http://ec.europa.eu/geninfo/legal_notices_en.htm&quot;&gt;Help&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;http://ec.europa.eu/cookies/index_en.htm&quot;&gt;Cookies and privacy notice&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;http://ec.europa.eu/contact/index_en.htm&quot;&gt;Legal statement&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p class=&quot;footer__disclaimer&quot;&gt;© European Commission copyright. All content available under XX &lt;a href=&quot;#&quot;&gt;license&lt;/a&gt;.&lt;/p&gt;
-        &lt;/section&gt;
-    &lt;/div&gt;
-&lt;/footer&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;field &quot;&gt;
+  &lt;div class=&quot;field__label&quot;&gt;Phone number&lt;/div&gt;
+  &lt;div class=&quot;field__items&quot;&gt;
+    +48531555003
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 

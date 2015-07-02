@@ -1,7 +1,40 @@
+/*
+Field
+
+Drupal note:
+Field styling appearing in this styleguide is only valid for Default drupal field settings
+
+Markup: html/field.html
+
+.field--labeled - External link icon
+.field--labeled-align - Arrow up icon
+
+Styleguide field
+*/
+
 .field {
   .label-above {
     @extend .h3;
   }
+}
+
+.field--labeled {
+  margin-bottom: 0.556em;
+  overflow: hidden;
+
+  .field__label {
+    display: block;
+    clear: both;
+    font-size: $font-size-little;
+  }
+
+  .field__items {
+    display: block;
+  }
+}
+
+// Modifier that allows fields without
+.field--labeled-align {
 }
 
 .field--full-width {
@@ -16,6 +49,62 @@
     padding-left: 0;
     padding-right: 0;
     @extend .container-fluid;
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .field--labeled {
+    margin-left: -15px;
+    margin-right: -15px;
+    .field__label,
+    .field__items {
+      float: left;
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .field__label {
+      width: 33.3%;
+    }
+
+    .field__items {
+      width: 66.6%;
+    }
+  }
+
+  .field--labeled-align {
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow: hidden;
+
+    .field__items {
+      width: 66.6%;
+      margin-left: 33.3%;
+      padding: 0 15px;
+      float: left;
+    }
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .field--labeled {
+    .field__label {
+      width: 25%;
+    }
+
+    .field__items {
+      width: 75%;
+    }
+  }
+
+  .field--labeled-align {
+    .field__items {
+      width: 75%;
+      margin-left: 25%;
+      padding: 0 15px;
+      float: left;
+    }
   }
 }
 

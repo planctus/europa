@@ -812,6 +812,27 @@ function europa_field($variables) {
 
       break;
   }
+
+  $output = '';
+  $classes = array();
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    $classes[] = 'field--labeled';
+  }
+
+  // Render the items.
+  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= drupal_render($item);
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+
+  return $output;
 }
 
 /**
@@ -891,11 +912,16 @@ function europa_easy_breadcrumb($variables) {
 
 /**
  * Helper for providing markup to file component.
- * @param  object $file
- * @param  array $url
+ *
+ * @param object $file
+ *   File object.
+ * @param array $url
+ *   Url depending on field type.
+ *
  * @return string
+ *    HTML markup.
  */
-function _europa_file_markup($file, $url) {
+function _europa_file_markup($file, array $url) {
   $file_class = '';
   $file_icon_class = '';
   switch ($file->type) {

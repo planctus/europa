@@ -164,3 +164,11 @@ function dt_department_update_7107() {
   // Reverting feature.
   features_revert_module('dt_department');
 }
+
+/**
+ * Reverting dt_department.
+ */
+function dt_department_update_7108() {
+  // Reverting feature.
+  features_revert_module('dt_department');
+}
