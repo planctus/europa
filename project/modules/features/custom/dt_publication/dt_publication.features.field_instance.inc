@@ -275,7 +275,7 @@ function dt_publication_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_introduction',
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
