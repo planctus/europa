@@ -33,6 +33,7 @@
     <copy todir="${temp}/${folder}" overwrite="true">
         <fileset dir="${phing.project.project.dir}/${folder}">
           <patternset>
+          	<exclude name="*/devel/**"/>
             <exclude name="*/node_modules/**"/>
             <exclude name="*/styleguide/**"/>
             <exclude name="**/Gruntfile.js"/>

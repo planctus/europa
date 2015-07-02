@@ -529,7 +529,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -602,7 +602,7 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 0,
       ),
       'meta' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'i18n_field',
         'settings' => array(),
         'type' => 'i18n_list_default',
