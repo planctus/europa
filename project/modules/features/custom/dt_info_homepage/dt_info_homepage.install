@@ -20,3 +20,11 @@ function dt_info_homepage_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('Information Homepage %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting dt_info_homepage.
+ */
+function dt_info_homepage_update_7101() {
+  // Reverting feature.
+  features_revert_module('dt_info_homepage');
+}

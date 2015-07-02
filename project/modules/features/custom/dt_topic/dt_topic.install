@@ -53,3 +53,11 @@ function dt_topic_update_7103() {
     pathauto_node_update_alias($node, 'update ');
   }
 }
+
+/**
+ * Reverting dt_topic.
+ */
+function dt_topic_update_7104() {
+  // Reverting feature.
+  features_revert_module('dt_topic');
+}

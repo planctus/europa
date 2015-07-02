@@ -85,6 +85,7 @@ function dt_page_field_group_info() {
       2 => 'field_core_description',
       3 => 'field_core_introduction',
       4 => 'field_core_links',
+      5 => 'field_core_parent',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

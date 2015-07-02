@@ -63,6 +63,10 @@ function europa_preprocess_block(&$vars) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
+        'data-toggle' => 'popover',
+        'data-placement' => 'bottom',
+        'data-trigger' => 'focus',
+        'data-content' => t('This function is not yet working in Beta.'),
       ),
       'query' => array(drupal_get_destination()),
     );
@@ -72,6 +76,9 @@ function europa_preprocess_block(&$vars) {
 
     // Add content to block.
     $vars['content'] = l($label . $code, 'splash', $options);
+
+    // For Beta initial release only: preventing default click behavior.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
@@ -288,13 +295,6 @@ function europa_menu_tree__secondary(&$variables) {
 }
 
 /**
- * Implements preprocess for theme('easy_breadcrumb').
- */
-function europa_preprocess_easy_breadcrumb(&$variables) {
-  $variables['separator'] = '&raquo;';
-}
-
-/**
  * Overrides theme('easy_breadcrumb').
  */
 function europa_easy_breadcrumb($variables) {
@@ -305,8 +305,7 @@ function europa_easy_breadcrumb($variables) {
 
   $html = '';
 
-  // We don't print out "Home" if it's the only breadcrumb component.
-  if ($segments_quantity > 1) {
+  if ($segments_quantity > 0) {
 
     $html .= '<ol class="breadcrumb">';
 
@@ -420,7 +419,6 @@ function europa_form_element(&$variables) {
   // Putting description into variable since it is not going to change.
   // Here Bootstrap tooltips have been removed since in current implemenation we
   // will use descriptions that are displayed under <label> element.
-
   if (!empty($element['#description'])) {
     $description = '<p class="help-block">' . $element['#description'] . '</p>';
   }
@@ -512,12 +510,12 @@ function europa_menu_tree__menu_dt_menu_social_media(&$variables) {
  * Helper applying BEM to footer menu item links.
  *
  * @param array $variables
- *   link render array
+ *   Link render array.
  *
  * @return string
  *   HTML markup
  */
-function _europa_menu_link__footer(&$variables) {
+function _europa_menu_link__footer(array &$variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -822,6 +820,27 @@ function europa_field($variables) {
 
       break;
   }
+
+  $output = '';
+  $classes = array();
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    $classes[] = 'field--labeled';
+  }
+
+  // Render the items.
+  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= drupal_render($item);
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+
+  return $output;
 }
 
 /**
@@ -851,11 +870,16 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 
 /**
  * Helper for providing markup to file component.
- * @param  object $file
- * @param  array $url
+ *
+ * @param object $file
+ *   File object.
+ * @param array $url
+ *   Url depending on field type.
+ *
  * @return string
+ *    HTML markup.
  */
-function _europa_file_markup($file, $url) {
+function _europa_file_markup($file, array $url) {
   $file_class = '';
   $file_icon_class = '';
   switch ($file->type) {

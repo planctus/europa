@@ -17,9 +17,9 @@ function dt_department_context_default_contexts() {
   $context->description = '';
   $context->tag = 'About EC';
   $context->conditions = array(
-    'path' => array(
+    'views' => array(
       'values' => array(
-        'departments*' => 'departments*',
+        'department:page' => 'department:page',
       ),
     ),
   );
