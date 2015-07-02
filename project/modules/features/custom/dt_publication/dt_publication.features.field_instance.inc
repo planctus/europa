@@ -29,7 +29,7 @@ function dt_publication_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -114,7 +114,7 @@ function dt_publication_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -162,7 +162,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -249,7 +249,7 @@ function dt_publication_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -300,7 +300,7 @@ function dt_publication_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -376,10 +376,10 @@ function dt_publication_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'link',
+        'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 4,
+        'type' => 'nexteuropa_ds_layouts_formatter_link_button_primary',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -445,10 +445,14 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'view_mode' => 'meta',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
+        'type' => 'entityreference_entity_view',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -496,11 +500,9 @@ function dt_publication_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'nexteuropa_ds_layouts',
+        'settings' => array(),
+        'type' => 'context_nav_item',
         'weight' => 10,
       ),
       'teaser' => array(
@@ -556,7 +558,7 @@ function dt_publication_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -655,10 +657,17 @@ function dt_publication_field_default_field_instances() {
         'weight' => 15,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ec_date_j_f_y',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -842,7 +851,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -900,7 +909,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -970,7 +979,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',

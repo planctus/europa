@@ -4,8 +4,6 @@
  * dt Publication install file.
  */
 
-use Drupal\taxonomy;
-
 /**
  * Implements hook_install().
  */
@@ -90,6 +88,19 @@ function dt_publication_update_7106() {
  */
 function dt_publication_update_7107() {
   features_revert_module('dt_publication');
+  // Importing taxonomy terms to publication_origin.
+  $terms = array(
+    'No Source',
+    'EUR-lex',
+    'EC Annual reports',
+    'Open data portal',
+    'Eurofound',
+    'EU Bookshop',
+    'EU Publications Office',
+  );
+  foreach ($terms as $term) {
+    _dt_core_create_taxonomy_term('publication_origin', $term);
+  }
   // Copy content from field_core_department to field_core_department.
   _dt_core_field_value_copy('node', 'publication', 'field_core_department', 'field_core_departments');
   // Remove field instance.
