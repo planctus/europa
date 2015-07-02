@@ -88,16 +88,12 @@ function dt_publication_field_group_info() {
     'format_settings' => array(
       'label' => 'Body',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'section__group row',
-        'wrapper' => 'section',
+        'classes' => 'section__group',
         'element' => 'div',
-        'show_label' => 0,
+        'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
-        'required_fields' => 1,
       ),
-      'formatter' => '',
     ),
   );
   $export['group_publication_body|node|publication|full'] = $field_group;
@@ -128,6 +124,35 @@ function dt_publication_field_group_info() {
     ),
   );
   $export['group_publication_contact|node|publication|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_publication_contact|node|publication|full';
+  $field_group->group_name = 'group_publication_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'publication';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_publication_contact',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_publication_contact|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -177,8 +202,9 @@ function dt_publication_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '4',
     'children' => array(
-      0 => 'field_publication_authors',
-      1 => 'field_publication_published_on',
+      0 => 'field_core_topics',
+      1 => 'field_publication_authors',
+      2 => 'field_publication_published_on',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -193,6 +219,35 @@ function dt_publication_field_group_info() {
     ),
   );
   $export['group_publication_contextual|node|publication|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_publication_file|node|publication|full';
+  $field_group->group_name = 'group_publication_file';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'publication';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Files',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_core_files',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Files',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_publication_file|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -266,7 +321,7 @@ function dt_publication_field_group_info() {
     'label' => 'Related information',
     'weight' => '6',
     'children' => array(
-      0 => 'field_core_topics',
+      0 => 'field_core_departments',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -274,7 +329,7 @@ function dt_publication_field_group_info() {
       'instance_settings' => array(
         'classes' => 'section__group',
         'element' => 'div',
-        'show_label' => '0',
+        'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
       ),
