@@ -294,42 +294,6 @@ function europa_menu_tree__secondary(&$variables) {
 }
 
 /**
- * Overrides theme('easy_breadcrumb').
- */
-/*function europa_easy_breadcrumb($variables) {
-
-  $breadcrumb = $variables['breadcrumb'];
-  $segments_quantity = $variables['segments_quantity'];
-  $separator = $variables['separator'];
-
-  $html = '';
-
-  if ($segments_quantity > 0) {
-
-    $html .= '<ol class="breadcrumb">';
-
-    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
-      $it = $breadcrumb[$i];
-      $content = decode_entities($it['content']);
-      if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
-      }
-      else {
-        $class = implode(' ', $it['class']);
-        $html .= '<li class="active ' . $class . '">' . $content . '</li>';
-      }
-      if ($i < $s) {
-        $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
-      }
-    }
-
-    $html .= '</ol>';
-  }
-
-  return $html;
-}*/
-
-/**
  * Implements hook_preprocess_image().
  */
 function europa_preprocess_image(&$variables) {
@@ -902,6 +866,9 @@ function europa_easy_breadcrumb($variables) {
 
       $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
       if (isset($item['url'])) {
+        // Ugly hotfix.
+        // TODO: Remove when https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457 is fixed.
+        $item['url'] = $item['url'] == '<front>' ? '' : $item['url'];
         $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
       }
       else {
