@@ -322,7 +322,7 @@ function dt_topic_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'node_type',
+      0 => 'content_type_label',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

@@ -119,8 +119,8 @@ function dt_policy_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_priorities',
-      2 => 'field_core_topics',
+      1 => 'field_core_topics',
+      2 => 'field_core_priorities',
       3 => 'field_core_persons',
     ),
     'format_type' => 'html-element',
@@ -296,7 +296,7 @@ function dt_policy_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
+        'classes' => 'meta meta--header',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -406,13 +406,14 @@ function dt_policy_field_group_info() {
       0 => 'field_policy_implementations',
       1 => 'policy_input_consultation',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
       'label' => 'Actions',
       'instance_settings' => array(
         'id' => '',
         'classes' => '',
         'description' => '',
+        'required_fields' => 1,
       ),
       'formatter' => 'open',
     ),
@@ -437,13 +438,14 @@ function dt_policy_field_group_info() {
       2 => 'field_policy_keyfiles',
       3 => 'policy_input_not_consultation',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
       'label' => 'Details',
       'instance_settings' => array(
         'id' => '',
         'classes' => '',
         'description' => '',
+        'required_fields' => 1,
       ),
       'formatter' => 'closed',
     ),
@@ -463,13 +465,14 @@ function dt_policy_field_group_info() {
     'label' => 'Latest',
     'weight' => '6',
     'children' => array(),
-    'format_type' => 'htab',
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
         'id' => '',
         'classes' => '',
         'description' => '',
+        'required_fields' => 1,
       ),
       'formatter' => 'closed',
     ),
@@ -493,12 +496,17 @@ function dt_policy_field_group_info() {
       1 => 'group_policy_tab_details',
       2 => 'group_policy_tab_latest',
     ),
-    'format_type' => 'htabs',
+    'format_type' => 'bootstrap_fieldgroup_nav',
     'format_settings' => array(
       'label' => 'Horizontal tabs',
       'instance_settings' => array(
         'classes' => 'section__group',
+        'bootstrap_nav_type' => 'tabs',
+        'bootstrap_stacked' => 0,
+        'bootstrap_orientation' => 0,
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $export['group_policy_tabs|node|policy|full'] = $field_group;

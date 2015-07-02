@@ -17,15 +17,11 @@ function dt_topic_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'topic';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'node_type' => array(
+    'content_type_label' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'show_title' => 0,
-        'title_wrapper' => '',
-        'ctools' => 'a:3:{s:4:"conf";a:5:{s:8:"sanitize";i:1;s:7:"context";s:25:"argument_entity_id:node_1";s:14:"override_title";i:0;s:19:"override_title_text";s:0:"";s:22:"override_title_heading";s:2:"h2";}s:4:"type";s:5:"token";s:7:"subtype";s:17:"node:content-type";}',
-        'load_terms' => 0,
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
@@ -211,8 +207,8 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_topic_meta',
-        1 => 'node_type',
+        0 => 'content_type_label',
+        1 => 'group_topic_meta',
         2 => 'title',
         3 => 'field_core_introduction',
       ),
@@ -234,15 +230,15 @@ function dt_topic_ds_layout_settings_info() {
         16 => 'field_topic_targets',
         17 => 'group_latest_main',
         18 => 'field_topic_tasks',
-        19 => 'field_core_top_tasks',
-        20 => 'field_core_link',
+        19 => 'field_core_link',
+        20 => 'field_core_top_tasks',
         21 => 'group_latest_sidebar',
         22 => 'field_core_social_network_links',
       ),
     ),
     'fields' => array(
+      'content_type_label' => 'left_header',
       'group_topic_meta' => 'left_header',
-      'node_type' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_topic_contextual' => 'top',
@@ -260,8 +256,8 @@ function dt_topic_ds_layout_settings_info() {
       'field_topic_targets' => 'central',
       'group_latest_main' => 'central',
       'field_topic_tasks' => 'central',
-      'field_core_top_tasks' => 'central',
       'field_core_link' => 'central',
+      'field_core_top_tasks' => 'central',
       'group_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',
     ),
