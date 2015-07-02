@@ -83,7 +83,9 @@ function dt_topic_field_group_info() {
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '21',
-    'children' => array(),
+    'children' => array(
+      0 => 'latest_announcements_block',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Main',

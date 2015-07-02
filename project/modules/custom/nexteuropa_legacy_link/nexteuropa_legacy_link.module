@@ -35,10 +35,13 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
       if ($element['#field_type'] == 'entityreference') {
         // Skip entity reference fields not targeting nodes.
         if (
-          !isset($display['settings']['link']) ||
-          !isset($field['settings']['target_type']) ||
-          $field['settings']['target_type'] !== 'node' ||
-          $field['settings']['target_type'] !== 'taxonomy_term'
+          (
+            !isset($display['settings']['link']) ||
+            !isset($field['settings']['target_type']))  &&
+          (
+            $field['settings']['target_type'] !== 'node' ||
+            $field['settings']['target_type'] !== 'taxonomy_term'
+          )
         ) {
           continue;
         }
