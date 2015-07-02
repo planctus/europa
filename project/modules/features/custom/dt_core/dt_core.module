@@ -73,9 +73,8 @@ function dt_core_block_view($delta = '') {
 function dt_core_get_blocks_content($delta) {
   switch ($delta) {
     case 'dt_block_copyright':
-      $license_link = l(t('EC license name'), '#');
       $result = array(
-        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission copyright.') . "</span><span>" . t('All content available under') . ' ' . $license_link . "</span></div>",
+        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015.') . "</span></div>",
       );
       return $result;
 
