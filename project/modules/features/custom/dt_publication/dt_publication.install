@@ -86,10 +86,10 @@ function dt_publication_update_7106() {
 }
 
 /**
- * Added taxonomy terms.
+ * Reverting feature.
  */
 function dt_publication_update_7107() {
   features_revert_module('dt_publication');
-  // Add "Publication origin" terms.
-  createTaxonomyTerm('publication_origin', 'Test');
+  // Copy content from field_core_department to field_core_department.
+  _dt_core_field_value_copy('node', 'publication', 'field_core_department', 'field_core_departments');
 }
