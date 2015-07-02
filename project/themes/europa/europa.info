@@ -36,7 +36,7 @@ scripts[] = bootstrap-sass/js/bootstrap/collapse.js
 scripts[] = bootstrap-sass/js/bootstrap/dropdown.js
 ;scripts[] = bootstrap-sass/js/bootstrap/modal.js
 scripts[] = bootstrap-sass/js/bootstrap/tooltip.js
-;scripts[] = bootstrap-sass/js/bootstrap/popover.js
+scripts[] = bootstrap-sass/js/bootstrap/popover.js
 scripts[] = bootstrap-sass/js/bootstrap/scrollspy.js
 scripts[] = bootstrap-sass/js/bootstrap/tab.js
 scripts[] = bootstrap-sass/js/bootstrap/transition.js
@@ -62,7 +62,7 @@ settings[bootstrap_tooltip_enabled] = 0
 
 ; Popover
 ; --------------
-settings[bootstrap_popover_enabled] = 0
+settings[bootstrap_popover_enabled] = 1
 
 ; Breadcrumbs
 ; --------------
