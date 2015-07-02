@@ -200,7 +200,9 @@ function dt_info_homepage_field_group_info() {
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '22',
-    'children' => array(),
+    'children' => array(
+      0 => 'latest_announcements_block',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Main',
