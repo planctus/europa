@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.europaComponents_filters = {
+  Drupal.behaviors.europa_filters = {
 
     attach: function (context, settings) {
       var $filters        = $('.filters'),

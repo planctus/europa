@@ -86,6 +86,7 @@ features[variable][] = menu_parent_department
 features[variable][] = node_options_department
 features[variable][] = node_preview_department
 features[variable][] = node_submitted_department
+features[variable][] = pathauto_node_department_pattern
 features[views_view][] = department
 features_exclude[dependencies][ds] = ds
 features_exclude[dependencies][entityreference] = entityreference

@@ -11,17 +11,17 @@ Styleguide contextnav
 }
 
 .context-nav__label {
-  display: block;
-  clear: both;
   @extend .col-xs-12;
   @extend .col-md-3;
+  display: block;
+  clear: both;
 }
 
 .context-nav__items {
-  display: block;
-  margin-bottom: 0.556em;
   @extend .col-xs-12;
   @extend .col-md-9;
+  display: block;
+  margin-bottom: 0.556em;
 
   &:last-child {
     margin-bottom: 0;
@@ -30,18 +30,20 @@ Styleguide contextnav
 
 .context-nav__item {
   display: inline-block;
-  &:before {
-    content: ", ";
+  &:after {
+    content: ",";
+    margin-right: 4px;
   }
 
-  &:first-child {
-    &:before {
+  &:last-child {
+    &:after {
       display: none;
+      margin-right: 0;
     }
   }
 }
 
-@include breakpoint(screen-md-min){
+@include breakpoint(screen-md-min) {
   .context-nav__items {
     margin-bottom: 0;
   }

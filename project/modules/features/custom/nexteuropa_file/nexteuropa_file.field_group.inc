@@ -47,7 +47,7 @@ function nexteuropa_file_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '2',
+    'weight' => '-3',
     'children' => array(
       0 => 'language',
     ),
@@ -74,10 +74,10 @@ function nexteuropa_file_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'File',
-    'weight' => '1',
+    'weight' => '-4',
     'children' => array(
       0 => 'field_core_file',
-      1 => 'title',
+      1 => 'title_field',
       2 => 'field_core_description',
     ),
     'format_type' => 'tab',

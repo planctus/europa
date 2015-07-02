@@ -79,6 +79,7 @@ features[variable][] = node_preview_class
 features[variable][] = node_preview_class_link_group
 features[variable][] = node_submitted_class
 features[variable][] = node_submitted_class_link_group
+features[variable][] = pathauto_node_class_pattern
 features_exclude[dependencies][cce_basic_config] = cce_basic_config
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][entityreference] = entityreference

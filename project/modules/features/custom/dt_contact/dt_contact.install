@@ -61,3 +61,11 @@ function dt_contact_update_7103() {
     field_delete_field($field_name);
   }
 }
+
+/**
+ * Reverting dt_contact.
+ */
+function dt_contact_update_7104() {
+  // Reverting feature.
+  features_revert_module('dt_contact');
+}

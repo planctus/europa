@@ -23,8 +23,8 @@ function dt_toplink_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_top_link_content',
-      1 => 'group_editorial_settings',
+      0 => 'group_editorial_settings',
+      1 => 'group_top_link_content',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -79,9 +79,11 @@ function dt_toplink_field_group_info() {
     'label' => 'Content',
     'weight' => '7',
     'children' => array(
-      0 => 'field_toplink_link',
+      0 => 'title_field',
       1 => 'field_toplink_description',
-      2 => 'title_field',
+      2 => 'field_toplink_link',
+      3 => 'field_core_legacy_link',
+      4 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

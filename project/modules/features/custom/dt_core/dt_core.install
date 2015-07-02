@@ -27,6 +27,7 @@ function dt_core_install() {
     'dt_policy',
     'dt_topic',
     'nexteuropa_file',
+    'dt_page',
   );
   module_enable($features);
 
@@ -369,4 +370,20 @@ function dt_core_update_7125() {
       field_delete_instance($instance);
     }
   }
+}
+
+/**
+ * Enable dt_page module.
+ */
+function dt_core_update_7126() {
+  module_enable(array('dt_page'));
+}
+
+/**
+ * Prompt to update aliases.
+ */
+function dt_core_update_7127() {
+  $delete = url('admin/config/search/path/delete_bulk');
+  $update = url('admin/config/search/path/update_bulk');
+  drupal_set_message(t('Please <a href="!delete">bulk delete</a> and <a href="!update">update all aliases</a>!', array('!delete' => $delete, '!update' => $update)));
 }
