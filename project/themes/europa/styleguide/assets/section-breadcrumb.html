@@ -38,6 +38,14 @@
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Breadcrumb</span>
         </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-breadcrumb.html#kssref-breadcrumb.collapsible">
+                <span class="kss-nav__ref">1.1</span
+                ><span class="kss-nav__name">Breadcrumb collapsible</span>
+              </a>
+            </li>
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-buttons.html">
@@ -116,8 +124,6 @@
           <span class="kss-nav__ref">15</span
           ><span class="kss-nav__name">Notification</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-siteheader.html">
@@ -142,22 +148,18 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-notification" class="kss-section kss-section--depth-1">
+      <div     id="kssref-breadcrumb" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-notification">
-          <span class="kss-title__ref">15</span
-          >Notification
+        <a class="kss-title__permalink" href="#kssref-breadcrumb">
+          <span class="kss-title__ref">1</span
+          >Breadcrumb
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
-      <div class="kss-description">
-        <p>Notification that appears at the top of the site</p>
-
-      </div>
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -165,31 +167,99 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <section class="notification">
-  <div class="container-fluid">
-    <span class="notification__label">Beta Notification</span>
-    <div class="notification__content">
-      <p>The <a href="#">websites of the European Commission</a> are being merged here. Find out more about our <a href="#">digital transformation</a>.</p>
-    </div>
-  </div>
-</section>
+          <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <span class="element-invisible">You are here:</span>
+  <ol>
+    <li class="breadcrumb__segment breadcrumb__segment--first">
+      <a href="#" class="breadcrumb__link">European Commission</a>
+    </li>
+    <li class="breadcrumb__segment">
+      <a href="#" class="breadcrumb__link">Path 1</a>
+    </li>
+    <li class="breadcrumb__segment breadcrumb__segment--last">
+      <a href="#" class="breadcrumb__link">Path2</a>
+    </li>
+  </ol>
+</nav>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;section class=&quot;notification&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;span class=&quot;notification__label&quot;&gt;Beta Notification&lt;/span&gt;
-    &lt;div class=&quot;notification__content&quot;&gt;
-      &lt;p&gt;The &lt;a href=&quot;#&quot;&gt;websites of the European Commission&lt;/a&gt; are being merged here. Find out more about our &lt;a href=&quot;#&quot;&gt;digital transformation&lt;/a&gt;.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;nav class=&quot;breadcrumb&quot; role=&quot;navigation&quot; aria-label=&quot;breadcrumbs&quot;&gt;
+  &lt;span class=&quot;element-invisible&quot;&gt;You are here:&lt;/span&gt;
+  &lt;ol&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--first&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;European Commission&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--last&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
 </code></pre>
       </div>
 
       </div>
+      <section id="kssref-breadcrumb.collapsible" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-breadcrumb.collapsible">
+          <span class="kss-title__ref">1.1</span
+          >Breadcrumb collapsible
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <nav id="breadcrumb" class="breadcrumb breadcrumb--collapsible" role="navigation" aria-label="breadcrumbs">
+  <span class="element-invisible">You are here:</span>
+  <ol>
+    <li class="breadcrumb__segment breadcrumb__segment--first">
+      <a href="#" class="breadcrumb__link">European Commission</a>
+    </li>
+    <li class="breadcrumb__segment">
+      <a href="#" class="breadcrumb__link">Path 1</a>
+    </li>
+    <li class="breadcrumb__segment breadcrumb__segment--last">
+      <a href="#" class="breadcrumb__link">Path2</a>
+    </li>
+  </ol>
+</nav>
+
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;nav id=&quot;breadcrumb&quot; class=&quot;breadcrumb breadcrumb--collapsible&quot; role=&quot;navigation&quot; aria-label=&quot;breadcrumbs&quot;&gt;
+  &lt;span class=&quot;element-invisible&quot;&gt;You are here:&lt;/span&gt;
+  &lt;ol&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--first&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;European Commission&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;breadcrumb__segment breadcrumb__segment--last&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;breadcrumb__link&quot;&gt;Path2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+</code></pre>
+      </div>
+
+      </section>
 </article>
 
 <!-- SCRIPTS -->

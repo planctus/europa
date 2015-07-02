@@ -100,7 +100,7 @@
 </header>
 
 <?php if (!empty($page['header_bottom'])): ?>
-<nav role="navigation">
+<nav class="page-navigation" role="navigation">
   <div class="container-fluid">
       <?php print render($page['header_bottom']); ?>
   </div>
@@ -137,21 +137,6 @@
 <?php endif; ?>
 
 <section class="main-content">
-  <!-- Generic sections -->
-  <div class="container-fluid">
-    <?php if (!empty($tabs)): ?>
-      <?php print render($tabs); ?>
-    <?php endif; ?>
-
-    <?php if (!empty($page['help'])): ?>
-      <?php print render($page['help']); ?>
-    <?php endif; ?>
-
-    <?php if (!empty($action_links)): ?>
-      <ul class="action-links"><?php print render($action_links); ?></ul>
-    <?php endif; ?>
-  </div>
-
   <!-- Page Header -->
   <div class="page-header">
     <div class="container-fluid">
@@ -174,6 +159,22 @@
       </div>
     </div>
   </div>
+  
+  <!-- Generic sections -->
+  <div class="container-fluid">
+    <?php if (!empty($tabs)): ?>
+      <?php print render($tabs); ?>
+    <?php endif; ?>
+
+    <?php if (!empty($page['help'])): ?>
+      <?php print render($page['help']); ?>
+    <?php endif; ?>
+
+    <?php if (!empty($action_links)): ?>
+      <ul class="action-links"><?php print render($action_links); ?></ul>
+    <?php endif; ?>
+  </div>
+
   <a id="main-content" tabindex="-1"></a>
 
   <div class="page-content">

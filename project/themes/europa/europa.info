@@ -46,6 +46,8 @@ scripts[] = js/velocity.min.js
 
 scripts[] = js/misc/ajax.js
 
+scripts[] = js/europa.js
+
 ; ========================================
 ; Settings
 ; ========================================

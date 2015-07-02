@@ -44,7 +44,7 @@
  * @ingroup themeable
  */
 ?><!DOCTYPE html>
-<html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
+<html class="no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
 <head profile="<?php print $grddl_profile; ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta charset="utf-8">
@@ -54,8 +54,8 @@
   <?php print $styles; ?>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
-    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/html5.js'; ?>"></script>  
-    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/respond.min.js'; ?>"></script>  
+    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/html5.js'; ?>"></script>
+    <script src="<?php print base_path() . drupal_get_path('theme', 'europa') . '/js/respond.min.js'; ?>"></script>
   <![endif]-->
   <?php print $scripts; ?>
 </head>
