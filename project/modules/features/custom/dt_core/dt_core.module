@@ -478,3 +478,29 @@ function _dt_core_detect_circular_reference($node) {
 
   return FALSE;
 }
+
+/**
+ * Helper function for creating a taxonomy term in a vocabulary.
+ *
+ * @param string $vocabulary_machine_name
+ *   Vocabulary machine name.
+ * @param string $term_name
+ *   Added term.
+ *
+ * @return bool
+ *   Return TRUE if the taxonomy term was created.
+ */
+function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
+  // Check the vocabulary if exist.
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name)) {
+    // Creating term.
+    $term = array();
+    $term['vocabulary_machine_name'] = $vocabulary_machine_name;
+    $term['vid'] = $vocabulary->vid;
+    $term['name'] = $term_name;
+    // Save term as an entity.
+    $entity = entity_create('taxonomy_term', $term);
+    return entity_save('taxonomy_term', $entity);
+  }
+  return FALSE;
+}
