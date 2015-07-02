@@ -980,3 +980,35 @@ function europa_file_entity_download_link($variables) {
 
   return _europa_file_markup($file, $uri);
 }
+
+/**
+ * Implements template_preprocess_bootstrap_tabs().
+ */
+function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
+  $group = &$variables['group'];
+
+  $variables['nav_classes'] = '';
+
+  switch ($group->format_settings['instance_settings']['bootstrap_nav_type']) {
+    case 'tabs':
+      $variables['nav_classes'] .= ' nav-tabs nav-tabs--with-content';
+      break;
+    case 'pills':
+      $variables['nav_classes'] .= ' nav-pills';
+      break;
+    default:
+  }
+
+  if ($group->format_settings['instance_settings']['bootstrap_stacked']) {
+    $variables['nav_classes'] .= ' nav-stacked';
+  }
+
+  $i = 0;
+  foreach ($variables['items'] as $key => $item) {
+    // Check if item is not empty and we have access to it.
+    if ($item && (!isset($item['#access']) || $item['#access'])) {
+      $variables['panes'][$i]['title'] = check_plain(t($item['#title']));
+      $i++;
+    }
+  }
+}
