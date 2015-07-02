@@ -63,6 +63,10 @@ function europa_preprocess_block(&$vars) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
+        'data-toggle' => 'popover',
+        'data-placement' => 'bottom',
+        'data-trigger' => 'focus',
+        'data-content' => t('This function is not yet working in Beta.'),
       ),
       'query' => array(drupal_get_destination()),
     );
@@ -72,6 +76,9 @@ function europa_preprocess_block(&$vars) {
 
     // Add content to block.
     $vars['content'] = l($label . $code, 'splash', $options);
+
+    // For Beta initial release only: preventing default click behavior.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
@@ -96,7 +103,7 @@ function europa_preprocess_block(&$vars) {
       drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
 
       // Adding filters.js file.
-      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters/filters.js');
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
     }
   }
 
@@ -279,48 +286,11 @@ function europa_preprocess_node(&$vars) {
   }
 }
 
-
 /**
  * Bootstrap theme wrapper function for the primary menu links.
  */
 function europa_menu_tree__secondary(&$variables) {
   return '<ul class="menu nav navbar-nav secondary">' . $variables['tree'] . '</ul>';
-}
-
-/**
- * Overrides theme('easy_breadcrumb').
- */
-function europa_easy_breadcrumb($variables) {
-
-  $breadcrumb = $variables['breadcrumb'];
-  $segments_quantity = $variables['segments_quantity'];
-  $separator = $variables['separator'];
-
-  $html = '';
-
-  if ($segments_quantity > 0) {
-
-    $html .= '<ol class="breadcrumb">';
-
-    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
-      $it = $breadcrumb[$i];
-      $content = decode_entities($it['content']);
-      if (isset($it['url'])) {
-        $html .= '<li>' . l($content, $it['url'], array('attributes' => array('class' => $it['class']))) . '</li>';
-      }
-      else {
-        $class = implode(' ', $it['class']);
-        $html .= '<li class="active ' . $class . '">' . $content . '</li>';
-      }
-      if ($i < $s) {
-        $html .= '<span class="active breadcrumb-separator"> ' . $separator . ' </span>';
-      }
-    }
-
-    $html .= '</ol>';
-  }
-
-  return $html;
 }
 
 /**
@@ -853,6 +823,71 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['#suffix'] = '';
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+  // Popover to notify the user that the search is not fully functional.
+  $form['search_input_group']['europa_search_submit']['#disabled'] = TRUE;
+  $form['search_input_group']['QueryText']['#attributes']['data-toggle'][] = 'popover';
+  $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
+  $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
+  $form['search_input_group']['QueryText']['#attributes']['data-content'][] = t('This function is not yet working in Beta.');
+}
+
+/**
+ * Implements theme_easy_breadcrumb().
+ */
+function europa_easy_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  $segments_quantity = $variables['segments_quantity'];
+  $html = '';
+
+  if ($segments_quantity > 0) {
+    $html .= '<nav id="breadcrumb" class="breadcrumb" role="navigation" aria-label="breadcrumbs">';
+    $html .= '<span class="element-invisible">' . t('You are here') . ':</span>';
+    $html .= '<ol class="breadcrumb__segments-wrapper">';
+
+    for ($i = 0, $s = $segments_quantity; $i < $segments_quantity; ++$i) {
+      $item = $breadcrumb[$i];
+
+      // Removing classes from $item['class'] array and adding BEM classes.
+      $classes = $item['class'];
+      // $classes[] = 'breadcrumb__segment-' . ($i + 1);
+      $classes[] = 'breadcrumb__segment';
+
+      $attributes = array(
+        'class' => array('breadcrumb__link'),
+      );
+
+      if ($i == 0) {
+        $classes[] = 'breadcrumb__segment--first';
+        $attributes += array('rel' => 'home');
+      }
+      elseif ($i == ($s - 1)) {
+        $classes[] = 'breadcrumb__segment--last';
+      }
+
+      $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
+      if (isset($item['url'])) {
+        // Ugly hotfix.
+        // TODO: Remove when https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457 is fixed.
+        $item['url'] = $item['url'] == '<front>' ? '' : $item['url'];
+        $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
+      }
+      else {
+        $full_item = '<span class="' . $class . '">' . $content . '</span>';
+      }
+
+      $class = implode(' ', $classes);
+
+      // TODO:
+      // Check if the active class actually appears.
+      $element_visibility = in_array('active', $classes) ? ' element-invisible' : '';
+      $html .= '<li class="' . $class . $element_visibility . '">' . $full_item . '</li>';
+    }
+
+    $html .= '</ol></nav>';
+
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/breadcrumb.js');
+  }
+  return $html;
 }
 
 /**

@@ -29,7 +29,6 @@ function dt_policy_input_field_default_field_bases() {
       'allowed_values' => array(
         'null' => 'no status',
         'planned' => 'planned',
-        'announced' => 'announced',
         'open' => 'open',
         'closed' => 'closed',
       ),
