@@ -3,6 +3,8 @@
  * @file
  * Adding BEM related custom field formatters.
  */
+global $listing_view_modes;
+$listing_view_modes = array('title', 'meta', 'teaser');
 
 /**
  * Implements hook_field_formatter_info().
@@ -257,7 +259,12 @@ function nexteuropa_ds_layouts_field_formatter_info_alter(&$info) {
  * Implements hook_field_formatter_settings_form_alter().
  */
 function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_form, $context) {
-  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
+  global $listing_view_modes;
+
+  if (
+    $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $listing_view_modes)
+  ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
     $settings_form['nexteuropa_ds_layouts_columns'] = array(
@@ -293,7 +300,11 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
  * Implements hook_field_formatter_settings_summary_alter().
  */
 function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary, $context) {
-  if ($context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view') {
+  global $listing_view_modes;
+  if (
+    $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $listing_view_modes)
+  ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
     if (isset($settings['nexteuropa_ds_layouts_columns'])) {

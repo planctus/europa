@@ -166,5 +166,12 @@ function dt_info_homepage_strongarm() {
   $strongarm->value = 1;
   $export['node_submitted_info_homepage'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_info_homepage_pattern';
+  $strongarm->value = '[node:source:title]';
+  $export['pathauto_node_info_homepage_pattern'] = $strongarm;
+
   return $export;
 }

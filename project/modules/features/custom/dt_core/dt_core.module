@@ -8,6 +8,7 @@ include_once 'dt_core.features.inc';
 class DTCoreSourceFieldError extends Exception {};
 class DTCoreDestinationFieldError extends Exception {};
 class DTCoreFieldTypeAreNotSame extends Exception {};
+class DTCoreParentCircular extends Exception {};
 
 /**
  * Implements hook_field_widget_form_alter().
@@ -232,4 +233,249 @@ function _dt_core_field_value_copy($entity_type, $bundle, $source_field_name, $d
       }
     }
   }
+}
+
+/**
+ * Nodes that will have their alias re-generated on hook_exit().
+ */
+$GLOBALS['dt_core_nodes_to_update_alias'] = array();
+
+/**
+ * Fields that can be used in URL patterns to define hierarchy.
+ */
+$GLOBALS['dt_core_parent_fields'] = array(
+  'field_core_parent',
+  'field_core_policy_area',
+);
+
+/**
+ * Implements function hook_path_insert().
+ */
+function dt_core_path_insert($path) {
+  _dt_core_path_update_relatives($path);
+}
+
+/**
+ * Implements function hook_path_update().
+ */
+function dt_core_path_update($path) {
+  _dt_core_path_update_relatives($path);
+}
+
+/**
+ * Updates aliases of parent | child nodes.
+ */
+function _dt_core_path_update_relatives($path) {
+  $source = explode('/', $path['source']);
+  if ($source[0] == 'node') {
+    $nid = $source[1];
+    $node = node_load($nid);
+
+    // URL pattern for node type.
+    $pattern = pathauto_pattern_load_by_entity('node', $node->type);
+
+    foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
+      // If URL pattern does not rely on this field, skip.
+      if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
+        continue;
+      }
+      // Find children based on field.
+      $children = _dt_core_node_get_relatives($nid, $field_name);
+
+      // Find parents based on field.
+      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
+      $relatives = array_merge($parents, $children);
+      if (!empty($relatives)) {
+        $GLOBALS['dt_core_nodes_to_update_alias'][$nid] = $relatives;
+      }
+    }
+  }
+}
+
+/**
+ * Finds child|parent nodes based on entity reference.
+ *
+ * Only a few entity reference fields can be used to define parent relationship.
+ * These fields are stored in the $GLOBALS['dt_core_parent_fields'].
+ *
+ * @param int $nid
+ *   Node id
+ * @param string $field_name
+ *   field name that is used for hierarchy
+ * @param string $direction
+ *   children or parents
+ * @param bool $no_alias_only
+ *   Exclude nodes that already have an alias.
+ * @param int $original_nid
+ *   Node id of the starting item
+ *
+ * @return array
+ *   Node ids of children|parents
+ *
+ * @see $GLOBALS['dt_core_parent_fields']
+ */
+function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children', $no_alias_only = FALSE, $original_nid = NULL) {
+  if (!isset($field_name)) {
+    return array();
+  }
+  $original_nid = !$original_nid ? $nid : $original_nid;
+  $affected_nodes = array();
+
+  if ($direction == 'parents') {
+    $result = db_select('field_data_' . $field_name, 'p')
+    ->fields('p', array($field_name . '_target_id'))
+    ->condition('entity_id', $nid, '=')
+    ->execute()
+    ->fetchAssoc();
+
+    $nids = $result ? array_values($result) : FALSE;
+    // Check if parent has already an alias.
+    if ($nids) {
+      if ($no_alias_only && drupal_get_path_alias('node/' . $nids[0]) != ('node/' . $nids[0])) {
+        return array();
+      }
+
+      // Item is among its own parents.
+      if (in_array($original_nid, $nids)) {
+        throw new DTCoreParentCircular(
+          t('Node !nid is among its own parents', array(
+            '!nid' => $original_nid,
+          ))
+        );
+      }
+    }
+  }
+  // Children need to be updated always.
+  else {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->fieldCondition($field_name, 'target_id', $nid, '=');
+
+    $result = $query->execute();
+    $nids = isset($result['node']) ? array_keys($result['node']) : FALSE;
+  }
+
+  if ($nids) {
+    foreach ($nids as $ref_nid) {
+      if ($referenced = _dt_core_node_get_relatives($ref_nid, $field_name, $direction, $no_alias_only, $original_nid)) {
+        $affected_nodes = array_merge($referenced, $affected_nodes);
+      }
+      $affected_nodes[] = $ref_nid;
+    }
+  }
+
+  return array_unique($affected_nodes);
+}
+
+/**
+ * Implements function hook_exit().
+ */
+function dt_core_exit() {
+  if (empty($GLOBALS['dt_core_nodes_to_update_alias']) || !is_array($GLOBALS['dt_core_nodes_to_update_alias'])) {
+    return;
+  }
+
+  $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
+  $GLOBALS['dt_core_nodes_to_update_alias'] = array();
+  foreach ($nids_to_update as $nid => $relatives) {
+    // Update referring node as well as last.
+    $relatives[] = $nid;
+
+    // Paths update using the update method of the pathauto module.
+    // Doing it one by one instead of using
+    // pathauto_node_update_alias_multiple() to keep the order of items intact.
+    foreach ($relatives as $rel_nid) {
+      $node = node_load($rel_nid);
+      pathauto_node_update_alias($node, 'update');
+    }
+  }
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function dt_core_pathauto_alias_alter(&$alias, array &$context) {
+  // Remove duplicates that are a result of a prefix defined in th URL pattern.
+  // before the parent fields slug.
+  //
+  // For example:
+  // The pattern "prefix/[parent:url]/[title]" might result in an alias like
+  // "prefix/prefix/parent-title/title" if parent is of the same type since the
+  // prefix is added twice. We will remove the duplicate prefix now.
+
+  // We consider everything before the first token a prefix.
+  $pattern_prefix = explode('[', $context['pattern']);
+  $prefix = $pattern_prefix[0];
+
+  if (!empty($prefix)) {
+    // Check if it is subject of parent field.
+    foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
+      // If the URL pattern does rely on this field remove duplicate prefix.
+      if (_dt_core_parent_field_in_pattern($field_name, $context['pattern'])) {
+        $alias = str_replace($prefix . $prefix, $prefix, $alias);
+      }
+    }
+  }
+}
+
+/**
+ * Checks if a URL pattern is relying on a parent field.
+ *
+ * @param string $field_name
+ *   Field name
+ *
+ * @return mixed
+ *   string pattern token segment | bool FALSE
+ */
+function _dt_core_parent_field_in_pattern($field_name, $pattern) {
+  // Check if URL pattern uses parents URL.
+  $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
+  if (preg_match('/' . $pattern_segment . '/', $pattern)) {
+
+    return $pattern_segment;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function dt_core_node_validate($node, $form, &$form_state) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
+    if (isset($wrapper->{$field_name}) && $parent = $wrapper->{$field_name}->value()) {
+      // Detect if node has been set as its own parent.
+      if ($parent->nid == $node->nid) {
+        form_set_error($field_name, t('The page cannot be its own parent!'));
+      }
+
+      if (_dt_core_detect_circular_reference($node)) {
+        form_set_error($field_name, t('There is a circular reference between this page and one of its parent!'));
+      }
+    }
+  }
+}
+
+/**
+ * Checks if a URL pattern is relying on a parent field.
+ *
+ * @param object $node
+ *   Node
+ *
+ * @return bool
+ *   There is a circular reference between the two nodes.
+ */
+function _dt_core_detect_circular_reference($node) {
+  $relatives = array();
+  try {
+    foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
+      $relatives += _dt_core_node_get_relatives($node->nid, $field_name, $direction = 'parents');
+    }
+  }
+  catch (DTCoreParentCircular $e) {
+    return TRUE;
+  }
+
+  return FALSE;
 }

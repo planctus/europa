@@ -27,7 +27,7 @@ function dt_topic_field_default_field_instances() {
         'weight' => 7,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',
@@ -402,7 +402,7 @@ function dt_topic_field_default_field_instances() {
         'weight' => 6,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',
@@ -521,7 +521,7 @@ function dt_topic_field_default_field_instances() {
         'weight' => 4,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',
@@ -640,7 +640,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'nexteuropa_ds_layouts_formatter_link_button_block',
-        'weight' => 5,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -690,7 +690,7 @@ function dt_topic_field_default_field_instances() {
         'weight' => 5,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',
@@ -999,9 +999,16 @@ function dt_topic_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => 'col-md-6',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 21,
       ),
       'teaser' => array(

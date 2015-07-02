@@ -17,11 +17,6 @@ function dt_info_homepage_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'info_homepage';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'topics_atoz' => array(
       'weight' => '5',
       'label' => 'hidden',
@@ -42,26 +37,6 @@ function dt_info_homepage_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
-      ),
-    ),
-    'field_info_homepage_section_1' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_2' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_3' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_info_homepage_section_4' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
   );
@@ -143,27 +118,25 @@ function dt_info_homepage_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'central' => array(
-        0 => 'latest_announcements_block',
-        2 => 'group_info_homepage_section_top',
-        3 => 'group_highlight',
-        4 => 'field_info_homepage_section_1',
-        5 => 'group_info_homepage_section_bot',
-        6 => 'field_info_homepage_section_2',
-        7 => 'field_info_homepage_section_4',
-        8 => 'field_info_homepage_section_3',
-        9 => 'group_latest',
-        10 => 'topics_atoz',
-        11 => 'group_latest_main',
-        12 => 'group_latest_sidebar',
-        13 => 'field_core_social_network_links',
-      ),
       'left_header' => array(
-        1 => 'field_core_introduction',
+        0 => 'field_core_introduction',
+      ),
+      'central' => array(
+        1 => 'group_info_homepage_section_top',
+        2 => 'group_highlight',
+        3 => 'field_info_homepage_section_1',
+        4 => 'group_info_homepage_section_bot',
+        5 => 'field_info_homepage_section_2',
+        6 => 'field_info_homepage_section_4',
+        7 => 'field_info_homepage_section_3',
+        8 => 'group_latest',
+        9 => 'topics_atoz',
+        10 => 'group_latest_main',
+        11 => 'group_latest_sidebar',
+        12 => 'field_core_social_network_links',
       ),
     ),
     'fields' => array(
-      'latest_announcements_block' => 'central',
       'field_core_introduction' => 'left_header',
       'group_info_homepage_section_top' => 'central',
       'group_highlight' => 'central',

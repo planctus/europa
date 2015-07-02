@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dt Topic install file.
+ * DT Topic install file.
  */
 
 /**
@@ -41,5 +41,23 @@ function dt_topic_update_7101() {
  * Reverting the feature to configure the display suite field displays.
  */
 function dt_topic_update_7102() {
+  features_revert_module('dt_topic');
+}
+
+/**
+ * Updating Topic content type nodes path aliases.
+ */
+function dt_topic_update_7103() {
+  $nodes = node_load_multiple(array(), array('type' => 'topic'));
+  foreach ($nodes as $node) {
+    pathauto_node_update_alias($node, 'update ');
+  }
+}
+
+/**
+ * Reverting dt_topic.
+ */
+function dt_topic_update_7104() {
+  // Reverting feature.
   features_revert_module('dt_topic');
 }
