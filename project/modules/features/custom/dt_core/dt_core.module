@@ -74,7 +74,7 @@ function dt_core_get_blocks_content($delta) {
   switch ($delta) {
     case 'dt_block_copyright':
       $result = array(
-        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015.') . "</span></div>",
+        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
       );
       return $result;
 
