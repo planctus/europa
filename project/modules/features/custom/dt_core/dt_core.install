@@ -404,3 +404,36 @@ function dt_core_update_7128() {
     drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
   }
 }
+
+/**
+ * Enabling ckeditor link on full_html.
+ */
+function dt_core_update_7129() {
+  // Insert or update the text format settings for full_html text format.
+  $existing = db_select('filter', 'status')
+    ->fields('status')
+    ->condition('format', 'full_html', '=')
+    ->condition('module', 'ckeditor_link', '=')
+    ->condition('name', 'ckeditor_link_filter', '=')
+    ->execute()
+    ->fetchAssoc();
+  if (
+    $existing['status'] != "1" &&
+    filter_format_exists('full_html') &&
+    module_exists('ckeditor_link')
+  ) {
+    $result = db_insert('filter')
+      ->where(array(
+        'format' => 'full_html',
+        'module' => 'ckeditor_link',
+        'name' => 'ckeditor_link_filter',
+      ))
+      ->fields(array(
+        'format' => 'full_html',
+        'module' => 'ckeditor_link',
+        'name' => 'ckeditor_link_filter',
+        'status' => "1",
+      ))
+      ->execute();
+  }
+}
