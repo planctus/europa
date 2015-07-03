@@ -1020,10 +1020,11 @@ function dt_policy_field_default_field_instances() {
         'weight' => 19,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',

@@ -518,9 +518,10 @@ function dt_policy_field_group_info() {
     'label' => 'Actions',
     'weight' => '5',
     'children' => array(
-      0 => 'policy_actions',
+      0 => 'field_policy_next_steps',
+      1 => 'policy_actions',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
       'label' => 'Actions',
       'instance_settings' => array(
