@@ -76,7 +76,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -301,7 +301,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -448,7 +448,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -520,7 +520,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -664,7 +664,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -806,7 +806,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -869,16 +869,9 @@ function dt_policy_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
-          'nexteuropa_ds_layouts_wrapper_modifier' => '',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 6,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1030,7 +1023,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1075,7 +1068,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1147,7 +1140,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1223,7 +1216,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1273,7 +1266,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1328,7 +1321,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1393,7 +1386,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'hidden',

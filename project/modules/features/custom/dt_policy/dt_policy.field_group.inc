@@ -403,8 +403,7 @@ function dt_policy_field_group_info() {
     'label' => 'Actions',
     'weight' => '5',
     'children' => array(
-      0 => 'field_policy_implementations',
-      1 => 'policy_input_consultation',
+      0 => 'policy_actions',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
@@ -436,7 +435,6 @@ function dt_policy_field_group_info() {
       0 => 'field_policy_detail_body',
       1 => 'field_policy_detail_objectives',
       2 => 'field_policy_keyfiles',
-      3 => 'policy_input_not_consultation',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
@@ -464,7 +462,10 @@ function dt_policy_field_group_info() {
   $field_group->data = array(
     'label' => 'Latest',
     'weight' => '6',
-    'children' => array(),
+    'children' => array(
+      0 => 'group_latest_main',
+      1 => 'group_latest_sidebar',
+    ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
       'label' => 'Latest',

@@ -65,6 +65,30 @@ function dt_policy_ds_field_settings_info() {
 }
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function dt_policy_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'policy_actions';
+  $ds_field->label = 'Policy actions';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'policy|full';
+  $ds_field->properties = array(
+    'block' => 'views|policy_blocks-block_2',
+    'block_render' => '1',
+  );
+  $export['policy_actions'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_policy_ds_layout_settings_info() {
@@ -111,25 +135,26 @@ function dt_policy_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'central' => array(
-        0 => 'policy_input_not_consultation',
-        2 => 'policy_input_consultation',
-        6 => 'group_policy_tabs',
-        7 => 'group_policy_tab_actions',
-        8 => 'group_policy_tab_latest',
-        10 => 'field_policy_implementations',
+        0 => 'latest_announcements_block',
+        2 => 'policy_actions',
+        7 => 'group_policy_tabs',
+        8 => 'group_policy_tab_actions',
+        10 => 'group_policy_tab_latest',
         11 => 'group_policy_tab_details',
-        16 => 'field_policy_detail_body',
+        15 => 'field_policy_detail_body',
+        16 => 'group_latest_main',
         17 => 'field_policy_detail_objectives',
-        18 => 'field_policy_keyfiles',
+        18 => 'group_latest_sidebar',
+        19 => 'field_policy_keyfiles',
       ),
       'left_header' => array(
         1 => 'group_policy_meta',
-        3 => 'title',
-        4 => 'field_core_introduction',
-        15 => 'content_type_label',
+        3 => 'content_type_label',
+        4 => 'title',
+        5 => 'field_core_introduction',
       ),
       'top' => array(
-        5 => 'group_policy_contextual',
+        6 => 'group_policy_contextual',
         9 => 'field_core_priorities',
         12 => 'field_core_topics',
         13 => 'field_core_persons',
@@ -137,24 +162,25 @@ function dt_policy_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'policy_input_not_consultation' => 'central',
+      'latest_announcements_block' => 'central',
       'group_policy_meta' => 'left_header',
-      'policy_input_consultation' => 'central',
+      'policy_actions' => 'central',
+      'content_type_label' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_contextual' => 'top',
       'group_policy_tabs' => 'central',
       'group_policy_tab_actions' => 'central',
-      'group_policy_tab_latest' => 'central',
       'field_core_priorities' => 'top',
-      'field_policy_implementations' => 'central',
+      'group_policy_tab_latest' => 'central',
       'group_policy_tab_details' => 'central',
       'field_core_topics' => 'top',
       'field_core_persons' => 'top',
       'field_core_department' => 'top',
-      'content_type_label' => 'left_header',
       'field_policy_detail_body' => 'central',
+      'group_latest_main' => 'central',
       'field_policy_detail_objectives' => 'central',
+      'group_latest_sidebar' => 'central',
       'field_policy_keyfiles' => 'central',
     ),
     'classes' => array(),
