@@ -387,3 +387,20 @@ function dt_core_update_7127() {
   $update = url('admin/config/search/path/update_bulk');
   drupal_set_message(t('Please <a href="!delete">bulk delete</a> and <a href="!update">update all aliases</a>!', array('!delete' => $delete, '!update' => $update)));
 }
+
+/**
+ * Adding reset button filters on departments and topics views lists.
+ */
+function dt_core_update_7128() {
+  // The features to revert.
+  $features = array(
+    'dt_department',
+    'dt_topic',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+    drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
+  }
+}
