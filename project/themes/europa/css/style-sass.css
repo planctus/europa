@@ -6020,7 +6020,7 @@ Styleguide text
 */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .field .label-above, .listing__title, .h4, .h5, .h6 {
-  padding: 0.4em 0;
+  padding: 0.5em 0;
   margin: 0; }
 
 h1,
@@ -6158,8 +6158,8 @@ ul.nav-tabs,
         border-left: 2px solid #b3b4b5; }
       ul.nav-tabs > li.active > a:focus,
       .nav-tabs > li.active > a:focus {
-        background: #ffc412;
-        border-bottom-color: #ffc412; }
+        background: #ffd617;
+        border-bottom-color: #ffd617; }
     ul.nav-tabs > li > a,
     .nav-tabs > li > a {
       border-width: 2px;
@@ -8327,5 +8327,41 @@ Styleguide file
   .file__btn {
     float: right;
     margin-top: 0; } }
+
+/*
+Timeline
+
+Markup: html/timeline.html
+
+Styleguide timeline
+*/
+.timeline {
+  border-left: 4px solid #ffd617;
+  padding-left: 1.667em;
+  padding-bottom: 0.833em;
+  position: relative; }
+  .timeline .timeline__item-title {
+    font-weight: bold; }
+    .timeline .timeline__item-title:before {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border: 3px solid #575757;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      left: -0.5em;
+      margin-top: 0.2em; }
+  .timeline .timeline__text {
+    margin-bottom: 1em; }
+    .timeline .timeline__text ul,
+    .timeline .timeline__text ol {
+      padding-left: 18px; }
+    .timeline .timeline__text > * {
+      margin-bottom: 0 !important; }
+
+@media (min-width: 480px) {
+  .timeline .timeline__item-title:before {
+    margin-left: 2px; } }
 
 /*# sourceMappingURL=style-sass.css.map */
