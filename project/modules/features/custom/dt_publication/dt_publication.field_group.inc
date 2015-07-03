@@ -136,7 +136,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_publication_contact',
     ),
@@ -231,7 +231,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Files',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_files',
     ),
@@ -319,7 +319,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related information',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_departments',
     ),
