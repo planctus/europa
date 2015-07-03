@@ -1011,6 +1011,7 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
       $i++;
     }
   }
+}
 
 /**
  * Overrides theme_link().
