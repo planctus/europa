@@ -332,6 +332,19 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|announcement|teaser'] = $ds_fieldsetting;
 
@@ -575,7 +588,7 @@ function dt_announcement_ds_layout_settings_info() {
         1 => 'group_announcement_meta',
         2 => 'title_field',
         3 => 'post_date',
-        4 => 'field_core_introduction',
+        4 => 'field_core_description',
       ),
       'second' => array(
         5 => 'field_announcement_image',
@@ -586,7 +599,7 @@ function dt_announcement_ds_layout_settings_info() {
       'group_announcement_meta' => 'main',
       'title_field' => 'main',
       'post_date' => 'main',
-      'field_core_introduction' => 'main',
+      'field_core_description' => 'main',
       'field_announcement_image' => 'second',
     ),
     'classes' => array(),
