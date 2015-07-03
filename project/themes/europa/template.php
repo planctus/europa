@@ -980,3 +980,19 @@ function europa_file_entity_download_link($variables) {
 
   return _europa_file_markup($file, $uri);
 }
+
+/**
+ * Implements theme_link().
+ */
+function europa_link($variables) {
+  // Link module creates absolute URLs for internal links as well, resulting
+  // in having the external link icon on these internal links. We attempt to
+  // re-convert these to relative.
+  global $base_url;
+  $internal_url = explode($base_url, $variables['path']);
+  if (count($internal_url) > 1) {
+    $variables['path'] = trim($internal_url[1], '/');
+  }
+
+  return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
+}
