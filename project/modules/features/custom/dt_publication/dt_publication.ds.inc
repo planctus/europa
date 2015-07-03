@@ -41,11 +41,6 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_files' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_publication_published_on' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -121,8 +116,8 @@ function dt_publication_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_publication_meta',
-        1 => 'field_publication_type',
-        2 => 'title',
+        1 => 'title',
+        2 => 'field_publication_type',
         3 => 'field_core_introduction',
         4 => 'field_core_legacy_link',
       ),
@@ -134,30 +129,30 @@ function dt_publication_ds_layout_settings_info() {
       ),
       'central' => array(
         6 => 'group_publication_body',
-        7 => 'body',
-        8 => 'group_publication_related',
-        9 => 'group_publication_file',
-        10 => 'field_core_files',
-        11 => 'field_core_departments',
-        12 => 'field_publication_contact',
-        13 => 'group_publication_contact',
+        7 => 'group_publication_file',
+        8 => 'body',
+        9 => 'group_publication_related',
+        10 => 'group_publication_contact',
+        11 => 'field_core_files',
+        12 => 'field_core_departments',
+        13 => 'field_publication_contact',
       ),
     ),
     'fields' => array(
       'group_publication_meta' => 'left_header',
-      'field_publication_type' => 'left_header',
       'title' => 'left_header',
+      'field_publication_type' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_legacy_link' => 'left_header',
       'group_publication_contextual' => 'top',
       'group_publication_body' => 'central',
+      'group_publication_file' => 'central',
       'body' => 'central',
       'group_publication_related' => 'central',
-      'group_publication_file' => 'central',
+      'group_publication_contact' => 'central',
       'field_core_files' => 'central',
       'field_core_departments' => 'central',
       'field_publication_contact' => 'central',
-      'group_publication_contact' => 'central',
       'field_publication_authors' => 'top',
       'field_publication_published_on' => 'top',
       'field_core_topics' => 'top',
