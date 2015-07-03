@@ -1866,6 +1866,7 @@ function dt_department_field_default_field_instances() {
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
   t('Social Network Links');
+  t('Search for staff');
   t('Staff Search Link');
   t('Tasks description');
   t('Work areas sentence');
