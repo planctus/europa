@@ -79,7 +79,6 @@
             // desktop
             match : function() {
               $breadcrumbWrapper.removeClass('is-open');
-
               if($breadcrumbButton) {
                 $breadcrumbButton.hide();
               }
