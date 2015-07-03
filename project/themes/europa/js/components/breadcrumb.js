@@ -79,8 +79,9 @@
             // desktop
             match : function() {
               $breadcrumbWrapper.removeClass('is-open');
-              $breadcrumbButton.hide();
-
+              if ($($breadcrumbButton).length) {
+                $breadcrumbButton.hide();
+              }
               toggleBreadcrumbSegments();
 
               $(window).resize(function() {
