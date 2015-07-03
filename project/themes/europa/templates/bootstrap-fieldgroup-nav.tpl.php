@@ -33,7 +33,7 @@
     <?php if (!$is_single) : ?>
       <ul class="nav<?php print $nav_classes; ?>">
         <?php foreach ($navs as $index => $nav) : ?>
-          <li class="<?php print $nav['classes']; ?> <?php if ($index === $active) print 'active'; ?>">
+          <li class="<?php if ($index === $active) print 'active'; ?>">
             <?php print $nav['content']; ?>
           </li>
         <?php endforeach; ?>
