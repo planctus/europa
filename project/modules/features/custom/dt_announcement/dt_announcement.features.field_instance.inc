@@ -788,9 +788,8 @@ function dt_announcement_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(

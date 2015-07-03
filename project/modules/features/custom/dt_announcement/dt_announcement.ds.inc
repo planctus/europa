@@ -275,19 +275,6 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_description' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
   );
   $export['node|announcement|meta'] = $ds_fieldsetting;
 
@@ -564,15 +551,13 @@ function dt_announcement_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_announcement_meta',
         1 => 'title_field',
-        2 => 'field_core_description',
-        3 => 'field_announcement_type',
-        4 => 'post_date',
+        2 => 'field_announcement_type',
+        3 => 'post_date',
       ),
     ),
     'fields' => array(
       'group_announcement_meta' => 'main',
       'title_field' => 'main',
-      'field_core_description' => 'main',
       'field_announcement_type' => 'main',
       'post_date' => 'main',
     ),
