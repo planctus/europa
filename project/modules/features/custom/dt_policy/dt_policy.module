@@ -58,7 +58,6 @@ function dt_policy_block_view($delta = '') {
         )
       );
       break;
-
   }
 
   return $block;
