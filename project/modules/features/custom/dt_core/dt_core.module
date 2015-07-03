@@ -270,14 +270,7 @@ function _dt_core_path_update_relatives($path) {
     $nid = $source[1];
     $node = node_load($nid);
 
-    // URL pattern for node type.
-    $pattern = pathauto_pattern_load_by_entity('node', $node->type);
-
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
-      // If URL pattern does not rely on this field, skip.
-      if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
-        continue;
-      }
       // Find children based on field.
       $children = _dt_core_node_get_relatives($nid, $field_name);
       // Add current as first to force re-generate as first.
@@ -365,6 +358,15 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
 
   if ($nids) {
     foreach ($nids as $ref_nid) {
+      if (isset($result['node'][$ref_nid])) {
+        // URL pattern for node type.
+        $pattern = pathauto_pattern_load_by_entity('node', $result['node'][$ref_nid]->type);
+        // If current child URL is not using the field in alias pattern, skip.
+        if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
+          continue;
+        }
+      }
+
       // Find relatives.
       $referenced = _dt_core_node_get_relatives($ref_nid, $field_name, $direction, $no_alias_only, $original_nid);
       // Add the to the list in the appropriate order based on direction.
