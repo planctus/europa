@@ -18,7 +18,7 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'latest_announcements_block' => array(
-      'weight' => '35',
+      'weight' => '40',
       'label' => 'hidden',
       'format' => 'default',
     ),

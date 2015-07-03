@@ -79,7 +79,9 @@
             // desktop
             match : function() {
               $breadcrumbWrapper.removeClass('is-open');
-              $breadcrumbButton.hide();
+              if($breadcrumbButton) {
+                $breadcrumbButton.hide();
+              }
 
               toggleBreadcrumbSegments();
 
@@ -89,7 +91,9 @@
             },
             // mobile
             unmatch : function() {
-              $breadcrumbButton.show();
+              if($breadcrumbButton) {
+                $breadcrumbButton.show();
+              }
               $breadcrumbSegments.removeClass('is-hidden');
 
               $breadcrumbSegmentFirst.removeClass('breadcrumb__segment--next-hidden');
