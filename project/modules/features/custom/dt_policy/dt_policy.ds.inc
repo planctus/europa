@@ -80,7 +80,7 @@ function dt_policy_ds_custom_fields_info() {
   );
   $ds_field->ui_limit = 'policy|full';
   $ds_field->properties = array(
-    'block' => 'views|policy_blocks-block_2',
+    'block' => 'dt_policy|dt_policy_actions',
     'block_render' => '1',
   );
   $export['policy_actions'] = $ds_field;
