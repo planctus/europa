@@ -7019,6 +7019,10 @@ Styleguide footer
   top: 4px;
   margin-right: 8px !important; }
 
+.footer__icon--facebook:after,
+.footer__icon--twitter:after {
+  content: none !important; }
+
 .footer__icon--facebook:before {
   font-size: 22px; }
 
