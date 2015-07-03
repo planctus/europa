@@ -8353,6 +8353,7 @@ Styleguide timeline
       left: -0.5em;
       margin-top: 0.2em; }
   .timeline .timeline__text {
+    margin-top: 0.2em;
     margin-bottom: 1em; }
     .timeline .timeline__text ul,
     .timeline .timeline__text ol {
