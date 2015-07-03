@@ -63,45 +63,6 @@ function dt_policy_input_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function dt_policy_input_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'policy_input_consultation';
-  $ds_field->label = 'Policy input (consultation)';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'policy|*';
-  $ds_field->properties = array(
-    'block' => 'views|policy_blocks-block',
-    'block_render' => '1',
-  );
-  $export['policy_input_consultation'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'policy_input_not_consultation';
-  $ds_field->label = 'Policy input (not consultation)';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'policy|*';
-  $ds_field->properties = array(
-    'block' => 'views|policy_blocks-block_1',
-    'block_render' => '1',
-  );
-  $export['policy_input_not_consultation'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_policy_input_ds_layout_settings_info() {

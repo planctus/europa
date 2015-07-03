@@ -19,6 +19,7 @@ features[field_base][] = field_core_policy_area
 features[field_base][] = field_core_policy_areas
 features[field_group][] = group_content_tabgroup|node|policy_area|form
 features[field_group][] = group_editorial_settings|node|policy_area|form
+features[field_group][] = group_latest_main|node|policy_area|full
 features[field_group][] = group_latest_sidebar|node|policy_area|full
 features[field_group][] = group_policy_area_contact|node|policy_area|form
 features[field_group][] = group_policy_area_content|node|policy_area|form

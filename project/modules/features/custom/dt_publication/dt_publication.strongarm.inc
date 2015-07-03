@@ -20,7 +20,7 @@ function dt_publication_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -49,11 +49,14 @@ function dt_publication_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '11',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
           'weight' => '48',
@@ -62,7 +65,7 @@ function dt_publication_strongarm() {
           'weight' => '45',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '3',
         ),
       ),
       'display' => array(),
@@ -74,7 +77,7 @@ function dt_publication_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_publication';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_publication'] = $strongarm;
 
   $strongarm = new stdClass();

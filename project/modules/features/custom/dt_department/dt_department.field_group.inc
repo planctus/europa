@@ -235,8 +235,8 @@ function dt_department_field_group_info() {
       2 => 'field_department_plans_reports',
       3 => 'field_department_tasks_desc',
       4 => 'field_department_work_areas_sent',
-      5 => 'field_department_tasks',
-      6 => 'field_core_priorities',
+      5 => 'field_core_priorities',
+      6 => 'field_department_tasks',
       7 => 'field_department_mission',
     ),
     'format_type' => 'html-element',
@@ -295,7 +295,9 @@ function dt_department_field_group_info() {
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '15',
-    'children' => array(),
+    'children' => array(
+      0 => 'latest_announcements_block',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Main',

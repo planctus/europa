@@ -18,4 +18,5 @@ tmp
 project/settings.php
 project/sites.php
 project/files
+project/modules/devel
 .DS_Store
