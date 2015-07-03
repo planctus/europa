@@ -674,7 +674,7 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
+          'nexteuropa_ds_layouts_modifier' => 'listing--column-left',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
           'view_mode' => 'meta',
         ),
@@ -1866,7 +1866,6 @@ function dt_department_field_default_field_instances() {
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
   t('Social Network Links');
-  t('Search for staff');
   t('Staff Search Link');
   t('Tasks description');
   t('Work areas sentence');
