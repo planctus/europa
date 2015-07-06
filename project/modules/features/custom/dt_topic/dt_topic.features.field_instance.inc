@@ -86,7 +86,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -260,7 +260,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -463,7 +463,7 @@ function dt_topic_field_default_field_instances() {
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
           'nexteuropa_ds_layouts_modifier' => '',
-          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'nexteuropa_ds_layouts_wrapper_modifier' => 'sidebar-field-group__main',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1000,15 +1000,8 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
-          'nexteuropa_ds_layouts_wrapper_modifier' => 'col-md-6',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 21,
       ),
       'teaser' => array(
@@ -1067,7 +1060,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1134,7 +1127,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1211,7 +1204,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'hidden',
