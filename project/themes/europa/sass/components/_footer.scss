@@ -87,6 +87,10 @@ Styleguide footer
     top: 4px;
     margin-right: 8px !important;
   }
+
+  &:after {
+    content: none !important;
+  }
 }
 
 .footer__icon--facebook {
