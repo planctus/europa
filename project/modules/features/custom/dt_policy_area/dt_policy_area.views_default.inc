@@ -71,12 +71,24 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: Legacy link */
+  $handler->display->display_options['fields']['field_core_legacy_link']['id'] = 'field_core_legacy_link';
+  $handler->display->display_options['fields']['field_core_legacy_link']['table'] = 'field_data_field_core_legacy_link';
+  $handler->display->display_options['fields']['field_core_legacy_link']['field'] = 'field_core_legacy_link';
+  $handler->display->display_options['fields']['field_core_legacy_link']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['fields']['field_core_legacy_link']['label'] = '';
+  $handler->display->display_options['fields']['field_core_legacy_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_core_legacy_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_core_legacy_link']['empty'] = '[path]';
+  $handler->display->display_options['fields']['field_core_legacy_link']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_core_legacy_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_core_legacy_link']['type'] = 'link_plain';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]" class="listing__item-link" title="[title]">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[field_core_legacy_link]" class="listing__item-link" title="[title]">
   <div class="listing__column-main column-main">
     <h3 class="listing__title">[title]</h3>
     <p>[field_core_description]</p>

@@ -237,6 +237,10 @@ function europa_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
+
+  // Temporary variable that should be removed once the beta notification
+  // is gone.
+  $variables['node_about_beta'] = url('node/980');
 }
 
 /**

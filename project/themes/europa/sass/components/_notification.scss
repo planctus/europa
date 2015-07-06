@@ -10,8 +10,9 @@ Styleguide notification
 
 */
 .notification {
-  background: $grey-lighter;
-  padding: 8px 0;
+  background: $grey-lightest;
+  border-bottom: 8px solid $yellow-light;
+  padding: 8px 0 0;
   font-size: 14px;
 }
 
@@ -23,10 +24,43 @@ Styleguide notification
 }
 
 .notification__content {
-  display: inline-block;
+  display: block;
+
+  .notification__text {
+    float: left;
+    margin-bottom: 6px;
+    margin-right: 8px;
+    width: 100%;
+  }
+
+  .notification__btn {
+    font-weight: bold;
+    float: left;
+    margin-bottom: 6px;
+
+     &:after {
+       font-size: 12px;
+       @extend .icon--after;
+       @extend .icon--right;
+     }
+  }
 
   p {
     max-width: none;
     margin: 0;
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .notification__content {
+    display: block;
+
+    .notification__text {
+      width: 75%;
+    }
+
+    .notification__btn {
+      float: right;
+    }
   }
 }
