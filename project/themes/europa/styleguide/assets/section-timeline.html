@@ -134,26 +134,6 @@
           <span class="kss-nav__ref">18</span
           ><span class="kss-nav__name">Site header</span>
         </a>
-        <ul class="kss-nav__menu-child">
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-langselect">
-                <span class="kss-nav__ref">18.1</span
-                ><span class="kss-nav__name">Language select (Site)</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-logo">
-                <span class="kss-nav__ref">18.2</span
-                ><span class="kss-nav__name">Logo</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-siteheader.html#kssref-siteheader-searchform">
-                <span class="kss-nav__ref">18.3</span
-                ><span class="kss-nav__name">Site header</span>
-              </a>
-            </li>
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-social.html">
@@ -172,19 +152,21 @@
           <span class="kss-nav__ref">21</span
           ><span class="kss-nav__name">Timeline</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
     </ul>
   </nav>
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-siteheader" class="kss-section kss-section--depth-1">
+      <div     id="kssref-timeline" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-siteheader">
-          <span class="kss-title__ref">18</span
-          >Site header
+        <a class="kss-title__permalink" href="#kssref-timeline">
+          <span class="kss-title__ref">21</span
+          >Timeline
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
@@ -197,155 +179,35 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    
+          <div class="timeline">
+  <div class="timeline__item">
+    <div class="timeline__timeframe">By late-2015</div>
+    <div class="timeline__text">
+      <ul>
+        <li>The Commission will convene the first energy infrastructure forum to discuss and find solutions to issues that are common to all regions across Europe.</li>
+      </ul>
+    </div>
   </div>
-</header>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    
-  &lt;/div&gt;
-&lt;/header&gt;
-</code></pre>
-      </div>
-
-      </div>
-      <section id="kssref-siteheader-langselect" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-langselect">
-          <span class="kss-title__ref">18.1</span
-          >Language select (Site)
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-      <div class="kss-description">
-        <p>Language selector that is used across the whole site</p>
-
-      </div>
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    <div class="lang-select-site">
-      <a href="" class="lang-select-site__link">
-        <span class="lang-select-site__link">English</span>
-        <span class="lang-select-site__code">
-          <span class="icon icon--language lang-select-site__icon"></span>
-          <span class="lang-select-site__code-text">en</span>
-        </span>
-      </a>
-    </div>
-  </div>
-</header>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    &lt;div class=&quot;lang-select-site&quot;&gt;
-      &lt;a href=&quot;&quot; class=&quot;lang-select-site__link&quot;&gt;
-        &lt;span class=&quot;lang-select-site__link&quot;&gt;English&lt;/span&gt;
-        &lt;span class=&quot;lang-select-site__code&quot;&gt;
-          &lt;span class=&quot;icon icon--language lang-select-site__icon&quot;&gt;&lt;/span&gt;
-          &lt;span class=&quot;lang-select-site__code-text&quot;&gt;en&lt;/span&gt;
-        &lt;/span&gt;
-      &lt;/a&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;timeline&quot;&gt;
+  &lt;div class=&quot;timeline__item&quot;&gt;
+    &lt;div class=&quot;timeline__timeframe&quot;&gt;By late-2015&lt;/div&gt;
+    &lt;div class=&quot;timeline__text&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;The Commission will convene the first energy infrastructure forum to discuss and find solutions to issues that are common to all regions across Europe.&lt;/li&gt;
+      &lt;/ul&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/header&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 
-      </section>
-      <section id="kssref-siteheader-logo" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-logo">
-          <span class="kss-title__ref">18.2</span
-          >Logo
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-      <div class="kss-description">
-        <p>Ec logo</p>
-
       </div>
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <a href="link-to-homepage" class="logo" title="Home"></a>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;link-to-homepage&quot; class=&quot;logo&quot; title=&quot;Home&quot;&gt;&lt;/a&gt;
-</code></pre>
-      </div>
-
-      </section>
-      <section id="kssref-siteheader-searchform" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-siteheader-searchform">
-          <span class="kss-title__ref">18.3</span
-          >Site header
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <header class="site-header" role="banner">
-  <div class="container-fluid">
-    
-  </div>
-</header>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;header class=&quot;site-header&quot; role=&quot;banner&quot;&gt;
-  &lt;div class=&quot;container-fluid&quot;&gt;
-    
-  &lt;/div&gt;
-&lt;/header&gt;
-</code></pre>
-      </div>
-
-      </section>
 </article>
 
 <!-- SCRIPTS -->
