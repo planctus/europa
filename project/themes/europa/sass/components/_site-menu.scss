@@ -1,6 +1,7 @@
-.site-menu {
-  .js > & {
-    display: none;
+.js .site-menu {
+  height: 0;
+  &.collapse {
+    height: inherit;
   }
 }
 
@@ -8,5 +9,17 @@
   @extend .row--separated;
   &:last-child {
     border: none;
+  }
+}
+
+.site-menu__toggle {
+  position: static;
+  float: left;
+  padding-left: 10px;
+}
+
+.site-menu {
+  .btn-ctn {
+    @extend .btn-ctn--border;
   }
 }

@@ -429,6 +429,12 @@ function dt_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',

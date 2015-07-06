@@ -5637,6 +5637,43 @@ Styleguide buttons
     .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after {
       margin-left: 10px;
       font-size: 0.8em; }
+  .btn.btn-menu, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle {
+    border-color: #fff;
+    background: #004494; }
+    .btn.btn-menu:hover,
+    .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:hover,
+    .btn.btn-menu:active, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:active {
+      color: #fff; }
+    .btn.btn-menu:focus, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:focus {
+      color: #fff;
+      background: #004494;
+      border-color: #ffd617;
+      outline-color: #ffd617; }
+    .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after {
+      margin-left: 6px !important;
+      font-size: 0.45em;
+      top: -2px;
+      position: relative;
+      transition: all 0.3s ease 0s; }
+    .btn.btn-menu.is-collapsed:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.is-collapsed.inpage-nav__toggle:after {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg); }
+
+.btn-ctn--border, .site-menu .btn-ctn {
+  background: #ffd617;
+  color: #000;
+  border-color: #000; }
+  .btn-ctn--border:hover,
+  .site-menu .btn-ctn:hover,
+  .btn-ctn--border:active, .site-menu .btn-ctn:active {
+    border-color: #000; }
+  .btn-ctn--border:focus, .site-menu .btn-ctn:focus {
+    border-color: #404040;
+    outline-color: #404040; }
+  .btn-ctn--border:after, .site-menu .btn-ctn:after {
+    display: none; }
 
 .btn--no-margin-bottom * {
   margin-bottom: 0 !important; }
@@ -7028,6 +7065,10 @@ Styleguide footer
   top: 4px;
   margin-right: 8px !important; }
 
+.footer__icon--facebook:after,
+.footer__icon--twitter:after {
+  content: none !important; }
+
 .footer__icon--facebook:before {
   font-size: 22px; }
 
@@ -7156,7 +7197,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .listing--site-menu .listing__item .listing__title:after, .file__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .listing--site-menu .listing__item .listing__title:after, .file__btn:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7172,10 +7213,10 @@ Styleguide: icon
 .icon--external, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .icon--external:before {
   content: '\e61a'; }
 
-.icon--arrow-up:before {
+.icon--arrow-up, .icon--arrow-up:before {
   content: '\e61e'; }
 
-.icon--arrow-down:before {
+.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before {
   content: '\e61d'; }
 
 .icon--spinner:before {
@@ -8279,10 +8320,17 @@ Styleguide file
     float: right;
     margin-top: 0; } }
 
-.js > .site-menu {
-  display: none; }
+.js .site-menu {
+  height: 0; }
+  .js .site-menu.collapse {
+    height: inherit; }
 
 .site-menu__row:last-child {
   border: none; }
+
+.site-menu__toggle {
+  position: static;
+  float: left;
+  padding-left: 10px; }
 
 /*# sourceMappingURL=style-sass.css.map */

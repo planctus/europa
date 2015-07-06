@@ -94,6 +94,57 @@ Styleguide buttons
       @extend .icon--right;
     }
   }
+
+  &.btn-menu {
+    border-color: #fff;
+    background: $brand-primary;
+    &:hover,
+    &:active {
+      color: #fff;
+    }
+
+    &:focus {
+      color: #fff;
+      background: $brand-primary;
+      border-color: $yellow-light;
+      outline-color: $yellow-light;
+    }
+
+    &:after {
+      margin-left: 6px !important;
+      font-size: 0.45em;
+      top: -2px;
+      position: relative;
+      transition: all 0.3s ease 0s;
+      @extend .icon--after;
+      @extend .icon--arrow-down;
+    }
+
+    &.is-collapsed {
+      &:after {
+        @include rotate(180deg);
+      }
+    }
+  }
+}
+
+.btn-ctn--border {
+  background: $yellow-light;
+  color: #000;
+  border-color: #000;
+  &:hover,
+  &:active {
+    border-color: #000;
+  }
+
+  &:focus {
+    border-color: $text-color;
+    outline-color: $text-color;
+  }
+
+  &:after {
+    display: none;
+  }
 }
 
 
