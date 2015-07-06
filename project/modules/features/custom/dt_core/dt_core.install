@@ -28,6 +28,7 @@ function dt_core_install() {
     'dt_topic',
     'nexteuropa_file',
     'dt_page',
+    'dt_site_menu'
   );
   module_enable($features);
 
@@ -403,4 +404,11 @@ function dt_core_update_7128() {
     features_revert_module($feature);
     drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
   }
+}
+
+/**
+ * Enable dt_site_menu module.
+ */
+function dt_core_update_7129() {
+  module_enable(array('dt_site_menu'));
 }
