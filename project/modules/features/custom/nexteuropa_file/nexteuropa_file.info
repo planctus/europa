@@ -10,7 +10,6 @@ dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
-features[ds_field_settings][] = node|policy|full
 features[ds_layout_settings][] = node|file|file
 features[ds_view_modes][] = file
 features[features_api][] = api:2
