@@ -18,6 +18,7 @@ features[ds_field_settings][] = node|department|meta
 features[ds_fields][] = find_a_staff_member
 features[ds_layout_settings][] = node|department|full
 features[ds_layout_settings][] = node|department|meta
+features[ds_layout_settings][] = node|department|title
 features[features_api][] = api:2
 features[field_base][] = field_core_department
 features[field_base][] = field_core_departments
