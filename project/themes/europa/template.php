@@ -867,7 +867,8 @@ function europa_easy_breadcrumb($variables) {
       $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
       if (isset($item['url'])) {
         // Ugly hotfix.
-        // TODO: Remove when https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457 is fixed.
+        // TODO: Remove when following issue is fixed:
+        // @see https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457
         $item['url'] = $item['url'] == '<front>' ? '' : $item['url'];
         $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
       }
@@ -899,7 +900,7 @@ function europa_easy_breadcrumb($variables) {
  *   Url depending on field type.
  *
  * @return string
- *    HTML markup.
+ *   HTML markup.
  */
 function _europa_file_markup($file, array $url) {
   $file_class = '';

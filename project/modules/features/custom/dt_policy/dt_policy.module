@@ -5,3 +5,60 @@
  */
 
 include_once 'dt_policy.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function dt_policy_block_info() {
+
+  $blocks['dt_policy_actions'] = array(
+    'info' => t('Policy Actions'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function dt_policy_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'dt_policy_actions':
+      $node = menu_get_object();
+      if (!$node || $node->type !== 'policy') {
+        break;
+      }
+      $policy = entity_metadata_wrapper('node', $node);
+      $implementations = $policy->field_policy_implementations->value();
+      $inputs = $policy->field_policy_input->value();
+      foreach ($inputs as $key => $item) {
+        $input = entity_metadata_wrapper('node', $item);
+        if ($input->field_policy_input_type->value() !== 'consultation') {
+          unset($inputs[$key]);
+        }
+      }
+      $actions = array_merge($implementations, $inputs);
+      usort($actions, function($a, $b) {
+        return $a->created <= $b->created;
+      });
+
+      $items = array();
+      foreach ($actions as $key => $action) {
+        $items[$key] = drupal_render(node_view($action, 'teaser'));
+      }
+
+      $block['content'] = theme('nexteuropa_bem_item_list',
+        array(
+          'items' => $items,
+          'modifiers' => array('listing--teaser'),
+          'attributes' => array('class' => array('test')),
+        )
+      );
+      break;
+  }
+
+  return $block;
+}
