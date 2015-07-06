@@ -7821,9 +7821,6 @@ Styleguide listing.column-left
 .listing__wrapper--row-two .listing__item:nth-child(odd) {
   clear: left; }
 
-.listing__wrapper--row-two .listing__item:nth-child(even) {
-  float: none; }
-
 .listing__wrapper--row-three .listing__item {
   margin-top: 15px; }
 
