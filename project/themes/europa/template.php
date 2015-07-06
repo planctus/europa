@@ -493,14 +493,14 @@ function _europa_menu_link__footer(array &$variables) {
 }
 
 /**
- * Implements theme_menu_link().
+ * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
   return _europa_menu_link__footer($variables);
 }
 
 /**
- * Implements theme_menu_link().
+ * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
 
@@ -508,7 +508,7 @@ function europa_menu_link__menu_dt_menu_social_media(&$variables) {
 }
 
 /**
- * Implements hook_html_head_alter().
+ * Override hook_html_head_alter().
  */
 function europa_html_head_alter(&$head_elements) {
   // Creating favicons links and meta tags for the html header.
@@ -832,7 +832,7 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 }
 
 /**
- * Implements theme_easy_breadcrumb().
+ * Override theme_easy_breadcrumb().
  */
 function europa_easy_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
@@ -961,7 +961,7 @@ function _europa_file_markup($file, array $url) {
 }
 
 /**
- * Implements theme_file_link().
+ * Override theme_file_link().
  */
 function europa_file_link($variables) {
   $file = $variables['file'];
@@ -972,11 +972,27 @@ function europa_file_link($variables) {
 }
 
 /**
- * Implements theme_file_entity_download_link().
+ * Override theme_file_entity_download_link().
  */
 function europa_file_entity_download_link($variables) {
   $file = $variables['file'];
   $uri = file_entity_download_uri($file);
 
   return _europa_file_markup($file, $uri);
+}
+
+/**
+ * Overrides theme_link().
+ */
+function europa_link($variables) {
+  // Link module creates absolute URLs for internal links as well, resulting
+  // in having the external link icon on these internal links. We attempt to
+  // re-convert these to relative.
+  global $base_url;
+  $internal_url = explode($base_url, $variables['path']);
+  if (count($internal_url) > 1) {
+    $variables['path'] = trim($internal_url[1], '/');
+  }
+
+  return theme_link($variables);
 }
