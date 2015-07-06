@@ -114,6 +114,7 @@ function dt_site_menu_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'field_site_menu_third',
+      1 => 'topics_atoz',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

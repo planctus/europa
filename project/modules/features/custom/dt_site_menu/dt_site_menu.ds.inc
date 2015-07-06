@@ -17,6 +17,11 @@ function dt_site_menu_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'site_menu';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'topics_atoz' => array(
+      'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'field_site_menu_third' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -105,11 +110,12 @@ function dt_site_menu_ds_layout_settings_info() {
         9 => 'field_site_menu_second',
         10 => 'group_site_menu_third_left',
         11 => 'group_site_menu_second_left',
-        12 => 'field_site_menu_third',
-        13 => 'group_site_menu_third_right',
-        14 => 'field_site_menu_fifth',
-        15 => 'group_site_menu_second_right',
+        12 => 'field_site_menu_fifth',
+        13 => 'field_site_menu_third',
+        14 => 'group_site_menu_third_right',
+        15 => 'topics_atoz',
         16 => 'field_site_menu_sixth',
+        17 => 'group_site_menu_second_right',
       ),
     ),
     'fields' => array(
@@ -125,11 +131,12 @@ function dt_site_menu_ds_layout_settings_info() {
       'field_site_menu_second' => 'ds_content',
       'group_site_menu_third_left' => 'ds_content',
       'group_site_menu_second_left' => 'ds_content',
+      'field_site_menu_fifth' => 'ds_content',
       'field_site_menu_third' => 'ds_content',
       'group_site_menu_third_right' => 'ds_content',
-      'field_site_menu_fifth' => 'ds_content',
-      'group_site_menu_second_right' => 'ds_content',
+      'topics_atoz' => 'ds_content',
       'field_site_menu_sixth' => 'ds_content',
+      'group_site_menu_second_right' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
