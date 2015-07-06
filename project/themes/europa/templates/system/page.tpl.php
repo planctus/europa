@@ -79,11 +79,13 @@
 ?>
 <section class="notification">
   <div class="container-fluid">
-    <span class="notification__label"><?php print t('Beta Notification'); ?></span>
     <div class="notification__content">
-      <p>
-        <?php print t('The <a href="#">websites of the European Commission</a> are being merged here. Find out more about our <a href="#">digital transformation</a>.'); ?>
-      </p>
+      <div class="notification__text">
+        <p>
+          <?php print t('This is a test site for a new design and navigation for the Commission website. It does not replace <a href="#">ec.europa.eu</a>.'); ?>
+        </p>
+      </div>
+      <a class="notification__btn" href="<?php print $node_about_beta; ?>"><?php print t('More about this site'); ?></a>
     </div>
   </div>
 </section>
@@ -159,7 +161,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Generic sections -->
   <div class="container-fluid">
     <?php if (!empty($tabs)): ?>

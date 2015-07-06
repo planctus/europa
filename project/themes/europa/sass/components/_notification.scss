@@ -10,8 +10,8 @@ Styleguide notification
 
 */
 .notification {
-  background: $grey-lighter;
-  padding: 8px 0;
+  border-bottom: 8px solid $yellow-light;
+  padding: 8px 0 0;
   font-size: 14px;
 }
 
@@ -23,7 +23,24 @@ Styleguide notification
 }
 
 .notification__content {
-  display: inline-block;
+  display: block;
+
+  .notification__text {
+    float: left;
+    margin-bottom: 6px;
+  }
+
+  .notification__btn {
+    font-weight: bold;
+    float: right;
+    margin-bottom: 6px;
+
+     &:after {
+       font-size: 12px;
+       @extend .icon--after;
+       @extend .icon--right;
+     }
+  }
 
   p {
     max-width: none;
