@@ -5,11 +5,30 @@
  */
 
 /**
+ * Helper function for importing taxonomy terms.
+ */
+function _dt_publication_import_taxonomy_terms() {
+  $terms = array(
+    'No Source',
+    'EUR-lex',
+    'EC Annual reports',
+    'Open data portal',
+    'Eurofound',
+    'EU Bookshop',
+    'EU Publications Office',
+  );
+  foreach ($terms as $term) {
+    _dt_core_create_taxonomy_term('publication_origin', $term);
+  }
+}
+
+/**
  * Implements hook_install().
  */
 function dt_publication_install() {
   // Apply default dt configuration to "Publication" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('publication');
+  _dt_publication_import_taxonomy_terms();
 
   // Import "Publication Types" terms.
   // Force registration of migration classes.
@@ -81,4 +100,20 @@ function dt_publication_update_7105() {
  */
 function dt_publication_update_7106() {
   features_revert_module('dt_publication');
+}
+
+/**
+ * Reverting feature.
+ */
+function dt_publication_update_7107() {
+  features_revert_module('dt_department');
+  features_revert_module('dt_publication');
+  // Importing taxonomy terms to publication_origin.
+  _dt_publication_import_taxonomy_terms();
+  // Copy content from field_core_department to field_core_department.
+  _dt_core_field_value_copy('node', 'publication', 'field_core_department', 'field_core_departments');
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_department', 'publication')) {
+    field_delete_instance($instance);
+  }
 }

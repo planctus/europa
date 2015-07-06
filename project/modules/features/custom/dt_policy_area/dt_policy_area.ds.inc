@@ -17,6 +17,11 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'latest_announcements_block' => array(
+      'weight' => '40',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'children_policy_areas' => array(
       'weight' => '5',
       'label' => 'hidden',
@@ -103,7 +108,7 @@ function dt_policy_area_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_introduction' => array(
+    'field_core_description' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -182,36 +187,36 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_policy_area_meta',
-        1 => 'title_field',
-        2 => 'content_type_label',
+        1 => 'content_type_label',
+        2 => 'title_field',
         3 => 'field_core_introduction',
       ),
       'top' => array(
         4 => 'group_policy_area_contextual',
-        6 => 'field_core_persons',
+        5 => 'field_core_persons',
       ),
       'central' => array(
-        5 => 'group_policy_area_policy_areas',
-        7 => 'group_policy_area_latest',
-        8 => 'children_policy_areas',
+        6 => 'group_policy_area_latest',
+        7 => 'children_policy_areas',
+        8 => 'field_core_social_network_links',
         9 => 'group_latest_main',
-        10 => 'group_latest_sidebar',
-        11 => 'field_core_social_network_links',
+        10 => 'latest_announcements_block',
+        11 => 'group_latest_sidebar',
       ),
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
-      'title_field' => 'left_header',
       'content_type_label' => 'left_header',
+      'title_field' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_area_contextual' => 'top',
-      'group_policy_area_policy_areas' => 'central',
       'field_core_persons' => 'top',
       'group_policy_area_latest' => 'central',
       'children_policy_areas' => 'central',
-      'group_latest_main' => 'central',
-      'group_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',
+      'group_latest_main' => 'central',
+      'latest_announcements_block' => 'central',
+      'group_latest_sidebar' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -239,12 +244,12 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'main' => array(
         0 => 'title',
-        1 => 'field_core_introduction',
+        1 => 'field_core_description',
       ),
     ),
     'fields' => array(
       'title' => 'main',
-      'field_core_introduction' => 'main',
+      'field_core_description' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
