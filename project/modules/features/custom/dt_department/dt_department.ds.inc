@@ -175,6 +175,27 @@ function dt_department_ds_field_settings_info() {
   );
   $export['node|department|meta'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|department|title';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'department';
+  $ds_fieldsetting->view_mode = 'title';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h3',
+        'class' => 'listing__title',
+        'ft' => array(),
+      ),
+    ),
+  );
+  $export['node|department|title'] = $ds_fieldsetting;
+
   return $export;
 }
 

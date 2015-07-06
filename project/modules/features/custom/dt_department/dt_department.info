@@ -15,6 +15,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|department|full
 features[ds_field_settings][] = node|department|meta
+features[ds_field_settings][] = node|department|title
 features[ds_fields][] = find_a_staff_member
 features[ds_layout_settings][] = node|department|full
 features[ds_layout_settings][] = node|department|meta
