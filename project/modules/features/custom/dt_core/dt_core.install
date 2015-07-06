@@ -406,7 +406,7 @@ function dt_core_update_7128() {
 }
 
 /**
- * Enabling ckeditor link on full_html.
+ * Enabling ckeditor_link on full_html.
  */
 function dt_core_update_7129() {
   // Insert or update the text format settings for full_html text format.
@@ -418,22 +418,24 @@ function dt_core_update_7129() {
     ->execute()
     ->fetchAssoc();
   if (
-    $existing['status'] != "1" &&
+    $existing['status'] != 1 &&
     filter_format_exists('full_html') &&
     module_exists('ckeditor_link')
   ) {
-    $result = db_insert('filter')
-      ->where(array(
-        'format' => 'full_html',
-        'module' => 'ckeditor_link',
-        'name' => 'ckeditor_link_filter',
-      ))
+    // Set status to 1
+    $updated = db_update('filter')
       ->fields(array(
-        'format' => 'full_html',
-        'module' => 'ckeditor_link',
-        'name' => 'ckeditor_link_filter',
-        'status' => "1",
+        'status' => 1,
       ))
+      ->condition('format', 'full_html', '=')
+      ->condition('module', 'ckeditor_link', '=')
+      ->condition('name', 'ckeditor_link_filter', '=')
       ->execute();
+    if ($updated) {
+      drupal_set_message(t("Plugin ckeditor_link was successfully enabled for full_html."));
+    }
+    else {
+      drupal_set_message(t("Error occurred while trying to enable ckeditor_link plugin for full_html.", "error"));
+    }
   }
 }
