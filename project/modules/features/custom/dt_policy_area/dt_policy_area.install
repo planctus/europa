@@ -34,3 +34,10 @@ function dt_policy_area_update_7101() {
 function dt_policy_area_update_7102() {
   features_revert_module('dt_policy_area');
 }
+
+/**
+ * Legacy linking fix for the views policy areas children block.
+ */
+function dt_policy_area_update_7103() {
+  features_revert_module('dt_policy_area');
+}
