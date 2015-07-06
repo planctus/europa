@@ -78,6 +78,7 @@ function dt_class_ds_field_settings_info() {
           'lb' => 'Related links',
           'lb-el' => 'h2',
           'lb-at' => 'id="related-links"',
+          'lb-col' => TRUE,
           'fis' => TRUE,
           'fis-el' => 'ul',
           'fis-cl' => '',
