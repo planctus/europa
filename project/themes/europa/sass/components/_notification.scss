@@ -10,6 +10,7 @@ Styleguide notification
 
 */
 .notification {
+  background: $grey-lightest;
   border-bottom: 8px solid $yellow-light;
   padding: 8px 0 0;
   font-size: 14px;
@@ -28,11 +29,13 @@ Styleguide notification
   .notification__text {
     float: left;
     margin-bottom: 6px;
+    margin-right: 8px;
+    width: 100%;
   }
 
   .notification__btn {
     font-weight: bold;
-    float: right;
+    float: left;
     margin-bottom: 6px;
 
      &:after {
@@ -45,5 +48,19 @@ Styleguide notification
   p {
     max-width: none;
     margin: 0;
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .notification__content {
+    display: block;
+
+    .notification__text {
+      width: 75%;
+    }
+
+    .notification__btn {
+      float: right;
+    }
   }
 }

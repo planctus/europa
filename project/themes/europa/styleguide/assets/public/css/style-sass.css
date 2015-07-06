@@ -8140,6 +8140,7 @@ Styleguide notification
 
 */
 .notification {
+  background: #f2f2f2;
   border-bottom: 8px solid #ffd617;
   padding: 8px 0 0;
   font-size: 14px; }
@@ -8154,16 +8155,26 @@ Styleguide notification
   display: block; }
   .notification__content .notification__text {
     float: left;
-    margin-bottom: 6px; }
+    margin-bottom: 6px;
+    margin-right: 8px;
+    width: 100%; }
   .notification__content .notification__btn {
     font-weight: bold;
-    float: right;
+    float: left;
     margin-bottom: 6px; }
     .notification__content .notification__btn:after {
       font-size: 12px; }
   .notification__content p {
     max-width: none;
     margin: 0; }
+
+@media (min-width: 768px) {
+  .notification__content {
+    display: block; }
+    .notification__content .notification__text {
+      width: 75%; }
+    .notification__content .notification__btn {
+      float: right; } }
 
 /*
 Social Media
