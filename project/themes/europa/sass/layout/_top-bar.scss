@@ -3,13 +3,14 @@
   overflow: hidden;
   width: 100%;
 
-  & > .region {
-    @extend .row;
+  .block-nexteuropa-europa-search {
+    width: 100%;
+    @extend .col-xs-9;
   }
 
-  .block-nexteuropa-europa-search {
-    // @extend .col-xs-9; - use when with Menu
-    @extend .col-xs-12;
+  .site-menu__toggle {
+    width: 100%;
+    @extend .col-xs-3;
   }
 }
 
@@ -27,6 +28,13 @@
       width: auto;
       padding-left: 10px;
       padding-right: 0;
+    }
+
+    .site-menu__toggle {
+      position: static;
+      float: left;
+      padding-left: 10px;
+      width: auto;
     }
   }
 }

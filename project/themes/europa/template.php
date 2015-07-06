@@ -46,6 +46,10 @@ function europa_preprocess_block(&$vars) {
       $vars['classes_array'][] = 'block--full-width';
       break;
 
+    case 'nexteuropa_europa_search_form':
+      $vars['classes_array'][] = 'col-xs-9';
+      break;
+
     case 'menu-dt-menu-social-media':
       $block->subject = t('The European Commission on:');
       break;

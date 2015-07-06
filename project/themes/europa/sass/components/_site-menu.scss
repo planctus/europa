@@ -13,9 +13,9 @@
 }
 
 .site-menu__toggle {
-  position: static;
-  float: left;
-  padding-left: 10px;
+  .btn {
+    width: 100%;
+  }
 }
 
 .site-menu {

@@ -5,7 +5,7 @@
       var $topBar = $('.region-header');
 
       $siteMenu.once('site_menu', function() {
-        var $menuButton = $('<section class="site-menu__toggle"><button class="btn btn-menu">' + Drupal.t('Menu') + '</button></section>');
+        var $menuButton = $('<section class="site-menu__toggle col-xs-3"><button class="btn btn-menu">' + Drupal.t('Menu') + '</button></section>');
         $topBar.append($menuButton);
         $siteMenu.addClass('collapse');
         $menuButton.click(function() {

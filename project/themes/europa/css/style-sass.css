@@ -1343,36 +1343,35 @@ pre {
   .container-fluid:after, .section__group--full-width > :after, .block--full-width > :after, .field--full-width > :after {
     clear: both; }
 
-.row, .top-bar > .region, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
+.row, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
 .listing__wrapper--two-columns, .listing__wrapper--row-three .listing,
 .listing__wrapper--row-two .listing {
   margin-left: -15px;
   margin-right: -15px; }
   .row:before,
-  .top-bar > .region:before,
   .sidebar-field-group:before,
   .context-nav:before,
   .listing__wrapper--three-columns:before,
   .listing__wrapper--two-columns:before,
   .listing__wrapper--row-three .listing:before,
   .listing__wrapper--row-two .listing:before,
-  .row:after, .top-bar > .region:after, .sidebar-field-group:after, .context-nav:after, .listing__wrapper--three-columns:after,
+  .row:after, .sidebar-field-group:after, .context-nav:after, .listing__wrapper--three-columns:after,
   .listing__wrapper--two-columns:after, .listing__wrapper--row-three .listing:after,
   .listing__wrapper--row-two .listing:after {
     content: " ";
     display: table; }
-  .row:after, .top-bar > .region:after, .sidebar-field-group:after, .context-nav:after, .listing__wrapper--three-columns:after,
+  .row:after, .sidebar-field-group:after, .context-nav:after, .listing__wrapper--three-columns:after,
   .listing__wrapper--two-columns:after, .listing__wrapper--row-three .listing:after,
   .listing__wrapper--row-two .listing:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .top-bar .block-nexteuropa-europa-search, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .top-bar .site-menu__toggle, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .col-lg-8, .col-xs-9, .top-bar .block-nexteuropa-europa-search, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .top-bar .block-nexteuropa-europa-search, .context-nav__label, .context-nav__items {
+.col-xs-1, .col-xs-2, .col-xs-3, .top-bar .site-menu__toggle, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .top-bar .block-nexteuropa-europa-search, .col-xs-10, .col-xs-11, .col-xs-12, .context-nav__label, .context-nav__items {
   float: left; }
 
 .col-xs-1 {
@@ -1381,7 +1380,7 @@ pre {
 .col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3 {
+.col-xs-3, .top-bar .site-menu__toggle {
   width: 25%; }
 
 .col-xs-4 {
@@ -1399,7 +1398,7 @@ pre {
 .col-xs-8 {
   width: 66.6666666667%; }
 
-.col-xs-9 {
+.col-xs-9, .top-bar .block-nexteuropa-europa-search {
   width: 75%; }
 
 .col-xs-10 {
@@ -1408,7 +1407,7 @@ pre {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, .top-bar .block-nexteuropa-europa-search, .context-nav__label, .context-nav__items {
+.col-xs-12, .context-nav__label, .context-nav__items {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -5558,7 +5557,7 @@ blockquote {
 ul.list-inline > li {
   display: inline-block; }
 
-.row, .top-bar > .region, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
+.row, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
 .listing__wrapper--two-columns, .listing__wrapper--row-three .listing,
 .listing__wrapper--row-two .listing {
   padding: 15px 0; }
@@ -6269,7 +6268,7 @@ Styleguide form.textarea
 .container-fluid, .section__group--full-width > *, .block--full-width > *, .field--full-width > * {
   max-width: 1170px; }
 
-.row, .top-bar > .region, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
+.row, .sidebar-field-group, .context-nav, .listing__wrapper--three-columns,
 .listing__wrapper--two-columns, .listing__wrapper--row-three .listing,
 .listing__wrapper--row-two .listing {
   padding-top: 0;
@@ -6284,6 +6283,10 @@ Styleguide form.textarea
   margin-top: 15px;
   overflow: hidden;
   width: 100%; }
+  .top-bar .block-nexteuropa-europa-search {
+    width: 100%; }
+  .top-bar .site-menu__toggle {
+    width: 100%; }
 
 @media (min-width: 992px) {
   .top-bar {
@@ -6295,7 +6298,12 @@ Styleguide form.textarea
     .top-bar .block-nexteuropa-europa-search {
       width: auto;
       padding-left: 10px;
-      padding-right: 0; } }
+      padding-right: 0; }
+    .top-bar .site-menu__toggle {
+      position: static;
+      float: left;
+      padding-left: 10px;
+      width: auto; } }
 
 .page-content {
   margin-top: 60px;
@@ -8328,9 +8336,7 @@ Styleguide file
 .site-menu__row:last-child {
   border: none; }
 
-.site-menu__toggle {
-  position: static;
-  float: left;
-  padding-left: 10px; }
+.site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .site-menu__toggle .inpage-nav__toggle {
+  width: 100%; }
 
 /*# sourceMappingURL=style-sass.css.map */
