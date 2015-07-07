@@ -22,6 +22,7 @@ ul.nav-tabs,
         border-top: 2px solid $grey;
         border-right: 2px solid $grey;
         border-left: 2px solid $grey;
+        color: $grey-base;
 
         &:hover,
         &:active,
@@ -30,6 +31,7 @@ ul.nav-tabs,
           border-top: 2px solid $grey;
           border-right: 2px solid $grey;
           border-left: 2px solid $grey;
+          color: $grey-base;
         }
 
         &:focus {

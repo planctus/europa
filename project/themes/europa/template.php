@@ -788,6 +788,17 @@ function europa_field($variables) {
       break;
   }
 
+  switch ($element['#formatter']) {
+    case 'context_nav_item':
+      $output = '';
+
+      // Render the items.
+      foreach ($variables['items'] as $delta => $item) {
+        $output .= drupal_render($item);
+      }
+      return $output;
+  }
+
   $output = '';
   $classes = array();
 

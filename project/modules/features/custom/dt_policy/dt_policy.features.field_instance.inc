@@ -346,7 +346,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 22,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',
@@ -395,7 +395,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 6,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'nexteuropa_ds_layouts',
         'settings' => array(),
         'type' => 'context_nav_item',

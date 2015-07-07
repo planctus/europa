@@ -6145,7 +6145,8 @@ ul.nav-tabs,
       border-bottom: 2px solid #fff;
       border-top: 2px solid #b3b4b5;
       border-right: 2px solid #b3b4b5;
-      border-left: 2px solid #b3b4b5; }
+      border-left: 2px solid #b3b4b5;
+      color: #404040; }
       ul.nav-tabs > li.active > a:hover,
       ul.nav-tabs > li.active > a:active,
       ul.nav-tabs > li.active > a:focus,
@@ -6155,7 +6156,8 @@ ul.nav-tabs,
         border-bottom: 2px solid #fff;
         border-top: 2px solid #b3b4b5;
         border-right: 2px solid #b3b4b5;
-        border-left: 2px solid #b3b4b5; }
+        border-left: 2px solid #b3b4b5;
+        color: #404040; }
       ul.nav-tabs > li.active > a:focus,
       .nav-tabs > li.active > a:focus {
         background: #ffd617;
