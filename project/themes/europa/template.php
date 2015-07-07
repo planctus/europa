@@ -237,6 +237,10 @@ function europa_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
+
+  // Temporary variable that should be removed once the beta notification
+  // is gone.
+  $variables['node_about_beta'] = url('node/980');
 }
 
 /**
@@ -708,7 +712,7 @@ function _europa_field_component_listing($variables, $config) {
       // Row content.
       switch ($config['view_mode']) {
         case 'title':
-          $rendered_item = '<h3 class="listing__title">' . drupal_render($item) . '</h3>';
+          $rendered_item = '' . drupal_render($item) . '';
           break;
 
         default:

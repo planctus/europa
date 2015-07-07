@@ -41,3 +41,4 @@ function dt_policy_area_update_7102() {
 function dt_policy_area_update_7103() {
   features_revert_module('dt_policy_area');
 }
+

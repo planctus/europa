@@ -28,6 +28,7 @@ function dt_core_install() {
     'dt_topic',
     'nexteuropa_file',
     'dt_page',
+    'dt_site_menu'
   );
   module_enable($features);
 
@@ -403,4 +404,46 @@ function dt_core_update_7128() {
     features_revert_module($feature);
     drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
   }
+}
+
+/**
+ * Enabling ckeditor_link on full_html.
+ */
+function dt_core_update_7129() {
+  // Insert or update the text format settings for full_html text format.
+  $existing = db_select('filter', 'status')
+    ->fields('status')
+    ->condition('format', 'full_html', '=')
+    ->condition('module', 'ckeditor_link', '=')
+    ->condition('name', 'ckeditor_link_filter', '=')
+    ->execute()
+    ->fetchAssoc();
+  if (
+    $existing['status'] != 1 &&
+    filter_format_exists('full_html') &&
+    module_exists('ckeditor_link')
+  ) {
+    // Set status to 1
+    $updated = db_update('filter')
+      ->fields(array(
+        'status' => 1,
+      ))
+      ->condition('format', 'full_html', '=')
+      ->condition('module', 'ckeditor_link', '=')
+      ->condition('name', 'ckeditor_link_filter', '=')
+      ->execute();
+    if ($updated) {
+      drupal_set_message(t("Plugin ckeditor_link was successfully enabled for full_html."));
+    }
+    else {
+      drupal_set_message(t("Error occurred while trying to enable ckeditor_link plugin for full_html.", "error"));
+    }
+  }
+}
+
+/**
+ * Enable dt_site_menu module.
+ */
+function dt_core_update_7130() {
+  module_enable(array('dt_site_menu'));
 }
