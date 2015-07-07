@@ -93,9 +93,12 @@ function dt_policy_area_strongarm() {
         'custom_settings' => FALSE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -124,6 +127,10 @@ function dt_policy_area_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'title' => array(
             'weight' => '4',
             'visible' => FALSE,
           ),

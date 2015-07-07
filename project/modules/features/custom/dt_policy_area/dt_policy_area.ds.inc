@@ -17,18 +17,15 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
-      'weight' => '16',
+    'children_policies' => array(
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'children_policy_areas' => array(
-      'weight' => '6',
+    'latest_announcements_block' => array(
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
     ),
     'content_type_label' => array(
       'weight' => '1',
@@ -47,7 +44,7 @@ function dt_policy_area_ds_field_settings_info() {
       ),
     ),
     'children_policy_areas' => array(
-      'weight' => '5',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -132,6 +129,23 @@ function dt_policy_area_ds_field_settings_info() {
   );
   $export['node|policy_area|teaser'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|policy_area|title';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'policy_area';
+  $ds_fieldsetting->view_mode = 'title';
+  $ds_fieldsetting->settings = array(
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|policy_area|title'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -140,6 +154,21 @@ function dt_policy_area_ds_field_settings_info() {
  */
 function dt_policy_area_ds_custom_fields_info() {
   $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'children_policies';
+  $ds_field->label = 'Children policies';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'policy_area|*';
+  $ds_field->properties = array(
+    'block' => 'views|c47c600594924567e40e41a9b0e110f6',
+    'block_render' => '1',
+  );
+  $export['children_policies'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -177,36 +206,34 @@ function dt_policy_area_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'group_policy_area_meta',
         1 => 'title_field',
-        2 => 'content_type_label',
-        3 => 'field_core_introduction',
-      ),
-      'top' => array(
-        4 => 'group_policy_area_contextual',
-        5 => 'field_core_persons',
+        3 => 'content_type_label',
+        4 => 'field_core_introduction',
       ),
       'central' => array(
-        6 => 'group_policy_area_policy_area',
-        7 => 'group_policy_area_latest',
-        8 => 'children_policy_areas',
-        9 => 'latest_announcements_block',
-        10 => 'field_core_policy_area',
-        11 => 'field_core_social_network_links',
-        12 => 'group_latest_main',
-        13 => 'group_latest_sidebar',
+        2 => 'latest_announcements_block',
+        6 => 'children_policy_areas',
+        8 => 'children_policies',
+        9 => 'group_policy_area_latest',
+        10 => 'field_core_social_network_links',
+        11 => 'group_latest_main',
+        12 => 'group_latest_sidebar',
+      ),
+      'top' => array(
+        5 => 'group_policy_area_contextual',
+        7 => 'field_core_persons',
       ),
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
       'title_field' => 'left_header',
+      'latest_announcements_block' => 'central',
       'content_type_label' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_area_contextual' => 'top',
-      'field_core_persons' => 'top',
-      'group_policy_area_policy_area' => 'central',
-      'group_policy_area_latest' => 'central',
       'children_policy_areas' => 'central',
-      'latest_announcements_block' => 'central',
-      'field_core_policy_area' => 'central',
+      'field_core_persons' => 'top',
+      'children_policies' => 'central',
+      'group_policy_area_latest' => 'central',
       'field_core_social_network_links' => 'central',
       'group_latest_main' => 'central',
       'group_latest_sidebar' => 'central',
