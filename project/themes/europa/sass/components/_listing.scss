@@ -67,9 +67,17 @@ $spacing-bottom-listing__title: 0.7em;
 }
 
 .listing__column-second {
-  float: right;
   width: 100%;
   margin: 0.2em 0 0.8em 0;
+}
+
+.listing__column-second--no-link {
+  padding-top: 0.5em;
+  margin: 0;
+
+  .btn {
+    margin-bottom: 0;
+  }
 }
 
 .listing__column-main {
@@ -191,6 +199,7 @@ $spacing-bottom-listing__title: 0.7em;
 
 @include breakpoint(screen-xs-min) {
   .listing__column-second {
+    float: right;
     width: 25%;
     padding-left: 15px;
     margin: 0;
@@ -198,6 +207,21 @@ $spacing-bottom-listing__title: 0.7em;
     & + .listing__column-main {
       width: 75%;
     }
+  }
+
+  .listing__column-second--no-link {
+    width: 100%;
+    float: none;
+    padding-left: 0;
+  }
+}
+
+@include breakpoint(screen-msm-min) {
+  .listing__column-second--no-link {
+    float: right;
+    width: 25%;
+    padding-left: 15px;
+    padding-top: 0.85em;
   }
 }
 

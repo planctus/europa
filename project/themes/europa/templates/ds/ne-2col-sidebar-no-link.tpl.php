@@ -11,13 +11,13 @@
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
-  <a href="<?php print $node_url; ?>">
-    <?php if (!empty($second)): ?>
-      <<?php print $second_wrapper; ?> class="column-second <?php print $second_classes; ?>">
-        <?php print $second; ?>
-      </<?php print $second_wrapper; ?>>
-    <?php endif; ?>
-    <<?php print $main_wrapper; ?> class="column-main <?php print $main_classes; ?>">
+  <?php if (!empty($second)): ?>
+    <<?php print $second_wrapper; ?> class="listing__column-second listing__column-second--no-link column-second <?php print $second_classes; ?>">
+      <?php print $second; ?>
+    </<?php print $second_wrapper; ?>>
+  <?php endif; ?>
+  <a href="<?php print $node_url; ?>" class="listing__item-link">
+    <<?php print $main_wrapper; ?> class="listing__column-main column-main <?php print $main_classes; ?>">
       <?php print $main; ?>
     </<?php print $main_wrapper; ?>>
   </a>
