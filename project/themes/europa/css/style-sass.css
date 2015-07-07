@@ -5820,7 +5820,11 @@ Styleguide buttons.btn-block
   width: 100%;
   max-width: 450px;
   text-align: left;
-  margin-bottom: -2px; }
+  margin-bottom: -2px;
+  white-space: normal;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  line-height: 1.667; }
   .btn-block:last-child {
     margin-bottom: 10px; }
   .btn-block + .btn-block {
