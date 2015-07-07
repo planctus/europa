@@ -18,6 +18,7 @@ features[ds_field_settings][] = node|topic|full
 features[ds_field_settings][] = node|topic|title
 features[ds_layout_settings][] = node|topic|default
 features[ds_layout_settings][] = node|topic|full
+features[ds_layout_settings][] = node|topic|teaser
 features[ds_layout_settings][] = node|topic|title
 features[features_api][] = api:2
 features[field_base][] = field_core_topics

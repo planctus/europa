@@ -28,6 +28,7 @@ function dt_core_install() {
     'dt_topic',
     'nexteuropa_file',
     'dt_page',
+    'dt_site_menu'
   );
   module_enable($features);
 
@@ -438,4 +439,11 @@ function dt_core_update_7129() {
       drupal_set_message(t("Error occurred while trying to enable ckeditor_link plugin for full_html.", "error"));
     }
   }
+}
+
+/**
+ * Enable dt_site_menu module.
+ */
+function dt_core_update_7130() {
+  module_enable(array('dt_site_menu'));
 }
