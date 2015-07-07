@@ -1,0 +1,72 @@
+<?php
+/**
+ * @file
+ * DT Site Menu install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_site_menu_install() {
+
+}
+
+/**
+ * Implements hook_enable().
+ */
+function dt_site_menu_enable() {
+  _dt_site_init_menu();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_site_menu_uninstall() {
+  $path = drupal_get_path('module', 'dt_site_menu') . '/dt_site_menu.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Site Menu %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Creates custom context and bean for site menu.
+ */
+function _dt_site_init_menu() {
+  // Create empty menu bean.
+  $menu_values = array(
+    'label' => 'Information Site Menu',
+    'type' => 'site_menu',
+  );
+
+  $menu = entity_create('bean', $menu_values);
+  entity_save('bean', $menu);
+
+  // Create context to handle menu position.
+  ctools_include('export');
+  $context = ctools_export_new_object('context');
+  $context->name = 'dt_site_menu';
+  $context->description = '';
+  $context->tag = 'Digital Transformation';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'bean-information-site-menu' => array(
+          'module' => 'bean',
+          'delta' => 'information-site-menu',
+          'region' => 'header_bottom',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+
+  $saved = context_save($context);
+  $link = url("block/information-site-menu/edit");
+  drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', array('!edit' => $link)));
+}

@@ -15,7 +15,7 @@ $spacing-bottom-listing__title: 0.7em;
 }
 
 .listing__wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 1.667em;
 }
 
 .listing__item {
@@ -100,7 +100,22 @@ $spacing-bottom-listing__title: 0.7em;
 
 .listing--no-border {
   .listing__item {
-    border: none;
+    border: none !important;
+  }
+}
+
+.listing--short-spaced {
+  .listing__item-link {
+    padding-top: 0.5em !important;
+    padding-bottom: 0 !important;
+  }
+
+  .listing__item {
+    &:first-child {
+      .listing__item-link {
+        padding-top: 0 !important;
+      }
+    }
   }
 }
 
@@ -158,13 +173,19 @@ $spacing-bottom-listing__title: 0.7em;
   }
   .listing__title {
     &:after {
-      margin-left: 10px;
-      font-size: 1.2em;
-      top: 4px;
-      position: relative;
-      @extend .icon--after;
-      @extend .icon--right;
+      @extend .listing__title--arrow;
     }
+  }
+}
+
+.listing__title--arrow {
+  &:after {
+    margin-left: 10px;
+    font-size: 1.2em;
+    top: 4px;
+    position: relative;
+    @extend .icon--after;
+    @extend .icon--right;
   }
 }
 
@@ -203,6 +224,7 @@ ul.listing--title {
     }
   }
 
+  .listing__item-link,
   .listing__title {
     padding: 0;
     margin: 0;
@@ -210,7 +232,7 @@ ul.listing--title {
   }
 
   a.listing__title,
-  .listing__title a {
+  a .listing__title {
     display: block;
     padding-top: $spacing-top-listing__title;
     padding-bottom: $spacing-bottom-listing__title;
