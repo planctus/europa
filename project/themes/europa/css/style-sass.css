@@ -1365,13 +1365,13 @@ pre {
   .listing__wrapper--row-two .listing:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .top-bar .site-menu__toggle, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .col-lg-8, .col-xs-9, .top-bar .block-nexteuropa-europa-search, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .top-bar .site-menu__toggle, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .top-bar .block-nexteuropa-europa-search, .col-xs-10, .col-xs-11, .col-xs-12, .context-nav__label, .context-nav__items {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .context-nav__label, .context-nav__items {
   float: left; }
 
 .col-xs-1 {
@@ -1380,7 +1380,7 @@ pre {
 .col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3, .top-bar .site-menu__toggle {
+.col-xs-3 {
   width: 25%; }
 
 .col-xs-4 {
@@ -1398,7 +1398,7 @@ pre {
 .col-xs-8 {
   width: 66.6666666667%; }
 
-.col-xs-9, .top-bar .block-nexteuropa-europa-search {
+.col-xs-9 {
   width: 75%; }
 
 .col-xs-10 {
@@ -5643,6 +5643,10 @@ Styleguide buttons
     .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:hover,
     .btn.btn-menu:active, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:active {
       color: #fff; }
+    .btn.btn-menu:active,
+    .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:active,
+    .btn.btn-menu:focus, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:focus {
+      outline: 2px solid #ffd617; }
     .btn.btn-menu:focus, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:focus {
       color: #fff;
       background: #004494;
@@ -6278,10 +6282,16 @@ Styleguide form.textarea
   margin-top: 15px;
   overflow: hidden;
   width: 100%; }
-  .top-bar .block-nexteuropa-europa-search {
-    width: 100%; }
-  .top-bar .site-menu__toggle {
-    width: 100%; }
+
+@media (min-width: 480px) {
+  .block-nexteuropa-europa-search,
+  .site-menu__toggle {
+    float: left; }
+  .block-nexteuropa-europa-search {
+    width: 75%; }
+  .site-menu__toggle {
+    width: 25%;
+    padding-left: 15px; } }
 
 @media (min-width: 992px) {
   .top-bar {
@@ -6292,12 +6302,9 @@ Styleguide form.textarea
       margin: 0; }
     .top-bar .block-nexteuropa-europa-search {
       width: auto;
-      padding-left: 10px;
-      padding-right: 0; }
+      padding-left: 15px; }
     .top-bar .site-menu__toggle {
       position: static;
-      float: left;
-      padding-left: 10px;
       width: auto; } }
 
 .page-content {

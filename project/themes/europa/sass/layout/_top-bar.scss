@@ -2,15 +2,21 @@
   margin-top: 15px;
   overflow: hidden;
   width: 100%;
+}
+
+@include breakpoint(screen-xs-min) {
+  .block-nexteuropa-europa-search,
+  .site-menu__toggle {
+    float: left;
+  }
 
   .block-nexteuropa-europa-search {
-    width: 100%;
-    @extend .col-xs-9;
+    width: 75%;
   }
 
   .site-menu__toggle {
-    width: 100%;
-    @extend .col-xs-3;
+    width: 25%;
+    padding-left: 15px;
   }
 }
 
@@ -26,14 +32,11 @@
 
     .block-nexteuropa-europa-search {
       width: auto;
-      padding-left: 10px;
-      padding-right: 0;
+      padding-left: 15px;
     }
 
     .site-menu__toggle {
       position: static;
-      float: left;
-      padding-left: 10px;
       width: auto;
     }
   }

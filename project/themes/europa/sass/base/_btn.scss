@@ -103,6 +103,11 @@ Styleguide buttons
       color: #fff;
     }
 
+    &:active,
+    &:focus {
+      outline: 2px solid $yellow-light;
+    }
+
     &:focus {
       color: #fff;
       background: $brand-primary;
