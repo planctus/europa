@@ -46,6 +46,14 @@ function dt_policy_area_ds_field_settings_info() {
         ),
       ),
     ),
+    'children_policy_areas' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -147,25 +155,6 @@ function dt_policy_area_ds_custom_fields_info() {
     'block_render' => '1',
   );
   $export['children_policy_areas'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'content_type_label';
-  $ds_field->label = 'Content type label';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = '';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '[node:content-type]
-',
-      'format' => 'filtered_html',
-    ),
-    'use_token' => 1,
-  );
-  $export['content_type_label'] = $ds_field;
 
   return $export;
 }

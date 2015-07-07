@@ -41,6 +41,11 @@ Styleguide meta
       display: none;
     }
   }
+
+  // Fix for Drupal markup output that cannot be easly removed in some cases.
+  p {
+    font-size: inherit !important;
+  }
 }
 
 .meta__item--type {
