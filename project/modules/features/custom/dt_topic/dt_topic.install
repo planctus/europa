@@ -62,9 +62,3 @@ function dt_topic_update_7104() {
   features_revert_module('dt_topic');
 }
 
-/**
- * Reverting dt_topic to apply configurations on full view mode.
- */
-function dt_policy_area_update_7103() {
-  features_revert_module('dt_policy_area');
-}
