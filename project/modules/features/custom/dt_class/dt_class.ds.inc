@@ -162,7 +162,9 @@ function dt_class_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => '',
         'class' => '',
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
   );

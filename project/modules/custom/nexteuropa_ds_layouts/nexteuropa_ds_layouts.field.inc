@@ -147,7 +147,12 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
   if (!empty($items)) {
     switch ($display['type']) {
       case 'context_nav_item':
-        $element['#prefix'] = '<span class="context-nav__label">' . $instance['label'] . '</span>';
+        $layout_field_settings = ds_get_field_settings($entity_type, $entity->type, 'full');
+        $field_name = $field['field_name'];
+        $label_altered = $layout_field_settings[$field_name]['formatter_settings']['ft']['lb'];
+        $label = (isset($label_altered) ? $label_altered : $instance['label']);
+
+        $element['#prefix'] = '<span class="context-nav__label">' . $label . '</span>';
         $element['#prefix'] .= '<div class="context-nav__items">';
         $element['#suffix'] = '</div>';
         switch ($field['type']) {

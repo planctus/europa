@@ -25,15 +25,11 @@ function dt_topic_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'node_type' => array(
+    'content_type_label' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'show_title' => 0,
-        'title_wrapper' => '',
-        'ctools' => 'a:3:{s:4:"conf";a:5:{s:8:"sanitize";i:1;s:7:"context";s:25:"argument_entity_id:node_1";s:14:"override_title";i:0;s:19:"override_title_text";s:0:"";s:22:"override_title_heading";s:2:"h2";}s:4:"type";s:5:"token";s:7:"subtype";s:17:"node:content-type";}',
-        'load_terms' => 0,
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
@@ -224,10 +220,10 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_topic_meta',
-        2 => 'node_type',
-        3 => 'title',
-        5 => 'field_core_introduction',
+        0 => 'content_type_label',
+        1 => 'group_topic_meta',
+        2 => 'title',
+        3 => 'field_core_introduction',
       ),
       'central' => array(
         1 => 'latest_announcements_block',
@@ -246,17 +242,17 @@ function dt_topic_ds_layout_settings_info() {
         22 => 'field_core_link',
       ),
       'top' => array(
-        6 => 'group_topic_contextual',
-        8 => 'field_core_priorities',
-        10 => 'field_core_topics',
-        12 => 'field_core_persons',
-        14 => 'field_core_department',
+        4 => 'group_topic_contextual',
+        5 => 'field_core_priorities',
+        7 => 'field_core_topics',
+        9 => 'field_core_persons',
+        11 => 'field_core_department',
       ),
     ),
     'fields' => array(
+      'content_type_label' => 'left_header',
       'group_topic_meta' => 'left_header',
       'latest_announcements_block' => 'central',
-      'node_type' => 'left_header',
       'title' => 'left_header',
       'field_core_social_network_links' => 'central',
       'field_core_introduction' => 'left_header',
@@ -275,6 +271,7 @@ function dt_topic_ds_layout_settings_info() {
       'field_core_policy_areas' => 'central',
       'field_topic_objectives' => 'central',
       'field_topic_targets' => 'central',
+      'field_topic_tasks' => 'central',
       'field_core_top_tasks' => 'central',
       'field_core_link' => 'central',
     ),

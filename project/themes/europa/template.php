@@ -240,7 +240,7 @@ function europa_preprocess_page(&$variables) {
 
   // Temporary variable that should be removed once the beta notification
   // is gone.
-  $variables['node_about_beta'] = url('node/980');
+  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
@@ -788,6 +788,19 @@ function europa_field($variables) {
       break;
   }
 
+  if (isset($element['#formatter'])) {
+    switch ($element['#formatter']) {
+      case 'context_nav_item':
+        $output = '';
+
+        // Render the items.
+        foreach ($variables['items'] as $delta => $item) {
+          $output .= drupal_render($item);
+        }
+        return $output;
+    }
+  }
+
   $output = '';
   $classes = array();
 
@@ -871,7 +884,8 @@ function europa_easy_breadcrumb($variables) {
       $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
       if (isset($item['url'])) {
         // Ugly hotfix.
-        // TODO: Remove when https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457 is fixed.
+        // TODO: Remove when following issue is fixed:
+        // @see https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4457
         $item['url'] = $item['url'] == '<front>' ? '' : $item['url'];
         $full_item = l($content, $item['url'], array('attributes' => $attributes, 'html' => TRUE));
       }
@@ -903,7 +917,7 @@ function europa_easy_breadcrumb($variables) {
  *   Url depending on field type.
  *
  * @return string
- *    HTML markup.
+ *   HTML markup.
  */
 function _europa_file_markup($file, array $url) {
   $file_class = '';
@@ -983,6 +997,38 @@ function europa_file_entity_download_link($variables) {
   $uri = file_entity_download_uri($file);
 
   return _europa_file_markup($file, $uri);
+}
+
+/**
+ * Implements template_preprocess_bootstrap_tabs().
+ */
+function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
+  $group = &$variables['group'];
+
+  $variables['nav_classes'] = '';
+
+  switch ($group->format_settings['instance_settings']['bootstrap_nav_type']) {
+    case 'tabs':
+      $variables['nav_classes'] .= ' nav-tabs nav-tabs--with-content';
+      break;
+    case 'pills':
+      $variables['nav_classes'] .= ' nav-pills';
+      break;
+    default:
+  }
+
+  if ($group->format_settings['instance_settings']['bootstrap_stacked']) {
+    $variables['nav_classes'] .= ' nav-stacked';
+  }
+
+  $i = 0;
+  foreach ($variables['items'] as $key => $item) {
+    // Check if item is not empty and we have access to it.
+    if ($item && (!isset($item['#access']) || $item['#access'])) {
+      $variables['panes'][$i]['title'] = check_plain(t($item['#title']));
+      $i++;
+    }
+  }
 }
 
 /**
