@@ -25,10 +25,21 @@ function dt_policy_keyfile_field_default_field_instances() {
         'weight' => 10,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 250,
+          'trim_options' => array(
+            'text' => 0,
+          ),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 4,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -78,8 +89,8 @@ function dt_policy_keyfile_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_keyfile-field_core_link'
-  $field_instances['node-policy_keyfile-field_core_link'] = array(
+  // Exported field_instance: 'node-policy_keyfile-field_core_legacy_link'
+  $field_instances['node-policy_keyfile-field_core_legacy_link'] = array(
     'bundle' => 'policy_keyfile',
     'default_value' => NULL,
     'deleted' => 0,
@@ -90,7 +101,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 7,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -101,9 +112,9 @@ function dt_policy_keyfile_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_link',
+    'field_name' => 'field_core_legacy_link',
     'label' => 'Manual link',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
@@ -128,9 +139,11 @@ function dt_policy_keyfile_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'link_field',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -154,7 +167,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -197,7 +210,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -216,10 +229,11 @@ function dt_policy_keyfile_field_default_field_instances() {
         'weight' => 12,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -239,7 +253,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -265,7 +279,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -315,7 +329,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'node',
@@ -371,10 +385,11 @@ function dt_policy_keyfile_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',

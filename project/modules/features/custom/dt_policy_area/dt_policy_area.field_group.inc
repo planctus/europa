@@ -291,7 +291,7 @@ function dt_policy_area_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
+        'classes' => 'meta meta--header',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -300,6 +300,35 @@ function dt_policy_area_field_group_info() {
     ),
   );
   $export['group_policy_area_meta|node|policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_area_policy_area|node|policy_area|full';
+  $field_group->group_name = 'group_policy_area_policy_area';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Policy Area',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_policy_area',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Policy Area',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="policy-area"',
+      ),
+    ),
+  );
+  $export['group_policy_area_policy_area|node|policy_area|full'] = $field_group;
 
   return $export;
 }

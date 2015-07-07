@@ -154,6 +154,8 @@ function dt_policy_next_step_field_formatter_info() {
  */
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
+  $elements['#prefix'] = '<div class="timeline">';
+  $elements['#suffix'] = '</div>';
   foreach ($items as $delta => $item) {
     $item = _dt_policy_next_step_sanitize($item, $langcode);
     $elements[$delta] = array(
@@ -163,6 +165,7 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
       '#display' => $display,
     );
   }
+
   return $elements;
 }
 
@@ -211,12 +214,14 @@ function dt_policy_next_step_theme() {
 function theme_dt_policy_next_step_formatter_default($vars) {
   $element = $vars['element'];
   $output = '';
+  $output .= '<div class="timeline__item">';
   // When/timeframe.
   if (!empty($element['when_timeframe'])) {
-    $output .= '<div class="when-timeframe">' . $element['when_timeframe'] . '</div>';
+    $output .= '<h4 class="timeline__item-title">' . $element['when_timeframe'] . '</h4>';
   }
   if (!empty($element['steps_in_bullets'])) {
-    $output .= '<div class="steps-in-bullets">' . $element['steps_in_bullets'] . '</div>';
+    $output .= '<div class="timeline__text">' . $element['steps_in_bullets'] . '</div>';
   }
+  $output .= '</div>';
   return $output;
 }
