@@ -63,6 +63,7 @@ function dt_info_homepage_ds_custom_fields_info() {
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
+    'bean' => 'bean',
   );
   $ds_field->ui_limit = '';
   $ds_field->properties = array(

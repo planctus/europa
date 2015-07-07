@@ -82,7 +82,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = 'group_topic_latest';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '21',
+    'weight' => '7',
     'children' => array(
       0 => 'latest_announcements_block',
     ),
@@ -111,7 +111,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = 'group_topic_latest';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '22',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
@@ -292,7 +292,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -324,7 +324,7 @@ function dt_topic_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'node_type',
+      0 => 'content_type_label',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -378,7 +378,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Policy areas',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_core_policy_areas',
     ),
@@ -386,7 +386,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy areas',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -409,8 +409,8 @@ function dt_topic_field_group_info() {
     'label' => 'Related Tasks',
     'weight' => '4',
     'children' => array(
-      0 => 'field_topic_tasks',
-      1 => 'field_core_top_tasks',
+      0 => 'field_core_top_tasks',
+      1 => 'field_topic_tasks',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -496,7 +496,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '26',
+    'weight' => '25',
     'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -551,7 +551,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What the Commission is doing',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_link',
       1 => 'field_topic_commission_actions',

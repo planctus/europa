@@ -24,7 +24,7 @@ function dt_policy_input_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_policy_input_introduction',
+      1 => 'field_core_introduction',
       2 => 'field_policy_input_status',
       3 => 'field_policy_input_type',
       4 => 'field_core_link',
@@ -70,6 +70,35 @@ function dt_policy_input_field_group_info() {
     ),
   );
   $export['group_policy_input_editorial|node|policy_input|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_input_meta|node|policy_input|teaser';
+  $field_group->group_name = 'group_policy_input_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy_input';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_policy_input_type',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_policy_input_meta|node|policy_input|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

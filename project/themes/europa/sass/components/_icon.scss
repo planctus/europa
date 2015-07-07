@@ -94,14 +94,20 @@ Styleguide: icon
 }
 
 .icon--arrow-up {
+  content: '\e61e';
+}
+.icon--arrow-up {
   &:before {
-    content: '\e61e';
+    @extend .icon--arrow-up;
   }
 }
 
 .icon--arrow-down {
+  content: '\e61d';
+}
+.icon--arrow-down {
   &:before {
-    content: '\e61d';
+    @extend .icon--arrow-down;
   }
 }
 
