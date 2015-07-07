@@ -7207,7 +7207,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .listing--site-menu .listing__item .listing__title:after, .file__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .file__btn:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7256,7 +7256,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e618'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .listing--site-menu .listing__item .listing__title:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
   content: '\e617'; }
 
 .icon--down:before {
@@ -7746,8 +7746,11 @@ Styleguide listing
   border: none !important; }
 
 .listing--short-spaced .listing__item-link {
-  padding-top: 0 !important;
+  padding-top: 0.5em !important;
   padding-bottom: 0 !important; }
+
+.listing--short-spaced .listing__item:first-child .listing__item-link {
+  padding-top: 0 !important; }
 
 .listing--no-link .listing__item {
   padding-top: 0.5em;
@@ -7782,19 +7785,11 @@ Styleguide listing
   .listing--cta .listing__item:focus .listing__title {
     color: #ffffff; }
 
-.listing__title--arrow:after, .listing--cta .listing__title:after, .listing--site-menu .listing__item .listing__title:after {
+.listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
   margin-left: 10px;
   font-size: 1.2em;
   top: 4px;
   position: relative; }
-
-.listing--site-menu .listing__item .listing__title {
-  color: #000;
-  padding: 0.4em 0; }
-  .listing--site-menu .listing__item .listing__title:after {
-    margin-left: 0.5em;
-    font-size: 0.8em;
-    top: 0px; }
 
 @media (min-width: 480px) {
   .listing__column-second {
@@ -8348,5 +8343,15 @@ Styleguide file
 
 .site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .site-menu__toggle .inpage-nav__toggle {
   width: 100%; }
+
+.site-menu .listing__item .listing__title {
+  color: #000;
+  padding: 0.5em 0; }
+  .site-menu .listing__item .listing__title:after {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    top: 0px; }
+  .site-menu .listing__item .listing__title + * {
+    margin-top: 0; }
 
 /*# sourceMappingURL=style-sass.css.map */
