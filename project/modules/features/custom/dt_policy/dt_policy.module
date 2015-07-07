@@ -49,7 +49,8 @@ function dt_policy_block_view($delta = '') {
 
       $items = array();
       foreach ($actions as $key => $action) {
-        $items[$key] = drupal_render(node_view($action, 'teaser'));
+        $teaser = node_view($action, 'teaser');
+        $items[$key] = drupal_render($teaser);
       }
 
       $block['content'] = theme('nexteuropa_bem_item_list',
