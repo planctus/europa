@@ -11,7 +11,7 @@
   <?php print render($title_suffix['contextual_links']); ?>
 <?php endif; ?>
 <a href="<?php print $node_url; ?>" class="listing__item-link">
-  <?php print $main; ?>
+  <h3 class="listing__title"><?php print $main; ?></h3>
 </a>
 
 <!-- Needed to activate display suite support on forms -->

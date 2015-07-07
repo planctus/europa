@@ -32,3 +32,20 @@ function dt_policy_implementation_update_7101() {
 
   features_revert_module('dt_policy_implementation');
 }
+
+/**
+ * Reverting the feature to apply field settings and display configurations.
+ */
+function dt_policy_implementation_update_7102() {
+  features_revert_module('dt_policy_implementation');
+}
+
+/**
+ * Deleting body field instance.
+ */
+function dt_policy_implementation_update_7103() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'body', 'policy_implementation')) {
+    field_delete_instance($instance);
+  }
+}
