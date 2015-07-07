@@ -15,6 +15,7 @@ features[ds_field_settings][] = node|announcement|default
 features[ds_field_settings][] = node|announcement|full
 features[ds_field_settings][] = node|announcement|meta
 features[ds_field_settings][] = node|announcement|teaser
+features[ds_fields][] = latest_announcements_block
 features[ds_fields][] = related_announcements
 features[ds_layout_settings][] = node|announcement|default
 features[ds_layout_settings][] = node|announcement|full

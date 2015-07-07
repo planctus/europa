@@ -74,7 +74,7 @@ function dt_core_get_blocks_content($delta) {
   switch ($delta) {
     case 'dt_block_copyright':
       $result = array(
-        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015.') . "</span></div>",
+        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
       );
       return $result;
 
@@ -270,19 +270,21 @@ function _dt_core_path_update_relatives($path) {
     $nid = $source[1];
     $node = node_load($nid);
 
-    // URL pattern for node type.
-    $pattern = pathauto_pattern_load_by_entity('node', $node->type);
-
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
-      // If URL pattern does not rely on this field, skip.
-      if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
-        continue;
-      }
       // Find children based on field.
       $children = _dt_core_node_get_relatives($nid, $field_name);
+      // Add current as first to force re-generate as first.
+      if (!empty($parents)) {
+        array_unshift($children, $nid);
+      }
 
       // Find parents based on field.
       $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
+      // Add current as last to force re-generate as last.
+      if (!empty($parents)) {
+        $parents[] = $nid;
+      }
+
       $relatives = array_merge($parents, $children);
       if (!empty($relatives)) {
         $GLOBALS['dt_core_nodes_to_update_alias'][$nid] = $relatives;
@@ -356,14 +358,30 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
 
   if ($nids) {
     foreach ($nids as $ref_nid) {
-      if ($referenced = _dt_core_node_get_relatives($ref_nid, $field_name, $direction, $no_alias_only, $original_nid)) {
-        $affected_nodes = array_merge($referenced, $affected_nodes);
+      if (isset($result['node'][$ref_nid])) {
+        // URL pattern for node type.
+        $pattern = pathauto_pattern_load_by_entity('node', $result['node'][$ref_nid]->type);
+        // If current child URL is not using the field in alias pattern, skip.
+        if (!_dt_core_parent_field_in_pattern($field_name, $pattern)) {
+          continue;
+        }
       }
-      $affected_nodes[] = $ref_nid;
+
+      // Find relatives.
+      $referenced = _dt_core_node_get_relatives($ref_nid, $field_name, $direction, $no_alias_only, $original_nid);
+      // Add the to the list in the appropriate order based on direction.
+      if ($direction == 'parents') {
+        $affected_nodes = array_merge($affected_nodes, $referenced);
+        $affected_nodes[] = $ref_nid;
+      }
+      else {
+        $affected_nodes[] = $ref_nid;
+        $affected_nodes = array_merge($affected_nodes, $referenced);
+      }
     }
   }
 
-  return array_unique($affected_nodes);
+  return $affected_nodes;
 }
 
 /**
@@ -377,9 +395,6 @@ function dt_core_exit() {
   $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
   $GLOBALS['dt_core_nodes_to_update_alias'] = array();
   foreach ($nids_to_update as $nid => $relatives) {
-    // Update referring node as well as last.
-    $relatives[] = $nid;
-
     // Paths update using the update method of the pathauto module.
     // Doing it one by one instead of using
     // pathauto_node_update_alias_multiple() to keep the order of items intact.
@@ -427,7 +442,7 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
  *   string pattern token segment | bool FALSE
  */
 function _dt_core_parent_field_in_pattern($field_name, $pattern) {
-  // Check if URL pattern uses parents URL.
+  // Check if URL pattern uses parent's URL.
   $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
   if (preg_match('/' . $pattern_segment . '/', $pattern)) {
 
@@ -448,7 +463,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
       if ($parent->nid == $node->nid) {
         form_set_error($field_name, t('The page cannot be its own parent!'));
       }
-
+      // Detect circular reference between two nodes.
       if (_dt_core_detect_circular_reference($node)) {
         form_set_error($field_name, t('There is a circular reference between this page and one of its parent!'));
       }
@@ -476,5 +491,31 @@ function _dt_core_detect_circular_reference($node) {
     return TRUE;
   }
 
+  return FALSE;
+}
+
+/**
+ * Helper function for creating a taxonomy term in a vocabulary.
+ *
+ * @param string $vocabulary_machine_name
+ *   Vocabulary machine name.
+ * @param string $term_name
+ *   Added term.
+ *
+ * @return bool
+ *   Return TRUE if the taxonomy term was created.
+ */
+function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
+  // Check the vocabulary if exist.
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name)) {
+    // Creating term.
+    $term = array();
+    $term['vocabulary_machine_name'] = $vocabulary_machine_name;
+    $term['vid'] = $vocabulary->vid;
+    $term['name'] = $term_name;
+    // Save term as an entity.
+    $entity = entity_create('taxonomy_term', $term);
+    return entity_save('taxonomy_term', $entity);
+  }
   return FALSE;
 }

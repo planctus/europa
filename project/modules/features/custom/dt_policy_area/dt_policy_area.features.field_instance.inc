@@ -274,7 +274,7 @@ function dt_policy_area_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'match_operator' => 'CONTAINS',
+        'match_operator' => 'STARTS_WITH',
         'path' => '',
         'size' => 60,
       ),

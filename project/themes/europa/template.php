@@ -23,13 +23,13 @@ function europa_preprocess_field(&$vars) {
   switch ($vars['element']['#field_name']) {
     case 'field_core_ecorganisation':
       $field_value = $vars['element']['#items'][0]['value'];
-      $field_value_stripped = substr($field_value, 0, strpos($field_value, " ("));
+      $field_value_stripped = explode(" (", $field_value);
 
-      $vars['items'][0]['#markup'] = $field_value_stripped;
+      $vars['items'][0]['#markup'] = $field_value_stripped[0];
       break;
 
     case 'field_core_social_network_links':
-      $vars['element']['before'] = t('Follow the latest progress and learn more about getting involved.');
+      $vars['element']['before'] = t('Follow the latest progress and get involved.');
       $vars['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
       break;
   }
@@ -237,6 +237,10 @@ function europa_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
+
+  // Temporary variable that should be removed once the beta notification
+  // is gone.
+  $variables['node_about_beta'] = url('node/980');
 }
 
 /**
@@ -493,14 +497,14 @@ function _europa_menu_link__footer(array &$variables) {
 }
 
 /**
- * Implements theme_menu_link().
+ * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_service_links(&$variables) {
   return _europa_menu_link__footer($variables);
 }
 
 /**
- * Implements theme_menu_link().
+ * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
 
@@ -508,7 +512,7 @@ function europa_menu_link__menu_dt_menu_social_media(&$variables) {
 }
 
 /**
- * Implements hook_html_head_alter().
+ * Override hook_html_head_alter().
  */
 function europa_html_head_alter(&$head_elements) {
   // Creating favicons links and meta tags for the html header.
@@ -832,7 +836,7 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 }
 
 /**
- * Implements theme_easy_breadcrumb().
+ * Override theme_easy_breadcrumb().
  */
 function europa_easy_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
@@ -961,7 +965,7 @@ function _europa_file_markup($file, array $url) {
 }
 
 /**
- * Implements theme_file_link().
+ * Override theme_file_link().
  */
 function europa_file_link($variables) {
   $file = $variables['file'];
@@ -972,11 +976,27 @@ function europa_file_link($variables) {
 }
 
 /**
- * Implements theme_file_entity_download_link().
+ * Override theme_file_entity_download_link().
  */
 function europa_file_entity_download_link($variables) {
   $file = $variables['file'];
   $uri = file_entity_download_uri($file);
 
   return _europa_file_markup($file, $uri);
+}
+
+/**
+ * Overrides theme_link().
+ */
+function europa_link($variables) {
+  // Link module creates absolute URLs for internal links as well, resulting
+  // in having the external link icon on these internal links. We attempt to
+  // re-convert these to relative.
+  global $base_url;
+  $internal_url = explode($base_url, $variables['path']);
+  if (count($internal_url) > 1) {
+    $variables['path'] = trim($internal_url[1], '/');
+  }
+
+  return theme_link($variables);
 }
