@@ -11,6 +11,7 @@ dependencies[] = dt_policy_input
 dependencies[] = dt_policy_keyfile
 dependencies[] = dt_policy_next_step
 dependencies[] = dt_publication
+dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
