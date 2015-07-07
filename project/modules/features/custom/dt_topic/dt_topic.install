@@ -61,4 +61,3 @@ function dt_topic_update_7104() {
   // Reverting feature.
   features_revert_module('dt_topic');
 }
-

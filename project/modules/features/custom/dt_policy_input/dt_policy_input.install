@@ -20,3 +20,28 @@ function dt_policy_input_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Policy input %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting the feature to apply field settings and display configurations.
+ */
+function dt_policy_input_update_7101() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_policy_input');
+  // Copy field contents.
+  _dt_core_field_value_copy('node', 'policy_input', 'field_policy_input_introduction', 'field_core_introduction');
+  drupal_set_message(t("Copied content from 'field_policy_input_introduction' to 'field_core_introduction' in policy input content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_policy_input_introduction', 'policy')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Deleting body field instance.
+ */
+function dt_policy_input_update_7102() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'body', 'policy_input')) {
+    field_delete_instance($instance);
+  }
+}
