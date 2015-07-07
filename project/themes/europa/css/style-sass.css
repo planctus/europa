@@ -7207,7 +7207,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .file__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after, .file__btn:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7256,7 +7256,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e618'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   content: '\e617'; }
 
 .icon--down:before {
@@ -7886,9 +7886,6 @@ Styleguide listing.column-left
 .listing__wrapper--row-two .listing__item:nth-child(odd) {
   clear: left; }
 
-.listing__wrapper--row-two .listing__item:nth-child(even) {
-  float: none; }
-
 .listing__wrapper--row-three .listing__item {
   margin-top: 15px; }
 
@@ -8079,7 +8076,7 @@ Styleguide page-header
     .page-header--featured h2, .front .page-header h2 {
       color: #fff; }
     .page-header--featured p, .front .page-header p {
-      font-size: 30px; }
+      font-size: 1.667em; }
 
 .skip-link,
 #skip-link {
@@ -8205,8 +8202,9 @@ Styleguide notification
 
 */
 .notification {
-  background: #ececec;
-  padding: 8px 0;
+  background: #f2f2f2;
+  border-bottom: 8px solid #ffd617;
+  padding: 8px 0 0;
   font-size: 14px; }
 
 .notification__label {
@@ -8216,10 +8214,29 @@ Styleguide notification
   margin-right: 1.5em; }
 
 .notification__content {
-  display: inline-block; }
+  display: block; }
+  .notification__content .notification__text {
+    float: left;
+    margin-bottom: 6px;
+    margin-right: 8px;
+    width: 100%; }
+  .notification__content .notification__btn {
+    font-weight: bold;
+    float: left;
+    margin-bottom: 6px; }
+    .notification__content .notification__btn:after {
+      font-size: 12px; }
   .notification__content p {
     max-width: none;
     margin: 0; }
+
+@media (min-width: 768px) {
+  .notification__content {
+    display: block; }
+    .notification__content .notification__text {
+      width: 75%; }
+    .notification__content .notification__btn {
+      float: right; } }
 
 /*
 Social Media

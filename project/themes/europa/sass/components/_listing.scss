@@ -328,9 +328,6 @@ Styleguide listing.column-left
     &:nth-child(odd) {
       clear: left;
     }
-    &:nth-child(even) {
-      float: none;
-    }
   }
 }
 
