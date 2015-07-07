@@ -240,7 +240,7 @@ function europa_preprocess_page(&$variables) {
 
   // Temporary variable that should be removed once the beta notification
   // is gone.
-  $variables['node_about_beta'] = url('node/980');
+  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
