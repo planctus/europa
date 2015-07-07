@@ -92,6 +92,10 @@
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
+        <?php if($is_front): ?>
+          <h1 class="hidden"><?php print $site_name; ?></h1>
+          <h2 class="hidden">Classes</h2>
+        <?php endif; ?>
         <?php print render($page['header']); ?>
       </section>
     <?php endif; ?>
