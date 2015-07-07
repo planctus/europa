@@ -85,7 +85,7 @@
           <?php print t('This is a test site for a new design and navigation for the Commission website. It does not replace <a href="http://ec.europa.eu/">ec.europa.eu</a>.'); ?>
         </p>
       </div>
-      <a class="notification__btn" href="<?php print $node_about_beta; ?>"><?php print t('More about this site'); ?></a>
+      <a class="notification__btn" href="<?php print $node_about_beta; ?>"><?php print t('More about the beta'); ?></a>
     </div>
   </div>
 </section>
