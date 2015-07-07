@@ -28,6 +28,7 @@ features[field_group][] = group_policy_area_contextual|node|policy_area|full
 features[field_group][] = group_policy_area_context|node|policy_area|form
 features[field_group][] = group_policy_area_latest|node|policy_area|full
 features[field_group][] = group_policy_area_meta|node|policy_area|full
+features[field_group][] = group_policy_area_policy_area|node|policy_area|full
 features[field_instance][] = node-policy_area-field_core_description
 features[field_instance][] = node-policy_area-field_core_introduction
 features[field_instance][] = node-policy_area-field_core_legacy_link
