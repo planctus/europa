@@ -24,10 +24,11 @@ function dt_policy_keyfile_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_policy_keyfile_image',
-      2 => 'field_core_introduction',
-      3 => 'field_core_link',
+      1 => 'field_core_introduction',
+      2 => 'field_core_link',
+      3 => 'field_policy_keyfile_image',
       4 => 'field_policy_keyfile_type',
+      5 => 'field_core_legacy_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
