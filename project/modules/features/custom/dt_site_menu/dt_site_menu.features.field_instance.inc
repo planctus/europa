@@ -76,7 +76,7 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => 'listing--no-border',
+          'nexteuropa_ds_layouts_modifier' => 'listing--no-border listing--short-spaced',
           'nexteuropa_ds_layouts_wrapper_modifier' => '',
           'view_mode' => 'teaser',
         ),

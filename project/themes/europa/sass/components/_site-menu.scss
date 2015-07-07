@@ -5,8 +5,10 @@
   }
 }
 
-.site-menu__row {
-  @extend .row--separated;
+.site-menu__section {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding-top: 2em;
+  padding-bottom: 1.5em;
   &:last-child {
     border: none;
   }

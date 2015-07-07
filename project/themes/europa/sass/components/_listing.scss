@@ -15,7 +15,7 @@ $spacing-bottom-listing__title: 0.7em;
 }
 
 .listing__wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 1.667em;
 }
 
 .listing__item {
@@ -100,7 +100,14 @@ $spacing-bottom-listing__title: 0.7em;
 
 .listing--no-border {
   .listing__item {
-    border: none;
+    border: none !important;
+  }
+}
+
+.listing--short-spaced {
+  .listing__item-link {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 

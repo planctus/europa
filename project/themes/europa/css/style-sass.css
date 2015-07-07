@@ -6274,11 +6274,6 @@ Styleguide form.textarea
   padding-top: 0;
   padding-bottom: 0; }
 
-.row--separated, .site-menu__row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-top: 1.5em;
-  padding-bottom: 1em; }
-
 .top-bar {
   margin-top: 15px;
   overflow: hidden;
@@ -7684,7 +7679,7 @@ Markup: html/listing.html
 Styleguide listing
 */
 .listing__wrapper {
-  margin-bottom: 30px; }
+  margin-bottom: 1.667em; }
 
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
@@ -7741,7 +7736,11 @@ Styleguide listing
   padding-left: 0 !important; }
 
 .listing--no-border .listing__item {
-  border: none; }
+  border: none !important; }
+
+.listing--short-spaced .listing__item-link {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
 
 .listing--no-link .listing__item {
   padding-top: 0.5em;
@@ -8333,8 +8332,12 @@ Styleguide file
   .js .site-menu.collapse {
     height: inherit; }
 
-.site-menu__row:last-child {
-  border: none; }
+.site-menu__section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 2em;
+  padding-bottom: 1.5em; }
+  .site-menu__section:last-child {
+    border: none; }
 
 .site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .site-menu__toggle .inpage-nav__toggle {
   width: 100%; }
