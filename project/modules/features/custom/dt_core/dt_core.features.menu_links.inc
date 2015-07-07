@@ -92,81 +92,9 @@ function dt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-service-links_cookies-and-privacy-notice:http://ec.europa.eu/
-  $menu_links['menu-dt-service-links_cookies-and-privacy-notice:http://ec.europa.eu/'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => 'http://ec.europa.eu/',
-    'router_path' => '',
-    'link_title' => 'Cookies and privacy notice',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_cookies-and-privacy-notice:http://ec.europa.eu/',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -49,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-dt-service-links_help:http://ec.europa.eu/
-  $menu_links['menu-dt-service-links_help:http://ec.europa.eu/'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => 'http://ec.europa.eu/',
-    'router_path' => '',
-    'link_title' => 'Help',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_help:http://ec.europa.eu/',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -50,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-dt-service-links_legal-statement:http://ec.europa.eu/
-  $menu_links['menu-dt-service-links_legal-statement:http://ec.europa.eu/'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => 'http://ec.europa.eu/',
-    'router_path' => '',
-    'link_title' => 'Legal statement',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_legal-statement:http://ec.europa.eu/',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => -48,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Cookies and privacy notice');
   t('Facebook');
-  t('Help');
-  t('Legal statement');
   t('Other social media');
   t('Twitter');
 
