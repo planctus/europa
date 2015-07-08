@@ -148,7 +148,7 @@ Styleguide inpagenav
   }
 
   .inpage-nav__list {
-    margin: 0px !important;
+    max-height: none;
     li {
       &.active {
         .inpage_nav__list__item {

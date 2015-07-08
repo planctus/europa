@@ -7682,7 +7682,7 @@ Styleguide inpagenav
     line-height: 21px;
     font-weight: bold; }
   .inpage-nav__navbar .inpage-nav__list {
-    margin: 0px !important; }
+    max-height: none; }
     .inpage-nav__navbar .inpage-nav__list li.active .inpage_nav__list__item {
       color: inherit;
       background: none; }
