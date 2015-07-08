@@ -188,9 +188,11 @@ function dt_department_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => 'h3',
-        'class' => 'listing__title',
-        'ft' => array(),
+        'wrapper' => '',
+        'class' => '',
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
   );
