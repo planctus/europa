@@ -115,7 +115,7 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['operator_id'] = 'field_core_policy_areas_target_id_op';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['label'] = 'by policy area';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['operator'] = 'field_core_policy_areas_target_id_op';
-  $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['identifier'] = 'topic';
+  $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['identifier'] = 'policy_area';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
