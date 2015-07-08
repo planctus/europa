@@ -7799,7 +7799,7 @@ Styleguide listing
   margin: 0.2em 0 0.8em 0; }
 
 .listing__column-second--no-link {
-  padding-top: 0.5em;
+  padding-bottom: 0.85em;
   margin: 0; }
   .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .listing__column-second--no-link .inpage-nav__toggle {
     margin-bottom: 0; }
@@ -7882,15 +7882,18 @@ Styleguide listing
       width: 75%; }
   .listing__column-second--no-link {
     width: 100%;
-    float: none;
     padding-left: 0; } }
 
 @media (min-width: 622px) {
+  .listing__column-main--sidebar-next {
+    width: 75%; }
   .listing__column-second--no-link {
     float: right;
     width: 25%;
     padding-left: 15px;
-    padding-top: 0.85em; } }
+    padding-top: 0.85em; }
+    .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .listing__column-second--no-link .inpage-nav__toggle {
+      margin-top: 1.667em; } }
 
 /*
 Listing title
