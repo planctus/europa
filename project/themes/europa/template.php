@@ -145,16 +145,17 @@ function _europa_bundle_forms($bundle) {
     'toplink' => t("top links"),
   );
 
+  $singular = node_type_get_name($bundle);
   // If user preference for plural form - use it, otherwise use the label.
   if (isset($plurals[$bundle])) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = t("@bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
+    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
   }
 
   $forms = array(
-    'singular' => t("@bundle", array('@bundle' => strtolower(node_type_get_name($bundle)))),
+    'singular' => strtolower($singular),
     'plural' => $plural,
   );
 
