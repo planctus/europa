@@ -106,6 +106,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_core_policy_area_node';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -158,6 +159,13 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['field'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['required'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_core_policy_areas_node';
+  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
