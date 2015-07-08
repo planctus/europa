@@ -42,6 +42,35 @@ function dt_class_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_class_departments|node|class|full';
+  $field_group->group_name = 'group_class_departments';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'class';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Departments',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_core_department',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Departments',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_class_departments|node|class|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_class_link_content|node|class_link_group|form';
   $field_group->group_name = 'group_class_link_content';
   $field_group->entity_type = 'node';
@@ -106,7 +135,7 @@ function dt_class_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Messages',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'work_in_progress',
     ),
@@ -152,6 +181,35 @@ function dt_class_field_group_info() {
     ),
   );
   $export['group_class_related|node|class|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_class_topics|node|class|full';
+  $field_group->group_name = 'group_class_topics';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'class';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Topics',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_topics',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Topics',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_class_topics|node|class|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

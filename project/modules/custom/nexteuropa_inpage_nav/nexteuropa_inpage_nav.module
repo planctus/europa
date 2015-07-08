@@ -155,7 +155,7 @@ function _nexteuropa_inpage_nav_group_anchor($group, $node) {
  * Helper: returns the list of heading anchors in the markup.
  */
 function _nexteuropa_inpage_nav_markup_anchor($markup) {
-  $pattern = "/<" . NEXTEUROPA_INPAGE_NAV_DEPTH . ".*?id=\"(.*)\".*?>(.*)<\/" . NEXTEUROPA_INPAGE_NAV_DEPTH . ">/";
+  $pattern = "/<" . NEXTEUROPA_INPAGE_NAV_DEPTH . ".*?id=\"(.[^\"]*)\".*?>(.[^\<]*)<\/" . NEXTEUROPA_INPAGE_NAV_DEPTH . ">/";
   preg_match_all($pattern, $markup, $matches);
   $anchors = array();
   foreach ($matches[1] as $i => $id) {

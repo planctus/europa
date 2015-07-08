@@ -12,6 +12,13 @@ Markup: html/btn.html
 
 Styleguide buttons
 */
+@mixin white-space-reset() {
+  white-space: normal;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  line-height: 1.667;
+}
+
 .btn {
   margin-bottom: 1em;
   line-height: 1;
@@ -75,6 +82,7 @@ Styleguide buttons
   &.btn-ctn {
     background: $yellow-light;
     color: $text-color;
+    @include white-space-reset();
 
     &:hover,
     &:active {
@@ -175,10 +183,7 @@ Styleguide buttons.btn-block
   max-width: 450px;
   text-align: left;
   margin-bottom: -2px;
-  white-space: normal;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  line-height: 1.667;
+  @include white-space-reset();
 
   &:last-child {
     margin-bottom: 10px;
