@@ -43,9 +43,8 @@ $messages-icon-size: 2em;
     width: $messages-icon-size;
     content: '';
     position: absolute;
-    top: 50%;
+    top: 1.667em;
     left: 1em;
-    @include translate(0,-50%);
   }
 
   &.status {

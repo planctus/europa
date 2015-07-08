@@ -8078,12 +8078,8 @@ Styleguide messages
     width: 2em;
     content: '';
     position: absolute;
-    top: 50%;
-    left: 1em;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    -o-transform: translate(0, -50%);
-    transform: translate(0, -50%); }
+    top: 1.667em;
+    left: 1em; }
   .messages.status {
     border-color: #467a39; }
     .messages.status:before {
