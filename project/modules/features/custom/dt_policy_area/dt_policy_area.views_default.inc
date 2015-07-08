@@ -22,7 +22,6 @@ function dt_policy_area_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['css_class'] = 'listing--teaser';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -78,7 +77,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  /* Field: Content: Legacy link */
+  /* Field: Field: Legacy link */
   $handler->display->display_options['fields']['field_core_legacy_link']['id'] = 'field_core_legacy_link';
   $handler->display->display_options['fields']['field_core_legacy_link']['table'] = 'field_data_field_core_legacy_link';
   $handler->display->display_options['fields']['field_core_legacy_link']['field'] = 'field_core_legacy_link';
