@@ -6,6 +6,8 @@ It could also be reused in blocks
 
 Markup: html/meta.html
 
+.meta--header - Meta header modifier  that is currently used in the page header, it is larger than the meta component alone
+
 Styleguide meta
 */
 
@@ -27,17 +29,16 @@ Styleguide meta
   float: left;
   overflow: hidden;
   white-space: nowrap;
-  &:before {
+  &:after {
     content: "|";
     color: $grey;
     margin: 0 0.8em;
     position: relative;
     top: -1px;
-    float: left;
   }
 
-  &:first-child {
-    &:before {
+  &:last-child {
+    &:after {
       display: none;
     }
   }
