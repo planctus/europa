@@ -114,6 +114,60 @@ function europa_preprocess_block(&$vars) {
 }
 
 /**
+ * Returns a pluralized message for views filtering results.
+ *
+ * @param string $bundle
+ *   Machine name of a bundle.
+ * @param int $results
+ *   Number of results.
+ *
+ * @return string $message
+ *   The message to print.
+ */
+function _europa_format_views_results($bundle, $results) {
+  // Forming plurals for existing content types.
+  $plurals = array(
+    'announcement' => t("announcements"),
+    'page' => t("pages"),
+    'contact' => t("contacts"),
+    'department' => t("departments"),
+    'editorial_team' => t("editorial teams"),
+    'file' => t("files"),
+    'basic_page' => t("pages"),
+    'person' => t("people"),
+    'policy' => t("policies"),
+    'policy_area' => t("policy areas"),
+    'policy_implementation' => t("policy implementations"),
+    'policy_input' => t("policy inputs"),
+    'policy_keyfile' => t("policy key files"),
+    'priority' => t("priorities"),
+    'publication' => t("publications"),
+    'class' => t("classes"),
+    'topic' => t("topics"),
+    'toplink' => t("top links"),
+  );
+
+  if ($results == 0) {
+    if (isset($plurals[$bundle])) {
+      $message = t("No @bundles", array('@bundles' => $plurals[$bundle]));
+    }
+    else {
+      $message = t("No @bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
+    }
+  }
+  else {
+    if (isset($plurals[$bundle])) {
+      $message = $results . ' ' . $plurals[$bundle];
+    }
+    else {
+      $message = $results . ' ' . t("@bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
+    }
+  }
+
+  return $message;
+}
+
+/**
  * Implements template_preprocess_views_view().
  */
 function europa_preprocess_views_view(&$vars) {
@@ -140,27 +194,7 @@ function europa_preprocess_views_view(&$vars) {
   }
 
   $vars['items_count'] = '';
-  // Forming plurals for existing content types.
-  $plurals = array(
-    'announcement' => t("announcements"),
-    'page' => t("pages"),
-    'contact' => t("contacts"),
-    'department' => t("departments"),
-    'editorial_team' => t("editorial teams"),
-    'file' => t("files"),
-    'basic_page' => t("pages"),
-    'person' => t("people"),
-    'policy' => t("policies"),
-    'policy_area' => t("policy areas"),
-    'policy_implementation' => t("policy implementations"),
-    'policy_input' => t("policy inputs"),
-    'policy_keyfile' => t("policy key files"),
-    'priority' => t("priorities"),
-    'publication' => t("publications"),
-    'class' => t("classes"),
-    'topic' => t("topics"),
-    'toplink' => t("top links"),
-  );
+
 
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
@@ -168,22 +202,7 @@ function europa_preprocess_views_view(&$vars) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-    if ($total_rows == 0) {
-      if (isset($plurals[$content_type])) {
-        $items_count = t("No @content_type", array('@content_type' => $plurals[$content_type]));
-      }
-      else {
-        $items_count = t("No @content_types", array('@content_type' => $content_type));
-      }
-    }
-    else {
-      if (isset($plurals[$content_type])) {
-        $items_count = $total_rows . ' ' . $plurals[$content_type];
-      }
-      else {
-        $items_count = $total_rows . ' ' . format_plural($total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
-      }
-    }
+    $items_count = _europa_format_views_results($content_type, $total_rows);
 
     $vars['items_count'] = $items_count;
   }
@@ -289,7 +308,7 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
     $form['type']['#options']['All'] = t("All types");
     $form['department']['#options']['All'] = t("All departments");
-    $form['topic']['#options']['All'] = t("All topics");
+    $form['policy_area']['#options']['All'] = t("All policy areas");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
