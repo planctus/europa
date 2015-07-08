@@ -10,6 +10,26 @@
 function dt_roles_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access bean overview'.
+  $permissions['access bean overview'] = array(
+    'name' => 'access bean overview',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'administer beans'.
+  $permissions['administer beans'] = array(
+    'name' => 'administer beans',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'administer permissions'.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
@@ -58,6 +78,61 @@ function dt_roles_permissions_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'create any site_menu bean'.
+  $permissions['create any site_menu bean'] = array(
+    'name' => 'create any site_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'delete any site_menu bean'.
+  $permissions['delete any site_menu bean'] = array(
+    'name' => 'delete any site_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'edit any site_menu bean'.
+  $permissions['edit any site_menu bean'] = array(
+    'name' => 'edit any site_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view any site_menu bean'.
+  $permissions['view any site_menu bean'] = array(
+    'name' => 'view any site_menu bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'editorial team member' => 'editorial team member',
+      'site manager' => 'site manager',
+      'tester' => 'tester',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view bean page'.
+  $permissions['view bean page'] = array(
+    'name' => 'view bean page',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'bean',
   );
 
   return $permissions;
