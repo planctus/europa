@@ -68,6 +68,17 @@ function nexteuropa_ds_layouts_ds_layout_info() {
     'image' => TRUE,
   );
 
+  $layouts['ne_2col_sidebar_no_link'] = array(
+    'label' => t('NE: 2col - sidebar without link'),
+    'path' => $path . '/layouts/ne_2col_sidebar_no_link',
+    'regions' => array(
+      'main' => t('Main'),
+      'second' => t('Second'),
+    ),
+    'form' => TRUE,
+    'image' => TRUE,
+  );
+
   $layouts['ne_1col'] = array(
     'label' => t('NE: 1col'),
     'path' => $path . '/layouts/ne_1col',
