@@ -114,17 +114,15 @@ function europa_preprocess_block(&$vars) {
 }
 
 /**
- * Returns a pluralized message for views filtering results.
+ * Returns an array with singular and plural form of a bundle.
  *
  * @param string $bundle
  *   Machine name of a bundle.
- * @param int $results
- *   Number of results.
  *
- * @return string $message
- *   The message to print.
+ * @return array $forms
+ *   Containing $forms['singular'] and $forms['plural'].
  */
-function _europa_format_views_results($bundle, $results) {
+function _europa_bundle_forms($bundle) {
   // Forming plurals for existing content types.
   $plurals = array(
     'announcement' => t("announcements"),
@@ -147,24 +145,20 @@ function _europa_format_views_results($bundle, $results) {
     'toplink' => t("top links"),
   );
 
-  if ($results == 0) {
-    if (isset($plurals[$bundle])) {
-      $message = t("No @bundles", array('@bundles' => $plurals[$bundle]));
-    }
-    else {
-      $message = t("No @bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
-    }
+  // If user preference for plural form - use it, otherwise use the label.
+  if (isset($plurals[$bundle])) {
+    $plural = $plurals[$bundle];
   }
   else {
-    if (isset($plurals[$bundle])) {
-      $message = $results . ' ' . $plurals[$bundle];
-    }
-    else {
-      $message = $results . ' ' . t("@bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
-    }
+    $plural = t("@bundles", array('@bundle' => strtolower(node_type_get_name($bundle))));
   }
 
-  return $message;
+  $forms = array(
+    'singular' => t("@bundle", array('@bundle' => strtolower(node_type_get_name($bundle)))),
+    'plural' => $plural,
+  );
+
+  return $forms;
 }
 
 /**
@@ -195,14 +189,21 @@ function europa_preprocess_views_view(&$vars) {
 
   $vars['items_count'] = '';
 
-
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
   if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-    $items_count = _europa_format_views_results($content_type, $total_rows);
+    $content_type_forms = _europa_bundle_forms($content_type);
+
+    if ($total_rows == 0) {
+      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+    }
+    else {
+      $items_count = $total_rows . ' ' .
+        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+    }
 
     $vars['items_count'] = $items_count;
   }
