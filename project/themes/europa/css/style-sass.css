@@ -8416,7 +8416,6 @@ Styleguide file
     float: right;
     margin-top: 0; } }
 
-<<<<<<< HEAD
 /*
 Timeline
 
@@ -8453,7 +8452,7 @@ Styleguide timeline
 @media (min-width: 480px) {
   .timeline .timeline__item-title:before {
     margin-left: 2px; } }
-=======
+
 .js .site-menu {
   height: 0; }
   .js .site-menu.collapse {
@@ -8478,6 +8477,5 @@ Styleguide timeline
     top: 0px; }
   .site-menu .listing__item .listing__title + * {
     margin-top: 0; }
->>>>>>> 424a5312a0bbc653d05b9c473e31ee9468ebd279
 
 /*# sourceMappingURL=style-sass.css.map */
