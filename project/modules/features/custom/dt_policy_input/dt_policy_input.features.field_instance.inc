@@ -89,12 +89,12 @@ function dt_policy_input_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -1,
+      'weight' => -2,
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-field_core_link'
-  $field_instances['node-policy_input-field_core_link'] = array(
+  // Exported field_instance: 'node-policy_input-field_core_legacy_link'
+  $field_instances['node-policy_input-field_core_legacy_link'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,
     'deleted' => 0,
@@ -102,22 +102,23 @@ function dt_policy_input_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'type' => 'link_default',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_link',
+    'field_name' => 'field_core_legacy_link',
     'label' => 'Link',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'attributes' => array(
         'class' => '',
@@ -142,7 +143,9 @@ function dt_policy_input_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'link_field',
       'weight' => 0,
     ),
