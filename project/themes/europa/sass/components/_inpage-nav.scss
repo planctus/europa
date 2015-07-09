@@ -11,6 +11,34 @@ Styleguide inpagenav
 
 */
 
+.inpage-nav__wrapper {
+  margin-bottom: 1.667em;
+  &.affix,
+  &.affix-top {
+    position:relative;
+  }
+}
+
+.inpage-nav {
+  .inpage-nav__list {
+    margin: 0 0 0 -11px !important;
+    padding: 0;
+    list-style: none;
+    list-style-image: none;
+  }
+
+  .inpage_nav__list-item {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 8px;
+    display: block;
+    color: #000;
+    font-size: $font-size-little;
+    font-weight: bold;
+    border-left: 3px solid transparent;
+  }
+}
+
 .inpage-nav {
   &.inpage-nav__navbar-wrapper {
     display: none;
@@ -52,7 +80,7 @@ Styleguide inpagenav
         font-size: $font-size-base;
         line-height: 21px;
         padding: 0;
-        & > .inpage_nav__list__item {
+        & > .inpage_nav__list-item {
           padding: 1em 0 1em 1em;
           border-top: 1px solid $blue-darkest;
           margin: 0 1em;
@@ -67,8 +95,10 @@ Styleguide inpagenav
             text-decoration: underline;
           }
         }
-        &.active > a.inpage_nav__list__item{
+        &.active {
+          & > a.inpage_nav__list-item{
            background: none;
+         }
         }
       }
     }
@@ -78,11 +108,6 @@ Styleguide inpagenav
     padding: 0;
     width: auto;
     background-color: $blue-dark;
-  }
-
-  .inpage-nav__list {
-    margin: 0;
-    padding: 0;
   }
 }
 
@@ -151,7 +176,7 @@ Styleguide inpagenav
     max-height: none;
     li {
       &.active {
-        .inpage_nav__list__item {
+        .inpage_nav__list-item {
           color: inherit;
           background: none;
         }
@@ -160,7 +185,7 @@ Styleguide inpagenav
           content: none;
         }
       }
-      a.inpage_nav__list__item {
+      a.inpage_nav__list-item {
         font-weight: normal;
       }
     }
@@ -178,32 +203,30 @@ Styleguide inpagenav
   color: $grey-dark;
 }
 
-.inpage-nav__list li {
-  font-size: 1em;
-  & > .inpage_nav__list__item {
-    &:link, &:visited, &:focus {
-      border: none;
-      outline: none;
-      color: $grey-base;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 4px 0px;
-      margin: 0px;
-      margin-top: 15px;
-      background: none;
-    }
-    &:hover, &:active {
-      text-decoration: underline;
-      color: $blue;
-      background: none;
-    }
-  }
-}
+.inpage-nav__list {
+  li {
+    font-size: 1em;
 
-.inpage-nav__wrapper {
-  &.affix,
-  &.affix-top {
-    position:relative;
+    & > .inpage__nav__list-item {
+      &:link,
+      &:visited,
+      &:focus {
+        border: none;
+        outline: none;
+        color: $grey-base;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 4px 0px;
+        margin: 0px;
+        background: none;
+      }
+      &:hover,
+      &:active {
+        text-decoration: underline;
+        color: $blue;
+        background: none;
+      }
+    }
   }
 }
 
@@ -216,6 +239,21 @@ Styleguide inpagenav
 }
 
 @include breakpoint(screen-md-min) {
+  .inpage-nav__wrapper {
+    &.affix,
+    &.affix-top {
+      top: 0;
+    }
+
+    &.affix {
+      position: fixed;
+    }
+
+    &.affix-bottom {
+      position: absolute;
+    }
+  }
+
   .inpage-nav {
     &.inpage-nav__navbar-wrapper.is-active {
       display: none;
@@ -225,7 +263,7 @@ Styleguide inpagenav
   .inpage-nav__list {
     li {
       &.active {;
-        .inpage_nav__list__item {
+        .inpage_nav__list-item {
           color: $brand-primary;
           background-color: $gray-lighter;
         }
@@ -242,21 +280,6 @@ Styleguide inpagenav
           width: 10px;
         }
       }
-    }
-  }
-
-  .inpage-nav__wrapper {
-    &.affix,
-    &.affix-top {
-      top: 15px;
-    }
-
-    &.affix {
-      position: fixed;
-    }
-
-    &.affix-bottom {
-      position: absolute;
     }
   }
 }

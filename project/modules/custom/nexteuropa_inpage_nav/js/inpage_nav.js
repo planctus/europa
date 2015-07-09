@@ -46,8 +46,10 @@
             $navBarHeader = $('.inpage-nav__header', $navBar),
             $navBarCurrent = $('.inpage-nav__current', $navBar),
             $navBarTitle = $('.inpage-nav__title', $navBar),
-            $navBarHelp = $('.inpage-nav__help', $navBar);
+            $navBarHelp = $('.inpage-nav__help', $navBar),
+            $navBarList = $('.inpage-nav__list', $navBar);
 
+        $navBarList.addClass('nav');
         $('body').append($navBar);
 
         enquire.register("screen and (min-width: 992px)", {

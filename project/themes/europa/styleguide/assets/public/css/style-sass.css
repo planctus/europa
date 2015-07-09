@@ -6405,6 +6405,7 @@ Styleguide form.textarea
   .section__group:last-child, .nav-tabs--with-content + .tab-content > :last-child {
     padding-bottom: 0; }
   .section__group > *:first-child, .nav-tabs--with-content + .tab-content > * > *:first-child {
+    padding-top: 0;
     margin-top: 0; }
   .section__group > *:last-child, .nav-tabs--with-content + .tab-content > * > *:last-child {
     margin-bottom: 0; }
@@ -7055,7 +7056,7 @@ Styleguide forms.filters
 
 .filters__items-number,
 .filters__items-name {
-  font-size: 2.222em; }
+  font-size: 1.667em; }
 
 .filters__items-number {
   display: block;
@@ -7574,6 +7575,28 @@ Markup: html/inpage-nav.html
 Styleguide inpagenav
 
 */
+.inpage-nav__wrapper {
+  margin-bottom: 1.667em; }
+  .inpage-nav__wrapper.affix,
+  .inpage-nav__wrapper.affix-top {
+    position: relative; }
+
+.inpage-nav .inpage-nav__list {
+  margin: 0 0 0 -11px !important;
+  padding: 0;
+  list-style: none;
+  list-style-image: none; }
+
+.inpage-nav .inpage_nav__list-item {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 8px;
+  display: block;
+  color: #000;
+  font-size: 0.889em;
+  font-weight: bold;
+  border-left: 3px solid transparent; }
+
 .inpage-nav.inpage-nav__navbar-wrapper {
   display: none; }
   .inpage-nav.inpage-nav__navbar-wrapper.is-active {
@@ -7610,29 +7633,25 @@ Styleguide inpagenav
     font-size: 15px;
     line-height: 21px;
     padding: 0; }
-    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item {
+    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item {
       padding: 1em 0 1em 1em;
       border-top: 1px solid #023066;
       margin: 0 1em; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:link,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:visited,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:hover,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:active {
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:link,
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:visited,
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:hover,
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:active {
         color: #ffffff; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:hover,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list__item:active {
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:hover,
+      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:active {
         text-decoration: underline; }
-    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li.active > a.inpage_nav__list__item {
+    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li.active > a.inpage_nav__list-item {
       background: none; }
 
 .inpage-nav .inpage-nav__container {
   padding: 0;
   width: auto;
   background-color: #004494; }
-
-.inpage-nav .inpage-nav__list {
-  margin: 0;
-  padding: 0; }
 
 .inpage-nav__navbar {
   background-color: #ffffff;
@@ -7683,13 +7702,13 @@ Styleguide inpagenav
     font-weight: bold; }
   .inpage-nav__navbar .inpage-nav__list {
     max-height: none; }
-    .inpage-nav__navbar .inpage-nav__list li.active .inpage_nav__list__item {
+    .inpage-nav__navbar .inpage-nav__list li.active .inpage_nav__list-item {
       color: inherit;
       background: none; }
     .inpage-nav__navbar .inpage-nav__list li.active:before {
       background: none;
       content: none; }
-    .inpage-nav__navbar .inpage-nav__list li a.inpage_nav__list__item {
+    .inpage-nav__navbar .inpage-nav__list li a.inpage_nav__list-item {
       font-weight: normal; }
 
 .inpage-nav__current-wrapper {
@@ -7704,7 +7723,9 @@ Styleguide inpagenav
 
 .inpage-nav__list li {
   font-size: 1em; }
-  .inpage-nav__list li > .inpage_nav__list__item:link, .inpage-nav__list li > .inpage_nav__list__item:visited, .inpage-nav__list li > .inpage_nav__list__item:focus {
+  .inpage-nav__list li > .inpage__nav__list-item:link,
+  .inpage-nav__list li > .inpage__nav__list-item:visited,
+  .inpage-nav__list li > .inpage__nav__list-item:focus {
     border: none;
     outline: none;
     color: #404040;
@@ -7712,16 +7733,12 @@ Styleguide inpagenav
     font-weight: bold;
     padding: 4px 0px;
     margin: 0px;
-    margin-top: 15px;
     background: none; }
-  .inpage-nav__list li > .inpage_nav__list__item:hover, .inpage-nav__list li > .inpage_nav__list__item:active {
+  .inpage-nav__list li > .inpage__nav__list-item:hover,
+  .inpage-nav__list li > .inpage__nav__list-item:active {
     text-decoration: underline;
     color: #006fb4;
     background: none; }
-
-.inpage-nav__wrapper.affix,
-.inpage-nav__wrapper.affix-top {
-  position: relative; }
 
 .is-inpage-nav-open {
   overflow: hidden; }
@@ -7729,9 +7746,16 @@ Styleguide inpagenav
     overflow: auto; }
 
 @media (min-width: 992px) {
+  .inpage-nav__wrapper.affix,
+  .inpage-nav__wrapper.affix-top {
+    top: 0; }
+  .inpage-nav__wrapper.affix {
+    position: fixed; }
+  .inpage-nav__wrapper.affix-bottom {
+    position: absolute; }
   .inpage-nav.inpage-nav__navbar-wrapper.is-active {
     display: none; }
-  .inpage-nav__list li.active .inpage_nav__list__item {
+  .inpage-nav__list li.active .inpage_nav__list-item {
     color: #004494;
     background-color: #eeeeee; }
   .inpage-nav__list li.active:before {
@@ -7743,14 +7767,7 @@ Styleguide inpagenav
     left: -10px;
     position: absolute;
     top: 0px;
-    width: 10px; }
-  .inpage-nav__wrapper.affix,
-  .inpage-nav__wrapper.affix-top {
-    top: 15px; }
-  .inpage-nav__wrapper.affix {
-    position: fixed; }
-  .inpage-nav__wrapper.affix-bottom {
-    position: absolute; } }
+    width: 10px; } }
 
 /*
 Listing
@@ -8152,7 +8169,8 @@ Styleguide page-header
     margin: 0; }
   .page-header p {
     margin: 0;
-    font-size: 1.222em; }
+    font-size: 1.222em;
+    line-height: 1.5; }
   .page-header__top,
   .page-header__main,
   .page-header__bottom {

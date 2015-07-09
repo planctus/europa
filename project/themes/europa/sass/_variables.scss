@@ -55,6 +55,22 @@ $font-weight-bold:        600;
 $screen-msm:                  622px !default;
 $screen-msm-min:              $screen-msm !default;
 
+// Grid defaults
+$grid-columns: 12;
+
+$col-1: percentage((1/ $grid-columns));
+$col-2: percentage((2/ $grid-columns));
+$col-3: percentage((3/ $grid-columns));
+$col-4: percentage((4/ $grid-columns));
+$col-5: percentage((5/ $grid-columns));
+$col-6: percentage((6/ $grid-columns));
+$col-7: percentage((7/ $grid-columns));
+$col-8: percentage((8/ $grid-columns));
+$col-9: percentage((9/ $grid-columns));
+$col-10: percentage((10/ $grid-columns));
+$col-11: percentage((11/ $grid-columns));
+$col-12: percentage((12/ $grid-columns));
+
 // Form control
 $form-control-height:                             2.750em; //44px basing on form control base font size.
 
