@@ -5750,7 +5750,7 @@ Styleguide buttons
     color: #004494; }
   .btn.btn-ctn, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle {
     background: #ffd617;
-    color: #404040;
+    color: #000;
     white-space: normal;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
