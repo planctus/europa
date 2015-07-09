@@ -93,9 +93,12 @@ function dt_policy_strongarm() {
         'custom_settings' => FALSE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
         'custom_settings' => FALSE,
       ),
     ),

@@ -114,6 +114,55 @@ function europa_preprocess_block(&$vars) {
 }
 
 /**
+ * Returns an array with singular and plural form of a bundle.
+ *
+ * @param string $bundle
+ *   Machine name of a bundle.
+ *
+ * @return array $forms
+ *   Containing $forms['singular'] and $forms['plural'].
+ */
+function _europa_bundle_forms($bundle) {
+  // Forming plurals for existing content types.
+  $plurals = array(
+    'announcement' => t("announcements"),
+    'page' => t("pages"),
+    'contact' => t("contacts"),
+    'department' => t("departments"),
+    'editorial_team' => t("editorial teams"),
+    'file' => t("files"),
+    'basic_page' => t("pages"),
+    'person' => t("people"),
+    'policy' => t("policies"),
+    'policy_area' => t("policy areas"),
+    'policy_implementation' => t("policy implementations"),
+    'policy_input' => t("policy inputs"),
+    'policy_keyfile' => t("policy key files"),
+    'priority' => t("priorities"),
+    'publication' => t("publications"),
+    'class' => t("classes"),
+    'topic' => t("topics"),
+    'toplink' => t("top links"),
+  );
+
+  $singular = node_type_get_name($bundle);
+  // If user preference for plural form - use it, otherwise use the label.
+  if (isset($plurals[$bundle])) {
+    $plural = $plurals[$bundle];
+  }
+  else {
+    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+  }
+
+  $forms = array(
+    'singular' => strtolower($singular),
+    'plural' => $plural,
+  );
+
+  return $forms;
+}
+
+/**
  * Implements template_preprocess_views_view().
  */
 function europa_preprocess_views_view(&$vars) {
@@ -140,17 +189,21 @@ function europa_preprocess_views_view(&$vars) {
   }
 
   $vars['items_count'] = '';
+
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
   if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
+    $content_type_forms = _europa_bundle_forms($content_type);
+
     if ($total_rows == 0) {
-      $items_count = t("No @content_types", array('@content_type' => $content_type));
+      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
     }
     else {
-      $items_count = $total_rows . ' ' . format_plural($total_rows, $content_type, t('@content_types', array('@content_type' => $content_type)));
+      $items_count = $total_rows . ' ' .
+        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
     }
 
     $vars['items_count'] = $items_count;
@@ -257,6 +310,7 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
     $form['type']['#options']['All'] = t("All types");
     $form['department']['#options']['All'] = t("All departments");
+    $form['policy_area']['#options']['All'] = t("All policy areas");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
