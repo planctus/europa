@@ -11,12 +11,12 @@
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
+  <?php if (!empty($second)): ?>
+    <<?php print $second_wrapper; ?> class="column-second <?php print $second_classes; ?>">
+      <?php print $second; ?>
+    </<?php print $second_wrapper; ?>>
+  <?php endif; ?>
   <a href="<?php print $node_url; ?>">
-    <?php if (!empty($second)): ?>
-      <<?php print $second_wrapper; ?> class="column-second <?php print $second_classes; ?>">
-        <?php print $second; ?>
-      </<?php print $second_wrapper; ?>>
-    <?php endif; ?>
     <<?php print $main_wrapper; ?> class="column-main <?php print $main_classes; ?>">
       <?php print $main; ?>
     </<?php print $main_wrapper; ?>>
