@@ -70,7 +70,10 @@ function dt_policy_block_view($delta = '') {
  */
 function dt_policy_field_display_alter(&$display, $context) {
   if ($context['instance']['field_name'] == 'field_policy_imp_status') {
-    $field_value = $context['entity']->field_policy_imp_status[LANGUAGE_NONE][0]['value'];
+    global $language;
+    $current_language = $language->language;
+
+    $field_value = $context['entity']->field_policy_imp_status[$current_language][0]['value'];
     if ($field_value == 'null' || $field_value == 'adopted') {
       $display['type'] = 'hidden';
     }
