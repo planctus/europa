@@ -221,8 +221,8 @@ th {
   .navbar {
     display: none; }
   .btn > .caret,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle > .caret,
-  .dropup > .btn > .caret, .inpage-nav__navbar .inpage-nav__header .dropup > .inpage-nav__toggle > .caret {
+  .inpage-nav__navbar .inpage-nav__toggle > .caret,
+  .dropup > .btn > .caret, .inpage-nav__navbar .dropup > .inpage-nav__toggle > .caret {
     border-top-color: #000 !important; }
   .label, label {
     border: 1px solid #000; }
@@ -2183,33 +2183,33 @@ input[type="search"] {
   .input-group-sm > input[type="date"].form-control,
   .input-group-sm > input[type="date"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="date"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > input[type="date"].inpage-nav__toggle, input[type="time"].input-sm,
+  .inpage-nav__navbar .input-group-sm > .input-group-btn > input[type="date"].inpage-nav__toggle, input[type="time"].input-sm,
   .input-group-sm > input[type="time"].form-control,
   .input-group-sm > input[type="time"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="time"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > input[type="time"].inpage-nav__toggle, input[type="datetime-local"].input-sm,
+  .inpage-nav__navbar .input-group-sm > .input-group-btn > input[type="time"].inpage-nav__toggle, input[type="datetime-local"].input-sm,
   .input-group-sm > input[type="datetime-local"].form-control,
   .input-group-sm > input[type="datetime-local"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > input[type="datetime-local"].inpage-nav__toggle, input[type="month"].input-sm, .input-group-sm > input[type="month"].form-control,
+  .inpage-nav__navbar .input-group-sm > .input-group-btn > input[type="datetime-local"].inpage-nav__toggle, input[type="month"].input-sm, .input-group-sm > input[type="month"].form-control,
   .input-group-sm > input[type="month"].input-group-addon,
-  .input-group-sm > .input-group-btn > input[type="month"].btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > input[type="month"].inpage-nav__toggle {
+  .input-group-sm > .input-group-btn > input[type="month"].btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > input[type="month"].inpage-nav__toggle {
     line-height: 31px; }
   input[type="date"].input-lg,
   .input-group-lg > input[type="date"].form-control,
   .input-group-lg > input[type="date"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="date"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > input[type="date"].inpage-nav__toggle, input[type="time"].input-lg,
+  .inpage-nav__navbar .input-group-lg > .input-group-btn > input[type="date"].inpage-nav__toggle, input[type="time"].input-lg,
   .input-group-lg > input[type="time"].form-control,
   .input-group-lg > input[type="time"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="time"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > input[type="time"].inpage-nav__toggle, input[type="datetime-local"].input-lg,
+  .inpage-nav__navbar .input-group-lg > .input-group-btn > input[type="time"].inpage-nav__toggle, input[type="datetime-local"].input-lg,
   .input-group-lg > input[type="datetime-local"].form-control,
   .input-group-lg > input[type="datetime-local"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > input[type="datetime-local"].inpage-nav__toggle, input[type="month"].input-lg, .input-group-lg > input[type="month"].form-control,
+  .inpage-nav__navbar .input-group-lg > .input-group-btn > input[type="datetime-local"].inpage-nav__toggle, input[type="month"].input-lg, .input-group-lg > input[type="month"].form-control,
   .input-group-lg > input[type="month"].input-group-addon,
-  .input-group-lg > .input-group-btn > input[type="month"].btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > input[type="month"].inpage-nav__toggle {
+  .input-group-lg > .input-group-btn > input[type="month"].btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > input[type="month"].inpage-nav__toggle {
     line-height: 48px; } }
 
 .form-group {
@@ -2283,15 +2283,15 @@ fieldset[disabled] .checkbox label {
   .input-group-lg > .form-control-static.form-control,
   .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select.form-control-static, .input-group-lg > .form-control-static.input-group-addon,
   .input-group-lg > .input-group-btn > .form-control-static.btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > .form-control-static.inpage-nav__toggle, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
+  .inpage-nav__navbar .input-group-lg > .input-group-btn > .form-control-static.inpage-nav__toggle, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
   .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select.form-control-static, .input-group-sm > .form-control-static.input-group-addon,
-  .input-group-sm > .input-group-btn > .form-control-static.btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > .form-control-static.inpage-nav__toggle {
+  .input-group-sm > .input-group-btn > .form-control-static.btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > .form-control-static.inpage-nav__toggle {
     padding-left: 0;
     padding-right: 0; }
 
 .input-sm, .input-group-sm > .form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select, .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > .inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
+.input-group-sm > .input-group-btn > .btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > .inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
   height: 31px;
   padding: 5px 10px;
   font-size: 13px;
@@ -2300,22 +2300,22 @@ fieldset[disabled] .checkbox label {
 
 select.input-sm, .input-group-sm > select.form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select, .input-group-sm > select.input-group-addon,
-.input-group-sm > .input-group-btn > select.btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > select.inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
+.input-group-sm > .input-group-btn > select.btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > select.inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
   height: 31px;
   line-height: 31px; }
 
 textarea.input-sm, .input-group-sm > textarea.form-control,
 .input-group-sm > textarea.input-group-addon,
-.input-group-sm > .input-group-btn > textarea.btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > textarea.inpage-nav__toggle, .form-group-sm .form-control,
+.input-group-sm > .input-group-btn > textarea.btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > textarea.inpage-nav__toggle, .form-group-sm .form-control,
 .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select, select[multiple].input-sm, .input-group-sm > select[multiple].form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select[multiple], .input-group-sm > select[multiple].input-group-addon,
-.input-group-sm > .input-group-btn > select[multiple].btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > select[multiple].inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
+.input-group-sm > .input-group-btn > select[multiple].btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > select[multiple].inpage-nav__toggle, .form-group-sm .form-control, .form-group-sm .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-sm select {
   height: auto; }
 
 .input-lg, .input-group-lg > .form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select, .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > .inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
+.input-group-lg > .input-group-btn > .btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > .inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
   height: 48px;
   padding: 10px 16px;
   font-size: 19px;
@@ -2324,17 +2324,17 @@ textarea.input-sm, .input-group-sm > textarea.form-control,
 
 select.input-lg, .input-group-lg > select.form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select, .input-group-lg > select.input-group-addon,
-.input-group-lg > .input-group-btn > select.btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > select.inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
+.input-group-lg > .input-group-btn > select.btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > select.inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
   height: 48px;
   line-height: 48px; }
 
 textarea.input-lg, .input-group-lg > textarea.form-control,
 .input-group-lg > textarea.input-group-addon,
-.input-group-lg > .input-group-btn > textarea.btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > textarea.inpage-nav__toggle, .form-group-lg .form-control,
+.input-group-lg > .input-group-btn > textarea.btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > textarea.inpage-nav__toggle, .form-group-lg .form-control,
 .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select, select[multiple].input-lg, .input-group-lg > select[multiple].form-control,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select[multiple], .input-group-lg > select[multiple].input-group-addon,
-.input-group-lg > .input-group-btn > select[multiple].btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > select[multiple].inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
+.input-group-lg > .input-group-btn > select[multiple].btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > select[multiple].inpage-nav__toggle, .form-group-lg .form-control, .form-group-lg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .form-group-lg select {
   height: auto; }
 
 .has-feedback {
@@ -2356,14 +2356,14 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 
 .input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select + .form-control-feedback, .input-group-lg > .input-group-addon + .form-control-feedback,
-.input-group-lg > .input-group-btn > .btn + .form-control-feedback, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > .inpage-nav__toggle + .form-control-feedback {
+.input-group-lg > .input-group-btn > .btn + .form-control-feedback, .inpage-nav__navbar .input-group-lg > .input-group-btn > .inpage-nav__toggle + .form-control-feedback {
   width: 48px;
   height: 48px;
   line-height: 48px; }
 
 .input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select + .form-control-feedback, .input-group-sm > .input-group-addon + .form-control-feedback,
-.input-group-sm > .input-group-btn > .btn + .form-control-feedback, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > .inpage-nav__toggle + .form-control-feedback {
+.input-group-sm > .input-group-btn > .btn + .form-control-feedback, .inpage-nav__navbar .input-group-sm > .input-group-btn > .inpage-nav__toggle + .form-control-feedback {
   width: 31px;
   height: 31px;
   line-height: 31px; }
@@ -2545,7 +2545,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
   .form-horizontal .form-group-sm .control-label {
     padding-top: 6px; } }
 
-.btn, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle {
+.btn, .inpage-nav__navbar .inpage-nav__toggle {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -2565,38 +2565,38 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus,
+  .inpage-nav__navbar .inpage-nav__toggle:focus,
   .btn.focus,
-  .inpage-nav__navbar .inpage-nav__header .focus.inpage-nav__toggle,
+  .inpage-nav__navbar .focus.inpage-nav__toggle,
   .btn:active:focus,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active:focus,
+  .inpage-nav__navbar .inpage-nav__toggle:active:focus,
   .btn:active.focus,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active.focus,
+  .inpage-nav__navbar .inpage-nav__toggle:active.focus,
   .btn.active:focus,
-  .inpage-nav__navbar .inpage-nav__header .active.inpage-nav__toggle:focus,
-  .btn.active.focus, .inpage-nav__navbar .inpage-nav__header .active.focus.inpage-nav__toggle {
+  .inpage-nav__navbar .active.inpage-nav__toggle:focus,
+  .btn.active.focus, .inpage-nav__navbar .active.focus.inpage-nav__toggle {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:hover,
+  .inpage-nav__navbar .inpage-nav__toggle:hover,
   .btn:focus,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus,
-  .btn.focus, .inpage-nav__navbar .inpage-nav__header .focus.inpage-nav__toggle {
+  .inpage-nav__navbar .inpage-nav__toggle:focus,
+  .btn.focus, .inpage-nav__navbar .focus.inpage-nav__toggle {
     color: #333;
     text-decoration: none; }
   .btn:active,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active,
-  .btn.active, .inpage-nav__navbar .inpage-nav__header .active.inpage-nav__toggle {
+  .inpage-nav__navbar .inpage-nav__toggle:active,
+  .btn.active, .inpage-nav__navbar .active.inpage-nav__toggle {
     outline: 0;
     background-image: none;
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
   .btn.disabled,
-  .inpage-nav__navbar .inpage-nav__header .disabled.inpage-nav__toggle,
+  .inpage-nav__navbar .disabled.inpage-nav__toggle,
   .btn[disabled],
-  .inpage-nav__navbar .inpage-nav__header [disabled].inpage-nav__toggle,
-  fieldset[disabled] .btn, fieldset[disabled] .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header fieldset[disabled] .inpage-nav__toggle {
+  .inpage-nav__navbar [disabled].inpage-nav__toggle,
+  fieldset[disabled] .btn, fieldset[disabled] .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar fieldset[disabled] .inpage-nav__toggle {
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.65;
@@ -2879,19 +2879,19 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
     color: #777777;
     text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-lg > .inpage-nav__toggle {
+.btn-lg, .btn-group-lg > .btn, .inpage-nav__navbar .btn-group-lg > .inpage-nav__toggle {
   padding: 10px 16px;
   font-size: 19px;
   line-height: 1.33;
   border-radius: 6px; }
 
-.btn-sm, .btn-group-sm > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-sm > .inpage-nav__toggle {
+.btn-sm, .btn-group-sm > .btn, .inpage-nav__navbar .btn-group-sm > .inpage-nav__toggle {
   padding: 5px 10px;
   font-size: 13px;
   line-height: 1.5;
   border-radius: 3px; }
 
-.btn-xs, .btn-group-xs > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-xs > .inpage-nav__toggle {
+.btn-xs, .btn-group-xs > .btn, .inpage-nav__navbar .btn-group-xs > .inpage-nav__toggle {
   padding: 1px 5px;
   font-size: 13px;
   line-height: 1.5;
@@ -3081,28 +3081,28 @@ tbody.collapse.in {
   display: inline-block;
   vertical-align: middle; }
   .btn-group > .btn,
-  .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle, .btn-group-vertical > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle {
+  .inpage-nav__navbar .btn-group > .inpage-nav__toggle, .btn-group-vertical > .btn, .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle {
     position: relative;
     float: left; }
     .btn-group > .btn:hover,
-    .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:hover, .btn-group > .btn:focus,
-    .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:focus, .btn-group > .btn:active,
-    .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:active, .btn-group > .btn.active,
-    .inpage-nav__navbar .inpage-nav__header .btn-group > .active.inpage-nav__toggle, .btn-group-vertical > .btn:hover,
-    .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:hover, .btn-group-vertical > .btn:focus,
-    .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:focus, .btn-group-vertical > .btn:active,
-    .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:active, .btn-group-vertical > .btn.active, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .active.inpage-nav__toggle {
+    .inpage-nav__navbar .btn-group > .inpage-nav__toggle:hover, .btn-group > .btn:focus,
+    .inpage-nav__navbar .btn-group > .inpage-nav__toggle:focus, .btn-group > .btn:active,
+    .inpage-nav__navbar .btn-group > .inpage-nav__toggle:active, .btn-group > .btn.active,
+    .inpage-nav__navbar .btn-group > .active.inpage-nav__toggle, .btn-group-vertical > .btn:hover,
+    .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:hover, .btn-group-vertical > .btn:focus,
+    .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:focus, .btn-group-vertical > .btn:active,
+    .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:active, .btn-group-vertical > .btn.active, .inpage-nav__navbar .btn-group-vertical > .active.inpage-nav__toggle {
       z-index: 2; }
 
 .btn-group .btn + .btn,
-.btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .btn,
-.inpage-nav__navbar .inpage-nav__header .btn-group .inpage-nav__toggle + .btn, .btn-group .inpage-nav__navbar .inpage-nav__header .btn + .inpage-nav__toggle,
-.inpage-nav__navbar .inpage-nav__header .btn-group .btn + .inpage-nav__toggle, .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .inpage-nav__toggle,
-.inpage-nav__navbar .inpage-nav__header .btn-group .inpage-nav__toggle + .inpage-nav__toggle, .btn-group .btn + .btn-group,
-.btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .btn-group,
-.inpage-nav__navbar .inpage-nav__header .btn-group .inpage-nav__toggle + .btn-group, .btn-group .btn-group + .btn,
-.btn-group .inpage-nav__navbar .inpage-nav__header .btn-group + .inpage-nav__toggle,
-.inpage-nav__navbar .inpage-nav__header .btn-group .btn-group + .inpage-nav__toggle, .btn-group .btn-group + .btn-group {
+.btn-group .inpage-nav__navbar .inpage-nav__toggle + .btn,
+.inpage-nav__navbar .btn-group .inpage-nav__toggle + .btn, .btn-group .inpage-nav__navbar .btn + .inpage-nav__toggle,
+.inpage-nav__navbar .btn-group .btn + .inpage-nav__toggle, .btn-group .inpage-nav__navbar .inpage-nav__toggle + .inpage-nav__toggle,
+.inpage-nav__navbar .btn-group .inpage-nav__toggle + .inpage-nav__toggle, .btn-group .btn + .btn-group,
+.btn-group .inpage-nav__navbar .inpage-nav__toggle + .btn-group,
+.inpage-nav__navbar .btn-group .inpage-nav__toggle + .btn-group, .btn-group .btn-group + .btn,
+.btn-group .inpage-nav__navbar .btn-group + .inpage-nav__toggle,
+.inpage-nav__navbar .btn-group .btn-group + .inpage-nav__toggle, .btn-group .btn-group + .btn-group {
   margin-left: -1px; }
 
 .btn-toolbar {
@@ -3117,36 +3117,36 @@ tbody.collapse.in {
   .btn-toolbar .input-group {
     float: left; }
   .btn-toolbar > .btn,
-  .inpage-nav__navbar .inpage-nav__header .btn-toolbar > .inpage-nav__toggle, .btn-toolbar > .btn-group,
+  .inpage-nav__navbar .btn-toolbar > .inpage-nav__toggle, .btn-toolbar > .btn-group,
   .btn-toolbar > .input-group {
     margin-left: 5px; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .inpage-nav__navbar .btn-group > .inpage-nav__toggle:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child, .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:first-child {
+.btn-group > .btn:first-child, .inpage-nav__navbar .btn-group > .inpage-nav__toggle:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .inpage-nav__navbar .btn-group > .inpage-nav__toggle:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
 .btn-group > .btn:last-child:not(:first-child),
-.inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+.inpage-nav__navbar .btn-group > .inpage-nav__toggle:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group > .btn-group:not(:first-child):not(:last-child) > .inpage-nav__toggle {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .inpage-nav__navbar .btn-group > .btn-group:not(:first-child):not(:last-child) > .inpage-nav__toggle {
   border-radius: 0; }
 
 .btn-group > .btn-group:first-child > .btn:last-child,
-.inpage-nav__navbar .inpage-nav__header .btn-group > .btn-group:first-child > .inpage-nav__toggle:last-child, .btn-group > .btn-group:first-child > .dropdown-toggle {
+.inpage-nav__navbar .btn-group > .btn-group:first-child > .inpage-nav__toggle:last-child, .btn-group > .btn-group:first-child > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child > .btn:first-child, .inpage-nav__navbar .inpage-nav__header .btn-group > .btn-group:last-child > .inpage-nav__toggle:first-child {
+.btn-group > .btn-group:last-child > .btn:first-child, .inpage-nav__navbar .btn-group > .btn-group:last-child > .inpage-nav__toggle:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3154,11 +3154,11 @@ tbody.collapse.in {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn-group > .btn + .dropdown-toggle, .inpage-nav__navbar .inpage-nav__header .btn-group > .inpage-nav__toggle + .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle, .inpage-nav__navbar .btn-group > .inpage-nav__toggle + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px; }
 
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .inpage-nav__navbar .inpage-nav__header .btn-group-lg.btn-group > .inpage-nav__toggle + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .inpage-nav__navbar .btn-group-lg.btn-group > .inpage-nav__toggle + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px; }
 
@@ -3169,19 +3169,19 @@ tbody.collapse.in {
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-.btn .caret, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle .caret {
+.btn .caret, .inpage-nav__navbar .inpage-nav__toggle .caret {
   margin-left: 0; }
 
-.btn-lg .caret, .btn-group-lg > .btn .caret, .inpage-nav__navbar .inpage-nav__header .btn-group-lg > .inpage-nav__toggle .caret {
+.btn-lg .caret, .btn-group-lg > .btn .caret, .inpage-nav__navbar .btn-group-lg > .inpage-nav__toggle .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0; }
 
-.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .inpage-nav__navbar .inpage-nav__header .btn-group-lg > .inpage-nav__toggle .caret, .inpage-nav__navbar .inpage-nav__header .dropup .btn-group-lg > .inpage-nav__toggle .caret {
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .inpage-nav__navbar .btn-group-lg > .inpage-nav__toggle .caret, .inpage-nav__navbar .dropup .btn-group-lg > .inpage-nav__toggle .caret {
   border-width: 0 5px 5px; }
 
 .btn-group-vertical > .btn,
-.inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle, .btn-group-vertical > .btn-group,
-.btn-group-vertical > .btn-group > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group > .inpage-nav__toggle {
+.inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle, .btn-group-vertical > .btn-group,
+.btn-group-vertical > .btn-group > .btn, .inpage-nav__navbar .btn-group-vertical > .btn-group > .inpage-nav__toggle {
   display: block;
   float: none;
   width: 100%;
@@ -3195,38 +3195,38 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group:after {
   clear: both; }
 
-.btn-group-vertical > .btn-group > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group > .inpage-nav__toggle {
+.btn-group-vertical > .btn-group > .btn, .inpage-nav__navbar .btn-group-vertical > .btn-group > .inpage-nav__toggle {
   float: none; }
 
 .btn-group-vertical > .btn + .btn,
-.inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle + .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle + .inpage-nav__toggle, .btn-group-vertical > .btn + .btn-group,
-.inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle + .btn-group, .btn-group-vertical > .btn-group + .btn,
-.inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group + .inpage-nav__toggle, .btn-group-vertical > .btn-group + .btn-group {
+.inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle + .btn, .inpage-nav__navbar .btn-group-vertical > .btn + .inpage-nav__toggle, .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle + .inpage-nav__toggle, .btn-group-vertical > .btn + .btn-group,
+.inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle + .btn-group, .btn-group-vertical > .btn-group + .btn,
+.inpage-nav__navbar .btn-group-vertical > .btn-group + .inpage-nav__toggle, .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child), .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child), .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child), .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .inpage-nav__toggle:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .inpage-nav__navbar .btn-group-vertical > .inpage-nav__toggle:last-child:not(:first-child) {
   border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .inpage-nav__toggle {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .inpage-nav__navbar .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .inpage-nav__toggle {
   border-radius: 0; }
 
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
-.inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group:first-child:not(:last-child) > .inpage-nav__toggle:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
+.inpage-nav__navbar .btn-group-vertical > .btn-group:first-child:not(:last-child) > .inpage-nav__toggle:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .inpage-nav__navbar .inpage-nav__header .btn-group-vertical > .btn-group:last-child:not(:first-child) > .inpage-nav__toggle:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .inpage-nav__navbar .btn-group-vertical > .btn-group:last-child:not(:first-child) > .inpage-nav__toggle:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3236,19 +3236,19 @@ tbody.collapse.in {
   table-layout: fixed;
   border-collapse: separate; }
   .btn-group-justified > .btn,
-  .inpage-nav__navbar .inpage-nav__header .btn-group-justified > .inpage-nav__toggle, .btn-group-justified > .btn-group {
+  .inpage-nav__navbar .btn-group-justified > .inpage-nav__toggle, .btn-group-justified > .btn-group {
     float: none;
     display: table-cell;
     width: 1%; }
-  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .btn-group-justified > .btn-group .inpage-nav__toggle {
+  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .btn-group-justified > .btn-group .inpage-nav__toggle {
     width: 100%; }
   .btn-group-justified > .btn-group .dropdown-menu {
     left: auto; }
 
 [data-toggle="buttons"] > .btn input[type="radio"],
-.inpage-nav__navbar .inpage-nav__header [data-toggle="buttons"] > .inpage-nav__toggle input[type="radio"], [data-toggle="buttons"] > .btn input[type="checkbox"],
-.inpage-nav__navbar .inpage-nav__header [data-toggle="buttons"] > .inpage-nav__toggle input[type="checkbox"], [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-.inpage-nav__navbar .inpage-nav__header [data-toggle="buttons"] > .btn-group > .inpage-nav__toggle input[type="radio"], [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"], .inpage-nav__navbar .inpage-nav__header [data-toggle="buttons"] > .btn-group > .inpage-nav__toggle input[type="checkbox"] {
+.inpage-nav__navbar [data-toggle="buttons"] > .inpage-nav__toggle input[type="radio"], [data-toggle="buttons"] > .btn input[type="checkbox"],
+.inpage-nav__navbar [data-toggle="buttons"] > .inpage-nav__toggle input[type="checkbox"], [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
+.inpage-nav__navbar [data-toggle="buttons"] > .btn-group > .inpage-nav__toggle input[type="radio"], [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"], .inpage-nav__navbar [data-toggle="buttons"] > .btn-group > .inpage-nav__toggle input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -3294,12 +3294,12 @@ tbody.collapse.in {
   border: 1px solid #ccc;
   border-radius: 4px; }
   .input-group-addon.input-sm, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-sm > select.input-group-addon, .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn, .inpage-nav__navbar .inpage-nav__header .input-group-sm > .input-group-btn > .input-group-addon.inpage-nav__toggle {
+  .input-group-sm > .input-group-btn > .input-group-addon.btn, .inpage-nav__navbar .input-group-sm > .input-group-btn > .input-group-addon.inpage-nav__toggle {
     padding: 5px 10px;
     font-size: 13px;
     border-radius: 3px; }
   .input-group-addon.input-lg, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group-lg > select.input-group-addon, .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn, .inpage-nav__navbar .inpage-nav__header .input-group-lg > .input-group-btn > .input-group-addon.inpage-nav__toggle {
+  .input-group-lg > .input-group-btn > .input-group-addon.btn, .inpage-nav__navbar .input-group-lg > .input-group-btn > .input-group-addon.inpage-nav__toggle {
     padding: 10px 16px;
     font-size: 19px;
     border-radius: 6px; }
@@ -3311,10 +3311,10 @@ tbody.collapse.in {
 .input-group .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:first-child,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group select:first-child, .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:first-child > .inpage-nav__toggle, .input-group-btn:first-child > .btn-group > .btn,
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:first-child > .btn-group > .inpage-nav__toggle, .input-group-btn:first-child > .dropdown-toggle,
+.inpage-nav__navbar .input-group-btn:first-child > .inpage-nav__toggle, .input-group-btn:first-child > .btn-group > .btn,
+.inpage-nav__navbar .input-group-btn:first-child > .btn-group > .inpage-nav__toggle, .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:last-child > .inpage-nav__toggle:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child > .btn-group:not(:last-child) > .btn, .inpage-nav__navbar .inpage-nav__header .input-group-btn:last-child > .btn-group:not(:last-child) > .inpage-nav__toggle {
+.inpage-nav__navbar .input-group-btn:last-child > .inpage-nav__toggle:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child > .btn-group:not(:last-child) > .btn, .inpage-nav__navbar .input-group-btn:last-child > .btn-group:not(:last-child) > .inpage-nav__toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
@@ -3325,10 +3325,10 @@ tbody.collapse.in {
 .input-group .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:last-child,
 .ui-datepicker .ui-datepicker-header .ui-datepicker-title .input-group select:last-child, .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:last-child > .inpage-nav__toggle, .input-group-btn:last-child > .btn-group > .btn,
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:last-child > .btn-group > .inpage-nav__toggle, .input-group-btn:last-child > .dropdown-toggle,
+.inpage-nav__navbar .input-group-btn:last-child > .inpage-nav__toggle, .input-group-btn:last-child > .btn-group > .btn,
+.inpage-nav__navbar .input-group-btn:last-child > .btn-group > .inpage-nav__toggle, .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
-.inpage-nav__navbar .inpage-nav__header .input-group-btn:first-child > .inpage-nav__toggle:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .inpage-nav__navbar .inpage-nav__header .input-group-btn:first-child > .btn-group:not(:first-child) > .inpage-nav__toggle {
+.inpage-nav__navbar .input-group-btn:first-child > .inpage-nav__toggle:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn, .inpage-nav__navbar .input-group-btn:first-child > .btn-group:not(:first-child) > .inpage-nav__toggle {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -3339,19 +3339,19 @@ tbody.collapse.in {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn, .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle {
+  .input-group-btn > .btn, .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle {
     position: relative; }
-    .input-group-btn > .btn + .btn, .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle + .btn, .inpage-nav__navbar .inpage-nav__header .input-group-btn > .btn + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle + .inpage-nav__toggle {
+    .input-group-btn > .btn + .btn, .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle + .btn, .inpage-nav__navbar .input-group-btn > .btn + .inpage-nav__toggle, .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle + .inpage-nav__toggle {
       margin-left: -1px; }
     .input-group-btn > .btn:hover,
-    .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle:hover, .input-group-btn > .btn:focus,
-    .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle:focus, .input-group-btn > .btn:active, .inpage-nav__navbar .inpage-nav__header .input-group-btn > .inpage-nav__toggle:active {
+    .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle:hover, .input-group-btn > .btn:focus,
+    .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle:focus, .input-group-btn > .btn:active, .inpage-nav__navbar .input-group-btn > .inpage-nav__toggle:active {
       z-index: 2; }
   .input-group-btn:first-child > .btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-btn:first-child > .inpage-nav__toggle, .input-group-btn:first-child > .btn-group {
+  .inpage-nav__navbar .input-group-btn:first-child > .inpage-nav__toggle, .input-group-btn:first-child > .btn-group {
     margin-right: -1px; }
   .input-group-btn:last-child > .btn,
-  .inpage-nav__navbar .inpage-nav__header .input-group-btn:last-child > .inpage-nav__toggle, .input-group-btn:last-child > .btn-group {
+  .inpage-nav__navbar .input-group-btn:last-child > .inpage-nav__toggle, .input-group-btn:last-child > .btn-group {
     margin-left: -1px; }
 
 .nav {
@@ -3750,10 +3750,10 @@ tbody.collapse.in {
 .navbar-btn {
   margin-top: 7.5px;
   margin-bottom: 7.5px; }
-  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .inpage-nav__navbar .inpage-nav__header .btn-group-sm > .navbar-btn.inpage-nav__toggle {
+  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .inpage-nav__navbar .btn-group-sm > .navbar-btn.inpage-nav__toggle {
     margin-top: 9.5px;
     margin-bottom: 9.5px; }
-  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .inpage-nav__navbar .inpage-nav__header .btn-group-xs > .navbar-btn.inpage-nav__toggle {
+  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .inpage-nav__navbar .btn-group-xs > .navbar-btn.inpage-nav__toggle {
     margin-top: 14px;
     margin-bottom: 14px; }
 
@@ -4079,7 +4079,7 @@ tbody.collapse.in {
   border-radius: .25em; }
   .label:empty, label:empty {
     display: none; }
-  .btn .label, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle .label, .btn label, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle label {
+  .btn .label, .inpage-nav__navbar .inpage-nav__toggle .label, .btn label, .inpage-nav__navbar .inpage-nav__toggle label {
     position: relative;
     top: -1px; }
 
@@ -4140,10 +4140,10 @@ a.label:focus {
   border-radius: 10px; }
   .badge:empty {
     display: none; }
-  .btn .badge, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle .badge {
+  .btn .badge, .inpage-nav__navbar .inpage-nav__toggle .badge {
     position: relative;
     top: -1px; }
-  .btn-xs .badge, .btn-group-xs > .btn .badge, .inpage-nav__navbar .inpage-nav__header .btn-group-xs > .inpage-nav__toggle .badge {
+  .btn-xs .badge, .btn-group-xs > .btn .badge, .inpage-nav__navbar .btn-group-xs > .inpage-nav__toggle .badge {
     top: 0;
     padding: 1px 5px; }
   .list-group-item.active > .badge,
@@ -4991,10 +4991,10 @@ button.close {
     display: table; }
   .modal-footer:after {
     clear: both; }
-  .modal-footer .btn + .btn, .modal-footer .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .btn, .inpage-nav__navbar .inpage-nav__header .modal-footer .inpage-nav__toggle + .btn, .modal-footer .inpage-nav__navbar .inpage-nav__header .btn + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .modal-footer .btn + .inpage-nav__toggle, .modal-footer .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .modal-footer .inpage-nav__toggle + .inpage-nav__toggle {
+  .modal-footer .btn + .btn, .modal-footer .inpage-nav__navbar .inpage-nav__toggle + .btn, .inpage-nav__navbar .modal-footer .inpage-nav__toggle + .btn, .modal-footer .inpage-nav__navbar .btn + .inpage-nav__toggle, .inpage-nav__navbar .modal-footer .btn + .inpage-nav__toggle, .modal-footer .inpage-nav__navbar .inpage-nav__toggle + .inpage-nav__toggle, .inpage-nav__navbar .modal-footer .inpage-nav__toggle + .inpage-nav__toggle {
     margin-left: 5px;
     margin-bottom: 0; }
-  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .btn, .inpage-nav__navbar .inpage-nav__header .modal-footer .btn-group .inpage-nav__toggle + .btn, .modal-footer .btn-group .inpage-nav__navbar .inpage-nav__header .btn + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .modal-footer .btn-group .btn + .inpage-nav__toggle, .modal-footer .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle + .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .modal-footer .btn-group .inpage-nav__toggle + .inpage-nav__toggle {
+  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .inpage-nav__navbar .inpage-nav__toggle + .btn, .inpage-nav__navbar .modal-footer .btn-group .inpage-nav__toggle + .btn, .modal-footer .btn-group .inpage-nav__navbar .btn + .inpage-nav__toggle, .inpage-nav__navbar .modal-footer .btn-group .btn + .inpage-nav__toggle, .modal-footer .btn-group .inpage-nav__navbar .inpage-nav__toggle + .inpage-nav__toggle, .inpage-nav__navbar .modal-footer .btn-group .inpage-nav__toggle + .inpage-nav__toggle {
     margin-left: -1px; }
   .modal-footer .btn-block + .btn-block {
     margin-left: 0; }
@@ -5390,7 +5390,7 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
-  .carousel-caption .btn, .carousel-caption .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .carousel-caption .inpage-nav__toggle {
+  .carousel-caption .btn, .carousel-caption .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .carousel-caption .inpage-nav__toggle {
     text-shadow: none; }
 
 @media screen and (min-width: 768px) {
@@ -5702,7 +5702,7 @@ Markup: html/btn.html
 
 Styleguide buttons
 */
-.btn, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle {
+.btn, .inpage-nav__navbar .inpage-nav__toggle {
   margin-bottom: 1em;
   line-height: 1;
   border-radius: 0;
@@ -5712,43 +5712,43 @@ Styleguide buttons
   font-size: 0.889em;
   text-decoration: none; }
   .btn:hover,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:hover,
+  .inpage-nav__navbar .inpage-nav__toggle:hover,
   .btn:active,
-  .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active,
-  .btn:focus, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus {
+  .inpage-nav__navbar .inpage-nav__toggle:active,
+  .btn:focus, .inpage-nav__navbar .inpage-nav__toggle:focus {
     text-decoration: underline;
     -webkit-box-shadow: none;
     box-shadow: none; }
-  .btn:focus, .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus {
+  .btn:focus, .inpage-nav__navbar .inpage-nav__toggle:focus {
     outline: 2px solid #ffd617;
     border-color: #ffd617; }
-  .btn.btn-default, .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle {
+  .btn.btn-default, .inpage-nav__navbar .btn-default.inpage-nav__toggle {
     border-color: #004494;
     color: #004494;
     background: none; }
-    .btn.btn-default:hover, .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle:hover {
+    .btn.btn-default:hover, .inpage-nav__navbar .btn-default.inpage-nav__toggle:hover {
       background: #004494;
       color: #fff; }
     .btn.btn-default:active,
-    .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle:active,
-    .btn.btn-default:focus, .inpage-nav__navbar .inpage-nav__header .btn-default.inpage-nav__toggle:focus {
+    .inpage-nav__navbar .btn-default.inpage-nav__toggle:active,
+    .btn.btn-default:focus, .inpage-nav__navbar .btn-default.inpage-nav__toggle:focus {
       background: #fff;
       color: #004494; }
-  .btn.btn-primary, .inpage-nav__navbar .inpage-nav__header .btn-primary.inpage-nav__toggle {
+  .btn.btn-primary, .inpage-nav__navbar .btn-primary.inpage-nav__toggle {
     border-color: #004494; }
     .btn.btn-primary:hover,
-    .inpage-nav__navbar .inpage-nav__header .btn-primary.inpage-nav__toggle:hover,
-    .btn.btn-primary:active, .inpage-nav__navbar .inpage-nav__header .btn-primary.inpage-nav__toggle:active {
+    .inpage-nav__navbar .btn-primary.inpage-nav__toggle:hover,
+    .btn.btn-primary:active, .inpage-nav__navbar .btn-primary.inpage-nav__toggle:active {
       background: #fff;
       color: #004494; }
-    .btn.btn-primary:focus, .inpage-nav__navbar .inpage-nav__header .btn-primary.inpage-nav__toggle:focus {
+    .btn.btn-primary:focus, .inpage-nav__navbar .btn-primary.inpage-nav__toggle:focus {
       color: #fff;
       background: #004494; }
-  .btn.btn-secondary, .inpage-nav__navbar .inpage-nav__header .btn-secondary.inpage-nav__toggle {
+  .btn.btn-secondary, .inpage-nav__navbar .btn-secondary.inpage-nav__toggle {
     border-color: #fff;
     background: #fff;
     color: #004494; }
-  .btn.btn-ctn, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle {
+  .btn.btn-ctn, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle {
     background: #ffd617;
     color: #404040;
     white-space: normal;
@@ -5756,39 +5756,39 @@ Styleguide buttons
     padding-bottom: 0.5em;
     line-height: 1.667; }
     .btn.btn-ctn:hover,
-    .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:hover,
-    .btn.btn-ctn:active, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:active {
+    .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:hover,
+    .btn.btn-ctn:active, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:active {
       border-color: #404040;
       background: #fff; }
-    .btn.btn-ctn:focus, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:focus {
+    .btn.btn-ctn:focus, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:focus {
       border-color: #404040;
       outline-color: #404040; }
-    .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after {
+    .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after {
       margin-left: 10px;
       font-size: 0.8em; }
-  .btn.btn-menu, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle {
+  .btn.btn-menu, .inpage-nav__navbar .btn-menu.inpage-nav__toggle {
     border-color: #fff;
     background: #004494; }
     .btn.btn-menu:hover,
-    .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:hover,
-    .btn.btn-menu:active, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:active {
+    .inpage-nav__navbar .btn-menu.inpage-nav__toggle:hover,
+    .btn.btn-menu:active, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:active {
       color: #fff; }
     .btn.btn-menu:active,
-    .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:active,
-    .btn.btn-menu:focus, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:focus {
+    .inpage-nav__navbar .btn-menu.inpage-nav__toggle:active,
+    .btn.btn-menu:focus, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:focus {
       outline: 2px solid #ffd617; }
-    .btn.btn-menu:focus, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:focus {
+    .btn.btn-menu:focus, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:focus {
       color: #fff;
       background: #004494;
       border-color: #ffd617;
       outline-color: #ffd617; }
-    .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after {
+    .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after {
       margin-left: 6px !important;
       font-size: 0.45em;
       top: -2px;
       position: relative;
       transition: all 0.3s ease 0s; }
-    .btn.btn-menu.is-collapsed:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.is-collapsed.inpage-nav__toggle:after {
+    .btn.btn-menu.is-collapsed:after, .inpage-nav__navbar .btn-menu.is-collapsed.inpage-nav__toggle:after {
       -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
       -o-transform: rotate(180deg);
@@ -5843,7 +5843,7 @@ Markup: html/btn-search.html
 
 Styleguide buttons.btn-search
 */
-.btn.btn-search, .inpage-nav__navbar .inpage-nav__header .btn-search.inpage-nav__toggle {
+.btn.btn-search, .inpage-nav__navbar .btn-search.inpage-nav__toggle {
   border-color: #fff;
   background: #e2e2e2;
   color: #575757; }
@@ -5859,10 +5859,10 @@ Styleguide buttons.group
 */
 .btn-group {
   margin-top: 1em; }
-  .btn-group .btn, .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .btn-group .inpage-nav__toggle {
+  .btn-group .btn, .btn-group .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .btn-group .inpage-nav__toggle {
     margin-right: 0.4em;
     margin-bottom: 0; }
-    .btn-group .btn:last-child, .btn-group .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:last-child, .inpage-nav__navbar .inpage-nav__header .btn-group .inpage-nav__toggle:last-child {
+    .btn-group .btn:last-child, .btn-group .inpage-nav__navbar .inpage-nav__toggle:last-child, .inpage-nav__navbar .btn-group .inpage-nav__toggle:last-child {
       margin-right: 0; }
 
 /*
@@ -7284,7 +7284,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after, .file__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after, .file__btn:after {
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7303,7 +7303,7 @@ Styleguide: icon
 .icon--arrow-up, .icon--arrow-up:before {
   content: '\e61e'; }
 
-.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .inpage-nav__header .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before {
+.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before {
   content: '\e61d'; }
 
 .icon--spinner:before {
@@ -7333,7 +7333,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e618'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .inpage-nav__header .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   content: '\e617'; }
 
 .icon--down:before {
@@ -7586,6 +7586,9 @@ Styleguide inpagenav
   padding: 0;
   list-style: none;
   list-style-image: none; }
+  .inpage-nav .inpage-nav__list li.active .inpage_nav__list-item {
+    border-color: #004494;
+    background: #ececec; }
 
 .inpage-nav .inpage_nav__list-item {
   padding-top: 7px;
@@ -7596,123 +7599,121 @@ Styleguide inpagenav
   font-size: 0.889em;
   font-weight: bold;
   border-left: 3px solid transparent; }
+  .inpage-nav .inpage_nav__list-item:hover {
+    background: none;
+    text-decoration: underline; }
+  .inpage-nav .inpage_nav__list-item:focus {
+    background: #ffd617 !important; }
 
-.inpage-nav.inpage-nav__navbar-wrapper {
+.inpage-nav__navbar {
+  background-color: #ffffff;
+  color: #ffffff; }
+  .inpage-nav__navbar .inpage-nav__current-wrapper {
+    overflow: hidden; }
+  .inpage-nav__navbar .inpage-nav__current,
+  .inpage-nav__navbar .inpage-nav__help {
+    padding-bottom: 0px; }
+  .inpage-nav__navbar .inpage-nav__current {
+    color: #ffffff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    padding-top: 1em; }
+    .inpage-nav__navbar .inpage-nav__current:hover {
+      color: #fff; }
+  .inpage-nav__navbar .inpage-nav__help {
+    display: none;
+    background-color: #ececec;
+    font-size: 0.778em;
+    text-transform: uppercase;
+    color: #575757;
+    padding-top: 1.35em; }
+  .inpage-nav__navbar .inpage-nav__title {
+    display: block;
+    font-size: 1em;
+    padding: 1em;
+    line-height: 1;
+    font-weight: bold; }
+  .inpage-nav__navbar .inpage-nav__toggle {
+    margin: 0;
+    background-color: #023066;
+    border-color: #023066;
+    padding: 1em; }
+    .inpage-nav__navbar .inpage-nav__toggle:hover,
+    .inpage-nav__navbar .inpage-nav__toggle:active,
+    .inpage-nav__navbar .inpage-nav__toggle:focus {
+      background-color: #023066;
+      text-decoration: none;
+      color: #ffffff; }
+  .inpage-nav__navbar .inpage-nav__icon-arrow {
+    display: block;
+    transition: all 0.3s ease 0s;
+    transform-origin: 50% 50%;
+    color: #ffffff;
+    margin: 5px 4px;
+    font-size: 10px; }
+    .inpage-nav__navbar .inpage-nav__icon-arrow:before {
+      margin-right: 0px; }
+  .inpage-nav__navbar .inpage-nav__close-text {
+    display: none;
+    font-size: 15px;
+    line-height: 21px; }
+  .inpage-nav__navbar .inpage-nav__header {
+    margin: 0; }
+  .inpage-nav__navbar .inpage-nav__container {
+    padding: 0;
+    width: auto;
+    background-color: #004494; }
+  .inpage-nav__navbar .inpage-nav__list--navbar {
+    max-height: none;
+    padding: 0 15px; }
+    .inpage-nav__navbar .inpage-nav__list--navbar li.active .inpage_nav__list-item {
+      color: inherit;
+      background: none; }
+    .inpage-nav__navbar .inpage-nav__list--navbar li .inpage_nav__list-item {
+      color: #fff;
+      border-top: 1px solid #023066;
+      padding: 0.8em 0 0.8em 1em;
+      font-size: 0.889em; }
+      .inpage-nav__navbar .inpage-nav__list--navbar li .inpage_nav__list-item:hover {
+        background: none;
+        text-decoration: underline; }
+
+.inpage-nav__navbar-wrapper {
   display: none; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-active {
+  .inpage-nav__navbar-wrapper.is-active {
     display: inherit; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__navbar,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__navbar {
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__navbar,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__navbar {
     height: 100%; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__help,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__close-text,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__help,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__close-text {
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__help,
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__close-text,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__help,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__close-text {
     display: block; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__current,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__current {
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__current,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__current {
     display: none; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__header,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__header {
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__header,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__header {
     background-color: #ececec;
     font-weight: normal; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__toggle,
-  .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__toggle {
+  .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__toggle,
+  .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__toggle {
     background-color: #b3b4b5;
     border-color: #b3b4b5; }
-    .inpage-nav.inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__toggle .inpage-nav__icon-arrow,
-    .inpage-nav.inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__toggle .inpage-nav__icon-arrow {
+    .inpage-nav__navbar-wrapper.is-collapsed .inpage-nav__toggle .inpage-nav__icon-arrow,
+    .inpage-nav__navbar-wrapper.is-collapsing .inpage-nav__toggle .inpage-nav__icon-arrow {
       -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
       -o-transform: rotate(180deg);
       transform: rotate(180deg);
       color: #575757; }
-  .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__header {
-    margin: 0; }
-  .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li {
-    font-size: 15px;
-    line-height: 21px;
-    padding: 0; }
-    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item {
-      padding: 1em 0 1em 1em;
-      border-top: 1px solid #023066;
-      margin: 0 1em; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:link,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:visited,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:hover,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:active {
-        color: #ffffff; }
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:hover,
-      .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li > .inpage_nav__list-item:active {
-        text-decoration: underline; }
-    .inpage-nav.inpage-nav__navbar-wrapper .inpage-nav__list li.active > a.inpage_nav__list-item {
-      background: none; }
-
-.inpage-nav .inpage-nav__container {
-  padding: 0;
-  width: auto;
-  background-color: #004494; }
-
-.inpage-nav__navbar {
-  background-color: #ffffff;
-  color: #ffffff; }
-  .inpage-nav__navbar .inpage-nav__header {
-    font-weight: bold; }
-    .inpage-nav__navbar .inpage-nav__header .inpage-nav__current {
-      color: #ffffff;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: block;
-      width: 100%;
-      overflow: hidden; }
-    .inpage-nav__navbar .inpage-nav__header .inpage-nav__help {
-      display: none;
-      background-color: #ececec;
-      font-size: 15px;
-      text-transform: uppercase;
-      color: #575757; }
-    .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle {
-      margin: 0;
-      background-color: #023066;
-      border-color: #023066;
-      padding: 1em; }
-      .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:hover,
-      .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:active,
-      .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle:focus {
-        text-decoration: none !important;
-        color: #ffffff; }
-    .inpage-nav__navbar .inpage-nav__header .inpage-nav__close-text {
-      display: none;
-      font-size: 15px;
-      line-height: 21px; }
-    .inpage-nav__navbar .inpage-nav__header .inpage-nav__icon-arrow {
-      display: block;
-      transition: all 0.3s ease 0s;
-      transform-origin: 50% 50%;
-      color: #ffffff;
-      margin: 5px 4px;
-      font-size: 10px; }
-      .inpage-nav__navbar .inpage-nav__header .inpage-nav__icon-arrow:before {
-        margin-right: 0px; }
-  .inpage-nav__navbar .inpage-nav__title {
-    display: block;
-    font-size: 19px;
-    padding: 15px;
-    line-height: 21px;
-    font-weight: bold; }
-  .inpage-nav__navbar .inpage-nav__list {
-    max-height: none; }
-    .inpage-nav__navbar .inpage-nav__list li.active .inpage_nav__list-item {
-      color: inherit;
-      background: none; }
-    .inpage-nav__navbar .inpage-nav__list li.active:before {
-      background: none;
-      content: none; }
-    .inpage-nav__navbar .inpage-nav__list li a.inpage_nav__list-item {
-      font-weight: normal; }
-
-.inpage-nav__current-wrapper {
-  overflow: hidden; }
 
 .inpage-nav__block-title {
   display: inherit;
@@ -7720,25 +7721,6 @@ Styleguide inpagenav
   text-transform: uppercase;
   font-weight: normal;
   color: #575757; }
-
-.inpage-nav__list li {
-  font-size: 1em; }
-  .inpage-nav__list li > .inpage__nav__list-item:link,
-  .inpage-nav__list li > .inpage__nav__list-item:visited,
-  .inpage-nav__list li > .inpage__nav__list-item:focus {
-    border: none;
-    outline: none;
-    color: #404040;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 4px 0px;
-    margin: 0px;
-    background: none; }
-  .inpage-nav__list li > .inpage__nav__list-item:hover,
-  .inpage-nav__list li > .inpage__nav__list-item:active {
-    text-decoration: underline;
-    color: #006fb4;
-    background: none; }
 
 .is-inpage-nav-open {
   overflow: hidden; }
@@ -7750,24 +7732,13 @@ Styleguide inpagenav
   .inpage-nav__wrapper.affix-top {
     top: 0; }
   .inpage-nav__wrapper.affix {
-    position: fixed; }
+    position: fixed;
+    top: 0;
+    padding-top: 30px; }
   .inpage-nav__wrapper.affix-bottom {
     position: absolute; }
-  .inpage-nav.inpage-nav__navbar-wrapper.is-active {
-    display: none; }
-  .inpage-nav__list li.active .inpage_nav__list-item {
-    color: #004494;
-    background-color: #eeeeee; }
-  .inpage-nav__list li.active:before {
-    border-left: 2px solid #004494;
-    background-color: #eeeeee;
-    content: "";
-    display: block;
-    height: 100%;
-    left: -10px;
-    position: absolute;
-    top: 0px;
-    width: 10px; } }
+  .inpage-nav__navbar-wrapper.is-active {
+    display: none; } }
 
 /*
 Listing
@@ -7818,7 +7789,7 @@ Styleguide listing
 .listing__column-second--no-link {
   padding-bottom: 0.85em;
   margin: 0; }
-  .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .listing__column-second--no-link .inpage-nav__toggle {
+  .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .listing__column-second--no-link .inpage-nav__toggle {
     margin-bottom: 0; }
 
 .listing__column-main {
@@ -7909,7 +7880,7 @@ Styleguide listing
     width: 33.3%;
     padding-left: 15px;
     padding-top: 0.85em; }
-    .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .listing__column-second--no-link .inpage-nav__toggle {
+    .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .listing__column-second--no-link .inpage-nav__toggle {
       margin-top: 1.667em; } }
 
 /*
@@ -8508,7 +8479,7 @@ Styleguide timeline
   .site-menu__section:last-child {
     border: none; }
 
-.site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__header .inpage-nav__toggle, .inpage-nav__navbar .inpage-nav__header .site-menu__toggle .inpage-nav__toggle {
+.site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .site-menu__toggle .inpage-nav__toggle {
   width: 100%; }
 
 .site-menu .listing__item .listing__title {
