@@ -87,24 +87,8 @@ function dt_policy_implementation_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'policy_implementation';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_sidebar_no_link';
   $ds_layout->settings = array(
-    'regions' => array(
-      'main' => array(
-        0 => 'group_policy_implementation_meta',
-        1 => 'field_policy_imp_type',
-        2 => 'title_field',
-        3 => 'field_policy_imp_status',
-        4 => 'field_policy_imp_introduction',
-      ),
-    ),
-    'fields' => array(
-      'group_policy_implementation_meta' => 'main',
-      'field_policy_imp_type' => 'main',
-      'title_field' => 'main',
-      'field_policy_imp_status' => 'main',
-      'field_policy_imp_introduction' => 'main',
-    ),
     'classes' => array(),
     'wrappers' => array(
       'main' => 'div',
@@ -115,6 +99,26 @@ function dt_policy_implementation_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'regions' => array(
+      'main' => array(
+        0 => 'group_policy_implementation_meta',
+        1 => 'field_policy_imp_type',
+        2 => 'title_field',
+        3 => 'field_policy_imp_status',
+        4 => 'field_policy_imp_introduction',
+      ),
+      'second' => array(
+        0 => 'field_core_link',
+      ),
+    ),
+    'fields' => array(
+      'group_policy_implementation_meta' => 'main',
+      'field_policy_imp_type' => 'main',
+      'title_field' => 'main',
+      'field_policy_imp_status' => 'main',
+      'field_policy_imp_introduction' => 'main',
+      'field_core_link' => 'second',
+    ),
   );
   $export['node|policy_implementation|teaser'] = $ds_layout;
 

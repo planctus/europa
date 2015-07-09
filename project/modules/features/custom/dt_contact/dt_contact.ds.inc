@@ -34,6 +34,7 @@ function dt_contact_ds_field_settings_info() {
     'field_contact_email_address' => array(
       'formatter_settings' => array(
         'ft' => array(
+          'lb' => 'Email',
           'lb-col' => TRUE,
         ),
       ),
@@ -104,6 +105,7 @@ function dt_contact_ds_field_settings_info() {
     'field_contact_email_address' => array(
       'formatter_settings' => array(
         'ft' => array(
+          'lb' => 'Email',
           'lb-col' => TRUE,
         ),
       ),
