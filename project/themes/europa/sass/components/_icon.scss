@@ -85,7 +85,7 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e61a';
+  content: '\e61a' !important;
 }
 .icon--external {
   &:before {
