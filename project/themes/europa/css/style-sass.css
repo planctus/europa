@@ -6912,6 +6912,8 @@ Styleguide field
 .field--labeled {
   margin-bottom: 0.556em;
   overflow: hidden; }
+  .field--labeled:last-child {
+    margin-bottom: 0; }
   .field--labeled .field__label {
     display: block;
     clear: both;
@@ -7669,8 +7671,9 @@ Styleguide inpagenav
     padding: 0;
     width: auto;
     background-color: #004494; }
+    .inpage-nav__navbar .inpage-nav__container .navbar-collapse {
+      max-height: none; }
   .inpage-nav__navbar .inpage-nav__list--navbar {
-    max-height: none;
     padding: 0 15px; }
     .inpage-nav__navbar .inpage-nav__list--navbar li.active .inpage_nav__list-item {
       color: inherit;

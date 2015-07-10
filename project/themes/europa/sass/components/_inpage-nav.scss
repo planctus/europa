@@ -145,10 +145,13 @@ Styleguide inpagenav
     padding: 0;
     width: auto;
     background-color: $blue-dark;
+
+    .navbar-collapse {
+      max-height: none;
+    }
   }
 
   .inpage-nav__list--navbar {
-    max-height: none;
     padding: 0 15px;
     li {
       &.active {

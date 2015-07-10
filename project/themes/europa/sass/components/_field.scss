@@ -22,6 +22,10 @@ Styleguide field
   margin-bottom: 0.556em;
   overflow: hidden;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .field__label {
     display: block;
     clear: both;
