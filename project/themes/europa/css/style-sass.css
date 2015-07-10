@@ -6154,14 +6154,14 @@ Styleguide text.lists
 */
 ul,
 ol {
-  padding-left: 40px; }
+  padding-left: 18px; }
 
 .region-content ul,
 .region-content ol {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 30px !important;
-  padding-left: 40px; }
+  padding-left: 18px; }
 
 .navbar-toggle {
   border-radius: 0px;
