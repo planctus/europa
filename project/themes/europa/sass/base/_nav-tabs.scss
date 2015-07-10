@@ -52,6 +52,11 @@ ul.nav-tabs,
         border-right-color: transparent;
         text-decoration: underline;
       }
+
+      &:focus {
+        background: $yellow-light;
+        border-bottom-color: $yellow-light;
+      }
     }
   }
 }

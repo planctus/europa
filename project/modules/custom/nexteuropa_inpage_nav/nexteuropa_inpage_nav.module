@@ -53,7 +53,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           $body_heading_count = 1;
           foreach ($headings as $heading) {
             $items['body_' . $body_heading_count]['weight'] = $weight + $body_heading_count;
-            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list__item">' . $heading['label'] . '</a>';
+            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . $heading['label'] . '</a>';
             $body_heading_count++;
           }
         }
@@ -63,7 +63,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           // Get the field label.
           $field_info = field_info_instance('node', $element, $node->type);
           $items[$element]['weight'] = $field_info['display']['full']['weight'];
-          $items[$element]['item'] = '<a href="#' . $id . '" class="inpage_nav__list__item">' . $field_info['label'] . '</a>';
+          $items[$element]['item'] = '<a href="#' . $id . '" class="inpage_nav__list-item">' . $field_info['label'] . '</a>';
         }
 
         // If group, check if group label has id attribute to be used as anchor.
@@ -71,7 +71,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           if ($group_anchor = _nexteuropa_inpage_nav_group_anchor($group, $node)) {
             $items[$element]['weight'] = $group->weight;
             $items[$element]['children'] = $group->children;
-            $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list__item">' . $group_anchor['label'] . '</a>';
+            $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list-item">' . $group_anchor['label'] . '</a>';
           }
         }
       }
@@ -83,7 +83,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
       $body_heading_count = 1;
       foreach ($headings as $heading) {
         $items['body_' . $body_heading_count]['weight'] = $body_heading_count;
-        $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list__item">' . $heading['label'] . '</a>';
+        $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . $heading['label'] . '</a>';
         $body_heading_count++;
       }
     }
@@ -123,7 +123,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           'class' => 'nav inpage-nav__list',
         ),
       );
-      $block['content'] = '<div class="inpage-nav">' . theme('item_list', $variables) . '</div>';
+      $block['content'] = '<div class="inpage-nav is-scrollspy-target">' . theme('item_list', $variables) . '</div>';
     }
   }
 

@@ -7,7 +7,7 @@ Styleguide form.select
 */
 
 .select {
-
+  -webkit-appearance: none;
   // Hover state.
   &:hover,
   &.is-hovered {
