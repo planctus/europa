@@ -5695,10 +5695,12 @@ Custom bootstrap buttons styling
 
 Markup: html/btn.html
 
-.btn-default   - Button default
-.btn-primary   - Button primary
-.btn-secondary - Button secondary
-.btn-ctn       - Button call for action
+.btn-default     - Button default
+.btn-primary     - Button primary
+.btn-secondary   - Button secondary
+.btn-ctn         - Button call to action
+.btn-ctn--border - Button call to action with border
+.btn-menu        - BUtton menu
 
 Styleguide buttons
 */
@@ -5768,18 +5770,19 @@ Styleguide buttons
       font-size: 0.8em; }
   .btn.btn-menu, .inpage-nav__navbar .btn-menu.inpage-nav__toggle {
     border-color: #fff;
-    background: #004494; }
+    background: #004494;
+    color: #fff; }
     .btn.btn-menu:hover,
     .inpage-nav__navbar .btn-menu.inpage-nav__toggle:hover,
-    .btn.btn-menu:active, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:active {
+    .btn.btn-menu:active,
+    .inpage-nav__navbar .btn-menu.inpage-nav__toggle:active,
+    .btn.btn-menu:focus, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:focus {
       color: #fff; }
     .btn.btn-menu:active,
     .inpage-nav__navbar .btn-menu.inpage-nav__toggle:active,
     .btn.btn-menu:focus, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:focus {
       outline: 2px solid #ffd617; }
     .btn.btn-menu:focus, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:focus {
-      color: #fff;
-      background: #004494;
       border-color: #ffd617;
       outline-color: #ffd617; }
     .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after {
@@ -5910,17 +5913,17 @@ Styleguide form.checkbox
         background-size: auto 1.25em; }
     .checkbox input[type="checkbox"]:checked + label {
       color: #ffffff;
-      background-color: #006fb4; }
+      background-color: #004494; }
       .checkbox input[type="checkbox"]:checked + label:before {
         background-image: url(../images/svg/checkbox-checked.svg); }
     .checkbox input[type="checkbox"]:hover:not(checked) + label {
       color: #575757;
-      border: #006fb4 solid 2px;
+      border: #004494 solid 2px;
       background-color: #ffffff; }
     .checkbox input[type="checkbox"]:hover:checked + label {
       color: #ffffff;
       border: #ffd617 solid 2px;
-      background-color: #006fb4; }
+      background-color: #004494; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
   background-image: url(../images/png/checkbox-radio.png) !important; }
@@ -6222,6 +6225,10 @@ ul.nav-tabs,
         border-left-color: transparent;
         border-right-color: transparent;
         text-decoration: underline; }
+      ul.nav-tabs > li > a:focus,
+      .nav-tabs > li > a:focus {
+        background: #ffd617;
+        border-bottom-color: #ffd617; }
 
 .nav-tabs--with-content {
   display: none; }
@@ -6298,17 +6305,17 @@ Styleguide form.radio
         background-size: auto 1.25em; }
     .radio input[type="radio"]:checked + label {
       color: #ffffff;
-      background-color: #006fb4; }
+      background-color: #004494; }
       .radio input[type="radio"]:checked + label:before {
         background-image: url(../images/svg/radio-checked.svg); }
     .radio input[type="radio"]:hover:not(checked) + label {
       color: #575757;
-      border: #006fb4 solid 2px;
+      border: #004494 solid 2px;
       background-color: #ffffff; }
     .radio input[type="radio"]:hover:checked + label {
       color: #ffffff;
       border: #ffd617 solid 2px;
-      background-color: #006fb4; }
+      background-color: #004494; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
   background-image: url(../images/png/checkbox-radio.png) !important; }
@@ -6323,13 +6330,14 @@ Markup: html/select.html
 
 Styleguide form.select
 */
-.select:hover,
-select:hover,
-.select.is-hovered, select.is-hovered {
-  border-color: #006fb4; }
-
-.select.is-down, select.is-down {
-  border-color: #575757; }
+.select, select {
+  -webkit-appearance: none; }
+  .select:hover,
+  select:hover,
+  .select.is-hovered, select.is-hovered {
+    border-color: #004494; }
+  .select.is-down, select.is-down {
+    border-color: #575757; }
 
 /*
 Text Input
@@ -6796,11 +6804,11 @@ Markup: html/feedback-message.html
 Styleguide form.feedback-message
 */
 .feedback-message {
-  color: #575757; }
+  color: #575757;
+  max-width: none; }
   .feedback-message.is-disabled {
     color: #b3b4b5; }
   .feedback-message.is-error {
-    color: #575757;
     background-color: #e2e2e2;
     padding: 12px; }
     .feedback-message.is-error:before {
@@ -6905,7 +6913,6 @@ Field styling appearing in this styleguide is only valid for Default drupal fiel
 Markup: html/field.html
 
 .field--labeled - External link icon
-.field--labeled-align - Arrow up icon
 
 Styleguide field
 */
@@ -6946,27 +6953,13 @@ Styleguide field
     .field--labeled .field__label {
       width: 33.3%; }
     .field--labeled .field__items {
-      width: 66.6%; }
-  .field--labeled-align {
-    margin-left: -15px;
-    margin-right: -15px;
-    overflow: hidden; }
-    .field--labeled-align .field__items {
-      width: 66.6%;
-      margin-left: 33.3%;
-      padding: 0 15px;
-      float: left; } }
+      width: 66.6%; } }
 
 @media (min-width: 768px) {
   .field--labeled .field__label {
     width: 25%; }
   .field--labeled .field__items {
-    width: 75%; }
-  .field--labeled-align .field__items {
-    width: 75%;
-    margin-left: 25%;
-    padding: 0 15px;
-    float: left; } }
+    width: 75%; } }
 
 @media (min-width: 1200px) {
   .field--full-width {
@@ -6978,6 +6971,34 @@ Styleguide field
     position: relative;
     left: -25%;
     width: 125%; } }
+
+/*
+Field labeled align
+
+Labeled align modifier should be used for aligning fields that do not have a label
+with fields that do have a label.
+
+Markup: html/field--labeled-align.html
+
+Styleguide field.labeledalign
+*/
+@media (min-width: 480px) {
+  .field--labeled-align {
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow: hidden; }
+    .field--labeled-align .field__items {
+      width: 66.6%;
+      margin-left: 33.3%;
+      padding: 0 15px;
+      float: left; } }
+
+@media (min-width: 768px) {
+  .field--labeled-align .field__items {
+    width: 75%;
+    margin-left: 25%;
+    padding: 0 15px;
+    float: left; } }
 
 /*
 Filters

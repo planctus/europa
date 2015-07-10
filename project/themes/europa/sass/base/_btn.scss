@@ -5,10 +5,12 @@ Custom bootstrap buttons styling
 
 Markup: html/btn.html
 
-.btn-default   - Button default
-.btn-primary   - Button primary
-.btn-secondary - Button secondary
-.btn-ctn       - Button call for action
+.btn-default     - Button default
+.btn-primary     - Button primary
+.btn-secondary   - Button secondary
+.btn-ctn         - Button call to action
+.btn-ctn--border - Button call to action with border
+.btn-menu        - BUtton menu
 
 Styleguide buttons
 */
@@ -106,8 +108,10 @@ Styleguide buttons
   &.btn-menu {
     border-color: #fff;
     background: $brand-primary;
+    color: #fff;
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       color: #fff;
     }
 
@@ -117,8 +121,6 @@ Styleguide buttons
     }
 
     &:focus {
-      color: #fff;
-      background: $brand-primary;
       border-color: $yellow-light;
       outline-color: $yellow-light;
     }
