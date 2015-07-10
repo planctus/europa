@@ -42,12 +42,14 @@
           $('body').scrollspy('refresh');
         });
 
-        var $navBar = $('<div class="inpage-nav inpage-nav__navbar-wrapper"><nav class="navbar navbar-default navbar-fixed-top inpage-nav__navbar"><div class="container inpage-nav__container"><div class="navbar-header inpage-nav__header"  data-toggle="collapse" data-target="#inpage-navigation-list" aria-expanded="false" aria-controls="navbar"><button type="button" class="navbar-toggle collapsed inpage-nav__toggle"><span class="sr-only">' + Drupal.t("Toggle navigation") + '</span><span class="inpage-nav__icon-arrow icon icon--arrow-down"></span></button><span class="navbar-brand inpage-nav__help">' +  Drupal.t('On this page') + '</span><div class="inpage-nav__current-wrapper"><span class="navbar-brand inpage-nav__current">' +  title + '</span></div></div><div class="navbar-collapse collapse inpage-nav__list" id="inpage-navigation-list"><span class="inpage-nav__title" >' +  title + '</span>' + $inPage.html() + '</div></div></nav>'),
+        var $navBar = $('<div class="inpage-nav__navbar-wrapper is-scrollspy-target"><nav class="navbar navbar-default navbar-fixed-top inpage-nav__navbar"><div class="container inpage-nav__container"><div class="navbar-header inpage-nav__header"  data-toggle="collapse" data-target="#inpage-navigation-list" aria-expanded="false" aria-controls="navbar"><button type="button" class="navbar-toggle collapsed inpage-nav__toggle"><span class="sr-only">' + Drupal.t("Toggle navigation") + '</span><span class="inpage-nav__icon-arrow icon icon--arrow-down"></span></button><span class="navbar-brand inpage-nav__help">' +  Drupal.t('On this page') + '</span><div class="inpage-nav__current-wrapper"><span class="navbar-brand inpage-nav__current">' +  title + '</span></div></div><div class="navbar-collapse collapse" id="inpage-navigation-list"><span class="inpage-nav__title" >' +  title + '</span>' + $inPage.html() + '</div></div></nav>'),
             $navBarHeader = $('.inpage-nav__header', $navBar),
             $navBarCurrent = $('.inpage-nav__current', $navBar),
             $navBarTitle = $('.inpage-nav__title', $navBar),
-            $navBarHelp = $('.inpage-nav__help', $navBar);
+            $navBarHelp = $('.inpage-nav__help', $navBar),
+            $navBarList = $('.inpage-nav__list', $navBar);
 
+        $navBarList.addClass('nav inpage-nav__list--navbar');
         $('body').append($navBar);
 
         enquire.register("screen and (min-width: 992px)", {
@@ -71,7 +73,7 @@
 
             // Page navigation scroll spy.
             $('body').scrollspy({
-                target: '.inpage-nav'
+                target: '.is-scrollspy-target'
             });
 
             $navBar.on('show.bs.collapse', function() {
@@ -97,7 +99,7 @@
             $inPageBlock.affix({
               offset: {
                 top: function () {
-                  return (Math.floor($inPageBlock.parent().offset().top));
+                  return (Math.floor($inPageBlock.parent().offset().top) - 30);
                 },
                 bottom: function () {
                   return ($('.footer').outerHeight(true) + $('.footer-top').outerHeight(true) + 20);

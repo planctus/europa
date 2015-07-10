@@ -6,24 +6,24 @@ Markup: html/feedback-message.html
 Styleguide form.feedback-message
 */
 .feedback-message {
-  color: $form-group-feedback-text-color;
+  color: $grey-dark;
+  max-width: none;
 
   &.is-disabled {
-    color: $form-group-feedback-text-color-disabled;
+    color: $form-control-color-disabled;
   }
 
   &.is-error {
-    color: $form-group-feedback-text-color-has-error;
-    background-color: $form-group-feedback-background-color;
+    background-color: $grey-light;
     padding: 12px;
 
     // Error icon.
     &:before {
       content: '';
       background: url('../images/svg/error.svg') no-repeat;
-      background-size: $form-group-feedback-icon-size;
-      width: $form-group-feedback-icon-size;
-      height: $form-group-feedback-icon-size;
+      background-size: 1.5em;
+      width: 1.5em;
+      height: 1.5em;
       margin-right: 12px;
       display: inline-block;
       margin-bottom: -4px;

@@ -11,200 +11,209 @@ Styleguide inpagenav
 
 */
 
+.inpage-nav__wrapper {
+  margin-bottom: 1.667em;
+  &.affix,
+  &.affix-top {
+    position:relative;
+  }
+}
+
 .inpage-nav {
-  &.inpage-nav__navbar-wrapper {
-    display: none;
-    &.is-active {
-      display: inherit;
-    }
-    &.is-collapsed,
-    &.is-collapsing {
-      .inpage-nav__navbar {
-        height: 100%;
-      }
-      .inpage-nav__help,
-      .inpage-nav__close-text {
-         display: block;
-      }
-      .inpage-nav__current {
-       display: none;
-      }
-      .inpage-nav__header{
-       background-color: $grey-lighter;
-       font-weight: normal;
-      }
-      .inpage-nav__toggle {
-        background-color: $grey;
-        border-color: $grey;
-
-        .inpage-nav__icon-arrow {
-          @include rotate(180deg);
-          color: $grey-dark;
-        }
-      }
-    }
-    .inpage-nav__header {
-      margin: 0;
-    }
-
-    .inpage-nav__list {
-      li {
-        font-size: $font-size-base;
-        line-height: 21px;
-        padding: 0;
-        & > .inpage_nav__list__item {
-          padding: 1em 0 1em 1em;
-          border-top: 1px solid $blue-darkest;
-          margin: 0 1em;
-          &:link,
-          &:visited,
-          &:hover,
-          &:active {
-            color: #ffffff;
-          }
-          &:hover,
-          &:active {
-            text-decoration: underline;
-          }
-        }
-        &.active > a.inpage_nav__list__item{
-           background: none;
-        }
-      }
-    }
-  }
-
-  .inpage-nav__container {
-    padding: 0;
-    width: auto;
-    background-color: $blue-dark;
-  }
-
   .inpage-nav__list {
-    margin: 0;
+    margin: 0 0 0 -11px !important;
     padding: 0;
+    list-style: none;
+    list-style-image: none;
+
+    li {
+      &.active {
+        .inpage_nav__list-item {
+          border-color: $brand-primary;
+          background: $grey-lighter;
+        }
+      }
+    }
+  }
+
+  .inpage_nav__list-item {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 8px;
+    display: block;
+    color: #000;
+    font-size: $font-size-little;
+    font-weight: bold;
+    border-left: 3px solid transparent;
+
+    &:hover {
+      background: none;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      background: $yellow-light !important;
+    }
   }
 }
 
 .inpage-nav__navbar {
   background-color: #ffffff;
   color: #ffffff;
-  .inpage-nav__header {
+
+  .inpage-nav__current-wrapper {
+    overflow: hidden;
+  }
+
+  .inpage-nav__current,
+  .inpage-nav__help {
+    padding-bottom: 0px;
+  }
+
+  .inpage-nav__current {
+    color: #ffffff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    overflow: hidden;
     font-weight: bold;
-    .inpage-nav__current {
-      color: #ffffff;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: block;
-      width: 100%;
-      overflow: hidden;
-    }
+    font-size: 1em;
+    cursor: pointer;
+    padding-top: 1em;
 
-    .inpage-nav__help {
-      display: none;
-      background-color: $grey-lighter;
-      font-size: $font-size-base;
-      text-transform: uppercase;
-      color: $grey-dark;
-    }
-
-    .inpage-nav__toggle {
-      @extend .btn;
-      margin: 0;
-      background-color: $blue-darkest;
-      border-color: $blue-darkest;
-      padding: 1em;
-      &:hover,
-      &:active,
-      &:focus {
-        text-decoration: none !important;
-        color: #ffffff;
-      }
-    }
-    .inpage-nav__close-text {
-      display: none;
-      font-size: $font-size-base;
-      line-height: $line-height-computed;
-    }
-
-    .inpage-nav__icon-arrow {
-      display: block;
-      transition: all 0.3s ease 0s;
-      transform-origin: 50% 50%;
-      color: #ffffff;
-      margin: 5px 4px;
-      font-size: 10px;
-      &:before {
-        margin-right: 0px;
-      }
+    &:hover {
+      color: #fff;
     }
   }
+
+  .inpage-nav__help {
+    display: none;
+    background-color: $grey-lighter;
+    font-size: $font-size-xsmall;
+    text-transform: uppercase;
+    color: $grey-dark;
+    padding-top: 1.35em;
+  }
+
   .inpage-nav__title {
     display: block;
-    font-size: $font-size-large;
-    padding: 15px;
-    line-height: 21px;
+    font-size: 1em;
+    padding: 1em;
+    line-height: 1;
     font-weight: bold;
   }
 
-  .inpage-nav__list {
-    margin: 0px !important;
+  .inpage-nav__toggle {
+    @extend .btn;
+    margin: 0;
+    background-color: $blue-darkest;
+    border-color: $blue-darkest;
+    padding: 1em;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $blue-darkest;
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+
+  .inpage-nav__icon-arrow {
+    display: block;
+    transition: all 0.3s ease 0s;
+    transform-origin: 50% 50%;
+    color: #ffffff;
+    margin: 5px 4px;
+    font-size: 10px;
+    &:before {
+      margin-right: 0px;
+    }
+  }
+
+  .inpage-nav__close-text {
+    display: none;
+    font-size: $font-size-base;
+    line-height: $line-height-computed;
+  }
+
+  .inpage-nav__header {
+    margin: 0;
+  }
+
+  .inpage-nav__container {
+    padding: 0;
+    width: auto;
+    background-color: $blue-dark;
+
+    .navbar-collapse {
+      max-height: none;
+    }
+  }
+
+  .inpage-nav__list--navbar {
+    padding: 0 15px;
     li {
       &.active {
-        .inpage_nav__list__item {
+        .inpage_nav__list-item {
           color: inherit;
           background: none;
         }
-        &:before {
-          background: none;
-          content: none;
-        }
       }
-      a.inpage_nav__list__item {
-        font-weight: normal;
+      .inpage_nav__list-item {
+        color: #fff;
+        border-top: 1px solid $blue-darkest;
+        padding: 0.8em 0 0.8em 1em;
+        font-size: $font-size-little;
+
+        &:hover {
+          background: none;
+          text-decoration: underline;
+        }
       }
     }
   }
 }
 
-.inpage-nav__current-wrapper {
-  overflow: hidden;
+.inpage-nav__navbar-wrapper {
+  display: none;
+  &.is-active {
+    display: inherit;
+  }
+  &.is-collapsed,
+  &.is-collapsing {
+    .inpage-nav__navbar {
+      height: 100%;
+    }
+    .inpage-nav__help,
+    .inpage-nav__close-text {
+       display: block;
+    }
+    .inpage-nav__current {
+     display: none;
+    }
+    .inpage-nav__header{
+     background-color: $grey-lighter;
+     font-weight: normal;
+    }
+    .inpage-nav__toggle {
+      background-color: $grey;
+      border-color: $grey;
+
+      .inpage-nav__icon-arrow {
+        @include rotate(180deg);
+        color: $grey-dark;
+      }
+    }
+  }
 }
+
 .inpage-nav__block-title {
   display: inherit;
   font-size: $font-size-base;
   text-transform: uppercase;
   font-weight: normal;
   color: $grey-dark;
-}
-
-.inpage-nav__list li {
-  font-size: 1em;
-  & > .inpage_nav__list__item {
-    &:link, &:visited, &:focus {
-      border: none;
-      outline: none;
-      color: $grey-base;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 4px 0px;
-      margin: 0px;
-      margin-top: 15px;
-      background: none;
-    }
-    &:hover, &:active {
-      text-decoration: underline;
-      color: $blue;
-      background: none;
-    }
-  }
-}
-
-.inpage-nav__wrapper {
-  &.affix,
-  &.affix-top {
-    position:relative;
-  }
 }
 
 .is-inpage-nav-open {
@@ -216,47 +225,24 @@ Styleguide inpagenav
 }
 
 @include breakpoint(screen-md-min) {
-  .inpage-nav {
-    &.inpage-nav__navbar-wrapper.is-active {
-      display: none;
-    }
-  }
-
-  .inpage-nav__list {
-    li {
-      &.active {;
-        .inpage_nav__list__item {
-          color: $brand-primary;
-          background-color: $gray-lighter;
-        }
-        &:before {
-          // background: none repeat scroll 0 0 $brand-primary;
-          border-left: 2px solid $brand-primary;
-          background-color: $gray-lighter;
-          content: "";
-          display: block;
-          height: 100%;
-          left: -10px;
-          position: absolute;
-          top: 0px;
-          width: 10px;
-        }
-      }
-    }
-  }
-
   .inpage-nav__wrapper {
     &.affix,
     &.affix-top {
-      top: 15px;
+      top: 0;
     }
 
     &.affix {
       position: fixed;
+      top: 0;
+      padding-top: 30px;
     }
 
     &.affix-bottom {
       position: absolute;
     }
+  }
+
+  .inpage-nav__navbar-wrapper.is-active {
+    display: none;
   }
 }
