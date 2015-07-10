@@ -8049,17 +8049,10 @@ Styleguide messages
   color: #404040;
   font-family: Arial, sans-serif;
   font-size: 0.889em;
-  margin: 1em 0;
+  margin: 0 0 1em;
   padding: 1em 4em;
   position: relative;
   overflow: hidden; }
-  .messages h3 {
-    font-size: 0.889em;
-    font-weight: bold; }
-  .messages p,
-  .messages ul {
-    max-width: 100%;
-    margin-bottom: 0 !important; }
   .messages:before {
     background: url("../images/svg/messages-info.svg") no-repeat;
     float: left;
@@ -8071,6 +8064,8 @@ Styleguide messages
     position: absolute;
     top: 1.667em;
     left: 1em; }
+  .messages:last-child {
+    margin-bottom: 0; }
   .messages.status {
     border-color: #467a39; }
     .messages.status:before {
@@ -8083,6 +8078,13 @@ Styleguide messages
     border-color: #da2131; }
     .messages.error:before {
       background-image: url("../images/svg/messages-error.svg"); }
+  .messages h3 {
+    font-size: 0.889em;
+    font-weight: bold; }
+  .messages p,
+  .messages ul {
+    max-width: 100%;
+    margin-bottom: 0 !important; }
 
 .messages__list, .messages ul {
   padding-left: 14px;
