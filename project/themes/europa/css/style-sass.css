@@ -6904,6 +6904,11 @@ Styleguide form.feedback-message
   #feedback-form__accordion {
     overflow: hidden; } }
 
+.no-svg #feedback-form__accordion .accordion-group .accordion-toggle {
+  background: url("../images/png/checkbox.png") no-repeat; }
+  .no-svg #feedback-form__accordion .accordion-group .accordion-toggle.collapsed {
+    background-position: 0 -21px; }
+
 /*
 Field
 
@@ -7295,6 +7300,7 @@ Styleguide: icon
   src: url("../fonts/europa-icons/europa-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/europa-icons/europa-icons.woff") format("woff"), url("../fonts/europa-icons/europa-icons.ttf") format("truetype"), url("../fonts/europa-icons/europa-icons.svg#icomoon") format("svg"); }
 
 .icon:before, .search-form__btn:before {
+  text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7308,6 +7314,7 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after, .file__btn:after {
+  text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -8300,7 +8307,7 @@ Styleguide: siteheader.searchform
     text-indent: 0;
     width: 33%; }
     .search-form__btn:before {
-      display: none; } }
+      display: none !important; } }
 
 @media (min-width: 992px) {
   .search-form {
