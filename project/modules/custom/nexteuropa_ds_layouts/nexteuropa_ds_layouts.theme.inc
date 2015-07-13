@@ -29,9 +29,10 @@ function theme_nexteuropa_bem_item_list($variables) {
   $attributes['class'][] = 'listing';
   $attributes['class'] = array_merge($attributes['class'], $modifiers);
 
-  $output = '<div class="listing__wrapper">';
-
+  $output = '';
+  
   if (!empty($items)) {
+    $output .= '<div class="listing__wrapper">';
     $output .= "<$type" . drupal_attributes($attributes) . '>';
     $num_items = count($items);
     $i = 0;
@@ -70,7 +71,7 @@ function theme_nexteuropa_bem_item_list($variables) {
       $output .= '<' . $subtype . drupal_attributes($attributes) . '>' . $data . "</$subtype>\n";
     }
     $output .= "</$type>";
+    $output .= '</div>';
   }
-  $output .= '</div>';
   return $output;
 }
