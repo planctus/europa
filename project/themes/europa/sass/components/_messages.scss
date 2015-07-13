@@ -90,6 +90,8 @@ $messages-icon-size: 2em;
 .no-svg {
   .messages {
     &:before {
+      height: 2.5em;
+      width: 2.5em;
       background: url("../images/png/messages-info.png");
     }
 

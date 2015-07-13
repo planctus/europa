@@ -8156,6 +8156,8 @@ Styleguide messages
     margin-top: 0; }
 
 .no-svg .messages:before {
+  height: 2.5em;
+  width: 2.5em;
   background: url("../images/png/messages-info.png"); }
 
 .no-svg .messages.status:before {
