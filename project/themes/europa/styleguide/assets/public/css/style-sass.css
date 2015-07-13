@@ -5925,11 +5925,29 @@ Styleguide form.checkbox
       border: #ffd617 solid 2px;
       background-color: #004494; }
 
-.no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url("../images/png/checkbox-radio.png") !important; }
+.no-svg .checkbox label {
+  height: auto;
+  line-height: inherit;
+  display: inline;
+  background: none;
+  padding-left: 0; }
 
-.no-svg .checkbox input[type="checkbox"]:checked + label:before {
-  background-position: -1.25em 0; }
+.no-svg .checkbox input[type="checkbox"] {
+  margin: 0;
+  float: none;
+  height: auto; }
+  .no-svg .checkbox input[type="checkbox"]:before {
+    display: none; }
+  .no-svg .checkbox input[type="checkbox"]:not(checked) + label {
+    background: none;
+    padding: 0; }
+    .no-svg .checkbox input[type="checkbox"]:not(checked) + label:before {
+      display: none; }
+  .no-svg .checkbox input[type="checkbox"]:checked + label {
+    color: inherit;
+    background: none; }
+    .no-svg .checkbox input[type="checkbox"]:checked + label:before {
+      display: none; }
 
 /*@font-face {
   font-family: 'ECSquareSansPro';
@@ -6317,11 +6335,29 @@ Styleguide form.radio
       border: #ffd617 solid 2px;
       background-color: #004494; }
 
-.no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url("../images/png/checkbox-radio.png") !important; }
+.no-svg .radio label {
+  height: auto;
+  line-height: inherit;
+  display: inline;
+  background: none;
+  padding-left: 0; }
 
-.no-svg .checkbox input[type="checkbox"]:checked + label:before {
-  background-position: -3.75em 0; }
+.no-svg .radio input[type="radio"] {
+  margin: 0;
+  float: none;
+  height: auto; }
+  .no-svg .radio input[type="radio"]:before {
+    display: none; }
+  .no-svg .radio input[type="radio"]:not(checked) + label {
+    background: none;
+    padding: 0; }
+    .no-svg .radio input[type="radio"]:not(checked) + label:before {
+      display: none; }
+  .no-svg .radio input[type="radio"]:checked + label {
+    color: inherit;
+    background: none; }
+    .no-svg .radio input[type="radio"]:checked + label:before {
+      display: none; }
 
 /*
 Select
@@ -6814,7 +6850,7 @@ Styleguide form.feedback-message
     margin-bottom: -6px; } }
 
 .no-svg .feedback-message.is-error:before {
-  background-image: url("../images/png/error.png"); }
+  background: url("../images/png/error.png") no-repeat; }
 
 .feedback-form {
   margin: 0; }

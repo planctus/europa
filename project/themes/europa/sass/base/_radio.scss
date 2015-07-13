@@ -83,16 +83,36 @@ Styleguide form.radio
 }
 
 .no-svg {
-  .checkbox {
-    input[type="checkbox"] {
+  .radio {
+    label {
+      height: auto;
+      line-height: inherit;
+      display: inline;
+      background: none;
+      padding-left: 0;
+    }
+    input[type="radio"] {
+      margin: 0;
+      float: none;
+      height: auto;
       &:before {
-        background-image: url('../images/png/checkbox-radio.png') !important;
+        display: none;
       }
 
-      // Checked state.
-      &:checked+label {
+      &:not(checked)+label {
+        background: none;
+        padding: 0;
         &:before {
-          background-position: -3*$form-checkbox-icon-size 0;
+          display: none;
+        }
+      }
+
+      &:checked+label {
+        color: inherit;
+        background: none;
+
+        &:before {
+          display: none;
         }
       }
     }

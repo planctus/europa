@@ -45,7 +45,7 @@ Styleguide form.feedback-message
   .feedback-message {
     &.is-error {
       &:before {
-        background-image: url('../images/png/error.png');
+        background: url('../images/png/error.png') no-repeat;
       }
     }
   }

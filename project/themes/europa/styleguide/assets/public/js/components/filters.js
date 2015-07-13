@@ -97,7 +97,16 @@
             },
 
             setup: function() {
-              $filters.addClass('collapse');
+              // IE8 fix - showing the element containing the filters.
+              if($(window).width() > 991) {
+                $filters
+                  .removeClass('collapse')
+                  .addClass('collapse in')
+                  .attr('aria-expanded', true)
+                  .removeAttr('style');
+              } else {
+                $filters.addClass('collapse');
+              }
               // Hiding filter buttons
               //hideMainFilterButtons();
               $filtersSubmit.removeClass('ctools-auto-submit-click');
