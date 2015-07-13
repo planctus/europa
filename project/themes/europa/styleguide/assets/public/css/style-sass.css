@@ -5909,13 +5909,13 @@ Styleguide form.checkbox
         height: 1.25em;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background: url("../images/svg/checkbox-unchecked.svg") no-repeat;
         background-size: auto 1.25em; }
     .checkbox input[type="checkbox"]:checked + label {
       color: #ffffff;
       background-color: #004494; }
       .checkbox input[type="checkbox"]:checked + label:before {
-        background-image: url(../images/svg/checkbox-checked.svg); }
+        background-image: url("../images/svg/checkbox-checked.svg"); }
     .checkbox input[type="checkbox"]:hover:not(checked) + label {
       color: #575757;
       border: #004494 solid 2px;
@@ -5926,7 +5926,7 @@ Styleguide form.checkbox
       background-color: #004494; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png) !important; }
+  background-image: url("../images/png/checkbox-radio.png") !important; }
 
 .no-svg .checkbox input[type="checkbox"]:checked + label:before {
   background-position: -1.25em 0; }
@@ -6301,13 +6301,13 @@ Styleguide form.radio
         height: 1.25em;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/radio-unchecked.svg) no-repeat;
+        background: url("../images/svg/radio-unchecked.svg") no-repeat;
         background-size: auto 1.25em; }
     .radio input[type="radio"]:checked + label {
       color: #ffffff;
       background-color: #004494; }
       .radio input[type="radio"]:checked + label:before {
-        background-image: url(../images/svg/radio-checked.svg); }
+        background-image: url("../images/svg/radio-checked.svg"); }
     .radio input[type="radio"]:hover:not(checked) + label {
       color: #575757;
       border: #004494 solid 2px;
@@ -6318,7 +6318,7 @@ Styleguide form.radio
       background-color: #004494; }
 
 .no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png) !important; }
+  background-image: url("../images/png/checkbox-radio.png") !important; }
 
 .no-svg .checkbox input[type="checkbox"]:checked + label:before {
   background-position: -3.75em 0; }

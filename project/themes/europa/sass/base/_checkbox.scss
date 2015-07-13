@@ -51,7 +51,7 @@ Styleguide form.checkbox
         height: $form-checkbox-icon-size;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background: url('../images/svg/checkbox-unchecked.svg') no-repeat;
         background-size: auto $form-checkbox-icon-size;
       }
     }
@@ -62,7 +62,7 @@ Styleguide form.checkbox
       background-color: $form-checkbox-background-color-checked;
 
       &:before {
-        background-image: url(../images/svg/checkbox-checked.svg);
+        background-image: url('../images/svg/checkbox-checked.svg');
       }
     }
 
@@ -87,7 +87,7 @@ Styleguide form.checkbox
   .checkbox {
     input[type="checkbox"] {
       &:before {
-        background-image: url(../images/png/checkbox-radio.png) !important;
+        background-image: url('../images/png/checkbox-radio.png') !important;
       }
 
       &:checked+label {
