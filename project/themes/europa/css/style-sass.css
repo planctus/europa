@@ -7321,7 +7321,7 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--external, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .icon--external:before {
-  content: '\e61a'; }
+  content: '\e61a' !important; }
 
 .icon--arrow-up, .icon--arrow-up:before {
   content: '\e61e'; }
