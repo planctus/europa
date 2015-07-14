@@ -1,2 +1,23 @@
-<div class="pager {{modifier_class}}">
-</div>
+<ul class="pager">
+    <li class="pager__item pager__previous first">
+        <a class="pager__btn" href="/build/testing-policy-area-filter_en?title_field_value=&amp;page=1">
+            <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="pager__item pager-current-combo">
+        <span class="pager-current-combo-current">page <em class="placeholder">3</em></span>
+        <span class="pager-dropdown-wrapper">
+            <select class="pager-dropdown">
+            <option value="/build/testing-policy-area-filter_en?title_field_value=">1</option>
+                <option value="/build/testing-policy-area-filter_en?title_field_value=&amp;page=1">2</option>
+                <option value="" selected="selected">Page 3</option>
+                <option value="/build/testing-policy-area-filter_en?title_field_value=&amp;page=3">4</option>
+            </select></span>
+        <span class="pager-current-combo-total subtext">of <em class="placeholder">4</em></span>
+    </li>
+    <li class="pager__item pager__next last">
+        <a class="pager__btn" href="/build/testing-policy-area-filter_en?title_field_value=&amp;page=3">
+            <span>Next</span>
+        </a>
+    </li>
+</ul>

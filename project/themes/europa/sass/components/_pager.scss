@@ -7,146 +7,33 @@ Markup: html/pager.html
 
 Styleguide pager
 */
+
 .pager {
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  width: 420px;
+  width: 100%;
   text-align: left;
-  em {
-    font-style: normal;
-  }
-
-  .subtext {
-    font-size: $font-size-xsmall;
-    font-weight: 400;
-  }
-
-  .btn-pager {
-    border: 1px solid $grey-light;
-    color: $grey;
-    height: 70px;
-    min-width: 70px;
-    padding:15px 65px 15px 35px;
-    width: 100%;
-    margin: 0;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: $yellow-light;
-      border-color: $yellow-light;
-      color: black;
-    }
-  }
-
-  li {
-    float: left;
-    width: auto;
-    height: 70px;
-    display: inline-block;
-    font-family: $font-family-sans-serif;
-
-    & > a,
-    & > span {
-      border: none;
-      padding: 0;
-    }
-  }
-
-  .pager-previous {
-    float: left;
-    width: auto;
-
-    a {
-      background: url('../images/arrow-left.png') no-repeat center center;
-    }
-  }
-
-  .pager-next {
-    float: right;
-    width: 148px;
-
-    a {
-      background: url('../images/arrow-right.png') no-repeat 85% center;
-
-      span {
-        display: block;
-        width: 100%;
-      }
-    }
-  }
-
-  .pager-current-combo,
-  .pager-dropdown,
-  .pager-current-combo-total {
-    display: none;
-    border: none;
-  }
-
-  .pager-current-combo {
-    border: 1px solid transparent;
-    text-transform: uppercase;
-//    line-height: @line-height-base;
-    font-size: 16px;
-    padding: 15px 0;
-    margin: 0 10px;
-    text-align: center;
-    width: 150px;
-
-    &.first {
-      margin-left: 112px;
-    }
-  }
-
-  .pager-current-combo-current,
-  .pager-dropdown-wrapper {
-    font-weight: bold;
-    color: $blue;
-  }
-
-  .pager-dropdown-wrapper {
-    position: relative;
-    &:after {
-      content: '';
-      width: 12px;
-      height: 20px;
-      background: url('../images/svg/arrow-down-blue.svg') no-repeat center right;
-      position: absolute;
-      right: 4px;
-      top: 0;
-      pointer-events: none;
-    }
-  }
-
-  .pager-dropdown {
-    background: none;
-    cursor: pointer;
-    padding-right: 20px;
-    text-align: left;
-    text-transform: uppercase;
-//    .appereance(none);
-
-    option {
-      text-align: right;
-    }
-  }
-
-  .pager-current-combo-total {
-    width: 100%;
-  }
 }
 
-// 480PX MIN
-// Pager
-//.pager {
-//  .pager-current-combo,
-//  .pager-dropdown,
-//  .pager-current-combo-total {
-//    display: inline-block;
-//  }
-//
-//  .pager-current-combo {
-//
-//  }
-//}
+.pager__btn {
+  color: #fff;
+  background: $blue-dark;
+  display: block;
+  height: 70px;
+  min-width: 70px;
+  padding:15px 65px 15px 35px;
+  margin: 0;
+  width: 100%;
+}
+
+.pager__previous {
+  float: left;
+  width: auto;
+}
+
+.pager__next {
+  float: right;
+  width: 148px;
+}
+

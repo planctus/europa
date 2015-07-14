@@ -1144,11 +1144,11 @@ function europa_pager($variables) {
     'parameters' => $parameters,
   ));
   $li_previous = theme('pager_previous', array(
-    'text' => '<span class="element-invisible">' . t('previous') . '</span>',
+    'text' => '<span class="sr-only">' . t('previous') . '</span>',
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
+    'attributes' => array('class' => 'pager__btn'),
   ));
   $li_next = theme('pager_next', array(
     'text' => '<span>' . t('next') . '</span><span class="subtext">' . t('page %page', array(
@@ -1157,19 +1157,19 @@ function europa_pager($variables) {
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
+    'attributes' => array('class' => 'pager__btn'),
   ));
   $li_last = theme('pager_last', array(
     'text' => t('last'),
     'element' => $element,
     'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
+    'attributes' => array('class' => 'pager__btn'),
   ));
 
   if ($pager_total[$element] > 1) {
     if ($li_previous) {
       $items[] = array(
-        'class' => array('pager-previous'),
+        'class' => array('pager__previous'),
         'data' => $li_previous,
       );
     }
@@ -1227,12 +1227,12 @@ function europa_pager($variables) {
     // End generation.
     if ($li_next) {
       $items[] = array(
-        'class' => array('pager-next'),
+        'class' => array('pager__next'),
         'data' => $li_next,
       );
     }
 
-    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+    return '<h2 class="sr-only">' . t('Pages') . '</h2>' . theme('item_list', array(
       'items' => $items,
       'attributes' => array('class' => array('pager')),
     ));

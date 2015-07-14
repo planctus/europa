@@ -48,4 +48,11 @@
       });
     }
   }
+
+  function selectNav(event) {
+    var href = $(event.target).val();
+    if(href !== window.location.href) {
+      window.location.href = href;
+    }
+  }
 })(jQuery);
