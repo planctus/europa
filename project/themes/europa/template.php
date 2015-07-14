@@ -1105,6 +1105,8 @@ function europa_link($variables) {
  * Implements theme_pager().
  */
 function europa_pager($variables) {
+  drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/pager.js');
+
   $tags = $variables['tags'];
   $element = $variables['element'];
   $parameters = $variables['parameters'];
@@ -1122,7 +1124,6 @@ function europa_pager($variables) {
   $pager_last = $pager_current + $quantity - $pager_middle;
   // $pager_max is the maximum page number.
   $pager_max = $pager_total[$element];
-  // End of marker calculations.
 
   // Prepare for generation loop.
   $i = $pager_first;
@@ -1136,7 +1137,6 @@ function europa_pager($variables) {
     $pager_last = $pager_last + (1 - $i);
     $i = 1;
   }
-  // End of generation loop preparation.
 
   $li_first = theme('pager_first', array(
     'text' => t('first'),
@@ -1238,3 +1238,188 @@ function europa_pager($variables) {
     ));
   }
 }
+
+/**
+ * Implements theme_pager_link().
+ */
+function europa_pager_link($variables) {
+  $text = $variables['text'];
+  $page_new = $variables['page_new'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = $variables['attributes'];
+  $page = isset($_GET['page']) ? $_GET['page'] : '';
+  if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
+    $parameters['page'] = $new_page;
+  }
+
+  $query = array();
+  if (count($parameters)) {
+    $query = drupal_get_query_parameters($parameters, array());
+  }
+  if ($query_pager = pager_get_query_parameters()) {
+    $query = array_merge($query, $query_pager);
+  }
+
+  // Set each pager link title.
+  if (!isset($attributes['title'])) {
+    static $titles = NULL;
+    if (!isset($titles)) {
+      $titles = array(
+        t('« first') => t('Go to first page'),
+        t('‹ previous') => t('Go to previous page'),
+        t('next ›') => t('Go to next page'),
+        t('last »') => t('Go to last page'),
+      );
+    }
+    if (isset($titles[$text])) {
+      $attributes['title'] = $titles[$text];
+    }
+    elseif (is_numeric($text)) {
+      $attributes['title'] = t('Go to page @number', array('@number' => $text));
+    }
+  }
+
+  // @todo l() cannot be used here, since it adds an 'active' class based on the
+  //   path only (which is always the current path for pager links). Apparently,
+  //   none of the pager links is active at any time - but it should still be
+  //   possible to use l() here.
+  // @see http://drupal.org/node/1410574
+
+  // Fix pager for rewritten URLs.
+  // @see commissioners_url_inbound_alter().
+  $original_path_cached = &drupal_static('cwt_core_orignal_path');
+  $path = isset($original_path_cached['original_path']) ? $original_path_cached['original_path'] : $_GET['q'];
+  $attributes['href'] = url($path, array('query' => $query));
+  return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
+}
+
+/**
+ * Implements theme_pager_first().
+ */
+function europa_pager_first($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
+  global $pager_page_array;
+  $output = '';
+
+  // If we are anywhere but the first page.
+  if ($pager_page_array[$element] > 0) {
+    $output = theme('pager_link', array(
+      'text' => $text,
+      'page_new' => pager_load_array(0, $element, $pager_page_array),
+      'element' => $element,
+      'parameters' => $parameters,
+      'attributes' => $attributes,
+    ));
+  }
+
+  return $output;
+}
+
+/**
+ * Implements theme_pager_previous().
+ */
+function europa_pager_previous($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
+  global $pager_page_array;
+  $output = '';
+
+  // If we are anywhere but the first page.
+  if ($pager_page_array[$element] > 0) {
+    $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
+
+    // If the previous page is the first page, mark the link as such.
+    if ($page_new[$element] == 0) {
+      $output = theme('pager_first', array(
+        'text' => $text,
+        'element' => $element,
+        'parameters' => $parameters,
+        'attributes' => $attributes,
+      ));
+    }
+    // The previous page is not the first page.
+    else {
+      $output = theme('pager_link', array(
+        'text' => $text,
+        'page_new' => $page_new,
+        'element' => $element,
+        'parameters' => $parameters,
+        'attributes' => $attributes,
+      ));
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Implements theme_pager_next().
+ */
+function europa_pager_next($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $interval = $variables['interval'];
+  $parameters = $variables['parameters'];
+  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
+  global $pager_page_array, $pager_total;
+  $output = '';
+
+  // If we are anywhere but the last page.
+  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
+    $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
+    // If the next page is the last page, mark the link as such.
+    if ($page_new[$element] == ($pager_total[$element] - 1)) {
+      $output = theme('pager_last', array(
+        'text' => $text,
+        'element' => $element,
+        'parameters' => $parameters,
+        'attributes' => $attributes,
+      ));
+    }
+    // The next page is not the last page.
+    else {
+      $output = theme('pager_link', array(
+        'text' => $text,
+        'page_new' => $page_new,
+        'element' => $element,
+        'parameters' => $parameters,
+        'attributes' => $attributes,
+      ));
+    }
+  }
+
+  return $output;
+}
+
+/**
+ * Implements theme_pager_last().
+ */
+function europa_pager_last($variables) {
+  $text = $variables['text'];
+  $element = $variables['element'];
+  $parameters = $variables['parameters'];
+  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
+  global $pager_page_array, $pager_total;
+  $output = '';
+
+  // If we are anywhere but the last page.
+  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
+    $output = theme('pager_link', array(
+      'text' => $text,
+      'page_new' => pager_load_array($pager_total[$element] - 1, $element, $pager_page_array),
+      'element' => $element,
+      'parameters' => $parameters,
+      'attributes' => $attributes,
+    ));
+  }
+
+  return $output;
+}
+
