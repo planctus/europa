@@ -11,6 +11,12 @@
           $resultsCount   = $('.filters__result-count'),
           $itemsNumber    = $('.filters__items-number');
 
+      // Checking if IE8 is used
+      var oldIE = false;
+      if ($('html').is('.ie8')) {
+        oldIE = true;
+      }
+
       // Function for hiding Submit and Reset buttons
       var hideFilterButtons = function() {
         $('.filters__btn-collapse, .filters__btn-reset--small').hide();
@@ -112,11 +118,13 @@
               $filtersSubmit.removeClass('ctools-auto-submit-click');
               $filters.wrapInner("<div class='filters__wrapper'></div>");
 
-              $filtersSubmit.click(function () {
-                if (!$filtersSubmit.hasClass('ctools-auto-submit-click')) {
-                  $filters.collapse('hide');
-                }
-              });
+              if (!oldIE) {
+                $filtersSubmit.click(function () {
+                  if (!$filtersSubmit.is('ctools-auto-submit-click')) {
+                    $filters.collapse('hide');
+                  }
+                });
+              }
 
               $filters.on('show.bs.collapse', function(){
                 $(this).prepend('<a class="close filters__close" data-toggle="collapse" ' +

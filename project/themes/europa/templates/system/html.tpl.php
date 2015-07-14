@@ -44,8 +44,12 @@
  * @ingroup themeable
  */
 ?><!DOCTYPE html>
-<html class="no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
-<head profile="<?php print $grddl_profile; ?>">
+<!--[if IE 8 ]>
+  <html class="no-js ie8" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
+<![endif]-->
+<!--[if (gt IE 8)|!(IE)]><!-->
+  <html class="no-js" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
+<!--<![endif]-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

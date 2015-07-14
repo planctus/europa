@@ -7133,7 +7133,9 @@ Styleguide forms.filters
   .filters__btn-collapse {
     display: none; }
   .js .filters__btn-submit {
-    display: none; } }
+    display: none; }
+  .js.ie8 .filters__btn-submit {
+    display: block; } }
 
 .views-exposed-form .views-exposed-widget {
   padding: 0; }
