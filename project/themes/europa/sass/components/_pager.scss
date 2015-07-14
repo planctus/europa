@@ -9,22 +9,40 @@ Styleguide pager
 */
 
 .pager {
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
   overflow: hidden;
   width: 100%;
   text-align: left;
+}
+
+.pager__item {
+  display: list-item;
+  list-style: none;
 }
 
 .pager__btn {
   color: #fff;
   background: $blue-dark;
   display: block;
-  height: 70px;
-  min-width: 70px;
+  height: 80px;
+  min-width: 80px;
   padding:15px 65px 15px 35px;
   margin: 0;
-  width: 100%;
+
+  &:hover, &:focus,
+  &:active, &:visited {
+    color: #fff;
+  }
+}
+
+.pager__combo {
+  background: $grey-lighter;
+  font-size: $font-size-little;
+  float: left;
+  height: 80px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 15px;
 }
 
 .pager__previous {
@@ -33,7 +51,13 @@ Styleguide pager
 }
 
 .pager__next {
-  float: right;
-  width: 148px;
+  float: left;
 }
 
+.pager__arrow-back {
+
+}
+
+.pager__arrow-forward {
+
+}

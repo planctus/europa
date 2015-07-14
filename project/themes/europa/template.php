@@ -1169,12 +1169,12 @@ function europa_pager($variables) {
   if ($pager_total[$element] > 1) {
     if ($li_previous) {
       $items[] = array(
-        'class' => array('pager__previous'),
+        'class' => array('pager__previous pager__item'),
         'data' => $li_previous,
       );
     }
     $items[] = array(
-      'class' => array('pager-current-combo'),
+      'class' => array('pager__combo'),
       'data' => '<span class="pager-current-combo-current">' . t('page %page', array('%page' => $pager_current)) . '</span> <span class="pager-current-combo-total subtext">' . t('of %total', array('%total' => $pager_max)) . '</span>',
     );
     // When there is more than one page, create the pager list.
@@ -1227,7 +1227,7 @@ function europa_pager($variables) {
     // End generation.
     if ($li_next) {
       $items[] = array(
-        'class' => array('pager__next'),
+        'class' => array('pager__next pager__item'),
         'data' => $li_next,
       );
     }
