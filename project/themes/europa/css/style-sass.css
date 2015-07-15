@@ -7773,9 +7773,6 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-.listing__wrapper {
-  margin-bottom: 1.667em; }
-
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;
