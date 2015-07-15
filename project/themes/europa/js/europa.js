@@ -50,7 +50,6 @@
     },
 
     fixBlockHeights: function ($block, stop) {
-      console.log('fixBlockHeights');
       $block.each(function () {
         $wrapper = $(this);
         var $blocks = [];
@@ -89,8 +88,6 @@
           var $block = $blocks[i].equalHeight();
           // if(stop) {
           //   $block.stop();
-          //   console.log('stop');
-          //   console.log($block);
           // }
         }
       });
