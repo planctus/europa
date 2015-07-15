@@ -1144,16 +1144,14 @@ function europa_pager($variables) {
     'parameters' => $parameters,
   ));
   $li_previous = theme('pager_previous', array(
-    'text' => '<span class="sr-only">' . t('previous') . '</span>',
+    'text' => '<span class="pager__arrow-back icon icon--left"></span><span class="sr-only">' . t('Previous') . '</span>',
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
     'attributes' => array('class' => 'pager__btn'),
   ));
   $li_next = theme('pager_next', array(
-    'text' => '<span>' . t('next') . '</span><span class="subtext">' . t('page %page', array(
-        '%page' => $pager_current + 1,
-      )) . '</span>',
+    'text' => '<span>' . t('Next') . "</span><span class='pager__arrow-forward icon icon--right'></span>",
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
@@ -1174,8 +1172,10 @@ function europa_pager($variables) {
       );
     }
     $items[] = array(
-      'class' => array('pager__combo pager__item'),
-      'data' => '<span class="pager-current-combo-current">' . t('page %page', array('%page' => $pager_current)) . '</span> <span class="pager-current-combo-total subtext">' . t('of %total', array('%total' => $pager_max)) . '</span>',
+      'class' => array('pager__item combo'),
+      'data' => "<span class='combo__container'><span class='combo__current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
+      "<span class='combo__total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
+      '</span>',
     );
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {
@@ -1190,7 +1190,7 @@ function europa_pager($variables) {
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
           $items[] = array(
-            'class' => array('pager-item select'),
+            'class' => array('pager__item'),
             'data' => theme('pager_previous', array(
               'text' => $i,
               'element' => $element,
@@ -1201,13 +1201,13 @@ function europa_pager($variables) {
         }
         if ($i == $pager_current) {
           $items[] = array(
-            'class' => array('pager-current select'),
+            'class' => array('pager__item is-current'),
             'data' => $i,
           );
         }
         if ($i > $pager_current) {
           $items[] = array(
-            'class' => array('pager-item select'),
+            'class' => array('pager__item'),
             'data' => theme('pager_next', array(
               'text' => $i,
               'element' => $element,
@@ -1422,4 +1422,3 @@ function europa_pager_last($variables) {
 
   return $output;
 }
-
