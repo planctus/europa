@@ -95,7 +95,9 @@ Styleguide pager
 }
 
 .no-js {
-
+  .combo__current {
+    display: none;
+  }
 }
 
 @include breakpoint(screen-xs-min) {
