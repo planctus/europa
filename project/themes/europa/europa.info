@@ -45,6 +45,7 @@ scripts[] = js/enquire.min.js
 scripts[] = js/velocity.min.js
 
 scripts[] = js/misc/ajax.js
+scripts[] = js/jquery.equalheight.min.js
 
 scripts[] = js/europa.js
 

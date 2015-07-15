@@ -108,7 +108,7 @@ function dt_policy_next_step_field_presave($entity_type, $entity, $field, $insta
     foreach ($items as $delta => $item) {
       // The hook_field_presave() called multiple times.
       // Have to be sure if $item['steps_in_bullets']['value'] exits.
-      if (isset($item['steps_in_bullets']['value'])) {
+      if (isset($item['steps_in_bullets']['value']) && is_array($item['steps_in_bullets'])) {
         $items[$delta]['steps_in_bullets'] = $item['steps_in_bullets']['value'];
       }
     }
@@ -154,16 +154,18 @@ function dt_policy_next_step_field_formatter_info() {
  */
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-  $elements['#prefix'] = '<div class="timeline">';
-  $elements['#suffix'] = '</div>';
-  foreach ($items as $delta => $item) {
-    $item = _dt_policy_next_step_sanitize($item, $langcode);
-    $elements[$delta] = array(
-      '#theme' => $display['type'],
-      '#element' => $item,
-      '#field' => $instance,
-      '#display' => $display,
-    );
+  if(!empty($items)) {
+    $elements['#prefix'] = '<div class="timeline">';
+    $elements['#suffix'] = '</div>';
+    foreach ($items as $delta => $item) {
+      $item = _dt_policy_next_step_sanitize($item, $langcode);
+      $elements[$delta] = array(
+        '#theme' => $display['type'],
+        '#element' => $item,
+        '#field' => $instance,
+        '#display' => $display,
+      );
+    }
   }
 
   return $elements;

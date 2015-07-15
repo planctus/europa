@@ -7,7 +7,6 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-
 $spacing-top-listing__title: 0.9em;
 $spacing-bottom-listing__title: 0.7em;
 
@@ -217,12 +216,12 @@ $spacing-bottom-listing__title: 0.7em;
 
 @include breakpoint(screen-msm-min) {
   .listing__column-main--sidebar-next {
-    width: 75%;
+    width: 66.6%;
   }
 
   .listing__column-second--no-link {
     float: right;
-    width: 25%;
+    width: 33.3%;
     padding-left: 15px;
     padding-top: 0.85em;
 
@@ -277,6 +276,12 @@ Listing teaser
 Listing components
 
 Markup: html/listing--teaser.html
+
+.listing--cta  - Listing CTA
+.listing--no-padding - Listing no padding
+.listing--title-large - Listing title large
+.listing--title-medium - Listing title medium
+.listing--short-spaced - Listing short spaced
 
 Styleguide listing.teaser
 */
