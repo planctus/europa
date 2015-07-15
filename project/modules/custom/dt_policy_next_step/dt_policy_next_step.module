@@ -108,7 +108,7 @@ function dt_policy_next_step_field_presave($entity_type, $entity, $field, $insta
     foreach ($items as $delta => $item) {
       // The hook_field_presave() called multiple times.
       // Have to be sure if $item['steps_in_bullets']['value'] exits.
-      if (isset($item['steps_in_bullets']['value'])) {
+      if (isset($item['steps_in_bullets']['value']) && is_array($item['steps_in_bullets'])) {
         $items[$delta]['steps_in_bullets'] = $item['steps_in_bullets']['value'];
       }
     }
