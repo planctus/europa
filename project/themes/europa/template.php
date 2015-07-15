@@ -1174,7 +1174,7 @@ function europa_pager($variables) {
       );
     }
     $items[] = array(
-      'class' => array('pager__combo'),
+      'class' => array('pager__combo pager__item'),
       'data' => '<span class="pager-current-combo-current">' . t('page %page', array('%page' => $pager_current)) . '</span> <span class="pager-current-combo-total subtext">' . t('of %total', array('%total' => $pager_max)) . '</span>',
     );
     // When there is more than one page, create the pager list.

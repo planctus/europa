@@ -12,12 +12,13 @@ Styleguide pager
   margin-top: 20px;
   overflow: hidden;
   width: 100%;
-  text-align: left;
 }
 
 .pager__item {
   display: list-item;
   list-style: none;
+  float: left;
+  min-width: 80px;
 }
 
 .pager__btn {
@@ -25,9 +26,8 @@ Styleguide pager
   background: $blue-dark;
   display: block;
   height: 80px;
-  min-width: 80px;
-  padding:15px 65px 15px 35px;
   margin: 0;
+  padding: 25px 20px;
 
   &:hover, &:focus,
   &:active, &:visited {
@@ -35,29 +35,64 @@ Styleguide pager
   }
 }
 
-.pager__combo {
-  background: $grey-lighter;
-  font-size: $font-size-little;
-  float: left;
-  height: 80px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 15px;
-}
-
 .pager__previous {
-  float: left;
-  width: auto;
+  .pager__arrow-back {
+    display: inline-block;
+    height: 20px;
+    width: 10px;
+    padding-left: 10px;
+    margin-right: 20px;
+  }
 }
 
 .pager__next {
-  float: left;
-}
-
-.pager__arrow-back {
 
 }
 
 .pager__arrow-forward {
+  padding-left: 10px;
+}
+
+.combo {
+  background: $grey-lighter;
+  font-size: $font-size-little;
+  height: 80px;
+  margin: 0 3px;
+}
+
+.combo__dropdown {
+  background: $grey-lighter;
+  border: none;
+  color: $blue-dark;
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-left: 26%;
+  min-width: 185px;
+  width: 100%;
+  clear: both;
+}
+
+.combo__container {
+  text-align: center;
+}
+
+.combo__current {
+  display: inline-block;
+}
+
+.combo__total {
+  display: inline-block;
+}
+
+.no-js {
+
+}
+
+@include breakpoint(screen-xs-min) {
+
+}
+
+@include breakpoint(screen-md-min) {
 
 }

@@ -47,7 +47,7 @@
         }
       });
     }
-  }
+  };
 
   function selectNav(event) {
     var href = $(event.target).val();
