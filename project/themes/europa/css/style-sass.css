@@ -8347,25 +8347,28 @@ Styleguide pager
   .pager__btn:active, .pager__btn:visited {
     color: #fff; }
 
-.pager__previous {
+.pager__back {
   width: 45%; }
 
-.pager__arrow-back {
+.pager__back-arrow {
   display: inline-block;
   height: 20px;
   width: 10px; }
 
-.pager__next {
+.pager__forward {
   display: inline-block;
   float: right;
   width: 45%;
   text-align: right;
   margin-right: 10px; }
 
-.pager__arrow-forward {
+.pager__forward-arrow {
   padding-left: 10px;
   height: 20px;
   display: inline-block; }
+
+.pager__forward-text {
+  display: none; }
 
 .combo {
   display: none;
@@ -8408,9 +8411,11 @@ Styleguide pager
 @media (min-width: 480px) {
   .combo {
     display: block; }
-  .pager__previous {
+  .pager__back {
     width: auto; }
-  .pager__next {
+  .pager__forward-text {
+    display: inline; }
+  .pager__forward {
     float: none;
     width: 160px; } }
 
