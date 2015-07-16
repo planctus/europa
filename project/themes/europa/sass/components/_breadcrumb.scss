@@ -75,8 +75,7 @@ $breadcrumb-heigth: 2.778em;
       @extend .breadcrumb__link-arrow;
       position: absolute;
       right: 7px;
-      top: 50%;
-      @include translate(0, -50%)
+      top: 30%;
     }
   }
 }
@@ -147,8 +146,7 @@ Styleguide breadcrumb.collapsible
       @extend .breadcrumb__link-arrow;
       position: absolute;
       right: 0;
-      top: 50%;
-      @include translate(0, -50%)
+      top: 30%;
     }
   }
 
@@ -231,8 +229,7 @@ Styleguide breadcrumb.collapsible
           display: inline-block !important;
           position: absolute;
           right: 7px;
-          top: 50%;
-          @include translate(0, -50%)
+          top: 30%;
         }
       }
     }

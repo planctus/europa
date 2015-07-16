@@ -106,3 +106,19 @@
     overflow: hidden;
   }
 }
+
+
+.no-svg {
+  // Bootstrap accordion
+  #feedback-form__accordion {
+    .accordion-group {
+      .accordion-toggle {
+        background: url('../images/png/checkbox.png') no-repeat;
+
+        &.collapsed {
+          background-position: 0 -21px;
+        }
+      }
+    }
+  }
+}
