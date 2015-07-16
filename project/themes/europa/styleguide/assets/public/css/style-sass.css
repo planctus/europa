@@ -7200,15 +7200,14 @@ Styleguide footer
   margin-top: 0.6em;
   padding-top: 1.2em; }
 
-.footer__icon--facebook:before,
-.footer__icon--twitter:before {
+.footer__icon--social:before {
   position: relative;
   top: 4px;
   margin-right: 8px !important; }
 
-.footer__icon--facebook:after,
-.footer__icon--twitter:after {
-  content: none !important; }
+.footer__icon--social:after {
+  content: none !important;
+  display: none !important; }
 
 .footer__icon--facebook:before {
   font-size: 22px; }
@@ -7806,9 +7805,6 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-.listing__wrapper {
-  margin-bottom: 1.667em; }
-
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;

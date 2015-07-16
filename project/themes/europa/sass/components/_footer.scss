@@ -80,8 +80,7 @@ Styleguide footer
 }
 
 // Icons
-.footer__icon--facebook,
-.footer__icon--twitter {
+.footer__icon--social {
   &:before {
     position: relative;
     top: 4px;
@@ -90,6 +89,7 @@ Styleguide footer
 
   &:after {
     content: none !important;
+    display: none !important;
   }
 }
 
