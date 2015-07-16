@@ -19,7 +19,6 @@ Styleguide pager
   list-style: none;
   float: left;
   min-width: 80px;
-  display: none;
 }
 
 .pager__btn {
@@ -37,7 +36,7 @@ Styleguide pager
 }
 
 .pager__previous {
-
+  display: none;
 }
 
 .pager__arrow-back {
@@ -64,6 +63,7 @@ Styleguide pager
   font-size: $font-size-little;
   height: 80px;
   margin: 0 3px;
+  text-align: center;
 }
 
 .combo__dropdown {
@@ -79,11 +79,11 @@ Styleguide pager
 }
 
 .combo__container {
-  text-align: center;
+  display: inline-block;
 }
 
 .combo__current {
-  display: inline-block;
+  display: none;
   padding-top: 20px;
   padding-left: 20px;
 }
@@ -96,6 +96,9 @@ Styleguide pager
 
 .no-js {
   .combo__current {
+    display: inline-block;
+  }
+  .combo__dropdown {
     display: none;
   }
 }

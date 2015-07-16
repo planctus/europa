@@ -1182,7 +1182,7 @@ function europa_pager($variables) {
       $select = array();
       if ($li_first && $i > 1) {
         $items[] = array(
-          'class' => array('pager-first select'),
+          'class' => array('pager__item--first select'),
           'data' => $li_first,
         );
       }
@@ -1190,7 +1190,7 @@ function europa_pager($variables) {
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
           $items[] = array(
-            'class' => array('pager__item'),
+            'class' => array('pager__item select'),
             'data' => theme('pager_previous', array(
               'text' => $i,
               'element' => $element,
@@ -1201,13 +1201,13 @@ function europa_pager($variables) {
         }
         if ($i == $pager_current) {
           $items[] = array(
-            'class' => array('pager__item is-current'),
+            'class' => array('pager__item is-current select'),
             'data' => $i,
           );
         }
         if ($i > $pager_current) {
           $items[] = array(
-            'class' => array('pager__item'),
+            'class' => array('pager__item select'),
             'data' => theme('pager_next', array(
               'text' => $i,
               'element' => $element,
@@ -1220,7 +1220,7 @@ function europa_pager($variables) {
     }
     if ($li_last && $i < $pager_max) {
       $items[] = array(
-        'class' => array('pager-last select'),
+        'class' => array('pager__item--last select'),
         'data' => $li_last,
       );
     }

@@ -7,7 +7,7 @@
           var $link = $('a', this);
           if($link.length > 0) {
             var value = $link.attr('href');
-            var title = $link.html();
+            var title = Drupal.t('Page') + ' ' + $link.html();
             var selected = '';
           } else {
             var value = '';
@@ -18,7 +18,7 @@
           $(this).remove();
         });
         if(options != '') {
-          var select = $('<span class="pager-dropdown-wrapper"><select class="pager-dropdown">' + options + '</select></span>');
+          var select = $('<select class="combo__dropdown">' + options + '</select>');
           select.children().data('activation', 'activated').on({
             keydown: function(event) {
               if(event.which === 13){
@@ -42,8 +42,8 @@
               }
             }
           });
-          $('li.pager-current-combo .pager-current-combo-current', this).after(select);
-          $('li.pager-current-combo .pager-current-combo-current').hide();
+          $('.combo__container', this).before(select);
+          //$('li.pager-current-combo .pager-current-combo-current').hide();
         }
       });
     }
