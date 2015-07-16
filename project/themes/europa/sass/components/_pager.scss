@@ -25,9 +25,10 @@ Styleguide pager
   color: #fff;
   background: $blue-dark;
   display: block;
-  height: 80px;
   margin: 0;
-  padding: 25px 20px;
+  padding: 30px 35px;
+  line-height: 1em;
+  text-align: center;
 
   &:hover, &:focus,
   &:active, &:visited {
@@ -36,25 +37,27 @@ Styleguide pager
 }
 
 .pager__previous {
-  display: none;
+  width: 45%;
 }
 
 .pager__arrow-back {
   display: inline-block;
   height: 20px;
   width: 10px;
-  padding-left: 10px;
-  margin-right: 25px;
 }
 
 .pager__next {
   display: inline-block;
   float: right;
-  margin-right: 20px;
+  width: 45%;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .pager__arrow-forward {
   padding-left: 10px;
+  height: 20px;
+  display: inline-block;
 }
 
 .combo {
@@ -108,10 +111,11 @@ Styleguide pager
     display: block;
   }
   .pager__previous {
-    display: inline-block;
+    width: auto;
   }
   .pager__next {
     float: none;
+    width: 160px;
   }
 }
 

@@ -128,14 +128,14 @@
           <span class="kss-nav__ref">17</span
           ><span class="kss-nav__name">Page header</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-pager.html">
           <span class="kss-nav__ref">18</span
           ><span class="kss-nav__name">Pager</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-siteheader.html">
@@ -166,55 +166,90 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-page-header" class="kss-section kss-section--depth-1">
+      <div     id="kssref-pager" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-page-header">
-          <span class="kss-title__ref">17</span
-          >Page header
+        <a class="kss-title__permalink" href="#kssref-pager">
+          <span class="kss-title__ref">18</span
+          >Pager
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>Page header component</p>
+        <p>Depends on &#39;icon&#39; component for showing back/forward arrows.</p>
 
       </div>
     </div>
 
       <div class="kss-modifier__wrapper">
         <div class="kss-modifier__heading kss-style">
-          Examples
-        </div>
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
+          Example
         </div>
         <div class="kss-modifier__example">
-          <div class="page-header [modifier class]">
-  <p>The <strong>European Commission</strong> is the European Union’s executive body. It represents the interests of the European Union as a whole.</p>
-</div>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          .page-header--featured
-        </div>
-        <div class="kss-modifier__description kss-style">
-          Featured Page Header
-        </div>
-        <div class="kss-modifier__example">
-          <div class="page-header page-header--featured">
-  <p>The <strong>European Commission</strong> is the European Union’s executive body. It represents the interests of the European Union as a whole.</p>
-</div>
+          <ul class="pager">
+    <li class="pager__item pager__previous first">
+        <a class="pager__btn" href="/filter?value=test&amp;page=1">
+            <span class="pager__arrow-back icon icon--left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="pager__item combo">
+        <span class="combo__upper">
+            <select class="combo__dropdown">
+                <option value="/filter?value=test">Page 1</option>
+                <option value="/filter?value=test&amp;page=1">Page 2</option>
+                <option value="" selected="selected">Page 3</option>
+                <option value="/filter?value=test&amp;page=3">Page 4</option>
+            </select>
+        </span>
+        <span class="combo__container">
+            <span class="combo__current">page 3</span>
+            <span class="combo__total">of 4</span>
+        </span>
+    </li>
+    <li class="pager__item pager__next last">
+        <a class="pager__btn" href="/filter?value=test&amp;page=3">
+            <span>Next</span>
+            <span class="pager__arrow-forward icon icon--right"></span>
+        </a>
+    </li>
+</ul>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;page-header [modifier class]&quot;&gt;
-  &lt;p&gt;The &lt;strong&gt;European Commission&lt;/strong&gt; is the European Union’s executive body. It represents the interests of the European Union as a whole.&lt;/p&gt;
-&lt;/div&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class=&quot;pager&quot;&gt;
+    &lt;li class=&quot;pager__item pager__previous first&quot;&gt;
+        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=1&quot;&gt;
+            &lt;span class=&quot;pager__arrow-back icon icon--left&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;pager__item combo&quot;&gt;
+        &lt;span class=&quot;combo__upper&quot;&gt;
+            &lt;select class=&quot;combo__dropdown&quot;&gt;
+                &lt;option value=&quot;/filter?value=test&quot;&gt;Page 1&lt;/option&gt;
+                &lt;option value=&quot;/filter?value=test&amp;amp;page=1&quot;&gt;Page 2&lt;/option&gt;
+                &lt;option value=&quot;&quot; selected=&quot;selected&quot;&gt;Page 3&lt;/option&gt;
+                &lt;option value=&quot;/filter?value=test&amp;amp;page=3&quot;&gt;Page 4&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/span&gt;
+        &lt;span class=&quot;combo__container&quot;&gt;
+            &lt;span class=&quot;combo__current&quot;&gt;page 3&lt;/span&gt;
+            &lt;span class=&quot;combo__total&quot;&gt;of 4&lt;/span&gt;
+        &lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;pager__item pager__next last&quot;&gt;
+        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=3&quot;&gt;
+            &lt;span&gt;Next&lt;/span&gt;
+            &lt;span class=&quot;pager__arrow-forward icon icon--right&quot;&gt;&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
       </div>
 
