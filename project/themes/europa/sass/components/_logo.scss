@@ -23,3 +23,12 @@
     background-image: url('../images/png/logo.png');
   }
 }
+
+@include breakpoint(screen-md-min) {
+  .logo {
+    margin-left: 15px;
+  }
+  .front .logo  {
+    margin-left: 0;
+  }
+}
