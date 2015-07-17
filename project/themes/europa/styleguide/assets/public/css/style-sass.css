@@ -8339,6 +8339,7 @@ Styleguide pager
   color: #fff;
   background: #004494;
   display: block;
+  font-size: 0.889em;
   margin: 0;
   padding: 30px 35px;
   line-height: 1em;
@@ -8350,10 +8351,12 @@ Styleguide pager
 .pager__back {
   width: 45%; }
 
-.pager__back-arrow {
+.back__arrow {
   display: inline-block;
   height: 20px;
-  width: 10px; }
+  width: 10px;
+  position: relative;
+  left: -5px; }
 
 .pager__forward {
   display: inline-block;
@@ -8361,13 +8364,16 @@ Styleguide pager
   width: 45%;
   text-align: right;
   margin-right: 10px; }
+  .pager__forward .pager__btn {
+    height: 80px;
+    overflow: hidden; }
 
-.pager__forward-arrow {
+.forward__arrow {
   padding-left: 10px;
   height: 20px;
   display: inline-block; }
 
-.pager__forward-text {
+.forward__text {
   display: none; }
 
 .combo {
@@ -8413,11 +8419,13 @@ Styleguide pager
     display: block; }
   .pager__back {
     width: auto; }
-  .pager__forward-text {
-    display: inline; }
   .pager__forward {
     float: none;
-    width: 160px; } }
+    width: 160px; }
+  .forward__text {
+    display: inline;
+    padding-left: 25px;
+    float: left; } }
 
 /*
 Site header

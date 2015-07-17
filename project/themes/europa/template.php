@@ -1144,14 +1144,14 @@ function europa_pager($variables) {
     'parameters' => $parameters,
   ));
   $li_previous = theme('pager_previous', array(
-    'text' => '<span class="pager__back-arrow icon icon--left"></span><span class="pager__back-text sr-only">' . t('Previous') . '</span>',
+    'text' => '<span class="back__arrow icon icon--left"></span><span class="back__text sr-only">' . t('Previous') . '</span>',
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
     'attributes' => array('class' => 'pager__btn'),
   ));
   $li_next = theme('pager_next', array(
-    'text' => '<span class="pager__forward-text">' . t('Next') . "</span><span class='pager__forward-arrow icon icon--right'></span>",
+    'text' => '<span class="forward__text">' . t('Next') . "</span><span class='forward__arrow icon icon--right'></span>",
     'element' => $element,
     'interval' => 1,
     'parameters' => $parameters,
@@ -1286,11 +1286,7 @@ function europa_pager_link($variables) {
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
 
-  // Fix pager for rewritten URLs.
-  // @see commissioners_url_inbound_alter().
-  $original_path_cached = &drupal_static('cwt_core_orignal_path');
-  $path = isset($original_path_cached['original_path']) ? $original_path_cached['original_path'] : $_GET['q'];
-  $attributes['href'] = url($path, array('query' => $query));
+  $attributes['href'] = url($_GET['q'], array('query' => $query));
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
 }
 

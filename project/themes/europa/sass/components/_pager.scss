@@ -25,6 +25,7 @@ Styleguide pager
   color: #fff;
   background: $blue-dark;
   display: block;
+  font-size: $font-size-little;
   margin: 0;
   padding: 30px 35px;
   line-height: 1em;
@@ -36,34 +37,45 @@ Styleguide pager
   }
 }
 
+// back as a child of pager
 .pager__back {
   width: 45%;
 }
 
-.pager__back-arrow {
+.back__arrow {
   display: inline-block;
   height: 20px;
   width: 10px;
+  position: relative;
+  left: -5px;
 }
 
+// forward as a child of pager
 .pager__forward {
   display: inline-block;
   float: right;
   width: 45%;
   text-align: right;
   margin-right: 10px;
+
+  // Ajax throbber should not make button larger in height
+  .pager__btn {
+    height: 80px;
+    overflow: hidden;
+  }
 }
 
-.pager__forward-arrow {
+.forward__arrow {
   padding-left: 10px;
   height: 20px;
   display: inline-block;
 }
 
-.pager__forward-text {
+.forward__text {
   display: none;
 }
 
+// combo is a assumed to be a standalone element
 .combo {
   display: none;
   background: $grey-lighter;
@@ -117,15 +129,13 @@ Styleguide pager
   .pager__back {
     width: auto;
   }
-  .pager__forward-text {
-    display: inline;
-  }
   .pager__forward {
     float: none;
     width: 160px;
   }
-}
-
-@include breakpoint(screen-md-min) {
-
+  .forward__text {
+    display: inline;
+    padding-left: 25px;
+    float: left;
+  }
 }
