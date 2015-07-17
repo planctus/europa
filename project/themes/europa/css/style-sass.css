@@ -8332,8 +8332,7 @@ Styleguide pager
 
 .pager__item {
   list-style: none;
-  float: left;
-  min-width: 80px; }
+  float: left; }
 
 .pager__btn {
   color: #fff;
@@ -8350,6 +8349,10 @@ Styleguide pager
 
 .pager__back {
   width: 45%; }
+  .pager__back .pager__btn {
+    height: 80px;
+    width: 80px;
+    overflow: hidden; }
 
 .back__arrow {
   display: inline-block;
