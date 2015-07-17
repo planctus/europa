@@ -26,6 +26,9 @@
 
 @include breakpoint(screen-md-min) {
   .logo {
-    margin: 15px;
+    margin-left: 15px;
+  }
+  .front .logo  {
+    margin-left: 0;
   }
 }
