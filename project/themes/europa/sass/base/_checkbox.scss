@@ -51,7 +51,7 @@ Styleguide form.checkbox
         height: $form-checkbox-icon-size;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background: url('../images/svg/checkbox-unchecked.svg') no-repeat;
         background-size: auto $form-checkbox-icon-size;
       }
     }
@@ -62,7 +62,7 @@ Styleguide form.checkbox
       background-color: $form-checkbox-background-color-checked;
 
       &:before {
-        background-image: url(../images/svg/checkbox-checked.svg);
+        background-image: url('../images/svg/checkbox-checked.svg');
       }
     }
 
@@ -82,17 +82,38 @@ Styleguide form.checkbox
   }
 }
 
-
+// Turning off completely custom checkboxes when SVG's are not available
 .no-svg {
   .checkbox {
+    label {
+      height: auto;
+      line-height: inherit;
+      display: inline;
+      background: none;
+      padding-left: 0;
+    }
     input[type="checkbox"] {
+      margin: 0;
+      float: none;
+      height: auto;
       &:before {
-        background-image: url(../images/png/checkbox-radio.png) !important;
+        display: none;
+      }
+
+      &:not(checked)+label {
+        background: none;
+        padding: 0;
+        &:before {
+          display: none;
+        }
       }
 
       &:checked+label {
+        color: inherit;
+        background: none;
+
         &:before {
-          background-position: -$form-checkbox-icon-size 0;
+          display: none;
         }
       }
     }

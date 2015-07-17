@@ -50,6 +50,7 @@ Styleguide: icon
 
 .icon {
   &:before {
+    text-decoration: none;
     display: inline-block;
     font-family: 'EuropaIcons';
     speak: none;
@@ -68,6 +69,7 @@ Styleguide: icon
 
 // Should be used only with @extend
 .icon--after {
+  text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -85,7 +87,7 @@ Styleguide: icon
 
 // Modifiers
 .icon--external {
-  content: '\e61a';
+  content: '\e61a' !important;
 }
 .icon--external {
   &:before {
