@@ -8351,7 +8351,6 @@ Styleguide pager
   width: 45%; }
   .pager__back .pager__btn {
     height: 80px;
-    width: 80px;
     overflow: hidden; }
 
 .back__arrow {
@@ -8383,33 +8382,38 @@ Styleguide pager
   display: none;
   background: #ececec;
   font-size: 0.889em;
-  height: 80px;
+  text-align: center;
   margin: 0 3px;
-  text-align: center; }
+  height: 80px;
+  width: 180px; }
+
+.combo__upper {
+  position: relative; }
 
 .combo__dropdown {
-  background: #ececec;
+  background: transparent url("../images/png/arrow-down-blue.png") no-repeat scroll 117px center;
   border: none;
   color: #004494;
+  cursor: pointer;
   display: block;
-  margin-top: 10px;
-  padding-left: 26%;
-  min-width: 185px;
+  margin-top: 15px;
+  padding: 0 29%;
   width: 100%;
-  clear: both; }
+  clear: both;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 .combo__container {
   display: inline-block; }
 
 .combo__current {
   display: none;
-  padding-top: 20px;
-  padding-left: 20px; }
+  padding-top: 20px; }
 
 .combo__total {
   display: inline-block;
-  font-weight: normal;
-  padding-right: 20px; }
+  font-weight: normal; }
 
 .no-js .combo__current {
   display: inline-block; }
@@ -8422,6 +8426,8 @@ Styleguide pager
     display: block; }
   .pager__back {
     width: auto; }
+    .pager__back .pager__btn {
+      width: 80px; }
   .pager__forward {
     float: none;
     width: 160px; }
