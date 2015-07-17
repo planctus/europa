@@ -143,6 +143,12 @@ Styleguide forms.filters
     .filters__btn-submit {
       display: none;
     }
+
+    &.ie8 {
+      .filters__btn-submit {
+        display: block;
+      }
+    }
   }
 }
 

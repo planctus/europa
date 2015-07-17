@@ -30,7 +30,7 @@ Styleguide form.radio
   input {
     margin: 1px 0 0 13px;
   }
-  
+
   // Radio
   input[type="radio"] {
     height: $form-control-height;
@@ -51,7 +51,7 @@ Styleguide form.radio
         height: $form-checkbox-icon-size;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/radio-unchecked.svg) no-repeat;
+        background: url('../images/svg/radio-unchecked.svg') no-repeat;
         background-size: auto $form-checkbox-icon-size;
       }
     }
@@ -62,7 +62,7 @@ Styleguide form.radio
       background-color: $form-checkbox-background-color-checked;
 
       &:before {
-        background-image: url(../images/svg/radio-checked.svg);
+        background-image: url('../images/svg/radio-checked.svg');
       }
     }
 
@@ -83,16 +83,36 @@ Styleguide form.radio
 }
 
 .no-svg {
-  .checkbox {
-    input[type="checkbox"] {
+  .radio {
+    label {
+      height: auto;
+      line-height: inherit;
+      display: inline;
+      background: none;
+      padding-left: 0;
+    }
+    input[type="radio"] {
+      margin: 0;
+      float: none;
+      height: auto;
       &:before {
-        background-image: url(../images/png/checkbox-radio.png) !important;
+        display: none;
       }
 
-      // Checked state.
-      &:checked+label {
+      &:not(checked)+label {
+        background: none;
+        padding: 0;
         &:before {
-          background-position: -3*$form-checkbox-icon-size 0;
+          display: none;
+        }
+      }
+
+      &:checked+label {
+        color: inherit;
+        background: none;
+
+        &:before {
+          display: none;
         }
       }
     }

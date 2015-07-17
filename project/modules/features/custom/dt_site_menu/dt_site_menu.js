@@ -7,7 +7,7 @@
       $siteMenu.once('site_menu', function() {
         var $menuButton = $('<section class="site-menu__toggle"><button class="btn btn-menu">' + Drupal.t('Menu') + '</button></section>');
         $topBar.append($menuButton);
-        $siteMenu.addClass('collapse');
+        $siteMenu.collapse('hide').removeAttr('style');
         $menuButton.click(function() {
           $siteMenu.collapse('toggle');
           $('button', this).toggleClass('is-collapsed');

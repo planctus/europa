@@ -14,14 +14,18 @@
         $this = $(this);
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
-          enquire.register(Drupal.europa.breakpoints.medium, {
-            // desktop
-            match : function() {
+          enquire.register('screen and (max-width: 479px)', {
+            // setup
+            setup : function() {
               $this.siblings('.tab-content').children().addClass('tab-pane');
             },
             // mobile
-            unmatch : function() {
+            match : function() {
               $this.siblings('.tab-content').children().removeClass('tab-pane');
+            },
+            // desktop
+            unmatch: function() {
+              $this.siblings('.tab-content').children().addClass('tab-pane');
             },
           });
         }

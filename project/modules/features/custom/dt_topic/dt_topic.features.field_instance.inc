@@ -321,7 +321,7 @@ function dt_topic_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"',
+    'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -371,7 +371,7 @@ function dt_topic_field_default_field_instances() {
       'rel_remove' => 'default',
       'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => 'See what other EU institutions are doing in [current-page:title]',
+      'title_value' => 'See what other EU institutions are doing on [current-page:title]',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -1316,7 +1316,7 @@ function dt_topic_field_default_field_instances() {
   t('Select the commissioner responsible for this topic.');
   t('Social Network Links');
   t('Targets');
-  t('The link for the bottom of the page in the form of "See what other EU institutions are doing in TOPIC"');
+  t('The link for the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"');
   t('Title');
   t('Topic specific tasks');
   t('What the Commission is doing');

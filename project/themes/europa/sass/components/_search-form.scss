@@ -57,7 +57,7 @@ Styleguide: siteheader.searchform
     width: 33%;
 
     &:before {
-      display: none;
+      display: none !important;
     }
   }
 }

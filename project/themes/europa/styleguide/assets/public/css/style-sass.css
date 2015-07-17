@@ -5909,13 +5909,13 @@ Styleguide form.checkbox
         height: 1.25em;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/checkbox-unchecked.svg) no-repeat;
+        background: url("../images/svg/checkbox-unchecked.svg") no-repeat;
         background-size: auto 1.25em; }
     .checkbox input[type="checkbox"]:checked + label {
       color: #ffffff;
       background-color: #004494; }
       .checkbox input[type="checkbox"]:checked + label:before {
-        background-image: url(../images/svg/checkbox-checked.svg); }
+        background-image: url("../images/svg/checkbox-checked.svg"); }
     .checkbox input[type="checkbox"]:hover:not(checked) + label {
       color: #575757;
       border: #004494 solid 2px;
@@ -5925,11 +5925,29 @@ Styleguide form.checkbox
       border: #ffd617 solid 2px;
       background-color: #004494; }
 
-.no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png) !important; }
+.no-svg .checkbox label {
+  height: auto;
+  line-height: inherit;
+  display: inline;
+  background: none;
+  padding-left: 0; }
 
-.no-svg .checkbox input[type="checkbox"]:checked + label:before {
-  background-position: -1.25em 0; }
+.no-svg .checkbox input[type="checkbox"] {
+  margin: 0;
+  float: none;
+  height: auto; }
+  .no-svg .checkbox input[type="checkbox"]:before {
+    display: none; }
+  .no-svg .checkbox input[type="checkbox"]:not(checked) + label {
+    background: none;
+    padding: 0; }
+    .no-svg .checkbox input[type="checkbox"]:not(checked) + label:before {
+      display: none; }
+  .no-svg .checkbox input[type="checkbox"]:checked + label {
+    color: inherit;
+    background: none; }
+    .no-svg .checkbox input[type="checkbox"]:checked + label:before {
+      display: none; }
 
 /*@font-face {
   font-family: 'ECSquareSansPro';
@@ -6301,13 +6319,13 @@ Styleguide form.radio
         height: 1.25em;
         top: 0.8em;
         left: 1em;
-        background: url(../images/svg/radio-unchecked.svg) no-repeat;
+        background: url("../images/svg/radio-unchecked.svg") no-repeat;
         background-size: auto 1.25em; }
     .radio input[type="radio"]:checked + label {
       color: #ffffff;
       background-color: #004494; }
       .radio input[type="radio"]:checked + label:before {
-        background-image: url(../images/svg/radio-checked.svg); }
+        background-image: url("../images/svg/radio-checked.svg"); }
     .radio input[type="radio"]:hover:not(checked) + label {
       color: #575757;
       border: #004494 solid 2px;
@@ -6317,11 +6335,29 @@ Styleguide form.radio
       border: #ffd617 solid 2px;
       background-color: #004494; }
 
-.no-svg .checkbox input[type="checkbox"]:before {
-  background-image: url(../images/png/checkbox-radio.png) !important; }
+.no-svg .radio label {
+  height: auto;
+  line-height: inherit;
+  display: inline;
+  background: none;
+  padding-left: 0; }
 
-.no-svg .checkbox input[type="checkbox"]:checked + label:before {
-  background-position: -3.75em 0; }
+.no-svg .radio input[type="radio"] {
+  margin: 0;
+  float: none;
+  height: auto; }
+  .no-svg .radio input[type="radio"]:before {
+    display: none; }
+  .no-svg .radio input[type="radio"]:not(checked) + label {
+    background: none;
+    padding: 0; }
+    .no-svg .radio input[type="radio"]:not(checked) + label:before {
+      display: none; }
+  .no-svg .radio input[type="radio"]:checked + label {
+    color: inherit;
+    background: none; }
+    .no-svg .radio input[type="radio"]:checked + label:before {
+      display: none; }
 
 /*
 Select
@@ -6511,11 +6547,7 @@ Styleguide breadcrumb
   .no-js .breadcrumb__segment--first:before {
     position: absolute;
     right: 7px;
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    -o-transform: translate(0, -50%);
-    transform: translate(0, -50%); }
+    top: 30%; }
 
 @media (min-width: 480px) {
   .breadcrumb__link {
@@ -6565,11 +6597,7 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__link:after {
     position: absolute;
     right: 0;
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    -o-transform: translate(0, -50%);
-    transform: translate(0, -50%); }
+    top: 30%; }
 
 .breadcrumb--collapsible .breadcrumb__text {
   display: inline-block;
@@ -6633,11 +6661,7 @@ Styleguide breadcrumb.collapsible
         display: inline-block !important;
         position: absolute;
         right: 7px;
-        top: 50%;
-        -webkit-transform: translate(0, -50%);
-        -ms-transform: translate(0, -50%);
-        -o-transform: translate(0, -50%);
-        transform: translate(0, -50%); }
+        top: 30%; }
   .breadcrumb--collapsible .breadcrumb__btn-separator {
     display: none; }
   .breadcrumb--collapsible .breadcrumb__segment--first {
@@ -6826,7 +6850,7 @@ Styleguide form.feedback-message
     margin-bottom: -6px; } }
 
 .no-svg .feedback-message.is-error:before {
-  background-image: url("../images/png/error.png"); }
+  background: url("../images/png/error.png") no-repeat; }
 
 .feedback-form {
   margin: 0; }
@@ -6903,6 +6927,11 @@ Styleguide form.feedback-message
     font-size: 1em; }
   #feedback-form__accordion {
     overflow: hidden; } }
+
+.no-svg #feedback-form__accordion .accordion-group .accordion-toggle {
+  background: url("../images/png/checkbox.png") no-repeat; }
+  .no-svg #feedback-form__accordion .accordion-group .accordion-toggle.collapsed {
+    background-position: 0 -21px; }
 
 /*
 Field
@@ -7104,7 +7133,9 @@ Styleguide forms.filters
   .filters__btn-collapse {
     display: none; }
   .js .filters__btn-submit {
-    display: none; } }
+    display: none; }
+  .js.ie8 .filters__btn-submit {
+    display: block; } }
 
 .views-exposed-form .views-exposed-widget {
   padding: 0; }
@@ -7169,15 +7200,14 @@ Styleguide footer
   margin-top: 0.6em;
   padding-top: 1.2em; }
 
-.footer__icon--facebook:before,
-.footer__icon--twitter:before {
+.footer__icon--social:before {
   position: relative;
   top: 4px;
   margin-right: 8px !important; }
 
-.footer__icon--facebook:after,
-.footer__icon--twitter:after {
-  content: none !important; }
+.footer__icon--social:after {
+  content: none !important;
+  display: none !important; }
 
 .footer__icon--facebook:before {
   font-size: 22px; }
@@ -7295,6 +7325,7 @@ Styleguide: icon
   src: url("../fonts/europa-icons/europa-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/europa-icons/europa-icons.woff") format("woff"), url("../fonts/europa-icons/europa-icons.ttf") format("truetype"), url("../fonts/europa-icons/europa-icons.svg#icomoon") format("svg"); }
 
 .icon:before, .search-form__btn:before {
+  text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7308,6 +7339,7 @@ Styleguide: icon
   -moz-osx-font-smoothing: grayscale; }
 
 .icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after, .file__btn:after {
+  text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7773,9 +7805,6 @@ Markup: html/listing.html
 
 Styleguide listing
 */
-.listing__wrapper {
-  margin-bottom: 1.667em; }
-
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;
@@ -8125,6 +8154,8 @@ Styleguide messages
     margin-top: 0; }
 
 .no-svg .messages:before {
+  height: 2.5em;
+  width: 2.5em;
   background: url("../images/png/messages-info.png"); }
 
 .no-svg .messages.status:before {
@@ -8300,7 +8331,7 @@ Styleguide: siteheader.searchform
     text-indent: 0;
     width: 33%; }
     .search-form__btn:before {
-      display: none; } }
+      display: none !important; } }
 
 @media (min-width: 992px) {
   .search-form {
