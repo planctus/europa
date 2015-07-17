@@ -8045,6 +8045,10 @@ Styleguide listing.column-left
 .no-svg .logo {
   background-image: url("../images/png/logo.png"); }
 
+@media (min-width: 992px) {
+  .logo {
+    margin: 15px; } }
+
 /*
 Meta
 
