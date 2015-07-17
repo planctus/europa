@@ -13,6 +13,7 @@ ul.nav-tabs,
   padding: 0;
   margin-bottom: 2em !important;
   border-bottom: 2px solid $grey;
+  @extend .hidden-print;
 
   & > li {
     margin-bottom: -2px;

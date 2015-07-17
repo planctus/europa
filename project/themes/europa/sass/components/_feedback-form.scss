@@ -11,6 +11,7 @@
   &.is-open {
     background: $grey-lightest;
   }
+  @extend .hidden-print;
 }
 
 // Feedback form

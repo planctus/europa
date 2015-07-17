@@ -18,4 +18,5 @@ Styleguide form.help-block
     // Disable settings of base Bootstrap.
     color: $form-group-help-block-text-color-has-error;
   }
+  @extend .hidden-print;
 }
