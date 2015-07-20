@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <project name="${phing.project.name}" default="help">
-    <import file="deliver.xml" optional="true"/>
     <!-- If `build.properties.local` exists then we want it badly -->
     <if>
         <available file="build.properties.local"/>
@@ -10,6 +9,7 @@
           </then>
     </if>
     <property file="build.properties"/>
+    <import file="deliver.xml" optional="true"/>
 
     <target name="help" description="Phing target list">
       <echo msg="${project.code.dir}" />

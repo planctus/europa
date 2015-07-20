@@ -33,7 +33,7 @@
     <copy todir="${temp}/${folder}" overwrite="true">
         <fileset dir="${phing.project.project.dir}/${folder}">
           <patternset>
-          	<exclude name="*devel/**"/>
+            <exclude name="*devel/**"/>
             <exclude name="*/node_modules/**"/>
             <exclude name="*/styleguide/**"/>
             <exclude name="**/Gruntfile.js"/>
@@ -54,10 +54,10 @@
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
     <gitcheckout
       repository="${acquia.repo}"
-      branchname="master" quiet="true" />
+      branchname="${acquia.repo.project.branch}" quiet="true" />
     <gitpull
         repository="${acquia.repo}"
-        refspec="master:master" tags="true" force="true" />
+        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" force="true" />
 
     <echo msg="Delete acquia-cloud/docroot." />
     <delete includeemptydirs="true" failonerror="false">
@@ -91,7 +91,7 @@
     <exec dir="${acquia.repo}" command="git add -A"></exec>
     <gitcommit
         repository="${acquia.repo}"
-        message="Packaged by Phing in project BETA from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+        message="Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}" allFiles="true" />
 
     <!-- Get previous tagnames -->
     <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
@@ -100,7 +100,7 @@
     <gittag repository="${acquia.repo}" name="${TAG}" />
     <gitpush
         repository="${acquia.repo}"
-        refspec="master:master" tags="true" />
+        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
   </target>
 
 </project>
