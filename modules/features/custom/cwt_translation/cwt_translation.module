@@ -1,0 +1,183 @@
+<?php
+
+/**
+ * @file
+ * Main functions and hook implementations for the CWT Translation module.
+ */
+
+include_once 'cwt_translation.features.inc';
+
+/**
+ * Implements hook_tmgmt_file_format_plugin_info().
+ */
+function cwt_translation_tmgmt_file_format_plugin_info() {
+  return array(
+    'xml' => array(
+      'label' => t('DGT supported XML'),
+      'plugin controller class' => 'TMGMTFileFormatDGT',
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cwt_translation_theme() {
+  return array(
+    'cwt_translation_dgt_template' => array(
+      'path' => drupal_get_path('module', 'cwt_translation') . '/templates',
+      'template' => 'cwt_translation_dgt_template',
+    ),
+  );
+}
+
+/**
+ * Loads the job that matches the given parameters.
+ *
+ * In the workflow used by the DGT translation team a single export file is
+ * copied and distributed to multiple translators. This means we cannot rely on
+ * the job ID as this will be the same in all copies.
+ *
+ * Instead we look up the correct job ID by comparing the source and target
+ * languages and the job items that match the ones in the imported file.
+ *
+ * @param string $source_language
+ *   The source language code.
+ * @param string $target_language
+ *   The target language code.
+ * @param int $job_id
+ *   The job ID.
+ *
+ * @return TMGMTJob|FALSE
+ *   Loaded translation job entity, or FALSE if the job wasn't found.
+ */
+function cwt_translation_get_job_from_related_job($source_language, $target_language, $job_id) {
+  $related_jobs = cwt_translation_get_related_jobs($job_id);
+
+  $query = new EntityFieldQuery();
+  $result = $query
+    ->entityCondition('entity_type', 'tmgmt_job')
+    ->propertyCondition('source_language', $source_language)
+    ->propertyCondition('target_language', $target_language)
+    ->propertyCondition('tjid', $related_jobs, 'IN')
+    ->execute();
+
+  if ($result) {
+    $job = reset($result['tmgmt_job']);
+    return tmgmt_job_load($job->tjid);
+  }
+
+  return FALSE;
+}
+
+/**
+ * Returns the jobs that correspond with the given job.
+ *
+ * When a number of translation jobs are exported in multiple languages using
+ * the "Translation cart" functionality this will generate a job item for every
+ * piece of content in every language. This function allows to discover the
+ * other jobs that were exported in the same session by supplying one of the job
+ * IDs from that session.
+ *
+ * An example:
+ * - You add 2 nodes to the translation cart and specify that these should be
+ *   translated to French, German and Spanish. Three translation jobs will be
+ *   generated, each containing 2 job items. So we end up with 3 jobs (e.g.
+ *   French: 100, German: 101, Spanish: 102) and 6 individual job items (e.g.
+ *   French: 201 + 202, German: 203 + 204, Spanish: 205 + 206).
+ * - One of the translation jobs is exported into a file which is sent to the
+ *   translation team. Say the German job is sent. We receive the 3 translation
+ *   files, but since they all originate from the same source file they all
+ *   contain job ID 101 and job item IDs 203 and 204.
+ *
+ * This function allows to retrieve the original list of job IDs by passing the
+ * job ID that is found in the translated file. So if we pass the job ID 101
+ * this will return job IDs 100 + 101 + 102.
+ *
+ * @param int $job_id
+ *   The ID of the job for which to find the related jobs.
+ *
+ * @return array
+ *   An array of job IDs that are exported in the same "translation cart"
+ *   session as the given job.
+ */
+function cwt_translation_get_related_jobs($job_id) {
+  // Get the job items that belong to the given job.
+  $job_item_ids = cwt_translation_get_job_item_ids($job_id);
+
+  // Get the job items that were exported originally.
+  $original_items = tmgmt_job_item_load_multiple($job_item_ids);
+
+  // Retrieve the IDs from the jobs that have the exact same source content as
+  // the given job. These are found by comparing the plugin type, item type and
+  // item ID. The number of items in the job should also be identical to avoid
+  // matching on jobs that are a superset of the current job.
+  //
+  // @code
+  // SELECT tjid, COUNT(*) as count
+  // FROM tmgmt_job_item
+  // WHERE
+  //   (
+  //     (plugin = {a.plugin} AND item_type = {a.type} AND item_id = {a.id})
+  //     OR (plugin = {b.plugin} AND item_type = {b.type} AND item_id = {b.id})
+  //     OR (plugin = {c.plugin} AND item_type = {c.type} AND item_id = {c.id})
+  //     OR ...
+  //   )
+  //   AND count = {original number of job IDs}
+  // GROUP BY tjid;
+  // @endcode
+  $query = db_select('tmgmt_job_item', 'tji')
+    ->fields('tji', array('tjid'))
+    ->groupBy('tji.tjid');
+
+  $or = db_or();
+  foreach ($original_items as $original_item) {
+    $or->condition(db_and()
+        ->condition('tji.plugin', $original_item->plugin)
+        ->condition('tji.item_type', $original_item->item_type)
+        ->condition('tji.item_id', $original_item->item_id)
+    );
+  }
+  $query->condition($or);
+
+  $query->addExpression('COUNT(*)', 'count');
+  $query->havingCondition('count', count($job_item_ids));
+
+  return $query->execute()->fetchCol();
+}
+
+/**
+ * Returns all job item IDs that are part of a given job.
+ *
+ * @param int $job_id
+ *   The job ID for which to retrieve the job item IDs.
+ *
+ * @return array
+ *   An array of job item IDs.
+ */
+function cwt_translation_get_job_item_ids($job_id) {
+  return db_select('tmgmt_job_item', 'tji')
+    ->fields('tji', array('tjiid'))
+    ->condition('tji.tjid', $job_id)
+    ->execute()
+    ->fetchCol();
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function cwt_translation_views_default_views_alter(&$views) {
+  // Change the default tmgmt job overview to improve usability.
+  if (isset($views['tmgmt_ui_job_overview'])) {
+    $handler =& $views['tmgmt_ui_job_overview']->display['default']->handler;
+    // Extend pager options to display 50 items per page
+    // and add posiibility to change this value.
+    $handler->display->display_options['pager']['type'] = 'full';
+    $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+    $handler->display->display_options['pager']['options']['offset'] = '0';
+    $handler->display->display_options['pager']['options']['id'] = '0';
+    $handler->display->display_options['pager']['options']['quantity'] = '9';
+    $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+    $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '20, 50, 100, 250';
+  }
+}

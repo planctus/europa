@@ -1,0 +1,220 @@
+<?php
+/**
+ * @file
+ * Main functions and hook implementations for the CWT Feedback module.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function cwt_feedback_block_info() {
+  $blocks = array();
+  $blocks['cwt_feedback']['info'] = t('Feedback');
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cwt_feedback_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'cwt_feedback':
+      $block['content'] = cwt_feedback_form_theme(drupal_get_form('cwt_feedback_form'));
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_form().
+ */
+function cwt_feedback_form($form_state) {
+  global $language;
+  global $base_root;
+
+  $form['#token'] = FALSE;
+  $form['accordion']['problem_group']['what_were_you_doing'] = array(
+    '#type' => 'textarea',
+    '#title' => t("What were you doing?"),
+    '#default_value' => '',
+    '#resizable' => FALSE,
+  );
+
+  $form['accordion']['problem_group']['what_didnt_work'] = array(
+    '#type' => 'textfield',
+    '#title' => t("What didn't work?"),
+    '#default_value' => '',
+  );
+
+  $form['accordion']['suggestion_group']['suggestion'] = array(
+    '#type' => 'textarea',
+    '#default_value' => '',
+    '#resizable' => FALSE,
+  );
+
+  $form['accordion']['compliment_group']['compliment'] = array(
+    '#type' => 'textfield',
+    '#default_value' => '',
+  );
+
+  if (!empty($_POST) && form_get_errors()) {
+    drupal_set_message(t('The settings have not been saved because of the errors.'), 'error');
+  }
+
+  $form['meta']['feedback_type'] = array(
+    '#type' => 'hidden',
+    '#default_value' => 'feedback',
+  );
+  $form['meta']['url'] = array(
+    '#type' => 'hidden',
+    '#default_value' => $base_root . request_uri(),
+  );
+  $form['meta']['language'] = array(
+    '#type' => 'hidden',
+    '#default_value' => $language->language,
+  );
+
+  $form['actions'] = array('#type' => 'actions', '#attributes' => array());
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send'),
+    '#attributes' => array('class' => array('btn-primary')),
+    '#ajax' => array(
+      'callback' => '_cwt_feedback_send_webtools',
+      'wrapper' => 'cwt-feedback-form',
+      'method' => 'replace',
+      'effect' => 'slide',
+    ),
+  );
+  return $form;
+}
+
+/**
+ * Theme Feedback form.
+ */
+function cwt_feedback_form_theme($form) {
+  $variables['element'] = $form;
+  $accordion['problem']['header'] = t('Problem');
+  $accordion['problem']['content'] = drupal_render($form['accordion']['problem_group']);
+  $accordion['suggestion']['header'] = t('Suggestion');
+  $accordion['suggestion']['content'] = drupal_render($form['accordion']['suggestion_group']);
+  $accordion['compliment']['header'] = t('Compliment');
+  $accordion['compliment']['content'] = drupal_render($form['accordion']['compliment_group']);
+
+  $static['feedback-trigger'] = array(
+    '#markup' => '<a href="#feedback-form-content" id="feedback-trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
+  );
+  $static['feedback-text'] = array(
+    '#markup' => '<div id="feedback-text">' . t('I have a') . '</div>',
+    '#prefix' => '<div id="feedback-form-content" class="collapse"><div class="feedback-form-content-inner">',
+  );
+  $actions = drupal_render($form['actions']);
+  $static['feedback-accordion'] = array(
+    '#id' => 'feedback-accordion',
+    '#elements' => $accordion,
+    '#theme' => 'bootstrap_accordion',
+    '#suffix' => $actions . '</div></div>',
+  );
+  $output = drupal_render($static);
+  $output .= drupal_render($form['meta']);
+  $output .= drupal_render($form['form_build_id']);
+  $output .= drupal_render($form['form_id']);
+  $output .= drupal_render($form['form_token']);
+  $variables['element']['#children'] = $output;
+  return theme_form($variables);
+}
+
+/**
+ * Validates feedback.
+ */
+function cwt_feedback_form_validate($form, &$form_state) {
+  $error = FALSE;
+  switch ($form_state['values']['feedback_type']) {
+    case 'problem':
+      if ($form_state['values']['what_were_you_doing'] == '') {
+        form_set_error('what_were_you_doing', ' ');
+        $form_state['complete form']['accordion']['problem_group']['what_were_you_doing']['#description'] = t('Please fill in this field');
+        $error = TRUE;
+      }
+      if ($form_state['values']['what_didnt_work'] == '') {
+        form_set_error('what_didnt_work', ' ');
+        $form_state['complete form']['accordion']['problem_group']['what_didnt_work']['#description'] = t('Please fill in this field');
+        $error = TRUE;
+      }
+      break;
+
+    case 'suggestion':
+      if ($form_state['values']['suggestion'] == '') {
+        form_set_error('suggestion', ' ');
+        $form_state['complete form']['accordion']['suggestion_group']['suggestion']['#description'] = t('Please fill in this field');
+        $error = TRUE;
+      }
+      break;
+
+    case 'compliment':
+      if ($form_state['values']['compliment'] == '') {
+        form_set_error('compliment', ' ');
+        $form_state['complete form']['accordion']['compliment_group']['compliment']['#description'] = t('Please fill in this fieldf');
+        $error = TRUE;
+      }
+      break;
+  }
+
+  if ($error) {
+    drupal_get_messages('error');
+    drupal_set_message(t('There are errors in the form.'), 'error', FALSE);
+  }
+}
+
+/**
+ * Send feedback form values to Webtools database.
+ */
+function _cwt_feedback_send_webtools($form, &$form_state) {
+  global $language;
+  if (form_get_errors()) {
+    $form['rebuild'] = TRUE;
+    return cwt_feedback_form_theme($form);
+  }
+  $url = 'http://webtools.ec.europa.eu/form-tools/process.php';
+  $values = array();
+  $data = array(
+    'form_tools_form_id' => '1040',
+    'submit' => 'Send',
+    'language' => $form_state['values']['language'],
+    'url' => $form_state['values']['url'],
+  );
+  $fields_to_send = array(
+    'problem' => array('what_were_you_doing', 'what_didnt_work'),
+    'suggestion' => array('suggestion'),
+    'compliment' => array('compliment'),
+  );
+  if ($form_state['values']['feedback_type'] !== 'feedback' && in_array($form_state['values']['feedback_type'], array_keys($fields_to_send))) {
+    foreach ($fields_to_send[$form_state['values']['feedback_type']] as $fieldname) {
+      if (isset($form_state['values'][$fieldname])) {
+        $values[$fieldname] = $form_state['values'][$fieldname];
+      }
+    }
+  }
+  $data['feedback_type'] = $form_state['values']['feedback_type'];
+  $data = array_merge($values, $data);
+  $options = array(
+    'method' => 'POST',
+    'data' => http_build_query($data),
+    'timeout' => 5,
+  );
+  if (!empty($values)) {
+    $result = drupal_http_request($url, $options);
+    if ($result && $result->code == '200' && $result->status_message == 'OK') {
+      $feedback_message = '<div id="feedback-message" class="messages status">' .
+                            t('Thank you, your feedback was successfully sent') .
+                          '</div>';
+    }
+    else {
+      $feedback_message = '<div id="feedback-message" class="messages warning">' .
+                            t('Your feedback could not be sent. Please try again later') .
+                          '</div>';
+    }
+  }
+  return array('#markup' => $feedback_message);
+}

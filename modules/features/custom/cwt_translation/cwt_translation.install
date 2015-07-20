@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * cwt_translation.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function cwt_translation_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function cwt_translation_uninstall() {
+
+}

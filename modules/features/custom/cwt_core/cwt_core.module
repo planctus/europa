@@ -1,0 +1,1039 @@
+<?php
+/**
+ * @file
+ * Code for the CWT Core feature.
+ */
+
+include_once 'cwt_core.features.inc';
+
+/**
+ * Implements hook_boot().
+ */
+function cwt_core_boot() {
+  global $conf;
+
+  // Turning off jQuery Multi, libraries load on default.
+  $conf['jqmulti_libraries'] = array(
+    'bootstrap' => 0,
+    'tcpdf' => 0,
+    'colorbox' => 0,
+    'jstree' => 0,
+  );
+
+  // Turning off jQuery Multi, jQuery file load even without libraries selected.
+  $conf['jqmulti_load_always'] = 0;
+
+  // Turning off jQuery Multi, always load jQuery files.
+  $conf['jqmulti_load_files_always'] = 0;
+}
+
+/**
+ * Implements hook_init().
+ */
+function cwt_core_init() {
+  // Protect against clickjacking attacks.
+  drupal_add_http_header('X-Frame-Options', 'SAMEORIGIN');
+
+  // Check if the user has logged out. Prompt to log out of ECAS if desired.
+  // @see cwt_core_user_logout()
+  if (!empty($_COOKIE['Drupal_visitor_cwt_logout'])) {
+    $link = l(t('Also log out of ECAS.'), 'https://webgate.ec.europa.eu/cas/logout');
+    $args = array('!link' => $link);
+    drupal_set_message(t('You have been logged out of the website. !link', $args));
+    user_cookie_delete('cwt.logout');
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * All new nodes should default to English.
+ * @see https://webgate.ec.europa.eu/CITnet/jira/browse/CWT-267
+ */
+function cwt_core_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Check if:
+  // - We are creating a new node.
+  // - Translation is enabled for the node.
+  // - English is available as a translation option.
+  if (empty($form['#node']->nid) && i18n_node_type_enabled($form['#node']) && !empty($form['language']['#options']['en'])) {
+    // We might be creating a new node that is a translation of an existing
+    // node using the i18n_node module. In that case we should not default to
+    // English but to the language that is defined in the context.
+    // @see i18n_node_i18n_context_language().
+    if (module_exists('i18n_node') && !empty($_GET['translation']) && !empty($_GET['target']) && $language_context = i18n_language_context()) {
+      $langcode = $language_context->language;
+    }
+    // Default to English.
+    else {
+      $langcode = 'en';
+    }
+    $form['language']['#default_value'] = $langcode;
+    // Hide the field, so the user cannot change the language.
+    $form['language']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function cwt_core_views_post_render(&$view, &$output, &$cache) {
+  // Override title of News page with no filter.
+  if ($view->name == 'biography_news' && $view->current_display == 'list' && empty($view->args)) {
+    $view->build_info['title'] = $view->display[$view->current_display]->display_options['arguments']['field_editorial_section_multiple_tid']['exception']['title'];
+  }
+}
+
+/**
+ * Implements hook_block_info_alter().
+ */
+function cwt_core_block_info_alter(&$blocks, $theme, $code_blocks) {
+  // Hide Service tools title.
+  if (isset($blocks['menu']['menu-service-tools'])) {
+    $blocks['menu']['menu-service-tools']['title'] = '<none>';
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function cwt_core_block_info() {
+  $blocks = array();
+  $blocks['college_members']['info'] = t('College members');
+  $blocks['translation_selector']['info'] = t('Translation selector');
+  $blocks['page_contents']['info'] = t('Page Contents');
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cwt_core_block_view($delta = '') {
+  $block = array();
+  $function = '_cwt_core_block_' . $delta . '_view';
+  if (function_exists($function)) {
+    $block = $function();
+  }
+  return $block;
+}
+
+/**
+ * Page Contents block content.
+ */
+function _cwt_core_block_page_contents_view() {
+  $block = array();
+  $items = array();
+  $node = menu_get_object('node');
+  $reaction = context_get_plugin('reaction', 'block');
+  if ($node && ($context_blocks = $reaction->block_list('content'))) {
+    foreach ($context_blocks as $key => $current_block) {
+      if ($key == 'system_main') {
+        $content_node = $current_block->content['nodes'][$node->nid];
+        $title = isset($content_node['body']['#title']) ? $content_node['body']['#title'] : FALSE;
+      }
+      else {
+        $title = isset($current_block->subject) && $current_block->subject ? $current_block->subject : FALSE;
+      }
+      if ($title) {
+        $fragment = str_replace('_', '-', ('block-' . $current_block->module . '-' . $current_block->delta));
+        $items[$key] = '<a href="#' . $fragment . '">' . $title . '</a>';
+      }
+    }
+  }
+
+  if (!empty($items)) {
+    $block['subject'] = t('Page Contents');
+    $variables = array(
+      'items' => $items,
+      'attributes' => array(
+        'class' => 'nav nav-stacked',
+      ),
+    );
+    $block['content'] = theme('item_list', $variables);
+  }
+
+  return $block;
+}
+
+/**
+ * Translation selector block content.
+ */
+function _cwt_core_block_translation_selector_view() {
+  $block = array();
+  $selector = _cwt_core_translation_selector();
+  if ($selector) {
+    $block['subject'] = t('Choose your language');
+    $block['content'] = render($selector);
+  }
+  return $block;
+}
+
+/**
+ * College members block content.
+ */
+function _cwt_core_block_college_members_view() {
+  $block = array();
+  // Get the customized title from the term.
+  $team_node = menu_get_object();
+  if (isset($team_node->field_team_subtype) && !empty($team_node->field_team_subtype)) {
+    $type_field = field_get_items('node', $team_node, 'field_team_subtype');
+    $type = field_view_value('node', $team_node, 'field_team_subtype', $type_field[0]);
+
+    $block_title_field = field_get_items('taxonomy_term', $type['#options']['entity'], 'field_members_block_title');
+    if ($block_title_field) {
+      $block_title = field_view_value('taxonomy_term', $type['#options']['entity'], 'field_members_block_title', $block_title_field[0]);
+      $block['subject'] = $block_title['#markup'];
+    }
+  }
+  $block['content']['president_title']['#markup'] = "<h3>" . t('President') . "</h3>";
+  $block['content']['president']['#markup'] = views_embed_view('team_members', 'block_1');
+  if ($qt = quicktabs_build_quicktabs('team_members')) {
+    $block['content']['tabs_title']['#markup'] = "<h3>" . check_plain($qt['#title']) . "</h3>";
+    $block['content']['tabs'] = $qt['content'];
+    $block['content']['tabs']['#contextual_links']['quicktabs'] = array('admin/structure/quicktabs/manage', array('college_members'));
+    $block['content']['attachments']['#markup'] = views_embed_view('team_attachments', 'block');
+  }
+  return $block;
+}
+
+/**
+ * Returns a list of links to the translations of the node.
+ *
+ * @param object $node
+ *   defaults to NULL
+ *
+ * @return array|bool
+ *   Render array of the list or FALSE
+ */
+function _cwt_core_translation_selector($node = NULL) {
+  if (!$node) {
+    $node = menu_get_object();
+  }
+  $languages = language_list('enabled');
+  $languages = $languages[1];
+
+  // If the site has no translations or is not multilingual we have no content
+  // translation links to display.
+  if (isset($node->tnid) && drupal_multilingual() && $translations = translation_node_get_translations($node->tnid)) {
+    // There might be a language provider enabled defining custom language
+    // switch links which need to be taken into account while generating the
+    // content translation links. As custom language switch links are available
+    // only for configurable language types and interface language is the only
+    // configurable language type in core, we use it as default. Contributed
+    // modules can change this behavior by setting the system variable below.
+    $type = variable_get('translation_language_type', LANGUAGE_TYPE_INTERFACE);
+    $custom_links = language_negotiation_get_switch_links($type, "node/$node->nid");
+    $links = array();
+
+    // Exclude partial translations.
+    // @see https://webgate.ec.europa.eu/CITnet/jira/browse/CWT-215
+    $excluded_translations = _cwt_core_get_partial_translations($node);
+    foreach ($translations as $langcode => $translation) {
+      // Skip excluded translations.
+      if (in_array($translation->nid, $excluded_translations)) {
+        continue;
+      }
+
+      // Do not show links to the same node, to unpublished translations or to
+      // translations in disabled languages.
+      if ($translation->status && isset($languages[$langcode])) {
+        $language = $languages[$langcode];
+        $key = "translation_$langcode";
+
+        if (isset($custom_links->links[$langcode])) {
+          $links[$key] = $custom_links->links[$langcode];
+        }
+        else {
+          $language_label = $language->native;
+          $links[$key] = array(
+            'href' => "node/{$translation->nid}",
+            'title' => $language_label . ' (' . cwt_core_display_langcode($langcode) . ')',
+            'language' => $language,
+          );
+        }
+
+        // Custom switch links are more generic than content translation links,
+        // hence we override existing attributes with the ones below.
+        $links[$key] += array('html' => TRUE , 'attributes' => array());
+        $attributes = array(
+          'title' => $translation->title,
+          'class' => array('translation-link'),
+        );
+        $links[$key]['attributes'] = $attributes + $links[$key]['attributes'];
+      }
+    }
+  }
+  else {
+    global $language;
+    if ($node) {
+      $language = isset($languages[$node->language]) ? $languages[$node->language] : $language;
+      $href = "node/{$node->nid}";
+    }
+    else {
+      $href = _cwt_core_get_normalized_path();
+    }
+    $language_label = $language->native;
+    $links['translation_' . $language->language] = array(
+      'href' => $href,
+      'title' => $language_label . ' (' . cwt_core_display_langcode($language->language) . ')',
+      'language' => $language,
+      'query' => drupal_get_query_parameters(),
+    );
+  }
+
+  if (!empty($links)) {
+    // Order the languages by the weight that has been set in the interface.
+    // By default Drupal puts the default language at the top, but we want an
+    // alphabetical list.
+    // Due to each language being written in its native locale it is not
+    // possible to use regular sorting for this. There are no locales that can
+    // handle alphabetical ordering across roman, cyrillic and greek alphabets.
+    usort($links, function ($a, $b) {
+      return $a['language']->weight > $b['language']->weight;
+    });
+
+    $selector_content['translation_language_switcher'] = array(
+      '#theme' => 'links__node__translation',
+      '#links' => $links,
+      '#attributes' => array('class' => array('translation-list')),
+    );
+    return $selector_content;
+  }
+  return FALSE;
+}
+
+/**
+ * Fixes exceptions for cases where Drupal langcode does not match IPG.
+ *
+ * @return string
+ *   Language code
+ */
+function cwt_core_display_langcode($langcode) {
+  switch ($langcode) {
+    // Portuguese - Portugal.
+    case 'pt-pt':
+      $langcode = 'pt';
+      break;
+  }
+
+  return $langcode;
+}
+
+/**
+ * Gets all partial translations of a node.
+ *
+ * Based on the value of the boolean field_partial_translation.
+ *
+ * Not all Biographies are currently translated in all languages. The 'College
+ * Members' view however is shown in all languages. This is sourcing data from
+ * the 'Taglines' field in the Biographies. The translation team suggested to
+ * create translations in each language anyway so they could add the necessary
+ * translations, and have a checkbox available to indicate whether or not a
+ * Biography is fully translated. This will allow them to easily translate
+ * taglines now, and update the translations in the future.
+ *
+ * Users that land on a Biography node that is not fully translated will be
+ * redirected to the English version using the 'redirect_partial_translations'
+ * rule.
+ *
+ * @return array
+ *   array of partial translation nids.
+ */
+function _cwt_core_get_partial_translations($node) {
+  // At the moment only biographies are affected.
+  if ($node->type == 'biography') {
+    // Load all translations that are marked partial.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'biography')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->propertyCondition('tnid', $node->tnid)
+      ->fieldCondition('field_partial_translation', 'value', '1', '=');
+    $result = $query->execute();
+    if (isset($result['node'])) {
+      return array_keys($result['node']);
+    }
+  }
+  return array();
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function cwt_core_views_pre_render(&$view) {
+  // Get related cached biography nid. @see cwt_core_url_inbound_alter().
+  $original_path_cached = &drupal_static('cwt_core_orignal_path');
+  $path = isset($original_path_cached['nid']) ? drupal_get_path_alias('node/' . $original_path_cached['nid']) : $original_path_cached['original_path'];
+
+  // Override paths in listing views blocks.
+  $lists = array(
+    'blog_commisioner_bio' => 'blog',
+    'biography_news' => 'announcements',
+    'activities' => 'agenda',
+  );
+  if (in_array($view->name, array_keys($lists)) && $view->current_display == 'block') {
+    if (!empty($view->result)) {
+      $query = array();
+      // Alter path for agenda block so it points to the global Agenda page.
+      if ($view->name == 'activities') {
+        // Agenda global list follow the pattern "[Team_node_path]/blog".
+        $biography = menu_get_object();
+        $wrapper = entity_metadata_wrapper('node', $biography);
+        $team = $wrapper->field_team_membership->raw();
+        $query['field_editorial_section_multiple_tid'] = $wrapper->field_editorial_section->raw();
+        $path = drupal_get_path_alias('node/' . $team) . '/' . $lists[$view->name];
+      }
+      else {
+        // Blog lists follow the pattern "[node_path]/blog".
+        $path .= '/' . $lists[$view->name];
+      }
+
+      $link_text = $view->footer['area']->options['content'];
+      $view->footer['area']->options['content'] = '<div class="more-link">' . l($link_text, $path, array('query' => $query)) . '</div>';
+    }
+  }
+
+  // Override RSS paths in listing views pages.
+  $lists = array(
+    'blog_commisioner' => 'blog/feed',
+    'biography_news' => 'announcements/feed',
+  );
+
+  if (in_array($view->name, array_keys($lists)) && $view->current_display == 'list') {
+    $default_language = language_default();
+    $path = url($path . '/' . $lists[$view->name], array('absolute' => TRUE, 'language' => $default_language));
+    if (!empty($view->result)) {
+      // Blog RSS follow the pattern "[node_path]/blog/feed".
+      $view->header['area']->options['content'] = str_replace('[feed_link]', $path, $view->header['area']->options['content']);
+    }
+  }
+}
+
+/**
+ * Implements hook_url_inbound_alter().
+ *
+ * Some Views list pages use filters by editorial section
+ * i.e.: "blog/[nid]" However it is required
+ * that we have the following path structure "[node_path]/blog"
+ * so we alter the inbound path.
+ */
+function cwt_core_url_inbound_alter(&$path, $original_path, $path_language) {
+  $segments = '\/blog\b|\/agenda\b|\/announcements\b';
+  $pattern = '/(.*?)(' . $segments . ')((?:\/|.)*)/i';
+  // Store the first original path.
+  $original_path_cached = &drupal_static('cwt_core_orignal_path');
+  if (!isset($original_path_cached['original_path'])) {
+    $original_path_cached['original_path'] = $original_path;
+  }
+  if (preg_match($pattern, $path, $matches) && preg_match('/^(?!(admin\/|node\/).*)/', $path)) {
+    // Try to resolve it to normal path.
+    $internal = drupal_get_normal_path($matches[1]);
+    if ($internal !== $matches[1] && preg_match('/^node\/([0-9].*)/', $internal, $nid)) {
+      // If it is a node alter the path to blog/[nid].
+      $path = $matches[2] . '/' . $nid[1] . $matches[3];
+      $original_path_cached['nid'] = $nid[1];
+      $original_path_cached['view'] = $matches[2];
+    }
+    else {
+      $path = $matches[2] . '/' . $matches[1] . $matches[3];
+    }
+    $path = trim($path, '/');
+  }
+}
+
+/**
+ * Implements hook_block_view_MODULE_DELTA_alter().
+ */
+function cwt_core_block_view_easy_breadcrumb_easy_breadcrumb_alter(&$data, $block) {
+  $data['content'] = _cwt_core_easy_breadcrumb_block(_cwt_core_get_normalized_path());
+}
+
+/**
+ * Get normalized path.
+ */
+function _cwt_core_get_normalized_path() {
+  $original_path_cached = &drupal_static('cwt_core_orignal_path');
+  $current_path = current_path();
+  $path = drupal_get_path_alias($current_path);
+  if (preg_match('/comment\/reply\/([0-9].*)/', $path, $matches)) {
+    $path = drupal_get_path_alias('node/' . $matches[1]) . '/reply';
+  }
+  // If current resolves to an alias use that, otherwise use cached original.
+  return $current_path == $path ? $original_path_cached['original_path'] : $path;
+}
+
+/**
+ * Modified version of the easy_breadcrumb block to handle custom URLs.
+ *
+ * @return Assoc
+ *   resulting renderizable array.
+ */
+function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
+  // Array storing the breadcrumb's segments.
+  $breadcrumb = array();
+
+  // Load the initial segments stored in a menu.
+  $breadcrumb_menu = menu_navigation_links('menu-breadcrumb-menu');
+
+  // Default classes for the segments.
+  $segments_class = 'breadcrumb-segment';
+  foreach ($breadcrumb_menu as $key => $segment) {
+    $breadcrumb[] = _easy_breadcrumb_build_item($segment['title'], array($segments_class), $segment['href'], $segment['href']);
+  }
+
+  // Gets the flag saying if the front page segment should be included.
+  $include_front_page_segment = variable_get(EasyBreadcrumbConstants::DB_VAR_INCLUDE_HOME_SEGMENT, TRUE);
+
+  // Conditionally include the front page segment in the breadcrumb.
+  if ($include_front_page_segment) {
+    $front_text = _easy_breadcrumb_obtain_home_title();
+    // Marks the front--segment with an identifier class (useful for CSS).
+    $segments_classes = array($segments_class, 'breadcrumb-segment-front');
+    // Adds a segment for the front page.
+    $breadcrumb[] = _easy_breadcrumb_build_item($front_text, $segments_classes, '');
+  }
+
+  // There won't be more segments if visiting the front page.
+  if (!drupal_is_front_page()) {
+
+    // Flag for including invalid paths as plain-text segments.
+    $include_invalid_paths = variable_get(EasyBreadcrumbConstants::DB_VAR_INCLUDE_INVALID_PATHS, TRUE);
+    // Obtains the alias of the current path.
+    $alias = !$original_path ? drupal_get_path_alias() : $original_path;
+
+    // Get the segments of the current path.
+    $alias_arr = explode('/', $alias);
+    // Get the quantity of segments in the current path.
+    $segments_quantity = count($alias_arr);
+    $segment_url_arr = array();
+
+    // Iterates over the segments of the current URL ("blog/article/helloworld")
+    // excepting the last segment (the title, 'hello-world' in that case).
+    for ($idx_0 = 0, $idx_1 = 1; $idx_1 < $segments_quantity; ++$idx_0, ++$idx_1) {
+
+      // Build an array containing the URL of the segment being currently
+      // processed. E.g., having $alias as "blog/article/hello-world", at the
+      // first iteration this array will be array('blog'), the second
+      // (and last in that case) the array will be array('blog','article').
+      $segment_url_arr[] = $alias_arr[$idx_0];
+      // String with the potential-path of the segment being processed (e.g. 'blog/article').
+      $segment_url = implode('/', $segment_url_arr);
+
+      // Jump to the next segment if this url is configured to be excluded.
+      $excluded_path = _easy_breadcrumb_check_excluded_path($segment_url);
+      if ($excluded_path) {
+        continue;
+      }
+      $segments_classes = array($segments_class);
+
+      // Obtain the internal path it represents.
+      $segment_normal_path = drupal_get_normal_path($segment_url);
+      // Check if this is a valid path.
+      $segment_valid_path = drupal_valid_path($segment_normal_path);
+      // Get the segment's raw text from the URL.
+      $segment_text = $alias_arr[$idx_0];
+      // Normalized segment's text (e.g. 'Blog');
+      $segment_title = _easy_breadcrumb_obtain_segment_title($segment_normal_path,
+        $segment_valid_path, $segment_text);
+
+      if ($segment_valid_path || $include_invalid_paths) {
+        $breadcrumb[] = _easy_breadcrumb_build_item($segment_title, $segments_classes, $segment_url, $segment_valid_path);
+      }
+    }
+
+    // Gets the flag saying if the title should be appended to the breadcrumb.
+    $include_page_title_segment = variable_get(EasyBreadcrumbConstants::DB_VAR_INCLUDE_TITLE_SEGMENT, TRUE);
+
+    // Adds the page's title to the breadcrumb.
+    if ($include_page_title_segment) {
+      // Marks the page's-title-segment with an identifier class (useful for CSS).
+      $segments_classes = array(
+        $segments_class,
+        'breadcrumb-segment-title',
+        'active',
+      );
+      // The title is the last segment in the URL.
+      $segment_text = $alias_arr[$segments_quantity - 1];
+      $segment_title = _easy_breadcrumb_obtain_page_title($segment_text);
+      $title_segment_as_link = variable_get(EasyBreadcrumbConstants::DB_VAR_TITLE_SEGMENT_AS_LINK, FALSE);
+      // If the page's title will be a link or just a text.
+      $breadcrumb[] = _easy_breadcrumb_build_item($segment_title, $segments_classes, $alias, $title_segment_as_link);
+    }
+  }
+
+  // Gets the configured segments separator.
+  $separator = variable_get(EasyBreadcrumbConstants::DB_VAR_SEGMENTS_SEPARATOR, '>>');
+  $separator = check_plain($separator);
+
+  $segments_quantity = count($breadcrumb);
+  $build = array();
+  $build['easy_breadcrumb'] = array(
+    '#theme' => 'easy_breadcrumb',
+    '#breadcrumb' => $breadcrumb,
+    '#segments_quantity' => $segments_quantity,
+    '#separator' => $separator,
+  );
+
+  return $build;
+}
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
+  // Check if we're generating the alias for a node.
+  if ($context['module'] == 'node' && !empty($context['data']['node'])) {
+    $node = $context['data']['node'];
+    /** @var EntityDrupalWrapper $wrapper */
+    $wrapper = entity_metadata_wrapper('node', $node);
+
+    switch ($node->type) {
+      // Custom URL pattern for Cabinet members.
+      case 'biography':
+        $role_tid = $wrapper->field_biography_role->raw();
+        $role = taxonomy_term_load($role_tid);
+        $team = $wrapper->field_team_membership->raw();
+        if ($team) {
+          $team_node = node_load($team);
+          $team_path = 'node/' . $team;
+          $team_alias = drupal_get_path_alias($team_path, $team_node->language);
+          // Check if cabinet member.
+          if (_commissioner_uuid_is('cabinet_member', $role->uuid)) {
+            if ($team_path !== $team_alias && $last_name = $wrapper->field_biography_last_name->raw()) {
+              $alias = $team_alias . '/' . pathauto_cleanstring($last_name);
+            }
+          }
+          // Check if president.
+          if ($team && _commissioner_uuid_is('president', $role->uuid)) {
+            $alias = $team_alias . '/president';
+          }
+        }
+        break;
+
+      // Custom URL pattern for Cabinet and College.
+      case 'team':
+        $type_tid = $wrapper->field_team_subtype->raw();
+        $type = taxonomy_term_load($type_tid);
+
+        // Check if cabinet.
+        if ($type && _commissioner_uuid_is('cabinet', $type->uuid)) {
+          // Fetch owner Biography.
+          $bio_query = new EntityFieldQuery();
+          $bio_query
+            ->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'biography')
+            ->fieldCondition('field_biography_team', 'target_id', $node->nid)
+            ->range(0, 1);
+          $result = $bio_query->execute();
+          if (!empty($result)) {
+            $bio_node = node_load(key($result['node']));
+            $bio_path = 'node/' . $bio_node->nid;
+            // Get alias in node's language.
+            $bio_path_alias = drupal_get_path_alias($bio_path, $bio_node->language);
+            if ($bio_path !== $bio_path_alias) {
+              $alias = $bio_path_alias . '/team';
+              // @TODO: make this more robust.
+            }
+          }
+        }
+        else {
+          $term_tid = $wrapper->field_team_term->raw();
+          $term = taxonomy_term_load($term_tid);
+          if ($term) {
+            $alias = pathauto_cleanstring($term->name);
+          }
+        }
+        break;
+
+      // Define pathauto pattern for Aggregated News (aka Announcements):
+      // - News items linked to a single editorial section:
+      //   {team term}/{editorial section}/announcements/{node title}
+      // - @todo: News items linked to multiple editorial sections:
+      //   {team term}/announcements/{node title}
+      case 'aggregated_news':
+        // Check if the news item is linked to an editorial section.
+        /** @var EntityDrupalWrapper $editorial_sections */
+        $editorial_section = $wrapper->field_editorial_section_multiple->value();
+        if (!empty($editorial_section)) {
+          // In the current architecture it is not straightforward to derive the
+          // first part of the URL alias: {team term}. We only have the
+          // editorial section to work with, but this is a taxonomy term that
+          // can be linked to multiple items. We resort to a little trick: all
+          // editorial sections have exactly one commissioner biography linked
+          // to them. These biographies have a manually entered URL alias that
+          // conforms exactly to the format we need. Unfortunately this will
+          // only work for commissioners (not for other roles like cabinet
+          // members) and it relies on the fact that the URL alias has been
+          // entered correctly. Currently this is the case for all biographies
+          // and it is not expected that this will change much in the coming 5
+          // years.
+          // This has been derived from similar logic used to generate URL
+          // aliases for blog posts.
+          // @see cwt_biography_get_commissioner_biography_by_editorial_section()
+          // @see cwt_blogs_pathauto_alias_alter()
+          // @todo: Add a URL alias field to the team term entity so we can use
+          // real data instead of relying on tricks.
+
+          // If the field has multiple values force use first editorial section.
+          // Field is already however it is not used as such.
+          // Fix for NEXTEUROPA-2309.
+          $editorial_section = $editorial_section[0];
+
+          if ($biography = cwt_biography_get_commissioner_biography_by_editorial_section($editorial_section)) {
+            $path_components = array(
+              drupal_get_path_alias('node/' . $biography->nid),
+              'announcements',
+              pathauto_cleanstring($node->title),
+            );
+            $alias = implode('/', $path_components);
+          }
+        }
+        break;
+
+      // Define pathauto pattern for Custom Pages
+      // {team term}/{editorial section}/{node title}
+      case 'custom_page':
+        // Check if the news item is linked to an editorial section.
+        /** @var EntityDrupalWrapper $editorial_sections */
+        $editorial_section = $wrapper->field_editorial_section->value();
+        if (!empty($editorial_section)) {
+
+          if ($biography = cwt_biography_get_commissioner_biography_by_editorial_section($editorial_section)) {
+            $path_components = array(
+              drupal_get_path_alias('node/' . $biography->nid),
+              pathauto_cleanstring($node->title),
+            );
+            $alias = implode('/', $path_components);
+          }
+        }
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function cwt_core_entity_update($entity, $type) {
+  // When saving a biography, regenerate alias for referenced team.
+  if ($type == 'node' && $entity->type == 'biography') {
+    $wrapper = entity_metadata_wrapper('node', $entity);
+    $team_nid = $wrapper->field_biography_team->raw();
+    if ($team_nid && $team = entity_load('node', array($team_nid))) {
+      module_load_include('inc', 'pathauto', 'pathauto');
+      $team = array_shift($team);
+      $uri = entity_uri('node', $team);
+      $existing_alias = _pathauto_existing_alias_data($uri['path'], $team->language);
+      $langcode = pathauto_entity_language('node', $team);
+      $pathauto_alias = pathauto_create_alias('node', 'return', $uri['path'], array('node' => $team), 'team', $langcode);
+      if ($existing_alias['alias'] !== $pathauto_alias) {
+        _pathauto_set_alias(array(
+            'source' => $uri['path'],
+            'alias' => $pathauto_alias,
+            'language' => $langcode),
+          $existing_alias);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to group frequently used UUID conditions.
+ */
+function _commissioner_uuid_is($condition, $uuid) {
+  switch ($condition) {
+    case 'president':
+      // President.
+      return in_array($uuid, array('fea4c060-eb2d-4686-9ccc-64997aad4930'));
+
+    case 'college_member':
+      // President, Vice-president, Commissioner, First vice-pres, High-rep.
+      return in_array($uuid, array(
+        'fea4c060-eb2d-4686-9ccc-64997aad4930',
+        'f7f7834a-3d60-4525-804b-439fd2d9f97a',
+        'ffbcfcf3-2f50-4c70-a11c-936cc4385cde',
+        'cbfbd9f8-72ae-4635-aa77-888075de774b',
+        'e0028e61-1cfa-4f6e-a036-4665b12ce86a',
+        'd6304632-edda-4f20-871a-0e49513adfa5',
+        ));
+
+    case 'cabinet_member':
+      // Head of cabinet, Deputy head, Member.
+      return in_array($uuid, array(
+        'd3badcb2-d188-4bbe-9400-07f7f8132ab0',
+        'fe9c708b-cf65-4c81-97f5-5f978fd58e0d',
+        'bca299f1-0b68-4ef4-9120-df9d610bb82f',
+        ));
+
+    case 'cabinet':
+      // Cabinet.
+      return in_array($uuid, array('6995fb8a-82db-4610-8b65-3cfc9f4cb580'));
+
+    default:
+      return FALSE;
+  }
+}
+
+/**
+ * Implements hook_context_plugins().
+ */
+function cwt_core_context_plugins() {
+  $plugins = array();
+  $plugins['context_condition_node_taxonomy_uuid'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'cwt_core') . '/plugins/context',
+      'file' => 'context_condition_node_taxonomy_uuid.inc',
+      'class' => 'context_condition_node_taxonomy_uuid',
+      'parent' => 'context_condition_node',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ */
+function cwt_core_context_registry() {
+  return array(
+    'conditions' => array(
+      'node_taxonomy_uuid' => array(
+        'title' => t('Taxonomy UUID'),
+        'plugin' => 'context_condition_node_taxonomy_uuid',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function cwt_core_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    if ($plugin = context_get_plugin('condition', 'node_taxonomy_uuid')) {
+      $plugin->execute($node, 'view');
+    }
+  }
+}
+
+/**
+ * Access callback for the node detail page.
+ */
+function cwt_core_node_access_callback($op, $node) {
+  // Deny access to the full view mode on nodes that are not intended to be
+  // viewed on their own. This is only restricted for anonymous users.
+  $blacklist = array(
+    'activities',
+    'biography_assistant',
+    'biography_timeline',
+    'highlight',
+    'news_importer',
+    'team_priority',
+  );
+  if ($op == 'view' && user_is_anonymous() && in_array($node->type, $blacklist)) {
+    return FALSE;
+  }
+
+  // Default to the regular node access callback.
+  return node_access($op, $node);
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function cwt_core_menu_alter(&$items) {
+  // Disable the '/node' page.
+  $items['node']['access callback'] = FALSE;
+
+  // Use our own access callback for the 'node/%node' page.
+  $items['node/%node']['access callback'] = 'cwt_core_node_access_callback';
+}
+
+/**
+ * Implements hook_user_logout().
+ *
+ * Show a message on logout, prompting the user to log out of ECAS if desired.
+ *
+ * @see cwt_core_init()
+ */
+function cwt_core_user_logout($account) {
+  if (module_exists('ecas')) {
+    module_load_include('inc', 'ecas', 'includes/ecas');
+    if (_is_ecas_user($account)) {
+      // We cannot show a message if the user is being logged out. Messages are
+      // bound to the session which is going to be removed soon. Let's set a
+      // cookie instead. We are setting a non-persistent cookie instead of using
+      // user_cookie_save() to comply with the EU cookie law.
+      // @see user_cookie_save()
+      setrawcookie('Drupal.visitor.cwt.logout', '1', 0, '/');
+    }
+  }
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function cwt_core_tokens($type, $tokens, $data = array(), $options = array()) {
+  $replacements = array();
+  if ($type == 'node' && !empty($data['node'])) {
+    $url_options = array('absolute' => TRUE);
+    $node = $data['node'];
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        // Simple key values on the node.
+        case 'language-url':
+          $url_options['language'] = i18n_language_load($node->language);
+          $replacements[$original] = url('node/' . $node->nid, $url_options);
+          break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function cwt_core_token_info() {
+  return array(
+    'tokens' => array(
+      'node' => array(
+        'language-url' => array(
+          'name' => t("The URL of the node in the node's language."),
+          'description' => t('The URL of the node in its language (and not the current language).'),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function cwt_core_form_locale_languages_overview_form_alter(&$form, &$form_state) {
+  // Increase the range of weights that can be assigned to languages in the
+  // languages overview form. By default the languages can only be sorted using
+  // the range -10 to +10 but since we have 24 languages this is not sufficient.
+  foreach (element_children($form['weight']) as $key) {
+    $form['weight'][$key]['#delta'] = 20;
+  }
+}
+
+/**
+ * Preprocess the RSS feed of Blogs and Activities.
+ */
+function cwt_core_preprocess_views_view_rss(&$vars) {
+  $view = &$vars['view'];
+  if ($view->name == 'blog_commisioner' || $view->name == 'biography_news') {
+    $options  = &$vars['options'];
+    $items    = &$vars['rows'];
+    // Replace token in title.
+    $editorial_section = trim($view->result[0]->field_editorial_section_taxonomy_term_data_title);
+    $vars['title'] = str_replace('[title_1]', $editorial_section, $vars['title']);
+    // Fetch original URL, @see cwt_core_url_inbound_alter().
+    $original_path_cached = &drupal_static('cwt_core_orignal_path');
+    $default_language = language_default();
+    $vars['link'] = url($original_path_cached['original_path'], array('absolute' => TRUE, 'language' => $default_language));
+    // Get tagline as description.
+    $tagline = !empty($view->result[0]->field_field_biography_tagline) ? ' - ' . $view->result[0]->field_field_biography_tagline[0]['rendered']['#markup'] : '';
+    $role = $view->result[0]->field_field_biography_role[0]['rendered']['#title'];
+    $vars['description'] = $role . $tagline;
+    if (!empty($view->result[0]->field_field_biography_portrait)) {
+      $image = $view->result[0]->field_field_biography_portrait[0]['rendered'];
+      $vars['channel_elements'] .= '<image><title>' . $vars['title'] . '</title><link>' . $vars['link'] . '</link><url>' . image_style_url($image["#image_style"], $image["#item"]['uri']) . '</url></image>';
+    }
+    $vars['namespaces'] .= ' xmlns:atom="http://www.w3.org/2005/Atom"';
+    $vars['channel_elements'] .= "\n\t" . '<atom:link href="' . $vars['link'] . '" rel="self" type="application/rss+xml" />';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cwt_core_theme($existing, $type, $theme, $path) {
+  return array(
+    'cwt_core_custom_title' => array(
+      'template' => 'cwt_core_custom_title',
+      'variables' => array('line_1' => NULL, 'line_2' => NULL, 'line_3' => NULL),
+      'render element' => 'elements',
+    ),
+  );
+}
+
+/**
+ * Implements template_preprocess_page().
+ */
+function cwt_core_preprocess_page(&$variables) {
+  $variables['page']['custom_title'] = _cwt_core_custom_page_title($variables);
+}
+
+/**
+ * Creates the custom page title for different types of pages.
+ */
+function _cwt_core_custom_page_title($page_variables) {
+  $variables = NULL;
+  // Content types.
+  if (isset($page_variables['node'])) {
+    switch ($page_variables['node']->type) {
+      case 'biography':
+        $view_settings = array(
+          'name' => 'biography_header',
+          'display' => 'header',
+          'arguments' => NULL,
+        );
+        break;
+
+      case 'team':
+        $contexts = context_active_contexts();
+        $type = in_array('college', array_keys($contexts)) ? 'college' : 'cabinet';
+        $view_settings = array(
+          'name' => 'team_header',
+          'display' => $type . '_header',
+          'arguments' => NULL,
+        );
+        break;
+
+      case 'commisioner_blog_post':
+        $view_settings = array(
+          'name' => 'blog_header',
+          'display' => 'header',
+          'arguments' => NULL,
+        );
+        break;
+
+      case 'aggregated_news':
+        $view_settings = array(
+          'name' => 'news_header',
+          'display' => 'header',
+          'arguments' => NULL,
+        );
+        break;
+    }
+  }
+  // List views.
+  elseif (in_array(arg(0), array('announcements', 'blog')) && arg(1)) {
+    $display = arg(0) . '_header';
+    $view_settings = array(
+      'name' => 'list_header',
+      'display' => $display,
+      'arguments' => arg(1),
+    );
+  }
+  // Agenda.
+  elseif (arg(0) == 'agenda') {
+    $variables['line_2'] = t('Agenda');
+    $variables['line_3'] = t('Appointments and meetings');
+  }
+
+  // Load custom title provided by view.
+  if (isset($view_settings)) {
+    $view = views_embed_view($view_settings['name'], $view_settings['display'], $view_settings['arguments']);
+
+    return $view;
+  }
+  // Build custom title form variables.
+  elseif (isset($variables)) {
+
+    return theme('cwt_core_custom_title', $variables);
+  }
+
+  return FALSE;
+}
