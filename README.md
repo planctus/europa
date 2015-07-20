@@ -21,7 +21,7 @@
 #### This will:
 
 *   Initialize the submodule <code>platform</code> that contains the MULTISITE platform. By default the submodule is using the develop branch of the platform-dev repository.
-*   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
+*   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository. All pushes to the <code>acquia.repo.project.branch</code> branch of this repository will deploy the code on the corresponding environment of our Acquia Cloud test server if it is configured properly on Acquia Cloud.
 
 ##### In case the platform needs to be updated:
 *   Maybe the platform is not in the *develop* branch, so do this `cd platform; git checkout develop`.
@@ -84,7 +84,7 @@ In order to do this you need to have read/write access to the Acquia Cloud repos
 #####From the submodule:
 
 *   Stages all changes
-*   Commits changes to master branch of the Acquia Cloud repository
+*   Commits changes to <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository
 *   Creates a tag with a name you input when prompted
 *   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
 
@@ -92,4 +92,4 @@ In order to do this you need to have read/write access to the Acquia Cloud repos
 
 I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized in every branch separately. (AFAIK not tested).
 
-After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the master branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
