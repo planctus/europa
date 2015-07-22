@@ -812,6 +812,16 @@ function cwt_core_node_view($node, $view_mode, $langcode) {
       $plugin->execute($node, 'view');
     }
   }
+
+  $alter_rss_creators = array('commisioner_blog_post');
+  if (isset($node->rss_elements) && in_array($node->type, $alter_rss_creators)) {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $editorial_section = $wrapper->field_editorial_section->value();
+    if ($editorial_section) {
+      // Overwrite dc:creator at [1].
+      $node->rss_elements[1]['value'] = $editorial_section->name;
+    }
+  }
 }
 
 /**
