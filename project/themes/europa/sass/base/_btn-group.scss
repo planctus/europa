@@ -10,6 +10,7 @@ Styleguide buttons.group
 
 .btn-group {
   margin-top: 1em;
+  @extend .hidden-print;
 
   .btn {
    margin-right: 0.4em;

@@ -13,6 +13,7 @@ Styleguide: siteheader.langselect
   position: absolute;
   top: 0;
   right: $grid-gutter-width / 2;
+  @extend .hidden-print;
 
   .lang-select-site__link {
     color: inherit;

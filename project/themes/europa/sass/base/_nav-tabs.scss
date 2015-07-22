@@ -13,6 +13,7 @@ ul.nav-tabs,
   padding: 0;
   margin-bottom: 2em !important;
   border-bottom: 2px solid $grey;
+  @extend .hidden-print;
 
   & > li {
     margin-bottom: -2px;
@@ -95,5 +96,17 @@ ul.nav-tabs,
 
   .tab-title {
     display: none;
+  }
+}
+
+// Display all content while printing on tabs.
+@media print {
+  .tab-content {
+    .tab-pane,
+    .tab-title {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important
+    }
   }
 }

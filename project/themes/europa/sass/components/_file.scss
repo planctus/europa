@@ -14,6 +14,7 @@ Styleguide file
   background: $grey-lighter;
   padding: 1.333em 1.333em 1.333em 1.333em;
   overflow: hidden;
+  @extend .hidden-print;
 }
 
 .file__icon {

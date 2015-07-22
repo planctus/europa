@@ -14,6 +14,7 @@ Styleguide notification
   border-bottom: 8px solid $yellow-light;
   padding: 8px 0 0;
   font-size: 14px;
+  @extend .hidden-print;
 }
 
 .notification__label {

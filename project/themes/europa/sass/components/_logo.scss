@@ -32,3 +32,9 @@
     margin-left: 0;
   }
 }
+
+@media print {
+  .logo:before {
+    content: url('../images/svg/logo.svg');
+  }
+}

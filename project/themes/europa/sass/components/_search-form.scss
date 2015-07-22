@@ -7,6 +7,7 @@ Styleguide: siteheader.searchform
 */
 .search-form {
   overflow: hidden;
+  @extend .hidden-print;
 }
 
 .search-form__textfield-wrapper {
