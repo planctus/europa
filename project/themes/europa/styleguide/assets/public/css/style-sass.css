@@ -6272,6 +6272,13 @@ ul.nav-tabs,
   .tab-title {
     display: none; } }
 
+@media print {
+  .tab-content .tab-pane,
+  .tab-content .tab-title {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important; } }
+
 /*
 Paragraphs
 
@@ -8057,6 +8064,10 @@ Styleguide listing.column-left
   .front .logo {
     margin-left: 0; } }
 
+@media print {
+  .logo:before {
+    content: url("../images/svg/logo.svg"); } }
+
 /*
 Meta
 
@@ -8193,6 +8204,10 @@ Styleguide: siteheader
   position: relative; }
   .site-header .site-header__logo {
     margin-bottom: 15px; }
+  @media print {
+    .site-header {
+      -webkit-print-color-adjust: exact;
+      background-color: #004494 !important; } }
   .site-header > .container-fluid, .section__group--full-width.site-header > *, .block--full-width.site-header > *, .field--full-width.site-header > * {
     position: relative; }
 
