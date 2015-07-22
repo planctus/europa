@@ -820,6 +820,7 @@ function cwt_core_node_view($node, $view_mode, $langcode) {
     if ($editorial_section) {
       // Overwrite dc:creator at [1].
       $node->rss_elements[1]['value'] = $editorial_section->name;
+      var_dump($node->rss_elements);
     }
   }
 }

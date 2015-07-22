@@ -148,6 +148,12 @@ function cwt_core_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'rss' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => 0,
+        ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_shared_teaser',
