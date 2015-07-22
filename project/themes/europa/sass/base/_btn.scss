@@ -30,6 +30,7 @@ Styleguide buttons
   padding: 0.75em 1em;
   font-size: $font-size-little;
   text-decoration: none;
+  @extend .hidden-print;
 
   &:hover,
   &:active,

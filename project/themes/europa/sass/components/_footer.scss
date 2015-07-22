@@ -24,6 +24,7 @@ Styleguide footer
       text-decoration: none;
     }
   }
+  @extend .hidden-print;
 }
 
 .footer__column-main {

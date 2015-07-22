@@ -16,6 +16,7 @@ Styleguide social
     padding: 0px !important;
     margin: 0px !important;
   }
+  @extend .hidden-print;
 }
 
 .social-media-links__item {

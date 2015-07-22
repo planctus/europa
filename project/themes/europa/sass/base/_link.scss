@@ -17,6 +17,11 @@ a {
   &#{"[" + $external_link_pattern + "]"} {
     @extend .is-external;
   }
+  @media print {
+    &:after {
+      content: none !important;
+    }
+  }
 }
 
 p a {

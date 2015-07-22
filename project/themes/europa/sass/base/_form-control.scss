@@ -28,4 +28,5 @@ Styleguide form
     color: $form-control-color-disabled;
     background-color: $form-control-background-color-disabled;
   }
+  @extend .hidden-print;
 }
