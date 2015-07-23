@@ -124,7 +124,7 @@ function cwt_blogs_strongarm() {
         'custom_settings' => FALSE,
       ),
       'rss' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'search_index' => array(
         'custom_settings' => FALSE,
@@ -162,6 +162,10 @@ function cwt_blogs_strongarm() {
           ),
           'teaser' => array(
             'weight' => '2',
+            'visible' => FALSE,
+          ),
+          'rss' => array(
+            'weight' => '4',
             'visible' => FALSE,
           ),
         ),
