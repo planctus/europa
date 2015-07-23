@@ -893,6 +893,25 @@ th, td {
   background-image: url('../images/svg/icon-file-video.svg');
 }
 
+// File override for media-default.
+.media-default {
+  .file-image,
+  .file-video,
+  .file-image .file,
+  .file-video .file {
+    background: none;
+    padding: 0;
+    width: auto;
+    border: 0;
+  }
+
+  .file-image,
+  .file-video {
+    margin: 0;
+    max-width: none;
+  }
+}
+
 // Search
 .search-form {
   overflow: hidden;
