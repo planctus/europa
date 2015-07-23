@@ -522,6 +522,18 @@
     }
   }
 
+  Drupal.behaviors.ajax_rss_links = {
+    attach: function(context) {
+      $('.rss-link').once('ajax_rss_links', function() {
+        if (Drupal.settings.cwt_core.ajax_rss_link) {
+          $(document).ajaxComplete(function (e, xhr, settings) {
+            $('.rss-link a').attr('href', Drupal.settings.cwt_core.ajax_rss_link);
+          });
+        }
+      });
+    }
+  }
+
   function selectNav(event) {
     var href = $(event.target).val();
     if(href !== window.location.href) {

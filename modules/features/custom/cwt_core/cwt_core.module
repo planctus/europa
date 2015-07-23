@@ -402,8 +402,12 @@ function cwt_core_views_pre_render(&$view) {
     $default_language = language_default();
     $path = url($path . '/' . $lists[$view->name], array('absolute' => TRUE, 'language' => $default_language));
     if (!empty($view->result)) {
+      // Pass path to javascript so we can use it to correct faulty link coming
+      // after an ajax filter action.
+      drupal_add_js(array('cwt_core' => array('ajax_rss_link' => $path)), 'setting');
       // Blog RSS follow the pattern "[node_path]/blog/feed".
       $view->header['area']->options['content'] = str_replace('[feed_link]', $path, $view->header['area']->options['content']);
+      var_dump($view);
     }
   }
 }
