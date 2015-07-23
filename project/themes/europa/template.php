@@ -119,7 +119,7 @@ function europa_preprocess_block(&$vars) {
  * @param string $bundle
  *   Machine name of a bundle.
  *
- * @return array $forms
+ * @return array
  *   Containing $forms['singular'] and $forms['plural'].
  */
 function _europa_bundle_forms($bundle) {
@@ -214,8 +214,6 @@ function europa_preprocess_views_view(&$vars) {
  * Implements template_preprocess_views_view().
  */
 function europa_preprocess_views_view_unformatted(&$vars) {
-  $view = $vars['view'];
-
   $vars['additional_classes'][] = 'listing__item';
   $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
 }
@@ -749,8 +747,6 @@ function _europa_field_component_listing($variables, $config) {
   }
 
   // Distribute them into columns.
-  $counter = 1;
-  $current_column = 0;
   $total = count($variables['items']);
   $columns = array();
   $max_items_in_column = array();
@@ -829,6 +825,7 @@ function europa_field($variables) {
           case 'meta':
             $settings['modifier'] .= ' listing--meta';
             $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
+            break;
 
           case 'teaser':
             $settings['modifier'] .= ' listing--teaser';
@@ -936,6 +933,7 @@ function europa_easy_breadcrumb($variables) {
       }
 
       $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
+      $class = implode(' ', $classes);
       if (isset($item['url'])) {
         // Ugly hotfix.
         // TODO: Remove when following issue is fixed:
@@ -947,10 +945,7 @@ function europa_easy_breadcrumb($variables) {
         $full_item = '<span class="' . $class . '">' . $content . '</span>';
       }
 
-      $class = implode(' ', $classes);
-
-      // TODO:
-      // Check if the active class actually appears.
+      // TODO: Check if the active class actually appears.
       $element_visibility = in_array('active', $classes) ? ' element-invisible' : '';
       $html .= '<li class="' . $class . $element_visibility . '">' . $full_item . '</li>';
     }
@@ -974,8 +969,6 @@ function europa_easy_breadcrumb($variables) {
  *   HTML markup.
  */
 function _europa_file_markup($file, array $url) {
-  $file_class = '';
-  $file_icon_class = '';
   switch ($file->type) {
     case 'image':
       $file_class = 'file--image';
@@ -1065,9 +1058,11 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
     case 'tabs':
       $variables['nav_classes'] .= ' nav-tabs nav-tabs--with-content';
       break;
+
     case 'pills':
       $variables['nav_classes'] .= ' nav-pills';
       break;
+
     default:
   }
 
@@ -1079,7 +1074,7 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   foreach ($variables['items'] as $key => $item) {
     // Check if item is not empty and we have access to it.
     if ($item && (!isset($item['#access']) || $item['#access'])) {
-      $variables['panes'][$i]['title'] = check_plain(t($item['#title']));
+      $variables['panes'][$i]['title'] = check_plain($item['#title']);
       $i++;
     }
   }

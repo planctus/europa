@@ -15,7 +15,6 @@
  * @ingroup themeable
  */
 ?>
-
 <?php if (!$is_empty) : ?>
 
   <div class="<?php print $wrapper_classes; ?>">
