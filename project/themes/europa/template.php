@@ -1172,7 +1172,7 @@ function europa_pager($variables) {
       );
     }
     $items[] = array(
-      'class' => array('pager__item combo'),
+      'class' => array('pager__item pager__combo'),
       'data' => "<span class='combo__container'><span class='combo__current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
       "<span class='combo__total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
       '</span>',

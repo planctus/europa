@@ -80,9 +80,7 @@ Styleguide pager
   display: none;
 }
 
-// combo is assumed to be a standalone element
-// could be used without the back/forward buttons
-.combo {
+.pager__combo {
   display: none;
   background: $grey-lighter;
   font-size: $font-size-little;
@@ -136,7 +134,7 @@ Styleguide pager
 }
 
 @include breakpoint(screen-xs-min) {
-  .combo {
+  .pager__combo {
     display: block;
   }
   .pager__back {
