@@ -42,3 +42,9 @@ function dt_policy_area_update_7103() {
   features_revert_module('dt_policy_area');
 }
 
+/**
+ * Adding description in list view
+ */
+function dt_policy_area_update_7104() {
+  features_revert_module('dt_policy_area');
+}
