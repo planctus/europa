@@ -822,14 +822,14 @@ function europa_link($variables) {
 }
 
 /**
- * Implements template_preprocess_block().
+ * Implements hook_preprocess_block().
  */
-function europa_preprocess_block(&$vars) {
-  $block = $vars['block'];
+function europa_preprocess_block(&$variables) {
+  $block = $variables['block'];
 
   switch ($block->delta) {
     case 'nexteuropa_feedback':
-      $vars['classes_array'][] = 'block--full-width';
+      $variables['classes_array'][] = 'block--full-width';
       break;
 
     case 'menu-dt-menu-social-media':
@@ -843,8 +843,8 @@ function europa_preprocess_block(&$vars) {
 
   if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
     // Initialize variables.
-    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $vars['elements']['code']['#markup'] . '</span></span>';
-    $label = '<span class="lang-select-site__label">' . $vars['elements']['label']['#markup'] . '</span>';
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
+    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
     $options = array(
       'html' => TRUE,
       'attributes' => array(
@@ -858,10 +858,10 @@ function europa_preprocess_block(&$vars) {
     );
 
     // Add class to block.
-    $vars['classes_array'][] = 'lang-select-site';
+    $variables['classes_array'][] = 'lang-select-site';
 
     // Add content to block.
-    $vars['content'] = l($label . $code, 'splash', $options);
+    $variables['content'] = l($label . $code, 'splash', $options);
 
     // For Beta initial release only: preventing default click behavior.
     drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
@@ -869,24 +869,24 @@ function europa_preprocess_block(&$vars) {
 
   // Replace block-title class with block__title in order to keep BEM structure
   // of classes.
-  $block_title_class = array_search('block-title', $vars['title_attributes_array']['class']);
+  $block_title_class = array_search('block-title', $variables['title_attributes_array']['class']);
   if ($block_title_class !== FALSE) {
-    unset($vars['title_attributes_array']['class'][$block_title_class]);
+    unset($variables['title_attributes_array']['class'][$block_title_class]);
   }
-  $vars['title_attributes_array']['class'][] = 'block__title';
+  $variables['title_attributes_array']['class'][] = 'block__title';
 
   if (isset($block->bid)) {
     // Check if the block is a exposed form.
     // This is checked by looking at the $block->bid which in case
     // of views exposed filters, always contains 'views--exp-' string.
     if (strpos($block->bid, 'views--exp-') !== FALSE) {
-      $vars['classes_array'][] = 'filters';
-      $vars['title_attributes_array']['class'][] = 'filters__title';
+      $variables['classes_array'][] = 'filters';
+      $variables['title_attributes_array']['class'][] = 'filters__title';
       $block->subject = t('Refine results');
 
       // Passing block id to Drupal.settings in order to pass it through data
       // attribute in the collapsible panel.
-      drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
+      drupal_add_js(array('europa' => array('exposedBlockId' => $variables['block_html_id'])), 'setting');
 
       // Adding filters.js file.
       drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
@@ -894,13 +894,13 @@ function europa_preprocess_block(&$vars) {
   }
 
   if ($block->delta == 'inline_navigation') {
-    $vars['classes_array'][] = 'inpage-nav__wrapper';
-    $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
+    $variables['classes_array'][] = 'inpage-nav__wrapper';
+    $variables['title_attributes_array']['class'][] = 'inpage-nav__block-title';
   }
 }
 
 /**
- * Implements template_preprocess_bootstrap_tabs().
+ * Implements hook_preprocess_bootstrap_tabs().
  */
 function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   $group = &$variables['group'];
@@ -934,21 +934,21 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
 }
 
 /**
- * Implements template_preprocess_field().
+ * Implements hook_preprocess_field().
  */
-function europa_preprocess_field(&$vars) {
+function europa_preprocess_field(&$variables) {
   // Changing label for the field to display stripped out values.
-  switch ($vars['element']['#field_name']) {
+  switch ($variables['element']['#field_name']) {
     case 'field_core_ecorganisation':
-      $field_value = $vars['element']['#items'][0]['value'];
+      $field_value = $variables['element']['#items'][0]['value'];
       $field_value_stripped = explode(" (", $field_value);
 
-      $vars['items'][0]['#markup'] = $field_value_stripped[0];
+      $variables['items'][0]['#markup'] = $field_value_stripped[0];
       break;
 
     case 'field_core_social_network_links':
-      $vars['element']['before'] = t('Follow the latest progress and get involved.');
-      $vars['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
+      $variables['element']['before'] = t('Follow the latest progress and get involved.');
+      $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
       break;
   }
 }
@@ -972,26 +972,33 @@ function europa_preprocess_image(&$variables) {
 }
 
 /**
- * Implements template_preprocess_node().
+ * Implements hook_preprocess_html().
  */
-function europa_preprocess_node(&$vars) {
-  $vars['submitted'] = '';
+function europa_preprocess_html(&$variables) {
+  $variables['theme_path'] = base_path() . drupal_get_path('theme', 'europa');
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function europa_preprocess_node(&$variables) {
+  $variables['submitted'] = '';
   if (theme_get_setting('display_submitted')) {
-    $vars['submitted'] = t('Submitted by !username on !datetime', array(
-      '!username' => $vars['name'],
-      '!datetime' => $vars['date'],
+    $variables['submitted'] = t('Submitted by !username on !datetime', array(
+      '!username' => $variables['name'],
+      '!datetime' => $variables['date'],
     ));
   }
-  $vars['messages'] = theme('status_messages');
+  $variables['messages'] = theme('status_messages');
 
   // Override node_url if Legacy Link is set.
-  if (isset($vars['legacy'])) {
-    $vars['node_url'] = $vars['legacy'];
+  if (isset($variables['legacy'])) {
+    $variables['node_url'] = $variables['legacy'];
   }
 }
 
 /**
- * Implements template_preprocess_page().
+ * Implements hook_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
   // Add information about the number of sidebars.
@@ -1041,24 +1048,24 @@ function europa_preprocess_page(&$variables) {
 }
 
 /**
- * Implements template_preprocess_views_view().
+ * Implements hook_preprocess_views_view().
  */
-function europa_preprocess_views_view(&$vars) {
-  $view = $vars['view'];
+function europa_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
 
   if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
-    $vars['classes_array'][] = 'listing';
+    $variables['classes_array'][] = 'listing';
 
     if (isset($view->style_plugin->row_plugin->options['view_mode'])) {
       $view_mode = $view->style_plugin->row_plugin->options['view_mode'];
-      $vars['classes_array'][] = 'listing--' . $view_mode;
+      $variables['classes_array'][] = 'listing--' . $view_mode;
     }
   }
 
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
-    $vars['active_filters'] = get_exposed_filter_output();
+    $variables['active_filters'] = get_exposed_filter_output();
   }
   $content_type = array();
   $content_type_filters = $view->filter['type']->value;
@@ -1066,11 +1073,11 @@ function europa_preprocess_views_view(&$vars) {
     $content_type = $filter;
   }
 
-  $vars['items_count'] = '';
+  $variables['items_count'] = '';
 
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
-  if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
+  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
@@ -1084,14 +1091,14 @@ function europa_preprocess_views_view(&$vars) {
         format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
     }
 
-    $vars['items_count'] = $items_count;
+    $variables['items_count'] = $items_count;
   }
 }
 
 /**
- * Implements template_preprocess_views_view().
+ * Implements hook_preprocess_views_view().
  */
-function europa_preprocess_views_view_unformatted(&$vars) {
-  $vars['additional_classes'][] = 'listing__item';
-  $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
+function europa_preprocess_views_view_unformatted(&$variables) {
+  $variables['additional_classes'][] = 'listing__item';
+  $variables['additional_classes_array'] = implode(' ', $variables['additional_classes']);
 }
