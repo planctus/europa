@@ -993,11 +993,9 @@ function _cwt_core_custom_page_title($page_variables) {
 
       case 'commisioner_blog_post':
         $blog_post = entity_metadata_wrapper('node', $page_variables['node']);
-        $term = taxonomy_term_load($blog_post->field_editorial_section->value()->tid);
-        $parents = taxonomy_get_parents_all($term->tid);
+        $section = (object) taxonomy_term_load($blog_post->field_editorial_section->value()->tid);
 
-        // Only level 3 of editorial_sections are biography nodes which work with Views.
-        if (count($parents) > 2 && $blog_post->status->value() == 1) {
+        if (cwt_biography_get_commissioner_biography_by_editorial_section($section) && $blog_post->status->value() == 1) {
           $view_settings = array(
             'name' => 'blog_header',
             'display' => 'header',
