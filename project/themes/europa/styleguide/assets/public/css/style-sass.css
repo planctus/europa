@@ -8315,8 +8315,7 @@ Styleguide pager
 .pager {
   font-weight: bold;
   margin: 15px auto;
-  overflow: hidden;
-  width: 465px; }
+  overflow: hidden; }
 
 .pager__item {
   list-style: none;
@@ -8419,6 +8418,8 @@ Styleguide pager
   background-image: url("../images/png/arrow-down-blue.png"); }
 
 @media (min-width: 530px) {
+  .pager {
+    width: 460px; }
   .pager__combo {
     display: block; }
   .pager__back {

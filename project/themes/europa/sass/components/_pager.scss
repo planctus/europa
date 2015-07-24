@@ -12,7 +12,6 @@ Styleguide pager
   font-weight: bold;
   margin: 15px auto;
   overflow: hidden;
-  width: 465px;
 }
 
 .pager__item {
@@ -146,6 +145,10 @@ Styleguide pager
 }
 
 @media (min-width: 530px) {
+  .pager {
+    width: 460px;
+  }
+  
   .pager__combo {
     display: block;
   }
