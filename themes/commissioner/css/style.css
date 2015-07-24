@@ -7158,11 +7158,6 @@ td {
   width: auto;
   border: 0;
 }
-.media-default .file-image,
-.media-default .file-video {
-  margin: 0;
-  max-width: none;
-}
 .search-form {
   overflow: hidden;
   margin: 0;
@@ -8208,7 +8203,7 @@ body.node-type-team #page-header .page-header-inner {
 .node ol,
 .node table,
 .node .field-name-field-shared-teaser,
-.node div[class*="video"] {
+.node div[class*="media"][class*="video"] {
   margin-bottom: 1.7em;
 }
 .node p:last-child,
@@ -8216,7 +8211,7 @@ body.node-type-team #page-header .page-header-inner {
 .node ol:last-child,
 .node table:last-child,
 .node .field-name-field-shared-teaser:last-child,
-.node div[class*="video"]:last-child {
+.node div[class*="media"][class*="video"]:last-child {
   margin-bottom: 0;
 }
 .node .field-name-field-shared-teaser {
@@ -8236,15 +8231,15 @@ body.node-type-team #page-header .page-header-inner {
 .node .media-element-container {
   width: 100%;
 }
-.node div[class*="video"] {
+.node div[class*="media"][class*="video"] {
   position: relative;
   height: 0;
   padding-bottom: 56.25%;
   overflow: hidden;
 }
-.node div[class*="video"] iframe,
-.node div[class*="video"] object,
-.node div[class*="video"] embed {
+.node div[class*="media"][class*="video"] iframe,
+.node div[class*="media"][class*="video"] object,
+.node div[class*="media"][class*="video"] embed {
   position: absolute;
   top: 0;
   left: 0;
