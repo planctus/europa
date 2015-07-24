@@ -57,14 +57,23 @@
  *   content types.
  *
  * Regions:
- * - $page['header']: Displayed in the right part of the header -> logo, search box, ...
- * - $page['header_bottom']: Displayed below the header, take full width of site -> main menu, global information, breadcrumb...
- * - $page['highlighted']: Displayed in a big visible box -> important message, contextual information, ...
- * - $page['help']: Displayed between page title and content -> information about the page, contextual help, ...
- * - $page['sidebar_first']: Small sidebar displayed on left of the content, if not empty -> navigation, pictures, ...
- * - $page['sidebar_second']: Large sidebar displayed on right of the content, if not empty -> two column layout
- * - $page['content']: The main content of the current page.
- * - $page['footer']: Displayed at bottom of the page, on full width -> latest update, copyright, ...
+ * - $page['header']:         Displayed in the right part of the
+ *                            header -> logo, search box, ...
+ * - $page['header_bottom']:  Displayed below the header, take full width of
+ *                            site -> main menu, global information,
+ *                            breadcrumb...
+ * - $page['highlighted']:    Displayed in a big visible box -> important
+ *                            message, contextual information, ...
+ * - $page['help']:           Displayed between page title and
+ *                            content -> information about the page,
+ *                            contextual help, ...
+ * - $page['sidebar_first']:  Small sidebar displayed on left of the content,
+ *                            if not empty -> navigation, pictures, ...
+ * - $page['sidebar_second']: Large sidebar displayed on right of the content,
+ *                            if not empty -> two column layout
+ * - $page['content']:        The main content of the current page.
+ * - $page['footer']:         Displayed at bottom of the page, on full
+ *                            width -> latest update, copyright, ...
  *
  * @see bootstrap_preprocess_page()
  * @see template_preprocess()
@@ -75,7 +84,6 @@
  *
  * @ingroup themeable
  */
-
 ?>
 <section class="notification">
   <div class="container-fluid">
