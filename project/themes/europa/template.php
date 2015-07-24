@@ -16,110 +16,12 @@ function europa_js_alter(&$js) {
 }
 
 /**
- * Implements template_preprocess_field().
- */
-function europa_preprocess_field(&$vars) {
-  // Changing label for the field to display stripped out values.
-  switch ($vars['element']['#field_name']) {
-    case 'field_core_ecorganisation':
-      $field_value = $vars['element']['#items'][0]['value'];
-      $field_value_stripped = explode(" (", $field_value);
-
-      $vars['items'][0]['#markup'] = $field_value_stripped[0];
-      break;
-
-    case 'field_core_social_network_links':
-      $vars['element']['before'] = t('Follow the latest progress and get involved.');
-      $vars['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
-      break;
-  }
-}
-
-/**
- * Implements template_preprocess_block().
- */
-function europa_preprocess_block(&$vars) {
-  $block = $vars['block'];
-
-  switch ($block->delta) {
-    case 'nexteuropa_feedback':
-      $vars['classes_array'][] = 'block--full-width';
-      break;
-
-    case 'menu-dt-menu-social-media':
-      $block->subject = t('The European Commission on:');
-      break;
-
-    case 'menu-dt-service-links':
-      $block->subject = '';
-      break;
-  }
-
-  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
-    // Initialize variables.
-    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $vars['elements']['code']['#markup'] . '</span></span>';
-    $label = '<span class="lang-select-site__label">' . $vars['elements']['label']['#markup'] . '</span>';
-    $options = array(
-      'html' => TRUE,
-      'attributes' => array(
-        'class' => array('lang-select-site__link'),
-        'data-toggle' => 'popover',
-        'data-placement' => 'bottom',
-        'data-trigger' => 'focus',
-        'data-content' => t('This function is not yet working in Beta.'),
-      ),
-      'query' => array(drupal_get_destination()),
-    );
-
-    // Add class to block.
-    $vars['classes_array'][] = 'lang-select-site';
-
-    // Add content to block.
-    $vars['content'] = l($label . $code, 'splash', $options);
-
-    // For Beta initial release only: preventing default click behavior.
-    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
-  }
-
-  // Replace block-title class with block__title in order to keep BEM structure
-  // of classes.
-  $block_title_class = array_search('block-title', $vars['title_attributes_array']['class']);
-  if ($block_title_class !== FALSE) {
-    unset($vars['title_attributes_array']['class'][$block_title_class]);
-  }
-  $vars['title_attributes_array']['class'][] = 'block__title';
-
-  if (isset($block->bid)) {
-    // Check if the block is a exposed form.
-    // This is checked by looking at the $block->bid which in case
-    // of views exposed filters, always contains 'views--exp-' string.
-    if (strpos($block->bid, 'views--exp-') !== FALSE) {
-      $vars['classes_array'][] = 'filters';
-      $vars['title_attributes_array']['class'][] = 'filters__title';
-      $block->subject = t('Refine results');
-
-      // Passing block id to Drupal.settings in order to pass it through data
-      // attribute in the collapsible panel.
-      drupal_add_js(array('europa' => array('exposedBlockId' => $vars['block_html_id'])), 'setting');
-
-      // Adding filters.js file.
-      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
-    }
-  }
-
-  if ($block->delta == 'inline_navigation') {
-    $vars['classes_array'][] = 'inpage-nav__wrapper';
-    $vars['title_attributes_array']['class'][] = 'inpage-nav__block-title';
-  }
-}
-
-/**
  * Returns an array with singular and plural form of a bundle.
  *
  * @param string $bundle
  *   Machine name of a bundle.
  *
- * @return array $forms
+ * @return array
  *   Containing $forms['singular'] and $forms['plural'].
  */
 function _europa_bundle_forms($bundle) {
@@ -163,64 +65,6 @@ function _europa_bundle_forms($bundle) {
 }
 
 /**
- * Implements template_preprocess_views_view().
- */
-function europa_preprocess_views_view(&$vars) {
-  $view = $vars['view'];
-
-  if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
-    $vars['classes_array'][] = 'listing';
-
-    if (isset($view->style_plugin->row_plugin->options['view_mode'])) {
-      $view_mode = $view->style_plugin->row_plugin->options['view_mode'];
-      $vars['classes_array'][] = 'listing--' . $view_mode;
-    }
-  }
-
-  // Checking if exposed filters are set and add variable that stores active
-  // filters.
-  if (module_exists('dt_exposed_filter_data')) {
-    $vars['active_filters'] = get_exposed_filter_output();
-  }
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
-
-  $vars['items_count'] = '';
-
-  // Checking if .listing exists in classes_array so that result count can be
-  // displayed.
-  if ((in_array('listing', $vars['classes_array'])) && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-    $content_type_forms = _europa_bundle_forms($content_type);
-
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
-    }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $vars['items_count'] = $items_count;
-  }
-}
-
-/**
- * Implements template_preprocess_views_view().
- */
-function europa_preprocess_views_view_unformatted(&$vars) {
-  $view = $vars['view'];
-
-  $vars['additional_classes'][] = 'listing__item';
-  $vars['additional_classes_array'] = implode(' ', $vars['additional_classes']);
-}
-
-/**
  * Implements hook_theme().
  */
 function europa_theme() {
@@ -244,56 +88,6 @@ function europa_form_required_marker($variables) {
     'title' => $t('This field is required.'),
   );
   return '<span' . drupal_attributes($attributes) . '></span>';
-}
-
-/**
- * Implements template_preprocess_page().
- */
-function europa_preprocess_page(&$variables) {
-  // Add information about the number of sidebars.
-  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = 'col-md-6';
-  }
-  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
-    $variables['content_column_class'] = 'col-md-9';
-  }
-  else {
-    $variables['content_column_class'] = 'col-md-12';
-  }
-
-  // Set footer region column classes.
-  if (!empty($variables['page']['footer_right'])) {
-    $variables['footer_column_class'] = 'col-sm-8';
-  }
-  else {
-    $variables['footer_column_class'] = 'col-sm-12';
-  }
-
-  $node = &$variables['node'];
-
-  if (isset($node)) {
-    // Adding generic introduction field to be later rendered in page template.
-    $variables['field_core_introduction'] = isset($node->field_core_introduction) ?
-      field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden')) :
-      NULL;
-
-    // Check if Display Suite is handling node.
-    if (ds_get_layout('node', $node->type, 'full')) {
-      // This disables message-printing on ALL page displays.
-      $variables['show_messages'] = FALSE;
-
-      // Add tabs to node object so we can put it in the DS template instead.
-      if (isset($variables['tabs'])) {
-        $node->local_tabs = drupal_render($variables['tabs']);
-      }
-
-      $variables['theme_hook_suggestions'][] = 'page__ds_node';
-    }
-  }
-
-  // Temporary variable that should be removed once the beta notification
-  // is gone.
-  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
@@ -326,47 +120,10 @@ function europa_date_popup_process_alter(&$element, &$form_state, $context) {
 }
 
 /**
- * Implements template_preprocess_node().
- */
-function europa_preprocess_node(&$vars) {
-  $vars['submitted'] = '';
-  if (theme_get_setting('display_submitted')) {
-    $vars['submitted'] = t('Submitted by !username on !datetime', array(
-      '!username' => $vars['name'],
-      '!datetime' => $vars['date'],
-    ));
-  }
-  $vars['messages'] = theme('status_messages');
-
-  // Override node_url if Legacy Link is set.
-  if (isset($vars['legacy'])) {
-    $vars['node_url'] = $vars['legacy'];
-  }
-}
-
-/**
  * Bootstrap theme wrapper function for the primary menu links.
  */
 function europa_menu_tree__secondary(&$variables) {
   return '<ul class="menu nav navbar-nav secondary">' . $variables['tree'] . '</ul>';
-}
-
-/**
- * Implements hook_preprocess_image().
- */
-function europa_preprocess_image(&$variables) {
-  // Fix issue between print module and bootstrap theme, print module put a
-  // string instead of an array in $variables['attributes']['class'].
-  if ($shape = theme_get_setting('bootstrap_image_responsive')) {
-    if (isset($variables['attributes']['class'])) {
-      if (is_array($variables['attributes']['class'])) {
-        $variables['attributes']['class'][] = 'img-responsive';
-      }
-      else {
-        $variables['attributes']['class'] = array($variables['attributes']['class'], 'img-responsive');
-      }
-    }
-  }
 }
 
 /**
@@ -749,8 +506,6 @@ function _europa_field_component_listing($variables, $config) {
   }
 
   // Distribute them into columns.
-  $counter = 1;
-  $current_column = 0;
   $total = count($variables['items']);
   $columns = array();
   $max_items_in_column = array();
@@ -829,6 +584,7 @@ function europa_field($variables) {
           case 'meta':
             $settings['modifier'] .= ' listing--meta';
             $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
+            break;
 
           case 'teaser':
             $settings['modifier'] .= ' listing--teaser';
@@ -936,6 +692,7 @@ function europa_easy_breadcrumb($variables) {
       }
 
       $content = '<span class="breadcrumb__text">' . check_plain(decode_entities($item['content'])) . '</span>';
+      $class = implode(' ', $classes);
       if (isset($item['url'])) {
         // Ugly hotfix.
         // TODO: Remove when following issue is fixed:
@@ -947,10 +704,7 @@ function europa_easy_breadcrumb($variables) {
         $full_item = '<span class="' . $class . '">' . $content . '</span>';
       }
 
-      $class = implode(' ', $classes);
-
-      // TODO:
-      // Check if the active class actually appears.
+      // TODO: Check if the active class actually appears.
       $element_visibility = in_array('active', $classes) ? ' element-invisible' : '';
       $html .= '<li class="' . $class . $element_visibility . '">' . $full_item . '</li>';
     }
@@ -974,8 +728,6 @@ function europa_easy_breadcrumb($variables) {
  *   HTML markup.
  */
 function _europa_file_markup($file, array $url) {
-  $file_class = '';
-  $file_icon_class = '';
   switch ($file->type) {
     case 'image':
       $file_class = 'file--image';
@@ -1054,38 +806,6 @@ function europa_file_entity_download_link($variables) {
 }
 
 /**
- * Implements template_preprocess_bootstrap_tabs().
- */
-function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
-  $group = &$variables['group'];
-
-  $variables['nav_classes'] = '';
-
-  switch ($group->format_settings['instance_settings']['bootstrap_nav_type']) {
-    case 'tabs':
-      $variables['nav_classes'] .= ' nav-tabs nav-tabs--with-content';
-      break;
-    case 'pills':
-      $variables['nav_classes'] .= ' nav-pills';
-      break;
-    default:
-  }
-
-  if ($group->format_settings['instance_settings']['bootstrap_stacked']) {
-    $variables['nav_classes'] .= ' nav-stacked';
-  }
-
-  $i = 0;
-  foreach ($variables['items'] as $key => $item) {
-    // Check if item is not empty and we have access to it.
-    if ($item && (!isset($item['#access']) || $item['#access'])) {
-      $variables['panes'][$i]['title'] = check_plain(t($item['#title']));
-      $i++;
-    }
-  }
-}
-
-/**
  * Overrides theme_link().
  */
 function europa_link($variables) {
@@ -1099,6 +819,288 @@ function europa_link($variables) {
   }
 
   return theme_link($variables);
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function europa_preprocess_block(&$variables) {
+  $block = $variables['block'];
+
+  switch ($block->delta) {
+    case 'nexteuropa_feedback':
+      $variables['classes_array'][] = 'block--full-width';
+      break;
+
+    case 'menu-dt-menu-social-media':
+      $block->subject = t('The European Commission on:');
+      break;
+
+    case 'menu-dt-service-links':
+      $block->subject = '';
+      break;
+  }
+
+  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
+    // Initialize variables.
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
+    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('lang-select-site__link'),
+        'data-toggle' => 'popover',
+        'data-placement' => 'bottom',
+        'data-trigger' => 'focus',
+        'data-content' => t('This function is not yet working in Beta.'),
+      ),
+      'query' => array(drupal_get_destination()),
+    );
+
+    // Add class to block.
+    $variables['classes_array'][] = 'lang-select-site';
+
+    // Add content to block.
+    $variables['content'] = l($label . $code, 'splash', $options);
+
+    // For Beta initial release only: preventing default click behavior.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
+  }
+
+  // Replace block-title class with block__title in order to keep BEM structure
+  // of classes.
+  $block_title_class = array_search('block-title', $variables['title_attributes_array']['class']);
+  if ($block_title_class !== FALSE) {
+    unset($variables['title_attributes_array']['class'][$block_title_class]);
+  }
+  $variables['title_attributes_array']['class'][] = 'block__title';
+
+  if (isset($block->bid)) {
+    // Check if the block is a exposed form.
+    // This is checked by looking at the $block->bid which in case
+    // of views exposed filters, always contains 'views--exp-' string.
+    if (strpos($block->bid, 'views--exp-') !== FALSE) {
+      $variables['classes_array'][] = 'filters';
+      $variables['title_attributes_array']['class'][] = 'filters__title';
+      $block->subject = t('Refine results');
+
+      // Passing block id to Drupal.settings in order to pass it through data
+      // attribute in the collapsible panel.
+      drupal_add_js(array('europa' => array('exposedBlockId' => $variables['block_html_id'])), 'setting');
+
+      // Adding filters.js file.
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
+    }
+  }
+
+  if ($block->delta == 'inline_navigation') {
+    $variables['classes_array'][] = 'inpage-nav__wrapper';
+    $variables['title_attributes_array']['class'][] = 'inpage-nav__block-title';
+  }
+}
+
+/**
+ * Implements hook_preprocess_bootstrap_tabs().
+ */
+function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
+  $group = &$variables['group'];
+
+  $variables['nav_classes'] = '';
+
+  switch ($group->format_settings['instance_settings']['bootstrap_nav_type']) {
+    case 'tabs':
+      $variables['nav_classes'] .= ' nav-tabs nav-tabs--with-content';
+      break;
+
+    case 'pills':
+      $variables['nav_classes'] .= ' nav-pills';
+      break;
+
+    default:
+  }
+
+  if ($group->format_settings['instance_settings']['bootstrap_stacked']) {
+    $variables['nav_classes'] .= ' nav-stacked';
+  }
+
+  $i = 0;
+  foreach ($variables['items'] as $key => $item) {
+    // Check if item is not empty and we have access to it.
+    if ($item && (!isset($item['#access']) || $item['#access'])) {
+      $variables['panes'][$i]['title'] = check_plain($item['#title']);
+      $i++;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function europa_preprocess_field(&$variables) {
+  // Changing label for the field to display stripped out values.
+  switch ($variables['element']['#field_name']) {
+    case 'field_core_ecorganisation':
+      $field_value = $variables['element']['#items'][0]['value'];
+      $field_value_stripped = explode(" (", $field_value);
+
+      $variables['items'][0]['#markup'] = $field_value_stripped[0];
+      break;
+
+    case 'field_core_social_network_links':
+      $variables['element']['before'] = t('Follow the latest progress and get involved.');
+      $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
+      break;
+  }
+}
+
+/**
+ * Implements hook_preprocess_image().
+ */
+function europa_preprocess_image(&$variables) {
+  // Fix issue between print module and bootstrap theme, print module put a
+  // string instead of an array in $variables['attributes']['class'].
+  if ($shape = theme_get_setting('bootstrap_image_responsive')) {
+    if (isset($variables['attributes']['class'])) {
+      if (is_array($variables['attributes']['class'])) {
+        $variables['attributes']['class'][] = 'img-responsive';
+      }
+      else {
+        $variables['attributes']['class'] = array($variables['attributes']['class'], 'img-responsive');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function europa_preprocess_html(&$variables) {
+  $variables['theme_path'] = base_path() . drupal_get_path('theme', 'europa');
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function europa_preprocess_node(&$variables) {
+  $variables['submitted'] = '';
+  if (theme_get_setting('display_submitted')) {
+    $variables['submitted'] = t('Submitted by !username on !datetime', array(
+      '!username' => $variables['name'],
+      '!datetime' => $variables['date'],
+    ));
+  }
+  $variables['messages'] = theme('status_messages');
+
+  // Override node_url if Legacy Link is set.
+  if (isset($variables['legacy'])) {
+    $variables['node_url'] = $variables['legacy'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function europa_preprocess_page(&$variables) {
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = 'col-md-6';
+  }
+  elseif (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_second'])) {
+    $variables['content_column_class'] = 'col-md-9';
+  }
+  else {
+    $variables['content_column_class'] = 'col-md-12';
+  }
+
+  // Set footer region column classes.
+  if (!empty($variables['page']['footer_right'])) {
+    $variables['footer_column_class'] = 'col-sm-8';
+  }
+  else {
+    $variables['footer_column_class'] = 'col-sm-12';
+  }
+
+  $node = &$variables['node'];
+
+  if (isset($node)) {
+    // Adding generic introduction field to be later rendered in page template.
+    $variables['field_core_introduction'] = isset($node->field_core_introduction) ?
+      field_view_field('node', $node, 'field_core_introduction', array('label' => 'hidden')) :
+      NULL;
+
+    // Check if Display Suite is handling node.
+    if (ds_get_layout('node', $node->type, 'full')) {
+      // This disables message-printing on ALL page displays.
+      $variables['show_messages'] = FALSE;
+
+      // Add tabs to node object so we can put it in the DS template instead.
+      if (isset($variables['tabs'])) {
+        $node->local_tabs = drupal_render($variables['tabs']);
+      }
+
+      $variables['theme_hook_suggestions'][] = 'page__ds_node';
+    }
+  }
+
+  // Temporary variable that should be removed once the beta notification
+  // is gone.
+  $variables['node_about_beta'] = url('node/1108');
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function europa_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+
+  if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
+    $variables['classes_array'][] = 'listing';
+
+    if (isset($view->style_plugin->row_plugin->options['view_mode'])) {
+      $view_mode = $view->style_plugin->row_plugin->options['view_mode'];
+      $variables['classes_array'][] = 'listing--' . $view_mode;
+    }
+  }
+
+  // Checking if exposed filters are set and add variable that stores active
+  // filters.
+  if (module_exists('dt_exposed_filter_data')) {
+    $variables['active_filters'] = get_exposed_filter_output();
+  }
+  $content_type = array();
+  $content_type_filters = $view->filter['type']->value;
+  foreach ($content_type_filters as $filter) {
+    $content_type = $filter;
+  }
+
+  $variables['items_count'] = '';
+
+  // Checking if .listing exists in classes_array so that result count can be
+  // displayed.
+  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+    $content_type_forms = _europa_bundle_forms($content_type);
+
+    if ($total_rows == 0) {
+      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+    }
+    else {
+      $items_count = $total_rows . ' ' .
+        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+    }
+
+    $variables['items_count'] = $items_count;
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function europa_preprocess_views_view_unformatted(&$variables) {
+  $variables['additional_classes'][] = 'listing__item';
+  $variables['additional_classes_array'] = implode(' ', $variables['additional_classes']);
 }
 
 /**
