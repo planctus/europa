@@ -8314,9 +8314,9 @@ Styleguide pager
 */
 .pager {
   font-weight: bold;
-  margin-top: 20px;
+  margin: 15px auto;
   overflow: hidden;
-  width: 100%; }
+  width: 465px; }
 
 .pager__item {
   list-style: none;
@@ -8384,7 +8384,8 @@ Styleguide pager
   position: relative; }
 
 .pager__combo-dropdown {
-  background: transparent url("../images/png/arrow-down-blue.png") no-repeat scroll 117px center;
+  background: transparent url("../images/svg/arrow-down--blue.svg") no-repeat scroll 117px center;
+  background-size: 15px 10px;
   border: none;
   color: #004494;
   cursor: pointer;
@@ -8414,7 +8415,10 @@ Styleguide pager
 .no-js .pager__combo-dropdown {
   display: none; }
 
-@media (min-width: 480px) {
+.no-svg .pager__combo-dropdown {
+  background-image: url("../images/png/arrow-down-blue.png"); }
+
+@media (min-width: 530px) {
   .pager__combo {
     display: block; }
   .pager__back {
@@ -8428,6 +8432,9 @@ Styleguide pager
     display: inline;
     padding-left: 15px;
     float: left; } }
+
+.region-content ul.pager {
+  margin: 15px auto; }
 
 /*
 Site header

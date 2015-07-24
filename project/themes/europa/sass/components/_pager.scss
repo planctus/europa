@@ -10,9 +10,9 @@ Styleguide pager
 
 .pager {
   font-weight: bold;
-  margin-top: 20px;
+  margin: 15px auto;
   overflow: hidden;
-  width: 100%;
+  width: 465px;
 }
 
 .pager__item {
@@ -100,7 +100,8 @@ Styleguide pager
 }
 
 .pager__combo-dropdown {
-  background: transparent url("../images/png/arrow-down-blue.png") no-repeat scroll 117px center;
+  background: transparent url("../images/svg/arrow-down--blue.svg") no-repeat scroll 117px center;
+  background-size: 15px 10px;
   border: none;
   color: $blue-dark;
   cursor: pointer;
@@ -138,7 +139,13 @@ Styleguide pager
   }
 }
 
-@include breakpoint(screen-xs-min) {
+.no-svg {
+  .pager__combo-dropdown {
+    background-image: url("../images/png/arrow-down-blue.png");
+  }
+}
+
+@media (min-width: 530px) {
   .pager__combo {
     display: block;
   }
@@ -157,4 +164,9 @@ Styleguide pager
     padding-left: 15px;
     float: left;
   }
+}
+
+// Drupal-specific hack.
+.region-content ul.pager {
+  margin: 15px auto;
 }
