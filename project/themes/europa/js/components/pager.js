@@ -18,7 +18,7 @@
           $(this).remove();
         });
         if(options != '') {
-          var select = $('<span class="combo__upper"><select class="combo__dropdown">' + options + '</select></span>');
+          var select = $('<span class="pager__combo-upper"><select class="pager__combo-dropdown">' + options + '</select></span>');
           select.children().data('activation', 'activated').on({
             keydown: function(event) {
               if(event.which === 13){
@@ -42,7 +42,7 @@
               }
             }
           });
-          $('.combo__container', this).before(select);
+          $('.pager__combo-container', this).before(select);
         }
       });
     }

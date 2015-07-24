@@ -47,12 +47,14 @@ Styleguide pager
   }
 }
 
-.back__arrow {
+.pager__back-arrow {
   display: inline-block;
   height: 20px;
   width: 10px;
   position: relative;
   left: -5px;
+  font-size: 1.3em;
+  top: -3px;
 }
 
 // forward as a child of pager
@@ -70,13 +72,16 @@ Styleguide pager
   }
 }
 
-.forward__arrow {
+.pager__forward-arrow {
   padding-left: 10px;
   height: 20px;
   display: inline-block;
+  font-size: 1.3em;
+  position: relative;
+  top: -3px;
 }
 
-.forward__text {
+.pager__forward-text {
   display: none;
 }
 
@@ -90,11 +95,11 @@ Styleguide pager
   width: 180px;
 }
 
-.combo__upper {
+.pager__combo-upper {
   position: relative;
 }
 
-.combo__dropdown {
+.pager__combo-dropdown {
   background: transparent url("../images/png/arrow-down-blue.png") no-repeat scroll 117px center;
   border: none;
   color: $blue-dark;
@@ -110,25 +115,25 @@ Styleguide pager
   appearance: none;
 }
 
-.combo__container {
+.pager__combo-container {
   display: inline-block;
 }
 
-.combo__current {
+.pager__combo-current {
   display: none;
   padding-top: 20px;
 }
 
-.combo__total {
+.pager__combo-total {
   display: inline-block;
   font-weight: normal;
 }
 
 .no-js {
-  .combo__current {
+  .pager__combo-current {
     display: inline-block;
   }
-  .combo__dropdown {
+  .pager__combo-dropdown {
     display: none;
   }
 }
@@ -147,9 +152,9 @@ Styleguide pager
     float: none;
     width: 160px;
   }
-  .forward__text {
+  .pager__forward-text {
     display: inline;
-    padding-left: 25px;
+    padding-left: 15px;
     float: left;
   }
 }

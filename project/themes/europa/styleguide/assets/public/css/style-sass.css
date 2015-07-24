@@ -8407,12 +8407,14 @@ Styleguide pager
     height: 80px;
     overflow: hidden; }
 
-.back__arrow {
+.pager__back-arrow {
   display: inline-block;
   height: 20px;
   width: 10px;
   position: relative;
-  left: -5px; }
+  left: -5px;
+  font-size: 1.3em;
+  top: -3px; }
 
 .pager__forward {
   display: inline-block;
@@ -8424,12 +8426,15 @@ Styleguide pager
     height: 80px;
     overflow: hidden; }
 
-.forward__arrow {
+.pager__forward-arrow {
   padding-left: 10px;
   height: 20px;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 1.3em;
+  position: relative;
+  top: -3px; }
 
-.forward__text {
+.pager__forward-text {
   display: none; }
 
 .pager__combo {
@@ -8441,10 +8446,10 @@ Styleguide pager
   height: 80px;
   width: 180px; }
 
-.combo__upper {
+.pager__combo-upper {
   position: relative; }
 
-.combo__dropdown {
+.pager__combo-dropdown {
   background: transparent url("../images/png/arrow-down-blue.png") no-repeat scroll 117px center;
   border: none;
   color: #004494;
@@ -8458,21 +8463,21 @@ Styleguide pager
   -moz-appearance: none;
   appearance: none; }
 
-.combo__container {
+.pager__combo-container {
   display: inline-block; }
 
-.combo__current {
+.pager__combo-current {
   display: none;
   padding-top: 20px; }
 
-.combo__total {
+.pager__combo-total {
   display: inline-block;
   font-weight: normal; }
 
-.no-js .combo__current {
+.no-js .pager__combo-current {
   display: inline-block; }
 
-.no-js .combo__dropdown {
+.no-js .pager__combo-dropdown {
   display: none; }
 
 @media (min-width: 480px) {
@@ -8485,9 +8490,9 @@ Styleguide pager
   .pager__forward {
     float: none;
     width: 160px; }
-  .forward__text {
+  .pager__forward-text {
     display: inline;
-    padding-left: 25px;
+    padding-left: 15px;
     float: left; } }
 
 /*
