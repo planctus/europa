@@ -299,7 +299,7 @@
             var selected = 'selected="selected"';
           }
           options += '<option value="' + value + '"' + selected + '>' + title + '</option>';
-          $(this).remove();
+          $(this).hide();
         });
         if(options != '') {
           var select = $('<span class="pager-dropdown-wrapper"><select class="pager-dropdown">' + options + '</select></span>');
@@ -322,7 +322,8 @@
             },
             change: function(event) {
               if($(this).data('activation') === 'activated'){
-                selectNav(event);
+                var optionHref= $(this).val();
+                $('.pager-item a[href="' + optionHref + '"]').trigger('click');
               }
             }
           });
@@ -533,6 +534,7 @@
       });
     }
   }
+
 
   function selectNav(event) {
     var href = $(event.target).val();
