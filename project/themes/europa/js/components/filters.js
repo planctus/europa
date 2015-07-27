@@ -65,7 +65,6 @@
           enquire.register('screen and (min-width: 992px)', {
             // desktop
             match : function() {
-              var $sidebarFirst = $(".region-sidebar-first"),
                 $filtersWrapper = $(".filters__wrapper");
 
               $filtersSubmit.addClass('ctools-auto-submit-click');
@@ -88,8 +87,6 @@
             },
             // mobile
             unmatch : function() {
-              var $sidebarFirst = $(".region-sidebar-first");
-
               // Showing buttons on viewport switch
               showFilterButtons();
 
@@ -113,14 +110,12 @@
               } else {
                 $filters.addClass('collapse');
               }
-              // Hiding filter buttons
-              //hideMainFilterButtons();
               $filtersSubmit.removeClass('ctools-auto-submit-click');
               $filters.wrapInner("<div class='filters__wrapper'></div>");
 
               if (!oldIE) {
                 $filtersSubmit.click(function () {
-                  if (!$filtersSubmit.is('ctools-auto-submit-click')) {
+                  if (!$filtersSubmit.hasClass('ctools-auto-submit-click')) {
                     $filters.collapse('hide');
                   }
                 });
