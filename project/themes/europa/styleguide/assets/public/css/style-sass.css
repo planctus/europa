@@ -8378,6 +8378,8 @@ Styleguide pager
   margin: 0 3px;
   height: 80px;
   width: 180px; }
+  .pager__combo.first {
+    margin-left: 83px; }
 
 .pager__combo-upper {
   position: relative; }

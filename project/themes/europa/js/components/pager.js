@@ -15,7 +15,7 @@
             var selected = 'selected="selected"';
           }
           options += '<option value="' + value + '"' + selected + '>' + title + '</option>';
-          $(this).remove();
+          $(this).hide();
         });
         if(options != '') {
           var select = $('<span class="pager__combo-upper"><select class="pager__combo-dropdown">' + options + '</select></span>');
@@ -38,7 +38,10 @@
             },
             change: function(event) {
               if($(this).data('activation') === 'activated'){
-                selectNav(event);
+                var optionHref = $(this).val(),
+                    $pagerItem = $('.pager__item:hidden');
+                  $pagerItem.children('a[href="' + optionHref + '"]').click();
+                  console.log($pagerItem.children('a[href="' + optionHref + '"]'));
               }
             }
           });
@@ -47,11 +50,4 @@
       });
     }
   };
-
-  function selectNav(event) {
-    var href = $(event.target).val();
-    if(href !== window.location.href) {
-      window.location.href = href;
-    }
-  }
 })(jQuery);

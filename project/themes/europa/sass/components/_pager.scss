@@ -92,6 +92,10 @@ Styleguide pager
   margin: 0 3px;
   height: 80px;
   width: 180px;
+
+  &.first {
+    margin-left: 83px;
+  }
 }
 
 .pager__combo-upper {
@@ -148,7 +152,7 @@ Styleguide pager
   .pager {
     width: 460px;
   }
-  
+
   .pager__combo {
     display: block;
   }
