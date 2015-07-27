@@ -475,8 +475,9 @@
       // Saving .block-filters in variable as a generic element, so that
       // The script works for all filter blocks on current page
       var $blockFilters = $('.block-filters'),
+          blockFiltersId = $blockFilters.attr('id');
           hideText      = Drupal.t('Hide'),
-            refineText  = Drupal.t('Refine');
+          refineText  = Drupal.t('Refine');
 
       // Hide filter button on ajax call
       if ($blockFilters.is(':visible')) {
@@ -485,7 +486,7 @@
 
       if ('.filter-button'.length > 0) {
         $('.view-header .result-count', context).after('<div class="filter-button">' +
-                                      '<button class="btn btn-primary hidden-md hidden-lg" type="button" data-toggle="collapse" data-target="#block-views-exp-agenda-list" aria-expanded="false" aria-controls="collapseFilters">' +
+                                      '<button class="btn btn-primary hidden-md hidden-lg" type="button" data-toggle="collapse" data-target="#'+ blockFiltersId + '" aria-expanded="false" aria-controls="collapseFilters">' +
                                         refineText +
                                       '</button>' +
                                     '</div>');
@@ -496,7 +497,7 @@
         $('.form-submit', this).removeClass('ctools-auto-submit-click');
 
         $blockFilters.on('show.bs.collapse', function(){
-          $(this).prepend('<a class="close" data-toggle="collapse" data-target="#block-views-exp-agenda-list">'+hideText+'</a>');
+          $(this).prepend('<a class="close" data-toggle="collapse" data-target="#' + blockFiltersId + '">'+hideText+'</a>');
           $('.filter-button').hide();
         });
 
