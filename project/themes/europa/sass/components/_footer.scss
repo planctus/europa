@@ -180,3 +180,24 @@ a.footer__site-switcher {
     }
   }
 }
+
+// External link specific adjustments
+.footer {
+  a {
+    padding-right: 1.1em !important;
+    &#{"[" + $external_link_pattern + "]"} {
+      &:after {
+        position: absolute;
+        line-height: 2.2;
+      }
+    }
+  }
+
+  .footer__icon--social {
+    padding-right: 0 !important;
+  }
+
+  a.footer__site-switcher {
+    padding-right: 30px !important;
+  }
+}

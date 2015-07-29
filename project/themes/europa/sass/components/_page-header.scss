@@ -54,6 +54,19 @@ Styleguide page-header
   }
 }
 
+// External link specific adjustments
+.page-header {
+  a {
+    &#{"[" + $external_link_pattern + "]"} {
+      padding-right: 1.1em;
+      &:after {
+        position: absolute;
+        line-height: 2.2;
+      }
+    }
+  }
+}
+
 // Drupal.
 .front .page-header {
   @extend .page-header--featured;
