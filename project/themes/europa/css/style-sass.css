@@ -5726,6 +5726,9 @@ Styleguide buttons
   .btn:focus, .inpage-nav__navbar .inpage-nav__toggle:focus {
     outline: 2px solid #ffd617;
     border-color: #ffd617; }
+  .btn:after, .inpage-nav__navbar .inpage-nav__toggle:after {
+    line-height: inherit;
+    position: static; }
   .btn.btn-default, .inpage-nav__navbar .btn-default.inpage-nav__toggle {
     border-color: #004494;
     color: #004494;
@@ -5852,6 +5855,17 @@ Styleguide buttons.btn-search
   border-color: #fff;
   background: #e2e2e2;
   color: #575757; }
+
+a.btn[href^="http"], .inpage-nav__navbar a[href^="http"].inpage-nav__toggle {
+  padding-right: 2.1em; }
+  a.btn[href^="http"]:after, .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:after {
+    position: absolute;
+    line-height: 1.4 !important; }
+  a.btn[href^="http"].btn-block, .inpage-nav__navbar a[href^="http"].btn-block.inpage-nav__toggle {
+    padding-right: 1em; }
+    a.btn[href^="http"].btn-block:after, .inpage-nav__navbar a[href^="http"].btn-block.inpage-nav__toggle:after {
+      position: static;
+      line-height: inherit; }
 
 /*
 Button group
@@ -6100,11 +6114,21 @@ a:focus {
 p a {
   text-decoration: underline; }
 
-.is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after {
-  display: inline-block;
-  font-size: 75%;
-  margin-left: 0.4em;
-  margin-right: 0.2em; }
+.is-external, a[href^="http"], .listing__item-link[href^="http"] .listing__title {
+  position: relative; }
+  .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after {
+    display: inline-block;
+    font-size: 75%;
+    margin-left: 0.4em;
+    margin-right: 0.2em; }
+
+.page-content ul a,
+.page-content p a {
+  padding-right: 1.1em; }
+  .page-content ul a[href^="http"]:after,
+  .page-content p a[href^="http"]:after {
+    position: absolute;
+    line-height: 2.2; }
 
 /*
 Lists
@@ -7208,6 +7232,20 @@ a.footer__site-switcher {
     display: inline-block;
     margin-right: 4px; } }
 
+.footer a {
+  padding-right: 1.1em !important; }
+  .footer a[href^="http"]:after {
+    position: absolute;
+    line-height: 2.2; }
+
+.footer .footer__icon--social {
+  padding-right: 0 !important; }
+
+.footer a.footer__site-switcher {
+  padding-right: 30px !important; }
+  .footer a.footer__site-switcher:after {
+    margin-left: 0; }
+
 /*
 Help Block
 
@@ -7781,6 +7819,11 @@ Styleguide listing
     text-decoration: none; }
   .listing__item-link[href^="http"]:after {
     display: none !important; }
+  .listing__item-link[href^="http"] .listing__title {
+    padding-right: 1.2em; }
+    .listing__item-link[href^="http"] .listing__title:after {
+      position: absolute;
+      line-height: 1.6; }
 
 .listing__column-second {
   width: 100%;
@@ -7803,7 +7846,8 @@ Styleguide listing
   font-size: 1em;
   padding: 0;
   display: inline-block;
-  line-height: 1.3; }
+  line-height: 1.3;
+  position: relative; }
   .listing__title + * {
     font-size: 0.889em;
     margin-top: 0.7em; }
@@ -7854,11 +7898,15 @@ Styleguide listing
   .listing--cta .listing__item:focus .listing__title {
     color: #ffffff; }
 
+.listing--cta .listing__title {
+  position: relative;
+  padding-right: 1.3em; }
+
 .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
   margin-left: 10px;
+  margin-top: 2px;
   font-size: 1.2em;
-  top: 4px;
-  position: relative; }
+  position: absolute; }
 
 @media (min-width: 480px) {
   .listing__column-second {
@@ -7917,6 +7965,9 @@ ul.listing--title {
     padding-top: 0.9em;
     padding-bottom: 0.7em;
     padding-right: 2em; }
+  .listing--title a.listing__title:after,
+  ul.listing--title a.listing__title:after {
+    line-height: 1.6; }
 
 /*
 Listing teaser
@@ -8186,6 +8237,12 @@ Styleguide page-header
     .page-header--featured p, .front .page-header p {
       font-size: 1.667em; }
 
+.page-header a[href^="http"] {
+  padding-right: 1.1em; }
+  .page-header a[href^="http"]:after {
+    position: absolute;
+    line-height: 2.2; }
+
 .skip-link,
 #skip-link {
   position: fixed;
@@ -8345,6 +8402,12 @@ Styleguide notification
       width: 75%; }
     .notification__content .notification__btn {
       float: right; } }
+
+.notification a {
+  padding-right: 1.1em; }
+  .notification a[href^="http"]:after {
+    position: absolute;
+    line-height: 2.2; }
 
 /*
 Social Media
