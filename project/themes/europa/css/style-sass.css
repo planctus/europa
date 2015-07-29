@@ -8401,6 +8401,12 @@ Styleguide notification
     .notification__content .notification__btn {
       float: right; } }
 
+.notification a {
+  padding-right: 1.1em; }
+  .notification a[href^="http"]:after {
+    position: absolute;
+    line-height: 2.2; }
+
 /*
 Social Media
 

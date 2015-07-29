@@ -65,3 +65,16 @@ Styleguide notification
     }
   }
 }
+
+// External link specific adjustments
+.notification {
+  a {
+    padding-right: 1.1em;
+    &#{"[" + $external_link_pattern + "]"} {
+      &:after {
+        position: absolute;
+        line-height: 2.2;
+      }
+    }
+  }
+}
