@@ -621,14 +621,21 @@ function europa_field($variables) {
   }
 
   // Render the items.
-  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= drupal_render($item);
+  if ($variables['element']['#view_mode'] == 'title') {
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
   }
-  $output .= '</div>';
+  else {
+    $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
+    $output .= '</div>';
 
-  // Render the top-level DIV.
-  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+    // Render the top-level DIV.
+    $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+  }
 
   return $output;
 }
