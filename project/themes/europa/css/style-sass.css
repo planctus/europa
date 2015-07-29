@@ -7243,6 +7243,8 @@ a.footer__site-switcher {
 
 .footer a.footer__site-switcher {
   padding-right: 30px !important; }
+  .footer a.footer__site-switcher:after {
+    margin-left: 0; }
 
 /*
 Help Block

@@ -199,5 +199,9 @@ a.footer__site-switcher {
 
   a.footer__site-switcher {
     padding-right: 30px !important;
+
+    &:after {
+      margin-left: 0;
+    }
   }
 }
