@@ -41,7 +41,6 @@
                 var optionHref = $(this).val(),
                     $pagerItem = $('.pager__item:hidden');
                   $pagerItem.children('a[href="' + optionHref + '"]').click();
-                  console.log($pagerItem.children('a[href="' + optionHref + '"]'));
               }
             }
           });

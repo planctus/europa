@@ -1184,7 +1184,7 @@ function europa_pager($variables) {
       $select = array();
       if ($li_first && $i > 1) {
         $items[] = array(
-          'class' => array('pager__item--first select'),
+          'class' => array('pager__item select'),
           'data' => $li_first,
         );
       }
@@ -1222,7 +1222,7 @@ function europa_pager($variables) {
     }
     if ($li_last && $i < $pager_max) {
       $items[] = array(
-        'class' => array('pager__item--last select'),
+        'class' => array('pager__item select'),
         'data' => $li_last,
       );
     }
