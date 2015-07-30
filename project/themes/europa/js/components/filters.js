@@ -26,7 +26,7 @@
         $('.filters__btn-collapse, .filters__btn-reset--small').show();
       }
 
-      // Adding buttons for theattach: function(context, settings) {   filters
+      // Adding buttons for the filters
       if ($resultsCount.is(':visible') && !$('.filters__btn-collapse').length) {
         $resultsCount
           .append(
@@ -52,7 +52,7 @@
       // Add throbber next to content type and items count text
       $filters.once('filters', function() {
         throbber = '<div class="ajax-progress ajax-progress-throbber"><i class="icon icon--spinner is-spinning"></i></div>';
-          $(document)
+        $(document)
           .ajaxStart(function(e) {
             if (e.currentTarget.activeElement.form == 'undefined' && e.currentTarget.activeElement.form.id === filtersFormId) {
               $itemsNumber
