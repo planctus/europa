@@ -37,13 +37,10 @@
               }
             },
             change: function(event) {
-              console.log(event);
               if($(this).data('activation') === 'activated'){
-                var optionHref = $(this).val();
-                console.log(optionHref);
-                
-                //$pagerItem = $('.pager__item:hidden');
-                //$pagerItem.children('a[href="' + optionHref + '"]').trigger('click');
+                var optionHref = $(this).val(),
+                  $pagerItem = $('.pager__item:hidden');
+                $pagerItem.children('a[href="' + optionHref + '"]').click();
               }
             }
           });
