@@ -7229,8 +7229,7 @@ a.footer__site-switcher {
 @media (min-width: 992px) {
   .footer__site-switcher > * {
     white-space: nowrap;
-    display: inline-block;
-    margin-right: 4px; } }
+    display: inline-block; } }
 
 .footer a {
   padding-right: 1.1em !important; }
@@ -7243,8 +7242,6 @@ a.footer__site-switcher {
 
 .footer a.footer__site-switcher {
   padding-right: 30px !important; }
-  .footer a.footer__site-switcher:after {
-    margin-left: 0; }
 
 /*
 Help Block
