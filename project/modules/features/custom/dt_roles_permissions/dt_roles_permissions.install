@@ -28,3 +28,12 @@ function dt_roles_permissions_uninstall() {
 function dt_roles_permissions_update_7101() {
   features_revert_module(array('dt_roles_permissions'));
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Revert feature.
+ */
+function dt_roles_permissions_update_7102() {
+  features_revert_module(array('dt_roles_permissions'));
+}
