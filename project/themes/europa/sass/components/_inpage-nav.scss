@@ -17,6 +17,7 @@ Styleguide inpagenav
   &.affix-top {
     position:relative;
   }
+  @extend .hidden-print;
 }
 
 .inpage-nav {

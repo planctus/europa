@@ -16,6 +16,7 @@ $breadcrumb-heigth: 2.778em;
   padding: 0 ($grid-gutter-width / 2);
   border-radius: 0;
   overflow: hidden;
+  @extend .hidden-print;
 
   ol,
   ul {
