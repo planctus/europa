@@ -103,16 +103,16 @@ function dt_contact_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'nexteuropa_ds_layouts_formatter_link_button_default',
+        'type' => 'link_button_default',
         'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'nexteuropa_ds_layouts_formatter_link_button_default',
+        'type' => 'link_button_default',
         'weight' => 5,
       ),
     ),
