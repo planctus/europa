@@ -73,53 +73,9 @@ function dt_topic_update_7105() {
 /**
  * Implements hook_update_N().
  *
- * First we force update the expert display suite config.
- * Then we revert dt_topic.
+ * Feature revert.
  */
 function dt_topic_update_7106() {
-  // One time update function.
-  // Get the database schema for the exportable.
-  $schema = ctools_export_get_schema('ds_field_settings');
-  $export = $schema['export'];
-
-  // Use this schema to get the defaults
-  // from the feature's pickled PHP objects.
-  $fields_instances = _ctools_export_get_defaults('ds_field_settings', $export);
-
-  // Extract the layout we want. In this case the topic content type.
-  $fields_instance = $fields_instances['node|topic|full'];
-
-  // Open our database query.
-  $q = db_merge('ds_field_settings');
-  $q->key(array('id' => $fields_instance->id));
-
-  // Define our new settings.
-  $newsettings = array(
-    'ow' => TRUE,
-    'ow-el' => 'div',
-    'ow-cl' => 'col-md-6',
-  );
-
-  // Merge the old with the new settings.
-  $addoptions = array_merge(
-    $fields_instance->settings['field_topic_tasks']['formatter_settings']['ft'],
-    $newsettings
-  );
-
-  // Set the new settings to our data array.
-  $fields_instance->settings['field_topic_tasks']['formatter_settings']['ft'] = $addoptions;
-
-  // Add the new data to our query.
-  $q->fields(array(
-    'entity_type' => $fields_instance->entity_type,
-    'bundle' => $fields_instance->bundle,
-    'view_mode' => $fields_instance->view_mode,
-    'settings' => serialize($fields_instance->settings),
-  ));
-
-  // Execure the query.
-  $q->execute();
-
   // Reverting feature.
   features_revert_module('dt_topic');
 }
