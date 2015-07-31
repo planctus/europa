@@ -1,3 +1,3 @@
 # Description
 
-This is the dt_political repository.
+This is the dt_common repository.
