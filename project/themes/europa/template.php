@@ -561,14 +561,14 @@ function europa_field($variables) {
         $reference = array_shift($element[0]);
       }
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
-      $layout_name = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
+      $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
       $layout_name_clean = str_replace('_', '-', $layout_name);
 
       $settings = array();
       $settings['view_mode'] = $first_node['#view_mode'];
       $settings['layout'] = $layout_name_clean;
-      $settings['modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
-      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
+      $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
+      $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
 
       // Custom listing settings based on view mode.
       $listing_view_modes = array('title', 'meta', 'teaser');
