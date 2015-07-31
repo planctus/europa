@@ -73,12 +73,10 @@ function dt_topic_update_7105() {
 /**
  * Implements hook_update_N().
  *
- * Reverting dt_topic.
+ * First we force update the expert display suite config.
+ * Then we revert dt_topic.
  */
 function dt_topic_update_7106() {
-  // Reverting feature.
-  features_revert_module('dt_topic');
-
   // One time update function.
   // Get the database schema for the exportable.
   $schema = ctools_export_get_schema('ds_field_settings');
@@ -121,4 +119,7 @@ function dt_topic_update_7106() {
 
   // Execure the query.
   $q->execute();
+
+  // Reverting feature.
+  features_revert_module('dt_topic');
 }
