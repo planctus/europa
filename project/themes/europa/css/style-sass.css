@@ -8406,8 +8406,7 @@ Styleguide pager
   width: 10px;
   position: relative;
   left: -5px;
-  font-size: 1.3em;
-  top: -3px; }
+  font-size: 1.3em; }
 
 .pager__forward {
   display: inline-block;
@@ -8424,8 +8423,7 @@ Styleguide pager
   height: 20px;
   display: inline-block;
   font-size: 1.3em;
-  position: relative;
-  top: -3px; }
+  position: relative; }
 
 .pager__forward-text {
   display: none; }
@@ -8494,6 +8492,7 @@ Styleguide pager
   .pager__forward-text {
     display: inline;
     padding-left: 15px;
+    padding-top: 4px;
     float: left; } }
 
 .region-content ul.pager {

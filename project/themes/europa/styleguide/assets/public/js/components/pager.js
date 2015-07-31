@@ -39,8 +39,8 @@
             change: function(event) {
               if($(this).data('activation') === 'activated'){
                 var optionHref = $(this).val(),
-                    $pagerItem = $('.pager__item:hidden');
-                  $pagerItem.children('a[href="' + optionHref + '"]').click();
+                  $pagerItem = $('.pager__item:hidden');
+                $pagerItem.children('a[href="' + optionHref + '"]').click();
               }
             }
           });
