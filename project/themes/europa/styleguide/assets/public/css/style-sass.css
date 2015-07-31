@@ -6084,8 +6084,8 @@ p a {
     margin-left: 0.4em;
     margin-right: 0.2em; }
 
-.page-content ul a,
-.page-content p a {
+.page-content ul a[href^="http"],
+.page-content p a[href^="http"] {
   padding-right: 1.1em; }
   .page-content ul a[href^="http"]:after,
   .page-content p a[href^="http"]:after {
