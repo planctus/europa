@@ -447,3 +447,10 @@ function dt_core_update_7129() {
 function dt_core_update_7130() {
   module_enable(array('dt_site_menu'));
 }
+
+/**
+ * Enable nexteuropa_formatters module.
+ */
+function dt_core_update_7131() {
+  module_enable(array('nexteuropa_formatters'));
+}
