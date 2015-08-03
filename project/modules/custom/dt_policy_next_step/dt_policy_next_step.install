@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * The next step field install file for NextEuropa Strategy Policy content type.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function dt_policy_next_step_field_schema($field) {
+  $columns = array(
+    'when_timeframe' => array(
+      'type' => 'varchar',
+      'length' => $field['settings']['max_length'],
+      'not null' => FALSE,
+    ),
+    'steps_in_bullets' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'not null' => FALSE,
+    ),
+  );
+  $indexes = array(
+    'when_timeframe' => array('when_timeframe'),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}

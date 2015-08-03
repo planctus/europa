@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Code for the dt Publication feature.
+ */
+
+include_once 'dt_publication.features.inc';
+
+/**
+ * Implements hook_migrate_api().
+ */
+function dt_publication_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Stage initial content, publication types.'),
+      ),
+    ),
+    'migrations' => array(
+      'DTPublicationPublicationTypes' => array(
+        'class_name' => 'DTPublicationPublicationTypesMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}

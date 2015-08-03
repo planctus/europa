@@ -1,0 +1,574 @@
+<?php
+/**
+ * @file
+ * Code for the Social Network Links feature.
+ */
+
+include_once 'dt_social_network_links.features.inc';
+
+define('DT_SOCIAL_NETWORK_LINKS_CSS', 'public://social_network_icons/social_network_icons.css');
+
+/**
+ * Implements hook_field_schema().
+ */
+function dt_social_network_links_field_schema($field) {
+
+  if ($field['type'] == 'social_network_link') {
+    $schema['columns']['title'] = array(
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+      'sortable' => TRUE,
+      'views' => TRUE,
+    );
+    $schema['columns']['url'] = array(
+      'type' => 'varchar',
+      'length' => 255,
+      'not null' => FALSE,
+      'sortable' => TRUE,
+      'views' => TRUE,
+    );
+    $schema['columns']['social_network'] = array(
+      'type' => 'int',
+      'not null' => FALSE,
+      'sortable' => TRUE,
+      'views' => TRUE,
+    );
+    $schema['columns']['enabled'] = array(
+      'type' => 'int',
+      'not null' => FALSE,
+      'sortable' => TRUE,
+      'views' => TRUE,
+    );
+    $schema['indexes'] = array(
+      'title' => array('title'),
+      'social_network' => array('social_network'),
+      'url' => array('url'),
+      'enabled' => array('url'),
+    );
+
+    return $schema;
+  }
+}
+
+/**
+ * Implements hook_element_info().
+ */
+function dt_social_network_links_element_info() {
+  $elements = array();
+  $elements['social_network_link'] = array(
+    '#input' => TRUE,
+    '#process' => array('dt_social_network_links_field_process'),
+    '#element_validate' => array('dt_social_network_links_field_validate'),
+    '#theme_wrappers' => array('form_element'),
+  );
+
+  return $elements;
+}
+
+/**
+ * Implements hook_field_process().
+ */
+function dt_social_network_links_field_process($element, $form_state, $complete_form) {
+  $element['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => isset($items[$delta]['title']) ? $items[$delta]['title'] : NULL,
+  );
+  $element['url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#default_value' => isset($items[$delta]['url']) ? $items[$delta]['url'] : NULL,
+  );
+  $element['social_network'] = array(
+    '#type' => 'select',
+    '#title' => t('Social Network'),
+    '#options' => dt_social_network_links_term_options('social_networks'),
+    '#default_value' => isset($items[$delta]['social_network']) ? $items[$delta]['social_network'] : NULL,
+  );
+  $element['enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enabled'),
+    '#default_value' => isset($items[$delta]['enabled']) ? $items[$delta]['enabled'] : 1,
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function dt_social_network_links_field_info() {
+  return array(
+    'social_network_link' => array(
+      'label' => t('Social network link'),
+      'description' => t('This field provides the settings for a social network link'),
+      'instance_settings' => array(
+        'title' => 0,
+        'url' => 0,
+        'social_network' => 0,
+      ),
+      'default_widget' => 'social_network_link_default',
+      'default_formatter' => 'social_network_link_default',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function dt_social_network_links_field_is_empty($item, $field) {
+
+  if ($field['type'] == 'social_network_link') {
+    if (empty($item['url']) && (empty($item['social_network']) || $item['social_network'] == '0')) {
+
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function dt_social_network_links_field_validate($obj_type, $object, $field, $instance, $langcode, &$items, &$errors) {
+  if ($field['type'] == 'social_network_link') {
+    foreach ($items as $delta => $item) {
+      if (!dt_social_network_links_field_is_empty($item, $field) && (empty($item['url']) || empty($item['social_network']))) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'field_social_link_invalid',
+          'message' => t('Please set URL and choose social network'),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_error().
+ *
+ * hook_field_widget_error() lets us figure out what to do with errors
+ * we might have generated in hook_field_validate(). Generally, we'll just
+ * call form_error().
+ *
+ * @see field_example_field_validate()
+ * @see form_error()
+ */
+function dt_social_network_links_field_widget_error($element, $error, $form, &$form_state) {
+  switch ($error['error']) {
+    case 'field_social_link_invalid':
+      form_error($element, $error['message']);
+      break;
+  }
+}
+
+/**
+ * Implements hook_widget_info().
+ */
+function dt_social_network_links_field_widget_info() {
+  $formaters = array();
+
+  $formaters['social_network_link_default'] = array(
+    'label' => t('Social network link default widget'),
+    'description' => t('This widget allow users to enter data'),
+    'field types' => array('social_network_link'),
+    'behaviors' => array(
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+      'default value' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+
+  return $formaters;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function dt_social_network_links_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $base = $element;
+
+  $element['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#default_value' => isset($items[$delta]['title']) ? $items[$delta]['title'] : NULL,
+    '#weight' => 0,
+  ) + $base;
+
+  $element['url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#default_value' => isset($items[$delta]['url']) ? $items[$delta]['url'] : NULL,
+    '#weight' => 1,
+  ) + $base;
+
+  $element['social_network'] = array(
+    '#type' => 'select',
+    '#title' => t('Social Network'),
+    '#options' => dt_social_network_links_term_options('social_networks'),
+    '#default_value' => isset($items[$delta]['social_network']) ? $items[$delta]['social_network'] : NULL,
+    '#weight' => -1,
+  ) + $base;
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function dt_social_network_links_field_formatter_info() {
+  return array(
+    'social_network_link_default' => array(
+      'label' => t('Default'),
+      'field types' => array('social_network_link'),
+      'settings' => array('icon_image_style' => ''),
+    ),
+    'social_network_link_css' => array(
+      'label' => t('Uploaded CSS icons'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_theme_css' => array(
+      'label' => t('Theme CSS icons'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_title' => array(
+      'label' => t('Title only'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_url' => array(
+      'label' => t('URL only'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_social_network_name' => array(
+      'label' => t('Social network name only'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_social_network_tid' => array(
+      'label' => t('Social network tid only'),
+      'field types' => array('social_network_link'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function dt_social_network_links_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $image_styles = image_style_options(FALSE, PASS_THROUGH);
+  $element['icon_image_style'] = array(
+    '#title' => t('Icon image style'),
+    '#type' => 'select',
+    '#default_value' => $settings['icon_image_style'],
+    '#empty_option' => t('None (original image)'),
+    '#options' => $image_styles,
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function dt_social_network_links_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  if ($display['type'] == 'social_network_link_default') {
+    $image_styles = image_style_options(FALSE, PASS_THROUGH);
+    // Unset possible 'No defined styles' option.
+    unset($image_styles['']);
+    // Styles could be lost because of enabled/disabled modules that defines
+    // their styles in code.
+    if (isset($image_styles[$settings['icon_image_style']])) {
+      $summary[] = t('Icon image style: @style', array('@style' => $image_styles[$settings['icon_image_style']]));
+    }
+    else {
+      $summary[] = t('Icon image style: original');
+    }
+  }
+
+  return implode('<br />', $summary);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dt_social_network_links_field_formatter_view($obj_type, $object, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  switch ($display['type']) {
+    case 'social_network_link_css':
+    case 'social_network_link_default':
+      foreach ($items as $delta => $item) {
+
+        $term = taxonomy_term_load($item['social_network']);
+        $classname = 'custom';
+        $icon = FALSE;
+        $icon_markup = FALSE;
+        $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
+        if ($term) {
+          if ($icon_field = field_view_field('taxonomy_term', $term, 'field_social_network_icon')) {
+            $icon = TRUE;
+            $image = array(
+              'style_name' => $display['settings']['icon_image_style'],
+              'path' => $icon_field['#items'][0]['uri'],
+              'options' => array(),
+            );
+            if (!empty($display['settings']['icon_image_style'])) {
+              $icon_markup = theme('image_style', $image);
+            }
+            else {
+              $icon_markup = theme('image', $image);
+            }
+          }
+          $classname = field_view_field('taxonomy_term', $term, 'field_social_network_classname');
+          $classname = !$classname ? 'custom' : $classname['#items'][0]['safe_value'];
+
+          $title = $title == $item['url'] ? $term->name : $title;
+        }
+        $icon_markup = $icon_markup && $display['type'] == 'social_network_link_default' ? $icon_markup : '';
+        $output = '<div class="dt_social_network_links social-network-link-' . $delta . ' ' . $display['type'] . '">';
+        $output .= '<a href="' . $item['url'] . '" class="' . $classname . ' social_network_link ' . ($icon ? 'icon' : 'no-icon') . '" title="' . $title . '">' . $icon_markup . '<span class="' . ($icon ? 'element-invisible' : '') . '">' . $title . '</span></a>';
+        $output .= '</div>';
+
+        $element[$delta] = array('#markup' => $output);
+      }
+
+      break;
+
+    case 'social_network_link_theme_css':
+      foreach ($items as $delta => $item) {
+        $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
+        $term = taxonomy_term_load($item['social_network']);
+        $title = $title == $item['url'] ? $term->name : $title;
+        $classname = 'icon-social';
+        if ($term) {
+          $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname');
+          $classname .= ' ' . $class['#items'][0]['safe_value'];
+        }
+
+        $element[$delta] = array(
+          '#theme' => 'link',
+          '#text' => $title,
+          '#path' => $item['url'],
+          '#options' => array(
+            'html' => FALSE,
+            'attributes' => array(
+              'title' => $title,
+              'class' => $classname,
+            ),
+          ),
+        );
+      }
+
+      break;
+
+    case 'social_network_link_title':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => $item['title']);
+      }
+
+      break;
+
+    case 'social_network_link_url':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => $item['title']);
+      }
+
+      break;
+
+    case 'social_network_link_social_network_name':
+      foreach ($items as $delta => $item) {
+        $term = taxonomy_term_load($item['social_network']);
+        if ($term) {
+          $element[$delta] = array('#markup' => $term->name);
+        }
+      }
+
+      break;
+
+    case 'social_network_link_social_network_tid':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => $item['social_network']);
+      }
+
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Helper function to get taxonomy term options for select widget.
+ *
+ * @param string $machine_name
+ *   vocabulary machine name
+ *
+ * @return array
+ *   select options
+ */
+function dt_social_network_links_term_options($machine_name) {
+  $options = array('0' => 'None');
+
+  $vid = taxonomy_vocabulary_machine_name_load($machine_name)->vid;
+
+  $options_source = taxonomy_get_tree($vid);
+
+  foreach ($options_source as $item) {
+    $key = $item->tid;
+    $value = $item->name;
+    $options[$key] = $value;
+  }
+
+  return $options;
+}
+
+/**
+ * Implements hook_settings().
+ */
+function dt_social_network_links_settings() {
+
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('social_networks')) {
+
+    if ($terms = taxonomy_get_tree($vocabulary->vid)) {
+      $fields = array('title', 'url', 'enabled');
+      foreach ($terms as $term) {
+        foreach ($fields as $field) {
+          $var_name = $field . '_' . dt_social_network_links_clean_name($term->name) . '_sn_default';
+          $value = variable_get($var_name, '');
+
+          if ($field != 'enabled') {
+            $form[$var_name] = array(
+              '#title' => $term->name . ' : ' . $field,
+              '#type' => 'textfield',
+              '#required' => FALSE,
+              '#default_value' => $value,
+            );
+          }
+          else {
+            $value = variable_get($var_name, 1);
+            $form[$var_name] = array(
+              '#title' => $term->name . ' : ' . $field,
+              '#type' => 'checkbox',
+              '#required' => FALSE,
+              '#default_value' => $value,
+            );
+          }
+        }
+      }
+    }
+  }
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_permission().
+ */
+function dt_social_network_links_permission() {
+  return array(
+    'administer dt_social_network_links' => array(
+      'title' => t('Administer Social Network Links'),
+      'description' => t('Perform default settings for Social Network Links'),
+    ),
+  );
+}
+
+/**
+ * Cleans a string to be fit as a css classname.
+ */
+function dt_social_network_links_clean_name($string) {
+  return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', check_plain($string)));
+}
+
+/**
+ * Generates a dynamic css file based on the terms in the 'social_networks'.
+ */
+function _dt_social_network_links_generate_css() {
+  $css = "";
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('social_networks')) {
+    if ($terms = taxonomy_get_tree($vocabulary->vid)) {
+      foreach ($terms as $term) {
+        $social_network_link = taxonomy_term_load($term->tid);
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $social_network_link);
+        $classname = $wrapper->field_social_network_classname->raw();
+        $classname = !$classname ? 'custom' : $classname;
+        if ($icon_field = $wrapper->field_social_network_icon->value()) {
+          $path = $icon_field['uri'];
+          $image_path = image_style_path('social_network_icon', $path);
+          $image_url = explode('?', image_style_url('social_network_icon', $path));
+          // Add token to url.
+          $image = str_replace('public://', '../', $image_path) . '?' . $image_url[1];
+          $css .= ".social_network_link_css .$classname{background-image: url(\"$image\");}" . "\n";
+        }
+      }
+    }
+  }
+
+  file_unmanaged_save_data($css, DT_SOCIAL_NETWORK_LINKS_CSS, TRUE);
+  watchdog('dt_social_network_links', 'CSS rebuilt', array(), WATCHDOG_NOTICE);
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function dt_social_network_links_taxonomy_term_insert($term) {
+  dt_social_network_links_taxonomy_term_update($term);
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function dt_social_network_links_taxonomy_term_update($term) {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('social_networks');
+  if ($vocabulary->vid == $term->vid) {
+    _dt_social_network_links_generate_css();
+  }
+}
+
+/**
+ * Implements hook_image_style_flush().
+ */
+function dt_social_network_links_image_style_flush($style) {
+  if ($style['name'] == 'social_network_icon') {
+    _dt_social_network_links_generate_css();
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function dt_social_network_links_preprocess_page(&$vars) {
+  $settings = array(
+    'weight' => 1000,
+    'preprocess' => TRUE,
+    'group' => CSS_DEFAULT,
+  );
+  drupal_add_css(DT_SOCIAL_NETWORK_LINKS_CSS, $settings);
+  drupal_add_css(drupal_get_path('module', 'dt_social_network_links') . '/css/dt_social_network_links.css');
+}
+
+/**
+ * Implements hook_migrate_api().
+ */
+function dt_social_network_links_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Stage initial content, social networks.'),
+      ),
+    ),
+    'migrations' => array(
+      'DTSocialNetworks' => array(
+        'class_name' => 'DTSocialNetworksMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}

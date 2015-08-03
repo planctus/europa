@@ -1,0 +1,70 @@
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader.searchform
+*/
+.search-form {
+  overflow: hidden;
+  @extend .hidden-print;
+}
+
+.search-form__textfield-wrapper {
+  margin: 0;
+  width: 83%;
+  float: left;
+}
+
+.search-form__textfield {
+  margin: 0;
+  border-color: #fff;
+}
+
+.search-form__btn {
+  @extend .icon;
+  @extend .icon--search;
+  width: 17%;
+  float: left;
+  text-indent: 10em;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 2.75em;
+
+  &:before {
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5em;
+    width: 100%;
+    line-height: 1.6em;
+  }
+}
+
+// Drupal overrides
+.search-form .form-type-textfield {
+  @extend .search-form__textfield-wrapper;
+}
+
+@include breakpoint(screen-xs-min) {
+  .search-form__textfield-wrapper {
+    width: 67%;
+  }
+
+  .search-form__btn {
+    text-indent: 0;
+    width: 33%;
+
+    &:before {
+      display: none !important;
+    }
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .search-form {
+    width: 340px;
+  }
+}

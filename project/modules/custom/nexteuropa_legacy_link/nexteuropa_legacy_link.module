@@ -1,0 +1,74 @@
+<?php
+/**
+ * @file
+ * Nexteuropa Legacy link
+ */
+
+/**
+ * Implements hook_entity_load().
+ */
+function nexteuropa_legacy_link_entity_load($entities, $type) {
+  foreach ($entities as $entity) {
+    // If Legacy link field is used add it to path array.
+    $wrapper = entity_metadata_wrapper($type, $entity);
+    if ($wrapper->__isset('field_core_legacy_link')) {
+      $legacy_link = $wrapper->field_core_legacy_link->value();
+      if (!empty($legacy_link)) {
+        $entity->legacy = $legacy_link['url'];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ */
+function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
+  foreach (element_children($output) as $field_name) {
+    $element = &$output[$field_name];
+    // Fix linked entity references to link to Legacy link and not to entity.
+    if ($element['#field_type'] == 'entityreference' || $element['#field_type'] == 'taxonomy_term_reference') {
+      $field = field_info_field($field_name);
+      $instance = field_info_instance($element['#entity_type'], $field_name, $element['#bundle']);
+      $display = field_get_display($instance, $context['view_mode'], $element['#object']);
+
+      if ($element['#field_type'] == 'entityreference') {
+        // Skip entity reference fields not targeting nodes.
+        if (
+          (
+            !isset($display['settings']['link']) ||
+            !isset($field['settings']['target_type']))  &&
+          (
+            $field['settings']['target_type'] !== 'node' ||
+            $field['settings']['target_type'] !== 'taxonomy_term'
+          )
+        ) {
+          continue;
+        }
+
+        foreach ($element['#items'] as $delta => $item) {
+          // Check if item has Legacy link.
+          if (isset($item['entity']->legacy)) {
+            $element[$delta] = array('#markup' => l($item['entity']->title, $item['entity']->legacy));
+          }
+        }
+      }
+      // Taxonomy term reference.
+      else {
+        $fromatters = array('taxonomy_term_reference_link');
+        if (in_array($display['type'], $fromatters)) {
+          foreach ($element['#items'] as $delta => $item) {
+            $term = taxonomy_term_load($item['tid']);
+            $link = isset($term->legacy) ? $term->legacy : url('taxonomy/term/' . $item['tid']);
+
+            $element[$delta] = array(
+              '#type' => 'link',
+              '#title' => $term->name,
+              '#href' => $link,
+            );
+          }
+        }
+      }
+    }
+  }
+}

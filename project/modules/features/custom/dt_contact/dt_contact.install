@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * Contact content type install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_contact_install() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_contact_uninstall() {
+  $path = drupal_get_path('module', 'dt_contact') . '/dt_contact.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Contact feature to take new fields for sure.
+ */
+function dt_contact_update_7101() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+
+  // Reverting feature.
+  features_revert_module('dt_contact');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_contact' => array('field_instance', 'variable'),
+  ));
+}
+
+
+/**
+ * Reverting DT Contact feature to take new fields for sure.
+ */
+function dt_contact_update_7102() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+
+  // Reverting feature.
+  features_revert_module('dt_contact');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_contact' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing field_contact_online_contact.
+ */
+function dt_contact_update_7103() {
+  $field_name = 'field_contact_online_contact';
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Reverting dt_contact.
+ */
+function dt_contact_update_7104() {
+  // Reverting feature.
+  features_revert_module('dt_contact');
+}
+
+/**
+ * Changing the label of the contact email.
+ */
+function dt_contact_update_7105() {
+  features_revert_module('dt_contact');
+}

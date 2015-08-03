@@ -1,0 +1,40 @@
+// Logo
+//
+// Ec logo
+//
+// Markup: html/logo.html
+//
+// Styleguide siteheader.logo
+
+
+// Component
+// --------------------------------------------------
+.logo {
+  display: block;
+
+  width: 140px;
+  height: 70px;
+
+  background: url('../images/svg/logo.svg') no-repeat;
+}
+
+.no-svg {
+  .logo {
+    background-image: url('../images/png/logo.png');
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .logo {
+    margin-left: 15px;
+  }
+  .front .logo  {
+    margin-left: 0;
+  }
+}
+
+@media print {
+  .logo:before {
+    content: url('../images/svg/logo.svg');
+  }
+}

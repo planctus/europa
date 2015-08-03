@@ -1,0 +1,73 @@
+/*
+Page header
+
+Page header component
+
+Markup: html/page-header.html
+
+.page-header--featured - Featured Page Header
+
+Styleguide page-header
+*/
+.page-header {
+  background: $grey-lightest;
+  margin: 0;
+  padding: 30px 0;
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: $font-size-h4;
+    line-height: 1.5;
+  }
+
+  &__top,
+  &__main,
+  &__bottom {
+    display: block;
+    width: 100%;
+  }
+
+  &__top {
+    text-transform: uppercase;
+  }
+  &__main {
+    line-height: $line-height-base;
+  }
+  &__bottom {
+    font-size: 26px;
+  }
+
+  &--featured {
+    background: $brand-primary;
+    color: #fff;
+    line-height: 1.5;
+    h2 {
+      color: #fff;
+    }
+    p {
+      font-size: $font-size-h2;
+    }
+  }
+}
+
+// External link specific adjustments
+.page-header {
+  a {
+    &#{"[" + $external_link_pattern + "]"} {
+      padding-right: 1.1em;
+      &:after {
+        position: absolute;
+        line-height: 2.2;
+      }
+    }
+  }
+}
+
+// Drupal.
+.front .page-header {
+  @extend .page-header--featured;
+}

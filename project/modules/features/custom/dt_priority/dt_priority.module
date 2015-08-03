@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the dt Priority feature.
+ */
+
+include_once 'dt_priority.features.inc';
