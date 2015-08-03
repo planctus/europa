@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Digital Transformation File install.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nexteuropa_file_install() {
+  // Reverting feature components that have overriden state after installing.
+  features_revert(array(
+    'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
+  ));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function nexteuropa_file_uninstall() {
+  $path = drupal_get_path('module', 'nexteuropa_file') . '/nexteuropa_file.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa File %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing the field_file_lang_specific field.
+ */
+function nexteuropa_file_update_7101() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_file_lang_specific',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  features_revert_module('nexteuropa_file');
+  // The fields need component-based way.
+  features_revert(array(
+    'nexteuropa_file' => array('field_instance'),
+  ));
+}
+
+/**
+ * Reverting the nexteuropa_file fields configurations.
+ */
+function nexteuropa_file_update_7102() {
+  features_revert(array(
+    'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
+  ));
+}

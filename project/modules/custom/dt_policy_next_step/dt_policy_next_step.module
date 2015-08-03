@@ -1,0 +1,229 @@
+<?php
+/**
+ * @file
+ * The next step field definition for NextEuropa Strategy Policy content type.
+ */
+
+/**
+ * Implements hook_field_info().
+ */
+function dt_policy_next_step_field_info() {
+  return array(
+    'dt_policy_next_step_field' => array(
+      'label' => 'Next step',
+      'description' => 'Next step field for NextEuropa Strategy Policy.',
+      'settings' => array('max_length' => 255, 'rows' => 5),
+      'default_widget' => 'dt_policy_next_step_widget',
+      'default_formatter' => 'dt_policy_next_step_formatter_default',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function dt_policy_next_step_field_widget_info() {
+  return array(
+    'dt_policy_next_step_widget' => array(
+      'label' => 'Next step',
+      'field types' => array('dt_policy_next_step_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function dt_policy_next_step_field_widget_settings_form($field, $instance) {
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+
+  $element = array(
+    // Max lenght settings.
+    'size' => array(
+      '#type' => 'textfield',
+      '#title' => t('Size of when/timeframe'),
+      '#default_value' => $settings['size'],
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
+    ),
+    'rows' => array(
+      '#type' => 'textfield',
+      '#title' => t('Rows of steps in bullet'),
+      '#default_value' => isset($settings['rows']) ? $settings['rows'] : NULL,
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
+    ),
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+
+  // In case of only one field item used.
+  if ($field['cardinality'] == 1) {
+    $element['#type'] = 'fieldset';
+  }
+
+  // When and timeframe.
+  $element['when_timeframe'] = array(
+    '#title' => t('When/timeframe'),
+    '#type' => 'textfield',
+    '#description' => t('Please give in text the time.'),
+    '#size' => 100,
+    '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
+  );
+  // Steps in bullets.
+  $element['steps_in_bullets'] = array(
+    '#title' => t('Step in bullets'),
+    '#type' => 'text_format',
+    '#description' => t('Please give the steps in bullet bulleted list format.'),
+    '#default_value' => isset($items[$delta]['steps_in_bullets']) ? $items[$delta]['steps_in_bullets'] : NULL,
+    '#rows' => isset($settings['rows']) ? $settings['rows'] : 5,
+    '#attributes' => array('class' => array('text-full')),
+    '#format' => 'full_html',
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function dt_policy_next_step_field_is_empty($item, $field) {
+  return empty($item['when_timeframe']) || empty($item['steps_in_bullets']);
+}
+
+/**
+ * Implements hook_field_presave().
+ */
+function dt_policy_next_step_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  if ($field['type'] == 'dt_policy_next_step_field') {
+    foreach ($items as $delta => $item) {
+      // The hook_field_presave() called multiple times.
+      // Have to be sure if $item['steps_in_bullets']['value'] exits.
+      if (isset($item['steps_in_bullets']['value']) && is_array($item['steps_in_bullets'])) {
+        $items[$delta]['steps_in_bullets'] = $item['steps_in_bullets']['value'];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function dt_policy_next_step_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  foreach ($items as $delta => $item) {
+    // Check the length on when/timeframe.
+    if (!empty($item['when_timeframe'])) {
+      if (!empty($field['settings']['max_length']) && drupal_strlen($item['when_timeframe']) > $field['settings']['max_length']) {
+        $errors[$field['when_timeframe']][$langcode][$delta][] = array(
+          'error' => 'dt_policy_next_step_max_length',
+          'message' => t('%name: the value may not be longer than %max characters.',
+            array(
+              '%name' => $instance['label'],
+              '%max' => $field['settings']['max_length'],
+            )
+          ),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function dt_policy_next_step_field_formatter_info() {
+  return array(
+    'dt_policy_next_step_formatter_default' => array(
+      'label' => 'Next step format',
+      'field types' => array('dt_policy_next_step_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  if(!empty($items)) {
+    $elements['#prefix'] = '<div class="timeline">';
+    $elements['#suffix'] = '</div>';
+    foreach ($items as $delta => $item) {
+      $item = _dt_policy_next_step_sanitize($item, $langcode);
+      $elements[$delta] = array(
+        '#theme' => $display['type'],
+        '#element' => $item,
+        '#field' => $instance,
+        '#display' => $display,
+      );
+    }
+  }
+
+  return $elements;
+}
+
+/**
+ * Helper function for sanitizing a displaying value.
+ *
+ * @param array $items
+ *   Items to sanitize.
+ * @param string $langcode
+ *   Language code.
+ *
+ * @return array
+ *   Sanitized item.
+ */
+function _dt_policy_next_step_sanitize($items, $langcode) {
+  // Sanitizing items.
+  foreach ($items as $key => $item) {
+    switch ($key) {
+      case 'when_timeframe':
+        $items[$key] = check_plain($item);
+        break;
+
+      case 'steps_in_bullets':
+        $items[$key] = check_markup($item, filter_default_format(), $langcode);
+        break;
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_policy_next_step_theme() {
+  return array(
+    'dt_policy_next_step_formatter_default' => array(
+      'variables' => array('element' => NULL, 'field' => NULL),
+    ),
+  );
+}
+
+/**
+ * Formats a next step default.
+ */
+function theme_dt_policy_next_step_formatter_default($vars) {
+  $element = $vars['element'];
+  $output = '';
+  $output .= '<div class="timeline__item">';
+  // When/timeframe.
+  if (!empty($element['when_timeframe'])) {
+    $output .= '<h4 class="timeline__item-title">' . $element['when_timeframe'] . '</h4>';
+  }
+  if (!empty($element['steps_in_bullets'])) {
+    $output .= '<div class="timeline__text">' . $element['steps_in_bullets'] . '</div>';
+  }
+  $output .= '</div>';
+  return $output;
+}

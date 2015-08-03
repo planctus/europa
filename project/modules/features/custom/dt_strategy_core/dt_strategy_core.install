@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Digital Transformation Strategy Core install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_strategy_core_install() {
+  // Enabling functional features.
+  $features = array(
+    'dt_policy_area',
+    'dt_policy',
+  );
+  module_enable($features);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_strategy_core_uninstall() {
+  $path = drupal_get_path('module', 'dt_strategy_core') . '/dt_strategy_core.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Enabling and reverting content types.
+ */
+function dt_strategy_core_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_policy_area',
+    'dt_strategy_core',
+    'dt_policy_implementation',
+    'dt_policy_keyfile',
+    'dt_policy_input',
+    'dt_policy',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}

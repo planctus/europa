@@ -1,0 +1,25 @@
+/*
+Site header
+
+Markup: html/site-header.html
+
+Styleguide: siteheader
+*/
+
+.site-header {
+  background: $brand-primary;
+  color: #fff;
+  padding-top: 15px;
+  position: relative;
+  .site-header__logo {
+    margin-bottom: 15px;
+  }
+  @media print {
+    -webkit-print-color-adjust: exact;
+    background-color: $brand-primary !important;
+  }
+
+  & > .container-fluid {
+    position: relative;
+  }
+}

@@ -1,0 +1,22 @@
+# Ignore path to db dumps
+_db_dumps
+
+# Sublime Ignore
+*.sublime-*
+
+# PhpStrom .idea
+.idea/
+
+.svn
+release
+bin
+vendor
+build
+docroot
+build.properties.local
+tmp
+project/settings.php
+project/sites.php
+project/files
+project/modules/devel
+.DS_Store
