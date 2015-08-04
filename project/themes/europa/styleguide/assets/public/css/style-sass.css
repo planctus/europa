@@ -8522,12 +8522,17 @@ Styleguide: siteheader
 /*
 Site switcher
 
+Helps the user choose between political and informational websites.
+
 Markup: html/site-switcher.html
+
+.site-switcher--header - Header modifier
+.site-switcher--footer - Footer modifier
 
 Styleguide: siteswitcher
 */
 .site-switcher {
-  background: #f7f7f7;
+  background: #f2f2f2;
   display: block; }
 
 .site-switcher__list {
@@ -8535,38 +8540,50 @@ Styleguide: siteswitcher
   list-style: none;
   margin: 0;
   min-height: 42px; }
-  .site-switcher__list:first-child {
-    border-left: 1px solid #c6d3e3; }
 
 .site-switcher__option {
   display: inline-block;
   text-align: center;
-  width: 49%;
-  vertical-align: top; }
+  vertical-align: top;
+  width: 49%; }
   .site-switcher__option > a {
     display: block;
     width: 100%;
-    padding: 10px 20px; }
+    padding: 10px 30px; }
 
 .site-switcher__option--selected {
-  background: #004494; }
+  background: #004494;
+  border-left: none; }
   .site-switcher__option--selected > a {
     color: #fff;
-    font-weight: bold;
-    position: relative; }
-    .site-switcher__option--selected > a:after {
-      top: 100%;
-      left: 50%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-color: rgba(0, 68, 148, 0);
-      border-top-color: #004494;
-      border-width: 10px;
-      margin-left: -10px; }
+    font-weight: bold; }
+
+.site-switcher--header .site-switcher__list:first-child {
+  border-left: 1px solid #ececec; }
+
+.site-switcher--header .site-switcher__option--selected > a {
+  position: relative; }
+  .site-switcher--header .site-switcher__option--selected > a:after {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 68, 148, 0);
+    border-top-color: #004494;
+    border-width: 10px;
+    margin-left: -10px; }
+
+.site-switcher--footer {
+  min-height: 42px;
+  overflow: auto; }
+  .site-switcher--footer .site-switcher__list {
+    float: right; }
+    .site-switcher--footer .site-switcher__list:first-child {
+      border-left: none; }
 
 @media (min-width: 500px) {
   .site-switcher__option {
