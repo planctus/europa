@@ -8520,6 +8520,59 @@ Styleguide: siteheader
     position: relative; }
 
 /*
+Site switcher
+
+Markup: html/site-switcher.html
+
+Styleguide: siteswitcher
+*/
+.site-switcher {
+  background: #f7f7f7;
+  display: block; }
+
+.site-switcher__list {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  min-height: 42px; }
+  .site-switcher__list:first-child {
+    border-left: 1px solid #c6d3e3; }
+
+.site-switcher__option {
+  display: inline-block;
+  text-align: center;
+  width: 49%;
+  vertical-align: top; }
+  .site-switcher__option > a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px; }
+
+.site-switcher__option--selected {
+  background: #004494; }
+  .site-switcher__option--selected > a {
+    color: #fff;
+    font-weight: bold;
+    position: relative; }
+    .site-switcher__option--selected > a:after {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(0, 68, 148, 0);
+      border-top-color: #004494;
+      border-width: 10px;
+      margin-left: -10px; }
+
+@media (min-width: 500px) {
+  .site-switcher__option {
+    width: auto; } }
+
+/*
 Site header
 
 Markup: html/site-header.html
