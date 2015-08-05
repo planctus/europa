@@ -97,6 +97,11 @@
     </div>
   </div>
 </section>
+<section class="header-top">
+  <div class="container-fluid">
+    <?php print render($page['header_top']); ?>
+  </div>
+</section>
 <header class="site-header" role="banner">
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home - European Commission Beta'); ?>"></a>
