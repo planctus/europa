@@ -106,10 +106,14 @@ function dt_core_get_blocks_content($delta) {
       return $result;
 
     case 'dt_header_site_tab_switcher':
-      return theme('site_switcher_tabs', array('modifier' => array('site-switcher--header')));
+      return array(
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
+      );
 
     case 'dt_footer_site_tab_switcher':
-      return theme('site_switcher_tabs', array('modifier' => array('site-switcher--footer')));
+      return array(
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
+      );
   }
 }
 
@@ -119,8 +123,7 @@ function dt_core_get_blocks_content($delta) {
 function dt_core_theme($existing, $type, $theme, $path) {
   return array(
     'site_switcher_tabs' => array(
-      'file' => 'site_switcher_tabs.tpl.php',
-      'path' => drupal_get_path('module', 'dt_core') . '/templates',
+      'file' => 'dt_core.theme.inc',
       'variables' => array(
         'modifier' => NULL,
       ),

@@ -111,12 +111,6 @@ function dt_core_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-7',
         ),
-        'dt_core-dt_block_footer_site_switcher' => array(
-          'module' => 'dt_core',
-          'delta' => 'dt_block_footer_site_switcher',
-          'region' => 'footer_right',
-          'weight' => '-10',
-        ),
       ),
     ),
   );

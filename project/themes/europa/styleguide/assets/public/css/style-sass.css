@@ -8533,7 +8533,8 @@ Styleguide: siteswitcher
 */
 .site-switcher {
   background: #f2f2f2;
-  display: block; }
+  display: block;
+  font-size: 0.889em; }
 
 .site-switcher__list {
   padding: 0;
