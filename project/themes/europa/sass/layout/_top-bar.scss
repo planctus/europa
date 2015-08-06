@@ -1,5 +1,5 @@
 .top-bar {
-  margin-top: 15px;
+  padding-top: 15px;
   overflow: hidden;
   width: 100%;
 }
@@ -38,6 +38,24 @@
     .site-menu__toggle {
       position: static;
       width: auto;
+    }
+  }
+}
+
+.front {
+  .top-bar {
+    @extend .block--full-width;
+    width: auto;
+    background: $brand-primary;
+  }
+
+  @include breakpoint(screen-md-min) {
+    .top-bar {
+      float: none;
+    }
+
+    .top-bar__wrapper {
+      float: right;
     }
   }
 }

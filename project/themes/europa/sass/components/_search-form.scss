@@ -47,6 +47,12 @@ Styleguide: siteheader.searchform
   }
 }
 
+.front {
+  .search-form__btn {
+    border: 1px solid #fff !important;
+  }
+}
+
 // Drupal overrides
 .search-form .form-type-textfield {
   @extend .search-form__textfield-wrapper;
@@ -70,5 +76,11 @@ Styleguide: siteheader.searchform
 @include breakpoint(screen-md-min) {
   .search-form {
     width: 340px;
+  }
+}
+
+.front {
+  .search-form {
+    border: none;
   }
 }

@@ -10,10 +10,10 @@ $breadcrumb-heigth: 2.778em;
 
 .breadcrumb {
   background: $brand-primary;
-  border-bottom: 1px solid #fff;
   font-size: 0.833em;
   position: relative;
   padding: 0;
+  margin-bottom: 0;
   border-radius: 0;
   overflow: hidden;
   @extend .hidden-print;
@@ -91,6 +91,10 @@ $breadcrumb-heigth: 2.778em;
 }
 
 @include breakpoint(screen-xs-min) {
+  .breadcrumb {
+    border-bottom: 1px solid #fff;
+  }
+
   .breadcrumb__link {
     width: auto;
     &:after {
