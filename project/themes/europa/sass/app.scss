@@ -15,8 +15,10 @@
 //@import "base/font";
 @import "base/form-control";
 @import "base/form-group";
+@import "base/footer-top";
 @import "base/global";
 @import "base/headings";
+@import "base/header-top";
 @import "base/label";
 //@import "base/legend"; -> $form-item-legend-font-size variable is lost during merge
 @import "base/link";

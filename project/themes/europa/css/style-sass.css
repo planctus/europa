@@ -5965,6 +5965,13 @@ Styleguide form.form-group
 .form-group {
   margin-bottom: 1.7em; }
 
+/* Footer top
+
+  Placeholder for adding a background on the .footer-top
+*/
+.footer-top {
+  background: #f2f2f2; }
+
 body {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -6038,6 +6045,13 @@ h6,
   font-size: 0.778em;
   text-decoration: uppercase;
   color: #222222; }
+
+/* Header top
+
+  Placeholder for adding a background on the .header-top
+*/
+.header-top {
+  background: #f2f2f2; }
 
 /*
 Label
