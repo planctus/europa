@@ -11,9 +11,10 @@
 // --------------------------------------------------
 .logo {
   display: block;
+  float: left;
 
   width: 140px;
-  height: 70px;
+  height: 69px;
 
   background: url('../images/svg/logo.svg') no-repeat;
 }
@@ -24,12 +25,28 @@
   }
 }
 
-@include breakpoint(screen-md-min) {
+.front {
   .logo {
-    margin-left: 15px;
+    width: 250px;
+    height: 125px;
+    margin: 0 auto;
+
+    background: url('../images/png/logo--big.png') center center no-repeat;
+    background-size: 100%;
   }
-  .front .logo  {
-    margin-left: 0;
+
+  @include breakpoint(screen-xs-min) {
+    .logo {
+      width: 290px;
+      height: 146px;
+    }
+  }
+
+  @include breakpoint(screen-sm-min) {
+    .logo {
+      width: 378px;
+      height: 192px;
+    }
   }
 }
 

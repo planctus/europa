@@ -33,6 +33,7 @@
 .site-menu__toggle {
   .btn {
     width: 100%;
+    border: 3px solid $brand-primary;
   }
   @extend .hidden-print;
 }

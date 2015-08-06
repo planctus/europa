@@ -5675,6 +5675,7 @@ Styleguide buttons
   border-width: 2px;
   font-weight: 600;
   padding: 0.75em 1em;
+  min-height: 2.75em;
   font-size: 0.889em;
   text-decoration: none; }
   .btn:hover,
@@ -5736,7 +5737,7 @@ Styleguide buttons
       margin-left: 10px;
       font-size: 0.8em; }
   .btn.btn-menu, .inpage-nav__navbar .btn-menu.inpage-nav__toggle {
-    border-color: #fff;
+    border-color: #004494;
     background: #004494;
     color: #fff; }
     .btn.btn-menu:hover,
@@ -5938,7 +5939,7 @@ Styleguide form
   border: 2px solid #b3b4b5;
   border-radius: 0;
   margin-bottom: 1.1em;
-  height: 2.75em;
+  min-height: 2.75em;
   font-size: 0.889em;
   -webkit-box-shadow: none;
   box-shadow: none; }
@@ -6365,7 +6366,7 @@ Styleguide form.textarea
   margin-bottom: 30px; }
 
 .page-navigation {
-  background: #f2f2f2; }
+  background: #004494; }
 
 .sidebar-field-group--important, .front .sidebar-field-group {
   padding-top: 30px; }
@@ -6444,11 +6445,11 @@ Markup: html/breadcrumb.html
 Styleguide breadcrumb
 */
 .breadcrumb {
-  background: #ececec;
+  background: #004494;
+  border-bottom: 1px solid #fff;
   font-size: 0.833em;
   position: relative;
-  margin: 0 -15px;
-  padding: 0 15px;
+  padding: 0;
   border-radius: 0;
   overflow: hidden; }
   .breadcrumb ol,
@@ -6470,10 +6471,15 @@ Styleguide breadcrumb
   margin-right: 8px;
   padding-top: 0.82em;
   padding-bottom: 0.42em;
-  max-width: 100%; }
+  max-width: 100%;
+  color: #fff; }
+  .breadcrumb__link:hover {
+    color: #fff; }
+    .breadcrumb__link:hover .breadcrumb__text {
+      text-decoration: underline; }
 
 .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
-  color: #b3b4b5;
+  color: #fff;
   line-height: inherit !important;
   margin-left: 8px !important;
   font-weight: normal;
@@ -6525,18 +6531,24 @@ Markup: html/breadcrumb--collapsible.html
 Styleguide breadcrumb.collapsible
 */
 .breadcrumb--collapsible .breadcrumb__btn-separator {
-  background: #e2e2e2;
+  background: #023066;
   line-height: 2.778em;
   display: inline-block;
   padding: 0 10px;
   position: absolute;
   bottom: 0;
   left: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #fff; }
   .breadcrumb--collapsible .breadcrumb__btn-separator:hover,
   .breadcrumb--collapsible .breadcrumb__btn-separator:active,
   .breadcrumb--collapsible .breadcrumb__btn-separator:focus {
-    background: #fff; }
+    background: #fff;
+    color: #004494; }
+    .breadcrumb--collapsible .breadcrumb__btn-separator:hover:after,
+    .breadcrumb--collapsible .breadcrumb__btn-separator:active:after,
+    .breadcrumb--collapsible .breadcrumb__btn-separator:focus:after {
+      color: #004494; }
 
 .breadcrumb--collapsible .breadcrumb__link {
   padding-right: 17px;
@@ -7865,12 +7877,13 @@ Styleguide: siteheader.langselect
   .lang-select-site .lang-select-site__code-text {
     position: relative;
     top: -3px;
-    font-size: 0.778em; }
+    font-size: 0.778em;
+    color: #fff; }
   .lang-select-site .lang-select-site__icon {
     position: absolute;
     top: 0;
     left: 0;
-    color: #fff;
+    color: #004494;
     font-size: 1.556em;
     line-height: 1;
     display: inline-block; }
@@ -8135,18 +8148,30 @@ Styleguide listing.column-left
 
 .logo {
   display: block;
+  float: left;
   width: 140px;
-  height: 70px;
+  height: 69px;
   background: url("../images/svg/logo.svg") no-repeat; }
 
 .no-svg .logo {
   background-image: url("../images/png/logo.png"); }
 
-@media (min-width: 992px) {
-  .logo {
-    margin-left: 15px; }
+.front .logo {
+  width: 250px;
+  height: 125px;
+  margin: 0 auto;
+  background: url("../images/png/logo--big.png") center center no-repeat;
+  background-size: 100%; }
+
+@media (min-width: 480px) {
   .front .logo {
-    margin-left: 0; } }
+    width: 290px;
+    height: 146px; } }
+
+@media (min-width: 768px) {
+  .front .logo {
+    width: 378px;
+    height: 192px; } }
 
 @media print {
   .logo:before {
@@ -8286,10 +8311,11 @@ Styleguide notification
 
 */
 .notification {
-  background: #f2f2f2;
-  border-bottom: 8px solid #ffd617;
-  padding: 8px 0 0;
+  background: #ffd617;
+  padding: 10px 0 6px;
   font-size: 14px; }
+  .notification a {
+    color: #000; }
 
 .notification__label {
   display: inline-block;
@@ -8340,15 +8366,18 @@ Markup: html/page-header.html
 Styleguide page-header
 */
 .page-header {
-  background: #f2f2f2;
+  background: #004494;
   margin: 0;
-  padding: 30px 0; }
+  padding: 30px 0;
+  color: #fff; }
   .page-header h1 {
-    margin: 0; }
+    margin: 0;
+    color: #fff; }
   .page-header p {
     margin: 0;
     font-size: 1.222em;
-    line-height: 1.5; }
+    line-height: 1.5;
+    color: #fff; }
   .page-header__top,
   .page-header__main,
   .page-header__bottom {
@@ -8518,8 +8547,7 @@ Markup: html/site-header.html
 Styleguide: siteheader
 */
 .site-header {
-  background: #004494;
-  color: #fff;
+  color: #004494;
   padding-top: 15px;
   position: relative; }
   .site-header .site-header__logo {
@@ -8609,7 +8637,9 @@ Markup: html/site-header.html
 Styleguide: siteheader.searchform
 */
 .search-form {
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #b3b4b5;
+  margin-bottom: 1em; }
 
 .search-form__textfield-wrapper, .search-form .form-type-textfield {
   margin: 0;
@@ -8618,7 +8648,7 @@ Styleguide: siteheader.searchform
 
 .search-form__textfield {
   margin: 0;
-  border-color: #fff; }
+  border: none; }
 
 .search-form__btn {
   width: 17%;
@@ -8627,7 +8657,9 @@ Styleguide: siteheader.searchform
   position: relative;
   padding-top: 0;
   padding-bottom: 0;
-  height: 2.75em; }
+  margin-bottom: 0;
+  min-height: 2.75em;
+  border: none !important; }
   .search-form__btn:before {
     text-indent: 0;
     position: absolute;
@@ -8635,7 +8667,7 @@ Styleguide: siteheader.searchform
     left: 0;
     font-size: 1.5em;
     width: 100%;
-    line-height: 1.6em; }
+    line-height: 1.9em; }
 
 @media (min-width: 480px) {
   .search-form__textfield-wrapper, .search-form .form-type-textfield {
@@ -8668,7 +8700,8 @@ Styleguide: siteheader.searchform
     border: none; }
 
 .site-menu__toggle .btn, .site-menu__toggle .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .site-menu__toggle .inpage-nav__toggle {
-  width: 100%; }
+  width: 100%;
+  border: 3px solid #004494; }
 
 .js .site-menu {
   height: 0; }
