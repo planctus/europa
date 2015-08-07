@@ -14,7 +14,7 @@
   float: left;
 
   width: 140px;
-  height: 69px;
+  height: 70px;
 
   background: url('../images/svg/logo.svg') no-repeat;
 }
@@ -31,16 +31,16 @@
     
     width: 250px;
     height: 125px;
-    margin: 0 auto;
+    margin: 16px auto 40px auto;
 
-    background: url('../images/png/logo--big.png') center center no-repeat;
+    background: url('../images/svg/logo--big.svg') center center no-repeat;
     background-size: 100%;
   }
 
   @include breakpoint(screen-xs-min) {
     .logo {
       width: 290px;
-      height: 146px;
+      height: 153px;
     }
   }
 

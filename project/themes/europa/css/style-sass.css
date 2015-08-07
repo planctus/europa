@@ -6333,7 +6333,7 @@ Styleguide form.textarea
   padding-bottom: 0; }
 
 .top-bar {
-  padding-top: 15px;
+  padding-top: 16px;
   overflow: hidden;
   width: 100%; }
 
@@ -8167,7 +8167,7 @@ Styleguide listing.column-left
   display: block;
   float: left;
   width: 140px;
-  height: 69px;
+  height: 70px;
   background: url("../images/svg/logo.svg") no-repeat; }
 
 .no-svg .logo {
@@ -8177,14 +8177,14 @@ Styleguide listing.column-left
   float: none;
   width: 250px;
   height: 125px;
-  margin: 0 auto;
-  background: url("../images/png/logo--big.png") center center no-repeat;
+  margin: 16px auto 40px auto;
+  background: url("../images/svg/logo--big.svg") center center no-repeat;
   background-size: 100%; }
 
 @media (min-width: 480px) {
   .front .logo {
     width: 290px;
-    height: 146px; } }
+    height: 153px; } }
 
 @media (min-width: 768px) {
   .front .logo {
@@ -8566,16 +8566,17 @@ Styleguide: siteheader
 */
 .site-header {
   color: #004494;
-  padding-top: 15px;
+  padding: 24px 0;
   position: relative; }
-  .site-header .site-header__logo {
-    margin-bottom: 15px; }
   @media print {
     .site-header {
       -webkit-print-color-adjust: exact;
       background-color: #004494 !important; } }
   .site-header > .container-fluid, .section__group--full-width.site-header > *, .block--full-width.site-header > *, .front .top-bar.site-header > *, .field--full-width.site-header > * {
     position: relative; }
+
+.front .site-header {
+  padding-bottom: 0; }
 
 /*
 Site switcher
@@ -8609,6 +8610,8 @@ Styleguide: siteswitcher
     display: block;
     width: 100%;
     padding: 0.444em 1.667em; }
+    .site-switcher__option > a:after {
+      content: none !important; }
 
 .site-switcher__option--selected {
   background: #004494;
@@ -8626,7 +8629,7 @@ Styleguide: siteswitcher
     top: 100%;
     left: 50%;
     border: solid transparent;
-    content: " ";
+    content: " " !important;
     height: 0;
     width: 0;
     position: absolute;
@@ -8637,7 +8640,7 @@ Styleguide: siteswitcher
     margin-left: -10px; }
 
 .site-switcher--footer {
-  overflow: auto; }
+  overflow: visible; }
   .site-switcher--footer .site-switcher__list {
     float: right; }
     .site-switcher--footer .site-switcher__list:first-child {

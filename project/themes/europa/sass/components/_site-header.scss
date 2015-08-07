@@ -8,10 +8,9 @@ Styleguide: siteheader
 
 .site-header {
   color: $brand-primary;
-  padding-top: 15px;
+  padding: 24px 0;
   position: relative;
   .site-header__logo {
-    margin-bottom: 15px;
   }
   @media print {
     -webkit-print-color-adjust: exact;
@@ -20,5 +19,11 @@ Styleguide: siteheader
 
   & > .container-fluid {
     position: relative;
+  }
+}
+
+.front {
+  .site-header {
+    padding-bottom: 0;
   }
 }
