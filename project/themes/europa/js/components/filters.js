@@ -54,7 +54,7 @@
         throbber = '<div class="ajax-progress ajax-progress-throbber"><i class="icon icon--spinner is-spinning"></i></div>';
         $(document)
           .ajaxStart(function(e) {
-            if (typeof e.currentTarget.activeElement.form != 'undefined' && e.currentTarget.activeElement.form.id === filtersFormId) {
+            if (e.currentTarget.activeElement.form == 'undefined' && e.currentTarget.activeElement.form.id === filtersFormId) {
               $itemsNumber
                 .prepend(throbber);
             }

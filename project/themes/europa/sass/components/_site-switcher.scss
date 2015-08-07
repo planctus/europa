@@ -1,0 +1,99 @@
+/*
+Site switcher
+
+Helps the user choose between political and informational websites.
+
+Markup: html/site-switcher.html
+
+.site-switcher--header - Header modifier
+.site-switcher--footer - Footer modifier
+
+Styleguide: siteswitcher
+*/
+
+.site-switcher {
+  background: $grey-lightest;
+  display: block;
+  font-size: $font-size-little;
+}
+
+.site-switcher__list {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  min-height: 2.333em;
+}
+
+.site-switcher__option {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 49%;
+
+  & > a {
+    display: block;
+    width: 100%;
+    padding: 0.444em 1.667em;
+
+    &:after {
+      content: none !important;
+    }
+  }
+}
+
+.site-switcher__option--selected {
+  background: $blue-dark;
+  border-left: none;
+
+  & > a {
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.site-switcher--header {
+  .site-switcher__list {
+    &:first-child {
+      border-left: 1px solid $grey-lighter;
+    }
+  }
+
+  .site-switcher__option--selected {
+    & > a {
+      position: relative;
+
+      &:after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " " !important;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(0, 68, 148, 0);
+        border-top-color: #004494;
+        border-width: 10px;
+        margin-left: -10px;
+      }
+    }
+  }
+}
+
+.site-switcher--footer {
+  overflow: visible;
+
+  .site-switcher__list {
+    float: right;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+
+@media (min-width: 510px) {
+  .site-switcher__option {
+    width: auto;
+  }
+}

@@ -10,18 +10,21 @@ Markup: html/page-header.html
 Styleguide page-header
 */
 .page-header {
-  background: $grey-lightest;
+  background: $brand-primary;
   margin: 0;
   padding: 30px 0;
+  color: #fff;
 
   h1 {
     margin: 0;
+    color: #fff;
   }
 
   p {
     margin: 0;
     font-size: $font-size-h4;
     line-height: 1.5;
+    color: #fff;
   }
 
   &__top,

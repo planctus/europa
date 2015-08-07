@@ -33,8 +33,17 @@
 .site-menu__toggle {
   .btn {
     width: 100%;
+    border: 3px solid $brand-primary;
   }
   @extend .hidden-print;
+}
+
+.front {
+  .site-menu__toggle {
+    .btn {
+      border: 2px solid #fff;
+    }
+  }
 }
 
 .js .site-menu {

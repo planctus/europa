@@ -48,6 +48,7 @@ p a {
       &#{"[" + $external_link_pattern + "]"} {
         padding-right: 1.1em;
         display: inline-block;
+
         &:after {
           position: absolute;
           line-height: 2.2;

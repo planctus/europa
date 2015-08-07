@@ -11,6 +11,7 @@
 // --------------------------------------------------
 .logo {
   display: block;
+  float: left;
 
   width: 140px;
   height: 70px;
@@ -24,12 +25,30 @@
   }
 }
 
-@include breakpoint(screen-md-min) {
+.front {
   .logo {
-    margin-left: 15px;
+    float: none;
+    
+    width: 250px;
+    height: 126px;
+    margin: 16px auto 40px auto;
+
+    background: url('../images/svg/logo--big.svg') center center no-repeat;
+    background-size: 100%;
   }
-  .front .logo  {
-    margin-left: 0;
+
+  @include breakpoint(screen-xs-min) {
+    .logo {
+      width: 290px;
+      height: 153px;
+    }
+  }
+
+  @include breakpoint(screen-sm-min) {
+    .logo {
+      width: 378px;
+      height: 192px;
+    }
   }
 }
 
