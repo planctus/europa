@@ -6333,7 +6333,7 @@ Styleguide form.textarea
   padding-bottom: 0; }
 
 .top-bar {
-  padding-top: 16px;
+  padding: 15px 0 10px 0;
   overflow: hidden;
   width: 100%; }
 
@@ -6350,7 +6350,9 @@ Styleguide form.textarea
 @media (min-width: 992px) {
   .top-bar {
     width: auto;
-    float: right; }
+    float: right;
+    position: relative;
+    top: 6px; }
     .top-bar > .region {
       padding: 0;
       margin: 0; }
@@ -8566,8 +8568,12 @@ Styleguide: siteheader
 */
 .site-header {
   color: #004494;
-  padding: 24px 0;
+  padding: 14px 0;
   position: relative; }
+  @media (min-width: 992px) {
+    .site-header .site-header__logo {
+      position: relative;
+      top: 15px; } }
   @media print {
     .site-header {
       -webkit-print-color-adjust: exact;
@@ -8577,6 +8583,9 @@ Styleguide: siteheader
 
 .front .site-header {
   padding-bottom: 0; }
+
+.front .site-header__logo {
+  top: 0; }
 
 /*
 Site switcher

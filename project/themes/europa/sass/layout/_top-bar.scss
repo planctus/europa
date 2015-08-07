@@ -1,5 +1,5 @@
 .top-bar {
-  padding-top: 16px;
+  padding: 15px 0 10px 0;
   overflow: hidden;
   width: 100%;
 }
@@ -24,6 +24,8 @@
   .top-bar {
     width: auto;
     float: right;
+    position: relative;
+    top: 6px;
 
     & > .region {
       padding: 0;
