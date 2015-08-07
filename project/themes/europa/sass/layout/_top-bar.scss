@@ -1,5 +1,5 @@
 .top-bar {
-  margin-top: 15px;
+  padding: 15px 0 10px 0;
   overflow: hidden;
   width: 100%;
 }
@@ -24,6 +24,8 @@
   .top-bar {
     width: auto;
     float: right;
+    position: relative;
+    top: 6px;
 
     & > .region {
       padding: 0;
@@ -38,6 +40,25 @@
     .site-menu__toggle {
       position: static;
       width: auto;
+    }
+  }
+}
+
+.front {
+  .top-bar {
+    @extend .block--full-width;
+    width: auto;
+    background: $brand-primary;
+  }
+
+  @include breakpoint(screen-md-min) {
+    .top-bar {
+      float: none;
+      position: static;
+    }
+
+    .top-bar__wrapper {
+      float: right;
     }
   }
 }

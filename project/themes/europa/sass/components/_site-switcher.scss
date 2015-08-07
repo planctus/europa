@@ -34,6 +34,10 @@ Styleguide: siteswitcher
     display: block;
     width: 100%;
     padding: 0.444em 1.667em;
+
+    &:after {
+      content: none !important;
+    }
   }
 }
 
@@ -62,7 +66,7 @@ Styleguide: siteswitcher
         top: 100%;
         left: 50%;
         border: solid transparent;
-        content: " ";
+        content: " " !important;
         height: 0;
         width: 0;
         position: absolute;
@@ -77,7 +81,7 @@ Styleguide: siteswitcher
 }
 
 .site-switcher--footer {
-  overflow: auto;
+  overflow: visible;
 
   .site-switcher__list {
     float: right;

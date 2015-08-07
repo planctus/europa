@@ -45,13 +45,14 @@ Styleguide: siteheader.langselect
     position: relative;
     top: -3px;
     font-size: $font-size-xsmall;
+    color: #fff;
   }
 
   .lang-select-site__icon {
     position: absolute;
     top: 0;
     left: 0;
-    color: #fff;
+    color: $brand-primary;
     font-size: $font-size-xsmall * 2;
     line-height: 1;
     display: inline-block;
@@ -62,5 +63,14 @@ Styleguide: siteheader.langselect
   .lang-select-site {
     position: static;
     float: left;
+  }
+}
+
+.front {
+  @include breakpoint(screen-md-min) {
+    .lang-select-site {
+      position: absolute;
+      float: none;
+    }
   }
 }
