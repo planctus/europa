@@ -10,8 +10,8 @@
       @extend .listing__title--arrow;
       &:after {
         margin-left: 0.5em;
+        margin-top: 5px;
         font-size: 0.8em;
-        top: 0px;
       }
 
       & + * {

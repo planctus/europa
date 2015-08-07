@@ -6087,11 +6087,16 @@ p a {
 
 .page-content ul a[href^="http"],
 .page-content p a[href^="http"] {
-  padding-right: 1.1em; }
+  padding-right: 1.1em;
+  display: inline-block; }
   .page-content ul a[href^="http"]:after,
   .page-content p a[href^="http"]:after {
     position: absolute;
     line-height: 2.2; }
+  .page-content ul a[href^="http"].btn,
+  .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
+  .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {
+    padding-right: 2.1em; }
 
 /*
 Lists
@@ -8420,10 +8425,13 @@ Styleguide page-header
       font-size: 1.667em; }
 
 .page-header a[href^="http"] {
-  padding-right: 1.1em; }
+  padding-right: 1.1em;
+  display: inline-block; }
   .page-header a[href^="http"]:after {
     position: absolute;
     line-height: 2.2; }
+  .page-header a[href^="http"].btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle {
+    padding-right: 2.1em; }
 
 /*
 Pager
@@ -8724,8 +8732,8 @@ Styleguide: siteheader.searchform
   padding: 0.5em 0; }
   .site-menu .listing__item .listing__title:after {
     margin-left: 0.5em;
-    font-size: 0.8em;
-    top: 0px; }
+    margin-top: 5px;
+    font-size: 0.8em; }
   .site-menu .listing__item .listing__title + * {
     margin-top: 0; }
 
