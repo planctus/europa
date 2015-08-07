@@ -8197,7 +8197,7 @@ Styleguide listing.column-left
 @media (min-width: 768px) {
   .front .logo {
     width: 378px;
-    height: 192px; } }
+    height: 193px; } }
 
 @media print {
   .logo:before {
