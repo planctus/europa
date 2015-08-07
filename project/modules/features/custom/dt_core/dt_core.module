@@ -51,6 +51,14 @@ function dt_core_block_info() {
     'info' => t('Footer Site switcher'),
   );
 
+  $blocks['dt_header_site_tab_switcher'] = array(
+    'info' => t('Header site tab switcher'),
+  );
+
+  $blocks['dt_footer_site_tab_switcher'] = array(
+    'info' => t('Footer site tab switcher'),
+  );
+
   return $blocks;
 }
 
@@ -61,6 +69,8 @@ function dt_core_block_view($delta = '') {
   switch ($delta) {
     case 'dt_block_copyright':
     case 'dt_block_footer_site_switcher':
+    case 'dt_header_site_tab_switcher':
+    case 'dt_footer_site_tab_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
       break;
   }
@@ -94,7 +104,31 @@ function dt_core_get_blocks_content($delta) {
         ),
       );
       return $result;
+
+    case 'dt_header_site_tab_switcher':
+      return array(
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
+      );
+
+    case 'dt_footer_site_tab_switcher':
+      return array(
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
+      );
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_core_theme($existing, $type, $theme, $path) {
+  return array(
+    'site_switcher_tabs' => array(
+      'file' => 'dt_core.theme.inc',
+      'variables' => array(
+        'modifier' => NULL,
+      ),
+    ),
+  );
 }
 
 /**
@@ -102,7 +136,6 @@ function dt_core_get_blocks_content($delta) {
  */
 function dt_apply_wysiwyg_buttons() {
   // Enable a set of CKEditor buttons for DT project on the "Full HTML" profile.
-
   $default = array(
     'Anchor',
     'Bold',

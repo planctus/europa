@@ -454,3 +454,10 @@ function dt_core_update_7130() {
 function dt_core_update_7131() {
   module_enable(array('nexteuropa_formatters'));
 }
+
+/**
+ * Adding site switcher tab components in header and footer.
+ */
+function dt_core_update_7132() {
+  features_revert_module('dt_core');
+}

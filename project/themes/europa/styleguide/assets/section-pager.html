@@ -57,8 +57,6 @@
           <span class="kss-nav__ref">4</span
           ><span class="kss-nav__name">Datepicker</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-field.html">
@@ -137,6 +135,8 @@
           <span class="kss-nav__ref">18</span
           ><span class="kss-nav__name">Pager</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-siteheader.html">
@@ -173,22 +173,20 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-datepicker" class="kss-section kss-section--depth-1">
+      <div     id="kssref-pager" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-datepicker">
-          <span class="kss-title__ref">4</span
-          >Datepicker
+        <a class="kss-title__permalink" href="#kssref-pager">
+          <span class="kss-title__ref">18</span
+          >Pager
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>This example is based on jQuery Datepicker widget. It requires both jQuery and jQuery UI libraries.<br/>
-Also, it assumes that the default CSS styles from jQuery UI are included as well.<br/>
-The CSS applied from styleguide is an override over the default CSS of jQuery UI.<br/></p>
+        <p>Depends on &#39;icon&#39; component for showing back/forward arrows.</p>
 
       </div>
     </div>
@@ -198,25 +196,67 @@ The CSS applied from styleguide is an override over the default CSS of jQuery UI
           Example
         </div>
         <div class="kss-modifier__example">
-          <script src="public/js/components/datepicker/jquery.ui.datepicker.min.js"></script>
-<script src="public/js/components/datepicker/datepicker.js"></script>
-<link rel="stylesheet" href="public/css/jquery.ui.core.min.css">
-<link rel="stylesheet" href="public/css/jquery.ui.datepicker.min.css">
-
-<label for="datepicker">Date:</label>
-<input class="form-control" type="text" id="datepicker">
+          <ul class="pager">
+    <li class="pager__item pager__back">
+        <a class="pager__btn" href="/filter?value=test&amp;page=1" title="Back">
+            <span class="pager__back-arrow icon icon--left"></span>
+            <span class="pager__back-text sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="pager__item pager__combo">
+        <span class="pager__combo-upper">
+            <select class="pager__combo-dropdown">
+                <option value="/filter?value=test">Page 1</option>
+                <option value="/filter?value=test&amp;page=1">Page 2</option>
+                <option value="" selected="selected">Page 3</option>
+                <option value="/filter?value=test&amp;page=3">Page 4</option>
+            </select>
+        </span>
+        <span class="pager__combo-container">
+            <span class="pager__combo-current">page 3</span>
+            <span class="pager__combo-total">of 4</span>
+        </span>
+    </li>
+    <li class="pager__item pager__forward">
+        <a class="pager__btn" href="/filter?value=test&amp;page=3" title="Forward">
+            <span class="pager__forward-text">Next</span>
+            <span class="pager__forward-arrow icon icon--right"></span>
+        </a>
+    </li>
+</ul>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;script src=&quot;public/js/components/datepicker/jquery.ui.datepicker.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;public/js/components/datepicker/datepicker.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.core.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;public/css/jquery.ui.datepicker.min.css&quot;&gt;
-
-&lt;label for=&quot;datepicker&quot;&gt;Date:&lt;/label&gt;
-&lt;input class=&quot;form-control&quot; type=&quot;text&quot; id=&quot;datepicker&quot;&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class=&quot;pager&quot;&gt;
+    &lt;li class=&quot;pager__item pager__back&quot;&gt;
+        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=1&quot; title=&quot;Back&quot;&gt;
+            &lt;span class=&quot;pager__back-arrow icon icon--left&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;pager__back-text sr-only&quot;&gt;Previous&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;pager__item pager__combo&quot;&gt;
+        &lt;span class=&quot;pager__combo-upper&quot;&gt;
+            &lt;select class=&quot;pager__combo-dropdown&quot;&gt;
+                &lt;option value=&quot;/filter?value=test&quot;&gt;Page 1&lt;/option&gt;
+                &lt;option value=&quot;/filter?value=test&amp;amp;page=1&quot;&gt;Page 2&lt;/option&gt;
+                &lt;option value=&quot;&quot; selected=&quot;selected&quot;&gt;Page 3&lt;/option&gt;
+                &lt;option value=&quot;/filter?value=test&amp;amp;page=3&quot;&gt;Page 4&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/span&gt;
+        &lt;span class=&quot;pager__combo-container&quot;&gt;
+            &lt;span class=&quot;pager__combo-current&quot;&gt;page 3&lt;/span&gt;
+            &lt;span class=&quot;pager__combo-total&quot;&gt;of 4&lt;/span&gt;
+        &lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;pager__item pager__forward&quot;&gt;
+        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=3&quot; title=&quot;Forward&quot;&gt;
+            &lt;span class=&quot;pager__forward-text&quot;&gt;Next&lt;/span&gt;
+            &lt;span class=&quot;pager__forward-arrow icon icon--right&quot;&gt;&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
       </div>
 
