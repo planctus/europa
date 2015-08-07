@@ -6369,7 +6369,8 @@ Styleguide form.textarea
 
 @media (min-width: 992px) {
   .front .top-bar {
-    float: none; }
+    float: none;
+    position: static; }
   .front .top-bar__wrapper {
     float: right; } }
 
@@ -8178,7 +8179,7 @@ Styleguide listing.column-left
 .front .logo {
   float: none;
   width: 250px;
-  height: 125px;
+  height: 126px;
   margin: 16px auto 40px auto;
   background: url("../images/svg/logo--big.svg") center center no-repeat;
   background-size: 100%; }

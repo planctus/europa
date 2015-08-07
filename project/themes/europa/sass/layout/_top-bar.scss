@@ -54,6 +54,7 @@
   @include breakpoint(screen-md-min) {
     .top-bar {
       float: none;
+      position: static;
     }
 
     .top-bar__wrapper {
