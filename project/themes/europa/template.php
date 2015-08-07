@@ -16,55 +16,6 @@ function europa_js_alter(&$js) {
 }
 
 /**
- * Returns an array with singular and plural form of a bundle.
- *
- * @param string $bundle
- *   Machine name of a bundle.
- *
- * @return array
- *   Containing $forms['singular'] and $forms['plural'].
- */
-function _europa_bundle_forms($bundle) {
-  // Forming plurals for existing content types.
-  $plurals = array(
-    'announcement' => t("announcements"),
-    'page' => t("pages"),
-    'contact' => t("contacts"),
-    'department' => t("departments"),
-    'editorial_team' => t("editorial teams"),
-    'file' => t("files"),
-    'basic_page' => t("pages"),
-    'person' => t("people"),
-    'policy' => t("policies"),
-    'policy_area' => t("policy areas"),
-    'policy_implementation' => t("policy implementations"),
-    'policy_input' => t("policy inputs"),
-    'policy_keyfile' => t("policy key files"),
-    'priority' => t("priorities"),
-    'publication' => t("publications"),
-    'class' => t("classes"),
-    'topic' => t("topics"),
-    'toplink' => t("top links"),
-  );
-
-  $singular = node_type_get_name($bundle);
-  // If user preference for plural form - use it, otherwise use the label.
-  if (isset($plurals[$bundle])) {
-    $plural = $plurals[$bundle];
-  }
-  else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
-  }
-
-  $forms = array(
-    'singular' => strtolower($singular),
-    'plural' => $plural,
-  );
-
-  return $forms;
-}
-
-/**
  * Implements hook_theme().
  */
 function europa_theme() {
@@ -103,8 +54,6 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
     $form['type']['#options']['All'] = t("All types");
-    $form['department']['#options']['All'] = t("All departments");
-    $form['policy_area']['#options']['All'] = t("All policy areas");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
@@ -318,7 +267,6 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
  * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
-
   return _europa_menu_link__footer($variables);
 }
 
@@ -982,7 +930,7 @@ function europa_preprocess_image(&$variables) {
  * Implements hook_preprocess_html().
  */
 function europa_preprocess_html(&$variables) {
-  $variables['theme_path'] = base_path() . drupal_get_path('theme', 'europa');
+  $variables['theme_path'] = base_path() . path_to_theme();
 }
 
 /**
@@ -1048,10 +996,6 @@ function europa_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
-
-  // Temporary variable that should be removed once the beta notification
-  // is gone.
-  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
@@ -1073,32 +1017,6 @@ function europa_preprocess_views_view(&$variables) {
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
     $variables['active_filters'] = get_exposed_filter_output();
-  }
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
-
-  $variables['items_count'] = '';
-
-  // Checking if .listing exists in classes_array so that result count can be
-  // displayed.
-  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-    $content_type_forms = _europa_bundle_forms($content_type);
-
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
-    }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $variables['items_count'] = $items_count;
   }
 }
 
