@@ -461,3 +461,10 @@ function dt_core_update_7131() {
 function dt_core_update_7132() {
   features_revert_module('dt_core');
 }
+
+/**
+ * Enabling nexteuropa_views module.
+ */
+function dt_core_update_7133() {
+  module_enable(array('nexteuropa_views'));
+}
