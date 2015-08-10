@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core.ds.inc
+ * dt_information_core.ds.inc
  */
 
 /**
  * Implements hook_ds_custom_fields_info().
  */
-function dt_core_ds_custom_fields_info() {
+function dt_information_core_ds_custom_fields_info() {
   $export = array();
 
   $ds_field = new stdClass();
@@ -49,7 +49,7 @@ function dt_core_ds_custom_fields_info() {
 /**
  * Implements hook_ds_view_modes_info().
  */
-function dt_core_ds_view_modes_info() {
+function dt_information_core_ds_view_modes_info() {
   $export = array();
 
   $ds_view_mode = new stdClass();

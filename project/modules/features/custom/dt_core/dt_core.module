@@ -47,10 +47,6 @@ function dt_core_block_info() {
     'info' => t('Copyright paragraph'),
   );
 
-  $blocks['dt_block_footer_site_switcher'] = array(
-    'info' => t('Footer Site switcher'),
-  );
-
   $blocks['dt_header_site_tab_switcher'] = array(
     'info' => t('Header site tab switcher'),
   );
@@ -68,7 +64,6 @@ function dt_core_block_info() {
 function dt_core_block_view($delta = '') {
   switch ($delta) {
     case 'dt_block_copyright':
-    case 'dt_block_footer_site_switcher':
     case 'dt_header_site_tab_switcher':
     case 'dt_footer_site_tab_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
@@ -85,23 +80,6 @@ function dt_core_get_blocks_content($delta) {
     case 'dt_block_copyright':
       $result = array(
         '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
-      );
-      return $result;
-
-    case 'dt_block_footer_site_switcher':
-      $result = array(
-        '#markup' => l(
-          t('<span>The European Commission </span><span>and its priorities</span>'),
-          t('http://ec.europa.eu/index_en.htm'),
-          array(
-            'attributes' => array(
-              'class' => array(
-                'site-switcher', 'footer__site-switcher',
-              ),
-            ),
-            'html' => TRUE,
-          )
-        ),
       );
       return $result;
 

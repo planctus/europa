@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core.features.taxonomy.inc
+ * dt_information_core.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function dt_core_taxonomy_default_vocabularies() {
+function dt_information_core_taxonomy_default_vocabularies() {
   return array(
     'top_tasks' => (object) array(
       'name' => 'Top tasks',
