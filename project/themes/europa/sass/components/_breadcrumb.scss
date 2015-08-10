@@ -93,6 +93,11 @@ $breadcrumb-heigth: 2.778em;
 @include breakpoint(screen-xs-min) {
   .breadcrumb {
     border-bottom: 1px solid #fff;
+
+    // Drupal Display Suite specifics
+    .ne-bootstrap-1col-stacked & {
+      border-bottom: none;
+    }
   }
 
   .breadcrumb__link {

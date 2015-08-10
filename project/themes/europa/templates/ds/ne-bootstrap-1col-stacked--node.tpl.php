@@ -12,6 +12,7 @@
     <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
   <!-- Page Header -->
+  <?php if($right_header != "" && $right_header != ""): ?>
   <div class="page-header">
     <div class="container-fluid">
       <div class="row padding-reset">
@@ -27,6 +28,7 @@
       </div>
     </div>
   </div>
+  <?php endif; ?>
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
