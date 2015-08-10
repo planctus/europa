@@ -6649,6 +6649,9 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__segment--last {
     padding-left: 0; } }
 
+.ne-bootstrap-1col-stacked .breadcrumb {
+  border-bottom: none; }
+
 /*
 Contextual navigation
 
@@ -8223,7 +8226,6 @@ Styleguide meta
 */
 .meta {
   width: 100%;
-  color: #404040;
   line-height: 1.3;
   font-size: 0.778em;
   letter-spacing: 0.02777778em;

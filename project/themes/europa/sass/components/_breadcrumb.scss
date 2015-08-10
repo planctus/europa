@@ -267,3 +267,10 @@ Styleguide breadcrumb.collapsible
     }
   }
 }
+
+// Drupal Display Suite specifics
+.ne-bootstrap-1col-stacked {
+  .breadcrumb {
+    border-bottom: none;
+  }
+}
