@@ -6524,6 +6524,8 @@ Styleguide breadcrumb
 @media (min-width: 480px) {
   .breadcrumb {
     border-bottom: 1px solid #fff; }
+    .ne-bootstrap-1col-stacked .breadcrumb {
+      border-bottom: none; }
   .breadcrumb__link {
     width: auto; }
     .breadcrumb__link:after {
@@ -6648,9 +6650,6 @@ Styleguide breadcrumb.collapsible
     width: auto; }
   .breadcrumb--collapsible .breadcrumb__segment--last {
     padding-left: 0; } }
-
-.ne-bootstrap-1col-stacked .breadcrumb {
-  border-bottom: none; }
 
 /*
 Contextual navigation
