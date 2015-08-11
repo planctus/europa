@@ -11,7 +11,7 @@
  *   An associative array containing:
  *   - modifier: The modifier applied to the element.
  *
- * @return string $output
+ * @return string
  *   The markup itself.
  */
 function theme_site_switcher_tabs($variables) {

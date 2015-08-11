@@ -77,23 +77,27 @@ function dt_core_block_view($delta = '') {
  * A module-defined block content function.
  */
 function dt_core_get_blocks_content($delta) {
+  $result = array();
   switch ($delta) {
     case 'dt_block_copyright':
       $result = array(
         '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
       );
-      return $result;
+      break;
 
     case 'dt_header_site_tab_switcher':
-      return array(
+      $result = array(
         '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
       );
+      break;
 
     case 'dt_footer_site_tab_switcher':
-      return array(
+      $result = array(
         '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
       );
+      break;
   }
+  return $result;
 }
 
 /**

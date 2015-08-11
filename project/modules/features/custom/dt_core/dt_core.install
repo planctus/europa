@@ -31,4 +31,3 @@ function dt_core_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
-
