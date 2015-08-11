@@ -27,7 +27,7 @@ Styleguide: siteswitcher
 .site-switcher__option {
   display: inline-block;
   text-align: center;
-  vertical-align: top;
+  vertical-align: middle;
   width: 49%;
 
   & > a {
@@ -54,7 +54,7 @@ Styleguide: siteswitcher
 .site-switcher--header {
   .site-switcher__list {
     &:first-child {
-      border-left: 1px solid $grey-lighter;
+      border-left: 1px solid $grey;
     }
   }
 
@@ -73,7 +73,7 @@ Styleguide: siteswitcher
           position: absolute;
           pointer-events: none;
           border-color: rgba(0, 68, 148, 0);
-          border-top-color: #004494;
+          border-top-color: $blue-dark;
           border-width: 10px;
           margin-left: -10px;
         }
@@ -83,6 +83,7 @@ Styleguide: siteswitcher
 }
 
 .site-switcher--footer {
+  border-bottom: 1px solid $grey-lightest;
   overflow: visible;
 
   .site-switcher__list {
@@ -90,6 +91,29 @@ Styleguide: siteswitcher
 
     &:first-child {
       border-left: none;
+    }
+  }
+
+  .site-switcher__option {
+    &.is-selected {
+      & > a {
+        position: relative;
+
+        &:after {
+          bottom: 100%;
+          left: 50%;
+          border: solid transparent;
+          content: " " !important;
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-color: rgba(0, 68, 148, 0);
+          border-bottom-color: $blue-dark;
+          border-width: 10px;
+          margin-left: -10px;
+        }
+      }
     }
   }
 }
