@@ -6436,7 +6436,6 @@ Styleguide form.textarea
 */
 .footer-top {
   background: #f2f2f2;
-  border-bottom: 1px solid #f2f2f2;
   margin-bottom: 1px; }
   .footer-top .container-fluid, .footer-top .section__group--full-width > *, .footer-top .block--full-width > *, .footer-top .front .top-bar > *, .front .footer-top .top-bar > *, .footer-top .field--full-width > * {
     margin-right: 0;
