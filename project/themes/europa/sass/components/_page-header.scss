@@ -60,6 +60,11 @@ Styleguide page-header
 // External link specific adjustments
 .page-header {
   a {
+    color: #fff;
+    &:hover {
+      color:$yellow-light;
+    }
+
     &#{"[" + $external_link_pattern + "]"} {
       padding-right: 1.1em;
       display: inline-block;
