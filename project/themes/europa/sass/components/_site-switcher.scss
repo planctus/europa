@@ -87,7 +87,12 @@ Styleguide: siteswitcher
   overflow: visible;
 
   .site-switcher__list {
-    float: right;
+    @media (min-width: 510px) {
+      & {
+        float: right;
+      }
+    }
+
 
     &:first-child {
       border-left: none;
