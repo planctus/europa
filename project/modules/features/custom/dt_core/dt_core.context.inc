@@ -31,11 +31,17 @@ function dt_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'bean-information-site-menu' => array(
+          'module' => 'bean',
+          'delta' => 'information-site-menu',
+          'region' => 'header_bottom',
+          'weight' => '-10',
+        ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
           'delta' => 'easy_breadcrumb',
           'region' => 'header_bottom',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

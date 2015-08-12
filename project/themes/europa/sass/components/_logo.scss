@@ -19,18 +19,12 @@
   background: url('../images/svg/logo.svg') no-repeat;
 }
 
-.no-svg {
-  .logo {
-    background-image: url('../images/png/logo.png');
-  }
-}
-
 .front {
   .logo {
     float: none;
     
     width: 250px;
-    height: 126px;
+    height: 130px;
     margin: 16px auto 40px auto;
 
     background: url('../images/svg/logo--big.svg') center center no-repeat;
@@ -47,7 +41,7 @@
   @include breakpoint(screen-sm-min) {
     .logo {
       width: 378px;
-      height: 192px;
+      height: 193px;
     }
   }
 }
@@ -55,5 +49,18 @@
 @media print {
   .logo:before {
     content: url('../images/svg/logo.svg');
+  }
+}
+
+.no-svg {
+  .logo {
+    background-image: url('../images/png/logo.png');
+  }
+  .front {
+    .logo {
+      background-image: url('../images/png/logo--big.png');
+      width: 378px;
+      height: 193px;
+    }
   }
 }
