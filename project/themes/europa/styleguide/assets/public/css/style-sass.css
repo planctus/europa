@@ -8429,14 +8429,18 @@ Styleguide page-header
     .page-header--featured p, .front .page-header p {
       font-size: 1.667em; }
 
-.page-header a[href^="http"] {
-  padding-right: 1.1em;
-  display: inline-block; }
-  .page-header a[href^="http"]:after {
-    position: absolute;
-    line-height: 2.2; }
-  .page-header a[href^="http"].btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle {
-    padding-right: 2.1em; }
+.page-header a {
+  color: #fff; }
+  .page-header a:hover {
+    color: #ffd617; }
+  .page-header a[href^="http"] {
+    padding-right: 1.1em;
+    display: inline-block; }
+    .page-header a[href^="http"]:after {
+      position: absolute;
+      line-height: 2.2; }
+    .page-header a[href^="http"].btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle {
+      padding-right: 2.1em; }
 
 /*
 Pager
