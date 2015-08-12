@@ -454,3 +454,10 @@ function dt_core_update_7130() {
 function dt_core_update_7131() {
   features_revert_module('dt_core');
 }
+
+/**
+ * The site-menu is now opening over the breadcrumb.
+ */
+function dt_core_update_7132() {
+  features_revert_module('dt_core');
+}

@@ -5,6 +5,7 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_core
 dependencies[] = addressfield
+dependencies[] = bean
 dependencies[] = bootstrap_fieldgroup
 dependencies[] = breakpoints
 dependencies[] = context
