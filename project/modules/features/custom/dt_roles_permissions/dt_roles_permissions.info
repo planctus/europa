@@ -21,6 +21,7 @@ features[user_permission][] = delete any site_menu bean
 features[user_permission][] = edit any site_menu bean
 features[user_permission][] = view any site_menu bean
 features[user_permission][] = view bean page
+features[user_permission][] = access contextual links
 features[user_role][] = site manager
 features_exclude[dependencies][cce_basic_config] = cce_basic_config
 features_exclude[dependencies][ctools] = ctools

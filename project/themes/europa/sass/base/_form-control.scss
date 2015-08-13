@@ -10,7 +10,7 @@ Styleguide form
   border: 2px solid $form-control-border-color;
   border-radius: 0;
   margin-bottom: 1.1em;
-  height: $form-control-height;
+  min-height: $form-control-height;
   font-size: $font-size-little;
   @include box-shadow(none);
 

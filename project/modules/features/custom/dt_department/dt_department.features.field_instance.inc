@@ -1304,9 +1304,8 @@ function dt_department_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_plain',
+        'type' => 'hidden',
         'weight' => 11,
       ),
       'meta' => array(
@@ -1866,7 +1865,6 @@ function dt_department_field_default_field_instances() {
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
   t('Social Network Links');
-  t('Search for staff');
   t('Staff Search Link');
   t('Tasks description');
   t('Work areas sentence');
