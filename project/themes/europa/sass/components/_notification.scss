@@ -10,11 +10,14 @@ Styleguide notification
 
 */
 .notification {
-  background: $grey-lightest;
-  border-bottom: 8px solid $yellow-light;
-  padding: 8px 0 0;
+  background: $yellow-light;
+  padding: 10px 0 6px;
   font-size: 14px;
   @extend .hidden-print;
+
+  a {
+    color: #000;
+  }
 }
 
 .notification__label {
