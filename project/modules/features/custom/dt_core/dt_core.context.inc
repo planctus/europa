@@ -53,11 +53,6 @@ function dt_core_context_default_contexts() {
   t('Digital Transformation');
   $export['dt_core_non_homepage_pages'] = $context;
 
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Digital Transformation');
-  $export['dt_core_sitewide'] = $context;
-
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;

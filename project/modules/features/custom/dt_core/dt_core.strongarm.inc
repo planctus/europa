@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dt_information_core.strongarm.inc
+ * dt_core.strongarm.inc
  */
 
 /**
