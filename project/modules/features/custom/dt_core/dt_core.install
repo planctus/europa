@@ -435,8 +435,6 @@ function dt_core_update_7132() {
 }
 
 /**
- * Implements hook_update().
- *
  * Enabling dt_information_core.
  */
 function dt_core_update_7133() {
