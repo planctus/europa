@@ -69,3 +69,10 @@ function dt_topic_update_7105() {
   // Reverting feature.
   features_revert_module('dt_topic');
 }
+
+/**
+ * NEXTEUROPA-4829: TOPIC SPECIFIC TASKS in Topic content type.
+ */
+function dt_topic_update_7106() {
+  features_revert_module('dt_topic');
+}
