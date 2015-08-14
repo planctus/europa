@@ -37,6 +37,8 @@
 @import "layout/page-navigation";
 @import "layout/sidebar-field-group";
 @import "layout/section";
+@import "layout/footer-top";
+@import "layout/header-top";
 
 // Components
 @import "components/block";
@@ -63,6 +65,7 @@
 @import "components/page-header";
 @import "components/pager";
 @import "components/site-header";
+@import "components/site-switcher";
 @import "components/search-form";
 @import "components/site-menu";
 @import "components/skip-link";
