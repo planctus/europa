@@ -32,10 +32,9 @@ function dt_information_core_install() {
   );
   module_enable($features);
 
-  // Temporarily disabled, because on live sites the setting was already enabled.
   // Enable europa theme.
-  // theme_enable(array('europa'));
-  // variable_set('theme_default', 'europa');
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }
 
 /**
