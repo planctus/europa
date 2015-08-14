@@ -8,39 +8,6 @@
  * Implements hook_install().
  */
 function dt_core_install() {
-  // Those are basic configuration features for each class.
-  $dt_classes = array(
-    'dt_homepage_core',
-    'dt_aboutec_core',
-    'dt_strategy_core',
-    // Roles and permissions.
-    'dt_roles_permissions',
-  );
-  module_enable($dt_classes);
-
-  // Enabling functional features.
-  $features = array(
-    'dt_announcement',
-    'dt_class',
-    'dt_contact',
-    'dt_publication',
-    'dt_policy',
-    'dt_topic',
-    'nexteuropa_file',
-    'dt_page',
-    'dt_site_menu'
-  );
-  module_enable($features);
-
-  // Reverting feature components that have overriden state after installing.
-  features_revert(array(
-    'dt_core' => array('taxonomy', 'user_role'),
-  ));
-
-  // Enable europa theme.
-  theme_enable(array('europa'));
-  variable_set('theme_default', 'europa');
-
   // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
 
@@ -49,6 +16,11 @@ function dt_core_install() {
 
   // Applying a default set of buttons to the Full HTML profile.
   dt_apply_wysiwyg_buttons();
+
+  if (module_exists('dashboard')) {
+    module_disable(array('dashboard'));
+    drupal_uninstall_modules(array('dashboard'));
+  }
 }
 
 /**
@@ -460,4 +432,21 @@ function dt_core_update_7131() {
  */
 function dt_core_update_7132() {
   features_revert_module('dt_core');
+}
+
+/**
+ * Enabling dt_information_core.
+ */
+function dt_core_update_7133() {
+  // Enabling dt_information_core only on information site.
+  // Because the hook_updates will not running on a new install.
+  module_enable(array('dt_information_core'));
+  $features = array(
+    'dt_core',
+    'dt_information_core',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
 }

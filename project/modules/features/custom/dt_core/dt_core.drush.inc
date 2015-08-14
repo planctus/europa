@@ -8,9 +8,6 @@
 /**
  * Implements hook_drush_command().
  *
- * @return array
- *   An associative array describing your command(s).
- *
  * @see drush_parse_command()
  */
 function dt_core_drush_command() {

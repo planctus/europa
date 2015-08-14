@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core.features.filter.inc
+ * dt_information_core.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function dt_core_filter_default_formats() {
+function dt_information_core_filter_default_formats() {
   $formats = array();
 
   // Exported format: DT Editor.
