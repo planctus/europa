@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Information Site Core feature.
+ */
+
+include_once 'dt_information_core.features.inc';

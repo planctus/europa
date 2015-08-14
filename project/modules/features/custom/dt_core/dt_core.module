@@ -47,8 +47,12 @@ function dt_core_block_info() {
     'info' => t('Copyright paragraph'),
   );
 
-  $blocks['dt_block_footer_site_switcher'] = array(
-    'info' => t('Footer Site switcher'),
+  $blocks['dt_header_site_tab_switcher'] = array(
+    'info' => t('Header site tab switcher'),
+  );
+
+  $blocks['dt_footer_site_tab_switcher'] = array(
+    'info' => t('Footer site tab switcher'),
   );
 
   return $blocks;
@@ -58,9 +62,11 @@ function dt_core_block_info() {
  * Implements hook_block_view().
  */
 function dt_core_block_view($delta = '') {
+  $block = array();
   switch ($delta) {
     case 'dt_block_copyright':
-    case 'dt_block_footer_site_switcher':
+    case 'dt_header_site_tab_switcher':
+    case 'dt_footer_site_tab_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
       break;
   }
@@ -71,30 +77,41 @@ function dt_core_block_view($delta = '') {
  * A module-defined block content function.
  */
 function dt_core_get_blocks_content($delta) {
+  $result = array();
   switch ($delta) {
     case 'dt_block_copyright':
       $result = array(
         '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
       );
-      return $result;
+      break;
 
-    case 'dt_block_footer_site_switcher':
+    case 'dt_header_site_tab_switcher':
       $result = array(
-        '#markup' => l(
-          t('<span>The European Commission </span><span>and its priorities</span>'),
-          t('http://ec.europa.eu/index_en.htm'),
-          array(
-            'attributes' => array(
-              'class' => array(
-                'site-switcher', 'footer__site-switcher',
-              ),
-            ),
-            'html' => TRUE,
-          )
-        ),
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
       );
-      return $result;
+      break;
+
+    case 'dt_footer_site_tab_switcher':
+      $result = array(
+        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
+      );
+      break;
   }
+  return $result;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_core_theme($existing, $type, $theme, $path) {
+  return array(
+    'site_switcher_tabs' => array(
+      'file' => 'dt_core.theme.inc',
+      'variables' => array(
+        'modifier' => NULL,
+      ),
+    ),
+  );
 }
 
 /**
@@ -102,7 +119,6 @@ function dt_core_get_blocks_content($delta) {
  */
 function dt_apply_wysiwyg_buttons() {
   // Enable a set of CKEditor buttons for DT project on the "Full HTML" profile.
-
   $default = array(
     'Anchor',
     'Bold',
@@ -268,7 +284,6 @@ function _dt_core_path_update_relatives($path) {
   $source = explode('/', $path['source']);
   if ($source[0] == 'node') {
     $nid = $source[1];
-    $node = node_load($nid);
 
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Find children based on field.
