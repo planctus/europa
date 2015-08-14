@@ -132,3 +132,10 @@ function dt_class_update_7103() {
 
   features_revert_module('dt_class');
 }
+
+/**
+ * NEXTEUROPA-4868: Removing the info message from the class landing pages.
+ */
+function dt_class_update_7104() {
+  features_revert_module('dt_class');
+}
