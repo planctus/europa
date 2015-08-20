@@ -10,8 +10,8 @@
       @extend .listing__title--arrow;
       &:after {
         margin-left: 0.5em;
+        margin-top: 5px;
         font-size: 0.8em;
-        top: 0px;
       }
 
       & + * {
@@ -33,8 +33,17 @@
 .site-menu__toggle {
   .btn {
     width: 100%;
+    border: 3px solid $brand-primary;
   }
   @extend .hidden-print;
+}
+
+.front {
+  .site-menu__toggle {
+    .btn {
+      border: 2px solid #fff;
+    }
+  }
 }
 
 .js .site-menu {

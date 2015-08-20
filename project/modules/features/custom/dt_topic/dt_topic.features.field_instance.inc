@@ -1002,9 +1002,13 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 1,
+          'nexteuropa_ds_layouts_columns' => 'default',
+          'nexteuropa_ds_layouts_modifier' => 'col-md-6',
+          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 21,
       ),
       'teaser' => array(
