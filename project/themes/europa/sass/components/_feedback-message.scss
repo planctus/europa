@@ -29,6 +29,7 @@ Styleguide form.feedback-message
       margin-bottom: -4px;
     }
   }
+  @extend .hidden-print;
 }
 
 @include breakpoint(screen-xs-min) {

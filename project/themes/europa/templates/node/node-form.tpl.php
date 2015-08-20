@@ -4,7 +4,6 @@
  * Customize the display of a node form.
  */
 ?>
-
 <div class="row">
   <div class="col-md-8">
     <?php print drupal_render_children($form); ?>    

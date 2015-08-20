@@ -135,5 +135,16 @@ function dt_roles_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'access contextual links'.
+  $permissions['access contextual links'] = array(
+    'name' => 'access contextual links',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'editorial team member' => 'editorial team member',
+    ),
+    'module' => 'contextual',
+  );
+
   return $permissions;
 }

@@ -57,14 +57,23 @@
  *   content types.
  *
  * Regions:
- * - $page['header']: Displayed in the right part of the header -> logo, search box, ...
- * - $page['header_bottom']: Displayed below the header, take full width of site -> main menu, global information, breadcrumb...
- * - $page['highlighted']: Displayed in a big visible box -> important message, contextual information, ...
- * - $page['help']: Displayed between page title and content -> information about the page, contextual help, ...
- * - $page['sidebar_first']: Small sidebar displayed on left of the content, if not empty -> navigation, pictures, ...
- * - $page['sidebar_second']: Large sidebar displayed on right of the content, if not empty -> two column layout
- * - $page['content']: The main content of the current page.
- * - $page['footer']: Displayed at bottom of the page, on full width -> latest update, copyright, ...
+ * - $page['header']:         Displayed in the right part of the
+ *                            header -> logo, search box, ...
+ * - $page['header_bottom']:  Displayed below the header, take full width of
+ *                            site -> main menu, global information,
+ *                            breadcrumb...
+ * - $page['highlighted']:    Displayed in a big visible box -> important
+ *                            message, contextual information, ...
+ * - $page['help']:           Displayed between page title and
+ *                            content -> information about the page,
+ *                            contextual help, ...
+ * - $page['sidebar_first']:  Small sidebar displayed on left of the content,
+ *                            if not empty -> navigation, pictures, ...
+ * - $page['sidebar_second']: Large sidebar displayed on right of the content,
+ *                            if not empty -> two column layout
+ * - $page['content']:        The main content of the current page.
+ * - $page['footer']:         Displayed at bottom of the page, on full
+ *                            width -> latest update, copyright, ...
  *
  * @see bootstrap_preprocess_page()
  * @see template_preprocess()
@@ -75,7 +84,6 @@
  *
  * @ingroup themeable
  */
-
 ?>
 <section class="notification">
   <div class="container-fluid">
@@ -89,17 +97,30 @@
     </div>
   </div>
 </section>
+
+<?php if (!empty($page['header_top'])): ?>
+<section class="header-top">
+  <div class="container-fluid">
+    <?php print render($page['header_top']); ?>
+  </div>
+</section>
+<?php endif; ?>
+
 <header class="site-header" role="banner">
   <div class="container-fluid">
-    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home - European Commission Beta'); ?>"></a>
+    <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
-        <?php if($is_front): ?>
-          <h1 class="sr-only"><?php print $site_name; ?></h1>
-          <h2 class="sr-only"><?php print t('Classes'); ?></h2>
-        <?php endif; ?>
-        <?php print render($page['header']); ?>
+        <div>
+          <div class="top-bar__wrapper">
+            <?php if($is_front): ?>
+              <h1 class="sr-only"><?php print $site_name; ?></h1>
+              <h2 class="sr-only"><?php print t('Classes'); ?></h2>
+            <?php endif; ?>
+            <?php print render($page['header']); ?>
+          </div>
+        </div>
       </section>
     <?php endif; ?>
   </div>

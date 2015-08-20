@@ -9,13 +9,14 @@ Styleguide breadcrumb
 $breadcrumb-heigth: 2.778em;
 
 .breadcrumb {
-  background: $grey-lighter;
+  background: $brand-primary;
   font-size: 0.833em;
   position: relative;
-  margin: 0 -15px;
-  padding: 0 ($grid-gutter-width / 2);
+  padding: 0;
+  margin-bottom: 0;
   border-radius: 0;
   overflow: hidden;
+  @extend .hidden-print;
 
   ol,
   ul {
@@ -40,12 +41,21 @@ $breadcrumb-heigth: 2.778em;
   padding-top: 0.82em;
   padding-bottom: 0.42em;
   max-width: 100%;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+
+    .breadcrumb__text {
+      text-decoration: underline;
+    }
+  }
 }
 
 .breadcrumb__link-arrow {
   @extend .icon--after;
   @extend .icon--right;
-  color: $grey;
+  color: #fff;
   line-height: inherit !important;
   margin-left: 8px !important;
   font-weight: normal;
@@ -81,6 +91,10 @@ $breadcrumb-heigth: 2.778em;
 }
 
 @include breakpoint(screen-xs-min) {
+  .breadcrumb {
+    border-bottom: 1px solid #fff;
+  }
+
   .breadcrumb__link {
     width: auto;
     &:after {
@@ -118,7 +132,7 @@ Styleguide breadcrumb.collapsible
 
 .breadcrumb--collapsible {
   .breadcrumb__btn-separator {
-    background: $grey-light;
+    background: $blue-darkest;
     line-height: $breadcrumb-heigth;
     display: inline-block;
     padding: 0 10px;
@@ -126,11 +140,17 @@ Styleguide breadcrumb.collapsible
     bottom:0;
     left:0;
     cursor: pointer;
+    color: #fff;
 
     &:hover,
     &:active,
     &:focus {
       background: #fff;
+      color: $brand-primary;
+
+      &:after {
+        color: $brand-primary;
+      }
     }
 
     &:after {

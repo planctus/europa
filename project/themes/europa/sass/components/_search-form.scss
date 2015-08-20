@@ -7,6 +7,9 @@ Styleguide: siteheader.searchform
 */
 .search-form {
   overflow: hidden;
+  border: 1px solid $grey;
+  margin-bottom: 1em;
+  @extend .hidden-print;
 }
 
 .search-form__textfield-wrapper {
@@ -17,7 +20,7 @@ Styleguide: siteheader.searchform
 
 .search-form__textfield {
   margin: 0;
-  border-color: #fff;
+  border: none;
 }
 
 .search-form__btn {
@@ -29,7 +32,9 @@ Styleguide: siteheader.searchform
   position: relative;
   padding-top: 0;
   padding-bottom: 0;
-  height: 2.75em;
+  margin-bottom: 0;
+  min-height: 2.75em;
+  border: none !important;
 
   &:before {
     text-indent: 0;
@@ -38,7 +43,13 @@ Styleguide: siteheader.searchform
     left: 0;
     font-size: 1.5em;
     width: 100%;
-    line-height: 1.6em;
+    line-height: 1.9em;
+  }
+}
+
+.front {
+  .search-form__btn {
+    border: 1px solid #fff !important;
   }
 }
 
@@ -65,5 +76,11 @@ Styleguide: siteheader.searchform
 @include breakpoint(screen-md-min) {
   .search-form {
     width: 340px;
+  }
+}
+
+.front {
+  .search-form {
+    border: none;
   }
 }

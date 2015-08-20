@@ -28,8 +28,10 @@ Styleguide buttons
   border-width: 2px;
   font-weight: $font-weight-bold;
   padding: 0.75em 1em;
+  min-height: 2.75em;
   font-size: $font-size-little;
   text-decoration: none;
+  @extend .hidden-print;
 
   &:hover,
   &:active,
@@ -41,6 +43,11 @@ Styleguide buttons
   &:focus {
     outline: 2px solid $yellow-light;
     border-color: $yellow-light;
+  }
+
+  &:after {
+    line-height: inherit;
+    position: static;
   }
 
   &.btn-default {
@@ -106,7 +113,7 @@ Styleguide buttons
   }
 
   &.btn-menu {
-    border-color: #fff;
+    border-color: $brand-primary;
     background: $brand-primary;
     color: #fff;
     &:hover,
@@ -209,4 +216,26 @@ Styleguide buttons.btn-search
   border-color: #fff;
   background: $grey-light;
   color: $grey-dark;
+}
+
+
+// External link specific adjustments
+a.btn {
+  &#{"[" + $external_link_pattern + "]"} {
+    padding-right: 2.1em;
+    &:after {
+      position: absolute;
+      line-height: 1.4 !important;
+    }
+
+    // Reseting for .btn-block
+    &.btn-block {
+      padding-right: 1em;
+
+      &:after {
+        position: static;
+        line-height: inherit;
+      }
+    }
+  }
 }

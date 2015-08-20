@@ -11,6 +11,7 @@
 // --------------------------------------------------
 .logo {
   display: block;
+  float: left;
 
   width: 140px;
   height: 70px;
@@ -18,17 +19,48 @@
   background: url('../images/svg/logo.svg') no-repeat;
 }
 
+.front {
+  .logo {
+    float: none;
+    
+    width: 250px;
+    height: 130px;
+    margin: 16px auto 40px auto;
+
+    background: url('../images/svg/logo--big.svg') center center no-repeat;
+    background-size: 100%;
+  }
+
+  @include breakpoint(screen-xs-min) {
+    .logo {
+      width: 290px;
+      height: 153px;
+    }
+  }
+
+  @include breakpoint(screen-sm-min) {
+    .logo {
+      width: 378px;
+      height: 193px;
+    }
+  }
+}
+
+@media print {
+  .logo:before {
+    content: url('../images/svg/logo.svg');
+  }
+}
+
 .no-svg {
   .logo {
     background-image: url('../images/png/logo.png');
   }
-}
-
-@include breakpoint(screen-md-min) {
-  .logo {
-    margin-left: 15px;
-  }
-  .front .logo  {
-    margin-left: 0;
+  .front {
+    .logo {
+      background-image: url('../images/png/logo--big.png');
+      width: 378px;
+      height: 193px;
+    }
   }
 }
