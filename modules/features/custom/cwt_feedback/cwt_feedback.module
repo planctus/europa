@@ -33,7 +33,7 @@ function cwt_feedback_form($form_state) {
   global $language;
   global $base_root;
 
-  $form['#token'] = FALSE;
+  $form['#token'] = NULL;
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
     '#title' => t("What were you doing?"),
