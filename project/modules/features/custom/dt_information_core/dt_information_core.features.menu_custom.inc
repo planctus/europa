@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core.features.menu_custom.inc
+ * dt_information_core.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function dt_core_menu_default_menu_custom() {
+function dt_information_core_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: menu-dt-menu-social-media.
@@ -32,7 +32,6 @@ function dt_core_menu_default_menu_custom() {
   t('Help | Cookies and privacy notes | Legal statement');
   t('List of social networks links for the European Commission');
   t('Service links');
-
 
   return $menus;
 }

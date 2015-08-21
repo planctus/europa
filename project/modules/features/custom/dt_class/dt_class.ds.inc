@@ -55,11 +55,6 @@ function dt_class_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'class';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'work_in_progress' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -249,26 +244,20 @@ function dt_class_ds_layout_settings_info() {
         0 => 'title',
         1 => 'field_core_introduction',
       ),
-      'top' => array(
-        2 => 'group_class_messages',
-        5 => 'work_in_progress',
-      ),
       'central' => array(
-        3 => 'field_link_groups',
-        4 => 'group_class_topics',
-        6 => 'group_class_departments',
-        7 => 'field_core_topics',
-        8 => 'field_core_department',
-        9 => 'field_class_related_links',
+        2 => 'field_link_groups',
+        3 => 'group_class_topics',
+        4 => 'group_class_departments',
+        5 => 'field_core_topics',
+        6 => 'field_core_department',
+        7 => 'field_class_related_links',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'group_class_messages' => 'top',
       'field_link_groups' => 'central',
       'group_class_topics' => 'central',
-      'work_in_progress' => 'top',
       'group_class_departments' => 'central',
       'field_core_topics' => 'central',
       'field_core_department' => 'central',

@@ -984,7 +984,10 @@ function europa_preprocess_page(&$variables) {
       NULL;
 
     // Check if Display Suite is handling node.
-    if (ds_get_layout('node', $node->type, 'full')) {
+    $layout = ds_get_layout('node', $node->type, 'full');
+    if ($layout) {
+      ctools_class_add($layout['layout']);
+
       // This disables message-printing on ALL page displays.
       $variables['show_messages'] = FALSE;
 
