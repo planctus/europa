@@ -39,11 +39,12 @@ function template_preprocess_views_view_nexteuropa_listing(&$variables) {
     $variables['ds_view_mode'] = ' listing--' . str_replace('_', '-', $ds_view_mode);
   }
 
-  // Calculating columns and adding modifiers for listing__wrapper based on columns
+  // Calculating columns and adding modifiers for listing__wrapper based on
+  // columns.
   $variables['listing_columns'] = '';
   if (!empty($style_plugin_options['listing_columns'])) {
     $listing_column_name = $style_plugin_options['listing_columns'];
-    $variables['listing_columns'] = ' listing--' . str_replace('_', '-', $listing_column_name);
+    $variables['listing_columns'] = ' listing__wrapper--' . str_replace('_', '-', $listing_column_name);
   }
 
   $columns_num = 1;
@@ -53,7 +54,6 @@ function template_preprocess_views_view_nexteuropa_listing(&$variables) {
   elseif ($listing_column_name == 'three_columns') {
     $columns_num = 3;
   }
-
 
   // Distribute items into columns.
   $total = count($rows);
@@ -71,17 +71,4 @@ function template_preprocess_views_view_nexteuropa_listing(&$variables) {
       $counter++;
     }
   }
-  //
-  // // Assemble the markup.
-  // $output = '<div class="listing__wrapper' . $wrapper_class . '">';
-  // foreach ($columns as $column) {
-  //   $output .= '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
-  //   foreach ($column as $item) {
-  //     $output .= $item;
-  //   }
-  //   $output .= '</' . $config['listing_wrapper_element'] . '>';
-  // }
-  // $output .= '</div>';
-  //
-  // return $output;
 }

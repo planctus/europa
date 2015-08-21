@@ -7,15 +7,13 @@
  */
 ?>
 <div class="listing__wrapper<?php print $listing_columns . $listing_wrapper_modifier; ?>">
-  <div class="listing<?php print $ds_view_mode . $listing_modifier; ?>">
-    <?php foreach ($columns as $column): ?>
-      <div class="column">
-      <?php foreach ($column as $id => $row): ?>
-        <div class="listing__item">
-          <?php print $row; ?>
-        </div>
-      <?php endforeach; ?>
+  <?php foreach ($columns as $column): ?>
+    <div class="listing<?php print $ds_view_mode . $listing_modifier; ?>">
+    <?php foreach ($column as $id => $row): ?>
+      <div class="listing__item">
+        <?php print $row; ?>
       </div>
     <?php endforeach; ?>
-  </div>
+    </div>
+  <?php endforeach; ?>
 </div>
