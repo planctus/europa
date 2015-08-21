@@ -55,9 +55,9 @@ function template_preprocess_views_view_nexteuropa_listing(&$variables) {
   }
 
 
-  // Distribute items into collumns.
+  // Distribute items into columns.
   $total = count($rows);
-  $columns = array();
+  $variables['columns'] = array();
   $max_items_in_column = array();
 
   for ($i = 0; $i < $columns_num; $i++) {
@@ -67,18 +67,7 @@ function template_preprocess_views_view_nexteuropa_listing(&$variables) {
   $counter = 0;
   for ($i = 0; $i < $columns_num; $i++) {
     for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
-      $item = $rows[$counter];
-      // Row content.
-      switch ($config['view_mode']) {
-        case 'title':
-          $rendered_item = '' . drupal_render($item) . '';
-          break;
-
-        default:
-          $rendered_item = drupal_render($item);
-          break;
-      }
-      $columns[$i][] = '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
+      $variables['columns'][$i][] = $rows[$counter];
       $counter++;
     }
   }
