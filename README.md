@@ -15,8 +15,8 @@ Please run the following codes in your development environment (Linux or OS X).
 # Installing composer.
 composer install
 
-# Copy from build.properties.dist to your local setting build.properties.local.
-cp build.properties.dist.[projectname].local build.properties.local
+# Copy from build.properties.dist to your local setting build.properties.local depending on which project you are building.
+cp build.properties.dist.[project name].local build.properties.local
 # Change settings in build.properties.local to match your environments
 
 # Initalize platform for your project:
@@ -37,11 +37,11 @@ By default the submodule is using the latest release tag of the platform-dev rep
 # In the platform folder perform the update. Checkout a new tag for example.
 cd platform
 git pull
-git checkout <tagname>
+git checkout [tag name]
 # In the root folder add the change to the project's repository
 cd ..
 git add platform
-git commit -m "Platform updated to <tagname>"
+git commit -m "Platform updated to [tag name]"
 ```
 More on git submodules here: http://git-scm.com/book/en/v2/Git-Tools-Submodules
 
