@@ -29,7 +29,7 @@ drupal.version = 7.34
 drupal.profile.name = multisite_drupal_standard
 
 # Development / testing modules to enable
-drupal.modules = dt_core
+drupal.modules = dt_information_core
 
 # The site name to use. Use 'all' if you do not use a multisite installation.
 drupal.site.name = project
