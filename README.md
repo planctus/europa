@@ -15,7 +15,7 @@ Please run the following codes in your development environment (Linux or OS X).
 # Installing composer.
 composer install
 
-# Copy from build.properties.dist to your local setting build.properties.local depending on which project you are building.
+# Copy from build.properties.dist to your local setting build.properties.[project name].local depending on which project you are building.
 cp build.properties.dist.[project name].local build.properties.local
 # Change settings in build.properties.local to match your environments
 
