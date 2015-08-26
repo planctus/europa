@@ -20,3 +20,4 @@ project/sites.php
 project/files
 project/modules/devel
 .DS_Store
+logs
