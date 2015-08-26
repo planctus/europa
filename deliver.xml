@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Deliver to Acquia Cloud" default="deliver">
+  <property name="temp" value="${project.basedir}/release" />
+  <property name="folderlist" value="libraries,modules,themes" />
+  <target name="release" description="Release code to MULTISITE SVN">
+    <!-- Checkout  -->
+    <svncheckout
+      repositoryurl="${phing.project.svn}"
+      todir="${temp}"/>
+
+    <!-- Update code  -->
+    <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+
+    <!-- Commit  -->
+    <input propertyname="commitmessage">Please provide a commit message:</input>
+    <echo msg="${commitmessage}" />
+    <svncommit
+      workingcopy="${temp}"
+      message="${commitmessage}" />
+    <echo message="Committed revision: ${svn.committedrevision}"/>
+
+    <!-- Delete temporary folder -->
+    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
+    <echo message="${temp} removed"/>
+  </target>
+
+  <target name="updatefolder" description="Update folder in MULTISITE SVN">
+    <!-- Delete previous code  -->
+    <delete dir="${temp}/${folder}" includeemptydirs="true" failonerror="true" />
+
+    <!-- Copy latest code  -->
+    <copy todir="${temp}/${folder}" overwrite="true">
+        <fileset dir="${phing.project.project.dir}/${folder}">
+          <patternset>
+            <exclude name="*devel/**"/>
+            <exclude name="*/node_modules/**"/>
+            <exclude name="*/styleguide/**"/>
+            <exclude name="**/Gruntfile.js"/>
+            <exclude name="**/Watchfile"/>
+            <exclude name="**/package.json"/>
+          </patternset>
+        </fileset>
+    </copy>
+
+    <!-- SVN remove locally deleted files  -->
+    <exec dir="${temp}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
+    <!-- Add latest code  -->
+    <exec dir="${temp}" command="svn add ${folder} --force"></exec>
+  </target>
+
+  <target name="deliver" description="Deliver code to Acquia repository">
+    <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
+    <property name="acquia.docroot" value="${acquia.repo}/docroot" />
+    <gitcheckout
+      repository="${acquia.repo}"
+      branchname="${acquia.repo.project.branch}" quiet="true" />
+    <gitpull
+        repository="${acquia.repo}"
+        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" force="true" />
+
+    <echo msg="Delete acquia-cloud/docroot." />
+    <delete includeemptydirs="true" failonerror="false">
+      <fileset dir="${acquia.docroot}">
+        <patternset>
+          <exclude name="files"/>
+          <exclude name="sites/*/files"/>
+          <exclude name="sites/*/private"/>
+          <exclude name="**/settings.php"/>
+          <exclude name="**/sites.php/"/>
+        </patternset>
+      </fileset>
+    </delete>
+    <echo msg="Copy files to acquia-cloud/docroot." />
+    <copy todir="${acquia.docroot}">
+        <fileset dir="${distro.code.dir}">
+          <patternset>
+            <exclude name="**/settings.php"/>
+            <exclude name="**/sites.php/"/>
+            <exclude name="sites/*/files"/>
+          </patternset>
+      </fileset>
+    </copy>
+
+    <tstamp>
+      <format property="DATE" pattern="%c" locale="nl_NL"/>
+    </tstamp>
+
+    <!-- commit all modified / deleted files -->
+    <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
+    <exec dir="${acquia.repo}" command="git add -A"></exec>
+    <gitcommit
+        repository="${acquia.repo}"
+        message="Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+
+    <!-- Get previous tagnames -->
+    <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
+    <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
+    <input propertyname="TAG">Please provide a tag name:</input>
+    <gittag repository="${acquia.repo}" name="${TAG}" />
+    <gitpush
+        repository="${acquia.repo}"
+        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
+  </target>
+
+</project>
