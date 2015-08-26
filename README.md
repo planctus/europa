@@ -79,17 +79,19 @@ bin/phing package
 *   Make the Drupal profile into the <code>phing.project.distro.dir</code> folder based on the build.make file of the installation profile set in <code>drupal.profile.name</code>.
 *   Copy your custom modules, themes and libraries into the built Drupal instance
 
-## Deliver production codebase to the Acquia Cloud:
+### Deliver production codebase to the Acquia Cloud:
 
-In order to do this you need to have read/write access to the Acquia Cloud repository and you need to <code>git submodule init</code> for the first time the acquia-cloud submodule in the project.
+In order to do this you need to have read/write access to the Acquia Cloud repository and the acquia-cloud submodule has to be properly initialized.
 
-*   RUN: <code>bin/phing deliver</code>
+```bash
+bin/phing deliver
+```
 
 #### This will:
 
-*   Copy your previously packaged (!) codebase from docroot to the acquia-cloud/docroot in the acquia-cloud submodule.
+*   Copy your previously packaged (!) codebase from <code>phing.project.distro.dir</code> to the acquia-cloud/docroot in the acquia-cloud submodule.
 
-#####From the submodule:
+##### From the submodule:
 
 *   Stages all changes
 *   Commits changes to master branch of the Acquia Cloud repository
