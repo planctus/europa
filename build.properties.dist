@@ -16,7 +16,7 @@ phing.project.tmp.dir = tmp
 # Platform folder
 phing.project.platform.dir = platform
 
-# Platform folder
+# Project folder
 phing.project.project.dir = project
 
 # Platform folder
@@ -28,8 +28,8 @@ drupal.version = 7.34
 # The install profile to use
 drupal.profile.name = multisite_drupal_standard
 
-# Development / testing modules to enable
-drupal.modules = dt_information_core
+# Modules to enable
+drupal.modules = dt_core
 
 # The site name to use. Use 'all' if you do not use a multisite installation.
 drupal.site.name = project
@@ -61,6 +61,8 @@ drupal.distro.make.file = distro.make
 platform.code.dir = ${project.basedir}/${phing.project.platform.dir}
 platform.profile.dir = ${platform.code.dir}/profiles
 
+project.code.dir = ${project.basedir}/${phing.project.project.dir}
+
 dev.code.dir = ${project.basedir}/${phing.project.build.dir}
 dev.drupal.profile.dir = ${dev.code.dir}/profiles
 dev.drupal.sites.dir = ${dev.code.dir}/sites
@@ -70,7 +72,9 @@ dev.drupal.site.dir = ${dev.drupal.settings.dir}
 dev.drupal.libraries.dir = ${dev.drupal.site.dir}/libraries
 dev.drupal.modules.dir = ${dev.drupal.site.dir}/modules
 dev.drupal.themes.dir = ${dev.drupal.site.dir}/themes
-
+dev.drupal.all.libraries.dir = ${dev.code.dir}/sites/all/libraries
+dev.drupal.all.modules.dir = ${dev.code.dir}/sites/all/modules
+dev.drupal.all.themes.dir = ${dev.code.dir}/sites/all/themes
 
 distro.code.dir = ${project.basedir}/${phing.project.distro.dir}
 distro.drupal.profile.dir = ${distro.code.dir}/profiles
@@ -93,3 +97,5 @@ server.docroot = /home/cphp/var/www
 
 # Project folder in MULTISITE SVN
 phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta
+# Project branch in AC
+acquia.repo.project.branch = master
