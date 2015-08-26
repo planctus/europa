@@ -4,25 +4,35 @@
   <property name="temp" value="${project.basedir}/release" />
   <property name="folderlist" value="libraries,modules,themes" />
   <target name="release" description="Release code to MULTISITE SVN">
-    <!-- Checkout  -->
-    <svncheckout
-      repositoryurl="${phing.project.svn}"
-      todir="${temp}"/>
+    <if>
+      <not>
+        <equals arg1="${phing.project.svn}" arg2="" />
+      </not>
+      <then>
+        <!-- Checkout  -->
+        <svncheckout
+          repositoryurl="${phing.project.svn}"
+          todir="${temp}"/>
 
-    <!-- Update code  -->
-    <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+        <!-- Update code  -->
+        <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
 
-    <!-- Commit  -->
-    <input propertyname="commitmessage">Please provide a commit message:</input>
-    <echo msg="${commitmessage}" />
-    <svncommit
-      workingcopy="${temp}"
-      message="${commitmessage}" />
-    <echo message="Committed revision: ${svn.committedrevision}"/>
+        <!-- Commit  -->
+        <input propertyname="commitmessage">Please provide a commit message:</input>
+        <echo msg="${commitmessage}" />
+        <svncommit
+          workingcopy="${temp}"
+          message="${commitmessage}" />
+        <echo message="Committed revision: ${svn.committedrevision}"/>
 
-    <!-- Delete temporary folder -->
-    <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
-    <echo message="${temp} removed"/>
+        <!-- Delete temporary folder -->
+        <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
+        <echo message="${temp} removed"/>
+      </then>
+      <else>
+        <echo message="SVN is not set up correctly."/>
+      </else>
+    </if>
   </target>
 
   <target name="updatefolder" description="Update folder in MULTISITE SVN">
