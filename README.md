@@ -48,6 +48,7 @@ More on git submodules here: http://git-scm.com/book/en/v2/Git-Tools-Submodules
 ##### In cases when the platform needs to be altered (quick bug fixes etc)
 
 Changes should be stored in the form of patch files in the patches folder of the project. To apply patches after your platform is initalized run:
+
 ```bash
 bin/phing patch-platform
 ```
