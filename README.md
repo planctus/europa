@@ -7,21 +7,29 @@
                                              '-'      !
 
 
-## Set up your environment:
+## Set up developer environment:
 
-*   RUN: <code>composer install</code>
-*   Create your build.properties.local from build.properties.dist
-*   Change settings in build.properties.local to match your environments
+Please run the following codes in your development environment (Linux or iOS).
 
-### Initalize platform for your project:
+```bash
+# Installing composer.
+composer install
 
-* Run <code>git submodule init</code>
-* Run <code>git submodule update</code>
+# Copy from build.properties.dist to your local setting build.properties.local.
+cp build.properties.dist build.properties.local
+# Change settings in build.properties.local to match your environments
+
+# Initalize platform for your project:
+git submodule init
+git submodule update
+```
+
+
 
 #### This will:
 
 *   Initialize the submodule <code>platform</code> that contains the MULTISITE platform. By default the submodule is using the develop branch of the platform-dev repository.
-*   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository. All pushes to the <code>acquia.repo.project.branch</code> branch of this repository will deploy the code on the corresponding environment of our Acquia Cloud test server if it is configured properly on Acquia Cloud.
+*   Initialize the submodule <code>acquia-cloud</code> that contains the test environments repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
 
 ##### In case the platform needs to be updated:
 *   Maybe the platform is not in the *develop* branch, so do this `cd platform; git checkout develop`.
@@ -84,12 +92,12 @@ In order to do this you need to have read/write access to the Acquia Cloud repos
 #####From the submodule:
 
 *   Stages all changes
-*   Commits changes to <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository
+*   Commits changes to master branch of the Acquia Cloud repository
 *   Creates a tag with a name you input when prompted
 *   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
 
 #### Important!
 
-I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized in every branch separately. (AFAIK not tested).
+I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized/updated in every branch separately.
 
-After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the master branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
