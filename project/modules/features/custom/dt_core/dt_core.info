@@ -29,6 +29,7 @@ dependencies[] = metatag_views
 dependencies[] = multisite_maxlength
 dependencies[] = nexteuropa_core
 dependencies[] = nexteuropa_ds_layouts
+dependencies[] = nexteuropa_formatters
 dependencies[] = nexteuropa_editorial
 dependencies[] = nexteuropa_europa_search
 dependencies[] = nexteuropa_feedback

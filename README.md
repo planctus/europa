@@ -27,7 +27,6 @@ git submodule update
 
 
 #### This will:
-
 *   Initialize the submodule <code>platform</code> that contains the **Next EUROPA WCM** platform.  
 By default the submodule is using the latest release tag of the platform-dev repository that corresponds to the production environment.
 *   Initialize the submodule <code>acquia-cloud</code> that contains the acceptance environment's repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
@@ -95,7 +94,7 @@ bin/phing deliver
 ##### From the submodule:
 
 *   Stages all changes
-*   Commits changes to master branch of the Acquia Cloud repository
+*   Commits changes to <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository
 *   Creates a tag with a name you input when prompted
 *   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
 
@@ -103,4 +102,4 @@ bin/phing deliver
 
 I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized/updated in every branch separately.
 
-After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the master branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
