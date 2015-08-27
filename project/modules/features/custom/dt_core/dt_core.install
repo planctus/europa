@@ -450,3 +450,10 @@ function dt_core_update_7133() {
     features_revert_module($feature);
   }
 }
+
+/**
+ * Enabling cwt_translation.
+ */
+function dt_core_update_7134() {
+  module_enable(array('cwt_translation'));
+}

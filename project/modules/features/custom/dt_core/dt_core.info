@@ -10,6 +10,7 @@ dependencies[] = bootstrap_fieldgroup
 dependencies[] = breakpoints
 dependencies[] = context
 dependencies[] = ctools
+dependencies[] = cwt_translation
 dependencies[] = ds
 dependencies[] = ds_extras
 dependencies[] = dt_date_format
