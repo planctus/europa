@@ -27,7 +27,6 @@ git submodule update
 
 
 #### This will:
-
 *   Initialize the submodule <code>platform</code> that contains the **Next EUROPA WCM** platform.  
 By default the submodule is using the latest release tag of the platform-dev repository that corresponds to the production environment.
 *   Initialize the submodule <code>acquia-cloud</code> that contains the acceptance environment's repository in the Acquia Cloud. By default the submodule is using the master branch of the Acquia Cloud repository. All pushes to the master branch of this repository will deploy the code on the development environment of our Acquia Cloud test server.
