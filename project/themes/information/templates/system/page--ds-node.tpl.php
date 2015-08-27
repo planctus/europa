@@ -84,6 +84,18 @@
  * @ingroup themeable
  */
 ?>
+<section class="notification">
+  <div class="container-fluid">
+    <div class="notification__content">
+      <div class="notification__text">
+        <p>
+          <?php print t('This is a test site for a new design and navigation for the Commission website. It does not replace <a href="http://ec.europa.eu">ec.europa.eu</a>.'); ?>
+        </p>
+      </div>
+      <a class="notification__btn" href="<?php print $node_about_beta; ?>"><?php print t('More about the beta'); ?></a>
+    </div>
+  </div>
+</section>
 
 <?php if (!empty($page['header_top'])): ?>
 <section class="header-top">
@@ -95,19 +107,15 @@
 
 <header class="site-header" role="banner">
   <div class="container-fluid">
-    <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
+    <a href="<?php print $front_page; ?>" class="logo site-header__logo pull-left" title="<?php print t('Home - European Commission Beta'); ?>"></a>
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
-        <div>
-          <div class="top-bar__wrapper">
-            <?php if($is_front): ?>
-              <h1 class="sr-only"><?php print $site_name; ?></h1>
-              <h2 class="sr-only"><?php print t('Classes'); ?></h2>
-            <?php endif; ?>
-            <?php print render($page['header']); ?>
-          </div>
-        </div>
+        <?php if($is_front): ?>
+          <h1 class="sr-only"><?php print $site_name; ?></h1>
+          <h2 class="sr-only"><?php print t('Classes'); ?></h2>
+        <?php endif; ?>
+        <?php print render($page['header']); ?>
       </section>
     <?php endif; ?>
   </div>

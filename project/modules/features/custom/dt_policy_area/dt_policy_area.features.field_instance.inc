@@ -267,7 +267,7 @@ function dt_policy_area_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 4,

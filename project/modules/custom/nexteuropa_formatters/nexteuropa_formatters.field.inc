@@ -1,15 +1,17 @@
 <?php
+
 /**
  * @file
  * Adding BEM related custom field formatters.
  */
+
 global $listing_view_modes;
 $listing_view_modes = array('title', 'meta', 'teaser');
 
 /**
  * Implements hook_field_formatter_info().
  */
-function nexteuropa_ds_layouts_field_formatter_info() {
+function nexteuropa_formatters_field_formatter_info() {
   return array(
     'context_nav_item' => array(
       'label' => t('Context nav item'),
@@ -19,35 +21,35 @@ function nexteuropa_ds_layouts_field_formatter_info() {
         'link_field',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_default' => array(
+    'link_button_default' => array(
       'label' => 'Link button default',
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_primary' => array(
+    'link_button_primary' => array(
       'label' => 'Link button primary',
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_secondary' => array(
+    'link_button_secondary' => array(
       'label' => 'Link button secondary',
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_call_for_action' => array(
+    'link_button_call_for_action' => array(
       'label' => 'Link button call for action',
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
-    'nexteuropa_ds_layouts_formatter_link_button_block' => array(
+    'link_button_block' => array(
       'label' => 'Link button block',
       'field types' => array(
         'link_field',
@@ -66,21 +68,21 @@ function nexteuropa_ds_layouts_field_formatter_info() {
  * @return string
  *   Class connected to formatter.
  */
-function _nexteuropa_ds_layouts_field_formatter_view_classes($formatter) {
+function _nexteuropa_formatters_field_formatter_view_classes($formatter) {
   switch ($formatter) {
-    case 'nexteuropa_ds_layouts_formatter_link_button_default':
+    case 'link_button_default':
       return 'btn btn-default';
 
-    case 'nexteuropa_ds_layouts_formatter_link_button_primary':
+    case 'link_button_primary':
       return 'btn btn-primary';
 
-    case 'nexteuropa_ds_layouts_formatter_link_button_secondary':
+    case 'link_button_secondary':
       return 'btn btn-secondary';
 
-    case 'nexteuropa_ds_layouts_formatter_link_button_call_for_action':
+    case 'link_button_call_for_action':
       return 'btn btn-ctn';
 
-    case 'nexteuropa_ds_layouts_formatter_link_button_block':
+    case 'link_button_block':
       return 'btn btn-default btn-block';
 
   }
@@ -90,7 +92,7 @@ function _nexteuropa_ds_layouts_field_formatter_view_classes($formatter) {
 /**
  * Implements hook_field_formatter_prepare_view().
  */
-function nexteuropa_ds_layouts_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+function nexteuropa_formatters_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
   if ($field['type'] == 'entityreference') {
     $target_ids = array();
 
@@ -142,7 +144,7 @@ function nexteuropa_ds_layouts_field_formatter_prepare_view($entity_type, $entit
 /**
  * Implements hook_field_formatter_view().
  */
-function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
   if (!empty($items)) {
     switch ($display['type']) {
@@ -195,18 +197,18 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
         }
         break;
 
-      case 'nexteuropa_ds_layouts_formatter_link_button_default':
-      case 'nexteuropa_ds_layouts_formatter_link_button_primary':
-      case 'nexteuropa_ds_layouts_formatter_link_button_secondary':
-      case 'nexteuropa_ds_layouts_formatter_link_button_call_for_action':
-      case 'nexteuropa_ds_layouts_formatter_link_button_block':
+      case 'link_button_default':
+      case 'link_button_primary':
+      case 'link_button_secondary':
+      case 'link_button_call_for_action':
+      case 'link_button_block':
         $formatter = $display['type'];
 
         switch ($field['type']) {
           case 'link_field':
             foreach ($items as $delta => $item) {
               // Set attribute from formatter settings.
-              $item['attributes']['class'] = _nexteuropa_ds_layouts_field_formatter_view_classes($formatter);
+              $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
 
               // Call theme function of link module (theme_link_formatter_link_
               // default).
@@ -230,7 +232,7 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
                 '#href' => $link,
                 '#options' => array(
                   'attributes' => array(
-                    'class' => _nexteuropa_ds_layouts_field_formatter_view_classes($formatter),
+                    'class' => _nexteuropa_formatters_field_formatter_view_classes($formatter),
                   ),
                 ),
               );
@@ -239,7 +241,7 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
 
         }
         // Multiple field wrapper.
-        if (($field['cardinality'] == -1) && ($formatter != 'nexteuropa_ds_layouts_formatter_link_button_block')) {
+        if (($field['cardinality'] == -1) && ($formatter != 'link_button_block')) {
           $element['#prefix'] = '<div class="btn-group">';
           $element['#suffix'] = '</div>';
         }
@@ -252,18 +254,18 @@ function nexteuropa_ds_layouts_field_formatter_view($entity_type, $entity, $fiel
 /**
  * Implements hook_field_formatter_info_alter().
  */
-function nexteuropa_ds_layouts_field_formatter_info_alter(&$info) {
+function nexteuropa_formatters_field_formatter_info_alter(&$info) {
   $info['entityreference_entity_view']['settings'] += array(
-    'nexteuropa_ds_layouts_columns' => 'default',
-    'nexteuropa_ds_layouts_modifier' => '',
-    'nexteuropa_ds_layouts_wrapper_modifier' => '',
+    'nexteuropa_listing_columns' => 'default',
+    'nexteuropa_listing_modifier' => '',
+    'nexteuropa_listing_wrapper_modifier' => '',
   );
 }
 
 /**
  * Implements hook_field_formatter_settings_form_alter().
  */
-function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_form, $context) {
+function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_form, $context) {
   global $listing_view_modes;
 
   if (
@@ -272,7 +274,7 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
-    $settings_form['nexteuropa_ds_layouts_columns'] = array(
+    $settings_form['nexteuropa_listing_columns'] = array(
       '#type' => 'select',
       '#title' => t('BEM: Listing layout'),
       '#options' => array(
@@ -282,20 +284,20 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
         'row_two' => t('Row with two items'),
         'row_three' => t('Row with three items'),
       ),
-      '#default_value' => $settings['nexteuropa_ds_layouts_columns'],
+      '#default_value' => $settings['nexteuropa_listing_columns'],
     );
 
-    $settings_form['nexteuropa_ds_layouts_modifier'] = array(
+    $settings_form['nexteuropa_listing_modifier'] = array(
       '#type' => 'textfield',
       '#title' => t('BEM: Listing Modifier'),
-      '#default_value' => $settings['nexteuropa_ds_layouts_modifier'],
+      '#default_value' => $settings['nexteuropa_listing_modifier'],
       '#description' => t('Class names separated by spaces.'),
     );
 
-    $settings_form['nexteuropa_ds_layouts_wrapper_modifier'] = array(
+    $settings_form['nexteuropa_listing_wrapper_modifier'] = array(
       '#type' => 'textfield',
       '#title' => t('BEM: Listing Wrapper Modifier'),
-      '#default_value' => $settings['nexteuropa_ds_layouts_wrapper_modifier'],
+      '#default_value' => $settings['nexteuropa_listing_wrapper_modifier'],
       '#description' => t('Class names separated by spaces.'),
     );
   }
@@ -304,7 +306,7 @@ function nexteuropa_ds_layouts_field_formatter_settings_form_alter(&$settings_fo
 /**
  * Implements hook_field_formatter_settings_summary_alter().
  */
-function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary, $context) {
+function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary, $context) {
   global $listing_view_modes;
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
@@ -312,25 +314,25 @@ function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary,
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
-    if (isset($settings['nexteuropa_ds_layouts_columns'])) {
+    if (isset($settings['nexteuropa_listing_columns'])) {
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: List layout') . ': ' . $settings['nexteuropa_ds_layouts_columns'];
+      $summary .= t('BEM: List layout') . ': ' . $settings['nexteuropa_listing_columns'];
     }
 
-    if (isset($settings['nexteuropa_ds_layouts_modifier']) && !empty($settings['nexteuropa_ds_layouts_modifier'])) {
+    if (isset($settings['nexteuropa_listing_modifier']) && !empty($settings['nexteuropa_listing_modifier'])) {
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: Listing Modifier') . ': ' . $settings['nexteuropa_ds_layouts_modifier'];
+      $summary .= t('BEM: Listing Modifier') . ': ' . $settings['nexteuropa_listing_modifier'];
     }
 
-    if (isset($settings['nexteuropa_ds_layouts_wrapper_modifier']) && !empty($settings['nexteuropa_ds_layouts_wrapper_modifier'])) {
+    if (isset($settings['nexteuropa_listing_wrapper_modifier']) && !empty($settings['nexteuropa_listing_wrapper_modifier'])) {
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_ds_layouts_wrapper_modifier'];
+      $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_listing_wrapper_modifier'];
     }
   }
 }
@@ -338,7 +340,7 @@ function nexteuropa_ds_layouts_field_formatter_settings_summary_alter(&$summary,
 /**
  * Implements hook_preprocess_field().
  */
-function nexteuropa_ds_layouts_preprocess_field(&$variables) {
+function nexteuropa_formatters_preprocess_field(&$variables) {
   if (isset($variables['element']['#formatter']) && $variables['element']['#formatter'] == 'entityreference_entity_view') {
     $entity_type = $variables['element']['#entity_type'];
     $field_name  = $variables['element']['#field_name'];
@@ -352,8 +354,8 @@ function nexteuropa_ds_layouts_preprocess_field(&$variables) {
       $formatter_settings = $info['display'][$view_mode]['settings'] + $formatter_settings;
     }
     // Make the setting available in the field template.
-    $variables['nexteuropa_ds_layouts_columns'] = $formatter_settings['nexteuropa_ds_layouts_columns'];
-    $variables['nexteuropa_ds_layouts_modifier'] = $formatter_settings['nexteuropa_ds_layouts_modifier'];
-    $variables['nexteuropa_ds_layouts_wrapper_modifier'] = $formatter_settings['nexteuropa_ds_layouts_wrapper_modifier'];
+    $variables['nexteuropa_listing_columns'] = $formatter_settings['nexteuropa_listing_columns'];
+    $variables['nexteuropa_listing_modifier'] = $formatter_settings['nexteuropa_listing_modifier'];
+    $variables['nexteuropa_listing_wrapper_modifier'] = $formatter_settings['nexteuropa_listing_wrapper_modifier'];
   }
 }

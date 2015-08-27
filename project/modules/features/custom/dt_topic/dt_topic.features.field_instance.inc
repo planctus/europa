@@ -28,7 +28,7 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 7,
@@ -403,7 +403,7 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 6,
@@ -461,9 +461,9 @@ function dt_topic_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
-          'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => '',
-          'nexteuropa_ds_layouts_wrapper_modifier' => 'sidebar-field-group__main',
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => 'sidebar-field-group__main',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -522,7 +522,7 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 4,
@@ -637,9 +637,9 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'nexteuropa_ds_layouts_formatter_link_button_block',
+        'type' => 'link_button_block',
         'weight' => 22,
       ),
       'teaser' => array(
@@ -691,7 +691,7 @@ function dt_topic_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 5,
