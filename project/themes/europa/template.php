@@ -16,19 +16,6 @@ function europa_js_alter(&$js) {
 }
 
 /**
- * Implements hook_theme().
- */
-function europa_theme() {
-  return array(
-    'node_form' => array(
-      'render element' => 'form',
-      'template' => 'node-form',
-      'path' => drupal_get_path('module', 'europa') . '/theme',
-    ),
-  );
-}
-
-/**
  * Overrides theme_form_required_marker().
  */
 function europa_form_required_marker($variables) {
@@ -53,7 +40,6 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#attributes']['class'][] = 'btn-primary';
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
-    $form['type']['#options']['All'] = t("All types");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
@@ -894,13 +880,6 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
 function europa_preprocess_field(&$variables) {
   // Changing label for the field to display stripped out values.
   switch ($variables['element']['#field_name']) {
-    case 'field_core_ecorganisation':
-      $field_value = $variables['element']['#items'][0]['value'];
-      $field_value_stripped = explode(" (", $field_value);
-
-      $variables['items'][0]['#markup'] = $field_value_stripped[0];
-      break;
-
     case 'field_core_social_network_links':
       $variables['element']['before'] = t('Follow the latest progress and get involved.');
       $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
