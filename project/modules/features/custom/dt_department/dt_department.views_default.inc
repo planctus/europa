@@ -114,6 +114,79 @@ function dt_department_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'department' => 'department',
+  );
+  /* Filter criterion: Content: Topics (field_core_topics) */
+  $handler->display->display_options['filters']['field_core_topics_target_id']['id'] = 'field_core_topics_target_id';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['table'] = 'field_data_field_core_topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['field'] = 'field_core_topics_target_id';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['operator_id'] = 'field_core_topics_target_id_op';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['label'] = 'Topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['operator'] = 'field_core_topics_target_id_op';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['identifier'] = 'topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Department type (field_core_ecorganisation) */
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['operator_id'] = 'field_core_ecorganisation_value_op';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['label'] = 'Department type';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['operator'] = 'field_core_ecorganisation_value_op';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['identifier'] = 'department_type';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Main task (field_department_tasks) */
+  $handler->display->display_options['filters']['field_department_tasks_tid']['id'] = 'field_department_tasks_tid';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['table'] = 'field_data_field_department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['field'] = 'field_department_tasks_tid';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator_id'] = 'field_department_tasks_tid_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['label'] = 'Main task';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator'] = 'field_department_tasks_tid_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['identifier'] = 'main_task';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_department_tasks_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['vocabulary'] = 'department_tasks';
   $handler->display->display_options['path'] = 'departments';
   $export['department'] = $view;
 
