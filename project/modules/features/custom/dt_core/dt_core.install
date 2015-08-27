@@ -421,23 +421,16 @@ function dt_core_update_7130() {
 }
 
 /**
- * Enable nexteuropa_formatters module.
- */
-function dt_core_update_7131() {
-  module_enable(array('nexteuropa_formatters'));
-}
-
-/**
  * Adding site switcher tab components in header and footer.
  */
-function dt_core_update_7132() {
+function dt_core_update_7131() {
   features_revert_module('dt_core');
 }
 
 /**
  * Enabling dt_information_core.
  */
-function dt_core_update_7133() {
+function dt_core_update_7132() {
   // Enabling dt_information_core only on information site.
   // Because the hook_updates will not running on a new install.
   module_enable(array('dt_information_core'));
@@ -449,6 +442,13 @@ function dt_core_update_7133() {
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
+}
+
+/**
+ * Enable nexteuropa_formatters module.
+ */
+function dt_core_update_7133() {
+  module_enable(array('nexteuropa_formatters'));
 }
 
 /**
