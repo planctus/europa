@@ -8,6 +8,7 @@ dependencies[] = dt_department
 dependencies[] = dt_policy_area
 dependencies[] = dt_policy_implementation
 dependencies[] = dt_policy_input
+dependencies[] = dt_policy_keyfile
 dependencies[] = dt_policy_next_step
 dependencies[] = dt_publication
 features[context][] = policies
