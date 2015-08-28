@@ -121,7 +121,7 @@
         <drush command="sql-drop" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
         </drush>
         <echo msg="Database deleted." />
-
+        <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
         <exec command="drush -y @${drush.alias.acquia} sql-dump | drush @${drush.alias.local} -y sqlc" />
         <echo msg="AC database loaded." />
 
