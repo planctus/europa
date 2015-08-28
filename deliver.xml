@@ -113,4 +113,30 @@
         refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
   </target>
 
+  <target name="fetch-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
+    <input propertyname="confirm">This will delete your current database. Do you want to continue? (y)</input>
+    <if>
+      <equals arg1="${confirm}" arg2="y" />
+      <then>
+        <drush command="sql-drop" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Database deleted." />
+
+        <exec command="drush -y @${drush.alias.acquia} sql-dump | drush @${drush.alias.local} -y sqlc" />
+        <echo msg="AC database loaded." />
+
+        <drush command="rebuild-registry" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Registry rebuilt." />
+        <drush command="user-password" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+          <param>admin</param>
+          <option name="password">pass</option>
+        </drush>
+        <echo msg="Password for user admin is set to pass." />
+      </then>
+      <else>
+        <echo msg="Exit without doing anything." />
+      </else>
+    </if>
+  </target>
 </project>
