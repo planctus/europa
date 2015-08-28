@@ -35,6 +35,7 @@ dependencies[] = nexteuropa_europa_search
 dependencies[] = nexteuropa_feedback
 dependencies[] = nexteuropa_inpage_nav
 dependencies[] = nexteuropa_multilingual
+dependencies[] = nexteuropa_views
 dependencies[] = picture
 dependencies[] = retina_images
 dependencies[] = strongarm
