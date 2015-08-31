@@ -53,6 +53,8 @@
  *   associated with the page, and the node ID is the second argument
  *   in the page's path (e.g. node/12345 and node/12345/revisions, but not
  *   comment/reply/12345).
+ * - $field_core_introduction: field that should be available in most of the
+ *   content types.
  *
  * Regions:
  * - $page['header']:         Displayed in the right part of the
@@ -60,9 +62,8 @@
  * - $page['header_bottom']:  Displayed below the header, take full width of
  *                            site -> main menu, global information,
  *                            breadcrumb...
- * - $page['highlighted']:    Displayed in a big visible
- *                            box -> important message, contextual information,
- *                            ...
+ * - $page['highlighted']:    Displayed in a big visible box -> important
+ *                            message, contextual information, ...
  * - $page['help']:           Displayed between page title and
  *                            content -> information about the page,
  *                            contextual help, ...
@@ -84,6 +85,18 @@
  * @ingroup themeable
  */
 ?>
+<section class="notification">
+  <div class="container-fluid">
+    <div class="notification__content">
+      <div class="notification__text">
+        <p>
+          <?php print t('This is a test site for a new design and navigation for the Commission website. It does not replace <a href="http://ec.europa.eu/">ec.europa.eu</a>.'); ?>
+        </p>
+      </div>
+      <a class="notification__btn" href="<?php print $node_about_beta; ?>"><?php print t('More about the beta'); ?></a>
+    </div>
+  </div>
+</section>
 
 <?php if (!empty($page['header_top'])): ?>
 <section class="header-top">
@@ -116,7 +129,7 @@
 <?php if (!empty($page['header_bottom'])): ?>
 <nav class="page-navigation" role="navigation">
   <div class="container-fluid">
-    <?php print render($page['header_bottom']); ?>
+      <?php print render($page['header_bottom']); ?>
   </div>
 </nav>
 <?php endif; ?>
@@ -151,8 +164,35 @@
 <?php endif; ?>
 
 <section class="main-content">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="row padding-reset">
+        <div class="col-lg-9">
+          <?php print render($title_prefix); ?>
+          <h1>
+              <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+                <?php print $site_name; ?>
+              <?php elseif (!empty($title)): ?>
+                <?php print $title; ?>
+              <?php endif; ?>
+          </h1>
+          <?php print render($title_suffix); ?>
+
+          <?php if(!empty($field_core_introduction)): ?>
+            <?php print render($field_core_introduction); ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Generic sections -->
   <div class="container-fluid">
+    <?php if (!empty($tabs)): ?>
+      <?php print render($tabs); ?>
+    <?php endif; ?>
+
     <?php if (!empty($page['help'])): ?>
       <?php print render($page['help']); ?>
     <?php endif; ?>
@@ -162,10 +202,38 @@
     <?php endif; ?>
   </div>
 
-  <?php print render($page['content']); ?>
+  <a id="main-content" tabindex="-1"></a>
 
-  <div class="container-fluid">
-    <?php print render($page['content_bottom']); ?>
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <?php if (!empty($page['sidebar_first'])): ?>
+          <aside class="col-md-3" role="complementary">
+            <?php print render($page['sidebar_first']); ?>
+          </aside>  <!-- /#sidebar-first -->
+        <?php endif; ?>
+
+        <section class="section <?php print $content_column_class; ?>">
+          <?php if (!empty($page['highlighted'])): ?>
+            <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+          <?php endif; ?>
+
+          <?php if (!empty($messages)): ?>
+            <?php print $messages; ?>
+          <?php endif; ?>
+
+          <?php print render($page['content']); ?>
+
+          <?php print render($page['content_bottom']); ?>
+        </section>
+
+        <?php if (!empty($page['sidebar_second'])): ?>
+          <aside class="col-md-3" role="complementary">
+            <?php print render($page['sidebar_second']); ?>
+          </aside>  <!-- /#sidebar-second -->
+        <?php endif; ?>
+      </div>
+    </div>
   </div>
 </section>
 

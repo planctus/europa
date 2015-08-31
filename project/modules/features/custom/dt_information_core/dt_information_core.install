@@ -32,10 +32,9 @@ function dt_information_core_install() {
   );
   module_enable($features);
 
-  // Temporarily disabled, because on live sites the setting was already enabled.
-  // Enable europa theme.
-  // theme_enable(array('europa'));
-  // variable_set('theme_default', 'europa');
+  // Enabling information sub-theme.
+  theme_enable(array('information'));
+  variable_set('theme_default', 'information');
 }
 
 /**
@@ -45,4 +44,12 @@ function dt_information_core_uninstall() {
   $path = drupal_get_path('module', 'dt_information_core') . '/dt_information_core.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Enable Information subtheme.
+ */
+function dt_information_core_update_7101() {
+  theme_enable(array('information'));
+  variable_set('theme_default', 'information');
 }

@@ -21,6 +21,10 @@ function dt_core_install() {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
+
+  // Enabling europa base theme.
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }
 
 /**
@@ -428,16 +432,9 @@ function dt_core_update_7131() {
 }
 
 /**
- * The site-menu is now opening over the breadcrumb.
- */
-function dt_core_update_7132() {
-  features_revert_module('dt_core');
-}
-
-/**
  * Enabling dt_information_core.
  */
-function dt_core_update_7133() {
+function dt_core_update_7132() {
   // Enabling dt_information_core only on information site.
   // Because the hook_updates will not running on a new install.
   module_enable(array('dt_information_core'));
@@ -452,8 +449,22 @@ function dt_core_update_7133() {
 }
 
 /**
- * Enabling cwt_translation.
+ * Enable nexteuropa_formatters module.
+ */
+function dt_core_update_7133() {
+  module_enable(array('nexteuropa_formatters'));
+}
+
+/**
+ * Enabling nexteuropa_views module.
  */
 function dt_core_update_7134() {
+  module_enable(array('nexteuropa_views'));
+}
+
+/**
+ * Enabling cwt_translation.
+ */
+function dt_core_update_7135() {
   module_enable(array('cwt_translation'));
 }

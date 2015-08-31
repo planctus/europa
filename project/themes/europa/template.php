@@ -16,68 +16,6 @@ function europa_js_alter(&$js) {
 }
 
 /**
- * Returns an array with singular and plural form of a bundle.
- *
- * @param string $bundle
- *   Machine name of a bundle.
- *
- * @return array
- *   Containing $forms['singular'] and $forms['plural'].
- */
-function _europa_bundle_forms($bundle) {
-  // Forming plurals for existing content types.
-  $plurals = array(
-    'announcement' => t("announcements"),
-    'page' => t("pages"),
-    'contact' => t("contacts"),
-    'department' => t("departments"),
-    'editorial_team' => t("editorial teams"),
-    'file' => t("files"),
-    'basic_page' => t("pages"),
-    'person' => t("people"),
-    'policy' => t("policies"),
-    'policy_area' => t("policy areas"),
-    'policy_implementation' => t("policy implementations"),
-    'policy_input' => t("policy inputs"),
-    'policy_keyfile' => t("policy key files"),
-    'priority' => t("priorities"),
-    'publication' => t("publications"),
-    'class' => t("classes"),
-    'topic' => t("topics"),
-    'toplink' => t("top links"),
-  );
-
-  $singular = node_type_get_name($bundle);
-  // If user preference for plural form - use it, otherwise use the label.
-  if (isset($plurals[$bundle])) {
-    $plural = $plurals[$bundle];
-  }
-  else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
-  }
-
-  $forms = array(
-    'singular' => strtolower($singular),
-    'plural' => $plural,
-  );
-
-  return $forms;
-}
-
-/**
- * Implements hook_theme().
- */
-function europa_theme() {
-  return array(
-    'node_form' => array(
-      'render element' => 'form',
-      'template' => 'node-form',
-      'path' => drupal_get_path('module', 'europa') . '/theme',
-    ),
-  );
-}
-
-/**
  * Overrides theme_form_required_marker().
  */
 function europa_form_required_marker($variables) {
@@ -102,9 +40,6 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#attributes']['class'][] = 'btn-primary';
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
-    $form['type']['#options']['All'] = t("All types");
-    $form['department']['#options']['All'] = t("All departments");
-    $form['policy_area']['#options']['All'] = t("All policy areas");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
@@ -318,7 +253,6 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
  * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
-
   return _europa_menu_link__footer($variables);
 }
 
@@ -561,14 +495,14 @@ function europa_field($variables) {
         $reference = array_shift($element[0]);
       }
       $first_node = is_array($reference) ? array_shift($reference) : NULL;
-      $layout_name = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
+      $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
       $layout_name_clean = str_replace('_', '-', $layout_name);
 
       $settings = array();
       $settings['view_mode'] = $first_node['#view_mode'];
       $settings['layout'] = $layout_name_clean;
-      $settings['modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
-      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
+      $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
+      $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
 
       // Custom listing settings based on view mode.
       $listing_view_modes = array('title', 'meta', 'teaser');
@@ -621,14 +555,21 @@ function europa_field($variables) {
   }
 
   // Render the items.
-  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= drupal_render($item);
+  if ($variables['element']['#view_mode'] == 'title') {
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
   }
-  $output .= '</div>';
+  else {
+    $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
+    $output .= '</div>';
 
-  // Render the top-level DIV.
-  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+    // Render the top-level DIV.
+    $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+  }
 
   return $output;
 }
@@ -939,13 +880,6 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
 function europa_preprocess_field(&$variables) {
   // Changing label for the field to display stripped out values.
   switch ($variables['element']['#field_name']) {
-    case 'field_core_ecorganisation':
-      $field_value = $variables['element']['#items'][0]['value'];
-      $field_value_stripped = explode(" (", $field_value);
-
-      $variables['items'][0]['#markup'] = $field_value_stripped[0];
-      break;
-
     case 'field_core_social_network_links':
       $variables['element']['before'] = t('Follow the latest progress and get involved.');
       $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
@@ -975,7 +909,7 @@ function europa_preprocess_image(&$variables) {
  * Implements hook_preprocess_html().
  */
 function europa_preprocess_html(&$variables) {
-  $variables['theme_path'] = base_path() . drupal_get_path('theme', 'europa');
+  $variables['theme_path'] = base_path() . path_to_theme();
 }
 
 /**
@@ -1044,10 +978,6 @@ function europa_preprocess_page(&$variables) {
       $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
-
-  // Temporary variable that should be removed once the beta notification
-  // is gone.
-  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
@@ -1069,32 +999,6 @@ function europa_preprocess_views_view(&$variables) {
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
     $variables['active_filters'] = get_exposed_filter_output();
-  }
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
-
-  $variables['items_count'] = '';
-
-  // Checking if .listing exists in classes_array so that result count can be
-  // displayed.
-  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-    $content_type_forms = _europa_bundle_forms($content_type);
-
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
-    }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $variables['items_count'] = $items_count;
   }
 }
 
