@@ -113,7 +113,7 @@
         refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
   </target>
 
-  <target name="fetch-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
+  <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
     <input propertyname="confirm">This will delete your current database. Do you want to continue? (y)</input>
     <if>
       <equals arg1="${confirm}" arg2="y" />
@@ -122,7 +122,16 @@
         </drush>
         <echo msg="Database deleted." />
         <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
-        <exec command="drush -y @${drush.alias.acquia} sql-dump | drush @${drush.alias.local} -y sqlc" />
+        <if>
+          <not>
+            <available file="${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql" type="file" property="available_phing_project_ac_dump"/>
+          </not>
+          <then>
+            <phingcall target="fetch-ac-db" />
+          </then>
+        </if>
+        <echo msg="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush -y @${drush.alias.local} sql-cli" />
+        <exec command="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush -y @${drush.alias.local} sql-cli" />
         <echo msg="AC database loaded." />
 
         <drush command="rebuild-registry" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
@@ -138,5 +147,9 @@
         <echo msg="Exit without doing anything." />
       </else>
     </if>
+  </target>
+  <target name="fetch-ac-db" description="Downloads the AC database." depends="init, init-dev-properties">
+    <exec command="drush -y @${drush.alias.acquia} sql-dump > ${phing.project.dumps.dir}/ac-dump.mysql" />
+    <echo msg="AC database downloaded." />
   </target>
 </project>

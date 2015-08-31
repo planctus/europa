@@ -103,3 +103,21 @@ bin/phing deliver
 I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized/updated in every branch separately.
 
 After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+
+### Restore your local instance using the Acquia Cloud database:
+
+In order to be able to perform this task, you will need working drush aliases pointing to the Acquia Cloud instance and also to your local instance. You can set up your aliases using the <code>drush.alias.local</code> and the <code>drush.alias.acquia</code> properties.
+
+This will restore the local database from *./_db_dumps/ac-dump.mysql* if it exists. If the database is not yet exported it will attempt to download it.
+
+```bash
+bin/phing restore-ac-db
+```
+
+#### Download the Acquia Cloud database:
+
+This will download the Acquia Cloud database into *./_db_dumps/ac-dump.mysql*
+
+```bash
+bin/phing fetch-ac-db
+```
