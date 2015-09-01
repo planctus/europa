@@ -5581,7 +5581,7 @@ button.close {
 
 @media print {
   .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .btn-group, .form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .form-group, ul.nav-tabs,
-  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
+  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .lang-select-page--dark, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
   #skip-link, .social-media-links {
     display: none !important; } }
 
@@ -7949,14 +7949,19 @@ Page specific language selection.
 
 Markup: html/lang-select-page.html
 
+.lang-select-page       - Default, background is light
+.lang-select-page--dark - Background is dark blue or a picture
+
 Styleguide: langselect
 */
-.lang-select-page {
+.lang-select-page, .lang-select-page--dark {
+  background: #f2f2f2;
   border-top: 1px solid #b3b4b5;
   border-bottom: 1px solid #b3b4b5;
   display: block;
-  height: 2.5em;
-  position: relative; }
+  height: 3.6em;
+  position: relative;
+  font-size: 0.778em; }
 
 .lang-select-page__left,
 .lang-select-page__right {
@@ -7970,11 +7975,22 @@ Styleguide: langselect
     -webkit-transform: translateY(-50%); }
 
 .lang-select-page__left {
-  width: 6em; }
+  width: 9em; }
 
-.lang-select-page__current {
+.lang-select-page__icon {
+  background: url("../images/svg/language-general.svg") no-repeat;
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  left: 1em; }
+  .no-js .lang-select-page__icon {
+    background: url("../images/png/language-general.png") no-repeat;
+    background-size: contain; }
+
+.lang-select-page__unavailable {
   padding-left: 1em;
-  text-decoration: line-through; }
+  text-decoration: line-through;
+  left: 3em; }
 
 .lang-select-page__list {
   display: block; }
@@ -7983,10 +7999,14 @@ Styleguide: langselect
     display: inline-block; }
     .lang-select-page__list .lang-select-page__option > a {
       display: inline-block;
-      padding: 0 0.6em;
-      line-height: 2.5; }
+      padding: 0 1.5em;
+      line-height: 3.6; }
     .lang-select-page__list .lang-select-page__option.is-selected {
       background: #ffd617; }
+
+.lang-select-page--dark {
+  border-top: none;
+  border-bottom: none; }
 
 /*
 Listing

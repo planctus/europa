@@ -5,17 +5,22 @@ Page specific language selection.
 
 Markup: html/lang-select-page.html
 
+.lang-select-page       - Default, background is light
+.lang-select-page--dark - Background is dark blue or a picture
+
 Styleguide: langselect
 */
 
 .lang-select-page {
   @extend .hidden-print;
 
+  background: $grey-lightest;
   border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
   display: block;
-  height: 2.5em;
+  height: 3.6em;
   position: relative;
+  font-size: $font-size-xsmall;
 }
 
 .lang-select-page__left,
@@ -25,12 +30,26 @@ Styleguide: langselect
 }
 
 .lang-select-page__left {
-  width: 6em;
+  width: 9em;
 }
 
-.lang-select-page__current {
+.lang-select-page__icon {
+  background: url('../images/svg/language-general.svg') no-repeat;
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  left: 1em;
+
+  .no-js & {
+    background: url('../images/png/language-general.png') no-repeat;
+    background-size: contain;
+  }
+}
+
+.lang-select-page__unavailable {
   padding-left: 1em;
   text-decoration: line-through;
+  left: 3em;
 }
 
 .lang-select-page__list {
@@ -41,8 +60,8 @@ Styleguide: langselect
 
     & > a {
       display: inline-block;
-      padding: 0 0.6em;
-      line-height: 2.5;
+      padding: 0 1.5em;
+      line-height: 3.6;
     }
 
     &.is-selected {
@@ -51,3 +70,8 @@ Styleguide: langselect
   }
 }
 
+.lang-select-page--dark {
+  @extend .lang-select-page;
+  border-top: none;
+  border-bottom: none;
+}
