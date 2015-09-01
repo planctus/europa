@@ -110,6 +110,27 @@ function dt_department_views_default_views() {
     5 => 0,
     7 => 0,
   );
+  /* Filter criterion: Content: Main task (field_department_tasks) */
+  $handler->display->display_options['filters']['field_department_tasks_tid']['id'] = 'field_department_tasks_tid';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['table'] = 'field_data_field_department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['field'] = 'field_department_tasks_tid';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator_id'] = 'field_department_tasks_tid_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['label'] = 'Main task';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator'] = 'field_department_tasks_tid_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['identifier'] = 'main_task';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_department_tasks_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_department_tasks_tid']['vocabulary'] = 'department_tasks';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
