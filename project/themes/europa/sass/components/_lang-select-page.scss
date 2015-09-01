@@ -1,0 +1,53 @@
+/*
+Language select (Page)
+
+Page specific language selection.
+
+Markup: html/lang-select-page.html
+
+Styleguide: langselect
+*/
+
+.lang-select-page {
+  @extend .hidden-print;
+
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  display: block;
+  height: 2.5em;
+  position: relative;
+}
+
+.lang-select-page__left,
+.lang-select-page__right {
+  display: inline-block;
+  & > * { @include vertical-align(); }
+}
+
+.lang-select-page__left {
+  width: 6em;
+}
+
+.lang-select-page__current {
+  padding-left: 1em;
+  text-decoration: line-through;
+}
+
+.lang-select-page__list {
+  display: block;
+  .lang-select-page__option {
+    list-style: none;
+    display: inline-block;
+
+    & > a {
+      display: inline-block;
+      padding: 0 0.6em;
+      line-height: 2.5;
+    }
+
+    &.is-selected {
+      background: $yellow-light
+    }
+  }
+}
+

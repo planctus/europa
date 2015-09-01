@@ -5581,7 +5581,7 @@ button.close {
 
 @media print {
   .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .btn-group, .form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .form-group, ul.nav-tabs,
-  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
+  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
   #skip-link, .social-media-links {
     display: none !important; } }
 
@@ -7941,6 +7941,52 @@ Styleguide: siteheader.langselect
   .front .lang-select-site {
     position: absolute;
     float: none; } }
+
+/*
+Language select (Page)
+
+Page specific language selection.
+
+Markup: html/lang-select-page.html
+
+Styleguide: langselect
+*/
+.lang-select-page {
+  border-top: 1px solid #b3b4b5;
+  border-bottom: 1px solid #b3b4b5;
+  display: block;
+  height: 2.5em;
+  position: relative; }
+
+.lang-select-page__left,
+.lang-select-page__right {
+  display: inline-block; }
+  .lang-select-page__left > *,
+  .lang-select-page__right > * {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%); }
+
+.lang-select-page__left {
+  width: 6em; }
+
+.lang-select-page__current {
+  padding-left: 1em;
+  text-decoration: line-through; }
+
+.lang-select-page__list {
+  display: block; }
+  .lang-select-page__list .lang-select-page__option {
+    list-style: none;
+    display: inline-block; }
+    .lang-select-page__list .lang-select-page__option > a {
+      display: inline-block;
+      padding: 0 0.6em;
+      line-height: 2.5; }
+    .lang-select-page__list .lang-select-page__option.is-selected {
+      background: #ffd617; }
 
 /*
 Listing

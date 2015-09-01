@@ -63,14 +63,6 @@
           <span class="kss-nav__ref">5</span
           ><span class="kss-nav__name">Field</span>
         </a>
-        <ul class="kss-nav__menu-child">
-            <li class="kss-nav__menu-item">
-              <a href="section-field.html#kssref-field-labeledalign">
-                <span class="kss-nav__ref">5.1</span
-                ><span class="kss-nav__name">Field labeled align</span>
-              </a>
-            </li>
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-file.html">
@@ -107,6 +99,8 @@
           <span class="kss-nav__ref">12</span
           ><span class="kss-nav__name">Language select (Page)</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-listing.html">
@@ -185,84 +179,20 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-field" class="kss-section kss-section--depth-1">
+      <div     id="kssref-langselect" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-field">
-          <span class="kss-title__ref">5</span
-          >Field
+        <a class="kss-title__permalink" href="#kssref-langselect">
+          <span class="kss-title__ref">12</span
+          >Language select (Page)
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>Drupal note:
-Field styling appearing in this styleguide is only valid for Default drupal field settings</p>
-
-      </div>
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Examples
-        </div>
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
-        </div>
-        <div class="kss-modifier__example">
-          <div class="field [modifier class]">
-  <div class="field__label">Phone number</div>
-  <div class="field__items">
-    +48531555003
-  </div>
-</div>
-
-        </div>
-        <div class="kss-modifier__name kss-style">
-          .field--labeled
-        </div>
-        <div class="kss-modifier__description kss-style">
-          External link icon
-        </div>
-        <div class="kss-modifier__example">
-          <div class="field field--labeled">
-  <div class="field__label">Phone number</div>
-  <div class="field__items">
-    +48531555003
-  </div>
-</div>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;field [modifier class]&quot;&gt;
-  &lt;div class=&quot;field__label&quot;&gt;Phone number&lt;/div&gt;
-  &lt;div class=&quot;field__items&quot;&gt;
-    +48531555003
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-      </div>
-
-      </div>
-      <section id="kssref-field-labeledalign" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-field-labeledalign">
-          <span class="kss-title__ref">5.1</span
-          >Field labeled align
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-      <div class="kss-description">
-        <p>Labeled align modifier should be used for aligning fields that do not have a label
-with fields that do have a label.</p>
+        <p>Page specific language selection.</p>
 
       </div>
     </div>
@@ -272,39 +202,45 @@ with fields that do have a label.</p>
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="field field--labeled">
-  <div class="field__label">Phone number</div>
-  <div class="field__items">
-    +48531555003
-  </div>
-</div>
-
-<div class="field field--labeled-align">
-  <div class="field__items">
-    Some text that gets aligned to the right
-  </div>
-</div>
+          <span class="lang-select-page [modifier class]">
+  <span class="lang-select-page__left">
+      <span class="lang-select-page__current">Francais</span>
+  </span>
+  <span class="lang-select-page__right">
+    <ul class="lang-select-page__list">
+      <li class="lang-select-page__option is-selected"><a href="#">English</a></li>
+      <li class="lang-select-page__option"><a href="#">Nederlands</a></li>
+      <li class="lang-select-page__option"><a href="#">hrvatski</a></li>
+      <li class="lang-select-page__option"><a href="#">italiano</a></li>
+      <li class="lang-select-page__option"><a href="#">latviesu</a></li>
+      <li class="lang-select-page__option"><a href="#">magyar</a></li>
+    </ul>
+  </span>
+</span>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;field field--labeled&quot;&gt;
-  &lt;div class=&quot;field__label&quot;&gt;Phone number&lt;/div&gt;
-  &lt;div class=&quot;field__items&quot;&gt;
-    +48531555003
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;field field--labeled-align&quot;&gt;
-  &lt;div class=&quot;field__items&quot;&gt;
-    Some text that gets aligned to the right
-  &lt;/div&gt;
-&lt;/div&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;span class=&quot;lang-select-page [modifier class]&quot;&gt;
+  &lt;span class=&quot;lang-select-page__left&quot;&gt;
+      &lt;span class=&quot;lang-select-page__current&quot;&gt;Francais&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class=&quot;lang-select-page__right&quot;&gt;
+    &lt;ul class=&quot;lang-select-page__list&quot;&gt;
+      &lt;li class=&quot;lang-select-page__option is-selected&quot;&gt;&lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;lang-select-page__option&quot;&gt;&lt;a href=&quot;#&quot;&gt;Nederlands&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;lang-select-page__option&quot;&gt;&lt;a href=&quot;#&quot;&gt;hrvatski&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;lang-select-page__option&quot;&gt;&lt;a href=&quot;#&quot;&gt;italiano&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;lang-select-page__option&quot;&gt;&lt;a href=&quot;#&quot;&gt;latviesu&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;lang-select-page__option&quot;&gt;&lt;a href=&quot;#&quot;&gt;magyar&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/span&gt;
+&lt;/span&gt;
 </code></pre>
       </div>
 
-      </section>
+      </div>
 </article>
 
 <!-- SCRIPTS -->

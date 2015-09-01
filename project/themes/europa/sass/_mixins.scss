@@ -32,3 +32,13 @@
     }
   }
 }
+
+// Aligns the elements vertically.
+// Parent element should be relatively positioned.
+@mixin vertical-align() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
