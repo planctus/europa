@@ -5,15 +5,15 @@
  */
 
 /**
- * Implements hook_field_info_field_instances().
+ * Implements hook_field_default_field_instances().
  */
-function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
+function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_introduction'
   $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_introduction'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
-    'info_value' => NULL,
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -21,7 +21,7 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_info',
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -45,6 +45,7 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_introduction',
+    'info_value' => NULL,
     'label' => 'Introduction',
     'required' => 1,
     'settings' => array(
@@ -96,7 +97,7 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
   // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-group_content_access'
   $field_instances['node-STARTERKIT_CONTENT_NAME-group_content_access'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
-    'info_value' => array(
+    'default_value' => array(
       0 => array(
         'value' => 0,
       ),
@@ -104,10 +105,11 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'info' => array(
+      'default' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'list_default',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -149,14 +151,15 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
   // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-og_group_ref'
   $field_instances['node-STARTERKIT_CONTENT_NAME-og_group_ref'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
-    'info_value' => NULL,
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'info' => array(
+      'default' => array(
         'label' => 'above',
+        'module' => 'og_ui',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'og_list_default',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -168,6 +171,7 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'og_group_ref',
+    'info_value' => NULL,
     'label' => 'Groups audience',
     'required' => FALSE,
     'settings' => array(
@@ -176,7 +180,7 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
           'admin' => array(
             'widget_type' => 'entityreference_autocomplete',
           ),
-          'info' => array(
+          'default' => array(
             'widget_type' => 'options_select',
           ),
           'status' => TRUE,
@@ -189,12 +193,12 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
       'full' => array(
         'custom settings' => FALSE,
         'label' => 'Full',
-        'type' => 'og_list_info',
+        'type' => 'og_list_default',
       ),
       'teaser' => array(
         'custom settings' => FALSE,
         'label' => 'Teaser',
-        'type' => 'og_list_info',
+        'type' => 'og_list_default',
       ),
     ),
     'widget' => array(
@@ -208,26 +212,21 @@ function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
   // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-title_field'
   $field_instances['node-STARTERKIT_CONTENT_NAME-title_field'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
-    'info_value' => NULL,
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'info' => array(
-        'label' => 'hidden',
+      'default' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '_none',
-        ),
-        'type' => 'title_linked',
-        'weight' => 1,
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
