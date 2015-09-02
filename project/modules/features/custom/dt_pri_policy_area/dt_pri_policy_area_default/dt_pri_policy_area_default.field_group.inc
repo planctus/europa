@@ -13,21 +13,19 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_policy_area_content|node|priority_policy_area|form';
-  $field_group->group_name = 'group_priority_policy_area_content';
+  $field_group->identifier = 'group_pri_policy_area_content|node|priority_policy_area|form';
+  $field_group->group_name = 'group_pri_policy_area_content';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_priority_policy_area_tabgroup';
+  $field_group->parent_name = 'group_pri_policy_area_tabgroup';
   $field_group->data = array(
     'label' => 'Content',
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_priority_policy_area_status',
-      2 => 'field_priority_policy_area_type',
-      4 => 'field_core_introduction',
-      5 => 'field_core_legacy_link',
+      1 => 'field_core_introduction',
+      2 => 'field_core_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -39,17 +37,17 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_policy_area_content|node|priority_policy_area|form'] = $field_group;
+  $export['group_pri_policy_area_content|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_policy_area_editorial|node|priority_policy_area|form';
-  $field_group->group_name = 'group_priority_policy_area_editorial';
+  $field_group->identifier = 'group_pri_policy_area_editorial|node|priority_policy_area|form';
+  $field_group->group_name = 'group_pri_policy_area_editorial';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_priority_policy_area_tabgroup';
+  $field_group->parent_name = 'group_pri_policy_area_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '10',
@@ -69,13 +67,13 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_policy_area_editorial|node|priority_policy_area|form'] = $field_group;
+  $export['group_pri_policy_area_editorial|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_policy_area_meta|node|priority_policy_area|teaser';
-  $field_group->group_name = 'group_priority_policy_area_meta';
+  $field_group->identifier = 'group_pri_policy_area_meta|node|priority_policy_area|teaser';
+  $field_group->group_name = 'group_pri_policy_area_meta';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'teaser';
@@ -98,13 +96,13 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_policy_area_meta|node|priority_policy_area|teaser'] = $field_group;
+  $export['group_pri_policy_area_meta|node|priority_policy_area|teaser'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a info field_group disabled initially */
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_policy_area_tabgroup|node|priority_policy_area|form';
-  $field_group->group_name = 'group_priority_policy_area_tabgroup';
+  $field_group->identifier = 'group_pri_policy_area_tabgroup|node|priority_policy_area|form';
+  $field_group->group_name = 'group_pri_policy_area_tabgroup';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
@@ -113,8 +111,8 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_priority_policy_area_content',
-      1 => 'group_priority_policy_area_editorial',
+      0 => 'group_pri_policy_area_content',
+      1 => 'group_pri_policy_area_editorial',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -124,7 +122,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_policy_area_tabgroup|node|priority_policy_area|form'] = $field_group;
+  $export['group_pri_policy_area_tabgroup|node|priority_policy_area|form'] = $field_group;
 
   return $export;
 }

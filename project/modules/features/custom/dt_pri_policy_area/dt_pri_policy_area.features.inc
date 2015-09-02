@@ -22,9 +22,9 @@ function dt_pri_policy_area_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_pri_policy_area_node_info() {
   $items = array(
     'priority_policy_area' => array(
-      'name' => t('Priority Policy Area'),
+      'name' => t('Priority policy area'),
       'base' => 'node_content',
-      'description' => t('Content type for dt.'),
+      'description' => t('Priority policy area content type for Digital Transformation.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

@@ -10,6 +10,46 @@
 function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_description'
+  $field_instances['node-priority_policy_area-field_core_description'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_core_description',
+    'label' => 'Description',
+    'required' => FALSE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-field_core_introduction'
   $field_instances['node-priority_policy_area-field_core_introduction'] = array(
     'bundle' => 'priority_policy_area',
@@ -90,7 +130,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -2,
+      'weight' => -3,
     ),
   );
 
@@ -254,6 +294,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Description');
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
