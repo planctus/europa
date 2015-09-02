@@ -78,14 +78,14 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_pri_policy_area_meta',
+        0 => 'group_pri_pol_area_meta',
         1 => 'title_field',
         2 => 'field_core_introduction',
         3 => 'field_priority_policy_area_type',
       ),
     ),
     'fields' => array(
-      'group_pri_policy_area_meta' => 'main',
+      'group_pri_pol_area_meta' => 'main',
       'title_field' => 'main',
       'field_core_introduction' => 'main',
       'field_priority_policy_area_type' => 'main',
