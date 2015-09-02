@@ -1,31 +1,31 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_DEFAULT.field_group.inc
+ * dt_pri_policy_area_default.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dt_STARTERKIT_DEFAULT_field_group_info() {
+function dt_pri_policy_area_default_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_content';
+  $field_group->identifier = 'group_priority_policy_area_content|node|priority_policy_area|form';
+  $field_group->group_name = 'group_priority_policy_area_content';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->parent_name = 'group_priority_policy_area_tabgroup';
   $field_group->data = array(
     'label' => 'Content',
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_STARTERKIT_CONTENT_NAME_status',
-      2 => 'field_STARTERKIT_CONTENT_NAME_type',
+      1 => 'field_priority_policy_area_status',
+      2 => 'field_priority_policy_area_type',
       4 => 'field_core_introduction',
       5 => 'field_core_legacy_link',
     ),
@@ -39,17 +39,17 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_priority_policy_area_content|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_editorial';
+  $field_group->identifier = 'group_priority_policy_area_editorial|node|priority_policy_area|form';
+  $field_group->group_name = 'group_priority_policy_area_editorial';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->parent_name = 'group_priority_policy_area_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '10',
@@ -69,22 +69,22 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_priority_policy_area_editorial|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_meta';
+  $field_group->identifier = 'group_priority_policy_area_meta|node|priority_policy_area|teaser';
+  $field_group->group_name = 'group_priority_policy_area_meta';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'teaser';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_STARTERKIT_CONTENT_NAME_type',
+      0 => 'field_priority_policy_area_type',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -98,23 +98,23 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser'] = $field_group;
+  $export['group_priority_policy_area_meta|node|priority_policy_area|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a info field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->identifier = 'group_priority_policy_area_tabgroup|node|priority_policy_area|form';
+  $field_group->group_name = 'group_priority_policy_area_tabgroup';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'priority_policy_area';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_STARTERKIT_CONTENT_NAME_content',
-      1 => 'group_STARTERKIT_CONTENT_NAME_editorial',
+      0 => 'group_priority_policy_area_content',
+      1 => 'group_priority_policy_area_editorial',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -124,7 +124,7 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_priority_policy_area_tabgroup|node|priority_policy_area|form'] = $field_group;
 
   return $export;
 }

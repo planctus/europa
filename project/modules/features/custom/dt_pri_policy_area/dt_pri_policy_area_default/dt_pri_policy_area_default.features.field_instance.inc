@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_DEFAULT.features.field_instance.inc
+ * dt_pri_policy_area_default.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
+function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_introduction'
-  $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_introduction'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-priority_policy_area-field_core_introduction'
+  $field_instances['node-priority_policy_area-field_core_introduction'] = array(
+    'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -94,9 +94,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-group_content_access'
-  $field_instances['node-STARTERKIT_CONTENT_NAME-group_content_access'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-priority_policy_area-group_content_access'
+  $field_instances['node-priority_policy_area-group_content_access'] = array(
+    'bundle' => 'priority_policy_area',
     'default_value' => array(
       0 => array(
         'value' => 0,
@@ -148,9 +148,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-og_group_ref'
-  $field_instances['node-STARTERKIT_CONTENT_NAME-og_group_ref'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-priority_policy_area-og_group_ref'
+  $field_instances['node-priority_policy_area-og_group_ref'] = array(
+    'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -209,9 +209,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-title_field'
-  $field_instances['node-STARTERKIT_CONTENT_NAME-title_field'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-priority_policy_area-title_field'
+  $field_instances['node-priority_policy_area-title_field'] = array(
+    'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
