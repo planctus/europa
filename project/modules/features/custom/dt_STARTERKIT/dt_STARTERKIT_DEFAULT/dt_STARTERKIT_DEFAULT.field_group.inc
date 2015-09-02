@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_default.field_group.inc
+ * dt_STARTERKIT_DEFAULT.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dt_STARTERKIT_default_field_group_info() {
+function dt_STARTERKIT_DEFAULT_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_default.features.field_instance.inc
+ * dt_STARTERKIT_DEFAULT.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_info_field_instances().
  */
-function dt_STARTERKIT_default_field_info_field_instances() {
+function dt_STARTERKIT_DEFAULT_field_info_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_introduction'
@@ -17,7 +17,7 @@ function dt_STARTERKIT_default_field_info_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'info' => array(
+      'default' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
