@@ -17,14 +17,12 @@ Styleguide: langselect
   background: $grey-lightest;
   border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
-  height: 100%;
   position: relative;
   font-size: $font-size-xsmall;
   display: block;
 }
 
 .lang-select-page__left {
-
   & > span {
     display: inline-block;
     padding: 1em;
@@ -50,6 +48,7 @@ Styleguide: langselect
 
 .lang-select-page__list {
   padding: 0;
+  margin: 0;
 
   .lang-select-page__option {
     list-style: none;
@@ -57,7 +56,7 @@ Styleguide: langselect
     & > a {
       display: block;
       padding: 0 1.5em;
-      line-height: 3.6;
+      line-height: 4;
     }
 
     &.is-selected {
@@ -70,4 +69,16 @@ Styleguide: langselect
   @extend .lang-select-page;
   border-top: none;
   border-bottom: none;
+}
+
+@include breakpoint(screen-sm-min) {
+  .lang-select-page__left,
+  .lang-select-page__right {
+    display: inline-block;
+  }
+  .lang-select-page__list {
+    .lang-select-page__option {
+      display: inline-block;
+    }
+  }
 }

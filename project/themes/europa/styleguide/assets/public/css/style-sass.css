@@ -7958,7 +7958,6 @@ Styleguide: langselect
   background: #f2f2f2;
   border-top: 1px solid #b3b4b5;
   border-bottom: 1px solid #b3b4b5;
-  height: 100%;
   position: relative;
   font-size: 0.778em;
   display: block; }
@@ -7981,19 +7980,27 @@ Styleguide: langselect
   text-decoration: line-through; }
 
 .lang-select-page__list {
-  padding: 0; }
+  padding: 0;
+  margin: 0; }
   .lang-select-page__list .lang-select-page__option {
     list-style: none; }
     .lang-select-page__list .lang-select-page__option > a {
       display: block;
       padding: 0 1.5em;
-      line-height: 3.6; }
+      line-height: 4; }
     .lang-select-page__list .lang-select-page__option.is-selected {
       background: #ffd617; }
 
 .lang-select-page--dark {
   border-top: none;
   border-bottom: none; }
+
+@media (min-width: 768px) {
+  .lang-select-page__left,
+  .lang-select-page__right {
+    display: inline-block; }
+  .lang-select-page__list .lang-select-page__option {
+    display: inline-block; } }
 
 /*
 Listing
