@@ -1,9 +1,9 @@
-name = STARTERKIT_FEATURE_TITLE Default
-description = STARTERKIT_FEATURE_DESCRIPTION default.
+name = STARTERKIT_FEATURE_TITLE DEFAULT
+description = STARTERKIT_FEATURE_DESCRIPTION DEFAULT.
 core = 7.x
 package = STARTERKIT_PACKAGE_NAME
 version = 7.x-1.0-dev
-project = dt_STARTERKIT_default
+project = dt_STARTERKIT_DEFAULT
 dependencies[] = dt_core
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1

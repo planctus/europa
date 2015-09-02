@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_default.features.inc
+ * dt_STARTERKIT_DEFAULT.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_STARTERKIT_default_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_STARTERKIT_DEFAULT_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }

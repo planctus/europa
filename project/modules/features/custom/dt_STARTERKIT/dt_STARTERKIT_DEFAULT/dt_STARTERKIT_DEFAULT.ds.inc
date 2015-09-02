@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_default.ds.inc
+ * dt_STARTERKIT_DEFAULT.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function dt_STARTERKIT_default_ds_field_settings_info() {
+function dt_STARTERKIT_DEFAULT_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
@@ -65,7 +65,7 @@ function dt_STARTERKIT_default_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function dt_STARTERKIT_default_ds_layout_settings_info() {
+function dt_STARTERKIT_DEFAULT_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();

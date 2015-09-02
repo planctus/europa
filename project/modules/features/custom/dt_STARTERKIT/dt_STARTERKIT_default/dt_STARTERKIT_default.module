@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Default feature.
- */
-
-include_once 'dt_STARTERKIT_default.features.inc';

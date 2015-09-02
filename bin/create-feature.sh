@@ -8,6 +8,7 @@ STARTERKIT_CONTENT_HUMAN_NAME="STARTERKIT_CONTENT_HUMAN_NAME"
 STARTERKIT_FEATURE_TITLE="STARTERKIT_FEATURE_TITLE"
 STARTERKIT_FEATURE_DESCRIPTION="STARTERKIT_FEATURE_DESCRIPTION"
 STARTERKIT_PACKAGE_NAME="STARTERKIT_PACKAGE_NAME"
+STARTERKIT_DEFAULT="DEFAULT"
 DEFAULT_POSTFIX="default"
 INFO_POSTFIX="info"
 POLITICAL_POSTFIX="pol"
@@ -60,6 +61,7 @@ usage() {
     `basename $0` -f "dt_department" -n "department" -t "DT Department" -d "DT Department content type" -c "Department" -p
       Creates a "Department" content type feature with the given description.
       The content type machine name will be "department" and the feature name is "dt_department".
+
 EOF
 }
 
@@ -68,6 +70,9 @@ parameter_checking() {
   if [ -z "${FEATURE_TITLE}" ] || [ -z "${CONTENT_NAME}" ] || [ -z "${FEATURE_NAME}" ]; then
     usage
     echo "Error: Missing mandatory parameter."
+    echo "Feature machine name (-f): ${FEATURE_NAME}"
+    echo "Content type machine name (-n): ${CONTENT_NAME}"
+    echo "Feature human title (-t): ${FEATURE_TITLE}"
     exit 1
   fi
   # Checking if feature directory exists.
@@ -95,13 +100,13 @@ create_subfeature() {
   # Info instance.
   if [ "${IS_INSTANCE}" = true ]; then
     echo "Site instance setup: ${INSTANCE_POSTFIX}."
-    SOURCE_DIR="${STARTERKIT_FEATURE_NAME}_${DEFAULT_POSTFIX}"
+    SOURCE_DIR="${STARTERKIT_FEATURE_NAME}_${STARTERKIT_DEFAULT}"
     INSTANCE_DIR="${FEATURE_NAME}_${INSTANCE_POSTFIX}"
     cp -a ${SOURCE_DIR} ${INSTANCE_DIR}
     cd ${INSTANCE_DIR}
-    find . -type f -exec sed -i "s|${DEFAULT_POSTFIX}|${INSTANCE_POSTFIX}|g" {} \;
-    for D in $(find . -type f -and -name "*${DEFAULT_POSTFIX}*"); do
-      mv "${D}" "`echo ${D} | sed s/${DEFAULT_POSTFIX}/${INSTANCE_POSTFIX}/`"
+    find . -type f -exec sed -i "s|${STARTERKIT_DEFAULT}|${INSTANCE_POSTFIX}|g" {} \;
+    for D in $(find . -type f -and -name "*${STARTERKIT_DEFAULT}*"); do
+      mv "${D}" "`echo ${D} | sed s/${STARTERKIT_DEFAULT}/${INSTANCE_POSTFIX}/`"
     done
     cd ..
   fi
@@ -109,12 +114,12 @@ create_subfeature() {
 
 while getopts ":f:n:t:d:c:k:iph" opt; do
   case $opt in
-    f) FEATURE_NAME=$OPTARG;;
-    n) CONTENT_NAME=$OPTARG;;
-    t) FEATURE_TITLE=$OPTARG;;
-    d) FEATURE_DESCRIPTION=$OPTARG;;
-    c) CONTENT_HUMAN_NAME=$OPTARG;;
-    k) PACKAGE_NAME=$OPTARG;;
+    f) FEATURE_NAME=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
+    n) CONTENT_NAME=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
+    t) FEATURE_TITLE=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
+    d) FEATURE_DESCRIPTION=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
+    c) CONTENT_HUMAN_NAME=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
+    k) PACKAGE_NAME=$OPTARG; if [[ $OPTARG = -* ]]; then ((OPTIND--)); continue; fi;;
     i) IS_INFO_INSTANCE=true;;
     p) IS_POLITICAL_INSTANCE=true;;
     h) usage; exit 0;;
@@ -129,8 +134,13 @@ parameter_checking
 cp -a ${STARTERKIT_FEATURE_NAME} ${FEATURE_NAME}
 cd ${FEATURE_NAME}
 
+create_subfeature true ${DEFAULT_POSTFIX}
 create_subfeature ${IS_INFO_INSTANCE} ${INFO_POSTFIX}
 create_subfeature ${IS_POLITICAL_INSTANCE} ${POLITICAL_POSTFIX}
+
+# Removing starterkit default dir, no longer necessary to be.
+RMDIR="${STARTERKIT_FEATURE_NAME}_${STARTERKIT_DEFAULT}"
+rm -rf ${RMDIR}
 
 # Renaming directories.
 for D in $(find . -type d -and -name "${STARTERKIT_FEATURE_NAME}*"); do
