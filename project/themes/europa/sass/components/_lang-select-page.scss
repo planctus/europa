@@ -17,49 +17,45 @@ Styleguide: langselect
   background: $grey-lightest;
   border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
-  display: block;
-  height: 3.6em;
+  height: 100%;
   position: relative;
   font-size: $font-size-xsmall;
-}
-
-.lang-select-page__left,
-.lang-select-page__right {
-  display: inline-block;
-  & > * { @include vertical-align(); }
+  display: block;
 }
 
 .lang-select-page__left {
-  width: 9em;
-}
 
-.lang-select-page__icon {
-  background: url('../images/svg/language-general.svg') no-repeat;
-  display: inline-block;
-  height: 2em;
-  width: 2em;
-  left: 1em;
+  & > span {
+    display: inline-block;
+    padding: 1em;
+    vertical-align: middle;
+  }
 
-  .no-js & {
-    background: url('../images/png/language-general.png') no-repeat;
-    background-size: contain;
+  .lang-select-page__icon {
+    background: url('../images/svg/language-general.svg') no-repeat;
+    margin-left: 1em;
+    height: 2em;
+    width: 2em;
+
+    .no-js & {
+      background: url('../images/png/language-general.png') no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .lang-select-page__unavailable {
+    text-decoration: line-through;
   }
 }
 
-.lang-select-page__unavailable {
-  padding-left: 1em;
-  text-decoration: line-through;
-  left: 3em;
-}
-
 .lang-select-page__list {
-  display: block;
+  padding: 0;
+
   .lang-select-page__option {
     list-style: none;
-    display: inline-block;
 
     & > a {
-      display: inline-block;
+      display: block;
       padding: 0 1.5em;
       line-height: 3.6;
     }
