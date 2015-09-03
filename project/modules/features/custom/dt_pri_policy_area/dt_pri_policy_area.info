@@ -19,6 +19,7 @@ features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_pri_pol_area_bg
+features[field_base][] = field_pri_pol_area_bg_context
 features[field_base][] = field_pri_pol_area_child_pol
 features[field_base][] = field_pri_pol_area_documents
 features[field_base][] = field_pri_pol_area_headerbg

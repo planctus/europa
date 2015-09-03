@@ -39,6 +39,35 @@ function dt_pri_policy_area_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_pri_pol_area_bg_context'
+  $field_bases['field_pri_pol_area_bg_context'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pri_pol_area_bg_context',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_pri_pol_area_child_pol'
   $field_bases['field_pri_pol_area_child_pol'] = array(
     'active' => 1,

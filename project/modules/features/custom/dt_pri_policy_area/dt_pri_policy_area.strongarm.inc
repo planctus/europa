@@ -108,10 +108,10 @@ function dt_pri_policy_area_strongarm() {
           'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '11',
+          'weight' => '60',
         ),
         'language' => array(
-          'weight' => '8',
+          'weight' => '57',
         ),
         'metatags' => array(
           'weight' => '4',
