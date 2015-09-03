@@ -593,10 +593,6 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
   // Popover to notify the user that the search is not fully functional.
   $form['search_input_group']['europa_search_submit']['#disabled'] = TRUE;
-  $form['search_input_group']['QueryText']['#attributes']['data-toggle'][] = 'popover';
-  $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
-  $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
-  $form['search_input_group']['QueryText']['#attributes']['data-content'][] = t('This function is not yet working in Beta.');
 }
 
 /**
@@ -790,10 +786,10 @@ function europa_preprocess_block(&$variables) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
-        'data-toggle' => 'popover',
-        'data-placement' => 'bottom',
-        'data-trigger' => 'focus',
-        'data-content' => t('This function is not yet working in Beta.'),
+        // 'data-toggle' => 'popover',
+        // 'data-placement' => 'bottom',
+        // 'data-trigger' => 'focus',
+        // 'data-content' => t('This function is not yet working in Beta.'),
       ),
       'query' => array(drupal_get_destination()),
     );
@@ -804,8 +800,8 @@ function europa_preprocess_block(&$variables) {
     // Add content to block.
     $variables['content'] = l($label . $code, 'splash', $options);
 
-    // For Beta initial release only: preventing default click behavior.
-    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
+    // Add the js to make it function.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-select-site.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
@@ -1194,7 +1190,6 @@ function europa_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   $attributes['href'] = url($_GET['q'], array('query' => $query));
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
 }
