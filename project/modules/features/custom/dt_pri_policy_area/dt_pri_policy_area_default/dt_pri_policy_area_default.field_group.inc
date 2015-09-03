@@ -21,7 +21,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = 'group_pri_pol_area_tabgroup';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '24',
+    'weight' => '25',
     'children' => array(
       0 => 'field_pri_pol_area_objectives',
     ),
@@ -109,7 +109,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = 'group_pri_pol_area_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '25',
+    'weight' => '26',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -202,7 +202,7 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '23',
     'children' => array(
       0 => 'field_pri_pol_area_policy_intro',
-      1 => 'field_child_priority_policy_area',
+      1 => 'field_pri_pol_child_pri_pol_area',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -229,10 +229,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_pri_pol_area_background',
-      1 => 'group_pri_pol_area_content',
-      2 => 'group_pri_pol_area_editorial',
-      3 => 'group_pri_pol_area_policy',
+      0 => 'group_pri_pol_area_related',
+      1 => 'group_pri_pol_area_background',
+      2 => 'group_pri_pol_area_content',
+      3 => 'group_pri_pol_area_editorial',
+      4 => 'group_pri_pol_area_policy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(

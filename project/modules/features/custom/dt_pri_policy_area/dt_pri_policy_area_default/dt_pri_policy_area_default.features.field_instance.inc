@@ -10,52 +10,6 @@
 function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-priority_policy_area-field_child_priority_policy_area'
-  $field_instances['node-priority_policy_area-field_child_priority_policy_area'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select and order the priority policy areas and policies that part of this priority policy area.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_child_priority_policy_area',
-    'label' => 'Child Priority policy areas and Policies',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 12,
-    ),
-  );
-
   // Exported field_instance: 'node-priority_policy_area-field_core_description'
   $field_instances['node-priority_policy_area-field_core_description'] = array(
     'bundle' => 'priority_policy_area',
@@ -554,6 +508,52 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_child_pri_pol_area'
+  $field_instances['node-priority_policy_area-field_pri_pol_child_pri_pol_area'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select and order the priority policy areas and policies that part of this priority policy area.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_pri_pol_child_pri_pol_area',
+    'label' => 'Child Priority policy areas and Policies',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 12,
     ),
   );
 
