@@ -219,6 +219,37 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_related|node|priority_policy_area|form';
+  $field_group->group_name = 'group_pri_pol_area_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pri_pol_area_tabgroup';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '24',
+    'children' => array(
+      0 => 'field_core_policy_areas',
+      1 => 'field_core_persons',
+      2 => 'field_core_department',
+      3 => 'field_core_topics',
+      4 => 'field_core_links',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-pri-pol-area-related field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_related|node|priority_policy_area|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_pri_pol_area_tabgroup|node|priority_policy_area|form';
   $field_group->group_name = 'group_pri_pol_area_tabgroup';
   $field_group->entity_type = 'node';
@@ -229,11 +260,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_pri_pol_area_related',
-      1 => 'group_pri_pol_area_background',
-      2 => 'group_pri_pol_area_content',
-      3 => 'group_pri_pol_area_editorial',
-      4 => 'group_pri_pol_area_policy',
+      0 => 'group_pri_pol_area_background',
+      1 => 'group_pri_pol_area_content',
+      2 => 'group_pri_pol_area_editorial',
+      3 => 'group_pri_pol_area_policy',
+      4 => 'group_pri_pol_area_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
