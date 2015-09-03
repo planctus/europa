@@ -12,6 +12,21 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|priority_policy_area|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'priority_policy_area';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|priority_policy_area|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|priority_policy_area|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'priority_policy_area';
@@ -24,32 +39,6 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'h3',
           'fi-cl' => 'listing__title',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_priority_policy_area_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_introduction' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -80,15 +69,13 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_pri_pol_area_meta',
         1 => 'title_field',
-        2 => 'field_core_introduction',
-        3 => 'field_priority_policy_area_type',
+        2 => 'field_core_description',
       ),
     ),
     'fields' => array(
       'group_pri_pol_area_meta' => 'main',
       'title_field' => 'main',
-      'field_core_introduction' => 'main',
-      'field_priority_policy_area_type' => 'main',
+      'field_core_description' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
