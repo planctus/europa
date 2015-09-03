@@ -409,6 +409,52 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_publications'
+  $field_instances['node-priority_policy_area-field_core_publications'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the publications, infographics, files, etc. that are key for this Priority policy area.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_publications',
+    'label' => 'Documents',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 50,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-field_core_social_network_links'
   $field_instances['node-priority_policy_area-field_core_social_network_links'] = array(
     'bundle' => 'priority_policy_area',
@@ -505,6 +551,61 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_policy_next_steps'
+  $field_instances['node-priority_policy_area-field_policy_next_steps'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the timeline of this Priority policy area.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
+        'settings' => array(),
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_policy_next_steps',
+    'label' => 'Next steps',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'dt_policy_next_step',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'rows' => 5,
+        'size' => 255,
+      ),
+      'type' => 'dt_policy_next_step_widget',
+      'weight' => 51,
     ),
   );
 
@@ -1023,12 +1124,14 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px');
   t('Child Priority policy areas and Policies');
   t('Description');
+  t('Documents');
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
   t('Image');
   t('Introduction');
   t('Name of the priority policy area');
+  t('Next steps');
   t('Objectives');
   t('Policy areas');
   t('Policy introduction');
@@ -1039,8 +1142,10 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Select and order the priority policy areas and policies that part of this priority policy area.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority policy area.');
+  t('Select the publications, infographics, files, etc. that are key for this Priority policy area.');
   t('Select the related departments.');
   t('Select the related topics.');
+  t('Select the timeline of this Priority policy area.');
   t('Social Network Links');
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
   t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');

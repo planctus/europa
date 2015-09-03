@@ -24,6 +24,8 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '25',
     'children' => array(
       0 => 'field_pri_pol_area_objectives',
+      1 => 'field_core_publications',
+      2 => 'field_policy_next_steps',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
