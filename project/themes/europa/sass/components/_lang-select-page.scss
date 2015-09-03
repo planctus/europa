@@ -5,8 +5,9 @@ Page specific language selection.
 
 Markup: html/lang-select-page.html
 
-.lang-select-page       - Default, background is light
-.lang-select-page--dark - Background is dark blue or a picture
+.lang-select-page           - Default, background is light
+.lang-select-page--dark     - Background is dark blue or a picture
+.lang-select-page--dropdown - When JS converts the ul to select
 
 Styleguide: langselect
 */

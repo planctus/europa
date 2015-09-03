@@ -1,9 +1,12 @@
 (function ($) {
   $(document).ready(function(){
-    var $list  = $('.lang-select-page__list');
+    var selector = '.lang-select-page--dropdown',
+        $list  = $(selector).find('ul'),
+        listClass = $list.attr('class');
 
     $list.each(function() {
       var $select = $('<select />');
+      $select.addClass(listClass);
 
       $(this).find('a').each(function() {
         var $option = $('<option />');
@@ -11,7 +14,10 @@
         $select.append($option);
       });
 
-      $list.replaceWith($select);
+      if (!$list.parent().find('select').length) {
+        $list.parent().append($select);
+      }
     });
+    $list.hide();
   });
 })(jQuery);
