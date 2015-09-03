@@ -22,7 +22,9 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Background',
     'weight' => '24',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_pri_pol_area_objectives',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -51,6 +53,9 @@ function dt_pri_policy_area_default_field_group_info() {
       0 => 'title_field',
       1 => 'field_core_introduction',
       2 => 'field_core_description',
+      3 => 'field_pri_pol_area_headerbg',
+      4 => 'field_pri_pol_area_image',
+      5 => 'field_core_social_network_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -195,7 +200,10 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Policy',
     'weight' => '23',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_pri_pol_area_policy_intro',
+      1 => 'field_child_priority_policy_area',
+    ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -221,9 +229,9 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_pri_pol_area_content',
-      1 => 'group_pri_pol_area_editorial',
-      2 => 'group_pri_pol_area_background',
+      0 => 'group_pri_pol_area_background',
+      1 => 'group_pri_pol_area_content',
+      2 => 'group_pri_pol_area_editorial',
       3 => 'group_pri_pol_area_policy',
     ),
     'format_type' => 'tabs',
