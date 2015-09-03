@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @file
+ * Alter language switcher at site level.
+ */
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Default implementation of language selector.
+ */
+function dt_language_selector_site_popup_preprocess_block(&$variables) {
+  if (isset($variables['block']->bid) && $variables['block']->bid === 'language_selector_site-language_selector_site') {
+
+    // Initialize variables.
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
+    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
+
+    // Dont know if this is the way to go..
+    $popupbase = '<div id="lang-select-site-overlay" class="overlay section"><!-- Load the splash page here --></div>';
+
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('lang-select-site__link'),
+      ),
+      'query' => array(drupal_get_destination()),
+    );
+
+    // Add class to block.
+    $variables['classes_array'][] = 'lang-select-site';
+
+    // Add content to block.
+    $variables['content'] = l($label . $code, 'splash', $options);
+    $variables['content'] .= $popupbase;
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ *
+ * This mostly is copy paste work from the splash_screen module. But I tend to
+ * keep the modifications to a minimum.
+ */
+function dt_language_selector_site_popup_preprocess_splash(&$variables) {
+  // We load our global.
+  global $language;
+
+  // Initialize variables.
+  $home_page = variable_get('splash_screen_home_page', '');
+  $href = $home_page;
+  $languages_blacklist = variable_get('splash_screen_blacklist', array());
+  $languages = language_list('enabled');
+  $languages_list = NULL;
+
+  // Prepare links href when destination is set.
+  // Use case: use site level language selector.
+  if (isset($_GET['destination'])) {
+    $href_array = parse_url($_GET['destination']);
+    $href = $href_array['path'];
+
+    if (isset($href_array['query'])) {
+      parse_str($href_array['query'], $parameters);
+      $options['query'] = $parameters;
+    }
+
+    $options['attributes']['class'] = "overlay__btn-close";
+
+    // Also enable close button.
+    $close_button = l(t('Close'), $href, $options);
+  }
+
+  // Counter.
+  $count = 0;
+
+  // Add enabled languages, if not in blacklist.
+  foreach ($languages[1] as $lang) {
+    if (!in_array($lang->prefix, $languages_blacklist)) {
+
+      if ($count == 2) {
+        $languages_list .= '</div>';
+        $count = 0;
+      }
+      if ($count == 0) {
+        $languages_list .= '<div class="row">';
+      }
+
+      // Prepare links options.
+      $options['attributes']['lang'] = $lang->prefix;
+      $options['attributes']['hreflang'] = $lang->prefix;
+      $options['attributes']['class'][] = "btn";
+      $options['attributes']['class'][] = "overlay__btn-language";
+      $options['attributes']['data-languagespecific'] = "true";
+
+      if ($lang->language == $language->language) {
+        $options['attributes']['class'][] = "overlay__btn-language__active";
+      }
+
+      $languages_list .= '<div class="col-sm-6 list-languages">';
+      $languages_list .= l($lang->native, $href, $options);
+      $languages_list .= '</div>';
+
+      $count++;
+    }
+  }
+
+  if (NULL !== $languages_list) {
+    $languages_list .= '</div>';
+  }
+
+  // Push our vars back.
+  $variables['close_button'] = $close_button;
+  $variables['languages_list'] = $languages_list;
+
+}

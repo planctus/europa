@@ -1,3 +1,96 @@
+/**
+ * MOVE TO SASS
+ */
+
+.page-splash{
+  background: rgba(0, 68, 148, 1);
+}
+
+.page-splash__site-header{
+  background: #ffffff;
+}
+
+.page-splash__overlay__site-header{
+  display: none;
+}
+
+.site-level-language-selector h2,
+.overlay__lang-select-site__icon{
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 22px;
+}
+
+.overlay__lang-select-site__icon:before{
+  transform: scale(-1, 1);
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 68, 148, 0.95);
+  overflow-x: auto;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  text-align: left;
+}
+
+.overlay .site-level-language-selector{
+  position: relative;
+}
+
+.overlay .page-splash{
+  background: rgba(0, 68, 148, 0);
+}
+
+.overlay__btn-language {
+    background: #ffffff;
+
+    margin-bottom: 4px;
+    width: 100%;
+    text-align: left!important;
+}
+
+.overlay__btn-language:hover,
+.overlay__btn-language__active{
+  color: #000000;
+  background: #ffd617;
+}
+
+.overlay__btn-language a{
+  color: #004494;
+}
+
+.overlay__btn-close, .overlay__btn-close:focus, .overlay__btn-close:active, .overlay__btn-close:focus:active {
+    position: absolute;
+    top: -15px;
+    right: 0;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.overlay__btn-close:hover {
+  color: #fff;
+}
+
+.overlay__btn-close:after {
+    content: "X";
+    float: right;
+    display: inline-block;
+    border: 1px solid white;
+    margin-left: .5em;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 1.1em;
+    text-align: center;
+}
+
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;

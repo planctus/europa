@@ -89,8 +89,14 @@
 
   <a id="main-content" tabindex="-1"></a>
 
-  <div class="page-content">
+  <header class="site-header page-splash__site-header page-splash__overlay__site-header" role="banner">
     <div class="container-fluid">
+      <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <div class="container">
       <div class="row">
         <?php print render($page['content']); ?>
       </div>

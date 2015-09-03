@@ -779,27 +779,6 @@ function europa_preprocess_block(&$variables) {
   }
 
   if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
-    // Initialize variables.
-    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
-    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
-    $options = array(
-      'html' => TRUE,
-      'attributes' => array(
-        'class' => array('lang-select-site__link'),
-        // 'data-toggle' => 'popover',
-        // 'data-placement' => 'bottom',
-        // 'data-trigger' => 'focus',
-        // 'data-content' => t('This function is not yet working in Beta.'),
-      ),
-      'query' => array(drupal_get_destination()),
-    );
-
-    // Add class to block.
-    $variables['classes_array'][] = 'lang-select-site';
-
-    // Add content to block.
-    $variables['content'] = l($label . $code, 'splash', $options);
-
     // Add the js to make it function.
     drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-select-site.js');
   }
