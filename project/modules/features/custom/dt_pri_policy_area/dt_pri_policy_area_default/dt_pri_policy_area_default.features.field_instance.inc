@@ -985,7 +985,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 10,
     ),
   );
 
@@ -1040,7 +1040,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'og_complex',
-      'weight' => 3,
+      'weight' => 9,
     ),
   );
 
