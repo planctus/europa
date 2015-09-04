@@ -8872,9 +8872,18 @@ Styleguide splashpage
   .splash-page__page-content h2 {
     display: none;
     color: #ffffff;
-    font-size: 22px; }
+    font-size: 22px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    clear: both; }
   .splash-page__page-content .icon--language:before {
     transform: scale(-1, 1); }
+  .splash-page__helper-text {
+    color: #ffffff;
+    font-size: 16px;
+    margin-top: 50px;
+    clear: both;
+    display: none; }
   .splash-page__btn-language {
     background: #ffffff;
     margin-bottom: 4px;
@@ -8920,6 +8929,8 @@ Styleguide splashpage
   z-index: 10;
   text-align: left; }
   .overlay.splash-page h2 {
+    display: block; }
+  .overlay .splash-page__helper-text {
     display: block; }
 
 /*

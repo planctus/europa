@@ -68,7 +68,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
     $options['attributes']['class'] = "splash-page__btn-close";
 
     // Also enable close button.
-    $close_button = l(t('Close'), $href, $options);
+    $variables['close_button'] = l(t('Close'), $href, $options);
   }
 
   // Counter.
@@ -112,9 +112,16 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
     $languages_list .= '</div>';
   }
 
+  // Get our helper message if we have it defined.
+  // Set our base data.
+  $splash_data = variable_get('dt_language_selector_site_popup_message');
+
+  if ($splash_data['value'] !== "") {
+    $variables['splash_helper_text'] = check_markup($splash_data['value'], $splash_data['format']);
+  }
+
   // Push our vars back.
   $variables['header_text'] = t('Select your language');
-  $variables['close_button'] = $close_button;
   $variables['languages_list'] = $languages_list;
 
 }
@@ -131,7 +138,7 @@ function dt_language_selector_site_popup_form__splash_screen_settings_form_alter
     'dt_language_selector_site_popup_message',
     array(
       'value' => '',
-      'format' => '',
+      'format' => 'plain_text',
     )
   );
 
