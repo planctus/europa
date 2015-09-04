@@ -18,7 +18,7 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
     $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
 
     // Dont know if this is the way to go..
-    $popupbase = '<div id="lang-select-site-overlay" class="overlay section"><!-- Load the splash page here --></div>';
+    $popupbase = '<div id="lang-select-site-overlay" class="overlay splash-page"><!-- Load the splash page here --></div>';
 
     $options = array(
       'html' => TRUE,
@@ -65,7 +65,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
       $options['query'] = $parameters;
     }
 
-    $options['attributes']['class'] = "overlay__btn-close";
+    $options['attributes']['class'] = "splash-page__btn-close";
 
     // Also enable close button.
     $close_button = l(t('Close'), $href, $options);
@@ -86,15 +86,18 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
         $languages_list .= '<div class="row">';
       }
 
+      // Start from an empty array.
+      $options = array();
+
       // Prepare links options.
       $options['attributes']['lang'] = $lang->prefix;
       $options['attributes']['hreflang'] = $lang->prefix;
       $options['attributes']['class'][] = "btn";
-      $options['attributes']['class'][] = "overlay__btn-language";
+      $options['attributes']['class'][] = "splash-page__btn-language";
       $options['attributes']['data-languagespecific'] = "true";
 
       if ($lang->language == $language->language) {
-        $options['attributes']['class'][] = "overlay__btn-language__active";
+        $options['attributes']['class'][] = "active";
       }
 
       $languages_list .= '<div class="col-sm-6 list-languages">';
@@ -110,6 +113,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   }
 
   // Push our vars back.
+  $variables['header_text'] = t('Select your language');
   $variables['close_button'] = $close_button;
   $variables['languages_list'] = $languages_list;
 

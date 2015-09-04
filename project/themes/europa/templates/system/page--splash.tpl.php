@@ -85,20 +85,22 @@
  * @ingroup themeable
  */
 ?>
-<section class="main-content language-switcher">
+<section class="main-content splash-page">
 
   <a id="main-content" tabindex="-1"></a>
 
-  <header class="site-header page-splash__site-header page-splash__overlay__site-header" role="banner">
-    <div class="container-fluid">
+  <header class="site-header splash-page__site-header" role="banner">
+    <div class="container">
       <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
     </div>
   </header>
 
-  <div class="page-content">
+  <div class="page-content splash-page__page-content">
     <div class="container">
       <div class="row">
-        <?php print render($page['content']); ?>
+        <div class="col-md-10 col-md-offset-1">
+          <?php print render($page['content']); ?>
+        </div>
       </div>
     </div>
   </div>

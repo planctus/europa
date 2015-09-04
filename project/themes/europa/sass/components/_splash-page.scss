@@ -1,0 +1,98 @@
+/*
+Splash Page
+
+Splash Page
+
+Markup: html/splash-page.html
+
+Styleguide splashpage
+*/
+
+.page-splash{
+  background: rgba(0, 68, 148, 1);
+}
+
+.splash-page {
+  background: rgba(0, 68, 148, 1);
+
+  &__site-header {
+    background: #ffffff;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__page-content {
+
+    h2{
+      display: none;
+      color: #ffffff;
+      font-size: 22px;
+    }
+
+    .icon--language:before{
+        transform: scale(-1, 1);
+    }
+
+  }
+
+  &__btn-language{
+    background: #ffffff;
+    margin-bottom: 4px;
+    width: 100%;
+    text-align: left!important;
+
+    &:hover,
+    &.active{
+      color: #000000;
+      background: #ffd617;
+      box-shadow: none;
+    }
+  }
+
+  &__btn-close{
+    position: absolute;
+    top: -15px;
+    right: 0;
+    padding: 0.5em 0em 0.5em 1em;
+    font-size: 16px;
+    font-weight: normal;
+    color: #ffffff;
+
+    &:hover{
+      color: #ffffff;
+    }
+
+    &:after{
+      content: "X";
+      float: right;
+      display: inline-block;
+      border: 1px solid white;
+      margin-left: .5em;
+      width: 1.6em;
+      height: 1.6em;
+      border-radius: 1.1em;
+      text-align: center;
+    }
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 68, 148, 0.95);
+  overflow-x: auto;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  text-align: left;
+
+  &.splash-page {
+    h2{
+      display: block;
+    }
+  }
+}

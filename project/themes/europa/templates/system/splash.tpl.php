@@ -15,8 +15,8 @@
  * @see template_process()
  */
 ?>
-<nav class="site-level-language-selector">
-  <h2><span class="icon icon--language overlay__lang-select-site__icon"></span> Select your language:</h2>
+<nav class="splash-page__container">
+  <h2><span class="icon icon--language"></span> <?php print $header_text; ?></h2>
 
   <?php print $languages_list; ?>
   <?php print $close_button; ?>

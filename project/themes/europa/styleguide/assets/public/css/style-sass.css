@@ -8848,6 +8848,75 @@ Styleguide social
     margin-top: 1.2em; }
 
 /*
+Splash Page
+
+Splash Page
+
+Markup: html/splash-page.html
+
+Styleguide splashpage
+*/
+.page-splash {
+  background: #004494; }
+
+.splash-page {
+  background: #004494; }
+  .splash-page__site-header {
+    background: #ffffff; }
+  .splash-page__container {
+    position: relative; }
+  .splash-page__page-content h2 {
+    display: none;
+    color: #ffffff;
+    font-size: 22px; }
+  .splash-page__page-content .icon--language:before {
+    transform: scale(-1, 1); }
+  .splash-page__btn-language {
+    background: #ffffff;
+    margin-bottom: 4px;
+    width: 100%;
+    text-align: left !important; }
+    .splash-page__btn-language:hover,
+    .splash-page__btn-language.active {
+      color: #000000;
+      background: #ffd617;
+      box-shadow: none; }
+  .splash-page__btn-close {
+    position: absolute;
+    top: -15px;
+    right: 0;
+    padding: 0.5em 0em 0.5em 1em;
+    font-size: 16px;
+    font-weight: normal;
+    color: #ffffff; }
+    .splash-page__btn-close:hover {
+      color: #ffffff; }
+    .splash-page__btn-close:after {
+      content: "X";
+      float: right;
+      display: inline-block;
+      border: 1px solid white;
+      margin-left: .5em;
+      width: 1.6em;
+      height: 1.6em;
+      border-radius: 1.1em;
+      text-align: center; }
+
+.overlay {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 68, 148, 0.95);
+  overflow-x: auto;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  text-align: left; }
+  .overlay.splash-page h2 {
+    display: block; }
+
+/*
 Timeline
 
 Markup: html/timeline.html
