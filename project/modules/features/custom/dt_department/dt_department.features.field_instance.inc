@@ -198,7 +198,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -452,7 +452,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -586,7 +586,7 @@ function dt_department_field_default_field_instances() {
         'weight' => 16,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -1306,7 +1306,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1324,7 +1324,7 @@ function dt_department_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_department_tasks',
-    'label' => 'Main tasks',
+    'label' => 'Main task',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1333,7 +1333,9 @@ function dt_department_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'options_buttons',
       'weight' => 3,
     ),
@@ -1545,7 +1547,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1607,7 +1609,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1679,7 +1681,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 28,
       ),
       'list_view' => array(
         'label' => 'hidden',
@@ -1853,7 +1855,7 @@ function dt_department_field_default_field_instances() {
   t('Legacy link');
   t('Legacy links');
   t('Link');
-  t('Main tasks');
+  t('Main task');
   t('Mission statement');
   t('Name');
   t('Organisation chart');
