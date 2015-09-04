@@ -198,7 +198,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'meta' => array(
         'label' => 'above',
@@ -452,7 +452,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -586,7 +586,7 @@ function dt_department_field_default_field_instances() {
         'weight' => 16,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -1306,7 +1306,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1547,7 +1547,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1609,7 +1609,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1681,7 +1681,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 28,
       ),
       'list_view' => array(
         'label' => 'hidden',
