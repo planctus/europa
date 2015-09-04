@@ -97,7 +97,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
       $options['attributes']['data-languagespecific'] = "true";
 
       if ($lang->language == $language->language) {
-        $options['attributes']['class'][] = "active";
+        $options['attributes']['class'][] = "active icon icon--check";
       }
 
       $languages_list .= '<div class="col-sm-6 list-languages">';

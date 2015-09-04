@@ -7406,6 +7406,7 @@ Markup: html/icon.html
 .icon--error - Error icon
 .icon--success - Success icon
 .icon--warning - Warning icon
+.icon--check - Checkmark icon
 
 Styleguide: icon
 */
@@ -7531,6 +7532,9 @@ Styleguide: icon
 
 .icon--warning:before {
   content: '\e615'; }
+
+.icon--check:before {
+  content: '\e620'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;
@@ -8881,6 +8885,8 @@ Styleguide splashpage
       color: #000000;
       background: #ffd617;
       box-shadow: none; }
+    .splash-page__btn-language.icon--check:before {
+      float: right; }
   .splash-page__btn-close {
     position: absolute;
     top: -15px;

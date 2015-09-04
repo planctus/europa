@@ -49,6 +49,10 @@ Styleguide splashpage
       background: #ffd617;
       box-shadow: none;
     }
+
+    &.icon--check:before{
+      float: right;
+    }
   }
 
   &__btn-close{
