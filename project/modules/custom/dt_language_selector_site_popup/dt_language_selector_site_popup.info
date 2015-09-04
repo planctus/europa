@@ -2,3 +2,4 @@ name = Digital Transformation Language selector (Site)
 description = Alters the default Site language selector for digital transformation.
 core = 7.x
 dependency[] = language_selector_site
+dependency[] = splash_screen

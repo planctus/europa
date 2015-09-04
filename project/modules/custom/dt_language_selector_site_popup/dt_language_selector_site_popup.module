@@ -118,3 +118,46 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   $variables['languages_list'] = $languages_list;
 
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * This will add an extra textbox to the splash page configuration page.
+ */
+function dt_language_selector_site_popup_form__splash_screen_settings_form_alter(&$form, &$form_state, $form_id) {
+
+  // Set our base data.
+  $splash_data = variable_get(
+    'dt_language_selector_site_popup_message',
+    array(
+      'value' => '',
+      'format' => '',
+    )
+  );
+
+  // Add our custom form element to get the message which we display under as
+  // a help text.
+  $form['splash_screen']['dt_language_selector_site_popup_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Languages help message'),
+    '#description' => t('Enter the message to be displayed under the language selector overlay.'),
+    '#default_value' => $splash_data['value'],
+    '#format' => $splash_data['format'],
+  );
+
+  // Add our validation function to set our variable.
+  $form['#validate'][] = '_dt_language_selector_site_popup_form_validate';
+}
+
+/**
+ * Our form validation to set the value to a variable.
+ *
+ * @see dt_language_selector_site_popup_form__splash_screen_settings_form_alter
+ */
+function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
+  // Save the data to our variable.
+  variable_set(
+    'dt_language_selector_site_popup_message',
+    $form_state['input']['dt_language_selector_site_popup_message']['value']
+  );
+}

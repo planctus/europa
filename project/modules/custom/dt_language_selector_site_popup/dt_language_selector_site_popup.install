@@ -8,11 +8,20 @@
  * Implements hook_install().
  *
  * This install hook makes sure that the weight of this module is higher tran
- * the base module.
+ * the base module. This in order to make our alters always run as last.
  */
 function dt_language_selector_site_popup_install() {
   db_update('system')
     ->fields(array('weight' => 999))
     ->condition('name', 'dt_language_selector_site_popup', '=')
     ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Removes variables that are no longer needed.
+ */
+function dt_language_selector_site_popup_uninstall() {
+  variable_del('dt_language_selector_site_popup_message');
 }
