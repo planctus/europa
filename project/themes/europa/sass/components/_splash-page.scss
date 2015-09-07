@@ -17,6 +17,10 @@ Styleguide splashpage
 
   &__site-header {
     background: #ffffff;
+
+    .logo {
+      background: url("../images/svg/logo.svg") center center no-repeat;
+    }
   }
 
   &__container {
@@ -45,7 +49,33 @@ Styleguide splashpage
     font-size: 16px;
     margin-top: 50px;
     clear: both;
-    display: none;
+
+    tbody {
+      border-bottom: 1px solid #245898;
+
+      tr{
+        border-top:1px solid #245898;
+        clear: both;
+
+        th{
+          vertical-align: top;
+          min-width: 150px;
+          font-weight: bold;
+          padding-top: 0.6em;
+        }
+
+        td, th{
+          padding: 0.6em 0em 0.6em 0em;
+        }
+      }
+    }
+
+    .overlay-helper-text {
+      display: none;
+    }
+    .splash-helper-text {
+      display: block;
+    }
   }
 
   &__btn-language{
@@ -54,15 +84,18 @@ Styleguide splashpage
     width: 100%;
     text-align: left!important;
 
-    &:hover,
     &.active{
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+
+    &:hover{
       color: #000000;
       background: #ffd617;
-      box-shadow: none;
     }
 
     &.icon--check:before{
-      float: right;
+      display: none;
     }
   }
 
@@ -112,5 +145,31 @@ Styleguide splashpage
   }
   .splash-page__helper-text{
     display: block;
+
+    p{
+      max-width: 100%;
+    }
+
+    .overlay-helper-text {
+      display: block;
+    }
+    .splash-helper-text {
+      display: none;
+    }
+  }
+
+  .splash-page{
+    &__btn-language{
+      &.active{
+        color: #000000;
+        background: #ffd617;
+        box-shadow: none;
+      }
+      &.icon--check:before{
+        float: right;
+        display: block;
+      }
+    }
+
   }
 }

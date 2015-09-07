@@ -8867,6 +8867,8 @@ Styleguide splashpage
   background: #004494; }
   .splash-page__site-header {
     background: #ffffff; }
+    .splash-page__site-header .logo {
+      background: url("../images/svg/logo.svg") center center no-repeat; }
   .splash-page__container {
     position: relative; }
   .splash-page__page-content h2 {
@@ -8882,20 +8884,36 @@ Styleguide splashpage
     color: #ffffff;
     font-size: 16px;
     margin-top: 50px;
-    clear: both;
-    display: none; }
+    clear: both; }
+    .splash-page__helper-text tbody {
+      border-bottom: 1px solid #245898; }
+      .splash-page__helper-text tbody tr {
+        border-top: 1px solid #245898;
+        clear: both; }
+        .splash-page__helper-text tbody tr th {
+          vertical-align: top;
+          min-width: 150px;
+          font-weight: bold;
+          padding-top: 0.6em; }
+        .splash-page__helper-text tbody tr td, .splash-page__helper-text tbody tr th {
+          padding: 0.6em 0em 0.6em 0em; }
+    .splash-page__helper-text .overlay-helper-text {
+      display: none; }
+    .splash-page__helper-text .splash-helper-text {
+      display: block; }
   .splash-page__btn-language {
     background: #ffffff;
     margin-bottom: 4px;
     width: 100%;
     text-align: left !important; }
-    .splash-page__btn-language:hover,
     .splash-page__btn-language.active {
+      box-shadow: none;
+      -webkit-box-shadow: none; }
+    .splash-page__btn-language:hover {
       color: #000000;
-      background: #ffd617;
-      box-shadow: none; }
+      background: #ffd617; }
     .splash-page__btn-language.icon--check:before {
-      float: right; }
+      display: none; }
   .splash-page__btn-close {
     position: absolute;
     top: -15px;
@@ -8931,6 +8949,19 @@ Styleguide splashpage
   .overlay.splash-page h2 {
     display: block; }
   .overlay .splash-page__helper-text {
+    display: block; }
+    .overlay .splash-page__helper-text p {
+      max-width: 100%; }
+    .overlay .splash-page__helper-text .overlay-helper-text {
+      display: block; }
+    .overlay .splash-page__helper-text .splash-helper-text {
+      display: none; }
+  .overlay .splash-page__btn-language.active {
+    color: #000000;
+    background: #ffd617;
+    box-shadow: none; }
+  .overlay .splash-page__btn-language.icon--check:before {
+    float: right;
     display: block; }
 
 /*

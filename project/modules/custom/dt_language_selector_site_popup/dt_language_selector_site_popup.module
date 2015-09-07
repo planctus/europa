@@ -114,7 +114,14 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 
   // Get our helper message if we have it defined.
   // Set our base data.
-  $splash_data = variable_get('dt_language_selector_site_popup_message');
+  $overlay_data = variable_get('dt_language_selector_site_popup_message');
+
+  if ($overlay_data['value'] !== "") {
+    $variables['overlay_helper_text'] = check_markup($overlay_data['value'], $overlay_data['format']);
+  }
+  // Get our helper message if we have it defined.
+  // Set our base data.
+  $splash_data = variable_get('dt_language_selector_site_splash_message');
 
   if ($splash_data['value'] !== "") {
     $variables['splash_helper_text'] = check_markup($splash_data['value'], $splash_data['format']);
@@ -134,8 +141,17 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 function dt_language_selector_site_popup_form__splash_screen_settings_form_alter(&$form, &$form_state, $form_id) {
 
   // Set our base data.
-  $splash_data = variable_get(
+  $overlay_data = variable_get(
     'dt_language_selector_site_popup_message',
+    array(
+      'value' => '',
+      'format' => 'plain_text',
+    )
+  );
+
+  // And our splash page text,
+  $splash_data = variable_get(
+    'dt_language_selector_site_splash_message',
     array(
       'value' => '',
       'format' => 'plain_text',
@@ -146,8 +162,18 @@ function dt_language_selector_site_popup_form__splash_screen_settings_form_alter
   // a help text.
   $form['splash_screen']['dt_language_selector_site_popup_message'] = array(
     '#type' => 'text_format',
-    '#title' => t('Languages help message'),
+    '#title' => t('Languages help message for the overlay'),
     '#description' => t('Enter the message to be displayed under the language selector overlay.'),
+    '#default_value' => $overlay_data['value'],
+    '#format' => $overlay_data['format'],
+  );
+
+  // Add our custom form element to get the message which we display under as
+  // a help text.
+  $form['splash_screen']['dt_language_selector_site_splash_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Languages help message for the splash page'),
+    '#description' => t('Enter the message to be displayed under the language selector splash page.'),
     '#default_value' => $splash_data['value'],
     '#format' => $splash_data['format'],
   );
@@ -166,5 +192,10 @@ function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
   variable_set(
     'dt_language_selector_site_popup_message',
     $form_state['input']['dt_language_selector_site_popup_message']['value']
+  );
+  // Save the data to our variable.
+  variable_set(
+    'dt_language_selector_site_splash_message',
+    $form_state['input']['dt_language_selector_site_splash_message']['value']
   );
 }
