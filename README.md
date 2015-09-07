@@ -110,6 +110,9 @@ In order to be able to perform this task, you will need working drush aliases po
 
 This will restore the local database from *./_db_dumps/ac-dump.mysql* if it exists. If the database is not yet exported it will attempt to download it.
 
+*You will need to have registry-rebuild installed globally.
+TODO: add rebuild-registry via composer*
+
 ```bash
 bin/phing restore-ac-db
 ```
