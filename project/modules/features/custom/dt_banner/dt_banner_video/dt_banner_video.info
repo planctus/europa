@@ -4,7 +4,6 @@ core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_banner_video
-dependencies[] = ctools
 dependencies[] = dt_banner
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
