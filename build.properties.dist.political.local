@@ -13,7 +13,6 @@ server.docroot = /var/www/political/
 
 #Drush aliases
 drush.alias.acquia = ecfpfis.test
-drush.alias.local = pol
 
 # Modules to enable
 drupal.modules = dt_political_core
