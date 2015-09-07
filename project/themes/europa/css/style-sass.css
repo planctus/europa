@@ -7978,7 +7978,10 @@ Styleguide: langselect
   vertical-align: middle; }
 
 .lang-select-page__left .lang-select-page__icon {
-  margin-left: 1em; }
+  margin-left: 0.7em;
+  font-size: 2em;
+  line-height: 1;
+  padding: 0; }
 
 .lang-select-page__left .lang-select-page__unavailable {
   text-decoration: line-through; }
@@ -8006,6 +8009,13 @@ Styleguide: langselect
   background: transparent;
   border-color: #fff;
   color: #fff; }
+  .lang-select-page--transparent .lang-select-page__icon {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH"; }
   .lang-select-page--transparent .lang-select-page__option a {
     color: #fff; }
 
