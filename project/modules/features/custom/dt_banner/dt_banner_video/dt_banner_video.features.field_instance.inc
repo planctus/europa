@@ -10,6 +10,72 @@
 function dt_banner_video_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-banner_video-field_banner_caption'
+  $field_instances['node-banner_video-field_banner_caption'] = array(
+    'bundle' => 'banner_video',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_banner_caption',
+    'label' => 'Video caption',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-banner_video-field_banner_video_file'
   $field_instances['node-banner_video-field_banner_video_file'] = array(
     'bundle' => 'banner_video',
@@ -216,78 +282,13 @@ function dt_banner_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_video-field_banner_caption'
-  $field_instances['node-banner_video-field_banner_caption'] = array(
-    'bundle' => 'banner_video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_banner_caption',
-    'label' => 'Video caption',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 13,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Featured audiovisual file');
   t('Fill in the reference name by which you will call this entity.');
   t('Paragraph');
   t('Video banner reference');
+  t('Video caption');
 
   return $field_instances;
 }
