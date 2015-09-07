@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Dt_Banner install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_banner_install() {
+  $banner_types = array(
+    'dt_banner_video',
+    'dt_banner_quote',
+  );
+  module_enable($banner_types);
+}
