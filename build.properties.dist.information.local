@@ -13,7 +13,6 @@ server.docroot = /var/www/information/
 
 #Drush aliases
 drush.alias.acquia = ecfpfis.dev
-drush.alias.local = info
 
 # Modules to enable
 drupal.modules = dt_information_core

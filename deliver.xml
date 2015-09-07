@@ -130,11 +130,12 @@
             <phingcall target="fetch-ac-db" />
           </then>
         </if>
-        <echo msg="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush -y @${drush.alias.local} sql-cli" />
-        <exec command="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush -y @${drush.alias.local} sql-cli" />
+        <echo msg="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
+        <exec command="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
+
         <echo msg="AC database loaded." />
 
-        <drush command="rebuild-registry" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        <drush command="registry-rebuild" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
         </drush>
         <exec command="drush -y @${drush.alias.local} rr" />
         <echo msg="Registry rebuilt." />
