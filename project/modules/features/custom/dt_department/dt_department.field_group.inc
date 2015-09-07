@@ -220,6 +220,35 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_relatedlinks|node|department|full';
+  $field_group->group_name = 'group_department_relatedlinks';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related links',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_links',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Related links',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="related"',
+      ),
+    ),
+  );
+  $export['group_department_relatedlinks|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_department_responsibilit|node|department|full';
   $field_group->group_name = 'group_department_responsibilit';
   $field_group->entity_type = 'node';
