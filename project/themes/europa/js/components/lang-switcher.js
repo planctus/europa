@@ -5,7 +5,7 @@
         listClass = $list.attr('class');
 
     $list.each(function() {
-      var $select = $('<select />').addClass(listClass);
+      var $select = $('<select />').addClass(listClass).addClass('form-control');
 
       $(this).find('a').each(function() {
         var $option = $('<option />');

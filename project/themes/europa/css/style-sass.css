@@ -8000,6 +8000,8 @@ Styleguide: langselect
   .lang-select-page__left,
   .lang-select-page__right {
     display: inline-block; }
+  .lang-select-page__right select {
+    width: 10em; }
   .lang-select-page__list .lang-select-page__option {
     display: inline-block; } }
 
