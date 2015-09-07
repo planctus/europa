@@ -7533,8 +7533,11 @@ Styleguide: icon
 .icon--warning:before {
   content: '\e615'; }
 
-.icon--check:before {
+.icon--check, .icon--check:before {
   content: '\e620'; }
+
+.icon--generic-lang, .icon--generic-lang:before {
+  content: '\e621'; }
 
 .is-spinning:before {
   -webkit-animation: icon-spin-right 2s infinite linear;

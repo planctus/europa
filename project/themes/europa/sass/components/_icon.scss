@@ -283,8 +283,20 @@ Styleguide: icon
 }
 
 .icon--check {
+  content: '\e620';
+}
+.icon--check {
   &:before {
-    content: '\e620';
+    @extend .icon--check;
+  }
+}
+
+.icon--generic-lang {
+  content: '\e621';
+}
+.icon--generic-lang {
+  &:before {
+    @extend .icon--generic-lang;
   }
 }
 
