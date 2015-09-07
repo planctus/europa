@@ -10,6 +10,59 @@
 function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_banner'
+  $field_instances['node-priority_policy_area-field_core_banner'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select a banner if you would like to display a banner on top of this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 45,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_banner',
+    'label' => 'Banner',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'apply_chosen' => '',
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 51,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-field_core_department'
   $field_instances['node-priority_policy_area-field_core_department'] = array(
     'bundle' => 'priority_policy_area',
@@ -152,6 +205,58 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_featured_item'
+  $field_instances['node-priority_policy_area-field_core_featured_item'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select a featured item in case certain content needs to be highlighted for a limited period in time.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 46,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_featured_item',
+    'label' => 'Featured item',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 52,
     ),
   );
 
@@ -1289,9 +1394,11 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Aspect ratio 4:3 (w:h). Minimum width: 320x240 px');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px');
   t('Background / Context');
+  t('Banner');
   t('Child Priority policy areas and Policies');
   t('Description');
   t('Documents');
+  t('Featured item');
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
@@ -1306,6 +1413,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Related links');
   t('Related topics');
   t('Responsible department(s)');
+  t('Select a banner if you would like to display a banner on top of this page.');
+  t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
   t('Select and order the priority policy areas and policies that part of this priority policy area.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority policy area.');
