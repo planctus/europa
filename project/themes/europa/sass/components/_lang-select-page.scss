@@ -32,15 +32,7 @@ Styleguide: langselect
   }
 
   .lang-select-page__icon {
-    background: url('../images/svg/language-general.svg') no-repeat;
     margin-left: 1em;
-    height: 2em;
-    width: 2em;
-
-    .no-js & {
-      background: url('../images/png/language-general.png') no-repeat;
-      background-size: contain;
-    }
   }
 
   .lang-select-page__unavailable {

@@ -7406,6 +7406,8 @@ Markup: html/icon.html
 .icon--error - Error icon
 .icon--success - Success icon
 .icon--warning - Warning icon
+.icon--check - Check icon
+.icon--generic-lang - Generic language icon
 
 Styleguide: icon
 */
@@ -7976,13 +7978,7 @@ Styleguide: langselect
   vertical-align: middle; }
 
 .lang-select-page__left .lang-select-page__icon {
-  background: url("../images/svg/language-general.svg") no-repeat;
-  margin-left: 1em;
-  height: 2em;
-  width: 2em; }
-  .no-js .lang-select-page__left .lang-select-page__icon {
-    background: url("../images/png/language-general.png") no-repeat;
-    background-size: contain; }
+  margin-left: 1em; }
 
 .lang-select-page__left .lang-select-page__unavailable {
   text-decoration: line-through; }
