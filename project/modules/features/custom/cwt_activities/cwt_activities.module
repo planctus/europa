@@ -1,0 +1,89 @@
+<?php
+/**
+ * @file
+ * Code for the CWT Activities feature.
+ */
+
+include_once 'cwt_activities.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ */
+function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
+  // Hide the body field of Activities. It was requested to temporarily disable
+  // this instead of removing it, so we can easily re-enable it in the future
+  // without  potentially losing data.
+  // @see https://webgate.ec.europa.eu/CITnet/jira/browse/CWT-190
+  if ($form_id == 'activities_node_form') {
+    $form['body']['#access'] = FALSE;
+  }
+
+  // Agenda exposed filter.
+  if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+    // Rewrite for action URL to original URL, @see cwt_core_url_inbound_alter().
+    $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
+    $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
+    // Set default time filter for current week: Monday - Sunday.
+    if (empty($form_state['input']['date_filter']['min']['date'])) {
+      $form_state['input']['date_filter']['min']['date'] = date($form['date_filter']['min']['#date_format'], strtotime('Monday this week'));
+    }
+    // Mark filter as validated to avoid Views illegal choice bug.
+    $form['field_editorial_section_multiple_tid']['#validated'] = TRUE;
+    // Add custom submit handler to handle optional end date.
+    $form['#submit'][0] = 'cwt_activities_exposed_submit';
+  }
+}
+
+/**
+ * Submit handler for exposed filters.
+ */
+function cwt_activities_exposed_submit(&$form, &$form_state) {
+  // If end date is not set, set it to five years from now.
+  if (empty($form_state['input']['date_filter']['max']['date'])) {
+    $form_state['values']['date_filter']['max'] = date('Y-m-d', strtotime('today + 5 years'));
+  }
+
+  // And pass this along to Views.
+  views_exposed_form_submit($form, $form_state);
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
+
+  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path') && isset($original_path_cached['nid'])) {
+    // Load node the Agenda belongs to in the first place.
+    // Use its editorial section in first contextual filter.
+    $node = node_load($original_path_cached['nid']);
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $editorial_section = $wrapper->field_editorial_section->value();
+    if (!empty($editorial_section)) {
+      // Limit allowed sections to children of the selected editorial section.
+      // So in exposed filter only these values are available.
+      $allowed_terms = taxonomy_get_children($editorial_section->tid);
+      $allowed_values = array();
+      foreach ($allowed_terms as $term) {
+        $allowed_values[$term->tid] = $term->tid;
+      }
+      $view->display['default']->handler->options['filters']['field_editorial_section_multiple_tid']['value'] = $allowed_values;
+      $view->args[0] = $editorial_section->tid;
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function cwt_activities_views_pre_render(&$view) {
+  if ($view->name == 'agenda') {
+    // Replace [filter_info] with editorial section name used in the filter.
+    $result_info = $view->header['result']->options['content'];
+    $token = '';
+    if (isset($view->exposed_input['field_editorial_section_multiple_tid'])) {
+      $term = taxonomy_term_load($view->exposed_input['field_editorial_section_multiple_tid']);
+      $token = !$term ? '' : (' ' . t('for %commissioner', array('%commissioner' => $term->name)));
+    }
+    $view->header['result']->options['content'] = str_replace('[filter_info]', $token, $result_info);
+  }
+}

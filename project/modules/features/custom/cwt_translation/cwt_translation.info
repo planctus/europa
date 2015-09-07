@@ -1,0 +1,19 @@
+name = DGT Translation export
+description = Adds custom export format that is acceptable for DGT
+package = COMM
+version = 7.x-1.0
+core = 7.x
+php = 5.2
+
+dependencies[] = ctools
+dependencies[] = strongarm
+dependencies[] = tmgmt
+dependencies[] = tmgmt_entity
+dependencies[] = tmgmt_entity_ui
+dependencies[] = tmgmt_file
+
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = tmgmt_purge_finished
+
+files[] = cwt_translation.format.dgt.inc
