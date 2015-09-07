@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * Dt_Banner quote install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_banner_quote_install() {
+  // Apply config to the helper content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('dt_banner_quote');
+}
