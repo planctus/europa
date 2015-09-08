@@ -137,7 +137,6 @@
 
         <drush command="registry-rebuild" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
         </drush>
-        <exec command="drush -y @${drush.alias.local} rr" />
         <echo msg="Registry rebuilt." />
         <drush command="user-password" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
           <param>admin</param>
