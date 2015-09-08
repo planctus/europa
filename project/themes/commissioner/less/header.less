@@ -1,0 +1,124 @@
+#navbar {
+	padding: 0;
+	margin: 0 auto;
+	background: none;
+	border: none;
+	min-height: auto;
+
+	.navbar-wrapper {
+		position: relative;
+  	z-index: @zindex-navbar;
+		& > .container {
+			height: 75px;
+			padding:0 15px;
+		}
+	}
+
+	.navbar-header {
+		padding: 15px 12px 6px;
+		margin: 0;
+		margin:0 -15px;
+		float: left;
+		font-family: Verdana,Arial,Helvetica,sans serif;
+		position: absolute;
+	}
+
+	.logo {
+		margin: 0;
+		padding: 0;
+
+		img {
+			max-height: 84px;
+		}
+	}
+
+	.navbar-brand {
+		display: none;
+		text-transform: uppercase;
+		color: @color-blue;
+		height: auto;
+	}
+
+	.navbar-background {
+		background: @color-blue_ipg;
+		height: 30px;
+	}
+}
+
+.region-header-wrapper {
+	line-height: 20px;
+	height: 20px;
+	font-size: 12px;
+	background: @color-dblue_ipg;
+}
+
+#page-header {
+	.page-header-inner {
+		padding: 2.5em 0 2.5em;
+		text-align: center;
+		border-bottom: 1px solid @color-lgrey;
+		position: relative;
+
+		&:after {
+			content: '';
+			width: 120px;
+			display: block;
+			height: 6px;
+			background: @color-blue;
+			margin: 0 auto;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+	}
+
+	.header-line-2 {
+		color:@color-blue;
+	}
+	.header-line-1 {
+		margin: 0;
+		font-size: 14px;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		font-weight: 400;
+	}
+
+	.page-header {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		.first-name {
+			font-weight: 400;
+		}
+
+		& > span {
+			display: block;
+		}
+
+		.header-line-2 {
+			line-height: 40px;
+			padding: 0;
+			margin: 0;
+			font-weight: 400;
+		}
+
+		.header-line-3 {
+			font-size: 18px;
+			line-height: 26px;
+			letter-spacing: -0.03rem;
+			font-weight: 400;
+		}
+	}
+}
+
+body.node-type-team {
+	#page-header {
+		.page-header-inner {
+			border: none;
+		}
+	}
+}

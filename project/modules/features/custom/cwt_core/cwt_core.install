@@ -1,0 +1,426 @@
+<?php
+/**
+ * @file
+ * cwt_core.install file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function cwt_core_install() {
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'cce_basic_config', '=')
+              ->execute()
+              ->fetchField();
+  db_update('system')
+    ->fields(array('weight' => $weight + 1))
+    ->condition('name', 'cwt_core', '=')
+    ->execute();
+
+  // Create the 'Section editor' and 'Site manager' roles.
+  foreach (array('section editor', 'site manager') as $role_name) {
+    $role = new stdClass();
+    $role->name = $role_name;
+    user_role_save($role);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function cwt_core_uninstall() {
+  $contexts = variable_get('context_status', array());
+  unset($contexts['site_wide'], $contexts['homepage']);
+  variable_set('context_status', $contexts);
+}
+
+/**
+ * Implements hook_enable().
+ */
+function cwt_core_enable() {
+  drupal_set_message(t('CWT Core %v feature is now active on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function cwt_core_disable() {
+  drupal_set_message(t('CWT Core %v feature is now inactive on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing the 'site_wide' context coming from multisite.
+ */
+function cwt_core_update_7101() {
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+}
+
+/**
+ * Enabling the bio_timeline module.
+ */
+function cwt_core_update_7102() {
+  module_enable(array('bio_timeline'));
+}
+
+/**
+ * Disabling the bio_timeline module and enabling the inline_entity_form.
+ */
+function cwt_core_update_7103() {
+  module_enable(array('inline_entity_form'));
+  module_disable(array('bio_timeline'));
+}
+
+/**
+ * Enabling the inline_entity_form.
+ */
+function cwt_core_update_7104() {
+  module_enable(array('date_popup_authored'));
+}
+
+/**
+ * Remove obsolete fields.
+ */
+function cwt_core_update_7105() {
+  // Remove field.
+  $field_name = "field_team_members";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+  // Remove group.
+  $group = field_group_load_field_group('group_team_members', 'node', 'team', 'form');
+  field_group_group_export_delete($group, FALSE);
+}
+
+/**
+ * Enable breakpoints and picture modules.
+ */
+function cwt_core_update_7106() {
+  module_enable(array('breakpoints', 'picture'));
+}
+
+/**
+ * Enable Jquery Multi module.
+ */
+function cwt_core_update_7107() {
+  module_enable(array('jqmulti'));
+}
+
+/**
+ * Change cce_basic_config module weight.
+ */
+function cwt_core_update_7108() {
+  $weight = db_select('system', 's')
+              ->fields('s', array('weight'))
+              ->condition('name', 'cce_basic_config', '=')
+              ->execute()
+              ->fetchField();
+  db_update('system')
+    ->fields(array('weight' => $weight + 1))
+    ->condition('name', 'cwt_core', '=')
+    ->execute();
+}
+
+/**
+ * Remove obsolete image style.
+ */
+function cwt_core_update_7109() {
+  image_style_delete(image_style_load('commissioner_portrait'));
+}
+
+/**
+ * Remove fieldgroup from the entityform feedback.
+ */
+function cwt_core_update_7110() {
+  $group = field_group_load_field_group('group_give_us_your_opinion', 'entityform', 'feedback', 'form');
+  field_group_group_export_delete($group, FALSE);
+}
+
+/**
+ * Remove obsolete rules.
+ */
+function cwt_core_update_7111() {
+  if ($rule = rules_config_load('rules_cabinet_path')) {
+    entity_delete('rules_config', $rule->id);
+  }
+  if ($rule = rules_config_load('rules_custom_url_pattern')) {
+    entity_delete('rules_config', $rule->id);
+  }
+}
+
+/**
+ * Remove obsolete image styles.
+ */
+function cwt_core_update_7112() {
+  image_style_delete(image_style_load('biography_portrait_large_min_width_960'));
+}
+
+/**
+ * Remove entityform feedback.
+ */
+function cwt_core_update_7113() {
+  $entityform_type = entityform_get_types('feedback');
+  if ($entityform_type) {
+    entityform_type_delete($entityform_type);
+  }
+  module_disable(array('entityform', 'ajax_form_entity'));
+  drupal_uninstall_modules(array('entityform', 'ajax_form_entity'), FALSE);
+}
+
+/**
+ * Remove hl_domains field which is now replaced with project_teams field.
+ */
+function cwt_core_update_7114() {
+  // Remove field.
+  $field_name = "field_hl_domains_classname";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Removing fields and groups from editorial section, related to custom block titles etc.
+ */
+function cwt_core_update_7115() {
+  $obsolete_fields = array(
+    'field_news_block_title',
+    'field_news_block_description',
+    'field_blog_block_description',
+    'field_social_block_title',
+    'field_activity_block_title',
+    'field_activity_block_description',
+  );
+
+  foreach ($obsolete_fields as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  $obsolete_groups = array(
+    'group_biography_settings',
+    'group_agenda',
+  );
+  foreach ($obsolete_groups as $group_name) {
+    $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+}
+
+
+/**
+ * Create the 'Section editor' and 'Site manager' roles.
+ */
+function cwt_core_update_7116() {
+  foreach (array('section editor', 'site manager') as $role_name) {
+    if (!user_role_load_by_name($role_name)) {
+      $role = new stdClass();
+      $role->name = $role_name;
+      user_role_save($role);
+    }
+  }
+}
+
+/**
+ * Removing team block title field.
+ */
+function cwt_core_update_7118() {
+  // Remove field.
+  $field_name = "field_team_block_title";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Disable the 'Translation job notification' rule.
+ */
+function cwt_core_update_7119() {
+  $rules_config = rules_config_load('rules_job_notification');
+  $rules_config->active = FALSE;
+  $rules_config->save();
+}
+
+/**
+ * Enable and revert the Commissioner's News module.
+ */
+function cwt_core_update_7120() {
+  module_enable(array('cwt_news'));
+
+  $feature = features_get_features('cwt_news', TRUE);
+  $components = array_keys($feature->info['features']);
+  features_revert(array('cwt_news' => $components));
+}
+
+/**
+ * Populate the editorial sections on previously imported news items.
+ */
+function cwt_core_update_7121() {
+  // Retrieve a list of all previously imported news items along with the
+  // editorial section that is set on the importer.
+  $query = db_select('feeds_item', 'f')
+    ->fields('f', array('entity_id'))
+    ->condition('f.entity_type', 'node');
+  $query->innerJoin('field_data_field_editorial_section', 'es', 'f.feed_nid = es.entity_id');
+  $query->fields('es', array('field_editorial_section_tid'));
+  $mapping = $query->execute()->fetchAllKeyed();
+
+  // Loop over the nodes and update their editorial sections.
+  foreach (node_load_multiple(array_keys($mapping)) as $node) {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper->field_editorial_section_multiple = $mapping[$node->nid];
+    node_save($node);
+  }
+}
+
+/**
+ * Revoke the permission to edit aggregated news from editors.
+ */
+function cwt_core_update_7122() {
+  $role = user_role_load_by_name('editor');
+  $permissions = array(
+    'create aggregated_news content',
+    'delete any aggregated_news content',
+    'delete own aggregated_news content',
+    'edit any aggregated_news content',
+    'edit own aggregated_news content',
+  );
+  user_role_revoke_permissions($role->rid, $permissions);
+}
+
+/**
+ * Enable and revert the Commissioner's Highlights.
+ */
+function cwt_core_update_7123() {
+  module_enable(array('cwt_highlights'));
+
+  $feature = features_get_features('cwt_highlights', TRUE);
+  $components = array_keys($feature->info['features']);
+  features_revert(array('cwt_highlights' => $components));
+}
+
+/**
+ * Disable the Multisite multilingual references.
+ */
+function cwt_core_update_7124() {
+  module_disable(array('multisite_multilingual_references'));
+}
+/**
+ * Add permissions for custom page content type to certain roles.
+ */
+function cwt_core_update_7125() {
+  foreach (array('administrator', 'site manager') as $name) {
+    $role = user_role_load_by_name($name);
+    user_role_grant_permissions($role->rid, array(
+      'create custom_page content',
+      'delete any custom_page content',
+      'delete own custom_page content',
+      'edit any custom_page content',
+      'edit own custom_page content',
+    ));
+  }
+}
+
+/**
+ * Grant permissions to use full_access_text_filter.
+ */
+function cwt_core_update_7126() {
+  foreach (array('site manager', 'administrator') as $name) {
+    $role = user_role_load_by_name($name);
+    user_role_grant_permissions($role->rid, array('use text format full_access_text_filter'));
+  }
+}
+
+/**
+ * Enable translation on following fields.
+ *
+ * fields from ec_embedded_image:
+ * file-image-field_file_image_alt_text
+ * file-image-field_file_image_title_text
+ *
+ * fields from cce_basic_config:
+ * file-image-field_caption
+ * file-video-field_video_description
+ */
+function cwt_core_update_7127() {
+  foreach (field_info_fields() as $f_name => $field) {
+    switch ($field['field_name']) {
+      case 'field_file_image_alt_text':
+      case 'field_file_image_title_text':
+      case 'field_caption':
+      case 'field_video_description':
+        $field['translatable'] = 1;
+        field_update_field($field);
+        break;
+    }
+  }
+}
+
+/**
+ * Grant new role "blog_editor" to array of users.
+ */
+function cwt_core_update_7128() {
+
+  $rid = user_role_load_by_name('blog editor')->rid;
+  $names = array(
+    'anatoko',
+    'anderpe',
+    'apostio',
+    'bucurdr',
+    'dessach',
+    'dupinso',
+    'grigoge',
+    'hemmala',
+    'holznma',
+    'inglipi',
+    'jennimi',
+    'jouglma',
+    'kearyke',
+    'kloibru',
+    'larssln',
+    'lockean',
+    'lombacr',
+    'lupasst',
+    'maralex',
+    'meehasi',
+    'smithjy',
+    'synnobr',
+    'sysaivi',
+    'thomsiv',
+    'tochami',
+    'vandkar',
+    'vickest',
+  );
+
+  foreach ($names as $name) {
+    $uid = user_load_by_name($name)->uid;
+    user_multiple_role_edit(array($uid), 'add_role', $rid);
+  }
+}
+
+/**
+ * Change text format to "Custom text format" on all Announcements.
+ */
+function cwt_core_update_7129() {
+  $query = new EntityFieldQuery();
+
+  $query
+  ->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'aggregated_news');
+
+  $result = $query->execute();
+
+  if (!empty($result['node'])) {
+    $nids = array_keys($result['node']);
+
+    foreach ($nids as $nid) {
+      $node = node_load($nid, NULL, TRUE);
+      $node->body['und'][0]['format'] = 'custom_text_filter';
+      node_save($node);
+    }
+  }
+}

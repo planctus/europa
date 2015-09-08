@@ -1,0 +1,72 @@
+<?php
+/**
+ * @file
+ * cwt_news.features.inc
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function cwt_news_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function cwt_news_views_api() {
+  return array("api" => "3.0");
+}
+
+/**
+ * Implements hook_node_info().
+ */
+function cwt_news_node_info() {
+  $items = array(
+    'aggregated_news' => array(
+      'name' => t('Announcement'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'news_importer' => array(
+      'name' => t('News importer'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_weight_features_default_settings().
+ */
+function cwt_news_weight_features_default_settings() {
+  $settings = array();
+
+  $settings['aggregated_news'] = array(
+    'enabled' => '0',
+    'range' => '20',
+    'menu_weight' => '0',
+    'default' => '0',
+    'sync_translations' => '0',
+  );
+
+  return $settings;
+}
