@@ -9,15 +9,15 @@
  */
 function dt_political_core_install() {
   // Those are basic configuration features for each class.
-  $dt_classes = array(
-    'dt_pri_pol_area_default',
-    'dt_priority_default',
+  $dt_modules = array(
+    'dt_pri_policy_area_default',
+    // 'dt_priority_default',
   );
-  module_enable($dt_classes);
+  module_enable($dt_modules);
 
   // Enabling information sub-theme.
-  theme_enable(array('political'));
-  variable_set('theme_default', 'political');
+  //theme_enable(array('political'));
+  //variable_set('theme_default', 'political');
 }
 
 /**
