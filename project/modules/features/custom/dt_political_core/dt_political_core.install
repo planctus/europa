@@ -8,7 +8,6 @@
  * Implements hook_install().
  */
 function dt_political_core_install() {
-  // Those are basic configuration features for each class.
   $dt_modules = array(
     'dt_pri_policy_area_default',
     // 'dt_priority_default',
@@ -16,8 +15,8 @@ function dt_political_core_install() {
   module_enable($dt_modules);
 
   // Enabling information sub-theme.
-  //theme_enable(array('political'));
-  //variable_set('theme_default', 'political');
+  theme_enable(array('informational'));
+  variable_set('theme_default', 'informational');
 }
 
 /**
