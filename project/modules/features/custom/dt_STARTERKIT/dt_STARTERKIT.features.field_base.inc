@@ -5,9 +5,9 @@
  */
 
 /**
- * Implements hook_field_info_field_bases().
+ * Implements hook_field_default_field_bases().
  */
-function dt_STARTERKIT_field_info_field_bases() {
+function dt_STARTERKIT_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_STARTERKIT_CONTENT_NAME_status'
