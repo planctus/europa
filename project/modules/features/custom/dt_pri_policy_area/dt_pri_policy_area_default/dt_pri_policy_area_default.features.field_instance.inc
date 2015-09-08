@@ -10,6 +10,84 @@
 function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_background'
+  $field_instances['node-priority_policy_area-field_core_background'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 22,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_background',
+    'label' => 'Background / Context',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 56,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-field_core_banner'
   $field_instances['node-priority_policy_area-field_core_banner'] = array(
     'bundle' => 'priority_policy_area',
@@ -63,45 +141,39 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_department'
-  $field_instances['node-priority_policy_area-field_core_department'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_child_policies'
+  $field_instances['node-priority_policy_area-field_core_child_policies'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select the related departments.',
+    'description' => 'Select and order the priority policy areas and policies that part of this priority policy area.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'full' => array(
-        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => 1,
+          'link' => FALSE,
         ),
         'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_department',
-    'label' => 'Responsible department(s)',
+    'field_name' => 'field_core_child_policies',
+    'label' => 'Child Priority policy areas and Policies',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -117,7 +189,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 43,
+      'weight' => 12,
     ),
   );
 
@@ -257,6 +329,166 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 52,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_header_image'
+  $field_instances['node-priority_policy_area-field_core_header_image'] = array(
+    'bundle' => 'priority_policy_area',
+    'deleted' => 0,
+    'description' => 'Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_header_image',
+    'label' => 'Header Background Image',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '2400x900',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'maxlength_js_label' => '',
+        'preview_image_style' => '',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_image'
+  $field_instances['node-priority_policy_area-field_core_image'] = array(
+    'bundle' => 'priority_policy_area',
+    'deleted' => 0,
+    'description' => 'Aspect ratio 4:3 (w:h). Minimum width: 320x240 px',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 16,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_image',
+    'label' => 'Image',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '320x240',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'plupload' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => '',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 5,
     ),
   );
 
@@ -412,6 +644,138 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'link_field',
       'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_next_steps'
+  $field_instances['node-priority_policy_area-field_core_next_steps'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the timeline of this Priority policy area.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_next_steps',
+    'label' => 'Next steps',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'dt_policy_next_step',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'rows' => 5,
+        'size' => 255,
+      ),
+      'type' => 'dt_policy_next_step_widget',
+      'weight' => 59,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_objective'
+  $field_instances['node-priority_policy_area-field_core_objective'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_objective',
+    'label' => 'Objectives',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 0,
+          'filtered_html' => 0,
+          'full_html' => 'full_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 57,
     ),
   );
 
@@ -587,484 +951,6 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_social_network_links'
-  $field_instances['node-priority_policy_area-field_core_social_network_links'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
-        'weight' => 16,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_social_network_links',
-    'label' => 'Social Network Links',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'social_network' => 0,
-      'title' => 0,
-      'url' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'dt_social_network_links',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'social_network_link_default',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_topics'
-  $field_instances['node-priority_policy_area-field_core_topics'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select the related topics.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 26,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_topics',
-    'label' => 'Related topics',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 44,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_next_steps'
-  $field_instances['node-priority_policy_area-field_core_next_steps'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select the timeline of this Priority policy area.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 32,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_next_steps',
-    'label' => 'Next steps',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'dt_policy_next_step',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 255,
-      ),
-      'type' => 'dt_policy_next_step_widget',
-      'weight' => 59,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_background'
-  $field_instances['node-priority_policy_area-field_core_background'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 22,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_background',
-    'label' => 'Background / Context',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -7,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 56,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_header_image'
-  $field_instances['node-priority_policy_area-field_core_header_image'] = array(
-    'bundle' => 'priority_policy_area',
-    'deleted' => 0,
-    'description' => 'Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_header_image',
-    'label' => 'Header Background Image',
-    'required' => 1,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'entity_translation_sync' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '2400x900',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'plupload' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
-        'maxlength_js_label' => '',
-        'preview_image_style' => '',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_image'
-  $field_instances['node-priority_policy_area-field_core_image'] = array(
-    'bundle' => 'priority_policy_area',
-    'deleted' => 0,
-    'description' => 'Aspect ratio 4:3 (w:h). Minimum width: 320x240 px',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 16,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_image',
-    'label' => 'Image',
-    'required' => 1,
-    'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'entity_translation_sync' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '320x240',
-      'title_field' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'image',
-      'settings' => array(
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'plupload' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'preview_image_style' => '',
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'image_image',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-priority_policy_area-field_core_objective'
-  $field_instances['node-priority_policy_area-field_core_objective'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_objective',
-    'label' => 'Objectives',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 0,
-          'filtered_html' => 0,
-          'full_html' => 'full_html',
-          'plain_text' => 0,
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 57,
-    ),
-  );
-
   // Exported field_instance: 'node-priority_policy_area-field_core_section_intro'
   $field_instances['node-priority_policy_area-field_core_section_intro'] = array(
     'bundle' => 'priority_policy_area',
@@ -1143,55 +1029,56 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_child_policies'
-  $field_instances['node-priority_policy_area-field_core_child_policies'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_social_network_links'
+  $field_instances['node-priority_policy_area-field_core_social_network_links'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select and order the priority policy areas and policies that part of this priority policy area.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
+        'module' => 'dt_social_network_links',
         'settings' => array(
-          'link' => FALSE,
+          'icon_image_style' => '',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 17,
+        'type' => 'social_network_link_default',
+        'weight' => 16,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
+        'type' => 'social_network_link_theme_css',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_child_policies',
-    'label' => 'Child Priority policy areas and Policies',
-    'required' => 1,
+    'field_name' => 'field_core_social_network_links',
+    'label' => 'Social Network Links',
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
+      'social_network' => 0,
+      'title' => 0,
+      'url' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
+      'active' => 0,
+      'module' => 'dt_social_network_links',
       'settings' => array(
-        'match_operator' => 'CONTAINS',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 12,
+      'type' => 'social_network_link_default',
+      'weight' => 8,
     ),
   );
 
@@ -1411,16 +1298,12 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Policy introduction');
   t('Related commissioners');
   t('Related links');
-  t('Related topics');
-  t('Responsible department(s)');
   t('Select a banner if you would like to display a banner on top of this page.');
   t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
   t('Select and order the priority policy areas and policies that part of this priority policy area.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority policy area.');
   t('Select the publications, infographics, files, etc. that are key for this Priority policy area.');
-  t('Select the related departments.');
-  t('Select the related topics.');
   t('Select the timeline of this Priority policy area.');
   t('Social Network Links');
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
