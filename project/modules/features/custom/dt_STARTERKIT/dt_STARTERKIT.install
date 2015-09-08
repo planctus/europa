@@ -8,7 +8,7 @@
  * Implements hook_install().
  */
 function dt_STARTERKIT_install() {
-  // Apply info dt configuration to "Policy input" content type.
+  // Apply default dt configuration to "Policy input" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('STARTERKIT_CONTENT_NAME');
 }
 
