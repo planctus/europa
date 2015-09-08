@@ -24,9 +24,9 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '27',
     'children' => array(
       0 => 'field_core_publications',
-      1 => 'field_policy_next_steps',
-      2 => 'field_pri_pol_area_bg_context',
-      3 => 'field_pri_pol_area_objectives',
+      1 => 'field_core_next_steps',
+      2 => 'field_core_background',
+      3 => 'field_core_objective',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -84,8 +84,8 @@ function dt_pri_policy_area_default_field_group_info() {
       1 => 'field_core_description',
       2 => 'field_core_introduction',
       3 => 'field_core_social_network_links',
-      4 => 'field_pri_pol_area_headerbg',
-      5 => 'field_pri_pol_area_image',
+      4 => 'field_core_header_image',
+      5 => 'field_core_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -314,8 +314,8 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Policy',
     'weight' => '23',
     'children' => array(
-      0 => 'field_pri_pol_area_policy_intro',
-      1 => 'field_pri_pol_child_pri_pol_area',
+      0 => 'field_core_section_intro',
+      1 => 'field_core_child_policies',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

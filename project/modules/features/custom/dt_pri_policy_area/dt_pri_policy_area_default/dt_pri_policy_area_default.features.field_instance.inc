@@ -695,8 +695,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_policy_next_steps'
-  $field_instances['node-priority_policy_area-field_policy_next_steps'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_next_steps'
+  $field_instances['node-priority_policy_area-field_core_next_steps'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -729,7 +729,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_policy_next_steps',
+    'field_name' => 'field_core_next_steps',
     'label' => 'Next steps',
     'required' => 0,
     'settings' => array(
@@ -749,8 +749,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_area_bg_context'
-  $field_instances['node-priority_policy_area-field_pri_pol_area_bg_context'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_background'
+  $field_instances['node-priority_policy_area-field_core_background'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -778,7 +778,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_area_bg_context',
+    'field_name' => 'field_core_background',
     'label' => 'Background / Context',
     'required' => 0,
     'settings' => array(
@@ -827,8 +827,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_area_headerbg'
-  $field_instances['node-priority_policy_area-field_pri_pol_area_headerbg'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_header_image'
+  $field_instances['node-priority_policy_area-field_core_header_image'] = array(
     'bundle' => 'priority_policy_area',
     'deleted' => 0,
     'description' => 'Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px',
@@ -858,7 +858,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_area_headerbg',
+    'field_name' => 'field_core_header_image',
     'label' => 'Header Background Image',
     'required' => 1,
     'settings' => array(
@@ -907,8 +907,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_area_image'
-  $field_instances['node-priority_policy_area-field_pri_pol_area_image'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_image'
+  $field_instances['node-priority_policy_area-field_core_image'] = array(
     'bundle' => 'priority_policy_area',
     'deleted' => 0,
     'description' => 'Aspect ratio 4:3 (w:h). Minimum width: 320x240 px',
@@ -938,7 +938,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_area_image',
+    'field_name' => 'field_core_image',
     'label' => 'Image',
     'required' => 1,
     'settings' => array(
@@ -987,8 +987,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_area_objectives'
-  $field_instances['node-priority_policy_area-field_pri_pol_area_objectives'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_objective'
+  $field_instances['node-priority_policy_area-field_core_objective'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1016,7 +1016,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_area_objectives',
+    'field_name' => 'field_core_objective',
     'label' => 'Objectives',
     'required' => 0,
     'settings' => array(
@@ -1065,8 +1065,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_area_policy_intro'
-  $field_instances['node-priority_policy_area-field_pri_pol_area_policy_intro'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_section_intro'
+  $field_instances['node-priority_policy_area-field_core_section_intro'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1094,7 +1094,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_area_policy_intro',
+    'field_name' => 'field_core_section_intro',
     'label' => 'Policy introduction',
     'required' => 0,
     'settings' => array(
@@ -1143,8 +1143,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_pri_pol_child_pri_pol_area'
-  $field_instances['node-priority_policy_area-field_pri_pol_child_pri_pol_area'] = array(
+  // Exported field_instance: 'node-priority_policy_area-field_core_child_policies'
+  $field_instances['node-priority_policy_area-field_core_child_policies'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1174,7 +1174,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pri_pol_child_pri_pol_area',
+    'field_name' => 'field_core_child_policies',
     'label' => 'Child Priority policy areas and Policies',
     'required' => 1,
     'settings' => array(
