@@ -15,8 +15,8 @@ function dt_political_core_install() {
   module_enable($dt_modules);
 
   // Enabling information sub-theme.
-  theme_enable(array('informational'));
-  variable_set('theme_default', 'informational');
+  theme_enable(array('information'));
+  variable_set('theme_default', 'information');
 }
 
 /**
