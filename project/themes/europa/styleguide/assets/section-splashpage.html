@@ -191,10 +191,6 @@
       </h1>
 
 
-      <div class="kss-description">
-        <p>Splash Page</p>
-
-      </div>
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -202,13 +198,45 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="timeline">
-  <div class="timeline__item">
-    <div class="timeline__item-title">Splash page</div>
-    <div class="timeline__text">
-      <ul>
-        <li>Placeholder</li>
-      </ul>
+          <div class="splash-page--overlay">
+  <div class="splash-page__content">
+    <div class="container-fluid"><!-- only fluid for styleguide -->
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <nav class="splash-page__container">
+            <h2><span class="icon icon--generic-lang"></span> Select your language</h2>
+            <div class="row">
+              <div class="col-sm-6 splash-page__language">
+                <a href="#" lang="en" hreflang="en" class="splash-page__btn-language is-active btn icon icon--check" data-languagespecific="true">English</a>
+              </div>
+              <div class="col-sm-6 splash-page__language">
+                <a href="#" lang="nl" hreflang="nl" class="splash-page__btn-language btn icon icon--check" data-languagespecific="true">Nederlands</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 splash-page__language">
+                <a href="#" lang="nl" hreflang="nl" class="splash-page__btn-language btn icon icon--check" data-languagespecific="true">Nederlands</a>
+              </div>
+              <div class="col-sm-6 splash-page__language">
+                <a href="#" lang="en" hreflang="en" class="splash-page__btn-language is-active btn icon icon--check" data-languagespecific="true">English</a>
+              </div>
+            </div>
+            <div class="splash-page__helper-text">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Language</th><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. </td>
+                  </tr>
+                  <tr>
+                    <th>Language</th><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a href="/index_en" class="splash-page__btn-close">Close</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -217,13 +245,45 @@
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;timeline&quot;&gt;
-  &lt;div class=&quot;timeline__item&quot;&gt;
-    &lt;div class=&quot;timeline__item-title&quot;&gt;Splash page&lt;/div&gt;
-    &lt;div class=&quot;timeline__text&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;Placeholder&lt;/li&gt;
-      &lt;/ul&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;splash-page--overlay&quot;&gt;
+  &lt;div class=&quot;splash-page__content&quot;&gt;
+    &lt;div class=&quot;container-fluid&quot;&gt;&lt;!-- only fluid for styleguide --&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-8 col-md-offset-2&quot;&gt;
+          &lt;nav class=&quot;splash-page__container&quot;&gt;
+            &lt;h2&gt;&lt;span class=&quot;icon icon--generic-lang&quot;&gt;&lt;/span&gt; Select your language&lt;/h2&gt;
+            &lt;div class=&quot;row&quot;&gt;
+              &lt;div class=&quot;col-sm-6 splash-page__language&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;en&quot; hreflang=&quot;en&quot; class=&quot;splash-page__btn-language is-active btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;English&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;col-sm-6 splash-page__language&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;nl&quot; hreflang=&quot;nl&quot; class=&quot;splash-page__btn-language btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;Nederlands&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+              &lt;div class=&quot;col-sm-6 splash-page__language&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;nl&quot; hreflang=&quot;nl&quot; class=&quot;splash-page__btn-language btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;Nederlands&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;col-sm-6 splash-page__language&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;en&quot; hreflang=&quot;en&quot; class=&quot;splash-page__btn-language is-active btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;English&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;splash-page__helper-text&quot;&gt;
+              &lt;table&gt;
+                &lt;tbody&gt;
+                  &lt;tr&gt;
+                    &lt;th&gt;Language&lt;/th&gt;&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;th&gt;Language&lt;/th&gt;&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+            &lt;a href=&quot;/index_en&quot; class=&quot;splash-page__btn-close&quot;&gt;Close&lt;/a&gt;
+          &lt;/nav&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;

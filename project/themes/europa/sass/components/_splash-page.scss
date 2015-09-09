@@ -7,7 +7,7 @@ Styleguide splashpage
 */
 
 // Local variables
-$table-border: 1px solid #393939;
+$table-border: 1px solid #245898;
 
 .splash-page {
   background: rgba(0, 68, 148, 1);
@@ -48,6 +48,9 @@ $table-border: 1px solid #393939;
     margin-top: 50px;
     clear: both;
 
+    p {
+      max-width: 100%;
+    }
     // please separate so that
     // overlay component has overlay help text element
     // splash page component has splash page help text element
@@ -83,6 +86,7 @@ $table-border: 1px solid #393939;
     font-size: $font-size-little;
     font-weight: normal;
     color: #ffffff;
+    display: none;
 
     &:hover {
       color: #ffffff;
@@ -100,43 +104,24 @@ $table-border: 1px solid #393939;
       text-align: center;
     }
   }
-}
 
-.splash-page--overlay {
-  display: none;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 68, 148, 0.95);
-  overflow-x: auto;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  text-align: left;
-
-  & > h2 {
+  &--overlay {
     display: block;
-  }
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 68, 148, 0.95);
+    overflow-x: auto;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    text-align: left;
 
-
-  // parent class has been changed
-  .splash-page__helper-text {
-    display: block;
-
-    p {
-      max-width: 100%;
-    }
-
-    .overlay-helper-text {
+    & > h2 {
       display: block;
     }
-    .splash-helper-text {
-      display: none;
-    }
-  }
 
-  .splash-page{
-    &__btn-language{
+    .splash-page__btn-language{
       &.is-active{
         color: #000000;
         background: $yellow-light;
@@ -146,6 +131,10 @@ $table-border: 1px solid #393939;
         float: right;
         display: block;
       }
+    }
+
+    .splash-page__btn-close{
+      display: block;
     }
 
   }
@@ -159,6 +148,9 @@ $table-border: 1px solid #393939;
 
 .splash-page {
   &__helper-text {
+    table {
+      width: 100%;
+    }
     tbody {
       border-bottom: $table-border;
 
