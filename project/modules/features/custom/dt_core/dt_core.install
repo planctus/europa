@@ -25,6 +25,9 @@ function dt_core_install() {
   // Enabling europa base theme.
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
+
+  // Switch on entity translation for the body field.
+  entity_translation_translatable_switch(TRUE, 'body');
 }
 
 /**
@@ -460,4 +463,11 @@ function dt_core_update_7133() {
  */
 function dt_core_update_7134() {
   module_enable(array('nexteuropa_views'));
+}
+
+/**
+ * Switch on entity translation for the body field.
+ */
+function dt_core_update_7135($sandbox) {
+  _dt_core_enable_entity_translation('body', $sandbox);
 }
