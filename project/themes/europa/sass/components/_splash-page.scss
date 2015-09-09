@@ -1,16 +1,13 @@
 /*
 Splash Page
 
-Splash Page
-
 Markup: html/splash-page.html
 
 Styleguide splashpage
 */
 
-.page-splash{
-  background: rgba(0, 68, 148, 1);
-}
+// Local variables
+$table-border: 1px solid #393939;
 
 .splash-page {
   background: rgba(0, 68, 148, 1);
@@ -20,6 +17,12 @@ Styleguide splashpage
 
     .logo {
       background: url("../images/svg/logo.svg") center center no-repeat;
+      // 1) please set sizes and do not rely on other components
+      // 2) please check background origin https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
+
+      .no-svg & {
+        background-image: url("../images/png/logo.png");
+      }
     }
   }
 
@@ -27,93 +30,70 @@ Styleguide splashpage
     position: relative;
   }
 
-  &__page-content {
+  &__content {
 
-    h2{
+    h2 {
       display: none;
       color: #ffffff;
-      font-size: 22px;
+      font-size: $font-size-mid;
       padding-top: 50px;
       padding-bottom: 50px;
       clear:both;
     }
-
   }
 
   &__helper-text {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 16px; //@todo please convert to em
     margin-top: 50px;
     clear: both;
 
-    tbody {
-      border-bottom: 1px solid #245898;
-
-      tr{
-        border-top:1px solid #245898;
-        clear: both;
-
-        th{
-          vertical-align: top;
-          min-width: 150px;
-          font-weight: bold;
-          padding-top: 0.6em;
-        }
-
-        td, th{
-          padding: 0.6em 0em 0.6em 0em;
-        }
-      }
-    }
-
-    .overlay-helper-text {
-      display: none;
-    }
-    .splash-helper-text {
-      display: block;
-    }
+    // please separate so that
+    // overlay component has overlay help text element
+    // splash page component has splash page help text element
+    //.overlay-helper-text {
+    //  display: none;
+    //}
+    //.splash-helper-text {
+    //  display: block;
+    //}
   }
 
-  &__btn-language{
+  &__btn-language {
     background: #ffffff;
     margin-bottom: 4px;
     width: 100%;
-    text-align: left!important;
+    text-align: left !important; // overriding bootstrap btn class
 
-    &.active{
-      box-shadow: none;
-      -webkit-box-shadow: none;
-    }
-
-    &:hover{
+    &:hover {
       color: #000000;
-      background: #ffd617;
+      background: $yellow-light;
     }
 
-    &.icon--check:before{
+    &.icon--check:before {
       display: none;
     }
   }
 
-  &__btn-close{
+  &__btn-close {
     position: absolute;
     top: -15px;
     right: 0;
-    padding: 0.5em 0em 0.5em 1em;
-    font-size: 16px;
+    padding: 0.5em 0 0.5em 1em;
+    font-size: $font-size-little;
     font-weight: normal;
     color: #ffffff;
 
-    &:hover{
+    &:hover {
       color: #ffffff;
     }
 
-    &:after{
+    &:after {
       content: "X";
       float: right;
       display: inline-block;
-      border: 1px solid white;
-      margin-left: .5em;
+      border: 1px solid #ffffff;
+      margin-left: 0.5em;
       width: 1.6em;
       height: 1.6em;
       border-radius: 1.1em;
@@ -122,7 +102,7 @@ Styleguide splashpage
   }
 }
 
-.overlay {
+.splash-page--overlay {
   display: none;
   position: fixed;
   height: 100%;
@@ -134,15 +114,16 @@ Styleguide splashpage
   z-index: 10;
   text-align: left;
 
-  &.splash-page {
-    h2{
-      display: block;
-    }
+  & > h2 {
+    display: block;
   }
-  .splash-page__helper-text{
+
+
+  // parent class has been changed
+  .splash-page__helper-text {
     display: block;
 
-    p{
+    p {
       max-width: 100%;
     }
 
@@ -156,9 +137,9 @@ Styleguide splashpage
 
   .splash-page{
     &__btn-language{
-      &.active{
+      &.is-active{
         color: #000000;
-        background: #ffd617;
+        background: $yellow-light;
         box-shadow: none;
       }
       &.icon--check:before{
@@ -167,5 +148,35 @@ Styleguide splashpage
       }
     }
 
+  }
+}
+
+// Drupal-specific hacks
+// specific to a case of having a page
+.page-splash {
+  background: rgba(0, 68, 148, 1);
+}
+
+.splash-page {
+  &__helper-text {
+    tbody {
+      border-bottom: $table-border;
+
+      tr {
+        border-top: $table-border;
+        clear: both;
+
+        th {
+          vertical-align: top;
+          min-width: 150px; //@convert in em please
+          font-weight: bold;
+          padding-top: 0.6em;
+        }
+
+        td, th {
+          padding: 0.6em 0 0.6em 0;
+        }
+      }
+    }
   }
 }

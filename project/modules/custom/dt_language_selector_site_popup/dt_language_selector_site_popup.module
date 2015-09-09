@@ -18,7 +18,7 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
     $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
 
     // Dont know if this is the way to go..
-    $popupbase = '<div id="lang-select-site-overlay" class="overlay splash-page"><!-- Load the splash page here --></div>';
+    $popupbase = '<div id="lang-select-site-overlay" class="splash-page splash-page--overlay"></div>';
 
     $options = array(
       'html' => TRUE,
