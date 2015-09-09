@@ -8882,8 +8882,6 @@ Styleguide splashpage
     padding-top: 50px;
     padding-bottom: 50px;
     clear: both; }
-  .splash-page__page-content .icon--language:before {
-    transform: scale(-1, 1); }
   .splash-page__helper-text {
     color: #ffffff;
     font-size: 16px;
