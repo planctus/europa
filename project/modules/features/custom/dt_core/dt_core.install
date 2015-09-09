@@ -27,7 +27,7 @@ function dt_core_install() {
   variable_set('theme_default', 'europa');
 
   // Switch on entity translation for the body field.
-  entity_translation_translatable_switch(TRUE, 'body');
+  _dt_core_enable_entity_translation('body', $sandbox);
 }
 
 /**
