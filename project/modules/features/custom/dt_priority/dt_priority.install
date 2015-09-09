@@ -79,6 +79,7 @@ function dt_priority_update_7102() {
     'dt_featured_item',
     'dt_priority',
     'dt_priority_default',
+    'dt_roles_permissions',
   );
   // Revert the feature.
   foreach ($features_to_revert as $feature) {
