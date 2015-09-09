@@ -17,7 +17,7 @@ function dt_language_selector_site_popup_install() {
     ->execute();
 
   // Set the splash_screen_home_page variable so we don't get a redirect loop.
-  variable_set('splash_screen_home_page', 'index_en')
+  variable_set('splash_screen_home_page', 'index_en');
 }
 
 /**
