@@ -15,6 +15,9 @@ function dt_language_selector_site_popup_install() {
     ->fields(array('weight' => 999))
     ->condition('name', 'dt_language_selector_site_popup', '=')
     ->execute();
+
+  // Set the splash_screen_home_page variable so we don't get a redirect loop.
+  variable_get('splash_screen_home_page', 'index_en')
 }
 
 /**
