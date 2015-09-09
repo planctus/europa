@@ -560,3 +560,25 @@ function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state)
     $form['weight'][$key]['#delta'] = 20;
   }
 }
+
+/**
+ * Helper function to enable languages.
+ *
+ * @param array $languages
+ *   Language codes of languages to be enabled.
+ */
+function _dt_information_core_enable_lanugages($languages = array()) {
+  module_load_include('inc', 'locale', 'locale.admin');
+  $form_state = array();
+  foreach ($languages as $key => $langcode) {
+    // Enable language.
+    multisite_config_service('locale')->addLanguage($langcode);
+    // Set the appropriate weight for languages to follow the order defined in
+    // the array.
+    $form_state['values']['weight'][$langcode] = -20 + $key;
+  }
+  // Save the order.
+  drupal_form_submit('locale_languages_overview_form', $form_state);
+
+  multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
+}
