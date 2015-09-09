@@ -65,8 +65,12 @@ function dt_priority_update_7101() {
  * Reverting priority content type and removing depricated fields.
  */
 function dt_priority_update_7102() {
-  // Enable the default.
-  module_enable(array('dt_priority_default'));
+  // Enable the default and new modules.
+  $modules_to_enable = array(
+    'weight',
+    'dt_priority_default',
+  )
+  module_enable($modules_to_enable);
 
   // List of features we have to revert. In the correct order.
   $features_to_revert = array(
