@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_information_core.strongarm.inc
+ * dt_core_info.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function dt_information_core_strongarm() {
+function dt_core_info_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

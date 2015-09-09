@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_information_core.features.inc
+ * dt_core_info.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_information_core_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_core_info_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }

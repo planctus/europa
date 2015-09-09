@@ -1,19 +1,19 @@
 <?php
 /**
  * @file
- * dt_information_core.context.inc
+ * dt_core_info.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function dt_information_core_context_default_contexts() {
+function dt_core_info_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'dt_information_core_sitewide';
+  $context->name = 'dt_core_info_sitewide';
   $context->description = '';
   $context->tag = 'Digital Transformation';
   $context->conditions = array(
@@ -82,7 +82,7 @@ function dt_information_core_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Digital Transformation');
-  $export['dt_information_core_sitewide'] = $context;
+  $export['dt_core_info_sitewide'] = $context;
 
   return $export;
 }

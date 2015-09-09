@@ -7,7 +7,7 @@
 /**
  * Implements hook_install().
  */
-function dt_information_core_install() {
+function dt_core_info_install() {
   // Those are basic configuration features for each class.
   $dt_classes = array(
     'dt_homepage_core',
@@ -40,16 +40,8 @@ function dt_information_core_install() {
 /**
  * Implements hook_uninstall().
  */
-function dt_information_core_uninstall() {
-  $path = drupal_get_path('module', 'dt_information_core') . '/dt_information_core.info';
+function dt_core_info_uninstall() {
+  $path = drupal_get_path('module', 'dt_core_info') . '/dt_core_info.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
-}
-
-/**
- * Enable Information subtheme.
- */
-function dt_information_core_update_7101() {
-  theme_enable(array('information'));
-  variable_set('theme_default', 'information');
 }

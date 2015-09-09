@@ -4,4 +4,4 @@
  * Code for the Information Site Core feature.
  */
 
-include_once 'dt_information_core.features.inc';
+include_once 'dt_core_info.features.inc';

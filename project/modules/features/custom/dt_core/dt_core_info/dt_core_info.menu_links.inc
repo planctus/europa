@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_information_core.features.menu_links.inc
+ * dt_core_info.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function dt_information_core_menu_default_menu_links() {
+function dt_core_info_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: menu-dt-menu-social-media_facebook:https://www.facebook.com/EuropeanCommission

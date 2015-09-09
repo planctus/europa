@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_information_core.features.menu_custom.inc
+ * dt_core_info.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function dt_information_core_menu_default_menu_custom() {
+function dt_core_info_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: menu-dt-menu-social-media.
