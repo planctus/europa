@@ -9,6 +9,7 @@ composer.bin = composer.phar
 # The build location
 phing.project.build.dir = build
 phing.project.distro.dir = docroot
+phing.project.dumps.dir = _db_dumps
 
 # Temporary folder
 phing.project.tmp.dir = tmp

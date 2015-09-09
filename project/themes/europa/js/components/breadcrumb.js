@@ -45,7 +45,7 @@
             }
 
             // Showing segments.
-            if((breadcrumbCalculations.width + lastHiddenItemWidth) < breadcrumbCalculations.wrapperWidth) {
+            if((breadcrumbCalculations.itemsWidth + lastHiddenItemWidth) < breadcrumbCalculations.wrapperWidth) {
               if($lastHiddenItem.hasClass('is-hidden')) {
                 $lastHiddenItem.removeClass('is-hidden');
               }
@@ -108,7 +108,7 @@
                   showBreadcrumbs($(this));
                 });
               }
-            },
+            }
           });
         }
       });
