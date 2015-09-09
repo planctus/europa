@@ -69,7 +69,7 @@ function dt_priority_update_7102() {
   $modules_to_enable = array(
     'weight',
     'dt_priority_default',
-  )
+  );
   module_enable($modules_to_enable);
 
   // List of features we have to revert. In the correct order.
