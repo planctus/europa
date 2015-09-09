@@ -22,10 +22,92 @@ function dt_priority_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * Reverting the feature to match all fields from the code base.
  */
-/*
 function dt_priority_update_7101() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_priority_intro',
+    'field_priority_keyword',
+    'field_priority_description',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+  $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'priority', 'form');
+  $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'priority', 'form');
+  field_group_group_export_delete($group_priority_other, FALSE);
+  field_group_group_export_delete($group_priority_meta, FALSE);
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_priority_type',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+  // Revert.
+  features_revert_module('dt_priority');
+  features_revert(array(
+    'dt_priority' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}
+
+/**
+ * Reverting priority content type and removing depricated fields.
+ */
+function dt_priority_update_7101() {
+  // List of features we have to revert. In the correct order.
+  $features_to_revert = array(
+    'dt_core',
+    'dt_banner',
+    'dt_featured_item',
+    'dt_priority',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
+
+  // List of fields to delete.
+  $fields_to_remove = array(
+    'field_priority_excerpt',
+    'field_priority_issue',
+    'field_priority_objective',
+    'field_core_policy',
+    'field_core_announcement',
+    'field_core_department',
+  );
+
+  // Transfer the data of refactored fields.
+  _dt_core_field_value_copy('node', 'priority', 'field_priority_objective', 'field_core_objective');
+  _dt_core_field_value_copy('node', 'priority', 'field_core_policy', 'field_core_child_policies');
+  _dt_core_field_value_copy('node', 'priority', 'field_core_department', 'field_core_departments');
+
+  // Loop and process.
+  foreach ($fields_to_remove as $field_name) {
+    // Delete the instances.
+    if ($instance = field_info_instance('node', $field_name, 'priority')) {
+      field_delete_instance($instance);
+    }
+    // Then delete the field.
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  // For the next field we only delete the instance as we need the base in other
+  // content types.
+  if ($instance = field_info_instance('node', 'field_core_priorities', 'priority')) {
+    field_delete_instance($instance);
+  }
 
 }
-*/
