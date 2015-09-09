@@ -567,7 +567,7 @@ function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state)
  * @param array $languages
  *   Language codes of languages to be enabled.
  */
-function _dt_information_core_enable_lanugages($languages = array()) {
+function _dt_core_enable_lanugages($languages = array()) {
   module_load_include('inc', 'locale', 'locale.admin');
   $form_state = array();
   foreach ($languages as $key => $langcode) {

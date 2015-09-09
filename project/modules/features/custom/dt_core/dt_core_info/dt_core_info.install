@@ -39,7 +39,7 @@ function dt_core_info_install() {
   theme_disable(array('europa', 'ec_resp', 'seven'));
   // Enable languages.
   global $_enabled_languages;
-  _dt_information_core_enable_lanugages($_enabled_languages);
+  _dt_core_enable_lanugages($_enabled_languages);
 }
 
 /**
@@ -87,5 +87,5 @@ $_enabled_languages = array(
  */
 function dt_core_info_update_7101() {
   global $_enabled_languages;
-  _dt_information_core_enable_lanugages($_enabled_languages);
+  _dt_core_enable_lanugages($_enabled_languages);
 }
