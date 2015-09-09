@@ -1,25 +1,29 @@
 (function ($) {
     Drupal.behaviors.europa_pager = {
       attach: function(context) {
+        var $overlay = $('#lang-select-site-overlay'),
+            overlay = '.overlay',
+            closeBtn = '.splash-page__btn-close';
+
         $('.lang-select-site').on('click', 'a.lang-select-site__link', function(event){
 
           // We only want to load it once.
-          if ($('#lang-select-site-overlay .splash-page__btn-close').length == 0) {
+          if (!$overlay.find(closeBtn).length) {
 
-            $.get($(this).attr('href'), function( splashscreen ) {
+            $.get($(this).attr('href'), function(splashscreen) {
               // Store our object.
               var $jQueryObject = $($.parseHTML(splashscreen));
               // Output the part we want to our overlay.
-              $('#lang-select-site-overlay').html($jQueryObject.find('.page-content'))
+              $overlay.html($jQueryObject.find('.page-content'))
             });
           }
 
           // Show overlay.
-          $('.overlay').css({'display': 'block'});
+          $(overlay).show();
 
           // Hide frame on click.
-          $("#lang-select-site-overlay").on('click', '.splash-page__btn-close', function(event){
-            $('.overlay').css({'display': 'none'});
+          $overlay.on('click', closeBtn, function(event){
+            $(overlay).hide();
             // Prevent the actual close a href to trigger. This should only work
             // if javascript is disabled.
             event.preventDefault();
