@@ -1,7 +1,7 @@
 name = DT Priority default
 description = DT Priority feature default.
 core = 7.x
-package = Political
+package = NextEuropa Digital Transformation Political
 version = 7.x-1.0-dev
 project = dt_priority_default
 dependencies[] = dt_priority

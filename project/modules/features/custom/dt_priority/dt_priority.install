@@ -107,6 +107,7 @@ function dt_priority_update_7102() {
     'field_core_announcement',
     'field_core_department',
     'field_core_priorities',
+    'field_core_topics',
   );
 
   foreach ($field_instance_to_remove as $field_name) {
