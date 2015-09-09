@@ -113,6 +113,7 @@ function dt_priority_update_7102() {
     'field_core_department',
     'field_core_priorities',
     'field_core_topics',
+    'field_core_legacy_link',
   );
 
   foreach ($field_instance_to_remove as $field_name) {

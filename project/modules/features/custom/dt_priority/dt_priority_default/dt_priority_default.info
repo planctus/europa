@@ -34,7 +34,6 @@ features[field_instance][] = node-priority-field_core_featured_item
 features[field_instance][] = node-priority-field_core_header_image
 features[field_instance][] = node-priority-field_core_image
 features[field_instance][] = node-priority-field_core_introduction
-features[field_instance][] = node-priority-field_core_legacy_link
 features[field_instance][] = node-priority-field_core_links
 features[field_instance][] = node-priority-field_core_next_steps
 features[field_instance][] = node-priority-field_core_objective

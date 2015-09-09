@@ -28,8 +28,31 @@ function dt_priority_node_info() {
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
+      'enabled' => '1',
+      'range' => '100',
+      'menu_weight' => '0',
+      'default' => '0',
+      'sync_translations' => '1',
     ),
   );
   drupal_alter('node_info', $items);
   return $items;
+}
+
+
+/**
+ * Implements hook_weight_features_default_settings().
+ */
+function dt_priority_weight_features_default_settings() {
+  $settings = array();
+
+  $settings['priority'] = array(
+    'enabled' => '1',
+    'range' => '10',
+    'menu_weight' => '0',
+    'default' => '0',
+    'sync_translations' => '1',
+  );
+
+  return $settings;
 }

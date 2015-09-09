@@ -41,6 +41,7 @@ features[variable][] = weight_default_priority
 features[variable][] = weight_enabled_priority
 features[variable][] = weight_menu_priority
 features[variable][] = weight_range_priority
+features[weight][] = priority
 features_exclude[ctools][field_group:field_group:1] = field_group:field_group:1
 features_exclude[ctools][strongarm:strongarm:1] = strongarm:strongarm:1
 features_exclude[dependencies][text] = text
@@ -72,7 +73,6 @@ features_exclude[field_group][group_pri_policy_area_tabgroup|node|priority|form]
 features_exclude[field_group][group_pri_policy_area_common|node|priority|form] = group_pri_policy_area_common|node|priority|form
 features_exclude[field_group][group_pri_policy_area_metadata|node|priority|form] = group_pri_policy_area_metadata|node|priority|form
 features_exclude[field_instance][node-priority-field_core_introduction] = node-priority-field_core_introduction
-features_exclude[field_instance][node-priority-field_core_legacy_link] = node-priority-field_core_legacy_link
 features_exclude[field_instance][node-priority-field_priority_status] = node-priority-field_priority_status
 features_exclude[field_instance][node-priority-field_priority_type] = node-priority-field_priority_type
 features_exclude[field_instance][node-priority-group_content_access] = node-priority-group_content_access
