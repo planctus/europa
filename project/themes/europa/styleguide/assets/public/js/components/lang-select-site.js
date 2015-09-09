@@ -1,8 +1,8 @@
 (function ($) {
     Drupal.behaviors.europa_pager = {
       attach: function(context) {
-        var $overlay = $('#lang-select-site-overlay'),
-            overlay = '.overlay',
+        var $overlay = $('.splash-page--overlay'),
+            overlay = '.splash-page--overlay',
             closeBtn = '.splash-page__btn-close';
 
         $('.lang-select-site').on('click', 'a.lang-select-site__link', function(event){

@@ -8867,9 +8867,20 @@ Styleguide splashpage
   .splash-page__site-header {
     background: #ffffff; }
     .splash-page__site-header .logo {
-      background: url("../images/svg/logo.svg") center center no-repeat; }
+      background-image: url("../images/svg/logo.svg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-origin: content-box; }
       .no-svg .splash-page__site-header .logo {
         background-image: url("../images/png/logo.png"); }
+    @media (min-width: 480px) {
+      .splash-page__site-header .logo {
+        width: 290px;
+        height: 153px; } }
+    @media (min-width: 768px) {
+      .splash-page__site-header .logo {
+        width: 378px;
+        height: 193px; } }
   .splash-page__container {
     position: relative; }
   .splash-page__content h2 {
@@ -8918,7 +8929,7 @@ Styleguide splashpage
       border-radius: 1.1em;
       text-align: center; }
   .splash-page--overlay {
-    display: block;
+    display: none;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -8928,7 +8939,7 @@ Styleguide splashpage
     left: 0;
     z-index: 10;
     text-align: left; }
-    .splash-page--overlay > h2 {
+    .splash-page--overlay h2 {
       display: block; }
     .splash-page--overlay .splash-page__btn-language.is-active {
       color: #000000;

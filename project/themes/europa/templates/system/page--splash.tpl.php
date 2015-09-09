@@ -95,7 +95,7 @@
     </div>
   </header>
 
-  <div class="page-content splash-page__page-content">
+  <div class="page-content splash-page__content">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -18,7 +18,7 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
     $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
 
     // Dont know if this is the way to go..
-    $popupbase = '<div id="lang-select-site-overlay" class="splash-page splash-page--overlay"></div>';
+    $popupbase = '<div class="splash-page splash-page--overlay"></div>';
 
     $options = array(
       'html' => TRUE,
@@ -97,10 +97,10 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
       $options['attributes']['data-languagespecific'] = "true";
 
       if ($lang->language == $language->language) {
-        $options['attributes']['class'][] = "active icon icon--check";
+        $options['attributes']['class'][] = "is-active icon icon--check";
       }
 
-      $languages_list .= '<div class="col-sm-6 list-languages">';
+      $languages_list .= '<div class="col-sm-6">';
       $languages_list .= l($lang->native, $href, $options);
       $languages_list .= '</div>';
 
@@ -116,14 +116,17 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   // Set our base data.
   $overlay_data = variable_get('dt_language_selector_site_popup_message');
 
-  if ($overlay_data['value'] !== "") {
+  // We can rely on the fact that we will have a destination when it's an
+  // overlay. In other cases no destination will be set.
+  if ($overlay_data['value'] !== "" && isset($_GET['destination'])) {
     $variables['overlay_helper_text'] = check_markup($overlay_data['value'], $overlay_data['format']);
   }
+
   // Get our helper message if we have it defined.
   // Set our base data.
   $splash_data = variable_get('dt_language_selector_site_splash_message');
 
-  if ($splash_data['value'] !== "") {
+  if ($splash_data['value'] !== "" && !isset($_GET['destination'])) {
     $variables['splash_helper_text'] = check_markup($splash_data['value'], $splash_data['format']);
   }
 
