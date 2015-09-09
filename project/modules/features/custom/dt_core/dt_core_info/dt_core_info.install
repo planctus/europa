@@ -35,6 +35,8 @@ function dt_core_info_install() {
   // Enabling information sub-theme.
   theme_enable(array('information'));
   variable_set('theme_default', 'information');
+  // Disabling unnecessary themes.
+  theme_disable(array('europa', 'ec_resp', 'seven'));
 }
 
 /**

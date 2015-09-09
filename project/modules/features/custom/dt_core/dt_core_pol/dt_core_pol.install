@@ -14,9 +14,11 @@ function dt_core_pol_install() {
   );
   module_enable($dt_modules);
 
-  // Enabling information sub-theme.
+  // Enabling europa base theme.
   theme_enable(array('europa'));
   variable_set('theme_default', 'europa');
+  // Disabling unnecessary themes.
+  theme_disable(array('ec_resp', 'seven'));
 }
 
 /**

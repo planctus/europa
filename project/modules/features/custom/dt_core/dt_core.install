@@ -23,8 +23,8 @@ function dt_core_install() {
   }
 
   // Enabling europa base theme.
-  theme_enable(array('information'));
-  variable_set('theme_default', 'information');
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }
 
 /**
@@ -470,21 +470,11 @@ function dt_core_update_7135() {
   if (module_exists('dt_information_core')) {
     module_disable(array('dt_information_core'));
     module_enable(array('dt_core_info'));
-    // Enabling information base theme.
-    theme_enable(array('information'));
-    variable_set('theme_default', 'information');
-    // Disabling unnecessary themes.
-    theme_disable(array('europa', 'ec_resp', 'seven'));
   }
 
   // Checking dt_political_core, if it is enabled on the site.
   if (module_exists('dt_political_core')) {
     module_disable(array('dt_political_core'));
     module_enable(array('dt_core_pol'));
-    // Enabling europa base theme.
-    theme_enable(array('europa'));
-    variable_set('theme_default', 'europa');
-    // Disabling unnecessary themes.
-    theme_disable(array('ec_resp', 'seven'));
   }
 }
