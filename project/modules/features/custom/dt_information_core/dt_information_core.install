@@ -35,9 +35,6 @@ function dt_information_core_install() {
   // Enabling information sub-theme.
   theme_enable(array('information'));
   variable_set('theme_default', 'information');
-  // Enable languages.
-  global $_enabled_languages;
-  _dt_information_core_enable_lanugages($_enabled_languages);
 }
 
 /**
