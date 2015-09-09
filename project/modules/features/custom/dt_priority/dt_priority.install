@@ -1,14 +1,14 @@
 <?php
 /**
  * @file
- * dt Priority install file.
+ * Install file.
  */
 
 /**
  * Implements hook_install().
  */
 function dt_priority_install() {
-  // Apply default dt configuration to "Priority" content type.
+  // Apply info dt configuration to "Policy input" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
 }
 
@@ -16,47 +16,16 @@ function dt_priority_install() {
  * Implements hook_uninstall().
  */
 function dt_priority_uninstall() {
-  $path = drupal_get_path('module', 'priority') . '/priority.info';
+  $path = drupal_get_path('module', 'dt_priority') . '/dt_priority.info';
   $info = drupal_parse_info_file($path);
-  drupal_set_message(t('DT Priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
 
 /**
- * Reverting the feature to match all fields from the code base.
+ * First hook_update for example.
  */
+/*
 function dt_priority_update_7101() {
-  // Remove the field.
-  $fields_to_remove = array(
-    'field_priority_intro',
-    'field_priority_keyword',
-    'field_priority_description',
-  );
-  foreach ($fields_to_remove as $field_name) {
-    if (field_info_field($field_name) !== NULL) {
-      field_delete_field($field_name);
-    }
-  }
-  $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'priority', 'form');
-  $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'priority', 'form');
-  field_group_group_export_delete($group_priority_other, FALSE);
-  field_group_group_export_delete($group_priority_meta, FALSE);
-  // Remove the field.
-  $fields_to_remove = array(
-    'field_priority_type',
-  );
-  foreach ($fields_to_remove as $field_name) {
-    if (field_info_field($field_name) !== NULL) {
-      field_delete_field($field_name);
-    }
-  }
-  // Revert.
-  features_revert_module('dt_priority');
-  features_revert(array(
-    'dt_priority' => array(
-      'field_base',
-      'field_instance',
-      'field_group',
-      'variable',
-    ),
-  ));
+
 }
+*/

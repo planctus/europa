@@ -10,13 +10,13 @@
 function dt_priority_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_priorities'
-  $field_bases['field_core_priorities'] = array(
+  // Exported field_base: 'field_core_priority'
+  $field_bases['field_core_priority'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_priorities',
+    'field_name' => 'priority',
     'foreign keys' => array(
       'node' => array(
         'columns' => array(
@@ -54,91 +54,48 @@ function dt_priority_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_priority_excerpt'
-  $field_bases['field_priority_excerpt'] = array(
+  // Exported field_base: 'field_core_prioritys'
+  $field_bases['field_core_priorities'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_priority_excerpt',
+    'field_name' => 'priority',
     'foreign keys' => array(
-      'format' => array(
+      'node' => array(
         'columns' => array(
-          'format' => 'format',
+          'target_id' => 'nid',
         ),
-        'table' => 'filter_format',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_priority_issue'
-  $field_bases['field_priority_issue'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_priority_issue',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
         ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_priority_objective'
-  $field_bases['field_priority_objective'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_priority_objective',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
+        'sort' => array(
+          'type' => 'none',
         ),
-        'table' => 'filter_format',
+        'target_bundles' => array(
+          'priority' => 'priority',
+        ),
       ),
+      'target_type' => 'node',
     ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 1,
-    'type' => 'text_long',
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   return $field_bases;

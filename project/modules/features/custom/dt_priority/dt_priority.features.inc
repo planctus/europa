@@ -8,7 +8,7 @@
  * Implements hook_ctools_plugin_api().
  */
 function dt_priority_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "field_group" && $api == "field_group") {
+  if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
@@ -24,7 +24,7 @@ function dt_priority_node_info() {
     'priority' => array(
       'name' => t('Priority'),
       'base' => 'node_content',
-      'description' => t('Priority content type for dt.'),
+      'description' => t('Priority content type for Digital Transformation.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
