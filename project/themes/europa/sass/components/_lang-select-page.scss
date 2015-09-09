@@ -21,59 +21,62 @@ Styleguide: langselect
   border-bottom: 1px solid $grey;
   position: relative;
   font-size: $font-size-xsmall;
-  display: block;
+  float:left;
+  width:100%;
+  display:inline-block;
+  vertical-align:middle;
 }
 
-.lang-select-page__left {
-  & > span {
-    display: inline-block;
-    padding: 1em;
+.icon.lang-select-page__icon {
+  float:left;
+  margin-left: 0.7em;
+  font-size: 2em;
+  padding: 0;
+
+  &:before {
     vertical-align: middle;
   }
+}
 
-  .lang-select-page__icon {
-    margin-left: 0.7em;
-    font-size: 2em;
-    line-height: 1;
-    padding: 0;
-  }
-
-  .lang-select-page__unavailable {
-    text-decoration: line-through;
-  }
+.lang-select-page__unavailable {
+  text-decoration: line-through;
 }
 
 .lang-select-page__list {
+  float:left;
   padding: 0;
   margin: 0;
 
   .lang-select-page__option {
     list-style: none;
+    float: left;
+    padding: 1em;
 
-    & > a {
+    a {
       display: block;
-      padding: 0 1.5em;
-      line-height: 4;
     }
 
     &.is-selected {
       background: $yellow-light;
+
       a {
         font-weight: bold;
         color: #000;
       }
     }
+
+    &:first-child {
+      padding-right: 3em;
+    }
   }
 }
 
 .lang-select-page--dark {
-  @extend .lang-select-page;
   border-top: none;
   border-bottom: none;
 }
 
 .lang-select-page--transparent {
-  @extend .lang-select-page;
   background: transparent;
   border-color: #fff;
   color: #fff;
@@ -94,18 +97,12 @@ Styleguide: langselect
 }
 
 @include breakpoint(screen-sm-min) {
-  .lang-select-page__left,
-  .lang-select-page__right {
+  .lang-select-page__option {
     display: inline-block;
   }
-  .lang-select-page__right {
-    select {
-      width: 10em;
-    }
-  }
-  .lang-select-page__list {
-    .lang-select-page__option {
-      display: inline-block;
-    }
-  }
+}
+
+select.lang-select-page__list {
+  width: auto;
+  margin: 1em;
 }
