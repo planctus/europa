@@ -534,3 +534,29 @@ function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
   }
   return FALSE;
 }
+
+/**
+ * Migrate existing field content from language "undefined" to entity language.
+ *
+ * @param string $field_name
+ *   Field to enable entity translation on.
+ */
+function _dt_core_enable_entity_translation($field_name, &$sandbox) {
+  $context = array('sandbox' => &$sandbox);
+  module_load_include('inc', 'entity_translation', 'entity_translation.admin');
+  entity_translation_translatable_switch(TRUE, $field_name);
+  entity_translation_translatable_batch(TRUE, $field_name, TRUE, $context);
+  $sandbox['#finished'] = $context['finished'];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state) {
+  // Increase the range of weights that can be assigned to languages in the
+  // languages overview form. By default the languages can only be sorted using
+  // the range -10 to +10 but since we have 24 languages this is not sufficient.
+  foreach (element_children($form['weight']) as $key) {
+    $form['weight'][$key]['#delta'] = 20;
+  }
+}
