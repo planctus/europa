@@ -1,0 +1,91 @@
+<?php
+/**
+ * @file
+ * Digital Transformation Core install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_core_info_install() {
+  // Those are basic configuration features for each class.
+  $dt_classes = array(
+    'dt_homepage_core',
+    'dt_aboutec_core',
+    'dt_strategy_core',
+    // Roles and permissions.
+    'dt_roles_permissions',
+  );
+  module_enable($dt_classes);
+
+  // Enabling functional features.
+  $features = array(
+    'dt_announcement',
+    'dt_class',
+    'dt_contact',
+    'dt_publication',
+    'dt_policy',
+    'dt_topic',
+    'nexteuropa_file',
+    'dt_page',
+    'dt_site_menu',
+  );
+  module_enable($features);
+
+  // Enabling information sub-theme.
+  theme_enable(array('information'));
+  variable_set('theme_default', 'information');
+  // Disabling unnecessary themes.
+  theme_disable(array('europa', 'ec_resp', 'seven'));
+  // Enable languages.
+  global $_enabled_languages;
+  _dt_information_core_enable_lanugages($_enabled_languages);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_core_info_uninstall() {
+  $path = drupal_get_path('module', 'dt_core_info') . '/dt_core_info.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+// Languages that will be enabled.
+// The order they need to appear when listed is defined here:
+// @link http://publications.europa.eu/code/en/en-370200.htm
+global $_enabled_languages;
+$_enabled_languages = array(
+  'bg',
+  'cs',
+  'da',
+  'de',
+  'et',
+  'el',
+  'en',
+  'es',
+  'fr',
+  'ga',
+  'hr',
+  'it',
+  'lt',
+  'lv',
+  'hu',
+  'mt',
+  'nl',
+  'pl',
+  'pt',
+  'ro',
+  'sk',
+  'sl',
+  'fi',
+  'sv',
+);
+
+/**
+ * Enable languages.
+ */
+function dt_core_info_update_7101() {
+  global $_enabled_languages;
+  _dt_information_core_enable_lanugages($_enabled_languages);
+}

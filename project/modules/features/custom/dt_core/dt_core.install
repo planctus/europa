@@ -466,8 +466,24 @@ function dt_core_update_7134() {
 }
 
 /**
+ * Enabling dt_core_info, dt_core_pol, disabling legacy info and pol features.
+ */
+function dt_core_update_7135() {
+  // Checking dt_information_core, if it is enabled on the site.
+  if (module_exists('dt_information_core')) {
+    module_disable(array('dt_information_core'));
+    module_enable(array('dt_core_info'));
+  }
+
+  // Checking dt_political_core, if it is enabled on the site.
+  if (module_exists('dt_political_core')) {
+    module_disable(array('dt_political_core'));
+    module_enable(array('dt_core_pol'));
+  }
+}
+/**
  * Switch on entity translation for the body field.
  */
-function dt_core_update_7135($sandbox) {
+function dt_core_update_7136($sandbox) {
   _dt_core_enable_entity_translation('body', $sandbox);
 }
