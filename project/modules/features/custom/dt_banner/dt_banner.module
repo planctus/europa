@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Banner feature.
+ */
+
+include_once 'dt_banner.features.inc';

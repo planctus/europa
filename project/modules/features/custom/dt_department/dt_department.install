@@ -179,3 +179,18 @@ function dt_department_update_7108() {
 function dt_department_update_7109() {
   features_revert_module('dt_department');
 }
+
+/**
+ * NEXTEUROPA-4931: Adding Main Task filter on the list of departments.
+ */
+function dt_department_update_7110() {
+  features_revert_module('dt_department');
+}
+
+/**
+ * NEXTEUROPA-4817: Move related links to the bottom.
+ */
+function dt_department_update_7111() {
+  // Reverting feature.
+  features_revert_module('dt_department');
+}

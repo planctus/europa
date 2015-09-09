@@ -11,6 +11,9 @@ base_url = http://political.localhost
 
 server.docroot = /var/www/political/
 
+#Drush aliases
+drush.alias.acquia = ecfpfis.test
+
 # Modules to enable
 drupal.modules = dt_political_core
 

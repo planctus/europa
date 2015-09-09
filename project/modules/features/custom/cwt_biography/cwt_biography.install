@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the cwt_biography module.
+ *
+ * @see https://webgate.ec.europa.eu
+ * /CITnet/confluence/display/MULTISITE/Custom+features
+ */
+
+include_once 'cwt_biography.install.inc';
+
+/**
+ * Implements hook_enable().
+ */
+function cwt_biography_enable() {
+  drupal_set_message(t('CWT Feedback %v feature is now active on your site.', array('%v' => _cwt_biography_get_version())));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function cwt_biography_disable() {
+  drupal_set_message(t('CWT Feedback %v feature is now inactive on your site.', array('%v' => _cwt_biography_get_version())));
+}
+
+/**
+ * Implements hook_install().
+ */
+function cwt_biography_install() {
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function cwt_biography_uninstall() {
+}
+
+/**
+ * Remove obsolete fields.
+ */
+function cwt_biography_update_7101() {
+  // Remove the field.
+  $field_name = "field_tagline";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Field_biography_hl_domain has been replaced by field_biography_project_team.
+ */
+function cwt_biography_update_7102() {
+  // Remove the field.
+  $field_name = "field_biography_hl_domain";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Remove field_biography_press.
+ */
+function cwt_biography_update_7103() {
+  // Remove the field.
+  $field_name = "field_biography_press";
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Remove spokeperson taxonomy term.
+ */
+function cwt_biography_update_7104() {
+  $term = taxonomy_get_term_by_name('Spokesperson', 'biography_roles');
+  if ($term) {
+    foreach (array_keys($term) as $tid) {
+      taxonomy_term_delete($tid);
+    }
+  }
+}
+
+/**
+ * Remove the 'Redirect partial translations' rule, it has been reimplemented.
+ */
+function cwt_biography_update_7105() {
+  if ($rule = rules_config_load('rules_redirect_partial_translations')) {
+    entity_delete('rules_config', $rule->id);
+  }
+}
+
+/**
+ * Enable weights module.
+ */
+function cwt_biography_update_7106() {
+  module_enable(array('weight'));
+}
+
+/**
+ * Grant permissions to view partially translated biographies.
+ */
+function cwt_biography_update_7107() {
+  foreach (array('administrator', 'editor', 'section editor', 'site manager') as $name) {
+    $role = user_role_load_by_name($name);
+    user_role_grant_permissions($role->rid, array('access partially translated biographies'));
+  }
+}

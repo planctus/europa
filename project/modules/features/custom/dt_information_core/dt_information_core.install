@@ -32,8 +32,7 @@ function dt_information_core_install() {
   );
   module_enable($features);
 
-  // Temporarily disabled, because on live sites the setting was already enabled.
-  // Enable europa theme.
+  // Enabling information sub-theme.
   theme_enable(array('information'));
   variable_set('theme_default', 'information');
 }

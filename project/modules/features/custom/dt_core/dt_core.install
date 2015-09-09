@@ -21,6 +21,10 @@ function dt_core_install() {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
+
+  // Enabling europa base theme.
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
 }
 
 /**

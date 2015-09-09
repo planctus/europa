@@ -281,6 +281,24 @@ Styleguide: icon
   }
 }
 
+.icon--check {
+  content: '\e620';
+}
+.icon--check {
+  &:before {
+    @extend .icon--check;
+  }
+}
+
+.icon--generic-lang {
+  content: '\e621';
+}
+.icon--generic-lang {
+  &:before {
+    @extend .icon--generic-lang;
+  }
+}
+
 // States
 // creating spinning animation for an icon
 // in order to enable spinning apend .is-spinning class next to the .icon class

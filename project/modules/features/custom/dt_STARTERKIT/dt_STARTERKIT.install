@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_STARTERKIT_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('STARTERKIT_CONTENT_NAME');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_STARTERKIT_uninstall() {
+  $path = drupal_get_path('module', 'dt_STARTERKIT') . '/dt_STARTERKIT.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa STARTERKIT_CONTENT_NAME %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * First hook_update for example.
+ */
+/*
+function dt_STARTERKIT_update_7101() {
+
+}
+*/
