@@ -20,6 +20,20 @@ function dt_priority_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_priority';
+  $strongarm->value = 1;
+  $export['comment_default_mode_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_priority';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_priority';
   $strongarm->value = 1;
   $export['comment_form_location_priority'] = $strongarm;
@@ -129,7 +143,7 @@ function dt_priority_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_priority';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_priority'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -169,6 +183,34 @@ function dt_priority_strongarm() {
   $strongarm->name = 'node_submitted_priority';
   $strongarm->value = 1;
   $export['node_submitted_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_priority';
+  $strongarm->value = '0';
+  $export['weight_default_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_priority';
+  $strongarm->value = '1';
+  $export['weight_enabled_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_priority';
+  $strongarm->value = '0';
+  $export['weight_menu_priority'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_priority';
+  $strongarm->value = '10';
+  $export['weight_range_priority'] = $strongarm;
 
   return $export;
 }
