@@ -6080,19 +6080,13 @@ p a {
 .is-external, a[href^="http"], .listing__item-link[href^="http"] .listing__title {
   position: relative; }
   .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after {
-    display: inline-block;
     font-size: 75%;
     margin-left: 0.4em;
     margin-right: 0.2em; }
 
 .page-content ul a[href^="http"],
 .page-content p a[href^="http"] {
-  padding-right: 1.1em;
   display: inline-block; }
-  .page-content ul a[href^="http"]:after,
-  .page-content p a[href^="http"]:after {
-    position: absolute;
-    line-height: 2.2; }
   .page-content ul a[href^="http"].btn,
   .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
   .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {

@@ -10,6 +10,11 @@
 
   Drupal.behaviors.europa_tabs = {
     attach: function (context) {
+      $('a[href^="http"]').each(function() {
+        var trimmed = $.trim($(this).text());
+        $(this).text(trimmed);
+      });
+
       $('.nav-tabs--with-content').once('nav-tabs', function() {
         $this = $(this);
         if (typeof enquire !== 'undefined') {
