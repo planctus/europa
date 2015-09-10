@@ -963,19 +963,21 @@ function europa_preprocess_page(&$variables) {
       NULL;
 
     // Check if Display Suite is handling node.
-    $layout = ds_get_layout('node', $node->type, 'full');
-    if ($layout) {
-      ctools_class_add($layout['layout']);
+    if (module_exists('ds')) {
+      $layout = ds_get_layout('node', $node->type, 'full');
+      if ($layout) {
+        ctools_class_add($layout['layout']);
 
-      // This disables message-printing on ALL page displays.
-      $variables['show_messages'] = FALSE;
+        // This disables message-printing on ALL page displays.
+        $variables['show_messages'] = FALSE;
 
-      // Add tabs to node object so we can put it in the DS template instead.
-      if (isset($variables['tabs'])) {
-        $node->local_tabs = drupal_render($variables['tabs']);
+        // Add tabs to node object so we can put it in the DS template instead.
+        if (isset($variables['tabs'])) {
+          $node->local_tabs = drupal_render($variables['tabs']);
+        }
+
+        $variables['theme_hook_suggestions'][] = 'page__ds_node';
       }
-
-      $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
 }
