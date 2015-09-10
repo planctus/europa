@@ -80,11 +80,10 @@ function dt_featured_item_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_feat_item_display_button',
-      2 => 'field_feat_item_button_label',
-      3 => 'field_feat_item_description',
+      1 => 'field_feat_item_button_label',
+      2 => 'field_feat_item_description',
+      3 => 'field_feat_item_image',
       4 => 'field_feat_item_ref_or_url',
-      5 => 'field_feat_item_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
