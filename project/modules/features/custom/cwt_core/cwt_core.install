@@ -438,3 +438,21 @@ function cwt_core_update_7130() {
 
   features_revert_module('cwt_core');
 }
+
+/**
+ * Enable several modules that were dependencies for dt_core.
+ */
+function cwt_core_update_7131() {
+  $modules_to_enable = array(
+    'bootstrap_fieldgroup',
+    'ds',
+    'ds_extras',
+    'dt_date_format',
+    'dt_exposed_filter_data',
+    'nexteuropa_ds_layouts',
+    'nexteuropa_ds_layouts',
+    'nexteuropa_views',
+    'retina_images',
+  );
+  module_enable($modules_to_enable);
+}
