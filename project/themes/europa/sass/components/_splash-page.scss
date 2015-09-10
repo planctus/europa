@@ -8,9 +8,9 @@ Styleguide splashpage
 
 // Local variables
 $table-border: 1px solid #245898;
+$padding-splash-xl: 2em; // 52px
 
 .splash-page {
-  background: rgba(0, 68, 148, 1);
 
   &__site-header {
     background: #ffffff;
@@ -52,16 +52,16 @@ $table-border: 1px solid #245898;
       display: none;
       color: #ffffff;
       font-size: $font-size-mid;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      padding-top: $padding-splash-xl;
+      padding-bottom: $padding-splash-xl;
       clear:both;
     }
   }
 
   &__helper-text {
     color: #ffffff;
-    font-size: 16px; //@todo please convert to em
-    margin-top: 50px;
+    font-size: $font-size-little;
+    margin-top: $padding-splash-xl;
     clear: both;
 
     p {
@@ -168,7 +168,7 @@ $table-border: 1px solid #245898;
 
         th {
           vertical-align: top;
-          min-width: 150px; //@convert in em please
+          min-width: 6em;
           font-weight: bold;
           padding-top: 0.6em;
         }

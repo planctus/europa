@@ -208,7 +208,8 @@ function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
  *
  * As Splash page replaces our frontpage. We should alter the default front page
  * so that it has the correct class.
- * We should maybe implement this in another way.
+ * The implementation in hook_preprocess_html is the closest we can go to
+ * simulate the frontpage.
  */
 function dt_language_selector_site_popup_preprocess_html(&$variables) {
   if (in_array('node-type-info-homepage', $variables['classes_array'])) {
