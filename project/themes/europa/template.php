@@ -9,9 +9,28 @@
   */
 function europa_js_alter(&$js) {
   $base_theme_path = drupal_get_path('theme', 'bootstrap');
+  $path_fancybox = libraries_get_path('fancybox');
 
   unset(
-    $js[$base_theme_path . '/js/misc/ajax.js']
+    $js[$base_theme_path . '/js/misc/ajax.js'],
+    $js[$path_fancybox . '/jquery.fancybox.pack.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-thumbs.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-buttons.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-media.js']
+  );
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function europa_css_alter(&$css) {
+  $path_fancybox = libraries_get_path('fancybox');
+
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-buttons.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
+    $css[$path_fancybox . '/jquery.fancybox.css']
   );
 }
 
@@ -572,15 +591,6 @@ function europa_field($variables) {
   }
 
   return $output;
-}
-
-/**
- * Implements hook_css_alter().
- */
-function europa_css_alter(&$css) {
-  unset(
-    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
-  );
 }
 
 /**

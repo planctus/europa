@@ -6,49 +6,82 @@
  */
 
 /**
- * Implements template_preprocess_html().
+ * Returns an array with singular and plural form of a bundle.
+ *
+ * @param string $bundle
+ *   Machine name of a bundle.
+ *
+ * @return array
+ *   Containing $forms['singular'] and $forms['plural'].
  */
-function commissioner_preprocess_html(&$vars) {
-  drupal_add_css(path_to_theme() . '/css/ie8.css', array(
-    'group' => CSS_THEME,
-    'browsers' => array('IE' => 'IE 8', '!IE' => FALSE),
-    'preprocess' => FALSE,
-  ));
-  $vars['head_title'] = _commissioner_meta_title();
+function _commissioner_bundle_forms($bundle) {
+  // Forming plurals for existing content types.
+  $plurals = array(
+    'activities' => t("agenda items"),
+    'aggregated_news' => t("announcements"),
+    'biography' => t("commissioners"),
+    'commisioner_blog_post' => t("blog posts"),
+    'highlight' => t("highlights"),
+    'page' => t("pages"),
+  );
+
+  $singular = node_type_get_name($bundle);
+  // If user preference for plural form - use it, otherwise use the label.
+  if (isset($plurals[$bundle])) {
+    $plural = $plurals[$bundle];
+  }
+  else {
+    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+  }
+
+  $forms = array(
+    'singular' => strtolower($singular),
+    'plural' => $plural,
+  );
+
+  return $forms;
 }
 
 /**
- * Implements hook_js_alter().
+ * Implements hook_preprocess_views_view().
  */
-function commissioner_js_alter(&$javascript) {
-  $path_fancybox = libraries_get_path('fancybox');
-  unset(
-    $javascript[$path_fancybox . '/jquery.fancybox.pack.js'],
-    $javascript[$path_fancybox . '/helpers/jquery.fancybox-thumbs.js'],
-    $javascript[$path_fancybox . '/helpers/jquery.fancybox-buttons.js'],
-    $javascript[$path_fancybox . '/helpers/jquery.fancybox-media.js']
-  );
-}
+function commissioner_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  $variables['items_count'] = '';
 
-/**
- * Implements hook_css_alter().
- */
-function commissioner_css_alter(&$css) {
-  $path_fancybox = libraries_get_path('fancybox');
-  unset(
-    $css[drupal_get_path('module', 'cce_basic_config') . '/cce_basic_config.css'],
-    $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
-    $css[$path_fancybox . '/helpers/jquery.fancybox-buttons.css'],
-    $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
-    $css[$path_fancybox . '/jquery.fancybox.css']
-  );
+  if (isset($view->filter['type'])) {
+    $content_type = array();
+    $content_type_filters = $view->filter['type']->value;
+    foreach ($content_type_filters as $filter) {
+      $content_type = $filter;
+    }
+
+    // Checking if .listing exists in classes_array so that result count can be
+    // displayed.
+    if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
+      // Calculate the number of items displayed in a view listing.
+      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+      $content_type_forms = _commissioner_bundle_forms($content_type);
+
+      if ($total_rows == 0) {
+        $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      }
+      else {
+        $items_count = $total_rows . ' ' .
+          format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+      }
+
+      $variables['items_count'] = $items_count;
+    }
+  }
 }
 
 /**
  * Implements template_preprocess_views_view_unformatted().
  */
-function commissioner_preprocess_views_view_unformatted(&$vars) {
-  $view = $vars['view'];
+function commissioner_preprocess_views_view_unformatted(&$variables) {
+  $view = $variables['view'];
 
   // Add custom class for current events.
   if ($view->name == 'activities' && $view->current_display == 'block') {
@@ -65,85 +98,38 @@ function commissioner_preprocess_views_view_unformatted(&$vars) {
       // than the $start date.
       $is_current = $today >= $start && ($start == $end || $today <= $end);
       if ($is_current) {
-        $vars['classes_array'][$id] .= ' today';
+        $variables['classes_array'][$id] .= ' today';
       }
     }
   }
 }
 
 /**
- * Implements template_preprocess_page().
+ * Implements template_preprocess_html().
  */
-function commissioner_preprocess_page(&$variables) {
-  // Add information about the number of sidebars.
-  if (!empty($variables['page']['sidebar_left']) && !empty($variables['page']['sidebar_right'])) {
-    $variables['content_column_class'] = 'col-md-6';
-  }
-  elseif (!empty($variables['page']['sidebar_left']) || !empty($variables['page']['sidebar_right'])) {
-    $variables['content_column_class'] = 'col-md-9';
-  }
-  else {
-    $variables['content_column_class'] = 'col-md-12';
-  }
-
-  $variables['home_page_link_title'] = t('Go to the homepage');
-  $variables['logo_alt'] = t('European Commission homepage');
-  $variables['logo'] = commissioner_logo_path();
-}
-
-/**
- * Returns the path to the language specific logo.
- *
- * @param string $langcode
- *   Optional language code for the logo. Defaults to the current language.
- *
- * @return string
- *   The path to the logo in the given language.
- */
-function commissioner_logo_path($langcode = NULL) {
-  if (!$langcode) {
-    global $language;
-    $langcode = $language->language;
-  }
-
-  $logo_folder = path_to_theme() . '/images/logo/';
-  $language_logo_filename = 'logo_' . $langcode . '.gif';
-  $default_logo_filename = 'logo.gif';
-
-  if (file_exists($logo_folder . $language_logo_filename)) {
-    return base_path() . $logo_folder . $language_logo_filename;
-  }
-  else {
-    return base_path() . $logo_folder . $default_logo_filename;
+function commissioner_preprocess_html(&$variables) {
+  if (($key = array_search('front', $variables['classes_array'])) !== FALSE) {
+    unset($variables['classes_array'][$key]);
   }
 }
 
 /**
  * Implements template_preprocess_node().
  */
-function commissioner_preprocess_node(&$vars) {
-  unset($vars['content']['links']['comment']['#links']['comment-add']);
+function commissioner_preprocess_node(&$variables) {
+  unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 
-
-/**
- * Implements template_preprocess_region().
- */
-function commissioner_preprocess_region(&$vars) {
-  if ($vars['region'] == 'content_top') {
-    $vars['classes_array'][] = 'clearfix';
-  }
-}
 
 /**
  * Implements template_preprocess_comment().
  */
-function commissioner_preprocess_comment(&$vars) {
-  $comment = $vars['elements']['#comment'];
-  $vars['created'] = format_date($comment->created, 'ec_date');
-  $vars['submitted'] = t('!username', array('!username' => $vars['author'])) . '<span class="submitted-date">' . $vars['created'] . '</span>';
-  $vars['title']     = check_plain($comment->subject);
-  $vars['permalink'] = t('Permalink');
+function commissioner_preprocess_comment(&$variables) {
+  $comment = $variables['elements']['#comment'];
+  $variables['created'] = format_date($comment->created, 'ec_date');
+  $variables['submitted'] = t('!username', array('!username' => $variables['author'])) . '<span class="submitted-date">' . $variables['created'] . '</span>';
+  $variables['title']     = check_plain($comment->subject);
+  $variables['permalink'] = t('Permalink');
 }
 
 /**
@@ -154,19 +140,19 @@ function commissioner_preprocess_comment(&$vars) {
  * @ingroup themeable
  * @see theme_qt_quicktabs_tabset()
  */
-function commissioner_qt_quicktabs_tabset($vars) {
+function commissioner_qt_quicktabs_tabset($variables) {
   $variables = array(
     'attributes' => array(
-      'class' => 'nav nav-tabs quicktabs-tabs quicktabs-style-' . $vars['tabset']['#options']['style'],
+      'class' => 'nav nav-tabs quicktabs-tabs quicktabs-style-' . $variables['tabset']['#options']['style'],
       'role' => 'tablist',
     ),
     'items' => array(),
   );
-  foreach (element_children($vars['tabset']['tablinks']) as $key) {
+  foreach (element_children($variables['tabset']['tablinks']) as $key) {
     $item = array();
-    if (is_array($vars['tabset']['tablinks'][$key])) {
-      $tab = $vars['tabset']['tablinks'][$key];
-      if ($key == $vars['tabset']['#options']['active']) {
+    if (is_array($variables['tabset']['tablinks'][$key])) {
+      $tab = $variables['tabset']['tablinks'][$key];
+      if ($key == $variables['tabset']['#options']['active']) {
         $item['class'] = array('active');
       }
       $item['data'] = drupal_render($tab);
@@ -174,263 +160,6 @@ function commissioner_qt_quicktabs_tabset($vars) {
     }
   }
   return '<div class="nav-tabs-wrapper">' . theme('item_list', $variables) . '</div>';
-}
-
-/**
- * Implements theme_file_link().
- */
-function commissioner_file_link($variables) {
-  $file = $variables['file'];
-
-  $url = file_create_url($file->uri);
-
-  $file_size = '<span class="file-size">' . format_size($file->filesize) . '</span>';
-
-  $file_name = $file->uri;
-  $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-
-  $file_metadata = '<span class="file-metadata">' . $file_size . ' - ' . $file_extension . '</span>';
-
-  $file_class = '';
-  switch ($file->type) {
-    case 'image':
-      $file_class = 'file-image';
-      break;
-
-    case 'audio':
-      $file_class = 'file-audio';
-      break;
-
-    case 'video':
-      $file_class = 'file-video';
-      break;
-
-    default:
-      $file_class = 'file-document';
-      break;
-  }
-
-  // Set options as per anchor format described at
-  // http://microformats.org/wiki/file-format-examples
-  $options = array(
-    'attributes' => array(
-      'type' => $file->filemime . '; length=' . $file->filesize,
-      'class' => array('file', $file_class),
-    ),
-    'html' => TRUE,
-  );
-
-  // Use the description as the link text if available.
-  if (empty($file->description)) {
-    $link_text = '<span class="file-text">' . $file->filename . '</span>' . $file_metadata;
-  }
-  else {
-    $link_text = '<span class="file-text">' . $file->description . '</span>' . $file_metadata;
-    $options['attributes']['title'] = check_plain($file->filename);
-  }
-
-  return l($link_text, $url, $options);
-}
-
-/**
- * Implements theme_file_entity_download_link().
- */
-function commissioner_file_entity_download_link($variables) {
-  $file = $variables['file'];
-
-  $uri = file_entity_download_uri($file);
-
-  $file_size = '<span class="file-size">' . format_size($file->filesize) . '</span>';
-
-  $file_name = $file->uri;
-  $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-
-  $file_metadata = '<span class="file-metadata">' . $file_size . ' - ' . $file_extension . '</span>';
-
-  $file_class = '';
-
-  switch ($file->type) {
-    case 'image':
-      $file_class = 'file-image';
-      break;
-
-    case 'audio':
-      $file_class = 'file-audio';
-      break;
-
-    case 'video':
-      $file_class = 'file-video';
-      break;
-
-    default:
-      $file_class = 'file-document';
-      break;
-  }
-
-  // Set options as per anchor format described at
-  // http://microformats.org/wiki/file-format-examples
-  $options = array(
-    'attributes' => array(
-      'type' => $file->filemime . '; length=' . $file->filesize,
-      'class' => array('file', $file_class),
-      'title' => t('Download: [file:name]'),
-    ),
-    'html' => TRUE,
-  );
-  $options['attributes']['title'] = token_replace($options['attributes']['title'], array('file' => $file), array('clear' => TRUE, 'sanitize' => FALSE));
-  $uri['options'] = array_merge($uri['options'], $options);
-
-  // Provide the default link text.
-  if (!isset($variables['text'])) {
-    $variables['text'] = t('[file:name]');
-  }
-
-  // Peform unsanitized token replacement if $uri['options']['html'] is empty
-  // since then l() will escape the link text.
-  $variables['text'] = token_replace($variables['text'], array('file' => $file), array('clear' => TRUE, 'sanitize' => empty($uri['options']['html'])));
-  $link_text = '<span class="file-text">' . $variables['text'] . '</span>' . $file_metadata;
-
-  $output = l($link_text, $uri['path'], $uri['options']);
-
-  return $output;
-}
-
-/**
- * Implements theme_pager().
- */
-function commissioner_pager($variables) {
-  $tags = $variables['tags'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $quantity = $variables['quantity'];
-  global $pager_page_array, $pager_total;
-
-  // Calculate various markers within this pager piece:
-  // $pager_middle is used to "center" pages around the current page.
-  $pager_middle = ceil($quantity / 2);
-  // $pager_current is the page we are currently paged to.
-  $pager_current = $pager_page_array[$element] + 1;
-  // $pager_first is the first page listed by this pager piece (re quantity).
-  $pager_first = $pager_current - $pager_middle + 1;
-  // $pager_last is the last page listed by this pager piece (re quantity).
-  $pager_last = $pager_current + $quantity - $pager_middle;
-  // $pager_max is the maximum page number.
-  $pager_max = $pager_total[$element];
-  // End of marker calculations.
-
-  // Prepare for generation loop.
-  $i = $pager_first;
-  if ($pager_last > $pager_max) {
-    // Adjust "center" if at end of query.
-    $i = $i + ($pager_max - $pager_last);
-    $pager_last = $pager_max;
-  }
-  if ($i <= 0) {
-    // Adjust "center" if at start of query.
-    $pager_last = $pager_last + (1 - $i);
-    $i = 1;
-  }
-  // End of generation loop preparation.
-
-  $li_first = theme('pager_first', array(
-    'text' => t('first'),
-    'element' => $element,
-    'parameters' => $parameters,
-  ));
-  $li_previous = theme('pager_previous', array(
-    'text' => '<span class="element-invisible">' . t('previous') . '</span>',
-    'element' => $element,
-    'interval' => 1,
-    'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
-  ));
-  $li_next = theme('pager_next', array(
-    'text' => '<span>' . t('next') . '</span><span class="subtext">' . t('page %page', array(
-      '%page' => $pager_current + 1,
-    )) . '</span>',
-    'element' => $element,
-    'interval' => 1,
-    'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
-  ));
-  $li_last = theme('pager_last', array(
-    'text' => t('last'),
-    'element' => $element,
-    'parameters' => $parameters,
-    'attributes' => array('class' => 'btn btn-pager'),
-  ));
-
-  if ($pager_total[$element] > 1) {
-    if ($li_previous) {
-      $items[] = array(
-        'class' => array('pager-previous'),
-        'data' => $li_previous,
-      );
-    }
-    $items[] = array(
-      'class' => array('pager-current-combo'),
-      'data' => '<span class="pager-current-combo-current">' . t('page %page', array('%page' => $pager_current)) . '</span> <span class="pager-current-combo-total subtext">' . t('of %total', array('%total' => $pager_max)) . '</span>',
-    );
-    // When there is more than one page, create the pager list.
-    if ($i != $pager_max) {
-      $select = array();
-      if ($li_first && $i > 1) {
-        $items[] = array(
-          'class' => array('pager-first select'),
-          'data' => $li_first,
-        );
-      }
-      // Now generate the actual pager piece.
-      for (; $i <= $pager_last && $i <= $pager_max; $i++) {
-        if ($i < $pager_current) {
-          $items[] = array(
-            'class' => array('pager-item select'),
-            'data' => theme('pager_previous', array(
-              'text' => $i,
-              'element' => $element,
-              'interval' => ($pager_current - $i),
-              'parameters' => $parameters,
-            )),
-          );
-        }
-        if ($i == $pager_current) {
-          $items[] = array(
-            'class' => array('pager-current select'),
-            'data' => $i,
-          );
-        }
-        if ($i > $pager_current) {
-          $items[] = array(
-            'class' => array('pager-item select'),
-            'data' => theme('pager_next', array(
-              'text' => $i,
-              'element' => $element,
-              'interval' => ($i - $pager_current),
-              'parameters' => $parameters,
-            )),
-          );
-        }
-      }
-    }
-    if ($li_last && $i < $pager_max) {
-      $items[] = array(
-        'class' => array('pager-last select'),
-        'data' => $li_last,
-      );
-    }
-    // End generation.
-    if ($li_next) {
-      $items[] = array(
-        'class' => array('pager-next'),
-        'data' => $li_next,
-      );
-    }
-
-    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
-      'items' => $items,
-      'attributes' => array('class' => array('pager')),
-    ));
-  }
 }
 
 /**
@@ -486,177 +215,6 @@ function commissioner_pager_link($variables) {
   $path = isset($original_path_cached['original_path']) ? $original_path_cached['original_path'] : $_GET['q'];
   $attributes['href'] = url($path, array('query' => $query));
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
-}
-
-/**
- * Implements theme_pager_first().
- */
-function commissioner_pager_first($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
-  global $pager_page_array;
-  $output = '';
-
-  // If we are anywhere but the first page.
-  if ($pager_page_array[$element] > 0) {
-    $output = theme('pager_link', array(
-      'text' => $text,
-      'page_new' => pager_load_array(0, $element, $pager_page_array),
-      'element' => $element,
-      'parameters' => $parameters,
-      'attributes' => $attributes,
-    ));
-  }
-
-  return $output;
-}
-
-/**
- * Implements theme_pager_previous().
- */
-function commissioner_pager_previous($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $interval = $variables['interval'];
-  $parameters = $variables['parameters'];
-  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
-  global $pager_page_array;
-  $output = '';
-
-  // If we are anywhere but the first page.
-  if ($pager_page_array[$element] > 0) {
-    $page_new = pager_load_array($pager_page_array[$element] - $interval, $element, $pager_page_array);
-
-    // If the previous page is the first page, mark the link as such.
-    if ($page_new[$element] == 0) {
-      $output = theme('pager_first', array(
-        'text' => $text,
-        'element' => $element,
-        'parameters' => $parameters,
-        'attributes' => $attributes,
-      ));
-    }
-    // The previous page is not the first page.
-    else {
-      $output = theme('pager_link', array(
-        'text' => $text,
-        'page_new' => $page_new,
-        'element' => $element,
-        'parameters' => $parameters,
-        'attributes' => $attributes,
-      ));
-    }
-  }
-
-  return $output;
-}
-
-/**
- * Implements theme_pager_next().
- */
-function commissioner_pager_next($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $interval = $variables['interval'];
-  $parameters = $variables['parameters'];
-  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
-  global $pager_page_array, $pager_total;
-  $output = '';
-
-  // If we are anywhere but the last page.
-  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
-    $page_new = pager_load_array($pager_page_array[$element] + $interval, $element, $pager_page_array);
-    // If the next page is the last page, mark the link as such.
-    if ($page_new[$element] == ($pager_total[$element] - 1)) {
-      $output = theme('pager_last', array(
-        'text' => $text,
-        'element' => $element,
-        'parameters' => $parameters,
-        'attributes' => $attributes,
-      ));
-    }
-    // The next page is not the last page.
-    else {
-      $output = theme('pager_link', array(
-        'text' => $text,
-        'page_new' => $page_new,
-        'element' => $element,
-        'parameters' => $parameters,
-        'attributes' => $attributes,
-      ));
-    }
-  }
-
-  return $output;
-}
-
-/**
- * Implements theme_pager_last().
- */
-function commissioner_pager_last($variables) {
-  $text = $variables['text'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $attributes = isset($variables['attributes']) ? $variables['attributes'] : array();
-  global $pager_page_array, $pager_total;
-  $output = '';
-
-  // If we are anywhere but the last page.
-  if ($pager_page_array[$element] < ($pager_total[$element] - 1)) {
-    $output = theme('pager_link', array(
-      'text' => $text,
-      'page_new' => pager_load_array($pager_total[$element] - 1, $element, $pager_page_array),
-      'element' => $element,
-      'parameters' => $parameters,
-      'attributes' => $attributes,
-    ));
-  }
-
-  return $output;
-}
-
-/**
- * Implements theme_easy_breadcrumb().
- */
-function commissioner_easy_breadcrumb($variables) {
-
-  $breadcrumb = $variables['breadcrumb'];
-  $segments_quantity = $variables['segments_quantity'];
-  $html = '';
-  if ($segments_quantity > 0) {
-    $html .= '<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs"><span class="element-invisible">' . t('You are here') . ':</span> <ol>';
-    for ($i = 0, $s = $segments_quantity - 1; $i < $segments_quantity; ++$i) {
-      $it = $breadcrumb[$i];
-      $classes = $it['class'];
-      $classes[] = 'breadcrumb-segment-' . ($i + 1);
-      if ($i == 0) {
-        $classes[] = 'breadcrumb-segment-first';
-        $attributes = array('class' => $classes, 'rel' => 'home');
-      }
-      else {
-        // Add last class to penultimate item since last item is hidden.
-        if ($i == ($s - 1)) {
-          $classes[] = 'breadcrumb-segment-last';
-        }
-        $attributes = array('class' => $classes);
-      }
-
-      $content = check_plain(decode_entities($it['content']));
-      if (isset($it['url'])) {
-        $item = l($content, $it['url'], array('attributes' => $attributes));
-      }
-      else {
-        $class = implode(' ', $classes);
-        $item = '<span class="' . $class . '">'  . $content . '</span>';
-      }
-      $html .= '<li' . (in_array('active', $classes) ? ' class="element-invisible"' : '') . '>' . $item . '</li>';
-    }
-
-    $html .= '</ol></nav>';
-  }
-  return $html;
 }
 
 /**
