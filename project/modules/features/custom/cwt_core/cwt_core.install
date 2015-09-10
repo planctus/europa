@@ -27,6 +27,9 @@ function cwt_core_install() {
     $role->name = $role_name;
     user_role_save($role);
   }
+
+  // Adding value to Nexteuropa feedback form settings.
+  variable_set('nexteuropa_feedback_form_id', '1040');
 }
 
 /**
@@ -423,4 +426,15 @@ function cwt_core_update_7129() {
       node_save($node);
     }
   }
+}
+
+/**
+ * Enable Nexteuropa feedback module and add the form id.
+ */
+function cwt_core_update_7130() {
+  module_enable(array('nexteuropa_feedback'));
+  module_disable(array('cwt_feedback'));
+  variable_set('nexteuropa_feedback_form_id', '1040');
+
+  features_revert_module('cwt_core');
 }
