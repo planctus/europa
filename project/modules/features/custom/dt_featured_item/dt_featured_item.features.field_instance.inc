@@ -76,7 +76,7 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 7,
     ),
   );
 
@@ -146,7 +146,7 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -214,7 +214,7 @@ function dt_featured_item_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -463,7 +463,7 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
