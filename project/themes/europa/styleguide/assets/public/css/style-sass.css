@@ -7407,7 +7407,12 @@ Markup: html/icon.html
 .icon--error - Error icon
 .icon--success - Success icon
 .icon--warning - Warning icon
+<<<<<<< HEAD
 .icon--check - Checkmark icon
+=======
+.icon--check - Check icon
+.icon--generic-lang - Generic language icon
+>>>>>>> develop
 
 Styleguide: icon
 */

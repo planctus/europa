@@ -10,6 +10,16 @@
 function dt_roles_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'assign node weight'.
+  $permissions['assign node weight'] = array(
+    'name' => 'assign node weight',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+    ),
+    'module' => 'weight',
+  );
+
   // Exported permission: 'access bean overview'.
   $permissions['access bean overview'] = array(
     'name' => 'access bean overview',
