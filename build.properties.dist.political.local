@@ -15,7 +15,7 @@ server.docroot = /var/www/political/
 drush.alias.acquia = ecfpfis.test
 
 # Modules to enable
-drupal.modules = dt_political_core
+drupal.modules = dt_core_pol
 
 # Project folder in MULTISITE SVN
 phing.project.svn =

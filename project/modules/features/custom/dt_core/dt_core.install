@@ -22,10 +22,6 @@ function dt_core_install() {
     drupal_uninstall_modules(array('dashboard'));
   }
 
-  // Enabling europa base theme.
-  theme_enable(array('europa'));
-  variable_set('theme_default', 'europa');
-
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
 }
