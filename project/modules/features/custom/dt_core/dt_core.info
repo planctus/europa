@@ -41,6 +41,7 @@ dependencies[] = picture
 dependencies[] = retina_images
 dependencies[] = strongarm
 dependencies[] = text
+dependencies[] = weight
 dependencies[] = variable_realm
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium

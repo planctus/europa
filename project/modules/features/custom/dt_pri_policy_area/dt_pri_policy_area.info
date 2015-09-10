@@ -1,7 +1,7 @@
 name = DT priority policy area
 description = DT Priority Policy Area feature
 core = 7.x
-package = Political
+package = NextEuropa Digital Transformation Political
 version = 7.x-1.0-dev
 project = dt_pri_policy_area
 dependencies[] = dt_core
