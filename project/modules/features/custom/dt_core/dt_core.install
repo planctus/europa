@@ -21,6 +21,9 @@ function dt_core_install() {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
   }
+
+  // Switch on entity translation for the body field.
+  _dt_core_enable_entity_translation('body', $sandbox);
 }
 
 /**
@@ -473,4 +476,10 @@ function dt_core_update_7135() {
     module_disable(array('dt_political_core'));
     module_enable(array('dt_core_pol'));
   }
+}
+/**
+ * Switch on entity translation for the body field.
+ */
+function dt_core_update_7136($sandbox) {
+  _dt_core_enable_entity_translation('body', $sandbox);
 }
