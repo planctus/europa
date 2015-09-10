@@ -180,13 +180,3 @@ $padding-splash-xl: 2em; // 52px
     }
   }
 }
-
-// Dirty way to alter our context. This is not our frontpage anymore so we need
-// to hide this block.
-.node-type-info-homepage {
-  .region-header-bottom {
-    .block-easy-breadcrumb {
-      display: none;
-    }
-  }
-}

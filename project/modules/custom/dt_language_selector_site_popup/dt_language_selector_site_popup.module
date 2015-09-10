@@ -212,7 +212,7 @@ function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
  * simulate the frontpage.
  */
 function dt_language_selector_site_popup_preprocess_html(&$variables) {
-  if (in_array('node-type-info-homepage', $variables['classes_array'])) {
+  if (_dt_language_selector_site_popup_is_front()) {
     $variables['classes_array'][] = 'front';
 
     // Simulate the front page.
@@ -223,4 +223,32 @@ function dt_language_selector_site_popup_preprocess_html(&$variables) {
       unset($variables['classes_array'][$key]);
     }
   }
+}
+
+/**
+ * Implements hook_context_load_alter().
+ */
+function dt_language_selector_site_popup_context_load_alter(&$context) {
+  // Check the context.
+  if ($context->name == 'dt_core_non_homepage_pages') {
+    // If it is the right context and it is our frontpage, hide the block.
+    if (_dt_language_selector_site_popup_is_front()) {
+      unset($context->reactions['block']['blocks']['easy_breadcrumb-easy_breadcrumb']);
+    }
+  }
+}
+
+/**
+ * This helper function checks if the current page is equal to the frontpage.
+ */
+function _dt_language_selector_site_popup_is_front() {
+  // Get our normal paths.
+  $fictive_frontpage = drupal_get_normal_path(variable_get('splash_screen_home_page', ''));
+  $current_page = drupal_get_normal_path(drupal_get_path_alias());
+
+  // Only if they match, we can remove the breadcrumbs.
+  if ($fictive_frontpage == $current_page) {
+    return TRUE;
+  }
+  return FALSE;
 }

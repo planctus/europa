@@ -27,4 +27,5 @@ function dt_language_selector_site_popup_install() {
  */
 function dt_language_selector_site_popup_uninstall() {
   variable_del('dt_language_selector_site_popup_message');
+  variable_del('dt_language_selector_site_splash_message');
 }
