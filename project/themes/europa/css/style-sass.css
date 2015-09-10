@@ -6659,7 +6659,8 @@ Styleguide breadcrumb.collapsible
         content: '...';
         display: inline-block !important;
         position: relative;
-        top: -4px; }
+        top: -4px;
+        color: #ffffff; }
       .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
         display: inline-block !important;
         position: absolute;
@@ -7406,6 +7407,8 @@ Markup: html/icon.html
 .icon--error - Error icon
 .icon--success - Success icon
 .icon--warning - Warning icon
+.icon--check - Check icon
+.icon--generic-lang - Generic language icon
 
 Styleguide: icon
 */
