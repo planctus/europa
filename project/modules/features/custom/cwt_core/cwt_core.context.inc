@@ -44,6 +44,12 @@ function cwt_core_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
+        'easy_breadcrumb-easy_breadcrumb' => array(
+          'module' => 'easy_breadcrumb',
+          'delta' => 'easy_breadcrumb',
+          'region' => 'header_bottom',
+          'weight' => '-9',
+        ),
         'nexteuropa_feedback-nexteuropa_feedback' => array(
           'module' => 'nexteuropa_feedback',
           'delta' => 'nexteuropa_feedback',

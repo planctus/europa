@@ -54,7 +54,7 @@ $breadcrumb-heigth: 2.778em;
 
 .breadcrumb__link-arrow {
   @extend .icon--after;
-  @extend .icon--right;
+  @extend .icon--breadcrumb;
   color: #fff;
   line-height: inherit !important;
   margin-left: 8px !important;
