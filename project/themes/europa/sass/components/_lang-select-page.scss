@@ -17,11 +17,11 @@ Styleguide: langselect
   @extend .hidden-print;
 
   background: $grey-lightest;
-  border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
   position: relative;
   font-size: $font-size-xsmall;
   float:left;
+  margin-bottom: 3em;
   width:100%;
   display:inline-block;
   vertical-align:middle;
@@ -29,7 +29,7 @@ Styleguide: langselect
 
 .icon.lang-select-page__icon {
   float:left;
-  margin-left: 0.7em;
+  margin: 0 0.7em;
   font-size: 2em;
   padding: 0;
 
@@ -58,23 +58,15 @@ Styleguide: langselect
 
     &.is-selected {
       background: $yellow-light;
-
-      a {
-        font-weight: bold;
-        color: #000;
-      }
-    }
-
-    &:first-child {
-      padding-right: 3em;
+      font-weight: bold;
+      color: #000;
     }
   }
 }
 
 
 .lang-select-page--dark {
-  border-top: none;
-  border-bottom: none;
+  border: none;
 }
 
 .lang-select-page--transparent {

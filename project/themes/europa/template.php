@@ -789,11 +789,11 @@ function europa_preprocess_block(&$variables) {
     $other = '';
 
     if (!empty($variables['elements']['not_available']['#markup'])) {
-      $not_available = '<li class="lang-select-page__not-available">' . $variables['elements']['not_available']['#markup']->native . '</li>';
+      $not_available = '<li class="lang-select-page__option lang-select-page__unavailable">' . $variables['elements']['not_available']['#markup']->native . '</li>';
     }
 
     if (!empty($variables['elements']['served']['#markup'])) {
-      $served = '<li class="lang-select-page__served">' . $variables['elements']['served']['#markup']->native . '</li>';
+      $served = '<li class="lang-select-page__option is-selected">' . $variables['elements']['served']['#markup']->native . '</li>';
     }
 
     if (!empty($variables['elements']['other']['#markup'])) {
@@ -805,15 +805,16 @@ function europa_preprocess_block(&$variables) {
         unset($options['query']['q']);
         $options['query']['2nd-language'] = $code;
 
-        $other .= '<li>' . l($lang->native, current_path(), $options) . '</li>';
+        $other .= "<li class='lang-select-page__option'>" . l($lang->native, current_path(), $options) . '</li>';
       }
     }
 
     // Add class to block.
-    $variables['classes_array'][] = 'lang-select-page';
+    $variables['classes_array'][] = 'lang-select-page lang-select-page--transparent';
 
     // Add content to block.
-    $content = "<ul class='lang-select-page__list'>" . $not_available . $served . $other . '</ul>';
+    $content = "<span class='lang-select-page__icon icon icon--generic-lang'></span>";
+    $content .= "<ul class='lang-select-page__list'>" . $not_available . $served . $other . '</ul>';
     $variables['content'] = $content;
   }
 

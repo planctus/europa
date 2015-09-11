@@ -7967,18 +7967,18 @@ Styleguide: langselect
 */
 .lang-select-page {
   background: #f2f2f2;
-  border-top: 1px solid #b3b4b5;
   border-bottom: 1px solid #b3b4b5;
   position: relative;
   font-size: 0.778em;
   float: left;
+  margin-bottom: 3em;
   width: 100%;
   display: inline-block;
   vertical-align: middle; }
 
 .icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn {
   float: left;
-  margin-left: 0.7em;
+  margin: 0 0.7em;
   font-size: 2em;
   padding: 0; }
   .icon.lang-select-page__icon:before, .lang-select-page__icon.search-form__btn:before {
@@ -7998,28 +7998,17 @@ Styleguide: langselect
     .lang-select-page__list .lang-select-page__option a {
       display: block; }
     .lang-select-page__list .lang-select-page__option.is-selected {
-      background: #ffd617; }
-      .lang-select-page__list .lang-select-page__option.is-selected a {
-        font-weight: bold;
-        color: #000; }
-    .lang-select-page__list .lang-select-page__option:first-child {
-      padding-right: 3em; }
+      background: #ffd617;
+      font-weight: bold;
+      color: #000; }
 
 .lang-select-page--dark {
-  border-top: none;
-  border-bottom: none; }
+  border: none; }
 
 .lang-select-page--transparent {
   background: transparent;
   border-color: #fff;
   color: #fff; }
-  .lang-select-page--transparent .lang-select-page__icon {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH"; }
   .lang-select-page--transparent .lang-select-page__option a {
     color: #fff; }
 
