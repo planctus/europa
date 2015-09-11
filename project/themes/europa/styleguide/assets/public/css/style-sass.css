@@ -8726,9 +8726,9 @@ Styleguide: siteswitcher
     width: auto; } }
 
 /*
-Site header
+Search form
 
-Markup: html/site-header.html
+Markup: html/search-form.html
 
 Styleguide: siteheader.searchform
 */
@@ -8737,14 +8737,16 @@ Styleguide: siteheader.searchform
   border: 1px solid #b3b4b5;
   margin-bottom: 1em; }
 
-.search-form__textfield-wrapper, .search-form .form-type-textfield {
+.search-form__textfield-wrapper {
   margin: 0;
   width: 83%;
   float: left; }
 
 .search-form__textfield {
   margin: 0;
-  border: none; }
+  border: none;
+  width: 83%;
+  float: left; }
 
 .search-form__btn {
   width: 17%;
@@ -8769,7 +8771,7 @@ Styleguide: siteheader.searchform
   border: 1px solid #fff !important; }
 
 @media (min-width: 480px) {
-  .search-form__textfield-wrapper, .search-form .form-type-textfield {
+  .search-form__textfield {
     width: 67%; }
   .search-form__btn {
     text-indent: 0;
