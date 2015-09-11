@@ -597,7 +597,6 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
   $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
   $form['search_input_group']['QueryText']['#attributes']['data-content'][] = t('This function is not yet working in Beta.');
-  unset($form['search_input_group']['QueryText']['#attributes']['placeholder']);
 }
 
 /**
