@@ -577,7 +577,7 @@ function _dt_core_enable_lanugages($languages = array()) {
     // the array.
     $form_state['values']['weight'][$langcode] = -20 + $key;
 
-    // Fix poruguese exception.
+    // Portuguese exception:
     // In Drupal the "pt" prefix belongs to Portuguese / International but we
     // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
     // default prefix). We need to change this to "pt".
