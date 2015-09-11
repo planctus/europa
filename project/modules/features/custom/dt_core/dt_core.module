@@ -578,9 +578,9 @@ function _dt_core_enable_lanugages($languages = array()) {
     $form_state['values']['weight'][$langcode] = -20 + $key;
 
     // Fix poruguese exception.
-    // In Drupal the "pt" language code belongs to Portuguese / International
-    // but we need "pt" to work with Portuguese / Portugal which has "pt-pt" as
-    // default language code. We need to change this.
+    // In Drupal the "pt" prefix belongs to Portuguese / International but we
+    // need Portuguese / Portugal to have this prefix (it has "pt-pt" as
+    // default prefix). We need to change this to "pt".
     if ($langcode == 'pt-pt') {
       db_update('languages')
         ->fields(array(
@@ -591,8 +591,8 @@ function _dt_core_enable_lanugages($languages = array()) {
         ->execute();
     }
   }
-  // Save the order.
+  // Save the order through the original form.
   drupal_form_submit('locale_languages_overview_form', $form_state);
-
+  // Enable URL suffix based language negotiation.
   multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
 }
