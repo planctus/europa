@@ -205,8 +205,8 @@ function dt_policy_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_topics',
-      2 => 'field_core_priorities',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
       3 => 'field_core_persons',
     ),
     'format_type' => 'html-element',
