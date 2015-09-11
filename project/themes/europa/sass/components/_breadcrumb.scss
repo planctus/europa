@@ -43,7 +43,9 @@ $breadcrumb-heigth: 2.778em;
   max-width: 100%;
   color: #fff;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: #fff;
 
     .breadcrumb__text {

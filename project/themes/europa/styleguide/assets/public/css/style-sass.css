@@ -6515,9 +6515,13 @@ Styleguide breadcrumb
   padding-bottom: 0.42em;
   max-width: 100%;
   color: #fff; }
-  .breadcrumb__link:hover {
+  .breadcrumb__link:hover,
+  .breadcrumb__link:active,
+  .breadcrumb__link:focus {
     color: #fff; }
-    .breadcrumb__link:hover .breadcrumb__text {
+    .breadcrumb__link:hover .breadcrumb__text,
+    .breadcrumb__link:active .breadcrumb__text,
+    .breadcrumb__link:focus .breadcrumb__text {
       text-decoration: underline; }
 
 .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
@@ -8312,7 +8316,7 @@ Styleguide messages
     float: left;
     height: 2em;
     margin-right: 0.667em;
-    margin-top: -0.15em;
+    margin-top: -0.85em;
     width: 2em;
     content: '';
     position: absolute;
