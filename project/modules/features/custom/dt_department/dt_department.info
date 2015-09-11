@@ -112,6 +112,7 @@ features_exclude[dependencies][smart_trim] = smart_trim
 features_exclude[dependencies][i18n_taxonomy] = i18n_taxonomy
 features_exclude[dependencies][og_ui] = og_ui
 features_exclude[dependencies][dt_social_network_links] = dt_social_network_links
+features_exclude[dependencies][field_group] = field_group
 features_exclude[dependencies][entityreference_filter] = entityreference_filter
 features_exclude[field_base][field_core_contact] = field_core_contact
 files[] = migrations/dt_department.migrations.department_tasks.inc
