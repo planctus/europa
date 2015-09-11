@@ -579,7 +579,7 @@ function _dt_core_enable_lanugages($languages = array()) {
 
     // Fix poruguese exception.
     // In Drupal the "pt" prefix belongs to Portuguese / International but we
-    // need Portuguese / Portugal to have this prefix (it has "pt-pt" as
+    // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
     // default prefix). We need to change this to "pt".
     if ($langcode == 'pt-pt') {
       db_update('languages')
