@@ -28,7 +28,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -108,7 +108,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -161,7 +161,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -211,7 +211,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -300,7 +300,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -352,7 +352,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -432,7 +432,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -511,7 +511,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -589,7 +589,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -662,9 +662,10 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -717,9 +718,10 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -794,12 +796,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 27,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -854,13 +853,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 1,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'view_mode' => 'teaser',
+          'link' => FALSE,
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_label',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -916,10 +911,13 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -969,7 +967,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1048,8 +1046,10 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
         'weight' => 30,
       ),
       'teaser' => array(
@@ -1100,7 +1100,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1150,7 +1150,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1208,7 +1208,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',

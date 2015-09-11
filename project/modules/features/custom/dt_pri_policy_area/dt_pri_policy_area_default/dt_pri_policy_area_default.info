@@ -5,6 +5,7 @@ package = NextEuropa Digital Transformation Political
 version = 7.x-1.0-dev
 project = dt_pri_policy_area_default
 dependencies[] = dt_pri_policy_area
+dependencies[] = field_group
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1

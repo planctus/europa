@@ -17,8 +17,13 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority_policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'title' => array(
+    'content_type_label' => array(
       'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'title' => array(
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),

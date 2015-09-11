@@ -110,12 +110,8 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_department',
-      2 => 'field_core_topics',
-    ),
+    'weight' => '3',
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Contextual navigation',
@@ -254,7 +250,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '33',
+    'weight' => '5',
     'children' => array(
       0 => 'group_pri_pol_area_latest_main',
       1 => 'group_pri_pol_area_latest_sbar',
@@ -402,7 +398,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Policy Areas',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_policy_areas',
     ),

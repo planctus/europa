@@ -29,3 +29,11 @@ function dt_core_pol_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting features.
+ */
+function dt_core_pol_update_7101() {
+  // Revert dt_code_pol.
+  features_revert_module('dt_core_pol');
+}
