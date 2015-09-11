@@ -76,7 +76,6 @@ function nexteuropa_europa_search_search_form() {
 
   $form['search_input_group']['QueryText'] = array(
     '#type' => 'textfield',
-    '#attributes' => array('placeholder' => t('Search')),
     '#weight' => 10,
   );
   $form['swlang'] = array(
