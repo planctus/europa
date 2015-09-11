@@ -176,8 +176,9 @@ function dt_policy_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_introduction',
-      2 => 'field_core_description',
+      1 => 'field_core_description',
+      2 => 'field_core_introduction',
+      3 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
