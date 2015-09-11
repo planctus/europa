@@ -37,6 +37,9 @@ function dt_core_info_install() {
   variable_set('theme_default', 'information');
   // Disabling unnecessary themes.
   theme_disable(array('europa', 'ec_resp', 'seven'));
+  // Enable languages.
+  global $_enabled_languages;
+  _dt_core_enable_lanugages($_enabled_languages);
 }
 
 /**
@@ -46,4 +49,43 @@ function dt_core_info_uninstall() {
   $path = drupal_get_path('module', 'dt_core_info') . '/dt_core_info.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+// Languages that will be enabled.
+// The order they need to appear when listed is defined here:
+// @link http://publications.europa.eu/code/en/en-370200.htm
+global $_enabled_languages;
+$_enabled_languages = array(
+  'bg',
+  'cs',
+  'da',
+  'de',
+  'et',
+  'el',
+  'en',
+  'es',
+  'fr',
+  'ga',
+  'hr',
+  'it',
+  'lv',
+  'lt',
+  'hu',
+  'mt',
+  'nl',
+  'pl',
+  'pt',
+  'ro',
+  'sk',
+  'sl',
+  'fi',
+  'sv',
+);
+
+/**
+ * Enable languages.
+ */
+function dt_core_info_update_7101() {
+  global $_enabled_languages;
+  _dt_core_enable_lanugages($_enabled_languages);
 }
