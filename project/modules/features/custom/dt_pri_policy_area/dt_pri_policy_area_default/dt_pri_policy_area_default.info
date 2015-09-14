@@ -1,7 +1,7 @@
 name = DT priority policy area default
 description = DT Priority Policy Area feature default.
 core = 7.x
-package = Political
+package = NextEuropa Digital Transformation Political
 version = 7.x-1.0-dev
 project = dt_pri_policy_area_default
 dependencies[] = dt_pri_policy_area
@@ -34,6 +34,7 @@ features[field_instance][] = node-priority_policy_area-field_core_featured_item
 features[field_instance][] = node-priority_policy_area-field_core_header_image
 features[field_instance][] = node-priority_policy_area-field_core_image
 features[field_instance][] = node-priority_policy_area-field_core_introduction
+features[field_instance][] = node-priority_policy_area-field_core_legacy_link
 features[field_instance][] = node-priority_policy_area-field_core_links
 features[field_instance][] = node-priority_policy_area-field_core_next_steps
 features[field_instance][] = node-priority_policy_area-field_core_objective

@@ -53,6 +53,7 @@ features[field_instance][] = node-announcement-field_core_announcement
 features[field_instance][] = node-announcement-field_core_department
 features[field_instance][] = node-announcement-field_core_description
 features[field_instance][] = node-announcement-field_core_introduction
+features[field_instance][] = node-announcement-field_core_legacy_link
 features[field_instance][] = node-announcement-field_core_links
 features[field_instance][] = node-announcement-field_core_persons
 features[field_instance][] = node-announcement-field_core_policy

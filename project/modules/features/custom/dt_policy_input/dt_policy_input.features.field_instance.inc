@@ -26,18 +26,8 @@ function dt_policy_input_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => 0,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_options' => array(
-            'text' => 0,
-          ),
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
+        'module' => 'text',
+        'settings' => array(),
         'type' => 'smart_trim_format',
         'weight' => 2,
       ),

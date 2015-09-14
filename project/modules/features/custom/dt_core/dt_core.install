@@ -22,9 +22,8 @@ function dt_core_install() {
     drupal_uninstall_modules(array('dashboard'));
   }
 
-  // Enabling europa base theme.
-  theme_enable(array('europa'));
-  variable_set('theme_default', 'europa');
+  // Switch on entity translation for the body field.
+  _dt_core_enable_entity_translation('body', $sandbox);
 }
 
 /**
@@ -478,10 +477,16 @@ function dt_core_update_7135() {
     module_enable(array('dt_core_pol'));
   }
 }
+/**
+ * Switch on entity translation for the body field.
+ */
+function dt_core_update_7136($sandbox) {
+  _dt_core_enable_entity_translation('body', $sandbox);
+}
 
 /**
  * Enabling dt_language_selector_site_popup.
  */
-function dt_core_update_7136() {
+function dt_core_update_7137() {
   module_enable('dt_language_selector_site_popup');
 }
