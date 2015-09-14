@@ -11,6 +11,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|priority_policy_area|full
 features[ds_field_settings][] = node|priority_policy_area|teaser
+features[ds_layout_settings][] = node|priority_policy_area|full
 features[ds_layout_settings][] = node|priority_policy_area|teaser
 features[features_api][] = api:2
 features[field_group][] = group_pri_pol_area_background|node|priority_policy_area|form
