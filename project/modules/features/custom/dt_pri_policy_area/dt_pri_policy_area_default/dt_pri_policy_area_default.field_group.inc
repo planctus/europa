@@ -54,6 +54,7 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '7',
     'children' => array(
       0 => 'field_core_background',
+      1 => 'field_core_objective',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -168,7 +169,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_publications',
     ),
