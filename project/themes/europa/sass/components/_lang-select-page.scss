@@ -75,6 +75,16 @@ Styleguide: langselect
   border-color: #fff;
   color: #fff;
 
+  select.lang-select-page__list {
+    &:hover, &:active {
+      border: 1px solid #fff;
+    }
+    background: transparent;
+    & > option {
+      background: $blue-dark;
+    }
+  }
+
   .lang-select-page__option {
     a { color: #fff; }
   }
@@ -87,6 +97,6 @@ Styleguide: langselect
 }
 
 select.lang-select-page__list {
-  width: auto;
+  width: 10em;
   margin: 1em;
 }

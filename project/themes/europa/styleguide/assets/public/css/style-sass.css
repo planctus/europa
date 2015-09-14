@@ -8010,6 +8010,12 @@ Styleguide: langselect
   background: transparent;
   border-color: #fff;
   color: #fff; }
+  .lang-select-page--transparent select.lang-select-page__list {
+    background: transparent; }
+    .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
+      border: 1px solid #fff; }
+    .lang-select-page--transparent select.lang-select-page__list > option {
+      background: #004494; }
   .lang-select-page--transparent .lang-select-page__option a {
     color: #fff; }
 
@@ -8018,7 +8024,7 @@ Styleguide: langselect
     display: inline-block; } }
 
 select.lang-select-page__list {
-  width: auto;
+  width: 10em;
   margin: 1em; }
 
 /*
