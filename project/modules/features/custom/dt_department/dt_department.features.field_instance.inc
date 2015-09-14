@@ -343,16 +343,8 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_options' => array(),
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
+        'module' => 'text',
+        'settings' => array(),
         'type' => 'smart_trim_format',
         'weight' => 10,
       ),
