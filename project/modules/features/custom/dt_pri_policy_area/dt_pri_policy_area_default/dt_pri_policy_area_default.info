@@ -25,6 +25,7 @@ features[field_group][] = group_pri_pol_area_featured_item|node|priority_policy_
 features[field_group][] = group_pri_pol_area_latest_main|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_area_latest_sbar|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_area_latest|node|priority_policy_area|full
+features[field_group][] = group_pri_pol_area_meta|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_area_meta|node|priority_policy_area|teaser
 features[field_group][] = group_pri_pol_area_objectives|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_area_policy|node|priority_policy_area|form
