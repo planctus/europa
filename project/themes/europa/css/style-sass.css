@@ -7971,7 +7971,7 @@ Styleguide: langselect
   position: relative;
   font-size: 0.778em;
   float: left;
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   width: 100%;
   display: inline-block;
   vertical-align: middle; }
@@ -7985,7 +7985,8 @@ Styleguide: langselect
     vertical-align: middle; }
 
 .lang-select-page__unavailable {
-  text-decoration: line-through; }
+  text-decoration: line-through;
+  margin-right: 3em; }
 
 .lang-select-page__list {
   float: left;

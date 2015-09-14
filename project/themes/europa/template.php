@@ -782,6 +782,7 @@ function europa_preprocess_block(&$variables) {
       break;
   }
 
+  // Page-level language switcher.
   if (isset($block->bid) && $block->bid === 'language_selector_page-language_selector_page') {
     // Initialize variables.
     $not_available = '';
@@ -818,6 +819,7 @@ function europa_preprocess_block(&$variables) {
     $variables['content'] = $content;
   }
 
+  // Site-level language switcher.
   if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
     // Initialize variables.
     $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
