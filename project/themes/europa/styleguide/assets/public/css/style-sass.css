@@ -8866,12 +8866,10 @@ Styleguide splashpage
 .splash-page__site-header {
   background: #ffffff; }
   .splash-page__site-header .logo {
-    background-image: url("../images/svg/logo.svg");
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: url("../images/svg/logo.svg") center center no-repeat;
     background-origin: content-box; }
     .no-svg .splash-page__site-header .logo {
-      background-image: url("../images/png/logo.png"); }
+      background-image: url("../images/png/logo.png") center center no-repeat; }
   @media (min-width: 480px) {
     .splash-page__site-header .logo {
       width: 290px;
@@ -8955,6 +8953,9 @@ Styleguide splashpage
     display: block; }
   .splash-page--overlay .splash-page__btn-close {
     display: block; }
+
+body.disablescroll {
+  overflow: hidden; }
 
 .page-splash {
   background: #004494; }

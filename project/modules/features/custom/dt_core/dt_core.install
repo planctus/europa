@@ -478,3 +478,10 @@ function dt_core_update_7135() {
     module_enable(array('dt_core_pol'));
   }
 }
+
+/**
+ * Enabling dt_language_selector_site_popup.
+ */
+function dt_core_update_7136() {
+  module_enable('dt_language_selector_site_popup');
+}

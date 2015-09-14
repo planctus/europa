@@ -3,7 +3,8 @@
       attach: function(context) {
         var $overlay = $('.splash-page--overlay'),
             overlay = '.splash-page--overlay',
-            closeBtn = '.splash-page__btn-close';
+            closeBtn = '.splash-page__btn-close',
+            body = 'body';
 
         $('.lang-select-site').on('click', 'a.lang-select-site__link', function(event){
 
@@ -20,10 +21,12 @@
 
           // Show overlay.
           $(overlay).show();
+          $(body).addClass('disablescroll');
 
           // Hide frame on click.
           $overlay.on('click', closeBtn, function(event){
             $(overlay).hide();
+            $(body).removeClass('disablescroll');
             // Prevent the actual close a href to trigger. This should only work
             // if javascript is disabled.
             event.preventDefault();

@@ -16,13 +16,11 @@ $padding-splash-xl: 2em; // 52px
     background: #ffffff;
 
     .logo {
-      background-image: url("../images/svg/logo.svg");
-      background-position: center center;
-      background-repeat: no-repeat;
+      background: url("../images/svg/logo.svg") center center no-repeat;
       background-origin: content-box;
 
       .no-svg & {
-        background-image: url("../images/png/logo.png");
+        background-image: url("../images/png/logo.png") center center no-repeat;
       }
     }
 
@@ -129,19 +127,19 @@ $padding-splash-xl: 2em; // 52px
       display: block;
     }
 
-    .splash-page__btn-language{
-      &.is-active{
+    .splash-page__btn-language {
+      &.is-active {
         color: #000000;
         background: $yellow-light;
         box-shadow: none;
       }
-      &.icon--check:before{
+      &.icon--check:before {
         float: right;
         display: block;
       }
     }
 
-    .splash-page__btn-close{
+    .splash-page__btn-close {
       display: block;
     }
 
@@ -150,6 +148,11 @@ $padding-splash-xl: 2em; // 52px
 
 // Drupal-specific hacks
 // specific to a case of having a page
+body {
+  &.disablescroll {
+    overflow: hidden;
+  }
+}
 .page-splash {
   background: rgba(0, 68, 148, 1);
 }
