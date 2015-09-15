@@ -1,4 +1,9 @@
 (function ($) {
+  /**
+   * Transformer class manipulating the list
+   * @param selector css selector, NOT jQuery one
+   * @constructor
+   */
   function Transformer(selector){
     this.selector = selector;
 
@@ -13,6 +18,15 @@
     };
     this.showSelect = function(){
       $(this.selector).find("select").show();
+    };
+    this.toggle = function(){
+      if($(this.selector).find("select").is(":visible")){
+        this.hideSelect();
+        this.showList();
+      } else if($(this.selector).find('ul.lang-select-page__list').is(":visible")){
+        this.hideList();
+        this.showSelect();
+      }
     };
     this.attachSelect = function(){
       var selector = this.selector,
@@ -37,7 +51,7 @@
                 $item = $list.find('li'),
                 $location = $item.children('a[href="' + optionHref + '"]');
 
-              $location.click(); // ajax-friendly
+              window.location.href = $location.attr('href');
             }
           });
         }
@@ -48,27 +62,48 @@
     };
   }
 
+  /**
+   * Returns true if list is bigger than wrapper.
+   */
+  function listIsWider(){
+    var $wrapper = $('.lang-select-page'),
+      $list = $('.lang-select-page__list'),
+      $icon = $('.lang-select-page__icon');
+
+    if ($list.length && $list.is(':visible') && $wrapper.length) {
+      // 40px of buffer in wrapper which is compensated due to font icon changing size
+      return ($list.outerWidth() + $icon.outerWidth() > $wrapper.outerWidth() - 40);
+    }
+  }
+
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
       if (typeof enquire !== 'undefined') {
-        enquire.register(Drupal.europa.breakpoints.medium, {
+        var resizeListener = function() {
+          $(window).on('resize', function(){
+            if (listIsWider()) {
+              switcher.hideList();
+              switcher.showSelect();
+            } else {
+              switcher.hideSelect();
+              switcher.showList();
+            }
+          });
+        };
+        enquire.register(Drupal.europa.breakpoints.small, {
           // desktop
           match : function() {
-            switcher.hideSelect();
-            switcher.showList();
-            $(window).resize(function() {
-
-            });
+            resizeListener();
           },
           // mobile
           unmatch : function() {
-            switcher.hideList();
-            switcher.showSelect();
-            $(window).off('resize');
+            resizeListener();
           },
           setup: function() {
             switcher = new Transformer('.lang-select-page--transparent');
             switcher.attachSelect();
+            listIsWider() && switcher.toggle();
+            resizeListener();
           }
         });
       }
