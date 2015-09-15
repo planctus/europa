@@ -44,6 +44,12 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'listing__wrapper listing__wrapper--default listing--title__wrapper',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
           'fis' => TRUE,
           'fis-el' => 'ul',
           'fis-cl' => 'listing--title',
@@ -118,11 +124,11 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       ),
       'top' => array(
         4 => 'group_pri_pol_area_contextual',
-        5 => 'field_core_banner',
-        7 => 'field_core_persons',
+        5 => 'field_core_persons',
+        6 => 'field_core_banner',
       ),
       'central' => array(
-        6 => 'field_core_policy_areas',
+        7 => 'field_core_policy_areas',
         8 => 'group_pri_pol_policy_areas',
         9 => 'group_pri_pol_area_latest',
         10 => 'field_core_background',
@@ -143,9 +149,9 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_pri_pol_area_contextual' => 'top',
+      'field_core_persons' => 'top',
       'field_core_banner' => 'top',
       'field_core_policy_areas' => 'central',
-      'field_core_persons' => 'top',
       'group_pri_pol_policy_areas' => 'central',
       'group_pri_pol_area_latest' => 'central',
       'field_core_background' => 'central',
