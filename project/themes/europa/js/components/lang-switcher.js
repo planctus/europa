@@ -6,31 +6,24 @@
    */
   function Transformer(selector){
     this.selector = selector;
+    this.listSelector = 'ul.lang-select-page__list';
+    this.otherLanguages = '.lang-select-page__other';
 
     this.hideList = function(){
-      $(this.selector).find('ul.lang-select-page__list').hide();
+      $(this.selector).find(this.listSelector).find(this.otherLanguages).hide();
     };
     this.showList = function(){
-      $(this.selector).find('ul.lang-select-page__list').show();
+      $(this.selector).find(this.listSelector).find(this.otherLanguages).show();
     };
     this.hideSelect = function(){
-      $(this.selector).find("select").hide();
+      $(this.selector).find('select').hide();
     };
     this.showSelect = function(){
-      $(this.selector).find("select").show();
-    };
-    this.toggle = function(){
-      if($(this.selector).find("select").is(":visible")){
-        this.hideSelect();
-        this.showList();
-      } else if($(this.selector).find('ul.lang-select-page__list').is(":visible")){
-        this.hideList();
-        this.showSelect();
-      }
+      $(this.selector).find('select').show();
     };
     this.attachSelect = function(){
       var selector = this.selector,
-        $list  = $(selector).find('ul.lang-select-page__list'),
+        $list  = $(selector).find(this.listSelector),
         listClass = $list.attr('class');
 
       $list.each(function() {
@@ -44,7 +37,7 @@
 
         if (!$list.parent().find('select').length) {
           $list.parent().append($select);
-          $(selector).find("select").hide();
+          $(selector).find('select').hide();
           $select.on({
             change: function(event) {
               var optionHref = $(this).val(),
@@ -71,41 +64,40 @@
       $icon = $('.lang-select-page__icon');
 
     if ($list.length && $list.is(':visible') && $wrapper.length) {
-      // 40px of buffer in wrapper which is compensated due to font icon changing size
+      // 40px of buffer in wrapper which is compensated due to font icon changing size.
       return ($list.outerWidth() + $icon.outerWidth() > $wrapper.outerWidth() - 40);
     }
   }
 
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
+      switcher = new Transformer('.lang-select-page');
+      switcher.attachSelect();
       if (typeof enquire !== 'undefined') {
-        var resizeListener = function() {
-          $(window).on('resize', function(){
-            if (listIsWider()) {
-              switcher.hideList();
-              switcher.showSelect();
-            } else {
-              switcher.hideSelect();
-              switcher.showList();
-            }
-          });
-        };
         enquire.register(Drupal.europa.breakpoints.small, {
           // desktop
           match : function() {
-            resizeListener();
+            console.log("desktop");
+            switcher.showList();
+            switcher.hideSelect();
           },
           // mobile
           unmatch : function() {
-            resizeListener();
+            console.log("mobile");
+            $(window).on('resize', function(){
+              if(listIsWider()){
+                switcher.hideList();
+                switcher.showSelect();
+              }
+            });
           },
           setup: function() {
-            switcher = new Transformer('.lang-select-page--transparent');
-            switcher.attachSelect();
-            listIsWider() && switcher.toggle();
-            resizeListener();
+            if(listIsWider()){
+              switcher.hideList();
+              switcher.showSelect();
+            }
           }
-        });
+        }, true);
       }
     }
   };

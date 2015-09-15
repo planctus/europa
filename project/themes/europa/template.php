@@ -804,7 +804,7 @@ function europa_preprocess_block(&$variables) {
         unset($options['query']['q']);
         $options['query']['2nd-language'] = $code;
 
-        $other .= "<li class='lang-select-page__option'>" . l($lang->native, current_path(), $options) . '</li>';
+        $other .= "<li class='lang-select-page__option lang-select-page__other'>" . l($lang->native, current_path(), $options) . '</li>';
       }
     }
 
