@@ -51,7 +51,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_background',
       1 => 'field_core_objective',
@@ -169,7 +169,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -256,7 +256,9 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '33',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_core_featured_item',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Main',
@@ -311,7 +313,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'group_pri_pol_area_latest_main',
       1 => 'group_pri_pol_area_latest_sbar',
@@ -429,7 +431,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -491,13 +493,13 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Policy Areas',
     'weight' => '5',
     'children' => array(
-      0 => 'field_core_policy_areas',
+      0 => 'field_core_section_intro',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Policy Areas',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group',
+        'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
