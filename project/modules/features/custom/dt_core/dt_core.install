@@ -483,3 +483,10 @@ function dt_core_update_7135() {
 function dt_core_update_7136($sandbox) {
   _dt_core_enable_entity_translation('body', $sandbox);
 }
+
+/**
+ * Enabling dt_language_selector_site_popup.
+ */
+function dt_core_update_7137() {
+  module_enable(array('dt_language_selector_site_popup'));
+}

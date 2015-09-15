@@ -51,8 +51,6 @@
           <span class="kss-nav__ref">3</span
           ><span class="kss-nav__name">Contextual navigation</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-datepicker.html">
@@ -161,6 +159,8 @@
           <span class="kss-nav__ref">22</span
           ><span class="kss-nav__name">Splash Page</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-text.html">
@@ -179,13 +179,13 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-contextnav" class="kss-section kss-section--depth-1">
+      <div     id="kssref-splashpage" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-contextnav">
-          <span class="kss-title__ref">3</span
-          >Contextual navigation
+        <a class="kss-title__permalink" href="#kssref-splashpage">
+          <span class="kss-title__ref">22</span
+          >Splash Page
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
@@ -198,23 +198,46 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="context-nav">
-  <span class="context-nav__label">
-    Label for contextualnav
-  </span>
-  <div class="context-nav__items">
-    <span class="context-nav__item">
-      <a href="#">Item one</a>
-    </span>
-    <span class="context-nav__item">
-      <a href="#">Item two</a>
-    </span>
-    <span class="context-nav__item">
-      <a href="#">Item three</a>
-    </span>
-    <span class="context-nav__item">
-      <a href="#">Item four</a>
-    </span>
+          <div class="splash-page">
+  <div class="splash-page__content">
+    <div class="container-fluid"><!-- only fluid for styleguide -->
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <nav class="splash-page__container">
+            <h2><span class="icon icon--generic-lang"></span> Select your language</h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <a href="#" lang="en" hreflang="en" class="splash-page__btn-language is-active btn icon icon--check" data-languagespecific="true">English</a>
+              </div>
+              <div class="col-sm-6">
+                <a href="#" lang="nl" hreflang="nl" class="splash-page__btn-language btn icon icon--check" data-languagespecific="true">Nederlands</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <a href="#" lang="nl" hreflang="nl" class="splash-page__btn-language btn icon icon--check" data-languagespecific="true">Nederlands</a>
+              </div>
+              <div class="col-sm-6">
+                <a href="#" lang="en" hreflang="en" class="splash-page__btn-language is-active btn icon icon--check" data-languagespecific="true">English</a>
+              </div>
+            </div>
+            <div class="splash-page__helper-text">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Language</th><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. </td>
+                  </tr>
+                  <tr>
+                    <th>Language</th><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a href="/index_en" class="splash-page__btn-close">Close</a>
+          </nav>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -222,23 +245,46 @@
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;context-nav&quot;&gt;
-  &lt;span class=&quot;context-nav__label&quot;&gt;
-    Label for contextualnav
-  &lt;/span&gt;
-  &lt;div class=&quot;context-nav__items&quot;&gt;
-    &lt;span class=&quot;context-nav__item&quot;&gt;
-      &lt;a href=&quot;#&quot;&gt;Item one&lt;/a&gt;
-    &lt;/span&gt;
-    &lt;span class=&quot;context-nav__item&quot;&gt;
-      &lt;a href=&quot;#&quot;&gt;Item two&lt;/a&gt;
-    &lt;/span&gt;
-    &lt;span class=&quot;context-nav__item&quot;&gt;
-      &lt;a href=&quot;#&quot;&gt;Item three&lt;/a&gt;
-    &lt;/span&gt;
-    &lt;span class=&quot;context-nav__item&quot;&gt;
-      &lt;a href=&quot;#&quot;&gt;Item four&lt;/a&gt;
-    &lt;/span&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;splash-page&quot;&gt;
+  &lt;div class=&quot;splash-page__content&quot;&gt;
+    &lt;div class=&quot;container-fluid&quot;&gt;&lt;!-- only fluid for styleguide --&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-8 col-md-offset-2&quot;&gt;
+          &lt;nav class=&quot;splash-page__container&quot;&gt;
+            &lt;h2&gt;&lt;span class=&quot;icon icon--generic-lang&quot;&gt;&lt;/span&gt; Select your language&lt;/h2&gt;
+            &lt;div class=&quot;row&quot;&gt;
+              &lt;div class=&quot;col-sm-6&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;en&quot; hreflang=&quot;en&quot; class=&quot;splash-page__btn-language is-active btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;English&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;col-sm-6&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;nl&quot; hreflang=&quot;nl&quot; class=&quot;splash-page__btn-language btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;Nederlands&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+              &lt;div class=&quot;col-sm-6&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;nl&quot; hreflang=&quot;nl&quot; class=&quot;splash-page__btn-language btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;Nederlands&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;col-sm-6&quot;&gt;
+                &lt;a href=&quot;#&quot; lang=&quot;en&quot; hreflang=&quot;en&quot; class=&quot;splash-page__btn-language is-active btn icon icon--check&quot; data-languagespecific=&quot;true&quot;&gt;English&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;splash-page__helper-text&quot;&gt;
+              &lt;table&gt;
+                &lt;tbody&gt;
+                  &lt;tr&gt;
+                    &lt;th&gt;Language&lt;/th&gt;&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;th&gt;Language&lt;/th&gt;&lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempor suscipit nulla, quis finibus lacus fermentum ut. &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+            &lt;a href=&quot;/index_en&quot; class=&quot;splash-page__btn-close&quot;&gt;Close&lt;/a&gt;
+          &lt;/nav&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
