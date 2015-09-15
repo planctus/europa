@@ -44,6 +44,7 @@ dependencies[] = text
 dependencies[] = weight
 dependencies[] = variable_realm
 dependencies[] = entityreference_filter
+dependencies[] = dt_language_selector_site_popup
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
