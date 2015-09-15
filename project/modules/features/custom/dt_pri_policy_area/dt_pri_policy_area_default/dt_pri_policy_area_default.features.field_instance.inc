@@ -710,6 +710,85 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_objective'
+  $field_instances['node-priority_policy_area-field_core_objective'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_objective',
+    'label' => 'Objectives',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 0,
+          'filtered_html' => 0,
+          'full_html' => 'full_html',
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 57,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-field_core_persons'
   $field_instances['node-priority_policy_area-field_core_persons'] = array(
     'bundle' => 'priority_policy_area',
@@ -1231,6 +1310,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Introduction');
   t('Name of the priority policy area');
   t('Next steps');
+  t('Objectives');
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');
@@ -1244,6 +1324,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Select the timeline of this Priority policy area.');
   t('Social Network Links');
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
+  t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');
   t('Title');
 
   return $field_instances;
