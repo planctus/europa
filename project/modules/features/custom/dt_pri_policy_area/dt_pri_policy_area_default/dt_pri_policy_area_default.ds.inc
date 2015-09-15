@@ -27,6 +27,11 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'field_core_publications' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -44,12 +49,6 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'listing__wrapper listing__wrapper--default listing--title__wrapper',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
           'fis' => TRUE,
           'fis-el' => 'ul',
           'fis-cl' => 'listing--title',
