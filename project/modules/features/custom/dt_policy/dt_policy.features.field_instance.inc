@@ -1172,7 +1172,7 @@ function dt_policy_field_default_field_instances() {
         'module' => 'dt_policy_next_step',
         'settings' => array(),
         'type' => 'dt_policy_next_step_formatter_default',
-        'weight' => 1,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
