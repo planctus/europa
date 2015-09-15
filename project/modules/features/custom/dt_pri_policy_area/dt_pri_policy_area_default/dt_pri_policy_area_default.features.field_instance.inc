@@ -176,7 +176,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 6,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -698,8 +698,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
       ),
       'teaser' => array(

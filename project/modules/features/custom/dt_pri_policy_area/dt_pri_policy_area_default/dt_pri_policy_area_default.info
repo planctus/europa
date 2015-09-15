@@ -31,6 +31,7 @@ features[field_group][] = group_pri_pol_area_policy|node|priority_policy_area|fo
 features[field_group][] = group_pri_pol_area_related|node|priority_policy_area|form
 features[field_group][] = group_pri_pol_area_related|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_area_tabgroup|node|priority_policy_area|form
+features[field_group][] = group_pri_pol_area_whatnext|node|priority_policy_area|full
 features[field_group][] = group_pri_pol_policy_areas|node|priority_policy_area|full
 features[field_instance][] = node-priority_policy_area-field_core_background
 features[field_instance][] = node-priority_policy_area-field_core_banner
