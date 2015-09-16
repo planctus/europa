@@ -20,3 +20,10 @@ function dt_page_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Page %v feature is uninstalled from your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Revert page content type for new fields to take effect.
+ */
+function dt_page_update_7101() {
+  features_revert_module('dt_page');
+}
