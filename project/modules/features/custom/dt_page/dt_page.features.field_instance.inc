@@ -1501,6 +1501,7 @@ This will appear as a timeline on the page.
   t('Latest');
   t('Legacy link');
   t('Next steps');
+  t('Parent');
   t('Persons');
   t('Priorities');
   t('Related content');
