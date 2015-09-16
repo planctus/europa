@@ -596,3 +596,13 @@ function _dt_core_enable_lanugages($languages = array()) {
   // Enable URL suffix based language negotiation.
   multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
 }
+
+/**
+ * Implements hook_node_presave().
+ *
+ * If a whitespace has been entered after a title, we remove it.
+ */
+function dt_core_node_presave($node) {
+  $node->title = rtrim($node->title);
+  $node->title_field = rtrim($node->title_field);
+}
