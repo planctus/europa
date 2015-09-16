@@ -604,5 +604,4 @@ function _dt_core_enable_lanugages($languages = array()) {
  */
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
-  $node->title_field = rtrim($node->title_field);
 }
