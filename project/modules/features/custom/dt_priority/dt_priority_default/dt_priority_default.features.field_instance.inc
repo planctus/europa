@@ -25,9 +25,10 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 22,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 29,
       ),
       'teaser' => array(
@@ -106,8 +107,11 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -158,9 +162,16 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 17,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 28,
       ),
       'teaser' => array(
@@ -297,9 +308,12 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 46,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -586,9 +600,10 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 2,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 19,
       ),
       'meta' => array(
@@ -662,8 +677,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 18,
       ),
       'teaser' => array(
@@ -717,9 +733,10 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'text_default',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -852,15 +869,8 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -916,9 +926,16 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 24,
       ),
       'teaser' => array(
@@ -966,9 +983,10 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 10,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 23,
       ),
       'teaser' => array(
@@ -1048,8 +1066,10 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
         'weight' => 30,
       ),
       'teaser' => array(
@@ -1291,11 +1311,9 @@ function dt_priority_default_field_default_field_instances() {
   t('Header Background Image');
   t('Image');
   t('Introduction');
-  t('Legacy link');
   t('Name of the Priority');
   t('Next steps');
   t('Objectives');
-  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');
