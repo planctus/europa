@@ -81,7 +81,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_background',
       1 => 'field_core_objective',
@@ -200,7 +200,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -345,7 +345,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'group_priority_latest_main',
       1 => 'group_priority_latest_sbar',
@@ -461,7 +461,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -521,7 +521,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_next_steps',
     ),

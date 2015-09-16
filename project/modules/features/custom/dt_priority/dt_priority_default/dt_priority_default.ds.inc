@@ -31,7 +31,7 @@ function dt_priority_default_ds_field_settings_info() {
       ),
     ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -41,7 +41,7 @@ function dt_priority_default_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_core_publications' => array(
+    'field_core_banner' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -148,14 +148,14 @@ function dt_priority_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'title',
-        1 => 'group_priority_meta',
+        0 => 'group_priority_meta',
         2 => 'content_type_label',
+        4 => 'title',
         5 => 'field_core_introduction',
       ),
       'central' => array(
-        3 => 'field_core_featured_item',
-        6 => 'latest_announcements_block',
+        1 => 'field_core_featured_item',
+        3 => 'latest_announcements_block',
         8 => 'group_pri_pol_policy_areas',
         9 => 'group_priority_latest',
         10 => 'group_priority_background',
@@ -174,20 +174,20 @@ function dt_priority_default_ds_layout_settings_info() {
         24 => 'group_priority_latest_sbar',
       ),
       'top' => array(
-        4 => 'field_core_banner',
-        7 => 'group_priority_contextual',
+        6 => 'group_priority_contextual',
+        7 => 'field_core_banner',
         18 => 'field_core_persons',
       ),
     ),
     'fields' => array(
-      'title' => 'left_header',
       'group_priority_meta' => 'left_header',
-      'content_type_label' => 'left_header',
       'field_core_featured_item' => 'central',
-      'field_core_banner' => 'top',
-      'field_core_introduction' => 'left_header',
+      'content_type_label' => 'left_header',
       'latest_announcements_block' => 'central',
+      'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
       'group_priority_contextual' => 'top',
+      'field_core_banner' => 'top',
       'group_pri_pol_policy_areas' => 'central',
       'group_priority_latest' => 'central',
       'group_priority_background' => 'central',

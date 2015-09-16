@@ -106,13 +106,17 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 45,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 0,
+        'type' => 'entityreference_entity_view',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -222,7 +226,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -366,7 +370,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -446,7 +450,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -525,7 +529,7 @@ function dt_priority_default_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -811,11 +815,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'context_nav_item',
         'weight' => 27,
       ),
       'teaser' => array(
@@ -871,7 +873,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1120,7 +1122,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1170,7 +1172,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1228,7 +1230,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',
