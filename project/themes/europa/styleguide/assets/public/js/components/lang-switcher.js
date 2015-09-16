@@ -77,13 +77,11 @@
         enquire.register(Drupal.europa.breakpoints.small, {
           // desktop
           match : function() {
-            console.log("desktop");
             switcher.showList();
             switcher.hideSelect();
           },
           // mobile
           unmatch : function() {
-            console.log("mobile");
             $(window).on('resize', function(){
               if(listIsWider()){
                 switcher.hideList();
