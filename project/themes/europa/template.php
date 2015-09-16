@@ -9,9 +9,28 @@
  */
 function europa_js_alter(&$js) {
   $base_theme_path = drupal_get_path('theme', 'bootstrap');
+  $path_fancybox = libraries_get_path('fancybox');
 
   unset(
-    $js[$base_theme_path . '/js/misc/ajax.js']
+    $js[$base_theme_path . '/js/misc/ajax.js'],
+    $js[$path_fancybox . '/jquery.fancybox.pack.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-thumbs.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-buttons.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-media.js']
+  );
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function europa_css_alter(&$css) {
+  $path_fancybox = libraries_get_path('fancybox');
+
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-buttons.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
+    $css[$path_fancybox . '/jquery.fancybox.css']
   );
 }
 
@@ -125,7 +144,11 @@ function europa_form_element(&$variables) {
       $is_checkbox = TRUE;
     }
     else {
-      $attributes['class'][] = 'form-group';
+      // Check if it is not our search form. Because we don't want the default
+      // bootstrap class here.
+      if (!in_array('form-item-QueryText', $attributes['class'])) {
+        $attributes['class'][] = 'form-group';
+      }
     }
   }
 
@@ -575,15 +598,6 @@ function europa_field($variables) {
 }
 
 /**
- * Implements hook_css_alter().
- */
-function europa_css_alter(&$css) {
-  unset(
-    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
-  );
-}
-
-/**
  * A search_form alteration.
  */
 function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
@@ -978,19 +992,21 @@ function europa_preprocess_page(&$variables) {
       NULL;
 
     // Check if Display Suite is handling node.
-    $layout = ds_get_layout('node', $node->type, 'full');
-    if ($layout) {
-      ctools_class_add($layout['layout']);
+    if (module_exists('ds')) {
+      $layout = ds_get_layout('node', $node->type, 'full');
+      if ($layout) {
+        ctools_class_add($layout['layout']);
 
-      // This disables message-printing on ALL page displays.
-      $variables['show_messages'] = FALSE;
+        // This disables message-printing on ALL page displays.
+        $variables['show_messages'] = FALSE;
 
-      // Add tabs to node object so we can put it in the DS template instead.
-      if (isset($variables['tabs'])) {
-        $node->local_tabs = drupal_render($variables['tabs']);
+        // Add tabs to node object so we can put it in the DS template instead.
+        if (isset($variables['tabs'])) {
+          $node->local_tabs = drupal_render($variables['tabs']);
+        }
+
+        $variables['theme_hook_suggestions'][] = 'page__ds_node';
       }
-
-      $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
 }

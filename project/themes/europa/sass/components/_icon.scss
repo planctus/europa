@@ -178,6 +178,10 @@ Styleguide: icon
   }
 }
 
+.icon--breadcrumb {
+  content: '\e617' !important;
+}
+
 .icon--down {
   &:before {
     content: '\e616';
