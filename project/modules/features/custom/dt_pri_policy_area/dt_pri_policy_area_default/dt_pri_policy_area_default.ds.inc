@@ -31,6 +31,12 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
     ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
