@@ -7975,6 +7975,8 @@ Styleguide: langselect
   width: 100%;
   display: inline-block;
   vertical-align: middle; }
+  .front .lang-select-page {
+    display: none; }
 
 .icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn {
   float: left;

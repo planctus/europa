@@ -25,6 +25,10 @@ Styleguide: langselect
   width:100%;
   display:inline-block;
   vertical-align:middle;
+
+  .front & {
+    display: none;
+  }
 }
 
 .icon.lang-select-page__icon {
