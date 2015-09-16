@@ -1,73 +1,86 @@
 (function ($) {
-  /**
-   * Transformer class manipulating the list
-   * @param selector css selector, NOT jQuery one
-   * @constructor
-   */
-  function Transformer(selector){
-    this.selector = selector;
-    this.listSelector = 'ul.lang-select-page__list';
-    this.otherLanguages = '.lang-select-page__other';
-    this.selected = '.is-selected';
+  $.fn.selectify = function(options) {
+    this.each(function() {
 
-    this.hideList = function(){
-      $(this.selector).find(this.listSelector).find(this.otherLanguages).hide();
-      $(this.selector).find(this.listSelector).find(this.selected).hide();
-    };
-    this.showList = function(){
-      $(this.selector).find(this.listSelector).find(this.otherLanguages).show();
-      $(this.selector).find(this.listSelector).find(this.selected).show();
-    };
-    this.hideSelect = function(){
-      $(this.selector).find('select').hide();
-    };
-    this.showSelect = function(){
-      $(this.selector).find('select').show();
-    };
-    this.attachSelect = function(){
-      var selector = this.selector,
-        $list  = $(selector).find(this.listSelector),
-        listClass = $list.attr('class');
+      var attachDropDown = function() {
+        var $list  = $(settings.listSelector),
+          listClass = $list.attr('class');
 
-      $list.each(function() {
-        var $select = $('<select />').addClass(listClass);
+        $list.each(function() {
+          var $select = $('<select />').addClass(listClass);
 
-        $(this).find('li').each(function() {
-          var currentClass = $(this).attr('class');
-          switch (currentClass) {
-            case 'lang-select-page__option is-selected':
-              var $option = $('<option />');
-              $option.html($(this).html()).attr('selected', true);;
-              $select.append($option);
-              break;
+          $(this).find('li').each(function() {
+            var currentClass = $(this).attr('class');
+            switch (currentClass) {
+              case 'lang-select-page__option is-selected':
+                var $option = $('<option />');
+                $option.html($(this).html()).attr('selected', true);;
+                $select.append($option);
+                break;
 
-            case 'lang-select-page__option lang-select-page__other':
-              var $option = $('<option />');
-              $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
-              $select.append($option);
-              break;
-          }
-        });
-
-        if (!$list.parent().find('select').length) {
-          $list.parent().append($select);
-          $(selector).find('select').hide();
-          $select.on({
-            change: function(event) {
-              var optionHref = $(this).val(),
-                $item = $list.find('li'),
-                $location = $item.children('a[href="' + optionHref + '"]');
-
-              window.location.href = $location.attr('href');
+              case 'lang-select-page__option lang-select-page__other':
+                var $option = $('<option />');
+                $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
+                $select.append($option);
+                break;
             }
           });
-        }
-      });
-    };
-    this.detachSelect = function(){
-      $(this.selector).find('select').remove();
-    };
-  }
+
+          if (!$list.parent().find('select').length) {
+            $list.parent().append($select);
+            settings.listWrapper.find('select').hide();
+            $select.on({
+              change: function(event) {
+                var optionHref = $(this).val(),
+                  $item = $list.find('li'),
+                  $location = $item.children('a[href="' + optionHref + '"]');
+
+                window.location.href = $location.attr('href');
+              }
+            });
+          }
+        });
+      };
+      var hideDropDown = function() {
+        settings.listWrapper.find('select').hide();
+      };
+      var hideList = function() {
+        settings.listWrapper
+          .find(settings.listSelector)
+          .find(settings.otherLanguages)
+          .hide();
+        settings.listWrapper
+          .find(settings.listSelector)
+          .find(settings.selected)
+          .hide();
+      };
+      var showDropDown = function() {
+        settings.listWrapper.find('select').show();
+      };
+      var showList = function() {
+        $(settings.listWrapper)
+          .find(settings.listSelector)
+          .find(settings.otherLanguages)
+          .show();
+        $(settings.selector)
+          .find(settings.listSelector)
+          .find(settings.selected)
+          .show();
+      };
+      var settings = $.extend({
+        listWrapper: $(this),
+        listSelector: '.list',
+        otherLanguages: '.item__other',
+        selected: '.item--selected'
+      }, options);
+
+      settings.listWrapper.on('hide.dropdown', hideDropDown);
+      settings.listWrapper.on('hide.list', hideList);
+      settings.listWrapper.on('show.dropdown', showDropDown);
+      settings.listWrapper.on('show.list', showList);
+      attachDropDown();
+    });
+  };
 
   /**
    * Returns true if list is bigger than wrapper.
@@ -85,28 +98,34 @@
 
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
-      switcher = new Transformer('.lang-select-page');
-      switcher.attachSelect();
+      var pageLanguageSelector = $('.lang-select-page');
+      pageLanguageSelector.selectify({
+        listSelector: 'ul.lang-select-page__list',
+        listOptionClass: '',
+        otherLanguages: '.lang-select-page__other',
+        selected: '.is-selected'
+      });
+
       if (typeof enquire !== 'undefined') {
         enquire.register(Drupal.europa.breakpoints.small, {
           // desktop
           match : function() {
-            switcher.showList();
-            switcher.hideSelect();
+            pageLanguageSelector.trigger('show.list');
+            pageLanguageSelector.trigger('hide.dropdown');
           },
           // mobile
           unmatch : function() {
             $(window).on('resize', function(){
               if(listIsWider()){
-                switcher.hideList();
-                switcher.showSelect();
+                pageLanguageSelector.trigger('hide.list');
+                pageLanguageSelector.trigger('show.dropdown');
               }
             });
           },
           setup: function() {
             if(listIsWider()){
-              switcher.hideList();
-              switcher.showSelect();
+              pageLanguageSelector.trigger('hide.list');
+              pageLanguageSelector.trigger('show.dropdown');
             }
           }
         }, true);
