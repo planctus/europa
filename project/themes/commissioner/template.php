@@ -50,11 +50,7 @@ function commissioner_preprocess_views_view(&$variables) {
   $variables['items_count'] = '';
 
   if (isset($view->filter['type'])) {
-    $content_type = array();
-    $content_type_filters = $view->filter['type']->value;
-    foreach ($content_type_filters as $filter) {
-      $content_type = $filter;
-    }
+    $content_type = array_shift($view->filter['type']->value);
 
     // Checking if .listing exists in classes_array so that result count can be
     // displayed.
