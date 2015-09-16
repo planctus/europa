@@ -12,7 +12,7 @@ base_url = http://cwt.localhost
 server.docroot = /var/www/cwt/
 
 #Drush aliases
-drush.alias.acquia = ecfpfis
+drush.alias.acquia = ecfpfis.prod
 
 # Modules to enable
 drupal.modules = cwt_core
