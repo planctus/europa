@@ -144,7 +144,11 @@ function europa_form_element(&$variables) {
       $is_checkbox = TRUE;
     }
     else {
-      $attributes['class'][] = 'form-group';
+      // Check if it is not our search form. Because we don't want the default
+      // bootstrap class here.
+      if (!in_array('form-item-QueryText', $attributes['class'])) {
+        $attributes['class'][] = 'form-group';
+      }
     }
   }
 
