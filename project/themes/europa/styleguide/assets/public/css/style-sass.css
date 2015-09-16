@@ -8027,8 +8027,10 @@ Styleguide: langselect
     margin-right: 3em; } }
 
 select.lang-select-page__list {
-  width: 10em;
-  margin: 0.8em; }
+  border-radius: 0;
+  padding-left: 0.5em;
+  margin: 0.8em;
+  width: 10em; }
 
 /*
 Listing

@@ -8,14 +8,15 @@
     this.selector = selector;
     this.listSelector = 'ul.lang-select-page__list';
     this.otherLanguages = '.lang-select-page__other';
-    this.currentLanguage = '.is-selected';
+    this.selected = '.is-selected';
 
     this.hideList = function(){
       $(this.selector).find(this.listSelector).find(this.otherLanguages).hide();
-      $(this.selector).find(this.listSelector).find(this.currentLanguage).hide();
+      $(this.selector).find(this.listSelector).find(this.selected).hide();
     };
     this.showList = function(){
       $(this.selector).find(this.listSelector).find(this.otherLanguages).show();
+      $(this.selector).find(this.listSelector).find(this.selected).show();
     };
     this.hideSelect = function(){
       $(this.selector).find('select').hide();
@@ -31,10 +32,21 @@
       $list.each(function() {
         var $select = $('<select />').addClass(listClass);
 
-        $(this).find('a').each(function() {
-          var $option = $('<option />');
-          $option.attr('value', $(this).attr('href')).html($(this).html());
-          $select.append($option);
+        $(this).find('li').each(function() {
+          var currentClass = $(this).attr('class');
+          switch (currentClass) {
+            case 'lang-select-page__option is-selected':
+              var $option = $('<option />');
+              $option.html($(this).html()).attr('selected', true);;
+              $select.append($option);
+              break;
+
+            case 'lang-select-page__option lang-select-page__other':
+              var $option = $('<option />');
+              $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
+              $select.append($option);
+              break;
+          }
         });
 
         if (!$list.parent().find('select').length) {

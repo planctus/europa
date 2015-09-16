@@ -103,6 +103,8 @@ Styleguide: langselect
 }
 
 select.lang-select-page__list {
-  width: 10em;
+  border-radius: 0;
+  padding-left: 0.5em;
   margin: 0.8em;
+  width: 10em;
 }
