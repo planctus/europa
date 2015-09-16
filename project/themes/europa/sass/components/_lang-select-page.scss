@@ -44,7 +44,6 @@ Styleguide: langselect
 
 .lang-select-page__unavailable {
   text-decoration: line-through;
-  margin-right: 3em;
 }
 
 .lang-select-page__list {
@@ -97,6 +96,9 @@ Styleguide: langselect
 @include breakpoint(screen-sm-min) {
   .lang-select-page__option {
     display: inline-block;
+  }
+  .lang-select-page__unavailable {
+    margin-right: 3em;
   }
 }
 

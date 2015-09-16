@@ -7987,8 +7987,7 @@ Styleguide: langselect
     vertical-align: middle; }
 
 .lang-select-page__unavailable {
-  text-decoration: line-through;
-  margin-right: 3em; }
+  text-decoration: line-through; }
 
 .lang-select-page__list {
   float: left;
@@ -8023,7 +8022,9 @@ Styleguide: langselect
 
 @media (min-width: 768px) {
   .lang-select-page__option {
-    display: inline-block; } }
+    display: inline-block; }
+  .lang-select-page__unavailable {
+    margin-right: 3em; } }
 
 select.lang-select-page__list {
   width: 10em;

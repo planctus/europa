@@ -8,9 +8,11 @@
     this.selector = selector;
     this.listSelector = 'ul.lang-select-page__list';
     this.otherLanguages = '.lang-select-page__other';
+    this.currentLanguage = '.is-selected';
 
     this.hideList = function(){
       $(this.selector).find(this.listSelector).find(this.otherLanguages).hide();
+      $(this.selector).find(this.listSelector).find(this.currentLanguage).hide();
     };
     this.showList = function(){
       $(this.selector).find(this.listSelector).find(this.otherLanguages).show();
