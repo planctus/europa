@@ -105,10 +105,10 @@ function dt_page_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '1',
         ),
         'scheduler_settings' => array(
           'weight' => '14',
