@@ -248,10 +248,10 @@ function dt_priority_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_meta|node|priority_policy_area|teaser';
-  $field_group->group_name = 'group_pri_pol_area_meta';
+  $field_group->identifier = 'group_priority_meta|node|priority|teaser';
+  $field_group->group_name = 'group_priority_meta';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'teaser';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -272,15 +272,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_meta|node|priority_policy_area|teaser'] = $field_group;
+  $export['group_priority_meta|node|priority|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_background|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_background';
+  $field_group->identifier = 'group_priority_background|node|priority|full';
+  $field_group->group_name = 'group_priority_background';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -302,15 +302,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_background|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_background|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_related|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_related';
+  $field_group->identifier = 'group_priority_related|node|priority|full';
+  $field_group->group_name = 'group_priority_related';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -331,15 +331,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_related|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_related|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_contextual|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_contextual';
+  $field_group->identifier = 'group_priority_contextual|node|priority|full';
+  $field_group->group_name = 'group_priority_contextual';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -360,15 +360,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_contextual|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_contextual|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_documents|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_documents';
+  $field_group->identifier = 'group_priority_documents|node|priority|full';
+  $field_group->group_name = 'group_priority_documents';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -389,17 +389,17 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_documents|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_documents|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_latest_main|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_latest_main';
+  $field_group->identifier = 'group_priority_latest_main|node|priority|full';
+  $field_group->group_name = 'group_priority_latest_main';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
-  $field_group->parent_name = 'group_pri_pol_area_latest';
+  $field_group->parent_name = 'group_priority_latest';
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '33',
@@ -419,17 +419,17 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_latest_main|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_latest_main|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_latest_sbar|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_latest_sbar';
+  $field_group->identifier = 'group_priority_latest_sbar|node|priority|full';
+  $field_group->group_name = 'group_priority_latest_sbar';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
-  $field_group->parent_name = 'group_pri_pol_area_latest';
+  $field_group->parent_name = 'group_priority_latest';
   $field_group->data = array(
     'label' => 'Sidebar',
     'weight' => '34',
@@ -448,23 +448,23 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_latest_sbar|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_latest_sbar|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_latest|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_latest';
+  $field_group->identifier = 'group_priority_latest|node|priority|full';
+  $field_group->group_name = 'group_priority_latest';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
     'weight' => '7',
     'children' => array(
-      0 => 'group_pri_pol_area_latest_main',
-      1 => 'group_pri_pol_area_latest_sbar',
+      0 => 'group_priority_latest_main',
+      1 => 'group_priority_latest_sbar',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -478,15 +478,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_latest|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_latest|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_meta|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_meta';
+  $field_group->identifier = 'group_priority_meta|node|priority|full';
+  $field_group->group_name = 'group_priority_meta';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -507,15 +507,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_meta|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_meta|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_related|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_related';
+  $field_group->identifier = 'group_priority_related|node|priority|full';
+  $field_group->group_name = 'group_priority_related';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -536,15 +536,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_related|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_related|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_area_whatnext|node|priority_policy_area|full';
-  $field_group->group_name = 'group_pri_pol_area_whatnext';
+  $field_group->identifier = 'group_priority_whatnext|node|priority|full';
+  $field_group->group_name = 'group_priority_whatnext';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -565,15 +565,15 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_whatnext|node|priority_policy_area|full'] = $field_group;
+  $export['group_priority_whatnext|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pri_pol_policy_areas|node|priority_policy_area|full';
+  $field_group->identifier = 'group_pri_pol_policy_areas|node|priority|full';
   $field_group->group_name = 'group_pri_pol_policy_areas';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority_policy_area';
+  $field_group->bundle = 'priority';
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -595,7 +595,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_policy_areas|node|priority_policy_area|full'] = $field_group;
+  $export['group_pri_pol_policy_areas|node|priority|full'] = $field_group;
 
   return $export;
 }
