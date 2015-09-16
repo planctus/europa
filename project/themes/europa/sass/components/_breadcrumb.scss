@@ -43,7 +43,9 @@ $breadcrumb-heigth: 2.778em;
   max-width: 100%;
   color: #fff;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: #fff;
 
     .breadcrumb__text {
@@ -54,7 +56,7 @@ $breadcrumb-heigth: 2.778em;
 
 .breadcrumb__link-arrow {
   @extend .icon--after;
-  @extend .icon--right;
+  @extend .icon--breadcrumb;
   color: #fff;
   line-height: inherit !important;
   margin-left: 8px !important;

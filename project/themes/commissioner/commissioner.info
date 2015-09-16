@@ -1,75 +1,28 @@
 name = Commissioner theme
 description = Based on Bootstrap Sub-theme.
 core = 7.x
-base theme = bootstrap
+base theme = europa
 
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Regions
-;;;;;;;;;;;;;;;;;;;;;
-
-regions[branding]       = 'Branding'
-regions[navigation]     = 'Navigation'
-regions[header]         = 'Top Bar'
-regions[highlighted]    = 'Highlighted'
-regions[help]           = 'Help'
-regions[header_bottom]  = 'Header Bottom'
-regions[content_top] 		= 'Content Top'
-regions[content_top_2] 	= 'Content Top 2'
-regions[content]        = 'Content'
-regions[content_bottom] = 'Content Bottom'
-regions[sidebar_left]   = 'Sidebar Left'
-regions[sidebar_right]  = 'Sidebar Right'
-regions[footer_top]         = 'Footer top'
-regions[footer]         = 'Footer'
-regions[page_top]       = 'Page top'
-regions[page_bottom]    = 'Page bottom'
+; ========================================
+; Regions
+; ========================================
+regions[navigation] = Navigation
+regions[header_top] = Header top
+regions[header] = Header
+regions[header_bottom] = Header bottom
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[content_bottom] = Content bottom
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+regions[footer_top] = Footer Top
+regions[footer] = Footer
+regions[footer_right] = Footer right
 
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
-stylesheets[all][] = css/style.css
-
-; For information on choosing the desired method, please read the Drupal
-; Bootstrap sub-theme "how-to" documentation:
-; https://drupal.org/node/1978010
-
-; ;----------------------------------
-; ; METHOD 1: Bootstrap Source Files
-; ;----------------------------------
-;
-; ;;;;;;;;;;;;;;;;;;;;;
-; ;; Scripts
-; ;;;;;;;;;;;;;;;;;;;;;
-;
-; scripts[] = 'bootstrap/js/affix.js'
-; scripts[] = 'bootstrap/js/alert.js'
-; scripts[] = 'bootstrap/js/button.js'
-; scripts[] = 'bootstrap/js/carousel.js'
-scripts[] = 'bootstrap/js/collapse.js'
-; scripts[] = 'bootstrap/js/dropdown.js'
-scripts[] = 'bootstrap/js/modal.js'
-; scripts[] = 'bootstrap/js/popover.js'
-scripts[] = 'bootstrap/js/scrollspy.js'
-; scripts[] = 'bootstrap/js/tab.js'
-; scripts[] = 'bootstrap/js/tooltip.js'
-scripts[] = 'bootstrap/js/transition.js'
-
-scripts[] = 'js/enquire.min.js'
-scripts[] = 'js/modernizr.custom.js'
-scripts[] = 'js/jquery.velocity.min.js'
-scripts[] = 'js/commissioner.js'
-;
-; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
-settings[bootstrap_cdn] = ''
-
-
-; ;-------------------------
-; ; METHOD 2: Bootstrap CDN
-; ;-------------------------
-;
-; Method 2 uses BootstrapCDN, the only thing you might need to provide here
-; is overrides to Bootstrap theme settings. Copy them here from the base theme
-; to override.
+; stylesheets[all][] = css/style.css

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16.999998"
+   height="16.999998"
+   viewBox="0 0 16.999998 16.999998"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="globe.svg">
+  <metadata
+     id="metadata19">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Artboard 2</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     id="namedview17"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="12.586667"
+     inkscape:cx="40.469262"
+     inkscape:cy="17.031949"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Page-1" />
+  <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">Artboard 2</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     id="Page-1"
+     sketch:type="MSPage"
+     transform="matrix(0.05985915,0,0,0.05985915,-0.4788732,-0.4788732)"
+     style="fill:none;stroke:none">
+    <g
+       id="Artboard-2"
+       sketch:type="MSArtboardGroup"
+       style="fill:#231f20;fill-opacity:1">
+      <g
+         id="untitled"
+         sketch:type="MSLayerGroup"
+         transform="translate(8,8)"
+         style="fill:#231f20;fill-opacity:1">
+        <g
+           id="icomoon-ignore"
+           sketch:type="MSShapeGroup"
+           style="opacity:0;stroke:#449fdb;fill:#231f20;fill-opacity:1">
+          <path
+             id="Shape"
+             d=""
+             inkscape:connector-curvature="0"
+             style="fill:#231f20;fill-opacity:1" />
+        </g>
+        <path
+           d="m 0,142 c 0,78.455 63.545,142 142,142 78.455,0 142,-63.545 142,-142 C 284,63.545 220.455,0 142,0 63.545,0 0,63.545 0,142 l 0,0 z m 29.58428,0 c 0,-9.11072 1.065,-17.98572 3.13536,-26.44892 L 59.16856,142 l -5.91572,35.5 23.66572,23.66572 0,32.48392 C 48.28284,213.29536 29.58428,179.8146 29.58428,142 l 0,0 z M 116.14464,32.60036 c 8.28428,-2.01072 16.92072,-3.01892 25.85536,-3.01892 9.88036,0 19.46536,1.30072 28.57892,3.66928 l -4.91036,8.165 5.91572,5.91572 17.75,0 4.91036,-4.91036 c 4.13504,2.18964 8.04004,4.55536 11.83428,7.21928 L 195.25,53.25 183.41572,65.08428 195.25,71 l 0,5.91572 -11.83428,0 0,11.83428 c 0,0 8.165,5.91572 17.75,5.91572 9.40892,0 5.20572,-12.95892 11.83428,-17.75 6.68536,-4.79392 14.79072,-3.72892 14.79072,-3.72892 l 3.84536,1.00536 c 7.21928,9.52536 12.9504,20.17536 16.86392,31.71428 l 0,0.59072 c 0,0 -8.34392,-5.91572 -23.66572,-5.91572 -15.3218,0 -29.58428,5.91572 -29.58428,5.91572 0,0 -16.685,4.85072 -17.75,17.75 -1.84032,22.18892 5.91572,29.58428 5.91572,29.58428 l 29.58428,17.75 0,57.56964 c -19.34892,15.79892 -44.07964,25.26464 -71,25.26464 -12.72036,0 -24.90964,-2.07036 -36.32928,-5.97536 L 136.08144,177.5 130.16572,147.91572 c 0,0 -23.48964,-29.58428 -35.5,-29.58428 -12.01036,0 -17.75,17.75 -17.75,17.75 l -11.83428,-23.66572 35.5,-23.66572 17.75,-47.33428 -2.18964,-8.81536 0.003,0 z"
+           id="path15"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#231f20;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>
