@@ -46,6 +46,7 @@ features[field_group][] = group_content_tabgroup|node|policy|form
 features[field_group][] = group_latest_main|node|policy|full
 features[field_group][] = group_latest_sidebar|node|policy|full
 features[field_group][] = group_latest|node|policy|full
+features[field_group][] = group_policies_wrapper|node|policy|full
 features[field_group][] = group_policy_banner|node|policy|form
 features[field_group][] = group_policy_common|node|policy|form
 features[field_group][] = group_policy_contextual|node|policy|full
