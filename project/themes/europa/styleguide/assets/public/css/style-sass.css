@@ -5581,7 +5581,7 @@ button.close {
 
 @media print {
   .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .btn-group, .form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .form-group, ul.nav-tabs,
-  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
+  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn, select.lang-select-page__list, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
   #skip-link, .social-media-links {
     display: none !important; } }
 
@@ -7435,7 +7435,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .lang-select-page--transparent select.lang-select-page__list:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
@@ -7455,7 +7455,7 @@ Styleguide: icon
 .icon--arrow-up, .icon--arrow-up:before {
   content: '\e61e'; }
 
-.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before {
+.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before, .lang-select-page--transparent select.lang-select-page__list:after {
   content: '\e61d'; }
 
 .icon--spinner:before {
@@ -7957,6 +7957,92 @@ Styleguide: siteheader.langselect
   .front .lang-select-site {
     position: absolute;
     float: none; } }
+
+/*
+Language select (Page)
+
+Page specific language selection.
+
+Markup: html/lang-select-page.html
+
+.lang-select-page               - Default, background is light
+.lang-select-page--dark         - Background is dark blue or a picture
+.lang-select-page--transparent  - Transparent background
+.lang-select-page--dropdown     - When JS converts the ul to select
+
+Styleguide: langselect
+*/
+.lang-select-page {
+  background: #f2f2f2;
+  border-bottom: 1px solid #b3b4b5;
+  position: relative;
+  font-size: 0.778em;
+  float: left;
+  margin-bottom: 1em;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle; }
+  .front .lang-select-page {
+    display: none; }
+
+.icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn {
+  float: left;
+  margin: 0 0.7em 0 0;
+  font-size: 2em;
+  padding: 0; }
+  .icon.lang-select-page__icon:before, .lang-select-page__icon.search-form__btn:before {
+    vertical-align: middle; }
+
+.lang-select-page__unavailable {
+  text-decoration: line-through; }
+
+.lang-select-page__list {
+  float: left;
+  padding: 0;
+  margin: 0; }
+  .lang-select-page__list .lang-select-page__option {
+    list-style: none;
+    float: left;
+    padding: 0.85em; }
+    .lang-select-page__list .lang-select-page__option a {
+      display: block; }
+    .lang-select-page__list .lang-select-page__option.is-selected {
+      background: #ffd617;
+      font-weight: bold;
+      color: #000; }
+
+.lang-select-page--dark {
+  border: none; }
+
+.lang-select-page--transparent {
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  color: #fff; }
+  .lang-select-page--transparent select.lang-select-page__list {
+    background-color: #012b58;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    line-height: 3.2; }
+    .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
+      border: 0; }
+    .lang-select-page--transparent select.lang-select-page__list > option {
+      background: #012b58; }
+  .lang-select-page--transparent .lang-select-page__option a {
+    color: #fff; }
+
+@media (min-width: 768px) {
+  .lang-select-page__option {
+    display: inline-block; }
+  .lang-select-page__unavailable {
+    margin-right: 3em; } }
+
+select.lang-select-page__list {
+  background: transparent url("../images/png/arrow-thick-down.png") no-repeat 8em center;
+  border-radius: 0;
+  padding-left: 0.5em;
+  width: 10em;
+  cursor: pointer; }
 
 /*
 Listing

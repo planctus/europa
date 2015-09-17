@@ -289,8 +289,6 @@ Styleguide: icon
 
 .icon--check {
   content: '\e620';
-}
-.icon--check {
   &:before {
     @extend .icon--check;
   }
@@ -298,8 +296,6 @@ Styleguide: icon
 
 .icon--generic-lang {
   content: '\e621';
-}
-.icon--generic-lang {
   &:before {
     @extend .icon--generic-lang;
   }
