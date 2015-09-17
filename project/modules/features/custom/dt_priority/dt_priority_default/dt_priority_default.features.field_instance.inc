@@ -1390,6 +1390,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Header Background Image');
   t('Image');
   t('Introduction');
+  t('Legacy link');
   t('Name of the Priority');
   t('Next steps');
   t('Objectives');

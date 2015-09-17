@@ -30,7 +30,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy Areas',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'sidebar-field-group__main section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -90,7 +90,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'sidebar-field-group__main section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -208,7 +208,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'sidebar-field-group__main section__group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -356,8 +356,8 @@ function dt_priority_default_field_group_info() {
       'instance_settings' => array(
         'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
         'attributes' => '',
       ),
     ),
