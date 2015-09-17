@@ -109,7 +109,7 @@ function dt_priority_default_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'content_type_label' => array(
-      'weight' => '1',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -232,8 +232,8 @@ function dt_priority_default_ds_layout_settings_info() {
     'regions' => array(
       'main' => array(
         0 => 'group_priority_meta',
-        1 => 'content_type_label',
-        2 => 'title_field',
+        1 => 'title_field',
+        2 => 'content_type_label',
         3 => 'field_core_description',
       ),
       'second' => array(
@@ -242,8 +242,8 @@ function dt_priority_default_ds_layout_settings_info() {
     ),
     'fields' => array(
       'group_priority_meta' => 'main',
-      'content_type_label' => 'main',
       'title_field' => 'main',
+      'content_type_label' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',
     ),
