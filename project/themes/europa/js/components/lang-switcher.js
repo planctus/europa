@@ -11,6 +11,7 @@
 
           $(this).find('li').each(function() {
             var currentClass = $(this).attr('class');
+
             switch (currentClass) {
               case 'lang-select-page__option is-selected':
                 var $option = $('<option />');
@@ -47,7 +48,7 @@
       var hideList = function() {
         settings.listWrapper
           .find(settings.listSelector)
-          .find(settings.otherLanguages)
+          .find(settings.other)
           .hide();
         settings.listWrapper
           .find(settings.listSelector)
@@ -60,17 +61,18 @@
       var showList = function() {
         $(settings.listWrapper)
           .find(settings.listSelector)
-          .find(settings.otherLanguages)
+          .find(settings.other)
           .show();
-        $(settings.selector)
+        $(settings.listWrapper)
           .find(settings.listSelector)
           .find(settings.selected)
           .show();
       };
       var settings = $.extend({
         listWrapper: $(this),
-        listSelector: '.list',
-        otherLanguages: '.item__other',
+        listSelector: 'ul',
+        item: 'li',
+        other: '.item__other',
         selected: '.item--selected'
       }, options);
 
@@ -101,8 +103,8 @@
       var pageLanguageSelector = $('.lang-select-page');
       pageLanguageSelector.selectify({
         listSelector: 'ul.lang-select-page__list',
-        listOptionClass: '',
-        otherLanguages: '.lang-select-page__other',
+        item: 'lang-select-page__option',
+        other: '.lang-select-page__other',
         selected: '.is-selected'
       });
 
