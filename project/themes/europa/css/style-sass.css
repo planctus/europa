@@ -8003,7 +8003,7 @@ Styleguide: langselect
   .lang-select-page__list .lang-select-page__option {
     list-style: none;
     float: left;
-    padding: 1em; }
+    padding: 0.85em; }
     .lang-select-page__list .lang-select-page__option a {
       display: block; }
     .lang-select-page__list .lang-select-page__option.is-selected {
