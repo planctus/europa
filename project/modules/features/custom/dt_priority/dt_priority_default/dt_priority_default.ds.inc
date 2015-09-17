@@ -27,7 +27,15 @@ function dt_priority_default_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
       ),
     ),
     'title' => array(
@@ -38,11 +46,6 @@ function dt_priority_default_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => 'h1',
         'class' => '',
-        'ft' => array(),
-      ),
-    ),
-    'field_core_banner' => array(
-      'formatter_settings' => array(
         'ft' => array(),
       ),
     ),
@@ -112,6 +115,17 @@ function dt_priority_default_ds_field_settings_info() {
       'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
     'title_field' => array(
       'formatter_settings' => array(
@@ -149,13 +163,13 @@ function dt_priority_default_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_priority_meta',
-        2 => 'content_type_label',
-        4 => 'title',
+        1 => 'content_type_label',
+        3 => 'title',
         5 => 'field_core_introduction',
       ),
       'central' => array(
-        1 => 'field_core_featured_item',
-        3 => 'latest_announcements_block',
+        2 => 'field_core_featured_item',
+        4 => 'latest_announcements_block',
         8 => 'group_pri_pol_policy_areas',
         9 => 'group_priority_latest',
         10 => 'group_priority_background',
@@ -181,10 +195,10 @@ function dt_priority_default_ds_layout_settings_info() {
     ),
     'fields' => array(
       'group_priority_meta' => 'left_header',
-      'field_core_featured_item' => 'central',
       'content_type_label' => 'left_header',
-      'latest_announcements_block' => 'central',
+      'field_core_featured_item' => 'central',
       'title' => 'left_header',
+      'latest_announcements_block' => 'central',
       'field_core_introduction' => 'left_header',
       'group_priority_contextual' => 'top',
       'field_core_banner' => 'top',

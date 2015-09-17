@@ -35,5 +35,6 @@ function dt_core_pol_uninstall() {
  */
 function dt_core_pol_update_7101() {
   // Revert dt_code_pol.
+  features_revert_module('dt_core');
   features_revert_module('dt_core_pol');
 }
