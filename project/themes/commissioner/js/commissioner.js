@@ -440,6 +440,20 @@
     }
   }
 
+  // Implications
+  // - takes into account inline height settings from webmaster
+  // - does not override CSS 100% height rule
+  // - works only if height inline attribute is actually set
+  Drupal.behaviors.iframeHeight = {
+    attach: function(context) {
+      $('iframe').once('iframe', function(){
+        $(this).each(function(){
+          $(this).height($(this).attr('height'));
+        });
+      });
+    }
+  }
+
   Drupal.behaviors.iframe_height_calculate = {
     attach: function(context) {
       $('.iframe').once('iframe', function(){

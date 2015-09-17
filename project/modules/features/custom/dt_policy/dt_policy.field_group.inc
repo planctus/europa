@@ -133,6 +133,36 @@ function dt_policy_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_policies_wrapper|node|policy|full';
+  $field_group->group_name = 'group_policies_wrapper';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_policy_tab_actions';
+  $field_group->data = array(
+    'label' => 'Policies wrapper',
+    'weight' => '42',
+    'children' => array(
+      0 => 'field_policy_next_steps',
+      1 => 'policy_actions',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Policies wrapper',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_policies_wrapper|node|policy|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_policy_banner|node|policy|form';
   $field_group->group_name = 'group_policy_banner';
   $field_group->entity_type = 'node';
@@ -176,8 +206,9 @@ function dt_policy_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_introduction',
-      2 => 'field_core_description',
+      1 => 'field_core_description',
+      2 => 'field_core_introduction',
+      3 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -205,8 +236,8 @@ function dt_policy_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_department',
-      1 => 'field_core_topics',
-      2 => 'field_core_priorities',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
       3 => 'field_core_persons',
     ),
     'format_type' => 'html-element',
@@ -518,8 +549,7 @@ function dt_policy_field_group_info() {
     'label' => 'Actions',
     'weight' => '5',
     'children' => array(
-      0 => 'field_policy_next_steps',
-      1 => 'policy_actions',
+      0 => 'group_policies_wrapper',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(

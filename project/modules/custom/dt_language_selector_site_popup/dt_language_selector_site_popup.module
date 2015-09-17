@@ -1,0 +1,254 @@
+<?php
+
+/**
+ * @file
+ * Alter language switcher at site level.
+ */
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Default implementation of language selector.
+ */
+function dt_language_selector_site_popup_preprocess_block(&$variables) {
+  if (isset($variables['block']->bid) && $variables['block']->bid === 'language_selector_site-language_selector_site') {
+
+    // Initialize variables.
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
+    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
+
+    // Dont know if this is the way to go..
+    $popupbase = '<div class="splash-page splash-page--overlay"></div>';
+
+    $options = array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('lang-select-site__link'),
+      ),
+      'query' => array(drupal_get_destination()),
+    );
+
+    // Add class to block.
+    $variables['classes_array'][] = 'lang-select-site';
+
+    // Add content to block.
+    $variables['content'] = l($label . $code, 'splash', $options);
+    $variables['content'] .= $popupbase;
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ *
+ * This mostly is copy paste work from the splash_screen module. But I tend to
+ * keep the modifications to a minimum.
+ */
+function dt_language_selector_site_popup_preprocess_splash(&$variables) {
+  // We load our global.
+  global $language;
+
+  // Initialize variables.
+  $home_page = variable_get('splash_screen_home_page', '');
+  $href = $home_page;
+  $languages_blacklist = variable_get('splash_screen_blacklist', array());
+  $languages = language_list('enabled');
+  $languages_list = NULL;
+
+  // Prepare links href when destination is set.
+  // Use case: use site level language selector.
+  if (isset($_GET['destination'])) {
+    $href_array = parse_url($_GET['destination']);
+    $href = $href_array['path'];
+
+    if (isset($href_array['query'])) {
+      parse_str($href_array['query'], $parameters);
+      $options['query'] = $parameters;
+    }
+
+    $options['attributes']['class'] = "splash-page__btn-close";
+
+    // Also enable close button.
+    $variables['close_button'] = l(t('Close'), $href, $options);
+  }
+
+  // Counter.
+  $count = 0;
+
+  // Add enabled languages, if not in blacklist.
+  foreach ($languages[1] as $lang) {
+    if (!in_array($lang->prefix, $languages_blacklist)) {
+
+      if ($count == 2) {
+        $languages_list .= '</div>';
+        $count = 0;
+      }
+      if ($count == 0) {
+        $languages_list .= '<div class="row">';
+      }
+
+      // Start from an empty array.
+      $options = array();
+
+      // Prepare links options.
+      $options['attributes']['lang'] = $lang->prefix;
+      $options['attributes']['hreflang'] = $lang->prefix;
+      $options['attributes']['class'][] = "btn";
+      $options['attributes']['class'][] = "splash-page__btn-language";
+      $options['attributes']['data-languagespecific'] = "true";
+
+      if ($lang->language == $language->language) {
+        $options['attributes']['class'][] = "is-active icon icon--check";
+      }
+
+      $languages_list .= '<div class="col-sm-6">';
+      $languages_list .= l($lang->native, $href, $options);
+      $languages_list .= '</div>';
+
+      $count++;
+    }
+  }
+
+  if (NULL !== $languages_list) {
+    $languages_list .= '</div>';
+  }
+
+  // Get our helper message if we have it defined.
+  // Set our base data.
+  $overlay_data = variable_get('dt_language_selector_site_popup_message');
+
+  // We can rely on the fact that we will have a destination when it's an
+  // overlay. In other cases no destination will be set.
+  if ($overlay_data['value'] !== "" && isset($_GET['destination'])) {
+    $variables['overlay_helper_text'] = check_markup($overlay_data['value'], $overlay_data['format']);
+  }
+
+  // Get our helper message if we have it defined.
+  // Set our base data.
+  $splash_data = variable_get('dt_language_selector_site_splash_message');
+
+  if ($splash_data['value'] !== "" && !isset($_GET['destination'])) {
+    $variables['splash_helper_text'] = check_markup($splash_data['value'], $splash_data['format']);
+  }
+
+  // Push our vars back.
+  $variables['header_text'] = t('Select your language');
+  $variables['languages_list'] = $languages_list;
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * This will add an extra textbox to the splash page configuration page.
+ */
+function dt_language_selector_site_popup_form__splash_screen_settings_form_alter(&$form, &$form_state, $form_id) {
+
+  // Set our base data.
+  $overlay_data = variable_get(
+    'dt_language_selector_site_popup_message',
+    array(
+      'value' => '',
+      'format' => 'plain_text',
+    )
+  );
+
+  // And our splash page text,
+  $splash_data = variable_get(
+    'dt_language_selector_site_splash_message',
+    array(
+      'value' => '',
+      'format' => 'plain_text',
+    )
+  );
+
+  // Add our custom form element to get the message which we display under as
+  // a help text.
+  $form['splash_screen']['dt_language_selector_site_popup_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Languages help message for the overlay'),
+    '#description' => t('Enter the message to be displayed under the language selector overlay.'),
+    '#default_value' => $overlay_data['value'],
+    '#format' => $overlay_data['format'],
+  );
+
+  // Add our custom form element to get the message which we display under as
+  // a help text.
+  $form['splash_screen']['dt_language_selector_site_splash_message'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Languages help message for the splash page'),
+    '#description' => t('Enter the message to be displayed under the language selector splash page.'),
+    '#default_value' => $splash_data['value'],
+    '#format' => $splash_data['format'],
+  );
+
+  // Add our validation function to set our variable.
+  $form['#validate'][] = '_dt_language_selector_site_popup_form_validate';
+}
+
+/**
+ * Our form validation to set the value to a variable.
+ *
+ * @see dt_language_selector_site_popup_form__splash_screen_settings_form_alter
+ */
+function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
+  // Save the data to our variable.
+  variable_set(
+    'dt_language_selector_site_popup_message',
+    $form_state['input']['dt_language_selector_site_popup_message']['value']
+  );
+  // Save the data to our variable.
+  variable_set(
+    'dt_language_selector_site_splash_message',
+    $form_state['input']['dt_language_selector_site_splash_message']['value']
+  );
+}
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * As Splash page replaces our frontpage. We should alter the default front page
+ * so that it has the correct class.
+ * The implementation in hook_preprocess_html is the closest we can go to
+ * simulate the frontpage.
+ */
+function dt_language_selector_site_popup_preprocess_html(&$variables) {
+  if (_dt_language_selector_site_popup_is_front()) {
+    $variables['classes_array'][] = 'front';
+
+    // Simulate the front page.
+    $variables['is_front'] = 1;
+
+    // Here we unset our not-front.
+    if ($key = array_search('not-front', $variables['classes_array'])) {
+      unset($variables['classes_array'][$key]);
+    }
+  }
+}
+
+/**
+ * Implements hook_context_load_alter().
+ */
+function dt_language_selector_site_popup_context_load_alter(&$context) {
+  // Check the context.
+  if ($context->name == 'dt_core_non_homepage_pages') {
+    // If it is the right context and it is our frontpage, hide the block.
+    if (_dt_language_selector_site_popup_is_front()) {
+      unset($context->reactions['block']['blocks']['easy_breadcrumb-easy_breadcrumb']);
+    }
+  }
+}
+
+/**
+ * This helper function checks if the current page is equal to the frontpage.
+ */
+function _dt_language_selector_site_popup_is_front() {
+  // Get our normal paths.
+  $fictive_frontpage = drupal_get_normal_path(variable_get('splash_screen_home_page', ''));
+  $current_page = drupal_get_normal_path(drupal_get_path_alias());
+
+  // Only if they match, we can remove the breadcrumbs.
+  if ($fictive_frontpage == $current_page) {
+    return TRUE;
+  }
+  return FALSE;
+}
