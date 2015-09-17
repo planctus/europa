@@ -457,7 +457,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'weight' => 28,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'picture',
         'settings' => array(
           'colorbox_settings' => array(

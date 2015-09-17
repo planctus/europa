@@ -140,6 +140,11 @@ function dt_priority_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|priority|teaser'] = $ds_fieldsetting;
 
