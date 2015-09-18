@@ -154,7 +154,7 @@ function dt_priority_default_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select and order the Prioritys and policies that part of this Priority.',
+    'description' => 'Select and order the Priorities and Policies that part of this Priority.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -188,7 +188,7 @@ function dt_priority_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_child_policies',
-    'label' => 'Child Prioritys and Policies',
+    'label' => 'Child Priorities and Policies',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1381,7 +1381,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px');
   t('Background / Context');
   t('Banner');
-  t('Child Prioritys and Policies');
+  t('Child Priorities and Policies');
   t('Description');
   t('Documents');
   t('Featured item');
@@ -1400,7 +1400,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Related links');
   t('Select a banner if you would like to display a banner on top of this page.');
   t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
-  t('Select and order the Prioritys and policies that part of this Priority.');
+  t('Select and order the Priorities and policies that part of this Priority.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority.');
   t('Select the publications, infographics, files, etc. that are key for this Priority.');
