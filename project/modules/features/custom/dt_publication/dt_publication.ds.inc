@@ -91,22 +91,6 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
-    'post_date' => array(
-      'weight' => '21',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_ec_date_j_f_y',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'field_publication_type' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -257,7 +241,6 @@ function dt_publication_ds_layout_settings_info() {
         1 => 'title',
         2 => 'field_core_introduction',
         3 => 'field_publication_type',
-        4 => 'post_date',
       ),
     ),
     'fields' => array(
@@ -265,7 +248,6 @@ function dt_publication_ds_layout_settings_info() {
       'title' => 'main',
       'field_core_introduction' => 'main',
       'field_publication_type' => 'main',
-      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

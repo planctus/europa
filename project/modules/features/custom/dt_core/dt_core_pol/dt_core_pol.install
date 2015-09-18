@@ -29,3 +29,24 @@ function dt_core_pol_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
+
+/**
+ * Reverting features: NEXTEUROPA-4811.
+ */
+function dt_core_pol_update_7101() {
+  // The features to revert.
+  $features = array(
+    'dt_core',
+    'dt_core_pol',
+    'dt_pri_policy_area',
+    'dt_pri_policy_area_default',
+    'dt_priority',
+    'dt_priority_default',
+    'dt_publication',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
