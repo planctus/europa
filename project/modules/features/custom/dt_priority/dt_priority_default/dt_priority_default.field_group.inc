@@ -30,7 +30,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy Areas',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main section__group',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -90,7 +90,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main section__group',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -208,7 +208,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main section__group',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -498,7 +498,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -558,7 +558,7 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'What\'s next?',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
