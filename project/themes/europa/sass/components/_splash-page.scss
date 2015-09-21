@@ -16,6 +16,8 @@ $padding-splash-xl: 2em; // 52px
     background: #ffffff;
 
     .logo {
+      margin: 16px auto 40px auto;
+      float: none;
       background: url("../images/svg/logo.svg") center center no-repeat;
       background-origin: content-box;
 
