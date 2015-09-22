@@ -71,20 +71,10 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
     $variables['close_button'] = l(t('Close'), $href, $options);
   }
 
-  // Counter.
-  $count = 0;
-
-  // Add enabled languages, if not in blacklist.
+  // Add enabled languages, if not in blacklist. Add all these languages to our
+  // processed list.
   foreach ($languages[1] as $lang) {
     if (!in_array($lang->prefix, $languages_blacklist)) {
-
-      if ($count == 2) {
-        $languages_list .= '</div>';
-        $count = 0;
-      }
-      if ($count == 0) {
-        $languages_list .= '<div class="row">';
-      }
 
       // Start from an empty array.
       $options = array();
@@ -100,17 +90,31 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
         $options['attributes']['class'][] = "is-active icon icon--check";
       }
 
-      $languages_list .= '<div class="col-sm-6">';
-      $languages_list .= l($lang->native, $href, $options);
-      $languages_list .= '</div>';
-
-      $count++;
+      // Add to our processed array.
+      $processed_languages[] = l($lang->native, $href, $options);
     }
   }
 
-  if (NULL !== $languages_list) {
-    $languages_list .= '</div>';
+  // Get the total amount of languages we now have. Split them into 2 and
+  // process them into the correct display.
+  $processed = 0;
+  $splitcount = count($processed_languages) / 2;
+
+  // Open our div (row+col).
+  $languages_list = '<div class="row"><div class="col-sm-6">';
+
+  // Loop our results.
+  foreach ($processed_languages as $language) {
+    if ($processed == $splitcount) {
+      $languages_list .= '</div><div class="col-sm-6">';
+    }
+    $languages_list .= $language;
+
+    $processed++;
   }
+
+  // Close our list (row+col).
+  $languages_list .= '</div></div>';
 
   // Get our helper message if we have it defined.
   // Set our base data.
