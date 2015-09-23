@@ -48,8 +48,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   global $language;
 
   // Initialize variables.
-  $home_page = variable_get('splash_screen_home_page', '');
-  $href = $home_page;
+  $href = variable_get('site_frontpage', '');
   $languages_blacklist = variable_get('splash_screen_blacklist', array());
   $languages = language_list('enabled');
   $languages_list = NULL;
@@ -97,24 +96,30 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 
   // Get the total amount of languages we now have. Split them into 2 and
   // process them into the correct display.
-  $processed = 0;
-  $splitcount = count($processed_languages) / 2;
+  if (is_array($processed_languages)) {
+    $processed = 0;
+    $languages_count = count($processed_languages);
+    $splitcount = ceil($languages_count / 2);
 
-  // Open our div (row+col).
-  $languages_list = '<div class="row"><div class="col-sm-6">';
+    // Open our div (row+col).
+    $languages_list = '<div class="row"><div class="col-sm-6">';
 
-  // Loop our results.
-  foreach ($processed_languages as $language) {
-    if ($processed == $splitcount) {
-      $languages_list .= '</div><div class="col-sm-6">';
+    // Loop our results.
+    foreach ($processed_languages as $lang) {
+      if ($processed == $splitcount && $languages_count > 1) {
+        $languages_list .= '</div><div class="col-sm-6">';
+      }
+      $languages_list .= $lang;
+
+      $processed++;
     }
-    $languages_list .= $language;
 
-    $processed++;
+    // Close our list (row+col).
+    $languages_list .= '</div></div>';
+
+    // Set it to our variables.
+    $variables['languages_list'] = $languages_list;
   }
-
-  // Close our list (row+col).
-  $languages_list .= '</div></div>';
 
   // Get our helper message if we have it defined.
   // Set our base data.
@@ -136,8 +141,6 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 
   // Push our vars back.
   $variables['header_text'] = t('Select your language');
-  $variables['languages_list'] = $languages_list;
-
 }
 
 /**
