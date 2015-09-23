@@ -189,7 +189,7 @@ function dt_priority_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_child_policies',
     'label' => 'Child Priorities and Policies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -354,7 +354,7 @@ function dt_priority_default_field_default_field_instances() {
   $field_instances['node-priority-field_core_header_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
-    'description' => 'Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px',
+    'description' => 'Aspect ratio 8:3 (w:h).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -434,7 +434,7 @@ function dt_priority_default_field_default_field_instances() {
   $field_instances['node-priority-field_core_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
-    'description' => 'Aspect ratio 4:3 (w:h). Minimum width: 320x240 px',
+    'description' => 'Aspect ratio 4:3 (w:h).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1377,8 +1377,8 @@ function dt_priority_default_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add links to other content that is relevant for visitors of this page.');
-  t('Aspect ratio 4:3 (w:h). Minimum width: 320x240 px');
-  t('Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px');
+  t('Aspect ratio 4:3 (w:h).');
+  t('Aspect ratio 8:3 (w:h).');
   t('Background / Context');
   t('Banner');
   t('Child Priorities and Policies');
@@ -1400,7 +1400,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Related links');
   t('Select a banner if you would like to display a banner on top of this page.');
   t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
-  t('Select and order the Priorities and policies that part of this Priority.');
+  t('Select and order the Priorities and Policies that part of this Priority.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority.');
   t('Select the publications, infographics, files, etc. that are key for this Priority.');
