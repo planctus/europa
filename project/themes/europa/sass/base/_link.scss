@@ -33,7 +33,6 @@ p a {
   &:after {
     @extend .icon--after;
     @extend .icon--external;
-    display: inline-block;
     font-size: 75%;
     margin-left: 0.4em;
     margin-right: 0.2em;
@@ -46,13 +45,6 @@ p a {
   p {
     a {
       &#{"[" + $external_link_pattern + "]"} {
-        padding-right: 1.1em;
-        display: inline-block;
-
-        &:after {
-          position: absolute;
-          line-height: 2.2;
-        }
 
         &.btn {
           padding-right: 2.1em;
