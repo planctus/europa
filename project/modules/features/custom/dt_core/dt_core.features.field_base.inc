@@ -134,6 +134,7 @@ function dt_core_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'policy' => 'policy',
+          'priority_policy_area' => 'priority_policy_area',
         ),
       ),
       'target_type' => 'node',

@@ -5581,7 +5581,7 @@ button.close {
 
 @media print {
   .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .btn-group, .form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .form-group, ul.nav-tabs,
-  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
+  .nav-tabs, .breadcrumb, .facet-tag, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn, select.lang-select-page__list, .notification, .search-form, .site-menu, .site-menu__toggle, .skip-link,
   #skip-link, .social-media-links {
     display: none !important; } }
 
@@ -6509,9 +6509,13 @@ Styleguide breadcrumb
   padding-bottom: 0.42em;
   max-width: 100%;
   color: #fff; }
-  .breadcrumb__link:hover {
+  .breadcrumb__link:hover,
+  .breadcrumb__link:active,
+  .breadcrumb__link:focus {
     color: #fff; }
-    .breadcrumb__link:hover .breadcrumb__text {
+    .breadcrumb__link:hover .breadcrumb__text,
+    .breadcrumb__link:active .breadcrumb__text,
+    .breadcrumb__link:focus .breadcrumb__text {
       text-decoration: underline; }
 
 .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
@@ -7425,7 +7429,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .lang-select-page--transparent select.lang-select-page__list:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   text-decoration: none;
   display: inline-block;
   font-family: 'EuropaIcons';
@@ -7445,7 +7449,7 @@ Styleguide: icon
 .icon--arrow-up, .icon--arrow-up:before {
   content: '\e61e'; }
 
-.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before {
+.icon--arrow-down, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .icon--arrow-down:before, .lang-select-page--transparent select.lang-select-page__list:after {
   content: '\e61d'; }
 
 .icon--spinner:before {
@@ -7475,8 +7479,11 @@ Styleguide: icon
 .icon--up:before {
   content: '\e618'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   content: '\e617'; }
+
+.icon--breadcrumb, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
+  content: '\e617' !important; }
 
 .icon--down:before {
   content: '\e616'; }
@@ -7946,6 +7953,92 @@ Styleguide: siteheader.langselect
     float: none; } }
 
 /*
+Language select (Page)
+
+Page specific language selection.
+
+Markup: html/lang-select-page.html
+
+.lang-select-page               - Default, background is light
+.lang-select-page--dark         - Background is dark blue or a picture
+.lang-select-page--transparent  - Transparent background
+.lang-select-page--dropdown     - When JS converts the ul to select
+
+Styleguide: langselect
+*/
+.lang-select-page {
+  background: #f2f2f2;
+  border-bottom: 1px solid #b3b4b5;
+  position: relative;
+  font-size: 0.778em;
+  float: left;
+  margin-bottom: 1em;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle; }
+  .front .lang-select-page {
+    display: none; }
+
+.icon.lang-select-page__icon, .lang-select-page__icon.search-form__btn {
+  float: left;
+  margin: 0 0.7em 0 0;
+  font-size: 2em;
+  padding: 0; }
+  .icon.lang-select-page__icon:before, .lang-select-page__icon.search-form__btn:before {
+    vertical-align: middle; }
+
+.lang-select-page__unavailable {
+  text-decoration: line-through; }
+
+.lang-select-page__list {
+  float: left;
+  padding: 0;
+  margin: 0; }
+  .lang-select-page__list .lang-select-page__option {
+    list-style: none;
+    float: left;
+    padding: 0.85em; }
+    .lang-select-page__list .lang-select-page__option a {
+      display: block; }
+    .lang-select-page__list .lang-select-page__option.is-selected {
+      background: #ffd617;
+      font-weight: bold;
+      color: #000; }
+
+.lang-select-page--dark {
+  border: none; }
+
+.lang-select-page--transparent {
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  color: #fff; }
+  .lang-select-page--transparent select.lang-select-page__list {
+    background-color: #012b58;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    line-height: 3.2; }
+    .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
+      border: 0; }
+    .lang-select-page--transparent select.lang-select-page__list > option {
+      background: #012b58; }
+  .lang-select-page--transparent .lang-select-page__option a {
+    color: #fff; }
+
+@media (min-width: 768px) {
+  .lang-select-page__option {
+    display: inline-block; }
+  .lang-select-page__unavailable {
+    margin-right: 3em; } }
+
+select.lang-select-page__list {
+  background: transparent url("../images/png/arrow-thick-down.png") no-repeat 8em center;
+  border-radius: 0;
+  padding-left: 0.5em;
+  width: 10em;
+  cursor: pointer; }
+
+/*
 Listing
 
 Listing components
@@ -8303,7 +8396,7 @@ Styleguide messages
     float: left;
     height: 2em;
     margin-right: 0.667em;
-    margin-top: -0.15em;
+    margin-top: -0.85em;
     width: 2em;
     content: '';
     position: absolute;
@@ -8720,9 +8813,9 @@ Styleguide: siteswitcher
     width: auto; } }
 
 /*
-Site header
+Search form
 
-Markup: html/site-header.html
+Markup: html/search-form.html
 
 Styleguide: siteheader.searchform
 */
@@ -8731,14 +8824,16 @@ Styleguide: siteheader.searchform
   border: 1px solid #b3b4b5;
   margin-bottom: 1em; }
 
-.search-form__textfield-wrapper, .search-form .form-type-textfield {
+.search-form__textfield-wrapper {
   margin: 0;
   width: 83%;
   float: left; }
 
 .search-form__textfield {
   margin: 0;
-  border: none; }
+  border: none;
+  width: 83%;
+  float: left; }
 
 .search-form__btn {
   width: 17%;
@@ -8763,7 +8858,7 @@ Styleguide: siteheader.searchform
   border: 1px solid #fff !important; }
 
 @media (min-width: 480px) {
-  .search-form__textfield-wrapper, .search-form .form-type-textfield {
+  .search-form__textfield {
     width: 67%; }
   .search-form__btn {
     text-indent: 0;
@@ -8849,6 +8944,126 @@ Styleguide social
   .social-media-links__item--noicon {
     font-size: 0.8em;
     margin-top: 1.2em; }
+
+/*
+Splash Page
+
+Markup: html/splash-page.html
+
+Styleguide splashpage
+*/
+.splash-page__site-header {
+  background: #ffffff; }
+  .splash-page__site-header .logo {
+    background: url("../images/svg/logo.svg") center center no-repeat;
+    background-origin: content-box; }
+    .no-svg .splash-page__site-header .logo {
+      background-image: url("../images/png/logo.png") center center no-repeat; }
+  @media (min-width: 480px) {
+    .splash-page__site-header .logo {
+      width: 290px;
+      height: 153px; } }
+  @media (min-width: 768px) {
+    .splash-page__site-header .logo {
+      width: 378px;
+      height: 193px; } }
+
+.splash-page__container {
+  position: relative; }
+
+.splash-page__content h2 {
+  display: none;
+  color: #ffffff;
+  font-size: 1.467em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  clear: both; }
+
+.splash-page__helper-text {
+  color: #ffffff;
+  font-size: 0.889em;
+  margin-top: 2em;
+  clear: both; }
+  .splash-page__helper-text p {
+    max-width: 100%; }
+
+.splash-page__btn-language {
+  background: #ffffff;
+  margin-bottom: 4px;
+  width: 100%;
+  text-align: left !important; }
+  .splash-page__btn-language:hover {
+    color: #000000;
+    background: #ffd617; }
+  .splash-page__btn-language.icon--check:before {
+    display: none; }
+
+.splash-page__btn-close {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  padding: 0.5em 0 0.5em 1em;
+  font-size: 0.889em;
+  font-weight: normal;
+  color: #ffffff;
+  display: none; }
+  .splash-page__btn-close:hover {
+    color: #ffffff; }
+  .splash-page__btn-close:after {
+    content: "X";
+    float: right;
+    display: inline-block;
+    border: 1px solid #ffffff;
+    margin-left: 0.5em;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 1.1em;
+    text-align: center; }
+
+.splash-page--overlay {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 68, 148, 0.95);
+  overflow-x: auto;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  text-align: left; }
+  .splash-page--overlay h2 {
+    display: block; }
+  .splash-page--overlay .splash-page__btn-language.is-active {
+    color: #000000;
+    background: #ffd617;
+    box-shadow: none; }
+  .splash-page--overlay .splash-page__btn-language.icon--check:before {
+    float: right;
+    display: block; }
+  .splash-page--overlay .splash-page__btn-close {
+    display: block; }
+
+body.disablescroll {
+  overflow: hidden; }
+
+.page-splash {
+  background: #004494; }
+
+.splash-page__helper-text table {
+  width: 100%; }
+
+.splash-page__helper-text tbody {
+  border-bottom: 1px solid #245898; }
+  .splash-page__helper-text tbody tr {
+    border-top: 1px solid #245898;
+    clear: both; }
+    .splash-page__helper-text tbody tr th {
+      vertical-align: top;
+      min-width: 6em;
+      font-weight: bold;
+      padding-top: 0.6em; }
+    .splash-page__helper-text tbody tr td, .splash-page__helper-text tbody tr th {
+      padding: 0.6em 0 0.6em 0; }
 
 /*
 Timeline

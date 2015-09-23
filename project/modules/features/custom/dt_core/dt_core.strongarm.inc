@@ -137,6 +137,8 @@ function dt_core_strongarm() {
   $strongarm->value = array(
     'search' => 'search',
     'search/node' => 'search/node',
+    'blog/tag' => 'blog/tag',
+    'customerror' => 'customerror',
   );
   $export['easy_breadcrumb-excluded_paths'] = $strongarm;
 

@@ -576,9 +576,32 @@ function _dt_core_enable_lanugages($languages = array()) {
     // Set the appropriate weight for languages to follow the order defined in
     // the array.
     $form_state['values']['weight'][$langcode] = -20 + $key;
-  }
-  // Save the order.
-  drupal_form_submit('locale_languages_overview_form', $form_state);
 
+    // Portuguese exception:
+    // In Drupal the "pt" prefix belongs to Portuguese / International but we
+    // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
+    // default prefix). We need to change this to "pt".
+    if ($langcode == 'pt-pt') {
+      db_update('languages')
+        ->fields(array(
+          'name' => 'Portuguese',
+          'prefix' => 'pt',
+        ))
+        ->condition('language', $langcode)
+        ->execute();
+    }
+  }
+  // Save the order through the original form.
+  drupal_form_submit('locale_languages_overview_form', $form_state);
+  // Enable URL suffix based language negotiation.
   multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * If a whitespace has been entered after a title, we remove it.
+ */
+function dt_core_node_presave($node) {
+  $node->title = rtrim($node->title);
 }

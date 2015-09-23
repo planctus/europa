@@ -23,6 +23,7 @@ features[field_instance][] = node-basic_page-body
 features[field_instance][] = node-basic_page-field_core_description
 features[field_instance][] = node-basic_page-field_core_in_page_navigation
 features[field_instance][] = node-basic_page-field_core_introduction
+features[field_instance][] = node-basic_page-field_core_legacy_link
 features[field_instance][] = node-basic_page-field_core_links
 features[field_instance][] = node-basic_page-field_core_parent
 features[field_instance][] = node-basic_page-group_content_access
