@@ -812,10 +812,8 @@ function europa_preprocess_block(&$variables) {
     if (!empty($variables['elements']['other']['#markup'])) {
       foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
         $options = array(
-          'language' => $lang,
-          'query' => $_GET,
+          'query' => drupal_get_query_parameters()
         );
-        unset($options['query']['q']);
         $options['query']['2nd-language'] = $code;
 
         $other .= "<li class='lang-select-page__option lang-select-page__other'>" . l($lang->native, current_path(), $options) . '</li>';
