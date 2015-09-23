@@ -7436,6 +7436,7 @@ Styleguide: icon
   text-transform: none;
   margin-left: 4px;
   line-height: 1;
+  display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
