@@ -6084,13 +6084,10 @@ p a {
     margin-left: 0.4em;
     margin-right: 0.2em; }
 
-.page-content ul a[href^="http"],
-.page-content p a[href^="http"] {
-  display: inline-block; }
-  .page-content ul a[href^="http"].btn,
-  .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
-  .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {
-    padding-right: 2.1em; }
+.page-content ul a[href^="http"].btn,
+.page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
+.inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {
+  padding-right: 2.1em; }
 
 /*
 Lists
