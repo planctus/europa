@@ -6080,23 +6080,14 @@ p a {
 .is-external, a[href^="http"], .listing__item-link[href^="http"] .listing__title {
   position: relative; }
   .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after {
-    display: inline-block;
     font-size: 75%;
     margin-left: 0.4em;
     margin-right: 0.2em; }
 
-.page-content ul a[href^="http"],
-.page-content p a[href^="http"] {
-  padding-right: 1.1em;
-  display: inline-block; }
-  .page-content ul a[href^="http"]:after,
-  .page-content p a[href^="http"]:after {
-    position: absolute;
-    line-height: 2.2; }
-  .page-content ul a[href^="http"].btn,
-  .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
-  .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {
-    padding-right: 2.1em; }
+.page-content ul a[href^="http"].btn,
+.page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle,
+.inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle, .page-content p a[href^="http"].btn, .page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle, .inpage-nav__navbar .page-content p a[href^="http"].inpage-nav__toggle {
+  padding-right: 2.1em; }
 
 /*
 Lists
@@ -7437,7 +7428,6 @@ Styleguide: icon
 
 .icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, a[href^="http"]:after, .listing__item-link[href^="http"] .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .lang-select-page--transparent select.lang-select-page__list:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
   text-decoration: none;
-  display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
   font-style: normal;
@@ -7446,6 +7436,7 @@ Styleguide: icon
   text-transform: none;
   margin-left: 4px;
   line-height: 1;
+  display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
@@ -8961,6 +8952,8 @@ Styleguide splashpage
 .splash-page__site-header {
   background: #ffffff; }
   .splash-page__site-header .logo {
+    margin: 16px auto 40px auto;
+    float: none;
     background: url("../images/svg/logo.svg") center center no-repeat;
     background-origin: content-box; }
     .no-svg .splash-page__site-header .logo {
