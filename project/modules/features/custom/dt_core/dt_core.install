@@ -504,3 +504,39 @@ function dt_core_update_7138() {
   $query = db_update('$field_revision_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
   drupal_set_message('<strong>' . $query . '</strong> revision_title_field title(s) have been fixed.');
 }
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7139() {
+  // Build our list of languages we have to transform to lower case.
+  $lower_case_languages = array(
+    'cs',
+    'da',
+    'et',
+    'el',
+    'es',
+    'fr',
+    'hr',
+    'lv',
+    'lt',
+    'hu',
+    'pl',
+    'pt-pt',
+    'ro',
+    'sk',
+    'sl',
+    'fi',
+    'sv',
+  );
+  // Loop the results and update the langcode.
+  foreach ($lower_case_languages as $langcode) {
+    $query = db_update('languages')
+      ->expression('native', 'LCASE(native)')
+      ->condition('language', $langcode)
+      ->execute();
+  }
+  // Show a message.
+  drupal_set_message('Language labels have been transformed into lower case');
+
+}
