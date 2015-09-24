@@ -605,3 +605,20 @@ function _dt_core_enable_lanugages($languages = array()) {
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
 }
+
+/**
+ * Implements hook_context_load_alter().
+ */
+function dt_core_context_load_alter(&$context) {
+  if ($context->name == 'dt_core_non_homepage_pages') {
+    global $language;
+    $interface_language = $language->language;
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      $content_languages = $node->translations->data;
+      if (array_key_exists($interface_language, $content_languages)) {
+        unset($context->reactions['block']['blocks']['language_selector_page-language_selector_page']);
+      }
+    }
+  }
+}
