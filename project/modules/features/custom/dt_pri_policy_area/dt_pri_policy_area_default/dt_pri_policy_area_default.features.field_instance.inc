@@ -189,7 +189,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_child_policies',
     'label' => 'Child Priority policy areas and Policies',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -387,7 +387,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_header_image',
     'label' => 'Header Background Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -560,7 +560,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'field_name' => 'field_core_introduction',
     'info_value' => NULL,
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -918,7 +918,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_persons',
     'label' => 'Related commissioners',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1032,7 +1032,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_publications',
     'label' => 'Documents',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
