@@ -15,6 +15,6 @@ function dt_banner_quote_install() {
 /**
  * Revert dt_banner_quote for changes.
  */
-function dt_publication_update_7101() {
+function dt_banner_quote_update_7101() {
   features_revert_module('dt_banner_quote');
 }
