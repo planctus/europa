@@ -11,3 +11,10 @@ function dt_banner_quote_install() {
   // Apply config to the helper content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('dt_banner_quote');
 }
+
+/**
+ * Revert dt_banner_quote for changes.
+ */
+function dt_publication_update_7101() {
+  features_revert_module('dt_banner_quote');
+}
