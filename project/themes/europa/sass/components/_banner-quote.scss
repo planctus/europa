@@ -1,0 +1,21 @@
+/*
+Quote Banner
+
+Markup: html/banner-quote.html
+
+Styleguide: banner
+*/
+
+$quote_border_offset: 0.400em;
+
+.banner_quote {
+  border-left: $quote_border_offset solid $yellow-light;
+  margin-left: $quote_border_offset;
+  padding-left: $quote_border_offset;
+
+  &__author {
+    font-size: $font-size-xsmall;
+    font-weight: $font-weight-bold;
+    padding-bottom: 0.6em;
+  }
+}
