@@ -78,3 +78,10 @@ function dt_announcement_update_7103() {
     'dt_announcement' => array('field_group', 'variable'),
   ));
 }
+
+/**
+ * Reverting dt_announcement to update the views.
+ */
+function dt_announcement_update_7104() {
+  features_revert_module('dt_announcement');
+}
