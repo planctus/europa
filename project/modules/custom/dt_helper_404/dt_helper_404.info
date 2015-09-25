@@ -1,0 +1,3 @@
+name = Helper 404
+description = Show a 404 page on non self contained content types.
+core = 7.x

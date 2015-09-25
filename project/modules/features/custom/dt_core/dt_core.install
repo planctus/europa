@@ -504,3 +504,10 @@ function dt_core_update_7138() {
   $query = db_update('$field_revision_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
   drupal_set_message('<strong>' . $query . '</strong> revision_title_field title(s) have been fixed.');
 }
+
+/**
+ * Enable dt_helper_404 module.
+ */
+function dt_core_update_7139() {
+  module_enable(array('dt_helper_404'));
+}
