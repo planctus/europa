@@ -194,3 +194,11 @@ function dt_department_update_7111() {
   // Reverting feature.
   features_revert_module('dt_department');
 }
+
+/**
+ * NEXTEUROPA-4532: change display suite setting.
+ */
+function dt_department_update_7112() {
+  // Reverting feature.
+  features_revert_module('dt_department');
+}
