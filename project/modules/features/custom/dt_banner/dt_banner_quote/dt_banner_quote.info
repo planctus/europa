@@ -39,3 +39,7 @@ features_exclude[dependencies][field_group] = field_group
 features_exclude[dependencies][media] = strongarm
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][features] = features
+features_exclude[dependencies][i18n_field] = i18n_field
+features_exclude[dependencies][options] = options
+features_exclude[dependencies][strongarm] = strongarm
+features_exclude[dependencies][title] = title

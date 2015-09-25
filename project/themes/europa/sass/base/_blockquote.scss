@@ -6,7 +6,11 @@ Markup: html/blockquote.html
 Styleguide text.blockquote
 */
 
-blockquote {
+$small-quote-size: 1em;
+$small-quote-width: 0.5em;
+
+blockquote,
+.blockquote {
   font-family: $font-family-serif;
   font-style: italic;
   font-size: $font-size-big;
@@ -45,6 +49,25 @@ blockquote {
       bottom: 0;
       right: 0;
     }
+  }
+
+  &--small {
+    @extend blockquote;
+    padding-left: 0;
+    font-size: $font-size-little;
+    font-style: normal;
+    color: $text-color;
+    font-family: $font-family-base;
+  }
+
+  &__open:after,
+  &__close:after {
+    content: '“';
+    display: inline-block;
+    font-size: inherit;
+  }
+  &__close:after{
+    content: '”';
   }
 }
 

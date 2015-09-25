@@ -5,3 +5,39 @@
  */
 
 include_once 'dt_banner_quote.features.inc';
+
+/**
+ * Implements hook_theme().
+ *
+ * This will add a new template file to the nodes display.
+ */
+function dt_banner_quote_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['node__banner_quote'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--banner_quote',
+    'path' => drupal_get_path('module', 'dt_banner_quote') . '/templates',
+  );
+  return $theme;
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * We use this to wrap the quote in quotes and to prefix the author with a dash.
+ */
+function dt_banner_quote_node_view($node, $view_mode, $langcode) {
+  // Only execute on quote banners in teaser mode.
+  if ($node->type == 'banner_quote' && $view_mode == 'teaser') {
+    // Normally it's just one, but lets keep in mind this can change. The next
+    // actions are needed to suffix the author with a dash.
+    foreach ($node->content['field_banner_author']['#items'] as $key => $quote_author) {
+      $node->content['field_banner_author'][$key]['#markup'] = ' - ' . $node->content['field_banner_author'][$key]['#markup'];
+    }
+
+    // Also prefix and suffix the content.
+    $node->content['field_core_description'][$key]['#prefix'] = '<span class="blockquote__open"></span>';
+    $node->content['field_core_description'][$key]['#suffix'] .= '<span class="blockquote__close"></span>';
+  }
+}
