@@ -87,7 +87,7 @@ function dt_announcement_update_7104() {
 }
 
 /**
- * Reverting dt_announcement to update the views.
+ * NEXTEUROPA-5329: Announcements block sticky descending feature.
  */
 function dt_announcement_update_7105() {
   features_revert_module('dt_announcement');
