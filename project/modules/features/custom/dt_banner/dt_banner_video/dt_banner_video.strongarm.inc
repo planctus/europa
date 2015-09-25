@@ -110,6 +110,9 @@ function dt_banner_video_strongarm() {
         'path' => array(
           'weight' => '1',
         ),
+        'language' => array(
+          'weight' => '5',
+        ),
       ),
       'display' => array(),
     ),
