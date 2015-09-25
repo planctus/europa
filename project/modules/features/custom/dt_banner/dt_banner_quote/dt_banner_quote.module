@@ -14,8 +14,6 @@ include_once 'dt_banner_quote.features.inc';
 function dt_banner_quote_theme($existing, $type, $theme, $path) {
   $theme = array();
   $theme['node__banner_quote'] = array(
-    'render element' => 'content',
-    'base hook' => 'node',
     'template' => 'node--banner_quote',
     'path' => drupal_get_path('module', 'dt_banner_quote') . '/templates',
   );
