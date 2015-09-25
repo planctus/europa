@@ -611,7 +611,7 @@ function dt_core_node_presave($node) {
  */
 function dt_core_context_load_alter(&$context) {
   if ($context->name == 'dt_core_non_homepage_pages') {
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
+    if (menu_get_object('node')) {
       global $language;
 
       $node = node_load(arg(1));
