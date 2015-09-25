@@ -5,3 +5,30 @@ Markup: html/banner-video.html
 
 Styleguide: banner.video
 */
+
+.banner_video {
+
+  &__video {
+
+    & .file {
+      padding: 0;
+      margin-bottom: 0;
+    }
+    & iframe {
+      width: 100%;
+      display:block;
+    }
+  }
+
+  &__caption {
+    background: $grey-lighter;
+    font-size: $font-size-xsmall;
+    padding: 0.500em 1em;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__paragraph {
+    font-size: $font-size-little;
+  }
+}

@@ -5,3 +5,18 @@
  */
 
 include_once 'dt_banner_video.features.inc';
+
+
+/**
+ * Implements hook_theme().
+ *
+ * This will add a new template file to the nodes display.
+ */
+function dt_banner_video_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['node__banner_video'] = array(
+    'template' => 'node--banner_video',
+    'path' => drupal_get_path('module', 'dt_banner_video') . '/templates',
+  );
+  return $theme;
+}

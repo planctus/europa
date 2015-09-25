@@ -11,3 +11,10 @@ function dt_banner_video_install() {
   // Apply config to the helper content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('dt_banner_video');
 }
+
+/**
+ * Enable the media_avportal module.
+ */
+function dt_banner_video_update_7101() {
+  module_enable(array('media_avportal'));
+}
