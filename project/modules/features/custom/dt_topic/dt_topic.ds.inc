@@ -130,9 +130,7 @@ function dt_topic_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => '',
         'class' => '',
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
+        'ft' => array(),
       ),
     ),
   );
