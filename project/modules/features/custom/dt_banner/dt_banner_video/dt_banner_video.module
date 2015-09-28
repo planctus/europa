@@ -20,3 +20,9 @@ function dt_banner_video_theme($existing, $type, $theme, $path) {
   );
   return $theme;
 }
+
+/**
+ * Test.
+ */
+function dt_banner_video_init() {
+}
