@@ -57,3 +57,34 @@ function nexteuropa_entities_form_alter(&$form, $form_state, $form_id) {
   }
 }
 
+/**
+ * Implements hook_page_alter().
+ *
+ * We use this because it is only called once per request.
+ */
+function nexteuropa_entities_page_alter(&$page) {
+  // Get the node we are about to display.
+  if ($node = menu_get_object('node')) {
+    // Check if it is in the helper list.
+    if (_content_type_is_helper($node->type)) {
+      // Redirect to the 404 page.
+      drupal_goto(MENU_NOT_FOUND);
+    }
+  }
+}
+
+/**
+ * Helper returning TRUE if a node type is a helper.
+ * @param $node_type
+ * @return bool
+ */
+function _content_type_is_helper($node_type) {
+  $node_types = node_type_get_names();
+  $check = FALSE;
+  foreach($node_types as $type => $label) {
+    if ($type == $node_type) {
+      return variable_get('nexteuropa_entities_helper_node_type_' . $type, 0) ? TRUE : FALSE;
+    }
+  }
+  return $check;
+}

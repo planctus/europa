@@ -37,6 +37,6 @@ function nexteuropa_entities_settings() {
 function nexteuropa_entities_settings_submit($form, &$form_state) {
   $node_types = $form_state['values']['nexteuropa_entities_node_types_fieldset']['node_types'];
   foreach($node_types as $node_type => $selection) {
-    $selection ? variable_set('nexteuropa_entities_helper_' . $node_type, $selection) : FALSE;
+    variable_set('nexteuropa_entities_helper_' . $node_type, $selection);
   }
 }
