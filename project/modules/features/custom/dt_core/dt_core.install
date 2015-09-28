@@ -506,8 +506,8 @@ function dt_core_update_7138() {
 }
 
 /**
- * Enable dt_helper_404 module.
+ * NEXTEUROPA-4747: Enabling nexteuropa_entities to introduce helper content types.
  */
 function dt_core_update_7139() {
-  module_enable(array('dt_helper_404'));
+  module_enable(array('nexteuropa_entities'));
 }

@@ -41,7 +41,6 @@ function nexteuropa_entities_form_alter(&$form, $form_state, $form_id) {
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#group' => 'additional_settings',
-      '#weight' => -1,
     );
 
     $form['nexteuropa_settings']['helper_content_type'] = array(
@@ -52,9 +51,18 @@ function nexteuropa_entities_form_alter(&$form, $form_state, $form_id) {
         0 => t('Disabled'),
         1 => t('Enabled'),
       ),
-      '#description' => t('Set this node type to be a helper?'),
+      '#description' => t('Disallow anonymous users from viewing the full page of this content.'),
     );
+    // Add a submit handler function.
+    $form['#submit'][] = '_content_type_helper_set';
   }
+}
+
+/**
+ * Helper saving 'helper' state per content type.
+ */
+function _content_type_helper_set($form, &$form_state) {
+  variable_set('nexteuropa_entities_helper_node_type_' . $form['#node_type']->type, $form_state['values']['helper_content_type']);
 }
 
 /**
@@ -66,7 +74,7 @@ function nexteuropa_entities_page_alter(&$page) {
   // Get the node we are about to display.
   if ($node = menu_get_object('node')) {
     // Check if it is in the helper list.
-    if (_content_type_is_helper($node->type)) {
+    if (_content_type_is_helper($node->type) && !user_is_logged_in()) {
       // Redirect to the 404 page.
       drupal_goto(MENU_NOT_FOUND);
     }
@@ -80,11 +88,10 @@ function nexteuropa_entities_page_alter(&$page) {
  */
 function _content_type_is_helper($node_type) {
   $node_types = node_type_get_names();
-  $check = FALSE;
   foreach($node_types as $type => $label) {
     if ($type == $node_type) {
       return variable_get('nexteuropa_entities_helper_node_type_' . $type, 0) ? TRUE : FALSE;
     }
   }
-  return $check;
+  return FALSE;
 }
