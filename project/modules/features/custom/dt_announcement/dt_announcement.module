@@ -5,3 +5,52 @@
  */
 
 include_once 'dt_announcement.features.inc';
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Adds token support for see more views blocks.
+ */
+function dt_announcement_views_pre_render(&$view) {
+  if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
+    // Tokenize, resolved contextual filter check.
+    // Inintialize our read more text variable.
+    $read_more_text = $view->display_handler->default_display->options['use_more_text'];
+
+    if (!empty($view->build_info['substitutions']['%1'])) {
+      $read_more_text .= ' ' . $view->build_info['substitutions']['%1'];
+    }
+
+    // Alter the output to our custom text.
+    $view->display_handler->default_display->options['use_more_text'] = $read_more_text;
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dt_announcement_views_query_alter(&$view, &$query) {
+  // Dpm($query);.
+  if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
+
+    // This is just an example id.
+    $nid = 161;
+
+    // Create the join object.
+    $join_query = new views_join();
+    $join_query->table = 'field_data_field_core_persons';
+    $join_query->field = 'entity_id';
+    $join_query->left_table = 'node';
+    $join_query->left_field = 'nid';
+    $join_query->type = 'INNER';
+
+    // Add it to our query.
+    $query->add_relationship(
+      'field_data_field_core_persons',
+      $join_query,
+      'node'
+    );
+
+    $query->add_where('field_data_field_core_persons', 'field_data_field_core_persons.entity_id', $nid);
+  }
+}
