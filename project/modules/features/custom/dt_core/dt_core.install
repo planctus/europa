@@ -510,4 +510,23 @@ function dt_core_update_7138() {
  */
 function dt_core_update_7139() {
   module_enable(array('nexteuropa_entities'));
+
+  $helper_types = array(
+    'article',
+    'banner_quote',
+    'banner_video',
+    'class_link_group',
+    'featured_item',
+    'policy_implementation',
+    'policy_input',
+    'policy_keyfile',
+    'publication',
+    'toplink',
+    'editorial_team',
+    'file',
+  );
+
+  foreach($helper_types as $type) {
+    variable_set('helper_node_type_' . $type, 1);
+  }
 }
