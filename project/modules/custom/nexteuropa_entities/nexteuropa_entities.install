@@ -10,7 +10,8 @@
  * Implements hook_install().
  */
 function nexteuropa_entities_install() {
-  drupal_set_message(t("You can indicate helper content types at admin/config/content/nexteuropa_entities/settings."));
+  $t = get_t();
+  drupal_set_message($t('You can now indicate helper content types at the <a href="@settings-url">admin/config/content/nexteuropa_entities/settings</a>.', array('@settings-url' => url('admin/config/content/nexteuropa_entities/settings'))));
 }
 
 /**
@@ -19,7 +20,7 @@ function nexteuropa_entities_install() {
 function nexteuropa_entities_uninstall() {
   $node_types = node_type_get_names();
   foreach($node_types as $type) {
-    variable_del('nexteuropa_entities_helper_node_type_' . $type);
+    variable_del('helper_node_type_' . $type);
   }
   $path = drupal_get_path('module', 'nexteuropa_entities') . '/nexteuropa_entities.info';
   $info = drupal_parse_info_file($path);
