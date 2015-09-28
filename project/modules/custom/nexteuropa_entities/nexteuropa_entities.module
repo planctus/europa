@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function nexteuropa_entities_permission() {
+  return array(
+    'indicate helper content types' => array(
+      'title' => t('Helper content types'),
+      'description' => t('Allow admin users to indicate helper content types'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function nexteuropa_entities_menu() {
+  $items = array();
+  $items['admin/config/content/nexteuropa_entities/settings'] = array(
+    'title' => t('Helper content types'),
+    'description' => t('Indicate helper content types for the system.'),
+    'page callback' => 'drupal_get_form',
+    'access arguments' => array('administer site configuration'),
+    'page arguments' => array('nexteuropa_entities_settings'),
+    'file' => 'nexteuropa_entities.admin.inc',
+    'file path' => drupal_get_path('module', 'nexteuropa_entities'),
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function nexteuropa_entities_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'node_type_form') {
+    $form['nexteuropa_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('NextEuropa settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#group' => 'additional_settings',
+      '#weight' => -1,
+    );
+
+    $form['nexteuropa_settings']['helper_content_type'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Helper content type'),
+      '#default_value' => variable_get('nexteuropa_entities_helper_node_type_' . $form['#node_type']->type, FALSE),
+      '#options' => array(
+        0 => t('Disabled'),
+        1 => t('Enabled'),
+      ),
+      '#description' => t('Set this node type to be a helper?'),
+    );
+  }
+}
+
