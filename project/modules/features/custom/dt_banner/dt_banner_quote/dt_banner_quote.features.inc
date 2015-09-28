@@ -22,7 +22,7 @@ function dt_banner_quote_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_banner_quote_node_info() {
   $items = array(
     'banner_quote' => array(
-      'name' => t('Quote Banner'),
+      'name' => t('Banner: Quote'),
       'base' => 'node_content',
       'description' => t('Quote Banner content type for dt.'),
       'has_title' => '1',

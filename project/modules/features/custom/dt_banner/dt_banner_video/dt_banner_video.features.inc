@@ -25,7 +25,7 @@ function dt_banner_video_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_banner_video_node_info() {
   $items = array(
     'banner_video' => array(
-      'name' => t('Video Banner'),
+      'name' => t('Banner: Video'),
       'base' => 'node_content',
       'description' => t('Video Banner content type for dt.'),
       'has_title' => '1',
