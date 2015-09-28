@@ -76,9 +76,7 @@ function _helper_content_types_single_submit($form, &$form_state) {
 function nexteuropa_entities_page_alter(&$page) {
   // Get the node we are about to display.
   if ($node = menu_get_object('node')) {
-    // Check if it is in the helper list.
-    if (_content_type_is_helper($node->type) && !user_is_logged_in()) {
-      // Redirect to the 404 page.
+    if (!user_access('access helper content types') && _content_type_is_helper($node->type)) {
       drupal_goto(MENU_NOT_FOUND);
     }
   }
