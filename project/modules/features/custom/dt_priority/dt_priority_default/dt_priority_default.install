@@ -24,10 +24,8 @@ function dt_priority_default_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * Revert to make display changes take effect.
  */
-/*
 function dt_priority_default_update_7101() {
-
+  features_revert_module('dt_priority_default');
 }
-*/
