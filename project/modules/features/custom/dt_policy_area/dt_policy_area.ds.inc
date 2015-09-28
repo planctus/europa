@@ -138,9 +138,7 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'title_field' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
+        'ft' => array(),
       ),
     ),
   );
