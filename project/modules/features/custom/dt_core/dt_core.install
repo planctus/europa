@@ -506,9 +506,16 @@ function dt_core_update_7138() {
 }
 
 /**
- * NEXTEUROPA-4747: Enabling nexteuropa_entities to introduce helper content types.
+ * Reset weight_frontpage.
  */
 function dt_core_update_7139() {
+  variable_set('weight_frontpage', 0);
+}
+
+/**
+ * NEXTEUROPA-4747: Enabling nexteuropa_entities to introduce helper content types.
+ */
+function dt_core_update_7140() {
   module_enable(array('nexteuropa_entities'));
 
   $helper_types = array(
@@ -526,7 +533,7 @@ function dt_core_update_7139() {
     'file',
   );
 
-  foreach($helper_types as $type) {
+  foreach ($helper_types as $type) {
     variable_set('helper_node_type_' . $type, 1);
   }
 }
