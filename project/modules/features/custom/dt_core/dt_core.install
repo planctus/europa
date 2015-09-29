@@ -506,9 +506,16 @@ function dt_core_update_7138() {
 }
 
 /**
- * Update specific languages to be lower case.
+ * Reset weight_frontpage.
  */
 function dt_core_update_7139() {
+  variable_set('weight_frontpage', 0);
+}
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7140() {
   // Build our list of languages we have to transform to lower case.
   $lower_case_languages = array(
     'cs',
@@ -538,5 +545,4 @@ function dt_core_update_7139() {
   }
   // Show a message.
   drupal_set_message('Language labels have been transformed into lower case');
-
 }

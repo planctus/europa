@@ -188,9 +188,7 @@ function dt_department_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => '',
         'class' => '',
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -352,7 +350,7 @@ function dt_department_ds_layout_settings_info() {
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
-    'layout_link_attribute' => 'content',
+    'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
   $export['node|department|meta'] = $ds_layout;
