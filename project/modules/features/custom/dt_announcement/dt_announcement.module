@@ -102,30 +102,35 @@ function dt_announcement_views_query_alter(&$view, &$query) {
  * Helper function to get the available entity reference fields.
  *
  * This function get's all entity reference fields that reference the content
- * type.
+ * type and are available on the announcement content type.
  */
 function _dt_announcement_get_content_reference_fields($node_type) {
-  // Inintialize our variable.
+  // Inintialize variables.
   $field_join_list = array();
-
-  // First we get a cached list of fields.
-  $available_fields = field_info_fields();
-
-  // Counter.
   $counter = 0;
 
-  // Loop the result.
-  foreach ($available_fields as $field_name => $field_data) {
-    // If it is an entity reference field we continue.
-    if ($field_data['type'] == 'entityreference') {
-      // If this targets our bundle. We can include it.
-      if (!empty($field_data['settings']['handler_settings']['target_bundles'][$node_type])) {
-        // Add it to our array.
-        $field_join_list[$counter]['data'] = 'field_data_' . $field_name;
-        $field_join_list[$counter]['name'] = $field_name;
+  // Our full group name defenition.
+  $group_name = 'group_announcement_related|node|announcement|form';
 
-        // Increment the counter.
-        $counter++;
+  // Get our cached ctools export object.
+  $field_group = ctools_export_load_object('field_group', 'conditions', array('identifier' => $group_name));
+
+  // Get the full list of entity reference fields.
+  $available_fields = field_info_fields();
+
+  // Loop all the available fields.
+  foreach ($available_fields as $field_name => $field_data) {
+    // Check only entityreference fields.
+    if ($field_data['type'] == 'entityreference') {
+      // And those that target our node type.
+      if (!empty($field_data['settings']['handler_settings']['target_bundles'][$node_type])) {
+        // Then if they are in our group, we include them.
+        if (in_array($field_name, $field_group[$group_name]->data['children'])) {
+          // Add the data to our array.
+          $field_join_list[$counter]['data'] = 'field_data_' . $field_name;
+          $field_join_list[$counter]['name'] = $field_name;
+          $count++;
+        }
       }
     }
   }
