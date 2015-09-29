@@ -168,19 +168,6 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_announcement_location' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'field_core_persons' => array(
       'formatter_settings' => array(
         'ft' => array(

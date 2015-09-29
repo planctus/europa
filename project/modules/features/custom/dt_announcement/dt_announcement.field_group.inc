@@ -214,6 +214,8 @@ function dt_announcement_field_group_info() {
       2 => 'field_core_department',
       3 => 'field_core_persons',
       4 => 'field_core_topics',
+      5 => 'field_core_priorities',
+      6 => 'field_core_pri_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
