@@ -32,37 +32,93 @@ function dt_announcement_views_pre_render(&$view) {
 function dt_announcement_views_query_alter(&$view, &$query) {
   // Set our conditional.
   $isannblock = ($view->name == 'announcements' && $view->current_display == 'latest_block');
+
   // Check if its the correct type and if the argument is set.
   if ($isannblock && !empty($view->args[0])) {
-    // Get our node type.
+
+    // Get our node type. And then call to our dt function.
     $node_type = _dt_announcement_get_node_type($view->args[0]);
-    dpm($node_type);
-    // Remove our base condition.
-    unset($query->where[0]['conditions'][0]);
+    $fields_to_join = _dt_announcement_get_content_reference_fields($node_type);
 
-    // Create the join object.
-    $join_query = new views_join();
-    $join_query->table = 'field_data_field_core_persons';
-    $join_query->field = 'entity_id';
-    $join_query->left_table = 'node';
-    $join_query->left_field = 'nid';
-    $join_query->type = 'INNER';
+    // Only apply our logic if we have fields to join.
+    if (!empty($fields_to_join)) {
 
-    // Add it to our query.
-    $query->add_relationship(
-      'persons_node',
-      $join_query,
-      'node'
-    );
+      // Remove our base condition.
+      unset($query->where[0]['conditions'][0]);
 
-    // Add the where condition, to filter our nodes.
-    $query->add_where(
-      'field_data_field_core_persons',
-      'persons_node.field_core_persons_target_id',
-      $view->args[0]
-    );
+      // Our "or" group.
+      $db_or = db_or();
 
+      // Loop our result and add the join.
+      foreach ($fields_to_join as $key => $value) {
+
+        // Alias.
+        $alias = $node_type . '_node_' . $key;
+
+        // Create the join object.
+        $join_query = new views_join();
+        $join_query->table = $value['data'];
+        $join_query->field = 'entity_id';
+        $join_query->left_table = 'node';
+        $join_query->left_field = 'nid';
+        $join_query->type = 'LEFT';
+
+        // Add it to our query.
+        $query->add_relationship(
+          $alias,
+          $join_query,
+          'node'
+        );
+
+        // Add our conditions.
+        $db_or->condition(
+          $alias . '.' . $value['name'] . '_target_id',
+          $view->args[0]
+        );
+
+      }
+
+      // Add our or conditional.
+      // Add the where condition, to filter our nodes.
+      $query->add_where(
+        'OR',
+        $db_or
+      );
+
+    }
   }
+}
+
+/**
+ * Helper function to get the available entity reference fields.
+ */
+function _dt_announcement_get_content_reference_fields($node_type) {
+  // Inintialize our variable.
+  $field_join_list = array();
+
+  // First we get a cached list of fields.
+  $available_fields = field_info_fields();
+
+  // Counter.
+  $counter = 0;
+
+  // Loop the result.
+  foreach ($available_fields as $field_name => $field_data) {
+    // If it is an entity reference field we continue.
+    if ($field_data['type'] == 'entityreference') {
+      // If this targets our bundle. We can include it.
+      if (!empty($field_data['settings']['handler_settings']['target_bundles'][$node_type])) {
+        // Add it to our array.
+        $field_join_list[$counter]['data'] = 'field_data_' . $field_name;
+        $field_join_list[$counter]['name'] = $field_name;
+
+        // Increment the counter.
+        $counter++;
+      }
+    }
+  }
+  // Return the data we have.
+  return $field_join_list;
 }
 
 /**
