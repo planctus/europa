@@ -112,8 +112,9 @@ function _dt_announcement_get_content_reference_fields($node_type) {
   // Our full group name defenition.
   $group_name = 'group_announcement_related|node|announcement|form';
 
-  // Get our cached ctools export object.
-  $field_group = ctools_export_load_object('field_group', 'conditions', array('identifier' => $group_name));
+  // Get our cached ctools export object. We use the field_group function for
+  // this at it gives us a clean response.
+  $field_group = field_group_load_field_group('group_announcement_related', 'node', 'announcement', 'form');
 
   // Get the full list of entity reference fields.
   $available_fields = field_info_fields();
@@ -125,7 +126,7 @@ function _dt_announcement_get_content_reference_fields($node_type) {
       // And those that target our node type.
       if (!empty($field_data['settings']['handler_settings']['target_bundles'][$node_type])) {
         // Then if they are in our group, we include them.
-        if (in_array($field_name, $field_group[$group_name]->data['children'])) {
+        if (in_array($field_name, $field_group->children)) {
           // Add the data to our array.
           $field_join_list[$counter]['data'] = 'field_data_' . $field_name;
           $field_join_list[$counter]['name'] = $field_name;
