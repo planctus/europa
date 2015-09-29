@@ -10,6 +10,8 @@ include_once 'dt_announcement.features.inc';
  * Implements hook_views_pre_render().
  *
  * Adds token support for see more views blocks.
+ * You can use [node_title] in the read more text to have it replaced by the
+ * node title.
  */
 function dt_announcement_views_pre_render(&$view) {
   if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
@@ -18,7 +20,7 @@ function dt_announcement_views_pre_render(&$view) {
     $read_more_text = $view->display_handler->default_display->options['use_more_text'];
 
     if (!empty($view->build_info['substitutions']['%1'])) {
-      $read_more_text .= ' ' . $view->build_info['substitutions']['%1'];
+      $read_more_text = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $read_more_text);
     }
 
     // Alter the output to our custom text.
@@ -28,6 +30,13 @@ function dt_announcement_views_pre_render(&$view) {
 
 /**
  * Implements hook_views_query_alter().
+ *
+ * This query alteration will check if we are displaying the latest block. If we
+ * do, then we get the argument node type, and all reference fields using this
+ * node type.
+ * For each field we have, we create a join to fetch the node id's. The sorting
+ * used in views will be respected. We do however remove the contextual filter
+ * as we do not want to filter on that in this case.
  */
 function dt_announcement_views_query_alter(&$view, &$query) {
   // Set our conditional.
@@ -91,6 +100,9 @@ function dt_announcement_views_query_alter(&$view, &$query) {
 
 /**
  * Helper function to get the available entity reference fields.
+ *
+ * This function get's all entity reference fields that reference the content
+ * type.
  */
 function _dt_announcement_get_content_reference_fields($node_type) {
   // Inintialize our variable.
@@ -117,12 +129,16 @@ function _dt_announcement_get_content_reference_fields($node_type) {
       }
     }
   }
+
   // Return the data we have.
   return $field_join_list;
 }
 
 /**
  * Helper function to get the node type.
+ *
+ * Simple database query to get the node type from a node id. We do it this way
+ * because now we can avoid a heavy node_load.
  */
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",
