@@ -30,11 +30,15 @@ function dt_announcement_views_pre_render(&$view) {
  * Implements hook_views_query_alter().
  */
 function dt_announcement_views_query_alter(&$view, &$query) {
-  // Dpm($query);.
-  if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
-
-    // This is just an example id.
-    $nid = 161;
+  // Set our conditional.
+  $isannblock = ($view->name == 'announcements' && $view->current_display == 'latest_block');
+  // Check if its the correct type and if the argument is set.
+  if ($isannblock && !empty($view->args[0])) {
+    // Get our node type.
+    $node_type = _dt_announcement_get_node_type($view->args[0]);
+    dpm($node_type);
+    // Remove our base condition.
+    unset($query->where[0]['conditions'][0]);
 
     // Create the join object.
     $join_query = new views_join();
@@ -46,11 +50,25 @@ function dt_announcement_views_query_alter(&$view, &$query) {
 
     // Add it to our query.
     $query->add_relationship(
-      'field_data_field_core_persons',
+      'persons_node',
       $join_query,
       'node'
     );
 
-    $query->add_where('field_data_field_core_persons', 'field_data_field_core_persons.entity_id', $nid);
+    // Add the where condition, to filter our nodes.
+    $query->add_where(
+      'field_data_field_core_persons',
+      'persons_node.field_core_persons_target_id',
+      $view->args[0]
+    );
+
   }
+}
+
+/**
+ * Helper function to get the node type.
+ */
+function _dt_announcement_get_node_type($nid) {
+  return db_query("SELECT type FROM {node} WHERE nid=:nid",
+    array(':nid' => $nid))->fetchField();
 }
