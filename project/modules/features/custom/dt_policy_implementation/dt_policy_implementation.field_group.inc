@@ -138,16 +138,10 @@ function dt_policy_implementation_field_group_info() {
       0 => 'field_policy_imp_status',
       1 => 'field_policy_imp_type',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_policy_implementation_meta|node|policy_implementation|teaser'] = $field_group;
