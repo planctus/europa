@@ -349,15 +349,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'content_type_label',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta meta--header',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'classes' => 'meta--header',
       ),
     ),
   );
@@ -378,16 +374,10 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'content_type_label',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta meta--header',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_pri_pol_area_meta|node|priority_policy_area|teaser'] = $field_group;
