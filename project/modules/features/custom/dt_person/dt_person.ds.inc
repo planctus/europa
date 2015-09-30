@@ -46,6 +46,48 @@ function dt_person_ds_field_settings_info() {
   );
   $export['node|person|meta'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|name';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'name';
+  $ds_fieldsetting->settings = array(
+    'full_name' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|person|name'] = $ds_fieldsetting;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_custom_fields_info().
+ */
+function dt_person_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'full_name';
+  $ds_field->label = 'Full name';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'person|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<span class=".full-name">[node:field_person_first_name][node:field_person_last_name]</span>',
+      'format' => 'full_html',
+    ),
+    'use_token' => 1,
+  );
+  $export['full_name'] = $ds_field;
+
   return $export;
 }
 
