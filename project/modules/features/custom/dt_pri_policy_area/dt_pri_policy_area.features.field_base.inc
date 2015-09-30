@@ -45,7 +45,7 @@ function dt_pri_policy_area_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
         ),
       ),
       'target_type' => 'node',
@@ -89,7 +89,7 @@ function dt_pri_policy_area_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
         ),
       ),
       'target_type' => 'node',
