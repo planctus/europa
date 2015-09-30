@@ -23,7 +23,7 @@ function nexteuropa_formatters_field_group_formatter_info() {
   $formatters['meta_wrapper'] = array(
     'label' => t('Meta Wrapper'),
     'description' => t('This fieldgroup renders meta component wrapper'),
-    'instance_settings' => array('classes' => ''),
+    'instance_settings' => array('modifier' => ''),
   );
 
   foreach (array_keys($formatters) as $key) {
@@ -35,6 +35,36 @@ function nexteuropa_formatters_field_group_formatter_info() {
     'form' => $formatters,
     'display' => $formatters,
   );
+}
+
+/**
+ * Implements hook_field_group_format_settings().
+ */
+function nexteuropa_formatters_field_group_format_settings($group) {
+
+  // Add a wrapper for extra settings to use by others.
+  $form = array(
+    'instance_settings' => array(
+      '#tree' => TRUE,
+      '#weight' => 5,
+    ),
+  );
+
+  switch ($group->format_type) {
+    case 'meta_wrapper':
+      $form['instance_settings']['modifier'] = array(
+        '#title' => t('Modifiers'),
+        '#type' => 'select',
+        '#options' => array(
+          '' => t('None'),
+          'meta--header' => t('Meta header'),
+        ),
+        '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
+      );
+      break;
+  }
+
+  return $form;
 }
 
 /**
@@ -55,8 +85,8 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
         '#id' => $id,
       );
 
-      $classes = ' ' . $group->format_settings['instance_settings']['classes'];
-      $add['#prefix'] = '<div class="meta' . $classes . '">';
+      $modifiers = ' ' . $group->format_settings['instance_settings']['modifier'];
+      $add['#prefix'] = '<div class="meta' . $modifiers . '">';
       $add['#suffix'] = '</div>';
 
       $element += $add;

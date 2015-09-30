@@ -291,7 +291,7 @@ function dt_policy_area_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta--header',
+        'modifier' => 'meta--header',
       ),
     ),
   );

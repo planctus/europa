@@ -330,7 +330,7 @@ function dt_topic_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta--header',
+        'modifier' => 'meta--header',
       ),
     ),
   );
