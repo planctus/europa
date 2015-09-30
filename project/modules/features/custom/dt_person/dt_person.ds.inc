@@ -136,5 +136,33 @@ function dt_person_ds_layout_settings_info() {
   );
   $export['node|person|meta'] = $ds_layout;
 
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|person|name';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'person';
+  $ds_layout->view_mode = 'name';
+  $ds_layout->layout = 'ne_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'main' => array(
+        0 => 'full_name',
+      ),
+    ),
+    'fields' => array(
+      'full_name' => 'main',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|person|name'] = $ds_layout;
+
   return $export;
 }
