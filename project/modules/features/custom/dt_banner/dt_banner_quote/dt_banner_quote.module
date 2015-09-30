@@ -7,20 +7,6 @@
 include_once 'dt_banner_quote.features.inc';
 
 /**
- * Implements hook_theme().
- *
- * This will add a new template file to the nodes display.
- */
-function dt_banner_quote_theme($existing, $type, $theme, $path) {
-  $theme = array();
-  $theme['node__banner_quote'] = array(
-    'template' => 'node--banner_quote',
-    'path' => drupal_get_path('module', 'dt_banner_quote') . '/templates',
-  );
-  return $theme;
-}
-
-/**
  * Implements hook_node_view().
  *
  * We use this to wrap the quote in quotes and to prefix the author with a dash.
