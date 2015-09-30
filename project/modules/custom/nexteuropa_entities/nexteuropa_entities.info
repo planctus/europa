@@ -1,4 +1,0 @@
-name = NextEuropa Entities
-description = Provide project specific settings on entities
-package = "Nexteuropa Digital Transformation"
-core = 7.x

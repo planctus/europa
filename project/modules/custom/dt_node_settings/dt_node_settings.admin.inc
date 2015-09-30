@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * Admin callbacks for the nexteuropa_entities module.
+ * Admin callbacks for the dt_node_settings module.
  */
 
 /**
  * Build the admin settings form.
  */
-function helper_content_types_settings() {
+function dt_node_settings_helpers_overall() {
   $node_types = node_type_get_names();
 
   $form = array();
@@ -19,14 +19,14 @@ function helper_content_types_settings() {
   );
 
   foreach($node_types as $type => $label) {
-    $form['content_types']['node_type_' . $type] = array(
+    $form['content_types'][$type] = array(
       '#type' => 'checkbox',
       '#title' => $label,
       '#default_value' => variable_get('helper_node_type_' . $type, 0),
     );
   }
   // Add a submit handler function.
-  $form['#submit'][] = 'helper_content_types_settings_submit';
+  $form['#submit'][] = 'dt_node_settings_helpers_overall_submit';
 
   return system_settings_form($form);
 }
@@ -34,9 +34,9 @@ function helper_content_types_settings() {
 /**
  * Helper: save information if a node type is helper or not.
  */
-function helper_content_types_settings_submit($form, &$form_state) {
+function dt_node_settings_helpers_overall_submit($form, &$form_state) {
   $node_types = $form_state['values']['content_types'];
-  foreach($node_types as $node_type => $selection) {
-    variable_set('helper_' . $node_type, $selection);
+  foreach($node_types as $type => $selection) {
+    variable_set('helper_node_type_' . $type, $selection);
   }
 }

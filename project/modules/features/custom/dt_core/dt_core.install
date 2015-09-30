@@ -513,21 +513,23 @@ function dt_core_update_7139() {
 }
 
 /**
- * NEXTEUROPA-4747: Enabling nexteuropa_entities to introduce helper content types.
+ * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
  */
 function dt_core_update_7140() {
-  module_enable(array('nexteuropa_entities'));
+  module_enable(array('dt_node_settings'));
 
   $helper_types = array(
     'article',
     'banner_quote',
     'banner_video',
     'class_link_group',
+    'contact',
     'featured_item',
+    'page',
+    'person',
     'policy_implementation',
     'policy_input',
     'policy_keyfile',
-    'publication',
     'toplink',
     'editorial_team',
     'file',
