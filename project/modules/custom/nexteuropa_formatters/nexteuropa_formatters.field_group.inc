@@ -85,9 +85,17 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
         '#id' => $id,
       );
 
-      $modifier = isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '';
+      // Start with an empty modifier.
+      $modifier = '';
 
-      $add['#prefix'] = '<div class="meta ' . $modifier . '">';
+      // Check if it is set and has a value. We do this because we dont want an
+      // empty space after a class.
+      if (isset($group->format_settings['instance_settings']['modifier']) && $group->format_settings['instance_settings']['modifier'] !== '') {
+        $modifier = ' ' . $group->format_settings['instance_settings']['modifier'];
+      }
+
+      // Add it.
+      $add['#prefix'] = '<div class="meta' . $modifier . '">';
       $add['#suffix'] = '</div>';
 
       $element += $add;
