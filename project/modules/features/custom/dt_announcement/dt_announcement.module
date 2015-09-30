@@ -40,10 +40,11 @@ function dt_announcement_views_pre_render(&$view) {
  */
 function dt_announcement_views_query_alter(&$view, &$query) {
   // Set our conditional.
-  $isannblock = ($view->name == 'announcements' && $view->current_display == 'latest_block');
+  $is_announcement_block = ($view->name == 'announcements' && $view->current_display == 'latest_block');
+  $is_announcement_page = ($view->name == 'announcements' && $view->current_display == 'page_1');
 
   // Check if its the correct type and if the argument is set.
-  if ($isannblock && !empty($view->args[0])) {
+  if (($is_announcement_block || $is_announcement_page) && !empty($view->args[0])) {
 
     // Get our node type. And then call to our dt function.
     $node_type = _dt_announcement_get_node_type($view->args[0]);
