@@ -47,9 +47,10 @@ function _commissioner_bundle_forms($bundle) {
  */
 function commissioner_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-  $variables['items_count'] = '';
 
-  if (isset($view->filter['type'])) {
+  if (isset($view->filter['type']) && ($view->current_display != 'block')) {
+    $variables['items_count'] = '';
+
     $content_type = array_shift($view->filter['type']->value);
 
     // Checking if .listing exists in classes_array so that result count can be
