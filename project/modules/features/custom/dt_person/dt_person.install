@@ -173,3 +173,11 @@ function dt_person_update_7106() {
   // Reverting feature.
   features_revert_module('dt_person');
 }
+
+/**
+ * Reverting dt_person.
+ */
+function dt_person_update_7107() {
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
