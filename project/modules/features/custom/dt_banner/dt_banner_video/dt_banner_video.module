@@ -5,3 +5,16 @@
  */
 
 include_once 'dt_banner_video.features.inc';
+
+/**
+ * Implements hook_node_view().
+ *
+ * Remove the title from our display.
+ */
+function dt_banner_video_node_view($node, $view_mode, $langcode) {
+  // Only execute on video banners in teaser mode.
+  if ($node->type == 'banner_video' && $view_mode == 'teaser') {
+    // Remove the title.
+    unset($node->title);
+  }
+}
