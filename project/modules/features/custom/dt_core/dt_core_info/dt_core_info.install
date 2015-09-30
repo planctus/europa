@@ -89,3 +89,14 @@ function dt_core_info_update_7101() {
   global $_enabled_languages;
   _dt_core_enable_lanugages($_enabled_languages);
 }
+
+/**
+ * Set information theme as default and disable europa.
+ */
+function dt_core_info_update_7102() {
+  // Enabling information sub-theme.
+  theme_enable(array('information'));
+  variable_set('theme_default', 'information');
+  // Disabling unnecessary themes.
+  theme_disable(array('europa', 'ec_resp', 'seven'));
+}
