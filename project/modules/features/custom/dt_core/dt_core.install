@@ -518,6 +518,7 @@ function dt_core_update_7139() {
 function dt_core_update_7140() {
   // Build our list of languages we have to transform to lower case.
   $lower_case_languages = array(
+    'bg',
     'cs',
     'da',
     'et',
@@ -536,13 +537,16 @@ function dt_core_update_7140() {
     'fi',
     'sv',
   );
-  // Loop the results and update the langcode.
-  foreach ($lower_case_languages as $langcode) {
-    $query = db_update('languages')
-      ->expression('native', 'LCASE(native)')
-      ->condition('language', $langcode)
-      ->execute();
+
+  // Call our helper function to update the list.
+  if (_dt_core_transform_language_to_lower_case($lower_case_languages)) {
+    // Show a message.
+    $message = 'Language labels have been updated into lower case without errors.';
   }
-  // Show a message.
-  drupal_set_message('Language labels have been transformed into lower case');
+  else {
+    $message = 'There were some errors updating the languages, please check the logs for detailed information';
+  }
+
+  // Display the final message.
+  drupal_set_message($message);
 }

@@ -622,3 +622,52 @@ function dt_core_context_load_alter(&$context) {
     }
   }
 }
+
+/**
+ * Helper function to transform language names to lower case.
+ *
+ * @param array $language_codes
+ *   List of language codes.
+ */
+function _dt_core_transform_language_to_lower_case(array $language_codes) {
+  // Ininitialize our return value.
+  $return = TRUE;
+
+  // Loop the results and update the langcode.
+  foreach ($language_codes as $langcode) {
+    // Our update query, this either returns TRUE or FALSE.
+    $query = db_update('languages')
+      ->expression('native', 'LCASE(native)')
+      ->condition('language', $langcode)
+      ->execute();
+
+    // If there were no issues, we show a message that everything went well. In
+    // other cases notifiy about the error, and make the function return FALSE.
+    if ($query) {
+      // Create our log message.
+      $watchdog_content = array(
+        'message' => 'Language %langcode updated to lower case.',
+        'type' => WATCHDOG_INFO,
+        'replacement' => array('%langcode' => $langcode),
+      );
+    }
+    else {
+      // Create our log message.
+      $watchdog_content = array(
+        'message' => 'Could not update language %langcode to lower case. This might come due to the fact the language is not yet available or it already is updated.',
+        'type' => WATCHDOG_WARNING,
+        'replacement' => array('%langcode' => $langcode),
+      );
+      // We had one error, but we can finish other querys. Set our return
+      // parameter to false, so that we can continue the query and return false
+      // afterwards.
+      $return = FALSE;
+    }
+
+    // Watchdog our log message.
+    watchdog('dt_core', $watchdog_content['message'], $watchdog_content['replacement'], $watchdog_content['type']);
+  }
+
+  // Retrun our outcome.
+  return $return;
+}
