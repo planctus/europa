@@ -7,16 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function cwt_news_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function cwt_news_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -25,7 +25,7 @@ function cwt_news_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function cwt_news_views_api() {
+function cwt_news_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -51,6 +51,7 @@ function cwt_news_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
 
@@ -61,11 +62,11 @@ function cwt_news_weight_features_default_settings() {
   $settings = array();
 
   $settings['aggregated_news'] = array(
-    'enabled' => '0',
-    'range' => '20',
-    'menu_weight' => '0',
-    'default' => '0',
-    'sync_translations' => '0',
+    'enabled' => 0,
+    'range' => 20,
+    'menu_weight' => 0,
+    'default' => 0,
+    'sync_translations' => 0,
   );
 
   return $settings;
