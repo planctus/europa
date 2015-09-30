@@ -540,10 +540,11 @@ function dt_core_update_7140() {
 
   // Call our helper function to update the list.
   if (_dt_core_transform_language_to_lower_case($lower_case_languages)) {
-    // Show a message.
+    // Set our message.
     $message = 'Language labels have been updated into lower case without errors.';
   }
   else {
+    // Set our message.
     $message = 'There were some errors updating the languages, please check the logs for detailed information';
   }
 
