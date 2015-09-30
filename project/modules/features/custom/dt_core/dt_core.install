@@ -24,6 +24,9 @@ function dt_core_install() {
 
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
+
+  // Set our default social network url.
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
 }
 
 /**
@@ -510,4 +513,11 @@ function dt_core_update_7138() {
  */
 function dt_core_update_7139() {
   variable_set('weight_frontpage', 0);
+}
+
+/**
+ * Update the default social media link url (other social networks).
+ */
+function dt_core_update_7140() {
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
 }
