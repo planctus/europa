@@ -18,9 +18,10 @@ function dt_banner_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 12,
       ),
       'teaser' => array(
@@ -84,18 +85,12 @@ function dt_banner_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'autoplay' => FALSE,
-          'controls' => TRUE,
-          'height' => NULL,
-          'loop' => FALSE,
-          'multiple_file_behavior' => 'tags',
-          'muted' => FALSE,
-          'width' => NULL,
+          'file_view_mode' => 'full',
         ),
-        'type' => 'file_video',
+        'type' => 'file_rendered',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -157,7 +152,7 @@ function dt_banner_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
