@@ -85,8 +85,9 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
         '#id' => $id,
       );
 
-      $modifiers = ' ' . $group->format_settings['instance_settings']['modifier'];
-      $add['#prefix'] = '<div class="meta' . $modifiers . '">';
+      $modifier = isset($group->format_settings['instance_settings']['modifier']) ? (' ' . $group->format_settings['instance_settings']['modifier']) : '';
+
+      $add['#prefix'] = '<div class="meta' . $modifier . '">';
       $add['#suffix'] = '</div>';
 
       $element += $add;
