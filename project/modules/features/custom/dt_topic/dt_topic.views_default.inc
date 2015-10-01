@@ -33,8 +33,10 @@ function dt_topic_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear all';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['view_mode'] = 'title';
   $handler->display->display_options['row_options']['load_comments'] = 0;
