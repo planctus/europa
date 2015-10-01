@@ -24,9 +24,9 @@ function dt_announcement_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Announcements';
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
-  $handler->display->display_options['link_display'] = 'page_1';
+  $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -95,6 +95,7 @@ function dt_announcement_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -209,17 +210,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
   $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Global: Combine fields filter */
@@ -290,7 +280,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['operator_id'] = 'field_core_department_target_id_entityreference_filter_op';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['operator'] = 'field_core_department_target_id_entityreference_filter_op';
-  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['identifier'] = 'field_core_department_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['identifier'] = 'department';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -350,12 +340,129 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
     'node.created' => 'node.created',
   );
+  /* Filter criterion: Content: Persons (field_core_persons) */
+  $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['table'] = 'field_data_field_core_persons';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['field'] = 'field_core_persons_target_id';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['operator_id'] = 'field_core_persons_target_id_op';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['label'] = 'Persons';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['operator'] = 'field_core_persons_target_id_op';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['identifier'] = 'persons';
+  $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Announcements (field_core_announcement) */
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['id'] = 'field_core_announcement_target_id';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['table'] = 'field_data_field_core_announcement';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['field'] = 'field_core_announcement_target_id';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['expose']['operator_id'] = 'field_core_announcement_target_id_op';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['expose']['label'] = 'Announcements';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['expose']['operator'] = 'field_core_announcement_target_id_op';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['expose']['identifier'] = 'announcement';
+  $handler->display->display_options['filters']['field_core_announcement_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Policies (field_core_policy) */
+  $handler->display->display_options['filters']['field_core_policy_target_id']['id'] = 'field_core_policy_target_id';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['table'] = 'field_data_field_core_policy';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['field'] = 'field_core_policy_target_id';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator_id'] = 'field_core_policy_target_id_op';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['label'] = 'Policies';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator'] = 'field_core_policy_target_id_op';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['identifier'] = 'policy';
+  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Priorities (field_core_priorities) */
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['id'] = 'field_core_priorities_target_id';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['table'] = 'field_data_field_core_priorities';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['field'] = 'field_core_priorities_target_id';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['operator_id'] = 'field_core_priorities_target_id_op';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['label'] = 'Priorities';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['operator'] = 'field_core_priorities_target_id_op';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['identifier'] = 'priorities';
+  $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Priority policy areas (field_core_pri_policy_areas) */
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['id'] = 'field_core_pri_policy_areas_target_id';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['table'] = 'field_data_field_core_pri_policy_areas';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['field'] = 'field_core_pri_policy_areas_target_id';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['operator_id'] = 'field_core_pri_policy_areas_target_id_op';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['label'] = 'Priority policy areas';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['operator'] = 'field_core_pri_policy_areas_target_id_op';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['identifier'] = 'pri_policy_areas';
+  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Topics (field_core_topics) */
+  $handler->display->display_options['filters']['field_core_topics_target_id']['id'] = 'field_core_topics_target_id';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['table'] = 'field_data_field_core_topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['field'] = 'field_core_topics_target_id';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['operator_id'] = 'field_core_topics_target_id_op';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['label'] = 'Topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['operator'] = 'field_core_topics_target_id_op';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['identifier'] = 'topics';
+  $handler->display->display_options['filters']['field_core_topics_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
   $handler->display->display_options['path'] = 'announcements';
 
   /* Display: Latest */
   $handler = $view->new_display('block', 'Latest', 'latest_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Latest';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = '/announcements?[field_name]=[field_value]';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
