@@ -21,6 +21,10 @@ function dt_exposed_filter_data_theme() {
 
 /**
  * Implements hook_preprocess().
+ *
+ * By default the function uses the views exposed filters to build the facets.
+ * But we can add custom_filters to the views object which will then be added to
+ * the facets array.
  */
 function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   $view = $vars['view'];
@@ -33,7 +37,7 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   // Make a variable out of each filter.
   if (isset($view->exposed_input)) {
     foreach ($view->exposed_input as $filter => $value) {
-      $pretty = _get_pretty($filter, $view);
+      $pretty = _dt_exposed_filter_data_get_pretty($filter, $view);
       if (isset($pretty['filter'])) {
         $vars[$filter] = $value;
         $pretty_filter_key = $pretty['label'];
@@ -41,20 +45,27 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
       }
     }
   }
+
+  // Extra option for when it is a custom filter.
+  if (isset($view->custom_filters)) {
+    foreach ($view->custom_filters as $filter => $value) {
+      $vars['exposed_filters'][$filter] = '"' . $value . '"';
+    }
+  }
 }
 
 /**
  * Helper to get the human pretty name of a given field by value.
  *
- * @param array $filter
- *   exposed filter
+ * @param string $filter
+ *   Exposed filter.
  * @param object $view
- *   View object
+ *   View object.
  *
  * @return array
  *   filter settings
  */
-function _get_pretty($filter, $view) {
+function _dt_exposed_filter_data_get_pretty($filter, $view) {
   $result = array();
   foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
     if ($filter_handler->options['expose']['identifier'] === $filter) {
@@ -96,6 +107,6 @@ function _get_pretty($filter, $view) {
 /**
  * Simple call to the theme, easy to be used in a view header.
  */
-function get_exposed_filter_output() {
+function _dt_exposed_filter_data_get_exposed_filter_output() {
   return theme('exposed_filter_data');
 }

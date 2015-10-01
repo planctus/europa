@@ -777,7 +777,7 @@ function europa_link($variables) {
  */
 function europa_preprocess_block(&$variables) {
   $block = $variables['block'];
-  
+
   switch ($block->delta) {
     case 'nexteuropa_feedback':
       $variables['classes_array'][] = 'block--full-width';
@@ -1027,7 +1027,7 @@ function europa_preprocess_views_view(&$variables) {
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
-    $variables['active_filters'] = get_exposed_filter_output();
+    $variables['active_filters'] = _dt_exposed_filter_data_get_exposed_filter_output();
   }
 }
 

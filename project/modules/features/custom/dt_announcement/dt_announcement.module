@@ -54,6 +54,12 @@ function dt_announcement_views_query_alter(&$view, &$query) {
     // Only apply our logic if we have fields to join.
     if (!empty($fields_to_join)) {
 
+      // Set our custom_filter object. Please see the dt_exposed_filter_data.
+      // @see dt_exposed_filter_data_preprocess_exposed_filter_data
+      if (!empty($view->build_info['substitutions']['%1'])) {
+        $view->custom_filters[ucfirst($node_type)] = $view->build_info['substitutions']['%1'];
+      }
+
       // Remove our base condition.
       unset($query->where[0]['conditions'][0]);
 
@@ -97,10 +103,6 @@ function dt_announcement_views_query_alter(&$view, &$query) {
       );
 
     }
-  }
-  elseif (($is_announcement_block || $is_announcement_page) && empty($view->args[0])) {
-    // When we dont have an argument filter, we hide the header text.
-    unset($view->header['area_text_custom']);
   }
 }
 
