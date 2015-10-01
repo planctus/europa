@@ -88,7 +88,6 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
         foreach ($raw_vals as $raw_val) {
           if (isset($filter_handler->value_options[$raw_val])) {
             $result['filter'][] = '"' . trim($filter_handler->value_options[$raw_val]) . '"';
-            dpm($result);
           }
         }
       }
