@@ -19,7 +19,13 @@ function nexteuropa_inpage_nav_block_info() {
  * Implements hook_block_view().
  */
 function nexteuropa_inpage_nav_block_view($delta = '') {
+  global $language;
+
   $block = array();
+  $lang_candidates = language_fallback_get_candidates();
+  // if second preferred language, follow the first 'candidate' suggestion
+  // otherwise assume Drupal is honest about the language
+  $content_language = isset($_GET['2nd-language']) ? reset($lang_candidates) : $language->language;
 
   if ($delta === "inline_navigation") {
     $block['content'] = array();
@@ -53,7 +59,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           $body_heading_count = 1;
           foreach ($headings as $heading) {
             $items['body_' . $body_heading_count]['weight'] = $weight + $body_heading_count;
-            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . $heading['label'] . '</a>';
+            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . t($heading['label']) . '</a>';
             $body_heading_count++;
           }
         }
@@ -63,7 +69,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           // Get the field label.
           $field_info = field_info_instance('node', $element, $node->type);
           $items[$element]['weight'] = $field_info['display']['full']['weight'];
-          $items[$element]['item'] = '<a href="#' . $id . '" class="inpage_nav__list-item">' . $field_info['label'] . '</a>';
+          $items[$element]['item'] = '<a href="#' . $id . '" class="inpage_nav__list-item">' . t($field_info['label']) . '</a>';
         }
 
         // If group, check if group label has id attribute to be used as anchor.
@@ -71,14 +77,14 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
           if ($group_anchor = _nexteuropa_inpage_nav_group_anchor($group, $node)) {
             $items[$element]['weight'] = $group->weight;
             $items[$element]['children'] = $group->children;
-            $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list-item">' . $group_anchor['label'] . '</a>';
+            $items[$element]['item'] = '<a href="#' . $group_anchor['id'] . '" class="inpage_nav__list-item">' . t($group_anchor['label']) . '</a>';
           }
         }
       }
     }
     elseif (!empty($node->body)) {
       $node_wrapper = entity_metadata_wrapper('node', $node);
-      $body = $node_wrapper->body->value->value();
+      $body = $node_wrapper->language($content_language)->body->value->value();
       $headings = _nexteuropa_inpage_nav_markup_anchor($body);
       $body_heading_count = 1;
       foreach ($headings as $heading) {
