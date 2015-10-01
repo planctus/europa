@@ -187,11 +187,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['empty']['messages']['field'] = 'messages';
   $handler->display->display_options['empty']['messages']['label'] = 'No recent news or publications';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_core_department_target_id']['id'] = 'field_core_department_target_id';
-  $handler->display->display_options['relationships']['field_core_department_target_id']['table'] = 'field_data_field_core_department';
-  $handler->display->display_options['relationships']['field_core_department_target_id']['field'] = 'field_core_department_target_id';
-  $handler->display->display_options['relationships']['field_core_department_target_id']['label'] = 'Related departments';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -259,14 +254,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'announcement' => 'announcement',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Announcement type (field_announcement_type) */
   $handler->display->display_options['filters']['field_announcement_type_value']['id'] = 'field_announcement_type_value';
   $handler->display->display_options['filters']['field_announcement_type_value']['table'] = 'field_data_field_announcement_type';
@@ -286,18 +273,25 @@ function dt_announcement_views_default_views() {
     5 => 0,
     7 => 0,
   );
-  /* Filter criterion: Content: Departments (field_core_department) */
-  $handler->display->display_options['filters']['field_core_department_target_id']['id'] = 'field_core_department_target_id';
-  $handler->display->display_options['filters']['field_core_department_target_id']['table'] = 'field_data_field_core_department';
-  $handler->display->display_options['filters']['field_core_department_target_id']['field'] = 'field_core_department_target_id';
-  $handler->display->display_options['filters']['field_core_department_target_id']['relationship'] = 'field_core_department_target_id';
-  $handler->display->display_options['filters']['field_core_department_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_department_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['operator_id'] = 'field_core_department_target_id_op';
-  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['label'] = 'Related department';
-  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['operator'] = 'field_core_department_target_id_op';
-  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['identifier'] = 'department';
-  $handler->display->display_options['filters']['field_core_department_target_id']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'announcement' => 'announcement',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Departments (field_core_department) (reference filter) */
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['id'] = 'field_core_department_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['table'] = 'field_data_field_core_department';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['field'] = 'field_core_department_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['operator_id'] = 'field_core_department_target_id_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['label'] = 'Department';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['operator'] = 'field_core_department_target_id_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['identifier'] = 'field_core_department_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -305,7 +299,9 @@ function dt_announcement_views_default_views() {
     4 => 0,
     5 => 0,
     7 => 0,
+    9 => 0,
   );
+  $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['reference_display'] = 'filter_list_departments:entityreference_1';
   /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
