@@ -624,10 +624,81 @@ function dt_core_context_load_alter(&$context) {
 }
 
 /**
+ * Helper function to return a list of languages that should be enabled.
+ *
+ * Languages that will be enabled. The order they need to appear when listed is
+ * defined here:
+ * @link http://publications.europa.eu/code/en/en-370200.htm.
+ *
+ * @return array
+ *   List of languages.
+ */
+function _dt_core_ec_official_languages() {
+  return array(
+    'bg',
+    'cs',
+    'da',
+    'de',
+    'et',
+    'el',
+    'en',
+    'es',
+    'fr',
+    'ga',
+    'hr',
+    'it',
+    'lv',
+    'lt',
+    'hu',
+    'mt',
+    'nl',
+    'pl',
+    'pt-pt',
+    'ro',
+    'sk',
+    'sl',
+    'fi',
+    'sv',
+  );
+}
+
+/**
+ * Helper function to return a list of languages that need to be lower case.
+ *
+ * @return array
+ *   List of languages that need to be lower case.
+ */
+function _dt_core_lower_case_languages() {
+  return array(
+    'bg',
+    'cs',
+    'da',
+    'et',
+    'el',
+    'es',
+    'fr',
+    'hr',
+    'lv',
+    'lt',
+    'hu',
+    'pl',
+    'pt-pt',
+    'ro',
+    'sk',
+    'sl',
+    'fi',
+    'sv',
+  );
+}
+
+/**
  * Helper function to transform language names to lower case.
  *
  * @param array $language_codes
  *   List of language codes.
+ *
+ * @return bool
+ *   TRUE/FALSE.
  */
 function _dt_core_transform_language_to_lower_case(array $language_codes) {
   // Ininitialize our return value.
