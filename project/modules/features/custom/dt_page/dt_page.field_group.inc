@@ -185,6 +185,64 @@ function dt_page_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_documents|node|basic_page|full';
+  $field_group->group_name = 'group_page_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_core_publications',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="documents"',
+      ),
+    ),
+  );
+  $export['group_page_documents|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_free_field|node|basic_page|full';
+  $field_group->group_name = 'group_page_free_field';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Free field',
+    'weight' => '12',
+    'children' => array(
+      0 => 'body',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Free field',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_page_free_field|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_latest_main|node|basic_page|full';
   $field_group->group_name = 'group_page_latest_main';
   $field_group->entity_type = 'node';
@@ -192,20 +250,21 @@ function dt_page_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Main',
-    'weight' => '16',
+    'label' => 'Latest',
+    'weight' => '14',
     'children' => array(
-      0 => 'group_page_latest',
+      0 => 'field_core_featured_item',
       1 => 'group_page_latest_sidebar',
+      2 => 'group_page_latest',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Main',
+      'label' => 'Latest',
       'instance_settings' => array(
         'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'div',
+        'label_element' => 'h2',
         'attributes' => 'id="latest"',
       ),
     ),
@@ -223,7 +282,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = 'group_page_latest_main';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '41',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
@@ -252,7 +311,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = 'group_page_latest_main';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '40',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_announcement',
     ),
@@ -303,6 +362,64 @@ function dt_page_field_group_info() {
     ),
   );
   $export['group_page_main|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_next_steps|node|basic_page|full';
+  $field_group->group_name = 'group_page_next_steps';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'What\'s next?',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_core_next_steps',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'What\'s next?',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="nextsteps"',
+      ),
+    ),
+  );
+  $export['group_page_next_steps|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_related_links|node|basic_page|full';
+  $field_group->group_name = 'group_page_related_links';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related links',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_core_links',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Related links',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="relatedlinks"',
+      ),
+    ),
+  );
+  $export['group_page_related_links|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

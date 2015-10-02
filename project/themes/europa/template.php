@@ -777,7 +777,7 @@ function europa_link($variables) {
  */
 function europa_preprocess_block(&$variables) {
   $block = $variables['block'];
-  
+
   switch ($block->delta) {
     case 'nexteuropa_feedback':
       $variables['classes_array'][] = 'block--full-width';
@@ -993,6 +993,7 @@ function europa_preprocess_page(&$variables) {
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
       if ($layout) {
+        kpr('test');
         ctools_class_add($layout['layout']);
 
         // This disables message-printing on ALL page displays.
