@@ -15,6 +15,7 @@ dependencies[] = dt_social_network_links
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
+features[ds_field_settings][] = node|basic_page|full
 features[ds_field_settings][] = node|basic_page|teaser
 features[ds_field_settings][] = node|basic_page|title
 features[ds_layout_settings][] = node|basic_page|full
