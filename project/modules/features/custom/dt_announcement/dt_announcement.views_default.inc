@@ -54,7 +54,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['relationships']['field_core_announcement_target_id']['table'] = 'field_data_field_core_announcement';
   $handler->display->display_options['relationships']['field_core_announcement_target_id']['field'] = 'field_core_announcement_target_id';
   $handler->display->display_options['relationships']['field_core_announcement_target_id']['label'] = 'field_core_announcement';
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['required'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -128,11 +127,12 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -146,6 +146,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'field_core_announcement_target_id';
   $handler->display->display_options['filters']['type']['value'] = array(
     'announcement' => 'announcement',
   );
@@ -163,10 +164,10 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'ds';
