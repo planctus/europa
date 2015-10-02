@@ -20,12 +20,12 @@ function nexteuropa_inpage_nav_block_info() {
  */
 function nexteuropa_inpage_nav_block_view($delta = '') {
   global $language;
+  $lang_candidates = language_fallback_get_candidates();
+  // If second preferred language, get the first candidate.
+  // Otherwise assume content language is following the default flow.
+  $content_language = reset($lang_candidates);
 
   $block = array();
-  $lang_candidates = language_fallback_get_candidates();
-  // if second preferred language, follow the first 'candidate' suggestion
-  // otherwise assume Drupal is honest about the language
-  $content_language = isset($_GET['2nd-language']) ? reset($lang_candidates) : $language->language;
 
   if ($delta === "inline_navigation") {
     $block['content'] = array();
@@ -52,14 +52,14 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
         // Get anchored headings from body field.
         if ($element == 'body') {
           $node_wrapper = entity_metadata_wrapper('node', $node);
-          $body = $node_wrapper->body->value->value();
+          $body = $node_wrapper->language($content_language)->body->value->value();
           $headings = _nexteuropa_inpage_nav_markup_anchor($body);
           $field_info = field_info_instance('node', $element, $node->type);
           $weight = isset($field_info['display']['full']) ? $field_info['display']['full']['weight'] : $field_info['display']['default']['weight'];
           $body_heading_count = 1;
           foreach ($headings as $heading) {
             $items['body_' . $body_heading_count]['weight'] = $weight + $body_heading_count;
-            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . t($heading['label']) . '</a>';
+            $items['body_' . $body_heading_count]['item'] = '<a href="#' . $heading['id'] . '" class="inpage_nav__list-item">' . $heading['label'] . '</a>';
             $body_heading_count++;
           }
         }
