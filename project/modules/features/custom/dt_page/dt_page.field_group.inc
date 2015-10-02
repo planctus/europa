@@ -143,11 +143,13 @@ function dt_page_field_group_info() {
     'children' => array(
       0 => 'field_core_featured_item',
     ),
-    'format_type' => 'tabs',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => '',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'classes' => 'group-featured-item field-group-tabs',
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
