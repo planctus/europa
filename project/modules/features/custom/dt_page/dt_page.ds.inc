@@ -86,10 +86,10 @@ function dt_page_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'central' => array(
-        0 => 'field_core_links',
-        2 => 'field_core_publications',
-        4 => 'field_core_featured_item',
-        5 => 'group_page_latest',
+        0 => 'field_core_publications',
+        3 => 'field_core_links',
+        5 => 'field_core_featured_item',
+        6 => 'group_page_latest',
         7 => 'field_core_banner',
         8 => 'group_page_latest_sidebar',
         9 => 'group_page_free_field',
@@ -100,24 +100,23 @@ function dt_page_ds_layout_settings_info() {
         14 => 'field_core_social_network_links',
         15 => 'field_core_next_steps',
         16 => 'body',
-        17 => 'related_announcements_list',
       ),
       'left_header' => array(
         1 => 'title',
-        3 => 'field_core_introduction',
+        4 => 'field_core_introduction',
       ),
       'left' => array(
-        6 => 'in_page_navigation',
+        2 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
-      'field_core_links' => 'central',
-      'title' => 'left_header',
       'field_core_publications' => 'central',
+      'title' => 'left_header',
+      'in_page_navigation' => 'left',
+      'field_core_links' => 'central',
       'field_core_introduction' => 'left_header',
       'field_core_featured_item' => 'central',
       'group_page_latest' => 'central',
-      'in_page_navigation' => 'left',
       'field_core_banner' => 'central',
       'group_page_latest_sidebar' => 'central',
       'group_page_free_field' => 'central',
@@ -128,7 +127,6 @@ function dt_page_ds_layout_settings_info() {
       'field_core_social_network_links' => 'central',
       'field_core_next_steps' => 'central',
       'body' => 'central',
-      'related_announcements_list' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

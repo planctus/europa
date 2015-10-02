@@ -1554,10 +1554,10 @@ This will appear as a timeline on the page.
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
