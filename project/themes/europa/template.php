@@ -993,8 +993,12 @@ function europa_preprocess_page(&$variables) {
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
       if ($layout) {
-        kpr('test');
         ctools_class_add($layout['layout']);
+
+        // If it is a page and no inpage nav should be shown, we remove it.
+        //if ($node->type == 'basic_page' && $node->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'] == '0') {
+        //  kpr($node);
+        //}
 
         // This disables message-printing on ALL page displays.
         $variables['show_messages'] = FALSE;
