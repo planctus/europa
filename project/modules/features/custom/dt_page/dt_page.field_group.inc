@@ -312,7 +312,9 @@ function dt_page_field_group_info() {
   $field_group->data = array(
     'label' => 'Latest',
     'weight' => '2',
-    'children' => array(),
+    'children' => array(
+      0 => 'related_announcements',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Latest',
