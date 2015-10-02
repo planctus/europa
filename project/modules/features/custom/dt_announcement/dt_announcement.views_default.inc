@@ -36,7 +36,10 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['view_mode'] = 'meta';
   $handler->display->display_options['row_options']['load_comments'] = 0;
@@ -66,6 +69,11 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Sticky */
+  $handler->display->display_options['sorts']['sticky']['id'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['table'] = 'node';
+  $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
+  $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -106,7 +114,10 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'node';
@@ -151,7 +162,10 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -340,7 +354,10 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'ds';

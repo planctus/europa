@@ -92,8 +92,8 @@ function cwt_team_context_default_contexts() {
         'views-team_image-block' => array(
           'module' => 'views',
           'delta' => 'team_image-block',
-          'region' => 'header_bottom',
-          'weight' => '-10',
+          'region' => 'content',
+          'weight' => '-11',
         ),
         'views-team_navigation-block' => array(
           'module' => 'views',

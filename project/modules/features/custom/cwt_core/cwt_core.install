@@ -27,6 +27,9 @@ function cwt_core_install() {
     $role->name = $role_name;
     user_role_save($role);
   }
+
+  // Adding value to Nexteuropa feedback form settings.
+  variable_set('nexteuropa_feedback_form_id', '1040');
 }
 
 /**
@@ -423,4 +426,33 @@ function cwt_core_update_7129() {
       node_save($node);
     }
   }
+}
+
+/**
+ * Enable Nexteuropa feedback module and add the form id.
+ */
+function cwt_core_update_7130() {
+  module_enable(array('nexteuropa_feedback'));
+  module_disable(array('cwt_feedback'));
+  variable_set('nexteuropa_feedback_form_id', '1040');
+
+  features_revert_module('cwt_core');
+}
+
+/**
+ * Enable several modules that were dependencies for dt_core.
+ */
+function cwt_core_update_7131() {
+  $modules_to_enable = array(
+    'bootstrap_fieldgroup',
+    'ds',
+    'ds_extras',
+    'dt_date_format',
+    'dt_exposed_filter_data',
+    'nexteuropa_ds_layouts',
+    'nexteuropa_ds_layouts',
+    'nexteuropa_views',
+    'retina_images',
+  );
+  module_enable($modules_to_enable);
 }

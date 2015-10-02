@@ -43,6 +43,12 @@ function dt_core_context_default_contexts() {
           'region' => 'header_bottom',
           'weight' => '-9',
         ),
+        'language_selector_page-language_selector_page' => array(
+          'module' => 'language_selector_page',
+          'delta' => 'language_selector_page',
+          'region' => 'header_bottom',
+          'weight' => '-8',
+        ),
       ),
     ),
   );

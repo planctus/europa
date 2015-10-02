@@ -490,3 +490,44 @@ function dt_core_update_7136($sandbox) {
 function dt_core_update_7137() {
   module_enable(array('dt_language_selector_site_popup'));
 }
+
+/**
+ * Check all node titles and trim the whitespace.
+ */
+function dt_core_update_7138() {
+  $query = db_update('node')->expression('title', 'RTRIM(title)')->execute();
+  drupal_set_message('<strong>' . $query . '</strong> node title(s) have been fixed.');
+
+  $query = db_update('$field_data_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
+  drupal_set_message('<strong>' . $query . '</strong> title_field\'s title(s) have been fixed.');
+
+  $query = db_update('$field_revision_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
+  drupal_set_message('<strong>' . $query . '</strong> revision_title_field title(s) have been fixed.');
+}
+
+/**
+ * Reset weight_frontpage.
+ */
+function dt_core_update_7139() {
+  variable_set('weight_frontpage', 0);
+}
+
+/**
+ * Resetting Views settings related to Nexteuropa BEM listing.
+ */
+function dt_core_update_7140() {
+  $features = array(
+    'dt_announcement',
+    'dt_department',
+    'dt_policy',
+    'dt_policy_area',
+    'dt_topic',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+}

@@ -4,14 +4,33 @@
  * template.php
  */
 
- /**
-  * Implements hook_js_alter().
-  */
+/**
+ * Implements hook_js_alter().
+ */
 function europa_js_alter(&$js) {
   $base_theme_path = drupal_get_path('theme', 'bootstrap');
+  $path_fancybox = libraries_get_path('fancybox');
 
   unset(
-    $js[$base_theme_path . '/js/misc/ajax.js']
+    $js[$base_theme_path . '/js/misc/ajax.js'],
+    $js[$path_fancybox . '/jquery.fancybox.pack.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-thumbs.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-buttons.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-media.js']
+  );
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function europa_css_alter(&$css) {
+  $path_fancybox = libraries_get_path('fancybox');
+
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-buttons.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
+    $css[$path_fancybox . '/jquery.fancybox.css']
   );
 }
 
@@ -125,7 +144,11 @@ function europa_form_element(&$variables) {
       $is_checkbox = TRUE;
     }
     else {
-      $attributes['class'][] = 'form-group';
+      // Check if it is not our search form. Because we don't want the default
+      // bootstrap class here.
+      if (!in_array('form-item-QueryText', $attributes['class'])) {
+        $attributes['class'][] = 'form-group';
+      }
     }
   }
 
@@ -575,15 +598,6 @@ function europa_field($variables) {
 }
 
 /**
- * Implements hook_css_alter().
- */
-function europa_css_alter(&$css) {
-  unset(
-    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
-  );
-}
-
-/**
  * A search_form alteration.
  */
 function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
@@ -763,7 +777,7 @@ function europa_link($variables) {
  */
 function europa_preprocess_block(&$variables) {
   $block = $variables['block'];
-
+  
   switch ($block->delta) {
     case 'nexteuropa_feedback':
       $variables['classes_array'][] = 'block--full-width';
@@ -778,6 +792,44 @@ function europa_preprocess_block(&$variables) {
       break;
   }
 
+  // Page-level language switcher.
+  if (isset($block->bid) && $block->bid === 'language_selector_page-language_selector_page') {
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-switcher.js');
+
+    // Initialize variables.
+    $not_available = '';
+    $served = '';
+    $other = '';
+
+    if (!empty($variables['elements']['not_available']['#markup'])) {
+      $not_available = '<li class="lang-select-page__option lang-select-page__unavailable">' . $variables['elements']['not_available']['#markup']->native . '</li>';
+    }
+
+    if (!empty($variables['elements']['served']['#markup'])) {
+      $served = '<li class="lang-select-page__option is-selected">' . $variables['elements']['served']['#markup']->native . '</li>';
+    }
+
+    if (!empty($variables['elements']['other']['#markup'])) {
+      foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
+        $options = array(
+          'query' => drupal_get_query_parameters()
+        );
+        $options['query']['2nd-language'] = $code;
+
+        $other .= "<li class='lang-select-page__option lang-select-page__other'>" . l($lang->native, current_path(), $options) . '</li>';
+      }
+    }
+
+    // Add class to block.
+    $variables['classes_array'][] = 'lang-select-page lang-select-page--transparent';
+
+    // Add content to block.
+    $content = "<span class='lang-select-page__icon icon icon--generic-lang'></span>";
+    $content .= "<ul class='lang-select-page__list'>" . $not_available . $served . $other . '</ul>';
+    $variables['content'] = $content;
+  }
+
+  // Site-level language switcher.
   if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
     // Add the js to make it function.
     drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-select-site.js');
@@ -938,19 +990,21 @@ function europa_preprocess_page(&$variables) {
       NULL;
 
     // Check if Display Suite is handling node.
-    $layout = ds_get_layout('node', $node->type, 'full');
-    if ($layout) {
-      ctools_class_add($layout['layout']);
+    if (module_exists('ds')) {
+      $layout = ds_get_layout('node', $node->type, 'full');
+      if ($layout) {
+        ctools_class_add($layout['layout']);
 
-      // This disables message-printing on ALL page displays.
-      $variables['show_messages'] = FALSE;
+        // This disables message-printing on ALL page displays.
+        $variables['show_messages'] = FALSE;
 
-      // Add tabs to node object so we can put it in the DS template instead.
-      if (isset($variables['tabs'])) {
-        $node->local_tabs = drupal_render($variables['tabs']);
+        // Add tabs to node object so we can put it in the DS template instead.
+        if (isset($variables['tabs'])) {
+          $node->local_tabs = drupal_render($variables['tabs']);
+        }
+
+        $variables['theme_hook_suggestions'][] = 'page__ds_node';
       }
-
-      $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
 }
@@ -1058,8 +1112,8 @@ function europa_pager($variables) {
     $items[] = array(
       'class' => array('pager__item pager__combo'),
       'data' => "<span class='pager__combo-container'><span class='pager__combo-current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
-      "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
-      '</span>',
+        "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
+        '</span>',
     );
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {

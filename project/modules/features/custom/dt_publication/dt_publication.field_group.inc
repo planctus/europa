@@ -292,7 +292,6 @@ function dt_publication_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_publication_type',
-      1 => 'post_date',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

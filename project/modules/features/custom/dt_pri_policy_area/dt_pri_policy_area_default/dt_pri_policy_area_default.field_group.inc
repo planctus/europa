@@ -43,6 +43,36 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_background|node|priority_policy_area|full';
+  $field_group->group_name = 'group_pri_pol_area_background';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Background',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_background',
+      1 => 'field_core_objective',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Background',
+      'instance_settings' => array(
+        'classes' => 'section__group sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="background"',
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_background|node|priority_policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_pri_pol_area_banner|node|priority_policy_area|form';
   $field_group->group_name = 'group_pri_pol_area_banner';
   $field_group->entity_type = 'node';
@@ -111,11 +141,9 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_persons',
-      1 => 'field_core_department',
-      2 => 'field_core_topics',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -130,6 +158,35 @@ function dt_pri_policy_area_default_field_group_info() {
     ),
   );
   $export['group_pri_pol_area_contextual|node|priority_policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_documents|node|priority_policy_area|full';
+  $field_group->group_name = 'group_pri_pol_area_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_core_publications',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'classes' => 'section__group sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="documents"',
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_documents|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -200,7 +257,10 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Main',
     'weight' => '33',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_core_featured_item',
+      1 => 'latest_announcements_block',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Main',
@@ -255,25 +315,53 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '33',
+    'weight' => '7',
     'children' => array(
       0 => 'group_pri_pol_area_latest_main',
       1 => 'group_pri_pol_area_latest_sbar',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'Latest',
       'instance_settings' => array(
+        'classes' => 'sidebar-field-group section__group',
         'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => 'group-pri-pol-area-latest field-group-html-element',
+        'show_label' => '1',
+        'label_element' => 'h2',
         'attributes' => '',
-        'required_fields' => 1,
       ),
     ),
   );
   $export['group_pri_pol_area_latest|node|priority_policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_meta|node|priority_policy_area|full';
+  $field_group->group_name = 'group_pri_pol_area_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'content_type_label',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => 'meta meta--header',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_meta|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -287,12 +375,14 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Meta',
     'weight' => '0',
-    'children' => array(),
+    'children' => array(
+      0 => 'content_type_label',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
+        'classes' => 'meta meta--header',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -362,6 +452,35 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_related|node|priority_policy_area|full';
+  $field_group->group_name = 'group_pri_pol_area_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related links',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_core_links',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Related links',
+      'instance_settings' => array(
+        'classes' => 'section__group sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="related-links"',
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_related|node|priority_policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_pri_pol_area_tabgroup|node|priority_policy_area|form';
   $field_group->group_name = 'group_pri_pol_area_tabgroup';
   $field_group->entity_type = 'node';
@@ -393,6 +512,35 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_pri_pol_area_whatnext|node|priority_policy_area|full';
+  $field_group->group_name = 'group_pri_pol_area_whatnext';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority_policy_area';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'What\'s next?',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_next_steps',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'What\'s next?',
+      'instance_settings' => array(
+        'classes' => 'section__group sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="whats-next"',
+      ),
+    ),
+  );
+  $export['group_pri_pol_area_whatnext|node|priority_policy_area|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_pri_pol_policy_areas|node|priority_policy_area|full';
   $field_group->group_name = 'group_pri_pol_policy_areas';
   $field_group->entity_type = 'node';
@@ -401,19 +549,20 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Policy Areas',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_core_policy_areas',
+      0 => 'field_core_child_policies',
+      1 => 'field_core_section_intro',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Policy Areas',
       'instance_settings' => array(
-        'classes' => 'context-nav row',
+        'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'div',
-        'attributes' => '',
+        'label_element' => 'h2',
+        'attributes' => 'id="policy-areas"',
       ),
     ),
   );

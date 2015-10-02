@@ -596,3 +596,29 @@ function _dt_core_enable_lanugages($languages = array()) {
   // Enable URL suffix based language negotiation.
   multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
 }
+
+/**
+ * Implements hook_node_presave().
+ *
+ * If a whitespace has been entered after a title, we remove it.
+ */
+function dt_core_node_presave($node) {
+  $node->title = rtrim($node->title);
+}
+
+/**
+ * Implements hook_context_load_alter().
+ */
+function dt_core_context_load_alter(&$context) {
+  if ($context->name == 'dt_core_non_homepage_pages') {
+    if ($node = menu_get_object('node')) {
+      global $language;
+      $interface_language = $language->language;
+      $content_languages = $node->translations->data;
+
+      if (array_key_exists($interface_language, $content_languages)) {
+        unset($context->reactions['block']['blocks']['language_selector_page-language_selector_page']);
+      }
+    }
+  }
+}

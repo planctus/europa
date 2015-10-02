@@ -25,16 +25,17 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 22,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 18,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -105,16 +106,23 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 45,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -146,7 +154,7 @@ function dt_priority_default_field_default_field_instances() {
     'bundle' => 'priority',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select and order the Prioritys and policies that part of this Priority.',
+    'description' => 'Select and order the Priorities and Policies that part of this Priority.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -158,23 +166,30 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 17,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_child_policies',
-    'label' => 'Child Prioritys and Policies',
-    'required' => 1,
+    'label' => 'Child Priorities and Policies',
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -211,7 +226,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -226,7 +241,7 @@ function dt_priority_default_field_default_field_instances() {
           'trim_type' => 'chars',
         ),
         'type' => 'smart_trim_format',
-        'weight' => 23,
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -297,16 +312,19 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 46,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -336,7 +354,7 @@ function dt_priority_default_field_default_field_instances() {
   $field_instances['node-priority-field_core_header_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
-    'description' => 'Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px',
+    'description' => 'Aspect ratio 8:3 (w:h).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -352,13 +370,13 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -416,7 +434,7 @@ function dt_priority_default_field_default_field_instances() {
   $field_instances['node-priority-field_core_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
-    'description' => 'Aspect ratio 4:3 (w:h). Minimum width: 320x240 px',
+    'description' => 'Aspect ratio 4:3 (w:h).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -432,13 +450,26 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'label' => 'hidden',
+        'module' => 'picture',
+        'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
+          'image_link' => '',
+          'picture_mapping' => 'teaser_image',
+        ),
+        'type' => 'picture',
+        'weight' => 4,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -511,13 +542,13 @@ function dt_priority_default_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 17,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -525,7 +556,7 @@ function dt_priority_default_field_default_field_instances() {
     'field_name' => 'field_core_introduction',
     'info_value' => NULL,
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -650,9 +681,10 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 2,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 19,
       ),
       'meta' => array(
@@ -665,7 +697,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 28,
       ),
       'token' => array(
         'label' => 'above',
@@ -726,15 +758,16 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'dt_policy_next_step',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 30,
       ),
       'title' => array(
         'label' => 'above',
@@ -781,15 +814,16 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'text_default',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -858,18 +892,16 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'context_nav_item',
         'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 27,
       ),
       'title' => array(
         'label' => 'above',
@@ -882,7 +914,7 @@ function dt_priority_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_persons',
     'label' => 'Related commissioners',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -916,22 +948,15 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 4,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 29,
       ),
       'title' => array(
         'label' => 'above',
@@ -980,23 +1005,30 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_publications',
     'label' => 'Documents',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1030,16 +1062,17 @@ function dt_priority_default_field_default_field_instances() {
         'weight' => 10,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1112,15 +1145,17 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
         'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1164,13 +1199,13 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1214,13 +1249,13 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1272,7 +1307,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1342,11 +1377,11 @@ function dt_priority_default_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add links to other content that is relevant for visitors of this page.');
-  t('Aspect ratio 4:3 (w:h). Minimum width: 320x240 px');
-  t('Aspect ratio 8:3 (w:h). Minimum width: 2400x900 px');
+  t('Aspect ratio 4:3 (w:h).');
+  t('Aspect ratio 8:3 (w:h).');
   t('Background / Context');
   t('Banner');
-  t('Child Prioritys and Policies');
+  t('Child Priorities and Policies');
   t('Description');
   t('Documents');
   t('Featured item');
@@ -1359,14 +1394,13 @@ function dt_priority_default_field_default_field_instances() {
   t('Name of the Priority');
   t('Next steps');
   t('Objectives');
-  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');
   t('Related links');
   t('Select a banner if you would like to display a banner on top of this page.');
   t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
-  t('Select and order the Prioritys and policies that part of this Priority.');
+  t('Select and order the Priorities and Policies that part of this Priority.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority.');
   t('Select the publications, infographics, files, etc. that are key for this Priority.');

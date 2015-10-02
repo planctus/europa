@@ -13,7 +13,7 @@ function cwt_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'site_wide_commissioner';
+  $context->name = 'cwt_core_sitewide';
   $context->description = '';
   $context->tag = 'CWT';
   $context->conditions = array(
@@ -26,57 +26,69 @@ function cwt_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'cwt_core-translation_selector' => array(
+        'cwt_core-cwt_header_site_tab_switcher' => array(
           'module' => 'cwt_core',
-          'delta' => 'translation_selector',
-          'region' => 'branding',
-          'weight' => '-43',
+          'delta' => 'cwt_header_site_tab_switcher',
+          'region' => 'header_top',
+          'weight' => '-10',
+        ),
+        'language_selector_site-language_selector_site' => array(
+          'module' => 'language_selector_site',
+          'delta' => 'language_selector_site',
+          'region' => 'header',
+          'weight' => '-10',
         ),
         'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
           'module' => 'nexteuropa_europa_search',
           'delta' => 'nexteuropa_europa_search_form',
-          'region' => 'branding',
-          'weight' => '-42',
+          'region' => 'header',
+          'weight' => '-9',
         ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
           'delta' => 'easy_breadcrumb',
-          'region' => 'header',
+          'region' => 'header_bottom',
           'weight' => '-9',
         ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'cwt_feedback-cwt_feedback' => array(
-          'module' => 'cwt_feedback',
-          'delta' => 'cwt_feedback',
+        'nexteuropa_feedback-nexteuropa_feedback' => array(
+          'module' => 'nexteuropa_feedback',
+          'delta' => 'nexteuropa_feedback',
           'region' => 'footer_top',
-          'weight' => '-10',
+          'weight' => '-42',
         ),
-        'menu-menu-service-tools' => array(
+        'cwt_core-cwt_footer_site_tab_switcher' => array(
+          'module' => 'cwt_core',
+          'delta' => 'cwt_footer_site_tab_switcher',
+          'region' => 'footer_top',
+          'weight' => '-41',
+        ),
+        'menu-menu-dt-menu-social-media' => array(
           'module' => 'menu',
-          'delta' => 'menu-service-tools',
+          'delta' => 'menu-dt-menu-social-media',
           'region' => 'footer',
-          'weight' => '-37',
+          'weight' => '-9',
         ),
-        'views-update_date-block' => array(
-          'module' => 'views',
-          'delta' => 'update_date-block',
+        'menu-menu-dt-service-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-dt-service-links',
           'region' => 'footer',
-          'weight' => '-10',
+          'weight' => '-8',
+        ),
+        'cwt_core-cwt_block_copyright' => array(
+          'module' => 'cwt_core',
+          'delta' => 'cwt_block_copyright',
+          'region' => 'footer',
+          'weight' => '-7',
         ),
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('CWT');
-  $export['site_wide_commissioner'] = $context;
+  $export['cwt_core_sitewide'] = $context;
 
   return $export;
 }
