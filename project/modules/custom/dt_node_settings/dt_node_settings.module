@@ -85,11 +85,7 @@ function dt_node_settings_menu_alter(&$items) {
 function dt_node_settings_node_access_callback($op, $node) {
   // Deny access to the full view mode on helper content type nodes.
 
-  if (
-    $op == 'view' &&
-    _content_type_is_helper($node->type) &&
-    !user_access('access helper content types')
-  ) {
+  if ($op == 'view' && _content_type_is_helper($node->type) && !user_access('access helper content types')) {
     return FALSE;
   }
 

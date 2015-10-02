@@ -513,9 +513,29 @@ function dt_core_update_7139() {
 }
 
 /**
- * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
+ * Resetting Views settings related to Nexteuropa BEM listing.
  */
 function dt_core_update_7140() {
+  $features = array(
+    'dt_announcement',
+    'dt_department',
+    'dt_policy',
+    'dt_policy_area',
+    'dt_topic',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+}
+
+/**
+ * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
+ */
+function dt_core_update_7141() {
   module_enable(array('dt_node_settings'));
 
   $helper_types = array(
