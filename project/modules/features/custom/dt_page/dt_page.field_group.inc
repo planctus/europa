@@ -185,6 +185,39 @@ function dt_page_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_contextual_navigation|node|basic_page|full';
+  $field_group->group_name = 'group_page_contextual_navigation';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_core_department',
+      1 => 'field_core_persons',
+      2 => 'field_core_policy_area',
+      3 => 'field_core_priorities',
+      4 => 'field_core_topics',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Contextual navigation',
+      'instance_settings' => array(
+        'classes' => 'context-nav',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_page_contextual_navigation|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_documents|node|basic_page|full';
   $field_group->group_name = 'group_page_documents';
   $field_group->entity_type = 'node';
@@ -193,7 +226,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -222,7 +255,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Free field',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
     ),
@@ -251,7 +284,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_featured_item',
       1 => 'group_page_latest_sidebar',
@@ -374,7 +407,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -403,7 +436,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_links',
     ),

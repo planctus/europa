@@ -151,7 +151,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -212,7 +212,7 @@ function dt_page_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -269,9 +269,10 @@ function dt_page_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
+        'type' => 'context_nav_item',
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -337,7 +338,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -485,7 +486,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -571,7 +572,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -658,7 +659,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -796,7 +797,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -993,7 +994,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1049,9 +1050,10 @@ This will appear as a timeline on the page.
       ),
       'full' => array(
         'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
+        'type' => 'context_nav_item',
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1110,10 +1112,11 @@ This will appear as a timeline on the page.
         'weight' => 14,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'type' => 'context_nav_item',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1168,10 +1171,11 @@ This will appear as a timeline on the page.
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
+        'type' => 'context_nav_item',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1354,9 +1358,10 @@ This will appear as a timeline on the page.
       ),
       'full' => array(
         'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'context_nav_item',
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1425,7 +1430,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1486,7 +1491,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1557,7 +1562,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',

@@ -28,6 +28,7 @@ features[field_group][] = group_content_tabgroup|node|basic_page|form
 features[field_group][] = group_editorial_settings|node|basic_page|form
 features[field_group][] = group_featured_item|node|basic_page|form
 features[field_group][] = group_latest|node|basic_page|form
+features[field_group][] = group_page_contextual_navigation|node|basic_page|full
 features[field_group][] = group_page_documents|node|basic_page|full
 features[field_group][] = group_page_free_field|node|basic_page|full
 features[field_group][] = group_page_latest_main|node|basic_page|full
