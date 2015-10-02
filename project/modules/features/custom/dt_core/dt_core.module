@@ -622,3 +622,26 @@ function dt_core_context_load_alter(&$context) {
     }
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter() for FORM_ID().
+ */
+function dt_core_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Check if the content is being translated.
+  if (isset($form['title_field']) && $form['title_field']['#language'] != $form['#node']->language) {
+    $target_language = $form['title_field']['#language'];
+    $disable_maxlength = array(
+      'field_core_description',
+      'field_core_introduction',
+    );
+
+    foreach ($disable_maxlength as $field_name) {
+      if (isset($form[$field_name])) {
+        $form[$field_name][$target_language]['#maxlength'] = NULL;
+        $form[$field_name][$target_language]['#maxlength_js'] = FALSE;
+        unset($form[$field_name][$target_language]['#maxlength']);
+        unset($form[$field_name][$target_language]['#attributes']['maxlength_js_label']);
+      }
+    }
+  }
+}
