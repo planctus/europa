@@ -13,7 +13,7 @@ include_once 'dt_featured_item.features.inc';
  */
 function dt_featured_item_node_view($node, $view_mode, $langcode) {
   // We should only alter the featured item teaser..
-  if ($node->type == 'featured_item' && $view_mode == 'teaser') {
+  if ($node->type == 'featured_item') {
     // Check if both the url and button text is set. Only then we will update
     // the markup.
     if (isset($node->field_feat_item_ref_or_url[LANGUAGE_NONE][0]['url']) && isset($node->field_feat_item_button_label[LANGUAGE_NONE][0]['safe_value'])) {
