@@ -24,6 +24,9 @@ function dt_core_install() {
 
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
+
+  // Set our default social network url.
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
 }
 
 /**
@@ -513,9 +516,16 @@ function dt_core_update_7139() {
 }
 
 /**
- * Resetting Views settings related to Nexteuropa BEM listing.
+ * Update the default social media link url (other social networks).
  */
 function dt_core_update_7140() {
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
+}
+
+/**
+ * Resetting Views settings related to Nexteuropa BEM listing.
+ */
+function dt_core_update_7141() {
   $features = array(
     'dt_announcement',
     'dt_department',
@@ -530,4 +540,22 @@ function dt_core_update_7140() {
       features_revert_module($feature);
     }
   }
+}
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7142() {
+  // Call our helper function to update the list.
+  if (_dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages())) {
+    // Set our message.
+    $message = 'Language labels have been updated into lower case without errors.';
+  }
+  else {
+    // Set our message.
+    $message = 'There were some errors updating the languages, please check the logs for detailed information';
+  }
+
+  // Display the final message.
+  drupal_set_message($message);
 }
