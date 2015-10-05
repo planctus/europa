@@ -206,15 +206,11 @@ function dt_publication_field_group_info() {
       1 => 'field_publication_authors',
       2 => 'field_publication_published_on',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );
