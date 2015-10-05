@@ -51,8 +51,6 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
   $view_mode = isset($form['#view_mode']) ? $form['#view_mode'] : 'form';
   $id = $form['#entity_type'] . '_' . $form['#bundle'] . '_' . $view_mode . '_' . $group->group_name;
 
-  kpr($group->format_type);
-
   // Each formatter type can have whole different set of element properties.
   switch ($group->format_type) {
     // Normal or collapsible div.
