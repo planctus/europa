@@ -81,7 +81,7 @@ function dt_person_ds_custom_fields_info() {
   $ds_field->ui_limit = 'person|*';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<span class=".full-name">[node:field_person_first_name][node:field_person_last_name]</span>',
+      'value' => '<span class="full-name">[node:field_person_first_name][node:field_person_last_name]</span>',
       'format' => 'full_html',
     ),
     'use_token' => 1,
@@ -163,6 +163,24 @@ function dt_person_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|person|name'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function dt_person_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'name';
+  $ds_view_mode->label = 'Name';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['name'] = $ds_view_mode;
 
   return $export;
 }
