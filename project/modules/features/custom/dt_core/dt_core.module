@@ -595,6 +595,8 @@ function _dt_core_enable_lanugages($languages = array()) {
   drupal_form_submit('locale_languages_overview_form', $form_state);
   // Enable URL suffix based language negotiation.
   multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
+  // Fix lowercase languages.
+  _dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages());
 }
 
 /**
