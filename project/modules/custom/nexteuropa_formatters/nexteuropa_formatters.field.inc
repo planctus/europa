@@ -216,7 +216,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
 
               // If we should use the view mode instead of the label we alter
               // the markup.
-              if ($load_person_name_view && $person_render = entity_view('node', array($item['entity']), 'meta')) {
+              if ($load_person_name_view && $person_render = entity_view('node', array($item['entity']), 'name')) {
                 // Return our element.
                 $element[$delta] = array(
                   '#prefix' => '<span class="context-nav__item">',
