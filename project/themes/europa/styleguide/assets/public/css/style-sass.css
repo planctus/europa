@@ -6855,6 +6855,8 @@ Styleguide featureditem
   border-left: 3px solid #ffd617; }
   .featured-item__content p {
     font-size: 0.778em; }
+  .featured-item__content h3 {
+    color: #404040; }
 
 /*
 Feedback message

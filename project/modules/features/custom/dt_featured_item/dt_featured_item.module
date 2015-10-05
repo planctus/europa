@@ -5,3 +5,33 @@
  */
 
 include_once 'dt_featured_item.features.inc';
+
+/**
+ * Implements hook_node_view().
+ *
+ * Remove the title from our display.
+ */
+function dt_featured_item_node_view($node, $view_mode, $langcode) {
+  // We should only alter the featured item teaser..
+  if ($node->type == 'featured_item' && $view_mode == 'teaser') {
+    // Check if both the url and button text is set. Only then we will update
+    // the markup.
+    if (isset($node->field_feat_item_ref_or_url[LANGUAGE_NONE][0]['url']) && isset($node->field_feat_item_button_label[LANGUAGE_NONE][0]['safe_value'])) {
+      // Build the link.
+      $link = l(
+        $node->content['field_feat_item_button_label'][0]['#markup'],
+        $node->field_feat_item_ref_or_url[LANGUAGE_NONE][0]['url'],
+        array(
+          'attributes' => array(
+            'class' => array(
+              'btn',
+              'btn-ctn',
+            ),
+          ),
+        )
+      );
+      // Change the markup.
+      $node->content['field_feat_item_button_label'][0]['#markup'] = $link;
+    }
+  }
+}

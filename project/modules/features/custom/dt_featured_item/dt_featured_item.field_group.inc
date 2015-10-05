@@ -140,7 +140,6 @@ function dt_featured_item_field_group_info() {
       0 => 'title_field',
       1 => 'field_feat_item_button_label',
       2 => 'field_feat_item_description',
-      3 => 'field_feat_item_ref_or_url',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -228,7 +227,7 @@ function dt_featured_item_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured item wrapper',
-    'weight' => '0',
+    'weight' => '4',
     'children' => array(
       0 => 'group_featured_item_left',
       1 => 'group_featured_item_right',
