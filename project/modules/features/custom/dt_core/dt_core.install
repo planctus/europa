@@ -531,3 +531,21 @@ function dt_core_update_7140() {
     }
   }
 }
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7141() {
+  // Call our helper function to update the list.
+  if (_dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages())) {
+    // Set our message.
+    $message = 'Language labels have been updated into lower case without errors.';
+  }
+  else {
+    // Set our message.
+    $message = 'There were some errors updating the languages, please check the logs for detailed information';
+  }
+
+  // Display the final message.
+  drupal_set_message($message);
+}
