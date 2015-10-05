@@ -214,29 +214,31 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
             $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
             foreach ($items as $delta => $item) {
 
-              // If we need to render it using our Name display mode we change
-              // the label here. We keep the getlabel mode as original.
-              if ($load_person_name_view) {
-                $person_render = entity_view('node', array($item['entity']), 'meta');
-                $label = render($person_render);
-
-              }
-              else {
-                // We have different titles, so just use the node title.
-                $label = $handler->getLabel($item['entity']);
-              }
-
-              // Note the assignment ($url = ) here is intended to be an
-              // assignment.
-              if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
-                $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
-                $link = l($label, $link_url, $uri['options']);
+              // If we should use the view mode instead of the label we alter
+              // the markup.
+              if ($load_person_name_view && $person_render = entity_view('node', array($item['entity']), 'meta')) {
+                // Return our element.
                 $element[$delta] = array(
-                  '#markup' => '<span class="context-nav__item">' . $link . '</span>',
+                  '#prefix' => '<span class="context-nav__item">',
+                  '#markup' => render($person_render),
+                  '#suffix' => '</span>',
                 );
               }
               else {
-                $element[$delta] = array('#markup' => check_plain($label));
+                // Set the label we will use for the display.
+                $label = $handler->getLabel($item['entity']);
+                // Note the assignment ($url = ) here is intended to be an
+                // assignment.
+                if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
+                  $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
+                  $link = l($label, $link_url, $uri['options']);
+                  $element[$delta] = array(
+                    '#markup' => '<span class="context-nav__item">' . $link . '</span>',
+                  );
+                }
+                else {
+                  $element[$delta] = array('#markup' => check_plain($label));
+                }
               }
             }
             break;
