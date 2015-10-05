@@ -6857,6 +6857,8 @@ Styleguide featureditem
     font-size: 0.778em; }
   .featured-item__content h3 {
     color: #404040; }
+  .featured-item__image picture img {
+    width: 100%; }
 
 /*
 Feedback message

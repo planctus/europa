@@ -182,7 +182,7 @@ function dt_featured_item_field_default_field_instances() {
           ),
           'fallback_image_style' => 'featured_item',
           'image_link' => '',
-          'picture_mapping' => 'featured_item',
+          'picture_mapping' => 'teaser_image',
         ),
         'type' => 'picture',
         'weight' => 0,

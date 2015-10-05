@@ -53,6 +53,11 @@ function dt_featured_item_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_feat_item_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|featured_item|teaser'] = $ds_fieldsetting;
 

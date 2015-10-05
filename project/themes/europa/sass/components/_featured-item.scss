@@ -23,4 +23,12 @@ Styleguide featureditem
       color: $grey-base;
     }
   }
+
+  &__image {
+    picture {
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
