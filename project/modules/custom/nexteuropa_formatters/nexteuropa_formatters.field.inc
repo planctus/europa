@@ -56,6 +56,23 @@ function nexteuropa_formatters_field_formatter_info() {
         'taxonomy_term_reference',
       ),
     ),
+    'link_listing_title' => array(
+      'label' => 'Listing title',
+      'field types' => array(
+        'link_field',
+        'taxonomy_term_reference',
+      ),
+    ),
+    'entity_reference_section' => array(
+      'label' => 'Entity reference section group',
+      'field types' => array(
+        'entityreference',
+      ),
+      'settings' => array(
+        'view_mode' => 'default',
+        'links' => TRUE,
+      ),
+    ),
   );
 }
 
@@ -85,6 +102,11 @@ function _nexteuropa_formatters_field_formatter_view_classes($formatter) {
     case 'link_button_block':
       return 'btn btn-default btn-block';
 
+    case 'link_listing_title':
+      return 'listing__title';
+
+    case 'entity_reference_section':
+      return 'section__item';
   }
   return '';
 }
@@ -147,7 +169,8 @@ function nexteuropa_formatters_field_formatter_prepare_view($entity_type, $entit
 function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
   if (!empty($items)) {
-    switch ($display['type']) {
+    $formatter = $display['type'];
+    switch ($formatter) {
       case 'context_nav_item':
         $layout_field_settings = ds_get_field_settings($entity_type, $entity->type, 'full');
         $field_name = $field['field_name'];
@@ -204,8 +227,6 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
       case 'link_button_secondary':
       case 'link_button_call_for_action':
       case 'link_button_block':
-        $formatter = $display['type'];
-
         switch ($field['type']) {
           case 'link_field':
             foreach ($items as $delta => $item) {
@@ -248,7 +269,56 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           $element['#suffix'] = '</div>';
         }
         break;
+
+      // Listing title item.
+      case 'link_listing_title':
+        $element = _nexteuropa_formatters_link_listing_title_field_formatter_view($field, $instance, $items, $display, $formatter, $element);
+        break;
+
+      case 'entity_reference_section':
+        // Preconfigure entityreference_field_formatter_view().
+        // section__item
+        $new_display = $display;
+        $new_display['type'] = 'entityreference_entity_view';
+        $element = entityreference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $new_display);
+        foreach ($element as $delta => $item) {
+          $element[$delta]['node']['#prefix'] = '<div class="section__item">';
+          $element[$delta]['node']['#suffix'] = '</div>';
+        }
+
+        // Multiple field wrapper.
+        if ($field['cardinality'] == -1) {
+          $element['#prefix'] = '<div class="section section--row-two">';
+          $element['#suffix'] = '</div>';
+        }
+        break;
     }
+  }
+  return $element;
+}
+
+/**
+ * Helper function to link listing title field view.
+ */
+function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, $instance, $items, $display, $formatter, $element) {
+  foreach ($items as $delta => $item) {
+    // Set attribute from formatter settings.
+    $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+
+    // Call theme function of link module (theme_link_formatter_link_default).
+    $element[$delta] = array(
+      '#theme' => 'link_formatter_link_default',
+      '#element' => $item,
+      '#field' => $instance,
+      '#display' => $display,
+      '#prefix' => '<div class="listing__item">',
+      '#suffix' => '</div>',
+    );
+  }
+  if ($field['cardinality'] == -1) {
+    $element['#prefix'] = '<div class="listing listing--title">';
+    $element['#suffix'] = '</div>';
+    return $element;
   }
   return $element;
 }
@@ -304,6 +374,41 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
     );
   }
 }
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function nexteuropa_formatters_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  // See function entityreference_field_formatter_settings_form().
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  if ($display['type'] == 'entity_reference_section') {
+    $entity_info = entity_get_info($field['settings']['target_type']);
+    $options = array('default' => t('Default'));
+    if (!empty($entity_info['view modes'])) {
+      foreach ($entity_info['view modes'] as $view_mode => $view_mode_settings) {
+        $options[$view_mode] = $view_mode_settings['label'];
+      }
+    }
+
+    $element['view_mode'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => t('View mode'),
+      '#default_value' => $settings['view_mode'],
+      '#access' => count($options) > 1,
+    );
+
+    $element['links'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show links'),
+      '#default_value' => $settings['links'],
+    );
+  }
+
+  return $element;
+}
+
 
 /**
  * Implements hook_field_formatter_settings_summary_alter().
