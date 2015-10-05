@@ -7,14 +7,14 @@ Styleguide featureditem
 */
 
 .featured-item {
-  float: left;
-  display: block;
   background-color: $grey-light;
   padding: 15px 0px;
-
   border-left: 3px solid $yellow-light;
+  width: 100%;
+  float: left;
 
   &__content {
+
     p {
       font-size: $font-size-xsmall;
     }
