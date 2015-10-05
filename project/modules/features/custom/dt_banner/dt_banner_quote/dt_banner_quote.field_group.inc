@@ -282,8 +282,8 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Quote Wrapper',
     'weight' => '0',
     'children' => array(
-      0 => 'group_quote_quote',
-      1 => 'group_quote_author',
+      0 => 'group_quote_author',
+      1 => 'group_quote_quote',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
