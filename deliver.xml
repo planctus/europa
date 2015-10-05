@@ -62,12 +62,8 @@
   <target name="deliver" description="Deliver code to Acquia repository">
     <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
-    <gitcheckout
-      repository="${acquia.repo}"
-      branchname="${acquia.repo.project.branch}" quiet="true" />
-    <gitpull
-        repository="${acquia.repo}"
-        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" force="true" />
+    <exec dir="${acquia.repo}" command="git checkout ${acquia.repo.project.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull ${acquia.repo.project.branch}"></exec>
 
     <echo msg="Delete acquia-cloud/docroot." />
     <delete includeemptydirs="true" failonerror="false">
@@ -99,18 +95,14 @@
     <!-- commit all modified / deleted files -->
     <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
     <exec dir="${acquia.repo}" command="git add -A"></exec>
-    <gitcommit
-        repository="${acquia.repo}"
-        message="Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+    <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
 
     <!-- Get previous tagnames -->
     <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
     <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
     <input propertyname="TAG">Please provide a tag name:</input>
-    <gittag repository="${acquia.repo}" name="${TAG}" />
-    <gitpush
-        repository="${acquia.repo}"
-        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
+    <exec dir="${acquia.repo}" command="git tag '${TAG}'"></exec>
+    <exec dir="${acquia.repo}" command="git push"></exec>
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
