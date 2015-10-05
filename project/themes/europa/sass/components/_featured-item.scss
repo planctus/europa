@@ -12,6 +12,8 @@ Styleguide featureditem
   background-color: $grey-light;
   padding: 15px 0px;
 
+  border-left: 3px solid $yellow-light;
+
   &__content {
     p {
       font-size: $font-size-xsmall;
