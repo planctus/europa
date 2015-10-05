@@ -154,9 +154,48 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         if (isset($layout_field_settings[$field_name]['formatter_settings']['ft']['lb'])) {
           $label_altered = $layout_field_settings[$field_name]['formatter_settings']['ft']['lb'];
         }
-        $label = (isset($label_altered) ? $label_altered : $instance['label']);
+        $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
-        $element['#prefix'] = '<span class="context-nav__label">' . $label . '</span>';
+        // Special logic for persons.
+        if ($field['field_name'] == 'field_core_persons') {
+          if (count($items) > 1) {
+            // Set our check default to true.
+            $same_title = TRUE;
+
+            // Check if title are different.
+            foreach ($items as $item) {
+              $check_entity = entity_metadata_wrapper('node', $item['entity']);
+
+              // Check if the tid is the same. If so, we continue. If not, stop
+              // the loop and set same_title to false.
+              if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
+                $same_title = FALSE;
+                break;
+              }
+              // Save the last id we checked.
+              $last_title_tid = $check_entity->field_person_role->value()->tid;
+            }
+
+            // If after our full loop the title is still the same, we can safely
+            // set our label.
+            if ($same_title && isset($check_entity->field_person_role)) {
+              $wrapper_label = $check_entity->field_person_role->value()->name;
+            }
+
+          }
+          else {
+            // If it is just one person. Use the first. But double check if for
+            // a value.
+            if (isset($items[0]['entity'])) {
+              $check_entity = entity_metadata_wrapper('node', $items[0]['entity']);
+              if (isset($check_entity->field_person_role)) {
+                $wrapper_label = $check_entity->field_person_role->value()->name;
+              }
+            }
+          }
+        }
+
+        $element['#prefix'] = '<span class="context-nav__label">' . $wrapper_label . '</span>';
         $element['#prefix'] .= '<div class="context-nav__items">';
         $element['#suffix'] = '</div>';
         switch ($field['type']) {
