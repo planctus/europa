@@ -171,7 +171,7 @@ function cwt_news_strongarm() {
             'visible' => FALSE,
           ),
           'meta' => array(
-            'weight' => '1',
+            'weight' => '14',
             'visible' => FALSE,
           ),
           'title' => array(
@@ -189,8 +189,8 @@ function cwt_news_strongarm() {
             'visible' => FALSE,
           ),
           'meta' => array(
-            'weight' => '100',
-            'visible' => TRUE,
+            'weight' => '13',
+            'visible' => FALSE,
           ),
           'title' => array(
             'weight' => '100',

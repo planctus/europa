@@ -298,7 +298,9 @@ function cwt_core_views_pre_render(&$view) {
       }
 
       // Blog RSS follow the pattern "[node_path]/blog/feed".
-      $view->header['area']->options['content'] = str_replace('[feed_link]', $path, $view->header['area']->options['content']);
+      if (strpos($view->header['area']->options['content'], '[feed_link]') !== FALSE) {
+        $view->header['area']->options['content'] = str_replace('[feed_link]', $path, $view->header['area']->options['content']);
+      }
     }
   }
 }

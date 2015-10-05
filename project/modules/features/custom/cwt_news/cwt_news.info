@@ -22,6 +22,7 @@ features[field_base][] = field_editorial_section_multiple
 features[field_group][] = group_news_content|node|aggregated_news|form
 features[field_group][] = group_news_metadata|node|aggregated_news|form
 features[field_group][] = group_news_meta|node|aggregated_news|full
+features[field_group][] = group_news_meta|node|aggregated_news|meta
 features[field_instance][] = node-aggregated_news-body
 features[field_instance][] = node-aggregated_news-field_aggregated_news_link
 features[field_instance][] = node-aggregated_news-field_aggregated_news_type
