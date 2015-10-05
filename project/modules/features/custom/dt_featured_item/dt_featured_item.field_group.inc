@@ -114,7 +114,7 @@ function dt_featured_item_field_group_info() {
     'format_settings' => array(
       'label' => 'Featured item left',
       'instance_settings' => array(
-        'classes' => 'featured-item__image col-md-6',
+        'classes' => 'featured-item__image col-md-5',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -177,7 +177,7 @@ function dt_featured_item_field_group_info() {
     'format_settings' => array(
       'label' => 'Featured item right',
       'instance_settings' => array(
-        'classes' => 'featured-item__content col-md-6',
+        'classes' => 'featured-item__content col-md-7',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
