@@ -48,6 +48,10 @@ function _commissioner_bundle_forms($bundle) {
 function commissioner_preprocess_views_view(&$variables) {
   $view = $variables['view'];
 
+  if (!empty($view->feed_link)) {
+    $variables['feed_link'] = $view->feed_link;
+  }
+
   if (isset($view->filter['type']) && ($view->current_display != 'block')) {
     $variables['items_count'] = '';
 
