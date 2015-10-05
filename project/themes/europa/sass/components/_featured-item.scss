@@ -1,0 +1,16 @@
+/*
+Featured item
+
+Markup: html/featured-item.html
+
+Styleguide featureditem
+*/
+
+.featured-item {
+
+  &__content {
+    p {
+      font-size: $font-size-xsmall;
+    }
+  }
+}

@@ -6841,6 +6841,16 @@ Styleguide forms.facettag
   border-radius: 0.9em; }
 
 /*
+Featured item
+
+Markup: html/featured-item.html
+
+Styleguide featureditem
+*/
+.featured-item__content p {
+  font-size: 0.778em; }
+
+/*
 Feedback message
 
 Markup: html/feedback-message.html
