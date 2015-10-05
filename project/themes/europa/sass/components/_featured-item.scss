@@ -7,6 +7,10 @@ Styleguide featureditem
 */
 
 .featured-item {
+  float: left;
+  display: block;
+  background-color: $grey-light;
+  padding: 15px 0px;
 
   &__content {
     p {

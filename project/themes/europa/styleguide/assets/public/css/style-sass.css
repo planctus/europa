@@ -6847,8 +6847,13 @@ Markup: html/featured-item.html
 
 Styleguide featureditem
 */
-.featured-item__content p {
-  font-size: 0.778em; }
+.featured-item {
+  float: left;
+  display: block;
+  background-color: #e2e2e2;
+  padding: 15px 0px; }
+  .featured-item__content p {
+    font-size: 0.778em; }
 
 /*
 Feedback message
