@@ -35,7 +35,6 @@ features[field_group][] = group_publication_meta|node|publication|teaser
 features[field_group][] = group_publication_related|node|publication|form
 features[field_group][] = group_publication_related|node|publication|full
 features[field_group][] = group_publication_source|node|publication|form
-features[field_group][] = group_topic_meta|node|topic|meta
 features[field_instance][] = node-publication-body
 features[field_instance][] = node-publication-field_core_departments
 features[field_instance][] = node-publication-field_core_description
