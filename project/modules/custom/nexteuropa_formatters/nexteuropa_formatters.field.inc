@@ -156,16 +156,22 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
+        // Set our special load variable to FALSE by default. As these labels
+        // can be different we need to maybe replace the default title view with
+        // amore specific view mode. For more information about these
+        // customizations:
+        // @see: https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4789
+        $load_person_name_view = FALSE;
+
         // Special logic for persons.
         if ($field['field_name'] == 'field_core_persons') {
           if (count($items) > 1) {
             // Set our check default to true.
             $same_title = TRUE;
-
             // Check if title are different.
             foreach ($items as $item) {
+              // Load entity_metadata_wrapper.
               $check_entity = entity_metadata_wrapper('node', $item['entity']);
-
               // Check if the tid is the same. If so, we continue. If not, stop
               // the loop and set same_title to false.
               if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
@@ -175,23 +181,28 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
               // Save the last id we checked.
               $last_title_tid = $check_entity->field_person_role->value()->tid;
             }
-
             // If after our full loop the title is still the same, we can safely
             // set our label.
             if ($same_title && isset($check_entity->field_person_role)) {
               $wrapper_label = $check_entity->field_person_role->value()->name;
+              // Tell our formatter to use the name display mode.
+              $load_person_name_view = TRUE;
             }
-
           }
-          else {
+          elseif (isset($items[0]['entity'])) {
             // If it is just one person. Use the first. But double check if for
             // a value.
-            if (isset($items[0]['entity'])) {
-              $check_entity = entity_metadata_wrapper('node', $items[0]['entity']);
-              if (isset($check_entity->field_person_role)) {
-                $wrapper_label = $check_entity->field_person_role->value()->name;
-              }
+            $check_entity = entity_metadata_wrapper('node', $items[0]['entity']);
+            if (isset($check_entity->field_person_role)) {
+              $wrapper_label = $check_entity->field_person_role->value()->name;
+              // Tell our formatter to use the name display mode.
+              $load_person_name_view = TRUE;
             }
+          }
+          else {
+            // We only set this to false when we have different titles and a
+            // global label.
+            $load_person_name_view = FALSE;
           }
         }
 
@@ -203,7 +214,18 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
             $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
             foreach ($items as $delta => $item) {
 
-              $label = $handler->getLabel($item['entity']);
+              // If we need to render it using our Name display mode we change
+              // the label here. We keep the getlabel mode as original.
+              if ($load_person_name_view) {
+                $person_render = entity_view('node', array($item['entity']), 'meta');
+                $label = render($person_render);
+
+              }
+              else {
+                // We have different titles, so just use the node title.
+                $label = $handler->getLabel($item['entity']);
+              }
+
               // Note the assignment ($url = ) here is intended to be an
               // assignment.
               if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
