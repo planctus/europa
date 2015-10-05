@@ -26,6 +26,12 @@ function nexteuropa_formatters_field_group_formatter_info() {
     'instance_settings' => array('classes' => ''),
   );
 
+  $formatters['context_nav'] = array(
+    'label' => t('Context Nav'),
+    'description' => t('This fieldgroup renders the context nav wrapper'),
+    'instance_settings' => array('modifier' => ''),
+  );
+
   foreach (array_keys($formatters) as $key) {
     $formatter = &$formatters[$key];
     $formatter['instance_settings']['required_fields'] = 1;
@@ -45,6 +51,8 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
   $view_mode = isset($form['#view_mode']) ? $form['#view_mode'] : 'form';
   $id = $form['#entity_type'] . '_' . $form['#bundle'] . '_' . $view_mode . '_' . $group->group_name;
 
+  kpr($group->format_type);
+
   // Each formatter type can have whole different set of element properties.
   switch ($group->format_type) {
     // Normal or collapsible div.
@@ -61,5 +69,61 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
 
       $element += $add;
       break;
+
+    // Context nav.
+    case 'context_nav':
+      drupal_add_js(drupal_get_path('module', 'nexteuropa_formatters') . '/js/context-nav.js');
+
+      $add = array(
+        '#type' => 'markup',
+        '#weight' => $group->weight,
+        '#id' => $id,
+      );
+
+      // Start with an empty modifier.
+      $modifier = '';
+
+      // Check if it is set and has a value. We do this because we dont want an
+      // empty space after a class.
+      if (isset($group->format_settings['instance_settings']['modifier']) && $group->format_settings['instance_settings']['modifier'] !== '') {
+        $modifier = ' ' . $group->format_settings['instance_settings']['modifier'];
+      }
+
+      // Add it.
+      $add['#prefix'] = '<div class="context-nav' . $modifier . '">';
+      $add['#suffix'] = '</div>';
+
+      $element += $add;
+
+      break;
   }
+}
+
+/**
+ * Implements hook_field_group_format_settings().
+ */
+function nexteuropa_formatters_field_group_format_settings($group) {
+
+  // Add a wrapper for extra settings to use by others.
+  $form = array(
+    'instance_settings' => array(
+      '#tree' => TRUE,
+      '#weight' => 5,
+    ),
+  );
+
+  switch ($group->format_type) {
+    case 'context_nav':
+      $form['instance_settings']['modifier'] = array(
+        '#title' => t('Modifiers'),
+        '#type' => 'select',
+        '#options' => array(
+          '' => t('None'),
+        ),
+        '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
+      );
+      break;
+  }
+
+  return $form;
 }
