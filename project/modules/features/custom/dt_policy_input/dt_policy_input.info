@@ -24,6 +24,7 @@ features[field_instance][] = node-policy_input-group_content_access
 features[field_instance][] = node-policy_input-og_group_ref
 features[field_instance][] = node-policy_input-title_field
 features[node][] = policy_input
+features[variable][] = entity_translation_settings_node__policy_input
 features[variable][] = comment_anonymous_policy_input
 features[variable][] = comment_default_mode_policy_input
 features[variable][] = comment_default_per_page_policy_input
