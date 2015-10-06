@@ -653,7 +653,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'none',
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
