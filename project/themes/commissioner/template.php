@@ -262,6 +262,15 @@ function commissioner_preprocess_block(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_field().
+ */
+function commissioner_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] == 'social_media' && $variables['element']['#bundle'] == 'aggregated_news') {
+    $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+  }
+}
+
+/**
  * Implements hook_page_alter().
  */
 function commissioner_page_alter(&$page) {
