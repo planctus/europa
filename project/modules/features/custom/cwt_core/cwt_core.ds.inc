@@ -43,6 +43,21 @@ function cwt_core_ds_custom_fields_info() {
   );
   $export['in_page_navigation'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'social_media';
+  $ds_field->label = 'Social media';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'social_bookmark|social-bar',
+    'block_render' => '3',
+  );
+  $export['social_media'] = $ds_field;
+
   return $export;
 }
 
