@@ -53,11 +53,11 @@ function dt_announcement_views_pre_render(&$view) {
     if (!empty($view->build_info['substitutions']['%1'])) {
       // Tokenize, resolved contextual filter check.
       // Inintialize our read more text variable.
-      $read_more_text = $view->display_handler->default_display->options['use_more_text'];
+      $read_more_text = $view->display[$view->current_display]->handler->options['use_more_text'];
       // Enable the button.
-      $view->display_handler->default_display->options['use_more'] = 1;
+      $view->display[$view->current_display]->handler->options['use_more'] = 1;
       // Alter the output to our custom text.
-      $view->display_handler->default_display->options['use_more_text'] = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $read_more_text);
+      $view->display[$view->current_display]->handler->options['use_more_text'] = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $read_more_text);
 
       // Inintialize our node id.
       $nid = $view->args[0];
@@ -102,20 +102,31 @@ function dt_announcement_views_query_alter(&$view, &$query) {
 
   // If it is the page. We need to create our facet.
   if ($is_announcement_page) {
+    // Get our Query parameters. Here we use an exclude array because on an ajax
+    // request we always have every parameter. And we try to keep the amount of
+    // node_load() calls to a minimum.
+    $exclude = array(
+      'department',
+      'combine',
+      'type',
+      'date_before',
+      'date_after',
+      'q',
+    );
+    // Now get our query parameters without the elements above.
+    $query_parameters = drupal_get_query_parameters(NULL, $exclude);
+    // Loop our exposed input fields. We go over them all and check if it is in
+    // our query parameters. If so, then we check if the value corresponds and
+    // only then we load the node and set the facet.
     foreach ($view->exposed_input as $filter => $value) {
-      // Only when the filters correspond to eachother we continue.
-      $exclude = array(
-        'department',
-        'combine',
-        'type',
-        'date_before',
-        'date_after',
-        'q',
-      );
-      $query_parameters = drupal_get_query_parameters(NULL, $exclude);
-      // If the filters are exact.
+      // If the filters are exact. As the filters (when filtering by id), do not
+      // hold any information we must load the node itself. We do this by
+      // checking if any exposed id corresponds to our query parameters, only
+      // when we have a match, we load the node and add the custom filter.
       if (isset($query_parameters[$filter]) && $query_parameters[$filter] == $value) {
+        // Check if we can load the node.
         if ($node = node_load($value)) {
+          // Add our custom filter to the view object.
           $view->custom_filters[ucfirst($node->type)] = $node->title;
         }
       }
