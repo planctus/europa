@@ -44,6 +44,47 @@ function nexteuropa_formatters_field_group_formatter_info() {
 }
 
 /**
+ * Implements hook_field_group_format_settings().
+ */
+function nexteuropa_formatters_field_group_format_settings($group) {
+
+  // Add a wrapper for extra settings to use by others.
+  $form = array(
+    'instance_settings' => array(
+      '#tree' => TRUE,
+      '#weight' => 5,
+    ),
+  );
+
+  switch ($group->format_type) {
+    case 'meta_wrapper':
+      $form['instance_settings']['modifier'] = array(
+        '#title' => t('Modifiers'),
+        '#type' => 'select',
+        '#options' => array(
+          '' => t('None'),
+          'meta--header' => t('Meta header'),
+        ),
+        '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
+      );
+      break;
+
+    case 'context_nav':
+      $form['instance_settings']['modifier'] = array(
+        '#title' => t('Modifiers'),
+        '#type' => 'select',
+        '#options' => array(
+          '' => t('None'),
+        ),
+        '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
+      );
+      break;
+  }
+
+  return $form;
+}
+
+/**
  * Implements hook_field_group_pre_render().
  */
 function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form) {
@@ -61,8 +102,13 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
         '#id' => $id,
       );
 
-      $classes = ' ' . $group->format_settings['instance_settings']['classes'];
-      $add['#prefix'] = '<div class="meta' . $classes . '">';
+      // Check if it is set and has a value. We do this because we dont want an
+      // empty space after a class.
+      if (isset($group->format_settings['instance_settings']['modifier']) && $group->format_settings['instance_settings']['modifier'] !== '') {
+        $modifier = ' ' . $group->format_settings['instance_settings']['modifier'];
+      }
+
+      $add['#prefix'] = '<div class="meta' . $modifier . '">';
       $add['#suffix'] = '</div>';
 
       $element += $add;
@@ -92,36 +138,6 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
       $add['#suffix'] = '</div>';
 
       $element += $add;
-
       break;
   }
-}
-
-/**
- * Implements hook_field_group_format_settings().
- */
-function nexteuropa_formatters_field_group_format_settings($group) {
-
-  // Add a wrapper for extra settings to use by others.
-  $form = array(
-    'instance_settings' => array(
-      '#tree' => TRUE,
-      '#weight' => 5,
-    ),
-  );
-
-  switch ($group->format_type) {
-    case 'context_nav':
-      $form['instance_settings']['modifier'] = array(
-        '#title' => t('Modifiers'),
-        '#type' => 'select',
-        '#options' => array(
-          '' => t('None'),
-        ),
-        '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
-      );
-      break;
-  }
-
-  return $form;
 }

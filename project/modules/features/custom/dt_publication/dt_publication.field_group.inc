@@ -260,15 +260,11 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'field_publication_type',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta meta--header',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => 'meta--header',
       ),
     ),
   );
@@ -289,16 +285,10 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'field_publication_type',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_publication_meta|node|publication|teaser'] = $field_group;
@@ -389,34 +379,6 @@ function dt_publication_field_group_info() {
     ),
   );
   $export['group_publication_source|node|publication|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_meta|node|topic|meta';
-  $field_group->group_name = 'group_topic_meta';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'meta';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Meta',
-    'weight' => '28',
-    'children' => array(),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => 'group-topic-meta field-group-html-element',
-        'attributes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_topic_meta|node|topic|meta'] = $field_group;
 
   return $export;
 }

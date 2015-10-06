@@ -117,15 +117,11 @@ function dt_announcement_field_group_info() {
       1 => 'field_announcement_type',
       2 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => 'meta--header',
       ),
     ),
   );
@@ -147,16 +143,10 @@ function dt_announcement_field_group_info() {
       0 => 'field_announcement_type',
       1 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_announcement_meta|node|announcement|meta'] = $field_group;
@@ -178,16 +168,10 @@ function dt_announcement_field_group_info() {
       1 => 'field_announcement_location',
       2 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_announcement_meta|node|announcement|teaser'] = $field_group;
