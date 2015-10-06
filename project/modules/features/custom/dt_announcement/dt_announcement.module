@@ -15,7 +15,10 @@ include_once 'dt_announcement.features.inc';
 function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   // Only apply it to the announcements page.
   if ($form['#id'] == 'views-exposed-form-announcements-page-1') {
-    // List of fields we should disable.
+
+    // List of fields we should disable. These fields are used to filter by
+    // query parameter. As these are filterd by id, they are of no use for the
+    // end user.
     $fields_to_disable = array(
       'persons',
       'announcement',
@@ -25,7 +28,10 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
       'topics',
     );
 
-    // Fix the fields by setting #access to false.
+    // Fix the fields by setting #access to false. We hide these fields because
+    // the end user should not manually filter on these. Also, if we would
+    // really expose them, we would have to create the data to be in them and
+    // that would require alot more database load.
     foreach ($fields_to_disable as $field) {
       $form[$field]['#attributes']['class'][] = 'hidden';
       $form['#info']['filter-field_core_' . $field . '_target_id']['label'] = '';
@@ -45,8 +51,8 @@ function dt_announcement_views_pre_render(&$view) {
   // On the listing, we alter the read more text to include our node title.
   if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
 
-    // Also disable the read more button. We cant display it when we have no
-    // substitutions.
+    // First we disable the read more button, because we have defined our own
+    // replacement, we first have to make sure that we can replace it.
     $view->display_handler->default_display->options['use_more'] = 0;
 
     // If we have substitutions, we alter the button.
@@ -66,12 +72,13 @@ function dt_announcement_views_pre_render(&$view) {
       $node_type = _dt_announcement_get_node_type($nid);
       $fields_to_join = _dt_announcement_get_content_reference_fields($node_type);
 
-      // Construct our url.
+      // Construct our url. This will add the query parameters to our url build.
       foreach ($fields_to_join as $field) {
         $url_query[str_replace('field_core_', '', $field['name'])] = $nid;
       }
 
-      // Construct the url.
+      // Construct the url. This will use the $url_query defined above and does
+      // support multiple values.
       $url = url(
         'announcements',
         array(
@@ -79,7 +86,8 @@ function dt_announcement_views_pre_render(&$view) {
         )
       );
 
-      // Set the url.
+      // Update the url of our link to the new one. We also need to alter our
+      // tpl file for this, because by default it only supports text.
       $view->display[$view->current_display]->handler->options['link_url'] = $url;
     }
   }
@@ -96,7 +104,8 @@ function dt_announcement_views_pre_render(&$view) {
  * as we do not want to filter on that in this case.
  */
 function dt_announcement_views_query_alter(&$view, &$query) {
-  // Set our conditional.
+  // Set our conditional. We predefine them both because we need them in
+  // seperate places. One for the block and one for the page.
   $is_announcement_block = ($view->name == 'announcements' && $view->current_display == 'latest_block');
   $is_announcement_page = ($view->name == 'announcements' && $view->current_display == 'page_1');
 
@@ -136,7 +145,11 @@ function dt_announcement_views_query_alter(&$view, &$query) {
   // Check if its the correct type and if the argument is set.
   if ($is_announcement_block && !empty($view->args[0])) {
 
-    // Get our node type. And then call to our dt function.
+    // First we use a simple query to get our node type using just the node id.
+    // After that, we pass the node type to our helper function, which will
+    // return all the entity reference fields in this content type in a certain
+    // field group. This to avoid overcomplex joins or fetching data we, in the
+    // end not need.
     $node_type = _dt_announcement_get_node_type($view->args[0]);
     $fields_to_join = _dt_announcement_get_content_reference_fields($node_type);
 
