@@ -909,7 +909,7 @@ function europa_preprocess_field(&$variables) {
   switch ($variables['element']['#field_name']) {
     case 'field_core_social_network_links':
       $variables['element']['before'] = t('Follow the latest progress and get involved.');
-      $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
+      $variables['element']['after'] = l(t('Other social networks'), variable_get('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm'));
       break;
   }
 }
