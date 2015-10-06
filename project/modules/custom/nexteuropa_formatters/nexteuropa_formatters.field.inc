@@ -282,8 +282,9 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         $new_display['type'] = 'entityreference_entity_view';
         $element = entityreference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $new_display);
         foreach ($element as $delta => $item) {
-          $element[$delta]['node']['#prefix'] = '<div class="section__item">';
-          $element[$delta]['node']['#suffix'] = '</div>';
+          $key_of_node = key($element[$delta]['node']);
+          $element[$delta]['node'][$key_of_node]['#prefix'] = '<div class="section__item">';
+          $element[$delta]['node'][$key_of_node]['#suffix'] = '</div>';
         }
 
         // Multiple field wrapper.
