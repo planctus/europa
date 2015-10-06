@@ -236,7 +236,9 @@ function dt_priority_default_field_default_field_instances() {
           'more_text' => 'Read more',
           'summary_handler' => 'full',
           'trim_length' => 300,
+          'trim_link' => FALSE,
           'trim_options' => array(),
+          'trim_preserve_tags' => '',
           'trim_suffix' => '...',
           'trim_type' => 'chars',
         ),
@@ -895,7 +897,7 @@ function dt_priority_default_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
-        'weight' => 27,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
