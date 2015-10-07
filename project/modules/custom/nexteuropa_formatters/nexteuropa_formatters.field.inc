@@ -5,8 +5,8 @@
  * Adding BEM related custom field formatters.
  */
 
-global $listing_view_modes;
-$listing_view_modes = array('title', 'meta', 'teaser');
+global $_nexteuropa_formatters_listing_view_modes;
+$_nexteuropa_formatters_listing_view_modes = array('title', 'meta', 'teaser');
 
 /**
  * Implements hook_field_formatter_info().
@@ -156,84 +156,28 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
-        // Set our special load variable to FALSE by default. As these labels
-        // can be different we need to maybe replace the default title view with
-        // amore specific view mode. For more information about these
-        // customizations:
-        // @see: https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4789
-        $load_person_name_view = FALSE;
+        // Call our custom helper to get our prefix and suffix.
+        $wrapper = _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label);
 
-        // Special logic for persons.
-        if ($field['field_name'] == 'field_core_persons') {
-          if (count($items) > 1) {
-            // Set our check default to true.
-            $same_title = TRUE;
-            // Check if title are different.
-            foreach ($items as $item) {
-              // Load entity_metadata_wrapper.
-              $check_entity = entity_metadata_wrapper('node', $item['entity']);
-              // Check if the tid is the same. If so, we continue. If not, stop
-              // the loop and set same_title to false.
-              if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
-                $same_title = FALSE;
-                break;
-              }
-              // Save the last id we checked.
-              $last_title_tid = $check_entity->field_person_role->value()->tid;
-            }
-            // If after our full loop the title is still the same, we can safely
-            // set our label.
-            if ($same_title && isset($check_entity->field_person_role)) {
-              $wrapper_label = $check_entity->field_person_role->value()->name;
-              // Tell our formatter to use the name display mode.
-              $load_person_name_view = TRUE;
-            }
-          }
-          elseif (isset($items[0]['entity'])) {
-            // If it is just one person. Use the first. But double check if for
-            // a value.
-            $check_entity = entity_metadata_wrapper('node', $items[0]['entity']);
-            if (isset($check_entity->field_person_role)) {
-              $wrapper_label = $check_entity->field_person_role->value()->name;
-              // Tell our formatter to use the name display mode.
-              $load_person_name_view = TRUE;
-            }
-          }
-          else {
-            // We only set this to false when we have different titles and a
-            // global label.
-            $load_person_name_view = FALSE;
-          }
-        }
+        // Apply it to the elemen.
+        $element['#prefix'] = $wrapper['prefix'];
+        $element['#suffix'] = $wrapper['suffix'];
 
-        $element['#prefix'] = '<span class="context-nav__label">' . $wrapper_label . '</span>';
-        $element['#prefix'] .= '<div class="context-nav__items">';
-        $element['#suffix'] = '</div>';
         switch ($field['type']) {
           case 'entityreference':
             $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
             foreach ($items as $delta => $item) {
 
-              // If we should use the view mode instead of the label we alter
-              // the markup.
-              if ($load_person_name_view && $person_render = entity_view('node', array($item['entity']), 'name')) {
-                // Return our element.
-                $element[$delta] = array(
-                  '#prefix' => '<span class="context-nav__item">',
-                  '#markup' => render($person_render),
-                  '#suffix' => '</span>',
-                );
-              }
-              else {
-                // Set the label we will use for the display.
-                $label = $handler->getLabel($item['entity']);
+              if ($label = $handler->getLabel($item['entity'])) {
                 // Note the assignment ($url = ) here is intended to be an
                 // assignment.
                 if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
                   $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
                   $link = l($label, $link_url, $uri['options']);
                   $element[$delta] = array(
-                    '#markup' => '<span class="context-nav__item">' . $link . '</span>',
+                    '#prefix' => '<span class="context-nav__item">',
+                    '#markup' => $link,
+                    '#suffix' => '</span>',
                   );
                 }
                 else {
@@ -331,11 +275,11 @@ function nexteuropa_formatters_field_formatter_info_alter(&$info) {
  * Implements hook_field_formatter_settings_form_alter().
  */
 function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_form, $context) {
-  global $listing_view_modes;
+  global $_nexteuropa_formatters_listing_view_modes;
 
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
-    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $listing_view_modes)
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
@@ -372,10 +316,10 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
  * Implements hook_field_formatter_settings_summary_alter().
  */
 function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary, $context) {
-  global $listing_view_modes;
+  global $_nexteuropa_formatters_listing_view_modes;
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
-    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $listing_view_modes)
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
