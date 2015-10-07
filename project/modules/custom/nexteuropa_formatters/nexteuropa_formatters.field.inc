@@ -377,41 +377,6 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
 }
 
 /**
- * Implements hook_field_formatter_settings_form().
- */
-function nexteuropa_formatters_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
-  // See function entityreference_field_formatter_settings_form().
-  $display = $instance['display'][$view_mode];
-  $settings = $display['settings'];
-  if ($display['type'] == 'entity_reference_section') {
-    $entity_info = entity_get_info($field['settings']['target_type']);
-    $options = array('default' => t('Default'));
-    if (!empty($entity_info['view modes'])) {
-      foreach ($entity_info['view modes'] as $view_mode => $view_mode_settings) {
-        $options[$view_mode] = $view_mode_settings['label'];
-      }
-    }
-
-    $element['view_mode'] = array(
-      '#type' => 'select',
-      '#options' => $options,
-      '#title' => t('View mode'),
-      '#default_value' => $settings['view_mode'],
-      '#access' => count($options) > 1,
-    );
-
-    $element['links'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Show links'),
-      '#default_value' => $settings['links'],
-    );
-  }
-
-  return $element;
-}
-
-
-/**
  * Implements hook_field_formatter_settings_summary_alter().
  */
 function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary, $context) {
