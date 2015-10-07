@@ -173,15 +173,11 @@ function dt_department_field_group_info() {
       0 => 'field_core_abbreviation',
       1 => 'field_core_ecorganisation',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta meta--header',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => 'meta--header',
       ),
     ),
   );
@@ -203,16 +199,10 @@ function dt_department_field_group_info() {
       0 => 'field_core_abbreviation',
       1 => 'field_core_ecorganisation',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_department_meta|node|department|meta'] = $field_group;

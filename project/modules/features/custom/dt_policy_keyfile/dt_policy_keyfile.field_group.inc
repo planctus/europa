@@ -88,16 +88,10 @@ function dt_policy_keyfile_field_group_info() {
       0 => 'field_policy_keyfile_type',
       1 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_policy_keyfile_meta|node|policy_keyfile|teaser'] = $field_group;
