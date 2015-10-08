@@ -1,0 +1,4 @@
+name = DT Node Settings
+description = Extended node type configurations
+package = "Nexteuropa Digital Transformation"
+core = 7.x

@@ -1142,8 +1142,8 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_policy'
-  $field_instances['node-announcement-field_core_policy'] = array(
+  // Exported field_instance: 'node-announcement-field_core_policies'
+  $field_instances['node-announcement-field_core_policies'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
     'default_value_function' => '',
@@ -1179,7 +1179,7 @@ function dt_announcement_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_core_policy',
+    'field_name' => 'field_core_policies',
     'label' => 'Policies',
     'required' => 0,
     'settings' => array(

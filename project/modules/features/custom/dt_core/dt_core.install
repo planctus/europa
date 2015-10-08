@@ -566,3 +566,33 @@ function dt_core_update_7143() {
   // Display the final message.
   drupal_set_message($message);
 }
+
+/**
+ * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
+ */
+function dt_core_update_7144() {
+  module_enable(array('dt_node_settings'));
+
+  $helper_types = array(
+    'article',
+    'banner_quote',
+    'banner_video',
+    'class_link_group',
+    'contact',
+    'featured_item',
+    'page',
+    'person',
+    'policy_implementation',
+    'policy_input',
+    'policy_keyfile',
+    'toplink',
+    'editorial_team',
+    'file',
+  );
+
+  foreach ($helper_types as $type) {
+    variable_set('helper_node_type_' . $type, 1);
+  }
+
+  features_revert_module('dt_roles_permissions');
+}
