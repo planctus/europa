@@ -102,7 +102,8 @@
     <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
     <input propertyname="TAG">Please provide a tag name:</input>
     <exec dir="${acquia.repo}" command="git tag '${TAG}'"></exec>
-    <exec dir="${acquia.repo}" command="git push origin  ${acquia.repo.project.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git push origin ${acquia.repo.project.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">

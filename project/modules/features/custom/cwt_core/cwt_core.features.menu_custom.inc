@@ -33,5 +33,6 @@ function cwt_core_menu_default_menu_custom() {
   t('List of social networks links for the European Commission');
   t('Service links');
 
+
   return $menus;
 }

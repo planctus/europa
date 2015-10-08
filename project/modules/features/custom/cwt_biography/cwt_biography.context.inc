@@ -29,8 +29,8 @@ function cwt_biography_context_default_contexts() {
         'views--exp-biography_news-list' => array(
           'module' => 'views',
           'delta' => '-exp-biography_news-list',
-          'region' => 'sidebar_left',
-          'weight' => '-9',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
         ),
       ),
     ),
