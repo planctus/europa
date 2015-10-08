@@ -57,6 +57,11 @@ function dt_person_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
     ),
   );
   $export['node|person|name'] = $ds_fieldsetting;
@@ -142,19 +147,19 @@ function dt_person_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'person';
   $ds_layout->view_mode = 'name';
-  $ds_layout->layout = 'ne_1col';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'main' => array(
+      'ds_content' => array(
         0 => 'full_name',
       ),
     ),
     'fields' => array(
-      'full_name' => 'main',
+      'full_name' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'main' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
