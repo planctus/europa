@@ -7,40 +7,34 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function cwt_core_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function cwt_core_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "breakpoints" && $api == "default_breakpoint_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "breakpoints" && $api == "default_breakpoints") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
-  list($module, $api) = func_get_args();
   if ($module == "custom_formatters" && $api == "custom_formatters") {
     return array("version" => "2");
   }
-  list($module, $api) = func_get_args();
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "picture" && $api == "default_picture_mapping") {
     return array("version" => "2");
   }
-  list($module, $api) = func_get_args();
   if ($module == "quicktabs" && $api == "quicktabs") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -49,7 +43,7 @@ function cwt_core_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function cwt_core_views_api() {
+function cwt_core_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -74,11 +68,11 @@ function cwt_core_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '690',
+          'width' => 690,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -98,10 +92,10 @@ function cwt_core_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '236',
-          'height' => '157',
+          'width' => 236,
+          'height' => 157,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -121,10 +115,10 @@ function cwt_core_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '307',
-          'height' => '205',
+          'width' => 307,
+          'height' => 205,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -144,11 +138,11 @@ function cwt_core_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '100',
-          'height' => '330',
+          'width' => 100,
+          'height' => 330,
           'upscale' => 1,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -170,6 +164,7 @@ function cwt_core_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
 
