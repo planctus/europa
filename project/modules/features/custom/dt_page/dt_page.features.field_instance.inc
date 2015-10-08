@@ -326,7 +326,7 @@ function dt_page_field_default_field_instances() {
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The content of this field is used for when the Priority is displayed in a list element.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -358,7 +358,7 @@ function dt_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -394,7 +394,7 @@ function dt_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '',
+        'maxlength_js' => 155,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -1637,6 +1637,7 @@ This will appear as a timeline on the page.
 This will appear as a timeline on the page.
 ');
   t('Social Network Links');
+  t('The content of this field is used for when the Priority is displayed in a list element.');
   t('Title');
   t('Topics');
 
