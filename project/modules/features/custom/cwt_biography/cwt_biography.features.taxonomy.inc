@@ -9,15 +9,15 @@
  */
 function cwt_biography_taxonomy_default_vocabularies() {
   return array(
-    'biography_roles' => array(
+    'biography_roles' => (object) array(
       'name' => 'Biography roles',
       'machine_name' => 'biography_roles',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '-6',
+      'weight' => -6,
       'language' => 'und',
-      'i18n_mode' => '1',
+      'i18n_mode' => 1,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -34,15 +34,15 @@ function cwt_biography_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'biography_timeline_types' => array(
+    'biography_timeline_types' => (object) array(
       'name' => 'Biography timeline types',
       'machine_name' => 'biography_timeline_types',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => 0,
       'language' => 'und',
-      'i18n_mode' => '0',
+      'i18n_mode' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -59,15 +59,15 @@ function cwt_biography_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'commissioner_statuses' => array(
+    'commissioner_statuses' => (object) array(
       'name' => 'Biography statuses',
       'machine_name' => 'commissioner_statuses',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '-5',
+      'weight' => -5,
       'language' => 'und',
-      'i18n_mode' => '1',
+      'i18n_mode' => 1,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
