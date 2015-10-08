@@ -267,10 +267,11 @@ function dt_page_field_default_field_instances() {
         'weight' => 34,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'context_nav_item',
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1040,7 +1041,7 @@ This will appear as a timeline on the page.
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',

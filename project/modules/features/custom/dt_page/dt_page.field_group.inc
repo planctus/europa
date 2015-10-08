@@ -195,7 +195,7 @@ function dt_page_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '2',
     'children' => array(
-      0 => 'field_core_department',
+      0 => 'field_core_departments',
       1 => 'field_core_persons',
       2 => 'field_core_policy_area',
       3 => 'field_core_priorities',
