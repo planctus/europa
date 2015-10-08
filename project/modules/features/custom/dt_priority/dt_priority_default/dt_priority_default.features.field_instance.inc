@@ -226,8 +226,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -1253,8 +1254,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'context_nav_item',
         'weight' => 0,
       ),
       'teaser' => array(
