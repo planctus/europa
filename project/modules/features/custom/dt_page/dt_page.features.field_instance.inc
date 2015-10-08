@@ -250,13 +250,12 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_department'
-  $field_instances['node-basic_page-field_core_department'] = array(
+  // Exported field_instance: 'node-basic_page-field_core_departments'
+  $field_instances['node-basic_page-field_core_departments'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
-    'default_value_function' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the related departments.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -265,26 +264,19 @@ function dt_page_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 22,
+        'weight' => 34,
       ),
       'full' => array(
-        'label' => 'inline',
-        'module' => 'nexteuropa_formatters',
-        'settings' => array(),
-        'type' => 'context_nav_item',
-        'weight' => 30,
-      ),
-      'meta' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 0,
       ),
       'title' => array(
         'label' => 'above',
@@ -295,15 +287,10 @@ function dt_page_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_department',
-    'label' => 'Departments',
+    'field_name' => 'field_core_departments',
+    'label' => 'Related departments',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -311,8 +298,8 @@ function dt_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -854,7 +841,7 @@ function dt_page_field_default_field_instances() {
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Add links to other content that is relevant for visitors of this page.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -915,7 +902,7 @@ function dt_page_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1037,7 +1024,7 @@ This will appear as a timeline on the page.
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select and order the related commissioners.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1074,9 +1061,10 @@ This will appear as a timeline on the page.
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_persons',
-    'label' => 'Persons',
+    'label' => 'Related commissioners',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1087,6 +1075,7 @@ This will appear as a timeline on the page.
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -1100,7 +1089,7 @@ This will appear as a timeline on the page.
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the related policy area(s).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1319,7 +1308,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_social_network_links',
-    'label' => 'Social Network Links',
+    'label' => 'Social media profile links',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1345,7 +1334,7 @@ This will appear as a timeline on the page.
     'default_value' => NULL,
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the related topics.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1382,9 +1371,10 @@ This will appear as a timeline on the page.
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
-    'label' => 'Topics',
+    'label' => 'Related Topics',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -1401,11 +1391,12 @@ This will appear as a timeline on the page.
       'settings' => array(
         'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -1605,11 +1596,11 @@ This will appear as a timeline on the page.
   // Included for use with string extractors like potx.
   t('(Priority) policy areas');
   t('(This is the actual page body.)');
+  t('Add links to other content that is relevant for visitors of this page.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Banner');
   t('Comment');
-  t('Departments');
   t('Description');
   t('Documents');
   t('Featured item');
@@ -1624,22 +1615,27 @@ This will appear as a timeline on the page.
   t('Legacy link');
   t('Next steps');
   t('Parent');
-  t('Persons');
   t('Priorities');
+  t('Related Topics');
+  t('Related commissioners');
   t('Related content');
+  t('Related departments');
   t('Select a banner if you would like to display a quote or a visual/video with paragraph near the top of the page.');
   t('Select a featured content item in case you want to highlight a certain page during a limited period in time.');
+  t('Select and order the related commissioners.');
   t('Select documents that belong to the content of this page.');
   t('Select the announcements that need to appear on this page.');
+  t('Select the related departments.');
+  t('Select the related policy area(s).');
   t('Select the related priority or priorities.');
+  t('Select the related topics.');
   t('Select this checkbox in order to have In-page navigation enabled');
   t('Set the next steps.
 This will appear as a timeline on the page.
 ');
-  t('Social Network Links');
+  t('Social media profile links');
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('Title');
-  t('Topics');
 
   return $field_instances;
 }

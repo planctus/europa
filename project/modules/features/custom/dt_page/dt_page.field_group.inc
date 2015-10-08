@@ -473,6 +473,7 @@ function dt_page_field_group_info() {
       3 => 'field_core_policy_area',
       4 => 'field_core_priorities',
       5 => 'field_core_topics',
+      6 => 'field_core_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
