@@ -369,14 +369,6 @@ function cwt_core_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
-  $file_display->name = 'video__preview__file_field_file_default';
-  $file_display->weight = 0;
-  $file_display->status = FALSE;
-  $file_display->settings = '';
-  $export['video__preview__file_field_file_default'] = $file_display;
-
-  $file_display = new stdClass();
-  $file_display->api_version = 1;
   $file_display->name = 'video__default__file_field_file_download_link';
   $file_display->weight = -42;
   $file_display->status = FALSE;
@@ -436,6 +428,14 @@ function cwt_core_file_default_displays() {
     'autoplay' => 0,
   );
   $export['video__default__media_flickr_video'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
+  $file_display->name = 'video__preview__file_field_file_default';
+  $file_display->weight = 0;
+  $file_display->status = FALSE;
+  $file_display->settings = '';
+  $export['video__preview__file_field_file_default'] = $file_display;
 
   return $export;
 }
