@@ -60,3 +60,35 @@
     margin-right: -100%;
   }
 }
+
+.section {
+  .section--row-three,
+  .section--row-two {
+    @extend .row;
+  }
+}
+
+.section--row-two {
+  .section__item {
+    margin-top: 15px;
+    @extend .col-md-6;
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
+}
+
+.section--row-three {
+  .section__item {
+    @extend .col-md-4;
+    margin-top: 15px;
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .section {
+    .section--two-columns {
+      margin-bottom: 0;
+    }
+  }
+}

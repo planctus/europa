@@ -190,7 +190,7 @@ function dt_announcement_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
-      1 => 'field_core_policy',
+      1 => 'field_core_policies',
       2 => 'field_core_department',
       3 => 'field_core_persons',
       4 => 'field_core_topics',
