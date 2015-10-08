@@ -81,7 +81,7 @@ function dt_person_ds_custom_fields_info() {
   $ds_field->ui_limit = 'person|*';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<span class="full-name">[node:field_person_first_name][node:field_person_last_name]</span>',
+      'value' => '<a class="full-name" href="[node:legacy-link]">[node:field_person_first_name] [node:field_person_last_name]</a>',
       'format' => 'full_html',
     ),
     'use_token' => 1,

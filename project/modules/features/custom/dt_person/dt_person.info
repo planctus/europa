@@ -8,7 +8,6 @@ dependencies[] = auto_entitylabel
 dependencies[] = dt_contact
 dependencies[] = dt_core
 dependencies[] = nexteuropa_legacy_link
-dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = picture:default_picture_mapping:2
