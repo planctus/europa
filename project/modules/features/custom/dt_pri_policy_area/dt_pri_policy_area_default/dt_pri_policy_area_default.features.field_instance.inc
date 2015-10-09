@@ -318,7 +318,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => 'section__group--highlight-grey',
+          'nexteuropa_listing_wrapper_modifier' => '',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
