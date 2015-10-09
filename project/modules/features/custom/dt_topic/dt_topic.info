@@ -67,6 +67,7 @@ features[field_instance][] = node-topic-title_field
 features[field_instance][] = taxonomy_term-top_tasks-field_core_top_task_link
 features[views_view][] = filter_list_topics
 features[node][] = topic
+features[variable][] = entity_translation_settings_node__topic
 features[variable][] = field_bundle_settings_node__topic
 features[variable][] = language_content_type_topic
 features[variable][] = node_options_topic
