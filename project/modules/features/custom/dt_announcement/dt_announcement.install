@@ -94,9 +94,15 @@ function dt_announcement_update_7105() {
 }
 
 /**
- * NEXTEUROPA-5256: Making policy reference multivalue.
+ * NEXTEUROPA-5258: Updated views with more button.
  */
 function dt_announcement_update_7106() {
+  features_revert_module('dt_announcement');
+}
+/**
+ * NEXTEUROPA-5256: Making policy reference multivalue.
+ */
+function dt_announcement_update_7107() {
   // Revert first to prepare the fields.
   features_revert_module('dt_announcement');
   // Copy field contents.

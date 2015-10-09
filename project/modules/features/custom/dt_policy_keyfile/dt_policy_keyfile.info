@@ -26,6 +26,7 @@ features[field_instance][] = node-policy_keyfile-group_content_access
 features[field_instance][] = node-policy_keyfile-og_group_ref
 features[field_instance][] = node-policy_keyfile-title_field
 features[node][] = policy_keyfile
+features[variable][] = entity_translation_settings_node__policy_keyfile
 features[variable][] = comment_anonymous_policy_keyfile
 features[variable][] = comment_default_mode_policy_keyfile
 features[variable][] = comment_default_per_page_policy_keyfile

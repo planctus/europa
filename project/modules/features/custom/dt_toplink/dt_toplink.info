@@ -22,6 +22,7 @@ features[field_instance][] = node-toplink-group_content_access
 features[field_instance][] = node-toplink-og_group_ref
 features[field_instance][] = node-toplink-title_field
 features[node][] = toplink
+features[variable][] = entity_translation_settings_node__toplink
 features[variable][] = comment_anonymous_toplink
 features[variable][] = comment_default_mode_toplink
 features[variable][] = comment_default_per_page_toplink
