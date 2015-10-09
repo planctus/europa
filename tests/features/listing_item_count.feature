@@ -6,7 +6,8 @@ Feature: Display item count on listing pages
   Scenario Outline: Item count is displayed on listing pages
     Given I am not logged in
     When I am at <listing>
-    Then I should see an ".filters__result-count" element
+    Then I should see an ".filters__result-count .filters__items-number" element
+    And the element ".filters__result-count .filters__items-number" should contain text
 
     Examples:
       | listing         |
