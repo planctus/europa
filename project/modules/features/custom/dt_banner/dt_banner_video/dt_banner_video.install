@@ -16,6 +16,6 @@ function dt_banner_video_install() {
  * Enable the media_avportal module and revert feature.
  */
 function dt_banner_video_update_7101() {
-  module_enable(array('media_avportal'));
+  module_enable(array('media_avportal', 'media_youtube'));
   features_revert_module('dt_banner_quote');
 }

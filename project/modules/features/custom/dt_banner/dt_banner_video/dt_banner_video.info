@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_banner_video
 dependencies[] = dt_banner
-dependencies[] = media_avportal
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = file_entity:file_default_displays:1
