@@ -79,6 +79,10 @@ bin/phing package
 *   Make the Drupal profile into the <code>phing.project.distro.dir</code> folder based on the build.make file of the installation profile set in <code>drupal.profile.name</code>.
 *   Copy your custom modules, themes and libraries into the built Drupal instance
 
+## Acquia Cloud
+
+In order to be able to perform this task, you will need working drush aliases pointing to the Acquia Cloud instance and also to your local instance. You can set up your aliases using the <code>drush.alias.local</code> and the <code>drush.alias.acquia</code> properties.
+
 ### Deliver production codebase to the Acquia Cloud:
 
 In order to do this you need to have read/write access to the Acquia Cloud repository and the acquia-cloud submodule has to be properly initialized.
@@ -98,6 +102,17 @@ bin/phing deliver
 *   Creates a tag with a name you input when prompted
 *   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
 
+### Simplified deployment to Acquia Cloud
+
+```bash
+bin/phing ac-deploy
+```
+
+#### This will:
+
+*   Run the <code>package</code> and <code>deliver</code> targets (see above).
+*   Perform <code>drush updb -y</code> and <code>drush frdt -y</code> on the Acquia Cloud instance using the <code>drush.alias.acquia</code> property.
+
 #### Important!
 
 I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized/updated in every branch separately.
@@ -105,8 +120,6 @@ I would suggest deliveries to be made only from the develop or master branch. Su
 After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
 
 ### Restore your local instance using the Acquia Cloud database:
-
-In order to be able to perform this task, you will need working drush aliases pointing to the Acquia Cloud instance and also to your local instance. You can set up your aliases using the <code>drush.alias.local</code> and the <code>drush.alias.acquia</code> properties.
 
 This will restore the local database from *./_db_dumps/ac-dump.mysql* if it exists. If the database is not yet exported it will attempt to download it.
 

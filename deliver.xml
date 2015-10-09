@@ -146,4 +146,16 @@
     <exec command="drush -y @${drush.alias.acquia} sql-dump > ${phing.project.dumps.dir}/ac-dump.mysql" />
     <echo msg="AC database downloaded." />
   </target>
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="package, deliver">
+    <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
+    <waitfor maxwaitunit="second" maxwait="15">
+      <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
+      <available file="ready"/>
+    </waitfor>
+
+    <exec command="drush -y @${drush.alias.acquia} updb" />
+    <echo msg="AC updb." />
+    <exec command="drush -y @${drush.alias.acquia} frdt" />
+    <echo msg="AC frdt." />
+  </target>
 </project>
