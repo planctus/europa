@@ -9,15 +9,15 @@
  */
 function cwt_news_taxonomy_default_vocabularies() {
   return array(
-    'aggregated_item_types' => array(
+    'aggregated_item_types' => (object) array(
       'name' => 'Aggregated item types',
       'machine_name' => 'aggregated_item_types',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '2',
+      'weight' => 2,
       'language' => 'und',
-      'i18n_mode' => '1',
+      'i18n_mode' => 1,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

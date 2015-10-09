@@ -512,44 +512,46 @@ function europa_field($variables) {
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
   switch ($field_type) {
     case 'entityreference':
-      // First node from entity reference.
-      $reference = '';
-      if (isset($element[0])) {
-        $reference = array_shift($element[0]);
-      }
-      $first_node = is_array($reference) ? array_shift($reference) : NULL;
-      $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
-      $layout_name_clean = str_replace('_', '-', $layout_name);
-
-      $settings = array();
-      $settings['view_mode'] = $first_node['#view_mode'];
-      $settings['layout'] = $layout_name_clean;
-      $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
-      $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
-
-      // Custom listing settings based on view mode.
-      $listing_view_modes = array('title', 'meta', 'teaser');
-      if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
-        switch ($first_node['#view_mode']) {
-          case 'title':
-            $settings['modifier'] .= ' listing--title';
-            $settings['wrapper_modifier'] .= ' listing--title__wrapper';
-            $settings['listing_wrapper_element'] = 'ul';
-            $settings['item_wrapper_element'] = 'li';
-            break;
-
-          case 'meta':
-            $settings['modifier'] .= ' listing--meta';
-            $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
-            break;
-
-          case 'teaser':
-            $settings['modifier'] .= ' listing--teaser';
-            $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
-            break;
+      if ($element['#formatter'] == 'entityreference_entity_view') {
+        // First node from entity reference.
+        $reference = '';
+        if (isset($element[0])) {
+          $reference = array_shift($element[0]);
         }
+        $first_node = is_array($reference) ? array_shift($reference) : NULL;
+        $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
+        $layout_name_clean = str_replace('_', '-', $layout_name);
 
-        return _europa_field_component_listing($variables, $settings);
+        $settings = array();
+        $settings['view_mode'] = $first_node['#view_mode'];
+        $settings['layout'] = $layout_name_clean;
+        $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
+        $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
+
+        // Custom listing settings based on view mode.
+        $listing_view_modes = array('title', 'meta', 'teaser');
+        if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
+          switch ($first_node['#view_mode']) {
+            case 'title':
+              $settings['modifier'] .= ' listing--title';
+              $settings['wrapper_modifier'] .= ' listing--title__wrapper';
+              $settings['listing_wrapper_element'] = 'ul';
+              $settings['item_wrapper_element'] = 'li';
+              break;
+
+            case 'meta':
+              $settings['modifier'] .= ' listing--meta';
+              $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
+              break;
+
+            case 'teaser':
+              $settings['modifier'] .= ' listing--teaser';
+              $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
+              break;
+          }
+
+          return _europa_field_component_listing($variables, $settings);
+        }
       }
 
       break;
@@ -1027,7 +1029,7 @@ function europa_preprocess_views_view(&$variables) {
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
-    $variables['active_filters'] = get_exposed_filter_output();
+    $variables['active_filters'] = _dt_exposed_filter_data_get_exposed_filter_output();
   }
 }
 

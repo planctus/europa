@@ -110,16 +110,10 @@ function dt_person_field_group_info() {
     'children' => array(
       0 => 'field_person_role',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_person_meta|node|person|meta'] = $field_group;

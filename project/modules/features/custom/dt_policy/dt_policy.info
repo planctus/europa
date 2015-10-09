@@ -89,6 +89,7 @@ features[field_instance][] = node-policy-group_content_access
 features[field_instance][] = node-policy-og_group_ref
 features[field_instance][] = node-policy-title_field
 features[node][] = policy
+features[variable][] = entity_translation_settings_node__policy
 features[variable][] = comment_anonymous_policy
 features[variable][] = comment_default_mode_policy
 features[variable][] = comment_default_per_page_policy
