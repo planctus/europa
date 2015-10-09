@@ -157,5 +157,8 @@
     <echo msg="AC updb." />
     <exec command="drush -y @${drush.alias.acquia} frdt" />
     <echo msg="AC frdt." />
+
+    <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
+    <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
   </target>
 </project>
