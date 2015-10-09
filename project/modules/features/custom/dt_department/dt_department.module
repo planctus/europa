@@ -27,19 +27,6 @@ function dt_department_migrate_api() {
 }
 
 /**
- * Implements hook_views_query_alter().
- *
- * This is to remove the amount of duplicates.
- */
-function dt_department_views_query_alter(&$view, &$query) {
-  if ($view->name == 'department') {
-    // Add the group by on the node.
-    $query->add_field('node', 'nid', 'node_nid', array('function' => 'groupby'));
-    $query->distinct = TRUE;
-  }
-}
-
-/**
  * Implements hook_views_post_render().
  *
  * Before we render, we use the data we have to sort. It does not require any
