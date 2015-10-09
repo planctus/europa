@@ -24,7 +24,7 @@
       <?php print $top; ?>
     </<?php print $top_wrapper; ?>>
 
-    <?php if (isset($left) && !empty($left)): kpr($left); ?>
+    <?php if (isset($left) && !empty($left)): ?>
       <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
         <?php print $left; ?>
       </<?php print $left_wrapper; ?>>
