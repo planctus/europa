@@ -6869,7 +6869,7 @@ Styleguide featureditem
 .featured-item {
   background-color: #e2e2e2;
   padding: 15px 0px;
-  border-left: 3px solid #ffd617;
+  border-left: 4px solid #ffd617;
   width: 100%;
   float: left; }
   .featured-item__content p {
