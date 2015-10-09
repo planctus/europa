@@ -476,7 +476,7 @@ function dt_priority_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_image',
     'label' => 'Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -649,7 +649,7 @@ function dt_priority_default_field_default_field_instances() {
       'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'optional',
+      'title' => 'none',
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

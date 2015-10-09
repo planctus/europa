@@ -50,6 +50,12 @@ function cwt_core_context_default_contexts() {
           'region' => 'header_bottom',
           'weight' => '-9',
         ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'nexteuropa_feedback-nexteuropa_feedback' => array(
           'module' => 'nexteuropa_feedback',
           'delta' => 'nexteuropa_feedback',
