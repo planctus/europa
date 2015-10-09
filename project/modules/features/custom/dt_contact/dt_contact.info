@@ -32,6 +32,7 @@ features[field_instance][] = node-contact-group_content_access
 features[field_instance][] = node-contact-og_group_ref
 features[field_instance][] = node-contact-title_field
 features[node][] = contact
+features[variable][] = entity_translation_settings_node__contact
 features[variable][] = comment_anonymous_contact
 features[variable][] = comment_contact
 features[variable][] = comment_default_mode_contact

@@ -51,4 +51,35 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     throw new Exception($this->languageList[$arg1]->native . ' has an incorrect weight.');
   }
 
+  /**
+   * @Then the checkboxes :selector should be checked
+   */
+  public function theCheckboxesShouldBeChecked($selector)
+  {
+    $checkboxes = $this->getSession()->getPage()->findAll('css', $selector);
+    if ($checkboxes === NULL) {
+      throw new Exception('Could not find checkbox input element matching the selector: ' . $selector);
+    }
+    foreach ($checkboxes as $checkbox) {
+      if(!$checkbox->isChecked()) {
+        throw new Exception('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be');
+      }
+    }
+  }
+
+  /**
+   * @Then the selects :selector should be set to :value
+   */
+  public function theSelectsShouldBeSetTo($selector, $value)
+  {
+    $selects = $this->getSession()->getPage()->findAll('css', $selector);
+    if ($selects === NULL) {
+      throw new Exception('Could not find select element matching the selector: ' . $selector);
+    }
+    foreach ($selects as $select) {
+      if($select->getValue() !== $value) {
+        throw new Exception('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be');
+      }
+    }
+  }
 }

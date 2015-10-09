@@ -63,6 +63,7 @@ features[field_instance][] = node-basic_page-group_content_access
 features[field_instance][] = node-basic_page-og_group_ref
 features[field_instance][] = node-basic_page-title_field
 features[node][] = basic_page
+features[variable][] = entity_translation_settings_node__basic_page
 features[variable][] = comment_anonymous_basic_page
 features[variable][] = comment_basic_page
 features[variable][] = comment_default_mode_basic_page

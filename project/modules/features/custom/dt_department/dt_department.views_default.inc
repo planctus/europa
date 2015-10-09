@@ -148,11 +148,11 @@ function dt_department_views_default_views() {
   $export['department'] = $view;
 
   $view = new view();
-  $view->name = 'filter_list_topics';
-  $view->description = '';
+  $view->name = 'filter_list_departments';
+  $view->description = 'Collection of views objects that can be used to filter lists';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Filter list - Topics';
+  $view->human_name = 'Filter list - Departments';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -177,6 +177,8 @@ function dt_department_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Sort criterion: Content: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
@@ -193,12 +195,13 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'topic' => 'topic',
+    'department' => 'department',
   );
 
-  /* Display: Entity Reference */
-  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  /* Display: Departments */
+  $handler = $view->new_display('entityreference', 'Departments', 'entityreference_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['display_description'] = 'List of topics that can be used for exposed filters';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -209,8 +212,9 @@ function dt_department_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $export['filter_list_topics'] = $view;
+  $export['filter_list_departments'] = $view;
 
   return $export;
 }
