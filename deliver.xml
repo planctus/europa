@@ -160,5 +160,6 @@
 
     <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
     <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
+    <echo msg="Added Acquia Cloud to develop branch right after deployment, you can now use git push to push the changes to the development branch." />
   </target>
 </project>
