@@ -112,6 +112,7 @@ bin/phing ac-deploy
 
 *   Run the <code>package</code> and <code>deliver</code> targets (see above).
 *   Perform <code>drush updb -y</code> and <code>drush frdt -y</code> on the Acquia Cloud instance using the <code>drush.alias.acquia</code> property.
+*   Add and commit the new version of the <code>acquia-cloud</code> submodule to the repository.
 
 #### Important!
 
