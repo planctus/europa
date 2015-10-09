@@ -8386,8 +8386,6 @@ Styleguide meta
     top: -1px; }
   .meta__item:last-child:after {
     display: none; }
-  .meta__item p {
-    font-size: inherit !important; }
 
 .meta__item--type {
   text-transform: uppercase; }
@@ -8395,6 +8393,12 @@ Styleguide meta
 .meta--header {
   font-size: 0.889em;
   margin-bottom: 0.3em; }
+
+.meta .meta__item p {
+  font-size: inherit !important;
+  display: inline;
+  line-height: inherit;
+  max-width: none; }
 
 /*
 

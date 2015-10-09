@@ -265,8 +265,16 @@ function commissioner_preprocess_block(&$variables) {
  * Implements template_preprocess_field().
  */
 function commissioner_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] == 'social_media' && $variables['element']['#bundle'] == 'aggregated_news') {
-    $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+  if ($variables['element']['#field_name'] == 'social_media') {
+    switch ($variables['element']['#bundle']) {
+      case 'aggregated_news':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+        break;
+
+      case 'commisioner_blog_post':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this blog post:') . '</span>';
+        break;
+    }
   }
 }
 
