@@ -7,20 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function cwt_biography_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function cwt_biography_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
-  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "picture" && $api == "default_picture_mapping") {
     return array("version" => "2");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -29,7 +25,7 @@ function cwt_biography_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function cwt_biography_views_api() {
+function cwt_biography_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -54,10 +50,10 @@ function cwt_biography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '160',
-          'height' => '160',
+          'width' => 160,
+          'height' => 160,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -77,11 +73,11 @@ function cwt_biography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '400',
+          'width' => 400,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -101,11 +97,11 @@ function cwt_biography_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '500',
+          'width' => 500,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -143,6 +139,7 @@ function cwt_biography_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
 
@@ -153,11 +150,11 @@ function cwt_biography_weight_features_default_settings() {
   $settings = array();
 
   $settings['biography'] = array(
-    'enabled' => '1',
-    'range' => '100',
-    'menu_weight' => '0',
-    'default' => '0',
-    'sync_translations' => '1',
+    'enabled' => 1,
+    'range' => 100,
+    'menu_weight' => 0,
+    'default' => 0,
+    'sync_translations' => 1,
   );
 
   return $settings;

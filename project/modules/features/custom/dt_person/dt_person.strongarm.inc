@@ -119,6 +119,12 @@ function dt_person_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'name' => array(
+        'custom_settings' => TRUE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
