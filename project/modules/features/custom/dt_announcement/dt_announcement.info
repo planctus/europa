@@ -73,6 +73,7 @@ features[variable][] = comment_preview_announcement
 features[variable][] = comment_subject_field_announcement
 features[variable][] = field_bundle_settings_node__announcement
 features[variable][] = language_content_type_announcement
+features[variable][] = entity_translation_settings_node__announcement
 features[variable][] = menu_options_announcement
 features[variable][] = menu_parent_announcement
 features[variable][] = node_options_announcement

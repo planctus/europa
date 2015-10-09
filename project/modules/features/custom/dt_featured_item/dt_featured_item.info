@@ -37,6 +37,7 @@ features[field_instance][] = node-featured_item-group_content_access
 features[field_instance][] = node-featured_item-og_group_ref
 features[field_instance][] = node-featured_item-title_field
 features[node][] = featured_item
+features[variable][] = entity_translation_settings_node__featured_item
 features[variable][] = comment_anonymous_featured_item
 features[variable][] = comment_default_mode_featured_item
 features[variable][] = comment_default_per_page_featured_item
