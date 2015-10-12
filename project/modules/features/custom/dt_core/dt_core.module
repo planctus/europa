@@ -754,10 +754,12 @@ function dt_core_views_pre_render(&$view) {
   // List of views that need fixing.
   $listings = array(
     'department',
+    'topics',
+    'policy_overview',
   );
   // Check if we are working on a matching view, if so then we sort them by the
-  // translated title.
-  if (in_array($view->name, $listings)) {
+  // translated title. Here we also check if we have our title field.
+  if (in_array($view->name, $listings) && isset($view->field['title_field_et'])) {
     // Lets sort our result by localized value.
     usort($view->result, "_dt_core_sort_title_field");
   }
