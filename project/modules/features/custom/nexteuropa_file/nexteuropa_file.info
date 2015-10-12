@@ -22,6 +22,7 @@ features[field_instance][] = node-file-field_core_description
 features[field_instance][] = node-file-field_core_file
 features[field_instance][] = node-file-title_field
 features[node][] = file
+features[variable][] = entity_translation_settings_node__file
 features[variable][] = comment_anonymous_file
 features[variable][] = comment_default_mode_file
 features[variable][] = comment_default_per_page_file
