@@ -95,3 +95,4 @@ features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][list] = list
 features_exclude[dependencies][field_group] = field_group
 features_exclude[dependencies][picture] = picture
+features_exclude[dependencies][nexteuropa_views] = nexteuropa_views

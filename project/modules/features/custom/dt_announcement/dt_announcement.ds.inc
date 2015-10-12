@@ -367,7 +367,8 @@ function dt_announcement_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = 'announcement|*';
+  $ds_field->ui_limit = 'announcement|*
+basic_page|*';
   $ds_field->properties = array(
     'block' => 'views|announcements-block',
     'block_render' => '1',
