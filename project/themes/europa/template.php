@@ -768,7 +768,8 @@ function europa_link($variables) {
   global $base_url;
   $internal_url = explode($base_url, $variables['path']);
   if (count($internal_url) > 1) {
-    $variables['path'] = trim($internal_url[1], '/');
+    $variables['options']['attributes']['class'][] = 'is-internal';
+//    $variables['path'] = trim($internal_url[1], '/');
   }
 
   return theme_link($variables);
