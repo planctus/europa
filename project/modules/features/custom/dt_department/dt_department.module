@@ -25,26 +25,3 @@ function dt_department_migrate_api() {
     ),
   );
 }
-
-/**
- * Implements hook_views_post_render().
- *
- * Before we render, we use the data we have to sort. It does not require any
- * additional database querys.
- */
-function dt_department_views_pre_render(&$view) {
-  if ($view->name == 'department') {
-    // Lets sort our result by localized value.
-    usort($view->result, "_dt_department_sort");
-  }
-}
-
-/**
- * Custom sorting function. This function compares the 2 strings and sorts them.
- */
-function _dt_department_sort($x, $y) {
-  // Compare the 2 sting.
-  if (isset($x->field_title_field_et[0]['raw']['safe_value']) && isset($y->field_title_field_et[0]['raw']['safe_value'])) {
-    return strcmp($x->field_title_field_et[0]['raw']['safe_value'], $y->field_title_field_et[0]['raw']['safe_value']);
-  }
-}

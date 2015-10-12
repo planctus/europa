@@ -160,13 +160,13 @@ function dt_apply_wysiwyg_buttons() {
  * Copy values from source to destination filed.
  *
  * @param string $entity_type
- *   the type of entity, like: node.
+ *   The type of entity, like: node.
  * @param string $bundle
- *   entity bundle, like: page.
+ *   Entity bundle, like: page.
  * @param string $source_field_name
- *   source field name, like: field_core_link.
+ *   Source field name, like: field_core_link.
  * @param string $destination_field_name
- *   destination field, like: field_core_links.
+ *   Destination field, like: field_core_links.
  *
  * @throws \DTCoreSourceFieldError
  *   Exception when no source field with the given name.
@@ -315,15 +315,15 @@ function _dt_core_path_update_relatives($path) {
  * These fields are stored in the $GLOBALS['dt_core_parent_fields'].
  *
  * @param int $nid
- *   Node id
+ *   Node id.
  * @param string $field_name
- *   field name that is used for hierarchy
+ *   Field name that is used for hierarchy.
  * @param string $direction
- *   children or parents
+ *   Children or parents.
  * @param bool $no_alias_only
  *   Exclude nodes that already have an alias.
  * @param int $original_nid
- *   Node id of the starting item
+ *   Node id of the starting item.
  *
  * @return array
  *   Node ids of children|parents
@@ -339,10 +339,10 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
 
   if ($direction == 'parents') {
     $result = db_select('field_data_' . $field_name, 'p')
-    ->fields('p', array($field_name . '_target_id'))
-    ->condition('entity_id', $nid, '=')
-    ->execute()
-    ->fetchAssoc();
+      ->fields('p', array($field_name . '_target_id'))
+      ->condition('entity_id', $nid, '=')
+      ->execute()
+      ->fetchAssoc();
 
     $nids = $result ? array_values($result) : FALSE;
     // Check if parent has already an alias.
@@ -431,7 +431,6 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
   // The pattern "prefix/[parent:url]/[title]" might result in an alias like
   // "prefix/prefix/parent-title/title" if parent is of the same type since the
   // prefix is added twice. We will remove the duplicate prefix now.
-
   // We consider everything before the first token a prefix.
   $pattern_prefix = explode('[', $context['pattern']);
   $prefix = $pattern_prefix[0];
@@ -451,7 +450,7 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
  * Checks if a URL pattern is relying on a parent field.
  *
  * @param string $field_name
- *   Field name
+ *   Field name.
  *
  * @return mixed
  *   string pattern token segment | bool FALSE
@@ -490,7 +489,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
  * Checks if a URL pattern is relying on a parent field.
  *
  * @param object $node
- *   Node
+ *   Node.
  *
  * @return bool
  *   There is a circular reference between the two nodes.
@@ -579,8 +578,8 @@ function _dt_core_enable_lanugages($languages = array()) {
 
     // Portuguese exception:
     // In Drupal the "pt" prefix belongs to Portuguese / International but we
-    // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
-    // default prefix). We need to change this to "pt".
+    // need Portuguese / Portugal to have this prefix (theme_image_style has
+    // "pt-pt" as default prefix). We need to change this to "pt".
     if ($langcode == 'pt-pt') {
       db_update('languages')
         ->fields(array(
@@ -743,4 +742,33 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
 
   // Retrun our outcome.
   return $return;
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Before we render, we use the data we have to sort. It does not require any
+ * additional database querys.
+ */
+function dt_core_views_pre_render(&$view) {
+  // List of views that need fixing.
+  $listings = array(
+    'department',
+  );
+  // Check if we are working on a matching view, if so then we sort them by the
+  // translated title.
+  if (in_array($view->name, $listings)) {
+    // Lets sort our result by localized value.
+    usort($view->result, "_dt_core_sort_title_field");
+  }
+}
+
+/**
+ * Custom sorting function. This function compares the 2 strings and sorts them.
+ */
+function _dt_core_sort_title_field($x, $y) {
+  // Compare the 2 sting.
+  if (isset($x->field_title_field_et[0]['raw']['safe_value']) && isset($y->field_title_field_et[0]['raw']['safe_value'])) {
+    return strcmp($x->field_title_field_et[0]['raw']['safe_value'], $y->field_title_field_et[0]['raw']['safe_value']);
+  }
 }
