@@ -82,4 +82,20 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
     }
   }
+
+  /**
+   * @Then the element :selector should contain text
+   */
+  public function theElementShouldContainText($selector)
+  {
+    $elements = $this->getSession()->getPage()->findAll('css', $selector);
+    if ($elements === NULL) {
+      throw new Exception('Could not find element matching the selector: ' . $selector);
+    }
+    foreach ($elements as $element) {
+      if($element->getText() == '') {
+        throw new Exception('Element ' . $selector . 'is empty and it should not be');
+      }
+    }
+  }
 }
