@@ -35,7 +35,6 @@ function dt_department_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
-  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
@@ -53,13 +52,17 @@ function dt_department_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = 'The Commission is organised in 2 types of departments. Directorates-General (DGs) make policy. Services provide administrative and other support - including publications and statistics - to parties inside or outside the Commission. Executive agencies are set up for a fixed period to manage programmes. They are not legally part of the EU institutions, but their activities are governed by EU law.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Field: Entity translation: Title: translated */
-  $handler->display->display_options['fields']['title_field_et']['id'] = 'title_field_et';
-  $handler->display->display_options['fields']['title_field_et']['table'] = 'field_data_title_field';
-  $handler->display->display_options['fields']['title_field_et']['field'] = 'title_field_et';
-  $handler->display->display_options['fields']['title_field_et']['label'] = '';
-  $handler->display->display_options['fields']['title_field_et']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_field_et']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   /* Filter criterion: Content: Topics (field_core_topics) (reference filter) */
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['id'] = 'field_core_topics_target_id_entityreference_filter';
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['table'] = 'field_data_field_core_topics';

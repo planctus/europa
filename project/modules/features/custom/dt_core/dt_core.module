@@ -751,18 +751,70 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
  * additional database querys.
  */
 function dt_core_views_pre_render(&$view) {
-  // List of views that need fixing.
-  $listings = array(
+  // Check if we are working on a matching view, if so then we sort them by the
+  // translated title. Here we also check if we have our title field.
+  if (in_array($view->name, _dt_core_sort_view_list()) && isset($view->field['title_field_et'])) {
+    // Lets sort our result by localized value.
+    usort($view->result, "_dt_core_sort_title_field");
+  }
+}
+
+/**
+ * Implements hook_views_default_veiws_alter().
+ *
+ * Alters our specific views so that the entity translated title field is
+ * included as a field.
+ */
+function dt_core_views_default_views_alter(&$views) {
+  $handler =& $views['department']->display['default']->handler;
+  /* Force to use fields */
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  /* Field: Entity translation: Title: translated */
+  $handler->display->display_options['fields']['title_field_et']['id'] = 'title_field_et';
+  $handler->display->display_options['fields']['title_field_et']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field_et']['field'] = 'title_field_et';
+  $handler->display->display_options['fields']['title_field_et']['label'] = '';
+  $handler->display->display_options['fields']['title_field_et']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field_et']['element_default_classes'] = FALSE;
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * To avoid reconfiguring our views we simply remove our sort field from the
+ * query. This way, when a fix is release we only have to remove our 3 views
+ * hooks from this file.
+ */
+function dt_core_views_query_alter(&$view, &$query) {
+  if (in_array($view->name, _dt_core_sort_view_list()) && isset($view->field['title_field_et'])) {
+    // If we are sorting by our title field, we remove that sort.
+    foreach ($query->orderby as $key => $data) {
+      // Check if the fieldname matches.
+      if (isset($data['field']) && $data['field'] == 'field_data_title_field_title_field_value') {
+        // Unset it.
+        unset($query->orderby[$key]);
+      }
+    }
+    // Remove the join.
+    if (isset($query->table_queue['field_data_title_field'])) {
+      unset($query->table_queue['field_data_title_field']);
+    }
+    // Remove the field.
+    if (isset($query->fields['field_data_title_field_title_field_value'])) {
+      unset($query->fields['field_data_title_field_title_field_value']);
+    }
+  }
+}
+
+/**
+ * Helper function to get a list of views.
+ */
+function _dt_core_sort_view_list() {
+  return array(
     'department',
     'topics',
     'policy_overview',
   );
-  // Check if we are working on a matching view, if so then we sort them by the
-  // translated title. Here we also check if we have our title field.
-  if (in_array($view->name, $listings) && isset($view->field['title_field_et'])) {
-    // Lets sort our result by localized value.
-    usort($view->result, "_dt_core_sort_title_field");
-  }
 }
 
 /**
