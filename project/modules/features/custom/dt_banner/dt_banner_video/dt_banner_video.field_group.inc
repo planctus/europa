@@ -84,7 +84,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
-        'classes' => 'banner_video__caption',
+        'classes' => 'banner-video__caption',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -113,7 +113,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
-        'classes' => 'banner_video__caption',
+        'classes' => 'banner-video__caption',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -136,14 +136,14 @@ function dt_banner_video_field_group_info() {
     'label' => 'Video left',
     'weight' => '5',
     'children' => array(
-      0 => 'group_video_video',
-      1 => 'group_video_caption',
+      0 => 'group_video_caption',
+      1 => 'group_video_video',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Video left',
       'instance_settings' => array(
-        'classes' => 'col-md-6',
+        'classes' => 'banner-video__left',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -166,14 +166,14 @@ function dt_banner_video_field_group_info() {
     'label' => 'Video left',
     'weight' => '5',
     'children' => array(
-      0 => 'group_video_video',
-      1 => 'group_video_caption',
+      0 => 'group_video_caption',
+      1 => 'group_video_video',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Video left',
       'instance_settings' => array(
-        'classes' => 'col-md-6',
+        'classes' => 'banner-video__left',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -191,10 +191,10 @@ function dt_banner_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'banner_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_video_right';
+  $field_group->parent_name = 'group_video_wrapper';
   $field_group->data = array(
     'label' => 'Video paragraph',
-    'weight' => '9',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_description',
     ),
@@ -202,7 +202,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video paragraph',
       'instance_settings' => array(
-        'classes' => 'banner_video__paragraph',
+        'classes' => 'banner-video__paragraph',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -220,10 +220,10 @@ function dt_banner_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'banner_video';
   $field_group->mode = 'teaser';
-  $field_group->parent_name = 'group_video_right';
+  $field_group->parent_name = 'group_video_wrapper';
   $field_group->data = array(
     'label' => 'Video paragraph',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_description',
     ),
@@ -231,7 +231,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video paragraph',
       'instance_settings' => array(
-        'classes' => 'banner_video__paragraph',
+        'classes' => 'banner-video__paragraph',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -318,7 +318,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Video',
       'instance_settings' => array(
-        'classes' => 'banner_video__video',
+        'classes' => 'banner-video__video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -347,7 +347,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Video',
       'instance_settings' => array(
-        'classes' => 'banner_video__video',
+        'classes' => 'banner-video__video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -356,6 +356,36 @@ function dt_banner_video_field_group_info() {
     ),
   );
   $export['group_video_video|node|banner_video|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_video_wrapper|node|banner_video|default';
+  $field_group->group_name = 'group_video_wrapper';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'banner_video';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Video Wrapper',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_video_left',
+      1 => 'group_video_paragraph',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Video Wrapper',
+      'instance_settings' => array(
+        'classes' => 'banner-video',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_video_wrapper|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -371,13 +401,13 @@ function dt_banner_video_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_video_left',
-      1 => 'group_video_right',
+      1 => 'group_video_paragraph',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Video Wrapper',
       'instance_settings' => array(
-        'classes' => 'banner_video row',
+        'classes' => 'banner-video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',

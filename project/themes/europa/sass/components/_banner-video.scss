@@ -7,7 +7,8 @@ Styleguide: banner.video
 */
 
 .banner-video {
-
+  @extend .row;
+  
   &__video {
 
     & .file {
@@ -29,6 +30,11 @@ Styleguide: banner.video
   }
 
   &__paragraph {
+    @extend .col-md-6;
     font-size: $font-size-little;
+  }
+
+  &__left{
+    @extend .col-md-6;
   }
 }
