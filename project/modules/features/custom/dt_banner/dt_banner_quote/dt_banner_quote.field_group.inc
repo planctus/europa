@@ -142,7 +142,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Author',
       'instance_settings' => array(
-        'classes' => 'banner_quote__author',
+        'classes' => 'banner-quote__author',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -171,7 +171,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Author',
       'instance_settings' => array(
-        'classes' => 'banner_quote__author',
+        'classes' => 'banner-quote__author',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -200,7 +200,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Quote Quote',
       'instance_settings' => array(
-        'classes' => 'banner_quote__quote',
+        'classes' => 'banner-quote__quote',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -229,7 +229,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Quote Quote',
       'instance_settings' => array(
-        'classes' => 'banner_quote__quote',
+        'classes' => 'banner-quote__quote',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -252,14 +252,14 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Quote Wrapper',
     'weight' => '0',
     'children' => array(
-      0 => 'group_quote_quote',
-      1 => 'group_quote_author',
+      0 => 'group_quote_author',
+      1 => 'group_quote_quote',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Quote Wrapper',
       'instance_settings' => array(
-        'classes' => 'banner_quote',
+        'classes' => 'banner-quote',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -289,7 +289,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Quote Wrapper',
       'instance_settings' => array(
-        'classes' => 'banner_quote',
+        'classes' => 'banner-quote',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
