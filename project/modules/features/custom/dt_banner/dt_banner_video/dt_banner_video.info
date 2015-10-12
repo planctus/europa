@@ -36,6 +36,7 @@ features[file_display][] = video__full__file_field_media_large_icon
 features[file_display][] = video__full__file_picture
 features[file_display][] = video__full__media_avportal_image
 features[file_display][] = video__full__media_avportal_video
+features[file_display][] = video__full__media_youtube_video
 features[file_display][] = video__full__media_node_image
 features[node][] = banner_video
 features[variable][] = entity_translation_settings_node__banner_video

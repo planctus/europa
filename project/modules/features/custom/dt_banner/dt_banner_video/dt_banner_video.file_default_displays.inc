@@ -104,6 +104,17 @@ function dt_banner_video_file_default_displays() {
 
   $file_display = new stdClass();
   $file_display->api_version = 1;
+  $file_display->name = 'video__full__media_youtube_video';
+  $file_display->weight = 0;
+  $file_display->status = TRUE;
+  $file_display->settings = array(
+    'width' => '555',
+    'height' => '325',
+  );
+  $export['video__full__media_youtube_video'] = $file_display;
+
+  $file_display = new stdClass();
+  $file_display->api_version = 1;
   $file_display->name = 'video__full__media_node_image';
   $file_display->weight = 0;
   $file_display->status = FALSE;
