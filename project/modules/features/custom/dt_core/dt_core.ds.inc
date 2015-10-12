@@ -7,7 +7,7 @@
 /**
  * Implements hook_ds_custom_fields_info().
  */
-function dt_core_item_ds_custom_fields_info() {
+function dt_core_ds_custom_fields_info() {
   $export = array();
 
   $ds_field = new stdClass();
@@ -21,7 +21,7 @@ function dt_core_item_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<p><a class="full-name" href="[node:legacy-link]">[node:title_field]</a></p>',
+      'value' => '<a href="[node:legacy-link]">[node:title_field]</a>',
       'format' => 'full_html',
     ),
     'use_token' => 1,

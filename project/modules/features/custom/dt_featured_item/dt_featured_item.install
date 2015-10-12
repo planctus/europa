@@ -13,16 +13,11 @@ function dt_featured_item_install() {
 }
 
 /**
- * Revert feature to make changes take effect.
+ * Revert feature to make changes take effect, and delete old fields.
  */
 function dt_featured_item_update_7101() {
   features_revert_module('Dt_featured_item');
-}
 
-/**
- * Delete old fields.
- */
-function dt_featured_item_update_7102() {
   // List of fields to delete.
   $fields_to_delete = array(
     'field_feat_item_button_label',
