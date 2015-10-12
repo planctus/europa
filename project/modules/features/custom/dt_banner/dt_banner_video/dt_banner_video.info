@@ -41,7 +41,6 @@ features[file_display][] = video__full__media_avportal_image
 features[file_display][] = video__full__media_avportal_video
 features[file_display][] = video__full__media_youtube_video
 features[file_display][] = video__full__media_node_image
-features[file_display][] = video__full__media_youtube_video
 features[node][] = banner_video
 features[variable][] = entity_translation_settings_node__banner_video
 features[variable][] = comment_anonymous_banner_video
