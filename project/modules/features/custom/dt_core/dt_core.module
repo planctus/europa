@@ -761,6 +761,7 @@ function dt_core_views_query_alter(&$view, &$query) {
   if (isset($view->sort['title_field_value'])) {
     // Sort direction from our sort.
     $sort_direction = 'ASC';
+
     // If the sort direction is set we use the set one.
     if (isset($view->sort['title_field_value']->options['order'])) {
       $sort_direction = $view->sort['title_field_value']->options['order'];
