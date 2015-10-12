@@ -816,11 +816,13 @@ function dt_core_views_query_alter(&$view, &$query) {
       'join' => $join,
     );
 
-    // Sort by our result.
-    $query->orderby[0] = array(
-      'field' => 'title_field.translated_title',
-      'direction' => $sort_direction,
-    );
+    // Replace the title sort fields with our custom.
+    foreach ($query->orderby as $key => &$value) {
+      if ($value['field'] == 'field_data_title_field_title_field_value') {
+        $value['field'] = 'title_field.translated_title';
+        break;
+      }
+    }
 
     // This is originally coming from our sort, we could even delete this part
     // once we move to a better solution. As we replace the sorting logic, we
