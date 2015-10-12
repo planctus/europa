@@ -244,64 +244,6 @@ function dt_banner_video_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_video_right|node|banner_video|default';
-  $field_group->group_name = 'group_video_right';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'banner_video';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_video_wrapper';
-  $field_group->data = array(
-    'label' => 'Video Right',
-    'weight' => '6',
-    'children' => array(
-      0 => 'group_video_paragraph',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Video Right',
-      'instance_settings' => array(
-        'classes' => 'col-md-6',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $export['group_video_right|node|banner_video|default'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_video_right|node|banner_video|teaser';
-  $field_group->group_name = 'group_video_right';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'banner_video';
-  $field_group->mode = 'teaser';
-  $field_group->parent_name = 'group_video_wrapper';
-  $field_group->data = array(
-    'label' => 'Video Right',
-    'weight' => '6',
-    'children' => array(
-      0 => 'group_video_paragraph',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Video Right',
-      'instance_settings' => array(
-        'classes' => 'col-md-6',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $export['group_video_right|node|banner_video|teaser'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_video_video|node|banner_video|default';
   $field_group->group_name = 'group_video_video';
   $field_group->entity_type = 'node';
