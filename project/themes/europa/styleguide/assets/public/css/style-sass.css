@@ -8829,7 +8829,7 @@ Styleguide: siteswitcher
     width: 100%;
     padding: 0.5em 1.667em;
     line-height: 1.3; }
-    .site-switcher__option > a.is-external:after, .site-switcher__option > a[href^="http"]:not(.is-internal):after, .listing__item-link[href^="http"]:not(.is-internal) .site-switcher__option > a.listing__title:after {
+    .site-switcher__option > a:after, .site-switcher__option > a.is-external:after, .site-switcher__option > a[href^="http"]:not(.is-internal):after, .listing__item-link[href^="http"]:not(.is-internal) .site-switcher__option > a.listing__title:after {
       content: none !important; }
   .site-switcher__option.is-selected {
     background: #004494;
