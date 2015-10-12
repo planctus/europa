@@ -76,7 +76,7 @@ function dt_banner_video_field_group_info() {
   $field_group->parent_name = 'group_video_left';
   $field_group->data = array(
     'label' => 'Video caption',
-    'weight' => '8',
+    'weight' => '20',
     'children' => array(
       0 => 'field_banner_caption',
     ),
@@ -84,7 +84,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
-        'classes' => 'banner-video__caption',
+        'classes' => 'banner__caption',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -113,7 +113,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
-        'classes' => 'banner-video__caption',
+        'classes' => 'banner__caption',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -134,7 +134,7 @@ function dt_banner_video_field_group_info() {
   $field_group->parent_name = 'group_video_wrapper';
   $field_group->data = array(
     'label' => 'Video left',
-    'weight' => '5',
+    'weight' => '18',
     'children' => array(
       0 => 'group_video_caption',
       1 => 'group_video_video',
@@ -143,7 +143,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video left',
       'instance_settings' => array(
-        'classes' => 'banner-video__left',
+        'classes' => 'banner__left',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -173,7 +173,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video left',
       'instance_settings' => array(
-        'classes' => 'banner-video__left',
+        'classes' => 'banner__left',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -194,7 +194,7 @@ function dt_banner_video_field_group_info() {
   $field_group->parent_name = 'group_video_wrapper';
   $field_group->data = array(
     'label' => 'Video paragraph',
-    'weight' => '6',
+    'weight' => '19',
     'children' => array(
       0 => 'field_core_description',
     ),
@@ -202,7 +202,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video paragraph',
       'instance_settings' => array(
-        'classes' => 'banner-video__paragraph',
+        'classes' => 'banner__paragraph',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -231,7 +231,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video paragraph',
       'instance_settings' => array(
-        'classes' => 'banner-video__paragraph',
+        'classes' => 'banner__paragraph',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -252,7 +252,7 @@ function dt_banner_video_field_group_info() {
   $field_group->parent_name = 'group_video_left';
   $field_group->data = array(
     'label' => 'Video Video',
-    'weight' => '7',
+    'weight' => '19',
     'children' => array(
       0 => 'field_banner_video_file',
     ),
@@ -260,7 +260,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Video',
       'instance_settings' => array(
-        'classes' => 'banner-video__video',
+        'classes' => 'banner__video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -289,7 +289,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Video',
       'instance_settings' => array(
-        'classes' => 'banner-video__video',
+        'classes' => 'banner__video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -319,7 +319,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Wrapper',
       'instance_settings' => array(
-        'classes' => 'banner-video',
+        'classes' => 'banner banner--video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -349,7 +349,7 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video Wrapper',
       'instance_settings' => array(
-        'classes' => 'banner-video',
+        'classes' => 'banner banner--video',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
