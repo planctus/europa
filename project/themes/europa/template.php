@@ -768,7 +768,7 @@ function europa_link($variables) {
   global $base_url;
   $internal_url = explode($base_url, $variables['path']);
   if (count($internal_url) > 1) {
-    $variables['path'] = trim($internal_url[1], '/');
+    $variables['options']['attributes']['class'][] = 'is-internal';
   }
 
   return theme_link($variables);
@@ -1029,7 +1029,7 @@ function europa_preprocess_views_view(&$variables) {
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
-    $variables['active_filters'] = get_exposed_filter_output();
+    $variables['active_filters'] = _dt_exposed_filter_data_get_exposed_filter_output();
   }
 }
 

@@ -221,7 +221,7 @@ Styleguide buttons.btn-search
 
 // External link specific adjustments
 a.btn {
-  &#{"[" + $external_link_pattern + "]"} {
+  &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
     padding-right: 2.1em;
     &:after {
       position: absolute;
