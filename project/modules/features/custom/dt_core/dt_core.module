@@ -766,16 +766,20 @@ function dt_core_views_pre_render(&$view) {
  * included as a field.
  */
 function dt_core_views_default_views_alter(&$views) {
-  $handler =& $views['department']->display['default']->handler;
-  /* Force to use fields */
-  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
-  /* Field: Entity translation: Title: translated */
-  $handler->display->display_options['fields']['title_field_et']['id'] = 'title_field_et';
-  $handler->display->display_options['fields']['title_field_et']['table'] = 'field_data_title_field';
-  $handler->display->display_options['fields']['title_field_et']['field'] = 'title_field_et';
-  $handler->display->display_options['fields']['title_field_et']['label'] = '';
-  $handler->display->display_options['fields']['title_field_et']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_field_et']['element_default_classes'] = FALSE;
+  // Loop our list of views that need alteration.
+  foreach (_dt_core_sort_view_list() as $view_name) {
+    // Open the handler and change the configuration.
+    $handler =& $views[$view_name]->display['default']->handler;
+    /* Force to use fields */
+    $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+    /* Field: Entity translation: Title: translated */
+    $handler->display->display_options['fields']['title_field_et']['id'] = 'title_field_et';
+    $handler->display->display_options['fields']['title_field_et']['table'] = 'field_data_title_field';
+    $handler->display->display_options['fields']['title_field_et']['field'] = 'title_field_et';
+    $handler->display->display_options['fields']['title_field_et']['label'] = '';
+    $handler->display->display_options['fields']['title_field_et']['element_label_colon'] = FALSE;
+    $handler->display->display_options['fields']['title_field_et']['element_default_classes'] = FALSE;
+  }
 }
 
 /**
