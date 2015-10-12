@@ -137,9 +137,9 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'title_field',
-      1 => 'field_feat_item_button_label',
-      2 => 'field_feat_item_description',
+      0 => 'field_feat_item_description',
+      1 => 'field_core_legacy_link',
+      2 => 'legacy_link_title',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -168,9 +168,9 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'title_field',
-      1 => 'field_feat_item_button_label',
-      2 => 'field_feat_item_description',
+      0 => 'field_feat_item_description',
+      1 => 'field_core_legacy_link',
+      2 => 'legacy_link_title',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -227,7 +227,7 @@ function dt_featured_item_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured item wrapper',
-    'weight' => '4',
+    'weight' => '0',
     'children' => array(
       0 => 'group_featured_item_left',
       1 => 'group_featured_item_right',
@@ -264,6 +264,7 @@ function dt_featured_item_field_group_info() {
       2 => 'field_feat_item_description',
       3 => 'field_feat_item_image',
       4 => 'field_feat_item_ref_or_url',
+      5 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

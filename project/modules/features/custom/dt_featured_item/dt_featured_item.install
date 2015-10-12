@@ -18,3 +18,26 @@ function dt_featured_item_install() {
 function dt_featured_item_update_7101() {
   features_revert_module('Dt_featured_item');
 }
+
+/**
+ * Delete old fields.
+ */
+function dt_featured_item_update_7102() {
+  // List of fields to delete.
+  $fields_to_delete = array(
+    'field_feat_item_button_label',
+    'field_feat_item_ref_or_url',
+  );
+
+  // Handle the fields to delete.
+  foreach ($fields_to_delete as $field_name) {
+    // Delete the field instance.
+    if ($field_instance = field_info_instance('node', $field_name, 'featured_item')) {
+      field_delete_instance($field_instance);
+    }
+    // Then the field base.
+    if ($field_base = field_info_field($field_name)) {
+      field_delete_field($field_base);
+    }
+  }
+}

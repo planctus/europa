@@ -48,6 +48,7 @@ dependencies[] = weight
 dependencies[] = entityreference_filter
 dependencies[] = dt_language_selector_site_popup
 features[breakpoint_group][] = europa
+features[ds_fields][] = legacy_link_title
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
 features[breakpoints][] = breakpoints.theme.europa.narrow
