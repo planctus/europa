@@ -745,61 +745,85 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
 }
 
 /**
- * Implements hook_views_post_render().
- *
- * Before we render, we use the data we have to sort. It does not require any
- * additional database querys.
- */
-function dt_core_views_pre_render(&$view) {
-  // Check if we are working on a matching view, if so then we sort them by the
-  // translated title. Here we also check if we have our title field.
-  if (in_array($view->name, _dt_core_sort_view_list()) && isset($view->field['title_field_et'])) {
-    // Lets sort our result by localized value.
-    usort($view->result, "_dt_core_sort_title_field");
-  }
-}
-
-/**
- * Implements hook_views_default_veiws_alter().
- *
- * Alters our specific views so that the entity translated title field is
- * included as a field.
- */
-function dt_core_views_default_views_alter(&$views) {
-  // Loop our list of views that need alteration.
-  foreach (_dt_core_sort_view_list() as $view_name) {
-    // Open the handler and change the configuration.
-    $handler =& $views[$view_name]->display['default']->handler;
-    /* Force to use fields */
-    $handler->display->display_options['style_options']['uses_fields'] = TRUE;
-    /* Field: Entity translation: Title: translated */
-    $handler->display->display_options['fields']['title_field_et']['id'] = 'title_field_et';
-    $handler->display->display_options['fields']['title_field_et']['table'] = 'field_data_title_field';
-    $handler->display->display_options['fields']['title_field_et']['field'] = 'title_field_et';
-    $handler->display->display_options['fields']['title_field_et']['label'] = '';
-    $handler->display->display_options['fields']['title_field_et']['element_label_colon'] = FALSE;
-    $handler->display->display_options['fields']['title_field_et']['element_default_classes'] = FALSE;
-  }
-}
-
-/**
  * Implements hook_views_query_alter().
  *
  * To avoid reconfiguring our views we simply remove our sort field from the
- * query. This way, when a fix is release we only have to remove our 3 views
- * hooks from this file.
+ * query. This query alteration, takes in consideration that we have a maximum
+ * of 3 possible languages. It joins the translated data.
  */
 function dt_core_views_query_alter(&$view, &$query) {
-  if (in_array($view->name, _dt_core_sort_view_list()) && isset($view->field['title_field_et'])) {
-    // If we are sorting by our title field, we remove that sort.
-    foreach ($query->orderby as $key => $data) {
-      // Check if the fieldname matches.
-      if (isset($data['field']) && $data['field'] == 'field_data_title_field_title_field_value') {
-        // Unset it.
-        unset($query->orderby[$key]);
-      }
+  // Get our languages.
+  global $language_content;
+  global $language;
+  $default_language = language_default();
+
+  // If it is one of our listings.
+  if (isset($view->sort['title_field_value'])) {
+    // Sort direction from our sort.
+    $sort_direction = 'ASC';
+    // If the sort direction is set we use the set one.
+    if (isset($view->sort['title_field_value']->options['order'])) {
+      $sort_direction = $view->sort['title_field_value']->options['order'];
     }
-    // Remove the join.
+
+    // Set distinct to 1.
+    $query->options['distinct'] = 1;
+
+    // Language subquerys.
+    $or = db_or();
+    // If our content language is different from interface we set the first
+    // language to this language.
+    if ($language_content->language <> $language->language) {
+      $or->condition('title_field.language', $language_content->language);
+    }
+    // If our interface language is different from the default language we set
+    // this as our second option.
+    if ($language->language <> $default_language->language) {
+      $or->condition('title_field.language', $language->language);
+    }
+
+    // And we always use our default language as a fallback. This is the third
+    // option.
+    $or->condition('title_field.language', $default_language->language);
+
+    // Build our sub query.
+    $sub_query = db_select('field_data_title_field', 'title_field');
+    $sub_query->addField('title_field', 'title_field_value', 'translated_title');
+    $sub_query->addField('title_field', 'entity_id', 'translated_id');
+    $sub_query->condition($or);
+    $sub_query->distinct(1);
+    $sub_query->orderby('title_field_value', $sort_direction);
+
+    // Create new join object.
+    $join = new views_join();
+    $join->definition = array(
+      'table formula' => $sub_query,
+      'left_field' => 'nid',
+      'field' => 'translated_id',
+      'left_table' => 'node',
+    );
+    $join->left_table = 'node';
+    $join->field = 'translated_id';
+    $join->left_field = 'nid';
+    $join->type = 'LEFT';
+
+    // Do the actual join.
+    $query->table_queue['title_field'] = array(
+      'alias' => 'title_field',
+      'table' => $sub_query,
+      'relationship' => 'node',
+      'join' => $join,
+    );
+
+    // Sort by our result.
+    $query->orderby[0] = array(
+      'field' => 'title_field.translated_title',
+      'direction' => $sort_direction,
+    );
+
+    // This is originally coming from our sort, we could even delete this part
+    // once we move to a better solution. As we replace the sorting logic, we
+    // have to unset these, as they are causing the duplicate results.
     if (isset($query->table_queue['field_data_title_field'])) {
       unset($query->table_queue['field_data_title_field']);
     }
@@ -807,26 +831,5 @@ function dt_core_views_query_alter(&$view, &$query) {
     if (isset($query->fields['field_data_title_field_title_field_value'])) {
       unset($query->fields['field_data_title_field_title_field_value']);
     }
-  }
-}
-
-/**
- * Helper function to get a list of views.
- */
-function _dt_core_sort_view_list() {
-  return array(
-    'department',
-    'topics',
-    'policy_overview',
-  );
-}
-
-/**
- * Custom sorting function. This function compares the 2 strings and sorts them.
- */
-function _dt_core_sort_title_field($x, $y) {
-  // Compare the 2 sting.
-  if (isset($x->field_title_field_et[0]['raw']['safe_value']) && isset($y->field_title_field_et[0]['raw']['safe_value'])) {
-    return strcmp($x->field_title_field_et[0]['raw']['safe_value'], $y->field_title_field_et[0]['raw']['safe_value']);
   }
 }
