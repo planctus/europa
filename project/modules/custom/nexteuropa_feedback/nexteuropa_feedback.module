@@ -36,7 +36,7 @@ function nexteuropa_feedback_form($form_state) {
 
   $form['#attributes']['class'][] = 'feedback-form';
 
-  $form['#token'] = FALSE;
+  $form['#token'] = NULL;
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
     '#title' => t("What were you doing?"),
