@@ -752,13 +752,11 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
  * of 3 possible languages. It joins the translated data.
  */
 function dt_core_views_query_alter(&$view, &$query) {
-  // Get our languages.
-  global $language_content;
-  global $language;
-  $default_language = language_default();
-
   // If it is one of our listings.
   if (isset($view->sort['title_field_value'])) {
+    // Get our languages.
+    global $language;
+
     // Sort direction from our sort.
     $sort_direction = 'ASC';
 
@@ -772,20 +770,34 @@ function dt_core_views_query_alter(&$view, &$query) {
 
     // Language subquerys.
     $or = db_or();
-    // If our content language is different from interface we set the first
-    // language to this language.
-    if ($language_content->language <> $language->language) {
-      $or->condition('title_field.language', $language_content->language);
+    // Get the first 2 languages of our fallback array.
+    $fallback_languages = array_slice(language_fallback_get_candidates(), 0, 2);
+    // Add our current site language to the array.
+    if (!in_array($language->language, $fallback_languages)) {
+      array_unshift($fallback_languages, $language->language);
     }
-    // If our interface language is different from the default language we set
-    // this as our second option.
-    if ($language->language <> $default_language->language) {
-      $or->condition('title_field.language', $language->language);
+    else {
+      // Our default language is in the array but might not be the first. So we
+      // move it.
+      // Get the key of the language.
+      $main_language_key = array_search($language->language, $fallback_languages);
+      // Store it temporary.
+      $prepend_language = $fallback_languages[$main_language_key];
+      // Remove the item.
+      unset($fallback_languages[$main_language_key]);
+      // Then add it to the front.
+      array_unshift($fallback_languages, $prepend_language);
     }
 
-    // And we always use our default language as a fallback. This is the third
-    // option.
-    $or->condition('title_field.language', $default_language->language);
+    // Also we can add our sorting function here. So lets start with the
+    // ininitialization of that variable.
+    $order_by_case = 'CASE ';
+    // Add these languages to the query.
+    foreach ($fallback_languages as $key => $fallback_language) {
+      $or->condition('title_field.language', $fallback_language);
+      $order_by_case .= "WHEN title_field.language = '" . $fallback_language . "' THEN " . $key . " ";
+    }
+    $order_by_case .= 'END';
 
     // Build our sub query.
     $sub_query = db_select('field_data_title_field', 'title_field');
@@ -793,7 +805,8 @@ function dt_core_views_query_alter(&$view, &$query) {
     $sub_query->addField('title_field', 'entity_id', 'translated_id');
     $sub_query->condition($or);
     $sub_query->distinct(1);
-    $sub_query->orderby('title_field_value', $sort_direction);
+    // The subquery we generated in the fallback order.
+    $sub_query->orderby($order_by_case);
 
     // Create new join object.
     $join = new views_join();
