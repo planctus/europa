@@ -765,13 +765,21 @@ function dt_core_views_query_alter(&$view, &$query) {
       $sort_direction = $view->sort['title_field_value']->options['order'];
     }
 
-    // Set distinct to 1.
-    $query->options['distinct'] = 1;
-
     // Language subquerys.
     $or = db_or();
-    // Get the first 2 languages of our fallback array.
-    $fallback_languages = array_slice(language_fallback_get_candidates(), 0, 2);
+    // Get the first few languages of our fallback array. If we have a 2nd
+    // language parameter set, we have to work with an additional language. If
+    // not, we only need one.
+    // Set our maximum languages to check.
+    $max_languages = 1;
+    // First we get our url parameters.
+    $parameters = drupal_get_query_parameters();
+    // Check if the 2nd-language parameter is set.
+    if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+      $max_languages = 2;
+    }
+    // Get the maximum extra languages.
+    $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
     // Add our current site language to the array.
     if (!in_array($language->language, $fallback_languages)) {
       array_unshift($fallback_languages, $language->language);
@@ -797,16 +805,15 @@ function dt_core_views_query_alter(&$view, &$query) {
       $or->condition('title_field.language', $fallback_language);
       $order_by_case .= "WHEN title_field.language = '" . $fallback_language . "' THEN " . $key . " ";
     }
-    $order_by_case .= 'END';
+    $order_by_case .= "END";
 
     // Build our sub query.
     $sub_query = db_select('field_data_title_field', 'title_field');
     $sub_query->addField('title_field', 'title_field_value', 'translated_title');
     $sub_query->addField('title_field', 'entity_id', 'translated_id');
+    $sub_query->addField('title_field', 'language');
+    $sub_query->addExpression($order_by_case);
     $sub_query->condition($or);
-    $sub_query->distinct(1);
-    // The subquery we generated in the fallback order.
-    $sub_query->orderby($order_by_case);
 
     // Create new join object.
     $join = new views_join();
@@ -820,6 +827,10 @@ function dt_core_views_query_alter(&$view, &$query) {
     $join->field = 'translated_id';
     $join->left_field = 'nid';
     $join->type = 'LEFT';
+    // This will make sure that we only use the first and best translation
+    // match. Because the order by case is the same, a simple string replace is
+    // enough to make it work.
+    $join->extra = 'title_field.expression = (SELECT Min(' . str_replace('title_field.language', 'language', $order_by_case) . ') FROM field_data_title_field WHERE entity_id = title_field.translated_id)';
 
     // Do the actual join.
     $query->table_queue['title_field'] = array(
