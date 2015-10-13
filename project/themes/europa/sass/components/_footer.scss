@@ -181,7 +181,7 @@ a.footer__site-switcher {
 .footer {
   a {
     padding-right: 1.1em !important;
-    &#{"[" + $external_link_pattern + "]"} {
+    &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
       &:after {
         position: absolute;
         line-height: 2.2;
