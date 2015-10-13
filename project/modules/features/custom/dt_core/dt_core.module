@@ -803,9 +803,9 @@ function dt_core_views_query_alter(&$view, &$query) {
     // Add these languages to the query.
     foreach ($fallback_languages as $key => $fallback_language) {
       $or->condition('title_field.language', $fallback_language);
-      $order_by_case .= "WHEN title_field.language = '" . $fallback_language . "' THEN " . $key . " ";
+      $order_by_case .= 'WHEN title_field.language = \'' . $fallback_language . '\' THEN ' . $key . ' ';
     }
-    $order_by_case .= "END";
+    $order_by_case .= 'END';
 
     // Build our sub query.
     $sub_query = db_select('field_data_title_field', 'title_field');
