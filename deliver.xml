@@ -10,9 +10,8 @@
       </not>
       <then>
         <!-- Checkout  -->
-        <svncheckout
-          repositoryurl="${phing.project.svn}"
-          todir="${temp}"/>
+        <mkdir dir="${temp}" />
+        <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${temp}"></exec>
 
         <!-- Update code  -->
         <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
@@ -20,9 +19,8 @@
         <!-- Commit  -->
         <input propertyname="commitmessage">Please provide a commit message:</input>
         <echo msg="${commitmessage}" />
-        <svncommit
-          workingcopy="${temp}"
-          message="${commitmessage}" />
+        <exec dir="${temp}" command="svn commit -m '${commitmessage}'"></exec>
+
         <echo message="Committed revision: ${svn.committedrevision}"/>
 
         <!-- Delete temporary folder -->
