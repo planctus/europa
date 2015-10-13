@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Political Core feature.
+ */
+
+include_once 'dt_core_pol.features.inc';

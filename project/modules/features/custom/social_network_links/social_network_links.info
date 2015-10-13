@@ -1,0 +1,20 @@
+name = Social Network Links
+description = The feature provides the functionality related to social networks
+core = 7.x
+package = CWT
+php = 5.2.4
+version = 7.x-1.0
+project = social_network_links
+dependencies[] = features
+dependencies[] = image
+dependencies[] = media
+dependencies[] = taxonomy
+dependencies[] = text
+explanation = Field type(s) in use - see <a href="/en/admin/reports/fields">Field list</a>
+features[features_api][] = api:1
+features[field][] = taxonomy_term-social_networks-description_field
+features[field][] = taxonomy_term-social_networks-field_social_network_classname
+features[field][] = taxonomy_term-social_networks-field_social_network_icon
+features[field][] = taxonomy_term-social_networks-name_field
+features[image][] = social_network_icon
+features[taxonomy][] = social_networks

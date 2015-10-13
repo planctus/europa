@@ -1,7 +1,7 @@
 /*
-Site header
+Search form
 
-Markup: html/site-header.html
+Markup: html/search-form.html
 
 Styleguide: siteheader.searchform
 */
@@ -21,6 +21,8 @@ Styleguide: siteheader.searchform
 .search-form__textfield {
   margin: 0;
   border: none;
+  width: 83%;
+  float: left;
 }
 
 .search-form__btn {
@@ -53,13 +55,8 @@ Styleguide: siteheader.searchform
   }
 }
 
-// Drupal overrides
-.search-form .form-type-textfield {
-  @extend .search-form__textfield-wrapper;
-}
-
 @include breakpoint(screen-xs-min) {
-  .search-form__textfield-wrapper {
+  .search-form__textfield {
     width: 67%;
   }
 

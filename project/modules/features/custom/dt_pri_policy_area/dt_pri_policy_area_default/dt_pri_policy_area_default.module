@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Default feature.
+ */
+
+include_once 'dt_pri_policy_area_default.features.inc';

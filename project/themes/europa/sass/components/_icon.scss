@@ -35,6 +35,8 @@ Markup: html/icon.html
 .icon--error - Error icon
 .icon--success - Success icon
 .icon--warning - Warning icon
+.icon--check - Check icon
+.icon--generic-lang - Generic language icon
 
 Styleguide: icon
 */
@@ -70,7 +72,6 @@ Styleguide: icon
 // Should be used only with @extend
 .icon--after {
   text-decoration: none;
-  display: inline-block;
   font-family: 'EuropaIcons';
   speak: none;
   font-style: normal;
@@ -79,6 +80,7 @@ Styleguide: icon
   text-transform: none;
   margin-left: 4px;
   line-height: 1;
+  display: inline-block;
 
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
@@ -174,6 +176,10 @@ Styleguide: icon
   &:before {
     @extend .icon--right;
   }
+}
+
+.icon--breadcrumb {
+  content: '\e617' !important;
 }
 
 .icon--down {
@@ -278,6 +284,20 @@ Styleguide: icon
 .icon--warning {
   &:before {
     content: '\e615';
+  }
+}
+
+.icon--check {
+  content: '\e620';
+  &:before {
+    @extend .icon--check;
+  }
+}
+
+.icon--generic-lang {
+  content: '\e621';
+  &:before {
+    @extend .icon--generic-lang;
   }
 }
 

@@ -78,3 +78,38 @@ function dt_announcement_update_7103() {
     'dt_announcement' => array('field_group', 'variable'),
   ));
 }
+
+/**
+ * NEXTEUROPA-5257: Adding extra announcement types.
+ */
+function dt_announcement_update_7104() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5329: Announcements block sticky descending feature.
+ */
+function dt_announcement_update_7105() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Updated views with more button.
+ */
+function dt_announcement_update_7106() {
+  features_revert_module('dt_announcement');
+}
+/**
+ * NEXTEUROPA-5256: Making policy reference multivalue.
+ */
+function dt_announcement_update_7107() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_announcement');
+  // Copy field contents.
+  _dt_core_field_value_copy('node', 'announcement', 'field_core_policy', 'field_core_policies');
+  drupal_set_message(t("Copied content from 'field_core_policy' to 'field_core_policies' in the announcement content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_policy', 'announcement')) {
+    field_delete_instance($instance);
+  }
+}

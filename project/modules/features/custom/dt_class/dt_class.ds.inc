@@ -22,27 +22,9 @@ function dt_class_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'field_class_link_explanation' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_class_link_legacy_link' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -55,11 +37,6 @@ function dt_class_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'class';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'work_in_progress' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -91,6 +68,11 @@ function dt_class_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'field_link_groups' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_core_introduction' => array(
@@ -160,9 +142,7 @@ function dt_class_ds_field_settings_info() {
         'link' => '0',
         'wrapper' => '',
         'class' => '',
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -249,28 +229,22 @@ function dt_class_ds_layout_settings_info() {
         0 => 'title',
         1 => 'field_core_introduction',
       ),
-      'top' => array(
-        2 => 'group_class_messages',
-        5 => 'work_in_progress',
-      ),
       'central' => array(
-        3 => 'field_link_groups',
-        4 => 'group_class_topics',
-        6 => 'group_class_departments',
-        7 => 'field_core_topics',
-        8 => 'field_core_department',
-        9 => 'field_class_related_links',
+        2 => 'field_link_groups',
+        3 => 'group_class_topics',
+        4 => 'field_core_topics',
+        5 => 'group_class_departments',
+        6 => 'field_core_department',
+        7 => 'field_class_related_links',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'group_class_messages' => 'top',
       'field_link_groups' => 'central',
       'group_class_topics' => 'central',
-      'work_in_progress' => 'top',
-      'group_class_departments' => 'central',
       'field_core_topics' => 'central',
+      'group_class_departments' => 'central',
       'field_core_department' => 'central',
       'field_class_related_links' => 'central',
     ),

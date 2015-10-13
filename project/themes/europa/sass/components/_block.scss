@@ -9,7 +9,7 @@
   }
 }
 
-@include breakpoint(screen-lg-min) {
+@include breakpoint(screen-lg-min) { 
   .block--full-width {
     margin-left: -100%;
     margin-right: -100%;
