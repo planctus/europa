@@ -493,7 +493,7 @@ function dt_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_header_image',
     'label' => 'Header Background Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -579,7 +579,7 @@ function dt_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_image',
     'label' => 'Image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
