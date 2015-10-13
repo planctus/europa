@@ -1,0 +1,15 @@
+name = Political Core
+description = This is the core feature for the political website
+core = 7.x
+package = NextEuropa Digital Transformation Political
+version = 7.x-1.0
+project = dt_core_pol
+dependencies[] = dt_core
+features[ctools][] = ds:ds:1
+features[ds_fields][] = content_type_label
+features[ds_fields][] = in_page_navigation
+features[ds_view_modes][] = meta
+features[ds_view_modes][] = title
+features[features_api][] = api:2
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][ds] = ds

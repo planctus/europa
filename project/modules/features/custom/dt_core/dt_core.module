@@ -47,10 +47,6 @@ function dt_core_block_info() {
     'info' => t('Copyright paragraph'),
   );
 
-  $blocks['dt_block_footer_site_switcher'] = array(
-    'info' => t('Footer Site switcher'),
-  );
-
   $blocks['dt_header_site_tab_switcher'] = array(
     'info' => t('Header site tab switcher'),
   );
@@ -66,9 +62,9 @@ function dt_core_block_info() {
  * Implements hook_block_view().
  */
 function dt_core_block_view($delta = '') {
+  $block = array();
   switch ($delta) {
     case 'dt_block_copyright':
-    case 'dt_block_footer_site_switcher':
     case 'dt_header_site_tab_switcher':
     case 'dt_footer_site_tab_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
@@ -81,40 +77,27 @@ function dt_core_block_view($delta = '') {
  * A module-defined block content function.
  */
 function dt_core_get_blocks_content($delta) {
+  $result = array();
   switch ($delta) {
     case 'dt_block_copyright':
       $result = array(
         '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
       );
-      return $result;
-
-    case 'dt_block_footer_site_switcher':
-      $result = array(
-        '#markup' => l(
-          t('<span>The European Commission </span><span>and its priorities</span>'),
-          t('http://ec.europa.eu/index_en.htm'),
-          array(
-            'attributes' => array(
-              'class' => array(
-                'site-switcher', 'footer__site-switcher',
-              ),
-            ),
-            'html' => TRUE,
-          )
-        ),
-      );
-      return $result;
+      break;
 
     case 'dt_header_site_tab_switcher':
-      return array(
+      $result = array(
         '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
       );
+      break;
 
     case 'dt_footer_site_tab_switcher':
-      return array(
+      $result = array(
         '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
       );
+      break;
   }
+  return $result;
 }
 
 /**
@@ -301,7 +284,6 @@ function _dt_core_path_update_relatives($path) {
   $source = explode('/', $path['source']);
   if ($source[0] == 'node') {
     $nid = $source[1];
-    $node = node_load($nid);
 
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Find children based on field.
@@ -551,4 +533,214 @@ function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
     return entity_save('taxonomy_term', $entity);
   }
   return FALSE;
+}
+
+/**
+ * Migrate existing field content from language "undefined" to entity language.
+ *
+ * @param string $field_name
+ *   Field to enable entity translation on.
+ */
+function _dt_core_enable_entity_translation($field_name, &$sandbox) {
+  $context = array('sandbox' => &$sandbox);
+  module_load_include('inc', 'entity_translation', 'entity_translation.admin');
+  entity_translation_translatable_switch(TRUE, $field_name);
+  entity_translation_translatable_batch(TRUE, $field_name, TRUE, $context);
+  $sandbox['#finished'] = $context['finished'];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state) {
+  // Increase the range of weights that can be assigned to languages in the
+  // languages overview form. By default the languages can only be sorted using
+  // the range -10 to +10 but since we have 24 languages this is not sufficient.
+  foreach (element_children($form['weight']) as $key) {
+    $form['weight'][$key]['#delta'] = 20;
+  }
+}
+
+/**
+ * Helper function to enable languages.
+ *
+ * @param array $languages
+ *   Language codes of languages to be enabled.
+ */
+function _dt_core_enable_lanugages($languages = array()) {
+  module_load_include('inc', 'locale', 'locale.admin');
+  $form_state = array();
+  foreach ($languages as $key => $langcode) {
+    // Enable language.
+    multisite_config_service('locale')->addLanguage($langcode);
+    // Set the appropriate weight for languages to follow the order defined in
+    // the array.
+    $form_state['values']['weight'][$langcode] = -20 + $key;
+
+    // Portuguese exception:
+    // In Drupal the "pt" prefix belongs to Portuguese / International but we
+    // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
+    // default prefix). We need to change this to "pt".
+    if ($langcode == 'pt-pt') {
+      db_update('languages')
+        ->fields(array(
+          'name' => 'Portuguese',
+          'prefix' => 'pt',
+        ))
+        ->condition('language', $langcode)
+        ->execute();
+    }
+  }
+  // Save the order through the original form.
+  drupal_form_submit('locale_languages_overview_form', $form_state);
+  // Enable URL suffix based language negotiation.
+  multisite_config_service('locale')->setLanguageNegotiation('nexteuropa_multilingual_url_suffix');
+  // Fix lowercase languages.
+  _dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages());
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * If a whitespace has been entered after a title, we remove it.
+ */
+function dt_core_node_presave($node) {
+  $node->title = rtrim($node->title);
+}
+
+/**
+ * Implements hook_context_load_alter().
+ */
+function dt_core_context_load_alter(&$context) {
+  if ($context->name == 'dt_core_non_homepage_pages') {
+    if ($node = menu_get_object('node')) {
+      global $language;
+      $interface_language = $language->language;
+      $content_languages = $node->translations->data;
+
+      if (array_key_exists($interface_language, $content_languages)) {
+        unset($context->reactions['block']['blocks']['language_selector_page-language_selector_page']);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to return a list of languages that should be enabled.
+ *
+ * Languages that will be enabled. The order they need to appear when listed is
+ * defined here:
+ * @link http://publications.europa.eu/code/en/en-370200.htm.
+ *
+ * @return array
+ *   List of languages.
+ */
+function _dt_core_ec_official_languages() {
+  return array(
+    'bg',
+    'cs',
+    'da',
+    'de',
+    'et',
+    'el',
+    'en',
+    'es',
+    'fr',
+    'ga',
+    'hr',
+    'it',
+    'lv',
+    'lt',
+    'hu',
+    'mt',
+    'nl',
+    'pl',
+    'pt-pt',
+    'ro',
+    'sk',
+    'sl',
+    'fi',
+    'sv',
+  );
+}
+
+/**
+ * Helper function to return a list of languages that need to be lower case.
+ *
+ * @return array
+ *   List of languages that need to be lower case.
+ */
+function _dt_core_lower_case_languages() {
+  return array(
+    'bg',
+    'cs',
+    'da',
+    'et',
+    'el',
+    'es',
+    'fr',
+    'hr',
+    'lv',
+    'lt',
+    'hu',
+    'pl',
+    'pt-pt',
+    'ro',
+    'sk',
+    'sl',
+    'fi',
+    'sv',
+  );
+}
+
+/**
+ * Helper function to transform language names to lower case.
+ *
+ * @param array $language_codes
+ *   List of language codes.
+ *
+ * @return bool
+ *   TRUE/FALSE.
+ */
+function _dt_core_transform_language_to_lower_case(array $language_codes) {
+  // Ininitialize our return value.
+  $return = TRUE;
+
+  // Loop the results and update the langcode.
+  foreach ($language_codes as $langcode) {
+    // Our update query, this either returns TRUE or FALSE.
+    $query = db_update('languages')
+      ->expression('native', 'LCASE(native)')
+      ->condition('language', $langcode)
+      ->execute();
+
+    // If there were no issues, we show a message that everything went well. In
+    // other cases notifiy about the error, and make the function return FALSE.
+    if ($query) {
+      // Create our log message.
+      $watchdog_content = array(
+        'message' => 'Language %langcode updated to lower case.',
+        'type' => WATCHDOG_INFO,
+        'replacement' => array('%langcode' => $langcode),
+      );
+    }
+    else {
+      // Create our log message.
+      $watchdog_content = array(
+        'message' => 'Could not update language %langcode to lower case. This might come due to the fact the language is not yet available or it already is updated.',
+        'type' => WATCHDOG_WARNING,
+        'replacement' => array('%langcode' => $langcode),
+      );
+      // We had one error, but we can finish other querys. Set our return
+      // parameter to false, so that we can continue the query and return false
+      // afterwards.
+      $return = FALSE;
+    }
+
+    // Watchdog our log message.
+    watchdog('dt_core', $watchdog_content['message'], $watchdog_content['replacement'], $watchdog_content['type']);
+  }
+
+  // Retrun our outcome.
+  return $return;
 }

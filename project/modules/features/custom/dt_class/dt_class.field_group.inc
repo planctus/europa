@@ -136,9 +136,7 @@ function dt_class_field_group_info() {
   $field_group->data = array(
     'label' => 'Messages',
     'weight' => '2',
-    'children' => array(
-      0 => 'work_in_progress',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Messages',

@@ -10,6 +10,16 @@
 function dt_roles_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'assign node weight'.
+  $permissions['assign node weight'] = array(
+    'name' => 'assign node weight',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editorial team member' => 'editorial team member',
+    ),
+    'module' => 'weight',
+  );
+
   // Exported permission: 'access bean overview'.
   $permissions['access bean overview'] = array(
     'name' => 'access bean overview',
@@ -19,6 +29,18 @@ function dt_roles_permissions_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'bean',
+  );
+
+  // Exported permission: 'access helper content types'.
+  $permissions['access helper content types'] = array(
+    'name' => 'access helper content types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'dt_node_settings',
   );
 
   // Exported permission: 'administer beans'.
@@ -78,6 +100,16 @@ function dt_roles_permissions_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: 'configure helper content types'.
+  $permissions['configure helper content types'] = array(
+    'name' => 'configure helper content types',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'dt_node_settings',
   );
 
   // Exported permission: 'create any site_menu bean'.

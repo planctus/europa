@@ -8,9 +8,6 @@
 /**
  * Implements hook_drush_command().
  *
- * @return array
- *   An associative array describing your command(s).
- *
  * @see drush_parse_command()
  */
 function dt_core_drush_command() {
@@ -34,7 +31,7 @@ function dt_core_drush_command() {
 function dt_core_drush_help($section) {
   switch ($section) {
     case 'drush:features-revert-dt':
-      return dt("Revert all enabled feature module on your site that has the 'dt_' prefix.");
+      return dt("Revert all enabled feature module on your site that has the 'dt_' or 'cwt_' prefix.");
   }
 }
 
@@ -50,7 +47,7 @@ function drush_dt_core_features_revert_dt() {
 
   $features_to_revert = array('nexteuropa_file', 'nexteuropa_page');
   foreach (features_get_features(NULL, TRUE) as $module) {
-    if ($module->status && preg_match('/dt_*/', $module->name)) {
+    if ($module->status && preg_match('/dt_*|cwt_*/', $module->name)) {
       // If forced, add module regardless of status.
       if ($force) {
         $features_to_revert[] = $module->name;

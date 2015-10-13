@@ -31,6 +31,7 @@ function dt_announcement_field_group_info() {
       5 => 'field_announcement_type',
       6 => 'field_core_introduction',
       7 => 'field_core_description',
+      8 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -120,15 +121,11 @@ function dt_announcement_field_group_info() {
       1 => 'field_announcement_type',
       2 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => 'meta--header',
       ),
     ),
   );
@@ -150,16 +147,10 @@ function dt_announcement_field_group_info() {
       0 => 'field_announcement_type',
       1 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_announcement_meta|node|announcement|meta'] = $field_group;
@@ -181,16 +172,10 @@ function dt_announcement_field_group_info() {
       1 => 'field_announcement_location',
       2 => 'post_date',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
-      'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
+      'instance_settings' => array(),
     ),
   );
   $export['group_announcement_meta|node|announcement|teaser'] = $field_group;
@@ -209,10 +194,12 @@ function dt_announcement_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
-      1 => 'field_core_policy',
+      1 => 'field_core_policies',
       2 => 'field_core_department',
       3 => 'field_core_persons',
       4 => 'field_core_topics',
+      5 => 'field_core_priorities',
+      6 => 'field_core_pri_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

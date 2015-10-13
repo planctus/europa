@@ -1,0 +1,156 @@
+<?php
+/**
+ * @file
+ * Code for the CWT Team feature.
+ */
+
+include_once 'cwt_team.features.inc';
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * Adding fallback image for cabinet team, by replacing a string added within
+ * the views' "no result behavior".
+ */
+function cwt_team_views_post_render(&$view, &$output, &$cache) {
+  if (in_array($view->name, array('biography_team', 'team_cabinet_contact')) && strpos($output, '[fallback_image]') !== FALSE) {
+    $path_to_image = drupal_get_path('theme', 'commissioner') . '/images/svg/placeholder-team.svg';
+    $image = theme_image(array(
+      'path' => $path_to_image,
+      'width' => 450,
+      'height' => 290,
+      'attributes' => array(),
+    ));
+    $output = str_replace('[fallback_image]', $image, $output);
+  }
+
+  // Remove empty member contact details block.
+  // @TODO: find a better solution since this is dirty.
+  if ($view->name == 'team_cabinet_members') {
+    $output = str_replace('<div class="member-details-contact"></div>', '', $output);
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ *
+ * Replaces the nodequeue autocomplete ajax callback with our own. We need to be
+ * able to alter the autocomplete results to avoid hundreds of translations to
+ * show up.
+ */
+function cwt_team_menu_alter(&$items) {
+  $items['nodequeue/autocomplete']['page callback'] = 'cwt_team_nodequeue_autocomplete';
+}
+
+/**
+ * Page callback for the Nodequeue autocomplete field.
+ *
+ * This replaces the original autocomplete callback.
+ * @see nodequeue_autocomplete()
+ */
+function cwt_team_nodequeue_autocomplete() {
+  $args = func_get_args();
+  $sqid = array_shift($args);
+  $string = implode('/', $args);
+
+  // Check if we are returning results for the 'Biographies by Project Teams' or
+  // 'Team members by hierarchy' nodequeues. If not, let the original callback
+  // handle the request.
+  $subqueue = nodequeue_load_subqueue($sqid);
+  $queue = nodequeue_load($subqueue->qid);
+  $filtered_queues = array(
+    'biographies_by_project_teams',
+    'highlights',
+    'team_members_by_hierarchy',
+  );
+
+  if (in_array($queue->name, $filtered_queues)) {
+    $matches = cwt_team_nodequeue_autocomplete_default_language($queue, $subqueue, $string);
+  }
+  else {
+    $matches = _nodequeue_autocomplete($sqid, $string);
+  }
+
+  drupal_json_output(drupal_map_assoc($matches));
+}
+
+/**
+ * Returns filtered autocomplete results for nodequeues.
+ *
+ * These results differ from the original ones in that they only return results
+ * in the default language (English). The biographies are translated in many
+ * languages and it would not be clear to the site administrators which of the
+ * many apparently duplicated results they should choose. We solve this by
+ * only showing the English versions.
+ *
+ * @see _nodequeue_autocomplete()
+ *
+ * @param object $queue
+ *   The nodequeue object for which to return the results.
+ * @param object $subqueue
+ *   The subqueue for which to return the results.`
+ * @param string $string
+ *   The text entered in the autocomplete field.
+ *
+ * @return array
+ *   The autocomplete results.
+ */
+function cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdClass $subqueue, $string) {
+  global $user;
+
+  $matches = array();
+
+  if (empty($string)) {
+    return $matches;
+  }
+
+  $language = language_default();
+
+  $query = db_select('node', 'n')
+    ->addTag('node_access')
+    ->fields('n', array('nid', 'tnid', 'title'))
+    ->condition('n.language', $language->language)
+    ->range(0, variable_get('nodequeue_autocomplete_limit', 10));
+
+  if (!empty($queue->types)) {
+    $query->condition('n.type', $queue->types, 'IN');
+  }
+
+  $where_args = array();
+  if (!user_access('administer nodes', $user)) {
+    $query->condition(db_or()->condition('n.status', 1)->condition('n.uid', $user->uid));
+  }
+
+  // Run a match to see if they're specifying by nid.
+  $preg_matches = array();
+  $match = preg_match('/\[nid: (\d+)\]/', $string, $preg_matches);
+  if (!$match) {
+    $match = preg_match('/^nid: (\d+)/', $string, $preg_matches);
+  }
+
+  if ($match) {
+    // If it found a nid via specification, reduce our resultset to that nid.
+    $query->condition('n.nid', $preg_matches[1]);
+  }
+  else {
+    // Build the constant parts of the query.
+    $query->where('LOWER(n.title) LIKE LOWER(:string)', array(':string' => '%' . db_like($string) . '%'));
+  }
+
+  // Call to the API.
+  $function = $queue->owner . "_nodequeue_autocomplete";
+  if (function_exists($function)) {
+    return $function($queue, $subqueue, $string, $where, $where_args);
+  }
+  else {
+    $query->addTag('i18n_select');
+    $result = $query->execute();
+
+    foreach ($result as $node) {
+      $id = nodequeue_get_content_id($queue, $node);
+      $matches[$node->nid] = check_plain($node->title) . " [nid: $id]";
+    }
+  }
+
+  return $matches;
+}

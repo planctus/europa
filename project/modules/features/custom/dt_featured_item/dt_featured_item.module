@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Featured item feature.
+ */
+
+include_once 'dt_featured_item.features.inc';

@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * Dt_featured_item install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_featured_item_install() {
+  // Apply default dt configuration to "Featured item" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('featured_item');
+}

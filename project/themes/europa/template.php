@@ -4,76 +4,33 @@
  * template.php
  */
 
- /**
-  * Implements hook_js_alter().
-  */
+/**
+ * Implements hook_js_alter().
+ */
 function europa_js_alter(&$js) {
   $base_theme_path = drupal_get_path('theme', 'bootstrap');
+  $path_fancybox = libraries_get_path('fancybox');
 
   unset(
-    $js[$base_theme_path . '/js/misc/ajax.js']
+    $js[$base_theme_path . '/js/misc/ajax.js'],
+    $js[$path_fancybox . '/jquery.fancybox.pack.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-thumbs.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-buttons.js'],
+    $js[$path_fancybox . '/helpers/jquery.fancybox-media.js']
   );
 }
 
 /**
- * Returns an array with singular and plural form of a bundle.
- *
- * @param string $bundle
- *   Machine name of a bundle.
- *
- * @return array
- *   Containing $forms['singular'] and $forms['plural'].
+ * Implements hook_css_alter().
  */
-function _europa_bundle_forms($bundle) {
-  // Forming plurals for existing content types.
-  $plurals = array(
-    'announcement' => t("announcements"),
-    'page' => t("pages"),
-    'contact' => t("contacts"),
-    'department' => t("departments"),
-    'editorial_team' => t("editorial teams"),
-    'file' => t("files"),
-    'basic_page' => t("pages"),
-    'person' => t("people"),
-    'policy' => t("policies"),
-    'policy_area' => t("policy areas"),
-    'policy_implementation' => t("policy implementations"),
-    'policy_input' => t("policy inputs"),
-    'policy_keyfile' => t("policy key files"),
-    'priority' => t("priorities"),
-    'publication' => t("publications"),
-    'class' => t("classes"),
-    'topic' => t("topics"),
-    'toplink' => t("top links"),
-  );
+function europa_css_alter(&$css) {
+  $path_fancybox = libraries_get_path('fancybox');
 
-  $singular = node_type_get_name($bundle);
-  // If user preference for plural form - use it, otherwise use the label.
-  if (isset($plurals[$bundle])) {
-    $plural = $plurals[$bundle];
-  }
-  else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
-  }
-
-  $forms = array(
-    'singular' => strtolower($singular),
-    'plural' => $plural,
-  );
-
-  return $forms;
-}
-
-/**
- * Implements hook_theme().
- */
-function europa_theme() {
-  return array(
-    'node_form' => array(
-      'render element' => 'form',
-      'template' => 'node-form',
-      'path' => drupal_get_path('module', 'europa') . '/theme',
-    ),
+  unset(
+    $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-buttons.css'],
+    $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
+    $css[$path_fancybox . '/jquery.fancybox.css']
   );
 }
 
@@ -102,9 +59,6 @@ function europa_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     $form['submit']['#attributes']['class'][] = 'btn-primary';
     $form['submit']['#attributes']['class'][] = 'filters__btn-submit';
     $form['reset']['#attributes']['class'][] = 'filters__btn-reset';
-    $form['type']['#options']['All'] = t("All types");
-    $form['department']['#options']['All'] = t("All departments");
-    $form['policy_area']['#options']['All'] = t("All policy areas");
     $form['date_before']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
     $form['date_after']['value']['#date_format'] = variable_get('date_format_ec_date_j_f_y', "j F Y");
   }
@@ -190,7 +144,11 @@ function europa_form_element(&$variables) {
       $is_checkbox = TRUE;
     }
     else {
-      $attributes['class'][] = 'form-group';
+      // Check if it is not our search form. Because we don't want the default
+      // bootstrap class here.
+      if (!in_array('form-item-QueryText', $attributes['class'])) {
+        $attributes['class'][] = 'form-group';
+      }
     }
   }
 
@@ -318,7 +276,6 @@ function europa_menu_link__menu_dt_service_links(&$variables) {
  * Override theme_menu_link().
  */
 function europa_menu_link__menu_dt_menu_social_media(&$variables) {
-
   return _europa_menu_link__footer($variables);
 }
 
@@ -555,44 +512,46 @@ function europa_field($variables) {
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
   switch ($field_type) {
     case 'entityreference':
-      // First node from entity reference.
-      $reference = '';
-      if (isset($element[0])) {
-        $reference = array_shift($element[0]);
-      }
-      $first_node = is_array($reference) ? array_shift($reference) : NULL;
-      $layout_name = isset($variables['nexteuropa_ds_layouts_columns']) ? $variables['nexteuropa_ds_layouts_columns'] : FALSE;
-      $layout_name_clean = str_replace('_', '-', $layout_name);
-
-      $settings = array();
-      $settings['view_mode'] = $first_node['#view_mode'];
-      $settings['layout'] = $layout_name_clean;
-      $settings['modifier'] = isset($variables['nexteuropa_ds_layouts_modifier']) ? $variables['nexteuropa_ds_layouts_modifier'] : '';
-      $settings['wrapper_modifier'] = isset($variables['nexteuropa_ds_layouts_wrapper_modifier']) ? $variables['nexteuropa_ds_layouts_wrapper_modifier'] : '';
-
-      // Custom listing settings based on view mode.
-      $listing_view_modes = array('title', 'meta', 'teaser');
-      if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
-        switch ($first_node['#view_mode']) {
-          case 'title':
-            $settings['modifier'] .= ' listing--title';
-            $settings['wrapper_modifier'] .= ' listing--title__wrapper';
-            $settings['listing_wrapper_element'] = 'ul';
-            $settings['item_wrapper_element'] = 'li';
-            break;
-
-          case 'meta':
-            $settings['modifier'] .= ' listing--meta';
-            $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
-            break;
-
-          case 'teaser':
-            $settings['modifier'] .= ' listing--teaser';
-            $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
-            break;
+      if ($element['#formatter'] == 'entityreference_entity_view') {
+        // First node from entity reference.
+        $reference = '';
+        if (isset($element[0])) {
+          $reference = array_shift($element[0]);
         }
+        $first_node = is_array($reference) ? array_shift($reference) : NULL;
+        $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
+        $layout_name_clean = str_replace('_', '-', $layout_name);
 
-        return _europa_field_component_listing($variables, $settings);
+        $settings = array();
+        $settings['view_mode'] = $first_node['#view_mode'];
+        $settings['layout'] = $layout_name_clean;
+        $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
+        $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
+
+        // Custom listing settings based on view mode.
+        $listing_view_modes = array('title', 'meta', 'teaser');
+        if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
+          switch ($first_node['#view_mode']) {
+            case 'title':
+              $settings['modifier'] .= ' listing--title';
+              $settings['wrapper_modifier'] .= ' listing--title__wrapper';
+              $settings['listing_wrapper_element'] = 'ul';
+              $settings['item_wrapper_element'] = 'li';
+              break;
+
+            case 'meta':
+              $settings['modifier'] .= ' listing--meta';
+              $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
+              break;
+
+            case 'teaser':
+              $settings['modifier'] .= ' listing--teaser';
+              $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
+              break;
+          }
+
+          return _europa_field_component_listing($variables, $settings);
+        }
       }
 
       break;
@@ -621,25 +580,23 @@ function europa_field($variables) {
   }
 
   // Render the items.
-  $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= drupal_render($item);
+  if ($variables['element']['#view_mode'] == 'title') {
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
   }
-  $output .= '</div>';
+  else {
+    $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= drupal_render($item);
+    }
+    $output .= '</div>';
 
-  // Render the top-level DIV.
-  $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+    // Render the top-level DIV.
+    $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+  }
 
   return $output;
-}
-
-/**
- * Implements hook_css_alter().
- */
-function europa_css_alter(&$css) {
-  unset(
-    $css[drupal_get_path('module', 'date') . '/date_api/date.css']
-  );
 }
 
 /**
@@ -652,10 +609,6 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
   // Popover to notify the user that the search is not fully functional.
   $form['search_input_group']['europa_search_submit']['#disabled'] = TRUE;
-  $form['search_input_group']['QueryText']['#attributes']['data-toggle'][] = 'popover';
-  $form['search_input_group']['QueryText']['#attributes']['data-placement'][] = 'bottom';
-  $form['search_input_group']['QueryText']['#attributes']['data-trigger'][] = 'focus';
-  $form['search_input_group']['QueryText']['#attributes']['data-content'][] = t('This function is not yet working in Beta.');
 }
 
 /**
@@ -815,7 +768,7 @@ function europa_link($variables) {
   global $base_url;
   $internal_url = explode($base_url, $variables['path']);
   if (count($internal_url) > 1) {
-    $variables['path'] = trim($internal_url[1], '/');
+    $variables['options']['attributes']['class'][] = 'is-internal';
   }
 
   return theme_link($variables);
@@ -841,30 +794,47 @@ function europa_preprocess_block(&$variables) {
       break;
   }
 
-  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
+  // Page-level language switcher.
+  if (isset($block->bid) && $block->bid === 'language_selector_page-language_selector_page') {
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-switcher.js');
+
     // Initialize variables.
-    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
-    $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
-    $options = array(
-      'html' => TRUE,
-      'attributes' => array(
-        'class' => array('lang-select-site__link'),
-        'data-toggle' => 'popover',
-        'data-placement' => 'bottom',
-        'data-trigger' => 'focus',
-        'data-content' => t('This function is not yet working in Beta.'),
-      ),
-      'query' => array(drupal_get_destination()),
-    );
+    $not_available = '';
+    $served = '';
+    $other = '';
+
+    if (!empty($variables['elements']['not_available']['#markup'])) {
+      $not_available = '<li class="lang-select-page__option lang-select-page__unavailable">' . $variables['elements']['not_available']['#markup']->native . '</li>';
+    }
+
+    if (!empty($variables['elements']['served']['#markup'])) {
+      $served = '<li class="lang-select-page__option is-selected">' . $variables['elements']['served']['#markup']->native . '</li>';
+    }
+
+    if (!empty($variables['elements']['other']['#markup'])) {
+      foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
+        $options = array(
+          'query' => drupal_get_query_parameters()
+        );
+        $options['query']['2nd-language'] = $code;
+
+        $other .= "<li class='lang-select-page__option lang-select-page__other'>" . l($lang->native, current_path(), $options) . '</li>';
+      }
+    }
 
     // Add class to block.
-    $variables['classes_array'][] = 'lang-select-site';
+    $variables['classes_array'][] = 'lang-select-page lang-select-page--transparent';
 
     // Add content to block.
-    $variables['content'] = l($label . $code, 'splash', $options);
+    $content = "<span class='lang-select-page__icon icon icon--generic-lang'></span>";
+    $content .= "<ul class='lang-select-page__list'>" . $not_available . $served . $other . '</ul>';
+    $variables['content'] = $content;
+  }
 
-    // For Beta initial release only: preventing default click behavior.
-    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/misc/popovers.js');
+  // Site-level language switcher.
+  if (isset($block->bid) && $block->bid === 'language_selector_site-language_selector_site') {
+    // Add the js to make it function.
+    drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/lang-select-site.js');
   }
 
   // Replace block-title class with block__title in order to keep BEM structure
@@ -939,16 +909,9 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
 function europa_preprocess_field(&$variables) {
   // Changing label for the field to display stripped out values.
   switch ($variables['element']['#field_name']) {
-    case 'field_core_ecorganisation':
-      $field_value = $variables['element']['#items'][0]['value'];
-      $field_value_stripped = explode(" (", $field_value);
-
-      $variables['items'][0]['#markup'] = $field_value_stripped[0];
-      break;
-
     case 'field_core_social_network_links':
       $variables['element']['before'] = t('Follow the latest progress and get involved.');
-      $variables['element']['after'] = l(t('Other social networks'), 'http://europa.eu/contact/social-networks/index_en.htm');
+      $variables['element']['after'] = l(t('Other social networks'), variable_get('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm'));
       break;
   }
 }
@@ -975,7 +938,7 @@ function europa_preprocess_image(&$variables) {
  * Implements hook_preprocess_html().
  */
 function europa_preprocess_html(&$variables) {
-  $variables['theme_path'] = base_path() . drupal_get_path('theme', 'europa');
+  $variables['theme_path'] = base_path() . path_to_theme();
 }
 
 /**
@@ -1029,25 +992,23 @@ function europa_preprocess_page(&$variables) {
       NULL;
 
     // Check if Display Suite is handling node.
-    $layout = ds_get_layout('node', $node->type, 'full');
-    if ($layout) {
-      ctools_class_add($layout['layout']);
+    if (module_exists('ds')) {
+      $layout = ds_get_layout('node', $node->type, 'full');
+      if ($layout) {
+        ctools_class_add($layout['layout']);
 
-      // This disables message-printing on ALL page displays.
-      $variables['show_messages'] = FALSE;
+        // This disables message-printing on ALL page displays.
+        $variables['show_messages'] = FALSE;
 
-      // Add tabs to node object so we can put it in the DS template instead.
-      if (isset($variables['tabs'])) {
-        $node->local_tabs = drupal_render($variables['tabs']);
+        // Add tabs to node object so we can put it in the DS template instead.
+        if (isset($variables['tabs'])) {
+          $node->local_tabs = drupal_render($variables['tabs']);
+        }
+
+        $variables['theme_hook_suggestions'][] = 'page__ds_node';
       }
-
-      $variables['theme_hook_suggestions'][] = 'page__ds_node';
     }
   }
-
-  // Temporary variable that should be removed once the beta notification
-  // is gone.
-  $variables['node_about_beta'] = url('node/1108');
 }
 
 /**
@@ -1068,33 +1029,7 @@ function europa_preprocess_views_view(&$variables) {
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
-    $variables['active_filters'] = get_exposed_filter_output();
-  }
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
-
-  $variables['items_count'] = '';
-
-  // Checking if .listing exists in classes_array so that result count can be
-  // displayed.
-  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-    $content_type_forms = _europa_bundle_forms($content_type);
-
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
-    }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $variables['items_count'] = $items_count;
+    $variables['active_filters'] = _dt_exposed_filter_data_get_exposed_filter_output();
   }
 }
 
@@ -1179,8 +1114,8 @@ function europa_pager($variables) {
     $items[] = array(
       'class' => array('pager__item pager__combo'),
       'data' => "<span class='pager__combo-container'><span class='pager__combo-current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
-      "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
-      '</span>',
+        "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
+        '</span>',
     );
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {
@@ -1290,7 +1225,6 @@ function europa_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   $attributes['href'] = url($_GET['q'], array('query' => $query));
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
 }

@@ -232,10 +232,10 @@ function dt_topic_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_department',
-      1 => 'field_core_persons',
-      2 => 'field_core_priorities',
-      3 => 'field_core_topics',
+      0 => 'field_core_persons',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
+      3 => 'field_core_department',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -326,15 +326,11 @@ function dt_topic_field_group_info() {
     'children' => array(
       0 => 'content_type_label',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta meta--header',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => 'meta--header',
       ),
     ),
   );
@@ -409,8 +405,8 @@ function dt_topic_field_group_info() {
     'label' => 'Related Tasks',
     'weight' => '4',
     'children' => array(
-      0 => 'field_core_top_tasks',
-      1 => 'field_topic_tasks',
+      0 => 'field_topic_tasks',
+      1 => 'field_core_top_tasks',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -553,10 +549,10 @@ function dt_topic_field_group_info() {
     'label' => 'What the Commission is doing',
     'weight' => '7',
     'children' => array(
-      0 => 'field_core_link',
-      1 => 'field_topic_commission_actions',
-      2 => 'field_topic_objectives',
-      3 => 'field_topic_targets',
+      0 => 'field_topic_commission_actions',
+      1 => 'field_topic_objectives',
+      2 => 'field_topic_targets',
+      3 => 'field_core_link',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

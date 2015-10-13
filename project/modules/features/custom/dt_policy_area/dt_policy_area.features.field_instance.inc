@@ -27,7 +27,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -200,7 +200,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -267,7 +267,7 @@ function dt_policy_area_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'nexteuropa_ds_layouts',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'context_nav_item',
         'weight' => 4,
@@ -324,7 +324,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -383,7 +383,7 @@ function dt_policy_area_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 31,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -442,7 +442,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -503,7 +503,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
