@@ -24,10 +24,8 @@ function dt_priority_default_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * NEXTEUROPA-4804: Adding back related departments and topics
  */
-/*
 function dt_priority_default_update_7101() {
-
+  features_revert_module('dt_priority_default');
 }
-*/
