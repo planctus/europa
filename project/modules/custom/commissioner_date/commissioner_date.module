@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Date formatter functions.
+ */
 
 /**
  * Implements hook_field_formatter_info().
@@ -71,7 +75,7 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
     elseif ($date1_parts[1] == $date2_parts[1] && $date1_parts[2] == $date2_parts[2] && $date1_parts[0] == $date2_parts[0]) {
       // Same date.
       $common_month_name = format_date(mktime(0, 0, 0, $date1_parts[1], 1), 'custom', "M");
-      $common_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "l");
+      $common_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $output_date = t(
         '<span class="date-block__day-text">@common_day_name</span> <span class="date-block__day">@start_day</span> <span class="date-block__month">@common_month</span>',
         array(

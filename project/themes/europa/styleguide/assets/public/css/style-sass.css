@@ -8377,10 +8377,6 @@ Markup: html/listing-agenda.html
 
 Styleguide listing.agenda
 */
-.listing--agenda .listing__column-main {
-  float: left;
-  width: auto; }
-
 .listing--agenda .listing__meta-item--type {
   font-size: 0.889em; }
 
