@@ -14,7 +14,7 @@ a {
     text-decoration: underline;
   }
 
-  &#{"[" + $external_link_pattern + "]"} {
+  &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
     @extend .is-external;
   }
   @media print {
@@ -44,7 +44,7 @@ p a {
   ul,
   p {
     a {
-      &#{"[" + $external_link_pattern + "]"} {
+      &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
 
         &.btn {
           padding-right: 2.1em;

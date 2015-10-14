@@ -69,7 +69,7 @@ $spacing-bottom-listing__title: 0.7em;
     text-decoration: none;
   }
 
-  &#{"[" + $external_link_pattern + "]"} {
+  &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
     &:after {
       display: none !important;
     }
