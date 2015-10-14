@@ -624,27 +624,25 @@ function dt_core_context_load_alter(&$context) {
   }
 }
 
-/**
- * Implements hook_form_FORM_ID_alter() for FORM_ID().
- */
-function dt_core_form_node_form_alter(&$form, &$form_state, $form_id) {
-  // Check if the content is being translated.
-  if (isset($form['title_field']) && $form['title_field']['#language'] != $form['#node']->language) {
-    $target_language = $form['title_field']['#language'];
-    $disable_maxlength = array(
-      'field_core_description',
-      'field_core_introduction',
-    );
-
-    foreach ($disable_maxlength as $field_name) {
-      if (isset($form[$field_name])) {
-        $form[$field_name][$target_language]['#maxlength'] = NULL;
-        $form[$field_name][$target_language]['#maxlength_js'] = FALSE;
-        unset($form[$field_name][$target_language]['#maxlength']);
-        unset($form[$field_name][$target_language]['#attributes']['maxlength_js_label']);
-      }
-    }
+function _dt_core_disable_maxlength($element) {
+  $disable_maxlength = array(
+    'field_core_description',
+    'field_core_introduction',
+  );
+  // Check if we are translating and maxlength for field is to be disabled.
+  if (isset($element['#field_name']) && $element['#language'] !== $element['#entity']->language && in_array($element['#field_name'], $disable_maxlength)) {
+    $element['#maxlength_js'] = FALSE;
   }
+
+  return $element;
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function dt_core_element_info_alter(&$cache) {
+  $cache['textarea']['#process'][] = '_dt_core_disable_maxlength';
+  $cache['textfield']['#process'][] = '_dt_core_disable_maxlength';
 }
 
 /**
