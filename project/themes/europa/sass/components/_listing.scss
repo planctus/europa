@@ -27,6 +27,15 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+.listing__date {
+  float: left;
+}
+.listing__column-main {
+  .listing__with {
+    margin-top: 0px;
+  }
+}
+
 .listing__wrapper {
   // margin-bottom: 1.667em;
 }
@@ -422,3 +431,18 @@ Markup: html/listing-agenda.html
 
 Styleguide listing.agenda
 */
+.listing--agenda {
+
+  .listing__column-main {
+    float: left;
+    width: auto;
+  }
+
+  .listing__meta-item--type {
+    font-size: $font-size-little;
+  }
+
+  .listing__title{
+    color: $grey-base;
+  }
+}

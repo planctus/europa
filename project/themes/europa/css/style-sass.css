@@ -8118,6 +8118,12 @@ Styleguide listing
   .listing__read-more:after {
     font-size: 0.778em; }
 
+.listing__date {
+  float: left; }
+
+.listing__column-main .listing__with {
+  margin-top: 0px; }
+
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;
@@ -8371,6 +8377,16 @@ Markup: html/listing-agenda.html
 
 Styleguide listing.agenda
 */
+.listing--agenda .listing__column-main {
+  float: left;
+  width: auto; }
+
+.listing--agenda .listing__meta-item--type {
+  font-size: 0.889em; }
+
+.listing--agenda .listing__title {
+  color: #404040; }
+
 .logo {
   display: block;
   float: left;
