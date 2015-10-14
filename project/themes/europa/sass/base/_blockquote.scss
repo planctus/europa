@@ -25,6 +25,7 @@ blockquote,
   overflow: hidden;
   display: inline-block;
 
+  // Drupal fix.
   p {
     line-height: inherit;
     display: inline;
