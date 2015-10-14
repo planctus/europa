@@ -22,49 +22,49 @@ function nexteuropa_formatters_field_formatter_info() {
       ),
     ),
     'link_button_default' => array(
-      'label' => 'Link button default',
+      'label' => t('Link button default'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'link_button_primary' => array(
-      'label' => 'Link button primary',
+      'label' => t('Link button primary'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'link_button_secondary' => array(
-      'label' => 'Link button secondary',
+      'label' => t('Link button secondary'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'link_button_call_for_action' => array(
-      'label' => 'Link button call for action',
+      'label' => t('Link button call for action'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'link_button_block' => array(
-      'label' => 'Link button block',
+      'label' => t('Link button block'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'link_listing_title' => array(
-      'label' => 'Listing title',
+      'label' => t('Listing title'),
       'field types' => array(
         'link_field',
         'taxonomy_term_reference',
       ),
     ),
     'entity_reference_section' => array(
-      'label' => 'Entity reference section group',
+      'label' => t('Entity reference section group'),
       'field types' => array(
         'entityreference',
       ),
