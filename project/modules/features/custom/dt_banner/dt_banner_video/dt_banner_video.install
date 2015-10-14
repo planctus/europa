@@ -9,7 +9,7 @@
  */
 function dt_banner_video_install() {
   // Apply config to the helper content type.
-  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('dt_banner_video');
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('banner_video');
 }
 
 /**
@@ -18,4 +18,11 @@ function dt_banner_video_install() {
 function dt_banner_video_update_7101() {
   module_enable(array('media_avportal', 'media_youtube'));
   features_revert_module('dt_banner_quote');
+}
+
+/**
+ * Apply editorial settings to banner_video.
+ */
+function dt_banner_video_update_7102() {
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('banner_video');
 }
