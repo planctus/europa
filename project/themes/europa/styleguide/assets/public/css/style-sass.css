@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -199,8 +198,7 @@ th {
   a[href^="javascript:"]:after {
     content: ""; }
   pre,
-  blockquote, blockquote--small,
-  .blockquote--small {
+  blockquote, .blockquote--small {
     border: 1px solid #999;
     page-break-inside: avoid; }
   thead {
@@ -1211,46 +1209,35 @@ abbr[data-original-title] {
   font-size: 90%;
   text-transform: uppercase; }
 
-blockquote, blockquote--small,
-.blockquote--small {
+blockquote, .blockquote--small {
   padding: 10.5px 21px;
   margin: 0 0 21px;
   font-size: 18.75px;
   border-left: 5px solid #eeeeee; }
   blockquote p:last-child,
-  blockquote--small p:last-child,
   .blockquote--small p:last-child,
   blockquote ul:last-child,
-  blockquote--small ul:last-child,
   .blockquote--small ul:last-child,
-  blockquote ol:last-child, blockquote--small ol:last-child,
-  .blockquote--small ol:last-child {
+  blockquote ol:last-child, .blockquote--small ol:last-child {
     margin-bottom: 0; }
   blockquote footer,
-  blockquote--small footer,
   .blockquote--small footer,
   blockquote small,
-  blockquote--small small,
   .blockquote--small small,
-  blockquote .small, blockquote--small .small,
-  .blockquote--small .small {
+  blockquote .small, .blockquote--small .small {
     display: block;
     font-size: 80%;
     line-height: 1.428571429;
     color: #777777; }
     blockquote footer:before,
-    blockquote--small footer:before,
     .blockquote--small footer:before,
     blockquote small:before,
-    blockquote--small small:before,
     .blockquote--small small:before,
-    blockquote .small:before, blockquote--small .small:before,
-    .blockquote--small .small:before {
+    blockquote .small:before, .blockquote--small .small:before {
       content: '\2014 \00A0'; }
 
 .blockquote-reverse,
-blockquote.pull-right, blockquote--small.pull-right,
-.pull-right.blockquote--small {
+blockquote.pull-right, .pull-right.blockquote--small {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -1260,25 +1247,19 @@ blockquote.pull-right, blockquote--small.pull-right,
   .blockquote-reverse small:before,
   .blockquote-reverse .small:before,
   blockquote.pull-right footer:before,
-  blockquote--small.pull-right footer:before,
   .pull-right.blockquote--small footer:before,
   blockquote.pull-right small:before,
-  blockquote--small.pull-right small:before,
   .pull-right.blockquote--small small:before,
-  blockquote.pull-right .small:before, blockquote--small.pull-right .small:before,
-  .pull-right.blockquote--small .small:before {
+  blockquote.pull-right .small:before, .pull-right.blockquote--small .small:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
   .blockquote-reverse .small:after,
   blockquote.pull-right footer:after,
-  blockquote--small.pull-right footer:after,
   .pull-right.blockquote--small footer:after,
   blockquote.pull-right small:after,
-  blockquote--small.pull-right small:after,
   .pull-right.blockquote--small small:after,
-  blockquote.pull-right .small:after, blockquote--small.pull-right .small:after,
-  .pull-right.blockquote--small .small:after {
+  blockquote.pull-right .small:after, .pull-right.blockquote--small .small:after {
     content: '\00A0 \2014'; }
 
 address {
@@ -4864,7 +4845,7 @@ a.list-group-item-danger {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
-  .well blockquote, .well blockquote--small, .well .blockquote--small {
+  .well blockquote, .well .blockquote--small {
     border-color: #ddd;
     border-color: rgba(0, 0, 0, 0.15); }
 
@@ -5640,7 +5621,6 @@ Markup: html/blockquote.html
 Styleguide text.blockquote
 */
 blockquote,
-blockquote--small,
 .blockquote--small,
 .blockquote {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -5656,60 +5636,29 @@ blockquote--small,
   overflow: hidden;
   display: inline-block; }
   blockquote p,
-  blockquote--small p,
   .blockquote--small p,
   .blockquote p {
-    line-height: inherit; }
-    blockquote p:before,
-    blockquote--small p:before,
-    .blockquote--small p:before,
-    blockquote p:after,
-    blockquote--small p:after,
-    .blockquote--small p:after,
-    .blockquote p:before,
-    .blockquote p:after {
-      content: '';
-      display: block;
-      position: absolute;
-      background: url("../images/svg/quote.svg") no-repeat;
-      background-size: 60px;
-      width: 30px;
-      height: 23px; }
-    blockquote p:before,
-    blockquote--small p:before,
-    .blockquote--small p:before,
-    .blockquote p:before {
-      top: 4px;
-      left: 0; }
-    blockquote p:after,
-    blockquote--small p:after,
-    .blockquote--small p:after,
-    .blockquote p:after {
-      background-position: -31px 0;
-      bottom: 0;
-      right: 0; }
-  blockquote--small,
-  .blockquote--small {
-    padding-left: 0;
-    font-size: 0.889em;
-    font-style: normal;
-    color: #404040;
-    font-family: Arial, sans-serif; }
-  blockquote__open:after,
-  blockquote__close:after,
-  .blockquote__open:after,
-  .blockquote__close:after {
-    content: '“';
-    display: inline-block;
-    font-size: inherit; }
-  blockquote__close:after,
-  .blockquote__close:after {
-    content: '”'; }
+    line-height: inherit;
+    display: inline; }
+  blockquote:before,
+  .blockquote--small:before,
+  .blockquote:before {
+    content: open-quote; }
+  blockquote:after,
+  .blockquote--small:after,
+  .blockquote:after {
+    content: close-quote; }
+
+.blockquote--small {
+  padding-left: 0;
+  font-size: 0.889em;
+  font-style: normal;
+  color: #404040;
+  font-family: Arial, sans-serif; }
 
 .no-svg blockquote p:before,
-.no-svg blockquote--small p:before,
 .no-svg .blockquote--small p:before,
-.no-svg blockquote p:after, .no-svg blockquote--small p:after, .no-svg .blockquote--small p:after {
+.no-svg blockquote p:after, .no-svg .blockquote--small p:after {
   background-image: url("../images/png/quote.png"); }
 
 .radio + .radio,
@@ -6277,7 +6226,6 @@ Markup: html/paragraphs.html
 Styleguide text.paragraphs
 */
 .paragraph, blockquote,
-blockquote--small,
 .blockquote--small, .blockquote, .region-content ul,
 .region-content ol, p, .file {
   margin-bottom: 0.8em;
