@@ -433,8 +433,10 @@ Styleguide listing.agenda
 */
 .listing--agenda {
 
-  .listing__meta-item--type {
+  .meta {
     font-size: $font-size-little;
+    text-transform: uppercase;
+    margin-bottom: 0;
   }
 
   .listing__title{

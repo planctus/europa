@@ -6732,7 +6732,7 @@ Styleguide date
   border-bottom: 3px solid #ffc412;
   width: 5.5em;
   margin-right: 0.75em;
-  padding: 0.75em 0.8em;
+  padding: 0.8em 0.8em;
   text-align: center;
   position: relative;
   overflow: hidden; }
@@ -8377,8 +8377,10 @@ Markup: html/listing-agenda.html
 
 Styleguide listing.agenda
 */
-.listing--agenda .listing__meta-item--type {
-  font-size: 0.889em; }
+.listing--agenda .meta {
+  font-size: 0.889em;
+  text-transform: uppercase;
+  margin-bottom: 0; }
 
 .listing--agenda .listing__title {
   color: #404040; }
