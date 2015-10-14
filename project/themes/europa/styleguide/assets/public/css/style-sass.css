@@ -6502,9 +6502,11 @@ Markup: html/banner-video.html
 
 Styleguide banner.video
 */
+.banner {
+  margin-top: 1.667em; }
+
 .banner--quote {
   border-left: 0.4em solid #ffd617;
-  margin-left: 0.4em;
   padding-left: 0.4em; }
 
 .banner__author {
