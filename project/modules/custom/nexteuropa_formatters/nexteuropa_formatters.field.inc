@@ -303,11 +303,12 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
  */
 function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, $instance, $items, $display, $formatter, $element) {
   foreach ($items as $delta => $item) {
-    // Set attribute from formatter settings.
-    $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
 
     switch ($field['type']) {
       case 'link_field':
+        // Set attribute from formatter settings.
+        $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+
         $element[$delta] = array(
           '#theme' => 'link_formatter_link_default',
           '#element' => $item,
@@ -319,15 +320,15 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
         break;
 
       case 'taxonomy_term_reference':
-        $term = taxonomy_term_load($item['tid']);
+        $term = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($item['tid']));
         $element[$delta] = array(
-          '#theme' => 'link_formatter_link_default',
-          '#element' => array(
-            'url' => taxonomy_term_uri($term),
-            'title' => $term->name,
-            'attributes' => $item['attributes'],
-            'display_url' => taxonomy_term_uri($term),
-            'html' => true,
+          '#theme' => 'link',
+          '#text' => $term->name->value(),
+          '#path' => $term->field_core_top_task_link->url->value(),
+          '#options' => array(
+            'attributes' => array(
+              'class' => 'listing__item-link',
+            ),
           ),
           '#field' => $instance,
           '#display' => $display,
@@ -338,7 +339,12 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
     }
   }
   if ($field['cardinality'] == -1) {
-    $element['#prefix'] = '<div class="listing listing--title">';
+    $list_modifiers = $display['settings']['nexteuropa_title_listing_modifier'];
+    if ($list_modifiers !== '') {
+      $element['#prefix'] = "<div class='listing listing--title " . $list_modifiers . "'>";
+    } else {
+      $element['#prefix'] = '<div class="listing listing--title">';
+    }
     $element['#suffix'] = '</div>';
     return $element;
   }
@@ -355,7 +361,6 @@ function nexteuropa_formatters_field_formatter_info_alter(&$info) {
     'nexteuropa_listing_wrapper_modifier' => '',
   );
   $info['link_listing_title']['settings'] += array(
-    'nexteuropa_title_listing_wrapper_modifier' => '',
     'nexteuropa_title_listing_modifier' => '',
     'nexteuropa_title_item_modifier' => '',
     'nexteuropa_title_item_link_modifier' => '',
@@ -404,13 +409,6 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
     if ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
       $display = $context['instance']['display'][$context['view_mode']];
       $settings = $display['settings'];
-
-      $settings_form['nexteuropa_title_listing_wrapper_modifier'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Wrapper modifier'),
-        '#default_value' => $settings['nexteuropa_title_listing_wrapper_modifier'],
-        '#description' => t('Class names separated by spaces.'),
-      );
 
       $settings_form['nexteuropa_title_listing_modifier'] = array(
         '#type' => 'textfield',
@@ -473,7 +471,6 @@ function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary,
       $settings = $display['settings'];
 
       $modifiers = array(
-        'Wrapper modifier' => 'nexteuropa_title_listing_wrapper_modifier',
         'List modifier' => 'nexteuropa_title_listing_modifier',
         'Item modifier' => 'nexteuropa_title_item_modifier',
         'Item link modifier' => 'nexteuropa_title_item_link_modifier',

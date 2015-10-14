@@ -101,15 +101,7 @@ function dt_topic_ds_field_settings_info() {
     ),
     'field_core_top_tasks' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'col-md-6',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );

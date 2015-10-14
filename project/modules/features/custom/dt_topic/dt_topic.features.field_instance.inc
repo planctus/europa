@@ -641,8 +641,7 @@ function dt_topic_field_default_field_instances() {
         'settings' => array(
           'nexteuropa_title_item_link_modifier' => '',
           'nexteuropa_title_item_modifier' => '',
-          'nexteuropa_title_listing_modifier' => 'listing--line-left',
-          'nexteuropa_title_listing_wrapper_modifier' => 'col-md-6',
+          'nexteuropa_title_listing_modifier' => 'listing--line-left col-md-6',
         ),
         'type' => 'link_listing_title',
         'weight' => 22,
@@ -1008,9 +1007,9 @@ function dt_topic_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 1,
-          'nexteuropa_ds_layouts_columns' => 'default',
-          'nexteuropa_ds_layouts_modifier' => 'col-md-6',
-          'nexteuropa_ds_layouts_wrapper_modifier' => '',
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => 'col-md-6 listing--line-left',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
