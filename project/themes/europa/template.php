@@ -945,6 +945,11 @@ function europa_preprocess_html(&$variables) {
  * Implements hook_preprocess_node().
  */
 function europa_preprocess_node(&$variables) {
+  global $language;
+  $lang = $language->language;
+  $variables['node'] = $variables['elements']['#node'];
+  $node = $variables['node'];
+
   $variables['submitted'] = '';
   if (theme_get_setting('display_submitted')) {
     $variables['submitted'] = t('Submitted by !username on !datetime', array(
@@ -957,6 +962,61 @@ function europa_preprocess_node(&$variables) {
   // Override node_url if Legacy Link is set.
   if (isset($variables['legacy'])) {
     $variables['node_url'] = $variables['legacy'];
+  }
+
+  // Handle the header background image.
+  // Quick way to check if the node has an header image background set.
+  $header_back = field_get_items('node', $node, 'field_core_header_image', $lang);
+  // Without breakpoints this would not make much sense.
+  if ($header_back && module_exists('breakpoints')) {
+    $field = reset($header_back);
+    $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
+    // Need to reverse the order of the breakpoint, mobile first.
+    $breakpoints = array_reverse($breakpoints);
+    // Get all the images presets.
+    $styles = image_styles();
+    // Get the presets name.
+    $style_names = array_keys($styles);
+    // Filter the ones regarding the header image.
+    $header_styles = preg_grep('#^header_image*#', $style_names);
+    // Prepare containers.
+    $mapping = array();
+    $css = '';
+
+    foreach ($breakpoints as $breakpoint) {
+      $name = $breakpoint->machine_name;
+      // Get the key to find correspondencies in the image presets.
+      $breakpoint_key = substr($name, strrpos($name, '.') + 1);
+      // Get the styles related to this breakpoint.
+      $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
+      if (!empty($style_names_breakpoint)) {
+        foreach ($style_names_breakpoint as $style_name) {
+          // Build an array mapping the breakpoints media queries and the image url.
+          $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $field['uri']);
+        }
+      }
+      // Create the css rules for each breakpoint.
+      $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
+      $css .= ' .page-header {' .PHP_EOL;
+      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] .'");' . PHP_EOL;
+      $css .= '   background-repeat: no-repeat;' . PHP_EOL;
+      $css .= '   background-size:cover;' . PHP_EOL;
+      $css .= '   background-position:center;' . PHP_EOL;
+      $css .= ' }' . PHP_EOL;
+      $css .= '}' . PHP_EOL;
+      $css .= PHP_EOL;
+    }
+
+    $filepath = drupal_realpath('public://header_background_node_' . $node->nid .'.css');
+    $existing  = file_get_contents($filepath);
+    $uri = 'public://header_background_node_' . $node->nid .'.css';
+    $url = file_create_url($uri);
+    // Check if something has changed or if the file doesn't exist.
+    if ($existing != $css) {
+      file_save_data($css, $uri, FILE_EXISTS_REPLACE);
+    }
+    // Add the css to the page.
+    drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
   }
 }
 
