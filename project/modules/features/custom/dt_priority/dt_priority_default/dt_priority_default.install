@@ -24,11 +24,7 @@ function dt_priority_default_uninstall() {
 }
 
 /**
-<<<<<<< HEAD
- * Revert to make display changes take effect.
-=======
- * NEXTEUROPA-4804: Adding back related departments and topics
->>>>>>> develop
+ * NEXTEUROPA-4804: Adding back related departments and topics.
  */
 function dt_priority_default_update_7101() {
   features_revert_module('dt_priority_default');
