@@ -5635,12 +5635,13 @@ blockquote,
   .blockquote:after {
     content: close-quote; }
 
-.blockquote--small {
+blockquote.blockquote--small {
   padding-left: 0;
   font-size: 0.889em;
   font-style: normal;
   color: #404040;
-  font-family: Arial, sans-serif; }
+  font-family: Arial, sans-serif;
+  margin-bottom: 0; }
 
 .no-svg blockquote p:before,
 .no-svg blockquote p:after {

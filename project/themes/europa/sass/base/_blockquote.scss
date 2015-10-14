@@ -39,12 +39,15 @@ blockquote,
   }
 }
 
-.blockquote--small {
-  padding-left: 0;
-  font-size: $font-size-little;
-  font-style: normal;
-  color: $text-color;
-  font-family: $font-family-base;
+blockquote {
+  &.blockquote--small {
+    padding-left: 0;
+    font-size: $font-size-little;
+    font-style: normal;
+    color: $text-color;
+    font-family: $font-family-base;
+    margin-bottom: 0;
+  }
 }
 
 // State
