@@ -57,6 +57,8 @@
           <span class="kss-nav__ref">4</span
           ><span class="kss-nav__name">Date</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-datepicker.html">
@@ -129,8 +131,6 @@
           <span class="kss-nav__ref">17</span
           ><span class="kss-nav__name">Bootstrap: Nav tabs</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-notification.html">
@@ -197,20 +197,20 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-navtabs" class="kss-section kss-section--depth-1">
+      <div     id="kssref-date" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-navtabs">
-          <span class="kss-title__ref">17</span
-          >Bootstrap: Nav tabs
+        <a class="kss-title__permalink" href="#kssref-date">
+          <span class="kss-title__ref">4</span
+          >Date
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>Implementation of bootstrap nav tabs</p>
+        <p>Date components</p>
 
       </div>
     </div>
@@ -220,33 +220,25 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <ul class="nav nav-tabs nav-tabs--with-content nav-tabs-processed">
-  <li class="active">
-    <a href="#bootstrap-fieldgroup-nav-item--actions" data-toggle="tab">Actions</a>
-  </li>
-  <li class="">
-    <a href="#bootstrap-fieldgroup-nav-item--latest" data-toggle="tab">Latest</a>
-  </li>
-  <li class="">
-    <a href="#bootstrap-fieldgroup-nav-item--details" data-toggle="tab">Details</a>
-  </li>
-</ul>
+          <div class="clearfix"> <!-- only required for the styleguide -->
+  <div class="date-block">
+    <span class="date-block__day_text">Monday</span>
+    <span class="date-block__day">12</span>
+    <span class="date-block__month">Oct</span>
+  </div>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class=&quot;nav nav-tabs nav-tabs--with-content nav-tabs-processed&quot;&gt;
-  &lt;li class=&quot;active&quot;&gt;
-    &lt;a href=&quot;#bootstrap-fieldgroup-nav-item--actions&quot; data-toggle=&quot;tab&quot;&gt;Actions&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;&quot;&gt;
-    &lt;a href=&quot;#bootstrap-fieldgroup-nav-item--latest&quot; data-toggle=&quot;tab&quot;&gt;Latest&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;&quot;&gt;
-    &lt;a href=&quot;#bootstrap-fieldgroup-nav-item--details&quot; data-toggle=&quot;tab&quot;&gt;Details&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;clearfix&quot;&gt; &lt;!-- only required for the styleguide --&gt;
+  &lt;div class=&quot;date-block&quot;&gt;
+    &lt;span class=&quot;date-block__day_text&quot;&gt;Monday&lt;/span&gt;
+    &lt;span class=&quot;date-block__day&quot;&gt;12&lt;/span&gt;
+    &lt;span class=&quot;date-block__month&quot;&gt;Oct&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 

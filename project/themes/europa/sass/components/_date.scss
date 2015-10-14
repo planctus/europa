@@ -1,0 +1,60 @@
+/*
+Date
+
+Date components
+
+Markup: html/date.html
+
+Styleguide date
+*/
+
+.date-block {
+  float: left;
+  background: $grey-lighter;
+  border-bottom: 3px solid $yellow;
+  width: 5.5em;
+  margin-right: 0.75em;
+  padding: 1em 0.8em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -0.667em;
+    right: -0.200em;
+    width: 0;
+  	height: 0;
+  	border-top: 1em solid transparent;
+  	border-bottom: 1em solid transparent;
+  	border-right:1em solid #fff;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  &__day_text {
+    @extend .date-block__element;
+    font-size: $font-size-xsmall;
+    line-height: $font-size-xsmall;
+  }
+
+  &__day {
+    @extend .date-block__element;
+    font-size: $font-size-mid;
+    line-height: $font-size-mid;
+    font-weight: $font-weight-bold;
+  }
+
+  &__month {
+    @extend .date-block__element;
+    line-height: $font-size-little;
+    font-size: $font-size-little;
+  }
+}
+
+.date-block__element {
+  width: 100%;
+  float: left;
+}
