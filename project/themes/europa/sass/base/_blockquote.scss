@@ -40,7 +40,6 @@ blockquote,
 }
 
 .blockquote--small {
-  @extend blockquote;
   padding-left: 0;
   font-size: $font-size-little;
   font-style: normal;
