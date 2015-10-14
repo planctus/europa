@@ -306,15 +306,36 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
     // Set attribute from formatter settings.
     $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
 
-    // Call theme function of link module (theme_link_formatter_link_default).
-    $element[$delta] = array(
-      '#theme' => 'link_formatter_link_default',
-      '#element' => $item,
-      '#field' => $instance,
-      '#display' => $display,
-      '#prefix' => '<div class="listing__item">',
-      '#suffix' => '</div>',
-    );
+    switch ($field['type']) {
+      case 'link_field':
+        $element[$delta] = array(
+          '#theme' => 'link_formatter_link_default',
+          '#element' => $item,
+          '#field' => $instance,
+          '#display' => $display,
+          '#prefix' => '<div class="listing__item">',
+          '#suffix' => '</div>',
+        );
+        break;
+
+      case 'taxonomy_term_reference':
+        $term = taxonomy_term_load($item['tid']);
+        $element[$delta] = array(
+          '#theme' => 'link_formatter_link_default',
+          '#element' => array(
+            'url' => taxonomy_term_uri($term),
+            'title' => $term->name,
+            'attributes' => $item['attributes'],
+            'display_url' => taxonomy_term_uri($term),
+            'html' => true,
+          ),
+          '#field' => $instance,
+          '#display' => $display,
+          '#prefix' => '<div class="listing__item">',
+          '#suffix' => '</div>',
+        );
+        break;
+    }
   }
   if ($field['cardinality'] == -1) {
     $element['#prefix'] = '<div class="listing listing--title">';
