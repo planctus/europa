@@ -14,3 +14,4 @@ Feature: "Language neutral" option should not be availabe when creating content
       Examples:
         | Hide language neutral | Default language select | Default language |
         |#edit-node input[id$='exclude-language-none']:not(#edit-entity-translation-settings-node-page-exclude-language-none) | #edit-node select[id$='default-language']:not(#edit-entity-translation-settings-node-page-default-language) | xx-et-default |
+        # page is excluded since it is not subject to this setting.

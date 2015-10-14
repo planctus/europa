@@ -192,7 +192,7 @@ function dt_core_strongarm() {
     'node' => 'node',
     'taxonomy_term' => 'taxonomy_term',
     'comment' => 0,
-    'bean' => 0,
+    'bean' => 'bean',
     'file' => 0,
     'user' => 0,
   );

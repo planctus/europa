@@ -54,7 +54,6 @@ features[breakpoints][] = breakpoints.theme.europa.narrow
 features[breakpoints][] = breakpoints.theme.europa.normal
 features[breakpoints][] = breakpoints.theme.europa.wide
 features[context][] = dt_core_non_homepage_pages
-features[context][] = in_page_navigation
 features[ctools][] = breakpoints:default_breakpoint_group:1
 features[ctools][] = breakpoints:default_breakpoints:1
 features[ctools][] = context:context:3
