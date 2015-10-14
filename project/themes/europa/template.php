@@ -969,6 +969,8 @@ function europa_preprocess_node(&$variables) {
   $header_back = field_get_items('node', $node, 'field_core_header_image', $lang);
   // Without breakpoints this would not make much sense.
   if ($header_back && module_exists('breakpoints')) {
+    // Set a variable available in the tpls.
+    $variables['header_back'] = TRUE;
     $field = reset($header_back);
     $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
     // Need to reverse the order of the breakpoint, mobile first.
@@ -997,21 +999,19 @@ function europa_preprocess_node(&$variables) {
       }
       // Create the css rules for each breakpoint.
       $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
-      $css .= ' .page-header {' .PHP_EOL;
+      $css .= ' .page-header--image {' .PHP_EOL;
       $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] .'");' . PHP_EOL;
-      $css .= '   background-repeat: no-repeat;' . PHP_EOL;
-      $css .= '   background-size:cover;' . PHP_EOL;
-      $css .= '   background-position:center;' . PHP_EOL;
       $css .= ' }' . PHP_EOL;
       $css .= '}' . PHP_EOL;
       $css .= PHP_EOL;
     }
 
     $filepath = drupal_realpath('public://header_background_node_' . $node->nid .'.css');
+    // Check if the file exists.
     $existing  = file_get_contents($filepath);
     $uri = 'public://header_background_node_' . $node->nid .'.css';
     $url = file_create_url($uri);
-    // Check if something has changed or if the file doesn't exist.
+    // Act only if something has been changed or if the file doesn't exist yet.
     if ($existing != $css) {
       file_save_data($css, $uri, FILE_EXISTS_REPLACE);
     }
@@ -1024,6 +1024,8 @@ function europa_preprocess_node(&$variables) {
  * Implements hook_preprocess_page().
  */
 function europa_preprocess_page(&$variables) {
+  global $language;
+  $lang = $language->language;
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['content_column_class'] = 'col-md-6';
