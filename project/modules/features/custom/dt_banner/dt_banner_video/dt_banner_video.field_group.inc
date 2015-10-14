@@ -24,9 +24,9 @@ function dt_banner_video_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_core_description',
-      1 => 'title_field',
-      2 => 'field_banner_caption',
-      3 => 'field_banner_video_file',
+      1 => 'field_banner_caption',
+      2 => 'field_banner_video_file',
+      3 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -53,8 +53,8 @@ function dt_banner_video_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_editorial_settings',
-      1 => 'group_banner',
+      0 => 'group_banner',
+      1 => 'group_editorial_settings',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -79,7 +79,10 @@ function dt_banner_video_field_group_info() {
     'label' => 'Editorial Settings',
     'weight' => '6',
     'children' => array(
-      0 => 'language',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
+      2 => 'scheduler_settings',
+      3 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

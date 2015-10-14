@@ -121,13 +121,19 @@ function dt_banner_quote_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '1',
         ),
         'language' => array(
           'weight' => '5',
+        ),
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '6',
         ),
       ),
       'display' => array(),
@@ -160,7 +166,7 @@ function dt_banner_quote_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_banner_quote';
-  $strongarm->value = '4';
+  $strongarm->value = 4;
   $export['language_content_type_banner_quote'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -183,6 +189,8 @@ function dt_banner_quote_strongarm() {
   $strongarm->name = 'node_options_banner_quote';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'moderation',
+    2 => 'revision',
   );
   $export['node_options_banner_quote'] = $strongarm;
 
