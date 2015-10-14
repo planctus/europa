@@ -19,15 +19,17 @@ function dt_banner_quote_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_plain',
         'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
+        'type' => 'text_plain',
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -87,7 +89,7 @@ function dt_banner_quote_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -198,7 +200,7 @@ function dt_banner_quote_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',

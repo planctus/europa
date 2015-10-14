@@ -10,7 +10,6 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|banner_quote|default
 features[ds_field_settings][] = node|banner_quote|teaser
-features[ds_fields][] = blockquote_author
 features[ds_layout_settings][] = node|banner_quote|default
 features[ds_layout_settings][] = node|banner_quote|teaser
 features[features_api][] = api:2

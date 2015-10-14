@@ -164,7 +164,7 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Author',
     'weight' => '19',
     'children' => array(
-      0 => 'blockquote_author',
+      0 => 'field_banner_author',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -193,7 +193,7 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Author',
     'weight' => '7',
     'children' => array(
-      0 => 'blockquote_author',
+      0 => 'field_banner_author',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

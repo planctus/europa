@@ -6510,6 +6510,8 @@ Styleguide banner.video
   font-size: 0.778em;
   font-weight: 600;
   padding-bottom: 0.6em; }
+  .banner__author:before {
+    content: ' - '; }
 
 .banner__video .file {
   padding: 0;

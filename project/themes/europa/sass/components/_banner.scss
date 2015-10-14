@@ -35,6 +35,10 @@ $quote_border_offset: 0.400em;
   font-size: $font-size-xsmall;
   font-weight: $font-weight-bold;
   padding-bottom: 0.6em;
+
+  &:before {
+    content: ' - ';
+  }
 }
 
 .banner--video {
