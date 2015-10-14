@@ -37,9 +37,7 @@ blockquote,
   &:after {
     content: close-quote;
   }
-}
 
-blockquote {
   &.blockquote--small {
     padding-left: 0;
     font-size: $font-size-little;
@@ -49,6 +47,7 @@ blockquote {
     margin-bottom: 0;
   }
 }
+
 
 // State
 .no-svg {
