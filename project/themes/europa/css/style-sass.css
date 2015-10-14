@@ -6732,7 +6732,7 @@ Styleguide date
   border-bottom: 3px solid #ffc412;
   width: 5.5em;
   margin-right: 0.75em;
-  padding: 1em 0.8em;
+  padding: 0.75em 0.8em;
   text-align: center;
   position: relative;
   overflow: hidden; }
@@ -6749,7 +6749,7 @@ Styleguide date
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg); }
-  .date-block__day_text {
+  .date-block__day-text {
     font-size: 0.778em;
     line-height: 0.778em; }
   .date-block__day {
@@ -6760,7 +6760,7 @@ Styleguide date
     line-height: 0.889em;
     font-size: 0.889em; }
 
-.date-block__element, .date-block__day_text, .date-block__day, .date-block__month {
+.date-block__element, .date-block__day-text, .date-block__day, .date-block__month {
   width: 100%;
   float: left; }
 
