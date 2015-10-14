@@ -22,10 +22,12 @@ function dt_banner_quote_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'blockquote_text' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
     ),
   );
   $export['node|banner_quote|default'] = $ds_fieldsetting;
@@ -42,10 +44,12 @@ function dt_banner_quote_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'blockquote_text' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
     ),
   );
   $export['node|banner_quote|teaser'] = $ds_fieldsetting;
@@ -77,24 +81,6 @@ function dt_banner_quote_ds_custom_fields_info() {
   );
   $export['blockquote_author'] = $ds_field;
 
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'blockquote_text';
-  $ds_field->label = 'Blockquote description';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'banner_quote|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<span class="blockquote__open"></span>[node:field_core_description]<span class="blockquote__close"></span>',
-      'format' => 'full_html',
-    ),
-    'use_token' => 1,
-  );
-  $export['blockquote_text'] = $ds_field;
-
   return $export;
 }
 
@@ -115,18 +101,18 @@ function dt_banner_quote_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'group_quote_wrapper',
-        1 => 'blockquote_text',
-        2 => 'blockquote_author',
-        3 => 'group_quote_quote',
+        1 => 'blockquote_author',
+        2 => 'group_quote_quote',
+        3 => 'field_core_description',
         4 => 'group_blockquote',
         5 => 'group_quote_author',
       ),
     ),
     'fields' => array(
       'group_quote_wrapper' => 'ds_content',
-      'blockquote_text' => 'ds_content',
       'blockquote_author' => 'ds_content',
       'group_quote_quote' => 'ds_content',
+      'field_core_description' => 'ds_content',
       'group_blockquote' => 'ds_content',
       'group_quote_author' => 'ds_content',
     ),
@@ -152,21 +138,21 @@ function dt_banner_quote_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'blockquote_author',
-        1 => 'blockquote_text',
-        2 => 'group_quote_wrapper',
-        3 => 'group_quote_quote',
-        4 => 'group_blockquote',
-        5 => 'group_quote_author',
+        0 => 'group_quote_wrapper',
+        1 => 'blockquote_author',
+        2 => 'group_quote_quote',
+        3 => 'group_blockquote',
+        4 => 'group_quote_author',
+        5 => 'field_core_description',
       ),
     ),
     'fields' => array(
-      'blockquote_author' => 'ds_content',
-      'blockquote_text' => 'ds_content',
       'group_quote_wrapper' => 'ds_content',
+      'blockquote_author' => 'ds_content',
       'group_quote_quote' => 'ds_content',
       'group_blockquote' => 'ds_content',
       'group_quote_author' => 'ds_content',
+      'field_core_description' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

@@ -23,8 +23,8 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Banner',
     'weight' => '5',
     'children' => array(
-      0 => 'title_field',
-      1 => 'field_core_description',
+      0 => 'field_core_description',
+      1 => 'title_field',
       2 => 'field_banner_author',
       3 => 'field_banner_author_gender',
     ),
@@ -53,7 +53,7 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Blockquote',
     'weight' => '18',
     'children' => array(
-      0 => 'blockquote_text',
+      0 => 'field_core_description',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -82,7 +82,7 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Blockquote',
     'weight' => '6',
     'children' => array(
-      0 => 'blockquote_text',
+      0 => 'field_core_description',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -111,7 +111,8 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_banner',
+      0 => 'group_editorial_settings',
+      1 => 'group_banner',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -122,6 +123,33 @@ function dt_banner_quote_field_group_info() {
     ),
   );
   $export['group_content_tabgroup|node|banner_quote|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_settings|node|banner_quote|form';
+  $field_group->group_name = 'group_editorial_settings';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'banner_quote';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Editorial Settings',
+    'weight' => '6',
+    'children' => array(
+      0 => 'language',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-editorial-settings field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_editorial_settings|node|banner_quote|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
