@@ -9,7 +9,7 @@ Styleguide breadcrumb
 $breadcrumb-heigth: 2.778em;
 
 .breadcrumb {
-  background: $brand-primary;
+  background: none;
   font-size: 0.833em;
   position: relative;
   padding: 0;
@@ -94,7 +94,7 @@ $breadcrumb-heigth: 2.778em;
 
 @include breakpoint(screen-xs-min) {
   .breadcrumb {
-    border-bottom: 1px solid #fff;
+    //border-bottom: 1px solid #fff;
   }
 
   .breadcrumb__link {
