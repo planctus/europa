@@ -354,6 +354,12 @@ function nexteuropa_formatters_field_formatter_info_alter(&$info) {
     'nexteuropa_listing_modifier' => '',
     'nexteuropa_listing_wrapper_modifier' => '',
   );
+  $info['link_listing_title']['settings'] += array(
+    'nexteuropa_title_listing_wrapper_modifier' => '',
+    'nexteuropa_title_listing_modifier' => '',
+    'nexteuropa_title_item_modifier' => '',
+    'nexteuropa_title_item_link_modifier' => '',
+  );
 }
 
 /**
@@ -394,7 +400,40 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
       '#default_value' => $settings['nexteuropa_listing_wrapper_modifier'],
       '#description' => t('Class names separated by spaces.'),
     );
-  }
+  } else
+    if ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
+      $display = $context['instance']['display'][$context['view_mode']];
+      $settings = $display['settings'];
+
+      $settings_form['nexteuropa_title_listing_wrapper_modifier'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Wrapper modifier'),
+        '#default_value' => $settings['nexteuropa_title_listing_wrapper_modifier'],
+        '#description' => t('Class names separated by spaces.'),
+      );
+
+      $settings_form['nexteuropa_title_listing_modifier'] = array(
+        '#type' => 'textfield',
+        '#title' => t('List modifier'),
+        '#default_value' => $settings['nexteuropa_title_listing_modifier'],
+        '#description' => t('Class names separated by spaces.'),
+      );
+
+      $settings_form['nexteuropa_title_item_modifier'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Item modifier'),
+        '#default_value' => $settings['nexteuropa_title_item_modifier'],
+        '#description' => t('Class names separated by spaces.'),
+      );
+
+      $settings_form['nexteuropa_title_item_link_modifier'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Item link modifier'),
+        '#default_value' => $settings['nexteuropa_title_item_link_modifier'],
+        '#description' => t('Class names separated by spaces.'),
+      );
+
+    }
 }
 
 /**
@@ -428,7 +467,27 @@ function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary,
       }
       $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_listing_wrapper_modifier'];
     }
-  }
+  } else
+    if ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
+      $display = $context['instance']['display'][$context['view_mode']];
+      $settings = $display['settings'];
+
+      $modifiers = array(
+        'Wrapper modifier' => 'nexteuropa_title_listing_wrapper_modifier',
+        'List modifier' => 'nexteuropa_title_listing_modifier',
+        'Item modifier' => 'nexteuropa_title_item_modifier',
+        'Item link modifier' => 'nexteuropa_title_item_link_modifier',
+      );
+
+      foreach ($modifiers as $label => $modifier) {
+        if (isset($settings[$modifier])) {
+          if (!empty($summary)) {
+            $summary .= '<br />';
+          }
+          $summary .= t($label) . ': ' . $settings[$modifier];
+        }
+      }
+    }
 }
 
 /**
