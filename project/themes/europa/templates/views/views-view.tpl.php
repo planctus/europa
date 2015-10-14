@@ -42,7 +42,7 @@
       <?php print $exposed; ?>
     </div>
   <?php endif; ?>
-  <?php if (isset($items_count)): ?>
+  <?php if (isset($items_count) && !empty($items_count)): ?>
     <div class="filters__result-count">
       <span class="filters__items-number">
           <?php print $items_count; ?>

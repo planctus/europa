@@ -24,6 +24,9 @@ function dt_core_install() {
 
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
+
+  // Set our default social network url.
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
 }
 
 /**
@@ -431,9 +434,16 @@ function dt_core_update_7131() {
 }
 
 /**
- * Enabling dt_information_core.
+ * Due to a mistake schema is ahead by one, this is a placeholder only.
  */
 function dt_core_update_7132() {
+
+}
+
+/**
+ * Enabling dt_information_core.
+ */
+function dt_core_update_7133() {
   // Enabling dt_information_core only on information site.
   // Because the hook_updates will not running on a new install.
   module_enable(array('dt_information_core'));
@@ -450,21 +460,21 @@ function dt_core_update_7132() {
 /**
  * Enable nexteuropa_formatters module.
  */
-function dt_core_update_7133() {
+function dt_core_update_7134() {
   module_enable(array('nexteuropa_formatters'));
 }
 
 /**
  * Enabling nexteuropa_views module.
  */
-function dt_core_update_7134() {
+function dt_core_update_7135() {
   module_enable(array('nexteuropa_views'));
 }
 
 /**
  * Enabling dt_core_info, dt_core_pol, disabling legacy info and pol features.
  */
-function dt_core_update_7135() {
+function dt_core_update_7136() {
   // Checking dt_information_core, if it is enabled on the site.
   if (module_exists('dt_information_core')) {
     module_disable(array('dt_information_core'));
@@ -480,21 +490,21 @@ function dt_core_update_7135() {
 /**
  * Switch on entity translation for the body field.
  */
-function dt_core_update_7136($sandbox) {
+function dt_core_update_7137($sandbox) {
   _dt_core_enable_entity_translation('body', $sandbox);
 }
 
 /**
  * Enabling dt_language_selector_site_popup.
  */
-function dt_core_update_7137() {
+function dt_core_update_7138() {
   module_enable(array('dt_language_selector_site_popup'));
 }
 
 /**
  * Check all node titles and trim the whitespace.
  */
-function dt_core_update_7138() {
+function dt_core_update_7139() {
   $query = db_update('node')->expression('title', 'RTRIM(title)')->execute();
   drupal_set_message('<strong>' . $query . '</strong> node title(s) have been fixed.');
 
@@ -508,14 +518,21 @@ function dt_core_update_7138() {
 /**
  * Reset weight_frontpage.
  */
-function dt_core_update_7139() {
+function dt_core_update_7140() {
   variable_set('weight_frontpage', 0);
+}
+
+/**
+ * Update the default social media link url (other social networks).
+ */
+function dt_core_update_7141() {
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
 }
 
 /**
  * Resetting Views settings related to Nexteuropa BEM listing.
  */
-function dt_core_update_7140() {
+function dt_core_update_7142() {
   $features = array(
     'dt_announcement',
     'dt_department',
@@ -530,4 +547,74 @@ function dt_core_update_7140() {
       features_revert_module($feature);
     }
   }
+}
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7143() {
+  // Call our helper function to update the list.
+  if (_dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages())) {
+    // Set our message.
+    $message = 'Language labels have been updated into lower case without errors.';
+  }
+  else {
+    // Set our message.
+    $message = 'There were some errors updating the languages, please check the logs for detailed information';
+  }
+
+  // Display the final message.
+  drupal_set_message($message);
+}
+
+/**
+ * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
+ */
+function dt_core_update_7144() {
+  module_enable(array('dt_node_settings'));
+
+  $helper_types = array(
+    'article',
+    'banner_quote',
+    'banner_video',
+    'class_link_group',
+    'contact',
+    'featured_item',
+    'page',
+    'person',
+    'policy_implementation',
+    'policy_input',
+    'policy_keyfile',
+    'toplink',
+    'editorial_team',
+    'file',
+  );
+
+  foreach ($helper_types as $type) {
+    variable_set('helper_node_type_' . $type, 1);
+  }
+
+  features_revert_module('dt_roles_permissions');
+}
+
+
+/**
+ * Set body field content to english.
+ */
+function dt_core_update_7145() {
+  // Set all content to english if undefined.
+  db_update('field_data_body')
+  ->fields(array(
+    'language' => 'en',
+  ))
+  ->condition('language', 'und', '=')
+  ->execute();
+
+  // Set all content revision to english if undefined.
+  db_update('field_revision_body')
+  ->fields(array(
+    'language' => 'en',
+  ))
+  ->condition('language', 'und', '=')
+  ->execute();
 }

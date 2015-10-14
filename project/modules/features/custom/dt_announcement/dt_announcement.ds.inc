@@ -367,7 +367,8 @@ function dt_announcement_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = 'announcement|*';
+  $ds_field->ui_limit = 'announcement|*
+basic_page|*';
   $ds_field->properties = array(
     'block' => 'views|announcements-block',
     'block_render' => '1',
@@ -408,7 +409,7 @@ function dt_announcement_ds_layout_settings_info() {
         2 => 'body',
         11 => 'field_core_location',
         12 => 'field_core_topics',
-        13 => 'field_core_policy',
+        13 => 'field_core_policies',
         14 => 'field_core_department',
         15 => 'field_core_announcement',
         16 => 'field_core_subject',
@@ -435,7 +436,7 @@ function dt_announcement_ds_layout_settings_info() {
       'field_announcement_type' => 'right_header',
       'field_core_location' => 'central',
       'field_core_topics' => 'central',
-      'field_core_policy' => 'central',
+      'field_core_policies' => 'central',
       'field_core_department' => 'central',
       'field_core_announcement' => 'central',
       'field_core_subject' => 'central',

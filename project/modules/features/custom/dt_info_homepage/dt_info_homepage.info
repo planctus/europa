@@ -40,6 +40,7 @@ features[field_instance][] = node-info_homepage-group_content_access
 features[field_instance][] = node-info_homepage-og_group_ref
 features[field_instance][] = node-info_homepage-title_field
 features[node][] = info_homepage
+features[variable][] = entity_translation_settings_node__info_homepage
 features[variable][] = comment_anonymous_info_homepage
 features[variable][] = comment_default_mode_info_homepage
 features[variable][] = comment_default_per_page_info_homepage
