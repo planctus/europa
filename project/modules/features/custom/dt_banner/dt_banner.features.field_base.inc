@@ -59,6 +59,7 @@ function dt_banner_field_default_field_bases() {
       'allowed_values' => array(
         'Female' => 'Female',
         'Male' => 'Male',
+        'Other' => 'Other',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
