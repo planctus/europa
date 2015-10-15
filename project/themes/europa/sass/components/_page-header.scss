@@ -15,7 +15,7 @@ Styleguide page-header
 .page-header {
   background: $brand-primary;
   margin: 0;
-  padding: 0 0 30px;
+  padding: 0;
   color: #fff;
 
   h1 {
@@ -65,6 +65,8 @@ Styleguide page-header
     background-size: cover;
     background-position: center;
   }
+
+  .main-infos { min-height: 100px; }
 }
 
 // External link specific adjustments

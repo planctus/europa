@@ -21,7 +21,6 @@ Styleguide: langselect
   position: relative;
   font-size: $font-size-xsmall;
   float:left;
-  margin-bottom: 1em;
   width:100%;
   display:inline-block;
   vertical-align:middle;
@@ -48,7 +47,7 @@ Styleguide: langselect
   text-decoration: line-through;
 }
 
-.lang-select-page__list {
+ul.lang-select-page__list {
   float:left;
   padding: 0;
   margin: 0;

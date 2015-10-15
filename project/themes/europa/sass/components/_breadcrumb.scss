@@ -9,14 +9,16 @@ Styleguide breadcrumb
 $breadcrumb-heigth: 2.778em;
 
 .breadcrumb {
-  background: $brand-primary;
-  margin: 0 -15px;
-  padding: 0 15px;
   border-bottom: 1px solid #fff;
+  background: none;
+  padding: 0;
+  margin:0;
   font-size: 0.833em;
+  font-weight: 600;
   position: relative;
   border-radius: 0;
   overflow: hidden;
+  line-height: 1;
   @extend .hidden-print;
 
   ol,
@@ -33,14 +35,13 @@ $breadcrumb-heigth: 2.778em;
   min-height: $breadcrumb-heigth;
   display: none;
   position: relative;
+  padding: 1em 1.4em 0.8em 0;
 }
 
 .breadcrumb__link {
   display: inline-block;
   font-weight: bold;
   margin-right: 8px;
-  padding-top: 0.82em;
-  padding-bottom: 0.42em;
   max-width: 100%;
   color: #fff;
 
@@ -88,7 +89,7 @@ $breadcrumb-heigth: 2.778em;
       @extend .breadcrumb__link-arrow;
       position: absolute;
       right: 7px;
-      top: 30%;
+      top: 10%;
     }
   }
 }
@@ -121,7 +122,7 @@ $breadcrumb-heigth: 2.778em;
 
 @include breakpoint(screen-md-min) {
   .breadcrumb {
-    margin: 0 -15px;
+    margin: 0;
   }
 }
 
@@ -169,8 +170,10 @@ Styleguide breadcrumb.collapsible
       @extend .breadcrumb__link-arrow;
       position: absolute;
       right: 0;
-      top: 30%;
+      top: 10%;
     }
+
+    span { line-height: 1; }
   }
 
   .breadcrumb__text {
