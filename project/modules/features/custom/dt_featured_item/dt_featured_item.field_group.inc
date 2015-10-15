@@ -137,8 +137,8 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'field_feat_item_description',
-      1 => 'field_core_legacy_link',
+      0 => 'field_core_legacy_link',
+      1 => 'field_core_description',
       2 => 'legacy_link_title',
     ),
     'format_type' => 'html-element',
@@ -168,8 +168,8 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'field_feat_item_description',
-      1 => 'field_core_legacy_link',
+      0 => 'field_core_legacy_link',
+      1 => 'field_core_description',
       2 => 'legacy_link_title',
     ),
     'format_type' => 'html-element',
@@ -260,11 +260,10 @@ function dt_featured_item_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_feat_item_button_label',
-      2 => 'field_feat_item_description',
-      3 => 'field_feat_item_image',
-      4 => 'field_feat_item_ref_or_url',
-      5 => 'field_core_legacy_link',
+      1 => 'field_feat_item_description',
+      2 => 'field_feat_item_image',
+      3 => 'field_core_legacy_link',
+      4 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

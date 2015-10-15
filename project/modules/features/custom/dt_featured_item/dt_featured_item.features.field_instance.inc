@@ -10,6 +10,79 @@
 function dt_featured_item_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-featured_item-field_core_description'
+  $field_instances['node-featured_item-field_core_description'] = array(
+    'bundle' => 'featured_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'A short description that clarifies the title.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 21,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_description',
+    'label' => 'Description',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-featured_item-field_core_legacy_link'
   $field_instances['node-featured_item-field_core_legacy_link'] = array(
     'bundle' => 'featured_item',
@@ -22,14 +95,14 @@ function dt_featured_item_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'link_button_call_for_action',
-        'weight' => 14,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'link_button_call_for_action',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -66,77 +139,6 @@ function dt_featured_item_field_default_field_instances() {
       ),
       'type' => 'link_field',
       'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance: 'node-featured_item-field_feat_item_description'
-  $field_instances['node-featured_item-field_feat_item_description'] = array(
-    'bundle' => 'featured_item',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'A short description that clarifies the title.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_feat_item_description',
-    'label' => 'Description',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 16,
     ),
   );
 
@@ -233,7 +235,7 @@ function dt_featured_item_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 17,
+      'weight' => 16,
     ),
   );
 
@@ -418,7 +420,7 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 13,
     ),
   );
 

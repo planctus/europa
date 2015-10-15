@@ -98,36 +98,6 @@ function dt_featured_item_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_feat_item_description'
-  $field_bases['field_feat_item_description'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_feat_item_description',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 155,
-    ),
-    'translatable' => 1,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_feat_item_image'
   $field_bases['field_feat_item_image'] = array(
     'active' => 1,
