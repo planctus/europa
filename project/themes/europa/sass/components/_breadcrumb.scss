@@ -9,11 +9,12 @@ Styleguide breadcrumb
 $breadcrumb-heigth: 2.778em;
 
 .breadcrumb {
-  background: none;
+  background: $brand-primary;
+  margin: 0 -15px;
+  padding: 0 15px;
+  border-bottom: 1px solid #fff;
   font-size: 0.833em;
   position: relative;
-  padding: 0;
-  margin-bottom: 0;
   border-radius: 0;
   overflow: hidden;
   @extend .hidden-print;
@@ -23,7 +24,7 @@ $breadcrumb-heigth: 2.778em;
     list-style: none;
     list-style-image: none;
     padding: 0;
-    margin: 0;
+    margin: 0 !important;
     width: 100%;
   }
 }
@@ -120,7 +121,7 @@ $breadcrumb-heigth: 2.778em;
 
 @include breakpoint(screen-md-min) {
   .breadcrumb {
-    margin: 0;
+    margin: 0 -15px;
   }
 }
 

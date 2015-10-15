@@ -1033,6 +1033,12 @@ function europa_preprocess_node(&$variables) {
     // Add the css to the page.
     drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
   }
+
+  // Provide header_bottom region to the node.tpl.php
+  if ($plugin = context_get_plugin('reaction', 'block')) {
+    $variables['header_bottom'] = $plugin->block_get_blocks_by_region('header_bottom');
+    drupal_static_reset('context_reaction_block_list');
+  }
 }
 
 /**
@@ -1070,6 +1076,7 @@ function europa_preprocess_page(&$variables) {
 
     // Check if Display Suite is handling node.
     if (module_exists('ds')) {
+      unset($variables['page']['header_bottom']);
       $layout = ds_get_layout('node', $node->type, 'full');
       if ($layout) {
         ctools_class_add($layout['layout']);
