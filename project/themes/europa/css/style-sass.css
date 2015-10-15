@@ -6928,19 +6928,20 @@ Markup: html/featured-item.html
 Styleguide featureditem
 */
 .featured-item {
-  background-color: #e2e2e2;
+  background-color: #ececec;
   padding: 15px 0px;
   border-left: 0.556em solid #ffd617;
   width: 100%;
-  float: left; }
+  float: left;
+  margin-bottom: 1.667em; }
 
 .featured-item__image picture img {
   width: 100%; }
 
 .featured-item__content p {
-  font-size: 0.778em; }
+  font-size: 0.889em; }
 
-.featured-item__content h3 {
+.featured-item__content h3 a {
   color: #404040; }
 
 /*
