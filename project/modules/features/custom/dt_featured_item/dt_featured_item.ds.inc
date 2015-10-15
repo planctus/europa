@@ -22,6 +22,26 @@ function dt_featured_item_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_legacy_link' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
   );
   $export['node|featured_item|default'] = $ds_fieldsetting;
 
@@ -35,6 +55,26 @@ function dt_featured_item_ds_field_settings_info() {
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(),
+      ),
+    ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_legacy_link' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
   );
@@ -60,22 +100,22 @@ function dt_featured_item_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'group_featured_item_wrapper',
-        1 => 'field_feat_item_image',
-        2 => 'group_featured_item_left',
-        3 => 'group_featured_item_right',
-        4 => 'title_field',
-        5 => 'field_core_description',
-        6 => 'field_core_legacy_link',
+        1 => 'title_field',
+        2 => 'field_feat_item_image',
+        3 => 'field_core_description',
+        4 => 'field_core_legacy_link',
+        5 => 'group_featured_item_left',
+        6 => 'group_featured_item_right',
       ),
     ),
     'fields' => array(
       'group_featured_item_wrapper' => 'ds_content',
-      'field_feat_item_image' => 'ds_content',
-      'group_featured_item_left' => 'ds_content',
-      'group_featured_item_right' => 'ds_content',
       'title_field' => 'ds_content',
+      'field_feat_item_image' => 'ds_content',
       'field_core_description' => 'ds_content',
       'field_core_legacy_link' => 'ds_content',
+      'group_featured_item_left' => 'ds_content',
+      'group_featured_item_right' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -99,23 +139,23 @@ function dt_featured_item_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_feat_item_image',
+        0 => 'title_field',
         1 => 'group_featured_item_wrapper',
-        2 => 'group_featured_item_left',
-        3 => 'group_featured_item_right',
-        4 => 'title_field',
-        5 => 'field_core_description',
-        6 => 'field_core_legacy_link',
+        2 => 'field_feat_item_image',
+        3 => 'field_core_description',
+        4 => 'field_core_legacy_link',
+        5 => 'group_featured_item_left',
+        6 => 'group_featured_item_right',
       ),
     ),
     'fields' => array(
-      'field_feat_item_image' => 'ds_content',
-      'group_featured_item_wrapper' => 'ds_content',
-      'group_featured_item_left' => 'ds_content',
-      'group_featured_item_right' => 'ds_content',
       'title_field' => 'ds_content',
+      'group_featured_item_wrapper' => 'ds_content',
+      'field_feat_item_image' => 'ds_content',
       'field_core_description' => 'ds_content',
       'field_core_legacy_link' => 'ds_content',
+      'group_featured_item_left' => 'ds_content',
+      'group_featured_item_right' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

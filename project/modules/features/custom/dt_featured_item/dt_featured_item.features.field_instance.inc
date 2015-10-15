@@ -22,14 +22,14 @@ function dt_featured_item_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -79,7 +79,7 @@ function dt_featured_item_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -88,21 +88,21 @@ function dt_featured_item_field_default_field_instances() {
     'bundle' => 'featured_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Reference or URL of the page that needs to have a high visibility for a limited period of time. The title of the link will be used as a button.',
+    'description' => 'Reference or URL of the page that needs to have a high visibility for a limited period of time.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'link_button_call_for_action',
-        'weight' => 18,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'link_button_call_for_action',
-        'weight' => 17,
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -138,7 +138,7 @@ function dt_featured_item_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -153,28 +153,18 @@ function dt_featured_item_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'preview',
+          'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'picture',
+        'module' => 'file_entity',
         'settings' => array(
-          'colorbox_settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_group' => '',
-            'colorbox_multivalue_index' => NULL,
-          ),
-          'fallback_image_style' => 'featured_item',
-          'image_link' => '',
-          'picture_mapping' => 'teaser_image',
+          'file_view_mode' => 'default',
         ),
-        'type' => 'picture',
+        'type' => 'file_rendered',
         'weight' => 0,
       ),
     ),
@@ -197,7 +187,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'node' => 0,
@@ -216,26 +206,10 @@ function dt_featured_item_field_default_field_instances() {
           'media_internet' => 0,
           'upload' => 'upload',
         ),
-        'filefield_sources' => array(
-          'filefield_sources' => array(),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
       ),
-      'type' => 'image_image',
-      'weight' => 16,
+      'type' => 'media_generic',
+      'weight' => 17,
     ),
   );
 
@@ -254,13 +228,13 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -303,13 +277,13 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -367,7 +341,7 @@ function dt_featured_item_field_default_field_instances() {
           'title_style' => 'h3',
         ),
         'type' => 'title_linked_legacy_link',
-        'weight' => 16,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -378,7 +352,7 @@ function dt_featured_item_field_default_field_instances() {
           'title_style' => 'h3',
         ),
         'type' => 'title_linked_legacy_link',
-        'weight' => 15,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -430,7 +404,7 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -442,7 +416,7 @@ function dt_featured_item_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Image');
-  t('Reference or URL of the page that needs to have a high visibility for a limited period of time. The title of the link will be used as a button.');
+  t('Reference or URL of the page that needs to have a high visibility for a limited period of time.');
   t('Select or upload an image.');
   t('Should be the same as the title of the page that is referred to.');
   t('Title');
