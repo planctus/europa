@@ -321,6 +321,7 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
 
       case 'taxonomy_term_reference':
         $term = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($item['tid']));
+
         $element[$delta] = array(
           '#theme' => 'link',
           '#text' => $term->name->value(),
@@ -328,6 +329,7 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
           '#options' => array(
             'attributes' => array(
               'class' => 'listing__item-link',
+              'title' => $term->name->value(),
             ),
           ),
           '#field' => $instance,
