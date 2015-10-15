@@ -6876,12 +6876,15 @@ Styleguide featureditem
   border-left: 4px solid #ffd617;
   width: 100%;
   float: left; }
-  .featured-item__content p {
-    font-size: 0.778em; }
-  .featured-item__content h3 {
-    color: #404040; }
-  .featured-item__image picture img {
-    width: 100%; }
+
+.featured-item__image picture img {
+  width: 100%; }
+
+.featured-item__content p {
+  font-size: 0.778em; }
+
+.featured-item__content h3 {
+  color: #404040; }
 
 /*
 Feedback message

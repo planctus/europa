@@ -12,26 +12,26 @@ Styleguide featureditem
   border-left: 4px solid $yellow-light;
   width: 100%;
   float: left;
+}
 
-  &__content {
-    @extend .col-md-7;
+.featured-item__image {
+  @extend .col-md-5;
 
-    p {
-      font-size: $font-size-xsmall;
-    }
-
-    h3 {
-      color: $grey-base;
+  picture {
+    img {
+      width: 100%;
     }
   }
+}
 
-  &__image {
-    @extend .col-md-5;
+.featured-item__content {
+  @extend .col-md-7;
 
-    picture {
-      img {
-        width: 100%;
-      }
-    }
+  p {
+    font-size: $font-size-xsmall;
+  }
+
+  h3 {
+    color: $grey-base;
   }
 }
