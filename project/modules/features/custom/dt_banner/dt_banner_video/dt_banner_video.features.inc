@@ -8,7 +8,13 @@
  * Implements hook_ctools_plugin_api().
  */
 function dt_banner_video_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
@@ -22,7 +28,7 @@ function dt_banner_video_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_banner_video_node_info() {
   $items = array(
     'banner_video' => array(
-      'name' => t('Video Banner'),
+      'name' => t('Banner: Video'),
       'base' => 'node_content',
       'description' => t('Video Banner content type for dt.'),
       'has_title' => '1',
