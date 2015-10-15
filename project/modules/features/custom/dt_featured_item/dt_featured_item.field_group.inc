@@ -137,9 +137,9 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'field_core_legacy_link',
-      1 => 'field_core_description',
-      2 => 'legacy_link_title',
+      0 => 'title_field',
+      1 => 'field_core_legacy_link',
+      2 => 'field_core_description',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -168,9 +168,9 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item right',
     'weight' => '14',
     'children' => array(
-      0 => 'field_core_legacy_link',
-      1 => 'field_core_description',
-      2 => 'legacy_link_title',
+      0 => 'title_field',
+      1 => 'field_core_legacy_link',
+      2 => 'field_core_description',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
