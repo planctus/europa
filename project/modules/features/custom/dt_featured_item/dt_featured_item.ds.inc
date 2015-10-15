@@ -17,7 +17,7 @@ function dt_featured_item_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'featured_item';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'title_field' => array(
+    'field_feat_item_image' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -52,9 +52,11 @@ function dt_featured_item_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'featured_item';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'title_field' => array(
+    'field_feat_item_image' => array(
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
     'field_core_description' => array(
