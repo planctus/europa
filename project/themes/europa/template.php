@@ -1004,17 +1004,30 @@ function europa_preprocess_node(&$variables) {
       $css .= ' }' . PHP_EOL;
       $css .= '}' . PHP_EOL;
       $css .= PHP_EOL;
+
+      // High resolution displays.
+      $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
+      $css .= ' .page-header--image {' .PHP_EOL;
+      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] .'");' . PHP_EOL;
+      $css .= ' }' . PHP_EOL;
+      $css .= '}' . PHP_EOL;
+      $css .= PHP_EOL;
     }
 
-    $filepath = drupal_realpath('public://header_background_node_' . $node->nid .'.css');
+    // We want to store those css files in a specific path.
+    $dir = 'public://css/header-backgrounds/';
+    file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+
     // Check if the file exists.
+    $uri = $dir . 'header_background_node_' . $node->nid .'.css';
+    $filepath = drupal_realpath($uri);
     $existing  = file_get_contents($filepath);
-    $uri = 'public://header_background_node_' . $node->nid .'.css';
-    $url = file_create_url($uri);
+
     // Act only if something has been changed or if the file doesn't exist yet.
     if ($existing != $css) {
       file_save_data($css, $uri, FILE_EXISTS_REPLACE);
     }
+
     // Add the css to the page.
     drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
   }
