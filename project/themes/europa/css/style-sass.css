@@ -6620,7 +6620,7 @@ Styleguide breadcrumb
   .no-js .breadcrumb__segment--first:before {
     position: absolute;
     right: 7px;
-    top: 10%; }
+    top: 22%; }
 
 @media (min-width: 480px) {
   .breadcrumb__link {
@@ -6676,7 +6676,7 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__link:after {
     position: absolute;
     right: 0;
-    top: 10%; }
+    top: 22%; }
   .breadcrumb--collapsible .breadcrumb__link span {
     line-height: 1; }
 
