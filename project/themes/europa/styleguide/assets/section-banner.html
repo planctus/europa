@@ -39,6 +39,20 @@
           <span class="kss-nav__ref">1</span
           ><span class="kss-nav__name">Banner</span>
         </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-banner.html#kssref-banner-quote">
+                <span class="kss-nav__ref">1.1</span
+                ><span class="kss-nav__name">Quote Banner</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-banner.html#kssref-banner-video">
+                <span class="kss-nav__ref">1.2</span
+                ><span class="kss-nav__name">Video Banner</span>
+              </a>
+            </li>
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-breadcrumb.html">
@@ -195,24 +209,43 @@
           <span class="kss-nav__ref">28</span
           ><span class="kss-nav__name">Timeline</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
     </ul>
   </nav>
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-timeline" class="kss-section kss-section--depth-1">
+      <div     id="kssref-banner" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-timeline">
-          <span class="kss-title__ref">28</span
-          >Timeline
+        <a class="kss-title__permalink" href="#kssref-banner">
+          <span class="kss-title__ref">1</span
+          >Banner
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
+
+
+      <div class="kss-description">
+        <p>The banner itself is not a standalone component, the banner subcomponents should
+always be used.</p>
+
+      </div>
+    </div>
+
+
+      </div>
+      <section id="kssref-banner-quote" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-banner-quote">
+          <span class="kss-title__ref">1.1</span
+          >Quote Banner
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
 
 
     </div>
@@ -222,14 +255,18 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <div class="timeline">
-  <div class="timeline__item">
-    <div class="timeline__item-title">By late-2015</div>
-    <div class="timeline__text">
-      <ul>
-        <li>The Commission will convene the first energy infrastructure forum to discuss and find solutions to issues that are common to all regions across Europe.</li>
-      </ul>
-    </div>
+          <div class="banner banner--quote">
+  <div class="banner__quote">
+    <blockquote class="blockquote blockquote--small">
+      <span class="blockquote__open"></span>
+      Nullam eget gravida sapien. Curabitur nec ligula varius tellus blandit auctor in non felis.
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+      Pellentesque in volutpat eros, ut fringilla tortor.
+      <span class="blockquote__close"></span>
+    </blockquote>
+  </div>
+  <div class="banner__author">
+    - President Juncker
   </div>
 </div>
 
@@ -237,20 +274,78 @@
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;timeline&quot;&gt;
-  &lt;div class=&quot;timeline__item&quot;&gt;
-    &lt;div class=&quot;timeline__item-title&quot;&gt;By late-2015&lt;/div&gt;
-    &lt;div class=&quot;timeline__text&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;The Commission will convene the first energy infrastructure forum to discuss and find solutions to issues that are common to all regions across Europe.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;banner banner--quote&quot;&gt;
+  &lt;div class=&quot;banner__quote&quot;&gt;
+    &lt;blockquote class=&quot;blockquote blockquote--small&quot;&gt;
+      &lt;span class=&quot;blockquote__open&quot;&gt;&lt;/span&gt;
+      Nullam eget gravida sapien. Curabitur nec ligula varius tellus blandit auctor in non felis.
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+      Pellentesque in volutpat eros, ut fringilla tortor.
+      &lt;span class=&quot;blockquote__close&quot;&gt;&lt;/span&gt;
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;banner__author&quot;&gt;
+    - President Juncker
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
       </div>
 
+      </section>
+      <section id="kssref-banner-video" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-banner-video">
+          <span class="kss-title__ref">1.2</span
+          >Video Banner
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <div class="banner banner--video">
+  <div class="banner__left">
+    <div class="banner__video">
+      <iframe class="video" src="http://ec.europa.eu/avservices/play.cfm?ref=I101060&amp;videolang=INT&amp;devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="I101060" width="100%" height="auto" frameborder="0" scrolling="no" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+    </div>
+    <div class="banner__caption">
+      Example video caption
+    </div>
+  </div>
+  <div class="banner__paragraph">
+    Duis facilisis, tortor a pharetra consequat, leo leo ultricies libero, vel pharetra risus odio vitae libero. Sed nec metus ac purus lobortis luctus. Fusce eget pellentesque erat, et venenatis eros. Nunc tempor sed dui sit amet ornare. Suspendisse nec turpis augue. Aliquam erat volutpat. Cras congue nulla mauris, non vehicula nisi eleifend sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sed neque a arcu vulputate lacinia ac at eros. Nunc porttitor felis at dolor placerat sodales. In vel venenatis nisi, et sollicitudin augue. Ut condimentum odio sit amet lacus vehicula volutpat.
+  </div>
+</div>
+
+        </div>
       </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;banner banner--video&quot;&gt;
+  &lt;div class=&quot;banner__left&quot;&gt;
+    &lt;div class=&quot;banner__video&quot;&gt;
+      &lt;iframe class=&quot;video&quot; src=&quot;http://ec.europa.eu/avservices/play.cfm?ref=I101060&amp;amp;videolang=INT&amp;amp;devurl=http://ec.europa.eu/avservices/video/player/config.cfm&quot; id=&quot;I101060&quot; width=&quot;100%&quot; height=&quot;auto&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; webkitallowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;banner__caption&quot;&gt;
+      Example video caption
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;banner__paragraph&quot;&gt;
+    Duis facilisis, tortor a pharetra consequat, leo leo ultricies libero, vel pharetra risus odio vitae libero. Sed nec metus ac purus lobortis luctus. Fusce eget pellentesque erat, et venenatis eros. Nunc tempor sed dui sit amet ornare. Suspendisse nec turpis augue. Aliquam erat volutpat. Cras congue nulla mauris, non vehicula nisi eleifend sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sed neque a arcu vulputate lacinia ac at eros. Nunc porttitor felis at dolor placerat sodales. In vel venenatis nisi, et sollicitudin augue. Ut condimentum odio sit amet lacus vehicula volutpat.
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </div>
+
+      </section>
 </article>
 
 <!-- SCRIPTS -->
