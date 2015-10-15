@@ -992,6 +992,8 @@ function europa_preprocess_node(&$variables) {
       // Get the styles related to this breakpoint.
       $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
       if (!empty($style_names_breakpoint)) {
+        // We base on the multiplier.
+        sort($style_names_breakpoint);
         foreach ($style_names_breakpoint as $style_name) {
           // Build an array mapping the breakpoints media queries and the image url.
           $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $field['uri']);
