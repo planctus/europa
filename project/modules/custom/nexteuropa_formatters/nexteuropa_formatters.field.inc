@@ -307,19 +307,35 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
     switch ($field['type']) {
       case 'link_field':
         // Set attribute from formatter settings.
-        $item['attributes']['class'] = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+        $formatter_class_default = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+        $title_item_modifier = $display['settings']['nexteuropa_title_item_modifier'];
+        $title_item_link_modifier = $display['settings']['nexteuropa_title_item_link_modifier'];
+
+        if (isset($title_item_link_modifier) && $title_item_link_modifier !== '') {
+          $item['attributes']['class'] = $formatter_class_default . ' ' . $title_item_link_modifier;
+        } else {
+          $item['attributes']['class'] = $formatter_class_default;
+        }
 
         $element[$delta] = array(
           '#theme' => 'link_formatter_link_default',
           '#element' => $item,
           '#field' => $instance,
           '#display' => $display,
-          '#prefix' => '<div class="listing__item">',
-          '#suffix' => '</div>',
         );
+
+        if (isset($title_item_modifier) && $title_item_modifier !== '') {
+          $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
+          $element[$delta]['#suffix'] = '</div>';
+        } else {
+          $element[$delta]['#prefix'] = '<div class="listing__item">';
+          $element[$delta]['#suffix'] = '</div>';
+        }
         break;
 
       case 'taxonomy_term_reference':
+        $title_item_modifier = $display['settings']['nexteuropa_title_item_modifier'];
+        $title_item_link_modifier = $display['settings']['nexteuropa_title_item_link_modifier'];
         $term = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($item['tid']));
 
         $element[$delta] = array(
@@ -328,15 +344,26 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
           '#path' => $term->field_core_top_task_link->url->value(),
           '#options' => array(
             'attributes' => array(
-              'class' => 'listing__item-link',
               'title' => $term->name->value(),
             ),
           ),
           '#field' => $instance,
           '#display' => $display,
-          '#prefix' => '<div class="listing__item">',
-          '#suffix' => '</div>',
         );
+
+        if (isset($title_item_link_modifier) && $title_item_link_modifier !== '') {
+          $element[$delta]['#options']['attributes']['class'] = 'listing__item-link' . ' ' . $title_item_link_modifier;
+        } else {
+          $element[$delta]['#options']['attributes']['class'] = 'listing__item-link';
+        }
+
+        if (isset($title_item_modifier) && $title_item_modifier !== '') {
+          $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
+          $element[$delta]['#suffix'] = '</div>';
+        } else {
+          $element[$delta]['#prefix'] = '<div class="listing__item">';
+          $element[$delta]['#suffix'] = '</div>';
+        }
         break;
     }
   }
