@@ -160,13 +160,13 @@ function dt_apply_wysiwyg_buttons() {
  * Copy values from source to destination filed.
  *
  * @param string $entity_type
- *   the type of entity, like: node.
+ *   The type of entity, like: node.
  * @param string $bundle
- *   entity bundle, like: page.
+ *   Entity bundle, like: page.
  * @param string $source_field_name
- *   source field name, like: field_core_link.
+ *   Source field name, like: field_core_link.
  * @param string $destination_field_name
- *   destination field, like: field_core_links.
+ *   Destination field, like: field_core_links.
  *
  * @throws \DTCoreSourceFieldError
  *   Exception when no source field with the given name.
@@ -315,15 +315,15 @@ function _dt_core_path_update_relatives($path) {
  * These fields are stored in the $GLOBALS['dt_core_parent_fields'].
  *
  * @param int $nid
- *   Node id
+ *   Node id.
  * @param string $field_name
- *   field name that is used for hierarchy
+ *   Field name that is used for hierarchy.
  * @param string $direction
- *   children or parents
+ *   Children or parents.
  * @param bool $no_alias_only
  *   Exclude nodes that already have an alias.
  * @param int $original_nid
- *   Node id of the starting item
+ *   Node id of the starting item.
  *
  * @return array
  *   Node ids of children|parents
@@ -339,10 +339,10 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
 
   if ($direction == 'parents') {
     $result = db_select('field_data_' . $field_name, 'p')
-    ->fields('p', array($field_name . '_target_id'))
-    ->condition('entity_id', $nid, '=')
-    ->execute()
-    ->fetchAssoc();
+      ->fields('p', array($field_name . '_target_id'))
+      ->condition('entity_id', $nid, '=')
+      ->execute()
+      ->fetchAssoc();
 
     $nids = $result ? array_values($result) : FALSE;
     // Check if parent has already an alias.
@@ -431,7 +431,6 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
   // The pattern "prefix/[parent:url]/[title]" might result in an alias like
   // "prefix/prefix/parent-title/title" if parent is of the same type since the
   // prefix is added twice. We will remove the duplicate prefix now.
-
   // We consider everything before the first token a prefix.
   $pattern_prefix = explode('[', $context['pattern']);
   $prefix = $pattern_prefix[0];
@@ -451,7 +450,7 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
  * Checks if a URL pattern is relying on a parent field.
  *
  * @param string $field_name
- *   Field name
+ *   Field name.
  *
  * @return mixed
  *   string pattern token segment | bool FALSE
@@ -490,7 +489,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
  * Checks if a URL pattern is relying on a parent field.
  *
  * @param object $node
- *   Node
+ *   Node.
  *
  * @return bool
  *   There is a circular reference between the two nodes.
@@ -579,8 +578,8 @@ function _dt_core_enable_lanugages($languages = array()) {
 
     // Portuguese exception:
     // In Drupal the "pt" prefix belongs to Portuguese / International but we
-    // need Portuguese / Portugal to have this prefix (theme_image_style has "pt-pt" as
-    // default prefix). We need to change this to "pt".
+    // need Portuguese / Portugal to have this prefix (theme_image_style has
+    // "pt-pt" as default prefix). We need to change this to "pt".
     if ($langcode == 'pt-pt') {
       db_update('languages')
         ->fields(array(
@@ -623,6 +622,24 @@ function dt_core_context_load_alter(&$context) {
       }
     }
   }
+}
+
+function _dt_core_disable_maxlength($element) {
+  // Check if we are translating and maxlength for field is enabled.
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && $element['#language'] !== $element['#entity']->language) {
+    // Remove maxlength.
+    unset($element['#maxlength']);
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function dt_core_element_info_alter(&$cache) {
+  $cache['textarea']['#process'][] = '_dt_core_disable_maxlength';
+  $cache['textfield']['#process'][] = '_dt_core_disable_maxlength';
 }
 
 /**
@@ -743,4 +760,121 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
 
   // Retrun our outcome.
   return $return;
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * To avoid reconfiguring our views we simply remove our sort field from the
+ * query. This query alteration, takes in consideration that we have a maximum
+ * of 3 possible languages. It joins the translated data.
+ */
+function dt_core_views_query_alter(&$view, &$query) {
+  // If it is one of our listings.
+  if (isset($view->sort['title_field_value'])) {
+    // Get our languages.
+    global $language;
+
+    // Sort direction from our sort.
+    $sort_direction = 'ASC';
+
+    // If the sort direction is set we use the set one.
+    if (isset($view->sort['title_field_value']->options['order'])) {
+      $sort_direction = $view->sort['title_field_value']->options['order'];
+    }
+
+    // Language subquerys.
+    $or = db_or();
+    // Get the first few languages of our fallback array. If we have a 2nd
+    // language parameter set, we have to work with an additional language. If
+    // not, we only need one.
+    // Set our maximum languages to check.
+    $max_languages = 1;
+    // First we get our url parameters.
+    $parameters = drupal_get_query_parameters();
+    // Check if the 2nd-language parameter is set.
+    if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+      $max_languages = 2;
+    }
+    // Get the maximum extra languages.
+    $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
+    // Add our current site language to the array.
+    if (!in_array($language->language, $fallback_languages)) {
+      array_unshift($fallback_languages, $language->language);
+    }
+    else {
+      // Our default language is in the array but might not be the first. So we
+      // move it.
+      // Get the key of the language.
+      $main_language_key = array_search($language->language, $fallback_languages);
+      // Store it temporary.
+      $prepend_language = $fallback_languages[$main_language_key];
+      // Remove the item.
+      unset($fallback_languages[$main_language_key]);
+      // Then add it to the front.
+      array_unshift($fallback_languages, $prepend_language);
+    }
+
+    // Also we can add our sorting function here. So lets start with the
+    // ininitialization of that variable.
+    $order_by_case = 'CASE ';
+    // Add these languages to the query.
+    foreach ($fallback_languages as $key => $fallback_language) {
+      $or->condition('title_field.language', $fallback_language);
+      $order_by_case .= 'WHEN title_field.language = \'' . $fallback_language . '\' THEN ' . $key . ' ';
+    }
+    $order_by_case .= 'END';
+
+    // Build our sub query.
+    $sub_query = db_select('field_data_title_field', 'title_field');
+    $sub_query->addField('title_field', 'title_field_value', 'translated_title');
+    $sub_query->addField('title_field', 'entity_id', 'translated_id');
+    $sub_query->addField('title_field', 'language');
+    $sub_query->addExpression($order_by_case);
+    $sub_query->condition($or);
+
+    // Create new join object.
+    $join = new views_join();
+    $join->definition = array(
+      'table formula' => $sub_query,
+      'left_field' => 'nid',
+      'field' => 'translated_id',
+      'left_table' => 'node',
+    );
+    $join->left_table = 'node';
+    $join->field = 'translated_id';
+    $join->left_field = 'nid';
+    $join->type = 'LEFT';
+    // This will make sure that we only use the first and best translation
+    // match. Because the order by case is the same, a simple string replace is
+    // enough to make it work.
+    $join->extra = 'title_field.expression = (SELECT Min(' . str_replace('title_field.language', 'language', $order_by_case) . ') FROM field_data_title_field WHERE entity_id = title_field.translated_id)';
+
+    // Do the actual join.
+    $query->table_queue['title_field'] = array(
+      'alias' => 'title_field',
+      'table' => $sub_query,
+      'relationship' => 'node',
+      'join' => $join,
+    );
+
+    // Replace the title sort fields with our custom.
+    foreach ($query->orderby as $key => &$value) {
+      if ($value['field'] == 'field_data_title_field_title_field_value') {
+        $value['field'] = 'title_field.translated_title';
+        break;
+      }
+    }
+
+    // This is originally coming from our sort, we could even delete this part
+    // once we move to a better solution. As we replace the sorting logic, we
+    // have to unset these, as they are causing the duplicate results.
+    if (isset($query->table_queue['field_data_title_field'])) {
+      unset($query->table_queue['field_data_title_field']);
+    }
+    // Remove the field.
+    if (isset($query->fields['field_data_title_field_title_field_value'])) {
+      unset($query->fields['field_data_title_field_title_field_value']);
+    }
+  }
 }

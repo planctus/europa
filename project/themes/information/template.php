@@ -89,7 +89,7 @@ function information_preprocess_views_view(&$variables) {
 
   // Checking if .listing exists in classes_array so that result count can be
   // displayed.
-  if ((in_array('listing', $variables['classes_array'])) && isset($view->exposed_data)) {
+  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
     // Calculate the number of items displayed in a view listing.
     $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 

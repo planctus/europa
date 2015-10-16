@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -38,6 +39,48 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       return;
     }
     throw new Exception($native_name . " is not in the correct case.");
+  }
+
+  /**
+   * @When I go to add a :target translation from :source
+   */
+  public function iGoToAddATranslationFrom($target, $source)
+  {
+      $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  }
+
+  /**
+   * @When I fill :field with :length characters of dummy text
+   */
+  public function iFillWithCharactersOfDummyText($field, $length)
+  {
+      $value = $this->getRandom()->name(intval($length));
+      echo $value;
+      $this->getSession()->getPage()->fillField($field, $value);
+  }
+
+  /**
+   * @Then print current page
+   */
+  public function printCurrentPage()
+  {
+      throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+  }
+
+  /**
+   * @Then print current html
+   */
+  public function printCurrentHtml()
+  {
+      throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
+  }
+
+  /**
+   * @Then I edit the node
+   */
+  public function iEditTheNode()
+  {
+      $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/edit');
   }
 
   /**
@@ -82,4 +125,48 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
     }
   }
+
+  /**
+   * @Then the element :selector should contain text
+   */
+  public function theElementShouldContainText($selector)
+  {
+    $elements = $this->getSession()->getPage()->findAll('css', $selector);
+    if ($elements === NULL) {
+      throw new Exception('Could not find element matching the selector: ' . $selector);
+    }
+    foreach ($elements as $element) {
+      if($element->getText() == '') {
+        throw new Exception('Element ' . $selector . 'is empty and it should not be');
+      }
+    }
+  }
+
+  /**
+    * @Then I see that the :field field has :attribute attribute
+    */
+   public function iSeeThatTheFieldHasAttribute($field, $attribute)
+   {
+      $fieldElement = $this->getSession()->getPage()->findField($field);
+      if ($fieldElement === NULL) {
+        throw new Exception('Could not find field: ' . $field);
+      }
+      if (!$fieldElement->hasAttribute($attribute)) {
+        throw new Exception('Field ' . $fieldElement->getHtml() . ' does not have the attribute: ' . $attribute);
+      }
+   }
+
+   /**
+    * @Then I see that the :arg1 field has no :attribute attribute
+    */
+   public function iSeeThatTheFieldHasNoAttribute($field, $attribute)
+   {
+     $fieldElement = $this->getSession()->getPage()->findField($field);
+     if ($fieldElement === NULL) {
+       throw new Exception('Could not find field: ' . $field);
+     }
+     if ($fieldElement->hasAttribute($attribute)) {
+       throw new Exception('Field ' . $field . ' has the attribute: ' . $attribute);
+     }
+   }
 }

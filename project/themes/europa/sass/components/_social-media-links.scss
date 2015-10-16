@@ -28,8 +28,8 @@ Styleguide social
     &:before {
       margin-bottom: 0px;
     }
-    &:after {
-      display: none;
+    &:after, &.is-external:after {
+      display: none !important;
     }
   }
   &--noicon {
