@@ -49,6 +49,13 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_core_banner' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -98,6 +105,13 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_featured_item' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
@@ -179,10 +193,10 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
         10 => 'field_core_objective',
         11 => 'group_pri_pol_area_background',
         12 => 'group_pri_pol_area_documents',
-        13 => 'field_core_publications',
+        13 => 'group_pri_pol_area_whatnext',
         14 => 'field_core_featured_item',
-        15 => 'group_pri_pol_area_whatnext',
-        16 => 'field_core_links',
+        15 => 'field_core_links',
+        16 => 'field_core_publications',
         17 => 'group_pri_pol_area_related',
         18 => 'latest_announcements_block',
         19 => 'field_core_next_steps',
@@ -207,10 +221,10 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       'field_core_objective' => 'central',
       'group_pri_pol_area_background' => 'central',
       'group_pri_pol_area_documents' => 'central',
-      'field_core_publications' => 'central',
-      'field_core_featured_item' => 'central',
       'group_pri_pol_area_whatnext' => 'central',
+      'field_core_featured_item' => 'central',
       'field_core_links' => 'central',
+      'field_core_publications' => 'central',
       'group_pri_pol_area_related' => 'central',
       'latest_announcements_block' => 'central',
       'field_core_next_steps' => 'central',

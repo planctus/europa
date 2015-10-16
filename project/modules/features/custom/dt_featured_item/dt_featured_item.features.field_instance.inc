@@ -10,100 +10,31 @@
 function dt_featured_item_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-featured_item-field_feat_item_button_label'
-  $field_instances['node-featured_item-field_feat_item_button_label'] = array(
-    'bundle' => 'featured_item',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Use specific text and avoid generic labels such as \'click here\'.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_feat_item_button_label',
-    'label' => 'Button label',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-featured_item-field_feat_item_description'
-  $field_instances['node-featured_item-field_feat_item_description'] = array(
+  // Exported field_instance: 'node-featured_item-field_core_description'
+  $field_instances['node-featured_item-field_core_description'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'A short description that clarifies the title.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_feat_item_description',
+    'field_name' => 'field_core_description',
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
@@ -119,7 +50,7 @@ function dt_featured_item_field_default_field_instances() {
         'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
-              'weight' => 5,
+              'weight' => -7,
             ),
             'filtered_html' => array(
               'weight' => -9,
@@ -141,12 +72,73 @@ function dt_featured_item_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 0,
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
       ),
-      'type' => 'text_textfield',
-      'weight' => 9,
+      'type' => 'text_textarea',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-featured_item-field_core_legacy_link'
+  $field_instances['node-featured_item-field_core_legacy_link'] = array(
+    'bundle' => 'featured_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Reference or URL of the page that needs to have a high visibility for a limited period of time.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 2,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_legacy_link',
+    'label' => 'Button',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 14,
     ),
   );
 
@@ -157,7 +149,7 @@ function dt_featured_item_field_default_field_instances() {
     'description' => 'Select or upload an image.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -167,9 +159,22 @@ function dt_featured_item_field_default_field_instances() {
         'weight' => 7,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'picture',
+        'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
+          'image_link' => '',
+          'picture_mapping' => 'teaser_image',
+        ),
+        'type' => 'picture',
         'weight' => 0,
       ),
     ),
@@ -214,69 +219,7 @@ function dt_featured_item_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-featured_item-field_feat_item_ref_or_url'
-  $field_instances['node-featured_item-field_feat_item_ref_or_url'] = array(
-    'bundle' => 'featured_item',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Reference or URL of the page that needs to have a high visibility for a limited period of time.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_feat_item_ref_or_url',
-    'label' => 'Reference or URL',
-    'required' => 1,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'entity_translation_sync' => FALSE,
-      'rel_remove' => 'default',
-      'title' => 'none',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'link',
-      'settings' => array(
-        'default_titles' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'urls_allowed' => 'both',
-        'urls_filter' => '',
-        'urls_search' => 'contains',
-      ),
-      'type' => 'link_field',
-      'weight' => 6,
+      'weight' => 17,
     ),
   );
 
@@ -293,9 +236,8 @@ function dt_featured_item_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -343,9 +285,8 @@ function dt_featured_item_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'og_ui',
         'settings' => array(),
-        'type' => 'og_list_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -402,15 +343,25 @@ function dt_featured_item_field_default_field_instances() {
     'description' => 'Should be the same as the title of the page that is referred to.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'nexteuropa_legacy_link',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => 'legacy_link',
+          'title_style' => 'h3',
+        ),
+        'type' => 'title_linked_legacy_link',
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'nexteuropa_legacy_link',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => 'legacy_link',
+          'title_style' => 'h3',
+        ),
+        'type' => 'title_linked_legacy_link',
         'weight' => 0,
       ),
     ),
@@ -463,24 +414,22 @@ function dt_featured_item_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 15,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('A short description that clarifies the title.');
-  t('Button label');
+  t('Button');
   t('Description');
   t('Group content visibility');
   t('Groups audience');
   t('Image');
-  t('Reference or URL');
   t('Reference or URL of the page that needs to have a high visibility for a limited period of time.');
   t('Select or upload an image.');
   t('Should be the same as the title of the page that is referred to.');
   t('Title');
-  t('Use specific text and avoid generic labels such as \'click here\'.');
 
   return $field_instances;
 }
