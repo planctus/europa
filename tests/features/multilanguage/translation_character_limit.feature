@@ -12,29 +12,20 @@ Feature: Ignore character limit when translating Content
       | en        |
       | fr        |
     When I am viewing a "basic_page" content:
-        | title        | <title>           |
-        | language     | <source_language> |
-        | body         | <body>            |
-        | field_core_description | <description>     |
+        | title                   | <title>           |
+        | language                | <source_language> |
+        | body                    | <body>            |
+        | field_core_description  | <description>     |
         | field_core_introduction | <introduction>    |
-        | status       | 1                 |
+        | status                  | 1                 |
 
     Then I should see "<title>"
     And I edit the node
-    And I fill "Introduction" with "5000" characters of dummy text
-    And I fill "Description" with "5000" characters of dummy text
-    And I press the "Save" button
-    Then I should see "Description cannot be longer than "
-    # Then I should see "Introduction cannot be longer than "
+    And I see that the "edit-field-core-description-<source_language>-0-value" field has "maxlength" attribute
     And I go to add a "<target_language>" translation from "<source_language>"
-    And I fill "Introduction" with "5000" characters of dummy text
-    And I fill "Description" with "5000" characters of dummy text
-    And I press the "Save" button
-    Then I should not see "Description cannot be longer than "
-    # Then I should not see "Introduction cannot be longer than "
-    # Then print current page
+    And I see that the "edit-field-core-description-<target_language>-0-value" field has no "maxlength" attribute
 
     Examples:
-      | title        | source_language | body             | description  | introduction | target_language |
-      | EN Test page | en       | PLACEHOLDER BODY | PLACEHOLDER DESCRIPTION | PLACEHOLDER INTRO       | fr      |
-      | FR Test page | fr       | PLACEHOLDER BODY | PLACEHOLDER DESCRIPTION | PLACEHOLDER INTRO       | en      |
+      | title        | source_language | body             | description             | introduction            | target_language |
+      | EN Test page | en              | PLACEHOLDER BODY | PLACEHOLDER DESCRIPTION | PLACEHOLDER INTRO       | fr              |
+      | FR Test page | fr              | PLACEHOLDER BODY | PLACEHOLDER DESCRIPTION | PLACEHOLDER INTRO       | en              |

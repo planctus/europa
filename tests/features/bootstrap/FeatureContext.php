@@ -54,7 +54,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function iFillWithCharactersOfDummyText($field, $length)
   {
-      $value = $this->getRandom()->string(intval($length));
+      $value = $this->getRandom()->name(intval($length));
+      echo $value;
       $this->getSession()->getPage()->fillField($field, $value);
   }
 
@@ -64,6 +65,14 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   public function printCurrentPage()
   {
       throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+  }
+
+  /**
+   * @Then print current html
+   */
+  public function printCurrentHtml()
+  {
+      throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
   }
 
   /**
@@ -132,4 +141,32 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
     }
   }
+
+  /**
+    * @Then I see that the :field field has :attribute attribute
+    */
+   public function iSeeThatTheFieldHasAttribute($field, $attribute)
+   {
+      $fieldElement = $this->getSession()->getPage()->findField($field);
+      if ($fieldElement === NULL) {
+        throw new Exception('Could not find field: ' . $field);
+      }
+      if (!$fieldElement->hasAttribute($attribute)) {
+        throw new Exception('Field ' . $fieldElement->getHtml() . ' does not have the attribute: ' . $attribute);
+      }
+   }
+
+   /**
+    * @Then I see that the :arg1 field has no :attribute attribute
+    */
+   public function iSeeThatTheFieldHasNoAttribute($field, $attribute)
+   {
+     $fieldElement = $this->getSession()->getPage()->findField($field);
+     if ($fieldElement === NULL) {
+       throw new Exception('Could not find field: ' . $field);
+     }
+     if ($fieldElement->hasAttribute($attribute)) {
+       throw new Exception('Field ' . $field . ' has the attribute: ' . $attribute);
+     }
+   }
 }
