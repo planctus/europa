@@ -43,6 +43,7 @@ features[field_group][] = group_media|node|announcement|form
 features[field_instance][] = comment-comment_node_announcement-comment_body
 features[field_instance][] = node-announcement-body
 features[field_instance][] = node-announcement-field_announcement_contact
+features[field_instance][] = node-announcement-field_core_pages
 features[field_instance][] = node-announcement-field_announcement_department
 features[field_instance][] = node-announcement-field_announcement_image
 features[field_instance][] = node-announcement-field_announcement_info
