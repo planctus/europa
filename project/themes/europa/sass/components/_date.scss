@@ -34,26 +34,27 @@ Styleguide date
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
   }
-
-  &__day-text {
-    @extend .date-block__element;
-    font-size: $font-size-little;
-    line-height: 100%;
-  }
-
-  &__day {
-    @extend .date-block__element;
-    font-size: $font-size-huge;
-    line-height: 100%;
-    font-weight: $font-weight-bold;
-  }
-
-  &__month {
-    @extend .date-block__element;
-    font-size: 1.111em;
-    line-height: 100%;
-  }
 }
+
+.date-block__day-text {
+  @extend .date-block__element;
+  font-size: $font-size-little;
+  line-height: 100%;
+}
+
+.date-block__day {
+  @extend .date-block__element;
+  font-size: $font-size-huge;
+  line-height: 100%;
+  font-weight: $font-weight-bold;
+}
+
+.date-block__month {
+  @extend .date-block__element;
+  font-size: 1.111em;
+  line-height: 100%;
+}
+
 
 .date-block__element {
   width: 100%;
