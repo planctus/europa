@@ -170,7 +170,7 @@ function cwt_blogs_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '16',
+            'weight' => '17',
             'visible' => FALSE,
           ),
           'rss' => array(
@@ -196,7 +196,7 @@ function cwt_blogs_strongarm() {
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '13',
+            'weight' => '14',
             'visible' => FALSE,
           ),
           'meta' => array(

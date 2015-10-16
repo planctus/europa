@@ -65,6 +65,13 @@ function cwt_blogs_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_shared_teaser' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
   );
   $export['node|commisioner_blog_post|full'] = $ds_fieldsetting;
 
@@ -153,6 +160,14 @@ function cwt_blogs_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'comment_count' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
   );
@@ -263,18 +278,20 @@ function cwt_blogs_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_blog_meta',
         1 => 'title',
-        2 => 'field_shared_teaser',
-        3 => 'post_date',
+        2 => 'post_date',
+        3 => 'field_shared_teaser',
+        4 => 'comment_count',
       ),
       'second' => array(
-        4 => 'field_com_blog_image',
+        5 => 'field_com_blog_image',
       ),
     ),
     'fields' => array(
       'group_blog_meta' => 'main',
       'title' => 'main',
-      'field_shared_teaser' => 'main',
       'post_date' => 'main',
+      'field_shared_teaser' => 'main',
+      'comment_count' => 'main',
       'field_com_blog_image' => 'second',
     ),
     'classes' => array(),
