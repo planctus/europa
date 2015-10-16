@@ -966,78 +966,81 @@ function europa_preprocess_node(&$variables) {
 
   // Handle the header background image.
   // Quick way to check if the node has an header image background set.
-  $header_back = field_get_items('node', $node, 'field_core_header_image', $lang);
-  // Without breakpoints this would not make much sense.
-  if ($header_back && module_exists('breakpoints')) {
-    // Set a variable available in the tpls.
-    $variables['header_back'] = TRUE;
-    $field = reset($header_back);
-    $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
-    // Need to reverse the order of the breakpoint, mobile first.
-    $breakpoints = array_reverse($breakpoints);
-    // Get all the images presets.
-    $styles = image_styles();
-    // Get the presets name.
-    $style_names = array_keys($styles);
-    // Filter the ones regarding the header image.
-    $header_styles = preg_grep('#^header_image*#', $style_names);
-    // Prepare containers.
-    $mapping = array();
-    $css = '';
+  if (isset($node->field_core_header_image)) {
+    $header_back = field_get_items('node', $node, 'field_core_header_image', $lang);
+    // Without breakpoints this would not make much sense.
+    if ($header_back && module_exists('breakpoints')) {
+      // Set a variable available in the tpls.
+      $variables['header_back'] = TRUE;
+      $field = reset($header_back);
+      // Get all the breakpoints belonging to "this" theme.
+      $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
+      // Need to reverse the order of the breakpoint, mobile first.
+      $breakpoints = array_reverse($breakpoints);
+      // Get all the images presets.
+      $styles = image_styles();
+      // Get the presets name.
+      $style_names = array_keys($styles);
+      // Filter the ones regarding the header image.
+      $header_styles = preg_grep('#^header_image*#', $style_names);
+      // Prepare containers.
+      $mapping = array();
+      $css = '';
 
-    foreach ($breakpoints as $breakpoint) {
-      $name = $breakpoint->machine_name;
-      // Get the key to find correspondencies in the image presets.
-      $breakpoint_key = substr($name, strrpos($name, '.') + 1);
-      // Get the styles related to this breakpoint.
-      $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
-      if (!empty($style_names_breakpoint)) {
-        // We base on the multiplier.
-        sort($style_names_breakpoint);
-        foreach ($style_names_breakpoint as $style_name) {
-          // Build an array mapping the breakpoints media queries and the image url.
-          $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $field['uri']);
+      foreach ($breakpoints as $breakpoint) {
+        $name = $breakpoint->machine_name;
+        // Get the key to find correspondencies in the image presets.
+        $breakpoint_key = substr($name, strrpos($name, '.') + 1);
+        // Get the styles related to this breakpoint.
+        $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
+        if (!empty($style_names_breakpoint)) {
+          // We base on the multiplier.
+          sort($style_names_breakpoint);
+          foreach ($style_names_breakpoint as $style_name) {
+            // Build an array mapping the breakpoints media queries and the image url.
+            $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $field['uri']);
+          }
         }
+        // Create the css rules for each breakpoint.
+        $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
+        $css .= ' .page-header--image {' .PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] .'");' . PHP_EOL;
+        $css .= ' }' . PHP_EOL;
+        $css .= '}' . PHP_EOL;
+        $css .= PHP_EOL;
+
+        // High resolution displays.
+        $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
+        $css .= ' .page-header--image {' .PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] .'");' . PHP_EOL;
+        $css .= ' }' . PHP_EOL;
+        $css .= '}' . PHP_EOL;
+        $css .= PHP_EOL;
       }
-      // Create the css rules for each breakpoint.
-      $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
-      $css .= ' .page-header--image {' .PHP_EOL;
-      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] .'");' . PHP_EOL;
-      $css .= ' }' . PHP_EOL;
-      $css .= '}' . PHP_EOL;
-      $css .= PHP_EOL;
 
-      // High resolution displays.
-      $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
-      $css .= ' .page-header--image {' .PHP_EOL;
-      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] .'");' . PHP_EOL;
-      $css .= ' }' . PHP_EOL;
-      $css .= '}' . PHP_EOL;
-      $css .= PHP_EOL;
+      // We want to store those css files in a specific path.
+      $dir = 'public://css/header-backgrounds/';
+      file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+
+      // Check if the file exists.
+      $uri = $dir . 'header_background_node_' . $node->nid .'.css';
+      $filepath = drupal_realpath($uri);
+      $existing  = file_get_contents($filepath);
+
+      // Act only if something has been changed or if the file doesn't exist yet.
+      if ($existing != $css) {
+        file_save_data($css, $uri, FILE_EXISTS_REPLACE);
+      }
+
+      // Add the css to the page.
+      drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
 
-    // We want to store those css files in a specific path.
-    $dir = 'public://css/header-backgrounds/';
-    file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
-
-    // Check if the file exists.
-    $uri = $dir . 'header_background_node_' . $node->nid .'.css';
-    $filepath = drupal_realpath($uri);
-    $existing  = file_get_contents($filepath);
-
-    // Act only if something has been changed or if the file doesn't exist yet.
-    if ($existing != $css) {
-      file_save_data($css, $uri, FILE_EXISTS_REPLACE);
+    // Provide header_bottom region to the node.tpl.php
+    if ($plugin = context_get_plugin('reaction', 'block')) {
+      $variables['header_bottom'] = $plugin->block_get_blocks_by_region('header_bottom');
+      drupal_static_reset('context_reaction_block_list');
     }
-
-    // Add the css to the page.
-    drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
-  }
-
-  // Provide header_bottom region to the node.tpl.php
-  if ($plugin = context_get_plugin('reaction', 'block')) {
-    $variables['header_bottom'] = $plugin->block_get_blocks_by_region('header_bottom');
-    drupal_static_reset('context_reaction_block_list');
   }
 }
 
