@@ -74,6 +74,37 @@ function cwt_team_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_disable|node|team|default';
+  $field_group->group_name = 'group_team_disable';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Disable group',
+    'weight' => '16',
+    'children' => array(
+      0 => 'body',
+      1 => 'subscriptions_ui',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'show_label' => 0,
+        'label_element' => 'div',
+        'classes' => 'group-team-disable field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_team_disable|node|team|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_team_members|node|team|form';
   $field_group->group_name = 'group_team_members';
   $field_group->entity_type = 'node';

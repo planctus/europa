@@ -180,6 +180,15 @@ function cwt_team_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'meta' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -196,7 +205,13 @@ function cwt_team_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '24',
+            'visible' => FALSE,
+          ),
+        ),
+        'subscriptions_ui' => array(
+          'default' => array(
+            'weight' => '2',
             'visible' => FALSE,
           ),
         ),
