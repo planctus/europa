@@ -18,12 +18,8 @@ Styleguide: langselect
 
   background: $grey-lightest;
   border-bottom: 1px solid $grey;
-  position: relative;
   font-size: $font-size-xsmall;
-  float:left;
   width:100%;
-  display:inline-block;
-  vertical-align:middle;
 
   .front & {
     display: none;
@@ -39,7 +35,8 @@ Styleguide: langselect
   padding: 0;
 
   &:before {
-    vertical-align: middle;
+    padding-top:30%;
+    float: left;
   }
 }
 

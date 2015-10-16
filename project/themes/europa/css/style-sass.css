@@ -8045,12 +8045,8 @@ Styleguide: langselect
 .lang-select-page {
   background: #f2f2f2;
   border-bottom: 1px solid #b3b4b5;
-  position: relative;
   font-size: 0.778em;
-  float: left;
-  width: 100%;
-  display: inline-block;
-  vertical-align: middle; }
+  width: 100%; }
   .front .lang-select-page {
     display: none; }
 
@@ -8060,7 +8056,8 @@ Styleguide: langselect
   font-size: 2em;
   padding: 0; }
   .icon.lang-select-page__icon:before, .lang-select-page__icon.search-form__btn:before {
-    vertical-align: middle; }
+    padding-top: 30%;
+    float: left; }
 
 .lang-select-page__unavailable {
   text-decoration: line-through; }
