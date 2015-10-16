@@ -152,7 +152,7 @@
         <?php print render($page['header_bottom']); ?>
       </div>
     </nav>
-<?php endif; ?>
+  <?php endif; ?>
     <div class="container-fluid">
       <div class="row padding-reset">
         <div class="col-lg-9">

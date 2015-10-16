@@ -95,9 +95,6 @@ $breadcrumb-heigth: 2.778em;
 }
 
 @include breakpoint(screen-xs-min) {
-  .breadcrumb {
-    //border-bottom: 1px solid #fff;
-  }
 
   .breadcrumb__link {
     width: auto;
@@ -173,7 +170,9 @@ Styleguide breadcrumb.collapsible
       top: 16%;
     }
 
-    span { line-height: 1; }
+    span {
+      line-height: 1;
+    }
   }
 
   .breadcrumb__text {
