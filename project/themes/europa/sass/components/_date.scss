@@ -14,7 +14,7 @@ Styleguide date
   border-bottom: 0.222em solid $yellow;
   width: 5.5em;
   margin-right: 0.75em;
-  padding: 0.8em 0.8em;
+  padding: 0.8em 0.8em 0.4em 0.8em;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -36,21 +36,21 @@ Styleguide date
 
   &__day-text {
     @extend .date-block__element;
-    font-size: $font-size-xsmall;
-    line-height: $font-size-xsmall;
+    font-size: $font-size-little;
+    line-height: 100%;
   }
 
   &__day {
     @extend .date-block__element;
-    font-size: $font-size-mid;
-    line-height: $font-size-mid;
+    font-size: $font-size-huge;
+    line-height: 100%;
     font-weight: $font-weight-bold;
   }
 
   &__month {
     @extend .date-block__element;
-    line-height: $font-size-little;
-    font-size: $font-size-little;
+    font-size: $font-size-h3;
+    line-height: 100%;
   }
 }
 

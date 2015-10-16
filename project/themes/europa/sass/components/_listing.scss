@@ -433,13 +433,28 @@ Styleguide listing.agenda
 */
 .listing--agenda {
 
+  p {
+    margin: 0;
+  }
+
   .meta {
-    font-size: $font-size-little;
-    text-transform: uppercase;
     margin-bottom: 0;
   }
 
-  .listing__title{
-    color: $grey-base;
+  .listing__meta-item {
+    font-size: $font-size-xsmall;
+    text-transform: uppercase;
   }
+
+  h3 {
+    &.listing__title {
+      font-size: $font-size-medium;
+      color: $grey-base;
+    }
+  }
+
+  .listing__author {
+    font-size: $font-size-little;
+  }
+
 }

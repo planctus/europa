@@ -6793,7 +6793,7 @@ Styleguide date
   border-bottom: 0.222em solid #ffc412;
   width: 5.5em;
   margin-right: 0.75em;
-  padding: 0.8em 0.8em;
+  padding: 0.8em 0.8em 0.4em 0.8em;
   text-align: center;
   position: relative;
   overflow: hidden; }
@@ -6811,15 +6811,15 @@ Styleguide date
     -ms-transform: rotate(135deg);
     transform: rotate(135deg); }
   .date-block__day-text {
-    font-size: 0.778em;
-    line-height: 0.778em; }
+    font-size: 0.889em;
+    line-height: 100%; }
   .date-block__day {
-    font-size: 1.467em;
-    line-height: 1.467em;
+    font-size: 2em;
+    line-height: 100%;
     font-weight: 600; }
   .date-block__month {
-    line-height: 0.889em;
-    font-size: 0.889em; }
+    font-size: 1.333em;
+    line-height: 100%; }
 
 .date-block__element, .date-block__day-text, .date-block__day, .date-block__month {
   width: 100%;
@@ -8462,13 +8462,22 @@ Markup: html/listing-agenda.html
 
 Styleguide listing.agenda
 */
+.listing--agenda p {
+  margin: 0; }
+
 .listing--agenda .meta {
-  font-size: 0.889em;
-  text-transform: uppercase;
   margin-bottom: 0; }
 
-.listing--agenda .listing__title {
+.listing--agenda .listing__meta-item {
+  font-size: 0.778em;
+  text-transform: uppercase; }
+
+.listing--agenda h3.listing__title {
+  font-size: 1em;
   color: #404040; }
+
+.listing--agenda .listing__author {
+  font-size: 0.889em; }
 
 .logo {
   display: block;
@@ -9205,7 +9214,7 @@ Styleguide splashpage
 .splash-page__content h2 {
   display: none;
   color: #ffffff;
-  font-size: 1.467em;
+  font-size: 1.222em;
   padding-top: 2em;
   padding-bottom: 2em;
   clear: both; }
