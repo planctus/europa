@@ -6814,11 +6814,11 @@ Styleguide date
     font-size: 0.889em;
     line-height: 100%; }
   .date-block__day {
-    font-size: 2em;
+    font-size: 1.667em;
     line-height: 100%;
     font-weight: 600; }
   .date-block__month {
-    font-size: 1.333em;
+    font-size: 1.111em;
     line-height: 100%; }
 
 .date-block__element, .date-block__day-text, .date-block__day, .date-block__month {
@@ -8469,7 +8469,6 @@ Styleguide listing.agenda
   margin-bottom: 0; }
 
 .listing--agenda .listing__meta-item {
-  font-size: 0.778em;
   text-transform: uppercase; }
 
 .listing--agenda h3.listing__title {
