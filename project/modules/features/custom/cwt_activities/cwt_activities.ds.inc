@@ -17,6 +17,16 @@ function cwt_activities_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'activities';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'agenda_with_who' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
     'content_type_label' => array(
       'weight' => '10',
       'label' => 'hidden',
@@ -43,6 +53,33 @@ function cwt_activities_ds_field_settings_info() {
 }
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function cwt_activities_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'agenda_with_who';
+  $ds_field->label = 'Agenda with who';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'activities|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => 'With: [node:field-editorial-section:name_field]',
+      'format' => 'plain_text',
+    ),
+    'use_token' => 1,
+  );
+  $export['agenda_with_who'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function cwt_activities_ds_layout_settings_info() {
@@ -60,7 +97,7 @@ function cwt_activities_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_agenda_meta',
         1 => 'title',
-        2 => 'field_editorial_section',
+        2 => 'agenda_with_who',
         4 => 'content_type_label',
       ),
       'second' => array(
@@ -70,7 +107,7 @@ function cwt_activities_ds_layout_settings_info() {
     'fields' => array(
       'group_agenda_meta' => 'main',
       'title' => 'main',
-      'field_editorial_section' => 'main',
+      'agenda_with_who' => 'main',
       'field_start_end_date' => 'second',
       'content_type_label' => 'main',
     ),
