@@ -82,9 +82,9 @@ bin/phing package
 ## Acquia Cloud
 
 In order to be able to perform this task, you will need working drush aliases pointing to the Acquia Cloud instance and also to your local instance.
-To do so:
-*   1. Login to your Acquia account and navigate to your profile.
-*   2. Select <code>Credentials</code> tab, follow the description under the <strong>Drush Integration</strong>.
+#### To do so:
+*   Login to your Acquia account and navigate to your profile.
+*   Select <code>Credentials</code> tab, follow the description under the <strong>Drush Integration</strong>.
 
 ### Deliver production codebase to the Acquia Cloud:
 
