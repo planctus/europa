@@ -6616,7 +6616,7 @@ Styleguide breadcrumb
   .no-js .breadcrumb__segment--first:before {
     position: absolute;
     right: 7px;
-    top: 22%; }
+    top: 16%; }
 
 @media (min-width: 480px) {
   .breadcrumb__link {
@@ -6672,7 +6672,7 @@ Styleguide breadcrumb.collapsible
   .breadcrumb--collapsible .breadcrumb__link:after {
     position: absolute;
     right: 0;
-    top: 22%; }
+    top: 16%; }
   .breadcrumb--collapsible .breadcrumb__link span {
     line-height: 1; }
 
@@ -8604,7 +8604,7 @@ Styleguide page-header
 .page-header {
   background: #004494;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1.5em;
   color: #fff; }
   .page-header h1 {
     margin: 0;
@@ -8638,8 +8638,6 @@ Styleguide page-header
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }
-  .page-header .main-infos {
-    min-height: 100px; }
 
 .page-header a {
   color: #fff; }

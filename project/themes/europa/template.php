@@ -965,7 +965,6 @@ function europa_preprocess_node(&$variables) {
   }
 
   // Handle the header background image.
-  // Quick way to check if the node has an header image background set.
   if (isset($node->field_core_header_image)) {
     $header_back = field_get_items('node', $node, 'field_core_header_image', $lang);
     // Without breakpoints this would not make much sense.
