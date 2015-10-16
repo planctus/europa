@@ -194,12 +194,13 @@ function dt_announcement_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_announcement',
-      1 => 'field_core_policies',
-      2 => 'field_core_department',
-      3 => 'field_core_persons',
-      4 => 'field_core_topics',
+      1 => 'field_core_department',
+      2 => 'field_core_persons',
+      3 => 'field_core_topics',
+      4 => 'field_core_pri_policy_areas',
       5 => 'field_core_priorities',
-      6 => 'field_core_pri_policy_areas',
+      6 => 'field_core_policies',
+      7 => 'field_core_pages',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
