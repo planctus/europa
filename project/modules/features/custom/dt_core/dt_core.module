@@ -607,13 +607,13 @@ function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
 
   // Handle the header background image.
-  if (isset($node->field_core_header_image)) {
+  if (isset($node->field_core_header_image) && isset($node->nid)) {
     // We want to store those css files in a specific path.
     $dir = 'public://css/header-backgrounds/';
     // Prepare the filesystem.
     file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
     // Build the uri for our css file.
-    $uri = $dir . 'header_background_node_' . $node->nid .'.css';
+    $uri = $dir . 'header_background_node_' . $node->nid . '.css';
     // Get the real path basing on the uri.
     $filepath = drupal_realpath($uri);
     // Check if the file exists.
@@ -654,28 +654,30 @@ function dt_core_node_presave($node) {
           // We base on the multiplier.
           sort($style_names_breakpoint);
           foreach ($style_names_breakpoint as $style_name) {
-            // Build an array mapping the breakpoints media queries and the image url.
+            // Build an array mapping the breakpoints media queries and the
+            // image url.
             $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $file->uri);
           }
         }
         // Create the css rules for each breakpoint.
         $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
-        $css .= ' .page-header--image {' .PHP_EOL;
-        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] .'");' . PHP_EOL;
+        $css .= ' .page-header--image {' . PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] . '");' . PHP_EOL;
         $css .= ' }' . PHP_EOL;
         $css .= '}' . PHP_EOL;
         $css .= PHP_EOL;
 
         // High resolution displays.
         $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
-        $css .= ' .page-header--image {' .PHP_EOL;
-        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] .'");' . PHP_EOL;
+        $css .= ' .page-header--image {' . PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] . '");' . PHP_EOL;
         $css .= ' }' . PHP_EOL;
         $css .= '}' . PHP_EOL;
         $css .= PHP_EOL;
       }
 
-      // Act only if something has been changed or if the file doesn't exist yet.
+      // Act only if something has been changed or if the file doesn't exist
+      // yet.
       if ($existing != $css) {
         file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
       }
@@ -696,7 +698,7 @@ function dt_core_preprocess_page(&$variables) {
       $variables['node']->header_back = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $node->nid .'.css';
+      $uri = $dir . 'header_background_node_' . $node->nid . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
   }
