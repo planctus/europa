@@ -899,7 +899,11 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => 1,
+          'expander_trim_at' => 5,
+          'expander_trim_to' => 2,
+        ),
         'type' => 'context_nav_item',
         'weight' => 4,
       ),
