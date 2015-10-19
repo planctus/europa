@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Nexteuropa Legacy link
+ * Nexteuropa Legacy link.
  */
+
+module_load_include('inc', 'nexteuropa_legacy_link', 'nexteuropa_legacy_link.field');
 
 /**
  * Implements hook_entity_load().

@@ -721,6 +721,24 @@ function dt_core_context_load_alter(&$context) {
   }
 }
 
+function _dt_core_disable_maxlength($element) {
+  // Check if we are translating and maxlength for field is enabled.
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && $element['#language'] !== $element['#entity']->language) {
+    // Remove maxlength.
+    unset($element['#maxlength']);
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function dt_core_element_info_alter(&$cache) {
+  $cache['textarea']['#process'][] = '_dt_core_disable_maxlength';
+  $cache['textfield']['#process'][] = '_dt_core_disable_maxlength';
+}
+
 /**
  * Helper function to return a list of languages that should be enabled.
  *
