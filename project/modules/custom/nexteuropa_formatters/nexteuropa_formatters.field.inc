@@ -224,9 +224,9 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           $element,
           _nexteuropa_formatters_get_context_nav_wrapper(
             $wrapper_label,
-            isset($display['expander_has_expander']) ? $display['expander_has_expander'] : FALSE,
-            isset($display['expander_trim_at']) ? $display['expander_trim_at'] : FALSE,
-            isset($display['expander_trim_to']) ? $display['expander_trim_to'] : FALSE
+            isset($display['settings']['expander_has_expander']) ? $display['settings']['expander_has_expander'] : FALSE,
+            isset($display['settings']['expander_trim_at']) ? $display['settings']['expander_trim_at'] : FALSE,
+            isset($display['settings']['expander_trim_to']) ? $display['settings']['expander_trim_to'] : FALSE
           )
         );
 

@@ -27,12 +27,10 @@
 
       // Add the button onclick event.
       $('.context-nav__expander').on('click', '.context-nav__more-button', function() {
-        var $button = $(this);
-        // Remove the wrappers, returning the html to return to the default
-        // state.
-        $button.parent('.context-nav__expander').children('.context-nav__hidden').unwrap().children().unwrap();
-        // Remove the button.
-        $button.remove();
+        var $button = $(this),
+            $elements = $button.closest('.has-expander').find('.context-nav__item').detach();
+        // Replace the content with our elements.
+        $button.closest('.has-expander').html($elements);
       });
 
     }
