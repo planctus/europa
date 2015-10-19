@@ -2,7 +2,7 @@ name = DTT Information
 description = Subtheme of europa base theme for the DTT Information site
 base theme = europa
 core = 7.x
-php = 5.5.0
+php = 5.2.4
 
 ; ========================================
 ; Regions

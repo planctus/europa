@@ -6,7 +6,12 @@ Markup: html/blockquote.html
 Styleguide text.blockquote
 */
 
-blockquote {
+$small-quote-size: 1em;
+$small-quote-width: 0.5em;
+
+blockquote,
+.blockquote {
+  @extend .paragraph;
   font-family: $font-family-serif;
   font-style: italic;
   font-size: $font-size-big;
@@ -19,34 +24,30 @@ blockquote {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  @extend .paragraph;
 
+  // Drupal fix.
   p {
     line-height: inherit;
+    display: inline;
+  }
+  &:before {
+    content: open-quote;
+  }
 
-    &:before,
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      background: url('../images/svg/quote.svg') no-repeat;
-      background-size: 60px;
-      width: 30px;
-      height: 23px;
-    }
-
-    &:before {
-      top: 4px;
-      left: 0;
-    }
-
-    &:after {
-      background-position: -31px 0;
-      bottom: 0;
-      right: 0;
-    }
+  &:after {
+    content: close-quote;
   }
 }
+
+.blockquote--small {
+  padding-left: 0;
+  font-size: $font-size-little;
+  font-style: normal;
+  color: $text-color;
+  font-family: $font-family-base;
+  margin-bottom: 0;
+}
+
 
 // State
 .no-svg {
