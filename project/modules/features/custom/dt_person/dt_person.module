@@ -92,8 +92,24 @@ function dt_person_field_attach_view_alter(&$output, $context) {
         }
       }
 
+      // Get our display settings.
+      $display_settings = field_info_instance('node', 'field_core_persons', $context['entity']->type);
+
+      // Check our settings.
+      $has_expander = isset($display_settings['display'][$context['view_mode']]['settings']['expander_has_expander']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_has_expander'] : FALSE;
+      $trim_at = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_at']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_at'] : FALSE;
+      $trim_to = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_to']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_to'] : FALSE;
+
       // Update the label.
-      $element = array_merge($element, _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label));
+      $element = array_merge(
+        $element,
+        _nexteuropa_formatters_get_context_nav_wrapper(
+          $wrapper_label,
+          $has_expander,
+          $trim_at,
+          $trim_to
+        )
+      );
     }
   }
 }

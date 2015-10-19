@@ -4,18 +4,21 @@
       // Define our dropdown button.
       var dropDown = '<span class="context-nav__more-button">' + Drupal.t('More') + '<span class="caret"></span></span>';
 
-      // Loop all our contextual navigation items.
-      $.each($('.context-nav__items'), function() {
+      // Loop all our contextual navigation items. We should only do this for
+      // the wrappers that have the class .has-expander.
+      $.each($('.context-nav__items.has-expander'), function() {
 
         // Cache our variables.
         var $item = $(this),
             contextNavItems = $item.children(),
-            contextNavItemCount = contextNavItems.length;
+            contextNavItemCount = contextNavItems.length,
+            contextNavTrimAt = $item.attr('data-trimat') ? $item.attr('data-trimat') : FALSE,
+            contextNavTrimTo = $item.attr('data-trimto') ? $item.attr('data-trimto') : FALSE;
 
         // If there are more then 5 we create our dropdown.
-        if (contextNavItemCount > 5) {
+        if (contextNavTrimAt && contextNavTrimTo && contextNavItemCount > contextNavTrimAt ) {
           // Wrap the other elements.
-          contextNavItems.slice(2).wrapAll('<div class="context-nav__expander"><div class="context-nav__hidden"></div></div>');
+          contextNavItems.slice(contextNavTrimTo).wrapAll('<div class="context-nav__expander"><div class="context-nav__hidden"></div></div>');
           // Add the button.
           $item.children('.context-nav__expander').prepend(dropDown);
         }

@@ -20,6 +20,11 @@ function nexteuropa_formatters_field_formatter_info() {
         'entityreference',
         'link_field',
       ),
+      'settings' => array(
+        'expander_has_expander' => FALSE,
+        'expander_trim_at' => 0,
+        'expander_trim_to' => 0,
+      ),
     ),
     'link_button_default' => array(
       'label' => 'Link button default',
@@ -74,6 +79,41 @@ function nexteuropa_formatters_field_formatter_info() {
       ),
     ),
   );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function nexteuropa_formatters_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = array();
+
+  if ($display['type'] == 'context_nav_item') {
+    $element['expander_has_expander'] = array(
+      '#title' => t('Has expander'),
+      '#type' => 'checkbox',
+      '#size' => 1,
+      '#default_value' => $settings['expander_has_expander'],
+    );
+    $element['expander_trim_at'] = array(
+      '#title' => t('Trim at'),
+      '#type' => 'textfield',
+      '#size' => 2,
+      '#default_value' => $settings['expander_trim_at'],
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+    $element['expander_trim_to'] = array(
+      '#title' => t('Trim to'),
+      '#type' => 'textfield',
+      '#size' => 2,
+      '#default_value' => $settings['expander_trim_to'],
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+  }
+
+  return $element;
 }
 
 /**
@@ -180,7 +220,15 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
         // Apply custom label to the element.
-        $element = array_merge($element, _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label));
+        $element = array_merge(
+          $element,
+          _nexteuropa_formatters_get_context_nav_wrapper(
+            $wrapper_label,
+            isset($display['expander_has_expander']) ? $display['expander_has_expander'] : FALSE,
+            isset($display['expander_trim_at']) ? $display['expander_trim_at'] : FALSE,
+            isset($display['expander_trim_to']) ? $display['expander_trim_to'] : FALSE
+          )
+        );
 
         switch ($field['type']) {
           case 'entityreference':
