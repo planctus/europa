@@ -44,66 +44,58 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       // @see: https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4789
       $load_person_name_view = FALSE;
 
-      if (count($element['#items']) > 1) {
-        // Set our check default to true.
-        $same_title = TRUE;
-        // Check if title are different.
-        foreach ($element['#items'] as $item) {
-          // Load entity_metadata_wrapper.
-          $check_entity = entity_metadata_wrapper('node', $item['entity']);
-          // Check if the tid is the same. If so, we continue. If not, stop the
-          // loop and set same_title to false.
-          if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
-            $same_title = FALSE;
-            break;
-          }
-          // Save the last id we checked.
-          $last_title_tid = $check_entity->field_person_role->value()->tid;
+      // Set our default wrapper label.
+      $wrapper_label = t('Commissioner');
+
+      // Get the taxonomy term id for commissioner.
+      $commissioner_taxonomy_id = key(taxonomy_get_term_by_name('commissioner', 'person_roles'));
+
+      // Rebuild our commissioner list.
+      $commissioner_list = array();
+
+      // Set our check default to true.
+      $same_title = TRUE;
+
+      // Check if title are different.
+      foreach ($element['#items'] as $key => $item) {
+        // Load entity_metadata_wrapper.
+        $check_entity = entity_metadata_wrapper('node', $item['entity']);
+
+        // Store the data in our custom array so we dont have to get it again.
+        $commissioner_list[$key] = array(
+          'emw' => $check_entity,
+          'obj' => $item,
+        );
+        // Check if the tid is the same. If so, we continue. If not, stop the
+        // loop and set same_title to false.
+        if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
+          $same_title = FALSE;
         }
-        // If after our full loop the title is still the same, we can safely set
-        // our title.
-        if ($same_title && isset($check_entity->field_person_role)) {
-          $wrapper_label = $check_entity->field_person_role->value()->name;
-          // Tell our formatter to use the name display mode.
-          $load_person_name_view = TRUE;
-        }
-      }
-      elseif (isset($element['#items'][0]) && isset($element['#items'][0]['entity'])) {
-        // If it is just one person. Use the first. But double check if for a
-        // value.
-        $check_entity = entity_metadata_wrapper('node', $element['#items'][0]['entity']);
-        if (isset($check_entity->field_person_role)) {
-          $wrapper_label = $check_entity->field_person_role->value()->name;
-          // Tell our formatter to use the name display mode.
-          $load_person_name_view = TRUE;
-        }
-      }
-      else {
-        $load_person_name_view = FALSE;
+        // Save the last id we checked.
+        $last_title_tid = $check_entity->field_person_role->value()->tid;
       }
 
-      // Only start looping on a specific display.
-      if ($load_person_name_view) {
-        // Now that we know wether or not we should display specific information
-        // we can alter the display.
-        foreach ($element['#items'] as $key => $item) {
-          // If we need an alternative display.
-          if ($person_render = entity_view('node', array($item['entity']), 'name')) {
-            // Return our element.
-            $element[$key]['#markup'] = render($person_render);
-          }
-        }
+      // If after our full loop the title is still the same, we can safely set
+      // our title.
+      if ($same_title && isset($check_entity->field_person_role)) {
+        $wrapper_label = $check_entity->field_person_role->value()->name;
+      }
 
-        // Alter our label if we have one.
-        if (isset($wrapper_label)) {
-          // Call our custom helper to get our prefix and suffix.
-          $wrapper = _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label);
-
-          // Apply it to the elemen.
-          $element['#prefix'] = $wrapper['prefix'];
-          $element['#suffix'] = $wrapper['suffix'];
+      // Now that we know more about the list we have to render. We process the
+      // data again.
+      foreach ($commissioner_list as $key => $commissioner) {
+        $is_commissioner = (!$same_title && $commissioner['emw']->field_person_role->value()->tid == $commissioner_taxonomy_id);
+        // If it is the same title. We can just render the "name" mode.
+        if (($same_title || $is_commissioner) && $person_render = entity_view('node', array($commissioner['obj']['entity']), 'name')) {
+          // Update our element.
+          $element[$key]['#markup'] = render($person_render);
         }
       }
+      // Call our custom helper to get our prefix and suffix.
+      $wrapper = _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label);
+      // Apply it to the element.
+      $element['#prefix'] = $wrapper['prefix'];
+      $element['#suffix'] = $wrapper['suffix'];
     }
   }
 }
