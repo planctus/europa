@@ -118,7 +118,7 @@ function cwt_news_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -138,6 +138,15 @@ function cwt_news_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'meta' => array(
+        'custom_settings' => TRUE,
+      ),
+      'title' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -155,7 +164,37 @@ function cwt_news_strongarm() {
         'language' => array(
           'default' => array(
             'weight' => '1',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '14',
             'visible' => FALSE,
+          ),
+          'meta' => array(
+            'weight' => '14',
+            'visible' => FALSE,
+          ),
+          'title' => array(
+            'weight' => '1',
+            'visible' => FALSE,
+          ),
+        ),
+        'subscriptions_ui' => array(
+          'default' => array(
+            'weight' => '100',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'meta' => array(
+            'weight' => '13',
+            'visible' => FALSE,
+          ),
+          'title' => array(
+            'weight' => '100',
+            'visible' => TRUE,
           ),
         ),
       ),

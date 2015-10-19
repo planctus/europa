@@ -10,9 +10,8 @@
       </not>
       <then>
         <!-- Checkout  -->
-        <svncheckout
-          repositoryurl="${phing.project.svn}"
-          todir="${temp}"/>
+        <mkdir dir="${temp}" />
+        <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${temp}"></exec>
 
         <!-- Update code  -->
         <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
@@ -20,9 +19,8 @@
         <!-- Commit  -->
         <input propertyname="commitmessage">Please provide a commit message:</input>
         <echo msg="${commitmessage}" />
-        <svncommit
-          workingcopy="${temp}"
-          message="${commitmessage}" />
+        <exec dir="${temp}" command="svn commit -m '${commitmessage}'"></exec>
+
         <echo message="Committed revision: ${svn.committedrevision}"/>
 
         <!-- Delete temporary folder -->
@@ -62,12 +60,8 @@
   <target name="deliver" description="Deliver code to Acquia repository">
     <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
-    <gitcheckout
-      repository="${acquia.repo}"
-      branchname="${acquia.repo.project.branch}" quiet="true" />
-    <gitpull
-        repository="${acquia.repo}"
-        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" force="true" />
+    <exec dir="${acquia.repo}" command="git checkout ${acquia.repo.project.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull origin ${acquia.repo.project.branch}"></exec>
 
     <echo msg="Delete acquia-cloud/docroot." />
     <delete includeemptydirs="true" failonerror="false">
@@ -99,18 +93,15 @@
     <!-- commit all modified / deleted files -->
     <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
     <exec dir="${acquia.repo}" command="git add -A"></exec>
-    <gitcommit
-        repository="${acquia.repo}"
-        message="Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}" allFiles="true" />
+    <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
 
     <!-- Get previous tagnames -->
     <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
     <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
     <input propertyname="TAG">Please provide a tag name:</input>
-    <gittag repository="${acquia.repo}" name="${TAG}" />
-    <gitpush
-        repository="${acquia.repo}"
-        refspec="${acquia.repo.project.branch}:${acquia.repo.project.branch}" tags="true" />
+    <exec dir="${acquia.repo}" command="git tag '${TAG}'"></exec>
+    <exec dir="${acquia.repo}" command="git push origin ${acquia.repo.project.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
@@ -152,5 +143,21 @@
   <target name="fetch-ac-db" description="Downloads the AC database." depends="init, init-dev-properties">
     <exec command="drush -y @${drush.alias.acquia} sql-dump > ${phing.project.dumps.dir}/ac-dump.mysql" />
     <echo msg="AC database downloaded." />
+  </target>
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="package, deliver">
+    <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
+    <waitfor maxwaitunit="second" maxwait="15">
+      <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
+      <available file="ready"/>
+    </waitfor>
+
+    <exec command="drush -y @${drush.alias.acquia} updb" />
+    <echo msg="AC updb." />
+    <exec command="drush -y @${drush.alias.acquia} frdt" />
+    <echo msg="AC frdt." />
+
+    <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
+    <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
+    <echo msg="Added Acquia Cloud to develop branch right after deployment, you can now use git push to push the changes to the development branch." />
   </target>
 </project>

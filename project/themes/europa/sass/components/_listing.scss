@@ -11,6 +11,20 @@ $spacing-top-listing__title: 0.9em;
 $spacing-bottom-listing__title: 0.7em;
 
 .listing {
+
+  &__read-more {
+    text-align: right;
+    font-weight: $font-weight-bold;
+    display: block;
+    text-transform: uppercase;
+
+
+    &:after {
+      @extend .icon--after;
+      @extend .icon--right;
+      font-size: $font-size-xsmall;
+    }
+  }
 }
 
 .listing__wrapper {
@@ -55,7 +69,7 @@ $spacing-bottom-listing__title: 0.7em;
     text-decoration: none;
   }
 
-  &#{"[" + $external_link_pattern + "]"} {
+  &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
     &:after {
       display: none !important;
     }

@@ -5,3 +5,20 @@
  */
 
 include_once 'dt_page.features.inc';
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ *
+ * Before we render the page, we check if we should even display the in page
+ * navigation.
+ */
+function dt_page_ds_pre_render_alter(&$layout_render_array, $context) {
+  // Only check for our region.
+  if (isset($layout_render_array['left'])) {
+    // If the other conditions meet.
+    if ($context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'] == '0' && $context['entity']->type == 'basic_page') {
+      // We remove the sidebar.
+      unset($layout_render_array['left']);
+    }
+  }
+}

@@ -22,27 +22,9 @@ function dt_class_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'field_class_link_explanation' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_class_link_legacy_link' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -86,6 +68,11 @@ function dt_class_ds_field_settings_info() {
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
         ),
+      ),
+    ),
+    'field_link_groups' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_core_introduction' => array(
@@ -245,8 +232,8 @@ function dt_class_ds_layout_settings_info() {
       'central' => array(
         2 => 'field_link_groups',
         3 => 'group_class_topics',
-        4 => 'group_class_departments',
-        5 => 'field_core_topics',
+        4 => 'field_core_topics',
+        5 => 'group_class_departments',
         6 => 'field_core_department',
         7 => 'field_class_related_links',
       ),
@@ -256,8 +243,8 @@ function dt_class_ds_layout_settings_info() {
       'field_core_introduction' => 'left_header',
       'field_link_groups' => 'central',
       'group_class_topics' => 'central',
-      'group_class_departments' => 'central',
       'field_core_topics' => 'central',
+      'group_class_departments' => 'central',
       'field_core_department' => 'central',
       'field_class_related_links' => 'central',
     ),
