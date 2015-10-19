@@ -188,8 +188,6 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
             foreach ($items as $delta => $item) {
 
               if ($label = $handler->getLabel($item['entity'])) {
-                // Note the assignment ($url = ) here is intended to be an
-                // assignment.
                 if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
                   $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
                   $link = l($label, $link_url, $uri['options']);

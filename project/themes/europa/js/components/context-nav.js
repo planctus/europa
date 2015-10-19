@@ -13,7 +13,7 @@
             contextNavItemCount = contextNavItems.length;
 
         // If there are more then 5 we create our dropdown.
-        if (contextNavItemCount > 4) {
+        if (contextNavItemCount > 5) {
           // Wrap the other elements.
           contextNavItems.slice(2).wrapAll('<div class="context-nav__expander"><div class="context-nav__hidden"></div></div>');
           // Add the button.

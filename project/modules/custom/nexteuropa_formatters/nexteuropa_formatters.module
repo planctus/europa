@@ -25,10 +25,13 @@ function nexteuropa_formatters_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Helper function to return the contex nav prefix.
+ * Helper function to return the context nav prefix.
  *
- * Created a helper function because it's used on multiple locations. And if it
- * ever changes, we can do it here.
+ * @param string $label
+ *   The label to be used in the prefix.
+ *
+ * @return array
+ *   #prefix and #suffix element for the render object.
  */
 function _nexteuropa_formatters_get_context_nav_wrapper($label) {
   return array(
