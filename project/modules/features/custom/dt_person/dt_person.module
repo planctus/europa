@@ -91,11 +91,9 @@ function dt_person_field_attach_view_alter(&$output, $context) {
           $element[$key]['#markup'] = render($person_render);
         }
       }
-      // Call our custom helper to get our prefix and suffix.
-      $wrapper = _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label);
-      // Apply it to the element.
-      $element['#prefix'] = $wrapper['prefix'];
-      $element['#suffix'] = $wrapper['suffix'];
+
+      // Update the label.
+      $element = array_merge($element, _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label));
     }
   }
 }

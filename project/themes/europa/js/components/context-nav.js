@@ -1,33 +1,35 @@
 (function ($) {
   Drupal.behaviors.contextual_nav = {
     attach: function(context) {
-      // Define our dropdown.
-      var dropdown = '<span class="context-nav__more-button">More <span class="caret"></span></span>';
+      // Define our dropdown button.
+      var dropDown = '<span class="context-nav__more-button">' + Drupal.t('More') + '<span class="caret"></span></span>';
 
-      // Loop al our contextual navigation items.
+      // Loop all our contextual navigation items.
       $.each($('.context-nav__items'), function() {
 
-        // Get the amount of children.
-        context_nav_items = $(this).children();
-        context_nav_item_count = context_nav_items.length;
+        // Cache our variables.
+        var $item = $(this),
+            contextNavItems = $item.children(),
+            contextNavItemCount = contextNavItems.length;
 
         // If there are more then 5 we create our dropdown.
-        if (context_nav_item_count > 4) {
+        if (contextNavItemCount > 4) {
           // Wrap the other elements.
-          context_nav_items.slice(4).wrapAll('<div class="context-nav__expander"><div class="context-nav__hidden"></div></div>');
+          contextNavItems.slice(2).wrapAll('<div class="context-nav__expander"><div class="context-nav__hidden"></div></div>');
           // Add the button.
-          $(this).children('.context-nav__expander').prepend(dropdown);
+          $item.children('.context-nav__expander').prepend(dropDown);
         }
 
       });
 
       // Add the button onclick event.
       $('.context-nav__expander').on('click', '.context-nav__more-button', function() {
+        var $button = $(this);
         // Remove the wrappers, returning the html to return to the default
         // state.
-        $(this).parent('.context-nav__expander').children('.context-nav__hidden').unwrap().children().unwrap();
+        $button.parent('.context-nav__expander').children('.context-nav__hidden').unwrap().children().unwrap();
         // Remove the button.
-        $(this).remove();
+        $button.remove();
       });
 
     }

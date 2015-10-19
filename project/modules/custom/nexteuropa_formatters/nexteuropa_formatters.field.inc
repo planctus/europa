@@ -179,12 +179,8 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
-        // Call our custom helper to get our prefix and suffix.
-        $wrapper = _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label);
-
-        // Apply it to the elemen.
-        $element['#prefix'] = $wrapper['prefix'];
-        $element['#suffix'] = $wrapper['suffix'];
+        // Apply custom label to the element.
+        $element = array_merge($element, _nexteuropa_formatters_get_context_nav_wrapper($wrapper_label));
 
         switch ($field['type']) {
           case 'entityreference':
