@@ -63,3 +63,11 @@ Styleguide contextnav
     margin-bottom: 0;
   }
 }
+
+
+// Drupal specific override for the node-person-name display mode.
+.context-nav__item {
+  .view-mode-name {
+    display: inline-block;
+  }
+}

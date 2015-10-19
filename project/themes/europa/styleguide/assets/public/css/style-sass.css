@@ -6789,6 +6789,9 @@ Styleguide contextnav
   .context-nav__items {
     margin-bottom: 0; } }
 
+.context-nav__item .view-mode-name {
+  display: inline-block; }
+
 /*
 Datepicker
 
