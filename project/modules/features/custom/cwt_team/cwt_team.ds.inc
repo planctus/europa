@@ -17,97 +17,28 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'team';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'team_college_members' => array(
-      'weight' => '2',
+    'cwt_team_president' => array(
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'team_highlights' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'team_view_team_agenda' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'team_view_team_navigation' => array(
+    'cwt_team_role' => array(
       'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'cwt_team_project_team' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'cwt_team_name' => array(
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
   );
   $export['node|team|default'] = $ds_fieldsetting;
-
-  return $export;
-}
-
-/**
- * Implements hook_ds_custom_fields_info().
- */
-function cwt_team_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'team_college_members';
-  $ds_field->label = 'Team: College members';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'team|*';
-  $ds_field->properties = array(
-    'block' => 'cwt_core|college_members',
-    'block_render' => '1',
-  );
-  $export['team_college_members'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'team_highlights';
-  $ds_field->label = 'Team: Highlights';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'team|*';
-  $ds_field->properties = array(
-    'block' => 'cwt_highlights|cwt_highlights',
-    'block_render' => '1',
-  );
-  $export['team_highlights'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'team_view_team_agenda';
-  $ds_field->label = 'Team, view: Team agenda';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'team|*';
-  $ds_field->properties = array(
-    'block' => 'views|team_agenda-block_1',
-    'block_render' => '1',
-  );
-  $export['team_view_team_agenda'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'team_view_team_navigation';
-  $ds_field->label = 'Team View: Team Navigation';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'team|*';
-  $ds_field->properties = array(
-    'block' => 'views|team_navigation-block',
-    'block_render' => '1',
-  );
-  $export['team_view_team_navigation'] = $ds_field;
 
   return $export;
 }
@@ -128,17 +59,39 @@ function cwt_team_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'central' => array(
-        0 => 'team_view_team_navigation',
-        1 => 'team_highlights',
-        2 => 'team_college_members',
-        3 => 'team_view_team_agenda',
+        0 => 'body',
+        1 => 'cwt_team_role',
+        2 => 'field_team_links',
+        3 => 'group_team_members',
+        4 => 'group_team_tabs',
+        5 => 'group_team_tab_role',
+        6 => 'cwt_team_name',
+        7 => 'group_team_tab_project_team',
+        8 => 'cwt_team_president',
+        9 => 'group_team_tab_name',
+        10 => 'group_team_name_wrapper',
+        11 => 'cwt_team_project_team',
+        12 => 'group_team_president',
+        13 => 'group_team_project_team_wrapper',
+        14 => 'group_team_role_wrapper',
       ),
     ),
     'fields' => array(
-      'team_view_team_navigation' => 'central',
-      'team_highlights' => 'central',
-      'team_college_members' => 'central',
-      'team_view_team_agenda' => 'central',
+      'body' => 'central',
+      'cwt_team_role' => 'central',
+      'field_team_links' => 'central',
+      'group_team_members' => 'central',
+      'group_team_tabs' => 'central',
+      'group_team_tab_role' => 'central',
+      'cwt_team_name' => 'central',
+      'group_team_tab_project_team' => 'central',
+      'cwt_team_president' => 'central',
+      'group_team_tab_name' => 'central',
+      'group_team_name_wrapper' => 'central',
+      'cwt_team_project_team' => 'central',
+      'group_team_president' => 'central',
+      'group_team_project_team_wrapper' => 'central',
+      'group_team_role_wrapper' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

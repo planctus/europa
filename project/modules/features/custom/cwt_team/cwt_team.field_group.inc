@@ -82,7 +82,7 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Disable group',
-    'weight' => '16',
+    'weight' => '21',
     'children' => array(
       0 => 'body',
       1 => 'subscriptions_ui',
