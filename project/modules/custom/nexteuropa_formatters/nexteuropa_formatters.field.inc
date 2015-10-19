@@ -102,14 +102,14 @@ function nexteuropa_formatters_field_formatter_settings_form($field, $instance, 
       '#type' => 'textfield',
       '#size' => 2,
       '#default_value' => $settings['expander_trim_at'],
-      '#element_validate' => array('element_validate_integer_positive'),
+      '#element_validate' => array('element_validate_integer'),
     );
     $element['expander_trim_to'] = array(
       '#title' => t('Trim to'),
       '#type' => 'textfield',
       '#size' => 2,
       '#default_value' => $settings['expander_trim_to'],
-      '#element_validate' => array('element_validate_integer_positive'),
+      '#element_validate' => array('element_validate_integer'),
     );
   }
 
