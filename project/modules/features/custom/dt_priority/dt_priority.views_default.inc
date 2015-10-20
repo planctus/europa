@@ -64,9 +64,6 @@ function dt_priority_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'priority' => 'priority',
   );
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
   $export['priority_listing'] = $view;
 
   return $export;
