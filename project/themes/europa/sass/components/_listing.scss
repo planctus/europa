@@ -324,6 +324,13 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+
+.listing--priorities {
+  .meta {
+    display: none;
+  }
+}
+
 .listing--teaser,
 ul.listing--teaser {
   .listing__item-link {

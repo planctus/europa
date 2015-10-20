@@ -8346,6 +8346,9 @@ Markup: html/listing--teaser.html
 
 Styleguide listing.teaser
 */
+.listing--priorities .meta {
+  display: none; }
+
 .listing--teaser .listing__item-link,
 ul.listing--teaser .listing__item-link {
   padding-top: 0.85em;
