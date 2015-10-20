@@ -24,7 +24,7 @@ projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 
 projects[date_popup_authored][subdir] = "contrib"
-projects[date_popup_authored][version] = "1.1+4-dev"
+projects[date_popup_authored][version] = "1.2"
 
 projects[entityreference_filter][subdir] = "contrib"
 projects[entityreference_filter][version] = "1.5"
