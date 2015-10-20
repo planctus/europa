@@ -29,20 +29,13 @@ function dt_person_migrate_api() {
 /**
  * Implements hook_field_attach_view_alter().
  *
- * This wil alter the output of the context nav when its a person.
+ * This will alter the output of the context nav when its a person.
  */
 function dt_person_field_attach_view_alter(&$output, $context) {
   // Append RDF term mappings on displayed taxonomy links.
   foreach (element_children($output) as $field_name) {
     $element = &$output[$field_name];
     if ($element['#field_type'] == 'entityreference' && $element['#field_name'] == 'field_core_persons' && $element['#formatter'] == 'context_nav_item') {
-
-      // Set our special load variable to FALSE by default. As these labels
-      // can be different we need to maybe replace the default title view with
-      // amore specific view mode. For more information about these
-      // customizations:
-      // @see: https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-4789
-      $load_person_name_view = FALSE;
 
       // Set our default wrapper label.
       $wrapper_label = t('Commissioner');
@@ -56,7 +49,7 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       // Set our check default to true.
       $same_title = TRUE;
 
-      // Check if title are different.
+      // Check if titles are different.
       foreach ($element['#items'] as $key => $item) {
         // Load entity_metadata_wrapper.
         $check_entity = entity_metadata_wrapper('node', $item['entity']);
@@ -66,23 +59,22 @@ function dt_person_field_attach_view_alter(&$output, $context) {
           'emw' => $check_entity,
           'obj' => $item,
         );
-        // Check if the tid is the same. If so, we continue. If not, stop the
-        // loop and set same_title to false.
+
+        // Check if the tid is the same. If not set our variable to false.
         if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
           $same_title = FALSE;
         }
+
         // Save the last id we checked.
         $last_title_tid = $check_entity->field_person_role->value()->tid;
       }
 
-      // If after our full loop the title is still the same, we can safely set
-      // our title.
+      // If all the persons have the same title, we update our label.
       if ($same_title && isset($check_entity->field_person_role)) {
         $wrapper_label = $check_entity->field_person_role->value()->name;
       }
 
-      // Now that we know more about the list we have to render. We process the
-      // data again.
+      // We process the data again, with the new information we have.
       foreach ($commissioner_list as $key => $commissioner) {
         $is_commissioner = (!$same_title && $commissioner['emw']->field_person_role->value()->tid == $commissioner_taxonomy_id);
         // If it is the same title. We can just render the "name" mode.

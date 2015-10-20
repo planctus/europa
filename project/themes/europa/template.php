@@ -560,8 +560,6 @@ function europa_field($variables) {
   if (isset($element['#formatter'])) {
     switch ($element['#formatter']) {
       case 'context_nav_item':
-        drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/context-nav.js');
-
         $output = '';
 
         // Render the items.

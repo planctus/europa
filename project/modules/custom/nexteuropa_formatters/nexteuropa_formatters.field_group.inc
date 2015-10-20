@@ -130,6 +130,7 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
 
     // Context nav.
     case 'context_nav':
+      drupal_add_js(drupal_get_path('module', 'nexteuropa_formatters') . '/js/components/context-nav.js');
 
       $add = array(
         '#type' => 'markup',
