@@ -22,6 +22,7 @@ features[ds_layout_settings][] = node|basic_page|full
 features[ds_layout_settings][] = node|basic_page|teaser
 features[ds_layout_settings][] = node|basic_page|title
 features[features_api][] = api:2
+features[field_group][] = group_page_priorities|node|basic_page|full
 features[field_group][] = group_background|node|basic_page|form
 features[field_group][] = group_banner|node|basic_page|form
 features[field_group][] = group_content_tabgroup|node|basic_page|form
