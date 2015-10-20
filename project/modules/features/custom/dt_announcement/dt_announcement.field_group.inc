@@ -90,15 +90,11 @@ function dt_announcement_field_group_info() {
       1 => 'field_core_persons',
       2 => 'field_core_topics',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );
