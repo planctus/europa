@@ -948,7 +948,9 @@ function europa_preprocess_node(&$variables) {
   // If it is our priority listing page. we set the contents of our preprocess
   // block.
   if (isset($variables['type']) == 'basic_page' && $variables['nid'] == variable_get('dt_priority_page_id', '')) {
-    $variables['10_priorities_preprocess'] = views_embed_view('priority_listing');
+    $variables['content']['priorities_preprocess']['#label_display'] = 'hidden';
+    $variables['content']['priorities_preprocess'][0]['#markup'] = views_embed_view('priority_listing');
+    $variables['content']['priorities_preprocess']['#items'][0]['value'] = views_embed_view('priority_listing');
   }
   $variables['submitted'] = '';
   if (theme_get_setting('display_submitted')) {

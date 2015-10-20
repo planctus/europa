@@ -313,6 +313,7 @@ Markup: html/listing--teaser.html
 .listing--title-large - Listing title large
 .listing--title-medium - Listing title medium
 .listing--short-spaced - Listing short spaced
+.listing--maxwidth - Listing max width
 
 Styleguide listing.teaser
 */
@@ -321,6 +322,15 @@ ul.listing--teaser {
   .listing__item-link {
     padding-top: 0.85em;
     padding-bottom: 1em;
+  }
+}
+
+
+.listing--maxwidth {
+  @extend .row;
+
+  .listing {
+    @extend .col-sm-8;
   }
 }
 
