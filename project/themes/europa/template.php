@@ -994,10 +994,13 @@ function europa_preprocess_page(&$variables) {
     // Check if Display Suite is handling node.
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
-      if ($layout) {
-        // Move the header_bottom to the node.
-        $variables['node']->header_bottom = $variables['page']['header_bottom'];
-        unset($variables['page']['header_bottom']);
+      if ($layout && isset($layout['is_nexteuropa']) && $layout['is_nexteuropa'] == TRUE) {
+        // If our display suite layout has a header region.
+        if (isset($layout['regions']['left_header'])) {
+          // Move the header_bottom to the node.
+          $variables['node']->header_bottom = $variables['page']['header_bottom'];
+          unset($variables['page']['header_bottom']);
+        }
 
         ctools_class_add($layout['layout']);
 
