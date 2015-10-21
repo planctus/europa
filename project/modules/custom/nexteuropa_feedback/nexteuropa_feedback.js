@@ -5,7 +5,7 @@
       var $feedbackFormWrapper = $('.feedback-form__wrapper');
       var currentType = $('input[name="feedback_type"]').val();
 
-      // Whether the Open event was alreadt tracked once.
+      // Whether the Open event was already tracked once.
       var analyticsOpenSent = false;
       // Track submission.
       $feedbackFormWrapper.on('analyticsEvent', function(event, data) {
