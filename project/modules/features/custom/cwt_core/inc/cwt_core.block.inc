@@ -117,7 +117,6 @@ function _cwt_core_block_college_members_view() {
   $block = array();
   // Get the customized title from the term.
   $team_node = menu_get_object();
-  /*
   if (isset($team_node->field_team_subtype) && !empty($team_node->field_team_subtype)) {
     $type_field = field_get_items('node', $team_node, 'field_team_subtype');
     $type = field_view_value('node', $team_node, 'field_team_subtype', $type_field[0]);
@@ -128,7 +127,6 @@ function _cwt_core_block_college_members_view() {
       $block['subject'] = $block_title['#markup'];
     }
   }
-  */
   $block['content']['president_title']['#markup'] = "<h3>" . t('President') . "</h3>";
   $block['content']['president']['#markup'] = views_embed_view('team_members', 'block_1');
   if ($qt = quicktabs_build_quicktabs('team_members')) {
