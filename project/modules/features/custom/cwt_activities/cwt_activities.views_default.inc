@@ -35,8 +35,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = 'listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_modifier'] = ' listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 0;
@@ -401,8 +401,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = 'listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 0;

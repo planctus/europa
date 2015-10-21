@@ -18,7 +18,7 @@ function cwt_activities_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'agenda_with_who' => array(
-      'weight' => '2',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -50,7 +50,7 @@ function cwt_activities_ds_field_settings_info() {
       ),
     ),
     'title' => array(
-      'weight' => '1',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -105,30 +105,31 @@ function cwt_activities_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'activities';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'main' => array(
-        0 => 'group_agenda_meta',
-        1 => 'title',
-        2 => 'agenda_with_who',
-        4 => 'content_type_label',
-      ),
-      'second' => array(
-        3 => 'field_start_end_date',
+      'ds_content' => array(
+        0 => 'group_activity_left',
+        1 => 'group_activity_right',
+        2 => 'group_agenda_meta',
+        3 => 'title',
+        4 => 'agenda_with_who',
+        5 => 'field_start_end_date',
+        6 => 'content_type_label',
       ),
     ),
     'fields' => array(
-      'group_agenda_meta' => 'main',
-      'title' => 'main',
-      'agenda_with_who' => 'main',
-      'field_start_end_date' => 'second',
-      'content_type_label' => 'main',
+      'group_activity_left' => 'ds_content',
+      'group_activity_right' => 'ds_content',
+      'group_agenda_meta' => 'ds_content',
+      'title' => 'ds_content',
+      'agenda_with_who' => 'ds_content',
+      'field_start_end_date' => 'ds_content',
+      'content_type_label' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'main' => 'div',
-      'second' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

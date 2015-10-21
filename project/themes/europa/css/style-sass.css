@@ -8471,12 +8471,16 @@ Listing Agenda
 
 Listing components
 
-Markup: html/listing-agenda.html
+Markup: html/listing--agenda.html
 
 Styleguide listing.agenda
 */
 .listing--agenda p {
   margin: 0; }
+
+.listing--agenda .listing__item {
+  padding-top: 0.85em;
+  padding-bottom: 1em; }
 
 .listing--agenda .meta {
   margin-bottom: 0; }

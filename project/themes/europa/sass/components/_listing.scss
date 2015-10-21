@@ -427,7 +427,7 @@ Listing Agenda
 
 Listing components
 
-Markup: html/listing-agenda.html
+Markup: html/listing--agenda.html
 
 Styleguide listing.agenda
 */
@@ -435,6 +435,11 @@ Styleguide listing.agenda
 
   p {
     margin: 0;
+  }
+
+  .listing__item {
+    padding-top: 0.85em;
+    padding-bottom: 1em;
   }
 
   .meta {
