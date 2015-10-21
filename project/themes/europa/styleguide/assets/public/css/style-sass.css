@@ -6792,22 +6792,22 @@ Styleguide contextnav
   display: inline-block; }
 
 /*
-Date
+Date Block
 
 Date components
 
-Markup: html/date.html
+Markup: html/date-block.html
 
-Styleguide date
+Styleguide date-block
 */
 .date-block {
   float: left;
-  background: #ececec;
-  border-bottom: 0.222em solid #ffc412;
+  background: #f2f2f2;
+  border-bottom: 0.222em solid #FED437;
   width: 5.5em;
   margin-right: 0.75em;
   min-width: 5.556em;
-  padding: 0.8em 0em 0.4em 0em;
+  padding: 0.85em 0em 0.4em 0em;
   text-align: center;
   position: relative;
   overflow: hidden; }
@@ -6827,16 +6827,16 @@ Styleguide date
 
 .date-block__day-text {
   font-size: 0.889em;
-  line-height: 100%; }
+  line-height: 1; }
 
 .date-block__day {
   font-size: 1.667em;
-  line-height: 100%;
-  font-weight: 600; }
+  font-weight: 600;
+  line-height: 1.2; }
 
 .date-block__month {
   font-size: 1.111em;
-  line-height: 100%; }
+  line-height: 1; }
 
 .date-block__element, .date-block__day-text, .date-block__day, .date-block__month {
   width: 100%;

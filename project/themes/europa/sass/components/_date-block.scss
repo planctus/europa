@@ -1,21 +1,22 @@
 /*
-Date
+Date Block
 
 Date components
 
-Markup: html/date.html
+Markup: html/date-block.html
 
-Styleguide date
+Styleguide date-block
 */
+$agenda-yellow: #FED437;
 
 .date-block {
   float: left;
-  background: $grey-lighter;
-  border-bottom: 0.222em solid $yellow;
+  background: $grey-lightest;
+  border-bottom: 0.222em solid $agenda-yellow;
   width: 5.5em;
   margin-right: 0.75em;
   min-width: 5.556em;
-  padding: 0.8em 0em 0.4em 0em;
+  padding: 0.85em 0em 0.4em 0em;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -39,20 +40,20 @@ Styleguide date
 .date-block__day-text {
   @extend .date-block__element;
   font-size: $font-size-little;
-  line-height: 100%;
+  line-height: 1;
 }
 
 .date-block__day {
   @extend .date-block__element;
   font-size: $font-size-huge;
-  line-height: 100%;
   font-weight: $font-weight-bold;
+  line-height: 1.2;
 }
 
 .date-block__month {
   @extend .date-block__element;
   font-size: 1.111em;
-  line-height: 100%;
+  line-height: 1;
 }
 
 

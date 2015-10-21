@@ -51,7 +51,6 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
 
     $date1 = date("Y-m-d", strtotime($item['value']));
     $date2 = date("Y-m-d", strtotime($item['value2']));
-    $today = date("Y-m-d");
 
     $date1_parts = explode('-', $date1);
     $date2_parts = explode('-', $date2);
@@ -61,7 +60,7 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
       $start_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
       $output_date = t(
-        '<span class="date-block__day-text">@start_day_name-@end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@common_month</span>',
+        '<span class="date-block__day-text">@start_day_name - @end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@common_month</span>',
         array(
           '@start_day' => $date1_parts[2],
           '@start_day_name' => $start_day_name,
@@ -92,7 +91,7 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
       $start_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
       $output_date = t(
-        '<span class="date-block__day-text">@start_day_name-@end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@start_month @end_month</span>',
+        '<span class="date-block__day-text">@start_day_name - @end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@start_month-@end_month</span>',
         array(
           '@start_day' => $date1_parts[2],
           '@start_day_name' => $start_day_name,
