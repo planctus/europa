@@ -417,13 +417,6 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="result-count pull-left"><p>@total items[filter_info]</p></div>';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<p>There are no matching agenda items.</p>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Start/End date */
   $handler->display->display_options['fields']['field_start_end_date']['id'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['table'] = 'field_data_field_start_end_date';
