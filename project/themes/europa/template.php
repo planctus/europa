@@ -629,7 +629,6 @@ function europa_easy_breadcrumb($variables) {
 
       // Removing classes from $item['class'] array and adding BEM classes.
       $classes = $item['class'];
-      // $classes[] = 'breadcrumb__segment-' . ($i + 1);
       $classes[] = 'breadcrumb__segment';
 
       $attributes = array(
@@ -814,7 +813,7 @@ function europa_preprocess_block(&$variables) {
     if (!empty($variables['elements']['other']['#markup'])) {
       foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
         $options = array(
-          'query' => drupal_get_query_parameters()
+          'query' => drupal_get_query_parameters(),
         );
         $options['query']['2nd-language'] = $code;
 
@@ -1121,8 +1120,8 @@ function europa_pager($variables) {
     $items[] = array(
       'class' => array('pager__item pager__combo'),
       'data' => "<span class='pager__combo-container'><span class='pager__combo-current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
-        "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
-        '</span>',
+      '<span class="pager__combo-total">' . t('of !total', array('!total' => $pager_max)) . '</span>' .
+      '</span>',
     );
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {
