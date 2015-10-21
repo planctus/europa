@@ -995,6 +995,10 @@ function europa_preprocess_page(&$variables) {
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
       if ($layout) {
+        // Move the header_bottom to the node.
+        $variables['node']->header_bottom = $variables['page']['header_bottom'];
+        unset($variables['page']['header_bottom']);
+
         ctools_class_add($layout['layout']);
 
         // This disables message-printing on ALL page displays.

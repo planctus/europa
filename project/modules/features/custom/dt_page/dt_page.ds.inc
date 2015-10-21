@@ -62,6 +62,11 @@ function dt_page_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_core_policy_area' => array(
       'formatter_settings' => array(
         'ft' => array(

@@ -49,6 +49,11 @@ function dt_priority_default_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -63,6 +68,13 @@ function dt_priority_default_ds_field_settings_info() {
       ),
     ),
     'field_core_banner' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_featured_item' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_reset',

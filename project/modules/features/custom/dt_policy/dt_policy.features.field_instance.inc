@@ -26,7 +26,11 @@ function dt_policy_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 9,
       ),
@@ -319,7 +323,11 @@ function dt_policy_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => 1,
+          'expander_trim_at' => 5,
+          'expander_trim_to' => 2,
+        ),
         'type' => 'context_nav_item',
         'weight' => 8,
       ),
@@ -430,7 +438,11 @@ function dt_policy_field_default_field_instances() {
       'full' => array(
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 6,
       ),
@@ -485,7 +497,11 @@ function dt_policy_field_default_field_instances() {
       'full' => array(
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 7,
       ),

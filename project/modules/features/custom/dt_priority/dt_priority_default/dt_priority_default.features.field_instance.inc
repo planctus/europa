@@ -227,7 +227,11 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 0,
       ),
@@ -370,9 +374,13 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -948,7 +956,11 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => 1,
+          'expander_trim_at' => 5,
+          'expander_trim_to' => 2,
+        ),
         'type' => 'context_nav_item',
         'weight' => 30,
       ),
@@ -1255,7 +1267,11 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 0,
       ),
