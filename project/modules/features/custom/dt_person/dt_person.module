@@ -25,3 +25,83 @@ function dt_person_migrate_api() {
     ),
   );
 }
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * This will alter the output of the context nav when its a person.
+ */
+function dt_person_field_attach_view_alter(&$output, $context) {
+  // Append RDF term mappings on displayed taxonomy links.
+  foreach (element_children($output) as $field_name) {
+    $element = &$output[$field_name];
+    if ($element['#field_type'] == 'entityreference' && $element['#field_name'] == 'field_core_persons' && $element['#formatter'] == 'context_nav_item') {
+
+      // Set our default wrapper label.
+      $wrapper_label = t('Commissioner');
+
+      // Get the taxonomy term id for commissioner.
+      $commissioner_taxonomy_id = key(taxonomy_get_term_by_name('commissioner', 'person_roles'));
+
+      // Rebuild our commissioner list.
+      $commissioner_list = array();
+
+      // Set our check default to true.
+      $same_title = TRUE;
+
+      // Check if titles are different.
+      foreach ($element['#items'] as $key => $item) {
+        // Load entity_metadata_wrapper.
+        $check_entity = entity_metadata_wrapper('node', $item['entity']);
+
+        // Store the data in our custom array so we dont have to get it again.
+        $commissioner_list[$key] = array(
+          'emw' => $check_entity,
+          'obj' => $item,
+        );
+
+        // Check if the tid is the same. If not set our variable to false.
+        if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
+          $same_title = FALSE;
+        }
+
+        // Save the last id we checked.
+        $last_title_tid = $check_entity->field_person_role->value()->tid;
+      }
+
+      // If all the persons have the same title, we update our label.
+      if ($same_title && isset($check_entity->field_person_role)) {
+        $wrapper_label = $check_entity->field_person_role->value()->name;
+      }
+
+      // We process the data again, with the new information we have.
+      foreach ($commissioner_list as $key => $commissioner) {
+        $is_commissioner = (!$same_title && $commissioner['emw']->field_person_role->value()->tid == $commissioner_taxonomy_id);
+        // If it is the same title. We can just render the "name" mode.
+        if (($same_title || $is_commissioner) && $person_render = entity_view('node', array($commissioner['obj']['entity']), 'name')) {
+          // Update our element.
+          $element[$key]['#markup'] = render($person_render);
+        }
+      }
+
+      // Get our display settings.
+      $display_settings = field_info_instance('node', 'field_core_persons', $context['entity']->type);
+
+      // Check our settings.
+      $has_expander = isset($display_settings['display'][$context['view_mode']]['settings']['expander_has_expander']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_has_expander'] : FALSE;
+      $trim_at = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_at']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_at'] : FALSE;
+      $trim_to = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_to']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_to'] : FALSE;
+
+      // Update the label.
+      $element = array_merge(
+        $element,
+        _nexteuropa_formatters_get_context_nav_wrapper(
+          $wrapper_label,
+          $has_expander,
+          $trim_at,
+          $trim_to
+        )
+      );
+    }
+  }
+}

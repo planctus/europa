@@ -6754,6 +6754,17 @@ Markup: html/context-nav.html
 
 Styleguide contextnav
 */
+.context-nav__expander {
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #004494; }
+  .context-nav__expander:hover {
+    text-decoration: underline; }
+
+.context-nav__hidden {
+  display: none; }
+
 .context-nav__label {
   display: block;
   clear: both; }
@@ -6767,7 +6778,7 @@ Styleguide contextnav
 .context-nav__item {
   display: inline-block; }
   .context-nav__item:after {
-    content: ",";
+    content: " |";
     margin-right: 4px; }
   .context-nav__item:last-child:after {
     display: none;
@@ -6776,6 +6787,9 @@ Styleguide contextnav
 @media (min-width: 992px) {
   .context-nav__items {
     margin-bottom: 0; } }
+
+.context-nav__item .view-mode-name {
+  display: inline-block; }
 
 /*
 Date
