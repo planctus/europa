@@ -958,12 +958,6 @@ function europa_preprocess_node(&$variables) {
   if (isset($variables['legacy'])) {
     $variables['node_url'] = $variables['legacy'];
   }
-
-  // Provide header_bottom region to the node.tpl.php
-  if ($plugin = context_get_plugin('reaction', 'block')) {
-    $variables['header_bottom'] = $plugin->block_get_blocks_by_region('header_bottom');
-    drupal_static_reset('context_reaction_block_list');
-  }
 }
 
 /**
@@ -1001,7 +995,10 @@ function europa_preprocess_page(&$variables) {
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
       if ($layout) {
+        // Move the header_bottom to the node.
+        $variables['node']->header_bottom = $variables['page']['header_bottom'];
         unset($variables['page']['header_bottom']);
+
         ctools_class_add($layout['layout']);
 
         // This disables message-printing on ALL page displays.
