@@ -5803,7 +5803,7 @@ Styleguide buttons.btn-block
   width: 100%;
   max-width: 450px;
   text-align: left;
-  margin-bottom: -2px;
+  margin-bottom: -2px !important;
   white-space: normal;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -5845,6 +5845,8 @@ Custom bootstrap button group
 
 Markup: html/btn-group.html
 
+.btn-group--row-two    - Two column button block.
+
 Styleguide buttons.group
 */
 .btn-group {
@@ -5854,6 +5856,17 @@ Styleguide buttons.group
     margin-bottom: 0; }
     .btn-group .btn:last-child, .btn-group .inpage-nav__navbar .inpage-nav__toggle:last-child, .inpage-nav__navbar .btn-group .inpage-nav__toggle:last-child {
       margin-right: 0; }
+
+.btn-group--row-two {
+  width: 100%; }
+  .btn-group--row-two .btn, .btn-group--row-two .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .btn-group--row-two .inpage-nav__toggle {
+    margin-left: 0 !important;
+    margin-bottom: -2px;
+    float: left;
+    width: 47.5%; }
+    .btn-group--row-two .btn:nth-child(odd), .btn-group--row-two .inpage-nav__navbar .inpage-nav__toggle:nth-child(odd), .inpage-nav__navbar .btn-group--row-two .inpage-nav__toggle:nth-child(odd) {
+      margin-right: 3%;
+      clear: left; }
 
 /*
 Checkbox
