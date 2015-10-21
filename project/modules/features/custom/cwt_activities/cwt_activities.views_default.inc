@@ -570,6 +570,7 @@ function cwt_activities_views_default_views() {
     3 => array(),
   );
   $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter']['default_to_date'] = '+1 year';
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_start_end_date.field_start_end_date_value' => 'field_data_field_start_end_date.field_start_end_date_value',
     'field_data_field_start_end_date.field_start_end_date_value2' => 'field_data_field_start_end_date.field_start_end_date_value2',
