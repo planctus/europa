@@ -6403,6 +6403,12 @@ Styleguide form.textarea
 .main-content {
   overflow-x: hidden; }
 
+.page-navigation {
+  background: #004494; }
+
+.page-header .page-navigation {
+  background: transparent; }
+
 .sidebar-field-group--important, .front .sidebar-field-group {
   padding-top: 30px; }
 
