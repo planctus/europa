@@ -147,6 +147,7 @@ function dt_priority_update_7102() {
  * NEXTEUROPA-5800 revert related features.
  */
 function dt_priority_update_7103() {
+  module_enable(array('dt_page'));
   // List of features we have to revert. In the correct order.
   $features_to_revert = array(
     'dt_page',
