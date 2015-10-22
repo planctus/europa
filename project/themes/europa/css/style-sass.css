@@ -9062,6 +9062,13 @@ Styleguide: siteheader.searchform
   .site-menu .listing__item .listing__title + * {
     margin-top: 0; }
 
+.site-menu p {
+  color: black;
+  font-size: 0.889em; }
+
+.front .site-menu p {
+  font-size: 0.889em; }
+
 .site-menu__section {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-top: 2em;
