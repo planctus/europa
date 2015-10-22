@@ -18,6 +18,9 @@ function dt_priority_install() {
 function dt_priority_uninstall() {
   $path = drupal_get_path('module', 'dt_priority') . '/dt_priority.info';
   $info = drupal_parse_info_file($path);
+
+  variable_del('dt_priority_page_id');
+
   drupal_set_message(t('NextEuropa priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
 
@@ -138,4 +141,21 @@ function dt_priority_update_7102() {
     }
   }
 
+}
+
+/**
+ * NEXTEUROPA-5800 revert related features.
+ */
+function dt_priority_update_7103() {
+  module_enable(array('dt_page'));
+  // List of features we have to revert. In the correct order.
+  $features_to_revert = array(
+    'dt_page',
+    'dt_priority',
+    'dt_priority_default',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
 }
