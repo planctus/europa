@@ -20,7 +20,6 @@ function nexteuropa_ds_fields_ds_fields_info($entity_type) {
 
     // properties: can have different keys.
     'properties' => array(
-      // code: optional, only for code field [node:comment-count].
       'value' => '[node:comment-count] comments',
     ),
   );
