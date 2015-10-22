@@ -391,6 +391,7 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
   global $_nexteuropa_formatters_listing_view_modes;
 
   if (
+    isset($context['instance']['display'][$context['view_mode']]['type']) &&
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
     in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
   ) {
