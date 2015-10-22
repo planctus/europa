@@ -7,7 +7,7 @@
 /**
  * Defines a settings form.
  */
-function dt_priority_settings($form) {
+function dt_priority_settings($form, &$form_state) {
   $form['dt_priority_page_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Priority page node id.'),
