@@ -269,7 +269,11 @@ function dt_page_field_default_field_instances() {
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 29,
       ),
@@ -1039,7 +1043,11 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => 1,
+          'expander_trim_at' => 5,
+          'expander_trim_to' => 2,
+        ),
         'type' => 'context_nav_item',
         'weight' => 30,
       ),
@@ -1104,7 +1112,11 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 28,
       ),
@@ -1163,7 +1175,11 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 27,
       ),
@@ -1349,7 +1365,11 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
         'type' => 'context_nav_item',
         'weight' => 31,
       ),

@@ -52,6 +52,11 @@ function dt_topic_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_topic_objectives' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -66,11 +71,6 @@ function dt_topic_ds_field_settings_info() {
           'func' => 'theme_ds_field_minimal',
           'lb-col' => TRUE,
         ),
-      ),
-    ),
-    'field_topic_tasks' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_core_introduction' => array(

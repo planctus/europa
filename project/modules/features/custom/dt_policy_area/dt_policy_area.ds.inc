@@ -219,8 +219,8 @@ function dt_policy_area_ds_layout_settings_info() {
         14 => 'group_latest_sidebar',
       ),
       'top' => array(
-        6 => 'group_policy_area_contextual',
-        7 => 'field_core_persons',
+        6 => 'field_core_persons',
+        7 => 'group_policy_area_contextual',
       ),
     ),
     'fields' => array(
@@ -230,8 +230,8 @@ function dt_policy_area_ds_layout_settings_info() {
       'content_type_label' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_description' => 'left_header',
-      'group_policy_area_contextual' => 'top',
       'field_core_persons' => 'top',
+      'group_policy_area_contextual' => 'top',
       'group_policy' => 'central',
       'children_policy_areas' => 'central',
       'children_policies' => 'central',

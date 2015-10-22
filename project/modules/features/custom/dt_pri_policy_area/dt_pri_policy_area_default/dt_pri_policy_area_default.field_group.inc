@@ -145,15 +145,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'field_core_persons',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );

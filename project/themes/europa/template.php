@@ -629,7 +629,6 @@ function europa_easy_breadcrumb($variables) {
 
       // Removing classes from $item['class'] array and adding BEM classes.
       $classes = $item['class'];
-      // $classes[] = 'breadcrumb__segment-' . ($i + 1);
       $classes[] = 'breadcrumb__segment';
 
       $attributes = array(
@@ -814,7 +813,7 @@ function europa_preprocess_block(&$variables) {
     if (!empty($variables['elements']['other']['#markup'])) {
       foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
         $options = array(
-          'query' => drupal_get_query_parameters()
+          'query' => drupal_get_query_parameters(),
         );
         $options['query']['2nd-language'] = $code;
 
@@ -965,12 +964,6 @@ function europa_preprocess_node(&$variables) {
   if (isset($variables['legacy'])) {
     $variables['node_url'] = $variables['legacy'];
   }
-
-  // Provide header_bottom region to the node.tpl.php
-  if ($plugin = context_get_plugin('reaction', 'block')) {
-    $variables['header_bottom'] = $plugin->block_get_blocks_by_region('header_bottom');
-    drupal_static_reset('context_reaction_block_list');
-  }
 }
 
 /**
@@ -1007,8 +1000,14 @@ function europa_preprocess_page(&$variables) {
     // Check if Display Suite is handling node.
     if (module_exists('ds')) {
       $layout = ds_get_layout('node', $node->type, 'full');
-      if ($layout) {
-        unset($variables['page']['header_bottom']);
+      if ($layout && isset($layout['is_nexteuropa']) && $layout['is_nexteuropa'] == TRUE) {
+        // If our display suite layout has a header region.
+        if (isset($layout['regions']['left_header'])) {
+          // Move the header_bottom to the node.
+          $variables['node']->header_bottom = $variables['page']['header_bottom'];
+          unset($variables['page']['header_bottom']);
+        }
+
         ctools_class_add($layout['layout']);
 
         // This disables message-printing on ALL page displays.
@@ -1128,8 +1127,8 @@ function europa_pager($variables) {
     $items[] = array(
       'class' => array('pager__item pager__combo'),
       'data' => "<span class='pager__combo-container'><span class='pager__combo-current'>" . t('Page !page', array('!page' => $pager_current)) . '&nbsp;</span>' .
-        "<span class='pager__combo-total'>" . t('of !total', array('!total' => $pager_max)) . '</span>' .
-        '</span>',
+      '<span class="pager__combo-total">' . t('of !total', array('!total' => $pager_max)) . '</span>' .
+      '</span>',
     );
     // When there is more than one page, create the pager list.
     if ($i != $pager_max) {

@@ -205,15 +205,11 @@ function dt_topic_field_group_info() {
       2 => 'field_core_priorities',
       3 => 'field_core_topics',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );
@@ -237,15 +233,11 @@ function dt_topic_field_group_info() {
       2 => 'field_core_topics',
       3 => 'field_core_department',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );
