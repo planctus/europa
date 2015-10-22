@@ -21,7 +21,7 @@ function nexteuropa_ds_fields_ds_fields_info($entity_type) {
     // properties: can have different keys.
     'properties' => array(
       // code: optional, only for code field [node:comment-count].
-      'token' => '[node:comment-count]',
+      'value' => '[node:comment-count] comments',
     ),
   );
 
@@ -33,9 +33,9 @@ function nexteuropa_ds_fields_ds_fields_info($entity_type) {
  * Custom function for single token replacement in a field.
  */
 function _nexteuropa_ds_fields_token_replace($field) {
-  if (isset($field['properties']['token'])) {
-    $token = $field['properties']['token'];
-    $value = token_replace($token, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+  if (isset($field['properties']['value'])) {
+    $value = $field['properties']['value'];
+    $value = token_replace($value, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
     return $value;
   }
 }

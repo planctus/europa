@@ -21,7 +21,7 @@ function cwt_core_ds_fields_info($entity_type) {
     // properties: can have different keys.
     'properties' => array(
       // code: optional, only for code field [node:comment-count].
-      'token' => '[node:field-editorial-section:name_field]',
+      'value' => 'By [node:field-editorial-section:name_field]',
     ),
   );
 
