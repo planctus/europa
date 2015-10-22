@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_ds_custom_fields_info().
+ * Implements hook_ds_fields_info().
  */
 function nexteuropa_ds_fields_ds_fields_info($entity_type) {
   $fields = array();

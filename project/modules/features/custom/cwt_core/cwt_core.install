@@ -456,3 +456,13 @@ function cwt_core_update_7131() {
   );
   module_enable($modules_to_enable);
 }
+
+/**
+ * Enable nexteuropa display suite fields.
+ */
+function cwt_core_update_7132() {
+  $modules_to_enable = array(
+    'nexteuropa_ds_fields',
+  );
+  module_enable($modules_to_enable);
+}
