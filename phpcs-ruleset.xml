@@ -35,4 +35,9 @@
     <rule ref="Drupal.NamingConventions.ValidVariableName">
         <exclude-pattern>src/Phing</exclude-pattern>
     </rule>
+
+    <!-- Features creates violations for fields. -->
+    <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
+        <exclude-pattern>modules/*/*.features.field_*.inc</exclude-pattern>
+    </rule>
 </ruleset>
