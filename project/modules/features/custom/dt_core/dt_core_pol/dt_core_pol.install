@@ -50,3 +50,10 @@ function dt_core_pol_update_7101() {
     features_revert_module($feature);
   }
 }
+
+/**
+ * Hotfix: Enabling dt_page content type on political site instance.
+ */
+function dt_core_pol_update_7102() {
+  module_enable(array('dt_page'));
+}
