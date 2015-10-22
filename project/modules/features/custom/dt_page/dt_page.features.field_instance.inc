@@ -151,7 +151,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -212,7 +212,7 @@ function dt_page_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -330,7 +330,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -478,7 +478,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -564,7 +564,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -651,7 +651,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -789,7 +789,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -986,7 +986,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1442,7 +1442,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1503,7 +1503,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1574,7 +1574,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'hidden',
