@@ -949,7 +949,6 @@ function europa_preprocess_node(&$variables) {
   if (isset($variables['type']) == 'basic_page' && $variables['nid'] == variable_get('dt_priority_page_id', '')) {
     $variables['content']['priorities_preprocess']['#label_display'] = 'hidden';
     $variables['content']['priorities_preprocess'][0]['#markup'] = views_embed_view('priority_listing');
-    $variables['content']['priorities_preprocess']['#items'][0]['value'] = views_embed_view('priority_listing');
   }
   $variables['submitted'] = '';
   if (theme_get_setting('display_submitted')) {
