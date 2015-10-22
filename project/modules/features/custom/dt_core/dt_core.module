@@ -870,8 +870,7 @@ function dt_core_views_query_alter(&$view, &$query) {
   // If it is one of our listings.
   if (isset($view->sort['title_field_value'])) {
     // Get our languages.
-    global $language;
-
+    $fallback_languages = _dt_core_content_language_order();
     // Sort direction from our sort.
     $sort_direction = 'ASC';
 
@@ -882,35 +881,6 @@ function dt_core_views_query_alter(&$view, &$query) {
 
     // Language subquerys.
     $or = db_or();
-    // Get the first few languages of our fallback array. If we have a 2nd
-    // language parameter set, we have to work with an additional language. If
-    // not, we only need one.
-    // Set our maximum languages to check.
-    $max_languages = 1;
-    // First we get our url parameters.
-    $parameters = drupal_get_query_parameters();
-    // Check if the 2nd-language parameter is set.
-    if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
-      $max_languages = 2;
-    }
-    // Get the maximum extra languages.
-    $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
-    // Add our current site language to the array.
-    if (!in_array($language->language, $fallback_languages)) {
-      array_unshift($fallback_languages, $language->language);
-    }
-    else {
-      // Our default language is in the array but might not be the first. So we
-      // move it.
-      // Get the key of the language.
-      $main_language_key = array_search($language->language, $fallback_languages);
-      // Store it temporary.
-      $prepend_language = $fallback_languages[$main_language_key];
-      // Remove the item.
-      unset($fallback_languages[$main_language_key]);
-      // Then add it to the front.
-      array_unshift($fallback_languages, $prepend_language);
-    }
 
     // Also we can add our sorting function here. So lets start with the
     // ininitialization of that variable.
@@ -974,4 +944,42 @@ function dt_core_views_query_alter(&$view, &$query) {
       unset($query->fields['field_data_title_field_title_field_value']);
     }
   }
+}
+
+/**
+ * Get the languages that are applicable in the right order of fallback.
+ */
+function _dt_core_content_language_order() {
+  global $language;
+  // Get the first few languages of our fallback array. If we have a 2nd
+  // language parameter set, we have to work with an additional language. If
+  // not, we only need one.
+  // Set our maximum languages to check.
+  $max_languages = 1;
+  // First we get our url parameters.
+  $parameters = drupal_get_query_parameters();
+  // Check if the 2nd-language parameter is set.
+  if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+    $max_languages = 2;
+  }
+  // Get the maximum extra languages.
+  $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
+  // Add our current site language to the array.
+  if (!in_array($language->language, $fallback_languages)) {
+    array_unshift($fallback_languages, $language->language);
+  }
+  else {
+    // Our default language is in the array but might not be the first. So we
+    // move it.
+    // Get the key of the language.
+    $main_language_key = array_search($language->language, $fallback_languages);
+    // Store it temporary.
+    $prepend_language = $fallback_languages[$main_language_key];
+    // Remove the item.
+    unset($fallback_languages[$main_language_key]);
+    // Then add it to the front.
+    array_unshift($fallback_languages, $prepend_language);
+  }
+
+  return $fallback_languages;
 }
