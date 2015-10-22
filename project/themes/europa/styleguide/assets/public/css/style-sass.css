@@ -5863,10 +5863,12 @@ Styleguide buttons.group
     margin-left: 0 !important;
     margin-bottom: -2px;
     float: left;
-    width: 47.5%; }
+    width: 48.5%; }
     .btn-group--row-two .btn:nth-child(odd), .btn-group--row-two .inpage-nav__navbar .inpage-nav__toggle:nth-child(odd), .inpage-nav__navbar .btn-group--row-two .inpage-nav__toggle:nth-child(odd) {
       margin-right: 3%;
       clear: left; }
+    .btn-group--row-two .btn:nth-child(even), .btn-group--row-two .inpage-nav__navbar .inpage-nav__toggle:nth-child(even), .inpage-nav__navbar .btn-group--row-two .inpage-nav__toggle:nth-child(even) {
+      margin-right: 0; }
 
 /*
 Checkbox
