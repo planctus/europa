@@ -597,7 +597,6 @@ function dt_core_update_7144() {
   features_revert_module('dt_roles_permissions');
 }
 
-
 /**
  * Set body field content to english.
  */
@@ -617,4 +616,70 @@ function dt_core_update_7145() {
   ))
   ->condition('language', 'und', '=')
   ->execute();
+}
+
+/**
+ * NEXTEUROPA-6315: Enable translation for several fields.
+ *
+ * global fields:
+ * field_file_image_alt_text
+ * field_file_image_title_text
+ * field_video_description
+ * field_creator
+ * field_firstname
+ * field_lastname
+ *
+ */
+function dt_core_update_7146() {
+  // global, non-DT.
+  foreach (field_info_fields() as $f_name => $field) {
+    switch ($field['field_name']) {
+      case 'field_file_image_alt_text':
+      case 'field_file_image_title_text':
+      case 'field_caption':
+      case 'field_video_description':
+        $field['translatable'] = 1;
+        field_update_field($field);
+        break;
+    }
+  }
+
+  // DT features.
+  $features = array(
+    'dt_class',
+    'dt_banner',
+    'dt_contact',
+    'dt_core',
+    'dt_person',
+    'dt_policy',
+    'dt_publication',
+    'dt_social_network_links',
+    'nexteuropa_file'
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+
+  // The following is somehow not done by dt_featured_item_update_7101().
+  // List of fields to delete.
+  $fields_to_delete = array(
+    'field_feat_item_ref_or_url',
+  );
+
+  // Handle the fields to delete.
+  foreach ($fields_to_delete as $field_name) {
+    // Delete the field instance.
+    if ($field_instance = field_info_instance('node', $field_name, 'featured_item')) {
+      field_delete_instance($field_instance);
+    }
+    // Then the field base.
+    if ($field_base = field_info_field($field_name)) {
+      field_delete_field($field_base);
+    }
+  }
 }
