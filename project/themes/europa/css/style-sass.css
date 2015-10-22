@@ -8691,7 +8691,7 @@ Styleguide page-header
 
 .page-header a {
   color: #fff; }
-  .page-header a:hover {
+  .page-header a:hover:not(.breadcrumb__link) {
     color: #ffd617; }
   .page-header a[href^="http"]:not(.is-internal) {
     padding-right: 1.1em;
@@ -8701,6 +8701,9 @@ Styleguide page-header
       line-height: 2.2; }
     .page-header a[href^="http"]:not(.is-internal).btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal), .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal) {
       padding-right: 2.1em; }
+
+.front .page-header {
+  padding: 0; }
 
 /*
 Pager
@@ -9073,6 +9076,13 @@ Styleguide: siteheader.searchform
     font-size: 0.8em; }
   .site-menu .listing__item .listing__title + * {
     margin-top: 0; }
+
+.site-menu p {
+  color: black;
+  font-size: 0.889em; }
+
+.front .site-menu p {
+  font-size: 0.889em; }
 
 .site-menu__section {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
