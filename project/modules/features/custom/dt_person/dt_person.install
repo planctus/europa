@@ -181,3 +181,26 @@ function dt_person_update_7107() {
   // Reverting feature.
   features_revert_module('dt_person');
 }
+
+/**
+ * NEXTEUROPA-4788: Revert related features.
+ */
+function dt_person_update_7108() {
+  $features_to_revert = array(
+    'dt_person',
+    'dt_announcement',
+    'dt_page',
+    'dt_policy',
+    'dt_policy_area',
+    'dt_pri_policy_area',
+    'dt_pri_policy_area_default',
+    'dt_priority',
+    'dt_priority_default',
+    'dt_publication',
+    'dt_topic',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
+}
