@@ -61,6 +61,12 @@ function nexteuropa_formatters_field_formatter_info() {
         'taxonomy_term_reference',
       ),
     ),
+    'link_button_two_column' => array(
+      'label' => 'Link button two column',
+      'field types' => array(
+        'link_field',
+      ),
+    ),
     'link_listing_title' => array(
       'label' => 'Listing title',
       'field types' => array(
@@ -141,6 +147,9 @@ function _nexteuropa_formatters_field_formatter_view_classes($formatter) {
 
     case 'link_button_block':
       return 'btn btn-default btn-block';
+
+    case 'link_button_two_column':
+      return 'btn btn-default';
 
     case 'link_listing_title':
       return 'listing__title';
@@ -275,6 +284,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
       case 'link_button_primary':
       case 'link_button_secondary':
       case 'link_button_call_for_action':
+      case 'link_button_two_column':
       case 'link_button_block':
         switch ($field['type']) {
           case 'link_field':
@@ -314,7 +324,12 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         // Multiple field wrapper.
         if (($field['cardinality'] == -1) && ($formatter != 'link_button_block')) {
-          $element['#prefix'] = '<div class="btn-group">';
+          if ($formatter = 'link_button_two_column') {
+            $element['#prefix'] = '<div class="btn-group btn-group-row-two">';
+          }
+          else {
+            $element['#prefix'] = '<div class="btn-group">';
+          }
           $element['#suffix'] = '</div>';
         }
         break;
