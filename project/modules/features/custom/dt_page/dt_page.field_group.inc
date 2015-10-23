@@ -226,7 +226,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -255,7 +255,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Free field',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'body',
     ),
@@ -284,7 +284,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_featured_item',
       1 => 'group_page_latest_sidebar',
@@ -407,7 +407,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -428,6 +428,35 @@ function dt_page_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_priorities|node|basic_page|full';
+  $field_group->group_name = 'group_page_priorities';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => '10 priorities',
+    'weight' => '4',
+    'children' => array(
+      0 => 'priorities_preprocess',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => '10 priorities',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_page_priorities|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_related_links|node|basic_page|full';
   $field_group->group_name = 'group_page_related_links';
   $field_group->entity_type = 'node';
@@ -436,7 +465,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_links',
     ),
