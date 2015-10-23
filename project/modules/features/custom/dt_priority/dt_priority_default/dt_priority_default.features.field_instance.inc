@@ -233,7 +233,7 @@ function dt_priority_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -962,7 +962,7 @@ function dt_priority_default_field_default_field_instances() {
           'expander_trim_to' => 2,
         ),
         'type' => 'context_nav_item',
-        'weight' => 30,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
