@@ -17,6 +17,17 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'team';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
     'cwt_team_president' => array(
       'weight' => '6',
       'label' => 'hidden',
@@ -26,6 +37,9 @@ function cwt_team_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
     'cwt_team_project_team' => array(
       'weight' => '9',
@@ -36,6 +50,24 @@ function cwt_team_ds_field_settings_info() {
       'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'field_team_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'section section__group',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+          'fis' => TRUE,
+          'fis-el' => 'div',
+          'fis-cl' => 'sidebar-field-group__main',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+        ),
+      ),
     ),
   );
   $export['node|team|default'] = $ds_fieldsetting;
@@ -58,33 +90,41 @@ function cwt_team_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'title',
+      ),
       'central' => array(
-        0 => 'body',
         1 => 'cwt_team_role',
-        2 => 'field_team_links',
-        3 => 'group_team_members',
-        4 => 'group_team_tabs',
-        5 => 'group_team_tab_role',
-        6 => 'cwt_team_name',
-        7 => 'group_team_tab_project_team',
-        8 => 'cwt_team_president',
-        9 => 'group_team_tab_name',
-        10 => 'group_team_name_wrapper',
-        11 => 'cwt_team_project_team',
-        12 => 'group_team_president',
-        13 => 'group_team_project_team_wrapper',
-        14 => 'group_team_role_wrapper',
+        2 => 'field_illustrative_image',
+        3 => 'body',
+        4 => 'field_team_links',
+        5 => 'group_team_members',
+        6 => 'group_team_tab_role',
+        7 => 'cwt_team_name',
+        8 => 'group_team_tab_project_team',
+        9 => 'group_team_comissioners',
+        10 => 'group_team_tabs',
+        11 => 'cwt_team_president',
+        12 => 'group_team_tab_name',
+        13 => 'group_team_name_wrapper',
+        14 => 'cwt_team_project_team',
+        15 => 'group_team_president',
+        16 => 'group_team_project_team_wrapper',
+        17 => 'group_team_role_wrapper',
       ),
     ),
     'fields' => array(
-      'body' => 'central',
+      'title' => 'left_header',
       'cwt_team_role' => 'central',
+      'field_illustrative_image' => 'central',
+      'body' => 'central',
       'field_team_links' => 'central',
       'group_team_members' => 'central',
-      'group_team_tabs' => 'central',
       'group_team_tab_role' => 'central',
       'cwt_team_name' => 'central',
       'group_team_tab_project_team' => 'central',
+      'group_team_comissioners' => 'central',
+      'group_team_tabs' => 'central',
       'cwt_team_president' => 'central',
       'group_team_tab_name' => 'central',
       'group_team_name_wrapper' => 'central',
