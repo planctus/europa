@@ -723,7 +723,7 @@ function dt_core_context_load_alter(&$context) {
 
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
-  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && $element['#language'] !== $element['#entity']->language) {
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
     // Remove maxlength.
     unset($element['#maxlength']);
   }
