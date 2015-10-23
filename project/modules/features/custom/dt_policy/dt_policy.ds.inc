@@ -80,6 +80,11 @@ function dt_policy_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|policy|full'] = $ds_fieldsetting;
 
@@ -213,18 +218,12 @@ function dt_policy_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'content_type_label',
-        1 => 'group_policy_meta',
-        3 => 'title',
-        4 => 'field_core_introduction',
-      ),
       'central' => array(
-        2 => 'latest_announcements_block',
+        0 => 'latest_announcements_block',
         6 => 'group_policy_tabs',
         7 => 'group_policy_tab_actions',
         8 => 'group_policy_tab_latest',
-        11 => 'group_policy_tab_details',
+        10 => 'group_policy_tab_details',
         14 => 'field_policy_detail_objectives',
         15 => 'field_policy_detail_body',
         16 => 'group_policy_documents',
@@ -236,27 +235,33 @@ function dt_policy_ds_layout_settings_info() {
         22 => 'policy_actions',
         23 => 'field_policy_next_steps',
       ),
+      'left_header' => array(
+        1 => 'content_type_label',
+        2 => 'group_policy_meta',
+        3 => 'title',
+        4 => 'field_core_introduction',
+      ),
       'top' => array(
-        7 => 'group_policy_contextual',
-        10 => 'field_core_priorities',
-        12 => 'field_core_topics',
-        14 => 'field_core_persons',
-        15 => 'field_core_department',
+        5 => 'group_policy_contextual',
+        9 => 'field_core_priorities',
+        11 => 'field_core_topics',
+        12 => 'field_core_persons',
+        13 => 'field_core_department',
       ),
     ),
     'fields' => array(
+      'latest_announcements_block' => 'central',
       'content_type_label' => 'left_header',
       'group_policy_meta' => 'left_header',
-      'latest_announcements_block' => 'central',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_contextual' => 'top',
       'group_policy_tabs' => 'central',
       'group_policy_tab_actions' => 'central',
-      'field_core_priorities' => 'top',
       'group_policy_tab_latest' => 'central',
-      'field_core_topics' => 'top',
+      'field_core_priorities' => 'top',
       'group_policy_tab_details' => 'central',
+      'field_core_topics' => 'top',
       'field_core_persons' => 'top',
       'field_core_department' => 'top',
       'field_policy_detail_objectives' => 'central',
