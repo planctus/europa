@@ -208,63 +208,6 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_topics'
-  $field_instances['node-priority_policy_area-field_core_topics'] = array(
-    'bundle' => 'priority_policy_area',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select the related topics.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 49,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'nexteuropa_formatters',
-        'settings' => array(
-          'expander_has_expander' => FALSE,
-          'expander_trim_at' => 0,
-          'expander_trim_to' => 0,
-        ),
-        'type' => 'context_nav_item',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_topics',
-    'label' => 'Related topics',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 44,
-    ),
-  );
-
   // Exported field_instance: 'node-priority_policy_area-field_core_departments'
   $field_instances['node-priority_policy_area-field_core_departments'] = array(
     'bundle' => 'priority_policy_area',
@@ -282,7 +225,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'weight' => 48,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'expander_has_expander' => FALSE,
@@ -290,7 +233,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1019,7 +962,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 2,
         ),
         'type' => 'context_nav_item',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1071,10 +1014,15 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'weight' => 21,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1305,6 +1253,63 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_topics'
+  $field_instances['node-priority_policy_area-field_core_topics'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the related topics.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 49,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_topics',
+    'label' => 'Related topics',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'node-priority_policy_area-group_content_access'
   $field_instances['node-priority_policy_area-group_content_access'] = array(
     'bundle' => 'priority_policy_area',
@@ -1521,13 +1526,17 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');
+  t('Related departments');
   t('Related links');
+  t('Related topics');
   t('Select a banner if you would like to display a banner on top of this page.');
   t('Select a featured item in case certain content needs to be highlighted for a limited period in time.');
   t('Select and order the priority policy areas and policies that part of this priority policy area.');
   t('Select and order the related commissioners.');
   t('Select the Policy areas that are associated with this Priority policy area.');
   t('Select the publications, infographics, files, etc. that are key for this Priority policy area.');
+  t('Select the related departments.');
+  t('Select the related topics.');
   t('Select the timeline of this Priority policy area.');
   t('Social Network Links');
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
