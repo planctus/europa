@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Idol admin search
+ * Idol admin search.
  */
 
 

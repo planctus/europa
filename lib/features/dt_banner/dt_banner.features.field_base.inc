@@ -10,7 +10,7 @@
 function dt_banner_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_banner_author'
+  // Exported field_base: 'field_banner_author'.
   $field_bases['field_banner_author'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -40,7 +40,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_banner_author_gender'
+  // Exported field_base: 'field_banner_author_gender'.
   $field_bases['field_banner_author_gender'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -68,7 +68,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_banner_caption'
+  // Exported field_base: 'field_banner_caption'.
   $field_bases['field_banner_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -98,7 +98,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_banner_quote'
+  // Exported field_base: 'field_banner_quote'.
   $field_bases['field_banner_quote'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -128,7 +128,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_banner_video_file'
+  // Exported field_base: 'field_banner_video_file'.
   $field_bases['field_banner_video_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -162,7 +162,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_core_banner'
+  // Exported field_base: 'field_core_banner'.
   $field_bases['field_core_banner'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -207,7 +207,7 @@ function dt_banner_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_banners'
+  // Exported field_base: 'field_core_banners'.
   $field_bases['field_core_banners'] = array(
     'active' => 1,
     'cardinality' => FIELD_CARDINALITY_UNLIMITED,

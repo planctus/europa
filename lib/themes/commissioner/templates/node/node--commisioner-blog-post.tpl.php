@@ -106,10 +106,10 @@
       $block_tags = module_invoke('views', 'block_view', 'blog_commisioner_tags-block');
       print render($block_tags['content']);
     ?>
-    <?php  
+    <?php
       $block_social = module_invoke('social_bookmark', 'block_view', 'social-bar');
       if ($block_social['content']) {
-        $output = '<div class="block-social-bar"><span class="label">'.t('Share this blog post:').'</span>';
+        $output = '<div class="block-social-bar"><span class="label">' . t('Share this blog post:') . '</span>';
         $output .= $block_social['content'];
         $output .= '</div>';
 

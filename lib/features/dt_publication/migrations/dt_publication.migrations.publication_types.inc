@@ -63,6 +63,9 @@ class DTPublicationPublicationTypesMigration extends Migration {
     );
   }
 
+  /**
+   *
+   */
   public function prepareRow($current_row) {
     // Always include this fragment at the beginning of every prepareRow()
     // implementation, so parent classes can ignore rows.
@@ -79,4 +82,5 @@ class DTPublicationPublicationTypesMigration extends Migration {
     }
     return TRUE;
   }
+
 }

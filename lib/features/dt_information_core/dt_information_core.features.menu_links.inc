@@ -100,6 +100,5 @@ function dt_information_core_menu_default_menu_links() {
   t('Other social media');
   t('Twitter');
 
-
   return $menu_links;
 }

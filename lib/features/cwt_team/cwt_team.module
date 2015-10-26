@@ -46,6 +46,7 @@ function cwt_team_menu_alter(&$items) {
  * Page callback for the Nodequeue autocomplete field.
  *
  * This replaces the original autocomplete callback.
+ *
  * @see nodequeue_autocomplete()
  */
 function cwt_team_nodequeue_autocomplete() {

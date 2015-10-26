@@ -10,7 +10,7 @@
 function dt_policy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy-field_core_department'
+  // Exported field_instance: 'node-policy-field_core_department'.
   $field_instances['node-policy-field_core_department'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -69,7 +69,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_description'
+  // Exported field_instance: 'node-policy-field_core_description'.
   $field_instances['node-policy-field_core_description'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -153,7 +153,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_introduction'
+  // Exported field_instance: 'node-policy-field_core_introduction'.
   $field_instances['node-policy-field_core_introduction'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -237,7 +237,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_legacy_link'
+  // Exported field_instance: 'node-policy-field_core_legacy_link'.
   $field_instances['node-policy-field_core_legacy_link'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -307,7 +307,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_persons'
+  // Exported field_instance: 'node-policy-field_core_persons'.
   $field_instances['node-policy-field_core_persons'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -367,7 +367,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_policy_areas'
+  // Exported field_instance: 'node-policy-field_core_policy_areas'.
   $field_instances['node-policy-field_core_policy_areas'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -422,7 +422,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_priorities'
+  // Exported field_instance: 'node-policy-field_core_priorities'.
   $field_instances['node-policy-field_core_priorities'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -481,7 +481,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_topics'
+  // Exported field_instance: 'node-policy-field_core_topics'.
   $field_instances['node-policy-field_core_topics'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -541,7 +541,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_author'
+  // Exported field_instance: 'node-policy-field_policy_author'.
   $field_instances['node-policy-field_policy_author'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -619,7 +619,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_caption'
+  // Exported field_instance: 'node-policy-field_policy_caption'.
   $field_instances['node-policy-field_policy_caption'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -697,7 +697,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_body'
+  // Exported field_instance: 'node-policy-field_policy_detail_body'.
   $field_instances['node-policy-field_policy_detail_body'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -776,7 +776,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_file'
+  // Exported field_instance: 'node-policy-field_policy_detail_file'.
   $field_instances['node-policy-field_policy_detail_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -846,7 +846,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_objectives'
+  // Exported field_instance: 'node-policy-field_policy_detail_objectives'.
   $field_instances['node-policy-field_policy_detail_objectives'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -930,7 +930,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_featured_file'
+  // Exported field_instance: 'node-policy-field_policy_featured_file'.
   $field_instances['node-policy-field_policy_featured_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -1000,7 +1000,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_implementations'
+  // Exported field_instance: 'node-policy-field_policy_implementations'.
   $field_instances['node-policy-field_policy_implementations'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1055,7 +1055,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_input'
+  // Exported field_instance: 'node-policy-field_policy_input'.
   $field_instances['node-policy-field_policy_input'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1109,7 +1109,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_keyfiles'
+  // Exported field_instance: 'node-policy-field_policy_keyfiles'.
   $field_instances['node-policy-field_policy_keyfiles'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1170,7 +1170,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_next_steps'
+  // Exported field_instance: 'node-policy-field_policy_next_steps'.
   $field_instances['node-policy-field_policy_next_steps'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1222,7 +1222,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_paragraph'
+  // Exported field_instance: 'node-policy-field_policy_paragraph'.
   $field_instances['node-policy-field_policy_paragraph'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1300,7 +1300,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_quote'
+  // Exported field_instance: 'node-policy-field_policy_quote'.
   $field_instances['node-policy-field_policy_quote'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1378,7 +1378,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_sharable_banner'
+  // Exported field_instance: 'node-policy-field_policy_sharable_banner'.
   $field_instances['node-policy-field_policy_sharable_banner'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1434,7 +1434,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-group_content_access'
+  // Exported field_instance: 'node-policy-group_content_access'.
   $field_instances['node-policy-group_content_access'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1499,7 +1499,7 @@ function dt_policy_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy-og_group_ref'
+  // Exported field_instance: 'node-policy-og_group_ref'.
   $field_instances['node-policy-og_group_ref'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1570,7 +1570,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-title_field'
+  // Exported field_instance: 'node-policy-title_field'.
   $field_instances['node-policy-title_field'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,

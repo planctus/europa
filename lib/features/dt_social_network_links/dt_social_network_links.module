@@ -148,7 +148,7 @@ function dt_social_network_links_field_validate($obj_type, $object, $field, $ins
 /**
  * Implements hook_field_widget_error().
  *
- * hook_field_widget_error() lets us figure out what to do with errors
+ * Hook_field_widget_error() lets us figure out what to do with errors
  * we might have generated in hook_field_validate(). Generally, we'll just
  * call form_error().
  *

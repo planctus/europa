@@ -10,7 +10,7 @@
 function dt_site_menu_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_fifth'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_fifth'.
   $field_instances['bean-site_menu-field_site_menu_fifth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -63,7 +63,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_first'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_first'.
   $field_instances['bean-site_menu-field_site_menu_first'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -107,7 +107,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_fourth'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_fourth'.
   $field_instances['bean-site_menu-field_site_menu_fourth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -160,7 +160,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_second'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_second'.
   $field_instances['bean-site_menu-field_site_menu_second'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -204,7 +204,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_sixth'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_sixth'.
   $field_instances['bean-site_menu-field_site_menu_sixth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -256,7 +256,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_third'
+  // Exported field_instance: 'bean-site_menu-field_site_menu_third'.
   $field_instances['bean-site_menu-field_site_menu_third'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,

@@ -84,14 +84,14 @@
 <?php print render($title_prefix); ?>
 <?php if (!$page): ?>
   <span class="member-details-assistants-name">
-  	<?php 
-  		print '<span class="first-name">' . render($content['field_biography_assistant_fname']['#items'][0]['safe_value']) . '</span>' .
-  		'<span class="last-name">' . filter_xss($title) . '</span>'; 
-  	?>
+  	<?php
+          print '<span class="first-name">' . render($content['field_biography_assistant_fname']['#items'][0]['safe_value']) . '</span>' .
+          '<span class="last-name">' . filter_xss($title) . '</span>';
+      ?>
   </span>
 <?php endif; ?>
 <?php print render($title_suffix); ?>
 <?php
-	hide($content['field_biography_assistant_fname']);
-	print render($content); 
+    hide($content['field_biography_assistant_fname']);
+    print render($content);
 ?>

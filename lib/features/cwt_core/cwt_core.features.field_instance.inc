@@ -10,7 +10,7 @@
 function cwt_core_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-audio-filename_field'
+  // Exported field_instance: 'file-audio-filename_field'.
   $field_instances['file-audio-filename_field'] = array(
     'bundle' => 'audio',
     'default_value' => NULL,
@@ -65,7 +65,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-document-filename_field'
+  // Exported field_instance: 'file-document-filename_field'.
   $field_instances['file-document-filename_field'] = array(
     'bundle' => 'document',
     'default_value' => NULL,
@@ -120,7 +120,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-filename_field'
+  // Exported field_instance: 'file-image-filename_field'.
   $field_instances['file-image-filename_field'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -175,7 +175,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-video-filename_field'
+  // Exported field_instance: 'file-video-filename_field'.
   $field_instances['file-video-filename_field'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -230,7 +230,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_shared_tags'
+  // Exported field_instance: 'node-commisioner_blog_post-field_shared_tags'.
   $field_instances['node-commisioner_blog_post-field_shared_tags'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,
@@ -278,7 +278,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_shared_teaser'
+  // Exported field_instance: 'node-commisioner_blog_post-field_shared_teaser'.
   $field_instances['node-commisioner_blog_post-field_shared_teaser'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,
@@ -369,7 +369,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-custom_page-body'
+  // Exported field_instance: 'node-custom_page-body'.
   $field_instances['node-custom_page-body'] = array(
     'bundle' => 'custom_page',
     'default_value' => NULL,
@@ -454,7 +454,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-custom_page-field_editorial_section'
+  // Exported field_instance: 'node-custom_page-field_editorial_section'.
   $field_instances['node-custom_page-field_editorial_section'] = array(
     'bundle' => 'custom_page',
     'default_value' => NULL,
@@ -495,7 +495,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-aggregated_item_types-description_field'
+  // Exported field_instance: 'taxonomy_term-aggregated_item_types-description_field'.
   $field_instances['taxonomy_term-aggregated_item_types-description_field'] = array(
     'bundle' => 'aggregated_item_types',
     'default_value' => NULL,
@@ -534,7 +534,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-aggregated_item_types-name_field'
+  // Exported field_instance: 'taxonomy_term-aggregated_item_types-name_field'.
   $field_instances['taxonomy_term-aggregated_item_types-name_field'] = array(
     'bundle' => 'aggregated_item_types',
     'default_value' => NULL,
@@ -571,7 +571,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-departments-description_field'
+  // Exported field_instance: 'taxonomy_term-departments-description_field'.
   $field_instances['taxonomy_term-departments-description_field'] = array(
     'bundle' => 'departments',
     'default_value' => NULL,
@@ -610,7 +610,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-departments-field_department_link'
+  // Exported field_instance: 'taxonomy_term-departments-field_department_link'.
   $field_instances['taxonomy_term-departments-field_department_link'] = array(
     'bundle' => 'departments',
     'default_value' => NULL,
@@ -659,7 +659,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-departments-name_field'
+  // Exported field_instance: 'taxonomy_term-departments-name_field'.
   $field_instances['taxonomy_term-departments-name_field'] = array(
     'bundle' => 'departments',
     'default_value' => NULL,
@@ -696,7 +696,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-editorial_sections-description_field'
+  // Exported field_instance: 'taxonomy_term-editorial_sections-description_field'.
   $field_instances['taxonomy_term-editorial_sections-description_field'] = array(
     'bundle' => 'editorial_sections',
     'default_value' => NULL,
@@ -735,7 +735,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-editorial_sections-field_team_block_description'
+  // Exported field_instance: 'taxonomy_term-editorial_sections-field_team_block_description'.
   $field_instances['taxonomy_term-editorial_sections-field_team_block_description'] = array(
     'bundle' => 'editorial_sections',
     'default_value' => NULL,
@@ -811,7 +811,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-editorial_sections-name_field'
+  // Exported field_instance: 'taxonomy_term-editorial_sections-name_field'.
   $field_instances['taxonomy_term-editorial_sections-name_field'] = array(
     'bundle' => 'editorial_sections',
     'default_value' => NULL,
@@ -864,7 +864,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-project_teams-description_field'
+  // Exported field_instance: 'taxonomy_term-project_teams-description_field'.
   $field_instances['taxonomy_term-project_teams-description_field'] = array(
     'bundle' => 'project_teams',
     'default_value' => NULL,
@@ -903,7 +903,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-project_teams-field_project_teams_classname'
+  // Exported field_instance: 'taxonomy_term-project_teams-field_project_teams_classname'.
   $field_instances['taxonomy_term-project_teams-field_project_teams_classname'] = array(
     'bundle' => 'project_teams',
     'default_value' => NULL,
@@ -979,7 +979,7 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-project_teams-name_field'
+  // Exported field_instance: 'taxonomy_term-project_teams-name_field'.
   $field_instances['taxonomy_term-project_teams-name_field'] = array(
     'bundle' => 'project_teams',
     'default_value' => NULL,

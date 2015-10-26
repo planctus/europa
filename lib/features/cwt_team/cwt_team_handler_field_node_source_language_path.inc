@@ -33,4 +33,5 @@ class cwt_team_handler_field_node_source_language_path extends views_handler_fie
       'language' => $language,
     ));
   }
+
 }

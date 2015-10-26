@@ -159,7 +159,7 @@ function dt_language_selector_site_popup_form__splash_screen_settings_form_alter
     )
   );
 
-  // And our splash page text,
+  // And our splash page text,.
   $splash_data = variable_get(
     'dt_language_selector_site_splash_message',
     array(

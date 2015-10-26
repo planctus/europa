@@ -5,9 +5,21 @@
  */
 
 include_once 'dt_core.features.inc';
+/**
+ *
+ */
 class DTCoreSourceFieldError extends Exception {};
+/**
+ *
+ */
 class DTCoreDestinationFieldError extends Exception {};
+/**
+ *
+ */
 class DTCoreFieldTypeAreNotSame extends Exception {};
+/**
+ *
+ */
 class DTCoreParentCircular extends Exception {};
 
 /**
@@ -721,6 +733,9 @@ function dt_core_context_load_alter(&$context) {
   }
 }
 
+/**
+ *
+ */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
   if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && $element['#language'] !== $element['#entity']->language) {

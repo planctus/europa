@@ -10,7 +10,7 @@
 function dt_person_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_persons'
+  // Exported field_base: 'field_core_persons'.
   $field_bases['field_core_persons'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -54,7 +54,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_person_first_name'
+  // Exported field_base: 'field_person_first_name'.
   $field_bases['field_person_first_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -84,7 +84,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_person_gender'
+  // Exported field_base: 'field_person_gender'.
   $field_bases['field_person_gender'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -112,7 +112,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_person_last_name'
+  // Exported field_base: 'field_person_last_name'.
   $field_bases['field_person_last_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -142,7 +142,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_person_photo'
+  // Exported field_base: 'field_person_photo'.
   $field_bases['field_person_photo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -175,7 +175,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_person_role'
+  // Exported field_base: 'field_person_role'.
   $field_bases['field_person_role'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -211,7 +211,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_person_tagline'
+  // Exported field_base: 'field_person_tagline'.
   $field_bases['field_person_tagline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -240,7 +240,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_user_role_feminine'
+  // Exported field_base: 'field_user_role_feminine'.
   $field_bases['field_user_role_feminine'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -270,7 +270,7 @@ function dt_person_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_user_role_plural'
+  // Exported field_base: 'field_user_role_plural'.
   $field_bases['field_user_role_plural'] = array(
     'active' => 1,
     'cardinality' => 1,

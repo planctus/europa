@@ -10,7 +10,7 @@
 function dt_person_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-person-field_core_contact'
+  // Exported field_instance: 'node-person-field_core_contact'.
   $field_instances['node-person-field_core_contact'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -73,7 +73,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_core_legacy_link'
+  // Exported field_instance: 'node-person-field_core_legacy_link'.
   $field_instances['node-person-field_core_legacy_link'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -134,7 +134,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_first_name'
+  // Exported field_instance: 'node-person-field_person_first_name'.
   $field_instances['node-person-field_person_first_name'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -214,7 +214,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_gender'
+  // Exported field_instance: 'node-person-field_person_gender'.
   $field_instances['node-person-field_person_gender'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -264,7 +264,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_last_name'
+  // Exported field_instance: 'node-person-field_person_last_name'.
   $field_instances['node-person-field_person_last_name'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -344,7 +344,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_photo'
+  // Exported field_instance: 'node-person-field_person_photo'.
   $field_instances['node-person-field_person_photo'] = array(
     'bundle' => 'person',
     'deleted' => 0,
@@ -435,7 +435,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_role'
+  // Exported field_instance: 'node-person-field_person_role'.
   $field_instances['node-person-field_person_role'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -488,7 +488,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_tagline'
+  // Exported field_instance: 'node-person-field_person_tagline'.
   $field_instances['node-person-field_person_tagline'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -572,7 +572,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-group_content_access'
+  // Exported field_instance: 'node-person-group_content_access'.
   $field_instances['node-person-group_content_access'] = array(
     'bundle' => 'person',
     'default_value' => array(
@@ -639,7 +639,7 @@ function dt_person_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-person-og_group_ref'
+  // Exported field_instance: 'node-person-og_group_ref'.
   $field_instances['node-person-og_group_ref'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -710,7 +710,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-title_field'
+  // Exported field_instance: 'node-person-title_field'.
   $field_instances['node-person-title_field'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -797,7 +797,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-person_roles-field_user_role_feminine'
+  // Exported field_instance: 'taxonomy_term-person_roles-field_user_role_feminine'.
   $field_instances['taxonomy_term-person_roles-field_user_role_feminine'] = array(
     'bundle' => 'person_roles',
     'default_value' => NULL,
@@ -863,7 +863,7 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-person_roles-field_user_role_plural'
+  // Exported field_instance: 'taxonomy_term-person_roles-field_user_role_plural'.
   $field_instances['taxonomy_term-person_roles-field_user_role_plural'] = array(
     'bundle' => 'person_roles',
     'default_value' => NULL,

@@ -8,7 +8,7 @@
  * Implements hook_install().
  */
 function dt_aboutec_core_install() {
-  // Features related to About the EC class
+  // Features related to About the EC class.
   $features = array(
     'dt_department',
     'dt_person',
@@ -26,7 +26,7 @@ function dt_aboutec_core_uninstall() {
 }
 
 /**
- * Enabling Departments and Person features
+ * Enabling Departments and Person features.
  */
 function dt_aboutec_core_update_7101() {
   $features = array(

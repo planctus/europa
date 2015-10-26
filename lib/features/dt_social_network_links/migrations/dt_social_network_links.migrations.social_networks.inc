@@ -92,4 +92,5 @@ class DTSocialNetworksMigration extends Migration {
       )
     );
   }
+
 }

@@ -10,7 +10,7 @@
 function cwt_core_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'description_field'
+  // Exported field_base: 'description_field'.
   $field_bases['description_field'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -39,7 +39,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_department_link'
+  // Exported field_base: 'field_department_link'.
   $field_bases['field_department_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -70,7 +70,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_editorial_section'
+  // Exported field_base: 'field_editorial_section'.
   $field_bases['field_editorial_section'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -106,7 +106,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_project_teams_classname'
+  // Exported field_base: 'field_project_teams_classname'.
   $field_bases['field_project_teams_classname'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -136,7 +136,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_shared_tags'
+  // Exported field_base: 'field_shared_tags'.
   $field_bases['field_shared_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -172,7 +172,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_shared_teaser'
+  // Exported field_base: 'field_shared_teaser'.
   $field_bases['field_shared_teaser'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -201,7 +201,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_team_block_description'
+  // Exported field_base: 'field_team_block_description'.
   $field_bases['field_team_block_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -231,7 +231,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'filename_field'
+  // Exported field_base: 'filename_field'.
   $field_bases['filename_field'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -261,7 +261,7 @@ function cwt_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'name_field'
+  // Exported field_base: 'name_field'.
   $field_bases['name_field'] = array(
     'active' => 1,
     'cardinality' => 1,

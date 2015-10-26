@@ -10,7 +10,7 @@
 function dt_class_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-class-field_class_related_links'
+  // Exported field_instance: 'node-class-field_class_related_links'.
   $field_instances['node-class-field_class_related_links'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -78,7 +78,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-field_core_department'
+  // Exported field_instance: 'node-class-field_core_department'.
   $field_instances['node-class-field_core_department'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -141,7 +141,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-field_core_description'
+  // Exported field_instance: 'node-class-field_core_description'.
   $field_instances['node-class-field_core_description'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -226,7 +226,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-field_core_introduction'
+  // Exported field_instance: 'node-class-field_core_introduction'.
   $field_instances['node-class-field_core_introduction'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -306,7 +306,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-field_core_topics'
+  // Exported field_instance: 'node-class-field_core_topics'.
   $field_instances['node-class-field_core_topics'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -369,7 +369,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-field_link_groups'
+  // Exported field_instance: 'node-class-field_link_groups'.
   $field_instances['node-class-field_link_groups'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -430,7 +430,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-group_content_access'
+  // Exported field_instance: 'node-class-group_content_access'.
   $field_instances['node-class-group_content_access'] = array(
     'bundle' => 'class',
     'default_value' => array(
@@ -496,7 +496,7 @@ function dt_class_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-class-og_group_ref'
+  // Exported field_instance: 'node-class-og_group_ref'.
   $field_instances['node-class-og_group_ref'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -568,7 +568,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class-title_field'
+  // Exported field_instance: 'node-class-title_field'.
   $field_instances['node-class-title_field'] = array(
     'bundle' => 'class',
     'default_value' => NULL,
@@ -624,7 +624,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-field_class_link_explanation'
+  // Exported field_instance: 'node-class_link_group-field_class_link_explanation'.
   $field_instances['node-class_link_group-field_class_link_explanation'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,
@@ -697,7 +697,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-field_class_link_legacy_link'
+  // Exported field_instance: 'node-class_link_group-field_class_link_legacy_link'.
   $field_instances['node-class_link_group-field_class_link_legacy_link'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,
@@ -754,7 +754,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-group_content_access'
+  // Exported field_instance: 'node-class_link_group-group_content_access'.
   $field_instances['node-class_link_group-group_content_access'] = array(
     'bundle' => 'class_link_group',
     'default_value' => array(
@@ -808,7 +808,7 @@ function dt_class_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-class_link_group-og_group_ref'
+  // Exported field_instance: 'node-class_link_group-og_group_ref'.
   $field_instances['node-class_link_group-og_group_ref'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,
@@ -868,7 +868,7 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-title_field'
+  // Exported field_instance: 'node-class_link_group-title_field'.
   $field_instances['node-class_link_group-title_field'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,

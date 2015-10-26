@@ -10,7 +10,7 @@
 function dt_contact_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_contact_email_address'
+  // Exported field_base: 'field_contact_email_address'.
   $field_bases['field_contact_email_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -28,7 +28,7 @@ function dt_contact_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_contact_link_form'
+  // Exported field_base: 'field_contact_link_form'.
   $field_bases['field_contact_link_form'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -59,7 +59,7 @@ function dt_contact_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_contact_phone_number'
+  // Exported field_base: 'field_contact_phone_number'.
   $field_bases['field_contact_phone_number'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -89,7 +89,7 @@ function dt_contact_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_contact_postal_mail'
+  // Exported field_base: 'field_contact_postal_mail'.
   $field_bases['field_contact_postal_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -107,7 +107,7 @@ function dt_contact_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_core_contact'
+  // Exported field_base: 'field_core_contact'.
   $field_bases['field_core_contact'] = array(
     'active' => 1,
     'cardinality' => -1,

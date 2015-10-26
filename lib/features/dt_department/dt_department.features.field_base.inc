@@ -10,7 +10,7 @@
 function dt_department_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_department'
+  // Exported field_base: 'field_core_department'.
   $field_bases['field_core_department'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -54,7 +54,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_departments'
+  // Exported field_base: 'field_core_departments'.
   $field_bases['field_core_departments'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -98,7 +98,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_contact'
+  // Exported field_base: 'field_department_contact'.
   $field_bases['field_department_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -142,7 +142,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_intro_sentence'
+  // Exported field_base: 'field_department_intro_sentence'.
   $field_bases['field_department_intro_sentence'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -171,7 +171,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_mission'
+  // Exported field_base: 'field_department_mission'.
   $field_bases['field_department_mission'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -202,7 +202,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_department_organigram'
+  // Exported field_base: 'field_department_organigram'.
   $field_bases['field_department_organigram'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -246,7 +246,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_plans_reports'
+  // Exported field_base: 'field_department_plans_reports'.
   $field_bases['field_department_plans_reports'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -275,7 +275,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_staff_search'
+  // Exported field_base: 'field_department_staff_search'.
   $field_bases['field_department_staff_search'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -306,7 +306,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_department_tasks'
+  // Exported field_base: 'field_department_tasks'.
   $field_bases['field_department_tasks'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -342,7 +342,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_department_tasks_desc'
+  // Exported field_base: 'field_department_tasks_desc'.
   $field_bases['field_department_tasks_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -371,7 +371,7 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_work_areas_sent'
+  // Exported field_base: 'field_department_work_areas_sent'.
   $field_bases['field_department_work_areas_sent'] = array(
     'active' => 1,
     'cardinality' => 1,

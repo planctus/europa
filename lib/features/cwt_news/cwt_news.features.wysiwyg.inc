@@ -10,7 +10,7 @@
 function cwt_news_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: news_text_filter
+  // Exported profile: news_text_filter.
   $profiles['news_text_filter'] = (object) array(
     'format' => 'news_text_filter',
     'editor' => 'ckeditor',

@@ -18,7 +18,7 @@ function dt_node_settings_helpers_overall() {
     '#description' => t('Indicate helper content types for the project.'),
   );
 
-  foreach($node_types as $type => $label) {
+  foreach ($node_types as $type => $label) {
     $form['content_types'][$type] = array(
       '#type' => 'checkbox',
       '#title' => $label,
@@ -36,7 +36,7 @@ function dt_node_settings_helpers_overall() {
  */
 function dt_node_settings_helpers_overall_submit($form, &$form_state) {
   $node_types = $form_state['values']['content_types'];
-  foreach($node_types as $type => $selection) {
+  foreach ($node_types as $type => $selection) {
     variable_set('helper_node_type_' . $type, $selection);
   }
 }

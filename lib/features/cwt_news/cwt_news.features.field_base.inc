@@ -10,7 +10,7 @@
 function cwt_news_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_aggregated_news_link'
+  // Exported field_base: 'field_aggregated_news_link'.
   $field_bases['field_aggregated_news_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -41,7 +41,7 @@ function cwt_news_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_aggregated_news_type'
+  // Exported field_base: 'field_aggregated_news_type'.
   $field_bases['field_aggregated_news_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -77,7 +77,7 @@ function cwt_news_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_editorial_section_multiple'
+  // Exported field_base: 'field_editorial_section_multiple'.
   $field_bases['field_editorial_section_multiple'] = array(
     'active' => 1,
     'cardinality' => -1,

@@ -10,7 +10,7 @@
 function dt_department_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-department-field_core_abbreviation'
+  // Exported field_instance: 'node-department-field_core_abbreviation'.
   $field_instances['node-department-field_core_abbreviation'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -108,7 +108,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_contact'
+  // Exported field_instance: 'node-department-field_core_contact'.
   $field_instances['node-department-field_core_contact'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -180,7 +180,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_description'
+  // Exported field_instance: 'node-department-field_core_description'.
   $field_instances['node-department-field_core_description'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -268,7 +268,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_ecorganisation'
+  // Exported field_instance: 'node-department-field_core_ecorganisation'.
   $field_instances['node-department-field_core_ecorganisation'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -334,7 +334,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_introduction'
+  // Exported field_instance: 'node-department-field_core_introduction'.
   $field_instances['node-department-field_core_introduction'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -426,7 +426,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_legacy_link'
+  // Exported field_instance: 'node-department-field_core_legacy_link'.
   $field_instances['node-department-field_core_legacy_link'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -494,7 +494,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_legacy_links'
+  // Exported field_instance: 'node-department-field_core_legacy_links'.
   $field_instances['node-department-field_core_legacy_links'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -563,7 +563,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_links'
+  // Exported field_instance: 'node-department-field_core_links'.
   $field_instances['node-department-field_core_links'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -644,7 +644,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_persons'
+  // Exported field_instance: 'node-department-field_core_persons'.
   $field_instances['node-department-field_core_persons'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -707,7 +707,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_priorities'
+  // Exported field_instance: 'node-department-field_core_priorities'.
   $field_instances['node-department-field_core_priorities'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -767,7 +767,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_social_network_links'
+  // Exported field_instance: 'node-department-field_core_social_network_links'.
   $field_instances['node-department-field_core_social_network_links'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -826,7 +826,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_core_topics'
+  // Exported field_instance: 'node-department-field_core_topics'.
   $field_instances['node-department-field_core_topics'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -909,7 +909,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_intro_sentence'
+  // Exported field_instance: 'node-department-field_department_intro_sentence'.
   $field_instances['node-department-field_department_intro_sentence'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -990,7 +990,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_mission'
+  // Exported field_instance: 'node-department-field_department_mission'.
   $field_instances['node-department-field_department_mission'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1059,7 +1059,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_organigram'
+  // Exported field_instance: 'node-department-field_department_organigram'.
   $field_instances['node-department-field_department_organigram'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1122,7 +1122,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_plans_reports'
+  // Exported field_instance: 'node-department-field_department_plans_reports'.
   $field_instances['node-department-field_department_plans_reports'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1211,7 +1211,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_staff_search'
+  // Exported field_instance: 'node-department-field_department_staff_search'.
   $field_instances['node-department-field_department_staff_search'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1280,7 +1280,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_tasks'
+  // Exported field_instance: 'node-department-field_department_tasks'.
   $field_instances['node-department-field_department_tasks'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1333,7 +1333,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_tasks_desc'
+  // Exported field_instance: 'node-department-field_department_tasks_desc'.
   $field_instances['node-department-field_department_tasks_desc'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1421,7 +1421,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-field_department_work_areas_sent'
+  // Exported field_instance: 'node-department-field_department_work_areas_sent'.
   $field_instances['node-department-field_department_work_areas_sent'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1517,7 +1517,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-group_content_access'
+  // Exported field_instance: 'node-department-group_content_access'.
   $field_instances['node-department-group_content_access'] = array(
     'bundle' => 'department',
     'default_value' => array(
@@ -1583,7 +1583,7 @@ function dt_department_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-department-og_group_ref'
+  // Exported field_instance: 'node-department-og_group_ref'.
   $field_instances['node-department-og_group_ref'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1655,7 +1655,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-department-title_field'
+  // Exported field_instance: 'node-department-title_field'.
   $field_instances['node-department-title_field'] = array(
     'bundle' => 'department',
     'default_value' => NULL,
@@ -1757,7 +1757,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-department_tasks-description_field'
+  // Exported field_instance: 'taxonomy_term-department_tasks-description_field'.
   $field_instances['taxonomy_term-department_tasks-description_field'] = array(
     'bundle' => 'department_tasks',
     'default_value' => NULL,
@@ -1796,7 +1796,7 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-department_tasks-name_field'
+  // Exported field_instance: 'taxonomy_term-department_tasks-name_field'.
   $field_instances['taxonomy_term-department_tasks-name_field'] = array(
     'bundle' => 'department_tasks',
     'default_value' => NULL,

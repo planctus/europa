@@ -11,7 +11,7 @@ function dt_core_install() {
   // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
 
-  // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!)
+  // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!).
   variable_set('cce_basic_config_admin_pages', array());
 
   // Applying a default set of buttons to the Full HTML profile.
@@ -401,7 +401,7 @@ function dt_core_update_7129() {
     filter_format_exists('full_html') &&
     module_exists('ckeditor_link')
   ) {
-    // Set status to 1
+    // Set status to 1.
     $updated = db_update('filter')
       ->fields(array(
         'status' => 1,
@@ -604,19 +604,19 @@ function dt_core_update_7144() {
 function dt_core_update_7145() {
   // Set all content to english if undefined.
   db_update('field_data_body')
-  ->fields(array(
-    'language' => 'en',
-  ))
-  ->condition('language', 'und', '=')
-  ->execute();
+    ->fields(array(
+      'language' => 'en',
+    ))
+    ->condition('language', 'und', '=')
+    ->execute();
 
   // Set all content revision to english if undefined.
   db_update('field_revision_body')
-  ->fields(array(
-    'language' => 'en',
-  ))
-  ->condition('language', 'und', '=')
-  ->execute();
+    ->fields(array(
+      'language' => 'en',
+    ))
+    ->condition('language', 'und', '=')
+    ->execute();
 }
 
 /**

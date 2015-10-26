@@ -10,7 +10,7 @@
 function dt_social_network_links_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-social_networks-description_field'
+  // Exported field_instance: 'taxonomy_term-social_networks-description_field'.
   $field_instances['taxonomy_term-social_networks-description_field'] = array(
     'bundle' => 'social_networks',
     'default_value' => NULL,
@@ -49,7 +49,7 @@ function dt_social_network_links_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-social_networks-field_social_network_classname'
+  // Exported field_instance: 'taxonomy_term-social_networks-field_social_network_classname'.
   $field_instances['taxonomy_term-social_networks-field_social_network_classname'] = array(
     'bundle' => 'social_networks',
     'default_value' => NULL,
@@ -111,7 +111,7 @@ function dt_social_network_links_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-social_networks-field_social_network_icon'
+  // Exported field_instance: 'taxonomy_term-social_networks-field_social_network_icon'.
   $field_instances['taxonomy_term-social_networks-field_social_network_icon'] = array(
     'bundle' => 'social_networks',
     'deleted' => 0,
@@ -177,7 +177,7 @@ function dt_social_network_links_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-social_networks-name_field'
+  // Exported field_instance: 'taxonomy_term-social_networks-name_field'.
   $field_instances['taxonomy_term-social_networks-name_field'] = array(
     'bundle' => 'social_networks',
     'default_value' => NULL,

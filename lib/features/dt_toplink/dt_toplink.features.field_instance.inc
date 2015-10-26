@@ -10,7 +10,7 @@
 function dt_toplink_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-toplink-field_core_description'
+  // Exported field_instance: 'node-toplink-field_core_description'.
   $field_instances['node-toplink-field_core_description'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,
@@ -83,7 +83,7 @@ function dt_toplink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-toplink-field_core_legacy_link'
+  // Exported field_instance: 'node-toplink-field_core_legacy_link'.
   $field_instances['node-toplink-field_core_legacy_link'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,
@@ -141,7 +141,7 @@ function dt_toplink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-toplink-group_content_access'
+  // Exported field_instance: 'node-toplink-group_content_access'.
   $field_instances['node-toplink-group_content_access'] = array(
     'bundle' => 'toplink',
     'default_value' => array(
@@ -195,7 +195,7 @@ function dt_toplink_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-toplink-og_group_ref'
+  // Exported field_instance: 'node-toplink-og_group_ref'.
   $field_instances['node-toplink-og_group_ref'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,
@@ -257,7 +257,7 @@ function dt_toplink_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-toplink-title_field'
+  // Exported field_instance: 'node-toplink-title_field'.
   $field_instances['node-toplink-title_field'] = array(
     'bundle' => 'toplink',
     'default_value' => NULL,

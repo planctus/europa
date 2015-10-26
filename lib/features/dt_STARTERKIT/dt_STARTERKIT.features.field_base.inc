@@ -10,7 +10,7 @@
 function dt_STARTERKIT_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_STARTERKIT_CONTENT_NAME_status'
+  // Exported field_base: 'field_STARTERKIT_CONTENT_NAME_status'.
   $field_bases['field_STARTERKIT_CONTENT_NAME_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -39,7 +39,7 @@ function dt_STARTERKIT_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_STARTERKIT_CONTENT_NAME_type'
+  // Exported field_base: 'field_STARTERKIT_CONTENT_NAME_type'.
   $field_bases['field_STARTERKIT_CONTENT_NAME_type'] = array(
     'active' => 1,
     'cardinality' => 1,

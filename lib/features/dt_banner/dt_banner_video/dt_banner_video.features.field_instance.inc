@@ -10,7 +10,7 @@
 function dt_banner_video_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-banner_video-field_banner_caption'
+  // Exported field_instance: 'node-banner_video-field_banner_caption'.
   $field_instances['node-banner_video-field_banner_caption'] = array(
     'bundle' => 'banner_video',
     'default_value' => NULL,
@@ -78,7 +78,7 @@ function dt_banner_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_video-field_banner_video_file'
+  // Exported field_instance: 'node-banner_video-field_banner_video_file'.
   $field_instances['node-banner_video-field_banner_video_file'] = array(
     'bundle' => 'banner_video',
     'deleted' => 0,
@@ -144,7 +144,7 @@ function dt_banner_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_video-field_core_description'
+  // Exported field_instance: 'node-banner_video-field_core_description'.
   $field_instances['node-banner_video-field_core_description'] = array(
     'bundle' => 'banner_video',
     'default_value' => NULL,
@@ -217,7 +217,7 @@ function dt_banner_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_video-group_content_access'
+  // Exported field_instance: 'node-banner_video-group_content_access'.
   $field_instances['node-banner_video-group_content_access'] = array(
     'bundle' => 'banner_video',
     'default_value' => array(
@@ -271,7 +271,7 @@ function dt_banner_video_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-banner_video-og_group_ref'
+  // Exported field_instance: 'node-banner_video-og_group_ref'.
   $field_instances['node-banner_video-og_group_ref'] = array(
     'bundle' => 'banner_video',
     'default_value' => NULL,

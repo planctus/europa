@@ -23,7 +23,6 @@ function dt_person_strongarm() {
   );
   $export['entity_translation_settings_node__person'] = $strongarm;
 
-
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

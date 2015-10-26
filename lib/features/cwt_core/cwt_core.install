@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * cwt_core.install file
+ * Cwt_core.install file.
  */
 
 /**
@@ -341,9 +341,9 @@ function cwt_core_update_7126() {
 /**
  * Enable translation on following fields.
  *
- * fields from ec_embedded_image:
+ * Fields from ec_embedded_image:
  * file-image-field_file_image_alt_text
- * file-image-field_file_image_title_text
+ * file-image-field_file_image_title_text.
  *
  * fields from cce_basic_config:
  * file-image-field_caption
@@ -412,8 +412,8 @@ function cwt_core_update_7129() {
   $query = new EntityFieldQuery();
 
   $query
-  ->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'aggregated_news');
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'aggregated_news');
 
   $result = $query->execute();
 

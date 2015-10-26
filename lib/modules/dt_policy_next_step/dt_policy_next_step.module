@@ -154,7 +154,7 @@ function dt_policy_next_step_field_formatter_info() {
  */
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-  if(!empty($items)) {
+  if (!empty($items)) {
     $elements['#prefix'] = '<div class="timeline">';
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dt_information_core.features.menu_links.inc
+ * Dt_information_core.features.menu_links.inc.
  */
 
 /**

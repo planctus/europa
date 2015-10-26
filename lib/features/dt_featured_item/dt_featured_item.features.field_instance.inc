@@ -10,7 +10,7 @@
 function dt_featured_item_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-featured_item-field_core_description'
+  // Exported field_instance: 'node-featured_item-field_core_description'.
   $field_instances['node-featured_item-field_core_description'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,
@@ -83,7 +83,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-featured_item-field_core_legacy_link'
+  // Exported field_instance: 'node-featured_item-field_core_legacy_link'.
   $field_instances['node-featured_item-field_core_legacy_link'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,
@@ -142,7 +142,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-featured_item-field_feat_item_image'
+  // Exported field_instance: 'node-featured_item-field_feat_item_image'.
   $field_instances['node-featured_item-field_feat_item_image'] = array(
     'bundle' => 'featured_item',
     'deleted' => 0,
@@ -223,7 +223,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-featured_item-group_content_access'
+  // Exported field_instance: 'node-featured_item-group_content_access'.
   $field_instances['node-featured_item-group_content_access'] = array(
     'bundle' => 'featured_item',
     'default_value' => array(
@@ -276,7 +276,7 @@ function dt_featured_item_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-featured_item-og_group_ref'
+  // Exported field_instance: 'node-featured_item-og_group_ref'.
   $field_instances['node-featured_item-og_group_ref'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,
@@ -335,7 +335,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-featured_item-title_field'
+  // Exported field_instance: 'node-featured_item-title_field'.
   $field_instances['node-featured_item-title_field'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,

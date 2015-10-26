@@ -8,6 +8,9 @@ include_once 'social_network_links.features.inc';
 
 define('SOCIAL_NETWORK_ICONS_CSS', 'public://social_network_icons/social_network_icons.css');
 
+/**
+ *
+ */
 function social_network_links_field_schema($field) {
 
   if ($field['type'] == 'social_network_link') {
@@ -63,6 +66,9 @@ function social_network_links_element_info() {
   return $elements;
 }
 
+/**
+ *
+ */
 function social_network_link_field_validate($element, &$form_state) {
   if (isset($element['#value']['social_network'])) {
     if (empty($element['#value']['social_network'])) {
@@ -77,6 +83,9 @@ function social_network_link_field_validate($element, &$form_state) {
   return $element;
 }
 
+/**
+ *
+ */
 function social_network_link_field_process($element, $form_state, $complete_form) {
   $element['title'] = array(
     '#type' => 'textfield',
@@ -159,7 +168,7 @@ function social_network_links_field_validate($obj_type, $object, $field, $instan
 /**
  * Implements hook_field_widget_error().
  *
- * hook_field_widget_error() lets us figure out what to do with errors
+ * Hook_field_widget_error() lets us figure out what to do with errors
  * we might have generated in hook_field_validate(). Generally, we'll just
  * call form_error().
  *
@@ -204,20 +213,20 @@ function social_network_links_field_widget_form(&$form, &$form_state, $field, $i
     '#title' => t('Title'),
     '#default_value' => isset($items[$delta]['title']) ? $items[$delta]['title'] : NULL,
     '#weight' => 0,
-      ) + $base;
+  ) + $base;
   $element['url'] = array(
     '#type' => 'textfield',
     '#title' => t('URL'),
     '#default_value' => isset($items[$delta]['url']) ? $items[$delta]['url'] : NULL,
     '#weight' => 1,
-      ) + $base;
+  ) + $base;
   $element['social_network'] = array(
     '#type' => 'select',
     '#title' => t('Social Network'),
     '#options' => social_network_links_term_options('social_networks'),
     '#default_value' => isset($items[$delta]['social_network']) ? $items[$delta]['social_network'] : NULL,
     '#weight' => -1,
-      ) + $base;
+  ) + $base;
   return $element;
 }
 
@@ -315,15 +324,15 @@ function social_network_links_field_formatter_view($obj_type, $object, $field, $
         $icon = FALSE;
         $icon_markup = FALSE;
         $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
-        if($term) {
-          if($icon_field = field_view_field('taxonomy_term', $term, 'field_social_network_icon')) {
+        if ($term) {
+          if ($icon_field = field_view_field('taxonomy_term', $term, 'field_social_network_icon')) {
             $icon = TRUE;
             $image = array(
               'style_name' => $display['settings']['icon_image_style'],
               'path' => $icon_field['#items'][0]['uri'],
               'options' => array(),
             );
-            if(!empty($display['settings']['icon_image_style'])) {
+            if (!empty($display['settings']['icon_image_style'])) {
               $icon_markup = theme('image_style', $image);
             }
             else {
@@ -351,12 +360,14 @@ function social_network_links_field_formatter_view($obj_type, $object, $field, $
       }
 
       break;
+
     case 'social_network_link_url':
       foreach ($items as $delta => $item) {
         $element[$delta] = array('#markup' => $item['title']);
       }
 
       break;
+
     case 'social_network_link_social_network_name':
       foreach ($items as $delta => $item) {
         $term = taxonomy_term_load($item['social_network']);
@@ -374,14 +385,14 @@ function social_network_links_field_formatter_view($obj_type, $object, $field, $
       break;
   }
 
-
-
   return $element;
 }
 
 /**
- * helper function to get taxonomy term options for select widget
+ * Helper function to get taxonomy term options for select widget.
+ *
  * @arguments string $machine_name: taxonomy machine name
+ *
  * @return array of select options for form
  */
 function social_network_links_term_options($machine_name) {
@@ -400,6 +411,9 @@ function social_network_links_term_options($machine_name) {
   return $options;
 }
 
+/**
+ *
+ */
 function social_network_links_settings() {
 
   if ($vocabulary = taxonomy_vocabulary_machine_name_load('social_networks')) {
@@ -438,6 +452,7 @@ function social_network_links_settings() {
 
 /**
  * Implements hook_permission().
+ *
  * @return array Permissions defined by the ecas module
  */
 function social_network_links_permission() {
@@ -449,24 +464,30 @@ function social_network_links_permission() {
   );
 }
 
+/**
+ *
+ */
 function social_network_links_clean_name($string) {
   return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', check_plain($string)));
 }
 
+/**
+ *
+ */
 function _social_network_links_generate_css() {
   $css = "";
   if ($vocabulary = taxonomy_vocabulary_machine_name_load('social_networks')) {
     if ($terms = taxonomy_get_tree($vocabulary->vid)) {
-      foreach($terms as $term) {
+      foreach ($terms as $term) {
         $social_network_link = taxonomy_term_load($term->tid);
         $wrapper = entity_metadata_wrapper('taxonomy_term', $social_network_link);
         $classname = $wrapper->field_social_network_classname->raw();
         $classname = !$classname ? 'custom' : $classname;
-        if($icon_field = $wrapper->field_social_network_icon->value()) {
+        if ($icon_field = $wrapper->field_social_network_icon->value()) {
           $path = $icon_field['uri'];
           $image_path = image_style_path('social_network_icon', $path);
           $image_url = explode('?', image_style_url('social_network_icon', $path));
-          // Add token to url
+          // Add token to url.
           $image = str_replace('public://', '../', $image_path) . '?' . $image_url[1];
           $css .= ".social_network_link_css .$classname{background-image: url(\"$image\");}" . "\n";
         }
@@ -499,7 +520,7 @@ function social_network_links_taxonomy_term_update($term) {
  * Implements hook_image_style_flush().
  */
 function social_network_links_image_style_flush($style) {
-  if($style['name'] == 'social_network_icon') {
+  if ($style['name'] == 'social_network_icon') {
     _social_network_links_generate_css();
   }
 }

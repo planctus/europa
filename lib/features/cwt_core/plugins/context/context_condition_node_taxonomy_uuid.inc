@@ -1,13 +1,16 @@
 <?php
 /**
  * @file
- * cwt_core context_condition_node_taxonomy_uuid.inc
+ * Cwt_core context_condition_node_taxonomy_uuid.inc.
  */
 
 /**
  * Expose node taxonomy terms as a context condition.
  */
 class context_condition_node_taxonomy_uuid extends context_condition_node {
+  /**
+   *
+   */
   function condition_values() {
     $values = array();
     if (module_exists('taxonomy') && module_exists('uuid')) {
@@ -22,6 +25,9 @@ class context_condition_node_taxonomy_uuid extends context_condition_node {
     return $values;
   }
 
+  /**
+   *
+   */
   function condition_form($context) {
     $form = parent::condition_form($context);
     $form['#type'] = 'select';
@@ -42,8 +48,11 @@ class context_condition_node_taxonomy_uuid extends context_condition_node {
     return $form;
   }
 
+  /**
+   *
+   */
   function execute($node, $op) {
-    // build a list of each taxonomy reference field belonging to the bundle for the current node
+    // Build a list of each taxonomy reference field belonging to the bundle for the current node.
     $fields = field_info_fields();
     $instance_fields = field_info_instances('node', $node->type);
     $check_fields = array();
@@ -78,4 +87,5 @@ class context_condition_node_taxonomy_uuid extends context_condition_node {
       }
     }
   }
+
 }

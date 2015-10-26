@@ -19,7 +19,7 @@ function dt_node_settings_install() {
  */
 function dt_node_settings_uninstall() {
   $node_types = node_type_get_names();
-  foreach($node_types as $type) {
+  foreach ($node_types as $type) {
     variable_del('helper_node_type_' . $type);
   }
   $path = drupal_get_path('module', 'dt_node_settings') . '/dt_node_settings.info';

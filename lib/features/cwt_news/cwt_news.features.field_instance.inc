@@ -10,7 +10,7 @@
 function cwt_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-aggregated_news-body'
+  // Exported field_instance: 'node-aggregated_news-body'.
   $field_instances['node-aggregated_news-body'] = array(
     'bundle' => 'aggregated_news',
     'default_value' => NULL,
@@ -130,7 +130,7 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-aggregated_news-field_aggregated_news_link'
+  // Exported field_instance: 'node-aggregated_news-field_aggregated_news_link'.
   $field_instances['node-aggregated_news-field_aggregated_news_link'] = array(
     'bundle' => 'aggregated_news',
     'default_value' => NULL,
@@ -204,7 +204,7 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-aggregated_news-field_aggregated_news_type'
+  // Exported field_instance: 'node-aggregated_news-field_aggregated_news_type'.
   $field_instances['node-aggregated_news-field_aggregated_news_type'] = array(
     'bundle' => 'aggregated_news',
     'default_value' => NULL,
@@ -266,7 +266,7 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-aggregated_news-field_editorial_section_multiple'
+  // Exported field_instance: 'node-aggregated_news-field_editorial_section_multiple'.
   $field_instances['node-aggregated_news-field_editorial_section_multiple'] = array(
     'bundle' => 'aggregated_news',
     'default_value' => NULL,
@@ -326,7 +326,7 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 1,
   );
 
-  // Exported field_instance: 'node-news_importer-body'
+  // Exported field_instance: 'node-news_importer-body'.
   $field_instances['node-news_importer-body'] = array(
     'bundle' => 'news_importer',
     'default_value' => NULL,
@@ -394,7 +394,7 @@ function cwt_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_importer-field_aggregated_news_type'
+  // Exported field_instance: 'node-news_importer-field_aggregated_news_type'.
   $field_instances['node-news_importer-field_aggregated_news_type'] = array(
     'bundle' => 'news_importer',
     'default_value' => NULL,
@@ -448,7 +448,7 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-news_importer-field_editorial_section'
+  // Exported field_instance: 'node-news_importer-field_editorial_section'.
   $field_instances['node-news_importer-field_editorial_section'] = array(
     'bundle' => 'news_importer',
     'default_value' => NULL,

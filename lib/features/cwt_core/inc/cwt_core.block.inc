@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * cwt_core.block
+ * Cwt_core.block.
  */
 
 /**

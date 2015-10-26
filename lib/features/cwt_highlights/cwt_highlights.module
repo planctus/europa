@@ -114,7 +114,7 @@ function theme_cwt_highlights($variables) {
 /**
  * Prepares variables for the cwt_highlight template.
  *
- * Default template: cwt_highlight.tpl.php
+ * Default template: cwt_highlight.tpl.php.
  *
  * @param array $variables
  *   An associative array containing:

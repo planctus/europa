@@ -1,11 +1,9 @@
 <?php
 /**
- *
  * @file
- * Nexteuropa Feedback Admin
+ * Nexteuropa Feedback Admin.
  *
- * contains all forms and saving function for the Nexteuropa Feedback component.
- *
+ * Contains all forms and saving function for the Nexteuropa Feedback component.
  */
 
 /**

@@ -139,6 +139,7 @@ function commissioner_preprocess_comment(&$variables) {
  * Adding bootstrap tab styles to quicktabs.
  *
  * @ingroup themeable
+ *
  * @see theme_qt_quicktabs_tabset()
  */
 function commissioner_qt_quicktabs_tabset($variables) {

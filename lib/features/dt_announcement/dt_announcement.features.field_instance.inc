@@ -10,7 +10,7 @@
 function dt_announcement_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_announcement-comment_body'
+  // Exported field_instance: 'comment-comment_node_announcement-comment_body'.
   $field_instances['comment-comment_node_announcement-comment_body'] = array(
     'bundle' => 'comment_node_announcement',
     'default_value' => NULL,
@@ -44,7 +44,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-body'
+  // Exported field_instance: 'node-announcement-body'.
   $field_instances['node-announcement-body'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -127,7 +127,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_contact'
+  // Exported field_instance: 'node-announcement-field_announcement_contact'.
   $field_instances['node-announcement-field_announcement_contact'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -184,7 +184,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_department'
+  // Exported field_instance: 'node-announcement-field_announcement_department'.
   $field_instances['node-announcement-field_announcement_department'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -240,7 +240,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_image'
+  // Exported field_instance: 'node-announcement-field_announcement_image'.
   $field_instances['node-announcement-field_announcement_image'] = array(
     'bundle' => 'announcement',
     'deleted' => 0,
@@ -344,7 +344,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_info'
+  // Exported field_instance: 'node-announcement-field_announcement_info'.
   $field_instances['node-announcement-field_announcement_info'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -425,7 +425,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_location'
+  // Exported field_instance: 'node-announcement-field_announcement_location'.
   $field_instances['node-announcement-field_announcement_location'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -510,7 +510,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_media'
+  // Exported field_instance: 'node-announcement-field_announcement_media'.
   $field_instances['node-announcement-field_announcement_media'] = array(
     'bundle' => 'announcement',
     'deleted' => 0,
@@ -580,7 +580,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_type'
+  // Exported field_instance: 'node-announcement-field_announcement_type'.
   $field_instances['node-announcement-field_announcement_type'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -636,7 +636,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_announcement'
+  // Exported field_instance: 'node-announcement-field_core_announcement'.
   $field_instances['node-announcement-field_core_announcement'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -699,7 +699,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_department'
+  // Exported field_instance: 'node-announcement-field_core_department'.
   $field_instances['node-announcement-field_core_department'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -768,7 +768,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_description'
+  // Exported field_instance: 'node-announcement-field_core_description'.
   $field_instances['node-announcement-field_core_description'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -857,7 +857,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_introduction'
+  // Exported field_instance: 'node-announcement-field_core_introduction'.
   $field_instances['node-announcement-field_core_introduction'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -946,7 +946,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_legacy_link'
+  // Exported field_instance: 'node-announcement-field_core_legacy_link'.
   $field_instances['node-announcement-field_core_legacy_link'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1016,7 +1016,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_links'
+  // Exported field_instance: 'node-announcement-field_core_links'.
   $field_instances['node-announcement-field_core_links'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1085,7 +1085,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_pages'
+  // Exported field_instance: 'node-announcement-field_core_pages'.
   $field_instances['node-announcement-field_core_pages'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1141,7 +1141,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_persons'
+  // Exported field_instance: 'node-announcement-field_core_persons'.
   $field_instances['node-announcement-field_core_persons'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1202,7 +1202,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_policies'
+  // Exported field_instance: 'node-announcement-field_core_policies'.
   $field_instances['node-announcement-field_core_policies'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1265,7 +1265,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_pri_policy_areas'
+  // Exported field_instance: 'node-announcement-field_core_pri_policy_areas'.
   $field_instances['node-announcement-field_core_pri_policy_areas'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1330,7 +1330,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_priorities'
+  // Exported field_instance: 'node-announcement-field_core_priorities'.
   $field_instances['node-announcement-field_core_priorities'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1388,7 +1388,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_topics'
+  // Exported field_instance: 'node-announcement-field_core_topics'.
   $field_instances['node-announcement-field_core_topics'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1456,7 +1456,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-group_content_access'
+  // Exported field_instance: 'node-announcement-group_content_access'.
   $field_instances['node-announcement-group_content_access'] = array(
     'bundle' => 'announcement',
     'default_value' => array(
@@ -1512,7 +1512,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-og_group_ref'
+  // Exported field_instance: 'node-announcement-og_group_ref'.
   $field_instances['node-announcement-og_group_ref'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
@@ -1584,7 +1584,7 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-title_field'
+  // Exported field_instance: 'node-announcement-title_field'.
   $field_instances['node-announcement-title_field'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,

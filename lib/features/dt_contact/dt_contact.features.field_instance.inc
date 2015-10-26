@@ -10,7 +10,7 @@
 function dt_contact_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-contact-body'
+  // Exported field_instance: 'node-contact-body'.
   $field_instances['node-contact-body'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -53,7 +53,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-field_contact_email_address'
+  // Exported field_instance: 'node-contact-field_contact_email_address'.
   $field_instances['node-contact-field_contact_email_address'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -94,7 +94,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-field_contact_link_form'
+  // Exported field_instance: 'node-contact-field_contact_link_form'.
   $field_instances['node-contact-field_contact_link_form'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -153,7 +153,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-field_contact_phone_number'
+  // Exported field_instance: 'node-contact-field_contact_phone_number'.
   $field_instances['node-contact-field_contact_phone_number'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -221,7 +221,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-field_contact_postal_mail'
+  // Exported field_instance: 'node-contact-field_contact_postal_mail'.
   $field_instances['node-contact-field_contact_postal_mail'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -283,7 +283,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-group_content_access'
+  // Exported field_instance: 'node-contact-group_content_access'.
   $field_instances['node-contact-group_content_access'] = array(
     'bundle' => 'contact',
     'default_value' => array(
@@ -338,7 +338,7 @@ function dt_contact_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-contact-og_group_ref'
+  // Exported field_instance: 'node-contact-og_group_ref'.
   $field_instances['node-contact-og_group_ref'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,
@@ -397,7 +397,7 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact-title_field'
+  // Exported field_instance: 'node-contact-title_field'.
   $field_instances['node-contact-title_field'] = array(
     'bundle' => 'contact',
     'default_value' => NULL,

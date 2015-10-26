@@ -10,7 +10,7 @@
 function dt_social_network_links_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_social_network_classname'
+  // Exported field_base: 'field_social_network_classname'.
   $field_bases['field_social_network_classname'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -40,7 +40,7 @@ function dt_social_network_links_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_social_network_icon'
+  // Exported field_base: 'field_social_network_icon'.
   $field_bases['field_social_network_icon'] = array(
     'active' => 1,
     'cardinality' => 1,

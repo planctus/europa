@@ -10,7 +10,7 @@
 function dt_policy_input_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_input-field_core_introduction'
+  // Exported field_instance: 'node-policy_input-field_core_introduction'.
   $field_instances['node-policy_input-field_core_introduction'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,
@@ -83,7 +83,7 @@ function dt_policy_input_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-field_core_legacy_link'
+  // Exported field_instance: 'node-policy_input-field_core_legacy_link'.
   $field_instances['node-policy_input-field_core_legacy_link'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,
@@ -141,7 +141,7 @@ function dt_policy_input_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-field_policy_input_status'
+  // Exported field_instance: 'node-policy_input-field_policy_input_status'.
   $field_instances['node-policy_input-field_policy_input_status'] = array(
     'bundle' => 'policy_input',
     'default_value' => array(
@@ -186,7 +186,7 @@ function dt_policy_input_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-field_policy_input_type'
+  // Exported field_instance: 'node-policy_input-field_policy_input_type'.
   $field_instances['node-policy_input-field_policy_input_type'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,
@@ -226,7 +226,7 @@ function dt_policy_input_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-group_content_access'
+  // Exported field_instance: 'node-policy_input-group_content_access'.
   $field_instances['node-policy_input-group_content_access'] = array(
     'bundle' => 'policy_input',
     'default_value' => array(
@@ -279,7 +279,7 @@ function dt_policy_input_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_input-og_group_ref'
+  // Exported field_instance: 'node-policy_input-og_group_ref'.
   $field_instances['node-policy_input-og_group_ref'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,
@@ -338,7 +338,7 @@ function dt_policy_input_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_input-title_field'
+  // Exported field_instance: 'node-policy_input-title_field'.
   $field_instances['node-policy_input-title_field'] = array(
     'bundle' => 'policy_input',
     'default_value' => NULL,

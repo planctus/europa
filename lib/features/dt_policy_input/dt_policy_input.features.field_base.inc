@@ -10,7 +10,7 @@
 function dt_policy_input_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_policy_input_status'
+  // Exported field_base: 'field_policy_input_status'.
   $field_bases['field_policy_input_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -39,7 +39,7 @@ function dt_policy_input_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_policy_input_type'
+  // Exported field_base: 'field_policy_input_type'.
   $field_bases['field_policy_input_type'] = array(
     'active' => 1,
     'cardinality' => 1,

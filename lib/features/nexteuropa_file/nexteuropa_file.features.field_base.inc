@@ -10,7 +10,7 @@
 function nexteuropa_file_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_file'
+  // Exported field_base: 'field_core_file'.
   $field_bases['field_core_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -44,7 +44,7 @@ function nexteuropa_file_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_core_files'
+  // Exported field_base: 'field_core_files'.
   $field_bases['field_core_files'] = array(
     'active' => 1,
     'cardinality' => -1,

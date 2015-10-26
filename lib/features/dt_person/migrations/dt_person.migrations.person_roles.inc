@@ -37,4 +37,5 @@ class DTPersonRolesMigration extends Migration {
 
     $this->addFieldMapping('name', 'name');
   }
+
 }

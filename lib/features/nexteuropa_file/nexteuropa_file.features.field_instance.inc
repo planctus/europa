@@ -10,7 +10,7 @@
 function nexteuropa_file_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-file-field_core_description'
+  // Exported field_instance: 'node-file-field_core_description'.
   $field_instances['node-file-field_core_description'] = array(
     'bundle' => 'file',
     'default_value' => NULL,
@@ -87,7 +87,7 @@ function nexteuropa_file_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-field_core_file'
+  // Exported field_instance: 'node-file-field_core_file'.
   $field_instances['node-file-field_core_file'] = array(
     'bundle' => 'file',
     'deleted' => 0,
@@ -157,7 +157,7 @@ function nexteuropa_file_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-title_field'
+  // Exported field_instance: 'node-file-title_field'.
   $field_instances['node-file-title_field'] = array(
     'bundle' => 'file',
     'default_value' => NULL,

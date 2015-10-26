@@ -10,7 +10,7 @@
 function dt_policy_implementation_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_policy_imp_introduction'
+  // Exported field_base: 'field_policy_imp_introduction'.
   $field_bases['field_policy_imp_introduction'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -39,7 +39,7 @@ function dt_policy_implementation_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_imp_status'
+  // Exported field_base: 'field_policy_imp_status'.
   $field_bases['field_policy_imp_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -68,7 +68,7 @@ function dt_policy_implementation_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_policy_imp_type'
+  // Exported field_base: 'field_policy_imp_type'.
   $field_bases['field_policy_imp_type'] = array(
     'active' => 1,
     'cardinality' => 1,

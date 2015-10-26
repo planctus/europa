@@ -11,7 +11,7 @@ include_once 'cwt_news.features.inc';
  */
 function cwt_news_permission() {
   return array(
-    'edit links on aggregated news items' =>  array(
+    'edit links on aggregated news items' => array(
       'title' => t('Edit links on aggregated news items'),
       'description' => t('Allow user to edit links field on aggregated_news content type'),
     ),

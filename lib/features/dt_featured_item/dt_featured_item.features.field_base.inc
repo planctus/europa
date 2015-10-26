@@ -10,7 +10,7 @@
 function dt_featured_item_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_featured_item'
+  // Exported field_base: 'field_core_featured_item'.
   $field_bases['field_core_featured_item'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -54,7 +54,7 @@ function dt_featured_item_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_featured_items'
+  // Exported field_base: 'field_core_featured_items'.
   $field_bases['field_core_featured_items'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -98,7 +98,7 @@ function dt_featured_item_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_feat_item_image'
+  // Exported field_base: 'field_feat_item_image'.
   $field_bases['field_feat_item_image'] = array(
     'active' => 1,
     'cardinality' => 1,

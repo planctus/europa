@@ -10,7 +10,7 @@
 function cwt_biography_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_biography-comment_body'
+  // Exported field_instance: 'comment-comment_node_biography-comment_body'.
   $field_instances['comment-comment_node_biography-comment_body'] = array(
     'bundle' => 'comment_node_biography',
     'default_value' => NULL,
@@ -56,7 +56,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'comment-comment_node_biography_timeline-comment_body'
+  // Exported field_instance: 'comment-comment_node_biography_timeline-comment_body'.
   $field_instances['comment-comment_node_biography_timeline-comment_body'] = array(
     'bundle' => 'comment_node_biography_timeline',
     'default_value' => NULL,
@@ -102,7 +102,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-biography-body'
+  // Exported field_instance: 'node-biography-body'.
   $field_instances['node-biography-body'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -158,7 +158,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-biography-field_biography_address'
+  // Exported field_instance: 'node-biography-field_biography_address'.
   $field_instances['node-biography-field_biography_address'] = array(
     'bundle' => 'biography',
     'default_value' => array(
@@ -242,7 +242,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_agenda_text'
+  // Exported field_instance: 'node-biography-field_biography_agenda_text'.
   $field_instances['node-biography-field_biography_agenda_text'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -321,7 +321,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_assistants'
+  // Exported field_instance: 'node-biography-field_biography_assistants'.
   $field_instances['node-biography-field_biography_assistants'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -369,7 +369,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_av_portal'
+  // Exported field_instance: 'node-biography-field_biography_av_portal'.
   $field_instances['node-biography-field_biography_av_portal'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -426,7 +426,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_cv'
+  // Exported field_instance: 'node-biography-field_biography_cv'.
   $field_instances['node-biography-field_biography_cv'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -497,7 +497,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_declaration'
+  // Exported field_instance: 'node-biography-field_biography_declaration'.
   $field_instances['node-biography-field_biography_declaration'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -563,7 +563,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_departments'
+  // Exported field_instance: 'node-biography-field_biography_departments'.
   $field_instances['node-biography-field_biography_departments'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -603,7 +603,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_email'
+  // Exported field_instance: 'node-biography-field_biography_email'.
   $field_instances['node-biography-field_biography_email'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -643,7 +643,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_first_name'
+  // Exported field_instance: 'node-biography-field_biography_first_name'.
   $field_instances['node-biography-field_biography_first_name'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -710,7 +710,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_last_name'
+  // Exported field_instance: 'node-biography-field_biography_last_name'.
   $field_instances['node-biography-field_biography_last_name'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -777,7 +777,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_message'
+  // Exported field_instance: 'node-biography-field_biography_message'.
   $field_instances['node-biography-field_biography_message'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -845,7 +845,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_mission_letter'
+  // Exported field_instance: 'node-biography-field_biography_mission_letter'.
   $field_instances['node-biography-field_biography_mission_letter'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -912,7 +912,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_multiple_files'
+  // Exported field_instance: 'node-biography-field_biography_multiple_files'.
   $field_instances['node-biography-field_biography_multiple_files'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -979,7 +979,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_phone'
+  // Exported field_instance: 'node-biography-field_biography_phone'.
   $field_instances['node-biography-field_biography_phone'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1046,7 +1046,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_portfolio'
+  // Exported field_instance: 'node-biography-field_biography_portfolio'.
   $field_instances['node-biography-field_biography_portfolio'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1103,7 +1103,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_portrait'
+  // Exported field_instance: 'node-biography-field_biography_portrait'.
   $field_instances['node-biography-field_biography_portrait'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -1165,7 +1165,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-biography-field_biography_press_contact'
+  // Exported field_instance: 'node-biography-field_biography_press_contact'.
   $field_instances['node-biography-field_biography_press_contact'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1240,7 +1240,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_project_team'
+  // Exported field_instance: 'node-biography-field_biography_project_team'.
   $field_instances['node-biography-field_biography_project_team'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1281,7 +1281,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_role'
+  // Exported field_instance: 'node-biography-field_biography_role'.
   $field_instances['node-biography-field_biography_role'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1322,7 +1322,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_status'
+  // Exported field_instance: 'node-biography-field_biography_status'.
   $field_instances['node-biography-field_biography_status'] = array(
     'bundle' => 'biography',
     'default_value' => array(
@@ -1366,7 +1366,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_tagline'
+  // Exported field_instance: 'node-biography-field_biography_tagline'.
   $field_instances['node-biography-field_biography_tagline'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1439,7 +1439,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_team'
+  // Exported field_instance: 'node-biography-field_biography_team'.
   $field_instances['node-biography-field_biography_team'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1481,7 +1481,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_biography_timeline'
+  // Exported field_instance: 'node-biography-field_biography_timeline'.
   $field_instances['node-biography-field_biography_timeline'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -1529,7 +1529,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_download_cv_in_pdf_format'
+  // Exported field_instance: 'node-biography-field_download_cv_in_pdf_format'.
   $field_instances['node-biography-field_download_cv_in_pdf_format'] = array(
     'bundle' => 'biography',
     'deleted' => 0,
@@ -1594,7 +1594,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_editorial_section'
+  // Exported field_instance: 'node-biography-field_editorial_section'.
   $field_instances['node-biography-field_editorial_section'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1635,7 +1635,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 1,
   );
 
-  // Exported field_instance: 'node-biography-field_embedded_contact_enabled'
+  // Exported field_instance: 'node-biography-field_embedded_contact_enabled'.
   $field_instances['node-biography-field_embedded_contact_enabled'] = array(
     'bundle' => 'biography',
     'default_value' => array(
@@ -1680,7 +1680,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_gender'
+  // Exported field_instance: 'node-biography-field_gender'.
   $field_instances['node-biography-field_gender'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1721,7 +1721,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_partial_translation'
+  // Exported field_instance: 'node-biography-field_partial_translation'.
   $field_instances['node-biography-field_partial_translation'] = array(
     'bundle' => 'biography',
     'default_value' => array(
@@ -1766,7 +1766,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_remote_id'
+  // Exported field_instance: 'node-biography-field_remote_id'.
   $field_instances['node-biography-field_remote_id'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1810,7 +1810,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_social_networks'
+  // Exported field_instance: 'node-biography-field_social_networks'.
   $field_instances['node-biography-field_social_networks'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1851,7 +1851,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_team_membership'
+  // Exported field_instance: 'node-biography-field_team_membership'.
   $field_instances['node-biography-field_team_membership'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1892,7 +1892,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_email'
+  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_email'.
   $field_instances['node-biography_assistant-field_biography_assistant_email'] = array(
     'bundle' => 'biography_assistant',
     'default_value' => NULL,
@@ -1934,7 +1934,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_fname'
+  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_fname'.
   $field_instances['node-biography_assistant-field_biography_assistant_fname'] = array(
     'bundle' => 'biography_assistant',
     'default_value' => NULL,
@@ -2008,7 +2008,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_phone'
+  // Exported field_instance: 'node-biography_assistant-field_biography_assistant_phone'.
   $field_instances['node-biography_assistant-field_biography_assistant_phone'] = array(
     'bundle' => 'biography_assistant',
     'default_value' => NULL,
@@ -2082,7 +2082,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography_timeline-field_timeline_date'
+  // Exported field_instance: 'node-biography_timeline-field_timeline_date'.
   $field_instances['node-biography_timeline-field_timeline_date'] = array(
     'bundle' => 'biography_timeline',
     'default_value' => NULL,
@@ -2183,7 +2183,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography_timeline-field_timeline_type'
+  // Exported field_instance: 'node-biography_timeline-field_timeline_type'.
   $field_instances['node-biography_timeline-field_timeline_type'] = array(
     'bundle' => 'biography_timeline',
     'default_value' => NULL,
@@ -2230,7 +2230,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_roles-description_field'
+  // Exported field_instance: 'taxonomy_term-biography_roles-description_field'.
   $field_instances['taxonomy_term-biography_roles-description_field'] = array(
     'bundle' => 'biography_roles',
     'default_value' => NULL,
@@ -2269,7 +2269,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_roles-field_biography_role_feminine'
+  // Exported field_instance: 'taxonomy_term-biography_roles-field_biography_role_feminine'.
   $field_instances['taxonomy_term-biography_roles-field_biography_role_feminine'] = array(
     'bundle' => 'biography_roles',
     'default_value' => NULL,
@@ -2337,7 +2337,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_roles-field_declaration_of_interest'
+  // Exported field_instance: 'taxonomy_term-biography_roles-field_declaration_of_interest'.
   $field_instances['taxonomy_term-biography_roles-field_declaration_of_interest'] = array(
     'bundle' => 'biography_roles',
     'default_value' => array(
@@ -2402,7 +2402,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_roles-field_type_plural'
+  // Exported field_instance: 'taxonomy_term-biography_roles-field_type_plural'.
   $field_instances['taxonomy_term-biography_roles-field_type_plural'] = array(
     'bundle' => 'biography_roles',
     'default_value' => NULL,
@@ -2463,7 +2463,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_roles-name_field'
+  // Exported field_instance: 'taxonomy_term-biography_roles-name_field'.
   $field_instances['taxonomy_term-biography_roles-name_field'] = array(
     'bundle' => 'biography_roles',
     'default_value' => NULL,
@@ -2516,7 +2516,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_timeline_types-description_field'
+  // Exported field_instance: 'taxonomy_term-biography_timeline_types-description_field'.
   $field_instances['taxonomy_term-biography_timeline_types-description_field'] = array(
     'bundle' => 'biography_timeline_types',
     'default_value' => NULL,
@@ -2555,7 +2555,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_timeline_types-field_icon_classname'
+  // Exported field_instance: 'taxonomy_term-biography_timeline_types-field_icon_classname'.
   $field_instances['taxonomy_term-biography_timeline_types-field_icon_classname'] = array(
     'bundle' => 'biography_timeline_types',
     'default_value' => NULL,
@@ -2629,7 +2629,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-biography_timeline_types-name_field'
+  // Exported field_instance: 'taxonomy_term-biography_timeline_types-name_field'.
   $field_instances['taxonomy_term-biography_timeline_types-name_field'] = array(
     'bundle' => 'biography_timeline_types',
     'default_value' => NULL,
@@ -2666,7 +2666,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-commissioner_statuses-description_field'
+  // Exported field_instance: 'taxonomy_term-commissioner_statuses-description_field'.
   $field_instances['taxonomy_term-commissioner_statuses-description_field'] = array(
     'bundle' => 'commissioner_statuses',
     'default_value' => NULL,
@@ -2705,7 +2705,7 @@ function cwt_biography_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-commissioner_statuses-name_field'
+  // Exported field_instance: 'taxonomy_term-commissioner_statuses-name_field'.
   $field_instances['taxonomy_term-commissioner_statuses-name_field'] = array(
     'bundle' => 'commissioner_statuses',
     'default_value' => NULL,

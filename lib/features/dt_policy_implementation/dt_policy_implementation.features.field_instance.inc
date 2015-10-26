@@ -10,7 +10,7 @@
 function dt_policy_implementation_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_implementation-field_core_legacy_link'
+  // Exported field_instance: 'node-policy_implementation-field_core_legacy_link'.
   $field_instances['node-policy_implementation-field_core_legacy_link'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -68,7 +68,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_core_link'
+  // Exported field_instance: 'node-policy_implementation-field_core_link'.
   $field_instances['node-policy_implementation-field_core_link'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -126,7 +126,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_introduction'
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_introduction'.
   $field_instances['node-policy_implementation-field_policy_imp_introduction'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -193,7 +193,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'.
   $field_instances['node-policy_implementation-field_policy_imp_status'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => array(
@@ -239,7 +239,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_type'
+  // Exported field_instance: 'node-policy_implementation-field_policy_imp_type'.
   $field_instances['node-policy_implementation-field_policy_imp_type'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -279,7 +279,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-group_content_access'
+  // Exported field_instance: 'node-policy_implementation-group_content_access'.
   $field_instances['node-policy_implementation-group_content_access'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => array(
@@ -333,7 +333,7 @@ function dt_policy_implementation_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_implementation-og_group_ref'
+  // Exported field_instance: 'node-policy_implementation-og_group_ref'.
   $field_instances['node-policy_implementation-og_group_ref'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -395,7 +395,7 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-title_field'
+  // Exported field_instance: 'node-policy_implementation-title_field'.
   $field_instances['node-policy_implementation-title_field'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,

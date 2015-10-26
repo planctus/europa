@@ -28,7 +28,7 @@ function cwt_highlights_ctools_plugin_api() {
 function cwt_highlights_fe_nodequeue_export_fields() {
   $nodequeues = array();
 
-  // Exported nodequeues: highlights
+  // Exported nodequeues: highlights.
   $nodequeues['highlights'] = array(
     'name' => 'highlights',
     'title' => 'Highlights',

@@ -10,7 +10,7 @@
 function dt_page_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_pages'
+  // Exported field_base: 'field_core_pages'.
   $field_bases['field_core_pages'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -54,7 +54,7 @@ function dt_page_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_page'
+  // Exported field_base: 'field_core_page'.
   $field_bases['field_core_page'] = array(
     'active' => 1,
     'cardinality' => 1,

@@ -94,7 +94,7 @@ function cwt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-service-links_contact:<front>
+  // Exported menu link: menu-dt-service-links_contact:<front>.
   $menu_links['menu-dt-service-links_contact:<front>'] = array(
     'menu_name' => 'menu-dt-service-links',
     'link_path' => '<front>',
@@ -117,7 +117,7 @@ function cwt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-service-links_cookies:<front>
+  // Exported menu link: menu-dt-service-links_cookies:<front>.
   $menu_links['menu-dt-service-links_cookies:<front>'] = array(
     'menu_name' => 'menu-dt-service-links',
     'link_path' => '<front>',
@@ -140,7 +140,7 @@ function cwt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-service-links_legal-notice:<front>
+  // Exported menu link: menu-dt-service-links_legal-notice:<front>.
   $menu_links['menu-dt-service-links_legal-notice:<front>'] = array(
     'menu_name' => 'menu-dt-service-links',
     'link_path' => '<front>',
@@ -171,7 +171,6 @@ function cwt_core_menu_default_menu_links() {
   t('Legal notice');
   t('Other social media');
   t('Twitter');
-
 
   return $menu_links;
 }
