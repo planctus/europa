@@ -5,18 +5,35 @@
     this.each(function () {
       var settings = $.extend({
         listWrapper: $(this),
-        listSelector: 'ul',
-        item: 'li',
-        other: '.item__other'
+        listSelector: 'element__list',
+        item: 'element__option',
+        other: 'element__other',
+        selected: 'is-selected'
       }, options);
       var attachDropDown = function () {
         var listClass = settings.listSelector,
-          $list = $(listClass);
+          $list = $('ul.' + listClass);
 
         $list.each(function () {
           var $select = $('<select />').addClass(listClass);
 
-          $list.find(settings.item).each(function () {
+          $list.find('li.' + settings.item).each(function () {
+            var currentClass = $(this).attr('class');
+
+            switch (currentClass) {
+              case String(settings.item + ' ' + settings.selected):
+                var $option = $('<option />');
+                $option.html($(this).html()).attr('selected', true);
+                $select.append($option);
+                break;
+
+              case String(settings.item + ' ' + settings.other):
+                var $option = $('<option />');
+                $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
+                $select.append($option);
+                break;
+            }
+
             var $option = $('<option />');
             $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
             $select.append($option);
@@ -38,16 +55,16 @@
         });
       };
       var hideDropDown = function () {
-        settings.listWrapper.find('select').hide();
+        settings.listWrapper.find('select' + '.' + settings.listSelector).hide();
       };
       var hideList = function () {
-        settings.listWrapper.find(settings.listSelector).hide();
+        settings.listWrapper.find('ul.' + settings.listSelector).hide();
       };
       var showDropDown = function () {
-        settings.listWrapper.find('select').show();
+        settings.listWrapper.find('select' + '.' + settings.listSelector).show();
       };
       var showList = function () {
-        settings.listWrapper.find(settings.listSelector).show();
+        settings.listWrapper.find('ul.' + settings.listSelector).show();
       };
 
       settings.listWrapper.on('hide.dropdown', hideDropDown);
