@@ -228,10 +228,10 @@ function dt_topic_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_priorities',
-      2 => 'field_core_topics',
-      3 => 'field_core_department',
+      0 => 'field_core_priorities',
+      1 => 'field_core_topics',
+      2 => 'field_core_department',
+      3 => 'field_core_persons',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
