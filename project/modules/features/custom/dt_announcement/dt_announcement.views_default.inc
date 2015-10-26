@@ -408,16 +408,16 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: : field_core_policy (field_core_policy) */
-  $handler->display->display_options['filters']['field_core_policy_target_id']['id'] = 'field_core_policy_target_id';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['table'] = 'field_data_field_core_policy';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['field'] = 'field_core_policy_target_id';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator_id'] = 'field_core_policy_target_id_op';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['label'] = 'Policies';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator'] = 'field_core_policy_target_id_op';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['identifier'] = 'policy';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['remember_roles'] = array(
+  /* Filter criterion: : field_core_policies (field_core_policies) */
+  $handler->display->display_options['filters']['field_core_policies_target_id']['id'] = 'field_core_policies_target_id';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['table'] = 'field_data_field_core_policies';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['field'] = 'field_core_policies_target_id';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator_id'] = 'field_core_policies_target_id_op';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['label'] = 'Policies';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator'] = 'field_core_policies_target_id_op';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['identifier'] = 'policy';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
