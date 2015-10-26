@@ -398,7 +398,7 @@ function dt_topic_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_topic_tasks',
-      1 => 'field_core_top_tasks',
+      1 => 'dt_topic_top_tasks',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -484,7 +484,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '25',
+    'weight' => '26',
     'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
