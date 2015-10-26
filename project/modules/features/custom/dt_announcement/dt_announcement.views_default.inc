@@ -416,7 +416,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator_id'] = 'field_core_policies_target_id_op';
   $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['label'] = 'Policies';
   $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator'] = 'field_core_policies_target_id_op';
-  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['identifier'] = 'policy';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['identifier'] = 'policies';
   $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
