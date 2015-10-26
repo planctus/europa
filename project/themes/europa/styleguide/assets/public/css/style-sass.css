@@ -8189,6 +8189,9 @@ select.lang-select-page__list {
   width: 10em;
   cursor: pointer; }
 
+.region-content .page-header ul.lang-select-page__list {
+  max-width: inherit; }
+
 /*
 Listing
 

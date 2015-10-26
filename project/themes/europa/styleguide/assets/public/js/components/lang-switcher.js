@@ -18,10 +18,11 @@
     attach: function(context) {
       var pageLanguageSelector = $('.lang-select-page');
       pageLanguageSelector.selectify({
-        listSelector: 'ul.lang-select-page__list',
+        listSelector: 'lang-select-page__list',
         item: 'lang-select-page__option',
-        other: '.lang-select-page__other',
-        selected: '.is-selected'
+        other: 'lang-select-page__other',
+        unavailable: 'lang-select-page__unavailable',
+        selected: 'is-selected'
       });
 
       if (typeof enquire !== 'undefined') {

@@ -118,3 +118,9 @@ select.lang-select-page__list {
   width: 10em;
   cursor: pointer;
 }
+
+// Drupal-specific hack after having the header in the content area.
+// Change comes from dynamic header image now being DS.
+.region-content .page-header ul.lang-select-page__list {
+  max-width: inherit;
+}

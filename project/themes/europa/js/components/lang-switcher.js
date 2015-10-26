@@ -1,18 +1,54 @@
 (function ($) {
-	
-  /**
-   * Returns true if list is bigger than wrapper.
-   */
-  function listIsWider(){
-    var $wrapper = $('.lang-select-page'),
-      $list = $('.lang-select-page__list'),
-      $icon = $('.lang-select-page__icon');
 
-    if ($list.length && $list.is(':visible') && $wrapper.length) {
-      // 40px of buffer in wrapper which is compensated due to font icon changing size.
-      return ($list.outerWidth() + $icon.outerWidth() > $wrapper.outerWidth() - 40);
+  var pageSwitcher = {
+    listClass: '.lang-select-page__list',
+    itemClass: '.lang-select-page__option',
+    iconClass: '.lang-select-page__icon',
+    unavClass: '.lang-select-page__unavailable',
+    listWidth: function() {
+      return $(pageSwitcher.listClass).outerWidth();
+    },
+    iconWidth: function() {
+      return $(pageSwitcher.iconClass).outerWidth();
+    },
+    unavailableWidth: function() {
+      return $(pageSwitcher.unavClass).outerWidth();
+    },
+    itemsWidth: function() {
+      var overallWidth = 0;
+      $(pageSwitcher.listClass).children(pageSwitcher.itemClass).each(function() {
+        if ($(this).is(':visible')) {
+          var itemSize = $(this).outerWidth();
+          overallWidth += itemSize;
+        }
+      });
+      return overallWidth;
+    },
+    itemsOverflow: function() {
+      var availableSpace = pageSwitcher.listWidth() - pageSwitcher.iconWidth() - pageSwitcher.unavailableWidth();
+      return pageSwitcher.itemsWidth() > availableSpace - 20;
+    },
+    hideLast: function() {
+      var lastVisible = $('.lang-select-page__option').last(':visible');
+      lastVisible.hide();
+      return lastVisible;
+    },
+    shrink: function() {
+      var numberItems = $(pageSwitcher.itemClass).length;
+      while (numberItems > 0) {
+        if (pageSwitcher.itemsOverflow()) {
+          pageSwitcher.hideLast();
+          numberItems--;
+        }
+      }
+    },
+    showLast: function() {
+      // contrary to hideLast()
+    },
+    expand: function() {
+      // contrary to shrink()
     }
-  }
+  };
 
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
@@ -25,6 +61,8 @@
         selected: 'is-selected'
       });
 
+      pageSwitcher.shrink();
+
       if (typeof enquire !== 'undefined') {
         enquire.register(Drupal.europa.breakpoints.small, {
           // desktop
@@ -35,14 +73,14 @@
           // mobile
           unmatch : function() {
             $(window).on('resize', function(){
-              if(listIsWider()){
+              if(pageSwitcher.itemsOverflow()){
                 pageLanguageSelector.trigger('hide.list');
                 pageLanguageSelector.trigger('show.dropdown');
               }
             });
           },
           setup: function() {
-            if(listIsWider()){
+            if(pageSwitcher.itemsOverflow()){
               pageLanguageSelector.trigger('hide.list');
               pageLanguageSelector.trigger('show.dropdown');
             }
