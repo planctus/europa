@@ -71,7 +71,7 @@ function cwt_core_wysiwyg_default_profiles() {
   );
 
   // Exported profile: full_access_text_filter
-  $profiles['full_access_text_filter'] = (object) array(
+  $profiles['full_access_text_filter'] = (array) array(
     'format' => 'full_access_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(
