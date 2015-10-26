@@ -76,3 +76,10 @@ function dt_topic_update_7105() {
 function dt_topic_update_7106() {
   features_revert_module('dt_topic');
 }
+
+/**
+ * NEXTEUROPA-4829: Topic top task custom link implemenation.
+ */
+function dt_topic_update_7107() {
+  features_revert_module('dt_topic');
+}
