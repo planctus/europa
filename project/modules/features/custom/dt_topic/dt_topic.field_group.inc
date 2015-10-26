@@ -24,12 +24,12 @@ function dt_topic_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_editorial_settings',
-      1 => 'group_topic_content',
-      2 => 'group_topic_details',
-      3 => 'group_topic_policy_areas',
-      4 => 'group_topic_related',
-      5 => 'group_topic_task',
-      6 => 'group_topic_contact',
+      1 => 'group_topic_contact',
+      2 => 'group_topic_content',
+      3 => 'group_topic_details',
+      4 => 'group_topic_policy_areas',
+      5 => 'group_topic_related',
+      6 => 'group_topic_task',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -256,10 +256,10 @@ function dt_topic_field_group_info() {
     'label' => 'Further information',
     'weight' => '13',
     'children' => array(
-      0 => 'field_core_link',
-      1 => 'field_topic_commission_actions',
-      2 => 'field_topic_objectives',
-      3 => 'field_topic_targets',
+      0 => 'field_topic_commission_actions',
+      1 => 'field_topic_objectives',
+      2 => 'field_topic_targets',
+      3 => 'field_core_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -427,10 +427,10 @@ function dt_topic_field_group_info() {
     'label' => 'Related',
     'weight' => '11',
     'children' => array(
-      0 => 'field_core_department',
-      1 => 'field_core_persons',
-      2 => 'field_core_priorities',
-      3 => 'field_core_topics',
+      0 => 'field_core_persons',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
+      3 => 'field_core_department',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -515,6 +515,7 @@ function dt_topic_field_group_info() {
     'children' => array(
       0 => 'field_topic_tasks',
       1 => 'field_core_top_tasks',
+      2 => 'field_core_top_tasks_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
