@@ -618,3 +618,28 @@ function dt_core_update_7145() {
   ->condition('language', 'und', '=')
   ->execute();
 }
+
+/**
+ * Set body field content to english.
+ */
+function dt_core_update_7146() {
+  $data = db_query("SELECT language, entity_id FROM field_data_body AS fdfb WHERE language = 'und' AND (SELECT count(*) FROM field_data_body WHERE entity_id = fdfb.entity_id GROUP BY entity_id ) = 1")->fetchAll();
+
+  foreach ($data as $key => $value) {
+    db_update('field_data_body')
+      ->fields(array(
+        'language' => 'en',
+      ))
+      ->condition('entity_id', $value->entity_id)
+      ->condition('language', 'und', '=')
+      ->execute();
+
+    db_update('field_revision_body')
+      ->fields(array(
+        'language' => 'en',
+      ))
+      ->condition('entity_id', $value->entity_id)
+      ->condition('language', 'und', '=')
+      ->execute();
+  }
+}
