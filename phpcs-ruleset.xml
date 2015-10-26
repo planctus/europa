@@ -9,10 +9,15 @@
     <!-- Minified files don't have to comply with coding standards. -->
     <exclude-pattern>*.min.css</exclude-pattern>
     <exclude-pattern>*.min.js</exclude-pattern>
+
+    <!-- Exclude generated and third party code -->
     <exclude-pattern>bootstrap-sass</exclude-pattern>
     <exclude-pattern>styleguide</exclude-pattern>
     <exclude-pattern>js/libraries</exclude-pattern>
     <exclude-pattern>*/style-sass.css</exclude-pattern>
+
+    <!-- Exclude old theme -->
+    <exclude-pattern>commissioner_OLD</exclude-pattern>
 
     <!-- Exclude files that do not contain PHP, Javascript or CSS code. -->
     <exclude-pattern>*.json</exclude-pattern>
