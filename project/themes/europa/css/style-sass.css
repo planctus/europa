@@ -9338,4 +9338,18 @@ Styleguide timeline
   .timeline .timeline__item-title:before {
     margin-left: 2px; } }
 
+/*
+Top image
+
+Markup: html/top-image.html
+
+Styleguide top-image
+*/
+.top-image {
+  height: 500px;
+  overflow: hidden; }
+  .top-image picture {
+    display: block;
+    text-align: center; }
+
 /*# sourceMappingURL=style-sass.css.map */

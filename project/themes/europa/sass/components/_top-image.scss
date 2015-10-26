@@ -1,0 +1,16 @@
+/*
+Top image
+
+Markup: html/top-image.html
+
+Styleguide top-image
+*/
+.top-image {
+  height: 500px;
+  overflow: hidden;
+  
+  picture {
+    display: block;
+    text-align: center;
+  }
+}
