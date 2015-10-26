@@ -185,5 +185,34 @@ function cwt_team_field_group_info() {
   );
   $export['group_team_priorities|node|team|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_top_image|node|team|default';
+  $field_group->group_name = 'group_team_top_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Top image',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_illustrative_image',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Top image',
+      'instance_settings' => array(
+        'classes' => 'top-image',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_team_top_image|node|team|default'] = $field_group;
+
   return $export;
 }
