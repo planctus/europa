@@ -8,11 +8,12 @@
         listSelector: 'element__list',
         item: 'element__option',
         other: 'element__other',
+        unavailable: 'element__unavailable',
         selected: 'is-selected'
       }, options);
       var attachDropDown = function () {
         var listClass = settings.listSelector,
-          $list = $('ul.' + listClass);
+            $list = $('ul.' + listClass);
 
         $list.each(function () {
           var $select = $('<select />').addClass(listClass);
@@ -21,6 +22,10 @@
             var currentClass = $(this).attr('class');
 
             switch (currentClass) {
+
+              case String(settings.item + ' ' + settings.unavailable):
+                break;
+
               case String(settings.item + ' ' + settings.selected):
                 var $option = $('<option />');
                 $option.html($(this).html()).attr('selected', true);
@@ -33,10 +38,6 @@
                 $select.append($option);
                 break;
             }
-
-            var $option = $('<option />');
-            $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
-            $select.append($option);
           });
 
           if (!$list.parent().find('select').length) {
@@ -44,11 +45,7 @@
             settings.listWrapper.find('select').hide();
             $select.on({
               change: function () {
-                var optionHref = $(this).val(),
-                  $item = $list.find(settings.item),
-                  $location = $item.children('a[href="' + optionHref + '"]');
-
-                window.location.href = $location.attr('href');
+                window.location.href = $("a[href='" + String($(this).val()) + "']").first().attr('href');
               }
             });
           }
