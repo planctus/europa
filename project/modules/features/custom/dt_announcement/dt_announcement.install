@@ -121,3 +121,12 @@ function dt_announcement_update_7108() {
   features_revert_module('dt_page');
   features_revert_module('dt_announcement');
 }
+
+/**
+ * NEXTEUROPA-5258: Re revert and enable dt_department feature.
+ */
+function dt_announcement_update_7109() {
+  module_enable(array('dt_department'));
+  features_revert_module('dt_department');
+  features_revert_module('dt_announcement');
+}
