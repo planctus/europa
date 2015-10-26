@@ -123,10 +123,8 @@ function dt_announcement_update_7108() {
 }
 
 /**
- * NEXTEUROPA-5258: Re revert and enable dt_department feature.
+ * NEXTEUROPA-5258: Re revert.
  */
 function dt_announcement_update_7109() {
-  module_enable(array('dt_department'));
-  features_revert_module('dt_department');
   features_revert_module('dt_announcement');
 }
