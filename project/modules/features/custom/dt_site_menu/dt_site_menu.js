@@ -11,6 +11,7 @@
         $menuButton.click(function() {
           $siteMenu.collapse('toggle');
           $('button', this).toggleClass('is-collapsed');
+          PiwikDTT.sendTrack(1,'trackEvent','Menu', 'Open');
         });
       });
     }

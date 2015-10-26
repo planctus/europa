@@ -97,4 +97,46 @@
       });
     }
   };
+
+  var trackElements = [];
+  var errorEventSent = 'Piwik, trackEvent was not fired up.';
+/**
+ * Acts like a wrapper for Piwik push method.
+ *
+ * @fires _paq.push
+ *
+ * @param {triggerValue}
+ *   How many times should the call be triggered by page load.
+ *   Accepts 0,1 (0 for always and 1 just for one time).
+ *
+ * @param {action}, {category}, {value}, {data}
+ * @see https://developer.piwik.org/guides/tracking-javascript-guide
+ */
+  PiwikDTT = {
+    sendTrack: function(triggerValue, action, category, value, data) {
+      if (typeof action === "undefined" || action === null || action === '') {
+        action = "trackEvent";
+      }
+      // Trigger only once.
+      if (triggerValue == 1) {
+        var innerElements = (triggerValue + action + category + value + data);
+        if ($.inArray(innerElements, trackElements) === -1){
+          trackElements.push(innerElements);
+          if (typeof _paq != 'undefined'){
+            _paq.push([action, category, value, data]);
+          } else {
+            console.log(errorEventSent);
+          }
+        }
+      }
+      // Always trigger.
+      if (triggerValue == 0){
+        if (typeof _paq != 'undefined'){
+          _paq.push([action, category, value, data]);
+        } else {
+          console.log(errorEventSent);
+        }
+      }
+    }
+  }
 })(jQuery);

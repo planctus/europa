@@ -4,14 +4,12 @@
       var $feedbackForm = $('#nexteuropa-feedback-form');
       var $feedbackFormWrapper = $('.feedback-form__wrapper');
       var currentType = $('input[name="feedback_type"]').val();
-
       // Whether the Open event was already tracked once.
       var analyticsOpenSent = false;
-      // Track submission.
       $feedbackFormWrapper.on('analyticsEvent', function(event, data) {
-        if (data.status == 'success' && typeof _paq != 'undefined') {
-          _paq.push(['trackEvent', 'Feedback', 'Sent', data.type]);
-        }
+        if (data.status == 'success') {
+          PiwikDTT.sendTrack(1,'trackEvent','Feedback', 'Sent', data.type );
+         }
       });
 
       $feedbackForm.once('feedback', function() {
@@ -56,10 +54,7 @@
         $('.feedback-form__trigger').click(function() {
           $feedbackFormWrapper.toggleClass('is-open');
           $feedbackForm.velocity("scroll", {easing:'ease', duration: 350});
-          if (!analyticsOpenSent && typeof _paq != 'undefined') {
-            analyticsOpenSent = true;
-            _paq.push(['trackEvent', 'Feedback', 'Open']);
-          }
+          PiwikDTT.sendTrack(1,'trackEvent','Feedback', 'Open');
         });
       });
 
