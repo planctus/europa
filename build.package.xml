@@ -251,7 +251,7 @@
     <target
         name="build-dev"
         description="Build a local development version of the subsite."
-        depends="install-build-dependencies, delete-platform, download-platform, unpack-platform, make-subsite, link-subsite-resources, install-subsite-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules" />
+        depends="install-build-dependencies, delete-platform, download-platform, unpack-platform, link-subsite-resources, make-subsite, install-subsite-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules" />
 
     <target
         name="build-dist"

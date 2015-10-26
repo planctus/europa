@@ -54,7 +54,7 @@ projects[weight][version] = "2.3"
 ; Libraries
 ; =========
 
-
 ; ======
 ; Themes
 ; ======
+includes[] = "../lib/themes/europa/europa.make"

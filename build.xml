@@ -40,7 +40,7 @@
         <property name="aws.profile" value="" />
         <aws-config region="${aws.region}" profile="${aws.profile}" />
     </target>
-    
+
     <target name="delete-stack">
         <aws-cf-deletestack name="${cf.stackName}" />
     </target>
