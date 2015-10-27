@@ -29,8 +29,6 @@ function dt_roles_permissions_export_menu() {
 function _dt_roles_permissions_export_export($role) {
   // Just to make sure the directory exists.
   if (_dt_roles_permissions_export_setup_dir()) {
-    // Set our directory variable.
-    $filedir = _dt_roles_permissions_get_export_dir();
     // If $role is an object it is just one.
     if (is_object($role)) {
       // Get the data.
@@ -38,7 +36,7 @@ function _dt_roles_permissions_export_export($role) {
       // Write it to the file.
       file_unmanaged_save_data(
         $filedata,
-        $filedir . '/' . md5($role->name) . '.php',
+        _dt_roles_permissions_get_file_dir($role->name),
         FILE_EXISTS_REPLACE
       );
       return TRUE;
@@ -53,7 +51,7 @@ function _dt_roles_permissions_export_export($role) {
         // Write to the file.
         file_unmanaged_save_data(
           $filedata,
-          $filedir . '/' . md5($role_object->name) . '.php',
+          _dt_roles_permissions_get_file_dir($role_object->name),
           FILE_EXISTS_REPLACE
         );
       }
@@ -74,19 +72,12 @@ function _dt_roles_permissions_get_export_data($role) {
   // Iterate for each selected role.
   $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
   $perms = user_role_permissions(array($role->rid => $role->rid));
-  //$export_data .= "  'permissions' => array(\n";
-  $counter = 1;
   foreach ($perms[$role->rid] as $perm => $val) {
     if (array_key_exists($perm, $modules_permissions)) {
-      $export_data .= "    '" . $perm . "',";
-      if ($counter < count($perms[$role->rid])) {
-        $export_data .= "\n";
-      }
-      $counter++;
+      $export_data .= "  '" . $perm . "',\n";
     }
   }
-  //$export_data .= "  ),\n";
-  $export_data .= ");\n\n";
+  $export_data .= ");\n";
   // Return the export data.
   return $export_data;
 }

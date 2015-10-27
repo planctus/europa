@@ -40,13 +40,22 @@ function dt_roles_permissions_import_page($form, &$form_state) {
  * @see dt_roles_permissions_export_page
  */
 function dt_roles_permissions_import_page_submit($form, &$form_state) {
-  if ($form_state['values']['dt_roles_permissions_import_role_id'] !== 'all') {
+  // Set our basic message.
+  $message = t('Roles have been imported');
+
+  if (is_numeric($form_state['values']['dt_roles_permissions_import_role_id'])) {
     $role = user_role_load($form_state['values']['dt_roles_permissions_import_role_id']);
   }
   else {
     $role = $form_state['values']['dt_roles_permissions_import_role_id'];
+
+    // Special message in case of clear.
+    if ($form_state['values']['dt_roles_permissions_import_role_id'] == 'clear') {
+      $message = t('Permissions have been cleared');
+    }
   }
+  // If true, return the message.
   if (_dt_roles_permissions_import_import($role)) {
-    drupal_set_message(t('Roles have been imported.'));
+    drupal_set_message($message);
   }
 }

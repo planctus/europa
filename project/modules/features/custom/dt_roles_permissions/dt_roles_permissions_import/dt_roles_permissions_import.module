@@ -31,12 +31,10 @@ function _dt_roles_permissions_import_import($role) {
   $modules_permissions = array_keys(user_permission_get_modules());
   // Initialize our permissions array.
   $permissions = array();
-  // Get our export dir.
-  $filedir = _dt_roles_permissions_get_export_dir();
   // If our role is an object, then its singular.
   if (is_object($role)) {
     // Include the file containing the array.
-    include_once $filedir . '/' . md5($role->name) . '.php';
+    include_once _dt_roles_permissions_get_file_dir($role->name);
     // List of permissions.
     $modules_permissions = array_keys(user_permission_get_modules());
     // Revoke them.
@@ -50,7 +48,7 @@ function _dt_roles_permissions_import_import($role) {
       // Load the role object.
       $role_object = user_role_load($key);
       // Include the file containing the array.
-      include_once $filedir . '/' . md5($role_object->name) . '.php';
+      include_once _dt_roles_permissions_get_file_dir($role_object->name);
       // Revoke them.
       user_role_revoke_permissions($role_object->rid, $modules_permissions);
       // Grant the new permissions.
@@ -74,14 +72,12 @@ function _dt_roles_permissions_import_import($role) {
  * Helper function to get the available import files as an $id => $name array.
  */
 function _dt_roles_permissions_get_importable() {
-  // Get the directory where the exports are stored.
-  $filedir = _dt_roles_permissions_get_export_dir();
   // Get our default roles that are available on the site.
   $roles_array = user_roles();
   // Check which import file are available. If it is not available exclude it
   // from the import list.
   foreach ($roles_array as $rid => $role) {
-    if (!file_exists($filedir . '/' . md5($role) . '.php')) {
+    if (!file_exists(_dt_roles_permissions_get_file_dir($role))) {
       unset($roles_array[$rid]);
     }
   }
