@@ -49,7 +49,7 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Commissioners',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'group_team_tabs',
     ),
@@ -134,6 +134,35 @@ function cwt_team_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_files|node|team|default';
+  $field_group->group_name = 'group_team_files';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Files',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_team_attachments',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Files',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__main',
+        'element' => 'h3',
+        'show_label' => '1',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_team_files|node|team|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_team_members|node|team|default';
   $field_group->group_name = 'group_team_members';
   $field_group->entity_type = 'node';
@@ -142,7 +171,7 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Members',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'group_team_president',
     ),
@@ -414,7 +443,7 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Top image',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_illustrative_image',
     ),

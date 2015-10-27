@@ -211,7 +211,7 @@ function cwt_team_strongarm() {
         ),
         'subscriptions_ui' => array(
           'default' => array(
-            'weight' => '20',
+            'weight' => '21',
             'visible' => FALSE,
           ),
         ),

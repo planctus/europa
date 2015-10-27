@@ -38,6 +38,7 @@ features[field_group][] = group_team_activities|node|team|form
 features[field_group][] = group_team_comissioners|node|team|default
 features[field_group][] = group_team_content|node|team|form
 features[field_group][] = group_team_disable|node|team|default
+features[field_group][] = group_team_files|node|team|default
 features[field_group][] = group_team_members|node|team|default
 features[field_group][] = group_team_members|node|team|form
 features[field_group][] = group_team_metadata|node|team|form
