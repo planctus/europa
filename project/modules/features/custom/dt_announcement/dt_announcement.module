@@ -49,8 +49,13 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
  * node title.
  */
 function dt_announcement_views_pre_render(&$view) {
+  // List of views that use this logic:
+  $view_announcements_blocks = array(
+    'latest_block',
+    'block',
+  );
   // On the listing, we alter the read more text to include our node title.
-  if ($view->name == 'announcements' && $view->current_display == 'latest_block') {
+  if ($view->name == 'announcements' && in_array($view->current_display, $view_announcements_blocks)) {
 
     // First we disable the read more button, because we have defined our own
     // replacement, we first have to make sure that we can replace it.

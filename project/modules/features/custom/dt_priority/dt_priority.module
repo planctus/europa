@@ -13,8 +13,8 @@ function dt_priority_menu() {
   $items = array();
 
   $items['admin/config/system/dt-priority-settings'] = array(
-    'access arguments' => array('administer site configuration'),
-    'description' => t('Setting the ID of the node to display the priority listing on.'),
+    'access arguments' => array('configure priorities listing page'),
+    'description' => 'Setting the ID of the node to display the priority listing on.',
     'file' => 'dt_priority.admin.inc',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('dt_priority_settings'),
@@ -23,6 +23,18 @@ function dt_priority_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function dt_priority_permission() {
+  return array(
+    'configure priorities listing page' => array(
+      'title' => t('Configure priorities listing page'),
+      'description' => t('Allow users of this role to configure the priorities listing page.'),
+    ),
+  );
 }
 
 /**
