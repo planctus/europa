@@ -8,7 +8,7 @@
       var analyticsOpenSent = false;
       $feedbackFormWrapper.on('analyticsEvent', function(event, data) {
         if (data.status == 'success') {
-          PiwikDTT.sendTrack(1,'trackEvent','Feedback', 'Sent', data.type );
+          PiwikDTT.sendTrack(0,'trackEvent','Feedback', 'Sent', data.type);
          }
       });
 
