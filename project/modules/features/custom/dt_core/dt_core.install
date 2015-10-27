@@ -655,7 +655,7 @@ function dt_core_update_7146() {
  * field_lastname
  *
  */
-function dt_core_update_7147() {
+function dt_core_update_7147($sandbox) {
   // global, non-DT.
   foreach (field_info_fields() as $f_name => $field) {
     switch ($field['field_name']) {
@@ -665,6 +665,7 @@ function dt_core_update_7147() {
       case 'field_video_description':
         $field['translatable'] = 1;
         field_update_field($field);
+        _dt_core_enable_entity_translation($field['field_name'], $sandbox);
         break;
     }
   }
