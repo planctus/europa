@@ -66,3 +66,13 @@ function cwt_team_update_7104() {
   $group = field_group_load_field_group('group_team_highlight', 'node', 'team', 'form');
   field_group_group_export_delete($group, FALSE);
 }
+
+/**
+ * NEXTEUROPA-4967: Disabling cabinet context, and reverting cwt_team.
+ */
+function cwt_team_update_7105() {
+  $contexts = variable_get('context_status', array());
+  unset($contexts['cabinet']);
+  variable_set('context_status', $contexts);
+  features_revert_module('cwt_team');
+}
