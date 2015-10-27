@@ -90,6 +90,10 @@ Styleguide page-header
   }
 }
 
+.page-header-no-border-bottom {
+  border-bottom: none;
+}
+
 // Drupal.
 .front .page-header {
   @extend .page-header--featured;

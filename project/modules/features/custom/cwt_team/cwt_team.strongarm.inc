@@ -205,13 +205,13 @@ function cwt_team_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '25',
+            'weight' => '24',
             'visible' => FALSE,
           ),
         ),
         'subscriptions_ui' => array(
           'default' => array(
-            'weight' => '20',
+            'weight' => '19',
             'visible' => FALSE,
           ),
         ),

@@ -8735,6 +8735,9 @@ Styleguide page-header
     .page-header a[href^="http"]:not(.is-internal).btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal), .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal) {
       padding-right: 2.1em; }
 
+.page-header-no-border-bottom {
+  border-bottom: none; }
+
 .front .page-header {
   padding: 0; }
 
