@@ -1,10 +1,14 @@
 (function ($) {
 
   var pageSwitcher = {
+    wrapClass: '.lang-select-page',
     listClass: '.lang-select-page__list',
     itemClass: '.lang-select-page__option',
     iconClass: '.lang-select-page__icon',
     unavClass: '.lang-select-page__unavailable',
+    wrapWidth: function() {
+      return $(pageSwitcher.wrapClass).outerWidth();
+    },
     listWidth: function() {
       return $(pageSwitcher.listClass).outerWidth();
     },
@@ -22,7 +26,7 @@
       return overallWidth;
     },
     itemsOverflow: function() {
-      var availableSpace = pageSwitcher.listWidth() - pageSwitcher.iconWidth() - pageSwitcher.unavailableWidth();
+      var availableSpace = pageSwitcher.wrapWidth() - pageSwitcher.iconWidth() - pageSwitcher.unavailableWidth();
       return pageSwitcher.itemsWidth() > availableSpace - 20;
     }
   };
@@ -39,18 +43,39 @@
       });
 
       var overflowToggle = function () {
-        if (pageSwitcher.itemsOverflow()) {
-          pageLanguageSelector.trigger('hide.list');
-          pageLanguageSelector.trigger('show.dropdown');
-        } else {
-          pageLanguageSelector.trigger('show.list');
-          pageLanguageSelector.trigger('hide.dropdown');
+        switch (pageSwitcher.itemsOverflow()) {
+          case true:
+            pageLanguageSelector.trigger('hide.list');
+            pageLanguageSelector.trigger('show.dropdown');
+            break;
+
+          case false:
+            pageLanguageSelector.trigger('show.list');
+            pageLanguageSelector.trigger('hide.dropdown');
+            break;
         }
       };
 
       if (typeof enquire !== 'undefined') {
+        enquire.register(Drupal.europa.breakpoints.medium, {
+          setup: function() {
+            overflowToggle();
+          },
+          match: function () {
+            overflowToggle();
+          },
+          unmatch: function () {
+            overflowToggle();
+          }
+        }, true);
         enquire.register(Drupal.europa.breakpoints.small, {
           setup: function() {
+            overflowToggle();
+          },
+          match: function () {
+            overflowToggle();
+          },
+          unmatch: function () {
             overflowToggle();
           }
         }, true);
