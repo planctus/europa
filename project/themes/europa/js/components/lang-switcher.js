@@ -17,36 +17,13 @@
     itemsWidth: function() {
       var overallWidth = 0;
       $(pageSwitcher.listClass).children(pageSwitcher.itemClass).each(function() {
-        if ($(this).is(':visible')) {
-          var itemSize = $(this).outerWidth();
-          overallWidth += itemSize;
-        }
+        overallWidth += $(this).outerWidth();
       });
       return overallWidth;
     },
     itemsOverflow: function() {
       var availableSpace = pageSwitcher.listWidth() - pageSwitcher.iconWidth() - pageSwitcher.unavailableWidth();
       return pageSwitcher.itemsWidth() > availableSpace - 20;
-    },
-    hideLast: function() {
-      var lastVisible = $('.lang-select-page__option').last(':visible');
-      lastVisible.hide();
-      return lastVisible;
-    },
-    shrink: function() {
-      var numberItems = $(pageSwitcher.itemClass).length;
-      while (numberItems > 0) {
-        if (pageSwitcher.itemsOverflow()) {
-          pageSwitcher.hideLast();
-          numberItems--;
-        }
-      }
-    },
-    showLast: function() {
-      // contrary to hideLast()
-    },
-    expand: function() {
-      // contrary to shrink()
     }
   };
 
@@ -61,29 +38,20 @@
         selected: 'is-selected'
       });
 
-      pageSwitcher.shrink();
+      var overflowToggle = function () {
+        if (pageSwitcher.itemsOverflow()) {
+          pageLanguageSelector.trigger('hide.list');
+          pageLanguageSelector.trigger('show.dropdown');
+        } else {
+          pageLanguageSelector.trigger('show.list');
+          pageLanguageSelector.trigger('hide.dropdown');
+        }
+      };
 
       if (typeof enquire !== 'undefined') {
         enquire.register(Drupal.europa.breakpoints.small, {
-          // desktop
-          match : function() {
-            pageLanguageSelector.trigger('show.list');
-            pageLanguageSelector.trigger('hide.dropdown');
-          },
-          // mobile
-          unmatch : function() {
-            $(window).on('resize', function(){
-              if(pageSwitcher.itemsOverflow()){
-                pageLanguageSelector.trigger('hide.list');
-                pageLanguageSelector.trigger('show.dropdown');
-              }
-            });
-          },
           setup: function() {
-            if(pageSwitcher.itemsOverflow()){
-              pageLanguageSelector.trigger('hide.list');
-              pageLanguageSelector.trigger('show.dropdown');
-            }
+            overflowToggle();
           }
         }, true);
       }
