@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Dt_roles_permissions export functionality.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function dt_roles_permissions_import_menu() {
+  $items = array();
+
+  $items['admin/people/permissions/dt_roles_permissions_import'] = array(
+    'access arguments' => array('administer site configuration'),
+    'description' => 'Import permissions',
+    'file' => 'dt_roles_permissions_import.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dt_roles_permissions_import_page'),
+    'title' => 'Permission import',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Helper function to get a list to import and write it to the database.
+ */
+function _dt_roles_permissions_import_import($role) {
+
+}

@@ -1,0 +1,107 @@
+<?php
+/**
+ * @file
+ * Dt_roles_permissions export functionality.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function dt_roles_permissions_export_menu() {
+  $items = array();
+
+  $items['admin/people/permissions/dt_roles_permissions_export'] = array(
+    'access arguments' => array('administer site configuration'),
+    'description' => 'Export permissions',
+    'file' => 'dt_roles_permissions_export.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dt_roles_permissions_export_page'),
+    'title' => 'Permission export',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Helper function to get a list to export and write it to a file.
+ */
+function _dt_roles_permissions_export_export($role) {
+  // Just to make sure the directory exists.
+  if (_dt_roles_permissions_export_setup_dir()) {
+    // Set our directory variable.
+    $filedir = _dt_roles_permissions_get_export_dir();
+    // If $role is an object it is just one.
+    if (is_object($role)) {
+      // Get the data.
+      $filedata = _dt_roles_permissions_get_export_data($role);
+      // Write it to the file.
+      file_unmanaged_save_data(
+        $filedata,
+        $filedir . '/' . md5($role->name) . '.php',
+        FILE_EXISTS_REPLACE
+      );
+    }
+    // If the $role is "all" we loop over each role and write them out.
+    elseif ($role == 'all') {
+      foreach (user_roles() as $key => $role) {
+
+        $role_object = user_role_load($key);
+        // Get the data.
+        $filedata = _dt_roles_permissions_get_export_data($role_object);
+        // Write to the file.
+        file_unmanaged_save_data(
+          $filedata,
+          $filedir . '/' . md5($role_object->name) . '.php',
+          FILE_EXISTS_REPLACE
+        );
+      }
+    }
+  }
+  return TRUE;
+}
+
+/**
+ * Helper function to get exportable data.
+ */
+function _dt_roles_permissions_get_export_data($role) {
+  $modules = user_permission_get_modules();
+
+  $export_data = "<?php\n";
+  // Iterate for each selected role.
+  $export_data .= "\$role['" . $role->name . "'] = array(\n";
+  $perms = user_role_permissions(array($role->rid => $role->rid));
+  $export_data .= "  'permissions' => array(\n";
+  $counter = 1;
+  foreach ($perms[$role->rid] as $perm => $val) {
+    if (array_key_exists($perm, $modules)) {
+      $export_data .= "    '" . $perm . "',";
+      if ($counter < count($perms[$role->rid])) {
+        $export_data .= "\n";
+      }
+      $counter++;
+    }
+  }
+  $export_data .= "  ),\n";
+  $export_data .= ");\n\n";
+  // Return the export data.
+  return $export_data;
+}
+
+/**
+ * Helper function to detect if the folder exists.
+ */
+function _dt_roles_permissions_export_setup_dir() {
+  // Setup the directory to store the exports.
+  $filedir = _dt_roles_permissions_get_export_dir();
+  // Create it if it does not yet exist.
+  if (!file_exists($filedir)) {
+    if (mkdir($filedir, 0755, TRUE)) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}

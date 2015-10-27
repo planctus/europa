@@ -1,0 +1,6 @@
+name = Roles and Permissions export
+description = This submodule enables the possibility to export permissions to the file system.
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+project = dt_roles_permissions

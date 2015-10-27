@@ -3,3 +3,10 @@
  * @file
  * Drupal needs this blank file.
  */
+
+/**
+ * Helper function to get the export directory.
+ */
+function _dt_roles_permissions_get_export_dir() {
+  return drupal_get_path('module', 'dt_roles_permissions') . '/exports';
+}
