@@ -691,6 +691,26 @@ function dt_core_update_7147($sandbox) {
     }
   }
 
+  // DT project-specific fields
+  $dt_fields_migrate = array(
+    'field_banner_caption',
+    'field_banner_video_file',
+    'field_class_related_links',
+    'field_contact_phone_number',
+    'field_core_top_task_link',
+    'field_person_first_name',
+    'field_person_last_name',
+    'field_person_tagline',
+    'field_policy_caption',
+    'field_policy_featured_file',
+    'field_social_network_classname',
+    'field_core_file'
+  );
+
+  foreach ($dt_fields_migrate as $field_name) {
+    _dt_core_enable_entity_translation($field_name, $sandbox);
+  }
+
   // The following is somehow not done by dt_featured_item_update_7101().
   // List of fields to delete.
   $fields_to_delete = array(
