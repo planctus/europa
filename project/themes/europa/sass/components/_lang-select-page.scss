@@ -76,11 +76,17 @@ ul.lang-select-page__list {
   color: #fff;
 
   select.lang-select-page__list {
+    // firefox hide arrow
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+
     background-color: $blue-darker;
     border: 0;
     color: #fff;
     font-weight: bold;
     line-height: 3.2;
+    height: 3.2em;
 
     &:hover, &:active {
       border: 0;

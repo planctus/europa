@@ -26,7 +26,7 @@
             // desktop
             unmatch: function() {
               $this.siblings('.tab-content').children().addClass('tab-pane');
-            },
+            }
           });
         }
       });
@@ -47,7 +47,7 @@
             // mobile
             unmatch : function() {
               Drupal.behaviors.equal_blocks.fixBlockHeights($equal_height_block, true);
-            },
+            }
           });
         }
       });
@@ -85,14 +85,6 @@
         // Simple listing blocks.
         else {
           $blocks.push($wrapper.find('.listing__item-link > :first-child'));
-        }
-
-        var i, max;
-        for (i = 0, max = $blocks.length; i < max; i++) {
-          var $block = $blocks[i].equalHeight();
-          // if(stop) {
-          //   $block.stop();
-          // }
         }
       });
     }

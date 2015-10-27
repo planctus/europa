@@ -1,54 +1,81 @@
 (function ($) {
-	
-  /**
-   * Returns true if list is bigger than wrapper.
-   */
-  function listIsWider(){
-    var $wrapper = $('.lang-select-page'),
-      $list = $('.lang-select-page__list'),
-      $icon = $('.lang-select-page__icon');
 
-    if ($list.length && $list.is(':visible') && $wrapper.length) {
-      // 40px of buffer in wrapper which is compensated due to font icon changing size.
-      return ($list.outerWidth() + $icon.outerWidth() > $wrapper.outerWidth() - 40);
+  var pageSwitcher = {
+    wrapClass: '.lang-select-page',
+    listClass: '.lang-select-page__list',
+    itemClass: '.lang-select-page__option',
+    iconClass: '.lang-select-page__icon',
+    unavClass: '.lang-select-page__unavailable',
+    wrapWidth: function() {
+      return $(pageSwitcher.wrapClass).outerWidth();
+    },
+    listWidth: function() {
+      return $(pageSwitcher.listClass).outerWidth();
+    },
+    iconWidth: function() {
+      return $(pageSwitcher.iconClass).outerWidth();
+    },
+    unavailableWidth: function() {
+      return $(pageSwitcher.unavClass).outerWidth();
+    },
+    itemsWidth: function() {
+      var overallWidth = 0;
+      $(pageSwitcher.listClass).children(pageSwitcher.itemClass).each(function() {
+        overallWidth += $(this).outerWidth();
+      });
+      return overallWidth;
+    },
+    itemsOverflow: function() {
+      var availableSpace = pageSwitcher.wrapWidth() - pageSwitcher.iconWidth() - pageSwitcher.unavailableWidth();
+      return pageSwitcher.itemsWidth() > availableSpace - 20;
     }
-  }
+  };
 
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
-      var pageLanguageSelector = $('.lang-select-page');
-      pageLanguageSelector.selectify({
-        listSelector: 'lang-select-page__list',
-        item: 'lang-select-page__option',
-        other: 'lang-select-page__other',
-        unavailable: 'lang-select-page__unavailable',
-        selected: 'is-selected'
-      });
+      $('#block-language-selector-page-language-selector-page').once('lang-select-page', function(){
+        var pageLanguageSelector = $('.lang-select-page');
+        pageLanguageSelector.selectify({
+          listSelector: 'lang-select-page__list',
+          item: 'lang-select-page__option',
+          other: 'lang-select-page__other',
+          unavailable: 'lang-select-page__unavailable',
+          selected: 'is-selected'
+        });
 
-      if (typeof enquire !== 'undefined') {
-        enquire.register(Drupal.europa.breakpoints.small, {
-          // desktop
-          match : function() {
-            pageLanguageSelector.trigger('show.list');
-            pageLanguageSelector.trigger('hide.dropdown');
-          },
-          // mobile
-          unmatch : function() {
-            $(window).on('resize', function(){
-              if(listIsWider()){
-                pageLanguageSelector.trigger('hide.list');
-                pageLanguageSelector.trigger('show.dropdown');
-              }
-            });
-          },
-          setup: function() {
-            if(listIsWider()){
+        var overflowToggle = function () {
+          switch (pageSwitcher.itemsOverflow()) {
+            case true:
               pageLanguageSelector.trigger('hide.list');
               pageLanguageSelector.trigger('show.dropdown');
-            }
+              break;
+
+            case false:
+              pageLanguageSelector.trigger('show.list');
+              pageLanguageSelector.trigger('hide.dropdown');
+              break;
           }
-        }, true);
-      }
+        };
+
+        if (typeof enquire !== 'undefined') {
+          // Runs on device width change.
+          enquire.register(Drupal.europa.breakpoints.medium, {
+            // desktop
+            match : function() {
+              $(window).resize(function() {
+                overflowToggle();
+              });
+            },
+            // mobile
+            unmatch : function() {
+              $(window).off('resize');
+            },
+            setup: function() {
+              overflowToggle();
+            }
+          });
+        }
+      });
     }
   };
 })(jQuery);

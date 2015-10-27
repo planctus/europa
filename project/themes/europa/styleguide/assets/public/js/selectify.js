@@ -55,13 +55,17 @@
         settings.listWrapper.find('select' + '.' + settings.listSelector).hide();
       };
       var hideList = function () {
-        settings.listWrapper.find('ul.' + settings.listSelector).hide();
+        var $list = settings.listWrapper.find('ul.' + settings.listSelector);
+        $list.children('.lang-select-page__other').hide();
+        $list.children('.is-selected').hide();
       };
       var showDropDown = function () {
         settings.listWrapper.find('select' + '.' + settings.listSelector).show();
       };
       var showList = function () {
-        settings.listWrapper.find('ul.' + settings.listSelector).show();
+        var $list = settings.listWrapper.find('ul.' + settings.listSelector);
+        $list.children('.lang-select-page__other').show();
+        $list.children('.is-selected').show();
       };
 
       settings.listWrapper.on('hide.dropdown', hideDropDown);

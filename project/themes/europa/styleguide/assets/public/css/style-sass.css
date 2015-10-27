@@ -8164,11 +8164,15 @@ ul.lang-select-page__list {
   border-bottom: 1px solid #fff;
   color: #fff; }
   .lang-select-page--transparent select.lang-select-page__list {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
     background-color: #012b58;
     border: 0;
     color: #fff;
     font-weight: bold;
-    line-height: 3.2; }
+    line-height: 3.2;
+    height: 3.2em; }
     .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
       border: 0; }
     .lang-select-page--transparent select.lang-select-page__list > option {
