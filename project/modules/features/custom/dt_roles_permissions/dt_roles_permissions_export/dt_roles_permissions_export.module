@@ -41,11 +41,12 @@ function _dt_roles_permissions_export_export($role) {
         $filedir . '/' . md5($role->name) . '.php',
         FILE_EXISTS_REPLACE
       );
+      return TRUE;
     }
     // If the $role is "all" we loop over each role and write them out.
     elseif ($role == 'all') {
       foreach (user_roles() as $key => $role) {
-
+        // Load the role object.
         $role_object = user_role_load($key);
         // Get the data.
         $filedata = _dt_roles_permissions_get_export_data($role_object);
@@ -56,25 +57,27 @@ function _dt_roles_permissions_export_export($role) {
           FILE_EXISTS_REPLACE
         );
       }
+      return TRUE;
     }
   }
-  return TRUE;
+  return FALSE;
 }
 
 /**
  * Helper function to get exportable data.
  */
 function _dt_roles_permissions_get_export_data($role) {
-  $modules = user_permission_get_modules();
-
+  // List all permissions.
+  $modules_permissions = user_permission_get_modules();
+  // Build our export data.
   $export_data = "<?php\n";
   // Iterate for each selected role.
-  $export_data .= "\$role['" . $role->name . "'] = array(\n";
+  $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
   $perms = user_role_permissions(array($role->rid => $role->rid));
-  $export_data .= "  'permissions' => array(\n";
+  //$export_data .= "  'permissions' => array(\n";
   $counter = 1;
   foreach ($perms[$role->rid] as $perm => $val) {
-    if (array_key_exists($perm, $modules)) {
+    if (array_key_exists($perm, $modules_permissions)) {
       $export_data .= "    '" . $perm . "',";
       if ($counter < count($perms[$role->rid])) {
         $export_data .= "\n";
@@ -82,7 +85,7 @@ function _dt_roles_permissions_get_export_data($role) {
       $counter++;
     }
   }
-  $export_data .= "  ),\n";
+  //$export_data .= "  ),\n";
   $export_data .= ");\n\n";
   // Return the export data.
   return $export_data;
