@@ -33,53 +33,49 @@
 
   Drupal.behaviors.languageSwitcherPage = {
     attach: function(context) {
-      var pageLanguageSelector = $('.lang-select-page');
-      pageLanguageSelector.selectify({
-        listSelector: 'lang-select-page__list',
-        item: 'lang-select-page__option',
-        other: 'lang-select-page__other',
-        unavailable: 'lang-select-page__unavailable',
-        selected: 'is-selected'
-      });
+      $('#block-language-selector-page-language-selector-page').once('lang-select-page', function(){
+        var pageLanguageSelector = $('.lang-select-page');
+        pageLanguageSelector.selectify({
+          listSelector: 'lang-select-page__list',
+          item: 'lang-select-page__option',
+          other: 'lang-select-page__other',
+          unavailable: 'lang-select-page__unavailable',
+          selected: 'is-selected'
+        });
 
-      var overflowToggle = function () {
-        switch (pageSwitcher.itemsOverflow()) {
-          case true:
-            pageLanguageSelector.trigger('hide.list');
-            pageLanguageSelector.trigger('show.dropdown');
-            break;
+        var overflowToggle = function () {
+          switch (pageSwitcher.itemsOverflow()) {
+            case true:
+              pageLanguageSelector.trigger('hide.list');
+              pageLanguageSelector.trigger('show.dropdown');
+              break;
 
-          case false:
-            pageLanguageSelector.trigger('show.list');
-            pageLanguageSelector.trigger('hide.dropdown');
-            break;
+            case false:
+              pageLanguageSelector.trigger('show.list');
+              pageLanguageSelector.trigger('hide.dropdown');
+              break;
+          }
+        };
+
+        if (typeof enquire !== 'undefined') {
+          // Runs on device width change.
+          enquire.register(Drupal.europa.breakpoints.medium, {
+            // desktop
+            match : function() {
+              $(window).resize(function() {
+                overflowToggle();
+              });
+            },
+            // mobile
+            unmatch : function() {
+              $(window).off('resize');
+            },
+            setup: function() {
+              overflowToggle();
+            }
+          });
         }
-      };
-
-      if (typeof enquire !== 'undefined') {
-        enquire.register(Drupal.europa.breakpoints.medium, {
-          setup: function() {
-            overflowToggle();
-          },
-          match: function () {
-            overflowToggle();
-          },
-          unmatch: function () {
-            overflowToggle();
-          }
-        }, true);
-        enquire.register(Drupal.europa.breakpoints.small, {
-          setup: function() {
-            overflowToggle();
-          },
-          match: function () {
-            overflowToggle();
-          },
-          unmatch: function () {
-            overflowToggle();
-          }
-        }, true);
-      }
+      });
     }
   };
 })(jQuery);
