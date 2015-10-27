@@ -196,7 +196,7 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Top image',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_illustrative_image',
     ),
