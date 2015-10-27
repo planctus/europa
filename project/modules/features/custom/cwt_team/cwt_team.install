@@ -71,7 +71,7 @@ function cwt_team_update_7104() {
  * NEXTEUROPA-4967: Disabling cabinet context, and reverting cwt_team.
  */
 function cwt_team_update_7105() {
-  $context = $context = context_load('cabinet');
+  $context = context_load('cabinet');
   context_delete($context);
   features_revert_module('cwt_team');
 }
