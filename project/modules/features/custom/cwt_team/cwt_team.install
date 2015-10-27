@@ -73,5 +73,4 @@ function cwt_team_update_7104() {
 function cwt_team_update_7105() {
   $context = context_load('cabinet');
   context_delete($context);
-  features_revert_module('cwt_team');
 }
