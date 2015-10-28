@@ -22,7 +22,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
     $fields_to_disable = array(
       'persons',
       'announcement',
-      'policy',
+      'policies',
       'priorities',
       'pri_policy_areas',
       'topics',
