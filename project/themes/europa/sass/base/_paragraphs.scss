@@ -15,9 +15,6 @@ p {
   @extend .paragraph;
 }
 
-.paragraph-lg-9 {
-  p {
-    @extend .col-lg-9;
-    max-width: inherit;
-  }
+.paragraph--width-auto {
+  width: auto;
 }

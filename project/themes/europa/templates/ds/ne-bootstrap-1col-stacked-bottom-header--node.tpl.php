@@ -39,7 +39,7 @@
       <?php print $bottom_header; ?>
     </<?php print $bottom_header_wrapper; ?>>
   <?php endif; ?>
-  <div class="page-content page-content-without-top-margin">
+  <div class="page-content">
     <div class="container-fluid">
       <div class="row">
         <?php if(!empty($top) || !empty($local_tabs) || !empty($messages)): ?>

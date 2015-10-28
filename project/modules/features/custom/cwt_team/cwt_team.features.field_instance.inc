@@ -21,8 +21,8 @@ function cwt_team_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
+        'type' => 'text_plain',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -393,7 +393,7 @@ function cwt_team_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
         'type' => 'link_button_two_column',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -644,13 +644,9 @@ function cwt_team_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'teaser' => array(

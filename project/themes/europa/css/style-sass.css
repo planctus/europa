@@ -1372,7 +1372,7 @@ pre {
   .listing__wrapper--row-two .listing:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .section--row-three .section__item, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .featured-item__image, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .section--row-two .section__item, .banner__paragraph, .banner__left, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .featured-item__content, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .listing__wrapper--maxwidth .listing, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .paragraph-lg-9 p, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .context-nav__label, .col-lg-3, .col-xs-4, .col-sm-4, .sidebar-field-group__sidebar, .col-md-4, .section--row-three .section__item, .listing__wrapper--three-columns .listing, .listing__wrapper--row-three .listing__item, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .featured-item__image, .col-lg-5, .col-xs-6, .col-sm-6, .listing__wrapper--two-columns .listing, .col-md-6, .section--row-two .section__item, .banner__paragraph, .banner__left, .listing__wrapper--two-columns .listing--title-large, .listing__wrapper--row-two .listing__item, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .featured-item__content, .col-lg-7, .col-xs-8, .col-sm-8, .sidebar-field-group__main, .col-md-8, .listing__wrapper--maxwidth .listing, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .context-nav__items, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .context-nav__label, .context-nav__items, .col-sm-12, .col-md-12, .sidebar-field-group h2, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1747,7 +1747,7 @@ pre {
     margin-left: 100%; } }
 
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .paragraph-lg-9 p, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
   .col-lg-1 {
     width: 8.3333333333%; }
@@ -1765,7 +1765,7 @@ pre {
     width: 58.3333333333%; }
   .col-lg-8 {
     width: 66.6666666667%; }
-  .col-lg-9, .paragraph-lg-9 p {
+  .col-lg-9 {
     width: 75%; }
   .col-lg-10 {
     width: 83.3333333333%; }
@@ -6256,8 +6256,8 @@ Styleguide text.paragraphs
   margin-bottom: 0.8em;
   max-width: 32em; }
 
-.paragraph-lg-9 p {
-  max-width: inherit; }
+.paragraph--width-auto {
+  width: auto; }
 
 /*
 Radio
@@ -6426,9 +6426,6 @@ Styleguide form.textarea
 .page-content {
   margin-top: 60px;
   margin-bottom: 30px; }
-
-.page-content-without-top-margin {
-  margin-top: 0px; }
 
 .main-content {
   overflow-x: hidden; }
@@ -7184,7 +7181,7 @@ Styleguide field
     margin-right: 0;
     padding-left: 0;
     padding-right: 0; }
-  .col-lg-3 + .col-lg-9 .field--full-width, .paragraph-lg-9 .col-lg-3 + p .field--full-width {
+  .col-lg-3 + .col-lg-9 .field--full-width {
     position: relative;
     left: -25%;
     width: 125%; } }

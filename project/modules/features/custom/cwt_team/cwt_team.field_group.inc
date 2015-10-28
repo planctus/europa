@@ -49,19 +49,17 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Commissioners',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'group_team_tabs',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Commissioners',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'attributes' => '',
+        'modifier' => '',
+        'layout' => 'col-md-8',
+        'classes' => '',
       ),
     ),
   );
@@ -113,8 +111,7 @@ function cwt_team_field_group_info() {
     'label' => 'Disable group',
     'weight' => '21',
     'children' => array(
-      0 => 'body',
-      1 => 'subscriptions_ui',
+      0 => 'subscriptions_ui',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -142,23 +139,48 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Files',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_team_attachments',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Files',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'h3',
-        'show_label' => '1',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
       ),
     ),
   );
   $export['group_team_files|node|team|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_links|node|team|default';
+  $field_group->group_name = 'group_team_links';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Links',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_team_links',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Links',
+      'instance_settings' => array(
+        'modifier' => '',
+        'layout' => 'col-md-9',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_team_links|node|team|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -171,19 +193,17 @@ function cwt_team_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Members',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'group_team_president',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Members',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => '',
+        'modifier' => '',
+        'layout' => 'col-md-8',
+        'classes' => '',
       ),
     ),
   );
@@ -330,6 +350,33 @@ function cwt_team_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_role|node|team|default';
+  $field_group->group_name = 'group_team_role';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Role',
+    'weight' => '4',
+    'children' => array(
+      0 => 'body',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Role',
+      'instance_settings' => array(
+        'modifier' => '',
+        'layout' => 'col-md-9',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_team_role|node|team|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_team_tab_name|node|team|default';
   $field_group->group_name = 'group_team_tab_name';
   $field_group->entity_type = 'node';
@@ -415,8 +462,8 @@ function cwt_team_field_group_info() {
     'label' => 'Horizontal tabs',
     'weight' => '6',
     'children' => array(
-      0 => 'group_team_tab_project_team',
-      1 => 'group_team_tab_name',
+      0 => 'group_team_tab_name',
+      1 => 'group_team_tab_project_team',
       2 => 'group_team_tab_role',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav',
