@@ -233,7 +233,7 @@ function dt_priority_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -655,7 +655,7 @@ function dt_priority_default_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 300,
+        'maxlength_js' => 0,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -962,7 +962,7 @@ function dt_priority_default_field_default_field_instances() {
           'expander_trim_to' => 2,
         ),
         'type' => 'context_nav_item',
-        'weight' => 30,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
