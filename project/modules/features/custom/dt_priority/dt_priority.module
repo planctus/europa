@@ -7,6 +7,37 @@
 include_once 'dt_priority.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function dt_priority_menu() {
+  $items = array();
+
+  $items['admin/config/system/dt-priority-settings'] = array(
+    'access arguments' => array('configure priorities listing page'),
+    'description' => 'Setting the ID of the node to display the priority listing on.',
+    'file' => 'dt_priority.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dt_priority_settings'),
+    'title' => 'Priority page settings',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function dt_priority_permission() {
+  return array(
+    'configure priorities listing page' => array(
+      'title' => t('Configure priorities listing page'),
+      'description' => t('Allow users of this role to configure the priorities listing page.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * We alter the weight options to only allow 0-10.

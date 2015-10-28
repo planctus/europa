@@ -723,7 +723,7 @@ function dt_core_context_load_alter(&$context) {
 
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
-  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && $element['#language'] !== $element['#entity']->language) {
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
     // Remove maxlength.
     unset($element['#maxlength']);
   }
@@ -982,4 +982,87 @@ function _dt_core_content_language_order() {
   }
 
   return $fallback_languages;
+}
+
+/**
+ * Helper function to get plurial names.
+ *
+ * This should move to the dt_node_settings module.
+ *
+ * @param string $bundle
+ *   The name of the bundle to get the plurial name.
+ */
+function _dt_core_get_plurial_content_types($bundle) {
+  // Forming plurals for existing content types.
+  $plurals = array(
+    'announcement' => t("announcements"),
+    'page' => t("pages"),
+    'contact' => t("contacts"),
+    'department' => t("departments"),
+    'editorial_team' => t("editorial teams"),
+    'file' => t("files"),
+    'basic_page' => t("pages"),
+    'person' => t("people"),
+    'policy' => t("policies"),
+    'policy_area' => t("policy areas"),
+    'policy_implementation' => t("policy implementations"),
+    'policy_input' => t("policy inputs"),
+    'policy_keyfile' => t("policy key files"),
+    'priority' => t("priorities"),
+    'publication' => t("publications"),
+    'class' => t("classes"),
+    'topic' => t("topics"),
+    'toplink' => t("top links"),
+  );
+
+  $singular = node_type_get_name($bundle);
+  // If user preference for plural form - use it, otherwise use the label.
+  if (isset($plurals[$bundle])) {
+    $plural = $plurals[$bundle];
+  }
+  else {
+    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+  }
+
+  $forms = array(
+    'singular' => strtolower($singular),
+    'plural' => $plural,
+  );
+
+  return $forms;
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * This was in the informational template before. But moved it here because we
+ * need it on multiple templates that use dt_core.
+ */
+function dt_core_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+
+  $content_type = array();
+  $content_type_filters = $view->filter['type']->value;
+  foreach ($content_type_filters as $filter) {
+    $content_type = $filter;
+  }
+
+  $variables['items_count'] = '';
+
+  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+    $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+
+    if ($total_rows == 0) {
+      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+    }
+    else {
+      $items_count = $total_rows . ' ' .
+        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+    }
+
+    $variables['items_count'] = $items_count;
+  }
 }

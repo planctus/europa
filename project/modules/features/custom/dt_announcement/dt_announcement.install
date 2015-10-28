@@ -121,3 +121,10 @@ function dt_announcement_update_7108() {
   features_revert_module('dt_page');
   features_revert_module('dt_announcement');
 }
+
+/**
+ * NEXTEUROPA-5258: Re revert.
+ */
+function dt_announcement_update_7109() {
+  features_revert_module('dt_announcement');
+}

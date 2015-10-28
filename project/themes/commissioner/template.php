@@ -550,3 +550,37 @@ function _commissioner_meta_title($node = NULL, $title = NULL) {
     return check_plain($title) . t('European Commission');
   }
 }
+
+/**
+ * Implements hook_preprocess_bootstrap_tabs().
+ */
+function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
+  $group = &$variables['group'];
+
+  $variables['nav_classes'] = '';
+
+  switch ($group->format_settings['instance_settings']['bootstrap_nav_type']) {
+    case 'tabs':
+      $variables['nav_classes'] .= ' nav-tabs nav-tabs-right nav-tabs--with-content';
+      break;
+
+    case 'pills':
+      $variables['nav_classes'] .= ' nav-pills';
+      break;
+
+    default:
+  }
+
+  if ($group->format_settings['instance_settings']['bootstrap_stacked']) {
+    $variables['nav_classes'] .= ' nav-stacked';
+  }
+
+  $i = 0;
+  foreach ($variables['items'] as $key => $item) {
+    // Check if item is not empty and we have access to it.
+    if ($item && (!isset($item['#access']) || $item['#access'])) {
+      $variables['panes'][$i]['title'] = check_plain($item['#title']);
+      $i++;
+    }
+  }
+}
