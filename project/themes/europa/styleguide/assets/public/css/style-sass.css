@@ -6423,6 +6423,9 @@ Styleguide form.textarea
   .front .top-bar__wrapper {
     float: right; } }
 
+.page-bottom-header {
+  margin-top: -1px; }
+
 .page-content {
   margin-top: 60px;
   margin-bottom: 30px; }
@@ -8700,26 +8703,26 @@ Styleguide page-header
     font-size: 1.222em;
     line-height: 1.5;
     color: #fff; }
-  .page-header__top,
-  .page-header__main,
-  .page-header__bottom {
+  .page-header .page-header__top,
+  .page-header .page-header__main,
+  .page-header .page-header__bottom {
     display: block;
     width: 100%; }
-  .page-header__top {
+  .page-header .page-header__top {
     text-transform: uppercase; }
-  .page-header__main {
+  .page-header .page-header__main {
     line-height: 1.428571429; }
-  .page-header__bottom {
+  .page-header .page-header__bottom {
     font-size: 26px; }
-  .page-header--featured, .front .page-header {
+  .page-header .page-header--featured, .page-header .front .page-header, .front .page-header .page-header {
     background: #004494;
     color: #fff;
     line-height: 1.5; }
-    .page-header--featured h2, .front .page-header h2 {
+    .page-header .page-header--featured h2, .page-header .front .page-header h2, .front .page-header .page-header h2 {
       color: #fff; }
-    .page-header--featured p, .front .page-header p {
+    .page-header .page-header--featured p, .page-header .front .page-header p, .front .page-header .page-header p {
       font-size: 1.667em; }
-  .page-header--image {
+  .page-header .page-header--image {
     background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
     background-repeat: no-repeat;
     background-size: cover;
@@ -8737,9 +8740,6 @@ Styleguide page-header
       line-height: 2.2; }
     .page-header a[href^="http"]:not(.is-internal).btn, .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal), .inpage-nav__navbar .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal) {
       padding-right: 2.1em; }
-
-.page-header-no-border-bottom {
-  border-bottom: none; }
 
 .front .page-header {
   padding: 0; }
