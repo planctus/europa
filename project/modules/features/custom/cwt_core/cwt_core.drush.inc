@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * DT Core module drush integration.
+ * CWT Core module drush integration.
  */
 
 /**
@@ -9,23 +9,17 @@
  *
  * @see drush_parse_command()
  */
-function dt_core_drush_command() {
+function cwt_core_drush_command() {
   $items = array();
 
-  $items['features-revert-dt'] = array(
+  $items['features-revert-cwt'] = array(
     'description' => "Revert all enabled feature module on your site.",
     'options' => array(
       'force' => "Force revert even if Features assumes components' state are default.",
     ),
     'drupal dependencies' => array('features'),
-    'aliases' => array('fr-dt', 'frdt'),
+    'aliases' => array('fr-cwt', 'frcwt'),
   );
-
-  // If our import module is available we give an extra option. We must also
-  // check if the function to check if the module exists, exists.
-  if (function_exists('module_exists') && module_exists('dt_roles_permissions_import')) {
-    $items['features-revert-dt']['options']['rp'] = "Revert permissions to their defined state.";
-  }
 
   return $items;
 }
@@ -33,7 +27,7 @@ function dt_core_drush_command() {
 /**
  * Implements hook_drush_help().
  */
-function dt_core_drush_help($section) {
+function cwt_core_drush_help($section) {
   switch ($section) {
     case 'drush:features-revert-dt':
       return dt("Revert all enabled feature module on your site that has the 'dt_' or 'cwt_' prefix.");
@@ -46,11 +40,7 @@ function dt_core_drush_help($section) {
  * @param ...
  *   (Optional) A list of features to exclude from being reverted.
  */
-function drush_dt_core_features_revert_dt() {
-  // Before we can trigger other commands, we need to set our strict value to 0.
-  drush_set_option('strict', FALSE);
-
-  // Load required files.
+function drush_cwt_core_features_revert_cwt() {
   module_load_include('inc', 'features', 'features.export');
   $force = drush_get_option('force');
 
@@ -84,13 +74,5 @@ function drush_dt_core_features_revert_dt() {
   }
   else {
     drush_log(dt('Current state already matches defaults, aborting.'), 'ok');
-  }
-
-  if (drush_get_option('rp') && module_exists('dt_roles_permissions_import')) {
-    if (!drush_confirm(dt('Do you really want to reconfigure all permissions?'))) {
-      return drush_user_abort('Aborting.');
-    }
-    drush_invoke('dt-revert-permissions');
-    drush_print(dt('Permissions have been reset.'));
   }
 }
