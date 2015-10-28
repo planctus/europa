@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * DT Core module drush integration.
@@ -22,6 +21,11 @@ function dt_core_drush_command() {
     'aliases' => array('fr-dt', 'frdt'),
   );
 
+  // If our import module is available we give an extra option.
+  if (module_exists('dt_roles_permissions_import')) {
+    $items['features-revert-dt']['options']['rp'] = "Revert permissions to their defined state.";
+  }
+
   return $items;
 }
 
@@ -42,6 +46,10 @@ function dt_core_drush_help($section) {
  *   (Optional) A list of features to exclude from being reverted.
  */
 function drush_dt_core_features_revert_dt() {
+  // Before we can trigger other commands, we need to set our strict value to 0.
+  drush_set_option('strict', FALSE);
+
+  // Load required files.
   module_load_include('inc', 'features', 'features.export');
   $force = drush_get_option('force');
 
@@ -75,5 +83,13 @@ function drush_dt_core_features_revert_dt() {
   }
   else {
     drush_log(dt('Current state already matches defaults, aborting.'), 'ok');
+  }
+
+  if (drush_get_option('rp') && module_exists('dt_roles_permissions_import')) {
+    if (!drush_confirm(dt('Do you really want to reconfigure all permissions?'))) {
+      return drush_user_abort('Aborting.');
+    }
+    drush_invoke('dt-revert-permissions');
+    drush_print(dt('Permissions have been reset.'));
   }
 }
