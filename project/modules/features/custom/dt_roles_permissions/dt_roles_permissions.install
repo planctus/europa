@@ -11,6 +11,7 @@ function dt_roles_permissions_install() {
   $path = drupal_get_path('module', 'dt_roles_permissions') . '/dt_roles_permissions.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message('DT roles and permissions %v feature is installed on your site.', array('%v' => $info['version']));
+  module_enable(array('dt_roles_permissions_import'));
 }
 
 /**

@@ -46,12 +46,12 @@ function _dt_roles_permissions_import_import($role) {
   if (is_object($role)) {
     // Include the file containing the array.
     include_once _dt_roles_permissions_get_file_dir($role->name);
-    // List of permissions.
-    $modules_permissions = array_keys(user_permission_get_modules());
     // Revoke them.
     user_role_revoke_permissions($role->rid, $modules_permissions);
+    // Get only the permissions that we can give (those available in the site).
+    $permissions_to_grant = array_intersect($permissions[$role->name], $modules_permissions);
     // Grant the new permissions.
-    user_role_grant_permissions($role->rid, $permissions[$role->name]);
+    user_role_grant_permissions($role->rid, $permissions_to_grant);
     return TRUE;
   }
   elseif ($role == 'all') {
@@ -62,8 +62,11 @@ function _dt_roles_permissions_import_import($role) {
       include_once _dt_roles_permissions_get_file_dir($role_object->name);
       // Revoke them.
       user_role_revoke_permissions($role_object->rid, $modules_permissions);
+      // Get only the permissions that we can give (those available in the
+      // site).
+      $permissions_to_grant = array_intersect($permissions[$role_object->name], $modules_permissions);
       // Grant the new permissions.
-      user_role_grant_permissions($role_object->rid, $permissions[$role_object->name]);
+      user_role_grant_permissions($role_object->rid, $permissions_to_grant);
     }
     return TRUE;
   }
