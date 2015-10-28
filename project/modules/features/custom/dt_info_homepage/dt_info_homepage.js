@@ -1,3 +1,8 @@
+/**
+ * @file
+ * JS file for dt_info_homepage feature.
+ */
+
 (function ($) {
     Drupal.behaviors.info_homepage = {
         attach: function (context) {
