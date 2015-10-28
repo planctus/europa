@@ -170,7 +170,7 @@ function cwt_blogs_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '17',
+            'weight' => '18',
             'visible' => FALSE,
           ),
           'rss' => array(
@@ -178,11 +178,11 @@ function cwt_blogs_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '17',
+            'weight' => '15',
             'visible' => FALSE,
           ),
           'meta' => array(
-            'weight' => '16',
+            'weight' => '19',
             'visible' => FALSE,
           ),
         ),
@@ -192,15 +192,15 @@ function cwt_blogs_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '6',
+            'weight' => '4',
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '14',
+            'weight' => '16',
             'visible' => FALSE,
           ),
           'meta' => array(
-            'weight' => '15',
+            'weight' => '18',
             'visible' => FALSE,
           ),
         ),
