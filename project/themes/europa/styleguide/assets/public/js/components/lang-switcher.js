@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Page level language switcher.
+ */
+
 (function ($) {
+  'use strict';
 
   var pageSwitcher = {
     wrapClass: '.lang-select-page',
@@ -60,13 +66,13 @@
         if (typeof enquire !== 'undefined') {
           // Runs on device width change.
           enquire.register(Drupal.europa.breakpoints.medium, {
-            // desktop
+            // Desktop case.
             match : function() {
               $(window).resize(function() {
                 overflowToggle();
               });
             },
-            // mobile
+            // Mobile case.
             unmatch : function() {
               $(window).off('resize');
             },
