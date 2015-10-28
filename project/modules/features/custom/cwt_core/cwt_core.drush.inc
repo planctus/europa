@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * DT Core module drush integration.
+ * CWT Core module drush integration.
  */
 
 /**
@@ -10,16 +9,16 @@
  *
  * @see drush_parse_command()
  */
-function dt_core_drush_command() {
+function cwt_core_drush_command() {
   $items = array();
 
-  $items['features-revert-dt'] = array(
+  $items['features-revert-cwt'] = array(
     'description' => "Revert all enabled feature module on your site.",
     'options' => array(
       'force' => "Force revert even if Features assumes components' state are default.",
     ),
     'drupal dependencies' => array('features'),
-    'aliases' => array('fr-dt', 'frdt'),
+    'aliases' => array('fr-cwt', 'frcwt'),
   );
 
   return $items;
@@ -28,7 +27,7 @@ function dt_core_drush_command() {
 /**
  * Implements hook_drush_help().
  */
-function dt_core_drush_help($section) {
+function cwt_core_drush_help($section) {
   switch ($section) {
     case 'drush:features-revert-dt':
       return dt("Revert all enabled feature module on your site that has the 'dt_' or 'cwt_' prefix.");
@@ -41,7 +40,7 @@ function dt_core_drush_help($section) {
  * @param ...
  *   (Optional) A list of features to exclude from being reverted.
  */
-function drush_dt_core_features_revert_dt() {
+function drush_cwt_core_features_revert_cwt() {
   module_load_include('inc', 'features', 'features.export');
   $force = drush_get_option('force');
 
