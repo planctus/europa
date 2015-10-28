@@ -21,8 +21,9 @@ function dt_core_drush_command() {
     'aliases' => array('fr-dt', 'frdt'),
   );
 
-  // If our import module is available we give an extra option.
-  if (module_exists('dt_roles_permissions_import')) {
+  // If our import module is available we give an extra option. We must also
+  // check if the function to check if the module exists, exists.
+  if (function_exists('module_exists') && module_exists('dt_roles_permissions_import')) {
     $items['features-revert-dt']['options']['rp'] = "Revert permissions to their defined state.";
   }
 

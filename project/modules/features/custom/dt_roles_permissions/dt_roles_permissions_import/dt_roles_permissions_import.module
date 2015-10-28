@@ -24,17 +24,6 @@ function dt_roles_permissions_import_menu() {
 }
 
 /**
- * Implements hook_flush_caches().
- *
- * We use this hook to reload all the permissions as it is the only hook that is
- * triggered after drupal update.php (or drush updb).
- */
-function dt_roles_permissions_import_flush_caches() {
-  _dt_roles_permissions_import_import('all');
-  drupal_set_message(t('Permissions have been reïninitialized'));
-}
-
-/**
  * Helper function to get a list to import and write it to the database.
  */
 function _dt_roles_permissions_import_import($role) {
