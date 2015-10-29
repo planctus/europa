@@ -29,7 +29,7 @@ function cwt_blogs_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -135,7 +135,7 @@ function cwt_blogs_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -248,7 +248,7 @@ function cwt_blogs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'meta' => array(
         'label' => 'above',
