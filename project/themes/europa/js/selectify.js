@@ -1,15 +1,13 @@
 /**
  * @file
  * Library converting 'ul > li > a' list to 'select > option' list.
- * The select is an enhancement, emulates clicking the original list href-s.
  */
 
 'use strict';
 
 (function ($) {
   /**
-   * Standard jQuery plugin pattern.
-   * @see {@link http://learn.jquery.com/plugins/basic-plugin-creation/}
+   * Standard jQuery plugin pattern. @see {@link http://learn.jquery.com/plugins/basic-plugin-creation/}.
    */
   $.fn.selectify = function (options) {
     this.each(function () {
@@ -18,14 +16,14 @@
         listWrapper: $(this),
         listSelector: 'element__list',
         item: 'element__option',
-        other: 'element__other',
+                  other: 'element__other',
         unavailable: 'element__unavailable',
         selected: 'is-selected'
       }, options);
       // Private methods.
       var attachDropDown = function () {
         var listClass = settings.listSelector,
-            $list = $('ul.' + listClass);
+          $list = $('ul.' + listClass);
 
         // For every list which the user wants to convert.
         $list.each(function () {
@@ -38,12 +36,14 @@
               // Skip if it's unavailable.
               case String(settings.item + ' ' + settings.unavailable):
                 break;
+
               // Build an option element, selected state.
               case String(settings.item + ' ' + settings.selected):
                 var $option = $('<option />');
                 $option.html($(this).html()).attr('selected', true);
                 $select.append($option);
                 break;
+
               // Build a regular option element.
               case String(settings.item + ' ' + settings.other):
                 var $option = $('<option />');
@@ -82,18 +82,12 @@
         $list.children('.lang-select-page__other').show();
         $list.children('.is-selected').show();
       };
-      /**
-       * Custom event handlers, scoped to the context of the instance.
-       * Event execution is controlled by user for a specific DOM element.
-       */
+      // Custom event handlers, scoped to the context of the instance.
       settings.listWrapper.on('hide.dropdown', hideDropDown);
       settings.listWrapper.on('hide.list', hideList);
       settings.listWrapper.on('show.dropdown', showDropDown);
       settings.listWrapper.on('show.list', showList);
-      /**
-       * The select is attached to the DOM automatically for simplicity.
-       * Could be placed under init() method to be controlled by user.
-       */
+      // Could be placed under init() method to be controlled by user.
       attachDropDown();
     });
   };
