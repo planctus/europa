@@ -1,14 +1,14 @@
 /**
- * @file
- * Library converting 'ul > li > a' list to 'select > option' list.
- */
+* @file
+* Library converting 'ul > li > a' list to 'select > option' list.
+*/
 
 'use strict';
 
 (function ($) {
   /**
-   * Standard jQuery plugin pattern. @see {@link http://learn.jquery.com/plugins/basic-plugin-creation/}.
-   */
+  * Standard jQuery plugin pattern. @see {@link http://learn.jquery.com/plugins/basic-plugin-creation/}.
+  */
   $.fn.selectify = function (options) {
     this.each(function () {
       // Defaults settings.
@@ -16,14 +16,14 @@
         listWrapper: $(this),
         listSelector: 'element__list',
         item: 'element__option',
-                  other: 'element__other',
+        other: 'element__other',
         unavailable: 'element__unavailable',
         selected: 'is-selected'
       }, options);
       // Private methods.
       var attachDropDown = function () {
         var listClass = settings.listSelector,
-          $list = $('ul.' + listClass);
+        $list = $('ul.' + listClass);
 
         // For every list which the user wants to convert.
         $list.each(function () {
@@ -35,21 +35,21 @@
             switch (currentClass) {
               // Skip if it's unavailable.
               case String(settings.item + ' ' + settings.unavailable):
-                break;
+              break;
 
               // Build an option element, selected state.
               case String(settings.item + ' ' + settings.selected):
-                var $option = $('<option />');
-                $option.html($(this).html()).attr('selected', true);
-                $select.append($option);
-                break;
+              var $option = $('<option />');
+              $option.html($(this).html()).attr('selected', true);
+              $select.append($option);
+              break;
 
               // Build a regular option element.
               case String(settings.item + ' ' + settings.other):
-                var $option = $('<option />');
-                $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
-                $select.append($option);
-                break;
+              var $option = $('<option />');
+              $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
+              $select.append($option);
+              break;
             }
           });
           // Add the select to the DOM. Only if it's not already added.
