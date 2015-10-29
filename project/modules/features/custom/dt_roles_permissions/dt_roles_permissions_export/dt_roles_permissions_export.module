@@ -67,6 +67,11 @@ function _dt_roles_permissions_export_export($role) {
 function _dt_roles_permissions_get_export_data($role) {
   // Build our export data.
   $export_data = "<?php\n";
+  $export_data .= "/**\n";
+  $export_data .= " * @file\n";
+  $export_data .= " * Contains permissions export for role " . $role->name . ".\n";
+  $export_data .= " */\n";
+  $export_data .= "\n";
   // Iterate for each selected role.
   $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
   $perms = user_role_permissions(array($role->rid => $role->name));
