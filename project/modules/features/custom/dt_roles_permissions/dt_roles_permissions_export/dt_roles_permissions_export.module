@@ -65,17 +65,17 @@ function _dt_roles_permissions_export_export($role) {
  * Helper function to get exportable data.
  */
 function _dt_roles_permissions_get_export_data($role) {
-  // List all permissions.
-  $modules_permissions = user_permission_get_modules();
   // Build our export data.
   $export_data = "<?php\n";
   // Iterate for each selected role.
   $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
-  $perms = user_role_permissions(array($role->rid => $role->rid));
+  $perms = user_role_permissions(array($role->rid => $role->name));
+  if ($role->name == 'editor') {
+    echo print_r($perms);
+  }
+  // Loop the items.
   foreach ($perms[$role->rid] as $perm => $val) {
-    if (array_key_exists($perm, $modules_permissions)) {
-      $export_data .= "  '" . $perm . "',\n";
-    }
+    $export_data .= "  '" . $perm . "',\n";
   }
   $export_data .= ");\n";
   // Return the export data.
