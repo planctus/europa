@@ -8,9 +8,10 @@ $permissions['anonymous user'] = array(
   'access user profiles',
   'post comments',
   'search content',
-  'show format selection for file',
   'use advanced search',
   'use text format basic_html',
   'use text format filtered_html',
+  'view any site_menu bean',
   'view files',
+  'view private files',
 );
