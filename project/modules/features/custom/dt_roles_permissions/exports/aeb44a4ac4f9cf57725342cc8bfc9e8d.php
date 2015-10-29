@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Contains permissions export for role authenticated user.
+ */
+
 $permissions['authenticated user'] = array(
   'access ckeditor link',
   'access comments',

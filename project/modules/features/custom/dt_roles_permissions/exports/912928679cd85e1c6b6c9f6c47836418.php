@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Contains permissions export for role site manager.
+ */
+
 $permissions['site manager'] = array(
   'accept translation jobs',
   'access bean overview',

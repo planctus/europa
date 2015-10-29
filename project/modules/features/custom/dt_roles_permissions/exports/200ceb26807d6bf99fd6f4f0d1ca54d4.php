@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Contains permissions export for role administrator.
+ */
+
 $permissions['administrator'] = array(
   'accept translation jobs',
   'access administration menu',

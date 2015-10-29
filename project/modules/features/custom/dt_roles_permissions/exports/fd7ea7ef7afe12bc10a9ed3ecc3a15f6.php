@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Contains permissions export for role editorial team member.
+ */
+
 $permissions['editorial team member'] = array(
   'access administration menu',
   'access administration pages',

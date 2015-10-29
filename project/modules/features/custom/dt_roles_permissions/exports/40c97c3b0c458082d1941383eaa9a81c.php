@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Contains permissions export for role anonymous user.
+ */
+
 $permissions['anonymous user'] = array(
   'access comments',
   'access content',
