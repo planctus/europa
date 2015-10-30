@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Extended settings for node types.
  */
 
 /**
@@ -26,8 +27,8 @@ function dt_node_settings_permission() {
 function dt_node_settings_menu() {
   $items = array();
   $items['admin/config/content/helper_node_types/settings'] = array(
-    'title' => t('Helper content types settings'),
-    'description' => t('Indicate helper content types for the system.'),
+    'title' => 'Helper content types settings',
+    'description' => 'Indicate helper content types for the system.',
     'page callback' => 'drupal_get_form',
     'access arguments' => array('configure helper content types'),
     'page arguments' => array('dt_node_settings_helpers_overall'),
@@ -99,9 +100,11 @@ function dt_node_settings_node_access_callback($op, $node) {
 /**
  * Returns TRUE if $node_type is a helper.
  *
- * @param $node_type
+ * @param string $node_type
+ *   Node type machine name.
  *
  * @return bool
+ *   Helper or not.
  */
 function _content_type_is_helper($node_type) {
   return (bool) variable_get('helper_node_type_' . $node_type, FALSE);

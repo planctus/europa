@@ -6,10 +6,10 @@
 
 include_once 'social_network_links.features.inc';
 
-define('SOCIAL_NETWORK_ICONS_CSS', 'public://social_network_icons/social_network_icons.css');
+define('SOCIAL_NETWORK_LINKS_ICONS_CSS', 'public://social_network_icons/social_network_icons.css');
 
 /**
- *
+ * Implements hook_field_schema().
  */
 function social_network_links_field_schema($field) {
 
@@ -67,7 +67,7 @@ function social_network_links_element_info() {
 }
 
 /**
- *
+ * Implements hook_field_validate().
  */
 function social_network_link_field_validate($element, &$form_state) {
   if (isset($element['#value']['social_network'])) {
@@ -84,7 +84,7 @@ function social_network_link_field_validate($element, &$form_state) {
 }
 
 /**
- *
+ * Implements hook_field_process().
  */
 function social_network_link_field_process($element, $form_state, $complete_form) {
   $element['title'] = array(
@@ -393,7 +393,8 @@ function social_network_links_field_formatter_view($obj_type, $object, $field, $
  *
  * @arguments string $machine_name: taxonomy machine name
  *
- * @return array of select options for form
+ * @return array
+ *   Select options for form
  */
 function social_network_links_term_options($machine_name) {
   $options = array('0' => 'None');
@@ -412,7 +413,7 @@ function social_network_links_term_options($machine_name) {
 }
 
 /**
- *
+ * Implements hook_settings().
  */
 function social_network_links_settings() {
 
@@ -452,8 +453,6 @@ function social_network_links_settings() {
 
 /**
  * Implements hook_permission().
- *
- * @return array Permissions defined by the ecas module
  */
 function social_network_links_permission() {
   return array(
@@ -465,14 +464,14 @@ function social_network_links_permission() {
 }
 
 /**
- *
+ * Sanitizes string to be a valid css classname.
  */
 function social_network_links_clean_name($string) {
   return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', check_plain($string)));
 }
 
 /**
- *
+ * Generate the CSS file.
  */
 function _social_network_links_generate_css() {
   $css = "";
@@ -495,7 +494,7 @@ function _social_network_links_generate_css() {
     }
   }
 
-  file_unmanaged_save_data($css, SOCIAL_NETWORK_ICONS_CSS, TRUE);
+  file_unmanaged_save_data($css, SOCIAL_NETWORK_LINKS_ICONS_CSS, TRUE);
   watchdog('social_network_links', 'CSS rebuilt', array(), WATCHDOG_NOTICE);
 }
 
@@ -533,6 +532,6 @@ function social_network_links_preprocess_page(&$vars) {
     'preprocess' => TRUE,
     'group' => CSS_DEFAULT,
   );
-  drupal_add_css(SOCIAL_NETWORK_ICONS_CSS, $settings);
+  drupal_add_css(SOCIAL_NETWORK_LINKS_ICONS_CSS, $settings);
   drupal_add_css(drupal_get_path('module', 'social_network_links') . '/css/social_network_links.css');
 }

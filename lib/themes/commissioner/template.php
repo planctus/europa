@@ -372,7 +372,7 @@ function commissioner_page_alter(&$page) {
   }
   else {
     if (user_access('administer site configuration')) {
-      drupal_set_message(t('Please select the IPG classification of your site') . ' ' . l(t('here.'), 'admin/config/system/site-information'), 'warning');
+      drupal_set_message(t('Please select the IPG classification of your site <a href="%url">here</a>.', array('%url' => url('admin/config/system/site-information'))), 'warning');
     }
   }
 

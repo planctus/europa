@@ -11,6 +11,9 @@
     <exclude-pattern>*.min.js</exclude-pattern>
     <exclude-pattern>*/themes/*/css/style.css</exclude-pattern>
 
+    <!-- Exclude starterkit. -->
+    <exclude-pattern>dt_STARTERKIT</exclude-pattern>
+
     <!-- Exclude generated and third party code -->
     <exclude-pattern>bootstrap-sass</exclude-pattern>
     <exclude-pattern>styleguide</exclude-pattern>
@@ -34,11 +37,13 @@
     <!-- Views handlers not strictly follow Drupal class name conventions. -->
     <rule ref="Drupal.NamingConventions.ValidClassName">
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
+        <exclude-pattern>modules/**/views*.inc</exclude-pattern>
     </rule>
 
     <!-- Views handlers not strictly follow Drupal function name conventions. -->
     <rule ref="Drupal.NamingConventions.ValidFunctionName">
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
+        <exclude-pattern>modules/**/views*.inc</exclude-pattern>
     </rule>
 
     <!-- Phing tasks require to use CamelCaps for argument names. -->
@@ -48,12 +53,19 @@
 
     <!-- Features creates violations for fields. -->
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
+      <exclude-pattern>*.features.field.inc</exclude-pattern>
         <exclude-pattern>*.features.field_*.inc</exclude-pattern>
     </rule>
 
     <!-- Features creates violations for fields. -->
     <rule ref="Drupal.Files.LineLength">
+        <exclude-pattern>*.features.field.inc</exclude-pattern>
         <exclude-pattern>*.features.field_*.inc</exclude-pattern>
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
+    </rule>
+
+    <!-- Fieldgroup titles are not translatable. -->
+    <rule ref="Drupal.Semantics.FunctionT.NotLiteralString">
+        <exclude-pattern>*/nexteuropa_inpage_nav.module</exclude-pattern>
     </rule>
 </ruleset>
