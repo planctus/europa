@@ -487,6 +487,7 @@ function dt_core_update_7136() {
     module_enable(array('dt_core_pol'));
   }
 }
+
 /**
  * Switch on entity translation for the body field.
  */
@@ -644,32 +645,9 @@ function dt_core_update_7146() {
 }
 
 /**
- * NEXTEUROPA-6315: Enable translation for several fields.
- *
- * global fields:
- * field_file_image_alt_text
- * field_file_image_title_text
- * field_video_description
- * field_creator
- * field_firstname
- * field_lastname
- *
- */
-function dt_core_update_7147($sandbox) {
-  // global, non-DT.
-  foreach (field_info_fields() as $f_name => $field) {
-    switch ($field['field_name']) {
-      case 'field_file_image_alt_text':
-      case 'field_file_image_title_text':
-      case 'field_caption':
-      case 'field_video_description':
-        $field['translatable'] = 1;
-        field_update_field($field);
-        _dt_core_enable_entity_translation($field['field_name'], $sandbox);
-        break;
-    }
-  }
-
+* NEXTEUROPA-6315: Make fields translatable.
+*/
+function dt_core_update_7147() {
   // DT features.
   $features = array(
     'dt_class',
@@ -690,9 +668,28 @@ function dt_core_update_7147($sandbox) {
       features_revert_module($feature);
     }
   }
+}
+
+/**
+* NEXTEUROPA-6315: Migrate fields data after change of translatability.
+*/
+function dt_core_update_7148($sandbox) {
+  // Global fields.
+  foreach (field_info_fields() as $f_name => $field) {
+    switch ($field['field_name']) {
+      case 'field_file_image_alt_text':
+      case 'field_file_image_title_text':
+      case 'field_caption':
+      case 'field_video_description':
+        $field['translatable'] = 1;
+        field_update_field($field);
+        _dt_core_enable_entity_translation($field['field_name'], $sandbox);
+        break;
+    }
+  }
 
   // DT project-specific fields
-  $dt_fields_migrate = array(
+  $dt_fields = array(
     'field_banner_caption',
     'field_banner_video_file',
     'field_class_related_links',
@@ -707,8 +704,8 @@ function dt_core_update_7147($sandbox) {
     'field_core_file'
   );
 
-  foreach ($dt_fields_migrate as $field_name) {
-    _dt_core_enable_entity_translation($field_name, $sandbox);
+  foreach ($dt_fields as $fld_name) {
+    _dt_core_enable_entity_translation($fld_name, $sandbox);
   }
 
   // The following is somehow not done by dt_featured_item_update_7101().
