@@ -5,13 +5,6 @@
  */
 
 /**
- * Implements hook_install().
- */
-function dt_site_menu_install() {
-
-}
-
-/**
  * Implements hook_enable().
  */
 function dt_site_menu_enable() {

@@ -6,12 +6,14 @@
 
 /**
  * Expose node taxonomy terms as a context condition.
+ *
+ * @ingroup context_condition
  */
 class context_condition_node_taxonomy_uuid extends context_condition_node {
   /**
-   *
+   * {@inheritdoc}
    */
-  function condition_values() {
+  public function condition_values() {
     $values = array();
     if (module_exists('taxonomy') && module_exists('uuid')) {
       foreach (taxonomy_get_vocabularies() as $vocab) {
@@ -26,9 +28,9 @@ class context_condition_node_taxonomy_uuid extends context_condition_node {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
-  function condition_form($context) {
+  public function condition_form($context) {
     $form = parent::condition_form($context);
     $form['#type'] = 'select';
     $form['#size'] = 12;
@@ -49,10 +51,11 @@ class context_condition_node_taxonomy_uuid extends context_condition_node {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
-  function execute($node, $op) {
-    // Build a list of each taxonomy reference field belonging to the bundle for the current node.
+  public function execute($node, $op) {
+    // Build a list of each taxonomy reference field belonging to the bundle for
+    // the current node.
     $fields = field_info_fields();
     $instance_fields = field_info_instances('node', $node->type);
     $check_fields = array();

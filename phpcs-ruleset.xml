@@ -38,12 +38,15 @@
     <rule ref="Drupal.NamingConventions.ValidClassName">
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
         <exclude-pattern>modules/**/views*.inc</exclude-pattern>
+        <exclude-pattern>cwt_team_handler_field_node_source_language_path.inc</exclude-pattern>
+        <exclude-pattern>context_condition_node_taxonomy_uuid.inc</exclude-pattern>
     </rule>
 
     <!-- Views handlers not strictly follow Drupal function name conventions. -->
     <rule ref="Drupal.NamingConventions.ValidFunctionName">
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
         <exclude-pattern>modules/**/views*.inc</exclude-pattern>
+        <exclude-pattern>context_condition_node_taxonomy_uuid.inc</exclude-pattern>
     </rule>
 
     <!-- Phing tasks require to use CamelCaps for argument names. -->
@@ -61,11 +64,17 @@
     <rule ref="Drupal.Files.LineLength">
         <exclude-pattern>*.features.field.inc</exclude-pattern>
         <exclude-pattern>*.features.field_*.inc</exclude-pattern>
+        <exclude-pattern>*.features.menu_links.inc</exclude-pattern>
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
     </rule>
 
     <!-- Fieldgroup titles are not translatable. -->
     <rule ref="Drupal.Semantics.FunctionT.NotLiteralString">
         <exclude-pattern>*/nexteuropa_inpage_nav.module</exclude-pattern>
+    </rule>
+
+    <!-- Exported translatables. -->
+    <rule ref="Drupal.Semantics.FunctionT.BackslashSingleQuote">
+        <exclude-pattern>*.features.*.inc</exclude-pattern>
     </rule>
 </ruleset>

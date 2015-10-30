@@ -32,11 +32,6 @@
  *
  * The ordering is critical; the sole reason we are using a nodequeue is to
  * expose the ordering of the biographies to editors.
- *
- * @param view $view
- *   The view object about to be processed.
- * @param views_plugin_query_default $query
- *   An object describing the query.
  */
 function cwt_team_views_query_alter(&$view, &$query) {
   global $language;

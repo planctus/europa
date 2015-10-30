@@ -25,18 +25,6 @@ function cwt_biography_disable() {
 }
 
 /**
- * Implements hook_install().
- */
-function cwt_biography_install() {
-}
-
-/**
- * Implements hook_uninstall().
- */
-function cwt_biography_uninstall() {
-}
-
-/**
  * Remove obsolete fields.
  */
 function cwt_biography_update_7101() {

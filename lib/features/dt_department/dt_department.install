@@ -60,8 +60,6 @@ function dt_department_uninstall() {
 
 /**
  * Removing field_department_contact field as it becomes field_core_contact.
- *
- * ... on DT project level (dt_core).
  */
 function dt_department_update_7101() {
   field_delete_field("field_department_contact");

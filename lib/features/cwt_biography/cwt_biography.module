@@ -102,7 +102,8 @@ function cwt_biography_block_view($delta = '') {
       $node = menu_get_object();
       $wrapper = entity_metadata_wrapper('node', $node);
       if ($node->type == 'biography' && _cwt_biography_is_contact_enabled($wrapper)) {
-        // Pattern: https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
+        // Pattern:
+        // https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
         $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/') . $language->language . '/' . $wrapper->field_remote_id->value();
         $block['content'] = '<iframe class="iframe-contact-form" src="' . $src . '"></iframe>';
         drupal_add_js(array('cwtBiography' => array('biographyName' => $node->title)), 'setting');

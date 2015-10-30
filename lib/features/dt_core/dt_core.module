@@ -5,22 +5,26 @@
  */
 
 include_once 'dt_core.features.inc';
+
 /**
- *
+ * No source field Exception.
  */
-class DTCoreSourceFieldError extends Exception {};
+class DTCoreSourceFieldError extends Exception {}
+
 /**
- *
+ * No destionation field Exception.
  */
-class DTCoreDestinationFieldError extends Exception {};
+class DTCoreDestinationFieldError extends Exception {}
+
 /**
- *
+ * Fields are of same tye Exception.
  */
-class DTCoreFieldTypeAreNotSame extends Exception {};
+class DTCoreFieldTypeAreNotSame extends Exception {}
+
 /**
- *
+ * Circular reference Exception.
  */
-class DTCoreParentCircular extends Exception {};
+class DTCoreParentCircular extends Exception {}
 
 /**
  * Implements hook_field_widget_form_alter().
@@ -734,7 +738,7 @@ function dt_core_context_load_alter(&$context) {
 }
 
 /**
- *
+ * Removes maxlength configuration from field.
  */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.

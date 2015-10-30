@@ -89,7 +89,7 @@ function cwt_core_views_post_render(&$view, &$output, &$cache) {
  * Returns a list of links to the translations of the node.
  *
  * @param object $node
- *   defaults to NULL
+ *   defaults to NULL.
  *
  * @return array|bool
  *   Render array of the list or FALSE
@@ -415,7 +415,8 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       // first iteration this array will be array('blog'), the second
       // (and last in that case) the array will be array('blog','article').
       $segment_url_arr[] = $alias_arr[$idx_0];
-      // String with the potential-path of the segment being processed (e.g. 'blog/article').
+      // String with the potential-path of the segment being processed (e.g.
+      // 'blog/article').
       $segment_url = implode('/', $segment_url_arr);
 
       // Jump to the next segment if this url is configured to be excluded.
@@ -445,7 +446,8 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
 
     // Adds the page's title to the breadcrumb.
     if ($include_page_title_segment) {
-      // Marks the page's-title-segment with an identifier class (useful for CSS).
+      // Marks the page's-title-segment with an identifier class (useful for
+      // CSS).
       $segments_classes = array(
         $segments_class,
         'breadcrumb-segment-title',

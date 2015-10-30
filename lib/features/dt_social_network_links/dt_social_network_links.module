@@ -407,10 +407,10 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
  * Helper function to get taxonomy term options for select widget.
  *
  * @param string $machine_name
- *   vocabulary machine name
+ *   Vocabulary machine name.
  *
  * @return array
- *   select options
+ *   Select options.
  */
 function dt_social_network_links_term_options($machine_name) {
   $options = array('0' => 'None');

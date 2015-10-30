@@ -4,8 +4,9 @@
  * @file
  * Export into DGT supported HTML format.
  */
+
 /**
- *
+ * DGT file format.
  */
 class TMGMTFileFormatDGT implements TMGMTFileFormatInterface {
 

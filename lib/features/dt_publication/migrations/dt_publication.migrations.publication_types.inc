@@ -64,7 +64,7 @@ class DTPublicationPublicationTypesMigration extends Migration {
   }
 
   /**
-   *
+   * Prepare row.
    */
   public function prepareRow($current_row) {
     // Always include this fragment at the beginning of every prepareRow()

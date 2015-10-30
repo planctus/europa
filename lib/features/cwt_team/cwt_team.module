@@ -84,17 +84,17 @@ function cwt_team_nodequeue_autocomplete() {
  * many apparently duplicated results they should choose. We solve this by
  * only showing the English versions.
  *
- * @see _nodequeue_autocomplete()
- *
  * @param object $queue
  *   The nodequeue object for which to return the results.
  * @param object $subqueue
- *   The subqueue for which to return the results.`
+ *   The subqueue for which to return the results.
  * @param string $string
  *   The text entered in the autocomplete field.
  *
  * @return array
  *   The autocomplete results.
+ *
+ * @see _nodequeue_autocomplete()
  */
 function cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdClass $subqueue, $string) {
   global $user;

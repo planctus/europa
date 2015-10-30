@@ -10,13 +10,8 @@
 function dt_page_field_default_field_bases() {
   $field_bases = array();
 
-<<<<<<< HEAD:lib/features/dt_page/dt_page.features.field_base.inc
-  // Exported field_base: 'field_core_pages'.
-  $field_bases['field_core_pages'] = array(
-=======
   // Exported field_base: 'field_core_page'
   $field_bases['field_core_page'] = array(
->>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/dt_page/dt_page.features.field_base.inc
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
@@ -59,13 +54,8 @@ function dt_page_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-<<<<<<< HEAD:lib/features/dt_page/dt_page.features.field_base.inc
-  // Exported field_base: 'field_core_page'.
-  $field_bases['field_core_page'] = array(
-=======
   // Exported field_base: 'field_core_pages'
   $field_bases['field_core_pages'] = array(
->>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/dt_page/dt_page.features.field_base.inc
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,

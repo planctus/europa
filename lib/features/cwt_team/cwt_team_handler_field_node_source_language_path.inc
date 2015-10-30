@@ -17,7 +17,7 @@ class cwt_team_handler_field_node_source_language_path extends views_handler_fie
   /**
    * {@inheritdoc}
    */
-  function construct() {
+  public function construct() {
     parent::construct();
     $this->additional_fields['language'] = 'language';
   }
@@ -25,7 +25,7 @@ class cwt_team_handler_field_node_source_language_path extends views_handler_fie
   /**
    * {@inheritdoc}
    */
-  function render($values) {
+  public function render($values) {
     $nid = $this->get_value($values, 'nid');
     $language = i18n_language_load($this->get_value($values, 'language'));
     return url("node/$nid", array(

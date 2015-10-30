@@ -1,12 +1,11 @@
 <?php
-
 /**
  * @file
+ * cwt_news.install
  */
 
 /**
- * Grant permission to edit link field on aggregated_news content type for
- * administrator role.
+ * Add permission to edit link field on aggregated_news for administrator role.
  */
 function cwt_news_update_7101() {
   $role = user_role_load_by_name('administrator');

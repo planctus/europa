@@ -40,7 +40,7 @@ function cwt_blogs_pathauto_alias_alter(&$alias, array &$context) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for FORM_ID().
+ * Implements hook_form_FORM_ID_alter().
  */
 function cwt_blogs_form_comment_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form_state['comment_preview'])) {

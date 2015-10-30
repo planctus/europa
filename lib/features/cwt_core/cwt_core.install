@@ -186,7 +186,7 @@ function cwt_core_update_7114() {
 }
 
 /**
- * Removing fields and groups from editorial section, related to custom block titles etc.
+ * Removing fields and groups from editorial section.
  */
 function cwt_core_update_7115() {
   $obsolete_fields = array(
