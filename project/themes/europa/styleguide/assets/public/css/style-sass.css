@@ -6799,6 +6799,21 @@ Styleguide breadcrumb.collapsible
     padding-left: 0; } }
 
 /*
+Comments counter
+
+Markup: html/comments-counter.html
+
+Styleguide comments.counter
+*/
+.comments-counter {
+  background: url("../images/svg/comments.svg") no-repeat center left;
+  background-size: 0.889em;
+  margin-top: 0.556em;
+  padding-left: 1.389em;
+  font-size: 0.778em;
+  color: #004494; }
+
+/*
 Contextual navigation
 
 Markup: html/context-nav.html
@@ -8534,8 +8549,6 @@ Styleguide meta
     top: -1px; }
   .meta__item:last-child:after {
     display: none; }
-  .meta__item p {
-    font-size: inherit !important; }
 
 .meta__item--type {
   text-transform: uppercase; }
@@ -8543,6 +8556,12 @@ Styleguide meta
 .meta--header {
   font-size: 0.889em;
   margin: 1.5em 0 0; }
+
+.meta .meta__item p {
+  font-size: inherit !important;
+  display: inline;
+  line-height: inherit;
+  max-width: none; }
 
 /*
 
@@ -9172,6 +9191,11 @@ Styleguide social
     padding: 0px !important;
     margin: 0px !important; }
 
+.social-media-links__label {
+  margin-bottom: 0.8em;
+  display: block;
+  width: 100%; }
+
 .social-media-links__item {
   margin-bottom: 0.7em; }
   .social-media-links__item > a {
@@ -9181,9 +9205,10 @@ Styleguide social
       margin-bottom: 0px; }
     .social-media-links__item > a:after, .social-media-links__item > a.is-external:after, .social-media-links__item > a[href^="http"]:not(.is-internal):after, .listing__item-link[href^="http"]:not(.is-internal) .social-media-links__item > a.listing__title:after {
       display: none !important; }
-  .social-media-links__item--noicon {
-    font-size: 0.8em;
-    margin-top: 1.2em; }
+
+.social-media-links__item--noicon {
+  font-size: 0.8em;
+  margin-top: 1.2em; }
 
 /*
 Splash Page
@@ -9306,6 +9331,48 @@ body.disablescroll {
       padding-top: 0.6em; }
     .splash-page__helper-text tbody tr td, .splash-page__helper-text tbody tr th {
       padding: 0.6em 0 0.6em 0; }
+
+/*
+Tags
+
+Tags component used to display tag section that is typically displayed under a content
+
+Markup: html/tags.html
+
+Styleguide tags
+*/
+.tags {
+  padding-bottom: 0.8em;
+  width: 100%;
+  overflow: hidden; }
+
+.tags__label {
+  float: left;
+  text-transform: uppercase;
+  margin-right: 1em;
+  margin-top: 0.1em; }
+
+.tags__items {
+  float: left;
+  overflow: hidden; }
+
+.tags__item {
+  display: inline-block;
+  margin-right: 0.4em;
+  margin-bottom: 0.4em; }
+  .tags__item a {
+    background: #e2e2e2;
+    border-radius: 5px;
+    color: #404040;
+    display: inline-block;
+    font-size: 0.889em;
+    line-height: 1;
+    padding: 0.5em;
+    text-transform: lowercase; }
+    .tags__item a:hover,
+    .tags__item a:active,
+    .tags__item a:focus {
+      text-decoration: underline; }
 
 /*
 Timeline

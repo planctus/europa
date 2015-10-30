@@ -153,8 +153,6 @@
           <span class="kss-nav__ref">22</span
           ><span class="kss-nav__name">Pager</span>
         </a>
-        <ul class="kss-nav__menu-child">
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-rsslink.html">
@@ -191,6 +189,8 @@
           <span class="kss-nav__ref">28</span
           ><span class="kss-nav__name">Tags</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-text.html">
@@ -215,20 +215,20 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-pager" class="kss-section kss-section--depth-1">
+      <div     id="kssref-tags" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-pager">
-          <span class="kss-title__ref">22</span
-          >Pager
+        <a class="kss-title__permalink" href="#kssref-tags">
+          <span class="kss-title__ref">28</span
+          >Tags
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
       <div class="kss-description">
-        <p>Depends on &#39;icon&#39; component for showing back/forward arrows.</p>
+        <p>Tags component used to display tag section that is typically displayed under a content</p>
 
       </div>
     </div>
@@ -238,67 +238,39 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <ul class="pager">
-    <li class="pager__item pager__back">
-        <a class="pager__btn" href="/filter?value=test&amp;page=1" title="Back">
-            <span class="pager__back-arrow icon icon--left"></span>
-            <span class="pager__back-text sr-only">Previous</span>
-        </a>
-    </li>
-    <li class="pager__item pager__combo">
-        <span class="pager__combo-upper">
-            <select class="pager__combo-dropdown">
-                <option value="/filter?value=test">Page 1</option>
-                <option value="/filter?value=test&amp;page=1">Page 2</option>
-                <option value="" selected="selected">Page 3</option>
-                <option value="/filter?value=test&amp;page=3">Page 4</option>
-            </select>
-        </span>
-        <span class="pager__combo-container">
-            <span class="pager__combo-current">page 3</span>
-            <span class="pager__combo-total">of 4</span>
-        </span>
-    </li>
-    <li class="pager__item pager__forward">
-        <a class="pager__btn" href="/filter?value=test&amp;page=3" title="Forward">
-            <span class="pager__forward-text">Next</span>
-            <span class="pager__forward-arrow icon icon--right"></span>
-        </a>
-    </li>
-</ul>
+          <div class="tags">
+  <span class="tags__label">Tags:</span>
+  <div class="tags__items">
+    <span class="tag__item">
+      <a href="#">Boot</a>
+    </span>
+    <span class="tag__item">
+      <a href="">Strap</a>
+    </span>
+    <span class="tag__item">
+      <a href="">Apple</a>
+    </span>
+  </div>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class=&quot;pager&quot;&gt;
-    &lt;li class=&quot;pager__item pager__back&quot;&gt;
-        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=1&quot; title=&quot;Back&quot;&gt;
-            &lt;span class=&quot;pager__back-arrow icon icon--left&quot;&gt;&lt;/span&gt;
-            &lt;span class=&quot;pager__back-text sr-only&quot;&gt;Previous&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li class=&quot;pager__item pager__combo&quot;&gt;
-        &lt;span class=&quot;pager__combo-upper&quot;&gt;
-            &lt;select class=&quot;pager__combo-dropdown&quot;&gt;
-                &lt;option value=&quot;/filter?value=test&quot;&gt;Page 1&lt;/option&gt;
-                &lt;option value=&quot;/filter?value=test&amp;amp;page=1&quot;&gt;Page 2&lt;/option&gt;
-                &lt;option value=&quot;&quot; selected=&quot;selected&quot;&gt;Page 3&lt;/option&gt;
-                &lt;option value=&quot;/filter?value=test&amp;amp;page=3&quot;&gt;Page 4&lt;/option&gt;
-            &lt;/select&gt;
-        &lt;/span&gt;
-        &lt;span class=&quot;pager__combo-container&quot;&gt;
-            &lt;span class=&quot;pager__combo-current&quot;&gt;page 3&lt;/span&gt;
-            &lt;span class=&quot;pager__combo-total&quot;&gt;of 4&lt;/span&gt;
-        &lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li class=&quot;pager__item pager__forward&quot;&gt;
-        &lt;a class=&quot;pager__btn&quot; href=&quot;/filter?value=test&amp;amp;page=3&quot; title=&quot;Forward&quot;&gt;
-            &lt;span class=&quot;pager__forward-text&quot;&gt;Next&lt;/span&gt;
-            &lt;span class=&quot;pager__forward-arrow icon icon--right&quot;&gt;&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;tags&quot;&gt;
+  &lt;span class=&quot;tags__label&quot;&gt;Tags:&lt;/span&gt;
+  &lt;div class=&quot;tags__items&quot;&gt;
+    &lt;span class=&quot;tag__item&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Boot&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;tag__item&quot;&gt;
+      &lt;a href=&quot;&quot;&gt;Strap&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;tag__item&quot;&gt;
+      &lt;a href=&quot;&quot;&gt;Apple&lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 

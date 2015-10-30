@@ -45,6 +45,7 @@ dependencies[] = multisite_maxlength
 dependencies[] = multisite_metatags
 dependencies[] = multisite_translations
 dependencies[] = nexteuropa_ds_layouts
+dependencies[] = nexteuropa_ds_fields
 dependencies[] = nexteuropa_europa_search
 dependencies[] = nexteuropa_inpage_nav
 dependencies[] = nexteuropa_feedback
