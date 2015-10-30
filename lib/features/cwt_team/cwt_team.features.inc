@@ -7,24 +7,22 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function cwt_team_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function cwt_team_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
-  list($module, $api) = func_get_args();
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "picture" && $api == "default_picture_mapping") {
     return array("version" => "2");
   }
-  list($module, $api) = func_get_args();
   if ($module == "quicktabs" && $api == "quicktabs") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -33,7 +31,7 @@ function cwt_team_ctools_plugin_api() {
 /**
  * Implements hook_views_api().
  */
-function cwt_team_views_api() {
+function cwt_team_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
@@ -43,44 +41,54 @@ function cwt_team_views_api() {
 function cwt_team_fe_nodequeue_export_fields() {
   $nodequeues = array();
 
+<<<<<<< HEAD:lib/features/cwt_team/cwt_team.features.inc
   // Exported nodequeues: biographies_by_project_teams.
   $nodequeues['biographies_by_project_teams'] = array(
+=======
+  // Exported nodequeues: biographies_by_project_teams
+  $nodequeues['biographies_by_project_teams'] = (object) array(
+>>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/cwt_team/cwt_team.features.inc
     'name' => 'biographies_by_project_teams',
     'title' => 'Biographies by Project Teams',
     'subqueue_title' => 'Team %subqueue',
-    'size' => '0',
+    'size' => 0,
     'link' => '',
     'link_remove' => '',
     'owner' => 'smartqueue_taxonomy',
-    'show_in_ui' => '1',
-    'show_in_tab' => '1',
-    'show_in_links' => '0',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
     'reference' => 'field_biography_project_team',
-    'reverse' => '0',
-    'i18n' => '0',
+    'reverse' => 0,
+    'i18n' => 0,
     'types' => array(
       0 => 'biography',
     ),
     'roles' => array(),
     'count' => 0,
-    'use_parents' => '0',
+    'use_parents' => 0,
   );
 
+<<<<<<< HEAD:lib/features/cwt_team/cwt_team.features.inc
   // Exported nodequeues: team_members_by_hierarchy.
   $nodequeues['team_members_by_hierarchy'] = array(
+=======
+  // Exported nodequeues: team_members_by_hierarchy
+  $nodequeues['team_members_by_hierarchy'] = (object) array(
+>>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/cwt_team/cwt_team.features.inc
     'name' => 'team_members_by_hierarchy',
     'title' => 'Team members by hierarchy',
     'subqueue_title' => '',
-    'size' => '0',
+    'size' => 0,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
-    'show_in_ui' => '1',
-    'show_in_tab' => '1',
-    'show_in_links' => '0',
-    'reference' => '0',
-    'reverse' => '0',
-    'i18n' => '0',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
     'types' => array(
       0 => 'biography',
     ),
@@ -112,10 +120,10 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '80',
-          'height' => '80',
+          'width' => 80,
+          'height' => 80,
         ),
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -135,10 +143,10 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '450',
-          'height' => '290',
+          'width' => 450,
+          'height' => 290,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -158,11 +166,11 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '1280',
+          'width' => 1280,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -182,11 +190,11 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '480',
+          'width' => 480,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -206,11 +214,11 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '960',
+          'width' => 960,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -230,10 +238,10 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '130',
-          'height' => '130',
+          'width' => 130,
+          'height' => 130,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -253,10 +261,10 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '90',
-          'height' => '90',
+          'width' => 90,
+          'height' => 90,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -276,10 +284,10 @@ function cwt_team_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '64',
-          'height' => '64',
+          'width' => 64,
+          'height' => 64,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );
@@ -309,5 +317,6 @@ function cwt_team_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

@@ -10,8 +10,13 @@
 function cwt_core_wysiwyg_default_profiles() {
   $profiles = array();
 
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.features.wysiwyg.inc
   // Exported profile: custom_text_filter.
   $profiles['custom_text_filter'] = (object) array(
+=======
+  // Exported profile: custom_text_filter
+  $profiles['custom_text_filter'] = (array) array(
+>>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/cwt_core/cwt_core.features.wysiwyg.inc
     'format' => 'custom_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(
@@ -70,8 +75,13 @@ function cwt_core_wysiwyg_default_profiles() {
     'rdf_mapping' => array(),
   );
 
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.features.wysiwyg.inc
   // Exported profile: full_access_text_filter.
   $profiles['full_access_text_filter'] = (object) array(
+=======
+  // Exported profile: full_access_text_filter
+  $profiles['full_access_text_filter'] = (array) array(
+>>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/cwt_core/cwt_core.features.wysiwyg.inc
     'format' => 'full_access_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(
