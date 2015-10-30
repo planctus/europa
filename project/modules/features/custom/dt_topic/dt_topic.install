@@ -82,4 +82,13 @@ function dt_topic_update_7106() {
  */
 function dt_topic_update_7107() {
   features_revert_module('dt_topic');
+
+  // Delete the old field_core_top_tasks field instance.
+  if ($instance = field_info_instance('node', 'field_core_top_tasks', 'topic')) {
+    field_delete_instance($instance);
+  }
+  // Then the field base as we are not usin it anymore.
+  if ($field_base = field_info_field('field_core_top_tasks')) {
+    field_delete_field($field_base);
+  }
 }

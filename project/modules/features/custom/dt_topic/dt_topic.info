@@ -23,7 +23,6 @@ features[ds_layout_settings][] = node|topic|full
 features[ds_layout_settings][] = node|topic|teaser
 features[ds_layout_settings][] = node|topic|title
 features[features_api][] = api:2
-features[field_base][] = field_core_top_tasks_links
 features[field_base][] = field_core_topics
 features[field_base][] = field_topic_commission_actions
 features[field_base][] = field_topic_objectives
