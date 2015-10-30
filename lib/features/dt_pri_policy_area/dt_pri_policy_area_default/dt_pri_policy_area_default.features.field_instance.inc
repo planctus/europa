@@ -208,10 +208,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-<<<<<<< HEAD:lib/features/dt_pri_policy_area/dt_pri_policy_area_default/dt_pri_policy_area_default.features.field_instance.inc
-  // Exported field_instance: 'node-priority_policy_area-field_core_description'.
-=======
-  // Exported field_instance: 'node-priority_policy_area-field_core_departments'
+  // Exported field_instance: 'node-priority_policy_area-field_core_departments'.
   $field_instances['node-priority_policy_area-field_core_departments'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -268,8 +265,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_description'
->>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/dt_pri_policy_area/dt_pri_policy_area_default/dt_pri_policy_area_default.features.field_instance.inc
+  // Exported field_instance: 'node-priority_policy_area-field_core_description'.
   $field_instances['node-priority_policy_area-field_core_description'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1271,10 +1267,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-<<<<<<< HEAD:lib/features/dt_pri_policy_area/dt_pri_policy_area_default/dt_pri_policy_area_default.features.field_instance.inc
-  // Exported field_instance: 'node-priority_policy_area-group_content_access'.
-=======
-  // Exported field_instance: 'node-priority_policy_area-field_core_topics'
+  // Exported field_instance: 'node-priority_policy_area-field_core_topics'.
   $field_instances['node-priority_policy_area-field_core_topics'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1331,8 +1324,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-group_content_access'
->>>>>>> 0f44a62ded9bbab15711fb9e523c328b4ef48475:project/modules/features/custom/dt_pri_policy_area/dt_pri_policy_area_default/dt_pri_policy_area_default.features.field_instance.inc
+  // Exported field_instance: 'node-priority_policy_area-group_content_access'.
   $field_instances['node-priority_policy_area-group_content_access'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
