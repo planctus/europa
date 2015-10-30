@@ -49,55 +49,6 @@
     }
   }
 
-  Drupal.behaviors.commissioner_page_navigation = {
-    attach: function(context) {
-      var $pageNavBlock =  $('#block-cwt-core-page-contents');
-      var pageNavBlockHeight = $pageNavBlock.height();
-      //var footerHeight = $('.region-footer-wrapper').outerHeight();
-      $pageNavBlock.once('page-navigation', function(){
-
-        // Page navigation scroll spy
-        $('body').scrollspy({
-          target: '#block-cwt-core-page-contents'
-        });
-
-
-        // Manually adding affix top and offset for fixed page navigation position
-        $(window).scroll(function() {
-          var safeHeight = pageNavBlockHeight + $('#footer').outerHeight() + 50;
-          var navOffset = $pageNavBlock.parent().offset().top,
-              scrollTopValue = $(window).scrollTop();
-          var atBottom = (scrollTopValue + safeHeight) > $('body').height();
-          if(!atBottom) {
-            if (navOffset < scrollTopValue && !($pageNavBlock.hasClass('affix'))) {
-              $pageNavBlock.addClass('affix').removeClass('affix-top').removeClass('affix-bottom');
-            }
-            else if (navOffset > scrollTopValue && !($pageNavBlock.hasClass('affix-top'))) {
-              $pageNavBlock.removeClass('affix').addClass('affix-top');
-            }
-          } else {
-            $pageNavBlock.removeClass('affix').addClass('affix-bottom');
-          }
-
-        });
-
-
-        // Page smooth scrolling on anchor click
-        $('a[href^="#"]', this).click(function(e) {
-          e.preventDefault();
-
-          sectionOffset = $(this.hash).offset().top;
-
-          if ($(this).parent().is(':first-child')) {
-            sectionOffset = sectionOffset - 20;
-          }
-
-          $('html, body').velocity("scroll", {easing:'ease', duration: 400, offset: sectionOffset});
-        });
-      });
-    }
-  }
-
   Drupal.behaviors.commissioner_branding = {
     attach: function(context) {
       var $regionBranding = $('.region-branding');
