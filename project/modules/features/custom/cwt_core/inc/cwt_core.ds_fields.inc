@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * cwt_core.ds_fields
+ * Cwt_core.ds_fields.
  */
 
 /**
@@ -20,7 +20,21 @@ function cwt_core_ds_fields_info($entity_type) {
 
     // properties: can have different keys.
     'properties' => array(
-      'value' => 'By [node:field-editorial-section:name_field]',
+      'value' => t('By') . ' ' . '[node:field-editorial-section:name_field]',
+    ),
+  );
+
+  $fields['editorial_section_name_teser'] = array(
+
+    // title: title of the field.
+    'title' => t('Editorial section name for tesers'),
+
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_nexteuropa_ds_fields_token_replace',
+
+    // properties: can have different keys.
+    'properties' => array(
+      'value' => t('Published by') . ' ' . '[node:field-editorial-section:name_field]',
     ),
   );
 

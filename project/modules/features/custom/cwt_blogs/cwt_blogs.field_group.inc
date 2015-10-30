@@ -59,7 +59,7 @@ function cwt_blogs_field_group_info() {
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'modifier' => '',
+        'modifier' => 'meta--header',
         'classes' => '',
       ),
     ),
@@ -107,6 +107,7 @@ function cwt_blogs_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'post_date',
+      1 => 'editorial_section_name_teser',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
