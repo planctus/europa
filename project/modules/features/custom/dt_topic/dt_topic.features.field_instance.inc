@@ -90,7 +90,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -648,10 +648,11 @@ function dt_topic_field_default_field_instances() {
         'weight' => 26,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
+        'type' => 'link_button_block',
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1101,7 +1102,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1168,7 +1169,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1245,7 +1246,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1347,7 +1348,6 @@ function dt_topic_field_default_field_instances() {
   t('Related Top tasks links');
   t('Related departments');
   t('Related priorities for 2014 - 2019');
-  t('Related top tasks');
   t('Related topics');
   t('Select a number of departments related to this topic.');
   t('Select a number of other topics related to this topic.');
