@@ -9,6 +9,7 @@
     <!-- Minified files don't have to comply with coding standards. -->
     <exclude-pattern>*.min.css</exclude-pattern>
     <exclude-pattern>*.min.js</exclude-pattern>
+    <exclude-pattern>*/themes/*/css/style.css</exclude-pattern>
 
     <!-- Exclude generated and third party code -->
     <exclude-pattern>bootstrap-sass</exclude-pattern>
