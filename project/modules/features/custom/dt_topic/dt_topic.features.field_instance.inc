@@ -633,57 +633,6 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_top_tasks'
-  $field_instances['node-topic-field_core_top_tasks'] = array(
-    'bundle' => 'topic',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_top_tasks',
-    'label' => 'Related top tasks',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 42,
-    ),
-  );
-
   // Exported field_instance: 'node-topic-field_core_top_tasks_links'
   $field_instances['node-topic-field_core_top_tasks_links'] = array(
     'bundle' => 'topic',
