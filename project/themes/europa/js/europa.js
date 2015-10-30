@@ -135,18 +135,12 @@
           if (typeof _paq != 'undefined') {
             _paq.push([action, category, value, data]);
           }
-          else {
-            console.log(errorEventSent);
-          }
         }
       }
       // Always trigger.
       if (triggerValue == 0) {
         if (typeof _paq != 'undefined') {
           _paq.push([action, category, value, data]);
-        }
-        else {
-          console.log(errorEventSent);
         }
       }
     }

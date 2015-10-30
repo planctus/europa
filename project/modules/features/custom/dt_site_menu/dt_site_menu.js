@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Contains javascript alterations for the site menu.
+ */
+
 (function ($) {
   Drupal.behaviors.site_menu = {
     attach: function(context) {
