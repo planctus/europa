@@ -6799,6 +6799,21 @@ Styleguide breadcrumb.collapsible
     padding-left: 0; } }
 
 /*
+Comments counter
+
+Markup: html/comments-counter.html
+
+Styleguide comments.counter
+*/
+.comments-counter {
+  background: url("../images/svg/comments.svg") no-repeat center left;
+  background-size: 0.889em;
+  margin-top: 0.556em;
+  padding-left: 1.389em;
+  font-size: 0.778em;
+  color: #004494; }
+
+/*
 Contextual navigation
 
 Markup: html/context-nav.html
