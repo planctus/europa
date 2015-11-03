@@ -1,7 +1,7 @@
 /**
-* @file
-* Library converting 'ul > li > a' list to 'select > option' list.
-*/
+ * @file
+ * Library converting 'ul > li > a' list to 'select > option' list.
+ */
 
 'use strict';
 
@@ -39,16 +39,16 @@
 
               // Build an option element, selected state.
               case String(settings.item + ' ' + settings.selected):
-              var $option = $('<option />');
-              $option.html($(this).html()).attr('selected', true);
-              $select.append($option);
+                var $option = $('<option />');
+                $option.html($(this).html()).attr('selected', true);
+                $select.append($option);
               break;
 
               // Build a regular option element.
               case String(settings.item + ' ' + settings.other):
-              var $option = $('<option />');
-              $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
-              $select.append($option);
+                var $option = $('<option />');
+                $option.attr('value', $(this).find('a').attr('href')).html($(this).html());
+                $select.append($option);
               break;
             }
           });
