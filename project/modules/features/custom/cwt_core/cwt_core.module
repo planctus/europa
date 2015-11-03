@@ -959,3 +959,41 @@ function _cwt_core_custom_page_title($page_variables) {
 
   return FALSE;
 }
+
+/**
+ * Get the languages that are applicable in the right order of fallback.
+ */
+function _cwt_core_content_language_order() {
+  global $language;
+  // Get the first few languages of our fallback array. If we have a 2nd
+  // language parameter set, we have to work with an additional language. If
+  // not, we only need one.
+  // Set our maximum languages to check.
+  $max_languages = 1;
+  // First we get our url parameters.
+  $parameters = drupal_get_query_parameters();
+  // Check if the 2nd-language parameter is set.
+  if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+    $max_languages = 2;
+  }
+  // Get the maximum extra languages.
+  $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
+  // Add our current site language to the array.
+  if (!in_array($language->language, $fallback_languages)) {
+    array_unshift($fallback_languages, $language->language);
+  }
+  else {
+    // Our default language is in the array but might not be the first. So we
+    // move it.
+    // Get the key of the language.
+    $main_language_key = array_search($language->language, $fallback_languages);
+    // Store it temporary.
+    $prepend_language = $fallback_languages[$main_language_key];
+    // Remove the item.
+    unset($fallback_languages[$main_language_key]);
+    // Then add it to the front.
+    array_unshift($fallback_languages, $prepend_language);
+  }
+
+  return $fallback_languages;
+}
