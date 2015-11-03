@@ -9,6 +9,7 @@ dependencies[] = dt_homepage_core
 dependencies[] = dt_social_network_links
 dependencies[] = nexteuropa_page
 dependencies[] = text
+scripts[] = dt_info_homepage.js
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
