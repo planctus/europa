@@ -16,6 +16,8 @@ function dt_roles_permissions_import_drush_command() {
     'description' => "Revert all permissions on your site.",
     'options' => array(
       'role' => "Set the role to revert the permissions for.",
+      'diff' => "Get only the diff.",
+      'force' => "Clear permissions before importing them.",
       'clear' => "Setting the clear parameter will remove all permissions.",
     ),
     'drupal dependencies' => array('dt_roles_permissions_import'),
@@ -55,8 +57,16 @@ function drush_dt_roles_permissions_import_dt_revert_permissions() {
     }
   }
 
-  // Actually revert the permissions.
-  if (_dt_roles_permissions_import_import($role)) {
-    drush_print(dt('Permissions have been reconfigured.'));
+  if (drush_get_option('diff')) {
+    _dt_roles_permissions_import_get_diff($role);
+  }
+  else {
+    // Actually revert the permissions.
+    if (_dt_roles_permissions_import_import($role, drush_get_option('force'))) {
+      drush_print(dt('Permissions have been reconfigured.'));
+    }
+    else {
+      drush_print(dt('Something went wrong importing the permissions.'));
+    }
   }
 }

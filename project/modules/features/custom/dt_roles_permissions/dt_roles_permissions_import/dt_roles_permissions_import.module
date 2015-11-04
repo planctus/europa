@@ -25,8 +25,13 @@ function dt_roles_permissions_import_menu() {
 
 /**
  * Helper function to get a list to import and write it to the database.
+ *
+ * @param string|stdclass $role
+ *   Can be either a string or object of roles.
+ * @param bool $force
+ *   True/False if we should force the import.
  */
-function _dt_roles_permissions_import_import($role) {
+function _dt_roles_permissions_import_import($role, $force = FALSE) {
   // List of available permissions.
   $modules_permissions = array_keys(user_permission_get_modules());
   // Initialize our permissions array.
@@ -35,32 +40,47 @@ function _dt_roles_permissions_import_import($role) {
   if (is_object($role)) {
     // Include the file containing the array.
     include_once _dt_roles_permissions_get_file_dir($role->name);
-    // Revoke them.
-    user_role_revoke_permissions($role->rid, $modules_permissions);
-    // Get only the permissions that we can give (those available in the site).
-    $permissions_to_grant = array_intersect($permissions[$role->name], $modules_permissions);
-    // Grant the new permissions.
-    user_role_grant_permissions($role->rid, $permissions_to_grant);
-    return TRUE;
+    // Revoke them if we force.
+    if ($force) {
+      user_role_revoke_permissions($role->rid, $modules_permissions);
+    }
+    // Don't import if we dont have permissions, unless we force it.
+    if (!empty($permissions[$role->name])) {
+      // Get only the permissions that we can give and are available.
+      $permissions_to_grant = array_intersect($permissions[$role->name], $modules_permissions);
+      // Grant the new permissions.
+      user_role_grant_permissions($role->rid, $permissions_to_grant);
+      return TRUE;
+    }
   }
   elseif ($role == 'all') {
-    foreach (_dt_roles_permissions_get_importable() as $key => $name) {
+    foreach (_dt_roles_permissions_import_get_importable() as $key => $name) {
       // Load the role object.
       $role_object = user_role_load($key);
-      // Include the file containing the array.
+      // Include the file containing the array. ($permissions).
       include_once _dt_roles_permissions_get_file_dir($role_object->name);
-      // Revoke them.
-      user_role_revoke_permissions($role_object->rid, $modules_permissions);
-      // Get only the permissions that we can give (those available in the
-      // site).
-      $permissions_to_grant = array_intersect($permissions[$role_object->name], $modules_permissions);
-      // Grant the new permissions.
-      user_role_grant_permissions($role_object->rid, $permissions_to_grant);
+      // Revoke them if we force.
+      if ($force) {
+        user_role_revoke_permissions($role_object->rid, $modules_permissions);
+      }
+      // Don't import if we dont have permissions, unless we force it.
+      if (!empty($permissions[$role_object->name])) {
+        // Get only the permissions that we can give (those available in the
+        // site).
+        $permissions_to_grant = array_intersect($permissions[$role_object->name], $modules_permissions);
+        // Grant the new permissions.
+        user_role_grant_permissions($role_object->rid, $permissions_to_grant);
+        drupal_set_message(t('Permissions for %role have been reconfigured', array('%role' => $role_object->name)));
+      }
+      else {
+        // Somehow the table was empty.
+        drupal_set_message(t('Permissions for %role have not been reconfigured as the import file was empty.', array('%role' => $role_object->name)), 'warning');
+      }
     }
     return TRUE;
   }
-  elseif ($role == 'clear') {
-    foreach (_dt_roles_permissions_get_importable() as $key => $name) {
+  elseif ($role == 'clear' && $force) {
+    foreach (_dt_roles_permissions_import_get_importable() as $key => $name) {
       // Load the role object.
       $role_object = user_role_load($key);
       // Remove all rights.
@@ -72,9 +92,91 @@ function _dt_roles_permissions_import_import($role) {
 }
 
 /**
+ * Helper function to get the diff for a specific role.
+ */
+function _dt_roles_permissions_import_get_diff($role) {
+  // List of available permissions.
+  $modules_permissions = array_keys(user_permission_get_modules());
+
+  if (is_object($role)) {
+    // Get the current permissions.
+    $current_permissions = user_role_permissions(array($role->rid => $role->name));
+    // Load the new ones.
+    include_once _dt_roles_permissions_get_file_dir($role->name);
+    // See which ones are available.
+    $permissions_to_grant = array_intersect($permissions[$role->name], $modules_permissions);
+
+    // Make the arrays the same.
+    $current_permissions = array_keys(reset($current_permissions));
+    $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
+
+    // The amount of new permissions.
+    $diff_count = count($permissions_to_grant) - count($current_permissions);
+
+    // Our diff results.
+    $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);
+    $to_be_granted = array_diff($permissions_to_grant, $current_permissions);
+
+    _dt_roles_permissions_import_show_diff($role->name, $to_be_granted, $to_be_revoked);
+  }
+  elseif ($role == 'all') {
+    foreach (_dt_roles_permissions_import_get_importable() as $key => $name) {
+      // Get the current permissions.
+      $current_permissions = user_role_permissions(array($key => $name));
+      // Load the new ones.
+      include_once _dt_roles_permissions_get_file_dir($name);
+      // See which ones are available.
+      $permissions_to_grant = array_intersect($permissions[$name], $modules_permissions);
+
+      // Make the arrays the same.
+      $current_permissions = array_keys(reset($current_permissions));
+      $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
+
+      // The amount of new permissions.
+      $diff_count = count($permissions_to_grant) - count($current_permissions);
+
+      // Our diff results.
+      $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);
+      $to_be_granted = array_diff($permissions_to_grant, $current_permissions);
+
+      _dt_roles_permissions_import_show_diff($name, $to_be_granted, $to_be_revoked);
+    }
+  }
+}
+
+/**
+ * Helper function to show the diff message.
+ */
+function _dt_roles_permissions_import_show_diff($name, $to_be_granted = array(), $to_be_revoked = array()) {
+  // Init our message.
+  $message = 'The following actions will be taken upon importing <strong>' . $name . '</strong>: <br />';
+  // New permissions.
+  if (!empty($to_be_granted)) {
+    $message .= 'The following permissions will be granted: <br />';
+    foreach ($to_be_granted as $name) {
+      $message .= '<strong>--' . $name . '</strong><br />';
+    }
+  }
+  // Revoked permissions.
+  if (!empty($to_be_revoked)) {
+    $message .= 'The following permissions will be revoked: <br />';
+    foreach ($to_be_revoked as $name) {
+      $message .= '<strong>--' . $name . '</strong><br />';
+    }
+  }
+  // If there is no diff.
+  if (empty($to_be_granted) && empty($to_be_revoked)) {
+    $message .= '<strong>No permissions will be revoked or added.</strong>';
+  }
+  // Show the message. Lets not pass this one with t().
+  drupal_set_message($message);
+}
+
+
+/**
  * Helper function to get the available import files as an $id => $name array.
  */
-function _dt_roles_permissions_get_importable() {
+function _dt_roles_permissions_import_get_importable() {
   // Get our default roles that are available on the site.
   $roles_array = user_roles();
   // Check which import file are available. If it is not available exclude it

@@ -47,4 +47,7 @@ function dt_roles_permissions_export_page_submit($form, &$form_state) {
   if (_dt_roles_permissions_export_export($role)) {
     drupal_set_message(t('Roles have been exported.'));
   }
+  else {
+    drupal_set_message(t('There was an error exporting roles.'), 'error');
+  }
 }

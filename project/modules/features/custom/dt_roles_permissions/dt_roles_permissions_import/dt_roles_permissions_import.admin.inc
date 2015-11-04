@@ -9,7 +9,7 @@
  */
 function dt_roles_permissions_import_page($form, &$form_state) {
   // Setup a list of roles.
-  $roles_array = _dt_roles_permissions_get_importable();
+  $roles_array = _dt_roles_permissions_import_get_importable();
 
   // Add an option to do it for all roles. We cannot unshift because that will
   // reset the keys.
@@ -26,9 +26,21 @@ function dt_roles_permissions_import_page($form, &$form_state) {
     '#default_value' => 'all',
   );
 
+  $form['dt_roles_permissions_import_force'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Clear permissions before importing them.'),
+    '#description' => t('Selecting this option will force the revert, clearing all permissions that will be imported.'),
+    '#default_value' => FALSE,
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Import'),
+  );
+
+  $form['showdiff'] = array(
+    '#type' => 'submit',
+    '#value' => t('Show diff'),
   );
 
   return $form;
@@ -40,6 +52,7 @@ function dt_roles_permissions_import_page($form, &$form_state) {
  * @see dt_roles_permissions_export_page
  */
 function dt_roles_permissions_import_page_submit($form, &$form_state) {
+
   // Set our basic message.
   $message = t('Roles have been imported');
 
@@ -54,8 +67,19 @@ function dt_roles_permissions_import_page_submit($form, &$form_state) {
       $message = t('Permissions have been cleared');
     }
   }
-  // If true, return the message.
-  if (_dt_roles_permissions_import_import($role)) {
-    drupal_set_message($message);
+
+  // If our diff button is clicked we show the diff and stop..
+  if (isset($form_state['clicked_button']['#id']) && $form_state['clicked_button']['#id'] == 'edit-showdiff') {
+    _dt_roles_permissions_import_get_diff($role);
+    return;
+  }
+  else {
+    // If true, return the message.
+    if (_dt_roles_permissions_import_import($role, $form_state['values']['dt_roles_permissions_import_force'])) {
+      drupal_set_message($message);
+    }
+    else {
+      drupal_set_message(t('There was an error importing permissions.'), 'error');
+    }
   }
 }
