@@ -95,7 +95,7 @@ function _dt_roles_permissions_export_setup_dir() {
   $filedir = _dt_roles_permissions_get_export_dir();
   // Create it if it does not yet exist.
   if (!file_exists($filedir)) {
-    if (mkdir($filedir, 0755, TRUE)) {
+    if (drupal_mkdir($filedir, 0755, TRUE)) {
       return TRUE;
     }
     else {
