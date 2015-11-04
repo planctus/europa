@@ -43,6 +43,13 @@ function dt_roles_permissions_import_page($form, &$form_state) {
     '#value' => t('Show diff'),
   );
 
+  $form['notes'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Diff might show permissions to be revoked if they exist in the database, but are not defined in an enabled module.'),
+    '#prefix' => '<div class="clearfix description">',
+    '#suffix' => '</div>',
+  );
+
   return $form;
 }
 
