@@ -6348,7 +6348,10 @@ Markup: html/select.html
 Styleguide form.select
 */
 .select, select {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: ''; }
   .select:hover,
   select:hover,
   .select.is-hovered, select.is-hovered {
@@ -8175,15 +8178,22 @@ ul.lang-select-page__list {
   border-bottom: 1px solid #fff;
   color: #fff; }
   .lang-select-page--transparent select.lang-select-page__list {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
     background-color: #012b58;
     border: 0;
     color: #fff;
     font-weight: bold;
-    line-height: 3.2; }
+    line-height: 3.4em; }
     .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
       border: 0; }
     .lang-select-page--transparent select.lang-select-page__list > option {
       background: #012b58; }
+
+@-moz-document url-prefix() {
+  .lang-select-page--transparent select.lang-select-page__list {
+    height: 3.4em; } }
   .lang-select-page--transparent .lang-select-page__option a {
     color: #fff; }
 
@@ -8199,6 +8209,9 @@ select.lang-select-page__list {
   padding-left: 0.5em;
   width: 10em;
   cursor: pointer; }
+
+.region-content .page-header ul.lang-select-page__list {
+  max-width: inherit; }
 
 /*
 Listing
