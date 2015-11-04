@@ -81,8 +81,15 @@ function dt_topic_update_7106() {
  * NEXTEUROPA-4829: Topic top task custom link implemenation.
  */
 function dt_topic_update_7107() {
-  features_revert_module('dt_topic');
-
+  // The features to enable.
+  $features = array(
+    'dt_core',
+    'dt_topic',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
   // Delete the old field_core_top_tasks field instance.
   if ($instance = field_info_instance('node', 'field_core_top_tasks', 'topic')) {
     field_delete_instance($instance);
