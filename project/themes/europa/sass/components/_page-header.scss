@@ -59,12 +59,14 @@ Styleguide page-header
     }
   }
 
-  .page-header--image {
+  &--image {
     background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
+
+  .main-infos { min-height: 100px; }
 }
 
 // External link specific adjustments
