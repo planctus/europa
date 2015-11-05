@@ -139,6 +139,7 @@ function commissioner_preprocess_comment(&$variables) {
  * Adding bootstrap tab styles to quicktabs.
  *
  * @ingroup themeable
+ *
  * @see theme_qt_quicktabs_tabset()
  */
 function commissioner_qt_quicktabs_tabset($variables) {
@@ -209,7 +210,6 @@ function commissioner_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   // Fix pager for rewritten URLs.
   // @see commissioners_url_inbound_alter().
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
@@ -371,7 +371,7 @@ function commissioner_page_alter(&$page) {
   }
   else {
     if (user_access('administer site configuration')) {
-      drupal_set_message(t('Please select the IPG classification of your site') . ' ' . l(t('here.'), 'admin/config/system/site-information'), 'warning');
+      drupal_set_message(t('Please select the IPG classification of your site %link', array('%link' => l(t('here.'))), 'admin/config/system/site-information'), 'warning');
     }
   }
 
@@ -541,6 +541,31 @@ function _commissioner_meta_title($node = NULL, $title = NULL) {
     $title = !$title ? '' : ($title . ' - ');
     return check_plain($title) . t('European Commission');
   }
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ *
+ * Because we use a different structure for the commissioners website we need to
+ * avoid double .file classes on file entity's.
+ */
+function commissioner_preprocess_file_entity(&$variables) {
+  if ($variables['view_mode'] == 'default') {
+    if (($key = array_search('file', $variables['classes_array'])) !== FALSE) {
+      unset($variables['classes_array'][$key]);
+    }
+  }
+}
+
+/**
+ * Override theme_file_link().
+ */
+function commissioner_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  return _europa_file_markup($file, $url, 'file--widebar');
 }
 
 /**
