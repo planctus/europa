@@ -640,7 +640,7 @@ function _dt_core_handle_header_background($node) {
     file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
     // Build the uri for our css file.
     $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
-    $old_uri =  $dir . 'header_background_node_' . $node->nid . '_' . $node->old_vid . '.css';
+    $old_uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->old_vid . '.css';
     // Get the real path basing on the uri.
     $filepath = drupal_realpath($old_uri);
     // Current state.
@@ -746,6 +746,9 @@ function dt_core_context_load_alter(&$context) {
   }
 }
 
+/**
+ * TBA.
+ */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
   if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
