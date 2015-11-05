@@ -8,11 +8,12 @@ Styleguide timeline
 .timeline {
   border-left: 4px solid $yellow-light;
   padding-left: 1.667em;
-  padding-bottom: 0.833em;
-  position: relative;
+  padding-bottom: 0.1em;
+  padding-top: 1em;
 
   .timeline__item-title {
     font-weight: bold;
+    line-height: 1em;
     &:before {
       content: '';
       position: absolute;
@@ -21,17 +22,20 @@ Styleguide timeline
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      left: -0.5em;
+      left: -0.4em;
       margin-top: 0.2em;
     }
   }
-
+  .listing {
+   border: none!important;
+  }
   .timeline__text {
     margin-top: 0.2em;
     margin-bottom: 1em;
     ul,
     ol {
       padding-left: 18px;
+      list-style: none !important;
     }
 
     & > * {
@@ -40,6 +44,13 @@ Styleguide timeline
   }
 }
 
+.view-footer > .timeline {
+  margin-bottom: 1em;
+}
+
+.view-footer > .timeline > button {
+  margin-bottom: 0;
+}
 @include breakpoint(screen-xs-min) {
   .timeline {
     .timeline__item-title {
