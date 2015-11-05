@@ -1244,6 +1244,7 @@ function cwt_biography_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Biography';
+  $handler->display->display_options['css_class'] = 'listing--no-border';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1252,7 +1253,9 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = '[tid]';
+  $handler->display->display_options['style_options']['row_class'] = '[tid] ';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* Header: Global: Text area */
@@ -1262,6 +1265,15 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '[field_biography_cv]';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['footer']['area_1']['table'] = 'views';
+  $handler->display->display_options['footer']['area_1']['field'] = 'area';
+  $handler->display->display_options['footer']['area_1']['label'] = 'show_more_button';
+  $handler->display->display_options['footer']['area_1']['content'] = '<div class="timeline">
+<button type="button" class="btn btn-ctn btn-time-line btn-show-more"><span>Show timeline</span></button>
+</div>';
+  $handler->display->display_options['footer']['area_1']['format'] = 'full_html';
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
@@ -1313,7 +1325,8 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_biography_timeline_target_id';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'span';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Date */
@@ -1322,6 +1335,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_timeline_date']['field'] = 'field_timeline_date';
   $handler->display->display_options['fields']['field_timeline_date']['relationship'] = 'field_biography_timeline_target_id';
   $handler->display->display_options['fields']['field_timeline_date']['label'] = '';
+  $handler->display->display_options['fields']['field_timeline_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_timeline_date']['element_label_colon'] = FALSE;
   /* Field: Content: Curriculum Vitae */
   $handler->display->display_options['fields']['field_biography_cv']['id'] = 'field_biography_cv';
@@ -1341,6 +1355,21 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_download_cv_in_pdf_format']['settings'] = array(
     'text' => '[file:name]',
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="timeline">
+  <div class="timeline__item">
+    <div class="timeline__item-title">[title]</div>
+    <div class="timeline__text">
+      <ul>
+        <li>[field_timeline_date]</li>
+      </ul>
+    </div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
