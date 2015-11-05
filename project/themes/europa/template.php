@@ -679,7 +679,7 @@ function europa_easy_breadcrumb($variables) {
  * @return string
  *   HTML markup.
  */
-function _europa_file_markup($file, array $url) {
+function _europa_file_markup($file, array $url, $modifier = NULL) {
   switch ($file->type) {
     case 'image':
       $file_class = 'file--image';
@@ -700,6 +700,11 @@ function _europa_file_markup($file, array $url) {
       $file_class = 'file--document';
       $file_icon_class = 'icon--file';
       break;
+  }
+
+  // If we have a modifier, just append it to the class.
+  if ($modifier && !empty($modifier)) {
+    $file_class .= ' ' . $modifier;
   }
 
   $file_icon = '<span class="file__icon icon ' . $file_icon_class . '"></span>';
