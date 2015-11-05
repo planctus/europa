@@ -463,3 +463,10 @@ function cwt_core_update_7131() {
 function cwt_core_update_7132() {
   module_enable(array('dt_language_selector_site_popup'));
 }
+
+/**
+ * Feature revert cwt_biography, (@see: NEXTEUROPA-4834).
+ */
+function cwt_core_update_7133() {
+  features_revert_module('cwt_biography');
+}
