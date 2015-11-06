@@ -647,7 +647,7 @@ function _dt_core_handle_header_background($node) {
     $curr = $node->workbench_moderation_state_current;
     // New state.
     $new = $node->workbench_moderation_state_new;
-    // Published,
+    // Published.
     $pub = 'published';
     // Check if the file exists.
     if (file_exists($filepath) && ($new == $pub || $curr != $pub && $new != $pub)) {
