@@ -186,6 +186,24 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+.listing--person {
+  .listing__meta {
+    text-transform: uppercase;
+  }
+  .listing__meta .label {
+    font-weight: normal;
+    margin-bottom: 0.8em;
+  }
+  .listing__shortbio {
+    margin-top: 0 !important;
+  }
+
+  .listing__item-link {
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+}
+
 .listing--cta {
   .listing__item-link {
     padding-right: 1.667em;
