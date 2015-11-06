@@ -6619,7 +6619,7 @@ Styleguide breadcrumb
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  line-height: 1; }
+  line-height: normal; }
   .breadcrumb ol,
   .breadcrumb ul {
     list-style: none;
@@ -6629,10 +6629,9 @@ Styleguide breadcrumb
     width: 100%; }
 
 .breadcrumb__segment {
-  min-height: 2.778em;
   display: none;
   position: relative;
-  padding: 1em 1.4em 0.8em 0; }
+  margin: 1em 0 0.8em; }
 
 .breadcrumb__link {
   display: inline-block;
@@ -6722,14 +6721,13 @@ Styleguide breadcrumb.collapsible
       color: #004494; }
 
 .breadcrumb--collapsible .breadcrumb__link {
-  padding-right: 17px;
-  position: relative; }
-  .breadcrumb--collapsible .breadcrumb__link:after {
-    position: absolute;
-    right: 0;
-    top: 16%; }
+  display: inline-block; }
   .breadcrumb--collapsible .breadcrumb__link span {
-    line-height: 1; }
+    vertical-align: middle; }
+  .breadcrumb--collapsible .breadcrumb__link:after {
+    vertical-align: middle;
+    position: relative;
+    top: 1px; }
 
 .breadcrumb--collapsible .breadcrumb__text {
   display: inline-block;
@@ -6751,17 +6749,9 @@ Styleguide breadcrumb.collapsible
   padding-left: 52px; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__link {
-  display: block;
-  padding-right: 0; }
-  .breadcrumb--collapsible.is-open .breadcrumb__link:after {
-    position: static;
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0); }
+  display: block; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__text {
-  display: inline;
   white-space: normal;
   overflow: visible;
   max-width: none; }
