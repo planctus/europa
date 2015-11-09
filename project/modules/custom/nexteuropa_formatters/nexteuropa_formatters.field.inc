@@ -377,7 +377,8 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
 
         if (isset($title_item_link_modifier) && $title_item_link_modifier !== '') {
           $item['attributes']['class'] = $formatter_class_default . ' ' . $title_item_link_modifier;
-        } else {
+        }
+        else {
           $item['attributes']['class'] = $formatter_class_default;
         }
 
@@ -391,7 +392,8 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
         if (isset($title_item_modifier) && $title_item_modifier !== '') {
           $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
           $element[$delta]['#suffix'] = '</div>';
-        } else {
+        }
+        else {
           $element[$delta]['#prefix'] = '<div class="listing__item">';
           $element[$delta]['#suffix'] = '</div>';
         }
@@ -417,14 +419,16 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
 
         if (isset($title_item_link_modifier) && $title_item_link_modifier !== '') {
           $element[$delta]['#options']['attributes']['class'] = 'listing__item-link' . ' ' . $title_item_link_modifier;
-        } else {
+        }
+        else {
           $element[$delta]['#options']['attributes']['class'] = 'listing__item-link';
         }
 
         if (isset($title_item_modifier) && $title_item_modifier !== '') {
           $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
           $element[$delta]['#suffix'] = '</div>';
-        } else {
+        }
+        else {
           $element[$delta]['#prefix'] = '<div class="listing__item">';
           $element[$delta]['#suffix'] = '</div>';
         }
@@ -435,7 +439,8 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
     $list_modifiers = $display['settings']['nexteuropa_title_listing_modifier'];
     if ($list_modifiers !== '') {
       $element['#prefix'] = "<div class='listing listing--title " . $list_modifiers . "'>";
-    } else {
+    }
+    else {
       $element['#prefix'] = '<div class="listing listing--title">';
     }
     $element['#suffix'] = '</div>';
@@ -499,33 +504,32 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
       '#default_value' => $settings['nexteuropa_listing_wrapper_modifier'],
       '#description' => t('Class names separated by spaces.'),
     );
-  } else
-    if ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
-      $display = $context['instance']['display'][$context['view_mode']];
-      $settings = $display['settings'];
+  }
+  elseif ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
 
-      $settings_form['nexteuropa_title_listing_modifier'] = array(
-        '#type' => 'textfield',
-        '#title' => t('List modifier'),
-        '#default_value' => $settings['nexteuropa_title_listing_modifier'],
-        '#description' => t('Class names separated by spaces.'),
-      );
+    $settings_form['nexteuropa_title_listing_modifier'] = array(
+      '#type' => 'textfield',
+      '#title' => t('List modifier'),
+      '#default_value' => $settings['nexteuropa_title_listing_modifier'],
+      '#description' => t('Class names separated by spaces.'),
+    );
 
-      $settings_form['nexteuropa_title_item_modifier'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Item modifier'),
-        '#default_value' => $settings['nexteuropa_title_item_modifier'],
-        '#description' => t('Class names separated by spaces.'),
-      );
+    $settings_form['nexteuropa_title_item_modifier'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Item modifier'),
+      '#default_value' => $settings['nexteuropa_title_item_modifier'],
+      '#description' => t('Class names separated by spaces.'),
+    );
 
-      $settings_form['nexteuropa_title_item_link_modifier'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Item link modifier'),
-        '#default_value' => $settings['nexteuropa_title_item_link_modifier'],
-        '#description' => t('Class names separated by spaces.'),
-      );
-
-    }
+    $settings_form['nexteuropa_title_item_link_modifier'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Item link modifier'),
+      '#default_value' => $settings['nexteuropa_title_item_link_modifier'],
+      '#description' => t('Class names separated by spaces.'),
+    );
+  }
 }
 
 /**
@@ -559,26 +563,26 @@ function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary,
       }
       $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_listing_wrapper_modifier'];
     }
-  } else
-    if ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
-      $display = $context['instance']['display'][$context['view_mode']];
-      $settings = $display['settings'];
+  }
+  elseif ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
 
-      $modifiers = array(
-        'List modifier' => 'nexteuropa_title_listing_modifier',
-        'Item modifier' => 'nexteuropa_title_item_modifier',
-        'Item link modifier' => 'nexteuropa_title_item_link_modifier',
-      );
+    $modifiers = array(
+      'List modifier' => 'nexteuropa_title_listing_modifier',
+      'Item modifier' => 'nexteuropa_title_item_modifier',
+      'Item link modifier' => 'nexteuropa_title_item_link_modifier',
+    );
 
-      foreach ($modifiers as $label => $modifier) {
-        if (isset($settings[$modifier])) {
-          if (!empty($summary)) {
-            $summary .= '<br />';
-          }
-          $summary .= t($label) . ': ' . $settings[$modifier];
+    foreach ($modifiers as $label => $modifier) {
+      if (isset($settings[$modifier])) {
+        if (!empty($summary)) {
+          $summary .= '<br />';
         }
+        $summary .= $label . ': ' . $settings[$modifier];
       }
     }
+  }
 }
 
 /**
