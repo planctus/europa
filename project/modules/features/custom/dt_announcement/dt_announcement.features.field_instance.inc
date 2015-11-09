@@ -718,11 +718,13 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'link' => 1,
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
         ),
-        'type' => 'entityreference_label',
+        'type' => 'context_nav_item',
         'weight' => 5,
       ),
       'meta' => array(
@@ -1083,6 +1085,62 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-announcement-field_core_pages'
+  $field_instances['node-announcement-field_core_pages'] = array(
+    'bundle' => 'announcement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_core_pages',
+    'label' => 'Related pages',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-announcement-field_core_persons'
   $field_instances['node-announcement-field_core_persons'] = array(
     'bundle' => 'announcement',
@@ -1101,11 +1159,13 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'link' => 1,
+          'expander_has_expander' => 1,
+          'expander_trim_at' => 5,
+          'expander_trim_to' => 2,
         ),
-        'type' => 'entityreference_label',
+        'type' => 'context_nav_item',
         'weight' => 6,
       ),
       'meta' => array(
@@ -1347,11 +1407,13 @@ function dt_announcement_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'entityreference',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'link' => 1,
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
         ),
-        'type' => 'entityreference_label',
+        'type' => 'context_nav_item',
         'weight' => 4,
       ),
       'meta' => array(
@@ -1602,6 +1664,7 @@ function dt_announcement_field_default_field_instances() {
   t('Policies');
   t('Priorities');
   t('Priority policy areas');
+  t('Related pages');
   t('Responsible department');
   t('Sources');
   t('Title');

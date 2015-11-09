@@ -113,3 +113,18 @@ function dt_announcement_update_7107() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * NEXTEUROPA-6003: update the page then the announcement feature.
+ */
+function dt_announcement_update_7108() {
+  features_revert_module('dt_page');
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Re revert.
+ */
+function dt_announcement_update_7109() {
+  features_revert_module('dt_announcement');
+}

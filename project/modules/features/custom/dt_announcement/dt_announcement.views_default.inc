@@ -112,7 +112,14 @@ function dt_announcement_views_default_views() {
   /* Display: Related block */
   $handler = $view->new_display('block', 'Related block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['display_description'] = 'Shows the related announcemnts';
+  $handler->display->display_options['display_description'] = 'Shows the related announcements';
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -401,16 +408,16 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: : field_core_policy (field_core_policy) */
-  $handler->display->display_options['filters']['field_core_policy_target_id']['id'] = 'field_core_policy_target_id';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['table'] = 'field_data_field_core_policy';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['field'] = 'field_core_policy_target_id';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator_id'] = 'field_core_policy_target_id_op';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['label'] = 'Policies';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['operator'] = 'field_core_policy_target_id_op';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['identifier'] = 'policy';
-  $handler->display->display_options['filters']['field_core_policy_target_id']['expose']['remember_roles'] = array(
+  /* Filter criterion: : field_core_policies (field_core_policies) */
+  $handler->display->display_options['filters']['field_core_policies_target_id']['id'] = 'field_core_policies_target_id';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['table'] = 'field_data_field_core_policies';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['field'] = 'field_core_policies_target_id';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator_id'] = 'field_core_policies_target_id_op';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['label'] = 'Policies';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['operator'] = 'field_core_policies_target_id_op';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['identifier'] = 'policies';
+  $handler->display->display_options['filters']['field_core_policies_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -552,7 +559,6 @@ function dt_announcement_views_default_views() {
   /* Display: Latest 4 items */
   $handler = $view->new_display('attachment', 'Latest 4 items', 'attachment_1');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;

@@ -23,10 +23,10 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Background',
     'weight' => '27',
     'children' => array(
-      0 => 'field_core_publications',
-      1 => 'field_core_background',
-      2 => 'field_core_next_steps',
-      3 => 'field_core_objective',
+      0 => 'field_core_background',
+      1 => 'field_core_next_steps',
+      2 => 'field_core_objective',
+      3 => 'field_core_publications',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -115,8 +115,8 @@ function dt_pri_policy_area_default_field_group_info() {
       2 => 'field_core_header_image',
       3 => 'field_core_image',
       4 => 'field_core_introduction',
-      5 => 'field_core_social_network_links',
-      6 => 'field_core_legacy_link',
+      5 => 'field_core_legacy_link',
+      6 => 'field_core_social_network_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -144,16 +144,15 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_core_persons',
+      1 => 'field_core_policy_areas',
+      2 => 'field_core_topics',
+      3 => 'field_core_departments',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
-        'classes' => 'context-nav',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
       ),
     ),
   );
@@ -423,9 +422,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Related',
     'weight' => '24',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_policy_areas',
-      2 => 'field_core_links',
+      0 => 'field_core_links',
+      1 => 'field_core_persons',
+      2 => 'field_core_policy_areas',
+      3 => 'field_core_topics',
+      4 => 'field_core_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

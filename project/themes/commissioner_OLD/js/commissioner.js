@@ -470,6 +470,20 @@
     }
   }
 
+  // Implications
+  // - takes into account inline height settings from webmaster
+  // - does not override CSS 100% height rule
+  // - works only if height inline attribute is actually set
+  Drupal.behaviors.iframeHeight = {
+    attach: function(context) {
+      $('iframe').once('iframe', function(){
+        $(this).each(function(){
+          $(this).height($(this).attr('height'));
+        });
+      });
+    }
+  }
+
   Drupal.behaviors.commissioner_filters = {
     attach: function(context) {
       // Saving .block-filters in variable as a generic element, so that

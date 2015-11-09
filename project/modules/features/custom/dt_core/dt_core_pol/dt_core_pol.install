@@ -11,6 +11,7 @@ function dt_core_pol_install() {
   $dt_modules = array(
     'dt_pri_policy_area_default',
     'dt_priority_default',
+    'dt_page',
   );
   module_enable($dt_modules);
 
@@ -49,4 +50,11 @@ function dt_core_pol_update_7101() {
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
+}
+
+/**
+ * Hotfix: Enabling dt_page content type on political site instance.
+ */
+function dt_core_pol_update_7102() {
+  module_enable(array('dt_page'));
 }

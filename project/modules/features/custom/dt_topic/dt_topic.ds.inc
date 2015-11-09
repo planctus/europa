@@ -68,11 +68,6 @@ function dt_topic_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_topic_tasks' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -99,7 +94,7 @@ function dt_topic_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_top_tasks' => array(
+    'field_core_top_tasks_links' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -212,18 +207,18 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_topic_meta',
-        2 => 'content_type_label',
+        0 => 'content_type_label',
+        1 => 'group_topic_meta',
         3 => 'title',
         5 => 'field_core_introduction',
       ),
       'central' => array(
-        1 => 'latest_announcements_block',
+        2 => 'latest_announcements_block',
         4 => 'field_core_social_network_links',
-        8 => 'group_topic_related_tasks',
+        7 => 'group_topic_related_tasks',
         9 => 'group_topic_policy_areas',
         12 => 'group_topic_latest',
-        13 => 'group_topic_what_is_doing',
+        14 => 'group_topic_what_is_doing',
         15 => 'group_latest_main',
         16 => 'group_latest_sidebar',
         17 => 'field_core_policy_areas',
@@ -232,32 +227,32 @@ function dt_topic_ds_layout_settings_info() {
         20 => 'field_topic_tasks',
         21 => 'field_topic_targets',
         22 => 'field_core_link',
-        23 => 'field_core_top_tasks',
+        23 => 'field_core_top_tasks_links',
       ),
       'top' => array(
         6 => 'group_topic_contextual',
-        7 => 'field_core_priorities',
+        8 => 'field_core_priorities',
         10 => 'field_core_topics',
         11 => 'field_core_persons',
-        14 => 'field_core_department',
+        13 => 'field_core_department',
       ),
     ),
     'fields' => array(
+      'content_type_label' => 'left_header',
       'group_topic_meta' => 'left_header',
       'latest_announcements_block' => 'central',
-      'content_type_label' => 'left_header',
       'title' => 'left_header',
       'field_core_social_network_links' => 'central',
       'field_core_introduction' => 'left_header',
       'group_topic_contextual' => 'top',
-      'field_core_priorities' => 'top',
       'group_topic_related_tasks' => 'central',
+      'field_core_priorities' => 'top',
       'group_topic_policy_areas' => 'central',
       'field_core_topics' => 'top',
       'field_core_persons' => 'top',
       'group_topic_latest' => 'central',
-      'group_topic_what_is_doing' => 'central',
       'field_core_department' => 'top',
+      'group_topic_what_is_doing' => 'central',
       'group_latest_main' => 'central',
       'group_latest_sidebar' => 'central',
       'field_core_policy_areas' => 'central',
@@ -266,7 +261,7 @@ function dt_topic_ds_layout_settings_info() {
       'field_topic_tasks' => 'central',
       'field_topic_targets' => 'central',
       'field_core_link' => 'central',
-      'field_core_top_tasks' => 'central',
+      'field_core_top_tasks_links' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

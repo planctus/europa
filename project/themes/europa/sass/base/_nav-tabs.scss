@@ -83,6 +83,35 @@ ul.nav-tabs,
   }
 }
 
+/*
+Bootstrap: Nav tabs right.
+
+Implementation of bootstrap nav tabs for the CWS.
+
+Markup: html/nav-tabs-right.html
+
+Styleguide navtabs.nav-tabs-right
+*/
+ul.nav-tabs-right {
+  text-align: right;
+  li {
+    display: inline-block;
+    float: none;
+    a {
+      font-size: inherit;
+      &:hover {
+        border-bottom: inherit;
+      }
+    }
+  }
+}
+
+@include breakpoint(screen-md-min) {
+  .nav-tabs-right {
+    margin-top: -2.8em;
+  }
+}
+
 @include breakpoint(screen-xs-min) {
   .nav-tabs--with-content {
     display: block;
