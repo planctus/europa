@@ -964,8 +964,6 @@ function europa_preprocess_node(&$variables) {
   // If the node is sticky add an extra (more global) is-sticky class.
   if (isset($variables['sticky']) && $variables['sticky']) {
     $variables['classes_array'][] = 'is-sticky';
-    // Set the tag we have to include.
-    $variables['sticky_label'] = variable_get('sticky_label', 'Highlight');
   }
 
   // Override node_url if Legacy Link is set.
