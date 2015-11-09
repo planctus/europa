@@ -76,3 +76,10 @@ Styleguide file
     margin-top: 0;
   }
 }
+
+.file__info--screen_reader {
+  position: absolute;
+  left: -999em;
+  width: 1em;
+  overflow: hidden;
+}
