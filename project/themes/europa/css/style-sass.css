@@ -6214,11 +6214,15 @@ Markup: html/nav-tabs-right.html
 
 Styleguide navtabs.nav-tabs-right
 */
-.nav-tabs-right {
+ul.nav-tabs-right {
   text-align: right; }
-  .nav-tabs-right li {
+  ul.nav-tabs-right li {
     display: inline-block;
     float: none; }
+    ul.nav-tabs-right li a {
+      font-size: inherit; }
+      ul.nav-tabs-right li a:hover {
+        border-bottom: inherit; }
 
 @media (min-width: 992px) {
   .nav-tabs-right {
@@ -6251,6 +6255,9 @@ Styleguide text.paragraphs
 .region-content ol, p, .file {
   margin-bottom: 0.8em;
   max-width: 32em; }
+
+.paragraph--width-auto {
+  width: auto; }
 
 /*
 Radio
@@ -6341,7 +6348,10 @@ Markup: html/select.html
 Styleguide form.select
 */
 .select, select {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: ''; }
   .select:hover,
   select:hover,
   .select.is-hovered, select.is-hovered {
@@ -6415,6 +6425,9 @@ Styleguide form.textarea
     position: static; }
   .front .top-bar__wrapper {
     float: right; } }
+
+.page-bottom-header {
+  margin-top: -1px; }
 
 .page-content {
   margin-top: 60px;
@@ -6560,7 +6573,8 @@ Styleguide banner.video
 
 .banner__video .file {
   padding: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  max-width: 100%; }
 
 .banner__video iframe {
   width: 100%;
@@ -8164,15 +8178,22 @@ ul.lang-select-page__list {
   border-bottom: 1px solid #fff;
   color: #fff; }
   .lang-select-page--transparent select.lang-select-page__list {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
     background-color: #012b58;
     border: 0;
     color: #fff;
     font-weight: bold;
-    line-height: 3.2; }
+    line-height: 3.4em; }
     .lang-select-page--transparent select.lang-select-page__list:hover, .lang-select-page--transparent select.lang-select-page__list:active {
       border: 0; }
     .lang-select-page--transparent select.lang-select-page__list > option {
       background: #012b58; }
+
+@-moz-document url-prefix() {
+  .lang-select-page--transparent select.lang-select-page__list {
+    height: 3.4em; } }
   .lang-select-page--transparent .lang-select-page__option a {
     color: #fff; }
 
@@ -8188,6 +8209,9 @@ select.lang-select-page__list {
   padding-left: 0.5em;
   width: 10em;
   cursor: pointer; }
+
+.region-content .page-header ul.lang-select-page__list {
+  max-width: inherit; }
 
 /*
 Listing
@@ -8693,26 +8717,26 @@ Styleguide page-header
     font-size: 1.222em;
     line-height: 1.5;
     color: #fff; }
-  .page-header__top,
-  .page-header__main,
-  .page-header__bottom {
+  .page-header .page-header__top,
+  .page-header .page-header__main,
+  .page-header .page-header__bottom {
     display: block;
     width: 100%; }
-  .page-header__top {
+  .page-header .page-header__top {
     text-transform: uppercase; }
-  .page-header__main {
+  .page-header .page-header__main {
     line-height: 1.428571429; }
-  .page-header__bottom {
+  .page-header .page-header__bottom {
     font-size: 26px; }
-  .page-header--featured, .front .page-header {
+  .page-header .page-header--featured, .page-header .front .page-header, .front .page-header .page-header {
     background: #004494;
     color: #fff;
     line-height: 1.5; }
-    .page-header--featured h2, .front .page-header h2 {
+    .page-header .page-header--featured h2, .page-header .front .page-header h2, .front .page-header .page-header h2 {
       color: #fff; }
-    .page-header--featured p, .front .page-header p {
+    .page-header .page-header--featured p, .page-header .front .page-header p, .front .page-header .page-header p {
       font-size: 1.667em; }
-  .page-header--image {
+  .page-header .page-header--image {
     background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
     background-repeat: no-repeat;
     background-size: cover;
@@ -9333,5 +9357,18 @@ Styleguide timeline
 @media (min-width: 480px) {
   .timeline .timeline__item-title:before {
     margin-left: 2px; } }
+
+/*
+Top image
+
+Markup: html/top-image.html
+
+Styleguide top-image
+*/
+.top-image {
+  overflow: hidden; }
+  .top-image picture {
+    display: block;
+    text-align: center; }
 
 /*# sourceMappingURL=style-sass.css.map */
