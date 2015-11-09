@@ -650,8 +650,12 @@ function dt_topic_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
-        'type' => 'link_button_block',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => 'listing--line-left',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 23,
       ),
       'teaser' => array(
