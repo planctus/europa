@@ -6619,7 +6619,7 @@ Styleguide breadcrumb
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  line-height: 1; }
+  line-height: normal; }
   .breadcrumb ol,
   .breadcrumb ul {
     list-style: none;
@@ -6629,10 +6629,9 @@ Styleguide breadcrumb
     width: 100%; }
 
 .breadcrumb__segment {
-  min-height: 2.778em;
   display: none;
   position: relative;
-  padding: 1em 1.4em 0.8em 0; }
+  margin: 1em 0 0.8em; }
 
 .breadcrumb__link {
   display: inline-block;
@@ -6722,14 +6721,13 @@ Styleguide breadcrumb.collapsible
       color: #004494; }
 
 .breadcrumb--collapsible .breadcrumb__link {
-  padding-right: 17px;
-  position: relative; }
-  .breadcrumb--collapsible .breadcrumb__link:after {
-    position: absolute;
-    right: 0;
-    top: 16%; }
+  display: inline-block; }
   .breadcrumb--collapsible .breadcrumb__link span {
-    line-height: 1; }
+    vertical-align: middle; }
+  .breadcrumb--collapsible .breadcrumb__link:after {
+    vertical-align: middle;
+    position: relative;
+    top: 1px; }
 
 .breadcrumb--collapsible .breadcrumb__text {
   display: inline-block;
@@ -6751,17 +6749,9 @@ Styleguide breadcrumb.collapsible
   padding-left: 52px; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__link {
-  display: block;
-  padding-right: 0; }
-  .breadcrumb--collapsible.is-open .breadcrumb__link:after {
-    position: static;
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0); }
+  display: block; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__text {
-  display: inline;
   white-space: normal;
   overflow: visible;
   max-width: none; }
@@ -6845,6 +6835,57 @@ Styleguide contextnav
 
 .context-nav__item .view-mode-name {
   display: inline-block; }
+
+/*
+Date Block
+
+Date components
+
+Markup: html/date-block.html
+
+Styleguide date-block
+*/
+.date-block {
+  float: left;
+  background: #f2f2f2;
+  border-bottom: 0.222em solid #FED437;
+  width: 5.5em;
+  margin-right: 0.75em;
+  min-width: 5.556em;
+  padding: 0.85em 0em 0.4em 0em;
+  text-align: center;
+  position: relative;
+  overflow: hidden; }
+  .date-block:after {
+    content: "";
+    position: absolute;
+    top: -0.667em;
+    right: -0.200em;
+    width: 0;
+    height: 0;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-right: 1em solid #fff;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg); }
+
+.date-block__day-text {
+  font-size: 0.889em;
+  line-height: 1; }
+
+.date-block__day {
+  font-size: 1.667em;
+  font-weight: 600;
+  line-height: 1.2; }
+
+.date-block__month {
+  font-size: 1.111em;
+  line-height: 1; }
+
+.date-block__element, .date-block__day-text, .date-block__day, .date-block__month {
+  width: 100%;
+  float: left; }
 
 /*
 Datepicker
@@ -8230,6 +8271,12 @@ Styleguide listing
   .listing__read-more:after {
     font-size: 0.778em; }
 
+.listing__date {
+  float: left; }
+
+.listing__column-main .listing__with {
+  margin-top: 0px; }
+
 .listing__item {
   border-bottom: 1px solid #e2e2e2;
   overflow: hidden;
@@ -8476,6 +8523,35 @@ Styleguide listing.column-left
 @media (min-width: 992px) {
   .listing__wrapper--two-columns .listing {
     margin-bottom: 0; } }
+
+/*
+Listing Agenda
+
+Listing components
+
+Markup: html/listing--agenda.html
+
+Styleguide listing.agenda
+*/
+.listing--agenda p {
+  margin: 0; }
+
+.listing--agenda .listing__item {
+  padding-top: 0.85em;
+  padding-bottom: 1em; }
+
+.listing--agenda .meta {
+  margin-bottom: 0; }
+
+.listing--agenda .listing__meta-item {
+  text-transform: uppercase; }
+
+.listing--agenda h3.listing__title {
+  font-size: 1em;
+  color: #404040; }
+
+.listing--agenda .listing__author {
+  font-size: 0.889em; }
 
 .logo {
   display: block;
@@ -9230,7 +9306,7 @@ Styleguide splashpage
 .splash-page__content h2 {
   display: none;
   color: #ffffff;
-  font-size: 1.467em;
+  font-size: 1.222em;
   padding-top: 2em;
   padding-bottom: 2em;
   clear: both; }
