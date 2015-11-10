@@ -1091,5 +1091,7 @@ function dt_core_ds_fields_info($entity_type) {
  * Custom function for single token replacement in a field.
  */
 function _dt_core_ds_fields_stick_label($field) {
-  return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
+  if (isset($field['entity']->sticky) && $field['entity']->sticky) {
+    return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
+  }
 }
