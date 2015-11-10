@@ -157,15 +157,8 @@ $spacing-bottom-listing__title: 0.7em;
 
 // Modifier to add line on the left
 .listing--line-left {
-  // Title listing
-  &.listing--title {
-    .listing__item {
-      .listing__item-link {
-        .listing__title {
-          padding: 0;
-        }
-      }
-    }
+  .listing__title {
+    padding: 0 !important;
   }
 
   // Teaser listing
@@ -174,15 +167,16 @@ $spacing-bottom-listing__title: 0.7em;
   }
 
   .listing__item {
-    border-bottom: none;
     border-top: none;
+    border-bottom: none;
+    border-left: 5px solid $blue-dark;
     margin-top: 0.85em;
     margin-bottom: 1em;
-    padding: 0;
+    padding: 0.4em 0 0.4em 0.7em;
 
     .listing__item-link {
-      border-left: 5px solid $blue-dark;
-      padding: 0.1em 0 0.1em 0.7em;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
 }
