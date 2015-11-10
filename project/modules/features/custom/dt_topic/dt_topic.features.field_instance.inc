@@ -90,7 +90,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -656,7 +656,7 @@ function dt_topic_field_default_field_instances() {
           'nexteuropa_title_listing_modifier' => 'listing--line-left',
         ),
         'type' => 'link_listing_title',
-        'weight' => 23,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1044,7 +1044,7 @@ function dt_topic_field_default_field_instances() {
           'links' => 1,
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => 'listing--line-left',
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1106,7 +1106,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1173,7 +1173,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1250,7 +1250,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'hidden',
