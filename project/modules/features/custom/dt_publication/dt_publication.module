@@ -31,7 +31,6 @@ function dt_publication_migrate_api() {
  */
 function dt_publication_form_alter(&$form, &$form_state, $form_id) {
   if($form_id === 'publication_node_form') {
-    kpr($form);
     $form['field_core_publications']['#states'] = array(
       'visible' => array(
         ':input[name="field_publication_collection[und]"]' => array('value' => '1'),
