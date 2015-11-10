@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * dt_social_media_sharing.module
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function dt_social_media_sharing_block_info() {
+  $blocks = array();
+  $blocks['dt_social_media_sharing']['info'] = t('Social Media Sharing');
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function dt_social_media_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'dt_social_media_sharing':
+      $block['content'] = 'sdasdasdasdas<script type="application/json">
+{
+	"service": "sbkm",
+	"popup": false,
+	"to": [
+		"more",
+		"facebook",
+		"twitter"
+	],
+	"link": "http://ec.europa.eu/index_en.htm",
+	"lang": "en",
+	"stats": true
+}';
+      break;
+  }
+  return $block;
+}
