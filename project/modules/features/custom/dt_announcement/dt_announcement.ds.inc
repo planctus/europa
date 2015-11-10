@@ -226,7 +226,7 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'post_date' => array(
-      'weight' => '1',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'ds_post_date_ec_date_j_f_y',
       'formatter_settings' => array(
@@ -241,22 +241,12 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_announcement_image' => array(
+    'sticky_label' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(),
-      ),
-    ),
-    'field_announcement_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => TRUE,
-          'fi-odd-even' => FALSE,
-        ),
       ),
     ),
     'title_field' => array(
@@ -268,6 +258,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi-cl' => 'listing__title',
           'fi-at' => '',
           'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_announcement_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => TRUE,
           'fi-odd-even' => FALSE,
         ),
       ),
@@ -519,22 +522,24 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'field_announcement_type',
+        0 => 'sticky_label',
         1 => 'group_announcement_meta',
         2 => 'title_field',
-        3 => 'post_date',
+        3 => 'field_announcement_type',
         4 => 'field_core_description',
+        5 => 'post_date',
       ),
       'second' => array(
-        5 => 'field_announcement_image',
+        6 => 'field_announcement_image',
       ),
     ),
     'fields' => array(
-      'field_announcement_type' => 'main',
+      'sticky_label' => 'main',
       'group_announcement_meta' => 'main',
       'title_field' => 'main',
-      'post_date' => 'main',
+      'field_announcement_type' => 'main',
       'field_core_description' => 'main',
+      'post_date' => 'main',
       'field_announcement_image' => 'second',
     ),
     'classes' => array(),

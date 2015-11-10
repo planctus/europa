@@ -389,7 +389,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Latest (field_core_announcement) */
+  /* Filter criterion: Content: Announcements (field_core_announcement) */
   $handler->display->display_options['filters']['field_core_announcement_target_id']['id'] = 'field_core_announcement_target_id';
   $handler->display->display_options['filters']['field_core_announcement_target_id']['table'] = 'field_data_field_core_announcement';
   $handler->display->display_options['filters']['field_core_announcement_target_id']['field'] = 'field_core_announcement_target_id';
@@ -408,7 +408,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: : field_core_policies (field_core_policies) */
+  /* Filter criterion: Content: Policies (field_core_policies) */
   $handler->display->display_options['filters']['field_core_policies_target_id']['id'] = 'field_core_policies_target_id';
   $handler->display->display_options['filters']['field_core_policies_target_id']['table'] = 'field_data_field_core_policies';
   $handler->display->display_options['filters']['field_core_policies_target_id']['field'] = 'field_core_policies_target_id';
