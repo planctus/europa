@@ -56,3 +56,12 @@ $label_text_color_light: #fff;
   color: $grey-base;
   background-color: $yellow-light;
 }
+
+.label--meta {
+  @extend .meta__item;
+  padding: 0.25em 0.5em 0.3em 0.5em;
+  font-size: 90%;
+  top: -0.075em;
+  margin-right: 0.8em;
+  position: relative;
+}

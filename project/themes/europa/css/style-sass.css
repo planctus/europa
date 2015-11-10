@@ -8113,6 +8113,13 @@ Styleguide labels
   color: #404040;
   background-color: #ffd617; }
 
+.label--meta {
+  padding: 0.25em 0.5em 0.3em 0.5em;
+  font-size: 90%;
+  top: -0.075em;
+  margin-right: 0.8em;
+  position: relative; }
+
 /*
 Language select (Site)
 
@@ -8579,24 +8586,24 @@ Styleguide meta
   line-height: 1.3;
   font-size: 0.778em;
   letter-spacing: 0.02777778em;
-  overflow: hidden;
+  float: left;
   margin-bottom: 0.9em; }
   .meta p {
     margin: 0; }
 
-.meta__item {
+.meta__item, .label--meta {
   float: left;
   overflow: hidden;
   white-space: nowrap; }
-  .meta__item:after {
+  .meta__item:after, .label--meta:after {
     content: "|";
     color: #b3b4b5;
     margin: 0 0.8em;
     position: relative;
     top: -1px; }
-  .meta__item:last-child:after {
+  .meta__item:last-child:after, .label--meta:last-child:after {
     display: none; }
-  .meta__item p {
+  .meta__item p, .label--meta p {
     font-size: inherit !important; }
 
 .meta__item--type {
