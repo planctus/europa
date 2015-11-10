@@ -961,11 +961,6 @@ function europa_preprocess_node(&$variables) {
   }
   $variables['messages'] = theme('status_messages');
 
-  // If the node is sticky add an extra (more global) is-sticky class.
-  if (isset($variables['sticky']) && $variables['sticky']) {
-    $variables['classes_array'][] = 'is-sticky';
-  }
-
   // Override node_url if Legacy Link is set.
   if (isset($variables['legacy'])) {
     $variables['node_url'] = $variables['legacy'];
