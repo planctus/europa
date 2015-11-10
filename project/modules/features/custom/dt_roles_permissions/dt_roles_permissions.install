@@ -50,5 +50,23 @@ function dt_roles_permissions_update_7103() {
  * NEXTEUROPA-6230: Create Translator role.
  */
 function dt_roles_permissions_update_7104() {
+  // Create Translator role.
   features_revert_module('dt_roles_permissions');
+  $msg = '';
+  // Get the newly created role.
+  $role_translator = user_role_load_by_name('translator');
+  if ($role_translator) {
+    // Import initial permissions to this role.
+    if (module_exists('dt_roles_permissions_import') &&
+      _dt_roles_permissions_import_import($role_translator, TRUE)
+    ) {
+      $msg = t('Translator permissions created.');
+    }
+  }
+  else {
+    $msg = t('Permissions for translators where not created.
+    Please import permissions using dt_permissions_import module.');
+  }
+
+  return $msg;
 }
