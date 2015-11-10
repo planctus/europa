@@ -79,5 +79,5 @@ function cwt_team_update_7105() {
  * NEXTEUROPA-6736: Updating theme layout cwt_team.
  */
 function cwt_team_update_7106() {
-  features_revert_module('cwt_team');
+  features_revert_module( array('cwt_team' => array('views')));
 }

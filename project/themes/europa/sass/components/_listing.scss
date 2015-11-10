@@ -192,15 +192,14 @@ $spacing-bottom-listing__title: 0.7em;
   }
   .listing__meta .label {
     font-weight: normal;
-    margin-bottom: 0.8em;
   }
-  .listing__shortbio {
-    margin-top: 0 !important;
-  }
-
   .listing__item-link {
     padding-bottom: 1em;
     padding-top: 1em;
+  }
+  .listing__title + * {
+    line-height: 1.3em;
+    margin-top: 0;
   }
 }
 

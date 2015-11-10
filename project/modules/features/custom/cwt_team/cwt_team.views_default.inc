@@ -1017,17 +1017,16 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="#" class="listing__item-link">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[cwt_team_source_language_path]" class="listing__item-link is-internal">
   <div class="listing__column-second">
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
         <div class="listing__meta">[field_gender]</div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
-<div class="listing__shortbio">[field_biography_tagline]</div>
+<div>[field_biography_tagline]</div>
 </div>
 </a>';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['path'] = '[cwt_team_source_language_path]';
   $handler->display->display_options['fields']['nothing']['alter']['alt'] = '[field_biography_last_name]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
