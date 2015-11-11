@@ -98,5 +98,3 @@ server.docroot = /home/cphp/var/www
 
 # Project folder in MULTISITE SVN
 phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta
-# Project branch in AC
-acquia.repo.project.branch = master
