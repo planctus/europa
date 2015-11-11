@@ -60,7 +60,7 @@ function dt_roles_permissions_update_7104() {
   $role_translator = user_role_load_by_name('translator');
 
   if ($role_translator) {
-    // Import initial permissions to this role.
+    // Import initial permissions in role.
     if (module_exists('dt_roles_permissions_import') &&
       _dt_roles_permissions_import_import($role_translator, TRUE)
     ) {
