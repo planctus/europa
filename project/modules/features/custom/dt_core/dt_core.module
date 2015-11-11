@@ -746,7 +746,7 @@ function dt_core_preprocess_node(&$variables) {
  * Implements hook_node_delete().
  */
 function dt_core_node_delete($node) {
-  if (isset($node->field_core_header_image && isset($node->nid))) {
+  if (isset($node->field_core_header_image) && isset($node->nid)) {
     $uri = 'public://css/header-backgrounds/';
     $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
     foreach (glob($dir) as $file) {
