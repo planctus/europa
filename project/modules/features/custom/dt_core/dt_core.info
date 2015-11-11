@@ -71,7 +71,6 @@ features[field_base][] = field_core_date_published
 features[field_base][] = field_core_date_updated
 features[field_base][] = field_core_description
 features[field_base][] = field_core_ecorganisation
-features[field_base][] = field_core_files
 features[field_base][] = field_core_header_image
 features[field_base][] = field_core_image
 features[field_base][] = field_core_in_page_navigation
