@@ -723,7 +723,6 @@ function _dt_core_handle_header_background($node) {
  */
 function dt_core_preprocess_node(&$variables) {
   $node = $variables['node'];
-  dsm($node->workbench_moderation['current']->state);
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
