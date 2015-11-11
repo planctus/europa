@@ -102,8 +102,10 @@ function cwt_biography_block_view($delta = '') {
       $node = menu_get_object();
       $wrapper = entity_metadata_wrapper('node', $node);
       if ($node->type == 'biography' && _cwt_biography_is_contact_enabled($wrapper)) {
-        // Pattern: https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
-        $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/') . $language->language . '/' . $wrapper->field_remote_id->value();
+        // Pattern:
+        // https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
+        $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/')
+          . $language->language . '/' . $wrapper->field_remote_id->value();
         $block['content'] = '<iframe class="iframe-contact-form" src="' . $src . '"></iframe>';
         drupal_add_js(array('cwtBiography' => array('biographyName' => $node->title)), 'setting');
       }
@@ -179,7 +181,7 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
       'ffbcfcf3-2f50-4c70-a11c-936cc4385cde',
       'f7f7834a-3d60-4525-804b-439fd2d9f97a',
       'e0028e61-1cfa-4f6e-a036-4665b12ce86a',
-      'd6304632-edda-4f20-871a-0e49513adfa5'
+      'd6304632-edda-4f20-871a-0e49513adfa5',
     ), 'IN')
     ->range(0, 1);
 
@@ -188,4 +190,26 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
   }
 
   return FALSE;
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Adds show all timeline button at the end of the view.
+ * We will force to display this button always, works with js included in
+ * europa.js file.
+ */
+function cwt_biography_views_pre_render(&$view) {
+  // On the listing, we alter the read more text to include our node title.
+  if ($view->name == 'biography_timeline' && in_array($view->current_display, array('block'))) {
+    $node = menu_get_object();
+    $button_text = t('Show all timeline') . '<span class="icon icon--down"></span>';
+    $button = l($button_text, 'node/' . $node->nid, array(
+      'html' => TRUE,
+      'attributes' => array('class' => array('btn', 'btn-time-line')),
+      )
+    );
+    $output = '<div class="timeline timeline__footer">' . $button . '</div>';
+    $view->attachment_after = $output;
+  }
 }

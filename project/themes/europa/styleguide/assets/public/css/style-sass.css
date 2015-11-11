@@ -9074,8 +9074,8 @@ Styleguide timeline
 .timeline {
   border-left: 4px solid #ffd617;
   padding-left: 1.667em;
-  padding-bottom: 0.1em;
-  padding-top: 1em; }
+  padding-bottom: 0.833em;
+  position: relative; }
   .timeline .timeline__item-title {
     font-weight: bold;
     line-height: 1em; }
@@ -9087,7 +9087,7 @@ Styleguide timeline
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      left: -0.4em;
+      left: -0.6em;
       margin-top: 0.2em; }
   .timeline .listing {
     border: none !important; }
@@ -9096,16 +9096,30 @@ Styleguide timeline
     margin-bottom: 1em; }
     .timeline .timeline__text ul,
     .timeline .timeline__text ol {
-      padding-left: 18px;
+      padding-left: 0;
       list-style: none !important; }
+    .timeline .timeline__text ul > li {
+      color: #575757 !important; }
     .timeline .timeline__text > * {
       margin-bottom: 0 !important; }
+  .timeline .btn-time-line {
+    background-color: #ffd617;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .timeline .icon--down {
+    top: 3px;
+    position: relative;
+    left: 4px; }
+
+.listing--no-border .listing__item {
+  border: none !important;
+  overflow: inherit; }
 
 .view-footer > .timeline {
   margin-bottom: 1em; }
 
-.view-footer > .timeline > button {
-  margin-bottom: 0; }
+.timeline__footer {
+  margin-bottom: 1em; }
 
 @media (min-width: 480px) {
   .timeline .timeline__item-title:before {

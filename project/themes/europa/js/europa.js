@@ -38,6 +38,30 @@
     }
   };
 
+  Drupal.behaviors.commissioner_timeline = {
+    attach: function(context) {
+      $('.view-biography-timeline').once('timeline', function(){
+        var timelineItemsCount = $('.view-biography-timeline > .view-content .listing__item').length;
+        var $timelineView = $(this);
+
+        $('.view-biography-timeline > .view-content .listing__item').each(function(i){
+          if (i > 4) {
+            $(this).addClass('hidden');
+          }
+        });
+
+        $('.btn-time-line', this).click(function(e) {
+          e.preventDefault();
+          $(this).hide();
+          $('.view-biography-timeline .listing__item.hidden').fadeIn().removeClass('hidden');
+
+          // Refreshing scrollspy to recalculate the offset.
+          $('body').scrollspy('refresh');
+        });
+      });
+    }
+  }
+
   Drupal.behaviors.equal_blocks = {
     attach: function (context) {
       $('.equal-height').once('equal-height-blocks', function() {
