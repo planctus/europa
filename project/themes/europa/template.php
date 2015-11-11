@@ -731,7 +731,7 @@ function _europa_file_markup($file, array $url) {
     'html' => TRUE,
   );
 
-  $file_text = t('Download') . '<span class="file__info--screen_reader">' . $file_extension  . ' - ' . format_size($file->filesize) . '</span>';
+  $file_text = t('Download') . '<span class="sr-only">' . $file_extension  . ' - ' . format_size($file->filesize) . '</span>';
 
   $file_btn = l($file_text, $url['path'], array_merge($options, $url['options']));
 
