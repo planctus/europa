@@ -19,5 +19,3 @@ drupal.modules = cwt_core
 
 # Project folder in MULTISITE SVN
 phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/cwt
-# Project branch in AC
-acquia.repo.project.branch = cwt
