@@ -77,16 +77,60 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
       $value = $filter_handler->value;
       if (is_array($value)) {
         if (isset($value['type']) && $value['type'] === "date") {
-          $date = strtotime($value['value']);
-          $date_formatted = format_date($date, 'ec_date_j_f_y');
-          $result['filter'][] = '"' . $date_formatted . '"';
+          // We could have 2 different times.
+          if (empty($value['value']) && (!empty($value['min']) || !empty($value['max']))) {
+            // Start date.
+            if (!empty($value['min'])) {
+              $date_min_formatted = format_date(strtotime($value['min']), 'ec_date_j_f_y');
+              if (empty($value['max'])) {
+                // If the end date is not set make it the same.
+                $date_max_formatted = format_date(strtotime($value['min']), 'ec_date_j_f_y');
+              }
+            }
+            // End date.
+            if (!empty($value['max'])) {
+              $date_max_formatted = format_date(strtotime($value['max']), 'ec_date_j_f_y');
+              if (empty($value['min'])) {
+                // If the start date is not set make it the same.
+                $date_min_formatted = format_date(strtotime($value['max']), 'ec_date_j_f_y');
+              }
+            }
+
+            // Prepare our filters.
+            $between_date = (isset($date_min_formatted) && isset($date_max_formatted));
+            $different_date = ($date_min_formatted <> $date_max_formatted);
+
+            // Prepare our variable.
+            $date_formatted = '';
+            // Create the markup.
+            // In case 2 different dates, display BETWEEN ##DATE##.
+            $date_formatted .= ($between_date && $different_date) ? t('Between') . ' ' : '';
+            // In case of the same date, display ON ##DATE##.
+            $date_formatted .= !$different_date ? t('On') . ' ' : '';
+            // Display start date.
+            $date_formatted .= (isset($date_min_formatted) && $different_date) ? $date_min_formatted : '';
+            // In case 2 different dates, display ##DATE## AND ##DATE##.
+            $date_formatted .= ($between_date && $different_date) ? ' ' . t('and') . ' ' : '';
+            // Display end date.
+            $date_formatted .= isset($date_max_formatted) ? $date_max_formatted : '';
+
+          }
+          else {
+            $date = strtotime($value['value']);
+            $date_formatted = format_date($date, 'ec_date_j_f_y');
+          }
+
+          // Check if we actually got some date.
+          if (!empty($date_formatted)) {
+            $result['filter'][] = '"' . $date_formatted . '"';
+          }
         }
         $raw_vals = array();
         foreach ($value as $key => $val) {
           $raw_vals[] = $val;
         }
         foreach ($raw_vals as $raw_val) {
-          if (isset($filter_handler->value_options[$raw_val])) {
+          if (isset($filter_handler->value_options[$raw_val]) && !empty($filter_handler->value_options[$raw_val])) {
             $result['filter'][] = '"' . trim($filter_handler->value_options[$raw_val]) . '"';
           }
         }
