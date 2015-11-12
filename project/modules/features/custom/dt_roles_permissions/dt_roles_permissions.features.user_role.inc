@@ -16,5 +16,11 @@ function dt_roles_permissions_user_default_roles() {
     'weight' => 6,
   );
 
+  // Exported role: translator.
+  $roles['translator'] = (object) array(
+    'name' => 'translator',
+    'weight' => 7,
+  );
+
   return $roles;
 }
