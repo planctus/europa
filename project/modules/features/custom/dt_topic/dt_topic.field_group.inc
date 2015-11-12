@@ -284,7 +284,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '6',
+    'weight' => '8',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -366,7 +366,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Policy areas',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_policy_areas',
     ),
@@ -392,19 +392,18 @@ function dt_topic_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'topic';
   $field_group->mode = 'full';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_topic_tasks';
   $field_group->data = array(
     'label' => 'Related Tasks',
-    'weight' => '4',
+    'weight' => '24',
     'children' => array(
-      0 => 'field_topic_tasks',
-      1 => 'field_core_top_tasks_links',
+      0 => 'field_core_top_tasks_links',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Related Tasks',
       'instance_settings' => array(
-        'classes' => 'section__group row',
+        'classes' => 'section__item',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -484,17 +483,18 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '25',
-    'children' => array(),
-    'format_type' => 'html-element',
+    'weight' => '4',
+    'children' => array(
+      0 => 'group_topics_specific_tasks',
+      1 => 'group_topic_related_tasks',
+    ),
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Tasks',
       'instance_settings' => array(
-        'classes' => 'context-nav row',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'section--row-two',
       ),
     ),
   );
@@ -540,7 +540,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What the Commission is doing',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
@@ -560,6 +560,35 @@ function dt_topic_field_group_info() {
     ),
   );
   $export['group_topic_what_is_doing|node|topic|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_topics_specific_tasks|node|topic|full';
+  $field_group->group_name = 'group_topics_specific_tasks';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_topic_tasks';
+  $field_group->data = array(
+    'label' => 'Topic specific tasks',
+    'weight' => '23',
+    'children' => array(
+      0 => 'field_topic_tasks',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Topic specific tasks',
+      'instance_settings' => array(
+        'classes' => 'section__item',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_topics_specific_tasks|node|topic|full'] = $field_group;
 
   return $export;
 }
