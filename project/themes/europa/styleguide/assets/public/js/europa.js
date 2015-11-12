@@ -40,24 +40,28 @@
 
   Drupal.behaviors.commissioner_timeline = {
     attach: function(context) {
-      $('.view-biography-timeline').once('timeline', function(){
-        var timelineItemsCount = $('.view-biography-timeline > .view-content .listing__item').length;
-        var $timelineView = $(this);
+      var $timelineSelector = $('.timeline');
+      $($timelineSelector).once('timeline', function(){
+        var timelineItemSelector = '.timeline .timeline__item',
+            timelineItemsCount = $(timelineItemSelector).length,
+            timeLineButton = '<button class="btn btn-time-line">' + Drupal.t("Show all timeline") + '</button>';
 
-        $('.view-biography-timeline > .view-content .listing__item').each(function(i){
-          if (i > 4) {
-            $(this).addClass('hidden');
-          }
-        });
+        if (timelineItemsCount > 4) {
+          $timelineSelector.append(timeLineButton);
+          $(timelineItemSelector).each(function(i){
+            if (i > 4) {
+              $(this).addClass('hidden');
+            }
+          });
 
-        $('.btn-time-line', this).click(function(e) {
-          e.preventDefault();
-          $(this).hide();
-          $('.view-biography-timeline .listing__item.hidden').fadeIn().removeClass('hidden');
-
-          // Refreshing scrollspy to recalculate the offset.
-          $('body').scrollspy('refresh');
-        });
+          $('.btn-time-line', this).click(function(e) {
+            e.preventDefault();
+            $(this).hide();
+            $(timelineItemSelector).removeClass('hidden');
+            // Refreshing scrollspy to recalculate the offset.
+            $('body').scrollspy('refresh');
+          });
+        }
       });
     }
   }

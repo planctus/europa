@@ -8,7 +8,8 @@ Styleguide timeline
 .timeline {
   border-left: 4px solid $yellow-light;
   padding-left: 1.667em;
-  padding-bottom: 0.833em;
+  padding-bottom: 0;
+  padding-top: 2em;
   position: relative;
 
   .timeline__item-title {
@@ -41,36 +42,23 @@ Styleguide timeline
       margin-bottom: 0 !important;
     }
   }
+}
 
-  .btn-time-line {
-    background-color: $yellow-light;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+.btn {
+  &.btn-time-line {
+    @extend .btn-ctn;
     margin-bottom: 0;
+
+    &:after {
+      content: '\e616';
+    }
   }
-  .icon--down {
-    top: 3px;
-    position: relative;
-    left: 4px;
-  }
 }
 
-.timeline__emptyheader {
-  height: 3em;
-}
-.listing--no-border .listing__item {
-  border: none !important;
-  overflow: inherit;
+.view-biography-timeline .view-footer {
+  margin-top: 1em !important;
 }
 
-.view-footer > .timeline {
-  margin-bottom: 1em;
-}
-
-.timeline__footer {
-  margin-bottom: 1em;
-  padding-bottom: 0;
-}
 @include breakpoint(screen-xs-min) {
   .timeline {
     .timeline__item-title {
