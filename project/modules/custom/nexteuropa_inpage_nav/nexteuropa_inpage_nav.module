@@ -45,7 +45,7 @@ function nexteuropa_inpage_nav_block_view($delta = '') {
     if (!empty($content_language_order)) {
       foreach ($content_language_order as $language_code) {
         $translation = entity_translation_get_existing_language('node', $node, $language_code);
-        //We have a translation so lets use it.
+        // We have a translation so lets use it.
         if ($translation == $language_code) {
           $content_language = $language_code;
           break;
