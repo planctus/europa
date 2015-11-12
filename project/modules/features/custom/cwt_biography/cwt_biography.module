@@ -192,24 +192,3 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
   return FALSE;
 }
 
-/**
- * Implements hook_views_pre_render().
- *
- * Adds show all timeline button at the end of the view.
- * We will force to display this button always, works with js included in
- * europa.js file.
- */
-function cwt_biography_views_pre_render(&$view) {
-  // On the listing, we alter the read more text to include our node title.
-  if ($view->name == 'biography_timeline' && in_array($view->current_display, array('block'))) {
-    $node = menu_get_object();
-    $button_text = t('Show all timeline') . '<span class="icon icon--down"></span>';
-    $button = l($button_text, 'node/' . $node->nid, array(
-      'html' => TRUE,
-      'attributes' => array('class' => array('btn', 'btn-time-line')),
-      )
-    );
-    $output = '<div class="timeline timeline__footer">' . $button . '</div>';
-    $view->attachment_after = $output;
-  }
-}

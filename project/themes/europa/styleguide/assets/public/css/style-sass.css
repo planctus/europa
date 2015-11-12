@@ -9089,8 +9089,6 @@ Styleguide timeline
       border-radius: 50%;
       left: -0.6em;
       margin-top: 0.2em; }
-  .timeline .listing {
-    border: none !important; }
   .timeline .timeline__text {
     margin-top: 0.2em;
     margin-bottom: 1em; }
@@ -9105,11 +9103,15 @@ Styleguide timeline
   .timeline .btn-time-line {
     background-color: #ffd617;
     -webkit-box-shadow: none;
-    box-shadow: none; }
+    box-shadow: none;
+    margin-bottom: 0; }
   .timeline .icon--down {
     top: 3px;
     position: relative;
     left: 4px; }
+
+.timeline__emptyheader {
+  height: 3em; }
 
 .listing--no-border .listing__item {
   border: none !important;
@@ -9119,7 +9121,8 @@ Styleguide timeline
   margin-bottom: 1em; }
 
 .timeline__footer {
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  padding-bottom: 0; }
 
 @media (min-width: 480px) {
   .timeline .timeline__item-title:before {
