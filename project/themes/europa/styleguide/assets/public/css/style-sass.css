@@ -5613,15 +5613,15 @@ Styleguide text.blockquote
 */
 blockquote,
 .blockquote {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  max-width: 24em;
+  border-left: 0.417em solid #ffd617;
   font-style: italic;
   font-size: 1.333em;
-  color: #575757;
+  line-height: 1.5;
   margin-left: 0;
   margin-right: 0;
-  padding: 0.6em 1.5em;
+  padding: 0.6em 0 0.6em 1.2em;
   clear: both;
-  border: none;
   position: relative;
   overflow: hidden;
   display: inline-block; }
@@ -5643,10 +5643,6 @@ blockquote,
   color: #404040;
   font-family: Arial, sans-serif;
   margin-bottom: 0; }
-
-.no-svg blockquote p:before,
-.no-svg blockquote p:after {
-  background-image: url("../images/png/quote.png"); }
 
 .radio + .radio,
 .checkbox + .checkbox {
@@ -6250,8 +6246,7 @@ Markup: html/paragraphs.html
 
 Styleguide text.paragraphs
 */
-.paragraph, blockquote,
-.blockquote, .region-content ul,
+.paragraph, .region-content ul,
 .region-content ol, p, .file {
   margin-bottom: 0.8em;
   max-width: 32em; }
@@ -6626,7 +6621,8 @@ Styleguide breadcrumb
     list-style-image: none;
     padding: 0;
     margin: 0 !important;
-    width: 100%; }
+    width: 100%;
+    max-width: none; }
 
 .breadcrumb__segment {
   display: none;
@@ -7291,6 +7287,10 @@ Styleguide file
   background: #ececec;
   padding: 1.333em 1.333em 1.333em 1.333em;
   overflow: hidden; }
+
+.file-video {
+  background: none;
+  padding: 1em 0; }
 
 .file__icon {
   float: left;

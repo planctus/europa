@@ -227,7 +227,7 @@ function cwt_blogs_ds_field_settings_info() {
         ),
       ),
     ),
-    'editorial_section_name_teser' => array(
+    'editorial_section_name_teaser' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
@@ -373,7 +373,7 @@ function cwt_blogs_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'editorial_section_name_teser',
+        0 => 'editorial_section_name_teaser',
         1 => 'group_blog_meta',
         2 => 'title',
         3 => 'field_shared_teaser',
@@ -385,7 +385,7 @@ function cwt_blogs_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'editorial_section_name_teser' => 'main',
+      'editorial_section_name_teaser' => 'main',
       'group_blog_meta' => 'main',
       'title' => 'main',
       'field_shared_teaser' => 'main',

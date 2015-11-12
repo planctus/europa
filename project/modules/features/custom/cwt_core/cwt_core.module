@@ -966,35 +966,6 @@ function _cwt_core_custom_page_title($page_variables) {
 }
 
 /**
- * Implements hook_ds_fields_info().
- */
-function cwt_core_ds_fields_info($entity_type) {
-  $fields = array();
-
-  // This field will render the legacy title.
-  $fields['dt_core_legacy_title'] = array(
-    // title: title of the field.
-    'title' => t('Legacy title layout'),
-    'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_cwt_core_legacy_title',
-  );
-
-  return array('node' => $fields);
-}
-
-/**
- * Custom function for single token replacement in a field.
- */
-function _cwt_core_legacy_title($field) {
-  // Simulate page variables.
-  if (isset($field['entity']) && isset($field['entity']->type)) {
-    $variables = array();
-    $variables['node'] = $field['entity'];
-    return _cwt_core_custom_page_title($variables);
-  }
-}
-
-/**
  * Get the languages that are applicable in the right order of fallback.
  */
 function _cwt_core_content_language_order() {

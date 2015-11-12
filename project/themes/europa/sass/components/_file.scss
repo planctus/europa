@@ -17,6 +17,11 @@ Styleguide file
   @extend .hidden-print;
 }
 
+.file-video {
+  background: none;
+  padding: 1em 0;
+}
+
 .file__icon {
   float: left;
   margin-right: 1.333em;
@@ -76,4 +81,3 @@ Styleguide file
     margin-top: 0;
   }
 }
-
