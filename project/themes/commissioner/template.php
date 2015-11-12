@@ -73,6 +73,11 @@ function commissioner_preprocess_views_view(&$variables) {
           format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
       }
 
+      // If there is a suffix add it here.
+      if (isset($view->items_count['#suffix'])) {
+        $items_count .= ' ' . $view->items_count['#suffix'];
+      }
+
       $variables['items_count'] = $items_count;
     }
   }
@@ -139,6 +144,7 @@ function commissioner_preprocess_comment(&$variables) {
  * Adding bootstrap tab styles to quicktabs.
  *
  * @ingroup themeable
+ *
  * @see theme_qt_quicktabs_tabset()
  */
 function commissioner_qt_quicktabs_tabset($variables) {
@@ -209,7 +215,6 @@ function commissioner_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   // Fix pager for rewritten URLs.
   // @see commissioners_url_inbound_alter().
   $original_path_cached = &drupal_static('cwt_core_orignal_path');

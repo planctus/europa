@@ -33,7 +33,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'name' => array(
         'label' => 'above',
@@ -90,7 +90,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'name' => array(
         'label' => 'above',
@@ -158,7 +158,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 19,
       ),
       'name' => array(
         'label' => 'above',
@@ -237,7 +237,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
       'name' => array(
         'label' => 'above',
@@ -288,7 +288,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 20,
       ),
       'name' => array(
         'label' => 'above',
@@ -383,7 +383,7 @@ function dt_person_field_default_field_instances() {
           'picture_mapping' => 'person_meta',
         ),
         'type' => 'picture',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'name' => array(
         'label' => 'above',
@@ -512,7 +512,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
       'name' => array(
         'label' => 'above',
@@ -599,7 +599,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 24,
       ),
       'name' => array(
         'label' => 'above',
@@ -662,7 +662,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 23,
       ),
       'name' => array(
         'label' => 'above',
@@ -733,7 +733,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 21,
       ),
       'name' => array(
         'label' => 'above',

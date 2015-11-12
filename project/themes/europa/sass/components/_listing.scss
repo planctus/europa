@@ -27,6 +27,15 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+.listing__date {
+  float: left;
+}
+.listing__column-main {
+  .listing__with {
+    margin-top: 0px;
+  }
+}
+
 .listing__wrapper {
   // margin-bottom: 1.667em;
 }
@@ -426,4 +435,45 @@ Styleguide listing.column-left
       margin-bottom: 0;
     }
   }
+}
+
+/*
+Listing Agenda
+
+Listing components
+
+Markup: html/listing--agenda.html
+
+Styleguide listing.agenda
+*/
+.listing--agenda {
+
+  p {
+    margin: 0;
+  }
+
+  .listing__item {
+    padding-top: 0.85em;
+    padding-bottom: 1em;
+  }
+
+  .meta {
+    margin-bottom: 0;
+  }
+
+  .listing__meta-item {
+    text-transform: uppercase;
+  }
+
+  h3 {
+    &.listing__title {
+      font-size: $font-size-medium;
+      color: $grey-base;
+    }
+  }
+
+  .listing__author {
+    font-size: $font-size-little;
+  }
+
 }
