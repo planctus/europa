@@ -305,9 +305,9 @@ function cwt_blogs_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'custom_formatters',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'custom_formatters_taxonomy_term_reference_external_links',
+        'type' => 'taxonomy_term_reference_link',
         'weight' => 0,
       ),
       'meta' => array(
