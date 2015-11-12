@@ -8762,7 +8762,7 @@ Styleguide meta
 
 .meta--header {
   font-size: 0.889em;
-  margin: 1.5em 0 0; }
+  margin: 1.5em 0 0.5em; }
 
 .meta .meta__item p, .meta .label--meta p {
   font-size: inherit !important;

@@ -278,13 +278,11 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<span class="header-line-1">[field_gender] [field_team_term]</span>
-<h1 class="page-header">
-<span class="header-line-2">[field_biography_last_name]</span>
-[field_biography_tagline]
-</h1>
-</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta meta--header">
+<span class="meta__item meta__item--type">[field_gender] [field_team_term]</span>
+</div>
+<h1>[field_biography_last_name]</h1>
+<p>[field_biography_tagline]</p>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */

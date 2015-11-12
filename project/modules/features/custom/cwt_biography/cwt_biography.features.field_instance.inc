@@ -116,6 +116,13 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -179,6 +186,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -254,6 +267,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -333,6 +352,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -381,6 +406,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 13,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -438,6 +469,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -509,6 +546,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 22,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -576,6 +619,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'full' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 45,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -616,6 +665,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 49,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -655,6 +710,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 52,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -722,6 +783,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 25,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -791,6 +858,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 11,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -857,6 +930,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'file_default',
         'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -925,6 +1004,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'file_default',
         'weight' => 4,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -991,6 +1076,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 9,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1059,6 +1150,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1114,6 +1211,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 50,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1177,6 +1280,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1253,6 +1362,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 15,
       ),
+      'full' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 44,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1293,6 +1408,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1339,6 +1460,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 28,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 54,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1378,6 +1505,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 8,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1452,6 +1585,15 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 29,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1492,6 +1634,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1540,6 +1688,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 14,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1607,6 +1761,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 27,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 53,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1652,6 +1812,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1692,6 +1858,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1738,6 +1910,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1778,6 +1956,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1823,6 +2007,12 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 47,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1863,6 +2053,12 @@ function cwt_biography_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 12,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
