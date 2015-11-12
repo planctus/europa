@@ -55,6 +55,12 @@ $label_text_color_light: #fff;
 .label--highlight {
   color: $grey-base;
   background-color: $yellow-light;
+  &.label--meta {
+    &:after{
+      content: "";
+      margin: 0;
+    }
+  }
 }
 
 .label--meta {

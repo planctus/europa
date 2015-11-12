@@ -1074,17 +1074,12 @@ function dt_core_ds_fields_info($entity_type) {
   $fields = array();
 
   $fields['sticky_label'] = array(
-
-    // title: title of the field.
     'title' => t('Sticky label'),
-
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_dt_core_ds_fields_stick_label',
-
   );
 
   return array('node' => $fields);
-
 }
 
 /**

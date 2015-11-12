@@ -246,7 +246,9 @@ function dt_announcement_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
     'title_field' => array(
