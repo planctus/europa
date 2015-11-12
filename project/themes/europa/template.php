@@ -637,6 +637,7 @@ function europa_easy_breadcrumb($variables) {
 
       if ($i == 0) {
         $classes[] = 'breadcrumb__segment--first';
+        $attributes['class'][] = 'is-internal';
         $attributes += array('rel' => 'home');
       }
       elseif ($i == ($s - 1)) {
@@ -731,7 +732,7 @@ function _europa_file_markup($file, array $url) {
     'html' => TRUE,
   );
 
-  $file_text = t('Download') . '<span class="sr-only">' . $file_extension  . ' - ' . format_size($file->filesize) . '</span>';
+  $file_text = t('Download') . '<span class="sr-only">' . $file_extension . ' - ' . format_size($file->filesize) . '</span>';
 
   $file_btn = l($file_text, $url['path'], array_merge($options, $url['options']));
 
