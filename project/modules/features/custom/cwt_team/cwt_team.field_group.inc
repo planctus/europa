@@ -148,7 +148,7 @@ function cwt_team_field_group_info() {
       'label' => 'Files',
       'instance_settings' => array(
         'modifier' => '',
-        'layout' => '',
+        'layout' => 'col-md-8',
         'classes' => '',
       ),
     ),
