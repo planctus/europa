@@ -243,6 +243,18 @@ function cwt_core_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'rss' => array(
         'label' => 'above',
         'settings' => array(),
@@ -302,6 +314,18 @@ function cwt_core_field_default_field_instances() {
           'custom_ucwords' => '',
         ),
         'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'rss' => array(

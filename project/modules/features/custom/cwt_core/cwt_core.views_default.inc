@@ -33,6 +33,8 @@ function cwt_core_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Content: Editorial section (field_editorial_section) (translated) */
   $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['id'] = 'field_editorial_section_tid_i18n';
@@ -112,6 +114,41 @@ function cwt_core_views_default_views() {
 
   /* Display: Blog */
   $handler = $view->new_display('block', 'Blog', 'blog_header');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: First name */
+  $handler->display->display_options['fields']['field_biography_first_name']['id'] = 'field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['table'] = 'field_data_field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['field'] = 'field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Last name */
+  $handler->display->display_options['fields']['field_biography_last_name']['id'] = 'field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['table'] = 'field_data_field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['field'] = 'field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '<span class="first-name">[field_biography_first_name]</span> <span class="last-name">[field_biography_last_name]</span>';
+  $handler->display->display_options['fields']['field_biography_last_name']['element_label_colon'] = FALSE;
+  /* Field: Title */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Title';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'Blog';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h1>[nothing_1]</h1>
+<p>by [field_biography_last_name]</p>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
 
   /* Display: Announcements */
   $handler = $view->new_display('block', 'Announcements', 'announcements_header');
@@ -139,12 +176,8 @@ function cwt_core_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<h1 class="page-header">
-<span class="header-line-2">Announcements</span>
-<span class="header-line-3">about [field_biography_last_name]</span>
-</h1>
-</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h1>Announcements</h1>
+<p>about [field_biography_last_name]</p>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $export['list_header'] = $view;
