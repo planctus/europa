@@ -454,6 +454,7 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
  */
 function nexteuropa_formatters_field_formatter_info_alter(&$info) {
   $info['entityreference_entity_view']['settings'] += array(
+    'show_translations' => '',
     'nexteuropa_listing_columns' => 'default',
     'nexteuropa_listing_modifier' => '',
     'nexteuropa_listing_wrapper_modifier' => '',
@@ -470,6 +471,22 @@ function nexteuropa_formatters_field_formatter_info_alter(&$info) {
  */
 function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_form, $context) {
   global $_nexteuropa_formatters_listing_view_modes;
+
+  if (
+    isset($context['instance']['display'][$context['view_mode']]['type']) &&
+    $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
+    $context['instance']['display'][$context['view_mode']]['settings']['view_mode'] == 'file'
+  ) {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
+    $settings_form['show_translations'] = array(
+      '#title' => t('Show file translations'),
+      '#description' => t('In additional to the normal default display of the file, the user also see the translations of the file.'),
+      '#type' => 'checkbox',
+      '#size' => 1,
+      '#default_value' => $settings['show_translations'],
+    );
+  }
 
   if (
     isset($context['instance']['display'][$context['view_mode']]['type']) &&
@@ -537,6 +554,31 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
  */
 function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary, $context) {
   global $_nexteuropa_formatters_listing_view_modes;
+
+  if (
+    $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
+    $context['instance']['display'][$context['view_mode']]['settings']['view_mode'] == 'file'
+  ) {
+    $display = $context['instance']['display'][$context['view_mode']];
+    $settings = $display['settings'];
+
+    $file_settings = array(
+      'Show file translations' => 'show_translations',
+    );
+
+    foreach ($file_settings as $label => $option) {
+      if (isset($settings[$option])) {
+        if (!empty($summary)) {
+          $summary .= '<br />';
+        }
+        if ($settings[$option] == 1) {
+          $settings[$option] = t('yes');
+        }
+        $summary .= $label . ': ' . $settings[$option];
+      }
+    }
+  }
+
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
     in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
