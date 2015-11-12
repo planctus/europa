@@ -275,11 +275,6 @@ function cwt_blogs_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_com_blog_image' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|commisioner_blog_post|teaser'] = $ds_fieldsetting;
 
