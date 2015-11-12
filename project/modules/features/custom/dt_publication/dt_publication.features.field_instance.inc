@@ -272,7 +272,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Departments or organisations connected to this content.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -322,7 +322,7 @@ function dt_publication_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 44,
+      'weight' => 45,
     ),
   );
 
@@ -357,7 +357,7 @@ function dt_publication_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -637,7 +637,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Topics related to this content.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -781,7 +781,7 @@ function dt_publication_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_publication_collection',
     'label' => 'What do you want to create?',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -851,7 +851,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What reference number did it have on that platform.',
+    'description' => 'for example a reference number, an issue number, etc.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -927,7 +927,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select one or more content types that are related to this publication and order them.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -970,7 +970,7 @@ function dt_publication_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 45,
+      'weight' => 44,
     ),
   );
 
@@ -1211,7 +1211,6 @@ function dt_publication_field_default_field_instances() {
   t('Automatically set to "now" during initial publishing.');
   t('Choose a value to be shown in specific cases.');
   t('Contact information');
-  t('Departments or organisations connected to this content.');
   t('Description');
   t('Files');
   t('First published on');
@@ -1230,15 +1229,15 @@ function dt_publication_field_default_field_instances() {
   t('Related policy');
   t('Related topic');
   t('Select one or more authors.');
+  t('Select one or more content types that are related to this publication and order them.');
   t('Select one or more publications to which the collection belongs.');
   t('Summary or abstract of the publication');
   t('The text displayed (along with title and publication type) when this publication is in a listing');
   t('This is displayed as \'meta\' information in addition to the publication title.');
   t('Title');
-  t('Topics related to this content.');
   t('What do you want to create?');
-  t('What reference number did it have on that platform.');
   t('Where does the file come from (only EC platforms).');
+  t('for example a reference number, an issue number, etc.');
 
   return $field_instances;
 }
