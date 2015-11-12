@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Date formatter functions.
+ */
 
 /**
  * Implements hook_field_formatter_info().
@@ -47,34 +51,65 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
 
     $date1 = date("Y-m-d", strtotime($item['value']));
     $date2 = date("Y-m-d", strtotime($item['value2']));
-    $today = date("Y-m-d");
 
     $date1_parts = explode('-', $date1);
     $date2_parts = explode('-', $date2);
     if ($date1_parts[1] == $date2_parts[1] && $date1_parts[2] < $date2_parts[2] && $date1_parts[0] == $date2_parts[0]) {
-      // Same month
-      $common_month_name = format_date(mktime(0, 0, 0, $date1_parts[1],1), 'custom', "M");
+      // Same month.
+      $common_month_name = format_date(mktime(0, 0, 0, $date1_parts[1], 1), 'custom', "M");
       $start_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
-      $output_date = t('<span class="day_text">@start_day_name-@end_day_name</span> <span class="day">@start_day-@end_day</span> <span class="month">@common_month</span>', array('@start_day' => $date1_parts[2], '@start_day_name' => $start_day_name, '@end_day' => $date2_parts[2], '@end_day_name' => $end_day_name, '@common_month' => $common_month_name, '@common_year' => $date1_parts[0]));
+      $output_date = t(
+        '<span class="date-block__day-text">@start_day_name - @end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@common_month</span>',
+        array(
+          '@start_day' => $date1_parts[2],
+          '@start_day_name' => $start_day_name,
+          '@end_day' => $date2_parts[2],
+          '@end_day_name' => $end_day_name,
+          '@common_month' => $common_month_name,
+          '@common_year' => $date1_parts[0],
+        )
+      );
     }
     elseif ($date1_parts[1] == $date2_parts[1] && $date1_parts[2] == $date2_parts[2] && $date1_parts[0] == $date2_parts[0]) {
-      // Same date
-      $common_month_name = format_date(mktime(0, 0, 0, $date1_parts[1],1), 'custom', "M");
+      // Same date.
+      $common_month_name = format_date(mktime(0, 0, 0, $date1_parts[1], 1), 'custom', "M");
       $common_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
-      $output_date = t('<span class="day_text">@common_day_name</span> <span class="day">@start_day</span> <span class="month">@common_month</span>', array('@start_day' => $date1_parts[2], '@common_day_name' => $common_day_name, '@common_month' => $common_month_name, '@common_year' => $date1_parts[0]));
+      $output_date = t(
+        '<span class="date-block__day-text">@common_day_name</span> <span class="date-block__day">@start_day</span> <span class="date-block__month">@common_month</span>',
+        array(
+          '@start_day' => $date1_parts[2],
+          '@common_day_name' => $common_day_name,
+          '@common_month' => $common_month_name,
+        )
+      );
     }
     else {
-      // Different month
-      $start_month_name = format_date(mktime(0, 0, 0, $date1_parts[1],1), 'custom', "M");
-      $end_month_name = format_date(mktime(0, 0, 0, $date2_parts[1],1), 'custom', "M");
+      // Different month.
+      $start_month_name = format_date(mktime(0, 0, 0, $date1_parts[1], 1), 'custom', "M");
+      $end_month_name = format_date(mktime(0, 0, 0, $date2_parts[1], 1), 'custom', "M");
       $start_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
-      $output_date = t('<span class="day_text">@start_day_name-@end_day_name</span> <span class="day">@start_day-@end_day</span> <span class="month">@start_month @end_month</span>', array('@start_day' => $date1_parts[2], '@start_day_name' => $start_day_name, '@start_month' => $start_month_name,'@start_year' => $date1_parts[0],'@end_day' => $date2_parts[2], '@end_day_name' => $end_day_name, '@end_month' => $end_month_name,'@end_year' => $date2_parts[0]));
+      $output_date = t(
+        '<span class="date-block__day-text">@start_day_name - @end_day_name</span> <span class="date-block__day">@start_day-@end_day</span> <span class="date-block__month">@start_month-@end_month</span>',
+        array(
+          '@start_day' => $date1_parts[2],
+          '@start_day_name' => $start_day_name,
+          '@start_month' => $start_month_name,
+          '@start_year' => $date1_parts[0],
+          '@end_day' => $date2_parts[2],
+          '@end_day_name' => $end_day_name,
+          '@end_month' => $end_month_name,
+          '@end_year' => $date2_parts[0],
+        )
+      );
     }
+
+    // Prefix and suffix is not working as we return the markup only.
     $element[$delta] = array(
-      '#markup' => $output_date,
+      '#markup' => '<div class="date-block">' . $output_date . '</div>',
     );
+
   }
 
   return $element[0]['#markup'];

@@ -79,8 +79,8 @@ function cwt_blogs_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'title',
-      1 => 'post_date',
+      0 => 'post_date',
+      1 => 'editorial_section_name_teaser',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -107,7 +107,7 @@ function cwt_blogs_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'post_date',
-      1 => 'editorial_section_name_teser',
+      1 => 'editorial_section_name_teaser',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

@@ -24,10 +24,10 @@ function cwt_core_ds_fields_info($entity_type) {
     ),
   );
 
-  $fields['editorial_section_name_teser'] = array(
+  $fields['editorial_section_name_teaser'] = array(
 
     // title: title of the field.
-    'title' => t('Editorial section name for tesers'),
+    'title' => t('Editorial section name for teasers'),
 
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_nexteuropa_ds_fields_token_replace',
@@ -38,6 +38,26 @@ function cwt_core_ds_fields_info($entity_type) {
     ),
   );
 
+  // This field will render the legacy title.
+  $fields['dt_core_legacy_title'] = array(
+    // title: title of the field.
+    'title' => t('Legacy title layout'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_cwt_core_legacy_title',
+  );
+
   return array('node' => $fields);
 
 };
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _cwt_core_legacy_title($field) {
+  // Simulate page variables.
+  if (isset($field['entity']) && isset($field['entity']->type)) {
+    $variables = array();
+    $variables['node'] = $field['entity'];
+    return _cwt_core_custom_page_title($variables);
+  }
+}

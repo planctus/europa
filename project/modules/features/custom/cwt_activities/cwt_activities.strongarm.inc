@@ -108,6 +108,16 @@ function cwt_activities_strongarm() {
             'weight' => '3',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '19',
+            'visible' => FALSE,
+          ),
+        ),
+        'subscriptions_ui' => array(
+          'teaser' => array(
+            'weight' => '16',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),

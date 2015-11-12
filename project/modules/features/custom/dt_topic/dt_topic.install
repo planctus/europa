@@ -76,3 +76,33 @@ function dt_topic_update_7105() {
 function dt_topic_update_7106() {
   features_revert_module('dt_topic');
 }
+
+/**
+ * NEXTEUROPA-4829: Topic top task custom link implemenation.
+ */
+function dt_topic_update_7107() {
+  // The features to enable.
+  $features = array(
+    'dt_core',
+    'dt_topic',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+  // Delete the old field_core_top_tasks field instance.
+  if ($instance = field_info_instance('node', 'field_core_top_tasks', 'topic')) {
+    field_delete_instance($instance);
+  }
+  // Then the field base as we are not usin it anymore.
+  if ($field_base = field_info_field('field_core_top_tasks')) {
+    field_delete_field($field_base);
+  }
+}
+
+/**
+ * NEXTEUROPA-6077: Changing layout of topic specific tasks and topic top task
+ */
+function dt_topic_update_7108() {
+  features_revert_module('dt_topic');
+}
