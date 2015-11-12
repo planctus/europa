@@ -17,14 +17,11 @@ function dt_person_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'person';
   $ds_fieldsetting->view_mode = 'meta';
   $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '12',
+    'full_name_nolink' => array(
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => '',
-        'class' => '',
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
@@ -93,6 +90,24 @@ function dt_person_ds_custom_fields_info() {
   );
   $export['full_name'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'full_name_nolink';
+  $ds_field->label = 'Full name - nolink';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'person|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '[node:field_person_first_name] [node:field_person_last_name]',
+      'format' => 'plain_text',
+    ),
+    'use_token' => 1,
+  );
+  $export['full_name_nolink'] = $ds_field;
+
   return $export;
 }
 
@@ -114,18 +129,18 @@ function dt_person_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_person_meta',
         1 => 'group_person_name',
-        3 => 'title',
+        2 => 'full_name_nolink',
         4 => 'field_person_role',
       ),
       'second' => array(
-        2 => 'field_person_photo',
+        3 => 'field_person_photo',
       ),
     ),
     'fields' => array(
       'group_person_meta' => 'main',
       'group_person_name' => 'main',
+      'full_name_nolink' => 'main',
       'field_person_photo' => 'second',
-      'title' => 'main',
       'field_person_role' => 'main',
     ),
     'classes' => array(),

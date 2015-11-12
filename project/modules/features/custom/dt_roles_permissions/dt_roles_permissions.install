@@ -11,6 +11,7 @@ function dt_roles_permissions_install() {
   $path = drupal_get_path('module', 'dt_roles_permissions') . '/dt_roles_permissions.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message('DT roles and permissions %v feature is installed on your site.', array('%v' => $info['version']));
+  module_enable(array('dt_roles_permissions_import'));
 }
 
 /**
@@ -36,4 +37,36 @@ function dt_roles_permissions_update_7101() {
  */
 function dt_roles_permissions_update_7102() {
   features_revert_module(array('dt_roles_permissions'));
+}
+
+/**
+ * NEXTEUROPA-6289: Enable the importer module.
+ */
+function dt_roles_permissions_update_7103() {
+  module_enable(array('dt_roles_permissions_import'));
+}
+
+/**
+ * NEXTEUROPA-6230: Create Translator role.
+ */
+function dt_roles_permissions_update_7104() {
+  // Create Translator role.
+  features_revert_module('dt_roles_permissions');
+
+  $msg = t('Permissions for translators where not created. Import permissions
+  using dt_permissions_import module.');
+
+  // Get the newly created role.
+  $role_translator = user_role_load_by_name('translator');
+
+  if ($role_translator) {
+    // Import initial permissions in role.
+    if (module_exists('dt_roles_permissions_import') &&
+      _dt_roles_permissions_import_import($role_translator, TRUE)
+    ) {
+      $msg = t('Translator role was created and initial permissions assigned.');
+    }
+  }
+
+  return $msg;
 }

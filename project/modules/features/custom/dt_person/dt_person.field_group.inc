@@ -131,7 +131,7 @@ function dt_person_field_group_info() {
     'label' => 'Name',
     'weight' => '1',
     'children' => array(
-      0 => 'title',
+      0 => 'full_name_nolink',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -140,7 +140,7 @@ function dt_person_field_group_info() {
         'classes' => 'listing__title',
         'element' => 'h3',
         'show_label' => '0',
-        'label_element' => 'div',
+        'label_element' => '',
         'attributes' => '',
       ),
     ),
