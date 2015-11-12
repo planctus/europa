@@ -376,11 +376,7 @@ function commissioner_page_alter(&$page) {
   }
   else {
     if (user_access('administer site configuration')) {
-<<<<<<< HEAD:lib/themes/commissioner/template.php
-      drupal_set_message(t('Please select the IPG classification of your site <a href="%url">here</a>.', array('%url' => url('admin/config/system/site-information'))), 'warning');
-=======
       drupal_set_message(t('Please select the IPG classification of your site %link', array('%link' => l(t('here.'))), 'admin/config/system/site-information'), 'warning');
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/themes/commissioner/template.php
     }
   }
 

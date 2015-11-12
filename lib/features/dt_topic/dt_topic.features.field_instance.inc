@@ -633,13 +633,8 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-<<<<<<< HEAD:lib/features/dt_topic/dt_topic.features.field_instance.inc
-  // Exported field_instance: 'node-topic-field_core_top_tasks'.
-  $field_instances['node-topic-field_core_top_tasks'] = array(
-=======
-  // Exported field_instance: 'node-topic-field_core_top_tasks_links'
+  // Exported field_instance: 'node-topic-field_core_top_tasks_links'.
   $field_instances['node-topic-field_core_top_tasks_links'] = array(
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/dt_topic/dt_topic.features.field_instance.inc
     'bundle' => 'topic',
     'default_value' => NULL,
     'deleted' => 0,

@@ -618,13 +618,8 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-<<<<<<< HEAD:lib/features/dt_core/dt_core.features.field_base.inc
-  // Exported field_base: 'field_core_top_tasks'.
-  $field_bases['field_core_top_tasks'] = array(
-=======
   // Exported field_base: 'field_core_top_tasks_links'
   $field_bases['field_core_top_tasks_links'] = array(
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/dt_core/dt_core.features.field_base.inc
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,

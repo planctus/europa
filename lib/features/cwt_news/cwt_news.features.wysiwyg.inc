@@ -10,13 +10,8 @@
 function cwt_news_wysiwyg_default_profiles() {
   $profiles = array();
 
-<<<<<<< HEAD:lib/features/cwt_news/cwt_news.features.wysiwyg.inc
   // Exported profile: news_text_filter.
   $profiles['news_text_filter'] = (object) array(
-=======
-  // Exported profile: news_text_filter
-  $profiles['news_text_filter'] = (array) array(
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_news/cwt_news.features.wysiwyg.inc
     'format' => 'news_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(

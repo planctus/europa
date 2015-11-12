@@ -41,13 +41,8 @@ function cwt_team_views_api($module = NULL, $api = NULL) {
 function cwt_team_fe_nodequeue_export_fields() {
   $nodequeues = array();
 
-<<<<<<< HEAD:lib/features/cwt_team/cwt_team.features.inc
   // Exported nodequeues: biographies_by_project_teams.
   $nodequeues['biographies_by_project_teams'] = (object) array(
-=======
-  // Exported nodequeues: biographies_by_project_teams
-  $nodequeues['biographies_by_project_teams'] = (array) array(
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_team/cwt_team.features.inc
     'name' => 'biographies_by_project_teams',
     'title' => 'Biographies by Project Teams',
     'subqueue_title' => 'Team %subqueue',
@@ -69,13 +64,8 @@ function cwt_team_fe_nodequeue_export_fields() {
     'use_parents' => 0,
   );
 
-<<<<<<< HEAD:lib/features/cwt_team/cwt_team.features.inc
   // Exported nodequeues: team_members_by_hierarchy.
   $nodequeues['team_members_by_hierarchy'] = (object) array(
-=======
-  // Exported nodequeues: team_members_by_hierarchy
-  $nodequeues['team_members_by_hierarchy'] = (array) array(
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_team/cwt_team.features.inc
     'name' => 'team_members_by_hierarchy',
     'title' => 'Team members by hierarchy',
     'subqueue_title' => '',

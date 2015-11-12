@@ -789,11 +789,7 @@ function dt_core_context_load_alter(&$context) {
 }
 
 /**
-<<<<<<< HEAD:lib/features/dt_core/dt_core.module
  * Removes maxlength configuration from field.
-=======
- * TBA.
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/dt_core/dt_core.module
  */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.

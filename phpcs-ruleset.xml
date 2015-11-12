@@ -77,4 +77,9 @@
     <rule ref="Drupal.Semantics.FunctionT.BackslashSingleQuote">
         <exclude-pattern>*.features.*.inc</exclude-pattern>
     </rule>
+
+    <!-- Exclude tr. -->
+    <rule ref="Drupal.Semantics.FunctionT.ConcatString">
+        <exclude-pattern>*.*</exclude-pattern>
+    </rule>
 </ruleset>

@@ -20,12 +20,7 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
 
   // Agenda exposed filter.
   if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
-<<<<<<< HEAD:lib/features/cwt_activities/cwt_activities.module
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
-=======
-    // Rewrite for action URL to original URL.
-    // @see cwt_core_url_inbound_alter().
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_activities/cwt_activities.module
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
     // Set default time filter for current week: Monday - Sunday.
