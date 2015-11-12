@@ -1254,10 +1254,10 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = '[tid] ';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'timeline';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* Header: Global: Text area */
@@ -1353,8 +1353,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="timeline">
-  <div class="timeline__item">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="timeline__item">
     <div class="timeline__item-title">[title]</div>
     <div class="timeline__text">
       <ul>
@@ -1362,7 +1361,7 @@ function cwt_biography_views_default_views() {
       </ul>
     </div>
 </div>
-</div>';
+';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -1396,15 +1395,7 @@ function cwt_biography_views_default_views() {
 
   /* Display: Biography Timeline */
   $handler = $view->new_display('block', 'Biography Timeline', 'block');
-  $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'Show timeline';
 
-  /* Display: Biography Timeline */
-  $handler = $view->new_display('block', 'Biography Timeline', 'block');
   $export['biography_timeline'] = $view;
 
   $view = new view();
