@@ -8352,6 +8352,23 @@ Styleguide listing
 .listing--short-spaced .listing__item:first-child .listing__item-link {
   padding-top: 0 !important; }
 
+.listing--line-left .listing__title {
+  padding: 0 !important; }
+
+.listing--line-left .listing--teaser {
+  padding-left: 0; }
+
+.listing--line-left .listing__item {
+  border-top: none;
+  border-bottom: none;
+  border-left: 5px solid #004494;
+  margin-top: 0.85em;
+  margin-bottom: 1em;
+  padding: 0.4em 0 0.4em 0.7em; }
+  .listing--line-left .listing__item .listing__item-link {
+    padding-top: 0;
+    padding-bottom: 0; }
+
 .listing--no-link .listing__item {
   padding-top: 0.5em;
   padding-bottom: 0.5em; }
@@ -8425,6 +8442,8 @@ Listing components
 
 Markup: html/listing--title.html
 
+.listing--line-left - Listing line left
+
 Styleguide listing.title
 */
 .listing--title,
@@ -8468,6 +8487,7 @@ Markup: html/listing--teaser.html
 .listing--title-large - Listing title large
 .listing--title-medium - Listing title medium
 .listing--short-spaced - Listing short spaced
+.listing--line-left - Listing line left
 
 Styleguide listing.teaser
 */

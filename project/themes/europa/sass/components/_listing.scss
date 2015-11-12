@@ -164,6 +164,32 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+// Modifier to add line on the left
+.listing--line-left {
+  .listing__title {
+    padding: 0 !important;
+  }
+
+  // Teaser listing
+  .listing--teaser {
+    padding-left: 0;
+  }
+
+  .listing__item {
+    border-top: none;
+    border-bottom: none;
+    border-left: 5px solid $blue-dark;
+    margin-top: 0.85em;
+    margin-bottom: 1em;
+    padding: 0.4em 0 0.4em 0.7em;
+
+    .listing__item-link {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
 .listing--no-link {
   .listing__item {
     padding-top: 0.5em;
@@ -278,6 +304,8 @@ Listing components
 
 Markup: html/listing--title.html
 
+.listing--line-left - Listing line left
+
 Styleguide listing.title
 */
 .listing--title,
@@ -330,6 +358,7 @@ Markup: html/listing--teaser.html
 .listing--title-large - Listing title large
 .listing--title-medium - Listing title medium
 .listing--short-spaced - Listing short spaced
+.listing--line-left - Listing line left
 
 Styleguide listing.teaser
 */
