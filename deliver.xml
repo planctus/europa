@@ -64,6 +64,7 @@
 
     <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
     <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull --tags"></exec>
 
     <echo msg="Delete acquia-cloud/docroot." />
     <delete includeemptydirs="true" failonerror="false">
@@ -97,11 +98,12 @@
     <exec dir="${acquia.repo}" command="git add -A"></exec>
     <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
 
-    <!-- Get previous tagnames -->
-    <exec dir="${acquia.repo}" command="git tag" outputProperty="TAGS"></exec>
-    <echo msg="Current tags:${line.separator}${line.separator}${TAGS}" />
-    <input propertyname="TAG">Please provide a tag name:</input>
-    <exec dir="${acquia.repo}" command="git tag '${TAG}'"></exec>
+    <!-- Create Tag -->
+    <tstamp>
+      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="nl_NL"/>
+    </tstamp>
+    <echo msg="Creating tag: ${TAGDATE}" />
+    <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
     <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
     <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
