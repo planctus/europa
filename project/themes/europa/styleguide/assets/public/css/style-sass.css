@@ -226,7 +226,7 @@ th {
   .dropup > .btn > .caret, .inpage-nav__navbar
   .dropup > .inpage-nav__toggle > .caret {
     border-top-color: #000 !important; }
-  .label, label {
+  .label {
     border: 1px solid #000; }
   .table {
     border-collapse: collapse !important; }
@@ -3888,7 +3888,7 @@ tbody.collapse.in {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px; }
 
-.label, label {
+.label {
   display: inline;
   padding: .2em .6em .3em;
   font-size: 75%;
@@ -3899,9 +3899,9 @@ tbody.collapse.in {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em; }
-  .label:empty, label:empty {
+  .label:empty {
     display: none; }
-  .btn .label, .inpage-nav__navbar .inpage-nav__toggle .label, .btn label, .inpage-nav__navbar .inpage-nav__toggle label {
+  .btn .label, .inpage-nav__navbar .inpage-nav__toggle .label {
     position: relative;
     top: -1px; }
 
@@ -3910,34 +3910,34 @@ a.label:hover, a.label:focus {
   text-decoration: none;
   cursor: pointer; }
 
-.label-default {
+.label-default, .label--default {
   background-color: #777777; }
-  .label-default[href]:hover, .label-default[href]:focus {
+  .label-default[href]:hover, [href].label--default:hover, .label-default[href]:focus, [href].label--default:focus {
     background-color: #5e5e5e; }
 
-.label-primary {
+.label-primary, .label--primary {
   background-color: #004494; }
-  .label-primary[href]:hover, .label-primary[href]:focus {
+  .label-primary[href]:hover, [href].label--primary:hover, .label-primary[href]:focus, [href].label--primary:focus {
     background-color: #002d61; }
 
-.label-success {
+.label-success, .label--success {
   background-color: #467a39; }
-  .label-success[href]:hover, .label-success[href]:focus {
+  .label-success[href]:hover, [href].label--success:hover, .label-success[href]:focus, [href].label--success:focus {
     background-color: #325729; }
 
-.label-info {
+.label-info, .label--info {
   background-color: #575757; }
-  .label-info[href]:hover, .label-info[href]:focus {
+  .label-info[href]:hover, [href].label--info:hover, .label-info[href]:focus, [href].label--info:focus {
     background-color: #3e3e3e; }
 
-.label-warning {
+.label-warning, .label--warning {
   background-color: #f2a615; }
-  .label-warning[href]:hover, .label-warning[href]:focus {
+  .label-warning[href]:hover, [href].label--warning:hover, .label-warning[href]:focus, [href].label--warning:focus {
     background-color: #c9880b; }
 
-.label-danger {
+.label-danger, .label--danger {
   background-color: #ff2423; }
-  .label-danger[href]:hover, .label-danger[href]:focus {
+  .label-danger[href]:hover, [href].label--danger:hover, .label-danger[href]:focus, [href].label--danger:focus {
     background-color: #ef0100; }
 
 .badge {
@@ -5865,14 +5865,14 @@ Markup: html/label.html
 
 Styleguide form.label
 */
-.label, label {
+.form_label, form .label, label {
   color: #575757;
   font-size: 0.889em;
   display: block;
   text-align: left;
   padding: 0;
   margin-bottom: 0.556em; }
-  .label.is-disabled, label.is-disabled {
+  .form_label.is-disabled, form .is-disabled.label, label.is-disabled {
     color: #b3b4b5; }
 
 /*
@@ -7863,6 +7863,58 @@ Styleguide inpagenav
     display: none; } }
 
 /*
+Labels
+
+Markup: html/labels.html
+
+.label--default  - Default
+.label--primary - Primary
+.label--success - Success
+.label--info - Info
+.label--warning - Warning
+.label--danger - Danger
+.label--highlight - Highlight
+
+Styleguide labels
+*/
+.label {
+  border-radius: 0;
+  font-weight: normal;
+  color: #404040; }
+
+.label--default {
+  color: #fff; }
+
+.label--primary {
+  color: #fff; }
+
+.label--success {
+  color: #fff; }
+
+.label--info {
+  color: #fff; }
+
+.label--warning {
+  color: #fff; }
+
+.label--danger {
+  color: #fff; }
+
+.label--highlight {
+  color: #404040;
+  background-color: #ffd617; }
+  .label--highlight.label--meta:after {
+    content: "";
+    margin: 0; }
+
+.label--meta {
+  padding: 0.25em 0.5em 0.3em 0.5em;
+  font-size: 90%;
+  top: -0.075em;
+  margin-right: 0.8em;
+  position: relative; }
+
+/*
 Language select (Site)
 
 Language selector that is used across the whole site
@@ -8142,7 +8194,7 @@ Styleguide listing
 .listing--person .listing__meta {
   text-transform: uppercase; }
 
-.listing--person .listing__meta .label, .listing--person .listing__meta label {
+.listing--person .listing__meta .label {
   font-weight: normal; }
 
 .listing--person .listing__item-link {
@@ -8389,24 +8441,24 @@ Styleguide meta
   line-height: 1.3;
   font-size: 0.778em;
   letter-spacing: 0.02777778em;
-  overflow: hidden;
+  float: left;
   margin-bottom: 0.9em; }
   .meta p {
     margin: 0; }
 
-.meta__item {
+.meta__item, .label--meta {
   float: left;
   overflow: hidden;
   white-space: nowrap; }
-  .meta__item:after {
+  .meta__item:after, .label--meta:after {
     content: "|";
     color: #b3b4b5;
     margin: 0 0.8em;
     position: relative;
     top: -1px; }
-  .meta__item:last-child:after {
+  .meta__item:last-child:after, .label--meta:last-child:after {
     display: none; }
-  .meta__item p {
+  .meta__item p, .label--meta p {
     font-size: inherit !important; }
 
 .meta__item--type {
