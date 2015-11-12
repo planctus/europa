@@ -30,7 +30,7 @@ projects[entityreference_filter][subdir] = "contrib"
 projects[entityreference_filter][version] = "1.5"
 
 projects[features_extra][subdir] = "contrib"
-projects[features_extra][version] = "1.0-beta1"
+projects[features_extra][version] = "1.0"
 
 projects[multiple_selects][subdir] = "contrib"
 projects[multiple_selects][version] = "1.2"

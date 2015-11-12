@@ -340,11 +340,18 @@ $ git push origin master
 
 ### 3. Create a build.properties file
 
+<<<<<<< HEAD
 Create a new file called `build.properties` in the root folder and put
 properties in it that are unique to your project. You can copy any of the
 properties of the `build.properties.dist` file to override them and then commit
 the file. The settings will then take effect for all developers that work on the
 project.
+=======
+*   Stages all changes
+*   Commits changes to <code>master</code> branch of the Acquia Cloud repository
+*   Creates a tag with a name you input when prompted
+*   Pushes your changes to the Acquia Cloud repository remote. (In case the master branch is selected on the corresponding instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13
 
 Some typical project specific settings are the site name, the install profile,
 the modules to enable after installation, paths to ignore during coding
@@ -387,10 +394,14 @@ dependencies to benefit from improvements in new releases.
 # Install composer dependencies.
 $ composer install
 
+<<<<<<< HEAD
 # Commit the composer.lock file.
 $ git add composer.lock
 $ git commit -m "Lock composer dependencies."
 ```
+=======
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13
 
 ### 5. Commit and push
 

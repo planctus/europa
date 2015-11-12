@@ -602,6 +602,7 @@ function dt_core_update_7144() {
  * Set body field content to english.
  */
 function dt_core_update_7145() {
+<<<<<<< HEAD:lib/features/dt_core/dt_core.install
   // Set all content to english if undefined.
   db_update('field_data_body')
     ->fields(array(
@@ -617,6 +618,9 @@ function dt_core_update_7145() {
     ))
     ->condition('language', 'und', '=')
     ->execute();
+=======
+  // Removed this as it is no longer required due to the changes in update 7146.
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/dt_core/dt_core.install
 }
 
 /**

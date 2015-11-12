@@ -20,7 +20,12 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
 
   // Agenda exposed filter.
   if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+<<<<<<< HEAD:lib/features/cwt_activities/cwt_activities.module
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
+=======
+    // Rewrite for action URL to original URL.
+    // @see cwt_core_url_inbound_alter().
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_activities/cwt_activities.module
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
     // Set default time filter for current week: Monday - Sunday.
@@ -77,13 +82,12 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  */
 function cwt_activities_views_pre_render(&$view) {
   if ($view->name == 'agenda') {
-    // Replace [filter_info] with editorial section name used in the filter.
-    $result_info = $view->header['result']->options['content'];
-    $token = '';
+    // If the term is available, we create an extra view object we later parse
+    // in the template.
     if (isset($view->exposed_input['field_editorial_section_multiple_tid'])) {
       $term = taxonomy_term_load($view->exposed_input['field_editorial_section_multiple_tid']);
       $token = !$term ? '' : (' ' . t('for %commissioner', array('%commissioner' => $term->name)));
+      $view->items_count['#suffix'] = $token;
     }
-    $view->header['result']->options['content'] = str_replace('[filter_info]', $token, $result_info);
   }
 }

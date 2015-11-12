@@ -73,6 +73,11 @@ function commissioner_preprocess_views_view(&$variables) {
           format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
       }
 
+      // If there is a suffix add it here.
+      if (isset($view->items_count['#suffix'])) {
+        $items_count .= ' ' . $view->items_count['#suffix'];
+      }
+
       $variables['items_count'] = $items_count;
     }
   }
@@ -210,7 +215,6 @@ function commissioner_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   // Fix pager for rewritten URLs.
   // @see commissioners_url_inbound_alter().
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
@@ -372,7 +376,11 @@ function commissioner_page_alter(&$page) {
   }
   else {
     if (user_access('administer site configuration')) {
+<<<<<<< HEAD:lib/themes/commissioner/template.php
       drupal_set_message(t('Please select the IPG classification of your site <a href="%url">here</a>.', array('%url' => url('admin/config/system/site-information'))), 'warning');
+=======
+      drupal_set_message(t('Please select the IPG classification of your site %link', array('%link' => l(t('here.'))), 'admin/config/system/site-information'), 'warning');
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/themes/commissioner/template.php
     }
   }
 
@@ -542,6 +550,37 @@ function _commissioner_meta_title($node = NULL, $title = NULL) {
     $title = !$title ? '' : ($title . ' - ');
     return check_plain($title) . t('European Commission');
   }
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ *
+ * Because we use a different structure for the commissioners website we need to
+ * avoid double .file classes on file entity's.
+ */
+function commissioner_preprocess_file_entity(&$variables) {
+  if ($variables['view_mode'] == 'default') {
+    if (($key = array_search('file', $variables['classes_array'])) !== FALSE) {
+      unset($variables['classes_array'][$key]);
+    }
+  }
+}
+
+/**
+ * Override theme_file_link().
+ */
+function commissioner_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  // Apply the modifier if needed. Currently it's only on the front page. If on
+  // a later stage, we need this everywhere, we should make this modifier the
+  // default.
+  $modifier = drupal_is_front_page() ? 'file--widebar' : FALSE;
+
+  return _europa_file_markup($file, $url, $modifier);
+
 }
 
 /**

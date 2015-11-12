@@ -618,40 +618,40 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+<<<<<<< HEAD:lib/features/dt_core/dt_core.features.field_base.inc
   // Exported field_base: 'field_core_top_tasks'.
   $field_bases['field_core_top_tasks'] = array(
+=======
+  // Exported field_base: 'field_core_top_tasks_links'
+  $field_bases['field_core_top_tasks_links'] = array(
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/dt_core/dt_core.features.field_base.inc
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_top_tasks',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
+    'field_name' => 'field_core_top_tasks_links',
+    'foreign keys' => array(),
+    'indexes' => array(),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'link',
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'top_tasks',
-          'parent' => 0,
-        ),
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
       ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
-      'options_list_callback' => 'i18n_taxonomy_allowed_values',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
     ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'translatable' => 1,
+    'type' => 'link_field',
   );
 
   // Exported field_base: 'name_field'.

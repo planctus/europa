@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Deliver to Acquia Cloud" default="deliver">
+  <property name="temp" value="${project.basedir}/release" />
+  <property name="folderlist" value="libraries,modules,themes" />
+  <target name="release" description="Release code to MULTISITE SVN">
+    <if>
+      <not>
+        <equals arg1="${phing.project.svn}" arg2="" />
+      </not>
+      <then>
+        <!-- Checkout  -->
+        <mkdir dir="${temp}" />
+        <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${temp}"></exec>
+
+        <!-- Update code  -->
+        <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+
+        <!-- Commit  -->
+        <input propertyname="commitmessage">Please provide a commit message:</input>
+        <echo msg="${commitmessage}" />
+        <exec dir="${temp}" command="svn commit -m '${commitmessage}'"></exec>
+
+        <echo message="Committed revision: ${svn.committedrevision}"/>
+
+        <!-- Delete temporary folder -->
+        <delete dir="${temp}" includeemptydirs="true" failonerror="true" />
+        <echo message="${temp} removed"/>
+      </then>
+      <else>
+        <echo message="SVN is not set up correctly."/>
+      </else>
+    </if>
+  </target>
+
+  <target name="updatefolder" description="Update folder in MULTISITE SVN">
+    <!-- Delete previous code  -->
+    <delete dir="${temp}/${folder}" includeemptydirs="true" failonerror="true" />
+
+    <!-- Copy latest code  -->
+    <copy todir="${temp}/${folder}" overwrite="true">
+        <fileset dir="${phing.project.project.dir}/${folder}">
+          <patternset>
+            <exclude name="*devel/**"/>
+            <exclude name="*/node_modules/**"/>
+            <exclude name="*/styleguide/**"/>
+            <exclude name="**/Gruntfile.js"/>
+            <exclude name="**/Watchfile"/>
+            <exclude name="**/package.json"/>
+          </patternset>
+        </fileset>
+    </copy>
+
+    <!-- SVN remove locally deleted files  -->
+    <exec dir="${temp}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
+    <!-- Add latest code  -->
+    <exec dir="${temp}" command="svn add ${folder} --force"></exec>
+  </target>
+
+  <target name="deliver" description="Deliver code to Acquia repository">
+    <property name="acquia.repo" value="${project.basedir}/acquia-cloud" />
+    <property name="acquia.branch" value="master" />
+    <property name="acquia.docroot" value="${acquia.repo}/docroot" />
+
+    <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull --tags"></exec>
+
+    <echo msg="Delete acquia-cloud/docroot." />
+    <delete includeemptydirs="true" failonerror="false">
+      <fileset dir="${acquia.docroot}">
+        <patternset>
+          <exclude name="files"/>
+          <exclude name="sites/*/files"/>
+          <exclude name="sites/*/private"/>
+          <exclude name="**/settings.php"/>
+          <exclude name="**/sites.php/"/>
+        </patternset>
+      </fileset>
+    </delete>
+    <echo msg="Copy files to acquia-cloud/docroot." />
+    <copy todir="${acquia.docroot}">
+        <fileset dir="${distro.code.dir}">
+          <patternset>
+            <exclude name="**/settings.php"/>
+            <exclude name="**/sites.php/"/>
+            <exclude name="sites/*/files"/>
+          </patternset>
+      </fileset>
+    </copy>
+
+    <tstamp>
+      <format property="DATE" pattern="%c" locale="nl_NL"/>
+    </tstamp>
+
+    <!-- commit all modified / deleted files -->
+    <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
+    <exec dir="${acquia.repo}" command="git add -A"></exec>
+    <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
+
+    <!-- Create Tag -->
+    <tstamp>
+      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="nl_NL"/>
+    </tstamp>
+    <echo msg="Creating tag: ${TAGDATE}" />
+    <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
+    <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git push --tags"></exec>
+  </target>
+
+  <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="init, init-dev-properties">
+    <input propertyname="confirm">This will delete your current database. Do you want to continue? (y)</input>
+    <if>
+      <equals arg1="${confirm}" arg2="y" />
+      <then>
+        <drush command="sql-drop" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Database deleted." />
+        <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
+        <if>
+          <not>
+            <available file="${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql" type="file" property="available_phing_project_ac_dump"/>
+          </not>
+          <then>
+            <phingcall target="fetch-ac-db" />
+          </then>
+        </if>
+        <echo msg="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
+        <exec command="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
+
+        <echo msg="AC database loaded." />
+
+        <drush command="registry-rebuild" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Registry rebuilt." />
+        <drush command="user-password" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+          <param>admin</param>
+          <option name="password">pass</option>
+        </drush>
+        <echo msg="Password for user admin is set to pass." />
+      </then>
+      <else>
+        <echo msg="Exit without doing anything." />
+      </else>
+    </if>
+  </target>
+
+  <target name="fetch-ac-db" description="Downloads the AC database." depends="init, init-dev-properties">
+    <exec command="drush -y @${drush.alias.acquia} sql-dump > ${phing.project.dumps.dir}/ac-dump.mysql" />
+    <echo msg="AC database downloaded." />
+  </target>
+
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="package, deliver">
+    <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
+    <waitfor maxwaitunit="second" maxwait="15">
+      <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
+      <available file="ready"/>
+    </waitfor>
+    <property name="sites" value="ecfpfis.dev,ecfpfis.test,ecfpfis.prod" />
+    <foreach list="${sites}" param="site.alias" target="ac-update-site" delimiter="," />
+
+    <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
+    <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
+    <exec dir="${project.basedir}" command="git push"></exec>
+    <echo msg="Added Acquia Cloud to develop branch right after deployment, you can now use git push to push the changes to the development branch." />
+  </target>
+
+  <target name="ac-update-site">
+    <exec command="drush -y @${site.alias} updb" />
+    <echo msg="EXECUTE: drush -y @${site.alias} updb" />
+
+    <property name="revert.command" value="frdt" />
+    <if>
+      <equals arg1="${site.alias}" arg2="ecfpfis.prod" />
+      <then>
+        <property name="revert.command" value="frcwt" />
+      </then>
+    </if>
+    <exec command="drush -y @${site.alias} ${revert.command}" />
+    <echo msg="EXECUTE: drush -y @${site.alias} ${revert.command}" />
+  </target>
+</project>

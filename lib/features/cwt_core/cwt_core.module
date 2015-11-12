@@ -89,7 +89,11 @@ function cwt_core_views_post_render(&$view, &$output, &$cache) {
  * Returns a list of links to the translations of the node.
  *
  * @param object $node
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.module
  *   defaults to NULL.
+=======
+ *   Defaults to NULL.
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_core/cwt_core.module
  *
  * @return array|bool
  *   Render array of the list or FALSE
@@ -415,8 +419,13 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       // first iteration this array will be array('blog'), the second
       // (and last in that case) the array will be array('blog','article').
       $segment_url_arr[] = $alias_arr[$idx_0];
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.module
       // String with the potential-path of the segment being processed (e.g.
       // 'blog/article').
+=======
+      // String with the potential-path of the segment being processed
+      // (e.g. 'blog/article').
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_core/cwt_core.module
       $segment_url = implode('/', $segment_url_arr);
 
       // Jump to the next segment if this url is configured to be excluded.
@@ -432,7 +441,11 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       $segment_valid_path = drupal_valid_path($segment_normal_path);
       // Get the segment's raw text from the URL.
       $segment_text = $alias_arr[$idx_0];
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.module
       // Normalized segment's text (e.g. 'Blog');.
+=======
+      // Normalized segment's text (e.g. 'Blog').
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_core/cwt_core.module
       $segment_title = _easy_breadcrumb_obtain_segment_title($segment_normal_path,
         $segment_valid_path, $segment_text);
 
@@ -446,8 +459,13 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
 
     // Adds the page's title to the breadcrumb.
     if ($include_page_title_segment) {
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.module
       // Marks the page's-title-segment with an identifier class (useful for
       // CSS).
+=======
+      // Marks the page's-title-segment with an identifier class
+      // (useful for CSS).
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_core/cwt_core.module
       $segments_classes = array(
         $segments_class,
         'breadcrumb-segment-title',
@@ -628,10 +646,17 @@ function cwt_core_entity_update($entity, $type) {
       $pathauto_alias = pathauto_create_alias('node', 'return', $uri['path'], array('node' => $team), 'team', $langcode);
       if ($existing_alias['alias'] !== $pathauto_alias) {
         _pathauto_set_alias(array(
+<<<<<<< HEAD:lib/features/cwt_core/cwt_core.module
           'source' => $uri['path'],
           'alias' => $pathauto_alias,
           'language' => $langcode,
         ),
+=======
+            'source' => $uri['path'],
+            'alias' => $pathauto_alias,
+            'language' => $langcode,
+          ),
+>>>>>>> 14357719795bd856c5313eeb355934e098a06b13:project/modules/features/custom/cwt_core/cwt_core.module
           $existing_alias);
       }
     }
@@ -962,4 +987,71 @@ function _cwt_core_custom_page_title($page_variables) {
   }
 
   return FALSE;
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function cwt_core_ds_fields_info($entity_type) {
+  $fields = array();
+
+  // This field will render the legacy title.
+  $fields['dt_core_legacy_title'] = array(
+    // title: title of the field.
+    'title' => t('Legacy title layout'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_cwt_core_legacy_title',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _cwt_core_legacy_title($field) {
+  // Simulate page variables.
+  if (isset($field['entity']) && isset($field['entity']->type)) {
+    $variables = array();
+    $variables['node'] = $field['entity'];
+    return _cwt_core_custom_page_title($variables);
+  }
+}
+
+/**
+ * Get the languages that are applicable in the right order of fallback.
+ */
+function _cwt_core_content_language_order() {
+  global $language;
+  // Get the first few languages of our fallback array. If we have a 2nd
+  // language parameter set, we have to work with an additional language. If
+  // not, we only need one.
+  // Set our maximum languages to check.
+  $max_languages = 1;
+  // First we get our url parameters.
+  $parameters = drupal_get_query_parameters();
+  // Check if the 2nd-language parameter is set.
+  if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+    $max_languages = 2;
+  }
+  // Get the maximum extra languages.
+  $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
+  // Add our current site language to the array.
+  if (!in_array($language->language, $fallback_languages)) {
+    array_unshift($fallback_languages, $language->language);
+  }
+  else {
+    // Our default language is in the array but might not be the first. So we
+    // move it.
+    // Get the key of the language.
+    $main_language_key = array_search($language->language, $fallback_languages);
+    // Store it temporary.
+    $prepend_language = $fallback_languages[$main_language_key];
+    // Remove the item.
+    unset($fallback_languages[$main_language_key]);
+    // Then add it to the front.
+    array_unshift($fallback_languages, $prepend_language);
+  }
+
+  return $fallback_languages;
 }
