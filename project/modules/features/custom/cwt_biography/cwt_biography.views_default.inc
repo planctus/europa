@@ -1245,7 +1245,9 @@ function cwt_biography_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Biography';
   $handler->display->display_options['css_class'] = 'listing--no-border';
-  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'Show timeline';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1265,15 +1267,6 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '[field_biography_cv]';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
-  $handler->display->display_options['footer']['area_1']['table'] = 'views';
-  $handler->display->display_options['footer']['area_1']['field'] = 'area';
-  $handler->display->display_options['footer']['area_1']['label'] = 'show_more_button';
-  $handler->display->display_options['footer']['area_1']['content'] = '<div class="timeline">
-<button type="button" class="btn btn-ctn btn-time-line btn-show-more"><span>Show timeline</span></button>
-</div>';
-  $handler->display->display_options['footer']['area_1']['format'] = 'full_html';
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
@@ -1368,6 +1361,7 @@ function cwt_biography_views_default_views() {
         <li>[field_timeline_date]</li>
       </ul>
     </div>
+</div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Contextual filter: Content: Nid */
@@ -1399,6 +1393,15 @@ function cwt_biography_views_default_views() {
     'biography' => 'biography',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+
+  /* Display: Biography Timeline */
+  $handler = $view->new_display('block', 'Biography Timeline', 'block');
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'Show timeline';
 
   /* Display: Biography Timeline */
   $handler = $view->new_display('block', 'Biography Timeline', 'block');
