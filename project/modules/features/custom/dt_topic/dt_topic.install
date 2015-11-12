@@ -99,3 +99,10 @@ function dt_topic_update_7107() {
     field_delete_field($field_base);
   }
 }
+
+/**
+ * NEXTEUROPA-6077: Changing layout of topic specific tasks and topic top task
+ */
+function dt_topic_update_7108() {
+  features_revert_module('dt_topic');
+}

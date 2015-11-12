@@ -42,7 +42,7 @@ function cwt_team_fe_nodequeue_export_fields() {
   $nodequeues = array();
 
   // Exported nodequeues: biographies_by_project_teams
-  $nodequeues['biographies_by_project_teams'] = (object) array(
+  $nodequeues['biographies_by_project_teams'] = (array) array(
     'name' => 'biographies_by_project_teams',
     'title' => 'Biographies by Project Teams',
     'subqueue_title' => 'Team %subqueue',
@@ -65,7 +65,7 @@ function cwt_team_fe_nodequeue_export_fields() {
   );
 
   // Exported nodequeues: team_members_by_hierarchy
-  $nodequeues['team_members_by_hierarchy'] = (object) array(
+  $nodequeues['team_members_by_hierarchy'] = (array) array(
     'name' => 'team_members_by_hierarchy',
     'title' => 'Team members by hierarchy',
     'subqueue_title' => '',
