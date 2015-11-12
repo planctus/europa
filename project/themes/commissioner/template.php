@@ -73,6 +73,11 @@ function commissioner_preprocess_views_view(&$variables) {
           format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
       }
 
+      // If there is a suffix add it here.
+      if (isset($view->items_count['#suffix'])) {
+        $items_count .= ' ' . $view->items_count['#suffix'];
+      }
+
       $variables['items_count'] = $items_count;
     }
   }

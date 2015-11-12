@@ -862,6 +862,7 @@ function cwt_team_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = '[field_team_block_title]';
+  $handler->display->display_options['css_class'] = 'listing--column-left';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
@@ -872,7 +873,10 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--person';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = 'listing--column-left';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* Relationship: Content: Title (field_biography_role) (translated) */
@@ -1013,17 +1017,18 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_biography_portrait]
-<div class="member-details-text">
-[name_field_1] [field_gender]
-[field_biography_last_name]
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[cwt_team_source_language_path]" class="listing__item-link is-internal">
+  <div class="listing__column-second">
+[field_biography_portrait]
+ </div>
+ <div class="listing__column-main">
+        <div class="listing__meta">[field_gender]</div>
+<h3 class="listing__title">[field_biography_last_name]</h3>
+<div>[field_biography_tagline]</div>
 </div>
-<div class="member-details-text-2">[field_biography_tagline]</div>';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+</a>';
   $handler->display->display_options['fields']['nothing']['alter']['path'] = '[cwt_team_source_language_path]';
   $handler->display->display_options['fields']['nothing']['alter']['alt'] = '[field_biography_last_name]';
-  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
-  $handler->display->display_options['fields']['nothing']['element_class'] = 'member-details';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';

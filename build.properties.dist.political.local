@@ -19,5 +19,3 @@ drupal.modules = dt_core_pol
 
 # Project folder in MULTISITE SVN
 phing.project.svn =
-# Project branch in AC
-acquia.repo.project.branch = political
