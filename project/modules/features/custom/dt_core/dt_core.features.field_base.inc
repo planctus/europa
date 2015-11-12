@@ -509,6 +509,30 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_core_next_steps'
+  $field_bases['field_core_next_steps'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_next_steps',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'when_timeframe' => array(
+        0 => 'when_timeframe',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'dt_policy_next_step',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'rows' => 5,
+    ),
+    'translatable' => 1,
+    'type' => 'dt_policy_next_step_field',
+  );
+
   // Exported field_base: 'field_core_objective'
   $field_bases['field_core_objective'] = array(
     'active' => 1,
@@ -581,50 +605,6 @@ function dt_core_field_default_field_bases() {
           'priority' => 'priority',
           'publication' => 'publication',
           'topic' => 'topic',
-        ),
-      ),
-      'target_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_core_publications'
-  $field_bases['field_core_publications'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_publications',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'publication' => 'publication',
         ),
       ),
       'target_type' => 'node',
@@ -783,30 +763,6 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_core_next_steps'
-  $field_bases['field_core_next_steps'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_next_steps',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'when_timeframe' => array(
-        0 => 'when_timeframe',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'dt_policy_next_step',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'rows' => 5,
-    ),
-    'translatable' => 1,
-    'type' => 'dt_policy_next_step_field',
   );
 
   return $field_bases;
