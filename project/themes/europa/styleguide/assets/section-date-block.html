@@ -63,6 +63,8 @@
           <span class="kss-nav__ref">5</span
           ><span class="kss-nav__name">Date Block</span>
         </a>
+        <ul class="kss-nav__menu-child">
+        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-datepicker.html">
@@ -201,32 +203,6 @@
           <span class="kss-nav__ref">29</span
           ><span class="kss-nav__name">Typography</span>
         </a>
-        <ul class="kss-nav__menu-child">
-            <li class="kss-nav__menu-item">
-              <a href="section-text.html#kssref-text-blockquote">
-                <span class="kss-nav__ref">29.1</span
-                ><span class="kss-nav__name">Blockquote</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-text.html#kssref-text-link">
-                <span class="kss-nav__ref">29.2</span
-                ><span class="kss-nav__name">Link</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-text.html#kssref-text-lists">
-                <span class="kss-nav__ref">29.3</span
-                ><span class="kss-nav__name">Lists</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
-              <a href="section-text.html#kssref-text-paragraphs">
-                <span class="kss-nav__ref">29.4</span
-                ><span class="kss-nav__name">Paragraphs</span>
-              </a>
-            </li>
-        </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a href="section-timeline.html">
@@ -245,34 +221,22 @@
 </div>
 <article role="main" class="kss-main">
 
-      <div     id="kssref-text" class="kss-section kss-section--depth-1">
+      <div     id="kssref-date-block" class="kss-section kss-section--depth-1">
 
     <div class="kss-style">
       <h1 class="kss-title kss-title--level-1">
-        <a class="kss-title__permalink" href="#kssref-text">
-          <span class="kss-title__ref">29</span
-          >Typography
+        <a class="kss-title__permalink" href="#kssref-date-block">
+          <span class="kss-title__ref">5</span
+          >Date Block
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
       </h1>
 
 
-    </div>
-
+      <div class="kss-description">
+        <p>Date components</p>
 
       </div>
-      <section id="kssref-text-blockquote" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text-blockquote">
-          <span class="kss-title__ref">29.1</span
-          >Blockquote
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
     </div>
 
       <div class="kss-modifier__wrapper">
@@ -280,131 +244,29 @@
           Example
         </div>
         <div class="kss-modifier__example">
-          <blockquote><p>Blockquote element</p></blockquote>
+          <div class="clearfix"> <!-- only required for the styleguide -->
+  <div class="date-block">
+    <span class="date-block__day-text">Monday</span>
+    <span class="date-block__day">12</span>
+    <span class="date-block__month">Oct</span>
+  </div>
+</div>
 
         </div>
       </div>
 
       <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;blockquote&gt;&lt;p&gt;Blockquote element&lt;/p&gt;&lt;/blockquote&gt;
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;clearfix&quot;&gt; &lt;!-- only required for the styleguide --&gt;
+  &lt;div class=&quot;date-block&quot;&gt;
+    &lt;span class=&quot;date-block__day-text&quot;&gt;Monday&lt;/span&gt;
+    &lt;span class=&quot;date-block__day&quot;&gt;12&lt;/span&gt;
+    &lt;span class=&quot;date-block__month&quot;&gt;Oct&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
       </div>
 
-      </section>
-      <section id="kssref-text-link" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text-link">
-          <span class="kss-title__ref">29.2</span
-          >Link
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <a href="href" class=[modifier class]>Link element</a>
-<a href="http">External link</a>
-
-        </div>
       </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;a href=&quot;href&quot; class=[modifier class]&gt;Link element&lt;/a&gt;
-&lt;a href=&quot;http&quot;&gt;External link&lt;/a&gt;
-</code></pre>
-      </div>
-
-      </section>
-      <section id="kssref-text-lists" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text-lists">
-          <span class="kss-title__ref">29.3</span
-          >Lists
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</ul>
-
-<ol>
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</ol>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;Item 2&lt;/li&gt;
-  &lt;li&gt;Item 3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;Item 2&lt;/li&gt;
-  &lt;li&gt;Item 3&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
-      </div>
-
-      </section>
-      <section id="kssref-text-paragraphs" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-text-paragraphs">
-          <span class="kss-title__ref">29.4</span
-          >Paragraphs
-          <span class="kss-title__permalink-hash">#permalink</span>
-        </a>
-      </h2>
-
-
-    </div>
-
-      <div class="kss-modifier__wrapper">
-        <div class="kss-modifier__heading kss-style">
-          Example
-        </div>
-        <div class="kss-modifier__example">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dictum mi. Donec leo ipsum, dictum quis libero vitae, aliquet fermentum tellus. Curabitur vitae enim commodo diam scelerisque commodo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod metus est, a sollicitudin lacus suscipit et. Nunc dignissim tincidunt urna, eget convallis diam facilisis at.</p>
-<p>Ac tincidunt vut nisi placerat mattis turpis, cum lacus. Urna elementum tortor enim montes, dignissim ac dapibus est, aliquet rhoncus non pid sagittis platea ridiculus, integer. Montes turpis, velit montes? Aenean, et in massa magnis adipiscing, natoque enim! Ac, scelerisque. Dignissim? Mauris? Nincidunt amet, lacus enim eros penatibus, cum hac?</p>
-
-        </div>
-      </div>
-
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at dictum mi. Donec leo ipsum, dictum quis libero vitae, aliquet fermentum tellus. Curabitur vitae enim commodo diam scelerisque commodo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam euismod metus est, a sollicitudin lacus suscipit et. Nunc dignissim tincidunt urna, eget convallis diam facilisis at.&lt;/p&gt;
-&lt;p&gt;Ac tincidunt vut nisi placerat mattis turpis, cum lacus. Urna elementum tortor enim montes, dignissim ac dapibus est, aliquet rhoncus non pid sagittis platea ridiculus, integer. Montes turpis, velit montes? Aenean, et in massa magnis adipiscing, natoque enim! Ac, scelerisque. Dignissim? Mauris? Nincidunt amet, lacus enim eros penatibus, cum hac?&lt;/p&gt;
-</code></pre>
-      </div>
-
-      </section>
 </article>
 
 <!-- SCRIPTS -->

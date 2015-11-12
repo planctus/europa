@@ -29,7 +29,7 @@ function cwt_activities_context_default_contexts() {
         'views--exp-agenda-list' => array(
           'module' => 'views',
           'delta' => '-exp-agenda-list',
-          'region' => 'sidebar_left',
+          'region' => 'sidebar_first',
           'weight' => '-10',
         ),
       ),
