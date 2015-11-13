@@ -66,5 +66,5 @@ function nexteuropa_file_update_7103() {
   features_revert_module('nexteuropa_file');
 
   // Copy value after making it translatable.
-  _dt_core_fix_field_language('field_core_file');
+//  _dt_core_fix_field_language('field_core_file');
 }

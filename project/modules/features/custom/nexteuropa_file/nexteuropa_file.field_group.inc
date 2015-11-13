@@ -49,8 +49,8 @@ function nexteuropa_file_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '-3',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'og_group_ref',
       2 => 'scheduler_settings',
       3 => 'language',
     ),
@@ -81,7 +81,7 @@ function nexteuropa_file_field_group_info() {
     'children' => array(
       0 => 'field_core_file',
       1 => 'field_core_description',
-      2 => 'title',
+      2 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

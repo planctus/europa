@@ -83,7 +83,7 @@ function nexteuropa_file_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => -4,
     ),
   );
 
@@ -153,7 +153,7 @@ function nexteuropa_file_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
-      'weight' => 3,
+      'weight' => -3,
     ),
   );
 
