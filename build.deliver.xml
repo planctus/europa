@@ -7,6 +7,15 @@
     <property name="acquia.branch" value="master" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
 
+    <if>
+      <not>
+        <available file="${acquia.repo}" type="dir" />
+      </not>
+      <then>
+        <mkdir dir="${acquia.repo}" />
+        <exec dir="${acquia.repo}" command="git clone ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git"></exec>
+      </then>
+    </if>
     <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
     <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
     <exec dir="${acquia.repo}" command="git pull --tags"></exec>
@@ -25,7 +34,7 @@
     </delete>
     <echo msg="Copy files to acquia-cloud/docroot." />
     <copy todir="${acquia.docroot}">
-        <fileset dir="${distro.code.dir}">
+        <fileset dir="${platform.dist.dir}">
           <patternset>
             <exclude name="**/settings.php"/>
             <exclude name="**/sites.php/"/>

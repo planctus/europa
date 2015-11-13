@@ -136,6 +136,12 @@
         </if>
     </target>
 
+    <!--
+          Create unique filename from configuration so we can be sure to
+          have the correct version.
+      -->
+    <property name="platform.package.tarball.versioned" value="${phing.project.tmp.dir}/deploy-package-${platform.package.reference}.tar.gz" override="true" />
+
     <!-- Download the platform. -->
     <target name="download-platform">
         <!--
@@ -144,13 +150,13 @@
          -->
         <if>
             <not>
-                <available file="${platform.package.tarball}" type="file" />
+                <available file="${platform.package.tarball.versioned}" type="file" />
             </not>
             <then>
                 <!-- Create the destination directory if it doesn't exist. -->
                 <mkdir dir="${platform.package.destination}" />
                 <echo msg="Starting to download the platform. Depending on your connection this can take between 5-30 minutes. Go get some coffee." />
-                <echo msg="This file will only be downloaded once and will be cached in ${platform.package.tarball}." />
+                <echo msg="This file will only be downloaded once and will be cached in ${platform.package.tarball.versioned}." />
                 <echo msg="You can delete this cached file whenever you want to download a new version of the platform." />
                 <continuousphp-config token="${platform.package.token}" />
                 <continuousphp-package
@@ -161,9 +167,10 @@
                     property="platform.package.property"
                 />
                 <echo msg="Downloaded platform package reference ${platform.package.property}" />
+                <move file="${platform.package.tarball}" tofile="${platform.package.tarball.versioned}" overwrite="true"/>
             </then>
             <else>
-                <echo msg="Skipping platform download, it is already downloaded at ${platform.package.tarball}. Delete this file if you want to download the latest version." />
+                <echo msg="Skipping platform download, it is already downloaded at ${platform.package.tarball.versioned}. Delete this file if you want to download the latest version." />
             </else>
         </if>
     </target>
@@ -198,9 +205,9 @@
                     dir="${project.basedir}"
                     passthru="true"
                 />
-                <echo msg='tar xzf "${platform.package.tarball}" -C "${platform.package.destination}/extract"' />
+                <echo msg='tar xzf "${platform.package.tarball.versioned}" -C "${platform.package.destination}/extract"' />
                 <exec
-                    command='tar xzf "${platform.package.tarball}" -C "${platform.package.destination}/extract"'
+                    command='tar xzf "${platform.package.tarball.versioned}" -C "${platform.package.destination}/extract"'
                     dir="${project.basedir}"
                     passthru="true"
                     checkreturn="true"
@@ -234,7 +241,7 @@
                     downloading only the actual build folder.
                  -->
                 <delete dir="${platform.package.destination}/extract" includeemptydirs="true" failonerror="false" quiet="true" />
-                <untar file="${platform.package.tarball}" todir="${platform.package.destination}/extract" />
+                <untar file="${platform.package.tarball.versioned}" todir="${platform.package.destination}/extract" />
                 <move includeemptydirs="true" todir="${platform.build.dir}">
                   <fileset dir="${platform.package.destination}/extract/build"/>
                 </move>
@@ -245,10 +252,6 @@
 
     <!-- Copy subsite resources into the build folder. -->
     <target name="copy-subsite-resources">
-        <echo msg='${platform.build}' />
-        <echo msg='${platform.build.sites.dir}' />
-        <echo msg='${platform.build.profiles.dir}' />
-        <echo msg='${platform.build.subsite.modules.custom.dir}' />
         <!-- Custom modules. -->
         <copy todir="${platform.build.subsite.modules.custom.dir}" overwrite="true">
           <fileset dir="${subsite.resources.modules.dir}"/>
