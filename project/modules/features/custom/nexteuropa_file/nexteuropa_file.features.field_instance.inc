@@ -124,7 +124,7 @@ function nexteuropa_file_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'entity_translation_sync' => 1,
+      'entity_translation_sync' => 0,
       'file_directory' => '',
       'file_extensions' => 'odt ods odp pdf svg mp3 mp4 png jpg jpeg gif doc docx xls xlsx zip rar',
       'max_filesize' => '',
