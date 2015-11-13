@@ -7,6 +7,7 @@ project = dt_person
 dependencies[] = auto_entitylabel
 dependencies[] = dt_contact
 dependencies[] = dt_core
+dependencies[] = migrate
 dependencies[] = nexteuropa_legacy_link
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1

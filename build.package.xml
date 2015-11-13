@@ -250,6 +250,15 @@
         </if>
     </target>
 
+    <!-- Manipulate settings.php file. -->
+    <target name="create-settings.php">
+      <property name="purge" value="false" />
+      <echo msg="Copying default.settings.php file to settings.php..." />
+      <copy file="${platform.build.settings.dir}/default.settings.php" tofile="${subsite.resources.lib.dir}/settings.php" haltonerror="false" overwrite="${purge}"/>
+      <chmod file="${subsite.resources.lib.dir}/settings.php" mode="0775" failonerror="true" />
+      <symlink link="${platform.build.settings.dir}/settings.php" target="${subsite.resources.lib.dir}/settings.php" />
+    </target>
+
     <!-- Copy subsite resources into the build folder. -->
     <target name="copy-subsite-resources">
         <!-- Custom modules. -->
@@ -298,7 +307,7 @@
     <target
         name="build-dev"
         description="Build a local development version of the subsite."
-        depends="install-build-dependencies, delete-platform, download-platform, unpack-platform, link-subsite-resources, make-subsite, install-subsite-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules" />
+        depends="install-build-dependencies, delete-platform, download-platform, unpack-platform, link-subsite-resources, make-subsite, create-settings.php, install-subsite-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules" />
 
     <target
         name="build-dist"

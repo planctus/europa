@@ -3,7 +3,8 @@
 <project name="Custom deployment scripts" default="deliver">
 
   <target name="deliver" description="Deliver code to Acquia repository">
-    <property name="acquia.repo" value="${phing.project.tmp.dir}/acquia-cloud" />
+    <property name="acquia.repo.dir" value="acquia-cloud" />
+    <property name="acquia.repo" value="${phing.project.tmp.dir}/${acquia.repo.dir}" />
     <property name="acquia.branch" value="master" />
     <property name="acquia.docroot" value="${acquia.repo}/docroot" />
 
@@ -13,7 +14,8 @@
       </not>
       <then>
         <mkdir dir="${acquia.repo}" />
-        <exec dir="${acquia.repo}" command="git clone ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git"></exec>
+        <exec dir="${phing.project.tmp.dir}" command="git clone ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git ${acquia.repo.dir}"></exec>
+        <echo msg="acquia-cloud repository cloned to '${acquia.repo}'" />
       </then>
     </if>
     <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
@@ -54,7 +56,7 @@
 
     <!-- Create Tag -->
     <tstamp>
-      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="nl_NL"/>
+      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="en_EN"/>
     </tstamp>
     <echo msg="Creating tag: ${TAGDATE}" />
     <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
