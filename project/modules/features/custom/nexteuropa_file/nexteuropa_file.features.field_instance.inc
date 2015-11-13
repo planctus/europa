@@ -124,7 +124,7 @@ function nexteuropa_file_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'entity_translation_sync' => FALSE,
+      'entity_translation_sync' => 1,
       'file_directory' => '',
       'file_extensions' => 'odt ods odp pdf svg mp3 mp4 png jpg jpeg gif doc docx xls xlsx zip rar',
       'max_filesize' => '',
@@ -135,9 +135,11 @@ function nexteuropa_file_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'avportal' => 0,
           'node' => 0,
           'private' => 'private',
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 'audio',
@@ -148,7 +150,9 @@ function nexteuropa_file_field_default_field_instances() {
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
           'upload' => 'upload',
+          'youtube' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
