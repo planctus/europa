@@ -9360,6 +9360,9 @@ Styleguide timeline
   .btn.btn-time-line:after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle:after {
     content: '\e616'; }
 
+.timeline--nopadding {
+  padding-top: 0.5em; }
+
 .view-biography-timeline .view-footer {
   margin-top: 1em !important; }
 

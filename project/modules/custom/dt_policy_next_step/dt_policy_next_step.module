@@ -145,8 +145,33 @@ function dt_policy_next_step_field_formatter_info() {
     'dt_policy_next_step_formatter_default' => array(
       'label' => 'Next step format',
       'field types' => array('dt_policy_next_step_field'),
+      'settings' => array(
+        'modifier' => '',
+      ),
     ),
   );
+}
+
+/**
+ * Add the field formatter settings form.
+ */
+function dt_policy_next_step_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = array();
+
+  $element['modifier'] = array(
+    '#title' => t('Modifier'),
+    '#type' => 'select',
+    '#options' => array(
+      '' => t('None'),
+      'timeline--nopadding' => t('No padding'),
+    ),
+    '#default_value' => $settings['modifier'],
+  );
+
+  return $element;
 }
 
 /**
@@ -155,7 +180,8 @@ function dt_policy_next_step_field_formatter_info() {
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
   if (!empty($items)) {
-    $elements['#prefix'] = '<div class="timeline">';
+    $modifier = !empty($display['settings']['modifier']) ? ' ' . $display['settings']['modifier'] : '';
+    $elements['#prefix'] = '<div class="timeline' . $modifier . '">';
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {
       $item = _dt_policy_next_step_sanitize($item, $langcode);
@@ -205,7 +231,11 @@ function _dt_policy_next_step_sanitize($items, $langcode) {
 function dt_policy_next_step_theme() {
   return array(
     'dt_policy_next_step_formatter_default' => array(
-      'variables' => array('element' => NULL, 'field' => NULL),
+      'variables' => array(
+        'element' => NULL,
+        'field' => NULL,
+        'modifiers' => array(),
+      ),
     ),
   );
 }
