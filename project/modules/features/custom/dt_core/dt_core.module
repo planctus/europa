@@ -1144,27 +1144,3 @@ function _dt_core_ds_fields_stick_label($field) {
     return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
   }
 }
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * Alters the exposed form to include some additional logic.
- */
-function dt_core_form_views_exposed_form_alter(&$form, &$form_state) {
-  if (!$form_state['submitted']) {
-    // Hide the button, but only when js is available.
-    if (isset($form['reset']) && !empty($form['reset'])) {
-      $form['reset']['#attributes']['class'][] = 'js-hide';
-      $form['reset']['#attributes']['class'][] = 'showonsubmit';
-    }
-  }
-}
-
-/**
- * Implements hook_ajax_render_alter().
- *
- * Hide the showonsubmit button after the ajax request.
- */
-function dt_core_ajax_render_alter(&$commands) {
-  $commands[] = ajax_command_invoke('.showonsubmit', 'show');
-}

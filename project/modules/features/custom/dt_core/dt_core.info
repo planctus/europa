@@ -49,6 +49,7 @@ dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = variable_realm
 dependencies[] = weight
+dependencies[] = dt_shared_functions
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
