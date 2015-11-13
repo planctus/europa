@@ -6,6 +6,7 @@
 
 include_once 'cwt_core.features.inc';
 include_once 'inc/cwt_core.block.inc';
+include_once 'inc/cwt_core.ds_fields.inc';
 
 /**
  * Implements hook_boot().
@@ -49,6 +50,7 @@ function cwt_core_init() {
  * Implements hook_form_BASE_FORM_ID_alter().
  *
  * All new nodes should default to English.
+ *
  * @see https://webgate.ec.europa.eu/CITnet/jira/browse/CWT-267
  */
 function cwt_core_form_node_form_alter(&$form, &$form_state, $form_id) {
@@ -88,7 +90,7 @@ function cwt_core_views_post_render(&$view, &$output, &$cache) {
  * Returns a list of links to the translations of the node.
  *
  * @param object $node
- *   defaults to NULL
+ *   Defaults to NULL.
  *
  * @return array|bool
  *   Render array of the list or FALSE
@@ -414,7 +416,8 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       // first iteration this array will be array('blog'), the second
       // (and last in that case) the array will be array('blog','article').
       $segment_url_arr[] = $alias_arr[$idx_0];
-      // String with the potential-path of the segment being processed (e.g. 'blog/article').
+      // String with the potential-path of the segment being processed
+      // (e.g. 'blog/article').
       $segment_url = implode('/', $segment_url_arr);
 
       // Jump to the next segment if this url is configured to be excluded.
@@ -430,7 +433,7 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       $segment_valid_path = drupal_valid_path($segment_normal_path);
       // Get the segment's raw text from the URL.
       $segment_text = $alias_arr[$idx_0];
-      // Normalized segment's text (e.g. 'Blog');
+      // Normalized segment's text (e.g. 'Blog').
       $segment_title = _easy_breadcrumb_obtain_segment_title($segment_normal_path,
         $segment_valid_path, $segment_text);
 
@@ -444,7 +447,8 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
 
     // Adds the page's title to the breadcrumb.
     if ($include_page_title_segment) {
-      // Marks the page's-title-segment with an identifier class (useful for CSS).
+      // Marks the page's-title-segment with an identifier class
+      // (useful for CSS).
       $segments_classes = array(
         $segments_class,
         'breadcrumb-segment-title',
@@ -547,7 +551,7 @@ function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
       // - News items linked to a single editorial section:
       //   {team term}/{editorial section}/announcements/{node title}
       // - @todo: News items linked to multiple editorial sections:
-      //   {team term}/announcements/{node title}
+      //   {team term}/announcements/{node title}.
       case 'aggregated_news':
         // Check if the news item is linked to an editorial section.
         /** @var EntityDrupalWrapper $editorial_sections */
@@ -571,7 +575,6 @@ function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
           // @see cwt_blogs_pathauto_alias_alter()
           // @todo: Add a URL alias field to the team term entity so we can use
           // real data instead of relying on tricks.
-
           // If the field has multiple values force use first editorial section.
           // Field is already however it is not used as such.
           // Fix for NEXTEUROPA-2309.
@@ -589,7 +592,7 @@ function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
         break;
 
       // Define pathauto pattern for Custom Pages
-      // {team term}/{editorial section}/{node title}
+      // {team term}/{editorial section}/{node title}.
       case 'custom_page':
         // Check if the news item is linked to an editorial section.
         /** @var EntityDrupalWrapper $editorial_sections */
@@ -628,7 +631,8 @@ function cwt_core_entity_update($entity, $type) {
         _pathauto_set_alias(array(
             'source' => $uri['path'],
             'alias' => $pathauto_alias,
-            'language' => $langcode),
+            'language' => $langcode,
+          ),
           $existing_alias);
       }
     }
@@ -916,7 +920,8 @@ function _cwt_core_custom_page_title($page_variables) {
             'display' => 'header',
             'arguments' => NULL,
           );
-        } else {
+        }
+        else {
           $variables['line_2'] = $blog_post->title->value();
         }
         break;

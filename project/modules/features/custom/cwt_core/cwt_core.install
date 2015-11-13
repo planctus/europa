@@ -456,7 +456,6 @@ function cwt_core_update_7131() {
   );
   module_enable($modules_to_enable);
 }
-
 /**
  * Enable the dt_language_selector_site_popup module.
  */
@@ -469,4 +468,14 @@ function cwt_core_update_7132() {
  */
 function cwt_core_update_7133() {
   features_revert_module('cwt_biography');
+}
+
+/**
+ * Enable nexteuropa display suite fields.
+ */
+function cwt_core_update_7134() {
+  $modules_to_enable = array(
+    'nexteuropa_ds_fields',
+  );
+  module_enable($modules_to_enable);
 }

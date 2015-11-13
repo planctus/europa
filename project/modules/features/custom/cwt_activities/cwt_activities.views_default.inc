@@ -32,9 +32,19 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'listing-item';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = ' listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_start_end_date|field_start_end_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -389,33 +399,24 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'listing-item';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--agenda listing--column-left';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_start_end_date|field_start_end_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="result-count pull-left"><p>@total items[filter_info]</p></div>';
-  /* No results behavior: View header */
-  $handler->display->display_options['empty']['area_1']['id'] = 'area_1';
-  $handler->display->display_options['empty']['area_1']['table'] = 'views';
-  $handler->display->display_options['empty']['area_1']['field'] = 'area';
-  $handler->display->display_options['empty']['area_1']['ui_name'] = 'View header';
-  $handler->display->display_options['empty']['area_1']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_1']['content'] = '<div class="view-header">
-<div class="result-count pull-left"><p>0 items</p></div>
-</div>';
-  $handler->display->display_options['empty']['area_1']['format'] = 'full_html';
-  $handler->display->display_options['empty']['area_1']['tokenize'] = TRUE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<p>There are no matching agenda items.</p>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Start/End date */
   $handler->display->display_options['fields']['field_start_end_date']['id'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['table'] = 'field_data_field_start_end_date';
@@ -523,11 +524,13 @@ function cwt_activities_views_default_views() {
     3 => 0,
     4 => 0,
     5 => 0,
+    33 => 0,
     7 => 0,
     6 => 0,
     8 => 0,
     9 => 0,
     10 => 0,
+    34 => 0,
     11 => 0,
     12 => 0,
     13 => 0,
@@ -560,6 +563,7 @@ function cwt_activities_views_default_views() {
     3 => array(),
   );
   $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter']['default_to_date'] = '+1 year';
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_start_end_date.field_start_end_date_value' => 'field_data_field_start_end_date.field_start_end_date_value',
     'field_data_field_start_end_date.field_start_end_date_value2' => 'field_data_field_start_end_date.field_start_end_date_value2',
@@ -629,6 +633,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['path'] = 'agenda/%';
   $export['agenda'] = $view;
