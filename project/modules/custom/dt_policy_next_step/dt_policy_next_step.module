@@ -154,7 +154,7 @@ function dt_policy_next_step_field_formatter_info() {
  */
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
-  if(!empty($items)) {
+  if (!empty($items)) {
     $elements['#prefix'] = '<div class="timeline">';
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {
@@ -219,7 +219,7 @@ function theme_dt_policy_next_step_formatter_default($vars) {
   $output .= '<div class="timeline__item">';
   // When/timeframe.
   if (!empty($element['when_timeframe'])) {
-    $output .= '<h4 class="timeline__item-title">' . $element['when_timeframe'] . '</h4>';
+    $output .= '<div class="timeline__item-title">' . $element['when_timeframe'] . '</div>';
   }
   if (!empty($element['steps_in_bullets'])) {
     $output .= '<div class="timeline__text">' . $element['steps_in_bullets'] . '</div>';
