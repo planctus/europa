@@ -245,7 +245,51 @@
 
     <!-- Copy subsite resources into the build folder. -->
     <target name="copy-subsite-resources">
-        <echo msg="TODO: COPY SUBSITE RESOURCES." />
+        <echo msg='${platform.build}' />
+        <echo msg='${platform.build.sites.dir}' />
+        <echo msg='${platform.build.profiles.dir}' />
+        <echo msg='${platform.build.subsite.modules.custom.dir}' />
+        <!-- Custom modules. -->
+        <copy todir="${platform.build.subsite.modules.custom.dir}" overwrite="true">
+          <fileset dir="${subsite.resources.modules.dir}"/>
+        </copy>
+
+        <!-- Features. -->
+        <copy todir="${platform.build.subsite.modules.features.dir}" overwrite="true">
+          <fileset dir="${subsite.resources.features.dir}"/>
+        </copy>
+
+        <!-- Themes -->
+        <copy todir="${platform.build.subsite.themes.dir}" overwrite="true">
+          <fileset dir="${subsite.resources.themes.dir}"/>
+        </copy>
+
+        <!-- PSR-4 -->
+        <copy todir="${platform.build.subsite.source.dir}" overwrite="true">
+          <fileset dir="${subsite.resources.source.dir}"/>
+        </copy>
+
+        <!-- Composer. -->
+        <copy file="${subsite.resources.composer.json}" tofile="${platform.build.subsite.composer.json}" overwrite="true" />
+        <copy file="${subsite.resources.composer.lock}" tofile="${platform.build.subsite.composer.lock}" overwrite="true" />
+    </target>
+
+    <!-- Re-initialize variables for dist build. -->
+    <target name="init-dist">
+      <property name="platform.build.dir" value="${platform.dist.dir}" override="true" />
+      <property name="platform.build.sites.dir" value="${platform.build.dir}/sites" override="true" />
+      <property name="platform.build.settings.dir" value="${platform.build.sites.dir}/default" override="true" />
+      <property name="platform.build.files.dir" value="${platform.build.settings.dir}/files" override="true" />
+      <property name="platform.build.profiles.dir" value="${platform.build.dir}/profiles" override="true" />
+      <property name="platform.build.profile.dir" value="${platform.build.profiles.dir}/${platform.profile.name}" override="true" />
+      <property name="platform.build.subsite.dir" value="${platform.build.sites.dir}/${drupal.site.name}" override="true" />
+      <property name="platform.build.subsite.libraries.dir" value="${platform.build.subsite.dir}/libraries" override="true" />
+      <property name="platform.build.subsite.modules.dir" value="${platform.build.subsite.dir}/modules" override="true" />
+      <property name="platform.build.subsite.modules.contrib.dir" value="${platform.build.subsite.modules.dir}/contrib" override="true" />
+      <property name="platform.build.subsite.modules.custom.dir" value="${platform.build.subsite.modules.dir}/custom" override="true" />
+      <property name="platform.build.subsite.modules.features.dir" value="${platform.build.subsite.modules.dir}/features" override="true" />
+      <property name="platform.build.subsite.source.dir" value="${platform.build.subsite.dir}/src" override="true" />
+      <property name="platform.build.subsite.themes.dir" value="${platform.build.subsite.dir}/themes" override="true" />
     </target>
 
     <target
@@ -256,6 +300,6 @@
     <target
         name="build-dist"
         description="Build a version of the subsite intended to distribute as a release package."
-        depends="install-build-dependencies, delete-platform, download-platform, unpack-platform, make-subsite, copy-subsite-resources" />
+        depends="install-build-dependencies, init-dist, delete-platform, download-platform, unpack-platform, make-subsite, copy-subsite-resources" />
 
 </project>

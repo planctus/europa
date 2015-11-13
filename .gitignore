@@ -18,6 +18,6 @@ tests/behat.yml
 # Ignore build artifacts.
 bin/
 build/
-platform/
 tmp/
 vendor/
+dist/

@@ -106,4 +106,7 @@
             description="Provision a stack on AWS"
             depends="setup-aws, run-stack, setup-deployment-group" />
 
+    <!-- Custom project specific deployment targets. -->
+    <import file="build.deliver.xml" />
+
 </project>
