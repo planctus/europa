@@ -38,3 +38,42 @@ function information_preprocess_field(&$variables) {
       break;
   }
 }
+
+/**
+ * Returns the path to the language specific logo.
+ *
+ * @param string $langcode
+ *   Optional language code for the logo. Defaults to the current language.
+ *
+ * @return string
+ *   The path to the logo in the given language.
+ */
+function information_logo_path($langcode = NULL) {
+  if (!$langcode) {
+    global $language;
+    $langcode = $language->language;
+  }
+
+  $logo_folder = path_to_theme() . '/images/logo/';
+  $language_logo_filename = 'logo_' . $langcode . '.gif';
+  $default_logo_filename = 'logo.gif';
+
+  if (file_exists($logo_folder . $language_logo_filename)) {
+    return base_path() . $logo_folder . $language_logo_filename;
+  }
+  else {
+    return base_path() . $logo_folder . $default_logo_filename;
+  }
+}
+
+/**
+ * Implements template_preprocess_html().
+ */
+function information_preprocess_html(&$vars) {
+  drupal_add_css(path_to_theme() . '/css/ie8.css', array(
+    'group' => CSS_THEME,
+    'browsers' => array('IE' => 'IE 8', '!IE' => FALSE),
+    'preprocess' => FALSE,
+  ));
+  $vars['head_title'] = _commissioner_meta_title();
+}

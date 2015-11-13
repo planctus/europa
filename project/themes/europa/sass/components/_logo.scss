@@ -4,6 +4,31 @@
 //
 // Markup: html/logo.html
 //
+// .logo--bg - Bulgarian
+// .logo--cz - Czech
+// .logo--da - Danish
+// .logo--de - German
+// .logo--et - Estonian
+// .logo--el - Greek
+// .logo--en - English
+// .logo--es - Spanish
+// .logo--fr - French
+// .logo--ga - Irish/Gaeilge
+// .logo--hr - Croatian
+// .logo--it - Italian
+// .logo--lv - Latvian
+// .logo--lt - Lithuanian
+// .logo--hu - Hungarian
+// .logo--mt - Maltese
+// .logo--nl - Dutch
+// .logo--pl - Polish
+// .logo--pt - Portuguese
+// .logo--ro - Romanian
+// .logo--sk - Slovak
+// .logo--sl - Slovene
+// .logo--fi - Finnish
+// .logo--sv - Swedish
+//
 // Styleguide siteheader.logo
 
 
@@ -17,6 +42,7 @@
   height: 70px;
 
   background: url('../images/svg/logo.svg') no-repeat;
+  @include languages_logo('../images/svg/logo/logo--', '.svg');
 }
 
 .front {
@@ -29,6 +55,7 @@
 
     background: url('../images/svg/logo--big.svg') center center no-repeat;
     background-size: 100%;
+    @include languages_logo('../images/svg/logo/logo--', '.svg');
   }
 
   @include breakpoint(screen-xs-min) {
@@ -52,15 +79,86 @@
   }
 }
 
+// Logo No SVG (small)
+//
+// Ec logo without SVG.
+//
+// Markup: html/logo-no-svg.html
+//
+// .logo--bg - Bulgarian
+// .logo--cs - Czech
+// .logo--da - Danish
+// .logo--de - German
+// .logo--et - Estonian
+// .logo--el - Greek
+// .logo--en - English
+// .logo--es - Spanish
+// .logo--fr - French
+// .logo--ga - Irish/Gaeilge
+// .logo--hr - Croatian
+// .logo--it - Italian
+// .logo--lv - Latvian
+// .logo--lt - Lithuanian
+// .logo--hu - Hungarian
+// .logo--mt - Maltese
+// .logo--nl - Dutch
+// .logo--pl - Polish
+// .logo--pt - Portuguese
+// .logo--ro - Romanian
+// .logo--sk - Slovak
+// .logo--sl - Slovene
+// .logo--fi - Finnish
+// .logo--sv - Swedish
+//
+// Styleguide siteheader.logo-no-svg
+
 .no-svg {
   .logo {
-    background-image: url('../images/png/logo.png');
+    background-image: url('../images/png/logo/logo--en.png');
+    @include languages_logo('../images/png/logo/logo--', '.png');
   }
+}
+
+// Logo Front (big)
+//
+// Ec logo without SVG on the front page.
+//
+// Markup: html/logo-front.html
+//
+// .logo--bg - Bulgarian
+// .logo--cs - Czech
+// .logo--da - Danish
+// .logo--de - German
+// .logo--et - Estonian
+// .logo--el - Greek
+// .logo--en - English
+// .logo--es - Spanish
+// .logo--fr - French
+// .logo--ga - Irish/Gaeilge
+// .logo--hr - Croatian
+// .logo--it - Italian
+// .logo--lv - Latvian
+// .logo--lt - Lithuanian
+// .logo--hu - Hungarian
+// .logo--mt - Maltese
+// .logo--nl - Dutch
+// .logo--pl - Polish
+// .logo--pt - Portuguese
+// .logo--ro - Romanian
+// .logo--sk - Slovak
+// .logo--sl - Slovene
+// .logo--fi - Finnish
+// .logo--sv - Swedish
+//
+// Styleguide siteheader.logo-front
+
+.no-svg {
   .front {
     .logo {
-      background-image: url('../images/png/logo--big.png');
+      background-image: url('../images/png/logo--big/logo--en.png');
       width: 378px;
       height: 193px;
+      @include languages_logo('../images/png/logo--big/logo--', '.png');
     }
   }
 }

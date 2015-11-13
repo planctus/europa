@@ -131,7 +131,6 @@
                 ' data-target="#' + Drupal.settings.europa.exposedBlockId + '"' +
                 ' aria-expanded="true" aria-controls="collapseFilters">' + hideText + '</a>');
                 hideFilterButtons();
-                //$filters.find('.filters__btn-submit').show();
               });
 
               $filters.on('hide.bs.collapse', function(){
