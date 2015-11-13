@@ -661,8 +661,20 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
  * Helper to theme the markup of file translations.
  */
 function _nexteuropa_formatters_attach_translations($item) {
-//  kpr($item);
-  return '<div class="row">' . 'themed list of translations' . '</div>';
+  $reference_id = key($item['node']);
+  $node = node_load($reference_id);
+  $files = $node->field_core_file;
+  kpr($files);
+  $markup = '<div class="row file__translations">';
+  foreach($files as $language => $file) {
+    foreach($file as $file_data) {
+      $markup .= '<div class="col-md-8">';
+      $markup .= 'the ' . $language . ' version of ' . $file_data['filename'];
+      $markup .= '</div>';
+    }
+  }
+  $markup .= '</div>';
+  return $markup;
 }
 
 /**
