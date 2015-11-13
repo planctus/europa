@@ -2,19 +2,21 @@
 
 <project name="Custom deployment scripts" default="deliver">
 
-  <target name="deliver" description="Deliver code to Acquia repository">
-    <property name="acquia.repo.dir" value="acquia-cloud" />
-    <property name="acquia.repo" value="${phing.project.tmp.dir}/${acquia.repo.dir}" />
-    <property name="acquia.branch" value="master" />
-    <property name="acquia.docroot" value="${acquia.repo}/docroot" />
+  <property name="acquia.repo.dir" value="acquia-cloud" />
+  <property name="acquia.repo.url" value="ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git" />
+  <property name="acquia.repo" value="${phing.project.tmp.dir}/${acquia.repo.dir}" />
+  <property name="acquia.dump" value="${phing.project.tmp.dir}/ac-cloud.mysql" />
+  <property name="acquia.branch" value="master" />
+  <property name="acquia.docroot" value="${acquia.repo}/docroot" />
 
+  <target name="deliver" description="Deliver code to Acquia repository">
     <if>
       <not>
         <available file="${acquia.repo}" type="dir" />
       </not>
       <then>
         <mkdir dir="${acquia.repo}" />
-        <exec dir="${phing.project.tmp.dir}" command="git clone ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git ${acquia.repo.dir}"></exec>
+        <exec dir="${phing.project.tmp.dir}" command="git clone ${acquia.repo.url} ${acquia.repo.dir}"></exec>
         <echo msg="acquia-cloud repository cloned to '${acquia.repo}'" />
       </then>
     </if>
@@ -99,27 +101,27 @@
     <if>
       <equals arg1="${confirm}" arg2="y" />
       <then>
-        <drush command="sql-drop" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
         </drush>
         <echo msg="Database deleted." />
         <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
         <if>
           <not>
-            <available file="${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql" type="file" property="available_phing_project_ac_dump"/>
+            <available file="${acquia.dump}" type="file" property="available_phing_project_ac_dump"/>
           </not>
           <then>
             <phingcall target="fetch-ac-db" />
           </then>
         </if>
-        <echo msg="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
-        <exec command="cat ${project.basedir}/${phing.project.dumps.dir}/ac-dump.mysql | drush --root=${project.code.dir} --uri=${drupal.site.name} -y sqlc" />
+        <echo msg="cat ${acquia.dump} | drush --root=${platform.build.dir} -y sqlc" />
+        <exec command="cat ${acquia.dump} | drush --root=${platform.build.dir} -y sqlc" />
 
         <echo msg="AC database loaded." />
 
-        <drush command="registry-rebuild" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
         </drush>
         <echo msg="Registry rebuilt." />
-        <drush command="user-password" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
+        <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
           <param>admin</param>
           <option name="password">pass</option>
         </drush>
@@ -132,7 +134,7 @@
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">
-    <exec command="drush -y @${drush.alias.acquia} sql-dump > ${phing.project.dumps.dir}/ac-dump.mysql" />
+    <exec command="drush -y @${drush.alias.acquia} sql-dump > ${acquia.dump}" />
     <echo msg="AC database downloaded." />
   </target>
 
