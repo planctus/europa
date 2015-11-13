@@ -21,13 +21,12 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'group_editorial_settings',
       1 => 'group_publication_contact',
       2 => 'group_publication_content',
       3 => 'group_publication_related',
-      4 => 'group_publication_source',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -50,7 +49,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '26',
+    'weight' => '25',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -108,18 +107,19 @@ function dt_publication_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
-    'label' => 'Contact information',
+    'label' => 'Abstract & contact',
     'weight' => '22',
     'children' => array(
-      0 => 'field_publication_contact',
+      0 => 'body',
+      1 => 'field_core_contact',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Abstract & contact',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-publication-contact field-group-tab',
         'required_fields' => 1,
+        'classes' => 'group-publication-contact field-group-tab',
+        'description' => '',
       ),
     ),
   );
@@ -168,14 +168,16 @@ function dt_publication_field_group_info() {
     'weight' => '20',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_publication_type',
-      2 => 'field_core_files',
-      3 => 'field_core_description',
-      4 => 'field_core_introduction',
-      5 => 'body',
-      6 => 'field_publication_authors',
-      7 => 'field_publication_published_on',
-      8 => 'field_core_legacy_link',
+      1 => 'field_publication_authors',
+      2 => 'field_publication_origin',
+      3 => 'field_publication_referenceno',
+      4 => 'field_publication_type',
+      5 => 'field_core_description',
+      6 => 'field_core_legacy_link',
+      7 => 'field_core_date_updated',
+      8 => 'field_core_publications',
+      9 => 'field_core_files',
+      10 => 'field_core_date_published',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -306,9 +308,10 @@ function dt_publication_field_group_info() {
     'label' => 'Related content',
     'weight' => '23',
     'children' => array(
-      0 => 'field_core_department',
+      0 => 'field_core_departments',
       1 => 'field_core_topics',
-      2 => 'field_core_departments',
+      2 => 'field_publication_rel_content',
+      3 => 'field_core_policies',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -351,34 +354,6 @@ function dt_publication_field_group_info() {
     ),
   );
   $export['group_publication_related|node|publication|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_publication_source|node|publication|form';
-  $field_group->group_name = 'group_publication_source';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'publication';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Source',
-    'weight' => '25',
-    'children' => array(
-      0 => 'field_publication_origin',
-      1 => 'field_publication_referenceno',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-publication-source field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_publication_source|node|publication|form'] = $field_group;
 
   return $export;
 }
