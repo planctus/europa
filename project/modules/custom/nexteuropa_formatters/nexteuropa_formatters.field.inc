@@ -661,8 +661,7 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
  * Helper to theme the markup of file translations.
  */
 function _nexteuropa_formatters_attach_translations($item) {
-  $nid = $item['node'];
-  kpr($nid);
+  kpr($item);
   return '<div class="row">' . 'themed list of translations' . '</div>';
 }
 

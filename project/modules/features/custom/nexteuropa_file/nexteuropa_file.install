@@ -12,6 +12,8 @@ function nexteuropa_file_install() {
   features_revert(array(
     'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
   ));
+  // Apply default configuration to the content type, needed for correct translation management..
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('file');
 }
 
 /**
@@ -51,4 +53,12 @@ function nexteuropa_file_update_7102() {
   features_revert(array(
     'nexteuropa_file' => array('field_base', 'field_group', 'field_instance'),
   ));
+}
+
+/**
+ * Applying default settings from soft config.
+ */
+function nexteuropa_file_update_7103() {
+  // Apply default configuration to the content type, needed for correct translation management..
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('file');
 }
