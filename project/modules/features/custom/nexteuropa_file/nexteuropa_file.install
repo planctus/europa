@@ -61,4 +61,10 @@ function nexteuropa_file_update_7102() {
 function nexteuropa_file_update_7103() {
   // Apply default configuration to the content type, needed for correct translation management..
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('file');
+
+  // Order the fields added by the soft configuration correctly.
+  features_revert_module('nexteuropa_file');
+
+  // Copy value after making it translatable.
+  _dt_core_fix_field_language('field_core_file');
 }

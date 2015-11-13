@@ -114,6 +114,9 @@ function nexteuropa_file_strongarm() {
       'file' => array(
         'custom_settings' => TRUE,
       ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
