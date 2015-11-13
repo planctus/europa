@@ -35,7 +35,7 @@ function _commissioner_bundle_forms($bundle) {
   }
 
   $forms = array(
-    'singular' => strtolower($singular),
+    'singular' => ucfirst(strtolower($singular)),
     'plural' => $plural,
   );
 
@@ -52,14 +52,14 @@ function commissioner_preprocess_views_view(&$variables) {
     $variables['feed_link'] = $view->feed_link;
   }
 
-  if (isset($view->filter['type']) && ($view->current_display != 'block')) {
+  if (isset($view->filter['type']) && ($view->display_handler->plugin_name == 'page')) {
     $variables['items_count'] = '';
 
     $content_type = array_shift($view->filter['type']->value);
 
     // Checking if .listing exists in classes_array so that result count can be
     // displayed.
-    if ($view->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    if ($view->plugin_name == 'nexteuropa_bem_listing') {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
@@ -270,8 +270,16 @@ function commissioner_preprocess_block(&$variables) {
  * Implements template_preprocess_field().
  */
 function commissioner_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] == 'social_media' && $variables['element']['#bundle'] == 'aggregated_news') {
-    $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+  if ($variables['element']['#field_name'] == 'social_media') {
+    switch ($variables['element']['#bundle']) {
+      case 'aggregated_news':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+        break;
+
+      case 'commisioner_blog_post':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this blog post:') . '</span>';
+        break;
+    }
   }
 }
 

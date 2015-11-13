@@ -11,9 +11,9 @@ function cwt_blogs_user_default_roles() {
   $roles = array();
 
   // Exported role: blog editor.
-  $roles['blog editor'] = array(
+  $roles['blog editor'] = (object) array(
     'name' => 'blog editor',
-    'weight' => '9',
+    'weight' => 9,
   );
 
   return $roles;
