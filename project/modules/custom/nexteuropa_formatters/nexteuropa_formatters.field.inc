@@ -647,7 +647,23 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
     $variables['nexteuropa_listing_columns'] = $formatter_settings['nexteuropa_listing_columns'];
     $variables['nexteuropa_listing_modifier'] = $formatter_settings['nexteuropa_listing_modifier'];
     $variables['nexteuropa_listing_wrapper_modifier'] = $formatter_settings['nexteuropa_listing_wrapper_modifier'];
+
+    // Attach file translations to the render array of every field requiring it.
+    if ($formatter_settings['show_translations'] == 1) {
+      foreach($variables['items'] as $item_key => $item) {
+        $variables['items'][$item_key]['#suffix'] = _nexteuropa_formatters_attach_translations($item);
+      }
+    }
   }
+}
+
+/**
+ * Helper to theme the markup of file translations.
+ */
+function _nexteuropa_formatters_attach_translations($item) {
+  $nid = $item['node'];
+  kpr($nid);
+  return '<div class="row">' . 'themed list of translations' . '</div>';
 }
 
 /**
