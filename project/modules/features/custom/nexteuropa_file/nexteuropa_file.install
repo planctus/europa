@@ -65,6 +65,9 @@ function nexteuropa_file_update_7103() {
   // Order the fields added by the soft configuration correctly.
   features_revert_module('nexteuropa_file');
 
-  // Copy value after making it translatable.
-//  _dt_core_fix_field_language('field_core_file');
+  // Change db records from 'und' to default site language.
+  _dt_core_fix_field_language('field_core_file');
+
+  // Moving data from 'title' field to 'title_field'.
+  _dt_core_fix_titles('file');
 }
