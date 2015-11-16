@@ -661,9 +661,8 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
  * Helper to theme the markup of file translations.
  */
 function _nexteuropa_formatters_attach_translations($item) {
-  $reference_id = key($item['node']);
-  $node = node_load($reference_id);
-  return theme('file_translations', array('files' => $node->field_core_file));
+  $node = node_load(key($item['node']));
+  return theme('file_translations', array('node' => $node));
 }
 
 /**

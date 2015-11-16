@@ -86,28 +86,34 @@ function theme_nexteuropa_bem_item_list($variables) {
 
 /**
  * Returns markup for a list of file translations.
- * @param $variables
- * @return string
+ *
+ * @param array $variables
+ *   Contains the data.
+ *
+ * @return mixed
+ *   Markup for success, or $variables as a fallback.
  */
 function theme_file_translations($variables) {
-  $files = $variables['files'];
+  $files = $variables['node']->field_core_file;
+  $nid = $variables['node']->nid;
   $files_count = count($files);
   if ($files_count) {
     $output = "<div class='row'>";
-    if ($files_count == 1) {
+    if ($files_count < 2) {
+      return $variables;
     }
     else {
       // Building the link.
       $link = array(
         '#type' => 'link',
         '#options' => array(
-          'fragment' => 'translations1',
+          'fragment' => 'file__translations-' . $nid,
         ),
         '#attributes' => array(
           'class' => array(''),
           'data-toggle' => array('collapse'),
           'aria-expanded' => array('false'),
-          'aria-controls' => array('translations1'),
+          'aria-controls' => array('file__translations-' . $nid),
           'title' => t('Click to see translations'),
         ),
         '#title' => t('All languages @count', array('@count' => $files_count)),
@@ -120,14 +126,31 @@ function theme_file_translations($variables) {
         'rows' => array(),
         'attributes' => array(
           'class' => array('collapse table'),
-          'id' => array('translations1'),
+          'id' => array('file__translations-' . $nid),
         ),
       );
       foreach ($files as $lang => $file) {
         $file_info = reset($file);
+        $file_markup = "<div class='file'>";
+        // Meta data.
+        $file_markup .= "<div class='file__metadata'><span class='file__title'>";
+        $file_markup .= $file_info['filename'];
+        $file_markup .= "</span><div class='file__info'><span class='file__size'>";
+        $file_markup .= $file_info['filesize'];
+        $file_markup .= "</span> - " . strtoupper(pathinfo($file_info['uri'], PATHINFO_EXTENSION)) . "</div></div>";
+        // Download button.
+        $file_markup .= l(t('Download'), drupal_realpath($file_info['uri']), $options = array(
+          'attributes' => array(
+            'class' => array('file__btn btn btn-default is-internal'),
+            'title' => $file_info['filename'],
+            'type' => array($file_info['filemime'] . ';length=' . $file_info['filesize']),
+          ),
+        ));
+        $file_markup .= "</div>";
+
         $table['rows'][] = array(
           'data' => array(
-            'cell' => $file_info['filename'] . ' ' . $lang,
+            'cell' => $file_markup,
           ),
         );
       }
