@@ -83,3 +83,52 @@ function theme_nexteuropa_bem_item_list($variables) {
   }
   return $output;
 }
+
+/**
+ * Returns markup for a list of file translations.
+ * @param $variables
+ * @return string
+ */
+function theme_file_translations($variables) {
+  $files = $variables['files'];
+  $files_count = count($files);
+  if ($files_count) {
+    kpr($files);
+    $output = "<div class='row'>";
+    if ($files_count == 1) {
+    } else {
+      // Building the link.
+      $link = array(
+        '#type' => 'link',
+        '#options' => array(
+          'fragment' => 'translations1'
+        ),
+        '#attributes' => array(
+          'class' => array(''),
+          'data-toggle' => array('collapse'),
+          'aria-expanded' => array('false'),
+          'aria-controls' => array('translations1'),
+          'title' => t('Click to see translations'),
+        ),
+        '#title' => t('All languages') . ' ' . $files_count,
+      );
+      // Attaching the link.
+      $output .= render($link);
+
+      // Building the list
+      $table = array(
+        'rows' => array(
+          'data' => array('one', 'two', 'three'),
+        ),
+        'attributes' => array(
+          'class' => array('collapse'),
+          'id' => array('translations1')
+        ),
+      );
+      $output .= theme_table($table);
+    }
+
+    $output .= "</div>";
+    return $output;
+  }
+}
