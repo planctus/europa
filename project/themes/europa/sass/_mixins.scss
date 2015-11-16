@@ -36,8 +36,11 @@
 // Language generator.
 @mixin languages_logo($path-and-filename, $modifier-and-file-extension) {
   @each $item in $languages {
-    &.logo--#{$item} {
-      background-image: url("#{$path-and-filename}#{$item}#{$modifier-and-file-extension}");
+    .language-#{$item},
+    &.language-#{$item} {
+      .logo {
+        background-image: url("#{$path-and-filename}#{$item}#{$modifier-and-file-extension}");
+      }
     }
   }
 }

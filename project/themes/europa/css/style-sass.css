@@ -8414,54 +8414,9 @@ Styleguide listing.agenda
   width: 140px;
   height: 70px;
   background: url("../images/svg/logo.svg") no-repeat; }
-  .logo.logo--bg {
-    background-image: url("../images/svg/logo/logo--bg.svg"); }
-  .logo.logo--cs {
-    background-image: url("../images/svg/logo/logo--cs.svg"); }
-  .logo.logo--da {
-    background-image: url("../images/svg/logo/logo--da.svg"); }
-  .logo.logo--de {
-    background-image: url("../images/svg/logo/logo--de.svg"); }
-  .logo.logo--el {
-    background-image: url("../images/svg/logo/logo--el.svg"); }
-  .logo.logo--en {
-    background-image: url("../images/svg/logo/logo--en.svg"); }
-  .logo.logo--es {
-    background-image: url("../images/svg/logo/logo--es.svg"); }
-  .logo.logo--et {
-    background-image: url("../images/svg/logo/logo--et.svg"); }
-  .logo.logo--fi {
-    background-image: url("../images/svg/logo/logo--fi.svg"); }
-  .logo.logo--fr {
-    background-image: url("../images/svg/logo/logo--fr.svg"); }
-  .logo.logo--ga {
-    background-image: url("../images/svg/logo/logo--ga.svg"); }
-  .logo.logo--hr {
-    background-image: url("../images/svg/logo/logo--hr.svg"); }
-  .logo.logo--hu {
-    background-image: url("../images/svg/logo/logo--hu.svg"); }
-  .logo.logo--it {
-    background-image: url("../images/svg/logo/logo--it.svg"); }
-  .logo.logo--lt {
-    background-image: url("../images/svg/logo/logo--lt.svg"); }
-  .logo.logo--lv {
-    background-image: url("../images/svg/logo/logo--lv.svg"); }
-  .logo.logo--mt {
-    background-image: url("../images/svg/logo/logo--mt.svg"); }
-  .logo.logo--nl {
-    background-image: url("../images/svg/logo/logo--nl.svg"); }
-  .logo.logo--pl {
-    background-image: url("../images/svg/logo/logo--pl.svg"); }
-  .logo.logo--pt {
-    background-image: url("../images/svg/logo/logo--pt.svg"); }
-  .logo.logo--ro {
-    background-image: url("../images/svg/logo/logo--ro.svg"); }
-  .logo.logo--sk {
-    background-image: url("../images/svg/logo/logo--sk.svg"); }
-  .logo.logo--sl {
-    background-image: url("../images/svg/logo/logo--sl.svg"); }
-  .logo.logo--sv {
-    background-image: url("../images/svg/logo/logo--sv.svg"); }
+
+.no-svg .logo {
+  background-image: url("../images/png/logo.png"); }
 
 .front .logo {
   float: none;
@@ -8470,54 +8425,78 @@ Styleguide listing.agenda
   margin: 16px auto 40px auto;
   background: url("../images/svg/logo--big.svg") center center no-repeat;
   background-size: 100%; }
-  .front .logo.logo--bg {
-    background-image: url("../images/svg/logo/logo--bg.svg"); }
-  .front .logo.logo--cs {
-    background-image: url("../images/svg/logo/logo--cs.svg"); }
-  .front .logo.logo--da {
-    background-image: url("../images/svg/logo/logo--da.svg"); }
-  .front .logo.logo--de {
-    background-image: url("../images/svg/logo/logo--de.svg"); }
-  .front .logo.logo--el {
-    background-image: url("../images/svg/logo/logo--el.svg"); }
-  .front .logo.logo--en {
-    background-image: url("../images/svg/logo/logo--en.svg"); }
-  .front .logo.logo--es {
-    background-image: url("../images/svg/logo/logo--es.svg"); }
-  .front .logo.logo--et {
-    background-image: url("../images/svg/logo/logo--et.svg"); }
-  .front .logo.logo--fi {
-    background-image: url("../images/svg/logo/logo--fi.svg"); }
-  .front .logo.logo--fr {
-    background-image: url("../images/svg/logo/logo--fr.svg"); }
-  .front .logo.logo--ga {
-    background-image: url("../images/svg/logo/logo--ga.svg"); }
-  .front .logo.logo--hr {
-    background-image: url("../images/svg/logo/logo--hr.svg"); }
-  .front .logo.logo--hu {
-    background-image: url("../images/svg/logo/logo--hu.svg"); }
-  .front .logo.logo--it {
-    background-image: url("../images/svg/logo/logo--it.svg"); }
-  .front .logo.logo--lt {
-    background-image: url("../images/svg/logo/logo--lt.svg"); }
-  .front .logo.logo--lv {
-    background-image: url("../images/svg/logo/logo--lv.svg"); }
-  .front .logo.logo--mt {
-    background-image: url("../images/svg/logo/logo--mt.svg"); }
-  .front .logo.logo--nl {
-    background-image: url("../images/svg/logo/logo--nl.svg"); }
-  .front .logo.logo--pl {
-    background-image: url("../images/svg/logo/logo--pl.svg"); }
-  .front .logo.logo--pt {
-    background-image: url("../images/svg/logo/logo--pt.svg"); }
-  .front .logo.logo--ro {
-    background-image: url("../images/svg/logo/logo--ro.svg"); }
-  .front .logo.logo--sk {
-    background-image: url("../images/svg/logo/logo--sk.svg"); }
-  .front .logo.logo--sl {
-    background-image: url("../images/svg/logo/logo--sl.svg"); }
-  .front .logo.logo--sv {
-    background-image: url("../images/svg/logo/logo--sv.svg"); }
+
+.front .language-bg .logo, .front.language-bg .logo {
+  background-image: url("../images/svg/logo/logo--bg.svg"); }
+
+.front .language-cs .logo, .front.language-cs .logo {
+  background-image: url("../images/svg/logo/logo--cs.svg"); }
+
+.front .language-da .logo, .front.language-da .logo {
+  background-image: url("../images/svg/logo/logo--da.svg"); }
+
+.front .language-de .logo, .front.language-de .logo {
+  background-image: url("../images/svg/logo/logo--de.svg"); }
+
+.front .language-el .logo, .front.language-el .logo {
+  background-image: url("../images/svg/logo/logo--el.svg"); }
+
+.front .language-en .logo, .front.language-en .logo {
+  background-image: url("../images/svg/logo/logo--en.svg"); }
+
+.front .language-es .logo, .front.language-es .logo {
+  background-image: url("../images/svg/logo/logo--es.svg"); }
+
+.front .language-et .logo, .front.language-et .logo {
+  background-image: url("../images/svg/logo/logo--et.svg"); }
+
+.front .language-fi .logo, .front.language-fi .logo {
+  background-image: url("../images/svg/logo/logo--fi.svg"); }
+
+.front .language-fr .logo, .front.language-fr .logo {
+  background-image: url("../images/svg/logo/logo--fr.svg"); }
+
+.front .language-ga .logo, .front.language-ga .logo {
+  background-image: url("../images/svg/logo/logo--ga.svg"); }
+
+.front .language-hr .logo, .front.language-hr .logo {
+  background-image: url("../images/svg/logo/logo--hr.svg"); }
+
+.front .language-hu .logo, .front.language-hu .logo {
+  background-image: url("../images/svg/logo/logo--hu.svg"); }
+
+.front .language-it .logo, .front.language-it .logo {
+  background-image: url("../images/svg/logo/logo--it.svg"); }
+
+.front .language-lt .logo, .front.language-lt .logo {
+  background-image: url("../images/svg/logo/logo--lt.svg"); }
+
+.front .language-lv .logo, .front.language-lv .logo {
+  background-image: url("../images/svg/logo/logo--lv.svg"); }
+
+.front .language-mt .logo, .front.language-mt .logo {
+  background-image: url("../images/svg/logo/logo--mt.svg"); }
+
+.front .language-nl .logo, .front.language-nl .logo {
+  background-image: url("../images/svg/logo/logo--nl.svg"); }
+
+.front .language-pl .logo, .front.language-pl .logo {
+  background-image: url("../images/svg/logo/logo--pl.svg"); }
+
+.front .language-pt .logo, .front.language-pt .logo {
+  background-image: url("../images/svg/logo/logo--pt.svg"); }
+
+.front .language-ro .logo, .front.language-ro .logo {
+  background-image: url("../images/svg/logo/logo--ro.svg"); }
+
+.front .language-sk .logo, .front.language-sk .logo {
+  background-image: url("../images/svg/logo/logo--sk.svg"); }
+
+.front .language-sl .logo, .front.language-sl .logo {
+  background-image: url("../images/svg/logo/logo--sl.svg"); }
+
+.front .language-sv .logo, .front.language-sv .logo {
+  background-image: url("../images/svg/logo/logo--sv.svg"); }
 
 @media (min-width: 480px) {
   .front .logo {
@@ -8533,109 +8512,82 @@ Styleguide listing.agenda
   .logo:before {
     content: url("../images/svg/logo.svg"); } }
 
-.no-svg .logo {
-  background-image: url("../images/png/logo/logo--en.png"); }
-  .no-svg .logo.logo--bg {
-    background-image: url("../images/png/logo/logo--bg.png"); }
-  .no-svg .logo.logo--cs {
-    background-image: url("../images/png/logo/logo--cs.png"); }
-  .no-svg .logo.logo--da {
-    background-image: url("../images/png/logo/logo--da.png"); }
-  .no-svg .logo.logo--de {
-    background-image: url("../images/png/logo/logo--de.png"); }
-  .no-svg .logo.logo--el {
-    background-image: url("../images/png/logo/logo--el.png"); }
-  .no-svg .logo.logo--en {
-    background-image: url("../images/png/logo/logo--en.png"); }
-  .no-svg .logo.logo--es {
-    background-image: url("../images/png/logo/logo--es.png"); }
-  .no-svg .logo.logo--et {
-    background-image: url("../images/png/logo/logo--et.png"); }
-  .no-svg .logo.logo--fi {
-    background-image: url("../images/png/logo/logo--fi.png"); }
-  .no-svg .logo.logo--fr {
-    background-image: url("../images/png/logo/logo--fr.png"); }
-  .no-svg .logo.logo--ga {
-    background-image: url("../images/png/logo/logo--ga.png"); }
-  .no-svg .logo.logo--hr {
-    background-image: url("../images/png/logo/logo--hr.png"); }
-  .no-svg .logo.logo--hu {
-    background-image: url("../images/png/logo/logo--hu.png"); }
-  .no-svg .logo.logo--it {
-    background-image: url("../images/png/logo/logo--it.png"); }
-  .no-svg .logo.logo--lt {
-    background-image: url("../images/png/logo/logo--lt.png"); }
-  .no-svg .logo.logo--lv {
-    background-image: url("../images/png/logo/logo--lv.png"); }
-  .no-svg .logo.logo--mt {
-    background-image: url("../images/png/logo/logo--mt.png"); }
-  .no-svg .logo.logo--nl {
-    background-image: url("../images/png/logo/logo--nl.png"); }
-  .no-svg .logo.logo--pl {
-    background-image: url("../images/png/logo/logo--pl.png"); }
-  .no-svg .logo.logo--pt {
-    background-image: url("../images/png/logo/logo--pt.png"); }
-  .no-svg .logo.logo--ro {
-    background-image: url("../images/png/logo/logo--ro.png"); }
-  .no-svg .logo.logo--sk {
-    background-image: url("../images/png/logo/logo--sk.png"); }
-  .no-svg .logo.logo--sl {
-    background-image: url("../images/png/logo/logo--sl.png"); }
-  .no-svg .logo.logo--sv {
-    background-image: url("../images/png/logo/logo--sv.png"); }
-
 .no-svg .front .logo {
-  background-image: url("../images/png/logo--big/logo--en.png");
+  background-image: url("../images/png/logo--big.png");
   width: 378px;
   height: 193px; }
-  .no-svg .front .logo.logo--bg {
-    background-image: url("../images/png/logo--big/logo--bg.png"); }
-  .no-svg .front .logo.logo--cs {
-    background-image: url("../images/png/logo--big/logo--cs.png"); }
-  .no-svg .front .logo.logo--da {
-    background-image: url("../images/png/logo--big/logo--da.png"); }
-  .no-svg .front .logo.logo--de {
-    background-image: url("../images/png/logo--big/logo--de.png"); }
-  .no-svg .front .logo.logo--el {
-    background-image: url("../images/png/logo--big/logo--el.png"); }
-  .no-svg .front .logo.logo--en {
-    background-image: url("../images/png/logo--big/logo--en.png"); }
-  .no-svg .front .logo.logo--es {
-    background-image: url("../images/png/logo--big/logo--es.png"); }
-  .no-svg .front .logo.logo--et {
-    background-image: url("../images/png/logo--big/logo--et.png"); }
-  .no-svg .front .logo.logo--fi {
-    background-image: url("../images/png/logo--big/logo--fi.png"); }
-  .no-svg .front .logo.logo--fr {
-    background-image: url("../images/png/logo--big/logo--fr.png"); }
-  .no-svg .front .logo.logo--ga {
-    background-image: url("../images/png/logo--big/logo--ga.png"); }
-  .no-svg .front .logo.logo--hr {
-    background-image: url("../images/png/logo--big/logo--hr.png"); }
-  .no-svg .front .logo.logo--hu {
-    background-image: url("../images/png/logo--big/logo--hu.png"); }
-  .no-svg .front .logo.logo--it {
-    background-image: url("../images/png/logo--big/logo--it.png"); }
-  .no-svg .front .logo.logo--lt {
-    background-image: url("../images/png/logo--big/logo--lt.png"); }
-  .no-svg .front .logo.logo--lv {
-    background-image: url("../images/png/logo--big/logo--lv.png"); }
-  .no-svg .front .logo.logo--mt {
-    background-image: url("../images/png/logo--big/logo--mt.png"); }
-  .no-svg .front .logo.logo--nl {
-    background-image: url("../images/png/logo--big/logo--nl.png"); }
-  .no-svg .front .logo.logo--pl {
-    background-image: url("../images/png/logo--big/logo--pl.png"); }
-  .no-svg .front .logo.logo--pt {
-    background-image: url("../images/png/logo--big/logo--pt.png"); }
-  .no-svg .front .logo.logo--ro {
-    background-image: url("../images/png/logo--big/logo--ro.png"); }
-  .no-svg .front .logo.logo--sk {
-    background-image: url("../images/png/logo--big/logo--sk.png"); }
-  .no-svg .front .logo.logo--sl {
-    background-image: url("../images/png/logo--big/logo--sl.png"); }
-  .no-svg .front .logo.logo--sv {
-    background-image: url("../images/png/logo--big/logo--sv.png"); }
+
+.no-svg .front .language-bg .logo, .no-svg .front.language-bg .logo {
+  background-image: url("../images/png/logo/logo--bg.png"); }
+
+.no-svg .front .language-cs .logo, .no-svg .front.language-cs .logo {
+  background-image: url("../images/png/logo/logo--cs.png"); }
+
+.no-svg .front .language-da .logo, .no-svg .front.language-da .logo {
+  background-image: url("../images/png/logo/logo--da.png"); }
+
+.no-svg .front .language-de .logo, .no-svg .front.language-de .logo {
+  background-image: url("../images/png/logo/logo--de.png"); }
+
+.no-svg .front .language-el .logo, .no-svg .front.language-el .logo {
+  background-image: url("../images/png/logo/logo--el.png"); }
+
+.no-svg .front .language-en .logo, .no-svg .front.language-en .logo {
+  background-image: url("../images/png/logo/logo--en.png"); }
+
+.no-svg .front .language-es .logo, .no-svg .front.language-es .logo {
+  background-image: url("../images/png/logo/logo--es.png"); }
+
+.no-svg .front .language-et .logo, .no-svg .front.language-et .logo {
+  background-image: url("../images/png/logo/logo--et.png"); }
+
+.no-svg .front .language-fi .logo, .no-svg .front.language-fi .logo {
+  background-image: url("../images/png/logo/logo--fi.png"); }
+
+.no-svg .front .language-fr .logo, .no-svg .front.language-fr .logo {
+  background-image: url("../images/png/logo/logo--fr.png"); }
+
+.no-svg .front .language-ga .logo, .no-svg .front.language-ga .logo {
+  background-image: url("../images/png/logo/logo--ga.png"); }
+
+.no-svg .front .language-hr .logo, .no-svg .front.language-hr .logo {
+  background-image: url("../images/png/logo/logo--hr.png"); }
+
+.no-svg .front .language-hu .logo, .no-svg .front.language-hu .logo {
+  background-image: url("../images/png/logo/logo--hu.png"); }
+
+.no-svg .front .language-it .logo, .no-svg .front.language-it .logo {
+  background-image: url("../images/png/logo/logo--it.png"); }
+
+.no-svg .front .language-lt .logo, .no-svg .front.language-lt .logo {
+  background-image: url("../images/png/logo/logo--lt.png"); }
+
+.no-svg .front .language-lv .logo, .no-svg .front.language-lv .logo {
+  background-image: url("../images/png/logo/logo--lv.png"); }
+
+.no-svg .front .language-mt .logo, .no-svg .front.language-mt .logo {
+  background-image: url("../images/png/logo/logo--mt.png"); }
+
+.no-svg .front .language-nl .logo, .no-svg .front.language-nl .logo {
+  background-image: url("../images/png/logo/logo--nl.png"); }
+
+.no-svg .front .language-pl .logo, .no-svg .front.language-pl .logo {
+  background-image: url("../images/png/logo/logo--pl.png"); }
+
+.no-svg .front .language-pt .logo, .no-svg .front.language-pt .logo {
+  background-image: url("../images/png/logo/logo--pt.png"); }
+
+.no-svg .front .language-ro .logo, .no-svg .front.language-ro .logo {
+  background-image: url("../images/png/logo/logo--ro.png"); }
+
+.no-svg .front .language-sk .logo, .no-svg .front.language-sk .logo {
+  background-image: url("../images/png/logo/logo--sk.png"); }
+
+.no-svg .front .language-sl .logo, .no-svg .front.language-sl .logo {
+  background-image: url("../images/png/logo/logo--sl.png"); }
+
+.no-svg .front .language-sv .logo, .no-svg .front.language-sv .logo {
+  background-image: url("../images/png/logo/logo--sv.png"); }
 
 /*
 Meta
@@ -9090,7 +9042,14 @@ Styleguide: siteheader
   padding-bottom: 0; }
 
 .front .site-header__logo {
-  top: 0; }
+  top: 0;
+  margin-bottom: 0; }
+
+.site-slogan {
+  text-align: center;
+  padding-top: 0;
+  margin-bottom: 40px;
+  font-weight: 400; }
 
 /*
 Site switcher
@@ -9335,7 +9294,7 @@ Styleguide splashpage
     background: url("../images/svg/logo.svg") center center no-repeat;
     background-origin: content-box; }
     .no-svg .splash-page__site-header .logo {
-      background-image: url("../images/png/logo.png") center center no-repeat; }
+      background: url("../images/png/logo--big.png") center center no-repeat; }
   @media (min-width: 480px) {
     .splash-page__site-header .logo {
       width: 290px;
