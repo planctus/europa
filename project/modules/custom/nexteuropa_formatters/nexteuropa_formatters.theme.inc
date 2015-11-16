@@ -93,15 +93,15 @@ function theme_file_translations($variables) {
   $files = $variables['files'];
   $files_count = count($files);
   if ($files_count) {
-    kpr($files);
     $output = "<div class='row'>";
     if ($files_count == 1) {
-    } else {
+    }
+    else {
       // Building the link.
       $link = array(
         '#type' => 'link',
         '#options' => array(
-          'fragment' => 'translations1'
+          'fragment' => 'translations1',
         ),
         '#attributes' => array(
           'class' => array(''),
@@ -110,25 +110,31 @@ function theme_file_translations($variables) {
           'aria-controls' => array('translations1'),
           'title' => t('Click to see translations'),
         ),
-        '#title' => t('All languages') . ' ' . $files_count,
+        '#title' => t('All languages @count', array('@count' => $files_count)),
       );
       // Attaching the link.
       $output .= render($link);
 
-      // Building the list
+      // Building the list.
       $table = array(
-        'rows' => array(
-          'data' => array('one', 'two', 'three'),
-        ),
+        'rows' => array(),
         'attributes' => array(
-          'class' => array('collapse'),
-          'id' => array('translations1')
+          'class' => array('collapse table'),
+          'id' => array('translations1'),
         ),
       );
+      foreach ($files as $lang => $file) {
+        $file_info = reset($file);
+        $table['rows'][] = array(
+          'data' => array(
+            'cell' => $file_info['filename'] . ' ' . $lang,
+          ),
+        );
+      }
       $output .= theme_table($table);
     }
-
     $output .= "</div>";
     return $output;
   }
+  return $variables;
 }

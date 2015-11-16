@@ -589,21 +589,21 @@ function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary,
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: List layout') . ': ' . $settings['nexteuropa_listing_columns'];
+      $summary .= t('BEM: List layout: @columns', array('@columns' => $settings['nexteuropa_listing_columns']));
     }
 
     if (isset($settings['nexteuropa_listing_modifier']) && !empty($settings['nexteuropa_listing_modifier'])) {
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: Listing Modifier') . ': ' . $settings['nexteuropa_listing_modifier'];
+      $summary .= t('BEM: Listing Modifier: @modifier', array('@modifier' => $settings['nexteuropa_listing_modifier']));
     }
 
     if (isset($settings['nexteuropa_listing_wrapper_modifier']) && !empty($settings['nexteuropa_listing_wrapper_modifier'])) {
       if (!empty($summary)) {
         $summary .= '<br />';
       }
-      $summary .= t('BEM: Listing Wrapper Modifier') . ': ' . $settings['nexteuropa_listing_wrapper_modifier'];
+      $summary .= t('BEM: Listing Wrapper Modifier: @modifier', array('@modifier' => $settings['nexteuropa_listing_wrapper_modifier']));
     }
   }
   elseif ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
@@ -650,7 +650,7 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
 
     // Attach file translations to the render array of every field requiring it.
     if ($formatter_settings['show_translations'] == 1) {
-      foreach($variables['items'] as $item_key => $item) {
+      foreach ($variables['items'] as $item_key => $item) {
         $variables['items'][$item_key]['#suffix'] = _nexteuropa_formatters_attach_translations($item);
       }
     }
