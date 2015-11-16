@@ -98,7 +98,7 @@ function theme_file_translations($variables) {
   $nid = $variables['node']->nid;
   $files_count = count($files);
   if ($files_count) {
-    $output = "<div class='row'>";
+    $output = "<div class='file__translations'>";
     if ($files_count < 2) {
       return $variables;
     }
@@ -125,33 +125,25 @@ function theme_file_translations($variables) {
       $table = array(
         'rows' => array(),
         'attributes' => array(
-          'class' => array('collapse table'),
+          'class' => array('collapse'),
           'id' => array('file__translations-' . $nid),
         ),
       );
       foreach ($files as $lang => $file) {
         $file_info = reset($file);
-        $file_markup = "<div class='file'>";
-        // Meta data.
-        $file_markup .= "<div class='file__metadata'><span class='file__title'>";
-        $file_markup .= $file_info['filename'];
-        $file_markup .= "</span><div class='file__info'><span class='file__size'>";
-        $file_markup .= $file_info['filesize'];
-        $file_markup .= "</span> - " . strtoupper(pathinfo($file_info['uri'], PATHINFO_EXTENSION)) . "</div></div>";
-        // Download button.
-        $file_markup .= l(t('Download'), drupal_realpath($file_info['uri']), $options = array(
-          'attributes' => array(
-            'class' => array('file__btn btn btn-default is-internal'),
-            'title' => $file_info['filename'],
-            'type' => array($file_info['filemime'] . ';length=' . $file_info['filesize']),
+        $file_object = file_load($file_info['fid']);
+        $file_object->filename = '{Language} version';
+        $file_url = array(
+          'path' => file_create_url($file_info['uri']),
+          'options' => array(
+            'attributes' => array(
+              'class' => array('file__btn', 'btn'),
+            ),
           ),
-        ));
-        $file_markup .= "</div>";
-
+        );
+        $file_markup = _europa_file_markup($file_object, $file_url, 'file--translation');
         $table['rows'][] = array(
-          'data' => array(
-            'cell' => $file_markup,
-          ),
+          'data' => array($file_markup),
         );
       }
       $output .= theme_table($table);

@@ -7,6 +7,7 @@ by clicking on the component
 Markup: html/file.html
 
 .file--widebar  - Full width download box
+.file--translation - Translation
 
 Styleguide file
 */
@@ -105,6 +106,15 @@ Styleguide file
       margin-top: 15px;
     }
   }
+}
+
+.file--translation {
+  background: none;
+
+  .file__icon, .file__language {
+    display: none;
+  }
+
 }
 
 @include breakpoint(screen-msm-min) {
