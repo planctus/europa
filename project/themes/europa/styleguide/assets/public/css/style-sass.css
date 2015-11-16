@@ -8420,8 +8420,8 @@ Styleguide listing.agenda
 
 .front .logo {
   float: none;
-  width: 250px;
-  height: 130px;
+  width: 225px;
+  height: 82px;
   margin: 16px auto 40px auto;
   background: url("../images/svg/logo--big.svg") center center no-repeat;
   background-size: 100%; }
@@ -8500,13 +8500,13 @@ Styleguide listing.agenda
 
 @media (min-width: 480px) {
   .front .logo {
-    width: 290px;
-    height: 153px; } }
+    width: 340px;
+    height: 124px; } }
 
 @media (min-width: 768px) {
   .front .logo {
-    width: 378px;
-    height: 193px; } }
+    width: 450px;
+    height: 164px; } }
 
 @media print {
   .logo:before {
@@ -9047,9 +9047,16 @@ Styleguide: siteheader
 
 .site-slogan {
   text-align: center;
-  padding-top: 0;
-  margin-bottom: 40px;
-  font-weight: 400; }
+  margin-bottom: 2em;
+  font-weight: 400;
+  font-size: 1em;
+  padding-top: 0.4em; }
+  @media (min-width: 480px) {
+    .site-slogan {
+      font-size: 1.3em; } }
+  @media (min-width: 768px) {
+    .site-slogan {
+      font-size: 1.667em; } }
 
 /*
 Site switcher

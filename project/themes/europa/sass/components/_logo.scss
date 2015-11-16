@@ -70,8 +70,8 @@
   .logo {
     float: none;
     
-    width: 250px;
-    height: 130px;
+    width: 225px;
+    height: 82px;
     margin: 16px auto 40px auto;
 
     background: url('../images/svg/logo--big.svg') center center no-repeat;
@@ -81,15 +81,15 @@
 
   @include breakpoint(screen-xs-min) {
     .logo {
-      width: 290px;
-      height: 153px;
+      width: 340px;
+      height: 124px;
     }
   }
 
   @include breakpoint(screen-sm-min) {
     .logo {
-      width: 378px;
-      height: 193px;
+      width: 450px;
+      height: 164px;
     }
   }
 }
