@@ -59,3 +59,17 @@ function _nexteuropa_formatters_get_context_nav_wrapper($label, $add_expander = 
     '#suffix' => '</div>',
   );
 }
+
+/**
+ * Helper: Returns the name of the language by its code.
+ *
+ * @param string $code
+ *   Language code.
+ *
+ * @return string
+ *   Language name or null.
+ */
+function _nexteuropa_formatters_get_language_name($code) {
+  $languages = locale_language_list();
+  return isset($languages[$code]) ? $languages[$code] : NULL;
+}

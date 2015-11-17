@@ -130,9 +130,10 @@ function theme_file_translations($variables) {
         ),
       );
       foreach ($files as $lang => $file) {
+        $language = _nexteuropa_formatters_get_language_name($lang);
         $file_info = reset($file);
         $file_object = file_load($file_info['fid']);
-        $file_object->filename = '{Language} version';
+        $file_object->filename = t('@language version', array('@language' => $language));
         $file_url = array(
           'path' => file_create_url($file_info['uri']),
           'options' => array(
