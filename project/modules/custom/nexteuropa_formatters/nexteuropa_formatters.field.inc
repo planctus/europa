@@ -27,6 +27,7 @@ function nexteuropa_formatters_field_formatter_info() {
         'expander_has_expander' => FALSE,
         'expander_trim_at' => 0,
         'expander_trim_to' => 0,
+        'contextual_date' => '',
       ),
     ),
     'link_button_default' => array(
@@ -120,6 +121,11 @@ function nexteuropa_formatters_field_formatter_settings_form($field, $instance, 
       '#default_value' => $settings['expander_trim_to'],
       '#element_validate' => array('element_validate_integer'),
     );
+
+    if ($display['type'] == 'context_nav_item' && $field['type'] == 'datetime') {
+      module_load_include('inc', 'date', 'date_admin');
+      $element[] = date_default_formatter_settings_form($field, $instance, $view_mode, $form, $form_state);
+    }
   }
 
   return $element;
