@@ -8423,7 +8423,7 @@ Styleguide listing.agenda
   width: 225px;
   height: 82px;
   margin: 16px auto 40px auto;
-  background: url("../images/svg/logo--big.svg") center center no-repeat;
+  background: url("../images/svg/logo.svg") center center no-repeat;
   background-size: 100%; }
 
 .front .language-bg .logo, .front.language-bg .logo {
@@ -9047,16 +9047,20 @@ Styleguide: siteheader
 
 .site-slogan {
   text-align: center;
-  margin-bottom: 2em;
-  font-weight: 400;
-  font-size: 1em;
-  padding-top: 0.4em; }
+  margin-bottom: 8px;
+  font-weight: normal;
+  font-size: 16px;
+  padding-top: 5px; }
   @media (min-width: 480px) {
     .site-slogan {
-      font-size: 1.3em; } }
+      padding-top: 10px;
+      font-size: 20px;
+      margin-bottom: 25px; } }
   @media (min-width: 768px) {
     .site-slogan {
-      font-size: 1.667em; } }
+      padding-top: 12px;
+      font-size: 26px;
+      margin-bottom: 40px; } }
 
 /*
 Site switcher
