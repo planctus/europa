@@ -19,6 +19,9 @@ function nexteuropa_formatters_field_formatter_info() {
         'text',
         'entityreference',
         'link_field',
+        'datetime',
+        'date',
+        'datestamp',
       ),
       'settings' => array(
         'expander_has_expander' => FALSE,
@@ -62,7 +65,7 @@ function nexteuropa_formatters_field_formatter_info() {
       ),
     ),
     'link_button_two_column' => array(
-      'label' => 'Link button two column',
+      'label' => t('Link button two column'),
       'field types' => array(
         'link_field',
       ),
@@ -268,6 +271,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
                 '#markup' => '<span class="context-nav__item">' . $link . '</span>',
               );
             }
+            // End of context_nav_item.
             break;
 
           case 'text':
@@ -277,6 +281,17 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
               );
             }
             break;
+
+          case 'date':
+          case 'datestamp':
+          case 'datetime':
+            foreach ($items as $delta => $item) {
+              $element[$delta] = array(
+                '#markup' => '<span class="context-nav__item">' . format_date(strtotime($item['value']), 'ec_date_j_f_y') . '</span>',
+              );
+            }
+            break;
+
         }
         break;
 
