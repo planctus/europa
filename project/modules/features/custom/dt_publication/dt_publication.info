@@ -8,6 +8,7 @@ dependencies[] = dt_contact
 dependencies[] = dt_core
 dependencies[] = nexteuropa_file
 dependencies[] = nexteuropa_formatters
+dependencies[] = text
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1

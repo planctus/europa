@@ -163,10 +163,17 @@ function dt_publication_field_default_field_instances() {
         'weight' => 26,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ec_date_j_f_y',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -291,6 +298,7 @@ function dt_publication_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
@@ -428,6 +436,7 @@ function dt_publication_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => 1,
           'view_mode' => 'file',
         ),
         'type' => 'entityreference_entity_view',
@@ -597,9 +606,14 @@ function dt_publication_field_default_field_instances() {
         'weight' => 22,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -649,15 +663,15 @@ function dt_publication_field_default_field_instances() {
         'weight' => 3,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'expander_has_expander' => FALSE,
+          'expander_has_expander' => 0,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 12,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -706,15 +720,15 @@ function dt_publication_field_default_field_instances() {
         'weight' => 14,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'expander_has_expander' => FALSE,
+          'expander_has_expander' => 0,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 10,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -861,10 +875,15 @@ function dt_publication_field_default_field_instances() {
         'weight' => 18,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',

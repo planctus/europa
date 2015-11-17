@@ -41,24 +41,38 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_publication_published_on' => array(
+    'field_core_topics' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'lb' => 'Published on',
-          'lb-el' => 'div',
-          'lb-cl' => 'context-nav__label',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'context-nav__items',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'context-nav__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
+          'lb' => 'Topic:',
+        ),
+      ),
+    ),
+    'field_publication_authors' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Author:',
+        ),
+      ),
+    ),
+    'field_publication_referenceno' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Identification:',
+        ),
+      ),
+    ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'First published on:',
+        ),
+      ),
+    ),
+    'field_core_publications' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Part of collection:',
         ),
       ),
     ),
@@ -171,46 +185,46 @@ function dt_publication_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_publication_meta',
-        1 => 'title',
         2 => 'field_publication_type',
-        3 => 'field_core_introduction',
-        4 => 'field_core_legacy_link',
+        4 => 'title',
+        7 => 'field_core_legacy_link',
       ),
       'top' => array(
-        5 => 'group_publication_contextual',
-        14 => 'field_publication_authors',
-        15 => 'field_publication_published_on',
-        16 => 'field_core_topics',
+        1 => 'field_core_publications',
+        3 => 'field_core_date_published',
+        5 => 'field_publication_authors',
+        6 => 'field_publication_referenceno',
+        8 => 'group_publication_contextual',
+        9 => 'field_core_topics',
       ),
       'central' => array(
-        6 => 'group_publication_body',
-        7 => 'group_publication_file',
-        8 => 'body',
-        9 => 'group_publication_related',
-        10 => 'group_publication_contact',
-        11 => 'field_core_files',
-        12 => 'field_core_departments',
-        13 => 'field_publication_contact',
+        10 => 'group_publication_body',
+        11 => 'group_publication_file',
+        12 => 'body',
+        13 => 'group_publication_related',
+        14 => 'field_core_files',
+        15 => 'field_core_departments',
+        16 => 'group_publication_contact',
       ),
     ),
     'fields' => array(
       'group_publication_meta' => 'left_header',
-      'title' => 'left_header',
+      'field_core_publications' => 'top',
       'field_publication_type' => 'left_header',
-      'field_core_introduction' => 'left_header',
+      'field_core_date_published' => 'top',
+      'title' => 'left_header',
+      'field_publication_authors' => 'top',
+      'field_publication_referenceno' => 'top',
       'field_core_legacy_link' => 'left_header',
       'group_publication_contextual' => 'top',
+      'field_core_topics' => 'top',
       'group_publication_body' => 'central',
       'group_publication_file' => 'central',
       'body' => 'central',
       'group_publication_related' => 'central',
-      'group_publication_contact' => 'central',
       'field_core_files' => 'central',
       'field_core_departments' => 'central',
-      'field_publication_contact' => 'central',
-      'field_publication_authors' => 'top',
-      'field_publication_published_on' => 'top',
-      'field_core_topics' => 'top',
+      'group_publication_contact' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

@@ -88,7 +88,7 @@ function theme_nexteuropa_bem_item_list($variables) {
  * Returns markup for a list of file translations.
  *
  * @param array $variables
- *   Contains the data.
+ *   Contains the data. Expects: $variables['node']->field_core_file.
  *
  * @return mixed
  *   Markup for success, or $variables as a fallback.
@@ -142,7 +142,7 @@ function theme_file_translations($variables) {
             ),
           ),
         );
-        $file_markup = _europa_file_markup($file_object, $file_url, 'file--translation');
+        $file_markup = _europa_file_markup($file_object, $file_url, 'file--bare');
         $table['rows'][] = array(
           'data' => array($file_markup),
         );

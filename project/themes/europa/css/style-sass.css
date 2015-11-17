@@ -7290,7 +7290,7 @@ by clicking on the component
 Markup: html/file.html
 
 .file--widebar  - Full width download box
-.file--translation - Translation
+.file--bare - Strip down version
 
 Styleguide file
 */
@@ -7353,9 +7353,9 @@ Styleguide file
     .file--widebar .file__btn {
       margin-top: 15px; } }
 
-.file--translation {
+.file--bare {
   background: none; }
-  .file--translation .file__icon, .file--translation .file__language {
+  .file--bare .file__icon, .file--bare .file__language {
     display: none; }
 
 @media (min-width: 622px) {

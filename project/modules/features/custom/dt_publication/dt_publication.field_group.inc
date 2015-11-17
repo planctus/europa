@@ -137,9 +137,7 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Contact',
     'weight' => '8',
-    'children' => array(
-      0 => 'field_publication_contact',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Contact',
@@ -206,7 +204,9 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'field_core_topics',
       1 => 'field_publication_authors',
-      2 => 'field_publication_published_on',
+      2 => 'field_publication_referenceno',
+      3 => 'field_core_date_published',
+      4 => 'field_core_publications',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
