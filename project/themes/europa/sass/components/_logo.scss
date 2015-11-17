@@ -74,7 +74,7 @@
     height: 82px;
     margin: 16px auto 40px auto;
 
-    background: url('../images/svg/logo.svg') center center no-repeat;
+    background: url('../images/svg/logo--big.svg') center center no-repeat;
     background-size: 100%;
   }
   @include languages_logo('../images/svg/logo/logo--', '.svg');
@@ -96,7 +96,7 @@
 
 @media print {
   .logo:before {
-    content: url('../images/svg/logo.svg');
+    content: url('../images/svg/logo--big.svg');
   }
 }
 
