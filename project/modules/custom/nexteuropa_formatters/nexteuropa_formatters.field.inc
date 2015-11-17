@@ -293,12 +293,12 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           case 'datetime':
             foreach ($items as $delta => $item) {
               $node_wrapper = entity_metadata_wrapper('node', $entity);
-              if (isset($node_wrapper->field_core_date_published)) {
-                $date_updated = $node_wrapper->field_core_date_published->value();
+              if (isset($node_wrapper->field_core_date_updated)) {
+                $date_updated = $node_wrapper->field_core_date_updated->value();
                 $element[$delta] = array(
                   '#markup' => '<span class="context-nav__item">' .
                   format_date(strtotime($item['value']), 'ec_date_j_f_y') . ' ' .
-                  t('(last updated on: @date)',
+                  t('(last update on: @date)',
                   array('@date' => format_date($date_updated, 'ec_date_j_f_y'))) .
                   '</span>',
                 );

@@ -137,7 +137,9 @@ function dt_publication_field_group_info() {
   $field_group->data = array(
     'label' => 'Contact',
     'weight' => '8',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_core_contact',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Contact',

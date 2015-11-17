@@ -117,6 +117,7 @@ function theme_file_translations($variables) {
           'title' => t('Click to see translations'),
         ),
         '#title' => t('All languages @count', array('@count' => $files_count)),
+        '#suffix' => '<span class="icon icon--down-blue"></span>',
       );
       // Attaching the link.
       $output .= render($link);

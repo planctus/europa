@@ -62,6 +62,11 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_contact' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_core_date_published' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -185,31 +190,33 @@ function dt_publication_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_publication_meta',
-        2 => 'field_publication_type',
-        4 => 'title',
-        7 => 'field_core_legacy_link',
+        3 => 'field_publication_type',
+        5 => 'title',
+        8 => 'field_core_legacy_link',
       ),
       'top' => array(
         1 => 'field_core_publications',
-        3 => 'field_core_date_published',
-        5 => 'field_publication_authors',
-        6 => 'field_publication_referenceno',
-        8 => 'group_publication_contextual',
-        9 => 'field_core_topics',
+        4 => 'field_core_date_published',
+        6 => 'field_publication_authors',
+        7 => 'field_publication_referenceno',
+        9 => 'group_publication_contextual',
+        10 => 'field_core_topics',
       ),
       'central' => array(
-        10 => 'group_publication_body',
-        11 => 'group_publication_file',
-        12 => 'body',
-        13 => 'group_publication_related',
-        14 => 'field_core_files',
-        15 => 'field_core_departments',
-        16 => 'group_publication_contact',
+        2 => 'field_core_contact',
+        11 => 'group_publication_body',
+        12 => 'group_publication_file',
+        13 => 'body',
+        14 => 'group_publication_related',
+        15 => 'field_core_files',
+        16 => 'field_core_departments',
+        17 => 'group_publication_contact',
       ),
     ),
     'fields' => array(
       'group_publication_meta' => 'left_header',
       'field_core_publications' => 'top',
+      'field_core_contact' => 'central',
       'field_publication_type' => 'left_header',
       'field_core_date_published' => 'top',
       'title' => 'left_header',

@@ -7651,6 +7651,7 @@ Markup: html/icon.html
 .icon--up - Up icon
 .icon--right - Right icon
 .icon--down - Down icon
+.icon--down-blue - Down icon, blue
 .icon--left - Left icon
 .icon--file - File icon
 .icon--audio - Audio icon
@@ -7747,8 +7748,13 @@ Styleguide: icon
 .icon--breadcrumb, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
   content: '\e617' !important; }
 
-.icon--down:before {
+.icon--down:before, .icon--down-blue:before {
   content: '\e616'; }
+
+.icon--down-blue {
+  color: #004494;
+  padding-left: 0.2em;
+  padding-top: 0.1em; }
 
 .icon--left:before {
   content: '\e619'; }
