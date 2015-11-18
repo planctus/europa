@@ -41,6 +41,19 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_files' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'paragraph',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'field_core_topics' => array(
       'formatter_settings' => array(
         'ft' => array(
