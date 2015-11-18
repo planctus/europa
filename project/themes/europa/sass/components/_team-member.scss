@@ -1,11 +1,11 @@
-.team-member-list .list__item {
-  border: none;
+.listing__wrapper  {
+  max-width: 40em;
+
+  border-bottom: 1px solid #e2e2e2;
 }
 
 .team-member {
-  max-width: 40em;
   padding: 1.2em 0;
-  border-bottom: 1px solid #e2e2e2;
 
   .team-member__name {
     font-weight: 600;

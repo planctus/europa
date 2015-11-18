@@ -163,7 +163,7 @@ function cwt_team_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $export['team_attachments'] = $view;
 
-   $view = new view();
+  $view = new view();
   $view->name = 'team_cabinet_contact';
   $view->description = '';
   $view->tag = 'default';
@@ -283,19 +283,15 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'team-contact-address-wrapper';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
-  /* Field: Content: Press contact */
-  $handler->display->display_options['fields']['field_biography_press_contact']['id'] = 'field_biography_press_contact';
-  $handler->display->display_options['fields']['field_biography_press_contact']['table'] = 'field_data_field_biography_press_contact';
-  $handler->display->display_options['fields']['field_biography_press_contact']['field'] = 'field_biography_press_contact';
-  $handler->display->display_options['fields']['field_biography_press_contact']['relationship'] = 'reverse_field_biography_team_node';
-  $handler->display->display_options['fields']['field_biography_press_contact']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['text'] = '<a hef="#" class="btn btn-default">Media enquiries</a>';
-  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['path'] = '#';
-  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['link_class'] = 'btn btn-default';
-  $handler->display->display_options['fields']['field_biography_press_contact']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_biography_press_contact']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_biography_press_contact']['element_default_classes'] = FALSE;
+  /* Field: Content: Media enquiries */
+  $handler->display->display_options['fields']['field_team_media_enquiries']['id'] = 'field_team_media_enquiries';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['table'] = 'field_data_field_team_media_enquiries';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['field'] = 'field_team_media_enquiries';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['label'] = '';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_team_media_enquiries']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_team_media_enquiries']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['type'] = 'link_button_default';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -601,7 +597,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Team members';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'container-fluid';
+  $handler->display->display_options['css_class'] = 'team-member-list';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
