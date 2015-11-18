@@ -90,19 +90,19 @@ function theme_nexteuropa_bem_item_list($variables) {
  * @param array $variables
  *   Contains the data. Expects: $variables['node']->field_core_file.
  *
- * @return mixed
- *   Markup for success, or $variables as a fallback.
+ * @return string
+ *   Markup of translations.
  */
 function theme_nexteuropa_file_translations($variables) {
   $files = $variables['node']->field_core_file;
   $nid = $variables['node']->nid;
   $files_count = count($files);
   if ($files_count) {
-    $output = "<div class='file__translations'>";
     if ($files_count < 2) {
-      return $variables;
+      return '';
     }
     else {
+      $output = "<div class='file__translations'>";
       // Building the link.
       $link = array(
         '#type' => 'link',
@@ -150,9 +150,8 @@ function theme_nexteuropa_file_translations($variables) {
         );
       }
       $output .= theme_table($table);
+      $output .= "</div>";
+      return $output;
     }
-    $output .= "</div>";
-    return $output;
   }
-  return $variables;
 }
