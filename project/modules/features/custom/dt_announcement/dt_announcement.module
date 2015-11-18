@@ -74,7 +74,7 @@ function dt_announcement_views_pre_render(&$view) {
 
       if ((int) $view->total_rows <= 4){
         if (drupal_is_front_page()){
-          $alter_button_text = t('All latest announcements');
+          $alter_button_text = t('All news');
         }
       }
       else {
