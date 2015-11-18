@@ -165,8 +165,8 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'field_announcement_location',
-      2 => 'post_date',
+      1 => 'post_date',
+      2 => 'sticky_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

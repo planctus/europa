@@ -101,9 +101,9 @@ bin/phing deliver
 ##### From the submodule:
 
 *   Stages all changes
-*   Commits changes to <code>acquia.repo.project.branch</code> branch of the Acquia Cloud repository
+*   Commits changes to <code>master</code> branch of the Acquia Cloud repository
 *   Creates a tag with a name you input when prompted
-*   Pushes your changes to the Acquia Cloud repository remote. (In case the proper branch is selected on the DEV instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
+*   Pushes your changes to the Acquia Cloud repository remote. (In case the master branch is selected on the corresponding instance the code will be automatically deployed, otherwise you can always choose a tag. See Acquia Cloud back office.)
 
 ### Simplified deployment to Acquia Cloud
 
@@ -121,7 +121,7 @@ bin/phing ac-deploy
 
 I would suggest deliveries to be made only from the develop or master branch. Submodule needs to be first initialized/updated in every branch separately.
 
-After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit of the <code>acquia.repo.project.branch</code> branch by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
+After delivering the code to the Acquia Cloud the submodule needs to be updated to the current commit by running <code>git add acquia-cloud</code> so we have a trace of every delivery in our project as well, not only in the Acquia Cloud repository.
 
 ### Restore your local instance using the Acquia Cloud database:
 

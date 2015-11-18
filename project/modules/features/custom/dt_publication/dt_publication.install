@@ -117,3 +117,34 @@ function dt_publication_update_7107() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * NEXTEUROPA-4904: Changing fields.
+ */
+function dt_publication_update_7108() {
+  // Create several field bases.
+  features_revert_module('dt_core');
+  // Update fields in the publication content type.
+  features_revert_module('dt_publication');
+
+  // Migrate content between fields that are renamed.
+  _dt_core_field_value_copy('node', 'publication', 'field_publication_published_on', 'field_core_date_published');
+  _dt_core_field_value_copy('node', 'publication', 'field_publication_contact', 'field_core_contact');
+
+  // Remove deprecated fields, which are already migrated.
+  $deprecated_instances = array(
+    'field_core_introduction',
+    'field_publication_published_on',
+    'field_publication_contact',
+  );
+
+  foreach($deprecated_instances as $field_name) {
+    if ($instance = field_info_instance('node', $field_name, 'publication')) {
+      field_delete_instance($instance);
+    }
+  }
+
+  // Removing deprecated field group.
+  $group_publication_source = field_group_load_field_group('group_publication_source', 'node', 'publication', 'form');
+  field_group_group_export_delete($group_publication_source, FALSE);
+}

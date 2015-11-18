@@ -605,101 +605,152 @@ function _dt_core_enable_lanugages($languages = array()) {
  */
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
+}
 
-  // Handle the header background image.
-  if (isset($node->field_core_header_image) && isset($node->nid)) {
-    // We want to store those css files in a specific path.
-    $dir = 'public://css/header-backgrounds/';
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * This has been preferred to a hook_presave() implementation since
+ * it will provide the nid which is used to generate the filenames for
+ * the header background css.
+ */
+function dt_core_form_node_form_alter(&$form, &$form_state) {
+  // Add a callback to the node form submit.
+  $form['actions']['submit']['#submit'][] = '_dt_core_node_submit_callback';
+}
+
+/**
+ * Additional submit handler for the node form.
+ */
+function _dt_core_node_submit_callback($form, $form_state) {
+  // If we have the core_header_image field, handle it.
+  $node = $form_state['node'];
+  if (isset($node->field_core_header_image)) {
+    _dt_core_handle_header_background($node);
+  }
+}
+
+/**
+ * Handle the header background image in a workbench moderated env.
+ */
+function _dt_core_handle_header_background($node) {
+  // Entity wrapper.
+  $entity_wrapper = entity_metadata_wrapper('node', $node);
+  // Current state.
+  $curr = $node->workbench_moderation_state_current;
+  // New state.
+  $new = $node->workbench_moderation_state_new;
+  // Published.
+  $pub = 'published';
+  // We want to store those css files in a specific path.
+  $dir = 'public://css/header-backgrounds/';
+  // Build the uri for our css file.
+  $state = $new != $pub ? 'draft' : 'pub';
+  $uri = $dir . 'header_background_node_' . $node->nid . '_' . $state . '.css';
+  // Get the real path basing on the uri.
+  $filepath = drupal_realpath($uri);
+  // Delete the draft file if this is going to be published.
+  if ($state == 'pub') {
+    $file = drupal_realpath($dir . 'header_background_node_' . $node->nid . '_draft.css');
+    if (file_exists($file)) {
+      unlink($file);
+    }
+  }
+  // Check if we have an image, if we don't we delete an existing file.
+  if (NULL !== $entity_wrapper->field_core_header_image->value()) {
     // Prepare the filesystem.
     file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
-    // Build the uri for our css file.
-    $uri = $dir . 'header_background_node_' . $node->nid . '.css';
-    // Get the real path basing on the uri.
-    $filepath = drupal_realpath($uri);
-    // Check if the file exists.
-    $existing  = file_get_contents($filepath);
-    // Check if there is an image.
-    $header_back = isset($node->field_core_header_image['und'][0]['fid']);
+    // We need the file uri.
+    $file = file_load($entity_wrapper->field_core_header_image->value()['fid']);
+    // Get all the breakpoints belonging to "this" theme.
+    $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
+    // Need to reverse the order of the breakpoint, mobile first.
+    $breakpoints = array_reverse($breakpoints);
+    // Get all the images presets.
+    $styles = image_styles();
+    // Get the presets name.
+    $style_names = array_keys($styles);
+    // Filter the ones regarding the header image.
+    $header_styles = preg_grep('#^header_image*#', $style_names);
+    // Prepare containers.
+    $mapping = array();
+    $css = '';
 
-    // Remove the css if one is found but the field is empty.
-    if (!$header_back && $existing) {
-      unlink($filepath);
-    }
-
-    // Without breakpoints this would not make much sense.
-    elseif ($header_back && module_exists('breakpoints')) {
-      // We need the file uri.
-      $file = file_load($node->field_core_header_image['und'][0]['fid']);
-      // Get all the breakpoints belonging to "this" theme.
-      $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
-      // Need to reverse the order of the breakpoint, mobile first.
-      $breakpoints = array_reverse($breakpoints);
-      // Get all the images presets.
-      $styles = image_styles();
-      // Get the presets name.
-      $style_names = array_keys($styles);
-      // Filter the ones regarding the header image.
-      $header_styles = preg_grep('#^header_image*#', $style_names);
-      // Prepare containers.
-      $mapping = array();
-      $css = '';
-
-      foreach ($breakpoints as $breakpoint) {
-        $name = $breakpoint->machine_name;
-        // Get the key to find correspondencies in the image presets.
-        $breakpoint_key = substr($name, strrpos($name, '.') + 1);
-        // Get the styles related to this breakpoint.
-        $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
-        if (!empty($style_names_breakpoint)) {
-          // We base on the multiplier.
-          sort($style_names_breakpoint);
-          foreach ($style_names_breakpoint as $style_name) {
-            // Build an array mapping the breakpoints media queries and the
-            // image url.
-            $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $file->uri);
-          }
+    foreach ($breakpoints as $breakpoint) {
+      $name = $breakpoint->machine_name;
+      // Get the key to find correspondencies in the image presets.
+      $breakpoint_key = substr($name, strrpos($name, '.') + 1);
+      // Get the styles related to this breakpoint.
+      $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
+      if (!empty($style_names_breakpoint)) {
+        // We base on the multiplier.
+        sort($style_names_breakpoint);
+        foreach ($style_names_breakpoint as $style_name) {
+          // Build an array mapping the breakpoints media queries and the
+          // image url.
+          $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $file->uri);
         }
-        // Create the css rules for each breakpoint.
-        $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
-        $css .= ' .page-header--image {' . PHP_EOL;
-        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] . '");' . PHP_EOL;
-        $css .= ' }' . PHP_EOL;
-        $css .= '}' . PHP_EOL;
-        $css .= PHP_EOL;
-
-        // High resolution displays.
-        $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
-        $css .= ' .page-header--image {' . PHP_EOL;
-        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] . '");' . PHP_EOL;
-        $css .= ' }' . PHP_EOL;
-        $css .= '}' . PHP_EOL;
-        $css .= PHP_EOL;
       }
+      // Create the css rules for each breakpoint.
+      $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
+      $css .= ' .page-header--image {' . PHP_EOL;
+      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] . '");' . PHP_EOL;
+      $css .= ' }' . PHP_EOL;
+      $css .= '}' . PHP_EOL;
+      $css .= PHP_EOL;
 
-      // Act only if something has been changed or if the file doesn't exist
-      // yet.
-      if ($existing != $css) {
-        file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
-      }
+      // High resolution displays.
+      $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
+      $css .= ' .page-header--image {' . PHP_EOL;
+      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] . '");' . PHP_EOL;
+      $css .= ' }' . PHP_EOL;
+      $css .= '}' . PHP_EOL;
+      $css .= PHP_EOL;
+    }
+    // Save the file.
+    file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
+  }
+
+  else {
+    if (file_exists($filepath)) {
+      unlink($filepath);
     }
   }
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements template_preprocess_node().
  */
-function dt_core_preprocess_page(&$variables) {
-  $node = &$variables['node'];
-  // Handle the header background image.
-  if (isset($node) && isset($node->field_core_header_image)) {
+function dt_core_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
+      // This is how it should be but workbench_moderation will show a draft
+      // state even for a published revision which has been used to start a
+      // new revision in draft.
+      $state = $node->workbench_moderation['current']->state == 'published' ? 'pub' : 'draft';
+      // Basically the drafts path is based on the system path for nodes.
+      $state = NULL !== arg(2) ? 'draft' : 'pub';
       // Set a variable available in the tpls.
-      $variables['node']->header_back = TRUE;
+      $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $node->nid . '.css';
+      $uri = $dir . 'header_background_node_' . $variables['node']->nid . '_' . $state . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
+    }
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function dt_core_node_delete($node) {
+  if (isset($node->field_core_header_image) && isset($node->nid)) {
+    $uri = 'public://css/header-backgrounds/';
+    $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
+    foreach (glob($dir) as $file) {
+      unlink($file);
     }
   }
 }
@@ -721,6 +772,9 @@ function dt_core_context_load_alter(&$context) {
   }
 }
 
+/**
+ * TBA.
+ */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
   if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
@@ -947,6 +1001,29 @@ function dt_core_views_query_alter(&$view, &$query) {
 }
 
 /**
+ * Get the final content language after applying translations and fallbacks.
+ */
+function _dt_core_content_language($node) {
+  // Load potential relevant languages in the correct fallback order.
+  $content_language_order = _dt_core_content_language_order();
+  $content_language = $node->language;
+  // Find first available translation that is applicable.
+  if (!empty($content_language_order)) {
+    foreach ($content_language_order as $language_code) {
+      $translation = entity_translation_get_existing_language('node', $node, $language_code);
+      // We have a translation so lets use it.
+      if ($translation == $language_code) {
+        $content_language = $language_code;
+        break;
+      }
+      $content_language = $translation;
+    }
+  }
+
+  return $content_language;
+}
+
+/**
  * Get the languages that are applicable in the right order of fallback.
  */
 function _dt_core_content_language_order() {
@@ -960,6 +1037,7 @@ function _dt_core_content_language_order() {
   $parameters = drupal_get_query_parameters();
   // Check if the 2nd-language parameter is set.
   if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
+    // Extend maximum to include the 2nd-language.
     $max_languages = 2;
   }
   // Get the maximum extra languages.
@@ -1066,3 +1144,62 @@ function dt_core_preprocess_views_view(&$variables) {
     $variables['items_count'] = $items_count;
   }
 }
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function dt_core_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['sticky_label'] = array(
+    'title' => t('Sticky label'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_core_ds_fields_stick_label',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _dt_core_ds_fields_stick_label($field) {
+  if (isset($field['entity']->sticky) && $field['entity']->sticky) {
+    return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
+  }
+}
+
+/**
+ * Helper: fixes the language of a field.
+ * @param $field_name string
+ */
+function _dt_core_fix_field_language($field_name) {
+  $language_default = language_default();
+  $lang_code = $language_default->language;
+
+  $query = "SELECT language, entity_id FROM " .
+    'field_data_' . $field_name .
+    " AS fdfb WHERE language = 'und' AND (SELECT count(*) FROM " .
+    'field_data_' . $field_name .
+    " WHERE entity_id = fdfb.entity_id GROUP BY entity_id ) = 1";
+  $data = db_query($query)->fetchAll();
+
+  foreach ($data as $key => $value) {
+    db_update('field_data_' . $field_name)
+      ->fields(array(
+        'language' => $lang_code,
+      ))
+      ->condition('entity_id', $value->entity_id)
+      ->condition('language', 'und', '=')
+      ->execute();
+
+    db_update('field_revision_' . $field_name)
+      ->fields(array(
+        'language' => $lang_code,
+      ))
+      ->condition('entity_id', $value->entity_id)
+      ->condition('language', 'und', '=')
+      ->execute();
+  }
+}
+

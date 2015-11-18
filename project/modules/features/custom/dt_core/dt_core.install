@@ -39,40 +39,6 @@ function dt_core_uninstall() {
 }
 
 /**
- * Helper: fixes the language of a field.
- * @param $field_name string
- */
-function _dt_core_fix_field_language($field_name) {
-  $language_default = language_default();
-  $lang_code = $language_default->language;
-
-  $query = "SELECT language, entity_id FROM " .
-           'field_data_' . $field_name .
-           " AS fdfb WHERE language = 'und' AND (SELECT count(*) FROM " .
-           'field_data_' . $field_name .
-           " WHERE entity_id = fdfb.entity_id GROUP BY entity_id ) = 1";
-  $data = db_query($query)->fetchAll();
-
-  foreach ($data as $key => $value) {
-    db_update('field_data_' . $field_name)
-      ->fields(array(
-        'language' => $lang_code,
-      ))
-      ->condition('entity_id', $value->entity_id)
-      ->condition('language', 'und', '=')
-      ->execute();
-
-    db_update('field_revision_' . $field_name)
-      ->fields(array(
-        'language' => $lang_code,
-      ))
-      ->condition('entity_id', $value->entity_id)
-      ->condition('language', 'und', '=')
-      ->execute();
-  }
-}
-
-/**
  * Enabling About the EC and Strategy classes and also Homepage Core feature.
  */
 function dt_core_update_7101() {
@@ -665,9 +631,35 @@ function dt_core_update_7146() {
 }
 
 /**
-* NEXTEUROPA-6315: Make fields translatable.
-*/
+ * Enabling dt_shared_functions module.
+ */
 function dt_core_update_7147() {
+  module_enable(array('dt_shared_functions'));
+}
+
+/**
+ * NEXTEUROPA-4834: Update features for the modified timeline.
+ */
+function dt_core_update_7148() {
+  $features = array(
+    'dt_page',
+    'dt_policy',
+    'dt_pri_policy_area_default',
+    'dt_priority_default',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+}
+
+/**
+ * NEXTEUROPA-6315: Make fields translatable.
+ */
+function dt_core_update_7149() {
   // DT features.
   $features = array(
     'dt_class',
@@ -678,7 +670,7 @@ function dt_core_update_7147() {
     'dt_policy',
     'dt_publication',
     'dt_social_network_links',
-    'nexteuropa_file'
+    'nexteuropa_file',
   );
 
   // Reverting the features.
@@ -691,9 +683,9 @@ function dt_core_update_7147() {
 }
 
 /**
-* NEXTEUROPA-6315: Fix language code for existing content in the fields.
-*/
-function dt_core_update_7148() {
+ * NEXTEUROPA-6315: Fix language code for existing content in the fields.
+ */
+function dt_core_update_7150() {
   // Global fields.
   foreach (field_info_fields() as $f_name => $field) {
     switch ($field['field_name']) {
@@ -708,7 +700,7 @@ function dt_core_update_7148() {
     }
   }
 
-  // DT project-specific fields
+  // DT project-specific fields.
   $dt_fields = array(
     'field_banner_caption',
     'field_banner_video_file',
@@ -721,7 +713,7 @@ function dt_core_update_7148() {
     'field_policy_caption',
     'field_policy_featured_file',
     'field_social_network_classname',
-    'field_core_file'
+    'field_core_file',
   );
 
   foreach ($dt_fields as $fld_name) {

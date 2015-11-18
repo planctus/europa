@@ -97,6 +97,9 @@
 <header class="site-header" role="banner">
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
+    <?php if($is_front): ?>
+      <p class="site-slogan"><?php print $site_slogan; ?></p>
+    <?php endif; ?>
 
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
@@ -157,13 +160,17 @@
       <div class="row padding-reset">
         <div class="col-lg-9">
           <?php print render($title_prefix); ?>
-          <h1>
-              <?php if (drupal_is_front_page() && !empty($site_name)): ?>
-                <?php print $site_name; ?>
-              <?php elseif (!empty($title)): ?>
-                <?php print $title; ?>
-              <?php endif; ?>
-          </h1>
+          <?php if (isset($page['custom_title'])): ?>
+            <?php print render($page['custom_title']); ?>
+          <?php else: ?>
+            <h1>
+                <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+                  <?php print $site_name; ?>
+                <?php elseif (!empty($title)): ?>
+                  <?php print $title; ?>
+                <?php endif; ?>
+            </h1>
+          <?php endif; ?>
           <?php print render($title_suffix); ?>
 
           <?php if(!empty($field_core_introduction)): ?>

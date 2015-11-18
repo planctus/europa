@@ -35,7 +35,7 @@ function _commissioner_bundle_forms($bundle) {
   }
 
   $forms = array(
-    'singular' => strtolower($singular),
+    'singular' => ucfirst(strtolower($singular)),
     'plural' => $plural,
   );
 
@@ -52,14 +52,14 @@ function commissioner_preprocess_views_view(&$variables) {
     $variables['feed_link'] = $view->feed_link;
   }
 
-  if (isset($view->filter['type']) && ($view->current_display != 'block')) {
+  if (isset($view->filter['type']) && ($view->display_handler->plugin_name == 'page')) {
     $variables['items_count'] = '';
 
     $content_type = array_shift($view->filter['type']->value);
 
     // Checking if .listing exists in classes_array so that result count can be
     // displayed.
-    if ($view->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    if ($view->plugin_name == 'nexteuropa_bem_listing') {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
@@ -71,6 +71,11 @@ function commissioner_preprocess_views_view(&$variables) {
       else {
         $items_count = $total_rows . ' ' .
           format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+      }
+
+      // If there is a suffix add it here.
+      if (isset($view->items_count['#suffix'])) {
+        $items_count .= ' ' . $view->items_count['#suffix'];
       }
 
       $variables['items_count'] = $items_count;
@@ -139,6 +144,7 @@ function commissioner_preprocess_comment(&$variables) {
  * Adding bootstrap tab styles to quicktabs.
  *
  * @ingroup themeable
+ *
  * @see theme_qt_quicktabs_tabset()
  */
 function commissioner_qt_quicktabs_tabset($variables) {
@@ -209,7 +215,6 @@ function commissioner_pager_link($variables) {
   //   none of the pager links is active at any time - but it should still be
   //   possible to use l() here.
   // @see http://drupal.org/node/1410574
-
   // Fix pager for rewritten URLs.
   // @see commissioners_url_inbound_alter().
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
@@ -265,8 +270,16 @@ function commissioner_preprocess_block(&$variables) {
  * Implements template_preprocess_field().
  */
 function commissioner_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] == 'social_media' && $variables['element']['#bundle'] == 'aggregated_news') {
-    $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+  if ($variables['element']['#field_name'] == 'social_media') {
+    switch ($variables['element']['#bundle']) {
+      case 'aggregated_news':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this article post on:') . '</span>';
+        break;
+
+      case 'commisioner_blog_post':
+        $variables['items'][0]['#prefix'] = '<span class="social-media-links__label">' . t('Share this blog post:') . '</span>';
+        break;
+    }
   }
 }
 
@@ -371,7 +384,7 @@ function commissioner_page_alter(&$page) {
   }
   else {
     if (user_access('administer site configuration')) {
-      drupal_set_message(t('Please select the IPG classification of your site') . ' ' . l(t('here.'), 'admin/config/system/site-information'), 'warning');
+      drupal_set_message(t('Please select the IPG classification of your site %link', array('%link' => l(t('here.'))), 'admin/config/system/site-information'), 'warning');
     }
   }
 
@@ -541,6 +554,37 @@ function _commissioner_meta_title($node = NULL, $title = NULL) {
     $title = !$title ? '' : ($title . ' - ');
     return check_plain($title) . t('European Commission');
   }
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ *
+ * Because we use a different structure for the commissioners website we need to
+ * avoid double .file classes on file entity's.
+ */
+function commissioner_preprocess_file_entity(&$variables) {
+  if ($variables['view_mode'] == 'default') {
+    if (($key = array_search('file', $variables['classes_array'])) !== FALSE) {
+      unset($variables['classes_array'][$key]);
+    }
+  }
+}
+
+/**
+ * Override theme_file_link().
+ */
+function commissioner_file_link($variables) {
+  $file = $variables['file'];
+  $url['path'] = file_create_url($file->uri);
+  $url['options'] = array();
+
+  // Apply the modifier if needed. Currently it's only on the front page. If on
+  // a later stage, we need this everywhere, we should make this modifier the
+  // default.
+  $modifier = drupal_is_front_page() ? 'file--widebar' : FALSE;
+
+  return _europa_file_markup($file, $url, $modifier);
+
 }
 
 /**
