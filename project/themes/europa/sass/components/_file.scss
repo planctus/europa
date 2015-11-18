@@ -132,8 +132,10 @@ Styleguide file
 
   .file__translations-table {
     tr:last-child {
-      border-bottom: 1px solid $grey;
-      margin-bottom: 0.3em;
+      .file {
+        border-bottom: 1px solid $grey;
+        margin-bottom: 0.3em;
+      }
     }
   }
 }

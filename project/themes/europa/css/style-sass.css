@@ -7368,7 +7368,7 @@ Styleguide file
   .file__translations .file__translations-control {
     margin-bottom: 0.3em;
     padding: 0 1.333em; }
-  .file__translations .file__translations-table tr:last-child {
+  .file__translations .file__translations-table tr:last-child .file {
     border-bottom: 1px solid #b3b4b5;
     margin-bottom: 0.3em; }
 
