@@ -291,6 +291,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           case 'date':
           case 'datestamp':
           case 'datetime':
+            // @TODO: Make date format flexible based on formatter options.
             foreach ($items as $delta => $item) {
               $node_wrapper = entity_metadata_wrapper('node', $entity);
               if (isset($node_wrapper->field_core_date_updated)) {
@@ -697,7 +698,7 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
  */
 function _nexteuropa_formatters_attach_translations($item) {
   $node = node_load(key($item['node']));
-  return theme('file_translations', array('node' => $node));
+  return theme('nexteuropa_file_translations', array('node' => $node));
 }
 
 /**

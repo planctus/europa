@@ -21,7 +21,7 @@ function nexteuropa_formatters_theme($existing, $type, $theme, $path) {
         'attributes' => array(),
       ),
     ),
-    'file_translations' => array(
+    'nexteuropa_file_translations' => array(
       'file' => 'nexteuropa_formatters.theme.inc',
       'variables' => array(
         'files' => array(),

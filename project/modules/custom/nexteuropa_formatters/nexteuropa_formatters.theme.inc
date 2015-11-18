@@ -93,7 +93,7 @@ function theme_nexteuropa_bem_item_list($variables) {
  * @return mixed
  *   Markup for success, or $variables as a fallback.
  */
-function theme_file_translations($variables) {
+function theme_nexteuropa_file_translations($variables) {
   $files = $variables['node']->field_core_file;
   $nid = $variables['node']->nid;
   $files_count = count($files);
@@ -108,6 +108,7 @@ function theme_file_translations($variables) {
         '#type' => 'link',
         '#options' => array(
           'fragment' => 'file__translations-' . $nid,
+          'html' => TRUE,
         ),
         '#attributes' => array(
           'class' => array(''),
@@ -116,8 +117,8 @@ function theme_file_translations($variables) {
           'aria-controls' => array('file__translations-' . $nid),
           'title' => t('Click to see translations'),
         ),
-        '#title' => t('All languages @count', array('@count' => $files_count)),
-        '#suffix' => '<span class="icon icon--down-blue"></span>',
+        '#title' => t("All languages @count", array('@count' => $files_count))
+        . " <span class='icon icon--down-blue'></span>",
       );
       // Attaching the link.
       $output .= render($link);
