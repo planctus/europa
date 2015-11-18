@@ -88,20 +88,30 @@ function theme_nexteuropa_bem_item_list($variables) {
  * Returns markup for a list of file translations.
  *
  * @param array $variables
- *   Contains the data. Expects: $variables['node']->field_core_file.
+ *   Accepts: $variables['node']->field_core_file.
+ *   Accepts: $variables['files'].
  *
  * @return string
  *   Markup of translations.
  */
 function theme_nexteuropa_file_translations($variables) {
-  $files = $variables['node']->field_core_file;
-  $nid = $variables['node']->nid;
+  if (isset($variables['files'])) {
+    $files = $variables['files'];
+  }
+  elseif (isset($variables['node']->field_core_file)) {
+    $files = $variables['node']->field_core_file;
+  }
+  else {
+    $files = array();
+  }
   $files_count = count($files);
+
   if ($files_count) {
     if ($files_count < 2) {
       return '';
     }
     else {
+      $nid = $variables['node']->nid;
       $output = "<div class='file__translations'>";
       // Building the link.
       $link = array(
@@ -132,7 +142,8 @@ function theme_nexteuropa_file_translations($variables) {
         ),
       );
       foreach ($files as $lang => $file) {
-        $language = _nexteuropa_formatters_get_language_name($lang);
+        $languages = locale_language_list();
+        $language = isset($languages[$lang]) ? $languages[$lang] : NULL;;
         $file_info = reset($file);
         $file_object = file_load($file_info['fid']);
         $file_object->filename = t('@language version', array('@language' => $language));
