@@ -836,7 +836,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
-        'settings' => array(),
+        'settings' => array(
+          'modifier' => 'timeline--nopadding',
+        ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
       ),

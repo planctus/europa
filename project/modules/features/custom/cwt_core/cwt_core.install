@@ -481,3 +481,10 @@ function cwt_core_update_7133() {
 function cwt_core_update_7134() {
   module_enable(array('dt_shared_functions'));
 }
+
+/**
+ * NEXTEUROPA-4834: Feature revert cwt_biography.
+ */
+function cwt_core_update_7135() {
+  features_revert_module('cwt_biography');
+}
