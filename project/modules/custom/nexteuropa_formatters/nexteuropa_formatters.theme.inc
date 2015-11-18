@@ -111,7 +111,7 @@ function theme_nexteuropa_file_translations($variables) {
           'html' => TRUE,
         ),
         '#attributes' => array(
-          'class' => array(''),
+          'class' => array('file__translations-control', 'pull-right'),
           'data-toggle' => array('collapse'),
           'aria-expanded' => array('false'),
           'aria-controls' => array('file__translations-' . $nid),
@@ -127,7 +127,7 @@ function theme_nexteuropa_file_translations($variables) {
       $table = array(
         'rows' => array(),
         'attributes' => array(
-          'class' => array('collapse'),
+          'class' => array('collapse', 'pull-right', 'file__translations-table'),
           'id' => array('file__translations-' . $nid),
         ),
       );
