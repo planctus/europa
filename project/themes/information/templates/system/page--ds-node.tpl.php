@@ -108,7 +108,10 @@
 <header class="site-header" role="banner">
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
-    <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
+    <?php if($is_front): ?>
+      <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
+    <?php endif; ?>
+
     <?php if (!empty($page['header'])): ?>
       <section class="top-bar" aria-label="Site tools">
         <div>
