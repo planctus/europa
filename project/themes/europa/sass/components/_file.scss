@@ -115,6 +115,10 @@ Styleguide file
   }
 }
 
+.file__translations {
+
+}
+
 @include breakpoint(screen-msm-min) {
   .file__metadata,
   .file__btn {
