@@ -1,6 +1,11 @@
+.team-member-list .list__item {
+  border: none;
+}
+
 .team-member {
   max-width: 40em;
   padding: 1.2em 0;
+  border-bottom: 1px solid #e2e2e2;
 
   .team-member__name {
     font-weight: 600;
@@ -45,8 +50,13 @@
 
   .team-member-bottom-wrapper,
   .team-member__social {
-    vertical-align: top;
-    display: -webkit-inline-flex;
-    display: inline-flex;
+    display: inline-block;
   }
+}
+
+.team__label {
+  float: left;
+  width: 100%;
+  margin: 2.5em 0 0;
+  padding-left: 0;
 }

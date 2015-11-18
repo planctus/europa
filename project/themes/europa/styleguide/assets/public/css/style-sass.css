@@ -7913,6 +7913,7 @@ Markup: html/labels.html
 .label--danger - Danger
 .label--upper - Danger
 .label--highlight - Highlight
+.label--aligned - Aligned
 
 Styleguide labels
 */
@@ -7940,7 +7941,8 @@ Styleguide labels
   color: #fff; }
 
 .label--upper {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: left; }
 
 .label--highlight {
   color: #404040;
@@ -7956,13 +7958,16 @@ Styleguide labels
   margin-right: 0.8em;
   position: relative; }
 
-.label--aligned {
+.label--aligned, .label--aligned--top {
   display: inline-block;
   width: 12em;
   text-align: left;
   font-weight: bold;
   font-size: 0.9em;
   padding-left: 0; }
+
+.label--aligned--top {
+  vertical-align: top; }
 
 /*
 Language select (Site)
@@ -8723,9 +8728,13 @@ Styleguide page-header
 .front .page-header {
   padding: 0; }
 
+.team-member-list .list__item {
+  border: none; }
+
 .team-member {
   max-width: 40em;
-  padding: 1.2em 0; }
+  padding: 1.2em 0;
+  border-bottom: 1px solid #e2e2e2; }
   .team-member .team-member__name {
     font-weight: 600;
     margin-top: 0; }
@@ -8750,23 +8759,38 @@ Styleguide page-header
         display: none; }
   .team-member .team-member-bottom-wrapper,
   .team-member .team-member__social {
-    vertical-align: top;
-    display: -webkit-inline-flex;
-    display: inline-flex; }
+    display: inline-block; }
+
+.team__label {
+  float: left;
+  width: 100%;
+  margin: 2.5em 0 0;
+  padding-left: 0; }
 
 .under-header {
-  background: #ececec;
-  padding: 2em; }
-  .under-header picture {
-    float: right; }
+  background: #f2f2f2;
+  padding: 1.5em; }
+  .under-header .listing__item {
+    border: none;
+    overflow: visible; }
 
-.team-contact__email {
+.team-contact picture {
+  float: right;
+  margin-top: -2em; }
+
+.team-contact .label {
+  margin-bottom: 0.5em; }
+
+.team-contact .label--aligned, .team-contact .label--aligned--top {
+  width: 7em;
+  padding-right: 0; }
+
+.team-contact .btn-default {
+  margin: 1.5em 0 0 7em; }
+
+.team-contact .team-contact__email,
+.team-contact .team-contact__address {
   display: inline-block; }
-
-.views-field-field-biography-address-thoroughfare,
-.views-field-field-biography-address-locality,
-.views-field-field-biography-address-country {
-  margin-left: 11em; }
 
 /*
 Pager

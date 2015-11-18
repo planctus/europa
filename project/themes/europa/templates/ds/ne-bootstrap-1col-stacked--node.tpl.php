@@ -37,9 +37,7 @@
   <?php if ($node->type == 'team'): ?>
   <div class="under-header">
     <div class="container-fluid">
-      <div class="row">
-        <?php print $top; ?>
-      </div>
+      <?php print $top; ?>
     </div>
   </div>
   <?php endif; ?>

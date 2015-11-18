@@ -11,6 +11,7 @@ Markup: html/labels.html
 .label--danger - Danger
 .label--upper - Danger
 .label--highlight - Highlight
+.label--aligned - Aligned
 
 Styleguide labels
 */
@@ -55,6 +56,7 @@ $label_text_color_light: #fff;
 
 .label--upper {
   text-transform: uppercase;
+  text-align: left;
 }
 
 .label--highlight {
@@ -84,4 +86,9 @@ $label_text_color_light: #fff;
   font-weight: bold;
   font-size: 0.9em;
   padding-left: 0;
+}
+
+.label--aligned--top {
+  @extend .label--aligned;
+  vertical-align: top;
 }

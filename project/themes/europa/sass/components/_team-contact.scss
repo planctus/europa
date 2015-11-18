@@ -1,18 +1,35 @@
 .under-header {
-  background: #ececec;
-  padding: 2em;
+  background: $grey-lightest;
+  padding: 1.5em;
 
-  picture {
-    float: right;
+  .listing__item {
+    border: none;
+    overflow: visible;
   }
 }
 
-.team-contact__email {
-  display: inline-block;
-}
+.team-contact {
 
-.views-field-field-biography-address-thoroughfare,
-.views-field-field-biography-address-locality,
-.views-field-field-biography-address-country {
-  margin-left: 11em;
+  picture {
+    float: right;
+    margin-top: -2em;
+  }
+
+  .label {
+    margin-bottom: 0.5em;
+  }
+
+  .label--aligned {
+    width: 7em;
+    padding-right: 0;
+  }
+
+  .btn-default {
+    margin: 1.5em 0 0 7em;
+  }
+
+  .team-contact__email,
+  .team-contact__address {
+    display: inline-block;
+  }
 }

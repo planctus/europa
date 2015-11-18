@@ -4,8 +4,8 @@
  * Define the display of a custom view mode.
  */
   // Those are required fields.
-  $firstname = $content['field_biography_first_name'][0]['#markup'];
-  $lastname =  $content['field_biography_last_name'][0]['#markup'];
+  $firstname = render($content['field_biography_first_name'][0]['#markup']);
+  $lastname =  render($content['field_biography_last_name'][0]['#markup']);
 
   // Social networks, find the values to be able to print them.
   if (isset($content['field_social_networks'])) {
@@ -19,7 +19,7 @@
 
   // Phone field, we format it as a link.
   if (isset($content['field_biography_phone'])) {
-    $phone = $content['field_biography_phone'][0]['#markup'];
+    $phone = render($content['field_biography_phone'][0]['#markup']);
   }
 ?>
 <div class="team-member">
@@ -30,7 +30,7 @@
 
   <?php if (isset($content['field_biography_tagline'])): ?>
     <span class="label label--upper field">
-      <?php print $content['field_biography_tagline'][0]['#markup']; ?>
+      <?php print render($content['field_biography_tagline'][0]['#markup']); ?>
     </span>
   <?php endif; ?>
 
@@ -41,30 +41,30 @@
   <?php if (isset($content['field_biography_email'])): ?>
     <div class="team-member__email field">
       <span class="label label--aligned">
-        <?php print $content['field_biography_email']['#title']; ?>
+        <?php print render($content['field_biography_email']['#title']); ?>
       </span>
-      <?php print $content['field_biography_email'][0]['#markup']; ?>
+      <?php print render($content['field_biography_email'][0]['#markup']); ?>
     </div>
   <?php endif; ?>
 
   <?php if (isset($phone)): ?>
     <div class="team-member__phone field">
       <span class="label label--aligned">
-        <?php print $content['field_biography_phone']['#title']; ?>
+        <?php print render($content['field_biography_phone']['#title']); ?>
       </span>
-        <a href="tel:<?php print $phone ?>"><?php print $phone; ?></a>
+        <a href="tel:<?php print $phone; ?>"><?php print $phone; ?></a>
     </div>
   <?php endif; ?>
 
   <?php if (isset($social)): ?>
     <div class="team-member__social field">
-      <span class="label label--aligned">
-        <?php print $content['field_social_networks']['#title']; ?>
+      <span class="label label--aligned--top">
+        <?php print render($content['field_social_networks']['#title']); ?>
       </span>
       <div class="team-member__social_icons">
       <?php
         foreach ($social as $i) {
-          print $content['field_social_networks'][$i]['#markup'];
+          print render($content['field_social_networks'][$i]['#markup']);
         }
       ?>
       </div>
@@ -73,11 +73,11 @@
 
   </div> <!-- .team-member-top-wrapper END -->
   <div class="field team-member-bottom-wrapper">
-    <span class="label label--aligned">
-      <?php print $content['body']['#title']; ?>
+    <span class="label label--aligned--top">
+      <?php print render($content['body']['#title']); ?>
     </span>
     <div class="team-member__body">
-      <?php print $content['body'][0]['#markup']; ?>
+      <?php print render($content['body'][0]['#markup']); ?>
     </div>
   </div> <!-- .team-member-bottom-wrapper END -->
 </div>
