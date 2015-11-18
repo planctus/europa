@@ -110,7 +110,7 @@
   <div class="container-fluid">
     <a href="<?php print $front_page; ?>" class="logo site-header__logo" title="<?php print t('Home - European Commission Beta'); ?>"></a>
     <?php if($is_front): ?>
-      <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
+      <p class="site-slogan"><?php print $site_slogan; ?></p>
     <?php endif; ?>
 
     <?php if (!empty($page['header'])): ?>
