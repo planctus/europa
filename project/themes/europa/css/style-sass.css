@@ -8415,7 +8415,7 @@ Styleguide listing.agenda
 .listing--agenda .meta {
   margin-bottom: 0; }
 
-.listing--agenda .listing__meta-item {
+.listing--agenda .listing__meta__item {
   text-transform: uppercase; }
 
 .listing--agenda h3.listing__title {
