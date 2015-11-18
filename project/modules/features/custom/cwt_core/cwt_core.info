@@ -66,6 +66,7 @@ dependencies[] = uuid
 dependencies[] = views
 dependencies[] = workbench_access
 dependencies[] = wysiwyg
+dependencies[] = dt_shared_functions
 features[breakpoint_group][] = default_responsive_imags
 features[breakpoints][] = custom.user.max_width_479px
 features[breakpoints][] = custom.user.min_width_480px

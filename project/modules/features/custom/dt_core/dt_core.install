@@ -629,3 +629,10 @@ function dt_core_update_7146() {
       ->execute();
   }
 }
+
+/**
+ * Enabling dt_shared_functions module.
+ */
+function dt_core_update_7147() {
+  module_enable(array('dt_shared_functions'));
+}
