@@ -1,14 +1,14 @@
-.under-header {
+.team-contact-wrapper {
   background: $grey-lightest;
   padding: 1.5em;
+}
+
+.team-contact {
 
   .listing__item {
     border: none;
     overflow: visible;
   }
-}
-
-.team-contact {
 
   picture {
     float: right;

@@ -8767,12 +8767,13 @@ Styleguide page-header
   margin: 2.5em 0 0;
   padding-left: 0; }
 
-.under-header {
+.team-contact-wrapper {
   background: #f2f2f2;
   padding: 1.5em; }
-  .under-header .listing__item {
-    border: none;
-    overflow: visible; }
+
+.team-contact .listing__item {
+  border: none;
+  overflow: visible; }
 
 .team-contact picture {
   float: right;
