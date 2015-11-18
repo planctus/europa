@@ -34,6 +34,15 @@
     </div>
     <?php endif; ?>
   </div>
+  <?php if ($node->type == 'team'): ?>
+  <div class="under-header">
+    <div class="container-fluid">
+      <div class="row">
+        <?php print $top; ?>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
@@ -45,8 +54,9 @@
             <?php if (!empty($messages)): ?>
               <?php print $messages; ?>
             <?php endif; ?>
-
+          <?php if ($node->type != 'team'): ?>
             <?php print $top; ?>
+          <?php endif; ?>
           </section>
         <?php endif; ?>
 

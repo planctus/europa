@@ -9,6 +9,7 @@ Markup: html/labels.html
 .label--info - Info
 .label--warning - Warning
 .label--danger - Danger
+.label--upper - Danger
 .label--highlight - Highlight
 
 Styleguide labels
@@ -52,6 +53,10 @@ $label_text_color_light: #fff;
   color: $label_text_color_light;
 }
 
+.label--upper {
+  text-transform: uppercase;
+}
+
 .label--highlight {
   color: $grey-base;
   background-color: $yellow-light;
@@ -70,4 +75,13 @@ $label_text_color_light: #fff;
   top: -0.075em;
   margin-right: 0.8em;
   position: relative;
+}
+
+.label--aligned {
+  display: inline-block;
+  width: 12em;
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding-left: 0;
 }

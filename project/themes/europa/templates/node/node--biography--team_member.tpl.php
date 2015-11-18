@@ -1,0 +1,83 @@
+<?php
+/**
+ * @file
+ * Define the display of a custom view mode.
+ */
+  // Those are required fields.
+  $firstname = $content['field_biography_first_name'][0]['#markup'];
+  $lastname =  $content['field_biography_last_name'][0]['#markup'];
+
+  // Social networks, find the values to be able to print them.
+  if (isset($content['field_social_networks'])) {
+    $keys = array_keys($content['field_social_networks']);
+    $social = array_filter($keys,
+      function($n) {
+        return is_int($n);
+      }
+    );
+  }
+
+  // Phone field, we format it as a link.
+  if (isset($content['field_biography_phone'])) {
+    $phone = $content['field_biography_phone'][0]['#markup'];
+  }
+?>
+<div class="team-member">
+  <div class="team-member-top-wrapper">
+    <div class="team-member__picture field">
+      <?php print render($content['field_biography_portrait']); ?>
+    </div>
+
+  <?php if (isset($content['field_biography_tagline'])): ?>
+    <span class="label label--upper field">
+      <?php print $content['field_biography_tagline'][0]['#markup']; ?>
+    </span>
+  <?php endif; ?>
+
+    <h4 class="team-member__name field">
+      <?php print l($firstname . ' ' . $lastname, 'node/' . $node->nid); ?>
+    </h4>
+
+  <?php if (isset($content['field_biography_email'])): ?>
+    <div class="team-member__email field">
+      <span class="label label--aligned">
+        <?php print $content['field_biography_email']['#title']; ?>
+      </span>
+      <?php print $content['field_biography_email'][0]['#markup']; ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if (isset($phone)): ?>
+    <div class="team-member__phone field">
+      <span class="label label--aligned">
+        <?php print $content['field_biography_phone']['#title']; ?>
+      </span>
+        <a href="tel:<?php print $phone ?>"><?php print $phone; ?></a>
+    </div>
+  <?php endif; ?>
+
+  <?php if (isset($social)): ?>
+    <div class="team-member__social field">
+      <span class="label label--aligned">
+        <?php print $content['field_social_networks']['#title']; ?>
+      </span>
+      <div class="team-member__social_icons">
+      <?php
+        foreach ($social as $i) {
+          print $content['field_social_networks'][$i]['#markup'];
+        }
+      ?>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  </div> <!-- .team-member-top-wrapper END -->
+  <div class="field team-member-bottom-wrapper">
+    <span class="label label--aligned">
+      <?php print $content['body']['#title']; ?>
+    </span>
+    <div class="team-member__body">
+      <?php print $content['body'][0]['#markup']; ?>
+    </div>
+  </div> <!-- .team-member-bottom-wrapper END -->
+</div>
