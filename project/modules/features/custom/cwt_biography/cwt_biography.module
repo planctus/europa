@@ -102,8 +102,10 @@ function cwt_biography_block_view($delta = '') {
       $node = menu_get_object();
       $wrapper = entity_metadata_wrapper('node', $node);
       if ($node->type == 'biography' && _cwt_biography_is_contact_enabled($wrapper)) {
-        // Pattern: https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
-        $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/') . $language->language . '/' . $wrapper->field_remote_id->value();
+        // Pattern:
+        // https://webforms.edcc.eu/form/view/commissioner/[lang]/['remote_id'].
+        $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/')
+          . $language->language . '/' . $wrapper->field_remote_id->value();
         $block['content'] = '<iframe class="iframe-contact-form" src="' . $src . '"></iframe>';
         drupal_add_js(array('cwtBiography' => array('biographyName' => $node->title)), 'setting');
       }
@@ -179,7 +181,7 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
       'ffbcfcf3-2f50-4c70-a11c-936cc4385cde',
       'f7f7834a-3d60-4525-804b-439fd2d9f97a',
       'e0028e61-1cfa-4f6e-a036-4665b12ce86a',
-      'd6304632-edda-4f20-871a-0e49513adfa5'
+      'd6304632-edda-4f20-871a-0e49513adfa5',
     ), 'IN')
     ->range(0, 1);
 
@@ -189,3 +191,4 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
 
   return FALSE;
 }
+
