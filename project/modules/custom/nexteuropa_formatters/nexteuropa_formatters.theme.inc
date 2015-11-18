@@ -95,14 +95,12 @@ function theme_nexteuropa_bem_item_list($variables) {
  *   Markup of translations.
  */
 function theme_nexteuropa_file_translations($variables) {
-  if (isset($variables['files'])) {
-    $files = $variables['files'];
-  }
-  elseif (isset($variables['node']->field_core_file)) {
+//  if (isset($variables['files'])) {
+//    $files = $variables['files'];
+//  }
+  kpr($variables);
+  if (isset($variables['node']->field_core_file)) {
     $files = $variables['node']->field_core_file;
-  }
-  else {
-    $files = array();
   }
   $files_count = count($files);
 
