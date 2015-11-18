@@ -163,7 +163,7 @@ function cwt_team_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $export['team_attachments'] = $view;
 
-  $view = new view();
+   $view = new view();
   $view->name = 'team_cabinet_contact';
   $view->description = '';
   $view->tag = 'default';
@@ -175,6 +175,8 @@ function cwt_team_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Contact the team';
+  $handler->display->display_options['css_class'] = 'team-contact';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -185,6 +187,9 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'team-contact__item';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_biography_team_node']['id'] = 'reverse_field_biography_team_node';
@@ -196,15 +201,6 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['table'] = 'field_data_field_editorial_section';
   $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['field'] = 'field_editorial_section_tid_i18n';
   $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['relationship'] = 'reverse_field_biography_team_node';
-  /* Field: Taxonomy term: Team block description */
-  $handler->display->display_options['fields']['field_team_block_description']['id'] = 'field_team_block_description';
-  $handler->display->display_options['fields']['field_team_block_description']['table'] = 'field_data_field_team_block_description';
-  $handler->display->display_options['fields']['field_team_block_description']['field'] = 'field_team_block_description';
-  $handler->display->display_options['fields']['field_team_block_description']['relationship'] = 'field_editorial_section_tid_i18n';
-  $handler->display->display_options['fields']['field_team_block_description']['label'] = '';
-  $handler->display->display_options['fields']['field_team_block_description']['element_type'] = 'p';
-  $handler->display->display_options['fields']['field_team_block_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_team_block_description']['element_wrapper_class'] = 'page-description';
   /* Field: Content: Illustrative image */
   $handler->display->display_options['fields']['field_illustrative_image']['id'] = 'field_illustrative_image';
   $handler->display->display_options['fields']['field_illustrative_image']['table'] = 'field_data_field_illustrative_image';
@@ -216,47 +212,28 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_illustrative_image']['type'] = 'picture';
   $handler->display->display_options['fields']['field_illustrative_image']['settings'] = array(
     'picture_mapping' => 'team_cabinet_image',
-    'fallback_image_style' => 'listings_307x205',
+    'fallback_image_style' => 'large',
     'image_link' => '',
-    'colorbox' => 'biography_portrait_large',
   );
-  /* Field: Contact heading */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Contact heading';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Contact';
-  $handler->display->display_options['fields']['nothing']['element_type'] = 'h3';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
-  /* Field: Content: Address - Full name */
-  $handler->display->display_options['fields']['field_biography_address_name_line']['id'] = 'field_biography_address_name_line';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['table'] = 'field_data_field_biography_address';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['field'] = 'field_biography_address_name_line';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['relationship'] = 'reverse_field_biography_team_node';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['element_label_colon'] = FALSE;
   /* Field: Content: E-mail */
   $handler->display->display_options['fields']['field_biography_email']['id'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['table'] = 'field_data_field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['field'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['relationship'] = 'reverse_field_biography_team_node';
-  $handler->display->display_options['fields']['field_biography_email']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_email']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_email']['element_class'] = 'team-contact__email';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'label label--aligned';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
-  /* Field: Content: Address - Company */
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['id'] = 'field_biography_address_organisation_name';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['table'] = 'field_data_field_biography_address';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['field'] = 'field_biography_address_organisation_name';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['relationship'] = 'reverse_field_biography_team_node';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['id'] = 'field_biography_address_thoroughfare';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['table'] = 'field_data_field_biography_address';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['field'] = 'field_biography_address_thoroughfare';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['relationship'] = 'reverse_field_biography_team_node';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_thoroughfare']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['element_label_colon'] = FALSE;
   /* Field: Content: Address - Postal code */
   $handler->display->display_options['fields']['field_biography_address_postal_code']['id'] = 'field_biography_address_postal_code';
@@ -272,6 +249,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_locality']['field'] = 'field_biography_address_locality';
   $handler->display->display_options['fields']['field_biography_address_locality']['relationship'] = 'reverse_field_biography_team_node';
   $handler->display->display_options['fields']['field_biography_address_locality']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_locality']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_locality']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_locality']['alter']['text'] = '<span>[field_biography_address_postal_code]</span>
 <span>[field_biography_address_locality]</span>';
@@ -283,15 +261,41 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_country']['field'] = 'field_biography_address_country';
   $handler->display->display_options['fields']['field_biography_address_country']['relationship'] = 'reverse_field_biography_team_node';
   $handler->display->display_options['fields']['field_biography_address_country']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_country']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_country']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_country']['display_name'] = 1;
+  /* Field: Content: Address - Company */
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['id'] = 'field_biography_address_organisation_name';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['table'] = 'field_data_field_biography_address';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['field'] = 'field_biography_address_organisation_name';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['relationship'] = 'reverse_field_biography_team_node';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['label'] = 'Address';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['alter']['text'] = '[field_biography_address_organisation_name]<br>
+[field_biography_address_thoroughfare]<br>
+[field_biography_address_locality]
+';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_class'] = 'team-contact__address';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_class'] = 'label label--aligned--top';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'team-contact-address-wrapper';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
   /* Field: Content: Press contact */
   $handler->display->display_options['fields']['field_biography_press_contact']['id'] = 'field_biography_press_contact';
   $handler->display->display_options['fields']['field_biography_press_contact']['table'] = 'field_data_field_biography_press_contact';
   $handler->display->display_options['fields']['field_biography_press_contact']['field'] = 'field_biography_press_contact';
   $handler->display->display_options['fields']['field_biography_press_contact']['relationship'] = 'reverse_field_biography_team_node';
   $handler->display->display_options['fields']['field_biography_press_contact']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['text'] = '<a hef="#" class="btn btn-default">Media enquiries</a>';
+  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['path'] = '#';
+  $handler->display->display_options['fields']['field_biography_press_contact']['alter']['link_class'] = 'btn btn-default';
   $handler->display->display_options['fields']['field_biography_press_contact']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_press_contact']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_biography_press_contact']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -311,6 +315,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'team' => 'team',
   );
+  $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'access denied';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -335,8 +340,8 @@ function cwt_team_views_default_views() {
     'und' => 'und',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Contact the team */
+  $handler = $view->new_display('block', 'Contact the team', 'block');
   $export['team_cabinet_contact'] = $view;
 
   $view = new view();
@@ -357,6 +362,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
@@ -386,17 +392,15 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_portrait']['table'] = 'field_data_field_biography_portrait';
   $handler->display->display_options['fields']['field_biography_portrait']['field'] = 'field_biography_portrait';
   $handler->display->display_options['fields']['field_biography_portrait']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_portrait']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_portrait']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_portrait']['alter']['text'] = '<div class="member-details-image">[field_biography_portrait]</div>';
+  $handler->display->display_options['fields']['field_biography_portrait']['alter']['text'] = '[field_biography_portrait]';
   $handler->display->display_options['fields']['field_biography_portrait']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_portrait']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_biography_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_biography_portrait']['type'] = 'picture';
   $handler->display->display_options['fields']['field_biography_portrait']['settings'] = array(
     'picture_mapping' => 'team_cabinet_members_picture',
     'fallback_image_style' => 'team_members_130x130',
     'image_link' => '',
-    'colorbox' => 'team_members_picture',
   );
   /* Field: Taxonomy term: Term ID */
   $handler->display->display_options['fields']['tid']['id'] = 'tid';
@@ -422,34 +426,34 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_first_name']['label'] = '';
   $handler->display->display_options['fields']['field_biography_first_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_first_name']['element_default_classes'] = FALSE;
   /* Field: Content: Last name */
   $handler->display->display_options['fields']['field_biography_last_name']['id'] = 'field_biography_last_name';
   $handler->display->display_options['fields']['field_biography_last_name']['table'] = 'field_data_field_biography_last_name';
   $handler->display->display_options['fields']['field_biography_last_name']['field'] = 'field_biography_last_name';
   $handler->display->display_options['fields']['field_biography_last_name']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_last_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_last_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '<div class="member-details-name"><span class="first-name">[field_biography_first_name]</span> <span class="last-name">[field_biography_last_name]</span></div>';
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '<span class="first-name">[field_biography_first_name]</span> <span class="last-name">[field_biography_last_name]</span>';
   $handler->display->display_options['fields']['field_biography_last_name']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_biography_last_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_last_name']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => 'content',
+    'title_class' => '',
+  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<div class="member-details-responsibilities">
-[body]
-</div>';
+  $handler->display->display_options['fields']['body']['label'] = 'Responsabilities';
+  $handler->display->display_options['fields']['body']['alter']['text'] = '<div class="member-details__main">[body]</div>';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
   /* Field: Content: Social Networks */
   $handler->display->display_options['fields']['field_social_networks']['id'] = 'field_social_networks';
   $handler->display->display_options['fields']['field_social_networks']['table'] = 'field_data_field_social_networks';
   $handler->display->display_options['fields']['field_social_networks']['field'] = 'field_social_networks';
   $handler->display->display_options['fields']['field_social_networks']['label'] = '';
-  $handler->display->display_options['fields']['field_social_networks']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_social_networks']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_social_networks']['alter']['text'] = '<span class="social-networks">[field_social_networks]</span>';
   $handler->display->display_options['fields']['field_social_networks']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_social_networks']['hide_empty'] = TRUE;
@@ -463,38 +467,27 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_email']['id'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['table'] = 'field_data_field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['field'] = 'field_biography_email';
-  $handler->display->display_options['fields']['field_biography_email']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_email']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_email']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_email']['alter']['text'] = '<span class="email">[field_biography_email]</span>';
+  $handler->display->display_options['fields']['field_biography_email']['alter']['text'] = '<span class="team-member__email">[field_biography_email]</span>';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'label--aligned';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_biography_email']['hide_empty'] = TRUE;
   /* Field: Content: Phone number */
   $handler->display->display_options['fields']['field_biography_phone']['id'] = 'field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['table'] = 'field_data_field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['field'] = 'field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_phone']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_phone']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_phone']['alter']['text'] = '<a class="phone" href="tel:[field_biography_phone]">[field_biography_phone]</a>
+  $handler->display->display_options['fields']['field_biography_phone']['alter']['text'] = '<a class="team-member__phone" href="tel:[field_biography_phone]">[field_biography_phone]</a>
 ';
   $handler->display->display_options['fields']['field_biography_phone']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_phone']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_biography_phone']['hide_empty'] = TRUE;
-  /* Field: Member Contact Details */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Member Contact Details';
-  $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="member-details-contact">[field_biography_email][field_biography_phone][field_social_networks]</div>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['element_type'] = 'div';
-  $handler->display->display_options['fields']['nothing_1']['element_class'] = 'member-details-contact';
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_phone']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => '',
+    'title_class' => '',
+  );
   /* Field: Assistant Label */
   $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
   $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
@@ -527,34 +520,9 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_tagline']['table'] = 'field_data_field_biography_tagline';
   $handler->display->display_options['fields']['field_biography_tagline']['field'] = 'field_biography_tagline';
   $handler->display->display_options['fields']['field_biography_tagline']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_tagline']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_tagline']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_tagline']['alter']['text'] = '<span class="label">[field_biography_tagline] </span>';
+  $handler->display->display_options['fields']['field_biography_tagline']['alter']['text'] = '<div class="label label--upper">[field_biography_tagline] </div>';
   $handler->display->display_options['fields']['field_biography_tagline']['element_label_colon'] = FALSE;
-  /* Field: Member details */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Member details';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_biography_portrait]
-<div class="member-details-info">
-<div class="member-details-text">
-[field_biography_tagline]
-[field_biography_last_name]
-</div>
-[nothing_1]
-[field_biography_assistants]
-[body]
-</div>';
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['alt'] = '[field_biography_last_name]';
-  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
-  $handler->display->display_options['fields']['nothing']['element_class'] = 'member-details';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_tagline']['element_default_classes'] = FALSE;
   /* Sort criterion: Weight: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'weight_weights';
@@ -630,6 +598,20 @@ function cwt_team_views_default_views() {
 
   /* Display: Cabinet */
   $handler = $view->new_display('block', 'Cabinet', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Team members';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'container-fluid';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'team_member';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['team_cabinet_members'] = $view;
 
   $view = new view();

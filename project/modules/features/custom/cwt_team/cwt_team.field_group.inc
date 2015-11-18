@@ -83,8 +83,9 @@ function cwt_team_field_group_info() {
       2 => 'field_team_links',
       3 => 'field_team_tagline',
       4 => 'field_team_term',
-      5 => 'title',
-      6 => 'field_team_attachments',
+      5 => 'field_team_attachments',
+      6 => 'field_team_media_enquiries',
+      7 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
