@@ -265,7 +265,7 @@ function dt_department_field_group_info() {
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="resposibilities"',
+        'attributes' => 'id="responsibilities"',
       ),
     ),
   );
