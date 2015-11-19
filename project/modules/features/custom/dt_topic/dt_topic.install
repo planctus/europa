@@ -101,8 +101,21 @@ function dt_topic_update_7107() {
 }
 
 /**
- * NEXTEUROPA-6077: Changing layout of topic specific tasks and topic top task
+ * NEXTEUROPA-6077: Changing layout of topic specific tasks and topic top task.
  */
 function dt_topic_update_7108() {
   features_revert_module('dt_topic');
+}
+
+/**
+ * NEXTEUROPA-7065: Copying field_core_link to field_core_links.
+ */
+function dt_topic_update_7109() {
+  features_revert_module('dt_topic');
+  _dt_shared_field_value_copy('node', 'topic', 'field_core_link', 'field_core_links');
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_link', 'topic')) {
+    field_delete_instance($instance);
+  }
 }

@@ -259,7 +259,7 @@ function dt_topic_field_group_info() {
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
       2 => 'field_topic_targets',
-      3 => 'field_core_link',
+      3 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

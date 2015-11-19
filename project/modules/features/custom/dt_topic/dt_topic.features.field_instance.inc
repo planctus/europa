@@ -316,11 +316,12 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_link'
-  $field_instances['node-topic-field_core_link'] = array(
+  // Exported field_instance: 'node-topic-field_core_links'
+  $field_instances['node-topic-field_core_links'] = array(
     'bundle' => 'topic',
     'default_value' => array(
       0 => array(
+        'title' => 'See what other EU institutions are doing on [current-page:title]',
         'url' => 'http://ec.europa.eu',
       ),
     ),
@@ -332,14 +333,13 @@ function dt_topic_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 23,
+        'weight' => 27,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'module' => 'link',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 22,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -356,7 +356,7 @@ function dt_topic_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_link',
+    'field_name' => 'field_core_links',
     'label' => 'More Link',
     'required' => 0,
     'settings' => array(
@@ -370,10 +370,10 @@ function dt_topic_field_default_field_instances() {
       'display' => array(
         'url_cutoff' => 80,
       ),
-      'enable_tokens' => 0,
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'value',
+      'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => 'See what other EU institutions are doing on [current-page:title]',
       'url' => 0,

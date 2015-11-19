@@ -81,7 +81,7 @@ function dt_topic_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_link' => array(
+    'field_core_links' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
@@ -155,7 +155,7 @@ function dt_topic_ds_layout_settings_info() {
         1 => 'related_topic_policy_areas',
         13 => 'field_topic_commission_actions',
         14 => 'field_topic_objectives',
-        15 => 'field_core_link',
+        15 => 'field_core_links',
       ),
       'left_header' => array(
         2 => 'group_topic_meta',
@@ -180,7 +180,7 @@ function dt_topic_ds_layout_settings_info() {
       'field_core_department' => 'top',
       'field_topic_commission_actions' => 'central',
       'field_topic_objectives' => 'central',
-      'field_core_link' => 'central',
+      'field_core_links' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -226,7 +226,7 @@ function dt_topic_ds_layout_settings_info() {
         19 => 'field_topic_tasks',
         20 => 'field_topic_targets',
         21 => 'field_core_top_tasks_links',
-        22 => 'field_core_link',
+        22 => 'field_core_links',
         23 => 'group_topics_specific_tasks',
         24 => 'group_topic_related_tasks',
         25 => 'latest_announcements_block',
@@ -262,7 +262,7 @@ function dt_topic_ds_layout_settings_info() {
       'field_topic_tasks' => 'central',
       'field_topic_targets' => 'central',
       'field_core_top_tasks_links' => 'central',
-      'field_core_link' => 'central',
+      'field_core_links' => 'central',
       'group_topics_specific_tasks' => 'central',
       'group_topic_related_tasks' => 'central',
       'latest_announcements_block' => 'central',
