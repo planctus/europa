@@ -8442,6 +8442,61 @@ Styleguide listing.agenda
 .listing--agenda .listing__author {
   font-size: 0.889em; }
 
+/*
+Listing Cabinet
+
+Listing components
+
+Markup: html/listing--cabinet.html
+
+Styleguide listing.cabinet
+*/
+.listing__wrapper {
+  max-width: 40em;
+  border-bottom: 1px solid #e2e2e2; }
+
+.listing--cabinet {
+  padding: 1.2em 0; }
+  .listing--cabinet .listing--cabinet__name {
+    font-weight: 600;
+    margin-top: 0;
+    display: block; }
+  .listing--cabinet .cabinet-bottom-wrapper ul {
+    margin-bottom: 0; }
+  .listing--cabinet .field {
+    margin-bottom: 0.5em; }
+  .listing--cabinet .listing--cabinet__picture {
+    float: right; }
+  .listing--cabinet .label--upper {
+    padding-left: 0;
+    margin-bottom: 0; }
+  .listing--cabinet .listing--cabinet__body {
+    display: inline-block; }
+  .listing--cabinet .listing--cabinet__social_icons {
+    display: inline-block;
+    margin-top: 0.1em; }
+    .listing--cabinet .listing--cabinet__social_icons a {
+      display: block;
+      margin-bottom: 0.5em; }
+      .listing--cabinet .listing--cabinet__social_icons a img {
+        display: inline-block;
+        background-color: #ececec;
+        min-width: 40px;
+        min-height: 40px; }
+      .listing--cabinet .listing--cabinet__social_icons a span {
+        font-size: 0.8em; }
+      .listing--cabinet .listing--cabinet__social_icons a::after, .listing--cabinet .listing--cabinet__social_icons a::before {
+        display: none; }
+  .listing--cabinet .cabinet-bottom-wrapper,
+  .listing--cabinet .listing--cabinet__social {
+    display: inline-block; }
+
+.team__label {
+  float: left;
+  width: 100%;
+  margin: 2.5em 0 0;
+  padding-left: 0; }
+
 .logo {
   display: block;
   float: left;
@@ -8728,44 +8783,6 @@ Styleguide page-header
 .front .page-header {
   padding: 0; }
 
-.listing__wrapper {
-  max-width: 40em;
-  border-bottom: 1px solid #e2e2e2; }
-
-.team-member {
-  padding: 1.2em 0; }
-  .team-member .team-member__name {
-    font-weight: 600;
-    margin-top: 0; }
-  .team-member .team-member__body ul {
-    margin-bottom: 0; }
-  .team-member .field {
-    margin-bottom: 0.5em; }
-  .team-member .team-member__picture {
-    float: right; }
-  .team-member .label--upper {
-    padding-left: 0;
-    margin-bottom: 0; }
-  .team-member .team-member__body {
-    display: inline-block; }
-  .team-member .team-member__social_icons {
-    max-width: 60px;
-    display: inline-block; }
-    .team-member .team-member__social_icons a {
-      background: #ececec;
-      margin-bottom: 0.5em; }
-      .team-member .team-member__social_icons a::after, .team-member .team-member__social_icons a::before {
-        display: none; }
-  .team-member .team-member-bottom-wrapper,
-  .team-member .team-member__social {
-    display: inline-block; }
-
-.team__label {
-  float: left;
-  width: 100%;
-  margin: 2.5em 0 0;
-  padding-left: 0; }
-
 .team-contact-wrapper {
   background: #f2f2f2;
   padding: 1.5em; }
@@ -8774,7 +8791,7 @@ Styleguide page-header
   border: none;
   overflow: visible; }
 
-.team-contact picture {
+.team-contact img {
   float: right;
   margin-top: -2em; }
 

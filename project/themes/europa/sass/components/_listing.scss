@@ -523,3 +523,87 @@ Styleguide listing.agenda
   }
 
 }
+
+/*
+Listing Cabinet
+
+Listing components
+
+Markup: html/listing--cabinet.html
+
+Styleguide listing.cabinet
+*/
+
+.listing__wrapper  {
+  max-width: 40em;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.listing--cabinet {
+  padding: 1.2em 0;
+
+  .listing--cabinet__name {
+    font-weight: 600;
+    margin-top: 0;
+    display: block;
+  }
+
+  .cabinet-bottom-wrapper ul {
+    margin-bottom: 0;
+  }
+
+  .field {
+    margin-bottom: 0.5em;
+  }
+
+  .listing--cabinet__picture {
+    float: right;
+  }
+
+  .label--upper {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  .listing--cabinet__body {
+    display: inline-block;
+  }
+
+  .listing--cabinet__social_icons {
+    display: inline-block;
+    margin-top: 0.1em;
+
+    a {
+      display: block;
+      margin-bottom: 0.5em;
+
+      img {
+        display: inline-block;
+        background-color:#ececec;
+        min-width:40px;
+        min-height:40px;
+      }
+
+      span {
+        font-size: 0.8em;
+      }
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .cabinet-bottom-wrapper,
+  .listing--cabinet__social {
+    display: inline-block;
+  }
+}
+
+.team__label {
+  float: left;
+  width: 100%;
+  margin: 2.5em 0 0;
+  padding-left: 0;
+}

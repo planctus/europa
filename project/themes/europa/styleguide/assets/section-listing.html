@@ -137,20 +137,26 @@
               </a>
             </li>
             <li class="kss-nav__menu-item">
-              <a href="section-listing.html#kssref-listing-column-left">
+              <a href="section-listing.html#kssref-listing-cabinet">
                 <span class="kss-nav__ref">18.2</span
+                ><span class="kss-nav__name">Listing Cabinet</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-listing.html#kssref-listing-column-left">
+                <span class="kss-nav__ref">18.3</span
                 ><span class="kss-nav__name">Listing layouts</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
               <a href="section-listing.html#kssref-listing-teaser">
-                <span class="kss-nav__ref">18.3</span
+                <span class="kss-nav__ref">18.4</span
                 ><span class="kss-nav__name">Listing teaser</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
               <a href="section-listing.html#kssref-listing-title">
-                <span class="kss-nav__ref">18.4</span
+                <span class="kss-nav__ref">18.5</span
                 ><span class="kss-nav__name">Listing title</span>
               </a>
             </li>
@@ -505,12 +511,142 @@
       </div>
 
       </section>
+      <section id="kssref-listing-cabinet" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-listing-cabinet">
+          <span class="kss-title__ref">18.2</span
+          >Listing Cabinet
+          <span class="kss-title__permalink-hash">#permalink</span>
+        </a>
+      </h2>
+
+
+      <div class="kss-description">
+        <p>Listing components</p>
+
+      </div>
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <div class="listing--cabinet [modifier class]">
+  <div class="cabinet-top-wrapper">
+    <div class="listing--cabinet__picture field">
+      <img src="http://placehold.it/130x130">
+    </div>
+    <span class="label label--upper field">head of cabinet</span>
+    <h3 class="listing--cabinet__name field">Stefano Manservisi</h3>
+    <div class="listing--cabinet__email field">
+      <span class="label label--aligned">E-mail</span>
+      <a href="mailto:test@test.it">test@test.it</a>
+    </div>
+    <div class="listing--cabinet__phone field">
+      <span class="label label--aligned">Phone number</span>
+        <a href="tel:3465473723">3465473723</a>
+    </div>
+    <div class="listing--cabinet__social field">
+      <span class="label label--aligned--top">Social networks</span>
+      <div class="listing--cabinet__social_icons">
+        <div class="social_network_links social-network-link-0 social_network_link_default">
+          <a title="twitter" class="twitter social_network_link icon" href="http://twitter.com">
+            <img alt="" src="http://placehold.it/50x50" typeof="foaf:Image">
+            <span>twitter</span>
+          </a>
+        </div>
+        <div class="social_network_links social-network-link-1 social_network_link_default">
+          <a title="facebook" class="facebook social_network_link icon" href="facebook.com">
+            <img alt="" src="http://placehold.it/50x50" typeof="foaf:Image">
+            <span>facebook</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .team-member-top-wrapper END -->
+
+  <div class="cabinet-bottom-wrapper">
+    <span class="label label--aligned--top">Responsabilities</span>
+    <div class="listing--cabinet__body">
+      <ul><li align="left">Overall strategic coordination Commission &amp; EEAS IT</li></ul>
+      <ul>
+        <li>European Council IT</li>
+        <li>G-7/8 IT</li>
+        <li>G-20 IT</li>
+        <li>Relex Commissioner Group IT</li>
+        <li>EUSRs IT</li>
+        <li>Personnel: Commission &amp; EEAS</li>
+        <li>Institutional matters IT</li>
+      </ul>
+    </div>
+  </div> <!-- .team-member-bottom-wrapper END -->
+</div>
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class=&quot;listing--cabinet [modifier class]&quot;&gt;
+  &lt;div class=&quot;cabinet-top-wrapper&quot;&gt;
+    &lt;div class=&quot;listing--cabinet__picture field&quot;&gt;
+      &lt;img src=&quot;http://placehold.it/130x130&quot;&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;label label--upper field&quot;&gt;head of cabinet&lt;/span&gt;
+    &lt;h3 class=&quot;listing--cabinet__name field&quot;&gt;Stefano Manservisi&lt;/h3&gt;
+    &lt;div class=&quot;listing--cabinet__email field&quot;&gt;
+      &lt;span class=&quot;label label--aligned&quot;&gt;E-mail&lt;/span&gt;
+      &lt;a href=&quot;mailto:test@test.it&quot;&gt;test@test.it&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;listing--cabinet__phone field&quot;&gt;
+      &lt;span class=&quot;label label--aligned&quot;&gt;Phone number&lt;/span&gt;
+        &lt;a href=&quot;tel:3465473723&quot;&gt;3465473723&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;listing--cabinet__social field&quot;&gt;
+      &lt;span class=&quot;label label--aligned--top&quot;&gt;Social networks&lt;/span&gt;
+      &lt;div class=&quot;listing--cabinet__social_icons&quot;&gt;
+        &lt;div class=&quot;social_network_links social-network-link-0 social_network_link_default&quot;&gt;
+          &lt;a title=&quot;twitter&quot; class=&quot;twitter social_network_link icon&quot; href=&quot;http://twitter.com&quot;&gt;
+            &lt;img alt=&quot;&quot; src=&quot;http://placehold.it/50x50&quot; typeof=&quot;foaf:Image&quot;&gt;
+            &lt;span&gt;twitter&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;social_network_links social-network-link-1 social_network_link_default&quot;&gt;
+          &lt;a title=&quot;facebook&quot; class=&quot;facebook social_network_link icon&quot; href=&quot;facebook.com&quot;&gt;
+            &lt;img alt=&quot;&quot; src=&quot;http://placehold.it/50x50&quot; typeof=&quot;foaf:Image&quot;&gt;
+            &lt;span&gt;facebook&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt; &lt;!-- .team-member-top-wrapper END --&gt;
+
+  &lt;div class=&quot;cabinet-bottom-wrapper&quot;&gt;
+    &lt;span class=&quot;label label--aligned--top&quot;&gt;Responsabilities&lt;/span&gt;
+    &lt;div class=&quot;listing--cabinet__body&quot;&gt;
+      &lt;ul&gt;&lt;li align=&quot;left&quot;&gt;Overall strategic coordination Commission &amp;amp; EEAS IT&lt;/li&gt;&lt;/ul&gt;
+      &lt;ul&gt;
+        &lt;li&gt;European Council IT&lt;/li&gt;
+        &lt;li&gt;G-7/8 IT&lt;/li&gt;
+        &lt;li&gt;G-20 IT&lt;/li&gt;
+        &lt;li&gt;Relex Commissioner Group IT&lt;/li&gt;
+        &lt;li&gt;EUSRs IT&lt;/li&gt;
+        &lt;li&gt;Personnel: Commission &amp;amp; EEAS&lt;/li&gt;
+        &lt;li&gt;Institutional matters IT&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt; &lt;!-- .team-member-bottom-wrapper END --&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      </section>
       <section id="kssref-listing-column-left" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-listing-column-left">
-          <span class="kss-title__ref">18.2</span
+          <span class="kss-title__ref">18.3</span
           >Listing layouts
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
@@ -648,7 +784,7 @@
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-listing-teaser">
-          <span class="kss-title__ref">18.3</span
+          <span class="kss-title__ref">18.4</span
           >Listing teaser
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
@@ -913,7 +1049,7 @@
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-listing-title">
-          <span class="kss-title__ref">18.4</span
+          <span class="kss-title__ref">18.5</span
           >Listing title
           <span class="kss-title__permalink-hash">#permalink</span>
         </a>
