@@ -99,7 +99,7 @@ function theme_nexteuropa_file_translations($variables) {
   if ($files_count > 1) {
     $files = $variables['node']->field_core_file;
     $nid = $variables['node']->nid;
-    $output = "<div class='file__translations'>";
+    $output = '<div class="file__translations">';
     // Building the link.
     $link = array(
       '#type' => 'link',
@@ -148,7 +148,7 @@ function theme_nexteuropa_file_translations($variables) {
       );
     }
     $output .= theme_table($table);
-    $output .= "</div>";
+    $output .= '</div>';
     return $output;
   }
   return '';
