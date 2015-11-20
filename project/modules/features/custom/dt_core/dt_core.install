@@ -629,3 +629,29 @@ function dt_core_update_7146() {
       ->execute();
   }
 }
+
+/**
+ * Enabling dt_shared_functions module.
+ */
+function dt_core_update_7147() {
+  module_enable(array('dt_shared_functions'));
+}
+
+/**
+ * NEXTEUROPA-4834: Update features for the modified timeline.
+ */
+function dt_core_update_7148() {
+  $features = array(
+    'dt_page',
+    'dt_policy',
+    'dt_pri_policy_area_default',
+    'dt_priority_default',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+}

@@ -932,9 +932,9 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_gender']['label'] = '';
   $handler->display->display_options['fields']['field_gender']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="term-[tid] [name_field] label role">[field_biography_role_feminine]</span>';
+  $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[field_biography_role_feminine]</span>';
   $handler->display->display_options['fields']['field_gender']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="term-[tid] [name_field] label role">[name_field]</span>';
+  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[name_field]</span>';
   $handler->display->display_options['fields']['field_gender']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
   /* Field: Taxonomy term: Term ID */
@@ -1000,7 +1000,7 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
-        <div class="listing__meta">[field_gender]</div>
+        <div class="meta">[field_gender]</div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>
 </div>

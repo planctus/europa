@@ -222,12 +222,6 @@ $spacing-bottom-listing__title: 0.7em;
 }
 
 .listing--person {
-  .listing__meta {
-    text-transform: uppercase;
-  }
-  .listing__meta .label {
-    font-weight: normal;
-  }
   .listing__item-link {
     padding-bottom: 1em;
     padding-top: 1em;
@@ -505,10 +499,6 @@ Styleguide listing.agenda
 
   .meta {
     margin-bottom: 0;
-  }
-
-  .listing__meta-item {
-    text-transform: uppercase;
   }
 
   h3 {
