@@ -81,3 +81,21 @@ function cwt_team_update_7105() {
 function cwt_team_update_7106() {
   features_revert(array('cwt_team' => array('views')));
 }
+
+/**
+ *  Assigning the right view mode to the home page.
+ */
+function cwt_team_update_7107() {
+  $college = taxonomy_get_term_by_name('College', 'team_subtypes');
+  $college_tid = array_shift($college)->tid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'team')
+  ->fieldCondition('field_team_subtype', 'tid', $college_tid, '=');
+  $results = $query->execute();
+  $nodes = array_shift($results);
+  foreach ($nodes as $node) {
+    $node->ds_switch = 'college';
+    node_save($node);
+  }
+}

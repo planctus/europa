@@ -59,6 +59,11 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
     $href_array = parse_url($_GET['destination']);
     $href = $href_array['path'];
 
+    if (strpos($href, 'node/') == 0 &&
+        function_exists('translation_path_get_translations')) {
+      $translations = translation_path_get_translations($href);
+    }
+
     if (isset($href_array['query'])) {
       parse_str($href_array['query'], $parameters);
       $options['query'] = $parameters;
@@ -75,12 +80,15 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   foreach ($languages[1] as $lang) {
     if (!in_array($lang->prefix, $languages_blacklist)) {
 
+      if (isset($translations[$lang->language])) {
+        $href = $translations[$lang->language];
+      }
       // Start from an empty array.
       $options = array();
 
       // Prepare links options.
-      $options['attributes']['lang'] = $lang->language;
-      $options['attributes']['hreflang'] = $lang->language;
+      $options['attributes']['lang'] = $lang->prefix;
+      $options['attributes']['hreflang'] = $lang->prefix;
       $options['attributes']['class'][] = "btn";
       $options['attributes']['class'][] = "splash-page__btn-language";
       $options['attributes']['data-languagespecific'] = "true";
@@ -159,7 +167,7 @@ function dt_language_selector_site_popup_form__splash_screen_settings_form_alter
     )
   );
 
-  // And our splash page text.
+  // And our splash page text,
   $splash_data = variable_get(
     'dt_language_selector_site_splash_message',
     array(

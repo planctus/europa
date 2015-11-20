@@ -307,11 +307,23 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'team' => 'team',
-  );
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'if (is_numeric($argument)) {
+    $translations = translation_path_get_translations(\'node/\' . $argument);
+    $nids = \'\';
+    if (!empty($translations)) {
+      foreach ($translations as $lang => $path) {
+        $nids .= str_replace(\'node/\', \'\', $path) . \'+\';
+      }
+      $handler->argument = substr($nids, 0, -1);
+   }
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }';
   $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'access denied';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -326,18 +338,10 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'team' => 'team',
   );
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['relationship'] = 'reverse_field_biography_team_node';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-    'und' => 'und',
-  );
 
   /* Display: Contact the team */
   $handler = $view->new_display('block', 'Contact the team', 'block');
+  $handler->display->display_options['field_language_add_to_query'] = 0;
   $export['team_cabinet_contact'] = $view;
 
   $view = new view();
@@ -538,10 +542,23 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
-    'team' => 'team',
-  );
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'php';
+  $handler->display->display_options['arguments']['nid']['validate_options']['code'] = 'if (is_numeric($argument)) {
+    $translations = translation_path_get_translations(\'node/\' . $argument);
+    $nids = \'\';
+    if (!empty($translations)) {
+      foreach ($translations as $lang => $path) {
+        $nids .= str_replace(\'node/\', \'\', $path) . \'+\';
+      }
+      $handler->argument = substr($nids, 0, -1);
+    }
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }';
+  $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'access denied';
+  $handler->display->display_options['arguments']['nid']['break_phrase'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
