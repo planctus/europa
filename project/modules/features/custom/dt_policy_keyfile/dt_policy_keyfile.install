@@ -54,7 +54,7 @@ function dt_policy_keyfile_update_7104() {
   features_revert_module('dt_policy_keyfile');
   $content_type = 'policy_keyfile';
   // Copy the field content.
-  _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
+  _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
   drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
 
   // Remove field instance.
