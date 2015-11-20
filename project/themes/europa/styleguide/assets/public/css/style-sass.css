@@ -8995,7 +8995,8 @@ Styleguide page-header
     margin: 0;
     font-size: 1.222em;
     line-height: 1.5;
-    color: #fff; }
+    color: #fff;
+    max-width: 40em; }
   .page-header .page-header__top,
   .page-header .page-header__main,
   .page-header .page-header__bottom {
