@@ -128,3 +128,10 @@ function dt_announcement_update_7108() {
 function dt_announcement_update_7109() {
   features_revert_module('dt_announcement');
 }
+
+/**
+ * NEXTEUROPA-6727: Revert announcement feature.
+ */
+function dt_announcement_update_7110() {
+  features_revert_module('dt_announcement');
+}
