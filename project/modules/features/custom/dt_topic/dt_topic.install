@@ -118,4 +118,20 @@ function dt_topic_update_7109() {
   if ($instance = field_info_instance('node', 'field_core_link', 'topic')) {
     field_delete_instance($instance);
   }
+
+  // Set default title to the new multi-value field again.
+  $ids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'topic', '=')
+    ->execute()
+    ->fetchCol();
+
+  if (count($ids)) {
+    $nodes = entity_load('node', $ids);
+    foreach ($nodes as $id => $node) {
+      $wrapper = entity_metadata_wrapper('node', $id);
+      $wrapper->field_core_links[0]->title = 'See what other EU institutions are doing on [current-page:title]';
+      $wrapper->save();
+    }
+  }
 }
