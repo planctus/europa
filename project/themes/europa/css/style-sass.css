@@ -8132,7 +8132,7 @@ Styleguide listing
   padding-bottom: 0; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
-  .listing__item:hover .listing__title, .listing__item:active .listing__title, .listing__item:focus .listing__title {
+  .listing__item:hover a .listing__title, .listing__item:active a .listing__title, .listing__item:focus a .listing__title {
     text-decoration: underline;
     color: #404040; }
   .listing__item p {
@@ -8297,10 +8297,10 @@ Styleguide listing.title
 .listing--title,
 ul.listing--title {
   padding: 0; }
-  .listing--title .listing__item:hover .listing__title, .listing--title .listing__item:active .listing__title, .listing--title .listing__item:focus .listing__title,
-  ul.listing--title .listing__item:hover .listing__title,
-  ul.listing--title .listing__item:active .listing__title,
-  ul.listing--title .listing__item:focus .listing__title {
+  .listing--title .listing__item:hover a .listing__title, .listing--title .listing__item:active a .listing__title, .listing--title .listing__item:focus a .listing__title,
+  ul.listing--title .listing__item:hover a .listing__title,
+  ul.listing--title .listing__item:active a .listing__title,
+  ul.listing--title .listing__item:focus a .listing__title {
     text-decoration: none; }
   .listing--title .listing__item-link,
   .listing--title .listing__title,
