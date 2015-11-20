@@ -89,77 +89,67 @@ function theme_nexteuropa_bem_item_list($variables) {
  *
  * @param array $variables
  *   Accepts: $variables['node']->field_core_file.
- *   Accepts: $variables['files'].
  *
  * @return string
- *   Markup of translations.
+ *   Markup of transleations.
  */
 function theme_nexteuropa_file_translations($variables) {
-  if (isset($variables['node']->field_core_file)) {
+  $files_count = isset($variables['node']->field_core_file) ? count($variables['node']->field_core_file) : 0;
+
+  if ($files_count > 2) {
     $files = $variables['node']->field_core_file;
-  }
-  elseif (isset($variables['files'])) {
-    $files = $variables['files'];
-  }
-  $files_count = count($files);
+    $nid = $variables['node']->nid;
+    $output = "<div class='file__translations'>";
+    // Building the link.
+    $link = array(
+      '#type' => 'link',
+      '#options' => array(
+        'fragment' => 'file__translations-' . $nid,
+        'html' => TRUE,
+      ),
+      '#attributes' => array(
+        'class' => array('file__translations-control', 'pull-right'),
+        'data-toggle' => array('collapse'),
+        'aria-expanded' => array('false'),
+        'aria-controls' => array('file__translations-' . $nid),
+        'title' => t('Click to see translations'),
+      ),
+      '#title' => t("All languages @count", array('@count' => $files_count))
+      . " <span class='icon icon--down-blue'></span>",
+    );
+    // Attaching the link.
+    $output .= render($link);
 
-  if ($files_count) {
-    if ($files_count < 2) {
-      return '';
-    }
-    else {
-      $nid = $variables['node']->nid;
-      $output = "<div class='file__translations'>";
-      // Building the link.
-      $link = array(
-        '#type' => 'link',
-        '#options' => array(
-          'fragment' => 'file__translations-' . $nid,
-          'html' => TRUE,
-        ),
-        '#attributes' => array(
-          'class' => array('file__translations-control', 'pull-right'),
-          'data-toggle' => array('collapse'),
-          'aria-expanded' => array('false'),
-          'aria-controls' => array('file__translations-' . $nid),
-          'title' => t('Click to see translations'),
-        ),
-        '#title' => t("All languages @count", array('@count' => $files_count))
-        . " <span class='icon icon--down-blue'></span>",
-      );
-      // Attaching the link.
-      $output .= render($link);
-
-      // Building the list.
-      $table = array(
-        'rows' => array(),
-        'attributes' => array(
-          'class' => array('collapse', 'pull-right', 'file__translations-table'),
-          'id' => array('file__translations-' . $nid),
-        ),
-      );
-      foreach ($files as $lang => $file) {
-        $languages = locale_language_list();
-        $language = isset($languages[$lang]) ? $languages[$lang] : NULL;;
-        $file_info = reset($file);
-        $file_object = file_load($file_info['fid']);
-        $file_object->filename = t('@language version', array('@language' => $language));
-        $file_url = array(
-          'path' => file_create_url($file_info['uri']),
-          'options' => array(
-            'attributes' => array(
-              'class' => array('file__btn', 'btn'),
-            ),
+    // Building the list.
+    $table = array(
+      'rows' => array(),
+      'attributes' => array(
+        'class' => array('collapse', 'pull-right', 'file__translations-table'),
+        'id' => array('file__translations-' . $nid),
+      ),
+    );
+    foreach ($files as $lang => $file) {
+      $languages = locale_language_list();
+      $language = isset($languages[$lang]) ? $languages[$lang] : NULL;;
+      $file_info = reset($file);
+      $file_object = file_load($file_info['fid']);
+      $file_object->filename = t('@language version', array('@language' => $language));
+      $file_url = array(
+        'path' => file_create_url($file_info['uri']),
+        'options' => array(
+          'attributes' => array(
+            'class' => array('file__btn', 'btn'),
           ),
-        );
-        $file_markup = _europa_file_markup($file_object, $file_url, 'file--bare');
-        $table['rows'][] = array(
-          'data' => array($file_markup),
-        );
-      }
-      $output .= theme_table($table);
-      $output .= "</div>";
-      return $output;
+        ),
+      );
+      $file_markup = _europa_file_markup($file_object, $file_url, 'file--bare');
+      $table['rows'][] = array(
+        'data' => array($file_markup),
+      );
     }
+    $output .= theme_table($table);
+    $output .= "</div>";
+    return $output;
   }
+  return '';
 }
