@@ -8229,12 +8229,6 @@ Styleguide listing
 .listing--title-medium .listing__title {
   font-size: 1.333em; }
 
-.listing--person .listing__meta {
-  text-transform: uppercase; }
-
-.listing--person .listing__meta .label {
-  font-weight: normal; }
-
 .listing--person .listing__item-link {
   padding-bottom: 1em;
   padding-top: 1em; }
@@ -8414,9 +8408,6 @@ Styleguide listing.agenda
 
 .listing--agenda .meta {
   margin-bottom: 0; }
-
-.listing--agenda .listing__meta__item {
-  text-transform: uppercase; }
 
 .listing--agenda h3.listing__title {
   font-size: 1em;
