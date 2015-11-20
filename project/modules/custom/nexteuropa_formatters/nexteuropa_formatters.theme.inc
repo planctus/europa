@@ -96,7 +96,7 @@ function theme_nexteuropa_bem_item_list($variables) {
 function theme_nexteuropa_file_translations($variables) {
   $files_count = isset($variables['node']->field_core_file) ? count($variables['node']->field_core_file) : 0;
 
-  if ($files_count > 2) {
+  if ($files_count > 1) {
     $files = $variables['node']->field_core_file;
     $nid = $variables['node']->nid;
     $output = "<div class='file__translations'>";
