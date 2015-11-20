@@ -200,10 +200,10 @@ function dt_topic_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_department',
-      1 => 'field_core_persons',
-      2 => 'field_core_priorities',
-      3 => 'field_core_topics',
+      0 => 'field_core_persons',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
+      3 => 'field_core_department',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -259,7 +259,8 @@ function dt_topic_field_group_info() {
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
       2 => 'field_topic_targets',
-      3 => 'field_core_links',
+      3 => 'field_core_link',
+      4 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -455,9 +456,7 @@ function dt_topic_field_group_info() {
   $field_group->data = array(
     'label' => 'Tasks',
     'weight' => '4',
-    'children' => array(
-      0 => 'field_core_top_tasks',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Tasks',
@@ -485,8 +484,8 @@ function dt_topic_field_group_info() {
     'label' => 'Tasks',
     'weight' => '4',
     'children' => array(
-      0 => 'group_topics_specific_tasks',
-      1 => 'group_topic_related_tasks',
+      0 => 'group_topic_related_tasks',
+      1 => 'group_topics_specific_tasks',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -514,8 +513,7 @@ function dt_topic_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_topic_tasks',
-      1 => 'field_core_top_tasks',
-      2 => 'field_core_top_tasks_links',
+      1 => 'field_core_top_tasks_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -545,7 +543,7 @@ function dt_topic_field_group_info() {
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
       2 => 'field_topic_targets',
-      3 => 'field_core_link',
+      3 => 'field_core_links',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

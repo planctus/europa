@@ -108,7 +108,7 @@ function dt_topic_update_7108() {
 }
 
 /**
- * NEXTEUROPA-7065: Copying field_core_link to field_core_links.
+ * NEXTEUROPA-7065: More link becomes multi-value.
  */
 function dt_topic_update_7109() {
   features_revert_module('dt_topic');

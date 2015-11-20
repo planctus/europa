@@ -62,6 +62,12 @@ function dt_topic_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
