@@ -8132,7 +8132,10 @@ Styleguide listing
   padding-bottom: 0; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
-  .listing__item:hover a .listing__title, .listing__item:active a .listing__title, .listing__item:focus a .listing__title {
+  .listing__item:hover a .listing__title,
+  .listing__item:hover a.listing__title, .listing__item:active a .listing__title,
+  .listing__item:active a.listing__title, .listing__item:focus a .listing__title,
+  .listing__item:focus a.listing__title {
     text-decoration: underline;
     color: #404040; }
   .listing__item p {
