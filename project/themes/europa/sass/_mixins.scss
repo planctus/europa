@@ -42,7 +42,7 @@
   transition: none;
 
   .no-svg & {
-    background: url("../images/png/arrow-thick-down.png"), linear-gradient(to bottom, $background-color, $background-color);
+    background: url("../images/png/arrow-down.png"), linear-gradient(to bottom, $background-color, $background-color);
   }
 
   // Specific size for internet explorer 10+.
