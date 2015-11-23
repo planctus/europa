@@ -5,7 +5,6 @@ Markup: html/select.html
 
 Styleguide form.select
 */
-
 .select {
   /* Hide the arrow */
   appearance:none;
@@ -13,14 +12,15 @@ Styleguide form.select
   -webkit-appearance:none; /* Safari and Chrome */
   text-indent: 0.01px;
   text-overflow: '';
+  cursor: pointer;
 
-  &.form-control {
-    /* Add the arrow */
-    @include select-list-arrow($grey);
-  }
-
+  // Fix for IE 10+.
   &::-ms-expand {
     display: none;
+  }
+
+  &.form-control {
+    @include select-list-arrow($grey);
   }
 
   // Hover state.

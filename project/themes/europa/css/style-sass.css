@@ -6142,29 +6142,27 @@ Styleguide form.select
   -webkit-appearance: none;
   /* Safari and Chrome */
   text-indent: 0.01px;
-  text-overflow: ''; }
+  text-overflow: '';
+  cursor: pointer; }
+  .select::-ms-expand, select::-ms-expand {
+    display: none; }
   .select.form-control, select.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
-    /* Add the arrow */
     background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #b3b4b5, #b3b4b5);
     background-repeat: no-repeat;
     background-position: right 0.764em center, right;
-    background-size: 1em 1em, 2.639em 100%;
-    border-right: 0px;
+    background-size: 1em 1em, 2.75em 100%;
     transition: none; }
     .no-svg .select.form-control, .no-svg select.form-control, .no-svg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .no-svg select {
       background: url("../images/png/arrow-thick-down.png"), linear-gradient(to bottom, #b3b4b5, #b3b4b5); }
     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
       .select.form-control, select.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
         background-size: 1.1em 0.6134969325em, 2.75em 100%; } }
-  .select::-ms-expand, select::-ms-expand {
-    display: none; }
   .select:hover, select:hover, .select.is-hovered, select.is-hovered {
     border-color: #004494;
     background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #004494, #004494);
     background-repeat: no-repeat;
     background-position: right 0.764em center, right;
-    background-size: 1em 1em, 2.639em 100%;
-    border-right: 0px;
+    background-size: 1em 1em, 2.75em 100%;
     transition: none; }
     .no-svg .select:hover, .no-svg select:hover, .no-svg .select.is-hovered, .no-svg select.is-hovered {
       background: url("../images/png/arrow-thick-down.png"), linear-gradient(to bottom, #004494, #004494); }
@@ -6176,8 +6174,7 @@ Styleguide form.select
     background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #575757, #575757);
     background-repeat: no-repeat;
     background-position: right 0.764em center, right;
-    background-size: 1em 1em, 2.639em 100%;
-    border-right: 0px;
+    background-size: 1em 1em, 2.75em 100%;
     transition: none; }
     .no-svg .select.is-down, .no-svg select.is-down {
       background: url("../images/png/arrow-thick-down.png"), linear-gradient(to bottom, #575757, #575757); }
@@ -6188,8 +6185,7 @@ Styleguide form.select
     background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #ffd617, #ffd617);
     background-repeat: no-repeat;
     background-position: right 0.764em center, right;
-    background-size: 1em 1em, 2.639em 100%;
-    border-right: 0px;
+    background-size: 1em 1em, 2.75em 100%;
     transition: none; }
     .no-svg .select:focus, .no-svg select:focus, .no-svg .select.is-focused, .no-svg select.is-focused {
       background: url("../images/png/arrow-thick-down.png"), linear-gradient(to bottom, #ffd617, #ffd617); }
