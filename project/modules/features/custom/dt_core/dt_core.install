@@ -341,7 +341,7 @@ function dt_core_update_7125() {
     features_revert_module($feature);
     drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
     // Copy the field content.
-    _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
+    _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
     drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
 
     // Remove field instance.
