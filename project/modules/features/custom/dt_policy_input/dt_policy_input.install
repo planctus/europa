@@ -28,7 +28,7 @@ function dt_policy_input_update_7101() {
   // Revert first to prepare the fields.
   features_revert_module('dt_policy_input');
   // Copy field contents.
-  _dt_core_field_value_copy('node', 'policy_input', 'field_policy_input_introduction', 'field_core_introduction');
+  _dt_shared_field_value_copy('node', 'policy_input', 'field_policy_input_introduction', 'field_core_introduction');
   drupal_set_message(t("Copied content from 'field_policy_input_introduction' to 'field_core_introduction' in policy input content type."));
   // Remove field instance.
   if ($instance = field_info_instance('node', 'field_policy_input_introduction', 'policy')) {
@@ -53,7 +53,7 @@ function dt_policy_input_update_7103() {
   features_revert_module('dt_policy_input');
   $content_type = 'policy_input';
   // Copy the field content.
-  _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
+  _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
   drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
 
   // Remove field instance.

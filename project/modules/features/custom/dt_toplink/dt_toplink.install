@@ -34,7 +34,7 @@ function dt_toplink_update_7101() {
     'field_toplink_description' => 'field_core_description',
   );
   foreach ($fields_to_migrate as $source_field_name => $destination_field_name) {
-    _dt_core_field_value_copy('node', 'toplink', $source_field_name, $destination_field_name);
+    _dt_shared_field_value_copy('node', 'toplink', $source_field_name, $destination_field_name);
     field_delete_field($source_field_name);
   }
 }

@@ -100,11 +100,11 @@ function dt_priority_update_7102() {
     // Push the changes to the instance.
     field_update_instance($priority_objective);
     // Move the data.
-    _dt_core_field_value_copy('node', 'priority', 'field_priority_objective', 'field_core_objective');
+    _dt_shared_field_value_copy('node', 'priority', 'field_priority_objective', 'field_core_objective');
   }
 
   // Transfer the data of refactored fields.
-  _dt_core_field_value_copy('node', 'priority', 'field_core_policy', 'field_core_child_policies');
+  _dt_shared_field_value_copy('node', 'priority', 'field_core_policy', 'field_core_child_policies');
 
   // Delete unneeded and depricated field instances.
   $field_instance_to_remove = array(

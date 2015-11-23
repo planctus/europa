@@ -28,7 +28,7 @@ function dt_page_update_7101() {
   features_revert_module('dt_page');
 
   // Move to multivalue field.
-  _dt_core_field_value_copy('node', 'basic_page', 'field_core_department', 'field_core_departments');
+  _dt_shared_field_value_copy('node', 'basic_page', 'field_core_department', 'field_core_departments');
 
   // Remove the instance.
   if ($instance = field_info_instance('node', 'field_core_department', 'basic_page')) {
