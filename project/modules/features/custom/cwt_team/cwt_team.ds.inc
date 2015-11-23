@@ -176,7 +176,7 @@ function cwt_team_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'full_name';
+  $ds_field->field = 'full_name_cwt';
   $ds_field->label = 'Full name';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
@@ -190,7 +190,7 @@ function cwt_team_ds_custom_fields_info() {
     ),
     'use_token' => 1,
   );
-  $export['full_name'] = $ds_field;
+  $export['full_name_cwt'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
