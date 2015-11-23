@@ -28,7 +28,7 @@
       // Track clicks inside of site-menu section.
       $($linkMenuSection).click(function() {
         var data = $(this).text();
-        PiwikDTT.sendTrack(1,'trackEvent', 'Menu', 'link', data);
+        PiwikDTT.sendTrack(0,'trackEvent', 'Menu', 'link', data);
       });
     }
   }
