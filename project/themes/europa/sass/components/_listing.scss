@@ -569,9 +569,8 @@ Styleguide listing.cabinet
 
       img {
         display: inline-block;
-        background-color:#ececec;
-        min-width:40px;
-        min-height:40px;
+        max-width:50px;
+        max-height:50px;
       }
 
       span {

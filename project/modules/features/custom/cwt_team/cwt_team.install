@@ -85,17 +85,33 @@ function cwt_team_update_7106() {
 /**
  *  Assigning the right view mode to the home page.
  */
-function cwt_team_update_7107() {
+function cwt_team_update_7110() {
+  // CWT core is holding the variables that enables the view mode switch.
+  features_revert(array('cwt_core' => array('strongarm')));
+  // Team nodes flagged with this term should use a different view mode.
   $college = taxonomy_get_term_by_name('College', 'team_subtypes');
   $college_tid = array_shift($college)->tid;
+  // find the nodes having this term.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'team')
-  ->fieldCondition('field_team_subtype', 'tid', $college_tid, '=');
+    ->entityCondition('bundle', 'team')
+    ->fieldCondition('field_team_subtype', 'tid', $college_tid, '=');
   $results = $query->execute();
-  $nodes = array_shift($results);
+
+  if (isset($results['node'])) {
+  $nids = array_keys($results['node']);
+  $nodes = entity_load('node', $nids);
+
   foreach ($nodes as $node) {
-    $node->ds_switch = 'college';
-    node_save($node);
+    if (isset($node->ds_switch)) {
+      // This is the display suite override.
+      $node->ds_switch = 'college';
+      // Maybe this is not needed, but since we are dealing with the home page
+      // better not to risk to unpublish the contents.
+      if ($node->workbench_moderation['current']['state'] == 'published') {
+        $node->workbench_moderation['current']['published'] = 1;
+      }
+      node_save($node);
+    }
   }
 }
