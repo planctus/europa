@@ -655,3 +655,19 @@ function dt_core_update_7148() {
     }
   }
 }
+
+/**
+ * NEXTEUROPA-6905: Facebook is not showing up as Social Network in non-English.
+ */
+function dt_core_update_7149() {
+  $sql = "
+    UPDATE
+      {taxonomy_term_data} AS ttd
+    LEFT JOIN {taxonomy_vocabulary} AS tv ON (ttd.vid = tv.vid)
+    SET
+      ttd.language = 'und'
+    WHERE
+      tv.machine_name = 'social_networks'
+  ";
+  db_query($sql)->execute();
+}
