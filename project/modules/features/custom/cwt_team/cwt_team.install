@@ -89,7 +89,7 @@ function cwt_team_update_7107() {
   // CWT core is holding the variables that enables the view mode switch.
   features_revert(array('cwt_core' => array('strongarm')));
   // Revert this feature.
-  features_revert_module(array('cwt_team'));
+  features_revert_module('cwt_team');
   // Team nodes flagged with this term should use a different view mode.
   $college = taxonomy_get_term_by_name('College', 'team_subtypes');
   $college_tid = array_shift($college)->tid;
@@ -101,19 +101,20 @@ function cwt_team_update_7107() {
   $results = $query->execute();
 
   if (isset($results['node'])) {
-  $nids = array_keys($results['node']);
-  $nodes = entity_load('node', $nids);
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
 
-  foreach ($nodes as $node) {
-    if (isset($node->ds_switch)) {
-      // This is the display suite override.
-      $node->ds_switch = 'college';
-      // Maybe this is not needed, but since we are dealing with the home page
-      // better not to risk to unpublish the contents.
-      if ($node->workbench_moderation['current']['state'] == 'published') {
-        $node->workbench_moderation['current']['published'] = 1;
+    foreach ($nodes as $node) {
+      if (isset($node->ds_switch)) {
+        // This is the display suite override.
+        $node->ds_switch = 'college';
+        // Maybe this is not needed, but since we are dealing with the home page
+        // better not to risk to unpublish the contents.
+        if ($node->workbench_moderation['current']->state == 'published') {
+          $node->workbench_moderation['current']->published = 1;
+        }
+        node_save($node);
       }
-      node_save($node);
     }
   }
 }
