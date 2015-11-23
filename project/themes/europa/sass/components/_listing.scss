@@ -62,7 +62,8 @@ $spacing-bottom-listing__title: 0.7em;
   &:hover,
   &:active,
   &:focus {
-    .listing__title {
+    a .listing__title,
+    a.listing__title {
       text-decoration: underline;
       color: $grey-base;
     }
@@ -327,7 +328,7 @@ ul.listing--title {
     &:hover,
     &:active,
     &:focus {
-      .listing__title {
+      a .listing__title {
         text-decoration: none;
       }
     }

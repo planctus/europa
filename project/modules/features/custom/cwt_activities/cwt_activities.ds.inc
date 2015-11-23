@@ -42,7 +42,7 @@ function cwt_activities_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
           'fi-el' => 'div',
-          'fi-cl' => 'meta__item',
+          'fi-cl' => 'meta__item meta__item--type',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
