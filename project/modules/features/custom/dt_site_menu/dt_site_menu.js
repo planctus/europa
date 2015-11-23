@@ -18,17 +18,17 @@
           $('button', this).toggleClass('is-collapsed');
           // Track menu open close events, once per page load.
           if ($('button', this).hasClass('is-collapsed')) {
-            PiwikDTT.sendTrack(1,'trackEvent','Menu', 'Opened');
+            PiwikDTT.sendTrack(1,'trackEvent', 'Menu', 'Opened');
           }
           else {
-            PiwikDTT.sendTrack(1,'trackEvent','Menu', 'Closed');
+            PiwikDTT.sendTrack(1,'trackEvent', 'Menu', 'Closed');
           }
         });
       });
       // Track clicks inside of site-menu section.
       $($linkMenuSection).click(function() {
         var data = $(this).text();
-        PiwikDTT.sendTrack(1,'trackEvent','Menu', 'link', data);
+        PiwikDTT.sendTrack(1,'trackEvent', 'Menu', 'link', data);
       });
     }
   }
