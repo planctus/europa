@@ -85,7 +85,7 @@ function cwt_team_update_7106() {
 /**
  *  Assigning the right view mode to the home page.
  */
-function cwt_team_update_7110() {
+function cwt_team_update_7107() {
   // CWT core is holding the variables that enables the view mode switch.
   features_revert(array('cwt_core' => array('strongarm')));
   // Team nodes flagged with this term should use a different view mode.
