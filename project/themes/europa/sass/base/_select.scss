@@ -19,6 +19,10 @@ Styleguide form.select
     @include select-list-arrow($grey);
   }
 
+  &::-ms-expand {
+    display: none;
+  }
+
   // Hover state.
   &:hover,
   &.is-hovered {
