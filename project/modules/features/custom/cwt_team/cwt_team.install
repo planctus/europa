@@ -118,3 +118,33 @@ function cwt_team_update_7107() {
     }
   }
 }
+
+/**
+ *  Updating the team nodes to apply the default value for the media enquiries
+ *  field.
+ */
+function cwt_team_update_7108() {
+  $field_name = 'field_team_media_enquiries';
+  // find the default value.
+  $field = field_info_instance('node', $field_name, 'team');
+  $def = $field['default_value'][0]['url'];
+  // Find all the existing nodes of type team.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'team', '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      // If there's no value ( it's actually a edundant check).
+      if (empty($node->{$field_name})) {
+        // Set the default value.
+        $node->{$field_name}[LANGUAGE_NONE][0]['url'] = $def;
+        field_attach_update('node', $node);
+      }
+    }
+  }
+}
