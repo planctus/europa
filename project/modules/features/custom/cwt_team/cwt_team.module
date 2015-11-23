@@ -23,12 +23,6 @@ function cwt_team_views_post_render(&$view, &$output, &$cache) {
     ));
     $output = str_replace('[fallback_image]', $image, $output);
   }
-
-  // Remove empty member contact details block.
-  // @TODO: find a better solution since this is dirty.
-  if ($view->name == 'team_cabinet_members') {
-    $output = str_replace('<div class="member-details-contact"></div>', '', $output);
-  }
 }
 
 /**
