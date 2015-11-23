@@ -33,6 +33,14 @@
   }
 }
 
+// Select list arrow styling.
+@mixin select-list-arrow($background-color) {
+  background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, $background-color, $background-color);
+  background-repeat: no-repeat;
+  background-position: right ($form-control-height - $font-size-medium) / 2 center, right;
+  background-size: $font-size-medium 100%, $form-control-height 100%;
+}
+
 // Language generator.
 @mixin languages_logo($path-and-filename, $modifier-and-file-extension) {
   @each $item in $languages {

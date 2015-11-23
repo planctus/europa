@@ -6135,14 +6135,37 @@ Markup: html/select.html
 Styleguide form.select
 */
 .select, select {
-  -webkit-appearance: none;
+  /* Hide the arrow */
+  appearance: none;
   -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
   text-indent: 0.01px;
   text-overflow: ''; }
+  .select.form-control, select.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
+    /* Add the arrow */
+    background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #b3b4b5, #b3b4b5);
+    background-repeat: no-repeat;
+    background-position: right 0.875em center, right;
+    background-size: 1em 100%, 2.75em 100%; }
   .select:hover, select:hover, .select.is-hovered, select.is-hovered {
-    border-color: #004494; }
+    border-color: #004494;
+    background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #004494, #004494);
+    background-repeat: no-repeat;
+    background-position: right 0.875em center, right;
+    background-size: 1em 100%, 2.75em 100%; }
   .select.is-down, select.is-down {
-    border-color: #575757; }
+    border-color: #575757;
+    background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #575757, #575757);
+    background-repeat: no-repeat;
+    background-position: right 0.875em center, right;
+    background-size: 1em 100%, 2.75em 100%; }
+  .select:focus, select:focus, .select.is-focused, select.is-focused {
+    background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, #ffd617, #ffd617);
+    background-repeat: no-repeat;
+    background-position: right 0.875em center, right;
+    background-size: 1em 100%, 2.75em 100%; }
 
 /*
 Text Input
