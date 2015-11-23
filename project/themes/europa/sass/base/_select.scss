@@ -31,6 +31,19 @@ Styleguide form.select
     background-position: center center;
     cursor: pointer;
   }
+
+  &:hover {
+    select {
+      border-color: $form-control-border-select-color-hover;
+    }
+    
+    .select-list-arrow {
+      background: url("../images/png/arrow-down.png"),  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNgcJnyHwAC+AHYTZq+IgAAAABJRU5ErkJggg==);
+      background-size: $font-size-medium + 0.10em (20em / 32.6em) * $font-size-medium, $form-control-height 100%;
+      background-position: center center;
+      background-repeat: no-repeat, repeat;
+    }
+  }
 }
 
 .select {
@@ -52,8 +65,7 @@ Styleguide form.select
   }
 
   // Hover state.
-  &:hover,
-  &.is-hovered {
+  &:hover {
     border-color: $form-control-border-select-color-hover;
     @include select-list-arrow($form-control-border-select-color-hover);
   }
@@ -65,8 +77,7 @@ Styleguide form.select
   }
 
   // Focus state.
-  &:focus,
-  &.is-focused {
+  &:focus {
     @include select-list-arrow($yellow-light);
   }
 
