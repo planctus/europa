@@ -26,8 +26,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 15,
       ),
     ),
@@ -104,8 +105,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 17,
       ),
     ),
@@ -162,8 +164,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
+        'module' => 'custom_formatters',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'custom_formatters_taxonomy_term_reference_external_links',
         'weight' => 14,
       ),
     ),
@@ -204,8 +207,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'custom_formatters',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'custom_formatters_taxonomy_term_reference_external_links',
         'weight' => 18,
       ),
     ),
