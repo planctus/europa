@@ -176,24 +176,6 @@ function cwt_team_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'full_name_cwt';
-  $ds_field->label = 'Full name';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'biography|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<p><a class="full-name" href="[node:url]">[node:field_biography_first_name] [node:field_biography_last_name]</a></p>',
-      'format' => 'full_html',
-    ),
-    'use_token' => 1,
-  );
-  $export['full_name_cwt'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
   $ds_field->field = 'team_contacts';
   $ds_field->label = 'Team contacts';
   $ds_field->field_type = 6;

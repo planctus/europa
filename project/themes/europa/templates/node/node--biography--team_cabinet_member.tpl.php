@@ -35,7 +35,7 @@
     <h4 class="listing--cabinet__name field">
       <?php print l($firstname . ' ' . $lastname, 'node/' . $node->nid); ?>
     </h4>
-
+<?php print render($content['field_biography_email']); ?>
   <?php if (isset($content['field_biography_email'])): ?>
     <div class="listing--cabinet__email field">
       <span class="label label--aligned">
@@ -44,7 +44,7 @@
       <?php print render($content['field_biography_email'][0]['#markup']); ?>
     </div>
   <?php endif; ?>
-
+ <?php print render($content['field_biography_phone']) ?>
   <?php if (isset($phone)): ?>
     <div class="listing--cabinet__phone field">
       <span class="label label--aligned">
@@ -53,7 +53,7 @@
         <a href="tel:<?php print $phone; ?>"><?php print $phone; ?></a>
     </div>
   <?php endif; ?>
-
+<?php print render($content['field_social_networks']); ?>
   <?php if (isset($social)): ?>
     <div class="listing--cabinet__social field">
       <span class="label label--aligned--top">
@@ -70,7 +70,7 @@
   <?php endif; ?>
 
   </div> <!-- .team-member-top-wrapper END -->
-
+<?php print render($content['body']); ?>
   <div class="field listing--cabinet-bottom-wrapper">
     <span class="label label--aligned--top">
       <?php print render($content['body']['#title']); ?>
