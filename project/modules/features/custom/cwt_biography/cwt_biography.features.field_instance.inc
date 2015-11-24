@@ -121,7 +121,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'team_member' => array(
         'label' => 'inline',
@@ -285,7 +285,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -719,7 +719,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1012,7 +1012,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1091,7 +1091,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1171,7 +1171,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'team_member' => array(
         'label' => 'inline',
@@ -1558,10 +1558,10 @@ function cwt_biography_field_default_field_instances() {
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
-        'module' => 'i18n_taxonomy',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 1,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1667,10 +1667,11 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 8,
       ),
       'team_cabinet_member' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'team_member' => array(
         'label' => 'hidden',
@@ -2004,7 +2005,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2167,7 +2168,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2224,7 +2225,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_css',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'team_member' => array(
         'label' => 'inline',
