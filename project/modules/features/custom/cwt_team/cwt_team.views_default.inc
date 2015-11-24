@@ -1338,7 +1338,7 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['name_field']['label'] = '';
   $handler->display->display_options['fields']['name_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="members-subject-icon [field_project_teams_classname]"></span>
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="icon icon--yellowbg icon--[field_project_teams_classname]"></span>
 [name_field]';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
