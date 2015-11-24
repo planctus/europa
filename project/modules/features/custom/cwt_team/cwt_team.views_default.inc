@@ -1313,6 +1313,7 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['wrapper_class'] = 'expandable';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Taxonomy term: Content using Project team */
   $handler->display->display_options['relationships']['reverse_field_biography_project_team_node']['id'] = 'reverse_field_biography_project_team_node';
