@@ -143,48 +143,31 @@ function dt_publication_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_publication_contact'.
-  $field_bases['field_publication_contact'] = array(
+  // Exported field_base: 'field_publication_collection'
+  $field_bases['field_publication_collection'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_publication_contact',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
+    'field_name' => 'field_publication_collection',
+    'foreign keys' => array(),
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'list',
     'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'contact' => 'contact',
-        ),
+      'allowed_values' => array(
+        0 => 'One publication',
+        1 => 'A collection of multiple publications',
       ),
-      'target_type' => 'node',
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 0,
-    'type' => 'entityreference',
+    'translatable' => 1,
+    'type' => 'list_integer',
   );
 
   // Exported field_base: 'field_publication_origin'.
@@ -223,38 +206,7 @@ function dt_publication_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_publication_published_on'.
-  $field_bases['field_publication_published_on'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_publication_published_on',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
-  );
-
-  // Exported field_base: 'field_publication_referenceno'.
+  // Exported field_base: 'field_publication_referenceno'
   $field_bases['field_publication_referenceno'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -284,7 +236,58 @@ function dt_publication_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_publication_type'.
+  // Exported field_base: 'field_publication_rel_content'
+  $field_bases['field_publication_rel_content'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_publication_rel_content',
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'announcement' => 'announcement',
+          'basic_page' => 'basic_page',
+          'department' => 'department',
+          'person' => 'person',
+          'policy' => 'policy',
+          'policy_area' => 'policy_area',
+          'priority' => 'priority',
+          'publication' => 'publication',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_publication_type'
   $field_bases['field_publication_type'] = array(
     'active' => 1,
     'cardinality' => 1,

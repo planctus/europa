@@ -10,7 +10,8 @@
 function dt_core_info_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-dt-menu-social-media_facebook:https://www.facebook.com/EuropeanCommission
+  // Exported menu link: menu-dt-menu-social-media_facebook:
+  // @see: https://www.facebook.com/EuropeanCommission
   $menu_links['menu-dt-menu-social-media_facebook:https://www.facebook.com/EuropeanCommission'] = array(
     'menu_name' => 'menu-dt-menu-social-media',
     'link_path' => 'https://www.facebook.com/EuropeanCommission',
@@ -40,7 +41,8 @@ function dt_core_info_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-menu-social-media_other-social-media:http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm
+  // Exported menu link: menu-dt-menu-social-media_other-social-media:
+  // @see: http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm
   $menu_links['menu-dt-menu-social-media_other-social-media:http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm'] = array(
     'menu_name' => 'menu-dt-menu-social-media',
     'link_path' => 'http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm',
@@ -64,7 +66,8 @@ function dt_core_info_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-menu-social-media_twitter:https://twitter.com/eu_commission
+  // Exported menu link: menu-dt-menu-social-media_twitter:
+  // @see: https://twitter.com/eu_commission
   $menu_links['menu-dt-menu-social-media_twitter:https://twitter.com/eu_commission'] = array(
     'menu_name' => 'menu-dt-menu-social-media',
     'link_path' => 'https://twitter.com/eu_commission',

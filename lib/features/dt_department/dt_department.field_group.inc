@@ -136,7 +136,7 @@ function dt_department_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Leadership & Organisation',
+    'label' => 'Leadership and organisation',
     'weight' => '8',
     'children' => array(
       0 => 'field_core_persons',
@@ -145,7 +145,7 @@ function dt_department_field_group_info() {
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Leadership & Organisation',
+      'label' => 'Leadership and organisation',
       'instance_settings' => array(
         'classes' => 'section__group',
         'element' => 'div',
@@ -265,7 +265,7 @@ function dt_department_field_group_info() {
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="resposibilities"',
+        'attributes' => 'id="responsibilities"',
       ),
     ),
   );
@@ -369,7 +369,7 @@ function dt_department_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
-    'label' => 'Leadership & Organisation',
+    'label' => 'Leadership and organisation',
     'weight' => '4',
     'children' => array(
       0 => 'field_core_persons',

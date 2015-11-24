@@ -10,8 +10,8 @@
 function cwt_core_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: custom_text_filter.
-  $profiles['custom_text_filter'] = (array) array(
+  // Exported profile: custom_text_filter
+  $profiles['custom_text_filter'] = (object) array(
     'format' => 'custom_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(
@@ -70,8 +70,8 @@ function cwt_core_wysiwyg_default_profiles() {
     'rdf_mapping' => array(),
   );
 
-  // Exported profile: full_access_text_filter.
-  $profiles['full_access_text_filter'] = (array) array(
+  // Exported profile: full_access_text_filter
+  $profiles['full_access_text_filter'] = (object) array(
     'format' => 'full_access_text_filter',
     'editor' => 'ckeditor',
     'settings' => array(

@@ -341,7 +341,7 @@ function dt_core_update_7125() {
     features_revert_module($feature);
     drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
     // Copy the field content.
-    _dt_core_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
+    _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
     drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
 
     // Remove field instance.
@@ -628,4 +628,46 @@ function dt_core_update_7146() {
       ->condition('language', 'und', '=')
       ->execute();
   }
+}
+
+/**
+ * Enabling dt_shared_functions module.
+ */
+function dt_core_update_7147() {
+  module_enable(array('dt_shared_functions'));
+}
+
+/**
+ * NEXTEUROPA-4834: Update features for the modified timeline.
+ */
+function dt_core_update_7148() {
+  $features = array(
+    'dt_page',
+    'dt_policy',
+    'dt_pri_policy_area_default',
+    'dt_priority_default',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+}
+
+/**
+ * NEXTEUROPA-6905: Facebook is not showing up as Social Network in non-English.
+ */
+function dt_core_update_7149() {
+  $sql = "
+    UPDATE
+      {taxonomy_term_data} AS ttd
+    LEFT JOIN {taxonomy_vocabulary} AS tv ON (ttd.vid = tv.vid)
+    SET
+      ttd.language = 'und'
+    WHERE
+      tv.machine_name = 'social_networks'
+  ";
+  db_query($sql)->execute();
 }

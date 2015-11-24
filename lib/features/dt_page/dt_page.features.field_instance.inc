@@ -934,7 +934,9 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
-        'settings' => array(),
+        'settings' => array(
+          'modifier' => 'timeline--nopadding',
+        ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 12,
       ),

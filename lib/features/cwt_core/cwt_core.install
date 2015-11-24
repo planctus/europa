@@ -187,6 +187,8 @@ function cwt_core_update_7114() {
 
 /**
  * Removing fields and groups from editorial section.
+ *
+ * Related to custom block titles etc.
  */
 function cwt_core_update_7115() {
   $obsolete_fields = array(
@@ -342,8 +344,8 @@ function cwt_core_update_7126() {
  * Enable translation on following fields.
  *
  * Fields from ec_embedded_image:
- * file-image-field_file_image_alt_text
- * file-image-field_file_image_title_text.
+ *   file-image-field_file_image_alt_text
+ *   file-image-field_file_image_title_text.
  *
  * fields from cce_basic_config:
  * file-image-field_caption
@@ -456,10 +458,33 @@ function cwt_core_update_7131() {
   );
   module_enable($modules_to_enable);
 }
-
 /**
  * Enable the dt_language_selector_site_popup module.
  */
 function cwt_core_update_7132() {
   module_enable(array('dt_language_selector_site_popup'));
+}
+
+/**
+ * Enable nexteuropa display suite fields.
+ */
+function cwt_core_update_7133() {
+  $modules_to_enable = array(
+    'nexteuropa_ds_fields',
+  );
+  module_enable($modules_to_enable);
+}
+
+/**
+ * Enabling dt_shared_functions module.
+ */
+function cwt_core_update_7134() {
+  module_enable(array('dt_shared_functions'));
+}
+
+/**
+ * NEXTEUROPA-4834: Feature revert cwt_biography.
+ */
+function cwt_core_update_7135() {
+  features_revert_module('cwt_biography');
 }

@@ -49,7 +49,7 @@ function dt_policy_implementation_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
           'fi-el' => 'span',
-          'fi-cl' => 'meta__item listing__meta-item',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,

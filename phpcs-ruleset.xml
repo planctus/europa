@@ -57,7 +57,8 @@
     <!-- Features creates violations for fields. -->
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
       <exclude-pattern>*.features.field.inc</exclude-pattern>
-        <exclude-pattern>*.features.field_*.inc</exclude-pattern>
+      <exclude-pattern>*.features.field_*.inc</exclude-pattern>
+      <exclude-pattern>*.features.wysiwyg.inc</exclude-pattern>
     </rule>
 
     <!-- Features creates violations for fields. -->

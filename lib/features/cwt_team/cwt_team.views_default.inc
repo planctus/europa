@@ -954,9 +954,9 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_gender']['label'] = '';
   $handler->display->display_options['fields']['field_gender']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="term-[tid] [name_field] label role">[field_biography_role_feminine]</span>';
+  $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[field_biography_role_feminine]</span>';
   $handler->display->display_options['fields']['field_gender']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="term-[tid] [name_field] label role">[name_field]</span>';
+  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[name_field]</span>';
   $handler->display->display_options['fields']['field_gender']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
   /* Field: Taxonomy term: Term ID */
@@ -1022,7 +1022,7 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
-        <div class="listing__meta">[field_gender]</div>
+        <div class="meta">[field_gender]</div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>
 </div>
@@ -1174,7 +1174,23 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['id'] = 'field_biography_status_tid_i18n';
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['table'] = 'field_data_field_biography_status';
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['field'] = 'field_biography_status_tid_i18n';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'team_members_by_hierarchy' => 'team_members_by_hierarchy',
+    'biographies_by_project_teams' => 0,
+    'highlights' => 0,
+  );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;

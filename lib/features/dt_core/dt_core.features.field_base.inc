@@ -143,7 +143,69 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_description'.
+  // Exported field_base: 'field_core_date_published'
+  $field_bases['field_core_date_published'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_date_published',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => 'UTC',
+      'todate' => '',
+      'tz_handling' => 'site',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_core_date_updated'
+  $field_bases['field_core_date_updated'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_date_updated',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_core_description'
   $field_bases['field_core_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -447,7 +509,31 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_objective'.
+  // Exported field_base: 'field_core_next_steps'
+  $field_bases['field_core_next_steps'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_next_steps',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'when_timeframe' => array(
+        0 => 'when_timeframe',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'dt_policy_next_step',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'rows' => 5,
+    ),
+    'translatable' => 1,
+    'type' => 'dt_policy_next_step_field',
+  );
+
+  // Exported field_base: 'field_core_objective'
   $field_bases['field_core_objective'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -677,30 +763,6 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_core_next_steps'.
-  $field_bases['field_core_next_steps'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_next_steps',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'when_timeframe' => array(
-        0 => 'when_timeframe',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'dt_policy_next_step',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-      'rows' => 5,
-    ),
-    'translatable' => 1,
-    'type' => 'dt_policy_next_step_field',
   );
 
   return $field_bases;

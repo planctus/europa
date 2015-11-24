@@ -44,3 +44,10 @@ function cwt_blogs_update_7102() {
 function cwt_blogs_update_7103() {
   module_enable(array('multisite_notifications_core', 'subscriptions_ui'));
 }
+
+/**
+ * Revert cwt_blogs.
+ */
+function cwt_blogs_update_7104() {
+  features_revert_module('cwt_blogs');
+}
