@@ -15,7 +15,7 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->id = 'node|team|college';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'team';
-  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->view_mode = 'college';
   $ds_fieldsetting->settings = array(
     'team_meta' => array(
       'weight' => '0',
@@ -333,88 +333,6 @@ function cwt_team_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|team|college';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'team';
-  $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ne_bootstrap_1col_stacked_bottom_header';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'left_header' => array(
-        0 => 'team_meta',
-        2 => 'group_team_meta',
-        3 => 'title',
-        4 => 'field_team_tagline',
-      ),
-      'central' => array(
-        1 => 'cwt_team_role',
-        7 => 'group_team_role',
-        8 => 'group_team_tab_role',
-        9 => 'body',
-        10 => 'group_team_links',
-        11 => 'group_team_tabs',
-        12 => 'cwt_team_name',
-        13 => 'group_team_tab_project_team',
-        14 => 'field_team_links',
-        15 => 'cwt_team_president',
-        16 => 'group_team_tab_name',
-        17 => 'group_team_members',
-        18 => 'group_team_comissioners',
-        19 => 'field_team_attachments',
-        20 => 'cwt_team_project_team',
-        21 => 'group_team_files',
-        22 => 'social_media',
-        23 => 'group_team_president',
-      ),
-      'bottom_header' => array(
-        5 => 'field_illustrative_image',
-        6 => 'group_team_top_image',
-      ),
-    ),
-    'fields' => array(
-      'team_meta' => 'left_header',
-      'cwt_team_role' => 'central',
-      'group_team_meta' => 'left_header',
-      'title' => 'left_header',
-      'field_team_tagline' => 'left_header',
-      'field_illustrative_image' => 'bottom_header',
-      'group_team_top_image' => 'bottom_header',
-      'group_team_role' => 'central',
-      'group_team_tab_role' => 'central',
-      'body' => 'central',
-      'group_team_links' => 'central',
-      'group_team_tabs' => 'central',
-      'cwt_team_name' => 'central',
-      'group_team_tab_project_team' => 'central',
-      'field_team_links' => 'central',
-      'cwt_team_president' => 'central',
-      'group_team_tab_name' => 'central',
-      'group_team_members' => 'central',
-      'group_team_comissioners' => 'central',
-      'field_team_attachments' => 'central',
-      'cwt_team_project_team' => 'central',
-      'group_team_files' => 'central',
-      'social_media' => 'central',
-      'group_team_president' => 'central',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'left_header' => 'div',
-      'right_header' => 'div',
-      'bottom_header' => 'div',
-      'top' => 'div',
-      'central' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
-  );
-  $export['node|team|college'] = $ds_layout;
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|team|full';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'team';
@@ -474,15 +392,6 @@ function cwt_team_ds_view_modes_info() {
     'node' => 'node',
   );
   $export['college'] = $ds_view_mode;
-
-  $ds_view_mode = new stdClass();
-  $ds_view_mode->api_version = 1;
-  $ds_view_mode->view_mode = 'team_member';
-  $ds_view_mode->label = 'Team member';
-  $ds_view_mode->entities = array(
-    'node' => 'node',
-  );
-  $export['team_member'] = $ds_view_mode;
 
   return $export;
 }
