@@ -6805,6 +6805,16 @@ Markup: html/expandable.html
 
 Styleguide expandable
 */
+.expandable__toggle {
+  float: left;
+  width: 100%; }
+  .expandable__toggle .icon, .expandable__toggle .search-form__btn {
+    margin-right: 0.833em; }
+  .expandable__toggle h3 {
+    font-size: 1.222em; }
+  .expandable__toggle:hover {
+    background: #ffd617; }
+
 /*
 Facet tag
 

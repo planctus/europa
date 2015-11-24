@@ -5,3 +5,19 @@ Markup: html/expandable.html
 
 Styleguide expandable
 */
+.expandable__toggle {
+  float: left;
+  width: 100%;
+
+  .icon {
+    margin-right: 0.833em;
+  }
+
+  h3 {
+    font-size: $font-size-mid;
+  }
+
+  &:hover {
+    background: $yellow-light;
+  }
+}
