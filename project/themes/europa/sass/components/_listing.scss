@@ -532,43 +532,56 @@ Styleguide listing.cabinet
 .listing--cabinet {
   padding: 1.2em 0;
 
+  .field--field-biography-tagline {
+    @extend .label--upper;
+  }
+
+  .field--labeled {
+    margin: 0 0 0.5em;
+
+    .field__items {
+      width: auto;
+    }
+  }
+
+  .field__label,
+  .field-title {
+    padding: 0;
+    font-size: 0.85em;
+    font-weight: 600;
+    width: 12em;
+    float: left;
+  }
+
+  .field-name-body .field-items {
+    float: left;
+  }
+
   .listing--cabinet__name {
     font-weight: 600;
     margin-top: 0;
     display: block;
   }
 
-  .cabinet-bottom-wrapper ul {
+  .listing--cabinet__bottom-wrapper ul {
     margin-bottom: 0;
   }
 
-  .field {
-    margin-bottom: 0.5em;
-  }
-
-  .listing--cabinet__picture {
+  .listing--cabinet__top-wrapper img {
     float: right;
-  }
-
-  .label--upper {
-    padding-left: 0;
-    margin-bottom: 0;
   }
 
   .listing--cabinet__body {
     display: inline-block;
   }
 
-  .listing--cabinet__social_icons {
-    display: inline-block;
-    margin-top: 0.1em;
+  .field--field-social-networks {
 
     a {
-      display: block;
       margin-bottom: 0.5em;
+      background-color: red;
 
       img {
-        display: inline-block;
         max-width:50px;
         max-height:50px;
       }
@@ -582,11 +595,6 @@ Styleguide listing.cabinet
         display: none;
       }
     }
-  }
-
-  .cabinet-bottom-wrapper,
-  .listing--cabinet__social {
-    display: inline-block;
   }
 }
 

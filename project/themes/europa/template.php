@@ -978,7 +978,7 @@ function europa_preprocess_node(&$variables) {
     $variables['node_url'] = $variables['legacy'];
   }
 
-  if ($variables['view_mode'] == 'team_member') {
+  if (isset($variables['view_mode'])) {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
   }

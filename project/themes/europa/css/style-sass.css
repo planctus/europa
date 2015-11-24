@@ -7940,9 +7940,10 @@ Styleguide labels
 .label--danger {
   color: #fff; }
 
-.label--upper {
+.label--upper, .listing--cabinet .field--field-biography-tagline {
   text-transform: uppercase;
-  text-align: left; }
+  text-align: left;
+  font-size: 0.8em; }
 
 .label--highlight {
   color: #404040;
@@ -8448,38 +8449,39 @@ Styleguide listing.cabinet
 
 .listing--cabinet {
   padding: 1.2em 0; }
+  .listing--cabinet .field--labeled {
+    margin: 0 0 0.5em; }
+    .listing--cabinet .field--labeled .field__items {
+      width: auto; }
+  .listing--cabinet .field__label,
+  .listing--cabinet .field-title {
+    padding: 0;
+    font-size: 0.85em;
+    font-weight: 600;
+    width: 12em;
+    float: left; }
+  .listing--cabinet .field-name-body .field-items {
+    float: left; }
   .listing--cabinet .listing--cabinet__name {
     font-weight: 600;
     margin-top: 0;
     display: block; }
-  .listing--cabinet .cabinet-bottom-wrapper ul {
+  .listing--cabinet .listing--cabinet__bottom-wrapper ul {
     margin-bottom: 0; }
-  .listing--cabinet .field {
-    margin-bottom: 0.5em; }
-  .listing--cabinet .listing--cabinet__picture {
+  .listing--cabinet .listing--cabinet__top-wrapper img {
     float: right; }
-  .listing--cabinet .label--upper {
-    padding-left: 0;
-    margin-bottom: 0; }
   .listing--cabinet .listing--cabinet__body {
     display: inline-block; }
-  .listing--cabinet .listing--cabinet__social_icons {
-    display: inline-block;
-    margin-top: 0.1em; }
-    .listing--cabinet .listing--cabinet__social_icons a {
-      display: block;
-      margin-bottom: 0.5em; }
-      .listing--cabinet .listing--cabinet__social_icons a img {
-        display: inline-block;
-        max-width: 50px;
-        max-height: 50px; }
-      .listing--cabinet .listing--cabinet__social_icons a span {
-        font-size: 0.8em; }
-      .listing--cabinet .listing--cabinet__social_icons a::after, .listing--cabinet .listing--cabinet__social_icons a::before {
-        display: none; }
-  .listing--cabinet .cabinet-bottom-wrapper,
-  .listing--cabinet .listing--cabinet__social {
-    display: inline-block; }
+  .listing--cabinet .field--field-social-networks a {
+    margin-bottom: 0.5em;
+    background-color: red; }
+    .listing--cabinet .field--field-social-networks a img {
+      max-width: 50px;
+      max-height: 50px; }
+    .listing--cabinet .field--field-social-networks a span {
+      font-size: 0.8em; }
+    .listing--cabinet .field--field-social-networks a::after, .listing--cabinet .field--field-social-networks a::before {
+      display: none; }
 
 .team__label {
   float: left;

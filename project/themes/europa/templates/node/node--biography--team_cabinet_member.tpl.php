@@ -21,62 +21,19 @@
 ?>
 
 <div class="listing--cabinet">
-  <div class="listing--cabinet-top-wrapper">
-    <div class="listing--cabinet__picture field">
-      <?php print render($content['field_biography_portrait']); ?>
-    </div>
-
-  <?php if (isset($content['field_biography_tagline'])): ?>
-    <span class="label label--upper field">
-      <?php print render($content['field_biography_tagline'][0]['#markup']); ?>
-    </span>
-  <?php endif; ?>
-
+  <div class="listing--cabinet__top-wrapper">
+    <?php print render($content['field_biography_portrait']); ?>
+    <?php print render($content['field_biography_tagline']); ?>
+    <!-- We should use title module in order to use formatters here -->
     <h4 class="listing--cabinet__name field">
-      <?php print l($firstname . ' ' . $lastname, 'node/' . $node->nid); ?>
+      <?php print l($title, 'node/' . $node->nid); ?>
     </h4>
-<?php print render($content['field_biography_email']); ?>
-  <?php if (isset($content['field_biography_email'])): ?>
-    <div class="listing--cabinet__email field">
-      <span class="label label--aligned">
-        <?php print render($content['field_biography_email']['#title']); ?>
-      </span>
-      <?php print render($content['field_biography_email'][0]['#markup']); ?>
-    </div>
-  <?php endif; ?>
- <?php print render($content['field_biography_phone']) ?>
-  <?php if (isset($phone)): ?>
-    <div class="listing--cabinet__phone field">
-      <span class="label label--aligned">
-        <?php print render($content['field_biography_phone']['#title']); ?>
-      </span>
-        <a href="tel:<?php print $phone; ?>"><?php print $phone; ?></a>
-    </div>
-  <?php endif; ?>
-<?php print render($content['field_social_networks']); ?>
-  <?php if (isset($social)): ?>
-    <div class="listing--cabinet__social field">
-      <span class="label label--aligned--top">
-        <?php print render($content['field_social_networks']['#title']); ?>
-      </span>
-      <div class="listing--cabinet__social_icons">
-      <?php
-        foreach ($social as $i) {
-          print render($content['field_social_networks'][$i]['#markup']);
-        }
-      ?>
-      </div>
-    </div>
-  <?php endif; ?>
+    <?php print render($content['field_biography_email']); ?>
+    <?php print render($content['field_biography_phone']) ?>
+    <?php print render($content['field_social_networks']); ?>
+  </div>
 
-  </div> <!-- .team-member-top-wrapper END -->
-<?php print render($content['body']); ?>
-  <div class="field listing--cabinet-bottom-wrapper">
-    <span class="label label--aligned--top">
-      <?php print render($content['body']['#title']); ?>
-    </span>
-    <div class="listing--cabinet__body">
-      <?php print render($content['body'][0]['#markup']); ?>
-    </div>
-  </div> <!-- .team-member-bottom-wrapper END -->
+  <div class="field listing--cabinet__bottom-wrapper">
+    <?php print render($content['body']); ?>
+  </div>
 </div>
