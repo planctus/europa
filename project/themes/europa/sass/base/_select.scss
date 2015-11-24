@@ -11,6 +11,7 @@ Styleguide form.select
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding-right: 0;
 
   select {
     background: none;
@@ -36,7 +37,7 @@ Styleguide form.select
     select {
       border-color: $form-control-border-select-color-hover;
     }
-    
+
     .select-list-arrow {
       background: url("../images/png/arrow-down.png"),  url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNgcJnyHwAC+AHYTZq+IgAAAABJRU5ErkJggg==);
       background-size: $font-size-medium + 0.10em (20em / 32.6em) * $font-size-medium, $form-control-height 100%;
@@ -62,6 +63,8 @@ Styleguide form.select
 
   &.form-control {
     @include select-list-arrow($grey);
+    // To not make it overlap.
+    padding-right: 50px;
   }
 
   // Hover state.

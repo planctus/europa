@@ -6137,7 +6137,8 @@ Styleguide form.select
 .ie9 .form-select {
   position: relative;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  padding-right: 0; }
   .ie9 .form-select select {
     background: none;
     z-index: 99;
@@ -6179,7 +6180,8 @@ Styleguide form.select
     background-repeat: no-repeat;
     background-position: right 0.764em center, right;
     background-size: 1em 1em, 2.75em 100% !important;
-    transition: none; }
+    transition: none;
+    padding-right: 50px; }
     .no-svg .select.form-control, .no-svg select.form-control, .no-svg .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title .no-svg select {
       background: url("../images/png/arrow-down.png"), linear-gradient(to bottom, #b3b4b5, #b3b4b5); }
     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
