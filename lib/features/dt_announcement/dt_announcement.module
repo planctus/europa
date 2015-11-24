@@ -68,12 +68,11 @@ function dt_announcement_views_pre_render(&$view) {
       $read_more_text = $view->display[$view->current_display]->handler->options['use_more_text'];
       // Enable the button.
       $view->display[$view->current_display]->handler->options['use_more'] = 1;
-      // More link button will always be visible, but depending on a few conditions the default
-      // button text will be different see NEXTEUROPA-6727.
-      // We provide a default text value.
-
-      if ((int) $view->total_rows <= 4){
-        if (drupal_is_front_page()){
+      // More link button will always be visible, but depending on a few
+      // conditions the default button text will be different see
+      // NEXTEUROPA-6727. We provide a default text value.
+      if ((int) $view->total_rows <= 4) {
+        if (drupal_is_front_page()) {
           $alter_button_text = t('All news');
         }
       }
