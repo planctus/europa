@@ -25,18 +25,6 @@ function cwt_activities_disable() {
 }
 
 /**
- * Implements hook_install().
- */
-function cwt_activities_install() {
-}
-
-/**
- * Implements hook_uninstall().
- */
-function cwt_activities_uninstall() {
-}
-
-/**
  * Update Agenda start/end date field granularity to support time input.
  */
 function cwt_activities_update_7101() {
@@ -46,4 +34,11 @@ function cwt_activities_update_7101() {
   $field['settings']['granularity']['hour'] = 'hour';
   $field['settings']['granularity']['minute'] = 'minute';
   field_update_field($field);
+}
+
+/**
+ * Revert the feature.
+ */
+function cwt_activities_update_7102() {
+  features_revert_module('cwt_activities');
 }
