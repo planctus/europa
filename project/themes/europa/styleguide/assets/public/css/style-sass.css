@@ -6799,6 +6799,13 @@ Styleguide datepicker
     left: 0 !important; } }
 
 /*
+Expandable
+
+Markup: html/expandable.html
+
+Styleguide expandable
+*/
+/*
 Facet tag
 
 Markup: html/facet-tag.html
@@ -7592,7 +7599,7 @@ Styleguide: icon
   line-height: 40px;
   font-size: 14px;
   text-align: center;
-  display: block; }
+  display: inline-block; }
   .icon--yellowbg:before {
     margin-right: 0;
     line-height: inherit; }
