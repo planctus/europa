@@ -3,21 +3,6 @@
  * @file
  * Define the display of a custom view mode.
  */
-
-  // Those are required fields.
-  $firstname = render($content['field_biography_first_name'][0]['#markup']);
-  $lastname =  render($content['field_biography_last_name'][0]['#markup']);
-
-  // Social networks, find the values to be able to print them.
-  if (isset($content['field_social_networks'])) {
-    $keys = array_keys($content['field_social_networks']);
-    $social = array_filter($keys, function($n) { return is_int($n); });
-  }
-
-  // Phone field, we format it as a link.
-  if (isset($content['field_biography_phone'])) {
-    $phone = render($content['field_biography_phone'][0]['#markup']);
-  }
 ?>
 
 <div class="listing--cabinet">
