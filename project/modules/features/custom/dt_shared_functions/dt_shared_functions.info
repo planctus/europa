@@ -5,5 +5,4 @@ package = NextEuropa
 version = 7.x-1.0
 project = nexteuropa
 
-dependencies[] = dt_help_text
 dependencies[] = views
