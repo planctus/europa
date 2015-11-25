@@ -540,10 +540,6 @@ Styleguide listing.cabinet
 
   .field {
     margin: 0.5em 0 0;
-
-    .field__items {
-      width: auto;
-    }
   }
 
   // I'm overriding here, but this selector shouldn't exist.
@@ -563,6 +559,14 @@ Styleguide listing.cabinet
   // We are styling a weird html here.
   .field-title {
     padding-top: 0.5em;
+  }
+
+  .field-items {
+    width: 75%;
+  }
+
+  .field-name-body {
+
   }
 
   .listing__item--2blocks__bottom {

@@ -8479,8 +8479,6 @@ Styleguide listing.cabinet
   position: relative; }
   .listing__item--2blocks .field {
     margin: 0.5em 0 0; }
-    .listing__item--2blocks .field .field__items {
-      width: auto; }
   .listing__item--2blocks .listing__title + * {
     font-size: inherit; }
   .listing__item--2blocks .field__label,
@@ -8492,6 +8490,8 @@ Styleguide listing.cabinet
     width: 25%; }
   .listing__item--2blocks .field-title {
     padding-top: 0.5em; }
+  .listing__item--2blocks .field-items {
+    width: 75%; }
   .listing__item--2blocks .listing__item--2blocks__bottom {
     clear: both; }
     .listing__item--2blocks .listing__item--2blocks__bottom ul {
