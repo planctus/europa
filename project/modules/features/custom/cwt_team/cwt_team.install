@@ -88,3 +88,10 @@ function cwt_team_update_7106() {
 function cwt_team_update_7107() {
   features_revert(array('cwt_team'));
 }
+
+/**
+ * NEXTEUROPA-7119: Update to revert the views.
+ */
+function cwt_team_update_7108() {
+  features_revert(array('cwt_team'));
+}
