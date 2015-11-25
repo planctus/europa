@@ -118,6 +118,7 @@
 
         <echo msg="AC database loaded." />
 
+        <exec command="drush --root=${platform.build.dir} -y cc all" />
         <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
         </drush>
         <echo msg="Registry rebuilt." />
