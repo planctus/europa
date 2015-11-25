@@ -3,6 +3,7 @@
  * @file
  * Define the display of a custom view mode.
  */
+  $content['body']['#title'] = t('Responsabilities');
 ?>
 
 <div class="listing__item--2blocks__top">
