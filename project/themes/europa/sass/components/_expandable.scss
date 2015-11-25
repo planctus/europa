@@ -5,6 +5,12 @@ Markup: html/expandable.html
 
 Styleguide expandable
 */
+
+.expandable__content {
+  float: left;
+  width: 100%;
+}
+
 .expandable__toggle {
   float: left;
   width: 100%;
