@@ -6231,7 +6231,7 @@ Styleguide form.textarea
     font-weight: 600;
     width: 8em; }
   .page-bottom-header--full-grey .btn-default {
-    margin: 1.5em 0 0 9em; }
+    margin: 1em 0 0 9em; }
 
 @media screen and (max-width: 768px) {
   .page-bottom-header--full-grey .field--labeled .field__label,
