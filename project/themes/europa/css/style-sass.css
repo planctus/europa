@@ -6214,6 +6214,25 @@ Styleguide form.textarea
 .page-bottom-header {
   margin-top: -1px; }
 
+.page-bottom-header--full-grey {
+  background: #f2f2f2;
+  padding: 1.5em; }
+  .page-bottom-header--full-grey .listing__item {
+    border: none;
+    overflow: visible; }
+    .page-bottom-header--full-grey .listing__item:first-child {
+      border: none; }
+  .page-bottom-header--full-grey img {
+    float: right;
+    margin-top: -2em; }
+  .page-bottom-header--full-grey .field--labeled .field__label {
+    padding: 0;
+    font-size: 0.889em;
+    font-weight: 600;
+    width: 8em; }
+  .page-bottom-header--full-grey .btn-default {
+    margin: 1.5em 0 0 9em; }
+
 .page-content {
   margin-top: 60px;
   margin-bottom: 30px; }
@@ -7940,7 +7959,7 @@ Styleguide labels
 .label--danger {
   color: #fff; }
 
-.label--upper, .listing--cabinet .field--field-biography-tagline {
+.label--upper, .listing__item--2blocks .field--field-biography-tagline {
   text-transform: uppercase;
   text-align: left;
   font-size: 0.8em; }
@@ -8199,6 +8218,10 @@ Styleguide listing
     font-size: 0.889em;
     margin-top: 0.7em; }
 
+.listing--forthy {
+  border-top: 1px solid #e2e2e2;
+  max-width: 40em; }
+
 .listing--no-padding {
   padding-left: 0 !important; }
 
@@ -8435,7 +8458,7 @@ Styleguide listing.agenda
   font-size: 0.889em; }
 
 /*
-Listing Cabinet
+Listing 2blocks
 
 Listing components
 
@@ -8443,44 +8466,38 @@ Markup: html/listing--cabinet.html
 
 Styleguide listing.cabinet
 */
-.listing__wrapper {
-  max-width: 40em;
-  border-bottom: 1px solid #e2e2e2; }
-
-.listing--cabinet {
+.listing__item--2blocks {
   padding: 1em 0; }
-  .listing--cabinet .field--labeled {
-    margin: 0 0 0.5em; }
-    .listing--cabinet .field--labeled .field__items {
+  .listing__item--2blocks .field {
+    margin: 0.5em 0 0; }
+    .listing__item--2blocks .field .field__items {
       width: auto; }
-  .listing--cabinet .field__label,
-  .listing--cabinet .field-title {
+  .listing__item--2blocks .listing__title + * {
+    font-size: inherit; }
+  .listing__item--2blocks .field__label,
+  .listing__item--2blocks .field-title {
     padding: 0;
-    font-size: 0.85em;
+    font-size: 0.889em;
     font-weight: 600;
     width: 12em;
     float: left; }
-  .listing--cabinet .field-name-body .field-items {
-    float: left; }
-  .listing--cabinet .listing--cabinet__name {
-    font-weight: 600;
-    margin-top: 0;
-    display: block; }
-  .listing--cabinet .listing--cabinet__bottom-wrapper ul {
-    margin-bottom: 0; }
-  .listing--cabinet .listing--cabinet__top-wrapper img {
+  .listing__item--2blocks .listing__item--2blocks__bottom {
+    clear: both; }
+    .listing__item--2blocks .listing__item--2blocks__bottom ul {
+      list-style-position: inside;
+      margin-bottom: 0; }
+  .listing__item--2blocks .listing__item--2blocks__top img {
     float: right; }
-  .listing--cabinet .listing--cabinet__body {
-    display: inline-block; }
-  .listing--cabinet .field--field-social-networks a {
+  .listing__item--2blocks .field--field-social-networks a {
     margin-bottom: 0.5em;
-    background-color: red; }
-    .listing--cabinet .field--field-social-networks a img {
+    background-color: #f2f2f2; }
+    .listing__item--2blocks .field--field-social-networks a img {
       max-width: 50px;
       max-height: 50px; }
-    .listing--cabinet .field--field-social-networks a span {
-      font-size: 0.8em; }
-    .listing--cabinet .field--field-social-networks a::after, .listing--cabinet .field--field-social-networks a::before {
+    .listing__item--2blocks .field--field-social-networks a span {
+      font-size: 0.8em;
+      display: inline-block; }
+    .listing__item--2blocks .field--field-social-networks a::after, .listing__item--2blocks .field--field-social-networks a::before {
       display: none; }
 
 .team__label {
@@ -9110,32 +9127,6 @@ Styleguide page-header
 
 .front .page-header {
   padding: 0; }
-
-.team-contact-wrapper {
-  background: #f2f2f2;
-  padding: 1.5em; }
-
-.team-contact .listing__item {
-  border: none;
-  overflow: visible; }
-
-.team-contact img {
-  float: right;
-  margin-top: -2em; }
-
-.team-contact .label {
-  margin-bottom: 0.5em; }
-
-.team-contact .label--aligned, .team-contact .label--aligned--top {
-  width: 7em;
-  padding-right: 0; }
-
-.team-contact .btn-default {
-  margin: 1.5em 0 0 7em; }
-
-.team-contact .team-contact__email,
-.team-contact .team-contact__address {
-  display: inline-block; }
 
 /*
 Pager

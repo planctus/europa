@@ -1,3 +1,33 @@
-.page-bottom-header{
+.page-bottom-header {
   margin-top: -1px;
+}
+
+.page-bottom-header--full-grey {
+  background: $grey-lightest;
+  padding: 1.5em;
+
+  .listing__item {
+    border: none;
+    overflow: visible;
+
+    &:first-child {
+      border: none;
+    }
+  }
+
+  img {
+    float: right;
+    margin-top: -2em;
+  }
+
+  .field--labeled .field__label {
+    padding: 0;
+    font-size: $font-size-little;
+    font-weight: 600;
+    width: 8em;
+  }
+
+  .btn-default {
+    margin: 1.5em 0 0 9em;
+  }
 }

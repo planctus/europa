@@ -139,6 +139,11 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
+.listing--forthy {
+  border-top: 1px solid #e2e2e2;
+  max-width: 40em;
+}
+
 .listing--no-padding {
   padding-left: 0 !important;
 }
@@ -515,7 +520,7 @@ Styleguide listing.agenda
 }
 
 /*
-Listing Cabinet
+Listing 2blocks
 
 Listing components
 
@@ -524,62 +529,54 @@ Markup: html/listing--cabinet.html
 Styleguide listing.cabinet
 */
 
-.listing__wrapper  {
-  max-width: 40em;
-  border-bottom: 1px solid #e2e2e2;
-}
 
-.listing--cabinet {
+.listing__item--2blocks {
   padding: 1em 0;
 
   .field--field-biography-tagline {
     @extend .label--upper;
   }
 
-  .field--labeled {
-    margin: 0 0 0.5em;
+  .field {
+    margin: 0.5em 0 0;
 
     .field__items {
       width: auto;
     }
   }
 
+  // I'm overriding here, but this selector shouldn't exist.
+  .listing__title + * {
+    font-size: inherit;
+  }
+
   .field__label,
   .field-title {
     padding: 0;
-    font-size: 0.85em;
+    font-size: $font-size-little;
     font-weight: 600;
     width: 12em;
     float: left;
   }
 
-  .field-name-body .field-items {
-    float: left;
+  .listing__item--2blocks__bottom {
+    clear: both;
+
+    ul {
+      list-style-position: inside;
+      margin-bottom: 0;
+    }
   }
 
-  .listing--cabinet__name {
-    font-weight: 600;
-    margin-top: 0;
-    display: block;
-  }
-
-  .listing--cabinet__bottom-wrapper ul {
-    margin-bottom: 0;
-  }
-
-  .listing--cabinet__top-wrapper img {
+  .listing__item--2blocks__top img {
     float: right;
-  }
-
-  .listing--cabinet__body {
-    display: inline-block;
   }
 
   .field--field-social-networks {
 
     a {
       margin-bottom: 0.5em;
-      background-color: red;
+      background-color: #f2f2f2;
 
       img {
         max-width:50px;
@@ -588,6 +585,7 @@ Styleguide listing.cabinet
 
       span {
         font-size: 0.8em;
+        display: inline-block;
       }
 
       &::after,

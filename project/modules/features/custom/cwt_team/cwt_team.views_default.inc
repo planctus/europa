@@ -176,7 +176,6 @@ function cwt_team_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Contact the team';
-  $handler->display->display_options['css_class'] = 'team-contact';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -186,10 +185,11 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'team-contact__item';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -214,6 +214,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_illustrative_image']['field'] = 'field_illustrative_image';
   $handler->display->display_options['fields']['field_illustrative_image']['label'] = '';
   $handler->display->display_options['fields']['field_illustrative_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_illustrative_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_illustrative_image']['empty'] = '[fallback_image]';
   $handler->display->display_options['fields']['field_illustrative_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_illustrative_image']['type'] = 'picture';
@@ -228,11 +229,12 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_email']['field'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['relationship'] = 'reverse_field_biography_team_node';
   $handler->display->display_options['fields']['field_biography_email']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_email']['element_class'] = 'team-contact__email';
+  $handler->display->display_options['fields']['field_biography_email']['element_class'] = 'field__items';
   $handler->display->display_options['fields']['field_biography_email']['element_label_type'] = 'span';
-  $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'label label--aligned';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field field--labeled';
   $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['id'] = 'field_biography_address_thoroughfare';
@@ -283,12 +285,12 @@ function cwt_team_views_default_views() {
 [field_biography_address_locality]
 ';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_class'] = 'team-contact__address';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_class'] = 'field__items';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_type'] = 'span';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_class'] = 'label label--aligned--top';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'team-contact-address-wrapper';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'field field--labeled';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
   /* Field: Content: Media enquiries */
   $handler->display->display_options['fields']['field_team_media_enquiries']['id'] = 'field_team_media_enquiries';
@@ -621,12 +623,13 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Team members';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'team-member-list';
+  $handler->display->display_options['css_class'] = 'team-cabinet-member';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--forthy';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing__item--2blocks';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
