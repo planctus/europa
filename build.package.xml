@@ -214,7 +214,7 @@
                 />
                 <echo msg='mv "${platform.package.destination}/extract/build" "${platform.build.dir}"' />
                 <exec
-                    command='mv "${platform.package.destination}/extract/build" "${platform.build.dir}"'
+                    command='mv "${platform.package.destination}/extract" "${platform.build.dir}"'
                     dir="${project.basedir}"
                     passthru="true"
                     checkreturn="true"
