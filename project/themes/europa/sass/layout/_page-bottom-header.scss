@@ -4,7 +4,7 @@
 
 .page-bottom-header--full-grey {
   background: $grey-lightest;
-  padding: 1.5em;
+  padding: 1em 0;
 
   .listing__item {
     border: none;
@@ -29,5 +29,21 @@
 
   .btn-default {
     margin: 1.5em 0 0 9em;
+  }
+}
+
+@media screen and (max-width: $screen-sm) {
+  .page-bottom-header--full-grey {
+
+    .field--labeled {
+      .field__label,
+      .field__items {
+        padding: 0;
+        width: 100%;
+      }
+    }
+    .btn-default {
+      margin-left: 0;
+    }
   }
 }

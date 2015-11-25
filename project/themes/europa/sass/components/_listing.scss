@@ -532,6 +532,7 @@ Styleguide listing.cabinet
 
 .listing__item--2blocks {
   padding: 1em 0;
+  position: relative;
 
   .field--field-biography-tagline {
     @extend .label--upper;
@@ -555,8 +556,13 @@ Styleguide listing.cabinet
     padding: 0;
     font-size: $font-size-little;
     font-weight: 600;
-    width: 12em;
     float: left;
+    width: 25%;
+  }
+
+  // We are styling a weird html here.
+  .field-title {
+    padding-top: 0.5em;
   }
 
   .listing__item--2blocks__bottom {
@@ -569,13 +575,15 @@ Styleguide listing.cabinet
   }
 
   .listing__item--2blocks__top img {
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 1em;
   }
 
   .field--field-social-networks {
 
     a {
-      margin-bottom: 0.5em;
+      margin-top: 0.5em;
       background-color: #f2f2f2;
 
       img {
@@ -587,11 +595,35 @@ Styleguide listing.cabinet
         font-size: 0.8em;
         display: inline-block;
       }
-
+      // Also here, i'm forced to do this to avoid the external link icon.
       &::after,
       &::before {
         display: none;
       }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xs) {
+  .listing__item--2blocks {
+
+    .field__label,
+    .field-title {
+      width: 100%;
+      margin-bottom: 0.3em;
+    }
+
+    .field--field-social-networks  a {
+      float: left;
+      margin-right: 1em;
+    }
+
+    .listing__item--2blocks__bottom ul {
+      padding: 0;
+    }
+
+    .listing__item--2blocks__top img {
+      position: static;
     }
   }
 }

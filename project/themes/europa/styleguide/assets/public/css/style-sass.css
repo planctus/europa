@@ -6216,7 +6216,7 @@ Styleguide form.textarea
 
 .page-bottom-header--full-grey {
   background: #f2f2f2;
-  padding: 1.5em; }
+  padding: 1em 0; }
   .page-bottom-header--full-grey .listing__item {
     border: none;
     overflow: visible; }
@@ -6232,6 +6232,14 @@ Styleguide form.textarea
     width: 8em; }
   .page-bottom-header--full-grey .btn-default {
     margin: 1.5em 0 0 9em; }
+
+@media screen and (max-width: 768px) {
+  .page-bottom-header--full-grey .field--labeled .field__label,
+  .page-bottom-header--full-grey .field--labeled .field__items {
+    padding: 0;
+    width: 100%; }
+  .page-bottom-header--full-grey .btn-default {
+    margin-left: 0; } }
 
 .page-content {
   margin-top: 60px;
@@ -8467,7 +8475,8 @@ Markup: html/listing--cabinet.html
 Styleguide listing.cabinet
 */
 .listing__item--2blocks {
-  padding: 1em 0; }
+  padding: 1em 0;
+  position: relative; }
   .listing__item--2blocks .field {
     margin: 0.5em 0 0; }
     .listing__item--2blocks .field .field__items {
@@ -8479,17 +8488,21 @@ Styleguide listing.cabinet
     padding: 0;
     font-size: 0.889em;
     font-weight: 600;
-    width: 12em;
-    float: left; }
+    float: left;
+    width: 25%; }
+  .listing__item--2blocks .field-title {
+    padding-top: 0.5em; }
   .listing__item--2blocks .listing__item--2blocks__bottom {
     clear: both; }
     .listing__item--2blocks .listing__item--2blocks__bottom ul {
       list-style-position: inside;
       margin-bottom: 0; }
   .listing__item--2blocks .listing__item--2blocks__top img {
-    float: right; }
+    position: absolute;
+    right: 0;
+    top: 1em; }
   .listing__item--2blocks .field--field-social-networks a {
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
     background-color: #f2f2f2; }
     .listing__item--2blocks .field--field-social-networks a img {
       max-width: 50px;
@@ -8499,6 +8512,19 @@ Styleguide listing.cabinet
       display: inline-block; }
     .listing__item--2blocks .field--field-social-networks a::after, .listing__item--2blocks .field--field-social-networks a::before {
       display: none; }
+
+@media screen and (max-width: 480px) {
+  .listing__item--2blocks .field__label,
+  .listing__item--2blocks .field-title {
+    width: 100%;
+    margin-bottom: 0.3em; }
+  .listing__item--2blocks .field--field-social-networks a {
+    float: left;
+    margin-right: 1em; }
+  .listing__item--2blocks .listing__item--2blocks__bottom ul {
+    padding: 0; }
+  .listing__item--2blocks .listing__item--2blocks__top img {
+    position: static; } }
 
 .team__label {
   float: left;
