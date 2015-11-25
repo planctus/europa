@@ -9,11 +9,18 @@ Styleguide expandable
 .expandable__content {
   float: left;
   width: 100%;
+  background-color: $grey-lightest;
+  padding: 30px;
 }
 
 .expandable__toggle {
   float: left;
   width: 100%;
+  background: $yellow-light;
+
+  &.collapsed {
+    background: none;
+  }
 
   .icon {
     margin-right: 0.833em;

@@ -24,7 +24,7 @@
       </a>
     <?php endif; ?>
     <div id="<?php print $formattedTitle; ?>" class="expandable__content collapse">
-      <div class="listing listing--person listing--column-left">
+      <div class="listing listing--person listing--column-left listing--nostripe">
         <?php foreach ($rows as $id => $row): ?>
           <div class="listing__item <?php print strtolower($classes_array[$id]); ?>"><?php print $row; ?></div>
         <?php endforeach; ?>

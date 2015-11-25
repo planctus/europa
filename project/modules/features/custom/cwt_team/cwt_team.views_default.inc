@@ -1022,7 +1022,6 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
-        <div class="meta">[field_gender]</div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>
 </div>
@@ -1342,8 +1341,7 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['name_field']['label'] = '';
   $handler->display->display_options['fields']['name_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="icon icon--yellowbg icon--[field_project_teams_classname]"></span>
-[name_field]';
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="icon icon--yellowbg icon--[field_project_teams_classname]"></span>[name_field]';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
   /* Field: Content: Nid */
@@ -1426,7 +1424,6 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
     [field_biography_portrait]
   </div>
   <div class="listing__column-main">
-    <div class="meta">[field_gender]</div>
     <h3 class="listing__title">[field_biography_first_name] [field_biography_last_name]</h3>
     <div>[field_biography_tagline]</div>
   </div>
