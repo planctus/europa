@@ -5,40 +5,9 @@
  */
 
 /**
- * Implements hook_field_widget_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
-function dt_help_text_field_widget_form_alter(&$element, &$form_state, $context) {
-  $break_string = t('break');
-  $field_type = $context['field']['type'];
-
-  if ($field_type == 'entityreference') {
-    kpr($element);
-  }
-
-  if (isset($element['#description'])) {
-    $description = &$element['#description'];
-  }
-  elseif (isset($element['target_id']['#description'])) {
-    $description = &$element['target_id']['#description'];
-  }
-  else {
-    $description = NULL;
-  }
-
-  // Description checking.
-  if (!empty($description) &&
-    // Check the path if it is on admin page.
-    path_is_admin(current_path()) &&
-    // Check '[break]' string if it is exists.
-    strpos($description, $break_string) !== FALSE
-  ) {
-    $description = preg_replace(
-      '/(.*)\[' . $break_string . '\](.*)$/',
-      '<span class="help-text-hidden">$2</span>',
-      $description
-    );
-
-    drupal_add_js(drupal_get_path('module', 'dt_help_text') . '/js/dt_help_text.js');
-  }
+function dt_help_text_form_node_form_alter(&$form, $form_state) {
+  // Adding js only at node add/edit forms.
+  $form['#attached']['js'][] = drupal_get_path('module', 'dt_help_text') . '/js/dt_help_text.js';
 }
-
