@@ -18,6 +18,7 @@
  * - $title_suffix (array): An array containing additional output populated by
  *   modules, intended to be displayed after the main title tag that appears in
  *   the template.
+ * - $comment_count (string): Number of comments. Empty string if no comments.
  *
  * The following variables are provided for contextual information.
  * - $node: Node object the comments are attached to.
@@ -36,10 +37,10 @@
  * @ingroup themeable
  */
 ?>
-<div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<div id="comments" class="<?php print $classes; ?> comments__wrapper"<?php print $attributes; ?>>
   <?php if ($content['comments'] && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
-    <h2 class="title"><?php print t('Comments'); ?></h2>
+    <h2 class="title comments__count"><?php print($comment_count . ' ' . t('Comments')); ?></h2>
     <?php print render($title_suffix); ?>
   <?php endif; ?>
 

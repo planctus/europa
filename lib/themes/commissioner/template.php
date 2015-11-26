@@ -126,6 +126,17 @@ function commissioner_preprocess_node(&$variables) {
   unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 
+/**
+ * Implements template_preprocess_comment_wrapper().
+ */
+function commissioner_preprocess_comment_wrapper(&$variables) {
+  if ($variables['node']->comment_count > 0 ) {
+    $variables['comment_count'] = $variables['node']->comment_count;
+  } else {
+    // Empty string will make it easy to just print the value in the template.
+    $variables['comment_count'] = '';
+  }
+}
 
 /**
  * Implements template_preprocess_comment().
@@ -133,9 +144,12 @@ function commissioner_preprocess_node(&$variables) {
 function commissioner_preprocess_comment(&$variables) {
   $comment = $variables['elements']['#comment'];
   $variables['created'] = format_date($comment->created, 'ec_date');
+  $variables['comment_author'] = $variables['author'];
+  $variables['comment_date'] = $variables['created'];
   $variables['submitted'] = t('!username', array('!username' => $variables['author'])) . '<span class="submitted-date">' . $variables['created'] . '</span>';
   $variables['title']     = check_plain($comment->subject);
   $variables['permalink'] = t('Permalink');
+  $variables['title_attributes_array']['class'] = 'comment__title';
 }
 
 /**

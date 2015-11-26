@@ -61,35 +61,40 @@
  */
 ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print $picture ?>
+  <div class="comment__image">
+    <?php print $picture ?>
+  </div>
 
-  <div class="comment-content-wrapper">
-    <div class="comment-content">
-      <?php if ($new): ?>
-        <span class="new"><?php print $new ?></span>
-      <?php endif; ?>
-      <div class="submitted">
-        <?php print $submitted; ?>
-      </div>
+  <div class="comment__body">
+    <div class="comment-content-wrapper">
+      <div class="comment-content">
+        <?php if ($new): ?>
+          <span class="new"><?php print $new ?></span>
+        <?php endif; ?>
+        <div class="submitted comment__meta">
+          <span class="comment__author"><?php echo $comment_author; ?></span> |
+          <span class="comment__date"><?php echo $comment_date; ?></span>
+        </div>
 
-      <?php print render($title_prefix); ?>
-      <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
-      <?php print render($title_suffix); ?>
+        <?php print render($title_prefix); ?>
+        <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
+        <?php print render($title_suffix); ?>
 
-      <div class="content"<?php print $content_attributes; ?>>
-        <?php
-          // We hide the comments and links so that we can render them later.
+        <div class="content"<?php print $content_attributes; ?>>
+          <?php
+          // We hide the comments and links now so that we can render them later.
           hide($content['links']);
           print render($content);
-        ?>
-        <?php if ($signature): ?>
-        <div class="user-signature clearfix">
-          <?php print $signature ?>
+          ?>
+          <?php if ($signature): ?>
+            <div class="user-signature clearfix">
+              <?php print $signature ?>
+            </div>
+          <?php endif; ?>
         </div>
-        <?php endif; ?>
-      </div>
 
-      <?php print render($content['links']) ?>
+        <?php print render($content['links']) ?>
+      </div>
     </div>
   </div>
 </div>
