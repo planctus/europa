@@ -91,7 +91,7 @@ function nexteuropa_formatters_field_formatter_info() {
         'links' => TRUE,
       ),
     ),
-     'telephone' => array(
+    'telephone' => array(
       'label' => t('Telephone link'),
       'field types' => array('text'),
       'settings' => array(
