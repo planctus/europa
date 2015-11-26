@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * The dt_policy_area install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_area_install() {
+  // Apply default dt configuration to "policy_area" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_area');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_area_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_area') . '/dt_policy_area.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('dt_policy_area %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting dt_policy module to set field display settings.
+ */
+function dt_policy_area_update_7101() {
+  features_revert_module('dt_policy_area');
+}
+
+/**
+ * Reverting dt_policy changing the teaser to display description.
+ */
+function dt_policy_area_update_7102() {
+  features_revert_module('dt_policy_area');
+}
+
+/**
+ * Legacy linking fix for the views policy areas children block.
+ */
+function dt_policy_area_update_7103() {
+  features_revert_module('dt_policy_area');
+}
+
+/**
+ * Adding description in list view.
+ */
+function dt_policy_area_update_7104() {
+  features_revert_module('dt_policy_area');
+}
