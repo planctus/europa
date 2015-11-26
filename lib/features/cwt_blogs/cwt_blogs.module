@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Code for the Blogs feature.
+ */
+
+include_once 'cwt_blogs.features.inc';
+
+/**
+ * Implements hook_pathauto_alias_alter().
+ */
+function cwt_blogs_pathauto_alias_alter(&$alias, array &$context) {
+  // Custom URL pattern for Commissioner's blog posts.
+  if (!empty($context['data']['node']) && $context['data']['node']->type == 'commisioner_blog_post') {
+    $node = $context['data']['node'];
+    $wrapper = entity_metadata_wrapper('node', $node);
+
+    // In the current architecture it is not straightforward to derive the first
+    // part of the URL alias: {team term}. We only have the editorial section to
+    // work with, but this is a taxonomy term that can be linked to multiple
+    // items. We resort to a little trick: all editorial sections have exactly
+    // one commissioner biography linked to them. These biographies have a
+    // manually entered URL alias that conforms exactly to the format we need.
+    // Unfortunately this will only work for commissioners (not for other roles
+    // like cabinet members) and it relies on the fact that the URL alias has
+    // been entered correctly. Currently this is the case for all biographies
+    // and it is not expected that this will change much in the coming 5
+    // years.
+    // @see cwt_biography_get_commissioner_biography_by_editorial_section()
+    // @see cwt_core_pathauto_alias_alter()
+    if ($biography = cwt_biography_get_commissioner_biography_by_editorial_section($wrapper->field_editorial_section->value())) {
+      $bio_path_alias = drupal_get_path_alias('node/' . $biography->nid);
+      $alias = $bio_path_alias . '/blog/' . pathauto_cleanstring($node->title);
+    }
+
+    if ($rule = rules_config_load('rules_cabinet_path')) {
+      entity_delete('rules_config', $rule->id);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function cwt_blogs_form_comment_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form_state['comment_preview'])) {
+    hide($form['comment_output_below']);
+  }
+}

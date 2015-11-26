@@ -1,0 +1,219 @@
+<?php
+
+/**
+ * @file
+ * Code for the CWT Highlights feature.
+ */
+
+include_once 'cwt_highlights.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function cwt_highlights_block_info() {
+  return array(
+    'cwt_highlights' => array(
+      'info' => t('Highlights'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cwt_highlights_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'cwt_highlights':
+      // The Highlights block is intended to be placed on a node page using the
+      // Context module. It will derive its editorial section from the current
+      // page.
+      if ($node = menu_get_object()) {
+        $wrapper = entity_metadata_wrapper('node', $node);
+        $editorial_section = $wrapper->field_editorial_section->value();
+        // Block only available when editorial section is set.
+        if (!empty($editorial_section)) {
+          $block['subject'] = t('Highlights');
+          $block['content'] = array(
+            '#theme' => 'cwt_highlights',
+            '#editorial_section' => $editorial_section,
+          );
+        }
+      }
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cwt_highlights_theme($existing, $type, $theme, $path) {
+  return array(
+    'cwt_highlight' => array(
+      'template' => 'cwt_highlight',
+      'render element' => 'elements',
+    ),
+    'cwt_highlights' => array(
+      'variables' => array('editorial_section' => NULL),
+    ),
+  );
+}
+
+/**
+ * Returns a rendered set of highlights.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - editorial_section: The editorial section for which the highlights are
+ *     rendered.
+ *
+ * @return string
+ *   The rendered highlights.
+ *
+ * @ingroup themeable
+ */
+function theme_cwt_highlights($variables) {
+  $output = array();
+
+  // The highlights are sourced from an editorial section.
+  $count = 0;
+  foreach (cwt_highlights_get_highlights_from_editorial_section($variables['editorial_section']) as $highlight) {
+    if ($count == 0) {
+      $classes_array = array('first');
+    }
+    else {
+      $classes_array = array();
+    }
+    $highlight->classes_array = $classes_array;
+
+    $output['highlight-' . $count++] = array(
+      '#theme' => 'cwt_highlight',
+      '#highlight' => $highlight,
+    );
+  }
+
+  // Only render the container if we actually have some highlights to show, to
+  // avoid rendering an empty block.
+  if (!empty($output)) {
+    $output['highlight-' . --$count]['#highlight']->classes_array = array_merge($classes_array, array('last'));
+    $output += array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('highlights-list'),
+      ),
+    );
+  }
+
+  return drupal_render($output);
+}
+
+/**
+ * Prepares variables for the cwt_highlight template.
+ *
+ * Default template: cwt_highlight.tpl.php.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the properties of the element.
+ *     Properties used:
+ *     - #highlight: The node of type Highlight which is being rendered.
+ */
+function template_preprocess_cwt_highlight(&$variables) {
+  $highlight = $variables['elements']['#highlight'];
+  $wrapper = entity_metadata_wrapper('node', $highlight);
+
+  $variables['item_classes'] = !empty($highlight->classes_array) ? (' ' . implode(' ', $highlight->classes_array)) : '';
+
+  // Provide the title.
+  $variables['title'] = check_plain($highlight->title);
+
+  // Provide the image. This is being rendered using the Picture module, with
+  // a regular image style as a fallback.
+  $fallback_image_style = 'highlight_item_image_160x122';
+  $variables['image'] = array(
+    '#theme' => 'picture_formatter',
+    '#item' => $wrapper->field_highlight_image->value(),
+    '#image_style' => $fallback_image_style,
+    '#breakpoints' => picture_get_mapping_breakpoints(picture_mapping_load('highlight_item_image'), $fallback_image_style),
+    '#path' => '',
+  );
+
+  // Provide the subheader. This is rendered by the Link module.
+  if ($subheader = $wrapper->field_highlight_subheader->value()) {
+    $variables['subheader'] = array(
+      '#theme' => 'link_formatter_link_default',
+      '#element' => $subheader,
+    );
+  }
+
+  // Provide the abstract.
+  $variables['abstract'] = $wrapper->field_highlight_abstract->value(array('sanitize' => TRUE));
+
+  // Provide the additional links. These are rendered by the Link module and
+  // wrapped in an item list.
+  if ($additional_links = $wrapper->field_highlight_additional_links->value()) {
+    $variables['additional_links'] = array(
+      '#theme' => 'item_list',
+      '#type' => 'ul',
+      '#attributes' => array(
+        'class' => array('highlights-list-links'),
+      ),
+    );
+    foreach ($additional_links as $additional_link) {
+      $item = array(
+        '#theme' => 'link_formatter_link_default',
+        '#element' => $additional_link,
+      );
+      $variables['additional_links']['#items'][] = drupal_render($item);
+    }
+  }
+}
+
+/**
+ * Returns the highlights associated with a given editorial section.
+ *
+ * The highlights are assigned to an editorial section through the 'Highlights'
+ * nodequeue. The returned highlights will be in the current language, with a
+ * fallback to English if the translation in the current language is not
+ * available.
+ *
+ * @param object $editorial_section
+ *   The taxonomy term of type Editorial Section for which the highlights should
+ *   be returned.
+ *
+ * @return array
+ *   An array of nodes representing the requested highlights.
+ */
+function cwt_highlights_get_highlights_from_editorial_section($editorial_section) {
+  global $language;
+
+  // Find the smartqueue that represents the editorial section that was passed
+  // in by looping over the subqueues until we find a match.
+  $nodequeue = nodequeue_load_queue_by_name('highlights');
+  foreach (nodequeue_load_subqueues_by_queue($nodequeue->qid) as $subqueue) {
+    if ($subqueue->reference == $editorial_section->tid) {
+      $sqid = $subqueue->sqid;
+      break;
+    }
+  }
+
+  if (!empty($sqid)) {
+    // Compile our list of nodes. We need a list of nodes in the current
+    // language, ordered by the position in the nodequeue. If the node is not
+    // present in the current language the default (English) translation should
+    // be used as a fallback.
+    $nids = array();
+    foreach (nodequeue_load_nodes($sqid, FALSE, 0, 0) as $node) {
+      // If a translation exists in the current language then use it, otherwise
+      // fall back to the default (English) translation.
+      $nids[] = ($translations = translation_node_get_translations($node->nid)) && array_key_exists($language->language, $translations) ? $translations[$language->language]->nid : $node->nid;
+    }
+    return node_load_multiple($nids);
+  }
+
+  return array();
+}
