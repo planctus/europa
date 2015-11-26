@@ -54,6 +54,10 @@ function dt_announcement_views_pre_render(&$view) {
     'latest_block',
     'block',
   );
+
+  // Initialize button text as empty to avoid bug reported on NEXTEUROPA-7227.
+  $alter_button_text = '';
+
   // On the listing, we alter the read more text to include our node title.
   if ($view->name == 'announcements' && in_array($view->current_display, $view_announcements_blocks)) {
 
