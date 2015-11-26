@@ -131,9 +131,15 @@ function cwt_team_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'meta meta--header',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
           'fis' => TRUE,
           'fis-el' => 'div',
-          'fis-cl' => 'label label--upper  team__label',
+          'fis-cl' => 'meta__item meta__item--type',
           'fis-at' => '',
           'fis-def-at' => FALSE,
         ),

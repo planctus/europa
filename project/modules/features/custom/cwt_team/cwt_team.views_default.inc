@@ -213,6 +213,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_illustrative_image']['table'] = 'field_data_field_illustrative_image';
   $handler->display->display_options['fields']['field_illustrative_image']['field'] = 'field_illustrative_image';
   $handler->display->display_options['fields']['field_illustrative_image']['label'] = '';
+  $handler->display->display_options['fields']['field_illustrative_image']['element_type'] = '0';
   $handler->display->display_options['fields']['field_illustrative_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_illustrative_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_illustrative_image']['empty'] = '[fallback_image]';
@@ -223,6 +224,7 @@ function cwt_team_views_default_views() {
     'fallback_image_style' => 'large',
     'image_link' => '',
   );
+  $handler->display->display_options['fields']['field_illustrative_image']['field_api_classes'] = TRUE;
   /* Field: Content: E-mail */
   $handler->display->display_options['fields']['field_biography_email']['id'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['table'] = 'field_data_field_biography_email';

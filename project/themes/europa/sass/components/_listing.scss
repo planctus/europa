@@ -588,18 +588,12 @@ Styleguide listing.cabinet
 
     a {
       margin-top: 0.5em;
-      background-color: #f2f2f2;
 
-      img {
-        max-width:50px;
-        max-height:50px;
-      }
-
-      span {
+      span.element-invisible {
         font-size: 0.8em;
         display: inline-block;
       }
-      // Also here, i'm forced to do this to avoid the external link icon.
+
       &::after,
       &::before {
         display: none;

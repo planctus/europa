@@ -13,11 +13,11 @@
     &:first-child {
       border: none;
     }
-  }
 
-  img {
-    float: right;
-    margin-top: -2em;
+    .field--field-illustrative-image {
+      float: right;
+      margin-top: -2em;
+    }
   }
 
   .field--labeled .field__label {
