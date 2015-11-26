@@ -37,7 +37,7 @@ $spacing-bottom-listing__title: 0.7em;
 }
 
 .listing__wrapper {
-  // margin-bottom: 1.667em;
+  margin-bottom: 1.667em;
 }
 
 .listing__wrapper--maxwidth {
@@ -139,7 +139,7 @@ $spacing-bottom-listing__title: 0.7em;
   }
 }
 
-.listing--forthy {
+.listing__wrapper--forthy {
   border-top: 1px solid #e2e2e2;
   max-width: 40em;
 }
@@ -520,115 +520,127 @@ Styleguide listing.agenda
 }
 
 /*
-Listing 2blocks
+Listing  2blocks
 
 Listing components
 
-Markup: html/listing--cabinet.html
+Markup: html/listing--2rows.html
 
-Styleguide listing.cabinet
+
+Styleguide listing.listing--2rows
 */
 
+.listing--2rows {
 
-.listing__item--2blocks {
-  padding: 1em 0;
-  position: relative;
+  .listing__item {
+    padding: 1em 0;
+    position: relative;
 
-  .field--field-biography-tagline {
-    @extend .label--upper;
-  }
+    .listing__top {
 
-  .field {
-    margin: 0.5em 0 0;
-  }
-
-  // I'm overriding here, but this selector shouldn't exist.
-  .listing__title + * {
-    font-size: inherit;
-  }
-
-  .field__label,
-  .field-title {
-    padding: 0;
-    font-size: $font-size-little;
-    font-weight: 600;
-    float: left;
-    width: 25%;
-  }
-
-  // We are styling a weird html here.
-  .field-title {
-    padding-top: 0.5em;
-  }
-
-  .field-items {
-    width: 75%;
-  }
-
-  .field-name-body {
-
-  }
-
-  .listing__item--2blocks__bottom {
-    clear: both;
-
-    ul {
-      list-style-position: inside;
-      margin-bottom: 0;
+      img {
+        position: absolute;
+        right: 0;
+        top: 1em;
+      }
     }
-  }
 
-  .listing__item--2blocks__top img {
-    position: absolute;
-    right: 0;
-    top: 1em;
-  }
+    .field--field-biography-tagline {
+      @extend .label--upper;
+    }
 
-  .field--field-social-networks {
+    .field {
+      margin: 0.5em 0 0;
+    }
 
-    a {
-      margin-top: 0.5em;
+    .listing__title + * {
+      font-size: inherit;
+    }
 
-      span.element-invisible {
-        font-size: 0.8em;
-        display: inline-block;
+    .field__label,
+    .field-title {
+      padding: 0;
+      font-size: $font-size-little;
+      font-weight: 600;
+      float: left;
+      width: 25%;
+    }
+
+    .field-title {
+      padding-top: 0.5em;
+    }
+
+    .listing__bottom {
+      clear: both;
+
+      ul {
+        list-style-position: inside;
+        margin-bottom: 0;
+        padding-left: 0;
       }
 
-      &::after,
-      &::before {
-        display: none;
+      .field-name-body .field-items {
+        padding-left: 15px;
+        width: 75%;
+      }
+    }
+
+    .field--field-social-networks {
+
+      a {
+        margin-top: 0.5em;
+
+        span.element-invisible {
+          font-size: 0.8em;
+          display: inline-block;
+        }
+
+        &::after,
+        &::before {
+          display: none;
+        }
       }
     }
   }
 }
 
 @media screen and (max-width: $screen-xs) {
-  .listing__item--2blocks {
+  .listing--2rows {
 
-    .field__label,
-    .field-title {
-      width: 100%;
-      margin-bottom: 0.3em;
-    }
+    .listing__item {
+      .field--labeled {
+        .field__label,
+        .field__items {
+          padding: 0;
+          width: 100%;
+        }
+      }
 
-    .field--field-social-networks  a {
-      float: left;
-      margin-right: 1em;
-    }
+      .field-title {
+        width: 100%;
+        margin-bottom: 0.3em;
+      }
 
-    .listing__item--2blocks__bottom ul {
-      padding: 0;
-    }
+      .field--field-social-networks  a {
+        float: left;
+        margin-right: 1em;
+      }
 
-    .listing__item--2blocks__top img {
-      position: static;
+      .listing__bottom ul {
+        padding: 0;
+      }
     }
   }
 }
 
-.team__label {
-  float: left;
-  width: 100%;
-  margin: 2.5em 0 0;
-  padding-left: 0;
+@media screen and (max-width: $screen-sm) {
+  .listing--2rows {
+    .listing__item {
+      .listing__top {
+        img {
+          position: static;
+        }
+      }
+    }
+  }
 }

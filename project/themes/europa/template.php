@@ -1033,10 +1033,11 @@ function europa_preprocess_page(&$variables) {
           $variables['node']->header_bottom = $variables['page']['header_bottom'];
           unset($variables['page']['header_bottom']);
         }
-
         ctools_class_add($layout['layout']);
 
-        $variables['node']->header_bottom_modifier = $node->type == 'team' ? 'page-bottom-header--full-grey' : '';
+        if (isset($node->ds_switch) && $node->ds_switch != 'college') {
+          $variables['node']->header_bottom_modifier = 'page-bottom-header--full-grey';
+        }
 
         // This disables message-printing on ALL page displays.
         $variables['show_messages'] = FALSE;

@@ -14,7 +14,7 @@
       border: none;
     }
 
-    .field--field-illustrative-image {
+    img {
       float: right;
       margin-top: -2em;
     }
@@ -24,26 +24,30 @@
     padding: 0;
     font-size: $font-size-little;
     font-weight: 600;
-    width: 8em;
   }
 
   .btn-default {
-    margin: 1em 0 0 9em;
+    margin: 0.5em 0 0;
   }
 }
 
 @media screen and (max-width: $screen-sm) {
   .page-bottom-header--full-grey {
+    .listing__item {
+      .field--labeled {
+        margin: 0.5em 0;
 
-    .field--labeled {
-      .field__label,
-      .field__items {
-        padding: 0;
-        width: 100%;
+        .field__label,
+        .field__items {
+          padding: 0;
+          width: 100%;
+        }
       }
-    }
-    .btn-default {
-      margin-left: 0;
+
+      img {
+        float: none;
+        margin: 0.5em 0;
+      }
     }
   }
 }
