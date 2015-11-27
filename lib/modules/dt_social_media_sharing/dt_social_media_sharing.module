@@ -22,16 +22,16 @@ function dt_social_media_sharing_block_configure($delta = '') {
     case 'social_media_sharing' :
       $default_json = '<script type="application/json">
 {
-	"service": "sbkm",
-	"popup": false,
-	"to": [
-		"more",
-		"facebook",
-		"twitter"
-	],
-	"css": {
-		"list": "wtShareList social-media-links"
-	}
+  "service": "sbkm",
+  "popup": false,
+  "to": [
+    "more",
+    "facebook",
+    "twitter"
+  ],
+  "css": {
+    "list": "wtShareList social-media-links"
+  }
 }
 </script>';
 
@@ -94,16 +94,16 @@ function _dt_social_media_sharing_view_helper() {
 
   $default_json = '<script type="application/json">
 {
-	"service": "sbkm",
-	"popup": false,
-	"to": [
-		"more",
-		"facebook",
-		"twitter"
-	],
-	"css": {
-		"list": "wtShareList social-media-links"
-	}
+  "service": "sbkm",
+  "popup": false,
+  "to": [
+    "more",
+    "facebook",
+    "twitter"
+  ],
+  "css": {
+    "list": "wtShareList social-media-links"
+  }
 }
 </script>';
 
