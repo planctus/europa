@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the nexteuropa_feedback module.
+ *
+ * @see https://webgate.ec.europa.eu
+ * /CITnet/confluence/display/MULTISITE/Custom+features
+ */
+
+include_once 'nexteuropa_feedback.install.inc';
+
+/**
+ * Implements hook_enable().
+ */
+function nexteuropa_feedback_enable() {
+  drupal_set_message(t('Nexteuropa Feedback %v feature is now active on your site.', array('%v' => _nexteuropa_feedback_get_version())));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function nexteuropa_feedback_disable() {
+  drupal_set_message(t('Nexteuropa Feedback %v feature is now inactive on your site.', array('%v' => _nexteuropa_feedback_get_version())));
+}
