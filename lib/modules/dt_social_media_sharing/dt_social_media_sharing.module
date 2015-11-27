@@ -1,0 +1,121 @@
+<?php
+/**
+ * @file
+ * dt_social_media_sharing.module
+ */
+
+
+/**
+ * Implements hook_block_info().
+ */
+function dt_social_media_sharing_block_info() {
+  $blocks = array();
+  $blocks['social_media_sharing']['info'] = t('Social Media Sharing');
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function dt_social_media_sharing_block_configure($delta = '') {
+  switch ($delta) {
+    case 'social_media_sharing' :
+      $default_json = '<script type="application/json">
+{
+	"service": "sbkm",
+	"popup": false,
+	"to": [
+		"more",
+		"facebook",
+		"twitter"
+	],
+	"css": {
+		"list": "wtShareList social-media-links"
+	}
+}
+</script>';
+
+      // Text field form element
+      $form['dt_social_media_sharing_json_code'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Insert webtools object'),
+        '#description' => t('Copy paste Webtools - Social Bookmark code'),
+        '#default_value' => variable_get('dt_social_media_sharing_json_code', $default_json),
+        '#wysiwyg' => FALSE,
+        '#weight' => 0,
+      );
+      $form['dt_social_media_sharing_js_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('External Web Tools Url'),
+        '#default_value' => variable_get('dt_social_media_sharing_js_url', 'http://europa.eu/webtools/load.js'),
+        '#description' => t('This is required in order for it to work.'),
+        '#required' => TRUE,
+        '#weight' => 1,
+      );
+      break;
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function dt_social_media_sharing_block_save($delta = '', $edit = array()) {
+  switch ($delta) {
+    case 'social_media_sharing':
+      if ($edit['dt_social_media_sharing_json_code'] && (!empty($edit['dt_social_media_sharing_json_code']))) {
+        variable_set('dt_social_media_sharing_json_code', $edit['dt_social_media_sharing_json_code']);
+      }
+      variable_set('dt_social_media_sharing_js_url', $edit['dt_social_media_sharing_js_url']);
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function dt_social_media_sharing_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'social_media_sharing':
+      $js_url = variable_get('dt_social_media_sharing_js_url', 'http://europa.eu/webtools/load.js');
+      drupal_add_js($js_url, 'external');
+      $block['content'] = _dt_social_media_sharing_view_helper();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_block_view_MODULE_DELTA_alter().
+ */
+function _dt_social_media_sharing_view_helper() {
+
+  $default_json = '<script type="application/json">
+{
+	"service": "sbkm",
+	"popup": false,
+	"to": [
+		"more",
+		"facebook",
+		"twitter"
+	],
+	"css": {
+		"list": "wtShareList social-media-links"
+	}
+}
+</script>';
+
+  // Style guide implementation and ensure text strings are translated.
+  $text = '<div class="social-media-links"><p>';
+  $text .= t('Follow the latest progress and learn more about getting involved.');
+  $text .= '</p>';
+  $text .= '<span class="social-media-links__label">';
+  $text .= t('Share this blog post:');
+  $text .= '</span>';
+  $text .= variable_get('dt_social_media_sharing_json_code', $default_json);;
+  $text .= '</div>';
+
+  return $text;
+}

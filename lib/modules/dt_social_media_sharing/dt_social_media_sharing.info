@@ -1,0 +1,7 @@
+name = Digital Transformation Social Media Sharing
+description = Webtools based Social Media Sharing block
+core = 7.x
+package = Nexteuropa Digital Transformation
+php = 5.2.4
+version = 7.x-1.0
+project = dt_social_media_sharing
