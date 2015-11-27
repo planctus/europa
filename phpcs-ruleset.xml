@@ -20,6 +20,9 @@
     <exclude-pattern>js/libraries</exclude-pattern>
     <exclude-pattern>*/style-sass.css</exclude-pattern>
 
+    <!-- Exclude settings.php -->
+    <exclude-pattern>*/settings.php</exclude-pattern>
+
     <!-- Exclude old theme -->
     <exclude-pattern>commissioner_OLD</exclude-pattern>
 
