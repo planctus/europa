@@ -127,6 +127,24 @@
           <option name="password">pass</option>
         </drush>
         <echo msg="Password for user admin is set to pass." />
+        <!-- Disable cache -->
+        <drush command="vset" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+          <param>cache</param>
+          <param>0</param>
+        </drush>
+        <echo msg="Cache has been disabled." />
+        <!-- Disable preprocess css -->
+        <drush command="vset" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+          <param>preprocess_css</param>
+          <param>0</param>
+        </drush>
+        <echo msg="Disable css pre processing." />
+        <!-- Disable preprocess css -->
+        <drush command="vset" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+          <param>preprocess_js</param>
+          <param>0</param>
+        </drush>
+        <echo msg="Disable js pre processing." />
       </then>
       <else>
         <echo msg="Exit without doing anything." />
