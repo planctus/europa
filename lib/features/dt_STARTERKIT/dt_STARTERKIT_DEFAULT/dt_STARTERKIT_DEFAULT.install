@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_STARTERKIT_DEFAULT_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  $path = drupal_get_path('module', 'dt_STARTERKIT_DEFAULT') . '/dt_STARTERKIT.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa STARTERKIT_CONTENT_NAME %v feature is installed on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_STARTERKIT_DEFAULT_uninstall() {
+  $path = drupal_get_path('module', 'dt_STARTERKIT_DEFAULT') . '/dt_STARTERKIT.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa STARTERKIT_CONTENT_NAME %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * First hook_update for example.
+ */
+/*
+function dt_STARTERKIT_DEFAULT_update_7101() {
+
+}
+ */

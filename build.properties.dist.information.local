@@ -1,21 +1,32 @@
-# Name of the project
-phing.project.name = Information
+# Drupal configuration
+# --------------------
 
-# The database url to use for site installs
+# Database settings.
+drupal.db.name =
 drupal.db.user =
 drupal.db.password =
-drupal.db.name =
 
-# Local base URL of the installed site.
-base_url = http://information.localhost
+# Project init.
+subsite.name = Information
+subsite.install.modules = dt_core_info
+drush.verbose = false
 
+# Host configuration
+# ------------------
 server.docroot = /var/www/information/
 
+# The base URL to use in Behat tests.
+behat.base_url = http://information.localhost
+
+# Composer
+composer.bin = /usr/local/bin/composer.phar
+
+# Acquia Cloud
+# ------------------
 #Drush aliases
 drush.alias.acquia = ecfpfis.dev
 
-# Modules to enable
-drupal.modules = dt_information_core
-
+# MULTISITE release
+# ------------------
 # Project folder in MULTISITE SVN
 phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

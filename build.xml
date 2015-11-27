@@ -1,246 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="${phing.project.name}" default="help">
-  <import file="deliver.xml" optional="true"/>
-  <!-- If `build.properties.local` exists then we want it badly -->
-  <if>
-    <available file="build.properties.local" property="available_build_properties_local"/>
-    <then>
-      <property file="build.properties.local"/>
-    </then>
-  </if>
-  <property file="build.properties"/>
+<project name="My subsite" default="help">
 
-  <target name="help" description="Phing target list.">
-    <echo msg="${project.code.dir}" />
-    <exec executable="${phing.bin}"
-          passthru="true">
-      <arg value="-l"/>
-    </exec>
-  </target>
+    <property file="build.properties.local" />
+    <property file="build.properties" />
+    <property file="build.properties.dist" />
 
-  <target name="init">
+    <target name="help" description="Phing target list">
+        <exec executable="${phing.bin}"
+              passthru="true">
+            <arg value="-l"/>
+        </exec>
+    </target>
+
+    <includepath classpath="src/Phing" />
+
+    <echo msg="Loading Drush task." />
     <taskdef name="drush" classname="DrushTask" />
-  </target>
 
-  <!-- Initializes variables to build dev environment. -->
-  <target name="init-dev-properties">
-    <property name="project.code.dir" value="${project.basedir}/${phing.project.build.dir}" override="true"/>
-    <property name="drupal.profile.dir" value="${dev.drupal.profile.dir}" override="true"/>
-    <property name="drupal.sites.dir" value="${dev.drupal.sites.dir}" override="true"/>
-    <property name="drupal.settings.dir" value="${dev.drupal.settings.dir}" override="true"/>
-    <property name="drupal.files.dir" value="${dev.drupal.files.dir}" override="true"/>
-    <property name="drupal.site.dir" value="${dev.drupal.site.dir}" override="true"/>
-    <property name="drupal.libraries.dir" value="${dev.drupal.libraries.dir}" override="true"/>
-    <property name="drupal.modules.dir" value="${dev.drupal.modules.dir}" override="true"/>
-    <property name="drupal.themes.dir" value="${dev.drupal.themes.dir}" override="true"/>
-  </target>
+    <echo msg="Loading Behat task." />
+    <taskdef name="behat" classname="BehatTask" />
 
-  <!-- Initializes veriables to build production environment. -->
-  <target name="init-distro-properties">
-    <property name="project.code.dir" value="${project.basedir}/${phing.project.distro.dir}" override="true"/>
-    <property name="drupal.profile.dir" value="${distro.drupal.profile.dir}" override="true"/>
-    <property name="drupal.sites.dir" value="${distro.drupal.sites.dir}" override="true"/>
-    <property name="drupal.settings.dir" value="${distro.drupal.settings.dir}" override="true"/>
-    <property name="drupal.files.dir" value="${distro.drupal.files.dir}" override="true"/>
-    <property name="drupal.site.dir" value="${distro.drupal.site.dir}" override="true"/>
-    <property name="drupal.libraries.dir" value="${distro.drupal.libraries.dir}" override="true"/>
-    <property name="drupal.modules.dir" value="${distro.drupal.modules.dir}" override="true"/>
-    <property name="drupal.themes.dir" value="${distro.drupal.themes.dir}" override="true"/>
-  </target>
+    <echo msg="Importing the ContinuousPHP specific Phing tasks." />
+    <import file="vendor/continuousphp/phing-tasks/tasks.xml" />
 
-  <!-- Execute drush make file and download profile. -->
-  <target name="drush-make" depends="init">
-    <if>
-      <not>
-        <available file="${phing.project.platform.dir}" type="dir" property="available_phing_project_platform_dir"/>
-      </not>
-      <then>
-        <echo message="Platform not initialized. Proceed by initializing the platform." />
-        <phingcall target="init-platform" />
-        <phingcall target="patch-platform" />
-      </then>
-    </if>
+    <echo msg="Loading PHP Codesniffer Configuration task." />
+    <taskdef name="phpcodesnifferconfiguration" classname="\NextEuropa\Phing\PhpCodeSnifferConfigurationTask" />
 
-    <if>
-      <available file="${drupal.settings.dir}" type="dir" />
-      <then>
-        <chmod mode="0777" failonerror="false" verbose="true" quiet="true">
-          <fileset dir="${drupal.settings.dir}" />
-        </chmod>
-      </then>
-    </if>
+    <echo msg="Loading Drush Makefile task." />
+    <taskdef name="drushmakefile" classname="\NextEuropa\Phing\DrushMakeFileTask" />
 
-    <echo msg="Delete previous build." />
-    <delete dir="${project.code.dir}" includeemptydirs="true" failonerror="false" />
+    <import file="build.package.xml" />
+    <import file="build.test.xml" />
 
-    <echo msg="Make the distribution." />
-    <drush command="make"
-           assume="yes"
-           bin="${drush.bin}"
-           pipe="yes"
-           root="${project.code.dir}">
-      <param>${platform.profile.dir}/${drupal.profile.name}/build.make</param>
-      <param>${project.code.dir}</param>
-      <!--
-        High concurrency used because of make problems.
-        @see https://github.com/drush-ops/drush/issues/985
-      -->
-      <option name="concurrency">11</option>
-    </drush>
+    <import file="./vendor/continuousphp/aws-sdk-phing/tasks.xml" />
+    <property name="aws.profile" value="" />
 
-    <!-- Copy platform files to the build folder. -->
-    <echo msg="Copy platform files." />
-    <copy todir="${project.code.dir}">
-      <fileset dir="${phing.project.platform.dir}" excludes="*.sh" defaultexcludes="true"/>
-    </copy>
-  </target>
+    <target name="setup-aws">
+        <property name="aws.profile" value="" />
+        <aws-config region="${aws.region}" profile="${aws.profile}" />
+    </target>
 
-  <!-- Link custom modules. -->
-  <target name="link-project" depends="init,drush-make">
-    <!-- Link: ./sites/project targeted ./project -->
-    <symlink link="${dev.drupal.sites.dir}/${drupal.site.name}" target="../../${phing.project.project.dir}" />
-  </target>
+    <target name="delete-stack">
+        <aws-cf-deletestack name="${cf.stackName}" />
+    </target>
 
-  <!-- Copy custom modules. -->
-  <target name="copy-project" depends="init, init-distro-properties">
-    <!-- Copy project dir. -->
-    <copy todir="${drupal.modules.dir}" overwrite="true">
-      <fileset dir="${phing.project.project.dir}/modules"/>
-    </copy>
-    <copy todir="${drupal.themes.dir}" overwrite="true">
-      <fileset dir="${phing.project.project.dir}/themes"/>
-    </copy>
-    <copy todir="${drupal.libraries.dir}" overwrite="true">
-      <fileset dir="${phing.project.project.dir}/libraries"/>
-    </copy>
-  </target>
+    <target name="run-stack">
+        <if>
+            <equals arg1="single-server" arg2="${cf.template}" />
+            <then>
+                <aws-cf-runstack
+                        name="subsite-${cf.stackName}"
+                        updateOnConflict="true"
+                        capabilities="CAPABILITY_IAM"
+                        templatePath="./resources/cloudformation/${cf.template}.template">
+                    <param name="KeyName" value="${cf.KeyName}" />
+                    <param name="env" value="${cf.stackName}" />
+                </aws-cf-runstack>
+            </then>
+            <else>
+                <!-- Todo: This is currently untested. -->
+                <aws-cf-runstack
+                        name="subsite-${cf.stackName}"
+                        updateOnConflict="true"
+                        capabilities="CAPABILITY_IAM"
+                        templatePath="./resources/cloudformation/${cf.template}.template">
+                    <param name="KeyName" value="${cf.KeyName}" />
+                    <param name="DBName" value="${cf.DBName}" />
+                    <param name="DBUser" value="${cf.DBUser}" />
+                    <param name="DBPassword" value="${cf.DBPassword}" />
+                    <param name="env" value="${cf.stackName}" />
+                    <output name="AutoscalingGroup" property="deploy.autoScalingGroup" />
+                </aws-cf-runstack>
+            </else>
+        </if>
+    </target>
 
-  <!-- Link test files into the build root. -->
-  <target name="link-tests" depends="init,drush-make">
-    <if>
-      <not>
-        <available file="${project.basedir}/tests/behat.yml" type="file" />
-      </not>
-      <then>
-        <echo message="Creating behat.yml config file" />
-        <loadfile property="behat.yml" file="${project.basedir}/tests/behat.yml.dist">
-          <filterchain>
-            <replacetokens>
-              <token key="project.code.dir" value="${project.code.dir}" />
-              <token key="drupal.site.dir" value="${drupal.site.dir}" />
-              <token key="base_url" value="${base_url}" />
-            </replacetokens>
-          </filterchain>
-        </loadfile>
-        <echo message="${behat.yml}" file="${project.basedir}/tests/behat.yml" />
-      </then>
-    </if>
-    <symlink link="${phing.project.build.dir}/behat.yml" target="../tests/behat.yml" />
-    <symlink link="${phing.project.build.dir}/features" target="../tests/features" />
-  </target>
+    <target name="setup-deployment-group">
+        <if>
+            <equals arg1="single-server" arg2="${cf.template}" />
+            <then>
+                <aws-deploy-deployment-group
+                        name="${cf.stackName}"
+                        updateOnConflict="true"
+                        deploymentConfigName="CodeDeployDefault.OneAtATime"
+                        serviceRole="${deploy.serviceRole}"
+                        application="${deploy.applicationName}">
+                    <ec2TagFilter key="env" value="${cf.stackName}" />
+                </aws-deploy-deployment-group>
+            </then>
+            <else>
+                <aws-deploy-deployment-group
+                        name="${cf.stackName}"
+                        updateOnConflict="true"
+                        deploymentConfigName="CodeDeployDefault.OneAtATime"
+                        serviceRole="${deploy.serviceRole}"
+                        application="${deploy.applicationName}">
+                    <autoScalingGroup name="${deploy.autoScalingGroup}" />
+                </aws-deploy-deployment-group>
+            </else>
+        </if>
+    </target>
 
-  <!-- Make files directory. -->
-  <target name="files-directory" depends="init">
-    <mkdir dir="${drupal.files.dir}" />
-    <chmod file="${drupal.files.dir}" mode="0775" failonerror="true" />
-  </target>
+    <target name="provision-stack"
+            description="Provision a stack on AWS"
+            depends="setup-aws, run-stack, setup-deployment-group" />
 
-  <!-- Manipulate settings.php file. -->
-  <target name="create-settings.php" depends="init">
-    <echo msg="Copying default.settings.php file to settings.php..." />
-    <copy file="${drupal.sites.dir}/default/default.settings.php" tofile="${drupal.settings.dir}/settings.php" haltonerror="false"/>
-    <chmod file="${drupal.settings.dir}/settings.php" mode="0775" failonerror="true" />
-  </target>
+    <!-- Custom project specific deployment targets. -->
+    <import file="build.deliver.xml" />
 
-  <!-- Manipulate settings.php file. -->
-  <target name="create-sites.php" depends="init">
-    <echo msg="Copying example.sites.php file to sites.php..." />
-    <delete file="${phing.project.build.dir}/sites/sites.php" failonerror="false" />
-    <copy file="${phing.project.build.dir}/sites/example.sites.php" tofile="${phing.project.build.dir}/sites/sites.php" />
-    <chmod file="${phing.project.build.dir}/sites/sites.php" mode="0775" failonerror="true" />
-    <property name="host" value="${base_url}">
-      <filterchain>
-        <replaceregexp>
-          <regexp pattern="http://" replace="" ignoreCase="true"/>
-          <regexp pattern="https://" replace="" ignoreCase="true"/>
-          <regexp pattern="/" replace="." ignoreCase="true"/>
-        </replaceregexp>
-      </filterchain>
-    </property>
-    <append destFile="${phing.project.build.dir}/sites/sites.php" text="${line.separator}$sites['${host}'] = '${drupal.site.name}';" />
-  </target>
-
-  <!-- Install dependencies. -->
-  <target name="install-dependencies" description="Install dependencies." depends="init">
-    <composer command="install" composer="${composer.bin}">
-      <arg value="--working-dir=${project.code.dir}" />
-    </composer>
-  </target>
-
-  <!-- Install drupal. -->
-  <target name="install-drupal" description="Run the install." depends="init">
-    <drush command="site-install" assume="yes" root="${project.code.dir}" bin="${drush.bin}">
-      <option name="db-url" value="${drupal.db.url}"/>
-      <option name="site-name" value="BETA"/>
-      <option name="account-name" value="${drupal.admin.username}"/>
-      <option name="account-pass" value="${drupal.admin.password}"/>
-      <option name="account-mail" value="${drupal.admin.email}"/>
-      <option name="sites-subdir" value="${drupal.site.name}"/>
-      <param>${drupal.profile.name}</param>
-    </drush>
-  </target>
-
-  <!-- Enable modules. -->
-  <target name="enable-drupal-modules" description="Enable Drupal modules." depends="install-drupal">
-    <drush command="pm-enable" assume="yes" root="${project.code.dir}" uri="${drupal.site.name}" bin="${drush.bin}">
-      <param>${drupal.modules}</param>
-    </drush>
-  </target>
-
-  <!-- Run behat tests. -->
-  <target name="behat-tests" description="Run behat tests." depends="init">
-    <exec command="${behat.bin}"
-          logoutput="true"
-          checkreturn="true"
-          dir="${project.code.dir}"
-          passthru="true" />
-  </target>
-
-  <target name="patch-platform" description="Applies patches to Multisite." depends="init">
-    <echo message="Patching Multisite." />
-    <!-- Apply patches -->
-    <foreach param="filename" absparam="absfilename" target="apply-patch">
-      <fileset dir="${phing.project.patches.dir}">
-        <include name="*.patch" />
-      </fileset>
-    </foreach>
-  </target>
-
-  <target name="apply-patch" >
-    <echo msg="Applying patch: ${absfilename}." />
-    <exec command="patch --directory=${project.basedir} --batch -p1 --backup --input=${absfilename}" passthru="true" />
-  </target>
-
-  <!-- Build up development environment, it should do only once. -->
-  <target name="build-dev"
-          description="Build a local Drupal site in order to dev."
-          depends="init, init-dev-properties, drush-make, link-project, link-tests, files-directory, create-settings.php, create-sites.php" />
-
-  <!-- Compile a package for deployment, like: Acquia. -->
-  <target name="package"
-          description="Build the Drupal site in order to install it."
-          depends="init, init-distro-properties, drush-make, copy-project" />
-
-  <target name="install"
-          description="Install the Drupal site."
-          depends="files-directory, install-drupal, enable-drupal-modules" />
-
-  <target name="install-dev"
-          description="Install the Dev Drupal site."
-          depends="init-dev-properties, install" />
-
-  <target name="test"
-          description="Run tests."
-          depends="behat-tests" />
 </project>
