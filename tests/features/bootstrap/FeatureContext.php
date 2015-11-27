@@ -10,8 +10,6 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Gherkin\Node\PyStringNode;
 
 /**
  * Contains generic step definitions.
@@ -32,6 +30,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
+   * Checks for the language.
+   *
    * @Then the language :arg1 should be :arg2
    */
   public function theLanguageShouldBe($arg1, $arg2) {
@@ -42,55 +42,62 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     if ($arg2 == 'upper' && $native_name === ucfirst($native_name)) {
       return;
     }
-    elseif ($arg2 == 'lower' && $native_name === lcfirst($native_name )) {
+    elseif ($arg2 == 'lower' && $native_name === lcfirst($native_name)) {
       return;
     }
     throw new Exception($native_name . " is not in the correct case.");
   }
 
   /**
-   * @When I go to add a :target translation from :source
+   * Goes to translation form.
+   *
+   * @When I go to add :target translation from :source
    */
-  public function iGoToAddATranslationFrom($target, $source)
-  {
-      $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  public function iGoToAddTranslationFrom($target, $source) {
+    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/add/' . $source . '/' . $target);
   }
 
   /**
+   * Adds dummy text.
+   *
    * @When I fill :field with :length characters of dummy text
    */
-  public function iFillWithCharactersOfDummyText($field, $length)
-  {
-      $value = $this->getRandom()->name(intval($length));
-      echo $value;
-      $this->getSession()->getPage()->fillField($field, $value);
+  public function iFillWithCharactersOfDummyText($field, $length) {
+    $value = $this->getRandom()->name(intval($length));
+    echo $value;
+    $this->getSession()->getPage()->fillField($field, $value);
   }
 
   /**
+   * Prints the current page.
+   *
    * @Then print current page
    */
-  public function printCurrentPage()
-  {
-      throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+  public function printCurrentPage() {
+    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
   }
 
   /**
+   * Prints the html.
+   *
    * @Then print current html
    */
-  public function printCurrentHtml()
-  {
-      throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
+  public function printCurrentHtml() {
+    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
   }
 
   /**
+   * Goes to the edit page.
+   *
    * @Then I edit the node
    */
-  public function iEditTheNode()
-  {
-      $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/edit');
+  public function iEditTheNode() {
+    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/edit');
   }
 
   /**
+   * Checks the language weight.
+   *
    * @Then the language :arg1 should have weight :arg2
    */
   public function theLanguageShouldHaveWeight($arg1, $arg2) {
@@ -102,80 +109,85 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
+   * Checks if the checkbox is checked.
+   *
    * @Then the checkboxes :selector should be checked
    */
-  public function theCheckboxesShouldBeChecked($selector)
-  {
+  public function theCheckboxesShouldBeChecked($selector) {
     $checkboxes = $this->getSession()->getPage()->findAll('css', $selector);
     if ($checkboxes === NULL) {
       throw new Exception('Could not find checkbox input element matching the selector: ' . $selector);
     }
     foreach ($checkboxes as $checkbox) {
-      if(!$checkbox->isChecked()) {
+      if (!$checkbox->isChecked()) {
         throw new Exception('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be');
       }
     }
   }
 
   /**
+   * Check select box value.
+   *
    * @Then the selects :selector should be set to :value
    */
-  public function theSelectsShouldBeSetTo($selector, $value)
-  {
+  public function theSelectsShouldBeSetTo($selector, $value) {
     $selects = $this->getSession()->getPage()->findAll('css', $selector);
     if ($selects === NULL) {
       throw new Exception('Could not find select element matching the selector: ' . $selector);
     }
     foreach ($selects as $select) {
-      if($select->getValue() !== $value) {
+      if ($select->getValue() !== $value) {
         throw new Exception('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be');
       }
     }
   }
 
   /**
+   * Checks text content.
+   *
    * @Then the element :selector should contain text
    */
-  public function theElementShouldContainText($selector)
-  {
+  public function theElementShouldContainText($selector) {
     $elements = $this->getSession()->getPage()->findAll('css', $selector);
     if ($elements === NULL) {
       throw new Exception('Could not find element matching the selector: ' . $selector);
     }
     foreach ($elements as $element) {
-      if($element->getText() == '') {
+      if ($element->getText() == '') {
         throw new Exception('Element ' . $selector . 'is empty and it should not be');
       }
     }
   }
 
   /**
-    * @Then I see that the :field field has :attribute attribute
-    */
-   public function iSeeThatTheFieldHasAttribute($field, $attribute)
-   {
-      $fieldElement = $this->getSession()->getPage()->findField($field);
-      if ($fieldElement === NULL) {
-        throw new Exception('Could not find field: ' . $field);
-      }
-      if (!$fieldElement->hasAttribute($attribute)) {
-        throw new Exception('Field ' . $fieldElement->getHtml() . ' does not have the attribute: ' . $attribute);
-      }
-   }
+   * Checks for attributes.
+   *
+   * @Then I see that the :field field has :attribute attribute
+   */
+  public function iSeeThatTheFieldHasAttribute($field, $attribute) {
+    $field_element = $this->getSession()->getPage()->findField($field);
+    if ($field_element === NULL) {
+      throw new Exception('Could not find field: ' . $field);
+    }
+    if (!$field_element->hasAttribute($attribute)) {
+      throw new Exception('Field ' . $field_element->getHtml() . ' does not have the attribute: ' . $attribute);
+    }
+  }
 
-   /**
-    * @Then I see that the :arg1 field has no :attribute attribute
-    */
-   public function iSeeThatTheFieldHasNoAttribute($field, $attribute)
-   {
-     $fieldElement = $this->getSession()->getPage()->findField($field);
-     if ($fieldElement === NULL) {
-       throw new Exception('Could not find field: ' . $field);
-     }
-     if ($fieldElement->hasAttribute($attribute)) {
-       throw new Exception('Field ' . $field . ' has the attribute: ' . $attribute);
-     }
-   }
+  /**
+   * Checks for not having attribute.
+   *
+   * @Then I see that the :arg1 field has no :attribute attribute
+   */
+  public function iSeeThatTheFieldHasNoAttribute($field, $attribute) {
+    $field_element = $this->getSession()->getPage()->findField($field);
+    if ($field_element === NULL) {
+      throw new Exception('Could not find field: ' . $field);
+    }
+    if ($field_element->hasAttribute($attribute)) {
+      throw new Exception('Field ' . $field . ' has the attribute: ' . $attribute);
+    }
+  }
 
   /**
    * Checks that a 403 Access Denied error occurred.
@@ -274,4 +286,5 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       throw new ExpectationException("The element is not a '$type'' field.", $this->getSession());
     }
   }
+
 }
