@@ -32,6 +32,22 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'social_bookmark_webtools' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'related_announcements' => array(
       'weight' => '8',
       'label' => 'above',
@@ -333,6 +349,21 @@ basic_page|*';
   );
   $export['related_announcements'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'social_bookmark_webtools';
+  $ds_field->label = 'Social Bookmark Webtools';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'dt_social_media_sharing|social_media_sharing',
+    'block_render' => '1',
+  );
+  $export['social_bookmark_webtools'] = $ds_field;
+
   return $export;
 }
 
@@ -353,57 +384,52 @@ function dt_announcement_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'title',
-        3 => 'field_core_introduction',
+        1 => 'field_core_introduction',
+      ),
+      'right_header' => array(
+        2 => 'field_announcement_type',
       ),
       'left' => array(
-        1 => 'og_group_ref',
+        3 => 'og_group_ref',
         4 => 'group_content_access',
         5 => 'field_announcement_info',
         6 => 'field_announcement_media',
         7 => 'field_announcement_image',
-        8 => 'field_announcemnt_img_prominence',
       ),
       'central' => array(
-        2 => 'body',
-        11 => 'field_core_location',
-        12 => 'field_core_topics',
-        13 => 'field_core_policies',
-        14 => 'field_core_department',
-        15 => 'field_core_announcement',
-        16 => 'field_core_subject',
-        17 => 'field_core_links',
+        8 => 'body',
+        9 => 'field_core_topics',
+        10 => 'field_core_policies',
+        11 => 'field_core_department',
+        12 => 'field_core_announcement',
+        13 => 'field_core_links',
       ),
       'right' => array(
-        9 => 'field_announcement_contact',
-      ),
-      'right_header' => array(
-        10 => 'field_announcement_type',
+        14 => 'field_announcement_contact',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
-      'og_group_ref' => 'left',
-      'body' => 'central',
       'field_core_introduction' => 'left_header',
+      'field_announcement_type' => 'right_header',
+      'og_group_ref' => 'left',
       'group_content_access' => 'left',
       'field_announcement_info' => 'left',
       'field_announcement_media' => 'left',
       'field_announcement_image' => 'left',
-      'field_announcemnt_img_prominence' => 'left',
-      'field_announcement_contact' => 'right',
-      'field_announcement_type' => 'right_header',
-      'field_core_location' => 'central',
+      'body' => 'central',
       'field_core_topics' => 'central',
       'field_core_policies' => 'central',
       'field_core_department' => 'central',
       'field_core_announcement' => 'central',
-      'field_core_subject' => 'central',
       'field_core_links' => 'central',
+      'field_announcement_contact' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
+      'top' => 'div',
       'left' => 'div',
       'central' => 'div',
       'right' => 'div',
@@ -426,8 +452,8 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_announcement_meta',
-        1 => 'field_announcement_type',
+        0 => 'field_announcement_type',
+        1 => 'group_announcement_meta',
         2 => 'post_date',
         3 => 'title',
         4 => 'field_core_introduction',
@@ -445,11 +471,12 @@ function dt_announcement_ds_layout_settings_info() {
         11 => 'field_announcement_info',
         13 => 'field_core_links',
         14 => 'related_announcements',
+        15 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
-      'group_announcement_meta' => 'left_header',
       'field_announcement_type' => 'left_header',
+      'group_announcement_meta' => 'left_header',
       'post_date' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
@@ -463,6 +490,7 @@ function dt_announcement_ds_layout_settings_info() {
       'field_core_persons' => 'top',
       'field_core_links' => 'central',
       'related_announcements' => 'central',
+      'social_bookmark_webtools' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
