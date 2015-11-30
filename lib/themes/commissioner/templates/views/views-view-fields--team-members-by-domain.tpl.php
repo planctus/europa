@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default simple view template to all the fields as a row.
@@ -24,6 +25,7 @@
  * @ingroup views_templates
  */
 
+// unset($fields['field_biography_portrait_1']);
 ?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
