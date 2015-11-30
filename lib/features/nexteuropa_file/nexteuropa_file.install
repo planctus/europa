@@ -56,7 +56,7 @@ function nexteuropa_file_update_7102() {
 }
 
 /**
- * Applying default settings from soft config.
+ * Making file content type translatable.
  */
 function nexteuropa_file_update_7103() {
   // Apply default configuration to the content type, needed for correct translation management..
