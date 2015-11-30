@@ -1,0 +1,161 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_priority_install() {
+  // Apply info dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_priority_uninstall() {
+  $path = drupal_get_path('module', 'dt_priority') . '/dt_priority.info';
+  $info = drupal_parse_info_file($path);
+
+  variable_del('dt_priority_page_id');
+
+  drupal_set_message(t('NextEuropa priority %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting the feature to match all fields from the code base.
+ */
+function dt_priority_update_7101() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_priority_intro',
+    'field_priority_keyword',
+    'field_priority_description',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+  $group_priority_other = field_group_load_field_group('group_priority_other', 'node', 'priority', 'form');
+  $group_priority_meta = field_group_load_field_group('group_priority_meta', 'node', 'priority', 'form');
+  field_group_group_export_delete($group_priority_other, FALSE);
+  field_group_group_export_delete($group_priority_meta, FALSE);
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_priority_type',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+  // Revert.
+  features_revert_module('dt_priority');
+  features_revert(array(
+    'dt_priority' => array(
+      'field_base',
+      'field_instance',
+      'field_group',
+      'variable',
+    ),
+  ));
+}
+
+/**
+ * Reverting priority content type and removing depricated fields.
+ */
+function dt_priority_update_7102() {
+  // Enable the default and new modules.
+  $modules_to_enable = array(
+    'weight',
+    'dt_priority_default',
+  );
+  module_enable($modules_to_enable);
+
+  // List of features we have to revert. In the correct order.
+  $features_to_revert = array(
+    'dt_core',
+    'dt_banner',
+    'dt_featured_item',
+    'dt_priority',
+    'dt_priority_default',
+    'dt_roles_permissions',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
+
+  // Update the priority objective (legacy field) with the core objective field
+  // settings.
+  $priority_objective = field_info_instance('node', 'field_priority_objective', 'priority');
+  $core_objective = field_info_instance('node', 'field_core_objective', 'priority');
+  // Double check we have all the data we need.
+  if ($priority_objective && $core_objective) {
+    // Replace the settings.
+    $priority_objective['settings'] = $core_objective['settings'];
+    // Push the changes to the instance.
+    field_update_instance($priority_objective);
+    // Move the data.
+    _dt_shared_field_value_copy('node', 'priority', 'field_priority_objective', 'field_core_objective');
+  }
+
+  // Transfer the data of refactored fields.
+  _dt_shared_field_value_copy('node', 'priority', 'field_core_policy', 'field_core_child_policies');
+
+  // Delete unneeded and depricated field instances.
+  $field_instance_to_remove = array(
+    'field_priority_excerpt',
+    'field_priority_issue',
+    'field_priority_objective',
+    'field_core_policy',
+    'field_core_announcement',
+    'field_core_department',
+    'field_core_priorities',
+    'field_core_topics',
+    'field_core_legacy_link',
+  );
+
+  foreach ($field_instance_to_remove as $field_name) {
+    $instance = field_info_instance('node', $field_name, 'priority');
+    if (is_array($instance)) {
+      field_delete_instance($instance);
+    }
+  }
+
+  // Field bases to remove.
+  $field_bases_to_remove = array(
+    'field_priority_excerpt',
+    'field_priority_issue',
+    'field_priority_objective',
+  );
+
+  // Loop and process.
+  foreach ($field_bases_to_remove as $field_name) {
+    // Loop the bases and delete them.
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+}
+
+/**
+ * NEXTEUROPA-5800 revert related features.
+ */
+function dt_priority_update_7103() {
+  module_enable(array('dt_page'));
+  // List of features we have to revert. In the correct order.
+  $features_to_revert = array(
+    'dt_page',
+    'dt_priority',
+    'dt_priority_default',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
+}
