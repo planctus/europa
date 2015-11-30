@@ -20,27 +20,13 @@ function dt_social_media_sharing_block_info() {
 function dt_social_media_sharing_block_configure($delta = '') {
   switch ($delta) {
     case 'social_media_sharing' :
-      $default_json = '<script type="application/json">
-{
-  "service": "sbkm",
-  "popup": false,
-  "to": [
-    "more",
-    "facebook",
-    "twitter"
-  ],
-  "css": {
-    "list": "wtShareList social-media-links"
-  }
-}
-</script>';
 
       // Text field form element
       $form['dt_social_media_sharing_json_code'] = array(
         '#type' => 'textarea',
         '#title' => t('Insert webtools object'),
         '#description' => t('Copy paste Webtools - Social Bookmark code'),
-        '#default_value' => variable_get('dt_social_media_sharing_json_code', $default_json),
+        '#default_value' => variable_get('dt_social_media_sharing_json_code', _dt_social_media_sharing_default_json()),
         '#wysiwyg' => FALSE,
         '#weight' => 0,
       );
@@ -92,7 +78,25 @@ function dt_social_media_sharing_block_view($delta = '') {
  */
 function _dt_social_media_sharing_view_helper() {
 
-  $default_json = '<script type="application/json">
+  // Style guide implementation and ensure text strings are translated.
+  $text = '<div class="social-media-links"><p>';
+  $text .= t('Follow the latest progress and learn more about getting involved.');
+  $text .= '</p>';
+  $text .= '<span class="social-media-links__label">';
+  $text .= t('Share this blog post:');
+  $text .= '</span>';
+  $text .= variable_get('dt_social_media_sharing_json_code', _dt_social_media_sharing_default_json());;
+  $text .= '</div>';
+
+  return $text;
+}
+
+/**
+ * Helper function that holds default web tools SocialBookmarks JSON.
+ * @return string
+ */
+function _dt_social_media_sharing_default_json() {
+  return '<script type="application/json">
 {
   "service": "sbkm",
   "popup": false,
@@ -106,16 +110,4 @@ function _dt_social_media_sharing_view_helper() {
   }
 }
 </script>';
-
-  // Style guide implementation and ensure text strings are translated.
-  $text = '<div class="social-media-links"><p>';
-  $text .= t('Follow the latest progress and learn more about getting involved.');
-  $text .= '</p>';
-  $text .= '<span class="social-media-links__label">';
-  $text .= t('Share this blog post:');
-  $text .= '</span>';
-  $text .= variable_get('dt_social_media_sharing_json_code', $default_json);;
-  $text .= '</div>';
-
-  return $text;
 }
