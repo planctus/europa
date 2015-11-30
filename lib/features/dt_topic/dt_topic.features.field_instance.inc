@@ -10,7 +10,7 @@
 function dt_topic_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-topic-field_core_department'.
+  // Exported field_instance: 'node-topic-field_core_department'
   $field_instances['node-topic-field_core_department'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -72,7 +72,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_description'.
+  // Exported field_instance: 'node-topic-field_core_description'
   $field_instances['node-topic-field_core_description'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -159,7 +159,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_introduction'.
+  // Exported field_instance: 'node-topic-field_core_introduction'
   $field_instances['node-topic-field_core_introduction'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -245,7 +245,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_legacy_link'.
+  // Exported field_instance: 'node-topic-field_core_legacy_link'
   $field_instances['node-topic-field_core_legacy_link'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -283,6 +283,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -297,6 +298,7 @@ function dt_topic_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -359,6 +361,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'More Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -373,6 +376,7 @@ function dt_topic_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -390,7 +394,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_persons'.
+  // Exported field_instance: 'node-topic-field_core_persons'
   $field_instances['node-topic-field_core_persons'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -452,7 +456,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_policy_areas'.
+  // Exported field_instance: 'node-topic-field_core_policy_areas'
   $field_instances['node-topic-field_core_policy_areas'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -513,7 +517,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_priorities'.
+  // Exported field_instance: 'node-topic-field_core_priorities'
   $field_instances['node-topic-field_core_priorities'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -575,7 +579,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_social_network_links'.
+  // Exported field_instance: 'node-topic-field_core_social_network_links'
   $field_instances['node-topic-field_core_social_network_links'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -631,7 +635,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_top_tasks_links'.
+  // Exported field_instance: 'node-topic-field_core_top_tasks_links'
   $field_instances['node-topic-field_core_top_tasks_links'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -674,6 +678,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Related Top tasks links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -688,6 +693,7 @@ function dt_topic_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -705,7 +711,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_topics'.
+  // Exported field_instance: 'node-topic-field_core_topics'
   $field_instances['node-topic-field_core_topics'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -767,7 +773,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_commission_actions'.
+  // Exported field_instance: 'node-topic-field_topic_commission_actions'
   $field_instances['node-topic-field_topic_commission_actions'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -852,7 +858,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_objectives'.
+  // Exported field_instance: 'node-topic-field_topic_objectives'
   $field_instances['node-topic-field_topic_objectives'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -937,7 +943,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_targets'.
+  // Exported field_instance: 'node-topic-field_topic_targets'
   $field_instances['node-topic-field_topic_targets'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1021,7 +1027,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_tasks'.
+  // Exported field_instance: 'node-topic-field_topic_tasks'
   $field_instances['node-topic-field_topic_tasks'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1082,7 +1088,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-group_content_access'.
+  // Exported field_instance: 'node-topic-group_content_access'
   $field_instances['node-topic-group_content_access'] = array(
     'bundle' => 'topic',
     'default_value' => array(
@@ -1153,7 +1159,7 @@ function dt_topic_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-topic-og_group_ref'.
+  // Exported field_instance: 'node-topic-og_group_ref'
   $field_instances['node-topic-og_group_ref'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1230,7 +1236,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-title_field'.
+  // Exported field_instance: 'node-topic-title_field'
   $field_instances['node-topic-title_field'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1285,7 +1291,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-top_tasks-field_core_top_task_link'.
+  // Exported field_instance: 'taxonomy_term-top_tasks-field_core_top_task_link'
   $field_instances['taxonomy_term-top_tasks-field_core_top_task_link'] = array(
     'bundle' => 'top_tasks',
     'default_value' => NULL,
@@ -1305,6 +1311,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1319,6 +1326,7 @@ function dt_topic_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

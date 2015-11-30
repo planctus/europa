@@ -25,7 +25,7 @@
  * @ingroup views_templates
  */
 
-unset($fields['field_biography_portrait_1']);
+// unset($fields['field_biography_portrait_1']);
 ?>
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
