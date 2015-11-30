@@ -41,7 +41,7 @@ function dt_announcement_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
           'ow-el' => 'div',
-          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-cl' => 'social-media-links--webtool-vertical',
           'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
