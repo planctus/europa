@@ -1,0 +1,64 @@
+<?php
+/**
+ * @file
+ * DT Policy key file install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_keyfile_install() {
+  // Apply default dt configuration to "Policy key file" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_keyfile');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_keyfile_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_keyfile') . '/dt_policy_keyfile.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Policy key file %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Changing type of field_policy_keyfile_type.
+ */
+function dt_policy_keyfile_update_7101() {
+  if (field_info_field('field_policy_keyfile_type') !== NULL) {
+    field_delete_field('field_policy_keyfile_type');
+    field_purge_field('field_policy_keyfile_type');
+  }
+
+  features_revert_module('dt_policy_keyfile');
+}
+
+/**
+ * Reverting key file.
+ */
+function dt_policy_keyfile_update_7102() {
+  features_revert_module('dt_policy_keyfile');
+}
+
+/**
+ * Reverting the feature to apply display settings.
+ */
+function dt_policy_keyfile_update_7103() {
+  features_revert_module('dt_policy_keyfile');
+}
+
+/**
+ * Reverting the feature to apply display settings.
+ */
+function dt_policy_keyfile_update_7104() {
+  features_revert_module('dt_policy_keyfile');
+  $content_type = 'policy_keyfile';
+  // Copy the field content.
+  _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
+  drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_link', $content_type)) {
+    field_delete_instance($instance);
+  }
+}
