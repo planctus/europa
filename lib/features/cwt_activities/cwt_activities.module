@@ -20,6 +20,7 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
 
   // Agenda exposed filter.
   if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
@@ -41,6 +42,11 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
   // If end date is not set, set it to five years from now.
   if (empty($form_state['input']['date_filter']['max']['date'])) {
     $form_state['values']['date_filter']['max'] = date('Y-m-d', strtotime('today + 5 years'));
+  }
+
+  // Modify the default views reset target.
+  if (!empty($form_state['values']['op']) && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
+    drupal_goto($form['#action']);
   }
 
   // And pass this along to Views.
