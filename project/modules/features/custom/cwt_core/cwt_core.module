@@ -640,16 +640,6 @@ function cwt_core_entity_update($entity, $type) {
 }
 
 /**
- * Implements hook_node_presave().
- */
-function cwt_core_node_presave($node) {
-  if ($node->type == 'team') {
-    $type = entity_metadata_wrapper('node', $node)->field_team_subtype->value()->name;
-    $node->ds_switch = $type == 'College' ? 'college' : 'full';
-  }
-}
-
-/**
  * Helper function to group frequently used UUID conditions.
  */
 function _commissioner_uuid_is($condition, $uuid) {

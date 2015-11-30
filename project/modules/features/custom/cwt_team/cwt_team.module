@@ -148,3 +148,13 @@ function cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdCl
 
   return $matches;
 }
+
+/**
+ * Implements hook_node_presave().
+ */
+function cwt_team_node_presave($node) {
+  if ($node->type == 'team') {
+    $type = entity_metadata_wrapper('node', $node)->field_team_subtype->value()->name;
+    $node->ds_switch = $type == 'College' ? 'college' : 'full';
+  }
+}
