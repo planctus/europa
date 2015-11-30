@@ -32,22 +32,6 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'social_bookmark_webtools' => array(
-      'weight' => '9',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'social-media-links--webtool-vertical',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
-      ),
-    ),
     'related_announcements' => array(
       'weight' => '8',
       'label' => 'above',
@@ -63,6 +47,22 @@ function dt_announcement_ds_field_settings_info() {
           'ow-el' => 'div',
           'ow-cl' => 'field--full-width',
           'ow-def-cl' => TRUE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-vertical',
+          'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
         ),
@@ -457,11 +457,14 @@ function dt_announcement_ds_layout_settings_info() {
         12 => 'field_core_persons',
       ),
       'central' => array(
-        9 => 'body',
-        11 => 'field_announcement_info',
-        13 => 'field_core_links',
-        14 => 'related_announcements',
-        15 => 'social_bookmark_webtools',
+        10 => 'group_announcement_main',
+        11 => 'body',
+        13 => 'group_announcement_content',
+        14 => 'field_announcement_info',
+        15 => 'group_announcement_rsb_content',
+        16 => 'field_core_links',
+        17 => 'related_announcements',
+        18 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
@@ -476,8 +479,12 @@ function dt_announcement_ds_layout_settings_info() {
       'field_announcement_image' => 'top',
       'body' => 'central',
       'field_core_department' => 'top',
-      'field_announcement_info' => 'central',
+      'group_announcement_main' => 'central',
+      'body' => 'central',
       'field_core_persons' => 'top',
+      'group_announcement_content' => 'central',
+      'field_announcement_info' => 'central',
+      'group_announcement_rsb_content' => 'central',
       'field_core_links' => 'central',
       'related_announcements' => 'central',
       'social_bookmark_webtools' => 'central',
