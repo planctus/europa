@@ -1,0 +1,5 @@
+name = Commissioner Event Date
+description = Add custom formatter for dates
+package = COMM
+version = "7.x-1.0"
+core = 7.x

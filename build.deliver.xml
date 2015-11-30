@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Custom deployment scripts" default="deliver">
+
+  <property name="acquia.repo.dir" value="acquia-cloud" />
+  <property name="acquia.repo.url" value="ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git" />
+  <property name="acquia.repo" value="${phing.project.tmp.dir}/${acquia.repo.dir}" />
+  <property name="acquia.dump" value="${phing.project.tmp.dir}/ac-cloud.mysql" />
+  <property name="acquia.branch" value="master" />
+  <property name="acquia.docroot" value="${acquia.repo}/docroot" />
+
+  <target name="deliver" description="Deliver code to Acquia repository">
+    <if>
+      <not>
+        <available file="${acquia.repo}" type="dir" />
+      </not>
+      <then>
+        <mkdir dir="${acquia.repo}" />
+        <exec dir="${phing.project.tmp.dir}" command="git clone ${acquia.repo.url} ${acquia.repo.dir}"></exec>
+        <echo msg="acquia-cloud repository cloned to '${acquia.repo}'" />
+      </then>
+    </if>
+    <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git pull --tags"></exec>
+
+    <echo msg="Delete acquia-cloud/docroot." />
+    <delete includeemptydirs="true" failonerror="false">
+      <fileset dir="${acquia.docroot}">
+        <patternset>
+          <exclude name="files"/>
+          <exclude name="sites/*/files"/>
+          <exclude name="sites/*/private"/>
+          <exclude name="**/settings.php"/>
+          <exclude name="**/sites.php/"/>
+        </patternset>
+      </fileset>
+    </delete>
+    <echo msg="Copy files to acquia-cloud/docroot." />
+    <copy todir="${acquia.docroot}">
+        <fileset dir="${platform.dist.dir}">
+          <patternset>
+            <exclude name="**/settings.php"/>
+            <exclude name="**/sites.php/"/>
+            <exclude name="sites/*/files"/>
+          </patternset>
+      </fileset>
+    </copy>
+
+    <tstamp>
+      <format property="DATE" pattern="%c" locale="nl_NL"/>
+    </tstamp>
+
+    <!-- commit all modified / deleted files -->
+    <exec dir="${project.basedir}" command="git rev-parse --abbrev-ref HEAD" outputProperty="BRANCHNAME"></exec>
+    <exec dir="${acquia.repo}" command="git add -A"></exec>
+    <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
+
+    <!-- Create Tag -->
+    <tstamp>
+      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="en_EN"/>
+    </tstamp>
+    <echo msg="Creating tag: ${TAGDATE}" />
+    <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
+    <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
+    <exec dir="${acquia.repo}" command="git push --tags"></exec>
+  </target>
+
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-dist, deliver">
+    <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
+    <waitfor maxwaitunit="second" maxwait="15">
+      <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
+      <available file="ready"/>
+    </waitfor>
+    <property name="sites" value="ecfpfis.dev,ecfpfis.test,ecfpfis.prod" />
+    <foreach list="${sites}" param="site.alias" target="ac-update-site" delimiter="," />
+
+    <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
+    <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
+    <exec dir="${project.basedir}" command="git push"></exec>
+    <echo msg="Added Acquia Cloud to develop branch right after deployment, you can now use git push to push the changes to the development branch." />
+  </target>
+
+  <target name="ac-update-site">
+    <exec command="drush -y @${site.alias} updb" />
+    <echo msg="EXECUTE: drush -y @${site.alias} updb" />
+
+    <property name="revert.command" value="frdt" />
+    <if>
+      <equals arg1="${site.alias}" arg2="ecfpfis.prod" />
+      <then>
+        <property name="revert.command" value="frcwt" />
+      </then>
+    </if>
+    <exec command="drush -y @${site.alias} ${revert.command}" />
+    <echo msg="EXECUTE: drush -y @${site.alias} ${revert.command}" />
+  </target>
+
+  <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="">
+    <input propertyname="confirm">This will delete your current database. Do you want to continue? (y)</input>
+    <if>
+      <equals arg1="${confirm}" arg2="y" />
+      <then>
+        <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Database deleted." />
+        <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
+        <if>
+          <not>
+            <available file="${acquia.dump}" type="file" property="available_phing_project_ac_dump"/>
+          </not>
+          <then>
+            <phingcall target="fetch-ac-db" />
+          </then>
+        </if>
+        <echo msg="cat ${acquia.dump} | drush --root=${platform.build.dir} -y sqlc" />
+        <exec command="cat ${acquia.dump} | drush --root=${platform.build.dir} -y sqlc" />
+
+        <echo msg="AC database loaded." />
+
+        <exec command="drush --root=${platform.build.dir} -y cc all" />
+        <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+        </drush>
+        <echo msg="Registry rebuilt." />
+        <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+          <param>admin</param>
+          <option name="password">pass</option>
+        </drush>
+        <echo msg="Password for user admin is set to pass." />
+        <!-- Disable cache -->
+        <exec command="drush --root=${platform.build.dir} vset --exact cache 0" />
+        <echo msg="Cache has been disabled." />
+        <!-- Disable preprocess css -->
+        <exec command="drush --root=${platform.build.dir} vset --exact preprocess_css 0" />
+        <echo msg="Disable css pre processing." />
+        <!-- Disable preprocess css -->
+        <exec command="drush --root=${platform.build.dir} vset --exact preprocess_js 0" />
+        <echo msg="Disable js pre processing." />
+      </then>
+      <else>
+        <echo msg="Exit without doing anything." />
+      </else>
+    </if>
+  </target>
+
+  <target name="fetch-ac-db" description="Downloads the AC database." depends="">
+    <exec command="drush -y @${drush.alias.acquia} sql-dump > ${acquia.dump}" />
+    <echo msg="AC database downloaded." />
+  </target>
+
+</project>

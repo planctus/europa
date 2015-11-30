@@ -22,7 +22,7 @@ Feature: Ignore character limit when translating Content
     Then I should see "<title>"
     And I edit the node
     And I see that the "edit-field-core-description-<source_language>-0-value" field has "maxlength" attribute
-    And I go to add a "<target_language>" translation from "<source_language>"
+    And I go to add "<target_language>" translation from "<source_language>"
     And I see that the "edit-field-core-description-<target_language>-0-value" field has no "maxlength" attribute
 
     Examples:
