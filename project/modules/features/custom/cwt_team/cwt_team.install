@@ -139,7 +139,7 @@ function cwt_team_update_7108() {
     $nodes = entity_load('node', $nids);
 
     foreach ($nodes as $node) {
-      // If there's no value ( it's actually a edundant check).
+      // If there's no value ( it's actually a redundant check).
       if (empty($node->{$field_name})) {
         // Set the default value.
         $node->{$field_name}[LANGUAGE_NONE][0]['url'] = $def;
