@@ -43,7 +43,6 @@ function dt_core_info_ds_custom_fields_info() {
   );
   $export['in_page_navigation'] = $ds_field;
 
-  return $export;
 }
 
 /**
