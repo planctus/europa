@@ -613,7 +613,7 @@ function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
 }
 
 /**
- * Implements hook_entity_presave().
+ * Implements hook_entity_update().
  */
 function cwt_core_entity_update($entity, $type) {
   // When saving a biography, regenerate alias for referenced team.
@@ -636,6 +636,16 @@ function cwt_core_entity_update($entity, $type) {
           $existing_alias);
       }
     }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function cwt_core_node_presave($node) {
+  if ($node->type == 'team') {
+    $type = entity_metadata_wrapper('node', $node)->field_team_subtype->value()->name;
+    $node->ds_switch = $type == 'College' ? 'college' : 'full';
   }
 }
 
