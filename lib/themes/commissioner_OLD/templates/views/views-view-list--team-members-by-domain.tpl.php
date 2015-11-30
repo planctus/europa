@@ -15,20 +15,22 @@
 ?>
 
 <?php print $wrapper_prefix; ?>
-  <div class="expandable__group">
+  <div id="members-toggle">
     <?php if (!empty($title)) : ?>
-      <a href="#<?php print $formattedTitle; ?>" class="collapsed expandable__toggle" data-toggle="collapse">
-        <h3>
-          <?php print $title; ?>
-        </h3>
-      </a>
-    <?php endif; ?>
-    <div id="<?php print $formattedTitle; ?>" class="expandable__content collapse">
-      <div class="listing listing--person listing--column-left listing--nostripe">
-        <?php foreach ($rows as $id => $row): ?>
-          <div class="listing__item <?php print strtolower($classes_array[$id]); ?>"><?php print $row; ?></div>
-        <?php endforeach; ?>
+      <div class="members-grouping">
+        <a href="#<?php print $formattedTitle; ?>" class="collapsed" data-toggle="collapse">
+          <h3>
+            <?php print $title; ?>
+          </h3>
+        </a>
       </div>
+    <?php endif; ?>
+    <div id="<?php print $formattedTitle; ?>" class="members-listing-wrapper collapse">
+      <ul class="members-listing">
+        <?php foreach ($rows as $id => $row): ?>
+          <li class="<?php print strtolower($classes_array[$id]); ?>"><?php print $row; ?></li>
+        <?php endforeach; ?>
+      </ul>
     </div>
   </div>
 <?php print $wrapper_suffix; ?>
