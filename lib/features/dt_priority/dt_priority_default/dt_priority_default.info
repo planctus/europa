@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation Political
 version = 7.x-1.0-dev
 project = dt_priority_default
+dependencies[] = dt_core
 dependencies[] = dt_priority
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
