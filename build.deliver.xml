@@ -148,4 +148,71 @@
     <echo msg="AC database downloaded." />
   </target>
 
+  <!-- Release to SVN. -->
+  <property name="release" value="${project.basedir}/release" />
+  <target name="release" description="Release code to MULTISITE SVN">
+    <property name="folderlist" value="libraries,modules,features,themes" />
+    <if>
+      <not>
+        <equals arg1="${phing.project.svn}" arg2="" />
+      </not>
+      <then>
+        <!-- Checkout  -->
+        <mkdir dir="${release}" />
+        <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${release}"></exec>
+
+        <!-- Update code  -->
+        <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+
+        <!-- Commit  -->
+        <input propertyname="commitmessage">Please provide a commit message:</input>
+        <echo msg="${commitmessage}" />
+        <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec>
+
+        <echo message="Committed revision: ${svn.committedrevision}"/>
+
+        <!-- Delete temporary folder -->
+        <delete dir="${release}" includeemptydirs="true" failonerror="true" />
+        <echo message="${release} removed"/>
+      </then>
+      <else>
+        <echo message="SVN is not set up correctly."/>
+      </else>
+    </if>
+  </target>
+
+  <target name="updatefolder" description="Update folder in MULTISITE SVN">
+    <if>
+      <available file="${release}/${folder}" type="dir" />
+      <then>
+        <!-- Delete previous code  -->
+        <delete dir="${release}/${folder}" includeemptydirs="true" failonerror="true" />
+      </then>
+    </if>
+
+    <if>
+      <available file="${subsite.resources.${folder}.dir}" type="dir" />
+      <then>
+        <!-- Copy latest code  -->
+        <copy todir="${release}/${folder}" overwrite="true">
+            <fileset dir="${subsite.resources.${folder}.dir}">
+              <patternset>
+                <exclude name="*devel/**"/>
+                <exclude name="*/node_modules/**"/>
+                <exclude name="*/styleguide/**"/>
+                <exclude name="**/Gruntfile.js"/>
+                <exclude name="**/Watchfile"/>
+                <exclude name="**/package.json"/>
+                <exclude name="commissioner_OLD/**"/>
+              </patternset>
+            </fileset>
+        </copy>
+      </then>
+    </if>
+
+    <!-- SVN remove locally deleted files  -->
+    <exec dir="${release}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
+    <!-- Add latest code  -->
+    <exec dir="${release}" command="svn add ${folder} --force"></exec>
+  </target>
 </project>
