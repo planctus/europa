@@ -7940,7 +7940,7 @@ Markup: html/labels.html
 .label--info - Info
 .label--warning - Warning
 .label--danger - Danger
-.label--upper - Danger
+.label--upper - Uppercase label
 .label--highlight - Highlight
 .label--aligned - Aligned
 
@@ -7987,17 +7987,6 @@ Styleguide labels
   top: -0.075em;
   margin-right: 0.8em;
   position: relative; }
-
-.label--aligned, .label--aligned--top {
-  display: inline-block;
-  width: 12em;
-  text-align: left;
-  font-weight: bold;
-  font-size: 0.9em;
-  padding-left: 0; }
-
-.label--aligned--top {
-  vertical-align: top; }
 
 /*
 Language select (Site)
