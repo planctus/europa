@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_featured_item
 dependencies[] = dt_core
-dependencies[] = field_group
 dependencies[] = nexteuropa_legacy_link
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
