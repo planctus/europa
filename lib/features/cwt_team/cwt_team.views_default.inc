@@ -1022,7 +1022,6 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
-        <div class="meta">[field_gender]</div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>
 </div>
@@ -1313,7 +1312,11 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['wrapper_class'] = 'expandable';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Taxonomy term: Content using Project team */
   $handler->display->display_options['relationships']['reverse_field_biography_project_team_node']['id'] = 'reverse_field_biography_project_team_node';
   $handler->display->display_options['relationships']['reverse_field_biography_project_team_node']['table'] = 'taxonomy_term_data';
@@ -1338,8 +1341,7 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['name_field']['label'] = '';
   $handler->display->display_options['fields']['name_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="members-subject-icon [field_project_teams_classname]"></span>
-[name_field]';
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="icon icon--yellowbg icon--[field_project_teams_classname]"></span>[name_field]';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
   /* Field: Content: Nid */
@@ -1387,7 +1389,6 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['field_biography_portrait']['relationship'] = 'reverse_field_biography_project_team_node';
   $handler->display->display_options['fields']['field_biography_portrait']['label'] = '';
   $handler->display->display_options['fields']['field_biography_portrait']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_portrait']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_biography_portrait']['alter']['text'] = '<div class="member-details-image">[field_biography_portrait]</div>';
   $handler->display->display_options['fields']['field_biography_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_portrait']['click_sort_column'] = 'fid';
@@ -1403,6 +1404,14 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['field_biography_first_name']['label'] = '';
   $handler->display->display_options['fields']['field_biography_first_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Gender */
+  $handler->display->display_options['fields']['field_gender']['id'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['table'] = 'field_data_field_gender';
+  $handler->display->display_options['fields']['field_gender']['field'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['relationship'] = 'reverse_field_biography_project_team_node';
+  $handler->display->display_options['fields']['field_gender']['label'] = '';
+  $handler->display->display_options['fields']['field_gender']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gender']['element_label_colon'] = FALSE;
   /* Field: Content: Last name */
   $handler->display->display_options['fields']['field_biography_last_name']['id'] = 'field_biography_last_name';
   $handler->display->display_options['fields']['field_biography_last_name']['table'] = 'field_data_field_biography_last_name';
@@ -1410,12 +1419,15 @@ This view is altered by cwt_team_views_pre_render() to filter and order the resu
   $handler->display->display_options['fields']['field_biography_last_name']['relationship'] = 'reverse_field_biography_project_team_node';
   $handler->display->display_options['fields']['field_biography_last_name']['label'] = '';
   $handler->display->display_options['fields']['field_biography_last_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '[field_biography_portrait]
-<div class="member-details-text">
-<div class="member-details-name"><span class="first-name">[field_biography_first_name]</span><span class="last-name">[field_biography_last_name]</span></div>
-</div>
-<div class="member-details-text-2">[field_biography_tagline]</div>';
-  $handler->display->display_options['fields']['field_biography_last_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '<a href="[path]" class="listing__item-link is-internal">
+  <div class="listing__column-second">
+    [field_biography_portrait]
+  </div>
+  <div class="listing__column-main">
+    <h3 class="listing__title">[field_biography_first_name] [field_biography_last_name]</h3>
+    <div>[field_biography_tagline]</div>
+  </div>
+</a>';
   $handler->display->display_options['fields']['field_biography_last_name']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_biography_last_name']['alter']['alt'] = '[field_biography_first_name] [field_biography_last_name]';
   $handler->display->display_options['fields']['field_biography_last_name']['element_type'] = 'div';
