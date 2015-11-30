@@ -10,7 +10,7 @@
 function dt_topic_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_topics'.
+  // Exported field_base: 'field_core_topics'
   $field_bases['field_core_topics'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -54,7 +54,7 @@ function dt_topic_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_topic_commission_actions'.
+  // Exported field_base: 'field_topic_commission_actions'
   $field_bases['field_topic_commission_actions'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -83,7 +83,7 @@ function dt_topic_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_topic_objectives'.
+  // Exported field_base: 'field_topic_objectives'
   $field_bases['field_topic_objectives'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -112,7 +112,7 @@ function dt_topic_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_topic_targets'.
+  // Exported field_base: 'field_topic_targets'
   $field_bases['field_topic_targets'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -141,7 +141,7 @@ function dt_topic_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_topic_tasks'.
+  // Exported field_base: 'field_topic_tasks'
   $field_bases['field_topic_tasks'] = array(
     'active' => 1,
     'cardinality' => -1,

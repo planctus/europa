@@ -81,7 +81,7 @@ function dt_policy_area_field_group_info() {
     'label' => 'Main',
     'weight' => '39',
     'children' => array(
-      0 => 'latest_announcements_block',
+      0 => 'related_announcements',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
