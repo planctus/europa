@@ -42,3 +42,12 @@ function cwt_activities_update_7101() {
 function cwt_activities_update_7102() {
   features_revert_module('cwt_activities');
 }
+
+/**
+ * Remove field_editorial_section as we use the multiple one here.
+ */
+function cwt_activities_update_7103() {
+  if ($instance = field_info_instance('node', 'field_editorial_section', 'activities')) {
+    field_delete_instance($instance);
+  }
+}

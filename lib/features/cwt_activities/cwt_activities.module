@@ -110,3 +110,38 @@ function cwt_activities_node_view($node, $view_mode, $langcode) {
     }
   }
 }
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function cwt_activities_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['agenda_with_who'] = array(
+    'title' => t('Agenda with who'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_cwt_activities_ds_fields_agenda_withwho',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _cwt_activities_ds_fields_agenda_withwho($field) {
+  if (isset($field['entity']) && isset($field['entity']->field_editorial_section_multiple)) {
+    $wrapper = entity_metadata_wrapper('node', $field['entity']);
+    $editorial_sections = $wrapper->field_editorial_section_multiple->value();
+    if (!empty($editorial_sections)) {
+      // Init our variable.
+      $editorial_section_list = NULL;
+      // Loop over the list.
+      foreach ($editorial_sections as $editorial_section) {
+        $editorial_section_list .= $editorial_section->name;
+      }
+      // Return the data.
+      return t('With: %person_name', array('%person_name' => $editorial_section_list));
+    }
+  }
+}
