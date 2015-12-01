@@ -718,7 +718,7 @@ function dt_core_update_7152() {
       case 'field_video_description':
         $field['translatable'] = 1;
         field_update_field($field);
-        _dt_core_fix_field_language($field['field_name']);
+        _dt_shared_fix_field_language($field['field_name']);
         break;
     }
   }
@@ -740,7 +740,7 @@ function dt_core_update_7152() {
   );
 
   foreach ($dt_fields as $fld_name) {
-    _dt_core_fix_field_language($fld_name);
+    _dt_shared_fix_field_language($fld_name);
   }
 
   // The following is somehow not done by dt_featured_item_update_7101().
