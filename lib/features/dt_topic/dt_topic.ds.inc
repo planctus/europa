@@ -17,7 +17,7 @@ function dt_topic_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'topic';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
+    'related_announcements' => array(
       'weight' => '28',
       'label' => 'hidden',
       'format' => 'default',
@@ -214,7 +214,7 @@ function dt_topic_ds_layout_settings_info() {
         22 => 'field_core_links',
         23 => 'group_topics_specific_tasks',
         24 => 'group_topic_related_tasks',
-        25 => 'latest_announcements_block',
+        25 => 'related_announcements',
       ),
       'top' => array(
         5 => 'group_topic_contextual',
@@ -250,7 +250,7 @@ function dt_topic_ds_layout_settings_info() {
       'field_core_links' => 'central',
       'group_topics_specific_tasks' => 'central',
       'group_topic_related_tasks' => 'central',
-      'latest_announcements_block' => 'central',
+      'related_announcements' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
