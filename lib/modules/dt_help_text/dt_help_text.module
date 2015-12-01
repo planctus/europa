@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * DT help text [break] module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dt_help_text_form_node_form_alter(&$form, $form_state) {
+  // Adding js only at node add/edit forms.
+  $form['#attached']['js'][] = drupal_get_path('module', 'dt_help_text') . '/js/dt_help_text.js';
+}
