@@ -1,6 +1,7 @@
 name = CWT Blogs
 core = 7.x
 package = CWT
+description = Blogs
 dependencies[] = custom_formatters
 dependencies[] = ec_embedded_video
 dependencies[] = field_group
