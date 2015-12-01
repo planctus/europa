@@ -127,6 +127,15 @@
           <option name="password">pass</option>
         </drush>
         <echo msg="Password for user admin is set to pass." />
+        <!-- Disable cache -->
+        <exec command="drush --root=${platform.build.dir} vset --exact cache 0" />
+        <echo msg="Cache has been disabled." />
+        <!-- Disable preprocess css -->
+        <exec command="drush --root=${platform.build.dir} vset --exact preprocess_css 0" />
+        <echo msg="Disable css pre processing." />
+        <!-- Disable preprocess css -->
+        <exec command="drush --root=${platform.build.dir} vset --exact preprocess_js 0" />
+        <echo msg="Disable js pre processing." />
       </then>
       <else>
         <echo msg="Exit without doing anything." />
