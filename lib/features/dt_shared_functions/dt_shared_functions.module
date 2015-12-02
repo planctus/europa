@@ -164,4 +164,3 @@ function _dt_shared_fix_field_language($field_name) {
     db_query($query);
   }
 }
-

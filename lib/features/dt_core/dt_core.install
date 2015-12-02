@@ -487,6 +487,7 @@ function dt_core_update_7136() {
     module_enable(array('dt_core_pol'));
   }
 }
+
 /**
  * Switch on entity translation for the body field.
  */
@@ -597,7 +598,6 @@ function dt_core_update_7144() {
   features_revert_module('dt_roles_permissions');
 }
 
-
 /**
  * Set body field content to english.
  */
@@ -677,4 +677,80 @@ function dt_core_update_7149() {
  */
 function dt_core_update_7150() {
   module_enable(array('dt_help_text'));
+}
+
+/**
+ * NEXTEUROPA-6315: Make fields translatable.
+ */
+function dt_core_update_7151() {
+  // DT features.
+  $features = array(
+    'dt_class',
+    'dt_banner',
+    'dt_contact',
+    'dt_core',
+    'dt_person',
+    'dt_policy',
+    'dt_publication',
+    'dt_social_network_links',
+    'nexteuropa_file',
+  );
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+
+  // Global fields.
+  foreach (field_info_fields() as $f_name => $field) {
+    switch ($field['field_name']) {
+      case 'field_file_image_alt_text':
+      case 'field_file_image_title_text':
+      case 'field_caption':
+      case 'field_video_description':
+        $field['translatable'] = 1;
+        field_update_field($field);
+        _dt_shared_fix_field_language($field['field_name']);
+        break;
+    }
+  }
+
+  // DT project-specific fields.
+  $dt_fields = array(
+    'field_banner_caption',
+    'field_banner_video_file',
+    'field_class_related_links',
+    'field_contact_phone_number',
+    'field_core_top_task_link',
+    'field_person_first_name',
+    'field_person_last_name',
+    'field_person_tagline',
+    'field_policy_caption',
+    'field_policy_featured_file',
+  );
+
+  foreach ($dt_fields as $fld_name) {
+    _dt_shared_fix_field_language($fld_name);
+  }
+
+  // The following is somehow not done by dt_featured_item_update_7101().
+  // List of fields to delete.
+  $fields_to_delete = array(
+    'field_feat_item_ref_or_url',
+  );
+
+  // Handle the fields to delete.
+  foreach ($fields_to_delete as $field_name) {
+    // Delete the field instance.
+    if ($field_instance = field_info_instance('node', $field_name, 'featured_item')) {
+      field_delete_instance($field_instance);
+    }
+    // Then the field base.
+    if ($field_base = field_info_field($field_name)) {
+      field_delete_field($field_base);
+    }
+  }
 }
