@@ -10,7 +10,7 @@
 function dt_policy_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_policies'.
+  // Exported field_base: 'field_core_policies'
   $field_bases['field_core_policies'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -54,7 +54,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_policy'.
+  // Exported field_base: 'field_core_policy'
   $field_bases['field_core_policy'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -98,7 +98,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_author'.
+  // Exported field_base: 'field_policy_author'
   $field_bases['field_policy_author'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -128,7 +128,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_caption'.
+  // Exported field_base: 'field_policy_caption'
   $field_bases['field_policy_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -158,7 +158,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_detail_body'.
+  // Exported field_base: 'field_policy_detail_body'
   $field_bases['field_policy_detail_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -187,7 +187,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_detail_file'.
+  // Exported field_base: 'field_policy_detail_file'
   $field_bases['field_policy_detail_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -221,7 +221,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_policy_detail_objectives'.
+  // Exported field_base: 'field_policy_detail_objectives'
   $field_bases['field_policy_detail_objectives'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -250,7 +250,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_featured_file'.
+  // Exported field_base: 'field_policy_featured_file'
   $field_bases['field_policy_featured_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -284,7 +284,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_policy_implementations'.
+  // Exported field_base: 'field_policy_implementations'
   $field_bases['field_policy_implementations'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -328,7 +328,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_input'.
+  // Exported field_base: 'field_policy_input'
   $field_bases['field_policy_input'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -372,7 +372,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_keyfiles'.
+  // Exported field_base: 'field_policy_keyfiles'
   $field_bases['field_policy_keyfiles'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -417,7 +417,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_next_steps'.
+  // Exported field_base: 'field_policy_next_steps'
   $field_bases['field_policy_next_steps'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -441,7 +441,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'dt_policy_next_step_field',
   );
 
-  // Exported field_base: 'field_policy_paragraph'.
+  // Exported field_base: 'field_policy_paragraph'
   $field_bases['field_policy_paragraph'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -470,7 +470,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_quote'.
+  // Exported field_base: 'field_policy_quote'
   $field_bases['field_policy_quote'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -500,7 +500,7 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_sharable_banner'.
+  // Exported field_base: 'field_policy_sharable_banner'
   $field_bases['field_policy_sharable_banner'] = array(
     'active' => 1,
     'cardinality' => 1,

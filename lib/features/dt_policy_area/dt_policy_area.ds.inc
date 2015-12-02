@@ -17,7 +17,7 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
+    'related_announcements' => array(
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
@@ -209,7 +209,7 @@ function dt_policy_area_ds_layout_settings_info() {
         5 => 'field_core_description',
       ),
       'central' => array(
-        1 => 'latest_announcements_block',
+        1 => 'related_announcements',
         8 => 'group_policy',
         9 => 'children_policy_areas',
         10 => 'children_policies',
@@ -225,7 +225,7 @@ function dt_policy_area_ds_layout_settings_info() {
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
-      'latest_announcements_block' => 'central',
+      'related_announcements' => 'central',
       'title_field' => 'left_header',
       'content_type_label' => 'left_header',
       'field_core_introduction' => 'left_header',

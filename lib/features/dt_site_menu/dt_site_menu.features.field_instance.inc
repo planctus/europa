@@ -10,7 +10,7 @@
 function dt_site_menu_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_fifth'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_fifth'
   $field_instances['bean-site_menu-field_site_menu_fifth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -19,9 +19,13 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => 'listing--no-border',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 9,
       ),
     ),
@@ -31,6 +35,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Fifth section',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -45,6 +50,7 @@ function dt_site_menu_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -63,7 +69,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_first'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_first'
   $field_instances['bean-site_menu-field_site_menu_first'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -107,7 +113,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_fourth'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_fourth'
   $field_instances['bean-site_menu-field_site_menu_fourth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -116,9 +122,13 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => 'listing--no-border',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 5,
       ),
     ),
@@ -128,6 +138,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Fourth section',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -142,6 +153,7 @@ function dt_site_menu_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -160,7 +172,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_second'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_second'
   $field_instances['bean-site_menu-field_site_menu_second'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -204,7 +216,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_sixth'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_sixth'
   $field_instances['bean-site_menu-field_site_menu_sixth'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -225,6 +237,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Sixth section',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -239,6 +252,7 @@ function dt_site_menu_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -256,7 +270,7 @@ function dt_site_menu_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-site_menu-field_site_menu_third'.
+  // Exported field_instance: 'bean-site_menu-field_site_menu_third'
   $field_instances['bean-site_menu-field_site_menu_third'] = array(
     'bundle' => 'site_menu',
     'default_value' => NULL,
@@ -265,9 +279,13 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => 'listing--no-border',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 9,
       ),
     ),
@@ -277,6 +295,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Third section',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -291,6 +310,7 @@ function dt_site_menu_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
