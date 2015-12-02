@@ -121,8 +121,7 @@ function cwt_team_update_7109() {
 }
 
 /**
- * Updating the team nodes to apply the default value for the media enquiries
- *  field.
+ * Updating the team nodes to apply the default value for a field.
  */
 function cwt_team_update_7110() {
   $field_name = 'field_team_media_enquiries';
