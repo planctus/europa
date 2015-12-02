@@ -65,7 +65,6 @@ features[ctools][] = ds:ds:1
 features[ctools][] = picture:default_picture_mapping:2
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[ds_fields][] = social_bookmark_webtools
 features[field_base][] = description_field
 features[field_base][] = field_core_abbreviation
 features[field_base][] = field_core_background

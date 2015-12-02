@@ -673,16 +673,16 @@ function dt_core_update_7149() {
 }
 
 /**
- * NEXTEUROPA-6007: Create a block for social sharing.
- */
-function dt_core_update_7150() {
-    module_enable(array('dt_social_media_sharing'));
-}
-
-/**
  * NEXTEUROPA-7131: Enabling dt_help_text module.
  */
 function dt_core_update_7151() {
   module_enable(array('dt_help_text'));
+}
+
+/**
+ * NEXTEUROPA-6007: Create a block for social sharing.
+ */
+function dt_core_update_7152() {
+  module_enable(array('dt_social_media_sharing'));
 }
 
