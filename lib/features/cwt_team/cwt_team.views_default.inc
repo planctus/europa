@@ -694,12 +694,12 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<span class="header-line-1">[field_team_subtype] [field_team_term]</span>
-<h1 class="page-header">
-<span class="header-line-2">[title]</span>
-<span class="header-line-3">[field_team_tagline]</span>
-</h1>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header__hero-title">
+<div class="meta meta--header">
+<div class="meta__item meta__item--type">[field_team_subtype] [field_team_term]</div>
+</div>
+<h1>[title]</h1>
+<p>[field_team_tagline]</p>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
