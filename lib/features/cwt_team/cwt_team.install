@@ -84,7 +84,7 @@ function cwt_team_update_7108() {
 }
 
 /**
- *  Assigning the right view mode to the home page.
+ * Assigning the right view mode to the home page.
  */
 function cwt_team_update_7109() {
   // CWT core is holding the variables that enables the view mode switch.
@@ -94,7 +94,7 @@ function cwt_team_update_7109() {
   // Team nodes flagged with this term should use a different view mode.
   $college = taxonomy_get_term_by_name('College', 'team_subtypes');
   $college_tid = array_shift($college)->tid;
-  // find the nodes having this term.
+  // Find the nodes having this term.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'team')
@@ -121,12 +121,12 @@ function cwt_team_update_7109() {
 }
 
 /**
- *  Updating the team nodes to apply the default value for the media enquiries
+ * Updating the team nodes to apply the default value for the media enquiries
  *  field.
  */
 function cwt_team_update_7110() {
   $field_name = 'field_team_media_enquiries';
-  // find the default value.
+  // Find the default value.
   $field = field_info_instance('node', $field_name, 'team');
   $def = $field['default_value'][0]['url'];
   // Find all the existing nodes of type team.
