@@ -179,7 +179,6 @@ features_exclude[dependencies][media] = media
 features_exclude[dependencies][fe_nodequeue] = fe_nodequeue
 features_exclude[dependencies][link] = link
 features_exclude[dependencies][picture] = picture
-features_exclude[dependencies][field_group] = field_group
 features_exclude[field_base][field_team_introduction] = field_team_introduction
 features_exclude[field_instance][node-team-field_team_introduction] = node-team-field_team_introduction
 features_exclude[field][taxonomy_term-editorial_sections-field_news_block_title] = taxonomy_term-editorial_sections-field_news_block_title
