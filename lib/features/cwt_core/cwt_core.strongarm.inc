@@ -430,6 +430,9 @@ function cwt_core_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'team_cabinet_member' => array(
+        'custom_settings' => TRUE,
+      ),
       'print' => array(
         'custom_settings' => FALSE,
       ),
