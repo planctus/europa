@@ -10,7 +10,7 @@
 function nexteuropa_file_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-file-field_core_description'.
+  // Exported field_instance: 'node-file-field_core_description'
   $field_instances['node-file-field_core_description'] = array(
     'bundle' => 'file',
     'default_value' => NULL,
@@ -87,7 +87,7 @@ function nexteuropa_file_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-field_core_file'.
+  // Exported field_instance: 'node-file-field_core_file'
   $field_instances['node-file-field_core_file'] = array(
     'bundle' => 'file',
     'deleted' => 0,
@@ -124,7 +124,7 @@ function nexteuropa_file_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'entity_translation_sync' => FALSE,
+      'entity_translation_sync' => 0,
       'file_directory' => '',
       'file_extensions' => 'odt ods odp pdf svg mp3 mp4 png jpg jpeg gif doc docx xls xlsx zip rar',
       'max_filesize' => '',
@@ -135,9 +135,11 @@ function nexteuropa_file_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'avportal' => 0,
           'node' => 0,
           'private' => 'private',
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 'audio',
@@ -148,7 +150,9 @@ function nexteuropa_file_field_default_field_instances() {
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
           'upload' => 'upload',
+          'youtube' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
@@ -157,8 +161,61 @@ function nexteuropa_file_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-title_field'.
-  $field_instances['node-file-title_field'] = array(
+  // Exported field_instance: 'node-file-group_content_access'
+  $field_instances['node-file-group_content_access'] = array(
+    'bundle' => 'file',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'file' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => TRUE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+    'widget_type' => 'options_select',
+  );
+
+  // Exported field_instance: 'node-file-og_group_ref'
+  $field_instances['node-file-og_group_ref'] = array(
     'bundle' => 'file',
     'default_value' => NULL,
     'deleted' => 0,
@@ -174,13 +231,66 @@ function nexteuropa_file_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'og_group_ref',
+    'label' => 'Groups audience',
+    'required' => FALSE,
+    'settings' => array(
+      'behaviors' => array(
+        'og_widget' => array(
+          'admin' => array(
+            'widget_type' => 'entityreference_autocomplete',
+          ),
+          'default' => array(
+            'widget_type' => 'options_select',
+          ),
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Full',
+        'type' => 'og_list_default',
       ),
       'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Teaser',
+        'type' => 'og_list_default',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'og',
+      'settings' => array(),
+      'type' => 'og_complex',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-file-title_field'
+  $field_instances['node-file-title_field'] = array(
+    'bundle' => 'file',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
+      ),
+      'file' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -210,6 +320,8 @@ function nexteuropa_file_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Description');
   t('File');
+  t('Group content visibility');
+  t('Groups audience');
   t('Title');
 
   return $field_instances;
