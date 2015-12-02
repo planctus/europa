@@ -18,7 +18,7 @@ function dt_priority_menu() {
     'file' => 'dt_priority.admin.inc',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('dt_priority_settings'),
-    'title' => t('Priority page settings'),
+    'title' => 'Priority page settings',
     'type' => MENU_NORMAL_ITEM,
   );
 
