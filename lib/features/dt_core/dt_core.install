@@ -703,12 +703,7 @@ function dt_core_update_7151() {
       features_revert_module($feature);
     }
   }
-}
 
-/**
- * NEXTEUROPA-6315: Fix language code for existing content in the fields.
- */
-function dt_core_update_7152() {
   // Global fields.
   foreach (field_info_fields() as $f_name => $field) {
     switch ($field['field_name']) {

@@ -193,7 +193,7 @@ function dt_core_strongarm() {
     'taxonomy_term' => 'taxonomy_term',
     'comment' => 0,
     'bean' => 'bean',
-    'file' => 0,
+    'file' => 'file',
     'user' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;
