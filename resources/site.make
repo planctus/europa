@@ -20,6 +20,9 @@ projects[bootstrap_fieldgroup][version] = "1.2"
 projects[breakpoints][subdir] = "contrib"
 projects[breakpoints][version] = "1.3"
 
+projects[conditional_fields][subdir] = "contrib"
+projects[conditional_fields][version] = "3.0-alpha2"
+
 projects[date_popup_authored][subdir] = "contrib"
 projects[date_popup_authored][version] = "1.2"
 
