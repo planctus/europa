@@ -28,7 +28,7 @@ class DTCoreParentCircular extends Exception {}
 /**
  * Implements hook_field_widget_form_alter().
  */
-function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
+function dt_core_field_widget_form_alter (&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'entityreference') {
     if ($context['field']['settings']['target_type'] == 'node' && !empty($context['field']['settings']['handler_settings']['target_bundles'])) {
       $types = $context['field']['settings']['handler_settings']['target_bundles'];
