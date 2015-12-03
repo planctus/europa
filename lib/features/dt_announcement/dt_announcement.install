@@ -1,0 +1,147 @@
+<?php
+/**
+ * @file
+ * DT Announcement content type install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_announcement_install() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_announcement_uninstall() {
+  $path = drupal_get_path('module', 'dt_announcement') . '/dt_announcement.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Announcement feature to take new fields for sure.
+ */
+function dt_announcement_update_7101() {
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Subject removed since it is substituted by Topics.
+ */
+function dt_announcement_update_7102() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_core_subject',
+    'field_announcemnt_img_prominence',
+    'field_core_location',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing group_announcement_metadata and group_scheduler field groups.
+ */
+function dt_announcement_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'announcement';
+  $fieldgroups_to_remove = array(
+    'group_announcement_metadata',
+    'group_scheduler',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_group', 'variable'),
+  ));
+}
+
+/**
+ * NEXTEUROPA-5257: Adding extra announcement types.
+ */
+function dt_announcement_update_7104() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5329: Announcements block sticky descending feature.
+ */
+function dt_announcement_update_7105() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Updated views with more button.
+ */
+function dt_announcement_update_7106() {
+  features_revert_module('dt_announcement');
+}
+/**
+ * NEXTEUROPA-5256: Making policy reference multivalue.
+ */
+function dt_announcement_update_7107() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_announcement');
+  // Copy field contents.
+  _dt_shared_field_value_copy('node', 'announcement', 'field_core_policy', 'field_core_policies');
+  drupal_set_message(t("Copied content from 'field_core_policy' to 'field_core_policies' in the announcement content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_policy', 'announcement')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * NEXTEUROPA-6003: update the page then the announcement feature.
+ */
+function dt_announcement_update_7108() {
+  features_revert_module('dt_page');
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Re revert.
+ */
+function dt_announcement_update_7109() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-6727: Revert announcement feature.
+ */
+function dt_announcement_update_7110() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-6854: Revert announcement after enabling dt_pri_policy_area.
+ */
+function dt_announcement_update_7111() {
+  // Enable dt_pri_policy_area_default.
+  module_enable(array('dt_pri_policy_area_default'));
+  // Revert the feature.
+  features_revert_module('dt_announcement');
+}

@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * DT Page install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_page_install() {
+  // Apply default configuration to "Page" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('basic_page');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_page_uninstall() {
+  $path = drupal_get_path('module', 'dt_page') . '/dt_page.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Page %v feature is uninstalled from your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Revert page content type for new fields to take effect.
+ */
+function dt_page_update_7101() {
+  features_revert_module('dt_page');
+
+  // Move to multivalue field.
+  _dt_shared_field_value_copy('node', 'basic_page', 'field_core_department', 'field_core_departments');
+
+  // Remove the instance.
+  if ($instance = field_info_instance('node', 'field_core_department', 'basic_page')) {
+    field_delete_instance($instance);
+  }
+}

@@ -1,0 +1,137 @@
+<?php
+/**
+ * @file
+ * DT Topic install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_topic_install() {
+  // Apply default dt configuration to "Topic" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('topic');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_topic_uninstall() {
+  $path = drupal_get_path('module', 'topic') . '/dt_topic.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('DT Topic %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Revert and enabling features.
+ */
+function dt_topic_update_7101() {
+  // The features to enable.
+  $features = array(
+    'dt_topic',
+  );
+  module_enable($features);
+
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+}
+
+/**
+ * Reverting the feature to configure the display suite field displays.
+ */
+function dt_topic_update_7102() {
+  features_revert_module('dt_topic');
+}
+
+/**
+ * Updating Topic content type nodes path aliases.
+ */
+function dt_topic_update_7103() {
+  $nodes = node_load_multiple(array(), array('type' => 'topic'));
+  foreach ($nodes as $node) {
+    pathauto_node_update_alias($node, 'update ');
+  }
+}
+
+/**
+ * Reverting dt_topic.
+ */
+function dt_topic_update_7104() {
+  // Reverting feature.
+  features_revert_module('dt_topic');
+}
+
+/**
+ * Reverting dt_topic.
+ */
+function dt_topic_update_7105() {
+  // Reverting feature.
+  features_revert_module('dt_topic');
+}
+
+/**
+ * NEXTEUROPA-4829: TOPIC SPECIFIC TASKS in Topic content type.
+ */
+function dt_topic_update_7106() {
+  features_revert_module('dt_topic');
+}
+
+/**
+ * NEXTEUROPA-4829: Topic top task custom link implemenation.
+ */
+function dt_topic_update_7107() {
+  // The features to enable.
+  $features = array(
+    'dt_core',
+    'dt_topic',
+  );
+  // Reverting the features.
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+  // Delete the old field_core_top_tasks field instance.
+  if ($instance = field_info_instance('node', 'field_core_top_tasks', 'topic')) {
+    field_delete_instance($instance);
+  }
+  // Then the field base as we are not usin it anymore.
+  if ($field_base = field_info_field('field_core_top_tasks')) {
+    field_delete_field($field_base);
+  }
+}
+
+/**
+ * NEXTEUROPA-6077: Changing layout of topic specific tasks and topic top task.
+ */
+function dt_topic_update_7108() {
+  features_revert_module('dt_topic');
+}
+
+/**
+ * NEXTEUROPA-7065: More link becomes multi-value.
+ */
+function dt_topic_update_7109() {
+  features_revert_module('dt_topic');
+  _dt_shared_field_value_copy('node', 'topic', 'field_core_link', 'field_core_links');
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_link', 'topic')) {
+    field_delete_instance($instance);
+  }
+
+  // Set default title to the new multi-value field again.
+  $ids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'topic', '=')
+    ->execute()
+    ->fetchCol();
+
+  if (count($ids)) {
+    $nodes = entity_load('node', $ids);
+    foreach ($nodes as $id => $node) {
+      $wrapper = entity_metadata_wrapper('node', $id);
+      $wrapper->field_core_links[0]->title = 'See what other EU institutions are doing on [current-page:title]';
+      $wrapper->save();
+    }
+  }
+}
