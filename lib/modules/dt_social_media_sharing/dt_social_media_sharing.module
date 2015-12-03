@@ -4,7 +4,6 @@
  * dt_social_media_sharing.module
  */
 
-
 /**
  * Implements hook_block_info().
  */
@@ -19,9 +18,9 @@ function dt_social_media_sharing_block_info() {
  */
 function dt_social_media_sharing_block_configure($delta = '') {
   switch ($delta) {
-    case 'social_media_sharing' :
+    case 'social_media_sharing':
 
-      // Text field form element
+      // Text field form element.
       $form['dt_social_media_sharing_json_code'] = array(
         '#type' => 'textarea',
         '#title' => t('Insert webtools object'),
@@ -93,7 +92,9 @@ function _dt_social_media_sharing_view_helper() {
 
 /**
  * Helper function that holds default web tools SocialBookmarks JSON.
+ *
  * @return string
+ *   Creates and returns default json object.
  */
 function _dt_social_media_sharing_default_json() {
   return '<script type="application/json">
@@ -133,8 +134,8 @@ function dt_social_media_sharing_ds_fields_info($entity_type) {
     'ui_limit' => '',
     'entities' => array(
       'node' => 'node',
-    )
+    ),
   );
 
-  return  array('node' => $ds_fields);
+  return array('node' => $ds_fields);
 }
