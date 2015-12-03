@@ -112,29 +112,29 @@ function _dt_social_media_sharing_default_json() {
 </script>';
 }
 
+
 /**
- * Implements hook_ds_custom_fields_info().
+ * Implements hook_ds_fields_info().
  *
- * SocialMedia Bookmark field from Webtools,
- * this field will be used in Info + Pol websites.
+ * SocialMedia Bookmark field from Web tools,
+ * this field will be used by several content types
+ * and possible in both Info + Pol websites.
  */
-function dt_social_media_sharing_ds_custom_fields_info() {
+function dt_social_media_sharing_ds_fields_info($entity_type) {
   $ds_fields = array();
 
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'social_bookmark_webtools';
-  $ds_field->label = 'Social Bookmark Webtools';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
+  $ds_fields['social_bookmark_webtools'] = array(
+    'title' => t('Social Bookmark Webtools'),
+    'field_type' => DS_FIELD_TYPE_BLOCK,
+    'properties' => array(
+      'block' => 'dt_social_media_sharing|social_media_sharing',
+      'block_render' => '1',
+    ),
+    'ui_limit' => '',
+    'entities' => array(
+      'node' => 'node',
+    )
   );
-  $ds_field->ui_limit = '';
-  $ds_field->properties = array(
-    'block' => 'dt_social_media_sharing|social_media_sharing',
-    'block_render' => '1',
-  );
-  $ds_fields['social_bookmark_webtools'] = $ds_field;
 
-  return $ds_fields;
+  return  array('node' => $ds_fields);
 }
