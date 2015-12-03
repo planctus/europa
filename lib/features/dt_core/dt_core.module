@@ -636,6 +636,19 @@ function dt_core_node_delete($node) {
 }
 
 /**
+ * Implements hook_node_revision_delete().
+ */
+function dt_core_node_revision_delete($node) {
+  if (isset($node->field_core_header_image)) {
+    $uri = 'public://css/header-backgrounds/';
+    $file = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '_' . $node->vid . '.css';
+    if (file_exists($file)) {
+      unlink($file);
+    }
+  }
+}
+
+/**
  * Implements hook_context_load_alter().
  */
 function dt_core_context_load_alter(&$context) {
