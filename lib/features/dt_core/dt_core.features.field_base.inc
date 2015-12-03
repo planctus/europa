@@ -10,7 +10,7 @@
 function dt_core_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'description_field'.
+  // Exported field_base: 'description_field'
   $field_bases['description_field'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -39,7 +39,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_core_abbreviation'.
+  // Exported field_base: 'field_core_abbreviation'
   $field_bases['field_core_abbreviation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -69,7 +69,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_core_background'.
+  // Exported field_base: 'field_core_background'
   $field_bases['field_core_background'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -98,7 +98,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_child_policies'.
+  // Exported field_base: 'field_core_child_policies'
   $field_bases['field_core_child_policies'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -234,7 +234,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_ecorganisation'.
+  // Exported field_base: 'field_core_ecorganisation'
   $field_bases['field_core_ecorganisation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -263,7 +263,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_core_header_image'.
+  // Exported field_base: 'field_core_header_image'
   $field_bases['field_core_header_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -296,7 +296,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_core_image'.
+  // Exported field_base: 'field_core_image'
   $field_bases['field_core_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -329,7 +329,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_core_in_page_navigation'.
+  // Exported field_base: 'field_core_in_page_navigation'
   $field_bases['field_core_in_page_navigation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -356,7 +356,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_core_introduction'.
+  // Exported field_base: 'field_core_introduction'
   $field_bases['field_core_introduction'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -385,7 +385,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_legacy_link'.
+  // Exported field_base: 'field_core_legacy_link'
   $field_bases['field_core_legacy_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -416,7 +416,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_legacy_links'.
+  // Exported field_base: 'field_core_legacy_links'
   $field_bases['field_core_legacy_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -447,7 +447,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_link'.
+  // Exported field_base: 'field_core_link'
   $field_bases['field_core_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -478,7 +478,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_links'.
+  // Exported field_base: 'field_core_links'
   $field_bases['field_core_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -562,7 +562,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_parent'.
+  // Exported field_base: 'field_core_parent'
   $field_bases['field_core_parent'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -613,7 +613,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_section_intro'.
+  // Exported field_base: 'field_core_section_intro'
   $field_bases['field_core_section_intro'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -642,7 +642,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_social_network_links'.
+  // Exported field_base: 'field_core_social_network_links'
   $field_bases['field_core_social_network_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -673,7 +673,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'social_network_link',
   );
 
-  // Exported field_base: 'field_core_top_task_link'.
+  // Exported field_base: 'field_core_top_task_link'
   $field_bases['field_core_top_task_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -735,7 +735,7 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'name_field'.
+  // Exported field_base: 'name_field'
   $field_bases['name_field'] = array(
     'active' => 1,
     'cardinality' => 1,

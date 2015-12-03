@@ -1089,4 +1089,3 @@ function _dt_core_ds_fields_stick_label($field) {
     return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
   }
 }
-
