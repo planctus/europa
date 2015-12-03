@@ -91,7 +91,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_contact'
+  // Exported field_instance: 'node-publication-field_core_contact'.
   $field_instances['node-publication-field_core_contact'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -151,7 +151,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_date_published'
+  // Exported field_instance: 'node-publication-field_core_date_published'.
   $field_instances['node-publication-field_core_date_published'] = array(
     'bundle' => 'publication',
     'deleted' => 0,
@@ -220,7 +220,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_date_updated'
+  // Exported field_instance: 'node-publication-field_core_date_updated'.
   $field_instances['node-publication-field_core_date_updated'] = array(
     'bundle' => 'publication',
     'deleted' => 0,
@@ -481,7 +481,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_legacy_link'
+  // Exported field_instance: 'node-publication-field_core_legacy_link'.
   $field_instances['node-publication-field_core_legacy_link'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -548,7 +548,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_policies'
+  // Exported field_instance: 'node-publication-field_core_policies'.
   $field_instances['node-publication-field_core_policies'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -600,7 +600,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_publications'
+  // Exported field_instance: 'node-publication-field_core_publications'.
   $field_instances['node-publication-field_core_publications'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -658,7 +658,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_topics'
+  // Exported field_instance: 'node-publication-field_core_topics'.
   $field_instances['node-publication-field_core_topics'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -716,7 +716,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_authors'
+  // Exported field_instance: 'node-publication-field_publication_authors'.
   $field_instances['node-publication-field_publication_authors'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -774,7 +774,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_collection'
+  // Exported field_instance: 'node-publication-field_publication_collection'.
   $field_instances['node-publication-field_publication_collection'] = array(
     'bundle' => 'publication',
     'default_value' => array(
@@ -826,7 +826,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_origin'
+  // Exported field_instance: 'node-publication-field_publication_origin'.
   $field_instances['node-publication-field_publication_origin'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -874,7 +874,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_referenceno'
+  // Exported field_instance: 'node-publication-field_publication_referenceno'.
   $field_instances['node-publication-field_publication_referenceno'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -956,7 +956,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_rel_content'
+  // Exported field_instance: 'node-publication-field_publication_rel_content'.
   $field_instances['node-publication-field_publication_rel_content'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,

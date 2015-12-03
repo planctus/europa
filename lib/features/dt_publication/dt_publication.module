@@ -27,24 +27,6 @@ function dt_publication_migrate_api() {
 }
 
 /**
- * Implements hook_form_alter().
- */
-function dt_publication_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id === 'publication_node_form') {
-    $form['field_core_publications']['#states'] = array(
-      'visible' => array(
-        ':input[name*="field_publication_collection"]' => array('value' => '1'),
-      ),
-    );
-    $form['field_core_files']['#states'] = array(
-      'visible' => array(
-        ':input[name*="field_publication_collection"]' => array('value' => '0'),
-      ),
-    );
-  }
-}
-
-/**
  * Implements hook_field_display_alter().
  */
 function dt_publication_field_display_alter(&$display, $context) {
