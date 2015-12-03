@@ -35,3 +35,13 @@ function cwt_activities_update_7101() {
   $field['settings']['granularity']['minute'] = 'minute';
   field_update_field($field);
 }
+
+/**
+ * Revert the feature.
+ */
+function cwt_activities_update_7102() {
+  features_revert_module('cwt_activities');
+  if ($instance = field_info_instance('node', 'field_editorial_section', 'activities')) {
+    field_delete_instance($instance);
+  }
+}

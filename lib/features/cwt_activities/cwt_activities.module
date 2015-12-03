@@ -20,6 +20,7 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
 
   // Agenda exposed filter.
   if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
@@ -41,6 +42,11 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
   // If end date is not set, set it to five years from now.
   if (empty($form_state['input']['date_filter']['max']['date'])) {
     $form_state['values']['date_filter']['max'] = date('Y-m-d', strtotime('today + 5 years'));
+  }
+
+  // Modify the default views reset target.
+  if (!empty($form_state['values']['op']) && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
+    drupal_goto($form['#action']);
   }
 
   // And pass this along to Views.
@@ -83,6 +89,59 @@ function cwt_activities_views_pre_render(&$view) {
       $term = taxonomy_term_load($view->exposed_input['field_editorial_section_multiple_tid']);
       $token = !$term ? '' : (' ' . t('for %commissioner', array('%commissioner' => $term->name)));
       $view->items_count['#suffix'] = $token;
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * We manipulate the legacy link so that the node links to the external url.
+ */
+function cwt_activities_node_view($node, $view_mode, $langcode) {
+  // Check if the node has a link.
+  if ($view_mode == 'teaser' && $node->type == 'activities') {
+    if (!empty($node->field_activity_link)) {
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $node->legacy = $wrapper->field_activity_link->url->value();
+    }
+    else {
+      $node->hidelink = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function cwt_activities_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $fields['agenda_with_who'] = array(
+    'title' => t('Agenda with who'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_cwt_activities_ds_fields_agenda_withwho',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _cwt_activities_ds_fields_agenda_withwho($field) {
+  if (isset($field['entity']) && isset($field['entity']->field_editorial_section_multiple)) {
+    $wrapper = entity_metadata_wrapper('node', $field['entity']);
+    $editorial_sections = $wrapper->field_editorial_section_multiple->value();
+    if (!empty($editorial_sections)) {
+      // Init our variable.
+      $editorial_section_list = NULL;
+      // Loop over the list.
+      foreach ($editorial_sections as $editorial_section) {
+        $editorial_section_list .= $editorial_section->name;
+      }
+      // Return the data.
+      return t('With: %person_name', array('%person_name' => $editorial_section_list));
     }
   }
 }
