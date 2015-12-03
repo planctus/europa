@@ -16,7 +16,9 @@
 ?>
 <div class="page-header-wrapper page-header--specialtitle">
   <?php if (!empty($line_1)): ?>
-    <span class="header-line-1"><?php print render($line_1); ?></span>
+    <div class="meta meta--header">
+      <div class="meta__item meta__item--type"><?php print render($line_1); ?></div>
+    </div>
   <?php endif; ?>
   <?php if (!empty($line_2)): ?>
     <h1><?php print render($line_2); ?></h1>
