@@ -109,14 +109,14 @@ function cwt_activities_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '19',
-            'visible' => FALSE,
+            'weight' => '0',
+            'visible' => TRUE,
           ),
         ),
         'subscriptions_ui' => array(
           'teaser' => array(
-            'weight' => '16',
-            'visible' => FALSE,
+            'weight' => '100',
+            'visible' => TRUE,
           ),
         ),
       ),

@@ -67,33 +67,6 @@ function cwt_activities_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function cwt_activities_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'agenda_with_who';
-  $ds_field->label = 'Agenda with who';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'activities|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => 'With: [node:field-editorial-section:name_field]',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 1,
-  );
-  $export['agenda_with_who'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function cwt_activities_ds_layout_settings_info() {
@@ -105,10 +78,19 @@ function cwt_activities_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'activities';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ne_1col';
   $ds_layout->settings = array(
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
     'regions' => array(
-      'ds_content' => array(
+      'main' => array(
         0 => 'group_activity_left',
         1 => 'group_activity_right',
         2 => 'group_agenda_meta',
@@ -119,23 +101,14 @@ function cwt_activities_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'group_activity_left' => 'ds_content',
-      'group_activity_right' => 'ds_content',
-      'group_agenda_meta' => 'ds_content',
-      'title' => 'ds_content',
-      'agenda_with_who' => 'ds_content',
-      'field_start_end_date' => 'ds_content',
-      'content_type_label' => 'ds_content',
+      'group_activity_left' => 'main',
+      'group_activity_right' => 'main',
+      'group_agenda_meta' => 'main',
+      'title' => 'main',
+      'agenda_with_who' => 'main',
+      'field_start_end_date' => 'main',
+      'content_type_label' => 'main',
     ),
-    'classes' => array(),
-    'wrappers' => array(
-      'ds_content' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
   );
   $export['node|activities|teaser'] = $ds_layout;
 
