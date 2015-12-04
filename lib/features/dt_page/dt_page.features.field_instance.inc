@@ -1315,10 +1315,8 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
         'weight' => 10,
       ),
       'teaser' => array(

@@ -1237,10 +1237,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
         'weight' => 30,
       ),
       'teaser' => array(
