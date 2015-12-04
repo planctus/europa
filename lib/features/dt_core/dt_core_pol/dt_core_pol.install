@@ -12,6 +12,8 @@ function dt_core_pol_install() {
     'dt_pri_policy_area_default',
     'dt_priority_default',
     'dt_page',
+    // Roles and permissions.
+    'dt_roles_permissions',
   );
   module_enable($dt_modules);
 
@@ -57,4 +59,11 @@ function dt_core_pol_update_7101() {
  */
 function dt_core_pol_update_7102() {
   module_enable(array('dt_page'));
+}
+
+/**
+ * Roles and permissions.
+ */
+function dt_core_pol_update_7103() {
+  module_enable(array('dt_roles_permissions', 'dt_roles_permissions_import'));
 }
