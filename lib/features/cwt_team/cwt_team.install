@@ -97,7 +97,7 @@ function cwt_team_update_7109() {
       'field_instance',
       'views',
       'picture_mapping',
-    )
+    ),
   ));
   // Revert cwt_biography.
   features_revert_module('cwt_biography');
