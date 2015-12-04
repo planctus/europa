@@ -122,11 +122,6 @@ function dt_page_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_image' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|basic_page|teaser'] = $ds_fieldsetting;
 
