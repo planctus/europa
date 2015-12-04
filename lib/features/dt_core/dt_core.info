@@ -76,6 +76,7 @@ features[field_base][] = field_core_ecorganisation
 features[field_base][] = field_core_header_image
 features[field_base][] = field_core_image
 features[field_base][] = field_core_in_page_navigation
+features[field_base][] = field_core_latest_visibility
 features[field_base][] = field_core_introduction
 features[field_base][] = field_core_legacy_link
 features[field_base][] = field_core_legacy_links
