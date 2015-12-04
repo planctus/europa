@@ -2222,11 +2222,9 @@ function cwt_biography_field_default_field_instances() {
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
-        'module' => 'social_network_links',
-        'settings' => array(
-          'icon_image_style' => 'social_network_icon',
-        ),
-        'type' => 'social_network_link_default',
+        'module' => 'dt_social_network_links',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
         'weight' => 5,
       ),
       'team_member' => array(

@@ -90,7 +90,7 @@ function cwt_team_update_7109() {
   // CWT core is holding the variables that enables the view mode switch.
   features_revert(array('cwt_core' => array('strongarm')));
   // Revert this feature.
-  features_revert_module('cwt_team');
+  //features_revert_module('cwt_team');
   // Team nodes flagged with this term should use a different view mode.
   $college = taxonomy_get_term_by_name('College', 'team_subtypes');
   $college_tid = array_shift($college)->tid;
@@ -147,4 +147,26 @@ function cwt_team_update_7110() {
       }
     }
   }
+}
+
+/**
+ * Change module name associated to the social network field.
+ */
+function cwt_team_update_7113() {
+  // Disable the social_network_links module.
+  db_update('system')
+    ->condition('name', 'social_network_links')
+    ->fields(array('status' => 0))
+    ->execute();
+
+  // Alter the field config to detach social_network_links.
+  db_update('field_config')
+    ->condition('field_name', 'field_social_networks')
+    ->fields(array('module' => 'dt_social_network_links'))
+    ->execute();
+
+  // Enable the dt_social_network_links feature.
+  module_enable(array('dt_social_network_links'));
+  // Uninstall social_network_links
+  drupal_uninstall_modules(array('social_network_links'));
 }

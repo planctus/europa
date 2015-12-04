@@ -15,7 +15,6 @@ dependencies[] = list
 dependencies[] = multiple_selects
 dependencies[] = number
 dependencies[] = picture
-dependencies[] = social_network_links
 dependencies[] = title
 dependencies[] = uuid
 dependencies[] = weight
