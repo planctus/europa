@@ -41,6 +41,17 @@ function dt_policy_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
     'policy_actions' => array(
       'weight' => '43',
@@ -78,11 +89,6 @@ function dt_policy_ds_field_settings_info() {
         'ft' => array(
           'lb' => 'Part of topic',
         ),
-      ),
-    ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
   );
@@ -223,7 +229,7 @@ function dt_policy_ds_layout_settings_info() {
         6 => 'group_policy_tabs',
         7 => 'group_policy_tab_actions',
         8 => 'group_policy_tab_latest',
-        10 => 'group_policy_tab_details',
+        11 => 'group_policy_tab_details',
         14 => 'field_policy_detail_objectives',
         15 => 'field_policy_detail_body',
         16 => 'group_policy_documents',
@@ -244,7 +250,7 @@ function dt_policy_ds_layout_settings_info() {
       'top' => array(
         5 => 'group_policy_contextual',
         9 => 'field_core_priorities',
-        11 => 'field_core_topics',
+        10 => 'field_core_topics',
         12 => 'field_core_persons',
         13 => 'field_core_department',
       ),
@@ -260,8 +266,8 @@ function dt_policy_ds_layout_settings_info() {
       'group_policy_tab_actions' => 'central',
       'group_policy_tab_latest' => 'central',
       'field_core_priorities' => 'top',
-      'group_policy_tab_details' => 'central',
       'field_core_topics' => 'top',
+      'group_policy_tab_details' => 'central',
       'field_core_persons' => 'top',
       'field_core_department' => 'top',
       'field_policy_detail_objectives' => 'central',
