@@ -95,6 +95,17 @@ function dt_page_ds_field_settings_info() {
       'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
     ),
     'title_field' => array(
       'formatter_settings' => array(
