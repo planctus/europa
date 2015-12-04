@@ -119,6 +119,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 
     // Set it to our variables.
     $variables['languages_list'] = $languages_list;
+    $variables['language_current'] = $language->prefix;
   }
 
   // Get our helper message if we have it defined.
