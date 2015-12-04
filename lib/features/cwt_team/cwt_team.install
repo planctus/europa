@@ -90,13 +90,15 @@ function cwt_team_update_7109() {
   // CWT core is holding the variables that enables the view mode switch.
   features_revert(array('cwt_core' => array('strongarm')));
   // Revert component of this features.
-  features_revert(array('cwt_team' => array(
-    'strongarm',
-    'field_base',
-    'field_instance',
-    'views',
-    'picture_mapping',
-  )));
+  features_revert(array(
+    'cwt_team' => array(
+      'strongarm',
+      'field_base',
+      'field_instance',
+      'views',
+      'picture_mapping',
+    )
+  ));
   // Revert cwt_biography.
   features_revert_module('cwt_biography');
   // Team nodes flagged with this term should use a different view mode.
