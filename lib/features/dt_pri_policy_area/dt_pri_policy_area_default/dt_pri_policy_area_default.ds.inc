@@ -17,7 +17,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority_policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'related_announcements' => array(
+    'latest_announcements_block' => array(
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
@@ -190,7 +190,7 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       ),
       'central' => array(
         2 => 'field_core_featured_item',
-        3 => 'related_announcements',
+        3 => 'latest_announcements_block',
         12 => 'group_pri_pol_policy_areas',
         13 => 'group_pri_pol_area_latest',
         14 => 'field_core_background',
@@ -221,7 +221,7 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       'group_pri_pol_area_meta' => 'left_header',
       'content_type_label' => 'left_header',
       'field_core_featured_item' => 'central',
-      'related_announcements' => 'central',
+      'latest_announcements_block' => 'central',
       'title' => 'left_header',
       'field_core_policy_areas' => 'top',
       'field_core_topics' => 'top',
