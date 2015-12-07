@@ -145,3 +145,15 @@ function dt_announcement_update_7111() {
   // Revert the feature.
   features_revert_module('dt_announcement');
 }
+
+/**
+ * NEXTEUROPA-7159: Setting basic readmore patterns.
+ */
+function dt_announcement_update_7112() {
+  variable_set('dt_announcement_read_more__topic', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__policy_area', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [abbreviation]');
+  variable_set('dt_announcement_read_more__priority', 'All news on this priority');
+  variable_set('dt_announcement_read_more__policy', 'All news on this policy');
+}
