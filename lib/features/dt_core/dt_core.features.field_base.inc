@@ -133,6 +133,7 @@ function dt_core_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'basic_page' => 'basic_page',
           'policy' => 'policy',
           'priority_policy_area' => 'priority_policy_area',
         ),
