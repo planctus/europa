@@ -71,7 +71,7 @@ function dt_core_pol_update_7103() {
   module_enable(array('dt_roles_permissions', 'dt_roles_permissions_import'));
 }
 
-/*
+/**
  * Enabling the custom site_wide context.
  */
 function dt_core_pol_update_7104() {
@@ -80,5 +80,6 @@ function dt_core_pol_update_7104() {
     'dt_core_pol' => array(
       'context',
       'variable',
-  )));
+    ),
+  ));
 }
