@@ -765,7 +765,7 @@ function dt_core_update_7151() {
 /**
  * Disable default contexts.
  */
-function dt_core_info_update_7152() {
+function dt_core_update_7152() {
   multisite_drupal_toolbox_remove_context('site_wide');
   multisite_drupal_toolbox_remove_context('homepage');
 }
