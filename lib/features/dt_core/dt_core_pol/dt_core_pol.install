@@ -81,3 +81,4 @@ function dt_core_pol_update_7104() {
       'context',
       'variable',
   )));
+}
