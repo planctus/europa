@@ -67,3 +67,10 @@ function dt_core_info_update_7102() {
   // Disabling unnecessary themes.
   theme_disable(array('europa', 'ec_resp', 'seven'));
 }
+
+/**
+ * NEXTEUROPA-7290 - Revert variable component to get the search variables.
+ */
+function dt_core_info_update_7103() {
+  features_revert(array('dt_core_info' => array('variable')));
+}

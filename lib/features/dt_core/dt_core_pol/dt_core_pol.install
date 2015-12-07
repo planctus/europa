@@ -67,5 +67,9 @@ function dt_core_pol_update_7102() {
  */
 function dt_core_pol_update_7103() {
   // Enable the custom context.
-  features_revert(array('dt_core_pol' => array('context')));
+  features_revert(array(
+    'dt_core_pol' => array(
+      'context',
+      'variable',
+  )));
 }
