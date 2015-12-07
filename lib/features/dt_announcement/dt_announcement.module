@@ -85,6 +85,10 @@ function dt_announcement_views_pre_render(&$view) {
 
     // If we have substitutions, we alter the button.
     if (!empty($view->build_info['substitutions']['%1'])) {
+      // Inintialize our node id.
+      $nid = $view->args[0];
+      // Get our node type.
+      $entity_type = _dt_announcement_get_node_type($nid);
       // More link button will always be visible, but depending on a few
       // conditions the default button text will be different see
       // NEXTEUROPA-6727. We provide a default text value.
@@ -93,16 +97,12 @@ function dt_announcement_views_pre_render(&$view) {
         $alter_button_text = t('All news');
         $view->display[$view->current_display]->handler->options['use_more'] = 1;
       }
-      elseif (!drupal_is_front_page() && (int) $view->total_rows >= 1) {
+      elseif (!drupal_is_front_page() && (int) count($view->result) >= 1) {
         // Enable the button.
         $view->display[$view->current_display]->handler->options['use_more'] = 1;
-        // Inintialize our node id.
-        $nid = $view->args[0];
         // Tokenize, resolved contextual filter check.
         // Inintialize our read more text variable.
         $read_more_text = $view->display[$view->current_display]->handler->options['use_more_text'];
-        // Get our node type.
-        $entity_type = _dt_announcement_get_node_type($nid);
         // Get our variable.
         if ($variable_read_more_text = _dt_announcement_read_more_pattern($entity_type)) {
           $custom_readmore = TRUE;
