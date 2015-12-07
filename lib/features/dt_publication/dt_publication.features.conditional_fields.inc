@@ -22,8 +22,8 @@ function dt_publication_conditional_fields_default_fields() {
       'effect' => 'show',
       'effect_options' => array(),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -161,8 +161,8 @@ function dt_publication_conditional_fields_default_fields() {
       'effect' => 'show',
       'effect_options' => array(),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
