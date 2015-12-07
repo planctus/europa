@@ -11,6 +11,9 @@
     <exclude-pattern>*.min.js</exclude-pattern>
     <exclude-pattern>*/themes/*/css/style.css</exclude-pattern>
 
+    <!-- Exclude node_modules. -->
+    <exclude-pattern>node_modules*</exclude-pattern>
+
     <!-- Exclude starterkit. -->
     <exclude-pattern>dt_STARTERKIT</exclude-pattern>
 
