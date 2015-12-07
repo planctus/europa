@@ -1,8 +1,0 @@
-name = Political Core
-description = This is the core feature for the political website
-core = 7.x
-version = 7.x-1.0
-project = political_core
-package = NextEuropa Digital Transformation Political
-dependencies[] = dt_core
-features[features_api][] = api:2
