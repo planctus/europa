@@ -18,3 +18,4 @@ features[variable][] = nexteuropa_europa_search_query_source
 features[variable][] = nexteuropa_europa_search_url
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][ds] = ds
+features_exclude[dependencies][strongarm] = strongarm
