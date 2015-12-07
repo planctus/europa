@@ -86,6 +86,12 @@ function dt_announcement_views_pre_render(&$view) {
       }
       else {
         if (!drupal_is_front_page()) {
+
+          // Get our variable.
+          if ($variable_read_more_text = _dt_announcement_read_more_pattern($entity_type)) {
+            $custom_readmore = TRUE;
+          }
+
           // Our replacement array.
           $replacement_array = array(
             'token' => array(
@@ -94,11 +100,11 @@ function dt_announcement_views_pre_render(&$view) {
             ),
             'replacement' => array(
               $view->build_info['substitutions']['%1'],
-              $view->build_info['substitutions']['%1'],
+              strpos($variable_read_more_text, '[abbreviation]') ? _dt_announcement_get_abbreviation($nid) : '',
             ),
           );
 
-          if ($entity_type && $variable_read_more_text = _dt_announcement_read_more_pattern($entity_type)) {
+          if ($custom_readmore) {
             // Modify the output.
             $alter_button_text = str_replace(
               $replacement_array['token'],
@@ -288,6 +294,19 @@ function _dt_announcement_get_content_reference_fields($entity_type) {
 
   // Return the data we have.
   return $field_join_list;
+}
+
+/**
+ * Helper function to get the abbreviation from a node.
+ */
+function _dt_announcement_get_abbreviation($nid) {
+  if ($node = node_load($nid)) {
+    $emw = entity_metadata_wrapper('node', $node);
+    if (isset($emw->field_core_abbreviation)) {
+      return $emw->field_core_abbreviation->value();
+    }
+  }
+  return FALSE;
 }
 
 /**
