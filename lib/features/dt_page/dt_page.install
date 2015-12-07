@@ -62,7 +62,7 @@ function dt_page_update_7102() {
         $node->{$field_name}[LANGUAGE_NONE][0]['value'] = '0';
         // Field_attach_update doesn't seem to wok in this case.
         field_attach_update('node', $node);
-        node_save($node);
+        entity_get_controller('node')->resetCache(array($node->nid));
       }
     }
   }
