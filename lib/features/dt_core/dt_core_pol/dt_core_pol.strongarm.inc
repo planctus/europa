@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core_info.strongarm.inc
+ * dt_core_pol.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function dt_core_info_strongarm() {
+function dt_core_pol_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
@@ -77,14 +77,14 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
-  $strongarm->value = 'European Commission Beta';
+  $strongarm->value = 'European Commission';
   $export['site_name'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'policies, information and services';
+  $strongarm->value = 'commission and its priorities';
   $export['site_slogan'] = $strongarm;
 
   return $export;
