@@ -403,7 +403,6 @@ function dt_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 155,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
