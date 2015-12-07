@@ -67,11 +67,15 @@ function dt_announcement_views_pre_render(&$view) {
 
     // If we have substitutions, we alter the button.
     if (!empty($view->build_info['substitutions']['%1'])) {
+      // Inintialize our node id.
+      $nid = $view->args[0];
       // Tokenize, resolved contextual filter check.
       // Inintialize our read more text variable.
       $read_more_text = $view->display[$view->current_display]->handler->options['use_more_text'];
       // Enable the button.
       $view->display[$view->current_display]->handler->options['use_more'] = 1;
+      // Get our node type.
+      $entity_type = _dt_announcement_get_node_type($nid);
       // More link button will always be visible, but depending on a few
       // conditions the default button text will be different see
       // NEXTEUROPA-6727. We provide a default text value.
@@ -82,17 +86,37 @@ function dt_announcement_views_pre_render(&$view) {
       }
       else {
         if (!drupal_is_front_page()) {
-          $alter_button_text = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $read_more_text);
+          // Our replacement array.
+          $replacement_array = array(
+            'token' => array(
+              '[node_title]',
+              '[abbreviation]',
+            ),
+            'replacement' => array(
+              $view->build_info['substitutions']['%1'],
+              $view->build_info['substitutions']['%1'],
+            ),
+          );
+
+          if ($entity_type && $variable_read_more_text = _dt_announcement_read_more_pattern($entity_type)) {
+            // Modify the output.
+            $alter_button_text = str_replace(
+              $replacement_array['token'],
+              $replacement_array['replacement'],
+              $variable_read_more_text
+            );
+          }
+          else {
+            // Use the default.
+            $alter_button_text = str_replace($replacement_array['token'], $replacement_array['replacement'], $read_more_text);
+          }
         }
       }
       // Alter the output to our custom text.
       $view->display[$view->current_display]->handler->options['use_more_text'] = $alter_button_text;
-      // Inintialize our node id.
-      $nid = $view->args[0];
 
       // Get our node type. And then call to our dt function.
-      $node_type = _dt_announcement_get_node_type($nid);
-      $fields_to_join = _dt_announcement_get_content_reference_fields($node_type);
+      $fields_to_join = _dt_announcement_get_content_reference_fields($entity_type);
 
       // Construct our url. This will add the query parameters to our url build.
       foreach ($fields_to_join as $field) {
@@ -172,8 +196,8 @@ function dt_announcement_views_query_alter(&$view, &$query) {
     // return all the entity reference fields in this content type in a certain
     // field group. This to avoid overcomplex joins or fetching data we, in the
     // end not need.
-    $node_type = _dt_announcement_get_node_type($view->args[0]);
-    $fields_to_join = _dt_announcement_get_content_reference_fields($node_type);
+    $entity_type = _dt_announcement_get_node_type($view->args[0]);
+    $fields_to_join = _dt_announcement_get_content_reference_fields($entity_type);
 
     // Only apply our logic if we have fields to join.
     if (!empty($fields_to_join)) {
@@ -188,7 +212,7 @@ function dt_announcement_views_query_alter(&$view, &$query) {
       foreach ($fields_to_join as $key => $value) {
 
         // Alias.
-        $alias = $node_type . '_node_' . $key;
+        $alias = $entity_type . '_node_' . $key;
 
         // Create the join object.
         $join_query = new views_join();
@@ -230,7 +254,7 @@ function dt_announcement_views_query_alter(&$view, &$query) {
  * This function get's all entity reference fields that reference the content
  * type and are available on the announcement content type.
  */
-function _dt_announcement_get_content_reference_fields($node_type) {
+function _dt_announcement_get_content_reference_fields($entity_type) {
   // Inintialize variables.
   $field_join_list = array();
   $counter = 0;
@@ -250,7 +274,7 @@ function _dt_announcement_get_content_reference_fields($node_type) {
     // Check only entityreference fields.
     if ($field_data['type'] == 'entityreference') {
       // And those that target our node type.
-      if (!empty($field_data['settings']['handler_settings']['target_bundles'][$node_type])) {
+      if (!empty($field_data['settings']['handler_settings']['target_bundles'][$entity_type])) {
         // Then if they are in our group, we include them.
         if (in_array($field_name, $field_group->children)) {
           // Add the data to our array.
@@ -275,4 +299,15 @@ function _dt_announcement_get_content_reference_fields($node_type) {
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",
     array(':nid' => $nid))->fetchField();
+}
+
+/**
+ * Helper function to get read more announcement pattern.
+ *
+ * Currently implemented replacement patterns:
+ *  [node_title]
+ *  [abbreviation]
+ */
+function _dt_announcement_read_more_pattern($entity_type) {
+  return variable_get('dt_announcement_read_more__' . $entity_type, FALSE);
 }
