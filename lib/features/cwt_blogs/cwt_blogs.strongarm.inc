@@ -178,7 +178,7 @@ function cwt_blogs_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '19',
+            'weight' => '20',
             'visible' => FALSE,
           ),
           'meta' => array(

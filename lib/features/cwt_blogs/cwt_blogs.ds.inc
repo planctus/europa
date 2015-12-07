@@ -58,7 +58,7 @@ function cwt_blogs_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'ds_subscription_ui' => array(
-      'weight' => '7',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -106,7 +106,7 @@ function cwt_blogs_ds_field_settings_info() {
       ),
     ),
     'comments' => array(
-      'weight' => '6',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -367,20 +367,20 @@ function cwt_blogs_ds_layout_settings_info() {
     'regions' => array(
       'central' => array(
         0 => 'field_shared_tags',
-        4 => 'field_shared_teaser',
-        6 => 'body',
-        8 => 'group_blog_bottom_section',
-        9 => 'group_comments_section',
-        10 => 'comments',
+        5 => 'ds_subscription_ui',
+        7 => 'field_shared_teaser',
+        8 => 'body',
+        9 => 'group_blog_bottom_section',
+        10 => 'group_comments_section',
         11 => 'social_media',
-        12 => 'ds_subscription_ui',
+        12 => 'comments',
       ),
       'left_header' => array(
         1 => 'group_blog_meta',
         2 => 'content_type_label',
         3 => 'title',
-        5 => 'editorial_section_name',
-        7 => 'post_date',
+        4 => 'editorial_section_name',
+        6 => 'post_date',
       ),
     ),
     'fields' => array(
@@ -388,15 +388,15 @@ function cwt_blogs_ds_layout_settings_info() {
       'group_blog_meta' => 'left_header',
       'content_type_label' => 'left_header',
       'title' => 'left_header',
-      'field_shared_teaser' => 'central',
       'editorial_section_name' => 'left_header',
-      'body' => 'central',
+      'ds_subscription_ui' => 'central',
       'post_date' => 'left_header',
+      'field_shared_teaser' => 'central',
+      'body' => 'central',
       'group_blog_bottom_section' => 'central',
       'group_comments_section' => 'central',
-      'comments' => 'central',
       'social_media' => 'central',
-      'ds_subscription_ui' => 'central',
+      'comments' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

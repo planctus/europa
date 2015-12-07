@@ -21,7 +21,7 @@ function cwt_blogs_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bottom',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_shared_tags',
       1 => 'social_media',
@@ -180,6 +180,33 @@ function cwt_blogs_field_group_info() {
     ),
   );
   $export['group_com_blog_metadata|node|commisioner_blog_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_comments_section|node|commisioner_blog_post|full';
+  $field_group->group_name = 'group_comments_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'commisioner_blog_post';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Comments',
+    'weight' => '6',
+    'children' => array(
+      0 => 'comments',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Comments',
+      'instance_settings' => array(
+        'modifier' => 'section__group--full-width',
+        'layout' => '',
+        'classes' => 'section__group--highlight-grey-lightest',
+      ),
+    ),
+  );
+  $export['group_comments_section|node|commisioner_blog_post|full'] = $field_group;
 
   return $export;
 }
