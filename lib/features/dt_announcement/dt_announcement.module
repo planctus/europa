@@ -104,7 +104,7 @@ function dt_announcement_views_pre_render(&$view) {
         // Inintialize our read more text variable.
         $read_more_text = $view->display[$view->current_display]->handler->options['use_more_text'];
         // Get our variable.
-        if ($variable_read_more_text = _dt_announcement_read_more_pattern($entity_type)) {
+        if ($variable_read_more_text = variable_get('dt_announcement_read_more__' . $entity_type, FALSE)) {
           $custom_readmore = TRUE;
         }
 
@@ -332,15 +332,4 @@ function _dt_announcement_get_abbreviation($nid) {
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",
     array(':nid' => $nid))->fetchField();
-}
-
-/**
- * Helper function to get read more announcement pattern.
- *
- * Currently implemented replacement patterns:
- *  [node_title]
- *  [abbreviation]
- */
-function _dt_announcement_read_more_pattern($entity_type) {
-  return variable_get('dt_announcement_read_more__' . $entity_type, FALSE);
 }
