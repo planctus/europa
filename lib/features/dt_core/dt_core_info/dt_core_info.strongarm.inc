@@ -84,7 +84,7 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'Information and services';
+  $strongarm->value = 'policies, information and services';
   $export['site_slogan'] = $strongarm;
 
   return $export;
