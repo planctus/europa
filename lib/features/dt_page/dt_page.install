@@ -35,3 +35,35 @@ function dt_page_update_7101() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * Updating the page nodes to apply the default value for a field.
+ */
+function dt_page_update_7102() {
+  // Revert the feature in order to be sure the field is there.
+  features_revert(array('dt_core' => array('field_base')));
+  features_revert(array('dt_page' => array('field_instance')));
+  // Set the default value.
+  $field_name = 'field_core_latest_visibility';
+  // Find all the existing nodes of type team.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'basic_page', '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      // If there's no value ( it's actually a redundant check).
+      if (empty($node->{$field_name})) {
+        // Set the default value.
+        $node->{$field_name}[LANGUAGE_NONE][0]['value'] = '0';
+        // Field_attach_update doesn't seem to wok in this case.
+        field_attach_update('node', $node);
+        node_save($node);
+      }
+    }
+  }
+}
