@@ -213,6 +213,7 @@ function dt_page_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1255,6 +1256,7 @@ This will appear as a timeline on the page.
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1315,10 +1317,8 @@ This will appear as a timeline on the page.
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
         'weight' => 10,
       ),
       'teaser' => array(
