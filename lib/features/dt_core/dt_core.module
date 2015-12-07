@@ -531,7 +531,7 @@ function dt_core_node_presave($node) {
 /**
  * Implements hook_workbench_moderation_transition().
  */
-function dt_core_workbench_moderation_transition($node, $curr, $new){
+function dt_core_workbench_moderation_transition($node, $curr, $new) {
   if (isset($node->field_core_header_image)) {
     // Entity wrapper.
     $entity_wrapper = entity_metadata_wrapper('node', $node);
@@ -622,11 +622,6 @@ function dt_core_preprocess_node(&$variables) {
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
-      // This is how it should be but workbench_moderation will show a draft
-      // state even for a published revision which has been used to start a
-      // new revision in draft.
-      // $state = $node->workbench_moderation['current']->state == 'published' ? 'pub' : 'draft';
-
       // Basically the drafts path is based on the system path for nodes.
       $state = NULL !== arg(2) ? 'draft' : 'pub';
       // Set a variable available in the tpls.

@@ -21,3 +21,4 @@ tmp/
 vendor/
 dist/
 /logs
+npm-debug.log
