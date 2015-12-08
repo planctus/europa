@@ -29,9 +29,9 @@ function dt_announcement_field_group_info() {
       3 => 'field_announcement_department',
       4 => 'field_announcement_location',
       5 => 'field_announcement_type',
-      6 => 'field_core_introduction',
-      7 => 'field_core_description',
-      8 => 'field_core_legacy_link',
+      6 => 'field_core_legacy_link',
+      7 => 'field_core_introduction',
+      8 => 'field_core_description',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
