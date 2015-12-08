@@ -130,9 +130,10 @@ function commissioner_preprocess_node(&$variables) {
  * Implements template_preprocess_comment_wrapper().
  */
 function commissioner_preprocess_comment_wrapper(&$variables) {
-  if ($variables['node']->comment_count > 0 ) {
+  if ($variables['node']->comment_count > 0) {
     $variables['comment_count'] = $variables['node']->comment_count;
-  } else {
+  }
+  else {
     // Empty string will make it easy to just print the value in the template.
     $variables['comment_count'] = '';
   }
