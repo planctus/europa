@@ -17,7 +17,7 @@ function dt_priority_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'related_announcements' => array(
+    'latest_announcements_block' => array(
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
@@ -176,6 +176,15 @@ function dt_priority_default_ds_layout_settings_info() {
         15 => 'group_priority_related',
         16 => 'field_core_next_steps',
         17 => 'social_bookmark_webtools',
+        5 => 'latest_announcements_block',
+        10 => 'group_pri_pol_policy_areas',
+        11 => 'group_priority_latest',
+        12 => 'group_priority_background',
+        13 => 'group_priority_documents',
+        14 => 'group_priority_whatnext',
+        15 => 'group_priority_related',
+        16 => 'field_core_next_steps',
+        17 => 'social_bookmark_webtools',
         18 => 'field_core_links',
         19 => 'field_core_section_intro',
         20 => 'field_core_publications',
@@ -193,7 +202,7 @@ function dt_priority_default_ds_layout_settings_info() {
       'group_priority_meta' => 'left_header',
       'field_core_featured_item' => 'central',
       'title' => 'left_header',
-      'related_announcements' => 'central',
+      'latest_announcements_block' => 'central',
       'field_core_persons' => 'top',
       'field_core_introduction' => 'left_header',
       'field_core_departments' => 'top',

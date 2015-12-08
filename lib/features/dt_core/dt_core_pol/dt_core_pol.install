@@ -28,6 +28,9 @@ function dt_core_pol_install() {
  * Implements hook_uninstall().
  */
 function dt_core_pol_uninstall() {
+  $contexts = variable_get('context_status', array());
+  unset($contexts['site_wide'], $contexts['homepage']);
+  variable_set('context_status', $contexts);
   $path = drupal_get_path('module', 'dt_core_pol') . '/dt_core_pol.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
@@ -66,4 +69,17 @@ function dt_core_pol_update_7102() {
  */
 function dt_core_pol_update_7103() {
   module_enable(array('dt_roles_permissions', 'dt_roles_permissions_import'));
+}
+
+/**
+ * Enabling the custom site_wide context.
+ */
+function dt_core_pol_update_7104() {
+  // Enable the custom context.
+  features_revert(array(
+    'dt_core_pol' => array(
+      'context',
+      'variable',
+    ),
+  ));
 }

@@ -287,7 +287,7 @@ function dt_priority_default_field_group_info() {
     'weight' => '33',
     'children' => array(
       0 => 'field_core_featured_item',
-      1 => 'related_announcements',
+      1 => 'latest_announcements_block',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
