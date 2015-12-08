@@ -531,7 +531,7 @@ function dt_core_node_presave($node) {
 /**
  * Implements hook_workbench_moderation_transition().
  */
-function dt_core_workbench_moderation_transition($node){
+function dt_core_workbench_moderation_transition($node) {
   if (isset($node->field_core_header_image)) {
     // Entity wrapper.
     $entity_wrapper = entity_metadata_wrapper('node', $node);
