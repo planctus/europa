@@ -365,40 +365,47 @@ function cwt_blogs_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'group_blog_meta',
+        2 => 'content_type_label',
+        3 => 'title',
+        5 => 'editorial_section_name',
+        6 => 'post_date',
+      ),
       'central' => array(
-        0 => 'field_shared_tags',
-        5 => 'ds_subscription_ui',
+        1 => 'field_shared_tags',
+        4 => 'ds_subscription_ui',
         7 => 'field_shared_teaser',
         8 => 'body',
         9 => 'group_blog_bottom_section',
-        10 => 'group_comments_section',
-        11 => 'social_media',
+        10 => 'social_media',
+        11 => 'group_comments_section',
         12 => 'comments',
-      ),
-      'left_header' => array(
-        1 => 'group_blog_meta',
-        2 => 'content_type_label',
-        3 => 'title',
-        4 => 'editorial_section_name',
-        6 => 'post_date',
       ),
     ),
     'fields' => array(
-      'field_shared_tags' => 'central',
       'group_blog_meta' => 'left_header',
+      'field_shared_tags' => 'central',
       'content_type_label' => 'left_header',
       'title' => 'left_header',
-      'editorial_section_name' => 'left_header',
       'ds_subscription_ui' => 'central',
+      'editorial_section_name' => 'left_header',
       'post_date' => 'left_header',
       'field_shared_teaser' => 'central',
       'body' => 'central',
       'group_blog_bottom_section' => 'central',
-      'group_comments_section' => 'central',
       'social_media' => 'central',
+      'group_comments_section' => 'central',
       'comments' => 'central',
     ),
-    'classes' => array(),
+    'classes' => array(
+      'layout_class' => array(
+        'clear-page-content-bottom-spacing' => 'clear-page-content-bottom-spacing',
+      ),
+      'central' => array(
+        'clear-bottom-spacing' => 'clear-bottom-spacing',
+      ),
+    ),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
