@@ -47,10 +47,8 @@
   <?php print render($content['comments']); ?>
 
   <?php if ($content['comment_form']): ?>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-2">
-        <button class="btn btn-primary btn-add-comment" data-toggle="collapse" data-target="#comment-form-wrapper"><?php print t('Add a comment'); ?></button>
-      </div>
+    <div class="col-md-6 col-md-offset-2 comment__btn-add-wrap">
+      <button class="btn btn-primary comment__btn-add" data-toggle="collapse" data-target="#comment-form-wrapper"><?php print t('Add a comment'); ?></button>
     </div>
     <div id="comment-form-wrapper" class="collapse comment__form-wrapper col-md-offset-2">
       <h3 class="title comment-form"><?php print t('Add new comment'); ?></h3>
