@@ -8,6 +8,10 @@
  * Implements hook_install().
  */
 function dt_core_install() {
+  // Disable some contexts coming from the platform.
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+
   // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
 
@@ -33,6 +37,9 @@ function dt_core_install() {
  * Implements hook_uninstall().
  */
 function dt_core_uninstall() {
+  $contexts = variable_get('context_status', array());
+  unset($contexts['site_wide'], $contexts['homepage']);
+  variable_set('context_status', $contexts);
   $path = drupal_get_path('module', 'dt_core') . '/dt_core.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
@@ -758,4 +765,12 @@ function dt_core_update_7151() {
       field_delete_field($field_base);
     }
   }
+}
+
+/**
+ * Disable default contexts.
+ */
+function dt_core_update_7152() {
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
 }
