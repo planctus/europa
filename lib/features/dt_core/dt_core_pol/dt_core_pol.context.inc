@@ -26,12 +26,6 @@ function dt_core_pol_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dt_core-dt_header_site_tab_switcher' => array(
-          'module' => 'dt_core',
-          'delta' => 'dt_header_site_tab_switcher',
-          'region' => 'header_top',
-          'weight' => '-10',
-        ),
         'language_selector_site-language_selector_site' => array(
           'module' => 'language_selector_site',
           'delta' => 'language_selector_site',
@@ -49,12 +43,6 @@ function dt_core_pol_context_default_contexts() {
           'delta' => 'nexteuropa_feedback',
           'region' => 'footer_top',
           'weight' => '-42',
-        ),
-        'dt_core-dt_footer_site_tab_switcher' => array(
-          'module' => 'dt_core',
-          'delta' => 'dt_footer_site_tab_switcher',
-          'region' => 'footer_top',
-          'weight' => '-41',
         ),
         'menu-menu-dt-menu-social-media' => array(
           'module' => 'menu',

@@ -30,6 +30,7 @@ function dt_core_info_strongarm() {
   $strongarm->name = 'nexteuropa_europa_search_url';
   $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do?&queryText=business&query_source=BETA&summary=summary&swlang=en';
   $export['nexteuropa_europa_search_url'] = $strongarm;
+
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -104,7 +105,7 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'Information and services';
+  $strongarm->value = 'policies, information and services';
   $export['site_slogan'] = $strongarm;
 
   return $export;
