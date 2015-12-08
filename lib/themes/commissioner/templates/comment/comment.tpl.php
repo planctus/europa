@@ -72,7 +72,8 @@
           <span class="new"><?php print $new ?></span>
         <?php endif; ?>
         <div class="submitted comment__meta">
-          <span class="comment__author"><?php echo $author; ?></span> |
+          <span class="comment__author"><?php echo $author; ?></span>
+          <span class="comment__meta-separator"> | </span>
           <span class="comment__date"><?php echo $created; ?></span>
         </div>
 
