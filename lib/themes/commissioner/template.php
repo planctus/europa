@@ -144,8 +144,6 @@ function commissioner_preprocess_comment_wrapper(&$variables) {
 function commissioner_preprocess_comment(&$variables) {
   $comment = $variables['elements']['#comment'];
   $variables['created'] = format_date($comment->created, 'ec_date');
-  $variables['comment_author'] = $variables['author'];
-  $variables['comment_date'] = $variables['created'];
   $variables['submitted'] = t('!username', array('!username' => $variables['author'])) . '<span class="submitted-date">' . $variables['created'] . '</span>';
   $variables['title']     = check_plain($comment->subject);
   $variables['permalink'] = t('Permalink');

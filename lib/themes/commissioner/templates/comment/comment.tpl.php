@@ -72,8 +72,8 @@
           <span class="new"><?php print $new ?></span>
         <?php endif; ?>
         <div class="submitted comment__meta">
-          <span class="comment__author"><?php echo $comment_author; ?></span> |
-          <span class="comment__date"><?php echo $comment_date; ?></span>
+          <span class="comment__author"><?php echo $author; ?></span> |
+          <span class="comment__date"><?php echo $created; ?></span>
         </div>
 
         <?php print render($title_prefix); ?>
