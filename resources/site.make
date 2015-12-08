@@ -64,6 +64,10 @@ libraries[editarea][download][type] = "get"
 libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
 ## End custom_formatters specific.
 
+projects[conditional_fields][subdir] = "contrib"
+projects[conditional_fields][version] = "3.0-alpha2"
+projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/conditional_fields-required_empty_filled-1561272-93.patch"
+
 ; =========
 ; Libraries
 ; =========
