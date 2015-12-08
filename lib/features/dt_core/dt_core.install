@@ -8,6 +8,10 @@
  * Implements hook_install().
  */
 function dt_core_install() {
+  // Disable some contexts coming from the platform.
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+
   // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
 
@@ -33,6 +37,9 @@ function dt_core_install() {
  * Implements hook_uninstall().
  */
 function dt_core_uninstall() {
+  $contexts = variable_get('context_status', array());
+  unset($contexts['site_wide'], $contexts['homepage']);
+  variable_set('context_status', $contexts);
   $path = drupal_get_path('module', 'dt_core') . '/dt_core.info';
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
@@ -705,7 +712,8 @@ function dt_core_update_7151() {
   }
 
   // Global fields.
-  foreach (field_info_fields() as $f_name => $field) {
+  $fields = field_info_fields();
+  foreach ($fields as $field) {
     switch ($field['field_name']) {
       case 'field_file_image_alt_text':
       case 'field_file_image_title_text':
@@ -731,9 +739,13 @@ function dt_core_update_7151() {
     'field_policy_caption',
     'field_policy_featured_file',
   );
-
-  foreach ($dt_fields as $fld_name) {
-    _dt_shared_fix_field_language($fld_name);
+  $available_fields = array_keys($fields);
+  foreach ($dt_fields as $field_name) {
+    // Check if the field exist in the current instance.
+    if (!in_array($field_name, $available_fields)) {
+      continue;
+    }
+    _dt_shared_fix_field_language($field_name);
   }
 
   // The following is somehow not done by dt_featured_item_update_7101().
@@ -756,8 +768,16 @@ function dt_core_update_7151() {
 }
 
 /**
- * NEXTEUROPA-7346: reverting dt core to get the language token..
+ * Disable default contexts.
  */
 function dt_core_update_7152() {
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+}
+
+/**
+ * NEXTEUROPA-7346: reverting dt core to get the language token..
+ */
+function dt_core_update_7153() {
   features_revert_module('dt_core');
 }
