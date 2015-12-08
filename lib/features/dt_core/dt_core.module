@@ -531,26 +531,16 @@ function dt_core_node_presave($node) {
 /**
  * Implements hook_workbench_moderation_transition().
  */
-function dt_core_workbench_moderation_transition($node, $curr, $new) {
+function dt_core_workbench_moderation_transition($node){
   if (isset($node->field_core_header_image)) {
     // Entity wrapper.
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    // Published.
-    $pub = 'published';
     // We want to store those css files in a specific path.
     $dir = 'public://css/header-backgrounds/';
     // Build the uri for our css file.
-    $state = $new != $pub ? 'draft' : 'pub';
-    $uri = $dir . 'header_background_node_' . $node->nid . '_' . $state . '.css';
+    $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
     // Get the real path basing on the uri.
     $filepath = drupal_realpath($uri);
-    // Delete the draft file if this is going to be published.
-    if ($state == 'pub') {
-      $file = drupal_realpath($dir . 'header_background_node_' . $node->nid . '_draft.css');
-      if (file_exists($file)) {
-        unlink($file);
-      }
-    }
     // Check if we have an image, if we don't we delete an existing file.
     if (NULL !== $entity_wrapper->field_core_header_image->value()) {
       // Prepare the filesystem.
@@ -622,13 +612,11 @@ function dt_core_preprocess_node(&$variables) {
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
-      // Basically the drafts path is based on the system path for nodes.
-      $state = NULL !== arg(2) ? 'draft' : 'pub';
       // Set a variable available in the tpls.
       $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $variables['node']->nid . '_' . $state . '.css';
+      $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
   }
@@ -642,6 +630,19 @@ function dt_core_node_delete($node) {
     $uri = 'public://css/header-backgrounds/';
     $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
     foreach (glob($dir) as $file) {
+      unlink($file);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_revision_delete().
+ */
+function dt_core_node_revision_delete($node) {
+  if (isset($node->field_core_header_image)) {
+    $uri = 'public://css/header-backgrounds/';
+    $file = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '_' . $node->vid . '.css';
+    if (file_exists($file)) {
       unlink($file);
     }
   }
