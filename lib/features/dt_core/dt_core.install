@@ -788,4 +788,3 @@ function dt_core_update_7153() {
 function dt_core_update_7153() {
   module_enable(array('dt_social_media_sharing'));
 }
-
