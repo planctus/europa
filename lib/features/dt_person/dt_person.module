@@ -105,3 +105,59 @@ function dt_person_field_attach_view_alter(&$output, $context) {
     }
   }
 }
+
+/**
+ * Implements hook_menu().
+ *
+ * Will add an extra tab in user account page.
+ */
+function dt_person_menu() {
+
+  if (module_exists('masquerade')) {
+    $items = array();
+    $items['user/%user/masquerade'] = array(
+      'title' => 'Masquerade',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('masquerade_block_1', 1),
+      'type' => MENU_LOCAL_TASK,
+      'access callback' => '_masquerade_tab_access',
+      'access arguments' => array(1),
+      'weight' => 3,
+    );
+    return $items;
+  }
+}
+
+/**
+ * Menu access callback for users masquerade form.
+ *
+ * @param object $account
+ *   The user object of the current account.
+ */
+function _masquerade_tab_access($account) {
+  global $user;
+  // Anonymous users cannot have contact forms.
+  if (!$account->uid) {
+    return FALSE;
+  }
+
+  // User administrators should always have access to personal contact forms.
+  if (isset($_SESSION['masquerading']) || user_access('masquerade as user') || user_access('masquerade as admin')) {
+    return TRUE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the form to display a fast link switch.
+ */
+function dt_person_form_masquerade_block_1_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  $get_uid = menu_get_object('user');
+  if ($get_uid->uid && ($user->uid != $get_uid->uid)) {
+    $switch_link = 'masquerade/switch/' . $get_uid->uid;
+    $quick_switch_links = l($get_uid->name, $switch_link, array('query' => array('token' => drupal_get_token($switch_link))));
+    $form['masquerade_desc']['#markup'] = t('Switch as :') . $quick_switch_links . t(', or enter enter a username to masquerade above.');
+  }
+}
