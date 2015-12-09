@@ -26,7 +26,7 @@ function dt_banner_quote_field_group_info() {
       0 => 'field_core_description',
       1 => 'field_banner_author',
       2 => 'field_banner_author_gender',
-      3 => 'title',
+      3 => 'title_field',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -137,8 +137,8 @@ function dt_banner_quote_field_group_info() {
     'label' => 'Editorial Settings',
     'weight' => '6',
     'children' => array(
-      0 => 'og_group_ref',
-      1 => 'group_content_access',
+      0 => 'group_content_access',
+      1 => 'og_group_ref',
       2 => 'scheduler_settings',
       3 => 'language',
     ),
