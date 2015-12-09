@@ -135,7 +135,6 @@ function dt_person_menu() {
  *   The user object of the current account.
  */
 function _masquerade_tab_access($account) {
-  global $user;
   // Anonymous users cannot have contact forms.
   if (!$account->uid) {
     return FALSE;
