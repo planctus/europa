@@ -14,11 +14,3 @@ function dt_banner_install() {
   );
   module_enable($banner_types);
 }
-
-/**
- * Update hook to revert the banners.
- */
-function dt_banner_update_7101() {
-  features_revert_module('dt_banner_quote');
-  features_revert_module('dt_banner_video');
-}
