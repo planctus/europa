@@ -2207,7 +2207,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_social_networks'.
+  // Exported field_instance: 'node-biography-field_social_networks'
   $field_instances['node-biography-field_social_networks'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -2224,10 +2224,11 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 31,
       ),
       'team_cabinet_member' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'social_network_link_theme_css',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
