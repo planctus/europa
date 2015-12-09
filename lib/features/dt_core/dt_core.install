@@ -785,6 +785,6 @@ function dt_core_update_7153() {
 /**
  * NEXTEUROPA-6007: Create a block for social sharing.
  */
-function dt_core_update_7153() {
+function dt_core_update_7154() {
   module_enable(array('dt_social_media_sharing'));
 }
