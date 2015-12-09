@@ -26,8 +26,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 15,
       ),
     ),
@@ -104,8 +105,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 17,
       ),
     ),
@@ -146,48 +148,6 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_editorial_section'
-  $field_instances['node-activities-field_editorial_section'] = array(
-    'bundle' => 'activities',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'i18n_taxonomy',
-        'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_editorial_section',
-    'label' => 'Editorial section',
-    'required' => 1,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 2,
-    ),
-    'workbench_access_field' => 1,
-  );
-
   // Exported field_instance: 'node-activities-field_editorial_section_multiple'
   $field_instances['node-activities-field_editorial_section_multiple'] = array(
     'bundle' => 'activities',
@@ -204,8 +164,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'custom_formatters',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'custom_formatters_taxonomy_term_reference_external_links',
         'weight' => 18,
       ),
     ),
