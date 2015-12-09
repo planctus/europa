@@ -776,8 +776,16 @@ function dt_core_update_7152() {
 }
 
 /**
+ * NEXTEUROPA-7346: reverting dt core to get the language token..
+ */
+function dt_core_update_7153() {
+  features_revert_module('dt_core');
+}
+
+/**
  * NEXTEUROPA-6007: Create a block for social sharing.
  */
 function dt_core_update_7153() {
   module_enable(array('dt_social_media_sharing'));
 }
+
