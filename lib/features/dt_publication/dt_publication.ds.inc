@@ -17,6 +17,22 @@ function dt_publication_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'publication';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'social_bookmark_webtools' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -191,6 +207,7 @@ function dt_publication_ds_layout_settings_info() {
         11 => 'field_core_files',
         12 => 'field_core_departments',
         13 => 'field_publication_contact',
+        14 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
@@ -208,6 +225,7 @@ function dt_publication_ds_layout_settings_info() {
       'field_core_files' => 'central',
       'field_core_departments' => 'central',
       'field_publication_contact' => 'central',
+      'social_bookmark_webtools' => 'central',
       'field_publication_authors' => 'top',
       'field_publication_published_on' => 'top',
       'field_core_topics' => 'top',
