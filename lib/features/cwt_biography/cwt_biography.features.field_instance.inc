@@ -2216,23 +2216,18 @@ function cwt_biography_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 31,
       ),
       'team_cabinet_member' => array(
-        'label' => 'inline',
-        'module' => 'dt_social_network_links',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 5,
-      ),
-      'team_member' => array(
-        'label' => 'inline',
-        'module' => 'social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_css',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2241,6 +2236,7 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_social_networks',
     'label' => 'Social Networks',
@@ -2254,10 +2250,10 @@ function cwt_biography_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'social_network_links',
+      'module' => 'dt_social_network_links',
       'settings' => array(),
       'type' => 'social_network_link_default',
-      'weight' => 14,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
