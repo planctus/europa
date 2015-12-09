@@ -113,8 +113,9 @@ function dt_page_field_group_info() {
       0 => 'og_group_ref',
       1 => 'group_content_access',
       2 => 'field_core_in_page_navigation',
-      3 => 'scheduler_settings',
-      4 => 'language',
+      3 => 'field_core_latest_visibility',
+      4 => 'scheduler_settings',
+      5 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

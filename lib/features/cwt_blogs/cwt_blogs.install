@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Cwt_blogs.install file.
+ * The cwt_blogs.install file.
  */
 
 /**
@@ -50,4 +50,15 @@ function cwt_blogs_update_7103() {
  */
 function cwt_blogs_update_7104() {
   features_revert_module('cwt_blogs');
+}
+
+/**
+ * NEXTEUROPA-7147: Comments go to field group to be full width.
+ */
+function cwt_blogs_update_7105() {
+  features_revert_module('cwt_blogs');
+  $contexts = context_active_contexts();
+  if (array_key_exists('blog_post', $contexts)) {
+    context_delete('blog_post');
+  }
 }
