@@ -1168,9 +1168,9 @@ function cwt_biography_field_default_field_instances() {
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
-        'module' => 'text',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'telephone',
         'weight' => 3,
       ),
       'team_member' => array(

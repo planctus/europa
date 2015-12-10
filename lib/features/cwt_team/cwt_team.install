@@ -179,4 +179,11 @@ function cwt_team_update_7111() {
   module_enable(array('dt_social_network_links'));
   // Uninstall social_network_links.
   drupal_uninstall_modules(array('social_network_links'));
+  // Modify the field base export in feature.
+  $file = drupal_get_path('module', 'cwt_biography') . '/cwt_biography.features.field_base.inc';
+  if (file_exists($file) && is_writable($file)) {
+    $field_bases = file_get_contents($file);
+    $field_bases = str_replace('social_network_links', 'dt_social_network_links', $field_bases);
+    file_put_contents($file, $field_bases);
+  }
 }
