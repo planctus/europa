@@ -66,7 +66,7 @@
     <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
 
-  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-dist, deliver">
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-acceptance, deliver">
     <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
     <waitfor maxwaitunit="second" maxwait="15">
       <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
@@ -136,6 +136,7 @@
         <!-- Disable preprocess css -->
         <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
         <echo msg="Disable js pre processing." />
+        <phingcall target="enable-development-modules" />
       </then>
       <else>
         <echo msg="Exit without doing anything." />
