@@ -1054,12 +1054,12 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_social_networks'
+  // Exported field_base: 'field_social_networks'.
   $field_bases['field_social_networks'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
-    'entity_types' => array('node'),
+    'entity_types' => array(),
     'field_name' => 'field_social_networks',
     'foreign keys' => array(),
     'indexes' => array(
@@ -1081,7 +1081,7 @@ function cwt_biography_field_default_field_bases() {
     'settings' => array(
       'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'social_network_link',
   );
 
