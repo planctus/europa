@@ -42,4 +42,6 @@ $permissions['site manager'] = array(
   'view all unpublished content',
   'view any site_menu bean',
   'view bean page',
+  'masquerade as user',
+  'masquerade as any user',
 );

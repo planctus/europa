@@ -401,4 +401,7 @@ $permissions['administrator'] = array(
   'view revisions',
   'view scheduled content',
   'view the administration theme',
+  'masquerade as user',
+  'masquerade as any user',
+  'administer masquerade',
 );
