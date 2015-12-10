@@ -126,6 +126,15 @@ function commissioner_preprocess_node(&$variables) {
   unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 
+/**
+ * Implements template_preprocess_comment_wrapper().
+ */
+function commissioner_preprocess_comment_wrapper(&$variables) {
+  $variables['comment_count'] = '';
+  if ($variables['node']->comment_count > 0) {
+    $variables['comment_count'] = $variables['node']->comment_count;
+  }
+}
 
 /**
  * Implements template_preprocess_comment().
@@ -136,6 +145,7 @@ function commissioner_preprocess_comment(&$variables) {
   $variables['submitted'] = t('!username', array('!username' => $variables['author'])) . '<span class="submitted-date">' . $variables['created'] . '</span>';
   $variables['title']     = check_plain($comment->subject);
   $variables['permalink'] = t('Permalink');
+  $variables['title_attributes_array']['class'] = 'comment__title';
 }
 
 /**
