@@ -14,7 +14,7 @@ include_once 'dt_page.features.inc';
  */
 function dt_page_ds_pre_render_alter(&$layout_render_array, $context) {
   // If the other conditions meet.
-  if ($context['entity']->type == 'basic_page' && $context['view_mode'] == 'full') {
+  if ($context['entity']->type == 'basic_page' && $context['view_mode'] == 'full' && isset($context['entity']->field_core_in_page_navigation)) {
     $in_page = $context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'];
     $latest = $context['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'];
 
