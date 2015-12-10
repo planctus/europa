@@ -999,3 +999,28 @@ function _dt_core_ds_fields_stick_label($field) {
     return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
   }
 }
+
+/**
+ * Implements hook_metatag_metatags_view_alter().
+ *
+ * Because of SEO recommendations, description meta tag
+ * should't be more than 155 characters.
+ * + og:description meta tag should have the same text as
+ * description meta tag.
+ * If description metatag does not exist then it will fall back
+ * to og:description with character's count already limited.
+ */
+function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
+  // Metatag: description.
+  if (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = truncate_utf8($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'], 155, TRUE);
+  }
+  // Metatag: og:description.
+  if (isset($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) ?
+      $output['description']['#attached']['drupal_add_html_head'][0][0]['#value'] :
+      truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 155, TRUE);
+  }
+}
