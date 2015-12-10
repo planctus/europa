@@ -68,8 +68,6 @@ libraries[editarea][download][type] = "get"
 libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
 ## End custom_formatters specific.
 
-
-
 ; =========
 ; Libraries
 ; =========
