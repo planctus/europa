@@ -66,7 +66,7 @@
     <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
 
-  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-acceptance, deliver">
+  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-dist, deliver">
     <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
     <waitfor maxwaitunit="second" maxwait="15">
       <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
@@ -97,51 +97,42 @@
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="">
-    <input propertyname="confirm">This will delete your current database. Do you want to continue? (y)</input>
+    <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+    </drush>
+    <echo msg="Database deleted." />
+    <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
     <if>
-      <equals arg1="${confirm}" arg2="y" />
+      <not>
+        <available file="${acquia.dump}" type="file" property="available_phing_project_ac_dump"/>
+      </not>
       <then>
-        <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
-        </drush>
-        <echo msg="Database deleted." />
-        <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
-        <if>
-          <not>
-            <available file="${acquia.dump}" type="file" property="available_phing_project_ac_dump"/>
-          </not>
-          <then>
-            <phingcall target="fetch-ac-db" />
-          </then>
-        </if>
-        <echo msg="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
-        <exec command="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
-
-        <echo msg="AC database loaded." />
-
-        <exec command="${drush.bin} --root=${platform.build.dir} -y cc all" />
-        <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
-        </drush>
-        <echo msg="Registry rebuilt." />
-        <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
-          <param>admin</param>
-          <option name="password">pass</option>
-        </drush>
-        <echo msg="Password for user admin is set to pass." />
-        <!-- Disable cache -->
-        <exec command="${drush.bin} --root=${platform.build.dir} vset --exact cache 0" />
-        <echo msg="Cache has been disabled." />
-        <!-- Disable preprocess css -->
-        <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_css 0" />
-        <echo msg="Disable css pre processing." />
-        <!-- Disable preprocess css -->
-        <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
-        <echo msg="Disable js pre processing." />
-        <phingcall target="enable-development-modules" />
+        <phingcall target="fetch-ac-db" />
       </then>
-      <else>
-        <echo msg="Exit without doing anything." />
-      </else>
     </if>
+    <echo msg="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
+    <exec command="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
+
+    <echo msg="AC database loaded." />
+
+    <exec command="${drush.bin} --root=${platform.build.dir} -y cc all" />
+    <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+    </drush>
+    <echo msg="Registry rebuilt." />
+    <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+      <param>admin</param>
+      <option name="password">pass</option>
+    </drush>
+    <echo msg="Password for user admin is set to pass." />
+    <!-- Disable cache -->
+    <exec command="${drush.bin} --root=${platform.build.dir} vset --exact cache 0" />
+    <echo msg="Cache has been disabled." />
+    <!-- Disable preprocess css -->
+    <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_css 0" />
+    <echo msg="Disable css pre processing." />
+    <!-- Disable preprocess css -->
+    <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
+    <echo msg="Disable js pre processing." />
+    <phingcall target="enable-development-modules" />
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">
@@ -205,6 +196,7 @@
                 <exclude name="**/Watchfile"/>
                 <exclude name="**/package.json"/>
                 <exclude name="commissioner_OLD/**"/>
+                <exclude name="*masquerade/**"/>
               </patternset>
             </fileset>
         </copy>
