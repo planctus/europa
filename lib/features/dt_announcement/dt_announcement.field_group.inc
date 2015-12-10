@@ -48,6 +48,38 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_content|node|announcement|full';
+  $field_group->group_name = 'group_announcement_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_announcement_main';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '6',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_announcement_info',
+      2 => 'field_core_links',
+      3 => 'related_announcements',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Content',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__main',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_content|node|announcement|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_announcement_context_info|node|announcement|form';
   $field_group->group_name = 'group_announcement_context_info';
   $field_group->entity_type = 'node';
@@ -99,6 +131,35 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_contextual|node|announcement|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_main|node|announcement|full';
+  $field_group->group_name = 'group_announcement_main';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Main Section',
+    'weight' => '5',
+    'children' => array(
+      0 => 'group_announcement_rsb_content',
+      1 => 'group_announcement_content',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-announcemen-main field-group-section_group',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_announcement_main|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -209,6 +270,35 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_announcement_related|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_rsb_content|node|announcement|full';
+  $field_group->group_name = 'group_announcement_rsb_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_announcement_main';
+  $field_group->data = array(
+    'label' => 'Right Sidebar',
+    'weight' => '7',
+    'children' => array(
+      0 => 'social_bookmark_webtools',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Right Sidebar',
+      'instance_settings' => array(
+        'classes' => 'sidebar-field-group__sidebar',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_announcement_rsb_content|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
