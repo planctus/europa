@@ -103,4 +103,4 @@ features_exclude[dependencies][picture] = picture
 features_exclude[dependencies][nexteuropa_views] = nexteuropa_views
 features_exclude[dependencies][conditional_fields] = conditional_fields
 features_exclude[dependencies][features] = features
-features_exclude[dependencies] = og
+features_exclude[dependencies][og] = og
