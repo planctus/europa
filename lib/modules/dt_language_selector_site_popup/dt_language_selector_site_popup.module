@@ -17,6 +17,8 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
     $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
     $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
 
+    // Add accessabilty js to control the tab flow.
+    drupal_add_js(drupal_get_path('module', 'dt_language_selector_site_popup') . '/js/dt_language_selector_site_popup.js');
     // Dont know if this is the way to go..
     $popupbase = '<div class="splash-page splash-page--overlay"></div>';
 
@@ -87,10 +89,14 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
 
       if ($lang->language == $language->language) {
         $options['attributes']['class'][] = "is-active icon icon--check";
+        $options['html'] = TRUE;
+        $text = $lang->native . '<span class="sr-only"> ' . t('(Current language)') . '</span>';
+        $processed_languages[] = l($text, $href, $options);
       }
-
-      // Add to our processed array.
-      $processed_languages[] = l($lang->native, $href, $options);
+      else {
+        // Add to our processed array.
+        $processed_languages[] = l($lang->native, $href, $options);
+      }
     }
   }
 

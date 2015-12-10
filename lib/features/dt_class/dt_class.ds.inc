@@ -37,6 +37,22 @@ function dt_class_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'class';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'social_bookmark_webtools' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -236,6 +252,7 @@ function dt_class_ds_layout_settings_info() {
         5 => 'group_class_departments',
         6 => 'field_core_department',
         7 => 'field_class_related_links',
+        8 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
@@ -247,6 +264,7 @@ function dt_class_ds_layout_settings_info() {
       'group_class_departments' => 'central',
       'field_core_department' => 'central',
       'field_class_related_links' => 'central',
+      'social_bookmark_webtools' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

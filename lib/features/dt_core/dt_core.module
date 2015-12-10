@@ -487,7 +487,7 @@ function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state)
  * @param array $languages
  *   Language codes of languages to be enabled.
  */
-function _dt_core_enable_lanugages($languages = array()) {
+function _dt_core_enable_languages($languages = array()) {
   module_load_include('inc', 'locale', 'locale.admin');
   $form_state = array();
   foreach ($languages as $key => $langcode) {
@@ -531,26 +531,16 @@ function dt_core_node_presave($node) {
 /**
  * Implements hook_workbench_moderation_transition().
  */
-function dt_core_workbench_moderation_transition($node, $curr, $new) {
+function dt_core_workbench_moderation_transition($node) {
   if (isset($node->field_core_header_image)) {
     // Entity wrapper.
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    // Published.
-    $pub = 'published';
     // We want to store those css files in a specific path.
     $dir = 'public://css/header-backgrounds/';
     // Build the uri for our css file.
-    $state = $new != $pub ? 'draft' : 'pub';
-    $uri = $dir . 'header_background_node_' . $node->nid . '_' . $state . '.css';
+    $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
     // Get the real path basing on the uri.
     $filepath = drupal_realpath($uri);
-    // Delete the draft file if this is going to be published.
-    if ($state == 'pub') {
-      $file = drupal_realpath($dir . 'header_background_node_' . $node->nid . '_draft.css');
-      if (file_exists($file)) {
-        unlink($file);
-      }
-    }
     // Check if we have an image, if we don't we delete an existing file.
     if (NULL !== $entity_wrapper->field_core_header_image->value()) {
       // Prepare the filesystem.
@@ -622,13 +612,11 @@ function dt_core_preprocess_node(&$variables) {
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
-      // Basically the drafts path is based on the system path for nodes.
-      $state = NULL !== arg(2) ? 'draft' : 'pub';
       // Set a variable available in the tpls.
       $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $variables['node']->nid . '_' . $state . '.css';
+      $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
   }
@@ -642,6 +630,19 @@ function dt_core_node_delete($node) {
     $uri = 'public://css/header-backgrounds/';
     $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
     foreach (glob($dir) as $file) {
+      unlink($file);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_revision_delete().
+ */
+function dt_core_node_revision_delete($node) {
+  if (isset($node->field_core_header_image)) {
+    $uri = 'public://css/header-backgrounds/';
+    $file = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '_' . $node->vid . '.css';
+    if (file_exists($file)) {
       unlink($file);
     }
   }
@@ -816,7 +817,7 @@ function dt_core_views_query_alter(&$view, &$query) {
   // If it is one of our listings.
   if (isset($view->sort['title_field_value'])) {
     // Get our languages.
-    $fallback_languages = _dt_core_content_language_order();
+    $fallback_languages = _dt_shared_functions_content_language_order();
     // Sort direction from our sort.
     $sort_direction = 'ASC';
 
@@ -890,68 +891,6 @@ function dt_core_views_query_alter(&$view, &$query) {
       unset($query->fields['field_data_title_field_title_field_value']);
     }
   }
-}
-
-/**
- * Get the final content language after applying translations and fallbacks.
- */
-function _dt_core_content_language($node) {
-  // Load potential relevant languages in the correct fallback order.
-  $content_language_order = _dt_core_content_language_order();
-  $content_language = $node->language;
-  // Find first available translation that is applicable.
-  if (!empty($content_language_order)) {
-    foreach ($content_language_order as $language_code) {
-      $translation = entity_translation_get_existing_language('node', $node, $language_code);
-      // We have a translation so lets use it.
-      if ($translation == $language_code) {
-        $content_language = $language_code;
-        break;
-      }
-      $content_language = $translation;
-    }
-  }
-
-  return $content_language;
-}
-
-/**
- * Get the languages that are applicable in the right order of fallback.
- */
-function _dt_core_content_language_order() {
-  global $language;
-  // Get the first few languages of our fallback array. If we have a 2nd
-  // language parameter set, we have to work with an additional language. If
-  // not, we only need one.
-  // Set our maximum languages to check.
-  $max_languages = 1;
-  // First we get our url parameters.
-  $parameters = drupal_get_query_parameters();
-  // Check if the 2nd-language parameter is set.
-  if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
-    // Extend maximum to include the 2nd-language.
-    $max_languages = 2;
-  }
-  // Get the maximum extra languages.
-  $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
-  // Add our current site language to the array.
-  if (!in_array($language->language, $fallback_languages)) {
-    array_unshift($fallback_languages, $language->language);
-  }
-  else {
-    // Our default language is in the array but might not be the first. So we
-    // move it.
-    // Get the key of the language.
-    $main_language_key = array_search($language->language, $fallback_languages);
-    // Store it temporary.
-    $prepend_language = $fallback_languages[$main_language_key];
-    // Remove the item.
-    unset($fallback_languages[$main_language_key]);
-    // Then add it to the front.
-    array_unshift($fallback_languages, $prepend_language);
-  }
-
-  return $fallback_languages;
 }
 
 /**

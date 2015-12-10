@@ -488,3 +488,10 @@ function cwt_core_update_7134() {
 function cwt_core_update_7135() {
   features_revert_module('cwt_biography');
 }
+
+/**
+ * NEXTEUROPA-7290 - Revert variable component.
+ */
+function cwt_core_update_7136() {
+  features_revert(array('cwt_core' => array('variable')));
+}
