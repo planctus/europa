@@ -148,3 +148,10 @@ function dt_publication_update_7108() {
   $group_publication_source = field_group_load_field_group('group_publication_source', 'node', 'publication', 'form');
   field_group_group_export_delete($group_publication_source, FALSE);
 }
+
+/**
+ * NEXTEUROPA-4905: The display settings.
+ */
+function dt_publication_update_7109() {
+  features_revert_module('dt_publication');
+}

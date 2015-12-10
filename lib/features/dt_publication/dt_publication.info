@@ -4,7 +4,6 @@ core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_publication
-dependencies[] = conditional_fields
 dependencies[] = dt_contact
 dependencies[] = dt_core
 dependencies[] = nexteuropa_file

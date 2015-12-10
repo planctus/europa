@@ -8,6 +8,7 @@ dependencies[] = addressfield
 dependencies[] = bean
 dependencies[] = bootstrap_fieldgroup
 dependencies[] = breakpoints
+dependencies[] = conditional_fields
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = date
