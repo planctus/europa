@@ -195,6 +195,7 @@
                 <exclude name="**/Watchfile"/>
                 <exclude name="**/package.json"/>
                 <exclude name="commissioner_OLD/**"/>
+                <exclude name="*masquerade/**"/>
               </patternset>
             </fileset>
         </copy>
