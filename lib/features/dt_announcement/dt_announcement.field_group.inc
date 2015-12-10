@@ -29,8 +29,8 @@ function dt_announcement_field_group_info() {
       3 => 'field_announcement_department',
       4 => 'field_announcement_location',
       5 => 'field_announcement_type',
-      6 => 'field_core_introduction',
-      7 => 'field_core_description',
+      6 => 'field_core_description',
+      7 => 'field_core_introduction',
       8 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
@@ -192,11 +192,11 @@ function dt_announcement_field_group_info() {
       0 => 'field_core_announcement',
       1 => 'field_core_department',
       2 => 'field_core_persons',
-      3 => 'field_core_topics',
-      4 => 'field_core_policies',
+      3 => 'field_core_policies',
+      4 => 'field_core_pri_policy_areas',
       5 => 'field_core_priorities',
-      6 => 'field_core_pages',
-      7 => 'field_core_pri_policy_areas',
+      6 => 'field_core_topics',
+      7 => 'field_core_pages',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -221,7 +221,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'group_announcement_content',
       1 => 'group_announcement_context_info',
@@ -296,6 +296,58 @@ function dt_announcement_field_group_info() {
     ),
   );
   $export['group_media|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_resource_type_fields|node|announcement|form';
+  $field_group->group_name = 'group_resource_type_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_resource_type';
+  $field_group->data = array(
+    'label' => 'Resource type',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_core_type_content',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-resource-type-fields field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_resource_type_fields|node|announcement|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_resource_type|node|announcement|form';
+  $field_group->group_name = 'group_resource_type';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Resource type',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_resource_type_fields',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_resource_type|node|announcement|form'] = $field_group;
 
   return $export;
 }

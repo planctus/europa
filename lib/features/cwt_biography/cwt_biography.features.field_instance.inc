@@ -1810,7 +1810,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_social_networks'.
+  // Exported field_instance: 'node-biography-field_test_social'
   $field_instances['node-biography-field_social_networks'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -1819,9 +1819,18 @@ function cwt_biography_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 31,
+      ),
+      'team_cabinet_member' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1830,6 +1839,7 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_social_networks',
     'label' => 'Social Networks',
@@ -1843,10 +1853,10 @@ function cwt_biography_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'social_network_links',
+      'module' => 'dt_social_network_links',
       'settings' => array(),
       'type' => 'social_network_link_default',
-      'weight' => 14,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
