@@ -38,6 +38,7 @@ features[variable][] = menu_parent_priority_policy_area
 features[variable][] = node_options_priority_policy_area
 features[variable][] = node_preview_priority_policy_area
 features[variable][] = node_submitted_priority_policy_area
+features[variable][] = pathauto_node_priority_policy_area_pattern
 features_exclude[ctools][field_group:field_group:1] = field_group:field_group:1
 features_exclude[ctools][strongarm:strongarm:1] = strongarm:strongarm:1
 features_exclude[dependencies][text] = text
