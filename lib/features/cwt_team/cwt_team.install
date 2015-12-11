@@ -84,9 +84,33 @@ function cwt_team_update_7108() {
 }
 
 /**
- * Assigning the right view mode to the home page.
+ * Disabling social_network_links and enabling dt_social_networks_links
+ * while keep using the same field in biography ct
+ * Assigning the right view mode to the college team nodes.
+ * Set the default value for existing contents for the field_media_enquiries.
  */
 function cwt_team_update_7109() {
+  // Disable the social_network_links module.
+  db_update('system')
+    ->condition('name', 'social_network_links')
+    ->fields(array('status' => 0))
+    ->execute();
+
+  // Alter the field config to detach social_network_links.
+  db_update('field_config')
+    ->condition('field_name', 'field_social_networks')
+    ->fields(array('module' => 'dt_social_network_links'))
+    ->execute();
+
+  // Enable the dt_social_network_links feature.
+  module_enable(array('dt_social_network_links'));
+  // Uninstall social_network_links.
+  drupal_uninstall_modules(array('social_network_links'));
+  // Clear the system table cache.
+  db_delete('cache_bootstrap')
+    ->condition('cid', 'system_list')
+    ->execute();
+
   // CWT core is holding the variables that enables the view mode switch.
   features_revert(array('cwt_core' => array('strongarm')));
   // Revert component of this features.
@@ -101,6 +125,7 @@ function cwt_team_update_7109() {
   ));
   // Revert cwt_biography.
   features_revert_module('cwt_biography');
+
   // Team nodes flagged with this term should use a different view mode.
   $college = taxonomy_get_term_by_name('College', 'team_subtypes');
   $college_tid = array_shift($college)->tid;
@@ -128,12 +153,8 @@ function cwt_team_update_7109() {
       }
     }
   }
-}
 
-/**
- * Updating the team nodes to apply the default value for a field.
- */
-function cwt_team_update_7110() {
+  // Set the default value for existing contents.
   $field_name = 'field_team_media_enquiries';
   // Find the default value.
   $field = field_info_instance('node', $field_name, 'team');
@@ -154,36 +175,8 @@ function cwt_team_update_7110() {
         // Set the default value.
         $node->{$field_name}[LANGUAGE_NONE][0]['url'] = $def;
         field_attach_update('node', $node);
+        entity_get_controller('node')->resetCache(array($node->nid));
       }
     }
-  }
-}
-
-/**
- * Change module name associated to the social network field.
- */
-function cwt_team_update_7111() {
-  // Disable the social_network_links module.
-  db_update('system')
-    ->condition('name', 'social_network_links')
-    ->fields(array('status' => 0))
-    ->execute();
-
-  // Alter the field config to detach social_network_links.
-  db_update('field_config')
-    ->condition('field_name', 'field_social_networks')
-    ->fields(array('module' => 'dt_social_network_links'))
-    ->execute();
-
-  // Enable the dt_social_network_links feature.
-  module_enable(array('dt_social_network_links'));
-  // Uninstall social_network_links.
-  drupal_uninstall_modules(array('social_network_links'));
-  // Modify the field base export in feature.
-  $file = drupal_get_path('module', 'cwt_biography') . '/cwt_biography.features.field_base.inc';
-  if (file_exists($file) && is_writable($file)) {
-    $field_bases = file_get_contents($file);
-    $field_bases = str_replace('social_network_links', 'dt_social_network_links', $field_bases);
-    file_put_contents($file, $field_bases);
   }
 }
