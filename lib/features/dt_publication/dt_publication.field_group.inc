@@ -144,7 +144,7 @@ function dt_publication_field_group_info() {
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group paragraph',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -347,7 +347,7 @@ function dt_publication_field_group_info() {
     'format_settings' => array(
       'label' => 'Related information',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group paragraph',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
