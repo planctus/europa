@@ -860,28 +860,36 @@ function cwt_biography_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['css_class'] = 'related-terms';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Field: Content: Topics */
   $handler->display->display_options['fields']['field_biography_portfolio']['id'] = 'field_biography_portfolio';
   $handler->display->display_options['fields']['field_biography_portfolio']['table'] = 'field_data_field_biography_portfolio';
   $handler->display->display_options['fields']['field_biography_portfolio']['field'] = 'field_biography_portfolio';
+  $handler->display->display_options['fields']['field_biography_portfolio']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_portfolio']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_portfolio']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_biography_portfolio']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_biography_portfolio']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_biography_portfolio']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_biography_portfolio']['multi_type'] = 'ul';
   /* Field: Content: Departments */
   $handler->display->display_options['fields']['field_biography_departments']['id'] = 'field_biography_departments';
   $handler->display->display_options['fields']['field_biography_departments']['table'] = 'field_data_field_biography_departments';
   $handler->display->display_options['fields']['field_biography_departments']['field'] = 'field_biography_departments';
+  $handler->display->display_options['fields']['field_biography_departments']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_departments']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_departments']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_biography_departments']['type'] = 'custom_formatters_taxonomy_term_reference_external_links';
   $handler->display->display_options['fields']['field_biography_departments']['settings'] = array(
@@ -947,6 +955,7 @@ function cwt_biography_views_default_views() {
     'type' => '',
     'field_api_classes' => 0,
   );
+  $handler->display->display_options['fields']['field_biography_departments']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_biography_departments']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_biography_departments']['multi_type'] = 'ul';
   /* Sort criterion: Content: Post date */
@@ -983,8 +992,142 @@ function cwt_biography_views_default_views() {
     'biography' => 'biography',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Departments */
+  $handler = $view->new_display('block', 'Departments', 'block');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Departments */
+  $handler->display->display_options['fields']['field_biography_departments']['id'] = 'field_biography_departments';
+  $handler->display->display_options['fields']['field_biography_departments']['table'] = 'field_data_field_biography_departments';
+  $handler->display->display_options['fields']['field_biography_departments']['field'] = 'field_biography_departments';
+  $handler->display->display_options['fields']['field_biography_departments']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_departments']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_departments']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_departments']['type'] = 'custom_formatters_taxonomy_term_reference_external_links';
+  $handler->display->display_options['fields']['field_biography_departments']['settings'] = array(
+    'relationship' => 'none',
+    'ui_name' => '',
+    'custom_label' => 0,
+    'label' => '',
+    'element_label_colon' => 0,
+    'exclude' => 0,
+    'element_type_enable' => 0,
+    'element_type' => '',
+    'element_class_enable' => 0,
+    'element_class' => '',
+    'element_label_type_enable' => 0,
+    'element_label_type' => '',
+    'element_label_class_enable' => 0,
+    'element_label_class' => '',
+    'element_wrapper_type_enable' => 0,
+    'element_wrapper_type' => '',
+    'element_wrapper_class_enable' => 0,
+    'element_wrapper_class' => '',
+    'element_default_classes' => 0,
+    'alter' => array(
+      'alter_text' => 0,
+      'text' => '',
+      'make_link' => 0,
+      'path' => '',
+      'absolute' => 0,
+      'replace_spaces' => 0,
+      'external' => 0,
+      'path_case' => 'none',
+      'link_class' => '',
+      'alt' => '',
+      'rel' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'target' => '',
+      'trim' => 0,
+      'max_length' => '',
+      'word_boundary' => 0,
+      'ellipsis' => 0,
+      'more_link' => 0,
+      'more_link_text' => '',
+      'more_link_path' => '',
+      'html' => 0,
+      'strip_tags' => 0,
+      'preserve_tags' => '',
+      'trim_whitespace' => 0,
+      'nl2br' => 0,
+    ),
+    'empty' => '',
+    'empty_zero' => 0,
+    'hide_empty' => 0,
+    'hide_alter_empty' => 0,
+    'group_rows' => 0,
+    'multi_type' => NULL,
+    'separator' => '',
+    'delta_limit' => '',
+    'delta_offset' => '',
+    'delta_reversed' => 0,
+    'delta_first_last' => 0,
+    'click_sort_column' => 'tid',
+    'type' => '',
+    'field_api_classes' => 0,
+  );
+  $handler->display->display_options['fields']['field_biography_departments']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_departments']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_biography_departments']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'biography' => 'biography',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Departments (field_biography_departments:delta) */
+  $handler->display->display_options['filters']['delta']['id'] = 'delta';
+  $handler->display->display_options['filters']['delta']['table'] = 'field_data_field_biography_departments';
+  $handler->display->display_options['filters']['delta']['field'] = 'delta';
+  $handler->display->display_options['filters']['delta']['operator'] = 'not empty';
+
+  /* Display: Topics */
+  $handler = $view->new_display('block', 'Topics', 'block_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Topics */
+  $handler->display->display_options['fields']['field_biography_portfolio']['id'] = 'field_biography_portfolio';
+  $handler->display->display_options['fields']['field_biography_portfolio']['table'] = 'field_data_field_biography_portfolio';
+  $handler->display->display_options['fields']['field_biography_portfolio']['field'] = 'field_biography_portfolio';
+  $handler->display->display_options['fields']['field_biography_portfolio']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_portfolio']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_portfolio']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_portfolio']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_biography_portfolio']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_portfolio']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_biography_portfolio']['multi_type'] = 'ul';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'biography' => 'biography',
+  );
+  /* Filter criterion: Content: Topics (field_biography_portfolio:title) */
+  $handler->display->display_options['filters']['field_biography_portfolio_title']['id'] = 'field_biography_portfolio_title';
+  $handler->display->display_options['filters']['field_biography_portfolio_title']['table'] = 'field_data_field_biography_portfolio';
+  $handler->display->display_options['filters']['field_biography_portfolio_title']['field'] = 'field_biography_portfolio_title';
+  $handler->display->display_options['filters']['field_biography_portfolio_title']['operator'] = 'not empty';
   $export['biography_related_terms'] = $view;
 
   $view = new view();
@@ -1393,7 +1536,6 @@ function cwt_biography_views_default_views() {
 
   /* Display: Biography Timeline */
   $handler = $view->new_display('block', 'Biography Timeline', 'block');
-
   $export['biography_timeline'] = $view;
 
   $view = new view();

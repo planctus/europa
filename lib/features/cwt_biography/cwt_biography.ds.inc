@@ -17,13 +17,44 @@ function cwt_biography_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'biography';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'contact' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'departments' => array(
+      'weight' => '0',
+      'label' => 'inline',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb' => 'Related departments',
+          'lb-el' => 'span',
+          'lb-cl' => 'context-nav__label',
+        ),
+      ),
+    ),
+    'topics' => array(
+      'weight' => '1',
+      'label' => 'inline',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'lb' => 'Related topics',
+          'lb-el' => 'span',
+          'lb-cl' => 'context-nav__label',
+        ),
+      ),
+    ),
     'agenda_block' => array(
       'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'announcements_block' => array(
-      'weight' => '5',
+      'weight' => '38',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -43,9 +74,38 @@ function cwt_biography_ds_field_settings_info() {
       'format' => 'default',
     ),
     'in_page_navigation' => array(
-      'weight' => '1',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'col-md-10 pull-right',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_biography_portrait' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'col-md-2',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
     ),
   );
   $export['node|biography|full'] = $ds_fieldsetting;
@@ -121,6 +181,36 @@ function cwt_biography_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'contact';
+  $ds_field->label = 'Contact';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'biography|full';
+  $ds_field->properties = array(
+    'block' => 'views|contact-block',
+    'block_render' => '3',
+  );
+  $export['contact'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'departments';
+  $ds_field->label = 'Departments';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'biography|full';
+  $ds_field->properties = array(
+    'block' => 'views|biography_related_terms-block',
+    'block_render' => '3',
+  );
+  $export['departments'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'timeline_block';
   $ds_field->label = 'Timeline block';
   $ds_field->field_type = 6;
@@ -133,6 +223,21 @@ function cwt_biography_ds_custom_fields_info() {
     'block_render' => '3',
   );
   $export['timeline_block'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'topics';
+  $ds_field->label = 'Topics';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'biography|full';
+  $ds_field->properties = array(
+    'block' => 'views|biography_related_terms-block_1',
+    'block_render' => '3',
+  );
+  $export['topics'] = $ds_field;
 
   return $export;
 }
@@ -152,42 +257,64 @@ function cwt_biography_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'biography_header',
+      'top' => array(
+        0 => 'departments',
+        2 => 'contact',
+        3 => 'group_bio_row',
+        5 => 'topics',
+        6 => 'field_biography_press_contact',
+        7 => 'field_biography_portrait',
+        9 => 'group_bio_col',
+        10 => 'group_bio_contextual',
+        12 => 'social_bookmark_webtools',
+        23 => 'group_bio_contact',
       ),
-      'left' => array(
-        1 => 'in_page_navigation',
+      'left_header' => array(
+        1 => 'biography_header',
       ),
       'central' => array(
-        2 => 'body',
-        3 => 'group_bio_role',
-        4 => 'group_bio_team',
-        5 => 'group_bio_news',
-        6 => 'announcements_block',
-        7 => 'group_bio_agenda',
-        8 => 'group_bio_blog',
-        9 => 'agenda_block',
-        10 => 'blog_block',
-        11 => 'timeline_block',
-        12 => 'group_bio_timeline',
-        13 => 'field_biography_team',
+        4 => 'body',
+        11 => 'group_bio_role',
+        13 => 'group_bio_team',
+        14 => 'group_bio_news',
+        15 => 'agenda_block',
+        16 => 'group_bio_agenda',
+        17 => 'timeline_block',
+        18 => 'blog_block',
+        19 => 'group_bio_blog',
+        20 => 'group_bio_timeline',
+        21 => 'field_biography_team',
+        22 => 'announcements_block',
+      ),
+      'left' => array(
+        8 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
+      'departments' => 'top',
       'biography_header' => 'left_header',
-      'in_page_navigation' => 'left',
+      'contact' => 'top',
+      'group_bio_row' => 'top',
       'body' => 'central',
+      'topics' => 'top',
+      'field_biography_press_contact' => 'top',
+      'field_biography_portrait' => 'top',
+      'in_page_navigation' => 'left',
+      'group_bio_col' => 'top',
+      'group_bio_contextual' => 'top',
       'group_bio_role' => 'central',
+      'social_bookmark_webtools' => 'top',
       'group_bio_team' => 'central',
       'group_bio_news' => 'central',
-      'announcements_block' => 'central',
-      'group_bio_agenda' => 'central',
-      'group_bio_blog' => 'central',
       'agenda_block' => 'central',
-      'blog_block' => 'central',
+      'group_bio_agenda' => 'central',
       'timeline_block' => 'central',
+      'blog_block' => 'central',
+      'group_bio_blog' => 'central',
       'group_bio_timeline' => 'central',
       'field_biography_team' => 'central',
+      'announcements_block' => 'central',
+      'group_bio_contact' => 'top',
     ),
     'classes' => array(),
     'wrappers' => array(
