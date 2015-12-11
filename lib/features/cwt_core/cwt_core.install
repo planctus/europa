@@ -32,6 +32,10 @@ function cwt_core_install() {
   variable_set('nexteuropa_feedback_form_id', '1040');
   // Enabling the social media sharing module.
   module_enable(array('dt_social_media_sharing'));
+  // Saving values for the social media sharing block.
+  $label = '<span class="social-media-links__label">Share this page:</span>';
+  variable_set('dt_social_media_sharing_text', $label);
+  variable_set('dt_social_media_sharing_block_type', 'horizontal');
 }
 
 /**
@@ -503,4 +507,14 @@ function cwt_core_update_7136() {
  */
 function cwt_core_update_7137() {
   module_enable(array('dt_social_media_sharing'));
+}
+
+/**
+ * Storing default values for the social media sharing block.
+ */
+function cwt_core_update_7138() {
+  // Saving values for the social media sharing block.
+  $label = '<span class="social-media-links__label">' . t('Share this page: ') . '</span>';
+  variable_set('dt_social_media_sharing_text', $label);
+  variable_set('dt_social_media_sharing_block_type', 'horizontal');
 }
