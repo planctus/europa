@@ -73,12 +73,11 @@ function cwt_news_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<span class="header-line-1">[field_aggregated_news_type] - [created]</span>
-<h1 class="page-header">
-<span class="header-line-2">[title]</span>
-</h1>
-</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta meta--header">
+<div class="meta__item meta__item--type">[field_aggregated_news_type] - [created]</div>
+</div>
+<h1>[title]</h1>
+';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */

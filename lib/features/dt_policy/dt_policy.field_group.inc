@@ -57,7 +57,7 @@ function dt_policy_field_group_info() {
     'label' => 'Main',
     'weight' => '38',
     'children' => array(
-      0 => 'related_announcements',
+      0 => 'latest_announcements_block',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -527,6 +527,35 @@ function dt_policy_field_group_info() {
     ),
   );
   $export['group_policy_related|node|policy|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_policy_socialmedia|node|policy|full';
+  $field_group->group_name = 'group_policy_socialmedia';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Social Media',
+    'weight' => '6',
+    'children' => array(
+      0 => 'social_bookmark_webtools',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Social Media',
+      'instance_settings' => array(
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_policy_socialmedia|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

@@ -694,12 +694,12 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<span class="header-line-1">[field_team_subtype] [field_team_term]</span>
-<h1 class="page-header">
-<span class="header-line-2">[title]</span>
-<span class="header-line-3">[field_team_tagline]</span>
-</h1>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header__hero-title">
+<div class="meta meta--header">
+<div class="meta__item meta__item--type">[field_team_subtype] [field_team_term]</div>
+</div>
+<h1>[title]</h1>
+<p>[field_team_tagline]</p>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -765,12 +765,10 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="page-header-wrapper">
-<span class="header-line-1">Team</span>
-<h1 class="page-header">
-<span class="header-line-2">[title_1]</span>
-</h1>
-</div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta meta--header">
+<div class="meta__item meta__item--type">Team</div>
+</div>
+<h1>[title_1]</h1>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $export['team_header'] = $view;
@@ -1173,10 +1171,15 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['id'] = 'field_biography_status_tid_i18n';
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['table'] = 'field_data_field_biography_status';
   $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['field'] = 'field_biography_status_tid_i18n';
+  /* Relationship: Content translation: Source translation */
+  $handler->display->display_options['relationships']['tnid']['id'] = 'tnid';
+  $handler->display->display_options['relationships']['tnid']['table'] = 'node';
+  $handler->display->display_options['relationships']['tnid']['field'] = 'tnid';
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'tnid';
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
@@ -1208,6 +1211,19 @@ function cwt_team_views_default_views() {
     'biography' => 'biography',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
 
   /* Display: President */
   $handler = $view->new_display('block', 'President', 'block_1');
@@ -1272,6 +1288,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['uuid_3']['ui_name'] = 'President';
   $handler->display->display_options['filters']['uuid_3']['value'] = 'fea4c060-eb2d-4686-9ccc-64997aad4930';
   $handler->display->display_options['filters']['uuid_3']['group'] = 3;
+
   $export['team_members'] = $view;
 
   $view = new view();
