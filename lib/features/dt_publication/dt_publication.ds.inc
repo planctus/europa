@@ -17,6 +17,17 @@ function dt_publication_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'publication';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
     'social_bookmark_webtools' => array(
       'weight' => '8',
       'label' => 'hidden',
@@ -31,17 +42,6 @@ function dt_publication_ds_field_settings_info() {
           'ow-at' => '',
           'ow-def-at' => FALSE,
         ),
-      ),
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h1',
-        'class' => '',
-        'ft' => array(),
       ),
     ),
     'field_publication_type' => array(
@@ -89,11 +89,6 @@ function dt_publication_ds_field_settings_info() {
         'ft' => array(
           'lb' => 'Identification:',
         ),
-      ),
-    ),
-    'field_core_contact' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_core_date_published' => array(
@@ -217,50 +212,52 @@ function dt_publication_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'central' => array(
+        0 => 'field_core_contact',
+        10 => 'group_publication_body',
+        12 => 'group_publication_file',
+        13 => 'group_publication_related',
+        14 => 'body',
+        15 => 'group_publication_contact',
+        16 => 'field_core_files',
+        17 => 'field_core_departments',
+        18 => 'social_bookmark_webtools',
+      ),
       'left_header' => array(
-        0 => 'group_publication_meta',
+        1 => 'group_publication_meta',
         3 => 'field_publication_type',
-        5 => 'title',
-        8 => 'field_core_legacy_link',
+        4 => 'title',
+        6 => 'field_core_legacy_link',
       ),
       'top' => array(
-        1 => 'field_core_publications',
-        4 => 'field_core_date_published',
-        6 => 'field_publication_authors',
-        7 => 'field_publication_referenceno',
-        9 => 'group_publication_contextual',
-        10 => 'field_core_topics',
-      ),
-      'central' => array(
-        2 => 'field_core_contact',
-        11 => 'group_publication_body',
-        12 => 'group_publication_file',
-        13 => 'body',
-        14 => 'group_publication_related',
-        15 => 'field_core_files',
-        16 => 'field_core_departments',
-        17 => 'group_publication_contact',
+        2 => 'field_core_publications',
+        5 => 'field_core_date_published',
+        7 => 'field_publication_authors',
+        8 => 'group_publication_contextual',
+        9 => 'field_publication_referenceno',
+        11 => 'field_core_topics',
       ),
     ),
     'fields' => array(
+      'field_core_contact' => 'central',
       'group_publication_meta' => 'left_header',
       'field_core_publications' => 'top',
-      'field_core_contact' => 'central',
       'field_publication_type' => 'left_header',
-      'field_core_date_published' => 'top',
       'title' => 'left_header',
-      'field_publication_authors' => 'top',
-      'field_publication_referenceno' => 'top',
+      'field_core_date_published' => 'top',
       'field_core_legacy_link' => 'left_header',
+      'field_publication_authors' => 'top',
       'group_publication_contextual' => 'top',
-      'field_core_topics' => 'top',
+      'field_publication_referenceno' => 'top',
       'group_publication_body' => 'central',
+      'field_core_topics' => 'top',
       'group_publication_file' => 'central',
-      'body' => 'central',
       'group_publication_related' => 'central',
+      'body' => 'central',
+      'group_publication_contact' => 'central',
       'field_core_files' => 'central',
       'field_core_departments' => 'central',
-      'group_publication_contact' => 'central',
+      'social_bookmark_webtools' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
