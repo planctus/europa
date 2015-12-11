@@ -514,7 +514,7 @@ function cwt_core_update_7137() {
  */
 function cwt_core_update_7138() {
   // Saving values for the social media sharing block.
-  $label = '<span class="social-media-links__label">' . t('Share this page: ') . '</span>';
+  $label = '<span class="social-media-links__label">' . t('Share this page:') . '</span>';
   variable_set('dt_social_media_sharing_text', $label);
   variable_set('dt_social_media_sharing_block_type', 'horizontal');
 }
