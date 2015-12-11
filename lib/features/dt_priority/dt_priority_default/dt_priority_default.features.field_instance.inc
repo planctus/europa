@@ -113,6 +113,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -173,6 +174,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -378,6 +380,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -946,6 +949,57 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority-field_core_parent'
+  $field_instances['node-priority-field_core_parent'] = array(
+    'bundle' => 'priority',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 50,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_parent',
+    'label' => 'Parent',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-priority-field_core_persons'
   $field_instances['node-priority-field_core_persons'] = array(
     'bundle' => 'priority',
@@ -1085,6 +1139,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1522,6 +1577,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Name of the Priority');
   t('Next steps');
   t('Objectives');
+  t('Parent');
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');
