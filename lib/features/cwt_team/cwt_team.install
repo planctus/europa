@@ -84,7 +84,7 @@ function cwt_team_update_7108() {
 }
 
 /**
- * Implements hook_update().
+ * NEXTEUROPA-4977 - Team page restyling.
  *
  * Disabling social_network_links and enabling dt_social_networks_links
  * while keeping the same field in biography ct,
