@@ -112,11 +112,11 @@ function cwt_team_update_7109() {
     ->execute();
 
   // CWT core is holding the variables that enables the view mode switch.
-  features_revert(array('cwt_core' => array('strongarm')));
+  features_revert(array('cwt_core' => array('variable')));
   // Revert component of this features.
   features_revert(array(
     'cwt_team' => array(
-      'strongarm',
+      'variable',
       'field_base',
       'field_instance',
       'views',
@@ -170,7 +170,7 @@ function cwt_team_update_7109() {
     $nodes = entity_load('node', $nids);
 
     foreach ($nodes as $node) {
-      // If there's no value ( it's actually a redundant check).
+      // If there's no value (it's actually a redundant check).
       if (empty($node->{$field_name})) {
         // Set the default value.
         $node->{$field_name}[LANGUAGE_NONE][0]['url'] = $def;
