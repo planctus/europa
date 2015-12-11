@@ -84,9 +84,11 @@ function cwt_team_update_7108() {
 }
 
 /**
+ * Implements hook_update().
+ *
  * Disabling social_network_links and enabling dt_social_networks_links
- * while keeping the same field in biography ct.
- * Assigning the right view mode to the college team nodes.
+ * while keeping the same field in biography ct,
+ * Assigning the right view mode to the college team nodes,
  * Set the default value for existing contents for the field_media_enquiries.
  */
 function cwt_team_update_7109() {
