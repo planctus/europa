@@ -678,7 +678,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -744,7 +744,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1009,7 +1009,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -1321,7 +1321,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
