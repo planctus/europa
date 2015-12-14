@@ -1328,11 +1328,10 @@ function cwt_team_views_default_views() {
     'highlights' => 0,
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Address - Last name */
-  $handler->display->display_options['sorts']['field_biography_address_last_name']['id'] = 'field_biography_address_last_name';
-  $handler->display->display_options['sorts']['field_biography_address_last_name']['table'] = 'field_data_field_biography_address';
-  $handler->display->display_options['sorts']['field_biography_address_last_name']['field'] = 'field_biography_address_last_name';
-  $handler->display->display_options['sorts']['field_biography_address_last_name']['relationship'] = 'tnid';
+  /* Sort criterion: Content: Last name (field_biography_last_name) */
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['id'] = 'field_biography_last_name_value';
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['table'] = 'field_data_field_biography_last_name';
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['field'] = 'field_biography_last_name_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -1364,7 +1363,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-  
+
   $export['team_members'] = $view;
 
   $view = new view();

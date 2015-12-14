@@ -1,65 +1,6 @@
 <?php
 
 /**
- * @file
- * Views integration for the Commissioners Web Template project.
- */
-
-/**
- * Implements hook_views_query_alter().
- *
- * Alters the 'Commissioner's Hierarchy' display on the 'Team members' view to
- * make it display the biographies in the 'Team members by hierarchy' display in
- * the correct order. This display is shown in two QuickTab tabs: once ordered
- * by last name alphabetically, and once ordered by a nodequeue which lists the
- * biographies ordered by role. The ordering that is used is determined by the
- * first contextual argument: this can be set to either 'name' or 'role'.
- *
- * This nodequeue contains a list of biographies in a particular order. To make
- * it more manageable this nodequeue only contains the English versions of each
- * biography, rather than all 200+ translations. The view should show all
- * biographies in the users' current language, with a fallback to English if the
- * current translation does not exist.
- *
- * It was not possible to solve this using vanilla Nodequeue and Views.
- * Nodequeue has an option to 'treat translation nodes as a single node' but
- * this only works using Nodequeue's internal listings, not with the Views
- * integration. There is an issue about setting this up in Views (see
- * https://www.drupal.org/node/982382) but unfortunately with the suggested
- * approach the ordering is not respected. Another drawback is that this would
- * cause the node table to be joined with itself twice, which could cause
- * performance and memory issues if the number of nodes grows in the future.
- *
- * The ordering is critical; the sole reason we are using a nodequeue is to
- * expose the ordering of the biographies to editors.
- */
-function cwt_team_views_query_alter(&$view, &$query) {
-  global $language;
-
-  if ($view->name == 'team_members' && $view->current_display == 'block_2') {
-    // Load the "Team members by hierarchy" nodequeue. It only has one subqueue.
-    $nodequeue = nodequeue_load_queue_by_name('team_members_by_hierarchy');
-    $subqueues = nodequeue_load_subqueues_by_queue($nodequeue->qid);
-    $subqueue = reset($subqueues);
-
-    // Compile our list of nodes. We need a list of nodes in the current
-    // language, ordered by the position in the nodequeue. If the node is not
-    // present in the current language the default (English) translation should
-    // be used as a fallback.
-    $nids = array();
-    foreach (nodequeue_load_nodes($subqueue->sqid, FALSE, 0, 0) as $node) {
-      // If a translation exists in the current language then use it, otherwise
-      // fall back to the default (English) translation.
-      $nids[] = ($translations = translation_node_get_translations($node->nid)) && array_key_exists($language->language, $translations) ? $translations[$language->language]->nid : $node->nid;
-    }
-
-    // Add our list of nodes to the query.
-    $query->add_where(0, 'node.nid', $nids, 'IN');
-
-  }
-}
-
-/**
  * Implements hook_views_pre_render().
  *
  * Alter the 'Team Members by Domain' view.

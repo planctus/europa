@@ -20,9 +20,6 @@ function cwt_team_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "picture" && $api == "default_picture_mapping") {
     return array("version" => "2");
   }
-  if ($module == "quicktabs" && $api == "quicktabs") {
-    return array("version" => "1");
-  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -86,7 +83,7 @@ function cwt_team_fe_nodequeue_export_fields() {
     'count' => 0,
   );
 
-  return $nodequeues;
+  return (object) $nodequeues;
 }
 
 /**
