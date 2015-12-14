@@ -628,7 +628,6 @@ function dt_core_preprocess_node(&$variables) {
  */
 function dt_core_file_delete($file) {
   $fid = $file->fid;
-  dd($fid);
   $uri = 'public://css/header-backgrounds/';
   $file = drupal_realpath($uri) . '/header_background_' . $fid . '.css';
   if (file_exists($file)) {
