@@ -68,7 +68,6 @@ function cwt_team_update_7106() {
   features_revert(array('cwt_team' => array('views')));
 }
 
-
 /**
  * NEXTEUROPA-7122: Hierarchy of the team respects the node queue.
  */
