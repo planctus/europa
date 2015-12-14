@@ -1463,7 +1463,11 @@ function dt_announcement_field_default_field_instances() {
   // Exported field_instance: 'node-announcement-field_core_type_content'
   $field_instances['node-announcement-field_core_type_content'] = array(
     'bundle' => 'announcement',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'default',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1496,7 +1500,7 @@ function dt_announcement_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_type_content',
-    'label' => 'Select type of content',
+    'label' => 'Type selection',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1509,7 +1513,7 @@ function dt_announcement_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 29,
+      'weight' => 0,
     ),
   );
 
@@ -1723,10 +1727,10 @@ function dt_announcement_field_default_field_instances() {
   t('Priority policy areas');
   t('Related pages');
   t('Responsible department');
-  t('Select type of content');
   t('Sources');
   t('Title');
   t('Topics');
+  t('Type selection');
 
   return $field_instances;
 }
