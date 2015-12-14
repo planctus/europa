@@ -949,30 +949,31 @@ function _dt_core_get_plurial_content_types($bundle) {
  */
 function dt_core_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
-
-  $variables['items_count'] = '';
-
-  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-    $content_type_forms = _dt_core_get_plurial_content_types($content_type);
-
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
-    }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+  if (isset($view->filter['type'])) {
+    $content_type = array();
+    $content_type_filters = $view->filter['type']->value;
+    foreach ($content_type_filters as $filter) {
+      $content_type = $filter;
     }
 
-    $variables['items_count'] = $items_count;
+    $variables['items_count'] = '';
+
+    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+      // Calculate the number of items displayed in a view listing.
+      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+
+      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+
+      if ($total_rows == 0) {
+        $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      }
+      else {
+        $items_count = $total_rows . ' ' .
+          format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+      }
+
+      $variables['items_count'] = $items_count;
+    }
   }
 }
 
