@@ -40,7 +40,6 @@ projects[picture][version] = "2.9"
 
 projects[conditional_fields][subdir] = "contrib"
 projects[conditional_fields][version] = "3.0-alpha2"
-projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/conditional_fields-required_empty_filled-1561272-93.patch"
 
 projects[retina_images][subdir] = "contrib"
 projects[retina_images][version] = "1.0-beta4"

@@ -810,7 +810,7 @@ function dt_core_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'default' => 'A page in this website',
+        'default' => 'A page (default) in this website',
         'legacy' => 'Teaser linking to external resources',
         'textblock' => 'Teaser with no link at all',
       ),
