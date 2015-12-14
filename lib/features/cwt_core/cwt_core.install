@@ -30,6 +30,8 @@ function cwt_core_install() {
 
   // Adding value to Nexteuropa feedback form settings.
   variable_set('nexteuropa_feedback_form_id', '1040');
+  // Enabling the social media sharing module.
+  module_enable(array('dt_social_media_sharing'));
 }
 
 /**
@@ -494,4 +496,11 @@ function cwt_core_update_7135() {
  */
 function cwt_core_update_7136() {
   features_revert(array('cwt_core' => array('variable')));
+}
+
+/**
+ * HOTFIX - Enabling the dt_social_media_sharing module.
+ */
+function cwt_core_update_7137() {
+  module_enable(array('dt_social_media_sharing'));
 }
