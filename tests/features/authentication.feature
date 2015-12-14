@@ -27,9 +27,10 @@ Scenario Outline: Anonymous user cannot access site administration
   | node/add/article            |
 
 @api
-Scenario Outline: Editors can access certain administration pages
+Scenario Outline: Editors cannot access certain administration pages
   Given I am logged in as a user with the "editor" role
-  Then I visit "<path>"
+  When I visit "<path>"
+  Then I should get an access denied error
 
   Examples:
   | path             |
