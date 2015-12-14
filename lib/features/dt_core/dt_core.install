@@ -793,5 +793,10 @@ function dt_core_update_7154() {
  * NEXTEUROPA-7529: Enabling Corresponding Entity References.
  */
 function dt_core_update_7155() {
-  module_enable(array('cer'));
+  $modules = array(
+    'table_element',
+    'field_object',
+    'cer',
+  );
+  module_enable($modules);
 }
