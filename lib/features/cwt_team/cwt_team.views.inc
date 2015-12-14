@@ -56,29 +56,6 @@ function cwt_team_views_query_alter(&$view, &$query) {
     // Add our list of nodes to the query.
     $query->add_where(0, 'node.nid', $nids, 'IN');
 
-    // The view results are displayed in two different orders: either sorted by
-    // name, or by role. This is set with a contextual argument which is passed
-    // by the QuickTab element that is responsible for showing the view.
-    if (!empty($view->args[0])) {
-      switch ($view->args[0]) {
-        case 'name':
-          $query->add_orderby('field_data_field_biography_last_name', 'field_biography_last_name_value', 'ASC');
-          break;
-
-        case 'role':
-          // Add the sort order to the query. This is an arbitrary order which
-          // is done with 'FIELD()' sorting in SQL. This sorting method is not
-          // supported by the Views query builder API so we add it directly to
-          // the list of order by clauses rather than using
-          // views_plugin_query_default::add_orderby().
-          $node_order = implode(', ', $nids);
-          $query->orderby[] = array(
-            'field' => "FIELD(node.nid, $node_order)",
-            'direction' => '',
-          );
-          break;
-      }
-    }
   }
 }
 
