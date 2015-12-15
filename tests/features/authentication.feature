@@ -27,16 +27,6 @@ Scenario Outline: Anonymous user cannot access site administration
   | node/add/article            |
 
 @api
-Scenario Outline: Editors cannot access certain administration pages
-  Given I am logged in as a user with the "editor" role
-  When I go to "<path>"
-  Then I should get an access denied error
-
-  Examples:
-  | path             |
-  | node/add/article |
-
-@api
 Scenario Outline: Editors cannot access certain pages intended for administrators
   Given I am logged in as a user with the "editor" role
   When I go to "<path>"
@@ -44,10 +34,42 @@ Scenario Outline: Editors cannot access certain pages intended for administrator
 
   Examples:
   | path                        |
+  | node/add/article            |
+  | node/add/page               |
   | admin/config                |
   | admin/dashboard             |
   | admin/structure             |
   | admin/structure/feature-set |
+
+@api
+Scenario Outline: Editors can access certain admin pages
+  Given I am logged in as a user with the "editor" role
+  Then I go to "<path>"
+
+  Examples:
+  | path                                     |
+  | admin/config/system/dt-priority-settings |
+  | node/add/announcement                    |
+  | node/add/banner-quote                    |
+  | node/add/banner-video                    |
+  | node/add/contact                         |
+  | node/add/department                      |
+  | node/add/featured-item                   |
+  | node/add/file                            |
+  | node/add/basic-page                      |
+  | node/add/person                          |
+  | node/add/policy                          |
+  | node/add/policy-area                     |
+  | node/add/policy-implementation           |
+  | node/add/policy-input                    |
+  | node/add/policy-keyfile                  |
+  | node/add/priority                        |
+  | node/add/priority-policy-area            |
+  | node/add/publication                     |
+  | node/add/class                           |
+  | node/add/class-link-group                |
+  | node/add/topic                           |
+  | node/add/toplink                         |
 
 @api
 Scenario Outline: Administrators can access certain administration pages
@@ -61,6 +83,7 @@ Scenario Outline: Administrators can access certain administration pages
   | admin/structure             |
   | admin/structure/feature-set |
   | node/add/article            |
+  | node/add/page               |
 
 @api
 Scenario Outline: Administrators should not be able to access technical pages intended for developers
