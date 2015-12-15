@@ -14,7 +14,7 @@ Feature: Content type configuration
   Scenario Outline: Editors can access certain admin pages
     Given I am logged in as a user with the "editor" role
     When I go to "<path>"
-    Then I should get a "200" HTTP response
+    Then the "h1" element should not contain "Add content"
 
     Examples:
     | path                                     |
