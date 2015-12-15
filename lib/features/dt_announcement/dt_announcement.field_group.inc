@@ -254,10 +254,10 @@ function dt_announcement_field_group_info() {
       1 => 'field_core_department',
       2 => 'field_core_persons',
       3 => 'field_core_topics',
-      4 => 'field_core_pri_policy_areas',
+      4 => 'field_core_policies',
       5 => 'field_core_priorities',
-      6 => 'field_core_policies',
-      7 => 'field_core_pages',
+      6 => 'field_core_pages',
+      7 => 'field_core_pri_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -311,7 +311,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '2',
     'children' => array(
       0 => 'group_announcement_content',
       1 => 'group_announcement_context_info',

@@ -532,21 +532,27 @@ function dt_core_node_presave($node) {
  * Implements hook_workbench_moderation_transition().
  */
 function dt_core_workbench_moderation_transition($node) {
-  if (isset($node->field_core_header_image)) {
-    // Entity wrapper.
-    $entity_wrapper = entity_metadata_wrapper('node', $node);
+  // Entity wrapper.
+  $entity_wrapper = entity_metadata_wrapper('node', $node);
+
+  if (isset($node->field_core_header_image) &&
+      NULL !== $entity_wrapper->field_core_header_image->value()) {
+
+    // We need the file id.
+    $fid = $entity_wrapper->field_core_header_image->value()['fid'];
+    // Load the managed file.
+    $file = file_load($fid);
     // We want to store those css files in a specific path.
     $dir = 'public://css/header-backgrounds/';
     // Build the uri for our css file.
-    $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
+    $uri = $dir . 'header_background_' . $fid . '.css';
     // Get the real path basing on the uri.
     $filepath = drupal_realpath($uri);
-    // Check if we have an image, if we don't we delete an existing file.
-    if (NULL !== $entity_wrapper->field_core_header_image->value()) {
+
+    // If we already a this file no reasons to go further.
+    if (!file_exists($filepath)) {
       // Prepare the filesystem.
       file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
-      // We need the file uri.
-      $file = file_load($entity_wrapper->field_core_header_image->value()['fid']);
       // Get all the breakpoints belonging to "this" theme.
       $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
       // Need to reverse the order of the breakpoint, mobile first.
@@ -595,12 +601,6 @@ function dt_core_workbench_moderation_transition($node) {
       // Save the file.
       file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
     }
-
-    else {
-      if (file_exists($filepath)) {
-        unlink($filepath);
-      }
-    }
   }
 }
 
@@ -612,39 +612,26 @@ function dt_core_preprocess_node(&$variables) {
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
+      $fid = $header_back[0]['fid'];
       // Set a variable available in the tpls.
       $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $node->nid . '_' . $node->vid . '.css';
+      $uri = $dir . 'header_background_' . $fid . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
   }
 }
 
 /**
- * Implements hook_node_delete().
+ * Implements hook_file_delete().
  */
-function dt_core_node_delete($node) {
-  if (isset($node->field_core_header_image) && isset($node->nid)) {
-    $uri = 'public://css/header-backgrounds/';
-    $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
-    foreach (glob($dir) as $file) {
-      unlink($file);
-    }
-  }
-}
-
-/**
- * Implements hook_node_revision_delete().
- */
-function dt_core_node_revision_delete($node) {
-  if (isset($node->field_core_header_image)) {
-    $uri = 'public://css/header-backgrounds/';
-    $file = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '_' . $node->vid . '.css';
-    if (file_exists($file)) {
-      unlink($file);
-    }
+function dt_core_file_delete($file) {
+  $fid = $file->fid;
+  $uri = 'public://css/header-backgrounds/';
+  $file = drupal_realpath($uri) . '/header_background_' . $fid . '.css';
+  if (file_exists($file)) {
+    unlink($file);
   }
 }
 
@@ -949,30 +936,29 @@ function _dt_core_get_plurial_content_types($bundle) {
  */
 function dt_core_preprocess_views_view(&$variables) {
   $view = $variables['view'];
+  if (isset($view->filter['type'])) {
+    $content_type_filters = $view->filter['type']->value;
+    // The first element of the array is the right type of filter.
+    $content_type = reset($content_type_filters);
 
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
+    $variables['items_count'] = '';
 
-  $variables['items_count'] = '';
+    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+      // Calculate the number of items displayed in a view listing.
+      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
 
-    $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+      if ($total_rows == 0) {
+        $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      }
+      else {
+        $items_count = $total_rows . ' ' .
+          format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+      }
 
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      $variables['items_count'] = $items_count;
     }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $variables['items_count'] = $items_count;
   }
 }
 
@@ -997,5 +983,30 @@ function dt_core_ds_fields_info($entity_type) {
 function _dt_core_ds_fields_stick_label($field) {
   if (isset($field['entity']->sticky) && $field['entity']->sticky) {
     return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
+  }
+}
+
+/**
+ * Implements hook_metatag_metatags_view_alter().
+ *
+ * Because of SEO recommendations, description meta tag
+ * should't be more than 155 characters.
+ * + og:description meta tag should have the same text as
+ * description meta tag.
+ * If description metatag does not exist then it will fall back
+ * to og:description with character's count already limited.
+ */
+function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
+  // Metatag: description.
+  if (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = truncate_utf8($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
+  }
+  // Metatag: og:description.
+  if (isset($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) ?
+      $output['description']['#attached']['drupal_add_html_head'][0][0]['#value'] :
+      truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
   }
 }

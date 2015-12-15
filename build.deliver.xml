@@ -132,6 +132,7 @@
     <!-- Disable preprocess css -->
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
     <echo msg="Disable js pre processing." />
+    <phingcall target="enable-development-modules" />
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">
