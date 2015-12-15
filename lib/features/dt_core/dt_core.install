@@ -794,5 +794,7 @@ function dt_core_update_7154() {
  * NEXTEUROPA-7531: Revoke some permissions for editor.
  */
 function dt_core_update_7155() {
-  _dt_roles_permissions_import_import('editor');
+  if (_dt_roles_permissions_import_import('editor', TRUE)) {
+    drupal_set_message(t('Roles have been updated.'));
+  }
 }
