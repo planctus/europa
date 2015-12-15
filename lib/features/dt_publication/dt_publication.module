@@ -27,19 +27,26 @@ function dt_publication_migrate_api() {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_field_display_alter().
  */
-function dt_publication_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id === 'publication_node_form') {
-    $form['field_core_publications']['#states'] = array(
-      'visible' => array(
-        ':input[name*="field_publication_collection"]' => array('value' => '1'),
-      ),
-    );
-    $form['field_core_files']['#states'] = array(
-      'visible' => array(
-        ':input[name*="field_publication_collection"]' => array('value' => '0'),
-      ),
-    );
+function dt_publication_field_display_alter(&$display, $context) {
+  $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
+  if (isset($node_wrapper->field_publication_collection)) {
+    $type = $node_wrapper->field_publication_collection->value();
+    switch ($type) {
+      // Publication.
+      case '0':
+        if ($context['field']['field_name'] == 'field_core_publications') {
+          $display['type'] = 'hidden';
+        }
+        break;
+
+      // Collection.
+      case '1':
+        if ($context['field']['field_name'] == 'field_core_files') {
+          $display['type'] = 'hidden';
+        }
+        break;
+    }
   }
 }

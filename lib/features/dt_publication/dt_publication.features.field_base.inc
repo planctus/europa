@@ -10,7 +10,7 @@
 function dt_publication_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_publication'.
+  // Exported field_base: 'field_core_publication'
   $field_bases['field_core_publication'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -54,7 +54,7 @@ function dt_publication_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_publications'.
+  // Exported field_base: 'field_core_publications'
   $field_bases['field_core_publications'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -98,7 +98,7 @@ function dt_publication_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_publication_authors'.
+  // Exported field_base: 'field_publication_authors'
   $field_bases['field_publication_authors'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -170,7 +170,7 @@ function dt_publication_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_publication_origin'.
+  // Exported field_base: 'field_publication_origin'
   $field_bases['field_publication_origin'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -228,6 +228,10 @@ function dt_publication_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
     'translatable' => 0,
     'type' => 'text',
   );

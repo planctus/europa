@@ -797,3 +797,10 @@ function dt_core_update_7155() {
     drupal_set_message(t('Roles have been updated.'));
   }
 }
+
+/**
+ * NEXTEUROPA-4905: Enabling conditional_fields.
+ */
+function dt_core_update_7156() {
+  module_enable(array('conditional_fields'));
+}
