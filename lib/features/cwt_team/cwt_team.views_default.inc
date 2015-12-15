@@ -1289,6 +1289,81 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['uuid_3']['value'] = 'fea4c060-eb2d-4686-9ccc-64997aad4930';
   $handler->display->display_options['filters']['uuid_3']['group'] = 3;
 
+  /* Display: Commissioners Hierarchy - Name */
+  $handler = $view->new_display('block', 'Commissioners Hierarchy - Name', 'block_3');
+  $handler->display->display_options['display_comment'] = 'This display is altered to filter the results on the contents of the "Team members by hierarchy" nodequeue, and order it by the position in the queue. If the biography is not available in the current language it will use the default language as a fallback. See cwt_team_views_query_alter().';
+  $handler->display->display_options['display_description'] = 'Only difference with this display is the order by name.';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Title (field_biography_role) (translated) */
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['id'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['table'] = 'field_data_field_biography_role';
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['field'] = 'field_biography_role_tid_i18n';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['id'] = 'field_team_membership_target_id';
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['table'] = 'field_data_field_team_membership';
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['field'] = 'field_team_membership_target_id';
+  /* Relationship: Content: Editorial section (field_editorial_section) (translated) */
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['id'] = 'field_editorial_section_tid_i18n';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['table'] = 'field_data_field_editorial_section';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['field'] = 'field_editorial_section_tid_i18n';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['relationship'] = 'field_team_membership_target_id';
+  /* Relationship: Content: Status (field_biography_status) (translated) */
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['id'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['table'] = 'field_data_field_biography_status';
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['field'] = 'field_biography_status_tid_i18n';
+  /* Relationship: Content translation: Source translation */
+  $handler->display->display_options['relationships']['tnid']['id'] = 'tnid';
+  $handler->display->display_options['relationships']['tnid']['table'] = 'node';
+  $handler->display->display_options['relationships']['tnid']['field'] = 'tnid';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'tnid';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'team_members_by_hierarchy' => 'team_members_by_hierarchy',
+    'biographies_by_project_teams' => 0,
+    'highlights' => 0,
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Last name (field_biography_last_name) */
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['id'] = 'field_biography_last_name_value';
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['table'] = 'field_data_field_biography_last_name';
+  $handler->display->display_options['sorts']['field_biography_last_name_value']['field'] = 'field_biography_last_name_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'biography' => 'biography',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
+
   $export['team_members'] = $view;
 
   $view = new view();
