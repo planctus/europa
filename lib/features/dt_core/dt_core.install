@@ -790,8 +790,17 @@ function dt_core_update_7154() {
 }
 
 /**
- * NEXTEUROPA-4905: Enabling conditional_fields.
+ * NEXTEUROPA-7531: Revoke some permissions for editor.
  */
 function dt_core_update_7155() {
-  module_enable(array('nexteuropa_page'));
+  if (_dt_roles_permissions_import_import('editor', TRUE)) {
+    drupal_set_message(t('Roles have been updated.'));
+  }
+}
+
+/**
+ * NEXTEUROPA-4905: Enabling conditional_fields.
+ */
+function dt_core_update_7156() {
+  module_enable(array('conditional_fields'));
 }
