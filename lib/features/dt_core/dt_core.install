@@ -789,7 +789,6 @@ function dt_core_update_7154() {
   module_enable(array('dt_social_media_sharing'));
 }
 
-
 /**
  * NEXTEUROPA-7531: Revoke some permissions for editor.
  */
