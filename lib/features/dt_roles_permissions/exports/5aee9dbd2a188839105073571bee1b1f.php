@@ -6,6 +6,7 @@
 
 $permissions['editor'] = array(
   'access administration menu',
+  'access administration pages',
   'access broken links report',
   'access content overview',
   'access contextual links',
@@ -40,6 +41,7 @@ $permissions['editor'] = array(
   'create publication content',
   'create topic content',
   'create toplink content',
+  'configure priorities listing page',
   'delete any announcement content',
   'delete any audio files',
   'delete any banner_quote content',
