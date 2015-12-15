@@ -35,7 +35,4 @@ Feature: Content type configuration
     | node/add/priority                        |
     | node/add/priority-policy-area            |
     | node/add/publication                     |
-    | node/add/class                           |
-    | node/add/class-link-group                |
     | node/add/topic                           |
-    | node/add/toplink                         |
