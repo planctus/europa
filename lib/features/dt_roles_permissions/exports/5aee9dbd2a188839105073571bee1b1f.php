@@ -175,7 +175,6 @@ $permissions['editor'] = array(
   'edit terms in 5',
   'edit terms in 6',
   'edit terms in 7',
-  'flush caches',
   'moderate content from draft to needs_review',
   'moderate content from needs_review to draft',
   'moderate content from needs_review to published',
