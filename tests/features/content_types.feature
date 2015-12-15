@@ -31,7 +31,6 @@ Feature: Content type configuration
     | node/add/policy-area                     |
     | node/add/policy-implementation           |
     | node/add/policy-input                    |
-    | node/add/policy-keyfile                  |
     | node/add/priority                        |
     | node/add/priority-policy-area            |
     | node/add/publication                     |
