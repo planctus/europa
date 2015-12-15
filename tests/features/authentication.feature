@@ -42,6 +42,12 @@ Scenario Outline: Editors cannot access certain pages intended for administrator
   | admin/structure/feature-set |
 
 @api
+Scenario: Editors should not be able to see the flush cache link
+  Given I am logged in as a user with the "editor" role
+  When I go to "node/add_en"
+  Then I should not see the link "Flush all caches"
+
+@api
 Scenario Outline: Editors can access certain admin pages
   Given I am logged in as a user with the "editor" role
   Then I go to "<path>"
