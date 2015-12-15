@@ -788,3 +788,10 @@ function dt_core_update_7153() {
 function dt_core_update_7154() {
   module_enable(array('dt_social_media_sharing'));
 }
+
+/**
+ * NEXTEUROPA-4905: Enabling conditional_fields.
+ */
+function dt_core_update_7155() {
+  module_enable(array('nexteuropa_page'));
+}
