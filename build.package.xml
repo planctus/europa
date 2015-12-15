@@ -314,4 +314,9 @@
         description="Build a version of the subsite intended to distribute as a release package."
         depends="install-build-dependencies, init-dist, delete-platform, download-platform, unpack-platform, make-subsite, copy-subsite-resources" />
 
+    <target
+        name="build-acceptance"
+        description="Build a version of the subsite intended to distribute as a release package."
+        depends="install-build-dependencies, init-dist, delete-platform, download-platform, unpack-platform, make-subsite, copy-subsite-resources, download-development-modules" />
+
 </project>

@@ -123,6 +123,12 @@
       <option name="password">pass</option>
     </drush>
     <echo msg="Password for user admin is set to pass." />
+    <!-- Also set editor password for easy testing. -->
+    <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+      <param>editor_test</param>
+      <option name="password">editor_test</option>
+    </drush>
+    <echo msg="Password for user admin is set to pass." />
     <!-- Disable cache -->
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact cache 0" />
     <echo msg="Cache has been disabled." />
@@ -132,6 +138,7 @@
     <!-- Disable preprocess css -->
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
     <echo msg="Disable js pre processing." />
+    <phingcall target="enable-development-modules" />
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">

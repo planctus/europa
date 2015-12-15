@@ -118,7 +118,7 @@ function dt_announcement_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'scheduler_settings' => array(
           'weight' => '1',
@@ -127,7 +127,7 @@ function dt_announcement_strongarm() {
           'weight' => '-2',
         ),
         'metatags' => array(
-          'weight' => '2',
+          'weight' => '4',
         ),
       ),
       'display' => array(),
