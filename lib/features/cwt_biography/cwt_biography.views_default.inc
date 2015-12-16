@@ -1558,12 +1558,9 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_biography_first_name' => 'field_biography_first_name',
-    'field_biography_last_name' => 'field_biography_last_name',
-  );
   $handler->display->display_options['row_options']['separator'] = ' ';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -1633,13 +1630,20 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Address - Full name */
+  $handler->display->display_options['fields']['field_biography_address_name_line']['id'] = 'field_biography_address_name_line';
+  $handler->display->display_options['fields']['field_biography_address_name_line']['table'] = 'field_data_field_biography_address';
+  $handler->display->display_options['fields']['field_biography_address_name_line']['field'] = 'field_biography_address_name_line';
+  $handler->display->display_options['fields']['field_biography_address_name_line']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_name_line']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_address_name_line']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact [field_biography_address_name_line]';
   $handler->display->display_options['fields']['title_1']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_wrapper_type'] = '0';
@@ -1652,36 +1656,48 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_role']['label'] = '';
   $handler->display->display_options['fields']['field_biography_role']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_role']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Address - Full name */
-  $handler->display->display_options['fields']['field_biography_address_name_line']['id'] = 'field_biography_address_name_line';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['table'] = 'field_data_field_biography_address';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['field'] = 'field_biography_address_name_line';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_address_name_line']['element_label_colon'] = FALSE;
   /* Field: Content: E-mail */
   $handler->display->display_options['fields']['field_biography_email']['id'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['table'] = 'field_data_field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['field'] = 'field_biography_email';
-  $handler->display->display_options['fields']['field_biography_email']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_email']['label'] = 'Email';
+  $handler->display->display_options['fields']['field_biography_email']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_email']['element_class'] = 'field__items';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Phone number */
   $handler->display->display_options['fields']['field_biography_phone']['id'] = 'field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['table'] = 'field_data_field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['field'] = 'field_biography_phone';
   $handler->display->display_options['fields']['field_biography_phone']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_phone']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_phone']['element_class'] = 'field__items';
+  $handler->display->display_options['fields']['field_biography_phone']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_biography_phone']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_phone']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_phone']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_biography_phone']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_phone']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Company */
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['id'] = 'field_biography_address_organisation_name';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['table'] = 'field_data_field_biography_address';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['field'] = 'field_biography_address_organisation_name';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['id'] = 'field_biography_address_thoroughfare';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['table'] = 'field_data_field_biography_address';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['field'] = 'field_biography_address_thoroughfare';
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_thoroughfare']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_thoroughfare']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Postal code */
   $handler->display->display_options['fields']['field_biography_address_postal_code']['id'] = 'field_biography_address_postal_code';
   $handler->display->display_options['fields']['field_biography_address_postal_code']['table'] = 'field_data_field_biography_address';
@@ -1689,22 +1705,46 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_postal_code']['label'] = '';
   $handler->display->display_options['fields']['field_biography_address_postal_code']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_postal_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_postal_code']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Locality (i.e. City) */
   $handler->display->display_options['fields']['field_biography_address_locality']['id'] = 'field_biography_address_locality';
   $handler->display->display_options['fields']['field_biography_address_locality']['table'] = 'field_data_field_biography_address';
   $handler->display->display_options['fields']['field_biography_address_locality']['field'] = 'field_biography_address_locality';
   $handler->display->display_options['fields']['field_biography_address_locality']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_locality']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_locality']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_locality']['alter']['text'] = '<span>[field_biography_address_postal_code]</span>
-<span>[field_biography_address_locality]</span>';
+  <span>[field_biography_address_locality]</span>';
   $handler->display->display_options['fields']['field_biography_address_locality']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_locality']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Country */
   $handler->display->display_options['fields']['field_biography_address_country']['id'] = 'field_biography_address_country';
   $handler->display->display_options['fields']['field_biography_address_country']['table'] = 'field_data_field_biography_address';
   $handler->display->display_options['fields']['field_biography_address_country']['field'] = 'field_biography_address_country';
   $handler->display->display_options['fields']['field_biography_address_country']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_address_country']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_country']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_country']['display_name'] = 1;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Address';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<p>[field_biography_address_organisation_name]</p>
+  <p>[field_biography_address_thoroughfare]</p>
+  <p>
+  [field_biography_address_postal_code]
+  [field_biography_address_locality]
+  </p>
+  [field_biography_address_country]';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'field__items';
+  $handler->display->display_options['fields']['nothing']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['nothing']['element_label_class'] = 'field__label';
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'attachment_biography_press_contact');
