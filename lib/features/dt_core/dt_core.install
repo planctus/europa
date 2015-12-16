@@ -804,3 +804,10 @@ function dt_core_update_7155() {
 function dt_core_update_7156() {
   module_enable(array('conditional_fields'));
 }
+
+/**
+ * NEXTEUROPA-7486: Grant 'configure priorities listing page' for site_manager.
+ */
+function dt_core_update_7157() {
+  _dt_roles_permissions_import_import('all');
+}
