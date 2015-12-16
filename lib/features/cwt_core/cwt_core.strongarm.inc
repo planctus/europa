@@ -357,7 +357,7 @@ function cwt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_switch_view_mode';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['ds_extras_switch_view_mode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -450,6 +450,9 @@ function cwt_core_strongarm() {
       ),
       'diff_standard' => array(
         'custom_settings' => FALSE,
+      ),
+      'team_cabinet_member' => array(
+        'custom_settings' => TRUE,
       ),
       'print' => array(
         'custom_settings' => FALSE,
@@ -1230,6 +1233,20 @@ function cwt_core_strongarm() {
     'aggregated_item_types' => 0,
   );
   $export['workbench_access_taxonomy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_social_media_sharing_block_type';
+  $strongarm->value = 'horizontal';
+  $export['dt_social_media_sharing_block_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_social_media_sharing_text';
+  $strongarm->value = '<span class="social-media-links__label">Share this page:</span>';
+  $export['dt_social_media_sharing_text'] = $strongarm;
 
   return $export;
 }

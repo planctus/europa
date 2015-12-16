@@ -1077,7 +1077,7 @@ function cwt_biography_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'social_network_links',
+    'module' => 'dt_social_network_links',
     'settings' => array(
       'entity_translation_sync' => FALSE,
     ),
