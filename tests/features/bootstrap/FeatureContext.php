@@ -312,7 +312,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *   If it does not match.
    */
   public function assertMetaRegion($metatag, $value) {
-    $element = $this->getSession()->getPage()->find('css', "head > meta[name=$description]");
+    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if ($value !== $element->getAttribute('content')) {
       throw new \Exception(sprintf('The ' . $metatag . ' metatag does not contain %s', $value));

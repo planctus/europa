@@ -4,7 +4,6 @@ Feature: Content type configuration
   I should be able to access certain configuration pages
 
   @api
-  @test1
   Scenario: Description meta tag
     Given "Page" content:
     | title         | field_core_description | field_core_introduction |
