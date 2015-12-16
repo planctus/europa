@@ -790,21 +790,9 @@ function dt_core_update_7154() {
 }
 
 /**
- * NEXTEUROPA-7529: Enabling Corresponding Entity References.
- */
-function dt_core_update_7155() {
-  $modules = array(
-    'table_element',
-    'field_object',
-    'cer',
-  );
-  module_enable($modules);
-}
-
-/**
  * NEXTEUROPA-7531: Revoke some permissions for editor.
  */
-function dt_core_update_7156() {
+function dt_core_update_7155() {
   if (_dt_roles_permissions_import_import('editor', TRUE)) {
     drupal_set_message(t('Roles have been updated.'));
   }
@@ -813,6 +801,18 @@ function dt_core_update_7156() {
 /**
  * NEXTEUROPA-4905: Enabling conditional_fields.
  */
-function dt_core_update_7157() {
+function dt_core_update_7156() {
   module_enable(array('conditional_fields'));
+}
+
+/**
+ * NEXTEUROPA-7529: Enabling Corresponding Entity References.
+ */
+function dt_core_update_7157() {
+  $modules = array(
+    'table_element',
+    'field_object',
+    'cer',
+  );
+  module_enable($modules);
 }
