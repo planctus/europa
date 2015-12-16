@@ -11,7 +11,7 @@ function dt_core_metatag_export_default() {
   $config = array();
 
   // Exported Metatag config instance: global.
-  $config['global'] = (object) array(
+  $config['global'] = (array) array(
     'instance' => 'global',
     'config' => array(
       'content-language' => array(
@@ -21,7 +21,7 @@ function dt_core_metatag_export_default() {
   );
 
   // Exported Metatag config instance: node.
-  $config['node'] = (object) array(
+  $config['node'] = (array) array(
     'instance' => 'node',
     'config' => array(
       'title' => array(
@@ -34,7 +34,7 @@ function dt_core_metatag_export_default() {
         'value' => '[node:title]',
       ),
       'og:description' => array(
-        'value' => '[node:summary]',
+        'value' => '[node:field-core-description]',
       ),
       'og:updated_time' => array(
         'value' => '[node:changed:custom:c]',
