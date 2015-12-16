@@ -20,6 +20,9 @@ function dt_core_pol_install() {
   variable_set('theme_default', 'europa');
   // Disabling unnecessary themes.
   theme_disable(array('ec_resp', 'seven'));
+
+  // Enabling EC official languages.
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
 }
 
 /**
@@ -57,4 +60,12 @@ function dt_core_pol_update_7101() {
  */
 function dt_core_pol_update_7102() {
   module_enable(array('dt_page'));
+}
+
+/**
+ * NEXTEUROPA-7687: Enabling EC official languages.
+ */
+function dt_core_pol_update_7105() {
+  // Enable languages.
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
 }

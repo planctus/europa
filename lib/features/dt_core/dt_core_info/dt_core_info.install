@@ -38,7 +38,7 @@ function dt_core_info_install() {
   // Disabling unnecessary themes.
   theme_disable(array('europa', 'ec_resp', 'seven'));
   // Enable languages.
-  _dt_core_enable_lanugages(_dt_core_ec_official_languages());
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
 }
 
 /**
@@ -54,7 +54,7 @@ function dt_core_info_uninstall() {
  * Enable languages.
  */
 function dt_core_info_update_7101() {
-  _dt_core_enable_lanugages(_dt_core_ec_official_languages());
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
 }
 
 /**
