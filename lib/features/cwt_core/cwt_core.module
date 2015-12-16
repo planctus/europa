@@ -613,7 +613,7 @@ function cwt_core_pathauto_alias_alter(&$alias, array &$context) {
 }
 
 /**
- * Implements hook_entity_presave().
+ * Implements hook_entity_update().
  */
 function cwt_core_entity_update($entity, $type) {
   // When saving a biography, regenerate alias for referenced team.

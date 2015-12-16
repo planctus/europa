@@ -81,3 +81,103 @@ function cwt_team_update_7107() {
 function cwt_team_update_7108() {
   features_revert(array('cwt_team'));
 }
+
+/**
+ * NEXTEUROPA-4977 - Team page restyling.
+ *
+ * Disabling social_network_links and enabling dt_social_networks_links
+ * while keeping the same field in biography ct,
+ * Assigning the right view mode to the college team nodes,
+ * Set the default value for existing contents for the field_media_enquiries.
+ */
+function cwt_team_update_7109() {
+  // Disable the social_network_links module.
+  db_update('system')
+    ->condition('name', 'social_network_links')
+    ->fields(array('status' => 0))
+    ->execute();
+
+  // Alter the field config to detach social_network_links.
+  db_update('field_config')
+    ->condition('field_name', 'field_social_networks')
+    ->fields(array('module' => 'dt_social_network_links'))
+    ->execute();
+
+  // Enable the dt_social_network_links feature.
+  module_enable(array('dt_social_network_links'));
+  // Uninstall social_network_links.
+  drupal_uninstall_modules(array('social_network_links'));
+  // Clear the system table cache.
+  db_delete('cache_bootstrap')
+    ->condition('cid', 'system_list')
+    ->execute();
+
+  // CWT core is holding the variables that enables the view mode switch.
+  features_revert(array('cwt_core' => array('variable')));
+  // Revert component of this features.
+  features_revert(array(
+    'cwt_team' => array(
+      'variable',
+      'field_base',
+      'field_instance',
+      'views',
+      'picture_mapping',
+    ),
+  ));
+  // Revert cwt_biography.
+  features_revert_module('cwt_biography');
+
+  // Team nodes flagged with this term should use a different view mode.
+  $college = taxonomy_get_term_by_name('College', 'team_subtypes');
+  $college_tid = array_shift($college)->tid;
+  // Find the nodes having this term.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'team')
+    ->fieldCondition('field_team_subtype', 'tid', $college_tid, '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      if (isset($node->ds_switch)) {
+        // This is the display suite override.
+        $node->ds_switch = 'college';
+        // Maybe this is not needed, but since we are dealing with the home page
+        // better not to risk to unpublish the contents.
+        if ($node->workbench_moderation['current']->state == 'published') {
+          $node->workbench_moderation['current']->published = 1;
+        }
+        node_save($node);
+      }
+    }
+  }
+
+  // Set the default value for existing contents.
+  $field_name = 'field_team_media_enquiries';
+  // Find the default value.
+  $field = field_info_instance('node', $field_name, 'team');
+  $def = $field['default_value'][0]['url'];
+  // Find all the existing nodes of type team.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'team', '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      // If there's no value (it's actually a redundant check).
+      if (empty($node->{$field_name})) {
+        // Set the default value.
+        $node->{$field_name}[LANGUAGE_NONE][0]['url'] = $def;
+        field_attach_update('node', $node);
+        entity_get_controller('node')->resetCache(array($node->nid));
+      }
+    }
+  }
+}
