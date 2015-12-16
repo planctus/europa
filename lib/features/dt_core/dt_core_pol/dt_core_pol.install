@@ -20,6 +20,9 @@ function dt_core_pol_install() {
   variable_set('theme_default', 'europa');
   // Disabling unnecessary themes.
   theme_disable(array('ec_resp', 'seven'));
+
+  // Enabling EC official languages.
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
 }
 
 /**
