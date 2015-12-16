@@ -20,6 +20,9 @@ projects[bootstrap_fieldgroup][version] = "1.2"
 projects[breakpoints][subdir] = "contrib"
 projects[breakpoints][version] = "1.3"
 
+projects[conditional_fields][subdir] = "contrib"
+projects[conditional_fields][version] = "3.0-alpha2"
+
 projects[date_popup_authored][subdir] = "contrib"
 projects[date_popup_authored][version] = "1.2"
 
@@ -37,6 +40,9 @@ projects[nodequeue][version] = "2.0-beta1"
 
 projects[picture][subdir] = "contrib"
 projects[picture][version] = "2.9"
+
+projects[conditional_fields][subdir] = "contrib"
+projects[conditional_fields][version] = "3.0-alpha2"
 
 projects[retina_images][subdir] = "contrib"
 projects[retina_images][version] = "1.0-beta4"

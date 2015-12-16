@@ -17,6 +17,7 @@ $permissions['site manager'] = array(
   'bypass node access',
   'bypass workbench moderation',
   'configure helper content types',
+  'configure priorities listing page',
   'create basic_page content',
   'create info_homepage content',
   'create translation jobs',

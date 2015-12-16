@@ -32,6 +32,13 @@ function dt_roles_permissions_import_menu() {
  *   True/False if we should force the import.
  */
 function _dt_roles_permissions_import_import($role, $force = FALSE) {
+  // If the role is a string, we can check here if we can match it.
+  if (!in_array($role, array('all', 'clear')) && !is_object($role)) {
+    if ($role_id = array_search($role, user_roles())) {
+      // If we have a matching role, we can assign it.
+      $role = user_role_load($role_id);
+    }
+  }
   // List of available permissions.
   $modules_permissions = array_keys(user_permission_get_modules());
   // Initialize our permissions array.

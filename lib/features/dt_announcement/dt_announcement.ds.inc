@@ -479,7 +479,6 @@ function dt_announcement_ds_layout_settings_info() {
       'body' => 'central',
       'field_core_department' => 'top',
       'group_announcement_main' => 'central',
-      'body' => 'central',
       'field_core_persons' => 'top',
       'group_announcement_content' => 'central',
       'field_announcement_info' => 'central',

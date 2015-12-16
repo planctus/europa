@@ -5,7 +5,7 @@ Feature: User authentication
 
 Scenario: Anonymous user can see the user login page
   Given I am not logged in
-  When I visit "user"
+  When I go to "user"
   Then I should see the text "Log in"
   And I should see the text "Request new password"
   And I should see the text "Username"
@@ -27,31 +27,38 @@ Scenario Outline: Anonymous user cannot access site administration
   | node/add/article            |
 
 @api
-Scenario Outline: Editors can access certain administration pages
-  Given I am logged in as a user with the "editor" role
-  Then I visit "<path>"
-
-  Examples:
-  | path             |
-  | node/add/article |
-
-@api
-Scenario Outline: Editors cannot access pages intended for administrators
+Scenario Outline: Editors cannot access certain pages intended for administrators
   Given I am logged in as a user with the "editor" role
   When I go to "<path>"
   Then I should get an access denied error
 
   Examples:
   | path                        |
-  | admin/config                |
-  | admin/dashboard             |
-  | admin/structure             |
+  | node/add/article            |
+  | node/add/page               |
   | admin/structure/feature-set |
+
+@api
+Scenario: Editors should not be able to see the flush cache link
+  Given I am logged in as a user with the "editor" role
+  When I go to "node/add_en"
+  Then I should not see the link "Flush all caches"
+
+@api
+Scenario Outline: Editors can access certain admin pages
+  Given I am logged in as a user with the "editor" role
+  When I go to "<path>"
+  Then I should get a "200" HTTP response
+
+  Examples:
+  | path                                     |
+  | admin/config                             |
 
 @api
 Scenario Outline: Administrators can access certain administration pages
   Given I am logged in as a user with the "administrator" role
-  Then I visit "<path>"
+  When I go to "<path>"
+  Then I should get a "200" HTTP response
 
   Examples:
   | path                        |
@@ -60,6 +67,7 @@ Scenario Outline: Administrators can access certain administration pages
   | admin/structure             |
   | admin/structure/feature-set |
   | node/add/article            |
+  | node/add/page               |
 
 @api
 Scenario Outline: Administrators should not be able to access technical pages intended for developers
