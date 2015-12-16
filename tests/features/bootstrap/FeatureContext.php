@@ -298,7 +298,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   public function assertLanguageMetaRegion($value) {
     $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
 
-    if ($value !== $element->getAttribute('content')) {
+    if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new \Exception(sprintf('The content-language metatag does not contain %s', $value));
     }
   }
