@@ -105,7 +105,7 @@ function dt_core_pol_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'commission and its priorities';
+  $strongarm->value = 'Commission and its priorities';
   $export['site_slogan'] = $strongarm;
 
   return $export;
