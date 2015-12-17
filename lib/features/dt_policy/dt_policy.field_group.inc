@@ -209,6 +209,7 @@ function dt_policy_field_group_info() {
       1 => 'field_core_description',
       2 => 'field_core_introduction',
       3 => 'field_core_legacy_link',
+      4 => 'field_core_parent',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -261,7 +262,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_policy_detail_body',
       1 => 'field_policy_detail_file',
@@ -319,7 +320,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -403,7 +404,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Key files',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_policy_keyfiles',
     ),
@@ -455,7 +456,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Next steps',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_policy_next_steps',
     ),

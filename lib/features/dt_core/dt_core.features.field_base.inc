@@ -629,6 +629,7 @@ function dt_core_field_default_field_bases() {
           'class' => 'class',
           'department' => 'department',
           'policy' => 'policy',
+          'priority_policy_area' => 'priority_policy_area',
           'policy_area' => 'policy_area',
           'priority' => 'priority',
           'publication' => 'publication',

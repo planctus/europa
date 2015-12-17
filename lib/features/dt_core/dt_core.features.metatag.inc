@@ -20,5 +20,33 @@ function dt_core_metatag_export_default() {
     ),
   );
 
+  // Exported Metatag config instance: node.
+  $config['node'] = (array) array(
+    'instance' => 'node',
+    'config' => array(
+      'title' => array(
+        'value' => '[node:title] | [site:name]',
+      ),
+      'description' => array(
+        'value' => '[node:field-core-description]',
+      ),
+      'og:title' => array(
+        'value' => '[node:title]',
+      ),
+      'og:description' => array(
+        'value' => '[node:field-core-description]',
+      ),
+      'og:updated_time' => array(
+        'value' => '[node:changed:custom:c]',
+      ),
+      'article:published_time' => array(
+        'value' => '[node:created:custom:c]',
+      ),
+      'article:modified_time' => array(
+        'value' => '[node:changed:custom:c]',
+      ),
+    ),
+  );
+
   return $config;
 }
