@@ -201,7 +201,7 @@ function dt_priority_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_priority_pattern';
-  $strongarm->value = '[node:field-core-parent:url:path]/[node:source:title]';
+  $strongarm->value = 'priority/[node:source:title]';
   $export['pathauto_node_priority_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
