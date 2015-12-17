@@ -678,7 +678,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -744,7 +744,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -959,6 +959,57 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 57,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_parent'
+  $field_instances['node-priority_policy_area-field_core_parent'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 50,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_parent',
+    'label' => 'Parent',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 7,
     ),
   );
 
@@ -1270,7 +1321,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1544,6 +1595,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Name of the priority policy area');
   t('Next steps');
   t('Objectives');
+  t('Parent');
   t('Policy areas');
   t('Policy introduction');
   t('Related commissioners');

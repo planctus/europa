@@ -5,6 +5,41 @@
  */
 
 /**
+ * Implements hook_default_cer().
+ */
+function dt_pri_policy_area_default_cer() {
+  $items = array();
+  $items['node:priority_policy_area:field_core_child_policies*node:basic_page:field_core_parent'] = entity_import('cer', '{
+    "identifier" : "node:priority_policy_area:field_core_child_policies*node:basic_page:field_core_parent",
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parent" } ] },
+    "rdf_mapping" : []
+  }');
+  $items['node:priority_policy_area:field_core_child_policies*node:policy:field_core_parent'] = entity_import('cer', '{
+    "identifier" : "node:priority_policy_area:field_core_child_policies*node:policy:field_core_parent",
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:policy:field_core_parent" } ] },
+    "rdf_mapping" : []
+  }');
+  $items['node:priority_policy_area:field_core_child_policies*node:priority_policy_area:field_core_parent'] = entity_import('cer', '{
+    "identifier" : "node:priority_policy_area:field_core_child_policies*node:priority_policy_area:field_core_parent",
+    "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
+    "cer_enabled" : { "und" : [ { "value" : "1" } ] },
+    "cer_weight" : { "und" : [ { "value" : "0" } ] },
+    "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:priority_policy_area:field_core_parent" } ] },
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_ctools_plugin_api().
  */
 function dt_pri_policy_area_ctools_plugin_api($module = NULL, $api = NULL) {
