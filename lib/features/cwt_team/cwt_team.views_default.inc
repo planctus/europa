@@ -1030,6 +1030,9 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
+  <div class="meta">
+ <span class="meta__item meta__item--type">[field_gender]</span>
+ </div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>
 </div>
