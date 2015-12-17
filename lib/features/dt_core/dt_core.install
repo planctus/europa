@@ -806,9 +806,16 @@ function dt_core_update_7156() {
 }
 
 /**
- * NEXTEUROPA-7529: Enabling Corresponding Entity References.
+ * NEXTEUROPA-7486: Grant 'configure priorities listing page' for site_manager.
  */
 function dt_core_update_7157() {
+  _dt_roles_permissions_import_import('all');
+}
+
+/**
+ * NEXTEUROPA-7529: Enabling Corresponding Entity References.
+ */
+function dt_core_update_7158() {
   $modules = array(
     'table_element',
     'field_object',

@@ -119,6 +119,7 @@ features[image][] = teaser_image_breakpoints_theme_europa_wide_1x
 features[image][] = teaser_image_breakpoints_theme_europa_wide_2x
 features[image][] = teaser_image_module_picture_empty_srcset_1x
 features[metatag][] = global
+features[metatag][] = node
 features[picture_mapping][] = header_image
 features[picture_mapping][] = teaser_image
 features[taxonomy][] = top_tasks

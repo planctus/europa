@@ -227,7 +227,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '16',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -285,7 +285,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_featured_item',
       1 => 'group_page_latest_sidebar',
@@ -316,7 +316,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = 'group_page_latest_main';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '3',
+    'weight' => '14',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
@@ -345,7 +345,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = 'group_page_latest_main';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '2',
+    'weight' => '12',
     'children' => array(
       0 => 'related_announcements',
     ),
@@ -434,7 +434,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -492,7 +492,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '10',
+    'weight' => '18',
     'children' => array(
       0 => 'field_core_links',
     ),
