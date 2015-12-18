@@ -66,5 +66,5 @@ function cwt_news_wysiwyg_default_profiles() {
     'rdf_mapping' => array(),
   );
 
-  return $profiles;
+  return (object) $profiles;
 }

@@ -12,11 +12,56 @@ function cwt_blogs_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|commisioner_blog_post|default';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'commisioner_blog_post';
+  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->settings = array(
+    'content_type_label' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'social_media' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'comments' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_ec_date_j_f_y',
+    ),
+    'editorial_section_name' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|commisioner_blog_post|default'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|commisioner_blog_post|full';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'commisioner_blog_post';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'ds_subscription_ui' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'content_type_label' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -61,7 +106,7 @@ function cwt_blogs_ds_field_settings_info() {
       ),
     ),
     'comments' => array(
-      'weight' => '8',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -282,6 +327,30 @@ function cwt_blogs_ds_field_settings_info() {
 }
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function cwt_blogs_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'ds_subscription_ui';
+  $ds_field->label = 'Subscription UI';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'subscriptions_ui|0',
+    'block_render' => '1',
+  );
+  $export['ds_subscription_ui'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function cwt_blogs_ds_layout_settings_info() {
@@ -298,36 +367,45 @@ function cwt_blogs_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_blog_meta',
+        2 => 'content_type_label',
         3 => 'title',
-        4 => 'content_type_label',
         5 => 'editorial_section_name',
         6 => 'post_date',
       ),
       'central' => array(
         1 => 'field_shared_tags',
-        2 => 'field_shared_teaser',
-        7 => 'body',
-        8 => 'group_blog_bottom_section',
-        9 => 'social_media',
-        10 => 'subscriptions_ui',
-        11 => 'comments',
+        4 => 'ds_subscription_ui',
+        7 => 'field_shared_teaser',
+        8 => 'body',
+        9 => 'group_blog_bottom_section',
+        10 => 'social_media',
+        11 => 'group_comments_section',
+        12 => 'comments',
       ),
     ),
     'fields' => array(
       'group_blog_meta' => 'left_header',
       'field_shared_tags' => 'central',
-      'field_shared_teaser' => 'central',
-      'title' => 'left_header',
       'content_type_label' => 'left_header',
+      'title' => 'left_header',
+      'ds_subscription_ui' => 'central',
       'editorial_section_name' => 'left_header',
       'post_date' => 'left_header',
+      'field_shared_teaser' => 'central',
       'body' => 'central',
       'group_blog_bottom_section' => 'central',
       'social_media' => 'central',
-      'subscriptions_ui' => 'central',
+      'group_comments_section' => 'central',
       'comments' => 'central',
     ),
-    'classes' => array(),
+    'classes' => array(
+      'layout_class' => array(
+        'clear-page-content-bottom-spacing' => 'clear-page-content-bottom-spacing',
+      ),
+      'central' => array(
+        'clear-bottom-spacing' => 'clear-bottom-spacing',
+      ),
+    ),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',

@@ -19,7 +19,7 @@
       </div>
     </nav>
     <?php if ($left_header != ""): ?>
-    <div class="container-fluid">
+    <div class="container-fluid page-header__hero-title">
       <div class="row padding-reset">
         <<?php print $left_header_wrapper; ?> class="col-lg-9 <?php print $left_header_classes; ?>">
           <?php print $left_header; ?>
@@ -35,7 +35,7 @@
     <?php endif; ?>
   </div>
   <?php if(!empty($bottom_header)): ?>
-    <div class="page-bottom-header">
+    <div class="page-bottom-header <?php if (isset($header_bottom_modifier)) {print $header_bottom_modifier;} ?>">
       <<?php print $bottom_header_wrapper; ?> class="<?php print $bottom_header_classes; ?>">
         <?php print $bottom_header; ?>
       </<?php print $bottom_header_wrapper; ?>>

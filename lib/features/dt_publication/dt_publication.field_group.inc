@@ -79,7 +79,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Body',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
     ),
@@ -136,15 +136,15 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_publication_contact',
+      0 => 'field_core_contact',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group paragraph',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
@@ -202,11 +202,13 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_topics',
       1 => 'field_publication_authors',
-      2 => 'field_publication_published_on',
+      2 => 'field_publication_referenceno',
+      3 => 'field_core_date_published',
+      4 => 'field_core_publications',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -229,7 +231,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Files',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_core_files',
     ),
@@ -337,7 +339,7 @@ function dt_publication_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related information',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_departments',
     ),
@@ -345,7 +347,7 @@ function dt_publication_field_group_info() {
     'format_settings' => array(
       'label' => 'Related information',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'classes' => 'section__group paragraph',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',

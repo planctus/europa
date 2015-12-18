@@ -25,8 +25,8 @@ function theme_site_switcher_tabs($variables) {
 
   $output = "<span class='site-switcher $modifier'>";
   $output .= "<ul class='site-switcher__list'>";
-  $output .= "<li class='site-switcher__option is-selected'><a href='$political_url'>" . t("Political priorities") . "</a></li>";
-  $output .= "<li class='site-switcher__option'><a href='$info_url'>" . t("Information and services") . "</a></li>";
+  $output .= "<li class='site-switcher__option is-selected'><a href='$political_url'>" . t("Commission and its priorities") . "</a></li>";
+  $output .= "<li class='site-switcher__option'><a href='$info_url'>" . t("Policies, information and services") . "</a></li>";
   $output .= "</ul>";
   $output .= "</span>";
 

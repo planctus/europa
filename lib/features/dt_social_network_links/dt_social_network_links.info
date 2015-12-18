@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 php = 5.2.4
 version = 7.x-1.0
 project = dt_social_network_links
-dependencies[] = dt_core
 dependencies[] = features
 dependencies[] = image
 dependencies[] = media

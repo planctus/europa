@@ -200,6 +200,13 @@ function dt_priority_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_priority_pattern';
+  $strongarm->value = 'priorities/[node:source:title]';
+  $export['pathauto_node_priority_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'weight_default_priority';
   $strongarm->value = '0';
   $export['weight_default_priority'] = $strongarm;

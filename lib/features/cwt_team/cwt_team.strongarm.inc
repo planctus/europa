@@ -160,7 +160,7 @@ function cwt_team_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -189,6 +189,12 @@ function cwt_team_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'team_member' => array(
+        'custom_settings' => FALSE,
+      ),
+      'college' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -208,9 +214,25 @@ function cwt_team_strongarm() {
             'weight' => '25',
             'visible' => FALSE,
           ),
+          'full' => array(
+            'weight' => '35',
+            'visible' => FALSE,
+          ),
+          'college' => array(
+            'weight' => '25',
+            'visible' => FALSE,
+          ),
         ),
         'subscriptions_ui' => array(
           'default' => array(
+            'weight' => '21',
+            'visible' => FALSE,
+          ),
+          'full' => array(
+            'weight' => '30',
+            'visible' => FALSE,
+          ),
+          'college' => array(
             'weight' => '21',
             'visible' => FALSE,
           ),

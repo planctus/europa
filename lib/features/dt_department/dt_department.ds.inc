@@ -17,7 +17,7 @@ function dt_department_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'department';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'related_announcements' => array(
+    'latest_announcements_block' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
@@ -248,7 +248,7 @@ function dt_department_ds_layout_settings_info() {
         6 => 'field_core_legacy_links',
       ),
       'central' => array(
-        1 => 'related_announcements',
+        1 => 'latest_announcements_block',
         7 => 'field_core_links',
         9 => 'group_department_latest',
         10 => 'group_department_responsibilit',
@@ -276,7 +276,7 @@ function dt_department_ds_layout_settings_info() {
     ),
     'fields' => array(
       'group_department_meta' => 'left_header',
-      'related_announcements' => 'central',
+      'latest_announcements_block' => 'central',
       'field_core_ecorganisation' => 'left_header',
       'title' => 'left_header',
       'field_core_abbreviation' => 'left_header',

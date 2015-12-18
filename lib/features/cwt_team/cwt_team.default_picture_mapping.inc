@@ -25,7 +25,8 @@ function cwt_team_default_picture_mapping() {
     ),
     'custom.user.min_width_960px' => array(
       '1x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'team_image_480px',
       ),
     ),
     'custom.user.min_width_480px' => array(

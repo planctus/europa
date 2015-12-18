@@ -529,112 +529,77 @@ function dt_core_node_presave($node) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
- *
- * This has been preferred to a hook_presave() implementation since
- * it will provide the nid which is used to generate the filenames for
- * the header background css.
+ * Implements hook_workbench_moderation_transition().
  */
-function dt_core_form_node_form_alter(&$form, &$form_state) {
-  // Add a callback to the node form submit.
-  $form['actions']['submit']['#submit'][] = '_dt_core_node_submit_callback';
-}
-
-/**
- * Additional submit handler for the node form.
- */
-function _dt_core_node_submit_callback($form, $form_state) {
-  // If we have the core_header_image field, handle it.
-  $node = $form_state['node'];
-  if (isset($node->field_core_header_image)) {
-    _dt_core_handle_header_background($node);
-  }
-}
-
-/**
- * Handle the header background image in a workbench moderated env.
- */
-function _dt_core_handle_header_background($node) {
+function dt_core_workbench_moderation_transition($node) {
   // Entity wrapper.
   $entity_wrapper = entity_metadata_wrapper('node', $node);
-  // Current state.
-  $curr = $node->workbench_moderation_state_current;
-  // New state.
-  $new = $node->workbench_moderation_state_new;
-  // Published.
-  $pub = 'published';
-  // We want to store those css files in a specific path.
-  $dir = 'public://css/header-backgrounds/';
-  // Build the uri for our css file.
-  $state = $new != $pub ? 'draft' : 'pub';
-  $uri = $dir . 'header_background_node_' . $node->nid . '_' . $state . '.css';
-  // Get the real path basing on the uri.
-  $filepath = drupal_realpath($uri);
-  // Delete the draft file if this is going to be published.
-  if ($state == 'pub') {
-    $file = drupal_realpath($dir . 'header_background_node_' . $node->nid . '_draft.css');
-    if (file_exists($file)) {
-      unlink($file);
-    }
-  }
-  // Check if we have an image, if we don't we delete an existing file.
-  if (NULL !== $entity_wrapper->field_core_header_image->value()) {
-    // Prepare the filesystem.
-    file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
-    // We need the file uri.
-    $file = file_load($entity_wrapper->field_core_header_image->value()['fid']);
-    // Get all the breakpoints belonging to "this" theme.
-    $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
-    // Need to reverse the order of the breakpoint, mobile first.
-    $breakpoints = array_reverse($breakpoints);
-    // Get all the images presets.
-    $styles = image_styles();
-    // Get the presets name.
-    $style_names = array_keys($styles);
-    // Filter the ones regarding the header image.
-    $header_styles = preg_grep('#^header_image*#', $style_names);
-    // Prepare containers.
-    $mapping = array();
-    $css = '';
 
-    foreach ($breakpoints as $breakpoint) {
-      $name = $breakpoint->machine_name;
-      // Get the key to find correspondencies in the image presets.
-      $breakpoint_key = substr($name, strrpos($name, '.') + 1);
-      // Get the styles related to this breakpoint.
-      $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
-      if (!empty($style_names_breakpoint)) {
-        // We base on the multiplier.
-        sort($style_names_breakpoint);
-        foreach ($style_names_breakpoint as $style_name) {
-          // Build an array mapping the breakpoints media queries and the
-          // image url.
-          $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $file->uri);
+  if (isset($node->field_core_header_image) &&
+      NULL !== $entity_wrapper->field_core_header_image->value()) {
+
+    // We need the file id.
+    $fid = $entity_wrapper->field_core_header_image->value()['fid'];
+    // Load the managed file.
+    $file = file_load($fid);
+    // We want to store those css files in a specific path.
+    $dir = 'public://css/header-backgrounds/';
+    // Build the uri for our css file.
+    $uri = $dir . 'header_background_' . $fid . '.css';
+    // Get the real path basing on the uri.
+    $filepath = drupal_realpath($uri);
+
+    // If we already a this file no reasons to go further.
+    if (!file_exists($filepath)) {
+      // Prepare the filesystem.
+      file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
+      // Get all the breakpoints belonging to "this" theme.
+      $breakpoints = breakpoints_breakpoint_load_all_theme('europa');
+      // Need to reverse the order of the breakpoint, mobile first.
+      $breakpoints = array_reverse($breakpoints);
+      // Get all the images presets.
+      $styles = image_styles();
+      // Get the presets name.
+      $style_names = array_keys($styles);
+      // Filter the ones regarding the header image.
+      $header_styles = preg_grep('#^header_image*#', $style_names);
+      // Prepare containers.
+      $mapping = array();
+      $css = '';
+
+      foreach ($breakpoints as $breakpoint) {
+        $name = $breakpoint->machine_name;
+        // Get the key to find correspondencies in the image presets.
+        $breakpoint_key = substr($name, strrpos($name, '.') + 1);
+        // Get the styles related to this breakpoint.
+        $style_names_breakpoint = preg_grep('#' . $breakpoint_key . '#', $header_styles);
+        if (!empty($style_names_breakpoint)) {
+          // We base on the multiplier.
+          sort($style_names_breakpoint);
+          foreach ($style_names_breakpoint as $style_name) {
+            // Build an array mapping the breakpoints media queries and the
+            // image url.
+            $mapping[$breakpoints[$name]->breakpoint][] = image_style_url($style_name, $file->uri);
+          }
         }
+        // Create the css rules for each breakpoint.
+        $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
+        $css .= ' .page-header--image {' . PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] . '");' . PHP_EOL;
+        $css .= ' }' . PHP_EOL;
+        $css .= '}' . PHP_EOL;
+        $css .= PHP_EOL;
+
+        // High resolution displays.
+        $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
+        $css .= ' .page-header--image {' . PHP_EOL;
+        $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] . '");' . PHP_EOL;
+        $css .= ' }' . PHP_EOL;
+        $css .= '}' . PHP_EOL;
+        $css .= PHP_EOL;
       }
-      // Create the css rules for each breakpoint.
-      $css .= '@media ' . $breakpoints[$name]->breakpoint . ' {' . PHP_EOL;
-      $css .= ' .page-header--image {' . PHP_EOL;
-      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][0] . '");' . PHP_EOL;
-      $css .= ' }' . PHP_EOL;
-      $css .= '}' . PHP_EOL;
-      $css .= PHP_EOL;
-
-      // High resolution displays.
-      $css .= '@media ' . $breakpoints[$name]->breakpoint . ', (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2),(min-resolution: 2dppx)  {' . PHP_EOL;
-      $css .= ' .page-header--image {' . PHP_EOL;
-      $css .= '   background-image: url("' . $mapping[$breakpoints[$name]->breakpoint][1] . '");' . PHP_EOL;
-      $css .= ' }' . PHP_EOL;
-      $css .= '}' . PHP_EOL;
-      $css .= PHP_EOL;
-    }
-    // Save the file.
-    file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
-  }
-
-  else {
-    if (file_exists($filepath)) {
-      unlink($filepath);
+      // Save the file.
+      file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
     }
   }
 }
@@ -647,32 +612,26 @@ function dt_core_preprocess_node(&$variables) {
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
     $header_back = field_get_items('node', $node, 'field_core_header_image');
     if ($header_back) {
-      // This is how it should be but workbench_moderation will show a draft
-      // state even for a published revision which has been used to start a
-      // new revision in draft.
-      $state = $node->workbench_moderation['current']->state == 'published' ? 'pub' : 'draft';
-      // Basically the drafts path is based on the system path for nodes.
-      $state = NULL !== arg(2) ? 'draft' : 'pub';
+      $fid = $header_back[0]['fid'];
       // Set a variable available in the tpls.
       $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
       // Add the css to the page.
-      $uri = $dir . 'header_background_node_' . $variables['node']->nid . '_' . $state . '.css';
+      $uri = $dir . 'header_background_' . $fid . '.css';
       drupal_add_css($uri, array('group' => CSS_THEME, 'every_page' => FALSE));
     }
   }
 }
 
 /**
- * Implements hook_node_delete().
+ * Implements hook_file_delete().
  */
-function dt_core_node_delete($node) {
-  if (isset($node->field_core_header_image) && isset($node->nid)) {
-    $uri = 'public://css/header-backgrounds/';
-    $dir = drupal_realpath($uri) . '/header_background_node_' . $node->nid . '*';
-    foreach (glob($dir) as $file) {
-      unlink($file);
-    }
+function dt_core_file_delete($file) {
+  $fid = $file->fid;
+  $uri = 'public://css/header-backgrounds/';
+  $file = drupal_realpath($uri) . '/header_background_' . $fid . '.css';
+  if (file_exists($file)) {
+    unlink($file);
   }
 }
 
@@ -845,7 +804,7 @@ function dt_core_views_query_alter(&$view, &$query) {
   // If it is one of our listings.
   if (isset($view->sort['title_field_value'])) {
     // Get our languages.
-    $fallback_languages = _dt_core_content_language_order();
+    $fallback_languages = _dt_shared_functions_content_language_order();
     // Sort direction from our sort.
     $sort_direction = 'ASC';
 
@@ -922,68 +881,6 @@ function dt_core_views_query_alter(&$view, &$query) {
 }
 
 /**
- * Get the final content language after applying translations and fallbacks.
- */
-function _dt_core_content_language($node) {
-  // Load potential relevant languages in the correct fallback order.
-  $content_language_order = _dt_core_content_language_order();
-  $content_language = $node->language;
-  // Find first available translation that is applicable.
-  if (!empty($content_language_order)) {
-    foreach ($content_language_order as $language_code) {
-      $translation = entity_translation_get_existing_language('node', $node, $language_code);
-      // We have a translation so lets use it.
-      if ($translation == $language_code) {
-        $content_language = $language_code;
-        break;
-      }
-      $content_language = $translation;
-    }
-  }
-
-  return $content_language;
-}
-
-/**
- * Get the languages that are applicable in the right order of fallback.
- */
-function _dt_core_content_language_order() {
-  global $language;
-  // Get the first few languages of our fallback array. If we have a 2nd
-  // language parameter set, we have to work with an additional language. If
-  // not, we only need one.
-  // Set our maximum languages to check.
-  $max_languages = 1;
-  // First we get our url parameters.
-  $parameters = drupal_get_query_parameters();
-  // Check if the 2nd-language parameter is set.
-  if (isset($parameters['2nd-language']) && $parameters['2nd-language'] !== 'en') {
-    // Extend maximum to include the 2nd-language.
-    $max_languages = 2;
-  }
-  // Get the maximum extra languages.
-  $fallback_languages = array_slice(language_fallback_get_candidates(), 0, $max_languages);
-  // Add our current site language to the array.
-  if (!in_array($language->language, $fallback_languages)) {
-    array_unshift($fallback_languages, $language->language);
-  }
-  else {
-    // Our default language is in the array but might not be the first. So we
-    // move it.
-    // Get the key of the language.
-    $main_language_key = array_search($language->language, $fallback_languages);
-    // Store it temporary.
-    $prepend_language = $fallback_languages[$main_language_key];
-    // Remove the item.
-    unset($fallback_languages[$main_language_key]);
-    // Then add it to the front.
-    array_unshift($fallback_languages, $prepend_language);
-  }
-
-  return $fallback_languages;
-}
-
-/**
  * Helper function to get plurial names.
  *
  * This should move to the dt_node_settings module.
@@ -1039,30 +936,29 @@ function _dt_core_get_plurial_content_types($bundle) {
  */
 function dt_core_preprocess_views_view(&$variables) {
   $view = $variables['view'];
+  if (isset($view->filter['type'])) {
+    $content_type_filters = $view->filter['type']->value;
+    // The first element of the array is the right type of filter.
+    $content_type = reset($content_type_filters);
 
-  $content_type = array();
-  $content_type_filters = $view->filter['type']->value;
-  foreach ($content_type_filters as $filter) {
-    $content_type = $filter;
-  }
+    $variables['items_count'] = '';
 
-  $variables['items_count'] = '';
+    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+      // Calculate the number of items displayed in a view listing.
+      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
-    // Calculate the number of items displayed in a view listing.
-    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
+      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
 
-    $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+      if ($total_rows == 0) {
+        $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      }
+      else {
+        $items_count = $total_rows . ' ' .
+          format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
+      }
 
-    if ($total_rows == 0) {
-      $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+      $variables['items_count'] = $items_count;
     }
-    else {
-      $items_count = $total_rows . ' ' .
-        format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']);
-    }
-
-    $variables['items_count'] = $items_count;
   }
 }
 
@@ -1087,5 +983,30 @@ function dt_core_ds_fields_info($entity_type) {
 function _dt_core_ds_fields_stick_label($field) {
   if (isset($field['entity']->sticky) && $field['entity']->sticky) {
     return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
+  }
+}
+
+/**
+ * Implements hook_metatag_metatags_view_alter().
+ *
+ * Because of SEO recommendations, description meta tag
+ * should't be more than 155 characters.
+ * + og:description meta tag should have the same text as
+ * description meta tag.
+ * If description metatag does not exist then it will fall back
+ * to og:description with character's count already limited.
+ */
+function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
+  // Metatag: description.
+  if (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = truncate_utf8($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
+  }
+  // Metatag: og:description.
+  if (isset($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    $output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value']
+      = (isset($output['description']['#attached']['drupal_add_html_head'][0][0]['#value'])) ?
+      $output['description']['#attached']['drupal_add_html_head'][0][0]['#value'] :
+      truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
   }
 }

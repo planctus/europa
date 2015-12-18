@@ -17,18 +17,18 @@ function dt_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'priorities_preprocess' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'related_announcements' => array(
-      'weight' => '0',
+      'weight' => '13',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'in_page_navigation' => array(
       'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'priorities_preprocess' => array(
-      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -91,6 +91,22 @@ function dt_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'content_type_label' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -159,31 +175,12 @@ function dt_page_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_stacked_conditional';
   $ds_layout->settings = array(
     'regions' => array(
-      'central' => array(
-        0 => 'priorities_preprocess',
-        2 => 'field_core_publications',
-        3 => 'related_announcements',
-        4 => 'field_core_links',
-        6 => 'field_core_featured_item',
-        8 => 'group_page_latest',
-        10 => 'group_page_latest_sidebar',
-        11 => 'group_page_priorities',
-        12 => 'field_core_banner',
-        13 => 'group_page_free_field',
-        14 => 'group_page_next_steps',
-        15 => 'group_page_latest_main',
-        16 => 'group_page_documents',
-        17 => 'group_page_related_links',
-        18 => 'field_core_social_network_links',
-        19 => 'field_core_next_steps',
-        20 => 'body',
-      ),
       'left_header' => array(
-        1 => 'title',
-        5 => 'field_core_introduction',
+        0 => 'title',
+        1 => 'field_core_introduction',
       ),
       'top' => array(
-        7 => 'group_page_contextual_navigation',
+        2 => 'group_page_contextual_navigation',
         21 => 'field_core_priorities',
         22 => 'field_core_policy_area',
         23 => 'field_core_departments',
@@ -191,31 +188,50 @@ function dt_page_ds_layout_settings_info() {
         25 => 'field_core_topics',
       ),
       'left' => array(
-        9 => 'in_page_navigation',
+        3 => 'in_page_navigation',
+      ),
+      'central' => array(
+        4 => 'group_page_priorities',
+        5 => 'field_core_banner',
+        6 => 'priorities_preprocess',
+        7 => 'group_page_free_field',
+        8 => 'body',
+        9 => 'group_page_next_steps',
+        10 => 'field_core_next_steps',
+        11 => 'group_page_latest_main',
+        12 => 'field_core_featured_item',
+        13 => 'group_page_latest',
+        14 => 'related_announcements',
+        15 => 'group_page_latest_sidebar',
+        16 => 'field_core_social_network_links',
+        17 => 'group_page_documents',
+        18 => 'field_core_publications',
+        19 => 'group_page_related_links',
+        20 => 'field_core_links',
       ),
     ),
     'fields' => array(
-      'priorities_preprocess' => 'central',
       'title' => 'left_header',
-      'field_core_publications' => 'central',
-      'related_announcements' => 'central',
-      'field_core_links' => 'central',
       'field_core_introduction' => 'left_header',
-      'field_core_featured_item' => 'central',
       'group_page_contextual_navigation' => 'top',
-      'group_page_latest' => 'central',
       'in_page_navigation' => 'left',
-      'group_page_latest_sidebar' => 'central',
       'group_page_priorities' => 'central',
       'field_core_banner' => 'central',
+      'priorities_preprocess' => 'central',
       'group_page_free_field' => 'central',
-      'group_page_next_steps' => 'central',
-      'group_page_latest_main' => 'central',
-      'group_page_documents' => 'central',
-      'group_page_related_links' => 'central',
-      'field_core_social_network_links' => 'central',
-      'field_core_next_steps' => 'central',
       'body' => 'central',
+      'group_page_next_steps' => 'central',
+      'field_core_next_steps' => 'central',
+      'group_page_latest_main' => 'central',
+      'field_core_featured_item' => 'central',
+      'group_page_latest' => 'central',
+      'related_announcements' => 'central',
+      'group_page_latest_sidebar' => 'central',
+      'field_core_social_network_links' => 'central',
+      'group_page_documents' => 'central',
+      'field_core_publications' => 'central',
+      'group_page_related_links' => 'central',
+      'field_core_links' => 'central',
       'field_core_priorities' => 'top',
       'field_core_policy_area' => 'top',
       'field_core_departments' => 'top',
@@ -244,21 +260,30 @@ function dt_page_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'basic_page';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_1col';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'title_field',
-        1 => 'field_core_description',
+        0 => 'group_page_meta',
+        1 => 'title_field',
+        2 => 'content_type_label',
+        3 => 'field_core_description',
+      ),
+      'second' => array(
+        4 => 'field_core_image',
       ),
     ),
     'fields' => array(
+      'group_page_meta' => 'main',
       'title_field' => 'main',
+      'content_type_label' => 'main',
       'field_core_description' => 'main',
+      'field_core_image' => 'second',
     ),
     'classes' => array(),
     'wrappers' => array(
       'main' => 'div',
+      'second' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

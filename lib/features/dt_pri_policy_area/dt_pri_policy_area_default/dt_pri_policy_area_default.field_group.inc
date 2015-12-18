@@ -21,12 +21,12 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = 'group_pri_pol_area_tabgroup';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '27',
+    'weight' => '28',
     'children' => array(
-      0 => 'field_core_background',
-      1 => 'field_core_next_steps',
-      2 => 'field_core_objective',
-      3 => 'field_core_publications',
+      0 => 'field_core_publications',
+      1 => 'field_core_background',
+      2 => 'field_core_next_steps',
+      3 => 'field_core_objective',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -117,6 +117,7 @@ function dt_pri_policy_area_default_field_group_info() {
       4 => 'field_core_introduction',
       5 => 'field_core_legacy_link',
       6 => 'field_core_social_network_links',
+      7 => 'field_core_parent',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -198,7 +199,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = 'group_pri_pol_area_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '28',
+    'weight' => '29',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -258,7 +259,7 @@ function dt_pri_policy_area_default_field_group_info() {
     'weight' => '33',
     'children' => array(
       0 => 'field_core_featured_item',
-      1 => 'related_announcements',
+      1 => 'latest_announcements_block',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -422,11 +423,11 @@ function dt_pri_policy_area_default_field_group_info() {
     'label' => 'Related',
     'weight' => '24',
     'children' => array(
-      0 => 'field_core_links',
+      0 => 'field_core_departments',
       1 => 'field_core_persons',
       2 => 'field_core_policy_areas',
       3 => 'field_core_topics',
-      4 => 'field_core_departments',
+      4 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

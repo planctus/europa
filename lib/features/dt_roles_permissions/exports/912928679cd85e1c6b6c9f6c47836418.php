@@ -17,6 +17,7 @@ $permissions['site manager'] = array(
   'bypass node access',
   'bypass workbench moderation',
   'configure helper content types',
+  'configure priorities listing page',
   'create basic_page content',
   'create info_homepage content',
   'create translation jobs',
@@ -42,4 +43,6 @@ $permissions['site manager'] = array(
   'view all unpublished content',
   'view any site_menu bean',
   'view bean page',
+  'masquerade as user',
+  'masquerade as any user',
 );

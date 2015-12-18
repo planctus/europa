@@ -13,12 +13,21 @@ include_once 'dt_page.features.inc';
  * navigation.
  */
 function dt_page_ds_pre_render_alter(&$layout_render_array, $context) {
-  // Only check for our region.
-  if (isset($layout_render_array['left'])) {
-    // If the other conditions meet.
-    if ($context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'] == '0' && $context['entity']->type == 'basic_page') {
+  // If the other conditions meet.
+  if ($context['entity']->type == 'basic_page' && $context['view_mode'] == 'full' && isset($context['entity']->field_core_in_page_navigation)) {
+    $in_page = $context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'];
+    $latest = $context['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'];
+
+    if ($in_page == '0') {
       // We remove the sidebar.
       unset($layout_render_array['left']);
+    }
+    if ($latest == 0) {
+      foreach ($layout_render_array['central'] as $key => $blocks) {
+        if (isset($blocks['group_page_latest'])) {
+          unset($layout_render_array['central'][$key]);
+        }
+      }
     }
   }
 }

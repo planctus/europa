@@ -28,6 +28,22 @@ function dt_publication_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'social_bookmark_webtools' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
     'field_publication_type' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -41,24 +57,51 @@ function dt_publication_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_publication_published_on' => array(
+    'field_core_files' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
-          'lb' => 'Published on',
-          'lb-el' => 'div',
-          'lb-cl' => 'context-nav__label',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'context-nav__items',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'context-nav__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'paragraph',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_topics' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Topic:',
+        ),
+      ),
+    ),
+    'field_publication_authors' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Author:',
+        ),
+      ),
+    ),
+    'field_publication_referenceno' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Identification:',
+        ),
+      ),
+    ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'First published on:',
+        ),
+      ),
+    ),
+    'field_core_publications' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Part of collection:',
         ),
       ),
     ),
@@ -171,46 +214,50 @@ function dt_publication_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_publication_meta',
-        1 => 'title',
-        2 => 'field_publication_type',
-        3 => 'field_core_introduction',
-        4 => 'field_core_legacy_link',
+        3 => 'field_publication_type',
+        4 => 'title',
+        6 => 'field_core_legacy_link',
       ),
       'top' => array(
-        5 => 'group_publication_contextual',
-        14 => 'field_publication_authors',
-        15 => 'field_publication_published_on',
-        16 => 'field_core_topics',
+        1 => 'field_core_publications',
+        5 => 'field_core_date_published',
+        7 => 'field_publication_authors',
+        8 => 'field_publication_referenceno',
+        9 => 'group_publication_contextual',
+        11 => 'field_core_topics',
       ),
       'central' => array(
-        6 => 'group_publication_body',
-        7 => 'group_publication_file',
-        8 => 'body',
-        9 => 'group_publication_related',
-        10 => 'group_publication_contact',
-        11 => 'field_core_files',
-        12 => 'field_core_departments',
-        13 => 'field_publication_contact',
+        2 => 'field_core_contact',
+        10 => 'group_publication_body',
+        12 => 'group_publication_file',
+        13 => 'group_publication_related',
+        14 => 'body',
+        15 => 'group_publication_contact',
+        16 => 'field_core_files',
+        17 => 'social_bookmark_webtools',
+        18 => 'field_core_departments',
       ),
     ),
     'fields' => array(
       'group_publication_meta' => 'left_header',
-      'title' => 'left_header',
+      'field_core_publications' => 'top',
+      'field_core_contact' => 'central',
       'field_publication_type' => 'left_header',
-      'field_core_introduction' => 'left_header',
+      'title' => 'left_header',
+      'field_core_date_published' => 'top',
       'field_core_legacy_link' => 'left_header',
+      'field_publication_authors' => 'top',
+      'field_publication_referenceno' => 'top',
       'group_publication_contextual' => 'top',
       'group_publication_body' => 'central',
+      'field_core_topics' => 'top',
       'group_publication_file' => 'central',
-      'body' => 'central',
       'group_publication_related' => 'central',
+      'body' => 'central',
       'group_publication_contact' => 'central',
       'field_core_files' => 'central',
+      'social_bookmark_webtools' => 'central',
       'field_core_departments' => 'central',
-      'field_publication_contact' => 'central',
-      'field_publication_authors' => 'top',
-      'field_publication_published_on' => 'top',
-      'field_core_topics' => 'top',
     ),
     'classes' => array(),
     'wrappers' => array(
