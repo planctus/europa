@@ -325,7 +325,7 @@ function cwt_team_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'team';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ne_bootstrap_1col_stacked_bottom_header';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
@@ -333,19 +333,21 @@ function cwt_team_ds_layout_settings_info() {
         1 => 'title',
         2 => 'field_team_tagline',
       ),
-      'bottom_header' => array(
+      'top' => array(
         3 => 'team_contacts',
+        4 => 'group_team_contacts',
       ),
       'central' => array(
-        4 => 'team_members',
-        5 => 'social_bookmark_webtools',
+        5 => 'team_members',
+        6 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
       'content_type_label' => 'left_header',
       'title' => 'left_header',
       'field_team_tagline' => 'left_header',
-      'team_contacts' => 'bottom_header',
+      'team_contacts' => 'top',
+      'group_team_contacts' => 'top',
       'team_members' => 'central',
       'social_bookmark_webtools' => 'central',
     ),
@@ -353,7 +355,6 @@ function cwt_team_ds_layout_settings_info() {
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
-      'bottom_header' => 'div',
       'top' => 'div',
       'central' => 'div',
     ),

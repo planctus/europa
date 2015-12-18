@@ -27,7 +27,6 @@
  * @ingroup views_templates
  */
 ?>
-<div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
     <?php print $title; ?>
@@ -52,7 +51,7 @@
   <?php endif; ?>
 
   <?php if ($rows): ?>
-    <div class="view-content contact-details">
+    <div class="view-content listing">
       <?php print $rows; ?>
     </div>
   <?php elseif ($empty): ?>
@@ -66,9 +65,7 @@
   <?php endif; ?>
 
   <?php if ($attachment_after): ?>
-    <div class="attachment attachment-after press-contact-details">
       <?php print $attachment_after; ?>
-    </div>
   <?php endif; ?>
 
   <?php if ($more): ?>
@@ -87,4 +84,3 @@
     </div>
   <?php endif; ?>
 
-</div><?php /* class view */ ?>

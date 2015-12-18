@@ -1262,7 +1262,9 @@ function cwt_biography_field_default_field_instances() {
       'team_cabinet_member' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'title' => '',
+        ),
         'type' => 'telephone',
         'weight' => 3,
       ),
@@ -1424,7 +1426,7 @@ function cwt_biography_field_default_field_instances() {
           'image_style' => 'biography_portrait_160x160',
         ),
         'type' => 'image',
-        'weight' => 2,
+        'weight' => 60,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1529,9 +1531,8 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'team_cabinet_member' => array(
@@ -1897,12 +1898,12 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'link' => FALSE,
+          'link_title' => 'Team page',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 29,
+        'type' => 'link_button_default',
+        'weight' => 1,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -1941,6 +1942,102 @@ function cwt_biography_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 18,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-biography-field_biography_team_intro'
+  $field_instances['node-biography-field_biography_team_intro'] = array(
+    'bundle' => 'biography',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Edit this only if really needed, if you want to change this text for all the pages you should modify the default value of this field in its general settings.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
+      ),
+      'team_cabinet_member' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_biography_team_intro',
+    'label' => 'Team introduction ',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'custom_text_filter' => 'custom_text_filter',
+          'filtered_html' => 'filtered_html',
+          'full_access_text_filter' => 'full_access_text_filter',
+          'full_html' => 'full_html',
+          'news_text_filter' => 'news_text_filter',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'custom_text_filter' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_access_text_filter' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'news_text_filter' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 22,
     ),
     'workbench_access_field' => 0,
   );
@@ -2007,6 +2104,105 @@ function cwt_biography_field_default_field_instances() {
       ),
       'type' => 'inline_entity_form',
       'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-biography-field_core_collapse_button_text'
+  $field_instances['node-biography-field_core_collapse_button_text'] = array(
+    'bundle' => 'biography',
+    'default_value' => array(
+      0 => array(
+        'value' => 'contact details',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'team_cabinet_member' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_collapse_button_text',
+    'label' => 'Collapse button text',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'custom_text_filter' => 'custom_text_filter',
+          'filtered_html' => 'filtered_html',
+          'full_access_text_filter' => 'full_access_text_filter',
+          'full_html' => 'full_html',
+          'news_text_filter' => 'news_text_filter',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'custom_text_filter' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_access_text_filter' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'news_text_filter' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 23,
     ),
     'workbench_access_field' => 0,
   );
@@ -2132,10 +2328,11 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_editorial_section',
     'label' => 'Editorial section',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2145,7 +2342,6 @@ function cwt_biography_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
       'weight' => 13,
@@ -2416,18 +2612,19 @@ function cwt_biography_field_default_field_instances() {
         'type' => 'social_network_link_default',
         'weight' => 31,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'dt_social_network_links',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
+        'weight' => 27,
+      ),
       'team_cabinet_member' => array(
         'label' => 'inline',
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
         'weight' => 5,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2851,99 +3048,6 @@ function cwt_biography_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 13,
-    ),
-    'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance: 'node-biography-field_core_collapse_button_text'
-  $field_instances['node-biography-field_core_collapse_button_text'] = array(
-    'bundle' => 'biography',
-    'default_value' => array(
-      0 => array(
-        'value' => 'contact details',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 31,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_collapse_button_text',
-    'label' => 'Collapse button text',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'custom_text_filter' => 'custom_text_filter',
-          'filtered_html' => 'filtered_html',
-          'full_access_text_filter' => 'full_access_text_filter',
-          'full_html' => 'full_html',
-          'news_text_filter' => 'news_text_filter',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => 5,
-            ),
-            'custom_text_filter' => array(
-              'weight' => 0,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_access_text_filter' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'news_text_filter' => array(
-              'weight' => 0,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 22,
     ),
     'workbench_access_field' => 0,
   );
@@ -3467,6 +3571,7 @@ function cwt_biography_field_default_field_instances() {
   t('Agenda transparency text');
   t('Assistants');
   t('Classname');
+  t('Collapse button text');
   t('Comment');
   t('Curriculum Vitae');
   t('Date');
@@ -3475,6 +3580,7 @@ function cwt_biography_field_default_field_instances() {
   t('Description');
   t('Download CV in PDF format');
   t('E-mail');
+  t('Edit this only if really needed, if you want to change this text for all the pages you should modify the default value of this field in its general settings.');
   t('Editorial section');
   t('Enabled');
   t('European Parliament hearings');
@@ -3502,6 +3608,7 @@ function cwt_biography_field_default_field_instances() {
   t('Status');
   t('Tagline');
   t('Team');
+  t('Team introduction ');
   t('Timeline');
   t('Title');
   t('Topics');
