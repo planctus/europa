@@ -3608,7 +3608,7 @@ function cwt_biography_field_default_field_instances() {
   t('Status');
   t('Tagline');
   t('Team');
-  t('Team introduction ');
+  t('Team introduction');
   t('Timeline');
   t('Title');
   t('Topics');

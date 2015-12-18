@@ -83,4 +83,3 @@
       <?php print $feed_icon; ?>
     </div>
   <?php endif; ?>
-
