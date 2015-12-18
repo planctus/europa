@@ -203,7 +203,8 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_core_date_published',
+      2 => 'post_date',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -227,7 +228,7 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_core_date_published',
       2 => 'sticky_label',
     ),
     'format_type' => 'meta_wrapper',
