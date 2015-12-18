@@ -147,71 +147,64 @@
   </target>
 
   <!-- Release to SVN. -->
-  <property name="release" value="${project.basedir}/release" />
-  <target name="release" description="Release code to MULTISITE SVN">
-    <property name="folderlist" value="libraries,modules,features,themes" />
-    <if>
-      <not>
-        <equals arg1="${phing.project.svn}" arg2="" />
-      </not>
-      <then>
-        <!-- Checkout  -->
-        <mkdir dir="${release}" />
-        <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${release}"></exec>
+  <property name="release" value="${phing.project.tmp.dir}/release-svn" />
+  <property name="release.make" value="${phing.project.tmp.dir}/release-make" />
+  <property name="release.build" value="${phing.project.tmp.dir}/release-build" />
 
-        <!-- Update code  -->
-        <foreach list="${folderlist}" param="folder" target="updatefolder" delimiter="," />
+  <target name="tester" description="Release code to MULTISITE SVN">
+    <!-- Prepare the folders. -->
+    <delete dir="${release}" includeemptydirs="true" failonerror="false" />
+    <mkdir dir="${release}" />
+    <delete dir="${release.make}" includeemptydirs="true" failonerror="false" />
+    <mkdir dir="${release.make}" />
+    <delete dir="${release.build}" includeemptydirs="true" failonerror="false" />
+    <mkdir dir="${release.build}" />
 
-        <!-- Commit  -->
-        <input propertyname="commitmessage">Please provide a commit message:</input>
-        <echo msg="${commitmessage}" />
-        <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec>
+    <!-- Assemble the new release. -->
+    <phingcall target="drush-make-no-core">
+        <property name="platform.build.dir" value="${release.make}" />
+        <property name="drush.make.target.file" value="${subsite.make}" />
+    </phingcall>
+    <copy todir="${release.build}" overwrite="true">
+        <fileset dir="${release.make}/sites/all" />
+    </copy>
+    <copy todir="${release.build}/modules/features/custom" overwrite="true">
+        <fileset dir="${subsite.resources.features.dir}" />
+    </copy>
+    <copy todir="${release.build}/modules/custom" overwrite="true">
+        <fileset dir="${subsite.resources.modules.dir}" />
+    </copy>
+    <copy todir="${release.build}/themes" overwrite="true">
+        <fileset dir="${subsite.resources.themes.dir}" />
+    </copy>
 
-        <echo message="Committed revision: ${svn.committedrevision}"/>
+    <!-- Move it to the SVN  -->
+    <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${release}"></exec>
+    <delete includeemptydirs="true" failonerror="true">
+        <fileset dir="${release}" excludes=".svn/**" defaultexcludes="false" />
+    </delete>
 
-        <!-- Delete temporary folder -->
-        <delete dir="${release}" includeemptydirs="true" failonerror="true" />
-        <echo message="${release} removed"/>
-      </then>
-      <else>
-        <echo message="SVN is not set up correctly."/>
-      </else>
-    </if>
-  </target>
-
-  <target name="updatefolder" description="Update folder in MULTISITE SVN">
-    <if>
-      <available file="${release}/${folder}" type="dir" />
-      <then>
-        <!-- Delete previous code  -->
-        <delete dir="${release}/${folder}" includeemptydirs="true" failonerror="true" />
-      </then>
-    </if>
-
-    <if>
-      <available file="${subsite.resources.${folder}.dir}" type="dir" />
-      <then>
-        <!-- Copy latest code  -->
-        <copy todir="${release}/${folder}" overwrite="true">
-            <fileset dir="${subsite.resources.${folder}.dir}">
-              <patternset>
-                <exclude name="*devel/**"/>
-                <exclude name="*/node_modules/**"/>
-                <exclude name="*/styleguide/**"/>
-                <exclude name="**/Gruntfile.js"/>
-                <exclude name="**/Watchfile"/>
-                <exclude name="**/package.json"/>
-                <exclude name="commissioner_OLD/**"/>
-                <exclude name="*masquerade/**"/>
-              </patternset>
-            </fileset>
-        </copy>
-      </then>
-    </if>
-
+    <copy todir="${release}" overwrite="false">
+        <fileset dir="${release.build}">
+          <patternset>
+            <exclude name="**/development/**"/>
+            <exclude name="**/node_modules/**"/>
+            <exclude name="**/styleguide/**"/>
+            <exclude name="**/Gruntfile.js"/>
+            <exclude name="**/Watchfile"/>
+            <exclude name="**/package.json"/>
+            <exclude name="**/commissioner_OLD/**"/>
+          </patternset>
+        </fileset>
+    </copy>
     <!-- SVN remove locally deleted files  -->
     <exec dir="${release}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
     <!-- Add latest code  -->
-    <exec dir="${release}" command="svn add ${folder} --force"></exec>
+    <!-- <exec dir="${release}" command="svn add . - -force"></exec> -->
+
+    <!-- <input propertyname="commitmessage">Please provide a commit message:</input>
+    <echo msg="${commitmessage}" />
+    <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec> -->
+
   </target>
 </project>
