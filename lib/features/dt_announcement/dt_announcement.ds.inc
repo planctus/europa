@@ -186,22 +186,6 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'meta';
   $ds_fieldsetting->settings = array(
-    'post_date' => array(
-      'weight' => '21',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_ec_date_j_f_y',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -222,6 +206,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'span',
           'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -510,7 +507,6 @@ function dt_announcement_ds_layout_settings_info() {
         1 => 'title_field',
         2 => 'field_announcement_type',
         3 => 'field_core_date_published',
-        4 => 'post_date',
       ),
     ),
     'fields' => array(
@@ -518,7 +514,6 @@ function dt_announcement_ds_layout_settings_info() {
       'title_field' => 'main',
       'field_announcement_type' => 'main',
       'field_core_date_published' => 'main',
-      'post_date' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

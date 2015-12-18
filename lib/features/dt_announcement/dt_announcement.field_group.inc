@@ -204,7 +204,6 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_announcement_type',
       1 => 'field_core_date_published',
-      2 => 'post_date',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
