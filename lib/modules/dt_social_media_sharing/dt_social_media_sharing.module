@@ -32,7 +32,7 @@ function dt_social_media_sharing_block_configure($delta = '') {
       $form['dt_social_media_sharing_js_url'] = array(
         '#type' => 'textfield',
         '#title' => t('External Web Tools Url'),
-        '#default_value' => variable_get('dt_social_media_sharing_js_url', 'http://europa.eu/webtools/load.js'),
+        '#default_value' => variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js'),
         '#description' => t('This is required in order for it to work.'),
         '#required' => TRUE,
         '#weight' => 1,
@@ -113,7 +113,7 @@ function dt_social_media_sharing_block_view($delta = '') {
 }
 
 /**
- * generate the content of the soacial media sharing block.
+ * Generate the content of the social media sharing block.
  */
 function _dt_social_media_sharing_view_helper() {
   $type = variable_get('dt_social_media_sharing_block_type');
@@ -134,18 +134,22 @@ function _dt_social_media_sharing_view_helper() {
  */
 function _dt_social_media_sharing_default_json() {
   return '<script type="application/json">
-{
-  "service": "sbkm",
-  "popup": false,
-  "to": [
-    "more",
-    "facebook",
-    "twitter"
-  ],
-  "css": {
-    "list": "wtShareList social-media-links"
+  {
+  	"service": "sbkm",
+  	"popup": false,
+  	"to": [
+  		"more",
+  		"twitter",
+  		"facebook",
+  		"googleplus",
+  		"linkedin",
+  		"e-mail"
+  	],
+  	"stats": true,
+  	"css": {
+  		"list": "wtShareList social-media-links"
+  	}
   }
-}
 </script>';
 }
 
