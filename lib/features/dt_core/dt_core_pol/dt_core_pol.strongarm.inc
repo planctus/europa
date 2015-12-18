@@ -28,7 +28,7 @@ function dt_core_pol_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nexteuropa_europa_search_url';
-  $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do?&queryText=business&query_source=BETA&summary=summary&swlang=en';
+  $strongarm->value = 'http://ec.europa.eu/geninfo/query/resultaction.jsp';
   $export['nexteuropa_europa_search_url'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -105,7 +105,7 @@ function dt_core_pol_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'commission and its priorities';
+  $strongarm->value = 'Commission and its priorities';
   $export['site_slogan'] = $strongarm;
 
   return $export;
