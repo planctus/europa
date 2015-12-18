@@ -32,6 +32,7 @@ function dt_announcement_field_group_info() {
       6 => 'field_core_introduction',
       7 => 'field_core_description',
       8 => 'field_core_legacy_link',
+      9 => 'field_core_date_published',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
