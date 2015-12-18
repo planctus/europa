@@ -151,7 +151,7 @@
   <property name="release.make" value="${phing.project.tmp.dir}/release-make" />
   <property name="release.build" value="${phing.project.tmp.dir}/release-build" />
 
-  <target name="tester" description="Release code to MULTISITE SVN">
+  <target name="release" description="Release code to MULTISITE SVN">
     <!-- Prepare the folders. -->
     <delete dir="${release}" includeemptydirs="true" failonerror="false" />
     <mkdir dir="${release}" />
