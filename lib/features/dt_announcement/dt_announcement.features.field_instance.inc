@@ -448,7 +448,7 @@ function dt_announcement_field_default_field_instances() {
           'title_style' => '',
         ),
         'type' => 'title_linked',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'above',
@@ -720,10 +720,18 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 34,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ec_date_j_f_y',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
