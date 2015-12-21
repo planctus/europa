@@ -71,7 +71,7 @@ function cwt_core_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<p><button class="btn btn-collapse" data-target="#collapse" data-toggle="collapse">[node:field-core-collapse-button-text]</button></p>',
+      'value' => '<button class="btn btn-collapse" data-target="#collapse" data-toggle="collapse"><span class="toggling-text"></span>[node:field-core-collapse-button-text]<span class="icon icon--blue-dark icon--down"></span></button>',
       'format' => 'full_html',
     ),
     'use_token' => 1,
