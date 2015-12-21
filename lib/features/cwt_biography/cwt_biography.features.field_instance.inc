@@ -447,7 +447,11 @@ function cwt_biography_field_default_field_instances() {
   // Exported field_instance: 'node-biography-field_biography_av_portal'
   $field_instances['node-biography-field_biography_av_portal'] = array(
     'bundle' => 'biography',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'url' => 'http://ec.europa.eu/avservices/mediagallery/index.cfm',
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Provide a link to EC Audiovisual Service',
     'display' => array(
@@ -458,10 +462,11 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 44,
+        'type' => 'link_default',
+        'weight' => 6,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -482,6 +487,7 @@ function cwt_biography_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_biography_av_portal',
     'label' => 'AV portal link',
@@ -489,7 +495,8 @@ function cwt_biography_field_default_field_instances() {
     'settings' => array(
       'absolute_url' => 1,
       'attributes' => array(
-        'class' => '',
+        'class' => 'smaller',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -502,9 +509,9 @@ function cwt_biography_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
-      'title_label_use_field_label' => FALSE,
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
-      'title_value' => 'More pictures and videos',
+      'title_value' => 'Pictures and videos',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -512,9 +519,7 @@ function cwt_biography_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'link_field',
       'weight' => 15,
     ),
@@ -1951,7 +1956,7 @@ function cwt_biography_field_default_field_instances() {
     'bundle' => 'biography',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Edit this only if really needed, if you want to change this text for all the pages you should modify the default value of this field in its general settings.',
+    'description' => 'This is the text that will introduce the link to the team page, the generic format is like "The [commissioner]\'s team helps the [commissioner] in his/her daily job"',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2615,9 +2620,11 @@ function cwt_biography_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 27,
+        'settings' => array(
+          'icon_image_style' => 'social_network_icon',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 5,
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
@@ -3580,7 +3587,6 @@ function cwt_biography_field_default_field_instances() {
   t('Description');
   t('Download CV in PDF format');
   t('E-mail');
-  t('Edit this only if really needed, if you want to change this text for all the pages you should modify the default value of this field in its general settings.');
   t('Editorial section');
   t('Enabled');
   t('European Parliament hearings');
@@ -3608,7 +3614,8 @@ function cwt_biography_field_default_field_instances() {
   t('Status');
   t('Tagline');
   t('Team');
-  t('Team introduction');
+  t('Team introduction ');
+  t('This is the text that will introduce the link to the team page, the generic format is like "The [commissioner]\'s team helps the [commissioner] in his/her daily job"');
   t('Timeline');
   t('Title');
   t('Topics');

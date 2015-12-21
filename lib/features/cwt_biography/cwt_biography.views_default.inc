@@ -217,7 +217,6 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_team_term']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_team_term']['alter']['text'] = '<span class="term">([field_team_term])</span>';
   $handler->display->display_options['fields']['field_team_term']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_team_term']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['field_biography_role']['id'] = 'field_biography_role';
   $handler->display->display_options['fields']['field_biography_role']['table'] = 'field_data_field_biography_role';
@@ -1660,14 +1659,6 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
-  /* Field: Role */
-  $handler->display->display_options['fields']['field_biography_role']['id'] = 'field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['table'] = 'field_data_field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['field'] = 'field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['ui_name'] = 'Role';
-  $handler->display->display_options['fields']['field_biography_role']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_role']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_biography_role']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: E-mail */
   $handler->display->display_options['fields']['field_biography_email']['id'] = 'field_biography_email';
   $handler->display->display_options['fields']['field_biography_email']['table'] = 'field_data_field_biography_email';

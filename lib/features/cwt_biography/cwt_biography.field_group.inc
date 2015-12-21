@@ -64,7 +64,7 @@ function cwt_biography_field_group_info() {
         'label_element' => 'h2',
         'attributes' => 'id="agenda"',
         'modifier' => '',
-        'layout' => '',
+        'layout' => 'col-md-9',
         'classes' => 'group-bio-agenda field-group-section_group',
       ),
     ),
@@ -142,8 +142,8 @@ function cwt_biography_field_group_info() {
     'label' => 'Column',
     'weight' => '61',
     'children' => array(
-      0 => 'group_bio_top_footer',
-      1 => 'group_bio_contextual',
+      0 => 'group_bio_contextual',
+      1 => 'group_bio_top_footer',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -669,8 +669,9 @@ function cwt_biography_field_group_info() {
     'label' => 'Bio top footer',
     'weight' => '5',
     'children' => array(
-      0 => 'field_social_networks',
-      1 => 'collapse_button',
+      0 => 'field_biography_av_portal',
+      1 => 'field_social_networks',
+      2 => 'collapse_button',
     ),
     'format_type' => 'div',
     'format_settings' => array(
