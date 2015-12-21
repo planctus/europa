@@ -319,7 +319,7 @@ function cwt_core_views_pre_render(&$view) {
       }
 
       $link_text = $view->footer['area']->options['content'];
-      $view->footer['area']->options['content'] = '<div class="more-link">' . l($link_text, $path, array('query' => $query)) . '</div>';
+      $view->footer['area']->options['content'] = '<div class="listing__read-more">' . l($link_text, $path, array('query' => $query)) . '</div>';
     }
   }
 
