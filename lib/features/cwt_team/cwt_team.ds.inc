@@ -156,11 +156,6 @@ function cwt_team_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'social_bookmark_webtools' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'field_team_tagline' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -338,7 +333,6 @@ function cwt_team_ds_layout_settings_info() {
       ),
       'central' => array(
         4 => 'team_members',
-        5 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
@@ -347,7 +341,6 @@ function cwt_team_ds_layout_settings_info() {
       'field_team_tagline' => 'left_header',
       'team_contacts' => 'bottom_header',
       'team_members' => 'central',
-      'social_bookmark_webtools' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
