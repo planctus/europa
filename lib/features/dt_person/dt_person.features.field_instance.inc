@@ -416,7 +416,7 @@ function dt_person_field_default_field_instances() {
         'allowed_schemes' => array(
           'node' => 0,
           'private' => 'private',
-          'public' => 0,
+          'public' => 'public',
         ),
         'allowed_types' => array(
           'audio' => 0,

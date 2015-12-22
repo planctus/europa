@@ -27,5 +27,7 @@ default:
       subcontexts:
         paths:
           - '${behat.subcontexts.path}'
+      region_map:
+        tabs: '.tabs--primary'
   formatters:
     ${behat.formatter.name}: ~
