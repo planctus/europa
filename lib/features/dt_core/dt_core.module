@@ -524,18 +524,19 @@ function _dt_core_enable_languages($languages = array()) {
  */
 function dt_core_preprocess_node(&$variables) {
   $node = $variables['node'];
-
+  // If we have the field and if we are viewing the node's page.
   if (isset($node->field_core_header_image) && $variables['view_mode'] == 'full') {
+    // Check if have a value for the field.
     $header_back = field_get_items('node', $node, 'field_core_header_image');
-
+    // Get the fid form the value or check for a default value.
     if ($header_back) {
       $fid = $header_back[0]['fid'];
     }
     else {
       $fid = variable_get('default_header_background', FALSE);
     }
-
-    if ($fid !== 0) {
+    // Fid might be unexistent.
+    if ($fid) {
       // Set a variable available in the tpls.
       $variables['header_back'] = TRUE;
       $dir = 'public://css/header-backgrounds/';
@@ -550,12 +551,31 @@ function dt_core_preprocess_node(&$variables) {
  * Implements hook_workbench_moderation_transition().
  */
 function dt_core_workbench_moderation_transition($node) {
-  // Entity wrapper.
+  // Create the Entity wrapper and handle the header background image.
   $entity_wrapper = entity_metadata_wrapper('node', $node);
   if (isset($node->field_core_header_image)
     && NULL !== $entity_wrapper->field_core_header_image->value()) {
     _dt_core_handle_header_background($entity_wrapper);
   }
+}
+
+/**
+ * Set the default header background image.
+ */
+function _dt_core_set_default_header_background($fid = FALSE) {
+  // We receive the fid only on a theme setting form submit.
+  if (!$fid) {
+    // Set the "default" image for the header background.
+    $filepath = drupal_realpath(drupal_get_path('module', 'dt_core') . '/images/header_background_default.png');
+    if (file_exists($filepath)) {
+      $data = file_get_contents($filepath);
+      $file = file_save_data($data, 'public://', FILE_EXISTS_RENAME);
+      $fid = $file->fid;
+    }
+  }
+  // Setting a variable and creating the css file.
+  variable_set('default_header_background', $fid);
+  _dt_core_handle_header_background(NULL, $fid);
 }
 
 /**
@@ -624,8 +644,8 @@ function _dt_core_handle_header_background($entity_wrapper = NULL, $fid = FALSE)
       $css .= '}' . PHP_EOL;
       $css .= PHP_EOL;
     }
-  // Save the file.
-  file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
+    // Save the file.
+    file_unmanaged_save_data($css, $uri, FILE_EXISTS_REPLACE);
   }
 }
 
