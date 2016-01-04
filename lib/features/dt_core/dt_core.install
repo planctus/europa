@@ -31,9 +31,6 @@ function dt_core_install() {
 
   // Set our default social network url.
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
-
-  // Set the default header background image.
-  _dt_core_set_default_header_background();
 }
 
 /**
@@ -831,5 +828,7 @@ function dt_core_update_7158() {
  * NEXTEUROPA-7659 - Default image for the header background.
  */
 function dt_core_update_7159() {
-  _dt_core_set_default_header_background();
+  if (module_exists('dt_header_background')) {
+    module_enable(array('dt_header_background'));
+  }
 }
