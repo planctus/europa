@@ -110,7 +110,7 @@ function dt_banner_video_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
-      'entity_translation_sync' => FALSE,
+      'entity_translation_sync' => 0,
       'file_directory' => '',
       'file_extensions' => 'avi',
       'max_filesize' => '',
@@ -121,23 +121,25 @@ function dt_banner_video_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'avportal' => 0,
           'node' => 0,
           'private' => 0,
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
           'document' => 0,
-          'image' => 0,
+          'image' => 'image',
           'video' => 'video',
         ),
         'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 'media_internet',
-          'upload' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
         ),
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'media_generic',
       'weight' => -4,
