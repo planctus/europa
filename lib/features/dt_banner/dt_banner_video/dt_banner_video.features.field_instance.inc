@@ -74,7 +74,7 @@ function dt_banner_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -2,
+      'weight' => 0,
     ),
   );
 
@@ -106,7 +106,7 @@ function dt_banner_video_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_banner_video_file',
-    'label' => 'Featured audiovisual file',
+    'label' => 'Featured video file',
     'required' => 1,
     'settings' => array(
       'description_field' => 0,
@@ -130,19 +130,19 @@ function dt_banner_video_field_default_field_instances() {
         'allowed_types' => array(
           'audio' => 0,
           'document' => 0,
-          'image' => 'image',
+          'image' => 0,
           'video' => 'video',
         ),
         'browser_plugins' => array(
-          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_1' => 0,
           'media_default--media_browser_my_files' => 0,
           'media_internet' => 'media_internet',
-          'upload' => 'upload',
+          'upload' => 0,
           'youtube' => 0,
         ),
       ),
       'type' => 'media_generic',
-      'weight' => -4,
+      'weight' => -3,
     ),
   );
 
@@ -215,7 +215,122 @@ function dt_banner_video_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -3,
+      'weight' => -1,
+    ),
+  );
+
+  // Exported field_instance: 'node-banner_video-field_core_image'
+  $field_instances['node-banner_video-field_core_image'] = array(
+    'bundle' => 'banner_video',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_image',
+    'label' => 'Featured image file',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'avportal' => 0,
+          'node' => 0,
+          'private' => 0,
+          'public' => 'public',
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 'media_internet',
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => -2,
+    ),
+  );
+
+  // Exported field_instance: 'node-banner_video-field_select_media_type'
+  $field_instances['node-banner_video-field_select_media_type'] = array(
+    'bundle' => 'banner_video',
+    'default_value' => array(
+      0 => array(
+        'value' => 'image',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_select_media_type',
+    'label' => 'Select media type',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => -4,
     ),
   );
 
@@ -409,10 +524,12 @@ function dt_banner_video_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Banner reference');
-  t('Featured audiovisual file');
+  t('Featured image file');
+  t('Featured video file');
   t('Group content visibility');
   t('Groups audience');
   t('Paragraph');
+  t('Select media type');
   t('Video caption');
 
   return $field_instances;

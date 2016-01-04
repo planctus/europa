@@ -27,6 +27,8 @@ function dt_banner_video_field_group_info() {
       1 => 'field_banner_caption',
       2 => 'field_banner_video_file',
       3 => 'title_field',
+      4 => 'field_core_image',
+      5 => 'field_select_media_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
