@@ -101,6 +101,7 @@ function dt_page_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -114,6 +115,7 @@ function dt_page_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -253,12 +255,14 @@ function dt_page_ds_layout_settings_info() {
       ),
       'second' => array(
         2 => 'field_core_image',
+        3 => 'field_core_link',
       ),
     ),
     'fields' => array(
       'title_field' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',
+      'field_core_link' => 'second',
     ),
     'classes' => array(),
     'wrappers' => array(

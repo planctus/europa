@@ -24,8 +24,8 @@ function dt_page_field_group_info() {
     'weight' => '16',
     'children' => array(
       0 => 'body',
-      1 => 'field_core_next_steps',
-      2 => 'field_core_publications',
+      1 => 'field_core_publications',
+      2 => 'field_core_next_steps',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -378,12 +378,13 @@ function dt_page_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_description',
-      2 => 'field_core_introduction',
-      3 => 'field_core_parent',
-      4 => 'field_core_legacy_link',
-      5 => 'field_core_header_image',
-      6 => 'field_core_image',
+      2 => 'field_core_header_image',
+      3 => 'field_core_image',
+      4 => 'field_core_introduction',
+      5 => 'field_core_legacy_link',
+      6 => 'field_core_parent',
       7 => 'field_core_social_network_links',
+      8 => 'field_core_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -408,7 +409,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
-    'weight' => '0',
+    'weight' => '16',
     'children' => array(
       0 => 'content_type_label',
     ),
@@ -523,13 +524,12 @@ function dt_page_field_group_info() {
     'label' => 'Related',
     'weight' => '12',
     'children' => array(
-      0 => 'field_core_links',
-      1 => 'field_core_department',
-      2 => 'field_core_persons',
-      3 => 'field_core_policy_area',
-      4 => 'field_core_priorities',
-      5 => 'field_core_topics',
-      6 => 'field_core_departments',
+      0 => 'field_core_departments',
+      1 => 'field_core_persons',
+      2 => 'field_core_policy_area',
+      3 => 'field_core_priorities',
+      4 => 'field_core_topics',
+      5 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
