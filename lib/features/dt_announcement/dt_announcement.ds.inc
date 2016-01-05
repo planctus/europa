@@ -52,6 +52,17 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
     'social_bookmark_webtools' => array(
       'weight' => '9',
       'label' => 'hidden',
@@ -65,33 +76,6 @@ function dt_announcement_ds_field_settings_info() {
           'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
-        ),
-      ),
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h1',
-        'class' => '',
-        'ft' => array(),
-      ),
-    ),
-    'post_date' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_ec_date_j_f_y',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
         ),
       ),
     ),
@@ -179,6 +163,19 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|announcement|full'] = $ds_fieldsetting;
 
@@ -189,16 +186,13 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'meta';
   $ds_fieldsetting->settings = array(
-    'post_date' => array(
-      'weight' => '21',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_ec_date_j_f_y',
+    'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
+          'fi-el' => 'h3',
+          'fi-cl' => 'listing__title',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -218,13 +212,13 @@ function dt_announcement_ds_field_settings_info() {
         ),
       ),
     ),
-    'title_field' => array(
+    'field_core_date_published' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
-          'fi-el' => 'h3',
-          'fi-cl' => 'listing__title',
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -241,22 +235,6 @@ function dt_announcement_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'announcement';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'post_date' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'ds_post_date_ec_date_j_f_y',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item',
-          'fi-at' => '',
-          'fi-def-at' => TRUE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'sticky_label' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -300,6 +278,19 @@ function dt_announcement_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'p',
           'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -443,25 +434,25 @@ function dt_announcement_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'group_announcement_meta',
         1 => 'field_announcement_type',
-        2 => 'post_date',
-        3 => 'title',
+        2 => 'title',
+        3 => 'field_core_date_published',
         4 => 'field_core_introduction',
-        5 => 'field_announcement_location',
+        6 => 'field_announcement_location',
       ),
       'top' => array(
-        6 => 'group_announcement_contextual',
-        7 => 'field_core_topics',
-        8 => 'field_announcement_image',
-        10 => 'field_core_department',
-        12 => 'field_core_persons',
+        5 => 'group_announcement_contextual',
+        7 => 'field_announcement_image',
+        8 => 'field_core_topics',
+        9 => 'field_core_department',
+        14 => 'field_core_persons',
       ),
       'central' => array(
-        10 => 'group_announcement_main',
-        11 => 'body',
+        10 => 'body',
+        11 => 'group_announcement_main',
+        12 => 'field_announcement_info',
         13 => 'group_announcement_content',
-        14 => 'field_announcement_info',
-        15 => 'group_announcement_rsb_content',
-        16 => 'field_core_links',
+        15 => 'field_core_links',
+        16 => 'group_announcement_rsb_content',
         17 => 'related_announcements',
         18 => 'social_bookmark_webtools',
       ),
@@ -469,21 +460,21 @@ function dt_announcement_ds_layout_settings_info() {
     'fields' => array(
       'group_announcement_meta' => 'left_header',
       'field_announcement_type' => 'left_header',
-      'post_date' => 'left_header',
       'title' => 'left_header',
+      'field_core_date_published' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'field_announcement_location' => 'left_header',
       'group_announcement_contextual' => 'top',
-      'field_core_topics' => 'top',
+      'field_announcement_location' => 'left_header',
       'field_announcement_image' => 'top',
-      'body' => 'central',
+      'field_core_topics' => 'top',
       'field_core_department' => 'top',
+      'body' => 'central',
       'group_announcement_main' => 'central',
-      'field_core_persons' => 'top',
-      'group_announcement_content' => 'central',
       'field_announcement_info' => 'central',
-      'group_announcement_rsb_content' => 'central',
+      'group_announcement_content' => 'central',
+      'field_core_persons' => 'top',
       'field_core_links' => 'central',
+      'group_announcement_rsb_content' => 'central',
       'related_announcements' => 'central',
       'social_bookmark_webtools' => 'central',
     ),
@@ -515,14 +506,14 @@ function dt_announcement_ds_layout_settings_info() {
         0 => 'group_announcement_meta',
         1 => 'title_field',
         2 => 'field_announcement_type',
-        3 => 'post_date',
+        3 => 'field_core_date_published',
       ),
     ),
     'fields' => array(
       'group_announcement_meta' => 'main',
       'title_field' => 'main',
       'field_announcement_type' => 'main',
-      'post_date' => 'main',
+      'field_core_date_published' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -552,7 +543,7 @@ function dt_announcement_ds_layout_settings_info() {
         2 => 'title_field',
         3 => 'field_announcement_type',
         4 => 'field_core_description',
-        5 => 'post_date',
+        5 => 'field_core_date_published',
       ),
       'second' => array(
         6 => 'field_announcement_image',
@@ -564,7 +555,7 @@ function dt_announcement_ds_layout_settings_info() {
       'title_field' => 'main',
       'field_announcement_type' => 'main',
       'field_core_description' => 'main',
-      'post_date' => 'main',
+      'field_core_date_published' => 'main',
       'field_announcement_image' => 'second',
     ),
     'classes' => array(),

@@ -32,6 +32,7 @@ function dt_announcement_field_group_info() {
       6 => 'field_core_introduction',
       7 => 'field_core_description',
       8 => 'field_core_legacy_link',
+      9 => 'field_core_date_published',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -145,8 +146,8 @@ function dt_announcement_field_group_info() {
     'label' => 'Main Section',
     'weight' => '5',
     'children' => array(
-      0 => 'group_announcement_rsb_content',
-      1 => 'group_announcement_content',
+      0 => 'group_announcement_content',
+      1 => 'group_announcement_rsb_content',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -176,7 +177,7 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'field_announcement_location',
       1 => 'field_announcement_type',
-      2 => 'post_date',
+      2 => 'field_core_date_published',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -202,7 +203,7 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_core_date_published',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -226,7 +227,7 @@ function dt_announcement_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_announcement_type',
-      1 => 'post_date',
+      1 => 'field_core_date_published',
       2 => 'sticky_label',
     ),
     'format_type' => 'meta_wrapper',
