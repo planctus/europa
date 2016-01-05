@@ -52,6 +52,7 @@ features[field_instance][] = node-priority_policy_area-field_core_publications
 features[field_instance][] = node-priority_policy_area-field_core_section_intro
 features[field_instance][] = node-priority_policy_area-field_core_social_network_links
 features[field_instance][] = node-priority_policy_area-field_core_topics
+features[field_instance][] = node-priority_policy_area-field_core_type_content
 features[field_instance][] = node-priority_policy_area-group_content_access
 features[field_instance][] = node-priority_policy_area-og_group_ref
 features[field_instance][] = node-priority_policy_area-title_field

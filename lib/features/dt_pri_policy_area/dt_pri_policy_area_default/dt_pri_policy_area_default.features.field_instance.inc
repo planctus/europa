@@ -113,6 +113,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -174,6 +175,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -230,6 +232,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -290,6 +293,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
+        'settings' => array(),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -368,6 +372,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1019,6 +1024,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -1079,6 +1085,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 0,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1146,6 +1153,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1334,6 +1342,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1368,6 +1377,53 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_type_content'
+  $field_instances['node-priority_policy_area-field_core_type_content'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 51,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_type_content',
+    'label' => 'Type selection',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 0,
     ),
   );
 
@@ -1604,6 +1660,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
   t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');
   t('Title');
+  t('Type selection');
 
   return $field_instances;
 }
