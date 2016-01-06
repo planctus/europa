@@ -91,24 +91,6 @@ function dt_core_create_term($vocabulary, $name, $lang = 'en', $weight = 0, $tsi
 }
 
 /**
- * Add system languages.
- *
- * @param array $languages
- *   Array of languages codes.
- */
-function dt_core_add_languages($languages = array()) {
-  // Enabling languages. TO BE MOVED!
-  if (module_exists('locale')) {
-    include_once DRUPAL_ROOT . '/includes/locale.inc';
-    if (!empty($languages)) {
-      foreach ($languages as $lang) {
-        locale_add_language($lang);
-      }
-    }
-  }
-}
-
-/**
  * Get taxonomy term ID by term name.
  *
  * @param string $term
