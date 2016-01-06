@@ -91,22 +91,6 @@ function dt_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -186,14 +170,14 @@ function dt_page_ds_layout_settings_info() {
         23 => 'field_core_departments',
         24 => 'field_core_persons',
         25 => 'field_core_topics',
+        6 => 'field_core_banner',
       ),
       'left' => array(
         3 => 'in_page_navigation',
       ),
       'central' => array(
         4 => 'group_page_priorities',
-        5 => 'field_core_banner',
-        6 => 'priorities_preprocess',
+        5 => 'priorities_preprocess',
         7 => 'group_page_free_field',
         8 => 'body',
         9 => 'group_page_next_steps',
@@ -216,7 +200,7 @@ function dt_page_ds_layout_settings_info() {
       'group_page_contextual_navigation' => 'top',
       'in_page_navigation' => 'left',
       'group_page_priorities' => 'central',
-      'field_core_banner' => 'central',
+      'field_core_banner' => 'top',
       'priorities_preprocess' => 'central',
       'group_page_free_field' => 'central',
       'body' => 'central',
@@ -264,19 +248,15 @@ function dt_page_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_page_meta',
-        1 => 'title_field',
-        2 => 'content_type_label',
-        3 => 'field_core_description',
+        0 => 'title_field',
+        1 => 'field_core_description',
       ),
       'second' => array(
-        4 => 'field_core_image',
+        2 => 'field_core_image',
       ),
     ),
     'fields' => array(
-      'group_page_meta' => 'main',
       'title_field' => 'main',
-      'content_type_label' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',
     ),
