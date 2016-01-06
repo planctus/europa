@@ -34,7 +34,7 @@ function dt_banner_video_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_banner_caption',
-    'label' => 'Video caption',
+    'label' => 'Caption',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -540,7 +540,7 @@ function dt_banner_video_field_default_field_instances() {
   t('Groups audience');
   t('Paragraph');
   t('Select media type');
-  t('Video caption');
+  t('Caption');
 
   return $field_instances;
 }
