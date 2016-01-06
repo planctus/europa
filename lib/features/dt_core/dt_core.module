@@ -31,7 +31,7 @@ class DTCoreParentCircular extends Exception {}
 function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'entityreference') {
     if ($context['field']['settings']['target_type'] == 'node' && !empty($context['field']['settings']['handler_settings']['target_bundles'])) {
-      $types = $context['field']['settings']['handler_settings']['target_bundles'];
+      $types = array_intersect($context['field']['settings']['handler_settings']['target_bundles'], array_keys(node_type_get_types()));
       $types_count = count($types);
       $links = '';
       $i = 0;
