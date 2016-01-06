@@ -86,12 +86,21 @@ function dt_banner_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => 'banner_image_module_picture_empty_srcset_1x',
           'image_link' => '',
-          'image_style' => 'media_thumbnail_small',
+          'picture_mapping' => 'banner_image',
         ),
-        'type' => 'image',
+        'type' => 'picture',
         'weight' => 2,
       ),
       'teaser' => array(
