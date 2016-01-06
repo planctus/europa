@@ -18,7 +18,7 @@ function _dt_core_pol_menu_footer() {
   );
 
   $weight = 0;
-  foreach($menu_items as $title => $path) {
+  foreach ($menu_items as $title => $path) {
     dt_core_menu_item($menu, $path, 0, $title, 'dt_core_pol', $weight);
     $weight++;
   }
