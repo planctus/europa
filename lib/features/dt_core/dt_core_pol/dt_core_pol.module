@@ -5,3 +5,23 @@
  */
 
 include_once 'dt_core_pol.features.inc';
+
+/**
+ * Helper function to adapt the services menu.
+ */
+function _dt_core_pol_menu_footer() {
+  $menu = menu_load_links('menu-dt-service-links');
+  $hide = array(
+    'About this beta',
+    'Jobs at the European Commission',
+  );
+
+  foreach($menu as $menu_item) {
+    if (in_array($menu_item['link_title'], $hide)) {
+      $menu_item['hidden'] = TRUE;
+      menu_link_save($menu_item);
+    }
+  }
+
+  // Remov
+}
