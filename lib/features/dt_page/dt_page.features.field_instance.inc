@@ -213,6 +213,8 @@ function dt_page_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -274,6 +276,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -338,21 +341,9 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => 0,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => 0,
-          'trim_options' => array(
-            'text' => 0,
-          ),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 3,
       ),
       'title' => array(
@@ -658,63 +649,6 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_latest_visibility'
-  $field_instances['node-basic_page-field_core_latest_visibility'] = array(
-    'bundle' => 'basic_page',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Select this checkbox to show the latest block in this page',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_latest_visibility',
-    'label' => 'Latest visibility',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-basic_page-field_core_in_page_navigation'
   $field_instances['node-basic_page-field_core_in_page_navigation'] = array(
     'bundle' => 'basic_page',
@@ -853,6 +787,63 @@ function dt_page_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_core_latest_visibility'
+  $field_instances['node-basic_page-field_core_latest_visibility'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 16,
     ),
   );
 
@@ -1137,6 +1128,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -1206,6 +1198,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1269,6 +1262,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1336,6 +1330,8 @@ This will appear as a timeline on the page.
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1457,6 +1453,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1728,6 +1725,7 @@ This will appear as a timeline on the page.
   t('In page navigation');
   t('Introduction');
   t('Latest');
+  t('Latest visibility');
   t('Legacy link');
   t('Next steps');
   t('Parent');
@@ -1746,6 +1744,7 @@ This will appear as a timeline on the page.
   t('Select the related priority or priorities.');
   t('Select the related topics.');
   t('Select this checkbox in order to have In-page navigation enabled');
+  t('Select this checkbox to show the latest block in this page');
   t('Set the next steps.
 This will appear as a timeline on the page.
 ');
