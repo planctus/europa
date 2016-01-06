@@ -34,7 +34,7 @@ function dt_banner_video_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_banner_caption',
-    'label' => 'Caption',
+    'label' => 'Video caption',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -105,12 +105,21 @@ function dt_banner_video_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => 'banner_image_module_picture_empty_srcset_1x',
           'image_link' => '',
-          'image_style' => '',
+          'picture_mapping' => 'banner_image',
         ),
-        'type' => 'image',
+        'type' => 'picture',
         'weight' => 2,
       ),
     ),
@@ -540,7 +549,7 @@ function dt_banner_video_field_default_field_instances() {
   t('Groups audience');
   t('Paragraph');
   t('Select media type');
-  t('Caption');
+  t('Video caption');
 
   return $field_instances;
 }
