@@ -104,7 +104,7 @@ function dt_core_pol_update_7105() {
 function dt_core_pol_update_7106() {
   // Revert the relevant components.
   features_revert(array(
-    'dt_core_pol' => array('context'),
+    'dt_core_pol' => array('context', 'menu_links'),
     'dt_core' => array('menu_custom'),
   ));
 

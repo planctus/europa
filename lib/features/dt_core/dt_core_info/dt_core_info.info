@@ -16,7 +16,6 @@ features[ds_fields][] = in_page_navigation
 features[ds_view_modes][] = meta
 features[ds_view_modes][] = title
 features[features_api][] = api:2
-features[menu_custom][] = menu-dt-menu-social-media
 features[menu_links][] = menu-dt-menu-social-media_facebook:https://www.facebook.com/EuropeanCommission
 features[menu_links][] = menu-dt-menu-social-media_other-social-media:http://ec.europa.eu/dgs/communication/services/journalist/social-media_en.htm
 features[menu_links][] = menu-dt-menu-social-media_twitter:https://twitter.com/eu_commission
