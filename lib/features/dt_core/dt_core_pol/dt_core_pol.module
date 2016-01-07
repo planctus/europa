@@ -13,7 +13,7 @@ function _dt_core_pol_menu_footer() {
   $menu = 'menu-dt-service-links';
   $menu_items = array(
     'Cookies' => 'http://ec.europa.eu/cookies/index_en.htm',
-    'Legal notice' => ' http://ec.europa.eu/geninfo/legal_notices_en.htm',
+    'Legal notice' => 'http://ec.europa.eu/geninfo/legal_notices_en.htm',
     'Contact' => 'http://ec.europa.eu/contact/index_en.htm',
   );
 
