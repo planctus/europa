@@ -27,3 +27,8 @@ regions[footer_right] = Footer right
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; stylesheets[all][] = css/style.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+scripts[] = 'js/commissioner.js'
