@@ -27,7 +27,7 @@ function dt_core_pol_install() {
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
   // Disable a menu item.
-  $mlid =  _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
     $menu_item = menu_link_load($mlid);
     $menu_item['hidden'] = TRUE;
@@ -115,7 +115,7 @@ function dt_core_pol_update_7106() {
   theme_enable(array('political'));
   variable_set('theme_default', 'political');
   // Disable a menu item.
-  $mlid =  _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
     $menu_item = menu_link_load($mlid);
     $menu_item['hidden'] = TRUE;
