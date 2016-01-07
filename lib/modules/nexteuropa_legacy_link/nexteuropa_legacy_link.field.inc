@@ -106,7 +106,7 @@ function nexteuropa_legacy_link_field_formatter_view($entity_type, $entity, $fie
   $element = array();
 
   if (!empty($output)) {
-    if ($settings['title_link'] == 'legacy_link' && $legacy_link = _nexteuropa_legacy_link_get('node', $entity)) {
+    if ($settings['title_link'] == 'legacy_link' && $legacy_link = _nexteuropa_legacy_link_get('node', $entity, $langcode)) {
       $output = l($output, $legacy_link, array('html' => TRUE));
     }
 

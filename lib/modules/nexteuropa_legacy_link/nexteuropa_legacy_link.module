@@ -99,7 +99,7 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
       switch ($name) {
         // Simple key values on the node.
         case 'legacy-link':
-          if ($legacy_link = _nexteuropa_legacy_link_get('node', $node)) {
+          if ($legacy_link = _nexteuropa_legacy_link_get('node', $node, $node->language)) {
             $replacements[$original] = url($legacy_link);
           }
           else {
@@ -120,6 +120,10 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
  * Helper function to check if legacy link exist.
  */
 function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode) {
+  if (!isset($langcode)) {
+    $langcode = $GLOBALS['language_content']->language;
+  }
+
   $wrapper = entity_metadata_wrapper($entity_type, $entity);
   if ($wrapper->__isset('field_core_legacy_link')) {
     $legacy_link = $wrapper->language($langcode)->field_core_legacy_link->value();
