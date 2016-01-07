@@ -50,7 +50,7 @@ function dt_core_menu_link($link, $lang = FALSE) {
  *   Return value from Drupal's entity_save() API call,
  *   or FALSE if no vocabulary has been found.
  */
-function dt_core_create_term($vocabulary, $name, $lang = 'en', $weight = 0, $tsid = FALSE, $parent = FALSE) {
+function _dt_core_create_term($vocabulary, $name, $lang = 'en', $weight = 0, $tsid = FALSE, $parent = FALSE) {
 
   if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary)) {
     // Exit if term already exists for that vocabulary.
@@ -98,7 +98,7 @@ function dt_core_create_term($vocabulary, $name, $lang = 'en', $weight = 0, $tsi
  * @param int $vid
  *   Vocabulary vid.
  */
-function dt_core_term_by_name($term, $vid) {
+function _dt_core_term_by_name($term, $vid) {
   $query = db_select('taxonomy_term_data', 't');
   $tid = $query
     ->fields('t', array('tid'))
@@ -137,7 +137,7 @@ function dt_core_term_by_name($term, $vid) {
  * @return int
  *   The mlid of the created menu item.
  */
-function dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
+function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
   $link = dt_core_menu_link($link, $lang);
   $plid = ($plid > 0) ? $plid : 0;
 
@@ -179,7 +179,7 @@ function dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang 
  * @return string
  *   Return nid.
  */
-function dt_core_create_node($type, $title, $path = 'node', $lang = LANGUAGE_NONE, $menu = NULL) {
+function _dt_core_create_node($type, $title, $path = 'node', $lang = LANGUAGE_NONE, $menu = NULL) {
   $node = new stdClass();
   $node->type = $type;
   node_object_prepare($node);
@@ -204,7 +204,7 @@ function dt_core_create_node($type, $title, $path = 'node', $lang = LANGUAGE_NON
 /**
  * Helper function to delete menu, menu links, taxonomies.
  */
-function dt_core_delete($name, $type = 'menu', $op = 'items') {
+function _dt_core_delete($name, $type = 'menu', $op = 'items') {
   switch ($type) {
     case 'menu':
       if ($op == 'items') {
@@ -249,7 +249,7 @@ function dt_core_delete($name, $type = 'menu', $op = 'items') {
 /**
  * Helper function to get the mlid basing on the link name.
  */
-function dt_core_menu_item_name_get($name, $voc) {
+function _dt_core_menu_item_name_get($name, $voc) {
   $mlid = db_select('menu_links', 'ml')
     ->fields('ml', array('mlid'))
     ->condition('link_title', $name)
