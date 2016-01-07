@@ -247,9 +247,9 @@ function cwt_biography_field_group_info() {
         'show_label' => '0',
         'label_element' => 'h2',
         'attributes' => 'id="collapse"',
-        'modifier' => '',
+        'modifier' => 'section__group--full-width',
         'layout' => '',
-        'classes' => 'section__group section__group--full-width section__group--no-margin section__group--highlight-grey collapse',
+        'classes' => 'section__group--no-margin section__group--highlight-grey section__group--collapsible collapse',
       ),
     ),
   );
@@ -316,7 +316,7 @@ function cwt_biography_field_group_info() {
       'label' => 'Contextual navigation',
       'instance_settings' => array(
         'modifier' => '',
-        'classes' => 'group-bio-contextual field-group-context_nav',
+        'classes' => 'group-bio-contextual field-group',
       ),
     ),
   );
@@ -532,7 +532,7 @@ function cwt_biography_field_group_info() {
         'attributes' => '',
         'modifier' => '',
         'layout' => '',
-        'classes' => 'row bio--top listing',
+        'classes' => 'row section__group--biography-top',
       ),
     ),
   );
@@ -678,7 +678,7 @@ function cwt_biography_field_group_info() {
       'label' => 'Bio top footer',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'group-bio-top-footer field-group-div',
+        'classes' => 'group-bio-top-footer field-group field-group--inline-bottom',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -711,7 +711,7 @@ function cwt_biography_field_group_info() {
       'label' => 'Bio top wrapper',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'listing__item--bio',
+        'classes' => '',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
