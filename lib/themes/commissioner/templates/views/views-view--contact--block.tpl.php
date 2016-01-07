@@ -44,33 +44,37 @@
     </div>
   <?php endif; ?>
 
-  <?php if ($attachment_before): ?>
-    <div class="attachment attachment-before">
-      <?php print $attachment_before; ?>
-    </div>
-  <?php endif; ?>
+  <div class="row">
+    <?php if ($attachment_before): ?>
+      <div class="attachment attachment-before">
+        <?php print $attachment_before; ?>
+      </div>
+    <?php endif; ?>
 
-  <?php if ($rows): ?>
-    <div class="view-content listing">
-      <?php print $rows; ?>
-    </div>
-  <?php elseif ($empty): ?>
-    <div class="view-empty">
-      <?php print $empty; ?>
-    </div>
-  <?php endif; ?>
+    <?php if ($rows): ?>
+      <div class="view-content col-md-6">
+        <?php print $rows; ?>
+      </div>
+    <?php elseif ($empty): ?>
+      <div class="view-empty">
+        <?php print $empty; ?>
+      </div>
+    <?php endif; ?>
 
-  <?php if ($pager): ?>
-    <?php print $pager; ?>
-  <?php endif; ?>
+    <?php if ($pager): ?>
+      <?php print $pager; ?>
+    <?php endif; ?>
 
-  <?php if ($attachment_after): ?>
-      <?php print $attachment_after; ?>
-  <?php endif; ?>
+    <?php if ($attachment_after): ?>
+      <div class="col-md-6 col-separator-left">
+        <?php print $attachment_after; ?>
+      </div>
+    <?php endif; ?>
 
-  <?php if ($more): ?>
-    <?php print $more; ?>
-  <?php endif; ?>
+    <?php if ($more): ?>
+      <?php print $more; ?>
+    <?php endif; ?>
+</div>
 
   <?php if ($footer): ?>
     <div class="view-footer">
