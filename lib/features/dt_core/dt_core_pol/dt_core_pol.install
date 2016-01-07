@@ -27,8 +27,16 @@ function dt_core_pol_install() {
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
   // Disable a menu item.
-  $menu_item = _dt_core_menu();
-  menu_link_load();
+  $mlid =  _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  if (is_numeric($mlid)) {
+    $menu_item = menu_link_load($mlid);
+    $menu_item['hidden'] = TRUE;
+    menu_link_save($menu_item);
+  }
+
+  // Set the homepage.
+  variable_set('site_frontpage', 'priorities');
+
 }
 
 /**
@@ -106,4 +114,15 @@ function dt_core_pol_update_7106() {
   // Enabling europa base theme.
   theme_enable(array('political'));
   variable_set('theme_default', 'political');
+  // Disable a menu item.
+  $mlid =  _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  if (is_numeric($mlid)) {
+    $menu_item = menu_link_load($mlid);
+    $menu_item['hidden'] = TRUE;
+    menu_link_save($menu_item);
+  }
+
+  // Set the homepage.
+  $nid = variable_get('dt_priority_page_id', '88');
+  variable_set('site_frontpage', 'node/' . $nid);
 }
