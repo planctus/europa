@@ -36,61 +36,6 @@ function dt_core_menu_link($link, $lang = FALSE) {
 }
 
 /**
- * Create a taxonomy term for a given vocabulary.
- *
- * @param string $vocabulary
- *   Vocabulary machine name.
- * @param string $name
- *   Name of the term to be created.
- * @param string $parent
- *   Name of the parent term, already existing
- *   in the specified vocabulary.
- *
- * @return string
- *   Return value from Drupal's entity_save() API call,
- *   or FALSE if no vocabulary has been found.
- */
-function _dt_core_create_term($vocabulary, $name, $lang = 'en', $weight = 0, $tsid = FALSE, $parent = FALSE) {
-
-  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary)) {
-    // Exit if term already exists for that vocabulary.
-    $tid = dt_core_term_by_name($name, $vocabulary->vid);
-    if (is_numeric($tid)) {
-      return FALSE;
-    }
-
-    $values = array();
-    $values['vocabulary_machine_name'] = $vocabulary->machine_name;
-    $values['vid'] = $vocabulary->vid;
-    $values['name'] = $name;
-    $values['weight'] = $weight;
-    $values['language'] = $lang;
-    if ($parent) {
-      $values['parent'] = $parent;
-    }
-
-    $entity = entity_create('taxonomy_term', $values);
-    entity_save('taxonomy_term', $entity);
-
-    if (!$tsid) {
-      $ts = i18n_translation_set_create('taxonomy_term');
-      $ts->add_item($entity, $lang);
-      $ts->save(TRUE);
-    }
-    else {
-      $ts = i18n_translation_set_load($tsid);
-      $ts->add_item($entity, $lang);
-      $ts->save(TRUE);
-    }
-    $ret = array(
-      'tid' => $entity->tid,
-      'tsid' => $ts->tsid,
-    );
-    return $ret;
-  }
-}
-
-/**
  * Get taxonomy term ID by term name.
  *
  * @param string $term
