@@ -7,12 +7,12 @@
 module_load_include('inc', 'nexteuropa_legacy_link', 'nexteuropa_legacy_link.field');
 
 /**
- * Implements hook_entity_load().
+ * Implements hook_entity_prepare_view().
  */
-function nexteuropa_legacy_link_entity_load($entities, $type) {
+function nexteuropa_legacy_link_entity_prepare_view($entities, $type, $langcode) {
   foreach ($entities as $entity) {
     // If Legacy link field is used add it to path array.
-    if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity)) {
+    if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity, $langcode)) {
       $entity->legacy = $legacy_link;
     }
   }
@@ -119,10 +119,10 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
 /**
  * Helper function to check if legacy link exist.
  */
-function _nexteuropa_legacy_link_get($entity_type, $entity) {
+function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode) {
   $wrapper = entity_metadata_wrapper($entity_type, $entity);
   if ($wrapper->__isset('field_core_legacy_link')) {
-    $legacy_link = $wrapper->field_core_legacy_link->value();
+    $legacy_link = $wrapper->language($langcode)->field_core_legacy_link->value();
 
     return (isset($legacy_link['url'])) ? $legacy_link['url'] : FALSE;
   }
