@@ -3614,7 +3614,7 @@ function cwt_biography_field_default_field_instances() {
   t('Status');
   t('Tagline');
   t('Team');
-  t('Team introduction ');
+  t('Team introduction');
   t('This is the text that will introduce the link to the team page, the generic format is like "The [commissioner]\'s team helps the [commissioner] in his/her daily job"');
   t('Timeline');
   t('Title');
