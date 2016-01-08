@@ -126,6 +126,7 @@ function dt_core_pol_update_7106() {
   if (is_numeric($mlid)) {
     $menu_item = menu_link_load($mlid);
     $menu_item['link_title'] = 'Priorities';
+    $menu_item['weight'] = 1;
     menu_link_save($menu_item);
   }
 
