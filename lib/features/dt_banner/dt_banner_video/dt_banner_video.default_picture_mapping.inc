@@ -19,10 +19,12 @@ function dt_banner_video_default_picture_mapping() {
   $picture_mapping->mapping = array(
     'breakpoints.theme.europa.wide' => array(
       '1x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_normal_1x',
       ),
       '2x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_normal_2x',
       ),
     ),
     'breakpoints.theme.europa.normal' => array(
@@ -37,26 +39,32 @@ function dt_banner_video_default_picture_mapping() {
     ),
     'breakpoints.theme.europa.medium' => array(
       '1x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_normal_1x',
       ),
       '2x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_normal_2x',
       ),
     ),
     'breakpoints.theme.europa.narrow' => array(
       '1x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_narrow_1x',
       ),
       '2x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_narrow_2x',
       ),
     ),
     'breakpoints.theme.europa.mobile' => array(
       '1x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_mobile_1x',
       ),
       '2x' => array(
-        'mapping_type' => '_none',
+        'mapping_type' => 'image_style',
+        'image_style' => 'banner_image_breakpoints_theme_europa_mobile_2x',
       ),
     ),
   );

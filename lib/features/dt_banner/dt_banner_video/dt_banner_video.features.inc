@@ -79,6 +79,102 @@ function dt_banner_video_image_default_styles() {
     ),
   );
 
+  // Exported image style: banner_image_breakpoints_theme_europa_mobile_1x.
+  $styles['banner_image_breakpoints_theme_europa_mobile_1x'] = array(
+    'name' => 'banner_image_breakpoints_theme_europa_mobile_1x',
+    'label' => 'banner_image_breakpoints_theme_europa_mobile_1x',
+    'effects' => array(
+      14 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'retina_images_image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'retina_images_image_resize_form',
+        'summary theme' => 'retina_images_image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 320,
+          'height' => 187,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: banner_image_breakpoints_theme_europa_mobile_2x.
+  $styles['banner_image_breakpoints_theme_europa_mobile_2x'] = array(
+    'name' => 'banner_image_breakpoints_theme_europa_mobile_2x',
+    'label' => 'banner_image_breakpoints_theme_europa_mobile_2x',
+    'effects' => array(
+      16 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'retina_images_image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'retina_images_image_resize_form',
+        'summary theme' => 'retina_images_image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 375,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: banner_image_breakpoints_theme_europa_narrow_1x.
+  $styles['banner_image_breakpoints_theme_europa_narrow_1x'] = array(
+    'name' => 'banner_image_breakpoints_theme_europa_narrow_1x',
+    'label' => 'banner_image_breakpoints_theme_europa_narrow_1x',
+    'effects' => array(
+      14 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'retina_images_image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'retina_images_image_resize_form',
+        'summary theme' => 'retina_images_image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 480,
+          'height' => 281,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: banner_image_breakpoints_theme_europa_narrow_2x.
+  $styles['banner_image_breakpoints_theme_europa_narrow_2x'] = array(
+    'name' => 'banner_image_breakpoints_theme_europa_narrow_2x',
+    'label' => 'banner_image_breakpoints_theme_europa_narrow_2x',
+    'effects' => array(
+      16 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'retina_images_image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'retina_images_image_resize_form',
+        'summary theme' => 'retina_images_image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 960,
+          'height' => 562,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
   // Exported image style: banner_image_module_picture_empty_srcset_1x.
   $styles['banner_image_module_picture_empty_srcset_1x'] = array(
     'name' => 'banner_image_module_picture_empty_srcset_1x',
