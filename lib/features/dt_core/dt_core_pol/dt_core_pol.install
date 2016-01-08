@@ -34,8 +34,11 @@ function dt_core_pol_install() {
     menu_link_save($menu_item);
   }
 
-  // Set the homepage.
-  variable_set('site_frontpage', 'priorities');
+  // Set the homepage if available.
+  $nid = variable_get('dt_priority_page_id', FALSE);
+  if ($nid) {
+    variable_set('site_frontpage', 'node/' . $nid);
+  }
 
 }
 
@@ -118,11 +121,13 @@ function dt_core_pol_update_7106() {
   $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
     $menu_item = menu_link_load($mlid);
-    $menu_item['hidden'] = TRUE;
+    $menu_item['link_title'] = 'Priorities';
     menu_link_save($menu_item);
   }
 
   // Set the homepage.
   $nid = variable_get('dt_priority_page_id', '88');
   variable_set('site_frontpage', 'node/' . $nid);
+  // Empty the value of the home link title for the breadcrumb.
+  variable_set('easy_breadcrumb-home_segment_title', '');
 }
