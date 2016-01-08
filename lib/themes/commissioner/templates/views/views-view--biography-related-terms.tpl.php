@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Main view template.
@@ -27,6 +26,7 @@
  * @ingroup views_templates
  */
 ?>
+<div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
     <?php print $title; ?>
@@ -37,44 +37,60 @@
       <?php print $header; ?>
     </div>
   <?php endif; ?>
-
   <?php if ($exposed): ?>
     <div class="view-filters">
       <?php print $exposed; ?>
     </div>
   <?php endif; ?>
+  <?php if (isset($items_count) || isset($feed_link)): ?>
+    <div class="filters__result-count">
+      <?php if(isset($feed_link)): ?>
+        <div class="rss-link__wrapper">
+          <div class="rss-link">
+            <span class="rss-link__label label">
+              <?php print t('Get updates:'); ?>
+            </span>
+            <?php print l('<span class="rss-link__icon icon-social icon-social--rss"></span>' . '<span class="rss-link__text">' . t('RSS') . '</span>', $feed_link, array('html' => TRUE)); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+      <span class="filters__items-number">
+          <?php print $items_count; ?>
+      </span>
+    </div>
+  <?php endif; ?>
 
-  <div class="row">
-    <?php if ($attachment_before): ?>
-      <div class="attachment attachment-before">
-        <?php print $attachment_before; ?>
-      </div>
-    <?php endif; ?>
+  <?php if (isset($active_filters)): ?>
+    <?php print $active_filters; ?>
+  <?php endif; ?>
+  <?php if ($attachment_before): ?>
+    <div class="attachment attachment-before">
+      <?php print $attachment_before; ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($rows): ?>
-      <div class="view-content col-md-6">
-        <?php print $rows; ?>
-      </div>
-    <?php elseif ($empty): ?>
-      <div class="view-empty">
-        <?php print $empty; ?>
-      </div>
-    <?php endif; ?>
+  <?php if ($rows): ?>
+    <div class="view-content context-nav__items">
+      <?php print $rows; ?>
+    </div>
+  <?php elseif ($empty): ?>
+    <div class="view-empty">
+      <?php print $empty; ?>
+    </div>
+  <?php endif; ?>
+  <?php if ($pager): ?>
+    <?php print $pager; ?>
+  <?php endif; ?>
 
-    <?php if ($pager): ?>
-      <?php print $pager; ?>
-    <?php endif; ?>
+  <?php if ($attachment_after): ?>
+    <div class="attachment attachment-after">
+      <?php print $attachment_after; ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($attachment_after): ?>
-      <div class="col-md-6 col-separator-left">
-        <?php print $attachment_after; ?>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($more): ?>
-      <?php print $more; ?>
-    <?php endif; ?>
-</div>
+  <?php if ($more): ?>
+    <?php print $more; ?>
+  <?php endif; ?>
 
   <?php if ($footer): ?>
     <div class="view-footer">
@@ -87,3 +103,5 @@
       <?php print $feed_icon; ?>
     </div>
   <?php endif; ?>
+
+</div><?php /* class view */ ?>
