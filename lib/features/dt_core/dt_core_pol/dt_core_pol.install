@@ -117,11 +117,11 @@ function dt_core_pol_update_7105() {
  * NEXTEUROPA-7954: Enabling political subtheme.
  */
 function dt_core_pol_update_7106() {
-  // Enabling europa base theme.
+  // Enabling  political theme and setting it as the default one.
   theme_enable(array('political'));
   variable_set('theme_default', 'political');
 
-  // Disable a menu item.
+  // Title of the menu item used as the home page link in the breadcrumb.
   $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
     $menu_item = menu_link_load($mlid);
