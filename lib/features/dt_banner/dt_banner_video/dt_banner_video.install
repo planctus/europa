@@ -26,3 +26,24 @@ function dt_banner_video_update_7101() {
 function dt_banner_video_update_7102() {
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('banner_video');
 }
+
+/**
+ * Update existing nodes to set default value to video for the selection field.
+ */
+function dt_banner_video_update_7103() {
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'banner_video');
+
+  $results = $query->execute();
+  if (isset($results['node'])) {
+    $nodes = node_load_multiple(array_keys($results['node']));
+
+    foreach ($nodes as $nid => $node) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $node_wrapper->field_select_media_type->set('video');
+      $node_wrapper->save();
+    }
+  }
+}
