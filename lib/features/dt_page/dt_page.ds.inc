@@ -249,22 +249,6 @@ function dt_page_ds_layout_settings_info() {
   $ds_layout->view_mode = 'teaser';
   $ds_layout->layout = 'ne_2col_sidebar_no_link';
   $ds_layout->settings = array(
-    'regions' => array(
-      'main' => array(
-        0 => 'title_field',
-        1 => 'field_core_description',
-      ),
-      'second' => array(
-        2 => 'field_core_image',
-        3 => 'field_core_link',
-      ),
-    ),
-    'fields' => array(
-      'title_field' => 'main',
-      'field_core_description' => 'main',
-      'field_core_image' => 'second',
-      'field_core_link' => 'second',
-    ),
     'classes' => array(),
     'wrappers' => array(
       'main' => 'div',
@@ -275,6 +259,23 @@ function dt_page_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+    'regions' => array(
+      'main' => array(
+        0 => 'title_field',
+        1 => 'field_core_description',
+      ),
+      'second' => array(
+        0 => 'field_core_image',
+        1 => 'field_core_link',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'main',
+      'field_core_description' => 'main',
+      'field_core_image' => 'second',
+      'field_core_link' => 'second',
+    ),
   );
   $export['node|basic_page|teaser'] = $ds_layout;
 
