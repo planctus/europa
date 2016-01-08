@@ -58,6 +58,26 @@ function cwt_core_ds_custom_fields_info() {
   );
   $export['social_media'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'collapse_button';
+  $ds_field->label = 'Collapse button';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+    'taxonomy_term' => 'taxonomy_term',
+    'comment' => 'comment',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<button class="btn btn-collapse" data-target="#collapse" data-toggle="collapse"><span class="toggling-text"></span>[node:field-core-collapse-button-text]<span class="icon icon--blue-dark icon--down"></span></button>',
+      'format' => 'full_html',
+    ),
+    'use_token' => 1,
+  );
+  $export['collapse_button'] = $ds_field;
+
   return $export;
 }
 
