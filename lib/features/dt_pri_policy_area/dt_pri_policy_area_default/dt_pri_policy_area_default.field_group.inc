@@ -148,6 +148,7 @@ function dt_pri_policy_area_default_field_group_info() {
       1 => 'field_core_persons',
       2 => 'field_core_policy_areas',
       3 => 'field_core_topics',
+      4 => 'field_core_parent',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -370,7 +371,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
-    'weight' => '0',
+    'weight' => '20',
     'children' => array(
       0 => 'content_type_label',
     ),
@@ -481,7 +482,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'group_pri_pol_area_background',
       1 => 'group_pri_pol_area_banner',

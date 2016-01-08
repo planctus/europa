@@ -215,7 +215,7 @@ function cwt_team_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '35',
+            'weight' => '36',
             'visible' => FALSE,
           ),
           'college' => array(

@@ -7,13 +7,18 @@
 module_load_include('inc', 'nexteuropa_legacy_link', 'nexteuropa_legacy_link.field');
 
 /**
- * Implements hook_entity_load().
+ * Implements hook_entity_prepare_view().
  */
-function nexteuropa_legacy_link_entity_load($entities, $type) {
+function nexteuropa_legacy_link_entity_prepare_view($entities, $type, $langcode) {
   foreach ($entities as $entity) {
     // If Legacy link field is used add it to path array.
-    if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity)) {
+    if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity, $langcode)) {
       $entity->legacy = $legacy_link;
+    }
+    // Adding prevent link, which is TRUE when we don't want a link,
+    // other case undefined.
+    if (_nexteuropa_legacy_link_prevent_link($type, $entity)) {
+      $entity->prevent_link = TRUE;
     }
   }
 }
@@ -99,7 +104,7 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
       switch ($name) {
         // Simple key values on the node.
         case 'legacy-link':
-          if ($legacy_link = _nexteuropa_legacy_link_get('node', $node)) {
+          if ($legacy_link = _nexteuropa_legacy_link_get('node', $node, $node->language)) {
             $replacements[$original] = url($legacy_link);
           }
           else {
@@ -119,12 +124,33 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
 /**
  * Helper function to check if legacy link exist.
  */
-function _nexteuropa_legacy_link_get($entity_type, $entity) {
+function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode) {
+  if (!isset($langcode)) {
+    $langcode = $GLOBALS['language_content']->language;
+  }
+
   $wrapper = entity_metadata_wrapper($entity_type, $entity);
   if ($wrapper->__isset('field_core_legacy_link')) {
-    $legacy_link = $wrapper->field_core_legacy_link->value();
+    $legacy_link = $wrapper->language($langcode)->field_core_legacy_link->value();
 
     return (isset($legacy_link['url'])) ? $legacy_link['url'] : FALSE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper function to check the link if it is necessary.
+ */
+function _nexteuropa_legacy_link_prevent_link($entity_type, $entity) {
+  $wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+  // Checking of type of content (if it is exists).
+  if ($wrapper->__isset('field_core_type_content')) {
+    $content_type = $wrapper->field_core_type_content->value();
+    if ($content_type == 'textblock') {
+      return TRUE;
+    }
   }
 
   return FALSE;
