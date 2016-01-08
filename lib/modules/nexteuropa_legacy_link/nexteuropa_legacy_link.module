@@ -66,7 +66,6 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
           continue;
         }
 
-
         foreach ($element['#items'] as $delta => $item) {
           // Check if item has Legacy link.
           if (isset($item['entity']->legacy)) {
