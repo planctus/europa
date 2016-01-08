@@ -4,6 +4,12 @@
     width: 100%;
     margin-bottom: 2em; }
 
+.node-type-team .page-content {
+  margin-top: 0; }
+
+.node-type-team .section--content-top > .section__group--full-width {
+  padding-top: 1.667em; }
+
 .field--field-social-networks .dt_social_network_links {
   float: left;
   margin-right: 0.3em; }
