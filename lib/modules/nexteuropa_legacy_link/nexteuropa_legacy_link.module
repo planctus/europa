@@ -7,18 +7,35 @@
 module_load_include('inc', 'nexteuropa_legacy_link', 'nexteuropa_legacy_link.field');
 
 /**
- * Implements hook_entity_prepare_view().
+ * Implements hook_entity_load().
  */
-function nexteuropa_legacy_link_entity_prepare_view($entities, $type, $langcode) {
-  foreach ($entities as $entity) {
-    // If Legacy link field is used add it to path array.
-    if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity, $langcode)) {
-      $entity->legacy = $legacy_link;
-    }
-    // Adding prevent link, which is TRUE when we don't want a link,
-    // other case undefined.
-    if (_nexteuropa_legacy_link_prevent_link($type, $entity)) {
-      $entity->prevent_link = TRUE;
+function nexteuropa_legacy_link_entity_load($entities, $type) {
+  _nexteuropa_legacylink_load_entities($entities, $type);
+}
+
+/**
+ * Implements hook_entitycache_ENTITY_TYPE_load().
+ */
+function nexteuropa_legacy_link_entitycache_node_load($entities) {
+  _nexteuropa_legacylink_load_entities($entities, 'node');
+}
+
+/**
+ * Custom function to parse entities being loaded with legacy link information.
+ */
+function _nexteuropa_legacylink_load_entities($entities, $type) {
+  // Check for the node type to save resources.
+  if ($type == 'node') {
+    foreach ($entities as $entity) {
+      // If Legacy link field is used add it to path array.
+      if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity)) {
+        $entity->legacy = $legacy_link;
+      }
+      // Adding prevent link, which is TRUE when we don't want a link,
+      // other case undefined.
+      if (_nexteuropa_legacy_link_prevent_link($type, $entity)) {
+        $entity->prevent_link = TRUE;
+      }
     }
   }
 }
@@ -26,7 +43,7 @@ function nexteuropa_legacy_link_entity_prepare_view($entities, $type, $langcode)
 /**
  * Implements hook_field_attach_view_alter().
  */
-function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
+function nexteuropa__legacy_link_field_attach_view_alter(&$output, $context) {
   foreach (element_children($output) as $field_name) {
     $element = &$output[$field_name];
     // Fix linked entity references to link to Legacy link and not to entity.
@@ -37,21 +54,22 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
 
       if ($element['#field_type'] == 'entityreference') {
         // Skip entity reference fields not targeting nodes.
-        if (
-          (
-            !isset($display['settings']['link']) ||
-            !isset($field['settings']['target_type']))  &&
-          (
-            $field['settings']['target_type'] !== 'node' ||
-            $field['settings']['target_type'] !== 'taxonomy_term'
-          )
-        ) {
+        $valid_targets = array(
+          'node',
+          'taxonomy_term',
+        );
+
+        $check_types = isset($field['settings']['target_type']) && in_array($field['settings']['target_type'], $valid_targets);
+        $check_setting = !isset($display['settings']['link']) || !isset($field['settings']['target_type']);
+
+        if ($check_setting && $check_types) {
           continue;
         }
 
+
         foreach ($element['#items'] as $delta => $item) {
           // Check if item has Legacy link.
-          if (isset($item['entity']->legacy)) {
+          if (isset($item['entity']->legacy) || $item['entity']->legacy = _nexteuropa_legacy_link_get($field['settings']['target_type'], $item['entity'])) {
             $element[$delta] = array('#markup' => l($item['entity']->title, $item['entity']->legacy));
           }
         }
@@ -124,7 +142,7 @@ function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options
 /**
  * Helper function to check if legacy link exist.
  */
-function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode) {
+function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode = NULL) {
   if (!isset($langcode)) {
     $langcode = $GLOBALS['language_content']->language;
   }
