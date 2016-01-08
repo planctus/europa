@@ -823,3 +823,11 @@ function dt_core_update_7158() {
   );
   module_enable($modules);
 }
+
+/**
+ * NEXTEUROPA-7659 - Default image for the header background.
+ */
+function dt_core_update_7159() {
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+}
