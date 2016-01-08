@@ -99,7 +99,7 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'team_contacts' => array(
-      'weight' => '3',
+      'weight' => '46',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -107,7 +107,23 @@ function cwt_team_ds_field_settings_info() {
           'func' => 'theme_ds_field_expert',
           'ow' => TRUE,
           'ow-el' => 'div',
-          'ow-cl' => 'container-fluid',
+          'ow-cl' => 'col-md-6',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'team_contact_image' => array(
+      'weight' => '47',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'col-md-6',
           'ow-def-cl' => FALSE,
           'ow-at' => '',
           'ow-def-at' => FALSE,
@@ -115,7 +131,7 @@ function cwt_team_ds_field_settings_info() {
       ),
     ),
     'team_members' => array(
-      'weight' => '4',
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -177,6 +193,21 @@ function cwt_team_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'team_contact_image';
+  $ds_field->label = 'Team contact - image';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'team|full';
+  $ds_field->properties = array(
+    'block' => 'views|team_cabinet_contact-block_1',
+    'block_render' => '1',
+  );
+  $export['team_contact_image'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'team_contacts';
   $ds_field->label = 'Team contacts';
   $ds_field->field_type = 6;
@@ -186,7 +217,7 @@ function cwt_team_ds_custom_fields_info() {
   $ds_field->ui_limit = 'team|*';
   $ds_field->properties = array(
     'block' => 'views|team_cabinet_contact-block',
-    'block_render' => '2',
+    'block_render' => '1',
   );
   $export['team_contacts'] = $ds_field;
 
@@ -201,7 +232,7 @@ function cwt_team_ds_custom_fields_info() {
   $ds_field->ui_limit = 'team|*';
   $ds_field->properties = array(
     'block' => 'views|team_cabinet_members-block_2',
-    'block_render' => '2',
+    'block_render' => '1',
   );
   $export['team_members'] = $ds_field;
 
@@ -329,21 +360,26 @@ function cwt_team_ds_layout_settings_info() {
         2 => 'field_team_tagline',
       ),
       'top' => array(
-        3 => 'team_contacts',
-        4 => 'group_team_contacts',
+        3 => 'group_team_contact',
+        6 => 'group_team_row',
+        7 => 'team_contacts',
+        8 => 'team_contact_image',
       ),
       'central' => array(
+        4 => 'group_team_members',
         5 => 'team_members',
-        6 => 'social_bookmark_webtools',
       ),
     ),
     'fields' => array(
       'content_type_label' => 'left_header',
       'title' => 'left_header',
       'field_team_tagline' => 'left_header',
-      'team_contacts' => 'top',
-      'group_team_contacts' => 'top',
+      'group_team_contact' => 'top',
+      'group_team_members' => 'central',
       'team_members' => 'central',
+      'group_team_row' => 'top',
+      'team_contacts' => 'top',
+      'team_contact_image' => 'top',
     ),
     'classes' => array(),
     'wrappers' => array(
