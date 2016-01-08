@@ -132,22 +132,6 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority_policy_area';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -272,18 +256,14 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_pri_pol_area_meta',
-        1 => 'content_type_label',
-        2 => 'title_field',
-        3 => 'field_core_description',
+        0 => 'title_field',
+        1 => 'field_core_description',
       ),
       'second' => array(
-        4 => 'field_core_image',
+        2 => 'field_core_image',
       ),
     ),
     'fields' => array(
-      'group_pri_pol_area_meta' => 'main',
-      'content_type_label' => 'main',
       'title_field' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',

@@ -106,8 +106,8 @@ function nexteuropa_legacy_link_field_formatter_view($entity_type, $entity, $fie
   $element = array();
 
   if (!empty($output)) {
-    if ($settings['title_link'] == 'legacy_link' && $legacy_link = _nexteuropa_legacy_link_get('node', $entity)) {
-      $output = l($output, $legacy_link, array('html' => TRUE));
+    if ($settings['title_link'] == 'legacy_link' && isset($entity->legacy)) {
+      $output = l($output, $entity->legacy, array('html' => TRUE));
     }
 
     $wrap_tag = empty($settings['title_style']) ? '_none' : $settings['title_style'];

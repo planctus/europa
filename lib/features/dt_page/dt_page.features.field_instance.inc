@@ -10,7 +10,7 @@
 function dt_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'comment-comment_node_basic_page-comment_body'
+  // Exported field_instance: 'comment-comment_node_basic_page-comment_body'.
   $field_instances['comment-comment_node_basic_page-comment_body'] = array(
     'bundle' => 'comment_node_basic_page',
     'default_value' => NULL,
@@ -44,7 +44,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-body'
+  // Exported field_instance: 'node-basic_page-body'.
   $field_instances['node-basic_page-body'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -131,7 +131,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_announcement'
+  // Exported field_instance: 'node-basic_page-field_core_announcement'.
   $field_instances['node-basic_page-field_core_announcement'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -151,7 +151,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -189,7 +189,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_banner'
+  // Exported field_instance: 'node-basic_page-field_core_banner'.
   $field_instances['node-basic_page-field_core_banner'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -213,10 +213,12 @@ function dt_page_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -254,7 +256,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_departments'
+  // Exported field_instance: 'node-basic_page-field_core_departments'.
   $field_instances['node-basic_page-field_core_departments'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -274,6 +276,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -317,7 +320,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_description'
+  // Exported field_instance: 'node-basic_page-field_core_description'.
   $field_instances['node-basic_page-field_core_description'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -334,25 +337,13 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => 0,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => 0,
-          'trim_options' => array(
-            'text' => 0,
-          ),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 3,
       ),
       'title' => array(
@@ -412,7 +403,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_featured_item'
+  // Exported field_instance: 'node-basic_page-field_core_featured_item'.
   $field_instances['node-basic_page-field_core_featured_item'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -473,7 +464,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_header_image'
+  // Exported field_instance: 'node-basic_page-field_core_header_image'.
   $field_instances['node-basic_page-field_core_header_image'] = array(
     'bundle' => 'basic_page',
     'deleted' => 0,
@@ -493,7 +484,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -559,7 +550,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_image'
+  // Exported field_instance: 'node-basic_page-field_core_image'.
   $field_instances['node-basic_page-field_core_image'] = array(
     'bundle' => 'basic_page',
     'deleted' => 0,
@@ -579,7 +570,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -658,64 +649,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_latest_visibility'
-  $field_instances['node-basic_page-field_core_latest_visibility'] = array(
-    'bundle' => 'basic_page',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Select this checkbox to show the latest block in this page',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_latest_visibility',
-    'label' => 'Latest visibility',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance: 'node-basic_page-field_core_in_page_navigation'
+  // Exported field_instance: 'node-basic_page-field_core_in_page_navigation'.
   $field_instances['node-basic_page-field_core_in_page_navigation'] = array(
     'bundle' => 'basic_page',
     'default_value' => array(
@@ -736,7 +670,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -772,7 +706,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_introduction'
+  // Exported field_instance: 'node-basic_page-field_core_introduction'.
   $field_instances['node-basic_page-field_core_introduction'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -856,7 +790,64 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_legacy_link'
+  // Exported field_instance: 'node-basic_page-field_core_latest_visibility'.
+  $field_instances['node-basic_page-field_core_latest_visibility'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_core_legacy_link'.
   $field_instances['node-basic_page-field_core_legacy_link'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -874,7 +865,7 @@ function dt_page_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -928,7 +919,79 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_links'
+  // Exported field_instance: 'node-basic_page-field_core_link'.
+  $field_instances['node-basic_page-field_core_link'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Used mainly for Call to Action button value.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 3,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_link',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_core_links'.
   $field_instances['node-basic_page-field_core_links'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1000,7 +1063,7 @@ function dt_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_next_steps'
+  // Exported field_instance: 'node-basic_page-field_core_next_steps'.
   $field_instances['node-basic_page-field_core_next_steps'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1062,7 +1125,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_parent'
+  // Exported field_instance: 'node-basic_page-field_core_parent'.
   $field_instances['node-basic_page-field_core_parent'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1079,7 +1142,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1117,7 +1180,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_persons'
+  // Exported field_instance: 'node-basic_page-field_core_persons'.
   $field_instances['node-basic_page-field_core_persons'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1137,6 +1200,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -1186,7 +1250,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_policy_area'
+  // Exported field_instance: 'node-basic_page-field_core_policy_area'.
   $field_instances['node-basic_page-field_core_policy_area'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1206,6 +1270,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1249,7 +1314,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_priorities'
+  // Exported field_instance: 'node-basic_page-field_core_priorities'.
   $field_instances['node-basic_page-field_core_priorities'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1269,6 +1334,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1312,7 +1378,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_publications'
+  // Exported field_instance: 'node-basic_page-field_core_publications'.
   $field_instances['node-basic_page-field_core_publications'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1336,6 +1402,8 @@ This will appear as a timeline on the page.
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -1377,7 +1445,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_social_network_links'
+  // Exported field_instance: 'node-basic_page-field_core_social_network_links'.
   $field_instances['node-basic_page-field_core_social_network_links'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1436,7 +1504,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_topics'
+  // Exported field_instance: 'node-basic_page-field_core_topics'.
   $field_instances['node-basic_page-field_core_topics'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1457,6 +1525,7 @@ This will appear as a timeline on the page.
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1512,7 +1581,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-group_content_access'
+  // Exported field_instance: 'node-basic_page-group_content_access'.
   $field_instances['node-basic_page-group_content_access'] = array(
     'bundle' => 'basic_page',
     'default_value' => array(
@@ -1533,7 +1602,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1577,7 +1646,7 @@ This will appear as a timeline on the page.
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-basic_page-og_group_ref'
+  // Exported field_instance: 'node-basic_page-og_group_ref'.
   $field_instances['node-basic_page-og_group_ref'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1594,7 +1663,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1648,7 +1717,7 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-title_field'
+  // Exported field_instance: 'node-basic_page-title_field'.
   $field_instances['node-basic_page-title_field'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
@@ -1665,7 +1734,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1728,7 +1797,9 @@ This will appear as a timeline on the page.
   t('In page navigation');
   t('Introduction');
   t('Latest');
+  t('Latest visibility');
   t('Legacy link');
+  t('Link');
   t('Next steps');
   t('Parent');
   t('Priorities');
@@ -1746,12 +1817,14 @@ This will appear as a timeline on the page.
   t('Select the related priority or priorities.');
   t('Select the related topics.');
   t('Select this checkbox in order to have In-page navigation enabled');
+  t('Select this checkbox to show the latest block in this page');
   t('Set the next steps.
 This will appear as a timeline on the page.
 ');
   t('Social media profile links');
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('Title');
+  t('Used mainly for Call to Action button value.');
 
   return $field_instances;
 }

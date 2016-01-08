@@ -540,7 +540,7 @@ function dt_pri_policy_area_default_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Policy areas',
+    'label' => 'Actions',
     'weight' => '5',
     'children' => array(
       0 => 'field_core_child_policies',
@@ -548,7 +548,7 @@ function dt_pri_policy_area_default_field_group_info() {
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Policy areas',
+      'label' => 'Actions',
       'instance_settings' => array(
         'classes' => 'section__group sidebar-field-group__main',
         'element' => 'div',
