@@ -148,6 +148,7 @@ function dt_pri_policy_area_default_field_group_info() {
       1 => 'field_core_persons',
       2 => 'field_core_policy_areas',
       3 => 'field_core_topics',
+      4 => 'field_core_parent',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(

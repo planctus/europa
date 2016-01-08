@@ -973,10 +973,16 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'weight' => 50,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',

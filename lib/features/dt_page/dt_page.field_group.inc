@@ -227,7 +227,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '16',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -285,7 +285,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '10',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_featured_item',
       1 => 'group_page_latest_sidebar',
@@ -463,7 +463,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '10 priorities',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'priorities_preprocess',
     ),
@@ -492,7 +492,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '18',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_links',
     ),

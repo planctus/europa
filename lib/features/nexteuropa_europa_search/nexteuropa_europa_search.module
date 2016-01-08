@@ -88,7 +88,6 @@ function nexteuropa_europa_search_search_form() {
     '#weight' => 20,
     '#attributes' => array(
       'class' => array('btn-search'),
-      'tabindex' => -1,
     ),
   );
 
