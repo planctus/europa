@@ -117,6 +117,7 @@ function dt_core_pol_update_7106() {
   // Enabling europa base theme.
   theme_enable(array('political'));
   variable_set('theme_default', 'political');
+
   // Disable a menu item.
   $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
@@ -128,6 +129,4 @@ function dt_core_pol_update_7106() {
   // Set the homepage.
   $nid = variable_get('dt_priority_page_id', '88');
   variable_set('site_frontpage', 'node/' . $nid);
-  // Empty the value of the home link title for the breadcrumb.
-  variable_set('easy_breadcrumb-home_segment_title', '');
 }
