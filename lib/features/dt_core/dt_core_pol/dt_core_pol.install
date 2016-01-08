@@ -26,7 +26,6 @@ function dt_core_pol_install() {
   // Enabling EC official languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
-
   // Disable a menu item.
   $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
   if (is_numeric($mlid)) {
