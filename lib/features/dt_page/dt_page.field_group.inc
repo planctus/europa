@@ -474,7 +474,7 @@ function dt_page_field_group_info() {
         'classes' => 'section__group',
         'element' => 'div',
         'show_label' => '1',
-        'label_element' => 'h3',
+        'label_element' => 'h2',
         'attributes' => '',
       ),
     ),
