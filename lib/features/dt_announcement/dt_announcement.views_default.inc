@@ -119,6 +119,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -378,7 +379,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
     'node.created' => 'node.created',
   );
-  /* Filter criterion: Content: Persons (field_core_persons) */
+  /* Filter criterion: Content: Related commissioners (field_core_persons) */
   $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
   $handler->display->display_options['filters']['field_core_persons_target_id']['table'] = 'field_data_field_core_persons';
   $handler->display->display_options['filters']['field_core_persons_target_id']['field'] = 'field_core_persons_target_id';
@@ -454,7 +455,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Broken/missing handler */
+  /* Filter criterion: Content: Priority policy areas (field_core_pri_policy_areas) */
   $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['id'] = 'field_core_pri_policy_areas_target_id';
   $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['table'] = 'field_data_field_core_pri_policy_areas';
   $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['field'] = 'field_core_pri_policy_areas_target_id';

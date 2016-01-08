@@ -170,3 +170,49 @@ function dt_announcement_update_7112() {
   variable_set('dt_announcement_read_more__priority', 'All news on this priority');
   variable_set('dt_announcement_read_more__policy', 'All news on this policy');
 }
+
+/**
+ * NEXTEUROPA-7497: Announcement publishing date.
+ */
+function dt_announcement_update_7113($sandbox) {
+  if (!isset($sandbox['max'])) {
+    // Reverting Announcement.
+    features_revert_module('dt_announcement');
+
+    // Query all nid of announcements.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'announcement');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = 100;
+  $nids = db_select('node', 'n')
+    ->condition('n.type', 'announcement')
+    ->fields('n', array('nid'))
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit)
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = entity_load('node', $nids);
+    foreach ($nodes as $nid => $node) {
+      // Update of field_core_date_published.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $created = $wrapper->created->value();
+      $wrapper->field_core_date_published->set($created);
+      $wrapper->save();
+    }
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
