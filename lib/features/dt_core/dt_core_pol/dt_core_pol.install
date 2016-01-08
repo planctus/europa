@@ -38,8 +38,11 @@ function dt_core_pol_install() {
   $nid = variable_get('dt_priority_page_id', FALSE);
   if ($nid) {
     variable_set('site_frontpage', 'node/' . $nid);
+    // Set alias for the home page.
+    $node = node_load($nid);
+    $node->path = array('alias' => 'index', 'pathauto' => 0);
+    node_save($node);
   }
-
 }
 
 /**
@@ -129,4 +132,8 @@ function dt_core_pol_update_7106() {
   // Set the homepage.
   $nid = variable_get('dt_priority_page_id', '88');
   variable_set('site_frontpage', 'node/' . $nid);
+  // Set alias for the home page.
+  $node = node_load($nid);
+  $node->path = array('alias' => 'index', 'pathauto' => 0);
+  node_save($node);
 }
