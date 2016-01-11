@@ -32,10 +32,10 @@ function political_preprocess_page(&$variables) {
 }
 
 /**
- * Implementation of hook_context_load_alter().
+ * Implements of hook_context_load_alter().
  */
 function political_context_load_alter(&$context) {
   if ($context->name == 'dt_core_non_homepage_pages') {
-   unset($context->conditions['path']);
+    unset($context->conditions['path']);
   }
 }
