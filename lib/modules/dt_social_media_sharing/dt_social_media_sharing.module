@@ -104,7 +104,7 @@ function dt_social_media_sharing_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'social_media_sharing':
-      $js_url = variable_get('dt_social_media_sharing_js_url', 'http://europa.eu/webtools/load.js');
+      $js_url = variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js');
       drupal_add_js($js_url, 'external');
       $block['content'] = _dt_social_media_sharing_view_helper();
       break;
