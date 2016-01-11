@@ -150,6 +150,13 @@ function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode = NULL) {
   if ($wrapper->__isset('field_core_legacy_link')) {
     $legacy_link = $wrapper->language($langcode)->field_core_legacy_link->value();
 
+    if ($wrapper->__isset('field_core_type_content')) {
+      $content_type = $wrapper->field_core_type_content->value();
+      if ($content_type == 'default') {
+        return FALSE;
+      }
+    }
+
     return (isset($legacy_link['url'])) ? $legacy_link['url'] : FALSE;
   }
 
