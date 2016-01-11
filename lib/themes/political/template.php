@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_preprocess_html().
+ * Implements template_preprocess_html().
  */
 function political_preprocess_html(&$variables) {
   // Remove the .front class from the body and pretend it's not the home page.
@@ -17,7 +17,7 @@ function political_preprocess_html(&$variables) {
 
 
 /**
- * Implements hook_preprocess_page().
+ * Implements tempalate_preprocess_page().
  */
 function political_preprocess_page(&$variables) {
   // Unset the home page.
@@ -32,7 +32,7 @@ function political_preprocess_page(&$variables) {
 }
 
 /**
- * Implements of hook_context_load_alter().
+ * Implements hook_context_load_alter().
  */
 function political_context_load_alter(&$context) {
   if ($context->name == 'dt_core_non_homepage_pages') {
