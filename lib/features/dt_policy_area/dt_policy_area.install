@@ -50,7 +50,7 @@ function dt_policy_area_update_7104() {
 }
 
 /**
- * NEXTEUROPA-7681: Making policy reference multivalue.
+ * NEXTEUROPA-7681: Making policy area reference multivalue.
  */
 function dt_policy_area_update_7105() {
   // Revert first to prepare the fields.
