@@ -67,9 +67,20 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 27,
       ),
       'title' => array(
         'label' => 'above',
@@ -155,9 +166,12 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 26,
       ),
       'title' => array(
         'label' => 'above',
@@ -222,9 +236,12 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 24,
       ),
       'title' => array(
         'label' => 'above',
@@ -286,9 +303,12 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 25,
       ),
       'title' => array(
         'label' => 'above',
@@ -344,7 +364,7 @@ function dt_page_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'title' => array(
         'label' => 'above',
@@ -430,9 +450,12 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
       ),
       'title' => array(
         'label' => 'above',
@@ -488,9 +511,12 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 23,
       ),
       'title' => array(
         'label' => 'above',
@@ -546,7 +572,7 @@ function dt_page_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -589,7 +615,7 @@ function dt_page_field_default_field_instances() {
           'picture_mapping' => 'teaser_image',
         ),
         'type' => 'picture',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'title' => array(
         'label' => 'above',
@@ -645,7 +671,7 @@ function dt_page_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -674,9 +700,10 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 32,
+        'type' => 'i18n_list_default',
+        'weight' => 34,
       ),
       'title' => array(
         'label' => 'above',
@@ -728,9 +755,20 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 33,
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 35,
       ),
       'title' => array(
         'label' => 'hidden',
@@ -786,7 +824,7 @@ function dt_page_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -815,9 +853,10 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
+        'type' => 'i18n_list_default',
+        'weight' => 19,
       ),
       'title' => array(
         'label' => 'above',
@@ -869,9 +908,10 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
+        'type' => 'link_default',
+        'weight' => 21,
       ),
       'title' => array(
         'label' => 'above',
@@ -915,7 +955,7 @@ function dt_page_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -1013,8 +1053,9 @@ function dt_page_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 30,
       ),
       'title' => array(
@@ -1092,9 +1133,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'module' => 'dt_policy_next_step',
+        'settings' => array(
+          'modifier' => '',
+        ),
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 20,
       ),
       'title' => array(
         'label' => 'above',
@@ -1146,9 +1190,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 33,
       ),
       'title' => array(
         'label' => 'above',
@@ -1176,7 +1223,7 @@ This will appear as a timeline on the page.
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1216,9 +1263,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 35,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 37,
       ),
       'title' => array(
         'label' => 'above',
@@ -1280,9 +1330,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 31,
       ),
       'title' => array(
         'label' => 'above',
@@ -1344,9 +1397,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 30,
       ),
       'title' => array(
         'label' => 'above',
@@ -1411,9 +1467,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
       ),
       'title' => array(
         'label' => 'above',
@@ -1470,9 +1529,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 22,
       ),
       'title' => array(
         'label' => 'above',
@@ -1500,7 +1562,7 @@ This will appear as a timeline on the page.
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -1541,9 +1603,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 37,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 39,
       ),
       'title' => array(
         'label' => 'above',
@@ -1606,9 +1671,10 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 36,
+        'type' => 'i18n_list_default',
+        'weight' => 38,
       ),
       'title' => array(
         'label' => 'above',
@@ -1667,9 +1733,12 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 34,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 36,
       ),
       'title' => array(
         'label' => 'above',
@@ -1745,7 +1814,7 @@ This will appear as a timeline on the page.
           'title_style' => '',
         ),
         'type' => 'title_linked',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'title' => array(
         'label' => 'above',
