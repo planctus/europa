@@ -203,6 +203,9 @@ function dt_announcement_views_query_alter(&$view, &$query) {
         // Check if we can load the node.
         if ($node = node_load($value)) {
           // Add our custom filter to the view object.
+          if ($node->type == "basic_page") {
+            $node->type = "page";
+          }
           $view->custom_filters[ucfirst($node->type)] = $node->title;
         }
       }
