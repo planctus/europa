@@ -24,9 +24,9 @@ function dt_policy_area_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_editorial_settings',
-      1 => 'group_policy_area_content',
-      2 => 'group_policy_area_context',
-      3 => 'group_policy_area_contact',
+      1 => 'group_policy_area_contact',
+      2 => 'group_policy_area_content',
+      3 => 'group_policy_area_context',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -169,10 +169,11 @@ function dt_policy_area_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_introduction',
-      2 => 'field_core_policy_area',
-      3 => 'field_core_description',
+      1 => 'field_core_policy_area',
+      2 => 'field_core_description',
+      3 => 'field_core_introduction',
       4 => 'field_core_legacy_link',
+      5 => 'field_core_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
