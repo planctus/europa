@@ -17,6 +17,11 @@ function dt_funding_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'funding';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'content_type_label' => array(
+      'weight' => '14',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -24,32 +29,6 @@ function dt_funding_default_ds_field_settings_info() {
           'fi' => TRUE,
           'fi-el' => 'h3',
           'fi-cl' => 'listing__title',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_funding_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_introduction' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -80,15 +59,15 @@ function dt_funding_default_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_funding_meta',
         1 => 'title_field',
-        2 => 'field_core_introduction',
-        3 => 'field_funding_type',
+        2 => 'field_core_description',
+        3 => 'content_type_label',
       ),
     ),
     'fields' => array(
       'group_funding_meta' => 'main',
       'title_field' => 'main',
-      'field_core_introduction' => 'main',
-      'field_funding_type' => 'main',
+      'field_core_description' => 'main',
+      'content_type_label' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

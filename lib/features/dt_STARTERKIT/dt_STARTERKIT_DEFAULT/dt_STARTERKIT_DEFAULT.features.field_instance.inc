@@ -10,7 +10,7 @@
 function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_description'
+  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_description'.
   $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_description'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
     'default_value' => NULL,
@@ -26,9 +26,20 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -98,22 +109,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => 0,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(
-            'text' => 0,
-          ),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -168,7 +166,7 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_legacy_link'
+  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_legacy_link'.
   $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_legacy_link'] = array(
     'bundle' => 'STARTERKIT_CONTENT_NAME',
     'default_value' => NULL,
@@ -249,7 +247,7 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'node',
@@ -357,9 +355,14 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '',
+        ),
+        'type' => 'title_linked',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',

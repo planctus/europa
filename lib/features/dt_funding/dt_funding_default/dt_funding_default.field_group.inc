@@ -83,17 +83,14 @@ function dt_funding_default_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_funding_type',
+      0 => 'content_type_label',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
+        'classes' => '',
       ),
     ),
   );
