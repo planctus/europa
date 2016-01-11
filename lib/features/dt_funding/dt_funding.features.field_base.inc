@@ -27,38 +27,9 @@ function dt_funding_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'null' => 'no status',
         'planned' => 'planned',
-        'open' => 'open',
-        'closed' => 'closed',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
-  // Exported field_base: 'field_funding_type'.
-  $field_bases['field_funding_type'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_funding_type',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'consultation' => 'consultation',
-        'impact_assessment' => 'impact assessment',
-        'tender' => 'tender',
+        'proposed' => 'proposed',
+        'adopted' => 'adopted',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,

@@ -60,14 +60,20 @@ function dt_funding_default_ds_layout_settings_info() {
         0 => 'group_funding_meta',
         1 => 'title_field',
         2 => 'field_core_description',
-        3 => 'content_type_label',
+        4 => 'content_type_label',
+        5 => 'field_funding_status',
+      ),
+      'second' => array(
+        3 => 'field_core_link',
       ),
     ),
     'fields' => array(
       'group_funding_meta' => 'main',
       'title_field' => 'main',
       'field_core_description' => 'main',
+      'field_core_link' => 'second',
       'content_type_label' => 'main',
+      'field_funding_status' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

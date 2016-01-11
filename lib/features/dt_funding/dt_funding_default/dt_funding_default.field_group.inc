@@ -27,6 +27,8 @@ function dt_funding_default_field_group_info() {
       1 => 'field_core_introduction',
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
+      4 => 'field_funding_status',
+      5 => 'field_core_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -83,7 +85,8 @@ function dt_funding_default_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'content_type_label',
+      0 => 'field_funding_status',
+      1 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

@@ -18,6 +18,7 @@ features[field_group][] = group_funding_tabgroup|node|funding|form
 features[field_instance][] = node-funding-field_core_description
 features[field_instance][] = node-funding-field_core_introduction
 features[field_instance][] = node-funding-field_core_legacy_link
+features[field_instance][] = node-funding-field_core_link
 features[field_instance][] = node-funding-group_content_access
 features[field_instance][] = node-funding-og_group_ref
 features[field_instance][] = node-funding-title_field
