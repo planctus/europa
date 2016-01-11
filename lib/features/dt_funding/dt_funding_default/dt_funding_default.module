@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Default feature.
+ */
+
+include_once 'dt_funding_default.features.inc';

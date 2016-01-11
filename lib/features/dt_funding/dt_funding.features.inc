@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT.features.inc
+ * dt_funding.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function dt_STARTERKIT_ctools_plugin_api($module = NULL, $api = NULL) {
+function dt_funding_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -19,12 +19,12 @@ function dt_STARTERKIT_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function dt_STARTERKIT_node_info() {
+function dt_funding_node_info() {
   $items = array(
-    'STARTERKIT_CONTENT_NAME' => array(
-      'name' => t('STARTERKIT_CONTENT_HUMAN_NAME'),
+    'funding' => array(
+      'name' => t('Funding'),
       'base' => 'node_content',
-      'description' => t('Create content of type STARTERKIT_CONTENT_HUMAN_NAME.'),
+      'description' => t('Create content of type Funding.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

@@ -1,20 +1,20 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_DEFAULT.ds.inc
+ * dt_funding_default.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function dt_STARTERKIT_DEFAULT_ds_field_settings_info() {
+function dt_funding_default_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|STARTERKIT_CONTENT_NAME|teaser';
+  $ds_fieldsetting->id = 'node|funding|teaser';
   $ds_fieldsetting->entity_type = 'node';
-  $ds_fieldsetting->bundle = 'STARTERKIT_CONTENT_NAME';
+  $ds_fieldsetting->bundle = 'funding';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'content_type_label' => array(
@@ -36,7 +36,7 @@ function dt_STARTERKIT_DEFAULT_ds_field_settings_info() {
       ),
     ),
   );
-  $export['node|STARTERKIT_CONTENT_NAME|teaser'] = $ds_fieldsetting;
+  $export['node|funding|teaser'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -44,27 +44,27 @@ function dt_STARTERKIT_DEFAULT_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function dt_STARTERKIT_DEFAULT_ds_layout_settings_info() {
+function dt_funding_default_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|STARTERKIT_CONTENT_NAME|teaser';
+  $ds_layout->id = 'node|funding|teaser';
   $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'STARTERKIT_CONTENT_NAME';
+  $ds_layout->bundle = 'funding';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col_sidebar_no_link';
+  $ds_layout->layout = 'ne_2col';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_STARTERKIT_CONTENT_NAME_meta',
+        0 => 'group_funding_meta',
         1 => 'title_field',
         2 => 'field_core_description',
         3 => 'content_type_label',
       ),
     ),
     'fields' => array(
-      'group_STARTERKIT_CONTENT_NAME_meta' => 'main',
+      'group_funding_meta' => 'main',
       'title_field' => 'main',
       'field_core_description' => 'main',
       'content_type_label' => 'main',
@@ -80,7 +80,7 @@ function dt_STARTERKIT_DEFAULT_ds_layout_settings_info() {
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
-  $export['node|STARTERKIT_CONTENT_NAME|teaser'] = $ds_layout;
+  $export['node|funding|teaser'] = $ds_layout;
 
   return $export;
 }

@@ -1,24 +1,24 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_DEFAULT.field_group.inc
+ * dt_funding_default.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dt_STARTERKIT_DEFAULT_field_group_info() {
+function dt_funding_default_field_group_info() {
   $export = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_content';
+  $field_group->identifier = 'group_funding_content|node|funding|form';
+  $field_group->group_name = 'group_funding_content';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'funding';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->parent_name = 'group_funding_tabgroup';
   $field_group->data = array(
     'label' => 'Content',
     'weight' => '8',
@@ -38,17 +38,17 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_funding_content|node|funding|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_editorial';
+  $field_group->identifier = 'group_funding_editorial|node|funding|form';
+  $field_group->group_name = 'group_funding_editorial';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'funding';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->parent_name = 'group_funding_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
     'weight' => '10',
@@ -68,15 +68,15 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_funding_editorial|node|funding|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_meta';
+  $field_group->identifier = 'group_funding_meta|node|funding|teaser';
+  $field_group->group_name = 'group_funding_meta';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'funding';
   $field_group->mode = 'teaser';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -94,23 +94,23 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser'] = $field_group;
+  $export['group_funding_meta|node|funding|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form';
-  $field_group->group_name = 'group_STARTERKIT_CONTENT_NAME_tabgroup';
+  $field_group->identifier = 'group_funding_tabgroup|node|funding|form';
+  $field_group->group_name = 'group_funding_tabgroup';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'STARTERKIT_CONTENT_NAME';
+  $field_group->bundle = 'funding';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_STARTERKIT_CONTENT_NAME_content',
-      1 => 'group_STARTERKIT_CONTENT_NAME_editorial',
+      0 => 'group_funding_content',
+      1 => 'group_funding_editorial',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -120,7 +120,7 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $export['group_funding_tabgroup|node|funding|form'] = $field_group;
 
   return $export;
 }

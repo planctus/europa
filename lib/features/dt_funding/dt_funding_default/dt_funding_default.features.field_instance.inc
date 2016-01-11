@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * dt_STARTERKIT_DEFAULT.features.field_instance.inc
+ * dt_funding_default.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
+function dt_funding_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_description'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_description'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-field_core_description'.
+  $field_instances['node-funding-field_core_description'] = array(
+    'bundle' => 'funding',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -93,9 +93,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_introduction'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_introduction'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-field_core_introduction'.
+  $field_instances['node-funding-field_core_introduction'] = array(
+    'bundle' => 'funding',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -166,9 +166,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-field_core_legacy_link'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-field_core_legacy_link'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-field_core_legacy_link'.
+  $field_instances['node-funding-field_core_legacy_link'] = array(
+    'bundle' => 'funding',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -184,7 +184,7 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -225,9 +225,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-group_content_access'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-group_content_access'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-group_content_access'.
+  $field_instances['node-funding-group_content_access'] = array(
+    'bundle' => 'funding',
     'default_value' => array(
       0 => array(
         'value' => 0,
@@ -279,9 +279,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-og_group_ref'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-og_group_ref'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-og_group_ref'.
+  $field_instances['node-funding-og_group_ref'] = array(
+    'bundle' => 'funding',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -340,9 +340,9 @@ function dt_STARTERKIT_DEFAULT_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-STARTERKIT_CONTENT_NAME-title_field'.
-  $field_instances['node-STARTERKIT_CONTENT_NAME-title_field'] = array(
-    'bundle' => 'STARTERKIT_CONTENT_NAME',
+  // Exported field_instance: 'node-funding-title_field'.
+  $field_instances['node-funding-title_field'] = array(
+    'bundle' => 'funding',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
