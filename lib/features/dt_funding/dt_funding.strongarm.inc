@@ -48,13 +48,6 @@ function dt_funding_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_info_mode_funding';
-  $strongarm->value = 1;
-  $export['comment_info_mode_funding'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_info_per_page_funding';
   $strongarm->value = '50';
   $export['comment_info_per_page_funding'] = $strongarm;
