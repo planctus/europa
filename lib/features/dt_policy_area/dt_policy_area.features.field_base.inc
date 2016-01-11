@@ -90,6 +90,7 @@ function dt_policy_area_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'policy' => 'policy',
           'policy_area' => 'policy_area',
         ),
       ),

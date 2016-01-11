@@ -54,7 +54,7 @@ function dt_policy_area_update_7104() {
  */
 function dt_policy_area_update_7105() {
   // Revert first to prepare the fields.
-  // features_revert_module('dt_policy_area');
+  features_revert_module('dt_policy_area');
   // Copy field contents.
   _dt_shared_field_value_copy('node', 'policy_area', 'field_core_policy_area', 'field_core_policy_areas');
   drupal_set_message(t("Copied content from 'field_core_policy_area' to 'field_core_policy_areas' in the 'policy area' content type."));
