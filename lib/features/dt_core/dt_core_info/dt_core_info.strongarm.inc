@@ -21,7 +21,7 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nexteuropa_europa_search_query_source';
-  $strongarm->value = '';
+  $strongarm->value = 'BETA';
   $export['nexteuropa_europa_search_query_source'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -35,7 +35,7 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_main_links_source';
-  $strongarm->value = 'BETA';
+  $strongarm->value = '';
   $export['menu_main_links_source'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -107,6 +107,20 @@ function dt_core_info_strongarm() {
   $strongarm->name = 'site_slogan';
   $strongarm->value = 'Policies, information and services';
   $export['site_slogan'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-home_segment_title';
+  $strongarm->value = 'European Commission';
+  $export['easy_breadcrumb-home_segment_title'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 1;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   return $export;
 }

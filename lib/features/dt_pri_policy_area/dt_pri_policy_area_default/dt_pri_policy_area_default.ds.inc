@@ -63,6 +63,13 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_policy_areas' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Part of priority',
+        ),
+      ),
+    ),
     'field_core_introduction' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -102,13 +109,6 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_policy_areas' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Part of priority',
-        ),
-      ),
-    ),
     'field_core_section_intro' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -122,6 +122,13 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_parent' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Priority',
+        ),
+      ),
+    ),
   );
   $export['node|priority_policy_area|full'] = $ds_fieldsetting;
 
@@ -132,22 +139,6 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority_policy_area';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -158,6 +149,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -183,62 +175,64 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_pri_pol_area_meta',
-        1 => 'content_type_label',
+        0 => 'content_type_label',
+        1 => 'group_pri_pol_area_meta',
         4 => 'title',
         7 => 'field_core_introduction',
       ),
       'central' => array(
         2 => 'field_core_featured_item',
-        3 => 'latest_announcements_block',
+        5 => 'latest_announcements_block',
         12 => 'group_pri_pol_policy_areas',
-        13 => 'group_pri_pol_area_latest',
         14 => 'field_core_background',
-        15 => 'group_pri_pol_area_background',
+        15 => 'group_pri_pol_area_latest',
         16 => 'field_core_objective',
-        17 => 'group_pri_pol_area_documents',
-        18 => 'field_core_publications',
-        19 => 'field_core_links',
-        20 => 'group_pri_pol_area_whatnext',
-        21 => 'group_pri_pol_area_related',
-        22 => 'field_core_next_steps',
-        23 => 'field_core_section_intro',
-        24 => 'field_core_child_policies',
-        25 => 'field_core_social_network_links',
-        26 => 'group_pri_pol_area_latest_main',
-        27 => 'group_pri_pol_area_latest_sbar',
+        17 => 'group_pri_pol_area_background',
+        18 => 'group_pri_pol_area_documents',
+        19 => 'group_pri_pol_area_whatnext',
+        20 => 'field_core_publications',
+        21 => 'field_core_links',
+        22 => 'group_pri_pol_area_related',
+        23 => 'field_core_next_steps',
+        24 => 'field_core_section_intro',
+        25 => 'field_core_child_policies',
+        26 => 'field_core_social_network_links',
+        27 => 'group_pri_pol_area_latest_main',
+        28 => 'group_pri_pol_area_latest_sbar',
       ),
       'top' => array(
-        5 => 'field_core_policy_areas',
+        3 => 'field_core_policy_areas',
         6 => 'field_core_topics',
         8 => 'field_core_persons',
         9 => 'group_pri_pol_area_contextual',
-        10 => 'field_core_banner',
-        11 => 'field_core_departments',
+        10 => 'field_core_departments',
+        11 => 'field_core_banner',
+        13 => 'field_core_parent',
       ),
     ),
     'fields' => array(
-      'group_pri_pol_area_meta' => 'left_header',
       'content_type_label' => 'left_header',
+      'group_pri_pol_area_meta' => 'left_header',
       'field_core_featured_item' => 'central',
-      'latest_announcements_block' => 'central',
-      'title' => 'left_header',
       'field_core_policy_areas' => 'top',
+      'title' => 'left_header',
+      'latest_announcements_block' => 'central',
       'field_core_topics' => 'top',
       'field_core_introduction' => 'left_header',
       'field_core_persons' => 'top',
       'group_pri_pol_area_contextual' => 'top',
-      'field_core_banner' => 'top',
       'field_core_departments' => 'top',
+      'field_core_banner' => 'top',
       'group_pri_pol_policy_areas' => 'central',
-      'group_pri_pol_area_latest' => 'central',
+      'field_core_parent' => 'top',
       'field_core_background' => 'central',
-      'group_pri_pol_area_background' => 'central',
+      'group_pri_pol_area_latest' => 'central',
       'field_core_objective' => 'central',
+      'group_pri_pol_area_background' => 'central',
       'group_pri_pol_area_documents' => 'central',
+      'group_pri_pol_area_whatnext' => 'central',
       'field_core_publications' => 'central',
       'field_core_links' => 'central',
-      'group_pri_pol_area_whatnext' => 'central',
       'group_pri_pol_area_related' => 'central',
       'field_core_next_steps' => 'central',
       'field_core_section_intro' => 'central',
@@ -268,25 +262,23 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'priority_policy_area';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_sidebar_no_link';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_pri_pol_area_meta',
-        1 => 'content_type_label',
-        2 => 'title_field',
-        3 => 'field_core_description',
+        0 => 'title_field',
+        1 => 'field_core_description',
       ),
       'second' => array(
-        4 => 'field_core_image',
+        2 => 'field_core_image',
+        3 => 'field_core_link',
       ),
     ),
     'fields' => array(
-      'group_pri_pol_area_meta' => 'main',
-      'content_type_label' => 'main',
       'title_field' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',
+      'field_core_link' => 'second',
     ),
     'classes' => array(),
     'wrappers' => array(

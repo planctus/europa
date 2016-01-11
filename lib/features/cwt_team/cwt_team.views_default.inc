@@ -189,7 +189,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing__item--contact';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1376,7 +1376,6 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-
   $export['team_members'] = $view;
 
   $view = new view();
