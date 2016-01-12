@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_law_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('law');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_law_uninstall() {
+  $path = drupal_get_path('module', 'dt_law') . '/dt_law.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa law %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * First hook_update for example.
+ */
+/*
+function dt_law_update_7101() {
+
+}
+ */
