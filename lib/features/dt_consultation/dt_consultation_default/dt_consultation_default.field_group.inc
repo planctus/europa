@@ -29,7 +29,7 @@ function dt_consultation_default_field_group_info() {
       3 => 'field_core_legacy_link',
       4 => 'field_consultation_status',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
