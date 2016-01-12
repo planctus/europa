@@ -118,6 +118,7 @@ function dt_pri_policy_area_default_field_group_info() {
       5 => 'field_core_legacy_link',
       6 => 'field_core_social_network_links',
       7 => 'field_core_parent',
+      8 => 'field_core_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
