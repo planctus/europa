@@ -24,7 +24,7 @@ function dt_STARTERKIT_node_info() {
     'STARTERKIT_CONTENT_NAME' => array(
       'name' => t('STARTERKIT_CONTENT_HUMAN_NAME'),
       'base' => 'node_content',
-      'description' => t('Content type for dt.'),
+      'description' => t('Create content of type STARTERKIT_CONTENT_HUMAN_NAME.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

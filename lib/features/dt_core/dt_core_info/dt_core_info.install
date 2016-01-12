@@ -74,3 +74,15 @@ function dt_core_info_update_7102() {
 function dt_core_info_update_7103() {
   features_revert(array('dt_core_info' => array('variable')));
 }
+
+/**
+ * NEXTEUROPA-7954 - Disabling menu items in the breadcrumb menu.
+ */
+function dt_core_info_update_7104() {
+  // Load the menu links and set it as hidden.
+  $items = menu_load_links('menu-breadcrumb-menu');
+  foreach ($items as $item) {
+    $item['hidden'] = TRUE;
+    menu_link_save($item);
+  }
+}
