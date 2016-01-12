@@ -831,3 +831,10 @@ function dt_core_update_7159() {
   // Enable the dt header background custom module.
   module_enable(array('dt_header_background'));
 }
+
+/**
+ * Update the default social media link url (other social networks).
+ */
+function dt_core_update_7160() {
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
+}
