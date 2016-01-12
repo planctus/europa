@@ -9,6 +9,7 @@
  */
 function dt_core_pol_variable_realm_default_variables() {
   $realm_variables = array();
+
   // English.
   $realm_variables['language']['en'] = array(
     'site_name' => 'European Commission',
@@ -67,7 +68,7 @@ function dt_core_pol_variable_realm_default_variables() {
   // Italian.
   $realm_variables['language']['it'] = array(
     "site_name" => "European Commission",
-    "site_slogan" => "La commissione e le sue priorità",
+    "site_slogan" => "La Commissione e le sue priorità",
   );
   // Latvian.
   $realm_variables['language']['lv'] = array(
