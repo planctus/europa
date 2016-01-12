@@ -183,6 +183,7 @@ $GLOBALS['dt_core_nodes_to_update_alias'] = array();
 $GLOBALS['dt_core_parent_fields'] = array(
   'field_core_parent',
   'field_core_policy_area',
+  'field_core_policy_areas',
 );
 
 /**
@@ -263,6 +264,7 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
     $result = db_select('field_data_' . $field_name, 'p')
       ->fields('p', array($field_name . '_target_id'))
       ->condition('entity_id', $nid, '=')
+      ->condition('delta', '0', '=')
       ->execute()
       ->fetchAssoc();
 
