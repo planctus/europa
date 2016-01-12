@@ -5,3 +5,22 @@
  */
 
 include_once 'dt_funding_default.features.inc';
+
+/**
+ * Implements hook_field_display_alter().
+ */
+function dt_funding_default_field_display_alter(&$display, $context) {
+  if ($context['instance']['field_name'] == 'field_funding_status') {
+    global $language;
+    $current_language = $language->language;
+
+    $entity_type = $context['entity_type'];
+    $entity = $context['entity'];
+    $wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+    $field_value = $wrapper->language($current_language)->field_funding_status->value();
+    if ($field_value != 'proposed') {
+      $display['type'] = 'hidden';
+    }
+  }
+}
