@@ -89,7 +89,7 @@ function dt_funding_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -4,
+      'weight' => -3,
     ),
   );
 
@@ -101,7 +101,7 @@ function dt_funding_default_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -162,7 +162,7 @@ function dt_funding_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -3,
+      'weight' => -2,
     ),
   );
 
@@ -175,9 +175,8 @@ function dt_funding_default_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -221,7 +220,7 @@ function dt_funding_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => -2,
+      'weight' => -1,
     ),
   );
 
@@ -234,9 +233,8 @@ function dt_funding_default_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -285,6 +283,45 @@ function dt_funding_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-funding-field_funding_status'.
+  $field_instances['node-funding-field_funding_status'] = array(
+    'bundle' => 'funding',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 15,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_funding_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => -4,
+    ),
+  );
+
   // Exported field_instance: 'node-funding-group_content_access'.
   $field_instances['node-funding-group_content_access'] = array(
     'bundle' => 'funding',
@@ -297,10 +334,9 @@ function dt_funding_default_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -347,10 +383,9 @@ function dt_funding_default_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'og_list_default',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -456,6 +491,7 @@ function dt_funding_default_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
+  t('Status');
   t('Title');
 
   return $field_instances;

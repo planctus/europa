@@ -23,12 +23,12 @@ function dt_funding_default_field_group_info() {
     'label' => 'Content',
     'weight' => '8',
     'children' => array(
-      0 => 'title_field',
+      0 => 'field_core_description',
       1 => 'field_core_introduction',
-      2 => 'field_core_description',
-      3 => 'field_core_legacy_link',
-      4 => 'field_funding_status',
-      5 => 'field_core_link',
+      2 => 'field_core_legacy_link',
+      3 => 'title_field',
+      4 => 'field_core_link',
+      5 => 'field_funding_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
