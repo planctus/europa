@@ -29,12 +29,12 @@ function dt_law_default_field_group_info() {
       3 => 'field_core_legacy_link',
       4 => 'field_law_status',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-policy-next-step-content field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
