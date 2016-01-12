@@ -202,7 +202,7 @@ function dt_policy_area_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_policy_area_pattern';
-  $strongarm->value = 'strategy/[node:field-core-policy-area:url:path]/[node:source:title]';
+  $strongarm->value = 'strategy/[node:field-core-policy-areas:0:url:path]/[node:source:title]';
   $export['pathauto_node_policy_area_pattern'] = $strongarm;
 
   return $export;
