@@ -19,6 +19,7 @@ features[variable][] = comment_preview_funding
 features[variable][] = comment_subject_field_funding
 features[variable][] = field_bundle_settings_node__funding
 features[variable][] = helper_content_type_funding
+features[variable][] = helper_node_type_funding
 features[variable][] = i18n_node_extended_funding
 features[variable][] = i18n_node_options_funding
 features[variable][] = i18n_sync_node_type_funding
