@@ -10,7 +10,46 @@
 function dt_consultation_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-consultation-field_core_description'.
+  // Exported field_instance: 'node-consultation-field_consultation_status'.
+  $field_instances['node-consultation-field_consultation_status'] = array(
+    'bundle' => 'consultation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 15,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_consultation_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-consultation-field_core_description'
   $field_instances['node-consultation-field_core_description'] = array(
     'bundle' => 'consultation',
     'default_value' => NULL,
@@ -220,7 +259,7 @@ function dt_consultation_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => -2,
+      'weight' => -1,
     ),
   );
 
@@ -385,13 +424,14 @@ function dt_consultation_default_field_default_field_instances() {
     ),
   );
 
-  // Translatables
+  // Translatables.
   // Included for use with string extractors like potx.
   t('Description');
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
+  t('Status');
   t('Title');
 
   return $field_instances;

@@ -20,6 +20,13 @@ function dt_consultation_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_consultation';
+  $strongarm->value = '1';
+  $export['comment_consultation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_consultation';
   $strongarm->value = 1;
   $export['comment_default_mode_consultation'] = $strongarm;
@@ -37,13 +44,6 @@ function dt_consultation_strongarm() {
   $strongarm->name = 'comment_form_location_consultation';
   $strongarm->value = 1;
   $export['comment_form_location_consultation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_consultation';
-  $strongarm->value = '1';
-  $export['comment_consultation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -135,9 +135,9 @@ function dt_consultation_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'i18n_node_extended_consultation';
+  $strongarm->name = 'helper_node_type_consultation';
   $strongarm->value = 1;
-  $export['i18n_node_extended_consultation'] = $strongarm;
+  $export['helper_node_type_consultation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

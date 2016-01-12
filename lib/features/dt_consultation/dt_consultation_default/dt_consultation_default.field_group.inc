@@ -24,9 +24,10 @@ function dt_consultation_default_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_introduction',
-      2 => 'field_core_description',
+      1 => 'field_core_description',
+      2 => 'field_core_introduction',
       3 => 'field_core_legacy_link',
+      4 => 'field_consultation_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -83,7 +84,8 @@ function dt_consultation_default_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'content_type_label',
+      0 => 'field_consultation_status',
+      1 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

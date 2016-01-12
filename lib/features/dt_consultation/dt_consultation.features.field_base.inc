@@ -10,6 +10,33 @@
 function dt_consultation_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_consultation_status'.
+  $field_bases['field_consultation_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_consultation_status',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'open' => 'open',
+        'closed' => 'closed',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_core_consultation'.
   $field_bases['field_core_consultation'] = array(
     'active' => 1,
@@ -45,8 +72,8 @@ function dt_consultation_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'policy' => 'policy',
           'consultation' => 'consultation',
+          'policy' => 'policy',
         ),
       ),
       'target_type' => 'node',

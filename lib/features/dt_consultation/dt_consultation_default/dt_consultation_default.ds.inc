@@ -30,7 +30,6 @@ function dt_consultation_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -44,7 +43,19 @@ function dt_consultation_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_consultation_status' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
         ),
       ),
     ),
@@ -74,6 +85,7 @@ function dt_consultation_default_ds_layout_settings_info() {
         1 => 'title_field',
         2 => 'field_core_description',
         3 => 'content_type_label',
+        4 => 'field_consultation_status',
       ),
     ),
     'fields' => array(
@@ -81,6 +93,7 @@ function dt_consultation_default_ds_layout_settings_info() {
       'title_field' => 'main',
       'field_core_description' => 'main',
       'content_type_label' => 'main',
+      'field_consultation_status' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
