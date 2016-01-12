@@ -160,3 +160,33 @@ function dt_person_form_masquerade_block_1_alter(&$form, &$form_state, $form_id)
     $form['masquerade_desc']['#markup'] = t('Switch as :') . $quick_switch_links . t(', or enter enter a username to masquerade above.');
   }
 }
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function dt_person_ds_fields_info() {
+  $fields = array();
+
+  $fields['full_name'] = array(
+    'title' => t('Person full name'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_person_token_replace',
+    'ui_limit' => 'person|*',
+    'properties' => array(
+      'value' => '<a class="full-name" href="[node:legacy-link]">[node:field_person_first_name] [node:field_person_last_name]</a>',
+    ),
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Custom function for single token replacement in a field.
+ */
+function _dt_person_token_replace($field) {
+  if (isset($field['properties']['value'])) {
+    $value = $field['properties']['value'];
+    $value = token_replace($value, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+    return $value;
+  }
+}

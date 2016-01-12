@@ -15,7 +15,6 @@ features[ctools][] = picture:default_picture_mapping:2
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|person|meta
 features[ds_field_settings][] = node|person|name
-features[ds_fields][] = full_name
 features[ds_fields][] = full_name_nolink
 features[ds_layout_settings][] = node|person|meta
 features[ds_layout_settings][] = node|person|name
