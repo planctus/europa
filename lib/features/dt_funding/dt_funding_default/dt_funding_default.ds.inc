@@ -77,7 +77,7 @@ function dt_funding_default_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'funding';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_sidebar_no_link';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(

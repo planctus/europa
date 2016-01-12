@@ -19,7 +19,7 @@ function dt_funding_default_field_display_alter(&$display, $context) {
     $wrapper = entity_metadata_wrapper($entity_type, $entity);
 
     $field_value = $wrapper->language($current_language)->field_funding_status->value();
-    if ($field_value != 'proposed') {
+    if ($field_value == 'null' || $field_value == 'adopted') {
       $display['type'] = 'hidden';
     }
   }
