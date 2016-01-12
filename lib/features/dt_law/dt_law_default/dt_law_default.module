@@ -5,3 +5,22 @@
  */
 
 include_once 'dt_law_default.features.inc';
+
+/**
+ * Implements hook_field_display_alter().
+ */
+function dt_law_default_field_display_alter(&$display, $context) {
+  if ($context['instance']['field_name'] == 'field_law_status') {
+    global $language;
+    $current_language = $language->language;
+
+    $entity_type = $context['entity_type'];
+    $entity = $context['entity'];
+    $wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+    $field_value = $wrapper->language($current_language)->field_law_status->value();
+    if ($field_value == 'null' || $field_value == 'in_force') {
+      $display['type'] = 'hidden';
+    }
+  }
+}
