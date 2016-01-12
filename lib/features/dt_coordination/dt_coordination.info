@@ -54,7 +54,6 @@ features_exclude[field_group][group_coordination_content|node|coordination|form]
 features_exclude[field_group][group_coordination_editorial|node|coordination|form] = group_coordination_editorial|node|coordination|form
 features_exclude[field_group][group_coordination_meta|node|coordination|teaser] = group_coordination_meta|node|coordination|teaser
 features_exclude[field_group][group_coordination_tabgroup|node|coordination|form] = group_coordination_tabgroup|node|coordination|form
-features_exclude[field_group][group_coordination_common|node|coordination|form] = group_coordination_common|node|coordination|form
 features_exclude[field_group][group_coordination_metadata|node|coordination|form] = group_coordination_metadata|node|coordination|form
 features_exclude[field_instance][node-coordination-field_core_introduction] = node-coordination-field_core_introduction
 features_exclude[field_instance][node-coordination-field_core_legacy_link] = node-coordination-field_core_legacy_link
