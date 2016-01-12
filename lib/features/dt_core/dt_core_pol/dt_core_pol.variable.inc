@@ -14,7 +14,7 @@ function dt_core_pol_variable_realm_default_variables() {
     'site_name' => 'European Commission',
     'site_slogan' => 'Commission and its priorities',
   );
-   // Bulgarian.
+  // Bulgarian.
   $realm_variables['language']['bg'] = array(
     "site_name" => "European Commission",
     "site_slogan" => "Commission and its priorities",
