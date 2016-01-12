@@ -171,9 +171,17 @@ function dt_person_ds_fields_info() {
     'title' => t('Person full name'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_dt_person_token_replace',
-    'ui_limit' => 'person|*',
     'properties' => array(
       'value' => '<a class="full-name" href="[node:legacy-link]">[node:field_person_first_name] [node:field_person_last_name]</a>',
+    ),
+  );
+
+  $fields['full_name_nolink'] = array(
+    'title' => t('Person full name - nolink'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_person_token_replace',
+    'properties' => array(
+      'value' => '[node:field_person_first_name] [node:field_person_last_name]',
     ),
   );
 

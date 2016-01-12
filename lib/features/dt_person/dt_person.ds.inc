@@ -67,33 +67,6 @@ function dt_person_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function dt_person_ds_custom_fields_info() {
-  $export = array();
-  
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'full_name_nolink';
-  $ds_field->label = 'Full name - nolink';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'person|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '[node:field_person_first_name] [node:field_person_last_name]',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 1,
-  );
-  $export['full_name_nolink'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_person_ds_layout_settings_info() {
