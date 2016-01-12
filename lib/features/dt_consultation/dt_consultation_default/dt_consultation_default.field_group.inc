@@ -34,7 +34,7 @@ function dt_consultation_default_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-policy-next-step-content field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
