@@ -52,6 +52,7 @@ features[variable_realm][] = language:lt
 features[variable_realm][] = language:hu
 features[variable_realm][] = language:mt
 features[variable_realm][] = language:ln
+features[variable_realm][] = language:nl
 features[variable_realm][] = language:pl
 features[variable_realm][] = language:pt-pt
 features[variable_realm][] = language:ro
