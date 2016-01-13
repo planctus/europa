@@ -89,7 +89,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
       $options = array();
 
       // Prepare links options.
-      $options['attributes']['lang'] = $lang->prefix;
+      $options['attributes']['lang'] = $lang->language;
       $options['attributes']['hreflang'] = $lang->prefix;
       $options['attributes']['class'][] = "btn";
       $options['attributes']['class'][] = "splash-page__btn-language";

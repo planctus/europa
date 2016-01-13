@@ -8494,7 +8494,8 @@ Styleguide listing
   list-style: none;
   list-style-image: none;
   padding-top: 0;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  overflow: hidden; }
   .listing__item:first-child {
     border-top: 1px solid #e2e2e2; }
   .listing__item:hover a .listing__title,
@@ -8533,9 +8534,9 @@ Styleguide listing
     margin-bottom: 0; }
 
 .listing__column-main {
-  float: left;
   width: 100%;
-  padding-left: 0; }
+  padding-left: 0;
+  float: left; }
 
 .listing__title {
   color: #004494;
@@ -9289,6 +9290,9 @@ Styleguide listing.listing--2rows
 @media print {
   .no-svg .front.language-sv .logo:before {
     content: url("../images/png/logo/logo--sv.png"); } }
+
+.site-header__logo::before, .site-header__logo::after {
+  display: none !important; }
 
 /*
 Meta

@@ -20,16 +20,16 @@ function dt_STARTERKIT_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_info_mode_STARTERKIT_CONTENT_NAME';
+  $strongarm->name = 'comment_default_mode_STARTERKIT_CONTENT_NAME';
   $strongarm->value = 1;
-  $export['comment_info_mode_STARTERKIT_CONTENT_NAME'] = $strongarm;
+  $export['comment_default_mode_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_info_per_page_STARTERKIT_CONTENT_NAME';
+  $strongarm->name = 'comment_default_per_page_STARTERKIT_CONTENT_NAME';
   $strongarm->value = '50';
-  $export['comment_info_per_page_STARTERKIT_CONTENT_NAME'] = $strongarm;
+  $export['comment_default_per_page_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -41,16 +41,16 @@ function dt_STARTERKIT_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_STARTERKIT_CONTENT_NAME';
+  $strongarm->name = 'comment_STARTERKIT_CONTENT_NAME';
   $strongarm->value = '1';
-  $export['comment_preview_STARTERKIT_CONTENT_NAME'] = $strongarm;
+  $export['comment_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_STARTERKIT_CONTENT_NAME';
-  $strongarm->value = '0';
-  $export['comment_STARTERKIT_CONTENT_NAME'] = $strongarm;
+  $strongarm->name = 'comment_preview_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = '1';
+  $export['comment_preview_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -95,26 +95,29 @@ function dt_STARTERKIT_strongarm() {
       'title' => array(
         'custom_settings' => FALSE,
       ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
       'revision' => array(
         'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(
       'form' => array(
-        'title' => array(
-          'weight' => '1',
+        'metatags' => array(
+          'weight' => '40',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '30',
         ),
         'scheduler_settings' => array(
-          'weight' => '11',
+          'weight' => '0',
         ),
         'language' => array(
-          'weight' => '8',
-        ),
-        'metatags' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
       ),
       'display' => array(),
@@ -125,8 +128,43 @@ function dt_STARTERKIT_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'helper_content_type_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = 1;
+  $export['helper_content_type_STARTERKIT_CONTENT_NAME'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_STARTERKIT_CONTENT_NAME'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_extended_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_STARTERKIT_CONTENT_NAME'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = array();
+  $export['i18n_node_options_STARTERKIT_CONTENT_NAME'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_sync_node_type_STARTERKIT_CONTENT_NAME';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_STARTERKIT_CONTENT_NAME'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_STARTERKIT_CONTENT_NAME';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -164,7 +202,7 @@ function dt_STARTERKIT_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_STARTERKIT_CONTENT_NAME';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_STARTERKIT_CONTENT_NAME'] = $strongarm;
 
   return $export;

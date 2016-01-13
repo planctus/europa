@@ -149,6 +149,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -261,7 +262,7 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'priority_policy_area';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_sidebar_no_link';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
@@ -270,12 +271,14 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
       ),
       'second' => array(
         2 => 'field_core_image',
+        3 => 'field_core_link',
       ),
     ),
     'fields' => array(
       'title_field' => 'main',
       'field_core_description' => 'main',
       'field_core_image' => 'second',
+      'field_core_link' => 'second',
     ),
     'classes' => array(),
     'wrappers' => array(
