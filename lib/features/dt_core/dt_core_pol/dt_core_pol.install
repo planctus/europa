@@ -155,3 +155,10 @@ function dt_core_pol_update_7107() {
   $node->path = array('alias' => 'index', 'pathauto' => 0);
   node_save($node);
 }
+
+/**
+ * NEXTEUROPA-8072: Set id to the feedback form, same as CWT for now.
+ */
+function dt_core_pol_update_7108() {
+  variable_set('nexteuropa_feedback_form_id', '1040');
+}
