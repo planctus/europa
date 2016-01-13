@@ -220,7 +220,7 @@ function dt_announcement_update_7113($sandbox) {
 /**
  * NEXTEUROPA-8067: Set default publish date to node creation date if empty.
  */
-function dt_announcement_update_7115() {
+function dt_announcement_update_7114() {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'announcement', '=');
