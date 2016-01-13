@@ -50,6 +50,7 @@ features_exclude[dependencies][i18n_field] = i18n_field
 features_exclude[dependencies][smart_trim] = smart_trim
 features_exclude[dependencies][title] = title
 features_exclude[dependencies][ds] = ds
+features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][dt_law_default] = dt_law_default
 features_exclude[ds_field_settings][node|law|teaser] = node|law|teaser
 features_exclude[ds_layout_settings][node|law|teaser] = node|law|teaser

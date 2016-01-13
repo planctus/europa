@@ -38,7 +38,6 @@ function dt_law_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'law' => 'law',
-          'policy' => 'policy',
         ),
       ),
       'target_type' => 'node',
