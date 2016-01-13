@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_impact_assessment_default_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  $path = drupal_get_path('module', 'dt_impact_assessment_default') . '/dt_impact_assessment.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa impact_assessment %v feature is installed on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_impact_assessment_default_uninstall() {
+  $path = drupal_get_path('module', 'dt_impact_assessment_default') . '/dt_impact_assessment.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa impact_assessment %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * First hook_update for example.
+ */
+/*
+function dt_impact_assessment_default_update_7101() {
+
+}
+ */
