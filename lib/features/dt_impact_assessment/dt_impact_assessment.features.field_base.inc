@@ -38,7 +38,6 @@ function dt_impact_assessment_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'impact_assessment' => 'impact_assessment',
-          'policy' => 'policy',
         ),
       ),
       'target_type' => 'node',
