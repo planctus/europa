@@ -26,6 +26,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
       'priorities',
       'pri_policy_areas',
       'topics',
+      'pages',
     );
 
     // Fix the fields by setting #access to false. We hide these fields because
