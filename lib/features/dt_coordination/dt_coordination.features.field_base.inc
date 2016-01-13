@@ -17,14 +17,6 @@ function dt_coordination_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_coordination',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -45,7 +37,6 @@ function dt_coordination_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'policy' => 'policy',
           'coordination' => 'coordination',
         ),
       ),
@@ -62,14 +53,6 @@ function dt_coordination_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_coordinations',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

@@ -55,3 +55,5 @@ features_exclude[variable][menu_parent_coordination] = menu_parent_coordination
 features_exclude[variable][node_options_coordination] = node_options_coordination
 features_exclude[variable][node_preview_coordination] = node_preview_coordination
 features_exclude[variable][node_submitted_coordination] = node_submitted_coordination
+features_exclude[field_base][og_group_ref] = og_group_ref
+features_exclude[field_base][group_content_access] = group_content_access
