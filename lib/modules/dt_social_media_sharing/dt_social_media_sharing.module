@@ -71,10 +71,10 @@ function dt_social_media_sharing_block_configure($delta = '') {
 function _dt_social_media_sharing_default_text() {
   // Style guide implementation and ensure text strings are translated.
   // Text is now wrapped with default span, text is changed via the interface.
-  $default = variable_get('dt_social_media_sharing_text', 'Share this page:');
   $text = '<span class="social-media-links__label">';
-  // t('@default', array('@default' => $default));
-  $text .= t($default);
+  // Default text is now hardcoded for translation purposes, we will review the
+  // this implementation soon.
+  $text .= t('Share this page');
   $text .= '</span>';
 
   return $text;
