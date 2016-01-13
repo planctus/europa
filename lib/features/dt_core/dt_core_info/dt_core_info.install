@@ -86,3 +86,10 @@ function dt_core_info_update_7104() {
     menu_link_save($item);
   }
 }
+
+/**
+ * NEXTEUROPA-8080: Granting various permissions for release of political.
+ */
+function dt_core_info_update_7106() {
+  _dt_roles_permissions_import_import('all');
+}
