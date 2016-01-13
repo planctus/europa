@@ -175,6 +175,14 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Published (referenced entities) */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['value'] = 1;
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
+  $handler->display->display_options['filters']['status_1']['expose']['operator'] = FALSE;
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'field_core_announcement_target_id';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
