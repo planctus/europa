@@ -57,3 +57,5 @@ features_exclude[variable][menu_parent_guidance] = menu_parent_guidance
 features_exclude[variable][node_options_guidance] = node_options_guidance
 features_exclude[variable][node_preview_guidance] = node_preview_guidance
 features_exclude[variable][node_submitted_guidance] = node_submitted_guidance
+features_exclude[field_base][og_group_ref] = og_group_ref
+features_exclude[field_base][group_content_access] = group_content_access

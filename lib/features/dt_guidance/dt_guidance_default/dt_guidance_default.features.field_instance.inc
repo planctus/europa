@@ -15,7 +15,7 @@ function dt_guidance_default_field_default_field_instances() {
     'bundle' => 'guidance',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Used for when the item is appearing in a list on another page.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -98,7 +98,7 @@ function dt_guidance_default_field_default_field_instances() {
     'bundle' => 'guidance',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The general introduction for the item, please only use one paragraph.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -119,7 +119,7 @@ function dt_guidance_default_field_default_field_instances() {
     'field_name' => 'field_core_introduction',
     'info_value' => NULL,
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -129,8 +129,8 @@ function dt_guidance_default_field_default_field_instances() {
           'plain_text' => 'plain_text',
         ),
         'allowed_formats_toggle' => 0,
-        'info_order_toggle' => 0,
-        'info_order_wrapper' => array(
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
           'formats' => array(
             'basic_html' => array(
               'weight' => 5,
@@ -171,7 +171,7 @@ function dt_guidance_default_field_default_field_instances() {
     'bundle' => 'guidance',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Fill in if you want the item to link to an external place, instead of internal to the Drupal detail page',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -388,11 +388,14 @@ function dt_guidance_default_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Description');
+  t('Fill in if you want the item to link to an external place, instead of internal to the Drupal detail page');
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
+  t('The general introduction for the item, please only use one paragraph.');
   t('Title');
+  t('Used for when the item is appearing in a list on another page.');
 
   return $field_instances;
 }
