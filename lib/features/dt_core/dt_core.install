@@ -838,19 +838,3 @@ function dt_core_update_7159() {
 function dt_core_update_7160() {
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 }
-
-/**
- * NEXTEUROPA-8077: Enabling "Policy work" related content types.
- */
-function dt_core_update_7161() {
-  $content_types = array(
-    'dt_coordination_default',
-    'dt_consultation_default',
-    'dt_funding_default',
-    'dt_guidance_default',
-    'dt_impact_assessment_default',
-    'dt_law_default',
-    'dt_tender_default',
-  );
-  module_enable($content_types);
-}

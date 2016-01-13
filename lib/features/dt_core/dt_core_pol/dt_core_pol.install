@@ -155,3 +155,19 @@ function dt_core_pol_update_7107() {
   $node->path = array('alias' => 'index', 'pathauto' => 0);
   node_save($node);
 }
+
+/**
+ * NEXTEUROPA-8077: Enabling "Policy work" related content types.
+ */
+function dt_core_update_7108() {
+  $content_types = array(
+    'dt_coordination_default',
+    'dt_consultation_default',
+    'dt_funding_default',
+    'dt_guidance_default',
+    'dt_impact_assessment_default',
+    'dt_law_default',
+    'dt_tender_default',
+  );
+  module_enable($content_types);
+}
