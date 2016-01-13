@@ -123,6 +123,10 @@ function commissioner_preprocess_html(&$variables) {
  * Implements template_preprocess_node().
  */
 function commissioner_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'team_cabinet_member') {
+    $variables['content']['body']['#title'] = t('Responsibilities');
+  }
+
   unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 
