@@ -90,7 +90,7 @@ function dt_core_info_update_7104() {
 /**
  * NEXTEUROPA-8077: Enabling "Policy work" related content types.
  */
-function dt_core_update_7105() {
+function dt_core_info_update_7105() {
   $content_types = array(
     'dt_coordination_default',
     'dt_consultation_default',
