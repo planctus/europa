@@ -630,7 +630,6 @@ function dt_policy_area_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
-  t('Parent policy area');
   t('Parent policy areas');
   t('Related person');
   t('Social Network Links');
