@@ -59,17 +59,22 @@ function dt_publication_ds_fields_info($entity_type) {
 
   $fields['collection_documents'] = array(
     'title' => t('Collection documents'),
-    'field_type' => DS_FIELD_TYPE_BLOCK,
-    'block' => 'publications-block',
-    'block_render' => DS_BLOCK_CONTENT,
     'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_collection_documents',
   );
 
   return array('node' => $fields);
 }
 
-function _dt_publication_collection_documents() {
-
+function _dt_publication_collection_documents($entity) {
+  $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
+  if ($type = $node_wrapper->field_publication_collection->value()) {
+    // Collection.
+    if ($type == '1') {
+      return views_embed_view('publications', 'block');
+    }
+  }
 }
 
 /**
