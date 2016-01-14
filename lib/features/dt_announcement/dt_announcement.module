@@ -50,6 +50,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
  * node title.
  */
 function dt_announcement_views_pre_render(&$view) {
+  $custom_readmore = FALSE;
   // List of views that use this logic:
   $view_announcements_blocks = array(
     'latest_block',

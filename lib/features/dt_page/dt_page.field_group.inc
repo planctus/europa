@@ -316,7 +316,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = 'group_page_latest_main';
   $field_group->data = array(
     'label' => 'Sidebar',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
