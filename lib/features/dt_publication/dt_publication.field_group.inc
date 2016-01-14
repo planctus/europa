@@ -204,11 +204,11 @@ function dt_publication_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_publications',
-      1 => 'field_core_topics',
-      2 => 'field_publication_authors',
-      3 => 'field_publication_referenceno',
-      4 => 'field_core_date_published',
+      0 => 'field_core_topics',
+      1 => 'field_publication_authors',
+      2 => 'field_publication_referenceno',
+      3 => 'field_core_date_published',
+      4 => 'publication_collection_info',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
