@@ -287,9 +287,8 @@ function dt_page_field_group_info() {
     'label' => 'Latest',
     'weight' => '7',
     'children' => array(
-      0 => 'field_core_featured_item',
-      1 => 'group_page_latest_sidebar',
-      2 => 'group_page_latest',
+      0 => 'group_page_latest_sidebar',
+      1 => 'group_page_latest',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -347,7 +346,8 @@ function dt_page_field_group_info() {
     'label' => 'Latest',
     'weight' => '12',
     'children' => array(
-      0 => 'related_announcements',
+      0 => 'field_core_featured_item',
+      1 => 'related_announcements',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
