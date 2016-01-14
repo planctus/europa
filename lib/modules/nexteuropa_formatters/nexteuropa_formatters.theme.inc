@@ -97,11 +97,16 @@ function theme_nexteuropa_file_translations($variables) {
   $files_count = isset($variables['node']->field_core_file) ? count($variables['node']->field_core_file) : 0;
 
   if ($files_count > 1) {
+    // Remove one from the count, if the current language is in the list.
+    if (isset($variables['node']->field_core_file[$variables['node']->language])) {
+      $files_count--;
+    }
     $files = $variables['node']->field_core_file;
     $nid = $variables['node']->nid;
     $output = '<div class="file__translations">';
     // Building the link.
     $link = array(
+      '#href' => '',
       '#type' => 'link',
       '#attached' => array(
         'js' => array(
@@ -126,13 +131,14 @@ function theme_nexteuropa_file_translations($variables) {
         'aria-controls' => array('file__translations-' . $nid),
         'title' => t('Click to see translations'),
       ),
-      '#title' => t("All languages @count", array('@count' => $files_count)),
+      '#title' => t("Available languages (@count)", array('@count' => $files_count)),
     );
     // Attaching the link.
     $output .= render($link);
 
     // Building the list.
     $list = array(
+      'title' => NULL,
       'items' => array(),
       'type' => 'ul',
       'attributes' => array(
@@ -140,11 +146,17 @@ function theme_nexteuropa_file_translations($variables) {
         'id' => array('file__translations-' . $nid),
       ),
     );
+
+    // Before we start listing translations, we unset our source language.
+    unset($files[$variables['node']->language]);
+
     foreach ($files as $lang => $file) {
       $languages = locale_language_list();
       $language = isset($languages[$lang]) ? $languages[$lang] : NULL;;
       $file_info = reset($file);
       $file_object = file_load($file_info['fid']);
+      // Add our language.
+      $file_object->language = $lang;
       $file_object->filename = t('@language version', array('@language' => $language));
       $file_url = array(
         'path' => file_create_url($file_info['uri']),
@@ -154,17 +166,21 @@ function theme_nexteuropa_file_translations($variables) {
           ),
         ),
       );
-      $file_markup = _europa_file_markup($file_object, $file_url, 'file--bare');
+      $file_markup = _europa_file_markup($file_object, $file_url, 'file--bare', TRUE);
       $list['items'][] = array(
         'class' => array('file__translations-item'),
         'data' => $file_markup,
       );
     }
-    $list['items'][] = array(
-      'class' => array('file__translations-details'),
-      'data' => t('Looking for another language and it is not in the list? !link',
-        array('!link' => l(t('Find out why.'), "#"))),
-    );
+    $show_helptext = FALSE;
+    if ($show_helptext) {
+      $list['items'][] = array(
+        'class' => array('file__translations-details'),
+        'data' => t('Looking for another language and it is not in the list? !link',
+          array('!link' => l(t('Find out why.'), "#"))),
+      );
+    }
+
     $output .= theme_item_list($list);
     $output .= '</div>';
     return $output;

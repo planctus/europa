@@ -50,34 +50,10 @@ function dt_social_media_sharing_block_configure($delta = '') {
         '#weight' => 2,
       );
 
-      $form['dt_social_media_sharing_text'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Label for your social media sharing block'),
-        '#default_value' => variable_get('dt_social_media_sharing_text', _dt_social_media_sharing_default_text()),
-        '#description' => t('If you need a different label or text you can override it here'),
-        '#required' => TRUE,
-        '#weight' => 3,
-      );
-
       break;
   }
 
   return $form;
-}
-
-/**
- * Default title and label for the social media sharing block.
- */
-function _dt_social_media_sharing_default_text() {
-  // Style guide implementation and ensure text strings are translated.
-  // Text is now wrapped with default span, text is changed via the interface.
-  $text = '<span class="social-media-links__label">';
-  // Default text is now hardcoded for translation purposes, we will review the
-  // this implementation soon.
-  $text .= t('Share this page');
-  $text .= '</span>';
-
-  return $text;
 }
 
 /**
@@ -90,7 +66,6 @@ function dt_social_media_sharing_block_save($delta = '', $edit = array()) {
         variable_set('dt_social_media_sharing_json_code', $edit['dt_social_media_sharing_json_code']);
       }
       variable_set('dt_social_media_sharing_js_url', $edit['dt_social_media_sharing_js_url']);
-      variable_set('dt_social_media_sharing_text', $edit['dt_social_media_sharing_text']);
       variable_set('dt_social_media_sharing_block_type', $edit['dt_social_media_sharing_block_type']);
       break;
   }
@@ -119,7 +94,7 @@ function _dt_social_media_sharing_view_helper() {
   $type = variable_get('dt_social_media_sharing_block_type');
   $modifier = $type ? ' social-media-links--webtool-' . $type : FALSE;
   $text = '<div class="social-media-links' . $modifier . '">';
-  $text .= _dt_social_media_sharing_default_text();
+  $text .= '<span class="social-media-links__label">' . t('Share this page') . ':</span>';
   $text .= variable_get('dt_social_media_sharing_json_code', _dt_social_media_sharing_default_json());
   $text .= '</div>';
 
