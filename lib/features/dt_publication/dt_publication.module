@@ -69,8 +69,6 @@ function dt_publication_ds_fields_info($entity_type) {
 
 /**
  * Helper to return the view if the publication is of type collection.
- * @param $entity
- * @return bool|void
  */
 function _dt_publication_collection_documents($entity) {
   $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
