@@ -52,30 +52,70 @@ function dt_publication_field_display_alter(&$display, $context) {
 }
 
 /**
+ * Implements hook_ds_pre_render_alter().
+ */
+function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'publication' && $context['view_mode'] == 'full') {
+    $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
+    $type = $node_wrapper->field_publication_collection->value();
+    switch ($type) {
+      // Publication.
+      case '0':
+        $undesired_field = 'collection_label';
+
+        foreach($layout_render_array['left_header'] as $key => $item) {
+          if (isset($layout_render_array['left_header'][$key][$undesired_field])) {
+            unset($layout_render_array['left_header'][$key][$undesired_field]);
+          }
+        }
+        break;
+
+      // Collection.
+      case '1':
+
+        break;
+    }
+  }
+}
+
+/**
  * Implements hook_ds_fields_info().
  */
 function dt_publication_ds_fields_info($entity_type) {
   $fields = array();
 
+  // List of publications of type "One publication".
   $fields['collection_documents'] = array(
     'title' => t('Collection documents'),
     'ui_limit' => array('publication|*'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_publication_collection_documents',
+    'function' => '_dt_publication_list',
   );
 
   return array('node' => $fields);
 }
 
 /**
- * Helper to return the view if the publication is of type collection.
+ * Helper returning a list entities based on a type of publication.
  */
-function _dt_publication_collection_documents($entity) {
+function _dt_publication_list($entity) {
   $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
   if ($type = $node_wrapper->field_publication_collection->value()) {
-    // Collection.
-    if ($type == '1') {
-      return views_embed_view('publications', 'block');
+
+    switch ($type) {
+      // Publication.
+      case '0':
+        break;
+
+      // Collection.
+      case '1':
+        return views_embed_view('publications', 'block');
+        break;
+
+      // Nothing to care about.
+      default:
+        return '';
+        break;
     }
   }
 }
