@@ -411,7 +411,7 @@ function _cwt_core_get_normalized_path() {
 function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
   // Array storing the breadcrumb's segments.
   $breadcrumb = array();
-  // We don't need to pass classes here, everything is themed in the europa theme.
+  // We don't need to pass classes here, classes are added in the europa theme.
   $segments_class = '';
   // Gets the flag saying if the front page segment should be included.
   $include_front_page_segment = variable_get(EasyBreadcrumbConstants::DB_VAR_INCLUDE_HOME_SEGMENT, TRUE);
