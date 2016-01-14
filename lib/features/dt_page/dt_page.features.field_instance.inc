@@ -1414,7 +1414,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
+    'label' => 'Priority',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1924,7 +1924,7 @@ This will appear as a timeline on the page.
   t('Link');
   t('Next steps');
   t('Parent');
-  t('Priorities');
+  t('Priority');
   t('Related Topics');
   t('Related commissioners');
   t('Related content');
