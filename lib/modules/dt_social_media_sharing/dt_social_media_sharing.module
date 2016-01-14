@@ -50,15 +50,6 @@ function dt_social_media_sharing_block_configure($delta = '') {
         '#weight' => 2,
       );
 
-      $form['dt_social_media_sharing_text'] = array(
-        '#type' => 'textarea',
-        '#title' => t('Label for your social media sharing block'),
-        '#default_value' => variable_get('dt_social_media_sharing_text', _dt_social_media_sharing_default_text()),
-        '#description' => t('If you need a different label or text you can override it here'),
-        '#required' => TRUE,
-        '#weight' => 3,
-      );
-
       break;
   }
 
@@ -70,10 +61,7 @@ function dt_social_media_sharing_block_configure($delta = '') {
  */
 function _dt_social_media_sharing_default_text() {
   // Style guide implementation and ensure text strings are translated.
-  $text = '<p>';
-  $text .= t('Follow the latest progress and learn more about getting involved.');
-  $text .= '</p>';
-  $text .= '<span class="social-media-links__label">';
+  $text = '<span class="social-media-links__label">';
   $text .= t('Share this blog post:');
   $text .= '</span>';
 
