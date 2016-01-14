@@ -57,18 +57,6 @@ function dt_social_media_sharing_block_configure($delta = '') {
 }
 
 /**
- * Default title and label for the social media sharing block.
- */
-function _dt_social_media_sharing_default_text() {
-  // Style guide implementation and ensure text strings are translated.
-  $text = '<span class="social-media-links__label">';
-  $text .= t('Share this blog post:');
-  $text .= '</span>';
-
-  return $text;
-}
-
-/**
  * Implements hook_block_save().
  */
 function dt_social_media_sharing_block_save($delta = '', $edit = array()) {
@@ -78,7 +66,6 @@ function dt_social_media_sharing_block_save($delta = '', $edit = array()) {
         variable_set('dt_social_media_sharing_json_code', $edit['dt_social_media_sharing_json_code']);
       }
       variable_set('dt_social_media_sharing_js_url', $edit['dt_social_media_sharing_js_url']);
-      variable_set('dt_social_media_sharing_text', $edit['dt_social_media_sharing_text']);
       variable_set('dt_social_media_sharing_block_type', $edit['dt_social_media_sharing_block_type']);
       break;
   }
@@ -107,7 +94,7 @@ function _dt_social_media_sharing_view_helper() {
   $type = variable_get('dt_social_media_sharing_block_type');
   $modifier = $type ? ' social-media-links--webtool-' . $type : FALSE;
   $text = '<div class="social-media-links' . $modifier . '">';
-  $text .= variable_get('dt_social_media_sharing_text', _dt_social_media_sharing_default_text());
+  $text .= '<span class="social-media-links__label">' . t('Share this blog post:') . '</span>';
   $text .= variable_get('dt_social_media_sharing_json_code', _dt_social_media_sharing_default_json());
   $text .= '</div>';
 
