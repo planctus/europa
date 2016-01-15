@@ -59,24 +59,37 @@ function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
     $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
     $type = $node_wrapper->field_publication_collection->value();
 
+    // Switch with a vision of possibly more than 1 type in the future.
     switch ($type) {
       // Publication.
       case '0':
-
-        $undesired_field = 'collection_label';
-
-        foreach ($layout_render_array['left_header'] as $key => $item) {
-          if (isset($layout_render_array['left_header'][$key][$undesired_field])) {
-            unset($layout_render_array['left_header'][$key][$undesired_field]);
-          }
-        }
-
+        _dt_publication_unset_ds_field('left_header', 'collection_label', $layout_render_array);
         break;
 
       // Collection.
       case '1':
-
+        _dt_publication_unset_ds_field('top', 'publication_collections', $layout_render_array);
         break;
+    }
+  }
+}
+
+/**
+ * Helper to remove a field from a region.
+ *
+ * @param string $region
+ *   Target region from which to remove a field.
+ *
+ * @param string $field
+ *   Target field to remove, field machine name.
+ *
+ * @param array $layout_render_array
+ *   The DS layout render array.
+ */
+function _dt_publication_unset_ds_field($region, $field, &$layout_render_array) {
+  foreach ($layout_render_array[$region] as $key => $item) {
+    if (isset($layout_render_array[$region][$key][$field])) {
+      unset($layout_render_array[$region][$key][$field]);
     }
   }
 }
