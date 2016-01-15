@@ -71,6 +71,7 @@ features[variable][] = i18n_sync_node_type_publication
 features[variable][] = language_content_type_publication
 features[variable][] = node_options_publication
 features[variable][] = pathauto_node_publication_pattern
+features[views_view][] = publication_collections
 features[views_view][] = publications
 features_exclude[dependencies][text] = text
 features_exclude[dependencies][nexteuropa_editorial] = nexteuropa_editorial

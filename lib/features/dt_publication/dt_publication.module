@@ -126,7 +126,7 @@ function _dt_publication_documents($entity) {
     $type = $node_wrapper->field_publication_collection->value();
     if ($type == "1") {
       // "1" == Collection.
-      return views_embed_view('publications', 'block');
+      return views_embed_view('publications', 'block_1');
     }
   }
 }
@@ -135,5 +135,6 @@ function _dt_publication_documents($entity) {
  * Helper returning a list of links to publications of type collection.
  */
 function _dt_publication_collections() {
-  return 'the markup';
+  // Has to be returned only if one publication type.
+  return views_embed_view('publication_collections', 'block');
 }
