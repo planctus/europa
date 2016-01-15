@@ -15,7 +15,6 @@ $permissions['site manager'] = array(
   'administer tmgmt',
   'administer translation tasks',
   'administer users',
-  'administer url aliases',
   'assign node weight',
   'bypass node access',
   'bypass workbench moderation',
