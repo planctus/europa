@@ -229,7 +229,9 @@ function entityreference_titleoverwrite_field_formatter_view($entity_type, $enti
           $display['settings']['link'] &&
           ($uri = entity_uri($field['settings']['target_type'], $item['entity']))
         ) {
-          $result[$delta] = array('#markup' => l($label, $uri['path'], $uri['options']));
+          $result[$delta] = array(
+            '#markup' => l($label, $uri['path'], $uri['options'])
+          );
         }
         else {
           $result[$delta] = array('#markup' => check_plain($label));
