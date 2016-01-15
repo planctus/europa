@@ -7,7 +7,7 @@
 /**
  * Class EntityReferenceFieldBehaviorTitleoverwrite.
  */
-class EntityReferenceFieldBehavior_Titleoverwrite extends EntityReference_BehaviorHandler_Abstract {
+class EntityReferenceFieldBehaviorTitleoverwrite extends EntityReference_BehaviorHandler_Abstract {
 
   /**
    * Overwrite the schema.
