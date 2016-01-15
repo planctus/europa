@@ -41,14 +41,14 @@ function dt_banner_quote_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'banner_quote';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'field_core_description' => array(
+    'field_banner_author' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
-    'field_banner_author' => array(
+    'field_core_description' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_reset',
@@ -119,8 +119,8 @@ function dt_banner_quote_ds_layout_settings_info() {
         1 => 'group_quote_quote',
         2 => 'group_blockquote',
         3 => 'group_quote_author',
-        4 => 'field_banner_author',
-        5 => 'field_core_description',
+        4 => 'field_core_description',
+        5 => 'field_banner_author',
       ),
     ),
     'fields' => array(
@@ -128,8 +128,8 @@ function dt_banner_quote_ds_layout_settings_info() {
       'group_quote_quote' => 'ds_content',
       'group_blockquote' => 'ds_content',
       'group_quote_author' => 'ds_content',
-      'field_banner_author' => 'ds_content',
       'field_core_description' => 'ds_content',
+      'field_banner_author' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

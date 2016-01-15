@@ -10,7 +10,7 @@
 function dt_banner_quote_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-banner_quote-field_banner_author'
+  // Exported field_instance: 'node-banner_quote-field_banner_author'.
   $field_instances['node-banner_quote-field_banner_author'] = array(
     'bundle' => 'banner_quote',
     'default_value' => NULL,
@@ -78,7 +78,7 @@ function dt_banner_quote_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_quote-field_banner_author_gender'
+  // Exported field_instance: 'node-banner_quote-field_banner_author_gender'.
   $field_instances['node-banner_quote-field_banner_author_gender'] = array(
     'bundle' => 'banner_quote',
     'default_value' => NULL,
@@ -116,7 +116,7 @@ function dt_banner_quote_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_quote-field_core_description'
+  // Exported field_instance: 'node-banner_quote-field_core_description'.
   $field_instances['node-banner_quote-field_core_description'] = array(
     'bundle' => 'banner_quote',
     'default_value' => NULL,
@@ -189,7 +189,7 @@ function dt_banner_quote_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_quote-group_content_access'
+  // Exported field_instance: 'node-banner_quote-group_content_access'.
   $field_instances['node-banner_quote-group_content_access'] = array(
     'bundle' => 'banner_quote',
     'default_value' => array(
@@ -243,7 +243,7 @@ function dt_banner_quote_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-banner_quote-og_group_ref'
+  // Exported field_instance: 'node-banner_quote-og_group_ref'.
   $field_instances['node-banner_quote-og_group_ref'] = array(
     'bundle' => 'banner_quote',
     'default_value' => NULL,
@@ -303,7 +303,7 @@ function dt_banner_quote_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner_quote-title_field'
+  // Exported field_instance: 'node-banner_quote-title_field'.
   $field_instances['node-banner_quote-title_field'] = array(
     'bundle' => 'banner_quote',
     'default_value' => NULL,
