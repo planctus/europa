@@ -175,6 +175,14 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Published (referenced entities) */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['value'] = 1;
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
+  $handler->display->display_options['filters']['status_1']['expose']['operator'] = FALSE;
+  $handler->display->display_options['filters']['status_1']['relationship'] = 'field_core_announcement_target_id';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -389,6 +397,25 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['operator'] = 'field_core_persons_target_id_op';
   $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['identifier'] = 'persons';
   $handler->display->display_options['filters']['field_core_persons_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Related pages (field_core_pages) */
+  $handler->display->display_options['filters']['field_core_pages_target_id']['id'] = 'field_core_pages_target_id';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['table'] = 'field_data_field_core_pages';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['field'] = 'field_core_pages_target_id';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_pages_target_id']['expose']['operator_id'] = 'field_core_pages_target_id_op';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['expose']['label'] = 'Pages';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['expose']['operator'] = 'field_core_pages_target_id_op';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['expose']['identifier'] = 'pages';
+  $handler->display->display_options['filters']['field_core_pages_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,

@@ -153,6 +153,20 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|priority_policy_area|teaser'] = $ds_fieldsetting;
 

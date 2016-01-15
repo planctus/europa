@@ -240,7 +240,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 4,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -497,7 +497,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -597,7 +597,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -678,7 +678,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -745,7 +745,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -754,7 +754,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Used mainly for Call to Action button value.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1082,7 +1082,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1109,7 +1109,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 2,
         ),
         'type' => 'context_nav_item',
-        'weight' => 3,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1171,7 +1171,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 1,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1262,7 +1262,6 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -1401,7 +1400,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1431,7 +1430,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 2,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1746,6 +1745,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');
   t('Title');
   t('Type selection');
+  t('Used mainly for Call to Action button value.');
 
   return $field_instances;
 }

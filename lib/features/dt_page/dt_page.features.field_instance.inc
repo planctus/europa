@@ -440,12 +440,18 @@ function dt_page_field_default_field_instances() {
         'weight' => 29,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 11,
       ),
       'teaser' => array(
@@ -1046,9 +1052,13 @@ function dt_page_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 19,
       ),
       'teaser' => array(
@@ -1414,7 +1424,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_priorities',
-    'label' => 'Priorities',
+    'label' => 'Priority',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1646,6 +1656,59 @@ This will appear as a timeline on the page.
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_core_type_content'.
+  $field_instances['node-basic_page-field_core_type_content'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_type_content',
+    'label' => 'Type selection',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-group_content_access'.
   $field_instances['node-basic_page-group_content_access'] = array(
     'bundle' => 'basic_page',
@@ -1871,7 +1934,7 @@ This will appear as a timeline on the page.
   t('Link');
   t('Next steps');
   t('Parent');
-  t('Priorities');
+  t('Priority');
   t('Related Topics');
   t('Related commissioners');
   t('Related content');
@@ -1893,6 +1956,7 @@ This will appear as a timeline on the page.
   t('Social media profile links');
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('Title');
+  t('Type selection');
   t('Used mainly for Call to Action button value.');
 
   return $field_instances;

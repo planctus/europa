@@ -24,10 +24,9 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_STARTERKIT_CONTENT_NAME_status',
-      2 => 'field_STARTERKIT_CONTENT_NAME_type',
-      4 => 'field_core_introduction',
-      5 => 'field_core_legacy_link',
+      1 => 'field_core_introduction',
+      2 => 'field_core_description',
+      3 => 'field_core_legacy_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -84,17 +83,14 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_STARTERKIT_CONTENT_NAME_type',
+      0 => 'content_type_label',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
       'instance_settings' => array(
-        'classes' => 'meta',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
+        'modifier' => '',
+        'classes' => '',
       ),
     ),
   );
