@@ -31,8 +31,6 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_context_nav';
-  $handler->display->display_options['row_plugin'] = 'nexteuropa_context_nav_item';
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_core_publications_target_id']['id'] = 'field_core_publications_target_id';
   $handler->display->display_options['relationships']['field_core_publications_target_id']['table'] = 'field_data_field_core_publications';
@@ -83,7 +81,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'nexteuropa_context_nav';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'nexteuropa_context_nav_item';
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['publication_collections'] = $view;
