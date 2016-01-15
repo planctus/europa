@@ -24,6 +24,12 @@ function entityreference_titleoverwrite_field_widget_entityreference_autocomplet
     // Get the config.
     $overwrite_behavior = $context['field']['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior'];
 
+    // Set required.
+    $required = FALSE;
+    if ($form_state['build_info']['form_id'] <> 'field_ui_field_edit_form') {
+      $required = isset($overwrite_behavior['overwrite_title_mandatory']) ? $overwrite_behavior['overwrite_title_mandatory'] : FALSE;
+    }
+
     // If it is enabled we allow the override.
     if (isset($overwrite_behavior['status']) && $overwrite_behavior['status'] == 1) {
       // Add the title element.
@@ -35,11 +41,264 @@ function entityreference_titleoverwrite_field_widget_entityreference_autocomplet
         '#maxlength' => 255,
         '#default_value' => isset($context['items'][$context['delta']]['title_override']) ? $context['items'][$context['delta']]['title_override'] : '',
         '#size' => 60,
-        '#required' => isset($overwrite_behavior['overwrite_title_mandatory']) ? $overwrite_behavior['overwrite_title_mandatory'] : FALSE,
+        '#required' => $required,
       );
 
       // Change the weight of target_id.
       $element['target_id']['#weight'] = 2;
     }
   }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function entityreference_titleoverwrite_field_formatter_info() {
+  return array(
+    'entityreference_label_titleoverwrite' => array(
+      'label' => t('Label (overwritten title)'),
+      'description' => t('Display the label of the referenced entities (with overwritten title).'),
+      'field types' => array('entityreference'),
+      'settings' => array(
+        'link' => FALSE,
+      ),
+    ),
+    'entityreference_entity_view_titleoverwrite' => array(
+      'label' => t('Rendered entity (overwritten title)'),
+      'description' => t('Display the referenced entities rendered by entity_view() (with overwritten title).'),
+      'field types' => array('entityreference'),
+      'settings' => array(
+        'view_mode' => 'default',
+        'links' => TRUE,
+        'use_content_language' => TRUE,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function entityreference_titleoverwrite_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  if ($display['type'] == 'entityreference_label_titleoverwrite') {
+    $element['link'] = array(
+      '#title' => t('Link label to the referenced entity'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['link'],
+    );
+  }
+
+  if ($display['type'] == 'entityreference_entity_view_titleoverwrite') {
+    $entity_info = entity_get_info($field['settings']['target_type']);
+    $options = array('default' => t('Default'));
+    if (!empty($entity_info['view modes'])) {
+      foreach ($entity_info['view modes'] as $view_mode => $view_mode_settings) {
+        $options[$view_mode] = $view_mode_settings['label'];
+      }
+    }
+
+    $element['view_mode'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => t('View mode'),
+      '#default_value' => $settings['view_mode'],
+      '#access' => count($options) > 1,
+    );
+
+    $element['links'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show links'),
+      '#default_value' => $settings['links'],
+    );
+
+    $element['use_content_language'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use current content language'),
+      '#default_value' => $settings['use_content_language'],
+    );
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function entityreference_titleoverwrite_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  if ($display['type'] == 'entityreference_label_titleoverwrite') {
+    $summary[] = $settings['link'] ? t('Link to the referenced entity') : t('No link');
+  }
+
+  if ($display['type'] == 'entityreference_entity_view_titleoverwrite') {
+    $entity_info = entity_get_info($field['settings']['target_type']);
+    $view_mode_label = $settings['view_mode'] == 'default' ? t('Default') : $settings['view_mode'];
+    if (isset($entity_info['view modes'][$settings['view_mode']]['label'])) {
+      $view_mode_label = $entity_info['view modes'][$settings['view_mode']]['label'];
+    }
+    $summary[] = t('Rendered as @mode', array('@mode' => $view_mode_label));
+    $summary[] = !empty($settings['links']) ? t('Display links') : t('Do not display links');
+    $summary[] = !empty($settings['use_content_language']) ? t('Use current content language') : t('Use field language');
+  }
+
+  return implode('<br />', $summary);
+}
+
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function entityreference_titleoverwrite_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  $target_ids = array();
+
+  // Collect every possible entity attached to any of the entities.
+  foreach ($entities as $id => $entity) {
+    foreach ($items[$id] as $delta => $item) {
+      if (isset($item['target_id'])) {
+        $target_ids[] = $item['target_id'];
+      }
+    }
+  }
+
+  if ($target_ids) {
+    $target_entities = entity_load($field['settings']['target_type'], $target_ids);
+  }
+  else {
+    $target_entities = array();
+  }
+
+  // Iterate through the fieldable entities again to attach the loaded data.
+  foreach ($entities as $id => $entity) {
+    $rekey = FALSE;
+
+    foreach ($items[$id] as $delta => $item) {
+      // Check whether the referenced entity could be loaded.
+      if (isset($target_entities[$item['target_id']])) {
+        // Replace the instance value with the term data.
+        $items[$id][$delta]['entity'] = $target_entities[$item['target_id']];
+        // Check whether the user has access to the referenced entity.
+        $has_view_access = (entity_access('view', $field['settings']['target_type'], $target_entities[$item['target_id']]) !== FALSE);
+        $has_update_access = (entity_access('update', $field['settings']['target_type'], $target_entities[$item['target_id']]) !== FALSE);
+        $items[$id][$delta]['access'] = ($has_view_access || $has_update_access);
+      }
+      // Otherwise, unset the instance value, since the entity does not exist.
+      else {
+        unset($items[$id][$delta]);
+        $rekey = TRUE;
+      }
+    }
+
+    if ($rekey) {
+      // Rekey the items array.
+      $items[$id] = array_values($items[$id]);
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function entityreference_titleoverwrite_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $result = array();
+  $settings = $display['settings'];
+
+  // Rebuild the items list to contain only those with access.
+  foreach ($items as $key => $item) {
+    if (empty($item['access'])) {
+      unset($items[$key]);
+    }
+  }
+
+  switch ($display['type']) {
+    case 'entityreference_label_titleoverwrite':
+      $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
+
+      foreach ($items as $delta => $item) {
+        $label = $handler->getLabel($item['entity']);
+        // If the link is to be displayed and the entity has a uri, display a link.
+        // Note the assignment ($url = ) here is intended to be an assignment.
+        if ($display['settings']['link'] && ($uri = entity_uri($field['settings']['target_type'], $item['entity']))) {
+          $result[$delta] = array('#markup' => l($label, $uri['path'], $uri['options']));
+        }
+        else {
+          $result[$delta] = array('#markup' => check_plain($label));
+        }
+      }
+      break;
+
+    case 'entityreference_entity_view_titleoverwrite':
+      $target_langcode = $langcode;
+      if (!empty($settings['use_content_language']) && !empty($GLOBALS['language_content']->language)) {
+        $target_langcode = $GLOBALS['language_content']->language;
+      }
+
+      foreach ($items as $delta => $item) {
+        // Protect ourselves from recursive rendering.
+        static $depth = 0;
+        $depth++;
+        if ($depth > 20) {
+          throw new EntityReferenceRecursiveRenderingException(t('Recursive rendering detected when rendering entity @entity_type(@entity_id). Aborting rendering.', array('@entity_type' => $entity_type, '@entity_id' => $item['target_id'])));
+        }
+
+        $target_entity = clone $item['entity'];
+        unset($target_entity->content);
+        $result[$delta] = entity_view($field['settings']['target_type'], array($item['target_id'] => $target_entity), $settings['view_mode'], $target_langcode, FALSE);
+
+        if (empty($settings['links']) && isset($result[$delta][$field['settings']['target_type']][$item['target_id']]['links'])) {
+          $result[$delta][$field['settings']['target_type']][$item['target_id']]['links']['#access'] = FALSE;
+        }
+        $depth = 0;
+
+        // Overwrite the title.
+        $custom_title = isset($item['title_override']) ? $item['title_override'] : '';
+        $target_id = $item['target_id'];
+        $result[$delta]['node'][$target_id]['title_field']['#items'][0]['value'] = $custom_title;
+        $result[$delta]['node'][$target_id]['title_field']['#items'][0]['safe_value'] = $custom_title;
+        $result[$delta]['node'][$target_id]['title_field'][0]['#markup'] = $custom_title;
+      }
+      break;
+  }
+
+  return $result;
+}
+
+/**
+ * Helper function to alter the database schema for a certain field.
+ *
+ * This can be used to upgrade existing fields, together with a feature revert.
+ *
+ * @param string $field_name
+ *   The field name.
+ */
+function _entityreference_titleoverwrite_add_table_field($field_name) {
+  // The actual field to add to the schema.
+  $field_schema_name = $field_name . '_title_override';
+
+  // The new fields properties.
+  $field_schema_information = array(
+    'type' => 'varchar',
+    'description' => 'Title override',
+    'length' => 255,
+    'not null' => FALSE,
+  );
+
+  // The data table.
+  $data_table_name = 'field_data_' . $field_name;
+  if (!db_field_exists($data_table_name, $field_schema_name)) {
+    db_add_field($data_table_name, $field_schema_name, $field_schema_information);
+  }
+
+  // The revision table.
+  $revision_table_name = 'field_revision_' . $field_name;
+  if (!db_field_exists($revision_table_name, $field_schema_name)) {
+    db_add_field($revision_table_name, $field_schema_name, $field_schema_information);
+  }
+
 }
