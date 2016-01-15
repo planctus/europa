@@ -1248,5 +1248,12 @@ function cwt_core_strongarm() {
   $strongarm->value = '<span class="social-media-links__label">Share this page:</span>';
   $export['dt_social_media_sharing_text'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 0;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
+
   return $export;
 }

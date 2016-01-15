@@ -23,7 +23,7 @@ function dt_page_ds_field_settings_info() {
       'format' => 'default',
     ),
     'related_announcements' => array(
-      'weight' => '13',
+      'weight' => '12',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -44,6 +44,13 @@ function dt_page_ds_field_settings_info() {
       ),
     ),
     'field_core_banner' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_featured_item' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_reset',
@@ -157,11 +164,11 @@ function dt_page_ds_layout_settings_info() {
         5 => 'group_page_priorities',
         6 => 'priorities_preprocess',
         7 => 'group_page_free_field',
-        8 => 'group_page_latest_main',
-        9 => 'body',
+        8 => 'body',
+        9 => 'group_page_latest_main',
         10 => 'group_page_next_steps',
-        11 => 'field_core_next_steps',
-        12 => 'group_page_documents',
+        11 => 'group_page_documents',
+        12 => 'field_core_next_steps',
         13 => 'group_page_related_links',
         14 => 'field_core_featured_item',
         15 => 'group_page_latest',
@@ -181,11 +188,11 @@ function dt_page_ds_layout_settings_info() {
       'group_page_priorities' => 'central',
       'priorities_preprocess' => 'central',
       'group_page_free_field' => 'central',
-      'group_page_latest_main' => 'central',
       'body' => 'central',
+      'group_page_latest_main' => 'central',
       'group_page_next_steps' => 'central',
-      'field_core_next_steps' => 'central',
       'group_page_documents' => 'central',
+      'field_core_next_steps' => 'central',
       'group_page_related_links' => 'central',
       'field_core_featured_item' => 'central',
       'group_page_latest' => 'central',
