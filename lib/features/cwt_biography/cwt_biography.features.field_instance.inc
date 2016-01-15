@@ -1446,7 +1446,7 @@ function cwt_biography_field_default_field_instances() {
             'colorbox_multivalue_index' => NULL,
           ),
           'fallback_image_style' => 'thumbnail',
-          'image_link' => 'content',
+          'image_link' => '',
           'picture_mapping' => 'team_cabinet_members_picture',
         ),
         'type' => 'picture',
