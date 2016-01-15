@@ -79,10 +79,8 @@ function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
  *
  * @param string $region
  *   Target region from which to remove a field.
- *
  * @param string $field
  *   Target field to remove, field machine name.
- *
  * @param array $layout_render_array
  *   The DS layout render array.
  */
@@ -137,5 +135,5 @@ function _dt_publication_documents($entity) {
  * Helper returning a list of links to publications of type collection.
  */
 function _dt_publication_collections() {
-  return "<a href=\"http://ec.europa.eu/europeaid/about-development-and-cooperation-europeaid_en\">International Cooperation and Development</a>";
+  return 'the markup';
 }

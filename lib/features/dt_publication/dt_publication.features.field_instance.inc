@@ -182,7 +182,7 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -690,7 +690,7 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -748,7 +748,7 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -904,7 +904,7 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',

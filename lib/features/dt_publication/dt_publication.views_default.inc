@@ -74,6 +74,20 @@ function dt_publication_views_default_views() {
 
   /* Display: Collection documents */
   $handler = $view->new_display('block', 'Collection documents', 'block');
+
+  /* Display: Publication collections */
+  $handler = $view->new_display('block', 'Publication collections', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'context_nav';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'title';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $export['publications'] = $view;
 
   return $export;
