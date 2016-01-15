@@ -88,7 +88,7 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Blockquote',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => 'blockquote blockquote--small',
         'element' => 'blockquote',
         'show_label' => '0',
         'label_element' => 'div',
