@@ -35,11 +35,11 @@ function dt_publication_field_display_alter(&$display, $context) {
     $type = $node_wrapper->field_publication_collection->value();
     switch ($type) {
       // Publication.
-      case '0':
-        if ($context['field']['field_name'] == 'field_core_publications') {
-          $display['type'] = 'hidden';
-        }
-        break;
+//      case '0':
+//        if ($context['field']['field_name'] == 'field_core_publications') {
+//          $display['type'] = 'hidden';
+//        }
+//        break;
 
       // Collection.
       case '1':
@@ -92,7 +92,15 @@ function dt_publication_ds_fields_info($entity_type) {
     'title' => t('Collection documents'),
     'ui_limit' => array('publication|*'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_publication_list',
+    'function' => '_dt_publication_documents',
+  );
+
+  // The "Part of collection:".
+  $fields['publication_collections'] = array(
+    'title' => t('Publication collections'),
+    'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_collections'
   );
 
   return array('node' => $fields);
@@ -101,20 +109,17 @@ function dt_publication_ds_fields_info($entity_type) {
 /**
  * Helper returning a list entities based on a type of publication.
  */
-function _dt_publication_list($entity) {
+function _dt_publication_documents($entity) {
   $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
-  if ($type = $node_wrapper->field_publication_collection->value()) {
-
-    switch ($type) {
-      // Publication.
-      case '0':
-
-        break;
-
-      // Collection.
-      case '1':
-        return views_embed_view('publications', 'block');
-
+  if (isset($node_wrapper->field_publication_collection)) {
+    $type = $node_wrapper->field_publication_collection->value();
+    if ($type == "1") {
+      // "1" == Collection.
+      return views_embed_view('publications', 'block');
     }
   }
+}
+
+function _dt_publication_collections($entity) {
+  return "<a href=\"http://ec.europa.eu/europeaid/about-development-and-cooperation-europeaid_en\">International Cooperation and Development</a>";
 }
