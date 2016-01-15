@@ -35,11 +35,11 @@ function dt_publication_field_display_alter(&$display, $context) {
     $type = $node_wrapper->field_publication_collection->value();
     switch ($type) {
       // Publication.
-//      case '0':
-//        if ($context['field']['field_name'] == 'field_core_publications') {
-//          $display['type'] = 'hidden';
-//        }
-//        break;
+      case '0':
+        if ($context['field']['field_name'] == 'field_core_publications') {
+          $display['type'] = 'hidden';
+        }
+        break;
 
       // Collection.
       case '1':
@@ -100,7 +100,7 @@ function dt_publication_ds_fields_info($entity_type) {
     'title' => t('Publication collections'),
     'ui_limit' => array('publication|*'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_publication_collections'
+    'function' => '_dt_publication_collections',
   );
 
   return array('node' => $fields);
@@ -120,6 +120,9 @@ function _dt_publication_documents($entity) {
   }
 }
 
-function _dt_publication_collections($entity) {
+/**
+ * Helper returning a list of links to publications of type collection.
+ */
+function _dt_publication_collections() {
   return "<a href=\"http://ec.europa.eu/europeaid/about-development-and-cooperation-europeaid_en\">International Cooperation and Development</a>";
 }
