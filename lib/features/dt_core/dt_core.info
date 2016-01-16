@@ -122,6 +122,7 @@ features[metatag][] = global
 features[metatag][] = node
 features[menu_custom][] = menu-dt-service-links
 features[menu_custom][] = menu-dt-menu-social-media
+features[menu_custom][] = menu-dt-breadcrumb-menu
 features[picture_mapping][] = header_image
 features[picture_mapping][] = teaser_image
 features[taxonomy][] = top_tasks

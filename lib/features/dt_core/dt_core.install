@@ -29,6 +29,9 @@ function dt_core_install() {
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
 
+  // Remove the platform Breadcrumb menu.
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
+
   // Set our default social network url.
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 }
@@ -837,4 +840,11 @@ function dt_core_update_7159() {
  */
 function dt_core_update_7160() {
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
+}
+
+/**
+ * NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+ */
+function dt_core_update_7161() {
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }
