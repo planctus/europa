@@ -411,26 +411,17 @@ function _cwt_core_get_normalized_path() {
 function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
   // Array storing the breadcrumb's segments.
   $breadcrumb = array();
-
-  // Load the initial segments stored in a menu.
-  $breadcrumb_menu = menu_navigation_links('menu-breadcrumb-menu');
-
-  // Default classes for the segments.
-  $segments_class = 'breadcrumb-segment';
-  foreach ($breadcrumb_menu as $key => $segment) {
-    $breadcrumb[] = _easy_breadcrumb_build_item($segment['title'], array($segments_class), $segment['href'], $segment['href']);
-  }
-
+  // We don't need to pass classes here, classes are added in the europa theme.
+  $segments_class = '';
   // Gets the flag saying if the front page segment should be included.
   $include_front_page_segment = variable_get(EasyBreadcrumbConstants::DB_VAR_INCLUDE_HOME_SEGMENT, TRUE);
 
   // Conditionally include the front page segment in the breadcrumb.
   if ($include_front_page_segment) {
     $front_text = _easy_breadcrumb_obtain_home_title();
-    // Marks the front--segment with an identifier class (useful for CSS).
-    $segments_classes = array($segments_class, 'breadcrumb-segment-front');
+
     // Adds a segment for the front page.
-    $breadcrumb[] = _easy_breadcrumb_build_item($front_text, $segments_classes, '');
+    $breadcrumb[] = _easy_breadcrumb_build_item($front_text, $segments_class, '');
   }
 
   // There won't be more segments if visiting the front page.
@@ -491,7 +482,6 @@ function _cwt_core_easy_breadcrumb_block($original_path = NULL) {
       // CSS).
       $segments_classes = array(
         $segments_class,
-        'breadcrumb-segment-title',
         'active',
       );
       // The title is the last segment in the URL.
