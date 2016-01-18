@@ -28,7 +28,7 @@ function cwt_core_menu_default_menu_custom() {
   );
   // Exported menu: menu-dt-menu-social-media.
   $menus['menu-dt-breadcrumb-menu'] = array(
-    'menu_name' => 'menu-dt-breadcrumb-menu_',
+    'menu_name' => 'menu-dt-breadcrumb-menu',
     'title' => 'DT Breadcrumb menu',
     'description' => 'Items in this menu will be prepended to the breadcrumb',
     'language' => 'und',
