@@ -26,10 +26,10 @@ function cwt_core_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 0,
   );
-  // Exported menu: menu-dt-menu-social-media.
+  // Exported menu: menu-dt-breadcrumb-menu.
   $menus['menu-dt-breadcrumb-menu'] = array(
     'menu_name' => 'menu-dt-breadcrumb-menu',
-    'title' => 'DT Breadcrumb menu',
+    'title' => 'CWT Breadcrumb menu',
     'description' => 'Items in this menu will be prepended to the breadcrumb',
     'language' => 'und',
     'i18n_mode' => 5,
