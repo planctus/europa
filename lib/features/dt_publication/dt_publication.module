@@ -170,7 +170,7 @@ function _dt_publication_collections() {
     if (isset($node_wrapper->field_publication_collection)) {
       $type = $node_wrapper->field_publication_collection->value();
       if ($type == "0") {
-        // "1" == Publication.
+        // "0" == Publication.
         return views_embed_view('publication_collections', 'block');
       }
     }
