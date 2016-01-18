@@ -49,7 +49,7 @@ function dt_consultation_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-consultation-field_core_description'
+  // Exported field_instance: 'node-consultation-field_core_description'.
   $field_instances['node-consultation-field_core_description'] = array(
     'bundle' => 'consultation',
     'default_value' => NULL,
@@ -65,19 +65,9 @@ function dt_consultation_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 2,
       ),
     ),
@@ -424,7 +414,7 @@ function dt_consultation_default_field_default_field_instances() {
     ),
   );
 
-  // Translatables.
+  // Translatables
   // Included for use with string extractors like potx.
   t('Description');
   t('Group content visibility');
