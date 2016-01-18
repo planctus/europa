@@ -64,14 +64,32 @@ function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
       // Publication.
       case '0':
         _dt_publication_unset_ds_field('left_header', 'collection_label', $layout_render_array);
+        _dt_publication_rename_containing_group_label('field_core_files', 'Files', $layout_render_array);
+        $layout_render_array['central'][11]['#group']->label = "Files";
         break;
 
       // Collection.
       case '1':
         _dt_publication_unset_ds_field('top', 'publication_collections', $layout_render_array);
+        _dt_publication_rename_containing_group_label('collection_documents', 'Documents', $layout_render_array);
+        $layout_render_array['central'][11]['#group']->label = "Documents";
         break;
     }
   }
+}
+
+/**
+ * Helper to rename a label of a group depending on a contained field.
+ *
+ * @param string $field_name
+ *   Field machine name to find in DS region groups.
+ * @param string $group_label
+ *   Desired label to be set on the group containing $field_name.
+ * @param array $layout_render_array
+ *   The DS layout render array.
+ */
+function _dt_publication_rename_containing_group_label($field_name, $group_label, &$layout_render_array) {
+
 }
 
 /**
