@@ -65,14 +65,14 @@ function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
       case '0':
         _dt_publication_unset_ds_field('left_header', 'collection_label', $layout_render_array);
         _dt_publication_rename_containing_group_label('field_core_files', 'Files', $layout_render_array);
-        $layout_render_array['central'][11]['#group']->label = "Files";
+//        $layout_render_array['central'][11]['#group']->label = "Files";
         break;
 
       // Collection.
       case '1':
         _dt_publication_unset_ds_field('top', 'publication_collections', $layout_render_array);
         _dt_publication_rename_containing_group_label('collection_documents', 'Documents', $layout_render_array);
-        $layout_render_array['central'][11]['#group']->label = "Documents";
+//        $layout_render_array['central'][11]['#group']->label = "Documents";
         break;
     }
   }
@@ -89,7 +89,21 @@ function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
  *   The DS layout render array.
  */
 function _dt_publication_rename_containing_group_label($field_name, $group_label, &$layout_render_array) {
-
+  // Iterates through the DS layout regions.
+  foreach ($layout_render_array as $region => $items) {
+    // And every item in each region.
+    foreach ($items as $key => $item) {
+      // If there is a field group.
+      if ($item_group = $item['#group']) {
+        // Get the children of this particular group.
+        $children = $item_group->children;
+        if (array_search($field_name, $children)) {
+          // Change the label of the group if target field_name is contained.
+          $item_group->label = $group_label;
+        }
+      }
+    }
+  }
 }
 
 /**
