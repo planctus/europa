@@ -255,19 +255,20 @@ function entityreference_titleoverwrite_field_formatter_view($entity_type, $enti
 
         $target_entity = clone $item['entity'];
         unset($target_entity->content);
+
+        if (isset($item['title_override']) && !empty($item['title_override'])) {
+          $custom_title = $item['title_override'];
+          // Change entity properties.
+          $target_entity->title = $custom_title;
+          $target_entity->title_field[$target_langcode][0]['value'] = $custom_title;
+          $target_entity->title_field[$target_langcode][0]['safe_value'] = $custom_title;
+        }
         $result[$delta] = entity_view($field['settings']['target_type'], array($item['target_id'] => $target_entity), $settings['view_mode'], $target_langcode, FALSE);
 
         if (empty($settings['links']) && isset($result[$delta][$field['settings']['target_type']][$item['target_id']]['links'])) {
           $result[$delta][$field['settings']['target_type']][$item['target_id']]['links']['#access'] = FALSE;
         }
         $depth = 0;
-
-        // Overwrite the title.
-        $custom_title = isset($item['title_override']) ? $item['title_override'] : '';
-        $target_id = $item['target_id'];
-        $result[$delta]['node'][$target_id]['title_field']['#items'][0]['value'] = $custom_title;
-        $result[$delta]['node'][$target_id]['title_field']['#items'][0]['safe_value'] = $custom_title;
-        $result[$delta]['node'][$target_id]['title_field'][0]['#markup'] = $custom_title;
       }
       break;
   }
