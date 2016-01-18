@@ -31,6 +31,9 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_context_nav';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_core_publications_target_id']['id'] = 'field_core_publications_target_id';
   $handler->display->display_options['relationships']['field_core_publications_target_id']['table'] = 'field_data_field_core_publications';
@@ -72,8 +75,10 @@ function dt_publication_views_default_views() {
     'publication' => 'publication',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Part of collections: */
+  $handler = $view->new_display('block', 'Part of collections:', 'block');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Part of collections:';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -148,8 +153,8 @@ function dt_publication_views_default_views() {
     'publication' => 'publication',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block_1');
+  /* Display: Documents */
+  $handler = $view->new_display('block', 'Documents', 'block_1');
   $export['publications'] = $view;
 
   return $export;
