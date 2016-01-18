@@ -10,6 +10,21 @@
 class EntityReferenceFieldBehaviorTitleoverwrite extends EntityReference_BehaviorHandler_Abstract {
 
   /**
+   * Alter the items before rendering.
+   */
+  public function alterItems(&$items, $entity, $field, $display, $langcode) {
+    foreach ($items as $item) {
+      if (isset($item['title_override']) && !empty($item['title_override'])) {
+        $custom_title = $item['title_override'];
+        // Change entity properties.
+        $item['entity']->title = $custom_title;
+        $item['entity']->title_field[$langcode][0]['value'] = $custom_title;
+        $item['entity']->title_field[$langcode][0]['safe_value'] = $custom_title;
+      }
+    }
+  }
+
+  /**
    * Overwrite the schema.
    */
   public function schema_alter(&$schema, $field) {
