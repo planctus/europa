@@ -166,7 +166,7 @@ function cwt_core_menu_default_menu_links() {
 
   // Exported menu link: menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a.
   $menu_links['menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a'] = array(
-    'menu_name' => 'menu-breadcrumb-menu',
+    'menu_name' => 'menu-dt-breadcrumb-menu',
     'link_path' => 'menutoken/569a3b55ae73a',
     'router_path' => 'menutoken/%',
     'link_title' => '[site:name]',
@@ -204,6 +204,7 @@ function cwt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact');

@@ -465,6 +465,7 @@ function cwt_core_update_7131() {
   );
   module_enable($modules_to_enable);
 }
+
 /**
  * Enable the dt_language_selector_site_popup module.
  */
