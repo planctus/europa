@@ -76,11 +76,11 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['sorts']['sticky']['table'] = 'node';
   $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
   $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: First published on (field_core_date_published) */
+  $handler->display->display_options['sorts']['field_core_date_published_value']['id'] = 'field_core_date_published_value';
+  $handler->display->display_options['sorts']['field_core_date_published_value']['table'] = 'field_data_field_core_date_published';
+  $handler->display->display_options['sorts']['field_core_date_published_value']['field'] = 'field_core_date_published_value';
+  $handler->display->display_options['sorts']['field_core_date_published_value']['order'] = 'DESC';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -264,7 +264,7 @@ function dt_announcement_views_default_views() {
   );
   $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
-    'node.created' => 'node.created',
+    'field_data_field_core_date_published.field_core_date_published_value' => 'field_data_field_core_date_published.field_core_date_published_value',
   );
   /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
@@ -288,7 +288,7 @@ function dt_announcement_views_default_views() {
   );
   $handler->display->display_options['filters']['date_filter_1']['form_type'] = 'date_popup';
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
-    'node.created' => 'node.created',
+    'field_data_field_core_date_published.field_core_date_published_value' => 'field_data_field_core_date_published.field_core_date_published_value',
   );
   /* Filter criterion: Content: Related commissioners (field_core_persons) */
   $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
