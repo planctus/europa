@@ -5,3 +5,56 @@
  */
 
 include_once 'dt_law.features.inc';
+
+/**
+ * Helper function for DT Law convert.
+ */
+function _dt_law_convert_nodes() {
+  $query = new EntityFieldQuery();
+
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'policy_implementation')
+    ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
+    // Run the query as user 1.
+    ->addMetaData('account', user_load(1))
+    ->execute();
+
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      $new_nid = node_convert_node_convert($nid, 'law',
+        array(
+          'field_policy_imp_introduction',
+          'field_policy_imp_status',
+        ),
+        array(
+          'field_core_description',
+          'field_law_status',
+        ),
+        FALSE
+      );
+      if ($new_nid) {
+        $node = node_load($new_nid);
+        foreach ($node->field_law_status as &$lang) {
+          switch ($lang[0]['value']) {
+            case 'adopted':
+              $lang[0]['value'] = 'in_force';
+              break;
+          }
+        }
+        node_save($node);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_convert_change().
+ */
+function dt_law_node_convert_change($data, $op) {
+  if ($op == 'insert') {
+    if ($data['dest_node_type'] == 'law') {
+      $node = $data['node'];
+    }
+  }
+}
