@@ -147,4 +147,15 @@ Styleguide listing.listing--2rows
       }
     }
   }
+
+  .group-bio-col {
+  min-height: 160px;
+  position: relative;
+
+    .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
 }
+
