@@ -109,89 +109,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['path'] = 'announcement/%';
 
-  /* Display: Related block */
-  $handler = $view->new_display('block', 'Related block', 'block');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['display_description'] = 'Shows the related announcements';
-  $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['link_display'] = 'custom_url';
-  $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
-  $handler->display->display_options['defaults']['query'] = FALSE;
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
-  $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['relationship'] = 'field_core_announcement_target_id';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No related news.';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['id'] = 'field_core_announcement_target_id';
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['table'] = 'field_data_field_core_announcement';
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['field'] = 'field_core_announcement_target_id';
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['label'] = 'field_core_announcement';
-  $handler->display->display_options['relationships']['field_core_announcement_target_id']['required'] = TRUE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Published (referenced entities) */
-  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
-  $handler->display->display_options['filters']['status_1']['table'] = 'node';
-  $handler->display->display_options['filters']['status_1']['field'] = 'status';
-  $handler->display->display_options['filters']['status_1']['value'] = 1;
-  $handler->display->display_options['filters']['status_1']['group'] = 1;
-  $handler->display->display_options['filters']['status_1']['expose']['operator'] = FALSE;
-  $handler->display->display_options['filters']['status_1']['relationship'] = 'field_core_announcement_target_id';
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'field_core_announcement_target_id';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'announcement' => 'announcement',
-  );
-
   /* Display: Latest announcements */
   $handler = $view->new_display('page', 'Latest announcements', 'page_1');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
@@ -318,7 +235,7 @@ function dt_announcement_views_default_views() {
     'announcement' => 'announcement',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Departments (field_core_department) (reference filter) */
+  /* Filter criterion: Content: Related departments (field_core_department) (reference filter) */
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['id'] = 'field_core_department_target_id_entityreference_filter';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['table'] = 'field_data_field_core_department';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['field'] = 'field_core_department_target_id_entityreference_filter';
@@ -425,7 +342,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Latest (field_core_announcement) */
+  /* Filter criterion: Content: Announcements (field_core_announcement) */
   $handler->display->display_options['filters']['field_core_announcement_target_id']['id'] = 'field_core_announcement_target_id';
   $handler->display->display_options['filters']['field_core_announcement_target_id']['table'] = 'field_data_field_core_announcement';
   $handler->display->display_options['filters']['field_core_announcement_target_id']['field'] = 'field_core_announcement_target_id';
