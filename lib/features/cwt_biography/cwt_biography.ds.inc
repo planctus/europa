@@ -374,8 +374,6 @@ function cwt_biography_ds_layout_settings_info() {
   );
   $export['node|biography|full'] = $ds_layout;
 
-  $export = array();
-
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'taxonomy_term|editorial_sections|team_description';
