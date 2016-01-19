@@ -92,4 +92,16 @@ Styleguide listing.listing--2rows
     padding-left: 15px;
     padding-right: 15px; } }
 
+.section__group--highlight-grey#collapse .row {
+  padding-left: 1em; }
+
+.section__group--highlight-grey#collapse .col-separator-left {
+  border-left: none; }
+
+@media screen and (min-width: 980px) {
+  .section__group--highlight-grey#collapse .row {
+    padding: 0; }
+  .section__group--highlight-grey#collapse .col-separator-left {
+    border-left: 1px solid #b3b4b5; } }
+
 /*# sourceMappingURL=style.css.map */

@@ -122,3 +122,29 @@ Styleguide listing.listing--2rows
     }
   }
 }
+
+.section__group--highlight-grey {
+  &#collapse {
+    .row {
+      padding-left: 1em;
+    }
+
+    .col-separator-left {
+      border-left: none;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-mds) {
+  .section__group--highlight-grey {
+    &#collapse {
+      .row {
+        padding: 0;
+      }
+
+      .col-separator-left {
+        border-left: 1px solid $grey;
+      }
+    }
+  }
+}
