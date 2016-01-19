@@ -596,7 +596,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
- // Exported field_instance:
+  // Exported field_instance:
   // 'taxonomy_term-editorial_sections-field_team_block_description'.
   $field_instances['taxonomy_term-editorial_sections-field_team_block_description'] = array(
     'bundle' => 'editorial_sections',
