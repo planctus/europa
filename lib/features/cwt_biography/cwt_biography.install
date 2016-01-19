@@ -99,5 +99,5 @@ function cwt_biography_update_7107() {
  * Delete outdated field.
  */
 function cwt_biography_update_7108() {
-  field_delete_field('ield_biography_team_intro');
+  field_delete_field('field_biography_team_intro');
 }
