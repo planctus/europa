@@ -15,15 +15,13 @@ function dt_law_inabc() {
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'policy_implementation')
     ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
-    // Run the query as user 1.
-    //->addMetaData('account', user_load(1))
     ->execute();
 
   if (isset($result['node'])) {
     $nids = array_keys($result['node']);
     foreach ($nids as $nid) {
       $old_node = node_load($nid);
-      if($old_node->type == 'law')
+      if ($old_node->type == 'law')
         continue;
       kpr($old_node);
       $new_nid = node_convert_node_convert($nid, 'law',
@@ -40,7 +38,7 @@ function dt_law_inabc() {
       if ($new_nid) {
         $node = node_load($new_nid);
         kpr($node);
-        // Status converter
+        // Status converter.
         $node->field_law_status = $old_node->field_policy_imp_status;
         foreach ($old_node->field_policy_imp_status as $lang => $item) {
           switch ($item[0]['value']) {
@@ -53,7 +51,7 @@ function dt_law_inabc() {
               break;
           }
         }
-        // Description converter
+        // Description converter.
         foreach ($old_node->field_policy_imp_introduction as $lang => $item) {
           $node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
         }
