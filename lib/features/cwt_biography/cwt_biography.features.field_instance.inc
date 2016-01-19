@@ -2199,7 +2199,7 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-biography-field_editorial_section'
+  // Exported field_instance: 'node-biography-field_editorial_section'.
   $field_instances['node-biography-field_editorial_section'] = array(
     'bundle' => 'biography',
     'default_value' => NULL,
@@ -2214,8 +2214,12 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'ds',
+        'settings' => array(
+          'taxonomy_term_reference_view_mode' => 'team_description',
+          'use_content_language' => 1,
+        ),
+        'type' => 'ds_taxonomy_view_mode',
         'weight' => 54,
       ),
       'team_cabinet_member' => array(
