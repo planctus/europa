@@ -6,55 +6,61 @@
 
 include_once 'dt_law.features.inc';
 
-function _dt_law_convert_nodes() {
-  $new_nids = array();
-
+/**
+ * Helper function for DT Law convert.
+ */
+function dt_law_inabc() {
   $query = new EntityFieldQuery();
 
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'policy_implementation')
     ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
-    ->addMetaData('account', user_load(1))// Run the query as user 1.
+    // Run the query as user 1.
+    //->addMetaData('account', user_load(1))
     ->execute();
 
   if (isset($result['node'])) {
     $nids = array_keys($result['node']);
     foreach ($nids as $nid) {
       $old_node = node_load($nid);
-//            $new_nid = node_convert_node_convert($nid, 'law',
-//                array(
-//                    'field_policy_imp_introduction',
-//                    'field_policy_imp_status'
-//                ),
-//                array(
-//                    'field_core_description',
-//                    'field_law_status'
-//                ));
+      if($old_node->type == 'law')
+        continue;
+      kpr($old_node);
+      $new_nid = node_convert_node_convert($nid, 'law',
+        array(
+          'field_policy_imp_introduction',
+          'field_policy_imp_status',
+        ),
+        array(
+          'field_core_description',
+          'field_law_status',
+        ),
+          FALSE
+      );
       if ($new_nid) {
         $node = node_load($new_nid);
-        foreach ($node->field_law_status as &$lang) {
-          switch ($lang[0]['value']) {
+        kpr($node);
+        // Status converter
+        $node->field_law_status = $old_node->field_policy_imp_status;
+        foreach ($old_node->field_policy_imp_status as $lang => $item) {
+          switch ($item[0]['value']) {
             case 'adopted':
-              $lang[0]['value'] = 'in_force';
+              $node->field_law_status[$lang][0]['value'] = 'in_force';
+              break;
+            case 'proposed':
+            default:
+              $node->field_law_status[$lang][0]['value'] = 'proposed';
               break;
           }
         }
-        node_save($node);
-      }
-      //$new_nids[] = $new_nid;
-      //break;
-    }
-
-  }
-
-}
-
-/* hook implementation */
-/*function dt_law_node_convert_change($data, $op) {
-    if ($op == 'insert') {
-        if ($data['dest_node_type'] == 'law') {
-            $node = $data['node'];
-
+        // Description converter
+        foreach ($old_node->field_policy_imp_introduction as $lang => $item) {
+          $node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
         }
+        node_save($node);
+        kpr($node);
+      }
+      break;
     }
-}*/
+  }
+}
