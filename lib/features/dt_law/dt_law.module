@@ -24,7 +24,7 @@ function dt_law_inabc() {
       if ($old_node->type == 'law') {
         continue;
       }
-      //kpr($old_node);
+      // kpr($old_node);
       $new_nid = node_convert_node_convert($nid, 'law',
         array(
           'field_policy_imp_introduction',
@@ -38,7 +38,7 @@ function dt_law_inabc() {
       );
       if ($new_nid) {
         $node = node_load($new_nid);
-        //kpr($node);
+        // kpr($node);
         // Status converter.
         $node->field_law_status = $old_node->field_policy_imp_status;
         foreach ($old_node->field_policy_imp_status as $lang => $item) {
@@ -59,7 +59,7 @@ function dt_law_inabc() {
           $node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
         }
         node_save($node);
-        //kpr($node);
+        // kpr($node);
       }
       break;
 
