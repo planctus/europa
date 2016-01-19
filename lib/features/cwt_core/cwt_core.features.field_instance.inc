@@ -596,7 +596,8 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-editorial_sections-field_team_block_description'.
+ // Exported field_instance:
+  // 'taxonomy_term-editorial_sections-field_team_block_description'.
   $field_instances['taxonomy_term-editorial_sections-field_team_block_description'] = array(
     'bundle' => 'editorial_sections',
     'default_value' => NULL,
@@ -606,19 +607,14 @@ function cwt_core_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(
-          'custom_link_to_entity' => '',
-          'custom_prefix' => '',
-          'custom_reverse' => '',
-          'custom_strip_preserve' => '',
-          'custom_strip_tags' => '',
-          'custom_strtolower' => '',
-          'custom_strtoupper' => '',
-          'custom_suffix' => '',
-          'custom_trim' => '',
-          'custom_ucfirst' => '',
-          'custom_ucwords' => '',
-        ),
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'team_description' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
         'type' => 'text_default',
         'weight' => 8,
       ),
