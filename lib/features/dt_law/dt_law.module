@@ -21,8 +21,9 @@ function dt_law_inabc() {
     $nids = array_keys($result['node']);
     foreach ($nids as $nid) {
       $old_node = node_load($nid);
-      if ($old_node->type == 'law')
+      if ($old_node->type == 'law') {
         continue;
+      }
       kpr($old_node);
       $new_nid = node_convert_node_convert($nid, 'law',
         array(
@@ -45,10 +46,12 @@ function dt_law_inabc() {
             case 'adopted':
               $node->field_law_status[$lang][0]['value'] = 'in_force';
               break;
+
             case 'proposed':
             default:
               $node->field_law_status[$lang][0]['value'] = 'proposed';
               break;
+
           }
         }
         // Description converter.
@@ -59,6 +62,7 @@ function dt_law_inabc() {
         kpr($node);
       }
       break;
+
     }
   }
 }
