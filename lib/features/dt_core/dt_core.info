@@ -56,6 +56,7 @@ dependencies[] = conditional_fields
 dependencies[] = text
 dependencies[] = variable_realm
 dependencies[] = weight
+dependencies[] = ec_embedded_video
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
