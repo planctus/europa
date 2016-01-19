@@ -818,36 +818,6 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_biography_team_intro'
-  $field_bases['field_biography_team_intro'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_biography_team_intro',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-    ),
-    'translatable' => 1,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_biography_timeline'
   $field_bases['field_biography_timeline'] = array(
     'active' => 1,
