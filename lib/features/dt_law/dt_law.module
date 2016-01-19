@@ -7,20 +7,20 @@
 include_once 'dt_law.features.inc';
 
 function _dt_law_convert_nodes() {
-    $new_nids = array();
+  $new_nids = array();
 
-    $query = new EntityFieldQuery();
+  $query = new EntityFieldQuery();
 
-    $result = $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'policy_implementation')
-        ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
-        ->addMetaData('account', user_load(1))// Run the query as user 1.
-        ->execute();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'policy_implementation')
+    ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
+    ->addMetaData('account', user_load(1))// Run the query as user 1.
+    ->execute();
 
-    if (isset($result['node'])) {
-        $nids = array_keys($result['node']);
-        foreach ($nids as $nid) {
-            $old_node = node_load($nid);
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      $old_node = node_load($nid);
 //            $new_nid = node_convert_node_convert($nid, 'law',
 //                array(
 //                    'field_policy_imp_introduction',
@@ -30,22 +30,22 @@ function _dt_law_convert_nodes() {
 //                    'field_core_description',
 //                    'field_law_status'
 //                ));
-            if ($new_nid) {
-                $node = node_load($new_nid);
-                foreach ($node->field_law_status as &$lang) {
-                    switch ($lang[0]['value']) {
-                        case 'adopted':
-                            $lang[0]['value'] = 'in_force';
-                            break;
-                    }
-                }
-                node_save($node);
-            }
-            //$new_nids[] = $new_nid;
-            //break;
+      if ($new_nid) {
+        $node = node_load($new_nid);
+        foreach ($node->field_law_status as &$lang) {
+          switch ($lang[0]['value']) {
+            case 'adopted':
+              $lang[0]['value'] = 'in_force';
+              break;
+          }
         }
-
+        node_save($node);
+      }
+      //$new_nids[] = $new_nid;
+      //break;
     }
+
+  }
 
 }
 
