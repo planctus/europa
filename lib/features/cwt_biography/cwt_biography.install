@@ -94,3 +94,10 @@ function cwt_biography_update_7107() {
     user_role_grant_permissions($role->rid, array('access partially translated biographies'));
   }
 }
+
+/**
+ * Delete outdated field.
+ */
+function cwt_biography_update_7108() {
+  field_delete_field('ield_biography_team_intro');
+}
