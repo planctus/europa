@@ -22,7 +22,8 @@ function dt_law_uninstall() {
 }
 
 /**
- * Implements hook_update() to convert nodes.
+ * Implements hook_update(),
+ * to convert nodes.
  */
 function dt_law_update_7106() {
   _dt_law_convert_nodes();
