@@ -324,21 +324,6 @@ function dt_announcement_ds_custom_fields_info() {
   );
   $export['latest_announcements_block'] = $ds_field;
 
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'related_announcements';
-  $ds_field->label = 'Related Announcements';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = '';
-  $ds_field->properties = array(
-    'block' => 'views|announcements-block',
-    'block_render' => '1',
-  );
-  $export['related_announcements'] = $ds_field;
-
   return $export;
 }
 

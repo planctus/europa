@@ -66,3 +66,13 @@ function dt_page_update_7102() {
     }
   }
 }
+
+/**
+ * Remove the announcment reference field.
+ */
+function dt_page_update_7103() {
+  // Remove the instance.
+  if ($instance = field_info_instance('node', 'field_core_announcement', 'basic_page')) {
+    field_delete_instance($instance);
+  }
+}
