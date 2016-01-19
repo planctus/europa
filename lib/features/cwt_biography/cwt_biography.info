@@ -130,7 +130,6 @@ features[field_instance][] = node-biography-field_biography_role
 features[field_instance][] = node-biography-field_biography_status
 features[field_instance][] = node-biography-field_biography_tagline
 features[field_instance][] = node-biography-field_biography_team
-features[field_instance][] = node-biography-field_biography_team_intro
 features[field_instance][] = node-biography-field_biography_timeline
 features[field_instance][] = node-biography-field_core_collapse_button_text
 features[field_instance][] = node-biography-field_download_cv_in_pdf_format
