@@ -22,8 +22,76 @@ function dt_law_uninstall() {
 }
 
 /**
- * Implements hook_update().
+ * NEXTEUROPA-7191: Data Migration from Policy Implementation to Law.
  */
-function dt_law_update_7106() {
-  _dt_law_convert_nodes();
+function dt_law_init($sandbox) {
+  // Set up source, destination and query.
+  $source_bundle = 'policy_implementation';
+  // Automatically converted source fields.
+  $source_fields = array(
+    'field_policy_imp_introduction',
+    'field_policy_imp_status',
+  );
+  $destination_bundle = 'law';
+  // Automatically converted destination fields.
+  $destination_fields = array(
+    'field_core_description',
+    'field_law_status',
+  );
+  $query = new EntityFieldQuery();
+  // Setup the amount of steps.
+  $limit = 100;
+
+  // Initialization.
+  if (!isset($sandbox['max'])) {
+    // Get the amount of processed nodes.
+    $count = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', $source_bundle)
+      ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
+      ->count()
+      ->execute();
+
+    $sandbox['max'] = $count;
+    $sandbox['progress'] = 0;
+  }
+
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition('field_policy_imp_type', 'value', 'law', '=')
+    ->range($sandbox['position'], $limit)
+    ->execute();
+
+  if (isset($result['node']) && !empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      // Source data.
+      $source_node = node_load($nid);
+      $source_wrapper = entity_metadata_wrapper('node', $source_node);
+      // Automatic convert by node_convert module.
+      $nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
+
+      // If the converting is successful than $nid won't be changed,
+      // in other case will be FALSE.
+      if ($nid) {
+        $destination_node = node_load($nid);
+        $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
+        // Converting other fields.
+        // Storing new values.
+        $destination_wrapper->save();
+      }
+    }
+  }
+
+  // Nids needs to be empty for the next round.
+  unset($nids);
+  // Update the position.
+  $sandbox['position'] += $limit;
+
+  // Checking the finishing of the processing.
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
 }
