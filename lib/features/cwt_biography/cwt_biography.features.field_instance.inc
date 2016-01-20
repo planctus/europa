@@ -161,7 +161,7 @@ function cwt_biography_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Role',
+    'label' => 'Responsibilities',
     'required' => FALSE,
     'settings' => array(
       'display_summary' => 0,
@@ -3527,7 +3527,7 @@ function cwt_biography_field_default_field_instances() {
   t('Project team');
   t('Provide a link to EC Audiovisual Service');
   t('Remote ID');
-  t('Role');
+  t('Responsibilities');
   t('Social Networks');
   t('Status');
   t('Tagline');
