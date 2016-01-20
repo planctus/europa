@@ -99,8 +99,6 @@ Styleguide listing.listing--2rows
   border-left: none; }
 
 @media screen and (min-width: 980px) {
-  .section__group--highlight-grey#collapse .row {
-    padding: 0; }
   .section__group--highlight-grey#collapse .col-separator-left {
     border-left: 1px solid #b3b4b5; }
   .group-bio-col {
