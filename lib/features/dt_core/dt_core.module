@@ -6,25 +6,30 @@
 
 include_once 'dt_core.features.inc';
 include_once 'dt_core.api.inc';
+
 /**
  * No source field Exception.
  */
-class DTCoreSourceFieldError extends Exception {}
+class DTCoreSourceFieldError extends Exception {
+}
 
 /**
  * No destionation field Exception.
  */
-class DTCoreDestinationFieldError extends Exception {}
+class DTCoreDestinationFieldError extends Exception {
+}
 
 /**
  * Fields are of same tye Exception.
  */
-class DTCoreFieldTypeAreNotSame extends Exception {}
+class DTCoreFieldTypeAreNotSame extends Exception {
+}
 
 /**
  * Circular reference Exception.
  */
-class DTCoreParentCircular extends Exception {}
+class DTCoreParentCircular extends Exception {
+}
 
 /**
  * Implements hook_field_widget_form_alter().
@@ -528,6 +533,7 @@ function _dt_core_enable_languages($languages = array()) {
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
 }
+
 /**
  * Implements hook_context_load_alter().
  */
@@ -550,7 +556,7 @@ function dt_core_context_load_alter(&$context) {
  */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
-  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) && isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
     // Remove maxlength.
     unset($element['#maxlength']);
   }
@@ -902,4 +908,70 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
       $output['description']['#attached']['drupal_add_html_head'][0][0]['#value'] :
       truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
   }
+}
+
+/**
+ * Helper function for contact phone fields.
+ *
+ * This function returns an array that will help
+ * in validation/visualization of parts of
+ * phone number number fields.
+ *
+ * @return array
+ *   return arrays
+ */
+function _dt_core_contactphone_patterns() {
+  $patterns = array(
+    'phone_label' => array(
+      'pattern' => '/\s?\(([^)]+)\)$/',
+      'return_key' => 0,
+    ),
+    'country_prefix' => array(
+      'pattern' => '/^(\+[0-9]{2,3}\s?)/',
+      'return_key' => 0,
+      'required' => TRUE,
+      'explain' => 'Country code missing or in wrong format, ex:+32',
+    ),
+    'telephone' => array(
+      'pattern' => '/^(\+[0-9]{2,3}\s?)((([0-9]{1,4})\s?)+)(\s?\(([^)]+)\))?$/',
+      'return_key' => 2,
+      'required' => 1,
+      'explain' => 'Phone number is missing or with wrong format (+cc r xxx xx xx (description))',
+    ),
+  );
+  return $patterns;
+}
+
+/**
+ * Generates "<a href=tel:" tag for the contact phone field.
+ *
+ * If in the generation it fails it will return false.
+ *
+ * @param string $tel
+ *   String containing phone number.
+ *
+ * @return array|bool
+ *   Returns string or False.
+ */
+function dt_core_phonetohtml($tel) {
+  foreach (_dt_core_contactphone_patterns() as $pattern => $pattern_values) {
+    preg_match($pattern_values['pattern'], $tel, $matches);
+    // Something is wrong with the phone value and can't be displayed correctly.
+    if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
+      return FALSE;
+    }
+    else {
+      if (isset($matches[$pattern_values['return_key']])) {
+        $phone[$pattern] = trim($matches[$pattern_values['return_key']]);
+      }
+      else {
+        $phone[$pattern] = '';
+      }
+    }
+  }
+  // Create the href tag with phone link.
+  $htmlphone = '<a href="tel:' . str_replace(' ', '', $phone['country_prefix'] . $phone['telephone']) . '">'
+    . $phone['country_prefix'] . ' ' . $phone['telephone'] . '</a> ' . $phone['phone_label'];
+
+  return $htmlphone;
 }
