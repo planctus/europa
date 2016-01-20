@@ -22,10 +22,99 @@ function dt_consultation_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * NEXTEUROPA-7203: Data Migration from Policy Input to Consultation.
  */
-/*
-function dt_consultation_update_7101() {
+function dt_consultation_update_7105($sandbox) {
+  // Set up source.
+  $source_bundle = 'policy_input';
+  // Automatically converted source fields.
+  $source_fields = array(
+    'field_core_introduction',
+    'field_policy_input_status',
+  );
+  // Set up destination.
+  $destination_bundle = 'consultation';
+  // Automatically converted destination fields.
+  $destination_fields = array(
+    'field_core_description',
+    'field_consultation_status',
+  );
+  // Set up query.
+  $query = new EntityFieldQuery();
+  $query_filter_field = 'field_policy_input_type';
+  $query_filter_value = 'consultation';
+  // Setup the amount of steps.
+  $limit = 100;
 
+  // Initialization.
+  if (!isset($sandbox['max'])) {
+    // Get the amount of processed nodes.
+    $count = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', $source_bundle)
+      ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
+      ->count()
+      ->execute();
+    $sandbox['max'] = $count;
+    $sandbox['progress'] = 0;
+    $sandbox['position'] = 0;
+    $query->count = FALSE;
+  }
+
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
+    ->range($sandbox['position'], $limit)
+    ->execute();
+
+  if (isset($result['node']) && !empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      // Source data.
+      $source_node = node_load($nid);
+      // Automatic convert by node_convert module.
+      $nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
+
+      // If the converting is successful than $nid won't be changed,
+      // in other case will be FALSE.
+      if ($nid) {
+        $destination_node = node_load($nid);
+        // Convert unssuported fields.
+        _dt_consultation_node_convert($source_node, $destination_node, $source_fields, $destination_fields);
+        // Storing new values.
+        node_save($destination_node);
+      }
+    }
+  }
+
+  // Nids needs to be empty for the next round.
+  unset($nids);
+  // Update the position.
+  $sandbox['position'] += $limit;
+
+  // Checking the finishing of the processing.
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
 }
+
+/**
+ * NEXTEUROPA-7191: Data Migration from Policy Input to Consultation.
+ *
+ * @param object $source_node
+ *                Source node.
+ * @param object $destination_node
+ *                Destination node.
  */
+function _dt_consultation_node_convert($source_node, &$destination_node) {
+  // Status converter.
+  foreach ($source_node->field_policy_input_status as $lang => $item) {
+    $destination_node->field_consultation_status[$lang][0]['value'] = 'closed';
+  }
+  // Description converter.
+  foreach ($source_node->field_core_introduction as $lang => $item) {
+    $destination_node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
+  }
+}
