@@ -22,10 +22,9 @@ function dt_guidance_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * Implements hook_update() for
+ * converting policy_implementation into guidance.
  */
-/*
 function dt_guidance_update_7101() {
-
+  _dt_guidance_node_convert();
 }
- */
