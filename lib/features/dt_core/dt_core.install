@@ -31,6 +31,21 @@ function dt_core_install() {
 
   // Set our default social network url.
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
+
+  // Enable migrate.
+  if (!module_exists('migrate')) {
+    module_enable('migrate');
+  }
+
+  $vid =  taxonomy_vocabulary_machine_name_load('social_networks');
+
+  if ($vid) {
+    // Import the social network links taxonomy terms.
+    $machine_name = 'DTSocialNetworks';
+    migrate_static_registration(array($machine_name));
+    $migration = Migration::getInstance($machine_name);
+    $result = $migration->processImport();
+  }
 }
 
 /**
@@ -844,4 +859,24 @@ function dt_core_update_7160() {
  */
 function dt_core_update_7161() {
   module_enable(array('ec_embedded_video'));
+}
+
+/**
+ * NEXTEUROPA-8356 - Setting up the right classnames for social network icons.
+ */
+function dt_core_update_7162() {
+  // Enable migrate.
+  if (!module_exists('migrate')) {
+    module_enable('migrate');
+  }
+
+  $vid =  taxonomy_vocabulary_machine_name_load('social_networks');
+
+  if ($vid) {
+    // Import the social network links taxonomy terms.
+    $machine_name = 'DTSocialNetworks';
+    migrate_static_registration(array($machine_name));
+    $migration = Migration::getInstance($machine_name);
+    $result = $migration->processImport();
+  }
 }

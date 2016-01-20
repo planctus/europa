@@ -34,6 +34,21 @@ function cwt_core_install() {
   if (!module_exists('dt_social_media_sharing')) {
     module_enable(array('dt_social_media_sharing'));
   }
+
+  // Enable migrate.
+  if (!module_exists('migrate')) {
+    module_enable('migrate');
+  }
+
+  $vid =  taxonomy_vocabulary_machine_name_load('social_networks');
+
+  if ($vid) {
+    // Import the social network links taxonomy terms.
+    $machine_name = 'DTSocialNetworks';
+    migrate_static_registration(array($machine_name));
+    $migration = Migration::getInstance($machine_name);
+    $result = $migration->processImport();
+  }
 }
 
 /**
@@ -515,4 +530,24 @@ function cwt_core_update_7138() {
   $label = '<span class="social-media-links__label">' . t('Share this page:') . '</span>';
   variable_set('dt_social_media_sharing_text', $label);
   variable_set('dt_social_media_sharing_block_type', 'horizontal');
+}
+
+/**
+ * NEXTEUROPA-8356 - Setting up the right classnames for social network icons.
+ */
+function cwt_core_update_7139() {
+  // Enable migrate.
+  if (!module_exists('migrate')) {
+    module_enable('migrate');
+  }
+
+  $vid =  taxonomy_vocabulary_machine_name_load('social_networks');
+
+  if ($vid) {
+    // Import the social network links taxonomy terms.
+    $machine_name = 'DTSocialNetworks';
+    migrate_static_registration(array($machine_name));
+    $migration = Migration::getInstance($machine_name);
+    $result = $migration->processImport();
+  }
 }

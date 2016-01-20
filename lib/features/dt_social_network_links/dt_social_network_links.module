@@ -231,6 +231,10 @@ function dt_social_network_links_field_formatter_info() {
       'label' => t('Theme CSS icons with label'),
       'field types' => array('social_network_link'),
     ),
+    'social_network_link_theme_css_icons' => array(
+      'label' => t('Theme CSS icons without label'),
+      'field types' => array('social_network_link'),
+    ),
     'social_network_link_title' => array(
       'label' => t('Title only'),
       'field types' => array('social_network_link'),
@@ -342,6 +346,7 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
       break;
 
     case 'social_network_link_theme_css':
+    case 'social_network_link_theme_css_icons':
       foreach ($items as $delta => $item) {
         $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
         $term = taxonomy_term_load($item['social_network']);
@@ -364,6 +369,10 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
             ),
           ),
         );
+        // Empty the title if we only have to show the icon.
+        if ($display['type'] == 'social_network_link_theme_css_icons') {
+          $element[$delta]['#text'] = '';
+        }
       }
 
       break;

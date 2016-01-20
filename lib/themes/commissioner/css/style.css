@@ -106,6 +106,8 @@ Styleguide listing.listing--2rows
     position: relative; }
     .group-bio-col .group-bio-top-footer {
       position: absolute;
-      bottom: 0; } }
+      bottom: 0; }
+      .group-bio-col .group-bio-top-footer .icon-social::before {
+        top: -10px; } }
 
 /*# sourceMappingURL=style.css.map */
