@@ -101,7 +101,7 @@ function dt_consultation_update_7101($sandbox) {
 }
 
 /**
- * NEXTEUROPA-7191: Data Migration from Policy Input to Consultation.
+ * NEXTEUROPA-7203: helper function for migration in update 7101.
  *
  * @param object $source_node
  *                Source node.
