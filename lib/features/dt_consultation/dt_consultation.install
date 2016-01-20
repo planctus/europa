@@ -24,7 +24,7 @@ function dt_consultation_uninstall() {
 /**
  * NEXTEUROPA-7203: Data Migration from Policy Input to Consultation.
  */
-function dt_consultation_update_7105($sandbox) {
+function dt_consultation_update_7101($sandbox) {
   // Set up source.
   $source_bundle = 'policy_input';
   // Automatically converted source fields.
@@ -72,12 +72,12 @@ function dt_consultation_update_7105($sandbox) {
       // Source data.
       $source_node = node_load($nid);
       // Automatic convert by node_convert module.
-      $nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
+      $conv_nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
 
-      // If the converting is successful than $nid won't be changed,
+      // If the converting is successful than $conv_nid won't be changed,
       // in other case will be FALSE.
-      if ($nid) {
-        $destination_node = node_load($nid);
+      if ($conv_nid) {
+        $destination_node = node_load($conv_nid);
         // Convert unssuported fields.
         _dt_consultation_node_convert($source_node, $destination_node, $source_fields, $destination_fields);
         // Storing new values.
@@ -110,7 +110,7 @@ function dt_consultation_update_7105($sandbox) {
  */
 function _dt_consultation_node_convert($source_node, &$destination_node) {
   // Status converter.
-  foreach ($source_node->field_policy_input_status as $lang => $item) {
+  foreach ($source_node->translations->data as $lang => $item) {
     $destination_node->field_consultation_status[$lang][0]['value'] = 'closed';
   }
   // Description converter.
