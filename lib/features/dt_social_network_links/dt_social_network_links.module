@@ -231,10 +231,6 @@ function dt_social_network_links_field_formatter_info() {
       'label' => t('Theme CSS icons with label'),
       'field types' => array('social_network_link'),
     ),
-    'social_network_link_theme_css_icons' => array(
-      'label' => t('Theme CSS icons only'),
-      'field types' => array('social_network_link'),
-    ),
     'social_network_link_title' => array(
       'label' => t('Title only'),
       'field types' => array('social_network_link'),
@@ -370,32 +366,6 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
         );
       }
 
-      break;
-
-    case 'social_network_link_theme_css_icons':
-      foreach ($items as $delta => $item) {
-        $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
-        $term = taxonomy_term_load($item['social_network']);
-        $title = $title == $item['url'] ? $term->name : $title;
-        $classname = 'icon-social';
-        if ($term) {
-          $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname');
-          $classname .= ' ' . $class['#items'][0]['safe_value'];
-        }
-
-        $element[$delta] = array(
-          '#theme' => 'link',
-          '#text' => '',
-          '#path' => $item['url'],
-          '#options' => array(
-            'html' => FALSE,
-            'attributes' => array(
-              'title' => $title,
-              'class' => $classname,
-            ),
-          ),
-        );
-      }
       break;
 
     case 'social_network_link_title':

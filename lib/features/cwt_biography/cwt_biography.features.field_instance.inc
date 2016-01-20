@@ -2529,8 +2529,10 @@ function cwt_biography_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(),
-        'type' => 'social_network_link_theme_css_icons',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
         'weight' => 5,
       ),
       'team_cabinet_member' => array(
