@@ -80,7 +80,7 @@ function dt_contact_update_7105() {
 /**
  * Updating existing labels for link field.
  */
-function dt_contact_updae_7106() {
+function dt_contact_update_7106() {
   db_update('field_data_field_contact_link_form')
     ->fields(array(
       'field_contact_link_form_title' => 'Ask a question',
