@@ -85,7 +85,7 @@ function dt_contact_update_7106() {
     'field_data_field_contact_link_form',
     'field_revision_field_contact_link_form',
   );
-  foreach ($tables as $table){
+  foreach ($tables as $table) {
     db_update($table)
       ->fields(array(
         'field_contact_link_form_title' => 'Ask a question',
