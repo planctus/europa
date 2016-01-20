@@ -73,11 +73,14 @@ function cwt_biography_node_view($node, $view_mode, $langcode) {
     $node->content['body']['#title'] = $label;
   }
 
-  if ($node->type == 'aggregated_news' && $view_mode == 'teaser') {
+  $is_teaser = $node->type == 'aggregated_news' && $view_mode == 'teaser';
+  $is_meta = $node->type == 'aggregated_news' && $view_mode == 'meta';
+
+  if ($is_teaser || $is_meta) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $link = $wrapper->field_aggregated_news_link->value();
     if (!empty($link['url'])) {
-      $node->link = $link['url'];
+      $node->legacy = $link['url'];
     }
   }
 }
