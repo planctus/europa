@@ -48,7 +48,6 @@ features[field_group][] = group_page_related_links|node|basic_page|full
 features[field_group][] = group_related|node|basic_page|form
 features[field_instance][] = comment-comment_node_basic_page-comment_body
 features[field_instance][] = node-basic_page-body
-features[field_instance][] = node-basic_page-field_core_announcement
 features[field_instance][] = node-basic_page-field_core_banner
 features[field_instance][] = node-basic_page-field_core_departments
 features[field_instance][] = node-basic_page-field_core_description

@@ -85,7 +85,7 @@
     <exec command="${drush.bin} -y @${site.alias} updb" />
     <echo msg="EXECUTE: drush -y @${site.alias} updb" />
 
-    <property name="revert.command" value="frdt" />
+    <property name="revert.command" value="frdt --rp" />
     <if>
       <equals arg1="${site.alias}" arg2="ecfpfis.prod" />
       <then>

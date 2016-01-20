@@ -50,3 +50,129 @@ function dt_publication_field_display_alter(&$display, $context) {
     }
   }
 }
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ */
+function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'publication' && $context['view_mode'] == 'full') {
+    $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
+    $type = $node_wrapper->field_publication_collection->value();
+
+    // Switch with a vision of possibly more than 1 type in the future.
+    switch ($type) {
+      // Publication.
+      case '0':
+        _dt_publication_unset_ds_field('left_header', 'collection_label', $layout_render_array);
+        _dt_publication_rename_containing_group_label('field_core_files', 'Files', $layout_render_array);
+        break;
+
+      // Collection.
+      case '1':
+        _dt_publication_unset_ds_field('top', 'publication_collections', $layout_render_array);
+        _dt_publication_rename_containing_group_label('collection_documents', 'Documents', $layout_render_array);
+        break;
+    }
+  }
+}
+
+/**
+ * Helper to rename a label of a group depending on a contained field.
+ *
+ * @param string $field_name
+ *   Field machine name to find in DS region groups.
+ * @param string $group_label
+ *   Desired label to be set on the group containing $field_name.
+ * @param array $layout_render_array
+ *   The DS layout render array.
+ */
+function _dt_publication_rename_containing_group_label($field_name, $group_label, &$layout_render_array) {
+  // Iterates through the DS layout regions.
+  foreach ($layout_render_array as $region => $items) {
+    // And every item in each region.
+    foreach ($items as $key => $item) {
+      // If there is a field group.
+      if ($item_group = $item['#group']) {
+        // Get the children of this particular group.
+        $children = $item_group->children;
+        if (array_search($field_name, $children)) {
+          // Change the label of the group if target field_name is contained.
+          $item_group->label = $group_label;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper to remove a field from a region.
+ *
+ * @param string $region
+ *   Target region from which to remove a field.
+ * @param string $field
+ *   Target field to remove, field machine name.
+ * @param array $layout_render_array
+ *   The DS layout render array.
+ */
+function _dt_publication_unset_ds_field($region, $field, &$layout_render_array) {
+  foreach ($layout_render_array[$region] as $key => $item) {
+    if (isset($layout_render_array[$region][$key][$field])) {
+      unset($layout_render_array[$region][$key][$field]);
+    }
+  }
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function dt_publication_ds_fields_info($entity_type) {
+  $fields = array();
+
+  // List of publications of type "One publication".
+  $fields['collection_documents'] = array(
+    'title' => t('Collection documents'),
+    'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_documents',
+  );
+
+  // The "Part of collection:".
+  $fields['publication_collections'] = array(
+    'title' => t('Publication collections'),
+    'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_collections',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Helper returning a list entities based on a type of publication.
+ */
+function _dt_publication_documents($entity) {
+  $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
+  if (isset($node_wrapper->field_publication_collection)) {
+    $type = $node_wrapper->field_publication_collection->value();
+    if ($type == "1") {
+      // "1" == Collection.
+      return views_embed_view('publications', 'block_1');
+    }
+  }
+}
+
+/**
+ * Helper returning a list of links to publications of type collection.
+ */
+function _dt_publication_collections() {
+  if ($node = menu_get_object('node')) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    if (isset($node_wrapper->field_publication_collection)) {
+      $type = $node_wrapper->field_publication_collection->value();
+      if ($type == "0") {
+        // "0" == Publication.
+        return views_embed_view('publication_collections', 'block');
+      }
+    }
+  }
+}

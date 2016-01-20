@@ -843,8 +843,15 @@ function dt_core_update_7160() {
 }
 
 /**
- * NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+ * Enabling ec_embedded_video to enable the cookie overlay.
  */
 function dt_core_update_7161() {
+  module_enable(array('ec_embedded_video'));
+}
+
+/**
+ * NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+ */
+function dt_core_update_7162() {
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }
