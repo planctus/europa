@@ -46,6 +46,7 @@ dependencies[] = nexteuropa_europa_search
 dependencies[] = nexteuropa_feedback
 dependencies[] = nexteuropa_formatters
 dependencies[] = nexteuropa_inpage_nav
+dependencies[] = nexteuropa_metatags
 dependencies[] = nexteuropa_multilingual
 dependencies[] = nexteuropa_views
 dependencies[] = picture

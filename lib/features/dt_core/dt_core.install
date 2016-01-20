@@ -845,3 +845,10 @@ function dt_core_update_7160() {
 function dt_core_update_7161() {
   module_enable(array('ec_embedded_video'));
 }
+
+/**
+ * Enabling nexteuropa_metatags.
+ */
+function dt_core_update_7162() {
+  module_enable(array('nexteuropa_metatags'));
+}
