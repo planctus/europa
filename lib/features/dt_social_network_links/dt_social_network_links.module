@@ -228,7 +228,7 @@ function dt_social_network_links_field_formatter_info() {
       'field types' => array('social_network_link'),
     ),
     'social_network_link_theme_css' => array(
-      'label' => t('Theme CSS icons'),
+      'label' => t('Theme CSS icons with label'),
       'field types' => array('social_network_link'),
     ),
     'social_network_link_title' => array(
