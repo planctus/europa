@@ -22,14 +22,14 @@ function dt_contact_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -65,14 +65,14 @@ function dt_contact_field_default_field_instances() {
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -97,23 +97,32 @@ function dt_contact_field_default_field_instances() {
   // Exported field_instance: 'node-contact-field_contact_link_form'.
   $field_instances['node-contact-field_contact_link_form'] = array(
     'bundle' => 'contact',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'title' => 'Ask a question',
+        'url' => 'http://ec.europa.eu/contact/index_en.htm',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'link_title' => '',
+        ),
         'type' => 'link_button_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'link_title' => '',
+        ),
         'type' => 'link_button_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -122,8 +131,10 @@ function dt_contact_field_default_field_instances() {
     'label' => 'Link to form',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -135,7 +146,8 @@ function dt_contact_field_default_field_instances() {
       'enable_tokens' => 0,
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
-      'title' => 'value',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => 'Ask a question',
       'url' => 0,
@@ -145,9 +157,7 @@ function dt_contact_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'link',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'link_field',
       'weight' => 14,
     ),
@@ -158,23 +168,37 @@ function dt_contact_field_default_field_instances() {
     'bundle' => 'contact',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please use the following format:
+<strong>+cc r xxx xx xx (description)</strong>
+<p><strong>Where</strong>
+<ul>
+<li>+cc: International prefix</li>
+<li>r: National prefix</li> 
+<li>xxx xx xx: Phone number</li>
+<li>description: label of the phone, always between ( ) - optional</li>
+</ul> </p>
+',
     'display' => array(
       'default' => array(
         'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'title' => '',
+        ),
+        'type' => 'telephone',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'title' => '',
+        ),
+        'type' => 'telephone',
+        'weight' => 1,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_contact_phone_number',
     'label' => 'Phone number',
@@ -214,6 +238,8 @@ function dt_contact_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -238,7 +264,7 @@ function dt_contact_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -250,7 +276,7 @@ function dt_contact_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -298,13 +324,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -349,13 +375,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'node',
@@ -408,13 +434,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -477,6 +503,16 @@ function dt_contact_field_default_field_instances() {
   t('Name');
   t('Name of office, organisation or person the contact details refer to.');
   t('Phone number');
+  t('Please use the following format:
+<strong>+cc r xxx xx xx (description)</strong>
+<p><strong>Where</strong>
+<ul>
+<li>+cc: International prefix</li>
+<li>r: National prefix</li> 
+<li>xxx xx xx: Phone number</li>
+<li>description: label of the phone, always between ( ) - optional</li>
+</ul> </p>
+');
   t('Postal address');
 
   return $field_instances;
