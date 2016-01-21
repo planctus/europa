@@ -83,6 +83,22 @@ function cwt_biography_node_view($node, $view_mode, $langcode) {
 }
 
 /**
+ * Implements hook_field_group_pre_render().
+ */
+function cwt_biography_field_group_pre_render(&$element, $group, &$form) {
+  if ($node = menu_get_object('node')) {
+    if ($node->type == 'biography' && $role = field_get_items('node', $node, 'field_biography_role')) {
+      $role_term = taxonomy_term_load($role[0]['tid']);
+      $is_president = !$role_term ? FALSE : _commissioner_uuid_is('president', $role_term->uuid);
+      if ($is_president && $group->label == 'Responsibilities') {
+        $group->label = t('Role');
+        $group->format_settings['instance_settings']['attributes'] = 'id="role"';
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function cwt_biography_block_info() {
