@@ -24,6 +24,91 @@ function dt_guidance_uninstall() {
 /**
  * NEXTEUROPA-7202: converting policy_implementation into guidance.
  */
-function dt_guidance_update_7101() {
-  _dt_guidance_node_convert();
+function dt_guidance_update_7101($sandbox) {
+  // Set up source.
+  $source_bundle = 'policy_implementation';
+  // Automatically converted source fields.
+  $source_fields = array(
+    'field_policy_imp_introduction',
+  );
+  // Set up destination.
+  $destination_bundle = 'guidance';
+  // Automatically converted destination fields.
+  $destination_fields = array(
+    'field_core_description',
+  );
+  // Set up query.
+  $query = new EntityFieldQuery();
+  $query_filter_field = 'field_policy_imp_type';
+  $query_filter_value = 'guidance';
+  // Setup the amount of steps.
+  $limit = 100;
+
+  // Initialization.
+  if (!isset($sandbox['max'])) {
+    // Get the amount of processed nodes.
+    $count = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', $source_bundle)
+      ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
+      ->count()
+      ->execute();
+    $sandbox['max'] = $count;
+    $sandbox['progress'] = 0;
+    $sandbox['position'] = 0;
+    $query->count = FALSE;
+  }
+
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
+    ->range($sandbox['position'], $limit)
+    ->execute();
+
+  if (isset($result['node']) && !empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    foreach ($nids as $nid) {
+      // Source data.
+      $source_node = node_load($nid);
+      // Automatic convert by node_convert module.
+      $conv_nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
+
+      // If the converting is successful than $conv_nid won't be changed,
+      // in other case will be FALSE.
+      if ($conv_nid) {
+        $destination_node = node_load($conv_nid);
+        // Convert unssuported fields.
+        _dt_guidance_node_convert($source_node, $destination_node, $source_fields, $destination_fields);
+        // Storing new values.
+        node_save($destination_node);
+      }
+    }
+  }
+
+  // Nids needs to be empty for the next round.
+  unset($nids);
+  // Update the position.
+  $sandbox['position'] += $limit;
+
+  // Checking the finishing of the processing.
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
+
+/**
+ * NEXTEUROPA-7202: helper function for migration in update 7101.
+ *
+ * @param object $source_node
+ *                Source node.
+ * @param object $destination_node
+ *                Destination node.
+ */
+function _dt_guidance_node_convert($source_node, &$destination_node) {
+  // Description converter.
+  foreach ($source_node->field_policy_imp_introduction as $lang => $item) {
+    $destination_node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
+  }
 }
