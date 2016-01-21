@@ -75,7 +75,17 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<p>Description will be used as abstract (metadata description) in all list views</p>
+[break]
+<p>
+  <ul>
+    <li>Use the Introduction as basis for Description and apply same guidance. </li>
+    <li>Refer to the real-world intention of the policy (e.g. energy targets, job creation)</li>
+    <li>Make a direct connection to people’s lives and business interests</li>
+    <li>Where a policy benefits a particular group of people, present it from their perspective</li>
+  </ul>
+</p>
+<p><strong>Example:</strong> Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.</p>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -143,6 +153,7 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -1733,6 +1744,17 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<p>Description will be used as abstract (metadata description) in all list views</p>
+[break]
+<p>
+  <ul>
+    <li>Use the Introduction as basis for Description and apply same guidance. </li>
+    <li>Refer to the real-world intention of the policy (e.g. energy targets, job creation)</li>
+    <li>Make a direct connection to people’s lives and business interests</li>
+    <li>Where a policy benefits a particular group of people, present it from their perspective</li>
+  </ul>
+</p>
+<p><strong>Example:</strong> Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.</p>');
   t('<p>The title should use everyday terms</p>
 [break]
 <p>
@@ -1740,7 +1762,7 @@ function dt_policy_field_default_field_instances() {
   <ul>
     <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
     <li>titles of laws or packages (e.g. 6th energy package)</li>
-    <li>EU processes and concepts (e.g. open coordination, sinnagle market)</li>
+    <li>EU processes and concepts (e.g. open coordination, single market)</li>
   </ul>
 </p>
 
