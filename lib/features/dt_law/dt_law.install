@@ -25,18 +25,13 @@ function dt_law_uninstall() {
  * NEXTEUROPA-7191: Data Migration from Policy Implementation to Law.
  */
 function dt_dt_law_update_7101($sandbox) {
-  global $language;
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
   // Automatically converted source fields.
-  $source_fields = array(
-    'field_core_legacy_link',
-  );
+  $source_fields = array();
   $destination_bundle = 'law';
   // Automatically converted destination fields.
-  $destination_fields = array(
-    'field_core_legacy_link',
-  );
+  $destination_fields = array();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $source_bundle)
@@ -61,36 +56,14 @@ function dt_dt_law_update_7101($sandbox) {
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $source_node) {
       // Automatic convert by node_convert module.
-      $nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
-
-      // If the converting is successful than $nid won't be changed,
+      // If the converting is successful than returns the $nid,
       // in other case will be FALSE.
-      if ($nid) {
+      if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, TRUE)) {
         $destination_node = node_load($nid);
         $source_wrapper = entity_metadata_wrapper('node', $source_node);
         $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
-
-        // Converting field_policy_imp_introduction field.
-        if (isset($source_node->field_policy_imp_introduction)) {
-          foreach ($source_node->field_policy_imp_introduction as $language => $item) {
-            $destination_wrapper->language($language)->field_core_description = $item[0]['value'];
-          }
-        }
-
-        // Converting field_policy_imp_introduction field.
-        if (isset($source_wrapper->field_policy_imp_stat)) {
-          $value = $source_wrapper->field_policy_imp_status->value();
-          switch ($value) {
-            case 'proposed':
-              $destination_wrapper->field_law_status->set('proposed');
-              break;
-
-            case 'adopted':
-              $destination_wrapper->field_law_status->set('in force');
-              break;
-          }
-        }
-
+        // Convert the uncommon fields.
+        _dt_law_node_convert($source_node, $source_wrapper, $destination_wrapper);
         // Save the node.
         $destination_wrapper->save();
       }
@@ -108,5 +81,32 @@ function dt_dt_law_update_7101($sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
+  }
+}
+
+/**
+ * Helper function to converting uncommon fields.
+ */
+function _dt_law_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
+  // Converting field_policy_imp_introduction field.
+  if (isset($source_node->field_policy_imp_introduction)) {
+    foreach ($source_node->field_policy_imp_introduction as $language => $item) {
+      $value = strip_tags($item[0]['value']);
+      $destination_wrapper->language($language)->field_core_description->set($value);
+    }
+  }
+
+  // Converting field_policy_imp_introduction field.
+  if (isset($source_wrapper->field_policy_imp_status)) {
+    $value = $source_wrapper->field_policy_imp_status->value();
+    switch ($value) {
+      case 'proposed':
+        $destination_wrapper->field_law_status->set('proposed');
+        break;
+
+      case 'adopted':
+        $destination_wrapper->field_law_status->set('in force');
+        break;
+    }
   }
 }
