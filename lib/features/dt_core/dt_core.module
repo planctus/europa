@@ -954,8 +954,9 @@ function _dt_core_contactphone_patterns() {
  *   Returns string or False.
  */
 function dt_core_phonetohtml($tel) {
+  $data = trim($tel);
   foreach (_dt_core_contactphone_patterns() as $pattern => $pattern_values) {
-    preg_match($pattern_values['pattern'], $tel, $matches);
+    preg_match($pattern_values['pattern'], $data, $matches);
     // Something is wrong with the phone value and can't be displayed correctly.
     if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
       return FALSE;
