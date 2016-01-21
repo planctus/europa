@@ -521,22 +521,21 @@ function cwt_core_update_7138() {
  * NEXTEUROPA-8356 - Setting up the right classnames for social network icons.
  */
 function cwt_core_update_7139() {
-  $voc = 'social_networks';
-  // Get the right vocabulary.
-  $vocabulary = taxonomy_vocabulary_machine_name_load($voc);
-  if ($vocabulary) {
+  $voc = taxonomy_vocabulary_machine_name_load('social_networks');
+  if ($voc) {
     // Remove the duplicated classes.
     $terms = taxonomy_term_load_multiple(array(), array('vid' => $voc->vid));
     // If we have terms we look for a legacy class.
     if (!empty($terms)) {
       foreach ($terms as $tid => $term) {
         $wrapper = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($tid));
-        $classes = $wrapper->field_social_network_classname->value();
+        $original = $wrapper->field_social_network_classname->value();
         // Remove the generic class, the migration now creates the modifier one.
-        $classes = str_replace('icon-social ', '', $classes);
-        $wrapper->field_social_network_classname->set($classes);
-        // Save the new values or the unchanged one.
-        $wrapper->save();
+        $classes = str_replace('icon-social ', '', $original);
+        if ($original != $classes) {
+          $wrapper->field_social_network_classname->set($classes);
+          $wrapper->save();
+        }
       }
     }
   }
