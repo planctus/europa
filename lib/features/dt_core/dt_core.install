@@ -838,3 +838,10 @@ function dt_core_update_7159() {
 function dt_core_update_7160() {
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 }
+
+/**
+ * Enabling ec_embedded_video to enable the cookie overlay.
+ */
+function dt_core_update_7161() {
+  module_enable(array('ec_embedded_video'));
+}

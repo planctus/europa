@@ -750,9 +750,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'link',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'link_listing_title',
         'weight' => 19,
       ),
       'meta' => array(
