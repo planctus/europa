@@ -111,7 +111,7 @@ function _dt_law_node_convert($source_node, $source_wrapper, &$destination_wrapp
         break;
 
       case 'adopted':
-        $destination_wrapper->field_law_status->set('in force');
+        $destination_wrapper->field_law_status->set('in_force');
         break;
     }
   }
