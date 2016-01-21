@@ -5,9 +5,39 @@
  */
 
 /**
+ * Implements hook_libraries_info().
+ *
+ * For defining external libraries.
+ *
+ * @see site.make file.
+ */
+
+function dt_help_text_libraries_info() {
+  $libraries['marked'] = array(
+    'name' => 'Marked js library',
+    'vendor url' => 'https://github.com/chjj/marked',
+    'download url' => 'https://raw.githubusercontent.com/chjj/marked/master/marked.min.js',
+    'version callback' => '_dt_help_text_no_version_callback',
+    'files' => array(
+      'js' => array('marked.min.js'),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Helper function to bypass version check.
+ */
+function _dt_help_text_no_version_callback() {
+  return TRUE;
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function dt_help_text_form_node_form_alter(&$form, $form_state) {
   // Adding js only at node add/edit forms.
+  $form['#attached']['libraries_load'][] = array('marked');
   $form['#attached']['js'][] = drupal_get_path('module', 'dt_help_text') . '/js/dt_help_text.js';
 }
