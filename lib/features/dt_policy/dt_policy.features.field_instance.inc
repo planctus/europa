@@ -1740,7 +1740,7 @@ function dt_policy_field_default_field_instances() {
   <ul>
     <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
     <li>titles of laws or packages (e.g. 6th energy package)</li>
-    <li>EU processes and concepts (e.g. open coordination, single market)</li>
+    <li>EU processes and concepts (e.g. open coordination, sinnagle market)</li>
   </ul>
 </p>
 
