@@ -24,7 +24,13 @@ function dt_law_uninstall() {
 /**
  * NEXTEUROPA-7191: Data Migration from Policy Implementation to Law.
  */
-function dt_dt_law_update_7101($sandbox) {
+function dt_law_update_7101($sandbox) {
+  // Reverting Policy Implementation feature for status field not to be
+  // translated by Entity Translation.
+  features_revert_module('dt_policy_implementation');
+  // Enable Node Convert module.
+  module_enable(array('node_convert'));
+
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
   // Automatically converted source fields.
@@ -56,7 +62,7 @@ function dt_dt_law_update_7101($sandbox) {
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $nid => $source_node) {
       // Automatic convert by node_convert module.
-      // If the converting is successful than returns the $nid,
+      // If the converting is successful than returns the $nid (means TRUE),
       // in other case will be FALSE.
       if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, TRUE)) {
         $destination_node = node_load($nid);
