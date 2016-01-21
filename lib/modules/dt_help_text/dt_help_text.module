@@ -8,10 +8,7 @@
  * Implements hook_libraries_info().
  *
  * For defining external libraries.
- *
- * @see site.make file.
  */
-
 function dt_help_text_libraries_info() {
   $libraries['marked'] = array(
     'name' => 'Marked js library',
