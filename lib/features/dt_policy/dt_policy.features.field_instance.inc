@@ -10,7 +10,7 @@
 function dt_policy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy-field_core_department'
+  // Exported field_instance: 'node-policy-field_core_department'.
   $field_instances['node-policy-field_core_department'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -27,6 +27,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -69,7 +70,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_description'
+  // Exported field_instance: 'node-policy-field_core_description'.
   $field_instances['node-policy-field_core_description'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -152,7 +153,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_introduction'
+  // Exported field_instance: 'node-policy-field_core_introduction'.
   $field_instances['node-policy-field_core_introduction'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -236,7 +237,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_legacy_link'
+  // Exported field_instance: 'node-policy-field_core_legacy_link'.
   $field_instances['node-policy-field_core_legacy_link'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -308,7 +309,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_parent'
+  // Exported field_instance: 'node-policy-field_core_parent'.
   $field_instances['node-policy-field_core_parent'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -363,7 +364,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_persons'
+  // Exported field_instance: 'node-policy-field_core_persons'.
   $field_instances['node-policy-field_core_persons'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -380,6 +381,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -423,7 +425,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_policy_areas'
+  // Exported field_instance: 'node-policy-field_core_policy_areas'.
   $field_instances['node-policy-field_core_policy_areas'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -478,7 +480,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_priorities'
+  // Exported field_instance: 'node-policy-field_core_priorities'.
   $field_instances['node-policy-field_core_priorities'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -495,6 +497,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -537,7 +540,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_topics'
+  // Exported field_instance: 'node-policy-field_core_topics'.
   $field_instances['node-policy-field_core_topics'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -554,6 +557,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -597,7 +601,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_author'
+  // Exported field_instance: 'node-policy-field_policy_author'.
   $field_instances['node-policy-field_policy_author'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -675,7 +679,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_caption'
+  // Exported field_instance: 'node-policy-field_policy_caption'.
   $field_instances['node-policy-field_policy_caption'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -753,7 +757,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_body'
+  // Exported field_instance: 'node-policy-field_policy_detail_body'.
   $field_instances['node-policy-field_policy_detail_body'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -832,7 +836,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_file'
+  // Exported field_instance: 'node-policy-field_policy_detail_file'.
   $field_instances['node-policy-field_policy_detail_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -902,7 +906,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_objectives'
+  // Exported field_instance: 'node-policy-field_policy_detail_objectives'.
   $field_instances['node-policy-field_policy_detail_objectives'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -986,7 +990,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_featured_file'
+  // Exported field_instance: 'node-policy-field_policy_featured_file'.
   $field_instances['node-policy-field_policy_featured_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -1056,7 +1060,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_implementations'
+  // Exported field_instance: 'node-policy-field_policy_implementations'.
   $field_instances['node-policy-field_policy_implementations'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1111,7 +1115,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_input'
+  // Exported field_instance: 'node-policy-field_policy_input'.
   $field_instances['node-policy-field_policy_input'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1165,7 +1169,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_keyfiles'
+  // Exported field_instance: 'node-policy-field_policy_keyfiles'.
   $field_instances['node-policy-field_policy_keyfiles'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1186,6 +1190,7 @@ function dt_policy_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1227,7 +1232,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_next_steps'
+  // Exported field_instance: 'node-policy-field_policy_next_steps'.
   $field_instances['node-policy-field_policy_next_steps'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1281,7 +1286,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_paragraph'
+  // Exported field_instance: 'node-policy-field_policy_paragraph'.
   $field_instances['node-policy-field_policy_paragraph'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1359,7 +1364,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_quote'
+  // Exported field_instance: 'node-policy-field_policy_quote'.
   $field_instances['node-policy-field_policy_quote'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1437,7 +1442,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_sharable_banner'
+  // Exported field_instance: 'node-policy-field_policy_sharable_banner'.
   $field_instances['node-policy-field_policy_sharable_banner'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1493,7 +1498,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-group_content_access'
+  // Exported field_instance: 'node-policy-group_content_access'.
   $field_instances['node-policy-group_content_access'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1558,7 +1563,7 @@ function dt_policy_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy-og_group_ref'
+  // Exported field_instance: 'node-policy-og_group_ref'.
   $field_instances['node-policy-og_group_ref'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1629,12 +1634,23 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-title_field'
+  // Exported field_instance: 'node-policy-title_field'.
   $field_instances['node-policy-title_field'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<p>The title should use everyday terms</p>
+[break]
+<p>
+  Avoid:
+  <ul>
+    <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
+    <li>titles of laws or packages (e.g. 6th energy package)</li>
+    <li>EU processes and concepts (e.g. open coordination, single market)</li>
+  </ul>
+</p>
+
+<p><strong>Example:</strong> Efficient power production</p>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1662,22 +1678,52 @@ function dt_policy_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'title_field',
     'label' => 'Title',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'hide_label' => array(
-        'entity' => FALSE,
-        'page' => FALSE,
+        'entity' => 0,
+        'page' => 0,
       ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -1687,6 +1733,18 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<p>The title should use everyday terms</p>
+[break]
+<p>
+  Avoid:
+  <ul>
+    <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
+    <li>titles of laws or packages (e.g. 6th energy package)</li>
+    <li>EU processes and concepts (e.g. open coordination, single market)</li>
+  </ul>
+</p>
+
+<p><strong>Example:</strong> Efficient power production</p>');
   t('Author');
   t('Caption');
   t('Description');
