@@ -39,7 +39,7 @@ function cwt_team_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(
-            'func' => 'theme_ds_field_reset',
+          'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
