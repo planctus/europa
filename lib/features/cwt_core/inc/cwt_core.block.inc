@@ -109,7 +109,7 @@ function _cwt_core_block_translation_selector_view() {
       '#markup' => render($selector),
       '#attached' => array(
         'js' => array(
-          drupal_get_path('module', 'cwt_core') .'/js/translation_selector.js', 'file'
+          drupal_get_path('module', 'cwt_core') . '/js/translation_selector.js', 'file',
         ),
       ),
     );
