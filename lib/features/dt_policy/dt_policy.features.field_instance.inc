@@ -75,17 +75,14 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '<p>Description will be used as abstract (metadata description) in all list views</p>
+    'description' => 'Description will be used as abstract (metadata description) in all list views
 [break]
-<p>
-  <ul>
-    <li>Use the Introduction as basis for Description and apply same guidance. </li>
-    <li>Refer to the real-world intention of the policy (e.g. energy targets, job creation)</li>
-    <li>Make a direct connection to people’s lives and business interests</li>
-    <li>Where a policy benefits a particular group of people, present it from their perspective</li>
-  </ul>
-</p>
-<p><strong>Example:</strong> Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.</p>',
+* Use the Introduction as basis for Description and apply same guidance.
+* Refer to the real-world intention of the policy (e.g. energy targets, job creation)
+* Make a direct connection to people’s lives and business interests
+* Where a policy benefits a particular group of people, present it from their perspective
+
+**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -169,7 +166,14 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '* say what real-world issues are addressed by the policy
+* avoid policy jargon and legal language
+[break]
+* use a balanced, calm tone. Avoid emotive language
+* mention human before economic or technical benefits
+* do not give historical overview
+
+**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -441,7 +445,9 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or multiple policy areas the policy belongs to.
+
+**Type name of policy area to search for it. Don\'t create a new policy area.**',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -482,7 +488,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -496,7 +501,7 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one, but only if policy belongs to one of the 10 priorities.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1650,18 +1655,14 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '<p>The title should use everyday terms</p>
+    'description' => 'The title should use everyday terms
 [break]
-<p>
-  Avoid:
-  <ul>
-    <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
-    <li>titles of laws or packages (e.g. 6th energy package)</li>
-    <li>EU processes and concepts (e.g. open coordination, single market)</li>
-  </ul>
-</p>
+Avoid:
+* programme names (e.g. Horizon 2020, Erasmus+)
+* titles of laws or packages (e.g. 6th energy package)
+* EU processes and concepts (e.g. open coordination, single market)
 
-<p><strong>Example:</strong> Efficient power production</p>',
+**Example:** Efficient power production',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1744,32 +1745,29 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('<p>Description will be used as abstract (metadata description) in all list views</p>
+  t('* say what real-world issues are addressed by the policy
+* avoid policy jargon and legal language
 [break]
-<p>
-  <ul>
-    <li>Use the Introduction as basis for Description and apply same guidance. </li>
-    <li>Refer to the real-world intention of the policy (e.g. energy targets, job creation)</li>
-    <li>Make a direct connection to people’s lives and business interests</li>
-    <li>Where a policy benefits a particular group of people, present it from their perspective</li>
-  </ul>
-</p>
-<p><strong>Example:</strong> Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.</p>');
-  t('<p>The title should use everyday terms</p>
-[break]
-<p>
-  Avoid:
-  <ul>
-    <li>programme names (e.g. Horizon 2020, Erasmus+)</li>
-    <li>titles of laws or packages (e.g. 6th energy package)</li>
-    <li>EU processes and concepts (e.g. open coordination, single market)</li>
-  </ul>
-</p>
+* use a balanced, calm tone. Avoid emotive language
+* mention human before economic or technical benefits
+* do not give historical overview
 
-<p><strong>Example:</strong> Efficient power production</p>');
+**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.');
   t('Author');
   t('Caption');
+  t('Choose one or multiple policy areas the policy belongs to.
+
+**Type name of policy area to search for it. Don\'t create a new policy area.**');
+  t('Choose one, but only if policy belongs to one of the 10 priorities.');
   t('Description');
+  t('Description will be used as abstract (metadata description) in all list views
+[break]
+* Use the Introduction as basis for Description and apply same guidance.
+* Refer to the real-world intention of the policy (e.g. energy targets, job creation)
+* Make a direct connection to people’s lives and business interests
+* Where a policy benefits a particular group of people, present it from their perspective
+
+**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.');
   t('Details body');
   t('Featured audiovisual file');
   t('Featured video or image or slideshow');
@@ -1791,6 +1789,14 @@ function dt_policy_field_default_field_instances() {
   t('Responsible commissioner(s)');
   t('Responsible department(s)');
   t('Sharable banner');
+  t('The title should use everyday terms
+[break]
+Avoid:
+* programme names (e.g. Horizon 2020, Erasmus+)
+* titles of laws or packages (e.g. 6th energy package)
+* EU processes and concepts (e.g. open coordination, single market)
+
+**Example:** Efficient power production');
   t('Title');
 
   return $field_instances;
