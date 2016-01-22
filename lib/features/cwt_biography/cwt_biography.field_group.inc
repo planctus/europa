@@ -488,18 +488,18 @@ function cwt_biography_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Role',
+    'label' => 'Responsibilities',
     'weight' => '4',
     'children' => array(
       0 => 'body',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Role',
+      'label' => 'Responsibilities',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="role"',
+        'attributes' => 'id="responsibilities"',
         'modifier' => '',
         'layout' => '',
         'classes' => 'group-bio-role field-group-html-element',
