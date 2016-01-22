@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_team_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_activities|node|team|form'] = $field_group;
+  $field_groups['group_team_activities|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -63,7 +63,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_comissioners|node|team|college'] = $field_group;
+  $field_groups['group_team_comissioners|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -93,7 +93,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_contact|node|team|full'] = $field_group;
+  $field_groups['group_team_contact|node|team|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +127,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_content|node|team|form'] = $field_group;
+  $field_groups['group_team_content|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -141,9 +141,7 @@ function cwt_team_field_group_info() {
   $field_group->data = array(
     'label' => 'Disable group',
     'weight' => '21',
-    'children' => array(
-      0 => 'subscriptions_ui',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'formatter' => '',
@@ -157,7 +155,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_disable|node|team|college'] = $field_group;
+  $field_groups['group_team_disable|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -173,6 +171,7 @@ function cwt_team_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_team_attachments',
+      1 => 'social_bookmark_webtools',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -184,7 +183,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_files|node|team|college'] = $field_group;
+  $field_groups['group_team_files|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -211,7 +210,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_links|node|team|college'] = $field_group;
+  $field_groups['group_team_links|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -238,7 +237,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_members|node|team|college'] = $field_group;
+  $field_groups['group_team_members|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -263,7 +262,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_members|node|team|form'] = $field_group;
+  $field_groups['group_team_members|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -292,7 +291,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_members|node|team|full'] = $field_group;
+  $field_groups['group_team_members|node|team|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -322,7 +321,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_metadata|node|team|form'] = $field_group;
+  $field_groups['group_team_metadata|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -348,7 +347,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_meta|node|team|college'] = $field_group;
+  $field_groups['group_team_meta|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -377,7 +376,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_president|node|team|college'] = $field_group;
+  $field_groups['group_team_president|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -405,7 +404,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_priorities|node|team|form'] = $field_group;
+  $field_groups['group_team_priorities|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -432,7 +431,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_role|node|team|college'] = $field_group;
+  $field_groups['group_team_role|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -462,7 +461,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_row|node|team|full'] = $field_group;
+  $field_groups['group_team_row|node|team|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -487,7 +486,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tab_name|node|team|college'] = $field_group;
+  $field_groups['group_team_tab_name|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -512,7 +511,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tab_project_team|node|team|college'] = $field_group;
+  $field_groups['group_team_tab_project_team|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -537,7 +536,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tab_role|node|team|college'] = $field_group;
+  $field_groups['group_team_tab_role|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -567,7 +566,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tabs|node|team|college'] = $field_group;
+  $field_groups['group_team_tabs|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -596,7 +595,29 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_top_image|node|team|college'] = $field_group;
+  $field_groups['group_team_top_image|node|team|college'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Activities');
+  t('Commissioners');
+  t('Contact the team');
+  t('Content');
+  t('Disable group');
+  t('Files');
+  t('Horizontal tabs');
+  t('Links');
+  t('Members');
+  t('Meta');
+  t('Metadata');
+  t('Name');
+  t('President');
+  t('Priorities');
+  t('Project team');
+  t('Role');
+  t('Row');
+  t('Team members');
+  t('Top image');
+
+  return $field_groups;
 }

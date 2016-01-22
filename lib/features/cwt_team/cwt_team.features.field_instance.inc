@@ -1373,7 +1373,8 @@ function cwt_team_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-team_subtypes-field_members_block_filter_text'
+  // Exported field_instance:
+  // 'taxonomy_term-team_subtypes-field_members_block_filter_text'.
   $field_instances['taxonomy_term-team_subtypes-field_members_block_filter_text'] = array(
     'bundle' => 'team_subtypes',
     'default_value' => NULL,
@@ -1434,7 +1435,8 @@ function cwt_team_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-team_subtypes-field_members_block_title'
+  // Exported field_instance:
+  // 'taxonomy_term-team_subtypes-field_members_block_title'.
   $field_instances['taxonomy_term-team_subtypes-field_members_block_title'] = array(
     'bundle' => 'team_subtypes',
     'default_value' => array(
@@ -1499,7 +1501,7 @@ function cwt_team_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-team_subtypes-name_field'
+  // Exported field_instance: 'taxonomy_term-team_subtypes-name_field'.
   $field_instances['taxonomy_term-team_subtypes-name_field'] = array(
     'bundle' => 'team_subtypes',
     'default_value' => NULL,
