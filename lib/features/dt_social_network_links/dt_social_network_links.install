@@ -13,7 +13,7 @@ function dt_social_network_links_install() {
 }
 
 /**
- * NEXTEUROPA-8356 - Run the migration.
+ * NEXTEUROPA-8356 - Run the migration and fixes.
  */
 function dt_social_network_links_update_7101() {
   // This will run the migration if migrate is enabled.

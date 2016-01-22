@@ -588,19 +588,24 @@ function dt_social_network_links_migrate_api() {
 function _dt_social_network_links_social_network_classes() {
   // Make sure that destination vocabularies exists.
   features_revert(array('dt_social_network_links' => array('taxonomy')));
-  $voc = taxonomy_vocabulary_machine_name_load('social_networks');
-  if ($voc) {
+  if ($voc = taxonomy_vocabulary_machine_name_load('social_networks')) {
     // Remove the duplicated classes.
     $terms = taxonomy_term_load_multiple(array(), array('vid' => $voc->vid));
     // If we have terms we look for a legacy class.
     if (!empty($terms)) {
-      foreach ($terms as $tid => $term) {
-        $wrapper = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($tid));
+      foreach ($terms as $term) {
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+        // That's the current CSS class of a social network.
         $original = $wrapper->field_social_network_classname->value();
-        // Remove the generic class, the migration now creates the modifier one.
-        $classes = str_replace('icon-social ', '', $original);
-        if ($original != $classes) {
-          $wrapper->field_social_network_classname->set($classes);
+        // Remove unnecessary double 'icon-social' class.
+        $cleaned = str_replace('icon-social ', '', $original);
+        if ($original != $cleaned) {
+          $wrapper->field_social_network_classname->set($cleaned);
+          $wrapper->save();
+        } elseif (strpos($original, 'icon-social') == FALSE) {
+          // When 'icon-social' is not contained, but has to be.
+          $correct = 'icon-social--' . $original;
+          $wrapper->field_social_network_classname->set($correct);
           $wrapper->save();
         }
       }
