@@ -146,6 +146,7 @@ Styleguide listing.listing--2rows
 
   .group-bio-col {
     min-height: 160px;
+    padding-bottom: 2.5em;
     position: relative;
 
     .group-bio-top-footer {
@@ -159,3 +160,13 @@ Styleguide listing.listing--2rows
   }
 }
 
+// Temporary fix.
+#team {
+  .field {
+    margin-bottom: 0.5em;
+  }
+}
+
+.section__group {
+  padding: 1.333em 0;
+}

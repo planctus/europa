@@ -33,12 +33,14 @@ function cwt_team_ds_field_settings_info() {
         ),
       ),
     ),
-    'social_media' => array(
+    'social_bookmark_webtools' => array(
       'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
     'title' => array(
@@ -295,7 +297,7 @@ function cwt_team_ds_layout_settings_info() {
         19 => 'field_team_attachments',
         20 => 'cwt_team_project_team',
         21 => 'group_team_files',
-        22 => 'social_media',
+        22 => 'social_bookmark_webtools',
         23 => 'group_team_president',
       ),
       'bottom_header' => array(
@@ -326,7 +328,7 @@ function cwt_team_ds_layout_settings_info() {
       'field_team_attachments' => 'central',
       'cwt_team_project_team' => 'central',
       'group_team_files' => 'central',
-      'social_media' => 'central',
+      'social_bookmark_webtools' => 'central',
       'group_team_president' => 'central',
     ),
     'classes' => array(),

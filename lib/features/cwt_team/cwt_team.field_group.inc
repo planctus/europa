@@ -284,7 +284,6 @@ function cwt_team_field_group_info() {
     'format_settings' => array(
       'label' => 'Team members',
       'instance_settings' => array(
-        'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
         'modifier' => '',
