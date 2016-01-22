@@ -104,8 +104,15 @@ function _cwt_core_block_translation_selector_view() {
   $block = array();
   $selector = _cwt_core_translation_selector();
   if ($selector) {
-    $block['subject'] = t('Choose your language');
-    $block['content'] = render($selector);
+    $block['subject'] = '';
+    $block['content'] = array(
+      '#markup' => render($selector),
+      '#attached' => array(
+        'js' => array(
+          drupal_get_path('module', 'cwt_core') .'/js/translation_selector.js', 'file'
+        ),
+      ),
+    );
   }
   return $block;
 }
