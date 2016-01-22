@@ -581,3 +581,48 @@ function dt_social_network_links_migrate_api() {
     ),
   );
 }
+
+/**
+ * NEXTEUROPA-8356 - Polish the social network classes if needed.
+ */
+function _dt_social_network_links_social_network_classes() {
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_social_network_links' => array('taxonomy')));
+  $voc = taxonomy_vocabulary_machine_name_load('social_networks');
+  if ($voc) {
+    // Remove the duplicated classes.
+    $terms = taxonomy_term_load_multiple(array(), array('vid' => $voc->vid));
+    // If we have terms we look for a legacy class.
+    if (!empty($terms)) {
+      foreach ($terms as $tid => $term) {
+        $wrapper = entity_metadata_wrapper('taxonomy_term', taxonomy_term_load($tid));
+        $original = $wrapper->field_social_network_classname->value();
+        // Remove the generic class, the migration now creates the modifier one.
+        $classes = str_replace('icon-social ', '', $original);
+        if ($original != $classes) {
+          $wrapper->field_social_network_classname->set($classes);
+          $wrapper->save();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function migrating social networks.
+ */
+function _dt_social_network_links_migrate_social_networks() {
+  // Polish the vocabulary first.
+  _dt_social_network_links_social_network_classes();
+
+  // Migrate module is needed.
+  if (module_exists('migrate')) {
+    // Force registration of migration classes.
+    migrate_static_registration();
+    // Import department_tasks vocabulary's terms.
+    Migration::getInstance('DTSocialNetworks')->processImport();
+  }
+  else {
+    return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
+  }
+}
