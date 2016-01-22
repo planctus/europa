@@ -68,12 +68,6 @@ function cwt_core_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-8',
         ),
-        'cwt_core-cwt_block_copyright' => array(
-          'module' => 'cwt_core',
-          'delta' => 'cwt_block_copyright',
-          'region' => 'footer',
-          'weight' => '-7',
-        ),
       ),
     ),
   );
