@@ -25,6 +25,11 @@ function dt_consultation_uninstall() {
  * NEXTEUROPA-7203: Data Migration from Policy Input to Consultation.
  */
 function dt_consultation_update_7101($sandbox) {
+  // Enable Node Convert module.
+  if (!module_enable(array('node_convert'))) {
+    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
+  }
+
   // Set up source.
   $source_bundle = 'policy_input';
   // Automatically converted source fields.
@@ -43,45 +48,38 @@ function dt_consultation_update_7101($sandbox) {
   $query = new EntityFieldQuery();
   $query_filter_field = 'field_policy_input_type';
   $query_filter_value = 'consultation';
+  // Mount query.
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
   // Setup the amount of steps.
   $limit = 100;
 
   // Initialization.
   if (!isset($sandbox['max'])) {
     // Get the amount of processed nodes.
-    $count = $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', $source_bundle)
-      ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
-      ->count()
-      ->execute();
+    $count = $query->count()->execute();
+    $query->count = FALSE;
     $sandbox['max'] = $count;
     $sandbox['progress'] = 0;
     $sandbox['position'] = 0;
-    $query->count = FALSE;
   }
 
-  $result = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
-    ->range($sandbox['position'], $limit)
-    ->execute();
+  $result = $query->range($sandbox['position'], $limit)->execute();
 
   if (isset($result['node']) && !empty($result['node'])) {
     $nids = array_keys($result['node']);
-    foreach ($nids as $nid) {
-      // Source data.
-      $source_node = node_load($nid);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $nid => $source_node) {
       // Automatic convert by node_convert module.
-      $conv_nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
-
-      // If the converting is successful than $conv_nid won't be changed,
-      // in other case will be FALSE.
-      if ($conv_nid) {
-        $destination_node = node_load($conv_nid);
-        // Convert unssuported fields.
-        _dt_consultation_node_convert($source_node, $destination_node, $source_fields, $destination_fields);
+      if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE)) {
+        $destination_node = node_load($nid);
+        $source_wrapper = entity_metadata_wrapper('node', $source_node);
+        $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
+        // Convert unsuported fields.
+        _dt_consultation_node_convert($source_node, $source_wrapper, $destination_wrapper);
         // Storing new values.
-        node_save($destination_node);
+        $destination_wrapper->save();
       }
     }
   }
@@ -105,16 +103,19 @@ function dt_consultation_update_7101($sandbox) {
  *
  * @param object $source_node
  *                Source node.
- * @param object $destination_node
- *                Destination node.
+ * @param object $source_wrapper
+ *                Source wrapper.
+ * @param object $destination_wrapper
+ *                Destination wrapper.
  */
-function _dt_consultation_node_convert($source_node, &$destination_node) {
-  // Status converter.
-  foreach ($source_node->translations->data as $lang => $item) {
-    $destination_node->field_consultation_status[$lang][0]['value'] = 'closed';
-  }
+function _dt_consultation_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
   // Description converter.
-  foreach ($source_node->field_core_introduction as $lang => $item) {
-    $destination_node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
+  if (isset($source_node->field_core_introduction)) {
+    foreach ($source_node->field_core_introduction as $lang => $item) {
+      $destination_wrapper->language($lang)->field_core_description->set(strip_tags($item[0]['value']));
+    }
   }
+
+  // Status converter.
+  $destination_wrapper->field_consultation_status->set('closed');
 }
