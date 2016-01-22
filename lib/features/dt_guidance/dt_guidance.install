@@ -24,7 +24,12 @@ function dt_guidance_uninstall() {
 /**
  * NEXTEUROPA-7202: converting policy_implementation into guidance.
  */
-function dt_guidance_update_7101($sandbox) {
+function dt_guidance_update_7102($sandbox) {
+  // Enable Node Convert module.
+  if (!module_enable(array('node_convert'))) {
+    throw new DrupalUpdateException('Content mmigration needs node_convert module enabled.');
+  }
+
   // Set up source.
   $source_bundle = 'policy_implementation';
   // Automatically converted source fields.
@@ -41,45 +46,40 @@ function dt_guidance_update_7101($sandbox) {
   $query = new EntityFieldQuery();
   $query_filter_field = 'field_policy_imp_type';
   $query_filter_value = 'guidance';
+  // Mount query.
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
   // Setup the amount of steps.
   $limit = 100;
 
   // Initialization.
   if (!isset($sandbox['max'])) {
     // Get the amount of processed nodes.
-    $count = $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', $source_bundle)
-      ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
-      ->count()
-      ->execute();
+    $count = $query->count()->execute();
+    $query->count = FALSE;
     $sandbox['max'] = $count;
     $sandbox['progress'] = 0;
     $sandbox['position'] = 0;
-    $query->count = FALSE;
   }
 
-  $result = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=')
-    ->range($sandbox['position'], $limit)
-    ->execute();
+  $result = $query->range($sandbox['position'], $limit)->execute();
 
   if (isset($result['node']) && !empty($result['node'])) {
     $nids = array_keys($result['node']);
-    foreach ($nids as $nid) {
-      // Source data.
-      $source_node = node_load($nid);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $nid => $source_node) {
       // Automatic convert by node_convert module.
-      $conv_nid = node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE);
+      if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE)) {
+        $destination_node = node_load($nid);
+        $source_wrapper = entity_metadata_wrapper('node', $source_node);
+        $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
 
-      // If the converting is successful than $conv_nid won't be changed,
-      // in other case will be FALSE.
-      if ($conv_nid) {
-        $destination_node = node_load($conv_nid);
         // Convert unssuported fields.
-        _dt_guidance_node_convert($source_node, $destination_node, $source_fields, $destination_fields);
+        _dt_guidance_node_convert($source_node, $source_wrapper, $destination_wrapper);
+
         // Storing new values.
-        node_save($destination_node);
+        $destination_wrapper->save();
       }
     }
   }
@@ -98,17 +98,22 @@ function dt_guidance_update_7101($sandbox) {
   }
 }
 
+
 /**
  * NEXTEUROPA-7202: helper function for migration in update 7101.
  *
  * @param object $source_node
  *                Source node.
- * @param object $destination_node
- *                Destination node.
+ * @param object $source_wrapper
+ *                Source wrapper.
+ * @param object $destination_wrapper
+ *                Destination wrapper.
  */
-function _dt_guidance_node_convert($source_node, &$destination_node) {
+function _dt_guidance_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
   // Description converter.
-  foreach ($source_node->field_policy_imp_introduction as $lang => $item) {
-    $destination_node->field_core_description[$lang][0]['value'] = strip_tags($item[0]['value']);
+  if (isset($source_node->field_policy_imp_introduction)) {
+    foreach ($source_node->field_policy_imp_introduction as $lang => $item) {
+      $destination_wrapper->language($lang)->field_core_description->set(strip_tags($item[0]['value']));
+    }
   }
 }
