@@ -602,8 +602,9 @@ function _dt_social_network_links_social_network_classes() {
         if ($original != $cleaned) {
           $wrapper->field_social_network_classname->set($cleaned);
           $wrapper->save();
-        } elseif (strpos($original, 'icon-social') == FALSE) {
-          // When 'icon-social' is not contained, but has to be.
+        }
+        // When 'icon-social' is not contained, but has to be.
+        elseif (strpos($original, 'icon-social') == FALSE) {
           $correct = 'icon-social--' . $original;
           $wrapper->field_social_network_classname->set($correct);
           $wrapper->save();
