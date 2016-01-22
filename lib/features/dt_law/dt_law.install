@@ -68,7 +68,7 @@ function dt_law_update_7101($sandbox) {
         $destination_node = node_load($nid);
         $source_wrapper = entity_metadata_wrapper('node', $source_node);
         $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
-        // Convert the uncommon fields.
+        // Convert unsuported fields.
         _dt_law_node_convert($source_node, $source_wrapper, $destination_wrapper);
         // Save the node.
         $destination_wrapper->save();
@@ -91,7 +91,7 @@ function dt_law_update_7101($sandbox) {
 }
 
 /**
- * Helper function to converting uncommon fields.
+ * Helper function to convert unsupported fields.
  */
 function _dt_law_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
   // Converting field_policy_imp_introduction field.
@@ -102,7 +102,7 @@ function _dt_law_node_convert($source_node, $source_wrapper, &$destination_wrapp
     }
   }
 
-  // Converting field_policy_imp_introduction field.
+  // Converting field_policy_imp_status field.
   if (isset($source_wrapper->field_policy_imp_status)) {
     $value = $source_wrapper->field_policy_imp_status->value();
     switch ($value) {
