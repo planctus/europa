@@ -107,9 +107,10 @@ Styleguide listing.listing--2rows
     position: relative; }
     .group-bio-col .group-bio-top-footer {
       position: absolute;
-      bottom: 0; }
-      .group-bio-col .group-bio-top-footer .icon-social::before {
-        top: -10px; } }
+      bottom: 0; } }
+
+.group-bio-col .group-bio-top-footer .icon-social::before {
+  top: -10px; }
 
 #team .field {
   margin-bottom: 0.5em; }

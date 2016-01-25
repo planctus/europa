@@ -152,10 +152,14 @@ Styleguide listing.listing--2rows
     .group-bio-top-footer {
       position: absolute;
       bottom: 0;
+    }
+  }
+}
 
-      .icon-social::before {
-        top: -10px;
-      }
+.group-bio-col {
+  .group-bio-top-footer {
+    .icon-social::before {
+      top: -10px;
     }
   }
 }
