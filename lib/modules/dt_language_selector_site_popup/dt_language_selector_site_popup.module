@@ -14,7 +14,7 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
   if (isset($variables['block']->bid) && $variables['block']->bid === 'language_selector_site-language_selector_site') {
 
     // Initialize variables.
-    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $variables['elements']['code']['#markup'] . '</span></span>';
+    $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">&nbsp;' . $variables['elements']['code']['#markup'] . '</span></span>';
     $label = '<span class="lang-select-site__label">' . $variables['elements']['label']['#markup'] . '</span>';
 
     // Add accessabilty js to control the tab flow.

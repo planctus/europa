@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Code for the Social Network Links feature.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_social_network_links_install() {
+  // This will run the migration if migrate is enabled.
+  _dt_social_network_links_migrate_social_networks();
+}
+
+/**
+ * NEXTEUROPA-8356 - Run the migration and fixes.
+ */
+function dt_social_network_links_update_7101() {
+  // This will run the migration if migrate is enabled.
+  _dt_social_network_links_migrate_social_networks();
+}

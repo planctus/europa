@@ -26,9 +26,9 @@ function cwt_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'language_selector_site-language_selector_site' => array(
-          'module' => 'language_selector_site',
-          'delta' => 'language_selector_site',
+        'cwt_core-translation_selector' => array(
+          'module' => 'cwt_core',
+          'delta' => 'translation_selector',
           'region' => 'header',
           'weight' => '-10',
         ),
@@ -36,7 +36,7 @@ function cwt_core_context_default_contexts() {
           'module' => 'nexteuropa_europa_search',
           'delta' => 'nexteuropa_europa_search_form',
           'region' => 'header',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
@@ -67,12 +67,6 @@ function cwt_core_context_default_contexts() {
           'delta' => 'menu-dt-service-links',
           'region' => 'footer',
           'weight' => '-8',
-        ),
-        'cwt_core-cwt_block_copyright' => array(
-          'module' => 'cwt_core',
-          'delta' => 'cwt_block_copyright',
-          'region' => 'footer',
-          'weight' => '-7',
         ),
       ),
     ),

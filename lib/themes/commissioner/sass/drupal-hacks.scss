@@ -122,3 +122,60 @@ Styleguide listing.listing--2rows
     }
   }
 }
+
+.section__group--highlight-grey {
+  &#collapse {
+    .row {
+      padding-left: 1em;
+    }
+
+    .col-separator-left {
+      border-left: none;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-mds) {
+  .section__group--highlight-grey {
+    &#collapse {
+      .col-separator-left {
+        border-left: 1px solid $grey;
+      }
+    }
+  }
+
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative;
+
+    .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.group-bio-col {
+  .group-bio-top-footer {
+    .icon-social::before {
+      top: -10px;
+    }
+  }
+}
+
+// Temporary fix.
+#team {
+  .field {
+    margin-bottom: 0.5em;
+  }
+}
+
+.section__group {
+  padding: 1.333em 0;
+}
+
+// Translation selector should be replaced with site language switcher later.
+#block-cwt-core-translation-selector {
+  float: left;
+}

@@ -8,6 +8,8 @@ drupal.db.password =
 
 # Project init.
 subsite.name = Political
+subsite.production.key = beta-political
+subsite.production.root = http://ec.europa.eu/priorities
 subsite.install.modules = dt_core_pol
 drush.verbose = false
 

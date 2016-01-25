@@ -23,7 +23,6 @@ projects[breakpoints][version] = "1.3"
 projects[cer][subdir] = "contrib"
 projects[cer][version] = "3.0-alpha7"
 
-# Required by cer module.
 projects[table_element][subdir] = "contrib"
 projects[table_element][version] = "1.0-beta3"
 
@@ -41,6 +40,9 @@ projects[multiple_selects][version] = "1.2"
 
 projects[nodequeue][subdir] = "contrib"
 projects[nodequeue][version] = "2.0-beta1"
+
+projects[node_convert][subdir] = "contrib"
+projects[node_convert][version] = "1.2"
 
 projects[picture][subdir] = "contrib"
 projects[picture][version] = "2.9"
@@ -62,9 +64,6 @@ projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0
 
-## Required by custom_formatters.
-## Originally these are done via custom_formatters.make but we switched off
-## recursion, to avoid duplicate modules.
 projects[form_builder][subdir] = "contrib"
 projects[form_builder][version] = "1.0"
 
