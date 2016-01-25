@@ -56,7 +56,7 @@ function cwt_biography_field_group_info() {
     'children' => array(
       0 => 'agenda_block',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Agenda',
       'instance_settings' => array(
@@ -66,7 +66,11 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-agenda field-group-section_group',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_bio_agenda|node|biography|full'] = $field_group;
