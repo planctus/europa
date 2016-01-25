@@ -102,8 +102,8 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'team';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'team_contacts' => array(
-      'weight' => '46',
+    'team_contact_image' => array(
+      'weight' => '47',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -118,8 +118,8 @@ function cwt_team_ds_field_settings_info() {
         ),
       ),
     ),
-    'team_contact_image' => array(
-      'weight' => '47',
+    'team_contacts' => array(
+      'weight' => '46',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -176,10 +176,10 @@ function cwt_team_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_team_tagline' => array(
+    'field_editorial_section' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_reset',
+          'lb' => 'Tagline',
         ),
       ),
     ),
@@ -361,26 +361,26 @@ function cwt_team_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'content_type_label',
         1 => 'title',
-        2 => 'field_team_tagline',
+        5 => 'field_editorial_section',
       ),
       'top' => array(
-        3 => 'group_team_contact',
+        2 => 'group_team_contact',
         6 => 'group_team_row',
         7 => 'team_contacts',
         8 => 'team_contact_image',
       ),
       'central' => array(
+        3 => 'team_members',
         4 => 'group_team_members',
-        5 => 'team_members',
       ),
     ),
     'fields' => array(
       'content_type_label' => 'left_header',
       'title' => 'left_header',
-      'field_team_tagline' => 'left_header',
       'group_team_contact' => 'top',
-      'group_team_members' => 'central',
       'team_members' => 'central',
+      'group_team_members' => 'central',
+      'field_editorial_section' => 'left_header',
       'group_team_row' => 'top',
       'team_contacts' => 'top',
       'team_contact_image' => 'top',
