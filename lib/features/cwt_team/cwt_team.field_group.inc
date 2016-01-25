@@ -141,9 +141,7 @@ function cwt_team_field_group_info() {
   $field_group->data = array(
     'label' => 'Disable group',
     'weight' => '21',
-    'children' => array(
-      0 => 'subscriptions_ui',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'formatter' => '',
@@ -173,6 +171,7 @@ function cwt_team_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_team_attachments',
+      1 => 'social_bookmark_webtools',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
