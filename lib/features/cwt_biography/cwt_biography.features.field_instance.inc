@@ -1907,6 +1907,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'link_title' => 'Team page',
+          'force_language_default' => 1,
         ),
         'type' => 'link_button_default',
         'weight' => 55,
