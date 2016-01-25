@@ -27,7 +27,10 @@ function dt_funding_uninstall() {
 function dt_funding_update_7101() {
   // Reverting Policy Implementation feature for status field not to be
   // translated by Entity Translation.
-  features_revert_module('dt_policy_implementation');
+  $features = array('dt_policy_implementation', 'dt_policy');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
   // Enable Node Convert module.
   if (!module_exists('node_convert')) {
     module_enable(array('node_convert'));
