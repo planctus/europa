@@ -138,10 +138,6 @@ Styleguide listing.listing--2rows
 @media screen and (min-width: $screen-mds) {
   .section__group--highlight-grey {
     &#collapse {
-      .row {
-        //padding: 0;
-      }
-
       .col-separator-left {
         border-left: 1px solid $grey;
       }
@@ -156,6 +152,14 @@ Styleguide listing.listing--2rows
     .group-bio-top-footer {
       position: absolute;
       bottom: 0;
+    }
+  }
+}
+
+.group-bio-col {
+  .group-bio-top-footer {
+    .icon-social::before {
+      top: -10px;
     }
   }
 }
