@@ -446,8 +446,8 @@ function cwt_team_field_group_info() {
     'label' => 'Row',
     'weight' => '45',
     'children' => array(
-      0 => 'team_contacts',
-      1 => 'team_contact_image',
+      0 => 'team_contact_image',
+      1 => 'team_contacts',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

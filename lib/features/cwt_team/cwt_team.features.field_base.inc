@@ -10,7 +10,7 @@
 function cwt_team_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_college_priority_link'
+  // Exported field_base: 'field_college_priority_link'.
   $field_bases['field_college_priority_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -40,7 +40,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_illustrative_image'
+  // Exported field_base: 'field_illustrative_image'.
   $field_bases['field_illustrative_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -65,7 +65,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_members_block_filter_text'
+  // Exported field_base: 'field_members_block_filter_text'.
   $field_bases['field_members_block_filter_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -87,7 +87,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_members_block_title'
+  // Exported field_base: 'field_members_block_title'.
   $field_bases['field_members_block_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -109,7 +109,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_priority_image'
+  // Exported field_base: 'field_priority_image'.
   $field_bases['field_priority_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -134,7 +134,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_team_activities_info'
+  // Exported field_base: 'field_team_activities_info'.
   $field_bases['field_team_activities_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -185,7 +185,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_team_attachments'
+  // Exported field_base: 'field_team_attachments'.
   $field_bases['field_team_attachments'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -241,7 +241,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_team_media_enquiries'
+  // Exported field_base: 'field_team_media_enquiries'.
   $field_bases['field_team_media_enquiries'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -271,7 +271,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_team_priorities'
+  // Exported field_base: 'field_team_priorities'.
   $field_bases['field_team_priorities'] = array(
     'active' => 1,
     'cardinality' => 3,
@@ -307,7 +307,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_team_priorities_info'
+  // Exported field_base: 'field_team_priorities_info'.
   $field_bases['field_team_priorities_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -328,7 +328,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_team_status'
+  // Exported field_base: 'field_team_status'.
   $field_bases['field_team_status'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -356,7 +356,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_team_subtype'
+  // Exported field_base: 'field_team_subtype'.
   $field_bases['field_team_subtype'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -384,7 +384,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_team_tagline'
+  // Exported field_base: 'field_team_tagline'.
   $field_bases['field_team_tagline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -406,7 +406,7 @@ function cwt_team_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_team_term'
+  // Exported field_base: 'field_team_term'.
   $field_bases['field_team_term'] = array(
     'active' => 1,
     'cardinality' => 1,
