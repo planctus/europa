@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_blogs_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -24,7 +24,7 @@ function cwt_blogs_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_shared_tags',
-      1 => 'social_media',
+      1 => 'social_bookmark_webtools',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -36,7 +36,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_blog_bottom_section|node|commisioner_blog_post|full'] = $field_group;
+  $field_groups['group_blog_bottom_section|node|commisioner_blog_post|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_blog_meta|node|commisioner_blog_post|full'] = $field_group;
+  $field_groups['group_blog_meta|node|commisioner_blog_post|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -91,7 +91,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_blog_meta|node|commisioner_blog_post|meta'] = $field_group;
+  $field_groups['group_blog_meta|node|commisioner_blog_post|meta'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -119,7 +119,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_blog_meta|node|commisioner_blog_post|teaser'] = $field_group;
+  $field_groups['group_blog_meta|node|commisioner_blog_post|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -150,7 +150,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_com_blog_content|node|commisioner_blog_post|form'] = $field_group;
+  $field_groups['group_com_blog_content|node|commisioner_blog_post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -179,7 +179,7 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_com_blog_metadata|node|commisioner_blog_post|form'] = $field_group;
+  $field_groups['group_com_blog_metadata|node|commisioner_blog_post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -206,7 +206,15 @@ function cwt_blogs_field_group_info() {
       ),
     ),
   );
-  $export['group_comments_section|node|commisioner_blog_post|full'] = $field_group;
+  $field_groups['group_comments_section|node|commisioner_blog_post|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Bottom');
+  t('Comments');
+  t('Content');
+  t('Meta');
+  t('Metadata');
+
+  return $field_groups;
 }

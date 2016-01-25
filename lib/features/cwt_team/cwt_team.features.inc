@@ -80,7 +80,7 @@ function cwt_team_fe_nodequeue_export_fields() {
     'count' => 0,
   );
 
-  return (object) $nodequeues;
+  return $nodequeues;
 }
 
 /**
@@ -91,17 +91,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: members_responsive_custom_user_min_width_480px_1x.
   $styles['members_responsive_custom_user_min_width_480px_1x'] = array(
-    'name' => 'members_responsive_custom_user_min_width_480px_1x',
     'label' => 'members_responsive_custom_user_min_width_480px_1x',
     'effects' => array(
       7 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 80,
@@ -114,17 +106,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_cabinet_450x290.
   $styles['team_cabinet_450x290'] = array(
-    'name' => 'team_cabinet_450x290',
     'label' => 'Team Cabinet (450x290)',
     'effects' => array(
       24 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 450,
@@ -137,17 +121,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_image_1280px.
   $styles['team_image_1280px'] = array(
-    'name' => 'team_image_1280px',
     'label' => 'Team image (1280px)',
     'effects' => array(
       21 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 1280,
@@ -161,17 +137,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_image_480px.
   $styles['team_image_480px'] = array(
-    'name' => 'team_image_480px',
     'label' => 'Team image (480px)',
     'effects' => array(
       9 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 480,
@@ -185,17 +153,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_image_960px.
   $styles['team_image_960px'] = array(
-    'name' => 'team_image_960px',
     'label' => 'Team image (960px)',
     'effects' => array(
       8 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 960,
@@ -209,17 +169,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_members_130x130.
   $styles['team_members_130x130'] = array(
-    'name' => 'team_members_130x130',
     'label' => 'Team members (130x130)',
     'effects' => array(
       22 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 130,
@@ -232,17 +184,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_members_90x90.
   $styles['team_members_90x90'] = array(
-    'name' => 'team_members_90x90',
     'label' => 'Team members (90x90)',
     'effects' => array(
       23 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 90,
@@ -255,17 +199,9 @@ function cwt_team_image_default_styles() {
 
   // Exported image style: team_members_image_style.
   $styles['team_members_image_style'] = array(
-    'name' => 'team_members_image_style',
     'label' => 'Team Members',
     'effects' => array(
       6 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 64,
