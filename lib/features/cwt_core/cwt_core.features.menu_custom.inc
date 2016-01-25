@@ -24,7 +24,7 @@ function cwt_core_menu_default_menu_custom() {
     'title' => 'Service links',
     'description' => 'Help | Cookies and privacy notes | Legal statement',
     'language' => 'und',
-    'i18n_mode' => 0,
+    'i18n_mode' => 5,
   );
   // Translatables
   // Included for use with string extractors like potx.
