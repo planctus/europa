@@ -113,7 +113,7 @@ function _dt_funding_node_convert($source_node, $source_wrapper, &$destination_w
         break;
 
       case 'adopted':
-        $destination_wrapper->field_funding_status->set('in_force');
+        $destination_wrapper->field_funding_status->set('adopted');
         break;
     }
   }
