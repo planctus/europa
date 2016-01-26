@@ -25,9 +25,7 @@ function dt_funding_uninstall() {
  * NEXTEUROPA-7193: Data Migration from Policy Implementation to Funding.
  */
 function dt_funding_update_7101() {
-  // Reverting Policy Implementation feature for status field not to be
-  // translated by Entity Translation.
-  $features = array('dt_policy_implementation', 'dt_policy');
+  $features = array('dt_policy_implementation', 'dt_policy', 'dt_funding');
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
@@ -45,8 +43,8 @@ function dt_funding_update_7101() {
   $destination_fields = array();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition('field_policy_imp_type', 'value', 'funding', '=');
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition('field_policy_imp_type', 'value', 'funding', '=');
   // Setup the amount of steps.
   $limit = 100;
 
