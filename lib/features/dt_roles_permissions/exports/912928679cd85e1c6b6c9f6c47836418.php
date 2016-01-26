@@ -30,6 +30,7 @@ $permissions['site manager'] = array(
   'create law content',
   'create tender content',
   'create translation jobs',
+  'create url aliases',
   'delete any basic_page content',
   'delete any info_homepage content',
   'delete any coordination content',

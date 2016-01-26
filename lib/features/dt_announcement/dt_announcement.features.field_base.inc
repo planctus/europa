@@ -10,21 +10,13 @@
 function dt_announcement_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_announcement_contact'
+  // Exported field_base: 'field_announcement_contact'.
   $field_bases['field_announcement_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_contact',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -54,21 +46,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_announcement_department'
+  // Exported field_base: 'field_announcement_department'.
   $field_bases['field_announcement_department'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_department',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -98,21 +82,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_announcement_image'
+  // Exported field_base: 'field_announcement_image'.
   $field_bases['field_announcement_image'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_image',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -131,21 +107,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_announcement_info'
+  // Exported field_base: 'field_announcement_info'.
   $field_bases['field_announcement_info'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_info',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -160,21 +128,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_announcement_location'
+  // Exported field_base: 'field_announcement_location'.
   $field_bases['field_announcement_location'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_location',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -190,21 +150,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_announcement_media'
+  // Exported field_base: 'field_announcement_media'.
   $field_bases['field_announcement_media'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_media',
-    'foreign keys' => array(
-      'file_managed' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -219,14 +171,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_announcement_type'
+  // Exported field_base: 'field_announcement_type'.
   $field_bases['field_announcement_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_announcement_type',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -254,21 +205,13 @@ function dt_announcement_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_core_announcement'
+  // Exported field_base: 'field_core_announcement'.
   $field_bases['field_core_announcement'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_announcement',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

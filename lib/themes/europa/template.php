@@ -617,19 +617,22 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
  * Generate the first breadcrumb items basing on a custom menu.
  */
 function _europa_breadcrumb_menu(&$variables) {
-  $menu_links = menu_tree('menu-breadcrumb-menu');
+  $menu_links = menu_tree('menu-dt-breadcrumb-menu');
   $new_items = array();
+  global $language;
+  $front = drupal_is_front_page();
 
   if (!empty($menu_links)) {
     $i = 0;
     foreach ($menu_links as $key => $menu_item) {
       if (is_numeric($key)) {
-        $new_items[] = array(
-          'content' => $menu_item['#title'],
-          'class' => '',
-          'url' => $menu_item['#href'],
-        );
-        $i++;
+        // We don't want to show the home link in the home page.
+        if (!($front && $menu_item['#href'] == '<front>')) {
+          $options = array('language' => $language);
+          $title = token_replace($menu_item['#title'], $menu_item, $options);
+          $new_items[] = _easy_breadcrumb_build_item($title, array(), $menu_item['#href']);
+          $i++;
+        }
       }
     }
 
@@ -637,7 +640,7 @@ function _europa_breadcrumb_menu(&$variables) {
       // The menu is used as the starting point of the breadcrumb.
       $variables['breadcrumb'] = array_merge($new_items, $variables['breadcrumb']);
       // Alter the number of segments in the breadcrumb.
-      $variables['segments_quantity'] = $variables['segments_quantity'] + $i;
+      $variables['segments_quantity'] += $i;
     }
   }
 }
@@ -1114,6 +1117,8 @@ function europa_preprocess_page(&$variables) {
   else {
     $variables['footer_column_class'] = 'col-sm-12';
   }
+
+  $variables['page_logo_title'] = t('Home - @sitename', array('@sitename' => variable_get('site_name', 'European Commission')));
 
   $node = &$variables['node'];
 

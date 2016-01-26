@@ -50,6 +50,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
  * node title.
  */
 function dt_announcement_views_pre_render(&$view) {
+  $custom_readmore = FALSE;
   // List of views that use this logic:
   $view_announcements_blocks = array(
     'latest_block',
@@ -282,9 +283,6 @@ function _dt_announcement_get_content_reference_fields($entity_type) {
   // Inintialize variables.
   $field_join_list = array();
   $counter = 0;
-
-  // Our full group name defenition.
-  $group_name = 'group_announcement_related|node|announcement|form';
 
   // Get our cached ctools export object. We use the field_group function for
   // this at it gives us a clean response.

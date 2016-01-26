@@ -85,7 +85,7 @@
     <exec command="${drush.bin} -y @${site.alias} updb" />
     <echo msg="EXECUTE: drush -y @${site.alias} updb" />
 
-    <property name="revert.command" value="frdt" />
+    <property name="revert.command" value="frdt --rp" />
     <if>
       <equals arg1="${site.alias}" arg2="ecfpfis.prod" />
       <then>
@@ -139,6 +139,17 @@
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
     <echo msg="Disable js pre processing." />
     <phingcall target="enable-development-modules" />
+
+    <drush command="variable-set" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+      <param>stage_file_proxy_origin</param>
+      <param>${subsite.production.root}</param>
+    </drush>
+
+    <drush command="variable-set" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
+      <param>stage_file_proxy_origin_dir</param>
+      <param>sites/${subsite.production.key}/files</param>
+    </drush>
+
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">

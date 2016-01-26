@@ -4,6 +4,10 @@
 # The site name.
 subsite.name = My Project
 
+# Remote info. (Used for staging files from PROD - Stage File Proxy)
+subsite.production.key = beta-political
+subsite.production.root = http://ec.europa.eu/priorities
+
 # The make file containing the dependencies of the subsite.
 subsite.make = ${subsite.resources.dir}/site.make
 

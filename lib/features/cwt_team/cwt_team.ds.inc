@@ -30,15 +30,8 @@ function cwt_team_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
-      ),
-    ),
-    'social_media' => array(
-      'weight' => '10',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'title' => array(
@@ -75,6 +68,16 @@ function cwt_team_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'social_bookmark_webtools' => array(
+      'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
     'field_team_tagline' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -85,6 +88,7 @@ function cwt_team_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -98,8 +102,8 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'team';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'team_contacts' => array(
-      'weight' => '46',
+    'team_contact_image' => array(
+      'weight' => '47',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -114,8 +118,8 @@ function cwt_team_ds_field_settings_info() {
         ),
       ),
     ),
-    'team_contact_image' => array(
-      'weight' => '47',
+    'team_contacts' => array(
+      'weight' => '46',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -172,10 +176,10 @@ function cwt_team_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_team_tagline' => array(
+    'field_editorial_section' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_reset',
+          'lb' => 'Tagline',
         ),
       ),
     ),
@@ -273,29 +277,29 @@ function cwt_team_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'team_meta',
-        2 => 'group_team_meta',
+        0 => 'group_team_meta',
+        2 => 'team_meta',
         3 => 'title',
         4 => 'field_team_tagline',
       ),
       'central' => array(
         1 => 'cwt_team_role',
         7 => 'group_team_role',
-        8 => 'group_team_tab_role',
-        9 => 'body',
+        8 => 'body',
+        9 => 'group_team_tab_role',
         10 => 'group_team_links',
-        11 => 'group_team_tabs',
-        12 => 'cwt_team_name',
-        13 => 'group_team_tab_project_team',
-        14 => 'field_team_links',
-        15 => 'cwt_team_president',
-        16 => 'group_team_tab_name',
-        17 => 'group_team_members',
+        11 => 'field_team_links',
+        12 => 'cwt_team_president',
+        13 => 'cwt_team_name',
+        14 => 'group_team_tab_project_team',
+        15 => 'group_team_tabs',
+        16 => 'group_team_members',
+        17 => 'group_team_tab_name',
         18 => 'group_team_comissioners',
-        19 => 'field_team_attachments',
+        19 => 'group_team_files',
         20 => 'cwt_team_project_team',
-        21 => 'group_team_files',
-        22 => 'social_media',
+        21 => 'field_team_attachments',
+        22 => 'social_bookmark_webtools',
         23 => 'group_team_president',
       ),
       'bottom_header' => array(
@@ -304,29 +308,29 @@ function cwt_team_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'team_meta' => 'left_header',
-      'cwt_team_role' => 'central',
       'group_team_meta' => 'left_header',
+      'cwt_team_role' => 'central',
+      'team_meta' => 'left_header',
       'title' => 'left_header',
       'field_team_tagline' => 'left_header',
       'field_illustrative_image' => 'bottom_header',
       'group_team_top_image' => 'bottom_header',
       'group_team_role' => 'central',
-      'group_team_tab_role' => 'central',
       'body' => 'central',
+      'group_team_tab_role' => 'central',
       'group_team_links' => 'central',
-      'group_team_tabs' => 'central',
-      'cwt_team_name' => 'central',
-      'group_team_tab_project_team' => 'central',
       'field_team_links' => 'central',
       'cwt_team_president' => 'central',
-      'group_team_tab_name' => 'central',
+      'cwt_team_name' => 'central',
+      'group_team_tab_project_team' => 'central',
+      'group_team_tabs' => 'central',
       'group_team_members' => 'central',
+      'group_team_tab_name' => 'central',
       'group_team_comissioners' => 'central',
-      'field_team_attachments' => 'central',
-      'cwt_team_project_team' => 'central',
       'group_team_files' => 'central',
-      'social_media' => 'central',
+      'cwt_team_project_team' => 'central',
+      'field_team_attachments' => 'central',
+      'social_bookmark_webtools' => 'central',
       'group_team_president' => 'central',
     ),
     'classes' => array(),
@@ -357,26 +361,26 @@ function cwt_team_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'content_type_label',
         1 => 'title',
-        2 => 'field_team_tagline',
+        5 => 'field_editorial_section',
       ),
       'top' => array(
-        3 => 'group_team_contact',
+        2 => 'group_team_contact',
         6 => 'group_team_row',
         7 => 'team_contacts',
         8 => 'team_contact_image',
       ),
       'central' => array(
+        3 => 'team_members',
         4 => 'group_team_members',
-        5 => 'team_members',
       ),
     ),
     'fields' => array(
       'content_type_label' => 'left_header',
       'title' => 'left_header',
-      'field_team_tagline' => 'left_header',
       'group_team_contact' => 'top',
-      'group_team_members' => 'central',
       'team_members' => 'central',
+      'group_team_members' => 'central',
+      'field_editorial_section' => 'left_header',
       'group_team_row' => 'top',
       'team_contacts' => 'top',
       'team_contact_image' => 'top',

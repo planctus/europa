@@ -23,6 +23,17 @@ function nexteuropa_views_views_plugins() {
         'uses grouping' => TRUE,
         'type' => 'normal',
       ),
+      'nexteuropa_context_nav' => array(
+        'title' => t('Nexteuropa BEM context nav listing'),
+        'help' => t('Display items using BEM Contextual navigation component.'),
+        'path' => $path,
+        'handler' => 'views_plugin_style_default',
+        'theme' => 'views_view_nexteuropa_context_nav',
+        'uses row plugin' => TRUE,
+        'uses options' => TRUE,
+        'uses grouping' => FALSE,
+        'type' => 'normal',
+      ),
     ),
   );
 
