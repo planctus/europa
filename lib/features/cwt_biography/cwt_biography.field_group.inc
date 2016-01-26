@@ -504,6 +504,8 @@ function cwt_biography_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'body',
+      1 => 'field_biography_mission_letter',
+      2 => 'field_biography_multiple_files',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -657,7 +659,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Biography',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'timeline_block',
     ),
