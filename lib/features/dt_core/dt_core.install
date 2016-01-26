@@ -845,3 +845,10 @@ function dt_core_update_7160() {
 function dt_core_update_7161() {
   module_enable(array('ec_embedded_video'));
 }
+
+/**
+ * Enabling DT wysiwyg to change default ckeditor settings.
+ */
+function dt_core_update_7162() {
+  module_enable(array('dt_wysiwyg'));
+}
