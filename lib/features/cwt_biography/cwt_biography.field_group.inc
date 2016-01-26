@@ -114,7 +114,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Blog',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'blog_block',
     ),
@@ -659,7 +659,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Biography',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'timeline_block',
     ),
