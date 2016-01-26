@@ -10,14 +10,13 @@
 function cwt_biography_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_biography_address'
+  // Exported field_base: 'field_biography_address'.
   $field_bases['field_biography_address'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_address',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'addressfield',
@@ -28,21 +27,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_biography_agenda_text'
+  // Exported field_base: 'field_biography_agenda_text'.
   $field_bases['field_biography_agenda_text'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_agenda_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -57,14 +48,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_biography_assistant_email'
+  // Exported field_base: 'field_biography_assistant_email'.
   $field_bases['field_biography_assistant_email'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_assistant_email',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'email',
@@ -75,21 +65,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_biography_assistant_fname'
+  // Exported field_base: 'field_biography_assistant_fname'.
   $field_bases['field_biography_assistant_fname'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_assistant_fname',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -105,21 +87,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_assistant_phone'
+  // Exported field_base: 'field_biography_assistant_phone'.
   $field_bases['field_biography_assistant_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_assistant_phone',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -135,21 +109,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_assistants'
+  // Exported field_base: 'field_biography_assistants'.
   $field_bases['field_biography_assistants'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_assistants',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -179,14 +145,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_biography_av_portal'
+  // Exported field_base: 'field_biography_av_portal'.
   $field_bases['field_biography_av_portal'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_av_portal',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -210,21 +175,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_biography_cv'
+  // Exported field_base: 'field_biography_cv'.
   $field_bases['field_biography_cv'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_cv',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -239,21 +196,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_biography_declaration'
+  // Exported field_base: 'field_biography_declaration'.
   $field_bases['field_biography_declaration'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_declaration',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -273,21 +222,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_biography_departments'
+  // Exported field_base: 'field_biography_departments'.
   $field_bases['field_biography_departments'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_departments',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -309,14 +250,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_biography_email'
+  // Exported field_base: 'field_biography_email'.
   $field_bases['field_biography_email'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_email',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'email',
@@ -327,21 +267,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_biography_first_name'
+  // Exported field_base: 'field_biography_first_name'.
   $field_bases['field_biography_first_name'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_first_name',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -357,21 +289,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_last_name'
+  // Exported field_base: 'field_biography_last_name'.
   $field_bases['field_biography_last_name'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_last_name',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -387,21 +311,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_message'
+  // Exported field_base: 'field_biography_message'.
   $field_bases['field_biography_message'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_message',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -416,21 +332,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_biography_mission_letter'
+  // Exported field_base: 'field_biography_mission_letter'.
   $field_bases['field_biography_mission_letter'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_mission_letter',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -450,21 +358,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_biography_multiple_files'
+  // Exported field_base: 'field_biography_multiple_files'.
   $field_bases['field_biography_multiple_files'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_multiple_files',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -484,21 +384,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_biography_phone'
+  // Exported field_base: 'field_biography_phone'.
   $field_bases['field_biography_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_phone',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -514,14 +406,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_portfolio'
+  // Exported field_base: 'field_biography_portfolio'.
   $field_bases['field_biography_portfolio'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_portfolio',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -545,21 +436,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_biography_portrait'
+  // Exported field_base: 'field_biography_portrait'.
   $field_bases['field_biography_portrait'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_portrait',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -578,21 +461,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_biography_press_contact'
+  // Exported field_base: 'field_biography_press_contact'.
   $field_bases['field_biography_press_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_press_contact',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -607,21 +482,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_biography_project_team'
+  // Exported field_base: 'field_biography_project_team'.
   $field_bases['field_biography_project_team'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_project_team',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -643,21 +510,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_biography_role'
+  // Exported field_base: 'field_biography_role'.
   $field_bases['field_biography_role'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_role',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -679,21 +538,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_biography_role_feminine'
+  // Exported field_base: 'field_biography_role_feminine'.
   $field_bases['field_biography_role_feminine'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_role_feminine',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -709,21 +560,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_status'
+  // Exported field_base: 'field_biography_status'.
   $field_bases['field_biography_status'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_status',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -745,21 +588,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_biography_tagline'
+  // Exported field_base: 'field_biography_tagline'.
   $field_bases['field_biography_tagline'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_tagline',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -775,21 +610,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_biography_team'
+  // Exported field_base: 'field_biography_team'.
   $field_bases['field_biography_team'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_team',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -818,21 +645,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_biography_timeline'
+  // Exported field_base: 'field_biography_timeline'.
   $field_bases['field_biography_timeline'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_biography_timeline',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -862,21 +681,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_declaration_of_interest'
+  // Exported field_base: 'field_declaration_of_interest'.
   $field_bases['field_declaration_of_interest'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_declaration_of_interest',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -891,21 +702,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_download_cv_in_pdf_format'
+  // Exported field_base: 'field_download_cv_in_pdf_format'.
   $field_bases['field_download_cv_in_pdf_format'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_download_cv_in_pdf_format',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -925,14 +728,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_embedded_contact_enabled'
+  // Exported field_base: 'field_embedded_contact_enabled'.
   $field_bases['field_embedded_contact_enabled'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_embedded_contact_enabled',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -952,14 +754,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_gender'
+  // Exported field_base: 'field_gender'.
   $field_bases['field_gender'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_gender',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -979,21 +780,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_icon_classname'
+  // Exported field_base: 'field_icon_classname'.
   $field_bases['field_icon_classname'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_icon_classname',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -1009,14 +802,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_partial_translation'
+  // Exported field_base: 'field_partial_translation'.
   $field_bases['field_partial_translation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_partial_translation',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -1036,14 +828,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_remote_id'
+  // Exported field_base: 'field_remote_id'.
   $field_bases['field_remote_id'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_remote_id',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -1054,14 +845,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_social_networks'
+  // Exported field_base: 'field_social_networks'.
   $field_bases['field_social_networks'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_social_networks',
-    'foreign keys' => array(),
     'indexes' => array(
       'enabled' => array(
         0 => 'url',
@@ -1085,21 +875,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'social_network_link',
   );
 
-  // Exported field_base: 'field_team_membership'
+  // Exported field_base: 'field_team_membership'.
   $field_bases['field_team_membership'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_team_membership',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -1129,21 +911,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_timeline_date'
+  // Exported field_base: 'field_timeline_date'.
   $field_bases['field_timeline_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_timeline_date',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -1159,21 +933,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_timeline_type'
+  // Exported field_base: 'field_timeline_type'.
   $field_bases['field_timeline_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_timeline_type',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -1195,21 +961,13 @@ function cwt_biography_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_type_plural'
+  // Exported field_base: 'field_type_plural'.
   $field_bases['field_type_plural'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_type_plural',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
