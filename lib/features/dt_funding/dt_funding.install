@@ -33,6 +33,9 @@ function dt_funding_update_7101() {
   if (!module_exists('node_convert')) {
     module_enable(array('node_convert'));
   }
+  else {
+    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
+  }
 
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
@@ -94,7 +97,14 @@ function dt_funding_update_7101() {
 }
 
 /**
- * Helper function to converting uncommon fields.
+ * Helper function for migration on funding.
+ *
+ * @param object $source_node
+ *                Source node.
+ * @param object $source_wrapper
+ *                Source wrapper.
+ * @param object $destination_wrapper
+ *                Destination wrapper.
  */
 function _dt_funding_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
   // Converting field_policy_imp_introduction field.
