@@ -6,14 +6,6 @@
 
 /**
  * Implements hook_ctools_plugin_directory().
- *
- * @param string $module
- *   The module name.
- *
- * @param string $plugin
- *   The plugin invoking.
- *
- * @return string
  */
 function entityreference_titleoverwrite_ctools_plugin_directory($module, $plugin) {
   if ($module == 'entityreference') {
@@ -27,15 +19,6 @@ function entityreference_titleoverwrite_ctools_plugin_directory($module, $plugin
  *
  * This form is used to populate the widget with a second input field to set a
  * overwritten title.
- *
- * @param array $element
- *   The element we have to alter.
- *
- * @param array $form_state
- *   The current form state and its values.
- *
- * @param array $context
- *   The current context.
  */
 function entityreference_titleoverwrite_field_widget_entityreference_autocomplete_form_alter(&$element, &$form_state, $context) {
   if (isset($context['field']['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior'])) {
