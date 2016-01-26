@@ -137,6 +137,10 @@ function dt_contact_field_default_field_bases() {
           'views-select-list' => array(
             'status' => 0,
           ),
+          'titleoverwrite_field_behavior' => array(
+            'overwrite_title_mandatory' => 0,
+            'status' => 1,
+          ),
         ),
         'sort' => array(
           'type' => 'none',
