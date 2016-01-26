@@ -8,6 +8,8 @@ drupal.db.password =
 
 # Project init.
 subsite.name = Information
+subsite.production.key = beta
+subsite.production.root = http://beta.ec.europa.eu
 subsite.install.modules = dt_core_info
 drush.verbose = false
 

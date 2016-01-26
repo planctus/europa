@@ -10,7 +10,7 @@
 function cwt_blogs_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-commisioner_blog_post-body'
+  // Exported field_instance: 'node-commisioner_blog_post-body'.
   $field_instances['node-commisioner_blog_post-body'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,
@@ -115,7 +115,7 @@ function cwt_blogs_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_com_blog_image'
+  // Exported field_instance: 'node-commisioner_blog_post-field_com_blog_image'.
   $field_instances['node-commisioner_blog_post-field_com_blog_image'] = array(
     'bundle' => 'commisioner_blog_post',
     'deleted' => 0,
@@ -135,7 +135,7 @@ function cwt_blogs_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -231,7 +231,8 @@ function cwt_blogs_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_editorial_section'
+  // Exported field_instance:
+  // 'node-commisioner_blog_post-field_editorial_section'.
   $field_instances['node-commisioner_blog_post-field_editorial_section'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,
@@ -248,7 +249,7 @@ function cwt_blogs_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -290,7 +291,7 @@ function cwt_blogs_field_default_field_instances() {
     'workbench_access_field' => 1,
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_shared_tags'
+  // Exported field_instance: 'node-commisioner_blog_post-field_shared_tags'.
   $field_instances['node-commisioner_blog_post-field_shared_tags'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,
@@ -351,7 +352,7 @@ function cwt_blogs_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-commisioner_blog_post-field_shared_teaser'
+  // Exported field_instance: 'node-commisioner_blog_post-field_shared_teaser'.
   $field_instances['node-commisioner_blog_post-field_shared_teaser'] = array(
     'bundle' => 'commisioner_blog_post',
     'default_value' => NULL,

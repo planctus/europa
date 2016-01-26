@@ -228,7 +228,11 @@ function dt_social_network_links_field_formatter_info() {
       'field types' => array('social_network_link'),
     ),
     'social_network_link_theme_css' => array(
-      'label' => t('Theme CSS icons'),
+      'label' => t('Theme CSS icons with label'),
+      'field types' => array('social_network_link'),
+    ),
+    'social_network_link_theme_css_icons' => array(
+      'label' => t('Theme CSS icons without label'),
       'field types' => array('social_network_link'),
     ),
     'social_network_link_title' => array(
@@ -342,6 +346,7 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
       break;
 
     case 'social_network_link_theme_css':
+    case 'social_network_link_theme_css_icons':
       foreach ($items as $delta => $item) {
         $title = (isset($item['title']) && $item['title'] !== '') ? $item['title'] : $item['url'];
         $term = taxonomy_term_load($item['social_network']);
@@ -364,6 +369,10 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
             ),
           ),
         );
+        // Empty the title if we only have to show the icon.
+        if ($display['type'] == 'social_network_link_theme_css_icons') {
+          $element[$delta]['#text'] = '';
+        }
       }
 
       break;
@@ -571,4 +580,55 @@ function dt_social_network_links_migrate_api() {
       ),
     ),
   );
+}
+
+/**
+ * NEXTEUROPA-8356 - Polish the social network classes if needed.
+ */
+function _dt_social_network_links_social_network_classes() {
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_social_network_links' => array('taxonomy')));
+  if ($voc = taxonomy_vocabulary_machine_name_load('social_networks')) {
+    // Remove the duplicated classes.
+    $terms = taxonomy_term_load_multiple(array(), array('vid' => $voc->vid));
+    // If we have terms we look for a legacy class.
+    if (!empty($terms)) {
+      foreach ($terms as $term) {
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+        // That's the current CSS class of a social network.
+        $original = $wrapper->field_social_network_classname->value();
+        // Remove unnecessary double 'icon-social' class.
+        $cleaned = str_replace('icon-social ', '', $original);
+        if ($original != $cleaned) {
+          $wrapper->field_social_network_classname->set($cleaned);
+          $wrapper->save();
+        }
+        // When 'icon-social' is not contained, but has to be.
+        elseif (strpos($original, 'icon-social') == FALSE) {
+          $correct = 'icon-social--' . $original;
+          $wrapper->field_social_network_classname->set($correct);
+          $wrapper->save();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function migrating social networks.
+ */
+function _dt_social_network_links_migrate_social_networks() {
+  // Polish the vocabulary first.
+  _dt_social_network_links_social_network_classes();
+
+  // Migrate module is needed.
+  if (module_exists('migrate')) {
+    // Force registration of migration classes.
+    migrate_static_registration();
+    // Import department_tasks vocabulary's terms.
+    Migration::getInstance('DTSocialNetworks')->processImport();
+  }
+  else {
+    return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
+  }
 }
