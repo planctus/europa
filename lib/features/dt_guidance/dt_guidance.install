@@ -22,12 +22,20 @@ function dt_guidance_uninstall() {
 }
 
 /**
- * NEXTEUROPA-7202: converting policy_implementation into guidance.
+ * NEXTEUROPA-7202: Converting policy_implementation into guidance.
  */
-function dt_guidance_update_7102($sandbox) {
+function dt_guidance_update_7101($sandbox) {
+  $features = array('dt_policy_implementation', 'dt_policy', 'dt_guidance');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+
   // Enable Node Convert module.
-  if (!module_enable(array('node_convert'))) {
-    throw new DrupalUpdateException('Content mmigration needs node_convert module enabled.');
+  if (!module_exists('node_convert')) {
+    module_enable(array('node_convert'));
+  }
+  else {
+    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
   }
 
   // Set up source.
@@ -48,8 +56,8 @@ function dt_guidance_update_7102($sandbox) {
   $query_filter_value = 'guidance';
   // Mount query.
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
   // Setup the amount of steps.
   $limit = 100;
 
@@ -75,7 +83,7 @@ function dt_guidance_update_7102($sandbox) {
         $source_wrapper = entity_metadata_wrapper('node', $source_node);
         $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
 
-        // Convert unssuported fields.
+        // Convert unsupported fields.
         _dt_guidance_node_convert($source_node, $source_wrapper, $destination_wrapper);
 
         // Storing new values.
@@ -100,7 +108,7 @@ function dt_guidance_update_7102($sandbox) {
 
 
 /**
- * NEXTEUROPA-7202: helper function for migration in update 7101.
+ * Helper function for migration on guidance.
  *
  * @param object $source_node
  *                Source node.
