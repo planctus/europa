@@ -903,32 +903,3 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
       truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
   }
 }
-
-
-  /**
-   * Implements hook_wysiwyg_editor_settings_alter().
-   */
-  function dt_core_wysiwyg_editor_settings_alter(&$settings, &$context) {
-    if ($context['profile']->editor == 'ckeditor') {
-      $default_buttons = $settings['toolbar'][0];
-      print '<pre>'; print_r($default_buttons);
-      $buttons_toremove =  array('Bold',
-        'ShowBlocks',
-        'HorizontalRule',
-        'FontSize',
-        'Font',
-        'Styles',
-        'Smiley',
-        'break',
-      );
-      foreach ($default_buttons as $button_index => $button) {
-       foreach($buttons_toremove as $button_remove){
-         if ($button == $button_remove) {
-            unset($default_buttons[$button_index]);
-         }
-       }
-      }
-      $settings['toolbar'][0] = array_values($default_buttons);
-    }
-}
-
