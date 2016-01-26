@@ -57,6 +57,7 @@ dependencies[] = text
 dependencies[] = variable_realm
 dependencies[] = weight
 dependencies[] = ec_embedded_video
+dependencies[] = entityreference_titleoverwrite
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
