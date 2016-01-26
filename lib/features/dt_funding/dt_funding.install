@@ -107,17 +107,9 @@ function _dt_funding_node_convert($source_node, $source_wrapper, &$destination_w
     }
   }
 
-  // Converting field_policy_imp_introduction field.
+  // Converting field_policy_imp_status field.
   if (isset($source_wrapper->field_policy_imp_status)) {
-    $value = $source_wrapper->field_policy_imp_status->value();
-    switch ($value) {
-      case 'proposed':
-        $destination_wrapper->field_funding_status->set('proposed');
-        break;
-
-      case 'adopted':
-        $destination_wrapper->field_funding_status->set('adopted');
-        break;
-    }
+    $existing_value = $source_wrapper->field_policy_imp_status->value();
+    $destination_wrapper->field_funding_status->set($existing_value);
   }
 }
