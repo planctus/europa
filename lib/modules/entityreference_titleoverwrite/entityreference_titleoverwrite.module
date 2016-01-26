@@ -60,6 +60,7 @@ function entityreference_titleoverwrite_field_widget_entityreference_autocomplet
  *   The field name.
  *
  * @return bool
+ *   True if the update went fine. In other cases FALSE.
  */
 function _entityreference_titleoverwrite_add_table_field($field_name) {
   // The actual field to add to the schema.
