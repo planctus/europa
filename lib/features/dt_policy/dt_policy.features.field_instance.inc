@@ -15,7 +15,9 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more Directorates-General that are responsible for the policy.
+
+Type name of department to search for it. Don\'t create a new department.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -384,7 +386,11 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more commissioners that are responsible for the policy.
+
+Type name of commissioner to search for it.
+
+Don\'t add vice-president, unless there is no commissioner responsible.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -431,7 +437,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -778,7 +783,19 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Write only if the policy needs more explanation.
+
+Briefly explain the policy; provide a meaningful overview.
+[break]
+Include sub-headings, which should:
+
+* be custom-written
+* subject-based, rather than action- based (e.g. not \'Law\' or \'Funding\')
+* be followed by no more than 3 short paragraphs of 1 to 2 sentences
+* apply webwriting guidelines
+
+https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -806,6 +823,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 16,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_detail_body',
     'label' => 'Details body',
@@ -845,6 +863,10 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -927,7 +949,14 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Outlines the objectives, aims or goals of the policy:
+[break]
+* bulleted list, 3-5 bullet points
+* be specific
+* short phrase – no punctuation
+* indicate the Commission\'s intention  or desired outcome
+* prioritise real world objectives over EU methodologies, instruments or programmes
+* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1081,7 +1110,9 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
+
+A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1122,7 +1153,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -1136,7 +1166,12 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more consultations or impact assessments that are particularly important for this policy. Search for them by typing the title.
+
+If policy input does not yet exist in the CMS, create it by clicking on "policy input".
+
+When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1190,7 +1225,7 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Include only documents that give an overview of the entire policy, eg roadmaps. Don\'t include documents that belong to policy actions. They will be added to the respective action page.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1253,7 +1288,7 @@ function dt_policy_field_default_field_instances() {
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1283,6 +1318,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 19,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_next_steps',
     'label' => 'Next steps',
@@ -1295,6 +1331,7 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
+        'rows' => 5,
         'size' => 255,
       ),
       'type' => 'dt_policy_next_step_widget',
@@ -1754,7 +1791,22 @@ Avoid:
 
 **Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.');
   t('Author');
+  t('Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.');
   t('Caption');
+  t('Choose one or more Directorates-General that are responsible for the policy.
+
+Type name of department to search for it. Don\'t create a new department.');
+  t('Choose one or more commissioners that are responsible for the policy.
+
+Type name of commissioner to search for it.
+
+Don\'t add vice-president, unless there is no commissioner responsible.');
+  t('Choose one or more consultations or impact assessments that are particularly important for this policy. Search for them by typing the title.
+
+If policy input does not yet exist in the CMS, create it by clicking on "policy input".
+
+When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
+');
   t('Choose one or multiple policy areas the policy belongs to.
 
 **Type name of policy area to search for it. Don\'t create a new policy area.**');
@@ -1774,11 +1826,20 @@ Avoid:
   t('Group content visibility');
   t('Groups audience');
   t('Implementations');
+  t('Include only documents that give an overview of the entire policy, eg roadmaps. Don\'t include documents that belong to policy actions. They will be added to the respective action page.');
   t('Introduction');
   t('Key files');
   t('Legacy link');
   t('Next steps');
   t('Objectives');
+  t('Outlines the objectives, aims or goals of the policy:
+[break]
+* bulleted list, 3-5 bullet points
+* be specific
+* short phrase – no punctuation
+* indicate the Commission\'s intention  or desired outcome
+* prioritise real world objectives over EU methodologies, instruments or programmes
+* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given');
   t('Paragraph');
   t('Parent');
   t('Part of topic(s)');
@@ -1788,6 +1849,9 @@ Avoid:
   t('Quote');
   t('Responsible commissioner(s)');
   t('Responsible department(s)');
+  t('Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
+
+A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ');
   t('Sharable banner');
   t('The title should use everyday terms
 [break]
@@ -1798,6 +1862,19 @@ Avoid:
 
 **Example:** Efficient power production');
   t('Title');
+  t('Write only if the policy needs more explanation.
+
+Briefly explain the policy; provide a meaningful overview.
+[break]
+Include sub-headings, which should:
+
+* be custom-written
+* subject-based, rather than action- based (e.g. not \'Law\' or \'Funding\')
+* be followed by no more than 3 short paragraphs of 1 to 2 sentences
+* apply webwriting guidelines
+
+https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
+');
 
   return $field_instances;
 }
