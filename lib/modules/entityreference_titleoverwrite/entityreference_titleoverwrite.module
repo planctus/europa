@@ -6,11 +6,20 @@
 
 /**
  * Implements hook_ctools_plugin_directory().
+ *
+ * @param string $module
+ *   The module name.
+ *
+ * @param string $plugin
+ *   The plugin invoking.
+ *
+ * @return string
  */
 function entityreference_titleoverwrite_ctools_plugin_directory($module, $plugin) {
   if ($module == 'entityreference') {
     return 'plugins/' . $plugin;
   }
+  return FALSE;
 }
 
 /**
@@ -18,6 +27,15 @@ function entityreference_titleoverwrite_ctools_plugin_directory($module, $plugin
  *
  * This form is used to populate the widget with a second input field to set a
  * overwritten title.
+ *
+ * @param array $element
+ *   The element we have to alter.
+ *
+ * @param array $form_state
+ *   The current form state and its values.
+ *
+ * @param array $context
+ *   The current context.
  */
 function entityreference_titleoverwrite_field_widget_entityreference_autocomplete_form_alter(&$element, &$form_state, $context) {
   if (isset($context['field']['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior'])) {
@@ -57,6 +75,8 @@ function entityreference_titleoverwrite_field_widget_entityreference_autocomplet
  *
  * @param string $field_name
  *   The field name.
+ *
+ * @return bool
  */
 function _entityreference_titleoverwrite_add_table_field($field_name) {
   // The actual field to add to the schema.
@@ -82,4 +102,31 @@ function _entityreference_titleoverwrite_add_table_field($field_name) {
     db_add_field($revision_table_name, $field_schema_name, $field_schema_information);
   }
 
+  // Last step is to update the database config.
+  $query = db_select('field_config', 'fc');
+  $query->addField('fc', 'data');
+  $query->addField('fc', 'field_name');
+  $query->condition('field_name', $field_name, '=');
+  $result = $query->execute()->fetchAssoc();
+  // Unserialize the data.
+  if (isset($result['data'])) {
+    $unserialized_data = unserialize($result['data']);
+    // Add the titleoverwrite config if it is not there.
+    if (!isset($unserialized_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status'])) {
+      $unserialized_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status'] = 1;
+      $unserialized_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['overwrite_title_mandatory'] = 0;
+      // Store back the data.
+      $update_query = db_update('field_config')
+        ->fields(array(
+          'data' => serialize($unserialized_data),
+        ))
+        ->condition('field_name', $field_name, '=')
+        ->execute();
+    }
+  }
+
+  if (isset($update_query) && $update_query == 1) {
+    return TRUE;
+  }
+  return FALSE;
 }
