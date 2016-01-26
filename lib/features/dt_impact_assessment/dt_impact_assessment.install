@@ -25,9 +25,17 @@ function dt_impact_assessment_uninstall() {
  * NEXTEUROPA-7204: Data Migration from Policy Input to Impact Assessment.
  */
 function dt_impact_assessment_update_7101($sandbox) {
+  $features = array('dt_policy', 'dt_policy_input', 'dt_impact_assessment');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+
   // Enable Node Convert module.
-  if (!module_enable(array('node_convert'))) {
-    throw new DrupalUpdateException('Content mmigration needs node_convert module enabled.');
+  if (!module_exists('node_convert')) {
+    module_enable(array('node_convert'));
+  }
+  else {
+    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
   }
 
   // Set up source.
@@ -44,12 +52,10 @@ function dt_impact_assessment_update_7101($sandbox) {
   );
   // Set up query.
   $query = new EntityFieldQuery();
-  $query_filter_field = 'field_policy_input_type';
-  $query_filter_value = 'impact_assessment';
   // Mount query.
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition('field_policy_input_type', 'value', 'impact_assessment', '=');
   // Setup the amount of steps.
   $limit = 100;
 
@@ -74,7 +80,7 @@ function dt_impact_assessment_update_7101($sandbox) {
         $destination_node = node_load($nid);
         $source_wrapper = entity_metadata_wrapper('node', $source_node);
         $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
-        // Convert unssuported fields.
+        // Convert unsupported fields.
         _dt_impact_assessment_node_convert($source_node, $source_wrapper, $destination_wrapper);
         // Storing new values.
         $destination_wrapper->save();
@@ -97,7 +103,7 @@ function dt_impact_assessment_update_7101($sandbox) {
 }
 
 /**
- * NEXTEUROPA-7204: helper function for migration in update 7101.
+ * Helper function for migration on impact assessment.
  *
  * @param object $source_node
  *                Source node.

@@ -10,21 +10,13 @@
 function dt_policy_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_policies'
+  // Exported field_base: 'field_core_policies'.
   $field_bases['field_core_policies'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_policies',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -54,21 +46,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_policy'
+  // Exported field_base: 'field_core_policy'.
   $field_bases['field_core_policy'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_policy',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -98,21 +82,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_author'
+  // Exported field_base: 'field_policy_author'.
   $field_bases['field_policy_author'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_author',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -128,21 +104,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_caption'
+  // Exported field_base: 'field_policy_caption'.
   $field_bases['field_policy_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_caption',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -158,21 +126,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_detail_body'
+  // Exported field_base: 'field_policy_detail_body'.
   $field_bases['field_policy_detail_body'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_detail_body',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -187,21 +147,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_detail_file'
+  // Exported field_base: 'field_policy_detail_file'.
   $field_bases['field_policy_detail_file'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_detail_file',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -221,21 +173,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_policy_detail_objectives'
+  // Exported field_base: 'field_policy_detail_objectives'.
   $field_bases['field_policy_detail_objectives'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_detail_objectives',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -250,21 +194,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_featured_file'
+  // Exported field_base: 'field_policy_featured_file'.
   $field_bases['field_policy_featured_file'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_featured_file',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -284,21 +220,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_policy_implementations'
+  // Exported field_base: 'field_policy_implementations'.
   $field_bases['field_policy_implementations'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_implementations',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -328,21 +256,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_input'
+  // Exported field_base: 'field_policy_input'.
   $field_bases['field_policy_input'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_input',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -364,6 +284,7 @@ function dt_policy_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'policy_input' => 'policy_input',
+          'impact_assessment' => 'impact_assessment',
         ),
       ),
       'target_type' => 'node',
@@ -372,21 +293,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_keyfiles'
+  // Exported field_base: 'field_policy_keyfiles'.
   $field_bases['field_policy_keyfiles'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_keyfiles',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -417,14 +330,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_next_steps'
+  // Exported field_base: 'field_policy_next_steps'.
   $field_bases['field_policy_next_steps'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_next_steps',
-    'foreign keys' => array(),
     'indexes' => array(
       'when_timeframe' => array(
         0 => 'when_timeframe',
@@ -441,21 +353,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'dt_policy_next_step_field',
   );
 
-  // Exported field_base: 'field_policy_paragraph'
+  // Exported field_base: 'field_policy_paragraph'.
   $field_bases['field_policy_paragraph'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_paragraph',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -470,21 +374,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_policy_quote'
+  // Exported field_base: 'field_policy_quote'.
   $field_bases['field_policy_quote'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_quote',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -500,14 +396,13 @@ function dt_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_sharable_banner'
+  // Exported field_base: 'field_policy_sharable_banner'.
   $field_bases['field_policy_sharable_banner'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_sharable_banner',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
