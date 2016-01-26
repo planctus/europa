@@ -52,12 +52,10 @@ function dt_guidance_update_7101($sandbox) {
   );
   // Set up query.
   $query = new EntityFieldQuery();
-  $query_filter_field = 'field_policy_imp_type';
-  $query_filter_value = 'guidance';
   // Mount query.
   $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', $source_bundle)
-        ->fieldCondition($query_filter_field, 'value', $query_filter_value, '=');
+        ->fieldCondition('field_policy_imp_type', 'value', 'guidance', '=');
   // Setup the amount of steps.
   $limit = 100;
 
