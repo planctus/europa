@@ -25,11 +25,15 @@ function dt_law_uninstall() {
  * NEXTEUROPA-7191: Data Migration from Policy Implementation to Law.
  */
 function dt_law_update_7101($sandbox) {
-  // Reverting Policy Implementation feature for status field not to be
-  // translated by Entity Translation.
-  features_revert_module('dt_policy_implementation');
+  // Ensure db settings match features files.
+  $features = array('dt_policy_implementation', 'dt_policy', 'dt_law');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
   // Enable Node Convert module.
-  module_enable(array('node_convert'));
+  if (!module_exists('node_convert')) {
+    module_enable(array('node_convert'));
+  }
 
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
@@ -40,8 +44,8 @@ function dt_law_update_7101($sandbox) {
   $destination_fields = array();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $source_bundle)
-    ->fieldCondition('field_policy_imp_type', 'value', 'law', '=');
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition('field_policy_imp_type', 'value', 'law', '=');
   // Setup the amount of steps.
   $limit = 100;
 
@@ -68,7 +72,7 @@ function dt_law_update_7101($sandbox) {
         $destination_node = node_load($nid);
         $source_wrapper = entity_metadata_wrapper('node', $source_node);
         $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
-        // Convert unsuported fields.
+        // Convert unsupported fields.
         _dt_law_node_convert($source_node, $source_wrapper, $destination_wrapper);
         // Save the node.
         $destination_wrapper->save();
