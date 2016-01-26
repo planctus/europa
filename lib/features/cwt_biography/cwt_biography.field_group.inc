@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_biography_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_assistant|node|biography_assistant|form'] = $field_group;
+  $field_groups['group_assistant|node|biography_assistant|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -56,7 +56,7 @@ function cwt_biography_field_group_info() {
     'children' => array(
       0 => 'agenda_block',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Agenda',
       'instance_settings' => array(
@@ -66,10 +66,14 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-agenda field-group-section_group',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_agenda|node|biography|full'] = $field_group;
+  $field_groups['group_bio_agenda|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -97,7 +101,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_bio_assistants|node|biography|form'] = $field_group;
+  $field_groups['group_bio_assistants|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -114,7 +118,7 @@ function cwt_biography_field_group_info() {
     'children' => array(
       0 => 'blog_block',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Blog',
       'instance_settings' => array(
@@ -124,10 +128,14 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-blog field-group-section_group',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_blog|node|biography|full'] = $field_group;
+  $field_groups['group_bio_blog|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -157,7 +165,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_col|node|biography|full'] = $field_group;
+  $field_groups['group_bio_col|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -192,7 +200,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_bio_contact|node|biography|default'] = $field_group;
+  $field_groups['group_bio_contact|node|biography|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -223,7 +231,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_contact|node|biography|form'] = $field_group;
+  $field_groups['group_bio_contact|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -253,7 +261,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_contact|node|biography|full'] = $field_group;
+  $field_groups['group_bio_contact|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -293,7 +301,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_content|node|commissioner|form'] = $field_group;
+  $field_groups['group_bio_content|node|commissioner|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -320,7 +328,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_contextual|node|biography|full'] = $field_group;
+  $field_groups['group_bio_contextual|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -348,7 +356,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_embedded_contact|node|biography|form'] = $field_group;
+  $field_groups['group_bio_embedded_contact|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -380,7 +388,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_bio_message|node|biography|default'] = $field_group;
+  $field_groups['group_bio_message|node|biography|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -408,7 +416,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_bio_message|node|biography|form'] = $field_group;
+  $field_groups['group_bio_message|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -446,7 +454,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_metadata|node|commissioner|form'] = $field_group;
+  $field_groups['group_bio_metadata|node|commissioner|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -463,7 +471,7 @@ function cwt_biography_field_group_info() {
     'children' => array(
       0 => 'announcements_block',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Announcements',
       'instance_settings' => array(
@@ -473,10 +481,14 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-news field-group-section_group',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_news|node|biography|full'] = $field_group;
+  $field_groups['group_bio_news|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -488,25 +500,29 @@ function cwt_biography_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Role',
+    'label' => 'Responsibilities',
     'weight' => '4',
     'children' => array(
       0 => 'body',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Role',
+      'label' => 'Responsibilities',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="role"',
+        'attributes' => 'id="responsibilities"',
         'modifier' => '',
         'layout' => '',
         'classes' => 'group-bio-role field-group-html-element',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_role|node|biography|full'] = $field_group;
+  $field_groups['group_bio_role|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -536,7 +552,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_row|node|biography|full'] = $field_group;
+  $field_groups['group_bio_row|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -554,7 +570,7 @@ function cwt_biography_field_group_info() {
       0 => 'field_biography_team',
       1 => 'field_editorial_section',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Team',
       'instance_settings' => array(
@@ -564,10 +580,14 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => '',
         'classes' => 'group-bio-team field-group-html-element',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_team|node|biography|full'] = $field_group;
+  $field_groups['group_bio_team|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -594,7 +614,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_bio_technical|node|biography|form'] = $field_group;
+  $field_groups['group_bio_technical|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -624,7 +644,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_bio_timeline|node|biography|form'] = $field_group;
+  $field_groups['group_bio_timeline|node|biography|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -641,7 +661,7 @@ function cwt_biography_field_group_info() {
     'children' => array(
       0 => 'timeline_block',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Biography',
       'instance_settings' => array(
@@ -651,10 +671,14 @@ function cwt_biography_field_group_info() {
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-timeline field-group-section_group',
+        'element' => 'div',
+        'required_fields' => 1,
+        'id' => '',
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_bio_timeline|node|biography|full'] = $field_group;
+  $field_groups['group_bio_timeline|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -688,7 +712,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_bio_top_footer|node|biography|full'] = $field_group;
+  $field_groups['group_bio_top_footer|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -721,7 +745,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_bio_top_wrapper|node|biography|full'] = $field_group;
+  $field_groups['group_bio_top_wrapper|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -748,7 +772,7 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_config|taxonomy_term|biography_roles|form'] = $field_group;
+  $field_groups['group_config|taxonomy_term|biography_roles|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -781,7 +805,7 @@ function cwt_biography_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_portfolio|node|biography|default'] = $field_group;
+  $field_groups['group_portfolio|node|biography|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -814,7 +838,33 @@ function cwt_biography_field_group_info() {
       ),
     ),
   );
-  $export['group_timeline|node|biography_timeline|form'] = $field_group;
+  $field_groups['group_timeline|node|biography_timeline|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Agenda');
+  t('Announcements');
+  t('Assistant');
+  t('Assistants');
+  t('Bio Top');
+  t('Bio top footer');
+  t('Bio top wrapper');
+  t('Biography');
+  t('Blog');
+  t('Column');
+  t('Contact');
+  t('Content');
+  t('Contextual navigation');
+  t('Curriculum Vitae');
+  t('Embedded Contact Form');
+  t('Message');
+  t('Metadata');
+  t('Portfolio');
+  t('Responsibilities');
+  t('Role specific configuration');
+  t('Team');
+  t('Technical fields');
+  t('Timeline');
+
+  return $field_groups;
 }

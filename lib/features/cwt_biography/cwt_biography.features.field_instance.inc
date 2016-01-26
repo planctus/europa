@@ -161,7 +161,7 @@ function cwt_biography_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Role',
+    'label' => 'Responsibilities',
     'required' => FALSE,
     'settings' => array(
       'display_summary' => 0,
@@ -1907,6 +1907,7 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'link_title' => 'Team page',
+          'force_language_default' => 1,
         ),
         'type' => 'link_button_default',
         'weight' => 55,
@@ -2529,10 +2530,7 @@ function cwt_biography_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
+        'type' => 'social_network_link_theme_css_icons',
         'weight' => 5,
       ),
       'team_cabinet_member' => array(
@@ -3527,7 +3525,7 @@ function cwt_biography_field_default_field_instances() {
   t('Project team');
   t('Provide a link to EC Audiovisual Service');
   t('Remote ID');
-  t('Role');
+  t('Responsibilities');
   t('Social Networks');
   t('Status');
   t('Tagline');
