@@ -10,9 +10,7 @@
 function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
   if ($context['profile']->editor == 'ckeditor') {
     global $base_url;
-
     $default_buttons = $settings['toolbar'][0];
-
     // Remove buttons described on the ticket NEXTEUROPA-7770.
     $buttons_remove = array(
       'JustifyBlock',
@@ -23,14 +21,7 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
       'Smiley',
       'break',
     );
-    // Loops and remove.
-    foreach ($default_buttons as $button_index => $button) {
-      foreach ($buttons_remove as $button_remove) {
-        if ($button == $button_remove) {
-          unset($default_buttons[$button_index]);
-        }
-      }
-    }
+    $default_buttons = array_diff($default_buttons, $buttons_remove);
 
     // Re-arrange default buttons and assign.
     $settings['toolbar'][0] = array_values($default_buttons);
