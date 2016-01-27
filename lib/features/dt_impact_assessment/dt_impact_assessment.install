@@ -34,9 +34,6 @@ function dt_impact_assessment_update_7101($sandbox) {
   if (!module_exists('node_convert')) {
     module_enable(array('node_convert'));
   }
-  else {
-    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
-  }
 
   // Set up source.
   $source_bundle = 'policy_input';
