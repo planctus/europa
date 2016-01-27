@@ -287,6 +287,7 @@ function dt_policy_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'policy_input' => 'policy_input',
+          'impact_assessment' => 'impact_assessment',
           'consultation' => 'consultation',
         ),
       ),
