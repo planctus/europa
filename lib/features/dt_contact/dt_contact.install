@@ -94,3 +94,18 @@ function dt_contact_update_7106() {
       ->execute();
   }
 }
+
+/**
+ * Update the field_data_field_core_contact schema to include the title.
+ */
+function dt_contact_update_7107() {
+  // First we should enable the new module. We enable it here, but we have added
+  // it to the dt_core dependency's.
+  module_enable(array('entityreference_titleoverwrite'));
+  // Then we update the contact entity reference fields. This is needed because
+  // there is already existing data.
+  _entityreference_titleoverwrite_add_table_field('field_core_contact');
+  // Last step is to revert the dt_contact feature so that the configuration is
+  // updated.
+  features_revert_module('dt_contact');
+}

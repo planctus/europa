@@ -115,6 +115,10 @@ function dt_contact_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'titleoverwrite_field_behavior' => array(
+            'overwrite_title_mandatory' => 0,
+            'status' => 1,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
@@ -128,7 +132,7 @@ function dt_contact_field_default_field_bases() {
       ),
       'target_type' => 'node',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'entityreference',
   );
 
