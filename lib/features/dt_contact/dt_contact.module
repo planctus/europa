@@ -5,7 +5,7 @@
  */
 
 include_once 'dt_contact.features.inc';
-define('DT_PHONE_FIELDNAME', 'field_contact_phone_number');
+define('DT_CONTACT_PHONE_FIELD', 'field_contact_phone_number');
 
 /**
  * Implements hook_node_view().
@@ -35,7 +35,7 @@ function dt_contact_node_view($node, $view_mode, $langcode) {
  * telephone numbers field.
  */
 function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form[DT_PHONE_FIELDNAME])) {
+  if (isset($form[DT_CONTACT_PHONE_FIELD])) {
     $form['#validate'][] = '_dt_contact_phone_validate';
   }
 }
@@ -44,14 +44,14 @@ function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Callback handler for phone field validation.
  */
 function _dt_contact_phone_validate($form, &$form_state) {
-  $lang = $form[DT_PHONE_FIELDNAME]['#language'];
-  if ($form_state['values'][DT_PHONE_FIELDNAME][$lang][0]['value']) {
-    $contact_phone = trim($form_state['values'][DT_PHONE_FIELDNAME][$lang][0]['value']);
+  $lang = $form[DT_CONTACT_PHONE_FIELD]['#language'];
+  if ($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']) {
+    $contact_phone = trim($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']);
     // Validate the current phone number.
     foreach (_dt_shared_functions_contactphone_patterns() as $pattern => $pattern_values) {
       preg_match($pattern_values['pattern'], $contact_phone, $matches);
       if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
-        form_set_error(DT_PHONE_FIELDNAME, $pattern_values['explain']);
+        form_set_error(DT_CONTACT_PHONE_FIELD, $pattern_values['explain']);
       }
     }
   }
