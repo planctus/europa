@@ -26,9 +26,18 @@ function cwt_core_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 5,
   );
+  // Exported menu: menu-dt-breadcrumb-menu.
+  $menus['menu-dt-breadcrumb-menu'] = array(
+    'menu_name' => 'menu-dt-breadcrumb-menu',
+    'title' => 'CWT Breadcrumb menu',
+    'description' => 'Items in this menu will be prepended to the breadcrumb',
+    'language' => 'und',
+    'i18n_mode' => 5,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Footer - Social Media');
+  t('CWT Breadcrumb menu');
   t('Help | Cookies and privacy notes | Legal statement');
   t('List of social networks links for the European Commission');
   t('Service links');

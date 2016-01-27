@@ -6,25 +6,30 @@
 
 include_once 'dt_core.features.inc';
 include_once 'dt_core.api.inc';
+
 /**
  * No source field Exception.
  */
-class DTCoreSourceFieldError extends Exception {}
+class DTCoreSourceFieldError extends Exception {
+}
 
 /**
  * No destionation field Exception.
  */
-class DTCoreDestinationFieldError extends Exception {}
+class DTCoreDestinationFieldError extends Exception {
+}
 
 /**
  * Fields are of same tye Exception.
  */
-class DTCoreFieldTypeAreNotSame extends Exception {}
+class DTCoreFieldTypeAreNotSame extends Exception {
+}
 
 /**
  * Circular reference Exception.
  */
-class DTCoreParentCircular extends Exception {}
+class DTCoreParentCircular extends Exception {
+}
 
 /**
  * Implements hook_field_widget_form_alter().
@@ -528,6 +533,7 @@ function _dt_core_enable_languages($languages = array()) {
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
 }
+
 /**
  * Implements hook_context_load_alter().
  */
@@ -550,7 +556,7 @@ function dt_core_context_load_alter(&$context) {
  */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
-  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) && isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
     // Remove maxlength.
     unset($element['#maxlength']);
   }
