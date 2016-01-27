@@ -247,6 +247,7 @@ function dt_policy_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'guidance' => 'guidance',
           'funding' => 'funding',
           'policy_implementation' => 'policy_implementation',
           'law' => 'law',

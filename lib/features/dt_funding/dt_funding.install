@@ -33,9 +33,6 @@ function dt_funding_update_7101() {
   if (!module_exists('node_convert')) {
     module_enable(array('node_convert'));
   }
-  else {
-    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
-  }
 
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
