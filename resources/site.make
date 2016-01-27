@@ -81,6 +81,8 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 ; =========
 ; Libraries
 ; =========
+libraries[marked][download][type] = "get"
+libraries[marked][download][url] = "https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"
 
 ; ======
 ; Themes

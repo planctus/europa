@@ -11,6 +11,7 @@ dependencies[] = dt_policy_implementation
 dependencies[] = dt_policy_input
 dependencies[] = dt_policy_next_step
 dependencies[] = dt_publication
+dependencies[] = field_group
 features[context][] = policies
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1

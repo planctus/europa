@@ -103,9 +103,6 @@ function nexteuropa_formatters_field_formatter_info() {
     'telephone' => array(
       'label' => t('Telephone link'),
       'field types' => array('text'),
-      'settings' => array(
-        'title' => '',
-      ),
     ),
   );
 }
@@ -348,8 +345,10 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
 
       case 'telephone':
         foreach ($items as $delta => $item) {
+          // Make the phone value a link, if possible.
+          $telf = dt_shared_function_phonetohtml($item['safe_value']);
           $element[$delta] = array(
-            '#markup' => '<a href="tel:' . $item['safe_value'] . '" class="field--telephone">' . $item['safe_value'] . '</a>',
+            '#markup' => $telf,
           );
         }
         break;
