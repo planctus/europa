@@ -76,3 +76,21 @@ function dt_contact_update_7104() {
 function dt_contact_update_7105() {
   features_revert_module('dt_contact');
 }
+
+/**
+ * Updating existing labels for link field.
+ */
+function dt_contact_update_7106() {
+  $tables = array(
+    'field_data_field_contact_link_form',
+    'field_revision_field_contact_link_form',
+  );
+  foreach ($tables as $table) {
+    db_update($table)
+      ->fields(array(
+        'field_contact_link_form_title' => 'Ask a question',
+      ))
+      ->isNull('field_contact_link_form_title')
+      ->execute();
+  }
+}
