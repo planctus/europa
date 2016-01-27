@@ -12,7 +12,6 @@ define('DT_CONTACT_PHONE_FIELD', 'field_contact_phone_number');
  */
 function dt_contact_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'contact') {
-
     // Check if the address thorouhfare and premise have a value
     // hide these fields if they don't.
     $field = 'field_contact_postal_mail';
