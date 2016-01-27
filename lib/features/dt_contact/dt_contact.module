@@ -10,18 +10,13 @@ include_once 'dt_contact.features.inc';
  * Implements hook_node_view().
  */
 function dt_contact_node_view($node, $view_mode, $langcode) {
-  if ($node->type == 'contact' && ($view_mode == 'teaser' || $view_mode == 'full')) {
+  if ($node->type == 'contact') {
     // Check if field_contact_phone_number have a value,
     // we will hide it if empty.
     $field = 'field_contact_phone_number';
-    $info = field_info_field($field);
-    $function = $info['module'] . '_field_is_empty';
-    if (function_exists($function)) {
-      $telf = field_get_items('node', $node, $field);
-      $telf_empty = $function($telf, $info);
-      if (!$telf_empty) {
-        unset($node->$field);
-      }
+    $wrapper = entity_metadata_wrapper('node', $node);
+    if (!($wrapper->$field->value())) {
+      unset($node->$field);
     }
 
     // Check if the address thorouhfare and premise have a value

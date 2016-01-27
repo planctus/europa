@@ -50,11 +50,11 @@ I should be able to create contact content
     Then I should see "<err>"
 
     Examples:
-      | phones             | title                              | label                            | err                                                      |
-      | +32                | Just Country Prefix                |                                  | Phone number is missing or with wrong format (xxx xx xx) |
-      | 2 295 38 44        | Missing Prefix                     |                                  | Country code missing or in wrong format, ex:+32          |
-      |                    | Just phone label, no phone number  | (Phone - European Commission BE) | Country code missing or in wrong format, ex:+32          |
-      | +31 70 (313) 53 00 | Phone number with the Wrong format |                                  | Phone number is missing or with wrong format (xxx xx xx) |
-      | 31 7053 00         | No + at the begging                |                                  | Country code missing or in wrong format, ex:+32          |
-      | +31 7053 00        | Miss ()                            | Phone - European Commission BE   | Phone number is missing or with wrong format (xxx xx xx) |
-      | +31 7053 00        | Miss close (                       | (Phone - European Commission BE  | Phone number is missing or with wrong format (xxx xx xx) |
+      | phones             | title                              | label                            | err                                                                          |
+      | +32                | Just Country Prefix                |                                  | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
+      | 2 295 38 44        | Missing Prefix                     |                                  | Country code missing or in wrong format, ex:+32                              |
+      |                    | Just phone label, no phone number  | (Phone - European Commission BE) | Country code missing or in wrong format, ex:+32                              |
+      | +31 70 (313) 53 00 | Phone number with the Wrong format |                                  | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
+      | 31 7053 00         | No + at the begging                |                                  | Country code missing or in wrong format, ex:+32                              |
+      | +31 7053 00        | Miss ()                            | Phone - European Commission BE   | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
+      | +31 7053 00        | Miss close (                       | (Phone - European Commission BE  | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
