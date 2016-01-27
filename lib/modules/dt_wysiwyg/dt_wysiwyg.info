@@ -2,5 +2,5 @@ name = DT wyswyg modifier
 description  = "Alters wyswyg behavior for DT"
 core = 7.x
 
-package = Nexteuropa Digital Transformation
+package = NextEuropa Digital Transformation
 dependencies[] = wysiwyg
