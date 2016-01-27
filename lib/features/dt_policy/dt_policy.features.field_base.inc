@@ -249,6 +249,7 @@ function dt_policy_field_default_field_bases() {
         'target_bundles' => array(
           'funding' => 'funding',
           'policy_implementation' => 'policy_implementation',
+          'law' => 'law',
         ),
       ),
       'target_type' => 'node',

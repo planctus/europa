@@ -22,10 +22,111 @@ function dt_law_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * NEXTEUROPA-7191: Data Migration from Policy Implementation to Law.
  */
-/*
-function dt_law_update_7101() {
+function dt_law_update_7101($sandbox) {
+  // Ensure db settings match features files.
+  $features = array('dt_policy_implementation', 'dt_policy', 'dt_law');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
+  // Enable Node Convert module.
+  if (!module_exists('node_convert')) {
+    module_enable(array('node_convert'));
+  }
+  else {
+    throw new DrupalUpdateException('Content migration needs node_convert module enabled.');
+  }
 
+  // Set up source, destination and query.
+  $source_bundle = 'policy_implementation';
+  // Automatically converted source fields.
+  $source_fields = array();
+  $destination_bundle = 'law';
+  // Automatically converted destination fields.
+  $destination_fields = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition('field_policy_imp_type', 'value', 'law', '=');
+  // Setup the amount of steps.
+  $limit = 100;
+
+  // Initialization.
+  if (!isset($sandbox['max'])) {
+    // Get the amount of processed nodes.
+    $count = $query->count()->execute();
+    $query->count = FALSE;
+    $sandbox['max'] = $count;
+    $sandbox['progress'] = 0;
+  }
+
+  // Getting the range.
+  $result = $query->range($sandbox['position'], $limit)->execute();
+
+  if (isset($result['node']) && !empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $nid => $source_node) {
+      // Automatic convert by node_convert module.
+      // If the converting is successful than returns the $nid (means TRUE),
+      // in other case will be FALSE.
+      if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, TRUE)) {
+        $destination_node = node_load($nid);
+        $source_wrapper = entity_metadata_wrapper('node', $source_node);
+        $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
+        // Convert unsupported fields.
+        _dt_law_node_convert($source_node, $source_wrapper, $destination_wrapper);
+        // Save the node.
+        $destination_wrapper->save();
+      }
+    }
+  }
+
+  // Nids needs to be empty for the next round.
+  unset($nids);
+  // Update the position.
+  $sandbox['position'] += $limit;
+
+  // Checking the finishing of the processing.
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
 }
+
+/**
+ * Helper function for migration on law.
+ *
+ * @param object $source_node
+ *                Source node.
+ * @param object $source_wrapper
+ *                Source wrapper.
+ * @param object $destination_wrapper
+ *                Destination wrapper.
  */
+function _dt_law_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
+  // Converting field_policy_imp_introduction field.
+  if (isset($source_node->field_policy_imp_introduction)) {
+    foreach ($source_node->field_policy_imp_introduction as $language => $item) {
+      $value = strip_tags($item[0]['value']);
+      $destination_wrapper->language($language)->field_core_description->set($value);
+    }
+  }
+
+  // Converting field_policy_imp_status field.
+  if (isset($source_wrapper->field_policy_imp_status)) {
+    $value = $source_wrapper->field_policy_imp_status->value();
+    switch ($value) {
+      case 'proposed':
+        $destination_wrapper->field_law_status->set('proposed');
+        break;
+
+      case 'adopted':
+        $destination_wrapper->field_law_status->set('in_force');
+        break;
+    }
+  }
+}
