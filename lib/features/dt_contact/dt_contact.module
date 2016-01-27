@@ -5,19 +5,13 @@
  */
 
 include_once 'dt_contact.features.inc';
+define('DT_PHONE_FIELDNAME', 'field_contact_phone_number');
 
 /**
  * Implements hook_node_view().
  */
 function dt_contact_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'contact') {
-    // Check if field_contact_phone_number have a value,
-    // we will hide it if empty.
-    $field = 'field_contact_phone_number';
-    $wrapper = entity_metadata_wrapper('node', $node);
-    if (!($wrapper->$field->value())) {
-      unset($node->$field);
-    }
 
     // Check if the address thorouhfare and premise have a value
     // hide these fields if they don't.
@@ -34,30 +28,30 @@ function dt_contact_node_view($node, $view_mode, $langcode) {
   }
 }
 
-
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_node_form_alter().
  *
  * Extra validate callback specific for
  * telephone numbers field.
  */
-function dt_contact_form_contact_node_form_alter(&$form, &$form_state, $form_id) {
-  // Add extra validation.
-  $form['#validate'][] = '_dt_contact_phone';
+function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form[DT_PHONE_FIELDNAME])) {
+    $form['#validate'][] = '_dt_contact_phone_validate';
+  }
 }
 
 /**
  * Callback handler for phone field validation.
  */
-function _dt_contact_phone($form, &$form_state) {
-  $lang = $form['field_contact_phone_number']['#language'];
-  if ($form_state['values']['field_contact_phone_number'][$lang][0]['value']) {
-    $contact_phone = trim($form_state['values']['field_contact_phone_number'][$lang][0]['value']);
+function _dt_contact_phone_validate($form, &$form_state) {
+  $lang = $form[DT_PHONE_FIELDNAME]['#language'];
+  if ($form_state['values'][DT_PHONE_FIELDNAME][$lang][0]['value']) {
+    $contact_phone = trim($form_state['values'][DT_PHONE_FIELDNAME][$lang][0]['value']);
     // Validate the current phone number.
     foreach (_dt_shared_functions_contactphone_patterns() as $pattern => $pattern_values) {
       preg_match($pattern_values['pattern'], $contact_phone, $matches);
       if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
-        form_set_error('field_contact_phone_number', $pattern_values['explain']);
+        form_set_error(DT_PHONE_FIELDNAME, $pattern_values['explain']);
       }
     }
   }

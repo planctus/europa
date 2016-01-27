@@ -173,7 +173,7 @@ function dt_contact_field_default_field_instances() {
 <p><strong>Where</strong>
 <ul>
 <li>+cc: International prefix</li>
-<li>r: National prefix</li> 
+<li>r: National prefix</li>
 <li>xxx xx xx: Phone number</li>
 <li>description: label of the phone, always between ( ) - optional</li>
 </ul> </p>
