@@ -148,3 +148,34 @@ function dt_publication_update_7108() {
   $group_publication_source = field_group_load_field_group('group_publication_source', 'node', 'publication', 'form');
   field_group_group_export_delete($group_publication_source, FALSE);
 }
+
+/**
+ * NEXTEUROPA-8280: Set default publish date to node creation date if empty.
+ */
+function dt_publication_update_7109() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'publication', '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      if (!isset($node->field_core_date_published[LANGUAGE_NONE]['0'])) {
+        $node->field_core_date_published[LANGUAGE_NONE]['0'] = array(
+          'value' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
+          'timezone' => "Europe/Luxembourg",
+          'offset' => 3600,
+          'offset2' => 3600,
+          'value2' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
+          'timezone_db' => "UTC",
+          'date_type' => 'datetime',
+        );
+        field_attach_update('node', $node);
+        entity_get_controller('node')->resetCache(array($node->nid));
+      }
+    }
+  }
+}
