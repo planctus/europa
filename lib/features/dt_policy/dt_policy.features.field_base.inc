@@ -247,7 +247,9 @@ function dt_policy_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'funding' => 'funding',
           'policy_implementation' => 'policy_implementation',
+          'law' => 'law',
         ),
       ),
       'target_type' => 'node',
@@ -285,6 +287,7 @@ function dt_policy_field_default_field_bases() {
         'target_bundles' => array(
           'policy_input' => 'policy_input',
           'impact_assessment' => 'impact_assessment',
+          'consultation' => 'consultation',
         ),
       ),
       'target_type' => 'node',

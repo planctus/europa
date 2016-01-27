@@ -97,8 +97,101 @@ function dt_core_pol_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+
+  // Exported menu link: menu-dt-breadcrumb-menu_european-commission:menutoken/569a3b55ae73a.
+  $menu_links['menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a'] = array(
+    'menu_name' => 'menu-dt-breadcrumb-menu',
+    'link_path' => 'menutoken/569a3b55ae73a',
+    'router_path' => 'menutoken/%',
+    'link_title' => '[site:name]',
+    'options' => array(
+      'alter' => TRUE,
+      'menu_token_data' => array(),
+      'menu_token_options' => array(
+        'clear' => 0,
+      ),
+      'menu_token_link_uuid' => 'menutoken/569a3b55ae73a',
+      'menu_token_link_path' => 'http://ec.europa.eu/index_[dt_tokens:dt_interface_language].htm',
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 1,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => '',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+
+  // Exported menu link: menu-breadcrumb-menu_nodetitle:<front>.
+  $menu_links['menu-dt-breadcrumb-menu_nodetitle:<front>'] = array(
+    'menu_name' => 'menu-dt-breadcrumb-menu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => '[node:title]',
+    'options' => array(
+      'alter' => TRUE,
+      'menu_token_link_path' => '<front>',
+      'menu_token_data' => array(
+        'node' => array(
+          'type' => 'node',
+          'plugin' => 'node_user_defined',
+          'options' => array(
+            'id' => 88,
+          ),
+        ),
+      ),
+      'menu_token_options' => array(
+        'clear' => 0,
+      ),
+      'menu_token_link_uuid' => '<front>',
+      'attributes' => array(
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'data-remove-class' => 1,
+      ),
+      'item_attributes' => array(
+        'data-image' => '',
+        'data-display-title' => 1,
+        'data-hide-children' => 0,
+        'id' => '',
+        'class' => '',
+        'data-remove-class' => 0,
+        'style' => '',
+      ),
+      'identifier' => 'menu-dt-breadcrumb-menu_nodetitle:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => 1,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('[site:name]');
+  t('[node:title]');
   t('Facebook');
   t('Other social media');
   t('Twitter');

@@ -161,7 +161,7 @@ function cwt_biography_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Role',
+    'label' => 'Responsibilities',
     'required' => FALSE,
     'settings' => array(
       'display_summary' => 0,
@@ -1091,9 +1091,10 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 33,
+        'type' => 'file_default',
+        'weight' => 2,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1176,9 +1177,10 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
+        'type' => 'file_default',
+        'weight' => 3,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -1906,6 +1908,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'force_language_default' => 1,
           'link_title' => 'Team page',
         ),
         'type' => 'link_button_default',
@@ -2040,7 +2043,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 29,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2529,10 +2532,8 @@ function cwt_biography_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css_icons',
         'weight' => 5,
       ),
       'team_cabinet_member' => array(
@@ -3527,7 +3528,7 @@ function cwt_biography_field_default_field_instances() {
   t('Project team');
   t('Provide a link to EC Audiovisual Service');
   t('Remote ID');
-  t('Role');
+  t('Responsibilities');
   t('Social Networks');
   t('Status');
   t('Tagline');
