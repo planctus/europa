@@ -33,5 +33,6 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
     $settings['contentsCss'] = array(
       '0' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass.css',
     );
+    $settings['bodyClass'] = 'padding-wysiwyg-body';
   }
 }
