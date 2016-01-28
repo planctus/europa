@@ -68,12 +68,6 @@ function dt_core_info_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-8',
         ),
-        'dt_core-dt_block_copyright' => array(
-          'module' => 'dt_core',
-          'delta' => 'dt_block_copyright',
-          'region' => 'footer',
-          'weight' => '-7',
-        ),
       ),
     ),
   );
