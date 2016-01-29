@@ -855,3 +855,10 @@ function dt_core_update_7161() {
 function dt_core_update_7162() {
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }
+
+/**
+ * NEXTEUROPA-7770 - Enabling DT wysiwyg update ckeditor settings.
+ */
+function dt_core_update_7163() {
+  module_enable(array('dt_wysiwyg'));
+}

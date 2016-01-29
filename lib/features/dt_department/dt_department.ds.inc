@@ -97,30 +97,6 @@ function dt_department_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_links' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'listing__wrapper listing__wrapper--default listing--title__wrapper',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-          'fis' => TRUE,
-          'fis-el' => 'ul',
-          'fis-cl' => 'listing listing--title',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'li',
-          'fi-cl' => 'listing__item listing__item-link',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
   );
   $export['node|department|full'] = $ds_fieldsetting;
 
