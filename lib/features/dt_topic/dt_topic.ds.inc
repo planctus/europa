@@ -69,6 +69,27 @@ function dt_topic_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Commissioners',
+        ),
+      ),
+    ),
+    'field_core_priorities' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Political priorities',
+        ),
+      ),
+    ),
+    'field_core_topics' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Topics',
+        ),
+      ),
+    ),
     'field_topic_objectives' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -82,6 +103,13 @@ function dt_topic_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_minimal',
           'lb-col' => TRUE,
+        ),
+      ),
+    ),
+    'field_core_department' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
         ),
       ),
     ),
@@ -216,25 +244,25 @@ function dt_topic_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'content_type_label',
-        1 => 'group_topic_meta',
-        3 => 'title',
+        0 => 'group_topic_meta',
+        1 => 'content_type_label',
+        2 => 'title',
         4 => 'field_core_introduction',
       ),
       'central' => array(
-        2 => 'field_core_social_network_links',
+        3 => 'field_core_social_network_links',
         6 => 'group_topic_tasks',
-        10 => 'group_latest_main',
-        12 => 'group_topic_policy_areas',
-        13 => 'group_latest_sidebar',
-        14 => 'group_topic_latest',
+        10 => 'group_topic_policy_areas',
+        12 => 'group_latest_main',
+        13 => 'group_topic_latest',
+        14 => 'group_latest_sidebar',
         15 => 'group_topic_what_is_doing',
         16 => 'social_bookmark_webtools',
-        17 => 'field_topic_commission_actions',
-        18 => 'field_core_policy_areas',
+        17 => 'field_core_policy_areas',
+        18 => 'field_topic_commission_actions',
         19 => 'field_topic_objectives',
-        20 => 'field_topic_tasks',
-        21 => 'field_topic_targets',
+        20 => 'field_topic_targets',
+        21 => 'field_topic_tasks',
         22 => 'field_core_links',
         23 => 'field_core_top_tasks_links',
         24 => 'group_topics_specific_tasks',
@@ -250,28 +278,28 @@ function dt_topic_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'content_type_label' => 'left_header',
       'group_topic_meta' => 'left_header',
-      'field_core_social_network_links' => 'central',
+      'content_type_label' => 'left_header',
       'title' => 'left_header',
+      'field_core_social_network_links' => 'central',
       'field_core_introduction' => 'left_header',
       'group_topic_contextual' => 'top',
       'group_topic_tasks' => 'central',
       'field_core_priorities' => 'top',
       'field_core_topics' => 'top',
       'field_core_persons' => 'top',
-      'group_latest_main' => 'central',
-      'field_core_department' => 'top',
       'group_topic_policy_areas' => 'central',
-      'group_latest_sidebar' => 'central',
+      'field_core_department' => 'top',
+      'group_latest_main' => 'central',
       'group_topic_latest' => 'central',
+      'group_latest_sidebar' => 'central',
       'group_topic_what_is_doing' => 'central',
       'social_bookmark_webtools' => 'central',
-      'field_topic_commission_actions' => 'central',
       'field_core_policy_areas' => 'central',
+      'field_topic_commission_actions' => 'central',
       'field_topic_objectives' => 'central',
-      'field_topic_tasks' => 'central',
       'field_topic_targets' => 'central',
+      'field_topic_tasks' => 'central',
       'field_core_links' => 'central',
       'field_core_top_tasks_links' => 'central',
       'group_topics_specific_tasks' => 'central',
