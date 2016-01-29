@@ -7,22 +7,26 @@
 /**
  * No source field Exception.
  */
-class DtSharedSourceFieldError extends Exception {}
+class DtSharedSourceFieldError extends Exception {
+}
 
 /**
  * No destionation field Exception.
  */
-class DtSharedDestinationFieldError extends Exception {}
+class DtSharedDestinationFieldError extends Exception {
+}
 
 /**
  * Fields are of same tye Exception.
  */
-class DtSharedFieldTypeAreNotSame extends Exception {}
+class DtSharedFieldTypeAreNotSame extends Exception {
+}
 
 /**
  * Circular reference Exception.
  */
-class DtParentCircular extends Exception {}
+class DtParentCircular extends Exception {
+}
 
 /**
  * Implements hook_token_info().
@@ -404,6 +408,82 @@ function dt_shared_functions_field_language_alter(&$display_language, $context) 
       }
     }
   }
+}
+
+/**
+ * Helper function for contact phone fields.
+ *
+ * This function returns an array that will help
+ * in validation/visualization of parts of
+ * phone number number fields.
+ *
+ * @return array
+ *   return arrays
+ */
+function _dt_shared_functions_contactphone_patterns() {
+  $patterns = array(
+    'phone_label' => array(
+      'pattern' => '/\s?\(([^)]+)\)$/',
+      'return_key' => 0,
+    ),
+    'country_prefix' => array(
+      'pattern' => '/^(\+[0-9]{2,3}\s?)/',
+      'return_key' => 0,
+      'required' => TRUE,
+      'explain' => 'Country code missing or in wrong format, ex:+32',
+    ),
+    'telephone' => array(
+      'pattern' => '/^(\+[0-9]{2,3}\s+)((([0-9]{1,4})\s?)+)(\s?\(([^)]+)\))?$/',
+      'return_key' => 2,
+      'required' => 1,
+      'explain' => 'Phone number is missing or with wrong format (+cc r xxx xx xx (description))',
+    ),
+  );
+  return $patterns;
+}
+
+/**
+ * Generates "<a href=tel:" tag for the contact phone field.
+ *
+ * If in the generation it fails it will return false.
+ *
+ * @param string $tel
+ *   String containing phone number.
+ *
+ * @return string
+ *   Returns formatted value or the source one.
+ */
+function dt_shared_function_phonetohtml($tel) {
+  $data = trim($tel);
+  // Load the array containing our regular expressions and loop to convert them into a link.
+  foreach (_dt_shared_functions_contactphone_patterns() as $regexp_index => $regexp_values) {
+    preg_match($regexp_values['pattern'], $data, $matches);
+    // Something is wrong with the phone value and can't be displayed correctly.
+    if (!isset($matches[$regexp_values['return_key']]) && isset($regexp_values['required'])) {
+      return $tel;
+    }
+    else {
+      if (isset($matches[$regexp_values['return_key']])) {
+        $phone[$regexp_index] = trim($matches[$regexp_values['return_key']]);
+      }
+      else {
+        $phone[$regexp_index] = '';
+      }
+    }
+  }
+
+  // Create the href tel: value.
+  $tel = 'tel:' . str_replace(' ', '', $phone['country_prefix'] . $phone['telephone']);
+  // This defines the element telephone in the component field.
+  $classes = array('class' => 'field__telephone');
+  // This will be the link title.
+  $title = $phone['country_prefix'] . ' ' . $phone['telephone'];
+  // Build the link
+  $htmlphone = l($title, $tel, array('attributes' => $classes));
+  // The full element.
+  $markup = $htmlphone . ' ' . $phone['phone_label'];
+
+  return $markup;
 }
 
 /**

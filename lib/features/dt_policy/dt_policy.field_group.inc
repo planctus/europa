@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_policy_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -42,7 +42,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|policy|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -71,7 +71,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_main|node|policy|full'] = $field_group;
+  $field_groups['group_latest_main|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -98,7 +98,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_sidebar|node|policy|full'] = $field_group;
+  $field_groups['group_latest_sidebar|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -128,7 +128,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_latest|node|policy|full'] = $field_group;
+  $field_groups['group_latest|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -158,7 +158,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policies_wrapper|node|policy|full'] = $field_group;
+  $field_groups['group_policies_wrapper|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -190,7 +190,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_banner|node|policy|form'] = $field_group;
+  $field_groups['group_policy_banner|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -221,7 +221,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_common|node|policy|form'] = $field_group;
+  $field_groups['group_policy_common|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -249,7 +249,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_contextual|node|policy|full'] = $field_group;
+  $field_groups['group_policy_contextual|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -278,7 +278,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_details|node|policy|form'] = $field_group;
+  $field_groups['group_policy_details|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -307,7 +307,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_documents|node|policy|full'] = $field_group;
+  $field_groups['group_policy_documents|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -337,7 +337,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_editorial|node|policy|form'] = $field_group;
+  $field_groups['group_policy_editorial|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -364,7 +364,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_implementation|node|policy|form'] = $field_group;
+  $field_groups['group_policy_implementation|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -391,7 +391,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_input|node|policy|form'] = $field_group;
+  $field_groups['group_policy_input|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -418,7 +418,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_keyfiles|node|policy|form'] = $field_group;
+  $field_groups['group_policy_keyfiles|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -443,7 +443,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_meta|node|policy|full'] = $field_group;
+  $field_groups['group_policy_meta|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -470,7 +470,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_next_steps|node|policy|form'] = $field_group;
+  $field_groups['group_policy_next_steps|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -498,7 +498,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_other_relations|node|policy|form'] = $field_group;
+  $field_groups['group_policy_other_relations|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -527,7 +527,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_related|node|policy|form'] = $field_group;
+  $field_groups['group_policy_related|node|policy|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -556,7 +556,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_socialmedia|node|policy|full'] = $field_group;
+  $field_groups['group_policy_socialmedia|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -589,7 +589,7 @@ function dt_policy_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_policy_tab_actions|node|policy|full'] = $field_group;
+  $field_groups['group_policy_tab_actions|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -624,7 +624,7 @@ function dt_policy_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_policy_tab_details|node|policy|full'] = $field_group;
+  $field_groups['group_policy_tab_details|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -649,7 +649,7 @@ function dt_policy_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_tab_latest|node|policy|full'] = $field_group;
+  $field_groups['group_policy_tab_latest|node|policy|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -685,7 +685,32 @@ function dt_policy_field_group_info() {
       'formatter' => '',
     ),
   );
-  $export['group_policy_tabs|node|policy|full'] = $field_group;
+  $field_groups['group_policy_tabs|node|policy|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Actions');
+  t('Banner');
+  t('Common');
+  t('Content');
+  t('Contextual navigation');
+  t('Details');
+  t('Documents');
+  t('Editorial settings');
+  t('Horizontal tabs');
+  t('Implementation');
+  t('Key files');
+  t('Latest');
+  t('Latest Wrapper');
+  t('Main');
+  t('Meta');
+  t('Next steps');
+  t('Other relations');
+  t('Policies wrapper');
+  t('Policy input');
+  t('Relations with other content types');
+  t('Sidebar');
+  t('Social Media');
+
+  return $field_groups;
 }
