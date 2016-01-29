@@ -94,3 +94,18 @@ function cwt_biography_update_7107() {
     user_role_grant_permissions($role->rid, array('access partially translated biographies'));
   }
 }
+
+/**
+ * Delete outdated field.
+ */
+function cwt_biography_update_7108() {
+  field_delete_field('field_biography_team_intro');
+}
+
+/**
+ * NEXTEUROPA-4967: Disabling biography context.
+ */
+function cwt_biography_update_7109() {
+  $context = context_load('biography');
+  context_delete($context);
+}

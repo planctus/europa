@@ -10,7 +10,7 @@
 function dt_topic_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-topic-field_core_department'
+  // Exported field_instance: 'node-topic-field_core_department'.
   $field_instances['node-topic-field_core_department'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -30,6 +30,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -72,7 +73,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_description'
+  // Exported field_instance: 'node-topic-field_core_description'.
   $field_instances['node-topic-field_core_description'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -159,7 +160,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_introduction'
+  // Exported field_instance: 'node-topic-field_core_introduction'.
   $field_instances['node-topic-field_core_introduction'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -245,7 +246,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_legacy_link'
+  // Exported field_instance: 'node-topic-field_core_legacy_link'.
   $field_instances['node-topic-field_core_legacy_link'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -316,17 +317,17 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_links'
+  // Exported field_instance: 'node-topic-field_core_links'.
   $field_instances['node-topic-field_core_links'] = array(
     'bundle' => 'topic',
     'default_value' => array(
       0 => array(
-        'title' => 'See what other EU institutions are doing on [current-page:title]',
+        'title' => '[current-page:title]',
         'url' => 'http://ec.europa.eu',
       ),
     ),
     'deleted' => 0,
-    'description' => 'The link for the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"',
+    'description' => 'The link(s) at the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -336,7 +337,7 @@ function dt_topic_field_default_field_instances() {
         'weight' => 27,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -394,7 +395,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_persons'
+  // Exported field_instance: 'node-topic-field_core_persons'.
   $field_instances['node-topic-field_core_persons'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -414,6 +415,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -456,7 +458,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_policy_areas'
+  // Exported field_instance: 'node-topic-field_core_policy_areas'.
   $field_instances['node-topic-field_core_policy_areas'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -477,6 +479,7 @@ function dt_topic_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => 'sidebar-field-group__main',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -518,7 +521,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_priorities'
+  // Exported field_instance: 'node-topic-field_core_priorities'.
   $field_instances['node-topic-field_core_priorities'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -538,6 +541,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -580,7 +584,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_social_network_links'
+  // Exported field_instance: 'node-topic-field_core_social_network_links'.
   $field_instances['node-topic-field_core_social_network_links'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -636,7 +640,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_top_tasks_links'
+  // Exported field_instance: 'node-topic-field_core_top_tasks_links'.
   $field_instances['node-topic-field_core_top_tasks_links'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -712,7 +716,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_topics'
+  // Exported field_instance: 'node-topic-field_core_topics'.
   $field_instances['node-topic-field_core_topics'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -732,6 +736,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -774,7 +779,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_commission_actions'
+  // Exported field_instance: 'node-topic-field_topic_commission_actions'.
   $field_instances['node-topic-field_topic_commission_actions'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -859,7 +864,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_objectives'
+  // Exported field_instance: 'node-topic-field_topic_objectives'.
   $field_instances['node-topic-field_topic_objectives'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -944,7 +949,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_targets'
+  // Exported field_instance: 'node-topic-field_topic_targets'.
   $field_instances['node-topic-field_topic_targets'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1028,7 +1033,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_tasks'
+  // Exported field_instance: 'node-topic-field_topic_tasks'.
   $field_instances['node-topic-field_topic_tasks'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1049,6 +1054,7 @@ function dt_topic_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => 'listing--line-left',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1090,7 +1096,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-group_content_access'
+  // Exported field_instance: 'node-topic-group_content_access'.
   $field_instances['node-topic-group_content_access'] = array(
     'bundle' => 'topic',
     'default_value' => array(
@@ -1161,7 +1167,7 @@ function dt_topic_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-topic-og_group_ref'
+  // Exported field_instance: 'node-topic-og_group_ref'.
   $field_instances['node-topic-og_group_ref'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1238,7 +1244,7 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-title_field'
+  // Exported field_instance: 'node-topic-title_field'.
   $field_instances['node-topic-title_field'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -1293,7 +1299,8 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-top_tasks-field_core_top_task_link'
+  // Exported field_instance:
+  // 'taxonomy_term-top_tasks-field_core_top_task_link'.
   $field_instances['taxonomy_term-top_tasks-field_core_top_task_link'] = array(
     'bundle' => 'top_tasks',
     'default_value' => NULL,
@@ -1366,7 +1373,7 @@ function dt_topic_field_default_field_instances() {
   t('Select the commissioner responsible for this topic.');
   t('Social Network Links');
   t('Targets');
-  t('The link for the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"');
+  t('The link(s) at the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"');
   t('Title');
   t('Topic specific tasks');
   t('What the Commission is doing');

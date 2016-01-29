@@ -10,12 +10,14 @@
 function dt_policy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy-field_core_department'
+  // Exported field_instance: 'node-policy-field_core_department'.
   $field_instances['node-policy-field_core_department'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more Directorates-General that are responsible for the policy.
+
+Type name of department to search for it. Don\'t create a new department.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -27,6 +29,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -69,12 +72,19 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_description'
+  // Exported field_instance: 'node-policy-field_core_description'.
   $field_instances['node-policy-field_core_description'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Description will be used as abstract (metadata description) in all list views
+[break]
+* Use the Introduction as basis for Description and apply same guidance.
+* Refer to the real-world intention of the policy (e.g. energy targets, job creation)
+* Make a direct connection to people’s lives and business interests
+* Where a policy benefits a particular group of people, present it from their perspective
+
+**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -142,6 +152,7 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
@@ -152,12 +163,19 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_introduction'
+  // Exported field_instance: 'node-policy-field_core_introduction'.
   $field_instances['node-policy-field_core_introduction'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '* say what real-world issues are addressed by the policy
+* avoid policy jargon and legal language
+[break]
+* use a balanced, calm tone. Avoid emotive language
+* mention human before economic or technical benefits
+* do not give historical overview
+
+**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -236,7 +254,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_legacy_link'
+  // Exported field_instance: 'node-policy-field_core_legacy_link'.
   $field_instances['node-policy-field_core_legacy_link'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -308,7 +326,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_parent'
+  // Exported field_instance: 'node-policy-field_core_parent'.
   $field_instances['node-policy-field_core_parent'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -363,12 +381,16 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_persons'
+  // Exported field_instance: 'node-policy-field_core_persons'.
   $field_instances['node-policy-field_core_persons'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more commissioners that are responsible for the policy.
+
+Type name of commissioner to search for it.
+
+Don\'t add vice-president, unless there is no commissioner responsible.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -380,6 +402,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -414,7 +437,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -423,12 +445,14 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_policy_areas'
+  // Exported field_instance: 'node-policy-field_core_policy_areas'.
   $field_instances['node-policy-field_core_policy_areas'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or multiple policy areas the policy belongs to.
+
+**Type name of policy area to search for it. Don\'t create a new policy area.**',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -469,7 +493,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -478,12 +501,12 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_priorities'
+  // Exported field_instance: 'node-policy-field_core_priorities'.
   $field_instances['node-policy-field_core_priorities'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one, but only if policy belongs to one of the 10 priorities.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -495,6 +518,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -537,7 +561,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_core_topics'
+  // Exported field_instance: 'node-policy-field_core_topics'.
   $field_instances['node-policy-field_core_topics'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -554,6 +578,7 @@ function dt_policy_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -597,7 +622,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_author'
+  // Exported field_instance: 'node-policy-field_policy_author'.
   $field_instances['node-policy-field_policy_author'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -675,7 +700,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_caption'
+  // Exported field_instance: 'node-policy-field_policy_caption'.
   $field_instances['node-policy-field_policy_caption'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -753,12 +778,24 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_body'
+  // Exported field_instance: 'node-policy-field_policy_detail_body'.
   $field_instances['node-policy-field_policy_detail_body'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Write only if the policy needs more explanation.
+
+Briefly explain the policy; provide a meaningful overview.
+[break]
+Include sub-headings, which should:
+
+* be custom-written
+* subject-based, rather than action- based (e.g. not \'Law\' or \'Funding\')
+* be followed by no more than 3 short paragraphs of 1 to 2 sentences
+* apply webwriting guidelines
+
+https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -786,6 +823,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 16,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_detail_body',
     'label' => 'Details body',
@@ -825,6 +863,10 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -832,7 +874,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_file'
+  // Exported field_instance: 'node-policy-field_policy_detail_file'.
   $field_instances['node-policy-field_policy_detail_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -902,12 +944,19 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_detail_objectives'
+  // Exported field_instance: 'node-policy-field_policy_detail_objectives'.
   $field_instances['node-policy-field_policy_detail_objectives'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Outlines the objectives, aims or goals of the policy:
+[break]
+* bulleted list, 3-5 bullet points
+* be specific
+* short phrase – no punctuation
+* indicate the Commission\'s intention  or desired outcome
+* prioritise real world objectives over EU methodologies, instruments or programmes
+* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -986,7 +1035,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_featured_file'
+  // Exported field_instance: 'node-policy-field_policy_featured_file'.
   $field_instances['node-policy-field_policy_featured_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -1056,12 +1105,14 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_implementations'
+  // Exported field_instance: 'node-policy-field_policy_implementations'.
   $field_instances['node-policy-field_policy_implementations'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
+
+A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1102,7 +1153,6 @@ function dt_policy_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -1111,12 +1161,17 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_input'
+  // Exported field_instance: 'node-policy-field_policy_input'.
   $field_instances['node-policy-field_policy_input'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose one or more consultations or impact assessments that are particularly important for this policy. Search for them by typing the title.
+
+If policy input does not yet exist in the CMS, create it by clicking on "policy input".
+
+When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1165,12 +1220,12 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_keyfiles'
+  // Exported field_instance: 'node-policy-field_policy_keyfiles'.
   $field_instances['node-policy-field_policy_keyfiles'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Include only documents that give an overview of the entire policy, eg roadmaps. Don\'t include documents that belong to policy actions. They will be added to the respective action page.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1186,6 +1241,7 @@ function dt_policy_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1227,12 +1283,12 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_next_steps'
+  // Exported field_instance: 'node-policy-field_policy_next_steps'.
   $field_instances['node-policy-field_policy_next_steps'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1262,6 +1318,7 @@ function dt_policy_field_default_field_instances() {
         'weight' => 19,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_policy_next_steps',
     'label' => 'Next steps',
@@ -1274,6 +1331,7 @@ function dt_policy_field_default_field_instances() {
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
+        'rows' => 5,
         'size' => 255,
       ),
       'type' => 'dt_policy_next_step_widget',
@@ -1281,7 +1339,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_paragraph'
+  // Exported field_instance: 'node-policy-field_policy_paragraph'.
   $field_instances['node-policy-field_policy_paragraph'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1359,7 +1417,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_quote'
+  // Exported field_instance: 'node-policy-field_policy_quote'.
   $field_instances['node-policy-field_policy_quote'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1437,7 +1495,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_sharable_banner'
+  // Exported field_instance: 'node-policy-field_policy_sharable_banner'.
   $field_instances['node-policy-field_policy_sharable_banner'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1493,7 +1551,7 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-group_content_access'
+  // Exported field_instance: 'node-policy-group_content_access'.
   $field_instances['node-policy-group_content_access'] = array(
     'bundle' => 'policy',
     'default_value' => array(
@@ -1558,7 +1616,7 @@ function dt_policy_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy-og_group_ref'
+  // Exported field_instance: 'node-policy-og_group_ref'.
   $field_instances['node-policy-og_group_ref'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -1629,12 +1687,19 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-title_field'
+  // Exported field_instance: 'node-policy-title_field'.
   $field_instances['node-policy-title_field'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The title should use everyday terms
+[break]
+Avoid:
+* programme names (e.g. Horizon 2020, Erasmus+)
+* titles of laws or packages (e.g. 6th energy package)
+* EU processes and concepts (e.g. open coordination, single market)
+
+**Example:** Efficient power production',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1662,22 +1727,52 @@ function dt_policy_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'title_field',
     'label' => 'Title',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
       'entity_translation_sync' => FALSE,
       'hide_label' => array(
-        'entity' => FALSE,
-        'page' => FALSE,
+        'entity' => 0,
+        'page' => 0,
       ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -1687,20 +1782,64 @@ function dt_policy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('* say what real-world issues are addressed by the policy
+* avoid policy jargon and legal language
+[break]
+* use a balanced, calm tone. Avoid emotive language
+* mention human before economic or technical benefits
+* do not give historical overview
+
+**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.');
   t('Author');
+  t('Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.');
   t('Caption');
+  t('Choose one or more Directorates-General that are responsible for the policy.
+
+Type name of department to search for it. Don\'t create a new department.');
+  t('Choose one or more commissioners that are responsible for the policy.
+
+Type name of commissioner to search for it.
+
+Don\'t add vice-president, unless there is no commissioner responsible.');
+  t('Choose one or more consultations or impact assessments that are particularly important for this policy. Search for them by typing the title.
+
+If policy input does not yet exist in the CMS, create it by clicking on "policy input".
+
+When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
+');
+  t('Choose one or multiple policy areas the policy belongs to.
+
+**Type name of policy area to search for it. Don\'t create a new policy area.**');
+  t('Choose one, but only if policy belongs to one of the 10 priorities.');
   t('Description');
+  t('Description will be used as abstract (metadata description) in all list views
+[break]
+* Use the Introduction as basis for Description and apply same guidance.
+* Refer to the real-world intention of the policy (e.g. energy targets, job creation)
+* Make a direct connection to people’s lives and business interests
+* Where a policy benefits a particular group of people, present it from their perspective
+
+**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.');
   t('Details body');
   t('Featured audiovisual file');
   t('Featured video or image or slideshow');
   t('Group content visibility');
   t('Groups audience');
   t('Implementations');
+  t('Include only documents that give an overview of the entire policy, eg roadmaps. Don\'t include documents that belong to policy actions. They will be added to the respective action page.');
   t('Introduction');
   t('Key files');
   t('Legacy link');
   t('Next steps');
   t('Objectives');
+  t('Outlines the objectives, aims or goals of the policy:
+[break]
+* bulleted list, 3-5 bullet points
+* be specific
+* short phrase – no punctuation
+* indicate the Commission\'s intention  or desired outcome
+* prioritise real world objectives over EU methodologies, instruments or programmes
+* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given');
   t('Paragraph');
   t('Parent');
   t('Part of topic(s)');
@@ -1710,8 +1849,32 @@ function dt_policy_field_default_field_instances() {
   t('Quote');
   t('Responsible commissioner(s)');
   t('Responsible department(s)');
+  t('Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
+
+A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ');
   t('Sharable banner');
+  t('The title should use everyday terms
+[break]
+Avoid:
+* programme names (e.g. Horizon 2020, Erasmus+)
+* titles of laws or packages (e.g. 6th energy package)
+* EU processes and concepts (e.g. open coordination, single market)
+
+**Example:** Efficient power production');
   t('Title');
+  t('Write only if the policy needs more explanation.
+
+Briefly explain the policy; provide a meaningful overview.
+[break]
+Include sub-headings, which should:
+
+* be custom-written
+* subject-based, rather than action- based (e.g. not \'Law\' or \'Funding\')
+* be followed by no more than 3 short paragraphs of 1 to 2 sentences
+* apply webwriting guidelines
+
+https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
+');
 
   return $field_instances;
 }

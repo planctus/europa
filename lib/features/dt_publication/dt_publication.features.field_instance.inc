@@ -10,7 +10,7 @@
 function dt_publication_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-publication-body'
+  // Exported field_instance: 'node-publication-body'.
   $field_instances['node-publication-body'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -35,7 +35,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 39,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -91,7 +91,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_contact'
+  // Exported field_instance: 'node-publication-field_core_contact'.
   $field_instances['node-publication-field_core_contact'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -126,7 +126,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 27,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -152,7 +152,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_date_published'
+  // Exported field_instance: 'node-publication-field_core_date_published'.
   $field_instances['node-publication-field_core_date_published'] = array(
     'bundle' => 'publication',
     'deleted' => 0,
@@ -182,13 +182,21 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ec_date_j_f_y',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 21,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -221,7 +229,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_date_updated'
+  // Exported field_instance: 'node-publication-field_core_date_updated'.
   $field_instances['node-publication-field_core_date_updated'] = array(
     'bundle' => 'publication',
     'deleted' => 0,
@@ -245,13 +253,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -284,7 +292,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_departments'
+  // Exported field_instance: 'node-publication-field_core_departments'.
   $field_instances['node-publication-field_core_departments'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -319,7 +327,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 38,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -345,7 +353,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_description'
+  // Exported field_instance: 'node-publication-field_core_description'.
   $field_instances['node-publication-field_core_description'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -363,13 +371,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 35,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -423,7 +431,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_files'
+  // Exported field_instance: 'node-publication-field_core_files'.
   $field_instances['node-publication-field_core_files'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -458,7 +466,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -484,7 +492,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_legacy_link'
+  // Exported field_instance: 'node-publication-field_core_legacy_link'.
   $field_instances['node-publication-field_core_legacy_link'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -509,7 +517,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 36,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -551,7 +559,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_policies'
+  // Exported field_instance: 'node-publication-field_core_policies'.
   $field_instances['node-publication-field_core_policies'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -568,16 +576,25 @@ function dt_publication_field_default_field_instances() {
         'weight' => 25,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -603,7 +620,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_publications'
+  // Exported field_instance: 'node-publication-field_core_publications'.
   $field_instances['node-publication-field_core_publications'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -621,21 +638,15 @@ function dt_publication_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'nexteuropa_formatters',
-        'settings' => array(
-          'contextual_date' => '',
-          'expander_has_expander' => 0,
-          'expander_trim_at' => 0,
-          'expander_trim_to' => 0,
-        ),
-        'type' => 'context_nav_item',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -661,7 +672,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_core_topics'
+  // Exported field_instance: 'node-publication-field_core_topics'.
   $field_instances['node-publication-field_core_topics'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -687,13 +698,13 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 30,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -719,7 +730,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_authors'
+  // Exported field_instance: 'node-publication-field_publication_authors'.
   $field_instances['node-publication-field_publication_authors'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -745,13 +756,13 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 37,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -777,7 +788,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_collection'
+  // Exported field_instance: 'node-publication-field_publication_collection'.
   $field_instances['node-publication-field_publication_collection'] = array(
     'bundle' => 'publication',
     'default_value' => array(
@@ -799,13 +810,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -829,7 +840,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_origin'
+  // Exported field_instance: 'node-publication-field_publication_origin'.
   $field_instances['node-publication-field_publication_origin'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -847,13 +858,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 34,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -877,7 +888,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_referenceno'
+  // Exported field_instance: 'node-publication-field_publication_referenceno'.
   $field_instances['node-publication-field_publication_referenceno'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -901,13 +912,13 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 28,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -959,7 +970,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_rel_content'
+  // Exported field_instance: 'node-publication-field_publication_rel_content'.
   $field_instances['node-publication-field_publication_rel_content'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -976,16 +987,25 @@ function dt_publication_field_default_field_instances() {
         'weight' => 24,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 26,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1011,7 +1031,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-field_publication_type'
+  // Exported field_instance: 'node-publication-field_publication_type'.
   $field_instances['node-publication-field_publication_type'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -1061,7 +1081,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-group_content_access'
+  // Exported field_instance: 'node-publication-group_content_access'.
   $field_instances['node-publication-group_content_access'] = array(
     'bundle' => 'publication',
     'default_value' => array(
@@ -1083,13 +1103,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'node',
@@ -1121,7 +1141,7 @@ function dt_publication_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-publication-og_group_ref'
+  // Exported field_instance: 'node-publication-og_group_ref'.
   $field_instances['node-publication-og_group_ref'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -1141,13 +1161,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'node',
@@ -1189,7 +1209,7 @@ function dt_publication_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-publication-title_field'
+  // Exported field_instance: 'node-publication-title_field'.
   $field_instances['node-publication-title_field'] = array(
     'bundle' => 'publication',
     'default_value' => NULL,
@@ -1211,13 +1231,13 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'node',

@@ -6,25 +6,30 @@
 
 include_once 'dt_core.features.inc';
 include_once 'dt_core.api.inc';
+
 /**
  * No source field Exception.
  */
-class DTCoreSourceFieldError extends Exception {}
+class DTCoreSourceFieldError extends Exception {
+}
 
 /**
  * No destionation field Exception.
  */
-class DTCoreDestinationFieldError extends Exception {}
+class DTCoreDestinationFieldError extends Exception {
+}
 
 /**
  * Fields are of same tye Exception.
  */
-class DTCoreFieldTypeAreNotSame extends Exception {}
+class DTCoreFieldTypeAreNotSame extends Exception {
+}
 
 /**
  * Circular reference Exception.
  */
-class DTCoreParentCircular extends Exception {}
+class DTCoreParentCircular extends Exception {
+}
 
 /**
  * Implements hook_field_widget_form_alter().
@@ -59,10 +64,6 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
  * Implements hook_block_info().
  */
 function dt_core_block_info() {
-  $blocks['dt_block_copyright'] = array(
-    'info' => t('Copyright paragraph'),
-  );
-
   $blocks['dt_header_site_tab_switcher'] = array(
     'info' => t('Header site tab switcher'),
   );
@@ -80,7 +81,6 @@ function dt_core_block_info() {
 function dt_core_block_view($delta = '') {
   $block = array();
   switch ($delta) {
-    case 'dt_block_copyright':
     case 'dt_header_site_tab_switcher':
     case 'dt_footer_site_tab_switcher':
       $block['content'] = dt_core_get_blocks_content($delta);
@@ -95,12 +95,6 @@ function dt_core_block_view($delta = '') {
 function dt_core_get_blocks_content($delta) {
   $result = array();
   switch ($delta) {
-    case 'dt_block_copyright':
-      $result = array(
-        '#markup' => "<div class='footer__disclaimer'><span>" . t('© European Commission 2015') . "</span></div>",
-      );
-      break;
-
     case 'dt_header_site_tab_switcher':
       $result = array(
         '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
@@ -530,6 +524,7 @@ function _dt_core_enable_languages($languages = array()) {
 function dt_core_node_presave($node) {
   $node->title = rtrim($node->title);
 }
+
 /**
  * Implements hook_context_load_alter().
  */
@@ -552,7 +547,7 @@ function dt_core_context_load_alter(&$context) {
  */
 function _dt_core_disable_maxlength($element) {
   // Check if we are translating and maxlength for field is enabled.
-  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) &&  isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
+  if (isset($element['#field_name']) && isset($element['#maxlength']) && isset($element['#language']) && isset($element['#entity']) && isset($element['#entity']->language) && $element['#language'] !== $element['#entity']->language) {
     // Remove maxlength.
     unset($element['#maxlength']);
   }

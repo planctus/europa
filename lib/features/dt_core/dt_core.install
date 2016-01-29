@@ -29,8 +29,11 @@ function dt_core_install() {
   // Switch on entity translation for the body field.
   _dt_core_enable_entity_translation('body', $sandbox);
 
+  // Remove the platform Breadcrumb menu.
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
+
   // Set our default social network url.
-  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 }
 
 /**
@@ -534,7 +537,7 @@ function dt_core_update_7140() {
  * Update the default social media link url (other social networks).
  */
 function dt_core_update_7141() {
-  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm#n:|i:4|e:1|t:|s:');
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 }
 
 /**
@@ -830,4 +833,32 @@ function dt_core_update_7158() {
 function dt_core_update_7159() {
   // Enable the dt header background custom module.
   module_enable(array('dt_header_background'));
+}
+
+/**
+ * Update the default social media link url (other social networks).
+ */
+function dt_core_update_7160() {
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
+}
+
+/**
+ * Enabling ec_embedded_video to enable the cookie overlay.
+ */
+function dt_core_update_7161() {
+  module_enable(array('ec_embedded_video'));
+}
+
+/**
+ * NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+ */
+function dt_core_update_7162() {
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
+}
+
+/**
+ * NEXTEUROPA-7770 - Enabling DT wysiwyg update ckeditor settings.
+ */
+function dt_core_update_7163() {
+  module_enable(array('dt_wysiwyg'));
 }

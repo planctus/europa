@@ -13,9 +13,17 @@
   <?php endif; ?>
   <?php if (!empty($second)): ?>
   <<?php print $main_wrapper; ?> class="listing__column-main listing__column-main--sidebar-next column-main <?php print $main_classes; ?>">
-    <a href="<?php print $node_url; ?>" class="listing__item-link">
+    <?php if (!isset($prevent_link)): ?>
+      <a href="<?php print $node_url; ?>" class="listing__item-link">
+    <?php else: ?>
+      <div class="listing__item-link">
+    <?php endif; ?>
       <?php print $main; ?>
-    </a>
+    <?php if (!isset($prevent_link)): ?>
+      </a>
+    <?php else: ?>
+      </div>
+    <?php endif; ?>
   </<?php print $main_wrapper; ?>>
 
   <<?php print $second_wrapper; ?> class="listing__column-second listing__column-second--no-link column-second <?php print $second_classes; ?>">
@@ -23,11 +31,21 @@
   </<?php print $second_wrapper; ?>>
 
   <?php else: ?>
-    <<?php print $main_wrapper; ?> class="listing__column-main column-main <?php print $main_classes; ?>">
+
+    <?php if (!isset($prevent_link)): ?>
       <a href="<?php print $node_url; ?>" class="listing__item-link">
+    <?php else: ?>
+      <div class="listing__item-link">
+    <?php endif; ?>
+      <<?php print $main_wrapper; ?> class="listing__column-main column-main <?php print $main_classes; ?>">
         <?php print $main; ?>
+      </<?php print $main_wrapper; ?>>
+    <?php if (!isset($prevent_link)): ?>
       </a>
-    </<?php print $main_wrapper; ?>>
+    <?php else: ?>
+      </div>
+    <?php endif; ?>
+
   <?php endif; ?>
 </<?php print $layout_wrapper ?>>
 

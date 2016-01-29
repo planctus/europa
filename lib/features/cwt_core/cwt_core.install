@@ -34,6 +34,9 @@ function cwt_core_install() {
   if (!module_exists('dt_social_media_sharing')) {
     module_enable(array('dt_social_media_sharing'));
   }
+
+  // Remove the platform Breadcrumb menu.
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }
 
 /**
@@ -462,6 +465,7 @@ function cwt_core_update_7131() {
   );
   module_enable($modules_to_enable);
 }
+
 /**
  * Enable the dt_language_selector_site_popup module.
  */
@@ -515,4 +519,11 @@ function cwt_core_update_7138() {
   $label = '<span class="social-media-links__label">' . t('Share this page:') . '</span>';
   variable_set('dt_social_media_sharing_text', $label);
   variable_set('dt_social_media_sharing_block_type', 'horizontal');
+}
+
+/**
+ * NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+ */
+function cwt_core_update_7139() {
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }

@@ -18,13 +18,31 @@ function dt_core_pol_install() {
   module_enable($dt_modules);
 
   // Enabling europa base theme.
-  theme_enable(array('europa'));
-  variable_set('theme_default', 'europa');
+  theme_enable(array('political'));
+  variable_set('theme_default', 'political');
   // Disabling unnecessary themes.
   theme_disable(array('ec_resp', 'seven'));
 
   // Enabling EC official languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
+
+  // Disable a menu item.
+  $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  if (is_numeric($mlid)) {
+    $menu_item = menu_link_load($mlid);
+    $menu_item['hidden'] = TRUE;
+    menu_link_save($menu_item);
+  }
+
+  // Set the homepage if available.
+  $nid = variable_get('dt_priority_page_id', FALSE);
+  if ($nid) {
+    variable_set('site_frontpage', 'node/' . $nid);
+    // Set alias for the home page.
+    $node = node_load($nid);
+    $node->path = array('alias' => 'index', 'pathauto' => 0);
+    node_save($node);
+  }
 
   // Create default menu items.
   _dt_core_pol_menu_footer();
@@ -110,4 +128,37 @@ function dt_core_pol_update_7106() {
 
   // Create the menu items.
   _dt_core_pol_menu_footer();
+}
+
+/**
+ * NEXTEUROPA-7954: Enabling political subtheme.
+ */
+function dt_core_pol_update_7107() {
+  // Enabling  political theme and setting it as the default one.
+  theme_enable(array('political'));
+  variable_set('theme_default', 'political');
+
+  // Title of the menu item used as the home page link in the breadcrumb.
+  $mlid = _dt_core_menu_item_name_get('[site:name]', 'menu-breadcrumb-menu');
+  if (is_numeric($mlid)) {
+    $menu_item = menu_link_load($mlid);
+    $menu_item['link_title'] = 'Priorities';
+    $menu_item['weight'] = 1;
+    menu_link_save($menu_item);
+  }
+
+  // Set the homepage.
+  $nid = variable_get('dt_priority_page_id', '88');
+  variable_set('site_frontpage', 'node/' . $nid);
+  // Set alias for the home page.
+  $node = node_load($nid);
+  $node->path = array('alias' => 'index', 'pathauto' => 0);
+  node_save($node);
+}
+
+/**
+ * NEXTEUROPA-8072: Set id to the feedback form, same as CWT for now.
+ */
+function dt_core_pol_update_7108() {
+  variable_set('nexteuropa_feedback_form_id', '1040');
 }

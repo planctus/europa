@@ -8,6 +8,8 @@ drupal.db.password =
 
 # Project init.
 subsite.name = Commissioners
+subsite.production.key = cwt
+subsite.production.root = http://ec.europa.eu/commission
 subsite.install.modules = cwt_core
 drush.verbose = false
 
@@ -29,4 +31,4 @@ drush.alias.acquia = ecfpfis.prod
 # MULTISITE release
 # ------------------
 # Project folder in MULTISITE SVN
-phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/cwt
+phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

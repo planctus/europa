@@ -10,7 +10,7 @@
 function dt_pri_policy_area_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_background'
+  // Exported field_instance: 'node-priority_policy_area-field_core_background'.
   $field_instances['node-priority_policy_area-field_core_background'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -35,7 +35,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 26,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -89,7 +89,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_banner'
+  // Exported field_instance: 'node-priority_policy_area-field_core_banner'.
   $field_instances['node-priority_policy_area-field_core_banner'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -124,7 +124,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -151,7 +151,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_child_policies'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_child_policies'.
   $field_instances['node-priority_policy_area-field_core_child_policies'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -186,7 +187,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 34,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -212,7 +213,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_departments'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_departments'.
   $field_instances['node-priority_policy_area-field_core_departments'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -238,13 +240,13 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 4,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 21,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -270,7 +272,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_description'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_description'.
   $field_instances['node-priority_policy_area-field_core_description'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -348,7 +351,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_featured_item'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_featured_item'.
   $field_instances['node-priority_policy_area-field_core_featured_item'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -383,7 +387,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -409,7 +413,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_header_image'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_header_image'.
   $field_instances['node-priority_policy_area-field_core_header_image'] = array(
     'bundle' => 'priority_policy_area',
     'deleted' => 0,
@@ -435,7 +440,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 30,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -492,11 +497,11 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_image'
+  // Exported field_instance: 'node-priority_policy_area-field_core_image'.
   $field_instances['node-priority_policy_area-field_core_image'] = array(
     'bundle' => 'priority_policy_area',
     'deleted' => 0,
@@ -592,11 +597,12 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_introduction'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_introduction'.
   $field_instances['node-priority_policy_area-field_core_introduction'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -621,7 +627,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -672,11 +678,12 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_legacy_link'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_legacy_link'.
   $field_instances['node-priority_policy_area-field_core_legacy_link'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -700,7 +707,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -738,11 +745,77 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_links'
+  // Exported field_instance: 'node-priority_policy_area-field_core_link'.
+  $field_instances['node-priority_policy_area-field_core_link'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Used mainly for Call to Action button value.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 52,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_link',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-priority_policy_area-field_core_links'.
   $field_instances['node-priority_policy_area-field_core_links'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -772,7 +845,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 36,
       ),
       'token' => array(
         'label' => 'above',
@@ -820,7 +893,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_next_steps'
+  // Exported field_instance: 'node-priority_policy_area-field_core_next_steps'.
   $field_instances['node-priority_policy_area-field_core_next_steps'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -846,7 +919,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 38,
       ),
       'title' => array(
         'label' => 'above',
@@ -877,7 +950,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_objective'
+  // Exported field_instance: 'node-priority_policy_area-field_core_objective'.
   $field_instances['node-priority_policy_area-field_core_objective'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -902,7 +975,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -956,7 +1029,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_parent'
+  // Exported field_instance: 'node-priority_policy_area-field_core_parent'.
   $field_instances['node-priority_policy_area-field_core_parent'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -988,7 +1061,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 18,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1009,11 +1082,11 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_persons'
+  // Exported field_instance: 'node-priority_policy_area-field_core_persons'.
   $field_instances['node-priority_policy_area-field_core_persons'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1036,13 +1109,13 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 2,
         ),
         'type' => 'context_nav_item',
-        'weight' => 3,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 35,
       ),
       'title' => array(
         'label' => 'above',
@@ -1074,7 +1147,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_policy_areas'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_policy_areas'.
   $field_instances['node-priority_policy_area-field_core_policy_areas'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1097,13 +1171,13 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 1,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 37,
       ),
       'title' => array(
         'label' => 'above',
@@ -1135,7 +1209,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_publications'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_publications'.
   $field_instances['node-priority_policy_area-field_core_publications'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1170,7 +1245,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 28,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1187,7 +1262,6 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -1196,7 +1270,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_section_intro'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_section_intro'.
   $field_instances['node-priority_policy_area-field_core_section_intro'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1221,7 +1296,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 29,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1275,7 +1350,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_social_network_links'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_social_network_links'.
   $field_instances['node-priority_policy_area-field_core_social_network_links'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1302,7 +1378,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 33,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1324,11 +1400,11 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_topics'
+  // Exported field_instance: 'node-priority_policy_area-field_core_topics'.
   $field_instances['node-priority_policy_area-field_core_topics'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1354,13 +1430,13 @@ function dt_pri_policy_area_default_field_default_field_instances() {
           'expander_trim_to' => 0,
         ),
         'type' => 'context_nav_item',
-        'weight' => 2,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 20,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1386,7 +1462,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_type_content'
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_type_content'.
   $field_instances['node-priority_policy_area-field_core_type_content'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1410,7 +1487,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 17,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1433,7 +1510,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-group_content_access'
+  // Exported field_instance: 'node-priority_policy_area-group_content_access'.
   $field_instances['node-priority_policy_area-group_content_access'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1457,7 +1534,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 32,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1481,7 +1558,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-og_group_ref'
+  // Exported field_instance: 'node-priority_policy_area-og_group_ref'.
   $field_instances['node-priority_policy_area-og_group_ref'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1507,7 +1584,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 27,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1542,7 +1619,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-title_field'
+  // Exported field_instance: 'node-priority_policy_area-title_field'.
   $field_instances['node-priority_policy_area-title_field'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => NULL,
@@ -1643,6 +1720,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Image');
   t('Introduction');
   t('Legacy link');
+  t('Link');
   t('Name of the priority policy area');
   t('Next steps');
   t('Objectives');
@@ -1667,6 +1745,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');
   t('Title');
   t('Type selection');
+  t('Used mainly for Call to Action button value.');
 
   return $field_instances;
 }

@@ -36,7 +36,7 @@
     <div class="container-fluid">
       <div class="row">
         <?php if(!empty($top) || !empty($local_tabs) || !empty($messages)): ?>
-          <section class="section col-md-12 <?php print $top_classes; ?>">
+          <section class="section section--content-top col-md-12 <?php print $top_classes; ?>">
             <?php if (!empty($local_tabs)): ?>
               <?php print $local_tabs; ?>
             <?php endif; ?>
@@ -51,7 +51,7 @@
       <div class="row">
         <a id="main-content" tabindex="-1"></a>
         <?php if (isset($left) && !empty($left)): ?>
-          <<?php print $left_wrapper; ?> class="col-lg-3 <?php print $left_classes; ?>">
+          <<?php print $left_wrapper; ?> class="col-md-3 <?php print $left_classes; ?>">
             <?php print $left; ?>
           </<?php print $left_wrapper; ?>>
         <?php endif; ?>

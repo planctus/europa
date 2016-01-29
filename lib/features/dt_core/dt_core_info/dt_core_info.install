@@ -74,3 +74,38 @@ function dt_core_info_update_7102() {
 function dt_core_info_update_7103() {
   features_revert(array('dt_core_info' => array('variable')));
 }
+
+/**
+ * NEXTEUROPA-7954 - Disabling menu items in the breadcrumb menu.
+ */
+function dt_core_info_update_7104() {
+  // Load the menu links and set it as hidden.
+  $items = menu_load_links('menu-breadcrumb-menu');
+  foreach ($items as $item) {
+    $item['hidden'] = TRUE;
+    menu_link_save($item);
+  }
+}
+
+/**
+ * NEXTEUROPA-8077: Enabling "Policy work" related content types.
+ */
+function dt_core_info_update_7105() {
+  $content_types = array(
+    'dt_coordination_default',
+    'dt_consultation_default',
+    'dt_funding_default',
+    'dt_guidance_default',
+    'dt_impact_assessment_default',
+    'dt_law_default',
+    'dt_tender_default',
+  );
+  module_enable($content_types);
+}
+
+/**
+ * NEXTEUROPA-8080: Granting various permissions for release of political.
+ */
+function dt_core_info_update_7106() {
+  _dt_roles_permissions_import_import('all');
+}

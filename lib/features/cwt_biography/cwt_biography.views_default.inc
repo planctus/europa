@@ -217,14 +217,18 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_team_term']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_team_term']['alter']['text'] = '<span class="term">([field_team_term])</span>';
   $handler->display->display_options['fields']['field_team_term']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['field_biography_role']['id'] = 'field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['table'] = 'field_data_field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['field'] = 'field_biography_role';
-  $handler->display->display_options['fields']['field_biography_role']['label'] = '';
-  $handler->display->display_options['fields']['field_biography_role']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_role']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_biography_role']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_team_term']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: role_masculine */
+  $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['table'] = 'field_data_name_field';
+  $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['relationship'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['fields']['name_field']['ui_name'] = 'role_masculine';
+  $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
   /* Field: Taxonomy term: Feminine form */
   $handler->display->display_options['fields']['field_biography_role_feminine']['id'] = 'field_biography_role_feminine';
   $handler->display->display_options['fields']['field_biography_role_feminine']['table'] = 'field_data_field_biography_role_feminine';
@@ -243,7 +247,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_gender']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="role">[field_biography_role_feminine]</span>';
   $handler->display->display_options['fields']['field_gender']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="role">[field_biography_role]</span>';
+  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="role">[name_field]</span>';
   $handler->display->display_options['fields']['field_gender']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
   /* Field: Content: First name */
@@ -278,10 +282,10 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta meta--header">
-<div class="meta__item meta__item--type">[field_gender] [field_team_term]</div>
-</div>
-<h1>[field_biography_last_name]</h1>
-<p>[field_biography_tagline]</p>';
+  <div class="meta__item meta__item--type">[field_gender] [field_team_term]</div>
+  </div>
+  <h1>[field_biography_last_name]</h1>
+  <p>[field_biography_tagline]</p>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
@@ -1566,7 +1570,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact [title_1]';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact';
   $handler->display->display_options['fields']['title_1']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_wrapper_type'] = '0';
@@ -1653,7 +1657,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['label'] = '';
   $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact [field_biography_address_name_line]';
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'Contact';
   $handler->display->display_options['fields']['title_1']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_1']['element_wrapper_type'] = '0';

@@ -118,10 +118,10 @@ function dt_page_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
           'weight' => '14',

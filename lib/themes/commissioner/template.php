@@ -6,6 +6,18 @@
  */
 
 /**
+ * Implements template_preprocess_page().
+ */
+function commissioner_preprocess_page(&$variables) {
+  // Prepare the url for the "external" homepage.
+  global $language;
+  $delimiter = variable_get('language_suffix_delimiter', '_');
+  $suffix = $delimiter . $language->prefix;
+  // Set a variable containing the external url to point to.
+  $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
+}
+
+/**
  * Returns an array with singular and plural form of a bundle.
  *
  * @param string $bundle
@@ -123,6 +135,10 @@ function commissioner_preprocess_html(&$variables) {
  * Implements template_preprocess_node().
  */
 function commissioner_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'team_cabinet_member') {
+    $variables['content']['body']['#title'] = t('Responsibilities');
+  }
+
   unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 

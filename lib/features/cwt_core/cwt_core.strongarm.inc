@@ -693,6 +693,15 @@ function cwt_core_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'team_description' => array(
+        'custom_settings' => TRUE,
+      ),
+      'meta' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -709,6 +718,10 @@ function cwt_core_strongarm() {
       'display' => array(
         'description' => array(
           'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'team_description' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),
@@ -1247,6 +1260,13 @@ function cwt_core_strongarm() {
   $strongarm->name = 'dt_social_media_sharing_text';
   $strongarm->value = '<span class="social-media-links__label">Share this page:</span>';
   $export['dt_social_media_sharing_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 0;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   return $export;
 }

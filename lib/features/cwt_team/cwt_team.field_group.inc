@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_team_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_activities|node|team|form'] = $field_group;
+  $field_groups['group_team_activities|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -63,7 +63,37 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_comissioners|node|team|college'] = $field_group;
+  $field_groups['group_team_comissioners|node|team|college'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_contact|node|team|full';
+  $field_group->group_name = 'group_team_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact the team',
+    'weight' => '3',
+    'children' => array(
+      0 => 'group_team_row',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact the team',
+      'instance_settings' => array(
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => 'section__group--full-width',
+        'layout' => '',
+        'classes' => 'section__group--highlight-grey row',
+      ),
+    ),
+  );
+  $field_groups['group_team_contact|node|team|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -97,7 +127,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_content|node|team|form'] = $field_group;
+  $field_groups['group_team_content|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -111,9 +141,7 @@ function cwt_team_field_group_info() {
   $field_group->data = array(
     'label' => 'Disable group',
     'weight' => '21',
-    'children' => array(
-      0 => 'subscriptions_ui',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'formatter' => '',
@@ -127,7 +155,35 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_disable|node|team|college'] = $field_group;
+  $field_groups['group_team_disable|node|team|college'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_files|node|team|college';
+  $field_group->group_name = 'group_team_files';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'college';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Files',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_team_attachments',
+      1 => 'social_bookmark_webtools',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Files',
+      'instance_settings' => array(
+        'modifier' => '',
+        'layout' => 'col-md-8',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_team_files|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -154,7 +210,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_links|node|team|college'] = $field_group;
+  $field_groups['group_team_links|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -181,7 +237,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_members|node|team|college'] = $field_group;
+  $field_groups['group_team_members|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -206,7 +262,36 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_members|node|team|form'] = $field_group;
+  $field_groups['group_team_members|node|team|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_members|node|team|full';
+  $field_group->group_name = 'group_team_members';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Team members',
+    'weight' => '5',
+    'children' => array(
+      0 => 'team_members',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Team members',
+      'instance_settings' => array(
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => 'col-md-8',
+        'classes' => 'group-team-members field-group-section_group',
+      ),
+    ),
+  );
+  $field_groups['group_team_members|node|team|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -236,7 +321,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_metadata|node|team|form'] = $field_group;
+  $field_groups['group_team_metadata|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -262,7 +347,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_meta|node|team|college'] = $field_group;
+  $field_groups['group_team_meta|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -291,7 +376,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_president|node|team|college'] = $field_group;
+  $field_groups['group_team_president|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -319,32 +404,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_priorities|node|team|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_tab_name|node|team|college';
-  $field_group->group_name = 'group_team_tab_name';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = 'group_team_tabs';
-  $field_group->data = array(
-    'label' => 'Name',
-    'weight' => '7',
-    'children' => array(
-      0 => 'cwt_team_name',
-    ),
-    'format_type' => 'bootstrap_fieldgroup_nav_item',
-    'format_settings' => array(
-      'label' => 'Name',
-      'instance_settings' => array(
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_team_tab_name|node|team|college'] = $field_group;
+  $field_groups['group_team_priorities|node|team|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -371,7 +431,62 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_role|node|team|college'] = $field_group;
+  $field_groups['group_team_role|node|team|college'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_row|node|team|full';
+  $field_group->group_name = 'group_team_row';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_team_contact';
+  $field_group->data = array(
+    'label' => 'Row',
+    'weight' => '45',
+    'children' => array(
+      0 => 'team_contact_image',
+      1 => 'team_contacts',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Row',
+      'instance_settings' => array(
+        'classes' => 'row',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_team_row|node|team|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_team_tab_name|node|team|college';
+  $field_group->group_name = 'group_team_tab_name';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'team';
+  $field_group->mode = 'college';
+  $field_group->parent_name = 'group_team_tabs';
+  $field_group->data = array(
+    'label' => 'Name',
+    'weight' => '7',
+    'children' => array(
+      0 => 'cwt_team_name',
+    ),
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
+    'format_settings' => array(
+      'label' => 'Name',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_team_tab_name|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -396,7 +511,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tab_project_team|node|team|college'] = $field_group;
+  $field_groups['group_team_tab_project_team|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -421,7 +536,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tab_role|node|team|college'] = $field_group;
+  $field_groups['group_team_tab_role|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -451,7 +566,7 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_tabs|node|team|college'] = $field_group;
+  $field_groups['group_team_tabs|node|team|college'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -480,175 +595,29 @@ function cwt_team_field_group_info() {
       ),
     ),
   );
-  $export['group_team_top_image|node|team|college'] = $field_group;
+  $field_groups['group_team_top_image|node|team|college'] = $field_group;
 
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_disable|node|team|college';
-  $field_group->group_name = 'group_team_disable';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Disable group',
-    'weight' => '21',
-    'children' => array(
-      0 => 'subscriptions_ui',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => 'group-team-disable field-group-html-element',
-        'attributes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_team_disable|node|team|college'] = $field_group;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Activities');
+  t('Commissioners');
+  t('Contact the team');
+  t('Content');
+  t('Disable group');
+  t('Files');
+  t('Horizontal tabs');
+  t('Links');
+  t('Members');
+  t('Meta');
+  t('Metadata');
+  t('Name');
+  t('President');
+  t('Priorities');
+  t('Project team');
+  t('Role');
+  t('Row');
+  t('Team members');
+  t('Top image');
 
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_comissioners|node|team|college';
-  $field_group->group_name = 'group_team_comissioners';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Commissioners',
-    'weight' => '8',
-    'children' => array(
-      0 => 'group_team_tabs',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Commissioners',
-      'instance_settings' => array(
-        'modifier' => '',
-        'layout' => 'col-md-8',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_team_comissioners|node|team|college'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_disable|node|team|college';
-  $field_group->group_name = 'group_team_disable';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Disable group',
-    'weight' => '21',
-    'children' => array(
-      0 => 'subscriptions_ui',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => 'group-team-disable field-group-html-element',
-        'attributes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_team_disable|node|team|college'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_files|node|team|college';
-  $field_group->group_name = 'group_team_files';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Files',
-    'weight' => '9',
-    'children' => array(
-      0 => 'field_team_attachments',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Files',
-      'instance_settings' => array(
-        'modifier' => '',
-        'layout' => 'col-md-8',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_team_files|node|team|college'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_links|node|team|college';
-  $field_group->group_name = 'group_team_links';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Links',
-    'weight' => '5',
-    'children' => array(
-      0 => 'field_team_links',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Links',
-      'instance_settings' => array(
-        'modifier' => '',
-        'layout' => 'col-md-9',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_team_links|node|team|college'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_members|node|team|college';
-  $field_group->group_name = 'group_team_members';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'team';
-  $field_group->mode = 'college';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Members',
-    'weight' => '7',
-    'children' => array(
-      0 => 'group_team_president',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Members',
-      'instance_settings' => array(
-        'modifier' => '',
-        'layout' => 'col-md-8',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_team_members|node|team|college'] = $field_group;
-
-  return $export;
+  return $field_groups;
 }

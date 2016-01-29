@@ -514,6 +514,7 @@ function _europa_field_component_listing($variables, $config) {
 function europa_field($variables) {
   $element = $variables['element'];
   $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
+
   switch ($field_type) {
     case 'entityreference':
       if ($element['#formatter'] == 'entityreference_entity_view') {
@@ -592,12 +593,16 @@ function europa_field($variables) {
   else {
     $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
     foreach ($variables['items'] as $delta => $item) {
+      // We should pass along the parent object if we have access to it.
+      if (isset($item['#file']) && isset($variables['element']['#object'])) {
+        $item['#file']->entity = $variables['element']['#object'];
+      }
       $output .= drupal_render($item);
     }
     $output .= '</div>';
 
     // Render the top-level DIV.
-    $output = '<div class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
+    $output = '<div ' . $variables['attributes'] . ' class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
   }
 
   return $output;
@@ -614,9 +619,42 @@ function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_s
 }
 
 /**
+ * Generate the first breadcrumb items basing on a custom menu.
+ */
+function _europa_breadcrumb_menu(&$variables) {
+  $menu_links = menu_tree('menu-dt-breadcrumb-menu');
+  $new_items = array();
+  global $language;
+  $front = drupal_is_front_page();
+
+  if (!empty($menu_links)) {
+    $i = 0;
+    foreach ($menu_links as $key => $menu_item) {
+      if (is_numeric($key)) {
+        // We don't want to show the home link in the home page.
+        if (!($front && $menu_item['#href'] == '<front>')) {
+          $options = array('language' => $language);
+          $title = token_replace($menu_item['#title'], $menu_item, $options);
+          $new_items[] = _easy_breadcrumb_build_item($title, array(), $menu_item['#href']);
+          $i++;
+        }
+      }
+    }
+
+    if (!empty($new_items)) {
+      // The menu is used as the starting point of the breadcrumb.
+      $variables['breadcrumb'] = array_merge($new_items, $variables['breadcrumb']);
+      // Alter the number of segments in the breadcrumb.
+      $variables['segments_quantity'] += $i;
+    }
+  }
+}
+
+/**
  * Override theme_easy_breadcrumb().
  */
-function europa_easy_breadcrumb($variables) {
+function europa_easy_breadcrumb(&$variables) {
+  _europa_breadcrumb_menu($variables);
   $breadcrumb = $variables['breadcrumb'];
   $segments_quantity = $variables['segments_quantity'];
   $html = '';
@@ -674,11 +712,15 @@ function europa_easy_breadcrumb($variables) {
  *   File object.
  * @param array $url
  *   Url depending on field type.
+ * @param string $modifier
+ *   Class modefier for the file block element.
+ * @param bool $subfile
+ *   True/False parameter to set if it is a subfile.
  *
  * @return string
  *   HTML markup.
  */
-function _europa_file_markup($file, array $url, $modifier = NULL) {
+function _europa_file_markup($file, array $url, $modifier = NULL, $subfile = FALSE) {
   switch ($file->type) {
     case 'image':
       $file_class = 'file--image';
@@ -711,16 +753,47 @@ function _europa_file_markup($file, array $url, $modifier = NULL) {
   $file_name = $file->uri;
   $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
 
-  $file_info = '<div class="file__info">' . $file_size . ' - ' . $file_extension . '</div>';
+  // Get our full language string.
+  if (isset($file->language)) {
+    $file_language_string = _dt_shared_functions_get_language_obj($file->language);
+  }
 
-  // Use the description as the link text if available.
-  if (!empty($file->description)) {
-    $file_title = '<span class="file__title">' . $file->description . '</span>';
-    $options['attributes']['title'] = check_plain($file->filename);
+  // If we have a full language string and it's not a subfile, we add it to the
+  // file information.
+  $file_language = '';
+  if (isset($file_language_string) && !$subfile) {
+    $file_language = '<span class="file__contentlanguage">' . $file_language_string . ' </span>';
+  }
+
+  // File information and title setter.
+  if ($subfile) {
+    $file_info_string = $file_size . ' - ' . $file_extension;
+    $title_string = $file_language_string . ' ' . t('version');
   }
   else {
-    $file_title = '<span class="file__title">' . $file->filename . '</span>';
+    $file_info_string = $file_language . '(' . $file_size . ' - ' . $file_extension . ')';
+
+    // Use the description as the link text if available.
+    if (isset($file->entity)) {
+      // We have access to the entity, so we can use that title.
+      $file_wrapper = entity_metadata_wrapper('node', $file->entity);
+      $title_string = $file_wrapper->title->value();
+    }
+    else {
+      if (!empty($file->description)) {
+        $title_string = $file->description;
+        $options['attributes']['title'] = check_plain($file->filename);
+      }
+      else {
+        $title_string = $file->filename;
+      }
+    }
   }
+
+  // File markup parts.
+  $file_info = '<div class="file__info">' . $file_info_string . '</div>';
+
+  $file_title = '<span class="file__title">' . $title_string . '</span>';
 
   $file_metadata = '<div class="file__metadata">' . $file_title . $file_info . '</div>';
 
@@ -739,7 +812,7 @@ function _europa_file_markup($file, array $url, $modifier = NULL) {
 
   $file_btn = l($file_text, $url['path'], array_merge($options, $url['options']));
 
-  return '<div class="file ' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
+  return '<div class="file file--widebar ' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
 }
 
 /**
@@ -747,6 +820,13 @@ function _europa_file_markup($file, array $url, $modifier = NULL) {
  */
 function europa_file_link($variables) {
   $file = $variables['file'];
+
+  // Submit the language along witht the file.
+  $langcode = $GLOBALS['language_content']->language;
+  if (!empty($langcode)) {
+    $file->language = $langcode;
+  }
+
   $url['path'] = file_create_url($file->uri);
   $url['options'] = array();
 
@@ -758,6 +838,13 @@ function europa_file_link($variables) {
  */
 function europa_file_entity_download_link($variables) {
   $file = $variables['file'];
+
+  // Submit the language along witht the file.
+  $langcode = $GLOBALS['language_content']->language;
+  if (!empty($langcode)) {
+    $file->language = $langcode;
+  }
+
   $uri = file_entity_download_uri($file);
 
   return _europa_file_markup($file, $uri);
@@ -921,6 +1008,28 @@ function europa_preprocess_field(&$variables) {
       $variables['element']['after'] = l(t('Other social networks'), variable_get('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/index_en.htm'));
       break;
   }
+
+  if ($variables['element']['#field_type'] <> 'ds') {
+    // Get more field information.
+    $field = field_info_field($variables['element']['#field_name']);
+    // Inintialize parameter.
+    $allow_attribute = TRUE;
+    // If it is not a tranlateable entityreference field we should continue.
+    if ($field['type'] == "entityreference" && $field['translatable'] == 0) {
+      $allow_attribute = FALSE;
+    }
+
+    if ($allow_attribute) {
+      // The default language code.
+      $content_langcode = $GLOBALS['language_content']->language;
+      // When the language is different from content.
+      if (isset($variables['element']['#language']) && $variables['element']['#language'] <> LANGUAGE_NONE && $variables['element']['#language'] <> $content_langcode) {
+        $variables['attributes_array']['lang'] = $variables['element']['#language'];
+      }
+    }
+  }
+  // Set the attributes to the element.
+  $variables['attributes'] = empty($variables['attributes_array']) ? '' : drupal_attributes($variables['attributes_array']);
 }
 
 /**
@@ -949,6 +1058,14 @@ function europa_preprocess_html(&$variables) {
   $language = $variables['language'];
   if (isset($language->prefix)) {
     $variables['classes_array'][] = 'language-' . $language->prefix;
+  }
+
+  // Add site information. This is just a temporary solution.
+  if (module_exists('dt_core_pol')) {
+    $variables['classes_array'][] = 'site-political';
+  }
+  elseif (module_exists('dt_core_info')) {
+    $variables['classes_array'][] = 'site-information';
   }
 
   // Add the ie9 only css.
@@ -1009,14 +1126,8 @@ function europa_preprocess_node(&$variables) {
     $variables['node_url'] = $variables['legacy'];
   }
 
-  if ($variables['view_mode'] == 'team_cabinet_member') {
-    $node_title = filter_xss($variables['node']->title);
-    $node_nid = $variables['node']->nid;
-    $class = array('field__title');
-    $variables['title_prefix'] = '<h3 class="listing__title">';
-    $variables['title'] = l($node_title, 'node/' . $node_nid, $attributes = array($class));
-    $variables['title_suffix'] = '</h3>';
-  }
+  // Add the language attribute.
+  $variables['attributes_array']['lang'] = entity_translation_get_existing_language('node', $variables['node']);
 }
 
 /**
@@ -1025,7 +1136,6 @@ function europa_preprocess_node(&$variables) {
 function europa_preprocess_page(&$variables) {
   // Small fix to maxe the link to the start page use the alias with language.
   $variables['front_page'] = url('<front>');
-
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['content_column_class'] = 'col-md-6';
@@ -1044,6 +1154,8 @@ function europa_preprocess_page(&$variables) {
   else {
     $variables['footer_column_class'] = 'col-sm-12';
   }
+
+  $variables['page_logo_title'] = t('Home - @sitename', array('@sitename' => variable_get('site_name', 'European Commission')));
 
   $node = &$variables['node'];
 
@@ -1088,15 +1200,6 @@ function europa_preprocess_page(&$variables) {
  */
 function europa_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-
-  if ($view->style_plugin->definition['theme'] == 'views_view_unformatted') {
-    $variables['classes_array'][] = 'listing';
-
-    if (isset($view->style_plugin->row_plugin->options['view_mode'])) {
-      $view_mode = $view->style_plugin->row_plugin->options['view_mode'];
-      $variables['classes_array'][] = 'listing--' . $view_mode;
-    }
-  }
 
   // Checking if exposed filters are set and add variable that stores active
   // filters.

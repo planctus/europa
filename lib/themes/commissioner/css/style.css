@@ -4,6 +4,12 @@
     width: 100%;
     margin-bottom: 2em; }
 
+.node-type-team .page-content {
+  margin-top: 0; }
+
+.node-type-team .section--content-top > .section__group--full-width {
+  padding-top: 1.667em; }
+
 .field--field-social-networks .dt_social_network_links {
   float: left;
   margin-right: 0.3em; }
@@ -14,5 +20,105 @@
 
 .field--collapse-button * {
   margin-bottom: 0; }
+
+/*
+Listing  2rows
+
+Listing components
+
+Markup: html/listing--2rows.html
+
+
+Styleguide listing.listing--2rows
+*/
+.listing--2rows .listing__item {
+  padding: 1em 0;
+  position: relative; }
+
+.listing--2rows .listing__top {
+  min-height: 130px;
+  position: relative; }
+  .listing--2rows .listing__top img {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+.listing--2rows h3 {
+  color: #575757;
+  padding-top: 0; }
+
+.listing--2rows .field--field-biography-tagline {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 0.8em; }
+
+.listing--2rows .field {
+  margin: 0.5em 0 0; }
+
+.listing--2rows .listing__title + * {
+  font-size: inherit; }
+
+.listing--2rows .field__label,
+.listing--2rows .field-title {
+  padding: 0;
+  font-size: 0.889em;
+  font-weight: 600;
+  float: left;
+  width: 25%; }
+
+.listing--2rows .field-title {
+  margin-bottom: 0.5em;
+  padding-top: 0.5em;
+  line-height: 1em; }
+
+.listing--2rows .listing__bottom {
+  clear: both; }
+  .listing--2rows .listing__bottom ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-left: 1em; }
+
+.listing--2rows .field-name-body .field-items {
+  width: 100%; }
+
+@media (min-width: 480px) {
+  .listing--2rows .listing__top img {
+    display: block; }
+  .listing--2rows .field-title {
+    margin-bottom: 0; }
+  .listing--2rows .field-name-body .field-items {
+    width: 75%;
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+.section__group--highlight-grey#collapse .row {
+  padding-left: 1em; }
+
+.section__group--highlight-grey#collapse .col-separator-left {
+  border-left: none; }
+
+@media screen and (min-width: 980px) {
+  .section__group--highlight-grey#collapse .col-separator-left {
+    border-left: 1px solid #b3b4b5; }
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative; }
+    .group-bio-col .group-bio-top-footer {
+      position: absolute;
+      bottom: 0; } }
+
+.group-bio-col .group-bio-top-footer .icon-social::before {
+  top: -10px; }
+
+#team .field {
+  margin-bottom: 0.5em; }
+
+.section__group {
+  padding: 1.333em 0; }
+
+#block-cwt-core-translation-selector {
+  float: left; }
 
 /*# sourceMappingURL=style.css.map */
