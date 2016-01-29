@@ -35,6 +35,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -56,17 +57,17 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_departments' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
     'field_core_featured_item' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
-    'field_core_policy_areas' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Part of priority',
         ),
       ),
     ),
@@ -80,6 +81,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -98,6 +100,7 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -106,6 +109,20 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_minimal',
           'lb-col' => TRUE,
+        ),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Commissioners',
+        ),
+      ),
+    ),
+    'field_core_policy_areas' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Part of priority',
         ),
       ),
     ),
@@ -119,13 +136,21 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_topics' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Topics',
         ),
       ),
     ),
     'field_core_parent' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Priority',
+          'lb' => 'Political priorities',
         ),
       ),
     ),
@@ -192,16 +217,16 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
         0 => 'content_type_label',
         1 => 'group_pri_pol_area_meta',
         4 => 'title',
-        7 => 'field_core_introduction',
+        5 => 'field_core_introduction',
       ),
       'central' => array(
         2 => 'field_core_featured_item',
-        5 => 'latest_announcements_block',
-        12 => 'group_pri_pol_policy_areas',
-        14 => 'field_core_background',
-        15 => 'group_pri_pol_area_latest',
+        3 => 'latest_announcements_block',
+        8 => 'group_pri_pol_policy_areas',
+        11 => 'group_pri_pol_area_latest',
+        13 => 'field_core_background',
+        15 => 'group_pri_pol_area_background',
         16 => 'field_core_objective',
-        17 => 'group_pri_pol_area_background',
         18 => 'group_pri_pol_area_documents',
         19 => 'group_pri_pol_area_whatnext',
         20 => 'field_core_publications',
@@ -215,34 +240,34 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
         28 => 'group_pri_pol_area_latest_sbar',
       ),
       'top' => array(
-        3 => 'field_core_policy_areas',
-        6 => 'field_core_topics',
-        8 => 'field_core_persons',
-        9 => 'group_pri_pol_area_contextual',
-        10 => 'field_core_departments',
-        11 => 'field_core_banner',
-        13 => 'field_core_parent',
+        6 => 'group_pri_pol_area_contextual',
+        7 => 'field_core_banner',
+        9 => 'field_core_parent',
+        10 => 'field_core_policy_areas',
+        12 => 'field_core_topics',
+        14 => 'field_core_persons',
+        17 => 'field_core_departments',
       ),
     ),
     'fields' => array(
       'content_type_label' => 'left_header',
       'group_pri_pol_area_meta' => 'left_header',
       'field_core_featured_item' => 'central',
-      'field_core_policy_areas' => 'top',
-      'title' => 'left_header',
       'latest_announcements_block' => 'central',
-      'field_core_topics' => 'top',
+      'title' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'field_core_persons' => 'top',
       'group_pri_pol_area_contextual' => 'top',
-      'field_core_departments' => 'top',
       'field_core_banner' => 'top',
       'group_pri_pol_policy_areas' => 'central',
       'field_core_parent' => 'top',
-      'field_core_background' => 'central',
+      'field_core_policy_areas' => 'top',
       'group_pri_pol_area_latest' => 'central',
-      'field_core_objective' => 'central',
+      'field_core_topics' => 'top',
+      'field_core_background' => 'central',
+      'field_core_persons' => 'top',
       'group_pri_pol_area_background' => 'central',
+      'field_core_objective' => 'central',
+      'field_core_departments' => 'top',
       'group_pri_pol_area_documents' => 'central',
       'group_pri_pol_area_whatnext' => 'central',
       'field_core_publications' => 'central',
