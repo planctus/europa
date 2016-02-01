@@ -154,6 +154,11 @@ Styleguide listing.listing--2rows
       bottom: 0;
     }
   }
+
+  // Translation selector should be replaced with site language switcher later.
+  #block-cwt-core-translation-selector {
+    float: left;
+  }
 }
 
 .group-bio-col {
@@ -173,9 +178,4 @@ Styleguide listing.listing--2rows
 
 .section__group {
   padding: 1.333em 0;
-}
-
-// Translation selector should be replaced with site language switcher later.
-#block-cwt-core-translation-selector {
-  float: left;
 }
