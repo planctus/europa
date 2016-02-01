@@ -31,6 +31,20 @@
     padding-top: 10px;
     width: 100%; }
 
+@media (min-width: 768px) {
+  .group-bio-col .group-bio-top-footer .field--collapse-button,
+  .group-bio-col .group-bio-top-footer .field--field-social-networks,
+  .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
+    display: table-cell;
+    width: auto; }
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative; }
+    .group-bio-col .group-bio-top-footer {
+      position: absolute;
+      bottom: 0; } }
+
 /*
 Listing  2rows
 
@@ -110,13 +124,6 @@ Styleguide listing.listing--2rows
 @media screen and (min-width: 980px) {
   .section__group--highlight-grey#collapse .col-separator-left {
     border-left: 1px solid #b3b4b5; }
-  .group-bio-col {
-    min-height: 160px;
-    padding-bottom: 2.5em;
-    position: relative; }
-    .group-bio-col .group-bio-top-footer {
-      position: absolute;
-      bottom: 0; }
   #block-cwt-core-translation-selector {
     float: left; } }
 

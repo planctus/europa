@@ -28,11 +28,37 @@
       }
     }
 
+    // Link to move things.
     .field--field-biography-av-portal {
       clear: both;
       display: block;
       padding-top: 10px;
       width: 100%;
+    }
+  }
+}
+
+// Desktop for the trio from above.
+@include breakpoint(screen-sm-min) {
+  .group-bio-col {
+    .group-bio-top-footer {
+      .field--collapse-button,
+      .field--field-social-networks,
+      .field--field-biography-av-portal {
+        display: table-cell;
+        width: auto;
+      }
+    }
+  }
+
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative;
+
+    .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
     }
   }
 }
@@ -156,17 +182,6 @@ Styleguide listing.listing--2rows
       .col-separator-left {
         border-left: 1px solid $grey;
       }
-    }
-  }
-
-  .group-bio-col {
-    min-height: 160px;
-    padding-bottom: 2.5em;
-    position: relative;
-
-    .group-bio-top-footer {
-      position: absolute;
-      bottom: 0;
     }
   }
 
