@@ -1,23 +1,39 @@
-.field--field-social-networks {
-  .dt_social_network_links {
-    float: left;
-    margin-right: 0.3em;
+// Biography.
+.group-bio-col {
+  .group-bio-top-footer {
+    display: block;
 
-    &:last-child {
-      margin-right: 0;
-    }
+    // Button to open contact details.
+    .field--collapse-button {
+      display: block;
+      margin: 1em 0;
 
-    .social_network_link {
-      &:after {
-        display: none;
+      * {
+        margin-bottom: 0;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
-  }
-}
 
-.field--collapse-button {
-  * {
-    margin-bottom: 0;
+    // Social networks list.
+    .field--field-social-networks {
+      display: block;
+
+      .icon-social {
+        display: block;
+        float: left;
+        margin-top: 5px;
+      }
+    }
+
+    .field--field-biography-av-portal {
+      clear: both;
+      display: block;
+      padding-top: 10px;
+      width: 100%;
+    }
   }
 }
 
@@ -27,7 +43,6 @@ Listing  2rows
 Listing components
 
 Markup: html/listing--2rows.html
-
 
 Styleguide listing.listing--2rows
 */
@@ -101,6 +116,18 @@ Styleguide listing.listing--2rows
   }
 }
 
+.section__group--highlight-grey {
+  &#collapse {
+    .row {
+      padding-left: 1em;
+    }
+
+    .col-separator-left {
+      border-left: none;
+    }
+  }
+}
+
 @include breakpoint(screen-xs-min) {
   .listing--2rows {
     .listing__top {
@@ -119,18 +146,6 @@ Styleguide listing.listing--2rows
         padding-left: 15px;
         padding-right: 15px;
       }
-    }
-  }
-}
-
-.section__group--highlight-grey {
-  &#collapse {
-    .row {
-      padding-left: 1em;
-    }
-
-    .col-separator-left {
-      border-left: none;
     }
   }
 }
@@ -158,14 +173,6 @@ Styleguide listing.listing--2rows
   // Translation selector should be replaced with site language switcher later.
   #block-cwt-core-translation-selector {
     float: left;
-  }
-}
-
-.group-bio-col {
-  .group-bio-top-footer {
-    .icon-social::before {
-      top: -10px;
-    }
   }
 }
 
