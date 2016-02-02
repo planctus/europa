@@ -37,7 +37,7 @@ function dt_policy_block_view($delta = '') {
 
       foreach ($inputs as $key => $item) {
         // Keep only consultations.
-        if ($item->type !== 'consultation' ) {
+        if ($item->type !== 'consultation') {
           unset($inputs[$key]);
         }
       }
