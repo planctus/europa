@@ -653,6 +653,8 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
 function commissioner_js_alter(&$js) {
   if (drupal_is_front_page()) {
     $europa_path = drupal_get_path('theme', 'europa');
+    $commis_path = drupal_get_path('theme', 'commissioner');
     unset($js[$europa_path . '/js/europa_tabs.js']);
+    drupal_add_js($commis_path . '/js/commissioner_tabs.js', 'file');
   }
 }
