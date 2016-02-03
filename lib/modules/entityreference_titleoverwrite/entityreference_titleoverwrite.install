@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Contains update and uninstall hooks for entityreference_titleoverwrite.
+ */
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Deletes the added field for every field using the module.
+ */
+function entityreference_titleoverwrite_uninstall() {
+  // Fetch all the fields.
+  $fields = field_info_fields();
+  // Loop through the fields.
+  foreach ($fields as $field_name => $field_data) {
+    // Only check for entityreference fields.
+    if (isset($field_data['type']) && $field_data['type'] == 'entityreference') {
+      // See if hit as ever been touched by the module.
+      if (isset($field_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status'])) {
+        // Set the schema name.
+        $field_schema_name = $field_name . '_title_override';
+        // The data table.
+        $data_table_name = 'field_data_' . $field_name;
+        if (db_field_exists($data_table_name, $field_schema_name)) {
+          // Delete the field.
+          db_drop_field($data_table_name, $field_schema_name);
+        }
+        // The revision table.
+        $revision_table_name = 'field_revision_' . $field_name;
+        if (db_field_exists($revision_table_name, $field_schema_name)) {
+          // Delete the field.
+          db_drop_field($revision_table_name, $field_schema_name);
+        }
+      }
+    }
+  }
+}
