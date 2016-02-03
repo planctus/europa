@@ -31,4 +31,4 @@ drush.alias.acquia = ecfpfis.prod
 # MULTISITE release
 # ------------------
 # Project folder in MULTISITE SVN
-phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/cwt
+phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

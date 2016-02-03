@@ -5,3 +5,53 @@
  */
 
 include_once 'dt_contact.features.inc';
+define('DT_CONTACT_PHONE_FIELD', 'field_contact_phone_number');
+
+/**
+ * Implements hook_node_view().
+ */
+function dt_contact_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'contact') {
+    // Check if the address thorouhfare and premise have a value
+    // hide these fields if they don't.
+    $field = 'field_contact_postal_mail';
+    $value = field_get_items('node', $node, $field);
+    if (isset($value)) {
+      if (!($value[0]['thoroughfare']) && !($value[0]['premise'])) {
+        unset($node->$field);
+      }
+    }
+    else {
+      unset($node->$field);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_node_form_alter().
+ *
+ * Extra validate callback specific for
+ * telephone numbers field.
+ */
+function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form[DT_CONTACT_PHONE_FIELD])) {
+    $form['#validate'][] = '_dt_contact_phone_validate';
+  }
+}
+
+/**
+ * Callback handler for phone field validation.
+ */
+function _dt_contact_phone_validate($form, &$form_state) {
+  $lang = $form[DT_CONTACT_PHONE_FIELD]['#language'];
+  if ($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']) {
+    $contact_phone = trim($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']);
+    // Validate the current phone number.
+    foreach (_dt_shared_functions_contactphone_patterns() as $pattern => $pattern_values) {
+      preg_match($pattern_values['pattern'], $contact_phone, $matches);
+      if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
+        form_set_error(DT_CONTACT_PHONE_FIELD, $pattern_values['explain']);
+      }
+    }
+  }
+}

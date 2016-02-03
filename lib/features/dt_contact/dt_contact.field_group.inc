@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_contact_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function dt_contact_field_group_info() {
       ),
     ),
   );
-  $export['group_contact_contact|node|contact|form'] = $field_group;
+  $field_groups['group_contact_contact|node|contact|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function dt_contact_field_group_info() {
       ),
     ),
   );
-  $export['group_contact_content|node|contact|form'] = $field_group;
+  $field_groups['group_contact_content|node|contact|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function dt_contact_field_group_info() {
       ),
     ),
   );
-  $export['group_contact_online_contact|node|contact|form'] = $field_group;
+  $field_groups['group_contact_online_contact|node|contact|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +120,7 @@ function dt_contact_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|contact|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|contact|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -150,7 +150,14 @@ function dt_contact_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|contact|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|contact|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Contact');
+  t('Content');
+  t('Editorial settings');
+  t('Online Contact');
+
+  return $field_groups;
 }

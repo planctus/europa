@@ -22,10 +22,103 @@ function dt_consultation_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * NEXTEUROPA-7203: Data Migration from Policy Input to Consultation.
  */
-/*
-function dt_consultation_update_7101() {
+function dt_consultation_update_7101($sandbox) {
+  $features = array('dt_policy', 'dt_policy_input', 'dt_consultation');
+  foreach ($features as $feature) {
+    features_revert_module($feature);
+  }
 
+  // Enable Node Convert module.
+  if (!module_exists('node_convert')) {
+    module_enable(array('node_convert'));
+  }
+
+  // Set up source.
+  $source_bundle = 'policy_input';
+  // Automatically converted source fields.
+  $source_fields = array(
+    'field_core_introduction',
+    'field_policy_input_status',
+  );
+  // Set up destination.
+  $destination_bundle = 'consultation';
+  // Automatically converted destination fields.
+  $destination_fields = array(
+    'field_core_description',
+    'field_consultation_status',
+  );
+  // Set up query.
+  $query = new EntityFieldQuery();
+  // Mount query.
+  $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', $source_bundle)
+        ->fieldCondition('field_policy_input_type', 'value', 'consultation', '=');
+  // Setup the amount of steps.
+  $limit = 100;
+
+  // Initialization.
+  if (!isset($sandbox['max'])) {
+    // Get the amount of processed nodes.
+    $count = $query->count()->execute();
+    $query->count = FALSE;
+    $sandbox['max'] = $count;
+    $sandbox['progress'] = 0;
+    $sandbox['position'] = 0;
+  }
+
+  $result = $query->range($sandbox['position'], $limit)->execute();
+
+  if (isset($result['node']) && !empty($result['node'])) {
+    $nids = array_keys($result['node']);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $nid => $source_node) {
+      // Automatic convert by node_convert module.
+      if (node_convert_node_convert($nid, $destination_bundle, $source_fields, $destination_fields, FALSE)) {
+        $destination_node = node_load($nid);
+        $source_wrapper = entity_metadata_wrapper('node', $source_node);
+        $destination_wrapper = entity_metadata_wrapper('node', $destination_node);
+        // Convert unsuported fields.
+        _dt_consultation_node_convert($source_node, $source_wrapper, $destination_wrapper);
+        // Storing new values.
+        $destination_wrapper->save();
+      }
+    }
+  }
+
+  // Nids needs to be empty for the next round.
+  unset($nids);
+  // Update the position.
+  $sandbox['position'] += $limit;
+
+  // Checking the finishing of the processing.
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
 }
+
+/**
+ * Helper function for migration on consultation.
+ *
+ * @param object $source_node
+ *                Source node.
+ * @param object $source_wrapper
+ *                Source wrapper.
+ * @param object $destination_wrapper
+ *                Destination wrapper.
  */
+function _dt_consultation_node_convert($source_node, $source_wrapper, &$destination_wrapper) {
+  // Description converter.
+  if (isset($source_node->field_core_introduction)) {
+    foreach ($source_node->field_core_introduction as $lang => $item) {
+      $destination_wrapper->language($lang)->field_core_description->set(strip_tags($item[0]['value']));
+    }
+  }
+
+  // Status converter.
+  $destination_wrapper->field_consultation_status->set('closed');
+}
