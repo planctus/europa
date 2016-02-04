@@ -897,4 +897,21 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
       $output['description']['#attached']['drupal_add_html_head'][0][0]['#value'] :
       truncate_utf8($output['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'], 152, TRUE, TRUE);
   }
+  // We use an alter hook instead of the features configuration to avoid
+  // overrides in the features.
+  if (isset($output['date']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
+    if (isset($options['entity_type']) && $options['entity_type'] == 'node') {
+      // Our token.
+      $token = '[dt_tokens:dt_publish_date]';
+      // Replaced.
+      $token_replaced = token_replace($token, array('node' => $options['entity']));
+      // Make sure that it has been replaced.
+      $replaced = !strpos($token_replaced, $token);
+      // Only when we have successfully replaced te token, we add it to our meta
+      // tag. In other cases we dont do anything with it.
+      if ($replaced) {
+        $output['date']['#attached']['drupal_add_html_head'][0][0]['#value'] = $token_replaced;
+      }
+    }
+  }
 }
