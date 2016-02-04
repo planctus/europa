@@ -96,14 +96,28 @@ function dt_policy_ds_field_settings_info() {
     'field_core_priorities' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Part of priority',
+          'lb' => 'Political priorities',
         ),
       ),
     ),
     'field_core_topics' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Part of topic',
+          'lb' => 'Topics',
+        ),
+      ),
+    ),
+    'field_core_department' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Commissioners',
         ),
       ),
     ),

@@ -50,6 +50,13 @@ function dt_page_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_departments' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
     'field_core_featured_item' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -57,10 +64,31 @@ function dt_page_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Commissioners',
+        ),
+      ),
+    ),
     'field_core_policy_area' => array(
       'formatter_settings' => array(
         'ft' => array(
           'lb' => 'Policy areas',
+        ),
+      ),
+    ),
+    'field_core_priorities' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Political priorities',
+        ),
+      ),
+    ),
+    'field_core_topics' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Topics',
         ),
       ),
     ),
@@ -161,18 +189,18 @@ function dt_page_ds_layout_settings_info() {
         4 => 'in_page_navigation',
       ),
       'central' => array(
-        5 => 'priorities_preprocess',
-        6 => 'group_page_priorities',
+        5 => 'group_page_priorities',
+        6 => 'priorities_preprocess',
         7 => 'group_page_free_field',
-        8 => 'group_page_latest_main',
-        9 => 'body',
+        8 => 'body',
+        9 => 'group_page_latest_main',
         10 => 'group_page_next_steps',
         11 => 'group_page_documents',
         12 => 'field_core_next_steps',
         13 => 'group_page_related_links',
         14 => 'field_core_featured_item',
-        15 => 'latest_announcements_block',
-        16 => 'group_page_latest',
+        15 => 'group_page_latest',
+        16 => 'latest_announcements_block',
         17 => 'group_page_latest_sidebar',
         18 => 'field_core_social_network_links',
         19 => 'field_core_publications',
@@ -185,18 +213,18 @@ function dt_page_ds_layout_settings_info() {
       'group_page_contextual_navigation' => 'top',
       'field_core_banner' => 'top',
       'in_page_navigation' => 'left',
-      'priorities_preprocess' => 'central',
       'group_page_priorities' => 'central',
+      'priorities_preprocess' => 'central',
       'group_page_free_field' => 'central',
-      'group_page_latest_main' => 'central',
       'body' => 'central',
+      'group_page_latest_main' => 'central',
       'group_page_next_steps' => 'central',
       'group_page_documents' => 'central',
       'field_core_next_steps' => 'central',
       'group_page_related_links' => 'central',
       'field_core_featured_item' => 'central',
-      'latest_announcements_block' => 'central',
       'group_page_latest' => 'central',
+      'latest_announcements_block' => 'central',
       'group_page_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',
       'field_core_publications' => 'central',
