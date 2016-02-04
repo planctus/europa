@@ -13,7 +13,7 @@
  * @return string
  *   The link, revisited.
  */
-function dt_core_menu_link($link, $lang = FALSE) {
+function _dt_core_menu_link($link, $lang = FALSE) {
   global $base_url;
   $lang = $lang ? $lang : LANGUAGE_NONE;
   if ($link != '<front>' &&  $link != '<nolink>') {
@@ -147,58 +147,13 @@ function _dt_core_create_node($type, $title, $path = 'node', $lang = LANGUAGE_NO
 }
 
 /**
- * Helper function to delete menu, menu links, taxonomies.
- */
-function _dt_core_delete($name, $type = 'menu', $op = 'items') {
-  switch ($type) {
-    case 'menu':
-      if ($op == 'items') {
-        menu_delete_links($name);
-      }
-      else {
-        menu_delete(array('menu_name' => $name));
-      }
-      break;
-
-    case 'vocabulary':
-      if ($op == 'items') {
-        $voc = taxonomy_vocabulary_machine_name_load($name);
-        if (!empty($voc)) {
-          $terms = taxonomy_get_tree($voc->vid);
-          foreach ($terms as $term) {
-            taxonomy_term_delete($term->tid);
-          }
-        }
-      }
-      else {
-        $voc = taxonomy_vocabulary_machine_name_load($name);
-        if (!empty($voc)) {
-          taxonomy_vocabulary_delete($voc->vid);
-        }
-      }
-      break;
-
-    case 'node':
-      $node_type = array($name);
-      $query = new EntityFieldQuery();
-      $query->entityCondition('entity_type', 'node')
-        ->propertyCondition('type', $node_type, 'IN');
-      $result = $query->execute();
-      foreach ($result['node'] as $node) {
-        node_delete($node->nid);
-      }
-      break;
-  }
-}
-
-/**
  * Helper function to get the mlid basing on the link name.
  */
-function _dt_core_menu_item_name_get($name, $voc) {
+function _dt_core_menu_item_name_get($name, $menu) {
   $mlid = db_select('menu_links', 'ml')
     ->fields('ml', array('mlid'))
     ->condition('link_title', $name)
-    ->condition('menu_name', $voc)
+    ->condition('menu_name', $menu)
     ->execute()
     ->fetchField();
 

@@ -693,6 +693,15 @@ function cwt_core_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'team_description' => array(
+        'custom_settings' => TRUE,
+      ),
+      'meta' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -709,6 +718,10 @@ function cwt_core_strongarm() {
       'display' => array(
         'description' => array(
           'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'team_description' => array(
             'weight' => '0',
             'visible' => TRUE,
           ),

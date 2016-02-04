@@ -17,20 +17,6 @@ function dt_contact_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'contact';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'title' => array(
-      'weight' => '0',
-      'label' => 'inline',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => '',
-        'class' => '',
-        'ft' => array(
-          'lb' => 'Name',
-          'lb-col' => TRUE,
-        ),
-      ),
-    ),
     'field_contact_email_address' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -72,16 +58,13 @@ function dt_contact_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'title' => array(
       'weight' => '0',
-      'label' => 'inline',
+      'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => '',
+        'wrapper' => 'h3',
         'class' => '',
-        'ft' => array(
-          'lb' => 'Name',
-          'lb-col' => TRUE,
-        ),
+        'ft' => array(),
       ),
     ),
     'body' => array(
@@ -164,20 +147,18 @@ function dt_contact_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
-        1 => 'field_contact_email_address',
-        2 => 'field_contact_phone_number',
-        3 => 'field_contact_postal_mail',
-        4 => 'body',
-        5 => 'field_contact_link_form',
+        0 => 'body',
+        1 => 'field_contact_phone_number',
+        2 => 'field_contact_postal_mail',
+        3 => 'field_contact_email_address',
+        4 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_contact_email_address' => 'ds_content',
+      'body' => 'ds_content',
       'field_contact_phone_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
-      'body' => 'ds_content',
+      'field_contact_email_address' => 'ds_content',
       'field_contact_link_form' => 'ds_content',
     ),
     'classes' => array(),
@@ -203,19 +184,19 @@ function dt_contact_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'field_contact_email_address',
+        1 => 'body',
         2 => 'field_contact_phone_number',
         3 => 'field_contact_postal_mail',
-        4 => 'body',
+        4 => 'field_contact_email_address',
         5 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'field_contact_email_address' => 'ds_content',
+      'body' => 'ds_content',
       'field_contact_phone_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
-      'body' => 'ds_content',
+      'field_contact_email_address' => 'ds_content',
       'field_contact_link_form' => 'ds_content',
     ),
     'classes' => array(),
