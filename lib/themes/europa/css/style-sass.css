@@ -6952,7 +6952,7 @@ Styleguide date-block
   width: 5.5em;
   margin-right: 0.75em;
   min-width: 5.556em;
-  padding: 0.85em 0em 0.4em 0em;
+  padding: 0.7em;
   text-align: center;
   position: relative;
   overflow: hidden; }
@@ -7857,7 +7857,7 @@ Styleguide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-time-line:after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, .site-political a[href^="http"]:not([href*="europa.eu"]):not(.is-internal):after, .site-information a[href^="http"]:not(.is-internal):after, .site-political .listing__item-link[href^="http"]:not(.is-internal):not([href*="europa.eu"]) .listing__title:after, .site-information .listing__item-link[href^="http"]:not(.is-internal) .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .file__translations .file__translations-control:after, .lang-select-page--transparent select.lang-select-page__list:after, .listing__read-more:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--after, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-time-line:after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle:after, .btn.btn-menu:after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle:after, .is-external:after, .site-political a[href^="http"]:not([href*="europa.eu"]):not(.is-internal):after, .site-information a[href^="http"]:not(.is-internal):after, .site-political .listing__item-link[href^="http"]:not(.is-internal):not([href*="europa.eu"]) .listing__title:after, .site-information .listing__item-link[href^="http"]:not(.is-internal) .listing__title:after, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before, .file__btn:after, .file__translations .file__translations-control:after, .lang-select-page--transparent select.lang-select-page__list:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .listing__read-more:after, .notification__content .notification__btn:after {
   text-decoration: none;
   font-family: 'EuropaIcons';
   speak: none;
@@ -7910,7 +7910,7 @@ Styleguide: icon
 .icon--up:before {
   content: '\e618'; }
 
-.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-time-line:after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle:after, .icon--right:before, .listing__read-more:after, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .notification__content .notification__btn:after {
+.icon--right, .btn.btn-ctn:after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle:after, .btn.btn-time-line:after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle:after, .icon--right:before, .listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after, .listing__read-more:after, .notification__content .notification__btn:after {
   content: '\e617'; }
 
 .icon--breadcrumb, .breadcrumb__link-arrow, .no-js .breadcrumb__segment--first:before, .breadcrumb--collapsible .breadcrumb__btn-separator:after, .breadcrumb--collapsible .breadcrumb__link:after, .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
@@ -8615,12 +8615,194 @@ select.lang-select-page__list {
 /*
 Listing
 
-Listing components
-
-Markup: html/listing.html
+Component used to render list of entities, usually the landing page of a class.
+It defines the following modifiers: Listing with no border, Listing with no stripe, Listing of persons, Listing CTA, Listing line left, Listing no padding, Listing short spaced, Listing line left.
+The width of the element listing__item is limited to 32em, a modifier is available to reset this limit, the first two examples are using that.
 
 Styleguide listing
 */
+/*
+Listing default
+
+Default implementation of the listing component.
+
+Markup: html/listing.html
+
+Styleguide listing.1
+*/
+.listing {
+  padding: 0; }
+
+.listing--priorities .meta {
+  display: none; }
+
+/*
+Listing title
+
+Listing title is the component modifier used to style a list of titles.
+
+Markup: html/listing--title.html
+
+.listing--title-large - Listing title large
+.listing--title-medium - Listing title medium
+
+Styleguide listing.4
+*/
+.listing--title,
+ul.listing--title {
+  padding: 0; }
+  .listing--title .listing__item,
+  ul.listing--title .listing__item {
+    padding: 0.61em 0; }
+    .listing--title .listing__item .listing__title,
+    ul.listing--title .listing__item .listing__title {
+      margin: 0; }
+    .listing--title .listing__item:hover a .listing__title, .listing--title .listing__item:active a .listing__title, .listing--title .listing__item:focus a .listing__title,
+    ul.listing--title .listing__item:hover a .listing__title,
+    ul.listing--title .listing__item:active a .listing__title,
+    ul.listing--title .listing__item:focus a .listing__title {
+      text-decoration: none; }
+  .listing--title .listing__item-link,
+  .listing--title .listing__title,
+  ul.listing--title .listing__item-link,
+  ul.listing--title .listing__title {
+    padding: 0;
+    margin: 0;
+    display: block; }
+  .listing--title a.listing__title,
+  .listing--title a .listing__title,
+  ul.listing--title a.listing__title,
+  ul.listing--title a .listing__title {
+    display: block;
+    padding-right: 2em; }
+  .listing--title a.listing__title:after,
+  ul.listing--title a.listing__title:after {
+    line-height: 1.6; }
+
+.listing--title .listing__title:hover {
+  text-decoration: underline !important; }
+
+.listing--title-large .listing__title,
+.listing--title-medium .listing__title {
+  margin-top: 0.2em;
+  margin-bottom: 0.4em; }
+
+.listing--title-large .listing__title {
+  font-size: 1.667em; }
+
+.listing--title-medium .listing__title {
+  font-size: 1.333em; }
+
+/*
+Listing Agenda
+
+Listing for event like entities.
+
+Markup: html/listing--agenda.html
+
+Styleguide listing.5
+*/
+.listing--agenda p {
+  margin: 0; }
+
+.listing--agenda .listing__item {
+  padding-top: 0.85em;
+  padding-bottom: 1em; }
+
+.listing--agenda .meta {
+  margin-bottom: 0; }
+
+.listing--agenda .listing__item-link {
+  padding: 0; }
+
+.listing--agenda h3.listing__title {
+  font-size: 1em;
+  color: #404040; }
+
+.listing--agenda .listing__author {
+  font-size: 0.833em;
+  margin-top: 1em; }
+
+.listing--person .listing__item-link {
+  padding-bottom: 1em;
+  padding-top: 1em; }
+
+.listing--person .listing__title + * {
+  line-height: 1.3;
+  margin-top: 0; }
+
+.listing--person .listing__item:first-child {
+  border-top: none; }
+
+/*
+Simple listing (title + text) modifiers
+
+In this section we collect many modifiers, in the example the listing--teaser version of the component has been used.
+
+Markup: html/listing--teaser.html
+
+.listing--cta - Listing CTA
+.listing--no-padding - Listing no padding
+.listing--short-spaced - Listing short spaced
+.listing--line-left - Listing line left
+.listing--no-border - Listing with no border
+.listing--nostripe - Listing with no stripe
+
+Styleguide listing.3
+*/
+.listing--line-left .listing--teaser {
+  padding-left: 0; }
+
+.listing--line-left .listing__item {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: 5px solid #004494;
+  padding: 0.611em 0 0.611em 1.222em;
+  margin: 0.611em 0; }
+
+.listing--nostripe {
+  padding: 30px; }
+  .listing--nostripe .listing__item {
+    border: none; }
+    .listing--nostripe .listing__item:first-child {
+      border: none; }
+      .listing--nostripe .listing__item:first-child .listing__item-link {
+        padding-top: 0; }
+    .listing--nostripe .listing__item:last-child .listing__item-link {
+      padding-bottom: 0; }
+
+.listing--cta .listing__item-link {
+  padding: 1.222em;
+  background-color: #004494; }
+
+.listing--cta .listing__item {
+  border: none; }
+  .listing--cta .listing__item .listing__title,
+  .listing--cta .listing__item a {
+    color: #ffffff; }
+  .listing--cta .listing__item:hover .listing__title, .listing--cta .listing__item:active .listing__title, .listing--cta .listing__item:focus .listing__title {
+    color: #ffffff; }
+  .listing--cta .listing__item:first-child {
+    border-top: none; }
+  .listing--cta .listing__item:last-child {
+    padding-bottom: 1.222em; }
+
+.listing--cta .listing__title {
+  position: relative;
+  padding-right: 1.3em; }
+
+.listing--no-padding ul {
+  padding-left: 0 !important; }
+
+.listing--no-border .listing__item {
+  border: none !important; }
+
+.listing--short-spaced .listing__item {
+  padding: 0.5em 0 !important; }
+
+a.listing__title {
+  color: #004494; }
+
 .listing__date {
   float: left; }
 
@@ -8631,14 +8813,14 @@ Styleguide listing
   margin-bottom: 1.667em; }
 
 .listing__item {
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid #ececec;
   list-style: none;
   list-style-image: none;
-  padding-top: 0;
-  padding-bottom: 0;
-  overflow: hidden; }
+  padding: 1.22em 0 1.11em;
+  overflow: hidden;
+  max-width: 32em; }
   .listing__item:first-child {
-    border-top: 1px solid #e2e2e2; }
+    border-top: 1px solid #ececec; }
   .listing__item:hover a .listing__title,
   .listing__item:hover a.listing__title, .listing__item:active a .listing__title,
   .listing__item:active a.listing__title, .listing__item:focus a .listing__title,
@@ -8648,9 +8830,10 @@ Styleguide listing
   .listing__item p {
     margin-bottom: 0; }
 
+.listing__item--fullwidth {
+  max-width: none; }
+
 .listing__item-link {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
   display: block;
   overflow: hidden;
   color: #404040; }
@@ -8675,137 +8858,16 @@ Styleguide listing
   width: 100%;
   margin: 0.2em 0 0.8em 0; }
 
-.listing__column-second--no-link {
-  padding-bottom: 0.85em;
-  margin: 0; }
-  .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .listing__column-second--no-link .inpage-nav__toggle {
-    margin-bottom: 0; }
-
 .listing__column-main {
   width: 100%;
   padding-left: 0;
   float: left; }
 
-.listing__title {
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  padding: 0;
-  display: inline-block;
-  line-height: 1.3;
-  position: relative; }
-  a .listing__title {
-    color: #004494; }
-  .listing__title + * {
-    font-size: 0.889em;
-    margin-top: 0.7em; }
-
-a.listing__title {
-  color: #004494; }
-
-.listing--no-padding {
-  padding-left: 0 !important; }
-
-.listing--no-border .listing__item {
-  border: none !important; }
-
-.listing--short-spaced .listing__item-link {
-  padding-top: 0.5em !important;
-  padding-bottom: 0 !important; }
-
-.listing--short-spaced .listing__item:first-child .listing__item-link {
-  padding-top: 0 !important; }
-
-.listing--line-left .listing__title {
-  padding: 0 !important; }
-
-.listing--line-left .listing--teaser {
-  padding-left: 0; }
-
-.listing--line-left .listing__item {
-  border-top: none;
-  border-bottom: none;
-  border-left: 5px solid #004494;
-  margin-top: 0.85em;
-  margin-bottom: 1em;
-  padding: 0.4em 0 0.4em 0.7em; }
-  .listing--line-left .listing__item .listing__item-link {
-    padding-top: 0;
-    padding-bottom: 0; }
-
-.listing--no-link .listing__item {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em; }
-
-.listing--title-large .listing__title,
-.listing--title-medium .listing__title {
-  margin-top: 0.2em;
-  margin-bottom: 0.4em; }
-
-.listing--title-large .listing__item {
-  margin-bottom: 15px; }
-
-.listing--title-large .listing__title {
-  font-size: 1.667em; }
-
-.listing--title-medium .listing__title {
-  font-size: 1.333em; }
-
-.listing--person .listing__item-link {
-  padding-bottom: 1em;
-  padding-top: 1em; }
-
-.listing--person .listing__title + * {
-  line-height: 1.3;
-  margin-top: 0; }
-
-.listing--person .listing__item:first-child {
-  border-top: none; }
-
-.listing--nostripe {
-  padding: 30px; }
-  .listing--nostripe .listing__item {
-    border: none; }
-    .listing--nostripe .listing__item:first-child {
-      border: none; }
-      .listing--nostripe .listing__item:first-child .listing__item-link {
-        padding-top: 0; }
-    .listing--nostripe .listing__item:last-child .listing__item-link {
-      padding-bottom: 0; }
-
-.listing--cta .listing__item-link {
-  padding-right: 1.667em;
-  padding-left: 1.667em; }
-
-.listing--cta .listing__item {
-  border: none; }
-  .listing--cta .listing__item .listing__title,
-  .listing--cta .listing__item a {
-    background-color: #004494;
-    color: #ffffff; }
-  .listing--cta .listing__item:hover .listing__title, .listing--cta .listing__item:active .listing__title, .listing--cta .listing__item:focus .listing__title {
-    color: #ffffff; }
-
-.listing--cta .listing__title {
-  position: relative;
-  padding-right: 1.3em; }
-
-.listing__read-more {
-  margin-top: 0.5em;
-  text-align: right;
-  font-weight: 600;
-  display: block;
-  text-transform: uppercase;
-  font-size: 0.889em; }
-  .listing__read-more:after {
-    font-size: 0.778em; }
-  .listing__read-more + .free-text {
-    margin-top: 1.5em; }
-
-.listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
-  margin-left: 10px;
-  margin-top: 2px;
-  font-size: 1.2em;
-  position: absolute; }
+.listing__column-second--no-link {
+  padding-bottom: 0.85em;
+  margin: 0; }
+  .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .listing__column-second--no-link .inpage-nav__toggle {
+    margin-bottom: 0; }
 
 @media (min-width: 480px) {
   .listing__column-second {
@@ -8830,76 +8892,44 @@ a.listing__title {
     .listing__column-second--no-link .btn, .listing__column-second--no-link .inpage-nav__navbar .inpage-nav__toggle, .inpage-nav__navbar .listing__column-second--no-link .inpage-nav__toggle {
       margin-top: 1.667em; } }
 
-/*
-Listing title
+.listing__title {
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  padding: 0;
+  display: inline-block;
+  line-height: 1.3;
+  position: relative; }
+  a .listing__title {
+    color: #004494; }
+  .listing__title + * {
+    font-size: 0.889em; }
 
-Listing components
+.listing__title--arrow:after, .listing--cta .listing__title:after, .site-menu .listing__item .listing__title:after {
+  margin-left: 10px;
+  margin-top: 2px;
+  font-size: 1.2em;
+  position: absolute; }
 
-Markup: html/listing--title.html
-
-.listing--line-left - Listing line left
-
-Styleguide listing.title
-*/
-.listing--title,
-ul.listing--title {
-  padding: 0; }
-  .listing--title .listing__item:hover a .listing__title, .listing--title .listing__item:active a .listing__title, .listing--title .listing__item:focus a .listing__title,
-  ul.listing--title .listing__item:hover a .listing__title,
-  ul.listing--title .listing__item:active a .listing__title,
-  ul.listing--title .listing__item:focus a .listing__title {
-    text-decoration: none; }
-  .listing--title .listing__item-link,
-  .listing--title .listing__title,
-  ul.listing--title .listing__item-link,
-  ul.listing--title .listing__title {
-    padding: 0;
-    margin: 0;
-    display: block; }
-  .listing--title a.listing__title,
-  .listing--title a .listing__title,
-  ul.listing--title a.listing__title,
-  ul.listing--title a .listing__title {
-    display: block;
-    padding-top: 0.9em;
-    padding-bottom: 0.7em;
-    padding-right: 2em; }
-  .listing--title a.listing__title:after,
-  ul.listing--title a.listing__title:after {
-    line-height: 1.6; }
+.listing__read-more {
+  margin-top: 0.5em;
+  text-align: right;
+  font-weight: 600;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.833em; }
+  .listing__read-more:after {
+    font-size: 0.778em; }
+  .listing__read-more + .free-text {
+    margin-top: 1.5em; }
 
 /*
-Listing teaser
+Listing column left
 
-Listing components
-
-Markup: html/listing--teaser.html
-
-.listing--cta  - Listing CTA
-.listing--no-padding - Listing no padding
-.listing--title-large - Listing title large
-.listing--title-medium - Listing title medium
-.listing--short-spaced - Listing short spaced
-.listing--line-left - Listing line left
-
-Styleguide listing.teaser
-*/
-.listing--priorities .meta {
-  display: none; }
-
-.listing--teaser .listing__item-link,
-ul.listing--teaser .listing__item-link {
-  padding-top: 0.85em;
-  padding-bottom: 1em; }
-
-/*
-Listing layouts
-
-Listing components
+This is actually a modifier that applies changes to the listing__item element.
 
 Markup: html/listing--column-left.html
 
-Styleguide listing.column-left
+Styleguide listing.1.1
 */
 .listing--column-left .listing__column-main {
   width: auto;
@@ -8912,6 +8942,49 @@ Styleguide listing.column-left
   padding-right: 15px;
   padding-left: 0; }
 
+/*
+Listing layouts
+
+Listing layouts are implemented as modifiers of the listing__wrapper element which is actually the container of the component.
+
+Styleguide listing.2
+*/
+/*
+Listing two columns
+
+This is a way to put two listings in two different columns.
+
+Markup: html/listing__wrapper--two-columns.html
+
+Styleguide listing.2.1
+*/
+/*
+Listing three columns
+
+This is a way to put three listings in three different columns.
+
+Markup: html/listing__wrapper--three-columns.html
+
+Styleguide listing.2.2
+*/
+/*
+Listing item two rows
+
+This is a way to put two listing_item in the same row.
+
+Markup: html/listing__wrapper--row-two.html
+
+Styleguide listing.2.3
+*/
+/*
+Listing item three rows
+
+This is a way to put three listing_item in the same row.
+
+Markup: html/listing__wrapper--row-three.html
+
+Styleguide listing.2.4
+*/
 .listing__wrapper--three-columns .listing__title,
 .listing__wrapper--two-columns .listing__title,
 .listing__wrapper--row-three .listing__title,
@@ -8931,40 +9004,11 @@ Styleguide listing.column-left
   clear: left; }
 
 .listing__wrapper--row-three .listing__item {
-  margin-top: 15px; }
+  margin-top: 30px; }
 
 @media (min-width: 992px) {
   .listing__wrapper--two-columns .listing {
     margin-bottom: 0; } }
-
-/*
-Listing Agenda
-
-Listing components
-
-Markup: html/listing--agenda.html
-
-Styleguide listing.agenda
-*/
-.listing--agenda p {
-  margin: 0; }
-
-.listing--agenda .listing__item {
-  padding-top: 0.85em;
-  padding-bottom: 1em; }
-
-.listing--agenda .meta {
-  margin-bottom: 0; }
-
-.listing--agenda .listing__item-link {
-  padding: 0; }
-
-.listing--agenda h3.listing__title {
-  font-size: 1em;
-  color: #404040; }
-
-.listing--agenda .listing__author {
-  font-size: 0.889em; }
 
 .logo {
   display: block;
@@ -10319,5 +10363,60 @@ Styleguide top-image
   .top-image picture {
     display: block;
     text-align: center; }
+
+#kss-node .kss-description > p {
+  max-width: none; }
+
+#kss-node .kss-modifier__wrapper {
+  float: left;
+  width: 100%; }
+
+#kss-node .kss-modifier__name,
+#kss-node .kss-modifier__description {
+  margin: 2.4em 0;
+  padding: 0.6em;
+  display: inline-block;
+  float: none; }
+
+#kss-node .kss-modifier__name {
+  background: #004494;
+  color: #fff;
+  width: 40%;
+  margin-left: -0.6em; }
+  #kss-node .kss-modifier__name::before {
+    content: "[Modifier] ";
+    font-size: 1em;
+    clear: both; }
+
+#kss-node .kss-modifier__description {
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+  width: 63%;
+  margin: 2.4em -0.9em 3em -0.5em; }
+
+#kss-node .kss-markup {
+  visibility: hidden;
+  max-height: 40px;
+  overflow: hidden;
+  position: relative; }
+  #kss-node .kss-markup::before {
+    content: "Show html markup";
+    position: absolute;
+    visibility: visible;
+    right: 0;
+    background: #404040;
+    color: #fff;
+    padding: 0.2em 1em;
+    cursor: pointer;
+    font-weight: 600;
+    clear: both; }
+  #kss-node .kss-markup:hover {
+    visibility: visible;
+    max-height: none; }
+    #kss-node .kss-markup:hover::before {
+      background: transparent;
+      font-size: 0px; }
 
 /*# sourceMappingURL=style-sass.css.map */
