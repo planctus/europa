@@ -31,6 +31,7 @@ features[variable][] = menu_parent_consultation
 features[variable][] = node_options_consultation
 features[variable][] = node_preview_consultation
 features[variable][] = node_submitted_consultation
+features[variable][] = entity_translation_settings_node__consultation
 features_exclude[ctools][field_group:field_group:1] = field_group:field_group:1
 features_exclude[ctools][strongarm:strongarm:1] = strongarm:strongarm:1
 features_exclude[dependencies][text] = text
