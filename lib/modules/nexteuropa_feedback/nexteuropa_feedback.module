@@ -213,7 +213,7 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
       );
 
       $feedback_message = '<div class="feedback__message messages status">' .
-                            t('Thank you, your feedback was successfully sent.') . " " .
+                            t('Thank you, your feedback was successfully sent. @value', array('@value' => '')) .
                           drupal_render($new_form_link) .
                           '</div>';
       $analytics_data = array('status' => 'success', 'type' => $data['feedback_type']);
@@ -239,6 +239,8 @@ function _nexteuropa_feedback_newform($type = 'ajax') {
     $commands = array();
     $commands[] = ajax_command_append("#block-nexteuropa-feedback-nexteuropa-feedback .block__content",
       nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form')));
+    // Avoiding the Feedback form being collapsed after user sent a message.
+    $commands[] = ajax_command_invoke('#feedback-form__content', 'addClass', array('in'));
     $commands[] = ajax_command_remove(".feedback__message");
     ajax_deliver(array('#type' => 'ajax', '#commands' => $commands));
   }
