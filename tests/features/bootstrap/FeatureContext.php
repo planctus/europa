@@ -332,10 +332,21 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
+   * Creates an entity reference.
+   *
+   * @param string $field_name
+   *    The machine name of the entity reference field.
+   * @param $host_title
+   *    Title of the node containing the entity reference field.
+   * @param $target_title
+   *    Title of the referenced node.
+   *
+   * @throws \Exception
+   *    If the nodes cannot be found.
+   *
    * @When I set the :field_name reference for :host_title to :target_title
    */
-  public function iSetTheReferenceForTo($field_name, $host_title, $target_title)
-  {
+  public function iSetTheReferenceForTo($field_name, $host_title, $target_title) {
     $query = new entityFieldQuery();
     $result = $query
       ->entityCondition('entity_type', 'node')
@@ -377,10 +388,23 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
+   * Check if creation of circular reference is prevented.
+   *
+   * @param string $field_name
+   *    The machine name of the entity reference field.
+   * @param $host_title
+   *    Title of the node containing the entity reference field.
+   * @param $target_title
+   *    Title of the referenced node.
+   *
+   * @return bool
+   *
+   * @throws \Exception
+   *    When circular reference could be created.
+   *
    * @Given I cannot set circular reference :field_name for :host_title to :target_title
    */
-  public function iCannotSetCircularReferenceForTo($field_name, $host_title, $target_title)
-  {
+  public function iCannotSetCircularReferenceForTo($field_name, $host_title, $target_title) {
     try {
       $this->iSetTheReferenceForTo($field_name, $host_title, $target_title);
     }
