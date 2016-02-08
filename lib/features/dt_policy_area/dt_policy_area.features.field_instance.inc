@@ -10,7 +10,7 @@
 function dt_policy_area_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_area-field_core_description'
+  // Exported field_instance: 'node-policy_area-field_core_description'.
   $field_instances['node-policy_area-field_core_description'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -93,7 +93,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_introduction'
+  // Exported field_instance: 'node-policy_area-field_core_introduction'.
   $field_instances['node-policy_area-field_core_introduction'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -181,7 +181,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_legacy_link'
+  // Exported field_instance: 'node-policy_area-field_core_legacy_link'.
   $field_instances['node-policy_area-field_core_legacy_link'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -253,7 +253,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_persons'
+  // Exported field_instance: 'node-policy_area-field_core_persons'.
   $field_instances['node-policy_area-field_core_persons'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -313,7 +313,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_policy_areas'
+  // Exported field_instance: 'node-policy_area-field_core_policy_areas'.
   $field_instances['node-policy_area-field_core_policy_areas'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -370,7 +370,8 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_social_network_links'
+  // Exported field_instance:
+  // 'node-policy_area-field_core_social_network_links'.
   $field_instances['node-policy_area-field_core_social_network_links'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -429,7 +430,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-group_content_access'
+  // Exported field_instance: 'node-policy_area-group_content_access'.
   $field_instances['node-policy_area-group_content_access'] = array(
     'bundle' => 'policy_area',
     'default_value' => array(
@@ -494,7 +495,7 @@ function dt_policy_area_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_area-og_group_ref'
+  // Exported field_instance: 'node-policy_area-og_group_ref'.
   $field_instances['node-policy_area-og_group_ref'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -565,7 +566,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-title_field'
+  // Exported field_instance: 'node-policy_area-title_field'.
   $field_instances['node-policy_area-title_field'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,

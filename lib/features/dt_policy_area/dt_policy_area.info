@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = dt_policy_area
 dependencies[] = dt_core
 dependencies[] = dt_strategy_core
+dependencies[] = field_group
 dependencies[] = nexteuropa_views
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
