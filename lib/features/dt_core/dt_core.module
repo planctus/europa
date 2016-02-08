@@ -287,6 +287,15 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
 
     $result = $query->execute();
     $nids = isset($result['node']) ? array_keys($result['node']) : FALSE;
+
+    // Item is among its own children.
+    if ($nids && in_array($original_nid, $nids)) {
+      throw new DTCoreParentCircular(
+        t('Node !nid is among its own children', array(
+          '!nid' => $original_nid,
+        ))
+      );
+    }
   }
 
   if ($nids) {
@@ -375,7 +384,7 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
  */
 function _dt_core_parent_field_in_pattern($field_name, $pattern) {
   // Check if URL pattern uses parent's URL.
-  $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . ':url:path';
+  $pattern_segment = 'node:' . str_replace('_', '-', $field_name) . '(:0)?:url:path';
   if (preg_match('/' . $pattern_segment . '/', $pattern)) {
 
     return $pattern_segment;
@@ -391,6 +400,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
   $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
     if (isset($wrapper->{$field_name}) && $parent = $wrapper->{$field_name}->value()) {
+      $parent = is_array($parent) ? $parent[0] : $parent;
       // Detect if node has been set as its own parent.
       if ($parent->nid == $node->nid) {
         form_set_error($field_name, t('The page cannot be its own parent!'));

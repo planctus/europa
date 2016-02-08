@@ -331,4 +331,63 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $this->languageCreate((object) ['langcode' => $langcode]);
   }
 
+  /**
+   * @When I set the :field_name reference for :host_title to :target_title
+   */
+  public function iSetTheReferenceForTo($field_name, $host_title, $target_title)
+  {
+    $query = new entityFieldQuery();
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->propertyCondition('title', $host_title)
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->range(0, 1)
+      ->execute();
+
+    if (empty($result['node'])) {
+      $params = array(
+        '@title' => $title,
+        '@type' => $type,
+      );
+      throw new Exception(format_string("Node @title of @type not found.", $params));
+    }
+    $host_nid = key($result['node']);
+
+    $query = new entityFieldQuery();
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->propertyCondition('title', $target_title)
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->range(0, 1)
+      ->execute();
+
+    if (empty($result['node'])) {
+      $params = array(
+        '@title' => $title,
+        '@type' => $type,
+      );
+      throw new Exception(format_string("Node @title of @type not found.", $params));
+    }
+    $target_nid = key($result['node']);
+
+    $host = node_load($host_nid);
+    $host->{$field_name}[LANGUAGE_NONE][]['target_id'] = $target_nid;
+    $host->path['pathauto'] = TRUE;
+    node_save($host);
+  }
+
+  /**
+   * @Given I cannot set circular reference :field_name for :host_title to :target_title
+   */
+  public function iCannotSetCircularReferenceForTo($field_name, $host_title, $target_title)
+  {
+    try {
+      $this->iSetTheReferenceForTo($field_name, $host_title, $target_title);
+    }
+    catch (DTCoreParentCircular $e) {
+      return TRUE;
+    }
+
+    throw new \Exception(sprintf('The circular reference in ' . $field_name . ' was created for ' . $host_title));
+  }
 }
