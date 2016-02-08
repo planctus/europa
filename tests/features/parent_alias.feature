@@ -15,6 +15,17 @@ Feature: Aliases based on parent node's URL alias
     Then I should see "Second page title" in the "title" element
 
   @api
+  Scenario: Circular reference is not allowed for "Page"
+    Given "Page" content:
+      | title                     | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
+      | First Circular Page title | Content description    | Intro                   |                   | 1              | 1      |
+    Given "Page" content:
+      | title                      | field_core_description | field_core_introduction | field_core_parent         | path[pathauto] | status |
+      | Second Circular Page title | Content description    | Intro                   | First Circular Page title | 1              | 1      |
+    Given I am logged in as a user with the "administrator" role
+    And I cannot set circular reference "field_core_parent" for "First Circular Page title" to "Second Circular Page title"
+
+  @api
   Scenario: Correct URL is generated for "Policy area"
     Given "Policy area" content:
       | title                   | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
@@ -31,16 +42,12 @@ Feature: Aliases based on parent node's URL alias
     Then I should see "Page not found"
 
   @api
-  Scenario: Circular reference is not allowed
+  Scenario: Circular reference is not allowed for "Policy area"
     Given "Policy area" content:
-      | title                | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
-      | First Circular title | Content description    | Intro                   |                         | 1              | 1      |
+      | title                            | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
+      | First Circular Policy area title | Content description    | Intro                   |                         | 1              | 1      |
     Given "Policy area" content:
-      | title                 | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
-      | Second Circular title | Content description    | Intro                   | First Circular title    | 1              | 1      |
-    Given "Policy area" content:
-      | title                | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
-      | Third Circular title | Content description    | Intro                   | Second Circular title   | 1              | 1      |
-
+      | title                             | field_core_description | field_core_introduction | field_core_policy_areas          | path[pathauto] | status |
+      | Second Circular Policy area title | Content description    | Intro                   | First Circular Policy area title | 1              | 1      |
     Given I am logged in as a user with the "administrator" role
-    And I cannot set circular reference "field_core_policy_areas" for "First Circular title" to "Third Circular title"
+    And I cannot set circular reference "field_core_policy_areas" for "First Circular Policy area title" to "Second Circular Policy area title"
