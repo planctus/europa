@@ -336,9 +336,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *
    * @param string $field_name
    *    The machine name of the entity reference field.
-   * @param $host_title
+   * @param string $host_title
    *    Title of the node containing the entity reference field.
-   * @param $target_title
+   * @param string $target_title
    *    Title of the referenced node.
    *
    * @throws \Exception
@@ -392,12 +392,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *
    * @param string $field_name
    *    The machine name of the entity reference field.
-   * @param $host_title
+   * @param string $host_title
    *    Title of the node containing the entity reference field.
-   * @param $target_title
+   * @param string $target_title
    *    Title of the referenced node.
-   *
-   * @return bool
    *
    * @throws \Exception
    *    When circular reference could be created.
@@ -409,9 +407,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       $this->iSetTheReferenceForTo($field_name, $host_title, $target_title);
     }
     catch (DTCoreParentCircular $e) {
-      return TRUE;
+      return;
     }
 
     throw new \Exception(sprintf('The circular reference in ' . $field_name . ' was created for ' . $host_title));
   }
+
 }
