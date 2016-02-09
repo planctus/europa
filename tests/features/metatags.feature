@@ -10,7 +10,6 @@ Feature: As an anonymous user
       | status                    | 1                |
     Then I should see "<expected-string>"
     Then the metatag attribute "date" should have the value "<expected-meta>"
-    Then I should not see "access denied"
 
     Examples:
       | title             | date-published      | expected-string | expected-meta |

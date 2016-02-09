@@ -868,4 +868,6 @@ function dt_core_update_7163() {
  */
 function dt_core_update_7164() {
   module_enable(array('nexteuropa_metatags'));
+  // Somehow it needs to be reverted.
+  features_revert_module('nexteuropa_metatags');
 }
