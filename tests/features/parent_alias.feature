@@ -22,8 +22,12 @@ Feature: Aliases based on parent node's URL alias
     Given "Page" content:
       | title                      | field_core_description | field_core_introduction | field_core_parent         | path[pathauto] | status |
       | Second Circular Page title | Content description    | Intro                   | First Circular Page title | 1              | 1      |
+    Given "Page" content:
+      | title                     | field_core_description | field_core_introduction | field_core_parent          | path[pathauto] | status |
+      | Third Circular Page title | Content description    | Intro                   | Second Circular Page title | 1              | 1      |
     Given I am logged in as a user with the "administrator" role
     And I cannot set circular reference "field_core_parent" for "First Circular Page title" to "Second Circular Page title"
+    And I cannot set circular reference "field_core_parent" for "Second Circular Page title" to "Third Circular Page title"
 
   @api
   Scenario: Correct URL is generated for "Policy area"
@@ -49,5 +53,9 @@ Feature: Aliases based on parent node's URL alias
     Given "Policy area" content:
       | title                             | field_core_description | field_core_introduction | field_core_policy_areas          | path[pathauto] | status |
       | Second Circular Policy area title | Content description    | Intro                   | First Circular Policy area title | 1              | 1      |
+    Given "Policy area" content:
+      | title                            | field_core_description | field_core_introduction | field_core_policy_areas           | path[pathauto] | status |
+      | Third Circular Policy area title | Content description    | Intro                   | Second Circular Policy area title | 1              | 1      |
     Given I am logged in as a user with the "administrator" role
     And I cannot set circular reference "field_core_policy_areas" for "First Circular Policy area title" to "Second Circular Policy area title"
+    And I cannot set circular reference "field_core_policy_areas" for "Second Circular Policy area title" to "Third Circular Policy area title"
