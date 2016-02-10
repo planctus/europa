@@ -242,7 +242,7 @@ function dt_department_field_default_field_bases() {
       ),
       'target_type' => 'node',
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'entityreference',
   );
 
