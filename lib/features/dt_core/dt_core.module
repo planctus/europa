@@ -400,7 +400,13 @@ function dt_core_node_validate($node, $form, &$form_state) {
   $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
     if (isset($wrapper->{$field_name}) && $parent = $wrapper->{$field_name}->value()) {
-      $parent = is_array($parent) ? $parent[0] : $parent;
+      if (is_array($parent)) {
+        if (empty($parent[0])) {
+          continue;
+        }
+        $parent = $parent[0];
+      }
+
       // Detect if node has been set as its own parent.
       if ($parent->nid == $node->nid) {
         form_set_error($field_name, t('The page cannot be its own parent!'));
@@ -430,6 +436,7 @@ function _dt_core_detect_circular_reference($node) {
     }
   }
   catch (DTCoreParentCircular $e) {
+
     return TRUE;
   }
 
