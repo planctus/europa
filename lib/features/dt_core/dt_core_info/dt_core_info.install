@@ -114,5 +114,5 @@ function dt_core_info_update_7106() {
  * NEXTEUROPA-8611: Removing header background image from the informational ws.
  */
 function dt_core_info_update_7107() {
-  variable_del('dt_header_background_default', $fid);
+  variable_del('dt_header_background_default');
 }
