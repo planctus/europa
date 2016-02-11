@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_info_homepage_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -34,7 +34,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|info_homepage|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -67,7 +67,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_content|node|info_homepage|form'] = $field_group;
+  $field_groups['group_content|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -97,7 +97,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|info_homepage|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +127,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_highlight|node|info_homepage|full'] = $field_group;
+  $field_groups['group_highlight|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -156,7 +156,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_info_homepage_section_bot|node|info_homepage|full'] = $field_group;
+  $field_groups['group_info_homepage_section_bot|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -186,7 +186,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_info_homepage_section_top|node|info_homepage|full'] = $field_group;
+  $field_groups['group_info_homepage_section_top|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -215,7 +215,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_main|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest_main|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -244,7 +244,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_sidebar|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest_sidebar|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -274,7 +274,18 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest|node|info_homepage|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Editorial settings');
+  t('Highlight');
+  t('Latest');
+  t('Main');
+  t('Section bottom');
+  t('Section top');
+  t('Sidebar');
+
+  return $field_groups;
 }
