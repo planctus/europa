@@ -112,8 +112,7 @@ function dt_info_homepage_field_group_info() {
     'label' => 'Highlight',
     'weight' => '2',
     'children' => array(
-      0 => 'field_info_homepage_section_3',
-      1 => 'topics_atoz',
+      0 => 'topics_atoz',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -141,9 +140,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->data = array(
     'label' => 'Section bottom',
     'weight' => '3',
-    'children' => array(
-      0 => 'field_info_homepage_section_4',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Section bottom',
@@ -172,7 +169,6 @@ function dt_info_homepage_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_info_homepage_section_1',
-      1 => 'field_info_homepage_section_2',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
