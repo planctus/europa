@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the List view content feature.
+ */
+
+include_once 'dt_list_view_content.features.inc';
