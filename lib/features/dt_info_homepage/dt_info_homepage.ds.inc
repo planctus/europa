@@ -54,7 +54,7 @@ function dt_info_homepage_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<a class="btn btn-ctn " href="/topics">Topics A-Z</a>',
+      'value' => '<a class="btn btn-default" href="/topics">All topics A-Z</a>',
       'format' => 'basic_html',
     ),
     'use_token' => 0,
