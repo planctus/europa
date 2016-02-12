@@ -130,31 +130,31 @@ function dt_info_homepage_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'field_core_introduction',
+      ),
       'central' => array(
-        0 => 'latest_announcements_block',
+        1 => 'latest_announcements_block',
         2 => 'group_info_homepage_section_top',
-        3 => 'field_info_homepage_section_1',
-        4 => 'group_highlight',
+        3 => 'group_highlight',
+        4 => 'field_info_homepage_section_1',
         5 => 'group_info_homepage_section_bot',
-        6 => 'topics_atoz',
-        7 => 'group_latest',
+        6 => 'group_latest',
+        7 => 'topics_atoz',
         8 => 'group_latest_main',
         9 => 'group_latest_sidebar',
         10 => 'field_core_social_network_links',
       ),
-      'left_header' => array(
-        1 => 'field_core_introduction',
-      ),
     ),
     'fields' => array(
-      'latest_announcements_block' => 'central',
       'field_core_introduction' => 'left_header',
+      'latest_announcements_block' => 'central',
       'group_info_homepage_section_top' => 'central',
-      'field_info_homepage_section_1' => 'central',
       'group_highlight' => 'central',
+      'field_info_homepage_section_1' => 'central',
       'group_info_homepage_section_bot' => 'central',
-      'topics_atoz' => 'central',
       'group_latest' => 'central',
+      'topics_atoz' => 'central',
       'group_latest_main' => 'central',
       'group_latest_sidebar' => 'central',
       'field_core_social_network_links' => 'central',
