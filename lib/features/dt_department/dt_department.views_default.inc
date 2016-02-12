@@ -103,6 +103,12 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
+    'Directorate-General (policy)' => 'Directorate-General (policy)',
+    'Directorate-General (operational)' => 'Directorate-General (operational)',
+    'Service department' => 'Service department',
+    'Executive agency' => 'Executive agency',
+  );
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['group'] = 1;
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['operator_id'] = 'field_core_ecorganisation_value_op';
@@ -117,7 +123,10 @@ function dt_department_views_default_views() {
     4 => 0,
     5 => 0,
     7 => 0,
+    9 => 0,
+    10 => 0,
   );
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Main task (field_department_tasks) */
   $handler->display->display_options['filters']['field_department_tasks_tid']['id'] = 'field_department_tasks_tid';
   $handler->display->display_options['filters']['field_department_tasks_tid']['table'] = 'field_data_field_department_tasks';
@@ -140,6 +149,14 @@ function dt_department_views_default_views() {
   );
   $handler->display->display_options['filters']['field_department_tasks_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_department_tasks_tid']['vocabulary'] = 'department_tasks';
+  /* Filter criterion: Content: Department type (field_core_ecorganisation) */
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['id'] = 'field_core_ecorganisation_value_1';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['table'] = 'field_data_field_core_ecorganisation';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['field'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['value'] = array(
+    'External department' => 'External department',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
