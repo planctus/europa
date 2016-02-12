@@ -5,18 +5,6 @@
  */
 
 /**
- * Implements template_preprocess_html().
- */
-function political_preprocess_html(&$variables) {
-  // Remove the .front class from the body and pretend it's not the home page.
-  if ($variables['is_front']) {
-    $key = array_search('front', $variables['classes_array']);
-    unset($variables['classes_array'][$key]);
-  }
-}
-
-
-/**
  * Implements tempalate_preprocess_page().
  */
 function political_preprocess_page(&$variables) {
