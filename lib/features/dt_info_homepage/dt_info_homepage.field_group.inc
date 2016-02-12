@@ -140,7 +140,9 @@ function dt_info_homepage_field_group_info() {
   $field_group->data = array(
     'label' => 'Section bottom',
     'weight' => '3',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_info_homepage_section_4',
+    ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Section bottom',
