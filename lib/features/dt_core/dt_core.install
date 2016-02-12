@@ -862,3 +862,12 @@ function dt_core_update_7162() {
 function dt_core_update_7163() {
   module_enable(array('dt_wysiwyg'));
 }
+
+/**
+ * Enabling nexteuropa_metatags.
+ */
+function dt_core_update_7164() {
+  module_enable(array('nexteuropa_metatags'));
+  // Somehow it needs to be reverted.
+  features_revert_module('nexteuropa_metatags');
+}
