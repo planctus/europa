@@ -8,7 +8,6 @@ dependencies[] = dt_core
 dependencies[] = dt_department
 dependencies[] = dt_topic
 dependencies[] = nexteuropa_formatters
-dependencies[] = smart_trim
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
