@@ -79,7 +79,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_core_social_network_links'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_core_social_network_links'.
   $field_instances['node-info_homepage-field_core_social_network_links'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -126,7 +127,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_1'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_1'.
   $field_instances['node-info_homepage-field_info_homepage_section_1'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -144,9 +146,11 @@ function dt_info_homepage_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
-          'nexteuropa_listing_columns' => 'row_two',
-          'nexteuropa_listing_modifier' => 'listing--title-medium listing--no-border',
+          'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_modifier' => 'listing--no-border listing--title-medium listing--frontpage',
           'nexteuropa_listing_wrapper_modifier' => 'equal-height',
+          'show_translations' => '',
+          'use_content_language' => 1,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -175,7 +179,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_2'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_2'.
   $field_instances['node-info_homepage-field_info_homepage_section_2'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -190,15 +195,8 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--title-medium',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
     ),
@@ -224,7 +222,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_3'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_3'.
   $field_instances['node-info_homepage-field_info_homepage_section_3'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -239,15 +238,8 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--title-medium',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
     ),
@@ -273,7 +265,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_4'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_4'.
   $field_instances['node-info_homepage-field_info_homepage_section_4'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -290,10 +283,12 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 0,
+          'links' => 1,
           'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_modifier' => 'listing--cta listing--title-medium equal-height',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
