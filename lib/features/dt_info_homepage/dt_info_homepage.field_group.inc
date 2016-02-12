@@ -103,33 +103,6 @@ function dt_info_homepage_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_highlight|node|info_homepage|full';
-  $field_group->group_name = 'group_highlight';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'info_homepage';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Highlight',
-    'weight' => '2',
-    'children' => array(),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Highlight',
-      'instance_settings' => array(
-        'classes' => 'section__group section__group--full-width section__group--highlight-grey',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'h3',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_highlight|node|info_homepage|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_info_homepage_section_bot|node|info_homepage|full';
   $field_group->group_name = 'group_info_homepage_section_bot';
   $field_group->entity_type = 'node';
