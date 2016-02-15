@@ -211,11 +211,11 @@
     <!-- SVN remove locally deleted files  -->
     <exec dir="${release}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
     <!-- Add latest code  -->
-    <!-- <exec dir="${release}" command="svn add . - -force"></exec> -->
+     <exec dir="${release}" command="svn add . --force"></exec>
 
-    <!-- <input propertyname="commitmessage">Please provide a commit message:</input>
+    <input propertyname="commitmessage">Please provide a commit message:</input>
     <echo msg="${commitmessage}" />
-    <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec> -->
+    <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec>
 
   </target>
 </project>

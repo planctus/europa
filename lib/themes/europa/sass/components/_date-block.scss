@@ -16,7 +16,7 @@ $agenda-yellow: #FED437;
   width: 5.5em;
   margin-right: 0.75em;
   min-width: 5.556em;
-  padding: 0.85em 0em 0.4em 0em;
+  padding: 0.7em;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -52,7 +52,7 @@ $agenda-yellow: #FED437;
 
 .date-block__month {
   @extend .date-block__element;
-  font-size: 1.111em;
+  font-size: $font-size-little;
   line-height: 1;
 }
 

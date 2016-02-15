@@ -28,3 +28,21 @@ function dt_info_homepage_update_7101() {
   // Reverting feature.
   features_revert_module('dt_info_homepage');
 }
+
+/**
+ * NEXTEUROPA-8781: Copy all frontpage section fields to a singel field.
+ */
+function dt_info_homepage_update_7102() {
+  $fields_to_copy = array(
+    'field_info_homepage_section_2',
+    'field_info_homepage_section_3',
+  );
+
+  foreach ($fields_to_copy as $field) {
+    // Copy the values to the main field.
+    _dt_shared_field_value_copy('node', 'info_homepage', $field, 'field_info_homepage_section_1', TRUE);
+  }
+
+  // Revert the feature.
+  features_revert_module('dt_info_homepage');
+}

@@ -28,7 +28,7 @@ function dt_policy_keyfile_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'smart_trim_format',
+        'type' => 'text_default',
         'weight' => 4,
       ),
     ),

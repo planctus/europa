@@ -31,7 +31,6 @@ $quote_border_offset: 0.556em;
   @include make-md-column(8);
 
   blockquote {
-    font-size: $font-size-little;
     padding-left: 0;
     border-left: none;
     margin-bottom: 0;
@@ -59,9 +58,18 @@ $quote_border_offset: 0.556em;
     margin-bottom: 0;
     max-width: 100%;
   }
-  & iframe {
-    width: 100%;
-    display:block;
+  & .content {
+    @include aspect-ratio(16, 9);
+    & iframe {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -75,9 +83,16 @@ $quote_border_offset: 0.556em;
 
 .banner__paragraph {
   @extend .col-md-6;
+  margin-top: 1em;
   font-size: $font-size-little;
 }
 
-.banner__left{
+.banner__left {
   @extend .col-md-6;
+}
+
+@include breakpoint(screen-md-min) {
+  .banner__paragraph {
+    margin-top: 0;
+  }
 }

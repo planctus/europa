@@ -83,7 +83,7 @@ function _dt_core_term_by_name($term, $vid) {
  *   The mlid of the created menu item.
  */
 function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
-  $link = dt_core_menu_link($link, $lang);
+  $link = _dt_core_menu_link($link, $lang);
   $plid = ($plid > 0) ? $plid : 0;
 
   $item = array(
