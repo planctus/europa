@@ -252,6 +252,7 @@ function dt_core_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'Directorate-General' => 'Directorate-General',
         'Directorate-General (policy)' => 'Directorate-General (policy)',
         'Directorate-General (operational)' => 'Directorate-General (operational)',
         'Service department' => 'Service department',
