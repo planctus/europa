@@ -26,12 +26,12 @@ function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_i
 }
 
 /**
- * Implements hook_views_pre_render().
+ * Implements hook_views_pre_view().
  *
  * At this stage we will hook into the view, and alter the object with our
  * custom values.
  */
-function dt_list_view_content_views_pre_render(&$view) {
+function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
   // We start with a tag check, as this way prevents unnecessary loads.
   if ($view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
     // It could be multiple beans, so we loop over them.
@@ -46,7 +46,7 @@ function dt_list_view_content_views_pre_render(&$view) {
             'format' => $content['format'],
             'empty' => 1,
           );
-          $view->add_item('default', 'header', 'views', 'area', $header_options);
+          $view->add_item($display_id, 'header', 'views', 'area', $header_options);
         }
       }
     }
