@@ -31,7 +31,6 @@ $quote_border_offset: 0.556em;
   @include make-md-column(8);
 
   blockquote {
-    font-size: $font-size-little;
     padding-left: 0;
     border-left: none;
     margin-bottom: 0;
@@ -84,9 +83,16 @@ $quote_border_offset: 0.556em;
 
 .banner__paragraph {
   @extend .col-md-6;
+  margin-top: 1em;
   font-size: $font-size-little;
 }
 
 .banner__left {
   @extend .col-md-6;
+}
+
+@include breakpoint(screen-md-min) {
+  .banner__paragraph {
+    margin-top: 0;
+  }
 }
