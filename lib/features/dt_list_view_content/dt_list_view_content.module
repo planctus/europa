@@ -15,11 +15,13 @@ include_once 'dt_list_view_content.features.inc';
 function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_id) {
   // We should only modify our list view content bean.
   if ($form['#bundle'] == 'list_view_content') {
+    // Do not display the view mode selection.
     $form['view_mode']['#type'] = 'hidden';
-
-
     // Set the available options (And include the current options).
     $form['field_list_view_views'][LANGUAGE_NONE]['#options'] = array_merge($form['field_list_view_views'][LANGUAGE_NONE]['#options'], _dt_list_view_content_get_views());
+    // Set the default value.
+    $default_view = isset($form['#entity']->field_list_view_views['und'][0]['value']) ? $form['#entity']->field_list_view_views['und'][0]['value'] : '';
+    $form['field_list_view_views'][LANGUAGE_NONE]['#default_value'] = $default_view;
   }
 }
 
@@ -33,8 +35,7 @@ function dt_list_view_content_views_pre_render(&$view) {
   // We start with a tag check, as this way prevents unnecessary loads.
   if ($view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
     // It could be multiple beans, so we loop over them.
-    $bean_data = entity_load('bean', _dt_list_view_content_get_bean($view));
-    foreach ($bean_data as $bean) {
+    foreach (entity_load('bean', _dt_list_view_content_get_bean($view)) as $bean) {
       // Metadata wrapper.
       $bean_mdw = entity_metadata_wrapper('bean', $bean);
       // Make sure that we have some data.
@@ -79,16 +80,11 @@ function _dt_list_view_content_get_bean($view) {
  */
 function _dt_list_view_content_view_identifier($view) {
   if (isset($view->current_display)) {
-    if ($view->current_display == 'default' && isset($view->style_plugin->display->display_plugin)) {
-      $used_display = $view->style_plugin->display->display_plugin;
-    }
-    else {
-      $used_display = $view->current_display;
-    }
-    return $view->name . '.' . $used_display;
+    return $view->name . '.' . $view->current_display;
   }
   return FALSE;
 }
+
 /**
  * Helper function to get the available views.
  *
