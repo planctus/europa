@@ -31,16 +31,22 @@ function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_i
  */
 function dt_list_view_content_views_pre_render(&$view) {
   // We start with a tag check, as this way prevents unnecessary loads.
-  if ($view->tag == DT_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
-    $header_options = array(
-      'label' => t('Header text'),
-      'content' => 'Foo',
-      'format' => 'filtered_html',
-      'empty' => 1,
-    );
-    $view->add_item('default', 'header', 'views', 'area', $header_options);
-
-    _dt_list_view_content_get_bean($view);
+  if ($view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
+    // It could be multiple beans, so we loop over them.
+    $bean_data = entity_load('bean', _dt_list_view_content_get_bean($view));
+    foreach ($bean_data as $bean) {
+      // Metadata wrapper.
+      $bean_mdw = entity_metadata_wrapper('bean', $bean);
+      // Make sure that we have some data.
+      if ($bean_mdw->__isset('field_list_view_views') && $content = $bean_mdw->field_core_introduction->value()) {
+        $header_options = array(
+          'content' => $content['value'],
+          'format' => $content['format'],
+          'empty' => 1,
+        );
+        $view->add_item('default', 'header', 'views', 'area', $header_options);
+      }
+    }
   }
 }
 
@@ -58,11 +64,8 @@ function _dt_list_view_content_get_bean($view) {
   $query->entityCondition('entity_type', 'bean')
     ->propertyCondition('type', 'list_view_content')
     ->fieldCondition('field_list_view_views', 'value', _dt_list_view_content_view_identifier($view));
-
-  $identifier = _dt_list_view_content_view_identifier($view);
-
   $result = $query->execute();
-  $var = "foo";
+  return isset($result['bean']) ? array_keys($result['bean']) : FALSE;
 }
 
 /**
@@ -76,7 +79,13 @@ function _dt_list_view_content_get_bean($view) {
  */
 function _dt_list_view_content_view_identifier($view) {
   if (isset($view->current_display)) {
-    return $view->name . '.' . $view->current_display;
+    if ($view->current_display == 'default' && isset($view->style_plugin->display->display_plugin)) {
+      $used_display = $view->style_plugin->display->display_plugin;
+    }
+    else {
+      $used_display = $view->current_display;
+    }
+    return $view->name . '.' . $used_display;
   }
   return FALSE;
 }
@@ -91,7 +100,7 @@ function _dt_list_view_content_get_views() {
   $views = ctools_export_crud_load_all('views_view');
   // Take all the views that have a page and are exported.
   foreach ($views as $name => $object) {
-    if ($object->tag == DT_VIEWS_TAG && isset($object->display['page'])) {
+    if ($object->tag == DT_CORE_VIEWS_TAG && isset($object->display['page'])) {
       foreach ($object->display as $display_id => $display_object) {
         if ($display_object->display_plugin == 'page') {
           $views_options[$name . '.' . $display_object->id] = $object->human_name . ' (' . $display_object->display_title . ')';

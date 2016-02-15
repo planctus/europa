@@ -5,7 +5,7 @@
  */
 
 // Our global views tag.
-define("DT_VIEWS_TAG", "digital_transformation");
+define("DT_CORE_VIEWS_TAG", "digital_transformation");
 
 include_once 'dt_core.features.inc';
 include_once 'dt_core.api.inc';
