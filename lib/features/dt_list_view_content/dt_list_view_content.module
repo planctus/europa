@@ -39,14 +39,18 @@ function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
       foreach (entity_load('bean', $bean_ids) as $bean) {
         // Metadata wrapper.
         $bean_mdw = entity_metadata_wrapper('bean', $bean);
-        // Make sure that we have some data.
-        if ($bean_mdw->__isset('field_list_view_views') && $content = $bean_mdw->field_core_introduction->value()) {
+        // Set introduction if available.
+        if ($bean_mdw->__isset('field_core_introduction') && $introduction_content = $bean_mdw->field_core_introduction->value()) {
           $header_options = array(
-            'content' => $content['value'],
-            'format' => $content['format'],
+            'content' => $introduction_content['value'],
+            'format' => $introduction_content['format'],
             'empty' => 1,
           );
           $view->add_item($display_id, 'header', 'views', 'area', $header_options);
+        }
+        // Set description if available.
+        if ($bean_mdw->__isset('field_core_description') && $description_content = $bean_mdw->field_core_description->value()) {
+          $view->description = $description_content;
         }
       }
     }
