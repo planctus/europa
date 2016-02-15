@@ -228,4 +228,7 @@ function dt_department_update_7112() {
       entity_get_controller('node')->resetCache(array($nid));
     }
   }
+
+  features_revert_module('dt_core');
+  features_revert_module('dt_department');
 }
