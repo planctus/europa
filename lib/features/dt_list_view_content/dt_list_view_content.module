@@ -35,17 +35,19 @@ function dt_list_view_content_views_pre_render(&$view) {
   // We start with a tag check, as this way prevents unnecessary loads.
   if ($view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
     // It could be multiple beans, so we loop over them.
-    foreach (entity_load('bean', _dt_list_view_content_get_bean($view)) as $bean) {
-      // Metadata wrapper.
-      $bean_mdw = entity_metadata_wrapper('bean', $bean);
-      // Make sure that we have some data.
-      if ($bean_mdw->__isset('field_list_view_views') && $content = $bean_mdw->field_core_introduction->value()) {
-        $header_options = array(
-          'content' => $content['value'],
-          'format' => $content['format'],
-          'empty' => 1,
-        );
-        $view->add_item('default', 'header', 'views', 'area', $header_options);
+    if ($bean_ids = _dt_list_view_content_get_bean($view)) {
+      foreach (entity_load('bean', $bean_ids) as $bean) {
+        // Metadata wrapper.
+        $bean_mdw = entity_metadata_wrapper('bean', $bean);
+        // Make sure that we have some data.
+        if ($bean_mdw->__isset('field_list_view_views') && $content = $bean_mdw->field_core_introduction->value()) {
+          $header_options = array(
+            'content' => $content['value'],
+            'format' => $content['format'],
+            'empty' => 1,
+          );
+          $view->add_item('default', 'header', 'views', 'area', $header_options);
+        }
       }
     }
   }
@@ -64,7 +66,7 @@ function _dt_list_view_content_get_bean($view) {
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'bean')
     ->propertyCondition('type', 'list_view_content')
-    ->fieldCondition('field_list_view_views', 'value', _dt_list_view_content_view_identifier($view));
+    ->fieldCondition('field_list_view_views', 'value', _dt_list_view_content_view_identifier($view), '=');
   $result = $query->execute();
   return isset($result['bean']) ? array_keys($result['bean']) : FALSE;
 }
