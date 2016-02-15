@@ -197,7 +197,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -240,7 +240,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -317,6 +317,80 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_topic_intro'.
+  $field_instances['node-info_homepage-field_info_homepage_topic_intro'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_topic_intro',
+    'label' => 'Topic intro',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-group_content_access'.
   $field_instances['node-info_homepage-group_content_access'] = array(
     'bundle' => 'info_homepage',
@@ -338,7 +412,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'node',
@@ -387,7 +461,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'node',
@@ -446,7 +520,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -483,6 +557,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Section Two');
   t('Social Network Links');
   t('Title');
+  t('Topic intro');
 
   return $field_instances;
 }
