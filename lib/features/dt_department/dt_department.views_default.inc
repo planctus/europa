@@ -13,7 +13,7 @@ function dt_department_views_default_views() {
   $view = new view();
   $view->name = 'department';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Department';
   $view->core = 7;
@@ -150,7 +150,7 @@ function dt_department_views_default_views() {
   $view = new view();
   $view->name = 'filter_list_departments';
   $view->description = 'Collection of views objects that can be used to filter lists';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Filter list - Departments';
   $view->core = 7;
