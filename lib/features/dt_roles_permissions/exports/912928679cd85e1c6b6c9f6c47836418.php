@@ -73,6 +73,7 @@ $permissions['site manager'] = array(
   'edit any tender content',
   'flush caches',
   'provide translation services',
+  'show format selection for bean',
   'submit translation jobs',
   'translate admin strings',
   'translate any entity',
