@@ -20,6 +20,7 @@ $permissions['editorial team member'] = array(
   'create url aliases',
   'override default scheduler time',
   'schedule (un)publishing of nodes',
+  'show format selection for bean',
   'submit translation jobs',
   'translate any entity',
   'use workbench_moderation my drafts tab',

@@ -13,7 +13,7 @@ function dt_policy_area_views_default_views() {
   $view = new view();
   $view->name = 'policy_area_related_content';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Policy area related content';
   $view->core = 7;
