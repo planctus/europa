@@ -15,8 +15,9 @@ include_once 'dt_list_view_content.features.inc';
 function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_id) {
   // We should only modify our list view content bean.
   if ($form['#bundle'] == 'list_view_content') {
-    // Do not display the view mode selection.
+    // Do not display the title and view mode selection.
     $form['view_mode']['#type'] = 'hidden';
+    $form['title_field']['#type'] = 'hidden';
     // Set the available options (And include the current options).
     $form['field_list_view_views'][LANGUAGE_NONE]['#options'] = array_merge($form['field_list_view_views'][LANGUAGE_NONE]['#options'], _dt_list_view_content_get_views());
     // Set the default value.

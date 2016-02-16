@@ -196,7 +196,7 @@ function dt_list_view_content_field_default_field_instances() {
     'entity_type' => 'bean',
     'field_name' => 'title_field',
     'label' => 'Title',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
