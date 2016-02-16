@@ -4,7 +4,6 @@
  * @file
  * Basic template file.
  */
-
 ?>
 
 <?php if (isset($exposed_filters)): ?>
