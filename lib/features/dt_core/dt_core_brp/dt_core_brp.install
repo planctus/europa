@@ -41,7 +41,7 @@ function dt_core_brp_install() {
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
-  // Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
+  // Removing admin pages to use defaul th, (WATCH OUT FOR THAT IN THE FUTURE).
   variable_set('cce_basic_config_admin_pages', array());
 
   // Enabling admin theme for node pages.
