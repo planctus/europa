@@ -256,6 +256,7 @@ function dt_core_field_default_field_bases() {
         'Directorate-General (operational)' => 'Directorate-General (operational)',
         'Service department' => 'Service department',
         'Executive agency' => 'Executive agency',
+        'External department' => 'External department',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
