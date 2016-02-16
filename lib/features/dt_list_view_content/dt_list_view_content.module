@@ -81,8 +81,8 @@ function _dt_list_view_content_get_bean($view) {
  * @param object $view
  *   The views object.
  *
- * @return string
- *    The complete views identifier..
+ * @return string|Bool
+ *    Either the full view identifier or a FALSE if it could not be generated.
  */
 function _dt_list_view_content_view_identifier($view) {
   if (isset($view->current_display)) {
