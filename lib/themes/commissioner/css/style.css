@@ -43,7 +43,8 @@
     position: relative; }
     .group-bio-col .group-bio-top-footer {
       position: absolute;
-      bottom: 0; } }
+      bottom: 0;
+      overflow: visible; } }
 
 /*
 Listing  2rows
