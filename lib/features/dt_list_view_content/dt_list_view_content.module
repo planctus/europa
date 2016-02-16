@@ -38,10 +38,12 @@ function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
     // It could be multiple beans, so we loop over them.
     if ($bean_ids = _dt_list_view_content_get_bean($view)) {
       foreach (entity_load('bean', $bean_ids) as $bean) {
+        // Get our language.
+        global $language;
         // Metadata wrapper.
         $bean_mdw = entity_metadata_wrapper('bean', $bean);
         // Set introduction if available.
-        if ($bean_mdw->__isset('field_core_introduction') && $introduction_content = $bean_mdw->field_core_introduction->value()) {
+        if ($bean_mdw->language($language->language)->__isset('field_core_introduction') && $introduction_content = $bean_mdw->language($language->language)->field_core_introduction->value()) {
           $header_options = array(
             'content' => $introduction_content['value'],
             'format' => $introduction_content['format'],
@@ -50,7 +52,7 @@ function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
           $view->add_item($display_id, 'header', 'views', 'area', $header_options);
         }
         // Set description if available.
-        if ($bean_mdw->__isset('field_core_description') && $description_content = $bean_mdw->field_core_description->value()) {
+        if ($bean_mdw->language($language->language)->__isset('field_core_description') && $description_content = $bean_mdw->language($language->language)->field_core_description->value()) {
           $view->description = $description_content;
         }
       }
