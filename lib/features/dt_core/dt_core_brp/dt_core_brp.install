@@ -41,7 +41,7 @@ function dt_core_brp_install() {
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
- // Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
+  // Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
   variable_set('cce_basic_config_admin_pages', array());
 
   // Enabling admin theme for node pages.
@@ -50,7 +50,7 @@ function dt_core_brp_install() {
   // Update the default social media link url (other social networks).
   variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
 
-  //  Disable and uninstall the dashboard module.
+  // Disable and uninstall the dashboard module.
   if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
     drupal_uninstall_modules(array('dashboard'));
@@ -66,7 +66,7 @@ function dt_core_brp_install() {
   $features = array(
     'dt_core',
     'nexteuropa_metatags',
-    );
+  );
   foreach ($features as $feature) {
     // If module enabled, that revert.
     if (module_exists($feature)) {
