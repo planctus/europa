@@ -187,6 +187,46 @@ function dt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'piwik_custom_var';
+  $strongarm->value = array(
+    'slots' => array(
+      1 => array(
+        'slot' => 1,
+        'name' => 'content_language',
+        'value' => '[dt_tokens:dt_content_language]',
+        'scope' => 'page',
+      ),
+      2 => array(
+        'slot' => 2,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      3 => array(
+        'slot' => 3,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      4 => array(
+        'slot' => 4,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      5 => array(
+        'slot' => 5,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+    ),
+  );
+  $export['piwik_custom_var'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'splash_screen_title_value';
   $strongarm->value = '';
   $export['splash_screen_title_value'] = $strongarm;
