@@ -98,9 +98,8 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
+        'type' => 'hidden',
         'weight' => 24,
       ),
     ),
@@ -124,6 +123,60 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'type' => 'social_network_link_default',
       'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance: 'node-info_homepage-field_info_highlights'.
+  $field_instances['node-info_homepage-field_info_highlights'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_modifier' => 'mostvisited-item',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 0,
+          'view_mode' => 'image_label',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_highlights',
+    'label' => 'Highlights',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 19,
     ),
   );
 
@@ -197,7 +250,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -476,6 +529,7 @@ function dt_info_homepage_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Group content visibility');
   t('Groups audience');
+  t('Highlights');
   t('Introduction');
   t('Section Four');
   t('Section One');

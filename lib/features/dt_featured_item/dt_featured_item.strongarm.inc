@@ -117,6 +117,9 @@ function dt_featured_item_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'image_label' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

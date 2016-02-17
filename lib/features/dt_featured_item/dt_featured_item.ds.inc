@@ -17,11 +17,6 @@ function dt_featured_item_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'featured_item';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'field_feat_item_image' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
     'field_core_description' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -32,6 +27,7 @@ function dt_featured_item_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
