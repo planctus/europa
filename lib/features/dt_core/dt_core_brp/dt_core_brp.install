@@ -8,29 +8,19 @@
  * Implements hook_install().
  */
 function dt_core_brp_install() {
-  // Those are basic configuration features for each class.
+  // These is a minimal config, with time we will
+  // add functionality/modules if needed.
   $dt_classes = array(
-    'nexteuropa_feedback',
-    'metatag',
-    'metatag_views',
-    'metatag_opengraph',
     'dt_date_format',
     'nexteuropa_legacy_link',
-    'multisite_maxlength',
     'dt_social_network_links',
     // Roles and permissions.
     'dt_roles_permissions',
-    'nexteuropa_formatters',
-    'nexteuropa_views',
-    'dt_language_selector_site_popup',
-    'dt_shared_functions',
-    'dt_help_text',
     'dt_social_media_sharing',
     'conditional_fields',
     'dt_header_background',
-    'ec_embedded_video',
     'dt_wysiwyg',
-    'nexteuropa_metatags',
+    'clients',
   );
   module_enable($dt_classes);
 
@@ -65,7 +55,6 @@ function dt_core_brp_install() {
   // Reverting the features.
   $features = array(
     'dt_core',
-    'nexteuropa_metatags',
   );
   foreach ($features as $feature) {
     // If module enabled, that revert.

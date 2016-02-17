@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation BRP Site
 version = 7.x-1.0
 project = dt_core_brp
 dependencies[] = dt_core
-dependencies[] = dt_site_menu
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
 features[ctools][] = picture:default_picture_mapping:2

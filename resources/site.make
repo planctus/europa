@@ -45,8 +45,11 @@ projects[nodequeue][version] = "2.0-beta1"
 projects[node_convert][subdir] = "contrib"
 projects[node_convert][version] = "1.2"
 
-projects[picture][subdir] = "contrib"
-projects[picture][version] = "2.9"
+projects[clients][subdir] = "contrib"
+projects[clients][version] = "3.1"
+
+projects[entityform][subdir] = "contrib"
+projects[entityform][version] = "2.0-rc1"
 
 projects[conditional_fields][subdir] = "contrib"
 projects[conditional_fields][version] = "3.0-alpha2"
