@@ -8,9 +8,6 @@
  * Implements tempalate_preprocess_page().
  */
 function political_preprocess_page(&$variables) {
-  // Unset the home page.
-  $variables['is_front'] = FALSE;
-
   // Prepare the url for the "external" homepage.
   global $language;
   $delimiter = variable_get('language_suffix_delimiter', '_');
