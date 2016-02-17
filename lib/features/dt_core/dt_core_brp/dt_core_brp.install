@@ -21,6 +21,7 @@ function dt_core_brp_install() {
     'dt_header_background',
     'dt_wysiwyg',
     'clients',
+    'entityform',
   );
   module_enable($dt_classes);
 
