@@ -352,6 +352,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       ->propertyCondition('title', $target_title)
       ->propertyCondition('status', NODE_PUBLISHED)
       ->range(0, 1)
+      ->propertyOrderBy('nid', 'DESC')
       ->execute();
 
     if (empty($result['node'])) {
