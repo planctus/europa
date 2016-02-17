@@ -13,7 +13,7 @@ function dt_policy_views_default_views() {
   $view = new view();
   $view->name = 'policy_overview';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Policy overview';
   $view->core = 7;
