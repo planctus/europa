@@ -399,7 +399,7 @@ function _dt_core_parent_field_in_pattern($field_name, $pattern) {
 function dt_core_node_validate($node, $form, &$form_state) {
   $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
-    if (isset($form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id'])) {
+    if (isset($form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id']) && !empty($form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id'])) {
       $parent = $form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id'];
 
       // Detect if node has been set as its own parent.
@@ -419,7 +419,6 @@ function dt_core_node_validate($node, $form, &$form_state) {
  *
  * @param int $nid
  *   Node ID.
-
  * @param int $parent_nid
  *   Parent node ID.
  *
