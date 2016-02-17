@@ -344,8 +344,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *
    * @Then I fill in the reference :input_id with :target_title
    */
-  public function iFillInTheReferenceWith($input_id, $target_title)
-  {
+  public function iFillInTheReferenceWith($input_id, $target_title) {
     $query = new entityFieldQuery();
     $result = $query
       ->entityCondition('entity_type', 'node')
@@ -366,4 +365,5 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
     $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
   }
+
 }
