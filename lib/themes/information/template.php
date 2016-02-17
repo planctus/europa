@@ -25,7 +25,7 @@ function information_preprocess_page(&$variables) {
 
   // Adding a modifier for a specific case that will change the logo.
   if (drupal_is_front_page()) {
-    $variables['logo_classes'] .= ' logo--language';
+    $variables['logo_classes'] .= ' logo--logotype';
   }
 }
 
