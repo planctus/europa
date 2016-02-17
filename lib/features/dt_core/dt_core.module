@@ -399,20 +399,15 @@ function _dt_core_parent_field_in_pattern($field_name, $pattern) {
 function dt_core_node_validate($node, $form, &$form_state) {
   $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
-    if (isset($wrapper->{$field_name}) && $parent = $wrapper->{$field_name}->value()) {
-      if (is_array($parent)) {
-        if (empty($parent[0])) {
-          continue;
-        }
-        $parent = $parent[0];
-      }
+    if (isset($form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id'])) {
+      $parent = $form_state['values'][$field_name][LANGUAGE_NONE][0]['target_id'];
 
       // Detect if node has been set as its own parent.
-      if ($parent->nid == $node->nid) {
+      if ($parent == $node->nid) {
         form_set_error($field_name, t('The page cannot be its own parent!'));
       }
       // Detect circular reference between two nodes.
-      if (_dt_core_detect_circular_reference($node)) {
+      if (_dt_core_detect_circular_reference($node->nid, $parent)) {
         form_set_error($field_name, t('There is a circular reference between this page and one of its parent!'));
       }
     }
@@ -422,25 +417,29 @@ function dt_core_node_validate($node, $form, &$form_state) {
 /**
  * Checks if a URL pattern is relying on a parent field.
  *
- * @param object $node
- *   Node.
+ * @param int $nid
+ *   Node ID.
+ *
+ * @param int $parent_nid
+ *   Parent node ID.
  *
  * @return bool
  *   There is a circular reference between the two nodes.
  */
-function _dt_core_detect_circular_reference($node) {
+function _dt_core_detect_circular_reference($nid, $parent_nid) {
   $relatives = array();
   try {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
-      $relatives += _dt_core_node_get_relatives($node->nid, $field_name, $direction = 'parents');
+      // Look for relatives of the future parent.
+      $relatives += _dt_core_node_get_relatives($parent_nid, $field_name, $direction = 'parents');
     }
   }
   catch (DTCoreParentCircular $e) {
 
     return TRUE;
   }
-
-  return FALSE;
+  // Check if our node is among its future relatives.
+  return in_array($nid, $parent_nid);
 }
 
 /**
