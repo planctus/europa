@@ -419,6 +419,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
  *
  * @param int $nid
  *   Node ID.
+
  * @param int $parent_nid
  *   Parent node ID.
  *
@@ -438,7 +439,7 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
     return TRUE;
   }
   // Check if our node is among its future relatives.
-  return in_array($nid, $parent_nid);
+  return in_array($nid, $relatives);
 }
 
 /**
