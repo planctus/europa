@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_class_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_class_content|node|class|form'] = $field_group;
+  $field_groups['group_class_content|node|class|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -50,23 +50,28 @@ function dt_class_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Departments',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_department',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Departments',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_class_departments|node|class|full'] = $field_group;
+  $field_groups['group_class_departments|node|class|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +100,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_class_link_content|node|class_link_group|form'] = $field_group;
+  $field_groups['group_class_link_content|node|class_link_group|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +127,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_class_link_group|node|class|form'] = $field_group;
+  $field_groups['group_class_link_group|node|class|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -135,7 +140,7 @@ function dt_class_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Messages',
-    'weight' => '2',
+    'weight' => '23',
     'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -149,7 +154,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_class_messages|node|class|full'] = $field_group;
+  $field_groups['group_class_messages|node|class|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -178,7 +183,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_class_related|node|class|form'] = $field_group;
+  $field_groups['group_class_related|node|class|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -191,23 +196,28 @@ function dt_class_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Topics',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_topics',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Topics',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_class_topics|node|class|full'] = $field_group;
+  $field_groups['group_class_topics|node|class|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -233,7 +243,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|class_link_group|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|class_link_group|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -261,7 +271,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|class|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|class|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -291,7 +301,7 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|class_link_group|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|class_link_group|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -321,7 +331,17 @@ function dt_class_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|class|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|class|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Departments');
+  t('Editorial settings');
+  t('Link groups');
+  t('Messages');
+  t('Related');
+  t('Topics');
+
+  return $field_groups;
 }
