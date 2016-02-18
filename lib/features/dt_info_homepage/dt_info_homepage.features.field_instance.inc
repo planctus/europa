@@ -79,7 +79,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_core_social_network_links'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_core_social_network_links'.
   $field_instances['node-info_homepage-field_core_social_network_links'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -126,7 +127,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_1'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_1'.
   $field_instances['node-info_homepage-field_info_homepage_section_1'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -144,9 +146,11 @@ function dt_info_homepage_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
-          'nexteuropa_listing_columns' => 'row_two',
-          'nexteuropa_listing_modifier' => 'listing--title-medium listing--no-border',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
+          'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_modifier' => 'listing--no-border listing--title-medium listing--frontpage',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -175,7 +179,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_2'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_2'.
   $field_instances['node-info_homepage-field_info_homepage_section_2'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -190,16 +195,9 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--title-medium',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -224,7 +222,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_3'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_3'.
   $field_instances['node-info_homepage-field_info_homepage_section_3'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -239,16 +238,9 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--title-medium',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 4,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -273,7 +265,8 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-info_homepage-field_info_homepage_section_4'.
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_section_4'.
   $field_instances['node-info_homepage-field_info_homepage_section_4'] = array(
     'bundle' => 'info_homepage',
     'default_value' => NULL,
@@ -290,10 +283,12 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'links' => 0,
+          'links' => 1,
           'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_modifier' => 'listing--cta listing--title-medium equal-height',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
@@ -322,6 +317,80 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_topic_intro'.
+  $field_instances['node-info_homepage-field_info_homepage_topic_intro'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_topic_intro',
+    'label' => 'Topic intro',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-group_content_access'.
   $field_instances['node-info_homepage-group_content_access'] = array(
     'bundle' => 'info_homepage',
@@ -343,7 +412,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'node',
@@ -392,7 +461,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'node',
@@ -451,7 +520,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -488,6 +557,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Section Two');
   t('Social Network Links');
   t('Title');
+  t('Topic intro');
 
   return $field_instances;
 }

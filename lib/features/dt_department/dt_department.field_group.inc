@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_department_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|department|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|department|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -65,7 +65,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_contact|node|department|form'] = $field_group;
+  $field_groups['group_department_contact|node|department|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -94,7 +94,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_contact|node|department|full'] = $field_group;
+  $field_groups['group_department_contact|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -124,7 +124,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_latest|node|department|full'] = $field_group;
+  $field_groups['group_department_latest|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +155,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_leadership|node|department|full'] = $field_group;
+  $field_groups['group_department_leadership|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -181,7 +181,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_meta|node|department|full'] = $field_group;
+  $field_groups['group_department_meta|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -205,7 +205,7 @@ function dt_department_field_group_info() {
       'instance_settings' => array(),
     ),
   );
-  $export['group_department_meta|node|department|meta'] = $field_group;
+  $field_groups['group_department_meta|node|department|meta'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -234,7 +234,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_relatedlinks|node|department|full'] = $field_group;
+  $field_groups['group_department_relatedlinks|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -269,7 +269,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_department_responsibilit|node|department|full'] = $field_group;
+  $field_groups['group_department_responsibilit|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -299,7 +299,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|department|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|department|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -328,7 +328,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_main|node|department|full'] = $field_group;
+  $field_groups['group_latest_main|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -357,7 +357,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_sidebar|node|department|full'] = $field_group;
+  $field_groups['group_latest_sidebar|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -386,7 +386,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_person|node|department|form'] = $field_group;
+  $field_groups['group_person|node|department|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -419,7 +419,7 @@ function dt_department_field_group_info() {
       ),
     ),
   );
-  $export['group_priorities|node|department|form'] = $field_group;
+  $field_groups['group_priorities|node|department|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -455,7 +455,22 @@ function dt_department_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_profile_information|node|department|form'] = $field_group;
+  $field_groups['group_profile_information|node|department|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Contact');
+  t('Content');
+  t('Editorial settings');
+  t('Latest');
+  t('Leadership and organisation');
+  t('Main');
+  t('Meta');
+  t('Profile information');
+  t('Related links');
+  t('Responsibilities');
+  t('Responsibilities, tasks');
+  t('Sidebar');
+
+  return $field_groups;
 }

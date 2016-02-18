@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_info_homepage_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -34,7 +34,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|info_homepage|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -51,11 +51,12 @@ function dt_info_homepage_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_introduction',
-      2 => 'field_info_homepage_section_1',
-      3 => 'field_info_homepage_section_2',
-      4 => 'field_info_homepage_section_3',
-      5 => 'field_info_homepage_section_4',
-      6 => 'field_core_social_network_links',
+      2 => 'field_core_social_network_links',
+      3 => 'field_info_homepage_section_1',
+      4 => 'field_info_homepage_section_2',
+      5 => 'field_info_homepage_section_3',
+      6 => 'field_info_homepage_section_4',
+      7 => 'field_info_homepage_topic_intro',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -67,7 +68,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_content|node|info_homepage|form'] = $field_group;
+  $field_groups['group_content|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -97,37 +98,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|info_homepage|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_highlight|node|info_homepage|full';
-  $field_group->group_name = 'group_highlight';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'info_homepage';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Highlight',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_info_homepage_section_3',
-      1 => 'topics_atoz',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Highlight',
-      'instance_settings' => array(
-        'classes' => 'section__group section__group--full-width section__group--highlight-grey',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'h3',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $export['group_highlight|node|info_homepage|full'] = $field_group;
+  $field_groups['group_editorial_settings|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -156,7 +127,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_info_homepage_section_bot|node|info_homepage|full'] = $field_group;
+  $field_groups['group_info_homepage_section_bot|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -172,7 +143,6 @@ function dt_info_homepage_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_info_homepage_section_1',
-      1 => 'field_info_homepage_section_2',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -186,7 +156,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_info_homepage_section_top|node|info_homepage|full'] = $field_group;
+  $field_groups['group_info_homepage_section_top|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -215,7 +185,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_main|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest_main|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -244,7 +214,7 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_sidebar|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest_sidebar|node|info_homepage|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -257,7 +227,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -274,7 +244,50 @@ function dt_info_homepage_field_group_info() {
       ),
     ),
   );
-  $export['group_latest|node|info_homepage|full'] = $field_group;
+  $field_groups['group_latest|node|info_homepage|full'] = $field_group;
 
-  return $export;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_topics|node|info_homepage|full';
+  $field_group->group_name = 'group_topics';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Topics',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_info_homepage_topic_intro',
+      1 => 'topics_atoz',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Topics',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-topics field-group-html-element',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_topics|node|info_homepage|full'] = $field_group;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Editorial settings');
+  t('Highlight');
+  t('Latest');
+  t('Main');
+  t('Section bottom');
+  t('Section top');
+  t('Sidebar');
+  t('Topics');
+
+  return $field_groups;
 }
