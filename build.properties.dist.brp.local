@@ -10,7 +10,7 @@ drupal.db.password =
 subsite.name = BRP Portal
 #subsite.production.key = beta
 #subsite.production.root = http://beta.ec.europa.eu
-subsite.install.modules = dt_core
+subsite.install.modules = dt_core_brp
 drush.verbose = false
 
 # Host configuration
