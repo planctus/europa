@@ -117,3 +117,10 @@ function dt_core_info_update_7106() {
 function dt_core_info_update_7107() {
   variable_del('dt_header_background_default');
 }
+
+/**
+ * NEXTEUROPA-8483: Enable dt_list_view_content.
+ */
+function dt_core_info_update_7108() {
+  module_enable(array('dt_list_view_content'));
+}

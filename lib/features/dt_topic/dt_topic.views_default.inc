@@ -13,7 +13,7 @@ function dt_topic_views_default_views() {
   $view = new view();
   $view->name = 'filter_list_topics';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Filter list - Topics';
   $view->core = 7;
@@ -75,7 +75,7 @@ function dt_topic_views_default_views() {
   $view = new view();
   $view->name = 'topics';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Topics';
   $view->core = 7;

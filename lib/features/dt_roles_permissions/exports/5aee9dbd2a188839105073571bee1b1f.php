@@ -221,6 +221,7 @@ $permissions['editor'] = array(
   'moderate content from published to archived',
   'moderate content from validated to published',
   'revert revisions',
+  'show format selection for bean',
   'translate interface',
   'use workbench_moderation my drafts tab',
   'use workbench_moderation needs review tab',

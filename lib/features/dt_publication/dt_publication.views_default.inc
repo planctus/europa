@@ -13,7 +13,7 @@ function dt_publication_views_default_views() {
   $view = new view();
   $view->name = 'publication_collections';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Publication collections';
   $view->core = 7;
@@ -94,7 +94,7 @@ function dt_publication_views_default_views() {
   $view = new view();
   $view->name = 'publications';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Publications';
   $view->core = 7;
