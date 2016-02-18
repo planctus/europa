@@ -10,7 +10,7 @@
 function dt_policy_area_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_area-field_core_description'
+  // Exported field_instance: 'node-policy_area-field_core_description'.
   $field_instances['node-policy_area-field_core_description'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -93,7 +93,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_introduction'
+  // Exported field_instance: 'node-policy_area-field_core_introduction'.
   $field_instances['node-policy_area-field_core_introduction'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -181,7 +181,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_legacy_link'
+  // Exported field_instance: 'node-policy_area-field_core_legacy_link'.
   $field_instances['node-policy_area-field_core_legacy_link'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -249,11 +249,11 @@ function dt_policy_area_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => -1,
+      'weight' => 0,
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_persons'
+  // Exported field_instance: 'node-policy_area-field_core_persons'.
   $field_instances['node-policy_area-field_core_persons'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -270,6 +270,7 @@ function dt_policy_area_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -312,8 +313,8 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_policy_area'
-  $field_instances['node-policy_area-field_core_policy_area'] = array(
+  // Exported field_instance: 'node-policy_area-field_core_policy_areas'.
+  $field_instances['node-policy_area-field_core_policy_areas'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
     'deleted' => 0,
@@ -321,33 +322,36 @@ function dt_policy_area_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_policy_area',
-    'label' => 'Parent policy area',
+    'field_name' => 'field_core_policy_areas',
+    'label' => 'Parent policy areas',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -367,7 +371,8 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-field_core_social_network_links'
+  // Exported field_instance:
+  // 'node-policy_area-field_core_social_network_links'.
   $field_instances['node-policy_area-field_core_social_network_links'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -426,7 +431,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-group_content_access'
+  // Exported field_instance: 'node-policy_area-group_content_access'.
   $field_instances['node-policy_area-group_content_access'] = array(
     'bundle' => 'policy_area',
     'default_value' => array(
@@ -491,7 +496,7 @@ function dt_policy_area_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-policy_area-og_group_ref'
+  // Exported field_instance: 'node-policy_area-og_group_ref'.
   $field_instances['node-policy_area-og_group_ref'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -562,7 +567,7 @@ function dt_policy_area_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_area-title_field'
+  // Exported field_instance: 'node-policy_area-title_field'.
   $field_instances['node-policy_area-title_field'] = array(
     'bundle' => 'policy_area',
     'default_value' => NULL,
@@ -627,7 +632,7 @@ function dt_policy_area_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
-  t('Parent policy area');
+  t('Parent policy areas');
   t('Related person');
   t('Social Network Links');
   t('Tagline or introduction. Maximum 300 characters.');
