@@ -12,6 +12,7 @@ build.properties.local
 phpcs.xml
 tests/behat.yml
 lib/settings.php
+lib/settings.php*
 lib/files
 
 # Ignore build artifacts.

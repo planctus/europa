@@ -8,7 +8,6 @@
  *
  * @ingroup views_templates
  */
-
 ?>
 <?php
   $formatted_title = drupal_html_id(strip_tags($title));
