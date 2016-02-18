@@ -331,4 +331,39 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $this->languageCreate((object) ['langcode' => $langcode]);
   }
 
+  /**
+   * Fills in an entity reference field.
+   *
+   * @param string $input_id
+   *    HTML id attribute of the input element fo till in.
+   * @param string $target_title
+   *    Title of the referenced node.
+   *
+   * @throws \Exception
+   *    If the nodes cannot be found.
+   *
+   * @Then I fill in the reference :input_id with :target_title
+   */
+  public function iFillInTheReferenceWith($input_id, $target_title) {
+    $query = new entityFieldQuery();
+    $result = $query
+      ->entityCondition('entity_type', 'node')
+      ->propertyCondition('title', $target_title)
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->range(0, 1)
+      ->propertyOrderBy('nid', 'DESC')
+      ->execute();
+
+    if (empty($result['node'])) {
+      $params = array(
+        '@title' => $title,
+        '@type' => $type,
+      );
+      throw new Exception(format_string("Node @title of @type not found.", $params));
+    }
+    $target_nid = key($result['node']);
+
+    $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
+  }
+
 }
