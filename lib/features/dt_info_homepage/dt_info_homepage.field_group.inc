@@ -57,6 +57,7 @@ function dt_info_homepage_field_group_info() {
       5 => 'field_info_homepage_section_3',
       6 => 'field_info_homepage_section_4',
       7 => 'field_info_homepage_topic_intro',
+      8 => 'field_info_homepage_topic_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -111,7 +112,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_info_homepage_section_4',
     ),
@@ -227,7 +228,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -257,10 +258,10 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Topics',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_info_homepage_topic_intro',
-      1 => 'topics_atoz',
+      1 => 'field_info_homepage_topic_link',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -281,7 +282,6 @@ function dt_info_homepage_field_group_info() {
   // Included for use with string extractors like potx.
   t('Content');
   t('Editorial settings');
-  t('Highlight');
   t('Latest');
   t('Main');
   t('Section bottom');
