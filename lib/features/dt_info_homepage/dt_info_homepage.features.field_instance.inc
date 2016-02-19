@@ -10,6 +10,78 @@
 function dt_info_homepage_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-info_homepage-field_core_header_image'.
+  $field_instances['node-info_homepage-field_core_header_image'] = array(
+    'bundle' => 'info_homepage',
+    'deleted' => 0,
+    'description' => 'Aspect ratio 8:3 (w:h).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_header_image',
+    'label' => 'Header Background Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '2400x900',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'avportal' => 0,
+          'dailymotion' => 0,
+          'node' => 0,
+          'private' => 0,
+          'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-field_core_introduction'.
   $field_instances['node-info_homepage-field_core_introduction'] = array(
     'bundle' => 'info_homepage',
@@ -612,8 +684,10 @@ function dt_info_homepage_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Aspect ratio 8:3 (w:h).');
   t('Group content visibility');
   t('Groups audience');
+  t('Header Background Image');
   t('Introduction');
   t('Section Four');
   t('Section One');
