@@ -197,17 +197,20 @@ function dt_department_update_7111() {
  * NEXTEUROPA-8913: Change values of existing pages.
  */
 function dt_department_update_7112() {
+  // We will store some data for a second run.
+  $alterdata = array();
+  // List of fields we'll merge.
   $types_to_merge = array('Directorate-General (policy)', 'Directorate-General (operational)');
-
+  // Entity query.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->fieldCondition('field_core_ecorganisation', 'value', $types_to_merge, 'IN');
   $department_ids = $query->execute();
-
+  // If we have results, we change the field_core_ecorganisation field.
   if (isset($department_ids['node'])) {
     $departments = entity_load('node', array_keys($department_ids['node']));
     // Loop over the entity's and update the information.
-    foreach ($departments as $nid => $department) {
+    foreach ($departments as $nid => &$department) {
       // Depending on the old value we set our new field.
       if (strpos($department->field_core_ecorganisation[LANGUAGE_NONE]['0']['value'], 'policy')) {
         $dg_type = 'policy';
@@ -217,18 +220,32 @@ function dt_department_update_7112() {
       }
 
       if (isset($dg_type)) {
-        // Set the dg type.
-        $department->field_department_dg_type[LANGUAGE_NONE]['0']['value'] = $dg_type;
+        $alterdata[$nid]['dg_type'] = $dg_type;
         // Set it to the default.
         $department->field_core_ecorganisation[LANGUAGE_NONE]['0']['value'] = 'Directorate-General';
+        // Update and reset cache.
+        field_attach_update('node', $department);
+        entity_get_controller('node')->resetCache(array($nid));
       }
-
-      // Update and reset cache.
-      field_attach_update('node', $department);
-      entity_get_controller('node')->resetCache(array($nid));
     }
   }
 
+  // Revert the features.
   features_revert_module('dt_core');
   features_revert_module('dt_department');
+
+  // Now we should set the new fields data.
+  if (isset($departments)) {
+    // Loop over the entity's and update the information.
+    foreach ($departments as $nid => $department) {
+      // Set the dg type.
+      if (isset($alterdata[$nid])) {
+        // Set the new data.
+        $department->field_department_dg_type[LANGUAGE_NONE]['0']['value'] = $alterdata[$nid]['dg_type'];
+        // Update and reset cache.
+        field_attach_update('node', $department);
+        entity_get_controller('node')->resetCache(array($nid));
+      }
+    }
+  }
 }
