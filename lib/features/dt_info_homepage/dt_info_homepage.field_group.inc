@@ -57,7 +57,8 @@ function dt_info_homepage_field_group_info() {
       5 => 'field_info_homepage_section_3',
       6 => 'field_info_homepage_section_4',
       7 => 'field_info_homepage_topic_intro',
-      8 => 'field_info_homepage_topic_link',
+      8 => 'field_core_header_image',
+      9 => 'field_info_homepage_topic_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
