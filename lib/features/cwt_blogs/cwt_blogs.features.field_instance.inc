@@ -308,7 +308,7 @@ function cwt_blogs_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'tags',
+        'type' => 'nexteuropa_tags',
         'weight' => 0,
       ),
       'meta' => array(
