@@ -11,7 +11,11 @@
 
 .node-type-team {
   .page-content {
-    margin-top: 0;
+    > .container-fluid {
+      > .row:first-child {
+        padding-top: 0;
+      }
+    }
   }
 
   .section--content-top {
