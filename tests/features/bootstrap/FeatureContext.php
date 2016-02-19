@@ -332,44 +332,26 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
-   * Creates an entity reference.
+   * Fills in an entity reference field.
    *
-   * @param string $field_name
-   *    The machine name of the entity reference field.
-   * @param string $host_title
-   *    Title of the node containing the entity reference field.
+   * @param string $input_id
+   *    HTML id attribute of the input element fo till in.
    * @param string $target_title
    *    Title of the referenced node.
    *
    * @throws \Exception
    *    If the nodes cannot be found.
    *
-   * @When I set the :field_name reference for :host_title to :target_title
+   * @Then I fill in the reference :input_id with :target_title
    */
-  public function iSetTheReferenceForTo($field_name, $host_title, $target_title) {
-    $query = new entityFieldQuery();
-    $result = $query
-      ->entityCondition('entity_type', 'node')
-      ->propertyCondition('title', $host_title)
-      ->propertyCondition('status', NODE_PUBLISHED)
-      ->range(0, 1)
-      ->execute();
-
-    if (empty($result['node'])) {
-      $params = array(
-        '@title' => $title,
-        '@type' => $type,
-      );
-      throw new Exception(format_string("Node @title of @type not found.", $params));
-    }
-    $host_nid = key($result['node']);
-
+  public function iFillInTheReferenceWith($input_id, $target_title) {
     $query = new entityFieldQuery();
     $result = $query
       ->entityCondition('entity_type', 'node')
       ->propertyCondition('title', $target_title)
       ->propertyCondition('status', NODE_PUBLISHED)
       ->range(0, 1)
+      ->propertyOrderBy('nid', 'DESC')
       ->execute();
 
     if (empty($result['node'])) {
@@ -381,36 +363,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
     $target_nid = key($result['node']);
 
-    $host = node_load($host_nid);
-    $host->{$field_name}[LANGUAGE_NONE][]['target_id'] = $target_nid;
-    $host->path['pathauto'] = TRUE;
-    node_save($host);
-  }
-
-  /**
-   * Check if creation of circular reference is prevented.
-   *
-   * @param string $field_name
-   *    The machine name of the entity reference field.
-   * @param string $host_title
-   *    Title of the node containing the entity reference field.
-   * @param string $target_title
-   *    Title of the referenced node.
-   *
-   * @throws \Exception
-   *    When circular reference could be created.
-   *
-   * @Given I cannot set circular reference :field_name for :host_title to :target_title
-   */
-  public function iCannotSetCircularReferenceForTo($field_name, $host_title, $target_title) {
-    try {
-      $this->iSetTheReferenceForTo($field_name, $host_title, $target_title);
-    }
-    catch (DTCoreParentCircular $e) {
-      return;
-    }
-
-    throw new \Exception(sprintf('The circular reference in ' . $field_name . ' was created for ' . $host_title));
+    $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
   }
 
 }

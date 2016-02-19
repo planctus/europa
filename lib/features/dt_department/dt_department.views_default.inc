@@ -98,8 +98,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
-    'Directorate-General (policy)' => 'Directorate-General (policy)',
-    'Directorate-General (operational)' => 'Directorate-General (operational)',
+    'Directorate-General' => 'Directorate-General',
     'Service department' => 'Service department',
     'Executive agency' => 'Executive agency',
   );

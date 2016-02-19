@@ -391,6 +391,70 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_topic_link'.
+  $field_instances['node-info_homepage-field_info_homepage_topic_link'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'force_language_default' => 0,
+          'link_title' => '',
+        ),
+        'type' => 'link_button_default',
+        'weight' => 1,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_topic_link',
+    'label' => 'Topic link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 0,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-group_content_access'.
   $field_instances['node-info_homepage-group_content_access'] = array(
     'bundle' => 'info_homepage',
@@ -558,6 +622,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Social Network Links');
   t('Title');
   t('Topic intro');
+  t('Topic link');
 
   return $field_instances;
 }
