@@ -17,14 +17,6 @@ function dt_class_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_class_link_explanation',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -46,7 +38,6 @@ function dt_class_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_class_link_legacy_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -77,7 +68,6 @@ function dt_class_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_class_related_links',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -108,14 +98,6 @@ function dt_class_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_link_groups',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

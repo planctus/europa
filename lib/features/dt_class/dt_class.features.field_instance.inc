@@ -29,7 +29,7 @@ function dt_class_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -49,6 +49,7 @@ function dt_class_field_default_field_instances() {
     'label' => 'Related links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -63,6 +64,7 @@ function dt_class_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -102,6 +104,8 @@ function dt_class_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'two_columns',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
@@ -159,7 +163,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -330,6 +334,8 @@ function dt_class_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'two_columns',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
           'view_mode' => 'title',
         ),
         'type' => 'entityreference_entity_view',
@@ -393,7 +399,7 @@ function dt_class_field_default_field_instances() {
           'view_mode' => 'teaser',
         ),
         'type' => 'entity_reference_section',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -452,7 +458,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -514,7 +520,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -585,7 +591,7 @@ function dt_class_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -624,7 +630,8 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-field_class_link_explanation'.
+  // Exported field_instance:
+  // 'node-class_link_group-field_class_link_explanation'.
   $field_instances['node-class_link_group-field_class_link_explanation'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,
@@ -697,7 +704,8 @@ function dt_class_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-class_link_group-field_class_link_legacy_link'.
+  // Exported field_instance:
+  // 'node-class_link_group-field_class_link_legacy_link'.
   $field_instances['node-class_link_group-field_class_link_legacy_link'] = array(
     'bundle' => 'class_link_group',
     'default_value' => NULL,
@@ -714,7 +722,11 @@ function dt_class_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
         'type' => 'link_listing_title',
         'weight' => 2,
       ),
@@ -725,6 +737,7 @@ function dt_class_field_default_field_instances() {
     'label' => '(Legacy) Link',
     'required' => 1,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -739,6 +752,7 @@ function dt_class_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
