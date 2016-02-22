@@ -82,16 +82,21 @@ function dt_department_field_group_info() {
     'children' => array(
       0 => 'field_core_contact',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="contact"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_department_contact|node|department|full'] = $field_group;
@@ -112,16 +117,21 @@ function dt_department_field_group_info() {
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_department_latest|node|department|full'] = $field_group;
@@ -143,16 +153,21 @@ function dt_department_field_group_info() {
       1 => 'field_department_organigram',
       2 => 'field_department_staff_search',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Leadership and organisation',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="leadership"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_department_leadership|node|department|full'] = $field_group;
@@ -222,16 +237,21 @@ function dt_department_field_group_info() {
     'children' => array(
       0 => 'field_core_links',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="related"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_department_relatedlinks|node|department|full'] = $field_group;
@@ -257,16 +277,21 @@ function dt_department_field_group_info() {
       5 => 'field_department_work_areas_sent',
       6 => 'field_department_mission',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Responsibilities',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="responsibilities"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_department_responsibilit|node|department|full'] = $field_group;

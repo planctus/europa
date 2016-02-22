@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_priority_default_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -26,19 +26,24 @@ function dt_priority_default_field_group_info() {
       0 => 'field_core_child_policies',
       1 => 'field_core_section_intro',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Policy areas',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="policy-areas"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_policy_areas|node|priority|full'] = $field_group;
+  $field_groups['group_pri_pol_policy_areas|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -68,7 +73,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_background|node|priority|form'] = $field_group;
+  $field_groups['group_priority_background|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -86,19 +91,24 @@ function dt_priority_default_field_group_info() {
       0 => 'field_core_background',
       1 => 'field_core_objective',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="background"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_priority_background|node|priority|full'] = $field_group;
+  $field_groups['group_priority_background|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -129,7 +139,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_banner_sec_grp|node|priority|full'] = $field_group;
+  $field_groups['group_priority_banner_sec_grp|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -156,7 +166,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_banner|node|priority|form'] = $field_group;
+  $field_groups['group_priority_banner|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -190,7 +200,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_content|node|priority|form'] = $field_group;
+  $field_groups['group_priority_content|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -221,7 +231,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_context_sec_grp|node|priority|full'] = $field_group;
+  $field_groups['group_priority_context_sec_grp|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -236,8 +246,8 @@ function dt_priority_default_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '4',
     'children' => array(
-      0 => 'field_core_departments',
-      1 => 'field_core_persons',
+      0 => 'field_core_persons',
+      1 => 'field_core_departments',
       2 => 'field_core_topics',
     ),
     'format_type' => 'context_nav',
@@ -248,7 +258,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_contextual|node|priority|full'] = $field_group;
+  $field_groups['group_priority_contextual|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -265,19 +275,24 @@ function dt_priority_default_field_group_info() {
     'children' => array(
       0 => 'field_core_publications',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="documents"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_priority_documents|node|priority|full'] = $field_group;
+  $field_groups['group_priority_documents|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -307,7 +322,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_editorial|node|priority|form'] = $field_group;
+  $field_groups['group_priority_editorial|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -334,7 +349,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_featured_item|node|priority|form'] = $field_group;
+  $field_groups['group_priority_featured_item|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -364,7 +379,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_latest_main|node|priority|full'] = $field_group;
+  $field_groups['group_priority_latest_main|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -393,7 +408,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_latest_sbar|node|priority|full'] = $field_group;
+  $field_groups['group_priority_latest_sbar|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -411,19 +426,24 @@ function dt_priority_default_field_group_info() {
       0 => 'group_priority_latest_main',
       1 => 'group_priority_latest_sbar',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_priority_latest|node|priority|full'] = $field_group;
+  $field_groups['group_priority_latest|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -448,7 +468,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_meta|node|priority|full'] = $field_group;
+  $field_groups['group_priority_meta|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -471,7 +491,7 @@ function dt_priority_default_field_group_info() {
       'instance_settings' => array(),
     ),
   );
-  $export['group_priority_meta|node|priority|teaser'] = $field_group;
+  $field_groups['group_priority_meta|node|priority|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -499,7 +519,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_policy|node|priority|form'] = $field_group;
+  $field_groups['group_priority_policy|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -530,7 +550,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_related|node|priority|form'] = $field_group;
+  $field_groups['group_priority_related|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -547,19 +567,24 @@ function dt_priority_default_field_group_info() {
     'children' => array(
       0 => 'field_core_links',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="related-links"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_priority_related|node|priority|full'] = $field_group;
+  $field_groups['group_priority_related|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -590,7 +615,7 @@ function dt_priority_default_field_group_info() {
       ),
     ),
   );
-  $export['group_priority_tabgroup|node|priority|form'] = $field_group;
+  $field_groups['group_priority_tabgroup|node|priority|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -607,19 +632,45 @@ function dt_priority_default_field_group_info() {
     'children' => array(
       0 => 'field_core_next_steps',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'What\'s next?',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="whats-next"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_priority_whatnext|node|priority|full'] = $field_group;
+  $field_groups['group_priority_whatnext|node|priority|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Background');
+  t('Banner');
+  t('Banner Section group');
+  t('Content');
+  t('Context Nav Section Group');
+  t('Contextual navigation');
+  t('Documents');
+  t('Editorial settings');
+  t('Featured content');
+  t('Latest');
+  t('Main');
+  t('Meta');
+  t('Policy');
+  t('Policy areas');
+  t('Related');
+  t('Related links');
+  t('Sidebar');
+  t('What\'s next?');
+
+  return $field_groups;
 }

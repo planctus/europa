@@ -54,16 +54,21 @@ function dt_class_field_group_info() {
     'children' => array(
       0 => 'field_core_department',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Departments',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_class_departments|node|class|full'] = $field_group;
@@ -195,16 +200,21 @@ function dt_class_field_group_info() {
     'children' => array(
       0 => 'field_core_topics',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Topics',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_class_topics|node|class|full'] = $field_group;
