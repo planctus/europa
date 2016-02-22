@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_topic_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|topic|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -69,7 +69,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|topic|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -98,7 +98,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_main|node|topic|full'] = $field_group;
+  $field_groups['group_latest_main|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +127,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_latest_sidebar|node|topic|full'] = $field_group;
+  $field_groups['group_latest_sidebar|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +155,7 @@ function dt_topic_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_topic_contact|node|topic|form'] = $field_group;
+  $field_groups['group_topic_contact|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -185,7 +185,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_content|node|topic|form'] = $field_group;
+  $field_groups['group_topic_content|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -213,7 +213,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_contextual|node|topic|default'] = $field_group;
+  $field_groups['group_topic_contextual|node|topic|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -228,10 +228,10 @@ function dt_topic_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '3',
     'children' => array(
-      0 => 'field_core_priorities',
-      1 => 'field_core_topics',
-      2 => 'field_core_department',
-      3 => 'field_core_persons',
+      0 => 'field_core_persons',
+      1 => 'field_core_priorities',
+      2 => 'field_core_topics',
+      3 => 'field_core_department',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -241,7 +241,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_contextual|node|topic|full'] = $field_group;
+  $field_groups['group_topic_contextual|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -272,7 +272,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_details|node|topic|form'] = $field_group;
+  $field_groups['group_topic_details|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -290,19 +290,24 @@ function dt_topic_field_group_info() {
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_topic_latest|node|topic|full'] = $field_group;
+  $field_groups['group_topic_latest|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -327,7 +332,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_meta|node|topic|full'] = $field_group;
+  $field_groups['group_topic_meta|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -354,7 +359,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_policy_areas|node|topic|form'] = $field_group;
+  $field_groups['group_topic_policy_areas|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -383,7 +388,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_policy_areas|node|topic|full'] = $field_group;
+  $field_groups['group_topic_policy_areas|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -412,7 +417,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_related_tasks|node|topic|full'] = $field_group;
+  $field_groups['group_topic_related_tasks|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -442,7 +447,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_related|node|topic|form'] = $field_group;
+  $field_groups['group_topic_related|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -469,7 +474,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_tasks|node|topic|default'] = $field_group;
+  $field_groups['group_topic_tasks|node|topic|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -497,7 +502,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_tasks|node|topic|full'] = $field_group;
+  $field_groups['group_topic_tasks|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -525,7 +530,7 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topic_task|node|topic|form'] = $field_group;
+  $field_groups['group_topic_task|node|topic|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -545,19 +550,24 @@ function dt_topic_field_group_info() {
       2 => 'field_topic_targets',
       3 => 'field_core_links',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'What the Commission is doing',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="what-is-doing"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_topic_what_is_doing|node|topic|full'] = $field_group;
+  $field_groups['group_topic_what_is_doing|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -586,7 +596,26 @@ function dt_topic_field_group_info() {
       ),
     ),
   );
-  $export['group_topics_specific_tasks|node|topic|full'] = $field_group;
+  $field_groups['group_topics_specific_tasks|node|topic|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Contact');
+  t('Content');
+  t('Contextual navigation');
+  t('Editorial settings');
+  t('Further information');
+  t('Latest');
+  t('Main');
+  t('Meta');
+  t('Policy areas');
+  t('Related');
+  t('Related Tasks');
+  t('Sidebar');
+  t('Task');
+  t('Tasks');
+  t('Topic specific tasks');
+  t('What the Commission is doing');
+
+  return $field_groups;
 }

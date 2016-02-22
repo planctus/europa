@@ -1,0 +1,34 @@
+# Drupal configuration
+# --------------------
+
+# Database settings.
+drupal.db.name =
+drupal.db.user =
+drupal.db.password =
+
+# Project init.
+subsite.name = BRP Portal
+#subsite.production.key = beta
+#subsite.production.root = http://beta.ec.europa.eu
+subsite.install.modules = dt_core_brp
+drush.verbose = false
+
+# Host configuration
+# ------------------
+server.docroot = /var/www/brp/
+
+# The base URL to use in Behat tests.
+behat.base_url = http://brp.localhost
+
+# Composer
+composer.bin = /usr/local/bin/composer.phar
+
+# Acquia Cloud
+# ------------------
+#Drush aliases
+#drush.alias.acquia = ecfpfis.dev
+
+# MULTISITE release
+# ------------------
+# Project folder in MULTISITE SVN
+# phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

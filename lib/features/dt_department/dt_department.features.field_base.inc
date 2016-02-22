@@ -10,21 +10,13 @@
 function dt_department_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_department'
+  // Exported field_base: 'field_core_department'.
   $field_bases['field_core_department'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_department',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -54,21 +46,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_departments'
+  // Exported field_base: 'field_core_departments'.
   $field_bases['field_core_departments'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_departments',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -98,21 +82,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_contact'
+  // Exported field_base: 'field_department_contact'.
   $field_bases['field_department_contact'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_contact',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -142,21 +118,39 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_intro_sentence'
+  // Exported field_base: 'field_department_dg_type'.
+  $field_bases['field_department_dg_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_department_dg_type',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'policy' => 'Policy',
+        'operational' => 'Operational',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_department_intro_sentence'.
   $field_bases['field_department_intro_sentence'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_intro_sentence',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -171,14 +165,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_mission'
+  // Exported field_base: 'field_department_mission'.
   $field_bases['field_department_mission'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_mission',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -202,21 +195,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_department_organigram'
+  // Exported field_base: 'field_department_organigram'.
   $field_bases['field_department_organigram'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_organigram',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -246,21 +231,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_department_plans_reports'
+  // Exported field_base: 'field_department_plans_reports'.
   $field_bases['field_department_plans_reports'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_plans_reports',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -275,14 +252,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_staff_search'
+  // Exported field_base: 'field_department_staff_search'.
   $field_bases['field_department_staff_search'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_staff_search',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -306,21 +282,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_department_tasks'
+  // Exported field_base: 'field_department_tasks'.
   $field_bases['field_department_tasks'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_tasks',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -342,21 +310,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_department_tasks_desc'
+  // Exported field_base: 'field_department_tasks_desc'.
   $field_bases['field_department_tasks_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_tasks_desc',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -371,21 +331,13 @@ function dt_department_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_department_work_areas_sent'
+  // Exported field_base: 'field_department_work_areas_sent'.
   $field_bases['field_department_work_areas_sent'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_department_work_areas_sent',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

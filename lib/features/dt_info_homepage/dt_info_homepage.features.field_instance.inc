@@ -10,6 +10,78 @@
 function dt_info_homepage_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-info_homepage-field_core_header_image'.
+  $field_instances['node-info_homepage-field_core_header_image'] = array(
+    'bundle' => 'info_homepage',
+    'deleted' => 0,
+    'description' => 'Aspect ratio 8:3 (w:h).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_header_image',
+    'label' => 'Header Background Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => FALSE,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '2400x900',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'avportal' => 0,
+          'dailymotion' => 0,
+          'node' => 0,
+          'private' => 0,
+          'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'upload' => 'upload',
+          'youtube' => 0,
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-field_core_introduction'.
   $field_instances['node-info_homepage-field_core_introduction'] = array(
     'bundle' => 'info_homepage',
@@ -98,8 +170,9 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'social_network_link_theme_css',
         'weight' => 24,
       ),
     ),
@@ -122,60 +195,6 @@ function dt_info_homepage_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'social_network_link_default',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-info_homepage-field_info_highlights'.
-  $field_instances['node-info_homepage-field_info_highlights'] = array(
-    'bundle' => 'info_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 17,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'row_three',
-          'nexteuropa_listing_modifier' => 'mostvisited-item',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => '',
-          'use_content_language' => 0,
-          'view_mode' => 'image_label',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_info_highlights',
-    'label' => 'Highlights',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
       'weight' => 19,
     ),
   );
@@ -201,7 +220,7 @@ function dt_info_homepage_field_default_field_instances() {
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_modifier' => 'listing--no-border listing--title-medium listing--frontpage',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
+          'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'teaser',
@@ -228,7 +247,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -250,7 +269,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 22,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -271,7 +290,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -293,7 +312,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 23,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -314,7 +333,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -366,7 +385,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -387,8 +406,9 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
     ),
@@ -439,7 +459,7 @@ function dt_info_homepage_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -460,8 +480,12 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'force_language_default' => 0,
+          'link_title' => '',
+        ),
+        'type' => 'link_button_default',
         'weight' => 1,
       ),
     ),
@@ -499,7 +523,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -524,7 +548,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 24,
       ),
     ),
     'entity_type' => 'node',
@@ -573,7 +597,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 26,
       ),
     ),
     'entity_type' => 'node',
@@ -632,7 +656,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 25,
       ),
     ),
     'entity_type' => 'node',
@@ -660,9 +684,10 @@ function dt_info_homepage_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Aspect ratio 8:3 (w:h).');
   t('Group content visibility');
   t('Groups audience');
-  t('Highlights');
+  t('Header Background Image');
   t('Introduction');
   t('Section Four');
   t('Section One');

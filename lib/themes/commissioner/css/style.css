@@ -4,8 +4,8 @@
     width: 100%;
     margin-bottom: 2em; }
 
-.node-type-team .page-content {
-  margin-top: 0; }
+.node-type-team .page-content > .container-fluid > .row:first-child {
+  padding-top: 0; }
 
 .node-type-team .section--content-top > .section__group--full-width {
   padding-top: 1.667em; }
@@ -43,7 +43,8 @@
     position: relative; }
     .group-bio-col .group-bio-top-footer {
       position: absolute;
-      bottom: 0; } }
+      bottom: 0;
+      overflow: visible; } }
 
 /*
 Listing  2rows

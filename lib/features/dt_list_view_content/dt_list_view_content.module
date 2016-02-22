@@ -1,0 +1,120 @@
+<?php
+/**
+ * @file
+ * Code for the List view content feature.
+ */
+
+include_once 'dt_list_view_content.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Here we will modify and populate the bean form so that it will list the
+ * available views.
+ */
+function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_id) {
+  // We should only modify our list view content bean.
+  if ($form['#bundle'] == 'list_view_content') {
+    // Do not display the title and view mode selection.
+    $form['view_mode']['#type'] = 'hidden';
+    $form['title_field']['#type'] = 'hidden';
+    // Set the available options (And include the current options).
+    $form['field_list_view_views'][LANGUAGE_NONE]['#options'] = array_merge($form['field_list_view_views'][LANGUAGE_NONE]['#options'], _dt_list_view_content_get_views());
+    // Set the default value.
+    $default_view = isset($form['#entity']->field_list_view_views['und'][0]['value']) ? $form['#entity']->field_list_view_views['und'][0]['value'] : '';
+    $form['field_list_view_views'][LANGUAGE_NONE]['#default_value'] = $default_view;
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * At this stage we will hook into the view, and alter the object with our
+ * custom values.
+ */
+function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
+  // We start with a tag check, as this way prevents unnecessary loads.
+  if ($view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
+    // It could be multiple beans, so we loop over them.
+    if ($bean_ids = _dt_list_view_content_get_bean($view)) {
+      foreach (entity_load('bean', $bean_ids) as $bean) {
+        // Get our language.
+        global $language;
+        // Metadata wrapper.
+        $bean_mdw = entity_metadata_wrapper('bean', $bean);
+        // Set introduction if available.
+        if ($bean_mdw->language($language->language)->__isset('field_core_introduction') && $introduction_content = $bean_mdw->language($language->language)->field_core_introduction->value()) {
+          $header_options = array(
+            'content' => $introduction_content['value'],
+            'format' => $introduction_content['format'],
+            'empty' => 1,
+          );
+          $view->add_item($display_id, 'header', 'views', 'area', $header_options);
+        }
+        // Set description if available.
+        if ($bean_mdw->language($language->language)->__isset('field_core_description') && $description_content = $bean_mdw->language($language->language)->field_core_description->value()) {
+          $view->description = $description_content;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to get a possibly attached bean.
+ *
+ * @param object $view
+ *   The views object which we need to find the bean for.
+ *
+ * @return object
+ *    Bean entity.
+ */
+function _dt_list_view_content_get_bean($view) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'bean')
+    ->propertyCondition('type', 'list_view_content')
+    ->fieldCondition('field_list_view_views', 'value', _dt_list_view_content_view_identifier($view), '=');
+  $result = $query->execute();
+  return isset($result['bean']) ? array_keys($result['bean']) : FALSE;
+}
+
+/**
+ * Helper function to construct the views identifier.
+ *
+ * @param object $view
+ *   The views object.
+ *
+ * @return string|Bool
+ *    Either the full view identifier or a FALSE if it could not be generated.
+ */
+function _dt_list_view_content_view_identifier($view) {
+  if (isset($view->current_display)) {
+    return $view->name . '.' . $view->current_display;
+  }
+  return FALSE;
+}
+
+/**
+ * Helper function to get the available views.
+ *
+ * @return array
+ *    An array of matching views.
+ */
+function _dt_list_view_content_get_views() {
+  // Get all the view.
+  $views = ctools_export_crud_load_all('views_view');
+  // Take all the views that have a page and are exported.
+  foreach ($views as $name => $object) {
+    if ($object->tag == DT_CORE_VIEWS_TAG && isset($object->display['page'])) {
+      foreach ($object->display as $display_id => $display_object) {
+        if ($display_object->display_plugin == 'page') {
+          $views_options[$name . '.' . $display_object->id] = $object->human_name . ' (' . $display_object->display_title . ')';
+        }
+      }
+    }
+  }
+  if (isset($views_options)) {
+    return $views_options;
+  }
+  return FALSE;
+}
