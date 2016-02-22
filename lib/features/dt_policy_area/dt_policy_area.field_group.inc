@@ -255,16 +255,21 @@ function dt_policy_area_field_group_info() {
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_policy_area_latest|node|policy_area|full'] = $field_group;
@@ -310,16 +315,21 @@ function dt_policy_area_field_group_info() {
       0 => 'children_policies',
       1 => 'children_policy_areas',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Policy',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="policy"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_policy|node|policy_area|full'] = $field_group;

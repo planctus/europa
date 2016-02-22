@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_pri_policy_area_default_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -38,7 +38,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_background|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_background|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -56,19 +56,24 @@ function dt_pri_policy_area_default_field_group_info() {
       0 => 'field_core_background',
       1 => 'field_core_objective',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="background"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_area_background|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_background|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +100,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_banner|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_banner|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -130,7 +135,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_content|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_content|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -159,7 +164,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_contextual|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_contextual|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -176,19 +181,24 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'field_core_publications',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="documents"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_area_documents|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_documents|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -218,7 +228,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_editorial|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_editorial|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -245,7 +255,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_featured_item|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_featured_item|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -275,7 +285,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_latest_main|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_latest_main|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -304,7 +314,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_latest_sbar|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_latest_sbar|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -322,19 +332,24 @@ function dt_pri_policy_area_default_field_group_info() {
       0 => 'group_pri_pol_area_latest_main',
       1 => 'group_pri_pol_area_latest_sbar',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Latest',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group section__group',
+        'id' => '',
+        'classes' => 'sidebar-field-group',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_area_latest|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_latest|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -359,7 +374,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_meta|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_meta|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -382,7 +397,7 @@ function dt_pri_policy_area_default_field_group_info() {
       'instance_settings' => array(),
     ),
   );
-  $export['group_pri_pol_area_meta|node|priority_policy_area|teaser'] = $field_group;
+  $field_groups['group_pri_pol_area_meta|node|priority_policy_area|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -410,7 +425,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_policy|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_policy|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -441,7 +456,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_related|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_related|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -458,19 +473,24 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'field_core_links',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="related-links"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_area_related|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_related|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -501,7 +521,7 @@ function dt_pri_policy_area_default_field_group_info() {
       ),
     ),
   );
-  $export['group_pri_pol_area_tabgroup|node|priority_policy_area|form'] = $field_group;
+  $field_groups['group_pri_pol_area_tabgroup|node|priority_policy_area|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -518,19 +538,24 @@ function dt_pri_policy_area_default_field_group_info() {
     'children' => array(
       0 => 'field_core_next_steps',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'What\'s next?',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="whats-next"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_area_whatnext|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_area_whatnext|node|priority_policy_area|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -548,19 +573,43 @@ function dt_pri_policy_area_default_field_group_info() {
       0 => 'field_core_child_policies',
       1 => 'field_core_section_intro',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Actions',
       'instance_settings' => array(
-        'classes' => 'section__group sidebar-field-group__main',
+        'id' => '',
+        'classes' => 'sidebar-field-group__main',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="policy-areas"',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_pri_pol_policy_areas|node|priority_policy_area|full'] = $field_group;
+  $field_groups['group_pri_pol_policy_areas|node|priority_policy_area|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Actions');
+  t('Background');
+  t('Banner');
+  t('Content');
+  t('Contextual navigation');
+  t('Documents');
+  t('Editorial settings');
+  t('Featured content');
+  t('Latest');
+  t('Main');
+  t('Meta');
+  t('Policy');
+  t('Related');
+  t('Related links');
+  t('Sidebar');
+  t('What\'s next?');
+
+  return $field_groups;
 }

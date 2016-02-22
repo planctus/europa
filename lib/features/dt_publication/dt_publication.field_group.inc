@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_publication_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|publication|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|publication|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,7 +66,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|publication|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|publication|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -83,19 +83,20 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'body',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Body',
       'instance_settings' => array(
-        'classes' => 'section__group',
-        'element' => 'div',
         'show_label' => '0',
-        'label_element' => 'div',
+        'label_element' => '',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
       ),
     ),
   );
-  $export['group_publication_body|node|publication|full'] = $field_group;
+  $field_groups['group_publication_body|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -123,7 +124,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_publication_contact|node|publication|form'] = $field_group;
+  $field_groups['group_publication_contact|node|publication|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -140,19 +141,24 @@ function dt_publication_field_group_info() {
     'children' => array(
       0 => 'field_core_contact',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'section__group paragraph',
+        'id' => '',
+        'classes' => 'paragraph',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
-  $export['group_publication_contact|node|publication|full'] = $field_group;
+  $field_groups['group_publication_contact|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -189,7 +195,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_publication_content|node|publication|form'] = $field_group;
+  $field_groups['group_publication_content|node|publication|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -218,7 +224,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_publication_contextual|node|publication|full'] = $field_group;
+  $field_groups['group_publication_contextual|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -236,19 +242,20 @@ function dt_publication_field_group_info() {
       0 => 'field_core_files',
       1 => 'collection_documents',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Files',
       'instance_settings' => array(
-        'classes' => 'section__group',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
       ),
     ),
   );
-  $export['group_publication_file|node|publication|full'] = $field_group;
+  $field_groups['group_publication_file|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -274,7 +281,7 @@ function dt_publication_field_group_info() {
       ),
     ),
   );
-  $export['group_publication_meta|node|publication|full'] = $field_group;
+  $field_groups['group_publication_meta|node|publication|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -298,7 +305,7 @@ function dt_publication_field_group_info() {
       'instance_settings' => array(),
     ),
   );
-  $export['group_publication_meta|node|publication|teaser'] = $field_group;
+  $field_groups['group_publication_meta|node|publication|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -329,7 +336,7 @@ function dt_publication_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_publication_related|node|publication|form'] = $field_group;
+  $field_groups['group_publication_related|node|publication|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -345,22 +352,36 @@ function dt_publication_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_core_departments',
-      1 => 'field_publication_rel_content',
-      2 => 'field_core_policies',
+      1 => 'field_core_policies',
+      2 => 'field_publication_rel_content',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Related information',
       'instance_settings' => array(
-        'classes' => 'section__group paragraph',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'paragraph',
       ),
     ),
   );
-  $export['group_publication_related|node|publication|full'] = $field_group;
+  $field_groups['group_publication_related|node|publication|full'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Abstract & contact');
+  t('Body');
+  t('Contact');
+  t('Content');
+  t('Contextual navigation');
+  t('Editorial settings');
+  t('Files');
+  t('Meta');
+  t('Related content');
+  t('Related information');
+
+  return $field_groups;
 }
