@@ -113,22 +113,24 @@ function dt_info_homepage_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Featured',
+    'label' => 'Featured ',
     'weight' => '4',
     'children' => array(
       0 => 'field_info_highlights',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Featured',
+      'label' => 'Featured ',
       'instance_settings' => array(
-        'show_label' => '0',
+        'id' => '',
+        'classes' => 'section__group',
+        'element' => 'div',
+        'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="highlights"',
-        'modifier' => '',
-        'layout' => '',
-        'classes' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_info_highlights|node|info_homepage|full'] = $field_group;
@@ -333,7 +335,7 @@ function dt_info_homepage_field_group_info() {
   // Included for use with string extractors like potx.
   t('Content');
   t('Editorial settings');
-  t('Featured');
+  t('Featured ');
   t('Latest');
   t('Main');
   t('Section bottom');
