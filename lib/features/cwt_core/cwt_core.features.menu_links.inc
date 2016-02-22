@@ -94,75 +94,6 @@ function cwt_core_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
-  // Exported menu link: menu-dt-service-links_contact:<front>.
-  $menu_links['menu-dt-service-links_contact:<front>'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Contact',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_contact:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-dt-service-links_cookies:<front>.
-  $menu_links['menu-dt-service-links_cookies:<front>'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Cookies',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_cookies:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
-  // Exported menu link: menu-dt-service-links_legal-notice:<front>.
-  $menu_links['menu-dt-service-links_legal-notice:<front>'] = array(
-    'menu_name' => 'menu-dt-service-links',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Legal notice',
-    'options' => array(
-      'attributes' => array(
-        'data-display-title' => 1,
-        'data-remove-class' => 0,
-      ),
-      'identifier' => 'menu-dt-service-links_legal-notice:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 1,
-    'weight' => 0,
-    'customized' => 1,
-    'language' => 'und',
-    'menu_links_customized' => 1,
-  );
 
   // Exported menu link: menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a.
   $menu_links['menu-dt-breadcrumb-menu_sitename:menutoken/569a3b55ae73a'] = array(
@@ -207,10 +138,7 @@ function cwt_core_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Contact');
-  t('Cookies');
   t('Facebook');
-  t('Legal notice');
   t('Other social media');
   t('Twitter');
 
