@@ -39,16 +39,3 @@ function dt_featured_item_node_info() {
   drupal_alter('node_info', $items);
   return $items;
 }
-
-/**
- * Implements hook_node_view().
- */
-function dt_featured_item_entity_load($entities, $type) {
-  if ($type == 'node') {
-    foreach ($entities as &$node) {
-      if ($node->type == 'featured_item' && isset($node->field_feat_node_reference[LANGUAGE_NONE][0]['target_id'])) {
-        $node->legacy = 'node/' . $node->field_feat_node_reference[LANGUAGE_NONE][0]['target_id'];
-      }
-    }
-  }
-}
