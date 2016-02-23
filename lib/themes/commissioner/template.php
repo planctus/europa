@@ -18,7 +18,7 @@ function commissioner_preprocess_page(&$variables) {
   $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
 
 
-  //Adding string 'Tag: ' to Taxonomy tag pages
+  // Adding string 'Tag: ' to Taxonomy tag pages.
   // Check if it's a taxonomy term page and object is loaded in $term.
   if (menu_get_object('taxonomy_term', 2)) {
     // Get taxonomy machine name.
