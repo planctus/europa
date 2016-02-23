@@ -49,7 +49,7 @@ function dt_class_field_default_field_instances() {
     'label' => 'Related links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -737,7 +737,7 @@ function dt_class_field_default_field_instances() {
     'label' => '(Legacy) Link',
     'required' => 1,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
