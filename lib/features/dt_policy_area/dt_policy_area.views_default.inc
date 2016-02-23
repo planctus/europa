@@ -34,27 +34,27 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'ds';
-  $handler->display->display_options['row_options']['relationship'] = 'reverse_field_core_policy_area_node';
-  $handler->display->display_options['row_options']['view_mode'] = 'title';
+  $handler->display->display_options['row_options']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 0;
   $handler->display->display_options['row_options']['grouping'] = 0;
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|title';
-  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'title';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_core_policy_area_node']['id'] = 'reverse_field_core_policy_area_node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_area_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_area_node']['field'] = 'reverse_field_core_policy_area_node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_area_node']['label'] = 'Children policy areas';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_area_node']['required'] = TRUE;
+  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['id'] = 'reverse_field_core_policy_areas_node';
+  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['field'] = 'reverse_field_core_policy_areas_node';
+  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['label'] = 'Children policy areas';
+  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['required'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
@@ -66,7 +66,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
   $handler->display->display_options['fields']['field_core_description']['table'] = 'field_data_field_core_description';
   $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';
-  $handler->display->display_options['fields']['field_core_description']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['fields']['field_core_description']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['fields']['field_core_description']['label'] = '';
   $handler->display->display_options['fields']['field_core_description']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_core_description']['element_label_colon'] = FALSE;
@@ -75,7 +75,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
   $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['fields']['path']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
@@ -83,7 +83,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['field_core_legacy_link']['id'] = 'field_core_legacy_link';
   $handler->display->display_options['fields']['field_core_legacy_link']['table'] = 'field_data_field_core_legacy_link';
   $handler->display->display_options['fields']['field_core_legacy_link']['field'] = 'field_core_legacy_link';
-  $handler->display->display_options['fields']['field_core_legacy_link']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['fields']['field_core_legacy_link']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['fields']['field_core_legacy_link']['label'] = '';
   $handler->display->display_options['fields']['field_core_legacy_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_core_legacy_link']['element_label_colon'] = FALSE;
@@ -107,8 +107,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_core_policy_area_node';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_core_policy_areas_node';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -129,73 +128,16 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'reverse_field_core_policy_area_node';
+  $handler->display->display_options['filters']['type']['relationship'] = 'reverse_field_core_policy_areas_node';
   $handler->display->display_options['filters']['type']['value'] = array(
     'policy_area' => 'policy_area',
   );
 
   /* Display: Policy areas */
   $handler = $view->new_display('block', 'Policy areas', 'block');
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
-  $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'ds';
-  $handler->display->display_options['row_options']['relationship'] = 'reverse_field_core_policy_area_node';
-  $handler->display->display_options['row_options']['load_comments'] = 0;
-  $handler->display->display_options['row_options']['alternating'] = 0;
-  $handler->display->display_options['row_options']['grouping'] = 0;
-  $handler->display->display_options['row_options']['advanced'] = 0;
-  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
-  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|title';
-  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
 
   /* Display: Policies */
   $handler = $view->new_display('block', 'Policies', 'block_1');
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
-  $handler->display->display_options['style_options']['listing_columns'] = 'default';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'ds';
-  $handler->display->display_options['row_options']['relationship'] = 'reverse_field_core_policy_areas_node';
-  $handler->display->display_options['row_options']['load_comments'] = 0;
-  $handler->display->display_options['row_options']['alternating'] = 0;
-  $handler->display->display_options['row_options']['grouping'] = 0;
-  $handler->display->display_options['row_options']['advanced'] = 0;
-  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
-  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'node|title';
-  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['id'] = 'reverse_field_core_policy_areas_node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['field'] = 'reverse_field_core_policy_areas_node';
-  $handler->display->display_options['relationships']['reverse_field_core_policy_areas_node']['required'] = TRUE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['relationship'] = 'reverse_field_core_policy_areas_node';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

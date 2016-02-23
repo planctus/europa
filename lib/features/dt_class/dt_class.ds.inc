@@ -37,6 +37,17 @@ function dt_class_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'class';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
     'social_bookmark_webtools' => array(
       'weight' => '6',
       'label' => 'hidden',
@@ -51,17 +62,6 @@ function dt_class_ds_field_settings_info() {
           'ow-at' => '',
           'ow-def-at' => FALSE,
         ),
-      ),
-    ),
-    'title' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h1',
-        'class' => '',
-        'ft' => array(),
       ),
     ),
     'field_class_related_links' => array(
@@ -83,12 +83,8 @@ function dt_class_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
-      ),
-    ),
-    'field_link_groups' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_core_introduction' => array(
@@ -101,6 +97,7 @@ function dt_class_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -248,11 +245,11 @@ function dt_class_ds_layout_settings_info() {
       'central' => array(
         2 => 'field_link_groups',
         3 => 'group_class_topics',
-        4 => 'field_core_topics',
-        5 => 'group_class_departments',
-        6 => 'field_core_department',
-        7 => 'field_class_related_links',
-        8 => 'social_bookmark_webtools',
+        4 => 'group_class_departments',
+        5 => 'field_class_related_links',
+        6 => 'field_core_topics',
+        7 => 'social_bookmark_webtools',
+        8 => 'field_core_department',
       ),
     ),
     'fields' => array(
@@ -260,11 +257,11 @@ function dt_class_ds_layout_settings_info() {
       'field_core_introduction' => 'left_header',
       'field_link_groups' => 'central',
       'group_class_topics' => 'central',
-      'field_core_topics' => 'central',
       'group_class_departments' => 'central',
-      'field_core_department' => 'central',
       'field_class_related_links' => 'central',
+      'field_core_topics' => 'central',
       'social_bookmark_webtools' => 'central',
+      'field_core_department' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

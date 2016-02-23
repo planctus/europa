@@ -131,11 +131,9 @@ function dt_topic_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
-          'lb' => 'See what other EU institutions are doing on',
-          'lb-el' => 'span',
-          'lb-col' => TRUE,
-          'lbw' => 1,
-          'lbw-el' => 'h3',
+          'lb' => '',
+          'lb-el' => '',
+          'lbw-el' => '',
           'fi' => TRUE,
           'fi-el' => 'p',
           'fi-cl' => '',

@@ -544,16 +544,21 @@ function dt_policy_field_group_info() {
     'children' => array(
       0 => 'social_bookmark_webtools',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Social Media',
       'instance_settings' => array(
-        'classes' => 'section__group',
+        'id' => '',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '0',
-        'label_element' => 'div',
+        'label_element' => '',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_policy_socialmedia|node|policy|full'] = $field_group;

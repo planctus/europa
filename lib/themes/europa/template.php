@@ -467,6 +467,17 @@ function _europa_field_component_listing($variables, $config) {
     $columns_num = 3;
   }
 
+  $items_per_row = 1;
+  if ($config['layout'] == 'row-two') {
+    $items_per_row = 2;
+  }
+  elseif ($config['layout'] == 'row-three') {
+    $items_per_row = 3;
+  }
+
+  // Add a new variable that indicates the row structure.
+  $is_row = $items_per_row > 1;
+
   // Distribute them into columns.
   $total = count($variables['items']);
   $columns = array();
@@ -499,9 +510,31 @@ function _europa_field_component_listing($variables, $config) {
   $output = '<div class="listing__wrapper' . $wrapper_class . '">';
   foreach ($columns as $column) {
     $output .= '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
-    foreach ($column as $item) {
+
+    // Start Itemcounter.
+    $item_in_row = 0;
+
+    // Loop over all our items.
+    foreach ($column as $key => $item) {
+
+      // In row logic we need to add extra markup.
+      if ($is_row) {
+        if ($item_in_row == $items_per_row || $item_in_row == 0) {
+          $output .= '<div class="row">';
+          $item_in_row = 0;
+        }
+        $item_in_row++;
+      }
+
+      // Add the actual item.
       $output .= $item;
+
+      // In row logic we need to add extra markup.
+      if ($is_row && ($item_in_row == $items_per_row || count($column) == $key + 1)) {
+        $output .= '</div>';
+      }
     }
+
     $output .= '</' . $config['listing_wrapper_element'] . '>';
   }
   $output .= '</div>';
@@ -564,6 +597,8 @@ function europa_field($variables) {
   }
 
   if (isset($element['#formatter'])) {
+
+    // Handling nexteuropa_formatters custom cases.
     switch ($element['#formatter']) {
       case 'context_nav_item':
         $output = '';
@@ -573,9 +608,26 @@ function europa_field($variables) {
           $output .= drupal_render($item);
         }
         return $output;
+
+      case 'nexteuropa_tags':
+        $output = '<div class="tags">';
+        // Label formatting.
+        if (!$variables['label_hidden']) {
+          $output .= '<div class="tags__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+        }
+        // Items list formatting.
+        $output .= '<div class="tags__items"' . $variables['content_attributes'] . '>';
+        foreach ($variables['items'] as $delta => $item) {
+          $output .= drupal_render($item);
+        }
+        // Closing both tags and tags__items.
+        $output .= '</div></div>';
+        return $output;
+
     }
   }
 
+  // Handling default output following BEM syntax.
   $output = '';
   $classes = array();
 
@@ -1195,6 +1247,7 @@ function europa_preprocess_page(&$variables) {
       }
     }
   }
+  $variables['logo_classes'] = 'logo site-header__logo';
 }
 
 /**
