@@ -107,13 +107,13 @@ function dt_featured_item_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_feat_node_reference'.
-  $field_bases['field_feat_node_reference'] = array(
+  // Exported field_base: 'field_feat_item_reference'.
+  $field_bases['field_feat_item_reference'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_feat_node_reference',
+    'field_name' => 'field_feat_item_reference',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

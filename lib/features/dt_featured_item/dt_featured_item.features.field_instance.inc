@@ -247,8 +247,8 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-featured_item-field_feat_node_reference'.
-  $field_instances['node-featured_item-field_feat_node_reference'] = array(
+  // Exported field_instance: 'node-featured_item-field_feat_item_reference'.
+  $field_instances['node-featured_item-field_feat_item_reference'] = array(
     'bundle' => 'featured_item',
     'default_value' => NULL,
     'deleted' => 0,
@@ -278,7 +278,7 @@ function dt_featured_item_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_feat_node_reference',
+    'field_name' => 'field_feat_item_reference',
     'label' => 'Node reference',
     'required' => 0,
     'settings' => array(
