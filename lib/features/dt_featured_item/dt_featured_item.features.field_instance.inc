@@ -28,7 +28,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -107,7 +107,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -276,7 +276,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -328,7 +328,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -383,7 +383,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
