@@ -174,12 +174,21 @@ function dt_featured_item_field_default_field_instances() {
       ),
       'image_label' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
           'image_link' => '',
-          'image_style' => 'medium',
+          'picture_mapping' => 'teaser_image',
         ),
-        'type' => 'image',
+        'type' => 'picture',
         'weight' => 11,
       ),
       'teaser' => array(
