@@ -50,12 +50,14 @@ function nexteuropa_feedback_form($form_state) {
     '#default_value' => '',
   );
 
+  $form['accordion']['suggestion_group']['#prefix'] = '<label class="sr-only" for="edit-suggestion">Suggestion</label>';
   $form['accordion']['suggestion_group']['suggestion'] = array(
     '#type' => 'textarea',
     '#default_value' => '',
     '#resizable' => FALSE,
   );
 
+  $form['accordion']['compliment_group']['#prefix'] = '<label class="sr-only" for="edit-compliment">Compliment</label>';
   $form['accordion']['compliment_group']['compliment'] = array(
     '#type' => 'textfield',
     '#default_value' => '',
