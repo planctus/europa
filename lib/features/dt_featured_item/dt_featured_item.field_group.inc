@@ -263,7 +263,7 @@ function dt_featured_item_field_group_info() {
       1 => 'field_feat_item_image',
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
-      4 => 'field_feat_node_reference',
+      4 => 'field_feat_item_reference',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

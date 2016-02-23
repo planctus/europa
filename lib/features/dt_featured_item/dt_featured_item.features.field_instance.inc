@@ -279,7 +279,7 @@ function dt_featured_item_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_feat_item_reference',
-    'label' => 'Node reference',
+    'label' => 'Internal content',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -524,7 +524,7 @@ function dt_featured_item_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Image');
-  t('Node reference');
+  t('Internal content');
   t('Reference or URL of the page that needs to have a high visibility for a limited period of time.');
   t('Select or upload an image.');
   t('Should be the same as the title of the page that is referred to.');
