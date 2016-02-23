@@ -220,7 +220,7 @@ function dt_info_homepage_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
-          'nexteuropa_listing_modifier' => 'mostvisited-item',
+          'nexteuropa_listing_modifier' => 'listing--no-border',
           'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 0,
@@ -748,10 +748,10 @@ function dt_info_homepage_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Aspect ratio 8:3 (w:h).');
+  t('Featured');
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
-  t('Featured');
   t('Introduction');
   t('Section Four');
   t('Section One');

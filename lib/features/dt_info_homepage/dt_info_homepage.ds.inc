@@ -19,21 +19,7 @@ function dt_info_homepage_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'field_info_highlights' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fis' => TRUE,
-          'fis-el' => 'div',
-          'fis-cl' => 'mostvisited-item__wrapper',
-          'fis-at' => '',
-          'fis-def-at' => FALSE,
-          'fi' => TRUE,
-          'fi-el' => 'div',
-          'fi-cl' => 'mostvisited-item',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -88,30 +74,30 @@ function dt_info_homepage_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'field_core_introduction',
-      ),
       'central' => array(
-        1 => 'field_info_homepage_topic_intro',
+        0 => 'field_info_homepage_topic_intro',
         2 => 'group_info_homepage_section_top',
         3 => 'field_info_homepage_topic_link',
         4 => 'field_info_homepage_section_1',
         5 => 'group_info_homepage_section_bot',
-        6 => 'group_info_highlights',
-        7 => 'field_info_homepage_section_4',
+        6 => 'field_info_homepage_section_4',
+        7 => 'group_info_highlights',
         8 => 'group_topics',
         9 => 'field_info_highlights',
       ),
+      'left_header' => array(
+        1 => 'field_core_introduction',
+      ),
     ),
     'fields' => array(
-      'field_core_introduction' => 'left_header',
       'field_info_homepage_topic_intro' => 'central',
+      'field_core_introduction' => 'left_header',
       'group_info_homepage_section_top' => 'central',
       'field_info_homepage_topic_link' => 'central',
       'field_info_homepage_section_1' => 'central',
       'group_info_homepage_section_bot' => 'central',
-      'group_info_highlights' => 'central',
       'field_info_homepage_section_4' => 'central',
+      'group_info_highlights' => 'central',
       'group_topics' => 'central',
       'field_info_highlights' => 'central',
     ),
