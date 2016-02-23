@@ -233,7 +233,7 @@ function dt_info_homepage_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_info_highlights',
-    'label' => 'Highlights',
+    'label' => 'Featured',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -751,7 +751,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
-  t('Highlights');
+  t('Featured');
   t('Introduction');
   t('Section Four');
   t('Section One');
