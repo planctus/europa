@@ -17,7 +17,6 @@ function commissioner_preprocess_page(&$variables) {
   // Set a variable containing the external url to point to.
   $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
 
-
   // Adding string 'Tag: ' to Taxonomy tag pages.
   // Check if it's a taxonomy term page and object is loaded in $term.
   if (menu_get_object('taxonomy_term', 2)) {
