@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = dt_site_menu
 dependencies[] = dt_core
 dependencies[] = dt_page
+dependencies[] = field_group
 dependencies[] = nexteuropa_ds_layouts
 dependencies[] = nexteuropa_formatters
 scripts[] = dt_site_menu.js

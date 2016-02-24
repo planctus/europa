@@ -10,14 +10,13 @@
 function dt_site_menu_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_site_menu_fifth'
+  // Exported field_base: 'field_site_menu_fifth'.
   $field_bases['field_site_menu_fifth'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_fifth',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -41,21 +40,13 @@ function dt_site_menu_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_site_menu_first'
+  // Exported field_base: 'field_site_menu_first'.
   $field_bases['field_site_menu_first'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_first',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -86,14 +77,13 @@ function dt_site_menu_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_site_menu_fourth'
+  // Exported field_base: 'field_site_menu_fourth'.
   $field_bases['field_site_menu_fourth'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_fourth',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -117,21 +107,13 @@ function dt_site_menu_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_site_menu_second'
+  // Exported field_base: 'field_site_menu_second'.
   $field_bases['field_site_menu_second'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_second',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -162,14 +144,13 @@ function dt_site_menu_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_site_menu_sixth'
+  // Exported field_base: 'field_site_menu_sixth'.
   $field_bases['field_site_menu_sixth'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_sixth',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -193,14 +174,13 @@ function dt_site_menu_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_site_menu_third'
+  // Exported field_base: 'field_site_menu_third'.
   $field_bases['field_site_menu_third'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_site_menu_third',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
