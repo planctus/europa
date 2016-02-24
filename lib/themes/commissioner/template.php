@@ -9,12 +9,26 @@
  * Implements template_preprocess_page().
  */
 function commissioner_preprocess_page(&$variables) {
+
   // Prepare the url for the "external" homepage.
   global $language;
   $delimiter = variable_get('language_suffix_delimiter', '_');
   $suffix = $delimiter . $language->prefix;
   // Set a variable containing the external url to point to.
   $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
+
+  // Adding string 'Tag: ' to Taxonomy tag pages.
+  // Check if it's a taxonomy term page and object is loaded in $term.
+  if (menu_get_object('taxonomy_term', 2)) {
+    // Get taxonomy machine name.
+    $taxonomy = $variables['page']['content']['system_main']['term_heading']['term']['#term']->vocabulary_machine_name;
+    // Get term name.
+    $term = $variables['page']['content']['system_main']['term_heading']['term']['#term']->name;
+    if ($taxonomy == 'tags') {
+      $variables['title'] = drupal_set_title(t('Tag') . ': ' . $term);
+    }
+  }
+
 }
 
 /**
