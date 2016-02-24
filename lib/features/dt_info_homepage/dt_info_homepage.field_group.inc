@@ -118,16 +118,16 @@ function dt_info_homepage_field_group_info() {
     'children' => array(
       0 => 'field_info_highlights',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Featured',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'section__group',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="highlights"',
+        'attributes' => 'id="featured"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
         'required_fields' => 1,
       ),
       'formatter' => '',
