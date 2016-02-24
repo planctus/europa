@@ -137,17 +137,17 @@ function dt_featured_item_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'group_mostvisited_item',
-        1 => 'group_mostvisited_item_image',
-        2 => 'group_mostvisited_item_content',
+        0 => 'group_featured_item',
+        1 => 'group_featured_item_image',
+        2 => 'group_featured_item_content',
         3 => 'field_feat_item_image',
         4 => 'title_field',
       ),
     ),
     'fields' => array(
-      'group_mostvisited_item' => 'main',
-      'group_mostvisited_item_image' => 'main',
-      'group_mostvisited_item_content' => 'main',
+      'group_featured_item' => 'main',
+      'group_featured_item_image' => 'main',
+      'group_featured_item_content' => 'main',
       'field_feat_item_image' => 'main',
       'title_field' => 'main',
     ),

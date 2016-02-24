@@ -280,12 +280,12 @@ function dt_featured_item_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_mostvisited_item_content|node|featured_item|image_label';
-  $field_group->group_name = 'group_mostvisited_item_content';
+  $field_group->identifier = 'group_featured_item_content|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item_content';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'featured_item';
   $field_group->mode = 'image_label';
-  $field_group->parent_name = 'group_mostvisited_item';
+  $field_group->parent_name = 'group_featured_item';
   $field_group->data = array(
     'label' => 'Most Visited item content',
     'weight' => '2',
@@ -297,7 +297,7 @@ function dt_featured_item_field_group_info() {
       'label' => 'Most Visited item content',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'mostvisited-item__content',
+        'classes' => 'highlighted-item__content',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -305,17 +305,17 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_mostvisited_item_content|node|featured_item|image_label'] = $field_group;
+  $field_groups['group_featured_item_content|node|featured_item|image_label'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_mostvisited_item_image|node|featured_item|image_label';
-  $field_group->group_name = 'group_mostvisited_item_image';
+  $field_group->identifier = 'group_featured_item_image|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item_image';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'featured_item';
   $field_group->mode = 'image_label';
-  $field_group->parent_name = 'group_mostvisited_item';
+  $field_group->parent_name = 'group_featured_item';
   $field_group->data = array(
     'label' => 'Most Visited item image',
     'weight' => '1',
@@ -327,7 +327,7 @@ function dt_featured_item_field_group_info() {
       'label' => 'Most Visited item image',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'mostvisited-item__image',
+        'classes' => 'highlighted-item__image',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -335,13 +335,13 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_mostvisited_item_image|node|featured_item|image_label'] = $field_group;
+  $field_groups['group_featured_item_image|node|featured_item|image_label'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_mostvisited_item|node|featured_item|image_label';
-  $field_group->group_name = 'group_mostvisited_item';
+  $field_group->identifier = 'group_featured_item|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'featured_item';
   $field_group->mode = 'image_label';
@@ -350,15 +350,15 @@ function dt_featured_item_field_group_info() {
     'label' => 'Most visited item wrapper',
     'weight' => '0',
     'children' => array(
-      0 => 'group_mostvisited_item_content',
-      1 => 'group_mostvisited_item_image',
+      0 => 'group_featured_item_content',
+      1 => 'group_featured_item_image',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Most visited item wrapper',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'mostvisited-item',
+        'classes' => 'highlighted-item',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -366,7 +366,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_mostvisited_item|node|featured_item|image_label'] = $field_group;
+  $field_groups['group_featured_item|node|featured_item|image_label'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
