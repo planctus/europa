@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_featured_item_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -34,7 +34,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|featured_item|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|featured_item|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|featured_item|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|featured_item|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -93,7 +93,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_left|node|featured_item|default'] = $field_group;
+  $field_groups['group_featured_item_left|node|featured_item|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +122,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_left|node|featured_item|teaser'] = $field_group;
+  $field_groups['group_featured_item_left|node|featured_item|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -153,7 +153,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_right|node|featured_item|default'] = $field_group;
+  $field_groups['group_featured_item_right|node|featured_item|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -184,7 +184,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_right|node|featured_item|teaser'] = $field_group;
+  $field_groups['group_featured_item_right|node|featured_item|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -214,7 +214,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_wrapper|node|featured_item|default'] = $field_group;
+  $field_groups['group_featured_item_wrapper|node|featured_item|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -244,7 +244,7 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item_wrapper|node|featured_item|teaser'] = $field_group;
+  $field_groups['group_featured_item_wrapper|node|featured_item|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -274,7 +274,16 @@ function dt_featured_item_field_group_info() {
       ),
     ),
   );
-  $export['group_featured|node|featured_item|form'] = $field_group;
+  $field_groups['group_featured|node|featured_item|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Editorial settings');
+  t('Featured');
+  t('Featured item left');
+  t('Featured item right');
+  t('Featured item wrapper');
+
+  return $field_groups;
 }
