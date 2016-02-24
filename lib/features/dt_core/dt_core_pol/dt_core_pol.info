@@ -35,6 +35,7 @@ features[variable][] = site_name
 features[variable][] = site_slogan
 features[variable][] = easy_breadcrumb-home_segment_title
 features[variable][] = easy_breadcrumb-include_home_segment
+features[metatag][] = global
 features[variable_realm][] = language:en
 features[variable_realm][] = language:bg
 features[variable_realm][] = language:cs
