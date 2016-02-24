@@ -45,7 +45,7 @@ function nexteuropa_feedback_form($form_state) {
   );
 
   $form['accordion']['problem_group']['what_didnt_work'] = array(
-    '#type' => 'textfield',
+    '#type' => 'textarea',
     '#title' => t("What didn't work?"),
     '#default_value' => '',
   );
