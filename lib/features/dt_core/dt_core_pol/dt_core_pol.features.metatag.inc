@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_core_info.features.metatag.inc
+ * dt_core_pol.features.metatag.inc
  */
 
 /**
  * Implements hook_metatag_export_default().
  */
-function dt_core_info_metatag_export_default() {
+function dt_core_pol_metatag_export_default() {
   $config = array();
 
   $config = array();
@@ -32,13 +32,13 @@ function dt_core_info_metatag_export_default() {
         'value' => array(
           'index' => '',
           'follow' => '',
-          'noindex' => 'noindex',
-          'nofollow' => 'nofollow',
+          'noindex' => '',
+          'nofollow' => '',
           'noarchive' => 0,
           'nosnippet' => 0,
           'noodp' => 0,
           'noydir' => 0,
-          'noimageindex' => 'noimageindex',
+          'noimageindex' => '',
           'notranslate' => 0,
         ),
       ),
