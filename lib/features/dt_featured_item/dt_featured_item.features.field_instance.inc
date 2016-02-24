@@ -454,7 +454,7 @@ function dt_featured_item_field_default_field_instances() {
         'module' => 'nexteuropa_legacy_link',
         'settings' => array(
           'title_class' => '',
-          'title_link' => 'legacy_link',
+          'title_link' => '',
           'title_style' => 'h3',
         ),
         'type' => 'title_linked_legacy_link',

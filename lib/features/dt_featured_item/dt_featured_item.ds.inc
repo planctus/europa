@@ -133,10 +133,10 @@ function dt_featured_item_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'featured_item';
   $ds_layout->view_mode = 'image_label';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ne_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'main' => array(
         0 => 'group_mostvisited_item',
         1 => 'group_mostvisited_item_image',
         2 => 'group_mostvisited_item_content',
@@ -145,15 +145,15 @@ function dt_featured_item_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'group_mostvisited_item' => 'ds_content',
-      'group_mostvisited_item_image' => 'ds_content',
-      'group_mostvisited_item_content' => 'ds_content',
-      'field_feat_item_image' => 'ds_content',
-      'title_field' => 'ds_content',
+      'group_mostvisited_item' => 'main',
+      'group_mostvisited_item_image' => 'main',
+      'group_mostvisited_item_content' => 'main',
+      'field_feat_item_image' => 'main',
+      'title_field' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'main' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
