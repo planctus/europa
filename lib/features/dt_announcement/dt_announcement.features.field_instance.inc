@@ -1079,7 +1079,7 @@ function dt_announcement_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1152,7 +1152,7 @@ function dt_announcement_field_default_field_instances() {
     'label' => 'Sources',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
