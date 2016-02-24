@@ -11,7 +11,7 @@ function dt_core_metatag_export_default() {
   $config = array();
 
   // Exported Metatag config instance: global.
-  $config['global'] = (array) array(
+  $config['global'] = (object) array(
     'instance' => 'global',
     'config' => array(
       'content-language' => array(
@@ -21,7 +21,7 @@ function dt_core_metatag_export_default() {
   );
 
   // Exported Metatag config instance: node.
-  $config['node'] = (array) array(
+  $config['node'] = (object) array(
     'instance' => 'node',
     'config' => array(
       'title' => array(
