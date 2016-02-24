@@ -284,7 +284,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -362,7 +362,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'More Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -683,7 +683,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Related Top tasks links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1320,7 +1320,7 @@ function dt_topic_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

@@ -35,7 +35,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Fifth section',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -138,7 +138,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Fourth section',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -237,7 +237,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Sixth section',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -295,7 +295,7 @@ function dt_site_menu_field_default_field_instances() {
     'label' => 'Third section',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
