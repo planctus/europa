@@ -467,7 +467,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -538,7 +538,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Legacy links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-primary',
         'configurable_title' => 0,
@@ -625,7 +625,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -1097,7 +1097,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Mission statement',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-default',
         'configurable_title' => 0,
@@ -1314,7 +1314,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Staff Search Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-default',
         'configurable_title' => 0,

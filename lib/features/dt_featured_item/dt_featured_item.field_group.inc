@@ -69,6 +69,66 @@ function dt_featured_item_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_featured_item_content|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'featured_item';
+  $field_group->mode = 'image_label';
+  $field_group->parent_name = 'group_featured_item';
+  $field_group->data = array(
+    'label' => 'Featured item content',
+    'weight' => '2',
+    'children' => array(
+      0 => 'title_field',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Featured item content',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'highlighted-item__content',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_featured_item_content|node|featured_item|image_label'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_featured_item_image|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'featured_item';
+  $field_group->mode = 'image_label';
+  $field_group->parent_name = 'group_featured_item';
+  $field_group->data = array(
+    'label' => 'Featured item image',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_feat_item_image',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Featured item image',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'highlighted-item__image',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_featured_item_image|node|featured_item|image_label'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_featured_item_left|node|featured_item|default';
   $field_group->group_name = 'group_featured_item_left';
   $field_group->entity_type = 'node';
@@ -249,6 +309,37 @@ function dt_featured_item_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_featured_item|node|featured_item|image_label';
+  $field_group->group_name = 'group_featured_item';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'featured_item';
+  $field_group->mode = 'image_label';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Featured item wrapper',
+    'weight' => '0',
+    'children' => array(
+      0 => 'title_field',
+      1 => 'field_feat_item_image',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Featured item wrapper',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'highlighted-item',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_featured_item|node|featured_item|image_label'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_featured|node|featured_item|form';
   $field_group->group_name = 'group_featured';
   $field_group->entity_type = 'node';
@@ -263,6 +354,7 @@ function dt_featured_item_field_group_info() {
       1 => 'field_feat_item_image',
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
+      4 => 'field_feat_item_reference',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -281,6 +373,8 @@ function dt_featured_item_field_group_info() {
   t('Content');
   t('Editorial settings');
   t('Featured');
+  t('Featured item content');
+  t('Featured item image');
   t('Featured item left');
   t('Featured item right');
   t('Featured item wrapper');

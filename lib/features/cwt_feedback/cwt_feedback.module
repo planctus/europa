@@ -42,17 +42,21 @@ function cwt_feedback_form($form_state) {
   );
 
   $form['accordion']['problem_group']['what_didnt_work'] = array(
-    '#type' => 'textfield',
+    '#type' => 'textarea',
     '#title' => t("What didn't work?"),
     '#default_value' => '',
   );
 
+  $suggestion = t('Suggestion');
+  $form['accordion']['suggestion_group']['#prefix'] = '<label class="sr-only" for="edit-suggestion" aria-label="' . $suggestion . '">' . $suggestion . '</label>';
   $form['accordion']['suggestion_group']['suggestion'] = array(
     '#type' => 'textarea',
     '#default_value' => '',
     '#resizable' => FALSE,
   );
 
+  $compliment = t('Compliment');
+  $form['accordion']['compliment_group']['#prefix'] = '<label class="sr-only" for="edit-compliment" aria-label="' . $compliment . '">' . $compliment . '</label>';
   $form['accordion']['compliment_group']['compliment'] = array(
     '#type' => 'textfield',
     '#default_value' => '',

@@ -24,6 +24,12 @@ function dt_featured_item_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 8,
       ),
+      'image_label' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -97,6 +103,12 @@ function dt_featured_item_field_default_field_instances() {
         'type' => 'link_button_call_for_action',
         'weight' => 9,
       ),
+      'image_label' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
@@ -159,6 +171,25 @@ function dt_featured_item_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 7,
+      ),
+      'image_label' => array(
+        'label' => 'hidden',
+        'module' => 'picture',
+        'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
+          'image_link' => '',
+          'picture_mapping' => 'teaser_image',
+        ),
+        'type' => 'picture',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -225,6 +256,57 @@ function dt_featured_item_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-featured_item-field_feat_item_reference'.
+  $field_instances['node-featured_item-field_feat_item_reference'] = array(
+    'bundle' => 'featured_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 10,
+      ),
+      'image_label' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_feat_item_reference',
+    'label' => 'Internal content',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-featured_item-group_content_access'.
   $field_instances['node-featured_item-group_content_access'] = array(
     'bundle' => 'featured_item',
@@ -241,6 +323,12 @@ function dt_featured_item_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'image_label' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -290,6 +378,12 @@ function dt_featured_item_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 1,
+      ),
+      'image_label' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -354,6 +448,17 @@ function dt_featured_item_field_default_field_instances() {
         ),
         'type' => 'title_linked_legacy_link',
         'weight' => 0,
+      ),
+      'image_label' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_legacy_link',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => '_none',
+        ),
+        'type' => 'title_linked_legacy_link',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -428,6 +533,7 @@ function dt_featured_item_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Image');
+  t('Internal content');
   t('Reference or URL of the page that needs to have a high visibility for a limited period of time.');
   t('Select or upload an image.');
   t('Should be the same as the title of the page that is referred to.');

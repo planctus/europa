@@ -107,41 +107,13 @@ function dt_featured_item_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'group_content_access'.
-  $field_bases['group_content_access'] = array(
+  // Exported field_base: 'field_feat_item_reference'.
+  $field_bases['field_feat_item_reference'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'group_content_access',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'no_ui' => TRUE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Use group defaults',
-        1 => 'Public - accessible to all site users',
-        2 => 'Private - accessible only to group members',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
-  );
-
-  // Exported field_base: 'og_group_ref'.
-  $field_bases['og_group_ref'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'og_group_ref',
+    'field_name' => 'field_feat_item_reference',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -151,23 +123,28 @@ function dt_featured_item_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'og',
+      'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
-          'og_behavior' => array(
-            'status' => TRUE,
+          'titleoverwrite_field_behavior' => array(
+            'status' => 0,
           ),
           'views-select-list' => array(
             'status' => 0,
           ),
         ),
-        'membership_type' => 'og_membership_type_default',
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'announcement' => 'announcement',
+          'department' => 'department',
+          'page' => 'page',
+          'policy' => 'policy',
+          'priority' => 'priority',
+          'topic' => 'topic',
+        ),
       ),
-      'handler_submit' => 'Change handler',
       'target_type' => 'node',
     ),
     'translatable' => 0,

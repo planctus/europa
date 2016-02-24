@@ -692,7 +692,7 @@ function dt_priority_default_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -770,7 +770,7 @@ function dt_priority_default_field_default_field_instances() {
     'label' => 'Related links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
