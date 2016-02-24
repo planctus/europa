@@ -319,8 +319,8 @@ function dt_featured_item_field_group_info() {
     'label' => 'Featured item wrapper',
     'weight' => '0',
     'children' => array(
-      0 => 'group_featured_item_content',
-      1 => 'group_featured_item_image',
+      0 => 'title_field',
+      1 => 'field_feat_item_image',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
