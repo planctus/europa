@@ -13,7 +13,7 @@ function dt_department_views_default_views() {
   $view = new view();
   $view->name = 'department';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Department';
   $view->core = 7;
@@ -46,12 +46,6 @@ function dt_department_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_title_field|title_field_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'meta';
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'The Commission is organised in 2 types of departments. Directorates-General (DGs) make policy. Services provide administrative and other support - including publications and statistics - to parties inside or outside the Commission. Executive agencies are set up for a fixed period to manage programmes. They are not legally part of the EU institutions, but their activities are governed by EU law.';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -59,7 +53,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Title (title_field) */
+  /* Sort criterion: Field: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
@@ -104,8 +98,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
-    'Directorate-General (policy)' => 'Directorate-General (policy)',
-    'Directorate-General (operational)' => 'Directorate-General (operational)',
+    'Directorate-General' => 'Directorate-General',
     'Service department' => 'Service department',
     'Executive agency' => 'Executive agency',
   );
@@ -167,7 +160,7 @@ function dt_department_views_default_views() {
   $view = new view();
   $view->name = 'filter_list_departments';
   $view->description = 'Collection of views objects that can be used to filter lists';
-  $view->tag = 'default';
+  $view->tag = 'digital_transformation';
   $view->base_table = 'node';
   $view->human_name = 'Filter list - Departments';
   $view->core = 7;
@@ -196,7 +189,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Sort criterion: Content: Title (title_field) */
+  /* Sort criterion: Field: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';

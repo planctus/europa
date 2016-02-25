@@ -305,10 +305,10 @@ function cwt_blogs_field_default_field_instances() {
         'weight' => 5,
       ),
       'full' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'nexteuropa_tags',
         'weight' => 0,
       ),
       'meta' => array(

@@ -526,7 +526,7 @@ function dt_publication_field_default_field_instances() {
     'label' => 'Link to publication',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

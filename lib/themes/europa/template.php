@@ -520,7 +520,7 @@ function _europa_field_component_listing($variables, $config) {
       // In row logic we need to add extra markup.
       if ($is_row) {
         if ($item_in_row == $items_per_row || $item_in_row == 0) {
-          $output .= '<div class="row">';
+          $output .= '<div class="clearfix">';
           $item_in_row = 0;
         }
         $item_in_row++;
@@ -568,7 +568,7 @@ function europa_field($variables) {
         $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
 
         // Custom listing settings based on view mode.
-        $listing_view_modes = array('title', 'meta', 'teaser');
+        $listing_view_modes = array('title', 'meta', 'teaser', 'image_label');
         if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
           switch ($first_node['#view_mode']) {
             case 'title':
@@ -597,6 +597,8 @@ function europa_field($variables) {
   }
 
   if (isset($element['#formatter'])) {
+
+    // Handling nexteuropa_formatters custom cases.
     switch ($element['#formatter']) {
       case 'context_nav_item':
         $output = '';
@@ -606,9 +608,26 @@ function europa_field($variables) {
           $output .= drupal_render($item);
         }
         return $output;
+
+      case 'nexteuropa_tags':
+        $output = '<div class="tags">';
+        // Label formatting.
+        if (!$variables['label_hidden']) {
+          $output .= '<div class="tags__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+        }
+        // Items list formatting.
+        $output .= '<div class="tags__items"' . $variables['content_attributes'] . '>';
+        foreach ($variables['items'] as $delta => $item) {
+          $output .= drupal_render($item);
+        }
+        // Closing both tags and tags__items.
+        $output .= '</div></div>';
+        return $output;
+
     }
   }
 
+  // Handling default output following BEM syntax.
   $output = '';
   $classes = array();
 
@@ -1228,6 +1247,7 @@ function europa_preprocess_page(&$variables) {
       }
     }
   }
+  $variables['logo_classes'] = 'logo site-header__logo';
 }
 
 /**

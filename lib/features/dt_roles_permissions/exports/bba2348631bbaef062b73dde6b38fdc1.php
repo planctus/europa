@@ -131,6 +131,7 @@ $permissions['contributor'] = array(
   'moderate content from draft to needs_review',
   'moderate content from needs_review to draft',
   'revert revisions',
+  'show format selection for bean',
   'use workbench_moderation my drafts tab',
   'use workbench_moderation needs review tab',
   'view all unpublished content',

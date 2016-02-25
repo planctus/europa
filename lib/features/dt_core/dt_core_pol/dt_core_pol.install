@@ -47,6 +47,9 @@ function dt_core_pol_install() {
   // Create default menu items.
   _dt_core_pol_menu_footer();
 
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
 }

@@ -104,7 +104,7 @@ function dt_department_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -424,7 +424,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -467,7 +467,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -494,7 +494,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -538,7 +538,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Legacy links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-primary',
         'configurable_title' => 0,
@@ -565,7 +565,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -625,7 +625,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'listing__title',
         'configurable_title' => 0,
@@ -652,7 +652,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -925,6 +925,57 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-department-field_department_dg_type'.
+  $field_instances['node-department-field_department_dg_type'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_department_dg_type',
+    'label' => 'Directorate General Type',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-department-field_department_intro_sentence'.
   $field_instances['node-department-field_department_intro_sentence'] = array(
     'bundle' => 'department',
@@ -1046,7 +1097,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Mission statement',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-default',
         'configurable_title' => 0,
@@ -1263,7 +1314,7 @@ function dt_department_field_default_field_instances() {
     'label' => 'Staff Search Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'btn btn-default',
         'configurable_title' => 0,
@@ -1343,7 +1394,7 @@ function dt_department_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1832,6 +1883,7 @@ function dt_department_field_default_field_instances() {
   t('Department name');
   t('Department type');
   t('Description');
+  t('Directorate General Type');
   t('E.g. \'DG ENER\'');
   t('Group content visibility');
   t('Groups audience');

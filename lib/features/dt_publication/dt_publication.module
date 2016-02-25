@@ -92,7 +92,8 @@ function _dt_publication_rename_containing_group_label($field_name, $group_label
     // And every item in each region.
     foreach ($items as $key => $item) {
       // If there is a field group.
-      if ($item_group = $item['#group']) {
+      if (isset($item['#group'])) {
+        $item_group = $item['#group'];
         // Get the children of this particular group.
         $children = $item_group->children;
         if (array_search($field_name, $children)) {
