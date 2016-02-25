@@ -51,15 +51,12 @@ function dt_info_homepage_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_introduction',
-      2 => 'field_core_social_network_links',
-      3 => 'field_info_homepage_section_1',
-      4 => 'field_info_homepage_section_2',
-      5 => 'field_info_homepage_section_3',
-      6 => 'field_info_homepage_section_4',
-      7 => 'field_info_highlights',
-      8 => 'field_info_homepage_topic_intro',
-      9 => 'field_info_homepage_topic_link',
-      10 => 'field_core_header_image',
+      2 => 'field_info_homepage_section_1',
+      3 => 'field_info_homepage_section_4',
+      4 => 'field_info_highlights',
+      5 => 'field_info_homepage_topic_intro',
+      6 => 'field_info_homepage_topic_link',
+      7 => 'field_core_header_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -244,9 +241,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->data = array(
     'label' => 'Sidebar',
     'weight' => '23',
-    'children' => array(
-      0 => 'field_core_social_network_links',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Sidebar',

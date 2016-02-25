@@ -151,53 +151,6 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-info_homepage-field_core_social_network_links'.
-  $field_instances['node-info_homepage-field_core_social_network_links'] = array(
-    'bundle' => 'info_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'dt_social_network_links',
-        'settings' => array(
-          'icon_image_style' => '',
-        ),
-        'type' => 'social_network_link_default',
-        'weight' => 16,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_social_network_links',
-    'label' => 'Social Network Links',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'social_network' => 0,
-      'title' => 0,
-      'url' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'dt_social_network_links',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'social_network_link_default',
-      'weight' => 19,
-    ),
-  );
-
   // Exported field_instance: 'node-info_homepage-field_info_highlights'.
   $field_instances['node-info_homepage-field_info_highlights'] = array(
     'bundle' => 'info_homepage',
@@ -285,7 +238,7 @@ function dt_info_homepage_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_info_homepage_section_1',
-    'label' => 'Section One',
+    'label' => 'Class links',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -301,92 +254,6 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-info_homepage-field_info_homepage_section_2'.
-  $field_instances['node-info_homepage-field_info_homepage_section_2'] = array(
-    'bundle' => 'info_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_info_homepage_section_2',
-    'label' => 'Section Two',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-info_homepage-field_info_homepage_section_3'.
-  $field_instances['node-info_homepage-field_info_homepage_section_3'] = array(
-    'bundle' => 'info_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_info_homepage_section_3',
-    'label' => 'Section Three',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 17,
     ),
   );
 
@@ -423,7 +290,7 @@ function dt_info_homepage_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_info_homepage_section_4',
-    'label' => 'Section Four',
+    'label' => 'Secondary links',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -753,10 +620,8 @@ function dt_info_homepage_field_default_field_instances() {
   t('Groups audience');
   t('Header Background Image');
   t('Introduction');
-  t('Section Four');
-  t('Section One');
-  t('Section Three');
-  t('Section Two');
+  t('Secondary links');
+  t('Class links');
   t('Social Network Links');
   t('Title');
   t('Topic intro');

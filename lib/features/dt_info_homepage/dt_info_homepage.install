@@ -46,3 +46,27 @@ function dt_info_homepage_update_7102() {
   // Revert the feature.
   features_revert_module('dt_info_homepage');
 }
+
+/**
+ * NEXTEUROPA-9238: Removing deprecated field bases and instances.
+ */
+function dt_info_homepage_update_7103() {
+  $obsolete_fields = array(
+    'field_info_homepage_section_2',
+    'field_info_homepage_section_3',
+  );
+
+  foreach ($obsolete_fields as $field) {
+    // Marks fields and their instances for deletion.
+    field_delete_field($field);
+  }
+
+  // Only the instance of social network links.
+  field_delete_instance('node-info_homepage-field_core_social_network_links');
+
+  // This actually applies changes and executes the deletion.
+  field_purge_batch(10);
+
+  // Revert the feature.
+  features_revert_module('dt_info_homepage');
+}
