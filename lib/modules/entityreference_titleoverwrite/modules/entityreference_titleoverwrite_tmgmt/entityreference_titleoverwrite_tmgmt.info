@@ -5,4 +5,5 @@ package = Entity
 version = 7.x-1.0-dev
 
 dependencies[] = tmgmt_field
+dependencies[] = entityreference_tmgmt
 dependencies[] = entityreference_titleoverwrite
