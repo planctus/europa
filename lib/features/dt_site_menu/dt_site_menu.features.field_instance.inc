@@ -410,9 +410,9 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_formatters',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_button_call_for_action',
+        'type' => 'link_default',
         'weight' => 15,
       ),
     ),
