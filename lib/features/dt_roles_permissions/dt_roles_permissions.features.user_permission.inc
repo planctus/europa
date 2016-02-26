@@ -35,12 +35,12 @@ function dt_roles_permissions_user_default_permissions() {
   // Exported permission: 'access ecas import users function'.
   $permissions['access ecas import users function'] = array(
     'name' => 'access ecas import users function',
-     'roles' => array(
-       'administrator' => 'administrator',
-       'site manager' => 'site manager',
-     ),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'ecas_import_users',
-   );
+  );
 
   // Exported permission: 'access helper content types'.
   $permissions['access helper content types'] = array(
