@@ -249,3 +249,10 @@ function dt_department_update_7112() {
     }
   }
 }
+
+/**
+ * NEXTEUROPA-9300: adds tmgmt support to entityreference titleoverwrite.
+ */
+function dt_department_update_7113() {
+  module_enable(['entityreference_titleoverwrite_tmgmt']);
+}

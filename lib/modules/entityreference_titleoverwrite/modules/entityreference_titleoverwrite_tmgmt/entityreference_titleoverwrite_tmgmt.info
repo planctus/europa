@@ -1,0 +1,8 @@
+name = Entityreference titleoverwrite - TMGMT support
+description = Add TMGMT support to the entityreference titleoverwrite module.
+core = 7.x
+package = Entity
+version = 7.x-1.0-dev
+
+dependencies[] = tmgmt_field
+dependencies[] = entityreference_titleoverwrite
