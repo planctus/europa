@@ -10,7 +10,7 @@
 function cwt_activities_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-activities-body'
+  // Exported field_instance: 'node-activities-body'.
   $field_instances['node-activities-body'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -89,7 +89,7 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_activity_link'
+  // Exported field_instance: 'node-activities-field_activity_link'.
   $field_instances['node-activities-field_activity_link'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -116,6 +116,7 @@ function cwt_activities_field_default_field_instances() {
     'label' => 'External link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -130,6 +131,7 @@ function cwt_activities_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 255,
       'title_value' => '[node:title]',
       'url' => 0,
@@ -148,7 +150,8 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_editorial_section_multiple'
+  // Exported field_instance:
+  // 'node-activities-field_editorial_section_multiple'.
   $field_instances['node-activities-field_editorial_section_multiple'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -191,7 +194,7 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 1,
   );
 
-  // Exported field_instance: 'node-activities-field_start_end_date'
+  // Exported field_instance: 'node-activities-field_start_end_date'.
   $field_instances['node-activities-field_start_end_date'] = array(
     'bundle' => 'activities',
     'deleted' => 0,
@@ -206,6 +209,7 @@ function cwt_activities_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -251,7 +255,6 @@ function cwt_activities_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Editorial section');
   t('Editorial sections');
   t('External link');
   t('Start/End date');
