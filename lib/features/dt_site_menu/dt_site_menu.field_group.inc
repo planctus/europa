@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_site_menu_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -21,7 +21,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_site_menu_container';
   $field_group->data = array(
     'label' => 'First section',
-    'weight' => '20',
+    'weight' => '14',
     'children' => array(
       0 => 'group_site_menu_first_row',
     ),
@@ -37,7 +37,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_menu_section_first|bean|site_menu|default'] = $field_group;
+  $field_groups['group_menu_section_first|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -50,7 +50,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_site_menu_container';
   $field_group->data = array(
     'label' => 'Second section',
-    'weight' => '21',
+    'weight' => '15',
     'children' => array(
       0 => 'group_site_menu_second_row',
     ),
@@ -66,7 +66,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_menu_section_second|bean|site_menu|default'] = $field_group;
+  $field_groups['group_menu_section_second|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -79,7 +79,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_site_menu_container';
   $field_group->data = array(
     'label' => 'Third section',
-    'weight' => '22',
+    'weight' => '16',
     'children' => array(
       0 => 'group_site_menu_third_row',
     ),
@@ -95,7 +95,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_menu_section_third|bean|site_menu|default'] = $field_group;
+  $field_groups['group_menu_section_third|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -110,9 +110,12 @@ function dt_site_menu_field_group_info() {
     'label' => 'Menu Container',
     'weight' => '19',
     'children' => array(
-      0 => 'group_menu_section_first',
-      1 => 'group_menu_section_second',
-      2 => 'group_menu_section_third',
+      0 => 'field_site_menu_classes',
+      1 => 'field_site_menu_links',
+      2 => 'field_site_menu_topic_link',
+      3 => 'group_menu_section_first',
+      4 => 'group_menu_section_second',
+      5 => 'group_menu_section_third',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -126,7 +129,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_container|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_container|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -156,7 +159,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_first_left|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_first_left|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -186,7 +189,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_first_right|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_first_right|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -199,7 +202,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_menu_section_first';
   $field_group->data = array(
     'label' => 'First row',
-    'weight' => '14',
+    'weight' => '12',
     'children' => array(
       0 => 'group_site_menu_first_left',
       1 => 'group_site_menu_first_right',
@@ -216,7 +219,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_first_row|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_first_row|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -232,7 +235,6 @@ function dt_site_menu_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'field_site_menu_third',
-      1 => 'topics_atoz',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -247,7 +249,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_second_left|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_second_left|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -277,7 +279,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_second_right|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_second_right|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -290,7 +292,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_menu_section_second';
   $field_group->data = array(
     'label' => 'Second row',
-    'weight' => '15',
+    'weight' => '12',
     'children' => array(
       0 => 'group_site_menu_second_left',
       1 => 'group_site_menu_second_right',
@@ -307,7 +309,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_second_row|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_second_row|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -337,7 +339,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_third_left|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_third_left|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -367,7 +369,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_third_right|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_third_right|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -397,7 +399,7 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu_third_row|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu_third_row|bean|site_menu|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -426,7 +428,20 @@ function dt_site_menu_field_group_info() {
       ),
     ),
   );
-  $export['group_site_menu|bean|site_menu|default'] = $field_group;
+  $field_groups['group_site_menu|bean|site_menu|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('First row');
+  t('First section');
+  t('Left');
+  t('Menu');
+  t('Menu Container');
+  t('Right');
+  t('Second row');
+  t('Second section');
+  t('Third row');
+  t('Third section');
+
+  return $field_groups;
 }
