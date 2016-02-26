@@ -64,14 +64,4 @@ function _dt_site_init_menu() {
   drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', array('!edit' => $link)));
 }
 
-/**
- * NEXTEUROPA-9103: Major update in the menu layout.
- */
-function dt_site_menu_update_7101() {
-  // Creating 3 new fields and updating the layout.
-  features_revert_module('dt_site_menu');
 
-  // Migrate data from old fields to the new fields.
-
-  // Delete obsolete field bases, instances and field groups.
-}
