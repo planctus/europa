@@ -74,13 +74,11 @@ function dt_featured_item_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'featured_item';
   $field_group->mode = 'image_label';
-  $field_group->parent_name = 'group_featured_item';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured item content',
     'weight' => '2',
-    'children' => array(
-      0 => 'title_field',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Featured item content',
@@ -104,13 +102,11 @@ function dt_featured_item_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'featured_item';
   $field_group->mode = 'image_label';
-  $field_group->parent_name = 'group_featured_item';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured item image',
     'weight' => '1',
-    'children' => array(
-      0 => 'field_feat_item_image',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Featured item image',

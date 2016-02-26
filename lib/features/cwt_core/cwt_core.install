@@ -527,3 +527,10 @@ function cwt_core_update_7138() {
 function cwt_core_update_7139() {
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 }
+
+/**
+ * NEXTEUROPA-8826 - Enable Metatags module.
+ */
+function cwt_core_update_7140() {
+  module_enable(array('nexteuropa_metatags'));
+}
