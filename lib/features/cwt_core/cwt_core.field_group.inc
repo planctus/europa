@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_core_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function cwt_core_field_group_info() {
       ),
     ),
   );
-  $export['group_custom_content|node|custom_page|form'] = $field_group;
+  $field_groups['group_custom_content|node|custom_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function cwt_core_field_group_info() {
       ),
     ),
   );
-  $export['group_custom_metadata|node|custom_page|form'] = $field_group;
+  $field_groups['group_custom_metadata|node|custom_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function cwt_core_field_group_info() {
       ),
     ),
   );
-  $export['group_team_settings|taxonomy_term|editorial_sections|form'] = $field_group;
+  $field_groups['group_team_settings|taxonomy_term|editorial_sections|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -117,7 +117,14 @@ function cwt_core_field_group_info() {
       ),
     ),
   );
-  $export['group_term|taxonomy_term|editorial_sections|form'] = $field_group;
+  $field_groups['group_term|taxonomy_term|editorial_sections|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Metadata');
+  t('Team');
+  t('Term');
+
+  return $field_groups;
 }
