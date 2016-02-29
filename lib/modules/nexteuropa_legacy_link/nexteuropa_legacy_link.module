@@ -28,7 +28,7 @@ function _nexteuropa_legacylink_load_entities($entities, $type) {
   if ($type == 'node') {
     foreach ($entities as $entity) {
       // If Legacy link field is used add it to path array.
-      if ($legacy_link = _nexteuropa_legacy_link_get($type, $entity)) {
+      if (!isset($entity->legacy) && $legacy_link = _nexteuropa_legacy_link_get($type, $entity)) {
         $entity->legacy = $legacy_link;
       }
       // Adding prevent link, which is TRUE when we don't want a link,
