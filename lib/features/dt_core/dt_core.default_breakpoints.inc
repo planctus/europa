@@ -19,7 +19,7 @@ function dt_core_default_breakpoints() {
   $breakpoint->source = 'europa';
   $breakpoint->source_type = 'theme';
   $breakpoint->status = 1;
-  $breakpoint->weight = 2;
+  $breakpoint->weight = 3;
   $breakpoint->multipliers = array(
     '2x' => '2x',
     '1x' => '1x',
@@ -35,7 +35,7 @@ function dt_core_default_breakpoints() {
   $breakpoint->source = 'europa';
   $breakpoint->source_type = 'theme';
   $breakpoint->status = 1;
-  $breakpoint->weight = 4;
+  $breakpoint->weight = 1;
   $breakpoint->multipliers = array(
     '2x' => '2x',
     '1x' => '1x',
@@ -51,7 +51,7 @@ function dt_core_default_breakpoints() {
   $breakpoint->source = 'europa';
   $breakpoint->source_type = 'theme';
   $breakpoint->status = 1;
-  $breakpoint->weight = 3;
+  $breakpoint->weight = 2;
   $breakpoint->multipliers = array(
     '2x' => '2x',
     '1x' => '1x',
@@ -67,7 +67,7 @@ function dt_core_default_breakpoints() {
   $breakpoint->source = 'europa';
   $breakpoint->source_type = 'theme';
   $breakpoint->status = 1;
-  $breakpoint->weight = 1;
+  $breakpoint->weight = 4;
   $breakpoint->multipliers = array(
     '2x' => '2x',
     '1x' => '1x',
@@ -83,7 +83,7 @@ function dt_core_default_breakpoints() {
   $breakpoint->source = 'europa';
   $breakpoint->source_type = 'theme';
   $breakpoint->status = 1;
-  $breakpoint->weight = 0;
+  $breakpoint->weight = 5;
   $breakpoint->multipliers = array(
     '2x' => '2x',
     '1x' => '1x',
