@@ -109,10 +109,7 @@ function nexteuropa_feedback_form_theme($form) {
   if (!empty($form_errors)) {
     foreach ($form_errors as $field => $error_msg) {
       foreach ($form['accordion'] as $group => $fields) {
-        if (substr($group, 0, 1) == "#") {
-          continue;
-        }
-        if (array_key_exists($field, $fields)) {
+        if (isset($form['accordion'][$group][$field])) {
           $form['accordion'][$group][$field]['#title'] .= '<span class="error sr-only">' . $error_msg . '</span>';
         }
       }
