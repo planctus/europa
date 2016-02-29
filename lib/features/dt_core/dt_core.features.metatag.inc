@@ -10,16 +10,6 @@
 function dt_core_metatag_export_default() {
   $config = array();
 
-  // Exported Metatag config instance: global.
-  $config['global'] = (array) array(
-    'instance' => 'global',
-    'config' => array(
-      'content-language' => array(
-        'value' => '[dt_tokens:dt_content_language]',
-      ),
-    ),
-  );
-
   // Exported Metatag config instance: node.
   $config['node'] = (array) array(
     'instance' => 'node',
