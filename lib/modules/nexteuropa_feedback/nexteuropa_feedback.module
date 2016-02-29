@@ -107,20 +107,15 @@ function nexteuropa_feedback_form_theme($form) {
 
   $form_errors = form_get_errors();
   if (!empty($form_errors)) {
-    $first_error = array_shift(array_keys($form_errors));
-    switch ($first_error) {
-      case 'what_were_you_doing':
-      case 'what_didnt_work':
-        $form['accordion']['problem_group'][$first_error]['#title'] .= '<span class="error sr-only">' . t('Please fill in this field') . '</span>';
-        break;
-
-      case 'suggestion':
-        $form['accordion']['suggestion_group'][$first_error]['#title'] .= '<span class="error sr-only">' . t('Please fill in this field') . '</span>';
-        break;
-
-      case 'compliment':
-        $form['accordion']['compliment_group'][$first_error]['#title'] .= '<span class="error sr-only">' . t('Please fill in this field') . '</span>';
-        break;
+    foreach ($form_errors as $field => $error_msg) {
+      foreach ($form['accordion'] as $group => $fields) {
+        if (substr($group, 0, 1) == "#") {
+          continue;
+        }
+        if (array_key_exists($field, $fields)) {
+          $form['accordion'][$group][$field]['#title'] .= '<span class="error sr-only">' . $error_msg . '</span>';
+        }
+      }
     }
   }
 
