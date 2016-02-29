@@ -876,7 +876,7 @@ function dt_core_update_7164() {
  * NEXTEUROPA-9319 - The featured image is not appearing correctly.
  */
 function dt_core_update_7165() {
-  features_revert(array('dt_core'));
+  features_revert_module('dt_core');
   $image_styles = array(
     'header_image_breakpoints_theme_europa_medium_2x',
     'header_image_breakpoints_theme_europa_mobile_2x',
@@ -895,6 +895,6 @@ function dt_core_update_7165() {
     'teaser_image_breakpoints_theme_europa_wide_2x',
   );
   foreach ($image_styles as $item) {
-    image_style_flush($item);
+    image_style_flush(array('name' => $item));
   }
 }
