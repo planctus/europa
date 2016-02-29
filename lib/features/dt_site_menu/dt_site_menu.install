@@ -63,3 +63,59 @@ function _dt_site_init_menu() {
   $link = url("block/information-site-menu/edit");
   drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', array('!edit' => $link)));
 }
+
+/**
+ * NEXTEUROPA-9103: Major update in site menu.
+ */
+function dt_site_menu_update_7101() {
+  // Create the new fields.
+  features_revert_module('dt_site_menu');
+
+  // Entity Meta Wrapper to manage the data.
+  $menu = bean_load_delta('information-site-menu');
+  $emw = entity_metadata_wrapper('bean', $menu);
+
+  // Ensuring a clean start.
+  $emw->field_site_menu_classes->set([]);
+
+  // Migration for field_site_menu_classes.
+  if (count($emw->field_site_menu_classes->value()) == 0) {
+    if (field_info_instance('bean', 'field_site_menu_first', 'information-site-menu') &&
+      field_info_instance('bean', 'field_site_menu_second', 'information-site-menu')) {
+      $field_site_menu_classes = array_merge(
+        $emw->field_site_menu_first->value(),
+        $emw->field_site_menu_second->value()
+      );
+      $emw->field_site_menu_classes->set($field_site_menu_classes);
+    }
+  }
+
+  // Migration for field_site_menu_classes.
+  if (count($emw->field_site_menu_links->value()) == 0) {
+    if (field_info_instance('bean', 'field_site_menu_fourth', 'information-site-menu')) {
+      $field_site_menu_fourth = $emw->field_site_menu_fourth->value();
+      $emw->field_site_menu_links->set($field_site_menu_fourth);
+    }
+  }
+
+  // Definition of fields to remove.
+  $obsolete_fields = array(
+    'field_site_menu_first' => 'bean-site_menu-field_site_menu_first',
+    'field_site_menu_second' => 'bean-site_menu-field_site_menu_second',
+    'field_site_menu_third' => 'bean-site_menu-field_site_menu_third',
+    'field_site_menu_fourth' => 'bean-site_menu-field_site_menu_fourth',
+    'field_site_menu_fifth' => 'bean-site_menu-field_site_menu_fifth',
+    'field_site_menu_sixth' => 'bean-site_menu-field_site_menu_sixth',
+  );
+
+  foreach ($obsolete_fields as $field_base => $field_instance) {
+    // Marks fields and their instances for deletion.
+    if (field_info_instance('bean', $field_instance, 'information-site-menu')) {
+      field_delete_field($field_base);
+      field_delete_instance($field_instance);
+    }
+  }
+
+  // This actually applies changes and executes the deletion.
+  field_purge_batch(10);
+}
