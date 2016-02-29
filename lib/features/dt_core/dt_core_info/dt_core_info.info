@@ -6,6 +6,7 @@ version = 7.x-1.0
 project = dt_core_info
 dependencies[] = dt_core
 dependencies[] = dt_site_menu
+dependencies[] = cer
 features[context][] = dt_core_info_sitewide
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
