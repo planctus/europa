@@ -58,7 +58,7 @@ function dt_core_image_default_styles() {
       10 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 1476,
+          'width' => 738,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -92,7 +92,7 @@ function dt_core_image_default_styles() {
       6 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 580,
+          'width' => 290,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -126,7 +126,7 @@ function dt_core_image_default_styles() {
       8 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 900,
+          'width' => 450,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -160,7 +160,7 @@ function dt_core_image_default_styles() {
       12 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 1924,
+          'width' => 962,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -194,7 +194,7 @@ function dt_core_image_default_styles() {
       14 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 2280,
+          'width' => 1140,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -244,8 +244,8 @@ function dt_core_image_default_styles() {
       24 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 728,
+          'width' => 546,
+          'height' => 365,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -276,8 +276,8 @@ function dt_core_image_default_styles() {
       26 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 580,
-          'height' => 386,
+          'width' => 290,
+          'height' => 193,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -308,8 +308,8 @@ function dt_core_image_default_styles() {
       28 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 768,
+          'width' => 546,
+          'height' => 364,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -340,8 +340,8 @@ function dt_core_image_default_styles() {
       30 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 728,
+          'width' => 546,
+          'height' => 364,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -372,8 +372,8 @@ function dt_core_image_default_styles() {
       32 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 720,
-          'height' => 480,
+          'width' => 360,
+          'height' => 240,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -420,8 +420,8 @@ function dt_core_image_default_styles() {
       4 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 500,
-          'height' => 333,
+          'width' => 250,
+          'height' => 167,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -452,8 +452,8 @@ function dt_core_image_default_styles() {
       8 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 580,
-          'height' => 387,
+          'width' => 290,
+          'height' => 193,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -484,8 +484,8 @@ function dt_core_image_default_styles() {
       12 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 900,
-          'height' => 600,
+          'width' => 450,
+          'height' => 300,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -516,8 +516,8 @@ function dt_core_image_default_styles() {
       16 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 500,
-          'height' => 333,
+          'width' => 250,
+          'height' => 167,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -548,8 +548,8 @@ function dt_core_image_default_styles() {
       20 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 500,
-          'height' => 333,
+          'width' => 250,
+          'height' => 167,
           'retinafy' => 1,
         ),
         'weight' => 2,
