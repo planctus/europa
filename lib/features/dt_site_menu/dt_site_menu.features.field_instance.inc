@@ -121,9 +121,9 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'link_button_call_for_action',
         'weight' => 15,
       ),
     ),

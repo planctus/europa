@@ -161,10 +161,40 @@ function dt_site_menu_field_group_info() {
   );
   $field_groups['group_site_menu_first_row|bean|site_menu|default'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_site_menu|bean|site_menu|default';
+  $field_group->group_name = 'group_site_menu';
+  $field_group->entity_type = 'bean';
+  $field_group->bundle = 'site_menu';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Menu',
+    'weight' => '1',
+    'children' => array(
+      0 => 'group_site_menu_container',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Menu',
+      'instance_settings' => array(
+        'classes' => 'section__group section__group--highlight-yellow section__group--full-width site-menu',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_site_menu|bean|site_menu|default'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Classes');
   t('Links');
+  t('Menu');
   t('Menu Container');
   t('Menu row');
   t('Menu section');
