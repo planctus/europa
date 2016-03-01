@@ -22,10 +22,26 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
-    $form['date_filter']['min']['#attributes']['placeholder'] = t('Choose a date');
-    $form['date_filter']['max']['#attributes']['placeholder'] = t('Choose a date');
+    $form['date_filter_min']['value']['#attributes']['placeholder'] = t('Choose a date');
+    $form['date_filter_max']['value']['#attributes']['placeholder'] = t('Choose a date');
+
+    // Mark filter as validated to avoid Views illegal choice bug.
+    $form['field_editorial_section_multiple_tid']['#validated'] = TRUE;
     // Add custom submit handler to handle optional end date.
     $form['#submit'][0] = 'cwt_activities_exposed_submit';
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * If start date exposed filter is empty, will only display agenda items from
+ * the current date forward.
+ */
+function cwt_activities_views_query_alter(&$view, &$query) {
+  if ($view->name == 'agenda' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+    $date = date($view->filter['field_start_end_date_value2']->format, time());
+    $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
   }
 }
 
