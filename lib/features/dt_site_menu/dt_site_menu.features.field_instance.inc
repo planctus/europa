@@ -23,7 +23,7 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--short-spaced',
+          'nexteuropa_listing_modifier' => 'listing--dense',
           'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
@@ -68,7 +68,7 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'nexteuropa_title_item_link_modifier' => '',
           'nexteuropa_title_item_modifier' => '',
-          'nexteuropa_title_listing_modifier' => 'listing--no-border listing--short-spaced',
+          'nexteuropa_title_listing_modifier' => 'listing--no-border listing--dense',
         ),
         'type' => 'link_listing_title',
         'weight' => 14,
@@ -121,9 +121,9 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_formatters',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_button_call_for_action',
+        'type' => 'link_default',
         'weight' => 15,
       ),
     ),
