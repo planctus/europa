@@ -23,7 +23,7 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_modifier' => 'listing--dense',
+          'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
@@ -68,7 +68,7 @@ function dt_site_menu_field_default_field_instances() {
         'settings' => array(
           'nexteuropa_title_item_link_modifier' => '',
           'nexteuropa_title_item_modifier' => '',
-          'nexteuropa_title_listing_modifier' => 'listing--no-border listing--dense',
+          'nexteuropa_title_listing_modifier' => 'listing--no-border',
         ),
         'type' => 'link_listing_title',
         'weight' => 14,
