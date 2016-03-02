@@ -251,7 +251,7 @@ function _dt_core_path_update_relatives($path) {
  * @see $GLOBALS['dt_core_parent_fields']
  */
 function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children', $no_alias_only = FALSE, $original_nid = NULL) {
-  if (!isset($field_name)) {
+  if (!isset($field_name) || !field_info_field($field_name)) {
     return array();
   }
   $original_nid = !$original_nid ? $nid : $original_nid;
