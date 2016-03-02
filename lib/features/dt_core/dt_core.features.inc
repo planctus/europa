@@ -36,17 +36,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_medium_1x.
   $styles['header_image_breakpoints_theme_europa_medium_1x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_medium_1x',
     'label' => 'header_image_breakpoints_theme_europa_medium_1x',
     'effects' => array(
       11 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 738,
@@ -61,20 +53,12 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_medium_2x.
   $styles['header_image_breakpoints_theme_europa_medium_2x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_medium_2x',
     'label' => 'header_image_breakpoints_theme_europa_medium_2x',
     'effects' => array(
       10 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 1476,
+          'width' => 738,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -86,17 +70,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_mobile_1x.
   $styles['header_image_breakpoints_theme_europa_mobile_1x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_mobile_1x',
     'label' => 'header_image_breakpoints_theme_europa_mobile_1x',
     'effects' => array(
       7 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 290,
@@ -111,20 +87,12 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_mobile_2x.
   $styles['header_image_breakpoints_theme_europa_mobile_2x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_mobile_2x',
     'label' => 'header_image_breakpoints_theme_europa_mobile_2x',
     'effects' => array(
       6 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 580,
+          'width' => 290,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -136,17 +104,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_narrow_1x.
   $styles['header_image_breakpoints_theme_europa_narrow_1x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_narrow_1x',
     'label' => 'header_image_breakpoints_theme_europa_narrow_1x',
     'effects' => array(
       9 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 450,
@@ -161,20 +121,12 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_narrow_2x.
   $styles['header_image_breakpoints_theme_europa_narrow_2x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_narrow_2x',
     'label' => 'header_image_breakpoints_theme_europa_narrow_2x',
     'effects' => array(
       8 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 900,
+          'width' => 450,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -186,17 +138,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_normal_1x.
   $styles['header_image_breakpoints_theme_europa_normal_1x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_normal_1x',
     'label' => 'header_image_breakpoints_theme_europa_normal_1x',
     'effects' => array(
       13 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 962,
@@ -211,20 +155,12 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_normal_2x.
   $styles['header_image_breakpoints_theme_europa_normal_2x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_normal_2x',
     'label' => 'header_image_breakpoints_theme_europa_normal_2x',
     'effects' => array(
       12 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 1924,
+          'width' => 962,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -236,17 +172,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_wide_1x.
   $styles['header_image_breakpoints_theme_europa_wide_1x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_wide_1x',
     'label' => 'header_image_breakpoints_theme_europa_wide_1x',
     'effects' => array(
       15 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 1140,
@@ -261,20 +189,12 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_breakpoints_theme_europa_wide_2x.
   $styles['header_image_breakpoints_theme_europa_wide_2x'] = array(
-    'name' => 'header_image_breakpoints_theme_europa_wide_2x',
     'label' => 'header_image_breakpoints_theme_europa_wide_2x',
     'effects' => array(
       14 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => 2280,
+          'width' => 1140,
           'height' => '',
           'upscale' => 0,
           'retinafy' => 1,
@@ -286,17 +206,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: header_image_module_picture_empty_srcset_1x.
   $styles['header_image_module_picture_empty_srcset_1x'] = array(
-    'name' => 'header_image_module_picture_empty_srcset_1x',
     'label' => 'header_image_module_picture_empty_srcset_1x',
     'effects' => array(
       5 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'retina_images_image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'retina_images_image_scale_form',
-        'summary theme' => 'retina_images_image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 1140,
@@ -309,283 +221,11 @@ function dt_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: teaser_image_breakpoints_theme_europa_medium_1x.
-  $styles['teaser_image_breakpoints_theme_europa_medium_1x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_medium_1x',
-    'label' => 'teaser_image_breakpoints_theme_europa_medium_1x',
-    'effects' => array(
-      2 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 250,
-          'height' => 167,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_medium_2x.
-  $styles['teaser_image_breakpoints_theme_europa_medium_2x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_medium_2x',
-    'label' => 'teaser_image_breakpoints_theme_europa_medium_2x',
-    'effects' => array(
-      4 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 500,
-          'height' => 333,
-          'retinafy' => 1,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_mobile_1x.
-  $styles['teaser_image_breakpoints_theme_europa_mobile_1x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_mobile_1x',
-    'label' => 'teaser_image_breakpoints_theme_europa_mobile_1x',
-    'effects' => array(
-      6 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 290,
-          'height' => 193,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_mobile_2x.
-  $styles['teaser_image_breakpoints_theme_europa_mobile_2x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_mobile_2x',
-    'label' => 'teaser_image_breakpoints_theme_europa_mobile_2x',
-    'effects' => array(
-      8 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 580,
-          'height' => 387,
-          'retinafy' => 1,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_narrow_1x.
-  $styles['teaser_image_breakpoints_theme_europa_narrow_1x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_narrow_1x',
-    'label' => 'teaser_image_breakpoints_theme_europa_narrow_1x',
-    'effects' => array(
-      10 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 450,
-          'height' => 300,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_narrow_2x.
-  $styles['teaser_image_breakpoints_theme_europa_narrow_2x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_narrow_2x',
-    'label' => 'teaser_image_breakpoints_theme_europa_narrow_2x',
-    'effects' => array(
-      12 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 900,
-          'height' => 600,
-          'retinafy' => 1,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_normal_1x.
-  $styles['teaser_image_breakpoints_theme_europa_normal_1x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_normal_1x',
-    'label' => 'teaser_image_breakpoints_theme_europa_normal_1x',
-    'effects' => array(
-      14 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 250,
-          'height' => 167,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_normal_2x.
-  $styles['teaser_image_breakpoints_theme_europa_normal_2x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_normal_2x',
-    'label' => 'teaser_image_breakpoints_theme_europa_normal_2x',
-    'effects' => array(
-      16 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 500,
-          'height' => 333,
-          'retinafy' => 1,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_wide_1x.
-  $styles['teaser_image_breakpoints_theme_europa_wide_1x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_wide_1x',
-    'label' => 'teaser_image_breakpoints_theme_europa_wide_1x',
-    'effects' => array(
-      18 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 250,
-          'height' => 167,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_breakpoints_theme_europa_wide_2x.
-  $styles['teaser_image_breakpoints_theme_europa_wide_2x'] = array(
-    'name' => 'teaser_image_breakpoints_theme_europa_wide_2x',
-    'label' => 'teaser_image_breakpoints_theme_europa_wide_2x',
-    'effects' => array(
-      20 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 500,
-          'height' => 333,
-          'retinafy' => 1,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
-  // Exported image style: teaser_image_module_picture_empty_srcset_1x.
-  $styles['teaser_image_module_picture_empty_srcset_1x'] = array(
-    'name' => 'teaser_image_module_picture_empty_srcset_1x',
-    'label' => 'teaser_image_module_picture_empty_srcset_1x',
-    'effects' => array(
-      22 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 250,
-          'height' => 167,
-          'retinafy' => 0,
-        ),
-        'weight' => 2,
-      ),
-    ),
-  );
-
   // Exported image style: highlight_image_breakpoints_theme_europa_medium_1x.
   $styles['highlight_image_breakpoints_theme_europa_medium_1x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_medium_1x',
     'label' => 'highlight_image_breakpoints_theme_europa_medium_1x',
     'effects' => array(
       23 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 546,
@@ -599,21 +239,13 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_medium_2x.
   $styles['highlight_image_breakpoints_theme_europa_medium_2x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_medium_2x',
     'label' => 'highlight_image_breakpoints_theme_europa_medium_2x',
     'effects' => array(
       24 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 728,
+          'width' => 546,
+          'height' => 365,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -623,17 +255,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_mobile_1x.
   $styles['highlight_image_breakpoints_theme_europa_mobile_1x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_mobile_1x',
     'label' => 'highlight_image_breakpoints_theme_europa_mobile_1x',
     'effects' => array(
       25 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 290,
@@ -647,21 +271,13 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_mobile_2x.
   $styles['highlight_image_breakpoints_theme_europa_mobile_2x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_mobile_2x',
     'label' => 'highlight_image_breakpoints_theme_europa_mobile_2x',
     'effects' => array(
       26 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 580,
-          'height' => 386,
+          'width' => 290,
+          'height' => 193,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -671,17 +287,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_narrow_1x.
   $styles['highlight_image_breakpoints_theme_europa_narrow_1x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_narrow_1x',
     'label' => 'highlight_image_breakpoints_theme_europa_narrow_1x',
     'effects' => array(
       27 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 546,
@@ -695,21 +303,13 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_narrow_2x.
   $styles['highlight_image_breakpoints_theme_europa_narrow_2x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_narrow_2x',
     'label' => 'highlight_image_breakpoints_theme_europa_narrow_2x',
     'effects' => array(
       28 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 768,
+          'width' => 546,
+          'height' => 364,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -719,17 +319,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_normal_1x.
   $styles['highlight_image_breakpoints_theme_europa_normal_1x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_normal_1x',
     'label' => 'highlight_image_breakpoints_theme_europa_normal_1x',
     'effects' => array(
       29 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 546,
@@ -743,21 +335,13 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_normal_2x.
   $styles['highlight_image_breakpoints_theme_europa_normal_2x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_normal_2x',
     'label' => 'highlight_image_breakpoints_theme_europa_normal_2x',
     'effects' => array(
       30 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1092,
-          'height' => 728,
+          'width' => 546,
+          'height' => 364,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -767,17 +351,9 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_wide_1x.
   $styles['highlight_image_breakpoints_theme_europa_wide_1x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_wide_1x',
     'label' => 'highlight_image_breakpoints_theme_europa_wide_1x',
     'effects' => array(
       31 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 360,
@@ -791,21 +367,13 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_breakpoints_theme_europa_wide_2x.
   $styles['highlight_image_breakpoints_theme_europa_wide_2x'] = array(
-    'name' => 'highlight_image_breakpoints_theme_europa_wide_2x',
     'label' => 'highlight_image_breakpoints_theme_europa_wide_2x',
     'effects' => array(
       32 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 720,
-          'height' => 480,
+          'width' => 360,
+          'height' => 240,
           'retinafy' => 1,
         ),
         'weight' => 2,
@@ -815,21 +383,189 @@ function dt_core_image_default_styles() {
 
   // Exported image style: highlight_image_module_picture_empty_srcset_1x.
   $styles['highlight_image_module_picture_empty_srcset_1x'] = array(
-    'name' => 'highlight_image_module_picture_empty_srcset_1x',
     'label' => 'highlight_image_module_picture_empty_srcset_1x',
     'effects' => array(
       33 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'retina_images_image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'retina_images_image_resize_form',
-        'summary theme' => 'retina_images_image_resize_summary',
-        'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 360,
           'height' => 240,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_medium_1x.
+  $styles['teaser_image_breakpoints_theme_europa_medium_1x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_medium_1x',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_medium_2x.
+  $styles['teaser_image_breakpoints_theme_europa_medium_2x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_medium_2x',
+    'effects' => array(
+      4 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_mobile_1x.
+  $styles['teaser_image_breakpoints_theme_europa_mobile_1x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_mobile_1x',
+    'effects' => array(
+      6 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 290,
+          'height' => 193,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_mobile_2x.
+  $styles['teaser_image_breakpoints_theme_europa_mobile_2x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_mobile_2x',
+    'effects' => array(
+      8 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 290,
+          'height' => 193,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_narrow_1x.
+  $styles['teaser_image_breakpoints_theme_europa_narrow_1x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_narrow_1x',
+    'effects' => array(
+      10 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 450,
+          'height' => 300,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_narrow_2x.
+  $styles['teaser_image_breakpoints_theme_europa_narrow_2x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_narrow_2x',
+    'effects' => array(
+      12 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 450,
+          'height' => 300,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_normal_1x.
+  $styles['teaser_image_breakpoints_theme_europa_normal_1x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_normal_1x',
+    'effects' => array(
+      14 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_normal_2x.
+  $styles['teaser_image_breakpoints_theme_europa_normal_2x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_normal_2x',
+    'effects' => array(
+      16 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_wide_1x.
+  $styles['teaser_image_breakpoints_theme_europa_wide_1x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_wide_1x',
+    'effects' => array(
+      18 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_breakpoints_theme_europa_wide_2x.
+  $styles['teaser_image_breakpoints_theme_europa_wide_2x'] = array(
+    'label' => 'teaser_image_breakpoints_theme_europa_wide_2x',
+    'effects' => array(
+      20 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+          'retinafy' => 1,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: teaser_image_module_picture_empty_srcset_1x.
+  $styles['teaser_image_module_picture_empty_srcset_1x'] = array(
+    'label' => 'teaser_image_module_picture_empty_srcset_1x',
+    'effects' => array(
+      22 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
           'retinafy' => 0,
         ),
         'weight' => 2,
