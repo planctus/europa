@@ -124,7 +124,7 @@ function dt_site_menu_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 15,
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',

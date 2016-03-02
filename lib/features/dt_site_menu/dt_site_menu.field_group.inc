@@ -23,7 +23,8 @@ function dt_site_menu_field_group_info() {
     'label' => 'Menu section',
     'weight' => '14',
     'children' => array(
-      0 => 'group_site_menu_first_row',
+      0 => 'field_site_menu_topic_link',
+      1 => 'group_site_menu_first_row',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -113,7 +114,6 @@ function dt_site_menu_field_group_info() {
     'weight' => '17',
     'children' => array(
       0 => 'field_site_menu_links',
-      1 => 'field_site_menu_topic_link',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -141,7 +141,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = 'group_menu_section_first';
   $field_group->data = array(
     'label' => 'Menu row',
-    'weight' => '16',
+    'weight' => '2',
     'children' => array(
       0 => 'group_site_menu_first_left',
       1 => 'group_site_menu_first_right',
@@ -172,7 +172,7 @@ function dt_site_menu_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Menu',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'group_site_menu_container',
     ),
