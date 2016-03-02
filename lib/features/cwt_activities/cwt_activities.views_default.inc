@@ -494,13 +494,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'tids';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '4';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -509,17 +503,25 @@ function cwt_activities_views_default_views() {
     'activities' => 'activities',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Date: Date (node) */
-  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
-  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['operator'] = 'between';
-  $handler->display->display_options['filters']['date_filter']['group'] = 1;
-  $handler->display->display_options['filters']['date_filter']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['date_filter']['expose']['operator_id'] = 'date_filter_op';
-  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = 'date_filter_op';
-  $handler->display->display_options['filters']['date_filter']['expose']['identifier'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Start/End date - end date (field_start_end_date:value2) */
+  $handler->display->display_options['filters']['field_start_end_date_value2']['id'] = 'field_start_end_date_value2';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['table'] = 'field_data_field_start_end_date';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['field'] = 'field_start_end_date_value2';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_start_end_date_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['operator_id'] = 'field_start_end_date_value2_op';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['label'] = 'Start date';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['operator'] = 'field_start_end_date_value2_op';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['identifier'] = 'date_filter_min';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -555,19 +557,63 @@ function cwt_activities_views_default_views() {
     31 => 0,
     32 => 0,
   );
-  $handler->display->display_options['filters']['date_filter']['group_info']['label'] = 'Date (node)';
-  $handler->display->display_options['filters']['date_filter']['group_info']['identifier'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['date_filter']['group_info']['group_items'] = array(
+  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['label'] = 'Start/End date - end date (field_start_end_date:value2)';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['identifier'] = 'field_start_end_date_value2';
+  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['group_items'] = array(
     1 => array(),
     2 => array(),
     3 => array(),
   );
-  $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
-    'field_data_field_start_end_date.field_start_end_date_value' => 'field_data_field_start_end_date.field_start_end_date_value',
-    'field_data_field_start_end_date.field_start_end_date_value2' => 'field_data_field_start_end_date.field_start_end_date_value2',
+  $handler->display->display_options['filters']['field_start_end_date_value2']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Start/End date -  start date (field_start_end_date) */
+  $handler->display->display_options['filters']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
+  $handler->display->display_options['filters']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
+  $handler->display->display_options['filters']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  $handler->display->display_options['filters']['field_start_end_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_start_end_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_start_end_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['operator_id'] = 'field_start_end_date_value_op';
+  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['operator'] = 'field_start_end_date_value_op';
+  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['identifier'] = 'date_filter_max';
+  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    33 => 0,
+    7 => 0,
+    6 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    34 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    19 => 0,
+    20 => 0,
+    21 => 0,
+    22 => 0,
+    23 => 0,
+    24 => 0,
+    25 => 0,
+    26 => 0,
+    27 => 0,
+    28 => 0,
+    29 => 0,
+    30 => 0,
+    31 => 0,
+    32 => 0,
   );
+  $handler->display->display_options['filters']['field_start_end_date_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Editorial sections (field_editorial_section_multiple) */
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['id'] = 'field_editorial_section_multiple_tid';
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['table'] = 'field_data_field_editorial_section_multiple';
