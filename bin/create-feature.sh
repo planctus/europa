@@ -104,7 +104,7 @@ create_subfeature() {
     INSTANCE_DIR="${FEATURE_NAME}_${INSTANCE_POSTFIX}"
     cp -a ${SOURCE_DIR} ${INSTANCE_DIR}
     cd ${INSTANCE_DIR}
-    find . -type f -exec sed -i "s|${STARTERKIT_DEFAULT}|${INSTANCE_POSTFIX}|g" {} \;
+    find . -type f -exec sed -i '' "s|${STARTERKIT_DEFAULT}|${INSTANCE_POSTFIX}|g" \{} \;
     for D in $(find . -type f -and -name "*${STARTERKIT_DEFAULT}*"); do
       mv "${D}" "`echo ${D} | sed s/${STARTERKIT_DEFAULT}/${INSTANCE_POSTFIX}/`"
     done
@@ -162,4 +162,4 @@ s|${STARTERKIT_FEATURE_TITLE}|${FEATURE_TITLE}|g
 s|${STARTERKIT_FEATURE_DESCRIPTION}|${FEATURE_DESCRIPTION}|g
 s|${STARTERKIT_PACKAGE_NAME}|${PACKAGE_NAME}|g
 "
-find . -type f -exec sed -i "${SED}" {} \;
+find . -type f -exec sed -i '' "${SED}" \{} \;
