@@ -103,6 +103,14 @@ function _dt_site_menu_migration() {
     $menu->field_site_menu_links->set($field_site_menu_fourth);
   }
 
+  // Creating the topics link.
+  $topics_link = array(
+    'url' => '/topics',
+    'title' => 'All topics A-Z >',
+    'attributes' => array(),
+  );
+  $menu->field_site_menu_topic_link->set($topics_link);
+
   $menu->save();
 }
 
