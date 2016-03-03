@@ -101,6 +101,9 @@ function cwt_activities_strongarm() {
         'path' => array(
           'weight' => '5',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(
         'language' => array(
@@ -110,7 +113,7 @@ function cwt_activities_strongarm() {
           ),
           'teaser' => array(
             'weight' => '0',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
         'subscriptions_ui' => array(

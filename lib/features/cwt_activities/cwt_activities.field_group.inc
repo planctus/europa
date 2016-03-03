@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_activities_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_activity_left|node|activities|teaser'] = $field_group;
+  $field_groups['group_activity_left|node|activities|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -52,8 +52,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Right',
     'weight' => '1',
     'children' => array(
-      0 => 'agenda_with_who',
-      1 => 'title',
+      0 => 'title',
+      1 => 'agenda_with_who',
       2 => 'group_agenda_meta',
     ),
     'format_type' => 'html-element',
@@ -68,7 +68,7 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_activity_right|node|activities|teaser'] = $field_group;
+  $field_groups['group_activity_right|node|activities|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -83,7 +83,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Meta',
     'weight' => '2',
     'children' => array(
-      0 => 'content_type_label',
+      0 => 'field_activity_address',
+      1 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -99,7 +100,7 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_agenda_meta|node|activities|teaser'] = $field_group;
+  $field_groups['group_agenda_meta|node|activities|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +128,7 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_agenda|taxonomy_term|editorial_sections|form'] = $field_group;
+  $field_groups['group_agenda|taxonomy_term|editorial_sections|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -145,7 +146,8 @@ function cwt_activities_field_group_info() {
       0 => 'body',
       1 => 'field_activity_link',
       2 => 'field_start_end_date',
-      3 => 'title',
+      3 => 'field_activity_address',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -157,7 +159,7 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_content|node|activities|form'] = $field_group;
+  $field_groups['group_content|node|activities|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -172,8 +174,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Metadata',
     'weight' => '1',
     'children' => array(
-      0 => 'language',
-      1 => 'field_editorial_section_multiple',
+      0 => 'field_editorial_section_multiple',
+      1 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -185,7 +187,16 @@ function cwt_activities_field_group_info() {
       ),
     ),
   );
-  $export['group_metadata|node|activities|form'] = $field_group;
+  $field_groups['group_metadata|node|activities|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Agenda');
+  t('Content');
+  t('Left');
+  t('Meta');
+  t('Metadata');
+  t('Right');
+
+  return $field_groups;
 }
