@@ -534,3 +534,10 @@ function cwt_core_update_7139() {
 function cwt_core_update_7140() {
   module_enable(array('nexteuropa_metatags'));
 }
+
+/**
+ * NEXTEUROPA-5549 - Updating permissions.
+ */
+function cwt_core_update_7141() {
+  cwt_core_reset_default_permissions();
+}
