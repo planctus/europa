@@ -36,6 +36,21 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
 
   // Make a variable out of each filter.
   if (isset($view->exposed_input)) {
+    if (isset($view->exposed_input['date_filter_min']) || isset($view->exposed_input['date_filter_max'])) {
+      $filter_min = $view->exposed_input['date_filter_min']['value']['date'];
+      $filter_max = $view->exposed_input['date_filter_max']['value']['date'];
+      $pretty = _dt_exposed_filter_data_date_get_pretty($filter_min, $filter_max);
+      if (isset($pretty['filter'])) {
+        $vars['date_filter_min'] = $view->exposed_input['date_filter_min'];
+        $vars['date_filter_max'] = $view->exposed_input['date_filter_max'];
+        $pretty_filter_key = $pretty['label'];
+        $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
+      }
+      // Remove the filters because they already have been prettified.
+      unset($view->exposed_input['date_filter_min']);
+      unset($view->exposed_input['date_filter_max']);
+    }
+
     foreach ($view->exposed_input as $filter => $value) {
       $pretty = _dt_exposed_filter_data_get_pretty($filter, $view);
       if (isset($pretty['filter'])) {
@@ -69,7 +84,7 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
   $result = array();
   foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
     if ($filter_handler->options['expose']['identifier'] === $filter) {
-      // Combined filters will need custom handlig.
+      // Combined filters will need custom handling.
       $is_combined = $filter_handler->field == 'combine';
 
       $result['label'] = $is_combined ? t('containing') : $filter_handler->options['expose']['label'];
@@ -113,7 +128,6 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
             $date_formatted .= ($between_date && $different_date) ? ' ' . t('and') . ' ' : '';
             // Display end date.
             $date_formatted .= isset($date_max_formatted) ? $date_max_formatted : '';
-
           }
           else {
             $date = strtotime($value['value']);
@@ -125,13 +139,13 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
             $result['filter'][] = '"' . $date_formatted . '"';
           }
         }
-        $raw_vals = array();
+        $raw_values = array();
         foreach ($value as $key => $val) {
-          $raw_vals[] = $val;
+          $raw_values[] = $val;
         }
-        foreach ($raw_vals as $raw_val) {
-          if (isset($filter_handler->value_options[$raw_val]) && !empty($filter_handler->value_options[$raw_val])) {
-            $result['filter'][] = '"' . trim($filter_handler->value_options[$raw_val]) . '"';
+        foreach ($raw_values as $raw_value) {
+          if (isset($filter_handler->value_options[$raw_value]) && !empty($filter_handler->value_options[$raw_value])) {
+            $result['filter'][] = '"' . trim($filter_handler->value_options[$raw_value]) . '"';
           }
         }
       }
@@ -146,6 +160,73 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
   }
 
   return FALSE;
+}
+
+/**
+ * Helper to get the human pretty name of a given date filter by value.
+ *
+ * @param string $filter_min
+ *   Exposed filter date min.
+ * @param string $filter_max
+ *   Exposed filter date max.
+ *
+ * @return array
+ *   filter settings
+ */
+function _dt_exposed_filter_data_date_get_pretty($filter_min, $filter_max) {
+  $result = array();
+
+  $result['label'] = '';
+  $result['filter'] = array();
+
+  // Start date.
+  if (!empty($filter_min)) {
+    $date_min = str_replace('/', '-', $filter_min);
+    $date_min_formatted = format_date(strtotime($date_min), 'ec_date_j_f_y');
+  }
+  // End date.
+  if (!empty($filter_max)) {
+    $date_max = str_replace('/', '-', $filter_max);
+    $date_max_formatted = format_date(strtotime($date_max), 'ec_date_j_f_y');
+  }
+
+  // Prepare our variable.
+  $date_formatted = '';
+
+  if (!empty($filter_min) && !empty($filter_max)) {
+    // Prepare our filters.
+    $between_date = (isset($date_min_formatted) && isset($date_max_formatted));
+    $different_date = ($date_min_formatted <> $date_max_formatted);
+
+    // Create the markup.
+    // In case 2 different dates, display BETWEEN ##DATE##.
+    $date_formatted .= ($between_date && $different_date) ? t('Between') . ' ' : '';
+    // In case of the same date, display ON ##DATE##.
+    $date_formatted .= !$different_date ? t('On') . ' ' : '';
+    // Display start date.
+    $date_formatted .= (isset($date_min_formatted) && $different_date) ? $date_min_formatted : '';
+    // In case 2 different dates, display ##DATE## AND ##DATE##.
+    $date_formatted .= ($between_date && $different_date) ? ' ' . t('and') . ' ' : '';
+    // Display end date.
+    $date_formatted .= isset($date_max_formatted) ? $date_max_formatted : '';
+  }
+  else {
+    // In case of just having start date, display FROM ##DATE##.
+    if (isset($date_min_formatted)) {
+      $date_formatted .= t('From') . ' ' . $date_min_formatted;
+    }
+    // In case of just having end date, display TO ##DATE##.
+    elseif (isset($date_max_formatted)) {
+      $date_formatted .= t('To') . ' ' . $date_max_formatted;
+    }
+  }
+
+  // Check if we actually got some date.
+  if (!empty($date_formatted)) {
+    $result['filter'][] = '"' . $date_formatted . '"';
+  }
+
+  return $result;
 }
 
 /**
