@@ -1,68 +1,68 @@
 <?php
 /**
  * @file
- * cwt_activities.strongarm.inc
+ * dt_funding_program.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function cwt_activities_strongarm() {
+function dt_funding_program_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_activities';
+  $strongarm->name = 'comment_anonymous_funding_program';
   $strongarm->value = '0';
-  $export['comment_activities'] = $strongarm;
+  $export['comment_anonymous_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_activities';
-  $strongarm->value = '0';
-  $export['comment_anonymous_activities'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_activities';
+  $strongarm->name = 'comment_default_mode_funding_program';
   $strongarm->value = 1;
-  $export['comment_default_mode_activities'] = $strongarm;
+  $export['comment_default_mode_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_activities';
+  $strongarm->name = 'comment_default_per_page_funding_program';
   $strongarm->value = '50';
-  $export['comment_default_per_page_activities'] = $strongarm;
+  $export['comment_default_per_page_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_activities';
+  $strongarm->name = 'comment_form_location_funding_program';
   $strongarm->value = 1;
-  $export['comment_form_location_activities'] = $strongarm;
+  $export['comment_form_location_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_activities';
+  $strongarm->name = 'comment_funding_program';
   $strongarm->value = '1';
-  $export['comment_preview_activities'] = $strongarm;
+  $export['comment_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_activities';
+  $strongarm->name = 'comment_preview_funding_program';
+  $strongarm->value = '1';
+  $export['comment_preview_funding_program'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_funding_program';
   $strongarm->value = 1;
-  $export['comment_subject_field_activities'] = $strongarm;
+  $export['comment_subject_field_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__activities';
+  $strongarm->name = 'field_bundle_settings_node__funding_program';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -89,120 +89,134 @@ function cwt_activities_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'meta' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
-        'language' => array(
-          'weight' => '4',
-        ),
-        'title' => array(
-          'weight' => '1',
-        ),
-        'path' => array(
-          'weight' => '5',
-        ),
         'metatags' => array(
           'weight' => '40',
         ),
-      ),
-      'display' => array(
+        'path' => array(
+          'weight' => '30',
+        ),
+        'scheduler_settings' => array(
+          'weight' => '0',
+        ),
         'language' => array(
-          'default' => array(
-            'weight' => '3',
-            'visible' => FALSE,
-          ),
-          'teaser' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
-        ),
-        'subscriptions_ui' => array(
-          'teaser' => array(
-            'weight' => '100',
-            'visible' => TRUE,
-          ),
+          'weight' => '5',
         ),
       ),
+      'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__activities'] = $strongarm;
+  $export['field_bundle_settings_node__funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'i18n_node_extended_activities';
-  $strongarm->value = '1';
-  $export['i18n_node_extended_activities'] = $strongarm;
+  $strongarm->name = 'helper_content_type_funding_program';
+  $strongarm->value = 1;
+  $export['helper_content_type_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'i18n_node_options_activities';
-  $strongarm->value = array(
-    0 => 'required',
-  );
-  $export['i18n_node_options_activities'] = $strongarm;
+  $strongarm->name = 'i18n_node_extended_funding_program';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'i18n_sync_node_type_activities';
+  $strongarm->name = 'i18n_node_extended_funding_program';
+  $strongarm->value = 1;
+  $export['i18n_node_extended_funding_program'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'i18n_node_options_funding_program';
   $strongarm->value = array();
-  $export['i18n_sync_node_type_activities'] = $strongarm;
+  $export['i18n_node_options_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'language_content_type_activities';
-  $strongarm->value = '2';
-  $export['language_content_type_activities'] = $strongarm;
+  $strongarm->name = 'i18n_sync_node_type_funding_program';
+  $strongarm->value = array();
+  $export['i18n_sync_node_type_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_activities';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
-  $export['menu_options_activities'] = $strongarm;
+  $strongarm->name = 'language_content_type_funding_program';
+  $strongarm->value = '4';
+  $export['language_content_type_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_activities';
+  $strongarm->name = 'menu_options_funding_program';
+  $strongarm->value = array();
+  $export['menu_options_funding_program'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_funding_program';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_activities'] = $strongarm;
+  $export['menu_parent_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_activities';
+  $strongarm->name = 'node_options_funding_program';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
     1 => 'revision',
   );
-  $export['node_options_activities'] = $strongarm;
+  $export['node_options_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_activities';
+  $strongarm->name = 'node_preview_funding_program';
   $strongarm->value = '1';
-  $export['node_preview_activities'] = $strongarm;
+  $export['node_preview_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_activities';
+  $strongarm->name = 'node_submitted_funding_program';
   $strongarm->value = 0;
-  $export['node_submitted_activities'] = $strongarm;
+  $export['node_submitted_funding_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'workbench_access_node_type_activities';
-  $strongarm->value = 1;
-  $export['workbench_access_node_type_activities'] = $strongarm;
+  $strongarm->name = 'entity_translation_settings_node__funding_program';
+  $strongarm->value = array(
+    'default_language' => 'xx-et-default',
+    'hide_language_selector' => 0,
+    'exclude_language_none' => 1,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_node__funding_program'] = $strongarm;
 
   return $export;
 }
