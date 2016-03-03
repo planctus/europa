@@ -42,6 +42,7 @@
 //    .listing--no-padding
 //    .listing--agenda
 //    .listing--column-left
+//    .listing--meta
 
 /*
 Listing
@@ -129,6 +130,12 @@ ul.listing--title {
     padding: 0;
     margin: 0;
     display: block;
+    &:link {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   a.listing__title,
@@ -216,6 +223,20 @@ Styleguide listing.5
     font-size: $font-size-tiny;
     margin-top: 1em;
   }
+
+  div.addressfield-container-inline {
+    float: left;
+
+    // override on the address module css rules */
+    &:after {
+      content: ", ";
+      display: inline;
+      height: auto;
+      clear: none;
+      visibility: visible;
+      white-space: pre;
+    }
+  }
 }
 
 // .listing--person modifier.
@@ -248,6 +269,7 @@ Markup: html/listing--teaser.html
 .listing--line-left - Listing line left
 .listing--no-border - Listing with no border
 .listing--nostripe - Listing with no stripe
+.listing--meta     - Listing meta
 
 Styleguide listing.3
 */
@@ -359,6 +381,7 @@ Styleguide listing.3
 
 a.listing__title {
   color: $brand-primary;
+  text-decoration: none;
 }
 
 // .listing__date element.
@@ -371,6 +394,13 @@ a.listing__title {
 .listing__column-main {
   .listing__with {
     margin-top: 0px;
+  }
+}
+
+// .listing--meta
+.listing--meta {
+  .listing__title {
+    margin-bottom: 0;
   }
 }
 
@@ -416,6 +446,7 @@ a.listing__title {
   display: block;
   overflow: hidden;
   color: $grey-base;
+  text-decoration: none;
 
   &:hover,
   &:active,
