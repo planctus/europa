@@ -10,21 +10,13 @@
 function dt_core_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'description_field'
+  // Exported field_base: 'description_field'.
   $field_bases['description_field'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'description_field',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -39,21 +31,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_core_abbreviation'
+  // Exported field_base: 'field_core_abbreviation'.
   $field_bases['field_core_abbreviation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_abbreviation',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -69,21 +53,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_core_background'
+  // Exported field_base: 'field_core_background'.
   $field_bases['field_core_background'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_background',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -98,21 +74,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_child_policies'
+  // Exported field_base: 'field_core_child_policies'.
   $field_bases['field_core_child_policies'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_child_policies',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -144,14 +112,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_date_published'
+  // Exported field_base: 'field_core_date_published'.
   $field_bases['field_core_date_published'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_date_published',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -175,14 +142,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_core_date_updated'
+  // Exported field_base: 'field_core_date_updated'.
   $field_bases['field_core_date_updated'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_date_updated',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -206,21 +172,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_core_description'
+  // Exported field_base: 'field_core_description'.
   $field_bases['field_core_description'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_description',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -235,14 +193,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_ecorganisation'
+  // Exported field_base: 'field_core_ecorganisation'.
   $field_bases['field_core_ecorganisation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_ecorganisation',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -264,21 +221,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_core_header_image'
+  // Exported field_base: 'field_core_header_image'.
   $field_bases['field_core_header_image'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_header_image',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -297,21 +246,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_core_image'
+  // Exported field_base: 'field_core_image'.
   $field_bases['field_core_image'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_image',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -330,14 +271,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_core_in_page_navigation'
+  // Exported field_base: 'field_core_in_page_navigation'.
   $field_bases['field_core_in_page_navigation'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_in_page_navigation',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -357,48 +297,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_core_latest_visibility'.
-  $field_bases['field_core_latest_visibility'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_latest_visibility',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Disable',
-        1 => 'Enable',
-      ),
-      'allowed_values_function' => '',
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
-  // Exported field_base: 'field_core_introduction'
+  // Exported field_base: 'field_core_introduction'.
   $field_bases['field_core_introduction'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_introduction',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -413,14 +318,39 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_legacy_link'
+  // Exported field_base: 'field_core_latest_visibility'.
+  $field_bases['field_core_latest_visibility'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_latest_visibility',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Disable',
+        1 => 'Enable',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_core_legacy_link'.
   $field_bases['field_core_legacy_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_legacy_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -444,14 +374,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_legacy_links'
+  // Exported field_base: 'field_core_legacy_links'.
   $field_bases['field_core_legacy_links'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_legacy_links',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -475,14 +404,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_link'
+  // Exported field_base: 'field_core_link'.
   $field_bases['field_core_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -506,14 +434,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_links'
+  // Exported field_base: 'field_core_links'.
   $field_bases['field_core_links'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_links',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -537,14 +464,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_next_steps'
+  // Exported field_base: 'field_core_next_steps'.
   $field_bases['field_core_next_steps'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_next_steps',
-    'foreign keys' => array(),
     'indexes' => array(
       'when_timeframe' => array(
         0 => 'when_timeframe',
@@ -561,21 +487,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'dt_policy_next_step_field',
   );
 
-  // Exported field_base: 'field_core_objective'
+  // Exported field_base: 'field_core_objective'.
   $field_bases['field_core_objective'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_objective',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -590,21 +508,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_parent'
+  // Exported field_base: 'field_core_parent'.
   $field_bases['field_core_parent'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_parent',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -629,9 +539,9 @@ function dt_core_field_default_field_bases() {
           'class' => 'class',
           'department' => 'department',
           'policy' => 'policy',
-          'priority_policy_area' => 'priority_policy_area',
           'policy_area' => 'policy_area',
           'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
           'publication' => 'publication',
           'topic' => 'topic',
         ),
@@ -642,21 +552,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_section_intro'
+  // Exported field_base: 'field_core_section_intro'.
   $field_bases['field_core_section_intro'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_section_intro',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -671,14 +573,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_core_social_network_links'
+  // Exported field_base: 'field_core_social_network_links'.
   $field_bases['field_core_social_network_links'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_social_network_links',
-    'foreign keys' => array(),
     'indexes' => array(
       'enabled' => array(
         0 => 'url',
@@ -702,14 +603,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'social_network_link',
   );
 
-  // Exported field_base: 'field_core_top_task_link'
+  // Exported field_base: 'field_core_top_task_link'.
   $field_bases['field_core_top_task_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_top_task_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -733,14 +633,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_core_top_tasks_links'
+  // Exported field_base: 'field_core_top_tasks_links'.
   $field_bases['field_core_top_tasks_links'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_top_tasks_links',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -764,44 +663,13 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'name_field'
-  $field_bases['name_field'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'name_field',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-    ),
-    'translatable' => 1,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_core_type_content'
+  // Exported field_base: 'field_core_type_content'.
   $field_bases['field_core_type_content'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_type_content',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -820,6 +688,28 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'name_field'.
+  $field_bases['name_field'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'name_field',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
   );
 
   return $field_bases;

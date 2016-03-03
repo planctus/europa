@@ -397,6 +397,7 @@ function dt_class_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'view_mode' => 'teaser',
+          'use_content_language' => 1,
         ),
         'type' => 'entity_reference_section',
         'weight' => 2,
