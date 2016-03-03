@@ -26,7 +26,8 @@
  * @see cwt_core_get_default_vocabulary_permissions()
  */
 function cwt_core_reset_default_permissions() {
-  $permissions_by_role = drupal_array_merge_deep(cwt_core_get_default_permissions(), cwt_core_get_default_vocabulary_permissions());
+  $permissions_by_role = cwt_core_get_default_permissions();
+
   $roles = array_flip(user_roles());
 
   // Compile a list of all the permissions that we cover.
@@ -37,7 +38,10 @@ function cwt_core_reset_default_permissions() {
     user_role_grant_permissions($roles[$role], $permissions);
 
     // Revoke default permissions for this role.
-    user_role_revoke_permissions($roles[$role], array_diff($permissions_list, $permissions));
+    $array_diff = array_diff($permissions_list, $permissions);
+    if (!empty($array_diff)) {
+      user_role_revoke_permissions($roles[$role], $array_diff);
+    }
   }
 }
 
@@ -152,7 +156,7 @@ function cwt_core_get_default_permissions() {
       'access content overview',
       'access contextual links',
       'access devel information',
-      'access ecas import users function',
+      // 'access ecas import users function',
       'access media browser',
       'access own broken links report',
       'access partially translated biographies',
@@ -164,7 +168,7 @@ function cwt_core_get_default_permissions() {
       'access site reports',
       'access site-wide contact form',
       'access social bookmark config page',
-      'Access to unpublished file',
+      // 'Access to unpublished file',
       'access user contact forms',
       'access user profiles',
       'access workbench',
@@ -190,7 +194,7 @@ function cwt_core_get_default_permissions() {
       'administer custom formatters',
       'administer dt_social_network_links',
       'administer easy_breadcrumb',
-      'administer ecas',
+      // 'administer ecas',
       'administer entity translation',
       'administer facets',
       'administer feature sets',
@@ -202,7 +206,7 @@ function cwt_core_get_default_permissions() {
       'administer filters',
       'administer flags',
       'administer image styles',
-      'administer jqmulti',
+      // 'administer jqmulti',
       'administer js_injector',
       'administer languages',
       'administer linkchecker',
@@ -244,7 +248,7 @@ function cwt_core_get_default_permissions() {
       'administer user subscriptions',
       'administer users',
       'administer uuid',
-      'administer varnish',
+      // 'administer varnish',
       'administer video presets',
       'administer views',
       'administer voting api',
@@ -421,7 +425,7 @@ function cwt_core_get_default_permissions() {
       'export own nodes',
       'flush caches',
       'generate features',
-      'import media',
+      // 'import media',
       'import news feeds',
       'log_filter administer',
       'log_filter edit filters',
@@ -502,7 +506,7 @@ function cwt_core_get_default_permissions() {
       'translate any entity',
       'translate content',
       'translate interface',
-      'translate node entities',
+      // 'translate node entities',
       'translate taxonomy_term entities',
       'translate user-defined strings',
       'unlock news feeds',
@@ -612,13 +616,13 @@ function cwt_core_get_default_permissions() {
       'delete own commisioner_blog_post content',
       'edit any commisioner_blog_post content',
       'edit own comments',
+      'access media browser',
       'edit own commisioner_blog_post content',
       'post comments',
       'skip comment approval',
       'use media wysiwyg',
     ),
     'contributor' => array(
-      'access media browser',
       'access own broken links report',
       'access workbench',
       'assign node weight',
@@ -628,7 +632,7 @@ function cwt_core_get_default_permissions() {
       'delete own image files',
       'edit own article content',
       'edit own image files',
-      'import media',
+      // 'import media',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
       're convert video',
@@ -667,7 +671,7 @@ function cwt_core_get_default_permissions() {
       'access own broken links report',
       'access partially translated biographies',
       'access site reports',
-      'Access to unpublished file',
+      // 'Access to unpublished file',
       'access workbench',
       'access workbench access by role',
       'administer comments',
@@ -789,7 +793,7 @@ function cwt_core_get_default_permissions() {
       'edit terms in 8',
       'edit terms in 9',
       'export nodes',
-      'import media',
+      // 'import media',
       'import news feeds',
       'manipulate all queues',
       'manipulate queues',
@@ -838,54 +842,6 @@ function cwt_core_get_default_permissions() {
       'view translation overview assigments',
       'view workbench access information',
       'view workbench taxonomy pages',
-    ),
-    'section editor' => array(
-      'access administration menu',
-      'access administration pages',
-      'access comments',
-      'access media browser',
-      'access partially translated biographies',
-      'Access to unpublished file',
-      'access workbench',
-      'access workbench access by role',
-      'administer nodes',
-      'batch update workbench access',
-      'create activities content',
-      'create aggregated_news content',
-      'create files',
-      'delete any activities content',
-      'delete any aggregated_news content',
-      'delete own activities content',
-      'delete own aggregated_news content',
-      'delete own audio files',
-      'delete own document files',
-      'delete own image files',
-      'delete own video files',
-      'delete terms in 2',
-      'download any audio files',
-      'download own audio files',
-      'edit any activities content',
-      'edit any aggregated_news content',
-      'edit own activities content',
-      'edit own aggregated_news content',
-      'edit own audio files',
-      'edit own comments',
-      'edit own document files',
-      'edit own image files',
-      'edit own video files',
-      'edit terms in 2',
-      'post comments',
-      'skip comment approval',
-      'use media wysiwyg',
-      'use text format custom_text_filter',
-      'use text format news_text_filter',
-      'view advanced help index',
-      'view advanced help popup',
-      'view advanced help topic',
-      'view all unpublished content',
-      'view private files',
-      'view the administration theme',
-      'view workbench access information',
     ),
     'section editor' => array(
       'access administration menu',
@@ -944,7 +900,6 @@ function cwt_core_get_default_permissions() {
       'view the administration theme',
       'view workbench access information',
     ),
-
     'agenda validator' => array(
       'access administration menu',
       'access administration pages',
