@@ -19,7 +19,13 @@
     }
   }
 
+  .listing__item {
+    max-width: none;
+  }
+
   .section--content-top {
+    margin-top: 0;
+
     & > .section__group--full-width {
       padding-top: 1.667em;
     }
