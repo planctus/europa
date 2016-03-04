@@ -546,6 +546,6 @@ function cwt_core_update_7141() {
   user_role_save($role);
 
   // Resetting permissions.
-  include_once 'cwt_core.default_permissions.inc';
+  include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
   cwt_core_reset_default_permissions();
 }

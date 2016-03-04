@@ -38,85 +38,17 @@ function cwt_core_reset_default_permissions() {
 
   foreach ($permissions_by_role as $role => $permissions) {
     // Insect of permissions are available on the system and given to the role.
-    $array_intersect = array_intersect($modules_permissions, $permissions);
+    $array_intersect = array_intersect($permissions, $modules_permissions);
 
     // Grant default permissions for this role.
     user_role_grant_permissions($roles[$role], $array_intersect);
 
     // Revoke default permissions for this role.
-    $array_diff = array_diff($array_intersect, $permissions);
+    $array_diff = array_diff($modules_permissions, $array_intersect);
     if (!empty($array_diff)) {
       user_role_revoke_permissions($roles[$role], $array_diff);
     }
   }
-}
-
-/**
- * Returns a set of default permissions regarding vocabularies.
- *
- * @return array
- *   An associative array, keyed by role machine name, containing an array of
- *   default permissions that are applicable to the role.
- */
-function cwt_core_get_default_vocabulary_permissions() {
-  $vocabularies = array(
-    'administrator' => array(
-      'aggregated_item_types',
-      'classification',
-      'departments',
-      'editorial_sections',
-      'portfolio_subjects',
-      'tags',
-    ),
-
-    'editor' => array(
-      'aggregated_item_types',
-      'biography_timeline_types',
-      'biography_roles',
-      'departments',
-      'editorial_sections',
-      'portfolio_subjects',
-      'project_teams',
-      'tags',
-      'team_statuses',
-      'team_subtypes',
-      'team_terms',
-    ),
-
-    'section editor' => array(
-      'tags',
-    ),
-
-    'agenda validator' => array(
-      'tags',
-    ),
-
-    'site manager' => array(
-      'aggregated_item_types',
-      'biography_timeline_types',
-      'biography_roles',
-      'departments',
-      'editorial_sections',
-      'portfolio_subjects',
-      'project_teams',
-      'tags',
-      'team_statuses',
-      'team_subtypes',
-      'team_terms',
-    ),
-  );
-
-  $vocabulary_names = taxonomy_vocabulary_get_names();
-
-  $permissions = array();
-  foreach ($vocabularies as $role => $machine_names) {
-    foreach ($machine_names as $machine_name) {
-      $permissions[$role][] = "delete terms in {$vocabulary_names[$machine_name]->vid}";
-      $permissions[$role][] = "edit terms in {$vocabulary_names[$machine_name]->vid}";
-    }
-  }
-
-  return $permissions;
 }
 
 /**
@@ -200,7 +132,7 @@ function cwt_core_get_default_permissions() {
       'administer custom formatters',
       'administer dt_social_network_links',
       'administer easy_breadcrumb',
-      // 'administer ecas',
+      'administer ecas',
       'administer entity translation',
       'administer facets',
       'administer feature sets',
@@ -212,7 +144,7 @@ function cwt_core_get_default_permissions() {
       'administer filters',
       'administer flags',
       'administer image styles',
-      // 'administer jqmulti',
+      'administer jqmulti',
       'administer js_injector',
       'administer languages',
       'administer linkchecker',
@@ -254,7 +186,7 @@ function cwt_core_get_default_permissions() {
       'administer user subscriptions',
       'administer users',
       'administer uuid',
-      // 'administer varnish',
+      'administer varnish',
       'administer video presets',
       'administer views',
       'administer voting api',
@@ -431,7 +363,7 @@ function cwt_core_get_default_permissions() {
       'export own nodes',
       'flush caches',
       'generate features',
-      // 'import media',
+      'import media',
       'import news feeds',
       'log_filter administer',
       'log_filter edit filters',
@@ -512,7 +444,7 @@ function cwt_core_get_default_permissions() {
       'translate any entity',
       'translate content',
       'translate interface',
-      // 'translate node entities',
+      'translate node entities',
       'translate taxonomy_term entities',
       'translate user-defined strings',
       'unlock news feeds',
@@ -638,7 +570,7 @@ function cwt_core_get_default_permissions() {
       'delete own image files',
       'edit own article content',
       'edit own image files',
-      // 'import media',
+      'import media',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
       're convert video',
@@ -677,7 +609,7 @@ function cwt_core_get_default_permissions() {
       'access own broken links report',
       'access partially translated biographies',
       'access site reports',
-      // 'Access to unpublished file',
+      'Access to unpublished file',
       'access workbench',
       'access workbench access by role',
       'administer comments',
@@ -799,7 +731,7 @@ function cwt_core_get_default_permissions() {
       'edit terms in 8',
       'edit terms in 9',
       'export nodes',
-      // 'import media',
+      'import media',
       'import news feeds',
       'manipulate all queues',
       'manipulate queues',
@@ -886,11 +818,6 @@ function cwt_core_get_default_permissions() {
       'edit own video files',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
-      'moderate content from needs_review to published',
-      'moderate content from needs_review to published',
-      'moderate content from needs_review to validated',
-      'moderate content from validated to published',
-      'multisite_workbench_moderation_view_bulk_update',
       'use media wysiwyg',
       'use text format custom_text_filter',
       'use text format news_text_filter',
@@ -944,15 +871,10 @@ function cwt_core_get_default_permissions() {
       'edit terms in 2',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
-      'moderate content from needs_review to published',
-      'moderate content from needs_review to published',
-      'moderate content from needs_review to published',
-      'moderate content from needs_review to published',
       'moderate content from needs_review to validated',
-      'moderate content from needs_review to validated',
+      'moderate content from needs_review to published',
       'moderate content from validated to published',
-      'moderate content from validated to published',
-      'multisite_workbench_moderation_view_bulk_update',
+      'moderate content from needs_review to published',
       'multisite_workbench_moderation_view_bulk_update',
       'use media wysiwyg',
       'use text format custom_text_filter',
