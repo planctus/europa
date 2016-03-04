@@ -816,6 +816,7 @@ function cwt_core_get_default_permissions() {
       'edit own document files',
       'edit own image files',
       'edit own video files',
+      'edit terms in 2',
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
       'use media wysiwyg',
