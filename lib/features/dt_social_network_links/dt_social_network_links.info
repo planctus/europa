@@ -24,4 +24,3 @@ features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][taxonomy] = taxonomy
 features_exclude[dependencies][text] = text
 files[] = migrations/dt_social_network_links.migrations.social_networks.inc
-required = 1
