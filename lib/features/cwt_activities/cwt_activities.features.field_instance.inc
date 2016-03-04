@@ -10,7 +10,7 @@
 function cwt_activities_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-activities-body'
+  // Exported field_instance: 'node-activities-body'.
   $field_instances['node-activities-body'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -26,9 +26,8 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
     ),
@@ -89,7 +88,71 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_activity_link'
+  // Exported field_instance: 'node-activities-field_activity_address'.
+  $field_instances['node-activities-field_activity_address'] = array(
+    'bundle' => 'activities',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            'address' => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 11,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_activity_address',
+    'label' => 'Address',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(),
+        'default_country' => '',
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-postal-code' => 'address-hide-postal-code',
+          'address-hide-street' => 'address-hide-street',
+          'address-optional' => 'address-optional',
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 5,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-activities-field_activity_link'.
   $field_instances['node-activities-field_activity_link'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -105,9 +168,8 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 17,
       ),
     ),
@@ -116,6 +178,7 @@ function cwt_activities_field_default_field_instances() {
     'label' => 'External link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -130,6 +193,7 @@ function cwt_activities_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 255,
       'title_value' => '[node:title]',
       'url' => 0,
@@ -148,7 +212,8 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_editorial_section_multiple'
+  // Exported field_instance:
+  // 'node-activities-field_editorial_section_multiple'.
   $field_instances['node-activities-field_editorial_section_multiple'] = array(
     'bundle' => 'activities',
     'default_value' => NULL,
@@ -164,9 +229,8 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'custom_formatters',
         'settings' => array(),
-        'type' => 'custom_formatters_taxonomy_term_reference_external_links',
+        'type' => 'hidden',
         'weight' => 18,
       ),
     ),
@@ -191,7 +255,7 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 1,
   );
 
-  // Exported field_instance: 'node-activities-field_start_end_date'
+  // Exported field_instance: 'node-activities-field_start_end_date'.
   $field_instances['node-activities-field_start_end_date'] = array(
     'bundle' => 'activities',
     'deleted' => 0,
@@ -206,6 +270,7 @@ function cwt_activities_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -248,12 +313,56 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'node-activities-field_team_priorities'.
+  $field_instances['node-activities-field_team_priorities'] = array(
+    'bundle' => 'activities',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_team_priorities',
+    'label' => 'Priorities',
+    'required' => FALSE,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 42,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Address');
   t('Body');
-  t('Editorial section');
   t('Editorial sections');
   t('External link');
+  t('Priorities');
   t('Start/End date');
 
   return $field_instances;

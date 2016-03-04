@@ -883,7 +883,6 @@ function cwt_core_preprocess_views_view_rss(&$vars) {
       $image = $view->result[0]->field_field_biography_portrait[0]['rendered'];
       $vars['channel_elements'] .= '<image><title>' . $vars['title'] . '</title><link>' . $vars['link'] . '</link><url>' . image_style_url($image["#image_style"], $image["#item"]['uri']) . '</url></image>';
     }
-    $vars['namespaces'] .= ' xmlns:atom="http://www.w3.org/2005/Atom"';
     $vars['channel_elements'] .= "\n\t" . '<atom:link href="' . $vars['link'] . '" rel="self" type="application/rss+xml" />';
   }
 }

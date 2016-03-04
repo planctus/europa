@@ -293,7 +293,7 @@ Type name of department to search for it. Don\'t create a new department.',
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

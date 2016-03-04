@@ -361,7 +361,7 @@ function cwt_team_field_default_field_instances() {
     'label' => 'Activities',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => 'agenda',
         'configurable_title' => 0,
@@ -515,7 +515,7 @@ function cwt_team_field_default_field_instances() {
     'label' => 'Links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -590,7 +590,7 @@ function cwt_team_field_default_field_instances() {
     'label' => 'Media enquiries',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1111,7 +1111,7 @@ function cwt_team_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

@@ -9,12 +9,26 @@
  * Implements template_preprocess_page().
  */
 function commissioner_preprocess_page(&$variables) {
+
   // Prepare the url for the "external" homepage.
   global $language;
   $delimiter = variable_get('language_suffix_delimiter', '_');
   $suffix = $delimiter . $language->prefix;
   // Set a variable containing the external url to point to.
   $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
+
+  // Adding string 'Tag: ' to Taxonomy tag pages.
+  // Check if it's a taxonomy term page and object is loaded in $term.
+  if (menu_get_object('taxonomy_term', 2)) {
+    // Get taxonomy machine name.
+    $taxonomy = $variables['page']['content']['system_main']['term_heading']['term']['#term']->vocabulary_machine_name;
+    // Get term name.
+    $term = $variables['page']['content']['system_main']['term_heading']['term']['#term']->name;
+    if ($taxonomy == 'tags') {
+      $variables['title'] = drupal_set_title(t('Tag') . ': ' . $term);
+    }
+  }
+
 }
 
 /**
@@ -310,223 +324,6 @@ function commissioner_preprocess_field(&$variables) {
 }
 
 /**
- * Implements hook_page_alter().
- */
-function commissioner_page_alter(&$page) {
-  global $language;
-  if (arg(0) == 'node') {
-    $node = node_load(arg(1));
-    if (isset($node->title)) {
-      $node_title = filter_xss($node->title);
-    }
-  }
-
-  $keywords = '';
-  $description = variable_get('site_slogan');
-  if (empty($description)) {
-    $description = filter_xss(variable_get('site_name'));
-  }
-  if (!empty($node)) {
-    $description = $node_title . ' - ' . $description;
-    $keywords = $node_title . ', ';
-    $title = _commissioner_meta_title($node);
-  }
-  else {
-    $title = _commissioner_meta_title();
-  }
-
-  if (!empty($node) && !empty($node->field_tags)) {
-    $tags = field_view_field('node', $node, 'field_tags');
-    if (isset($tags['#items'])) {
-      foreach ($tags['#items'] as $key => $value) {
-        $keywords .= $value['taxonomy_term']->name . ', ';
-      }
-    }
-  }
-  $keywords .= filter_xss(variable_get('site_name')) . ', ';
-  $keywords .= 'European Commission, European Union, EU';
-
-  $type = 'website';
-  if (!empty($node)) {
-    $type = $node->type;
-  }
-
-  // Content-Language.
-  $meta_content_language = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'http-equiv' => 'Content-Language',
-      'content' => $language->language,
-    ),
-  );
-  drupal_add_html_head($meta_content_language, 'meta_content_language');
-
-  // Description.
-  $meta_description = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'description',
-      'content' => $description,
-    ),
-  );
-  drupal_add_html_head($meta_description, 'meta_description');
-
-  // Reference.
-  $meta_reference = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'reference',
-      'content' => filter_xss(variable_get('site_name')),
-    ),
-  );
-  drupal_add_html_head($meta_reference, 'meta_reference');
-
-  // Creator.
-  $meta_creator = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'creator',
-      'content' => 'COMM/DG/UNIT',
-    ),
-  );
-  drupal_add_html_head($meta_creator, 'meta_creator');
-
-  // IPG classification.
-  $classification = variable_get('meta_configuration', 'none');
-  if ($classification != 'none') {
-    $meta_classification = array(
-      '#type' => 'html_tag',
-      '#tag' => 'meta',
-      '#attributes' => array(
-        'name' => 'classification',
-        'content' => variable_get('meta_configuration', 'none'),
-      ),
-    );
-    drupal_add_html_head($meta_classification, 'meta_classification');
-  }
-  else {
-    if (user_access('administer site configuration')) {
-      drupal_set_message(t('Please select the IPG classification of your site %link', array('%link' => l(t('here.'))), 'admin/config/system/site-information'), 'warning');
-    }
-  }
-
-  // Keywords.
-  $meta_keywords = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'keywords',
-      'content' => $keywords,
-    ),
-  );
-  drupal_add_html_head($meta_keywords, 'meta_keywords');
-
-  // Date.
-  $meta_date = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'date',
-      'content' => date('d/m/Y'),
-    ),
-  );
-  drupal_add_html_head($meta_date, 'meta_date');
-
-  // Og title.
-  $meta_og_title = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:title',
-      'content' => $title,
-    ),
-  );
-  drupal_add_html_head($meta_og_title, 'meta_og_title');
-
-  // Og type.
-  $meta_og_type = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:type',
-      'content' => $type,
-    ),
-  );
-  drupal_add_html_head($meta_og_type, 'meta_og_type');
-
-  // Og site name.
-  $meta_og_site_name = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:site_name',
-      'content' => filter_xss(variable_get('site_name')),
-    ),
-  );
-
-  drupal_add_html_head($meta_og_site_name, 'meta_og_site_name');
-
-  // Og description.
-  $meta_og_description = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:description',
-      'content' => $description,
-    ),
-  );
-  drupal_add_html_head($meta_og_description, 'meta_og_description');
-
-  // Fb admins.
-  $meta_fb_admins = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'fb:admins',
-      'content' => 'USER_ID',
-    ),
-  );
-  drupal_add_html_head($meta_fb_admins, 'meta_fb_admins');
-
-  // Robots.
-  $meta_robots = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'robots',
-      'content' => 'follow,index',
-    ),
-  );
-  drupal_add_html_head($meta_robots, 'meta_robots');
-
-  // Revisit after.
-  $revisit_after = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'revisit-after',
-      'content' => '15 Days',
-    ),
-  );
-  drupal_add_html_head($revisit_after, 'revisit-after');
-
-  // Viewport.
-  $viewport = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'viewport',
-      'content' => 'width=device-width, initial-scale=1.0',
-    ),
-  );
-  drupal_add_html_head($viewport, 'viewport');
-}
-
-/**
  * Implements theme_form_element().
  */
 function commissioner_form_element(&$variables) {
@@ -539,46 +336,6 @@ function commissioner_form_element(&$variables) {
   }
   else {
     return bootstrap_form_element($variables);
-  }
-}
-
-/**
- * Returns the meta title for the current page.
- *
- * The title will be derived from the given node if provided. Alternatively it
- * will be derived from the 'List Header' view for pages of types 'activities',
- * 'blog' or 'announcement'.
- * The text ' - European Commission' will always be appended to the title.
- *
- * @param object $node
- *   Optional node for which to generate the meta title.
- * @param string $title
- *   Optional fallback title to use if the title could not be derived from the
- *   node or 'List Header' view.
- *
- * @return string
- *   The meta title.
- */
-function _commissioner_meta_title($node = NULL, $title = NULL) {
-  if (!$node && arg(0) == 'node' && is_numeric(arg(1))) {
-    $node = node_load(arg(1));
-  }
-  elseif (in_array(arg(0), array('announcements', 'blog', 'activities')) && arg(1) && arg(1) !== 'tag') {
-    $display = arg(0) . '_header';
-    $custom_title = views_embed_view('list_header', $display, arg(1));
-    $doc = new DOMDocument();
-    $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">' . $custom_title);
-    if ($doc) {
-      $title = strip_tags($doc->getElementsByTagName('h1')->item(0)->nodeValue);
-    }
-  }
-
-  if ($node) {
-    return check_plain($node->title) . ' - ' . t('European Commission');
-  }
-  else {
-    $title = !$title ? '' : ($title . ' - ');
-    return check_plain($title) . t('European Commission');
   }
 }
 

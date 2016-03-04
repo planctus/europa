@@ -6,7 +6,12 @@
  */
 
 global $_nexteuropa_formatters_listing_view_modes;
-$_nexteuropa_formatters_listing_view_modes = array('title', 'meta', 'teaser');
+$_nexteuropa_formatters_listing_view_modes = array(
+  'title',
+  'meta',
+  'teaser',
+  'image_label',
+);
 
 /**
  * Implements hook_field_formatter_info().
@@ -91,12 +96,9 @@ function nexteuropa_formatters_field_formatter_info() {
         'taxonomy_term_reference',
       ),
     ),
-    'link_listing_title' => array(
+    'listing_title' => array(
       'label' => t('Listing title'),
-      'field types' => array(
-        'link_field',
-        'taxonomy_term_reference',
-      ),
+      'field types' => array('text'),
     ),
     'entity_reference_section' => array(
       'label' => t('Entity reference section group'),
@@ -104,6 +106,7 @@ function nexteuropa_formatters_field_formatter_info() {
         'entityreference',
       ),
       'settings' => array(
+        'use_content_language' => TRUE,
         'view_mode' => 'default',
         'links' => TRUE,
       ),
@@ -152,6 +155,14 @@ function nexteuropa_formatters_field_formatter_settings_form($field, $instance, 
     }
   }
 
+  if ($display['type'] == 'entity_reference_section') {
+    $element['use_content_language'] = array(
+      '#title' => t('Use the content language for referenced items.'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['use_content_language'],
+    );
+  }
+
   if ($display['type'] == 'link_button_default' && $field['type'] == 'entityreference') {
     $element['link_title'] = array(
       '#title' => t('Title'),
@@ -198,6 +209,7 @@ function _nexteuropa_formatters_field_formatter_view_classes($formatter) {
       return 'btn btn-default';
 
     case 'link_listing_title':
+    case 'listing_title':
       return 'listing__title';
 
     case 'entity_reference_section':
@@ -396,6 +408,15 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         break;
 
+      case 'listing_title':
+        $class = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+        foreach ($items as $delta => $item) {
+          $element[$delta] = array(
+            '#markup' => '<h3 class="' . $class . '">' . $item['safe_value'] . '</h3>',
+          );
+        }
+        break;
+
       case 'link_button_default':
       case 'link_button_primary':
       case 'link_button_secondary':
@@ -488,9 +509,8 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
       case 'entity_reference_section':
         // Preconfigure entityreference_field_formatter_view().
         // section__item
-        $new_display = $display;
-        $new_display['type'] = 'entityreference_entity_view';
-        $element = entityreference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $new_display);
+        $display['type'] = 'entityreference_entity_view';
+        $element = entityreference_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display);
         foreach ($element as $delta => $item) {
           $key_of_node = key($element[$delta]['node']);
           $element[$delta]['node'][$key_of_node]['#prefix'] = '<div class="section__item">';

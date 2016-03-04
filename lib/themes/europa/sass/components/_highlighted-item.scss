@@ -1,0 +1,32 @@
+/*
+Highlighted item
+
+Markup: html/highlighted-item.html
+
+Styleguide highlighted-item
+*/
+
+.highlighted-item {
+  background-color: $grey-lighter;
+  &:hover,
+  &:active,
+  &:focus {
+    .highlighted-item__content {
+      text-decoration: underline;
+    }
+  }
+  padding: 0 0 2em 0;
+}
+
+.highlighted-item__image {
+  img {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+}
+
+.highlighted-item__content {
+  color: $brand-primary;
+  margin: 0;
+  padding: 0 1em;
+}

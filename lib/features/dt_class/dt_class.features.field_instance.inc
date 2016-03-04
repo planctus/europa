@@ -49,7 +49,7 @@ function dt_class_field_default_field_instances() {
     'label' => 'Related links',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -397,6 +397,7 @@ function dt_class_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'view_mode' => 'teaser',
+          'use_content_language' => 1,
         ),
         'type' => 'entity_reference_section',
         'weight' => 2,
@@ -737,7 +738,7 @@ function dt_class_field_default_field_instances() {
     'label' => '(Legacy) Link',
     'required' => 1,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

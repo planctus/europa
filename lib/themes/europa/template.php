@@ -520,7 +520,7 @@ function _europa_field_component_listing($variables, $config) {
       // In row logic we need to add extra markup.
       if ($is_row) {
         if ($item_in_row == $items_per_row || $item_in_row == 0) {
-          $output .= '<div class="row">';
+          $output .= '<div class="clearfix">';
           $item_in_row = 0;
         }
         $item_in_row++;
@@ -568,7 +568,7 @@ function europa_field($variables) {
         $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
 
         // Custom listing settings based on view mode.
-        $listing_view_modes = array('title', 'meta', 'teaser');
+        $listing_view_modes = array('title', 'meta', 'teaser', 'image_label');
         if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
           switch ($first_node['#view_mode']) {
             case 'title':
@@ -618,7 +618,7 @@ function europa_field($variables) {
         // Items list formatting.
         $output .= '<div class="tags__items"' . $variables['content_attributes'] . '>';
         foreach ($variables['items'] as $delta => $item) {
-          $output .= drupal_render($item);
+          $output .= '<a ' . drupal_attributes($item['#options']['attributes']) . ' href="' . url($item['#href']) . '">' . $item['#title'] . '</a>';
         }
         // Closing both tags and tags__items.
         $output .= '</div></div>';
@@ -807,8 +807,9 @@ function _europa_file_markup($file, array $url, $modifier = NULL, $subfile = FAL
   $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
 
   // Get our full language string.
-  if (isset($file->language)) {
-    $file_language_string = _dt_shared_functions_get_language_obj($file->language);
+  if (isset($file->entity->language) || isset($file->language)) {
+    $language_to_use = isset($file->entity->language) ? entity_translation_get_existing_language($file->entity->type, $file->entity) : $file->language;
+    $file_language_string = _dt_shared_functions_get_language_obj($language_to_use);
   }
 
   // If we have a full language string and it's not a subfile, we add it to the
