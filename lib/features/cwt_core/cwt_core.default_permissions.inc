@@ -27,18 +27,24 @@
  */
 function cwt_core_reset_default_permissions() {
   $permissions_by_role = cwt_core_get_default_permissions();
-
   $roles = array_flip(user_roles());
 
-  // Compile a list of all the permissions that we cover.
-  $permissions_list = array_unique(call_user_func_array('array_merge', $permissions_by_role));
+  // At the acceptance environment not every permissions are available.
+  // E.g.: 'access ecas import users function' not available on AC.
+  // So we should check the available modules given by the system and
+  // remove the permissions which are not in the current site.
+  // Permissions, which are available in the current system.
+  $modules_permissions = array_keys(user_permission_get_modules());
 
   foreach ($permissions_by_role as $role => $permissions) {
+    // Insect of permissions are available on the system and given to the role.
+    $array_intersect = array_intersect($modules_permissions, $permissions);
+
     // Grant default permissions for this role.
-    user_role_grant_permissions($roles[$role], $permissions);
+    user_role_grant_permissions($roles[$role], $array_intersect);
 
     // Revoke default permissions for this role.
-    $array_diff = array_diff($permissions_list, $permissions);
+    $array_diff = array_diff($array_intersect, $permissions);
     if (!empty($array_diff)) {
       user_role_revoke_permissions($roles[$role], $array_diff);
     }
@@ -156,7 +162,7 @@ function cwt_core_get_default_permissions() {
       'access content overview',
       'access contextual links',
       'access devel information',
-      // 'access ecas import users function',
+      'access ecas import users function',
       'access media browser',
       'access own broken links report',
       'access partially translated biographies',
@@ -168,7 +174,7 @@ function cwt_core_get_default_permissions() {
       'access site reports',
       'access site-wide contact form',
       'access social bookmark config page',
-      // 'Access to unpublished file',
+      'Access to unpublished file',
       'access user contact forms',
       'access user profiles',
       'access workbench',
