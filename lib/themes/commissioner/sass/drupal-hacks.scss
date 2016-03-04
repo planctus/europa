@@ -198,3 +198,13 @@ Styleguide listing.listing--2rows
     margin-bottom: 0.5em;
   }
 }
+
+.node-type-team {
+  .listing__item {
+    max-width: none;
+  }
+
+  .section--content-top {
+    margin-top: 0;
+  }
+}
