@@ -41,6 +41,27 @@ function _nexteuropa_legacylink_load_entities($entities, $type) {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function nexteuropa_legacy_link_menu_alter(&$items) {
+  // Use our own access callback for the 'node/%node' page.
+  $items['node/%node']['access callback'] = 'nexteuropa_legacy_link_access_callback';
+}
+
+/**
+ * Access callback for the node detail page.
+ */
+function nexteuropa_legacy_link_access_callback($op, $node) {
+  // Deny access to the full view mode on legacy link nodes.
+  if ($op == 'view' && _nexteuropa_legacy_link_get('node', $node) && !user_access('administer site configuration')) {
+    return FALSE;
+  }
+
+  // Default to the regular node access callback.
+  return node_access($op, $node);
+}
+
+/**
  * Implements hook_field_attach_view_alter().
  */
 function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
