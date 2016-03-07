@@ -52,8 +52,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Right',
     'weight' => '1',
     'children' => array(
-      0 => 'agenda_with_who',
-      1 => 'title',
+      0 => 'title',
+      1 => 'agenda_with_who',
       2 => 'group_agenda_meta',
     ),
     'format_type' => 'html-element',
@@ -83,7 +83,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Meta',
     'weight' => '2',
     'children' => array(
-      0 => 'content_type_label',
+      0 => 'field_activity_address',
+      1 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -145,7 +146,8 @@ function cwt_activities_field_group_info() {
       0 => 'body',
       1 => 'field_activity_link',
       2 => 'field_start_end_date',
-      3 => 'title',
+      3 => 'field_activity_address',
+      4 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -172,8 +174,8 @@ function cwt_activities_field_group_info() {
     'label' => 'Metadata',
     'weight' => '1',
     'children' => array(
-      0 => 'language',
-      1 => 'field_editorial_section_multiple',
+      0 => 'field_editorial_section_multiple',
+      1 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
