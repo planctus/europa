@@ -26,9 +26,9 @@ function dt_funding_program_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'listing_title',
         'weight' => 2,
       ),
     ),
