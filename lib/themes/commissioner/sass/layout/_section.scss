@@ -1,6 +1,7 @@
 .section__group--biography-top {
   border-bottom: 1px solid #e2e2e2;
-
+  padding-bottom: 1.667em; 
+  margin-bottom: 0;
   // Dependencies
   .context-nav {
     width: 100%;
@@ -8,19 +9,3 @@
   }
 }
 
-
-.node-type-team {
-  .page-content {
-    > .container-fluid {
-      > .row:first-child {
-        padding-top: 0;
-      }
-    }
-  }
-
-  .section--content-top {
-    & > .section__group--full-width {
-      padding-top: 1.667em;
-    }
-  }
-}

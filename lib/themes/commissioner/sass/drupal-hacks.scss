@@ -194,11 +194,17 @@ Styleguide listing.listing--2rows
 
 // Temporary fix.
 #team {
-  .field {
+  .field { 
     margin-bottom: 0.5em;
   }
 }
 
-.section__group {
-  padding: 1.333em 0;
+.node-type-team {
+  .listing__item {
+    max-width: none;
+  }
+
+  .section--content-top {
+    margin-top: 0;
+  }
 }
