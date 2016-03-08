@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_banner_video_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -40,7 +40,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_banner|node|banner_video|form'] = $field_group;
+  $field_groups['group_banner|node|banner_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,7 +66,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|banner_video|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|banner_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -96,7 +96,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|banner_video|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|banner_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -125,7 +125,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_caption|node|banner_video|default'] = $field_group;
+  $field_groups['group_video_caption|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -154,7 +154,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_caption|node|banner_video|teaser'] = $field_group;
+  $field_groups['group_video_caption|node|banner_video|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -184,7 +184,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_left|node|banner_video|default'] = $field_group;
+  $field_groups['group_video_left|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -214,7 +214,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_left|node|banner_video|teaser'] = $field_group;
+  $field_groups['group_video_left|node|banner_video|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -243,7 +243,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_paragraph|node|banner_video|default'] = $field_group;
+  $field_groups['group_video_paragraph|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -272,7 +272,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_paragraph|node|banner_video|teaser'] = $field_group;
+  $field_groups['group_video_paragraph|node|banner_video|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -302,7 +302,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_video|node|banner_video|default'] = $field_group;
+  $field_groups['group_video_video|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -332,7 +332,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_video|node|banner_video|teaser'] = $field_group;
+  $field_groups['group_video_video|node|banner_video|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -362,7 +362,7 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_wrapper|node|banner_video|default'] = $field_group;
+  $field_groups['group_video_wrapper|node|banner_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -392,7 +392,18 @@ function dt_banner_video_field_group_info() {
       ),
     ),
   );
-  $export['group_video_wrapper|node|banner_video|teaser'] = $field_group;
+  $field_groups['group_video_wrapper|node|banner_video|teaser'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Banner');
+  t('Content');
+  t('Editorial Settings');
+  t('Video Video');
+  t('Video Wrapper');
+  t('Video caption');
+  t('Video left');
+  t('Video paragraph');
+
+  return $field_groups;
 }
