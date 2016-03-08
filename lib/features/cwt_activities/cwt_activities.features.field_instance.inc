@@ -178,7 +178,7 @@ function cwt_activities_field_default_field_instances() {
     'label' => 'External link',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,

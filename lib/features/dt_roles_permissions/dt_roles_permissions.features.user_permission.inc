@@ -10,16 +10,6 @@
 function dt_roles_permissions_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'assign node weight'.
-  $permissions['assign node weight'] = array(
-    'name' => 'assign node weight',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editorial team member' => 'editorial team member',
-    ),
-    'module' => 'weight',
-  );
-
   // Exported permission: 'access bean overview'.
   $permissions['access bean overview'] = array(
     'name' => 'access bean overview',
@@ -31,6 +21,27 @@ function dt_roles_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'access contextual links'.
+  $permissions['access contextual links'] = array(
+    'name' => 'access contextual links',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'editorial team member' => 'editorial team member',
+    ),
+    'module' => 'contextual',
+  );
+
+  // Exported permission: 'access ecas import users function'.
+  $permissions['access ecas import users function'] = array(
+    'name' => 'access ecas import users function',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'ecas_import_users',
+  );
+
   // Exported permission: 'access helper content types'.
   $permissions['access helper content types'] = array(
     'name' => 'access helper content types',
@@ -39,6 +50,7 @@ function dt_roles_permissions_user_default_permissions() {
       'contributor' => 'contributor',
       'editor' => 'editor',
       'site manager' => 'site manager',
+      'translator' => 'translator',
     ),
     'module' => 'dt_node_settings',
   );
@@ -62,16 +74,6 @@ function dt_roles_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: 'access ecas import users function'.
-  $permissions['access ecas import users function'] = array(
-    'name' => 'access ecas import users function',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site manager' => 'site manager',
-    ),
-    'module' => 'ecas_import_users',
-  );
-
   // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',
@@ -80,6 +82,18 @@ function dt_roles_permissions_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'assign node weight'.
+  $permissions['assign node weight'] = array(
+    'name' => 'assign node weight',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'editorial team member' => 'editorial team member',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'weight',
   );
 
   // Exported permission: 'bypass node access'.
@@ -117,6 +131,7 @@ function dt_roles_permissions_user_default_permissions() {
     'name' => 'create any site_menu bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'bean',
   );
@@ -126,6 +141,7 @@ function dt_roles_permissions_user_default_permissions() {
     'name' => 'delete any site_menu bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'bean',
   );
@@ -135,6 +151,7 @@ function dt_roles_permissions_user_default_permissions() {
     'name' => 'edit any site_menu bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'site manager' => 'site manager',
     ),
     'module' => 'bean',
@@ -165,17 +182,6 @@ function dt_roles_permissions_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'bean',
-  );
-
-  // Exported permission: 'access contextual links'.
-  $permissions['access contextual links'] = array(
-    'name' => 'access contextual links',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'editorial team member' => 'editorial team member',
-    ),
-    'module' => 'contextual',
   );
 
   return $permissions;
