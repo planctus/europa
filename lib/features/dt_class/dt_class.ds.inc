@@ -113,15 +113,7 @@ function dt_class_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'title_field' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'h3',
-          'fi-cl' => 'listing__title',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
     'field_core_description' => array(

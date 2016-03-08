@@ -1640,13 +1640,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'listing_title',
         'weight' => 0,
       ),
     ),
