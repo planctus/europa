@@ -27,9 +27,8 @@ function dt_topic_field_group_info() {
       1 => 'group_topic_contact',
       2 => 'group_topic_content',
       3 => 'group_topic_details',
-      4 => 'group_topic_policy_areas',
-      5 => 'group_topic_related',
-      6 => 'group_topic_task',
+      4 => 'group_topic_related',
+      5 => 'group_topic_task',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -337,62 +336,6 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_policy_areas|node|topic|form';
-  $field_group->group_name = 'group_topic_policy_areas';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Policy areas',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_core_policy_areas',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-topic-policy-areas field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_topic_policy_areas|node|topic|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_policy_areas|node|topic|full';
-  $field_group->group_name = 'group_topic_policy_areas';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Policy areas',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_core_policy_areas',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Policy areas',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => 'id="policy-areas"',
-      ),
-    ),
-  );
-  $field_groups['group_topic_policy_areas|node|topic|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_related_tasks|node|topic|full';
   $field_group->group_name = 'group_topic_related_tasks';
   $field_group->entity_type = 'node';
@@ -608,7 +551,6 @@ function dt_topic_field_group_info() {
   t('Latest');
   t('Main');
   t('Meta');
-  t('Policy areas');
   t('Related');
   t('Related Tasks');
   t('Sidebar');

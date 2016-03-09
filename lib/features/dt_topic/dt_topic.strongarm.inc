@@ -68,9 +68,6 @@ function dt_topic_strongarm() {
       'file' => array(
         'custom_settings' => FALSE,
       ),
-      'image_label' => array(
-        'custom_settings' => FALSE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(
