@@ -154,25 +154,25 @@ function nexteuropa_feedback_form_validate($form, &$form_state) {
   switch ($form_state['values']['feedback_type']) {
     case 'problem':
       if ($form_state['values']['what_were_you_doing'] == '') {
-        form_set_error('what_were_you_doing', 'Please fill in this field');
+        form_set_error('what_were_you_doing', t('Please fill in this field.'));
         $error = TRUE;
       }
       if ($form_state['values']['what_didnt_work'] == '') {
-        form_set_error('what_didnt_work', 'Please fill in this field');
+        form_set_error('what_didnt_work', t('Please fill in this field.'));
         $error = TRUE;
       }
       break;
 
     case 'suggestion':
       if ($form_state['values']['suggestion'] == '') {
-        form_set_error('suggestion', 'Please fill in this field');
+        form_set_error('suggestion', t('Please fill in this field.'));
         $error = TRUE;
       }
       break;
 
     case 'compliment':
       if ($form_state['values']['compliment'] == '') {
-        form_set_error('compliment', 'Please fill in this field');
+        form_set_error('compliment', t('Please fill in this field.'));
         $error = TRUE;
       }
       break;
