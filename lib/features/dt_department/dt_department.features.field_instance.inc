@@ -19,13 +19,9 @@ function dt_department_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'listing_title',
         'weight' => 11,
       ),
       'full' => array(
@@ -1730,9 +1726,9 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'nexteuropa_formatters',
+        'type' => 'listing_title',
         'weight' => 2,
       ),
       'teaser' => array(

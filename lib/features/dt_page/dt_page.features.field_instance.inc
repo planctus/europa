@@ -1789,13 +1789,9 @@ This will appear as a timeline on the page.
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'listing_title',
         'weight' => 0,
       ),
       'title' => array(

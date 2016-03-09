@@ -212,7 +212,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -305,7 +305,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -401,7 +401,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -473,7 +473,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -550,7 +550,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -638,7 +638,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -723,7 +723,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -841,7 +841,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'team_member' => array(
         'label' => 'hidden',
@@ -927,7 +927,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'team_member' => array(
         'label' => 'hidden',
@@ -1014,7 +1014,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1100,7 +1100,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1186,7 +1186,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1270,9 +1270,7 @@ function cwt_biography_field_default_field_instances() {
       'team_cabinet_member' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(
-          'title' => '',
-        ),
+        'settings' => array(),
         'type' => 'telephone',
         'weight' => 3,
       ),
@@ -1360,7 +1358,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1547,7 +1545,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1640,7 +1638,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1763,7 +1761,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1918,7 +1916,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 32,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -1977,7 +1975,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2049,7 +2047,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2140,9 +2138,10 @@ function cwt_biography_field_default_field_instances() {
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'file_default',
+        'weight' => 7,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2230,7 +2229,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2293,7 +2292,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2352,7 +2351,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2415,7 +2414,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2474,7 +2473,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'team_member' => array(
         'label' => 'above',
@@ -2595,7 +2594,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'team_member' => array(
         'label' => 'above',
