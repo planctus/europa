@@ -180,7 +180,7 @@ function dt_site_menu_field_group_info() {
     'format_settings' => array(
       'label' => 'Menu',
       'instance_settings' => array(
-        'classes' => 'section__group section__group--highlight-yellow section__group--full-width site-menu',
+        'classes' => 'section__group section__group--no-margin section__group--highlight-yellow section__group--full-width site-menu',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
