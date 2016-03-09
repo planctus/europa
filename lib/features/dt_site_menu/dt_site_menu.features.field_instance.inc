@@ -25,6 +25,7 @@ function dt_site_menu_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'two_columns',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'title',
