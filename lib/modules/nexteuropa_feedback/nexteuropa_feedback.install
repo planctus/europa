@@ -25,9 +25,7 @@ function nexteuropa_feedback_disable() {
 }
 
 /**
- * Implements hook_update_N().
- *
- * NEXTEUROPA-9169: add string to translation interface in the module update.
+ * Add string to translation interface in the update.
  */
 function nexteuropa_feedback_update_7001() {
   t('Please fill in this field.');
