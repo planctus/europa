@@ -135,3 +135,13 @@ function dt_topic_update_7109() {
     }
   }
 }
+
+/**
+ * NEXTEUROPA-7522: Remove Policy Areas field and group.
+ */
+function dt_topic_update_7110() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_policy_areas', 'topic')) {
+    field_delete_instance($instance);
+  }
+}
