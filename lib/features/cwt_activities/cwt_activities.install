@@ -50,7 +50,6 @@ function cwt_activities_update_7102() {
  * Revert the feature to delete field team priorities.
  */
 function cwt_activities_update_7103() {
-  features_revert_module('cwt_activities');
   if ($instance = field_info_instance('node', 'field_team_priorities', 'activities')) {
     field_delete_instance($instance);
   }
