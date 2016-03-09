@@ -198,7 +198,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_core_priorities',
@@ -226,7 +226,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_core_priorities',
@@ -285,7 +285,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '8',
+    'weight' => '4',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -460,7 +460,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -487,7 +487,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'group_topic_related_tasks',
       1 => 'group_topics_specific_tasks',
@@ -543,7 +543,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What the Commission is doing',
-    'weight' => '9',
+    'weight' => '5',
     'children' => array(
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',

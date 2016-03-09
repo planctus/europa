@@ -68,6 +68,9 @@ function dt_topic_strongarm() {
       'file' => array(
         'custom_settings' => FALSE,
       ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -109,9 +112,23 @@ function dt_topic_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_en_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_topic_en_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_topic_pattern';
   $strongarm->value = 'topics/[node:source:title]';
   $export['pathauto_node_topic_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_topic_und_pattern'] = $strongarm;
 
   return $export;
 }
