@@ -397,6 +397,7 @@ function dt_class_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'view_mode' => 'teaser',
+          'use_content_language' => 1,
         ),
         'type' => 'entity_reference_section',
         'weight' => 2,
@@ -595,9 +596,9 @@ function dt_class_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'listing_title',
         'weight' => 0,
       ),
       'title' => array(

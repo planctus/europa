@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_policy_input_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,7 @@ function dt_policy_input_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_input_content|node|policy_input|form'] = $field_group;
+  $field_groups['group_policy_input_content|node|policy_input|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -69,7 +69,7 @@ function dt_policy_input_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_input_editorial|node|policy_input|form'] = $field_group;
+  $field_groups['group_policy_input_editorial|node|policy_input|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function dt_policy_input_field_group_info() {
       'instance_settings' => array(),
     ),
   );
-  $export['group_policy_input_meta|node|policy_input|teaser'] = $field_group;
+  $field_groups['group_policy_input_meta|node|policy_input|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -118,7 +118,13 @@ function dt_policy_input_field_group_info() {
       ),
     ),
   );
-  $export['group_policy_input_tabgroup|node|policy_input|form'] = $field_group;
+  $field_groups['group_policy_input_tabgroup|node|policy_input|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Editorial settings');
+  t('Meta');
+
+  return $field_groups;
 }
