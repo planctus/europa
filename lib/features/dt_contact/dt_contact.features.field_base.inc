@@ -119,6 +119,9 @@ function dt_contact_field_default_field_bases() {
             'overwrite_title_mandatory' => 0,
             'status' => 1,
           ),
+          'tmgmt_field_behavior' => array(
+            'status' => 1,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
