@@ -178,7 +178,7 @@ function cwt_activities_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_activities';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
     1 => 'revision',
   );
   $export['node_options_activities'] = $strongarm;

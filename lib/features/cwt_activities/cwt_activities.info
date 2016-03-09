@@ -6,6 +6,7 @@ version = 7.x-1.1
 project = cwt_activities
 dependencies[] = addressfield
 dependencies[] = commissioner_date
+dependencies[] = field_group
 features[context][] = agenda
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
