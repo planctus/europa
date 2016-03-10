@@ -313,56 +313,12 @@ function cwt_activities_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-activities-field_team_priorities'.
-  $field_instances['node-activities-field_team_priorities'] = array(
-    'bundle' => 'activities',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_team_priorities',
-    'label' => 'Priorities',
-    'required' => FALSE,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 42,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
   t('Body');
   t('Editorial sections');
   t('External link');
-  t('Priorities');
   t('Start/End date');
 
   return $field_instances;

@@ -228,7 +228,7 @@ function dt_info_homepage_field_default_field_instances() {
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_modifier' => 'listing--no-border',
-          'nexteuropa_listing_wrapper_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
           'show_translations' => '',
           'use_content_language' => 0,
           'view_mode' => 'image_label',

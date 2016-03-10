@@ -84,7 +84,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 24,
       ),
       'full' => array(
         'label' => 'above',
@@ -172,7 +172,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -257,7 +257,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 30,
       ),
       'full' => array(
         'label' => 'above',
@@ -334,7 +334,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 27,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -458,69 +458,6 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_core_policy_areas'.
-  $field_instances['node-topic-field_core_policy_areas'] = array(
-    'bundle' => 'topic',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => 'sidebar-field-group__main',
-          'show_translations' => '',
-          'use_content_language' => TRUE,
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 19,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_policy_areas',
-    'label' => 'Policy areas',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 15,
-    ),
-  );
-
   // Exported field_instance: 'node-topic-field_core_priorities'.
   $field_instances['node-topic-field_core_priorities'] = array(
     'bundle' => 'topic',
@@ -595,7 +532,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 29,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -651,7 +588,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 31,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -791,7 +728,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -876,7 +813,7 @@ function dt_topic_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
@@ -960,7 +897,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 28,
       ),
       'full' => array(
         'label' => 'above',
@@ -1044,7 +981,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 23,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1111,7 +1048,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 27,
       ),
       'full' => array(
         'label' => 'above',
@@ -1178,7 +1115,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 26,
       ),
       'full' => array(
         'label' => 'above',
@@ -1255,7 +1192,7 @@ function dt_topic_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 25,
       ),
       'full' => array(
         'label' => 'above',
@@ -1362,7 +1299,6 @@ function dt_topic_field_default_field_instances() {
   t('Link');
   t('More Link');
   t('Objectives');
-  t('Policy areas');
   t('Related Top tasks links');
   t('Related departments');
   t('Related priorities for 2014 - 2019');
