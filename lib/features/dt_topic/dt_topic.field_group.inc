@@ -131,6 +131,37 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_social_bookmark_section|node|topic|full';
+  $field_group->group_name = 'group_social_bookmark_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Social Bookmark Webtools section group wrapper',
+    'weight' => '29',
+    'children' => array(
+      0 => 'social_bookmark_webtools',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-social-bookmark-section field-group-section_group',
+        'show_label' => 0,
+        'attributes' => '',
+        'label_element' => 'h2',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_social_bookmark_section|node|topic|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_contact|node|topic|form';
   $field_group->group_name = 'group_topic_contact';
   $field_group->entity_type = 'node';
@@ -189,6 +220,36 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_topic_contextual_section|node|topic|full';
+  $field_group->group_name = 'group_topic_contextual_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation section group wrapper',
+    'weight' => '6',
+    'children' => array(
+      0 => 'group_topic_contextual',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contextual navigation section group wrapper',
+      'instance_settings' => array(
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-topic-contextual-section field-group-section_group',
+      ),
+    ),
+  );
+  $field_groups['group_topic_contextual_section|node|topic|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_contextual|node|topic|default';
   $field_group->group_name = 'group_topic_contextual';
   $field_group->entity_type = 'node';
@@ -222,10 +283,10 @@ function dt_topic_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'topic';
   $field_group->mode = 'full';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_topic_contextual_section';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_core_priorities',
@@ -237,7 +298,14 @@ function dt_topic_field_group_info() {
       'label' => 'Contextual navigation',
       'instance_settings' => array(
         'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+        'show_label' => 0,
+        'attributes' => '',
+        'label_element' => 'h2',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_topic_contextual|node|topic|full'] = $field_group;
@@ -546,6 +614,7 @@ function dt_topic_field_group_info() {
   t('Contact');
   t('Content');
   t('Contextual navigation');
+  t('Contextual navigation section group wrapper');
   t('Editorial settings');
   t('Further information');
   t('Latest');
@@ -554,6 +623,7 @@ function dt_topic_field_group_info() {
   t('Related');
   t('Related Tasks');
   t('Sidebar');
+  t('Social Bookmark Webtools section group wrapper');
   t('Task');
   t('Tasks');
   t('Topic specific tasks');
