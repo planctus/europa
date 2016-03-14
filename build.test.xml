@@ -51,6 +51,17 @@
         </phingcall>
     </target>
 
+    <!-- Revert all features to make sure we are using the latest config. -->
+    <target name="revert-dt-features">
+        <drush
+            command="frdt"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+        </drush>
+    </target>
+
     <!-- Enable modules. -->
     <target name="enable-modules">
         <drush
@@ -129,7 +140,7 @@
     <target
         name="install-dev"
         description="Install a local development version of the subsite."
-        depends="install, enable-development-modules"
+        depends="install, enable-development-modules, revert-dt-features"
     />
 
 </project>

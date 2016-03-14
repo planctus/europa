@@ -26,9 +26,11 @@ function dt_core_info_install() {
     'dt_publication',
     'dt_policy',
     'dt_topic',
+    'dt_toplink',
     'nexteuropa_file',
     'dt_page',
     'dt_site_menu',
+    'dt_consultation_default',
   );
   module_enable($features);
 
@@ -40,6 +42,8 @@ function dt_core_info_install() {
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
+  // Initialize permissions.
+  _dt_roles_permissions_import_import('all', TRUE);
 }
 
 /**
