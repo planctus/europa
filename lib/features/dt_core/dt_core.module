@@ -774,6 +774,15 @@ function dt_core_views_query_alter(&$view, &$query) {
       }
     }
 
+    // Change our where condition using the title field to use the translated
+    // title field. So, when the condition is using the title field, we replace
+    // it to use the translated title value instead.
+    foreach ($query->where as &$where) {
+      foreach ($where['conditions'] as &$condition) {
+        $condition['field'] = str_replace('field_data_title_field.title_field_value', 'translated_title', $condition['field']);
+      }
+    }
+
     // This is originally coming from our sort, we could even delete this part
     // once we move to a better solution. As we replace the sorting logic, we
     // have to unset these, as they are causing the duplicate results.

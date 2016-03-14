@@ -10,9 +10,9 @@ class NodeContextHelper {
   /**
    * Variable holding the complete node object.
    *
-   * @var stdClass $node_object
+   * @var stdClass $nodeObject
    */
-  private $node_object;
+  private $nodeObject;
 
   /**
    * Variable holding the complete language object.
@@ -38,7 +38,7 @@ class NodeContextHelper {
 
     if ($node = menu_get_object('node', 1, $node_path)) {
       $this->language = $alias_no_suffix[0];
-      $this->node_object = $node;
+      $this->nodeObject = $node;
     }
     else {
       throw new Exception("Could not initialize node as you are not on a node page.");
@@ -52,7 +52,7 @@ class NodeContextHelper {
    *   The id of the node.
    */
   public function getNodeId() {
-    return $this->node_object->nid;
+    return $this->nodeObject->nid;
   }
 
   /**
@@ -62,13 +62,13 @@ class NodeContextHelper {
    *   The path to the node.
    */
   public function getNodePath() {
-    return '/node/' . $this->node_object->nid;
+    return '/node/' . $this->nodeObject->nid;
   }
 
   /**
    * Get the node language.
    *
-   * @return stdClass
+   * @return object
    *   The language object of the current page.
    */
   public function getLanguage() {
@@ -85,8 +85,7 @@ class NodeContextHelper {
    *   The url as string.
    */
   public function getAddTranslationPath($target) {
-    return $this->getNodePath() . '/edit/add/' . $this->node_object->language . '/' . $target . '_' . $target;
+    return $this->getNodePath() . '/edit/add/' . $this->nodeObject->language . '/' . $target . '_' . $target;
   }
-
 
 }

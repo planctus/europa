@@ -4,7 +4,7 @@ Feature: Search in views in any given language
   As a user
   I want to be able to search in my own language
 
-  Scenario Outline: Content language in meta tag
+  Scenario Outline: Language aware topic search
     Given I am logged in as a user with the "administrator" role
     Given "topic" content:
       | title                          | language      | status | workbench_moderation_state_new |
