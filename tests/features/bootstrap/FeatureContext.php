@@ -24,12 +24,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   private $languageList;
 
   /**
-   * @var \Drupal\nexteuropa\Helpers\NodeContextHelper $nodeContextHelper
-   *   Helper to get node informations.
-   */
-  private $nodeContextHelper;
-
-  /**
    * Initializes context.
    *
    * Every scenario gets its own context instance.
@@ -37,7 +31,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * context constructor through behat.yml.
    */
   public function __construct() {
-    $this->languageList  = reset(language_list('enabled'));
+    $this->languageList = reset(language_list('enabled'));
   }
 
   /**
@@ -46,10 +40,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @return \Drupal\nexteuropa\Helpers\NodeContextHelper
    */
   public function currentNode() {
-    if (empty($this->nodeContextHelper)) {
-      $this->nodeContextHelper =  new NodeContextHelper($this->getSession());
-    }
-    return $this->nodeContextHelper;
+    // We should reinitialize this every time as caching this would confuse the
+    // test runner.
+    return new NodeContextHelper($this->getSession());
   }
 
   /**

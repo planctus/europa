@@ -85,7 +85,7 @@ class NodeContextHelper {
    *   The url as string.
    */
   public function getAddTranslationPath($target) {
-    return $this->getNodePath() . '/edit/add/' . $this->node_object->language . '/' . $target;
+    return $this->getNodePath() . '/edit/add/' . $this->node_object->language . '/' . $target . '_' . $target;
   }
 
 
