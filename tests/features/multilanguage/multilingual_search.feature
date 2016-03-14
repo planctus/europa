@@ -60,7 +60,7 @@ Feature: Search in views in any given language
 
   Scenario Outline: Language aware policy search
     Given I am logged in as a user with the "administrator" role
-    Given "policy area" content:
+    Given "policy-area" content:
       | title      |
       | PolicyArea |
     Given "department" content:
