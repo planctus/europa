@@ -138,6 +138,20 @@ function dt_toplink_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'helper_content_type_toplink';
+  $strongarm->value = 1;
+  $export['helper_content_type_toplink'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'helper_node_type_toplink';
+  $strongarm->value = 1;
+  $export['helper_node_type_toplink'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'i18n_node_extended_toplink';
   $strongarm->value = 1;
   $export['i18n_node_extended_toplink'] = $strongarm;
