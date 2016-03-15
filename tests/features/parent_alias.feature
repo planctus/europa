@@ -1,9 +1,9 @@
+@api @information
 Feature: Aliases based on parent node's URL alias
   In order to reflect the hierarchy in the URL aliases
   As an editor
   I should be able to generate the URL alias reflecting the node's parent defined in specific fields
 
-  @api
   Scenario: Correct URL is generated for "Page"
     Given "Page" content:
       | title            | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
@@ -14,7 +14,6 @@ Feature: Aliases based on parent node's URL alias
     And I go to "first-page-title/second-page-title"
     Then I should see "Second page title" in the "title" element
 
-  @api
   Scenario: Circular reference is not allowed for "Page"
     Given "Page" content:
       | title                     | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
@@ -39,7 +38,6 @@ Feature: Aliases based on parent node's URL alias
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
 
-  @api
   Scenario: Correct URL is generated for "Policy area"
     Given "Policy area" content:
       | title                   | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |
@@ -55,7 +53,6 @@ Feature: Aliases based on parent node's URL alias
     And I go to "strategy/first-title/second-title"
     Then I should see "Page not found"
 
-  @api
   Scenario: Circular reference is not allowed for "Policy area"
     Given "Policy area" content:
       | title                            | field_core_description | field_core_introduction | field_core_policy_areas | path[pathauto] | status |

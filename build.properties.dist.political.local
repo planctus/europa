@@ -19,7 +19,7 @@ server.docroot = /var/www/political/
 
 # The base URL to use in Behat tests.
 behat.base_url = http://political.localhost
-behat.test_dir = political
+behat.test_tag = political
 
 # Composer
 composer.bin = /usr/local/bin/composer.phar
