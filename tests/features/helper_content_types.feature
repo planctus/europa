@@ -1,10 +1,9 @@
-@api
+@api @information
 Feature: Helper content types should be not accessible for the public
   In order to have access only to content that is complete
   As a user with no "access helper content types" permission
   I want to be blocked when visiting a node that is of a helper content type.
 
-  @information
   Scenario: User without permission cannot see helper content type (assuming toplink is helper and anonymous doesn't have the permission)
     Given I am not logged in
     When I am viewing a "toplink" content:
