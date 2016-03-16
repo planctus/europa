@@ -52,6 +52,9 @@ function dt_core_pol_install() {
 
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
+
+  // Initialize permissions.
+  _dt_roles_permissions_import_import('all', TRUE);
 }
 
 /**
