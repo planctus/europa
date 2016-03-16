@@ -87,6 +87,21 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  */
 function cwt_activities_views_pre_render(&$view) {
   if ($view->name == 'agenda' && $view->current_display == 'list') {
+
+    if (isset($view->header['area_text_custom']) && isset($view->header['area_text_custom']->options['content'])) {
+      $header_content = $view->header['area_text_custom']->options['content'];
+      if (FALSE !== strpos($header_content, '%print_button')) {
+
+        $full_query_parameters = drupal_get_query_parameters(NULL, []);
+        $base_path = $full_query_parameters['q'];
+        unset($full_query_parameters['q']);
+
+        $print_link = l(t('Print pdf'), '/printpdf/' . $base_path, ['query' => $full_query_parameters]);
+
+        $view->header['area_text_custom']->options['content'] = str_replace('%print_button', 'LINK' . $print_link, $header_content);
+      }
+    }
+
     // If the term is available, we create an extra view object we later parse
     // in the template.
     if (isset($view->exposed_input['field_editorial_section_multiple_tid'])) {
