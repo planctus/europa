@@ -19,7 +19,7 @@ server.docroot = /var/www/cwt/
 
 # The base URL to use in Behat tests.
 behat.base_url = http://cwt.localhost
-behat.test_tag = cwt
+behat.test_tags = @cwt
 
 # Composer
 composer.bin = /usr/local/bin/composer.phar
