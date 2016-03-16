@@ -19,7 +19,7 @@ server.docroot = /var/www/brp/
 
 # The base URL to use in Behat tests.
 behat.base_url = http://brp.localhost
-behat.test_tag = brp
+behat.test_tags = @brp,@shared
 
 # Composer
 composer.bin = /usr/local/bin/composer.phar
