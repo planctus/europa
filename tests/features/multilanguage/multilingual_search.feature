@@ -6,13 +6,13 @@ Feature: Search in views in any given language
 
   Scenario Outline: Language aware topic search
     Given I am logged in as a user with the "administrator" role
-    Given "topic" content:
-      | title         | language | status | workbench_moderation_state_new |
-      | <sourcetitle> | en       | 1      | published                      |
+    Given "Topic" content:
+      | title         | language | status |
+      | <sourcetitle> | en       | 1      |
     And the "<language>" language is available
     And I go to "/topics_en"
     Then I should see "<sourcetitle>"
-    When I fill in "by keyword" with "<sourcetitle>"
+    When I fill in "edit-combine" with "<sourcetitle>"
     And I press "edit-submit-topics"
     Then I should see "<sourcetitle>" in the ".view-id-topics .view-content" element
     When I follow "<sourcetitle>"
@@ -22,7 +22,7 @@ Feature: Search in views in any given language
     And I press "Save"
     And I go to "/topics_<language>"
     Then I should see "<title>"
-    When I fill in "by keyword" with "<search>"
+    When I fill in "edit-combine" with "<search>"
     And I press "edit-submit-topics"
     Then I should see "<title>" in the ".view-id-topics .view-content" element
 
@@ -33,14 +33,14 @@ Feature: Search in views in any given language
 
   Scenario Outline: Language aware announcement search
     Given I am logged in as a user with the "administrator" role
-    Given "announcement" content:
-      | title         | body | language | status | workbench_moderation_state_new | field_announcement_type | field_announcement_location | field_core_introduction | field_core_type_content          |
-      | <sourcetitle> | bar  | en       | 1      | published                      | speech                  | Brussels                    | bar                     | A page (default) in this website |
+    Given "Announcement" content:
+      | title         | body | language | status | field_announcement_type | field_announcement_location | field_core_introduction | field_core_type_content          |
+      | <sourcetitle> | bar  | en       | 1      | speech                  | Brussels                    | bar                     | A page (default) in this website |
     And the "<language>" language is available
     And I go to "/announcements_en"
     Then I should see "<sourcetitle>"
-    When I fill in "Containing" with "<sourcetitle>"
-    And I press "Refine results"
+    When I fill in "edit-combine" with "<sourcetitle>"
+    And I press "edit-submit-announcements"
     Then I should see "<sourcetitle>" in the ".view-id-announcements .view-content" element
     When I follow "<sourcetitle>"
     And I go to add "<language>" translation
@@ -49,8 +49,8 @@ Feature: Search in views in any given language
     And I press "Save"
     And I go to "/announcements_<language>"
     Then I should see "<title>"
-    When I fill in "Containing" with "<search>"
-    And I press "Refine results"
+    When I fill in "edit-combine" with "<search>"
+    And I press "edit-submit-announcements"
     Then I should see "<title>" in the ".view-id-announcements .view-content" element
 
     Examples:
@@ -60,23 +60,23 @@ Feature: Search in views in any given language
 
   Scenario Outline: Language aware policy search
     Given I am logged in as a user with the "administrator" role
-    Given "policy-area" content:
+    Given "Policy area" content:
       | title      |
       | PolicyArea |
-    Given "department" content:
+    Given "Department" content:
       | title      |
       | Department |
-    Given "person" content:
+    Given "Person" content:
       | title  |
       | Person |
-    Given "policy" content:
-      | title         | field_policy_detail_body | language | status | workbench_moderation_state_new | field_policy_detail_objectives | field_policy_sharable_banner | field_core_department | field_core_persons | field_core_policy_areas | field_core_introduction |
-      | <sourcetitle> | bar                      | en       | 1      | published                      | Detail objective               | no sharable banner           | Department            | Person             | PolicyArea              | Intro                   |
+    Given "Policy" content:
+      | title         | field_policy_detail_body | language | status | field_policy_detail_objectives | field_policy_sharable_banner | field_core_department | field_core_persons | field_core_policy_areas | field_core_introduction |
+      | <sourcetitle> | bar                      | en       | 1      | Detail objective               | no sharable banner           | Department            | Person             | PolicyArea              | Intro                   |
     And the "<language>" language is available
     And I go to "/policies_en"
     Then I should see "<sourcetitle>"
-    When I fill in "by keyword" with "<sourcetitle>"
-    And I press "Refine results"
+    When I fill in "edit-keyword" with "<sourcetitle>"
+    And I press "edit-submit-policy-overview"
     Then I should see "<sourcetitle>" in the ".view-id-policy_overview .view-content" element
     When I follow "<sourcetitle>"
     And I go to add "<language>" translation
@@ -85,8 +85,8 @@ Feature: Search in views in any given language
     And I press "Save"
     And I go to "/policies_<language>"
     Then I should see "<title>"
-    When I fill in "by keyword" with "<search>"
-    And I press "Refine results"
+    When I fill in "edit-keyword" with "<search>"
+    And I press "edit-submit-policy-overview"
     Then I should see "<title>" in the ".view-id-policy_overview .view-content" element
 
     Examples:
