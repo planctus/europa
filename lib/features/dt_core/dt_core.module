@@ -7,6 +7,7 @@
 // Our global views tag.
 define("DT_CORE_VIEWS_TAG", "digital_transformation");
 
+include_once 'dt_core.ds_fields.inc';
 include_once 'dt_core.features.inc';
 include_once 'dt_core.api.inc';
 
@@ -117,14 +118,21 @@ function dt_core_get_blocks_content($delta) {
  * Implements hook_theme().
  */
 function dt_core_theme($existing, $type, $theme, $path) {
-  return array(
-    'site_switcher_tabs' => array(
+  return [
+    'dt_core_announcement_block' => [
+      'template' => 'dt_core_announcement_block',
+      'path' => drupal_get_path('module', 'dt_core') . '/templates',
+      'variables' => [
+        'heading' => '',
+      ],
+    ],
+    'site_switcher_tabs' => [
       'file' => 'dt_core.theme.inc',
-      'variables' => array(
+      'variables' => [
         'modifier' => NULL,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -867,30 +875,6 @@ function dt_core_preprocess_views_view(&$variables) {
 
       $variables['items_count'] = format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']) . ' (' . $total_rows . ')';
     }
-  }
-}
-
-/**
- * Implements hook_ds_fields_info().
- */
-function dt_core_ds_fields_info($entity_type) {
-  $fields = array();
-
-  $fields['sticky_label'] = array(
-    'title' => t('Sticky label'),
-    'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_core_ds_fields_stick_label',
-  );
-
-  return array('node' => $fields);
-}
-
-/**
- * Custom function for single token replacement in a field.
- */
-function _dt_core_ds_fields_stick_label($field) {
-  if (isset($field['entity']->sticky) && $field['entity']->sticky) {
-    return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
   }
 }
 
