@@ -1,6 +1,7 @@
 <?php
 /**
- * @file ds fields defined for dt.
+ * @file
+ * Ds fields defined for dt.
  *
  * This file contains all custom ds fields and related functions.
  */
@@ -79,11 +80,20 @@ function _dt_core_ds_fields_stick_label($field) {
  *   Array containing field related information.
  */
 function _dt_core_ds_fields_announcement_block($field) {
+  // Lets call the entity by its name.
   $node = $field['entity'];
 
+  // Set our announcements view..
+  $news_items = views_embed_view('announcements', 'latest_block');
+  // Load social media links.
+  $social_media = field_view_field('node', $node, 'field_core_social_network_links', $field['view_mode']);
+
+  // Our own render array.
   $render_config = [
-    '#theme' => 'brp_initiative_status_label',
+    '#theme' => 'dt_core_announcement_block',
     '#heading' => isset($field['formatter_settings']['ft']['lb']) ? $field['formatter_settings']['ft']['lb'] : NULL,
+    '#news_items' => isset($news_items) ? $news_items : NULL,
+    '#social_links' => is_array($social_media) ? drupal_render($social_media) : NULL,
   ];
 
   return drupal_render($render_config);

@@ -124,6 +124,8 @@ function dt_core_theme($existing, $type, $theme, $path) {
       'path' => drupal_get_path('module', 'dt_core') . '/templates',
       'variables' => [
         'heading' => '',
+        'news_items' => '',
+        'social_links' => '',
       ],
     ],
     'site_switcher_tabs' => [
