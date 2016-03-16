@@ -52,7 +52,7 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
  * the current date forward.
  */
 function cwt_activities_views_query_alter(&$view, &$query) {
-  if ($view->name == 'agenda' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+  if ($view->name == 'agenda' && $view->current_display == 'list' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
     $date = date($view->filter['field_start_end_date_value2']->format, time());
     $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
   }
