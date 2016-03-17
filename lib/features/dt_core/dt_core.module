@@ -119,15 +119,6 @@ function dt_core_get_blocks_content($delta) {
  */
 function dt_core_theme($existing, $type, $theme, $path) {
   return [
-    'dt_core_announcement_block' => [
-      'template' => 'dt_core_announcement_block',
-      'path' => drupal_get_path('module', 'dt_core') . '/templates',
-      'variables' => [
-        'heading' => '',
-        'news_items' => '',
-        'social_links' => '',
-      ],
-    ],
     'site_switcher_tabs' => [
       'file' => 'dt_core.theme.inc',
       'variables' => [
