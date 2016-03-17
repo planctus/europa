@@ -17,11 +17,6 @@ function dt_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
-      'weight' => '12',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'in_page_navigation' => array(
       'weight' => '4',
       'label' => 'hidden',
@@ -43,6 +38,18 @@ function dt_page_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'announcement_block' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'show_featured_item' => 1,
+        'show_social_media' => 1,
+        'ft' => array(
+          'lb' => 'Latest',
+        ),
+      ),
+    ),
     'field_core_banner' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -54,13 +61,6 @@ function dt_page_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'lb' => 'Departments',
-        ),
-      ),
-    ),
-    'field_core_featured_item' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
@@ -170,32 +170,30 @@ function dt_page_ds_layout_settings_info() {
       'top' => array(
         2 => 'group_page_contextual_navigation',
         3 => 'field_core_banner',
-        21 => 'field_core_priorities',
-        22 => 'field_core_policy_area',
-        23 => 'field_core_departments',
-        24 => 'field_core_persons',
-        25 => 'field_core_topics',
+        19 => 'field_core_priorities',
+        20 => 'field_core_policy_area',
+        21 => 'field_core_departments',
+        22 => 'field_core_persons',
+        23 => 'field_core_topics',
       ),
       'left' => array(
         4 => 'in_page_navigation',
       ),
       'central' => array(
-        5 => 'group_page_priorities',
-        6 => 'priorities_preprocess',
+        5 => 'priorities_preprocess',
+        6 => 'group_page_priorities',
         7 => 'group_page_free_field',
         8 => 'body',
-        9 => 'group_page_latest_main',
-        10 => 'group_page_next_steps',
-        11 => 'group_page_documents',
+        9 => 'announcement_block',
+        10 => 'group_page_latest_main',
+        11 => 'group_page_latest_sidebar',
         12 => 'field_core_next_steps',
-        13 => 'group_page_related_links',
-        14 => 'field_core_featured_item',
-        15 => 'group_page_latest',
-        16 => 'latest_announcements_block',
-        17 => 'group_page_latest_sidebar',
-        18 => 'field_core_social_network_links',
-        19 => 'field_core_publications',
-        20 => 'field_core_links',
+        13 => 'group_page_next_steps',
+        14 => 'group_page_documents',
+        15 => 'group_page_related_links',
+        16 => 'group_page_latest',
+        17 => 'field_core_publications',
+        18 => 'field_core_links',
       ),
     ),
     'fields' => array(
@@ -204,20 +202,18 @@ function dt_page_ds_layout_settings_info() {
       'group_page_contextual_navigation' => 'top',
       'field_core_banner' => 'top',
       'in_page_navigation' => 'left',
-      'group_page_priorities' => 'central',
       'priorities_preprocess' => 'central',
+      'group_page_priorities' => 'central',
       'group_page_free_field' => 'central',
       'body' => 'central',
+      'announcement_block' => 'central',
       'group_page_latest_main' => 'central',
+      'group_page_latest_sidebar' => 'central',
+      'field_core_next_steps' => 'central',
       'group_page_next_steps' => 'central',
       'group_page_documents' => 'central',
-      'field_core_next_steps' => 'central',
       'group_page_related_links' => 'central',
-      'field_core_featured_item' => 'central',
       'group_page_latest' => 'central',
-      'latest_announcements_block' => 'central',
-      'group_page_latest_sidebar' => 'central',
-      'field_core_social_network_links' => 'central',
       'field_core_publications' => 'central',
       'field_core_links' => 'central',
       'field_core_priorities' => 'top',

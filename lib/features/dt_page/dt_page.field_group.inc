@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_page_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|basic_page|form'] = $field_group;
+  $field_groups['group_background|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_banner|node|basic_page|form'] = $field_group;
+  $field_groups['group_banner|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -95,7 +95,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|basic_page|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -127,7 +127,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|basic_page|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -154,7 +154,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_featured_item|node|basic_page|form'] = $field_group;
+  $field_groups['group_featured_item|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -181,7 +181,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_latest|node|basic_page|form'] = $field_group;
+  $field_groups['group_latest|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -214,7 +214,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_contextual_navigation|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_contextual_navigation|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -227,7 +227,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -243,7 +243,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_documents|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_documents|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -272,7 +272,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_free_field|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_free_field|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -302,7 +302,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_latest_main|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_latest_main|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -331,7 +331,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_latest_sidebar|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_latest_sidebar|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -361,7 +361,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_latest|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_latest|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -396,7 +396,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_main|node|basic_page|form'] = $field_group;
+  $field_groups['group_page_main|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -422,7 +422,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_meta|node|basic_page|teaser'] = $field_group;
+  $field_groups['group_page_meta|node|basic_page|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -435,7 +435,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -451,7 +451,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_next_steps|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_next_steps|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -480,7 +480,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_priorities|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_priorities|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -493,7 +493,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -509,7 +509,7 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_page_related_links|node|basic_page|full'] = $field_group;
+  $field_groups['group_page_related_links|node|basic_page|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -541,7 +541,25 @@ function dt_page_field_group_info() {
       ),
     ),
   );
-  $export['group_related|node|basic_page|form'] = $field_group;
+  $field_groups['group_related|node|basic_page|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('10 priorities');
+  t('Background');
+  t('Banner');
+  t('Content');
+  t('Contextual navigation');
+  t('Documents');
+  t('Editorial settings');
+  t('Featured item');
+  t('Free field');
+  t('Latest');
+  t('Meta');
+  t('Related');
+  t('Related links');
+  t('Sidebar');
+  t('What\'s next?');
+
+  return $field_groups;
 }
