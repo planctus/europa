@@ -1,4 +1,8 @@
+Build status develop:
 [![Build Status](https://status.continuousphp.com/git-hub/ec-europa/digital-transformation-dev?token=f8d249ca-69e4-4490-8c02-afe9d2864a65&branch=develop)](https://continuousphp.com/git-hub/ec-europa/digital-transformation-dev)
+
+Build status master:
+[![Build Status](https://status.continuousphp.com/git-hub/ec-europa/digital-transformation-dev?token=f8d249ca-69e4-4490-8c02-afe9d2864a65&branch=master)](https://continuousphp.com/git-hub/ec-europa/digital-transformation-dev)
 
 # NextEuropa Subsite Starterkit
 
