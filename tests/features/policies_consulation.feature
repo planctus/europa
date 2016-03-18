@@ -1,5 +1,4 @@
-@api
-
+@api @information
 Feature: Only consultations should be visible.
 When I log into the website
 As an editor

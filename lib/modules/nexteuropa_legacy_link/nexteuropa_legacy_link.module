@@ -41,6 +41,21 @@ function _nexteuropa_legacylink_load_entities($entities, $type) {
 }
 
 /**
+ * Implements hook_node_access().
+ *
+ * This will deny access on a full view mode for content having an external
+ * link.
+ */
+function nexteuropa_legacy_link_node_access($node, $op, $account) {
+  // Deny access to the full view mode on legacy link nodes.
+  if ($op == 'view' && _nexteuropa_legacy_link_get('node', $node) && !user_access('access content overview')) {
+    return NODE_ACCESS_DENY;
+  }
+
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
  * Implements hook_field_attach_view_alter().
  */
 function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {

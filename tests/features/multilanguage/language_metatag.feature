@@ -1,4 +1,4 @@
-@api
+@api @shared
 Feature: Display content language in meta tag
   To keep in line with the languages capitalization requirements
   As a user
