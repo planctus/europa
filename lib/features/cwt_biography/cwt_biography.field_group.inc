@@ -324,7 +324,7 @@ function cwt_biography_field_group_info() {
       'label' => 'Contextual navigation',
       'instance_settings' => array(
         'modifier' => '',
-        'classes' => 'group-bio-contextual field-group',
+        'classes' => 'group-bio-contextual',
       ),
     ),
   );
@@ -704,7 +704,7 @@ function cwt_biography_field_group_info() {
       'label' => 'Bio top footer',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'group-bio-top-footer field-group field-group--inline-bottom',
+        'classes' => 'group-bio-top-footer field-group--inline-bottom',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',

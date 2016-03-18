@@ -20,7 +20,11 @@
     .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social {
       display: block;
       float: left;
-      margin-top: 5px; }
+      margin-top: 5px;
+      padding-left: 40px;
+      margin-right: 10px; }
+      .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social:focus {
+        outline-offset: 0; }
   .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
     clear: both;
     display: block;

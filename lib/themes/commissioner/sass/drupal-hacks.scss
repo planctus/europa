@@ -25,6 +25,11 @@
         display: block;
         float: left;
         margin-top: 5px;
+        padding-left: 40px;
+        margin-right: 10px;
+        &:focus{
+          outline-offset: 0;
+        }
       }
     }
 
