@@ -227,7 +227,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '11',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -346,7 +346,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '10',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -404,7 +404,7 @@ function dt_page_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '12',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -469,7 +469,6 @@ function dt_page_field_group_info() {
   t('Meta');
   t('Related');
   t('Related links');
-  t('Sidebar');
   t('What\'s next?');
 
   return $field_groups;
