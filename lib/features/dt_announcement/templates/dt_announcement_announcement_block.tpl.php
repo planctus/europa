@@ -8,8 +8,11 @@
   <?php if ($heading): ?>
     <h2 id="<?php echo drupal_clean_css_identifier($heading); ?>"><?php echo $heading; ?></h2>
   <?php endif; ?>
-  <?php if ($news_items): ?>
+  <?php if ($news_items || $featued_item): ?>
     <div class="sidebar-field-group__main">
+      <?php if ($featued_item): ?>
+        <?php echo $featued_item; ?>
+      <?php endif; ?>
       <?php echo $news_items; ?>
     </div>
   <?php endif; ?>

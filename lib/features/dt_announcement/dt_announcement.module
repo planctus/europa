@@ -19,6 +19,7 @@ function dt_announcement_theme($existing, $type, $theme, $path) {
         'heading' => '',
         'news_items' => '',
         'social_links' => '',
+        'featued_item' => '',
       ],
     ],
   ];

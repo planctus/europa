@@ -83,7 +83,6 @@ function dt_page_field_group_info() {
       1 => 'group_banner',
       2 => 'group_editorial_settings',
       3 => 'group_featured_item',
-      4 => 'group_latest',
       5 => 'group_page_main',
       6 => 'group_related',
     ),
@@ -155,34 +154,7 @@ function dt_page_field_group_info() {
     ),
   );
   $field_groups['group_featured_item|node|basic_page|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_latest|node|basic_page|form';
-  $field_group->group_name = 'group_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'basic_page';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Latest',
-    'weight' => '15',
-    'children' => array(
-      0 => 'field_core_announcement',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-latest field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_latest|node|basic_page|form'] = $field_group;
-
+  
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
