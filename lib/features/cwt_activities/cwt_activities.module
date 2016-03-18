@@ -6,6 +6,9 @@
 
 include_once 'cwt_activities.features.inc';
 
+define('CWT_ACTIVITIES_PRINT_PDF_PATH', 'printpdf');
+define('CWT_ACTIVITIES_PRINT_PDF_TOKEN', '%print_pdf_link%');
+
 /**
  * Implements hook_form_alter().
  */
@@ -52,7 +55,9 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
  * the current date forward.
  */
 function cwt_activities_views_query_alter(&$view, &$query) {
-  if ($view->name == 'agenda' && $view->current_display == 'list' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+  if ($view->name == 'agenda' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+    // If start date field value is empty, adds to the query view the condition
+    // to return all items from now forward.
     $date = date($view->filter['field_start_end_date_value2']->format, time());
     $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
   }
@@ -86,19 +91,18 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
-  if ($view->name == 'agenda' && $view->current_display == 'list') {
-
-    if (isset($view->header['area_text_custom']) && isset($view->header['area_text_custom']->options['content'])) {
+  if ($view->name == 'agenda' && ($view->current_display == 'list' || $view->current_display == 'print_list')) {
+    // Adds the print PDF link to the views header.
+    if (isset($view->header['area_text_custom']->options['content'])) {
       $header_content = $view->header['area_text_custom']->options['content'];
-      if (FALSE !== strpos($header_content, '%print_button')) {
-
+      if (FALSE !== strpos($header_content, CWT_ACTIVITIES_PRINT_PDF_TOKEN)) {
         $full_query_parameters = drupal_get_query_parameters(NULL, []);
-        $base_path = $full_query_parameters['q'];
+        $base_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
-        $print_link = l(t('Print pdf'), '/printpdf/' . $base_path, ['query' => $full_query_parameters]);
+        $print_pdf_link = l(t('Print these agenda items'), '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $base_path, ['query' => $full_query_parameters]);
 
-        $view->header['area_text_custom']->options['content'] = str_replace('%print_button', 'LINK' . $print_link, $header_content);
+        $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
     }
 
