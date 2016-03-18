@@ -63,6 +63,9 @@ function dt_core_brp_install() {
       features_revert_module($feature);
     }
   }
+
+  // Initialize permissions.
+  _dt_roles_permissions_import_import('all', TRUE);
 }
 
 /**

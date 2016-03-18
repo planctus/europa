@@ -19,6 +19,7 @@ server.docroot = /var/www/information/
 
 # The base URL to use in Behat tests.
 behat.base_url = http://information.localhost
+behat.test_tags = @information,@shared
 
 # Composer
 composer.bin = /usr/local/bin/composer.phar
