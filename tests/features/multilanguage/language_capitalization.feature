@@ -1,9 +1,9 @@
+@api @shared
 Feature: Display some specific languages in lower case
   To keep in line with the languages capitalization requirements
   As an administrator user
   I want to see some languages in lower case on the languages page
 
-  @api
   Scenario Outline: Some lowercase languages on languages pages
     Given I am logged in as a user with the "administrator" role
     And am on "admin/config/regional/language"

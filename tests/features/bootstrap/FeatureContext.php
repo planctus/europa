@@ -10,12 +10,17 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Drupal\nexteuropa\Helpers\NodeContextHelper;
 
 /**
  * Contains generic step definitions.
  */
 class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
 
+  /**
+   * @var array $languageList
+   *   List of available languages.
+   */
   private $languageList;
 
   /**
@@ -26,7 +31,18 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * context constructor through behat.yml.
    */
   public function __construct() {
-    $this->languageList  = reset(language_list('enabled'));
+    $this->languageList = reset(language_list('enabled'));
+  }
+
+  /**
+   * Gets the current node information.
+   *
+   * @return \Drupal\nexteuropa\Helpers\NodeContextHelper
+   */
+  public function currentNode() {
+    // We should reinitialize this every time as caching this would confuse the
+    // test runner.
+    return new NodeContextHelper($this->getSession());
   }
 
   /**
@@ -51,10 +67,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Goes to translation form.
    *
-   * @When I go to add :target translation from :source
+   * @When I go to add :target translation
    */
-  public function iGoToAddTranslationFrom($target, $source) {
-    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  public function iGoToAddTranslationFrom($target) {
+    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
   }
 
   /**
@@ -64,7 +80,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function iFillWithCharactersOfDummyText($field, $length) {
     $value = $this->getRandom()->name(intval($length));
-    echo $value;
     $this->getSession()->getPage()->fillField($field, $value);
   }
 

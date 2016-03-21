@@ -10,6 +10,9 @@
 function dt_priority_install() {
   // Apply info dt configuration to "Policy input" content type.
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('priority');
+
+  // Enable the only default we have.
+  module_enable(['dt_priority_default']);
 }
 
 /**

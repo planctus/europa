@@ -139,14 +139,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['empty']['messages']['label'] = 'No recent news or publications';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -159,6 +151,13 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
   $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -176,16 +175,17 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    6 => 0,
     4 => 0,
+    3 => 0,
     5 => 0,
+    6 => 0,
     7 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
-    'title' => 'title',
     'body' => 'body',
     'field_core_introduction' => 'field_core_introduction',
+    'title_field' => 'title_field',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -221,7 +221,7 @@ function dt_announcement_views_default_views() {
     'announcement' => 'announcement',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Related departments (field_core_department) (reference filter) */
+  /* Filter criterion: Content: Departments (field_core_department) (reference filter) */
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['id'] = 'field_core_department_target_id_entityreference_filter';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['table'] = 'field_data_field_core_department';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['field'] = 'field_core_department_target_id_entityreference_filter';
@@ -290,7 +290,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
     'field_data_field_core_date_published.field_core_date_published_value' => 'field_data_field_core_date_published.field_core_date_published_value',
   );
-  /* Filter criterion: Content: Related commissioners (field_core_persons) */
+  /* Filter criterion: Content: Persons (field_core_persons) */
   $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
   $handler->display->display_options['filters']['field_core_persons_target_id']['table'] = 'field_data_field_core_persons';
   $handler->display->display_options['filters']['field_core_persons_target_id']['field'] = 'field_core_persons_target_id';

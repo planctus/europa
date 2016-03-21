@@ -1,4 +1,4 @@
-@api
+@api @shared
 Feature: Publication content type should have 2 types of visualization.
 When I log into the website
 As an editor

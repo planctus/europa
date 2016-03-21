@@ -48,13 +48,6 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_title_field|title_field_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'title';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
   $handler->display->display_options['fields']['field_core_description']['table'] = 'field_data_field_core_description';
@@ -67,6 +60,11 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
   $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Sort criterion: Content: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
@@ -98,17 +96,17 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    6 => 0,
     4 => 0,
+    3 => 0,
     5 => 0,
+    6 => 0,
     7 => 0,
     8 => 0,
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
-    'title' => 'title',
     'field_core_description' => 'field_core_description',
     'field_core_introduction' => 'field_core_introduction',
+    'title_field' => 'title_field',
   );
   /* Filter criterion: Content: Policy areas (field_core_policy_areas) */
   $handler->display->display_options['filters']['field_core_policy_areas_target_id']['id'] = 'field_core_policy_areas_target_id';
