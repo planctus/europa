@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \FeatureContext.
@@ -18,6 +17,8 @@ use Drupal\nexteuropa\Helpers\NodeContextHelper;
 class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
 
   /**
+   * List of languages.
+   *
    * @var array $languageList
    *   List of available languages.
    */
@@ -38,6 +39,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * Gets the current node information.
    *
    * @return \Drupal\nexteuropa\Helpers\NodeContextHelper
+   *   Instance of the NodeContextHelper.
    */
   public function currentNode() {
     // We should reinitialize this every time as caching this would confuse the
