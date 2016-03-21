@@ -17,11 +17,6 @@ function dt_policy_area_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy_area';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'content_type_label' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -35,6 +30,7 @@ function dt_policy_area_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -51,6 +47,18 @@ function dt_policy_area_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'announcement_block' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'show_featured_item' => 1,
+        'show_social_media' => 1,
+        'ft' => array(
+          'lb' => 'Latest',
+        ),
+      ),
+    ),
     'title_field' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -61,6 +69,7 @@ function dt_policy_area_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -74,6 +83,7 @@ function dt_policy_area_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -203,42 +213,34 @@ function dt_policy_area_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_policy_area_meta',
-        2 => 'title_field',
-        3 => 'content_type_label',
-        4 => 'field_core_introduction',
-        5 => 'field_core_description',
-      ),
-      'central' => array(
-        1 => 'latest_announcements_block',
-        8 => 'group_policy',
-        9 => 'children_policy_areas',
-        10 => 'children_policies',
-        11 => 'group_policy_area_latest',
-        12 => 'field_core_social_network_links',
-        13 => 'group_latest_main',
-        14 => 'group_latest_sidebar',
+        1 => 'title_field',
+        2 => 'content_type_label',
+        3 => 'field_core_introduction',
+        4 => 'field_core_description',
       ),
       'top' => array(
+        5 => 'group_policy_area_contextual',
         6 => 'field_core_persons',
-        7 => 'group_policy_area_contextual',
+      ),
+      'central' => array(
+        7 => 'group_policy',
+        8 => 'announcement_block',
+        9 => 'children_policy_areas',
+        10 => 'children_policies',
       ),
     ),
     'fields' => array(
       'group_policy_area_meta' => 'left_header',
-      'latest_announcements_block' => 'central',
       'title_field' => 'left_header',
       'content_type_label' => 'left_header',
       'field_core_introduction' => 'left_header',
       'field_core_description' => 'left_header',
-      'field_core_persons' => 'top',
       'group_policy_area_contextual' => 'top',
+      'field_core_persons' => 'top',
       'group_policy' => 'central',
+      'announcement_block' => 'central',
       'children_policy_areas' => 'central',
       'children_policies' => 'central',
-      'group_policy_area_latest' => 'central',
-      'field_core_social_network_links' => 'central',
-      'group_latest_main' => 'central',
-      'group_latest_sidebar' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

@@ -1,7 +1,6 @@
-@api @shared
+@api @information
 Feature: Announcements block
   In order to display announcements on the website
-  As a anonymous user
   I want to see the announcements in the announcements block
 
   Scenario Outline: Visitors should see the latests announcements block on content types
