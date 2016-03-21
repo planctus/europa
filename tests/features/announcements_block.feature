@@ -6,8 +6,8 @@ Feature: Announcements block
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
-      | title                             | status | field_core_description | field_core_latest_visibility |
-      | <content_name> with announcements | 1      | Sample description     | Enable                       |
+      | title                             | status | field_core_description |
+      | <content_name> with announcements | 1      | Sample description     |
     Given "Announcement" content:
       | title                          | status | <reference_fieldname>             |
       | Announcement on <content_name> | 1      | <content_name> with announcements |
@@ -18,7 +18,6 @@ Feature: Announcements block
 
     Examples:
       | content_name         | reference_fieldname         | label_visible |
-      | Page                 | field_core_pages            | should        |
       | Department           | field_core_department       | should        |
       | Policy               | field_core_policies         | should not    |
       | Topic                | field_core_topics           | should        |
