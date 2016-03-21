@@ -154,7 +154,7 @@ function dt_page_field_group_info() {
     ),
   );
   $field_groups['group_featured_item|node|basic_page|form'] = $field_group;
-  
+
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;

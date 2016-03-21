@@ -14,7 +14,7 @@ function dt_announcement_ds_fields_info($entity_type) {
 
   if ($entity_type == 'node') {
     $fields['node']['announcement_block'] = [
-      'title' => t('Announcement block'),
+      'title' => t('Full announcement section'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'function' => '_dt_announcement_ds_fields_announcement_block',
       'properties' => [
