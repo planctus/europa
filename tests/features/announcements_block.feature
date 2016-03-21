@@ -4,7 +4,29 @@ Feature: Announcements block
   As a anonymous user
   I want to see the announcements in the announcements block
 
-  Scenario: Editors can toggle the display of the latest annoncements block on a page
+  Scenario Outline: Visitors should see the latests announcements block on content types
+    Given I am logged in as a user with the "administrator" role
+    Given "<content_name>" content:
+      | title                             | status | field_core_description | field_core_latest_visibility |
+      | <content_name> with announcements | 1      | Sample description     | Enable                       |
+    Given "Announcement" content:
+      | title                          | status | <reference_fieldname>             |
+      | Announcement on <content_name> | 1      | <content_name> with announcements |
+    When I go to "admin/content"
+    And I follow "<content_name> with announcements"
+    Then I <label_visible> see an ".field--announcement-block h2" element
+    Then I should see the link "Announcement on <content_name>"
+
+    Examples:
+      | content_name         | reference_fieldname         | label_visible |
+      | Page                 | field_core_pages            | should        |
+      | Department           | field_core_department       | should        |
+      | Policy               | field_core_policies         | should not    |
+      | Topic                | field_core_topics           | should        |
+      | Priority             | field_core_priorities       | should        |
+      | Priority policy area | field_core_pri_policy_areas | should        |
+
+  Scenario: Editors can toggle the display of the latest announcements block on a page
     Given I am logged in as a user with the "administrator" role
     Given "Page" content:
       | title                   | status | field_core_description | field_core_latest_visibility |
