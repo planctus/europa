@@ -5,6 +5,21 @@
  */
 
 /**
+ * Implements hook_enable().
+ */
+function dt_core_enable() {
+  drupal_set_message('Digital transformation core is now active on your site.');
+}
+
+
+/**
+ * Implements hook_disable().
+ */
+function dt_core_disable() {
+  drupal_set_message('Digital transformation core is now disabled on your site.');
+}
+
+/**
  * Implements hook_install().
  */
 function dt_core_install() {
@@ -43,9 +58,6 @@ function dt_core_uninstall() {
   $contexts = variable_get('context_status', array());
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
-  $path = drupal_get_path('module', 'dt_core') . '/dt_core.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
 
 /**
