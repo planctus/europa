@@ -8,7 +8,6 @@
 define("DT_CORE_VIEWS_TAG", "digital_transformation");
 
 include_once 'dt_core.features.inc';
-include_once 'dt_core.api.inc';
 
 /**
  * No source field Exception.
@@ -933,5 +932,117 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
         $output['date']['#attached']['drupal_add_html_head'][0][0]['#value'] = $token_replaced;
       }
     }
+  }
+}
+
+/**
+ * Helper function to get the system path of aliased links.
+ *
+ * @param string $link
+ *   The link to be handled.
+ *
+ * @return string
+ *   The link, revisited.
+ */
+function _dt_core_menu_link($link, $lang = FALSE) {
+  global $base_url;
+  $lang = $lang ? $lang : LANGUAGE_NONE;
+  if ($link != '<front>' &&  $link != '<nolink>') {
+    $source = drupal_lookup_path('source', $link, $lang);
+    if (!$source) {
+      $view = drupal_valid_path($link);
+      if ($view) {
+        return $link;
+      }
+      else {
+        $link = url($link, array('absolute' => TRUE));
+      }
+    }
+    else {
+      $link = $source;
+    }
+  }
+
+  return $link;
+}
+
+/**
+ * Create menu links.
+ *
+ * @param string $menu
+ *   Menu name.
+ * @param string $link
+ *   The raw link.
+ * @param string $plid
+ *   The parent item mlid.
+ * @param string $title
+ *   The link title.
+ * @param string $module
+ *   Module machine name.
+ * @param string $weight
+ *   Weight of the menu item.
+ * @param string $lang
+ *   Lang code sanitized.
+ * @param string $tsid
+ *   Translations set id.
+ * @param string $nolink
+ *   Items without links.
+ * @param string $logs
+ *   The logs directory path.
+ *
+ * @return int
+ *   The mlid of the created menu item.
+ */
+function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
+  $link = _dt_core_menu_link($link, $lang);
+  $plid = ($plid > 0) ? $plid : 0;
+
+  $item = array(
+    'menu_name' => $menu,
+    'module' => $module,
+    'customized' => 1,
+    'language' => $lang,
+    'plid' => $plid,
+    'enabled' => 1,
+    'expanded' => 1,
+    'link_path' => $link,
+    'locked' => TRUE,
+    'link_title' => $title,
+    'hidden' => 0,
+    'weight' => $weight,
+    'i18n_menu' => 1,
+    'options' => array('title' => $link),
+  );
+
+  menu_link_save($item);
+
+  return $item['mlid'];
+
+}
+
+/**
+ * Helper function to get the mlid basing on the link name.
+ *
+ * @param string $name
+ *   Name of the menu item.
+ * @param string $menu
+ *   Name of the menu.
+ *
+ * @return bool/int
+ *   False or menu id.
+ */
+function _dt_core_menu_item_name_get($name, $menu) {
+  $mlid = db_select('menu_links', 'ml')
+    ->fields('ml', array('mlid'))
+    ->condition('link_title', $name)
+    ->condition('menu_name', $menu)
+    ->execute()
+    ->fetchField();
+
+  if (is_numeric($mlid)) {
+    return $mlid;
+  }
+  else {
+    return FALSE;
   }
 }
