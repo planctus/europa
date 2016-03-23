@@ -22,7 +22,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -43,7 +43,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -65,7 +65,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -86,7 +86,7 @@ function dt_core_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -120,7 +120,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_date_published',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -150,7 +150,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_date_updated',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,
@@ -184,7 +184,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -205,7 +205,7 @@ function dt_core_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -233,7 +233,7 @@ function dt_core_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -258,7 +258,7 @@ function dt_core_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -283,7 +283,7 @@ function dt_core_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -309,7 +309,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -330,7 +330,7 @@ function dt_core_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -352,7 +352,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_legacy_link',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -382,7 +382,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_legacy_links',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -412,7 +412,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_link',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -442,7 +442,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_links',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -476,7 +476,7 @@ function dt_core_field_default_field_bases() {
         0 => 'when_timeframe',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'dt_policy_next_step',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -499,7 +499,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -520,7 +520,7 @@ function dt_core_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -564,7 +564,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -594,7 +594,7 @@ function dt_core_field_default_field_bases() {
         0 => 'url',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'dt_social_network_links',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -611,7 +611,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_top_task_link',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -641,7 +641,7 @@ function dt_core_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_core_top_tasks_links',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -675,7 +675,7 @@ function dt_core_field_default_field_bases() {
         0 => 'value',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
@@ -702,7 +702,7 @@ function dt_core_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
