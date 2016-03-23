@@ -215,8 +215,8 @@ Styleguide listing.listing--2rows
 }
 
 // Lang selector is different on CWT and it needs this tweaking.
-.translation_select{
-  &:focus{
+.translation_select {
+  &:focus {
     padding-right: 50px;
   }
 }
