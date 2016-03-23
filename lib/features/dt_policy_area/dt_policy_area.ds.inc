@@ -54,9 +54,7 @@ function dt_policy_area_ds_field_settings_info() {
       'formatter_settings' => array(
         'show_featured_item' => 1,
         'show_social_media' => 1,
-        'ft' => array(
-          'lb' => 'Latest',
-        ),
+        'label' => 'Latest',
       ),
     ),
     'title_field' => array(

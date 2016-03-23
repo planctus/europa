@@ -27,10 +27,15 @@ function dt_announcement_ds_fields_info($entity_type) {
             'type' => 'checkbox',
             'description' => t('Display or do not display the social media'),
           ],
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('The label to display above the component'),
+          ],
         ],
         'default' => [
           'show_featured_item' => TRUE,
           'show_social_media' => TRUE,
+          'label' => 'Latest',
         ],
       ],
     ];
@@ -98,10 +103,19 @@ function _dt_announcement_ds_fields_announcement_block($field) {
     }
   }
 
+  // Get the actual content language.
+  $label_language = _dt_shared_functions_content_language($node);
+
+  // @codingStandardsIgnoreStart
+  $heading = isset($field['formatter_settings']['label'])
+    ? t($field['formatter_settings']['label'], [], ['langcode' => $label_language])
+    : NULL;
+  // @codingStandardsIgnoreEnd
+
   // Our own render array.
   $render_config = [
     '#theme' => 'dt_announcement_announcement_block',
-    '#heading' => isset($field['formatter_settings']['ft']['lb']) ? $field['formatter_settings']['ft']['lb'] : NULL,
+    '#heading' => $heading,
     '#news_items' => isset($news_items) ? $news_items : NULL,
     '#social_links' => isset($social_media) && is_array($social_media) ? drupal_render($social_media) : NULL,
     '#featued_item' => isset($featured_item_view) ? drupal_render($featured_item_view) : NULL,
