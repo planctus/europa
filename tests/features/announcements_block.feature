@@ -63,7 +63,7 @@ Feature: Announcements block
     And I select "Published" from "Moderation state"
     And I select "Facebook" from "Social Network"
     And I fill in "field_core_social_network_links[en][0][title]" with "Facebook"
-    And I fill in "field_core_social_network_links[en][0][url]" with "http://google.be/"
+    And I fill in "field_core_social_network_links[en][0][url]" with "http://facebook.com/"
     And I press "Save"
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
