@@ -100,7 +100,10 @@ function cwt_activities_views_pre_render(&$view) {
         $base_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
-        $print_pdf_link = l(t('Print these agenda items'), '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $base_path, ['query' => $full_query_parameters]);
+        $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
+        $pdf_link_suffix = '</span>';
+
+        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $base_path, ['query' => $full_query_parameters, 'html' => TRUE]);
 
         $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
@@ -114,6 +117,16 @@ function cwt_activities_views_pre_render(&$view) {
       $view->items_count['#suffix'] = $token;
     }
   }
+}
+
+/**
+ * Implements hook_print_pdf_filename_alter().
+ *
+ * Alters the PDF filename.
+ */
+function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
+  $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
+  $pdf_filename = transliteration_clean_filename($filename);
 }
 
 /**

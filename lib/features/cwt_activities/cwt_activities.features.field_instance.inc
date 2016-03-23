@@ -24,6 +24,12 @@ function cwt_activities_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'print' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -107,6 +113,12 @@ function cwt_activities_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => 5,
       ),
+      'print' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'addressfield',
@@ -165,6 +177,13 @@ function cwt_activities_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 3,
+      ),
+      'print' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -227,6 +246,13 @@ function cwt_activities_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 4,
       ),
+      'print' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -263,6 +289,20 @@ function cwt_activities_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 0,
+      ),
+      'print' => array(
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'short',
