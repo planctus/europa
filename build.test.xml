@@ -60,7 +60,12 @@
                 <property name="revert.command" value="frcwt" />
             </then>
         </if>
-
+        <drush 
+            command="registry-rebuild" 
+            assume="yes" 
+            root="${platform.build.dir}" 
+            bin="${drush.bin}">
+        </drush>
         <drush
             command="${revert.command}"
             assume="yes"
