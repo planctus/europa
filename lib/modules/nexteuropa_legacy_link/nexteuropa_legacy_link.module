@@ -41,24 +41,18 @@ function _nexteuropa_legacylink_load_entities($entities, $type) {
 }
 
 /**
- * Implements hook_menu_alter().
+ * Implements hook_node_access().
+ *
+ * This will deny access on a full view mode for content having an external
+ * link.
  */
-function nexteuropa_legacy_link_menu_alter(&$items) {
-  // Use our own access callback for the 'node/%node' page.
-  $items['node/%node']['access callback'] = 'nexteuropa_legacy_link_access_callback';
-}
-
-/**
- * Access callback for the node detail page.
- */
-function nexteuropa_legacy_link_access_callback($op, $node) {
+function nexteuropa_legacy_link_node_access($node, $op, $account) {
   // Deny access to the full view mode on legacy link nodes.
-  if ($op == 'view' && _nexteuropa_legacy_link_get('node', $node) && !user_access('administer site configuration')) {
-    return FALSE;
+  if ($op == 'view' && _nexteuropa_legacy_link_get('node', $node) && !user_access('access content overview')) {
+    return NODE_ACCESS_DENY;
   }
 
-  // Default to the regular node access callback.
-  return node_access($op, $node);
+  return NODE_ACCESS_IGNORE;
 }
 
 /**
