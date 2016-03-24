@@ -31,6 +31,13 @@
     padding-top: 10px;
     width: 100%; }
 
+section.block-dt-social-media-sharing,
+section .btn-time-line,
+section #blog,
+section #agenda,
+section #timeline {
+  float: left; }
+
 @media (min-width: 768px) {
   .group-bio-col .group-bio-top-footer .field--collapse-button,
   .group-bio-col .group-bio-top-footer .field--field-social-networks,

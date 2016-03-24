@@ -43,6 +43,16 @@
   }
 }
 
+section {
+  &.block-dt-social-media-sharing,
+  .btn-time-line,
+  #blog,
+  #agenda,
+  #timeline{
+    float: left;
+  }
+}
+
 // Desktop for the trio from above.
 @include breakpoint(screen-sm-min) {
   .group-bio-col {
