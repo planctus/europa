@@ -93,22 +93,22 @@ function dt_department_views_default_views() {
     'department' => 'department',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Department type (field_core_ecorganisation) */
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
+  /* Filter criterion: Content: Department type (field_core_ecorganisation) (translated) */
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['id'] = 'field_core_ecorganisation_value_i18n';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['table'] = 'field_data_field_core_ecorganisation';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['field'] = 'field_core_ecorganisation_value_i18n';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['value'] = array(
     'Directorate-General' => 'Directorate-General',
     'Service department' => 'Service department',
     'Executive agency' => 'Executive agency',
   );
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['operator_id'] = 'field_core_ecorganisation_value_op';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['label'] = 'Department type';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['operator'] = 'field_core_ecorganisation_value_op';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['identifier'] = 'department_type';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['operator_id'] = 'field_core_ecorganisation_value_i18n_op';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['label'] = 'Department type';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['operator'] = 'field_core_ecorganisation_value_i18n_op';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['identifier'] = 'field_core_ecorganisation_value_i18n';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -119,18 +119,18 @@ function dt_department_views_default_views() {
     9 => 0,
     10 => 0,
   );
-  $handler->display->display_options['filters']['field_core_ecorganisation_value']['expose']['reduce'] = TRUE;
-  /* Filter criterion: Content: Main task (field_department_tasks) */
-  $handler->display->display_options['filters']['field_department_tasks_tid']['id'] = 'field_department_tasks_tid';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['table'] = 'field_data_field_department_tasks';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['field'] = 'field_department_tasks_tid';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_department_tasks_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator_id'] = 'field_department_tasks_tid_op';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['label'] = 'Main task';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['operator'] = 'field_department_tasks_tid_op';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['identifier'] = 'main_task';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Main task (field_department_tasks) (translated) */
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['id'] = 'field_department_tasks_tid_i18n';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['table'] = 'field_data_field_department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['field'] = 'field_department_tasks_tid_i18n';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['operator_id'] = 'field_department_tasks_tid_i18n_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['label'] = 'Main task';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['operator'] = 'field_department_tasks_tid_i18n_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['identifier'] = 'field_department_tasks_tid_i18n';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -139,9 +139,11 @@ function dt_department_views_default_views() {
     5 => 0,
     7 => 0,
     9 => 0,
+    10 => 0,
   );
-  $handler->display->display_options['filters']['field_department_tasks_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_department_tasks_tid']['vocabulary'] = 'department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['type'] = 'select';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['vocabulary'] = 'department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['hierarchy'] = 1;
   /* Filter criterion: Content: Department type (field_core_ecorganisation) */
   $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['id'] = 'field_core_ecorganisation_value_1';
   $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['table'] = 'field_data_field_core_ecorganisation';
@@ -150,6 +152,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['value'] = array(
     'External department' => 'External department',
   );
+  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

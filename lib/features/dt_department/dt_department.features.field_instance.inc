@@ -1726,8 +1726,8 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'settings' => array(),
         'module' => 'nexteuropa_formatters',
+        'settings' => array(),
         'type' => 'listing_title',
         'weight' => 2,
       ),
