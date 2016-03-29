@@ -423,6 +423,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Announcements';
   $handler->display->display_options['path'] = 'announcements';
 
   /* Display: Latest */
