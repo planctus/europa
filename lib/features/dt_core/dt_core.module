@@ -869,9 +869,18 @@ function dt_core_preprocess_views_view(&$variables) {
       if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
         $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
         // @codingStandardsIgnoreStart
-        $variables['items_count'] = t($title) . ' (' . $total_rows . ')';
+        $display_title = t($title);
         // @codingStandardsIgnoreEnd
       }
+      else {
+        // Make sure we have a fallback.
+        $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+        // Set the display title and uppercase it.
+        $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
+      }
+
+      // Set the title to what we just configured.
+      $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
   }
 }
