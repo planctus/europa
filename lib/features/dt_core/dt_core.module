@@ -866,9 +866,12 @@ function dt_core_preprocess_views_view(&$variables) {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
-
-      $variables['items_count'] = format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']) . ' (' . $total_rows . ')';
+      if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
+        $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
+        // @codingStandardsIgnoreStart
+        $variables['items_count'] = t($title) . ' (' . $total_rows . ')';
+        // @codingStandardsIgnoreEnd
+      }
     }
   }
 }
