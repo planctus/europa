@@ -224,9 +224,45 @@ Styleguide listing.listing--2rows
   }
 }
 
+
 // Lang selector is different on CWT and it needs this tweaking.
 .translation_select {
   &:focus {
     padding-right: 50px;
+  }
+}
+
+// Workbench form hack
+@include breakpoint(screen-md-min) {
+  html {
+    &.js {
+      .filters__btn-submit.ctools-use-ajax {
+        display: none;
+      }
+
+      &.ie8 {
+        .filters__btn-submit.ctools-use-ajax {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .view-workbench-moderation {
+    .views-exposed-widget {
+      width: 50%;
+      clear: none;
+      &:nth-child(odd) {
+        padding-right: 2%;
+      }
+    }
+    .views-widget-per-page {
+      clear: left;
+    }
+    .filters__btn-submit {
+      width: auto;
+      float: left;
+      clear: left;
+    }
   }
 }
