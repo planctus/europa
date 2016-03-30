@@ -18,7 +18,6 @@ function cwt_blogs_disable() {
   multisite_drupal_toolbox_remove_block_context('biography', 'views-blog_commisioner_bio-block');
 }
 
-
 /**
  * Remove obsolete rules.
  */
