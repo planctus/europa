@@ -179,7 +179,6 @@ function _dt_roles_permissions_import_show_diff($name, $to_be_granted = array(),
   drupal_set_message($message);
 }
 
-
 /**
  * Helper function to get the available import files as an $id => $name array.
  */
