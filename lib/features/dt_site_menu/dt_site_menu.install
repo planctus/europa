@@ -159,7 +159,7 @@ function dt_site_menu_update_7102() {
   $lang = language_default('language');
   $bean = bean_load_delta('information-site-menu');
   $fields = array('field_site_menu_links', 'field_site_menu_topic_link');
-  
+
   foreach ($fields as $field) {
     if (!empty($bean->{$field}[LANGUAGE_NONE])) {
       foreach ($bean->{$field}[LANGUAGE_NONE] as $value) {
