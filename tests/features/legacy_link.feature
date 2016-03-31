@@ -45,7 +45,6 @@ Feature: Legacy links
     And I am logged in as a user with the "administrator" role
     And I go to "admin/content"
     And I follow "Content title"
-    Then show last response
     Then I should see the link "Announcement title on page" linking to "departments_en"
     When I go to "admin/content"
     And I follow "Announcement title on page"
