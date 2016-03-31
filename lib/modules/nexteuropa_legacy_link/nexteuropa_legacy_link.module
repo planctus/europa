@@ -173,7 +173,14 @@ function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode = NULL) {
       }
     }
 
-    return (isset($legacy_link['url'])) ? $legacy_link['url'] : FALSE;
+    // Get the actual target path.
+    $legacy_link_url = (isset($legacy_link['url'])) ? $legacy_link['url'] : NULL;
+
+    // Allow other modules to alter it.
+    drupal_alter('nexteuropa_legacy_link', $legacy_link_url, $entity, $langcode);
+
+    // Return the link.
+    return $legacy_link_url;
   }
 
   return FALSE;
