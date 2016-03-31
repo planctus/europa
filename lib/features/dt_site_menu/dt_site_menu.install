@@ -150,7 +150,7 @@ function dt_site_menu_update_7101() {
 }
 
 /**
- * DTT-68: Link field values migration for the menu.
+ * DTTSB-68: Link field values migration for the menu.
  */
 function dt_site_menu_update_7102() {
   // Ensure link fields are translatable.
