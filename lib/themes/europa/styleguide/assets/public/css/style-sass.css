@@ -10988,8 +10988,16 @@ Markup: html/facet-tag.html
 
 Styleguide tags.facettag
 */
+@media (min-width: 480px) {
+  .facet-tag {
+    width: auto;
+    display: inline-block; } }
+
 .facet-tag__label {
   float: left; }
+
+.facet-tag__value {
+  text-transform: none; }
 
 /*
 Facet tag with close
