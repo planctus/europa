@@ -150,14 +150,16 @@ function dt_site_menu_update_7101() {
 }
 
 /**
- * DTTSB-68 Link field values migration for the menu.
+ * DTTSB-68 Migration for the field_site_menu_links.
  */
-function dt_site_menu_update_7103(&$sandbox) {
-  // Ensure link fields are translatable.
-  features_revert(array('dt_site_menu' => array('field_base')));
-  $fields = array('field_site_menu_links', 'field_site_menu_topic_link');
-  foreach ($fields as $field_name) {
-    // Migrate the values of these two fields.
-    _dt_core_enable_entity_translation($field_name, $sandbox);
-  }
+function dt_site_menu_update_7102(&$sandbox) {
+   _dt_core_enable_entity_translation('field_site_menu_links', $sandbox);
 }
+
+/**
+ * DTTSB-68 Migration for the field_site_menu_topic_link.
+ */
+function dt_site_menu_update_7104(&$sandbox) {
+  _dt_core_enable_entity_translation('field_site_menu_topic_link', $sandbox);
+}
+
