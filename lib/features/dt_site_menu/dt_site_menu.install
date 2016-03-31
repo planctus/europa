@@ -148,3 +148,27 @@ function dt_site_menu_update_7101() {
     _dt_site_menu_delete_fields();
   }
 }
+
+/**
+ * DTT-68: Link field values migration for the menu.
+ */
+function dt_site_menu_update_7102() {
+  // Ensure link fields are translatable.
+  features_revert(array('dt_site_menu' => array('field')));
+  // We are simply moving the values from the undefined language to the default.
+  $lang = language_default('language');
+  $bean = bean_load_delta('information-site-menu');
+  $fields = array('field_site_menu_links', 'field_site_menu_topic_link');
+  
+  foreach ($fields as $field) {
+    if (!empty($bean->{$field}[LANGUAGE_NONE])) {
+      foreach ($bean->{$field}[LANGUAGE_NONE] as $value) {
+        $value['url'] = preg_replace('#^/#', '', $value['url']);
+        $bean->{$field}[$lang][] = $value;
+        unset($bean->{$field}[LANGUAGE_NONE]);
+      }
+    }
+  }
+  // Save the bean.
+  $bean->save();
+}
