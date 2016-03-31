@@ -159,6 +159,6 @@ function dt_site_menu_update_7102(&$sandbox) {
 /**
  * DTTSB-68 Migration for the field_site_menu_topic_link.
  */
-function dt_site_menu_update_7104(&$sandbox) {
+function dt_site_menu_update_7103(&$sandbox) {
   _dt_core_enable_entity_translation('field_site_menu_topic_link', $sandbox);
 }
