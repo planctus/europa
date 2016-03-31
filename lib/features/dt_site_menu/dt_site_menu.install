@@ -154,7 +154,7 @@ function dt_site_menu_update_7101() {
  */
 function dt_site_menu_update_7102() {
   // Ensure link fields are translatable.
-  features_revert(array('dt_site_menu' => array('field')));
+  features_revert(array('dt_site_menu' => array('field_base')));
   // We are simply moving the values from the undefined language to the default.
   $lang = language_default('language');
   $bean = bean_load_delta('information-site-menu');
