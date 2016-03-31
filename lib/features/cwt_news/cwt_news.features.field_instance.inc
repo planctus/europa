@@ -148,7 +148,7 @@ function cwt_news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -287,7 +287,7 @@ function cwt_news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',
