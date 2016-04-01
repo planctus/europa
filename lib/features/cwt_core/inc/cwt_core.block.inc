@@ -170,6 +170,7 @@ function _cwt_core_block_cwt_header_site_tab_switcher_view() {
 
   return $block;
 }
+
 /**
  * Footer site tab switcher content.
  */

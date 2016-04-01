@@ -383,4 +383,26 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
   }
 
+  /**
+   * Checks that a link goes to a specific target.
+   *
+   * @Then I should see the link :title linking to :target
+   */
+  public function iShouldSeeTheLinkLinkingTo($title, $target) {
+    $element = $this->getSession()->getPage();
+
+    if ($result = $element->findLink($title)) {
+      if ($result->getAttribute('href') !== $target) {
+        $params = [
+          '@title' => $title,
+          '@target' => $target,
+        ];
+        throw new Exception(format_string("Link with title @title found but not linking to @target.", $params));
+      }
+    }
+    else {
+      throw new Exception(format_string("Link with title @title not found.", ['@title' => $title]));
+    }
+  }
+
 }
