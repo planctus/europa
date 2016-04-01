@@ -6,14 +6,11 @@
     width: 100%;
     margin-bottom: 2em; }
 
-<<<<<<< HEAD
 @media (min-width: 480px) {
   .block-nexteuropa-europa-search {
     width: 100%;
     padding-left: 0; } }
 
-=======
->>>>>>> 58848f55db1835509a80084f50aca1a14544a74b
 .group-bio-col .group-bio-top-footer {
   display: block; }
   .group-bio-col .group-bio-top-footer .field--collapse-button {
@@ -141,8 +138,6 @@ Styleguide listing.listing--2rows
 .node-type-team .section--content-top {
   margin-top: 0; }
 
-<<<<<<< HEAD
-=======
 @media (min-width: 992px) {
   html.js .filters__btn-submit.ctools-use-ajax {
     display: none; }
@@ -160,5 +155,4 @@ Styleguide listing.listing--2rows
     float: left;
     clear: left; } }
 
->>>>>>> 58848f55db1835509a80084f50aca1a14544a74b
 /*# sourceMappingURL=style.css.map */
