@@ -6,7 +6,6 @@
 
 include_once 'cwt_activities.features.inc';
 
-define('CWT_ACTIVITIES_PRINT_PDF_PATH', 'printpdf');
 define('CWT_ACTIVITIES_PRINT_PDF_TOKEN', '%print_pdf_link%');
 
 /**
@@ -102,8 +101,9 @@ function cwt_activities_views_pre_render(&$view) {
 
         $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
         $pdf_link_suffix = '</span>';
+        $pdf_link_options = ['query' => $full_query_parameters, 'html' => TRUE, 'attributes' => ['rel' => 'nofollow']];
 
-        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $print_path, ['query' => $full_query_parameters, 'html' => TRUE, 'attributes' => ['rel' => 'nofollow']]);
+        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
         $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
