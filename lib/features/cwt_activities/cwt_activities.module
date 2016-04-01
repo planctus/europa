@@ -101,7 +101,11 @@ function cwt_activities_views_pre_render(&$view) {
 
         $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
         $pdf_link_suffix = '</span>';
-        $pdf_link_options = ['query' => $full_query_parameters, 'html' => TRUE, 'attributes' => ['rel' => 'nofollow']];
+        $pdf_link_options = array(
+          'query' => $full_query_parameters,
+          'html' => TRUE,
+          'attributes' => array('rel' => 'nofollow'),
+        );
 
         $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
