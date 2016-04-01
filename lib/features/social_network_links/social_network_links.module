@@ -523,6 +523,7 @@ function social_network_links_image_style_flush($style) {
     _social_network_links_generate_css();
   }
 }
+
 /**
  * Implements hook_preprocess_page().
  */

@@ -10,7 +10,7 @@
 function dt_priority_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-priority-field_core_background'
+  // Exported field_instance: 'node-priority-field_core_background'.
   $field_instances['node-priority-field_core_background'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -89,7 +89,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_banner'
+  // Exported field_instance: 'node-priority-field_core_banner'.
   $field_instances['node-priority-field_core_banner'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -113,6 +113,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -150,7 +151,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_child_policies'
+  // Exported field_instance: 'node-priority-field_core_child_policies'.
   $field_instances['node-priority-field_core_child_policies'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -174,6 +175,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -210,7 +212,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_departments'
+  // Exported field_instance: 'node-priority-field_core_departments'.
   $field_instances['node-priority-field_core_departments'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -230,6 +232,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -267,7 +270,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_description'
+  // Exported field_instance: 'node-priority-field_core_description'.
   $field_instances['node-priority-field_core_description'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -285,7 +288,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -346,7 +349,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_featured_item'
+  // Exported field_instance: 'node-priority-field_core_featured_item'.
   $field_instances['node-priority-field_core_featured_item'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -364,17 +367,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'use_content_language' => TRUE,
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -406,7 +401,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_header_image'
+  // Exported field_instance: 'node-priority-field_core_header_image'.
   $field_instances['node-priority-field_core_header_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
@@ -426,7 +421,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -486,7 +481,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_image'
+  // Exported field_instance: 'node-priority-field_core_image'.
   $field_instances['node-priority-field_core_image'] = array(
     'bundle' => 'priority',
     'deleted' => 0,
@@ -506,7 +501,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -579,7 +574,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_introduction'
+  // Exported field_instance: 'node-priority-field_core_introduction'.
   $field_instances['node-priority-field_core_introduction'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -659,7 +654,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_legacy_link'
+  // Exported field_instance: 'node-priority-field_core_legacy_link'.
   $field_instances['node-priority-field_core_legacy_link'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -677,7 +672,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -725,7 +720,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_links'
+  // Exported field_instance: 'node-priority-field_core_links'.
   $field_instances['node-priority-field_core_links'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -741,7 +736,11 @@ function dt_priority_default_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
         'type' => 'link_listing_title',
         'weight' => 19,
       ),
@@ -803,7 +802,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_next_steps'
+  // Exported field_instance: 'node-priority-field_core_next_steps'.
   $field_instances['node-priority-field_core_next_steps'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -860,7 +859,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_objective'
+  // Exported field_instance: 'node-priority-field_core_objective'.
   $field_instances['node-priority-field_core_objective'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -939,7 +938,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_parent'
+  // Exported field_instance: 'node-priority-field_core_parent'.
   $field_instances['node-priority-field_core_parent'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -959,7 +958,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -990,7 +989,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_persons'
+  // Exported field_instance: 'node-priority-field_core_persons'.
   $field_instances['node-priority-field_core_persons'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1007,6 +1006,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => 1,
           'expander_trim_at' => 5,
           'expander_trim_to' => 2,
@@ -1050,7 +1050,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_policy_areas'
+  // Exported field_instance: 'node-priority-field_core_policy_areas'.
   $field_instances['node-priority-field_core_policy_areas'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1067,7 +1067,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1105,7 +1105,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_publications'
+  // Exported field_instance: 'node-priority-field_core_publications'.
   $field_instances['node-priority-field_core_publications'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1129,6 +1129,7 @@ function dt_priority_default_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
         ),
@@ -1165,7 +1166,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_section_intro'
+  // Exported field_instance: 'node-priority-field_core_section_intro'.
   $field_instances['node-priority-field_core_section_intro'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1244,7 +1245,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_social_network_links'
+  // Exported field_instance: 'node-priority-field_core_social_network_links'.
   $field_instances['node-priority-field_core_social_network_links'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1262,10 +1263,9 @@ function dt_priority_default_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 30,
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1297,7 +1297,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-field_core_topics'
+  // Exported field_instance: 'node-priority-field_core_topics'.
   $field_instances['node-priority-field_core_topics'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1317,6 +1317,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'contextual_date' => '',
           'expander_has_expander' => FALSE,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
@@ -1354,7 +1355,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-group_content_access'
+  // Exported field_instance: 'node-priority-group_content_access'.
   $field_instances['node-priority-group_content_access'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1372,7 +1373,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1402,7 +1403,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-og_group_ref'
+  // Exported field_instance: 'node-priority-og_group_ref'.
   $field_instances['node-priority-og_group_ref'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1422,7 +1423,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1463,7 +1464,7 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority-title_field'
+  // Exported field_instance: 'node-priority-title_field'.
   $field_instances['node-priority-title_field'] = array(
     'bundle' => 'priority',
     'default_value' => NULL,
@@ -1480,7 +1481,7 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'hidden',

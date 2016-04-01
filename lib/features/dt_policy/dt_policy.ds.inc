@@ -32,11 +32,6 @@ function dt_policy_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'policy';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_announcements_block' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'content_type_label' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -50,22 +45,7 @@ function dt_policy_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'social_bookmark_webtools' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => 'social-media-links--webtool-horizontal',
-          'ow-def-cl' => FALSE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -85,18 +65,36 @@ function dt_policy_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_policy_detail_objectives' => array(
+    'social_bookmark_webtools' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_minimal',
-          'lb-col' => TRUE,
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
         ),
       ),
     ),
-    'field_core_priorities' => array(
+    'announcement_block' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'show_featured_item' => 1,
+        'show_social_media' => 1,
+        'ft' => array(),
+      ),
+    ),
+    'field_core_department' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Political priorities',
+          'lb' => 'Departments',
         ),
       ),
     ),
@@ -107,10 +105,11 @@ function dt_policy_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_department' => array(
+    'field_policy_detail_objectives' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Departments',
+          'func' => 'theme_ds_field_minimal',
+          'lb-col' => TRUE,
         ),
       ),
     ),
@@ -118,6 +117,13 @@ function dt_policy_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'lb' => 'Commissioners',
+        ),
+      ),
+    ),
+    'field_core_priorities' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Political priorities',
         ),
       ),
     ),
@@ -254,51 +260,49 @@ function dt_policy_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'central' => array(
-        0 => 'latest_announcements_block',
-        6 => 'group_policy_tabs',
-        7 => 'group_policy_tab_actions',
-        8 => 'group_policy_tab_latest',
-        9 => 'group_policy_socialmedia',
-        10 => 'group_policy_tab_details',
-        14 => 'field_policy_detail_objectives',
-        15 => 'field_policy_detail_body',
-        16 => 'group_policy_documents',
-        17 => 'field_policy_keyfiles',
-        18 => 'group_latest',
-        19 => 'group_latest_main',
-        20 => 'group_latest_sidebar',
-        21 => 'group_policies_wrapper',
-        22 => 'policy_actions',
-        23 => 'field_policy_next_steps',
-      ),
       'left_header' => array(
-        1 => 'content_type_label',
+        0 => 'content_type_label',
         2 => 'group_policy_meta',
         3 => 'title',
         4 => 'field_core_introduction',
       ),
+      'central' => array(
+        1 => 'announcement_block',
+        6 => 'group_policy_tabs',
+        7 => 'group_policy_tab_actions',
+        8 => 'group_policy_socialmedia',
+        9 => 'social_bookmark_webtools',
+        11 => 'group_policy_tab_latest',
+        13 => 'group_policy_tab_details',
+        16 => 'field_policy_detail_objectives',
+        17 => 'field_policy_detail_body',
+        18 => 'group_policy_documents',
+        19 => 'field_policy_keyfiles',
+        20 => 'group_policies_wrapper',
+        21 => 'policy_actions',
+        22 => 'field_policy_next_steps',
+      ),
       'top' => array(
         5 => 'group_policy_contextual',
-        9 => 'field_core_priorities',
-        10 => 'field_core_topics',
-        12 => 'field_core_persons',
-        13 => 'field_core_department',
+        10 => 'field_core_priorities',
+        12 => 'field_core_topics',
+        14 => 'field_core_persons',
+        15 => 'field_core_department',
       ),
     ),
     'fields' => array(
-      'latest_announcements_block' => 'central',
       'content_type_label' => 'left_header',
+      'announcement_block' => 'central',
       'group_policy_meta' => 'left_header',
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
       'group_policy_contextual' => 'top',
       'group_policy_tabs' => 'central',
       'group_policy_tab_actions' => 'central',
-      'social_bookmark_webtools' => 'central',
-      'group_policy_tab_latest' => 'central',
       'group_policy_socialmedia' => 'central',
+      'social_bookmark_webtools' => 'central',
       'field_core_priorities' => 'top',
+      'group_policy_tab_latest' => 'central',
       'field_core_topics' => 'top',
       'group_policy_tab_details' => 'central',
       'field_core_persons' => 'top',
@@ -307,9 +311,6 @@ function dt_policy_ds_layout_settings_info() {
       'field_policy_detail_body' => 'central',
       'group_policy_documents' => 'central',
       'field_policy_keyfiles' => 'central',
-      'group_latest' => 'central',
-      'group_latest_main' => 'central',
-      'group_latest_sidebar' => 'central',
       'group_policies_wrapper' => 'central',
       'policy_actions' => 'central',
       'field_policy_next_steps' => 'central',

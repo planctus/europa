@@ -223,7 +223,6 @@ function cwt_core_update_7115() {
   }
 }
 
-
 /**
  * Create the 'Section editor' and 'Site manager' roles.
  */
@@ -321,6 +320,7 @@ function cwt_core_update_7123() {
 function cwt_core_update_7124() {
   module_disable(array('multisite_multilingual_references'));
 }
+
 /**
  * Add permissions for custom page content type to certain roles.
  */

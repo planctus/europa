@@ -131,14 +131,14 @@ function _dt_core_get_blocks_content($delta) {
  * Implements hook_theme().
  */
 function dt_core_theme($existing, $type, $theme, $path) {
-  return array(
-    'site_switcher_tabs' => array(
+  return [
+    'site_switcher_tabs' => [
       'file' => 'dt_core.theme.inc',
-      'variables' => array(
+      'variables' => [
         'modifier' => NULL,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -882,30 +882,6 @@ function dt_core_preprocess_views_view(&$variables) {
       // Set the title to what we just configured.
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
-  }
-}
-
-/**
- * Implements hook_ds_fields_info().
- */
-function dt_core_ds_fields_info($entity_type) {
-  $fields = array();
-
-  $fields['sticky_label'] = array(
-    'title' => t('Sticky label'),
-    'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_core_ds_fields_stick_label',
-  );
-
-  return array('node' => $fields);
-}
-
-/**
- * Custom function for single token replacement in a field.
- */
-function _dt_core_ds_fields_stick_label($field) {
-  if (isset($field['entity']->sticky) && $field['entity']->sticky) {
-    return '<span class="label label--highlight label--meta">' . t('Highlight') . '</span>';
   }
 }
 
