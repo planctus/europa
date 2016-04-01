@@ -11,7 +11,6 @@ function dt_core_enable() {
   drupal_set_message('Digital transformation core is now active on your site.');
 }
 
-
 /**
  * Implements hook_disable().
  */

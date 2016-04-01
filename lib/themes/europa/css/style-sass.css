@@ -6642,8 +6642,7 @@ Styleguide sections.3
 */
 .footer-top {
   overflow: hidden;
-  background: #f2f2f2;
-  margin-bottom: 1px; }
+  background: #f2f2f2; }
   .footer-top .container-fluid, .footer-top .section__group--full-width > *, .footer-top .block--full-width > *, .footer-top .field--full-width > * {
     margin-right: 0;
     margin-left: 0;
@@ -7816,14 +7815,7 @@ Styleguide filters.filters
     padding: 0; }
   .filters__btn-reset--small,
   .filters__btn-collapse {
-    display: none; }
-  html.js .filters__btn-submit {
-    display: none; }
-  html.js.ie8 .filters__btn-submit {
-    display: block; } }
-
-.views-exposed-form .views-exposed-widget {
-  padding: 0; }
+    display: none; } }
 
 /*
 Footer
@@ -10996,8 +10988,16 @@ Markup: html/facet-tag.html
 
 Styleguide tags.facettag
 */
+@media (min-width: 480px) {
+  .facet-tag {
+    width: auto;
+    display: inline-block; } }
+
 .facet-tag__label {
   float: left; }
+
+.facet-tag__value {
+  text-transform: none; }
 
 /*
 Facet tag with close
