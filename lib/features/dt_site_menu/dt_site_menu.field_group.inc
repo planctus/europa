@@ -89,7 +89,7 @@ function dt_site_menu_field_group_info() {
       'label' => 'Classes',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'col-md-8',
+        'classes' => 'col-sm-8',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -120,7 +120,7 @@ function dt_site_menu_field_group_info() {
       'label' => 'Links',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'col-md-4',
+        'classes' => 'col-sm-4',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
