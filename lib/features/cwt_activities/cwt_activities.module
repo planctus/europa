@@ -125,8 +125,11 @@ function cwt_activities_views_pre_render(&$view) {
  * Alters the PDF filename.
  */
 function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
-  $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
-  $pdf_filename = transliteration_clean_filename($filename);
+  if (strpos($path, 'print-agenda') !== FALSE) {
+    $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
+    $pdf_filename = transliteration_clean_filename($filename);
+  }
+
 }
 
 /**
@@ -174,10 +177,11 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
       $editorial_section_list = NULL;
       // Loop over the list.
       foreach ($editorial_sections as $editorial_section) {
-        $editorial_section_list .= $editorial_section->name;
+        $editorial_section_list .= $editorial_section->name . ', ';
       }
+
       // Return the data.
-      return t('With: %person_name', array('%person_name' => $editorial_section_list));
+      return t('With: %person_name', array('%person_name' => rtrim($editorial_section_list, ', ')));
     }
   }
 }
