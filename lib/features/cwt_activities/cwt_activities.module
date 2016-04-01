@@ -22,7 +22,7 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Agenda exposed filter.
-  if ($form['#id'] == 'views-exposed-form-agenda-list' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list')) && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter_min']['value']['#attributes']['placeholder'] = t('Choose a date');
