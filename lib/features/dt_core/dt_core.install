@@ -11,7 +11,6 @@ function dt_core_enable() {
   drupal_set_message('Digital transformation core is now active on your site.');
 }
 
-
 /**
  * Implements hook_disable().
  */
@@ -94,14 +93,12 @@ function dt_core_update_7104() {
   variable_set('cce_basic_config_admin_pages', array());
 }
 
-
 /**
  * Enabling adressfield and inline_entity_form.
  */
 function dt_core_update_7105() {
   module_enable(array('addressfield', 'inline_entity_form'));
 }
-
 
 /**
  * Enabling DT contact feature containing contact content type.

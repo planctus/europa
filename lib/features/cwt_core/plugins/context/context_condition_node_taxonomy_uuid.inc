@@ -10,6 +10,7 @@
  * @ingroup context_condition
  */
 class context_condition_node_taxonomy_uuid extends context_condition_node {
+
   /**
    * {@inheritdoc}
    */

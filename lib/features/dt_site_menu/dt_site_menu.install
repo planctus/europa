@@ -148,3 +148,17 @@ function dt_site_menu_update_7101() {
     _dt_site_menu_delete_fields();
   }
 }
+
+/**
+ * DTTSB-68 Migration for the field_site_menu_links.
+ */
+function dt_site_menu_update_7102(&$sandbox) {
+  _dt_core_enable_entity_translation('field_site_menu_links', $sandbox);
+}
+
+/**
+ * DTTSB-68 Migration for the field_site_menu_topic_link.
+ */
+function dt_site_menu_update_7103(&$sandbox) {
+  _dt_core_enable_entity_translation('field_site_menu_topic_link', $sandbox);
+}

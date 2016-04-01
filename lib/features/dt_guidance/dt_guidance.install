@@ -101,7 +101,6 @@ function dt_guidance_update_7101($sandbox) {
   }
 }
 
-
 /**
  * Helper function for migration on guidance.
  *
