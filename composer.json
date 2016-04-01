@@ -7,6 +7,7 @@
     "drupal/drupal-driver": "dev-master",
     "drupal/drupal-extension": "dev-master",
     "drupal/phing-drush-task": "1.0",
+    "drupal/registry_rebuild" : "7.2.3",
     "drush/drush": "8.0.*@beta",
     "ext-json": "*",
     "ext-phar": "*",
@@ -72,6 +73,10 @@
           "reference": "master"
         }
       }
+    },
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
     }
   ],
   "scripts": {
