@@ -91,19 +91,19 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
-  if ($view->name == 'agenda' && ($view->current_display == 'list' || $view->current_display == 'print_list')) {
+  if ($view->name == 'agenda') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {
       $header_content = $view->header['area_text_custom']->options['content'];
       if (FALSE !== strpos($header_content, CWT_ACTIVITIES_PRINT_PDF_TOKEN)) {
         $full_query_parameters = drupal_get_query_parameters(NULL, []);
-        $base_path = 'print-' . $full_query_parameters['q'];
+        $print_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
         $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
         $pdf_link_suffix = '</span>';
 
-        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $base_path, ['query' => $full_query_parameters, 'html' => TRUE]);
+        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/' . CWT_ACTIVITIES_PRINT_PDF_PATH . '/' . $print_path, ['query' => $full_query_parameters, 'html' => TRUE, 'attributes' => ['rel' => 'nofollow']]);
 
         $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
