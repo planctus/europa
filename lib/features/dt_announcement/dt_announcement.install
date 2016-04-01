@@ -112,6 +112,7 @@ function dt_announcement_update_7105() {
 function dt_announcement_update_7106() {
   features_revert_module('dt_announcement');
 }
+
 /**
  * NEXTEUROPA-5256: Making policy reference multivalue.
  */

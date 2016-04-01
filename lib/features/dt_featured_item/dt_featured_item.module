@@ -7,30 +7,10 @@
 include_once 'dt_featured_item.features.inc';
 
 /**
- * Implements hook_node_view().
+ * Implements hook_nexteuropa_legacy_link_alter().
  */
-function dt_featured_item_entity_load($entities, $type) {
-  _dt_featured_item_load_entities($entities, $type);
-}
-
-/**
- * Implements hook_entitycache_ENTITY_TYPE_load().
- */
-function dt_featured_item_entitycache_node_load($entities) {
-  _dt_featured_item_load_entities($entities, 'node');
-}
-
-/**
- * Alter legacy link on entity load.
- */
-function _dt_featured_item_load_entities($entities, $type) {
-  if ($type == 'node') {
-    foreach ($entities as &$node) {
-      // If the featured item has an entity reference set, override the
-      // legacy link value with a link to the target.
-      if ($node->type == 'featured_item' && isset($node->field_feat_item_reference[LANGUAGE_NONE][0]['target_id'])) {
-        $node->legacy = url('node/' . $node->field_feat_item_reference[LANGUAGE_NONE][0]['target_id']);
-      }
-    }
+function dt_featured_item_nexteuropa_legacy_link_alter(&$legacy_link_url, $entity, $langcode) {
+  if ($entity->type == 'featured_item' && isset($entity->field_feat_item_reference[LANGUAGE_NONE][0]['target_id'])) {
+    $legacy_link_url = url('node/' . $entity->field_feat_item_reference[LANGUAGE_NONE][0]['target_id']);
   }
 }
