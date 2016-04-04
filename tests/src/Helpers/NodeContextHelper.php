@@ -41,7 +41,7 @@ class NodeContextHelper {
       $this->nodeObject = $node;
     }
     else {
-      throw new Exception("Could not initialize node as you are not on a node page.");
+      throw new \Exception("Could not initialize node as you are not on a node page.");
     }
   }
 
