@@ -441,7 +441,6 @@ $ git merge starterkit/master
 Note that you might have to solve merge conflicts, especially if you are already
 using Composer or Phing.
 
-
 ### 3. Create a build.properties file
 
 Create a new file called `build.properties` in the root folder and put
