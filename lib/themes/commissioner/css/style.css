@@ -20,12 +20,23 @@
 .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social {
   display: block;
   float: left;
-  margin-top: 5px; }
+  margin-top: 5px;
+  padding-left: 40px;
+  margin-right: 10px; }
+.group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social:focus {
+  outline-offset: 0; }
 .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
   clear: both;
   display: block;
   padding-top: 10px;
   width: 100%; }
+
+section.block-dt-social-media-sharing,
+section .btn-time-line,
+section #blog,
+section #agenda,
+section #timeline {
+  float: left; }
 
 @media (min-width: 768px) {
   .group-bio-col .group-bio-top-footer .field--collapse-button,
@@ -152,6 +163,9 @@ Styleguide listing.listing--2rows
 
 .node-type-team .section--content-top {
   margin-top: 0; }
+
+.translation_select:focus {
+  padding-right: 50px; }
 
 @media (min-width: 992px) {
   html.js .filters__btn-submit.ctools-use-ajax {
