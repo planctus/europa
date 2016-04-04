@@ -1,9 +1,9 @@
+@api @shared
 Feature: In-page navigation
   In order to see in-page navigation on pages that is needed
   As an editor
   I should be able to hide/show in-page navigation on pages
 
-  @api
   Scenario: Show/hide in-page navigation on Page
     Given "Page" content:
     | title         | field_core_description | field_core_introduction | field_core_in_page_navigation | status |

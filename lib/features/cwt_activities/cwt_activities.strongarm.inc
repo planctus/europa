@@ -89,6 +89,21 @@ function cwt_activities_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'team_cabinet_member' => array(
+        'custom_settings' => FALSE,
+      ),
+      'college' => array(
+        'custom_settings' => FALSE,
+      ),
+      'meta' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -115,12 +130,17 @@ function cwt_activities_strongarm() {
             'weight' => '0',
             'visible' => FALSE,
           ),
+          'print' => array(
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
         ),
         'subscriptions_ui' => array(
           'teaser' => array(
             'weight' => '100',
             'visible' => TRUE,
           ),
+          'print' => NULL,
         ),
       ),
     ),
@@ -178,7 +198,7 @@ function cwt_activities_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_activities';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
     1 => 'revision',
   );
   $export['node_options_activities'] = $strongarm;

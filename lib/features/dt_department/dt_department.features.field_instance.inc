@@ -197,7 +197,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -443,7 +443,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -797,10 +797,9 @@ function dt_department_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 19,
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -942,7 +941,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1363,7 +1362,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1581,7 +1580,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1643,7 +1642,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1715,7 +1714,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 36,
       ),
       'list_view' => array(
         'label' => 'hidden',
@@ -1730,8 +1729,8 @@ function dt_department_field_default_field_instances() {
       ),
       'meta' => array(
         'label' => 'hidden',
-        'settings' => array(),
         'module' => 'nexteuropa_formatters',
+        'settings' => array(),
         'type' => 'listing_title',
         'weight' => 2,
       ),

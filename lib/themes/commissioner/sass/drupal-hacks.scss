@@ -25,6 +25,11 @@
         display: block;
         float: left;
         margin-top: 5px;
+        padding-left: 40px;
+        margin-right: 10px;
+        &:focus{
+          outline-offset: 0;
+        }
       }
     }
 
@@ -35,6 +40,16 @@
       padding-top: 10px;
       width: 100%;
     }
+  }
+}
+
+section {
+  &.block-dt-social-media-sharing,
+  .btn-time-line,
+  #blog,
+  #agenda,
+  #timeline {
+    float: left;
   }
 }
 
@@ -59,7 +74,7 @@
     .group-bio-top-footer {
       position: absolute;
       bottom: 0;
-      overflow: visible; 
+      overflow: visible;
     }
   }
 }
@@ -194,7 +209,7 @@ Styleguide listing.listing--2rows
 
 // Temporary fix.
 #team {
-  .field { 
+  .field {
     margin-bottom: 0.5em;
   }
 }
@@ -206,5 +221,48 @@ Styleguide listing.listing--2rows
 
   .section--content-top {
     margin-top: 0;
+  }
+}
+
+
+// Lang selector is different on CWT and it needs this tweaking.
+.translation_select {
+  &:focus {
+    padding-right: 50px;
+  }
+}
+
+// Workbench form hack
+@include breakpoint(screen-md-min) {
+  html {
+    &.js {
+      .filters__btn-submit.ctools-use-ajax {
+        display: none;
+      }
+
+      &.ie8 {
+        .filters__btn-submit.ctools-use-ajax {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .view-workbench-moderation {
+    .views-exposed-widget {
+      width: 50%;
+      clear: none;
+      &:nth-child(odd) {
+        padding-right: 2%;
+      }
+    }
+    .views-widget-per-page {
+      clear: left;
+    }
+    .filters__btn-submit {
+      width: auto;
+      float: left;
+      clear: left;
+    }
   }
 }

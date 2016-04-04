@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="Custom deployment scripts" default="deliver">
+<project name="Custom deployment scripts" default="ac-deploy">
 
   <property name="acquia.repo.dir" value="acquia-cloud" />
   <property name="acquia.repo.url" value="ecfpfis@svn-3084.devcloud.hosting.acquia.com:ecfpfis.git" />
@@ -9,7 +9,7 @@
   <property name="acquia.branch" value="master" />
   <property name="acquia.docroot" value="${acquia.repo}/docroot" />
 
-  <target name="deliver" description="Deliver code to Acquia repository">
+  <target name="ac-deploy" description="Deliver code to Acquia repository" depends="build-acceptance">
     <if>
       <not>
         <available file="${acquia.repo}" type="dir" />
@@ -64,36 +64,6 @@
     <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
     <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
     <exec dir="${acquia.repo}" command="git push --tags"></exec>
-  </target>
-
-  <target name="ac-deploy" description="Packages and delivers code to AC" depends="build-acceptance, deliver">
-    <echo msg="Wait for 15 seconds to let AC deploy the code before runnig drush commands" />
-    <waitfor maxwaitunit="second" maxwait="15">
-      <!-- Just a dummy condition, we use the timeout functionality of the waitfor task -->
-      <available file="ready"/>
-    </waitfor>
-    <property name="sites" value="ecfpfis.dev,ecfpfis.test,ecfpfis.prod" />
-    <foreach list="${sites}" param="site.alias" target="ac-update-site" delimiter="," />
-
-    <exec dir="${project.basedir}" command="git add ${acquia.repo}"></exec>
-    <exec dir="${project.basedir}" command="git commit -m 'Added Acquia Cloud to develop branch right after deployment.'"></exec>
-    <exec dir="${project.basedir}" command="git push"></exec>
-    <echo msg="Added Acquia Cloud to develop branch right after deployment, you can now use git push to push the changes to the development branch." />
-  </target>
-
-  <target name="ac-update-site">
-    <exec command="${drush.bin} -y @${site.alias} updb" />
-    <echo msg="EXECUTE: drush -y @${site.alias} updb" />
-
-    <property name="revert.command" value="frdt --rp" />
-    <if>
-      <equals arg1="${site.alias}" arg2="ecfpfis.prod" />
-      <then>
-        <property name="revert.command" value="frcwt" />
-      </then>
-    </if>
-    <exec command="${drush.bin} -y @${site.alias} ${revert.command}" />
-    <echo msg="EXECUTE: ${drush.bin} -y @${site.alias} ${revert.command}" />
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="">
@@ -158,7 +128,8 @@
   </target>
 
   <!-- Release to SVN. -->
-  <property name="release" value="${phing.project.tmp.dir}/release-svn" />
+  <property name="release" value="${phing.project.tmp.dir}/release" />
+  <property name="release.svn" value="${phing.project.tmp.dir}/release-svn" />
   <property name="release.make" value="${phing.project.tmp.dir}/release-make" />
   <property name="release.build" value="${phing.project.tmp.dir}/release-build" />
 
@@ -166,56 +137,72 @@
     <!-- Prepare the folders. -->
     <delete dir="${release}" includeemptydirs="true" failonerror="false" />
     <mkdir dir="${release}" />
+    <delete dir="${release.svn}" includeemptydirs="true" failonerror="false" />
+    <mkdir dir="${release.svn}" />
     <delete dir="${release.make}" includeemptydirs="true" failonerror="false" />
     <mkdir dir="${release.make}" />
     <delete dir="${release.build}" includeemptydirs="true" failonerror="false" />
     <mkdir dir="${release.build}" />
 
-    <!-- Assemble the new release. -->
-    <phingcall target="drush-make-no-core">
-        <property name="platform.build.dir" value="${release.make}" />
-        <property name="drush.make.target.file" value="${subsite.make}" />
-    </phingcall>
-    <copy todir="${release.build}" overwrite="true">
-        <fileset dir="${release.make}/sites/all" />
-    </copy>
-    <copy todir="${release.build}/modules/features/custom" overwrite="true">
-        <fileset dir="${subsite.resources.features.dir}" />
-    </copy>
-    <copy todir="${release.build}/modules/custom" overwrite="true">
-        <fileset dir="${subsite.resources.modules.dir}" />
-    </copy>
-    <copy todir="${release.build}/themes" overwrite="true">
-        <fileset dir="${subsite.resources.themes.dir}" />
-    </copy>
+    <!-- Create new release -->
+    <phingcall target="package" />
 
-    <!-- Move it to the SVN  -->
-    <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${release}"></exec>
+    <!-- Checkout the SVN  -->
+    <exec dir="${project.basedir}" command="svn checkout ${phing.project.svn} ${release.svn}"></exec>
     <delete includeemptydirs="true" failonerror="true">
-        <fileset dir="${release}" excludes=".svn/**" defaultexcludes="false" />
+        <fileset dir="${release.svn}" excludes=".svn/**" defaultexcludes="false" />
     </delete>
 
-    <copy todir="${release}" overwrite="false">
-        <fileset dir="${release.build}">
-          <patternset>
-            <exclude name="**/development/**"/>
-            <exclude name="**/node_modules/**"/>
-            <exclude name="**/styleguide/**"/>
-            <exclude name="**/Gruntfile.js"/>
-            <exclude name="**/Watchfile"/>
-            <exclude name="**/package.json"/>
-            <exclude name="**/commissioner_OLD/**"/>
-          </patternset>
-        </fileset>
+    <!--Move files to SVN-->
+    <copy todir="${release.svn}" overwrite="true">
+      <fileset dir="${release}" />
     </copy>
+
     <!-- SVN remove locally deleted files  -->
-    <exec dir="${release}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
+    <exec dir="${release.svn}" command="svn st | grep ^! | awk '{print &quot; --force &quot;$2}' | xargs svn rm"></exec>
     <!-- Add latest code  -->
-     <exec dir="${release}" command="svn add . --force"></exec>
+    <exec dir="${release.svn}" command="svn add . --force"></exec>
 
     <input propertyname="commitmessage">Please provide a commit message:</input>
     <echo msg="${commitmessage}" />
-    <exec dir="${release}" command="svn commit -m '${commitmessage}'"></exec>
+    <exec dir="${release.svn}" command="svn commit -m '${commitmessage}'"></exec>
 
   </target>
+
+  <target name="package" description="Package files for production use (multisite installation, sites folder).">
+
+    <!-- Assemble the new release. -->
+    <phingcall target="drush-make-no-core">
+      <property name="platform.build.dir" value="${release.make}" />
+      <property name="drush.make.target.file" value="${subsite.make}" />
+    </phingcall>
+    <copy todir="${release.build}" overwrite="true">
+      <fileset dir="${release.make}/sites/all" />
+    </copy>
+    <copy todir="${release.build}/modules/features/custom" overwrite="true">
+      <fileset dir="${subsite.resources.features.dir}" />
+    </copy>
+    <copy todir="${release.build}/modules/custom" overwrite="true">
+      <fileset dir="${subsite.resources.modules.dir}" />
+    </copy>
+    <copy todir="${release.build}/themes" overwrite="true">
+      <fileset dir="${subsite.resources.themes.dir}" />
+    </copy>
+
+    <copy todir="${release}" overwrite="false">
+      <fileset dir="${release.build}">
+        <patternset>
+          <exclude name="**/development/**"/>
+          <exclude name="**/node_modules/**"/>
+          <exclude name="**/styleguide/**"/>
+          <exclude name="**/Gruntfile.js"/>
+          <exclude name="**/Watchfile"/>
+          <exclude name="**/package.json"/>
+          <exclude name="**/commissioner_OLD/**"/>
+        </patternset>
+      </fileset>
+    </copy>
+
+  </target>
+
 </project>

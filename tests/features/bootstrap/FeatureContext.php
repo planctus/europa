@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \FeatureContext.
@@ -10,12 +9,19 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Drupal\nexteuropa\Helpers\NodeContextHelper;
 
 /**
  * Contains generic step definitions.
  */
 class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
 
+  /**
+   * List of languages.
+   *
+   * @var array $languageList
+   *   List of available languages.
+   */
   private $languageList;
 
   /**
@@ -26,7 +32,19 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * context constructor through behat.yml.
    */
   public function __construct() {
-    $this->languageList  = reset(language_list('enabled'));
+    $this->languageList = reset(language_list('enabled'));
+  }
+
+  /**
+   * Gets the current node information.
+   *
+   * @return \Drupal\nexteuropa\Helpers\NodeContextHelper
+   *   Instance of the NodeContextHelper.
+   */
+  public function currentNode() {
+    // We should reinitialize this every time as caching this would confuse the
+    // test runner.
+    return new NodeContextHelper($this->getSession());
   }
 
   /**
@@ -51,10 +69,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Goes to translation form.
    *
-   * @When I go to add :target translation from :source
+   * @When I go to add :target translation
    */
-  public function iGoToAddTranslationFrom($target, $source) {
-    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  public function iGoToAddTranslationFrom($target) {
+    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
   }
 
   /**
@@ -64,7 +82,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function iFillWithCharactersOfDummyText($field, $length) {
     $value = $this->getRandom()->name(intval($length));
-    echo $value;
     $this->getSession()->getPage()->fillField($field, $value);
   }
 
@@ -364,6 +381,28 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $target_nid = key($result['node']);
 
     $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
+  }
+
+  /**
+   * Checks that a link goes to a specific target.
+   *
+   * @Then I should see the link :title linking to :target
+   */
+  public function iShouldSeeTheLinkLinkingTo($title, $target) {
+    $element = $this->getSession()->getPage();
+
+    if ($result = $element->findLink($title)) {
+      if ($result->getAttribute('href') !== $target) {
+        $params = [
+          '@title' => $title,
+          '@target' => $target,
+        ];
+        throw new Exception(format_string("Link with title @title found but not linking to @target.", $params));
+      }
+    }
+    else {
+      throw new Exception(format_string("Link with title @title not found.", ['@title' => $title]));
+    }
   }
 
 }

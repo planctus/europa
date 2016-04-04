@@ -78,7 +78,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -104,41 +104,6 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_department_latest|node|department|full';
-  $field_group->group_name = 'group_department_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'department';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Latest',
-    'weight' => '6',
-    'children' => array(
-      0 => 'group_latest_main',
-      1 => 'group_latest_sidebar',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Latest',
-      'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => 'id="latest"',
-        'modifier' => '',
-        'layout' => '',
-        'required_fields' => 1,
-      ),
-      'formatter' => '',
-    ),
-  );
-  $field_groups['group_department_latest|node|department|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_department_leadership|node|department|full';
   $field_group->group_name = 'group_department_leadership';
   $field_group->entity_type = 'node';
@@ -147,11 +112,11 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Leadership and organisation',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_department_organigram',
-      2 => 'field_department_staff_search',
+      0 => 'field_department_organigram',
+      1 => 'field_department_staff_search',
+      2 => 'field_core_persons',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -233,7 +198,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -267,15 +232,15 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Responsibilities',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_core_priorities',
-      1 => 'field_core_topics',
-      2 => 'field_department_intro_sentence',
+      0 => 'field_core_topics',
+      1 => 'field_department_intro_sentence',
+      2 => 'field_department_mission',
       3 => 'field_department_plans_reports',
       4 => 'field_department_tasks_desc',
       5 => 'field_department_work_areas_sent',
-      6 => 'field_department_mission',
+      6 => 'field_core_priorities',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -325,64 +290,6 @@ function dt_department_field_group_info() {
     ),
   );
   $field_groups['group_editorial_settings|node|department|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_latest_main|node|department|full';
-  $field_group->group_name = 'group_latest_main';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'department';
-  $field_group->mode = 'full';
-  $field_group->parent_name = 'group_department_latest';
-  $field_group->data = array(
-    'label' => 'Main',
-    'weight' => '15',
-    'children' => array(
-      0 => 'latest_announcements_block',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Main',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_latest_main|node|department|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_latest_sidebar|node|department|full';
-  $field_group->group_name = 'group_latest_sidebar';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'department';
-  $field_group->mode = 'full';
-  $field_group->parent_name = 'group_department_latest';
-  $field_group->data = array(
-    'label' => 'Sidebar',
-    'weight' => '16',
-    'children' => array(
-      0 => 'field_core_social_network_links',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Sidebar',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group__sidebar',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_latest_sidebar|node|department|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -488,15 +395,12 @@ function dt_department_field_group_info() {
   t('Contact');
   t('Content');
   t('Editorial settings');
-  t('Latest');
   t('Leadership and organisation');
-  t('Main');
   t('Meta');
   t('Profile information');
   t('Related links');
   t('Responsibilities');
   t('Responsibilities, tasks');
-  t('Sidebar');
 
   return $field_groups;
 }

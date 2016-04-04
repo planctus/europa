@@ -36,7 +36,6 @@ function dt_contact_update_7101() {
   ));
 }
 
-
 /**
  * Reverting DT Contact feature to take new fields for sure.
  */
