@@ -225,7 +225,7 @@ function dt_policy_area_field_group_info() {
       'label' => 'Policy',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'sidebar-field-group__main',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
