@@ -85,7 +85,7 @@ function commissioner_preprocess_views_view(&$variables) {
 
     // Checking if .listing exists in classes_array so that result count can be
     // displayed.
-    if ($view->plugin_name == 'nexteuropa_bem_listing') {
+    if ($view->plugin_name == 'nexteuropa_bem_listing' || $view->current_display == 'print_list') {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
