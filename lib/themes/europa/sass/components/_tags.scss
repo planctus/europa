@@ -67,7 +67,6 @@ Styleguide tags.facettag
 
 .facet-tag {
   @extend .tags;
-  @extend .hidden-print;
   @include breakpoint(screen-xs-min) {
     width: auto;
     display: inline-block;
