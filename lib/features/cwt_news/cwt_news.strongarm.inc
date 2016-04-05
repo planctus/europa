@@ -167,7 +167,7 @@ function cwt_news_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '14',
+            'weight' => '21',
             'visible' => FALSE,
           ),
           'meta' => array(

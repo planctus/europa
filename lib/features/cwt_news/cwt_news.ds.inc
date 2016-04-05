@@ -17,16 +17,6 @@ function cwt_news_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'aggregated_news';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'social_media' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-        ),
-      ),
-    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -51,8 +41,14 @@ function cwt_news_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
     'field_aggregated_news_type' => array(
       'formatter_settings' => array(
@@ -64,6 +60,7 @@ function cwt_news_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
         ),
       ),
     ),
@@ -148,22 +145,24 @@ function cwt_news_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_news_meta',
-        1 => 'title',
-        2 => 'field_aggregated_news_type',
+        1 => 'field_aggregated_news_type',
+        2 => 'title',
         4 => 'post_date',
       ),
       'central' => array(
         3 => 'body',
-        5 => 'social_media',
+        5 => 'social_bookmark_webtools',
+        6 => 'group_news_bottom_section',
       ),
     ),
     'fields' => array(
       'group_news_meta' => 'left_header',
-      'title' => 'left_header',
       'field_aggregated_news_type' => 'left_header',
+      'title' => 'left_header',
       'body' => 'central',
       'post_date' => 'left_header',
-      'social_media' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'group_news_bottom_section' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
