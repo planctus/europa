@@ -16,11 +16,11 @@ function dt_core_default_breakpoint_group() {
   $breakpoint_group->machine_name = 'europa';
   $breakpoint_group->name = 'Europa';
   $breakpoint_group->breakpoints = array(
-    0 => 'breakpoints.theme.europa.wide',
-    1 => 'breakpoints.theme.europa.normal',
+    0 => 'breakpoints.theme.europa.mobile',
+    1 => 'breakpoints.theme.europa.narrow',
     2 => 'breakpoints.theme.europa.medium',
-    3 => 'breakpoints.theme.europa.narrow',
-    4 => 'breakpoints.theme.europa.mobile',
+    3 => 'breakpoints.theme.europa.normal',
+    4 => 'breakpoints.theme.europa.wide',
   );
   $breakpoint_group->type = 'theme';
   $breakpoint_group->overridden = 0;

@@ -131,6 +131,7 @@ function dt_policy_views_default_views() {
   /* Display: Policy overview page */
   $handler = $view->new_display('page', 'Policy overview page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Policies';
   $handler->display->display_options['path'] = 'policies';
   $export['policy_overview'] = $view;
 
