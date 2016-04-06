@@ -6,6 +6,11 @@
   width: 100%;
   margin-bottom: 2em; }
 
+@media (min-width: 480px) {
+  .block-nexteuropa-europa-search {
+    width: 100%;
+    padding-left: 0; } }
+
 .group-bio-col .group-bio-top-footer {
   display: block; }
 .group-bio-col .group-bio-top-footer .field--collapse-button {
