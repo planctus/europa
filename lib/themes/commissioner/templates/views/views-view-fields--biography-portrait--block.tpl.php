@@ -29,20 +29,20 @@
 ?>
 
 <?php print $fields['field_biography_portrait']->wrapper_prefix; ?>
-	<?php print $fields['field_biography_portrait']->content; ?>
+    <?php print $fields['field_biography_portrait']->content; ?>
 <?php print $fields['field_biography_portrait']->wrapper_suffix; ?>
 <?php print $fields['field_biography_av_portal']->content; ?>
 
 <div class="modal fade" id="hi-res-picture" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<a href="#" class="close" data-dismiss="modal"><span class="close-text" aria-hidden="true"><?php print t('Close'); ?></span><span aria-hidden="true">&times;</span></a>
-			</div>
-			<div class="modal-body">
-				<?php print $fields['field_biography_portrait_2']->content; ?>
-				<?php print $fields['field_biography_portrait_1']->content; ?>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal"><span class="close-text" aria-hidden="true"><?php print t('Close'); ?></span><span aria-hidden="true">&times;</span></a>
+            </div>
+            <div class="modal-body">
+                <?php print $fields['field_biography_portrait_2']->content; ?>
+                <?php print $fields['field_biography_portrait_1']->content; ?>
+            </div>
+        </div>
+    </div>
 </div>
