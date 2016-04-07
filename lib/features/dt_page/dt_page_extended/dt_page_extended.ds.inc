@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_page.ds.inc
+ * dt_page_extended.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function dt_page_ds_field_settings_info() {
+function dt_page_extended_ds_field_settings_info() {
   $export = array();
 
   $ds_fieldsetting = new stdClass();
@@ -149,7 +149,7 @@ function dt_page_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function dt_page_ds_layout_settings_info() {
+function dt_page_extended_ds_layout_settings_info() {
   $export = array();
 
   $ds_layout = new stdClass();

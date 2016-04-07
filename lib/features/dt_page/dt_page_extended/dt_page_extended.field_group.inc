@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_page.field_group.inc
+ * dt_page_extended.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function dt_page_field_group_info() {
+function dt_page_extended_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_page.features.field_instance.inc
+ * dt_page_extended.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function dt_page_field_default_field_instances() {
+function dt_page_extended_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'comment-comment_node_basic_page-comment_body'.
