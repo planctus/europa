@@ -8,7 +8,7 @@
     "drupal/drupal-driver": "dev-master",
     "drupal/drupal-extension": "dev-master",
     "drupal/phing-drush-task": "1.0",
-    "drupal/drush": "8.6.0",
+    "drush/drush": "8.0.5",
     "ext-json": "*",
     "ext-phar": "*",
     "ext-xml": "*",
@@ -90,7 +90,7 @@
   "extra": {
     "installer-types": ["drupal-drush"],
     "installer-paths": {
-      "vendor/drupal/drush/{$name}/": ["type:drupal-drush"]
+      "vendor/drush/drush/{$name}/": ["type:drupal-drush"]
     }
   }
 }
