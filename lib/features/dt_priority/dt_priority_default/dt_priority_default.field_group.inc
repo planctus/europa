@@ -30,17 +30,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy areas',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => '',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="policy-areas"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_pri_pol_policy_areas|node|priority|full'] = $field_group;
@@ -95,17 +91,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="background"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_background|node|priority|full'] = $field_group;
@@ -247,8 +239,8 @@ function dt_priority_default_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_core_departments',
-      1 => 'field_core_topics',
-      2 => 'field_core_persons',
+      1 => 'field_core_persons',
+      2 => 'field_core_topics',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -279,17 +271,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="documents"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_documents|node|priority|full'] = $field_group;
@@ -477,17 +465,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="related-links"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_related|node|priority|full'] = $field_group;
