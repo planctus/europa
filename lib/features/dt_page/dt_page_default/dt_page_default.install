@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * DT Policy input install file.
+ * DT Page install file.
  */
 
 /**
@@ -21,12 +21,3 @@ function dt_page_default_uninstall() {
   $info = drupal_parse_info_file($path);
   drupal_set_message(t('NextEuropa Page Default %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
-
-/**
- * First hook_update for example.
- */
-/*
-function dt_page_default_update_7101() {
-
-}
- */
