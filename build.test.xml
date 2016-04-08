@@ -50,24 +50,26 @@
             <property name="drupal.modules" value="${development.modules.enable}" />
         </phingcall>
     </target>
-
     <!-- Revert all features to make sure we are using the latest config. -->
     <target name="revert-dt-features">
-        <property name="revert.command" value="frdt --rp" />
+        <echo msg="${revert.command}" />
         <if>
             <equals arg1="${subsite.install.modules}" arg2="cwt_core" />
             <then>
                 <property name="revert.command" value="frcwt" />
             </then>
+            <else>
+                <property name="revert.command" value="frdt --rp" />
+            </else>
         </if>
-
         <drush
             command="${revert.command}"
             assume="yes"
             root="${platform.build.dir}"
             bin="${drush.bin}"
-            verbose="${drush.verbose}">
-        </drush>
+            verbose="${drush.verbose}"
+            haltonerror="false" />
+        <echo msg="Dajeeeeeeee!!!!!!!" />
     </target>
 
     <!-- Enable modules. -->

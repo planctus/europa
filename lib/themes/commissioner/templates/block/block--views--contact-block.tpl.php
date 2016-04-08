@@ -46,15 +46,15 @@
  */
 ?>
 <div class="<?php print $block_html_id; ?>-wrapper block-full-width">
-	<section id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> collapse clearfix"<?php print $attributes; ?>>
+    <section id="<?php print $block_html_id; ?>" class="<?php print $classes; ?> collapse clearfix"<?php print $attributes; ?>>
 
-	  <?php print render($title_prefix); ?>
-	  <?php if ($title): ?>
-	    <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-	  <?php endif;?>
-	  <?php print render($title_suffix); ?>
+      <?php print render($title_prefix); ?>
+      <?php if ($title): ?>
+        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+      <?php endif;?>
+      <?php print render($title_suffix); ?>
 
-	  <?php print $content ?>
+      <?php print $content ?>
 
-	</section>
+    </section>
 </div>
