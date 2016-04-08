@@ -123,3 +123,18 @@ function _dt_announcement_ds_fields_announcement_block($field) {
 
   return drupal_render($render_config);
 }
+
+/**
+ * Implements hook_nexteuropa_inpage_nav_add().
+ *
+ * This hook makes sure that the news block is added to the inpage nav.
+ */
+function dt_announcement_nexteuropa_inpage_nav_add($field, $element) {
+  if ($field['#field_name'] == 'announcement_block') {
+    $bar = field_info_field('announcement_block');
+    return [
+      'ref' => 'test',
+      'label' => 'test',
+    ];
+  }
+}

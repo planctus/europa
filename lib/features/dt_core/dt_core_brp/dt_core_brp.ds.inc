@@ -27,7 +27,7 @@ function dt_core_brp_ds_custom_fields_info() {
     'use_token' => 1,
   );
   $export['content_type_label'] = $ds_field;
-  
+
   return $export;
 }
 
