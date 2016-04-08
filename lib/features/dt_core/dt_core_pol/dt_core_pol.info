@@ -11,7 +11,6 @@ features[ctools][] = context:context:3
 features[context][] = dt_core_pol_sitewide
 features[ctools][] = strongarm:strongarm:1
 features[ds_fields][] = content_type_label
-features[ds_fields][] = in_page_navigation
 features[ds_view_modes][] = meta
 features[ds_view_modes][] = title
 features[features_api][] = api:2
