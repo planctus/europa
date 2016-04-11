@@ -17,6 +17,7 @@ function dt_announcement_theme($existing, $type, $theme, $path) {
       'path' => drupal_get_path('module', 'dt_announcement') . '/templates',
       'variables' => [
         'heading' => '',
+        'heading_id' => '',
         'news_items' => '',
         'social_links' => '',
         'featued_item' => '',
@@ -353,4 +354,25 @@ function _dt_announcement_get_abbreviation($nid) {
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",
     array(':nid' => $nid))->fetchField();
+}
+
+/**
+ * Implements hook_nexteuropa_inpage_nav_add().
+ *
+ * This hook makes sure that the news block is added to the inpage nav.
+ */
+function dt_announcement_nexteuropa_inpage_nav_add($element, $ds_field_settings) {
+  if (isset($element['announcement_block']) && isset($element['announcement_block'][0]['#markup'])) {
+    // Get the anchors from the markup.
+    $anchors = _nexteuropa_inpage_nav_get_anchors_from_markup($element['announcement_block'][0]['#markup']);
+    // We just use the first anchor.
+    return [
+      $element['announcement_block']['#field_name'] => [
+        'weight' => $element['announcement_block']['#weight'],
+        'heading' => is_array($anchors) ? $anchors[0] : [],
+        'children' => '',
+      ],
+    ];
+  }
+  return [];
 }

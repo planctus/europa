@@ -116,25 +116,11 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   $render_config = [
     '#theme' => 'dt_announcement_announcement_block',
     '#heading' => $heading,
+    '#heading_id' => drupal_clean_css_identifier(strtolower($heading)),
     '#news_items' => isset($news_items) ? $news_items : NULL,
     '#social_links' => isset($social_media) && is_array($social_media) ? drupal_render($social_media) : NULL,
     '#featued_item' => isset($featured_item_view) ? drupal_render($featured_item_view) : NULL,
   ];
 
   return drupal_render($render_config);
-}
-
-/**
- * Implements hook_nexteuropa_inpage_nav_add().
- *
- * This hook makes sure that the news block is added to the inpage nav.
- */
-function dt_announcement_nexteuropa_inpage_nav_add($field, $element) {
-  if ($field['#field_name'] == 'announcement_block') {
-    $bar = field_info_field('announcement_block');
-    return [
-      'ref' => 'test',
-      'label' => 'test',
-    ];
-  }
 }
