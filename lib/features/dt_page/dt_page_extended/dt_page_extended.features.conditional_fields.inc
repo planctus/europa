@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * dt_page.features.conditional_fields.inc
+ * dt_page_extended.features.conditional_fields.inc
  */
 
 /**
  * Implements hook_conditional_fields_default_fields().
  */
-function dt_page_conditional_fields_default_fields() {
+function dt_page_extended_conditional_fields_default_fields() {
   $items = array();
 
   $items["node:basic_page:0"] = array(
