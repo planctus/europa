@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Extended feature.
+ */
+
+include_once 'dt_page_extended.features.inc';
