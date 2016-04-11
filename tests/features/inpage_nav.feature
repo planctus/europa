@@ -6,8 +6,8 @@ Feature: In-page navigation
 
   Scenario: Show/hide in-page navigation on Page
     Given "Page" content:
-    | title         | field_core_description | field_core_introduction | field_core_in_page_navigation | status |
-    | Content title | Content description    | Intro                   | Enable                        | 1      |
+      | title         | field_core_description | field_core_introduction | field_core_in_page_navigation | field_core_latest_visibility | status |
+      | Content title | Content description    | Intro                   | Enable                        | Enable                       | 1      |
     And I am logged in as a user with the "editor" role
     And I go to "admin/content"
     And I follow "Content title"
