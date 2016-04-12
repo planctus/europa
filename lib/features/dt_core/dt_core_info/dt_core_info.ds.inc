@@ -28,21 +28,6 @@ function dt_core_info_ds_custom_fields_info() {
   );
   $export['content_type_label'] = $ds_field;
 
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'in_page_navigation';
-  $ds_field->label = 'In-page Navigation';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = '';
-  $ds_field->properties = array(
-    'block' => 'nexteuropa_inpage_nav|inline_navigation',
-    'block_render' => '1',
-  );
-  $export['in_page_navigation'] = $ds_field;
-
   return $export;
 }
 

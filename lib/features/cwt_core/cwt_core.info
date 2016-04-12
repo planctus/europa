@@ -87,7 +87,6 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_fields][] = collapse_button
 features[ds_fields][] = content_type_label
-features[ds_fields][] = in_page_navigation
 features[ds_fields][] = social_media
 features[ds_view_modes][] = meta
 features[ds_view_modes][] = title

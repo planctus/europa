@@ -65,6 +65,11 @@ function dt_publication_ds_field_settings_info() {
       'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Documents',
+        ),
+      ),
     ),
     'publication_collections' => array(
       'weight' => '3',
