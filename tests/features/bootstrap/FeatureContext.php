@@ -405,4 +405,31 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
   }
 
+  /**
+   * Test implementation.
+   *
+   * @Then I should see the following in the repeated :element element within the context of the :parentelement element:
+   */
+  public function assertRepeatedElementContainsText($element, $parentelement, TableNode $table) {
+    // Get our parent element.
+    $parent = $this->getSession()->getPage()->findAll('css', $parentelement);
+
+    // Store all children.
+    $children = $parent[0]->findAll('css', $element);
+
+    // Check all table elements for their position.
+    foreach ($table->getHash() as $n => $repeatedelement) {
+      // If it is not in the correct spot, we show an error.
+      if ($children[$n]->find('css', $element)->getText() !== $repeatedelement['text']) {
+        $variables = [
+          '@position' => $n,
+          '@element' => $element,
+          '@text' => $repeatedelement['text'],
+          '@falsetext' => $children[$n]->find('css', $element)->getText(),
+        ];
+        throw new Exception(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
+      }
+    }
+  }
+
 }
