@@ -41,7 +41,13 @@
         <aws-config region="${aws.region}" profile="${aws.profile}" />
     </target>
 
-    <target name="delete-stack">
+    <target name="delete-deployment-group">
+        <aws-deploy-delete-deployment-group
+                name="${deploy.groupName}"
+                application="${deploy.applicationName}" />
+    </target>
+
+    <target name="delete-stack" depends="delete-deployment-group">
         <aws-cf-deletestack name="${cf.stackName}" />
     </target>
 
@@ -50,18 +56,19 @@
             <equals arg1="single-server" arg2="${cf.template}" />
             <then>
                 <aws-cf-runstack
-                        name="subsite-${cf.stackName}"
+                        name="${deploy.applicationName}-${cf.stackName}"
                         updateOnConflict="true"
                         capabilities="CAPABILITY_IAM"
                         templatePath="./resources/cloudformation/${cf.template}.template">
                     <param name="KeyName" value="${cf.KeyName}" />
+                    <param name="ApplicationName" value="${deploy.applicationName}" />
                     <param name="env" value="${cf.stackName}" />
                 </aws-cf-runstack>
             </then>
             <else>
                 <!-- Todo: This is currently untested. -->
                 <aws-cf-runstack
-                        name="subsite-${cf.stackName}"
+                        name="${deploy.applicationName}-${cf.stackName}"
                         updateOnConflict="true"
                         capabilities="CAPABILITY_IAM"
                         templatePath="./resources/cloudformation/${cf.template}.template">
@@ -86,7 +93,7 @@
                         deploymentConfigName="CodeDeployDefault.OneAtATime"
                         serviceRole="${deploy.serviceRole}"
                         application="${deploy.applicationName}">
-                    <ec2TagFilter key="env" value="${cf.stackName}" />
+                    <ec2TagFilter key="stack" value="${deploy.applicationName}-${cf.stackName}" />
                 </aws-deploy-deployment-group>
             </then>
             <else>

@@ -4,9 +4,11 @@
 
     <!-- Install the subsite. -->
     <target name="install" description="Install the subsite.">
-      <phingcall target="create-settings.php">
-          <property name="purge" value="true" override="true" />
-      </phingcall>
+
+        <phingcall target="create-settings.php">
+            <property name="purge" value="true" override="true" />
+        </phingcall>
+
         <!--
             Ensure the settings folder is writable so the installer can create
             the settings.php file.
@@ -50,6 +52,7 @@
             <property name="drupal.modules" value="${development.modules.enable}" />
         </phingcall>
     </target>
+
     <!-- Revert all features to make sure we are using the latest config. -->
     <target name="revert-dt-features">
         <echo msg="${revert.command}" />
