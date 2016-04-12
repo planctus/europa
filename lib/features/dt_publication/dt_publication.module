@@ -27,99 +27,31 @@ function dt_publication_migrate_api() {
 }
 
 /**
- * Implements hook_field_display_alter().
- */
-function dt_publication_field_display_alter(&$display, $context) {
-  $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
-  if (isset($node_wrapper->field_publication_collection)) {
-    $type = $node_wrapper->field_publication_collection->value();
-    switch ($type) {
-      // Publication.
-      case '0':
-        if ($context['field']['field_name'] == 'field_core_publications') {
-          $display['type'] = 'hidden';
-        }
-        break;
-
-      // Collection.
-      case '1':
-        if ($context['field']['field_name'] == 'field_core_files') {
-          $display['type'] = 'hidden';
-        }
-        break;
-    }
-  }
-}
-
-/**
- * Implements hook_ds_pre_render_alter().
- */
-function dt_publication_ds_pre_render_alter(&$layout_render_array, $context) {
-  if ($context['entity_type'] == 'node' && $context['bundle'] == 'publication' && $context['view_mode'] == 'full') {
-    $node_wrapper = entity_metadata_wrapper($context['entity_type'], $context['entity']);
-    $type = $node_wrapper->field_publication_collection->value();
-
-    // Switch with a vision of possibly more than 1 type in the future.
-    switch ($type) {
-      // Publication.
-      case '0':
-        _dt_publication_unset_ds_field('left_header', 'collection_label', $layout_render_array);
-        _dt_publication_rename_containing_group_label('field_core_files', 'Files', $layout_render_array);
-        break;
-
-      // Collection.
-      case '1':
-        _dt_publication_unset_ds_field('top', 'publication_collections', $layout_render_array);
-        _dt_publication_rename_containing_group_label('collection_documents', 'Documents', $layout_render_array);
-        break;
-    }
-  }
-}
-
-/**
- * Helper to rename a label of a group depending on a contained field.
+ * Implements hook_field_group_pre_render().
  *
- * @param string $field_name
- *   Field machine name to find in DS region groups.
- * @param string $group_label
- *   Desired label to be set on the group containing $field_name.
- * @param array $layout_render_array
- *   The DS layout render array.
+ * Here based on the contents, we change the label of the field group.
  */
-function _dt_publication_rename_containing_group_label($field_name, $group_label, &$layout_render_array) {
-  // Iterates through the DS layout regions.
-  foreach ($layout_render_array as $region => $items) {
-    // And every item in each region.
-    foreach ($items as $key => $item) {
-      // If there is a field group.
-      if (isset($item['#group'])) {
-        $item_group = $item['#group'];
-        // Get the children of this particular group.
-        $children = $item_group->children;
-        if (array_search($field_name, $children)) {
-          // Change the label of the group if target field_name is contained.
-          $item_group->label = $group_label;
-        }
-      }
-    }
-  }
-}
+function dt_publication_field_group_pre_render(&$element, $group, & $form) {
+  if ($group->group_name == 'group_publication_file') {
+    // Load our display suite field settings.
+    $ds_field_settings = ds_get_field_settings($element['#group']->entity_type, $element['#group']->bundle, $element['#group']->mode);
 
-/**
- * Helper to remove a field from a region.
- *
- * @param string $region
- *   Target region from which to remove a field.
- * @param string $field
- *   Target field to remove, field machine name.
- * @param array $layout_render_array
- *   The DS layout render array.
- */
-function _dt_publication_unset_ds_field($region, $field, &$layout_render_array) {
-  foreach ($layout_render_array[$region] as $key => $item) {
-    if (isset($layout_render_array[$region][$key][$field])) {
-      unset($layout_render_array[$region][$key][$field]);
+    // Check which field we have to use.
+    if (is_array($element['collection_documents'])) {
+      $valid_element = 'collection_documents';
+      // Remove the other element from the render.
+      unset($element['field_core_files']);
     }
+    elseif (is_array($element['field_core_files'])) {
+      $valid_element = 'field_core_files';
+      // Remove the other element from the render.
+      unset($element['collection_documents']);
+    }
+
+    // Set the label to the correct element.
+    $element['#group']->label = isset($ds_field_settings[$valid_element]['formatter_settings']['ft']['lb']) ?
+      $ds_field_settings[$valid_element]['formatter_settings']['ft']['lb'] :
+      $element[$valid_element]['#title'];
   }
 }
 
