@@ -230,12 +230,12 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   /**
    * Search a metatag.
    *
-   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
+   * @Then the metatag attribute :metatag should have the value :value
    *
    * @throws \Exception
    *   If it does not match.
    */
-  public function assertMetaRegion($metatag, $value) {
+  public function theMetatagAttributeShouldHaveTheValue($metatag, $value) {
     $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
