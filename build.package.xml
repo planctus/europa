@@ -304,6 +304,12 @@
     />
 
     <target
+        name="build-test-env"
+        description="Build a test environment for CPHP"
+        depends="install-build-dependencies, make-dev, link-dev-resources, install, setup-behat"
+    />
+
+    <target
         name="build-dist"
         description="Build a version of the subsite intended to distribute as a release package."
         depends="install-build-dependencies, delete-dist, make-dist, copy-dist-resources"
