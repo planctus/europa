@@ -81,9 +81,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *
    * @When I go to add :target translation
    */
-  public function iGoToAddTranslationFrom($target, $source) {
-    $this->getSession()->visit($this->getSession()
-        ->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  public function iGoToAddTranslationFrom($target) {
+    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
   }
 
   /**
