@@ -306,7 +306,7 @@
     <target
         name="build-test-env"
         description="Build a test environment for CPHP"
-        depends="install-build-dependencies, make-dev, link-dev-resources, install, setup-behat"
+        depends="install-build-dependencies, make-dev, link-dev-resources"
     />
 
     <target
