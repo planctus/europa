@@ -32,6 +32,8 @@
             features and modules which need to be enabled after installation.
          -->
          <phingcall target="enable-install-modules" />
+        <!-- No mather how installed, the dt features need to be reverted after install -->
+         <phingcall target="revert-dt-features" />
     </target>
 
     <!-- Enable required modules after installation of the profile. -->
@@ -50,7 +52,7 @@
 
     <!-- Revert all features to make sure we are using the latest config. -->
     <target name="revert-dt-features">
-        <echo msg="${revert.command}" />
+        <echo msg="Reverting features." />
         <if>
             <equals arg1="${subsite.install.modules}" arg2="cwt_core" />
             <then>

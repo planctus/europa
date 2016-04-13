@@ -2,16 +2,16 @@
 
 namespace Drupal\nexteuropa\Context;
 
-use Drupal\nexteuropa\Helpers\NodeContextHelper;
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Drupal\nexteuropa\Helpers\FileContextHelper;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Mink\Exception\ExpectationException;
+use Drupal\nexteuropa\Helpers\NodeContextHelper;
+use Drupal\nexteuropa\Helpers\FileContextHelper;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 
 /**
  * Contains digital transformation specific step defenitions.
  */
-class DigitalTransformationContext extends RawDrupalContext implements SnippetAcceptingContext {
+class DigitalTransformationContext extends RawDrupalContext {
 
   /**
    * List of languages.
@@ -69,7 +69,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
     elseif ($arg2 == 'lower' && $native_name === lcfirst($native_name)) {
       return;
     }
-    throw new Exception($native_name . " is not in the correct case.");
+    throw new ExpectationException($native_name . " is not in the correct case.");
   }
 
   /**
@@ -97,7 +97,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
   }
 
   /**
@@ -106,7 +106,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    * @Then print current html
    */
   public function printCurrentHtml() {
-    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
   }
 
   /**
@@ -128,7 +128,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
     if ($this->languageList[$arg1]->weight == $arg2) {
       return;
     }
-    throw new Exception($this->languageList[$arg1]->native . ' has an incorrect weight.');
+    throw new ExpectationException($this->languageList[$arg1]->native . ' has an incorrect weight.');
   }
 
   /**
@@ -139,11 +139,11 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   public function theCheckboxesShouldBeChecked($selector) {
     $checkboxes = $this->getSession()->getPage()->findAll('css', $selector);
     if ($checkboxes === NULL) {
-      throw new Exception('Could not find checkbox input element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find checkbox input element matching the selector: ' . $selector);
     }
     foreach ($checkboxes as $checkbox) {
       if (!$checkbox->isChecked()) {
-        throw new Exception('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be');
+        throw new ExpectationException('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be');
       }
     }
   }
@@ -156,11 +156,11 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   public function theSelectsShouldBeSetTo($selector, $value) {
     $selects = $this->getSession()->getPage()->findAll('css', $selector);
     if ($selects === NULL) {
-      throw new Exception('Could not find select element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find select element matching the selector: ' . $selector);
     }
     foreach ($selects as $select) {
       if ($select->getValue() !== $value) {
-        throw new Exception('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be');
+        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be');
       }
     }
   }
@@ -173,11 +173,11 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   public function theElementShouldContainText($selector) {
     $elements = $this->getSession()->getPage()->findAll('css', $selector);
     if ($elements === NULL) {
-      throw new Exception('Could not find element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find element matching the selector: ' . $selector);
     }
     foreach ($elements as $element) {
       if ($element->getText() == '') {
-        throw new Exception('Element ' . $selector . 'is empty and it should not be');
+        throw new ExpectationException('Element ' . $selector . 'is empty and it should not be');
       }
     }
   }
@@ -190,10 +190,10 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   public function iSeeThatTheFieldHasAttribute($field, $attribute) {
     $field_element = $this->getSession()->getPage()->findField($field);
     if ($field_element === NULL) {
-      throw new Exception('Could not find field: ' . $field);
+      throw new ExpectationException('Could not find field: ' . $field);
     }
     if (!$field_element->hasAttribute($attribute)) {
-      throw new Exception('Field ' . $field_element->getHtml() . ' does not have the attribute: ' . $attribute);
+      throw new ExpectationException('Field ' . $field_element->getHtml() . ' does not have the attribute: ' . $attribute);
     }
   }
 
@@ -205,10 +205,10 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   public function iSeeThatTheFieldHasNoAttribute($field, $attribute) {
     $field_element = $this->getSession()->getPage()->findField($field);
     if ($field_element === NULL) {
-      throw new Exception('Could not find field: ' . $field);
+      throw new ExpectationException('Could not find field: ' . $field);
     }
     if ($field_element->hasAttribute($attribute)) {
-      throw new Exception('Field ' . $field . ' has the attribute: ' . $attribute);
+      throw new ExpectationException('Field ' . $field . ' has the attribute: ' . $attribute);
     }
   }
 
@@ -217,14 +217,14 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    *
    * @Then /^the language metatag should have the value "(?P<value>[^"]*)"$/
    *
-   * @throws \Exception
+   * @throws \ExpectationException
    *   If it does not match.
    */
   public function assertLanguageMetaRegion($value) {
     $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
-      throw new \Exception(sprintf('The content-language metatag does not contain %s', $value));
+      throw new ExpectationException(sprintf('The content-language metatag does not contain %s', $value));
     }
   }
 
@@ -233,14 +233,14 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    *
    * @Then the metatag attribute :metatag should have the value :value
    *
-   * @throws \Exception
+   * @throws ExpectationException
    *   If it does not match.
    */
   public function theMetatagAttributeShouldHaveTheValue($metatag, $value) {
     $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
-      throw new \Exception(sprintf('The ' . $metatag . ' metatag does not contain %s', $value));
+      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value));
     }
   }
 
@@ -264,13 +264,13 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    * @param string $target_title
    *    Title of the referenced node.
    *
-   * @throws \Exception
+   * @throws ExpectationException
    *    If the nodes cannot be found.
    *
    * @Then I fill in the reference :input_id with :target_title
    */
   public function iFillInTheReferenceWith($input_id, $target_title) {
-    $query = new entityFieldQuery();
+    $query = new \entityFieldQuery();
     $result = $query
       ->entityCondition('entity_type', 'node')
       ->propertyCondition('title', $target_title)
@@ -284,7 +284,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
         '@title' => $title,
         '@type' => $type,
       );
-      throw new Exception(format_string("Node @title of @type not found.", $params));
+      throw new ExpectationException(format_string("Node @title of @type not found.", $params));
     }
     $target_nid = key($result['node']);
 
@@ -305,11 +305,11 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
           '@title' => $title,
           '@target' => $target,
         ];
-        throw new Exception(format_string("Link with title @title found but not linking to @target.", $params));
+        throw new ExpectationException(format_string("Link with title @title found but not linking to @target.", $params));
       }
     }
     else {
-      throw new Exception(format_string("Link with title @title not found.", ['@title' => $title]));
+      throw new ExpectationException(format_string("Link with title @title not found.", ['@title' => $title]));
     }
   }
 
@@ -369,7 +369,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
           '@text' => $repeatedelement['text'],
           '@falsetext' => $children[$n]->find('css', $element)->getText(),
         ];
-        throw new Exception(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
+        throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
       }
     }
   }

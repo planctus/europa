@@ -57,7 +57,7 @@
     <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
 
     <!-- Push -->
-    <echo msg="Pushing dpeloyment to acquia." />
+    <echo msg="Pushing deployment to acquia." />
     <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
   </target>
 
