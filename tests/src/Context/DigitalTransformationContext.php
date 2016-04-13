@@ -5,6 +5,7 @@ namespace Drupal\nexteuropa\Context;
 use Drupal\nexteuropa\Helpers\NodeContextHelper;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Drupal\nexteuropa\Helpers\FileContextHelper;
 
 /**
  * Contains digital transformation specific step defenitions.
@@ -20,6 +21,14 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
   private $languageList;
 
   /**
+   * The file context helper.
+   *
+   *   * @var Drupal\nexteuropa\Helpers\FileContextHelper
+   *   The filecontexthelper.
+   */
+  private $fileContextHelper;
+
+  /**
    * Initializes context.
    *
    * Every scenario gets its own context instance.
@@ -28,6 +37,7 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
    */
   public function __construct() {
     $this->languageList = reset(language_list('enabled'));
+    $this->fileContextHelper = new FileContextHelper();
   }
 
   /**
@@ -299,6 +309,40 @@ class DigitalTransformationContext extends RawDrupalContext implements SnippetAc
     }
     else {
       throw new Exception(format_string("Link with title @title not found.", ['@title' => $title]));
+    }
+  }
+
+  /**
+   * Creates a dummy file entity, and inserts it into a field.
+   *
+   * @When I insert dummy image token into the :input_id field
+   */
+  public function iInsertDummyImageTokenIntoTheField($input_id) {
+    // Generate a file.
+    $file = $this->fileContextHelper->generateImageFileEntity();
+
+    // Create a token.
+    $token = $this->fileContextHelper->generateTokenbMarkupFromEntity($file, 'default');
+
+    // Put the token inside an A tag. We cannot use the l() function here as it
+    // sanitizes.
+    $linked_token = '<a href="/" class="inline-media-image-link">' . $token . '</a>';
+
+    // Actually fill in the field with the linked token.
+    $this->getSession()
+      ->getPage()
+      ->find('css', "#$input_id")
+      ->setValue("$linked_token");
+  }
+
+  /**
+   * Cleans up files after every scenario.
+   *
+   * @AfterScenario
+   */
+  public function cleanUpFiles($event) {
+    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
+      file_delete($file, TRUE);
     }
   }
 

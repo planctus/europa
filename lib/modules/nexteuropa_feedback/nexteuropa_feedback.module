@@ -202,6 +202,7 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
     'submit' => 'Send',
     'language' => $form_state['values']['language'],
     'url' => $form_state['values']['url'],
+    'custom_ip_address' => ip_address(),
   );
   $fields_to_send = array(
     'problem' => array('what_were_you_doing', 'what_didnt_work'),
