@@ -309,4 +309,9 @@
         depends="install-build-dependencies, delete-dist, make-dist, copy-dist-resources"
     />
 
+    <target
+        name="build-acceptance"
+        description="Build a version of the subsite intended to distribute as a release package."
+        depends="install-build-dependencies, delete-dist, download-platform, unpack-platform, make-dist, copy-dist-resources, download-development-modules" />
+
 </project>

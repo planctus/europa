@@ -4,11 +4,6 @@
 
     <!-- Install the subsite. -->
     <target name="install" description="Install the subsite.">
-
-        <phingcall target="create-settings.php">
-            <property name="purge" value="true" override="true" />
-        </phingcall>
-
         <!--
             Ensure the settings folder is writable so the installer can create
             the settings.php file.
@@ -72,7 +67,6 @@
             bin="${drush.bin}"
             verbose="${drush.verbose}"
             haltonerror="false" />
-        <echo msg="Dajeeeeeeee!!!!!!!" />
     </target>
 
     <!-- Enable modules. -->
