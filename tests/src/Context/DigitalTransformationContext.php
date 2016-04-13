@@ -6,6 +6,7 @@ use Drupal\nexteuropa\Helpers\NodeContextHelper;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Drupal\nexteuropa\Helpers\FileContextHelper;
+use Behat\Gherkin\Node\TableNode;
 
 /**
  * Contains digital transformation specific step defenitions.
