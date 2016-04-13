@@ -10,6 +10,7 @@ use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Drupal\nexteuropa\Helpers\NodeContextHelper;
+use Drupal\nexteuropa\Helpers\FileContextHelper;
 
 /**
  * Contains generic step definitions.
@@ -25,6 +26,14 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   private $languageList;
 
   /**
+   * The file context helper.
+   *
+   *   * @var Drupal\nexteuropa\Helpers\FileContextHelper
+   *   The filecontexthelper.
+   */
+  private $fileContextHelper;
+
+  /**
    * Initializes context.
    *
    * Every scenario gets its own context instance.
@@ -33,6 +42,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function __construct() {
     $this->languageList = reset(language_list('enabled'));
+    $this->fileContextHelper = new FileContextHelper();
   }
 
   /**
@@ -71,8 +81,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *
    * @When I go to add :target translation
    */
-  public function iGoToAddTranslationFrom($target) {
-    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
+  public function iGoToAddTranslationFrom($target, $source) {
+    $this->getSession()->visit($this->getSession()
+        ->getCurrentUrl() . '/add/' . $source . '/' . $target);
   }
 
   /**
@@ -91,7 +102,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+    throw new \Exception(sprintf("The current page is: %s", $this->getSession()
+      ->getCurrentUrl()));
   }
 
   /**
@@ -100,7 +112,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @Then print current html
    */
   public function printCurrentHtml() {
-    throw new \Exception(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
+    throw new \Exception(sprintf("The current page is: %s", $this->getSession()
+      ->getPage()
+      ->getHtml()));
   }
 
   /**
@@ -313,7 +327,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    *   If it does not match.
    */
   public function assertLanguageMetaRegion($value) {
-    $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', "head > meta[http-equiv=content-language]");
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new \Exception(sprintf('The content-language metatag does not contain %s', $value));
@@ -323,13 +339,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Search a metatag.
    *
-   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value "(?P<value>[^"]*)"$/
+   * @Then /^the metatag attribute "(?P<attribute>[^"]*)" should have the value
+   *   "(?P<value>[^"]*)"$/
    *
    * @throws \Exception
    *   If it does not match.
    */
   public function assertMetaRegion($metatag, $value) {
-    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new \Exception(sprintf('The ' . $metatag . ' metatag does not contain %s', $value));
@@ -380,7 +399,44 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
     $target_nid = key($result['node']);
 
-    $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
+    $this->getSession()
+      ->getPage()
+      ->find('css', "#$input_id")
+      ->setValue("$target_title ($target_nid)");
+  }
+
+  /**
+   * Creates a dummy file entity, and inserts it into a field.
+   *
+   * @When I insert dummy image token into the :input_id field
+   */
+  public function iInsertDummyImageTokenIntoTheField($input_id) {
+    // Generate a file.
+    $file = $this->fileContextHelper->generateImageFileEntity();
+
+    // Create a token.
+    $token = $this->fileContextHelper->generateTokenbMarkupFromEntity($file, 'default');
+
+    // Put the token inside an A tag. We cannot use the l() function here as it
+    // sanitizes.
+    $linked_token = '<a href="/" class="inline-media-image-link">' . $token . '</a>';
+
+    // Actually fill in the field with the linked token.
+    $this->getSession()
+      ->getPage()
+      ->find('css', "#$input_id")
+      ->setValue("$linked_token");
+  }
+
+  /**
+   * Cleans up files after every scenario.
+   *
+   * @AfterScenario
+   */
+  public function cleanUpFiles($event) {
+    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
+      file_delete($file, TRUE);
+    }
   }
 
   /**
