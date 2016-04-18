@@ -1,0 +1,9 @@
+name = Digital Transformation moderation
+description = DT module that holds all moderation specific configuration and code.
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+dependencies[] = workbench_moderation
+features[features_api][] = api:2
+features[workbench_moderation_states][] = request_validation
+features_exclude[dependencies][workbench_moderation] = workbench_moderation
