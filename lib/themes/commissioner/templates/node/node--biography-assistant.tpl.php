@@ -84,7 +84,7 @@
 <?php print render($title_prefix); ?>
 <?php if (!$page): ?>
   <span class="member-details-assistants-name">
-  	<?php
+      <?php
           print '<span class="first-name">' . render($content['field_biography_assistant_fname']['#items'][0]['safe_value']) . '</span>' .
           '<span class="last-name">' . filter_xss($title) . '</span>';
       ?>
