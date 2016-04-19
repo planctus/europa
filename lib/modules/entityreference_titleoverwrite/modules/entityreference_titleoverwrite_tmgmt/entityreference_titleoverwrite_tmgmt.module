@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ * Contains the functions to add entityreference_titleoverwrite TMGMT support.
+ */
+
+/**
+ * Implements hook_tmgmt_field_source_data_alter().
+ */
+function entityreference_titleoverwrite_tmgmt_tmgmt_field_source_data_alter(&$data, $entity_type, $entity, $langcode) {
+  // Fetch all the fields in the entity type.
+  $fields = field_info_instances($entity_type, $entity->type);
+  // Parse the list and add $data for each titleoverwrite field.
+  foreach ($fields as $name => $info) {
+    if ($info['widget']['module'] == 'entityreference') {
+      $full_field = field_info_field($name);
+      if (field_is_translatable($entity_type, $full_field) && _entityreference_titleoverwrite_tmgmt_is_enabled($full_field)) {
+        // Alter the data. But first make sure we have data in there.
+        if (isset($entity->{$name}[$langcode]) && is_array($entity->{$name}[$langcode])) {
+          $data[$name]['#label'] = $info['label'];
+          // For each instance we'll add it.
+          foreach ($entity->{$name}[$langcode] as $delta => $value) {
+            // Check for each delta if a title has been filled in.
+            if (!empty($value['title_override'])) {
+              // Add the data.
+              $data[$name][$delta] = [
+                '#label' => 'Delta #' . $delta,
+                'title_override' => [
+                  '#label' => $info['label'] . ' title override',
+                  '#text' => $value['title_override'],
+                  '#translate' => TRUE,
+                ],
+              ];
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to determine if the field as titleoverwrite enabled.
+ *
+ * @param array $field
+ *   Field array containing the informatin. @see field_info_field.
+ *
+ * @return bool
+ *   True or false.
+ */
+function _entityreference_titleoverwrite_tmgmt_is_enabled($field) {
+  if (
+    isset($field['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status']) &&
+    $field['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status'] == 1
+  ) {
+    return TRUE;
+  }
+  return FALSE;
+}

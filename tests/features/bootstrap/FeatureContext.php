@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \FeatureContext.
@@ -10,6 +9,7 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Drupal\nexteuropa\Helpers\NodeContextHelper;
 use Drupal\nexteuropa\Helpers\FileContextHelper;
 
 /**
@@ -18,14 +18,20 @@ use Drupal\nexteuropa\Helpers\FileContextHelper;
 class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
 
   /**
+   * List of languages.
+   *
+   * @var array $languageList
+   *   List of available languages.
+   */
+  private $languageList;
+
+  /**
    * The file context helper.
    *
    *   * @var Drupal\nexteuropa\Helpers\FileContextHelper
    *   The filecontexthelper.
    */
   private $fileContextHelper;
-
-  private $languageList;
 
   /**
    * Initializes context.
@@ -37,6 +43,18 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   public function __construct() {
     $this->languageList = reset(language_list('enabled'));
     $this->fileContextHelper = new FileContextHelper();
+  }
+
+  /**
+   * Gets the current node information.
+   *
+   * @return \Drupal\nexteuropa\Helpers\NodeContextHelper
+   *   Instance of the NodeContextHelper.
+   */
+  public function currentNode() {
+    // We should reinitialize this every time as caching this would confuse the
+    // test runner.
+    return new NodeContextHelper($this->getSession());
   }
 
   /**
@@ -61,11 +79,10 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Goes to translation form.
    *
-   * @When I go to add :target translation from :source
+   * @When I go to add :target translation
    */
-  public function iGoToAddTranslationFrom($target, $source) {
-    $this->getSession()->visit($this->getSession()
-        ->getCurrentUrl() . '/add/' . $source . '/' . $target);
+  public function iGoToAddTranslationFrom($target) {
+    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
   }
 
   /**
@@ -75,7 +92,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function iFillWithCharactersOfDummyText($field, $length) {
     $value = $this->getRandom()->name(intval($length));
-    echo $value;
     $this->getSession()->getPage()->fillField($field, $value);
   }
 
@@ -419,6 +435,55 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   public function cleanUpFiles($event) {
     foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
       file_delete($file, TRUE);
+    }
+  }
+
+  /**
+   * Checks that a link goes to a specific target.
+   *
+   * @Then I should see the link :title linking to :target
+   */
+  public function iShouldSeeTheLinkLinkingTo($title, $target) {
+    $element = $this->getSession()->getPage();
+
+    if ($result = $element->findLink($title)) {
+      if ($result->getAttribute('href') !== $target) {
+        $params = [
+          '@title' => $title,
+          '@target' => $target,
+        ];
+        throw new Exception(format_string("Link with title @title found but not linking to @target.", $params));
+      }
+    }
+    else {
+      throw new Exception(format_string("Link with title @title not found.", ['@title' => $title]));
+    }
+  }
+
+  /**
+   * Test implementation.
+   *
+   * @Then I should see the following in the repeated :element element within the context of the :parentelement element:
+   */
+  public function assertRepeatedElementContainsText($element, $parentelement, TableNode $table) {
+    // Get our parent element.
+    $parent = $this->getSession()->getPage()->findAll('css', $parentelement);
+
+    // Store all children.
+    $children = $parent[0]->findAll('css', $element);
+
+    // Check all table elements for their position.
+    foreach ($table->getHash() as $n => $repeatedelement) {
+      // If it is not in the correct spot, we show an error.
+      if ($children[$n]->find('css', $element)->getText() !== $repeatedelement['text']) {
+        $variables = [
+          '@position' => $n,
+          '@element' => $element,
+          '@text' => $repeatedelement['text'],
+          '@falsetext' => $children[$n]->find('css', $element)->getText(),
+        ];
+        throw new Exception(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
+      }
     }
   }
 

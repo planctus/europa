@@ -11,7 +11,7 @@ function dt_core_metatag_export_default() {
   $config = array();
 
   // Exported Metatag config instance: node.
-  $config['node'] = (array) array(
+  $config['node'] = array(
     'instance' => 'node',
     'config' => array(
       'title' => array(

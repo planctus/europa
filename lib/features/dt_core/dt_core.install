@@ -5,6 +5,20 @@
  */
 
 /**
+ * Implements hook_enable().
+ */
+function dt_core_enable() {
+  drupal_set_message('Digital transformation core is now active on your site.');
+}
+
+/**
+ * Implements hook_disable().
+ */
+function dt_core_disable() {
+  drupal_set_message('Digital transformation core is now disabled on your site.');
+}
+
+/**
  * Implements hook_install().
  */
 function dt_core_install() {
@@ -19,7 +33,7 @@ function dt_core_install() {
   variable_set('cce_basic_config_admin_pages', array());
 
   // Applying a default set of buttons to the Full HTML profile.
-  dt_apply_wysiwyg_buttons();
+  _dt_apply_wysiwyg_buttons();
 
   if (module_exists('dashboard')) {
     module_disable(array('dashboard'));
@@ -43,9 +57,6 @@ function dt_core_uninstall() {
   $contexts = variable_get('context_status', array());
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
-  $path = drupal_get_path('module', 'dt_core') . '/dt_core.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
 }
 
 /**
@@ -287,7 +298,7 @@ function dt_core_update_7121() {
 function dt_core_update_7122() {
   $profile = 'dt_editor';
   // Applying a default set of buttons to the Full HTML profile.
-  dt_apply_wysiwyg_buttons();
+  _dt_apply_wysiwyg_buttons();
 
   // Remove dt_editor from the wysiwyg profile.
   if (wysiwyg_profile_load($profile)) {
@@ -868,4 +879,31 @@ function dt_core_update_7164() {
   module_enable(array('nexteuropa_metatags'));
   // Somehow it needs to be reverted.
   features_revert_module('nexteuropa_metatags');
+}
+
+/**
+ * NEXTEUROPA-9319 - The featured image is not appearing correctly.
+ */
+function dt_core_update_7165() {
+  features_revert_module('dt_core');
+  $image_styles = array(
+    'header_image_breakpoints_theme_europa_medium_2x',
+    'header_image_breakpoints_theme_europa_mobile_2x',
+    'header_image_breakpoints_theme_europa_narrow_2x',
+    'header_image_breakpoints_theme_europa_normal_2x',
+    'header_image_breakpoints_theme_europa_wide_2x',
+    'highlight_image_breakpoints_theme_europa_medium_2x',
+    'highlight_image_breakpoints_theme_europa_mobile_2x',
+    'highlight_image_breakpoints_theme_europa_narrow_2x',
+    'highlight_image_breakpoints_theme_europa_normal_2x',
+    'highlight_image_breakpoints_theme_europa_wide_2x',
+    'teaser_image_breakpoints_theme_europa_medium_2x',
+    'teaser_image_breakpoints_theme_europa_mobile_2x',
+    'teaser_image_breakpoints_theme_europa_narrow_2x',
+    'teaser_image_breakpoints_theme_europa_normal_2x',
+    'teaser_image_breakpoints_theme_europa_wide_2x',
+  );
+  foreach ($image_styles as $item) {
+    image_style_flush(array('name' => $item));
+  }
 }

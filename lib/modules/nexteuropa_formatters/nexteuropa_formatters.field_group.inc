@@ -108,34 +108,39 @@ function nexteuropa_formatters_field_group_format_settings($group) {
         '#title' => t('Show label'),
         '#type' => 'select',
         '#options' => array(0 => t('No'), 1 => t('Yes')),
-        '#default_value' => isset($group->format_settings['instance_settings']['show_label']) ? $group->format_settings['instance_settings']['show_label'] : $formatter['instance_settings']['show_label'],
+        '#default_value' => isset($group->format_settings['instance_settings']['show_label']) ? $group->format_settings['instance_settings']['show_label'] : '',
         '#weight' => 1,
       );
+
       $form['instance_settings']['label_element'] = array(
         '#title' => t('Label element'),
         '#type' => 'textfield',
-        '#default_value' => isset($group->format_settings['instance_settings']['label_element']) ? $group->format_settings['instance_settings']['label_element'] : $formatter['instance_settings']['label_element'],
+        '#default_value' => isset($group->format_settings['instance_settings']['label_element']) ? $group->format_settings['instance_settings']['label_element'] : '',
         '#weight' => 2,
       );
+
       $form['instance_settings']['attributes'] = array(
         '#title' => t('Attributes'),
         '#type' => 'textfield',
-        '#default_value' => isset($group->format_settings['instance_settings']['attributes']) ? $group->format_settings['instance_settings']['attributes'] : $formatter['instance_settings']['attributes'],
+        '#default_value' => isset($group->format_settings['instance_settings']['attributes']) ? $group->format_settings['instance_settings']['attributes'] : '',
         '#description' => t('E.g. name="anchor"'),
         '#weight' => 3,
       );
+
       $form['instance_settings']['modifier'] = array(
         '#title' => t('Modifiers'),
         '#type' => 'select',
         '#options' => array(
           '' => t('None'),
           'section__group--full-width' => t('Full width'),
+          'section__group--no-margin' => t('No margins'),
           'section__group--highlight-grey' => t('Highlight Grey'),
           'section__group--highlight-yellow' => t('Highlight Yellow'),
         ),
         '#default_value' => isset($group->format_settings['instance_settings']['modifier']) ? $group->format_settings['instance_settings']['modifier'] : '',
         '#weight' => 4,
       );
+
       $form['instance_settings']['layout'] = array(
         '#title' => t('Extra Layout'),
         '#type' => 'select',
@@ -229,7 +234,8 @@ function nexteuropa_formatters_field_group_pre_render(&$element, $group, &$form)
       if ($show_label) {
         // @todo: Change approach when ready: https://www.drupal.org/node/1175102.
         // @codingStandardsIgnoreStart
-        $translatable_label = check_plain(t($group->label, array(), array('langcode' => $group->label_language)));
+        $langcode = isset($group->label_language) ?  $group->label_language : language_default('language');
+        $translatable_label = check_plain(t($group->label, array(), array('langcode' => $langcode)));
         // @codingStandardsIgnoreEnd
         $label = '<' . $label_element . '><span>' . $translatable_label . '</span></' . $label_element . '>';
       }

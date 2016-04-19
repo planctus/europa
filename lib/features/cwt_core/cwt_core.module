@@ -365,7 +365,9 @@ function cwt_core_url_inbound_alter(&$path, $original_path, $path_language) {
   if (!isset($original_path_cached['original_path'])) {
     $original_path_cached['original_path'] = $original_path;
   }
-  if (preg_match($pattern, $path, $matches) && preg_match('/^(?!(admin\/|node\/).*)/', $path)) {
+  // Does not modify the views url for admin, node and printer-friendly module
+  // paths.
+  if (preg_match($pattern, $path, $matches) && preg_match('/^(?!(admin\/|node\/|print\/|printpdf\/|printepub\/|printmail\/).*)/', $path)) {
     // Try to resolve it to normal path.
     $internal = drupal_get_normal_path($matches[1]);
     if ($internal !== $matches[1] && preg_match('/^node\/([0-9].*)/', $internal, $nid)) {
@@ -974,7 +976,7 @@ function _cwt_core_custom_page_title($page_variables) {
     );
   }
   // Agenda.
-  elseif (arg(0) == 'agenda') {
+  elseif (in_array(arg(0), array('agenda', 'print-agenda'))) {
     $variables['line_2'] = t('Agenda');
     $variables['line_3'] = t('Appointments and meetings');
   }

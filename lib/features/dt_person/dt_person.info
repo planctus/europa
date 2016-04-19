@@ -96,5 +96,7 @@ features_exclude[dependencies][picture] = picture
 features_exclude[dependencies][text] = text
 features_exclude[field_base][title_field] = title_field
 features_exclude[field_base][field_person_existing_profile] = field_person_existing_profile
+features_exclude[field_base][group_content_access] = group_content_access
+features_exclude[field_base][og_group_ref] = og_group_ref
 features_exclude[field_instance][node-person-field_person_existing_profile] = node-person-field_person_existing_profile
 files[] = migrations/dt_person.migrations.person_roles.inc

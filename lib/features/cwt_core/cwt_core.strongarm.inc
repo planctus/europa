@@ -13,27 +13,6 @@ function cwt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_language_negotiation';
-  $strongarm->value = 'current';
-  $export['nexteuropa_europa_search_language_negotiation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_query_source';
-  $strongarm->value = '';
-  $export['nexteuropa_europa_search_query_source'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_url';
-  $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do?&queryText=business&query_source=BETA&summary=summary&swlang=en';
-  $export['nexteuropa_europa_search_url'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'chosen_disable_search';
   $strongarm->value = 0;
   $export['chosen_disable_search'] = $strongarm;
@@ -370,6 +349,20 @@ function cwt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'dt_social_media_sharing_block_type';
+  $strongarm->value = 'horizontal';
+  $export['dt_social_media_sharing_block_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_social_media_sharing_text';
+  $strongarm->value = '<span class="social-media-links__label">Share this page:</span>';
+  $export['dt_social_media_sharing_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-excluded_paths';
   $strongarm->value = array(
     'search' => 'search',
@@ -378,6 +371,13 @@ function cwt_core_strongarm() {
     'customerror' => 'customerror',
   );
   $export['easy_breadcrumb-excluded_paths'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 0;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -905,6 +905,27 @@ function cwt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_language_negotiation';
+  $strongarm->value = 'current';
+  $export['nexteuropa_europa_search_language_negotiation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_query_source';
+  $strongarm->value = '';
+  $export['nexteuropa_europa_search_query_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_url';
+  $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do?&queryText=business&query_source=BETA&summary=summary&swlang=en';
+  $export['nexteuropa_europa_search_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_biography';
   $strongarm->value = array(
     0 => 'moderation',
@@ -1047,6 +1068,41 @@ function cwt_core_strongarm() {
     ),
   );
   $export['piwik_custom_var'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_footer_options';
+  $strongarm->value = '0';
+  $export['print_footer_options'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_keep_theme_css';
+  $strongarm->value = 1;
+  $export['print_keep_theme_css'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_logo_options';
+  $strongarm->value = '2';
+  $export['print_logo_options'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_pdf_sys_link_pages';
+  $strongarm->value = 'agenda*';
+  $export['print_pdf_sys_link_pages'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_sourceurl_enabled';
+  $strongarm->value = 0;
+  $export['print_sourceurl_enabled'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1286,27 +1342,6 @@ function cwt_core_strongarm() {
     'aggregated_item_types' => 0,
   );
   $export['workbench_access_taxonomy'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'dt_social_media_sharing_block_type';
-  $strongarm->value = 'horizontal';
-  $export['dt_social_media_sharing_block_type'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'dt_social_media_sharing_text';
-  $strongarm->value = '<span class="social-media-links__label">Share this page:</span>';
-  $export['dt_social_media_sharing_text'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'easy_breadcrumb-include_home_segment';
-  $strongarm->value = 0;
-  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   return $export;
 }

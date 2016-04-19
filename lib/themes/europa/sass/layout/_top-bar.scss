@@ -1,23 +1,18 @@
 .top-bar {
-  padding: 15px 0 10px 0;
+  padding: 15px 0 0 0;
   overflow: hidden;
   width: 100%;
 }
 
-@include breakpoint(screen-xs-min) {
-  .block-nexteuropa-europa-search,
-  .site-menu__toggle {
-    float: left;
-  }
+.site-menu__toggle {
+  float: right;
+  width: 25%;
+  padding-left: 15px;
+}
 
-  .block-nexteuropa-europa-search {
-    width: 75%;
-  }
-
-  .site-menu__toggle {
-    width: 25%;
-    padding-left: 15px;
-  }
+.block-nexteuropa-europa-search {
+  float: left;
+  width: 75%;
 }
 
 @include breakpoint(screen-md-min) {
@@ -25,6 +20,7 @@
     width: auto;
     float: right;
     position: relative;
+    padding-bottom: 10px;
     top: 6px;
 
     & > .region {
@@ -34,12 +30,19 @@
 
     .block-nexteuropa-europa-search {
       width: auto;
-      padding-left: 15px;
+      margin-left: 15px;
+
+      .search-form .search-form__textfield-wrapper {
+        width: 240px;
+      }
     }
 
     .site-menu__toggle {
-      position: static;
       width: auto;
+
+      .btn {
+        margin-bottom: auto;
+      }
     }
   }
 }

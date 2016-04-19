@@ -10,7 +10,8 @@
 function dt_policy_implementation_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy_implementation-field_core_legacy_link'.
+  // Exported field_instance:
+  // 'node-policy_implementation-field_core_legacy_link'.
   $field_instances['node-policy_implementation-field_core_legacy_link'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -37,6 +38,7 @@ function dt_policy_implementation_field_default_field_instances() {
     'label' => 'Legacy link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -51,6 +53,7 @@ function dt_policy_implementation_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -95,6 +98,7 @@ function dt_policy_implementation_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -109,6 +113,7 @@ function dt_policy_implementation_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -126,7 +131,8 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_introduction'.
+  // Exported field_instance:
+  // 'node-policy_implementation-field_policy_imp_introduction'.
   $field_instances['node-policy_implementation-field_policy_imp_introduction'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -193,7 +199,8 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_status'.
+  // Exported field_instance:
+  // 'node-policy_implementation-field_policy_imp_status'.
   $field_instances['node-policy_implementation-field_policy_imp_status'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => array(
@@ -239,7 +246,8 @@ function dt_policy_implementation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy_implementation-field_policy_imp_type'.
+  // Exported field_instance:
+  // 'node-policy_implementation-field_policy_imp_type'.
   $field_instances['node-policy_implementation-field_policy_imp_type'] = array(
     'bundle' => 'policy_implementation',
     'default_value' => NULL,
@@ -415,9 +423,9 @@ function dt_policy_implementation_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'listing_title',
         'weight' => 1,
       ),
     ),
@@ -452,7 +460,7 @@ function dt_policy_implementation_field_default_field_instances() {
   t('Introduction');
   t('Legacy link');
   t('Link');
-  t("Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page's URL.");
+  t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Status');
   t('Title');
 

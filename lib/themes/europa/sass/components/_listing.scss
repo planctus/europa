@@ -75,21 +75,6 @@ Styleguide listing.1
   }
 }
 
-// .listing--frontpage modifier.
-.listing--frontpage {
-  p {
-    // 1.375em = 22 px on a 16px base (p)
-    line-height: 1.375em;
-  }
-  .listing__title {
-    margin-top: 0!important;
-  }
-  .listing__item {
-    padding-top: 1.15em;
-    padding-bottom: 1.389em;
-    margin-top: 0!important;
-  }
-}
 /*
 Listing title
 
@@ -136,6 +121,7 @@ ul.listing--title {
   a .listing__title {
     display: block;
     padding-right: 2em;
+    text-decoration: none;
   }
 
   a.listing__title {
@@ -147,9 +133,17 @@ ul.listing--title {
 
 .listing--title {
   .listing__title {
-    &:hover {
+    &:hover,
+    &:focus {
       text-decoration: underline !important;
+      color: $grey-base;
     }
+  }
+}
+
+.listing--frontpage {
+  p {
+    line-height: 1.375em;
   }
 }
 
@@ -217,14 +211,24 @@ Styleguide listing.5
     font-size: $font-size-tiny;
     margin-top: 1em;
   }
+
+  div.addressfield-container-inline {
+    float: left;
+
+    // override on the address module css rules */
+    &:after {
+      content: ", ";
+      display: inline;
+      height: auto;
+      clear: none;
+      visibility: visible;
+      white-space: pre;
+    }
+  }
 }
 
 // .listing--person modifier.
 .listing--person {
-  .listing__item-link {
-    padding-bottom: 1em;
-    padding-top: 1em;
-  }
 
   .listing__title + * {
     line-height: 1.3;
@@ -273,6 +277,12 @@ Styleguide listing.3
   }
 }
 
+@include breakpoint(screen-xs-min) {
+  .listing--line-left p {
+    font-size: $font-size-medium;
+  }
+}
+
 // .listing--nostripe modifier.
 .listing--nostripe {
   padding: 30px;
@@ -301,6 +311,13 @@ Styleguide listing.3
   .listing__item-link {
     padding: $font-size-mid;
     background-color: $brand-primary;
+    &:hover,
+    &:active,
+    &:focus {
+      .listing__title {
+        color: #ffffff;
+      }
+    }
   }
 
   .listing__item {
@@ -310,15 +327,6 @@ Styleguide listing.3
     a {
       color: #ffffff;
     }
-
-    &:hover,
-    &:active,
-    &:focus {
-      .listing__title {
-        color: #ffffff;
-      }
-    }
-
     &:first-child {
       border-top: none;
     }
@@ -369,7 +377,6 @@ a.listing__title {
 }
 
 // .listing__column-main element.
-
 .listing__column-main {
   .listing__with {
     margin-top: 0px;
@@ -394,8 +401,9 @@ a.listing__title {
   list-style: none;
   list-style-image: none;
   padding: 1.22em 0 1.11em;
-  overflow: hidden;
   max-width: 32em;
+  width: 100%;
+  float: left;
 
   &:first-child {
     border-top: 1px solid $grey-lighter;
@@ -407,7 +415,6 @@ a.listing__title {
     a .listing__title,
     a.listing__title {
       text-decoration: underline;
-      color: $grey-base;
     }
   }
 
@@ -423,13 +430,16 @@ a.listing__title {
 // .listing__item-link element
 .listing__item-link {
   display: block;
-  overflow: hidden;
+  float: left;
+  width: 100%;
   color: $grey-base;
-
-  &:hover,
   &:active,
   &:focus {
     text-decoration: none;
+    .listing__title{
+      text-decoration: underline;
+      color: $grey-base;
+    }
   }
 
   &#{"[" + $external_link_pattern + "]"}:not(.is-internal) {
@@ -515,7 +525,8 @@ a.listing__title {
   position: relative;
   @extend .h3;
 
-  a & {
+  a:link &,
+  a:visited &{
     color: $brand-primary;
   }
 
@@ -542,6 +553,7 @@ a.listing__title {
   text-align: right;
   font-weight: $font-weight-bold;
   display: block;
+  float: right;
   text-transform: uppercase;
   font-size: $font-size-tiny;
 
@@ -636,6 +648,10 @@ Styleguide listing.2.4
   .listing {
     @extend .col-md-8;
   }
+
+  .listing__item {
+    max-width: none;
+  }
 }
 
 .listing__wrapper--three-columns,
@@ -701,4 +717,3 @@ Styleguide listing.2.4
     }
   }
 }
-

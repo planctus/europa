@@ -104,6 +104,7 @@ function dt_class_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'two_columns',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'title',
@@ -334,6 +335,7 @@ function dt_class_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'two_columns',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'title',
@@ -397,6 +399,7 @@ function dt_class_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'view_mode' => 'teaser',
+          'use_content_language' => 1,
         ),
         'type' => 'entity_reference_section',
         'weight' => 2,
@@ -595,9 +598,9 @@ function dt_class_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'listing_title',
         'weight' => 0,
       ),
       'title' => array(

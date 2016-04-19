@@ -28,7 +28,7 @@ function dt_core_info_install() {
     'dt_topic',
     'dt_toplink',
     'nexteuropa_file',
-    'dt_page',
+    'dt_page_extended',
     'dt_site_menu',
     'dt_consultation_default',
   );
@@ -127,4 +127,11 @@ function dt_core_info_update_7107() {
  */
 function dt_core_info_update_7108() {
   module_enable(array('dt_list_view_content'));
+}
+
+/**
+ * DTTSB-313: Enable dt_page_extended.
+ */
+function dt_core_info_update_7109() {
+  module_enable(array('dt_page_extended'));
 }

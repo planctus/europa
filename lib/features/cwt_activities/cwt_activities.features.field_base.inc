@@ -10,14 +10,30 @@
 function cwt_activities_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_activity_link'
+  // Exported field_base: 'field_activity_address'.
+  $field_bases['field_activity_address'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_address',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'addressfield',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'addressfield',
+  );
+
+  // Exported field_base: 'field_activity_link'.
   $field_bases['field_activity_link'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_link',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -41,14 +57,13 @@ function cwt_activities_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_start_end_date'
+  // Exported field_base: 'field_start_end_date'.
   $field_bases['field_start_end_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_start_end_date',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
