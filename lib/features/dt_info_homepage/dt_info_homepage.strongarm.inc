@@ -136,7 +136,7 @@ function dt_info_homepage_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_info_homepage';
-  $strongarm->value = '4';
+  $strongarm->value = 4;
   $export['language_content_type_info_homepage'] = $strongarm;
 
   $strongarm = new stdClass();
