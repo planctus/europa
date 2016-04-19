@@ -21,7 +21,7 @@ function dt_core_info_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '[node:content-type]',
+      'value' => '[node:content-type:i18n-name]',
       'format' => 'basic_html',
     ),
     'use_token' => 1,
