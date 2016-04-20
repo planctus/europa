@@ -1,0 +1,8 @@
+name = Digital Transformation editorial
+description = DT module that holds all editorial workflow specific configuration and code.
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+dependencies[] = dt_moderation
+dependencies[] = nexteuropa_editorial
+features[features_api][] = api:2
