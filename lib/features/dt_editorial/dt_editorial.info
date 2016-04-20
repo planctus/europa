@@ -1,0 +1,15 @@
+name = Editorial
+description = DT module that holds all editorial workflow specific configuration and code.
+core = 7.x
+package = NextEuropa Digital Transformation
+version = 7.x-1.0
+dependencies[] = nexteuropa_editorial
+features[features_api][] = api:2
+features[og_features_role][] = node:editorial_team:author
+features[og_features_role][] = node:editorial_team:publisher
+features[og_features_role][] = node:editorial_team:reviewer
+features[og_features_role][] = node:editorial_team:translator
+features[og_features_role][] = node:editorial_team:translator reviewer
+features[og_features_role][] = node:editorial_team:validator
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][og] = og
