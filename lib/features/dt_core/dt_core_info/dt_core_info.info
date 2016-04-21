@@ -7,6 +7,7 @@ project = dt_core_info
 dependencies[] = cer
 dependencies[] = dt_core
 dependencies[] = dt_site_menu
+dependencies[] = dt_moderation
 features[context][] = dt_core_info_sitewide
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
