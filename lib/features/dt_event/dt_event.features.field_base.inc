@@ -83,71 +83,6 @@ function dt_event_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_location'.
-  $field_bases['field_core_location'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_location',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'addressfield',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'addressfield',
-  );
-
-  // Exported field_base: 'field_core_media'.
-  $field_bases['field_core_media'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_media',
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'file',
-    'settings' => array(
-      'display_default' => 0,
-      'display_field' => 0,
-      'entity_translation_sync' => array(
-        0 => 'fid',
-      ),
-      'uri_scheme' => 'public',
-    ),
-    'translatable' => 0,
-    'type' => 'file',
-  );
-
-  // Exported field_base: 'field_core_tagline'.
-  $field_bases['field_core_tagline'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_tagline',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_event_available_languages'.
   $field_bases['field_event_available_languages'] = array(
     'active' => 1,
@@ -173,7 +108,7 @@ function dt_event_field_default_field_bases() {
   // Exported field_base: 'field_event_children_events'.
   $field_bases['field_event_children_events'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_event_children_events',
@@ -263,7 +198,7 @@ function dt_event_field_default_field_bases() {
       ),
       'timezone_db' => 'UTC',
       'todate' => '',
-      'tz_handling' => 'site',
+      'tz_handling' => 'date',
     ),
     'translatable' => 0,
     'type' => 'datestamp',
@@ -567,7 +502,7 @@ function dt_event_field_default_field_bases() {
   // Exported field_base: 'field_event_parent_events'.
   $field_bases['field_event_parent_events'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_event_parent_events',
@@ -778,7 +713,7 @@ function dt_event_field_default_field_bases() {
       ),
       'timezone_db' => 'UTC',
       'todate' => '',
-      'tz_handling' => 'site',
+      'tz_handling' => 'date',
     ),
     'translatable' => 0,
     'type' => 'datestamp',

@@ -559,10 +559,12 @@ function dt_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 13,
+        'module' => 'mediafield',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'media',
+        'weight' => 49,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -577,11 +579,8 @@ function dt_event_field_default_field_instances() {
     'label' => 'Image or video',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
       'entity_translation_sync' => FALSE,
-      'file_directory' => '',
-      'file_extensions' => 'png m4v',
-      'max_filesize' => '',
+      'file_extensions' => 'jpg jpeg gif png mov mp4 m4a m4v mpeg avi ogg oga ogv weba webp webm',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -927,7 +926,7 @@ function dt_event_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 12,
     ),
   );
@@ -1758,7 +1757,7 @@ function dt_event_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 11,
     ),
   );
@@ -2069,7 +2068,7 @@ function dt_event_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_event_start',
     'label' => 'Starting date and time',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -2124,7 +2123,7 @@ function dt_event_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_event_status',
     'label' => 'Cancelled or rescheduled',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2174,7 +2173,7 @@ function dt_event_field_default_field_instances() {
           'full_html' => 0,
           'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 1,
+        'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(

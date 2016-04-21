@@ -104,6 +104,45 @@ function dt_event_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_content|node|event|form';
+  $field_group->group_name = 'group_event_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '19',
+    'children' => array(
+      0 => 'title_field',
+      1 => 'field_event_type',
+      2 => 'field_event_status_description',
+      3 => 'field_core_description',
+      4 => 'field_core_tagline',
+      5 => 'field_core_introduction',
+      6 => 'field_core_header_image',
+      7 => 'field_event_status',
+      8 => 'field_event_parent_events',
+      9 => 'field_event_children_events',
+      10 => 'field_core_topics',
+      11 => 'field_core_social_network_links',
+      12 => 'field_core_media',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-event-content field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_event_content|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_event_description|node|event|form';
   $field_group->group_name = 'group_event_description';
   $field_group->entity_type = 'node';
