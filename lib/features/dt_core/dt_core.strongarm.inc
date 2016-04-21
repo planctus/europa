@@ -187,13 +187,6 @@ function dt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'metatag_cache_output';
-  $strongarm->value = 0;
-  $export['metatag_cache_output'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'piwik_custom_var';
   $strongarm->value = array(
     'slots' => array(
