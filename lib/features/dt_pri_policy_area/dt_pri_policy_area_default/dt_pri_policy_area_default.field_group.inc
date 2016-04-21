@@ -217,6 +217,7 @@ function dt_pri_policy_area_default_field_group_info() {
       1 => 'group_content_access',
       2 => 'scheduler_settings',
       3 => 'language',
+      4 => 'field_core_latest_visibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

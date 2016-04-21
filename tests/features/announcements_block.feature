@@ -1,8 +1,9 @@
-@api @information
+@api
 Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
+  @information
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
@@ -17,32 +18,51 @@ Feature: Announcements block
     Then I should see the link "Announcement on <content_name>"
 
     Examples:
-      | content_name         | reference_fieldname         | label_visible |
-      | Department           | field_core_department       | should        |
-      | Policy               | field_core_policies         | should not    |
-      | Topic                | field_core_topics           | should        |
-      | Priority             | field_core_priorities       | should        |
-      | Priority policy area | field_core_pri_policy_areas | should        |
+      | content_name | reference_fieldname   | label_visible |
+      | Department   | field_core_department | should        |
+      | Policy       | field_core_policies   | should not    |
+      | Topic        | field_core_topics     | should        |
+      | Priority     | field_core_priorities | should        |
 
-  Scenario: Editors can toggle the display of the latest announcements block on a page
+  @shared @brp
+  Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
     Given "Page" content:
       | title                   | status | field_core_description | field_core_latest_visibility |
       | Page with announcements | 1      | Sample description     | Disable                      |
     Given "Announcement" content:
       | title                | status | field_core_pages        |
-      | Announcement on page | 1      | Page with announcements |
+      | Announcement on Page | 1      | Page with announcements |
     When I go to "admin/content"
     And I follow "Page with announcements"
     Then I should not see an ".field--announcement-block" element
-    Then I should not see the link "Announcement on page"
+    Then I should not see the link "Announcement on Page"
     When I follow "New draft" in the "tabs" region
     And I check "Latest visibility"
-    And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see "Latest" in the ".field--announcement-block h2" element
-    Then I should see the link "Announcement on page"
+    Then I should see an ".field--announcement-block h2" element
+    Then I should see the link "Announcement on Page"
 
+  @shared
+  Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
+    Given I am logged in as a user with the "administrator" role
+    Given "Priority policy area" content:
+      | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content |
+      | PPA with announcements | 1      | Sample description     | Disable                      | default                 |
+    Given "Announcement" content:
+      | title               | status | field_core_pri_policy_areas |
+      | Announcement on PPA | 1      | PPA with announcements      |
+    When I go to "admin/content"
+    And I follow "PPA with announcements"
+    Then I should not see an ".field--announcement-block" element
+    Then I should not see the link "Announcement on PPA"
+    When I follow "New draft" in the "tabs" region
+    And I check "Latest visibility"
+    And I press "Save"
+    Then I should see an ".field--announcement-block h2" element
+    Then I should see the link "Announcement on PPA"
+
+  @information
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     Given "Social Networks" terms:
@@ -71,6 +91,7 @@ Feature: Announcements block
     Then I should see "Other social networks" in the ".social-media-links" element
     Then I should see "Facebook" in the ".social-media-links" element
 
+  @information
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
     Given "Featured item" content:
