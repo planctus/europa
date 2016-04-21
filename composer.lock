@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3768749b99408d97a0f1c615283d2b3e",
-    "content-hash": "a1f6fa91d880eeb99e5faae4a75c336d",
+    "hash": "82aba1135efe99bb53251e358e706a83",
+    "content-hash": "95dbcb669ed3644ccb977e4980343492",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.17.4",
+            "version": "3.17.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9899865dda8e388a6f9aa7425af50730eabf5ffd"
+                "reference": "d5a5145263da88c9ba870b579c3d4f648b82d2a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9899865dda8e388a6f9aa7425af50730eabf5ffd",
-                "reference": "9899865dda8e388a6f9aa7425af50730eabf5ffd",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d5a5145263da88c9ba870b579c3d4f648b82d2a9",
+                "reference": "d5a5145263da88c9ba870b579c3d4f648b82d2a9",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-04-06 00:39:52"
+            "time": "2016-04-11 17:36:01"
         },
         {
             "name": "behat/behat",
@@ -864,12 +864,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "204a770cc79031a484c2c46a8323dbddbca2ca97"
+                "reference": "f267d9fe4e54c6c39f84dbe45a4ee4eb6cc694a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/204a770cc79031a484c2c46a8323dbddbca2ca97",
-                "reference": "204a770cc79031a484c2c46a8323dbddbca2ca97",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/f267d9fe4e54c6c39f84dbe45a4ee4eb6cc694a2",
+                "reference": "f267d9fe4e54c6c39f84dbe45a4ee4eb6cc694a2",
                 "shasum": ""
             },
             "require": {
@@ -913,31 +913,29 @@
                 "test",
                 "web"
             ],
-            "time": "2016-03-29 18:26:16"
+            "time": "2016-04-08 21:17:14"
         },
         {
             "name": "drupal/drupal-extension",
-            "version": "dev-master",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/drupalextension.git",
-                "reference": "9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e"
+                "reference": "6bfff4967d0efacff51e2ff51a306021012396d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e",
-                "reference": "9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e",
+                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/6bfff4967d0efacff51e2ff51a306021012396d8",
+                "reference": "6bfff4967d0efacff51e2ff51a306021012396d8",
                 "shasum": ""
             },
             "require": {
-                "behat/behat": "~3.1.0-rc2",
+                "behat/behat": "~3.0,>=3.0.5",
                 "behat/mink": "~1.5",
                 "behat/mink-extension": "~2.0",
                 "behat/mink-goutte-driver": "~1.0",
                 "behat/mink-selenium2-driver": "~1.1",
-                "drupal/drupal-driver": "dev-master",
-                "symfony/dependency-injection": "2.7.*",
-                "symfony/event-dispatcher": "2.7.*"
+                "drupal/drupal-driver": "~1.1"
             },
             "require-dev": {
                 "behat/mink-zombie-driver": "^1.2",
@@ -945,11 +943,6 @@
                 "phpunit/phpunit": "3.7.*"
             },
             "type": "behat-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Drupal\\Drupal": "src/",
@@ -974,7 +967,7 @@
                 "test",
                 "web"
             ],
-            "time": "2016-03-08 16:36:12"
+            "time": "2015-12-22 20:10:14"
         },
         {
             "name": "drupal/phing-drush-task",
@@ -993,33 +986,6 @@
             "include-path": [
                 "."
             ]
-        },
-        {
-            "name": "drupal/registry_rebuild",
-            "version": "dev-7.x-2.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/registry_rebuild",
-                "reference": "5299e4d72bf09500e345aabb96ddb48385499ae9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/registry_rebuild-7.x-2.3.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "drupal-drush",
-            "extra": {
-                "branch-alias": {
-                    "dev-7.x-2.x": "7.2.x-dev"
-                }
-            },
-            "notification-url": "http://packagist.drupal-composer.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Provides the registry_rebuild script.",
-            "time": "2015-12-02 22:46:41"
         },
         {
             "name": "drush/drush",
@@ -2795,28 +2761,25 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.7.11",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "cac43a600917c72764ba84f5ea3c43690e5c451a"
+                "reference": "6a9058101b591edced21ca3c83c80a3978f5c6b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/cac43a600917c72764ba84f5ea3c43690e5c451a",
-                "reference": "cac43a600917c72764ba84f5ea3c43690e5c451a",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6a9058101b591edced21ca3c83c80a3978f5c6b0",
+                "reference": "6a9058101b591edced21ca3c83c80a3978f5c6b0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
-            },
-            "conflict": {
-                "symfony/expression-language": "<2.6"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "symfony/config": "~2.2",
-                "symfony/expression-language": "~2.6",
-                "symfony/yaml": "~2.1"
+                "symfony/config": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
             },
             "suggest": {
                 "symfony/config": "",
@@ -2826,7 +2789,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2853,7 +2816,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-10 10:49:29"
+            "time": "2016-03-30 10:41:14"
         },
         {
             "name": "symfony/dom-crawler",
@@ -2913,27 +2876,27 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.7.11",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "b7c955d4a2fa79fca9caccdaaa5434e3799e3b51"
+                "reference": "9002dcf018d884d294b1ef20a6f968efc1128f39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/b7c955d4a2fa79fca9caccdaaa5434e3799e3b51",
-                "reference": "b7c955d4a2fa79fca9caccdaaa5434e3799e3b51",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9002dcf018d884d294b1ef20a6f968efc1128f39",
+                "reference": "9002dcf018d884d294b1ef20a6f968efc1128f39",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.0,>=2.0.5",
-                "symfony/dependency-injection": "~2.6",
-                "symfony/expression-language": "~2.6",
-                "symfony/stopwatch": "~2.3"
+                "symfony/config": "~2.8|~3.0",
+                "symfony/dependency-injection": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/stopwatch": "~2.8|~3.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -2942,7 +2905,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2969,7 +2932,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-06 17:01:13"
+            "time": "2016-03-10 10:34:12"
         },
         {
             "name": "symfony/filesystem",
@@ -3330,10 +3293,8 @@
         "behat/behat": 20,
         "drupal/coder": 20,
         "drupal/drupal-driver": 20,
-        "drupal/drupal-extension": 20,
         "pear/archive_tar": 20,
-        "pear/versioncontrol_git": 20,
-        "drupal/registry_rebuild": 20
+        "pear/versioncontrol_git": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
