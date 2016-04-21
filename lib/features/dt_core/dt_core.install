@@ -907,3 +907,10 @@ function dt_core_update_7165() {
     image_style_flush(array('name' => $item));
   }
 }
+
+/**
+ * DTTSB-125 - Enabling DT Editorial feature.
+ */
+function dt_core_update_7166() {
+  module_enable(array('dt_editorial'));
+}
