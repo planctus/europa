@@ -53,14 +53,14 @@ function dt_editorial_field_default_field_instances() {
         'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 100,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Group Content types');
   t('Content types that are managed by this Editorial team.');
+  t('Group Content types');
 
   return $field_instances;
 }

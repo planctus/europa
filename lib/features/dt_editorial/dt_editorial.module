@@ -16,3 +16,14 @@ function _dt_editorial_types_allowed() {
 
   return !empty($group_content_entities['node']) ? $group_content_entities['node'] : [];
 }
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Move field_editorial_types after og_roles_permissions.
+  // Not exported to feature to avoid overrides.
+  if (!empty($form['field_editorial_types'])) {
+    $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
+  }
+}
