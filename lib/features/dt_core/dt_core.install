@@ -913,4 +913,32 @@ function dt_core_update_7165() {
  */
 function dt_core_update_7166() {
   module_enable(array('dt_editorial'));
+
+  // Add Archived and Validated Workflow States.
+  $result = db_select('workbench_moderation_states', 'wms')
+    ->fields('wms')
+    ->condition('name', 'archived', '=')
+    ->execute()
+    ->fetchObject();
+
+  if (!$result) {
+    db_update('workbench_moderation_states')
+      ->fields(array('weight' => -98))
+      ->condition('name', 'archived')
+      ->execute();
+  }
+
+  // Add Archived and Validated Workflow States.
+  $result = db_select('workbench_moderation_states', 'wms')
+    ->fields('wms')
+    ->condition('name', 'expired', '=')
+    ->execute()
+    ->fetchObject();
+
+  if (!$result) {
+    db_update('workbench_moderation_states')
+      ->fields(array('weight' => -99))
+      ->condition('name', 'expired')
+      ->execute();
+  }
 }
