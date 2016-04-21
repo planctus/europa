@@ -3,3 +3,16 @@
  * @file
  * Code for the dt_editorial feature.
  */
+
+/**
+ * Fetch list of Group Content node types.
+ *
+ * @return array
+ *   node types
+ */
+function _dt_editorial_types_allowed() {
+  // Load all entities and bundles that are 'group content'.
+  $group_content_entities = og_get_all_group_content_bundle();
+
+  return !empty($group_content_entities['node']) ? $group_content_entities['node'] : [];
+}
