@@ -174,36 +174,6 @@ function dt_event_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_event_end'.
-  $field_bases['field_event_end'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_event_end',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 'hour',
-        'minute' => 'minute',
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => 'UTC',
-      'todate' => '',
-      'tz_handling' => 'date',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
   // Exported field_base: 'field_event_entrance_fee'.
   $field_bases['field_event_entrance_fee'] = array(
     'active' => 1,
@@ -224,27 +194,6 @@ function dt_event_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_event_gallery'.
-  $field_bases['field_event_gallery'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_event_gallery',
-    'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'mediafield',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'media',
   );
 
   // Exported field_base: 'field_event_is_fully_booked'.
@@ -325,36 +274,6 @@ function dt_event_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_event_live_streaming_end'.
-  $field_bases['field_event_live_streaming_end'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_event_live_streaming_end',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 'hour',
-        'minute' => 'minute',
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => 'UTC',
-      'todate' => '',
-      'tz_handling' => 'site',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
   // Exported field_base: 'field_event_live_streaming_link'.
   $field_bases['field_event_live_streaming_link'] = array(
     'active' => 1,
@@ -408,8 +327,8 @@ function dt_event_field_default_field_bases() {
         'year' => 'year',
       ),
       'timezone_db' => 'UTC',
-      'todate' => '',
-      'tz_handling' => 'site',
+      'todate' => 'optional',
+      'tz_handling' => 'date',
     ),
     'translatable' => 0,
     'type' => 'datestamp',
@@ -638,7 +557,7 @@ function dt_event_field_default_field_bases() {
       ),
       'timezone_db' => 'UTC',
       'todate' => '',
-      'tz_handling' => 'site',
+      'tz_handling' => 'date',
     ),
     'translatable' => 0,
     'type' => 'datestamp',
@@ -712,7 +631,7 @@ function dt_event_field_default_field_bases() {
         'year' => 'year',
       ),
       'timezone_db' => 'UTC',
-      'todate' => '',
+      'todate' => 'optional',
       'tz_handling' => 'date',
     ),
     'translatable' => 0,
