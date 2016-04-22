@@ -271,12 +271,12 @@
                 />
                 <echo msg="Downloaded platform package reference ${platform.package.property}" />
                 <move file="${platform.package.tarball}" tofile="${platform.package.tarball.versioned}" overwrite="true"/>
-                <property name="platform.package.tarball" value="${platform.package.tarball.versioned}" override="true" />
             </then>
             <else>
                 <echo msg="Skipping platform download, it is already downloaded at ${platform.package.tarball}. Delete this file if you want to download the latest version." />
             </else>
         </if>
+        <property name="platform.package.tarball" value="${platform.package.tarball.versioned}" override="true" />
     </target>
 
     <!-- Unpack the platform. -->
