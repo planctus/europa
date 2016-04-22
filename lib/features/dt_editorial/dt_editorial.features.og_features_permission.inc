@@ -24,7 +24,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:access group broken links report'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'contributor' => 'contributor',
+      'author' => 'author',
       'publisher' => 'publisher',
       'validator' => 'validator',
     ),
@@ -64,7 +64,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:manage organic group translation jobs'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'contributor' => 'contributor',
+      'author' => 'author',
       'publisher' => 'publisher',
       'validator' => 'validator',
     ),
@@ -98,7 +98,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:moderate content from draft to needs_review'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'contributor' => 'contributor',
+      'author' => 'author',
       'publisher' => 'publisher',
       'validator' => 'validator',
     ),
@@ -172,7 +172,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:moderate content from needs_review to draft'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'contributor' => 'contributor',
+      'author' => 'author',
       'publisher' => 'publisher',
       'validator' => 'validator',
     ),

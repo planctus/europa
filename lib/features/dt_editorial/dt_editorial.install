@@ -13,29 +13,44 @@ function dt_editorial_enable() {
   // The objective here is to change the order of the workflow states:
   // Expired by Archived.
   $result = db_select('workbench_moderation_states', 'wms')
-      ->fields('wms')
-      ->condition('name', 'archived', '=')
-      ->execute()
-      ->fetchObject();
+    ->fields('wms', array('name'))
+    ->condition('name', 'archived', '=')
+    ->execute()
+    ->fetchObject();
 
   if (!$result) {
     db_update('workbench_moderation_states')
-        ->fields(array('weight' => -98))
-        ->condition('name', 'archived')
-        ->execute();
+      ->fields(array('weight' => 98))
+      ->condition('name', 'archived')
+      ->execute();
   }
 
   $result = db_select('workbench_moderation_states', 'wms')
-      ->fields('wms')
-      ->condition('name', 'expired', '=')
-      ->execute()
-      ->fetchObject();
+    ->fields('wms', array('name'))
+    ->condition('name', 'expired', '=')
+    ->execute()
+    ->fetchObject();
 
   if (!$result) {
     db_update('workbench_moderation_states')
-        ->fields(array('weight' => -99))
-        ->condition('name', 'expired')
-        ->execute();
+      ->fields(array('weight' => 99))
+      ->condition('name', 'expired')
+      ->execute();
+  }
+
+  // Change the og role name from contributor to author.
+  $result = db_select('og_role', 'ogr')
+    //->fields('ogr', array('name'))
+    ->fields('ogr')
+    ->condition('name', 'contributor', '=')
+    ->execute()
+    ->fetchObject();
+
+  if (!$result) {
+    db_update('og_role')
+      ->fields(array('name' => 'author'))
+      ->condition('name', 'contributor')
+      ->execute();
   }
 }
 
