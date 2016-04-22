@@ -14,7 +14,11 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:View all unpublished content'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
+      'author' => 'author',
       'publisher' => 'publisher',
+      'reviewer' => 'reviewer',
+      'translator' => 'translator',
+      'translator reviewer' => 'translator reviewer',
       'validator' => 'validator',
     ),
   );
@@ -26,6 +30,9 @@ function dt_editorial_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'author' => 'author',
       'publisher' => 'publisher',
+      'reviewer' => 'reviewer',
+      'translator' => 'translator',
+      'translator reviewer' => 'translator reviewer',
       'validator' => 'validator',
     ),
   );
@@ -66,6 +73,9 @@ function dt_editorial_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'author' => 'author',
       'publisher' => 'publisher',
+      'reviewer' => 'reviewer',
+      'translator' => 'translator',
+      'translator reviewer' => 'translator reviewer',
       'validator' => 'validator',
     ),
   );
@@ -110,6 +120,7 @@ function dt_editorial_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'publisher' => 'publisher',
+      'validator' => 'validator',
     ),
   );
 
@@ -172,9 +183,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:moderate content from needs_review to draft'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
-      'author' => 'author',
       'publisher' => 'publisher',
-      'validator' => 'validator',
     ),
   );
 
@@ -193,6 +202,7 @@ function dt_editorial_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'publisher' => 'publisher',
+      'validator' => 'validator',
     ),
   );
 
@@ -225,6 +235,7 @@ function dt_editorial_og_features_default_permissions() {
   $permissions['node:editorial_team:moderate content from published to draft'] = array(
     'roles' => array(
       'administrator member' => 'administrator member',
+      'author' => 'author',
       'publisher' => 'publisher',
     ),
   );
@@ -244,6 +255,7 @@ function dt_editorial_og_features_default_permissions() {
     'roles' => array(
       'administrator member' => 'administrator member',
       'publisher' => 'publisher',
+      'validator' => 'validator',
     ),
   );
 
