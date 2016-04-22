@@ -32,50 +32,53 @@ function _dt_event_entity_add_status_property(&$entity) {
 
       case 'no':
         // If it has no special state, we base it on the dates.
-        if ($emw->__isset('field_event_start')) {
-          $start_date = $emw->field_event_start->value();
+        if ($emw->__isset('field_event_date')) {
+          $start_date = $emw->field_event_date->value->value();
 
           // We always need a start date.
           if (is_null($start_date)) {
             return;
           }
-        }
-        if ($emw->__isset('field_event_end')) {
-          // Set the end date.
-          $end_date = $emw->field_event_end->value();
+
+          // Set the end date if it is filled in.
+          if ($emw->field_event_date->__isset('value2')) {
+            // Set the end date. If the checkbox is unchecked, the default end
+            // date is equal to the start date.
+            $end_date = $emw->field_event_date->value2->value();
+          }
 
           // If no end date, end date is start date + 1 day.
-          if (is_null($end_date)) {
+          if (!isset($end_date) || is_null($end_date) || $start_date == $end_date) {
             // Create a new time object.
             $date = new DateTime();
             // Set the timezone to the one of the start date.
-            $date->setTimezone(new DateTimeZone($entity->field_event_start[LANGUAGE_NONE][0]['timezone']));
+            $date->setTimezone(new DateTimeZone($entity->field_event_date[LANGUAGE_NONE][0]['timezone']));
             $date->setTimestamp($start_date);
             $date->modify('tomorrow');
             $date->modify('1 second ago');
             // Set the end date to the timestamp.
             $end_date = $date->getTimestamp();
           }
+
+          // Get the current date.
+          $current_date = time();
+
+          // Based on the time comparison, we add the event state.
+          switch (TRUE) {
+            case ($end_date >= $current_date && $start_date <= $current_date):
+              $entity->event_status = DT_EVENT_STATE_ONGOING;
+              break;
+
+            case $end_date <= $current_date:
+              $entity->event_status = DT_EVENT_STATE_PAST;
+              break;
+
+            case $start_date >= $current_date:
+              $entity->event_status = DT_EVENT_STATE_FUTURE;
+              break;
+          }
+          break;
         }
-
-        // Get the current date.
-        $current_date = time();
-
-        // Based on the time comparison, we add the event state.
-        switch (TRUE) {
-          case ($end_date >= $current_date && $start_date <= $current_date):
-            $entity->event_status = DT_EVENT_STATE_ONGOING;
-            break;
-
-          case $end_date <= $current_date:
-            $entity->event_status = DT_EVENT_STATE_PAST;
-            break;
-
-          case $start_date >= $current_date:
-            $entity->event_status = DT_EVENT_STATE_FUTURE;
-            break;
-        }
-        break;
 
       default:
         // In case it's undefined, we log a message.
