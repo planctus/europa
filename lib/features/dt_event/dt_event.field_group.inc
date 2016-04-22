@@ -186,7 +186,7 @@ function dt_event_field_group_info() {
     'label' => 'Practical information',
     'weight' => '21',
     'children' => array(
-      0 => 'field_event_start',
+      0 => 'field_event_date',
       1 => 'field_event_is_online',
       2 => 'field_core_location',
       3 => 'field_event_location_image',
@@ -194,7 +194,7 @@ function dt_event_field_group_info() {
       5 => 'field_event_registration_end',
       6 => 'field_event_is_fully_booked',
       7 => 'field_event_is_live_streaming',
-      8 => 'field_event_live_streaming_start',
+      8 => 'field_event_live_streaming_date',
       9 => 'field_event_live_streaming_link',
       10 => 'field_event_scribble_id',
       11 => 'field_event_available_languages',

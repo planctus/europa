@@ -304,13 +304,13 @@ function dt_event_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_event_live_streaming_start'.
-  $field_bases['field_event_live_streaming_start'] = array(
+  // Exported field_base: 'field_event_live_streaming_date'.
+  $field_bases['field_event_live_streaming_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_event_live_streaming_start',
+    'field_name' => 'field_event_live_streaming_date',
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -608,13 +608,13 @@ function dt_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_event_start'.
-  $field_bases['field_event_start'] = array(
+  // Exported field_base: 'field_event_date'.
+  $field_bases['field_event_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_event_start',
+    'field_name' => 'field_event_date',
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',

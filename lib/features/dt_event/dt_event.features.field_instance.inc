@@ -1287,8 +1287,8 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_live_streaming_start'.
-  $field_instances['node-event-field_event_live_streaming_start'] = array(
+  // Exported field_instance: 'node-event-field_event_live_streaming_date'.
+  $field_instances['node-event-field_event_live_streaming_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
     'description' => '',
@@ -1316,7 +1316,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_event_live_streaming_start',
+    'field_name' => 'field_event_live_streaming_date',
     'label' => 'Date and time of live streaming',
     'required' => 0,
     'settings' => array(
@@ -1916,8 +1916,8 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_start'.
-  $field_instances['node-event-field_event_start'] = array(
+  // Exported field_instance: 'node-event-field_event_date'.
+  $field_instances['node-event-field_event_date'] = array(
     'bundle' => 'event',
     'deleted' => 0,
     'description' => 'On what day does the event start?
@@ -1946,7 +1946,7 @@ On what day does the event end?',
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_event_start',
+    'field_name' => 'field_event_date',
     'label' => 'Event date and time',
     'required' => 1,
     'settings' => array(

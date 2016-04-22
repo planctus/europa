@@ -1677,7 +1677,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:13"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_live_streaming_start',
+    'dependent' => 'field_event_live_streaming_date',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2957,7 +2957,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:23"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_start',
+    'dependent' => 'field_event_date',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
