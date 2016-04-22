@@ -18,7 +18,7 @@ function dt_editorial_enable() {
     ->execute()
     ->fetchObject();
 
-  if (!$result) {
+  if ($result) {
     db_update('workbench_moderation_states')
       ->fields(array('weight' => 98))
       ->condition('name', 'archived')
@@ -31,7 +31,7 @@ function dt_editorial_enable() {
     ->execute()
     ->fetchObject();
 
-  if (!$result) {
+  if ($result) {
     db_update('workbench_moderation_states')
       ->fields(array('weight' => 99))
       ->condition('name', 'expired')
@@ -45,7 +45,7 @@ function dt_editorial_enable() {
     ->execute()
     ->fetchObject();
 
-  if (!$result) {
+  if ($result) {
     db_update('og_role')
       ->fields(array('name' => 'author'))
       ->condition('name', 'contributor')
