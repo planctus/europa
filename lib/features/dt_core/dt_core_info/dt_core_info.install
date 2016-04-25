@@ -31,6 +31,7 @@ function dt_core_info_install() {
     'dt_page_extended',
     'dt_site_menu',
     'dt_consultation_default',
+    'dt_event_default',
   );
   module_enable($features);
 
