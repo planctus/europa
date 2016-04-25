@@ -73,13 +73,14 @@ function _dt_event_ds_fields_book_your_seat($field) {
   if (
     in_array($field['entity']->event_status, $allowed_states) &&
     !$emw->field_event_is_fully_booked->value() &&
-    $emw->field_event_registration_end->value() > time() &&
     $registration = $emw->field_event_registration->value()
   ) {
-    // Our button text will default if not filled in.
-    $button_link = $registration['display_url'];
-    $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
-
+    // If registration is still open we can show the button.
+    if ($emw->field_event_registration_end->value() > time()) {
+      // Our button text will default if not filled in.
+      $button_link = $registration['display_url'];
+      $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
+    }
     // Special case if ongoing and live stream is available.
     if (
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
@@ -89,20 +90,22 @@ function _dt_event_ds_fields_book_your_seat($field) {
       $button_link = $stream_link['display_url'];
     }
 
-    // Default attributes for the link.
-    $attributes = [
-      'attributes' => [
-        'class' => [
-          'btn',
-          'btn-ctn',
-          'pull-left',
+    if (isset($button_text)) {
+      // Default attributes for the link.
+      $attributes = [
+        'attributes' => [
+          'class' => [
+            'btn',
+            'btn-ctn',
+            'pull-left',
+          ],
         ],
-      ],
-      'html' => TRUE,
-    ];
+        'html' => TRUE,
+      ];
 
-    // Return the link.
-    return l($button_text, $button_link, $attributes);
+      // Return the link.
+      return l($button_text, $button_link, $attributes);
+    }
   }
 }
 
@@ -143,7 +146,7 @@ function _dt_event_ds_fields_livestreaming($field) {
 
     // Return the text if it is found.
     if ($streaming_text) {
-      return '<span class="btn pull-left">' . $streaming_text . '</span>';
+      return '<span class="label label--high pull-left">' . $streaming_text . '</span>';
     }
   }
 }
