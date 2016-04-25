@@ -135,10 +135,3 @@ function dt_core_info_update_7108() {
 function dt_core_info_update_7109() {
   module_enable(array('dt_page_extended'));
 }
-
-/**
- * DTTSB-156: Enable dt_moderation.
- */
-function dt_core_info_update_7110() {
-  module_enable(['dt_moderation']);
-}
