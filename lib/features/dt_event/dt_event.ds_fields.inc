@@ -82,9 +82,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
 
     // Special case if ongoing and live stream is available.
     if (
-      $field['entity']->event_status == DT_EVENT_STATE_ONGOING &&
-      $emw->field_event_is_live_streaming->value() &&
-      _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
+      $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
       $stream_link = $emw->field_event_live_streaming_link->value()
     ) {
       $button_text = t('Watch live now');
@@ -126,12 +124,9 @@ function _dt_event_ds_fields_livestreaming($field) {
   ];
 
   // Few conditions should be met.
-  if (
-    in_array($field['entity']->event_status, $allowed_states) &&
-    $emw->field_event_is_live_streaming->value()
-  ) {
+  if (in_array($field['entity']->event_status, $allowed_states)) {
     // Based on the state we set our message.
-    switch (_dt_event_live_stream_state($field['entity'])) {
+    switch ($field['entity']->event_livestream_status) {
       case DT_EVENT_LIVE_STREAM_FUTURE:
         $timezone = $field['entity']->field_event_live_streaming_date[LANGUAGE_NONE][0]['timezone'];
         $replacement = [
