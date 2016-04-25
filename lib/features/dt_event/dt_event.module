@@ -5,3 +5,28 @@
  */
 
 include_once 'dt_event.features.inc';
+// Include our helpers.
+module_load_include('inc', 'dt_event', 'dt_event.helpers');
+
+// Constansts that can be used.
+define('DT_EVENT_STATE_FUTURE', 1);
+define('DT_EVENT_STATE_ONGOING', 2);
+define('DT_EVENT_STATE_PAST', 3);
+define('DT_EVENT_STATE_CANCELLED', 4);
+define('DT_EVENT_STATE_RESCHEDULED', 5);
+
+/**
+ * Implements hook_entity_prepare_view().
+ *
+ * We iterate on the entity's of type 'node'. If we have matching entity's of
+ * type 'event' we pass them to our function.
+ */
+function dt_event_entity_prepare_view($entities, $type, $langcode) {
+  if ($type == 'node') {
+    foreach ($entities as $entity) {
+      if ($entity->type == 'event') {
+        _dt_event_entity_add_status_property($entity);
+      }
+    }
+  }
+}
