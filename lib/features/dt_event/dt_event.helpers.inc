@@ -110,6 +110,9 @@ function _dt_event_get_end_of_day($timestamp, $timezone = 'UTC') {
 /**
  * Helper function to check if livestream is active on an event.
  *
+ * This function should, ideally, not be called directly. Instead use the entity
+ * property $entity->event_livestream_status.
+ *
  * @param object $event
  *   The event node object.
  *
