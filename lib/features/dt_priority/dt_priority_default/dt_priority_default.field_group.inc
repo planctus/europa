@@ -21,7 +21,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Policy areas',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_core_child_policies',
       1 => 'field_core_section_intro',
@@ -30,17 +30,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Policy areas',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="policy-areas"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_pri_pol_policy_areas|node|priority|full'] = $field_group;
@@ -86,7 +82,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_background',
       1 => 'field_core_objective',
@@ -95,17 +91,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Background',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="background"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_background|node|priority|full'] = $field_group;
@@ -121,7 +113,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Banner Section group',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_banner',
     ),
@@ -246,8 +238,8 @@ function dt_priority_default_field_group_info() {
     'label' => 'Contextual navigation',
     'weight' => '4',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_departments',
+      0 => 'field_core_departments',
+      1 => 'field_core_persons',
       2 => 'field_core_topics',
     ),
     'format_type' => 'context_nav',
@@ -271,7 +263,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -279,17 +271,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Documents',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="documents"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_documents|node|priority|full'] = $field_group;
@@ -350,100 +338,6 @@ function dt_priority_default_field_group_info() {
     ),
   );
   $field_groups['group_priority_featured_item|node|priority|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_latest_main|node|priority|full';
-  $field_group->group_name = 'group_priority_latest_main';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority';
-  $field_group->mode = 'full';
-  $field_group->parent_name = 'group_priority_latest';
-  $field_group->data = array(
-    'label' => 'Main',
-    'weight' => '33',
-    'children' => array(
-      0 => 'field_core_featured_item',
-      1 => 'latest_announcements_block',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Main',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_priority_latest_main|node|priority|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_latest_sbar|node|priority|full';
-  $field_group->group_name = 'group_priority_latest_sbar';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority';
-  $field_group->mode = 'full';
-  $field_group->parent_name = 'group_priority_latest';
-  $field_group->data = array(
-    'label' => 'Sidebar',
-    'weight' => '34',
-    'children' => array(
-      0 => 'field_core_social_network_links',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Sidebar',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group__sidebar',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_priority_latest_sbar|node|priority|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_priority_latest|node|priority|full';
-  $field_group->group_name = 'group_priority_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'priority';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Latest',
-    'weight' => '7',
-    'children' => array(
-      0 => 'group_priority_latest_main',
-      1 => 'group_priority_latest_sbar',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Latest',
-      'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => '',
-        'modifier' => '',
-        'layout' => '',
-        'required_fields' => 1,
-      ),
-      'formatter' => '',
-    ),
-  );
-  $field_groups['group_priority_latest|node|priority|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -563,7 +457,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -571,17 +465,13 @@ function dt_priority_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Related links',
       'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => 'id="related-links"',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
+        'classes' => '',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_priority_related|node|priority|full'] = $field_group;
@@ -628,7 +518,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -662,14 +552,11 @@ function dt_priority_default_field_group_info() {
   t('Documents');
   t('Editorial settings');
   t('Featured content');
-  t('Latest');
-  t('Main');
   t('Meta');
   t('Policy');
   t('Policy areas');
   t('Related');
   t('Related links');
-  t('Sidebar');
   t('What\'s next?');
 
   return $field_groups;

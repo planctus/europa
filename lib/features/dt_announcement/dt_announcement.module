@@ -5,6 +5,26 @@
  */
 
 include_once 'dt_announcement.features.inc';
+include_once 'dt_announcement.ds_fields.inc';
+
+/**
+ * Implements hook_theme().
+ */
+function dt_announcement_theme($existing, $type, $theme, $path) {
+  return [
+    'dt_announcement_announcement_block' => [
+      'template' => 'dt_announcement_announcement_block',
+      'path' => drupal_get_path('module', 'dt_announcement') . '/templates',
+      'variables' => [
+        'heading' => '',
+        'heading_id' => '',
+        'news_items' => '',
+        'social_links' => '',
+        'featued_item' => '',
+      ],
+    ],
+  ];
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -334,4 +354,28 @@ function _dt_announcement_get_abbreviation($nid) {
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",
     array(':nid' => $nid))->fetchField();
+}
+
+/**
+ * Implements hook_nexteuropa_inpage_nav_add().
+ *
+ * This hook makes sure that the news block is added to the inpage nav.
+ */
+function dt_announcement_nexteuropa_inpage_nav_add($element, $ds_field_settings) {
+  if (isset($element['announcement_block']) && isset($ds_field_settings['announcement_block']['formatter_settings']['label'])) {
+    // Get the label localized. We have to do it as interface language.
+    // @codingStandardsIgnoreLine
+    $label = t($ds_field_settings['announcement_block']['formatter_settings']['label']);
+    return [
+      $element['announcement_block']['#field_name'] => [
+        'weight' => $element['announcement_block']['#weight'],
+        'heading' => [
+          'id' => drupal_clean_css_identifier(strtolower($label)),
+          'label' => $label,
+        ],
+        'children' => '',
+      ],
+    ];
+  }
+  return [];
 }

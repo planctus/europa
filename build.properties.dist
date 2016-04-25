@@ -14,15 +14,11 @@ subsite.make = ${subsite.resources.dir}/site.make
 # Modules to enable after installation. Separate multiple modules with spaces.
 subsite.install.modules = myproject_core
 
-
-# Drupal configuration
-# --------------------
-
 # Database settings.
 drupal.db.type = mysql
 drupal.db.name = db_name
-drupal.db.user = db_user
-drupal.db.password = db_pass
+drupal.db.user = root
+drupal.db.password =
 drupal.db.host = 127.0.0.1
 drupal.db.port = 3306
 drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
@@ -59,8 +55,12 @@ platform.dist.dir = ${project.basedir}/dist
 # multisite_drupal_communities.
 platform.profile.name = multisite_drupal_standard
 
-# The branch, tag or commit to use, eg. 'master', 'develop', '1.7', '7df0d254b'.
-# It is possible to use MySQL style wildcards here.
+# The branch, tag or commit to use, eg. 'master', 'develop', '2.1.56',
+# '7df0d254b'. It is possible to use MySQL style wildcards here, so you can use
+# '2.%' to get the latest tagged 2.x.x release which was built.
+# For most projects you would want to follow 'master' so that you always have
+# the latest version that is deployed on production. Use 'develop' to check if
+# your project is compatible with the upcoming release.
 platform.package.reference = develop
 
 # The provider that hosts the platform repository.
@@ -91,8 +91,11 @@ phing.bin = ${project.basedir}/bin/phing
 
 # Build location.
 phing.project.build.dir = build
+phing.project.dist.dir = dist
 phing.project.src.dir = ${project.basedir}/src
+
 subsite.build.dir = ${project.basedir}/${phing.project.build.dir}
+dist.build.dir = ${project.basedir}/${phing.project.dist.dir}
 
 # Temporary folder.
 phing.project.tmp.dir = ${project.basedir}/tmp
@@ -110,7 +113,7 @@ subsite.resources.composer.lock = ${subsite.resources.dir}/composer.lock
 # Temporary resources. These are generated on the fly when building.
 subsite.temporary.development.make = ${phing.project.tmp.dir}/development.make
 
-# Files and directories inside the Drupal installation.
+# Files and directories inside the Drupal installation for local development.
 platform.build.settings.dir = ${platform.build.sites.dir}/default
 platform.build.files.dir = ${platform.build.settings.dir}/files
 
@@ -129,6 +132,14 @@ platform.build.subsite.themes.dir = ${platform.build.subsite.dir}/themes
 platform.build.subsite.composer.json = ${platform.build.subsite.dir}/composer.json
 platform.build.subsite.composer.lock = ${platform.build.subsite.dir}/composer.lock
 
+# Files and directories inside the distribution build.
+dist.build.modules.dir = ${dist.build.dir}/modules
+dist.build.modules.custom.dir = ${dist.build.modules.dir}/custom
+dist.build.modules.features.dir = ${dist.build.modules.dir}/features
+dist.build.source.dir = ${dist.build.dir}/src
+dist.build.themes.dir = ${dist.build.dir}/themes
+dist.build.composer.json = ${dist.build.dir}/composer.json
+dist.build.composer.lock = ${dist.build.dir}/composer.lock
 
 # Behat configuration
 # -------------------
@@ -200,6 +211,7 @@ phpcs.global.config = ${project.basedir}/vendor/squizlabs/php_codesniffer/CodeSn
 # Host configuration
 # ------------------
 
+# The location of the webserver docroot. Used for testing on CI infrastructure.
 server.docroot = /var/www
 
 
@@ -219,10 +231,33 @@ development.modules.download = devel maillog
 # Development / testing modules to enable.
 development.modules.enable = devel field_ui maillog simpletest views_ui
 
-<<<<<<< HEAD
 # The location where development modules will be installed.
 development.modules.location = development
-=======
+
 # Project folder in MULTISITE SVN
 phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta
->>>>>>> 14357719795bd856c5313eeb355934e098a06b13
+
+# The location where development modules will be installed.
+development.modules.location = development
+
+
+# AWS SDK
+# -------
+aws.region = eu-west-1
+
+
+# AWS Cloud Formation
+# -------------------
+cf.template = single-server
+
+
+# AWS CodeDeploy
+# --------------
+deploy.serviceRole = arn:aws:iam::918396081007:role/CodeDeploy
+
+
+# Build defaults
+# --------------
+
+# Whether or not to stop executing the build if a directory cannot be copied.
+copy.path.haltonerror = true

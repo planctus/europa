@@ -17,6 +17,11 @@ Styleguide notification
 
   a {
     color: #000;
+    @include _focus_outline_border(3px, $black, 2px);
+    &:hover,
+    &:focus{
+      text-decoration: none;
+    }
   }
 }
 
@@ -42,11 +47,11 @@ Styleguide notification
     float: left;
     margin-bottom: 6px;
 
-     &:after {
-       font-size: 12px;
-       @extend .icon--after;
-       @extend .icon--right;
-     }
+    &:after {
+      font-size: 12px;
+      @extend .icon--after;
+      @extend .icon--right;
+    }
   }
 
   p {
@@ -66,7 +71,7 @@ Styleguide notification
 
 @include breakpoint(screen-sm-min) {
   .notification__content {
-    .notification__text { 
+    .notification__text {
       width: 75%;
     }
 

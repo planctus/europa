@@ -27,9 +27,8 @@ function dt_topic_field_group_info() {
       1 => 'group_topic_contact',
       2 => 'group_topic_content',
       3 => 'group_topic_details',
-      4 => 'group_topic_policy_areas',
-      5 => 'group_topic_related',
-      6 => 'group_topic_task',
+      4 => 'group_topic_related',
+      5 => 'group_topic_task',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -74,60 +73,33 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_latest_main|node|topic|full';
-  $field_group->group_name = 'group_latest_main';
+  $field_group->identifier = 'group_social_bookmark_section|node|topic|full';
+  $field_group->group_name = 'group_social_bookmark_section';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'topic';
   $field_group->mode = 'full';
-  $field_group->parent_name = 'group_topic_latest';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Main',
+    'label' => 'Social Bookmark Webtools section group wrapper',
     'weight' => '7',
     'children' => array(
-      0 => 'latest_announcements_block',
+      0 => 'social_bookmark_webtools',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Main',
+      'formatter' => '',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__main',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-social-bookmark-section field-group-section_group',
+        'show_label' => 0,
         'attributes' => '',
+        'label_element' => 'h2',
+        'required_fields' => 1,
       ),
     ),
   );
-  $field_groups['group_latest_main|node|topic|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_latest_sidebar|node|topic|full';
-  $field_group->group_name = 'group_latest_sidebar';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'full';
-  $field_group->parent_name = 'group_topic_latest';
-  $field_group->data = array(
-    'label' => 'Sidebar',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_core_social_network_links',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Sidebar',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group__sidebar',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
-        'attributes' => '',
-      ),
-    ),
-  );
-  $field_groups['group_latest_sidebar|node|topic|full'] = $field_group;
+  $field_groups['group_social_bookmark_section|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -190,6 +162,36 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_topic_contextual_section|node|topic|full';
+  $field_group->group_name = 'group_topic_contextual_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual navigation section group wrapper',
+    'weight' => '6',
+    'children' => array(
+      0 => 'group_topic_contextual',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contextual navigation section group wrapper',
+      'instance_settings' => array(
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-topic-contextual-section field-group-section_group',
+      ),
+    ),
+  );
+  $field_groups['group_topic_contextual_section|node|topic|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_contextual|node|topic|default';
   $field_group->group_name = 'group_topic_contextual';
   $field_group->entity_type = 'node';
@@ -198,7 +200,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_core_priorities',
@@ -223,22 +225,29 @@ function dt_topic_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'topic';
   $field_group->mode = 'full';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_topic_contextual_section';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_core_persons',
-      1 => 'field_core_priorities',
-      2 => 'field_core_topics',
-      3 => 'field_core_department',
+      0 => 'field_core_topics',
+      1 => 'field_core_department',
+      2 => 'field_core_persons',
+      3 => 'field_core_priorities',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(
       'label' => 'Contextual navigation',
       'instance_settings' => array(
         'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+        'show_label' => 0,
+        'attributes' => '',
+        'label_element' => 'h2',
+        'required_fields' => 1,
       ),
+      'formatter' => '',
     ),
   );
   $field_groups['group_topic_contextual|node|topic|full'] = $field_group;
@@ -277,41 +286,6 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_latest|node|topic|full';
-  $field_group->group_name = 'group_topic_latest';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Latest',
-    'weight' => '8',
-    'children' => array(
-      0 => 'group_latest_main',
-      1 => 'group_latest_sidebar',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Latest',
-      'instance_settings' => array(
-        'id' => '',
-        'classes' => 'sidebar-field-group',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => 'id="latest"',
-        'modifier' => '',
-        'layout' => '',
-        'required_fields' => 1,
-      ),
-      'formatter' => '',
-    ),
-  );
-  $field_groups['group_topic_latest|node|topic|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_meta|node|topic|full';
   $field_group->group_name = 'group_topic_meta';
   $field_group->entity_type = 'node';
@@ -333,62 +307,6 @@ function dt_topic_field_group_info() {
     ),
   );
   $field_groups['group_topic_meta|node|topic|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_policy_areas|node|topic|form';
-  $field_group->group_name = 'group_topic_policy_areas';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_content_tabgroup';
-  $field_group->data = array(
-    'label' => 'Policy areas',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_core_policy_areas',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-topic-policy-areas field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_topic_policy_areas|node|topic|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_topic_policy_areas|node|topic|full';
-  $field_group->group_name = 'group_topic_policy_areas';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'topic';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Policy areas',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_core_policy_areas',
-    ),
-    'format_type' => 'html-element',
-    'format_settings' => array(
-      'label' => 'Policy areas',
-      'instance_settings' => array(
-        'classes' => 'sidebar-field-group',
-        'element' => 'div',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'attributes' => 'id="policy-areas"',
-      ),
-    ),
-  );
-  $field_groups['group_topic_policy_areas|node|topic|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -460,7 +378,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -487,7 +405,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tasks',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'group_topic_related_tasks',
       1 => 'group_topics_specific_tasks',
@@ -543,7 +461,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What the Commission is doing',
-    'weight' => '9',
+    'weight' => '5',
     'children' => array(
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
@@ -603,15 +521,13 @@ function dt_topic_field_group_info() {
   t('Contact');
   t('Content');
   t('Contextual navigation');
+  t('Contextual navigation section group wrapper');
   t('Editorial settings');
   t('Further information');
-  t('Latest');
-  t('Main');
   t('Meta');
-  t('Policy areas');
   t('Related');
   t('Related Tasks');
-  t('Sidebar');
+  t('Social Bookmark Webtools section group wrapper');
   t('Task');
   t('Tasks');
   t('Topic specific tasks');

@@ -63,3 +63,102 @@ function _dt_site_init_menu() {
   $link = url("block/information-site-menu/edit");
   drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', array('!edit' => $link)));
 }
+
+/**
+ * Returns an Entity Meta Wrapper for a BEAN.
+ *
+ * @param string $delta
+ *   The bean block delta.
+ *
+ * @return \EntityMetadataWrapper
+ *    The wrapper.
+ */
+function _dt_site_menu_get_entity_wrapper($delta) {
+  // Entity Meta Wrapper to manage the data.
+  $menu = bean_load_delta($delta);
+  return entity_metadata_wrapper('bean', $menu);
+}
+
+/**
+ * Moves specific data from one set of fields to another.
+ */
+function _dt_site_menu_migration() {
+  // Ensure necessary fields are in place.
+  features_revert_module('dt_site_menu');
+
+  $menu = _dt_site_menu_get_entity_wrapper('information-site-menu');
+
+  // Migration for field_site_menu_classes.
+  if (count($menu->field_site_menu_classes->value()) == 0) {
+    $field_site_menu_classes = array_merge(
+      $menu->field_site_menu_first->value(),
+      $menu->field_site_menu_second->value()
+    );
+    $menu->field_site_menu_classes->set($field_site_menu_classes);
+  }
+
+  // Migration for field_site_menu_classes.
+  if (count($menu->field_site_menu_links->value()) == 0) {
+    $field_site_menu_fourth = $menu->field_site_menu_fourth->value();
+    $menu->field_site_menu_links->set($field_site_menu_fourth);
+  }
+
+  // Creating the topics link.
+  $topics_link = array(
+    'url' => '/topics',
+    'title' => 'All topics A-Z >',
+    'attributes' => array(),
+  );
+  $menu->field_site_menu_topic_link->set($topics_link);
+
+  $menu->save();
+}
+
+/**
+ * Deletes obsolete fields.
+ */
+function _dt_site_menu_delete_fields() {
+  // Definition of fields to remove.
+  $obsolete_fields = array(
+    'field_site_menu_first' => 'bean-site_menu-field_site_menu_first',
+    'field_site_menu_second' => 'bean-site_menu-field_site_menu_second',
+    'field_site_menu_third' => 'bean-site_menu-field_site_menu_third',
+    'field_site_menu_fourth' => 'bean-site_menu-field_site_menu_fourth',
+    'field_site_menu_fifth' => 'bean-site_menu-field_site_menu_fifth',
+    'field_site_menu_sixth' => 'bean-site_menu-field_site_menu_sixth',
+  );
+
+  foreach ($obsolete_fields as $field_base => $field_instance) {
+    if ($instance = field_info_instance('bean', $field_base, 'site_menu')) {
+      field_delete_instance($instance, TRUE);
+      field_purge_batch(1);
+    }
+  }
+}
+
+/**
+ * NEXTEUROPA-9103: Major update in site menu.
+ */
+function dt_site_menu_update_7101() {
+  _dt_site_menu_migration();
+  $menu = _dt_site_menu_get_entity_wrapper('information-site-menu');
+  // If migration was successful.
+  if (count($menu->field_site_menu_classes->value()) > 0 &&
+      count($menu->field_site_menu_links->value()) > 0) {
+    _dt_site_menu_delete_fields();
+  }
+}
+
+/**
+ * DTTSB-68 Migration for the field_site_menu_links.
+ */
+function dt_site_menu_update_7102(&$sandbox) {
+  _dt_core_enable_entity_translation('field_site_menu_links', $sandbox);
+}
+
+/**
+ * DTTSB-68 Migration for the field_site_menu_topic_link.
+ */
+function dt_site_menu_update_7103(&$sandbox) {
+  _dt_core_enable_entity_translation('field_site_menu_topic_link', $sandbox);
+}

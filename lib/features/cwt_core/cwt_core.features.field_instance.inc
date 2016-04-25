@@ -230,7 +230,7 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-custom_page-body'
+  // Exported field_instance: 'node-custom_page-body'.
   $field_instances['node-custom_page-body'] = array(
     'bundle' => 'custom_page',
     'default_value' => NULL,
@@ -356,7 +356,8 @@ function cwt_core_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'taxonomy_term-aggregated_item_types-description_field'.
+  // Exported field_instance:
+  // 'taxonomy_term-aggregated_item_types-description_field'.
   $field_instances['taxonomy_term-aggregated_item_types-description_field'] = array(
     'bundle' => 'aggregated_item_types',
     'default_value' => NULL,
@@ -490,6 +491,7 @@ function cwt_core_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -504,6 +506,7 @@ function cwt_core_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -557,7 +560,8 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-editorial_sections-description_field'.
+  // Exported field_instance:
+  // 'taxonomy_term-editorial_sections-description_field'.
   $field_instances['taxonomy_term-editorial_sections-description_field'] = array(
     'bundle' => 'editorial_sections',
     'default_value' => NULL,
@@ -569,6 +573,12 @@ function cwt_core_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'team_description' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -697,6 +707,12 @@ function cwt_core_field_default_field_instances() {
         'type' => 'title_linked',
         'weight' => 0,
       ),
+      'team_description' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'taxonomy_term',
     'field_name' => 'name_field',
@@ -760,7 +776,8 @@ function cwt_core_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-project_teams-field_project_teams_classname'.
+  // Exported field_instance:
+  // 'taxonomy_term-project_teams-field_project_teams_classname'.
   $field_instances['taxonomy_term-project_teams-field_project_teams_classname'] = array(
     'bundle' => 'project_teams',
     'default_value' => NULL,

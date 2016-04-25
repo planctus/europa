@@ -148,7 +148,7 @@ function cwt_news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 23,
       ),
       'meta' => array(
         'label' => 'above',
@@ -174,6 +174,7 @@ function cwt_news_field_default_field_instances() {
     'label' => 'Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 0,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -188,6 +189,7 @@ function cwt_news_field_default_field_instances() {
       'entity_translation_sync' => FALSE,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -266,7 +268,8 @@ function cwt_news_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-aggregated_news-field_editorial_section_multiple'.
+  // Exported field_instance:
+  // 'node-aggregated_news-field_editorial_section_multiple'.
   $field_instances['node-aggregated_news-field_editorial_section_multiple'] = array(
     'bundle' => 'aggregated_news',
     'default_value' => NULL,
@@ -284,7 +287,7 @@ function cwt_news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'meta' => array(
         'label' => 'above',

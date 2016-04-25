@@ -17,14 +17,6 @@ function dt_funding_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_funding',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -45,8 +37,8 @@ function dt_funding_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'policy' => 'policy',
           'funding' => 'funding',
+          'policy' => 'policy',
         ),
       ),
       'target_type' => 'node',
@@ -62,14 +54,6 @@ function dt_funding_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_fundings',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

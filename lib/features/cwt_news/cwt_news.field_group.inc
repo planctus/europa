@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function cwt_news_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function cwt_news_field_group_info() {
       ),
     ),
   );
-  $export['group_news_content|node|aggregated_news|form'] = $field_group;
+  $field_groups['group_news_content|node|aggregated_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -66,7 +66,7 @@ function cwt_news_field_group_info() {
       ),
     ),
   );
-  $export['group_news_metadata|node|aggregated_news|form'] = $field_group;
+  $field_groups['group_news_metadata|node|aggregated_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -93,7 +93,7 @@ function cwt_news_field_group_info() {
       ),
     ),
   );
-  $export['group_news_meta|node|aggregated_news|full'] = $field_group;
+  $field_groups['group_news_meta|node|aggregated_news|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +120,13 @@ function cwt_news_field_group_info() {
       ),
     ),
   );
-  $export['group_news_meta|node|aggregated_news|meta'] = $field_group;
+  $field_groups['group_news_meta|node|aggregated_news|meta'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Meta');
+  t('Metadata');
+
+  return $field_groups;
 }

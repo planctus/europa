@@ -136,24 +136,27 @@ function europa_form_element(&$variables) {
 
   // See http://getbootstrap.com/css/#forms-controls.
   if (isset($element['#type'])) {
-    if ($element['#type'] == "radio") {
-      $attributes['class'][] = 'radio';
-      $is_radio = TRUE;
-    }
-    elseif ($element['#type'] == "checkbox") {
-      $attributes['class'][] = 'checkbox';
-      $is_checkbox = TRUE;
-    }
-    else {
-      // Check if it is not our search form. Because we don't want the default
-      // bootstrap class here.
-      if (!in_array('form-item-QueryText', $attributes['class'])) {
-        $attributes['class'][] = 'form-group';
-        // Apply an extra wrapper class to our select list.
-        if ($element['#type'] == 'select') {
-          $attributes['class'][] = 'form-select';
+    switch ($element['#type']) {
+      case "radio":
+        $attributes['class'][] = 'radio';
+        $is_radio = TRUE;
+        break;
+
+      case "checkbox":
+        $attributes['class'][] = 'checkbox';
+        $is_checkbox = TRUE;
+        break;
+
+      default:
+        // Check if it is not our search form. Because we don't want the default
+        // bootstrap class here.
+        if (!in_array('form-item-QueryText', $attributes['class'])) {
+          $attributes['class'][] = 'form-group';
+          // Apply an extra wrapper class to our select list.
+          if ($element['#type'] == 'select') {
+            $attributes['class'][] = 'form-select';
+          }
         }
-      }
     }
   }
 
@@ -198,11 +201,9 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       $output .= $feedback_message;
-
       break;
 
     case 'after':
-
       if ($is_radio || $is_checkbox) {
         $output .= ' ' . $prefix . $element['#children'] . $suffix;
       }
@@ -212,11 +213,9 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . theme('form_element_label', $variables) . "\n";
       $output .= $feedback_message;
-
       break;
 
-    case 'none':
-    case 'attribute':
+    default:
       // Output no label and no required marker, only the children.
       if (!empty($description)) {
         $output .= $description;
@@ -224,8 +223,13 @@ function europa_form_element(&$variables) {
 
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       $output .= $feedback_message;
+  }
 
-      break;
+  // Adding the calendar icon on text fields with JS UI PopUp calendar.
+  if ($variables['element']['#type'] == 'date_popup') {
+    $prefix = '<div class="date-picker">';
+    $suffix = '<span class="icon icon--calendar"></span>';
+    $output = ' ' . $prefix . $element['#children'] . $suffix . "\n";
   }
 
   $output .= "</div>\n";
@@ -444,231 +448,20 @@ function europa_html_head_alter(&$head_elements) {
 }
 
 /**
- * Helper function for display listings.
- */
-function _europa_field_component_listing($variables, $config) {
-  $config += array(
-    'modifier' => 'default',
-    'wrapper_modifier' => '',
-    'layout' => 'default',
-    'listing_wrapper_element' => 'div',
-    'item_wrapper_element' => 'div',
-  );
-
-  $modifier_class = ' ' . trim($config['modifier']);
-  $wrapper_class = $config['modifier'] == 'default' ? '' : ' listing__wrapper--' . $config['layout'];
-  $wrapper_class .= ' ' . trim($config['wrapper_modifier']);
-
-  $columns_num = 1;
-  if ($config['layout'] == 'two-columns') {
-    $columns_num = 2;
-  }
-  elseif ($config['layout'] == 'three-columns') {
-    $columns_num = 3;
-  }
-
-  $items_per_row = 1;
-  if ($config['layout'] == 'row-two') {
-    $items_per_row = 2;
-  }
-  elseif ($config['layout'] == 'row-three') {
-    $items_per_row = 3;
-  }
-
-  // Add a new variable that indicates the row structure.
-  $is_row = $items_per_row > 1;
-
-  // Distribute them into columns.
-  $total = count($variables['items']);
-  $columns = array();
-  $max_items_in_column = array();
-
-  for ($i = 0; $i < $columns_num; $i++) {
-    $max_items_in_column[] = floor(($total + $columns_num - ($i + 1)) / $columns_num);
-  }
-
-  $counter = 0;
-  for ($i = 0; $i < $columns_num; $i++) {
-    for ($j = 0; $j < $max_items_in_column[$i]; $j++) {
-      $item = $variables['items'][$counter];
-      // Row content.
-      switch ($config['view_mode']) {
-        case 'title':
-          $rendered_item = '' . drupal_render($item) . '';
-          break;
-
-        default:
-          $rendered_item = drupal_render($item);
-          break;
-      }
-      $columns[$i][] = '<' . $config['item_wrapper_element'] . ' class="listing__item">' . $rendered_item . '</' . $config['item_wrapper_element'] . '>';
-      $counter++;
-    }
-  }
-
-  // Assemble the markup.
-  $output = '<div class="listing__wrapper' . $wrapper_class . '">';
-  foreach ($columns as $column) {
-    $output .= '<' . $config['listing_wrapper_element'] . ' class="listing' . $modifier_class . '">';
-
-    // Start Itemcounter.
-    $item_in_row = 0;
-
-    // Loop over all our items.
-    foreach ($column as $key => $item) {
-
-      // In row logic we need to add extra markup.
-      if ($is_row) {
-        if ($item_in_row == $items_per_row || $item_in_row == 0) {
-          $output .= '<div class="clearfix">';
-          $item_in_row = 0;
-        }
-        $item_in_row++;
-      }
-
-      // Add the actual item.
-      $output .= $item;
-
-      // In row logic we need to add extra markup.
-      if ($is_row && ($item_in_row == $items_per_row || count($column) == $key + 1)) {
-        $output .= '</div>';
-      }
-    }
-
-    $output .= '</' . $config['listing_wrapper_element'] . '>';
-  }
-  $output .= '</div>';
-
-  return $output;
-}
-
-/**
- * Override of theme_field().
- */
-function europa_field($variables) {
-  $element = $variables['element'];
-  $field_type = isset($element['#field_type']) ? $element['#field_type'] : NULL;
-
-  switch ($field_type) {
-    case 'entityreference':
-      if ($element['#formatter'] == 'entityreference_entity_view') {
-        // First node from entity reference.
-        $reference = '';
-        if (isset($element[0])) {
-          $reference = array_shift($element[0]);
-        }
-        $first_node = is_array($reference) ? array_shift($reference) : NULL;
-        $layout_name = isset($variables['nexteuropa_listing_columns']) ? $variables['nexteuropa_listing_columns'] : FALSE;
-        $layout_name_clean = str_replace('_', '-', $layout_name);
-
-        $settings = array();
-        $settings['view_mode'] = $first_node['#view_mode'];
-        $settings['layout'] = $layout_name_clean;
-        $settings['modifier'] = isset($variables['nexteuropa_listing_modifier']) ? $variables['nexteuropa_listing_modifier'] : '';
-        $settings['wrapper_modifier'] = isset($variables['nexteuropa_listing_wrapper_modifier']) ? $variables['nexteuropa_listing_wrapper_modifier'] : '';
-
-        // Custom listing settings based on view mode.
-        $listing_view_modes = array('title', 'meta', 'teaser', 'image_label');
-        if (isset($first_node['#view_mode']) && in_array($first_node['#view_mode'], $listing_view_modes)) {
-          switch ($first_node['#view_mode']) {
-            case 'title':
-              $settings['modifier'] .= ' listing--title';
-              $settings['wrapper_modifier'] .= ' listing--title__wrapper';
-              $settings['listing_wrapper_element'] = 'ul';
-              $settings['item_wrapper_element'] = 'li';
-              break;
-
-            case 'meta':
-              $settings['modifier'] .= ' listing--meta';
-              $settings['wrapper_modifier'] .= ' listing--meta__wrapper';
-              break;
-
-            case 'teaser':
-              $settings['modifier'] .= ' listing--teaser';
-              $settings['wrapper_modifier'] .= ' listing--teaser__wrapper';
-              break;
-          }
-
-          return _europa_field_component_listing($variables, $settings);
-        }
-      }
-
-      break;
-  }
-
-  if (isset($element['#formatter'])) {
-
-    // Handling nexteuropa_formatters custom cases.
-    switch ($element['#formatter']) {
-      case 'context_nav_item':
-        $output = '';
-
-        // Render the items.
-        foreach ($variables['items'] as $delta => $item) {
-          $output .= drupal_render($item);
-        }
-        return $output;
-
-      case 'nexteuropa_tags':
-        $output = '<div class="tags">';
-        // Label formatting.
-        if (!$variables['label_hidden']) {
-          $output .= '<div class="tags__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
-        }
-        // Items list formatting.
-        $output .= '<div class="tags__items"' . $variables['content_attributes'] . '>';
-        foreach ($variables['items'] as $delta => $item) {
-          $output .= drupal_render($item);
-        }
-        // Closing both tags and tags__items.
-        $output .= '</div></div>';
-        return $output;
-
-    }
-  }
-
-  // Handling default output following BEM syntax.
-  $output = '';
-  $classes = array();
-
-  // Render the label, if it's not hidden.
-  if (!$variables['label_hidden']) {
-    $output .= '<div class="field__label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
-    $classes[] = 'field--labeled';
-  }
-
-  // Render the items.
-  if ($variables['element']['#view_mode'] == 'title') {
-    foreach ($variables['items'] as $delta => $item) {
-      $output .= drupal_render($item);
-    }
-  }
-  else {
-    $output .= '<div class="field__items"' . $variables['content_attributes'] . '>';
-    foreach ($variables['items'] as $delta => $item) {
-      // We should pass along the parent object if we have access to it.
-      if (isset($item['#file']) && isset($variables['element']['#object'])) {
-        $item['#file']->entity = $variables['element']['#object'];
-      }
-      $output .= drupal_render($item);
-    }
-    $output .= '</div>';
-
-    // Render the top-level DIV.
-    $output = '<div ' . $variables['attributes'] . ' class="field field--' . strtr($variables['element']['#field_name'], '_', '-') . ' ' . implode(' ', $classes) . '">' . $output . '</div>';
-  }
-
-  return $output;
-}
-
-/**
  * A search_form alteration.
  */
 function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
   $form['search_input_group']['#prefix'] = '';
   $form['search_input_group']['#suffix'] = '';
+  $form['search_input_group']['europa_search_submit']['#prefix'] = '<div class="search-form__btn-wrapper">';
+  $form['search_input_group']['europa_search_submit']['#suffix'] = '</div>';
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
+  $form['search_input_group']['QueryText']['#prefix'] = '<div class="search-form__textfield-wrapper">';
+  $form['search_input_group']['QueryText']['#suffix'] = '</div>';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+
+  unset($form['search_input_group']['QueryText']['#attributes']['placeholder']);
+  unset($form['search_input_group']['europa_search_submit']['#attributes']['tabindex']);
 }
 
 /**
@@ -807,8 +600,9 @@ function _europa_file_markup($file, array $url, $modifier = NULL, $subfile = FAL
   $file_extension = strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
 
   // Get our full language string.
-  if (isset($file->language)) {
-    $file_language_string = _dt_shared_functions_get_language_obj($file->language);
+  if (isset($file->entity->language) || isset($file->language)) {
+    $language_to_use = isset($file->entity->language) ? entity_translation_get_existing_language('node', $file->entity) : $file->language;
+    $file_language_string = _dt_shared_functions_get_language_obj($language_to_use);
   }
 
   // If we have a full language string and it's not a subfile, we add it to the
@@ -1579,4 +1373,19 @@ function europa_pager_last($variables) {
   }
 
   return $output;
+}
+
+/**
+ * Implements form_alter().
+ */
+function europa_form_alter(&$form, &$form_state, $form_id) {
+
+  if (isset($form['views_bulk_operations'])) {
+    $children = element_children($form['views_bulk_operations']);
+    foreach ($children as $child) {
+      if ($form['views_bulk_operations'][$child]['#type'] == 'checkbox') {
+        $form['views_bulk_operations'][$child]['#title'] = ' ';
+      }
+    }
+  }
 }

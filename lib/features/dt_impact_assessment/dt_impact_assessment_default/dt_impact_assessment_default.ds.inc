@@ -36,16 +36,7 @@ function dt_impact_assessment_default_ds_field_settings_info() {
     ),
     'title_field' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'h3',
-          'fi-cl' => 'listing__title',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );
