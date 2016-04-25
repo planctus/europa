@@ -38,7 +38,7 @@
     </delete>
     <echo msg="Copy files to acquia-cloud/docroot." />
     <copy todir="${acquia.docroot}">
-        <fileset dir="${platform.dist.dir}">
+        <fileset dir="${phing.project.tmp.dir}/build">
           <patternset>
             <exclude name="**/settings.php"/>
             <exclude name="**/sites.php/"/>
@@ -181,8 +181,8 @@
 
     <!-- Assemble the new release. -->
     <phingcall target="drush-make-no-core">
-      <property name="platform.build.dir" value="${release.make}" />
       <property name="drush.make.target.file" value="${subsite.make}" />
+      <property name="drush.make.root" value="${release.make}" />
     </phingcall>
     <copy todir="${release.build}" overwrite="true">
       <fileset dir="${release.make}/sites/all" />
@@ -212,5 +212,54 @@
     </copy>
 
   </target>
+
+  <!-- Unpack the platform. -->
+  <target name="unpack-acceptance-platform" depends="download-platform">
+    <!-- Use the faster native commands on UNIX systems. -->
+    <if>
+      <os family="unix" />
+      <then>
+        <echo msg='mkdir "${phing.project.tmp.dir}/build"' />
+        <exec
+                command='mkdir "${phing.project.tmp.dir}/build"'
+                dir="${project.basedir}"
+                passthru="true"
+        />
+        <echo msg='tar xzf "${platform.package.tarball}" -C "${phing.project.tmp.dir}/build"' />
+        <exec
+                command='tar xzf "${platform.package.tarball}" -C "${phing.project.tmp.dir}/build"'
+                dir="${project.basedir}"
+                passthru="true"
+                checkreturn="true"
+        />
+      </then>
+      <else>
+        <untar file="${platform.package.tarball}" todir="${phing.project.tmp.dir}/build" />
+      </else>
+    </if>
+  </target>
+
+  <!-- Download development modules. -->
+  <target name="download-development-modules-acceptance" depends="generate-development-makefile">
+    <echo msg="Download development modules." />
+    <phingcall target="drush-make-no-core">
+      <property name="drush.make.target.file" value="${subsite.temporary.development.make}" />
+      <property name="drush.make.root" value="${phing.project.tmp.dir}/build" />
+    </phingcall>
+  </target>
+
+  <target name="copy-acceptance-files">
+    <exec
+      command='cp -r ${dist.build.dir}/* "${phing.project.tmp.dir}/build/sites/all/"'
+      dir="${project.basedir}"
+      passthru="true"
+      checkreturn="true"
+    />
+  </target>
+
+  <target
+    name="build-acceptance"
+    description="Build a version of the subsite intended to distribute as a release package."
+    depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance" />
 
 </project>
