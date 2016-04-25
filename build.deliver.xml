@@ -181,8 +181,8 @@
 
     <!-- Assemble the new release. -->
     <phingcall target="drush-make-no-core">
-      <property name="platform.build.dir" value="${release.make}" />
       <property name="drush.make.target.file" value="${subsite.make}" />
+      <property name="drush.make.root" value="${release.make}" />
     </phingcall>
     <copy todir="${release.build}" overwrite="true">
       <fileset dir="${release.make}/sites/all" />
