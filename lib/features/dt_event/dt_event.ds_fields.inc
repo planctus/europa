@@ -97,6 +97,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
         'class' => [
           'btn',
           'btn-ctn',
+          'pull-left',
         ],
       ],
       'html' => TRUE,
@@ -147,7 +148,7 @@ function _dt_event_ds_fields_livestreaming($field) {
 
     // Return the text if it is found.
     if ($streaming_text) {
-      return $streaming_text;
+      return '<span class="btn pull-left">' . $streaming_text . '</span>';
     }
   }
 }
