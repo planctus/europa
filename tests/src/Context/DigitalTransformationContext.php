@@ -374,4 +374,12 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
   }
 
+  /**
+   * @Given I go to the group roles page
+   */
+  public function iGoToTheGroupRolesPage()
+  {
+    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
+  }
+
 }

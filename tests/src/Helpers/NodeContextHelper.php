@@ -88,4 +88,13 @@ class NodeContextHelper {
     return $this->getNodePath() . '/edit/add/' . $this->nodeObject->language . '/' . $target . '_' . $target;
   }
 
+  /**
+   * Get the OG roles path for a group.
+   *
+   * @return string
+   *   The url as string.
+   */
+  public function getGroupRolesPath() {
+    return '/group/node/' . $this->nodeObject->nid . '/admin/roles';
+  }
 }
