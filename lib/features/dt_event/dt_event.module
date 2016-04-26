@@ -52,6 +52,7 @@ function dt_event_preprocess_node(&$vars) {
     $past_date = format_date($date['value'], 'dt_past_event');
     $current_date = format_date(time(), 'dt_event');
     $is_streaming = $entity->field_event_is_live_streaming->value();
+    // Cancelled, it shows the date with a modifier.
     $modifier = $node->event_status == 4 ? 'page-header__date--cancelled ' : '';
 
     // Build the markup.
@@ -69,7 +70,7 @@ function dt_event_preprocess_node(&$vars) {
         $markup .= $past_date;
         break;
 
-      // Cancelled, it shows the starting date with a strikethrough.
+      // Cancelled, apply the right date format.  
       case 4:
         $markup .= time() > $end_date ? $past_date : $start_date;
         break;
