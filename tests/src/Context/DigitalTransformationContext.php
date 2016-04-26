@@ -82,6 +82,15 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Goes to the OG group's roles pages.
+   *
+   * @Given I go to the group roles page
+   */
+  public function iGoToTheGroupRolesPage() {
+    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
+  }
+
+  /**
    * Adds dummy text.
    *
    * @When I fill :field with :length characters of dummy text
@@ -97,7 +106,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()), $this->getSession());
   }
 
   /**
@@ -372,14 +381,6 @@ class DigitalTransformationContext extends RawDrupalContext {
         throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
       }
     }
-  }
-
-  /**
-   * @Given I go to the group roles page
-   */
-  public function iGoToTheGroupRolesPage()
-  {
-    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
   }
 
 }

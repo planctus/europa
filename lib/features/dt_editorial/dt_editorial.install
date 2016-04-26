@@ -12,29 +12,21 @@ function dt_editorial_enable() {
 
   // The objective here is to change the order of the workflow states:
   // Expired by Archived.
-  $result = db_select('workbench_moderation_states', 'wms')
-    ->fields('wms', array('name'))
-    ->condition('name', 'archived', '=')
-    ->execute()
-    ->fetchObject();
+  $state_weight = array(
+    'draft' => -10,
+    'needs_review' => -9,
+    'request_validation' => -8,
+    'validated' => -7,
+    'published' => -6,
+    'archived' => -5,
+    'expired' => -4,
+  );
 
-  if ($result) {
+  $types = workbench_moderation_states();
+  foreach ($types as $type) {
     db_update('workbench_moderation_states')
-      ->fields(array('weight' => 98))
-      ->condition('name', 'archived')
-      ->execute();
-  }
-
-  $result = db_select('workbench_moderation_states', 'wms')
-    ->fields('wms', array('name'))
-    ->condition('name', 'expired', '=')
-    ->execute()
-    ->fetchObject();
-
-  if ($result) {
-    db_update('workbench_moderation_states')
-      ->fields(array('weight' => 99))
-      ->condition('name', 'expired')
+      ->fields(array('weight' => $state_weight[$type->name]))
+      ->condition('name', $type->name)
       ->execute();
   }
 

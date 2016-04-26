@@ -12,18 +12,15 @@ Feature: In order to make roles and permissions management easy
     And I should see text matching "translator"
     And I should see text matching "translator reviewer"
 
-  Scenario Outline: All editorial teams have the same OG roles
-    Given "editorial_team" content:
-      | title   | field_core_description |
-      | <title> | Content description    |
+  Scenario: All editorial teams have the same OG roles
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing an "editorial_team" content:
+      | title    | Editorial Team Test |
+      | status   | 1       |
+      | language | en      |
     And I go to the group roles page
     Then I should see text matching "author"
     And I should see text matching "validator"
     And I should see text matching "reviewer"
     And I should see text matching "translator"
     And I should see text matching "translator reviewer"
-
-    Examples:
-      | title            |
-      | Editorial Team 1 |
-      | Editorial Team 2 |
