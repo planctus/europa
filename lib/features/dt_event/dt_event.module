@@ -37,3 +37,83 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
     }
   }
 }
+
+/**
+ * Reset all HTML for the field.
+ */
+function dt_event_preprocess_node(&$vars) {
+	if ($vars['type'] == 'event' && $vars['view_mode'] == 'full') {
+		$entity = entity_metadata_wrapper('node', $vars['node']);
+		$node = $vars['node'];
+		$date = $entity->field_event_date->value();
+		$location = $entity->field_core_location->value();
+		$start_date = format_date($date['value'], 'dt_event');
+		$current_date = format_date(time(), 'dt_event');
+		$streaming = $entity->field_event_live_streaming_link->value();
+		$is_streaming = $entity->field_event_is_live_streaming->value();
+
+		// Build the markup
+		$wrapper = '<div class="page-header__eventinfo">';
+		// Event date, current date if it's an ongoing event.
+		switch ($node->event_status) { 
+			case 2:
+				$event_date = '<div class="icon icon--calendar event__date">' . $current_date . '</div>';
+				break;
+
+			default:	
+				$event_date = '<div class="icon icon--calendar event__date">' . $start_date . '</div>';
+		}
+
+		// Event location, online event only.
+		if (!$entity->field_event_is_online) {
+			$event_country = '<span class="icon icon--location event__location">' . t('Online only') . ', ' . $country . '</span>';
+		}
+		// All of the others.	
+		else {
+			$event_country = '<span class="icon icon--location event__location">';
+
+			// We only get the country ISO code from addressfield.
+			if (!empty($location['country'])) {
+				$countries = country_get_list();
+				$event_country .= $countries[$location['country']] . ', ';
+			}
+
+			$event_country .= $location['locality'] . '</span>';
+ 		}
+
+		if ($is_streaming) {
+			$event_streaming = '<span icon icon--streaming class="event__livestreaming">' . t('live streaming available') . '</span>';
+		}
+
+		$closure = '</div>';
+		$markup = $wrapper . $event_date . $event_country . $event_streaming . $closure;
+		$vars['dt_event_header'] = $markup;
+	}
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function dt_event_date_format_types() {
+  return array(
+    'dt_event'  => t('Event date'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function dt_event_date_formats() {
+  $formats = array();
+
+  $formats[] = array(
+    'type'    => 'dt_event',
+    'format'  => 'l j F', 
+    'locales' => array(),
+  );
+
+
+ 	variable_set('date_format_' . $formats[0]['type'], $formats[0]['format']);
+
+  return $formats;
+}
