@@ -48,55 +48,61 @@ function dt_event_preprocess_node(&$vars) {
     $date = $entity->field_event_date->value();
     $location = $entity->field_core_location->value();
     $start_date = format_date($date['value'], 'dt_event');
+    $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
+    $past_date = format_date($date['value'], 'dt_past_event');
     $current_date = format_date(time(), 'dt_event');
-    $streaming = $entity->field_event_live_streaming_link->value();
     $is_streaming = $entity->field_event_is_live_streaming->value();
+    $modifier = $node->event_status == 4 ? 'page-header__date--cancelled ' : ''; 
 
     // Build the markup.
     $wrapper = '<div class="page-header__eventinfo">';
-    // Event date, current date if it's an ongoing event.
-    $event_date = '<div class="icon icon--calendar event__date">';
+    $markup = '<div class="' . $modifier . 'page-header__date icon icon--calendar">';
 
     switch ($node->event_status) {
-      // Ongoing.
+      // Ongoing, it shows the current date.
       case 2:
-        $event_date .= $current_date;
+        $markup .= $current_date;
+        break;
+      // Past event, it shows also the year.
+      case 3:
+        $markup .= $past_date;
         break;
 
-      // Cancelled.
+      // Cancelled, it shows the starting date with a strikethrough
       case 4:
-        $event_date = '<div class="icon icon--calendar event__date--cancelled">' . $start_date . '</div>';
+      	$markup .= time() > $end_date ? $past_date : $start_date; 
         break;
 
+      // Default is showing the start date of the event.
       default:
-        $event_date .= $start_date;
+        $markup .= $start_date;
     }
 
-    $event_date .= '</div>';
+    $markup .= '</div>';
 
     // Event location, online event only.
     if (!$entity->field_event_is_online) {
-      $event_country = '<span class="icon icon--location event__location">' . t('Online only') . '</span>';
+      $markup .= '<span class="icon icon--location page-header__location">' . t('Online only') . '</span>';
     }
     // All of the others.
     else {
-      $event_country = '<span class="icon icon--location event__location">' . $location['locality'];
+      $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
 
       // We only get the country ISO code from addressfield.
       if (!empty($location['country'])) {
         $countries = country_get_list();
-        $event_country .= ', ' . $countries[$location['country']];
+        $markup .= ', ' . $countries[$location['country']];
       }
 
       '</span>';
     }
 
     if ($is_streaming && ($node->event_status !== 3 && $node->event_status !== 4)) {
-      $event_streaming = '<span icon icon--streaming class="event__livestreaming">' . t('live streaming available') . '</span>';
+      $markup .= '<span icon icon--streaming class="page-header__livestreaming">' . t('live streaming available') . '</span>';
     }
 
     $closure = '</div>';
-    $markup = $wrapper . $event_date . $event_country . $event_streaming . $closure;
+    $markup = $wrapper . $markup . $closure;
     $vars['dt_event_header'] = $markup;
   }
 }
@@ -107,6 +113,7 @@ function dt_event_preprocess_node(&$vars) {
 function dt_event_date_format_types() {
   return array(
     'dt_event'  => t('Event date'),
+    'dt_past_event'  => t('Past event date'),
   );
 }
 
@@ -122,7 +129,15 @@ function dt_event_date_formats() {
     'locales' => array(),
   );
 
-  variable_set('date_format_' . $formats[0]['type'], $formats[0]['format']);
+  $formats[] = array(
+    'type'    => 'dt_past_event',
+    'format'  => 'j F Y',
+    'locales' => array(),
+  );
+
+  foreach ($formats as $key => $format) {
+  	variable_set('date_format_' . $format['type'], $format['format']);
+	}
 
   return $formats;
 }
