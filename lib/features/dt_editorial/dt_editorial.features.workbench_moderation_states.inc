@@ -13,7 +13,7 @@ function dt_editorial_workbench_moderation_export_states() {
       'name' => 'request_validation',
       'label' => 'Request Validation',
       'description' => 'Requesting validation',
-      'weight' => 0,
+      'weight' => -8,
     ),
   );
   return $items;
