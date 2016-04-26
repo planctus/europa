@@ -108,6 +108,15 @@
         </phingcall>
     </target>
 
+    <!-- Make the development version of the subsite. -->
+    <target name="make-theme">
+        <echo msg="Make the subsite." />
+        <phingcall target="drush-make-no-core">
+            <property name="drush.make.target.file" value="lib/themes/europa/europa.make" />
+            <property name="drush.make.root" value="${platform.build.dir}" />
+        </phingcall>
+    </target>
+
     <!-- Make the distribution version of the subsite. -->
     <target name="make-dist">
         <echo msg="Delete temporary build folder." />
@@ -308,7 +317,7 @@
     <target
         name="build-dev"
         description="Build a local development version of the subsite."
-        depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
+        depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
     />
 
     <target
