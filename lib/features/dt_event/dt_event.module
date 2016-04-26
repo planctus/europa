@@ -66,11 +66,11 @@ function dt_event_preprocess_node(&$vars) {
 
     // Event location, online event only.
     if (!$entity->field_event_is_online) {
-      $event_country = '<span class="icon icon--location event__location">' . t('Online only') . ', ' . $country . '</span>';
+      $event_country = '<span class="icon icon--location event__location">' . t('Online only') . '</span>';
     }
     // All of the others.
     else {
-      $event_country .= '<span class="icon icon--location event__location">' . $location['locality'];
+      $event_country = '<span class="icon icon--location event__location">' . $location['locality'];
 
       // We only get the country ISO code from addressfield.
       if (!empty($location['country'])) {
