@@ -55,14 +55,23 @@ function dt_event_preprocess_node(&$vars) {
     // Build the markup.
     $wrapper = '<div class="page-header__eventinfo">';
     // Event date, current date if it's an ongoing event.
+    $event_date = '<div class="icon icon--calendar event__date">';
+
     switch ($node->event_status) {
+    	// Ongoing.
       case 2:
-        $event_date = '<div class="icon icon--calendar event__date">' . $current_date . '</div>';
+        $event_date .= $current_date;
         break;
+      // Cancelled.
+      case 4:
+      	$event_date = '<div class="icon icon--calendar event__date--cancelled">' . $start_date . '</div>';
+      	break;
 
       default:
-        $event_date = '<div class="icon icon--calendar event__date">' . $start_date . '</div>';
+        $event_date .= $start_date;
     }
+
+    $event_date .= '</div>';
 
     // Event location, online event only.
     if (!$entity->field_event_is_online) {
@@ -81,7 +90,7 @@ function dt_event_preprocess_node(&$vars) {
       '</span>';
     }
 
-    if ($is_streaming) {
+    if ($is_streaming && ($node->event_status !== 3 && $node->event_status !== 4)) {
       $event_streaming = '<span icon icon--streaming class="event__livestreaming">' . t('live streaming available') . '</span>';
     }
 
