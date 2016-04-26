@@ -4,7 +4,6 @@ core = 7.x
 package = NextEuropa Digital Transformation
 version = 7.x-1.0
 dependencies[] = conditional_fields
-dependencies[] = dt_moderation
 dependencies[] = options
 features[conditional_fields][] = node:editorial_team
 features[features_api][] = api:2
