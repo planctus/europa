@@ -61,6 +61,16 @@ class NodeContextHelper {
   }
 
   /**
+   * Get the node object.
+   *
+   * @return object
+   *   The node.
+   */
+  public function getNode() {
+    return $this->nodeObject;
+  }
+
+  /**
    * Get the node path.
    *
    * @return string

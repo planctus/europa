@@ -1,28 +1,52 @@
-@api @information
-Feature: In order to make roles and permissions management easy
-  As an administrator user
-  I want to have the same roles and permissions in each Editorial team
+@api @information @wip
+Feature: In order to guarantee that content can be managed only by the appropriate users
+  As a producto owner
+  I want to have the editorial workflow control access
 
-  Scenario: Check the default settings for the group type
-    Given I am logged in as a user with the "administrator" role
-    And am on "admin/config/group/roles/node/editorial_team"
-    Then I should see text matching "author"
-    And I should see text matching "validator"
-    And I should see text matching "reviewer"
-    And I should see text matching "translator"
-    And I should see text matching "translator reviewer"
-
-  Scenario: New editorial teams have the same OG roles
-    Given I am logged in as a user with the "administrator" role
+  Background:
+    Given users:
+      | name           | mail                      | status | roles       |
+      | Mike_First     | MikeFirst@example.com     | 1      | contributor |
+      | Agatha_First   | AgathaFirst@example.com   | 1      | contributor |
+      | Vanessa_First  | VanessaFirst@example.com  | 1      | contributor |
+      | Rocky_First    | RockyFirst@example.com    | 1      | contributor |
+      | Mike_Second    | MikeSecond@example.com    | 1      | contributor |
+      | Agatha_Second  | AgathaSecond@example.com  | 1      | contributor |
+      | Vanessa_Second | VanessaSecond@example.com | 1      | contributor |
+      | Rocky_Second   | RockySecond@example.com   | 1      | contributor |
+      | Mike_Both      | MikeBoth@example.com      | 1      | contributor |
+      | Agatha_Both    | AgathaBoth@example.com    | 1      | contributor |
+      | Vanessa_Both   | VanessaBoth@example.com   | 1      | contributor |
+      | Rocky_Both     | Rocky@example.com         | 1      | contributor |
     Given I am viewing an "editorial_team" content:
-      | title    | Editorial Team Test |
-      | status   | 1       |
-      | language | en      |
-    And I go to the group roles page
-    Then I should see text matching "author"
-    And I should see text matching "validator"
-    And I should see text matching "reviewer"
-    And I should see text matching "translator"
-    And I should see text matching "translator reviewer"
+      | title                        | First team         |
+      | status                       | 1                  |
+      | language                     | en                 |
+      | og_roles_permissions[und]    | 0                  |
+      | field_editorial_types[und][] | announcement, page |
+    And I add "Mike_First" to the group as "member"
+    And I add "Agatha_First" to the group as "author"
+    And I add "Vanessa_First" to the group as "validator"
+    And I add "Rocky_First" to the group as "reviewer"
+    And I add "Mike_Both" to the group as "member"
+    And I add "Agatha_Both" to the group as "author"
+    And I add "Vanessa_Both" to the group as "validator"
+    And I add "Rocky_Both" to the group as "reviewer"
+    Given I am viewing an "editorial_team" content:
+      | title                        | Second team              |
+      | status                       | 1                        |
+      | language                     | en                       |
+      | og_roles_permissions[und]    | 0                        |
+      | field_editorial_types[und][] | announcement, department |
+    And I add "Mike_Second" to the group as "member"
+    And I add "Agatha_Second" to the group as "author"
+    And I add "Vanessa_Second" to the group as "validator"
+    And I add "Rocky_Second" to the group as "reviewer"
+    And I add "Mike_Both" to the group as "member"
+    And I add "Agatha_Both" to the group as "author"
+    And I add "Vanessa_Both" to the group as "validator"
+    And I add "Rocky_Both" to the group as "reviewer"
 
-    Background:
+  Scenario:
+    When I am logged in as "Mike_First"
+    And I am at "content/first-team"

@@ -143,7 +143,8 @@ function _dt_editorial_custom_og_permissions($roles) {
     if (isset($content_type_specific_permissions[$role])) {
       // We merge the permissions of multiple roles into a single set.
       foreach ($content_type_specific_permissions[$role] as $permission_name => $custom_role_permission) {
-        // If user has the TRUE permission already added by another role, keep it TRUE.
+        // If user has the TRUE permission already added by another role, keep
+        // it TRUE.
         if (isset($perms[$permission_name])) {
           $perms[$permission_name] = !$perms[$permission_name] ? $custom_role_permission : TRUE;
         }
