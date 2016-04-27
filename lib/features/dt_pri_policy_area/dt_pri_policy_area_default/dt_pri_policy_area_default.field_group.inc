@@ -485,7 +485,7 @@ function dt_pri_policy_area_default_field_group_info() {
       'label' => 'Actions',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'sidebar-field-group__main',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',
