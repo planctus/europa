@@ -24,3 +24,5 @@ Feature: In order to make roles and permissions management easy
     And I should see text matching "reviewer"
     And I should see text matching "translator"
     And I should see text matching "translator reviewer"
+
+    Background:
