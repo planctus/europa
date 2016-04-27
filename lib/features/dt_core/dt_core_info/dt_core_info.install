@@ -137,8 +137,8 @@ function dt_core_info_update_7109() {
 }
 
 /**
- * DTTSB-156: Enable dt_moderation.
+ * DTTSB-125 - Enable DT Editorial feature.
  */
 function dt_core_info_update_7110() {
-  module_enable(['dt_editorial']);
+  module_enable(array('dt_editorial'));
 }
