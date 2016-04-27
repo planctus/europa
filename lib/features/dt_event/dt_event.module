@@ -45,13 +45,15 @@ function dt_event_preprocess_node(&$vars) {
   if ($vars['type'] == 'event' && $vars['view_mode'] == 'full') {
     $entity = entity_metadata_wrapper('node', $vars['node']);
     $node = $vars['node'];
+    $lang = entity_translation_get_existing_language('node', $node);
     $date = $entity->field_event_date->value();
     $location = $entity->field_core_location->value();
-    $start_date = format_date($date['value'], 'dt_event');
+    $start_date = format_date($date['value'], 'dt_event', '', NULL, $lang);
     $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-    $past_date = format_date($date['value'], 'dt_past_event');
-    $current_date = format_date(time(), 'dt_event');
+    $past_date = format_date($date['value'], 'dt_past_event', '', NULL, $lang);
+    $current_date = format_date(time(), 'dt_event', '', NULL, $lang);
     $is_streaming = $entity->field_event_is_live_streaming->value();
+
     // Cancelled, it shows the date with a modifier.
     $modifier = $node->event_status == 4 ? 'page-header__date--cancelled ' : '';
 
@@ -83,7 +85,7 @@ function dt_event_preprocess_node(&$vars) {
     $markup .= '</div>';
 
     // Event location, online event only.
-    if (!$entity->field_event_is_online) {
+    if ($entity->field_event_is_online->value()) {
       $markup .= '<span class="icon icon--location page-header__location">' . t('Online only') . '</span>';
     }
     // All of the others.
@@ -96,11 +98,11 @@ function dt_event_preprocess_node(&$vars) {
         $markup .= ', ' . $countries[$location['country']];
       }
 
-      '</span>';
+      $markup .= '</span>';
     }
 
     if ($is_streaming && ($node->event_status !== 3 && $node->event_status !== 4)) {
-      $markup .= '<span icon icon--streaming class="page-header__livestreaming">' . t('live streaming available') . '</span>';
+      $markup .= '<span class="icon icon--livestreaming page-header__livestreaming">' . t('live streaming available') . '</span>';
     }
 
     $closure = '</div>';
