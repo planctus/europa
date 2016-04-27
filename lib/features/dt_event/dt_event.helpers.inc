@@ -72,6 +72,7 @@ function _dt_event_entity_add_status_property(&$entity) {
           }
           break;
         }
+        break;
 
       default:
         // In case it's undefined, we log a message.
@@ -79,6 +80,9 @@ function _dt_event_entity_add_status_property(&$entity) {
         break;
     }
   }
+
+  // Also add the livestream information.
+  $entity->event_livestream_status = _dt_event_live_stream_state($entity);
 }
 
 /**
@@ -107,6 +111,9 @@ function _dt_event_get_end_of_day($timestamp, $timezone = 'UTC') {
 /**
  * Helper function to check if livestream is active on an event.
  *
+ * This function should, ideally, not be called directly. Instead use the entity
+ * property $entity->event_livestream_status.
+ *
  * @param object $event
  *   The event node object.
  *
@@ -128,16 +135,19 @@ function _dt_event_live_stream_state($event) {
     $stream_end = _dt_event_get_end_of_day($stream_start, $timezone);
   }
 
+  // Make sure we have livestream.
+  $has_livestream = $emw->field_event_is_live_streaming->value() == 1;
+
   switch (TRUE) {
-    case $stream_start > time():
+    case $has_livestream && $stream_start > time():
       $state = DT_EVENT_LIVE_STREAM_FUTURE;
       break;
 
-    case $stream_end > time() && $stream_start < time():
+    case $has_livestream && $stream_end > time() && $stream_start < time():
       $state = DT_EVENT_LIVE_STREAM_ONGOING;
       break;
 
-    case $stream_end < time():
+    case $has_livestream && $stream_end < time():
       $state = DT_EVENT_LIVE_STREAM_END;
       break;
 
