@@ -26,7 +26,7 @@ function dt_event_ds_fields_info($entity_type) {
     'function' => '_dt_event_ds_fields_livestreaming',
   ];
 
-  // The actual DS defenition.
+  // The actual DS definition.
   if ($entity_type == 'node') {
     // Book your seat.
     $fields[$entity_type]['book_your_seat'] = $book_your_seat_defaults + [
@@ -41,6 +41,12 @@ function dt_event_ds_fields_info($entity_type) {
     ];
     $fields[$entity_type]['livestreaming_bottom'] = $livestreaming_defaults + [
       'title' => t('Event: Livestreaming bottom'),
+    ];
+    $fields[$entity_type]['dt_event_header'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: header'),
+      'function' => '_dt_event_ds_fields_header_event',
     ];
   }
 
@@ -149,4 +155,79 @@ function _dt_event_ds_fields_livestreaming($field) {
       return '<span class="label label--high pull-left">' . $streaming_text . '</span>';
     }
   }
+}
+
+/**
+ * Helper function to show the event header.
+ *
+ * @param array $field
+ *   Hold the current context of the field.
+ */
+function _dt_event_ds_fields_header_event($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  $node = $field['entity'];
+  $lang = entity_translation_get_existing_language('node', $node);
+  $date = $entity->field_event_date->value();
+  $location = $entity->field_core_location->value();
+  $start_date = format_date($date['value'], 'dt_event', '', NULL, $lang);
+  $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
+  $past_date = format_date($date['value'], 'dt_past_event', '', NULL, $lang);
+  $current_date = format_date(time(), 'dt_event', '', NULL, $lang);
+  $is_streaming = $entity->field_event_is_live_streaming->value();
+
+  // Cancelled, it shows the date with a modifier.
+  $modifier = $node->event_status == 4 ? 'page-header__date--cancelled ' : '';
+
+  // Build the markup.
+  $wrapper = '<div class="page-header__eventinfo">';
+  $markup = '<div class="' . $modifier . 'page-header__date icon icon--calendar">';
+
+  switch ($node->event_status) {
+    // Ongoing, it shows the current date.
+    case DT_EVENT_STATE_ONGOING:
+      $markup .= $current_date;
+      break;
+
+    // Past event, it shows also the year.
+    case DT_EVENT_STATE_PAST:
+      $markup .= $past_date;
+      break;
+
+    // Cancelled, apply the right date format.
+    case DT_EVENT_STATE_CANCELLED:
+      $markup .= time() > $end_date ? $past_date : $start_date;
+      break;
+
+    // Default is showing the start date of the event.
+    default:
+      $markup .= $start_date;
+  }
+
+  $markup .= '</div>';
+
+  // Event location, online event only.
+  if ($entity->field_event_is_online->value()) {
+    $markup .= '<span class="icon icon--location page-header__location">' . t('Online only') . '</span>';
+  }
+  // All of the others.
+  else {
+    $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
+
+    // We only get the country ISO code from addressfield.
+    if (!empty($location['country'])) {
+      $countries = country_get_list();
+      $markup .= ', ' . $countries[$location['country']];
+    }
+
+    $markup .= '</span>';
+  }
+
+  if ($is_streaming && ($node->event_status !== DT_EVENT_STATE_CANCELLED && $node->event_status !== DT_EVENT_STATE_PAST)) {
+    $markup .= '<span class="icon icon--livestreaming page-header__livestreaming">' . t('live streaming available') . '</span>';
+  }
+
+  $closure = '</div>';
+  $markup = $wrapper . $markup . $closure;
+
+  return $markup;
 }
