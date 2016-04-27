@@ -136,3 +136,10 @@ function dt_core_info_update_7108() {
 function dt_core_info_update_7109() {
   module_enable(array('dt_page_extended'));
 }
+
+/**
+ * DTTSB-395: Enable dt_event_default.
+ */
+function dt_core_info_update_7110() {
+  module_enable(array('dt_event_default'));
+}
