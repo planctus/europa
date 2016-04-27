@@ -34,9 +34,14 @@ class NodeContextHelper {
     $alias_no_suffix = nexteuropa_multilingual_language_negotiation_split_suffix($session->getCurrentUrl(), $language_list[1]);
 
     // Get the real node path.
-    $node_path = drupal_lookup_path('source', str_replace($base_url . '/', '', $alias_no_suffix[1]));
+    $node_path = str_replace($base_url . '/', '', $alias_no_suffix[1]);
+    // Check if not a system node path already.
+    if (!preg_match('/node\/\d*/', $node_path)) {
+      $node_path = drupal_lookup_path('source', $node_path);
+    }
+    $router = menu_get_item($node_path);
 
-    if ($node = menu_get_object('node', 1, $node_path)) {
+    if ($node = node_load($router['original_map'][1])) {
       $this->language = $alias_no_suffix[0];
       $this->nodeObject = $node;
     }
@@ -86,6 +91,16 @@ class NodeContextHelper {
    */
   public function getAddTranslationPath($target) {
     return $this->getNodePath() . '/edit/add/' . $this->nodeObject->language . '/' . $target . '_' . $target;
+  }
+
+  /**
+   * Get the OG roles path for a group.
+   *
+   * @return string
+   *   The url as string.
+   */
+  public function getGroupRolesPath() {
+    return '/group/node/' . $this->getNodeId() . '/admin/roles';
   }
 
 }

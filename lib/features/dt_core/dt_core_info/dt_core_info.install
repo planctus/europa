@@ -135,3 +135,10 @@ function dt_core_info_update_7108() {
 function dt_core_info_update_7109() {
   module_enable(array('dt_page_extended'));
 }
+
+/**
+ * DTTSB-125 - Enable DT Editorial feature.
+ */
+function dt_core_info_update_7110() {
+  module_enable(array('dt_editorial'));
+}
