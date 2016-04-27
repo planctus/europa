@@ -39,7 +39,7 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
 }
 
 /**
- * Reset all HTML for the field.
+ *  Implements template_preprocess_node().
  */
 function dt_event_preprocess_node(&$vars) {
   if ($vars['type'] == 'event' && $vars['view_mode'] == 'full') {
