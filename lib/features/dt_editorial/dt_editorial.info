@@ -45,7 +45,6 @@ features[og_features_permission][] = node:editorial_team:subscribe without appro
 features[og_features_permission][] = node:editorial_team:unsubscribe
 features[og_features_permission][] = node:editorial_team:update group
 features[og_features_role][] = node:editorial_team:author
-features[og_features_role][] = node:editorial_team:publisher
 features[og_features_role][] = node:editorial_team:reviewer
 features[og_features_role][] = node:editorial_team:translator
 features[og_features_role][] = node:editorial_team:translator reviewer

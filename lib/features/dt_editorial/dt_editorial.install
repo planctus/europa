@@ -30,17 +30,16 @@ function dt_editorial_enable() {
       ->execute();
   }
 
+  $roles = og_roles('node', 'editorial_team');
+  // Delete the og role publisher.
+  if ($publisher_rid = array_search('publisher', $roles)) {
+    og_role_delete($publisher_rid);
+  }
   // Change the og role name from contributor to author.
-  $result = db_select('og_role', 'ogr')
-    ->fields('ogr', array('name'))
-    ->condition('name', 'contributor', '=')
-    ->execute()
-    ->fetchObject();
-
-  if ($result) {
+  if ($contributor_rid = array_search('contributor', $roles)) {
     db_update('og_role')
       ->fields(array('name' => 'author'))
-      ->condition('name', 'contributor')
+      ->condition('rid', $contributor_rid)
       ->execute();
   }
 }
