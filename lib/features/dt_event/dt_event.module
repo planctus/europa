@@ -72,7 +72,7 @@ function dt_event_preprocess_node(&$vars) {
         $markup .= $past_date;
         break;
 
-      // Cancelled, apply the right date format.  
+      // Cancelled, apply the right date format.
       case 4:
         $markup .= time() > $end_date ? $past_date : $start_date;
         break;
