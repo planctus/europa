@@ -72,6 +72,7 @@ function _dt_event_entity_add_status_property(&$entity) {
           }
           break;
         }
+        break;
 
       default:
         // In case it's undefined, we log a message.
