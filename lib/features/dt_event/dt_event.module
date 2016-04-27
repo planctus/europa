@@ -5,8 +5,10 @@
  */
 
 include_once 'dt_event.features.inc';
+
 // Include our helpers.
 module_load_include('inc', 'dt_event', 'dt_event.helpers');
+module_load_include('inc', 'dt_event', 'dt_event.ds_fields');
 
 // Constansts that can be used.
 define('DT_EVENT_STATE_FUTURE', 1);
@@ -14,6 +16,11 @@ define('DT_EVENT_STATE_ONGOING', 2);
 define('DT_EVENT_STATE_PAST', 3);
 define('DT_EVENT_STATE_CANCELLED', 4);
 define('DT_EVENT_STATE_RESCHEDULED', 5);
+// Live stream states.
+define('DT_EVENT_LIVE_STREAM_NONE', 0);
+define('DT_EVENT_LIVE_STREAM_FUTURE', 1);
+define('DT_EVENT_LIVE_STREAM_ONGOING', 2);
+define('DT_EVENT_LIVE_STREAM_END', 3);
 
 /**
  * Implements hook_entity_prepare_view().
