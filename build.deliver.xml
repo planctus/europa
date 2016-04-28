@@ -79,7 +79,9 @@
     <exec command="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
     <echo msg="AC database restored." />
 
-    <echo msg="Set temporary file directory" />
+    <echo msg="Set temporary file directory, create if not exists and chmod it" />
+    <exec command="mkdir -p ${platform.build.dir}/sites/default/files/tmp" />
+    <exec command="chmod -R 777 ${platform.build.dir}/sites/default/files" />
     <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path 'sites/default/files/tmp'" />
 
     <echo msg="Clearing caches" />
