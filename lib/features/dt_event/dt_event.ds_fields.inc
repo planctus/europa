@@ -168,15 +168,10 @@ function _dt_event_ds_fields_header_event($field) {
   $node = $field['entity'];
   $lang = entity_translation_get_existing_language('node', $node);
   $date = $entity->field_event_date->value();
-  $location = $entity->field_core_location->value();
-  $start_date = format_date($date['value'], 'dt_event', '', NULL, $lang);
-  $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-  $past_date = format_date($date['value'], 'dt_past_event', '', NULL, $lang);
-  $current_date = format_date(time(), 'dt_event', '', NULL, $lang);
   $is_streaming = $entity->field_event_is_live_streaming->value();
 
   // Cancelled, it shows the date with a modifier.
-  $modifier = $node->event_status == 4 ? 'page-header__date--cancelled ' : '';
+  $modifier = $node->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
 
   // Build the markup.
   $wrapper = '<div class="page-header__eventinfo">';
@@ -185,17 +180,18 @@ function _dt_event_ds_fields_header_event($field) {
   switch ($node->event_status) {
     // Ongoing, it shows the current date.
     case DT_EVENT_STATE_ONGOING:
-      $markup .= $current_date;
+      $markup .= format_date(time(), 'dt_event', '', NULL, $lang);
       break;
 
     // Past event, it shows also the year.
     case DT_EVENT_STATE_PAST:
-      $markup .= $past_date;
+      $markup .= format_date($date['value'], 'dt_past_event', '', NULL, $lang);
       break;
 
     // Cancelled, apply the right date format.
-    case DT_EVENT_STATE_CANCELLED:
-      $markup .= time() > $end_date ? $past_date : $start_date;
+    case DT_EVENT_STATE_CANCELLED: 
+      $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
+      $markup .= time() > $end_date ? format_date($date['value'], 'dt_past_event', '', NULL, $lang) : format_date($date['value'], 'dt_event', '', NULL, $lang);
       break;
 
     // Default is showing the start date of the event.
@@ -211,7 +207,11 @@ function _dt_event_ds_fields_header_event($field) {
   }
   // All of the others.
   else {
-    $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
+    $location = $entity->field_core_location->value();
+    
+    if (!empty($location)) {
+      $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
+    }
 
     // We only get the country ISO code from addressfield.
     if (!empty($location['country'])) {
@@ -227,7 +227,12 @@ function _dt_event_ds_fields_header_event($field) {
   }
 
   $closure = '</div>';
-  $markup = $wrapper . $markup . $closure;
+  
+  $output = array(
+    '#markup' => $markup,
+    '#prefix' => $wrapper,
+    '#suffix' => $closure,
+  );
 
-  return $markup;
+  return drupal_render($output);
 }
