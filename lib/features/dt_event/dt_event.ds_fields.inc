@@ -189,7 +189,7 @@ function _dt_event_ds_fields_header_event($field) {
       break;
 
     // Cancelled, apply the right date format.
-    case DT_EVENT_STATE_CANCELLED: 
+    case DT_EVENT_STATE_CANCELLED:
       $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
       $markup .= time() > $end_date ? format_date($date['value'], 'dt_past_event', '', NULL, $lang) : format_date($date['value'], 'dt_event', '', NULL, $lang);
       break;
@@ -208,7 +208,7 @@ function _dt_event_ds_fields_header_event($field) {
   // All of the others.
   else {
     $location = $entity->field_core_location->value();
-    
+
     if (!empty($location)) {
       $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
     }
@@ -227,7 +227,7 @@ function _dt_event_ds_fields_header_event($field) {
   }
 
   $closure = '</div>';
-  
+
   $output = array(
     '#markup' => $markup,
     '#prefix' => $wrapper,
