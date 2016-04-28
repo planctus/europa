@@ -79,6 +79,9 @@
     <exec command="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
     <echo msg="AC database restored." />
 
+    <echo msg="Set temporary file directory" />
+    <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path 'sites/default/files/tmp'" />
+
     <echo msg="Clearing caches" />
     <exec command="${drush.bin} --root=${platform.build.dir} -y cc all" />
     <echo msg="Caches cleared" />
