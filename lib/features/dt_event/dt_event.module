@@ -37,3 +37,38 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
     }
   }
 }
+
+/**
+ * Implements hook_date_format_types().
+ */
+function dt_event_date_format_types() {
+  return array(
+    'dt_event'  => t('Event date'),
+    'dt_past_event'  => t('Past event date'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function dt_event_date_formats() {
+  $formats = array();
+
+  $formats[] = array(
+    'type'    => 'dt_event',
+    'format'  => 'l j F',
+    'locales' => array(),
+  );
+
+  $formats[] = array(
+    'type'    => 'dt_past_event',
+    'format'  => 'j F Y',
+    'locales' => array(),
+  );
+
+  foreach ($formats as $key => $format) {
+    variable_set('date_format_' . $format['type'], $format['format']);
+  }
+
+  return $formats;
+}
