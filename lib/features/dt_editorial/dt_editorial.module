@@ -3,3 +3,161 @@
  * @file
  * Code for the dt_editorial feature.
  */
+
+/**
+ * Fetch list of Group Content node types.
+ *
+ * Serves to populate the allowed values of the 'field_editorial_types' list
+ * field.
+ *
+ * @return array
+ *   node types
+ */
+function _dt_editorial_types_allowed() {
+  $group_content_entities = &drupal_static(__FUNCTION__);
+
+  if (!isset($group_content_entities)) {
+    // Load all entities and bundles that are 'group content'.
+    $og_get_all_group_content_bundle = og_get_all_group_content_bundle();
+    // We use only 'node'.
+    $group_content_entities = !empty($og_get_all_group_content_bundle['node']) ? $og_get_all_group_content_bundle['node'] : [];
+  }
+
+  return $group_content_entities;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Move field_editorial_types after og_roles_permissions.
+  // Not exported to feature to avoid overrides.
+  if (!empty($form['field_editorial_types'])) {
+    $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
+  }
+}
+
+/**
+ * Implements hook_og_user_access_alter().
+ *
+ * We extend the default OG group permissions for every group that implements
+ * the field 'field_editorial_types'. For every content type selected for a
+ * group a default set of permissions need to be applied for every OG role.
+ *
+ * In these cases permissions for non selected content types are revoked from
+ * the OG role in the group.
+ */
+function dt_editorial_og_user_access_alter(&$perm, $context) {
+  $og_content_types = array_keys(_dt_editorial_types_allowed());
+  $roles = og_get_user_roles($context['group_type'], $context['group']->nid, $context['account']->uid);
+  $group_enabled_types = _dt_editorial_group_enabled_types($context['group']);
+  $custom_role_permissions = _dt_editorial_custom_og_permissions($roles);
+  if (!empty($roles) && $group_enabled_types && $custom_role_permissions) {
+    foreach ($og_content_types as $og_content_type) {
+      // Content type is not allowed for this group, so revoke all permissions
+      // that have been added eventually by default.
+      if (!in_array($og_content_type, $group_enabled_types)) {
+        $perm['create ' . $og_content_type . ' content'] = FALSE;
+        $perm['delete own ' . $og_content_type . ' content'] = FALSE;
+        $perm['delete any ' . $og_content_type . ' content'] = FALSE;
+        $perm['update own ' . $og_content_type . ' content'] = FALSE;
+        $perm['update any ' . $og_content_type . ' content'] = FALSE;
+      }
+      // Content type is allowed for this group.
+      else {
+        // Load custom permissions for all the OG roles of the user.
+        foreach ($custom_role_permissions as $permission_name => $custom_role_permission) {
+          $perm[str_replace('[type]', $og_content_type, $permission_name)] = $custom_role_permission;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Returns the list of content types selected for a specific OG group.
+ *
+ * @param object $group
+ *   OG group object.
+ *
+ * @return array|bool
+ *   List of content types or FALSE if empty.
+ */
+function _dt_editorial_group_enabled_types($group) {
+  if (isset($group->field_editorial_types) && !empty($group->field_editorial_types)) {
+
+    return array_column($group->field_editorial_types[LANGUAGE_NONE], 'value');
+  }
+
+  return FALSE;
+}
+
+/**
+ * Default set of content type specific OG permissions.
+ *
+ * @param array $roles
+ *   User's OG roles in the group.
+ *
+ * @return array|bool
+ *   Default set of content type related OG permissions for the OG role in the
+ *   group. Returns FALSE if empty.
+ */
+function _dt_editorial_custom_og_permissions($roles) {
+  // Default permissions per role for each enabled type.
+  $content_type_specific_permissions = [
+    'non-member' => [
+      'create [type] content' => FALSE,
+      'delete own [type] content' => FALSE,
+      'delete any [type] content' => FALSE,
+      'update own [type] content' => FALSE,
+      'update any [type] content' => FALSE,
+    ],
+    'member' => [
+      'create [type] content' => FALSE,
+      'delete own [type] content' => FALSE,
+      'delete any [type] content' => FALSE,
+      'update own [type] content' => FALSE,
+      'update any [type] content' => FALSE,
+    ],
+    'author' => [
+      'create [type] content' => TRUE,
+      'delete own [type] content' => TRUE,
+      'delete any [type] content' => FALSE,
+      'update own [type] content' => TRUE,
+      'update any [type] content' => FALSE,
+    ],
+    'validator' => [
+      'create [type] content' => FALSE,
+      'delete own [type] content' => FALSE,
+      'delete any [type] content' => TRUE,
+      'update own [type] content' => FALSE,
+      'update any [type] content' => TRUE,
+    ],
+    'reviewer' => [
+      'create [type] content' => FALSE,
+      'delete own [type] content' => FALSE,
+      'delete any [type] content' => FALSE,
+      'update own [type] content' => FALSE,
+      'update any [type] content' => TRUE,
+    ],
+  ];
+
+  $perms = [];
+  foreach ($roles as $role) {
+    if (isset($content_type_specific_permissions[$role])) {
+      // We merge the permissions of multiple roles into a single set.
+      foreach ($content_type_specific_permissions[$role] as $permission_name => $custom_role_permission) {
+        // If user has the TRUE permission already added by another role, keep
+        // it TRUE.
+        if (isset($perms[$permission_name])) {
+          $perms[$permission_name] = !$perms[$permission_name] ? $custom_role_permission : TRUE;
+        }
+        else {
+          $perms[$permission_name] = $custom_role_permission;
+        }
+      }
+    }
+  }
+
+  return !empty($perms) ? $perms : FALSE;
+}
