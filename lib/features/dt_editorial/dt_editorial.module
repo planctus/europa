@@ -14,10 +14,16 @@
  *   node types
  */
 function _dt_editorial_types_allowed() {
-  // Load all entities and bundles that are 'group content'.
-  $group_content_entities = og_get_all_group_content_bundle();
+  $group_content_entities = &drupal_static(__FUNCTION__);
 
-  return !empty($group_content_entities['node']) ? $group_content_entities['node'] : [];
+  if (!isset($group_content_entities)) {
+    // Load all entities and bundles that are 'group content'.
+    $og_get_all_group_content_bundle = og_get_all_group_content_bundle();
+    // We use only 'node'.
+    $group_content_entities = !empty($og_get_all_group_content_bundle['node']) ? $og_get_all_group_content_bundle['node'] : [];
+  }
+
+  return $group_content_entities;
 }
 
 /**
@@ -42,10 +48,8 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
  * the OG role in the group.
  */
 function dt_editorial_og_user_access_alter(&$perm, $context) {
-  global $user;
-
   $og_content_types = array_keys(_dt_editorial_types_allowed());
-  $roles = og_get_user_roles($context['group_type'], $context['group']->nid, $user->uid);
+  $roles = og_get_user_roles($context['group_type'], $context['group']->nid, $context['account']->uid);
   $group_enabled_types = _dt_editorial_group_enabled_types($context['group']);
   $custom_role_permissions = _dt_editorial_custom_og_permissions($roles);
   if (!empty($roles) && $group_enabled_types && $custom_role_permissions) {

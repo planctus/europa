@@ -177,6 +177,8 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     if (!$user) {
       throw new \Exception("User cannot be found.");
     }
+    $group = $this->getCurrentGroupFromUrl();
+    $this->addMembertoGroup($role_name, $group, 'node', $user);
   }
 
 }
