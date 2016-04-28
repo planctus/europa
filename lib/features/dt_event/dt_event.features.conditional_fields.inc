@@ -1037,7 +1037,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:8"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_entrance_fee',
+    'dependent' => 'field_event_date',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1165,7 +1165,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:9"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_is_fully_booked',
+    'dependent' => 'field_event_entrance_fee',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1293,7 +1293,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:10"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_is_live_streaming',
+    'dependent' => 'field_event_is_fully_booked',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1421,7 +1421,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:11"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_is_online',
+    'dependent' => 'field_event_is_live_streaming',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1549,7 +1549,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:12"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_live_streaming_link',
+    'dependent' => 'field_event_is_online',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1805,7 +1805,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:14"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_location_image',
+    'dependent' => 'field_event_live_streaming_link',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -1933,7 +1933,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:15"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_media',
+    'dependent' => 'field_event_location_image',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2061,7 +2061,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:16"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_more_links',
+    'dependent' => 'field_event_media',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2189,7 +2189,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:17"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_number_seats',
+    'dependent' => 'field_event_more_links',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2317,7 +2317,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:18"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_parent_events',
+    'dependent' => 'field_event_number_seats',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2445,7 +2445,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:19"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_registration',
+    'dependent' => 'field_event_parent_events',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2573,7 +2573,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:20"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_registration_end',
+    'dependent' => 'field_event_registration',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2701,7 +2701,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:21"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_schedule',
+    'dependent' => 'field_event_registration_end',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2829,7 +2829,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:22"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_scribble_id',
+    'dependent' => 'field_event_schedule',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
@@ -2957,7 +2957,7 @@ function dt_event_conditional_fields_default_fields() {
   $items["node:event:23"] = array(
     'entity' => 'node',
     'bundle' => 'event',
-    'dependent' => 'field_event_date',
+    'dependent' => 'field_event_scribble_id',
     'dependee' => 'field_event_collection',
     'options' => array(
       'state' => 'visible',
