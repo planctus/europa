@@ -222,7 +222,7 @@ function _dt_event_ds_fields_header_event($field) {
     $markup .= '</span>';
   }
 
-  if ($is_streaming && ($node->event_status !== DT_EVENT_STATE_CANCELLED && $node->event_status !== DT_EVENT_STATE_PAST)) {
+  if ($is_streaming && (!in_array($node->event_status, array(DT_EVENT_STATE_CANCELLED, DT_EVENT_STATE_PAST)))) {
     $markup .= '<span class="icon icon--livestreaming page-header__livestreaming">' . t('live streaming available') . '</span>';
   }
 
