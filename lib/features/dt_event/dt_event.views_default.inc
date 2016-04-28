@@ -11,6 +11,725 @@ function dt_event_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'events';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_event_index';
+  $view->human_name = 'Events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'search_api_views_fulltext' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_core_topics' => array(
+      'bef_format' => 'default',
+      'slider_options' => array(
+        'bef_slider_min' => '0',
+        'bef_slider_max' => '99999',
+        'bef_slider_step' => '1',
+        'bef_slider_animate' => '',
+        'bef_slider_orientation' => 'horizontal',
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'bef_filter_description' => NULL,
+        'any_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => 'Any topic',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_event_type' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => 'Any type',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_core_location_country' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => 'Any country',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_event_is_online' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_event_is_live_streaming' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_core_departments' => array(
+      'bef_format' => 'default',
+      'slider_options' => array(
+        'bef_slider_min' => '0',
+        'bef_slider_max' => '99999',
+        'bef_slider_step' => '1',
+        'bef_slider_animate' => '',
+        'bef_slider_orientation' => 'horizontal',
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'bef_filter_description' => NULL,
+        'any_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => 'Any department',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_event_date_value' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'field_event_date_value_1' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
+    'secondary_label' => NULL,
+    'collapsible_label' => NULL,
+    'combine_rewrite' => NULL,
+    'reset_label' => NULL,
+    'bef_filter_description' => NULL,
+    'any_label' => NULL,
+    'filter_rewrite_values' => NULL,
+  );
+  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_context_nav';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  /* Field: Indexed Node: CER » Context */
+  $handler->display->display_options['fields']['cer_lineage']['id'] = 'cer_lineage';
+  $handler->display->display_options['fields']['cer_lineage']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['cer_lineage']['field'] = 'cer_lineage';
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Keywords';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['mode'] = 'filter';
+  /* Filter criterion: Indexed Node: Related topic */
+  $handler->display->display_options['filters']['field_core_topics']['id'] = 'field_core_topics';
+  $handler->display->display_options['filters']['field_core_topics']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_core_topics']['field'] = 'field_core_topics';
+  $handler->display->display_options['filters']['field_core_topics']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_topics']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_topics']['expose']['operator_id'] = 'field_core_topics_op';
+  $handler->display->display_options['filters']['field_core_topics']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['field_core_topics']['expose']['operator'] = 'field_core_topics_op';
+  $handler->display->display_options['filters']['field_core_topics']['expose']['identifier'] = 'field_core_topics';
+  $handler->display->display_options['filters']['field_core_topics']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Indexed Node: Event type */
+  $handler->display->display_options['filters']['field_event_type']['id'] = 'field_event_type';
+  $handler->display->display_options['filters']['field_event_type']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_type']['field'] = 'field_event_type';
+  $handler->display->display_options['filters']['field_event_type']['value'] = array();
+  $handler->display->display_options['filters']['field_event_type']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_type']['expose']['operator_id'] = 'field_event_type_op';
+  $handler->display->display_options['filters']['field_event_type']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_event_type']['expose']['operator'] = 'field_event_type_op';
+  $handler->display->display_options['filters']['field_event_type']['expose']['identifier'] = 'field_event_type';
+  $handler->display->display_options['filters']['field_event_type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_type']['expose']['reduce'] = 0;
+  /* Filter criterion: Location: Country (indexed) */
+  $handler->display->display_options['filters']['field_core_location_country']['id'] = 'field_core_location_country';
+  $handler->display->display_options['filters']['field_core_location_country']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_core_location_country']['field'] = 'field_core_location_country';
+  $handler->display->display_options['filters']['field_core_location_country']['value'] = array();
+  $handler->display->display_options['filters']['field_core_location_country']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_location_country']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['operator_id'] = 'field_core_location_country_op';
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['label'] = 'Location';
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['operator'] = 'field_core_location_country_op';
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['identifier'] = 'field_core_location_country';
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_core_location_country']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: Online only */
+  $handler->display->display_options['filters']['field_event_is_online']['id'] = 'field_event_is_online';
+  $handler->display->display_options['filters']['field_event_is_online']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_is_online']['field'] = 'field_event_is_online';
+  $handler->display->display_options['filters']['field_event_is_online']['value'] = array();
+  $handler->display->display_options['filters']['field_event_is_online']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_is_online']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['operator_id'] = 'field_event_is_online_op';
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['label'] = 'Online events only';
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['operator'] = 'field_event_is_online_op';
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['identifier'] = 'field_event_is_online';
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_is_online']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: Live streaming available */
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['id'] = 'field_event_is_live_streaming';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['field'] = 'field_event_is_live_streaming';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['value'] = array();
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['operator_id'] = 'field_event_is_live_streaming_op';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['label'] = 'Only events with live streaming available';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['operator'] = 'field_event_is_live_streaming_op';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['identifier'] = 'field_event_is_live_streaming';
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Node: Related department */
+  $handler->display->display_options['filters']['field_core_departments']['id'] = 'field_core_departments';
+  $handler->display->display_options['filters']['field_core_departments']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_core_departments']['field'] = 'field_core_departments';
+  $handler->display->display_options['filters']['field_core_departments']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_departments']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_departments']['expose']['operator_id'] = 'field_core_departments_op';
+  $handler->display->display_options['filters']['field_core_departments']['expose']['label'] = 'Organizing department';
+  $handler->display->display_options['filters']['field_core_departments']['expose']['operator'] = 'field_core_departments_op';
+  $handler->display->display_options['filters']['field_core_departments']['expose']['identifier'] = 'field_core_departments';
+  $handler->display->display_options['filters']['field_core_departments']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'After';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_date_value']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value']['date_popup_format'] = 'd-m-Y';
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value_1']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_event_date_value_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator_id'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['label'] = 'Before';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['identifier'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'd-m-Y';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'events';
+  $export['events'] = $view;
+
+  $view = new view();
   $view->name = 'filter_list_event';
   $view->description = '';
   $view->tag = 'default';
