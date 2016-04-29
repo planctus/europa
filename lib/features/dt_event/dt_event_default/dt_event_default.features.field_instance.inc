@@ -10,65 +10,6 @@
 function dt_event_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-image-field_file_image_alt_text'.
-  $field_instances['file-image-field_file_image_alt_text'] = array(
-    'bundle' => 'image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'wysiwyg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'file',
-    'field_name' => 'field_file_image_alt_text',
-    'label' => 'Alt Text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-      'wysiwyg_override' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -4,
-    ),
-  );
-
   // Exported field_instance: 'file-image-field_file_image_title_text'.
   $field_instances['file-image-field_file_image_title_text'] = array(
     'bundle' => 'image',
@@ -142,6 +83,12 @@ For collection, this is a text with more information about the collection.',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 19,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -221,6 +168,12 @@ For collection, this is a text with more information about the collection.',
         'type' => 'entityreference_label',
         'weight' => 22,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -267,6 +220,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'entityreference_label',
         'weight' => 42,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -308,6 +267,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'teaser' => array(
@@ -385,6 +350,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'entityreference_label',
         'weight' => 46,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -428,6 +399,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         ),
         'type' => 'media',
         'weight' => 50,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -491,6 +468,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         ),
         'type' => 'image',
         'weight' => 12,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -558,6 +541,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -632,6 +621,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -690,6 +685,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 24,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -755,6 +756,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'addressfield_default',
         'weight' => 28,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -807,6 +814,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         ),
         'type' => 'media',
         'weight' => 49,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -871,6 +884,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'entityreference_label',
         'weight' => 20,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -916,6 +935,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'social_network_link_default',
         'weight' => 18,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -957,6 +982,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 10,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1030,6 +1061,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'entityreference_label',
         'weight' => 17,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1073,6 +1110,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1146,6 +1189,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'entityreference_label',
         'weight' => 16,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1193,6 +1242,12 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'type' => 'list_default',
         'weight' => 3,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1238,6 +1293,12 @@ On what day does the event end?',
         ),
         'type' => 'date_default',
         'weight' => 25,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1289,6 +1350,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 41,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1360,6 +1427,12 @@ On what day does the event end?',
         'type' => 'list_default',
         'weight' => 32,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1399,6 +1472,12 @@ On what day does the event end?',
         'type' => 'list_default',
         'weight' => 33,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1437,6 +1516,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 27,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1482,6 +1567,12 @@ On what day does the event end?',
         ),
         'type' => 'date_default',
         'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1533,6 +1624,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1594,6 +1691,12 @@ On what day does the event end?',
         ),
         'type' => 'image',
         'weight' => 29,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1664,6 +1767,12 @@ On what day does the event end?',
         'type' => 'media',
         'weight' => 44,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1724,6 +1833,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 48,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1802,6 +1917,12 @@ On what day does the event end?',
         'type' => 'number_integer',
         'weight' => 40,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1846,6 +1967,12 @@ On what day does the event end?',
         ),
         'type' => 'entityreference_label',
         'weight' => 15,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1892,6 +2019,12 @@ On what day does the event end?',
         'type' => 'entityreference_label',
         'weight' => 23,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1934,6 +2067,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 30,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2000,6 +2139,12 @@ On what day does the event end?',
         'type' => 'date_default',
         'weight' => 31,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2053,6 +2198,12 @@ On what day does the event end?',
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2094,6 +2245,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2169,6 +2326,12 @@ On what day does the event end?',
         'type' => 'list_default',
         'weight' => 14,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2209,6 +2372,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2282,6 +2451,12 @@ On what day does the event end?',
         'type' => 'text_default',
         'weight' => 39,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2352,6 +2527,13 @@ On what day does the event end?',
         'type' => 'i18n_taxonomy_term_reference_link',
         'weight' => 4,
       ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'nexteuropa_tags',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2392,6 +2574,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'link_default',
         'weight' => 43,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2451,6 +2639,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 45,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2527,6 +2721,12 @@ On what day does the event end?',
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2575,6 +2775,12 @@ On what day does the event end?',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2636,6 +2842,12 @@ On what day does the event end?',
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
@@ -2672,8 +2884,6 @@ On what day does the event end?',
   t('Add the link to the live streaming');
   t('Add the link where you must register in order to attend the event.');
   t('All places have been booked.');
-  t('Alt Text');
-  t('Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Available languages');

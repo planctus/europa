@@ -12,35 +12,29 @@ function dt_event_default_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
-  $ds_fieldsetting->id = 'node|event|teaser';
+  $ds_fieldsetting->id = 'node|event|full';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'event';
-  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '14',
+    'title' => array(
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
-    'title_field' => array(
-      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
         'ft' => array(),
       ),
     ),
+    'dt_event_header' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
   );
-  $export['node|event|teaser'] = $ds_fieldsetting;
+  $export['node|event|full'] = $ds_fieldsetting;
 
   return $export;
 }
@@ -53,30 +47,37 @@ function dt_event_default_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|event|teaser';
+  $ds_layout->id = 'node|event|full';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'event';
-  $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col_sidebar_no_link';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ne_bootstrap_3_9_advanced_top_conditional';
   $ds_layout->settings = array(
     'regions' => array(
-      'main' => array(
-        0 => 'group_event_meta',
-        1 => 'title_field',
-        2 => 'field_core_description',
-        3 => 'content_type_label',
+      'left_header' => array(
+        0 => 'group_meta',
+        1 => 'title',
+        2 => 'dt_event_header',
+        3 => 'field_event_type',
       ),
     ),
     'fields' => array(
-      'group_event_meta' => 'main',
-      'title_field' => 'main',
-      'field_core_description' => 'main',
-      'content_type_label' => 'main',
+      'group_meta' => 'left_header',
+      'title' => 'left_header',
+      'dt_event_header' => 'left_header',
+      'field_event_type' => 'left_header',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'main' => 'div',
-      'second' => 'div',
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top_top' => 'div',
+      'top_middle_left' => 'div',
+      'top_middle_right' => 'div',
+      'top_bottom_left' => 'div',
+      'top_bottom_right' => 'div',
+      'left' => 'div',
+      'central' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
@@ -84,7 +85,7 @@ function dt_event_default_ds_layout_settings_info() {
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
-  $export['node|event|teaser'] = $ds_layout;
+  $export['node|event|full'] = $ds_layout;
 
   return $export;
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Dt_event.field_group.inc.
+ * dt_event_default.field_group.inc
  */
 
 /**
@@ -217,12 +217,39 @@ function dt_event_default_field_group_info() {
   );
   $field_groups['group_event_practical_info|node|event|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_meta|node|event|full';
+  $field_group->group_name = 'group_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_event_type',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'modifier' => 'meta--header',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_meta|node|event|full'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('After the event');
   t('Content');
   t('Description');
   t('Editorial settings');
+  t('Meta');
   t('Practical information');
 
   return $field_groups;
