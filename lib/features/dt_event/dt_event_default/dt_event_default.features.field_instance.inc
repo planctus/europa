@@ -10,65 +10,6 @@
 function dt_event_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-image-field_file_image_alt_text'.
-  $field_instances['file-image-field_file_image_alt_text'] = array(
-    'bundle' => 'image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'wysiwyg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'file',
-    'field_name' => 'field_file_image_alt_text',
-    'label' => 'Alt Text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-      'wysiwyg_override' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -4,
-    ),
-  );
-
   // Exported field_instance: 'file-image-field_file_image_title_text'.
   $field_instances['file-image-field_file_image_title_text'] = array(
     'bundle' => 'image',
@@ -1349,7 +1290,9 @@ On what day does the event end?',
   // Exported field_instance: 'node-event-field_event_is_fully_booked'.
   $field_instances['node-event-field_event_is_fully_booked'] = array(
     'bundle' => 'event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(),
+    ),
     'deleted' => 0,
     'description' => 'All places have been booked.',
     'display' => array(
@@ -1371,7 +1314,7 @@ On what day does the event end?',
     'entity_type' => 'node',
     'field_name' => 'field_event_is_fully_booked',
     'label' => 'Fully booked',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1388,7 +1331,11 @@ On what day does the event end?',
   // Exported field_instance: 'node-event-field_event_is_live_streaming'.
   $field_instances['node-event-field_event_is_live_streaming'] = array(
     'bundle' => 'event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1410,7 +1357,7 @@ On what day does the event end?',
     'entity_type' => 'node',
     'field_name' => 'field_event_is_live_streaming',
     'label' => 'Live streaming available',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1427,7 +1374,9 @@ On what day does the event end?',
   // Exported field_instance: 'node-event-field_event_is_online'.
   $field_instances['node-event-field_event_is_online'] = array(
     'bundle' => 'event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(),
+    ),
     'deleted' => 0,
     'description' => 'It concerns an online event (without geographical location)',
     'display' => array(
@@ -1449,7 +1398,7 @@ On what day does the event end?',
     'entity_type' => 'node',
     'field_name' => 'field_event_is_online',
     'label' => 'Online only',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -2672,8 +2621,6 @@ On what day does the event end?',
   t('Add the link to the live streaming');
   t('Add the link where you must register in order to attend the event.');
   t('All places have been booked.');
-  t('Alt Text');
-  t('Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Available languages');
@@ -2717,7 +2664,7 @@ For collection, this is a text with more information about the collection.');
   t('On what day does the event start?
 On what day does the event end?');
   t('Online only');
-  t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline.');
+  t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline. ');
   t('Organizing department');
   t('Part of collection');
   t('Photos, videos or audio files');

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Dt_event.field_group.inc.
+ * dt_event_default.field_group.inc
  */
 
 /**
