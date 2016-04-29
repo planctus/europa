@@ -151,7 +151,7 @@ function _dt_event_ds_fields_livestreaming($field) {
     }
 
     // Return the text if it is found.
-    if ($streaming_text) {
+    if (isset($streaming_text)) {
       return '<span class="label label--high pull-left">' . $streaming_text . '</span>';
     }
   }
@@ -196,7 +196,7 @@ function _dt_event_ds_fields_header_event($field) {
 
     // Default is showing the start date of the event.
     default:
-      $markup .= $start_date;
+      $markup .= format_date($date['value'], 'dt_event', '', NULL, $lang);
   }
 
   $markup .= '</div>';
@@ -208,7 +208,6 @@ function _dt_event_ds_fields_header_event($field) {
   // All of the others.
   else {
     $location = $entity->field_core_location->value();
-
     if (!empty($location)) {
       $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
     }
