@@ -835,11 +835,8 @@ function dt_publication_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
+      'settings' => array(),
+      'type' => 'options_buttons',
       'weight' => 0,
     ),
   );
