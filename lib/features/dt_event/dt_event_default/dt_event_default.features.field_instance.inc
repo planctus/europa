@@ -513,7 +513,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'field_name' => 'field_core_introduction',
     'info_value' => NULL,
     'label' => 'Introduction',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
