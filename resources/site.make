@@ -82,6 +82,9 @@ projects[facetapi_select][version] = "1.1"
 projects[mefibs][subdir] = "contrib"
 projects[mefibs][version] = "1.0-alpha1"
 
+projects[better_exposed_filters][subdir] = "contrib"
+projects[better_exposed_filters][version] = "3.2"
+
 projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0

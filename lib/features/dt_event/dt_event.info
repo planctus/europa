@@ -14,6 +14,7 @@ dependencies[] = search_api
 dependencies[] = facetapi_bonus
 dependencies[] = facetapi_select
 dependencies[] = search_api_db
+dependencies[] = better_exposed_filters
 features[cer][] = node:event:field_event_parent_events*node:event:field_event_children_events
 features[conditional_fields][] = node:event
 features[context][] = dt_events_filter
