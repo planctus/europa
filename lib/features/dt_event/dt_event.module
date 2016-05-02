@@ -48,11 +48,16 @@ function dt_event_preprocess_file_entity(&$variables) {
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
     // Also add the file modifier.
     $variables['classes_array'][] = 'file--condensed';
+    // If it is a video, we have to apply additional modifiers.
+    if ($variables['type'] == 'video') {
+      $variables['classes_array'][] = 'file-video--withbackground';
+    }
     // Add the BEM wrapper.
     if (isset($variables['content']['field_caption'])) {
       $variables['content']['field_caption']['#prefix'] = '<div class="file__caption">';
       $variables['content']['field_caption']['#suffix'] = '</div>';
     }
+
   }
 }
 
