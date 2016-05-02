@@ -121,10 +121,10 @@ function dt_event_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '4',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '3',
         ),
         'scheduler_settings' => array(
           'weight' => '10',

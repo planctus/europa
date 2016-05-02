@@ -483,7 +483,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 7,
+      'weight' => 0,
     ),
   );
 
@@ -556,7 +556,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => -2,
+      'weight' => -1,
     ),
   );
 
@@ -614,7 +614,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => -2,
+      'weight' => 8,
     ),
   );
 
@@ -792,7 +792,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 1,
     ),
   );
 
@@ -881,7 +881,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
       'module' => 'dt_social_network_links',
       'settings' => array(),
       'type' => 'social_network_link_default',
-      'weight' => 14,
+      'weight' => 7,
     ),
   );
 
@@ -890,7 +890,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline. ',
+    'description' => 'Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -951,7 +951,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'size' => 255,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => -4,
     ),
   );
 
@@ -997,7 +997,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 6,
     ),
   );
 
@@ -1112,7 +1112,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 12,
+      'weight' => 5,
     ),
   );
 
@@ -1821,7 +1821,7 @@ On what day does the event end?',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 11,
+      'weight' => 4,
     ),
   );
 
@@ -2141,7 +2141,7 @@ On what day does the event end?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 2,
     ),
   );
 
@@ -2213,7 +2213,7 @@ On what day does the event end?',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 3,
     ),
   );
 
@@ -2324,7 +2324,7 @@ On what day does the event end?',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => -2,
     ),
   );
 
@@ -2664,7 +2664,7 @@ For collection, this is a text with more information about the collection.');
   t('On what day does the event start?
 On what day does the event end?');
   t('Online only');
-  t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline. ');
+  t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline.');
   t('Organizing department');
   t('Part of collection');
   t('Photos, videos or audio files');
