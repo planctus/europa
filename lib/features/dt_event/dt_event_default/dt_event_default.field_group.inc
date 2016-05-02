@@ -243,6 +243,143 @@ function dt_event_default_field_group_info() {
   );
   $field_groups['group_meta|node|event|full'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_left|node|event|full';
+  $field_group->group_name = 'group_practical_info_left';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_row';
+  $field_group->data = array(
+    'label' => 'Practical info left',
+    'weight' => '79',
+    'children' => array(
+      0 => 'field_core_departments',
+      1 => 'field_event_available_languages',
+      2 => 'field_event_date',
+      3 => 'field_event_entrance_fee',
+      4 => 'field_event_number_seats',
+      5 => 'field_event_parent_events',
+      6 => 'field_event_target_audience',
+      7 => 'field_event_website',
+      8 => 'field_core_location',
+      9 => 'book_your_seat_bottom',
+      10 => 'livestreaming_bottom',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info left',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-9',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_left|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_right|node|event|full';
+  $field_group->group_name = 'group_practical_info_right';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_row';
+  $field_group->data = array(
+    'label' => 'Practical info right',
+    'weight' => '80',
+    'children' => array(
+      0 => 'field_event_location_image',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info right',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-3',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_right|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_information|node|event|full';
+  $field_group->group_name = 'group_practical_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical information',
+    'weight' => '9',
+    'children' => array(
+      0 => 'group_row',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Practical information',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="practicalinformation"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_practical_information|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_row|node|event|full';
+  $field_group->group_name = 'group_row';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_practical_information';
+  $field_group->data = array(
+    'label' => 'row',
+    'weight' => '78',
+    'children' => array(
+      0 => 'group_practical_info_right',
+      1 => 'group_practical_info_left',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'row',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'row',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_row|node|event|full'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('After the event');
@@ -250,7 +387,10 @@ function dt_event_default_field_group_info() {
   t('Description');
   t('Editorial settings');
   t('Meta');
+  t('Practical info left');
+  t('Practical info right');
   t('Practical information');
+  t('row');
 
   return $field_groups;
 }

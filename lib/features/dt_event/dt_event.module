@@ -62,7 +62,6 @@ function dt_event_preprocess_file_entity(&$variables) {
       if (isset($variables['content']['field_video_description'])) {
         $variables['content']['field_video_description']['#label_display'] = 'hidden';
         $variables['content']['field_video_description'] += $caption_wrapper;
-
       }
     }
     // Add the BEM wrapper.
