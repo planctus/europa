@@ -39,6 +39,24 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Here we add extra modifiers to the file markup.
+ */
+function dt_event_preprocess_file_entity(&$variables) {
+  // Make sure we only do this for event entity's.
+  if (isset($variables['entity']) && $variables['entity']->type == 'event') {
+    // Also add the file modifier.
+    $variables['classes_array'][] = 'file--condensed';
+    // Add the BEM wrapper.
+    if (isset($variables['content']['field_caption'])) {
+      $variables['content']['field_caption']['#prefix'] = '<div class="file__caption">';
+      $variables['content']['field_caption']['#suffix'] = '</div>';
+    }
+  }
+}
+
+/**
  * Implements hook_date_format_types().
  */
 function dt_event_date_format_types() {
