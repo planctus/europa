@@ -67,6 +67,21 @@ projects[uuid_features][version] = "1.0-alpha4"
 projects[weight][subdir] = "contrib"
 projects[weight][version] = "2.3"
 
+projects[search_api][subdir] = "contrib"
+projects[search_api][version] = "1.18"
+
+projects[search_api_db][subdir] = "contrib"
+projects[search_api_db][version] = "1.5"
+
+projects[facetapi_bonus][subdir] = "contrib"
+projects[facetapi_bonus][version] = "1.2"
+
+projects[facetapi_select][subdir] = "contrib"
+projects[facetapi_select][version] = "1.1"
+
+projects[mefibs][subdir] = "contrib"
+projects[mefibs][version] = "1.0-alpha1"
+
 projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0
