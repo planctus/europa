@@ -48,14 +48,26 @@ function dt_event_preprocess_file_entity(&$variables) {
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
     // Also add the file modifier.
     $variables['classes_array'][] = 'file--condensed';
-    // If it is a video, we have to apply additional modifiers.
+
+    // We define the wrapper once and apply it when we need it.
+    $caption_wrapper = [
+      '#prefix' => '<div class="file__caption">',
+      '#suffix' => '</div>',
+    ];
+
     if ($variables['type'] == 'video') {
+      // If it is a video, we have to apply additional modifiers.
       $variables['classes_array'][] = 'file-video--withbackground';
+      // Also add the description to the content render array.
+      if (isset($variables['content']['field_video_description'])) {
+        $variables['content']['field_video_description']['#label_display'] = 'hidden';
+        $variables['content']['field_video_description'] += $caption_wrapper;
+
+      }
     }
     // Add the BEM wrapper.
     if (isset($variables['content']['field_caption'])) {
-      $variables['content']['field_caption']['#prefix'] = '<div class="file__caption">';
-      $variables['content']['field_caption']['#suffix'] = '</div>';
+      $variables['content']['field_caption'] += $caption_wrapper;
     }
 
   }
