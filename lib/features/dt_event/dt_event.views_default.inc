@@ -522,11 +522,20 @@ function dt_event_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_context_nav';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['row_plugin'] = 'entity';
   /* Field: Indexed Node: CER » Context */
   $handler->display->display_options['fields']['cer_lineage']['id'] = 'cer_lineage';
   $handler->display->display_options['fields']['cer_lineage']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['fields']['cer_lineage']['field'] = 'cer_lineage';
+  /* Field: Indexed Node: Description */
+  $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
+  $handler->display->display_options['fields']['field_core_description']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';
+  /* Field: Indexed Node: Status description */
+  $handler->display->display_options['fields']['field_event_status_description']['id'] = 'field_event_status_description';
+  $handler->display->display_options['fields']['field_event_status_description']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['field_event_status_description']['field'] = 'field_event_status_description';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_event_index';
@@ -548,7 +557,7 @@ function dt_event_views_default_views() {
     8 => 0,
   );
   $handler->display->display_options['filters']['search_api_views_fulltext']['mode'] = 'filter';
-  /* Filter criterion: Indexed Node: Related topic */
+  /* Filter criterion: Indexed Node: Related Topics */
   $handler->display->display_options['filters']['field_core_topics']['id'] = 'field_core_topics';
   $handler->display->display_options['filters']['field_core_topics']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['filters']['field_core_topics']['field'] = 'field_core_topics';
@@ -656,7 +665,7 @@ function dt_event_views_default_views() {
     8 => 0,
   );
   $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Related department */
+  /* Filter criterion: Indexed Node: Related departments */
   $handler->display->display_options['filters']['field_core_departments']['id'] = 'field_core_departments';
   $handler->display->display_options['filters']['field_core_departments']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['filters']['field_core_departments']['field'] = 'field_core_departments';
@@ -697,8 +706,6 @@ function dt_event_views_default_views() {
     7 => 0,
     8 => 0,
   );
-  $handler->display->display_options['filters']['field_event_date_value']['widget_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_event_date_value']['date_popup_format'] = 'd-m-Y';
   /* Filter criterion: Event date and time: Start date (indexed) */
   $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
   $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_event_index';
@@ -720,8 +727,6 @@ function dt_event_views_default_views() {
     7 => 0,
     8 => 0,
   );
-  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
-  $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'd-m-Y';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

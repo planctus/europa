@@ -31,6 +31,9 @@ function dt_event_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
+  if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -85,8 +88,8 @@ function dt_event_default_search_api_index() {
         "field_core_introduction:value" : { "type" : "text" },
         "field_core_location:country" : { "type" : "string" },
         "field_core_topics" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_event_date:value" : { "type" : "date" },
-        "field_event_date:value2" : { "type" : "date" },
+        "field_event_date:value" : { "type" : "string" },
+        "field_event_date:value2" : { "type" : "string" },
         "field_event_is_live_streaming" : { "type" : "boolean" },
         "field_event_is_online" : { "type" : "boolean" },
         "field_event_status_description:value" : { "type" : "text" },
@@ -227,7 +230,7 @@ function dt_event_default_search_api_server() {
           "field_event_date:value" : {
             "table" : "search_api_db_event_index",
             "column" : "field_event_date_value",
-            "type" : "date",
+            "type" : "string",
             "boost" : "1.0"
           },
           "field_core_location:country" : {
@@ -254,7 +257,7 @@ function dt_event_default_search_api_server() {
           "field_event_date:value2" : {
             "table" : "search_api_db_event_index",
             "column" : "field_event_date_value2",
-            "type" : "date",
+            "type" : "string",
             "boost" : "1.0"
           },
           "field_core_description" : {
