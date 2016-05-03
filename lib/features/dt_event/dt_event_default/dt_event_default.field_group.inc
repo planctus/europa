@@ -105,6 +105,36 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_contact|node|event|full';
+  $field_group->group_name = 'group_event_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_core_contact',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_contact|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_event_content|node|event|form';
   $field_group->group_name = 'group_event_content';
   $field_group->entity_type = 'node';
@@ -220,6 +250,66 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_schedule|node|event|full';
+  $field_group->group_name = 'group_event_schedule';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Schedule',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_event_schedule',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Schedule',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_schedule|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_speakers|node|event|full';
+  $field_group->group_name = 'group_event_speakers';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Speakers',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_persons',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Speakers',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="speakers"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_speakers|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|event|full';
   $field_group->group_name = 'group_meta';
   $field_group->entity_type = 'node';
@@ -264,9 +354,9 @@ function dt_event_default_field_group_info() {
       5 => 'field_event_parent_events',
       6 => 'field_event_target_audience',
       7 => 'field_event_website',
-      8 => 'field_core_location',
-      9 => 'book_your_seat_bottom',
-      10 => 'livestreaming_bottom',
+      8 => 'book_your_seat_bottom',
+      9 => 'livestreaming_bottom',
+      10 => 'dt_event_address_oneline',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -360,8 +450,8 @@ function dt_event_default_field_group_info() {
     'label' => 'row',
     'weight' => '78',
     'children' => array(
-      0 => 'group_practical_info_right',
-      1 => 'group_practical_info_left',
+      0 => 'group_practical_info_left',
+      1 => 'group_practical_info_right',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -383,6 +473,7 @@ function dt_event_default_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('After the event');
+  t('Contact');
   t('Content');
   t('Description');
   t('Editorial settings');
@@ -390,6 +481,8 @@ function dt_event_default_field_group_info() {
   t('Practical info left');
   t('Practical info right');
   t('Practical information');
+  t('Schedule');
+  t('Speakers');
   t('row');
 
   return $field_groups;

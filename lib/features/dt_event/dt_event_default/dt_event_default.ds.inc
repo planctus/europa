@@ -34,7 +34,7 @@ function dt_event_default_ds_field_settings_info() {
       'format' => 'default',
     ),
     'book_your_seat_bottom' => array(
-      'weight' => '44',
+      'weight' => '45',
       'label' => 'inline',
       'format' => 'default',
       'formatter_settings' => array(
@@ -49,7 +49,7 @@ function dt_event_default_ds_field_settings_info() {
       'format' => 'default',
     ),
     'livestreaming_bottom' => array(
-      'weight' => '45',
+      'weight' => '46',
       'label' => 'inline',
       'format' => 'default',
     ),
@@ -57,6 +57,16 @@ function dt_event_default_ds_field_settings_info() {
       'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'dt_event_address_oneline' => array(
+      'weight' => '43',
+      'label' => 'inline',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Where',
+        ),
+      ),
     ),
     'field_event_available_languages' => array(
       'formatter_settings' => array(
@@ -80,42 +90,8 @@ function dt_event_default_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_location' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Where',
-        ),
-      ),
-    ),
   );
   $export['node|event|full'] = $ds_fieldsetting;
-
-  return $export;
-}
-
-/**
- * Implements hook_ds_custom_fields_info().
- */
-function dt_event_default_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'address_one_line';
-  $ds_field->label = 'Address one line';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'event|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '[node:field_core_location:premise] [node:field_core_location:thoroughfare] [node:field_core_location:sub_premise], [node:field_core_location:postal-code] [node:field_core_location:locality], [node:field_core_location:country]',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 1,
-  );
-  $export['address_one_line'] = $ds_field;
 
   return $export;
 }
@@ -139,10 +115,10 @@ function dt_event_default_ds_layout_settings_info() {
         0 => 'group_meta',
         1 => 'title',
         2 => 'dt_event_header',
-        3 => 'field_event_type',
+        4 => 'field_event_type',
       ),
       'top_middle_left' => array(
-        4 => 'field_core_media',
+        3 => 'field_core_media',
       ),
       'top_middle_right' => array(
         5 => 'field_core_introduction',
@@ -157,40 +133,52 @@ function dt_event_default_ds_layout_settings_info() {
       ),
       'central' => array(
         10 => 'group_practical_information',
-        11 => 'field_event_date',
-        12 => 'field_core_location',
-        13 => 'book_your_seat_bottom',
-        14 => 'livestreaming_bottom',
-        15 => 'field_event_location_image',
-        16 => 'field_event_available_languages',
-        17 => 'field_event_number_seats',
-        18 => 'field_event_entrance_fee',
-        19 => 'field_event_target_audience',
-        20 => 'field_core_departments',
-        21 => 'field_event_parent_events',
-        22 => 'field_event_website',
-        23 => 'group_row',
-        24 => 'group_practical_info_left',
-        25 => 'group_practical_info_right',
+        11 => 'group_event_speakers',
+        12 => 'group_event_schedule',
+        13 => 'group_event_contact',
+        14 => 'field_event_schedule',
+        15 => 'field_core_contact',
+        16 => 'field_core_persons',
+        17 => 'field_event_date',
+        18 => 'dt_event_address_oneline',
+        19 => 'book_your_seat_bottom',
+        20 => 'field_event_location_image',
+        21 => 'livestreaming_bottom',
+        22 => 'field_event_available_languages',
+        23 => 'field_event_number_seats',
+        24 => 'field_event_entrance_fee',
+        25 => 'field_event_target_audience',
+        26 => 'field_core_departments',
+        27 => 'field_event_parent_events',
+        28 => 'field_event_website',
+        29 => 'group_row',
+        30 => 'group_practical_info_left',
+        31 => 'group_practical_info_right',
       ),
     ),
     'fields' => array(
       'group_meta' => 'left_header',
       'title' => 'left_header',
       'dt_event_header' => 'left_header',
-      'field_event_type' => 'left_header',
       'field_core_media' => 'top_middle_left',
+      'field_event_type' => 'left_header',
       'field_core_introduction' => 'top_middle_right',
       'book_your_seat' => 'top_middle_right',
       'livestreaming' => 'top_middle_right',
       'body' => 'top_bottom_left',
       'field_core_social_network_links' => 'top_bottom_right',
       'group_practical_information' => 'central',
+      'group_event_speakers' => 'central',
+      'group_event_schedule' => 'central',
+      'group_event_contact' => 'central',
+      'field_event_schedule' => 'central',
+      'field_core_contact' => 'central',
+      'field_core_persons' => 'central',
       'field_event_date' => 'central',
-      'field_core_location' => 'central',
+      'dt_event_address_oneline' => 'central',
       'book_your_seat_bottom' => 'central',
-      'livestreaming_bottom' => 'central',
       'field_event_location_image' => 'central',
+      'livestreaming_bottom' => 'central',
       'field_event_available_languages' => 'central',
       'field_event_number_seats' => 'central',
       'field_event_entrance_fee' => 'central',

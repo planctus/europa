@@ -48,11 +48,39 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: header'),
       'function' => '_dt_event_ds_fields_header_event',
     ];
+    $fields[$entity_type]['dt_event_address_oneline'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Address oneline'),
+      'function' => '_dt_event_ds_fields_address_oneline',
+      'use_token' => TRUE,
+    ];
   }
 
   if (isset($fields[$entity_type])) {
     return [$entity_type => $fields[$entity_type]];
   }
+}
+
+/**
+ * Helper function to show the address in one line.
+ *
+ * @param array $field
+ *   Hold the current context of the field.
+ */
+function _dt_event_ds_fields_address_oneline($field) {
+  // The token output.
+  $output = '[node:field_core_location:premise] [node:field_core_location:thoroughfare] [node:field_core_location:sub_premise], [node:field_core_location:postal-code] [node:field_core_location:locality], [node:field_core_location:country]';
+
+  // Replace.
+  $address_text = token_replace($output, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+  // If a token might not be present, we could have to many spaces.
+  $address_text = str_replace(['  ', ' ,'], [' ', ','], $address_text);
+  // Build the link.
+  $address_link = l(t('View map'), 'https://www.google.com/maps?q=' . $address_text);
+
+  // Return the adress + link.
+  return $address_text . ' ' . $address_link;
 }
 
 /**
