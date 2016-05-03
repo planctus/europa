@@ -105,7 +105,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['style_options']['listing_columns'] = 'two_columns';
-  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--column-left';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing--teaser';
   $handler->display->display_options['row_plugin'] = 'node';

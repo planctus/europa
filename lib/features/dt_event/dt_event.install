@@ -22,10 +22,8 @@ function dt_event_uninstall() {
 }
 
 /**
- * First hook_update for example.
+ * Enable commissioner date module.
  */
-/*
 function dt_event_update_7101() {
-
+  module_enable(['commissioner_date']);
 }
- */

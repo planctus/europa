@@ -13,6 +13,66 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_activity_left|node|event|meta';
+  $field_group->group_name = 'group_activity_left';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Left',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_event_date',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Left',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'listing__column-second column-second',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_activity_left|node|event|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_activity_right|node|event|meta';
+  $field_group->group_name = 'group_activity_right';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Right',
+    'weight' => '1',
+    'children' => array(
+      0 => 'group_meta_wrapper',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Right',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'listing__column-main column-main',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_activity_right|node|event|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_content_tabgroup|node|event|form';
   $field_group->group_name = 'group_content_tabgroup';
   $field_group->entity_type = 'node';
@@ -310,6 +370,32 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_meta_wrapper|node|event|meta';
+  $field_group->group_name = 'group_meta_wrapper';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'meta';
+  $field_group->parent_name = 'group_activity_right';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '66',
+    'children' => array(
+      0 => 'field_event_type',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'modifier' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_meta_wrapper|node|event|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|event|full';
   $field_group->group_name = 'group_meta';
   $field_group->entity_type = 'node';
@@ -477,10 +563,12 @@ function dt_event_default_field_group_info() {
   t('Content');
   t('Description');
   t('Editorial settings');
+  t('Left');
   t('Meta');
   t('Practical info left');
   t('Practical info right');
   t('Practical information');
+  t('Right');
   t('Schedule');
   t('Speakers');
   t('row');

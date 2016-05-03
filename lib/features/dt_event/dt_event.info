@@ -5,6 +5,7 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 project = dt_event
 dependencies[] = addressfield
+dependencies[] = commissioner_date
 dependencies[] = dt_department
 dependencies[] = dt_policy_next_step
 dependencies[] = dt_social_network_links
