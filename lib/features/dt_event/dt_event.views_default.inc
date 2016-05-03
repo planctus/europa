@@ -549,142 +549,15 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    4 => 0,
     3 => 0,
-    5 => 0,
     6 => 0,
+    4 => 0,
+    5 => 0,
     7 => 0,
-    8 => 0,
+    9 => 0,
+    10 => 0,
   );
   $handler->display->display_options['filters']['search_api_views_fulltext']['mode'] = 'filter';
-  /* Filter criterion: Indexed Node: Related Topics */
-  $handler->display->display_options['filters']['field_core_topics']['id'] = 'field_core_topics';
-  $handler->display->display_options['filters']['field_core_topics']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_core_topics']['field'] = 'field_core_topics';
-  $handler->display->display_options['filters']['field_core_topics']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_topics']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_topics']['expose']['operator_id'] = 'field_core_topics_op';
-  $handler->display->display_options['filters']['field_core_topics']['expose']['label'] = 'Topic';
-  $handler->display->display_options['filters']['field_core_topics']['expose']['operator'] = 'field_core_topics_op';
-  $handler->display->display_options['filters']['field_core_topics']['expose']['identifier'] = 'field_core_topics';
-  $handler->display->display_options['filters']['field_core_topics']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
-  /* Filter criterion: Indexed Node: Event type */
-  $handler->display->display_options['filters']['field_event_type']['id'] = 'field_event_type';
-  $handler->display->display_options['filters']['field_event_type']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_event_type']['field'] = 'field_event_type';
-  $handler->display->display_options['filters']['field_event_type']['value'] = array();
-  $handler->display->display_options['filters']['field_event_type']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_type']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_type']['expose']['operator_id'] = 'field_event_type_op';
-  $handler->display->display_options['filters']['field_event_type']['expose']['label'] = 'Event type';
-  $handler->display->display_options['filters']['field_event_type']['expose']['operator'] = 'field_event_type_op';
-  $handler->display->display_options['filters']['field_event_type']['expose']['identifier'] = 'field_event_type';
-  $handler->display->display_options['filters']['field_event_type']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_type']['expose']['reduce'] = 0;
-  /* Filter criterion: Location: Country (indexed) */
-  $handler->display->display_options['filters']['field_core_location_country']['id'] = 'field_core_location_country';
-  $handler->display->display_options['filters']['field_core_location_country']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_core_location_country']['field'] = 'field_core_location_country';
-  $handler->display->display_options['filters']['field_core_location_country']['value'] = array();
-  $handler->display->display_options['filters']['field_core_location_country']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_location_country']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['operator_id'] = 'field_core_location_country_op';
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['label'] = 'Location';
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['operator'] = 'field_core_location_country_op';
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['identifier'] = 'field_core_location_country';
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
-  $handler->display->display_options['filters']['field_core_location_country']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Online only */
-  $handler->display->display_options['filters']['field_event_is_online']['id'] = 'field_event_is_online';
-  $handler->display->display_options['filters']['field_event_is_online']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_event_is_online']['field'] = 'field_event_is_online';
-  $handler->display->display_options['filters']['field_event_is_online']['value'] = array();
-  $handler->display->display_options['filters']['field_event_is_online']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_is_online']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['operator_id'] = 'field_event_is_online_op';
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['label'] = 'Online events only';
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['operator'] = 'field_event_is_online_op';
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['identifier'] = 'field_event_is_online';
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_is_online']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Live streaming available */
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['id'] = 'field_event_is_live_streaming';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['field'] = 'field_event_is_live_streaming';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['value'] = array();
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['operator_id'] = 'field_event_is_live_streaming_op';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['label'] = 'Only events with live streaming available';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['operator'] = 'field_event_is_live_streaming_op';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['identifier'] = 'field_event_is_live_streaming';
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_is_live_streaming']['expose']['reduce'] = 0;
-  /* Filter criterion: Indexed Node: Related departments */
-  $handler->display->display_options['filters']['field_core_departments']['id'] = 'field_core_departments';
-  $handler->display->display_options['filters']['field_core_departments']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_core_departments']['field'] = 'field_core_departments';
-  $handler->display->display_options['filters']['field_core_departments']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_departments']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_departments']['expose']['operator_id'] = 'field_core_departments_op';
-  $handler->display->display_options['filters']['field_core_departments']['expose']['label'] = 'Organizing department';
-  $handler->display->display_options['filters']['field_core_departments']['expose']['operator'] = 'field_core_departments_op';
-  $handler->display->display_options['filters']['field_core_departments']['expose']['identifier'] = 'field_core_departments';
-  $handler->display->display_options['filters']['field_core_departments']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-  );
   /* Filter criterion: Event date and time: Start date (indexed) */
   $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['table'] = 'search_api_index_event_index';
@@ -699,13 +572,16 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    4 => 0,
     3 => 0,
-    5 => 0,
     6 => 0,
+    4 => 0,
+    5 => 0,
     7 => 0,
-    8 => 0,
+    9 => 0,
+    10 => 0,
   );
+  $handler->display->display_options['filters']['field_event_date_value']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value']['date_popup_format'] = 'Y-m-d';
   /* Filter criterion: Event date and time: Start date (indexed) */
   $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
   $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_event_index';
@@ -720,17 +596,50 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    4 => 0,
     3 => 0,
-    5 => 0,
     6 => 0,
+    4 => 0,
+    5 => 0,
     7 => 0,
-    8 => 0,
+    9 => 0,
+    10 => 0,
   );
+  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['mefibs'] = array(
+    'blocks' => array(
+      0 => array(
+        'name' => 'event date filters',
+        'machine_name' => 'event_date_filters',
+        'submit_button' => 'Submit',
+        'reset_button' => NULL,
+        'reset_button_label' => 'Reset',
+        'autosubmit' => '1',
+        'autosubmit_hide' => '1',
+      ),
+    ),
+    'extras' => array(
+      'sort' => -1,
+      'items_per_page' => -1,
+    ),
+    'page' => array(
+      'filter' => array(
+        'field_event_date_value' => array(
+          0 => 'default',
+        ),
+        'field_event_date_value_1' => array(
+          0 => 'event_date_filters',
+        ),
+        'search_api_views_fulltext' => array(
+          0 => 'default',
+        ),
+      ),
+    ),
+  );
   $handler->display->display_options['path'] = 'events';
   $export['events'] = $view;
 
