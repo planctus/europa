@@ -73,6 +73,35 @@ function dt_event_preprocess_file_entity(&$variables) {
 }
 
 /**
+ * Implements hook_views_pre_render().
+ *
+ * Here we will replace the %all_events_link token in the views header config.
+ */
+function dt_event_views_pre_render(&$view) {
+  // Replace the link token with the link.
+  if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
+    if (FALSE !== strpos($view->header['area_text_custom']->options['content'], '%all_events_link')) {
+      // @todo: Instead of using /events, get the view and return the path of it.
+      $link = l(t('All events'), '/events');
+      $view->header['area_text_custom']->options['content'] = str_replace('%all_events_link', $link, $view->header['area_text_custom']->options['content']);
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * In this query alter we ensure that we exclude the argument event from the
+ * query. This would cause infinte loop.
+ */
+function dt_event_views_query_alter(&$view, &$query) {
+  if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
+    // Make sure that we dont include the current child event.
+    $query->add_where(0, 'node_field_data_field_event_children_events.nid', $view->args[0], '<>');
+  }
+}
+
+/**
  * Implements hook_date_format_types().
  */
 function dt_event_date_format_types() {

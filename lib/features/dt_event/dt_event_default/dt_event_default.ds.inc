@@ -17,6 +17,11 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'event_related_events' => array(
+      'weight' => '13',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -66,6 +71,16 @@ function dt_event_default_ds_field_settings_info() {
         'ft' => array(
           'lb' => 'Where',
         ),
+      ),
+    ),
+    'field_core_contact' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_core_persons' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
     'field_event_available_languages' => array(
@@ -136,24 +151,25 @@ function dt_event_default_ds_layout_settings_info() {
         11 => 'group_event_speakers',
         12 => 'group_event_schedule',
         13 => 'group_event_contact',
-        14 => 'field_event_schedule',
-        15 => 'field_core_contact',
-        16 => 'field_core_persons',
-        17 => 'field_event_date',
-        18 => 'dt_event_address_oneline',
-        19 => 'book_your_seat_bottom',
-        20 => 'field_event_location_image',
-        21 => 'livestreaming_bottom',
-        22 => 'field_event_available_languages',
-        23 => 'field_event_number_seats',
-        24 => 'field_event_entrance_fee',
-        25 => 'field_event_target_audience',
-        26 => 'field_core_departments',
-        27 => 'field_event_parent_events',
-        28 => 'field_event_website',
-        29 => 'group_row',
-        30 => 'group_practical_info_left',
-        31 => 'group_practical_info_right',
+        14 => 'event_related_events',
+        15 => 'field_event_schedule',
+        16 => 'field_core_contact',
+        17 => 'field_core_persons',
+        18 => 'field_event_date',
+        19 => 'dt_event_address_oneline',
+        20 => 'book_your_seat_bottom',
+        21 => 'field_event_location_image',
+        22 => 'livestreaming_bottom',
+        23 => 'field_event_available_languages',
+        24 => 'field_event_number_seats',
+        25 => 'field_event_entrance_fee',
+        26 => 'field_event_target_audience',
+        27 => 'field_core_departments',
+        28 => 'field_event_parent_events',
+        29 => 'field_event_website',
+        30 => 'group_row',
+        31 => 'group_practical_info_left',
+        32 => 'group_practical_info_right',
       ),
     ),
     'fields' => array(
@@ -171,6 +187,7 @@ function dt_event_default_ds_layout_settings_info() {
       'group_event_speakers' => 'central',
       'group_event_schedule' => 'central',
       'group_event_contact' => 'central',
+      'event_related_events' => 'central',
       'field_event_schedule' => 'central',
       'field_core_contact' => 'central',
       'field_core_persons' => 'central',
