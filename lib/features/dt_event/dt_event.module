@@ -85,17 +85,18 @@ function dt_event_facet_items_alter(&$build, &$settings) {
     case 'field_event_is_online':
       $settings->settings['hide_facet_count'] = 1;
 
-      foreach($build as $key => $item) {
+      foreach ($build as $key => $item) {
         if ($item["#markup"] == 'yes') {
           $build[$key]["#markup"] = t('Online events only');
           $build[$key]['#count'] = NULL;
         }
       }
       break;
+
     case 'field_event_is_live_streaming':
       $settings->settings['hide_facet_count'] = 1;
 
-      foreach($build as $key => $item) {
+      foreach ($build as $key => $item) {
         if ($item["#markup"] == 'yes') {
           $build[$key]["#markup"] = t('Online events with live streaming available');
           $build[$key]['#count'] = NULL;
