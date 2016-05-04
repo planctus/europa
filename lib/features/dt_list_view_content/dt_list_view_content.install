@@ -22,5 +22,5 @@ function dt_list_view_content_disable() {
  * DTTSB-468: Move content from one field to another.
  */
 function dt_list_view_content_update_7101() {
-  _dt_shared_field_value_copy('bean', 'list_view_content', 'field_core_introduction', 'field_list_view_content');
+  _dt_shared_field_value_copy('bean', 'list_view_content', 'field_core_introduction', 'field_list_view_content', FALSE, TRUE);
 }
