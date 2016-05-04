@@ -24,6 +24,18 @@ function dt_event_ds_fields_info($entity_type) {
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'ui_limit' => ['event|*'],
     'function' => '_dt_event_ds_fields_livestreaming',
+    'properties' => [
+      'settings' => [
+        'no_padding' => [
+          'title' => t('Remove left padding'),
+          'type' => 'checkbox',
+          'description' => t('Removes the left padding for different view mode usage'),
+        ],
+      ],
+      'default' => [
+        'no_padding' => FALSE,
+      ],
+    ],
   ];
 
   // The actual DS definition.
@@ -158,6 +170,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
             'btn',
             'btn-ctn',
             'pull-left',
+            'btn--no-margin-bottom',
           ],
         ],
         'html' => TRUE,
@@ -178,6 +191,17 @@ function _dt_event_ds_fields_book_your_seat($field) {
 function _dt_event_ds_fields_livestreaming($field) {
   // Entity metadata wrapper.
   $emw = entity_metadata_wrapper('node', $field['entity']);
+
+  // Initialize classes array.
+  $classes = [
+    'label',
+    'label--high',
+    'pull-left',
+  ];
+  // In some cases we might remove the padding on the left.
+  if (isset($field['formatter_settings']['no_padding']) && $field['formatter_settings']['no_padding']) {
+    $classes[] = 'label--no-padding-left';
+  }
 
   // List of states, in which one could register for an event.
   $allowed_states = [
@@ -206,7 +230,7 @@ function _dt_event_ds_fields_livestreaming($field) {
 
     // Return the text if it is found.
     if (isset($streaming_text)) {
-      return '<span class="label label--high pull-left">' . $streaming_text . '</span>';
+      return '<span class="' . implode(' ', $classes) . '">' . $streaming_text . '</span>';
     }
   }
 }

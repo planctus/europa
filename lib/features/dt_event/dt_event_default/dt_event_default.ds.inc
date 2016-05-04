@@ -82,6 +82,10 @@ function dt_event_default_ds_field_settings_info() {
       'weight' => '46',
       'label' => 'inline',
       'format' => 'default',
+      'formatter_settings' => array(
+        'no_padding' => 1,
+        'ft' => array(),
+      ),
     ),
     'dt_event_header' => array(
       'weight' => '2',
@@ -96,16 +100,6 @@ function dt_event_default_ds_field_settings_info() {
         'ft' => array(
           'lb' => 'Where',
         ),
-      ),
-    ),
-    'field_core_contact' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_core_persons' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_event_available_languages' => array(
@@ -344,8 +338,8 @@ function dt_event_default_ds_layout_settings_info() {
         17 => 'field_core_persons',
         18 => 'field_event_date',
         19 => 'dt_event_address_oneline',
-        20 => 'book_your_seat_bottom',
-        21 => 'field_event_location_image',
+        20 => 'field_event_location_image',
+        21 => 'book_your_seat_bottom',
         22 => 'livestreaming_bottom',
         23 => 'field_event_available_languages',
         24 => 'field_event_number_seats',
@@ -380,8 +374,8 @@ function dt_event_default_ds_layout_settings_info() {
       'field_core_persons' => 'central',
       'field_event_date' => 'central',
       'dt_event_address_oneline' => 'central',
-      'book_your_seat_bottom' => 'central',
       'field_event_location_image' => 'central',
+      'book_your_seat_bottom' => 'central',
       'livestreaming_bottom' => 'central',
       'field_event_available_languages' => 'central',
       'field_event_number_seats' => 'central',
