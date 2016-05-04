@@ -47,6 +47,18 @@ function dt_event_ds_fields_info($entity_type) {
       'ui_limit' => ['event|*'],
       'title' => t('Event: header'),
       'function' => '_dt_event_ds_fields_header_event',
+      'properties' => [
+        'settings' => [
+          'teaser_version' => [
+            'title' => t('Teaser version'),
+            'type' => 'checkbox',
+            'description' => t('The teaser version will add additional markup and hide various elements'),
+          ],
+        ],
+        'default' => [
+          'teaser_version' => FALSE,
+        ],
+      ],
     ];
     $fields[$entity_type]['dt_event_address_oneline'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -60,6 +72,20 @@ function dt_event_ds_fields_info($entity_type) {
   if (isset($fields[$entity_type])) {
     return [$entity_type => $fields[$entity_type]];
   }
+}
+
+/**
+ * Implements hook_ds_field_settings_form().
+ */
+function dt_event_ds_field_settings_form($field) {
+  return ds_ds_field_settings_form($field);
+}
+
+/**
+ * Implements hook_ds_field_format_summary().
+ */
+function dt_event_ds_field_format_summary($field) {
+  return ds_ds_field_format_summary($field);
 }
 
 /**
@@ -193,73 +219,96 @@ function _dt_event_ds_fields_livestreaming($field) {
  */
 function _dt_event_ds_fields_header_event($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  $node = $field['entity'];
-  $lang = entity_translation_get_existing_language('node', $node);
+  $lang = entity_translation_get_existing_language('node', $field['entity']);
   $date = $entity->field_event_date->value();
   $is_streaming = $entity->field_event_is_live_streaming->value();
 
-  // Cancelled, it shows the date with a modifier.
-  $modifier = $node->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
+  // Check if we should render the teaser version.
+  $teaser_mode = isset($field['formatter_settings']['teaser_version']) ? $field['formatter_settings']['teaser_version'] : FALSE;
 
-  // Build the markup.
-  $wrapper = '<div class="page-header__eventinfo">';
-  $markup = '<div class="' . $modifier . 'page-header__date icon icon--calendar">';
+  // Set the default classes.
+  $element_classes = [
+    'location' => 'icon--text-small icon--margin-right',
+    'livestream' => 'icon--text-small',
+  ];
 
-  switch ($node->event_status) {
-    // Ongoing, it shows the current date.
-    case DT_EVENT_STATE_ONGOING:
-      $markup .= format_date(time(), 'dt_event', '', NULL, $lang);
-      break;
+  // Initialize markup.
+  $markup = '';
+  $location_content = '';
 
-    // Past event, it shows also the year.
-    case DT_EVENT_STATE_PAST:
-      $markup .= format_date($date['value'], 'dt_past_event', '', NULL, $lang);
-      break;
+  // Start building the markup.
+  if (!$teaser_mode) {
+    // If it is not the teaser, it is the header variant.
+    $element_classes = [
+      'location' => 'page-header__location',
+      'livestream' => 'page-header__livestreaming',
+    ];
 
-    // Cancelled, apply the right date format.
-    case DT_EVENT_STATE_CANCELLED:
-      $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-      $markup .= time() > $end_date ? format_date($date['value'], 'dt_past_event', '', NULL, $lang) : format_date($date['value'], 'dt_event', '', NULL, $lang);
-      break;
+    // Cancelled, it shows the date with a modifier.
+    $modifier = $field['entity']->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
 
-    // Default is showing the start date of the event.
-    default:
-      $markup .= format_date($date['value'], 'dt_event', '', NULL, $lang);
+    switch ($field['entity']->event_status) {
+      // Ongoing, it shows the current date.
+      case DT_EVENT_STATE_ONGOING:
+        $date_value = format_date(time(), 'dt_event', '', NULL, $lang);
+        break;
+
+      // Past event, it shows also the year.
+      case DT_EVENT_STATE_PAST:
+        $date_value = format_date($date['value'], 'dt_past_event', '', NULL, $lang);
+        break;
+
+      // Cancelled, apply the right date format.
+      case DT_EVENT_STATE_CANCELLED:
+        $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
+        $date_value = time() > $end_date ? format_date($date['value'], 'dt_past_event', '', NULL, $lang) : format_date($date['value'], 'dt_event', '', NULL, $lang);
+        break;
+
+      // Default is showing the start date of the event.
+      default:
+        $date_value = format_date($date['value'], 'dt_event', '', NULL, $lang);
+    }
+
+    // Add the date markup.
+    $markup .= '<div class="' . $modifier . 'page-header__date icon icon--calendar">' . $date_value . '</div>';
   }
-
-  $markup .= '</div>';
 
   // Event location, online event only.
   if ($entity->field_event_is_online->value()) {
-    $markup .= '<span class="icon icon--location page-header__location">' . t('Online only') . '</span>';
+    $location_content .= t('Online only');
   }
   // All of the others.
   else {
     $location = $entity->field_core_location->value();
     if (!empty($location)) {
-      $markup .= '<span class="icon icon--location page-header__location">' . $location['locality'];
+      $location_content .= $location['locality'];
     }
-
     // We only get the country ISO code from addressfield.
     if (!empty($location['country'])) {
       $countries = country_get_list();
-      $markup .= ', ' . $countries[$location['country']];
+      $location_content .= ', ' . $countries[$location['country']];
     }
-
-    $markup .= '</span>';
   }
 
-  if ($is_streaming && (!in_array($node->event_status, array(DT_EVENT_STATE_CANCELLED, DT_EVENT_STATE_PAST)))) {
-    $markup .= '<span class="icon icon--livestreaming page-header__livestreaming">' . t('live streaming available') . '</span>';
+  // Add the extra markup.
+  if (!empty($location_content)) {
+    $markup .= '<span class="icon icon--location ' . $element_classes['location'] . '">' . $location_content . '</span>';
   }
 
-  $closure = '</div>';
+  if ($is_streaming && (!in_array($field['entity']->event_status, array(DT_EVENT_STATE_CANCELLED, DT_EVENT_STATE_PAST)))) {
+    $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
+  }
 
+  // Start building the render array.
   $output = array(
     '#markup' => $markup,
-    '#prefix' => $wrapper,
-    '#suffix' => $closure,
   );
+
+  // Depending on the date placement we add our prefix and suffix.
+  if (!$teaser_mode) {
+    $output['#prefix'] = '<div class="page-header__eventinfo">';
+    $output['#suffix'] = '</div>';
+  }
 
   return drupal_render($output);
 }

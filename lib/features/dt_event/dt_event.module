@@ -89,6 +89,22 @@ function dt_event_views_pre_render(&$view) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Here we will wrap the view header with our required markup. We do it here to
+ * avoid to much markup in the translation table.
+ */
+function dt_event_preprocess_views_view(&$variables) {
+  $markup = [
+    '#markup' => $variables['header'],
+    '#prefix' => '<section class="text-small section section--force-bottom">',
+    '#suffix' => '</section>',
+  ];
+
+  $variables['header'] = drupal_render($markup);
+}
+
+/**
  * Implements hook_views_query_alter().
  *
  * In this query alter we ensure that we exclude the argument event from the
