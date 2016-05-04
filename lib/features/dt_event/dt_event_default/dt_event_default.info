@@ -25,6 +25,7 @@ features[field_group][] = group_editorial_settings|node|event|form
 features[field_group][] = group_event_after|node|event|form
 features[field_group][] = group_event_contact|node|event|full
 features[field_group][] = group_event_content|node|event|form
+features[field_group][] = group_event_context_nav|node|event|full
 features[field_group][] = group_event_description|node|event|form
 features[field_group][] = group_event_practical_info|node|event|form
 features[field_group][] = group_event_schedule|node|event|full

@@ -175,7 +175,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '12',
+    'weight' => '14',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -233,6 +233,33 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_event_content|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_context_nav|node|event|full';
+  $field_group->group_name = 'group_event_context_nav';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Context nav',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_topics',
+    ),
+    'format_type' => 'context_nav',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'classes' => 'group-event-context-nav field-group-context_nav',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_event_context_nav|node|event|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -320,7 +347,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '11',
+    'weight' => '13',
     'children' => array(
       0 => 'field_event_schedule',
     ),
@@ -350,7 +377,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_persons',
     ),
@@ -442,9 +469,10 @@ function dt_event_default_field_group_info() {
       5 => 'field_event_parent_events',
       6 => 'field_event_target_audience',
       7 => 'field_event_website',
-      8 => 'book_your_seat_bottom',
-      9 => 'livestreaming_bottom',
-      10 => 'dt_event_address_oneline',
+      8 => 'hr_2',
+      9 => 'book_your_seat_bottom',
+      10 => 'livestreaming_bottom',
+      11 => 'dt_event_address_oneline',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -506,7 +534,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'group_row',
     ),
@@ -563,6 +591,7 @@ function dt_event_default_field_group_info() {
   t('After the event');
   t('Contact');
   t('Content');
+  t('Context nav');
   t('Description');
   t('Editorial settings');
   t('Left');
