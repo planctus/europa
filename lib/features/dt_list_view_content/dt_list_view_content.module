@@ -43,7 +43,7 @@ function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
         // Metadata wrapper.
         $bean_mdw = entity_metadata_wrapper('bean', $bean);
         // Set introduction if available.
-        if ($bean_mdw->language($language->language)->__isset('field_core_introduction') && $introduction_content = $bean_mdw->language($language->language)->field_core_introduction->value()) {
+        if ($bean_mdw->language($language->language)->__isset('field_list_view_content') && $introduction_content = $bean_mdw->language($language->language)->field_list_view_content->value()) {
           $header_options = array(
             'content' => $introduction_content['value'],
             'format' => $introduction_content['format'],
