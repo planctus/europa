@@ -33,6 +33,10 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
     foreach ($entities as $entity) {
       if ($entity->type == 'event') {
         _dt_event_entity_add_status_property($entity);
+        // Add this to style guide.
+        drupal_add_css(".facetapi-facetapi-checkbox-links {list-style: none;}", "inline");
+        drupal_add_css(".facetapi-facetapi-checkbox-links input.facetapi-checkbox {margin-right: .5em;}", "inline");
+        drupal_add_css(".facetapi-facetapi-checkbox-links a.facetapi-checkbox {text-decoration: none;}", "inline");
       }
     }
   }
@@ -71,4 +75,32 @@ function dt_event_date_formats() {
   }
 
   return $formats;
+}
+
+/**
+ * Implements hook_facet_items_alter().
+ */
+function dt_event_facet_items_alter(&$build, &$settings) {
+  switch ($settings->facet) {
+    case 'field_event_is_online':
+      $settings->settings['hide_facet_count'] = 1;
+
+      foreach($build as $key => $item) {
+        if ($item["#markup"] == 'yes') {
+          $build[$key]["#markup"] = t('Online events only');
+          $build[$key]['#count'] = NULL;
+        }
+      }
+      break;
+    case 'field_event_is_live_streaming':
+      $settings->settings['hide_facet_count'] = 1;
+
+      foreach($build as $key => $item) {
+        if ($item["#markup"] == 'yes') {
+          $build[$key]["#markup"] = t('Online events with live streaming available');
+          $build[$key]['#count'] = NULL;
+        }
+      }
+      break;
+  }
 }
