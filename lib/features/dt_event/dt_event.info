@@ -12,6 +12,7 @@ dependencies[] = dt_social_network_links
 dependencies[] = link
 dependencies[] = mediafield
 dependencies[] = number
+dependencies[] = nexteuropa_ds_fields
 features[cer][] = node:event:field_event_parent_events*node:event:field_event_children_events
 features[conditional_fields][] = node:event
 features[ctools][] = ds:ds:1

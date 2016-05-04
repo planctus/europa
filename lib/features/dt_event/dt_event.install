@@ -25,5 +25,5 @@ function dt_event_uninstall() {
  * Enable commissioner date module.
  */
 function dt_event_update_7101() {
-  module_enable(['commissioner_date']);
+  module_enable(['commissioner_date', 'nexteuropa_ds_fields']);
 }
