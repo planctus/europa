@@ -52,13 +52,13 @@ Feature: Legacy links
   Scenario: As an anonymous user I should get an access denied on legacy link full view mode
     Given I am not logged in
     Given I am viewing a "Announcement" content:
-      | title                  | Announcement title on page     |
-      | language               | en                             |
-      | field_core_description | Content description            |
-      | status                 | 1                              |
-      | field_core_legacy_link | title - http://example.en/test |
-    Then I should get an access denied error
-
+      | title                  | Announcement title on page |
+      | language               | en                         |
+      | field_core_description | Content description        |
+      | status                 | 1                          |
+      | field_core_legacy_link | title - /user   |
+    Then show last response
+    Then the url should match "/user"
 
   Scenario: As user I can see legacy links to entityreference fields
     Given I am not logged in
