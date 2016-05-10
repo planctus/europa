@@ -67,7 +67,7 @@ function _dt_list_view_get_bean_content($view) {
     // Get our language.
     global $language;
 
-    // Loop over the beans as there might be more than one.
+    // If there is a bean, we modify the view display.
     if ($bean = entity_load('bean', _dt_list_view_content_get_bean($view))) {
       // Metadata wrapper.
       $bean_mdw = entity_metadata_wrapper('bean', reset($bean));
