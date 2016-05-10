@@ -358,7 +358,7 @@ function cwt_core_views_pre_render(&$view) {
  * so we alter the inbound path.
  */
 function cwt_core_url_inbound_alter(&$path, $original_path, $path_language) {
-  $segments = '\/blog\b|\/agenda\b|\/announcements\b';
+  $segments = '\/blog\b|\/calendar\b|\/announcements\b';
   $pattern = '/(.*?)(' . $segments . ')((?:\/|.)*)/i';
   // Store the first original path.
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
