@@ -54,11 +54,22 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
  * the current date forward.
  */
 function cwt_activities_views_query_alter(&$view, &$query) {
-  if ($view->name == 'agenda' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+  if ($view->name == 'agenda') {
     // If start date field value is empty, adds to the query view the condition
     // to return all items from now forward.
-    $date = date($view->filter['field_start_end_date_value2']->format, time());
-    $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
+    if (empty($view->exposed_raw_input['date_filter_min']['value'])) {
+      $date = date($view->filter['field_start_end_date_value2']->format, time());
+      $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
+    }
+
+    // If end date field value is empty, adds to the query view the condition
+    // to return only the items to this date.
+    if (empty($view->exposed_raw_input['date_filter_max']['value'])) {
+      // Return all items for the next 2 Sundays from the previous Friday.
+      $days = ($weekday = date('w', time())) != 5 ? 7 - $weekday : 9;
+      $date = date($view->filter['field_start_end_date_value']->format, strtotime(' +' . $days . ' days'));
+      $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date . ' 23:59:59', '<=');
+    }
   }
 }
 
@@ -81,7 +92,6 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
         $allowed_values[$term->tid] = $term->tid;
       }
       $view->display['default']->handler->options['filters']['field_editorial_section_multiple_tid']['value'] = $allowed_values;
-      $view->args[0] = $editorial_section->tid;
     }
   }
 }
@@ -133,7 +143,6 @@ function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
     $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
     $pdf_filename = transliteration_clean_filename($filename);
   }
-
 }
 
 /**
