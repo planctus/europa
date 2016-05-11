@@ -72,7 +72,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'agenda/[field_editorial_section]';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
@@ -239,7 +239,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'agenda/[field_editorial_section]';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
@@ -703,7 +703,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['ui_name'] = 'Print PDF link';
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="rss-link__wrapper"><div class="rss-link">%print_pdf_link%</div></div>';
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  $handler->display->display_options['path'] = 'agenda/%';
+  $handler->display->display_options['path'] = 'calendar/%';
 
   /* Display: Print agenda items */
   $handler = $view->new_display('page', 'Print agenda items', 'print_list');

@@ -138,7 +138,7 @@ function cwt_activities_views_pre_render(&$view) {
  * Alters the PDF filename.
  */
 function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
-  if (strpos($path, 'print-agenda') !== FALSE) {
+  if (strpos($path, 'print-calendar') !== FALSE) {
     $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
     $pdf_filename = transliteration_clean_filename($filename);
   }
