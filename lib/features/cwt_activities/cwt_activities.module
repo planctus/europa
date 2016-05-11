@@ -66,8 +66,7 @@ function cwt_activities_views_query_alter(&$view, &$query) {
     // to return only the items to this date.
     if (empty($view->exposed_raw_input['date_filter_max']['value'])) {
       // Return all items for the next 2 Sundays from the previous Friday.
-      $days = ($weekday = date('w', time())) != 5 ? 7 - $weekday : 9;
-      $date = date($view->filter['field_start_end_date_value']->format, strtotime(' +' . $days . ' days'));
+      $date = date($view->filter['field_start_end_date_value']->format, strtotime('last friday +9 days'));
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date . ' 23:59:59', '<=');
     }
   }
