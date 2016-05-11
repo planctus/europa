@@ -33,10 +33,6 @@ function dt_event_entity_prepare_view($entities, $type, $langcode) {
     foreach ($entities as $entity) {
       if ($entity->type == 'event') {
         _dt_event_entity_add_status_property($entity);
-        // Add this to style guide.
-        drupal_add_css(".facetapi-facetapi-checkbox-links {list-style: none;}", "inline");
-        drupal_add_css(".facetapi-facetapi-checkbox-links input.facetapi-checkbox {margin-right: .5em;}", "inline");
-        drupal_add_css(".facetapi-facetapi-checkbox-links a.facetapi-checkbox {text-decoration: none;}", "inline");
       }
     }
   }
