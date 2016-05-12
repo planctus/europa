@@ -23,17 +23,47 @@ define('DT_EVENT_LIVE_STREAM_ONGOING', 2);
 define('DT_EVENT_LIVE_STREAM_END', 3);
 
 /**
- * Implements hook_entity_prepare_view().
- *
- * We iterate on the entity's of type 'node'. If we have matching entity's of
- * type 'event' we pass them to our function.
+ * Implements hook_entity_load().
  */
-function dt_event_entity_prepare_view($entities, $type, $langcode) {
+function dt_event_entity_load($entities, $type) {
   if ($type == 'node') {
-    foreach ($entities as $entity) {
+    foreach ($entities as &$entity) {
       if ($entity->type == 'event') {
         _dt_event_entity_add_status_property($entity);
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_entitycache_ENTITY_TYPE_load().
+ */
+function dt_event_entitycache_node_load($entities) {
+  foreach ($entities as &$entity) {
+    if ($entity->type == 'event') {
+      // Force the adding of the status property.
+      _dt_event_entity_add_status_property($entity);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function dt_event_entity_view_mode_alter(&$view_mode, $context) {
+  // Only attempt to change the view mode if it is full, as we never want to
+  // change the view mode on a teaser by accident.
+  if ($context['entity']->type == 'event' && $view_mode == 'full') {
+    // If it is a collection.
+    if ($context['entity']->field_event_collection['und'][0]['value'] == 1) {
+      $view_mode = 'event_collection';
+      return;
+    }
+
+    // If we have an event status. And the event is past.
+    if (isset($context['entity']->event_status) && $context['entity']->event_status == DT_EVENT_STATE_PAST) {
+      $view_mode = 'event_past';
+      return;
     }
   }
 }
@@ -68,7 +98,6 @@ function dt_event_preprocess_file_entity(&$variables) {
     if (isset($variables['content']['field_caption'])) {
       $variables['content']['field_caption'] += $caption_wrapper;
     }
-
   }
 }
 
