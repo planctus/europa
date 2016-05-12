@@ -409,6 +409,7 @@ function dt_event_default_field_group_info() {
     'weight' => '66',
     'children' => array(
       0 => 'field_event_type',
+      1 => 'dt_event_status_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

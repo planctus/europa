@@ -164,6 +164,11 @@ function dt_event_default_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'dt_event_status_label' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'field_event_type' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -321,10 +326,10 @@ function dt_event_default_ds_layout_settings_info() {
         0 => 'group_meta',
         1 => 'title',
         2 => 'dt_event_header',
-        4 => 'field_event_type',
+        3 => 'field_event_type',
       ),
       'top_middle_left' => array(
-        3 => 'field_core_media',
+        4 => 'field_core_media',
       ),
       'top_middle_right' => array(
         5 => 'field_core_introduction',
@@ -371,8 +376,8 @@ function dt_event_default_ds_layout_settings_info() {
       'group_meta' => 'left_header',
       'title' => 'left_header',
       'dt_event_header' => 'left_header',
-      'field_core_media' => 'top_middle_left',
       'field_event_type' => 'left_header',
+      'field_core_media' => 'top_middle_left',
       'field_core_introduction' => 'top_middle_right',
       'book_your_seat' => 'top_middle_right',
       'livestreaming' => 'top_middle_right',
@@ -439,16 +444,18 @@ function dt_event_default_ds_layout_settings_info() {
         0 => 'group_activity_left',
         1 => 'group_activity_right',
         2 => 'field_event_type',
-        3 => 'field_event_date',
-        4 => 'group_meta_wrapper',
-        5 => 'title',
-        6 => 'dt_event_header',
+        3 => 'dt_event_status_label',
+        4 => 'field_event_date',
+        5 => 'group_meta_wrapper',
+        6 => 'title',
+        7 => 'dt_event_header',
       ),
     ),
     'fields' => array(
       'group_activity_left' => 'main',
       'group_activity_right' => 'main',
       'field_event_type' => 'main',
+      'dt_event_status_label' => 'main',
       'field_event_date' => 'main',
       'group_meta_wrapper' => 'main',
       'title' => 'main',
