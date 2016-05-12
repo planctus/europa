@@ -166,6 +166,62 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_contact|node|event|event_collection';
+  $field_group->group_name = 'group_event_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '19',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_contact|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_contact|node|event|event_past';
+  $field_group->group_name = 'group_event_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '14',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_contact|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_event_contact|node|event|full';
   $field_group->group_name = 'group_event_contact';
   $field_group->entity_type = 'node';
@@ -232,6 +288,58 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_event_content|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_context_nav|node|event|event_collection';
+  $field_group->group_name = 'group_event_context_nav';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Context nav',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_topics',
+    ),
+    'format_type' => 'context_nav',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'classes' => 'group-event-context-nav field-group-context_nav',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_event_context_nav|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_context_nav|node|event|event_past';
+  $field_group->group_name = 'group_event_context_nav';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Context nav',
+    'weight' => '8',
+    'children' => array(),
+    'format_type' => 'context_nav',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'classes' => 'group-event-context-nav field-group-context_nav',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_event_context_nav|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -338,6 +446,62 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_schedule|node|event|event_collection';
+  $field_group->group_name = 'group_event_schedule';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Schedule',
+    'weight' => '18',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Schedule',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_schedule|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_schedule|node|event|event_past';
+  $field_group->group_name = 'group_event_schedule';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Schedule',
+    'weight' => '13',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Schedule',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_schedule|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_event_schedule|node|event|full';
   $field_group->group_name = 'group_event_schedule';
   $field_group->entity_type = 'node';
@@ -364,6 +528,62 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_event_schedule|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_speakers|node|event|event_collection';
+  $field_group->group_name = 'group_event_speakers';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Speakers',
+    'weight' => '17',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Speakers',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="speakers"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_speakers|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_speakers|node|event|event_past';
+  $field_group->group_name = 'group_event_speakers';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Speakers',
+    'weight' => '12',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Speakers',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="speakers"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_speakers|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -425,6 +645,56 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_meta|node|event|event_collection';
+  $field_group->group_name = 'group_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_event_type',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'modifier' => 'meta--header',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_meta|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_meta|node|event|event_past';
+  $field_group->group_name = 'group_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'modifier' => 'meta--header',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_meta|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|event|full';
   $field_group->group_name = 'group_meta';
   $field_group->entity_type = 'node';
@@ -447,6 +717,66 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_meta|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_left|node|event|event_collection';
+  $field_group->group_name = 'group_practical_info_left';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical info left',
+    'weight' => '33',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info left',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-9',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_left|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_left|node|event|event_past';
+  $field_group->group_name = 'group_practical_info_left';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical info left',
+    'weight' => '79',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info left',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-9',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_left|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -494,6 +824,66 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_right|node|event|event_collection';
+  $field_group->group_name = 'group_practical_info_right';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical info right',
+    'weight' => '34',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info right',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-3',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_right|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_info_right|node|event|event_past';
+  $field_group->group_name = 'group_practical_info_right';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical info right',
+    'weight' => '80',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Practical info right',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-3',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_practical_info_right|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_practical_info_right|node|event|full';
   $field_group->group_name = 'group_practical_info_right';
   $field_group->entity_type = 'node';
@@ -526,6 +916,62 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_information|node|event|event_collection';
+  $field_group->group_name = 'group_practical_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical information',
+    'weight' => '11',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Practical information',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="practicalinformation"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_practical_information|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_practical_information|node|event|event_past';
+  $field_group->group_name = 'group_practical_information';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Practical information',
+    'weight' => '11',
+    'children' => array(),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Practical information',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="practicalinformation"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_practical_information|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_practical_information|node|event|full';
   $field_group->group_name = 'group_practical_information';
   $field_group->entity_type = 'node';
@@ -552,6 +998,66 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_practical_information|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_row|node|event|event_collection';
+  $field_group->group_name = 'group_row';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'row',
+    'weight' => '32',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'row',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'row',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_row|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_row|node|event|event_past';
+  $field_group->group_name = 'group_row';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'row',
+    'weight' => '78',
+    'children' => array(),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'row',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'row',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_row|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
