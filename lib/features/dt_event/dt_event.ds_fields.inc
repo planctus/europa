@@ -79,6 +79,13 @@ function dt_event_ds_fields_info($entity_type) {
       'function' => '_dt_event_ds_fields_address_oneline',
       'use_token' => TRUE,
     ];
+    $fields[$entity_type]['dt_event_status_label'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Status label'),
+      'function' => '_dt_event_ds_fields_status_label',
+      'use_token' => TRUE,
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -98,6 +105,31 @@ function dt_event_ds_field_settings_form($field) {
  */
 function dt_event_ds_field_format_summary($field) {
   return ds_ds_field_format_summary($field);
+}
+
+/**
+ * Helper function to show the status label.
+ *
+ * @param array $field
+ *   Hold the current context of the field.
+ *
+ * @return mixed
+ *   The markup or nothing.
+ */
+function _dt_event_ds_fields_status_label($field) {
+  switch ($field['entity']->event_status) {
+    case DT_EVENT_STATE_RESCHEDULED:
+      $label = t('Rescheduled');
+      break;
+
+    case DT_EVENT_STATE_CANCELLED:
+      $label = t('Cancelled');
+      break;
+
+    default:
+      return NULL;
+  }
+  return '<span class="label label--upper label--meta-medium label--status">' . $label . '</span>';
 }
 
 /**
