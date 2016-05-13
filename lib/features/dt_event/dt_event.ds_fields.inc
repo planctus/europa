@@ -334,8 +334,11 @@ function _dt_event_ds_fields_livestreaming($field) {
         break;
 
       case DT_EVENT_LIVE_STREAM_ONGOING:
+        // @todo: This will be implemented in a future ticket.
         $stream_count = 0;
-        $streaming_text = t('@count are watching', ['@count' => $stream_count]);
+        if ($stream_count >= 1) {
+          $streaming_text = t('@count are watching', ['@count' => $stream_count]);
+        }
         break;
     }
 

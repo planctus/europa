@@ -53,7 +53,7 @@ function dt_event_entitycache_node_load($entities) {
 function dt_event_entity_view_mode_alter(&$view_mode, $context) {
   // Only attempt to change the view mode if it is full, as we never want to
   // change the view mode on a teaser by accident.
-  if ($context['entity']->type == 'event' && $view_mode == 'full') {
+  if (isset($context['entity']->type) && $context['entity']->type == 'event' && $view_mode == 'full') {
     // If it is a collection.
     if ($context['entity']->field_event_collection['und'][0]['value'] == 1) {
       $view_mode = 'event_collection';
