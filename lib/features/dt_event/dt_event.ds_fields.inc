@@ -137,20 +137,32 @@ function _dt_event_ds_fields_status_label($field) {
  *
  * @param array $field
  *   Hold the current context of the field.
+ *
+ * @return string
+ *   The address text in one line.
  */
 function _dt_event_ds_fields_address_oneline($field) {
-  // The token output.
-  $output = '[node:field_core_location:premise] [node:field_core_location:thoroughfare] [node:field_core_location:sub_premise], [node:field_core_location:postal-code] [node:field_core_location:locality], [node:field_core_location:country]';
+  // The token output in the order we want to use it.
+  $parts = [
+    '[node:field_core_location:premise] [node:field_core_location:thoroughfare] [node:field_core_location:sub_premise]',
+    '[node:field_core_location:postal-code] [node:field_core_location:locality]',
+    '[node:field_core_location:country]',
+  ];
 
-  // Replace.
-  $address_text = token_replace($output, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
-  // If a token might not be present, we could have to many spaces.
-  $address_text = str_replace(['  ', ' ,'], [' ', ','], $address_text);
-  // Build the link.
-  $address_link = l(t('View map'), 'https://www.google.com/maps?q=' . $address_text);
+  // Token replacement and checking for values.
+  foreach ($parts as $key => &$part) {
+    $part = trim(token_replace($part, [$field['entity_type'] => $field['entity']], ['clear' => TRUE]));
+    if (ctype_space($part) || empty($part)) {
+      // If it is only whitespace, we remove it.
+      unset($parts[$key]);
+    }
+  }
 
-  // Return the adress + link.
-  return $address_text . ' ' . $address_link;
+  // If it is still available, we implode the array and return the address line.
+  if (!empty($parts)) {
+    $address = implode(', ', $parts);
+    return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+  }
 }
 
 /**
@@ -161,6 +173,9 @@ function _dt_event_ds_fields_address_oneline($field) {
  *
  * @param array $field
  *   Hold the current context of the field.
+ *
+ * @return string
+ *   The book your seat button markup.
  */
 function _dt_event_ds_fields_book_your_seat($field) {
   // Entity metadata wrapper.
@@ -219,6 +234,9 @@ function _dt_event_ds_fields_book_your_seat($field) {
  *
  * @param array $field
  *   Hold the current context of the field.
+ *
+ * @return string
+ *   The livestreaming field markup.
  */
 function _dt_event_ds_fields_livestreaming($field) {
   // Entity metadata wrapper.
@@ -272,6 +290,9 @@ function _dt_event_ds_fields_livestreaming($field) {
  *
  * @param array $field
  *   Hold the current context of the field.
+ *
+ * @return string
+ *   The event header component markup.
  */
 function _dt_event_ds_fields_header_event($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);

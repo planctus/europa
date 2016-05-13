@@ -202,7 +202,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '14',
+    'weight' => '20',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -482,7 +482,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '13',
+    'weight' => '19',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -568,7 +568,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '12',
+    'weight' => '18',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -680,7 +680,9 @@ function dt_event_default_field_group_info() {
   $field_group->data = array(
     'label' => 'Meta',
     'weight' => '0',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_event_type',
+    ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
       'label' => 'Meta',
@@ -759,7 +761,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '79',
+    'weight' => '34',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -862,7 +864,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '80',
+    'weight' => '35',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -952,7 +954,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '11',
+    'weight' => '17',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -1040,7 +1042,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'row',
-    'weight' => '78',
+    'weight' => '33',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
