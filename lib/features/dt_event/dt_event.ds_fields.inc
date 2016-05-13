@@ -160,6 +160,9 @@ function _dt_event_ds_fields_status_message($field) {
     case DT_EVENT_STATE_PAST:
       $render_config['#message_body'] = t('This event has ended');
       break;
+
+    default:
+      return NULL;
   }
 
   return drupal_render($render_config);
