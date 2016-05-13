@@ -137,6 +137,10 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['sorts']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
   $handler->display->display_options['sorts']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
   $handler->display->display_options['sorts']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -152,17 +156,6 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'biography' => 'biography',
   );
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -171,20 +164,13 @@ function cwt_activities_views_default_views() {
     'activities' => 'activities',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Start/End date -  start date (field_start_end_date) */
-  $handler->display->display_options['filters']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_end_date_value']['group'] = 2;
-  $handler->display->display_options['filters']['field_start_end_date_value']['default_date'] = 'now';
-  /* Filter criterion: Content: Start/End date - end date (field_start_end_date:value2) */
-  $handler->display->display_options['filters']['field_start_end_date_value2']['id'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['field'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group'] = 2;
-  $handler->display->display_options['filters']['field_start_end_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
   /* Display: Agenda block */
   $handler = $view->new_display('block', 'Agenda block', 'block');
