@@ -1935,7 +1935,9 @@ On what day does the event end?',
   $field_instances['node-event-field_event_is_fully_booked'] = array(
     'bundle' => 'event',
     'default_value' => array(
-      0 => array(),
+      0 => array(
+        'value' => 0,
+      ),
     ),
     'deleted' => 0,
     'description' => 'All places have been booked.',
@@ -2067,7 +2069,9 @@ On what day does the event end?',
   $field_instances['node-event-field_event_is_online'] = array(
     'bundle' => 'event',
     'default_value' => array(
-      0 => array(),
+      0 => array(
+        'value' => 0,
+      ),
     ),
     'deleted' => 0,
     'description' => 'It concerns an online event (without geographical location)',
