@@ -352,7 +352,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Context nav',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_topics',
     ),
