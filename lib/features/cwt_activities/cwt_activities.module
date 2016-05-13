@@ -68,7 +68,8 @@ function cwt_activities_views_query_alter(&$view, &$query) {
       $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
     }
-  } elseif ($view->name == 'activities' && $view->current_display == 'block') {
+  }
+  elseif ($view->name == 'activities' && $view->current_display == 'block') {
     $date = date('Y-m-d', time());
     $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value', $date, '>=');
 
