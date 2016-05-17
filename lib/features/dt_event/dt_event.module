@@ -48,6 +48,40 @@ function dt_event_entitycache_node_load($entities) {
 }
 
 /**
+ * Implements hook_dt_shared_functions_facet_block_alter().
+ */
+function dt_event_dt_shared_functions_facet_block_alter(&$block, $block_identifier) {
+  // Based on the block idetnifier we change the title.
+  switch ($block_identifier) {
+    case 'field_core_location:country':
+      $block_title = t('Country');
+      break;
+
+    case 'field_event_type':
+      $block_title = t('Event type');
+      break;
+
+    case 'field_core_departments':
+      $block_title = t('Organizing department');
+      break;
+
+    case 'field_core_topics':
+      $block_title = t('Topic');
+      break;
+
+    case 'field_event_is_online':
+    case 'field_event_is_live_streaming':
+      $block_title = '<none>';
+      break;
+  }
+
+  // Modify block title if it's set.
+  if (isset($block_title)) {
+    $block['title'] = $block_title;
+  }
+}
+
+/**
  * Implements hook_entity_view_mode_alter().
  */
 function dt_event_entity_view_mode_alter(&$view_mode, $context) {
