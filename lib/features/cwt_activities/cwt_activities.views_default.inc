@@ -394,14 +394,14 @@ function cwt_activities_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Agenda global';
+  $view->human_name = 'Calendar global';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Agenda';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['css_class'] = 'listing-custom';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
@@ -684,10 +684,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['vocabulary'] = 'editorial_sections';
 
-  /* Display: Agenda items */
-  $handler = $view->new_display('page', 'Agenda items', 'list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Calendar items */
+  $handler = $view->new_display('page', 'Calendar items', 'list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'listing-custom listing-custom--page';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -707,10 +705,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['path'] = 'calendar/%';
 
-  /* Display: Print agenda items */
-  $handler = $view->new_display('page', 'Print agenda items', 'print_list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Print calendar items */
+  $handler = $view->new_display('page', 'Print calendar items', 'print_list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
