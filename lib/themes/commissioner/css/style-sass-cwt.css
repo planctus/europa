@@ -155,9 +155,6 @@ section #timeline {
 @media print {
   .filters__result-count {
     display: none; }
-  /*.view-content {
-    background-color: yellow;
-  }*/
   .view-content .listing__item {
     float: none;
     background-color: #000; }
