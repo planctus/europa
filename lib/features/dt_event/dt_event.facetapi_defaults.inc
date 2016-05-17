@@ -310,7 +310,7 @@ function dt_event_facetapi_default_facet_settings() {
       'natural' => '4',
       'indexed' => '4',
     ),
-    'empty_behavior' => 'text',
+    'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
     'soft_limit' => '20',
@@ -321,8 +321,7 @@ function dt_event_facetapi_default_facet_settings() {
     'submit_page' => '',
     'hide_facet_count' => 1,
     'empty_text' => array(
-      'value' => '<p>Location...</p>
-',
+      'value' => '<p>Location...</p>',
       'format' => 'full_html',
     ),
     'exclude' => '',

@@ -230,7 +230,7 @@ function dt_event_default_search_api_server() {
           "field_event_date:value" : {
             "table" : "search_api_db_event_index",
             "column" : "field_event_date_value",
-            "type" : "string",
+            "type" : "date",
             "boost" : "1.0"
           },
           "field_core_location:country" : {
@@ -257,7 +257,7 @@ function dt_event_default_search_api_server() {
           "field_event_date:value2" : {
             "table" : "search_api_db_event_index",
             "column" : "field_event_date_value2",
-            "type" : "string",
+            "type" : "date",
             "boost" : "1.0"
           },
           "field_core_description" : {
