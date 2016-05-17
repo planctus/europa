@@ -131,6 +131,9 @@ function _dt_event_ds_fields_status_message($field) {
   ];
 
   // Based on the event state we modify the render array.
+  if (!isset($field['entity']->event_status)) {
+    return NULL;
+  }
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
       $render_config['#message_title'] = t('This event is going on right now');
