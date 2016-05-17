@@ -49,10 +49,19 @@ function _nexteuropa_legacylink_load_entities($entities, $type) {
  * This will make sure that we only deny access when the node is displayed in
  * full mode. We use this instead of hook_node_access as this is the only way we
  * can assure that we only deny access on full view mode.
+ *
+ * If a legacy link is present, we redirect the user to that url using a 302.
  */
 function nexteuropa_legacy_link_node_view($node, $view_mode, $langcode) {
   if ($view_mode === 'full' && _nexteuropa_legacy_link_get('node', $node) && !user_access('access content overview')) {
+    // Lets make it a temporary redirect to the actual legacy link.
+    if (isset($node->legacy)) {
+      drupal_goto($node->legacy, ['external' => TRUE], 302);
+    }
+    // If anything might go wrong in the goto, we can still show the access
+    // denied page.
     drupal_access_denied();
+    drupal_exit();
   }
 }
 
