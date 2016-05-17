@@ -28,6 +28,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear all';
@@ -70,13 +71,14 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    6 => 0,
     4 => 0,
+    3 => 0,
     5 => 0,
+    6 => 0,
     7 => 0,
-    9 => 0,
+    8 => 0,
   );
+  $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['expose']['hide_empty_filter'] = FALSE;
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['reference_display'] = 'filter_list_topics:entityreference_1';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -111,13 +113,12 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    6 => 0,
     4 => 0,
+    3 => 0,
     5 => 0,
+    6 => 0,
     7 => 0,
-    9 => 0,
-    10 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Main task (field_department_tasks) (translated) */
@@ -133,26 +134,24 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
-    6 => 0,
     4 => 0,
+    3 => 0,
     5 => 0,
+    6 => 0,
     7 => 0,
-    9 => 0,
-    10 => 0,
+    8 => 0,
   );
   $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['type'] = 'select';
   $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['vocabulary'] = 'department_tasks';
   $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['hierarchy'] = 1;
   /* Filter criterion: Content: Department type (field_core_ecorganisation) */
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['id'] = 'field_core_ecorganisation_value_1';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['table'] = 'field_data_field_core_ecorganisation';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['field'] = 'field_core_ecorganisation_value';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['value'] = array(
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['field'] = 'field_core_ecorganisation_value';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
     'External department' => 'External department',
   );
-  $handler->display->display_options['filters']['field_core_ecorganisation_value_1']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -184,14 +183,14 @@ function dt_department_views_default_views() {
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Field: Title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Sort criterion: Field: Title (title_field) */
+  /* Sort criterion: Content: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
