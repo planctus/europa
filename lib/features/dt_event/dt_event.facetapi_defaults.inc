@@ -418,7 +418,7 @@ function dt_event_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'dt_facetapi_checkbox_links',
     'filters' => array(
       'active_items' => array(
         'status' => 0,
@@ -497,7 +497,7 @@ function dt_event_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'dt_facetapi_checkbox_links',
     'filters' => array(
       'active_items' => array(
         'status' => 0,
@@ -556,8 +556,7 @@ function dt_event_facetapi_default_facet_settings() {
     'submit_page' => '',
     'hide_facet_count' => 0,
     'empty_text' => array(
-      'value' => '<p>Online events...</p>
-',
+      'value' => '<p>Online events...</p>',
       'format' => 'full_html',
     ),
     'exclude' => 'no',
