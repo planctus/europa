@@ -976,7 +976,7 @@ function _cwt_core_custom_page_title($page_variables) {
     );
   }
   // Agenda.
-  elseif (in_array(arg(0), array('agenda', 'print-agenda'))) {
+  elseif (in_array(arg(0), array('agenda', 'print-calendar'))) {
     $variables['line_2'] = t('Agenda');
     $variables['line_3'] = t('Appointments and meetings');
   }

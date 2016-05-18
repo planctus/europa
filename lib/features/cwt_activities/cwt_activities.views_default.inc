@@ -760,7 +760,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section_multiple']['element_wrapper_type'] = 'p';
   $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
-  $handler->display->display_options['path'] = 'print-agenda/%';
+  $handler->display->display_options['path'] = 'print-calendar/%';
   $export['agenda'] = $view;
 
   return $export;
