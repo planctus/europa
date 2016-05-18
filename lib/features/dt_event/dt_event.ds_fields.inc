@@ -137,7 +137,6 @@ function _dt_event_ds_fields_status_message($field) {
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
       $render_config['#message_title'] = t('This event is going on right now');
-      $render_config['#message_classes'][] = 'live';
 
       // If live stream is available we add it to the message.
       if (
@@ -145,6 +144,7 @@ function _dt_event_ds_fields_status_message($field) {
         isset($field['entity']->field_event_live_streaming_link['und'])
       ) {
         $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link['und'][0]['url']);
+        $render_config['#message_classes'][] = 'live';
       }
       break;
 
