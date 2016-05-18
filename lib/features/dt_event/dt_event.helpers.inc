@@ -158,3 +158,21 @@ function _dt_event_live_stream_state($event) {
 
   return $state;
 }
+
+/**
+ * Helper function to get the status information for an event.
+ *
+ * @param object $entity
+ *   The entity object.
+ *
+ * @return string
+ *   The status information.
+ */
+function _dt_event_get_status_information($entity) {
+  $emw = entity_metadata_wrapper('node', $entity);
+  if ($emw->__isset('field_event_status_description')) {
+    if (!empty($entity->field_event_status_description)) {
+      return $emw->field_event_status_description->value->value();
+    }
+  }
+}
