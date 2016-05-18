@@ -161,7 +161,7 @@ function _dt_event_ds_fields_status_message($field) {
       break;
 
     case DT_EVENT_STATE_PAST:
-      $render_config['#message_body'] = t('This event has ended');
+      $render_config['#message_title'] = t('This event has ended');
       break;
 
     default:
