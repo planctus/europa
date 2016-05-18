@@ -304,9 +304,9 @@ function cwt_core_views_pre_render(&$view) {
   if (in_array($view->name, array_keys($lists)) && $view->current_display == 'block') {
     if (!empty($view->result)) {
       $query = array();
-      // Alter path for agenda block so it points to the global Agenda page.
+      // Alter path for agenda block so it points to the global Calendar page.
       if ($view->name == 'activities') {
-        // Agenda global list follow the pattern "[Team_node_path]/blog".
+        // Calendar global list follow the pattern "[Team_node_path]/blog".
         $biography = menu_get_object();
         $wrapper = entity_metadata_wrapper('node', $biography);
         $team = $wrapper->field_team_membership->raw();
@@ -975,9 +975,9 @@ function _cwt_core_custom_page_title($page_variables) {
       'arguments' => arg(1),
     );
   }
-  // Agenda.
+  // Calendar.
   elseif (in_array(arg(0), array('agenda', 'print-agenda'))) {
-    $variables['line_2'] = t('Agenda');
+    $variables['line_2'] = t('Calendar');
     $variables['line_3'] = t('Appointments and meetings');
   }
 

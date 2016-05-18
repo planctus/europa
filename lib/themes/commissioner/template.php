@@ -43,7 +43,7 @@ function commissioner_preprocess_page(&$variables) {
 function _commissioner_bundle_forms($bundle) {
   // Forming plurals for existing content types.
   $plurals = array(
-    'activities' => t("agenda items"),
+    'activities' => t("calendar items"),
     'aggregated_news' => t("announcements"),
     'biography' => t("commissioners"),
     'commisioner_blog_post' => t("blog posts"),
