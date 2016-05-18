@@ -15,7 +15,6 @@ dependencies[] = facetapi_bonus
 dependencies[] = facetapi_select
 dependencies[] = link
 dependencies[] = mediafield
-dependencies[] = mefibs
 dependencies[] = nexteuropa_ds_fields
 dependencies[] = number
 dependencies[] = search_api_db

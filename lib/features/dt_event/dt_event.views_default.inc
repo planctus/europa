@@ -125,37 +125,62 @@ function dt_event_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['mefibs'] = array(
-    'blocks' => array(
-      0 => array(
-        'name' => 'event date filters',
-        'machine_name' => 'event_date_filters',
-        'submit_button' => 'Submit',
-        'reset_button' => NULL,
-        'reset_button_label' => 'Reset',
-        'autosubmit' => '1',
-        'autosubmit_hide' => '1',
-      ),
-    ),
-    'extras' => array(
-      'sort' => -1,
-      'items_per_page' => -1,
-    ),
-    'page' => array(
-      'filter' => array(
-        'field_event_date_value' => array(
-          0 => 'event_date_filters',
-        ),
-        'field_event_date_value_1' => array(
-          0 => 'event_date_filters',
-        ),
-        'search_api_views_fulltext' => array(
-          0 => 'default',
-        ),
-      ),
-      'sort_block' => array(),
-    ),
+  $handler->display->display_options['path'] = 'events';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Events Filters';
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'After';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
   );
+  $handler->display->display_options['filters']['field_event_date_value']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value']['date_popup_format'] = 'Y-m-d';
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value_1']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_event_date_value_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator_id'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['label'] = 'Before';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['identifier'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
   $handler->display->display_options['path'] = 'events';
   $export['events'] = $view;
 
