@@ -82,6 +82,21 @@ function cwt_activities_views_query_alter(&$view, &$query) {
  * Implements hook_views_pre_view().
  */
 function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
+  // Modify the view with the start/end date.
+  if ($display_id == 'moderate_all_page' && $view->name == 'workbench_moderation') {
+    $options = [
+      'format_type' => 'long',
+      'fromto' => 'both',
+      'multiple_number' => '',
+      'multiple_from' => '',
+      'multiple_to' => '',
+      'show_remaining_days' => 0,
+      'relationship' => 'nid',
+    ];
+    $view->add_item($view->current_display, 'field', 'field_data_field_start_end_date', 'field_start_end_date', $options, 'field_start_end_date');
+    return;
+  }
+
   if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path') && isset($original_path_cached['nid'])) {
     // Load node the Agenda belongs to in the first place.
     // Use its editorial section in first contextual filter.
@@ -105,6 +120,23 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
+
+  if ($view->current_display == 'moderate_all_page' && $view->name == 'workbench_moderation') {
+    // First get the keys.
+    $keys = array_keys($view->field);
+    $first_key = array_shift(array_slice($keys, 0, 1)); ;
+    $last_key = end($keys);
+
+    // Store the values.
+    $first_item = $view->field[$first_key];
+    unset($view->field[$first_key]);
+    $last_item = $view->field[$last_key];
+    unset($view->field[$last_key]);
+
+    // Put them in place.
+    $view->field = [$last_key => $last_item] + $view->field + [$first_key => $first_item];
+    return;
+  }
   if ($view->name == 'agenda') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {

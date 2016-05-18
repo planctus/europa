@@ -16,6 +16,7 @@ $GLOBALS['dt_core_parent_fields'] = [
   'field_core_policy_areas',
 ];
 
+include_once 'dt_core.ds_fields.inc';
 include_once 'dt_core.features.inc';
 
 /**

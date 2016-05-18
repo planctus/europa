@@ -79,10 +79,10 @@ function dt_event_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -103,7 +103,7 @@ function dt_event_strongarm() {
         'custom_settings' => FALSE,
       ),
       'meta' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'title' => array(
         'custom_settings' => FALSE,
@@ -116,6 +116,15 @@ function dt_event_strongarm() {
       ),
       'revision' => array(
         'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => TRUE,
+      ),
+      'event_past' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
