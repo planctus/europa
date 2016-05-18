@@ -304,7 +304,7 @@ function cwt_core_views_pre_render(&$view) {
   if (in_array($view->name, array_keys($lists)) && $view->current_display == 'block') {
     if (!empty($view->result)) {
       $query = array();
-      // Alter path for agenda block so it points to the global Calendar page.
+      // Alter path for calendar block so it points to the global Calendar page.
       if ($view->name == 'activities') {
         // Calendar global list follow the pattern "[Team_node_path]/blog".
         $biography = menu_get_object();
@@ -976,7 +976,7 @@ function _cwt_core_custom_page_title($page_variables) {
     );
   }
   // Calendar.
-  elseif (in_array(arg(0), array('agenda', 'print-agenda'))) {
+  elseif (in_array(arg(0), array('calendar', 'print-calendar'))) {
     $variables['line_2'] = t('Calendar');
     $variables['line_3'] = t('Appointments and meetings');
   }

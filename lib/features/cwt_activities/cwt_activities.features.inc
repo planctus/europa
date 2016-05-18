@@ -37,7 +37,7 @@ function cwt_activities_node_info() {
     'activities' => array(
       'name' => t('Calendar'),
       'base' => 'node_content',
-      'description' => t('As a user I want to see the agenda of the Commissioner so that I know what they are doing in the next few weeks'),
+      'description' => t('As a user I want to see the calendar of the Commissioner so that I know what they are doing in the next few weeks'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
