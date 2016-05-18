@@ -217,7 +217,7 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
       }
 
       // Return the data.
-      return t('With: %person_name', array('%person_name' => rtrim($editorial_section_list, ', ')));
+      return rtrim($editorial_section_list, ', ');
     }
   }
 }
