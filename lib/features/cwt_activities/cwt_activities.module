@@ -207,7 +207,7 @@ function cwt_activities_ds_fields_info($entity_type) {
   $fields = array();
 
   $fields['agenda_with_who'] = array(
-    'title' => t('Calendar with who'),
+    'title' => t('With whom'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_cwt_activities_ds_fields_agenda_withwho',
   );
