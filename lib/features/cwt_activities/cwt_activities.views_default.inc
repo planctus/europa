@@ -436,6 +436,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="result-count pull-left"><p>@total items[filter_info]</p></div>';
+  /* Relationship: Content: Editorial sections (field_editorial_section_multiple) */
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['id'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['table'] = 'field_data_field_editorial_section_multiple';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['field'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['label'] = 'field_editorial_section_multiple';
   /* Field: Content: Start/End date */
   $handler->display->display_options['fields']['field_start_end_date']['id'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['table'] = 'field_data_field_start_end_date';
@@ -492,6 +497,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['sorts']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
   $handler->display->display_options['sorts']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
   $handler->display->display_options['sorts']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_editorial_section_multiple_tid';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
