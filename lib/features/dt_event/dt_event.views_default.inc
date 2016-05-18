@@ -24,6 +24,7 @@ function dt_event_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Events';
   $handler->display->display_options['css_class'] = 'has_date_popups';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -125,6 +126,8 @@ function dt_event_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Events';
+  $handler->display->display_options['dt_shared_functions_views_config_extra_exposed'] = 0;
   $handler->display->display_options['path'] = 'events';
 
   /* Display: Page */
@@ -181,6 +184,7 @@ function dt_event_views_default_views() {
   );
   $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
+  $handler->display->display_options['dt_shared_functions_views_config_extra_exposed'] = 1;
   $handler->display->display_options['path'] = 'events';
   $export['events'] = $view;
 
