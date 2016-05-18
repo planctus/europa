@@ -84,9 +84,13 @@ libraries[editarea][download][type] = "get"
 libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
 ; End custom_formatters specific.
 
+projects[panels][subdir] = "contrib"
+projects[panels][version] = "3.5"
+
 ; =========
 ; Libraries
 ; =========
+
 libraries[marked][download][type] = "get"
 libraries[marked][download][url] = "https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"
 

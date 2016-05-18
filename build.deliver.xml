@@ -38,7 +38,7 @@
     </delete>
     <echo msg="Copy files to acquia-cloud/docroot." />
     <copy todir="${acquia.docroot}">
-        <fileset dir="${platform.dist.dir}">
+        <fileset dir="${phing.project.tmp.dir}/build">
           <patternset>
             <exclude name="**/settings.php"/>
             <exclude name="**/sites.php/"/>
@@ -56,20 +56,15 @@
     <exec dir="${acquia.repo}" command="git add -A"></exec>
     <exec dir="${acquia.repo}" command="git commit -m 'Packaged by Phing in project ${project.name} from ${BRANCHNAME} on ${DATE}'"></exec>
 
-    <!-- Create Tag -->
-    <tstamp>
-      <format property="TAGDATE" pattern="%Y%m%d%H%M%S" locale="en_EN"/>
-    </tstamp>
-    <echo msg="Creating tag: ${TAGDATE}" />
-    <exec dir="${acquia.repo}" command="git tag '${TAGDATE}'"></exec>
+    <!-- Push -->
+    <echo msg="Pushing deployment to acquia." />
     <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
-    <exec dir="${acquia.repo}" command="git push --tags"></exec>
   </target>
 
   <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="">
     <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
     </drush>
-    <echo msg="Database deleted." />
+    <echo msg="Database dropped." />
     <!-- Aliases are not handled by Phing Drush Task so we use exec. -->
     <if>
       <not>
@@ -79,26 +74,38 @@
         <phingcall target="fetch-ac-db" />
       </then>
     </if>
-    <echo msg="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
+
+    <echo msg="Restoring AC database." />
     <exec command="cat ${acquia.dump} | ${drush.bin} --root=${platform.build.dir} -y sqlc" />
+    <echo msg="AC database restored." />
 
-    <echo msg="AC database loaded." />
+    <echo msg="Set temporary file directory, create if not exists and chmod it" />
+    <exec command="mkdir -p ${platform.build.dir}/sites/default/files/tmp" />
+    <exec command="chmod -R 777 ${platform.build.dir}/sites/default/files" />
+    <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path 'sites/default/files/tmp'" />
 
+    <echo msg="Clearing caches" />
     <exec command="${drush.bin} --root=${platform.build.dir} -y cc all" />
+    <echo msg="Caches cleared" />
+
+    <echo msg="Rebuilding registry." />
     <drush command="registry-rebuild" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
     </drush>
     <echo msg="Registry rebuilt." />
+
     <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
       <param>admin</param>
       <option name="password">pass</option>
     </drush>
     <echo msg="Password for user admin is set to pass." />
+
     <!-- Also set editor password for easy testing. -->
     <drush command="user-password" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
       <param>editor_test</param>
       <option name="password">editor_test</option>
     </drush>
-    <echo msg="Password for user admin is set to pass." />
+    <echo msg="Password for user editor_test is set to pass." />
+
     <!-- Disable cache -->
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact cache 0" />
     <echo msg="Cache has been disabled." />
@@ -108,6 +115,7 @@
     <!-- Disable preprocess css -->
     <exec command="${drush.bin} --root=${platform.build.dir} vset --exact preprocess_js 0" />
     <echo msg="Disable js pre processing." />
+
     <phingcall target="enable-development-modules" />
 
     <drush command="variable-set" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
@@ -123,8 +131,13 @@
   </target>
 
   <target name="fetch-ac-db" description="Downloads the AC database." depends="">
-    <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump > ${acquia.dump}" />
+    <delete file="${acquia.dump}" />
+    <echo msg="Downloading remote database" />
+    <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --gzip > ${acquia.dump}.gz" />
     <echo msg="AC database downloaded." />
+    <echo msg="Unpacking database" />
+    <exec command="gunzip ${acquia.dump}.gz" />
+    <echo msg="Database unpacked" />
   </target>
 
   <!-- Release to SVN. -->
@@ -173,8 +186,8 @@
 
     <!-- Assemble the new release. -->
     <phingcall target="drush-make-no-core">
-      <property name="platform.build.dir" value="${release.make}" />
       <property name="drush.make.target.file" value="${subsite.make}" />
+      <property name="drush.make.root" value="${release.make}" />
     </phingcall>
     <copy todir="${release.build}" overwrite="true">
       <fileset dir="${release.make}/sites/all" />
@@ -204,5 +217,54 @@
     </copy>
 
   </target>
+
+  <!-- Unpack the platform. -->
+  <target name="unpack-acceptance-platform" depends="download-platform">
+    <!-- Use the faster native commands on UNIX systems. -->
+    <if>
+      <os family="unix" />
+      <then>
+        <echo msg='mkdir "${phing.project.tmp.dir}/build"' />
+        <exec
+                command='mkdir "${phing.project.tmp.dir}/build"'
+                dir="${project.basedir}"
+                passthru="true"
+        />
+        <echo msg='tar xzf "${platform.package.tarball}" -C "${phing.project.tmp.dir}/build"' />
+        <exec
+                command='tar xzf "${platform.package.tarball}" -C "${phing.project.tmp.dir}/build"'
+                dir="${project.basedir}"
+                passthru="true"
+                checkreturn="true"
+        />
+      </then>
+      <else>
+        <untar file="${platform.package.tarball}" todir="${phing.project.tmp.dir}/build" />
+      </else>
+    </if>
+  </target>
+
+  <!-- Download development modules. -->
+  <target name="download-development-modules-acceptance" depends="generate-development-makefile">
+    <echo msg="Download development modules." />
+    <phingcall target="drush-make-no-core">
+      <property name="drush.make.target.file" value="${subsite.temporary.development.make}" />
+      <property name="drush.make.root" value="${phing.project.tmp.dir}/build" />
+    </phingcall>
+  </target>
+
+  <target name="copy-acceptance-files">
+    <exec
+      command='cp -r ${dist.build.dir}/* "${phing.project.tmp.dir}/build/sites/all/"'
+      dir="${project.basedir}"
+      passthru="true"
+      checkreturn="true"
+    />
+  </target>
+
+  <target
+    name="build-acceptance"
+    description="Build a version of the subsite intended to distribute as a release package."
+    depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance" />
 
 </project>

@@ -90,6 +90,8 @@ function _dt_announcement_ds_fields_announcement_block($field) {
     // Load social media links.
     $social_media_options = [
       'label' => 'hidden',
+      'type' => 'social_network_link_theme_css',
+      'module' => 'dt_social_network_links',
     ];
     $social_media = field_view_field('node', $node, 'field_core_social_network_links', $social_media_options);
   }
@@ -116,6 +118,7 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   $render_config = [
     '#theme' => 'dt_announcement_announcement_block',
     '#heading' => $heading,
+    '#heading_id' => drupal_clean_css_identifier(strtolower($heading)),
     '#news_items' => isset($news_items) ? $news_items : NULL,
     '#social_links' => isset($social_media) && is_array($social_media) ? drupal_render($social_media) : NULL,
     '#featued_item' => isset($featured_item_view) ? drupal_render($featured_item_view) : NULL,

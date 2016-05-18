@@ -217,6 +217,7 @@ function dt_pri_policy_area_default_field_group_info() {
       1 => 'group_content_access',
       2 => 'scheduler_settings',
       3 => 'language',
+      4 => 'field_core_latest_visibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -484,7 +485,7 @@ function dt_pri_policy_area_default_field_group_info() {
       'label' => 'Actions',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'sidebar-field-group__main',
+        'classes' => '',
         'element' => 'div',
         'show_label' => '1',
         'label_element' => 'h2',

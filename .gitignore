@@ -12,7 +12,6 @@ build.properties.local
 phpcs.xml
 tests/behat.yml
 lib/settings.php
-lib/settings.php*
 lib/files
 
 # Ignore build artifacts.
@@ -23,3 +22,9 @@ vendor/
 dist/
 /logs
 npm-debug.log
+
+# Ignore basic starterkit files.
+lib/features/myproject_core
+lib/modules/example_module
+lib/src/MyGroup
+lib/themes/example_theme
