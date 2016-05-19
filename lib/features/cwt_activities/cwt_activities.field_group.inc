@@ -112,7 +112,7 @@ function cwt_activities_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Agenda',
+    'label' => 'Calendar',
     'weight' => '5',
     'children' => array(
       0 => 'field_activity_block_description',
@@ -191,7 +191,7 @@ function cwt_activities_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Agenda');
+  t('Calendar');
   t('Content');
   t('Left');
   t('Meta');

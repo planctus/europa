@@ -51,14 +51,14 @@ function cwt_biography_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Agenda',
+    'label' => 'Calendar',
     'weight' => '7',
     'children' => array(
       0 => 'agenda_block',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'label' => 'Agenda',
+      'label' => 'Calendar',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -844,7 +844,7 @@ function cwt_biography_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Agenda');
+  t('Calendar');
   t('Announcements');
   t('Assistant');
   t('Assistants');
