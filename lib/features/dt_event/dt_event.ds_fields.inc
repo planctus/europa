@@ -78,6 +78,18 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: Address oneline'),
       'function' => '_dt_event_ds_fields_address_oneline',
       'use_token' => TRUE,
+      'properties' => [
+        'settings' => [
+          'show_link' => [
+            'title' => t('Show link'),
+            'type' => 'checkbox',
+            'description' => t('Show a google maps link'),
+          ],
+        ],
+        'default' => [
+          'show_link' => TRUE,
+        ],
+      ],
     ];
     $fields[$entity_type]['dt_event_status_label'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -225,7 +237,10 @@ function _dt_event_ds_fields_address_oneline($field) {
   // If it is still available, we implode the array and return the address line.
   if (!empty($parts)) {
     $address = implode(', ', $parts);
-    return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+    if (isset($field['formatter_settings']['show_link']) && $field['formatter_settings']['show_link']) {
+      return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+    }
+    return $address;
   }
 }
 
