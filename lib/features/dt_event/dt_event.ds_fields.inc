@@ -105,6 +105,12 @@ function dt_event_ds_fields_info($entity_type) {
       'function' => '_dt_event_ds_fields_status_message',
       'use_token' => TRUE,
     ];
+    $fields[$entity_type]['dt_event_scribble_embed'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Scribble embed'),
+      'function' => '_dt_event_ds_fields_scribble_embed',
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -124,6 +130,26 @@ function dt_event_ds_field_settings_form($field) {
  */
 function dt_event_ds_field_format_summary($field) {
   return ds_ds_field_format_summary($field);
+}
+
+/**
+ * Helper function to show the scribble iframe with CCK.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The status message markup.
+ */
+function _dt_event_ds_fields_scribble_embed($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_scribble_id') && $scribble_id = $entity->field_event_scribble_id->value()) {
+    $content_language = _dt_shared_functions_content_language($field['entity']);
+    $markup = [
+      '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
+    ];
+    return drupal_render($markup);
+  }
 }
 
 /**
