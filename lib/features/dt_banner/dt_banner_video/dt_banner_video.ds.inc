@@ -22,8 +22,8 @@ function dt_banner_video_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'group_video_wrapper',
         1 => 'field_banner_video_file',
-        2 => 'field_banner_image_file',
-        3 => 'field_banner_caption',
+        2 => 'field_banner_caption',
+        3 => 'field_banner_image_file',
         4 => 'field_core_description',
         5 => 'group_video_left',
         6 => 'group_video_video',
@@ -34,8 +34,8 @@ function dt_banner_video_ds_layout_settings_info() {
     'fields' => array(
       'group_video_wrapper' => 'ds_content',
       'field_banner_video_file' => 'ds_content',
-      'field_banner_image_file' => 'ds_content',
       'field_banner_caption' => 'ds_content',
+      'field_banner_image_file' => 'ds_content',
       'field_core_description' => 'ds_content',
       'group_video_left' => 'ds_content',
       'group_video_video' => 'ds_content',

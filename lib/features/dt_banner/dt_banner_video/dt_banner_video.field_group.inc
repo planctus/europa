@@ -117,10 +117,11 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
+        'id' => '',
         'classes' => 'banner__caption',
         'element' => 'div',
         'show_label' => '0',
-        'label_element' => 'div',
+        'label_element' => 'footer',
         'attributes' => '',
       ),
     ),
@@ -146,8 +147,9 @@ function dt_banner_video_field_group_info() {
     'format_settings' => array(
       'label' => 'Video caption',
       'instance_settings' => array(
+        'id' => '',
         'classes' => 'banner__caption',
-        'element' => 'div',
+        'element' => 'footer',
         'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
