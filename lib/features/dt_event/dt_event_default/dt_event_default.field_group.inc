@@ -202,7 +202,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '20',
+    'weight' => '21',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -230,7 +230,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -327,7 +327,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Context nav',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(),
     'format_type' => 'context_nav',
     'format_settings' => array(
@@ -352,7 +352,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Context nav',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_topics',
     ),
@@ -482,7 +482,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '19',
+    'weight' => '20',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -510,7 +510,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_event_schedule',
     ),
@@ -568,7 +568,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '18',
+    'weight' => '19',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -596,7 +596,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_core_persons',
     ),
@@ -761,7 +761,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '34',
+    'weight' => '35',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -864,7 +864,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '35',
+    'weight' => '36',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -954,7 +954,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '17',
+    'weight' => '18',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -982,7 +982,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'group_row',
     ),
@@ -1042,7 +1042,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'row',
-    'weight' => '33',
+    'weight' => '34',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(

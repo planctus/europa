@@ -25,7 +25,7 @@ function cwt_activities_disable() {
 }
 
 /**
- * Update Agenda start/end date field granularity to support time input.
+ * Update Calendar start/end date field granularity to support time input.
  */
 function cwt_activities_update_7101() {
   // Update field_start_end_date settings.

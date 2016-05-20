@@ -322,7 +322,7 @@ function cwt_biography_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_biography_agenda_text',
-    'label' => 'Agenda transparency text',
+    'label' => 'Calendar transparency text',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -3493,7 +3493,7 @@ function cwt_biography_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('AV portal link');
   t('Address');
-  t('Agenda transparency text');
+  t('Calendar transparency text');
   t('Assistants');
   t('Classname');
   t('Collapse button text');
