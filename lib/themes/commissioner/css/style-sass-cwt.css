@@ -155,15 +155,6 @@ section #timeline {
 @media print {
   .filters__result-count {
     display: none; }
-  .view-content .listing__item {
-    float: none;
-    background-color: #000; }
-  .listing--column-left .listing__column-second {
-    float: none;
-    padding-right: 0; }
-  .listing__item,
-  .field__items {
-    float: none; }
   .date-block {
     width: auto;
     margin: 0;
@@ -171,18 +162,10 @@ section #timeline {
     background: none;
     text-align: left;
     border-bottom: none; }
-    .date-block:after {
-      content: "";
-      position: relative;
-      display: none;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 0;
-      border: none; }
   .date-block__day-text,
   .date-block__day,
   .date-block__month {
+    display: inline;
     font-size: 0.750em;
     font-weight: bold;
     line-height: 1; }
