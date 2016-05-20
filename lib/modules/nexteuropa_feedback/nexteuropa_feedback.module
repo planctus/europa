@@ -116,12 +116,23 @@ function nexteuropa_feedback_form_theme($form) {
     }
   }
 
-  $accordion['problem']['header'] = t('Problem');
-  $accordion['problem']['content'] = drupal_render($form['accordion']['problem_group']);
-  $accordion['suggestion']['header'] = t('Suggestion');
-  $accordion['suggestion']['content'] = drupal_render($form['accordion']['suggestion_group']);
-  $accordion['compliment']['header'] = t('Compliment');
-  $accordion['compliment']['content'] = drupal_render($form['accordion']['compliment_group']);
+  $accordion['problem']['#title'] = t('Problem');
+  $accordion['problem']['#value'] = drupal_render($form['accordion']['problem_group']);
+  $accordion['problem']['#theme'] = 'bootstrap_panel';
+  $accordion['problem']['#collapsible'] = TRUE;
+  $accordion['problem']['#collapsed'] = TRUE;
+
+  $accordion['suggestion']['#title'] = t('Suggestion');
+  $accordion['suggestion']['#value'] = drupal_render($form['accordion']['suggestion_group']);
+  $accordion['suggestion']['#theme'] = 'bootstrap_panel';
+  $accordion['suggestion']['#collapsible'] = TRUE;
+  $accordion['suggestion']['#collapsed'] = TRUE;
+
+  $accordion['compliment']['#title'] = t('Compliment');
+  $accordion['compliment']['#value'] = drupal_render($form['accordion']['compliment_group']);
+  $accordion['compliment']['#theme'] = 'bootstrap_panel';
+  $accordion['compliment']['#collapsible'] = TRUE;
+  $accordion['compliment']['#collapsed'] = TRUE;
 
   $static['feedback-trigger'] = array(
     '#markup' => '<a href="#feedback-form__content" class="feedback-form__trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
@@ -131,11 +142,10 @@ function nexteuropa_feedback_form_theme($form) {
     '#prefix' => '<div id="feedback-form__content" class="collapse"><div class="feedback-form__content">',
   );
   $actions = drupal_render($form['actions']);
-  $static['feedback-accordion'] = array(
-    '#id' => 'feedback-form__accordion',
-    '#elements' => $accordion,
-    '#theme' => 'bootstrap_accordion',
-    '#suffix' => $actions . '</div></div>',
+
+  $static['feedback-accordion'] = $accordion + array(
+    '#prefix' => '<div class="panel-group" id="feedback-form__accordion">',
+    '#suffix' => '</div>' . $actions . '</div></div>',
   );
   $output = drupal_render($static);
   $output .= drupal_render($form['meta']);
