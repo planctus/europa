@@ -22,11 +22,6 @@ regions[footer] = Footer
 regions[footer_right] = Footer right
 
 ; ========================================
-; Stylesheets
-; ========================================
-stylesheets[all][] = css/style.css
-
-; ========================================
 ; Settings
 ; ========================================
 
