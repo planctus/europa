@@ -47,20 +47,29 @@
   }
 
   .date-block {
-    width: 100%;
-    min-width: 100%;
-    margin-right: 0;
+    width: auto;
+    margin: 0;
     padding: 0;
     background: none;
     text-align: left;
     border-bottom: none;
-    line-height: 1;
+
+    &:after {
+      content: "";
+      position: relative;
+      display: none;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border: none;
+    }
   }
 
   .date-block__day-text,
   .date-block__day,
   .date-block__month {
-    display: inline-block;
+    //display: block;
     font-size: 0.750em;
     font-weight: bold;
     line-height: 1;
