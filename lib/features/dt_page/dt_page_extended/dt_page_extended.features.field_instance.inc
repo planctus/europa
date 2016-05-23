@@ -255,7 +255,7 @@ function dt_page_extended_field_default_field_instances() {
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 8,
     ),
   );
@@ -1199,7 +1199,7 @@ This will appear as a timeline on the page.
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 7,
     ),
   );
