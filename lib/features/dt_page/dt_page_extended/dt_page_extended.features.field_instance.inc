@@ -1147,64 +1147,6 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_core_parent'.
-  $field_instances['node-basic_page-field_core_parent'] = array(
-    'bundle' => 'basic_page',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 39,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 33,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_parent',
-    'label' => 'Parent',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'node-basic_page-field_core_parents'.
   $field_instances['node-basic_page-field_core_parents'] = array(
     'bundle' => 'basic_page',
@@ -1954,7 +1896,6 @@ This will appear as a timeline on the page.
   t('Legacy link');
   t('Link');
   t('Next steps');
-  t('Parent');
   t('Parent pages');
   t('Priority');
   t('Related Topics');
