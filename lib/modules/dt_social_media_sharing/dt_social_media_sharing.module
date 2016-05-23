@@ -5,6 +5,28 @@
  */
 
 /**
+ * Implements hook_init().
+ *
+ * This will add the required code to the header so that the webtools social
+ * select is always loaded.
+ */
+function dt_social_media_sharing_init() {
+  $js_url = variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js');
+  drupal_add_js($js_url, 'external');
+  drupal_add_html_head([
+    '#tag' => 'script',
+    '#value' => '{
+      "service" : "sbkm",
+      "popup" : false,
+      "selection": true
+    }',
+    '#attributes' => [
+      'type' => 'application/json',
+    ],
+  ], 'social_media_select');
+}
+
+/**
  * Implements hook_block_info().
  */
 function dt_social_media_sharing_block_info() {
