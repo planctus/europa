@@ -54,7 +54,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Title (title_field) */
+  /* Sort criterion: Field: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
@@ -121,29 +121,28 @@ function dt_department_views_default_views() {
     8 => 0,
   );
   $handler->display->display_options['filters']['field_core_ecorganisation_value_i18n']['expose']['reduce'] = TRUE;
-  /* Filter criterion: Content: Main task (field_department_tasks) (translated) */
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['id'] = 'field_department_tasks_tid_i18n';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['table'] = 'field_data_field_department_tasks';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['field'] = 'field_department_tasks_tid_i18n';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['group'] = 1;
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['operator_id'] = 'field_department_tasks_tid_i18n_op';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['label'] = 'Main task';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['operator'] = 'field_department_tasks_tid_i18n_op';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['identifier'] = 'field_department_tasks_tid_i18n';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Main task (field_department_tasks) (reference filter) */
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['id'] = 'field_department_tasks_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['table'] = 'field_data_field_department_tasks';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['field'] = 'field_department_tasks_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['group'] = 1;
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['expose']['operator_id'] = 'field_department_tasks_tid_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['expose']['label'] = 'Main task';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['expose']['operator'] = 'field_department_tasks_tid_entityreference_filter_op';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['expose']['identifier'] = 'field_department_tasks_tid_entityreference_filter';
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    4 => 0,
     3 => 0,
-    5 => 0,
     6 => 0,
+    4 => 0,
+    5 => 0,
     7 => 0,
-    8 => 0,
+    9 => 0,
+    10 => 0,
   );
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['vocabulary'] = 'department_tasks';
-  $handler->display->display_options['filters']['field_department_tasks_tid_i18n']['hierarchy'] = 1;
+  $handler->display->display_options['filters']['field_department_tasks_tid_entityreference_filter']['reference_display'] = 'tax_department_tasks_list:entityreference_1';
   /* Filter criterion: Content: Department type (field_core_ecorganisation) */
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['id'] = 'field_core_ecorganisation_value';
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['table'] = 'field_data_field_core_ecorganisation';
@@ -152,6 +151,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['filters']['field_core_ecorganisation_value']['value'] = array(
     'External department' => 'External department',
   );
+  $handler->display->display_options['filters']['field_core_ecorganisation_value']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -183,14 +183,14 @@ function dt_department_views_default_views() {
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Title */
+  /* Field: Field: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Sort criterion: Content: Title (title_field) */
+  /* Sort criterion: Field: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
@@ -226,6 +226,67 @@ function dt_department_views_default_views() {
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['filter_list_departments'] = $view;
+
+  $view = new view();
+  $view->name = 'tax_department_tasks_list';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Tax. Department Tasks List';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'department_tasks' => 'department_tasks',
+  );
+
+  /* Display: Entity Reference */
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'name' => 'name',
+    'tid' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $export['tax_department_tasks_list'] = $view;
 
   return $export;
 }
