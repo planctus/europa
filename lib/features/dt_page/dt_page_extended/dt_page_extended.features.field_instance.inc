@@ -241,7 +241,7 @@ function dt_page_extended_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_children',
-    'label' => 'Children pages',
+    'label' => 'Child pages',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1880,7 +1880,7 @@ This will appear as a timeline on the page.
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Banner');
-  t('Children pages');
+  t('Child pages');
   t('Comment');
   t('Description');
   t('Documents');
