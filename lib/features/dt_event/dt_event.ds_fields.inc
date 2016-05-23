@@ -86,6 +86,13 @@ function dt_event_ds_fields_info($entity_type) {
       'function' => '_dt_event_ds_fields_status_label',
       'use_token' => TRUE,
     ];
+    $fields[$entity_type]['dt_event_status_message'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Status message'),
+      'function' => '_dt_event_ds_fields_status_message',
+      'use_token' => TRUE,
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -108,10 +115,67 @@ function dt_event_ds_field_format_summary($field) {
 }
 
 /**
+ * Helper function to show the status message.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The status message markup.
+ */
+function _dt_event_ds_fields_status_message($field) {
+  // Default config.
+  $render_config = [
+    '#theme' => 'dt_core_status_message',
+    '#message_classes' => ['messages--icon-center'],
+  ];
+
+  // Based on the event state we modify the render array.
+  if (!isset($field['entity']->event_status)) {
+    return NULL;
+  }
+  switch ($field['entity']->event_status) {
+    case DT_EVENT_STATE_ONGOING:
+      $render_config['#message_title'] = t('This event is going on right now');
+
+      // If live stream is available we add it to the message.
+      if (
+        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
+        isset($field['entity']->field_event_live_streaming_link['und'])
+      ) {
+        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link['und'][0]['url']);
+        $render_config['#message_classes'][] = 'live';
+      }
+      break;
+
+    case DT_EVENT_STATE_RESCHEDULED:
+      $render_config['#message_title'] = t('This event has been rescheduled');
+      $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
+      $render_config['#message_classes'][] = 'warning';
+      break;
+
+    case DT_EVENT_STATE_CANCELLED:
+      $render_config['#message_title'] = t('This event has been cancelled');
+      $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
+      $render_config['#message_classes'][] = 'warning';
+      break;
+
+    case DT_EVENT_STATE_PAST:
+      $render_config['#message_title'] = t('This event has ended');
+      break;
+
+    default:
+      return NULL;
+  }
+
+  return drupal_render($render_config);
+}
+
+/**
  * Helper function to show the status label.
  *
  * @param array $field
- *   Hold the current context of the field.
+ *   Holds the current context of the field.
  *
  * @return mixed
  *   The markup or nothing.
@@ -273,8 +337,11 @@ function _dt_event_ds_fields_livestreaming($field) {
         break;
 
       case DT_EVENT_LIVE_STREAM_ONGOING:
+        // @todo: This will be implemented in a future ticket.
         $stream_count = 0;
-        $streaming_text = t('@count are watching', ['@count' => $stream_count]);
+        if ($stream_count >= 1) {
+          $streaming_text = t('@count are watching', ['@count' => $stream_count]);
+        }
         break;
     }
 

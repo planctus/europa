@@ -20,7 +20,7 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
     $form['body']['#access'] = FALSE;
   }
 
-  // Agenda exposed filter.
+  // Calendar exposed filter.
   if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list')) && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
@@ -50,15 +50,31 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
 /**
  * Implements hook_views_query_alter().
  *
- * If start date exposed filter is empty, will only display agenda items from
+ * If start date exposed filter is empty, will only display calendar items from
  * the current date forward.
  */
 function cwt_activities_views_query_alter(&$view, &$query) {
-  if ($view->name == 'agenda' && empty($view->exposed_raw_input['date_filter_min']['value'])) {
+  if ($view->name == 'agenda') {
     // If start date field value is empty, adds to the query view the condition
     // to return all items from now forward.
-    $date = date($view->filter['field_start_end_date_value2']->format, time());
-    $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
+    if (empty($view->exposed_raw_input['date_filter_min']['value'])) {
+      $date = date('Y-m-d', time());
+      $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
+    }
+    // If end date field value is empty, adds to the query view the condition
+    // to return only the items to this date.
+    if (empty($view->exposed_raw_input['date_filter_max']['value'])) {
+      // Return all items for the next 2 Sundays from the previous Friday.
+      $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
+      $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
+    }
+  }
+  elseif ($view->name == 'activities' && $view->current_display == 'block') {
+    $date = date('Y-m-d', time());
+    $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value', $date, '>=');
+
+    $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
+    $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
   }
 }
 
@@ -82,7 +98,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
   }
 
   if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path') && isset($original_path_cached['nid'])) {
-    // Load node the Agenda belongs to in the first place.
+    // Load node the Calendar belongs to in the first place.
     // Use its editorial section in first contextual filter.
     $node = node_load($original_path_cached['nid']);
     $wrapper = entity_metadata_wrapper('node', $node);
@@ -96,7 +112,6 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
         $allowed_values[$term->tid] = $term->tid;
       }
       $view->display['default']->handler->options['filters']['field_editorial_section_multiple_tid']['value'] = $allowed_values;
-      $view->args[0] = $editorial_section->tid;
     }
   }
 }
@@ -139,7 +154,7 @@ function cwt_activities_views_pre_render(&$view) {
           'attributes' => array('rel' => 'nofollow'),
         );
 
-        $print_pdf_link = l($pdf_link_prefix . t('Print these agenda items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
+        $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
         $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
@@ -162,10 +177,9 @@ function cwt_activities_views_pre_render(&$view) {
  */
 function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
   if (strpos($path, 'print-calendar') !== FALSE) {
-    $filename = variable_get('site_name', 'European Commission') . ' ' . t('Agenda') . ' ' . format_date(time(), 'ec_date_j_f_y');
+    $filename = variable_get('site_name', 'European Commission') . ' ' . t('Calendar') . ' ' . format_date(time(), 'ec_date_j_f_y');
     $pdf_filename = transliteration_clean_filename($filename);
   }
-
 }
 
 /**
@@ -193,7 +207,7 @@ function cwt_activities_ds_fields_info($entity_type) {
   $fields = array();
 
   $fields['agenda_with_who'] = array(
-    'title' => t('Agenda with who'),
+    'title' => t('With whom'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_cwt_activities_ds_fields_agenda_withwho',
   );
@@ -217,7 +231,16 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
       }
 
       // Return the data.
-      return t('With: %person_name', array('%person_name' => rtrim($editorial_section_list, ', ')));
+      return rtrim($editorial_section_list, ', ');
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function cwt_activities_preprocess_page(&$variables) {
+  $variables['field_core_introduction'] = [
+    '#markup' => t('<p>Activities of Members of the European Commission</p>') . t('<p>Subject to changes during the week</p>'),
+  ];
 }

@@ -539,7 +539,7 @@ function cwt_core_update_7140() {
  * NEXTEUROPA-5549 - Updating permissions.
  */
 function cwt_core_update_7141() {
-  // Adding "Agenda validator" role.
+  // Adding "Calendar validator" role.
   $role = new stdClass();
   $role->name = 'agenda validator';
   $role->weight = 8;
