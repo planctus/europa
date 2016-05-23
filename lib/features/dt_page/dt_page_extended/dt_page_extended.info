@@ -44,6 +44,7 @@ features[ds_layout_settings][] = node|basic_page|full
 features[ds_layout_settings][] = node|basic_page|teaser
 features[ds_layout_settings][] = node|basic_page|title
 features[features_api][] = api:2
+features[variable][] = pathauto_node_basic_page_pattern
 features[field_base][] = group_content_access
 features[field_base][] = og_group_ref
 features[field_group][] = group_background|node|basic_page|form
