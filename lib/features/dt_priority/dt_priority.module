@@ -51,3 +51,16 @@ function dt_priority_form_priority_node_form_alter(&$form, &$form_state, $form_i
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * If it is our priority listing page. we set the contents of our preprocess
+ * block.
+ */
+function dt_priority_preprocess_node(&$variables) {
+  if (isset($variables['type']) == 'basic_page' && $variables['nid'] == variable_get('dt_priority_page_id', '')) {
+    $variables['content']['priorities_preprocess']['#label_display'] = 'hidden';
+    $variables['content']['priorities_preprocess'][0]['#markup'] = views_embed_view('priority_listing');
+  }
+}
