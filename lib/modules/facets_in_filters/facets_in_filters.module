@@ -1,0 +1,68 @@
+<?php
+/**
+ * @file
+ * Contains facets_in_filters hooks.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function facets_in_filters_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function facets_in_filters_views_data() {
+  $data['facets'] = [
+    'table' => [
+      'group' => t('Facets'),
+      'join' => [
+        '#global' => [],
+      ],
+    ],
+  ];
+  $data['facets']['facet_filter'] = [
+    'group' => t('Facets'),
+    'title' => t('Exposed facet'),
+    'filter' => [
+      'help' => t('Facet in views'),
+      'handler' => 'views_handler_filter_facet',
+    ],
+  ];
+
+  return $data;
+}
+
+/**
+ * Implements hook_facetapi_url_processors().
+ */
+function facets_in_filters_facetapi_url_processors() {
+  return [
+    'standard' => [
+      'handler' => [
+        'label' => t('Views URL processors'),
+        'class' => 'FacetapiUrlViews',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_facetapi_realm_info().
+ */
+function facets_in_filters_facetapi_realm_info() {
+  return [
+    'views' => [
+      'label' => t('Views'),
+      'sortable' => FALSE,
+      'weight' => 10,
+      'default widget' => 'facetapi_links',
+      'element type' => 'links',
+      'description' => t('The <em>views</em> realm displays each facet in a separate views filter.'),
+    ],
+  ];
+}
