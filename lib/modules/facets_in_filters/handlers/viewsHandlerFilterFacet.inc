@@ -92,7 +92,7 @@ class ViewsHandlerFilterFacet extends views_handler_filter {
       return;
     }
 
-    if (is_null($this->getSearcher())) {
+    if (is_null($this->getSearcher()) || !is_object($this->query)) {
       return;
     }
 
