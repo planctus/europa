@@ -10,12 +10,12 @@
  * @ingroup views_filter_handlers
  * @codingStandardsIgnoreFile
  */
-class views_handler_filter_facet extends views_handler_filter {
+class ViewsHandlerFilterFacet extends views_handler_filter {
 
   /**
    * {@inheritdoc}
    */
-  function option_definition() {
+  public function option_definition() {
     $options = parent::option_definition();
     $options['facet'] = [
       'contains' => [
@@ -27,39 +27,35 @@ class views_handler_filter_facet extends views_handler_filter {
         ],
       ],
     ];
-    $options['expose'] = [
-      'default' => FALSE,
-      'bool' => TRUE,
-      'contains' => [
-        'label' => ['default' => '', 'translatable' => TRUE],
-      ],
-    ];
+    $options['exposed'] = ['default' => TRUE, 'bool' => TRUE];
     return $options;
   }
 
   /**
    * {@inheritdoc}
    */
-  function admin_summary() {
+  public function admin_summary() {
     return isset($this->options['facet']['facet']) ? check_plain($this->options['facet']['facet']) : t('Not configured');
   }
 
   /**
    * {@inheritdoc}
    */
-  function expose_form(&$form, &$form_state) {
+  public function expose_form(&$form, &$form_state) {
+    parent::expose_form($form, $form_state);
     $form['expose']['label'] = [
       '#type' => 'textfield',
       '#default_value' => $this->options['expose']['label'],
       '#title' => t('Label'),
       '#size' => 40,
     ];
+    $form['expose_button']['checkbox']['checkbox']['#disabled'] = TRUE;
   }
 
   /**
    * {@inheritdoc}
    */
-  function options_form(&$form, &$form_state) {
+  public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
     $facets = facetapi_get_enabled_facets($this->getSearcher(), $this->getRealm());
     if (is_array($facets)) {
@@ -83,7 +79,15 @@ class views_handler_filter_facet extends views_handler_filter {
   /**
    * {@inheritdoc}
    */
-  function exposed_form(&$form, &$form_state) {
+  public function query() {
+    // Do nothing.
+    return;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function exposed_form(&$form, &$form_state) {
     if (empty($this->options['exposed'])) {
       return;
     }
@@ -101,7 +105,6 @@ class views_handler_filter_facet extends views_handler_filter {
     // Build the realm.
     $adapter = facetapi_build_realm($this->getSearcher(), $this->getRealm());
 
-    $value = ['#markup' => ''];
     if (isset($adapter[$field])) {
       if (isset($adapter[$field][$field]['facets'])) {
         $value = $adapter[$field][$field]['facets'];
@@ -112,7 +115,17 @@ class views_handler_filter_facet extends views_handler_filter {
         $value = ['#markup' => drupal_render($adapter[$field][$field])];
       }
     }
-    $form[$this->options['expose']['identifier']] = $value;
+    if (isset($value)) {
+      $form[$this->options['expose']['identifier']] = $value;
+    }
+    return;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function accept_exposed_input($input) {
+    return TRUE;
   }
 
   /**

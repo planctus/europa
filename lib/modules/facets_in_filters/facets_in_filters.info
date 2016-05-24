@@ -5,6 +5,9 @@ package = Views
 
 dependencies[] = views
 dependencies[] = facetapi
+dependencies[] = facetapi_select
 
-files[] = handlers/views_handler_filter_facet.inc
-files[] = handlers/facetapi_url_processor.inc
+files[] = handlers/ViewsHandlerFilterFacet.inc
+files[] = handlers/FacetapiUrlViews.inc
+files[] = widgets/FacetsInFiltersCheckbox.inc
+files[] = widgets/FacetsInFiltersSelect.inc
