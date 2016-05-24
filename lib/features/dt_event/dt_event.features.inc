@@ -17,7 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-16-0",
+    "entity_translation_handler_id" : "cer-eid-234-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -97,6 +97,7 @@ function dt_event_default_search_api_index() {
         "field_event_status_description:value" : { "type" : "text" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_what_happened:value" : { "type" : "text" },
+        "search_api_aggregation_1" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "title_field" : { "type" : "text" }
       },
@@ -115,7 +116,18 @@ function dt_event_default_search_api_index() {
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_aggregation_1" : {
+                "name" : "fulltext search",
+                "type" : "fulltext",
+                "fields" : [ "title", "field_core_description" ],
+                "description" : "A Fulltext aggregation of the following fields: Title, Description."
+              }
+            }
+          }
+        },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
       },
       "processors" : {
@@ -256,6 +268,11 @@ function dt_event_default_search_api_server() {
             "boost" : "1.0"
           },
           "field_event_status_description:value" : {
+            "table" : "search_api_db_event_index_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "search_api_aggregation_1" : {
             "table" : "search_api_db_event_index_text",
             "type" : "text",
             "boost" : "1.0"
