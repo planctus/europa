@@ -150,3 +150,10 @@ function dt_core_info_update_7110() {
 function dt_core_info_update_7111() {
   module_enable(array('dt_editorial'));
 }
+
+/**
+ * DTTSB-377: Enable social sharing snippet on all sites.
+ */
+function dt_core_info_update_7112() {
+  module_enable(['dt_social_media_sharing']);
+}
