@@ -45,10 +45,6 @@ class FacetapiUrlViews extends FacetapiUrlProcessorStandard {
           unset($parameters[$key]);
           break;
         }
-        elseif (is_array($parsed) && isset($parsed['query']['f'])) {
-          // In other cases, we can just append.
-          $facets[$key] = $parsed['query']['f'];
-        }
         unset($parameters[$key]);
       }
     }
