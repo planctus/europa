@@ -7912,9 +7912,9 @@ Styleguide: icon
   content: '\e828' !important; }
 
 .icon--down, .file__translations .file__translations-control:after {
-  content: '\e806'; }
+  content: '\e81F'; }
   .icon--down:before {
-    content: '\e806'; }
+    content: '\e81F'; }
 
 .icon--left:before {
   content: '\e826'; }
@@ -7941,7 +7941,7 @@ Styleguide: icon
   content: '\e80f'; }
 
 .icon--multiple-files:before {
-  content: '\e615'; }
+  content: '\e820'; }
 
 .icon--organigram:before {
   content: '\e811'; }
@@ -7956,7 +7956,7 @@ Styleguide: icon
   content: '\e800'; }
 
 .icon--error:before {
-  content: '\e808'; }
+  content: '\e82F'; }
 
 .icon--success:before {
   content: '\e816'; }
@@ -7985,8 +7985,11 @@ Styleguide: icon
 .icon--regulation:before {
   content: '\e82b'; }
 
+.icon--feedback:before {
+  content: '\e82f'; }
+
 .icon--check, .icon--check:before {
-  content: '\e81f'; }
+  content: '\e816'; }
 
 .icon--generic-lang, .icon--generic-lang:before {
   content: '\e81e'; }
