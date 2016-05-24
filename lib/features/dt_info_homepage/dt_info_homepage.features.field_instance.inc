@@ -232,7 +232,7 @@ function dt_info_homepage_field_default_field_instances() {
           'nexteuropa_listing_wrapper_modifier' => 'equal-height',
           'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
-          'use_content_language' => 0,
+          'use_content_language' => 1,
           'view_mode' => 'image_label',
         ),
         'type' => 'entityreference_entity_view',
