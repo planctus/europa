@@ -70,6 +70,10 @@ function cwt_activities_views_query_alter(&$view, &$query) {
       $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
     }
+    // Agenda views override date sorting, granularity should be: 'day'.
+    if (($key = array_search('field_data_field_start_end_date_field_start_end_date_value', array_column($query->orderby, 'field'))) !== FALSE) {
+      $query->orderby[$key]['field'] = "DATE_FORMAT(field_data_field_start_end_date.field_start_end_date_value, '%Y%m%d')";
+    }
   }
   elseif ($view->name == 'activities' && $view->current_display == 'block') {
     $date = date('Y-m-d', time());

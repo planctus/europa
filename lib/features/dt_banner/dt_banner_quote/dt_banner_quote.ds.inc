@@ -79,8 +79,8 @@ function dt_banner_quote_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'group_quote_wrapper',
         1 => 'field_banner_author',
-        2 => 'field_core_description',
-        3 => 'group_quote_quote',
+        2 => 'group_quote_quote',
+        3 => 'field_core_description',
         4 => 'group_blockquote',
         5 => 'group_quote_author',
       ),
@@ -88,8 +88,8 @@ function dt_banner_quote_ds_layout_settings_info() {
     'fields' => array(
       'group_quote_wrapper' => 'ds_content',
       'field_banner_author' => 'ds_content',
-      'field_core_description' => 'ds_content',
       'group_quote_quote' => 'ds_content',
+      'field_core_description' => 'ds_content',
       'group_blockquote' => 'ds_content',
       'group_quote_author' => 'ds_content',
     ),
@@ -119,8 +119,8 @@ function dt_banner_quote_ds_layout_settings_info() {
         1 => 'group_quote_quote',
         2 => 'group_blockquote',
         3 => 'group_quote_author',
-        4 => 'field_banner_author',
-        5 => 'field_core_description',
+        4 => 'field_core_description',
+        5 => 'field_banner_author',
       ),
     ),
     'fields' => array(
@@ -128,8 +128,8 @@ function dt_banner_quote_ds_layout_settings_info() {
       'group_quote_quote' => 'ds_content',
       'group_blockquote' => 'ds_content',
       'group_quote_author' => 'ds_content',
-      'field_banner_author' => 'ds_content',
       'field_core_description' => 'ds_content',
+      'field_banner_author' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

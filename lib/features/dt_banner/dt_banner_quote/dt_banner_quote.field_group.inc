@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_banner_quote_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -38,7 +38,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_banner|node|banner_quote|form'] = $field_group;
+  $field_groups['group_banner|node|banner_quote|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -67,7 +67,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_blockquote|node|banner_quote|default'] = $field_group;
+  $field_groups['group_blockquote|node|banner_quote|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -96,7 +96,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_blockquote|node|banner_quote|teaser'] = $field_group;
+  $field_groups['group_blockquote|node|banner_quote|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +122,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_content_tabgroup|node|banner_quote|form'] = $field_group;
+  $field_groups['group_content_tabgroup|node|banner_quote|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -152,7 +152,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_editorial_settings|node|banner_quote|form'] = $field_group;
+  $field_groups['group_editorial_settings|node|banner_quote|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -173,15 +173,16 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Author',
       'instance_settings' => array(
+        'id' => '',
         'classes' => 'banner__author',
-        'element' => 'div',
+        'element' => 'footer',
         'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
       ),
     ),
   );
-  $export['group_quote_author|node|banner_quote|default'] = $field_group;
+  $field_groups['group_quote_author|node|banner_quote|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -202,15 +203,16 @@ function dt_banner_quote_field_group_info() {
     'format_settings' => array(
       'label' => 'Author',
       'instance_settings' => array(
+        'id' => '',
         'classes' => 'banner__author',
-        'element' => 'div',
+        'element' => 'footer',
         'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
       ),
     ),
   );
-  $export['group_quote_author|node|banner_quote|teaser'] = $field_group;
+  $field_groups['group_quote_author|node|banner_quote|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -240,7 +242,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_quote_quote|node|banner_quote|default'] = $field_group;
+  $field_groups['group_quote_quote|node|banner_quote|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -270,7 +272,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_quote_quote|node|banner_quote|teaser'] = $field_group;
+  $field_groups['group_quote_quote|node|banner_quote|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -299,7 +301,7 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_quote_wrapper|node|banner_quote|default'] = $field_group;
+  $field_groups['group_quote_wrapper|node|banner_quote|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -328,7 +330,17 @@ function dt_banner_quote_field_group_info() {
       ),
     ),
   );
-  $export['group_quote_wrapper|node|banner_quote|teaser'] = $field_group;
+  $field_groups['group_quote_wrapper|node|banner_quote|teaser'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Author');
+  t('Banner');
+  t('Blockquote');
+  t('Content');
+  t('Editorial Settings');
+  t('Quote Quote');
+  t('Quote Wrapper');
+
+  return $field_groups;
 }
