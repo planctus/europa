@@ -12,7 +12,8 @@
 <?php endif;
 $i = 0;
 foreach ($rows as $id => $row): ?>
-  <div<?php if ($classes_array[$id]) : print ' class="' . $classes_array[$id] . '"'; endif; ?>>
+  <div<?php if ($classes_array[$id]) : print ' class="' . $classes_array[$id] . '"';
+ endif; ?>>
       <span class="timeline-icon"></span>
       <div class="views-row-inner">
         <?php print $row;
