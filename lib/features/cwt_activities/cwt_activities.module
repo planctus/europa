@@ -21,7 +21,8 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Calendar exposed filter.
-  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list')) && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list'))
+    && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter_min']['value']['#attributes']['placeholder'] = t('Choose a date');
@@ -39,7 +40,8 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
  */
 function cwt_activities_exposed_submit(&$form, &$form_state) {
   // Modify the default views reset target.
-  if (!empty($form_state['values']['op']) && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
+  if (!empty($form_state['values']['op'])
+    && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
     drupal_goto($form['#action']);
   }
 
@@ -97,7 +99,9 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path') && isset($original_path_cached['nid'])) {
+  if ($view->name == 'agenda'
+    && $original_path_cached = &drupal_static('cwt_core_orignal_path')
+      && isset($original_path_cached['nid'])) {
     // Load node the Calendar belongs to in the first place.
     // Use its editorial section in first contextual filter.
     $node = node_load($original_path_cached['nid']);
@@ -120,7 +124,6 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
-
   if ($view->current_display == 'moderate_all_page' && $view->name == 'workbench_moderation') {
     // First get the keys.
     $keys = array_keys($view->field);
@@ -137,6 +140,7 @@ function cwt_activities_views_pre_render(&$view) {
     $view->field = [$last_key => $last_item] + $view->field + [$first_key => $first_item];
     return;
   }
+
   if ($view->name == 'agenda') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {
@@ -154,9 +158,13 @@ function cwt_activities_views_pre_render(&$view) {
           'attributes' => array('rel' => 'nofollow'),
         );
 
-        $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
+        $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items')
+          . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
-        $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
+        $view->header['area_text_custom']->options['content']
+          = '<p>' . t('Activities of Members of the European Commission') . '</p>'
+          . '<p>' . t('Subject to changes during the week') . '</p>'
+          . str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
     }
 
@@ -177,7 +185,8 @@ function cwt_activities_views_pre_render(&$view) {
  */
 function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
   if (strpos($path, 'print-calendar') !== FALSE) {
-    $filename = variable_get('site_name', 'European Commission') . ' ' . t('Calendar') . ' ' . format_date(time(), 'ec_date_j_f_y');
+    $filename = variable_get('site_name', 'European Commission') . ' '
+      . t('Calendar') . ' ' . format_date(time(), 'ec_date_j_f_y');
     $pdf_filename = transliteration_clean_filename($filename);
   }
 }
@@ -210,6 +219,16 @@ function cwt_activities_ds_fields_info($entity_type) {
     'title' => t('With whom'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_cwt_activities_ds_fields_agenda_withwho',
+    'settings' => array(
+      'bold_lastname' => array(
+        'type' => 'select',
+        'options' => array('yes', 'no'),
+        'description' => t('Make last name bold.'),
+      ),
+    ),
+    'default' => array(
+      'bold_lastname' => 'no',
+    ),
   );
 
   return array('node' => $fields);
@@ -241,6 +260,7 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
  */
 function cwt_activities_preprocess_page(&$variables) {
   $variables['field_core_introduction'] = [
-    '#markup' => t('<p>Activities of Members of the European Commission</p>') . t('<p>Subject to changes during the week</p>'),
+    '#markup' => '<p>' . t('Activities of Members of the European Commission') . '</p>'
+      . '<p>' . t('Subject to changes during the week') . '</p>',
   ];
 }
