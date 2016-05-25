@@ -119,9 +119,9 @@ function dt_banner_video_field_group_info() {
       'instance_settings' => array(
         'id' => '',
         'classes' => 'banner__caption',
-        'element' => 'div',
+        'element' => 'footer',
         'show_label' => '0',
-        'label_element' => 'footer',
+        'label_element' => 'div',
         'attributes' => '',
       ),
     ),
