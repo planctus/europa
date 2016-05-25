@@ -32,5 +32,7 @@ function dt_event_update_7101() {
  * Enable facets_in_filters module.
  */
 function dt_event_update_7102() {
-  module_enable(['facets_in_filters']);
+  module_enable(['search_api_db', 'facets_in_filters']);
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
 }
