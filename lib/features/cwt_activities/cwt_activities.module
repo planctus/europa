@@ -261,6 +261,6 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
 function cwt_activities_preprocess_page(&$variables) {
   $variables['field_core_introduction'] = [
     '#markup' => '<p>' . t('Activities of Members of the European Commission') . '</p>'
-      . '<p>' . t('Subject to changes during the week') . '</p>',
+    . '<p>' . t('Subject to changes during the week') . '</p>',
   ];
 }
