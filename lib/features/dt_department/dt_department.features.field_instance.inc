@@ -126,9 +126,9 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => 'listing--no-link',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
@@ -675,9 +675,9 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => 'listing--column-left',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'meta',
@@ -860,9 +860,9 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'title',
@@ -1148,9 +1148,9 @@ function dt_department_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'file',
