@@ -95,6 +95,7 @@ features[variable][] = node_submitted_department
 features[variable][] = pathauto_node_department_pattern
 features[views_view][] = department
 features[views_view][] = filter_list_departments
+features[views_view][] = tax_department_tasks_list
 features_exclude[dependencies][ds] = ds
 features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][link] = link
