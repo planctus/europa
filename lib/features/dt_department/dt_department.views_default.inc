@@ -232,7 +232,7 @@ function dt_department_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'taxonomy_term_data';
-  $view->human_name = 'Tax. Department Tasks List';
+  $view->human_name = 'Filter list - Departments Tasks';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
