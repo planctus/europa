@@ -202,8 +202,10 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '21',
-    'children' => array(),
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_core_contact',
+    ),
     'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Contact',
@@ -327,8 +329,10 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Context nav',
-    'weight' => '9',
-    'children' => array(),
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_core_topics',
+    ),
     'format_type' => 'context_nav',
     'format_settings' => array(
       'formatter' => '',
@@ -399,6 +403,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_event_description|node|event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_documents|node|event|event_past';
+  $field_group->group_name = 'group_event_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_core_files',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => 'col-md-9',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_documents|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -568,8 +602,10 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '19',
-    'children' => array(),
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_core_persons',
+    ),
     'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Speakers',
@@ -614,6 +650,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_event_speakers|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_whathappened|node|event|event_past';
+  $field_group->group_name = 'group_event_whathappened';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'What happened',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_event_what_happened',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'What happened',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_whathappened|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -758,11 +824,20 @@ function dt_event_default_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'event';
   $field_group->mode = 'event_past';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '35',
-    'children' => array(),
+    'weight' => '34',
+    'children' => array(
+      0 => 'field_core_departments',
+      1 => 'field_event_available_languages',
+      2 => 'field_event_date',
+      3 => 'field_event_parent_events',
+      4 => 'field_event_target_audience',
+      5 => 'field_event_website',
+      6 => 'hr_2',
+      7 => 'dt_event_address_oneline',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Practical info left',
@@ -861,11 +936,13 @@ function dt_event_default_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'event';
   $field_group->mode = 'event_past';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '36',
-    'children' => array(),
+    'weight' => '35',
+    'children' => array(
+      0 => 'field_event_location_image',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Practical info right',
@@ -954,8 +1031,10 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '18',
-    'children' => array(),
+    'weight' => '14',
+    'children' => array(
+      0 => 'group_row',
+    ),
     'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Practical information',
@@ -1039,11 +1118,14 @@ function dt_event_default_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'event';
   $field_group->mode = 'event_past';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_practical_information';
   $field_group->data = array(
     'label' => 'row',
-    'weight' => '34',
-    'children' => array(),
+    'weight' => '33',
+    'children' => array(
+      0 => 'group_practical_info_left',
+      1 => 'group_practical_info_right',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'row',
@@ -1101,6 +1183,7 @@ function dt_event_default_field_group_info() {
   t('Content');
   t('Context nav');
   t('Description');
+  t('Documents');
   t('Editorial settings');
   t('Left');
   t('Meta');
@@ -1110,6 +1193,7 @@ function dt_event_default_field_group_info() {
   t('Right');
   t('Schedule');
   t('Speakers');
+  t('What happened');
   t('row');
 
   return $field_groups;

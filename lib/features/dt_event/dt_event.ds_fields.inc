@@ -78,6 +78,18 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: Address oneline'),
       'function' => '_dt_event_ds_fields_address_oneline',
       'use_token' => TRUE,
+      'properties' => [
+        'settings' => [
+          'show_link' => [
+            'title' => t('Show link'),
+            'type' => 'checkbox',
+            'description' => t('Show a google maps link'),
+          ],
+        ],
+        'default' => [
+          'show_link' => TRUE,
+        ],
+      ],
     ];
     $fields[$entity_type]['dt_event_status_label'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -92,6 +104,12 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: Status message'),
       'function' => '_dt_event_ds_fields_status_message',
       'use_token' => TRUE,
+    ];
+    $fields[$entity_type]['dt_event_scribble_embed'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Scribble embed'),
+      'function' => '_dt_event_ds_fields_scribble_embed',
     ];
   }
 
@@ -112,6 +130,26 @@ function dt_event_ds_field_settings_form($field) {
  */
 function dt_event_ds_field_format_summary($field) {
   return ds_ds_field_format_summary($field);
+}
+
+/**
+ * Helper function to show the scribble iframe with CCK.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The status message markup.
+ */
+function _dt_event_ds_fields_scribble_embed($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_scribble_id') && $scribble_id = $entity->field_event_scribble_id->value()) {
+    $content_language = _dt_shared_functions_content_language($field['entity']);
+    $markup = [
+      '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
+    ];
+    return drupal_render($markup);
+  }
 }
 
 /**
@@ -225,7 +263,10 @@ function _dt_event_ds_fields_address_oneline($field) {
   // If it is still available, we implode the array and return the address line.
   if (!empty($parts)) {
     $address = implode(', ', $parts);
-    return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+    if (isset($field['formatter_settings']['show_link']) && $field['formatter_settings']['show_link']) {
+      return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+    }
+    return $address;
   }
 }
 

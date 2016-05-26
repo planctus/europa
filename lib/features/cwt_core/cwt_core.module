@@ -978,7 +978,6 @@ function _cwt_core_custom_page_title($page_variables) {
   // Calendar.
   elseif (in_array(arg(0), array('calendar', 'print-calendar'))) {
     $variables['line_2'] = t('Calendar');
-    $variables['line_3'] = t('Appointments and meetings');
   }
 
   // Load custom title provided by view.
