@@ -20,17 +20,7 @@
             <fileset dir="${platform.build.settings.dir}" />
         </chmod>
         <!-- Install minimal profile -->
-        <drush
-                command="site-install"
-                assume="yes"
-                root="${platform.build.dir}"
-                bin="${drush.bin}"
-                verbose="${drush.verbose}">
-            <option name="db-url" value="${drupal.db.url}" />
-            <param>minimal</param>
-            <!-- Prevent e-mails from being sent during the installation. -->
-            <param>install_configure_form.update_status_module='array(FALSE,FALSE)'</param>
-        </drush>
+        <exec command='php src/Phing/generateSettings.php "${drupal.db.url}" "${platform.build.dir}"' escape="false"/>
     </target>
 
     <!-- Chaining target to rebuild dev environment -->
