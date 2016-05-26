@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="Dt specific tagets" default="install-base">
+<project name="Dt specific tagets" default="generate-settings">
 
     <!-- Phing target to install standard profile -->
-    <target name="install-base">
+    <target name="generate-settings">
         <!-- Remove old settings file -->
         <phingcall target="unprotect-folder">
             <property name="folder.to.unprotect" value="${platform.build.settings.dir}" />
@@ -27,7 +27,7 @@
     <target
         name="rebuild-dev-db"
         description="Rebuild dev environment with database"
-        depends="build-dev, install-base, restore-ac-db"
+        depends="build-dev, generate-settings, restore-ac-db"
     />
 
 </project>
