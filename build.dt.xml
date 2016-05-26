@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="Dt specific tagets" default="install-base">
+
+    <!-- Phing target to install standard profile -->
+    <target name="install-base">
+        <!-- Remove old settings file -->
+        <phingcall target="unprotect-folder">
+            <property name="folder.to.unprotect" value="${platform.build.settings.dir}" />
+        </phingcall>
+        <echo msg="Deleting settings file" />
+        <phingcall target="delete-folder">
+            <property name="folder.to.delete" value="${platform.build.dir}/sites/default/settings.php" />
+        </phingcall>
+        <!--
+            Ensure the settings folder is writable so the installer can create
+            the settings.php file.
+         -->
+        <chmod mode="0755" failonerror="false" verbose="false" quiet="true">
+            <fileset dir="${platform.build.settings.dir}" />
+        </chmod>
+        <!-- Install minimal profile -->
+        <drush
+                command="site-install"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}">
+            <option name="db-url" value="${drupal.db.url}" />
+            <param>minimal</param>
+            <!-- Prevent e-mails from being sent during the installation. -->
+            <param>install_configure_form.update_status_module='array(FALSE,FALSE)'</param>
+        </drush>
+    </target>
+
+    <!-- Chaining target to rebuild dev environment -->
+    <target
+        name="rebuild-dev-db"
+        description="Rebuild dev environment with database"
+        depends="build-dev, install-base, restore-ac-db"
+    />
+
+</project>

@@ -116,4 +116,7 @@
     <!-- Custom project specific deployment targets. -->
     <import file="build.deliver.xml" />
 
+    <!-- DT specific targets -->
+    <import file="build.dt.xml"/>
+
 </project>
