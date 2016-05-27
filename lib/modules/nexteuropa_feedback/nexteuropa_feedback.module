@@ -37,6 +37,8 @@ function nexteuropa_feedback_form($form_state) {
   $form['#attributes']['class'][] = 'feedback-form';
 
   $form['#token'] = NULL;
+  $problem = t('Compliment');
+  $form['accordion']['problem_group']['#prefix'] = '<label id="problem" class="sr-only" for="edit-problem" aria-label="' . $problem . '">' . $problem . '</label>';
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
     '#title' => t("What were you doing?"),
@@ -51,7 +53,7 @@ function nexteuropa_feedback_form($form_state) {
   );
 
   $suggestion = t('Suggestion');
-  $form['accordion']['suggestion_group']['#prefix'] = '<label class="sr-only" for="edit-suggestion" aria-label="' . $suggestion . '">' . $suggestion . '</label>';
+  $form['accordion']['suggestion_group']['#prefix'] = '<label id="suggestion" class="sr-only" for="edit-suggestion" aria-label="' . $suggestion . '">' . $suggestion . '</label>';
   $form['accordion']['suggestion_group']['suggestion'] = array(
     '#type' => 'textarea',
     '#default_value' => '',
@@ -59,7 +61,7 @@ function nexteuropa_feedback_form($form_state) {
   );
 
   $compliment = t('Compliment');
-  $form['accordion']['compliment_group']['#prefix'] = '<label class="sr-only" for="edit-compliment" aria-label="' . $compliment . '">' . $compliment . '</label>';
+  $form['accordion']['compliment_group']['#prefix'] = '<label id="compliment" class="sr-only" for="edit-compliment" aria-label="' . $compliment . '">' . $compliment . '</label>';
   $form['accordion']['compliment_group']['compliment'] = array(
     '#type' => 'textfield',
     '#default_value' => '',
