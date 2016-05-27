@@ -23,7 +23,7 @@
     <exclude-pattern>styleguide</exclude-pattern>
     <exclude-pattern>js/libraries</exclude-pattern>
     <exclude-pattern>*/style-sass*.css</exclude-pattern>
-
+<exclude-pattern>templates</exclude-pattern>
     <!-- Exclude settings.php -->
     <exclude-pattern>*/settings.php</exclude-pattern>
 
