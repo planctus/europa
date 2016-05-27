@@ -37,7 +37,7 @@ function nexteuropa_feedback_form($form_state) {
   $form['#attributes']['class'][] = 'feedback-form';
 
   $form['#token'] = NULL;
-  $problem = t('Compliment');
+  $problem = t('Problem');
   $form['accordion']['problem_group']['#prefix'] = '<label id="problem" class="sr-only" for="edit-problem" aria-label="' . $problem . '">' . $problem . '</label>';
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
