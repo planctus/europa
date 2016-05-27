@@ -22,8 +22,9 @@
   }
 }
 
-@media print {
-  .filters__result-count {
+.print-content {
+  .filters__result-count,
+  .filters__active-facets {
     display: none;
   }
 
@@ -34,31 +35,19 @@
     background: none;
     text-align: left;
     border-bottom: none;
-  }
 
-  .date-block__day-text,
-  .date-block__day,
-  .date-block__month {
-    display: inline;
-    font-size: 0.750em;
-    font-weight: bold;
-    line-height: 1;
-  }
-
-  .listing--agenda {
-    h3 {
-      &.listing__title {
-        font-size: 0.750em;
-      }
-    }
-
-    .listing__author {
-      margin-top: 0;
-      font-size: 0.750em;
+    .date-block__day-text,
+    .date-block__day,
+    .date-block__month {
+      display: inline;
+      font-size: 0.800em;
+      font-weight: bold;
+      line-height: 1;
     }
   }
 
-  .listing__title {
-    margin-bottom: 0;
+  .listing__author__pdf,
+  .listing__title__pdf {
+    font-size: 0.950em;
   }
 }

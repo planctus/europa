@@ -152,29 +152,27 @@ section #timeline {
 .translation_select:focus {
   padding-right: 50px; }
 
-@media print {
-  .filters__result-count {
-    display: none; }
-  .date-block {
-    width: auto;
-    margin: 0;
-    padding: 0;
-    background: none;
-    text-align: left;
-    border-bottom: none; }
-  .date-block__day-text,
-  .date-block__day,
-  .date-block__month {
+.print-content .filters__result-count,
+.print-content .filters__active-facets {
+  display: none; }
+
+.print-content .date-block {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+  text-align: left;
+  border-bottom: none; }
+  .print-content .date-block .date-block__day-text,
+  .print-content .date-block .date-block__day,
+  .print-content .date-block .date-block__month {
     display: inline;
-    font-size: 0.750em;
+    font-size: 0.800em;
     font-weight: bold;
     line-height: 1; }
-  .listing--agenda h3.listing__title {
-    font-size: 0.750em; }
-  .listing--agenda .listing__author {
-    margin-top: 0;
-    font-size: 0.750em; }
-  .listing__title {
-    margin-bottom: 0; } }
+
+.print-content .listing__author__pdf,
+.print-content .listing__title__pdf {
+  font-size: 0.950em; }
 
 /*# sourceMappingURL=style-sass-cwt.css.map */

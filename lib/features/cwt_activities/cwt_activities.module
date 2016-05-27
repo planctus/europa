@@ -154,8 +154,11 @@ function cwt_activities_views_pre_render(&$view) {
         $print_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
-        $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
-        $pdf_link_suffix = '</span>';
+        $pdf_link_prefix = '<div class="rss-link__wrapper">'
+          . '<div class="rss-link">'
+          . '<span class="rss-link__icon icon-social icon-social--print"></span>'
+          . '<span class="rss-link__text">';
+        $pdf_link_suffix = '</span></div></div>';
         $pdf_link_options = array(
           'query' => $full_query_parameters,
           'html' => TRUE,
@@ -166,9 +169,7 @@ function cwt_activities_views_pre_render(&$view) {
           . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
         $view->header['area_text_custom']->options['content']
-          = '<p>' . t('Activities of Members of the European Commission') . '</p>'
-          . '<p>' . t('Subject to changes during the week') . '</p>'
-          . str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
+          = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
     }
 
@@ -223,16 +224,6 @@ function cwt_activities_ds_fields_info($entity_type) {
     'title' => t('With whom'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_cwt_activities_ds_fields_agenda_withwho',
-    'settings' => array(
-      'bold_lastname' => array(
-        'type' => 'select',
-        'options' => array('yes', 'no'),
-        'description' => t('Make last name bold.'),
-      ),
-    ),
-    'default' => array(
-      'bold_lastname' => 'no',
-    ),
   );
 
   return array('node' => $fields);
@@ -263,8 +254,22 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
  * Implements hook_preprocess_HOOK().
  */
 function cwt_activities_preprocess_page(&$variables) {
-  $variables['field_core_introduction'] = [
-    '#markup' => '<p>' . t('Activities of Members of the European Commission') . '</p>'
-    . '<p>' . t('Subject to changes during the week') . '</p>',
-  ];
+  $view = views_get_page_view();
+
+  $description[] = t('Activities of Members of the European Commission');
+  $description[] = t('Subject to changes during the week');
+
+  if (isset($view) && $view->name == 'agenda') {
+    $variables['field_core_introduction'] = [
+      '#markup' => '<p>' . $description[0] . '</p><p>' . $description[1] . '</p>',
+    ];
+  }
+
+  if (isset($variables['format']) && $variables['format'] == 'pdf') {
+    $result = _dt_exposed_filter_data_get_date_facet_tags($view);
+    $variables['node']->title .= ' ' . implode($result['filter']);
+
+    $variables['node']->content = $description[0] . '<br>' . $description[1]
+      . $variables['node']->content;
+  }
 }
