@@ -18,7 +18,7 @@ function cwt_activities_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_activity_address',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'addressfield',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -35,7 +35,7 @@ function cwt_activities_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_activity_link',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -65,7 +65,7 @@ function cwt_activities_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_start_end_date',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'date',
     'settings' => array(
       'cache_count' => 4,

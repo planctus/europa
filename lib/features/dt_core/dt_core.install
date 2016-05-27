@@ -64,9 +64,7 @@ function dt_core_uninstall() {
  */
 function dt_core_update_7101() {
   $slices = array(
-    'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core',
   );
   module_enable($slices);
 }

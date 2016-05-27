@@ -22,7 +22,7 @@ function cwt_highlights_field_default_field_bases() {
         0 => 'format',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'text',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -39,7 +39,7 @@ function cwt_highlights_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_highlight_additional_links',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
@@ -73,7 +73,7 @@ function cwt_highlights_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
@@ -94,7 +94,7 @@ function cwt_highlights_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_highlight_subheader',
     'indexes' => array(),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'link',
     'settings' => array(
       'attributes' => array(
