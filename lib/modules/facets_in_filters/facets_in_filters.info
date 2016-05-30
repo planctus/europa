@@ -1,0 +1,13 @@
+name = Facets in filters
+description = Exposes facets (facet_api) in views filters
+core = 7.x
+package = Views
+
+dependencies[] = views
+dependencies[] = facetapi
+dependencies[] = facetapi_select
+
+files[] = handlers/ViewsHandlerFilterFacet.inc
+files[] = handlers/FacetapiUrlViews.inc
+files[] = widgets/FacetsInFiltersCheckbox.inc
+files[] = widgets/FacetsInFiltersSelect.inc
