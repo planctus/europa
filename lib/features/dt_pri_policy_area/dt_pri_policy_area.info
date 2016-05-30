@@ -2,7 +2,8 @@ name = DT priority policy area
 description = DT Priority Policy Area feature
 core = 7.x
 package = NextEuropa Digital Transformation Political
-version = 7.x-1.0-dev
+version = 7.x-1.0
+php = 5.5
 project = dt_pri_policy_area
 dependencies[] = dt_announcement
 dependencies[] = dt_banner
@@ -87,3 +88,4 @@ features_exclude[field_instance][node-priority_policy_area-field_pri_pol_child_p
 features_exclude[field_instance][node-priority_policy_area-field_core_social_network_links] = node-priority_policy_area-field_core_social_network_links
 features_exclude[field_instance][node-priority_policy_area-field_pri_pol_area_policy_intro] = node-priority_policy_area-field_pri_pol_area_policy_intro
 features_exclude[field_instance][node-priority_policy_area-field_core_objective] = node-priority_policy_area-field_core_objective
+multisite_version = 2.2

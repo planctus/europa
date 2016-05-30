@@ -22,7 +22,7 @@ function nexteuropa_file_field_default_field_bases() {
         0 => 'fid',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'file',
     'settings' => array(
       'display_default' => 0,
@@ -48,7 +48,7 @@ function nexteuropa_file_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 0,
+    'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
