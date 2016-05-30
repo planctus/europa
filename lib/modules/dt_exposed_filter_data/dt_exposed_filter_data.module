@@ -54,7 +54,9 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
       if (isset($pretty['filter'])) {
         $vars[$filter] = $value;
         $pretty_filter_key = $pretty['label'];
-        $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
+        if ($value != "All") {
+          $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
+        }
       }
     }
   }

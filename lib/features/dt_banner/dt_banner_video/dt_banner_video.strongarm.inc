@@ -117,6 +117,15 @@ function dt_banner_video_strongarm() {
       'name' => array(
         'custom_settings' => FALSE,
       ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

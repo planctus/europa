@@ -15,14 +15,14 @@ function cwt_activities_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Agenda';
+  $view->human_name = 'Calendar';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Agenda';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['css_class'] = 'listing-custom';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -70,12 +70,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['label'] = '';
   $handler->display->display_options['fields']['field_editorial_section']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More calendar items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More calendar items for %1';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['link_class'] = 'link';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['prefix'] = '<div class="more-link">';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['suffix'] = '</div>';
@@ -172,8 +172,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
-  /* Display: Agenda block */
-  $handler = $view->new_display('block', 'Agenda block', 'block');
+  /* Display: Calendar block */
+  $handler = $view->new_display('block', 'Calendar block', 'block');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
@@ -198,7 +198,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['ui_name'] = 'More link';
-  $handler->display->display_options['footer']['area']['content'] = 'More agenda items';
+  $handler->display->display_options['footer']['area']['content'] = 'More calendar items';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
@@ -223,12 +223,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['label'] = '';
   $handler->display->display_options['fields']['field_editorial_section']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More calendar items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More calendar items for %1';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['link_class'] = 'link';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['prefix'] = '<div class="more-link">';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['suffix'] = '</div>';
@@ -286,7 +286,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Appointments and meetings';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Content: Agenda transparency text */
+  /* Field: Content: Calendar transparency text */
   $handler->display->display_options['fields']['field_biography_agenda_text']['id'] = 'field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['table'] = 'field_data_field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['field'] = 'field_biography_agenda_text';
@@ -319,15 +319,15 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Appointments and meetings';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: No upcoming agenda items */
+  /* Field: No upcoming calendar items */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'No upcoming agenda items';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'No upcoming calendar items';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'No upcoming agenda items';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'No upcoming calendar items';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Agenda transparency text */
+  /* Field: Content: Calendar transparency text */
   $handler->display->display_options['fields']['field_biography_agenda_text']['id'] = 'field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['table'] = 'field_data_field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['field'] = 'field_biography_agenda_text';
@@ -380,14 +380,14 @@ function cwt_activities_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Agenda global';
+  $view->human_name = 'Calendar global';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Agenda';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['css_class'] = 'listing-custom';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
@@ -422,6 +422,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="result-count pull-left"><p>@total items[filter_info]</p></div>';
+  /* Relationship: Content: Editorial sections (field_editorial_section_multiple) */
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['id'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['table'] = 'field_data_field_editorial_section_multiple';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['field'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['label'] = 'field_editorial_section_multiple';
   /* Field: Content: Start/End date */
   $handler->display->display_options['fields']['field_start_end_date']['id'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['table'] = 'field_data_field_start_end_date';
@@ -478,6 +483,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['sorts']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
   $handler->display->display_options['sorts']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
   $handler->display->display_options['sorts']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_editorial_section_multiple_tid';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -668,10 +678,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['vocabulary'] = 'editorial_sections';
 
-  /* Display: Agenda items */
-  $handler = $view->new_display('page', 'Agenda items', 'list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Calendar items */
+  $handler = $view->new_display('page', 'Calendar items', 'list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'listing-custom listing-custom--page';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -691,10 +699,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['path'] = 'calendar/%';
 
-  /* Display: Print agenda items */
-  $handler = $view->new_display('page', 'Print agenda items', 'print_list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Print calendar items */
+  $handler = $view->new_display('page', 'Print calendar items', 'print_list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
