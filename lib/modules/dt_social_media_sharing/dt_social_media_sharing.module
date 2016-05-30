@@ -16,10 +16,10 @@ function dt_social_media_sharing_preprocess_page(&$variables) {
     drupal_add_html_head([
       '#tag' => 'script',
       '#value' => '{
-      "service" : "sbkm",
-      "popup" : false,
-      "selection": true
-    }',
+        "service" : "sbkm",
+        "popup" : false,
+        "selection": true
+      }',
       '#attributes' => [
         'type' => 'application/json',
       ],
