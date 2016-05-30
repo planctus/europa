@@ -27,6 +27,7 @@ features[field_group][] = group_activity_right|node|event|meta
 features[field_group][] = group_content_tabgroup|node|event|form
 features[field_group][] = group_editorial_settings|node|event|form
 features[field_group][] = group_event_after|node|event|form
+features[field_group][] = group_event_audience|node|event|event_past
 features[field_group][] = group_event_contact|node|event|event_collection
 features[field_group][] = group_event_contact|node|event|event_past
 features[field_group][] = group_event_contact|node|event|full
