@@ -3,12 +3,13 @@ Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
-  @information
+  @none
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
-      | title                             | status | field_core_description |
-      | <content_name> with announcements | 1      | Sample description     |
+      | title                             | status | field_core_description | dt_latest_visibility
+      | <content_name> with announcements | 1      | Sample description     | 0
+      | <content_name> with announcements | 1      | Sample description     | 1      
     Given "Announcement" content:
       | title                          | status | <reference_fieldname>             |
       | Announcement on <content_name> | 1      | <content_name> with announcements |
@@ -23,6 +24,20 @@ Feature: Announcements block
       | Policy       | field_core_policies   | should not    |
       | Topic        | field_core_topics     | should        |
       | Priority     | field_core_priorities | should        |
+
+  @information
+  Scenario Outline: Visitors should not see the latests announcements block on content types
+    Given I am logged in as a user with the "administrator" role
+    Given "<content_name>" content:
+      | title                             | status | field_core_description | dt_latest_visibility
+      | <content_name> with announcements | 1      | Sample description     | 0
+      | <content_name> with announcements | 1      | Sample description     | 1      
+    Given "Announcement" content:
+      | title                          | status | <reference_fieldname>             |
+      | Announcement on <content_name> | 1      | <content_name> with announcements |
+    When I go to "admin/content"
+    And I follow "<content_name> with announcements"
+    Then i should not see  the link "Announcement on <content_name>"
 
   @shared @brp
   Scenario: Editors can toggle the display of the latest announcements block on Pages
