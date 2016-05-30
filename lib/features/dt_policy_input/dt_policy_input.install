@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_input_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_input');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_input_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_input') . '/dt_policy_input.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Policy input %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting the feature to apply field settings and display configurations.
+ */
+function dt_policy_input_update_7101() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_policy_input');
+  // Copy field contents.
+  _dt_shared_field_value_copy('node', 'policy_input', 'field_policy_input_introduction', 'field_core_introduction');
+  drupal_set_message(t("Copied content from 'field_policy_input_introduction' to 'field_core_introduction' in policy input content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_policy_input_introduction', 'policy')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Deleting body field instance.
+ */
+function dt_policy_input_update_7102() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'body', 'policy_input')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Replacing field_core_link with field_core_legacy_link.
+ */
+function dt_policy_input_update_7103() {
+  features_revert_module('dt_policy_input');
+  $content_type = 'policy_input';
+  // Copy the field content.
+  _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
+  drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_link', $content_type)) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Removing field field_policy_input_introduction.
+ */
+function dt_policy_input_update_7104() {
+  field_delete_field('field_policy_input_introduction');
+}

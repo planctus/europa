@@ -1,0 +1,35 @@
+# Drupal configuration
+# --------------------
+
+# Database settings.
+drupal.db.name =
+drupal.db.user =
+drupal.db.password =
+
+# Project init.
+subsite.name = Commissioners
+subsite.production.key = cwt
+subsite.production.root = http://ec.europa.eu/commission
+subsite.install.modules = cwt_core
+drush.verbose = false
+
+# Host configuration
+# ------------------
+server.docroot = /var/www/cwt/
+
+# The base URL to use in Behat tests.
+behat.base_url = http://cwt.localhost
+behat.test_tags = @cwt
+
+# Composer
+composer.bin = /usr/local/bin/composer.phar
+
+# Acquia Cloud
+# ------------------
+#Drush aliases
+drush.alias.acquia = ecfpfis.prod
+
+# MULTISITE release
+# ------------------
+# Project folder in MULTISITE SVN
+phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

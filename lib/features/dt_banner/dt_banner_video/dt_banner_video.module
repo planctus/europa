@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the dt banner video feature.
+ */
+
+include_once 'dt_banner_video.features.inc';

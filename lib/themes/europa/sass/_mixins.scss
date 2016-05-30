@@ -1,0 +1,154 @@
+// Custom mixins
+
+// Breakpoints
+@mixin breakpoint($point) {
+  @if $point == screen-lg-min {
+    @media (min-width: $screen-lg-min) {
+      @content;
+    }
+  }
+
+  @else if $point == screen-md-min {
+    @media (min-width: $screen-md-min) {
+      @content;
+    }
+  }
+
+  @else if $point == screen-sm-min {
+    @media (min-width: $screen-sm-min) {
+      @content;
+    }
+  }
+
+  @else if $point == screen-msm-min {
+    @media (min-width: $screen-msm-min) {
+      @content;
+    }
+  }
+
+  @else if $point == screen-xs-min {
+    @media (min-width: $screen-xs-min)  {
+      @content;
+    }
+  }
+}
+
+// Select list arrow styling.
+@mixin select-list-arrow($background-color, $arrow-grey:false) {
+  @if ($arrow-grey) {
+    background: url("../images/svg/arrow-down.svg"), linear-gradient(to bottom, $background-color, $background-color);
+    .no-svg & {
+      background: url("../images/png/arrow-down.png"), linear-gradient(to bottom, $background-color, $background-color);
+    }
+  } @else {
+    background: url("../images/svg/arrow-down--white.svg"), linear-gradient(to bottom, $background-color, $background-color);
+    .no-svg & {
+      background: url("../images/png/arrow-down--white.png"), linear-gradient(to bottom, $background-color, $background-color);
+    }
+  }
+
+  background-repeat: no-repeat;
+  background-position: right (($form-control-height - $font-size-medium) / 2) - $form-border-width center, right;
+  // Important to make the styleguide not break.
+  background-size: $font-size-medium + 0.10em (20em / 32.6em) * $font-size-medium, $form-control-height 100%!important;
+  transition: none;
+
+  // Specific size for internet explorer 10+.
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    background-size: $font-size-medium + 0.10em (20em / 32.6em) * $font-size-medium, $form-control-height 100%!important;
+  }
+}
+
+// Language generator.
+@mixin logo-background-languages($file_path, $file_extension) {
+  @each $item in $languages {
+    .language-#{$item} {
+      .logo--logotype {
+        background-image: url("#{$file_path}#{$item}#{$file_extension}");
+      }
+      @media print {
+        .logo--logotype:before {
+          content: url("#{$file_path}#{$item}#{$file_extension}");
+        }
+      }
+    }
+  }
+}
+
+// Show/hide mixin, to be applied on the element to toggle.
+@mixin show_hide() {
+  visibility: hidden;
+  max-height: 40px;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "Show html markup";
+    position: absolute;
+    visibility: visible;
+    right: 0;
+    background: $grey-base;
+    color: #fff;
+    padding: 0.2em 1em;
+    cursor: pointer;
+    font-weight: 600;
+    clear: both;
+  }
+
+  &:hover {
+    visibility: visible;
+    max-height: none;
+
+    &::before {
+      background: transparent;
+      font-size: 0px;
+    }
+  }
+}
+
+// Aspect ratio.
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  padding-bottom: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+  width: 100%;
+  position: relative;
+}
+
+// External link specific adjustments
+@mixin _page_header_external_link_mixin() {
+  padding-right: 1.1em;
+  display: inline-block;
+  &:after {
+    position: absolute;
+    line-height: 2.2;
+  }
+
+  &.btn {
+    padding-right: 2.1em;
+  }
+}
+
+@mixin _listing_external_link_mixin() {
+  &:after {
+    display: none !important;
+  }
+  .listing__title,
+  .highlighted-item h3 {
+    @extend .is-external;
+    padding-right: 1.2em;
+
+    &:after {
+      position: absolute;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Focus outline border
+
+@mixin _focus_outline_border($thicknes:3px, $color:$yellow-light, $offset:0, $text-decoration:underline) {
+  &:focus {
+      outline: $thicknes solid $color;
+      outline-offset: $offset;
+      text-decoration: $text-decoration;
+    }
+}

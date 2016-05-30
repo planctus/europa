@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * DT Policy implementation install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_policy_implementation_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('policy_implementation');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_implementation_uninstall() {
+  $path = drupal_get_path('module', 'dt_policy_implementation') . '/dt_policy_implementation.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Policy input %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Removing field_policy_task_shortcut field.
+ */
+function dt_policy_implementation_update_7101() {
+  if (field_info_field('field_policy_task_shortcut') !== NULL) {
+    field_delete_field('field_policy_task_shortcut');
+    field_purge_field('field_policy_task_shortcut');
+  }
+
+  features_revert_module('dt_policy_implementation');
+}
+
+/**
+ * Reverting the feature to apply field settings and display configurations.
+ */
+function dt_policy_implementation_update_7102() {
+  features_revert_module('dt_policy_implementation');
+}
+
+/**
+ * Deleting body field instance.
+ */
+function dt_policy_implementation_update_7103() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'body', 'policy_implementation')) {
+    field_delete_instance($instance);
+  }
+}

@@ -1,0 +1,35 @@
+# Drupal configuration
+# --------------------
+
+# Database settings.
+drupal.db.name =
+drupal.db.user =
+drupal.db.password =
+
+# Project init.
+subsite.name = Information
+subsite.production.key = beta
+subsite.production.root = http://beta.ec.europa.eu
+subsite.install.modules = dt_core_info
+drush.verbose = false
+
+# Host configuration
+# ------------------
+server.docroot = /var/www/information/
+
+# The base URL to use in Behat tests.
+behat.base_url = http://information.localhost
+behat.test_tags = @information,@shared
+
+# Composer
+composer.bin = /usr/local/bin/composer.phar
+
+# Acquia Cloud
+# ------------------
+#Drush aliases
+drush.alias.acquia = ecfpfis.dev
+
+# MULTISITE release
+# ------------------
+# Project folder in MULTISITE SVN
+phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta

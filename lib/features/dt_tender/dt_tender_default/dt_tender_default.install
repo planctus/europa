@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_tender_default_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  $path = drupal_get_path('module', 'dt_tender_default') . '/dt_tender.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa tender %v feature is installed on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_tender_default_uninstall() {
+  $path = drupal_get_path('module', 'dt_tender_default') . '/dt_tender.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa tender %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * First hook_update for example.
+ */
+/*
+function dt_tender_default_update_7101() {
+
+}
+ */

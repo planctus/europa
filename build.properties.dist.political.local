@@ -1,0 +1,30 @@
+# Drupal configuration
+# --------------------
+
+# Database settings.
+drupal.db.name =
+drupal.db.user =
+drupal.db.password =
+
+# Project init.
+subsite.name = Political
+subsite.production.key = beta-political
+subsite.production.root = http://ec.europa.eu/priorities
+subsite.install.modules = dt_core_pol
+drush.verbose = false
+
+# Host configuration
+# ------------------
+server.docroot = /var/www/political/
+
+# The base URL to use in Behat tests.
+behat.base_url = http://political.localhost
+behat.test_tags = @political,@shared
+
+# Composer
+composer.bin = /usr/local/bin/composer.phar
+
+# Acquia Cloud
+# ------------------
+#Drush aliases
+drush.alias.acquia = ecfpfis.test

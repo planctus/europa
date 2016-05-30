@@ -2,6 +2,12 @@
 
 <project name="My subsite" default="help">
 
+    <!--
+        Create unique filename from configuration so we can be sure to
+        have the correct version.
+    -->
+    <property name="platform.package.tarball.versioned" value="${phing.project.tmp.dir}/deploy-package-${platform.package.reference}.tar.gz" override="true" />
+
     <!-- Delete the previous development build. -->
     <target name="delete-dev">
         <!--
@@ -247,13 +253,13 @@
          -->
         <if>
             <not>
-                <available file="${platform.package.tarball}" type="file" />
+                <available file="${platform.package.tarball.versioned}" type="file" />
             </not>
             <then>
                 <!-- Create the destination directory if it doesn't exist. -->
                 <mkdir dir="${platform.package.destination}" />
                 <echo msg="Starting to download the platform. Depending on your connection this can take between 5-15 minutes. Go get some coffee." />
-                <echo msg="This file will only be downloaded once and will be cached in ${platform.package.tarball}." />
+                <echo msg="This file will only be downloaded once and will be cached in ${platform.package.tarball.versioned}." />
                 <echo msg="You can delete this cached file whenever you want to download a new version of the platform." />
                 <continuousphp-config token="${platform.package.token}" />
                 <continuousphp-package
@@ -264,11 +270,13 @@
                     property="platform.package.property"
                 />
                 <echo msg="Downloaded platform package reference ${platform.package.property}" />
+                <move file="${platform.package.tarball}" tofile="${platform.package.tarball.versioned}" overwrite="true"/>
             </then>
             <else>
                 <echo msg="Skipping platform download, it is already downloaded at ${platform.package.tarball}. Delete this file if you want to download the latest version." />
             </else>
         </if>
+        <property name="platform.package.tarball" value="${platform.package.tarball.versioned}" override="true" />
     </target>
 
     <!-- Unpack the platform. -->
@@ -301,6 +309,12 @@
         name="build-dev"
         description="Build a local development version of the subsite."
         depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
+    />
+
+    <target
+        name="build-test-env"
+        description="Build a test environment for CPHP"
+        depends="install-build-dependencies, make-dev, link-dev-resources"
     />
 
     <target

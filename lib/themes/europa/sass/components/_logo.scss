@@ -1,0 +1,87 @@
+// EC logo
+//
+// Default EC logo.
+//
+// Markup: html/logo.html
+//
+// Styleguide siteheader.logo
+
+.logo {
+  display: block;
+  float: left;
+  width: 140px;
+  height: 72px;
+  background: url('../images/svg/logo.svg') no-repeat;
+}
+
+// EC logo no-svg
+//
+// Default EC logo with no-svg.
+//
+// Markup: html/logo--no-svg.html
+//
+// Styleguide siteheader.logo no-svg
+
+.no-svg {
+  .logo {
+    background-image: url('../images/png/logo.png');
+  }
+}
+
+// EC logotype
+//
+// EC logo with text.
+//
+// Markup: html/logo--logotype.html
+//
+// .language-bg - Bulgarian
+// .language-cs - Czech
+// .language-da - Danish
+// .language-de - German
+// .language-et - Estonian
+// .language-el - Greek
+// .language-en - English
+// .language-es - Spanish
+// .language-fr - French
+// .language-ga - Irish/Gaeilge
+// .language-hr - Croatian
+// .language-it - Italian
+// .language-lv - Latvian
+// .language-lt - Lithuanian
+// .language-hu - Hungarian
+// .language-mt - Maltese
+// .language-nl - Dutch
+// .language-pl - Polish
+// .language-pt - Portuguese
+// .language-ro - Romanian
+// .language-sk - Slovak
+// .language-sl - Slovene
+// .language-fi - Finnish
+// .language-sv - Swedish
+//
+// Styleguide siteheader.logo--logotype
+
+// Sets language-specific background image on .logo--logotype element nested in {{modifier_class}} modifier.
+@include logo-background-languages('../images/svg/logo/logo--', '.svg');
+
+.logo--logotype {
+  @extend .logo;
+  width: 255px;
+}
+
+.no-svg {
+  @include logo-background-languages('../images/png/logo/logo--', '.png');
+
+  .logo--logotype {
+    @extend .logo;
+    width: 255px;
+  }
+}
+
+// If the logo is linking to an external page do not show the external icon.
+.site-header__logo {
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}

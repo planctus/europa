@@ -40,13 +40,13 @@
         <property name="aws.profile" value="" />
         <aws-config region="${aws.region}" profile="${aws.profile}" />
     </target>
-    
+
     <target name="delete-deployment-group">
         <aws-deploy-delete-deployment-group
                 name="${deploy.groupName}"
                 application="${deploy.applicationName}" />
     </target>
-    
+
     <target name="delete-stack" depends="delete-deployment-group">
         <aws-cf-deletestack name="${cf.stackName}" />
     </target>
@@ -112,5 +112,8 @@
     <target name="provision-stack"
             description="Provision a stack on AWS"
             depends="setup-aws, run-stack, setup-deployment-group" />
+
+    <!-- Custom project specific deployment targets. -->
+    <import file="build.deliver.xml" />
 
 </project>

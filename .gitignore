@@ -1,3 +1,6 @@
+#OSX files
+.DS_Store
+
 # Ignore metadata from common editors and IDEs.
 *.sublime-project
 *.sublime-workspace
@@ -8,10 +11,20 @@ nbproject/
 build.properties.local
 phpcs.xml
 tests/behat.yml
+lib/settings.php
+lib/files
 
 # Ignore build artifacts.
 bin/
 build/
-platform/
 tmp/
 vendor/
+dist/
+/logs
+npm-debug.log
+
+# Ignore basic starterkit files.
+lib/features/myproject_core
+lib/modules/example_module
+lib/src/MyGroup
+lib/themes/example_theme

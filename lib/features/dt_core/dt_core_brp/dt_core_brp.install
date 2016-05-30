@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * Digital Transformation Core BRP install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_core_brp_install() {
+  // These is a minimal config, with time we will
+  // add functionality/modules if needed.
+  $dt_classes = array(
+    'dt_date_format',
+    'nexteuropa_legacy_link',
+    'dt_social_network_links',
+    // Roles and permissions.
+    'dt_roles_permissions',
+    'dt_social_media_sharing',
+    'conditional_fields',
+    'dt_header_background',
+    'dt_wysiwyg',
+    'clients',
+    'entityform',
+  );
+  module_enable($dt_classes);
+
+  // Enable europa theme.
+  theme_enable(array('europa'));
+  variable_set('theme_default', 'europa');
+
+  // Enable languages.
+  _dt_core_enable_languages(_dt_core_ec_official_languages());
+
+  // Removing admin pages to use defaul th, (WATCH OUT FOR THAT IN THE FUTURE).
+  variable_set('cce_basic_config_admin_pages', array());
+
+  // Enabling admin theme for node pages.
+  variable_set('node_admin_theme', 1);
+
+  // Update the default social media link url (other social networks).
+  variable_set('dt_core_other_social_networks_link', 'http://europa.eu/contact/social-networks/');
+
+  // Disable and uninstall the dashboard module.
+  if (module_exists('dashboard')) {
+    module_disable(array('dashboard'));
+    drupal_uninstall_modules(array('dashboard'));
+  }
+
+  multisite_drupal_toolbox_remove_context('site_wide');
+  multisite_drupal_toolbox_remove_context('homepage');
+
+  // NEXTEUROPA-8254 - Remove the platform breadcrumb menu.
+  _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
+
+  // Reverting the features.
+  $features = array(
+    'dt_core',
+  );
+  foreach ($features as $feature) {
+    // If module enabled, that revert.
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
+  }
+
+  // Initialize permissions.
+  _dt_roles_permissions_import_import('all', TRUE);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_core_brp_uninstall() {
+  $path = drupal_get_path('module', 'dt_core_brp') . '/dt_core_brp.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('Brp core feature %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}

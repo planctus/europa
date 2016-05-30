@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Contact content type install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_contact_install() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_contact_uninstall() {
+  $path = drupal_get_path('module', 'dt_contact') . '/dt_contact.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Contact feature to take new fields for sure.
+ */
+function dt_contact_update_7101() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+
+  // Reverting feature.
+  features_revert_module('dt_contact');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_contact' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Reverting DT Contact feature to take new fields for sure.
+ */
+function dt_contact_update_7102() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('contact');
+
+  // Reverting feature.
+  features_revert_module('dt_contact');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_contact' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing field_contact_online_contact.
+ */
+function dt_contact_update_7103() {
+  $field_name = 'field_contact_online_contact';
+  if (field_info_field($field_name) !== NULL) {
+    field_delete_field($field_name);
+  }
+}
+
+/**
+ * Reverting dt_contact.
+ */
+function dt_contact_update_7104() {
+  // Reverting feature.
+  features_revert_module('dt_contact');
+}
+
+/**
+ * Changing the label of the contact email.
+ */
+function dt_contact_update_7105() {
+  features_revert_module('dt_contact');
+}
+
+/**
+ * Updating existing labels for link field.
+ */
+function dt_contact_update_7106() {
+  $tables = array(
+    'field_data_field_contact_link_form',
+    'field_revision_field_contact_link_form',
+  );
+  foreach ($tables as $table) {
+    db_update($table)
+      ->fields(array(
+        'field_contact_link_form_title' => 'Ask a question',
+      ))
+      ->isNull('field_contact_link_form_title')
+      ->execute();
+  }
+}
+
+/**
+ * Update the field_data_field_core_contact schema to include the title.
+ */
+function dt_contact_update_7107() {
+  // First we should enable the new module. We enable it here, but we have added
+  // it to the dt_core dependency's.
+  module_enable(array('entityreference_titleoverwrite'));
+  // Then we update the contact entity reference fields. This is needed because
+  // there is already existing data.
+  _entityreference_titleoverwrite_add_table_field('field_core_contact');
+  // Last step is to revert the dt_contact feature so that the configuration is
+  // updated.
+  features_revert_module('dt_contact');
+}

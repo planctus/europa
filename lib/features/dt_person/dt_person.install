@@ -1,0 +1,206 @@
+<?php
+/**
+ * @file
+ * DT person install file.
+ */
+
+/**
+ * Helper function to import person roles.
+ */
+function _dt_person_roles_import() {
+  // Import "Person roles" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('dt_person' => array('taxonomy')));
+  // Import person_roles vocabulary terms.
+  Migration::getInstance('DTPersonRolesMigrator')->processImport();
+}
+
+/**
+ * Helper function to remove body field.
+ */
+function _dt_person_remove_body_field() {
+  // Unlock body field.
+  // @see http://atlantic-canary.net/es/how-to-lockunlock-a-field-in-drupal
+  $field_name = 'body';
+  $field = field_read_field($field_name);
+  $field['locked'] = 0;
+  field_update_field($field);
+
+  // Delete body instance.
+  // @see http://dropbucket.org/node/1534
+  $entity_type = 'node';
+  $bundle_name = 'person';
+  $field_name  = 'body';
+  if ($instance = field_info_instance($entity_type, $field_name, $bundle_name)) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function dt_person_install() {
+  // Apply default configuration to "Person" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+  _dt_person_roles_import();
+  _dt_person_remove_body_field();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_person_uninstall() {
+  $path = drupal_get_path('module', 'dt_person') . '/dt_person.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Person %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Updating the fields definition of the person content type.
+ */
+function dt_person_update_7101() {
+  features_revert(
+    array(
+      'dt_person' => array('field_base', 'field_instance', 'field_group'),
+    )
+  );
+}
+
+/**
+ * Reverting DT Person feature to take new fields for sure.
+ */
+function dt_person_update_7102() {
+  // Apply default configuration to "Person" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('person');
+
+  // Reverting feature.
+  features_revert_module('dt_person');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_person' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Applying multiple changes to person content type.
+ */
+function dt_person_update_7103() {
+  // Removing the body field.
+  _dt_person_remove_body_field();
+
+  // Removing a list of fields.
+  $fields_to_remove = array(
+    'field_core_priorities',
+    'field_person_intro',
+    'field_person_status',
+    'field_person_intro',
+    'field_person_responsibility',
+    'field_person_declaration',
+    'field_person_biography_intro',
+    'field_person_cv',
+    'field_person_document',
+    'field_person_role',
+  );
+
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  $instances = array(
+    'field_core_topics',
+    'field_core_department',
+  );
+  foreach ($instances as $field_instance) {
+    if ($instance = field_info_instance('node', $field_instance, 'person')) {
+      field_delete_instance($instance);
+    }
+  }
+
+  // Removing a list of groups.
+  $fieldgroups_to_remove = array(
+    'group_body',
+    'group_person_responsibility',
+    'group_person_biography',
+    'group_person_cv',
+    'group_person_documents',
+    'group_person_related',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', 'person', 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  // Importing terms in vocabulary person roles.
+  _dt_person_roles_import();
+
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
+
+/**
+ * Delete obsolete field field_person_existing_profile.
+ */
+function dt_person_update_7104() {
+  // Removing a list of fields.
+  $fields_to_remove = array(
+    'field_person_existing_profile',
+  );
+
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+}
+
+/**
+ * Working out automatic title and removing required attribute.
+ */
+function dt_person_update_7105() {
+  module_enable(array('auto_entitylabel'));
+  features_revert_module('dt_person');
+}
+
+/**
+ * Reverting dt_person.
+ */
+function dt_person_update_7106() {
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
+
+/**
+ * Reverting dt_person.
+ */
+function dt_person_update_7107() {
+  // Reverting feature.
+  features_revert_module('dt_person');
+}
+
+/**
+ * NEXTEUROPA-4788: Revert related features.
+ */
+function dt_person_update_7108() {
+  $features_to_revert = array(
+    'dt_person',
+    'dt_announcement',
+    'dt_page',
+    'dt_policy',
+    'dt_policy_area',
+    'dt_pri_policy_area',
+    'dt_pri_policy_area_default',
+    'dt_priority',
+    'dt_priority_default',
+    'dt_publication',
+    'dt_topic',
+  );
+  // Revert the feature.
+  foreach ($features_to_revert as $feature) {
+    features_revert_module($feature);
+  }
+}

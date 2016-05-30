@@ -1,0 +1,6 @@
+name = "DT exposed filter data"
+description = "Provides simple way to print exposed filter data"
+dependencies[] = views
+dependencies[] = dt_date_format
+package = Views
+core = 7.x

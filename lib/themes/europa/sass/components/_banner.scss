@@ -1,0 +1,98 @@
+/*
+Banner
+
+The banner itself is not a standalone component, the banner subcomponents should
+always be used.
+
+Styleguide banner
+*/
+
+/*
+Quote Banner
+
+Markup: html/banner-quote.html
+
+Styleguide banner.quote
+*/
+
+/*
+Video Banner
+
+Markup: html/banner-video.html
+
+Styleguide banner.video
+*/
+
+$quote_border_offset: 0.556em;
+
+.banner--quote {
+  border-left: $quote_border_offset solid $yellow-light;
+  padding-left: $quote_border_offset;
+  @include make-md-column(8);
+
+  blockquote {
+    padding-left: 0;
+    border-left: none;
+    margin-bottom: 0;
+    max-width: none;
+  }
+}
+
+.banner__author {
+  font-size: $font-size-xsmall;
+  font-weight: $font-weight-bold;
+  padding-bottom: 0.6em;
+
+  &:before {
+    content: ' - ';
+  }
+}
+
+.banner--video {
+  @extend .row;
+}
+
+.banner__video {
+  & .file {
+    padding: 0;
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+  & .content {
+    @include aspect-ratio(16, 9);
+    & iframe {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.banner__caption {
+  background: $grey-lighter;
+  font-size: $font-size-xsmall;
+  padding: 0.500em 1em;
+  width: 100%;
+  max-width: 100%;
+}
+
+.banner__paragraph {
+  @extend .col-md-6;
+  margin-top: 1em;
+  font-size: $font-size-little;
+}
+
+.banner__left {
+  @extend .col-md-6;
+}
+
+@include breakpoint(screen-md-min) {
+  .banner__paragraph {
+    margin-top: 0;
+  }
+}

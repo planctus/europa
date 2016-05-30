@@ -1,0 +1,251 @@
+<?php
+/**
+ * @file
+ * DT Announcement content type install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_announcement_install() {
+  // Apply default configuration to "Class" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+  // Inintialize readmore patterns.
+  variable_set('dt_announcement_read_more__topic', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__policy_area', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [abbreviation]');
+  variable_set('dt_announcement_read_more__priority', 'All news on this priority');
+  variable_set('dt_announcement_read_more__policy', 'All news on this policy');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_announcement_uninstall() {
+  variable_del('dt_announcement_read_more__topic');
+  variable_del('dt_announcement_read_more__department');
+  variable_del('dt_announcement_read_more__policy_area');
+  variable_del('dt_announcement_read_more__department');
+  variable_del('dt_announcement_read_more__priority');
+  variable_del('dt_announcement_read_more__policy');
+  $path = drupal_get_path('module', 'dt_announcement') . '/dt_announcement.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Reverting DT Announcement feature to take new fields for sure.
+ */
+function dt_announcement_update_7101() {
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Subject removed since it is substituted by Topics.
+ */
+function dt_announcement_update_7102() {
+  // Remove the field.
+  $fields_to_remove = array(
+    'field_core_subject',
+    'field_announcemnt_img_prominence',
+    'field_core_location',
+  );
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_instance', 'variable'),
+  ));
+}
+
+/**
+ * Removing group_announcement_metadata and group_scheduler field groups.
+ */
+function dt_announcement_update_7103() {
+  // Remove the fieldgroups.
+  $type = 'announcement';
+  $fieldgroups_to_remove = array(
+    'group_announcement_metadata',
+    'group_scheduler',
+  );
+
+  foreach ($fieldgroups_to_remove as $group_name) {
+    $group = field_group_load_field_group($group_name, 'node', $type, 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  features_revert_module('dt_announcement');
+  // The fields need component-based way.
+  features_revert(array(
+    'dt_announcement' => array('field_group', 'variable'),
+  ));
+}
+
+/**
+ * NEXTEUROPA-5257: Adding extra announcement types.
+ */
+function dt_announcement_update_7104() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5329: Announcements block sticky descending feature.
+ */
+function dt_announcement_update_7105() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Updated views with more button.
+ */
+function dt_announcement_update_7106() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5256: Making policy reference multivalue.
+ */
+function dt_announcement_update_7107() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_announcement');
+  // Copy field contents.
+  _dt_shared_field_value_copy('node', 'announcement', 'field_core_policy', 'field_core_policies');
+  drupal_set_message(t("Copied content from 'field_core_policy' to 'field_core_policies' in the announcement content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_policy', 'announcement')) {
+    field_delete_instance($instance);
+  }
+}
+
+/**
+ * NEXTEUROPA-6003: update the page then the announcement feature.
+ */
+function dt_announcement_update_7108() {
+  features_revert_module('dt_page');
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-5258: Re revert.
+ */
+function dt_announcement_update_7109() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-6727: Revert announcement feature.
+ */
+function dt_announcement_update_7110() {
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-6854: Revert announcement after enabling dt_pri_policy_area.
+ */
+function dt_announcement_update_7111() {
+  // Enable dt_pri_policy_area_default.
+  module_enable(array('dt_pri_policy_area_default'));
+  // Revert the feature.
+  features_revert_module('dt_announcement');
+}
+
+/**
+ * NEXTEUROPA-7159: Setting basic readmore patterns.
+ */
+function dt_announcement_update_7112() {
+  variable_set('dt_announcement_read_more__topic', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__policy_area', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'All news on [abbreviation]');
+  variable_set('dt_announcement_read_more__priority', 'All news on this priority');
+  variable_set('dt_announcement_read_more__policy', 'All news on this policy');
+}
+
+/**
+ * NEXTEUROPA-7497: Announcement publishing date.
+ */
+function dt_announcement_update_7113($sandbox) {
+  if (!isset($sandbox['max'])) {
+    // Reverting Announcement.
+    features_revert_module('dt_announcement');
+
+    // Query all nid of announcements.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'announcement');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = 100;
+  $nids = db_select('node', 'n')
+    ->condition('n.type', 'announcement')
+    ->fields('n', array('nid'))
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit)
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = entity_load('node', $nids);
+    foreach ($nodes as $nid => $node) {
+      // Update of field_core_date_published.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $created = $wrapper->created->value();
+      $wrapper->field_core_date_published->set($created);
+      $wrapper->save();
+    }
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
+
+/**
+ * NEXTEUROPA-8067: Set default publish date to node creation date if empty.
+ */
+function dt_announcement_update_7114() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'announcement', '=');
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $nids = array_keys($results['node']);
+    $nodes = entity_load('node', $nids);
+
+    foreach ($nodes as $node) {
+      if (!isset($node->field_core_date_published[LANGUAGE_NONE]['0'])) {
+        $node->field_core_date_published[LANGUAGE_NONE]['0'] = array(
+          'value' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
+          'timezone' => "Europe/Luxembourg",
+          'offset' => 3600,
+          'offset2' => 3600,
+          'value2' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
+          'timezone_db' => "UTC",
+          'date_type' => 'datetime',
+        );
+        field_attach_update('node', $node);
+        entity_get_controller('node')->resetCache(array($node->nid));
+      }
+    }
+  }
+
+}
