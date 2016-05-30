@@ -27,3 +27,12 @@ function dt_event_uninstall() {
 function dt_event_update_7101() {
   module_enable(['commissioner_date', 'nexteuropa_ds_fields']);
 }
+
+/**
+ * Enable facets_in_filters module.
+ */
+function dt_event_update_7102() {
+  module_enable(['search_api_db', 'facets_in_filters']);
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
+}
