@@ -39,6 +39,13 @@ Feature: Announcements block
     And I follow "<content_name> with announcements"
     Then i should not see  the link "Announcement on <content_name>"
 
+    Examples:
+      | content_name | reference_fieldname   | label_visible |
+      | Department   | field_core_department | should        |
+      | Policy       | field_core_policies   | should not    |
+      | Topic        | field_core_topics     | should        |
+      | Priority     | field_core_priorities | should        |
+  
   @shared @brp
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
