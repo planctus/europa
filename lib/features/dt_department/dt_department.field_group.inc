@@ -78,7 +78,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -104,6 +104,36 @@ function dt_department_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_department_latest_news|node|department|full';
+  $field_group->group_name = 'group_department_latest_news';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Latest',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_department_news_link',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Latest',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => 'group-department-latest-news field-group-section_group',
+      ),
+    ),
+  );
+  $field_groups['group_department_latest_news|node|department|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_department_leadership|node|department|full';
   $field_group->group_name = 'group_department_leadership';
   $field_group->entity_type = 'node';
@@ -112,11 +142,11 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Leadership and organisation',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
-      0 => 'field_department_organigram',
-      1 => 'field_department_staff_search',
-      2 => 'field_core_persons',
+      0 => 'field_core_persons',
+      1 => 'field_department_organigram',
+      2 => 'field_department_staff_search',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -198,7 +228,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -232,15 +262,15 @@ function dt_department_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Responsibilities',
-    'weight' => '6',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_core_topics',
-      1 => 'field_department_intro_sentence',
-      2 => 'field_department_mission',
+      0 => 'field_core_priorities',
+      1 => 'field_core_topics',
+      2 => 'field_department_intro_sentence',
       3 => 'field_department_plans_reports',
       4 => 'field_department_tasks_desc',
       5 => 'field_department_work_areas_sent',
-      6 => 'field_core_priorities',
+      6 => 'field_department_mission',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -395,6 +425,7 @@ function dt_department_field_group_info() {
   t('Contact');
   t('Content');
   t('Editorial settings');
+  t('Latest');
   t('Leadership and organisation');
   t('Meta');
   t('Profile information');

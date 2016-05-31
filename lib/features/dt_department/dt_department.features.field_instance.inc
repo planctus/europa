@@ -197,7 +197,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -443,7 +443,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',
@@ -683,7 +683,7 @@ function dt_department_field_default_field_instances() {
           'view_mode' => 'meta',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 8,
+        'weight' => 13,
       ),
       'meta' => array(
         'label' => 'above',
@@ -799,7 +799,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -941,7 +941,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1126,6 +1126,81 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-department-field_department_news_link'.
+  $field_instances['node-department-field_department_news_link'] = array(
+    'bundle' => 'department',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'force_language_default' => 0,
+          'link_title' => '',
+        ),
+        'type' => 'link_button_default',
+        'weight' => 7,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_department_news_link',
+    'label' => 'News from this department',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => '_blank',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'value',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => 'News from this department',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'node-department-field_department_organigram'.
   $field_instances['node-department-field_department_organigram'] = array(
     'bundle' => 'department',
@@ -1156,7 +1231,7 @@ function dt_department_field_default_field_instances() {
           'view_mode' => 'file',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 9,
+        'weight' => 14,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1292,7 +1367,7 @@ function dt_department_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 11,
+        'weight' => 15,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1362,7 +1437,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1580,7 +1655,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 36,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1642,7 +1717,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 37,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1714,7 +1789,7 @@ function dt_department_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 38,
       ),
       'list_view' => array(
         'label' => 'hidden',
@@ -1893,6 +1968,7 @@ function dt_department_field_default_field_instances() {
   t('Main task');
   t('Mission statement');
   t('Name');
+  t('News from this department');
   t('Organisation chart');
   t('Persons');
   t('Plans and reports');
