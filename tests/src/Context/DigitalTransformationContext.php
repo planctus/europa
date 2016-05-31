@@ -290,8 +290,8 @@ class DigitalTransformationContext extends RawDrupalContext {
 
     if (empty($result['node'])) {
       $params = array(
-        '@title' => $title,
-        '@type' => $type,
+        '@title' => $target_title,
+        '@type' => $input_id,
       );
       throw new ExpectationException(format_string("Node @title of @type not found.", $params));
     }

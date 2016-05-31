@@ -28,13 +28,13 @@ Feature: Aliases based on parent node's URL alias
     # And I cannot set circular reference "field_core_parents" for "First Circular Page title" to "Second Circular Page title"
     And I go to "first-circular-page-title"
     And I follow "New draft" in the "tabs"
-    Then I fill in the reference "edit-field-core-parent-und-0-target-id" with "Second Circular Page title"
+    Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Second Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
     # And I cannot set circular reference "field_core_parents" for "Second Circular Page title" to "Third Circular Page title"
     And I go to "first-circular-page-title/second-circular-page-title"
     And I follow "New draft" in the "tabs"
-    Then I fill in the reference "edit-field-core-parent-und-0-target-id" with "Third Circular Page title"
+    Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Third Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
 
