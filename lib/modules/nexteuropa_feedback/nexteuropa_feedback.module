@@ -119,7 +119,7 @@ function nexteuropa_feedback_form_theme($form) {
     }
   }
 
-  $accordion['problem']['#id'] = t('problem');
+  $accordion['problem']['#id'] = 'problem';
   $accordion['problem']['#title'] = t('Problem');
   $accordion['problem']['#value'] = drupal_render($form['accordion']['problem_group']);
   $accordion['problem']['#theme'] = 'bootstrap_panel';
