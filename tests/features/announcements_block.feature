@@ -3,7 +3,7 @@ Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
-  @none
+  @wip
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
