@@ -21,7 +21,8 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Calendar exposed filter.
-  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list')) && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list'))
+    && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
     $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
     $form['date_filter_min']['value']['#attributes']['placeholder'] = t('Choose a date');
@@ -39,7 +40,8 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
  */
 function cwt_activities_exposed_submit(&$form, &$form_state) {
   // Modify the default views reset target.
-  if (!empty($form_state['values']['op']) && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
+  if (!empty($form_state['values']['op'])
+    && $form_state['values']['op'] == $form_state['view']->exposed_input['op']) {
     drupal_goto($form['#action']);
   }
 
@@ -67,6 +69,10 @@ function cwt_activities_views_query_alter(&$view, &$query) {
       // Return all items for the next 2 Sundays from the previous Friday.
       $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
+    }
+    // Agenda views override date sorting, granularity should be: 'day'.
+    if (($key = array_search('field_data_field_start_end_date_field_start_end_date_value', array_column($query->orderby, 'field'))) !== FALSE) {
+      $query->orderby[$key]['field'] = "DATE_FORMAT(field_data_field_start_end_date.field_start_end_date_value, '%Y%m%d')";
     }
   }
   elseif ($view->name == 'activities' && $view->current_display == 'block') {
@@ -97,7 +103,9 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path') && isset($original_path_cached['nid'])) {
+  if ($view->name == 'agenda'
+    && $original_path_cached = &drupal_static('cwt_core_orignal_path')
+      && isset($original_path_cached['nid'])) {
     // Load node the Calendar belongs to in the first place.
     // Use its editorial section in first contextual filter.
     $node = node_load($original_path_cached['nid']);
@@ -120,7 +128,6 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
-
   if ($view->current_display == 'moderate_all_page' && $view->name == 'workbench_moderation') {
     // First get the keys.
     $keys = array_keys($view->field);
@@ -137,6 +144,7 @@ function cwt_activities_views_pre_render(&$view) {
     $view->field = [$last_key => $last_item] + $view->field + [$first_key => $first_item];
     return;
   }
+
   if ($view->name == 'agenda') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {
@@ -146,17 +154,22 @@ function cwt_activities_views_pre_render(&$view) {
         $print_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
-        $pdf_link_prefix = '<span class="rss-link__icon icon-social icon-social--print"></span><span class="rss-link__text">';
-        $pdf_link_suffix = '</span>';
+        $pdf_link_prefix = '<div class="rss-link__wrapper">'
+          . '<div class="rss-link">'
+          . '<span class="rss-link__icon icon-social icon-social--print"></span>'
+          . '<span class="rss-link__text">';
+        $pdf_link_suffix = '</span></div></div>';
         $pdf_link_options = array(
           'query' => $full_query_parameters,
           'html' => TRUE,
           'attributes' => array('rel' => 'nofollow'),
         );
 
-        $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items') . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
+        $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items')
+          . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
-        $view->header['area_text_custom']->options['content'] = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
+        $view->header['area_text_custom']->options['content']
+          = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
     }
 
@@ -177,7 +190,8 @@ function cwt_activities_views_pre_render(&$view) {
  */
 function cwt_activities_print_pdf_filename_alter(&$pdf_filename, &$path) {
   if (strpos($path, 'print-calendar') !== FALSE) {
-    $filename = variable_get('site_name', 'European Commission') . ' ' . t('Calendar') . ' ' . format_date(time(), 'ec_date_j_f_y');
+    $filename = variable_get('site_name', 'European Commission') . ' '
+      . t('Calendar') . ' ' . format_date(time(), 'ec_date_j_f_y');
     $pdf_filename = transliteration_clean_filename($filename);
   }
 }
@@ -240,7 +254,21 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
  * Implements hook_preprocess_HOOK().
  */
 function cwt_activities_preprocess_page(&$variables) {
-  $variables['field_core_introduction'] = [
-    '#markup' => t('<p>Activities of Members of the European Commission</p>') . t('<p>Subject to changes during the week</p>'),
-  ];
+  $view = views_get_page_view();
+  if (isset($view) && $view->name == 'agenda') {
+    $description[] = t('Activities of Members of the European Commission');
+    $description[] = t('Subject to changes during the week');
+
+    $variables['field_core_introduction'] = [
+      '#markup' => '<p>' . $description[0] . '</p><p>' . $description[1] . '</p>',
+    ];
+
+    if (isset($variables['format']) && $variables['format'] == 'pdf') {
+      $result = _dt_exposed_filter_data_get_date_facet_tags($view);
+      $variables['node']->title .= ' ' . implode($result['filter']);
+
+      $variables['node']->content = $description[0] . '<br>' . $description[1]
+        . $variables['node']->content;
+    }
+  }
 }

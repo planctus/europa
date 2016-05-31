@@ -37,6 +37,8 @@ function nexteuropa_feedback_form($form_state) {
   $form['#attributes']['class'][] = 'feedback-form';
 
   $form['#token'] = NULL;
+  $problem = t('Problem');
+  $form['accordion']['problem_group']['#prefix'] = '<label class="sr-only" for="edit-problem" aria-label="' . $problem . '">' . $problem . '</label>';
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
     '#title' => t("What were you doing?"),
@@ -96,6 +98,7 @@ function nexteuropa_feedback_form($form_state) {
       'callback' => '_nexteuropa_feedback_send_webtools',
     ),
   );
+
   return $form;
 }
 
@@ -116,12 +119,26 @@ function nexteuropa_feedback_form_theme($form) {
     }
   }
 
-  $accordion['problem']['header'] = t('Problem');
-  $accordion['problem']['content'] = drupal_render($form['accordion']['problem_group']);
-  $accordion['suggestion']['header'] = t('Suggestion');
-  $accordion['suggestion']['content'] = drupal_render($form['accordion']['suggestion_group']);
-  $accordion['compliment']['header'] = t('Compliment');
-  $accordion['compliment']['content'] = drupal_render($form['accordion']['compliment_group']);
+  $accordion['problem']['#id'] = 'problem';
+  $accordion['problem']['#title'] = t('Problem');
+  $accordion['problem']['#value'] = drupal_render($form['accordion']['problem_group']);
+  $accordion['problem']['#theme'] = 'bootstrap_panel';
+  $accordion['problem']['#collapsible'] = TRUE;
+  $accordion['problem']['#collapsed'] = TRUE;
+
+  $accordion['suggestion']['#id'] = 'suggestion';
+  $accordion['suggestion']['#title'] = t('Suggestion');
+  $accordion['suggestion']['#value'] = drupal_render($form['accordion']['suggestion_group']);
+  $accordion['suggestion']['#theme'] = 'bootstrap_panel';
+  $accordion['suggestion']['#collapsible'] = TRUE;
+  $accordion['suggestion']['#collapsed'] = TRUE;
+
+  $accordion['compliment']['#id'] = 'compliment';
+  $accordion['compliment']['#title'] = t('Compliment');
+  $accordion['compliment']['#value'] = drupal_render($form['accordion']['compliment_group']);
+  $accordion['compliment']['#theme'] = 'bootstrap_panel';
+  $accordion['compliment']['#collapsible'] = TRUE;
+  $accordion['compliment']['#collapsed'] = TRUE;
 
   $static['feedback-trigger'] = array(
     '#markup' => '<a href="#feedback-form__content" class="feedback-form__trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
@@ -131,18 +148,20 @@ function nexteuropa_feedback_form_theme($form) {
     '#prefix' => '<div id="feedback-form__content" class="collapse"><div class="feedback-form__content">',
   );
   $actions = drupal_render($form['actions']);
-  $static['feedback-accordion'] = array(
-    '#id' => 'feedback-form__accordion',
-    '#elements' => $accordion,
-    '#theme' => 'bootstrap_accordion',
-    '#suffix' => $actions . '</div></div>',
+
+  $static['feedback-accordion'] = $accordion + array(
+    '#prefix' => '<div class="panel-group" id="feedback-form__accordion">',
+    '#suffix' => '</div>' . $actions . '</div></div>',
   );
+
   $output = drupal_render($static);
   $output .= drupal_render($form['meta']);
   $output .= drupal_render($form['form_build_id']);
   $output .= drupal_render($form['form_id']);
   $output .= drupal_render($form['form_token']);
+
   $variables['element']['#children'] = $output;
+
   return theme_form($variables);
 }
 
@@ -151,6 +170,7 @@ function nexteuropa_feedback_form_theme($form) {
  */
 function nexteuropa_feedback_form_validate($form, &$form_state) {
   $error = FALSE;
+
   switch ($form_state['values']['feedback_type']) {
     case 'problem':
       if ($form_state['values']['what_were_you_doing'] == '') {
@@ -189,14 +209,18 @@ function nexteuropa_feedback_form_validate($form, &$form_state) {
  */
 function _nexteuropa_feedback_send_webtools($form, &$form_state) {
   $commands = array();
+
   if (form_get_errors()) {
     $form['rebuild'] = TRUE;
     $commands[] = ajax_command_replace('#nexteuropa-feedback-form', nexteuropa_feedback_form_theme($form));
     $commands[] = ajax_command_invoke('#' . $form['#id'] . ' .form-control.error:first', 'focus');
+
     return array('#type' => 'ajax', '#commands' => $commands);
   }
+
   $url = 'http://webtools.ec.europa.eu/form-tools/process.php';
   $values = array();
+
   $data = array(
     'form_tools_form_id' => variable_get('nexteuropa_feedback_form_id', ""),
     'submit' => 'Send',
@@ -204,11 +228,13 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
     'url' => $form_state['values']['url'],
     'custom_ip_address' => ip_address(),
   );
+
   $fields_to_send = array(
     'problem' => array('what_were_you_doing', 'what_didnt_work'),
     'suggestion' => array('suggestion'),
     'compliment' => array('compliment'),
   );
+
   if ($form_state['values']['feedback_type'] !== 'feedback' && in_array($form_state['values']['feedback_type'], array_keys($fields_to_send))) {
     foreach ($fields_to_send[$form_state['values']['feedback_type']] as $fieldname) {
       if (isset($form_state['values'][$fieldname])) {
@@ -216,6 +242,7 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
       }
     }
   }
+
   $data['feedback_type'] = $form_state['values']['feedback_type'];
   $data = array_merge($values, $data);
   $options = array(
@@ -223,10 +250,12 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
     'data' => http_build_query($data),
     'timeout' => 5,
   );
+
   if (!empty($values)) {
     $result = drupal_http_request($url, $options);
     if ($result && $result->code == '200' && $result->status_message == 'OK') {
       drupal_add_js('misc/ajax.js');
+
       $new_form_link = array(
         '#type' => 'link',
         '#title' => t("Give more feedback"),
@@ -257,6 +286,7 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
       $analytics_data,
     ));
   }
+
   return array('#type' => 'ajax', '#commands' => $commands);
 }
 
@@ -285,6 +315,7 @@ function _nexteuropa_feedback_newform($type = 'ajax') {
 function nexteuropa_feedback_block_info() {
   $blocks = array();
   $blocks['nexteuropa_feedback']['info'] = t('Feedback');
+
   return $blocks;
 }
 
@@ -293,12 +324,14 @@ function nexteuropa_feedback_block_info() {
  */
 function nexteuropa_feedback_block_view($delta = '') {
   $block = array();
+
   switch ($delta) {
     case 'nexteuropa_feedback':
       drupal_add_js(drupal_get_path('module', 'nexteuropa_feedback') . '/nexteuropa_feedback.js', 'file');
       $block['content'] = nexteuropa_feedback_form_theme(drupal_get_form('nexteuropa_feedback_form'));
       break;
   }
+
   return $block;
 }
 

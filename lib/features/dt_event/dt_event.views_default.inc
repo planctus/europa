@@ -11,6 +11,226 @@ function dt_event_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'events';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_event_index';
+  $view->human_name = 'Events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['css_class'] = 'has_date_popups';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = 'listing--column-left';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'meta';
+  /* Field: Indexed Node: CER » Context */
+  $handler->display->display_options['fields']['cer_lineage']['id'] = 'cer_lineage';
+  $handler->display->display_options['fields']['cer_lineage']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['cer_lineage']['field'] = 'cer_lineage';
+  /* Field: Indexed Node: Description */
+  $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
+  $handler->display->display_options['fields']['field_core_description']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';
+  /* Field: Indexed Node: Status description */
+  $handler->display->display_options['fields']['field_event_status_description']['id'] = 'field_event_status_description';
+  $handler->display->display_options['fields']['field_event_status_description']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['fields']['field_event_status_description']['field'] = 'field_event_status_description';
+  /* Filter criterion: Indexed Node: fulltext search */
+  $handler->display->display_options['filters']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_aggregation_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator_id'] = 'search_api_aggregation_1_op';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['label'] = 'Contains';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator'] = 'search_api_aggregation_1_op';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['identifier'] = 'search_api_aggregation_1';
+  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter']['id'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter']['expose']['operator_id'] = 'facet_filter_op';
+  $handler->display->display_options['filters']['facet_filter']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['facet_filter']['expose']['operator'] = 'facet_filter_op';
+  $handler->display->display_options['filters']['facet_filter']['expose']['identifier'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter']['facet']['facet'] = 'field_core_topics';
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_3']['id'] = 'facet_filter_3';
+  $handler->display->display_options['filters']['facet_filter_3']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_3']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_3']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_3']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_3']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['facet_filter_3']['expose']['identifier'] = 'facet_event_type';
+  $handler->display->display_options['filters']['facet_filter_3']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['facet_filter_3']['facet']['facet'] = 'field_event_type';
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_5']['id'] = 'facet_filter_5';
+  $handler->display->display_options['filters']['facet_filter_5']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_5']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_5']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['operator'] = 'facet_filter_5_op';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['identifier'] = 'facet_filter_5';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['facet_filter_5']['facet']['facet'] = 'field_core_location:country';
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_4']['id'] = 'facet_filter_4';
+  $handler->display->display_options['filters']['facet_filter_4']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_4']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_4']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_4']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_4']['expose']['operator'] = 'facet_filter_4_op';
+  $handler->display->display_options['filters']['facet_filter_4']['expose']['identifier'] = 'facet_filter_4';
+  $handler->display->display_options['filters']['facet_filter_4']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['facet_filter_4']['facet']['facet'] = 'field_event_is_online';
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_1']['id'] = 'facet_filter_1';
+  $handler->display->display_options['filters']['facet_filter_1']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_1']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_1']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_1']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_1']['expose']['operator'] = 'facet_filter_1_op';
+  $handler->display->display_options['filters']['facet_filter_1']['expose']['identifier'] = 'facet_filter_1';
+  $handler->display->display_options['filters']['facet_filter_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['facet_filter_1']['facet']['facet'] = 'field_event_is_live_streaming';
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_2']['id'] = 'facet_filter_2';
+  $handler->display->display_options['filters']['facet_filter_2']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_2']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_2']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['operator_id'] = 'facet_filter_2_op';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['label'] = 'Departments';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['operator'] = 'facet_filter_2_op';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['identifier'] = 'facet_filter_2';
+  $handler->display->display_options['filters']['facet_filter_2']['facet']['facet'] = 'field_core_departments';
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator_id'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['label'] = 'After';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['operator'] = 'field_event_date_value_op';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['identifier'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_date_value']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value']['date_popup_format'] = 'Y-m-d';
+  /* Filter criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['filters']['field_event_date_value_1']['id'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_date_value_1']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_event_date_value_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator_id'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['label'] = 'Before';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['operator'] = 'field_event_date_value_1_op';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['identifier'] = 'field_event_date_value_1';
+  $handler->display->display_options['filters']['field_event_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
+  $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Events';
+  $handler->display->display_options['path'] = 'events';
+  $export['events'] = $view;
+
+  $view = new view();
   $view->name = 'filter_list_event';
   $view->description = '';
   $view->tag = 'default';

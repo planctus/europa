@@ -67,6 +67,18 @@ projects[uuid_features][version] = "1.0-alpha4"
 projects[weight][subdir] = "contrib"
 projects[weight][version] = "2.3"
 
+projects[search_api][subdir] = "contrib"
+projects[search_api][version] = "1.18"
+
+projects[search_api_db][subdir] = "contrib"
+projects[search_api_db][version] = "1.5"
+
+projects[facetapi_bonus][subdir] = "contrib"
+projects[facetapi_bonus][version] = "1.2"
+
+projects[facetapi_select][subdir] = "contrib"
+projects[facetapi_select][version] = "1.1"
+
 projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0
@@ -83,9 +95,6 @@ projects[options_element][version] = "1.7"
 libraries[editarea][download][type] = "get"
 libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
 ; End custom_formatters specific.
-
-projects[panels][subdir] = "contrib"
-projects[panels][version] = "3.5"
 
 ; =========
 ; Libraries

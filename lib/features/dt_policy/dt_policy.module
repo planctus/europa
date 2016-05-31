@@ -43,7 +43,7 @@ function dt_policy_block_view($delta = '') {
       }
       $actions = array_merge($implementations, $inputs);
       // Order by date.
-      usort($actions, function($a, $b) {
+      usort($actions, function ($a, $b) {
         return $a->created <= $b->created;
       });
 
