@@ -36,20 +36,22 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
 
   // Make a variable out of each filter.
   if (isset($view->exposed_input)) {
-    if (isset($view->exposed_input['date_filter_min']) || isset($view->exposed_input['date_filter_max'])) {
+    $exposed_inputs = $view->exposed_input;
+
+    if (isset($exposed_inputs['date_filter_min']) || isset($exposed_inputs['date_filter_max'])) {
       $pretty = _dt_exposed_filter_data_get_date_facet_tags($view);
       if (isset($pretty['filter'])) {
-        $vars['date_filter_min'] = $view->exposed_input['date_filter_min'];
-        $vars['date_filter_max'] = $view->exposed_input['date_filter_max'];
+        $vars['date_filter_min'] = $exposed_inputs['date_filter_min'];
+        $vars['date_filter_max'] = $exposed_inputs['date_filter_max'];
         $pretty_filter_key = $pretty['label'];
         $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
       }
       // Remove the filters because they already have been prettified.
-      unset($view->exposed_input['date_filter_min']);
-      unset($view->exposed_input['date_filter_max']);
+      unset($exposed_inputs['date_filter_min']);
+      unset($exposed_inputs['date_filter_max']);
     }
 
-    foreach ($view->exposed_input as $filter => $value) {
+    foreach ($exposed_inputs as $filter => $value) {
       $pretty = _dt_exposed_filter_data_get_pretty($filter, $view);
       if (isset($pretty['filter'])) {
         $vars[$filter] = $value;
