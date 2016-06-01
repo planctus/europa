@@ -8,6 +8,7 @@ default:
         - Drupal\nexteuropa\Context\DrupalContext
         - Drupal\nexteuropa\Context\MinkContext
         - Drupal\nexteuropa\Context\EditorialWorkflowContext
+        - Drupal\nexteuropa\Context\TranslationContext
       filters:
         tags: "~@wip&&${behat.test_tags}"
   extensions:
