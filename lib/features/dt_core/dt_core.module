@@ -12,6 +12,7 @@ $GLOBALS['dt_core_nodes_to_update_alias'] = [];
 // Fields that can be used in URL patterns to define hierarchy.
 $GLOBALS['dt_core_parent_fields'] = [
   'field_core_parent',
+  'field_core_parents',
   'field_core_policy_area',
   'field_core_policy_areas',
 ];

@@ -112,6 +112,55 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_core_children'.
+  $field_bases['field_core_children'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_children',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'titleoverwrite_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'basic_page' => 'basic_page',
+          'class' => 'class',
+          'policy' => 'policy',
+          'policy_area' => 'policy_area',
+          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
+          'publication' => 'publication',
+          'topic' => 'topic',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_core_date_published'.
   $field_bases['field_core_date_published'] = array(
     'active' => 1,
@@ -579,7 +628,7 @@ function dt_core_field_default_field_bases() {
         0 => 'target_id',
       ),
     ),
-    'locked' => 1,
+    'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -597,6 +646,55 @@ function dt_core_field_default_field_bases() {
           'basic_page' => 'basic_page',
           'class' => 'class',
           'department' => 'department',
+          'policy' => 'policy',
+          'policy_area' => 'policy_area',
+          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
+          'publication' => 'publication',
+          'topic' => 'topic',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_core_parents'.
+  $field_bases['field_core_parents'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_parents',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'titleoverwrite_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'basic_page' => 'basic_page',
+          'class' => 'class',
           'policy' => 'policy',
           'policy_area' => 'policy_area',
           'priority' => 'priority',
