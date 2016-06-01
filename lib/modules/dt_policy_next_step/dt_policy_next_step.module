@@ -10,9 +10,13 @@
 function dt_policy_next_step_field_info() {
   return array(
     'dt_policy_next_step_field' => array(
-      'label' => 'Next step',
-      'description' => 'Next step field for NextEuropa Strategy Policy.',
-      'settings' => array('max_length' => 255, 'rows' => 5),
+      'label' => t('Next step'),
+      'description' => t('Next step field for NextEuropa Strategy Policy.'),
+      'settings' => array(
+        'max_length' => 255,
+        'rows' => 5,
+        'timezone' => 1,
+      ),
       'default_widget' => 'dt_policy_next_step_widget',
       'default_formatter' => 'dt_policy_next_step_formatter_default',
     ),
@@ -25,7 +29,7 @@ function dt_policy_next_step_field_info() {
 function dt_policy_next_step_field_widget_info() {
   return array(
     'dt_policy_next_step_widget' => array(
-      'label' => 'Next step',
+      'label' => t('Next step'),
       'field types' => array('dt_policy_next_step_field'),
     ),
   );
@@ -87,7 +91,7 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
     '#type' => 'checkbox',
     '#title' => t('Use timezone functionality'),
     '#description' => t('When enabled, the visualization of the date item will contain the time zone information.'),
-    '#default_value' => 1,
+    '#default_value' => isset($settings['timezone']) ? $settings['timezone'] : 1,
     '#return_value' => 1,
     '#states' => array(
       'visible' => array(

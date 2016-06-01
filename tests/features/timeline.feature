@@ -14,3 +14,12 @@ Feature: Timeline schedule field formatter
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
     And I check the box "instance[widget][settings][timezone]"
     Then I should see "Use timezone functionality"
+
+  Scenario: Timeline schedule widget time zone functionality saves configuration settings
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
+    And I uncheck the box "instance[widget][settings][timezone]"
+    And I press the "Save settings" button
+    When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
+    Then the "instance[widget][settings][timezone]" checkbox should not be checked
+    Then show last response
