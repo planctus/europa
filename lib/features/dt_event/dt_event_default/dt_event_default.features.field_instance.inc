@@ -3070,6 +3070,8 @@ On what day does the event end?',
       'settings' => array(
         'rows' => 10,
         'size' => 10,
+        'timeline_type' => 'timeline_schedule',
+        'timezone' => 1,
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 18,

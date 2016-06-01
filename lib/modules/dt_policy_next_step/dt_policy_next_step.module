@@ -16,6 +16,7 @@ function dt_policy_next_step_field_info() {
         'max_length' => 255,
         'rows' => 5,
         'timezone' => 1,
+        'timeline_type' => 'timeline',
       ),
       'default_widget' => 'dt_policy_next_step_widget',
       'default_formatter' => 'dt_policy_next_step_formatter_default',
@@ -45,7 +46,7 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
   $element['timeline_type'] = array(
     '#title' => t('Select type'),
     '#type' => 'radios',
-    '#default_value' => 'timeline',
+    '#default_value' => isset($settings['timeline_type']) ? $settings['timeline_type'] : 'timeline',
     '#description' => t('This option will define visualization'),
     '#options' => array(
       'timeline' => t('Timeline'),
