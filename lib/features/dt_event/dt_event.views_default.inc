@@ -222,6 +222,13 @@ function dt_event_views_default_views() {
   );
   $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
+  /* Filter criterion: Indexed Node: What do you want to create? */
+  $handler->display->display_options['filters']['field_event_collection']['id'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_collection']['field'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['value'] = array(
+    0 => '0',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

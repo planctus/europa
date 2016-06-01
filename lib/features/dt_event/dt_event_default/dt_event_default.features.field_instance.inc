@@ -2556,7 +2556,7 @@ On what day does the event end?',
         'allowed_formats' => array(
           'basic_html' => 0,
           'filtered_html' => 'filtered_html',
-          'full_html' => 0,
+          'full_html' => 'full_html',
           'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
