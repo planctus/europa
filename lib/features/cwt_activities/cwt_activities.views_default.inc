@@ -695,7 +695,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['ui_name'] = 'Print PDF link';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="rss-link__wrapper"><div class="rss-link">%print_pdf_link%</div></div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '%print_pdf_link%';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['path'] = 'calendar/%';
 
@@ -720,6 +720,7 @@ function cwt_activities_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -735,8 +736,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['field'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_start_end_date']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_end_date']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'ec_date_j_f_y',
@@ -746,6 +747,17 @@ function cwt_activities_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
+  /* Field: Content: Editorial sections */
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['id'] = 'field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['table'] = 'field_data_field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['field'] = 'field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['label'] = '';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_class'] = 'listing__author__pdf';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'bold_last';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -753,19 +765,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'span';
+  $handler->display->display_options['fields']['title']['element_class'] = 'listing__title__pdf';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Editorial sections */
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['id'] = 'field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['table'] = 'field_data_field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['field'] = 'field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['label'] = 'With';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_type'] = 'span';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_wrapper_type'] = 'p';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'print-calendar/%';
   $export['agenda'] = $view;
 

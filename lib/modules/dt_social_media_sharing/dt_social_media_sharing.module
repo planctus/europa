@@ -5,24 +5,26 @@
  */
 
 /**
- * Implements hook_init().
+ * Implements hook_preprocess_HOOK().
  *
  * This will add the required code to the header so that the webtools social
  * select is always loaded.
  */
-function dt_social_media_sharing_init() {
-  drupal_add_js(variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js'), 'external');
-  drupal_add_html_head([
-    '#tag' => 'script',
-    '#value' => '{
-      "service" : "sbkm",
-      "popup" : false,
-      "selection": true
-    }',
-    '#attributes' => [
-      'type' => 'application/json',
-    ],
-  ], 'social_media_select');
+function dt_social_media_sharing_preprocess_page(&$variables) {
+  if (!path_is_admin(current_path())) {
+    drupal_add_js(variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js'), 'external');
+    drupal_add_html_head([
+      '#tag' => 'script',
+      '#value' => '{
+        "service" : "sbkm",
+        "popup" : false,
+        "selection": true
+      }',
+      '#attributes' => [
+        'type' => 'application/json',
+      ],
+    ], 'social_media_select');
+  }
 }
 
 /**
@@ -132,6 +134,7 @@ function _dt_social_media_sharing_default_json() {
   {
     "service": "sbkm",
     "popup": false,
+    "sharing": true,
     "to": [
       "more",
       "twitter",
