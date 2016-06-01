@@ -3,13 +3,17 @@ Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
-  @wip
+  @information
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
+
     Given "<content_name>" content:
-      | title                             | status | field_core_description | dt_latest_visibility
-      | <content_name> with announcements | 1      | Sample description     | 0
-      | <content_name> with announcements | 1      | Sample description     | 1      
+      | title                             | status | field_core_description |
+      | <content_name> with announcements | 1      | Sample description     |
     Given "Announcement" content:
       | title                          | status | <reference_fieldname>             |
       | Announcement on <content_name> | 1      | <content_name> with announcements |
@@ -25,30 +29,13 @@ Feature: Announcements block
       | Topic        | field_core_topics     | should        |
       | Priority     | field_core_priorities | should        |
 
-  @information
-  Scenario Outline: Visitors should not see the latests announcements block on content types
-    Given I am logged in as a user with the "administrator" role
-    Given "<content_name>" content:
-      | title                             | status | field_core_description | dt_latest_visibility
-      | <content_name> with announcements | 1      | Sample description     | 0
-      | <content_name> with announcements | 1      | Sample description     | 1      
-    Given "Announcement" content:
-      | title                          | status | <reference_fieldname>             |
-      | Announcement on <content_name> | 1      | <content_name> with announcements |
-    When I go to "admin/content"
-    And I follow "<content_name> with announcements"
-    Then i should not see  the link "Announcement on <content_name>"
-
-    Examples:
-      | content_name | reference_fieldname   | label_visible |
-      | Department   | field_core_department | should        |
-      | Policy       | field_core_policies   | should not    |
-      | Topic        | field_core_topics     | should        |
-      | Priority     | field_core_priorities | should        |
-  
   @shared @brp
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Page" content:
       | title                   | status | field_core_description | field_core_latest_visibility |
       | Page with announcements | 1      | Sample description     | Disable                      |
@@ -61,6 +48,7 @@ Feature: Announcements block
     Then I should not see the link "Announcement on Page"
     When I follow "New draft" in the "tabs" region
     And I check "Latest visibility"
+    And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on Page"
@@ -68,6 +56,10 @@ Feature: Announcements block
   @shared
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Priority policy area" content:
       | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content |
       | PPA with announcements | 1      | Sample description     | Disable                      | default                 |
@@ -80,6 +72,7 @@ Feature: Announcements block
     Then I should not see the link "Announcement on PPA"
     When I follow "New draft" in the "tabs" region
     And I check "Latest visibility"
+    And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on PPA"
@@ -87,6 +80,10 @@ Feature: Announcements block
   @information
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Social Networks" terms:
       | name     | name_field |
       | Facebook | Facebook   |
@@ -116,6 +113,10 @@ Feature: Announcements block
   @information
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    Given I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Featured item" content:
       | title         | status |
       | Featured item | 1      |
@@ -134,3 +135,4 @@ Feature: Announcements block
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
     Then I should see "Featured item" in the ".featured-item" element
+
