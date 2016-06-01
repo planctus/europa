@@ -39,6 +39,16 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
   $settings = $widget['settings'];
 
   $element = array(
+    'timeline_type' => array(
+      '#title' => t('Select type'),
+      '#type' => 'radios',
+      '#default_value' => 'timeline',
+      '#description' => t('This option will define visualization'),
+      '#options' => array(
+        'timeline' => t('Timeline'),
+        'timeline_schedule' => t('Timeline Schedule'),
+      ),
+    ),
     // Max lenght settings.
     'size' => array(
       '#type' => 'textfield',
@@ -46,6 +56,14 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
       '#default_value' => $settings['size'],
       '#required' => TRUE,
       '#element_validate' => array('element_validate_integer_positive'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="timeline_type"]' => array('value' => 'timeline'),
+        ),
+        'required' => array(
+          ':input[name="timeline_type"]' => array('value' => 'timeline'),
+        ),
+      ),
     ),
     'rows' => array(
       '#type' => 'textfield',
@@ -53,6 +71,14 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
       '#default_value' => isset($settings['rows']) ? $settings['rows'] : NULL,
       '#required' => TRUE,
       '#element_validate' => array('element_validate_integer_positive'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="timeline_type"]' => array('value' => 'timeline'),
+        ),
+        'required' => array(
+          ':input[name="timeline_type"]' => array('value' => 'timeline'),
+        ),
+      ),
     ),
   );
 
