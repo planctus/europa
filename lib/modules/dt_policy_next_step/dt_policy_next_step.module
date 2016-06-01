@@ -49,6 +49,7 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
     ),
   );
 
+  // Settings available if the type is a default Timeline.
   // Max lenght settings.
   $element['size'] = array(
     '#type' => 'textfield',
@@ -65,7 +66,6 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
       ),
     ),
   );
-
   $element['rows'] = array(
     '#type' => 'textfield',
     '#title' => t('Rows of steps in bullet'),
@@ -78,6 +78,20 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
       ),
       'required' => array(
         ':input[name*="timeline_type"]' => array('value' => 'timeline'),
+      ),
+    ),
+  );
+
+  // Settings available if the type is a Timeline Schedule.
+  $element['timezone'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use timezone functionality'),
+    '#description' => t('When enabled, the visualization of the date item will contain the time zone information.'),
+    '#default_value' => 1,
+    '#return_value' => 1,
+    '#states' => array(
+      'visible' => array(
+        ':input[name*="timeline_type"]' => array('value' => 'timeline_schedule'),
       ),
     ),
   );
