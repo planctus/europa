@@ -17,7 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-227-0",
+    "entity_translation_handler_id" : "cer-eid-862-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -34,9 +34,6 @@ function dt_event_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
   if ($module == "facetapi" && $api == "facetapi_defaults") {
-    return array("version" => "1");
-  }
-  if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
   if ($module == "strongarm" && $api == "strongarm") {
