@@ -9,7 +9,6 @@ Feature: Timeline schedule field formatter
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
     Then I should see "Timeline schedule" in the "#field-ui-field-edit-form" element
 
-  @wip
   Scenario: Timeline schedule variant option setting saves correctly
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
@@ -32,3 +31,21 @@ Feature: Timeline schedule field formatter
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
     Then the "instance[widget][settings][timezone]" checkbox should not be checked
     Then show last response
+
+  Scenario: Timeline schedule widget input should contain a select for a timezone
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/structure/types/manage/event/fields/field_event_schedule_en"
+    And I check the box "instance[widget][settings][timezone]"
+    And I press the "Save settings" button
+    When I go to "node/add/event_en"
+    Then I should see "Timezone"
+
+  Scenario: Timeline schedule widget input should contain "Schedule item start"
+    Given I am logged in as a user with the "administrator" role
+    When I go to "node/add/event_en"
+    Then I should see "Schedule item start"
+
+  Scenario: Timeline schedule widget input should contain "Schedule item end"
+    Given I am logged in as a user with the "administrator" role
+    When I go to "node/add/event_en"
+    Then I should see "Schedule item end"

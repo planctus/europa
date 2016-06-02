@@ -116,15 +116,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
     $element['#type'] = 'fieldset';
   }
 
-  // When and timeframe.
-  $element['when_timeframe'] = array(
-    '#title' => t('When/timeframe'),
-    '#type' => 'textfield',
-    '#description' => t('Please give in text the time.'),
-    '#size' => 100,
-    '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
-  );
-  // Steps in bullets.
+  // Item description.
   $element['steps_in_bullets'] = array(
     '#title' => t('Step in bullets'),
     '#type' => 'text_format',
@@ -133,7 +125,39 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
     '#rows' => isset($settings['rows']) ? $settings['rows'] : 5,
     '#attributes' => array('class' => array('text-full')),
     '#format' => 'full_html',
+    '#weight' => 100,
   );
+
+  switch ($settings['timeline_type']) {
+
+    case 'timeline_schedule':
+      $element['timezone'] = array(
+        '#type' => 'date_timezone',
+        '#date_label_position' => 'above',
+        '#options' => system_time_zones(),
+      );
+      $element['time_date_start'] = array(
+        '#title' => t('Schedule item start'),
+        '#type' => 'date_popup',
+        '#required' => 'required',
+      );
+      $element['time_date_end'] = array(
+        '#title' => t('Schedule item end'),
+        '#type' => 'date_popup',
+      );
+      $element['steps_in_bullets']['#title'] = t('Schedule item description');
+      $element['steps_in_bullets']['#description'] = t('Describe the contents of the item.');
+      break;
+
+    case 'timeline':
+      $element['when_timeframe'] = array(
+        '#title' => t('When/timeframe'),
+        '#type' => 'date',
+        '#description' => t('Please provide date and time information.'),
+        '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
+      );
+      break;
+  }
 
   return $element;
 }
