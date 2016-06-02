@@ -232,7 +232,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '15',
+    'weight' => '14',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -445,7 +445,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_files',
     ),
@@ -546,7 +546,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '39',
+    'weight' => '38',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -632,7 +632,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '13',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_persons',
     ),
@@ -1061,7 +1061,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'group_row',
     ),
