@@ -1197,7 +1197,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 6,
+      'weight' => 10,
     ),
   );
 
@@ -1344,7 +1344,7 @@ function dt_department_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 26,
+      'weight' => 25,
     ),
   );
 

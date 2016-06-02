@@ -23,12 +23,11 @@ function dt_department_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'field_department_news_link',
-      1 => 'group_department_contact',
-      2 => 'group_editorial_settings',
-      3 => 'group_person',
-      4 => 'group_priorities',
-      5 => 'group_profile_information',
+      0 => 'group_department_contact',
+      1 => 'group_editorial_settings',
+      2 => 'group_person',
+      3 => 'group_priorities',
+      4 => 'group_profile_information',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -407,6 +406,7 @@ function dt_department_field_group_info() {
       7 => 'field_core_description',
       8 => 'field_core_links',
       9 => 'field_department_dg_type',
+      10 => 'field_department_news_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
