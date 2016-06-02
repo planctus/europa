@@ -12,6 +12,21 @@ function dt_event_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'current_and_upcoming_events';
+  $ds_field->label = 'Current and upcoming events';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'event|*';
+  $ds_field->properties = array(
+    'block' => 'views|event_tabs-block',
+    'block_render' => '3',
+  );
+  $export['current_and_upcoming_events'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'event_related_events';
   $ds_field->label = 'Event: Related events';
   $ds_field->field_type = 6;
@@ -24,6 +39,21 @@ function dt_event_ds_custom_fields_info() {
     'block_render' => '2',
   );
   $export['event_related_events'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'past_events';
+  $ds_field->label = 'Past events';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'event|*';
+  $ds_field->properties = array(
+    'block' => 'views|event_tabs-block_1',
+    'block_render' => '3',
+  );
+  $export['past_events'] = $ds_field;
 
   return $export;
 }

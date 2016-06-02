@@ -714,6 +714,85 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_events_ong_fut|node|event|event_collection';
+  $field_group->group_name = 'group_events_ong_fut';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = 'group_events';
+  $field_group->data = array(
+    'label' => 'Ongoing and future',
+    'weight' => '86',
+    'children' => array(
+      0 => 'current_and_upcoming_events',
+    ),
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
+    'format_settings' => array(
+      'label' => 'Ongoing and future',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_events_ong_fut|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_events_past|node|event|event_collection';
+  $field_group->group_name = 'group_events_past';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = 'group_events';
+  $field_group->data = array(
+    'label' => 'Past events',
+    'weight' => '87',
+    'children' => array(
+      0 => 'past_events',
+    ),
+    'format_type' => 'bootstrap_fieldgroup_nav_item',
+    'format_settings' => array(
+      'label' => 'Past events',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_events_past|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_events|node|event|event_collection';
+  $field_group->group_name = 'group_events';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Events',
+    'weight' => '4',
+    'children' => array(
+      0 => 'group_events_ong_fut',
+      1 => 'group_events_past',
+    ),
+    'format_type' => 'bootstrap_fieldgroup_nav',
+    'format_settings' => array(
+      'label' => 'Events',
+      'instance_settings' => array(
+        'bootstrap_nav_type' => 'tabs',
+        'bootstrap_stacked' => '0',
+        'bootstrap_orientation' => '0',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_events|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta_wrapper|node|event|meta';
   $field_group->group_name = 'group_meta_wrapper';
   $field_group->entity_type = 'node';
@@ -1215,9 +1294,12 @@ function dt_event_default_field_group_info() {
   t('Description');
   t('Documents');
   t('Editorial settings');
+  t('Events');
   t('From the audience');
   t('Left');
   t('Meta');
+  t('Ongoing and future');
+  t('Past events');
   t('Practical info left');
   t('Practical info right');
   t('Practical information');

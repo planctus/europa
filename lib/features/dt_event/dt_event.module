@@ -10,7 +10,7 @@ include_once 'dt_event.features.inc';
 module_load_include('inc', 'dt_event', 'dt_event.helpers');
 module_load_include('inc', 'dt_event', 'dt_event.ds_fields');
 
-// Constansts that can be used.
+// Constants that can be used.
 define('DT_EVENT_STATE_FUTURE', 1);
 define('DT_EVENT_STATE_ONGOING', 2);
 define('DT_EVENT_STATE_PAST', 3);
