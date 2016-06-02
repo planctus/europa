@@ -79,11 +79,11 @@ function dt_page_extended_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_page_architecture',
-      1 => 'group_background',
-      2 => 'group_banner',
-      3 => 'group_editorial_settings',
-      4 => 'group_featured_item',
+      0 => 'group_background',
+      1 => 'group_banner',
+      2 => 'group_editorial_settings',
+      3 => 'group_featured_item',
+      4 => 'group_page_architecture',
       5 => 'group_page_main',
       6 => 'group_related',
     ),
@@ -172,6 +172,7 @@ function dt_page_extended_field_group_info() {
       0 => 'field_core_parent',
       1 => 'field_core_children',
       2 => 'field_core_parents',
+      3 => 'field_core_quick_nav_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -196,7 +197,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_departments',
       1 => 'field_core_persons',
@@ -229,7 +230,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -258,7 +259,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Free field',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'body',
     ),
@@ -347,7 +348,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -376,7 +377,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '10 priorities',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'priorities_preprocess',
     ),
@@ -405,7 +406,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_links',
     ),
