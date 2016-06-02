@@ -42,7 +42,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = 'listing--column-left';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing__item--fullwidth';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'meta';
   /* Field: Indexed Node: CER » Context */
