@@ -135,15 +135,20 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
         '#type' => 'date_timezone',
         '#date_label_position' => 'above',
         '#options' => system_time_zones(),
+        '#description' => t('Will be displayed on the first item of the timeline list.'),
       );
       $element['time_date_start'] = array(
         '#title' => t('Schedule item start'),
         '#type' => 'date_popup',
         '#required' => 'required',
+        '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : NULL,
+        '#description' => t('The time will be displayed for the user.'),
       );
       $element['time_date_end'] = array(
         '#title' => t('Schedule item end'),
         '#type' => 'date_popup',
+        '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : NULL,
+        '#description' => t('The time will be displayed for the user.'),
       );
       $element['steps_in_bullets']['#title'] = t('Schedule item description');
       $element['steps_in_bullets']['#description'] = t('Describe the contents of the item.');
