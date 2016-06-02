@@ -53,6 +53,19 @@ function dt_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_status_description']['id'] = 'field_event_status_description';
   $handler->display->display_options['fields']['field_event_status_description']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['fields']['field_event_status_description']['field'] = 'field_event_status_description';
+  /* Contextual filter: Indexed Node: Part of collection */
+  $handler->display->display_options['arguments']['field_event_parent_events']['id'] = 'field_event_parent_events';
+  $handler->display->display_options['arguments']['field_event_parent_events']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['arguments']['field_event_parent_events']['field'] = 'field_event_parent_events';
+  $handler->display->display_options['arguments']['field_event_parent_events']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_event_parent_events']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['field_event_parent_events']['default_argument_options']['index'] = '1';
+  $handler->display->display_options['arguments']['field_event_parent_events']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_event_parent_events']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_event_parent_events']['validate']['type'] = 'numeric';
+  $handler->display->display_options['arguments']['field_event_parent_events']['validate']['fail'] = 'ignore';
+  $handler->display->display_options['arguments']['field_event_parent_events']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_event_parent_events']['not'] = 0;
   /* Filter criterion: Indexed Node: fulltext search */
   $handler->display->display_options['filters']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
   $handler->display->display_options['filters']['search_api_aggregation_1']['table'] = 'search_api_index_event_index';
@@ -227,7 +240,7 @@ function dt_event_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Events';
-  $handler->display->display_options['path'] = 'events';
+  $handler->display->display_options['path'] = 'events/%';
   $export['events'] = $view;
 
   $view = new view();

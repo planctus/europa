@@ -12,6 +12,25 @@ function dt_event_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'about_heading';
+  $ds_field->label = 'About heading';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'event|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<h2 id="about">About [node:title]</h2>
+',
+      'format' => 'full_html',
+    ),
+    'use_token' => 1,
+  );
+  $export['about_heading'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'current_and_upcoming_events';
   $ds_field->label = 'Current and upcoming events';
   $ds_field->field_type = 6;

@@ -42,6 +42,11 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_collection';
   $ds_fieldsetting->settings = array(
+    'about_heading' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'current_and_upcoming_events' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -61,6 +66,40 @@ function dt_event_default_ds_field_settings_info() {
         'wrapper' => 'h1',
         'class' => '',
         'ft' => array(),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'announcement_block' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'show_featured_item' => 1,
+        'show_social_media' => 1,
+        'label' => 'Latest',
+        'ft' => array(),
+      ),
+    ),
+    'field_core_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
   );
@@ -489,34 +528,60 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_advanced_top_conditional';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'title',
-        3 => 'field_core_tagline',
+      'top_bottom_left' => array(
+        0 => 'past_events',
+        3 => 'current_and_upcoming_events',
+        8 => 'group_events',
+        18 => 'group_events_ong_fut',
+        19 => 'group_events_past',
       ),
       'central' => array(
-        1 => 'current_and_upcoming_events',
-        2 => 'past_events',
-        6 => 'group_events',
-        7 => 'group_events_ong_fut',
-        8 => 'group_events_past',
+        1 => 'about_heading',
+        4 => 'body',
+        10 => 'group_about',
+        11 => 'group_related_links',
+        12 => 'field_core_links',
+        13 => 'group_contact',
+        14 => 'social_bookmark_webtools',
+        15 => 'field_core_contact',
+        16 => 'announcement_block',
+        17 => 'group_latest_section',
+      ),
+      'left_header' => array(
+        2 => 'title',
+        5 => 'field_core_tagline',
       ),
       'top_middle_left' => array(
-        4 => 'field_core_media',
+        6 => 'field_core_media',
       ),
       'top_middle_right' => array(
-        5 => 'field_core_introduction',
+        7 => 'field_core_introduction',
+      ),
+      'top_bottom_right' => array(
+        9 => 'field_core_social_network_links',
       ),
     ),
     'fields' => array(
+      'past_events' => 'top_bottom_left',
+      'about_heading' => 'central',
       'title' => 'left_header',
-      'current_and_upcoming_events' => 'central',
-      'past_events' => 'central',
+      'current_and_upcoming_events' => 'top_bottom_left',
+      'body' => 'central',
       'field_core_tagline' => 'left_header',
       'field_core_media' => 'top_middle_left',
       'field_core_introduction' => 'top_middle_right',
-      'group_events' => 'central',
-      'group_events_ong_fut' => 'central',
-      'group_events_past' => 'central',
+      'group_events' => 'top_bottom_left',
+      'field_core_social_network_links' => 'top_bottom_right',
+      'group_about' => 'central',
+      'group_related_links' => 'central',
+      'field_core_links' => 'central',
+      'group_contact' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'field_core_contact' => 'central',
+      'announcement_block' => 'central',
+      'group_latest_section' => 'central',
+      'group_events_ong_fut' => 'top_bottom_left',
+      'group_events_past' => 'top_bottom_left',
     ),
     'classes' => array(),
     'wrappers' => array(

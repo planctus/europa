@@ -13,6 +13,41 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_about|node|event|event_collection';
+  $field_group->group_name = 'group_about';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'About',
+    'weight' => '6',
+    'children' => array(
+      0 => 'body',
+      1 => 'about_heading',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'About',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => '',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
+      ),
+      'formatter' => '',
+    ),
+  );
+  $field_groups['group_about|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_activity_left|node|event|meta';
   $field_group->group_name = 'group_activity_left';
   $field_group->entity_type = 'node';
@@ -71,6 +106,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_activity_right|node|event|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact|node|event|event_collection';
+  $field_group->group_name = 'group_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_contact',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_contact|node|event|event_collection'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -793,6 +858,36 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_latest_section|node|event|event_collection';
+  $field_group->group_name = 'group_latest_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Latest section',
+    'weight' => '10',
+    'children' => array(
+      0 => 'social_bookmark_webtools',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Latest section',
+      'instance_settings' => array(
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_latest_section|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta_wrapper|node|event|meta';
   $field_group->group_name = 'group_meta_wrapper';
   $field_group->entity_type = 'node';
@@ -1192,6 +1287,36 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_links|node|event|event_collection';
+  $field_group->group_name = 'group_related_links';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_collection';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related links',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_core_links',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Related links',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_related_links|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_row|node|event|event_collection';
   $field_group->group_name = 'group_row';
   $field_group->entity_type = 'node';
@@ -1287,6 +1412,7 @@ function dt_event_default_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('About');
   t('After the event');
   t('Contact');
   t('Content');
@@ -1296,6 +1422,7 @@ function dt_event_default_field_group_info() {
   t('Editorial settings');
   t('Events');
   t('From the audience');
+  t('Latest section');
   t('Left');
   t('Meta');
   t('Ongoing and future');
@@ -1303,6 +1430,7 @@ function dt_event_default_field_group_info() {
   t('Practical info left');
   t('Practical info right');
   t('Practical information');
+  t('Related links');
   t('Right');
   t('Schedule');
   t('Speakers');

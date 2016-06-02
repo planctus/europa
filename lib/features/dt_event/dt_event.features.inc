@@ -76,6 +76,7 @@ function dt_event_default_search_api_index() {
         "field_event_date:value2" : { "type" : "date" },
         "field_event_is_live_streaming" : { "type" : "boolean" },
         "field_event_is_online" : { "type" : "boolean" },
+        "field_event_parent_events" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_event_status_description:value" : { "type" : "text" },
         "field_event_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_event_what_happened:value" : { "type" : "text" },
@@ -257,6 +258,12 @@ function dt_event_default_search_api_server() {
           "search_api_aggregation_1" : {
             "table" : "search_api_db_event_index_text",
             "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_event_parent_events" : {
+            "table" : "search_api_db_event_index_field_event_parent_events",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
             "boost" : "1.0"
           }
         }
