@@ -6,35 +6,35 @@ Feature: Aliases based on parent node's URL alias
 
   Scenario: Correct URL is generated for "Page"
     Given "Page" content:
-      | title            | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
+      | title            | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |
       | First page title | Content description    | Intro                   |                   | 1              | 1      |
     Given "Page" content:
-      | title             | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
+      | title             | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |
       | Second page title | Content description    | Intro                   | First page title  | 1              | 1      |
     And I go to "first-page-title/second-page-title"
     Then I should see "Second page title" in the "title" element
 
   Scenario: Circular reference is not allowed for "Page"
     Given "Page" content:
-      | title                     | field_core_description | field_core_introduction | field_core_parent | path[pathauto] | status |
+      | title                     | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |
       | First Circular Page title | Content description    | Intro                   |                   | 1              | 1      |
     Given "Page" content:
-      | title                      | field_core_description | field_core_introduction | field_core_parent         | path[pathauto] | status |
+      | title                      | field_core_description | field_core_introduction | field_core_parents         | path[pathauto] | status |
       | Second Circular Page title | Content description    | Intro                   | First Circular Page title | 1              | 1      |
     Given "Page" content:
-      | title                     | field_core_description | field_core_introduction | field_core_parent          | path[pathauto] | status |
+      | title                     | field_core_description | field_core_introduction | field_core_parents          | path[pathauto] | status |
       | Third Circular Page title | Content description    | Intro                   | Second Circular Page title | 1              | 1      |
     Given I am logged in as a user with the "administrator" role
-    # And I cannot set circular reference "field_core_parent" for "First Circular Page title" to "Second Circular Page title"
+    # And I cannot set circular reference "field_core_parents" for "First Circular Page title" to "Second Circular Page title"
     And I go to "first-circular-page-title"
     And I follow "New draft" in the "tabs"
-    Then I fill in the reference "edit-field-core-parent-und-0-target-id" with "Second Circular Page title"
+    Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Second Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
-    # And I cannot set circular reference "field_core_parent" for "Second Circular Page title" to "Third Circular Page title"
+    # And I cannot set circular reference "field_core_parents" for "Second Circular Page title" to "Third Circular Page title"
     And I go to "first-circular-page-title/second-circular-page-title"
     And I follow "New draft" in the "tabs"
-    Then I fill in the reference "edit-field-core-parent-und-0-target-id" with "Third Circular Page title"
+    Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Third Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
 
