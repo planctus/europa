@@ -1197,7 +1197,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 41,
+      'weight' => 6,
     ),
   );
 

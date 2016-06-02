@@ -23,11 +23,12 @@ function dt_department_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_department_contact',
-      1 => 'group_editorial_settings',
-      2 => 'group_person',
-      3 => 'group_priorities',
-      4 => 'group_profile_information',
+      0 => 'field_department_news_link',
+      1 => 'group_department_contact',
+      2 => 'group_editorial_settings',
+      3 => 'group_person',
+      4 => 'group_priorities',
+      5 => 'group_profile_information',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -50,7 +51,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_contact',
       1 => 'field_core_social_network_links',
@@ -302,7 +303,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -332,7 +333,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Leadership and organisation',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_persons',
       1 => 'field_department_organigram',
