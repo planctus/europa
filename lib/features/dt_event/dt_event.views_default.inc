@@ -30,15 +30,19 @@ function dt_event_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['style_options']['listing_columns'] = 'default';
   $handler->display->display_options['style_options']['listing_modifier'] = 'listing--column-left';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
-  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing__item--fullwidth';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'meta';
   /* Field: Indexed Node: CER » Context */
@@ -170,10 +174,21 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['facet_filter_2']['table'] = 'facets';
   $handler->display->display_options['filters']['facet_filter_2']['field'] = 'facet_filter';
   $handler->display->display_options['filters']['facet_filter_2']['group'] = 1;
-  $handler->display->display_options['filters']['facet_filter_2']['expose']['operator_id'] = 'facet_filter_2_op';
-  $handler->display->display_options['filters']['facet_filter_2']['expose']['label'] = 'Departments';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['label'] = 'Organizer';
   $handler->display->display_options['filters']['facet_filter_2']['expose']['operator'] = 'facet_filter_2_op';
   $handler->display->display_options['filters']['facet_filter_2']['expose']['identifier'] = 'facet_filter_2';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
   $handler->display->display_options['filters']['facet_filter_2']['facet']['facet'] = 'field_core_departments';
   /* Filter criterion: Event date and time: Start date (indexed) */
   $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
@@ -222,6 +237,13 @@ function dt_event_views_default_views() {
   );
   $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
+  /* Filter criterion: Indexed Node: What do you want to create? */
+  $handler->display->display_options['filters']['field_event_collection']['id'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_collection']['field'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['value'] = array(
+    0 => '0',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

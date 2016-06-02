@@ -15,7 +15,7 @@ function dt_priority_default_cer() {
     "cer_enabled" : { "und" : [ { "value" : "1" } ] },
     "cer_weight" : { "und" : [ { "value" : "0" } ] },
     "cer_left" : { "und" : [ { "path" : "node:priority:field_core_child_policies" } ] },
-    "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parent" } ] },
+    "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parents" } ] },
     "rdf_mapping" : []
   }');
   $items['node:priority:field_core_child_policies*node:policy:field_core_parent'] = entity_import('cer', '{
