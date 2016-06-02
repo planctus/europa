@@ -17,6 +17,25 @@ function dt_policy_next_step_field_schema($field) {
     'steps_in_bullets' => array(
       'type' => 'text',
       'size' => 'big',
+      'description' => "Rich text description",
+      'not null' => FALSE,
+    ),
+    'timezone' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'description' => "Definition of timezone to use for the dates",
+      'not null' => FALSE,
+    ),
+    'time_date_start' => array(
+      'type' => 'int',
+      'length' => 11,
+      'description' => "Start date of the item",
+      'not null' => TRUE,
+    ),
+    'time_date_end' => array(
+      'type' => 'int',
+      'length' => 11,
+      'description' => "End date of the item",
       'not null' => FALSE,
     ),
   );
@@ -28,4 +47,33 @@ function dt_policy_next_step_field_schema($field) {
     'columns' => $columns,
     'indexes' => $indexes,
   );
+}
+
+/**
+ * Implements hook_enable().
+ */
+function dt_policy_next_step_enable() {
+  drupal_set_message('DT Policy Next Step module has been enabled.');
+}
+
+/**
+ * Implements hook_disable().
+ */
+function dt_policy_next_step_disable() {
+  drupal_set_message('DT Policy Next Step module has been disabled.');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_next_step_uninstall() {
+  // Remove tables.
+  drupal_set_message('DT Policy Next Step module has been uninstalled.');
+}
+
+/**
+ * DTTSB-236: Adding new fields in the schema.
+ */
+function dt_policy_next_step_7101() {
+
 }
