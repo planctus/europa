@@ -70,15 +70,15 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   // Lets call the entity by its name.
   $node = $field['entity'];
 
-  if (isset($node->field_department_news_link) && !empty($node->field_department_news_link)) {
-    return;
+  if (!variable_get('dt_latest_visibility', TRUE) || (isset($node->field_department_news_link) && !empty($node->field_department_news_link))) {
+    return NULL;
   }
 
   // If the node has the field_core_latest_visibility field then we should use
   // it as a secondary check.
   if (isset($node->field_core_latest_visibility) && is_array($node->field_core_latest_visibility)) {
-    if (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 0 || !variable_get('dt_latest_visibility', TRUE)) {
-      return;
+    if (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 0) {
+      return NULL;
     }
   }
 
