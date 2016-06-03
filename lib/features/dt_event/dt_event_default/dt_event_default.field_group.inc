@@ -166,6 +166,36 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_event_audience|node|event|event_past';
+  $field_group->group_name = 'group_event_audience';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'From the audience',
+    'weight' => '10',
+    'children' => array(
+      0 => 'dt_event_scribble_embed',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'From the audience',
+      'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => 'col-md-9',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_event_audience|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_event_contact|node|event|event_collection';
   $field_group->group_name = 'group_event_contact';
   $field_group->entity_type = 'node';
@@ -202,7 +232,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '15',
+    'weight' => '14',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -415,7 +445,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_files',
     ),
@@ -516,7 +546,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Schedule',
-    'weight' => '20',
+    'weight' => '39',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -602,7 +632,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '13',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_persons',
     ),
@@ -1031,7 +1061,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'group_row',
     ),
@@ -1079,6 +1109,73 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_practical_information|node|event|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_events|node|event|event_past';
+  $field_group->group_name = 'group_related_events';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related events',
+    'weight' => '15',
+    'children' => array(
+      0 => 'event_related_events',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Related events',
+      'instance_settings' => array(
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $field_groups['group_related_events|node|event|event_past'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_events|node|event|full';
+  $field_group->group_name = 'group_related_events';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related events',
+    'weight' => '16',
+    'children' => array(
+      0 => 'event_related_events',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Related events',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => '',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+        'required_fields' => 1,
+        'description' => '',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => '',
+    ),
+  );
+  $field_groups['group_related_events|node|event|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1185,11 +1282,13 @@ function dt_event_default_field_group_info() {
   t('Description');
   t('Documents');
   t('Editorial settings');
+  t('From the audience');
   t('Left');
   t('Meta');
   t('Practical info left');
   t('Practical info right');
   t('Practical information');
+  t('Related events');
   t('Right');
   t('Schedule');
   t('Speakers');

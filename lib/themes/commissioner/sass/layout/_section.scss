@@ -1,3 +1,13 @@
+section {
+  &.block-dt-social-media-sharing,
+  .btn-time-line,
+  #blog,
+  #agenda,
+  #timeline {
+    float: left;
+  }
+}
+
 .section__group--biography-top {
   border-bottom: 1px solid #e2e2e2;
   padding-bottom: 1.667em; 
@@ -9,3 +19,101 @@
   }
 }
 
+// Biography.
+.group-bio-col {
+  .group-bio-top-footer {
+    display: block;
+
+    // Button to open contact details.
+    .field--collapse-button {
+      display: block;
+      margin: 1em 0;
+
+      * {
+        margin-bottom: 0;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    // Social networks list.
+    .field--field-social-networks {
+      display: block;
+
+      .icon-social {
+        display: block;
+        float: left;
+        margin-top: 5px;
+        padding-left: 40px;
+        margin-right: 10px;
+
+        &:focus {
+          outline-offset: 0;
+        }
+      }
+    }
+
+    // Link to move things.
+    .field--field-biography-av-portal {
+      clear: both;
+      display: block;
+      padding-top: 10px;
+      width: 100%;
+    }
+  }
+}
+
+// Desktop for the trio from above.
+@include breakpoint(screen-sm-min) {
+  .group-bio-col {
+    .group-bio-top-footer {
+      .field--collapse-button,
+      .field--field-social-networks,
+      .field--field-biography-av-portal {
+        display: table-cell;
+        width: auto;
+      }
+    }
+  }
+
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative;
+
+    .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
+      overflow: visible;
+    }
+  }
+}
+
+.section__group--highlight-grey {
+  &#collapse {
+    .row {
+      padding-left: 1em;
+    }
+
+    .col-separator-left {
+      border-left: none;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-mds) {
+  .section__group--highlight-grey {
+    &#collapse {
+      .col-separator-left {
+        border-left: 1px solid $grey;
+      }
+    }
+  }
+
+  // Translation selector should be replaced with site language switcher later.
+  #block-cwt-core-translation-selector {
+    float: left;
+  }
+}

@@ -70,6 +70,10 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   // Lets call the entity by its name.
   $node = $field['entity'];
 
+  if (isset($node->field_department_news_link) && !empty($node->field_department_news_link)) {
+    return;
+  }
+
   // If the node has the field_core_latest_visibility field then we should use
   // it as a secondary check.
   if (isset($node->field_core_latest_visibility) && is_array($node->field_core_latest_visibility)) {

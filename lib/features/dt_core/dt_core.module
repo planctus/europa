@@ -12,6 +12,7 @@ $GLOBALS['dt_core_nodes_to_update_alias'] = [];
 // Fields that can be used in URL patterns to define hierarchy.
 $GLOBALS['dt_core_parent_fields'] = [
   'field_core_parent',
+  'field_core_parents',
   'field_core_policy_area',
   'field_core_policy_areas',
 ];
@@ -874,31 +875,27 @@ function _dt_core_get_plurial_content_types($bundle) {
  */
 function dt_core_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-  if (isset($view->filter['type'])) {
-    $content_type_filters = $view->filter['type']->value;
-    // The first element of the array is the right type of filter.
-    $content_type = reset($content_type_filters);
+  $variables['items_count'] = '';
 
-    $variables['items_count'] = '';
+  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
-      // Calculate the number of items displayed in a view listing.
-      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-      if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
-        $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
-        // @codingStandardsIgnoreStart
-        $display_title = t($title);
-        // @codingStandardsIgnoreEnd
-      }
-      else {
-        // Make sure we have a fallback.
-        $content_type_forms = _dt_core_get_plurial_content_types($content_type);
-        // Set the display title and uppercase it.
-        $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
-      }
-
-      // Set the title to what we just configured.
+    if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
+      $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
+      // @codingStandardsIgnoreStart
+      $display_title = t($title);
+      // @codingStandardsIgnoreEnd
+      $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
+    }
+    elseif (isset($view->filter['type'])) {
+      $content_type_filters = $view->filter['type']->value;
+      // The first element of the array is the right type of filter.
+      $content_type = reset($content_type_filters);
+      // Make sure we have a fallback.
+      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+      // Set the display title and uppercase it.
+      $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
   }

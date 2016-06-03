@@ -1,63 +1,3 @@
-.section__group--biography-top {
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 1.667em;
-  margin-bottom: 0; }
-  .section__group--biography-top .context-nav {
-    width: 100%;
-    margin-bottom: 2em; }
-
-@media (min-width: 480px) {
-  .block-nexteuropa-europa-search {
-    width: 100%;
-    padding-left: 0; } }
-
-.group-bio-col .group-bio-top-footer {
-  display: block; }
-  .group-bio-col .group-bio-top-footer .field--collapse-button {
-    display: block;
-    margin: 1em 0; }
-    .group-bio-col .group-bio-top-footer .field--collapse-button * {
-      margin-bottom: 0; }
-    .group-bio-col .group-bio-top-footer .field--collapse-button .btn {
-      width: 100%; }
-  .group-bio-col .group-bio-top-footer .field--field-social-networks {
-    display: block; }
-    .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social {
-      display: block;
-      float: left;
-      margin-top: 5px;
-      padding-left: 40px;
-      margin-right: 10px; }
-      .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social:focus {
-        outline-offset: 0; }
-  .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
-    clear: both;
-    display: block;
-    padding-top: 10px;
-    width: 100%; }
-
-section.block-dt-social-media-sharing,
-section .btn-time-line,
-section #blog,
-section #agenda,
-section #timeline {
-  float: left; }
-
-@media (min-width: 768px) {
-  .group-bio-col .group-bio-top-footer .field--collapse-button,
-  .group-bio-col .group-bio-top-footer .field--field-social-networks,
-  .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
-    display: table-cell;
-    width: auto; }
-  .group-bio-col {
-    min-height: 160px;
-    padding-bottom: 2.5em;
-    position: relative; }
-    .group-bio-col .group-bio-top-footer {
-      position: absolute;
-      bottom: 0;
-      overflow: visible; } }
-
 /*
 Listing  2rows
 
@@ -118,12 +58,6 @@ Styleguide listing.listing--2rows
 .listing--2rows .field-name-body .field-items {
   width: 100%; }
 
-.section__group--highlight-grey#collapse .row {
-  padding-left: 1em; }
-
-.section__group--highlight-grey#collapse .col-separator-left {
-  border-left: none; }
-
 @media (min-width: 480px) {
   .listing--2rows .listing__top img {
     display: block; }
@@ -134,11 +68,77 @@ Styleguide listing.listing--2rows
     padding-left: 15px;
     padding-right: 15px; } }
 
+section.block-dt-social-media-sharing,
+section .btn-time-line,
+section #blog,
+section #agenda,
+section #timeline {
+  float: left; }
+
+.section__group--biography-top {
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 1.667em;
+  margin-bottom: 0; }
+  .section__group--biography-top .context-nav {
+    width: 100%;
+    margin-bottom: 2em; }
+
+.group-bio-col .group-bio-top-footer {
+  display: block; }
+  .group-bio-col .group-bio-top-footer .field--collapse-button {
+    display: block;
+    margin: 1em 0; }
+    .group-bio-col .group-bio-top-footer .field--collapse-button * {
+      margin-bottom: 0; }
+    .group-bio-col .group-bio-top-footer .field--collapse-button .btn {
+      width: 100%; }
+  .group-bio-col .group-bio-top-footer .field--field-social-networks {
+    display: block; }
+    .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social {
+      display: block;
+      float: left;
+      margin-top: 5px;
+      padding-left: 40px;
+      margin-right: 10px; }
+      .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social:focus {
+        outline-offset: 0; }
+  .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
+    clear: both;
+    display: block;
+    padding-top: 10px;
+    width: 100%; }
+
+@media (min-width: 768px) {
+  .group-bio-col .group-bio-top-footer .field--collapse-button,
+  .group-bio-col .group-bio-top-footer .field--field-social-networks,
+  .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
+    display: table-cell;
+    width: auto; }
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative; }
+    .group-bio-col .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
+      overflow: visible; } }
+
+.section__group--highlight-grey#collapse .row {
+  padding-left: 1em; }
+
+.section__group--highlight-grey#collapse .col-separator-left {
+  border-left: none; }
+
 @media screen and (min-width: 980px) {
   .section__group--highlight-grey#collapse .col-separator-left {
     border-left: 1px solid #b3b4b5; }
   #block-cwt-core-translation-selector {
     float: left; } }
+
+@media (min-width: 480px) {
+  .block-nexteuropa-europa-search {
+    width: 100%;
+    padding-left: 0; } }
 
 #team .field {
   margin-bottom: 0.5em; }
@@ -151,5 +151,28 @@ Styleguide listing.listing--2rows
 
 .translation_select:focus {
   padding-right: 50px; }
+
+.print-content .filters__result-count,
+.print-content .filters__active-facets {
+  display: none; }
+
+.print-content .date-block {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+  text-align: left;
+  border-bottom: none; }
+  .print-content .date-block .date-block__day-text,
+  .print-content .date-block .date-block__day,
+  .print-content .date-block .date-block__month {
+    display: inline;
+    font-size: 0.800em;
+    font-weight: bold;
+    line-height: 1; }
+
+.print-content .listing__author__pdf,
+.print-content .listing__title__pdf {
+  font-size: 0.950em; }
 
 /*# sourceMappingURL=style.css.map */
