@@ -30,7 +30,7 @@ function dt_policy_next_step_field_schema($field) {
       'type' => 'int',
       'length' => 11,
       'description' => "Start date of the item",
-      'not null' => TRUE,
+      'not null' => FALSE,
     ),
     'time_date_end' => array(
       'type' => 'int',
@@ -74,6 +74,10 @@ function dt_policy_next_step_uninstall() {
 /**
  * DTTSB-236: Adding new fields in the schema.
  */
-function dt_policy_next_step_7101() {
-
+function dt_policy_next_step_update_7101() {
+  // Remove field instance using the timeline component, in order to rebuild it.
+  if ($instance = field_info_instance('node', 'field_event_schedule', 'event')) {
+    field_delete_instance($instance);
+  }
+  features_revert_module('dt_policy_next_step');
 }
