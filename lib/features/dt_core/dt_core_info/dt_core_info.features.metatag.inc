@@ -38,7 +38,7 @@ function dt_core_info_metatag_export_default() {
           'nosnippet' => 0,
           'noodp' => 0,
           'noydir' => 0,
-          'noimageindex' => 'noimageindex',
+          'noimageindex' => 0,
           'notranslate' => 0,
         ),
       ),
