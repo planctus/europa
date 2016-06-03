@@ -312,15 +312,37 @@ function dt_policy_next_step_theme() {
  */
 function theme_dt_policy_next_step_formatter_default($vars) {
   $element = $vars['element'];
-  $output = '';
-  $output .= '<div class="timeline__item">';
-  // When/timeframe.
-  if (!empty($element['when_timeframe'])) {
-    $output .= '<div class="timeline__item-title">' . $element['when_timeframe'] . '</div>';
+  $widget_settings = $vars['field']['widget']['settings'];
+
+  $output = '<div class="timeline__item">';
+
+  switch ($widget_settings['timeline_type']) {
+    case 'timeline':
+      // When/timeframe.
+      if (!empty($element['when_timeframe'])) {
+        $output .= '<div class="timeline__item-title">' . $element['when_timeframe'] . '</div>';
+      }
+      break;
+
+    case 'timeline_schedule':
+      $output .= '<div class="timeline__item-title">';
+      if (!empty($element['time_date_start'])) {
+        $output .= $element['time_date_start'];
+      }
+      if (!empty($element['time_date_end'])) {
+        $output .= ' - ' . $element['time_date_end'];
+      }
+      if (!empty($element['timezone']) && $widget_settings['timezone']) {
+        $output .= ' (' . $element['timezone'] . ')';
+      }
+      $output .= '</div>';
+      break;
   }
+
   if (!empty($element['steps_in_bullets'])) {
     $output .= '<div class="timeline__text">' . $element['steps_in_bullets'] . '</div>';
   }
+
   $output .= '</div>';
   return $output;
 }
