@@ -36,7 +36,7 @@ function cwt_core_metatag_export_default() {
           'nosnippet' => 0,
           'noodp' => 0,
           'noydir' => 0,
-          'noimageindex' => 0,
+          'noimageindex' => 'noimageindex',
           'notranslate' => 0,
         ),
       ),

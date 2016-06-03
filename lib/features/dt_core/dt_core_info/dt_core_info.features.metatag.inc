@@ -30,10 +30,10 @@ function dt_core_info_metatag_export_default() {
       ),
       'robots' => array(
         'value' => array(
-          'index' => '',
-          'follow' => '',
-          'noindex' => 'noindex',
-          'nofollow' => 'nofollow',
+          'index' => 'index',
+          'follow' => 'follow',
+          'noindex' => 0,
+          'nofollow' => 0,
           'noarchive' => 0,
           'nosnippet' => 0,
           'noodp' => 0,
