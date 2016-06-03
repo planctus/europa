@@ -17,7 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-227-0",
+    "entity_translation_handler_id" : "cer-eid-856-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -72,6 +72,7 @@ function dt_event_default_search_api_index() {
         "field_core_introduction:value" : { "type" : "text" },
         "field_core_location:country" : { "type" : "string" },
         "field_core_topics" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_event_collection" : { "type" : "string" },
         "field_event_date:value" : { "type" : "date" },
         "field_event_date:value2" : { "type" : "date" },
         "field_event_is_live_streaming" : { "type" : "boolean" },
@@ -257,6 +258,12 @@ function dt_event_default_search_api_server() {
           "search_api_aggregation_1" : {
             "table" : "search_api_db_event_index_text",
             "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_event_collection" : {
+            "table" : "search_api_db_event_index",
+            "column" : "field_event_collection",
+            "type" : "string",
             "boost" : "1.0"
           }
         }
