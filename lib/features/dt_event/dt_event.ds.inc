@@ -39,7 +39,7 @@ function dt_event_ds_custom_fields_info() {
   );
   $ds_field->ui_limit = 'event|*';
   $ds_field->properties = array(
-    'block' => 'views|event_tabs-block',
+    'block' => 'views|events_list-block',
     'block_render' => '3',
   );
   $export['current_and_upcoming_events'] = $ds_field;
@@ -69,7 +69,7 @@ function dt_event_ds_custom_fields_info() {
   );
   $ds_field->ui_limit = 'event|*';
   $ds_field->properties = array(
-    'block' => 'views|event_tabs-block_1',
+    'block' => 'views|events_list-block_1',
     'block_render' => '3',
   );
   $export['past_events'] = $ds_field;
