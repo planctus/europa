@@ -351,6 +351,42 @@ function dt_event_views_default_views() {
   /* Display: Upcoming and current events */
   $handler = $view->new_display('block', 'Upcoming and current events', 'block');
   $handler->display->display_options['link_url'] = '/events/!1';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['relationship'] = 'field_event_children_events_target_id';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Cancelled or rescheduled (field_event_status) */
+  $handler->display->display_options['filters']['field_event_status_value']['id'] = 'field_event_status_value';
+  $handler->display->display_options['filters']['field_event_status_value']['table'] = 'field_data_field_event_status';
+  $handler->display->display_options['filters']['field_event_status_value']['field'] = 'field_event_status_value';
+  $handler->display->display_options['filters']['field_event_status_value']['relationship'] = 'field_event_children_events_target_id';
+  $handler->display->display_options['filters']['field_event_status_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_event_status_value']['value'] = array(
+    'cancelled' => 'cancelled',
+  );
+  /* Filter criterion: Content: Event date and time - end date (field_event_date:value2) */
+  $handler->display->display_options['filters']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['filters']['field_event_date_value2']['relationship'] = 'field_event_children_events_target_id';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>';
+  $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'second';
+  $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: What do you want to create? (field_event_collection) */
+  $handler->display->display_options['filters']['field_event_collection_value']['id'] = 'field_event_collection_value';
+  $handler->display->display_options['filters']['field_event_collection_value']['table'] = 'field_data_field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection_value']['field'] = 'field_event_collection_value';
+  $handler->display->display_options['filters']['field_event_collection_value']['relationship'] = 'field_event_children_events_target_id';
+  $handler->display->display_options['filters']['field_event_collection_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_event_collection_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Past events */
   $handler = $view->new_display('block', 'Past events', 'block_1');
@@ -379,7 +415,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value2']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['filters']['field_event_date_value2']['field'] = 'field_event_date_value2';
   $handler->display->display_options['filters']['field_event_date_value2']['relationship'] = 'field_event_children_events_target_id';
-  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '>';
+  $handler->display->display_options['filters']['field_event_date_value2']['operator'] = '<';
   $handler->display->display_options['filters']['field_event_date_value2']['granularity'] = 'second';
   $handler->display->display_options['filters']['field_event_date_value2']['default_date'] = 'now';
   /* Filter criterion: Content: What do you want to create? (field_event_collection) */

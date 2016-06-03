@@ -121,6 +121,10 @@ function _dt_event_get_end_of_day($timestamp, $timezone = 'UTC') {
  *   TRUE if ongoing, FALSE otherwise.
  */
 function _dt_event_live_stream_state($event) {
+  if (empty($event->field_event_live_streaming_date)) {
+    return NULL;
+  }
+
   // Entity metadata wrapper.
   $emw = entity_metadata_wrapper('node', $event);
   // Set our start and end date.
