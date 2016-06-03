@@ -1678,6 +1678,84 @@ This will appear as a timeline on the page.
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_core_quick_nav_links'.
+  $field_instances['node-basic_page-field_core_quick_nav_links'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 40,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'structured_content_links',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_quick_nav_links',
+    'label' => 'Quick navigational links',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-field_core_social_network_links'.
   $field_instances['node-basic_page-field_core_social_network_links'] = array(
     'bundle' => 'basic_page',
@@ -2132,6 +2210,7 @@ This will appear as a timeline on the page.
   t('Parent');
   t('Parent pages');
   t('Priority');
+  t('Quick navigational links');
   t('Related Topics');
   t('Related commissioners');
   t('Related content');
