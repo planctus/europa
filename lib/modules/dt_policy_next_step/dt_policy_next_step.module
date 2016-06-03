@@ -115,7 +115,12 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
   if ($field['cardinality'] == 1) {
     $element['#type'] = 'fieldset';
   }
-
+  $element['when_timeframe'] = array(
+    '#title' => t('When/timeframe'),
+    '#type' => 'textfield',
+    '#description' => t('Please provide date and time information.'),
+    '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
+  );
   // Item description.
   $element['steps_in_bullets'] = array(
     '#title' => t('Step in bullets'),
@@ -127,47 +132,26 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
     '#format' => 'full_html',
     '#weight' => 100,
   );
-
-  switch ($settings['timeline_type']) {
-
-    case 'timeline_schedule':
-      // Show the setting only if necessary.
-      if ($settings['timezone']) {
-        $element['timezone'] = array(
-          '#type' => 'date_timezone',
-          '#date_label_position' => 'above',
-          '#options' => system_time_zones(),
-          '#default_value' => isset($items[$delta]['timezone']) ? $items[$delta]['timezone'] : date_default_timezone(),
-          '#description' => t('Will be displayed on the first item of the timeline list.'),
-          '#required' => FALSE,
-        );
-      }
-
-      $element['time_date_start'] = array(
-        '#title' => t('Schedule item start'),
-        '#type' => 'date_popup',
-        '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
-        '#description' => t('The time will be displayed for the user.'),
-      );
-      $element['time_date_end'] = array(
-        '#title' => t('Schedule item end'),
-        '#type' => 'date_popup',
-        '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
-        '#description' => t('The time will be displayed for the user.'),
-      );
-      $element['steps_in_bullets']['#title'] = t('Schedule item description');
-      $element['steps_in_bullets']['#description'] = t('Describe the contents of the item.');
-      break;
-
-    case 'timeline':
-      $element['when_timeframe'] = array(
-        '#title' => t('When/timeframe'),
-        '#type' => 'textfield',
-        '#description' => t('Please provide date and time information.'),
-        '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
-      );
-      break;
-  }
+  $element['timezone'] = array(
+    '#type' => 'date_timezone',
+    '#date_label_position' => 'above',
+    '#options' => system_time_zones(),
+    '#default_value' => isset($items[$delta]['timezone']) ? $items[$delta]['timezone'] : date_default_timezone(),
+    '#description' => t('Will be displayed on the first item of the timeline list.'),
+    '#required' => FALSE,
+  );
+  $element['time_date_start'] = array(
+    '#title' => t('Schedule item start'),
+    '#type' => 'date_popup',
+    '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
+    '#description' => t('The time will be displayed for the user.'),
+  );
+  $element['time_date_end'] = array(
+    '#title' => t('Schedule item end'),
+    '#type' => 'date_popup',
+    '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
+    '#description' => t('The time will be displayed for the user.'),
+  );
 
   return $element;
 }
