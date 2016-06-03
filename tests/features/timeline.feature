@@ -1,4 +1,4 @@
-@api @information @wip
+@api @information
 Feature: Timeline schedule field formatter
   In order show information on a timeline
   As a content editor
@@ -9,6 +9,7 @@ Feature: Timeline schedule field formatter
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
     Then I should see "Timeline schedule" in the "#field-ui-field-edit-form" element
 
+  @wip
   Scenario: Timeline schedule variant option setting saves correctly
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
@@ -30,7 +31,6 @@ Feature: Timeline schedule field formatter
     And I press the "Save settings" button
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
     Then the "instance[widget][settings][timezone]" checkbox should not be checked
-    Then show last response
 
   Scenario: Timeline schedule widget input should contain a select for a timezone
     Given I am logged in as a user with the "administrator" role
@@ -49,12 +49,3 @@ Feature: Timeline schedule field formatter
     Given I am logged in as a user with the "administrator" role
     When I go to "node/add/event"
     Then I should see "Schedule item end"
-
-  Scenario: Event content can be saved with timeline schedule widget
-    Given I am viewing an "Event" content:
-      | title    | Event saving success |
-      | status   | 1                    |
-    And I am logged in as a user with the "administrator" role
-    And I go to "admin/content"
-    And I follow "Event saving success"
-    Then I should see text matching "Event saving success"
