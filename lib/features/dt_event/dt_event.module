@@ -48,6 +48,22 @@ function dt_event_entitycache_node_load($entities) {
 }
 
 /**
+ * Implements hook_dt_header_background_info().
+ */
+function dt_event_dt_header_background_info() {
+  return [
+    [
+      'view_mode' => 'event_collection',
+      'content_type' => 'event',
+    ],
+    [
+      'view_mode' => 'event_past',
+      'content_type' => 'event',
+    ],
+  ];
+}
+
+/**
  * Implements hook_entity_view_mode_alter().
  */
 function dt_event_entity_view_mode_alter(&$view_mode, $context) {
