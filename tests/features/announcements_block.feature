@@ -3,7 +3,7 @@ Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
-  @information
+  @wip
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/appearance/settings_en"
@@ -53,7 +53,7 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on Page"
 
-  @shared
+  @wip
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/appearance/settings_en"
@@ -77,7 +77,7 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on PPA"
 
-  @information
+  @wip
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/appearance/settings_en"
@@ -110,7 +110,7 @@ Feature: Announcements block
     Then I should see "Other social networks" in the ".social-media-links" element
     Then I should see "Facebook" in the ".social-media-links" element
 
-  @information
+  @wip
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/appearance/settings_en"
