@@ -30,7 +30,7 @@ function theme_site_switcher_tabs($variables) {
     [
       'label' => t("Policies, information and services"),
       'url' => variable_get('site_switcher_info_url', 'https://ec.europa.eu/info/') . 'index_' . $language->prefix . (isset($parameters['2nd-language']) ? '?2nd-language=' . $parameters['2nd-language'] : ''),
-      'active' => module_exists('dt_core_info') ? ' is-selected' : '',
+      'active' => (module_exists('dt_core_info') || module_exists('dt_core_brp')) ? ' is-selected' : '',
     ],
   ];
 
