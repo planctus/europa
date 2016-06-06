@@ -155,6 +155,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
       $element['time_date_start'] = array(
         '#title' => t('Schedule item start'),
         '#type' => 'date_popup',
+        '#required' => TRUE,
         '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),
@@ -254,7 +255,7 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
   $element['date_formatter'] = array(
     '#title' => t('Dates formatter'),
     '#type' => 'textfield',
-    '#default_value' => isset($settings['date_formatter']) ? $settings['date_formatter'] : '',
+    '#default_value' => isset($settings['date_formatter']) ? $settings['date_formatter'] : 'H:i',
     '#description' => t('!rules formatting rules can be applied',
       array('!rules' => l(t('These'), 'http://php.net/manual/en/function.date.php'))),
   );
