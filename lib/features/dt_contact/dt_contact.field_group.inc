@@ -51,8 +51,9 @@ function dt_contact_field_group_info() {
     'label' => 'Content',
     'weight' => '18',
     'children' => array(
-      0 => 'body',
-      1 => 'title_field',
+      0 => 'title_field',
+      1 => 'body',
+      2 => 'field_core_social_network_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
