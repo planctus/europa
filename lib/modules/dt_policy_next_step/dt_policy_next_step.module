@@ -177,7 +177,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function dt_policy_next_step_field_is_empty($item, $field) {
-  return FALSE;
+  return empty($item['when_timeframe']) && empty($item['time_date_start']);
 }
 
 /**
