@@ -6,6 +6,12 @@ Feature: Legacy links
   As an anonymous user
   I should be able to see legacy link content that is not full view mode
 
+  Background:
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+
   Scenario: Show external legacy link on announcement teaser
     Given "Page" content:
       | title         | language | field_core_description | status | field_core_latest_visibility |

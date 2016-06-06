@@ -3,6 +3,12 @@ Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
+  Background:
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+
   @information
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
@@ -39,6 +45,7 @@ Feature: Announcements block
     Then I should not see the link "Announcement on Page"
     When I follow "New draft" in the "tabs" region
     And I check "Latest visibility"
+    And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on Page"
@@ -58,6 +65,7 @@ Feature: Announcements block
     Then I should not see the link "Announcement on PPA"
     When I follow "New draft" in the "tabs" region
     And I check "Latest visibility"
+    And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on PPA"
@@ -112,3 +120,4 @@ Feature: Announcements block
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
     Then I should see "Featured item" in the ".featured-item" element
+

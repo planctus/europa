@@ -16,6 +16,7 @@ features[ds_layout_settings][] = node|basic_page|teaser
 features[ds_layout_settings][] = node|basic_page|title
 features[features_api][] = api:2
 features[variable][] = pathauto_node_basic_page_pattern
+features[variable][] = field_bundle_settings_node__basic_page
 features[field_group][] = group_background|node|basic_page|form
 features[field_group][] = group_content_tabgroup|node|basic_page|form
 features[field_group][] = group_editorial_settings|node|basic_page|form
