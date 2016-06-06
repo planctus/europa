@@ -26,7 +26,7 @@ function dt_core_info_metatag_export_default() {
         'value' => '',
       ),
       'keywords' => array(
-        'value' => 'European Comission, European Union, EU',
+        'value' => 'European Commission, European Union, EU',
       ),
       'robots' => array(
         'value' => array(

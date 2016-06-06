@@ -24,7 +24,7 @@ function cwt_core_metatag_export_default() {
         'value' => '',
       ),
       'keywords' => array(
-        'value' => 'European Comission, European Union, EU',
+        'value' => 'European Commission, European Union, EU',
       ),
       'robots' => array(
         'value' => array(
@@ -392,7 +392,7 @@ function cwt_core_metatag_export_default() {
         'value' => '[node:title] - [site:slogan]',
       ),
       'keywords' => array(
-        'value' => '[node:title], European Comission, European Union, EU, [node:field-tags]',
+        'value' => '[node:title], European Commission, European Union, EU, [node:field-tags]',
       ),
       'dcterms.title' => array(
         'value' => '[node:title] - [site:name]',
