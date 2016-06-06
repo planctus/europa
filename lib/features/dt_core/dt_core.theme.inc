@@ -18,15 +18,27 @@ function theme_site_switcher_tabs($variables) {
   global $language;
   $parameters = drupal_get_query_parameters();
 
-  $info_url = variable_get('site_switcher_info_url', 'https://beta.ec.europa.eu/') . 'index_' . $language->prefix . (isset($parameters['2nd-language']) ? '?2nd-language=' . $parameters['2nd-language'] : '');
-  $political_url = variable_get('site_switcher_political_url', 'http://ec.europa.eu/') . 'index_' . $language->prefix . '.htm';
-
   $modifier = isset($variables['modifier']) ? $variables['modifier'] : "";
+
+  // Array of sites in the correct order.
+  $sites = [
+    [
+      'label' => t("Commission and its priorities"),
+      'url' => variable_get('site_switcher_political_url', 'http://ec.europa.eu/') . 'index_' . $language->prefix . '.htm',
+      'active' => module_exists('dt_core_pol') ? ' is-selected' : '',
+    ],
+    [
+      'label' => t("Policies, information and services"),
+      'url' => variable_get('site_switcher_info_url', 'https://ec.europa.eu/info/') . 'index_' . $language->prefix . (isset($parameters['2nd-language']) ? '?2nd-language=' . $parameters['2nd-language'] : ''),
+      'active' => module_exists('dt_core_info') ? ' is-selected' : '',
+    ],
+  ];
 
   $output = "<div class='site-switcher $modifier'>";
   $output .= "<ul class='site-switcher__list'>";
-  $output .= "<li class='site-switcher__option'><a href='$political_url'>" . t("Commission and its priorities") . "</a></li>";
-  $output .= "<li class='site-switcher__option is-selected'><a href='$info_url'>" . t("Policies, information and services") . "</a></li>";
+  foreach ($sites as $site) {
+    $output .= '<li class="site-switcher__option' . $site['active'] . '"><a href="' . $site['url'] . '">' . $site['label'] . '</a></li>';
+  }
   $output .= "</ul>";
   $output .= "</div>";
 
