@@ -9,15 +9,6 @@ Feature: Timeline schedule field formatter
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
     Then I should see "Timeline schedule" in the "#field-ui-field-edit-form" element
 
-  @wip
-  Scenario: Timeline schedule variant option setting saves correctly
-    Given I am logged in as a user with the "administrator" role
-    When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
-    And I select the "Timeline Schedule" radio button.
-    And I press the "Save settings" button
-    When I go to "admin/structure/types/manage/event/fields/field_event_schedule"
-    Then radio button with label "Timeline Schedule" should be checked
-
   Scenario: Timeline schedule variant contains an option for a time zone functionality
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/structure/types/manage/event/fields/field_event_schedule"

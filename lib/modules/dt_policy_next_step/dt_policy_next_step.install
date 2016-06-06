@@ -27,14 +27,14 @@ function dt_policy_next_step_field_schema($field) {
       'not null' => FALSE,
     ),
     'time_date_start' => array(
-      'type' => 'text',
-      'size' => 'big',
+      'type' => 'varchar',
+      'length' => 255,
       'description' => "Start date of the item",
       'not null' => FALSE,
     ),
     'time_date_end' => array(
-      'type' => 'text',
-      'size' => 'big',
+      'type' => 'varchar',
+      'length' => 255,
       'description' => "End date of the item",
       'not null' => FALSE,
     ),
