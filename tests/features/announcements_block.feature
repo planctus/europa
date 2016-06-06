@@ -1,16 +1,17 @@
-@api @wip
+@api
 Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
 
-  @information
-  Scenario Outline: Visitors should see the latests announcements block on content types
+  Background:
     Given I am logged in as a user with the "administrator" role
     When I go to "admin/appearance/settings_en"
     And I check the box "Would you like to show the latest block when it is available?"
     And I press "Save configuration"
-    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
 
+  @information
+  Scenario Outline: Visitors should see the latests announcements block on content types
+    Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
       | title                             | status | field_core_description |
       | <content_name> with announcements | 1      | Sample description     |
@@ -32,10 +33,6 @@ Feature: Announcements block
   @shared @brp
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
-    And I check the box "Would you like to show the latest block when it is available?"
-    And I press "Save configuration"
-    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Page" content:
       | title                   | status | field_core_description | field_core_latest_visibility |
       | Page with announcements | 1      | Sample description     | Disable                      |
@@ -56,10 +53,6 @@ Feature: Announcements block
   @shared
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
-    And I check the box "Would you like to show the latest block when it is available?"
-    And I press "Save configuration"
-    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Priority policy area" content:
       | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content |
       | PPA with announcements | 1      | Sample description     | Disable                      | default                 |
@@ -80,10 +73,6 @@ Feature: Announcements block
   @information
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
-    And I check the box "Would you like to show the latest block when it is available?"
-    And I press "Save configuration"
-    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Social Networks" terms:
       | name     | name_field |
       | Facebook | Facebook   |
@@ -113,10 +102,6 @@ Feature: Announcements block
   @information
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
-    Given I check the box "Would you like to show the latest block when it is available?"
-    And I press "Save configuration"
-    Then the "Would you like to show the latest block when it is available?" checkbox should be checked
     Given "Featured item" content:
       | title         | status |
       | Featured item | 1      |
