@@ -9,7 +9,6 @@ dependencies[] = dt_topic
 dependencies[] = entityreference_titleoverwrite_tmgmt
 dependencies[] = field_group
 dependencies[] = nexteuropa_formatters
-dependencies[] = og
 features[conditional_fields][] = node:department
 features[context][] = departments_landing_page
 features[ctools][] = context:context:3
