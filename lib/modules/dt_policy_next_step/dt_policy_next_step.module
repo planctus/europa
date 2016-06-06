@@ -91,7 +91,7 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
   $element['timezone'] = array(
     '#type' => 'checkbox',
     '#title' => t('Use timezone functionality'),
-    '#description' => t('When enabled, the visualization of the date item will contain the time zone information.'),
+    '#description' => t('Enable attaching this information ot the timeline item.'),
     '#default_value' => isset($settings['value']['timezone']) ? $settings['value']['timezone'] : $settings['timezone'],
     '#return_value' => 1,
     '#states' => array(
@@ -226,6 +226,8 @@ function dt_policy_next_step_field_formatter_info() {
       'field types' => array('dt_policy_next_step_field'),
       'settings' => array(
         'modifier' => '',
+        'date_formatter' => '',
+        'show_timezone' => 1,
       ),
     ),
   );
@@ -249,6 +251,23 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
     ),
     '#default_value' => $settings['modifier'],
   );
+  $element['date_formatter'] = array(
+    '#title' => t('Dates formatter'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['date_formatter']) ? $settings['date_formatter'] : '',
+    '#description' => t('!rules formatting rules can be applied',
+      array('!rules' => l(t('These'), 'http://php.net/manual/en/function.date.php'))),
+  );
+  $element['timezone'] = array(
+    '#type' => 'select',
+    '#title' => t('Show timezone information'),
+    '#description' => t('Enable the display of the timezone information in the front-end.'),
+    '#default_value' => isset($settings['timezone']) ? $settings['timezone'] : 1,
+    '#options' => array(
+      1 => t('Yes'),
+      0 => t('No'),
+    ),
+  );
 
   return $element;
 }
@@ -260,6 +279,9 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
   $elements = array();
   if (!empty($items)) {
     $modifier = !empty($display['settings']['modifier']) ? ' ' . $display['settings']['modifier'] : '';
+    $date_formatter = empty($display['settings']['date_formatter']) ? 'H:i' : $display['settings']['date_formatter'];
+    $show_timezone = isset($display['settings']['show_timezone']) ? $display['settings']['show_timezone'] : 1;
+
     $elements['#prefix'] = '<div class="timeline' . $modifier . '">';
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {
@@ -269,6 +291,8 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
         '#element' => $item,
         '#field' => $instance,
         '#display' => $display,
+        '#date_formatter' => $date_formatter,
+        '#show_timezone' => $show_timezone,
       );
     }
   }
@@ -314,6 +338,8 @@ function dt_policy_next_step_theme() {
         'element' => NULL,
         'field' => NULL,
         'modifiers' => array(),
+        'date_formatter' => '',
+        'show_timezone' => '',
       ),
     ),
   );
@@ -325,10 +351,13 @@ function dt_policy_next_step_theme() {
 function theme_dt_policy_next_step_formatter_default($vars) {
   $element = $vars['element'];
   $widget_settings = $vars['field']['widget']['settings'];
+  $timeline_type = isset($widget_settings['value']['timeline_type']) ? $widget_settings['value']['timeline_type'] : $widget_settings['timeline_type'];
+  $show_timezone = $vars['show_timezone'];
+  $date_formatter = $vars['date_formatter'];
 
   $output = '<div class="timeline__item">';
 
-  switch ($widget_settings['timeline_type']) {
+  switch ($timeline_type) {
     case 'timeline':
       // When/timeframe.
       if (!empty($element['when_timeframe'])) {
@@ -339,12 +368,12 @@ function theme_dt_policy_next_step_formatter_default($vars) {
     case 'timeline_schedule':
       $output .= '<div class="timeline__item-title">';
       if (!empty($element['time_date_start'])) {
-        $output .= $element['time_date_start'];
+        $output .= date($date_formatter, strtotime($element['time_date_start']));
       }
       if (!empty($element['time_date_end'])) {
-        $output .= ' - ' . $element['time_date_end'];
+        $output .= ' - ' . date($date_formatter, strtotime($element['time_date_end']));
       }
-      if (!empty($element['timezone']) && $widget_settings['timezone']) {
+      if ($show_timezone && isset($element['timezone'])) {
         $output .= ' (' . $element['timezone'] . ')';
       }
       $output .= '</div>';
