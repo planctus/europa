@@ -1310,7 +1310,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(
           'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
-          'show_timezone' => 1,
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 44,

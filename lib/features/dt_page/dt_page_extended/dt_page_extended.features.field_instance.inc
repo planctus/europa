@@ -1085,7 +1085,14 @@ function dt_page_extended_field_default_field_instances() {
   // Exported field_instance: 'node-basic_page-field_core_next_steps'.
   $field_instances['node-basic_page-field_core_next_steps'] = array(
     'bundle' => 'basic_page',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'steps_in_bullets' => array(
+          'format' => 'full_html',
+          'value' => '',
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Set the next steps.
 This will appear as a timeline on the page.
@@ -1095,7 +1102,9 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 32,
@@ -1104,7 +1113,9 @@ This will appear as a timeline on the page.
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 9,
@@ -1113,7 +1124,9 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 20,
@@ -1138,9 +1151,12 @@ This will appear as a timeline on the page.
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 1,
+        'value' => array(
+          'rows' => 5,
+          'size' => 1,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 34,
