@@ -1239,9 +1239,9 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
@@ -1287,7 +1287,14 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
   // Exported field_instance: 'node-policy-field_policy_next_steps'.
   $field_instances['node-policy-field_policy_next_steps'] = array(
     'bundle' => 'policy',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'steps_in_bullets' => array(
+          'format' => 'full_html',
+          'value' => '',
+        ),
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.',
     'display' => array(
@@ -1301,7 +1308,9 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 1,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 44,
@@ -1332,8 +1341,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'rows' => 5,
-        'size' => 255,
+        'value' => array(
+          'rows' => 5,
+          'size' => 255,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 42,
