@@ -8,9 +8,7 @@
  * Implements hook_install().
  */
 function dt_roles_permissions_install() {
-  $path = drupal_get_path('module', 'dt_roles_permissions') . '/dt_roles_permissions.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message('DT roles and permissions %v feature is installed on your site.', array('%v' => $info['version']));
+  drupal_set_message('DT roles and permissions feature is installed on your site.');
   module_enable(array('dt_roles_permissions_import'));
 }
 
@@ -18,9 +16,7 @@ function dt_roles_permissions_install() {
  * Implements hook_uninstall().
  */
 function dt_roles_permissions_uninstall() {
-  $path = drupal_get_path('module', 'dt_roles_permissions') . '/dt_roles_permissions.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('DT roles and permissions %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('DT roles and permissions feature is uninstalled on your site.'));
 }
 
 /**
