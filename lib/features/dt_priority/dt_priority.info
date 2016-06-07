@@ -2,7 +2,8 @@ name = DT Priority
 description = DT Priority feature
 core = 7.x
 package = NextEuropa Digital Transformation Political
-version = 7.x-1.0-dev
+version = 7.x-1.0
+php = 5.5
 project = dt_priority
 dependencies[] = dt_banner
 dependencies[] = dt_core
@@ -94,3 +95,4 @@ features_exclude[field_instance][node-priority-field_pri_pol_child_pri_pol_area]
 features_exclude[field_instance][node-priority-field_core_social_network_links] = node-priority-field_core_social_network_links
 features_exclude[field_instance][node-priority-field_pri_pol_area_policy_intro] = node-priority-field_pri_pol_area_policy_intro
 features_exclude[field_instance][node-priority-field_core_topics] = node-priority-field_core_topics
+multisite_version = 2.2

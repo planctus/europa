@@ -10,9 +10,8 @@
 function dt_core_info_install() {
   // Those are basic configuration features for each class.
   $dt_classes = array(
-    'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core',
+    'dt_info_homepage',
     // Roles and permissions.
     'dt_roles_permissions',
   );
