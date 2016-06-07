@@ -6,16 +6,43 @@
  * @see http://thinkshout.com/blog/2014/05/custom-date-formats-in-drupal/
  */
 
+use Drupal\dt_date_format\DtDateRangeFormat;
+
 /**
  * Implements hook_field_formatter_info().
  */
 function dt_date_format_field_formatter_info() {
-  return array(
-    'date_event_date' => array(
+  return [
+    'date_event_date' => [
       'label' => t('Event formatter (example: 11 - 14 October 2013)'),
-      'field types' => array('datetime', 'date', 'datestamp'),
-    ),
-  );
+      'field types' => [
+        'datetime',
+        'date',
+        'datestamp',
+      ],
+      'settings' => [
+        'render_box' => TRUE,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Add the field formatter settings form.
+ */
+function dt_date_format_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = [];
+
+  $element['render_box'] = [
+    '#title' => t('Render as date box'),
+    '#type' => 'checkbox',
+    '#default_value' => isset($settings['render_box']) ? $settings['render_box'] : TRUE,
+  ];
+
+  return $element;
 }
 
 /**
@@ -55,68 +82,38 @@ function dt_date_format_date_formats() {
  * Implements hook_field_formatter_view().
  */
 function dt_date_format_field_formatter_view($obj_type, $object, $field, $instance, $langcode, $items, $display) {
-  $element = array();
-  // Build variables array for formatter.
-  $variables = array(
-    '#obj_type' => $obj_type,
-    '#object' => $object,
-    '#field' => $field,
-    '#instance' => $instance,
-    '#langcode' => $langcode,
-    '#items' => $items,
-    '#display' => $display,
-  );
-  if (function_exists($function = "{$display['module']}_field_formatter_{$display['type']}")) {
-    $element[0] = array(
-      '#markup' => $function($variables),
-    );
-  }
-
-  return $element;
-}
-
-/**
- * Field Formatter; Date: Event date.
- */
-function dt_date_format_field_formatter_date_event_date($variables) {
-  $element = array();
-
-  foreach ($variables['#items'] as $delta => $item) {
+  foreach ($items as $item) {
     // Get the timestamp regardless of the date format.
-    $start_date = ($item['date_type'] == 'datestamp') ? $item['value'] : strtotime($item['value']);
-    $end_date = ($item['date_type'] == 'datestamp') ? $item['value2'] : strtotime($item['value2']);
+    $date_object = new DtDateRangeFormat($item['value'], $item['value2'], $item['date_type']);
 
-    // Get the commonly used strings from the timestamp.
-    $start_date_numeric_day = format_date($start_date, 'custom', "d");
-    $end_date_numeric_day = format_date($start_date, 'custom', "d");
-    $start_date_year = format_date($start_date, 'custom', "Y");
-    $end_date_year = format_date($start_date, 'custom', "Y");
+    if ($display['settings']['render_box']) {
+      // Build the array.
+      $markup = '<span class="date-block__day-text">' . implode(' - ', $date_object->getDays()) . '</span>';
+      $markup .= '<span class="date-block__day">' . implode(' - ', $date_object->getDays('d')) . '</span>';
+      $markup .= '<span class="date-block__month">' . implode(' - ', $date_object->getMonths()) . '</span>';
 
-    // Initialize the markup string.
-    $output_date = '';
-
-    // Conditional formatting.
-    if (format_date($start_date, 'custom', "M") == format_date($end_date, 'custom', "M") && $start_date_year == $end_date_year) {
-      if ($start_date_numeric_day < $end_date_numeric_day) {
-        // Same month.
-        $output_date .= '<span class="date-block__day-text">' . format_date($start_date, 'custom', "D") . ' - ' . format_date($end_date, 'custom', "D") . '</span>';
-        $output_date .= '<span class="date-block__day">' . $start_date_numeric_day . ' - ' . $end_date_numeric_day . '</span>';
-        $output_date .= '<span class="date-block__month">' . format_date($start_date, 'custom', "M") . '</span>';
-        return '<div class="date-block">' . $output_date . '</div>';
-      }
-      elseif ($start_date_numeric_day == $end_date_numeric_day) {
-        // Same mont and same day.
-        $output_date .= '<span class="date-block__day-text">' . format_date($start_date, 'custom', "D") . '</span>';
-        $output_date .= '<span class="date-block__day">' . $start_date_numeric_day . '</span>';
-        $output_date .= '<span class="date-block__month">' . format_date($start_date, 'custom', "M") . '</span>';
-        return '<div class="date-block">' . $output_date . '</div>';
-      }
+      return [
+        [
+          '#markup' => $markup,
+          '#prefix' => '<div class="date-block">',
+          '#suffix' => '</div>',
+        ],
+      ];
     }
 
-    // Different month. (aka fallback)
-    $output_date .= '<span class="date-block__day-text">' . format_date($start_date, 'custom', "D") . ' - ' . format_date($end_date, 'custom', "D") . '</span>';
-    $output_date .= '<span class="date-block__day">' . $start_date_numeric_day . ' - ' . $end_date_numeric_day . '</span>';
-    $output_date .= '<span class="date-block__month">' . format_date($start_date, 'custom', "M") . ' - ' . format_date($end_date, 'custom', "M") . '</span>';
-    return '<div class="date-block">' . $output_date . '</div>';
+    if ($date_object->isSameDay()) {
+      $date_object->setFormat('sd_D sd_d sd_M, sd_H:sd_i - ed_D ed_d ed_M, ed_H:ed_i (T)');
+    }
+    else {
+      $date_object->setFormat('sd_D sd_d sd_M, sd_H:sd_i - ed_D ed_d ed_M, ed_H:ed_i (T)');
+    }
+
+    return [
+      [
+        '#markup' => $date_object->formatDateRange(),
+      ],
+    ];
   }
+
+  return NULL;
 }
