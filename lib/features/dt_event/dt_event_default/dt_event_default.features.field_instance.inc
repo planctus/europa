@@ -1803,9 +1803,9 @@ On what day does the event end?',
       ),
       'meta' => array(
         'label' => 'hidden',
-        'module' => 'commissioner_date',
+        'module' => 'dt_date_format',
         'settings' => array(),
-        'type' => 'commissioner_date_event_date',
+        'type' => 'date_event_date',
         'weight' => 45,
       ),
       'teaser' => array(
