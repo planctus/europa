@@ -435,23 +435,23 @@ function _dt_event_ds_fields_header_event($field) {
     switch ($field['entity']->event_status) {
       // Ongoing, it shows the current date.
       case DT_EVENT_STATE_ONGOING:
-        $date_value = format_date(time(), 'dt_event', '', NULL, $lang);
+        $date_value = format_date(time(), 'ec_date_l_j_f', '', NULL, $lang);
         break;
 
       // Past event, it shows also the year.
       case DT_EVENT_STATE_PAST:
-        $date_value = format_date($date['value'], 'dt_past_event', '', NULL, $lang);
+        $date_value = format_date($date['value'], 'ec_date_j_f_y', '', NULL, $lang);
         break;
 
       // Cancelled, apply the right date format.
       case DT_EVENT_STATE_CANCELLED:
         $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-        $date_value = time() > $end_date ? format_date($date['value'], 'dt_past_event', '', NULL, $lang) : format_date($date['value'], 'dt_event', '', NULL, $lang);
+        $date_value = time() > $end_date ? format_date($date['value'], 'ec_date_j_f_y', '', NULL, $lang) : format_date($date['value'], 'ec_date_l_j_f', '', NULL, $lang);
         break;
 
       // Default is showing the start date of the event.
       default:
-        $date_value = format_date($date['value'], 'dt_event', '', NULL, $lang);
+        $date_value = format_date($date['value'], 'ec_date_l_j_f', '', NULL, $lang);
     }
 
     // Add the date markup.
