@@ -1054,3 +1054,47 @@ function _dt_core_menu_item_name_get($name, $menu) {
     return FALSE;
   }
 }
+
+/**
+ * Implements hook_schema_alter().
+ */
+function dt_core_schema_alter(&$schema) {
+  // Data tables.
+  $schema['field_data_field_core_next_steps']['fields']['field_core_next_steps_timezone'] = array(
+    'type' => 'text',
+    'size' => 'big',
+    'description' => "Definition of timezone to use for the dates",
+    'not null' => FALSE,
+  );
+  $schema['field_data_field_core_next_steps']['fields']['field_core_next_steps_time_date_start'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'description' => "Start date of the item",
+    'not null' => FALSE,
+  );
+  $schema['field_data_field_core_next_steps']['fields']['field_core_next_steps_time_date_end'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'description' => "End date of the item",
+    'not null' => FALSE,
+  );
+  // Revisions tables.
+  $schema['field_revision_field_core_next_steps']['fields']['field_core_next_steps_timezone'] = array(
+    'type' => 'text',
+    'size' => 'big',
+    'description' => "Definition of timezone to use for the dates",
+    'not null' => FALSE,
+  );
+  $schema['field_revision_field_core_next_steps']['fields']['field_core_next_steps_time_date_start'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'description' => "Start date of the item",
+    'not null' => FALSE,
+  );
+  $schema['field_revision_field_core_next_steps']['fields']['field_core_next_steps_time_date_end'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'description' => "End date of the item",
+    'not null' => FALSE,
+  );
+}

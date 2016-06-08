@@ -92,3 +92,19 @@ function dt_policy_update_7103() {
 function dt_policy_update_7104() {
   features_revert_module("dt_policy");
 }
+
+/**
+ * DTTSB-236 - Extending next_step field type.
+ */
+function dt_policy_update_7105() {
+  // Data tables.
+  $schema = drupal_get_schema('field_data_field_policy_next_steps');
+  db_add_field('field_data_field_policy_next_steps', 'field_policy_next_steps_timezone', $schema['fields']['field_policy_next_steps_timezone']);
+  db_add_field('field_data_field_policy_next_steps', 'field_policy_next_steps_time_date_start', $schema['fields']['field_policy_next_steps_time_date_start']);
+  db_add_field('field_data_field_policy_next_steps', 'field_policy_next_steps_time_date_end', $schema['fields']['field_policy_next_steps_time_date_end']);
+  // Revisions tables.
+  $schema = drupal_get_schema('field_revision_field_policy_next_steps');
+  db_add_field('field_revision_field_policy_next_steps', 'field_policy_next_steps_timezone', $schema['fields']['field_policy_next_steps_timezone']);
+  db_add_field('field_revision_field_policy_next_steps', 'field_policy_next_steps_time_date_start', $schema['fields']['field_policy_next_steps_time_date_start']);
+  db_add_field('field_revision_field_policy_next_steps', 'field_policy_next_steps_time_date_end', $schema['fields']['field_policy_next_steps_time_date_end']);
+}
