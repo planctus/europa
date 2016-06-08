@@ -909,7 +909,7 @@ function dt_core_update_7165() {
 }
 
 /**
- * DTTSB-236 - Extending next_step field type.
+ * DTTSB-236: Extending next_step field type.
  */
 function dt_core_update_7166() {
   // Data tables.
