@@ -111,6 +111,14 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
   $widget = $instance['widget'];
   $settings = $widget['settings'];
 
+  $date_is_obligatory = TRUE;
+  if ($form_state['build_info']['form_id'] == 'field_ui_field_edit_form') {
+    $date_is_obligatory = FALSE;
+  }
+
+  $timeline_type = isset($settings['value']['timeline_type']) ? $settings['value']['timeline_type'] : $settings['timeline_type'];
+  $timezone = isset($settings['value']['timezone']) ? $settings['value']['timezone'] : $settings['timezone'];
+
   // In case of only one field item used.
   if ($field['cardinality'] == 1) {
     $element['#type'] = 'fieldset';
@@ -127,9 +135,6 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
     '#format' => 'full_html',
     '#weight' => 100,
   );
-
-  $timeline_type = isset($settings['timeline_type']) ? $settings['timeline_type'] : $settings['value']['timeline_type'];
-  $timezone = isset($settings['timezone']) ? $settings['timezone'] : $settings['value']['timezone'];
 
   switch ($timeline_type) {
     case 'timeline':
@@ -155,7 +160,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
       $element['time_date_start'] = array(
         '#title' => t('Schedule item start'),
         '#type' => 'date_popup',
-        '#required' => TRUE,
+        '#required' => $date_is_obligatory,
         '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),
