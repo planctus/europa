@@ -64,16 +64,6 @@ function dt_roles_permissions_user_default_permissions() {
     'module' => 'bean',
   );
 
-  // Exported permission: 'administer permissions'.
-  $permissions['administer permissions'] = array(
-    'name' => 'administer permissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site manager' => 'site manager',
-    ),
-    'module' => 'user',
-  );
-
   // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',

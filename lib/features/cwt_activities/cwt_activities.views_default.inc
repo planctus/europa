@@ -88,7 +88,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -241,7 +241,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -434,7 +434,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -738,7 +738,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'ec_date_j_f_y',
     'fromto' => 'both',

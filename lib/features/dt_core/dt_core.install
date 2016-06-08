@@ -64,9 +64,7 @@ function dt_core_uninstall() {
  */
 function dt_core_update_7101() {
   $slices = array(
-    'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core',
   );
   module_enable($slices);
 }
@@ -909,9 +907,17 @@ function dt_core_update_7165() {
 }
 
 /**
- * DTTSB-236: Extending next_step field type.
+ * DTTSB-457: Disable commissioner_date and enable dt_date_format.
  */
 function dt_core_update_7166() {
+  module_enable(['dt_date_format']);
+  module_disable(['commissioner_date']);
+}
+
+/**
+ * DTTSB-236: Extending next_step field type.
+ */
+function dt_core_update_7167() {
   // Data tables.
   $schema = drupal_get_schema('field_data_field_core_next_steps');
   db_add_field('field_data_field_core_next_steps', 'field_core_next_steps_timezone', $schema['fields']['field_core_next_steps_timezone']);

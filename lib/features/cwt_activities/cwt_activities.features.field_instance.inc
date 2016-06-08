@@ -277,9 +277,9 @@ function cwt_activities_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'commissioner_date',
+        'module' => 'dt_date_format',
         'settings' => array(),
-        'type' => 'commissioner_date_event_date',
+        'type' => 'date_event_date',
         'weight' => 4,
       ),
     ),
