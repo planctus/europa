@@ -905,3 +905,11 @@ function dt_core_update_7165() {
     image_style_flush(array('name' => $item));
   }
 }
+
+/**
+ * DTTSB-457: Disable commissioner_date and enable dt_date_format.
+ */
+function dt_core_update_7166() {
+  module_enable(['dt_date_format']);
+  module_disable(['commissioner_date']);
+}
