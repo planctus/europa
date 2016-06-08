@@ -124,7 +124,7 @@ function dt_event_preprocess_file_entity(&$variables) {
  */
 function dt_event_views_pre_render(&$view) {
   // Replace the [node_title] token in the views read more link.
-  if ($view->name == 'event_tabs') {
+  if ($view->name == 'events_list') {
     // If we have substitutions, we alter the button.
     if (!empty($view->build_info['substitutions']['%1'])) {
       $read_more_text = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $view->display['default']->handler->options['use_more_text']);
