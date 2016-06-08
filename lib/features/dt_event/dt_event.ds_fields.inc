@@ -6,6 +6,8 @@
  * This file contains all custom ds fields and related functions.
  */
 
+use Drupal\dt_date_format\DtDateRangeFormat;
+
 /**
  * Implements hook_ds_fields_info().
  */
@@ -432,30 +434,64 @@ function _dt_event_ds_fields_header_event($field) {
     // Cancelled, it shows the date with a modifier.
     $modifier = $field['entity']->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
 
+    // Initialize a dateRange object.
+    $date_object = new DtDateRangeFormat(
+      $date['value'],
+      $date['value2'],
+      $date['date_type'],
+      $date['timezone']
+    );
+
+    // @todo: $lang
+
     switch ($field['entity']->event_status) {
       // Ongoing, it shows the current date.
       case DT_EVENT_STATE_ONGOING:
-        $date_value = format_date(time(), 'ec_date_l_j_f', '', NULL, $lang);
+        // If it is ongoing, we use the current date.
+        $date_object->setStartDate(time());
+        $date_object->setFormat('sd_l sd_j sd_F');
         break;
 
       // Past event, it shows also the year.
       case DT_EVENT_STATE_PAST:
-        $date_value = format_date($date['value'], 'ec_date_j_f_y', '', NULL, $lang);
+        // Same date||day||hour (Tuesday 17 March).
+        if ($date_object->isSameDate(TRUE) || $date_object->isSameDate(FALSE, 'Ymd') || $date_object->isSameDate(FALSE, 'YmdHi')) {
+          $date_object->setFormat('sd_j sd_F sd_Y');
+        }
+        // Not the same day, but the same month.
+        elseif ($date_object->isSameDate(FALSE, 'Ym')) {
+          $date_object->setFormat('sd_j - ed_j sd_F sd_Y');
+        }
+        // Not the same day or month. (fallback).
+        else {
+          $date_object->setFormat('sd_j sd_F - ed_j ed_F sd_Y');
+        }
         break;
 
       // Cancelled, apply the right date format.
       case DT_EVENT_STATE_CANCELLED:
         $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-        $date_value = time() > $end_date ? format_date($date['value'], 'ec_date_j_f_y', '', NULL, $lang) : format_date($date['value'], 'ec_date_l_j_f', '', NULL, $lang);
+        time() > $end_date ? $date_object->setFormat('sd_j sd_F sd_Y') : $date_object->setFormat('sd_l sd_j sd_F');
         break;
 
       // Default is showing the start date of the event.
       default:
-        $date_value = format_date($date['value'], 'ec_date_l_j_f', '', NULL, $lang);
+        // Same date||day||hour (Tuesday 17 March).
+        if ($date_object->isSameDate(TRUE) || $date_object->isSameDate(FALSE, 'Ymd') || $date_object->isSameDate(FALSE, 'YmdHi')) {
+          $date_object->setFormat('sd_l sd_j sd_F');
+        }
+        // Not the same day, but the same month.
+        elseif ($date_object->isSameDate(FALSE, 'Ym')) {
+          $date_object->setFormat('sd_l sd_j - ed_l ed_j sd_F');
+        }
+        // Not the same day or month. (fallback).
+        else {
+          $date_object->setFormat('sd_l sd_j sd_F - ed_l ed_j ed_F');
+        }
     }
 
     // Add the date markup.
-    $markup .= '<div class="' . $modifier . 'page-header__date icon icon--calendar">' . $date_value . '</div>';
+    $markup .= '<div class="' . $modifier . 'page-header__date icon icon--calendar">' . $date_object->getformattedDateRange() . '</div>';
   }
 
   // Event location, online event only.

@@ -22,6 +22,9 @@ function dt_date_format_field_formatter_info() {
       ],
       'settings' => [
         'render_box' => TRUE,
+        'same_date_format' => 'sd_l sd_j sd_F',
+        'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+        'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
       ],
     ],
   ];
@@ -40,6 +43,24 @@ function dt_date_format_field_formatter_settings_form($field, $instance, $view_m
     '#title' => t('Render as date box'),
     '#type' => 'checkbox',
     '#default_value' => isset($settings['render_box']) ? $settings['render_box'] : TRUE,
+  ];
+
+  $element['same_date_format'] = [
+    '#title' => t('Same date format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['same_date_format']) ? $settings['same_date_format'] : 'sd_l sd_j sd_F',
+  ];
+
+  $element['same_day_format'] = [
+    '#title' => t('Same day format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['same_day_format']) ? $settings['same_day_format'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+  ];
+
+  $element['fallback'] = [
+    '#title' => t('Fallback date format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['fallback']) ? $settings['fallback'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
   ];
 
   return $element;
@@ -101,16 +122,23 @@ function dt_date_format_field_formatter_view($obj_type, $object, $field, $instan
       ];
     }
 
-    if ($date_object->isSameDay()) {
-      $date_object->setFormat('sd_D sd_d sd_M, sd_H:sd_i - ed_D ed_d ed_M, ed_H:ed_i (T)');
+    if ($date_object->isSameDate(TRUE)) {
+      // Monday 1 April.
+      $date_object->setFormat($display['settings']['same_date_format']);
+    }
+    // Same day.
+    elseif ($date_object->isSameDate(FALSE, 'Ymd')) {
+      // Tuesday 17 March, 9.00 – 18.00 (CET).
+      $date_object->setFormat($display['settings']['same_day_format']);
     }
     else {
-      $date_object->setFormat('sd_D sd_d sd_M, sd_H:sd_i - ed_D ed_d ed_M, ed_H:ed_i (T)');
+      // Fallback. (Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
+      $date_object->setFormat($display['settings']['fallback']);
     }
 
     return [
       [
-        '#markup' => $date_object->formatDateRange(),
+        '#markup' => $date_object->getformattedDateRange(),
       ],
     ];
   }
