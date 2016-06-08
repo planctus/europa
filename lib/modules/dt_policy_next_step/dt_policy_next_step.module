@@ -46,7 +46,7 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
   $element['timeline_type'] = array(
     '#title' => t('Select type'),
     '#type' => 'radios',
-    '#default_value' => isset($settings['value']['timeline_type']) ? $settings['value']['timeline_type'] : $settings['size'],
+    '#default_value' => isset($settings['value']['timeline_type']) ? $settings['value']['timeline_type'] : $settings['timeline_type'],
     '#description' => t('This option will define visualization'),
     '#options' => array(
       'timeline' => t('Timeline'),
@@ -111,11 +111,6 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
   $widget = $instance['widget'];
   $settings = $widget['settings'];
 
-  $date_is_obligatory = TRUE;
-  if ($form_state['build_info']['form_id'] == 'field_ui_field_edit_form') {
-    $date_is_obligatory = FALSE;
-  }
-
   $timeline_type = isset($settings['value']['timeline_type']) ? $settings['value']['timeline_type'] : $settings['timeline_type'];
   $timezone = isset($settings['value']['timezone']) ? $settings['value']['timezone'] : $settings['timezone'];
 
@@ -160,7 +155,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
       $element['time_date_start'] = array(
         '#title' => t('Schedule item start'),
         '#type' => 'date_popup',
-        '#required' => $date_is_obligatory,
+        '#required' => FALSE,
         '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),

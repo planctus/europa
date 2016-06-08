@@ -2996,17 +2996,7 @@ On what day does the event end?',
   // Exported field_instance: 'node-event-field_event_schedule'.
   $field_instances['node-event-field_event_schedule'] = array(
     'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'steps_in_bullets' => array(
-          'format' => 'full_html',
-          'value' => '',
-        ),
-        'timezone' => 'Europe/Luxembourg',
-        'time_date_start' => NULL,
-        'time_date_end' => NULL,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Details concerning the timing and schedule of an event. This can be limited or extended.',
     'display' => array(
