@@ -406,7 +406,6 @@ function _dt_event_ds_fields_livestreaming($field) {
  */
 function _dt_event_ds_fields_header_event($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  $lang = entity_translation_get_existing_language('node', $field['entity']);
   $date = $entity->field_event_date->value();
   $is_streaming = $entity->field_event_is_live_streaming->value();
 
@@ -439,10 +438,9 @@ function _dt_event_ds_fields_header_event($field) {
       $date['value'],
       $date['value2'],
       $date['date_type'],
-      $date['timezone']
+      $date['timezone'],
+      entity_translation_get_existing_language('node', $field['entity'])
     );
-
-    // @todo: $lang
 
     switch ($field['entity']->event_status) {
       // Ongoing, it shows the current date.

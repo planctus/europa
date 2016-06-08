@@ -16,28 +16,41 @@ $date_object->setFormat('sd_l sd_d sd_M, sd_H:sd_i - ed_H:ed_i (sd_T)');
 echo $date_object->getformattedDateRange();
 ```
 
-The class also provides a few usefull helper methodes:
+The class also provides a usefull helper methodes:
 
 ```php
-$date_object->isSameDate();
-$date_object->isSameYear();
-$date_object->isSameMonth();
-$date_object->isSameDay();
+/**
+* Checks if the start and end date are equal.
+*
+* @param bool $strict
+*   To check in a strict way by comparing the timestamp.
+* @param string $format
+*   The format to compare for.
+*
+* @return bool
+*   True/false.
+*/
+public function isSameDate($strict = FALSE, $format = 'dmY') {
+    if (!$strict) {
+      return $this->formatDate($this->getStartDate(), $format) == $this->formatDate($this->getEndDate(), $format);
+    }
+    return $this->getStartDate() == $this->getEndDate();
+}
 ```
 
 Those can be used to conditionally format the date. Example:
 
 ```php
-if ($date_object->isSameDate(TRUE)) {
-  // Monday 1 April.
-  $date_object->setFormat('sd_l sd_d sd_F');
+// Same date||day||hour (Tuesday 17 March).
+if ($date_object->isSameDate(TRUE) || $date_object->isSameDate(FALSE, 'Ymd') || $date_object->isSameDate(FALSE, 'YmdHi')) {
+  $date_object->setFormat('sd_l sd_j sd_F');
 }
-elseif ($date_object->isSameDay()) {
-  // Tuesday 17 March, 9.00 – 18.00 (CET).
-  $date_object->setFormat('sd_l sd_d sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)');
+// Not the same day, but the same month.
+elseif ($date_object->isSameDate(FALSE, 'Ym')) {
+  $date_object->setFormat('sd_l sd_j - ed_l ed_j sd_F');
 }
+// Not the same day or month. (fallback).
 else {
-  // Fallback. (Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
-  $date_object->setFormat('sd_l sd_d sd_F, sd_H:sd_i - ed_l ed_d ed_F, ed_H:ed_i (sd_T)');
+  $date_object->setFormat('sd_l sd_j sd_F - ed_l ed_j ed_F');
 }
 ```
