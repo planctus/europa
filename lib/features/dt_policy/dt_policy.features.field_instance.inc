@@ -1287,14 +1287,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
   // Exported field_instance: 'node-policy-field_policy_next_steps'.
   $field_instances['node-policy-field_policy_next_steps'] = array(
     'bundle' => 'policy',
-    'default_value' => array(
-      0 => array(
-        'steps_in_bullets' => array(
-          'format' => 'full_html',
-          'value' => '',
-        ),
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.',
     'display' => array(

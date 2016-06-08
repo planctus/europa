@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_page_extended.features.field_instance.inc
@@ -1182,14 +1181,7 @@ function dt_page_extended_field_default_field_instances() {
   // Exported field_instance: 'node-basic_page-field_core_next_steps'.
   $field_instances['node-basic_page-field_core_next_steps'] = array(
     'bundle' => 'basic_page',
-    'default_value' => array(
-      0 => array(
-        'steps_in_bullets' => array(
-          'format' => 'full_html',
-          'value' => '',
-        ),
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Set the next steps.
 This will appear as a timeline on the page.

@@ -177,7 +177,19 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function dt_policy_next_step_field_is_empty($item, $field) {
-  return empty($item['when_timeframe']) && empty($item['time_date_start']);
+  $empty_steps_in_bullets = isset($item['steps_in_bullets']['value']) && empty($item['steps_in_bullets']['value']);
+  $empty_when_timeline = isset($item['when_timeframe']) && empty($item['when_timeframe']);
+  $empty_time_date_start = isset($item['time_date_start']) && empty($item['time_date_start']);
+
+  // Timeline.
+  if ($empty_steps_in_bullets && $empty_when_timeline) {
+    return TRUE;
+  }
+  // Timeline schedule.
+  if ($empty_steps_in_bullets && $empty_time_date_start) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**

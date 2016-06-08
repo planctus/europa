@@ -807,14 +807,7 @@ function dt_priority_default_field_default_field_instances() {
   // Exported field_instance: 'node-priority-field_core_next_steps'.
   $field_instances['node-priority-field_core_next_steps'] = array(
     'bundle' => 'priority',
-    'default_value' => array(
-      0 => array(
-        'steps_in_bullets' => array(
-          'format' => 'full_html',
-          'value' => '',
-        ),
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Select the timeline of this Priority.',
     'display' => array(
