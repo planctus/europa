@@ -28,7 +28,6 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
       'html' => TRUE,
       'attributes' => array(
         'class' => array('lang-select-site__link'),
-        'lang' => $lang_code,
       ),
       'query' => array(drupal_get_destination()),
     );
