@@ -18,12 +18,3 @@ function dt_STARTERKIT_install() {
 function dt_STARTERKIT_uninstall() {
   drupal_set_message(t('NextEuropa STARTERKIT_CONTENT_NAME feature is uninstalled on your site.'));
 }
-
-/**
- * First hook_update for example.
- */
-/*
-function dt_STARTERKIT_update_7101() {
-
-}
- */

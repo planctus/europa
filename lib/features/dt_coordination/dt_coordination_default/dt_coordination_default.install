@@ -17,12 +17,3 @@ function dt_coordination_default_install() {
 function dt_coordination_default_uninstall() {
   drupal_set_message(t('NextEuropa coordination feature is uninstalled on your site.'));
 }
-
-/**
- * First hook_update for example.
- */
-/*
-function dt_coordination_default_update_7101() {
-
-}
- */
