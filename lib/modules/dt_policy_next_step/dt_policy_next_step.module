@@ -229,6 +229,18 @@ function dt_policy_next_step_field_validate($entity_type, $entity, $field, $inst
 }
 
 /**
+ * Implements hook_field_widget_error().
+ */
+function dt_policy_next_step_field_widget_error($element, $error, $form, &$form_state) {
+  switch ($error['error']) {
+    case 'dt_policy_next_step_required_start_date':
+    case 'dt_policy_next_step_max_length':
+      form_error($element, $error['message']);
+      break;
+  }
+}
+
+/**
  * Implements hook_field_formatter_info().
  */
 function dt_policy_next_step_field_formatter_info() {
