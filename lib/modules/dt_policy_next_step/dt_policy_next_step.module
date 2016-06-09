@@ -177,16 +177,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function dt_policy_next_step_field_is_empty($item, $field) {
-  $empty_steps_in_bullets = isset($item['steps_in_bullets']['value']) && empty($item['steps_in_bullets']['value']);
-  $empty_when_timeline = isset($item['when_timeframe']) && empty($item['when_timeframe']);
-  $empty_time_date_start = isset($item['time_date_start']) && empty($item['time_date_start']);
-
-  // Timeline.
-  if ($empty_steps_in_bullets && $empty_when_timeline) {
-    return TRUE;
-  }
-  // Timeline schedule.
-  if ($empty_steps_in_bullets && $empty_time_date_start) {
+  if (empty($item['time_date_start']) && empty($item['when_timeframe'])) {
     return TRUE;
   }
   return FALSE;
@@ -223,6 +214,14 @@ function dt_policy_next_step_field_validate($entity_type, $entity, $field, $inst
               '%max' => $field['settings']['max_length'],
             )
           ),
+        );
+      }
+    }
+    if (!empty($item['steps_in_bullets']['value']) || !empty($item['time_date_end'])) {
+      if (empty($item['time_date_start'])) {
+        $errors[$field['time_date_start']][$langcode][$delta][] = array(
+          'error' => 'dt_policy_next_step_required_start_date',
+          'message' => t('Start date is required in this case.'),
         );
       }
     }
