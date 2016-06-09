@@ -74,7 +74,6 @@ function dt_announcement_views_pre_render(&$view) {
   // List of views that use this logic:
   $view_announcements_blocks = array(
     'latest_block',
-    'block',
   );
 
   // Initialize button text as empty to avoid bug reported on NEXTEUROPA-7227.
