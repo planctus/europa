@@ -170,7 +170,26 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
       break;
   }
 
+  $element['#element_validate'] = array('_dt_policy_next_step_time_start_date_validate');
+
   return $element;
+}
+
+/**
+ * Helper to validate time_start_date field.
+ */
+function _dt_policy_next_step_time_start_date_validate($element, &$form_state, $form) {
+  $start_date = $element['time_date_start']['#value'];
+  $start_date_is_empty = (empty($start_date['date'])|| empty($start_date['time']));
+  $end_date = $element['time_date_end']['#value'];
+  $end_date_is_empty = (empty($end_date['date']) || empty($end_date['time']));
+  $steps_in_bullets = $element['steps_in_bullets']['value']['#value'];
+  $steps_in_bullets_is_empty = empty($steps_in_bullets);
+
+  if (($start_date_is_empty && !$end_date_is_empty) ||
+      ($start_date_is_empty && !$steps_in_bullets_is_empty)) {
+    form_error($element['time_date_start'], t('Start date is required.'));
+  }
 }
 
 /**
@@ -217,14 +236,6 @@ function dt_policy_next_step_field_validate($entity_type, $entity, $field, $inst
         );
       }
     }
-    if (!empty($item['steps_in_bullets']['value']) || !empty($item['time_date_end'])) {
-      if (empty($item['time_date_start'])) {
-        $errors[$field['time_date_start']][$langcode][$delta][] = array(
-          'error' => 'dt_policy_next_step_required_start_date',
-          'message' => t('Start date is required in this case.'),
-        );
-      }
-    }
   }
 }
 
@@ -233,7 +244,6 @@ function dt_policy_next_step_field_validate($entity_type, $entity, $field, $inst
  */
 function dt_policy_next_step_field_widget_error($element, $error, $form, &$form_state) {
   switch ($error['error']) {
-    case 'dt_policy_next_step_required_start_date':
     case 'dt_policy_next_step_max_length':
       form_error($element, $error['message']);
       break;
