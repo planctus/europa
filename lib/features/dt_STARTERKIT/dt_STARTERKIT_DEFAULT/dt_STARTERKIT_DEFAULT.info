@@ -1,6 +1,7 @@
 name = STARTERKIT_FEATURE_TITLE DEFAULT
 description = STARTERKIT_FEATURE_DESCRIPTION DEFAULT.
 core = 7.x
+php = 5.5
 package = STARTERKIT_PACKAGE_NAME
 dependencies[] = dt_STARTERKIT
 features[ctools][] = ds:ds:1
@@ -59,3 +60,4 @@ features_exclude[variable][menu_parent_STARTERKIT_CONTENT_NAME] = menu_parent_ST
 features_exclude[variable][node_options_STARTERKIT_CONTENT_NAME] = node_options_STARTERKIT_CONTENT_NAME
 features_exclude[variable][node_preview_STARTERKIT_CONTENT_NAME] = node_preview_STARTERKIT_CONTENT_NAME
 features_exclude[variable][node_submitted_STARTERKIT_CONTENT_NAME] = node_submitted_STARTERKIT_CONTENT_NAME
+multisite_version = 2.2

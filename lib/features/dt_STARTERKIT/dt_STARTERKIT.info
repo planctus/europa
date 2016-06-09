@@ -1,6 +1,7 @@
 name = STARTERKIT_FEATURE_TITLE
 description = STARTERKIT_FEATURE_DESCRIPTION
 core = 7.x
+php = 5.5
 package = STARTERKIT_PACKAGE_NAME
 dependencies[] = dt_core
 features[ctools][] = ds:ds:1
@@ -64,3 +65,4 @@ features_exclude[field_instance][node-STARTERKIT_CONTENT_NAME-group_content_acce
 features_exclude[field_instance][node-STARTERKIT_CONTENT_NAME-og_group_ref] = node-STARTERKIT_CONTENT_NAME-og_group_ref
 features_exclude[field_instance][node-STARTERKIT_CONTENT_NAME-title_field] = node-STARTERKIT_CONTENT_NAME-title_field
 features_exclude[field_instance][node-STARTERKIT_CONTENT_NAME-field_STARTERKIT_CONTENT_NAME_introduction] = node-STARTERKIT_CONTENT_NAME-field_STARTERKIT_CONTENT_NAME_introduction
+multisite_version = 2.2

@@ -1,6 +1,7 @@
 name = Political Core
 description = This is the core feature for the political website
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation Political
 dependencies[] = cer
 dependencies[] = dt_core
@@ -69,3 +70,4 @@ features_exclude[dependencies][menu] = menu
 features_exclude[dependencies][nexteuropa_europa_search] = nexteuropa_europa_search
 features_exclude[dependencies][nexteuropa_feedback] = nexteuropa_feedback
 features_exclude[dependencies][variable_realm] = variable_realm
+multisite_version = 2.2

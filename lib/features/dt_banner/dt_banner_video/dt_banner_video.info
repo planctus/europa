@@ -1,6 +1,7 @@
 name = Banner: Video
 description = Video Banner content type related settings.
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation
 dependencies[] = dt_banner
 features[conditional_fields][] = node:banner_video
@@ -92,3 +93,4 @@ features_exclude[dependencies][picture] = picture
 features_exclude[dependencies][conditional_fields] = conditional_fields
 features_exclude[field_base][group_content_access] = group_content_access
 features_exclude[field_base][og_group_ref] = og_group_ref
+multisite_version = 2.2
