@@ -135,6 +135,7 @@ function _dt_social_media_sharing_default_json() {
     "service": "sbkm",
     "popup": false,
     "sharing": true,
+    "selection": true,
     "to": [
       "more",
       "twitter",

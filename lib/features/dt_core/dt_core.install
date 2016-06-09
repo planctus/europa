@@ -64,9 +64,7 @@ function dt_core_uninstall() {
  */
 function dt_core_update_7101() {
   $slices = array(
-    'dt_homepage_core',
     'dt_aboutec_core',
-    'dt_strategy_core',
   );
   module_enable($slices);
 }
@@ -906,4 +904,12 @@ function dt_core_update_7165() {
   foreach ($image_styles as $item) {
     image_style_flush(array('name' => $item));
   }
+}
+
+/**
+ * DTTSB-457: Disable commissioner_date and enable dt_date_format.
+ */
+function dt_core_update_7166() {
+  module_enable(['dt_date_format']);
+  module_disable(['commissioner_date']);
 }

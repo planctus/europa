@@ -179,4 +179,5 @@ function _dt_event_get_status_information($entity) {
       return $emw->field_event_status_description->value->value();
     }
   }
+  return NULL;
 }

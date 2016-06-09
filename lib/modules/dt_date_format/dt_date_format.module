@@ -6,27 +6,142 @@
  * @see http://thinkshout.com/blog/2014/05/custom-date-formats-in-drupal/
  */
 
+use Drupal\dt_date_format\DtDateRangeFormat;
+
 /**
- * Implements hook_date_formats().
+ * Implements hook_field_formatter_info().
  */
-function dt_date_format_date_formats() {
-  $formats = array();
-  $formats[] = array(
-    'type' => 'ec_date_j_f_y',
-    'format' => 'j F Y',
-    'locales' => array(),
-  );
-  foreach ($formats as $format) {
-    variable_set('date_format_' . $format['type'], $format['format']);
-  }
-  return array($formats);
+function dt_date_format_field_formatter_info() {
+  return [
+    'date_event_date' => [
+      'label' => t('Event formatter (example: 11 - 14 October 2013)'),
+      'field types' => [
+        'datetime',
+        'date',
+        'datestamp',
+      ],
+      'settings' => [
+        'render_box' => TRUE,
+        'same_date_format' => 'sd_l sd_j sd_F',
+        'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+        'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Add the field formatter settings form.
+ */
+function dt_date_format_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = [];
+
+  $element['render_box'] = [
+    '#title' => t('Render as date box'),
+    '#type' => 'checkbox',
+    '#default_value' => isset($settings['render_box']) ? $settings['render_box'] : TRUE,
+  ];
+
+  $element['same_date_format'] = [
+    '#title' => t('Same date format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['same_date_format']) ? $settings['same_date_format'] : 'sd_l sd_j sd_F',
+  ];
+
+  $element['same_day_format'] = [
+    '#title' => t('Same day format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['same_day_format']) ? $settings['same_day_format'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+  ];
+
+  $element['fallback'] = [
+    '#title' => t('Fallback date format'),
+    '#type' => 'textfield',
+    '#default_value' => isset($settings['fallback']) ? $settings['fallback'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+  ];
+
+  return $element;
 }
 
 /**
  * Implements hook_date_format_types().
  */
 function dt_date_format_date_format_types() {
-  return array(
-    'ec_date_j_f_y' => t('EC date format'),
-  );
+  return [
+    'ec_date_j_f_y' => t('EC date format (j F Y)'),
+    'ec_date_l_j_f' => t('EC date format (l j F)'),
+  ];
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function dt_date_format_date_formats() {
+  $formats = [];
+
+  $formats[] = [
+    'type' => 'ec_date_j_f_y',
+    'format' => 'j F Y',
+    'locales' => [],
+  ];
+
+  $formats[] = [
+    'type' => 'ec_date_l_j_f',
+    'format' => 'l j F',
+    'locales' => [],
+  ];
+  foreach ($formats as $format) {
+    variable_set('date_format_' . $format['type'], $format['format']);
+  }
+  return [$formats];
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dt_date_format_field_formatter_view($obj_type, $object, $field, $instance, $langcode, $items, $display) {
+  foreach ($items as $item) {
+    // Get the timestamp regardless of the date format.
+    $date_object = new DtDateRangeFormat($item['value'], $item['value2'], $item['date_type']);
+
+    if ($display['settings']['render_box']) {
+      // Build the array.
+      $markup = '<span class="date-block__day-text">' . implode(' - ', $date_object->getDays()) . '</span>';
+      $markup .= '<span class="date-block__day">' . implode(' - ', $date_object->getDays('d')) . '</span>';
+      $markup .= '<span class="date-block__month">' . implode(' - ', $date_object->getMonths()) . '</span>';
+
+      return [
+        [
+          '#markup' => $markup,
+          '#prefix' => '<div class="date-block">',
+          '#suffix' => '</div>',
+        ],
+      ];
+    }
+
+    if ($date_object->isSameDate(TRUE)) {
+      // Monday 1 April.
+      $date_object->setFormat($display['settings']['same_date_format']);
+    }
+    // Same day.
+    elseif ($date_object->isSameDate(FALSE, 'Ymd')) {
+      // Tuesday 17 March, 9.00 – 18.00 (CET).
+      $date_object->setFormat($display['settings']['same_day_format']);
+    }
+    else {
+      // Fallback. (Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
+      $date_object->setFormat($display['settings']['fallback']);
+    }
+
+    return [
+      [
+        '#markup' => $date_object->getformattedDateRange(),
+      ],
+    ];
+  }
+
+  return NULL;
 }

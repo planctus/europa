@@ -17,7 +17,7 @@ function dt_page_extended_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:basic_page:field_core_children" } ] },
     "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parents" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-121-0",
+    "entity_translation_handler_id" : "cer-eid-1308-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
