@@ -10,7 +10,7 @@ include_once 'dt_event.features.inc';
 module_load_include('inc', 'dt_event', 'dt_event.helpers');
 module_load_include('inc', 'dt_event', 'dt_event.ds_fields');
 
-// Constansts that can be used.
+// Constants that can be used.
 define('DT_EVENT_STATE_FUTURE', 1);
 define('DT_EVENT_STATE_ONGOING', 2);
 define('DT_EVENT_STATE_PAST', 3);
@@ -61,40 +61,6 @@ function dt_event_dt_header_background_info() {
       'content_type' => 'event',
     ],
   ];
-}
-
-/**
- * Implements hook_dt_shared_functions_facet_block_alter().
- */
-function dt_event_dt_shared_functions_facet_block_alter(&$block, $block_identifier) {
-  // Based on the block idetnifier we change the title.
-  switch ($block_identifier) {
-    case 'field_core_location:country':
-      $block_title = t('Country');
-      break;
-
-    case 'field_event_type':
-      $block_title = t('Event type');
-      break;
-
-    case 'field_core_departments':
-      $block_title = t('Organizing department');
-      break;
-
-    case 'field_core_topics':
-      $block_title = t('Topic');
-      break;
-
-    case 'field_event_is_online':
-    case 'field_event_is_live_streaming':
-      $block_title = '<none>';
-      break;
-  }
-
-  // Modify block title if it's set.
-  if (isset($block_title)) {
-    $block['title'] = $block_title;
-  }
 }
 
 /**
@@ -157,6 +123,15 @@ function dt_event_preprocess_file_entity(&$variables) {
  * Here we will replace the %all_events_link token in the views header config.
  */
 function dt_event_views_pre_render(&$view) {
+  // Replace the [node_title] token in the views read more link.
+  if ($view->name == 'events_list') {
+    // If we have substitutions, we alter the button.
+    if (!empty($view->build_info['substitutions']['%1'])) {
+      $read_more_text = str_replace('[node_title]', $view->build_info['substitutions']['%1'], $view->display['default']->handler->options['use_more_text']);
+      $view->display['default']->handler->options['use_more_text'] = decode_entities($read_more_text);
+    }
+  }
+
   // Replace the link token with the link.
   if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
     if (FALSE !== strpos($view->header['area_text_custom']->options['content'], '%all_events_link')) {

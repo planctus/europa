@@ -124,6 +124,7 @@ function _dt_event_live_stream_state($event) {
   if (empty($event->field_event_live_streaming_date)) {
     return NULL;
   }
+
   // Entity metadata wrapper.
   $emw = entity_metadata_wrapper('node', $event);
   // Set our start and end date.
@@ -178,4 +179,5 @@ function _dt_event_get_status_information($entity) {
       return $emw->field_event_status_description->value->value();
     }
   }
+  return NULL;
 }
