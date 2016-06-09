@@ -52,14 +52,14 @@ function cwt_core_uninstall() {
  * Implements hook_enable().
  */
 function cwt_core_enable() {
-  drupal_set_message(t('CWT Core %v feature is now active on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('CWT Core feature is now active on your site.'));
 }
 
 /**
  * Implements hook_disable().
  */
 function cwt_core_disable() {
-  drupal_set_message(t('CWT Core %v feature is now inactive on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('CWT Core feature is now inactive on your site.'));
 }
 
 /**

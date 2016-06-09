@@ -21,9 +21,7 @@ function nexteuropa_file_install() {
  * Implements hook_uninstall().
  */
 function nexteuropa_file_uninstall() {
-  $path = drupal_get_path('module', 'nexteuropa_file') . '/nexteuropa_file.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa File %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa File feature is uninstalled on your site.'));
 }
 
 /**

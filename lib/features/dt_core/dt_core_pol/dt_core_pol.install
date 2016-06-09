@@ -64,9 +64,7 @@ function dt_core_pol_uninstall() {
   $contexts = variable_get('context_status', array());
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
-  $path = drupal_get_path('module', 'dt_core_pol') . '/dt_core_pol.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Subject feature is uninstalled on your site.'));
 }
 
 /**

@@ -21,7 +21,5 @@ function dt_node_settings_uninstall() {
   foreach ($node_types as $type) {
     variable_del('helper_node_type_' . $type);
   }
-  $path = drupal_get_path('module', 'dt_node_settings') . '/dt_node_settings.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Entities %v module has been successfully uninstalled.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Entities module has been successfully uninstalled.'));
 }
