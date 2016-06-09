@@ -44,6 +44,11 @@ function dt_event_views_default_views() {
   $handler->display->display_options['style_options']['listing_item_modifier'] = 'listing__item--fullwidth';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'meta';
+  /* Sort criterion: Event date and time: Start date (indexed) */
+  $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['order'] = 'DESC';
   /* Contextual filter: Indexed Node: Part of collection */
   $handler->display->display_options['arguments']['field_event_parent_events']['id'] = 'field_event_parent_events';
   $handler->display->display_options['arguments']['field_event_parent_events']['table'] = 'search_api_index_event_index';
