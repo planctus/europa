@@ -431,7 +431,7 @@ function cwt_core_update_7129() {
 
     foreach ($nids as $nid) {
       $node = node_load($nid, NULL, TRUE);
-      $node->body['und'][0]['format'] = 'custom_text_filter';
+      $node->body[LANGUAGE_NONE][0]['format'] = 'custom_text_filter';
       node_save($node);
     }
   }

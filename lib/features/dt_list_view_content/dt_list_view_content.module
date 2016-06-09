@@ -21,7 +21,7 @@ function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_i
     // Set the available options (And include the current options).
     $form['field_list_view_views'][LANGUAGE_NONE]['#options'] = array_merge($form['field_list_view_views'][LANGUAGE_NONE]['#options'], _dt_list_view_content_get_views());
     // Set the default value.
-    $default_view = isset($form['#entity']->field_list_view_views['und'][0]['value']) ? $form['#entity']->field_list_view_views['und'][0]['value'] : '';
+    $default_view = isset($form['#entity']->field_list_view_views[LANGUAGE_NONE][0]['value']) ? $form['#entity']->field_list_view_views[LANGUAGE_NONE][0]['value'] : '';
     $form['field_list_view_views'][LANGUAGE_NONE]['#default_value'] = $default_view;
   }
 }

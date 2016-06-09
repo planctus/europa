@@ -492,7 +492,7 @@ function dt_social_network_links_permission() {
  * Cleans a string to be fit as a css classname.
  */
 function dt_social_network_links_clean_name($string) {
-  return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', check_plain($string)));
+  return drupal_strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', check_plain($string)));
 }
 
 /**
