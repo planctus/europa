@@ -17,7 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-1873-0",
+    "entity_translation_handler_id" : "cer-eid-1066-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -85,21 +85,21 @@ function dt_event_default_search_api_index() {
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
-          "weight" : "-10",
+          "weight" : "-50",
           "settings" : { "default" : "0", "bundles" : { "event" : "event" } }
         },
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 1, "weight" : "-49", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 0, "weight" : "-48", "settings" : [] },
         "search_api_alter_language_control" : {
           "status" : 0,
-          "weight" : "0",
+          "weight" : "-47",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "-46", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "-45", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
-          "weight" : "0",
+          "weight" : "-44",
           "settings" : { "fields" : { "search_api_aggregation_1" : {
                 "name" : "fulltext search",
                 "type" : "fulltext",
@@ -109,7 +109,7 @@ function dt_event_default_search_api_index() {
             }
           }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "-43", "settings" : { "fields" : [] } }
       },
       "processors" : {
         "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
