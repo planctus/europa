@@ -67,35 +67,6 @@ function dt_social_network_links_element_info() {
 }
 
 /**
- * Implements hook_field_process().
- */
-function dt_social_network_links_field_process($element, $form_state, $complete_form) {
-  $element['title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Title'),
-    '#default_value' => isset($items[$delta]['title']) ? $items[$delta]['title'] : NULL,
-  );
-  $element['url'] = array(
-    '#type' => 'textfield',
-    '#title' => t('URL'),
-    '#default_value' => isset($items[$delta]['url']) ? $items[$delta]['url'] : NULL,
-  );
-  $element['social_network'] = array(
-    '#type' => 'select',
-    '#title' => t('Social Network'),
-    '#options' => dt_social_network_links_term_options('social_networks'),
-    '#default_value' => isset($items[$delta]['social_network']) ? $items[$delta]['social_network'] : NULL,
-  );
-  $element['enabled'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enabled'),
-    '#default_value' => isset($items[$delta]['enabled']) ? $items[$delta]['enabled'] : 1,
-  );
-
-  return $element;
-}
-
-/**
  * Implements hook_field_info().
  */
 function dt_social_network_links_field_info() {
@@ -575,7 +546,7 @@ function dt_social_network_links_migrate_api() {
     ),
     'migrations' => array(
       'DTSocialNetworks' => array(
-        'class_name' => 'DTSocialNetworksMigration',
+        'class_name' => 'DTSocialNetworkLinksMigration',
         'group_name' => 'NextEuropa Digital Transformation',
       ),
     ),
