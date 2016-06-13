@@ -1,6 +1,7 @@
 name = Contact
 description = Contact content type related settings
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation
 dependencies[] = dt_core
 dependencies[] = dt_social_network_links
@@ -69,3 +70,4 @@ features_exclude[dependencies][nexteuropa_multilingual] = nexteuropa_multilingua
 features_exclude[dependencies][text] = text
 features_exclude[field_base][group_content_access] = group_content_access
 features_exclude[field_base][og_group_ref] = og_group_ref
+multisite_version = 2.2

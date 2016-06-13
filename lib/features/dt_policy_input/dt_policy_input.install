@@ -16,9 +16,7 @@ function dt_policy_input_install() {
  * Implements hook_uninstall().
  */
 function dt_policy_input_uninstall() {
-  $path = drupal_get_path('module', 'dt_policy_input') . '/dt_policy_input.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Policy input %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Policy input feature is uninstalled on your site.'));
 }
 
 /**

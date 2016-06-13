@@ -856,11 +856,11 @@ function _dt_core_get_plurial_content_types($bundle) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+    $plural = drupal_strtolower(t("@bundles", array('@bundle' => $singular)));
   }
 
   $forms = array(
-    'singular' => strtolower($singular),
+    'singular' => drupal_strtolower($singular),
     'plural' => $plural,
   );
 
