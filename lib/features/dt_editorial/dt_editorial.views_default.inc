@@ -458,6 +458,27 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+  /* Filter criterion: User: Group membership (og_user_node) */
+  $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['og_user_node_target_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator_id'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['label'] = 'Editorial Team';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator'] = 'og_user_node_target_id_op';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['identifier'] = 'og_user_node_target_id';
+  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
   $handler->display->display_options['path'] = 'admin/workbench/drafts';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'My drafts';
