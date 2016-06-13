@@ -363,6 +363,13 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'nid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
+  /* Field: Workbench Moderation: Moderation history link */
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['id'] = 'workbench_moderation_history_link';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['table'] = 'node';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['field'] = 'workbench_moderation_history_link';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['hide_alter_empty'] = FALSE;
   /* Field: Moderation state */
   $handler->display->display_options['fields']['state']['id'] = 'state';
   $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
@@ -387,12 +394,6 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['fields']['changed']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['changed']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['changed']['date_format'] = 'time ago';
-  /* Field: Workbench Moderation: Moderation history link */
-  $handler->display->display_options['fields']['workbench_moderation_history_link']['id'] = 'workbench_moderation_history_link';
-  $handler->display->display_options['fields']['workbench_moderation_history_link']['table'] = 'node';
-  $handler->display->display_options['fields']['workbench_moderation_history_link']['field'] = 'workbench_moderation_history_link';
-  $handler->display->display_options['fields']['workbench_moderation_history_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['workbench_moderation_history_link']['hide_alter_empty'] = FALSE;
   /* Field: Content: Delete link */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
