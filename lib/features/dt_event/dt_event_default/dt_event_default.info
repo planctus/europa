@@ -8,6 +8,7 @@ dependencies[] = conditional_fields
 dependencies[] = dt_date_format
 dependencies[] = dt_event
 dependencies[] = field_group
+dependencies[] = text
 features[conditional_fields][] = node:event
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
