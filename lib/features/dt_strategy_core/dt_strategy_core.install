@@ -20,9 +20,7 @@ function dt_strategy_core_install() {
  * Implements hook_uninstall().
  */
 function dt_strategy_core_uninstall() {
-  $path = drupal_get_path('module', 'dt_strategy_core') . '/dt_strategy_core.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Subject feature is uninstalled on your site.'));
 }
 
 /**

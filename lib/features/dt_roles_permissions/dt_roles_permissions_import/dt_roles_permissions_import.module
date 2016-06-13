@@ -123,9 +123,6 @@ function _dt_roles_permissions_import_get_diff($role) {
     $current_permissions = array_keys(reset($current_permissions));
     $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
 
-    // The amount of new permissions.
-    $diff_count = count($permissions_to_grant) - count($current_permissions);
-
     // Our diff results.
     $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);
     $to_be_granted = array_diff($permissions_to_grant, $current_permissions);
@@ -144,9 +141,6 @@ function _dt_roles_permissions_import_get_diff($role) {
       // Make the arrays the same.
       $current_permissions = array_keys(reset($current_permissions));
       $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
-
-      // The amount of new permissions.
-      $diff_count = count($permissions_to_grant) - count($current_permissions);
 
       // Our diff results.
       $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);

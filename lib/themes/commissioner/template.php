@@ -57,11 +57,11 @@ function _commissioner_bundle_forms($bundle) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+    $plural = drupal_strtolower(t("@bundles", array('@bundle' => $singular)));
   }
 
   $forms = array(
-    'singular' => ucfirst(strtolower($singular)),
+    'singular' => ucfirst(drupal_strtolower($singular)),
     'plural' => $plural,
   );
 
