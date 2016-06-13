@@ -8,26 +8,12 @@
  * Implements hook_install().
  */
 function dt_funding_program_default_install() {
-  // Apply default dt configuration to "Policy input" content type.
-  $path = drupal_get_path('module', 'dt_funding_program_default') . '/dt_funding_program.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa funding_program %v feature is installed on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa funding_program feature is installed on your site.'));
 }
 
 /**
  * Implements hook_uninstall().
  */
 function dt_funding_program_default_uninstall() {
-  $path = drupal_get_path('module', 'dt_funding_program_default') . '/dt_funding_program.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa funding_program %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa funding_program feature is uninstalled on your site.'));
 }
-
-/**
- * First hook_update for example.
- */
-/*
-function dt_funding_program_default_update_7101() {
-
-}
- */

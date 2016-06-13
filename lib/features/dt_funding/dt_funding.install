@@ -16,9 +16,7 @@ function dt_funding_install() {
  * Implements hook_uninstall().
  */
 function dt_funding_uninstall() {
-  $path = drupal_get_path('module', 'dt_funding') . '/dt_funding.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa funding %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa funding feature is uninstalled on your site.'));
 }
 
 /**

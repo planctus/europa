@@ -10,8 +10,6 @@ $permissions['site manager'] = array(
   'access ecas import users function',
   'access helper content types',
   'administer content translations',
-  'administer permissions',
-  'administer themes',
   'administer tmgmt',
   'administer translation tasks',
   'administer users',

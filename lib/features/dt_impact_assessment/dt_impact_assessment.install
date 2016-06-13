@@ -16,9 +16,7 @@ function dt_impact_assessment_install() {
  * Implements hook_uninstall().
  */
 function dt_impact_assessment_uninstall() {
-  $path = drupal_get_path('module', 'dt_impact_assessment') . '/dt_impact_assessment.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa impact_assessment %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa impact_assessment feature is uninstalled on your site.'));
 }
 
 /**

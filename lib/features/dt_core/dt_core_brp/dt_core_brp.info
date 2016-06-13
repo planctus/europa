@@ -1,9 +1,8 @@
 name = BRP Site Core
 description = This is the core feature of the Digital Transformation BRP instances.
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation BRP Site
-version = 7.x-1.0
-project = dt_core_brp
 dependencies[] = dt_core
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
@@ -96,3 +95,4 @@ features_exclude[dependencies][picture] = picture
 features_exclude[dependencies][retina_images] = retina_images
 features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][text] = text
+multisite_version = 2.2

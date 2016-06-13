@@ -30,6 +30,9 @@ function dt_roles_permissions_import_menu() {
  *   Can be either a string or object of roles.
  * @param bool $force
  *   True/False if we should force the import.
+ *
+ * @return bool
+ *   True/false on success/failure.
  */
 function _dt_roles_permissions_import_import($role, $force = FALSE) {
   // If the role is a string, we can check here if we can match it.
@@ -100,6 +103,9 @@ function _dt_roles_permissions_import_import($role, $force = FALSE) {
 
 /**
  * Helper function to get the diff for a specific role.
+ *
+ * @param mixed $role
+ *   The role to get the diff for. Object for specific, All for all.
  */
 function _dt_roles_permissions_import_get_diff($role) {
   // List of available permissions.
@@ -116,9 +122,6 @@ function _dt_roles_permissions_import_get_diff($role) {
     // Make the arrays the same.
     $current_permissions = array_keys(reset($current_permissions));
     $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
-
-    // The amount of new permissions.
-    $diff_count = count($permissions_to_grant) - count($current_permissions);
 
     // Our diff results.
     $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);
@@ -139,9 +142,6 @@ function _dt_roles_permissions_import_get_diff($role) {
       $current_permissions = array_keys(reset($current_permissions));
       $permissions_to_grant = array_keys(array_flip($permissions_to_grant));
 
-      // The amount of new permissions.
-      $diff_count = count($permissions_to_grant) - count($current_permissions);
-
       // Our diff results.
       $to_be_revoked = array_diff($current_permissions, $permissions_to_grant);
       $to_be_granted = array_diff($permissions_to_grant, $current_permissions);
@@ -153,6 +153,13 @@ function _dt_roles_permissions_import_get_diff($role) {
 
 /**
  * Helper function to show the diff message.
+ *
+ * @param string $name
+ *   The name of the role.
+ * @param array $to_be_granted
+ *   List of permissions that will be granted.
+ * @param array $to_be_revoked
+ *   List of permissions that will be revoked.
  */
 function _dt_roles_permissions_import_show_diff($name, $to_be_granted = array(), $to_be_revoked = array()) {
   // Init our message.
@@ -181,6 +188,9 @@ function _dt_roles_permissions_import_show_diff($name, $to_be_granted = array(),
 
 /**
  * Helper function to get the available import files as an $id => $name array.
+ *
+ * @return array
+ *   List of roles.
  */
 function _dt_roles_permissions_import_get_importable() {
   // Get our default roles that are available on the site.

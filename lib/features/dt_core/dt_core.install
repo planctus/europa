@@ -634,7 +634,7 @@ function dt_core_update_7146() {
         'language' => 'en',
       ))
       ->condition('entity_id', $value->entity_id)
-      ->condition('language', 'und', '=')
+      ->condition('language', LANGUAGE_NONE, '=')
       ->execute();
 
     db_update('field_revision_body')
@@ -642,7 +642,7 @@ function dt_core_update_7146() {
         'language' => 'en',
       ))
       ->condition('entity_id', $value->entity_id)
-      ->condition('language', 'und', '=')
+      ->condition('language', LANGUAGE_NONE, '=')
       ->execute();
   }
 }

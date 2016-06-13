@@ -1,9 +1,8 @@
 name = Information Site Core
 description = This is the core feature of the Digital Transformation Information instances.
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation Information Site
-version = 7.x-1.0
-project = dt_core_info
 dependencies[] = cer
 dependencies[] = dt_core
 dependencies[] = dt_site_menu
@@ -104,3 +103,4 @@ features_exclude[dependencies][picture] = picture
 features_exclude[dependencies][retina_images] = retina_images
 features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][text] = text
+multisite_version = 2.2
