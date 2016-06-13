@@ -85,6 +85,5 @@ features_exclude[dependencies][multisite_workbench_moderation_view] = multisite_
 features_exclude[dependencies][og] = og
 features_exclude[dependencies][og_linkchecker] = og_linkchecker
 features_exclude[dependencies][og_ui] = og_ui
-features_exclude[dependencies][workbench_moderation] = workbench_moderation
 features_exclude[dependencies][workbench_og] = workbench_og
 features_exclude[dependencies][ctools] = ctools

@@ -258,6 +258,79 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My drafts';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'og_user_node' => 'og_user_node',
+    'type' => 'type',
+    'state' => 'state',
+    'moderation_actions' => 'moderation_actions',
+    'changed' => 'changed',
+    'workbench_moderation_history_link' => 'workbench_moderation_history_link',
+    'edit_node' => 'edit_node',
+    'delete_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = 'changed';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'og_user_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'moderation_actions' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'changed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'workbench_moderation_history_link' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -265,6 +338,76 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['content'] = 'This list displays content you have created that is not published. Currently there is no such content.';
   $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: User: Group membership */
+  $handler->display->display_options['fields']['og_user_node']['id'] = 'og_user_node';
+  $handler->display->display_options['fields']['og_user_node']['table'] = 'og_membership';
+  $handler->display->display_options['fields']['og_user_node']['field'] = 'og_user_node';
+  $handler->display->display_options['fields']['og_user_node']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['og_user_node']['label'] = 'Editorial Team';
+  $handler->display->display_options['fields']['og_user_node']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['og_user_node']['delta_offset'] = '0';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
+  /* Field: Moderation state */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['ui_name'] = 'Moderation state';
+  $handler->display->display_options['fields']['state']['label'] = 'Moderation state';
+  $handler->display->display_options['fields']['state']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['state']['alter']['text'] = '<div>[state]</div><div>[workbench_moderation_history_link]</div>';
+  $handler->display->display_options['fields']['state']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['state']['machine_name'] = 0;
+  /* Field: Workbench Moderation: Moderation links */
+  $handler->display->display_options['fields']['moderation_actions']['id'] = 'moderation_actions';
+  $handler->display->display_options['fields']['moderation_actions']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['moderation_actions']['field'] = 'moderation_actions';
+  $handler->display->display_options['fields']['moderation_actions']['label'] = 'Set moderation state';
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['changed']['label'] = 'Last updated';
+  $handler->display->display_options['fields']['changed']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['changed']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'time ago';
+  /* Field: Workbench Moderation: Moderation history link */
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['id'] = 'workbench_moderation_history_link';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['table'] = 'node';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['field'] = 'workbench_moderation_history_link';
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['workbench_moderation_history_link']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = 'Actions / delete';
+  $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['delete_node']['text'] = 'delete';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Actions';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['alter']['text'] = '[edit_node] [delete_node]';
+  $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: User: Current */
