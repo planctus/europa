@@ -82,6 +82,12 @@ function dt_publication_ds_fields_info($entity_type) {
 
 /**
  * Helper returning a list entities based on a type of publication.
+ *
+ * @param object $entity
+ *   The entity to get the view for.
+ *
+ * @return string
+ *   The rendered view.
  */
 function _dt_publication_documents($entity) {
   $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
@@ -96,6 +102,9 @@ function _dt_publication_documents($entity) {
 
 /**
  * Helper returning a list of links to publications of type collection.
+ *
+ * @return string
+ *   The rendered view.
  */
 function _dt_publication_collections() {
   if ($node = menu_get_object('node')) {

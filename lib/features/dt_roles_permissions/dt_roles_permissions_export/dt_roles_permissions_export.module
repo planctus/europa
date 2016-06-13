@@ -25,6 +25,12 @@ function dt_roles_permissions_export_menu() {
 
 /**
  * Helper function to get a list to export and write it to a file.
+ *
+ * @param mixed $role
+ *   The role to get the diff for. Object for specific, All for all.
+ *
+ * @return bool
+ *   True/false on success/failure.
  */
 function _dt_roles_permissions_export_export($role) {
   // Just to make sure the directory exists.
@@ -63,6 +69,12 @@ function _dt_roles_permissions_export_export($role) {
 
 /**
  * Helper function to get exportable data.
+ *
+ * @param object $role
+ *   The role object.
+ *
+ * @return string
+ *   The php file as string containing the permissions.
  */
 function _dt_roles_permissions_get_export_data($role) {
   // Build our export data.
@@ -89,6 +101,9 @@ function _dt_roles_permissions_get_export_data($role) {
 
 /**
  * Helper function to detect if the folder exists.
+ *
+ * @return bool
+ *   True/false if the export dir is writable.
  */
 function _dt_roles_permissions_export_setup_dir() {
   // Setup the directory to store the exports.

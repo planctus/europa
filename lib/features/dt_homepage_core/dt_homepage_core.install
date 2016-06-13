@@ -19,9 +19,7 @@ function dt_homepage_core_install() {
  * Implements hook_uninstall().
  */
 function dt_homepage_core_uninstall() {
-  $path = drupal_get_path('module', 'dt_homepage_core') . '/dt_homepage_core.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Homepage %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Homepage feature is uninstalled on your site.'));
 }
 
 /**

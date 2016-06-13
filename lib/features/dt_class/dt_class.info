@@ -1,6 +1,7 @@
 name = Class
 description = DT Class for temporary class content type.
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation
 dependencies[] = dt_core
 dependencies[] = dt_department
@@ -101,3 +102,4 @@ features_exclude[field_group][group_class_topics|node|class|form] = group_class_
 features_exclude[field_instance][node-class-body] = node-class-body
 features_exclude[field_base][og_group_ref] = og_group_ref
 features_exclude[field_base][group_content_access] = group_content_access
+multisite_version = 2.2

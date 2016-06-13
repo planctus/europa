@@ -7,7 +7,7 @@
 /**
  * Import terms on "Social Networks" vocabulary.
  */
-class DTSocialNetworksMigration extends Migration {
+class DTSocialNetworkLinksMigration extends Migration {
 
   /**
    * Constructor of migrations.

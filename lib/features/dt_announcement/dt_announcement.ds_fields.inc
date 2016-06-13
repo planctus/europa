@@ -118,7 +118,7 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   $render_config = [
     '#theme' => 'dt_announcement_announcement_block',
     '#heading' => $heading,
-    '#heading_id' => drupal_clean_css_identifier(strtolower($heading)),
+    '#heading_id' => drupal_clean_css_identifier(drupal_strtolower($heading)),
     '#news_items' => isset($news_items) ? $news_items : NULL,
     '#social_links' => isset($social_media) && is_array($social_media) ? drupal_render($social_media) : NULL,
     '#featued_item' => isset($featured_item_view) ? drupal_render($featured_item_view) : NULL,

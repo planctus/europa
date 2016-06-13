@@ -2,7 +2,6 @@ name = List view content
 description = Content overrides for list views
 core = 7.x
 package = Nexteuropa Digital Transformation
-version = 7.x-1.0
 php = 5.5
 dependencies[] = bean_admin_ui
 dependencies[] = ctools

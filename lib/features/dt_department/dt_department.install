@@ -53,9 +53,7 @@ function dt_department_install() {
  * Implements hook_uninstall().
  */
 function dt_department_uninstall() {
-  $path = drupal_get_path('module', 'dt_department') . '/dt_department.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Subject %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Subject feature is uninstalled on your site.'));
 }
 
 /**
