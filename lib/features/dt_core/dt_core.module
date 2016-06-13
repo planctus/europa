@@ -888,7 +888,7 @@ function dt_core_preprocess_views_view(&$variables) {
       // @codingStandardsIgnoreEnd
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
-    elseif (isset($view->filter['type'])) {
+    elseif (isset($view->filter['type']) && is_array($view->filter['type']->value)) {
       $content_type_filters = $view->filter['type']->value;
       // The first element of the array is the right type of filter.
       $content_type = reset($content_type_filters);
