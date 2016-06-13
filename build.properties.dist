@@ -4,15 +4,15 @@
 # The site name.
 subsite.name = My Project
 
+# Remote info. (Used for staging files from PROD - Stage File Proxy)
+subsite.production.key = beta-political
+subsite.production.root = http://ec.europa.eu/priorities
+
 # The make file containing the dependencies of the subsite.
 subsite.make = ${subsite.resources.dir}/site.make
 
 # Modules to enable after installation. Separate multiple modules with spaces.
 subsite.install.modules = myproject_core
-
-
-# Drupal configuration
-# --------------------
 
 # Database settings.
 drupal.db.type = mysql
@@ -48,6 +48,9 @@ drupal.core.version = 7.x
 # so point your web server here.
 platform.build.dir = ${project.basedir}/platform
 
+# Drupal root folder when packaging for distribution.
+platform.dist.dir = ${project.basedir}/dist
+
 # The install profile to use. Either multisite_drupal_standard or
 # multisite_drupal_communities.
 platform.profile.name = multisite_drupal_standard
@@ -58,7 +61,7 @@ platform.profile.name = multisite_drupal_standard
 # For most projects you would want to follow 'master' so that you always have
 # the latest version that is deployed on production. Use 'develop' to check if
 # your project is compatible with the upcoming release.
-platform.package.reference = master
+platform.package.reference = develop
 
 # The provider that hosts the platform repository.
 platform.package.provider = git-hub
@@ -88,8 +91,11 @@ phing.bin = ${project.basedir}/bin/phing
 
 # Build location.
 phing.project.build.dir = build
+phing.project.dist.dir = dist
 phing.project.src.dir = ${project.basedir}/src
-dist.build.dir = ${project.basedir}/${phing.project.build.dir}
+
+subsite.build.dir = ${project.basedir}/${phing.project.build.dir}
+dist.build.dir = ${project.basedir}/${phing.project.dist.dir}
 
 # Temporary folder.
 phing.project.tmp.dir = ${project.basedir}/tmp
@@ -134,7 +140,6 @@ dist.build.source.dir = ${dist.build.dir}/src
 dist.build.themes.dir = ${dist.build.dir}/themes
 dist.build.composer.json = ${dist.build.dir}/composer.json
 dist.build.composer.lock = ${dist.build.dir}/composer.lock
-
 
 # Behat configuration
 # -------------------
@@ -225,6 +230,12 @@ development.modules.download = devel maillog
 
 # Development / testing modules to enable.
 development.modules.enable = devel field_ui maillog simpletest views_ui
+
+# The location where development modules will be installed.
+development.modules.location = development
+
+# Project folder in MULTISITE SVN
+phing.project.svn = https://webgate.ec.europa.eu/CITnet/svn/MULTISITE/trunk/custom_subsites/beta
 
 # The location where development modules will be installed.
 development.modules.location = development

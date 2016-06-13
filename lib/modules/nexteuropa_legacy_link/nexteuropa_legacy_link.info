@@ -1,0 +1,6 @@
+name = Legacy link
+description = Handles legacy link behavior
+package = Nexteuropa Digital Transformation
+core = 7.x
+
+dependencies[] = dt_core

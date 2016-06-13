@@ -1,0 +1,4 @@
+name = DT help text
+description = Provide a openable help text.
+core = 7.x
+package = Nexteuropa Digital Transformation

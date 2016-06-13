@@ -1,0 +1,6 @@
+name = Entityreference title overwrite
+description = Enable content editors to overwrite entity reference titles on a per content base.
+core = 7.x
+package = Entity
+
+dependencies[] = entityreference

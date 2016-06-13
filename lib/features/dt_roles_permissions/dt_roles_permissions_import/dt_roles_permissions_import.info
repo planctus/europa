@@ -1,0 +1,7 @@
+name = Roles and Permissions import
+description = This submodule enables the possibility to import permissions to the file system.
+core = 7.x
+package = NextEuropa Digital Transformation
+php = 5.5
+dependencies[] = dt_roles_permissions
+multisite_version = 2.2

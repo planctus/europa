@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Contains the overrides and hooks to enable a custom title on entityreference.
+ */
+
+include_once 'entityreference_titleoverwrite.helpers.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function entityreference_titleoverwrite_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'entityreference') {
+    return 'plugins/' . $plugin;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * This form is used to populate the widget with a second input field to set a
+ * overwritten title.
+ */
+function entityreference_titleoverwrite_field_widget_entityreference_autocomplete_form_alter(&$element, &$form_state, $context) {
+  if (isset($context['field']['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior'])) {
+    // Get the config.
+    $overwrite_behavior = $context['field']['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior'];
+
+    // Set required.
+    $required = FALSE;
+    if ($form_state['build_info']['form_id'] <> 'field_ui_field_edit_form') {
+      $required = isset($overwrite_behavior['overwrite_title_mandatory']) ? $overwrite_behavior['overwrite_title_mandatory'] : FALSE;
+    }
+
+    // If it is enabled we allow the override.
+    if (isset($overwrite_behavior['status']) && $overwrite_behavior['status'] == 1) {
+      // Add the title element.
+      $element['title_override'] = array(
+        '#weight' => 1,
+        '#title' => t('Title override'),
+        '#description' => t('This gives you the oppertunity to override the title displayed.'),
+        '#type' => 'textfield',
+        '#maxlength' => 255,
+        '#default_value' => isset($context['items'][$context['delta']]['title_override']) ? $context['items'][$context['delta']]['title_override'] : '',
+        '#size' => 60,
+        '#required' => $required,
+      );
+
+      // Change the weight of target_id.
+      $element['target_id']['#weight'] = 2;
+    }
+  }
+}

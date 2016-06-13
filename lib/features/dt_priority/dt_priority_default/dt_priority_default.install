@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_priority_default_install() {
+  drupal_set_message(t('NextEuropa priority feature is installed on your site.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_priority_default_uninstall() {
+  drupal_set_message(t('NextEuropa priority feature is uninstalled on your site.'));
+}
+
+/**
+ * NEXTEUROPA-4804: Adding back related departments and topics.
+ */
+function dt_priority_default_update_7101() {
+  features_revert_module('dt_priority_default');
+}

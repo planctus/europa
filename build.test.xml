@@ -32,6 +32,8 @@
             features and modules which need to be enabled after installation.
          -->
          <phingcall target="enable-install-modules" />
+        <!-- No mather how installed, the dt features need to be reverted after install -->
+         <phingcall target="revert-dt-features" />
     </target>
 
     <!-- Enable required modules after installation of the profile. -->
@@ -46,6 +48,27 @@
         <phingcall target="enable-modules">
             <property name="drupal.modules" value="${development.modules.enable}" />
         </phingcall>
+    </target>
+
+    <!-- Revert all features to make sure we are using the latest config. -->
+    <target name="revert-dt-features">
+        <echo msg="Reverting features." />
+        <if>
+            <equals arg1="${subsite.install.modules}" arg2="cwt_core" />
+            <then>
+                <property name="revert.command" value="frcwt" />
+            </then>
+            <else>
+                <property name="revert.command" value="frdt --rp" />
+            </else>
+        </if>
+        <drush
+            command="${revert.command}"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}"
+            haltonerror="false" />
     </target>
 
     <!-- Enable modules. -->
@@ -126,7 +149,7 @@
     <target
         name="install-dev"
         description="Install a local development version of the subsite."
-        depends="install, enable-development-modules"
+        depends="install, enable-development-modules, revert-dt-features"
     />
 
 </project>

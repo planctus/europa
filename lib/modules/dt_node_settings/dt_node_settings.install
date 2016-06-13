@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Implements install/uninstall hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_node_settings_install() {
+  $t = get_t();
+  drupal_set_message($t('You can now indicate helper content types at the <a href="@settings-url">admin/config/content/dt_node_settings/settings</a>.', array('@settings-url' => url('admin/config/content/dt_node_settings/settings'))));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_node_settings_uninstall() {
+  $node_types = node_type_get_names();
+  foreach ($node_types as $type) {
+    variable_del('helper_node_type_' . $type);
+  }
+  drupal_set_message(t('NextEuropa Entities module has been successfully uninstalled.'));
+}

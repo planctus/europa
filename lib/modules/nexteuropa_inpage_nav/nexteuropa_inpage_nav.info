@@ -1,0 +1,4 @@
+name = In-page navigation
+description = Generates a list of links for headings of a long page
+package = Nexteuropa Digital Transformation
+core = 7.x

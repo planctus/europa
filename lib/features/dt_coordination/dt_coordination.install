@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_coordination_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('coordination');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_coordination_uninstall() {
+  drupal_set_message(t('NextEuropa coordination feature is uninstalled on your site.'));
+}

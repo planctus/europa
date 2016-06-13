@@ -1,0 +1,120 @@
+<?php
+/**
+ * @file
+ * Code for the dt Publication feature.
+ */
+
+include_once 'dt_publication.features.inc';
+
+/**
+ * Implements hook_migrate_api().
+ */
+function dt_publication_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Stage initial content, publication types.'),
+      ),
+    ),
+    'migrations' => array(
+      'DTPublicationPublicationTypes' => array(
+        'class_name' => 'DTPublicationPublicationTypesMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_group_pre_render().
+ *
+ * Here based on the contents, we change the label of the field group.
+ */
+function dt_publication_field_group_pre_render(&$element, $group, & $form) {
+  if ($group->group_name == 'group_publication_file') {
+    // Load our display suite field settings.
+    $ds_field_settings = ds_get_field_settings($element['#group']->entity_type, $element['#group']->bundle, $element['#group']->mode);
+
+    // Check which field we have to use.
+    if (is_array($element['collection_documents'])) {
+      $valid_element = 'collection_documents';
+      // Remove the other element from the render.
+      unset($element['field_core_files']);
+    }
+    elseif (is_array($element['field_core_files'])) {
+      $valid_element = 'field_core_files';
+      // Remove the other element from the render.
+      unset($element['collection_documents']);
+    }
+
+    // Set the label to the correct element.
+    $element['#group']->label = isset($ds_field_settings[$valid_element]['formatter_settings']['ft']['lb']) ?
+      $ds_field_settings[$valid_element]['formatter_settings']['ft']['lb'] :
+      $element[$valid_element]['#title'];
+  }
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function dt_publication_ds_fields_info($entity_type) {
+  $fields = array();
+
+  // List of publications of type "One publication".
+  $fields['collection_documents'] = array(
+    'title' => t('Collection documents'),
+    'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_documents',
+  );
+
+  // The "Part of collection:".
+  $fields['publication_collections'] = array(
+    'title' => t('Publication collections'),
+    'ui_limit' => array('publication|*'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_publication_collections',
+  );
+
+  return array('node' => $fields);
+}
+
+/**
+ * Helper returning a list entities based on a type of publication.
+ *
+ * @param object $entity
+ *   The entity to get the view for.
+ *
+ * @return string
+ *   The rendered view.
+ */
+function _dt_publication_documents($entity) {
+  $node_wrapper = entity_metadata_wrapper($entity['entity_type'], $entity['entity']);
+  if (isset($node_wrapper->field_publication_collection)) {
+    $type = $node_wrapper->field_publication_collection->value();
+    if ($type == "1") {
+      // "1" == Collection.
+      return views_embed_view('publications', 'block_1');
+    }
+  }
+}
+
+/**
+ * Helper returning a list of links to publications of type collection.
+ *
+ * @return string
+ *   The rendered view.
+ */
+function _dt_publication_collections() {
+  if ($node = menu_get_object('node')) {
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    if (isset($node_wrapper->field_publication_collection)) {
+      $type = $node_wrapper->field_publication_collection->value();
+      if ($type == "0") {
+        // "0" == Publication.
+        return views_embed_view('publication_collections', 'block');
+      }
+    }
+  }
+}

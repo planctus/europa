@@ -1,0 +1,233 @@
+// Biography.
+.group-bio-col {
+  .group-bio-top-footer {
+    display: block;
+
+    // Button to open contact details.
+    .field--collapse-button {
+      display: block;
+      margin: 1em 0;
+
+      * {
+        margin-bottom: 0;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    // Social networks list.
+    .field--field-social-networks {
+      display: block;
+
+      .icon-social {
+        display: block;
+        float: left;
+        margin-top: 5px;
+        padding-left: 40px;
+        margin-right: 10px;
+        &:focus{
+          outline-offset: 0;
+        }
+      }
+    }
+
+    // Link to move things.
+    .field--field-biography-av-portal {
+      clear: both;
+      display: block;
+      padding-top: 10px;
+      width: 100%;
+    }
+  }
+}
+
+section {
+  &.block-dt-social-media-sharing,
+  .btn-time-line,
+  #blog,
+  #agenda,
+  #timeline {
+    float: left;
+  }
+}
+
+// Desktop for the trio from above.
+@include breakpoint(screen-sm-min) {
+  .group-bio-col {
+    .group-bio-top-footer {
+      .field--collapse-button,
+      .field--field-social-networks,
+      .field--field-biography-av-portal {
+        display: table-cell;
+        width: auto;
+      }
+    }
+  }
+
+  .group-bio-col {
+    min-height: 160px;
+    padding-bottom: 2.5em;
+    position: relative;
+
+    .group-bio-top-footer {
+      position: absolute;
+      bottom: 0;
+      overflow: visible;
+    }
+  }
+}
+
+/*
+Listing  2rows
+
+Listing components
+
+Markup: html/listing--2rows.html
+
+Styleguide listing.listing--2rows
+*/
+
+.listing--2rows {
+  .listing__item {
+    padding: 1em 0;
+    position: relative;
+  }
+
+  .listing__top {
+    min-height: 130px;
+    position: relative;
+
+    img {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  h3 {
+    color: $grey-dark;
+    padding-top: 0;
+  }
+
+  .field--field-biography-tagline {
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 0.8em;
+  }
+
+  .field {
+    margin: 0.5em 0 0;
+  }
+
+  .listing__title + * {
+    font-size: inherit;
+  }
+
+  .field__label,
+  .field-title {
+    padding: 0;
+    font-size: $font-size-little;
+    font-weight: 600;
+    float: left;
+    width: 25%;
+  }
+
+  .field-title {
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    line-height: 1em;
+  }
+
+  .listing__bottom {
+    clear: both;
+
+    ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      margin-left: 1em;
+    }
+  }
+
+  .field-name-body {
+    .field-items {
+      width: 100%;
+    }
+  }
+}
+
+.section__group--highlight-grey {
+  &#collapse {
+    .row {
+      padding-left: 1em;
+    }
+
+    .col-separator-left {
+      border-left: none;
+    }
+  }
+}
+
+@include breakpoint(screen-xs-min) {
+  .listing--2rows {
+    .listing__top {
+      img {
+        display: block;
+      }
+    }
+
+    .field-title {
+      margin-bottom: 0;
+    }
+
+    .field-name-body {
+      .field-items {
+        width: 75%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $screen-mds) {
+  .section__group--highlight-grey {
+    &#collapse {
+      .col-separator-left {
+        border-left: 1px solid $grey;
+      }
+    }
+  }
+
+  // Translation selector should be replaced with site language switcher later.
+  #block-cwt-core-translation-selector {
+    float: left;
+  }
+}
+
+// Temporary fix.
+#team {
+  .field {
+    margin-bottom: 0.5em;
+  }
+}
+
+.node-type-team {
+  .listing__item {
+    max-width: none;
+  }
+
+  .section--content-top {
+    margin-top: 0;
+  }
+}
+
+
+// Lang selector is different on CWT and it needs this tweaking.
+.translation_select {
+  &:focus {
+    padding-right: 50px;
+  }
+}

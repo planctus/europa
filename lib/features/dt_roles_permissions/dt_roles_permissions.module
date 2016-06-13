@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+/**
+ * Helper function to get the export directory.
+ *
+ * @return string
+ *   The parth to the export directory.
+ */
+function _dt_roles_permissions_get_export_dir() {
+  return drupal_get_path('module', 'dt_roles_permissions') . '/exports';
+}
+
+/**
+ * Helper function to get the full file dir of where the permissions are.
+ *
+ * @param string $role_name
+ *   The name of the role.
+ *
+ * @return string
+ *   The full path to the file.
+ */
+function _dt_roles_permissions_get_file_dir($role_name) {
+  return _dt_roles_permissions_get_export_dir() . '/' . md5($role_name) . '.php';
+}

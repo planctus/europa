@@ -1,0 +1,7 @@
+name = Homepage Core
+description = This is the core feature for the Homepage class
+core = 7.x
+package = NextEuropa Digital Transformation Homepage
+php = 5.2.4
+dependencies[] = dt_core
+features[features_api][] = api:2

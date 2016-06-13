@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_guidance_default_install() {
+  drupal_set_message(t('NextEuropa guidance feature is installed on your site.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_guidance_default_uninstall() {
+  drupal_set_message(t('NextEuropa guidance feature is uninstalled on your site.'));
+}

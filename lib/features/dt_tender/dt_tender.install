@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_tender_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('tender');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_tender_uninstall() {
+  drupal_set_message(t('NextEuropa tender feature is uninstalled on your site.'));
+}

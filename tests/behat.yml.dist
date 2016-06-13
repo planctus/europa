@@ -7,8 +7,9 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\nexteuropa\Context\DrupalContext
         - Drupal\nexteuropa\Context\MinkContext
+        - Drupal\nexteuropa\Context\DigitalTransformationContext
       filters:
-        tags: "~@wip"
+        tags: "~@wip&&${behat.test_tags}"
   extensions:
     Behat\MinkExtension:
       goutte: ~
@@ -27,5 +28,7 @@ default:
       subcontexts:
         paths:
           - '${behat.subcontexts.path}'
+      region_map:
+        tabs: '.tabs--primary'
   formatters:
     ${behat.formatter.name}: ~

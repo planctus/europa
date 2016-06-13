@@ -1,0 +1,7 @@
+name = Entityreference TMGMT
+description = Integrates Entityreference into TMGMT so that entityreferences are copied with the translations
+core = 7.x
+package = tmgmt
+
+dependencies[] = entityreference
+dependencies[] = tmgmt
