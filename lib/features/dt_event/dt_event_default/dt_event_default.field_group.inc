@@ -1295,7 +1295,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related events',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'event_related_events',
     ),
@@ -1380,6 +1380,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_related_links|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_related_links|node|event|event_past';
+  $field_group->group_name = 'group_related_links';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related links',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_core_links',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Related links',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_related_links|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

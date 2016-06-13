@@ -920,9 +920,14 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'weight' => 7,
       ),
       'event_past' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 60,
       ),
       'full' => array(
