@@ -359,7 +359,7 @@ function cwt_core_update_7126() {
  * file-video-field_video_description
  */
 function cwt_core_update_7127() {
-  foreach (field_info_fields() as $f_name => $field) {
+  foreach (field_info_fields() as $field) {
     switch ($field['field_name']) {
       case 'field_file_image_alt_text':
       case 'field_file_image_title_text':

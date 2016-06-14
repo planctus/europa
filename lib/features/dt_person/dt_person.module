@@ -60,13 +60,13 @@ function dt_person_field_attach_view_alter(&$output, $context) {
           'obj' => $item,
         );
 
+        // Save the last id we checked.
+        $last_title_tid = $check_entity->field_person_role->value()->tid;
+
         // Check if the tid is the same. If not set our variable to false.
         if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
           $same_title = FALSE;
         }
-
-        // Save the last id we checked.
-        $last_title_tid = $check_entity->field_person_role->value()->tid;
       }
 
       // If all the persons have the same title, we update our label.

@@ -167,18 +167,18 @@ function _cwt_core_translation_selector($node = NULL) {
       // Do not show links to the same node, to unpublished translations or to
       // translations in disabled languages.
       if ($translation->status && isset($languages[$langcode])) {
-        $language = $languages[$langcode];
+        $use_language = $languages[$langcode];
         $key = "translation_$langcode";
 
         if (isset($custom_links->links[$langcode])) {
           $links[$key] = $custom_links->links[$langcode];
         }
         else {
-          $language_label = $language->native;
+          $language_label = $use_language->native;
           $links[$key] = array(
             'href' => "node/{$translation->nid}",
             'title' => $language_label . ' (' . cwt_core_display_langcode($langcode) . ')',
-            'language' => $language,
+            'language' => $use_language,
           );
         }
 

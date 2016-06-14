@@ -8,7 +8,8 @@
  * Implements hook_install().
  */
 function dt_impact_assessment_default_install() {
-  drupal_set_message(t('NextEuropa impact_assessment feature is installed on your site.'));
+  $t = get_t();
+  drupal_set_message($t('NextEuropa impact_assessment feature is installed on your site.'));
 }
 
 /**
