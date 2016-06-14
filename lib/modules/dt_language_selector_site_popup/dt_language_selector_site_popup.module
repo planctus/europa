@@ -219,11 +219,11 @@ function _dt_language_selector_site_popup_form_validate($form, &$form_state) {
   // Save the data to our variable.
   variable_set(
     'dt_language_selector_site_popup_message',
-    $form_state['input']['dt_language_selector_site_popup_message']['value']
+    $form_state['values']['dt_language_selector_site_popup_message']['value']
   );
   // Save the data to our variable.
   variable_set(
     'dt_language_selector_site_splash_message',
-    $form_state['input']['dt_language_selector_site_splash_message']['value']
+    $form_state['values']['dt_language_selector_site_splash_message']['value']
   );
 }

@@ -54,7 +54,7 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
       }
       $user = $context->user;
     }
-    list($gid, $vid, $bundle) = entity_extract_ids($group_type, $group);
+    list($gid) = entity_extract_ids($group_type, $group);
 
     $membership = og_group($group_type, $gid, array(
       "entity type" => 'user',

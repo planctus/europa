@@ -103,23 +103,23 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'agenda'
-    && $original_path_cached = &drupal_static('cwt_core_orignal_path')
-      && isset($original_path_cached['nid'])) {
-    // Load node the Calendar belongs to in the first place.
-    // Use its editorial section in first contextual filter.
-    $node = node_load($original_path_cached['nid']);
-    $wrapper = entity_metadata_wrapper('node', $node);
-    $editorial_section = $wrapper->field_editorial_section->value();
-    if (!empty($editorial_section)) {
-      // Limit allowed sections to children of the selected editorial section.
-      // So in exposed filter only these values are available.
-      $allowed_terms = taxonomy_get_children($editorial_section->tid);
-      $allowed_values = array();
-      foreach ($allowed_terms as $term) {
-        $allowed_values[$term->tid] = $term->tid;
+  if ($view->name == 'calendar' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+    if (isset($original_path_cached['nid'])) {
+      // Load node the Calendar belongs to in the first place.
+      // Use its editorial section in first contextual filter.
+      $node = node_load($original_path_cached['nid']);
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $editorial_section = $wrapper->field_editorial_section->value();
+      if (!empty($editorial_section)) {
+        // Limit allowed sections to children of the selected editorial section.
+        // So in exposed filter only these values are available.
+        $allowed_terms = taxonomy_get_children($editorial_section->tid);
+        $allowed_values = array();
+        foreach ($allowed_terms as $term) {
+          $allowed_values[$term->tid] = $term->tid;
+        }
+        $view->display['default']->handler->options['filters']['field_editorial_section_multiple_tid']['value'] = $allowed_values;
       }
-      $view->display['default']->handler->options['filters']['field_editorial_section_multiple_tid']['value'] = $allowed_values;
     }
   }
 }

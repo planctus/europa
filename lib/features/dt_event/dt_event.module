@@ -71,7 +71,7 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
   // change the view mode on a teaser by accident.
   if (isset($context['entity']->type) && $context['entity']->type == 'event' && $view_mode == 'full') {
     // If it is a collection.
-    if ($context['entity']->field_event_collection['und'][0]['value'] == 1) {
+    if ($context['entity']->field_event_collection[LANGUAGE_NONE][0]['value'] == 1) {
       $view_mode = 'event_collection';
       return;
     }

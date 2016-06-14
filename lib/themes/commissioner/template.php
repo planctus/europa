@@ -57,11 +57,11 @@ function _commissioner_bundle_forms($bundle) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = strtolower(t("@bundles", array('@bundle' => $singular)));
+    $plural = drupal_strtolower(t("@bundles", array('@bundle' => $singular)));
   }
 
   $forms = array(
-    'singular' => ucfirst(strtolower($singular)),
+    'singular' => ucfirst(drupal_strtolower($singular)),
     'plural' => $plural,
   );
 
@@ -395,7 +395,7 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   }
 
   $i = 0;
-  foreach ($variables['items'] as $key => $item) {
+  foreach ($variables['items'] as $item) {
     // Check if item is not empty and we have access to it.
     if ($item && (!isset($item['#access']) || $item['#access'])) {
       $variables['panes'][$i]['title'] = check_plain($item['#title']);

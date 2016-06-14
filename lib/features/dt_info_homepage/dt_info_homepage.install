@@ -16,9 +16,7 @@ function dt_info_homepage_install() {
  * Implements hook_uninstall().
  */
 function dt_info_homepage_uninstall() {
-  $path = drupal_get_path('module', 'dt_info_homepage') . '/dt_info_homepage.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('Information Homepage %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('Information Homepage feature is uninstalled on your site.'));
 }
 
 /**
