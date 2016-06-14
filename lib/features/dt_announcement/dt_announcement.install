@@ -29,9 +29,7 @@ function dt_announcement_uninstall() {
   variable_del('dt_announcement_read_more__department');
   variable_del('dt_announcement_read_more__priority');
   variable_del('dt_announcement_read_more__policy');
-  $path = drupal_get_path('module', 'dt_announcement') . '/dt_announcement.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Class %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Class feature is uninstalled on your site.'));
 }
 
 /**
@@ -199,7 +197,7 @@ function dt_announcement_update_7113($sandbox) {
 
   if (!empty($nids)) {
     $nodes = entity_load('node', $nids);
-    foreach ($nodes as $nid => $node) {
+    foreach ($nodes as $node) {
       // Update of field_core_date_published.
       $wrapper = entity_metadata_wrapper('node', $node);
       $created = $wrapper->created->value();

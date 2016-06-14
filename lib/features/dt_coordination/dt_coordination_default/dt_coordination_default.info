@@ -1,9 +1,8 @@
 name = Coordination default
 description = Coordination content type related settings. default.
 core = 7.x
+php = 5.5
 package = NextEuropa Digital Transformation
-version = 7.x-1.0-dev
-project = dt_coordination_default
 dependencies[] = dt_coordination
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
@@ -57,3 +56,4 @@ features_exclude[variable][menu_parent_coordination] = menu_parent_coordination
 features_exclude[variable][node_options_coordination] = node_options_coordination
 features_exclude[variable][node_preview_coordination] = node_preview_coordination
 features_exclude[variable][node_submitted_coordination] = node_submitted_coordination
+multisite_version = 2.2

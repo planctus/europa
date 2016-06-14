@@ -22,7 +22,7 @@ function dt_node_settings_helpers_overall() {
     $form['content_types'][$type] = array(
       '#type' => 'checkbox',
       '#title' => $label,
-      '#default_value' => variable_get('helper_node_type_' . $type, 0),
+      '#default_value' => variable_get('dt_node_settings_helper_node_type_' . $type, 0),
     );
   }
   // Add a submit handler function.
@@ -37,6 +37,6 @@ function dt_node_settings_helpers_overall() {
 function dt_node_settings_helpers_overall_submit($form, &$form_state) {
   $node_types = $form_state['values']['content_types'];
   foreach ($node_types as $type => $selection) {
-    variable_set('helper_node_type_' . $type, $selection);
+    variable_set('dt_node_settings_helper_node_type_' . $type, $selection);
   }
 }

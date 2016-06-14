@@ -52,9 +52,7 @@ function dt_person_install() {
  * Implements hook_uninstall().
  */
 function dt_person_uninstall() {
-  $path = drupal_get_path('module', 'dt_person') . '/dt_person.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa Person %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa Person feature is uninstalled on your site.'));
 }
 
 /**

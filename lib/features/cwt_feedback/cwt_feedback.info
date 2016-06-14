@@ -1,7 +1,0 @@
-name = CWT Feedback
-description = Feedback form functionality
-core = 7.x
-package = COMM
-php = 5.2.4
-version = 7.x-1.0
-project = commissioners

@@ -369,7 +369,7 @@ function dt_announcement_nexteuropa_inpage_nav_add($element, $ds_field_settings)
       $element['announcement_block']['#field_name'] => [
         'weight' => $element['announcement_block']['#weight'],
         'heading' => [
-          'id' => drupal_clean_css_identifier(strtolower($label)),
+          'id' => drupal_clean_css_identifier(drupal_strtolower($label)),
           'label' => $label,
         ],
         'children' => '',
