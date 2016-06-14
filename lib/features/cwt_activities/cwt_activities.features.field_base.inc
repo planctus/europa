@@ -54,7 +54,7 @@ function cwt_activities_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
   );
-  
+
   // Exported field_base: 'field_activity_link'.
   $field_bases['field_activity_link'] = array(
     'active' => 1,

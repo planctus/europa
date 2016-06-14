@@ -389,7 +389,7 @@ function cwt_activities_field_default_field_instances() {
     ),
     'workbench_access_field' => 0,
   );
-  
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
