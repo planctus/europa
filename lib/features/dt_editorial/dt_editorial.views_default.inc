@@ -11,6 +11,73 @@ function dt_editorial_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'filter_list_editorial_teams';
+  $view->description = 'Collection of views objects that can be used to filter lists';
+  $view->tag = 'digital_transformation';
+  $view->base_table = 'node';
+  $view->human_name = 'Filter list - Editorial teams';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Field: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Sort criterion: Field: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'editorial_team' => 'editorial_team',
+  );
+
+  /* Display: Editorial teams */
+  $handler = $view->new_display('entityreference', 'Editorial teams', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['display_description'] = 'List of items that can be used for exposed filters';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'title_field' => 'title_field',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $export['filter_list_editorial_teams'] = $view;
+
+  $view = new view();
   $view->name = 'workbench_moderation_my_drafts';
   $view->description = 'Lists content by moderation state.';
   $view->tag = 'Workbench Moderation';
@@ -446,6 +513,29 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
   $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+  /* Filter criterion: User: Group membership (og_user_node) (reference filter) */
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['id'] = 'og_user_node_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['table'] = 'og_membership';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['field'] = 'og_user_node_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['group'] = 1;
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['expose']['operator_id'] = 'og_user_node_target_id_entityreference_filter_op';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['expose']['label'] = 'Editorial Team';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['expose']['operator'] = 'og_user_node_target_id_entityreference_filter_op';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['expose']['identifier'] = 'og_user_node_target_id_entityreference_filter';
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    7 => 0,
+    9 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['og_user_node_target_id_entityreference_filter']['reference_display'] = 'filter_list_editorial_teams:entityreference_1';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -458,27 +548,6 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
-  /* Filter criterion: User: Group membership (og_user_node) */
-  $handler->display->display_options['filters']['og_user_node_target_id']['id'] = 'og_user_node_target_id';
-  $handler->display->display_options['filters']['og_user_node_target_id']['table'] = 'og_membership';
-  $handler->display->display_options['filters']['og_user_node_target_id']['field'] = 'og_user_node_target_id';
-  $handler->display->display_options['filters']['og_user_node_target_id']['relationship'] = 'uid';
-  $handler->display->display_options['filters']['og_user_node_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator_id'] = 'og_user_node_target_id_op';
-  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['label'] = 'Editorial Team';
-  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['operator'] = 'og_user_node_target_id_op';
-  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['identifier'] = 'og_user_node_target_id';
-  $handler->display->display_options['filters']['og_user_node_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    6 => 0,
-    4 => 0,
-    5 => 0,
-    7 => 0,
-    9 => 0,
-    10 => 0,
-  );
   $handler->display->display_options['path'] = 'admin/workbench/drafts';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'My drafts';
