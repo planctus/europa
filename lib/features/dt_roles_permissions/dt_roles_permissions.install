@@ -8,7 +8,8 @@
  * Implements hook_install().
  */
 function dt_roles_permissions_install() {
-  drupal_set_message(t('DT roles and permissions feature is installed on your site.'));
+  $t = get_t();
+  drupal_set_message($t('DT roles and permissions feature is installed on your site.'));
   module_enable(array('dt_roles_permissions_import'));
 }
 

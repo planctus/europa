@@ -162,7 +162,7 @@ function nexteuropa_feedback_form_theme($form) {
 
   $variables['element']['#children'] = $output;
 
-  return theme_form($variables);
+  return theme('form', $variables);
 }
 
 /**

@@ -135,9 +135,9 @@ function dt_guidance_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'helper_node_type_guidance';
+  $strongarm->name = 'dt_node_settings_helper_node_type_guidance';
   $strongarm->value = 1;
-  $export['helper_node_type_guidance'] = $strongarm;
+  $export['dt_node_settings_helper_node_type_guidance'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

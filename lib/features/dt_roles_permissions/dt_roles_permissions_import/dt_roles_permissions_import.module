@@ -117,6 +117,7 @@ function _dt_roles_permissions_import_get_diff($role) {
     // Load the new ones.
     include_once _dt_roles_permissions_get_file_dir($role->name);
     // See which ones are available.
+    // @codingStandardsIgnoreLine
     $permissions_to_grant = array_intersect($permissions[$role->name], $modules_permissions);
 
     // Make the arrays the same.
@@ -136,6 +137,7 @@ function _dt_roles_permissions_import_get_diff($role) {
       // Load the new ones.
       include_once _dt_roles_permissions_get_file_dir($name);
       // See which ones are available.
+      // @codingStandardsIgnoreLine
       $permissions_to_grant = array_intersect($permissions[$name], $modules_permissions);
 
       // Make the arrays the same.
