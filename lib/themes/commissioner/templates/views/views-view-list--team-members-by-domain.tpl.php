@@ -25,7 +25,7 @@
     <div id="<?php print $formatted_title; ?>" class="expandable__content collapse">
       <div class="listing listing--person listing--column-left listing--nostripe">
         <?php foreach ($rows as $id => $row): ?>
-          <div class="listing__item <?php print strtolower($classes_array[$id]); ?>"><?php print $row; ?></div>
+          <div class="listing__item <?php print drupal_strtolower($classes_array[$id]); ?>"><?php print $row; ?></div>
         <?php endforeach; ?>
       </div>
     </div>

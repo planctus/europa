@@ -1047,7 +1047,7 @@ Styleguide form
     box-shadow: none; }
   .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
     outline: 3px solid #ffd617;
-    outline-offset: -3px;
+    outline-offset: 0px;
     text-decoration: none; }
   .form-control.is-disabled, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
     color: #b3b4b5;
@@ -1407,6 +1407,10 @@ Styleguide banner.video
     margin: 0 -999em;
     padding: 0 999em; } }
 
+@media (max-width: 500px) {
+  .block--full-width {
+    margin: 0; } }
+
 /*
 Breadcrumb
 
@@ -1435,7 +1439,8 @@ Styleguide breadcrumb
 .breadcrumb__segment {
   display: none;
   position: relative;
-  margin: 1em 0 0.8em; }
+  margin: 1em 0 0.8em;
+  width: 100%; }
 
 a.breadcrumb__link {
   display: inline-block;
@@ -1487,7 +1492,8 @@ a.breadcrumb__link {
       -o-transform: translate(0, 0);
       transform: translate(0, 0); }
   .breadcrumb__segment {
-    display: inline-block; }
+    display: inline-block;
+    width: auto; }
   .breadcrumb__segment--first {
     padding-right: 0; }
     .breadcrumb__segment--first:after, .breadcrumb__segment--first:before {
@@ -1535,7 +1541,11 @@ Styleguide breadcrumb.collapsible
     display: none; }
 
 .breadcrumb--collapsible .breadcrumb__segment--last {
-  padding-left: 52px; }
+  padding-left: 60px; }
+
+.breadcrumb--collapsible .breadcrumb__segment:first-child:nth-last-child(2),
+.breadcrumb--collapsible .breadcrumb__segment:first-child:nth-last-child(2) ~ .breadcrumb__segment {
+  padding-left: 0; }
 
 .breadcrumb--collapsible.is-open .breadcrumb__link {
   display: block; }
@@ -2027,7 +2037,9 @@ a.feedback-form__trigger {
   text-decoration: none;
   color: #004494;
   display: inline-block;
-  font-size: 0.889em; }
+  font-size: 0.889em;
+  padding: 0.5em 0;
+  margin-left: 1em; }
   a.feedback-form__trigger:focus {
     outline-offset: 0; }
   a.feedback-form__trigger:active {
@@ -2104,9 +2116,9 @@ a.feedback-form__trigger {
     #feedback-form__accordion .panel-heading {
       padding-left: 0; } }
 
-@media (min-width: 992px) {
-  .feedback-form__trigger {
-    margin: 0.667em 0 0.556em 0; } }
+@media (min-width: 1200px) {
+  a.feedback-form__trigger {
+    margin-left: 0; } }
 
 .no-svg #feedback-form__accordion .panel .panel-title {
   background: url("../images/png/checkbox.png") no-repeat; }
@@ -2452,12 +2464,13 @@ Styleguide filters.filters
 .filters__btn-reset--small {
   display: inline-block; }
 
+html.js .filters__btn-submit {
+  display: inline-block; }
+
 @media (min-width: 480px) {
   .filters__close:after {
     height: 9px;
-    width: 12px; }
-  html.js .filters__btn-submit {
-    display: inline-block; } }
+    width: 12px; } }
 
 @media (min-width: 992px) {
   .filters {
@@ -2466,6 +2479,8 @@ Styleguide filters.filters
     padding: 0; }
   .filters__btn-reset--small,
   .filters__btn-collapse {
+    display: none; }
+  html.js .filters__btn-submit {
     display: none; } }
 
 /*
