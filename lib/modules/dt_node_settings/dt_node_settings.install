@@ -19,7 +19,18 @@ function dt_node_settings_install() {
 function dt_node_settings_uninstall() {
   $node_types = node_type_get_names();
   foreach ($node_types as $type) {
-    variable_del('helper_node_type_' . $type);
+    variable_del('dt_node_settings_helper_node_type_' . $type);
   }
   drupal_set_message(t('NextEuropa Entities module has been successfully uninstalled.'));
+}
+
+/**
+ * Change variable name.
+ */
+function dt_node_settings_update_7101() {
+  $node_types = node_type_get_names();
+  foreach ($node_types as $type) {
+    variable_set('dt_node_settings_helper_node_type_' . $type, variable_get('helper_node_type_' . $type, 0));
+    variable_del('helper_node_type_' . $type);
+  }
 }

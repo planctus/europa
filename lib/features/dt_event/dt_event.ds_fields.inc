@@ -181,9 +181,9 @@ function _dt_event_ds_fields_status_message($field) {
       // If live stream is available we add it to the message.
       if (
         _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
-        isset($field['entity']->field_event_live_streaming_link['und'])
+        isset($field['entity']->field_event_live_streaming_link[LANGUAGE_NONE])
       ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link['und'][0]['url']);
+        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link[LANGUAGE_NONE][0]['url']);
         $render_config['#message_classes'][] = 'live';
       }
       break;

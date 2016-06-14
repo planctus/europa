@@ -8,7 +8,8 @@
  * Implements hook_install().
  */
 function dt_guidance_default_install() {
-  drupal_set_message(t('NextEuropa guidance feature is installed on your site.'));
+  $t = get_t();
+  drupal_set_message($t('NextEuropa guidance feature is installed on your site.'));
 }
 
 /**

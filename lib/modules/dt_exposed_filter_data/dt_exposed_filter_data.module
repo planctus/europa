@@ -130,7 +130,7 @@ function _dt_exposed_filter_data_get_pretty($filter, $view) {
           }
         }
         $raw_values = array();
-        foreach ($value as $key => $val) {
+        foreach ($value as $val) {
           $raw_values[] = $val;
         }
         foreach ($raw_values as $raw_value) {

@@ -231,13 +231,12 @@ function _dt_core_path_update_relatives($path) {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Find children based on field.
       $children = _dt_core_node_get_relatives($nid, $field_name);
+      // Find parents based on field.
+      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
       // Add current as first to force re-generate as first.
       if (!empty($parents)) {
         array_unshift($children, $nid);
       }
-
-      // Find parents based on field.
-      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
       // Add current as last to force re-generate as last.
       if (!empty($parents)) {
         $parents[] = $nid;
@@ -362,7 +361,7 @@ function dt_core_exit() {
 
   $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
   $GLOBALS['dt_core_nodes_to_update_alias'] = array();
-  foreach ($nids_to_update as $nid => $relatives) {
+  foreach ($nids_to_update as $relatives) {
     // Paths update using the update method of the pathauto module.
     // Doing it one by one instead of using
     // pathauto_node_update_alias_multiple() to keep the order of items intact.
@@ -455,7 +454,7 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
   try {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Look for relatives of the future parent.
-      $relatives += _dt_core_node_get_relatives($parent_nid, $field_name, $direction = 'parents');
+      $relatives += _dt_core_node_get_relatives($parent_nid, $field_name, 'parents');
     }
   }
   catch (DTCoreParentCircular $e) {
@@ -735,13 +734,6 @@ function dt_core_views_query_alter(&$view, &$query) {
   if (isset($view->sort['title_field_value'])) {
     // Get our languages.
     $fallback_languages = _dt_shared_functions_content_language_order();
-    // Sort direction from our sort.
-    $sort_direction = 'ASC';
-
-    // If the sort direction is set we use the set one.
-    if (isset($view->sort['title_field_value']->options['order'])) {
-      $sort_direction = $view->sort['title_field_value']->options['order'];
-    }
 
     // Language subquerys.
     $or = db_or();
@@ -953,7 +945,6 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
  *   The link, revisited.
  */
 function _dt_core_menu_link($link, $lang = FALSE) {
-  global $base_url;
   $lang = $lang ? $lang : LANGUAGE_NONE;
   if ($link != '<front>' &&  $link != '<nolink>') {
     $source = drupal_lookup_path('source', $link, $lang);
