@@ -53,14 +53,14 @@ function dt_policy_next_step_field_schema($field) {
  * Implements hook_enable().
  */
 function dt_policy_next_step_enable() {
-  drupal_set_message('DT Policy Next Step module has been enabled.');
+  drupal_set_message(t('DT Policy Next Step module has been enabled.'));
 }
 
 /**
  * Implements hook_disable().
  */
 function dt_policy_next_step_disable() {
-  drupal_set_message('DT Policy Next Step module has been disabled.');
+  drupal_set_message(t('DT Policy Next Step module has been disabled.'));
 }
 
 /**
@@ -68,7 +68,7 @@ function dt_policy_next_step_disable() {
  */
 function dt_policy_next_step_uninstall() {
   // Remove tables.
-  drupal_set_message('DT Policy Next Step module has been uninstalled.');
+  drupal_set_message(t('DT Policy Next Step module has been uninstalled.'));
 }
 
 /**
