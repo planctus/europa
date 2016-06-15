@@ -495,9 +495,8 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['state_1']['id'] = 'state_1';
   $handler->display->display_options['filters']['state_1']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['state_1']['field'] = 'state';
-  $handler->display->display_options['filters']['state_1']['operator'] = 'not in';
   $handler->display->display_options['filters']['state_1']['value'] = array(
-    'published' => 'published',
+    'draft' => 'draft',
   );
   $handler->display->display_options['filters']['state_1']['group'] = 1;
   /* Filter criterion: Content: Title */
