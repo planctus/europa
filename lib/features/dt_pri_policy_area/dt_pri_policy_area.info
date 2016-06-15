@@ -9,6 +9,7 @@ dependencies[] = dt_core
 dependencies[] = dt_department
 dependencies[] = dt_featured_item
 dependencies[] = dt_page
+dependencies[] = dt_page_extended
 dependencies[] = dt_person
 dependencies[] = dt_policy
 dependencies[] = dt_policy_area

@@ -62,12 +62,13 @@ function theme_nexteuropa_bem_item_list($variables) {
       }
       if (count($children) > 0) {
         // Render nested list.
-        $data .= theme_nexteuropa_bem_item_list(array(
+        $render_variables = array(
           'items' => $children,
           'title' => NULL,
           'type' => $type,
           'attributes' => $attributes,
-        ));
+        );
+        $data .= theme('nexteuropa_bem_item_list', $render_variables);
       }
       if ($i == 1) {
         $attributes['class'][] = 'first';
@@ -91,7 +92,7 @@ function theme_nexteuropa_bem_item_list($variables) {
  *   Accepts: $variables['node']->field_core_file.
  *
  * @return string
- *   Markup of transleations.
+ *   Markup of translations.
  */
 function theme_nexteuropa_file_translations($variables) {
   $files_count = isset($variables['node']->field_core_file) ? count($variables['node']->field_core_file) : 0;
@@ -103,8 +104,10 @@ function theme_nexteuropa_file_translations($variables) {
     if (isset($variables['node']->field_core_file[$displayed_langcode])) {
       $files_count--;
     }
+
     $files = $variables['node']->field_core_file;
     $nid = $variables['node']->nid;
+
     $output = '<div class="file__translations">';
     // Building the link.
     $link = array(
@@ -127,7 +130,7 @@ function theme_nexteuropa_file_translations($variables) {
         'html' => TRUE,
       ),
       '#attributes' => array(
-        'class' => array('file__translations-control', 'pull-right'),
+        'class' => array('file__translations-control'),
         'data-toggle' => array('collapse'),
         'aria-expanded' => array('false'),
         'aria-controls' => array('file__translations-' . $nid),
@@ -144,7 +147,7 @@ function theme_nexteuropa_file_translations($variables) {
       'items' => array(),
       'type' => 'ul',
       'attributes' => array(
-        'class' => array('collapse', 'pull-right', 'file__translations-list'),
+        'class' => array('collapse', 'file__translations-list'),
         'id' => array('file__translations-' . $nid),
       ),
     );
@@ -164,7 +167,7 @@ function theme_nexteuropa_file_translations($variables) {
         'path' => file_create_url($file_info['uri']),
         'options' => array(
           'attributes' => array(
-            'class' => array('file__btn', 'btn'),
+            'class' => array('file__btn', 'btn', 'btn--condensed'),
           ),
         ),
       );
@@ -174,6 +177,7 @@ function theme_nexteuropa_file_translations($variables) {
         'data' => $file_markup,
       );
     }
+
     $show_helptext = FALSE;
     if ($show_helptext) {
       $list['items'][] = array(
@@ -183,9 +187,11 @@ function theme_nexteuropa_file_translations($variables) {
       );
     }
 
-    $output .= theme_item_list($list);
+    $output .= theme('item_list', $list);
     $output .= '</div>';
+
     return $output;
   }
+
   return '';
 }

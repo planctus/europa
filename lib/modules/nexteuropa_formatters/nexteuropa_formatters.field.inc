@@ -115,6 +115,20 @@ function nexteuropa_formatters_field_formatter_info() {
       'label' => t('Telephone link'),
       'field types' => array('text'),
     ),
+    'bold_last' => array(
+      'label' => t('Bold last word'),
+      'field types' => array(
+        'taxonomy_term_reference',
+        'text',
+      ),
+    ),
+    'structured_content_links' => array(
+      'label' => t('Structured content links'),
+      'field types' => array(
+        'entityreference',
+        'link_field',
+      ),
+    ),
   );
 }
 
@@ -275,15 +289,67 @@ function nexteuropa_formatters_field_formatter_prepare_view($entity_type, $entit
  */
 function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
+
   if (!empty($items)) {
     $formatter = $display['type'];
 
     switch ($formatter) {
+      // Formatter for the structured content view mode.
+      case 'structured_content_links':
+
+        // Default link config.
+        $options = [
+          'attributes' => [
+            'class' => [
+              'listing__title',
+            ],
+          ],
+        ];
+
+        // Default render array.
+        $render_array = [
+          '#prefix' => '<div class="listing__item">',
+          '#suffix' => '</div>',
+        ];
+
+        switch ($field['type']) {
+          case 'entityreference':
+            $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
+            foreach ($items as $delta => $item) {
+              if ($label = $handler->getLabel($item['entity'])) {
+                if ($uri = entity_uri($field['settings']['target_type'], $item['entity'])) {
+                  // Check if it is a legacy link.
+                  $link_url = isset($item['entity']->legacy) ? $item['entity']->legacy : $uri['path'];
+                  // Add the default options.
+                  $uri['options'] += $options;
+                  // Format the link.
+                  $render_array['#markup'] = l($label, $link_url, $uri['options']);
+                  // Add the render array to the element.
+                  $element[$delta] = $render_array;
+                }
+              }
+            }
+            break;
+
+          case 'link_field':
+            foreach ($items as $delta => $item) {
+              // Merge the default options with the item attributes.
+              $options['attributes'] += $item['attributes'];
+              // Build the link and add it to the render array.
+              $render_array['#markup'] = l($item['title'], $item['url'], $options);
+              // Add the render array to the element.
+              $element[$delta] = $render_array;
+            }
+            break;
+        }
+        break;
+
       case 'context_nav_item':
         $layout_field_settings = ds_get_field_settings($entity_type, $entity->type, 'full');
         $field_name = $field['field_name'];
         if (isset($layout_field_settings[$field_name]['formatter_settings']['ft']['lb'])) {
-          $label_altered = $layout_field_settings[$field_name]['formatter_settings']['ft']['lb'];
+          // @codingStandardsIgnoreLine
+          $label_altered = t($layout_field_settings[$field_name]['formatter_settings']['ft']['lb']);
         }
         $wrapper_label = (isset($label_altered) ? $label_altered : $instance['label']);
 
@@ -437,7 +503,6 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
                 '#field' => $instance,
                 '#display' => $display,
               );
-              $bar = 'foo';
             }
             break;
 
@@ -524,8 +589,29 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           $element['#suffix'] = '</div>';
         }
         break;
+
+      case 'bold_last':
+        switch ($field['type']) {
+          case 'taxonomy_term_reference':
+            foreach ($items as $delta => $item) {
+              $term = taxonomy_term_load($item['tid']);
+              $name_split = explode(' ', $term->name);
+              $last_index = count($name_split) - 1;
+              $name_split[$last_index] = '<strong>' . ($name_split[$last_index]) . '</strong>';
+              $element[$delta] = array('#markup' => implode(' ', $name_split));
+            }
+            break;
+
+          case 'text':
+            foreach ($items as $delta => $item) {
+              $element[$delta] = array('#markup' => $item['safe_value']);
+            }
+            break;
+        }
+        break;
     }
   }
+
   return $element;
 }
 

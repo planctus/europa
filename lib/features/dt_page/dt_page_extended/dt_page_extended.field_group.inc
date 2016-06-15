@@ -21,7 +21,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '16',
+    'weight' => '15',
     'children' => array(
       0 => 'body',
       1 => 'field_core_publications',
@@ -83,6 +83,7 @@ function dt_page_extended_field_group_info() {
       1 => 'group_banner',
       2 => 'group_editorial_settings',
       3 => 'group_featured_item',
+      4 => 'group_page_architecture',
       5 => 'group_page_main',
       6 => 'group_related',
     ),
@@ -107,7 +108,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '17',
+    'weight' => '16',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -158,6 +159,36 @@ function dt_page_extended_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_architecture|node|basic_page|form';
+  $field_group->group_name = 'group_page_architecture';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Page Architecture',
+    'weight' => '17',
+    'children' => array(
+      0 => 'field_core_parent',
+      1 => 'field_core_children',
+      2 => 'field_core_parents',
+      3 => 'field_core_quick_nav_links',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-page-architecture field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_page_architecture|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_contextual_navigation|node|basic_page|full';
   $field_group->group_name = 'group_page_contextual_navigation';
   $field_group->entity_type = 'node';
@@ -166,7 +197,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_departments',
       1 => 'field_core_persons',
@@ -199,7 +230,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_core_publications',
     ),
@@ -228,7 +259,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Free field',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'body',
     ),
@@ -261,13 +292,12 @@ function dt_page_extended_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_description',
-      2 => 'field_core_header_image',
-      3 => 'field_core_image',
-      4 => 'field_core_introduction',
-      5 => 'field_core_legacy_link',
-      6 => 'field_core_parent',
-      7 => 'field_core_social_network_links',
-      8 => 'field_core_link',
+      2 => 'field_core_introduction',
+      3 => 'field_core_legacy_link',
+      4 => 'field_core_social_network_links',
+      5 => 'field_core_header_image',
+      6 => 'field_core_image',
+      7 => 'field_core_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -318,7 +348,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What\'s next?',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_core_next_steps',
     ),
@@ -347,7 +377,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '10 priorities',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'priorities_preprocess',
     ),
@@ -376,7 +406,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_links',
     ),
@@ -407,12 +437,12 @@ function dt_page_extended_field_group_info() {
     'label' => 'Related',
     'weight' => '12',
     'children' => array(
-      0 => 'field_core_departments',
-      1 => 'field_core_persons',
-      2 => 'field_core_policy_area',
-      3 => 'field_core_priorities',
-      4 => 'field_core_topics',
-      5 => 'field_core_links',
+      0 => 'field_core_links',
+      1 => 'field_core_departments',
+      2 => 'field_core_persons',
+      3 => 'field_core_policy_area',
+      4 => 'field_core_priorities',
+      5 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -437,8 +467,8 @@ function dt_page_extended_field_group_info() {
   t('Editorial settings');
   t('Featured item');
   t('Free field');
-  t('Latest');
   t('Meta');
+  t('Page Architecture');
   t('Related');
   t('Related links');
   t('What\'s next?');

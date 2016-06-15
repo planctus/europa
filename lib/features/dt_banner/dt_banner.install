@@ -14,3 +14,19 @@ function dt_banner_install() {
   );
   module_enable($banner_types);
 }
+
+/**
+ * Clear database leftovers.
+ */
+function dt_banner_update_7101() {
+  // Old types.
+  $types = [
+    'dt_banner_quote',
+    'dt_banner_video',
+  ];
+  // Direct db query to remove them. We would normally use delete instance for
+  // this, but that does not work as they are leftovers.
+  db_delete('field_config_instance')
+    ->condition('bundle', $types, 'IN')
+    ->execute();
+}

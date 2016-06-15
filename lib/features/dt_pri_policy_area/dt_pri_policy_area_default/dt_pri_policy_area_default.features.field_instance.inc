@@ -712,6 +712,64 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority_policy_area-field_core_latest_visibility'.
+  $field_instances['node-priority_policy_area-field_core_latest_visibility'] = array(
+    'bundle' => 'priority_policy_area',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 19,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-priority_policy_area-field_core_legacy_link'.
   $field_instances['node-priority_policy_area-field_core_legacy_link'] = array(

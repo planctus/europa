@@ -167,18 +167,18 @@ function _cwt_core_translation_selector($node = NULL) {
       // Do not show links to the same node, to unpublished translations or to
       // translations in disabled languages.
       if ($translation->status && isset($languages[$langcode])) {
-        $language = $languages[$langcode];
+        $use_language = $languages[$langcode];
         $key = "translation_$langcode";
 
         if (isset($custom_links->links[$langcode])) {
           $links[$key] = $custom_links->links[$langcode];
         }
         else {
-          $language_label = $language->native;
+          $language_label = $use_language->native;
           $links[$key] = array(
             'href' => "node/{$translation->nid}",
             'title' => $language_label . ' (' . cwt_core_display_langcode($langcode) . ')',
-            'language' => $language,
+            'language' => $use_language,
           );
         }
 
@@ -299,14 +299,14 @@ function cwt_core_views_pre_render(&$view) {
   $lists = array(
     'blog_commisioner_bio' => 'blog',
     'biography_news' => 'announcements',
-    'activities' => 'agenda',
+    'activities' => 'calendar',
   );
   if (in_array($view->name, array_keys($lists)) && $view->current_display == 'block') {
     if (!empty($view->result)) {
       $query = array();
-      // Alter path for agenda block so it points to the global Agenda page.
+      // Alter path for calendar block so it points to the global Calendar page.
       if ($view->name == 'activities') {
-        // Agenda global list follow the pattern "[Team_node_path]/blog".
+        // Calendar global list follow the pattern "[Team_node_path]/blog".
         $biography = menu_get_object();
         $wrapper = entity_metadata_wrapper('node', $biography);
         $team = $wrapper->field_team_membership->raw();
@@ -358,7 +358,7 @@ function cwt_core_views_pre_render(&$view) {
  * so we alter the inbound path.
  */
 function cwt_core_url_inbound_alter(&$path, $original_path, $path_language) {
-  $segments = '\/blog\b|\/agenda\b|\/announcements\b';
+  $segments = '\/blog\b|\/calendar\b|\/announcements\b';
   $pattern = '/(.*?)(' . $segments . ')((?:\/|.)*)/i';
   // Store the first original path.
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
@@ -975,10 +975,9 @@ function _cwt_core_custom_page_title($page_variables) {
       'arguments' => arg(1),
     );
   }
-  // Agenda.
-  elseif (in_array(arg(0), array('agenda', 'print-agenda'))) {
-    $variables['line_2'] = t('Agenda');
-    $variables['line_3'] = t('Appointments and meetings');
+  // Calendar.
+  elseif (in_array(arg(0), array('calendar', 'print-calendar'))) {
+    $variables['line_2'] = t('Calendar');
   }
 
   // Load custom title provided by view.

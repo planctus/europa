@@ -112,6 +112,55 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_core_children'.
+  $field_bases['field_core_children'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_children',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'titleoverwrite_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'basic_page' => 'basic_page',
+          'class' => 'class',
+          'policy' => 'policy',
+          'policy_area' => 'policy_area',
+          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
+          'publication' => 'publication',
+          'topic' => 'topic',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_core_date_published'.
   $field_bases['field_core_date_published'] = array(
     'active' => 1,
@@ -219,6 +268,27 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_core_gallery'.
+  $field_bases['field_core_gallery'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_gallery',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'mediafield',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'media',
   );
 
   // Exported field_base: 'field_core_header_image'.
@@ -464,6 +534,44 @@ function dt_core_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_core_location'.
+  $field_bases['field_core_location'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_location',
+    'indexes' => array(),
+    'locked' => 1,
+    'module' => 'addressfield',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'addressfield',
+  );
+
+  // Exported field_base: 'field_core_media'.
+  $field_bases['field_core_media'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_media',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'mediafield',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'media',
+  );
+
   // Exported field_base: 'field_core_next_steps'.
   $field_bases['field_core_next_steps'] = array(
     'active' => 1,
@@ -552,6 +660,85 @@ function dt_core_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_core_parents'.
+  $field_bases['field_core_parents'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_parents',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'titleoverwrite_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'basic_page' => 'basic_page',
+          'class' => 'class',
+          'policy' => 'policy',
+          'policy_area' => 'policy_area',
+          'priority' => 'priority',
+          'priority_policy_area' => 'priority_policy_area',
+          'publication' => 'publication',
+          'topic' => 'topic',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_core_quick_nav_links'.
+  $field_bases['field_core_quick_nav_links'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_quick_nav_links',
+    'indexes' => array(),
+    'locked' => 1,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
   // Exported field_base: 'field_core_section_intro'.
   $field_bases['field_core_section_intro'] = array(
     'active' => 1,
@@ -601,6 +788,28 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'social_network_link',
+  );
+
+  // Exported field_base: 'field_core_tagline'.
+  $field_bases['field_core_tagline'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_tagline',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_core_top_task_link'.

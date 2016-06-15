@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_event_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('event');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_event_uninstall() {
+  $path = drupal_get_path('module', 'dt_event') . '/dt_event.info';
+  $info = drupal_parse_info_file($path);
+  drupal_set_message(t('NextEuropa event %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+}
+
+/**
+ * Enable commissioner date module.
+ */
+function dt_event_update_7101() {
+  module_enable(['dt_date_format', 'nexteuropa_ds_fields']);
+}
+
+/**
+ * Enable facets_in_filters module.
+ */
+function dt_event_update_7102() {
+  module_enable(['search_api_db', 'facets_in_filters']);
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
+}

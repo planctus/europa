@@ -124,10 +124,10 @@ function dt_pri_policy_area_strongarm() {
           'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '60',
+          'weight' => '15',
         ),
         'language' => array(
-          'weight' => '57',
+          'weight' => '12',
         ),
         'metatags' => array(
           'weight' => '4',

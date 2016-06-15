@@ -43,7 +43,7 @@ function commissioner_preprocess_page(&$variables) {
 function _commissioner_bundle_forms($bundle) {
   // Forming plurals for existing content types.
   $plurals = array(
-    'activities' => t("agenda items"),
+    'activities' => t("calendar items"),
     'aggregated_news' => t("announcements"),
     'biography' => t("commissioners"),
     'commisioner_blog_post' => t("blog posts"),
@@ -395,7 +395,7 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   }
 
   $i = 0;
-  foreach ($variables['items'] as $key => $item) {
+  foreach ($variables['items'] as $item) {
     // Check if item is not empty and we have access to it.
     if ($item && (!isset($item['#access']) || $item['#access'])) {
       $variables['panes'][$i]['title'] = check_plain($item['#title']);

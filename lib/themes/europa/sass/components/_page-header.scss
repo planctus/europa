@@ -86,14 +86,21 @@ Styleguide page-header.informational-home
   .page-header__top {
     text-transform: uppercase;
   }
+
   .page-header__main {
     line-height: $line-height-base;
   }
+
   .page-header__bottom {
     font-size: 26px;
   }
+
   .page-header__hero-title {
     padding-top: 2.39em;
+
+    .meta--header {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -116,4 +123,21 @@ Styleguide page-header.informational-home
 // Drupal connect.
 .node-type-info-homepage .page-header {
   @extend .page-header--large-intro;
+}
+
+.page-header__eventinfo {
+  float: left;
+  font-size: $font-size-xsmall;
+
+  .page-header__date--cancelled {
+    text-decoration: line-through; 
+  }
+
+  .icon { 
+    margin: 1em 2em 1em 0;
+
+    &::before {
+      margin-right: 0.5em;
+    }  
+  }
 }

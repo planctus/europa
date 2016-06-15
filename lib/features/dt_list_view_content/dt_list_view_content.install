@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Contains update and installation hooks for dt_list_view_content.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function dt_list_view_content_enable() {
+  drupal_set_message(t('Digital transformation list view content is now active on your site.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function dt_list_view_content_disable() {
+  drupal_set_message(t('Digital transformation list view content is now disabled on your site.'));
+}
+
+/**
+ * DTTSB-468: Move content from one field to another.
+ */
+function dt_list_view_content_update_7101() {
+  _dt_shared_field_value_copy('bean', 'list_view_content', 'field_core_introduction', 'field_list_view_content', FALSE, TRUE);
+}

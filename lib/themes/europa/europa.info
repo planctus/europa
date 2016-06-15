@@ -24,13 +24,14 @@ regions[footer_right] = Footer right
 ; ========================================
 ; Stylesheets
 ; ========================================
-stylesheets[all][] = css/style-sass.css
+stylesheets[all][] = css/style-sass-base.css
+stylesheets[all][] = css/style-sass-components.css
 
 ; ========================================
 ; Scripts
 ; ========================================
 scripts[] = bootstrap-sass/js/bootstrap/affix.js
-;scripts[] = bootstrap-sass/js/bootstrap/alert.js
+scripts[] = bootstrap-sass/js/bootstrap/alert.js
 ;scripts[] = bootstrap-sass/js/bootstrap/button.js
 ;scripts[] = bootstrap-sass/js/bootstrap/carousel.js
 scripts[] = bootstrap-sass/js/bootstrap/collapse.js
