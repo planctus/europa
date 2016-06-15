@@ -11,6 +11,30 @@
 function dt_node_settings_install() {
   $t = get_t();
   drupal_set_message($t('You can now indicate helper content types at the <a href="@settings-url">admin/config/content/dt_node_settings/settings</a>.', array('@settings-url' => url('admin/config/content/dt_node_settings/settings'))));
+
+  // Add the schema fields.
+  $schema['node_revision'] = array();
+  dt_node_settings_schema_alter($schema);
+  foreach ($schema['node_revision']['fields'] as $name => $spec) {
+    db_add_field('node_revision', $name, $spec);
+  }
+}
+
+/**
+ * Implements hook_schema_alter().
+ */
+function dt_node_settings_schema_alter(&$schema) {
+  // Add a field dt_data to the node_revision table in order
+  // to store the dt specific serialized data.
+  if (isset($schema['node_revision'])) {
+    $schema['node_revision']['fields']['dt_node_settings_data'] = array(
+      'description' => 'Dt specific node settings.',
+      'type' => 'text',
+      'size' => 'big',
+      'not null' => FALSE,
+      'serialize' => TRUE,
+    );
+  }
 }
 
 /**
@@ -22,4 +46,18 @@ function dt_node_settings_uninstall() {
     variable_del('helper_node_type_' . $type);
   }
   drupal_set_message(t('NextEuropa Entities module has been successfully uninstalled.'));
+  // Remove our additional field.
+  db_drop_field('node_revision', 'dt_node_settings_data');
+}
+
+/**
+ * DTTSB-116 add extra database row.
+ */
+function dt_node_settings_update_7101() {
+  // Add the schema fields.
+  $schema['node_revision'] = array();
+  dt_node_settings_schema_alter($schema);
+  foreach ($schema['node_revision']['fields'] as $name => $spec) {
+    db_add_field('node_revision', $name, $spec);
+  }
 }

@@ -5,6 +5,22 @@
  */
 
 /**
+ * Implements hook_permission().
+ */
+function dt_editorial_permission() {
+  return [
+    'dt editorial mark linguistic review' => [
+      'title' => t('Mark linguistic review checkbox'),
+      'description' => t('Allow the user to mark the linguistic review checkbox'),
+    ],
+    'dt editorial mark content review' => [
+      'title' => t('Mark content review checkbox'),
+      'description' => t('Allow the user to mark the content review checkbox'),
+    ],
+  ];
+}
+
+/**
  * Fetch list of Group Content node types.
  *
  * Serves to populate the allowed values of the 'field_editorial_types' list
@@ -160,4 +176,24 @@ function _dt_editorial_custom_og_permissions($roles) {
   }
 
   return !empty($perms) ? $perms : FALSE;
+}
+
+/**
+ * Implements hook_dt_node_settings_config_fields().
+ */
+function dt_editorial_dt_node_settings_config_fields($form) {
+  return [
+    'dt_editorial_linguistic_review' => [
+      '#type' => 'checkbox',
+      '#title' => 'Linguistic review',
+      '#default_value' => FALSE,
+      '#access' => user_access('dt editorial mark linguistic review'),
+    ],
+    'dt_editorial_content_review' => [
+      '#type' => 'checkbox',
+      '#title' => 'Content review',
+      '#default_value' => FALSE,
+      '#access' => user_access('dt editorial mark content review'),
+    ],
+  ];
 }
