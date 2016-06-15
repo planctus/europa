@@ -6,11 +6,6 @@
 
 include_once 'dt_editorial.features.inc';
 /**
- * @file
- * Code for the dt_editorial feature.
- */
-
-/**
  * Fetch list of Group Content node types.
  *
  * Serves to populate the allowed values of the 'field_editorial_types' list

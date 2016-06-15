@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 version = 7.x-1.0
 dependencies[] = conditional_fields
 dependencies[] = entityreference
-dependencies[] = nexteuropa_views
 dependencies[] = options
 dependencies[] = tmgmt_og
 dependencies[] = views
