@@ -414,5 +414,5 @@ function commissioner_js_alter(&$js) {
     unset($js[$europa_path . '/js/europa_tabs.js']);
     drupal_add_js($commis_path . '/js/commissioner_tabs.js', 'file');
   }
-  drupal_add_js($commis_path . '/js/jquery-migrate-1.2.1.js', 'file');
+  drupal_add_js($commis_path . '/js/jquery-migrate-1.2.1.min.js', 'file');
 }
