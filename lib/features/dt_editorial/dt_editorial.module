@@ -5,6 +5,7 @@
  */
 
 include_once 'dt_editorial.features.inc';
+
 /**
  * Fetch list of Group Content node types.
  *
