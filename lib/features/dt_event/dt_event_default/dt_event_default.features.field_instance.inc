@@ -187,7 +187,7 @@ For collection, this is a text with more information about the collection.',
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'By default, the name of the contact is displayed as a title. You can change this default title by filling out the \'Title override\' field; for example if you want to make a distinction between \'Press contact\' or \'General contact\'.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -262,7 +262,7 @@ For collection, this is a text with more information about the collection.',
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_contact',
-    'label' => 'General contact',
+    'label' => 'Contact',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2724,75 +2724,6 @@ On what day does the event end?',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_press_contact'.
-  $field_instances['node-event-field_event_press_contact'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 23,
-      ),
-      'event_collection' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 38,
-      ),
-      'event_past' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 59,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 45,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 38,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_event_press_contact',
-    'label' => 'Press contact',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_event_registration'.
   $field_instances['node-event-field_event_registration'] = array(
     'bundle' => 'event',
@@ -3869,7 +3800,9 @@ On what day does the event end?',
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Available languages');
+  t('By default, the name of the contact is displayed as a title. You can change this default title by filling out the \'Title override\' field; for example if you want to make a distinction between \'Press contact\' or \'General contact\'.');
   t('Cancelled or rescheduled');
+  t('Contact');
   t('Date and time of live streaming');
   t('Description');
   t('Details concerning the timing and schedule of an event. This can be limited or extended.');
@@ -3883,7 +3816,6 @@ On what day does the event end?',
   t('For event, there are separate fields for schedule, speakers, and practical information. 
 For collection, this is a text with more information about the collection.');
   t('Fully booked');
-  t('General contact');
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
@@ -3914,7 +3846,6 @@ On what day does the event end?');
   t('Part of collection');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
-  t('Press contact');
   t('Registration');
   t('Registration deadline');
   t('Related links');
