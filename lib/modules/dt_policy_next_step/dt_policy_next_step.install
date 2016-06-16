@@ -79,5 +79,6 @@ function dt_policy_next_step_update_7101() {
   if ($instance = field_info_instance('node', 'field_event_schedule', 'event')) {
     field_delete_instance($instance);
   }
-  features_revert_module('dt_policy_next_step');
+  // Reverting the feature will recreate the field instance with correct schema.
+  features_revert_module('dt_event');
 }
