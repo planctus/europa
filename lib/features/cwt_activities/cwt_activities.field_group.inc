@@ -148,6 +148,7 @@ function cwt_activities_field_group_info() {
       2 => 'field_start_end_date',
       3 => 'field_activity_address',
       4 => 'title',
+      5 => 'field_activity_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
