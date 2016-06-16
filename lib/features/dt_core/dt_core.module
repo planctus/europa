@@ -74,8 +74,6 @@ function dt_core_theme($existing, $type, $theme, $path) {
 function dt_core_preprocess_dt_core_status_message(&$variables) {
   if (isset($variables['message_classes']) && is_array($variables['message_classes'])) {
     $variables['message_classes'] = ' ' . implode(' ', $variables['message_classes']);
-  } else {
-    $variables['message_classes'] = '';
   }
 }
 
