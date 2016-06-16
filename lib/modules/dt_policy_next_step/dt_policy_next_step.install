@@ -72,26 +72,25 @@ function dt_policy_next_step_uninstall() {
 }
 
 /**
- * DTTSB-236: Adding new fields in the schema.
+ * DTTSB-236: Extending dt_policy_next_step_field.
  */
 function dt_policy_next_step_update_7101() {
-  // Remove field instance using the timeline component, in order to rebuild it.
-  if ($instance = field_info_instance('node', 'field_event_schedule', 'event')) {
-    field_delete_instance($instance);
+  // Accumulate the list of fields to extend.
+  $fields_migrate = [];
+  $fields = field_info_fields();
+  foreach ($fields as $field) {
+    if ($field['type'] == 'dt_policy_next_step_field') {
+      $f_name = $field['field_name'];
+      $fields_migrate[$f_name] = $f_name;
+    }
   }
-  // Reverting the feature will recreate the field instance with correct schema.
-  features_revert_module('dt_event');
-
-  // Get list of existing fields using the type of field.
-  $fields_extend = ['field_core_next_steps', 'field_policy_next_steps'];
-
-  foreach ($fields_extend as $field_name) {
-    // Add necessary columns in tables to accommodate new input.
+  // Extend tables.
+  foreach ($fields_migrate as $field_name) {
+    // Data tables.
     $schema = drupal_get_schema('field_data_' . $field_name);
     db_add_field('field_data_' . $field_name, $field_name . '_timezone', $schema['fields'][$field_name . '_timezone']);
     db_add_field('field_data_' . $field_name, $field_name . '_time_date_start', $schema['fields'][$field_name . '_time_date_start']);
     db_add_field('field_data_' . $field_name, $field_name . '_time_date_end', $schema['fields'][$field_name . '_time_date_end']);
-
     // Revisions tables.
     $schema = drupal_get_schema('field_revision_' . $field_name);
     db_add_field('field_revision_' . $field_name, $field_name . '_timezone', $schema['fields'][$field_name . '_timezone']);
