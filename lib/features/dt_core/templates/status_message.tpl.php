@@ -4,13 +4,11 @@
  * Contains the markup for the message block.
  */
 ?>
-<div class="messages<?php echo $message_classes; ?>">
-  <?php if($message_title): ?>
-    <h3><?php echo $message_title; ?></h3>
-  <?php endif; ?>
-  <?php if($message_body): ?>
-    <ul>
-      <li><?php echo $message_body; ?></li>
-    </ul>
-  <?php endif; ?>
-</div>
+<?php if (!empty($message_title)) : ?>
+  <div class="messages<?php print $message_classes . (!empty($message_type) ? ' ' . $message_type : ''); ?>">
+    <h3><?php if (!empty($message_type)) : ?><span class="sr-only"><?php print $message_type; ?> message: </span><?php endif; ?><?php print $message_title; ?></h3>
+    <?php if (!empty($message_body)) : ?>
+      <p><?php print $message_body; ?></p>
+    <?php endif; ?>
+  </div>
+<?php endif; ?>
