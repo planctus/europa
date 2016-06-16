@@ -892,16 +892,16 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'nid';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: User: Group membership */
-  $handler->display->display_options['fields']['og_user_node']['id'] = 'og_user_node';
-  $handler->display->display_options['fields']['og_user_node']['table'] = 'og_membership';
-  $handler->display->display_options['fields']['og_user_node']['field'] = 'og_user_node';
-  $handler->display->display_options['fields']['og_user_node']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['og_user_node']['label'] = 'Editorial Team';
-  $handler->display->display_options['fields']['og_user_node']['settings'] = array(
+  /* Field: Field: Groups audience */
+  $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
+  $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
+  $handler->display->display_options['fields']['og_group_ref']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['og_group_ref']['label'] = 'Editorial Team';
+  $handler->display->display_options['fields']['og_group_ref']['settings'] = array(
     'link' => 0,
   );
-  $handler->display->display_options['fields']['og_user_node']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
