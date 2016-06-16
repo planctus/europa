@@ -397,6 +397,145 @@ function dt_event_default_conditional_fields_default_fields() {
   $items["node:event:3"] = array(
     'entity' => 'node',
     'bundle' => 'event',
+    'dependent' => 'field_core_location',
+    'dependee' => 'field_event_is_online',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 0,
+      'value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:4"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
     'dependent' => 'field_core_persons',
     'dependee' => 'field_event_collection',
     'options' => array(
@@ -522,7 +661,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:4"] = array(
+  $items["node:event:5"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_core_tagline',
@@ -650,7 +789,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:5"] = array(
+  $items["node:event:6"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_available_languages',
@@ -778,7 +917,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:6"] = array(
+  $items["node:event:7"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_children_events',
@@ -906,7 +1045,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:7"] = array(
+  $items["node:event:8"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_date',
@@ -1034,7 +1173,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:8"] = array(
+  $items["node:event:9"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_entrance_fee',
@@ -1162,7 +1301,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:9"] = array(
+  $items["node:event:10"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_is_fully_booked',
@@ -1290,7 +1429,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:10"] = array(
+  $items["node:event:11"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_is_live_streaming',
@@ -1418,7 +1557,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:11"] = array(
+  $items["node:event:12"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_is_online',
@@ -1546,7 +1685,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:12"] = array(
+  $items["node:event:13"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_live_streaming_date',
@@ -1674,7 +1813,285 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:13"] = array(
+  $items["node:event:14"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_live_streaming_date',
+    'dependee' => 'field_event_is_live_streaming',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:15"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_live_streaming_date',
+    'dependee' => 'field_event_is_live_streaming',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:16"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_live_streaming_link',
@@ -1802,7 +2219,146 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:14"] = array(
+  $items["node:event:17"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_live_streaming_link',
+    'dependee' => 'field_event_is_live_streaming',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:18"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_location_image',
@@ -1930,7 +2486,146 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:15"] = array(
+  $items["node:event:19"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_location_image',
+    'dependee' => 'field_event_is_online',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 0,
+      'value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:20"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_media',
@@ -2058,7 +2753,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:16"] = array(
+  $items["node:event:21"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_more_links',
@@ -2186,7 +2881,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:17"] = array(
+  $items["node:event:22"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_number_seats',
@@ -2314,7 +3009,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:18"] = array(
+  $items["node:event:23"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_parent_events',
@@ -2442,7 +3137,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:19"] = array(
+  $items["node:event:24"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_registration',
@@ -2570,7 +3265,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:20"] = array(
+  $items["node:event:25"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_registration_end',
@@ -2698,7 +3393,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:21"] = array(
+  $items["node:event:26"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_schedule',
@@ -2826,7 +3521,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:22"] = array(
+  $items["node:event:27"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_scribble_id',
@@ -2954,7 +3649,146 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:23"] = array(
+  $items["node:event:28"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_scribble_id',
+    'dependee' => 'field_event_is_live_streaming',
+    'options' => array(
+      'state' => 'visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:29"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_status',
@@ -3082,7 +3916,146 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:24"] = array(
+  $items["node:event:30"] = array(
+    'entity' => 'node',
+    'bundle' => 'event',
+    'dependent' => 'field_event_status_description',
+    'dependee' => 'field_event_status',
+    'options' => array(
+      'state' => '!visible',
+      'condition' => 'value',
+      'grouping' => 'AND',
+      'effect' => 'show',
+      'effect_options' => array(),
+      'element_view' => array(
+        1 => 1,
+        2 => 0,
+        5 => 0,
+        3 => 0,
+        4 => 0,
+      ),
+      'element_view_per_role' => 0,
+      'element_view_roles' => array(
+        1 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+      ),
+      'element_edit' => array(
+        1 => 0,
+        3 => 0,
+      ),
+      'element_edit_per_role' => 0,
+      'element_edit_roles' => array(
+        1 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        2 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        7 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
+          1 => 1,
+          3 => 0,
+        ),
+      ),
+      'selector' => '',
+      'values_set' => 1,
+      'value_form' => 'no',
+      'value' => array(
+        0 => array(
+          'value' => 'no',
+        ),
+      ),
+      'values' => array(),
+    ),
+  );
+
+  $items["node:event:31"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_target_audience',
@@ -3210,7 +4183,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:25"] = array(
+  $items["node:event:32"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_website',
@@ -3338,7 +4311,7 @@ function dt_event_default_conditional_fields_default_fields() {
     ),
   );
 
-  $items["node:event:26"] = array(
+  $items["node:event:33"] = array(
     'entity' => 'node',
     'bundle' => 'event',
     'dependent' => 'field_event_what_happened',

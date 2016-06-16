@@ -1888,10 +1888,10 @@ On what day does the event end?',
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
+          'basic_html' => 0,
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
@@ -1913,7 +1913,7 @@ On what day does the event end?',
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
