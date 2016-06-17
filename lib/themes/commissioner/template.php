@@ -122,7 +122,7 @@ function commissioner_preprocess_views_view_unformatted(&$variables) {
       $start = $row->field_field_start_end_date[0]['raw']['value'];
       $end = $row->field_field_start_end_date[0]['raw']['value2'];
 
-      // Add a class if the event is occuring at a current date.
+      // Add a class if the event is occurring at a current date.
       // In case of single day event the $start and $end dates will be the same
       // while for multiple day events the $end date will be different.
       // The view is only showing events in the future and all events start at
