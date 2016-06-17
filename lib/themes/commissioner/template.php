@@ -408,11 +408,10 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
  * Implements hook_js_alter().
  */
 function commissioner_js_alter(&$js) {
-  $commis_path = drupal_get_path('theme', 'commissioner');
   if (drupal_is_front_page()) {
+    $commis_path = drupal_get_path('theme', 'commissioner');
     $europa_path = drupal_get_path('theme', 'europa');
     unset($js[$europa_path . '/js/europa_tabs.js']);
     drupal_add_js($commis_path . '/js/commissioner_tabs.js', 'file');
   }
-  drupal_add_js($commis_path . '/js/jquery-migrate-1.2.1.min.js', 'file');
 }
