@@ -94,6 +94,15 @@ function dt_event_ds_view_modes_info() {
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'event_livestream';
+  $ds_view_mode->label = 'Event: Livestream';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['event_livestream'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
   $ds_view_mode->view_mode = 'event_past';
   $ds_view_mode->label = 'Event: Past';
   $ds_view_mode->entities = array(
