@@ -270,7 +270,7 @@ function cwt_activities_preprocess_page(&$variables) {
       $filter = implode($result['filter']);
       $variables['node']->title .= ' ' . strtolower(trim($filter, '"'));
 
-      $variables['node']->content = $description[0] . '<br><i>' . $description[1] . '</i>'
+      $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'
         . $variables['node']->content;
     }
   }
