@@ -44,18 +44,18 @@ function dt_event_ds_fields_info($entity_type) {
   if ($entity_type == 'node') {
     // Book your seat.
     $fields[$entity_type]['book_your_seat'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button'),
-    ];
+        'title' => t('Event: Book your seat button'),
+      ];
     $fields[$entity_type]['book_your_seat_bottom'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button bottom'),
-    ];
+        'title' => t('Event: Book your seat button bottom'),
+      ];
     // Livestreaming.
     $fields[$entity_type]['livestreaming'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming'),
-    ];
+        'title' => t('Event: Livestreaming'),
+      ];
     $fields[$entity_type]['livestreaming_bottom'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming bottom'),
-    ];
+        'title' => t('Event: Livestreaming bottom'),
+      ];
     $fields[$entity_type]['dt_event_header'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -113,6 +113,18 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: Scribble embed'),
       'function' => '_dt_event_ds_fields_scribble_embed',
     ];
+    $fields[$entity_type]['dt_event_stream_embed'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Stream embed'),
+      'function' => '_dt_event_ds_fields_stream_embed',
+    ];
+    $fields[$entity_type]['dt_event_stream_embed_intro'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Stream embed intro'),
+      'function' => '_dt_event_ds_fields_stream_embed_intro',
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -141,7 +153,7 @@ function dt_event_ds_field_format_summary($field) {
  *   Holds the current context of the field.
  *
  * @return string
- *   The status message markup.
+ *   The rendered iframe.
  */
 function _dt_event_ds_fields_scribble_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
@@ -152,6 +164,53 @@ function _dt_event_ds_fields_scribble_embed($field) {
     ];
     return drupal_render($markup);
   }
+  return NULL;
+}
+
+/**
+ * Helper function to show the embed url iframe with CCK.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The rendered iframe.
+ */
+function _dt_event_ds_fields_stream_embed($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+    $content_language = _dt_shared_functions_content_language($field['entity']);
+    if (isset($stream_url['url'])) {
+      $markup = [
+        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
+      ];
+      return drupal_render($markup);
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Helper function to show the embed video intro.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The rendered intro.
+ */
+function _dt_event_ds_fields_stream_embed_intro($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+    $content_language = _dt_shared_functions_content_language($field['entity']);
+    if (isset($stream_url['url'])) {
+      $markup = [
+        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
+      ];
+      return drupal_render($markup);
+    }
+  }
+  return NULL;
 }
 
 /**
@@ -179,11 +238,8 @@ function _dt_event_ds_fields_status_message($field) {
       $render_config['#message_title'] = t('This event is going on right now');
 
       // If live stream is available we add it to the message.
-      if (
-        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
-        isset($field['entity']->field_event_live_streaming_link[LANGUAGE_NONE])
-      ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link[LANGUAGE_NONE][0]['url']);
+      if (_dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])) {
+        $render_config['#message_body'] = l(t('Watch live streaming'), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
         $render_config['#message_classes'][] = 'live';
       }
       break;
@@ -296,27 +352,29 @@ function _dt_event_ds_fields_book_your_seat($field) {
   ];
 
   // Few conditions should be met.
-  if (
-    in_array($field['entity']->event_status, $allowed_states) &&
-    !$emw->field_event_is_fully_booked->value() &&
-    $registration = $emw->field_event_registration->value()
-  ) {
-    // If registration is still open we can show the button.
-    if ($emw->field_event_registration_end->value() > time()) {
-      // Our button text will default if not filled in.
-      $button_link = $registration['display_url'];
-      $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
-    }
-    // Special case if ongoing and live stream is available.
-    if (
-      $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
-      $stream_link = $emw->field_event_live_streaming_link->value()
+  if (in_array($field['entity']->event_status, $allowed_states)) {
+    if (!$emw->field_event_is_fully_booked->value() &&
+      $registration = $emw->field_event_registration->value()
     ) {
-      $button_text = t('Watch live now');
-      $button_link = $stream_link['display_url'];
+      // If registration is still open we can show the button.
+      if ($emw->field_event_registration_end->value() > time()) {
+        // Our button text will default if not filled in.
+        $button_link = $registration['display_url'];
+        $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
+      }
     }
-
-    if (isset($button_text)) {
+    else {
+      // Special case if ongoing and live stream is available.
+      if (
+        $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
+        $emw->field_event_live_streaming_link->value()
+      ) {
+        $button_text = t('Watch live now');
+        $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
+      }
+    }
+    // If a match is there, we can display the button.
+    if (isset($button_text) && isset($button_link)) {
       // Default attributes for the link.
       $attributes = [
         'attributes' => [
@@ -334,6 +392,8 @@ function _dt_event_ds_fields_book_your_seat($field) {
       return l($button_text, $button_link, $attributes);
     }
   }
+
+  return NULL;
 }
 
 /**
@@ -514,7 +574,11 @@ function _dt_event_ds_fields_header_event($field) {
     $markup .= '<span class="icon icon--location ' . $element_classes['location'] . '">' . $location_content . '</span>';
   }
 
-  if ($is_streaming && (!in_array($field['entity']->event_status, array(DT_EVENT_STATE_CANCELLED, DT_EVENT_STATE_PAST)))) {
+  if ($is_streaming && (!in_array($field['entity']->event_status, array(
+      DT_EVENT_STATE_CANCELLED,
+      DT_EVENT_STATE_PAST,
+    )))
+  ) {
     $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
   }
 

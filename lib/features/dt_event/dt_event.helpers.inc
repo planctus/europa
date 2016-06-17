@@ -193,7 +193,7 @@ function _dt_event_get_status_information($entity) {
  */
 function _dt_event_is_live_path($path = 'current') {
   if ($path == 'current') {
-    $path = current_path();
+    $path = request_path();
   }
   return preg_match(DT_EVENT_LIVE_PATH_REGEX, $path);
 }

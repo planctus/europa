@@ -17,7 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-4418-0",
+    "entity_translation_handler_id" : "cer-eid-4448-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -46,6 +46,24 @@ function dt_event_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function dt_event_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
+}
+
+/**
+ * Implements hook_node_info().
+ */
+function dt_event_node_info() {
+  $items = array(
+    'event' => array(
+      'name' => t('Event'),
+      'base' => 'node_content',
+      'description' => t('Create content of type Event.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
 }
 
 /**

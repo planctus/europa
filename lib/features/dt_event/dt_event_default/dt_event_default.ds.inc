@@ -107,6 +107,104 @@ function dt_event_default_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|event|event_livestream';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'event';
+  $ds_fieldsetting->view_mode = 'event_livestream';
+  $ds_fieldsetting->settings = array(
+    'events_live_feed_intro' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'event_livestream_header' => array(
+      'weight' => '65',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '68',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_header' => array(
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'dt_event_scribble_embed' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_stream_embed' => array(
+      'weight' => '67',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_event_live_streaming_date' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_event_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+  );
+  $export['node|event|event_livestream'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|event|event_past';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'event';
@@ -624,6 +722,42 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->view_mode = 'event_livestream';
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'events_live_feed_intro',
+        2 => 'dt_event_scribble_embed',
+        5 => 'group_section',
+        7 => 'event_livestream_header',
+        8 => 'field_event_live_streaming_date',
+        9 => 'dt_event_stream_embed',
+        10 => 'social_bookmark_webtools',
+        11 => 'group_row',
+        12 => 'group_video',
+        13 => 'group_chat',
+      ),
+      'left_header' => array(
+        1 => 'group_meta',
+        3 => 'title',
+        4 => 'dt_event_header',
+        6 => 'field_event_type',
+      ),
+    ),
+    'fields' => array(
+      'events_live_feed_intro' => 'central',
+      'group_meta' => 'left_header',
+      'dt_event_scribble_embed' => 'central',
+      'title' => 'left_header',
+      'dt_event_header' => 'left_header',
+      'group_section' => 'central',
+      'field_event_type' => 'left_header',
+      'event_livestream_header' => 'central',
+      'field_event_live_streaming_date' => 'central',
+      'dt_event_stream_embed' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'group_row' => 'central',
+      'group_video' => 'central',
+      'group_chat' => 'central',
+    ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',

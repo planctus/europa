@@ -110,6 +110,39 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_chat|node|event|event_livestream';
+  $field_group->group_name = 'group_chat';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_livestream';
+  $field_group->parent_name = 'group_row';
+  $field_group->data = array(
+    'label' => 'Live feed',
+    'weight' => '87',
+    'children' => array(
+      0 => 'events_live_feed_intro',
+      1 => 'dt_event_scribble_embed',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Live feed',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-6 col-sm-12',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_chat|node|event|event_livestream'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_contact|node|event|event_collection';
   $field_group->group_name = 'group_contact';
   $field_group->entity_type = 'node';
@@ -941,6 +974,32 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_meta|node|event|event_livestream';
+  $field_group->group_name = 'group_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_livestream';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_event_type',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'classes' => '',
+        'modifier' => 'meta--header',
+      ),
+    ),
+  );
+  $field_groups['group_meta|node|event|event_livestream'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_meta|node|event|event_past';
   $field_group->group_name = 'group_meta';
   $field_group->entity_type = 'node';
@@ -1474,6 +1533,39 @@ function dt_event_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_row|node|event|event_livestream';
+  $field_group->group_name = 'group_row';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_livestream';
+  $field_group->parent_name = 'group_section';
+  $field_group->data = array(
+    'label' => 'Row',
+    'weight' => '83',
+    'children' => array(
+      0 => 'group_video',
+      1 => 'group_chat',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Row',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'row',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_row|node|event|event_livestream'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_row|node|event|event_past';
   $field_group->group_name = 'group_row';
   $field_group->entity_type = 'node';
@@ -1537,6 +1629,71 @@ function dt_event_default_field_group_info() {
   );
   $field_groups['group_row|node|event|full'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_section|node|event|event_livestream';
+  $field_group->group_name = 'group_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_livestream';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Section',
+    'weight' => '3',
+    'children' => array(
+      0 => 'group_row',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Section',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_section|node|event|event_livestream'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_video|node|event|event_livestream';
+  $field_group->group_name = 'group_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_livestream';
+  $field_group->parent_name = 'group_row';
+  $field_group->data = array(
+    'label' => 'video',
+    'weight' => '86',
+    'children' => array(
+      0 => 'field_event_live_streaming_date',
+      1 => 'event_livestream_header',
+      2 => 'social_bookmark_webtools',
+      3 => 'dt_event_stream_embed',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'video',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'col-md-6 col-sm-12',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $field_groups['group_video|node|event|event_livestream'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('About');
@@ -1551,6 +1708,7 @@ function dt_event_default_field_group_info() {
   t('From the audience');
   t('Latest section');
   t('Left');
+  t('Live feed');
   t('Meta');
   t('Ongoing and future');
   t('Past events');
@@ -1560,10 +1718,13 @@ function dt_event_default_field_group_info() {
   t('Related events');
   t('Related links');
   t('Right');
+  t('Row');
   t('Schedule');
+  t('Section');
   t('Speakers');
   t('What happened');
   t('row');
+  t('video');
 
   return $field_groups;
 }
