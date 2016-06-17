@@ -15,14 +15,14 @@ function cwt_activities_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Agenda';
+  $view->human_name = 'Calendar';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Agenda';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['css_class'] = 'listing-custom';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -70,12 +70,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['label'] = '';
   $handler->display->display_options['fields']['field_editorial_section']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More calendar items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'agenda/[field_editorial_section]';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More calendar items for %1';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['link_class'] = 'link';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['prefix'] = '<div class="more-link">';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['suffix'] = '</div>';
@@ -88,7 +88,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -137,6 +137,10 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['sorts']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
   $handler->display->display_options['sorts']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
   $handler->display->display_options['sorts']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -152,17 +156,6 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'biography' => 'biography',
   );
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -171,23 +164,16 @@ function cwt_activities_views_default_views() {
     'activities' => 'activities',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Start/End date -  start date (field_start_end_date) */
-  $handler->display->display_options['filters']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_end_date_value']['group'] = 2;
-  $handler->display->display_options['filters']['field_start_end_date_value']['default_date'] = 'now';
-  /* Filter criterion: Content: Start/End date - end date (field_start_end_date:value2) */
-  $handler->display->display_options['filters']['field_start_end_date_value2']['id'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['field'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group'] = 2;
-  $handler->display->display_options['filters']['field_start_end_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
-  /* Display: Agenda block */
-  $handler = $view->new_display('block', 'Agenda block', 'block');
+  /* Display: Calendar block */
+  $handler = $view->new_display('block', 'Calendar block', 'block');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
   $handler->display->display_options['style_options']['uses_fields'] = TRUE;
@@ -212,7 +198,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['ui_name'] = 'More link';
-  $handler->display->display_options['footer']['area']['content'] = 'More agenda items';
+  $handler->display->display_options['footer']['area']['content'] = 'More calendar items';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
@@ -237,12 +223,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section']['label'] = '';
   $handler->display->display_options['fields']['field_editorial_section']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More agenda items';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['text'] = 'More calendar items';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'agenda/[field_editorial_section]';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['path'] = 'calendar/[field_editorial_section]';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_editorial_section']['alter']['path_case'] = 'lower';
-  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More agenda items for %1';
+  $handler->display->display_options['fields']['field_editorial_section']['alter']['alt'] = 'More calendar items for %1';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['link_class'] = 'link';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['prefix'] = '<div class="more-link">';
   $handler->display->display_options['fields']['field_editorial_section']['alter']['suffix'] = '</div>';
@@ -255,7 +241,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -300,7 +286,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Appointments and meetings';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Content: Agenda transparency text */
+  /* Field: Content: Calendar transparency text */
   $handler->display->display_options['fields']['field_biography_agenda_text']['id'] = 'field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['table'] = 'field_data_field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['field'] = 'field_biography_agenda_text';
@@ -333,15 +319,15 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Appointments and meetings';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: No upcoming agenda items */
+  /* Field: No upcoming calendar items */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'No upcoming agenda items';
+  $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'No upcoming calendar items';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'No upcoming agenda items';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'No upcoming calendar items';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Agenda transparency text */
+  /* Field: Content: Calendar transparency text */
   $handler->display->display_options['fields']['field_biography_agenda_text']['id'] = 'field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['table'] = 'field_data_field_biography_agenda_text';
   $handler->display->display_options['fields']['field_biography_agenda_text']['field'] = 'field_biography_agenda_text';
@@ -394,14 +380,14 @@ function cwt_activities_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Agenda global';
+  $view->human_name = 'Calendar global';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Agenda';
+  $handler->display->display_options['title'] = 'Calendar';
   $handler->display->display_options['css_class'] = 'listing-custom';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
@@ -436,6 +422,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['empty'] = TRUE;
   $handler->display->display_options['header']['result']['content'] = '<div class="result-count pull-left"><p>@total items[filter_info]</p></div>';
+  /* Relationship: Content: Editorial sections (field_editorial_section_multiple) */
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['id'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['table'] = 'field_data_field_editorial_section_multiple';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['field'] = 'field_editorial_section_multiple_tid';
+  $handler->display->display_options['relationships']['field_editorial_section_multiple_tid']['label'] = 'field_editorial_section_multiple';
   /* Field: Content: Start/End date */
   $handler->display->display_options['fields']['field_start_end_date']['id'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['table'] = 'field_data_field_start_end_date';
@@ -443,7 +434,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -492,6 +483,11 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['sorts']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
   $handler->display->display_options['sorts']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
   $handler->display->display_options['sorts']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_editorial_section_multiple_tid';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -521,13 +517,11 @@ function cwt_activities_views_default_views() {
     'activities' => 'activities',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
   /* Filter criterion: Content: Start/End date - end date (field_start_end_date:value2) */
   $handler->display->display_options['filters']['field_start_end_date_value2']['id'] = 'field_start_end_date_value2';
   $handler->display->display_options['filters']['field_start_end_date_value2']['table'] = 'field_data_field_start_end_date';
@@ -684,10 +678,8 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['vocabulary'] = 'editorial_sections';
 
-  /* Display: Agenda items */
-  $handler = $view->new_display('page', 'Agenda items', 'list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Calendar items */
+  $handler = $view->new_display('page', 'Calendar items', 'list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'listing-custom listing-custom--page';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -703,14 +695,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['ui_name'] = 'Print PDF link';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="rss-link__wrapper"><div class="rss-link">%print_pdf_link%</div></div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '%print_pdf_link%';
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  $handler->display->display_options['path'] = 'agenda/%';
+  $handler->display->display_options['path'] = 'calendar/%';
 
-  /* Display: Print agenda items */
-  $handler = $view->new_display('page', 'Print agenda items', 'print_list');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Agenda';
+  /* Display: Print calendar items */
+  $handler = $view->new_display('page', 'Print calendar items', 'print_list');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -730,6 +720,7 @@ function cwt_activities_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -745,9 +736,9 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['field'] = 'field_start_end_date';
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_start_end_date']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'ec_date_j_f_y',
     'fromto' => 'both',
@@ -756,6 +747,17 @@ function cwt_activities_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
+  /* Field: Content: Editorial sections */
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['id'] = 'field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['table'] = 'field_data_field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['field'] = 'field_editorial_section_multiple';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['label'] = '';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_class'] = 'listing__author__pdf';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'bold_last';
+  $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -763,193 +765,12 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'span';
+  $handler->display->display_options['fields']['title']['element_class'] = 'listing__title__pdf';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Editorial sections */
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['id'] = 'field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['table'] = 'field_data_field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['field'] = 'field_editorial_section_multiple';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['label'] = 'With';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_type'] = 'span';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_label_type'] = 'strong';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['element_wrapper_type'] = 'p';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['operator'] = 'OR';
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'activities' => 'activities',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Start/End date - end date (field_start_end_date:value2) */
-  $handler->display->display_options['filters']['field_start_end_date_value2']['id'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['field'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_start_end_date_value2']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['operator_id'] = 'field_start_end_date_value2_op';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['label'] = 'Start date';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['operator'] = 'field_start_end_date_value2_op';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['identifier'] = 'date_filter_min';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    33 => 0,
-    7 => 0,
-    6 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    34 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    19 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-    31 => 0,
-    32 => 0,
-  );
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['label'] = 'Start/End date - end date (field_start_end_date:value2)';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['identifier'] = 'field_start_end_date_value2';
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_start_end_date_value2']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
-  $handler->display->display_options['filters']['field_start_end_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Start/End date -  start date (field_start_end_date) */
-  $handler->display->display_options['filters']['field_start_end_date_value']['id'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['table'] = 'field_data_field_start_end_date';
-  $handler->display->display_options['filters']['field_start_end_date_value']['field'] = 'field_start_end_date_value';
-  $handler->display->display_options['filters']['field_start_end_date_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_start_end_date_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_start_end_date_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['operator_id'] = 'field_start_end_date_value_op';
-  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['label'] = 'End date';
-  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['operator'] = 'field_start_end_date_value_op';
-  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['identifier'] = 'date_filter_max';
-  $handler->display->display_options['filters']['field_start_end_date_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    33 => 0,
-    7 => 0,
-    6 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    34 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    19 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-    31 => 0,
-    32 => 0,
-  );
-  $handler->display->display_options['filters']['field_start_end_date_value']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Editorial sections (field_editorial_section_multiple) */
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['id'] = 'field_editorial_section_multiple_tid';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['table'] = 'field_data_field_editorial_section_multiple';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['field'] = 'field_editorial_section_multiple_tid';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['value'] = array(
-    163 => '163',
-  );
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['operator_id'] = 'field_editorial_section_multiple_tid_op';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['label'] = 'Commissioner';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['operator'] = 'field_editorial_section_multiple_tid_op';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['identifier'] = 'field_editorial_section_multiple_tid';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    7 => 0,
-    6 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-    14 => 0,
-    15 => 0,
-    16 => 0,
-    17 => 0,
-    18 => 0,
-    19 => 0,
-    20 => 0,
-    21 => 0,
-    22 => 0,
-    23 => 0,
-    24 => 0,
-    25 => 0,
-    26 => 0,
-    27 => 0,
-    28 => 0,
-    29 => 0,
-    30 => 0,
-    31 => 0,
-    32 => 0,
-  );
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['reduce_duplicates'] = TRUE;
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_editorial_section_multiple_tid']['vocabulary'] = 'editorial_sections';
-  $handler->display->display_options['path'] = 'print-agenda/%';
+  $handler->display->display_options['path'] = 'print-calendar/%';
   $export['agenda'] = $view;
 
   return $export;

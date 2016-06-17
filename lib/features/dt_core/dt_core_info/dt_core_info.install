@@ -30,6 +30,7 @@ function dt_core_info_install() {
     'dt_page_extended',
     'dt_site_menu',
     'dt_consultation_default',
+    'dt_event_default',
   );
   module_enable($features);
 
@@ -131,4 +132,25 @@ function dt_core_info_update_7108() {
  */
 function dt_core_info_update_7109() {
   module_enable(array('dt_page_extended'));
+}
+
+/**
+ * DTTSB-395, DTTSB-125, DTTSB-377: Enable dt_event_default. (7110).
+ *
+ * DTTSB-125: Enable DT Editorial feature. (7111).
+ * DTTSB-377: Enable social sharing snippet on all sites. (7112).
+ */
+function dt_core_info_update_7110() {
+  $modules = [
+    'dt_event_default',
+    'dt_editorial',
+    'dt_social_media_sharing',
+  ];
+
+  foreach ($modules as $module) {
+    if (module_exists($module)) {
+      module_enable([$module]);
+    }
+  }
+  module_enable(array('dt_event_default'));
 }

@@ -69,7 +69,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     elseif ($arg2 == 'lower' && $native_name === lcfirst($native_name)) {
       return;
     }
-    throw new ExpectationException($native_name . " is not in the correct case.");
+    throw new ExpectationException($native_name . " is not in the correct case.", $this->getSession());
   }
 
   /**
@@ -79,6 +79,15 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function iGoToAddTranslationFrom($target) {
     $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
+  }
+
+  /**
+   * Goes to the OG group's roles pages.
+   *
+   * @Given I go to the group roles page
+   */
+  public function iGoToTheGroupRolesPage() {
+    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
   }
 
   /**
@@ -97,7 +106,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()));
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()), $this->getSession());
   }
 
   /**
@@ -128,7 +137,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     if ($this->languageList[$arg1]->weight == $arg2) {
       return;
     }
-    throw new ExpectationException($this->languageList[$arg1]->native . ' has an incorrect weight.');
+    throw new ExpectationException($this->languageList[$arg1]->native . ' has an incorrect weight.', $this->getSession());
   }
 
   /**
@@ -139,11 +148,11 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function theCheckboxesShouldBeChecked($selector) {
     $checkboxes = $this->getSession()->getPage()->findAll('css', $selector);
     if ($checkboxes === NULL) {
-      throw new ExpectationException('Could not find checkbox input element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find checkbox input element matching the selector: ' . $selector, $this->getSession());
     }
     foreach ($checkboxes as $checkbox) {
       if (!$checkbox->isChecked()) {
-        throw new ExpectationException('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be');
+        throw new ExpectationException('Checkbox with the id ' . $checkbox->getAttribute('id') . ' is not checked and it should be', $this->getSession());
       }
     }
   }
@@ -156,11 +165,11 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function theSelectsShouldBeSetTo($selector, $value) {
     $selects = $this->getSession()->getPage()->findAll('css', $selector);
     if ($selects === NULL) {
-      throw new ExpectationException('Could not find select element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find select element matching the selector: ' . $selector, $this->getSession());
     }
     foreach ($selects as $select) {
       if ($select->getValue() !== $value) {
-        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be');
+        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be', $this->getSession());
       }
     }
   }
@@ -173,11 +182,11 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function theElementShouldContainText($selector) {
     $elements = $this->getSession()->getPage()->findAll('css', $selector);
     if ($elements === NULL) {
-      throw new ExpectationException('Could not find element matching the selector: ' . $selector);
+      throw new ExpectationException('Could not find element matching the selector: ' . $selector, $this->getSession());
     }
     foreach ($elements as $element) {
       if ($element->getText() == '') {
-        throw new ExpectationException('Element ' . $selector . 'is empty and it should not be');
+        throw new ExpectationException('Element ' . $selector . 'is empty and it should not be', $this->getSession());
       }
     }
   }
@@ -190,10 +199,10 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function iSeeThatTheFieldHasAttribute($field, $attribute) {
     $field_element = $this->getSession()->getPage()->findField($field);
     if ($field_element === NULL) {
-      throw new ExpectationException('Could not find field: ' . $field);
+      throw new ExpectationException('Could not find field: ' . $field, $this->getSession());
     }
     if (!$field_element->hasAttribute($attribute)) {
-      throw new ExpectationException('Field ' . $field_element->getHtml() . ' does not have the attribute: ' . $attribute);
+      throw new ExpectationException('Field ' . $field_element->getHtml() . ' does not have the attribute: ' . $attribute, $this->getSession());
     }
   }
 
@@ -205,10 +214,10 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function iSeeThatTheFieldHasNoAttribute($field, $attribute) {
     $field_element = $this->getSession()->getPage()->findField($field);
     if ($field_element === NULL) {
-      throw new ExpectationException('Could not find field: ' . $field);
+      throw new ExpectationException('Could not find field: ' . $field, $this->getSession());
     }
     if ($field_element->hasAttribute($attribute)) {
-      throw new ExpectationException('Field ' . $field . ' has the attribute: ' . $attribute);
+      throw new ExpectationException('Field ' . $field . ' has the attribute: ' . $attribute, $this->getSession());
     }
   }
 
@@ -224,7 +233,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
-      throw new ExpectationException(sprintf('The content-language metatag does not contain %s', $value));
+      throw new ExpectationException(sprintf('The content-language metatag does not contain %s', $value), $this->getSession());
     }
   }
 
@@ -240,7 +249,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
-      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value));
+      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value), $this->getSession());
     }
   }
 
@@ -281,10 +290,10 @@ class DigitalTransformationContext extends RawDrupalContext {
 
     if (empty($result['node'])) {
       $params = array(
-        '@title' => $title,
-        '@type' => $type,
+        '@title' => $target_title,
+        '@type' => $input_id,
       );
-      throw new ExpectationException(format_string("Node @title of @type not found.", $params));
+      throw new ExpectationException(format_string("Node @title of @type not found.", $params), $this->getSession());
     }
     $target_nid = key($result['node']);
 
@@ -305,11 +314,11 @@ class DigitalTransformationContext extends RawDrupalContext {
           '@title' => $title,
           '@target' => $target,
         ];
-        throw new ExpectationException(format_string("Link with title @title found but not linking to @target.", $params));
+        throw new ExpectationException(format_string("Link with title @title found but not linking to @target.", $params), $this->getSession());
       }
     }
     else {
-      throw new ExpectationException(format_string("Link with title @title not found.", ['@title' => $title]));
+      throw new ExpectationException(format_string("Link with title @title not found.", ['@title' => $title]), $this->getSession());
     }
   }
 
@@ -369,7 +378,7 @@ class DigitalTransformationContext extends RawDrupalContext {
           '@text' => $repeatedelement['text'],
           '@falsetext' => $children[$n]->find('css', $element)->getText(),
         ];
-        throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables));
+        throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables), $this->getSession());
       }
     }
   }

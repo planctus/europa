@@ -47,7 +47,7 @@ function _dt_contact_phone_validate($form, &$form_state) {
   if ($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']) {
     $contact_phone = trim($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']);
     // Validate the current phone number.
-    foreach (_dt_shared_functions_contactphone_patterns() as $pattern => $pattern_values) {
+    foreach (_dt_shared_functions_contactphone_patterns() as $pattern_values) {
       preg_match($pattern_values['pattern'], $contact_phone, $matches);
       if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
         form_set_error(DT_CONTACT_PHONE_FIELD, $pattern_values['explain']);

@@ -7,7 +7,8 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\nexteuropa\Context\DrupalContext
         - Drupal\nexteuropa\Context\MinkContext
-        - Drupal\nexteuropa\Context\DigitalTransformationContext
+        - Drupal\nexteuropa\Context\EditorialWorkflowContext
+        - Drupal\nexteuropa\Context\TranslationContext
       filters:
         tags: "~@wip&&${behat.test_tags}"
   extensions:
@@ -16,6 +17,7 @@ default:
       selenium2: ~
       javascript_session: 'selenium2'
       base-url: '${behat.base_url}'
+      show_cmd:  open %s
     Drupal\DrupalExtension:
       api_driver: 'drupal'
       blackbox: ~

@@ -12,6 +12,7 @@ $GLOBALS['dt_core_nodes_to_update_alias'] = [];
 // Fields that can be used in URL patterns to define hierarchy.
 $GLOBALS['dt_core_parent_fields'] = [
   'field_core_parent',
+  'field_core_parents',
   'field_core_policy_area',
   'field_core_policy_areas',
 ];
@@ -26,7 +27,7 @@ class DTCoreSourceFieldError extends Exception {
 }
 
 /**
- * No destionation field Exception.
+ * No destination field Exception.
  */
 class DTCoreDestinationFieldError extends Exception {
 }
@@ -41,6 +42,38 @@ class DTCoreFieldTypeAreNotSame extends Exception {
  * Circular reference Exception.
  */
 class DTCoreParentCircular extends Exception {
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_core_theme($existing, $type, $theme, $path) {
+  return [
+    'dt_core_status_message' => [
+      'template' => 'status_message',
+      'path' => drupal_get_path('module', 'dt_core') . '/templates',
+      'variables' => [
+        'message_title' => '',
+        'message_body' => '',
+        'message_classes' => '',
+      ],
+    ],
+    'site_switcher_tabs' => [
+      'file' => 'dt_core.theme.inc',
+      'variables' => [
+        'modifier' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_core_preprocess_dt_core_status_message(&$variables) {
+  if (isset($variables['message_classes']) && is_array($variables['message_classes'])) {
+    $variables['message_classes'] = ' ' . implode(' ', $variables['message_classes']);
+  }
 }
 
 /**
@@ -129,20 +162,6 @@ function _dt_core_get_blocks_content($delta) {
 }
 
 /**
- * Implements hook_theme().
- */
-function dt_core_theme($existing, $type, $theme, $path) {
-  return [
-    'site_switcher_tabs' => [
-      'file' => 'dt_core.theme.inc',
-      'variables' => [
-        'modifier' => NULL,
-      ],
-    ],
-  ];
-}
-
-/**
  * Helper to add initial set of buttons on the default profile of the Full HTML.
  */
 function _dt_apply_wysiwyg_buttons() {
@@ -212,13 +231,12 @@ function _dt_core_path_update_relatives($path) {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Find children based on field.
       $children = _dt_core_node_get_relatives($nid, $field_name);
+      // Find parents based on field.
+      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
       // Add current as first to force re-generate as first.
       if (!empty($parents)) {
         array_unshift($children, $nid);
       }
-
-      // Find parents based on field.
-      $parents = _dt_core_node_get_relatives($nid, $field_name, 'parents', TRUE);
       // Add current as last to force re-generate as last.
       if (!empty($parents)) {
         $parents[] = $nid;
@@ -343,7 +361,7 @@ function dt_core_exit() {
 
   $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
   $GLOBALS['dt_core_nodes_to_update_alias'] = array();
-  foreach ($nids_to_update as $nid => $relatives) {
+  foreach ($nids_to_update as $relatives) {
     // Paths update using the update method of the pathauto module.
     // Doing it one by one instead of using
     // pathauto_node_update_alias_multiple() to keep the order of items intact.
@@ -436,7 +454,7 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
   try {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Look for relatives of the future parent.
-      $relatives += _dt_core_node_get_relatives($parent_nid, $field_name, $direction = 'parents');
+      $relatives += _dt_core_node_get_relatives($parent_nid, $field_name, 'parents');
     }
   }
   catch (DTCoreParentCircular $e) {
@@ -716,13 +734,6 @@ function dt_core_views_query_alter(&$view, &$query) {
   if (isset($view->sort['title_field_value'])) {
     // Get our languages.
     $fallback_languages = _dt_shared_functions_content_language_order();
-    // Sort direction from our sort.
-    $sort_direction = 'ASC';
-
-    // If the sort direction is set we use the set one.
-    if (isset($view->sort['title_field_value']->options['order'])) {
-      $sort_direction = $view->sort['title_field_value']->options['order'];
-    }
 
     // Language subquerys.
     $or = db_or();
@@ -856,31 +867,27 @@ function _dt_core_get_plurial_content_types($bundle) {
  */
 function dt_core_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-  if (isset($view->filter['type'])) {
-    $content_type_filters = $view->filter['type']->value;
-    // The first element of the array is the right type of filter.
-    $content_type = reset($content_type_filters);
+  $variables['items_count'] = '';
 
-    $variables['items_count'] = '';
+  if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    // Calculate the number of items displayed in a view listing.
+    $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
-      // Calculate the number of items displayed in a view listing.
-      $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
-
-      if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
-        $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
-        // @codingStandardsIgnoreStart
-        $display_title = t($title);
-        // @codingStandardsIgnoreEnd
-      }
-      else {
-        // Make sure we have a fallback.
-        $content_type_forms = _dt_core_get_plurial_content_types($content_type);
-        // Set the display title and uppercase it.
-        $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
-      }
-
-      // Set the title to what we just configured.
+    if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
+      $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
+      // @codingStandardsIgnoreStart
+      $display_title = t($title);
+      // @codingStandardsIgnoreEnd
+      $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
+    }
+    elseif (isset($view->filter['type']) && is_array($view->filter['type']->value)) {
+      $content_type_filters = $view->filter['type']->value;
+      // The first element of the array is the right type of filter.
+      $content_type = reset($content_type_filters);
+      // Make sure we have a fallback.
+      $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+      // Set the display title and uppercase it.
+      $display_title = drupal_ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
   }
@@ -938,7 +945,6 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
  *   The link, revisited.
  */
 function _dt_core_menu_link($link, $lang = FALSE) {
-  global $base_url;
   $lang = $lang ? $lang : LANGUAGE_NONE;
   if ($link != '<front>' &&  $link != '<nolink>') {
     $source = drupal_lookup_path('source', $link, $lang);

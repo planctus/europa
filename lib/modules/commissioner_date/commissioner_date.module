@@ -16,7 +16,7 @@ function commissioner_date_field_formatter_info() {
   return array(
     'commissioner_date_event_date' => array(
       'label' => t('Event formatter (example: 11 - 14 October 2013)'),
-      'field types' => array('datetime'),
+      'field types' => array('datetime', 'date', 'datestamp'),
     ),
   );
 }

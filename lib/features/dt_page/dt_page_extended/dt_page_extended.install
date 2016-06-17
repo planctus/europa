@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * DT Page Extended install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_page_extended_install() {
+  $t = get_t();
+  drupal_set_message($t('NextEuropa Page Extended feature is installed on your site.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_page_extended_uninstall() {
+  drupal_set_message(t('NextEuropa Page Extended feature is uninstalled on your site.'));
+}
+
+/**
+ * DTTSB-439: Copying value from parent to parents; remove field instance.
+ */
+function dt_page_extended_update_7101() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_priority');
+  features_revert_module('dt_pri_policy_area');
+  features_revert_module('dt_page_extended');
+  // Copy field contents.
+  _dt_shared_field_value_copy('node', 'basic_page', 'field_core_parent', 'field_core_parents');
+  drupal_set_message(t("Copied content from 'field_core_parent' to 'field_core_parents' in the basic_page content type."));
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_parent', 'basic_page')) {
+    field_delete_instance($instance);
+  }
+}

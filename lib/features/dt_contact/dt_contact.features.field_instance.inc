@@ -309,6 +309,61 @@ function dt_contact_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-contact-field_core_social_network_links'.
+  $field_instances['node-contact-field_core_social_network_links'] = array(
+    'bundle' => 'contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'title' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_social_network_links',
+    'label' => 'Social media profile links',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'social_network' => 0,
+      'title' => 0,
+      'url' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'dt_social_network_links',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'social_network_link_default',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'node-contact-group_content_access'.
   $field_instances['node-contact-group_content_access'] = array(
     'bundle' => 'contact',
@@ -514,6 +569,7 @@ function dt_contact_field_default_field_instances() {
 </ul> </p>
 ');
   t('Postal address');
+  t('Social media profile links');
 
   return $field_instances;
 }

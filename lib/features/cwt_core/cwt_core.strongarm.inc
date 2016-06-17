@@ -1094,7 +1094,7 @@ function cwt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_sys_link_pages';
-  $strongarm->value = 'agenda*';
+  $strongarm->value = 'calendar*';
   $export['print_pdf_sys_link_pages'] = $strongarm;
 
   $strongarm = new stdClass();

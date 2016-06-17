@@ -31,7 +31,8 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
     $settings['format_tags'] = "address;h2;h3;h4;h5;h6;div";
     // Settings ckeditor to use theme css.
     $settings['contentsCss'] = array(
-      '0' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass.css',
+      '0' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass-base.css',
+      '1' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass-components.css',
     );
     $settings['bodyClass'] = 'padding-wysiwyg-body';
   }

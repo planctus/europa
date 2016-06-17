@@ -8,6 +8,7 @@
  * Expose node taxonomy terms as a context condition.
  *
  * @ingroup context_condition
+ * @codingStandardsIgnoreFile
  */
 class context_condition_node_taxonomy_uuid extends context_condition_node {
 

@@ -26,6 +26,9 @@ function europa_js_alter(&$js) {
  */
 function europa_css_alter(&$css) {
   $path_fancybox = libraries_get_path('fancybox');
+  // Prevent our css from being aggregate (ie9 requirement).
+  $path_base = drupal_get_path('theme', 'europa') . '/css/style-sass-base.css';
+  $css[$path_base]['preprocess'] = FALSE;
 
   unset(
     $css[drupal_get_path('module', 'date') . '/date_api/date.css'],
@@ -42,10 +45,10 @@ function europa_form_required_marker($variables) {
   // This is also used in the installer, pre-database setup.
   $t = get_t();
   $attributes = array(
-    'class' => 'form-required text-danger glyphicon glyphicon-asterisk',
+    'class' => 'form-required text-danger',
     'title' => $t('This field is required.'),
   );
-  return '<span' . drupal_attributes($attributes) . '></span>';
+  return '<span' . drupal_attributes($attributes) . '>*</span>';
 }
 
 /**
@@ -103,6 +106,12 @@ function europa_form_element(&$variables) {
     '#title_display' => 'before',
   );
 
+  // Hide datepicker-popup label.
+  $datepicker_popup_pattern = '/edit-.*-datepicker-popup-.*/i';
+  if (!empty($element['#id']) && preg_match($datepicker_popup_pattern, $element['#id'])) {
+    $element['#title_display'] = 'invisible';
+  }
+
   // Add element #id for #type 'item'.
   if (isset($element['#markup']) && !empty($element['#id'])) {
     $attributes['id'] = $element['#id'];
@@ -111,7 +120,15 @@ function europa_form_element(&$variables) {
   // Check for errors and set correct error class.
   if (isset($element['#parents']) && form_get_error($element)) {
     $attributes['class'][] = 'has-error';
-    $feedback_message = '<p class="feedback-message is-error">' . form_get_error($element) . '</p>';
+
+    if (in_array($element['#type'], array('radio', 'checkbox'))) {
+      if ($element['#required']) {
+        $feedback_message = '<p class="feedback-message is-error">' . form_get_error($element) . '</p>';
+      }
+    }
+    else {
+      $feedback_message = '<p class="feedback-message is-error">' . form_get_error($element) . '</p>';
+    }
   }
 
   if (!empty($element['#type'])) {
@@ -569,33 +586,27 @@ function europa_easy_breadcrumb(&$variables) {
 function _europa_file_markup($file, array $url, $modifier = NULL, $subfile = FALSE) {
   switch ($file->type) {
     case 'image':
-      $file_class = 'file--image';
       $file_icon_class = 'icon--image';
       break;
 
     case 'audio':
-      $file_class = 'file--audio';
       $file_icon_class = 'icon--audio';
       break;
 
     case 'video':
-      $file_class = 'file--video';
       $file_icon_class = 'icon--video';
       break;
 
     default:
-      $file_class = 'file--document';
       $file_icon_class = 'icon--file';
       break;
   }
 
   // If we have a modifier, just append it to the class.
-  if ($modifier && !empty($modifier)) {
-    $file_class .= ' ' . $modifier;
-  }
+  $file_class = (!empty($modifier) ? ' ' . $modifier : '');
 
   $file_icon = '<span class="file__icon icon ' . $file_icon_class . '"></span>';
-  $file_size = '<span class="file__size">' . format_size($file->filesize) . '</span>';
+  $file_size = format_size($file->filesize);
   $file_name = $file->uri;
   $file_extension = drupal_strtoupper(pathinfo($file_name, PATHINFO_EXTENSION));
 
@@ -659,7 +670,7 @@ function _europa_file_markup($file, array $url, $modifier = NULL, $subfile = FAL
 
   $file_btn = l($file_text, $url['path'], array_merge($options, $url['options']));
 
-  return '<div class="file file--widebar ' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
+  return '<div class="file file--widebar' . $file_class . '">' . $file_icon . $file_metadata . $file_btn . '</div>';
 }
 
 /**
@@ -710,6 +721,7 @@ function europa_link($variables) {
     $variables['options']['attributes']['class'][] = 'is-internal';
   }
 
+  // @codingStandardsIgnoreLine
   return theme_link($variables);
 }
 
@@ -754,12 +766,14 @@ function europa_preprocess_block(&$variables) {
 
     if (!empty($variables['elements']['other']['#markup'])) {
       foreach ($variables['elements']['other']['#markup'] as $code => $lang) {
-        $options = array(
-          'query' => drupal_get_query_parameters(),
-        );
+        $options = array();
+        $options['query'] = drupal_get_query_parameters();
         $options['query']['2nd-language'] = $code;
+        $options['attributes']['lang'] = $code;
+        $options['attributes']['hreflang'] = $code;
+        $options['attributes']['rel'] = 'alternate';
 
-        $other .= "<li class='lang-select-page__option lang-select-page__other'>" . l($lang->native, current_path(), $options) . '</li>';
+        $other .= '<li class="lang-select-page__option lang-select-page__other">' . l($lang->native, current_path(), $options) . '</li>';
       }
     }
 
@@ -769,6 +783,7 @@ function europa_preprocess_block(&$variables) {
     // Add content to block.
     $content = "<span class='lang-select-page__icon icon icon--generic-lang'></span>";
     $content .= "<ul class='lang-select-page__list'>" . $not_available . $served . $other . '</ul>';
+
     $variables['content'] = $content;
   }
 
@@ -791,16 +806,22 @@ function europa_preprocess_block(&$variables) {
     // This is checked by looking at the $block->bid which in case
     // of views exposed filters, always contains 'views--exp-' string.
     if (strpos($block->bid, 'views--exp-') !== FALSE) {
-      $variables['classes_array'][] = 'filters';
-      $variables['title_attributes_array']['class'][] = 'filters__title';
-      $block->subject = t('Refine results');
+      if (isset($block->context) && $context = context_load($block->context)) {
+        // If our block is the first, we set the subject. This way, if we expose
+        // a second block for the same view, we will not duplicate the title.
+        if (array_search($block->bid, array_keys($context->reactions['block']['blocks'])) === 0) {
+          $variables['classes_array'][] = 'filters';
+          $variables['title_attributes_array']['class'][] = 'filters__title';
+          $block->subject = t('Refine results');
 
-      // Passing block id to Drupal.settings in order to pass it through data
-      // attribute in the collapsible panel.
-      drupal_add_js(array('europa' => array('exposedBlockId' => $variables['block_html_id'])), 'setting');
+          // Passing block id to Drupal.settings in order to pass it through
+          // data attribute in the collapsible panel.
+          drupal_add_js(array('europa' => array('exposedBlockId' => $variables['block_html_id'])), 'setting');
 
-      // Adding filters.js file.
-      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
+          // Adding filters.js file.
+          drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/filters.js');
+        }
+      }
     }
   }
 
@@ -835,7 +856,7 @@ function europa_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   }
 
   $i = 0;
-  foreach ($variables['items'] as $key => $item) {
+  foreach ($variables['items'] as $item) {
     // Check if item is not empty and we have access to it.
     if ($item && (!isset($item['#access']) || $item['#access'])) {
       $variables['panes'][$i]['title'] = check_plain($item['#title']);
@@ -885,7 +906,7 @@ function europa_preprocess_field(&$variables) {
 function europa_preprocess_image(&$variables) {
   // Fix issue between print module and bootstrap theme, print module put a
   // string instead of an array in $variables['attributes']['class'].
-  if ($shape = theme_get_setting('bootstrap_image_responsive')) {
+  if (theme_get_setting('bootstrap_image_responsive')) {
     if (isset($variables['attributes']['class'])) {
       if (is_array($variables['attributes']['class'])) {
         $variables['attributes']['class'][] = 'img-responsive';
@@ -1041,8 +1062,6 @@ function europa_preprocess_page(&$variables) {
  * Implements hook_preprocess_views_view().
  */
 function europa_preprocess_views_view(&$variables) {
-  $view = $variables['view'];
-
   // Checking if exposed filters are set and add variable that stores active
   // filters.
   if (module_exists('dt_exposed_filter_data')) {
@@ -1056,7 +1075,6 @@ function europa_preprocess_views_view(&$variables) {
 function europa_pager($variables) {
   drupal_add_js(drupal_get_path('theme', 'europa') . '/js/components/pager.js');
 
-  $tags = $variables['tags'];
   $element = $variables['element'];
   $parameters = $variables['parameters'];
   $quantity = $variables['quantity'];
@@ -1372,7 +1390,6 @@ function europa_pager_last($variables) {
  * Implements form_alter().
  */
 function europa_form_alter(&$form, &$form_state, $form_id) {
-
   if (isset($form['views_bulk_operations'])) {
     $children = element_children($form['views_bulk_operations']);
     foreach ($children as $child) {

@@ -17,11 +17,6 @@ function dt_page_extended_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'in_page_navigation' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'priorities_preprocess' => array(
       'weight' => '5',
       'label' => 'hidden',
@@ -38,8 +33,13 @@ function dt_page_extended_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'in_page_navigation' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'announcement_block' => array(
-      'weight' => '7',
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -90,8 +90,53 @@ function dt_page_extended_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_children' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_section_item',
+        ),
+      ),
+    ),
   );
   $export['node|basic_page|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|basic_page|structured_navigation';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'basic_page';
+  $ds_fieldsetting->view_mode = 'structured_navigation';
+  $ds_fieldsetting->settings = array(
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_children' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_quick_nav_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|basic_page|structured_navigation'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -166,45 +211,47 @@ function dt_page_extended_ds_layout_settings_info() {
         1 => 'field_core_introduction',
       ),
       'top' => array(
-        2 => 'group_page_contextual_navigation',
-        3 => 'field_core_banner',
-        16 => 'field_core_priorities',
-        17 => 'field_core_policy_area',
-        18 => 'field_core_departments',
-        19 => 'field_core_persons',
-        20 => 'field_core_topics',
+        2 => 'field_core_children',
+        3 => 'group_page_contextual_navigation',
+        4 => 'field_core_banner',
+        17 => 'field_core_priorities',
+        18 => 'field_core_policy_area',
+        19 => 'field_core_departments',
+        20 => 'field_core_persons',
+        21 => 'field_core_topics',
       ),
       'left' => array(
-        4 => 'in_page_navigation',
+        5 => 'in_page_navigation',
       ),
       'central' => array(
-        5 => 'priorities_preprocess',
-        6 => 'group_page_priorities',
-        7 => 'group_page_free_field',
+        6 => 'priorities_preprocess',
+        7 => 'group_page_priorities',
         8 => 'body',
-        9 => 'announcement_block',
-        10 => 'group_page_next_steps',
-        11 => 'group_page_documents',
-        12 => 'field_core_next_steps',
-        13 => 'group_page_related_links',
-        14 => 'field_core_publications',
-        15 => 'field_core_links',
+        9 => 'group_page_free_field',
+        10 => 'announcement_block',
+        11 => 'field_core_next_steps',
+        12 => 'group_page_next_steps',
+        13 => 'group_page_documents',
+        14 => 'group_page_related_links',
+        15 => 'field_core_publications',
+        16 => 'field_core_links',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
       'field_core_introduction' => 'left_header',
+      'field_core_children' => 'top',
       'group_page_contextual_navigation' => 'top',
       'field_core_banner' => 'top',
       'in_page_navigation' => 'left',
       'priorities_preprocess' => 'central',
       'group_page_priorities' => 'central',
-      'group_page_free_field' => 'central',
       'body' => 'central',
+      'group_page_free_field' => 'central',
       'announcement_block' => 'central',
+      'field_core_next_steps' => 'central',
       'group_page_next_steps' => 'central',
       'group_page_documents' => 'central',
-      'field_core_next_steps' => 'central',
       'group_page_related_links' => 'central',
       'field_core_publications' => 'central',
       'field_core_links' => 'central',
@@ -229,6 +276,49 @@ function dt_page_extended_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|basic_page|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|basic_page|structured_navigation';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'basic_page';
+  $ds_layout->view_mode = 'structured_navigation';
+  $ds_layout->layout = 'ne_1col_section_item';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'title' => array(
+        0 => 'title_field',
+      ),
+      'description' => array(
+        1 => 'field_core_description',
+      ),
+      'children' => array(
+        2 => 'field_core_children',
+      ),
+      'links' => array(
+        3 => 'field_core_quick_nav_links',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'title',
+      'field_core_description' => 'description',
+      'field_core_children' => 'children',
+      'field_core_quick_nav_links' => 'links',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'title' => 'div',
+      'description' => 'div',
+      'children' => 'div',
+      'links' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|basic_page|structured_navigation'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -295,6 +385,24 @@ function dt_page_extended_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|basic_page|title'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function dt_page_extended_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'structured_navigation';
+  $ds_view_mode->label = 'Structured Navigation';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['structured_navigation'] = $ds_view_mode;
 
   return $export;
 }

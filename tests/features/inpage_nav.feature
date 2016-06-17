@@ -4,6 +4,12 @@ Feature: In-page navigation
   As an editor
   I should be able to hide/show in-page navigation on pages
 
+  Background:
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings_en"
+    And I check the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+
   Scenario: Show/hide in-page navigation on Page
     Given "Page" content:
       | title         | field_core_description | field_core_introduction | field_core_in_page_navigation | field_core_latest_visibility | status |
