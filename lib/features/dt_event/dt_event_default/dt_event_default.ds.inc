@@ -420,8 +420,8 @@ function dt_event_default_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'field_core_introduction',
         1 => 'field_event_collection',
-        2 => 'field_event_type',
-        3 => 'field_core_description',
+        2 => 'field_core_description',
+        3 => 'field_event_type',
         4 => 'field_event_status_description',
         5 => 'field_core_tagline',
         6 => 'field_core_header_image',
@@ -450,10 +450,10 @@ function dt_event_default_ds_layout_settings_info() {
         29 => 'field_event_available_languages',
         30 => 'field_event_target_audience',
         31 => 'field_event_number_seats',
-        32 => 'field_event_entrance_fee',
-        33 => 'dt_event_header',
+        32 => 'dt_event_header',
+        33 => 'field_event_entrance_fee',
         35 => 'field_core_departments',
-        37 => 'field_event_website',
+        36 => 'field_event_website',
         38 => 'field_event_media',
         39 => 'field_event_what_happened',
         40 => 'field_core_files',
@@ -463,14 +463,14 @@ function dt_event_default_ds_layout_settings_info() {
       ),
       'top_top' => array(
         34 => 'book_your_seat',
-        36 => 'livestreaming',
+        37 => 'livestreaming',
       ),
     ),
     'fields' => array(
       'field_core_introduction' => 'left_header',
       'field_event_collection' => 'left_header',
-      'field_event_type' => 'left_header',
       'field_core_description' => 'left_header',
+      'field_event_type' => 'left_header',
       'field_event_status_description' => 'left_header',
       'field_core_tagline' => 'left_header',
       'field_core_header_image' => 'left_header',
@@ -499,12 +499,12 @@ function dt_event_default_ds_layout_settings_info() {
       'field_event_available_languages' => 'left_header',
       'field_event_target_audience' => 'left_header',
       'field_event_number_seats' => 'left_header',
-      'field_event_entrance_fee' => 'left_header',
       'dt_event_header' => 'left_header',
+      'field_event_entrance_fee' => 'left_header',
       'book_your_seat' => 'top_top',
       'field_core_departments' => 'left_header',
-      'livestreaming' => 'top_top',
       'field_event_website' => 'left_header',
+      'livestreaming' => 'top_top',
       'field_event_media' => 'left_header',
       'field_event_what_happened' => 'left_header',
       'field_core_files' => 'left_header',
@@ -615,6 +615,29 @@ function dt_event_default_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|event|event_collection'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|event|event_livestream';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'event';
+  $ds_layout->view_mode = 'event_livestream';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
+  $ds_layout->settings = array(
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|event|event_livestream'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
