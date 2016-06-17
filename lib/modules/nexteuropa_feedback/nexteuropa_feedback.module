@@ -37,6 +37,8 @@ function nexteuropa_feedback_form($form_state) {
   $form['#attributes']['class'][] = 'feedback-form';
 
   $form['#token'] = NULL;
+  $problem = t('Problem');
+  $form['accordion']['problem_group']['#prefix'] = '<label class="sr-only" for="edit-problem" aria-label="' . $problem . '">' . $problem . '</label>';
   $form['accordion']['problem_group']['what_were_you_doing'] = array(
     '#type' => 'textarea',
     '#title' => t("What were you doing?"),
@@ -117,18 +119,21 @@ function nexteuropa_feedback_form_theme($form) {
     }
   }
 
+  $accordion['problem']['#id'] = 'problem';
   $accordion['problem']['#title'] = t('Problem');
   $accordion['problem']['#value'] = drupal_render($form['accordion']['problem_group']);
   $accordion['problem']['#theme'] = 'bootstrap_panel';
   $accordion['problem']['#collapsible'] = TRUE;
   $accordion['problem']['#collapsed'] = TRUE;
 
+  $accordion['suggestion']['#id'] = 'suggestion';
   $accordion['suggestion']['#title'] = t('Suggestion');
   $accordion['suggestion']['#value'] = drupal_render($form['accordion']['suggestion_group']);
   $accordion['suggestion']['#theme'] = 'bootstrap_panel';
   $accordion['suggestion']['#collapsible'] = TRUE;
   $accordion['suggestion']['#collapsed'] = TRUE;
 
+  $accordion['compliment']['#id'] = 'compliment';
   $accordion['compliment']['#title'] = t('Compliment');
   $accordion['compliment']['#value'] = drupal_render($form['accordion']['compliment_group']);
   $accordion['compliment']['#theme'] = 'bootstrap_panel';
@@ -157,7 +162,7 @@ function nexteuropa_feedback_form_theme($form) {
 
   $variables['element']['#children'] = $output;
 
-  return theme_form($variables);
+  return theme('form', $variables);
 }
 
 /**
