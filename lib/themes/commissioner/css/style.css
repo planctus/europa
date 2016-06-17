@@ -157,7 +157,7 @@ section #timeline {
   display: none; }
 
 .print-content .view-agenda .view-content {
-  margin-top: 0.333em; }
+  padding-top: 1em; }
 
 .print-content .view-agenda .views-row {
   margin: 0;
