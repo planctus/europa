@@ -112,6 +112,18 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_livestream';
   $ds_fieldsetting->settings = array(
+    'event_livestream_title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'prefix' => '<h1>',
+          'suffix' => '</h1>',
+        ),
+      ),
+    ),
     'event_livestream_header' => array(
       'weight' => '65',
       'label' => 'hidden',
@@ -120,17 +132,6 @@ function dt_event_default_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
-      ),
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '0',
-        'wrapper' => 'h1',
-        'class' => '',
-        'ft' => array(),
       ),
     ),
     'social_bookmark_webtools' => array(
@@ -142,11 +143,6 @@ function dt_event_default_ds_field_settings_info() {
           'func' => 'theme_ds_field_reset',
         ),
       ),
-    ),
-    'dt_event_header' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
     ),
     'dt_event_scribble_embed' => array(
       'weight' => '1',
@@ -172,14 +168,6 @@ function dt_event_default_ds_field_settings_info() {
       'weight' => '66',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'field_event_type' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
-          'meta_modifier' => 'meta__item--type',
-        ),
-      ),
     ),
   );
   $export['node|event|event_livestream'] = $ds_fieldsetting;
@@ -705,30 +693,24 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_meta',
-        1 => 'title',
-        3 => 'dt_event_header',
-        5 => 'field_event_type',
+        0 => 'event_livestream_title',
       ),
       'central' => array(
+        1 => 'group_section',
         2 => 'dt_event_scribble_embed',
-        4 => 'group_section',
-        6 => 'event_livestream_header',
-        7 => 'dt_event_stream_embed_intro',
-        8 => 'dt_event_stream_embed',
-        9 => 'social_bookmark_webtools',
-        10 => 'group_row',
-        11 => 'group_video',
-        12 => 'group_chat',
+        3 => 'event_livestream_header',
+        4 => 'dt_event_stream_embed_intro',
+        5 => 'dt_event_stream_embed',
+        6 => 'social_bookmark_webtools',
+        7 => 'group_row',
+        8 => 'group_video',
+        9 => 'group_chat',
       ),
     ),
     'fields' => array(
-      'group_meta' => 'left_header',
-      'title' => 'left_header',
-      'dt_event_scribble_embed' => 'central',
-      'dt_event_header' => 'left_header',
+      'event_livestream_title' => 'left_header',
       'group_section' => 'central',
-      'field_event_type' => 'left_header',
+      'dt_event_scribble_embed' => 'central',
       'event_livestream_header' => 'central',
       'dt_event_stream_embed_intro' => 'central',
       'dt_event_stream_embed' => 'central',

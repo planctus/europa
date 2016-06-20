@@ -217,10 +217,31 @@ function _dt_event_ds_fields_stream_embed($field) {
 function _dt_event_ds_fields_stream_embed_intro($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
   if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
-    $content_language = _dt_shared_functions_content_language($field['entity']);
     if (isset($stream_url['url'])) {
+      // Content language to render the field.
+      $content_language = _dt_shared_functions_content_language($field['entity']);
+
+      // Format the date.
+      $display = [
+        'label' => 'hidden',
+        'module' => 'dt_date_format',
+        'settings' => array(
+          'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+          'render_box' => 0,
+          'same_date_format' => 'sd_l sd_j sd_F',
+          'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+        ),
+        'type' => 'date_event_date',
+      ];
+
+      // Get the field.
+      $date = field_view_field($entity->type(), $entity->raw(), 'field_event_date', $display, $content_language);
+
+      // Build the markup.
       $markup = [
-        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
+        '#prefix' => '<div class="row">',
+        '#markup' => '<div class="col-md-6">' . drupal_render($date) . '</div><div class="col-md-6 text-right"><p>' . l(t('Event details'), 'node/' . $entity->getIdentifier()) . '</p></div>',
+        '#suffix' => '</div>',
       ];
       return drupal_render($markup);
     }

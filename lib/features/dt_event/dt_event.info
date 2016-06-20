@@ -27,6 +27,7 @@ features[ctools][] = views:views_default:3.0
 features[ds_fields][] = about_heading
 features[ds_fields][] = current_and_upcoming_events
 features[ds_fields][] = event_livestream_header
+features[ds_fields][] = event_livestream_title
 features[ds_fields][] = event_related_events
 features[ds_fields][] = past_events
 features[ds_view_modes][] = event_collection

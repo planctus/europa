@@ -981,7 +981,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
-    'weight' => '0',
+    'weight' => '43',
     'children' => array(
       0 => 'field_event_type',
     ),
@@ -1639,7 +1639,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'group_row',
     ),
