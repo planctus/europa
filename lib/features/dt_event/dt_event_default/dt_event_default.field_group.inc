@@ -1671,10 +1671,10 @@ function dt_event_default_field_group_info() {
     'label' => 'video',
     'weight' => '86',
     'children' => array(
-      0 => 'field_event_live_streaming_date',
-      1 => 'event_livestream_header',
-      2 => 'social_bookmark_webtools',
-      3 => 'dt_event_stream_embed',
+      0 => 'event_livestream_header',
+      1 => 'social_bookmark_webtools',
+      2 => 'dt_event_stream_embed',
+      3 => 'dt_event_stream_embed_intro',
     ),
     'format_type' => 'div',
     'format_settings' => array(

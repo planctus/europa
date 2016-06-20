@@ -2302,15 +2302,9 @@ On what day does the event end?',
       ),
       'event_livestream' => array(
         'label' => 'hidden',
-        'module' => 'dt_date_format',
-        'settings' => array(
-          'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
-          'render_box' => 0,
-          'same_date_format' => 'sd_l sd_j sd_F',
-          'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
-        ),
-        'type' => 'date_event_date',
-        'weight' => 66,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'event_past' => array(
         'label' => 'above',

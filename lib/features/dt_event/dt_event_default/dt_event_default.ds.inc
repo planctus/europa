@@ -168,19 +168,10 @@ function dt_event_default_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_event_live_streaming_date' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'p',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
+    'dt_event_stream_embed_intro' => array(
+      'weight' => '66',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
     'field_event_type' => array(
       'formatter_settings' => array(
@@ -723,7 +714,7 @@ function dt_event_default_ds_layout_settings_info() {
         2 => 'dt_event_scribble_embed',
         4 => 'group_section',
         6 => 'event_livestream_header',
-        7 => 'field_event_live_streaming_date',
+        7 => 'dt_event_stream_embed_intro',
         8 => 'dt_event_stream_embed',
         9 => 'social_bookmark_webtools',
         10 => 'group_row',
@@ -739,7 +730,7 @@ function dt_event_default_ds_layout_settings_info() {
       'group_section' => 'central',
       'field_event_type' => 'left_header',
       'event_livestream_header' => 'central',
-      'field_event_live_streaming_date' => 'central',
+      'dt_event_stream_embed_intro' => 'central',
       'dt_event_stream_embed' => 'central',
       'social_bookmark_webtools' => 'central',
       'group_row' => 'central',
