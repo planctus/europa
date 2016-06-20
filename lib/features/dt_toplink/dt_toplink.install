@@ -16,9 +16,7 @@ function dt_toplink_install() {
  * Implements hook_uninstall().
  */
 function dt_toplink_uninstall() {
-  $path = drupal_get_path('module', 'toplink') . '/dt_toplink.info';
-  $info = drupal_parse_info_file($path);
-  drupal_set_message(t('DT Top link %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('DT Top link feature is uninstalled on your site.'));
 }
 
 /**

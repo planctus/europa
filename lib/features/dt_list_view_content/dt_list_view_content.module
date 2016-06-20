@@ -21,7 +21,7 @@ function dt_list_view_content_form_bean_form_alter(&$form, &$form_state, $form_i
     // Set the available options (And include the current options).
     $form['field_list_view_views'][LANGUAGE_NONE]['#options'] = array_merge($form['field_list_view_views'][LANGUAGE_NONE]['#options'], $views);
     // Set the default value.
-    $default_view = isset($form['#entity']->field_list_view_views['und'][0]['value']) ? $form['#entity']->field_list_view_views['und'][0]['value'] : '';
+    $default_view = isset($form['#entity']->field_list_view_views[LANGUAGE_NONE][0]['value']) ? $form['#entity']->field_list_view_views[LANGUAGE_NONE][0]['value'] : '';
     $form['field_list_view_views'][LANGUAGE_NONE]['#default_value'] = $default_view;
   }
 }
@@ -164,7 +164,7 @@ function _dt_list_view_content_get_views() {
   // Take all the views that have a page and are exported.
   foreach ($views as $name => $object) {
     if ($object->tag == DT_CORE_VIEWS_TAG && isset($object->display['page'])) {
-      foreach ($object->display as $display_id => $display_object) {
+      foreach ($object->display as $display_object) {
         if ($display_object->display_plugin == 'page') {
           $views_options[$name . '.' . $display_object->id] = $object->human_name . ' (' . $display_object->display_title . ')';
         }

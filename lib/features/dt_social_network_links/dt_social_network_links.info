@@ -2,9 +2,7 @@ name = Social Network Links
 description = The feature provides the functionality related to social networks
 core = 7.x
 package = NextEuropa Digital Transformation
-version = 7.x-1.0
 php = 5.5
-project = dt_social_network_links
 explanation = Field type(s) in use - see <a href="/admin/reports/fields_en">Field list</a>
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

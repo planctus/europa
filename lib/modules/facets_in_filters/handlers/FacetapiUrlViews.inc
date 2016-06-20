@@ -10,6 +10,8 @@
  *
  * This plugin retrieves facet data from $_GET, and stored all information in
  * the "f" query string variable by default.
+ *
+ * @codingStandardsIgnoreFile
  */
 class FacetapiUrlViews extends FacetapiUrlProcessorStandard {
 

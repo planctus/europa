@@ -1047,7 +1047,7 @@ Styleguide form
     box-shadow: none; }
   .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
     outline: 3px solid #ffd617;
-    outline-offset: -3px;
+    outline-offset: 0px;
     text-decoration: none; }
   .form-control.is-disabled, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
     color: #b3b4b5;
@@ -1515,9 +1515,6 @@ Styleguide breadcrumb.collapsible
   line-height: 2.778em;
   display: inline-block;
   padding: 0 10px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   cursor: pointer;
   color: #fff; }
   .breadcrumb--collapsible .breadcrumb__btn-separator:hover, .breadcrumb--collapsible .breadcrumb__btn-separator:active, .breadcrumb--collapsible .breadcrumb__btn-separator:focus {
@@ -1576,10 +1573,25 @@ Styleguide breadcrumb.collapsible
       top: -4px;
       color: #ffffff; }
     .breadcrumb--collapsible .breadcrumb__segment.breadcrumb__segment--next-hidden:before {
+      text-decoration: none;
+      font-family: 'EuropaIcons';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      margin-right: 4px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       display: inline-block !important;
       position: absolute;
-      right: 7px;
-      top: 30%; }
+      right: 0;
+      top: 30%;
+      color: #fff;
+      line-height: inherit !important;
+      margin-left: 8px !important;
+      font-size: 0.778em;
+      content: '\e828' !important; }
   .breadcrumb--collapsible .breadcrumb__btn-separator {
     display: none; }
   .breadcrumb--collapsible .breadcrumb__segment--first {
@@ -2247,6 +2259,11 @@ Styleguide file.2
 .file-video {
   background: none;
   padding: 1em 0; }
+  .file-video .content iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 260px; }
 
 .file-video--withbackground {
   background: #ececec; }
@@ -2464,12 +2481,13 @@ Styleguide filters.filters
 .filters__btn-reset--small {
   display: inline-block; }
 
+html.js .filters__btn-submit {
+  display: inline-block; }
+
 @media (min-width: 480px) {
   .filters__close:after {
     height: 9px;
-    width: 12px; }
-  html.js .filters__btn-submit {
-    display: inline-block; } }
+    width: 12px; } }
 
 @media (min-width: 992px) {
   .filters {
@@ -2478,6 +2496,8 @@ Styleguide filters.filters
     padding: 0; }
   .filters__btn-reset--small,
   .filters__btn-collapse {
+    display: none; }
+  html.js .filters__btn-submit {
     display: none; } }
 
 /*

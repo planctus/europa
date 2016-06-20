@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Code for the dt_editorial feature.
+ * Code for the Digital Transformation editorial feature.
  */
+
+include_once 'dt_editorial.features.inc';
 
 /**
  * Fetch list of Group Content node types.
