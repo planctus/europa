@@ -18,3 +18,14 @@ function dt_event_default_install() {
 function dt_event_default_uninstall() {
   drupal_set_message(t('NextEuropa event feature is uninstalled on your site.'));
 }
+
+/**
+ * Remove field instance node-event-field_event_press_contact.
+ */
+function dt_event_default_update_7101() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_event_press_contact', 'event')) {
+    field_delete_instance($instance);
+    field_delete_field('field_event_press_contact');
+  }
+}
