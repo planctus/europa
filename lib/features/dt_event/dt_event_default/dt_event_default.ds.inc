@@ -149,6 +149,7 @@ function dt_event_default_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
+        'show_intro' => 1,
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
