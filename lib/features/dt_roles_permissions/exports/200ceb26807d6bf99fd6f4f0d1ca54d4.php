@@ -8,6 +8,7 @@ $permissions['administrator'] = array(
   'accept translation jobs',
   'access administration menu',
   'access administration pages',
+  'access dashboard',
   'access all views',
   'access bean overview',
   'access broken links report',
