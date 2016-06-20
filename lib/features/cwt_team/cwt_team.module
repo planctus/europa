@@ -15,12 +15,13 @@ include_once 'cwt_team.features.inc';
 function cwt_team_views_post_render(&$view, &$output, &$cache) {
   if (in_array($view->name, array('biography_team', 'team_cabinet_contact')) && strpos($output, '[fallback_image]') !== FALSE) {
     $path_to_image = drupal_get_path('theme', 'commissioner') . '/images/svg/placeholder-team.svg';
-    $image = theme_image(array(
+    $variables = array(
       'path' => $path_to_image,
       'width' => 450,
       'height' => 290,
       'attributes' => array(),
-    ));
+    );
+    $image = theme('image', $variables);
     $output = str_replace('[fallback_image]', $image, $output);
   }
 }
@@ -135,7 +136,7 @@ function cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdCl
   // Call to the API.
   $function = $queue->owner . "_nodequeue_autocomplete";
   if (function_exists($function)) {
-    return $function($queue, $subqueue, $string, $where, $where_args);
+    return $function($queue, $subqueue, $string, '', $where_args);
   }
   else {
     $query->addTag('i18n_select');

@@ -8,7 +8,7 @@
  * Implements hook_enable().
  */
 function dt_editorial_enable() {
-  drupal_set_message('Digital transformation editorial is now active on your site.');
+  drupal_set_message(t('Digital transformation editorial is now active on your site.'));
 
   // The objective here is to change the order of the workflow states:
   // Expired by Archived.
@@ -48,5 +48,5 @@ function dt_editorial_enable() {
  * Implements hook_disable().
  */
 function dt_editorial_disable() {
-  drupal_set_message('Digital transformation editorial is now disabled on your site.');
+  drupal_set_message(t('Digital transformation editorial is now disabled on your site.'));
 }

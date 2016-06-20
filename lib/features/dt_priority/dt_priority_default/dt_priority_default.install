@@ -8,7 +8,8 @@
  * Implements hook_install().
  */
 function dt_priority_default_install() {
-  drupal_set_message(t('NextEuropa priority feature is installed on your site.'));
+  $t = get_t();
+  drupal_set_message($t('NextEuropa priority feature is installed on your site.'));
 }
 
 /**

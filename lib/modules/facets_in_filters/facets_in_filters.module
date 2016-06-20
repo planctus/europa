@@ -95,7 +95,7 @@ function facets_in_filters_facetapi_realm_info() {
  * Implements hook_form_FORM_ID_alter().
  */
 function facets_in_filters_form_views_exposed_form_alter(&$form, &$form_state) {
-  foreach ($form['#info'] as $id => &$value) {
+  foreach ($form['#info'] as &$value) {
     if (!isset($form[$value['value']])) {
       $value['label'] = NULL;
     }
@@ -111,7 +111,7 @@ function facets_in_filters_views_ajax_data_alter(&$commands, $view) {
     $active = facetapi_get_active_searchers();
     $adapter = facetapi_build_realm(reset($active), 'views');
     // Replace each facet.
-    foreach ($view->filter as $id => $filter) {
+    foreach ($view->filter as $filter) {
       if ($filter instanceof ViewsHandlerFilterFacet) {
         $element = NULL;
         $field = $filter->options['facet']['facet'];

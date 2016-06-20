@@ -164,7 +164,7 @@ function _dt_list_view_content_get_views() {
   // Take all the views that have a page and are exported.
   foreach ($views as $name => $object) {
     if ($object->tag == DT_CORE_VIEWS_TAG && isset($object->display['page'])) {
-      foreach ($object->display as $display_id => $display_object) {
+      foreach ($object->display as $display_object) {
         if ($display_object->display_plugin == 'page') {
           $views_options[$name . '.' . $display_object->id] = $object->human_name . ' (' . $display_object->display_title . ')';
         }
