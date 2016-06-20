@@ -36,3 +36,11 @@ function dt_event_update_7102() {
   features_revert_module('dt_event');
   features_revert_module('dt_event_default');
 }
+
+/**
+ * Refresh dt_event for it's content type.
+ */
+function dt_event_update_7103() {
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
+}
