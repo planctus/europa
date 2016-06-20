@@ -120,8 +120,7 @@ function dt_event_default_field_group_info() {
     'label' => 'Live feed',
     'weight' => '87',
     'children' => array(
-      0 => 'events_live_feed_intro',
-      1 => 'dt_event_scribble_embed',
+      0 => 'dt_event_scribble_embed',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1543,8 +1542,8 @@ function dt_event_default_field_group_info() {
     'label' => 'Row',
     'weight' => '83',
     'children' => array(
-      0 => 'group_video',
-      1 => 'group_chat',
+      0 => 'group_chat',
+      1 => 'group_video',
     ),
     'format_type' => 'div',
     'format_settings' => array(

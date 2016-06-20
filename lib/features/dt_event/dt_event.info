@@ -28,7 +28,6 @@ features[ds_fields][] = about_heading
 features[ds_fields][] = current_and_upcoming_events
 features[ds_fields][] = event_livestream_header
 features[ds_fields][] = event_related_events
-features[ds_fields][] = events_live_feed_intro
 features[ds_fields][] = past_events
 features[ds_view_modes][] = event_collection
 features[ds_view_modes][] = event_livestream

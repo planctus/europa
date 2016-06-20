@@ -80,25 +80,6 @@ function dt_event_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'events_live_feed_intro';
-  $ds_field->label = 'Events: Live feed intro';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'event|event_livestream';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<p>What\'s happening in different social media channels</p>
-',
-      'format' => 'full_html',
-    ),
-    'use_token' => 0,
-  );
-  $export['events_live_feed_intro'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
   $ds_field->field = 'past_events';
   $ds_field->label = 'Past events';
   $ds_field->field_type = 6;

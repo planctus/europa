@@ -112,16 +112,6 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_livestream';
   $ds_fieldsetting->settings = array(
-    'events_live_feed_intro' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
     'event_livestream_header' => array(
       'weight' => '65',
       'label' => 'hidden',
@@ -723,30 +713,28 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'central' => array(
-        0 => 'events_live_feed_intro',
-        2 => 'dt_event_scribble_embed',
-        5 => 'group_section',
-        7 => 'event_livestream_header',
-        8 => 'field_event_live_streaming_date',
-        9 => 'dt_event_stream_embed',
-        10 => 'social_bookmark_webtools',
-        11 => 'group_row',
-        12 => 'group_video',
-        13 => 'group_chat',
-      ),
       'left_header' => array(
-        1 => 'group_meta',
-        3 => 'title',
-        4 => 'dt_event_header',
-        6 => 'field_event_type',
+        0 => 'group_meta',
+        1 => 'title',
+        3 => 'dt_event_header',
+        5 => 'field_event_type',
+      ),
+      'central' => array(
+        2 => 'dt_event_scribble_embed',
+        4 => 'group_section',
+        6 => 'event_livestream_header',
+        7 => 'field_event_live_streaming_date',
+        8 => 'dt_event_stream_embed',
+        9 => 'social_bookmark_webtools',
+        10 => 'group_row',
+        11 => 'group_video',
+        12 => 'group_chat',
       ),
     ),
     'fields' => array(
-      'events_live_feed_intro' => 'central',
       'group_meta' => 'left_header',
-      'dt_event_scribble_embed' => 'central',
       'title' => 'left_header',
+      'dt_event_scribble_embed' => 'central',
       'dt_event_header' => 'left_header',
       'group_section' => 'central',
       'field_event_type' => 'left_header',

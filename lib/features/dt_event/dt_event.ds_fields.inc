@@ -44,18 +44,18 @@ function dt_event_ds_fields_info($entity_type) {
   if ($entity_type == 'node') {
     // Book your seat.
     $fields[$entity_type]['book_your_seat'] = $book_your_seat_defaults + [
-        'title' => t('Event: Book your seat button'),
-      ];
+      'title' => t('Event: Book your seat button'),
+    ];
     $fields[$entity_type]['book_your_seat_bottom'] = $book_your_seat_defaults + [
-        'title' => t('Event: Book your seat button bottom'),
-      ];
+      'title' => t('Event: Book your seat button bottom'),
+    ];
     // Livestreaming.
     $fields[$entity_type]['livestreaming'] = $livestreaming_defaults + [
-        'title' => t('Event: Livestreaming'),
-      ];
+      'title' => t('Event: Livestreaming'),
+    ];
     $fields[$entity_type]['livestreaming_bottom'] = $livestreaming_defaults + [
-        'title' => t('Event: Livestreaming bottom'),
-      ];
+      'title' => t('Event: Livestreaming bottom'),
+    ];
     $fields[$entity_type]['dt_event_header'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -112,6 +112,18 @@ function dt_event_ds_fields_info($entity_type) {
       'ui_limit' => ['event|*'],
       'title' => t('Event: Scribble embed'),
       'function' => '_dt_event_ds_fields_scribble_embed',
+      'properties' => [
+        'settings' => [
+          'show_intro' => [
+            'title' => t('Show intro'),
+            'type' => 'checkbox',
+            'description' => t('Show the introduction text'),
+          ],
+        ],
+        'default' => [
+          'show_intro' => FALSE,
+        ],
+      ],
     ];
     $fields[$entity_type]['dt_event_stream_embed'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -162,6 +174,9 @@ function _dt_event_ds_fields_scribble_embed($field) {
     $markup = [
       '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
     ];
+    if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
+      $markup['#prefix'] = '<p>' . t("What's happening in different social media channels") . '</p>';
+    }
     return drupal_render($markup);
   }
   return NULL;
@@ -574,11 +589,12 @@ function _dt_event_ds_fields_header_event($field) {
     $markup .= '<span class="icon icon--location ' . $element_classes['location'] . '">' . $location_content . '</span>';
   }
 
-  if ($is_streaming && (!in_array($field['entity']->event_status, array(
-      DT_EVENT_STATE_CANCELLED,
-      DT_EVENT_STATE_PAST,
-    )))
-  ) {
+  $unavailable_states = [
+    DT_EVENT_STATE_CANCELLED,
+    DT_EVENT_STATE_PAST,
+  ];
+
+  if ($is_streaming && (!in_array($field['entity']->event_status, $unavailable_states))) {
     $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
   }
 
