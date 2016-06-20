@@ -2366,7 +2366,22 @@ On what day does the event end?',
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add the link to the live streaming',
+    'description' => 'Please enter the URL (information in src="") you can find in the embed code of the live stream.
+
+Example:
+[break]
+
+Is this is the embed code:
+
+```
+iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="videoplayerI122468" width="670" height="378" frameborder="0"
+```
+
+only enter this in the input field:
+
+```
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
+```',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4143,7 +4158,6 @@ On what day does the event end?',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add the link to the live streaming');
   t('Add the link where you must register in order to attend the event.');
   t('All places have been booked.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
@@ -4194,6 +4208,22 @@ On what day does the event end?');
   t('Part of collection');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
+  t('Please enter the URL (information in src="") you can find in the embed code of the live stream.
+
+Example:
+[break]
+
+Is this is the embed code:
+
+```
+iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="videoplayerI122468" width="670" height="378" frameborder="0"
+```
+
+only enter this in the input field:
+
+```
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
+```');
   t('Press contact');
   t('Registration');
   t('Registration deadline');
