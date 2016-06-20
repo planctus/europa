@@ -1,4 +1,4 @@
-@api
+@api @information
 Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
@@ -9,7 +9,6 @@ Feature: Announcements block
     And I check the box "Would you like to show the latest block when it is available?"
     And I press "Save configuration"
 
-  @information
   Scenario Outline: Visitors should see the latests announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
@@ -30,7 +29,6 @@ Feature: Announcements block
       | Topic        | field_core_topics     | should        |
       | Priority     | field_core_priorities | should        |
 
-  @shared @brp
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
     Given "Page" content:
@@ -50,7 +48,6 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on Page"
 
-  @shared
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
     Given "Priority policy area" content:
@@ -70,7 +67,6 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on PPA"
 
-  @information
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     Given "Social Networks" terms:
@@ -99,7 +95,6 @@ Feature: Announcements block
     Then I should see "Other social networks" in the ".social-media-links" element
     Then I should see "Facebook" in the ".social-media-links" element
 
-  @information
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
     Given "Featured item" content:
@@ -120,4 +115,3 @@ Feature: Announcements block
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
     Then I should see "Featured item" in the ".featured-item" element
-

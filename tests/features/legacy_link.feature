@@ -1,4 +1,4 @@
-@api @shared
+@api @information
 Feature: Legacy links
   In order to see links to external content
   As an editor
