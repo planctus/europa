@@ -75,27 +75,27 @@ function dt_policy_next_step_uninstall() {
  * DTTSB-236: Extending dt_policy_next_step_field.
  */
 function dt_policy_next_step_update_7101() {
+  $table_prefixes = ['field_data_', 'field_revision_'];
+  $table_suffixes = ['_timezone', '_time_date_start', '_time_date_end'];
+
   // Accumulate the list of fields to extend.
   $fields_migrate = [];
-  $fields = field_info_fields();
-  foreach ($fields as $field) {
+  foreach (field_info_fields() as $field) {
     if ($field['type'] == 'dt_policy_next_step_field') {
       $f_name = $field['field_name'];
       $fields_migrate[$f_name] = $f_name;
     }
   }
-  // Extend tables.
+  // Extend tables, if necessary.
   foreach ($fields_migrate as $field_name) {
-    // Data tables.
-    $schema = drupal_get_schema('field_data_' . $field_name);
-    db_add_field('field_data_' . $field_name, $field_name . '_timezone', $schema['fields'][$field_name . '_timezone']);
-    db_add_field('field_data_' . $field_name, $field_name . '_time_date_start', $schema['fields'][$field_name . '_time_date_start']);
-    db_add_field('field_data_' . $field_name, $field_name . '_time_date_end', $schema['fields'][$field_name . '_time_date_end']);
-    // Revisions tables.
-    $schema = drupal_get_schema('field_revision_' . $field_name);
-    db_add_field('field_revision_' . $field_name, $field_name . '_timezone', $schema['fields'][$field_name . '_timezone']);
-    db_add_field('field_revision_' . $field_name, $field_name . '_time_date_start', $schema['fields'][$field_name . '_time_date_start']);
-    db_add_field('field_revision_' . $field_name, $field_name . '_time_date_end', $schema['fields'][$field_name . '_time_date_end']);
+    foreach ($table_prefixes as $prefix) {
+      foreach ($table_suffixes as $suffix) {
+        $schema = drupal_get_schema($prefix . $field_name);
+        if (!db_field_exists($prefix . $field_name, $field_name . $suffix)) {
+          db_add_field($prefix . $field_name, $field_name . $suffix, $schema['fields'][$field_name . $suffix]);
+        }
+      }
+    }
   }
 
 }
