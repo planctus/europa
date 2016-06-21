@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block

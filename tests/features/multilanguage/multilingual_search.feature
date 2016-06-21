@@ -1,4 +1,4 @@
-@api @shared
+@api @information @political
 Feature: Search in views in any given language
   To deliver the best user experience
   As a user

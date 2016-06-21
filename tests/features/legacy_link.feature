@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: Legacy links
   In order to see links to external content
   As an editor

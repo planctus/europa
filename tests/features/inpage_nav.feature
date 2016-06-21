@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: In-page navigation
   In order to see in-page navigation on pages that is needed
   As an editor

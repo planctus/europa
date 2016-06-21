@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: Field groups should follow the content language and should be translateable.
 
   Background:
