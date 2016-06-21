@@ -12,7 +12,7 @@ Feature: Search in views in any given language
     And the "<language>" language is available
     And I go to "/topics_en"
     Then I should see "<sourcetitle>"
-    When I fill in "edit-combine" with "<sourcetitle>"
+    When I fill in "by keyword" with "<sourcetitle>"
     And I press "edit-submit-topics"
     Then I should see "<sourcetitle>" in the ".view-id-topics .view-content" element
     When I follow "<sourcetitle>"
