@@ -1,4 +1,4 @@
-@api @information @political
+@api @information
 Feature: Helper content types should be not accessible for the public
   In order to have access only to content that is complete
   As a user with no "access helper content types" permission

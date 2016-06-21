@@ -16,6 +16,7 @@ Feature: Search in views in any given language
     And I press "edit-submit-topics"
     Then I should see "<sourcetitle>" in the ".view-id-topics .view-content" element
     When I follow "<sourcetitle>"
+    Then show last response
     And I go to add "<language>" translation
     And I fill in "edit-title-field-<language>-0-value" with "<title>"
     And I fill in "Moderation state" with "published"
@@ -38,6 +39,9 @@ Feature: Search in views in any given language
       | <sourcetitle> | bar  | en       | 1      | speech                  | Brussels                    | bar                     | A page (default) in this website |
     And the "<language>" language is available
     And I go to "/announcements_en"
+    Then I fill in the following:
+      | Containing | <sourcetitle> |
+    Then I press "Refine results"
     Then I should see "<sourcetitle>"
     When I fill in "edit-combine" with "<sourcetitle>"
     And I press "edit-submit-announcements"
@@ -48,15 +52,18 @@ Feature: Search in views in any given language
     And I fill in "Moderation state" with "published"
     And I press "Save"
     And I go to "/announcements_<language>"
+    Then I fill in the following:
+      | Containing | <search> |
+    Then I press "<refine_result>"
     Then I should see "<title>"
     When I fill in "edit-combine" with "<search>"
     And I press "edit-submit-announcements"
     Then I should see "<title>" in the ".view-id-announcements .view-content" element
 
     Examples:
-      | sourcetitle         | title        | language | search     |
-      | Announcement title1 | Околна среда | bg       | Околна     |
-      | Announcement title2 | Περιβάλλον   | el       | Περιβάλλον |
+      | sourcetitle         | title        | language | refine_result             | search     |
+      | Announcement title1 | Околна среда | bg       | Филтър                    | Околна     |
+      | Announcement title2 | Περιβάλλον   | el       | Φιλτράρισμα αποτελεσμάτων | Περιβάλλον |
 
   Scenario Outline: Language aware policy search
     Given I am logged in as a user with the "administrator" role

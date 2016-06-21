@@ -62,7 +62,7 @@ Feature: Legacy links
       | language               | en                         |
       | field_core_description | Content description        |
       | status                 | 1                          |
-      | field_core_legacy_link | title - /user   |
+      | field_core_legacy_link | title - /user              |
     Then the url should match "/user"
 
   Scenario: As user I can see legacy links to entityreference fields
