@@ -76,7 +76,7 @@ function _dt_event_entity_add_status_property(&$entity) {
 
       default:
         // In case it's undefined, we log a message.
-        watchdog('Events', 'Undefined event status %status.', ['%status' => $event_status], WATCHDOG_ALERT);
+        watchdog('Events', 'Undefined event status.');
         break;
     }
   }

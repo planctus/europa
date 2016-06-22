@@ -8,14 +8,16 @@
  * Implements hook_enable().
  */
 function dt_core_enable() {
-  drupal_set_message('Digital transformation core is now active on your site.');
+  $t = get_t();
+  drupal_set_message($t('Digital transformation core is now active on your site.'));
 }
 
 /**
  * Implements hook_disable().
  */
 function dt_core_disable() {
-  drupal_set_message('Digital transformation core is now disabled on your site.');
+  $t = get_t();
+  drupal_set_message($t('Digital transformation core is now disabled on your site.'));
 }
 
 /**
@@ -41,6 +43,7 @@ function dt_core_install() {
   }
 
   // Switch on entity translation for the body field.
+  $sandbox = NULL;
   _dt_core_enable_entity_translation('body', $sandbox);
 
   // Remove the platform Breadcrumb menu.
@@ -524,13 +527,13 @@ function dt_core_update_7138() {
  */
 function dt_core_update_7139() {
   $query = db_update('node')->expression('title', 'RTRIM(title)')->execute();
-  drupal_set_message('<strong>' . $query . '</strong> node title(s) have been fixed.');
+  drupal_set_message(t("<strong>%query</strong> node title(s) have been fixed.", ['%query' => $query]));
 
   $query = db_update('$field_data_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
-  drupal_set_message('<strong>' . $query . '</strong> title_field\'s title(s) have been fixed.');
+  drupal_set_message(t("<strong>%query</strong> title_field\'s title(s) have been fixed.", ['%query' => $query]));
 
   $query = db_update('$field_revision_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
-  drupal_set_message('<strong>' . $query . '</strong> revision_title_field title(s) have been fixed.');
+  drupal_set_message(t("<strong>%query</strong> revision_title_field title(s) have been fixed.", ['%query' => $query]));
 }
 
 /**
@@ -609,7 +612,7 @@ function dt_core_update_7144() {
   );
 
   foreach ($helper_types as $type) {
-    variable_set('helper_node_type_' . $type, 1);
+    variable_set('dt_node_settings_helper_node_type_' . $type, 1);
   }
 
   features_revert_module('dt_roles_permissions');
@@ -628,7 +631,7 @@ function dt_core_update_7145() {
 function dt_core_update_7146() {
   $data = db_query("SELECT language, entity_id FROM field_data_body AS fdfb WHERE language = 'und' AND (SELECT count(*) FROM field_data_body WHERE entity_id = fdfb.entity_id GROUP BY entity_id ) = 1")->fetchAll();
 
-  foreach ($data as $key => $value) {
+  foreach ($data as $value) {
     db_update('field_data_body')
       ->fields(array(
         'language' => 'en',

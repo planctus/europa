@@ -39,7 +39,7 @@ function entityreference_titleoverwrite_field_widget_entityreference_autocomplet
       $element['title_override'] = array(
         '#weight' => 1,
         '#title' => t('Title override'),
-        '#description' => t('This gives you the oppertunity to override the title displayed.'),
+        '#description' => t('This gives you the opportunity to override the title displayed.'),
         '#type' => 'textfield',
         '#maxlength' => 255,
         '#default_value' => isset($context['items'][$context['delta']]['title_override']) ? $context['items'][$context['delta']]['title_override'] : '',

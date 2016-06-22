@@ -122,7 +122,7 @@ function commissioner_preprocess_views_view_unformatted(&$variables) {
       $start = $row->field_field_start_end_date[0]['raw']['value'];
       $end = $row->field_field_start_end_date[0]['raw']['value2'];
 
-      // Add a class if the event is occuring at a current date.
+      // Add a class if the event is occurring at a current date.
       // In case of single day event the $start and $end dates will be the same
       // while for multiple day events the $end date will be different.
       // The view is only showing events in the future and all events start at
@@ -395,7 +395,7 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
   }
 
   $i = 0;
-  foreach ($variables['items'] as $key => $item) {
+  foreach ($variables['items'] as $item) {
     // Check if item is not empty and we have access to it.
     if ($item && (!isset($item['#access']) || $item['#access'])) {
       $variables['panes'][$i]['title'] = check_plain($item['#title']);
@@ -409,8 +409,8 @@ function commissioner_preprocess_bootstrap_fieldgroup_nav(&$variables) {
  */
 function commissioner_js_alter(&$js) {
   if (drupal_is_front_page()) {
-    $europa_path = drupal_get_path('theme', 'europa');
     $commis_path = drupal_get_path('theme', 'commissioner');
+    $europa_path = drupal_get_path('theme', 'europa');
     unset($js[$europa_path . '/js/europa_tabs.js']);
     drupal_add_js($commis_path . '/js/commissioner_tabs.js', 'file');
   }

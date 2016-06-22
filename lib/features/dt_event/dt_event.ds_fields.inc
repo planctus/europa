@@ -181,23 +181,23 @@ function _dt_event_ds_fields_status_message($field) {
       // If live stream is available we add it to the message.
       if (
         _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
-        isset($field['entity']->field_event_live_streaming_link['und'])
+        isset($field['entity']->field_event_live_streaming_link[LANGUAGE_NONE])
       ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link['und'][0]['url']);
-        $render_config['#message_classes'][] = 'live';
+        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link[LANGUAGE_NONE][0]['url']);
+        $render_config['#message_type'] = 'live';
       }
       break;
 
     case DT_EVENT_STATE_RESCHEDULED:
       $render_config['#message_title'] = t('This event has been rescheduled');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
-      $render_config['#message_classes'][] = 'warning';
+      $render_config['#message_type'] = 'warning';
       break;
 
     case DT_EVENT_STATE_CANCELLED:
       $render_config['#message_title'] = t('This event has been cancelled');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
-      $render_config['#message_classes'][] = 'warning';
+      $render_config['#message_type'] = 'warning';
       break;
 
     case DT_EVENT_STATE_PAST:

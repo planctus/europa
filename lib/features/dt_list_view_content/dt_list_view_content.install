@@ -8,14 +8,14 @@
  * Implements hook_enable().
  */
 function dt_list_view_content_enable() {
-  drupal_set_message('Digital transformation list view content is now active on your site.');
+  drupal_set_message(t('Digital transformation list view content is now active on your site.'));
 }
 
 /**
  * Implements hook_disable().
  */
 function dt_list_view_content_disable() {
-  drupal_set_message('Digital transformation list view content is now disabled on your site.');
+  drupal_set_message(t('Digital transformation list view content is now disabled on your site.'));
 }
 
 /**

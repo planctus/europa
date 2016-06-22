@@ -187,7 +187,7 @@ For collection, this is a text with more information about the collection.',
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'By default, the name of the contact is displayed as a title. You can change this default title by filling out the \'Title override\' field; for example if you want to make a distinction between \'Press contact\' or \'General contact\'.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -262,7 +262,7 @@ For collection, this is a text with more information about the collection.',
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_contact',
-    'label' => 'General contact',
+    'label' => 'Contact',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -387,7 +387,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 42,
       ),
       'meta' => array(
         'label' => 'above',
@@ -495,7 +495,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 61,
       ),
       'meta' => array(
         'label' => 'above',
@@ -563,7 +563,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 66,
       ),
       'meta' => array(
         'label' => 'above',
@@ -650,7 +650,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 45,
       ),
       'meta' => array(
         'label' => 'above',
@@ -841,7 +841,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 58,
       ),
       'meta' => array(
         'label' => 'above',
@@ -920,16 +920,26 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'weight' => 7,
       ),
       'event_past' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
         'weight' => 60,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 46,
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
+        'weight' => 49,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1017,7 +1027,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 51,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -1346,7 +1356,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 44,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1620,7 +1630,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 47,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1691,7 +1701,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 41,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1878,10 +1888,10 @@ On what day does the event end?',
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'basic_html' => 'basic_html',
+          'basic_html' => 0,
           'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
@@ -1903,7 +1913,7 @@ On what day does the event end?',
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1953,7 +1963,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 57,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2020,7 +2030,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 60,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2087,7 +2097,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 50,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2156,7 +2166,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 62,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2231,7 +2241,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 63,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2420,7 +2430,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 67,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2505,7 +2515,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 64,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2724,75 +2734,6 @@ On what day does the event end?',
     ),
   );
 
-  // Exported field_instance: 'node-event-field_event_press_contact'.
-  $field_instances['node-event-field_event_press_contact'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 23,
-      ),
-      'event_collection' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 38,
-      ),
-      'event_past' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 59,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 45,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 38,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_event_press_contact',
-    'label' => 'Press contact',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_event_registration'.
   $field_instances['node-event-field_event_registration'] = array(
     'bundle' => 'event',
@@ -2823,7 +2764,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 53,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2912,7 +2853,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 56,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3058,7 +2999,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 65,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3156,7 +3097,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 46,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3221,7 +3162,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 43,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3567,7 +3508,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 59,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3666,7 +3607,7 @@ On what day does the event end?',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 54,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3739,7 +3680,7 @@ On what day does the event end?',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 55,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3823,7 +3764,7 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 52,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3869,7 +3810,9 @@ On what day does the event end?',
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
   t('Available languages');
+  t('By default, the name of the contact is displayed as a title. You can change this default title by filling out the \'Title override\' field; for example if you want to make a distinction between \'Press contact\' or \'General contact\'.');
   t('Cancelled or rescheduled');
+  t('Contact');
   t('Date and time of live streaming');
   t('Description');
   t('Details concerning the timing and schedule of an event. This can be limited or extended.');
@@ -3883,7 +3826,6 @@ On what day does the event end?',
   t('For event, there are separate fields for schedule, speakers, and practical information. 
 For collection, this is a text with more information about the collection.');
   t('Fully booked');
-  t('General contact');
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
@@ -3914,7 +3856,6 @@ On what day does the event end?');
   t('Part of collection');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
-  t('Press contact');
   t('Registration');
   t('Registration deadline');
   t('Related links');

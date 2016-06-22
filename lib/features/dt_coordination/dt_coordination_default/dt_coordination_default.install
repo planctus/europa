@@ -8,12 +8,14 @@
  * Implements hook_install().
  */
 function dt_coordination_default_install() {
-  drupal_set_message(t('NextEuropa coordination feature is installed on your site.'));
+  $t = get_t();
+  drupal_set_message($t('NextEuropa coordination feature is installed on your site.'));
 }
 
 /**
  * Implements hook_uninstall().
  */
 function dt_coordination_default_uninstall() {
-  drupal_set_message(t('NextEuropa coordination feature is uninstalled on your site.'));
+  $t = get_t();
+  drupal_set_message($t('NextEuropa coordination feature is uninstalled on your site.'));
 }

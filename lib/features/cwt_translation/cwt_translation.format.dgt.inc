@@ -7,6 +7,7 @@
 
 /**
  * DGT file format.
+ * @codingStandardsIgnoreFile
  */
 class TMGMTFileFormatDGT implements TMGMTFileFormatInterface {
 

@@ -54,7 +54,7 @@ function dt_node_settings_form_alter(&$form, $form_state, $form_id) {
     $form['dt_node_settings']['helper_content_type'] = array(
       '#type' => 'checkbox',
       '#title' => t('Helper content type'),
-      '#default_value' => variable_get('helper_node_type_' . $form['#node_type']->type, 0),
+      '#default_value' => variable_get('dt_node_settings_helper_node_type_' . $form['#node_type']->type, 0),
       '#options' => array(
         0 => t('Disabled'),
         1 => t('Enabled'),
@@ -70,7 +70,7 @@ function dt_node_settings_form_alter(&$form, $form_state, $form_id) {
  * Helper saving 'helper' state per content type.
  */
 function dt_node_settings_helpers_single_submit($form, &$form_state) {
-  variable_set('helper_node_type_' . $form['#node_type']->type, $form_state['values']['helper_content_type']);
+  variable_set('dt_node_settings_helper_node_type_' . $form['#node_type']->type, $form_state['values']['helper_content_type']);
 }
 
 /**
@@ -82,6 +82,90 @@ function dt_node_settings_menu_alter(&$items) {
 
   // Use our own access callback for the 'node/%node' page.
   $items['node/%node']['access callback'] = 'dt_node_settings_node_access_callback';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Adds extra checkboxes to collect extra information on the revision.
+ */
+function dt_node_settings_form_node_form_alter(&$form, $form_state) {
+
+  // Prepare our additional fields array.
+  $additional_fields = [];
+
+  // Invoke implementation and add them to the array.
+  foreach (module_implements('dt_node_settings_config_fields') as $module) {
+    $additional_fields += module_invoke($module, 'dt_node_settings_config_fields', $form);
+  }
+
+  // If we have implementations, we add a field group and populate the data.
+  if (!empty($additional_fields)) {
+    // Simple switch so we never display empty groups.
+    $has_visible_fields = FALSE;
+    // Field group defenition.
+    $form['dt_node_settings'] = [
+      '#type' => 'fieldset',
+      '#title' => 'Additional information and settings',
+      '#group' => 'additional_settings',
+    ];
+    // Check if there is data available.
+    if (isset($form['#node']->dt_node_settings_data)) {
+      $default = unserialize($form['#node']->dt_node_settings_data);
+    }
+    // Loop over the fields and add them to the form array.
+    foreach ($additional_fields as $field_id => $field) {
+      // We got to check if they are visible.
+      if (!$has_visible_fields && (!isset($field['#access']) || (isset($field['#access']) && $field['#access'] == TRUE))) {
+        $has_visible_fields = TRUE;
+      }
+      // Add the form field, and it's value.
+      $form['dt_node_settings'][$field_id] = $field;
+      if (isset($default[$field_id])) {
+        $form['dt_node_settings'][$field_id]['#default_value'] = $default[$field_id];
+      }
+    }
+    // If no visible fields, remove the group.
+    if (!$has_visible_fields) {
+      unset($form['dt_node_settings']);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function dt_node_settings_node_submit($node, $form, &$form_state) {
+  // Make sure it's having options and is submitted.
+  if (isset($form['dt_node_settings']) && $form_state['values']['op'] == $form_state['values']['submit']) {
+    // Get the custom settings.
+    $custom_settings = element_children($form['dt_node_settings']);
+
+    // Init.
+    $node->dt_node_settings_data_original = [];
+
+    // Loop over our fields.
+    foreach ($custom_settings as $setting) {
+      $node->dt_node_settings_data_original[$setting] = $form_state['values'][$setting];
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * This is a workaround for workbench, as workbench triggers node_save twice and
+ * that would cause the array to be double serialized.
+ */
+function dt_node_settings_entity_presave($entity, $type) {
+  if ($type == 'node') {
+    if (!isset($entity->dt_node_settings_data_original) && (isset($entity->dt_node_settings_data) && is_array(unserialize($entity->dt_node_settings_data)))) {
+      $entity->dt_node_settings_data = unserialize($entity->dt_node_settings_data);
+    }
+    elseif (isset($entity->dt_node_settings_data_original)) {
+      $entity->dt_node_settings_data = $entity->dt_node_settings_data_original;
+    }
+  }
 }
 
 /**
@@ -107,5 +191,5 @@ function dt_node_settings_node_access_callback($op, $node) {
  *   Helper or not.
  */
 function _content_type_is_helper($node_type) {
-  return (bool) variable_get('helper_node_type_' . $node_type, FALSE);
+  return (bool) variable_get('dt_node_settings_helper_node_type_' . $node_type, FALSE);
 }
