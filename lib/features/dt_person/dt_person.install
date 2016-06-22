@@ -199,6 +199,8 @@ function dt_person_update_7108() {
   );
   // Revert the feature.
   foreach ($features_to_revert as $feature) {
-    features_revert_module($feature);
+    if (module_exists($feature)) {
+      features_revert_module($feature);
+    }
   }
 }

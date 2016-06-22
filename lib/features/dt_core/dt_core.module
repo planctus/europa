@@ -55,6 +55,7 @@ function dt_core_theme($existing, $type, $theme, $path) {
       'variables' => [
         'message_title' => '',
         'message_body' => '',
+        'message_type' => '',
         'message_classes' => '',
       ],
     ],
@@ -68,7 +69,7 @@ function dt_core_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_dt_core_status_message().
  */
 function dt_core_preprocess_dt_core_status_message(&$variables) {
   if (isset($variables['message_classes']) && is_array($variables['message_classes'])) {
@@ -887,7 +888,7 @@ function dt_core_preprocess_views_view(&$variables) {
       // Make sure we have a fallback.
       $content_type_forms = _dt_core_get_plurial_content_types($content_type);
       // Set the display title and uppercase it.
-      $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
+      $display_title = drupal_ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
   }
