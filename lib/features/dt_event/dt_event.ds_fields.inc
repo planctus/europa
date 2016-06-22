@@ -274,11 +274,8 @@ function _dt_event_ds_fields_status_message($field) {
       $render_config['#message_title'] = t('This event is going on right now');
 
       // If live stream is available we add it to the message.
-      if (
-        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
-        isset($field['entity']->field_event_live_streaming_link[LANGUAGE_NONE])
-      ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link[LANGUAGE_NONE][0]['url']);
+      if (_dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])) {
+        $render_config['#message_body'] = l(t('Watch live streaming'), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
         $render_config['#message_type'] = 'live';
       }
       break;
