@@ -111,7 +111,6 @@ features[field_instance][] = node-event-field_event_media
 features[field_instance][] = node-event-field_event_more_links
 features[field_instance][] = node-event-field_event_number_seats
 features[field_instance][] = node-event-field_event_parent_events
-features[field_instance][] = node-event-field_event_press_contact
 features[field_instance][] = node-event-field_event_registration
 features[field_instance][] = node-event-field_event_registration_end
 features[field_instance][] = node-event-field_event_schedule
