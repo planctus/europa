@@ -4134,26 +4134,6 @@ On what day does the event end?');
   t('Part of collection');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
-<<<<<<< HEAD
-  t('Please enter the URL (information in src="") you can find in the embed code of the live stream.
-
-Example:
-[break]
-
-Is this is the embed code:
-
-```
-iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="videoplayerI122468" width="670" height="378" frameborder="0"
-```
-
-only enter this in the input field:
-
-```
-http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
-```');
-  t('Press contact');
-=======
->>>>>>> b268ab84ec23217bb5f19e26c7cda2fa60af3755
   t('Registration');
   t('Registration deadline');
   t('Related links');
