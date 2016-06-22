@@ -48,7 +48,7 @@ function cwt_translation_theme() {
  * @param int $job_id
  *   The job ID.
  *
- * @return TMGMTJob|FALSE
+ * @return TMGMTJob|false
  *   Loaded translation job entity, or FALSE if the job wasn't found.
  */
 function cwt_translation_get_job_from_related_job($source_language, $target_language, $job_id) {
