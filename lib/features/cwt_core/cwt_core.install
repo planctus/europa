@@ -566,4 +566,3 @@ function cwt_core_update_7143() {
   include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
   cwt_core_reset_default_permissions();
 }
-
