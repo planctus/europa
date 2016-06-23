@@ -103,7 +103,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'calendar' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     if (isset($original_path_cached['nid'])) {
       // Load node the Calendar belongs to in the first place.
       // Use its editorial section in first contextual filter.
@@ -267,8 +267,7 @@ function cwt_activities_preprocess_page(&$variables) {
 
     if (isset($variables['format']) && $variables['format'] == 'pdf') {
       $result = _dt_exposed_filter_data_get_date_facet_tags($view);
-      $filter = implode($result['filter']);
-      $variables['node']->title .= ' ' . strtolower(trim($filter, '"'));
+      $variables['node']->title .= ' ' . lcfirst(trim($result['filter'][0], '"'));
 
       $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'
         . $variables['node']->content;

@@ -112,7 +112,6 @@ function dt_person_field_attach_view_alter(&$output, $context) {
  * Will add an extra tab in user account page.
  */
 function dt_person_menu() {
-
   if (module_exists('masquerade')) {
     $items = array();
     $items['user/%user/masquerade'] = array(
@@ -126,6 +125,7 @@ function dt_person_menu() {
     );
     return $items;
   }
+  return NULL;
 }
 
 /**
@@ -133,17 +133,16 @@ function dt_person_menu() {
  *
  * @param object $account
  *   The user object of the current account.
+ *
+ * @return bool
+ *   True/false.
  */
 function _masquerade_tab_access($account) {
-  // Anonymous users cannot have contact forms.
-  if (!$account->uid) {
-    return FALSE;
-  }
-
   // User administrators should always have access to personal contact forms.
   if (isset($_SESSION['masquerading']) || user_access('masquerade as user') || user_access('masquerade as admin')) {
     return TRUE;
   }
+  return FALSE;
 }
 
 /**
@@ -170,9 +169,12 @@ function dt_person_ds_fields_info() {
   $fields['full_name'] = array(
     'title' => t('Person full name'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'function' => '_dt_person_token_replace',
+    'function' => '_dt_person_token_replace_fullname',
     'properties' => array(
-      'value' => '<a class="full-name" href="[node:legacy-link]">[node:field_person_first_name] [node:field_person_last_name]</a>',
+      'class' => 'full-name',
+      'first_name' => '[node:field_person_last_name]',
+      'last_name' => '[node:field_person_first_name]',
+      'link' => '[node:legacy-link]',
     ),
   );
 
@@ -189,7 +191,43 @@ function dt_person_ds_fields_info() {
 }
 
 /**
+ * Custom function to return the name link.
+ *
+ * @param array $field
+ *   Array containing the context.
+ *
+ * @return string
+ *   The string with replaced tokens.
+ */
+function _dt_person_token_replace_fullname($field) {
+  if (isset($field['properties']['class'])) {
+    $options = [
+      'attributes' => [
+        'class' => [
+          $field['properties']['class'],
+        ],
+      ],
+    ];
+    // Remove it from the array.
+    unset($field['properties']['class']);
+
+    // Replace all other values using token replace.
+    foreach ($field['properties'] as &$property) {
+      $property = token_replace($property, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+    }
+    return l($field['properties']['first_name'] . ' ' . $field['properties']['last_name'], $field['properties']['link'], $options);
+  }
+  return NULL;
+}
+
+/**
  * Custom function for single token replacement in a field.
+ *
+ * @param array $field
+ *   Array containing the context.
+ *
+ * @return string
+ *   The string with replaced tokens.
  */
 function _dt_person_token_replace($field) {
   if (isset($field['properties']['value'])) {
@@ -197,4 +235,5 @@ function _dt_person_token_replace($field) {
     $value = token_replace($value, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
     return $value;
   }
+  return NULL;
 }

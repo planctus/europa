@@ -37,7 +37,7 @@ function theme_site_switcher_tabs($variables) {
   $output = "<div class='site-switcher $modifier'>";
   $output .= "<ul class='site-switcher__list'>";
   foreach ($sites as $site) {
-    $output .= '<li class="site-switcher__option' . $site['active'] . '"><a href="' . $site['url'] . '">' . $site['label'] . '</a></li>';
+    $output .= '<li class="site-switcher__option' . $site['active'] . '">' . l($site['label'], $site['url']) . '</li>';
   }
   $output .= "</ul>";
   $output .= "</div>";

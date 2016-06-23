@@ -888,7 +888,7 @@ function dt_core_preprocess_views_view(&$variables) {
       // Make sure we have a fallback.
       $content_type_forms = _dt_core_get_plurial_content_types($content_type);
       // Set the display title and uppercase it.
-      $display_title = ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
+      $display_title = drupal_ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       $variables['items_count'] = $display_title . ' (' . $total_rows . ')';
     }
   }
