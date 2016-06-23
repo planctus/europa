@@ -558,6 +558,9 @@ function cwt_core_update_7142() {
   module_disable(['commissioner_date']);
 }
 
+/**
+ * DTTSB-655: Reset of permissions.
+ */
 function cwt_core_update_7143() {
   // Resetting permissions.
   include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
