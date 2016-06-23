@@ -142,7 +142,7 @@ function _dt_list_view_content_get_bean($view) {
  * @param object $view
  *   The views object.
  *
- * @return string|Bool
+ * @return string|bool
  *    Either the full view identifier or a FALSE if it could not be generated.
  */
 function _dt_list_view_content_view_identifier($view) {
