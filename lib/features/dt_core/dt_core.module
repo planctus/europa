@@ -657,6 +657,7 @@ function _dt_core_lower_case_languages() {
     'es',
     'fr',
     'hr',
+    'it',
     'lv',
     'lt',
     'hu',

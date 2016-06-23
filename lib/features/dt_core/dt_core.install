@@ -911,3 +911,11 @@ function dt_core_update_7166() {
   module_enable(['dt_date_format']);
   module_disable(['commissioner_date']);
 }
+
+/**
+ * Update specific languages to be lower case.
+ */
+function dt_core_update_7167() {
+  // Call our helper function to update the list.
+  _dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages());
+}
