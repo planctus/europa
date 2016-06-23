@@ -388,29 +388,27 @@ function _dt_event_ds_fields_book_your_seat($field) {
   ];
 
   // Few conditions should be met.
-  if (in_array($field['entity']->event_status, $allowed_states)) {
-    if (!$emw->field_event_is_fully_booked->value() &&
-      $registration = $emw->field_event_registration->value()
+  if (
+    in_array($field['entity']->event_status, $allowed_states) &&
+    !$emw->field_event_is_fully_booked->value() &&
+    $registration = $emw->field_event_registration->value()
+  ) {
+    // If registration is still open we can show the button.
+    if ($emw->field_event_registration_end->value() > time()) {
+      // Our button text will default if not filled in.
+      $button_link = $registration['display_url'];
+      $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
+    }
+    // Special case if ongoing and live stream is available.
+    if (
+      $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
+      $emw->field_event_live_streaming_link->value()
     ) {
-      // If registration is still open we can show the button.
-      if ($emw->field_event_registration_end->value() > time()) {
-        // Our button text will default if not filled in.
-        $button_link = $registration['display_url'];
-        $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
-      }
+      $button_text = t('Watch live now');
+      $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
     }
-    else {
-      // Special case if ongoing and live stream is available.
-      if (
-        $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
-        $emw->field_event_live_streaming_link->value()
-      ) {
-        $button_text = t('Watch live now');
-        $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
-      }
-    }
-    // If a match is there, we can display the button.
-    if (isset($button_text) && isset($button_link)) {
+
+    if (isset($button_text)) {
       // Default attributes for the link.
       $attributes = [
         'attributes' => [
