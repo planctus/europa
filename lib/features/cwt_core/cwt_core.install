@@ -557,3 +557,9 @@ function cwt_core_update_7142() {
   module_enable(['dt_date_format']);
   module_disable(['commissioner_date']);
 }
+
+function cwt_core_update_7143() {
+  // Resetting permissions.
+  include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
+  cwt_core_reset_default_permissions();
+}
