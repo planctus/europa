@@ -558,11 +558,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_j - ed_j sd_F sd_Y');
+          $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_j sd_F - ed_j ed_F sd_Y');
+          $date_object->setFormat('sd_j sd_F – ed_j ed_F sd_Y');
         }
         break;
 
@@ -580,11 +580,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_l sd_j - ed_l ed_j sd_F');
+          $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_l sd_j sd_F - ed_l ed_j ed_F');
+          $date_object->setFormat('sd_l sd_j sd_F – ed_l ed_j ed_F');
         }
     }
 
