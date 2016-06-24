@@ -10,65 +10,6 @@
 function dt_event_default_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'file-image-field_file_image_title_text'.
-  $field_instances['file-image-field_file_image_title_text'] = array(
-    'bundle' => 'image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'wysiwyg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'file',
-    'field_name' => 'field_file_image_title_text',
-    'label' => 'Title Text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-      'wysiwyg_override' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -3,
-    ),
-  );
-
   // Exported field_instance: 'node-event-body'.
   $field_instances['node-event-body'] = array(
     'bundle' => 'event',
@@ -1930,7 +1871,7 @@ On what day does the event end?',
     'label' => 'Event date and time',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'blank',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -2337,7 +2278,7 @@ On what day does the event end?',
     'label' => 'Date and time of live streaming',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'blank',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -3087,7 +3028,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'label' => 'Registration deadline',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -4134,6 +4075,22 @@ On what day does the event end?');
   t('Part of collection');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
+  t('Please enter the URL (information in src="") you can find in the embed code of the live stream.
+
+Example:
+[break]
+
+Is this is the embed code:
+
+```
+iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="videoplayerI122468" width="670" height="378" frameborder="0"
+```
+
+only enter this in the input field:
+
+```
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
+```');
   t('Registration');
   t('Registration deadline');
   t('Related links');
