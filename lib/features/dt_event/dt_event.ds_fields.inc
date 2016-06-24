@@ -44,18 +44,18 @@ function dt_event_ds_fields_info($entity_type) {
   if ($entity_type == 'node') {
     // Book your seat.
     $fields[$entity_type]['book_your_seat'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button'),
-    ];
+        'title' => t('Event: Book your seat button'),
+      ];
     $fields[$entity_type]['book_your_seat_bottom'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button bottom'),
-    ];
+        'title' => t('Event: Book your seat button bottom'),
+      ];
     // Livestreaming.
     $fields[$entity_type]['livestreaming'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming'),
-    ];
+        'title' => t('Event: Livestreaming'),
+      ];
     $fields[$entity_type]['livestreaming_bottom'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming bottom'),
-    ];
+        'title' => t('Event: Livestreaming bottom'),
+      ];
     $fields[$entity_type]['dt_event_header'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],

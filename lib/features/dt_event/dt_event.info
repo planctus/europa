@@ -2,7 +2,6 @@ name = DT Event
 description = DT Event content type
 core = 7.x
 package = NextEuropa Digital Transformation
-php = 5.5
 dependencies[] = addressfield
 dependencies[] = dt_date_format
 dependencies[] = dt_department

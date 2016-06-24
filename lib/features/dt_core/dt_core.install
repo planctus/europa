@@ -917,7 +917,6 @@ function dt_core_update_7166() {
  */
 function dt_core_update_7167() {
   module_enable(['views_ajax_history']);
-
   // Call our helper function to update the list.
   _dt_core_transform_language_to_lower_case(_dt_core_lower_case_languages());
 }
