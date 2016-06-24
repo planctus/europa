@@ -911,3 +911,10 @@ function dt_core_update_7166() {
   module_enable(['dt_date_format']);
   module_disable(['commissioner_date']);
 }
+
+/**
+ * DTTSB-643: Enable views_ajax_history.
+ */
+function dt_core_update_7167() {
+  module_enable(['views_ajax_history']);
+}
