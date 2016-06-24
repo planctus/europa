@@ -5,8 +5,6 @@
  */
 
 $permissions['editorial team member'] = array(
-  'dt editorial mark linguistic review',
-  'dt editorial mark content review',
   'access administration menu',
   'access administration pages',
   'access bean overview',

@@ -181,19 +181,3 @@ function _dt_event_get_status_information($entity) {
   }
   return NULL;
 }
-
-/**
- * Helper function to check if we are on the /live part of the event.
- *
- * @param string $path
- *   The path to check for.
- *
- * @return bool
- *   True if on /live, false otherwise.
- */
-function _dt_event_is_live_path($path = 'current') {
-  if ($path == 'current') {
-    $path = request_path();
-  }
-  return preg_match(DT_EVENT_LIVE_PATH_REGEX, $path);
-}

@@ -23,50 +23,31 @@
 }
 
 .print-content {
-  .view-agenda {
-    .filters__result-count,
-    .filters__active-facets {
-      display: none;
-    }
+  .filters__result-count,
+  .filters__active-facets {
+    display: none;
+  }
 
-    .view-content {
-      padding-top: 1em;
-    }
+  .date-block {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    text-align: left;
+    border-bottom: none;
 
-    .views-row {
-      margin: 0;
-      padding: 0;
-      line-height: normal;
+    .date-block__day-text,
+    .date-block__day,
+    .date-block__month {
+      display: inline;
+      font-size: 0.800em;
+      font-weight: bold;
+      line-height: 1;
     }
+  }
 
-    h3 {
-      margin: 0;
-      padding: 0;
-      line-height: normal;
-      border-top: 1px solid #bebebe;
-    }
-
-    .date-block {
-      width: auto;
-      margin: 0;
-      padding: 0;
-      background: none;
-      text-align: left;
-      border-bottom: none;
-
-      .date-block__day-text,
-      .date-block__day,
-      .date-block__month {
-        display: inline;
-        font-size: 0.800em;
-        font-weight: bold;
-        line-height: normal;
-      }
-    }
-
-    .listing__author__pdf,
-    .listing__title__pdf {
-      font-size: 0.950em;
-    }
+  .listing__author__pdf,
+  .listing__title__pdf {
+    font-size: 0.950em;
   }
 }

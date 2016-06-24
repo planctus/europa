@@ -126,9 +126,6 @@ function dt_event_strongarm() {
       'event_past' => array(
         'custom_settings' => TRUE,
       ),
-      'event_livestream' => array(
-        'custom_settings' => TRUE,
-      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -21,7 +21,8 @@ function dt_event_ds_custom_fields_info() {
   $ds_field->ui_limit = 'event|*';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<h2 id="about">About [node:title]</h2>',
+      'value' => '<h2 id="about">About [node:title]</h2>
+',
       'format' => 'full_html',
     ),
     'use_token' => 1,
@@ -42,42 +43,6 @@ function dt_event_ds_custom_fields_info() {
     'block_render' => '3',
   );
   $export['current_and_upcoming_events'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'event_livestream_header';
-  $ds_field->label = 'Event: Livestream header';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'event|event_livestream';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<h2>Live from [node:field_core_location:locality]</h2>',
-      'format' => 'full_html',
-    ),
-    'use_token' => 1,
-  );
-  $export['event_livestream_header'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'event_livestream_title';
-  $ds_field->label = 'Event: Livestream title';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'event|event_livestream';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => 'Live: [node:title]',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 1,
-  );
-  $export['event_livestream_title'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -126,15 +91,6 @@ function dt_event_ds_view_modes_info() {
     'node' => 'node',
   );
   $export['event_collection'] = $ds_view_mode;
-
-  $ds_view_mode = new stdClass();
-  $ds_view_mode->api_version = 1;
-  $ds_view_mode->view_mode = 'event_livestream';
-  $ds_view_mode->label = 'Event: Livestream';
-  $ds_view_mode->entities = array(
-    'node' => 'node',
-  );
-  $export['event_livestream'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

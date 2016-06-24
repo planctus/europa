@@ -5,8 +5,6 @@
  */
 
 $permissions['administrator'] = array(
-  'dt editorial mark linguistic review',
-  'dt editorial mark content review',
   'accept translation jobs',
   'access administration menu',
   'access administration pages',
