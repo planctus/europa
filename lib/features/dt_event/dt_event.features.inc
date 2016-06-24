@@ -49,6 +49,24 @@ function dt_event_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_node_info().
+ */
+function dt_event_node_info() {
+  $items = array(
+    'event' => array(
+      'name' => t('Event'),
+      'base' => 'node_content',
+      'description' => t('Create content of type Event.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
+}
+
+/**
  * Implements hook_default_search_api_index().
  */
 function dt_event_default_search_api_index() {
