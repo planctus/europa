@@ -258,6 +258,11 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
 function cwt_activities_migrate_api() {
   return array(
     'api' => 2,
+    'groups' => array(
+      'NextEuropa' => array(
+        'title' => t('Stage initial content, calendar item types.'),
+      ),
+    ),
     'migrations' => array(
       'CwtActivitiesTypes' => array(
         'class_name' => 'CwtActivitiesTypesMigration',
@@ -290,7 +295,7 @@ function cwt_activities_preprocess_page(&$variables) {
     $description[] = t('Subject to changes during the week');
 
     $variables['field_core_introduction'] = [
-      '#markup' => '<p>' . $description[0] . '</p><p><i>' . $description[1] . '</i></p>',
+      '#markup' => '<p>' . $description[0] . '</p><p><em>' . $description[1] . '</em></p>',
     ];
 
     if (isset($variables['format']) && $variables['format'] == 'pdf') {
