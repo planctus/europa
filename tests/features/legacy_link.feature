@@ -1,4 +1,4 @@
-@api @information @political
+@api
 Feature: Legacy links
   In order to see links to external content
   As an editor
@@ -12,6 +12,7 @@ Feature: Legacy links
     And I check the box "Would you like to show the latest block when it is available?"
     And I press "Save configuration"
 
+  @information @political
   Scenario: Show external legacy link on announcement teaser
     Given "Page" content:
       | title         | language | field_core_description | status | field_core_latest_visibility |
@@ -41,6 +42,7 @@ Feature: Legacy links
     And I follow "Content title"
     Then I should see the link "Announcement title on page" linking to "http://example.en/test"
 
+  @information @political
   Scenario: As an anonymous user I should see the referenced legacy link teaser
     Given I am not logged in
     Given I am viewing a "Page" content:
@@ -55,6 +57,7 @@ Feature: Legacy links
     When I reload the page
     Then I should see the link "Announcement title on page" linking to "http://example.en/test"
 
+  @information @political
   Scenario: As an anonymous user I should get an access denied on legacy link full view mode
     Given I am not logged in
     Given I am viewing a "Announcement" content:
@@ -65,6 +68,7 @@ Feature: Legacy links
       | field_core_legacy_link | title - /user              |
     Then the url should match "/user"
 
+  @information
   Scenario: As user I can see legacy links to entityreference fields
     Given I am not logged in
     Given "Page" content:

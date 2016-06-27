@@ -16,7 +16,6 @@ Feature: Search in views in any given language
     And I press "edit-submit-topics"
     Then I should see "<sourcetitle>" in the ".view-id-topics .view-content" element
     When I follow "<sourcetitle>"
-    Then show last response
     And I go to add "<language>" translation
     And I fill in "edit-title-field-<language>-0-value" with "<title>"
     And I fill in "Moderation state" with "published"
@@ -54,7 +53,7 @@ Feature: Search in views in any given language
     And I go to "/announcements_<language>"
     Then I fill in the following:
       | Containing | <search> |
-    Then I press "<refine_result>"
+    Then I press "Refine"
     Then I should see "<title>"
     When I fill in "edit-combine" with "<search>"
     And I press "edit-submit-announcements"
