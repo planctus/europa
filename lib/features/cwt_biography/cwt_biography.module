@@ -170,7 +170,7 @@ function cwt_biography_set_default_weights() {
  * @param object $editorial_section
  *   An editorial section taxonomy term object.
  *
- * @return object|FALSE
+ * @return object|false
  *   The biography of the commissioner, or FALSE if no biography was found.
  */
 function cwt_biography_get_commissioner_biography_by_editorial_section($editorial_section) {

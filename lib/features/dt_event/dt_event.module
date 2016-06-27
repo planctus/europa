@@ -22,6 +22,9 @@ define('DT_EVENT_LIVE_STREAM_FUTURE', 1);
 define('DT_EVENT_LIVE_STREAM_ONGOING', 2);
 define('DT_EVENT_LIVE_STREAM_END', 3);
 
+// Other constants.
+define('DT_EVENT_LIVE_PATH_REGEX', '/\/live(_[a-zA-Z]{2}|\/$|$)/');
+
 /**
  * Implements hook_entity_load().
  */
@@ -70,6 +73,11 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
   // Only attempt to change the view mode if it is full, as we never want to
   // change the view mode on a teaser by accident.
   if (isset($context['entity']->type) && $context['entity']->type == 'event' && $view_mode == 'full') {
+    // Return the live view mode.
+    if (_dt_event_is_live_path()) {
+      $view_mode = 'event_livestream';
+      return;
+    }
     // If it is a collection.
     if ($context['entity']->field_event_collection[LANGUAGE_NONE][0]['value'] == 1) {
       $view_mode = 'event_collection';
@@ -197,5 +205,31 @@ function dt_event_facet_items_alter(&$build, &$settings) {
         }
       }
       break;
+  }
+}
+
+/**
+ * Implements hook_url_inbound_alter().
+ *
+ * Here we check if the url ends on (/live|/live/|/live_{lang}). If that is the
+ * case we can populate it so that we later, can add a specific display mode.
+ */
+function dt_event_url_inbound_alter(&$path, $original_path, $path_language) {
+  $replaced_path = preg_replace(DT_EVENT_LIVE_PATH_REGEX, '', $path);
+  if ($source = drupal_lookup_path('source', $replaced_path, $path_language)) {
+    $path = $source;
+  }
+}
+
+/**
+ * Implements hook_preprocess_easy_breadcrumb().
+ */
+function dt_event_preprocess_easy_breadcrumb(&$variables) {
+  // Live streaming pages.
+  if (_dt_event_is_live_path()) {
+    // Add node segment for Event.
+    $node = menu_get_object();
+    $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), array(), 'node/' . $node->nid);
+    $variables['segments_quantity']++;
   }
 }
