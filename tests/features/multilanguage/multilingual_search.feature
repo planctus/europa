@@ -53,16 +53,16 @@ Feature: Search in views in any given language
     And I go to "/announcements_<language>"
     Then I fill in the following:
       | Containing | <search> |
-    Then I press "Refine"
+    Then I press "edit-submit-announcements"
     Then I should see "<title>"
     When I fill in "edit-combine" with "<search>"
     And I press "edit-submit-announcements"
     Then I should see "<title>" in the ".view-id-announcements .view-content" element
 
     Examples:
-      | sourcetitle         | title        | language | refine_result             | search     |
-      | Announcement title1 | Околна среда | bg       | Филтър                    | Околна     |
-      | Announcement title2 | Περιβάλλον   | el       | Φιλτράρισμα αποτελεσμάτων | Περιβάλλον |
+      | sourcetitle         | title        | language | search     |
+      | Announcement title1 | Околна среда | bg       | Околна     |
+      | Announcement title2 | Περιβάλλον   | el       | Περιβάλλον |
 
   Scenario Outline: Language aware policy search
     Given I am logged in as a user with the "administrator" role

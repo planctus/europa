@@ -23,7 +23,7 @@ Feature: Display some specific languages in lower case
       | "fr"     | "lower" | "-12"   |
       | "ga"     | "upper" | "-11"   |
       | "hr"     | "lower" | "-10"   |
-      | "it"     | "lower" | "-9"    |
+      | "it"     | "upper" | "-9"    |
       | "lv"     | "lower" | "-8"    |
       | "lt"     | "lower" | "-7"    |
       | "hu"     | "lower" | "-6"    |
