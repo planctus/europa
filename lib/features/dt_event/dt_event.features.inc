@@ -17,11 +17,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-<<<<<<< HEAD
     "entity_translation_handler_id" : "cer-eid-5364-0",
-=======
-    "entity_translation_handler_id" : "cer-eid-4409-0",
->>>>>>> 93207f0... Merging latest changes
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
