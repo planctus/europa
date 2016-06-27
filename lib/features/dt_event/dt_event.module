@@ -144,7 +144,7 @@ function dt_event_views_pre_render(&$view) {
   if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
     if (FALSE !== strpos($view->header['area_text_custom']->options['content'], '%all_events_link')) {
       // @todo: Instead of using /events, get the view and return the path of it.
-      $link = l(t('All events'), '/events');
+      $link = l(t('View all events'), '/events');
       $view->header['area_text_custom']->options['content'] = str_replace('%all_events_link', $link, $view->header['area_text_custom']->options['content']);
     }
   }
