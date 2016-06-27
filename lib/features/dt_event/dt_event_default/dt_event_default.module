@@ -5,3 +5,26 @@
  */
 
 include_once 'dt_event_default.features.inc';
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function dt_event_form_node_form_alter(&$form, $form_state, $form_id) {
+  global $user;
+
+  drupal_add_css(drupal_get_path('module', 'dt_event') . '/styles/dt_event_default_admin.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
+
+  $type = $form['#node']->type;
+  $timezone = $user->timezone;
+
+  switch ($type) {
+    case 'event':
+      $form['field_event_date'][LANGUAGE_NONE][0]['#default_value'] = '';
+      $form['field_event_date'][LANGUAGE_NONE][0]['timezone']['#default_value'] = $timezone;
+      $form['field_event_registration_end'][LANGUAGE_NONE][0]['#default_value'] = '';
+      $form['field_event_registration_end'][LANGUAGE_NONE][0]['timezone']['#default_value'] = $timezone;
+      $form['field_event_live_streaming_date'][LANGUAGE_NONE][0]['#default_value'] = '';
+      $form['field_event_live_streaming_date'][LANGUAGE_NONE][0]['timezone']['#default_value'] = $timezone;
+      break;
+  }
+}
