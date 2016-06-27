@@ -112,7 +112,7 @@
     <target name="make-theme">
         <echo msg="Make the subsite." />
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="lib/themes/europa/europa.make" />
+            <property name="drush.make.target.file" value="${project.basedir}/lib/themes/europa/europa.make" />
             <property name="drush.make.root" value="${platform.build.dir}" />
         </phingcall>
     </target>
