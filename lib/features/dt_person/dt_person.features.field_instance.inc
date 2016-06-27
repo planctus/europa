@@ -132,7 +132,7 @@ function dt_person_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 55,
+      'weight' => 72,
     ),
   );
 
@@ -212,7 +212,7 @@ function dt_person_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 49,
+      'weight' => 67,
     ),
   );
 
@@ -262,7 +262,7 @@ function dt_person_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 51,
+      'weight' => 69,
     ),
   );
 
@@ -342,7 +342,7 @@ function dt_person_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 50,
+      'weight' => 68,
     ),
   );
 
@@ -433,7 +433,7 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 52,
+      'weight' => 70,
     ),
   );
 
@@ -486,7 +486,7 @@ function dt_person_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 53,
+      'weight' => 66,
     ),
   );
 
@@ -570,7 +570,134 @@ function dt_person_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 54,
+      'weight' => 71,
+    ),
+  );
+
+  // Exported field_instance: 'node-person-field_role_title'.
+  $field_instances['node-person-field_role_title'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_role_title',
+    'label' => 'Role/Title',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 255,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 65,
+    ),
+  );
+
+  // Exported field_instance: 'node-person-field_type_of_person'.
+  $field_instances['node-person-field_type_of_person'] = array(
+    'bundle' => 'person',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_type_of_person',
+    'label' => 'Type of Person',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 64,
     ),
   );
 
@@ -949,8 +1076,10 @@ function dt_person_field_default_field_instances() {
   t('Plural form');
   t('Portrait photo');
   t('Role');
+  t('Role/Title');
   t('Tagline');
   t('Title');
+  t('Type of Person');
 
   return $field_instances;
 }

@@ -191,6 +191,54 @@ function dt_person_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_role_title'.
+  $field_bases['field_role_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_role_title',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_type_of_person'.
+  $field_bases['field_type_of_person'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_type_of_person',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'EC related person',
+        1 => 'Person not part of the EC',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_user_role_feminine'.
   $field_bases['field_user_role_feminine'] = array(
     'active' => 1,
