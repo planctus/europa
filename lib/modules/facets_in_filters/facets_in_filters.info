@@ -10,4 +10,5 @@ dependencies[] = facetapi_select
 files[] = handlers/ViewsHandlerFilterFacet.inc
 files[] = handlers/FacetapiUrlViews.inc
 files[] = widgets/FacetsInFiltersCheckbox.inc
+files[] = widgets/FacetsInFiltersFilterBase.inc
 files[] = widgets/FacetsInFiltersSelect.inc

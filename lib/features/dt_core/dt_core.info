@@ -37,7 +37,6 @@ dependencies[] = retina_images
 dependencies[] = strongarm
 dependencies[] = table_element
 dependencies[] = text
-dependencies[] = views_ajax_history
 dependencies[] = weight
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium

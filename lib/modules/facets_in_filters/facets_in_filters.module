@@ -44,6 +44,13 @@ function facets_in_filters_views_data() {
  */
 function facets_in_filters_facetapi_widgets() {
   return [
+    'facets_in_filters_filter_base' => [
+      'handler' => [
+        'label' => t('FacetInFiltersFilter Base'),
+        'class' => 'FacetsInFiltersFilterBase',
+        'query types' => ['term', 'date'],
+      ],
+    ],
     'facets_in_filters_checkbox' => [
       'handler' => [
         'label' => t('Views checkboxes'),
