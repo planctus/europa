@@ -38,9 +38,17 @@ function dt_event_update_7102() {
 }
 
 /**
- * DTTSB-771: regressions on the event content type fixing.
+ * Refresh dt_event for it's content type.
  */
 function dt_event_update_7103() {
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
+}
+
+/**
+ * DTTSB-771: regressions on the event content type fixing.
+ */
+function dt_event_update_7104() {
   // Delete all event content for recreate field bases.
   $node_type = 'event';
 
@@ -56,7 +64,4 @@ function dt_event_update_7103() {
     $deleted_count++;
   }
   drupal_set_message(t('%count evens were deleted.'), ['%count' => $deleted_count]);
-
-  features_revert_module('dt_event');
-  features_revert_module('dt_event_default');
 }
