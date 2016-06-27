@@ -3,6 +3,7 @@ description = Announcement content type related settings.
 core = 7.x
 package = Nexteuropa Digital Transformation
 php = 5.5
+dependencies[] = dt_page
 dependencies[] = dt_policy
 dependencies[] = dt_pri_policy_area_default
 dependencies[] = nexteuropa_multilingual

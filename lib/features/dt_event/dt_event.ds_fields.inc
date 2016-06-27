@@ -112,6 +112,30 @@ function dt_event_ds_fields_info($entity_type) {
       'ui_limit' => ['event|*'],
       'title' => t('Event: Scribble embed'),
       'function' => '_dt_event_ds_fields_scribble_embed',
+      'properties' => [
+        'settings' => [
+          'show_intro' => [
+            'title' => t('Show intro'),
+            'type' => 'checkbox',
+            'description' => t('Show the introduction text'),
+          ],
+        ],
+        'default' => [
+          'show_intro' => FALSE,
+        ],
+      ],
+    ];
+    $fields[$entity_type]['dt_event_stream_embed'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Stream embed'),
+      'function' => '_dt_event_ds_fields_stream_embed',
+    ];
+    $fields[$entity_type]['dt_event_stream_embed_intro'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Stream embed intro'),
+      'function' => '_dt_event_ds_fields_stream_embed_intro',
     ];
   }
 
@@ -141,7 +165,7 @@ function dt_event_ds_field_format_summary($field) {
  *   Holds the current context of the field.
  *
  * @return string
- *   The status message markup.
+ *   The rendered iframe.
  */
 function _dt_event_ds_fields_scribble_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
@@ -150,8 +174,79 @@ function _dt_event_ds_fields_scribble_embed($field) {
     $markup = [
       '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
     ];
+    if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
+      $markup['#prefix'] = '<p>' . t("What's happening in different social media channels") . '</p>';
+    }
     return drupal_render($markup);
   }
+  return NULL;
+}
+
+/**
+ * Helper function to show the embed url iframe with CCK.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The rendered iframe.
+ */
+function _dt_event_ds_fields_stream_embed($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+    $content_language = _dt_shared_functions_content_language($field['entity']);
+    if (isset($stream_url['url'])) {
+      $markup = [
+        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
+      ];
+      return drupal_render($markup);
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Helper function to show the embed video intro.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The rendered intro.
+ */
+function _dt_event_ds_fields_stream_embed_intro($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+    if (isset($stream_url['url'])) {
+      // Content language to render the field.
+      $content_language = _dt_shared_functions_content_language($field['entity']);
+
+      // Format the date.
+      $display = [
+        'label' => 'hidden',
+        'module' => 'dt_date_format',
+        'settings' => array(
+          'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+          'render_box' => 0,
+          'same_date_format' => 'sd_l sd_j sd_F',
+          'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+        ),
+        'type' => 'date_event_date',
+      ];
+
+      // Get the field.
+      $date = field_view_field($entity->type(), $entity->raw(), 'field_event_date', $display, $content_language);
+
+      // Build the markup.
+      $markup = [
+        '#prefix' => '<div class="row">',
+        '#markup' => '<div class="col-md-6">' . drupal_render($date) . '</div><div class="col-md-6 text-right"><p>' . l(t('Event details'), 'node/' . $entity->getIdentifier()) . '</p></div>',
+        '#suffix' => '</div>',
+      ];
+      return drupal_render($markup);
+    }
+  }
+  return NULL;
 }
 
 /**
@@ -180,11 +275,12 @@ function _dt_event_ds_fields_status_message($field) {
 
       // If live stream is available we add it to the message.
       if (
-        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING &&
-        isset($field['entity']->field_event_live_streaming_link[LANGUAGE_NONE])
+        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING
+        && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])
       ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), $field['entity']->field_event_live_streaming_link[LANGUAGE_NONE][0]['url']);
+        $render_config['#message_body'] = l(t('Watch live streaming'), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
         $render_config['#message_classes'][] = 'live';
+        $render_config['#message_type'] = 'Live streaming message';
       }
       break;
 
@@ -192,12 +288,14 @@ function _dt_event_ds_fields_status_message($field) {
       $render_config['#message_title'] = t('This event has been rescheduled');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
       $render_config['#message_classes'][] = 'warning';
+      $render_config['#message_type'] = 'Warning message';
       break;
 
     case DT_EVENT_STATE_CANCELLED:
       $render_config['#message_title'] = t('This event has been cancelled');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
       $render_config['#message_classes'][] = 'warning';
+      $render_config['#message_type'] = 'Warning message';
       break;
 
     case DT_EVENT_STATE_PAST:
@@ -310,10 +408,10 @@ function _dt_event_ds_fields_book_your_seat($field) {
     // Special case if ongoing and live stream is available.
     if (
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
-      $stream_link = $emw->field_event_live_streaming_link->value()
+      $emw->field_event_live_streaming_link->value()
     ) {
       $button_text = t('Watch live now');
-      $button_link = $stream_link['display_url'];
+      $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
     }
 
     if (isset($button_text)) {
@@ -334,6 +432,8 @@ function _dt_event_ds_fields_book_your_seat($field) {
       return l($button_text, $button_link, $attributes);
     }
   }
+
+  return NULL;
 }
 
 /**
@@ -458,11 +558,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_j - ed_j sd_F sd_Y');
+          $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_j sd_F - ed_j ed_F sd_Y');
+          $date_object->setFormat('sd_j sd_F – ed_j ed_F sd_Y');
         }
         break;
 
@@ -480,11 +580,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_l sd_j - ed_l ed_j sd_F');
+          $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_l sd_j sd_F - ed_l ed_j ed_F');
+          $date_object->setFormat('sd_l sd_j sd_F – ed_l ed_j ed_F');
         }
     }
 
@@ -514,7 +614,12 @@ function _dt_event_ds_fields_header_event($field) {
     $markup .= '<span class="icon icon--location ' . $element_classes['location'] . '">' . $location_content . '</span>';
   }
 
-  if ($is_streaming && (!in_array($field['entity']->event_status, array(DT_EVENT_STATE_CANCELLED, DT_EVENT_STATE_PAST)))) {
+  $unavailable_states = [
+    DT_EVENT_STATE_CANCELLED,
+    DT_EVENT_STATE_PAST,
+  ];
+
+  if ($is_streaming && (!in_array($field['entity']->event_status, $unavailable_states))) {
     $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
   }
 
