@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Person roles migration definition.

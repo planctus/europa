@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_contact.strongarm.inc

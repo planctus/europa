@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Implement a Legacy link title field formater.

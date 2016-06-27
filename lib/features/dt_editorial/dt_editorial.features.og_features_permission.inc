@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_editorial.features.og_features_permission.inc
