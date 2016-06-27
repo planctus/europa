@@ -9,6 +9,14 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function cwt_activities_install() {
+  // Migrating calendar item types.
+  _cwt_activities_migrate_calendar_item_types();
+}
+
+/**
  * Implements hook_enable().
  */
 function cwt_activities_enable() {
@@ -51,4 +59,13 @@ function cwt_activities_update_7103() {
   if ($instance = field_info_instance('node', 'field_team_priorities', 'activities')) {
     field_delete_instance($instance);
   }
+}
+
+/**
+ * DTTSB-662 - Adding terms to the calendar item types vocabulary.
+ */
+function cwt_activities_update_7104() {
+  // Make sure that destination vocabularies exists.
+  features_revert(array('cwt_activities' => array('taxonomy')));
+  _cwt_activities_migrate_calendar_item_types();
 }
