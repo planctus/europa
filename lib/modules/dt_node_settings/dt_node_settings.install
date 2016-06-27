@@ -11,30 +11,6 @@
 function dt_node_settings_install() {
   $t = get_t();
   drupal_set_message($t('You can now indicate helper content types at the <a href="@settings-url">admin/config/content/dt_node_settings/settings</a>.', array('@settings-url' => url('admin/config/content/dt_node_settings/settings'))));
-
-  // Add the schema fields.
-  $schema['node_revision'] = array();
-  dt_node_settings_schema_alter($schema);
-  foreach ($schema['node_revision']['fields'] as $name => $spec) {
-    db_add_field('node_revision', $name, $spec);
-  }
-}
-
-/**
- * Implements hook_schema_alter().
- */
-function dt_node_settings_schema_alter(&$schema) {
-  // Add a field dt_data to the node_revision table in order
-  // to store the dt specific serialized data.
-  if (isset($schema['node_revision'])) {
-    $schema['node_revision']['fields']['dt_node_settings_data'] = array(
-      'description' => 'Dt specific node settings.',
-      'type' => 'text',
-      'size' => 'big',
-      'not null' => FALSE,
-      'serialize' => TRUE,
-    );
-  }
 }
 
 /**
@@ -51,7 +27,7 @@ function dt_node_settings_uninstall() {
 }
 
 /**
- * DTTSB-116 add extra database row.
+ * DTTSB-116 add extra database row. Change variable name.
  */
 function dt_node_settings_update_7101() {
   // Add the schema fields.
@@ -60,12 +36,7 @@ function dt_node_settings_update_7101() {
   foreach ($schema['node_revision']['fields'] as $name => $spec) {
     db_add_field('node_revision', $name, $spec);
   }
-}
 
-/**
- * Change variable name.
- */
-function dt_node_settings_update_7102() {
   $node_types = node_type_get_names();
   foreach ($node_types as $type) {
     variable_set('dt_node_settings_helper_node_type_' . $type, variable_get('helper_node_type_' . $type, 0));

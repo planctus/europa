@@ -103,7 +103,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if ($view->name == 'calendar' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     if (isset($original_path_cached['nid'])) {
       // Load node the Calendar belongs to in the first place.
       // Use its editorial section in first contextual filter.
@@ -128,7 +128,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
  * Implements hook_views_pre_render().
  */
 function cwt_activities_views_pre_render(&$view) {
-  if ($view->name == 'workbench_moderation' && $view->current_display == 'moderate_all_page') {
+  if ($view->current_display == 'moderate_all_page' && $view->name == 'workbench_moderation') {
     // First get the keys.
     $keys = array_keys($view->field);
     $first_key = array_shift(array_slice($keys, 0, 1)); ;
@@ -145,7 +145,7 @@ function cwt_activities_views_pre_render(&$view) {
     return;
   }
 
-  if ($view->name == 'agenda' && $view->current_display == 'list') {
+  if ($view->name == 'agenda') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {
       $header_content = $view->header['area_text_custom']->options['content'];
@@ -154,7 +154,6 @@ function cwt_activities_views_pre_render(&$view) {
         $print_path = 'print-' . $full_query_parameters['q'];
         unset($full_query_parameters['q']);
 
-        // Create the print PDF link.
         $pdf_link_prefix = '<div class="rss-link__wrapper">'
           . '<div class="rss-link">'
           . '<span class="rss-link__icon icon-social icon-social--print"></span>'
@@ -169,7 +168,6 @@ function cwt_activities_views_pre_render(&$view) {
         $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items')
           . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
 
-        // Place the link in the views header.
         $view->header['area_text_custom']->options['content']
           = str_replace(CWT_ACTIVITIES_PRINT_PDF_TOKEN, $print_pdf_link, $header_content);
       }
@@ -286,7 +284,7 @@ function _cwt_activities_migrate_calendar_item_types() {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements hook_preprocess_HOOK().
  */
 function cwt_activities_preprocess_page(&$variables) {
   $view = views_get_page_view();
@@ -300,9 +298,9 @@ function cwt_activities_preprocess_page(&$variables) {
 
     if (isset($variables['format']) && $variables['format'] == 'pdf') {
       $result = _dt_exposed_filter_data_get_date_facet_tags($view);
-      $variables['node']->title .= ' ' . lcfirst(trim($result['filter'][0], '"'));
+      $variables['node']->title .= ' ' . implode($result['filter']);
 
-      $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'
+      $variables['node']->content = $description[0] . '<br>' . $description[1]
         . $variables['node']->content;
     }
   }

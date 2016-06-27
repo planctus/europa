@@ -152,41 +152,27 @@ section #timeline {
 .translation_select:focus {
   padding-right: 50px; }
 
-.print-content .view-agenda .filters__result-count,
-.print-content .view-agenda .filters__active-facets {
+.print-content .filters__result-count,
+.print-content .filters__active-facets {
   display: none; }
 
-.print-content .view-agenda .view-content {
-  padding-top: 1em; }
-
-.print-content .view-agenda .views-row {
-  margin: 0;
-  padding: 0;
-  line-height: normal; }
-
-.print-content .view-agenda h3 {
-  margin: 0;
-  padding: 0;
-  line-height: normal;
-  border-top: 1px solid #bebebe; }
-
-.print-content .view-agenda .date-block {
+.print-content .date-block {
   width: auto;
   margin: 0;
   padding: 0;
   background: none;
   text-align: left;
   border-bottom: none; }
-  .print-content .view-agenda .date-block .date-block__day-text,
-  .print-content .view-agenda .date-block .date-block__day,
-  .print-content .view-agenda .date-block .date-block__month {
+  .print-content .date-block .date-block__day-text,
+  .print-content .date-block .date-block__day,
+  .print-content .date-block .date-block__month {
     display: inline;
     font-size: 0.800em;
     font-weight: bold;
-    line-height: normal; }
+    line-height: 1; }
 
-.print-content .view-agenda .listing__author__pdf,
-.print-content .view-agenda .listing__title__pdf {
+.print-content .listing__author__pdf,
+.print-content .listing__title__pdf {
   font-size: 0.950em; }
 
 /*# sourceMappingURL=style.css.map */

@@ -153,14 +153,14 @@ function dt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-segments_separator';
-  $strongarm->value = '>';
+  $strongarm->value = '';
   $export['easy_breadcrumb-segments_separator'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-title_from_page_when_available';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['easy_breadcrumb-title_from_page_when_available'] = $strongarm;
 
   $strongarm = new stdClass();
