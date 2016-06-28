@@ -297,6 +297,12 @@ function dt_announcement_views_query_alter(&$view, &$query) {
  *
  * This function get's all entity reference fields that reference the content
  * type and are available on the announcement content type.
+ *
+ * @param string $entity_type
+ *   The type of the entity.
+ *
+ * @return array
+ *   List of field to add to the join query.
  */
 function _dt_announcement_get_content_reference_fields($entity_type) {
   // Inintialize variables.
@@ -333,6 +339,12 @@ function _dt_announcement_get_content_reference_fields($entity_type) {
 
 /**
  * Helper function to get the abbreviation from a node.
+ *
+ * @param int $nid
+ *   The id of the node.
+ *
+ * @return mixed
+ *   The abbreviation if found, false if not available.
  */
 function _dt_announcement_get_abbreviation($nid) {
   if ($node = node_load($nid)) {
@@ -349,6 +361,12 @@ function _dt_announcement_get_abbreviation($nid) {
  *
  * Simple database query to get the node type from a node id. We do it this way
  * because now we can avoid a heavy node_load.
+ *
+ * @param int $nid
+ *   The id of the node.
+ *
+ * @return string
+ *   The type of the node.
  */
 function _dt_announcement_get_node_type($nid) {
   return db_query("SELECT type FROM {node} WHERE nid=:nid",

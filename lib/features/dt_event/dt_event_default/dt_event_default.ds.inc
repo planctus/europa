@@ -107,6 +107,74 @@ function dt_event_default_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|event|event_livestream';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'event';
+  $ds_fieldsetting->view_mode = 'event_livestream';
+  $ds_fieldsetting->settings = array(
+    'event_livestream_title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'prefix' => '<h1>',
+          'suffix' => '</h1>',
+        ),
+      ),
+    ),
+    'event_livestream_header' => array(
+      'weight' => '65',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '68',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_scribble_embed' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'show_intro' => 1,
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_stream_embed' => array(
+      'weight' => '67',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_stream_embed_intro' => array(
+      'weight' => '66',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|event|event_livestream'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|event|event_past';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'event';
@@ -420,8 +488,8 @@ function dt_event_default_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'field_core_introduction',
         1 => 'field_event_collection',
-        2 => 'field_event_type',
-        3 => 'field_core_description',
+        2 => 'field_core_description',
+        3 => 'field_event_type',
         4 => 'field_event_status_description',
         5 => 'field_core_tagline',
         6 => 'field_core_header_image',
@@ -434,43 +502,42 @@ function dt_event_default_ds_layout_settings_info() {
         13 => 'field_core_persons',
         14 => 'field_event_schedule',
         15 => 'field_core_contact',
-        16 => 'field_event_press_contact',
-        17 => 'field_core_links',
-        18 => 'field_event_date',
-        19 => 'field_event_is_online',
-        20 => 'field_core_location',
-        21 => 'field_event_location_image',
-        22 => 'field_event_registration',
-        23 => 'field_event_registration_end',
-        24 => 'field_event_is_fully_booked',
-        25 => 'field_event_is_live_streaming',
-        26 => 'field_event_live_streaming_date',
-        27 => 'field_event_live_streaming_link',
-        28 => 'field_event_scribble_id',
-        29 => 'field_event_available_languages',
-        30 => 'field_event_target_audience',
-        31 => 'field_event_number_seats',
+        16 => 'field_core_links',
+        17 => 'field_event_date',
+        18 => 'field_event_is_online',
+        19 => 'field_core_location',
+        20 => 'field_event_location_image',
+        21 => 'field_event_registration',
+        22 => 'field_event_registration_end',
+        23 => 'field_event_is_fully_booked',
+        24 => 'field_event_is_live_streaming',
+        25 => 'field_event_live_streaming_date',
+        26 => 'field_event_live_streaming_link',
+        27 => 'field_event_scribble_id',
+        28 => 'field_event_available_languages',
+        29 => 'field_event_target_audience',
+        30 => 'field_event_number_seats',
+        31 => 'dt_event_header',
         32 => 'field_event_entrance_fee',
-        33 => 'dt_event_header',
-        35 => 'field_core_departments',
-        37 => 'field_event_website',
-        38 => 'field_event_media',
-        39 => 'field_event_what_happened',
-        40 => 'field_core_files',
-        41 => 'field_event_more_links',
-        42 => 'field_core_media',
-        43 => 'field_core_gallery',
+        33 => 'field_core_departments',
+        34 => 'field_event_website',
+        35 => 'field_event_media',
+        36 => 'field_event_what_happened',
+        37 => 'field_core_files',
+        38 => 'field_event_more_links',
+        39 => 'field_core_media',
+        40 => 'field_core_gallery',
       ),
       'top_top' => array(
         34 => 'book_your_seat',
-        36 => 'livestreaming',
+        37 => 'livestreaming',
       ),
     ),
     'fields' => array(
       'field_core_introduction' => 'left_header',
       'field_event_collection' => 'left_header',
-      'field_event_type' => 'left_header',
       'field_core_description' => 'left_header',
+      'field_event_type' => 'left_header',
       'field_event_status_description' => 'left_header',
       'field_core_tagline' => 'left_header',
       'field_core_header_image' => 'left_header',
@@ -483,7 +550,6 @@ function dt_event_default_ds_layout_settings_info() {
       'field_core_persons' => 'left_header',
       'field_event_schedule' => 'left_header',
       'field_core_contact' => 'left_header',
-      'field_event_press_contact' => 'left_header',
       'field_core_links' => 'left_header',
       'field_event_date' => 'left_header',
       'field_event_is_online' => 'left_header',
@@ -499,12 +565,12 @@ function dt_event_default_ds_layout_settings_info() {
       'field_event_available_languages' => 'left_header',
       'field_event_target_audience' => 'left_header',
       'field_event_number_seats' => 'left_header',
-      'field_event_entrance_fee' => 'left_header',
       'dt_event_header' => 'left_header',
+      'field_event_entrance_fee' => 'left_header',
       'book_your_seat' => 'top_top',
       'field_core_departments' => 'left_header',
-      'livestreaming' => 'top_top',
       'field_event_website' => 'left_header',
+      'livestreaming' => 'top_top',
       'field_event_media' => 'left_header',
       'field_event_what_happened' => 'left_header',
       'field_core_files' => 'left_header',
@@ -615,6 +681,57 @@ function dt_event_default_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|event|event_collection'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|event|event_livestream';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'event';
+  $ds_layout->view_mode = 'event_livestream';
+  $ds_layout->layout = 'ne_bootstrap_1col_stacked';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left_header' => array(
+        0 => 'event_livestream_title',
+      ),
+      'central' => array(
+        1 => 'group_section',
+        2 => 'dt_event_scribble_embed',
+        3 => 'event_livestream_header',
+        4 => 'dt_event_stream_embed_intro',
+        5 => 'dt_event_stream_embed',
+        6 => 'social_bookmark_webtools',
+        7 => 'group_row',
+        8 => 'group_video',
+        9 => 'group_chat',
+      ),
+    ),
+    'fields' => array(
+      'event_livestream_title' => 'left_header',
+      'group_section' => 'central',
+      'dt_event_scribble_embed' => 'central',
+      'event_livestream_header' => 'central',
+      'dt_event_stream_embed_intro' => 'central',
+      'dt_event_stream_embed' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'group_row' => 'central',
+      'group_video' => 'central',
+      'group_chat' => 'central',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|event|event_livestream'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
