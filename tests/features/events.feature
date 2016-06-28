@@ -21,10 +21,10 @@ Feature: Events listing
 
     Given I am logged in as a user with the "administrator" role
     And "Event" content:
-      | title        | status | field_core_description   | field_event_status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date |
-      | Energy event | 1      | Energy event description | no                 | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       |
-      | Food event   | 1      | Food event description   | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
-      | Extra event  | 1      | Extra event description  | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
+      | title        | status | field_event_status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date |
+      | Energy event | 1      | no                 | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       |
+      | Food event   | 1      | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
+      | Extra event  | 1      | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
     And I index all indexes
 
   Scenario: On the events listing page I should see the events.
