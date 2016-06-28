@@ -38,6 +38,7 @@ dependencies[] = strongarm
 dependencies[] = table_element
 dependencies[] = text
 dependencies[] = weight
+dependencies[] = views_ajax_history
 features[breakpoint_group][] = europa
 features[breakpoints][] = breakpoints.theme.europa.medium
 features[breakpoints][] = breakpoints.theme.europa.mobile
