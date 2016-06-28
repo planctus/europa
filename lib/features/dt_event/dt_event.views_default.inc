@@ -70,7 +70,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Contains';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Keywords';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
@@ -122,7 +122,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['facet_filter_5']['field'] = 'facet_filter';
   $handler->display->display_options['filters']['facet_filter_5']['group'] = 1;
   $handler->display->display_options['filters']['facet_filter_5']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['facet_filter_5']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['label'] = 'Location';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['operator'] = 'facet_filter_5_op';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['identifier'] = 'facet_filter_5';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['remember_roles'] = array(
@@ -276,7 +276,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['title'] = 'Events list';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'All events for [node_title]';
+  $handler->display->display_options['use_more_text'] = 'View all events for [node_title]';
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';

@@ -270,14 +270,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'From the audience',
+    'label' => 'What others are saying',
     'weight' => '10',
     'children' => array(
       0 => 'dt_event_scribble_embed',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'From the audience',
+      'label' => 'What others are saying',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -787,14 +787,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'What happened',
+    'label' => 'Summary',
     'weight' => '8',
     'children' => array(
       0 => 'field_event_what_happened',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'What happened',
+      'label' => 'Summary',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -817,14 +817,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_collection';
   $field_group->parent_name = 'group_events';
   $field_group->data = array(
-    'label' => 'Ongoing and future',
+    'label' => 'Upcoming events',
     'weight' => '86',
     'children' => array(
       0 => 'current_and_upcoming_events',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
-      'label' => 'Ongoing and future',
+      'label' => 'Upcoming events',
       'instance_settings' => array(
         'classes' => '',
       ),
@@ -1703,12 +1703,12 @@ function dt_event_default_field_group_info() {
   t('Documents');
   t('Editorial settings');
   t('Events');
-  t('From the audience');
+  t('What others are saying');
   t('Latest section');
   t('Left');
   t('Live feed');
   t('Meta');
-  t('Ongoing and future');
+  t('Upcoming events');
   t('Past events');
   t('Practical info left');
   t('Practical info right');
@@ -1720,7 +1720,7 @@ function dt_event_default_field_group_info() {
   t('Schedule');
   t('Section');
   t('Speakers');
-  t('What happened');
+  t('Summary');
   t('row');
   t('video');
 
