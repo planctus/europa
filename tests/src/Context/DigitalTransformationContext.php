@@ -383,4 +383,13 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
   }
 
+  /**
+   * Indexes all indexes.
+   *
+   * @Given I index all indexes
+   */
+  public function iIndexAllIndexes() {
+    search_api_cron();
+  }
+
 }
