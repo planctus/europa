@@ -20,6 +20,8 @@ class FacetsInFiltersCheckbox extends FacetsInFiltersFilterBase {
 
     foreach ($element as &$option) {
       $title = $option['#markup'];
+      // Add the count if the setting implies to do it.
+      $title .= !$this->getSetting('hide_facet_count') && !empty($option['#count']) ? ' (' . $option['#count'] . ')' : '';
       $option['#type'] = 'markup';
       $option['#prefix'] = '<div class="checkbox">';
       $option['#suffix'] = '</div>';
@@ -37,7 +39,8 @@ class FacetsInFiltersCheckbox extends FacetsInFiltersFilterBase {
 
     // Recreate the array.
     $element = [];
-    $element['facets'] = $clone;
+    $element['facets']['checkboxes'] = $clone;
+    $this->addElementWrapper($element['facets']);
   }
 
 }

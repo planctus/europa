@@ -33,7 +33,7 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
 
     // Go over the elements and populate the option array.
     foreach ($element as $value => $option) {
-      $options[$value] = $option['#markup'];
+      $options[$value] = !$this->getSetting('hide_facet_count') && !empty($option['#count']) ? $option['#markup'] . ' (' . $option['#count'] . ')' : $option['#markup'];
     }
 
     // Recreate the array.
@@ -41,9 +41,10 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
     $element['facets'] = [
       '#type' => 'select',
       '#options' => $options,
-      '#default_value' => $active_item,
+      '#value' => $active_item,
       '#name' => $this->getFacetIdentifier('select'),
     ];
+    $this->addElementWrapper($element['facets']);
   }
 
   /**

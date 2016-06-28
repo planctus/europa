@@ -122,12 +122,24 @@ function facets_in_filters_views_ajax_data_alter(&$commands, $view) {
       if ($filter instanceof ViewsHandlerFilterFacet) {
         $element = NULL;
         $field = $filter->options['facet']['facet'];
+        $identifier = drupal_clean_css_identifier('filters_in_facets_' . $filter->options['facet']['facet']);
         if (isset($adapter[$field][$field])) {
           if (isset($adapter[$field][$field]['facets'])) {
             $element = $adapter[$field][$field]['facets'];
             $replacement = drupal_render($element);
-            $commands[] = ajax_command_replace('#' . drupal_clean_css_identifier('filters_in_facets_' . $filter->options['facet']['facet']), $replacement);
+            $commands[] = ajax_command_replace('#' . $identifier, $replacement);
+            $commands[] = ajax_command_invoke('.views-widget-filter-' . $filter->options['id'] . ' label', 'show');
           }
+        }
+        // If it is not in the list. It means that it's empty. So we remove it
+        // from the view.
+        else {
+          // We must return an empty div as it works as a placeholder.
+          $render_array = [
+            '#markup' => '<div id="' . $identifier . '"></div>',
+          ];
+          $commands[] = ajax_command_replace('#' . $identifier, drupal_render($render_array));
+          $commands[] = ajax_command_invoke('.views-widget-filter-' . $filter->options['id'] . ' label', 'hide');
         }
       }
     }
