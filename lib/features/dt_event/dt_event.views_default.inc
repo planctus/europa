@@ -62,26 +62,29 @@ function dt_event_views_default_views() {
   $handler->display->display_options['arguments']['field_event_parent_events']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['field_event_parent_events']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_event_parent_events']['not'] = 0;
-  /* Filter criterion: Indexed Node: fulltext search */
-  $handler->display->display_options['filters']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['group'] = 1;
-  $handler->display->display_options['filters']['search_api_aggregation_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator_id'] = 'search_api_aggregation_1_op';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['label'] = 'Contains';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator'] = 'search_api_aggregation_1_op';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['identifier'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['remember_roles'] = array(
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Contains';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
     6 => 0,
-    4 => 0,
     5 => 0,
+    3 => 0,
+    4 => 0,
     7 => 0,
-    9 => 0,
-    10 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'search_api_aggregation_1' => 'search_api_aggregation_1',
   );
   /* Filter criterion: Facets: Exposed facet */
   $handler->display->display_options['filters']['facet_filter']['id'] = 'facet_filter';
@@ -249,6 +252,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_collection']['value'] = array(
     0 => '0',
   );
+  $handler->display->display_options['filters']['field_event_collection']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
