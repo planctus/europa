@@ -68,7 +68,6 @@ Feature: Events listing
     Given I am on "Events"
     And I check the box "Online events only"
     And I press the "Refine results" button
-    Then show last response
     Then I should see "Energy event"
     Then I should not see "Food event"
 
@@ -76,11 +75,10 @@ Feature: Events listing
     Given I am on "Events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
-    Then show last response
     Then I should not see "Energy event"
     Then I should see "Food event"
 
-  Scenario: I should be able to filter by a combination of facets and views
+  Scenario: I should be able to filter by a combination of facets and views and I should see the tags
     Given I am on "Events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
@@ -89,6 +87,8 @@ Feature: Events listing
     Then I should see "Extra event"
     And I fill in "Keywords" with "Extra"
     And I press the "Refine results" button
+    Then I should see "Extra" in the ".filters__active-facets" element
+    Then I should see "LIVE STREAMING AVAILABLE" in the ".filters__active-facets" element
     Then I should not see "Energy event"
     Then I should not see "Food event"
     Then I should see "Extra event"
