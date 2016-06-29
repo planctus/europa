@@ -20,7 +20,7 @@ function dt_exposed_filter_data_theme() {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements hook_preprocess_hook().
  *
  * By default the function uses the views exposed filters to build the facets.
  * But we can add custom_filters to the views object which will then be added to
@@ -31,6 +31,9 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   if (!$view = $vars['view']) {
     $view = views_get_current_view();
   }
+
+  // Get the All string as we dont want to use it.
+  $all_string = t('All');
 
   // Search api current search.
   $exposed_filters = dt_exposed_filter_data_get_exposed_filters($view);
@@ -45,44 +48,75 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
     $adapter = facetapi_build_realm(reset($active), 'views');
 
     foreach ($exposed_filters as $id => $filter) {
+      // Set the identifier to use.
+      $identifier = $filter->options['expose']['identifier'];
       // If the facet is part of the adapter, we know it is active.
       if (isset($filter->options['facet'])) {
-        if (isset($adapter[$filter->options['facet']['facet']])) {
+        // Set the current facet.
+        $current_facet = $filter->options['facet']['facet'];
+        // If the current facet is part of the adapter, we can continue as we
+        // know it has data.
+        if (isset($adapter[$current_facet])) {
           // We must be sure it has a value.
-          $value = isset($exposed_input[$adapter[$filter->options['facet']['facet']]['#facet_identifier']]) ? $exposed_input[$adapter[$filter->options['facet']['facet']]['#facet_identifier']] : NULL;
-          $value_has_data = isset($adapter[$filter->options['facet']['facet']]['#facet_data']) && array_key_exists($value, $adapter[$filter->options['facet']['facet']]['#facet_data']);
+          $value = isset($exposed_input[$adapter[$current_facet]['#facet_identifier']]) ? $exposed_input[$adapter[$current_facet]['#facet_identifier']] : NULL;
+          $value_has_data = isset($adapter[$current_facet]['#facet_data']) && array_key_exists($value, $adapter[$current_facet]['#facet_data']);
           if ($value && $value_has_data) {
-            if ($adapter[$filter->options['facet']['facet']]['#facet_type'] == 'checkboxes') {
-              $displays[$filter->options['id']]['label'] = $adapter[$filter->options['facet']['facet']]['#title'];
-              $displays[$filter->options['id']]['value'] = t('Yes');
+            // Special logic of the checkboxes.
+            if ($adapter[$current_facet]['#facet_type'] == 'checkboxes') {
+              $displays[$identifier]['label'] = $adapter[$current_facet]['#title'];
+              $displays[$identifier]['value'] = t('Yes');
             }
             else {
-              $displays[$filter->options['id']]['label'] = $filter->options['expose']['label'];
-              $displays[$filter->options['id']]['value'] = $adapter[$filter->options['facet']['facet']]['#facet_data'][$value];
+              $displays[$identifier]['label'] = $filter->options['expose']['label'];
+              $displays[$identifier]['value'] = $adapter[$current_facet]['#facet_data'][$value];
             }
           }
         }
+        // Remove the filter from the list to not check it again.
         unset($exposed_filters[$id]);
       }
     }
   }
 
-  // Get the All string as we dont want to use it.
-  $all_string = t('All');
-
   // Go over the normal views values.
-  foreach ($exposed_filters as $id => $filter) {
-    if (isset($exposed_input[$filter->options['id']]) && $exposed_input[$filter->options['id']] !== $all_string) {
-      $displays[$filter->options['id']]['label'] = $filter->options['expose']['label'];
+  foreach ($exposed_filters as $filter) {
+    // Set the identifier to use.
+    $identifier = $filter->options['expose']['identifier'];
+    // If it is different from the default option, we can assume it has data.
+    if (isset($exposed_input[$identifier]) && $exposed_input[$identifier] !== $all_string) {
+      $displays[$identifier]['label'] = $filter->options['expose']['label'];
       // If we can get the value from the filter we use it.
-      if (isset($filter->value_options) && is_array($filter->value_options) && isset($filter->value_options[$exposed_input[$filter->options['id']]])) {
-        $displays[$filter->options['id']]['value'] = $filter->value_options[$exposed_input[$filter->options['id']]];
+      if (isset($filter->value_options) && is_array($filter->value_options) && isset($filter->value_options[$exposed_input[$identifier]])) {
+        $displays[$identifier]['value'] = $filter->value_options[$exposed_input[$identifier]];
       }
       // Fallback to the original value.
       else {
-        $displays[$filter->options['id']]['value'] = $exposed_input[$filter->options['id']];
+        if (isset($filter->definition['vocabulary'])) {
+          $displays[$identifier]['vocabulary'] = $filter->definition['vocabulary'];
+        }
+        // We can sometimes depending on the filter,have a nested array.
+        if (isset($exposed_input[$identifier]['value']['date'])) {
+          $exposed_input[$identifier] = $exposed_input[$identifier]['value'];
+        }
+        // Set the value to the array.
+        $displays[$identifier]['value'] = $exposed_input[$identifier];
       }
     }
+  }
+
+  // Date_filter_min and date_filter_max is a special case as by using these
+  // identifiers, we should display the between facet.
+  if (array_key_exists('date_filter_min', $displays) || array_key_exists('date_filter_max', $displays)) {
+
+    $start = isset($displays['date_filter_min']) ? $displays['date_filter_min']['value']['date'] : NULL;
+    $end = isset($displays['date_filter_max']) ? $displays['date_filter_max']['value']['date'] : NULL;
+
+    $displays['date_between'] = [
+      'label' => '',
+      'value' => _dt_exposed_filter_data_get_date_facet_tags($start, $end),
+    ];
+    // Unset these, so they dont get used any more.
+    unset($displays['date_filter_min'], $displays['date_filter_max']);
   }
 
   // If we have data in our $display array, we add the facets.
@@ -93,6 +127,10 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
         $data['value'] = $data['value']['date'];
       }
       if (!is_array($data['value']) && !empty($data['value'])) {
+        // If the data has a vocabulary. We get the term. This is a fallback.
+        if (isset($data['vocabulary']) && $term = i18n_taxonomy_localize_terms(taxonomy_term_load($data['value']))) {
+          $data['value'] = $term->name;
+        }
         $vars['exposed_filters'][$data['label']] = $data['value'];
       }
     }
@@ -119,142 +157,42 @@ function dt_exposed_filter_data_get_exposed_filters($view) {
 }
 
 /**
- * Helper to get the human pretty name of a given field by value.
- *
- * @param string $filter
- *   Exposed filter.
- * @param object $view
- *   View object.
- *
- * @return array
- *   filter settings
- */
-function _dt_exposed_filter_data_get_pretty($filter, $view) {
-  $result = array();
-  foreach ($view->display_handler->handlers['filter'] as $filter_handler) {
-    if ($filter_handler->options['expose']['identifier'] === $filter) {
-      // Combined filters will need custom handling.
-      $is_combined = $filter_handler->field == 'combine';
-
-      $result['label'] = $is_combined ? t('containing') : $filter_handler->options['expose']['label'];
-      $result['filter'] = array();
-      $value = $filter_handler->value;
-      if (is_array($value)) {
-        if (isset($value['type']) && $value['type'] === "date") {
-          // We could have 2 different times.
-          if (empty($value['value']) && (!empty($value['min']) || !empty($value['max']))) {
-            // Prepare the formatted date range.
-            $date_min_formatted = '';
-            $date_max_formatted = '';
-
-            // Start date.
-            if (!empty($value['min'])) {
-              $date_min_formatted = format_date(strtotime($value['min']), 'ec_date_j_f_y');
-              if (empty($value['max'])) {
-                // If the end date is not set make it the same.
-                $date_max_formatted = format_date(strtotime($value['min']), 'ec_date_j_f_y');
-              }
-            }
-            // End date.
-            if (!empty($value['max'])) {
-              $date_max_formatted = format_date(strtotime($value['max']), 'ec_date_j_f_y');
-              if (empty($value['min'])) {
-                // If the start date is not set make it the same.
-                $date_min_formatted = format_date(strtotime($value['max']), 'ec_date_j_f_y');
-              }
-            }
-
-            $date_formatted = _dt_get_date_formatted($date_min_formatted, $date_max_formatted);
-          }
-          else {
-            $date = strtotime($value['value']);
-            $date_formatted = format_date($date, 'ec_date_j_f_y');
-          }
-
-          // Check if we actually got some date.
-          if (!empty($date_formatted)) {
-            $result['filter'][] = '"' . $date_formatted . '"';
-          }
-        }
-        $raw_values = array();
-        foreach ($value as $val) {
-          $raw_values[] = $val;
-        }
-        foreach ($raw_values as $raw_value) {
-          if (isset($filter_handler->value_options[$raw_value]) && !empty($filter_handler->value_options[$raw_value])) {
-            $result['filter'][] = '"' . trim($filter_handler->value_options[$raw_value]) . '"';
-          }
-        }
-      }
-      elseif (!empty($value)) {
-        $result['filter'] = $is_combined ? ('"' . $value . '"') : $value;
-      }
-    }
-  }
-
-  if (!empty($result)) {
-    return $result;
-  }
-
-  return FALSE;
-}
-
-/**
  * Helper to get the facet tags of a given date filter by value.
  *
- * @param object $view
- *   View object.
+ * @param string $date_min
+ *   The start date.
+ * @param string $date_max
+ *   Then end date.
  *
  * @return array
  *   filter settings
  */
-function _dt_exposed_filter_data_get_date_facet_tags($view) {
-  // Prepare the result.
-  $result = array();
-  $result['label'] = '';
-  $result['filter'] = array();
-
-  // Get date range values from filters.
-  $filter_min = $view->exposed_input['date_filter_min']['value']['date'];
-  $filter_max = $view->exposed_input['date_filter_max']['value']['date'];
-
-  // Prepare the formatted date range.
-  $date_min_formatted = '';
-  $date_max_formatted = '';
-
+function _dt_exposed_filter_data_get_date_facet_tags($date_min = NULL, $date_max = NULL) {
   // Start date.
-  if (!empty($filter_min)) {
+  if (!empty($date_min)) {
     // Convert date value to european format to be well formatted.
-    $date_min = str_replace('/', '-', $filter_min);
-    $date_min_formatted = format_date(strtotime($date_min), 'ec_date_j_f_y');
+    $date_min_formatted = format_date(strtotime(str_replace('/', '-', $date_min)), 'ec_date_j_f_y');
   }
   // End date.
-  if (!empty($filter_max)) {
+  if (!empty($date_max)) {
     // Convert date value to european format to be well formatted.
-    $date_max = str_replace('/', '-', $filter_max);
-    $date_max_formatted = format_date(strtotime($date_max), 'ec_date_j_f_y');
+    $date_max_formatted = format_date(strtotime(str_replace('/', '-', $date_max)), 'ec_date_j_f_y');
   }
 
-  if (!empty($filter_min) && !empty($filter_max)) {
-    $date_formatted = _dt_get_date_formatted($date_min_formatted, $date_max_formatted);
-  }
-  else {
-    // In case of just having start date, display FROM ##DATE##.
-    if (!empty($date_min_formatted)) {
-      $date_formatted = t('From') . ' ' . $date_min_formatted;
-    }
-    // In case of just having end date, display TO ##DATE##.
-    elseif (!empty($date_max_formatted)) {
-      $date_formatted = t('To') . ' ' . $date_max_formatted;
-    }
+  // In case we have both dates.
+  if (!empty($date_min_formatted) && !empty($date_max_formatted)) {
+    return _dt_get_date_formatted($date_min_formatted, $date_max_formatted);
   }
 
-  // Check if we actually got some date.
-  if (!empty($date_formatted)) {
-    $result['filter'][] = '"' . $date_formatted . '"';
+  // In case of just having start date, display FROM ##DATE##.
+  if (!empty($date_min_formatted)) {
+    return t('From @date', ['@date' => $date_min_formatted]);
   }
-
-  return $result;
+  // In case of just having end date, display TO ##DATE##.
+  elseif (!empty($date_max_formatted)) {
+    return t('To @date', ['@date' => $date_max_formatted]);
+  }
+  return NULL;
 }
 
 /**
@@ -270,22 +208,21 @@ function _dt_exposed_filter_data_get_date_facet_tags($view) {
  */
 function _dt_get_date_formatted($date_min_formatted, $date_max_formatted) {
   // Prepare our filters.
-  $between_date = (!empty($date_min_formatted) && !empty($date_max_formatted));
   $different_date = ($date_min_formatted <> $date_max_formatted);
 
-  // Create the markup.
-  // In case 2 different dates, display BETWEEN ##DATE##.
-  $date_formatted = ($between_date && $different_date) ? t('Between') . ' ' : '';
-  // In case of the same date, display ON ##DATE##.
-  $date_formatted .= !$different_date ? t('On') . ' ' : '';
-  // Display start date.
-  $date_formatted .= (!empty($date_min_formatted) && $different_date) ? $date_min_formatted : '';
-  // In case 2 different dates, display ##DATE## AND ##DATE##.
-  $date_formatted .= ($between_date && $different_date) ? ' ' . t('and') . ' ' : '';
-  // Display end date.
-  $date_formatted .= !empty($date_max_formatted) ? $date_max_formatted : '';
+  switch (TRUE) {
+    case (!empty($date_min_formatted) && !empty($date_max_formatted)) && $different_date:
+      return t('Between @start_date and @end_date', [
+        '@start_date' => $date_min_formatted,
+        '@end_date' => $date_max_formatted,
+      ]);
 
-  return $date_formatted;
+    case !$different_date:
+      return t('On @date', [
+        '@date' => $date_max_formatted,
+      ]);
+  }
+  return NULL;
 }
 
 /**
