@@ -68,14 +68,15 @@ Feature: Events listing
     Given I am on "Events"
     And I check the box "Online events only"
     And I press the "Refine results" button
+    Then show last response
     Then I should see "Energy event"
     Then I should not see "Food event"
-    Then show last response
 
   Scenario: I should be able to filter by livestream (checkbox)
     Given I am on "Events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
+    Then show last response
     Then I should not see "Energy event"
     Then I should see "Food event"
 

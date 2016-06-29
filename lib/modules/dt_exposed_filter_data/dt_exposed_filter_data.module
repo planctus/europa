@@ -59,6 +59,9 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
         if (isset($adapter[$current_facet])) {
           // We must be sure it has a value.
           $value = isset($exposed_input[$adapter[$current_facet]['#facet_identifier']]) ? $exposed_input[$adapter[$current_facet]['#facet_identifier']] : NULL;
+          // If $value == on we should convert it to 1.
+          $value = $adapter[$current_facet]['#facet_type'] == 'checkboxes' && $value == 'on' ? 1 : $value;
+          // Check if data exists.
           $value_has_data = isset($adapter[$current_facet]['#facet_data']) && array_key_exists($value, $adapter[$current_facet]['#facet_data']);
           if ($value && $value_has_data) {
             // Special logic of the checkboxes.

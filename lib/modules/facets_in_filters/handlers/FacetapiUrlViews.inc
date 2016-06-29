@@ -23,7 +23,7 @@ class FacetapiUrlViews extends FacetapiUrlProcessorStandard {
 
     // Go over all of the options.
     foreach ($this->pregGrepKeys('/facet__(.*)/', $parameters) as $facet_key => $facet_value) {
-      if ($this->getFieldType($facet_key) == 'checkbox') {
+      if ($this->getFieldType($facet_key) == 'checkboxes') {
         $facet_value = $facet_value == 'on' ? 1 : 0;
       }
       // Only add facets with a value.
