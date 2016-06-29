@@ -7,13 +7,40 @@
 /**
  * Class FacetsInFiltersFilterBase.
  */
-class FacetsInFiltersFilterBase extends FacetapiWidget {
+abstract class FacetsInFiltersFilterBase extends FacetapiWidget {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function init() {
+    parent::init();
+    $this->build['#facet_type'] = $this->facetFieldType();
+    $this->build['#facet_data'] = $this->rawKeyValueData();
+    $this->build['#facet_identifier'] = $this->getFacetIdentifier($this->facetFieldType());
+    return $this;
+  }
 
   /**
    * {@inheritdoc}
    */
   public function execute() {
     parent::execute();
+  }
+
+  /**
+   * Defines the #facet_type property.
+   */
+  abstract public function facetFieldType();
+
+  /**
+   * Sets the $rawKeyValue data.
+   */
+  public function rawKeyValueData() {
+    $list = [];
+    foreach ($this->build[$this->facet['field alias']] as $element) {
+      $list[$element['#indexed_value']] = $element['#markup'];
+    }
+    return $list;
   }
 
   /**

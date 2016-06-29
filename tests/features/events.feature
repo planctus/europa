@@ -70,6 +70,7 @@ Feature: Events listing
     And I press the "Refine results" button
     Then I should see "Energy event"
     Then I should not see "Food event"
+    Then show last response
 
   Scenario: I should be able to filter by livestream (checkbox)
     Given I am on "Events"
@@ -85,7 +86,7 @@ Feature: Events listing
     Then I should not see "Energy event"
     Then I should see "Food event"
     Then I should see "Extra event"
-    And I fill in "Contains" with "Extra"
+    And I fill in "Keywords" with "Extra"
     And I press the "Refine results" button
     Then I should not see "Energy event"
     Then I should not see "Food event"

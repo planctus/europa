@@ -12,11 +12,18 @@ class FacetsInFiltersCheckbox extends FacetsInFiltersFilterBase {
   /**
    * {@inheritdoc}
    */
+  public function facetFieldType() {
+    return 'checkboxes';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function execute() {
     $element = &$this->build[$this->facet['field alias']];
 
     // Get the identifier.
-    $identifier = $this->getFacetIdentifier('checkbox');
+    $identifier = $this->getFacetIdentifier($this->facetFieldType());
 
     foreach ($element as &$option) {
       $title = $option['#markup'];
@@ -39,6 +46,7 @@ class FacetsInFiltersCheckbox extends FacetsInFiltersFilterBase {
 
     // Recreate the array.
     $element = [];
+
     $element['facets']['checkboxes'] = $clone;
     $this->addElementWrapper($element['facets']);
   }

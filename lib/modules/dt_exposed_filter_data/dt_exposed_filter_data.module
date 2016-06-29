@@ -27,48 +27,95 @@ function dt_exposed_filter_data_theme() {
  * the facets array.
  */
 function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
-  $view = $vars['view'];
-
   // In case no view - get the current view.
-  if ($view == NULL) {
+  if (!$view = $vars['view']) {
     $view = views_get_current_view();
   }
 
-  // Make a variable out of each filter.
-  if (isset($view->exposed_input)) {
-    $exposed_inputs = $view->exposed_input;
+  // Search api current search.
+  $exposed_filters = dt_exposed_filter_data_get_exposed_filters($view);
+  // Get the active exposed data.
+  $exposed_input = $view->get_exposed_input();
+  // Initialize our exposed display.
+  $displays = [];
 
-    if (isset($exposed_inputs['date_filter_min']) || isset($exposed_inputs['date_filter_max'])) {
-      $pretty = _dt_exposed_filter_data_get_date_facet_tags($view);
-      if (isset($pretty['filter'])) {
-        $vars['date_filter_min'] = $exposed_inputs['date_filter_min'];
-        $vars['date_filter_max'] = $exposed_inputs['date_filter_max'];
-        $pretty_filter_key = $pretty['label'];
-        $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
-      }
-      // Remove the filters because they already have been prettified.
-      unset($exposed_inputs['date_filter_min']);
-      unset($exposed_inputs['date_filter_max']);
-    }
+  // Attempt to get the searcher (searchapi). If we have one, we parse the
+  // values. We do this in 2 foreach loops to avoid to much load on the server.
+  if ($active = facetapi_get_active_searchers()) {
+    $adapter = facetapi_build_realm(reset($active), 'views');
 
-    foreach ($exposed_inputs as $filter => $value) {
-      $pretty = _dt_exposed_filter_data_get_pretty($filter, $view);
-      if (isset($pretty['filter'])) {
-        $vars[$filter] = $value;
-        $pretty_filter_key = $pretty['label'];
-        if ($value != "All") {
-          $vars['exposed_filters'][$pretty_filter_key] = $pretty['filter'];
+    foreach ($exposed_filters as $id => $filter) {
+      // If the facet is part of the adapter, we know it is active.
+      if (isset($filter->options['facet'])) {
+        if (isset($adapter[$filter->options['facet']['facet']])) {
+          // We must be sure it has a value.
+          $value = isset($exposed_input[$adapter[$filter->options['facet']['facet']]['#facet_identifier']]) ? $exposed_input[$adapter[$filter->options['facet']['facet']]['#facet_identifier']] : NULL;
+          $value_has_data = isset($adapter[$filter->options['facet']['facet']]['#facet_data']) && array_key_exists($value, $adapter[$filter->options['facet']['facet']]['#facet_data']);
+          if ($value && $value_has_data) {
+            if ($adapter[$filter->options['facet']['facet']]['#facet_type'] == 'checkboxes') {
+              $displays[$filter->options['id']]['label'] = $adapter[$filter->options['facet']['facet']]['#title'];
+              $displays[$filter->options['id']]['value'] = t('Yes');
+            }
+            else {
+              $displays[$filter->options['id']]['label'] = $filter->options['expose']['label'];
+              $displays[$filter->options['id']]['value'] = $adapter[$filter->options['facet']['facet']]['#facet_data'][$value];
+            }
+          }
         }
+        unset($exposed_filters[$id]);
       }
     }
   }
 
-  // Extra option for when it is a custom filter.
-  if (isset($view->custom_filters)) {
-    foreach ($view->custom_filters as $filter => $value) {
-      $vars['exposed_filters'][$filter] = '"' . $value . '"';
+  // Get the All string as we dont want to use it.
+  $all_string = t('All');
+
+  // Go over the normal views values.
+  foreach ($exposed_filters as $id => $filter) {
+    if (isset($exposed_input[$filter->options['id']]) && $exposed_input[$filter->options['id']] !== $all_string) {
+      $displays[$filter->options['id']]['label'] = $filter->options['expose']['label'];
+      // If we can get the value from the filter we use it.
+      if (isset($filter->value_options) && is_array($filter->value_options) && isset($filter->value_options[$exposed_input[$filter->options['id']]])) {
+        $displays[$filter->options['id']]['value'] = $filter->value_options[$exposed_input[$filter->options['id']]];
+      }
+      // Fallback to the original value.
+      else {
+        $displays[$filter->options['id']]['value'] = $exposed_input[$filter->options['id']];
+      }
     }
   }
+
+  // If we have data in our $display array, we add the facets.
+  if (isset($displays)) {
+    foreach ($displays as $data) {
+      // When it are dates, it is an array.
+      if (is_array($data['value']) && isset($data['value']['date']) && !empty($data['value']['date'])) {
+        $data['value'] = $data['value']['date'];
+      }
+      if (!is_array($data['value']) && !empty($data['value'])) {
+        $vars['exposed_filters'][$data['label']] = $data['value'];
+      }
+    }
+  }
+}
+
+/**
+ * Gets all the exposed filters of a view.
+ *
+ * @param object $view
+ *   The views object.
+ *
+ * @return array
+ *   List of exposed filters.
+ */
+function dt_exposed_filter_data_get_exposed_filters($view) {
+  $exposed_filters = [];
+  foreach ($view->filter as $filter) {
+    if ($filter->is_exposed()) {
+      $exposed_filters[] = $filter;
+    }
+  }
+  return $exposed_filters;
 }
 
 /**

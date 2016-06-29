@@ -12,6 +12,13 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
   /**
    * {@inheritdoc}
    */
+  public function facetFieldType() {
+    return 'select';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function execute() {
     $element = &$this->build[$this->facet['field alias']];
 
@@ -42,7 +49,7 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
       '#type' => 'select',
       '#options' => $options,
       '#value' => $active_item,
-      '#name' => $this->getFacetIdentifier('select'),
+      '#name' => $this->getFacetIdentifier($this->facetFieldType()),
     ];
     $this->addElementWrapper($element['facets']);
   }
