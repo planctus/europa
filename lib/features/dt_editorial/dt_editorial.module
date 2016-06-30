@@ -199,3 +199,18 @@ function dt_editorial_dt_node_settings_config_fields($form) {
     ],
   ];
 }
+
+/**
+ * Implements hook_workbench_content_alter().
+ */
+function dt_editorial_workbench_content_alter(&$output) {
+  if (!empty($output)) {
+    $output['workbench_current_user'] = array(
+      '#title' => t('My Profile'),
+      '#view' => 'current_user_with_editorial_groups',
+      '#view_display' => 'block_editorial_roles',
+      '#attributes' => array('class' => array('left', 'clearfix')),
+      '#theme' => 'workbench_element',
+    );
+  }
+}
