@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_editorial.views_default.inc

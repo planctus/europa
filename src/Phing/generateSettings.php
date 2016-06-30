@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Simple command to generate the settings.

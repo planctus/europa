@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the basic markup for the latest block.

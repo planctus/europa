@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_banner_quote.strongarm.inc
