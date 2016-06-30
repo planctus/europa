@@ -272,7 +272,7 @@ function _dt_event_ds_fields_status_message($field) {
   }
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
-      $render_config['#message_title'] = t('This event is going on right now');
+      $render_config['#message_title'] = t('This event has started.');
 
       // If live stream is available we add it to the message.
       if (
@@ -293,14 +293,14 @@ function _dt_event_ds_fields_status_message($field) {
       break;
 
     case DT_EVENT_STATE_CANCELLED:
-      $render_config['#message_title'] = t('This event has been cancelled');
+      $render_config['#message_title'] = t('This event has been cancelled.');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
       $render_config['#message_classes'][] = 'warning';
       $render_config['#message_type'] = 'Warning message';
       break;
 
     case DT_EVENT_STATE_PAST:
-      $render_config['#message_title'] = t('This event has ended');
+      $render_config['#message_title'] = t('This event has ended.');
       break;
 
     default:
@@ -411,7 +411,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
       $emw->field_event_live_streaming_link->value()
     ) {
-      $button_text = t('Watch live now');
+      $button_text = t('Watch live');
       $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
     }
 
@@ -477,7 +477,7 @@ function _dt_event_ds_fields_livestreaming($field) {
         $replacement = [
           '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'h:i (T)', $timezone),
         ];
-        $streaming_text = t('<strong>Or watch live streaming</strong> at @time', $replacement);
+        $streaming_text = t('<strong>Watch live</strong> at @time', $replacement);
         break;
 
       case DT_EVENT_LIVE_STREAM_ONGOING:

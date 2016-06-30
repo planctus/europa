@@ -147,7 +147,7 @@ function dt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-include_title_segment';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['easy_breadcrumb-include_title_segment'] = $strongarm;
 
   $strongarm = new stdClass();

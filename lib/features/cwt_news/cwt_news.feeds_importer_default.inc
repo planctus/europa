@@ -34,7 +34,7 @@ function cwt_news_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'expire' => '7776000',
+        'expire' => '-1',
         'author' => 0,
         'authorize' => 0,
         'mappings' => array(
