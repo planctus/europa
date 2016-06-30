@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.18.20",
+            "version": "3.18.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e5a901dd3a42d0c46a90ee37a174938cd0ce55bf"
+                "reference": "d1a990d3a7c1fec992abdb508b47271ba089586e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e5a901dd3a42d0c46a90ee37a174938cd0ce55bf",
-                "reference": "e5a901dd3a42d0c46a90ee37a174938cd0ce55bf",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d1a990d3a7c1fec992abdb508b47271ba089586e",
+                "reference": "d1a990d3a7c1fec992abdb508b47271ba089586e",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-06-23 23:17:52"
+            "time": "2016-06-28 23:29:43"
         },
         {
             "name": "behat/behat",
