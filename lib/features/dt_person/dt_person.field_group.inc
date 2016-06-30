@@ -78,7 +78,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '3',
     'children' => array(
       0 => 'group_editorial_settings',
       1 => 'group_person_contact',
@@ -164,11 +164,8 @@ function dt_person_field_group_info() {
       1 => 'field_person_gender',
       2 => 'field_person_last_name',
       3 => 'field_person_photo',
-      4 => 'field_person_role',
-      5 => 'field_person_tagline',
-      6 => 'field_core_legacy_link',
-      7 => 'field_type_of_person',
-      8 => 'field_role_title',
+      4 => 'field_person_tagline',
+      5 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -486,7 +486,7 @@ function dt_person_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 66,
+      'weight' => 2,
     ),
   );
 
@@ -646,7 +646,7 @@ function dt_person_field_default_field_instances() {
         'size' => 255,
       ),
       'type' => 'text_textfield',
-      'weight' => 65,
+      'weight' => 1,
     ),
   );
 
@@ -697,7 +697,7 @@ function dt_person_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 64,
+      'weight' => 0,
     ),
   );
 
