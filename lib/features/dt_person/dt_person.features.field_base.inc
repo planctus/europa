@@ -29,8 +29,14 @@ function dt_person_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
-          'views-select-list' => array(
+          'titleoverwrite_field_behavior' => array(
             'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 1,
           ),
         ),
         'sort' => array(
