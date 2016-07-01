@@ -63,7 +63,7 @@ function cwt_biography_field_group_info() {
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="agenda"',
+        'attributes' => 'id="calendar"',
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-agenda field-group-section_group',
