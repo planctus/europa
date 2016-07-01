@@ -214,3 +214,44 @@ function dt_editorial_workbench_content_alter(&$output) {
     );
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_editorial_preprocess_views_view_fields(&$variables) {
+  if ($variables['view']->name == "current_user_with_editorial_groups" &&
+    $variables['view']->current_display == "attachment_edit_roles" &&
+    isset($variables['row']->og_membership_gid)
+  ) {
+    $gid = $variables['row']->og_membership_gid;
+
+    if (is_numeric($gid) && og_user_access('node', $gid, 'manage members')) {
+      $variables['fields']['gid']->content = l(t("Manage users"), "group/node/" . $gid . "/admin/people_en");
+    }
+    else {
+      $variables['fields']['gid']->content = "";
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_editorial_preprocess_views_view(&$variables) {
+  if ($variables['view']->name == "current_user_with_editorial_groups" &&
+    $variables['view']->current_display == "block_editorial_roles") {
+    $variables['theme_hook_suggestions'][] = "dt_editorial_views_view";
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_editorial_theme($existing, $type, $theme, $path) {
+  return array(
+    'dt_editorial_views_view' => array(
+      'path' => drupal_get_path('module', 'dt_editorial') . '/templates',
+      'template' => 'dt-editorial--views-view',
+    ),
+  );
+}
