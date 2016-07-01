@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_activities.features.field_instance.inc
@@ -118,7 +117,7 @@ function cwt_activities_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 11,
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -228,9 +227,10 @@ function cwt_activities_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 0,
       ),
     ),

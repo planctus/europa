@@ -22,6 +22,23 @@
   }
 }
 
+// .listing--agenda modifier.
+.listing--agenda {
+  .meta__item .locality-block {
+    display: inline;
+
+    // override on the address module css rules */
+    &:after {
+      content: ", ";
+      display: inline;
+      height: auto;
+      clear: none;
+      visibility: visible;
+      white-space: pre;
+    }
+  }
+}
+
 .print-content {
   .view-agenda {
     .filters__result-count,
