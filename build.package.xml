@@ -317,19 +317,19 @@
     <target
         name="build-dev"
         description="Build a local development version of the subsite."
-        depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
+        depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules, delete-platform-vendor"
     />
 
     <target
         name="build-test-env"
         description="Build a test environment for CPHP"
-        depends="install-build-dependencies, make-dev, link-dev-resources"
+        depends="install-build-dependencies, make-dev, link-dev-resources, delete-platform-vendor"
     />
 
     <target
         name="build-dist"
         description="Build a version of the subsite intended to distribute as a release package."
-        depends="install-build-dependencies, delete-dist, make-dist, copy-dist-resources"
+        depends="install-build-dependencies, delete-dist, make-dist, copy-dist-resources, delete-platform-vendor"
     />
 
 </project>
