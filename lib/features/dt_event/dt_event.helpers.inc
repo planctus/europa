@@ -17,7 +17,7 @@ function _dt_event_entity_add_status_property(&$entity) {
 
   // We should always have this set. But we make sure by doing this that we
   // are not working with bad entity's.
-  if ($emw->__isset('field_event_status')) {
+  if (!empty($entity->field_event_collection) && !$emw->field_event_collection->value() && $emw->__isset('field_event_status')) {
 
     // Based on the state, we set the property.
     switch ($emw->field_event_status->value()) {
@@ -33,7 +33,7 @@ function _dt_event_entity_add_status_property(&$entity) {
 
       case 'no':
         // If it has no special state, we base it on the dates.
-        if ($emw->__isset('field_event_date')) {
+        if (!empty($entity->field_event_date) && $emw->__isset('field_event_date')) {
           $start_date = $emw->field_event_date->value->value();
 
           // We always need a start date.

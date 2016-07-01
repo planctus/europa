@@ -548,6 +548,15 @@ function _dt_core_enable_languages($languages = array()) {
         ->condition('language', $langcode)
         ->execute();
     }
+    // English does not have a default prefix but we rely on it, so we add it.
+    if ($langcode == 'en') {
+      db_update('languages')
+        ->fields(array(
+          'prefix' => 'en',
+        ))
+        ->condition('language', $langcode)
+        ->execute();
+    }
   }
   // Save the order through the original form.
   drupal_form_submit('locale_languages_overview_form', $form_state);

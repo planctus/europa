@@ -6,24 +6,3 @@
  */
 
 include_once 'dt_event_default.features.inc';
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function dt_event_default_form_event_node_form_alter(&$form, $form_state, $form_id) {
-  drupal_add_css(drupal_get_path('module', 'dt_event_default') . '/styles/dt_event_default_admin.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
-  global $user;
-  $timezone = $user->timezone;
-
-  if ($timezone != '' && !isset($form['#node']->nid)) {
-    $fields = array(
-      'field_event_date',
-      'field_event_registration_end',
-      'field_event_live_streaming_date',
-    );
-
-    foreach ($fields as $field) {
-      $form[$field][LANGUAGE_NONE][0]['timezone']['#default_value'] = $timezone;
-    }
-  }
-}
