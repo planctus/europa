@@ -159,7 +159,7 @@ section #timeline {
   visibility: visible; }
 
 .listing--agenda .meta__item .locality-block:after {
-  content: ", ";
+  content: ",\00a0";
   white-space: pre; }
 
 .print-content .view-agenda .filters__result-count,
