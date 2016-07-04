@@ -33,7 +33,7 @@
   }
 
   .meta__item .locality-block:after {
-    content: ", ";
+    content: ",\00a0";
     white-space: pre;
   }
 }
