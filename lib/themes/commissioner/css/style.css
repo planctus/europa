@@ -152,6 +152,16 @@ section #timeline {
 .translation_select:focus {
   padding-right: 50px; }
 
+.listing--agenda .meta__item .locality-block {
+  display: inline; }
+  .listing--agenda .meta__item .locality-block:after {
+    content: ", ";
+    display: inline;
+    height: auto;
+    clear: none;
+    visibility: visible;
+    white-space: pre; }
+
 .print-content .view-agenda .filters__result-count,
 .print-content .view-agenda .filters__active-facets {
   display: none; }
