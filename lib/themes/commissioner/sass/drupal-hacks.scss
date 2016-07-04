@@ -24,18 +24,17 @@
 
 // .listing--agenda modifier.
 .listing--agenda {
-  .meta__item .locality-block {
+  // override on the address module css rules.
+  div.addressfield-container-inline:after {
     display: inline;
+    height: auto;
+    clear: none;
+    visibility: visible;
+  }
 
-    // override on the address module css rules */
-    &:after {
-      content: ", ";
-      display: inline;
-      height: auto;
-      clear: none;
-      visibility: visible;
-      white-space: pre;
-    }
+  .meta__item .locality-block:after {
+    content: ", ";
+    white-space: pre;
   }
 }
 
