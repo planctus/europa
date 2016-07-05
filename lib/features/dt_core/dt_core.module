@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Core feature.
@@ -542,6 +543,15 @@ function _dt_core_enable_languages($languages = array()) {
         ->fields(array(
           'name' => 'Portuguese',
           'prefix' => 'pt',
+        ))
+        ->condition('language', $langcode)
+        ->execute();
+    }
+    // English does not have a default prefix but we rely on it, so we add it.
+    if ($langcode == 'en') {
+      db_update('languages')
+        ->fields(array(
+          'prefix' => 'en',
         ))
         ->condition('language', $langcode)
         ->execute();

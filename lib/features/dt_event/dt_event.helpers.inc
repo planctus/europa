@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains all non hook, helper function for dt_event.

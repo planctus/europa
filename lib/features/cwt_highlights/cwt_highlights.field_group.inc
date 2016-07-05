@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_highlights.field_group.inc

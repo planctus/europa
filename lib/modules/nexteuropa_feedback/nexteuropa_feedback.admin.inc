@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Nexteuropa Feedback Admin.

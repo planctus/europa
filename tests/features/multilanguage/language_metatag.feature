@@ -6,9 +6,9 @@ Feature: Display content language in meta tag
 
   Scenario Outline: Content language in meta tag
     Given I am viewing an "basic-page" content:
-      | title       | <title>       |
-      | description | <description> |
-      | language    | <language_code>    |
+      | title       | <title>         |
+      | description | <description>   |
+      | language    | <language_code> |
     Then I should see "<title>" in the "title" element
     Then the language metatag should have the value "<language>"
 

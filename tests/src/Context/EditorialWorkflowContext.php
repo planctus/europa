@@ -2,7 +2,6 @@
 
 namespace Drupal\nexteuropa\Context;
 
-
 /**
  * Contains editorial workflow specific step definitions.
  */
