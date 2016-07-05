@@ -614,12 +614,12 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_collection';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'weight' => '18',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -642,12 +642,12 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'weight' => '42',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -670,14 +670,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'weight' => '14',
     'children' => array(
       0 => 'field_event_schedule',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -1718,7 +1718,7 @@ function dt_event_default_field_group_info() {
   t('Related links');
   t('Right');
   t('Row');
-  t('Schedule');
+  t('Agenda');
   t('Section');
   t('Speakers');
   t('Summary');
