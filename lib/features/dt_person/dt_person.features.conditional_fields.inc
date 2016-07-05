@@ -44,21 +44,7 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -72,6 +58,20 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
         7 => array(
           1 => 1,
           2 => 2,
@@ -79,14 +79,7 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
+        8 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -108,15 +101,7 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
         6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
           1 => 1,
           3 => 0,
         ),
@@ -124,26 +109,32 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
         7 => array(
           1 => 1,
           3 => 0,
         ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
+        8 => array(
           1 => 1,
           3 => 0,
         ),
       ),
       'selector' => '',
-      'values_set' => 4,
-      'value_form' => '_none',
-      'values' => array(
-        0 => 0,
+      'values_set' => 1,
+      'value_form' => 0,
+      'value' => array(
+        0 => array(
+          'value' => 0,
+        ),
       ),
-      'value' => array(),
+      'values' => array(),
     ),
   );
 
@@ -181,21 +172,7 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        3 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        4 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -209,6 +186,20 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
+        3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
         7 => array(
           1 => 1,
           2 => 2,
@@ -216,14 +207,7 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        9 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        10 => array(
+        8 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -245,15 +229,7 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        3 => array(
-          1 => 1,
-          3 => 0,
-        ),
         6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        4 => array(
           1 => 1,
           3 => 0,
         ),
@@ -261,26 +237,32 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
+        3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        4 => array(
+          1 => 1,
+          3 => 0,
+        ),
         7 => array(
           1 => 1,
           3 => 0,
         ),
-        9 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        10 => array(
+        8 => array(
           1 => 1,
           3 => 0,
         ),
       ),
       'selector' => '',
-      'values_set' => 4,
-      'value_form' => '_none',
-      'values' => array(
-        0 => 1,
+      'values_set' => 1,
+      'value_form' => 1,
+      'value' => array(
+        0 => array(
+          'value' => 1,
+        ),
       ),
-      'value' => array(),
+      'values' => array(),
     ),
   );
 

@@ -684,7 +684,7 @@ function dt_person_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_type_of_person',
-    'label' => 'Type of Person',
+    'label' => 'What type of person are you adding',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1079,7 +1079,7 @@ function dt_person_field_default_field_instances() {
   t('Role/Title');
   t('Tagline');
   t('Title');
-  t('Type of Person');
+  t('What type of person are you adding');
 
   return $field_instances;
 }
