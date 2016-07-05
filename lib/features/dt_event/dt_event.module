@@ -16,7 +16,6 @@ define('DT_EVENT_STATE_FUTURE', 1);
 define('DT_EVENT_STATE_ONGOING', 2);
 define('DT_EVENT_STATE_PAST', 3);
 define('DT_EVENT_STATE_CANCELLED', 4);
-define('DT_EVENT_STATE_RESCHEDULED', 5);
 // Live stream states.
 define('DT_EVENT_LIVE_STREAM_NONE', 0);
 define('DT_EVENT_LIVE_STREAM_FUTURE', 1);
@@ -232,5 +231,25 @@ function dt_event_preprocess_easy_breadcrumb(&$variables) {
     $node = menu_get_object();
     $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), array(), 'node/' . $node->nid);
     $variables['segments_quantity']++;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_event_preprocess_dt_date_format_block(&$variables) {
+  if (isset($variables['entity'])) {
+    $variables['modifier_classes'] .= ' event';
+    if ($variables['entity']->event_status == DT_EVENT_STATE_CANCELLED) {
+      $variables['modifier_classes'] .= ' cancelled';
+    }
+    elseif ($variables['entity']->event_status == DT_EVENT_STATE_PAST) {
+      $variables['modifier_classes'] .= ' past';
+      $variables['show_years'] = TRUE;
+      $variables['show_days_name'] = FALSE;
+    }
+    elseif ($variables['entity']->event_livestream_status) {
+      $variables['modifier_classes'] .= ' live-streaming';
+    }
   }
 }
