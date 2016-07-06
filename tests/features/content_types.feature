@@ -4,7 +4,7 @@ Feature: Content type configuration
   As an editor
   I should be able to access certain configuration pages
 
-  @share
+  @shared
   Scenario: Description meta tag
     Given "Page" content:
       | title         | field_core_description | field_core_introduction |
