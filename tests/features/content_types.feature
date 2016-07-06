@@ -1,10 +1,9 @@
-@api
+@api @political @information
 Feature: Content type configuration
   In order to fill in the website
   As an editor
   I should be able to access certain configuration pages
 
-  @shared
   Scenario: Description meta tag
     Given "Page" content:
       | title         | field_core_description | field_core_introduction |
@@ -15,7 +14,6 @@ Feature: Content type configuration
     Then I should see "Content title" in the "title" element
     Then the metatag attribute "description" should have the value "Content description"
 
-  @political
   Scenario: Editors can set the priority page id
     Given I am logged in as a user with the "editor" role
     When I go to "admin/config/system/dt-priority-settings"
