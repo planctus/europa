@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_person.features.field_instance.inc
@@ -697,7 +696,7 @@ function dt_person_field_default_field_instances() {
       'settings' => array(
         'apply_chosen' => '',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 0,
     ),
   );
