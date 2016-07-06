@@ -126,6 +126,7 @@ features[metatag][] = node
 features[picture_mapping][] = header_image
 features[picture_mapping][] = highlight_image
 features[picture_mapping][] = teaser_image
+features[taxonomy][] = top_tasks
 features[variable][] = admin_theme
 features[variable][] = date_format_ec_date_j_f_y
 features[variable][] = ds_extras_field_permissions
