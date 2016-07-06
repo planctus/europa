@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * CWT Activities calendar item migration file.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_activities.field_group.inc
@@ -84,7 +85,7 @@ function cwt_activities_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_activity_address',
-      1 => 'content_type_label',
+      1 => 'field_activity_type',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

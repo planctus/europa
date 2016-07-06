@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the methods to render the checkboxes.

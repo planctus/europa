@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the markup for the message block.

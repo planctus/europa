@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Event ds fields.
@@ -261,7 +262,7 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
 function _dt_event_ds_fields_status_message($field) {
   // Default config.
   $render_config = [
-    '#theme' => 'dt_core_status_message',
+    '#theme' => 'europa_status_message',
     '#message_classes' => ['messages--icon-center'],
   ];
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_tender.strongarm.inc

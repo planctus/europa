@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * template.php
@@ -36,6 +37,33 @@ function europa_css_alter(&$css) {
     $css[$path_fancybox . '/helpers/jquery.fancybox-thumbs.css'],
     $css[$path_fancybox . '/jquery.fancybox.css']
   );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function europa_theme($existing, $type, $theme, $path) {
+  return [
+    'europa_status_message' => [
+      'template' => 'status_message',
+      'path' => $path . '/templates',
+      'variables' => [
+        'message_title' => '',
+        'message_body' => '',
+        'message_type' => '',
+        'message_classes' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_europa_status_message().
+ */
+function europa_preprocess_europa_status_message(&$variables) {
+  if (isset($variables['message_classes']) && is_array($variables['message_classes'])) {
+    $variables['message_classes'] = ' ' . implode(' ', $variables['message_classes']);
+  }
 }
 
 /**
@@ -150,6 +178,11 @@ function europa_form_element(&$variables) {
     $attributes['class'][] = 'form-autocomplete';
   }
   $attributes['class'][] = 'form-item';
+
+  // See https://www.drupal.org/node/154137
+  if ($element['#id'] == 'edit-querytext') {
+    $element['#children'] = str_replace('type="text"', 'type="search"', $element['#children']);
+  }
 
   // See http://getbootstrap.com/css/#forms-controls.
   if (isset($element['#type'])) {
@@ -468,14 +501,13 @@ function europa_html_head_alter(&$head_elements) {
  * A search_form alteration.
  */
 function europa_form_nexteuropa_europa_search_search_form_alter(&$form, &$form_state, $form_id) {
-  $form['search_input_group']['#prefix'] = '';
-  $form['search_input_group']['#suffix'] = '';
-  $form['search_input_group']['europa_search_submit']['#prefix'] = '<div class="search-form__btn-wrapper">';
-  $form['search_input_group']['europa_search_submit']['#suffix'] = '</div>';
+  $form['search_input_group']['europa_search_submit']['#prefix'] = '<span class="input-group-btn search-form__btn-wrapper">';
+  $form['search_input_group']['europa_search_submit']['#suffix'] = '</span>';
   $form['search_input_group']['europa_search_submit']['#attributes']['class'][] = 'search-form__btn';
-  $form['search_input_group']['QueryText']['#prefix'] = '<div class="search-form__textfield-wrapper">';
-  $form['search_input_group']['QueryText']['#suffix'] = '</div>';
+  $form['search_input_group']['QueryText']['#prefix'] = '<label class="search-form__textfield-wrapper"><span class="sr-only">' . t('Search this website') . '</span>';
+  $form['search_input_group']['QueryText']['#suffix'] = '</label>';
   $form['search_input_group']['QueryText']['#attributes']['class'][] = 'search-form__textfield';
+  $form['search_input_group']['QueryText']['#attributes']['title'] = t('Search');
 
   unset($form['search_input_group']['QueryText']['#attributes']['placeholder']);
   unset($form['search_input_group']['europa_search_submit']['#attributes']['tabindex']);
@@ -1407,4 +1439,33 @@ function europa_form_alter(&$form, &$form_state, $form_id) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_status_messages().
+ */
+function europa_status_messages($variables) {
+  $display = $variables['display'];
+  $output = [];
+
+  foreach (drupal_get_messages($display) as $type => $messages) {
+    $body = '';
+    foreach ($messages as $message) {
+      $body .= '  <p>' . $message . "</p>\n";
+    }
+
+    $output[] = [
+      '#theme' => 'europa_status_message',
+      '#message_classes' => [
+        'alert',
+        'alert-block',
+        $type,
+        count($messages) > 1 ?: 'messages--icon-center',
+      ],
+      '#message_type' => $type . ' message',
+      '#message_body' => $body,
+    ];
+  }
+
+  return drupal_render($output);
 }

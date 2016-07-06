@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_blogs.features.user_role.inc

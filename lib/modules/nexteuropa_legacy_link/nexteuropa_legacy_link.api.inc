@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * This file contains examples of hooks legacy_link can implement.

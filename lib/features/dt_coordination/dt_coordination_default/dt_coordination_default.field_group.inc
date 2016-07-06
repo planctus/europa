@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_coordination_default.field_group.inc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default simple view template to all the fields as a row.

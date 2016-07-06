@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Holds the admin configuration for dt_priority page.

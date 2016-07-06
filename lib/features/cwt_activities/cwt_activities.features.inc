@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_activities.features.inc

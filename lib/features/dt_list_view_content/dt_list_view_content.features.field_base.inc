@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_list_view_content.features.field_base.inc

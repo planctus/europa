@@ -76,6 +76,16 @@ Styleguide listing.1
 }
 
 /*
+Listing default with div's
+
+Default implementation of the listing component with div's.
+
+Markup: html/listing-withdivs.html
+
+Styleguide listing.1.1
+*/
+
+/*
 Listing title
 
 Listing title is the component modifier used to style a list of titles.
@@ -204,20 +214,6 @@ Styleguide listing.5
   .listing__author {
     font-size: $font-size-tiny;
     margin-top: 1em;
-  }
-
-  div.addressfield-container-inline {
-    float: left;
-
-    // override on the address module css rules */
-    &:after {
-      content: ", ";
-      display: inline;
-      height: auto;
-      clear: none;
-      visibility: visible;
-      white-space: pre;
-    }
   }
 }
 
@@ -493,6 +489,10 @@ a.listing__title {
 .listing__wrapper {
   margin-bottom: 1.667em;
   @include clearfix;
+
+  .listing {
+    max-width: inherit;
+  }
 }
 
 // .listing__item element.
@@ -528,7 +528,7 @@ a.listing__title {
   }
 }
 
-.listing__item--fullwidth {
+.listing__item--fullwidth { 
   max-width: none;
 }
 
@@ -653,11 +653,11 @@ a.listing__title {
 
 // .listing__read_more element.
 .listing__read-more {
-  margin-top: 0.5em;
+  padding-top: 0.5em;
   text-align: right;
   font-weight: $font-weight-bold;
   display: block;
-  float: right;
+  clear: both;
   text-transform: uppercase;
   font-size: $font-size-tiny;
 
@@ -679,7 +679,7 @@ This is actually a modifier that applies changes to the listing__item element.
 
 Markup: html/listing--column-left.html
 
-Styleguide listing.1.1
+Styleguide listing.1.2
 */
 
 .listing--column-left {
