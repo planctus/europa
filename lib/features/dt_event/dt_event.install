@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Install file.
@@ -38,9 +39,30 @@ function dt_event_update_7102() {
 }
 
 /**
- * Revert features.
+ * Refresh dt_event for it's content type.
  */
 function dt_event_update_7103() {
   features_revert_module('dt_event');
   features_revert_module('dt_event_default');
+}
+
+/**
+ * DTTSB-771: regressions on the event content type fixing.
+ */
+function dt_event_update_7104() {
+  // Delete all event content for recreate field bases.
+  $node_type = 'event';
+
+  // Select the nodes that we want to delete.
+  $result = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', $node_type, '=')
+    ->execute();
+
+  $deleted_count = 0;
+  foreach ($result as $record) {
+    node_delete($record->nid);
+    $deleted_count++;
+  }
+  drupal_set_message(t('%count evens were deleted.'), ['%count' => $deleted_count]);
 }

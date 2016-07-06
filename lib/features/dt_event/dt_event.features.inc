@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_event.features.inc
@@ -17,7 +18,7 @@ function dt_event_default_cer() {
     "cer_left" : { "und" : [ { "path" : "node:event:field_event_parent_events" } ] },
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-4409-0",
+    "entity_translation_handler_id" : "cer-eid-51-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;

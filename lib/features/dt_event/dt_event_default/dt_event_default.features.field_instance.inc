@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_event_default.features.field_instance.inc
@@ -9,65 +10,6 @@
  */
 function dt_event_default_field_default_field_instances() {
   $field_instances = array();
-
-  // Exported field_instance: 'file-image-field_file_image_title_text'.
-  $field_instances['file-image-field_file_image_title_text'] = array(
-    'bundle' => 'image',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'wysiwyg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'file',
-    'field_name' => 'field_file_image_title_text',
-    'label' => 'Title Text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-      'wysiwyg_override' => 1,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => -3,
-    ),
-  );
 
   // Exported field_instance: 'node-event-body'.
   $field_instances['node-event-body'] = array(
@@ -356,7 +298,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_departments',
-    'label' => 'Organizing department',
+    'label' => 'Organiser',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1578,7 +1520,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
-    'label' => 'Topics',
+    'label' => 'Topic',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1930,7 +1872,7 @@ On what day does the event end?',
     'label' => 'Event date and time',
     'required' => 1,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'blank',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -2009,7 +1951,7 @@ On what day does the event end?',
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_entrance_fee',
-    'label' => 'Entrance fee(s)',
+    'label' => 'Registration fee',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2337,7 +2279,7 @@ On what day does the event end?',
     'label' => 'Date and time of live streaming',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'blank',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -2835,7 +2777,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_number_seats',
-    'label' => 'Total number of seats',
+    'label' => 'Number of places',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2916,7 +2858,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_parent_events',
-    'label' => 'Part of collection',
+    'label' => 'Part of',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3087,7 +3029,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'label' => 'Registration deadline',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -3170,7 +3112,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_schedule',
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3521,7 +3463,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_target_audience',
-    'label' => 'Target audience',
+    'label' => 'Who should attend',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -3787,7 +3729,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_what_happened',
-    'label' => 'What happened',
+    'label' => 'Summary',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -4094,7 +4036,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   t('Date and time of live streaming');
   t('Description');
   t('Details concerning the timing and schedule of an event. This can be limited or extended.');
-  t('Entrance fee(s)');
+  t('Registration fee');
   t('Event date and time');
   t('Event type');
   t('Events in the collection');
@@ -4130,15 +4072,31 @@ For collection, this is a text with more information about the collection.');
 On what day does the event end?');
   t('Online only');
   t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline.');
-  t('Organizing department');
-  t('Part of collection');
+  t('Organiser');
+  t('Part of');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
+  t('Please enter the URL (information in src="") you can find in the embed code of the live stream.
+
+Example:
+[break]
+
+Is this is the embed code:
+
+```
+iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm" id="videoplayerI122468" width="670" height="378" frameborder="0"
+```
+
+only enter this in the input field:
+
+```
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
+```');
   t('Registration');
   t('Registration deadline');
   t('Related links');
   t('Report on the course of the event');
-  t('Schedule');
+  t('Agenda');
   t('Scribble id');
   t('Select one or more departments that organize the event.
 Note: this may need to be extended to external and 3rd party organizers as well.');
@@ -4148,18 +4106,18 @@ Note: this may need to be extended to external and 3rd party organizers as well.
   t('Speakers');
   t('Status description');
   t('Tagline');
-  t('Target audience');
+  t('Who should attend');
   t('This is displayed as \'meta\' information in addition to the event title. Events can also be filtered by \'event type\'.');
   t('Title');
   t('Title Text');
   t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
   t('To which topics does the event or collection relate?');
-  t('Topics');
+  t('Topic');
   t('Total number of places that are available. Indicates the size of the event.');
-  t('Total number of seats');
+  t('Number of places');
   t('Website');
   t('What do you want to create?');
-  t('What happened');
+  t('Summary');
 
   return $field_instances;
 }

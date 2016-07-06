@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the overrides and hooks to enable a custom title on entityreference.

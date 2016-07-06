@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_core_info.strongarm.inc
@@ -49,7 +50,7 @@ function dt_core_info_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nexteuropa_europa_search_query_source';
-  $strongarm->value = 'BETA';
+  $strongarm->value = '';
   $export['nexteuropa_europa_search_query_source'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_highlights.features.field_base.inc

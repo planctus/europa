@@ -57,6 +57,7 @@ projects[entityform][version] = "2.0-rc1"
 projects[conditional_fields][subdir] = "contrib"
 projects[conditional_fields][version] = "3.0-alpha2"
 projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/conditional_fields-entity-translation-support-2125191-2.patch"
+projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/fix_dependent_fields_in_IE-1373656-21.patch"
 
 projects[retina_images][subdir] = "contrib"
 projects[retina_images][version] = "1.0-beta4"
