@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the CWT Activities feature.
@@ -103,7 +104,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
     return;
   }
 
-  if ($view->name == 'calendar' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     if (isset($original_path_cached['nid'])) {
       // Load node the Calendar belongs to in the first place.
       // Use its editorial section in first contextual filter.
@@ -253,7 +254,40 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements hook_migrate_api().
+ */
+function cwt_activities_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa Digital Transformation' => array(
+        'title' => t('Stage initial content, calendar item types.'),
+      ),
+    ),
+    'migrations' => array(
+      'CwtActivitiesTypes' => array(
+        'class_name' => 'CwtActivitiesTypesMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}
+
+/**
+ * Helper function migrating calendar item types.
+ */
+function _cwt_activities_migrate_calendar_item_types() {
+  // Import "Calendar item" terms.
+  // Force registration of migration classes.
+  migrate_static_registration();
+  // Make sure that destination vocabularies exists.
+  features_revert(array('cwt_activities' => array('taxonomy')));
+  // Import calendar item types vocabulary's terms.
+  Migration::getInstance('CwtActivitiesTypes')->processImport();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
  */
 function cwt_activities_preprocess_page(&$variables) {
   $view = views_get_page_view();
@@ -262,13 +296,12 @@ function cwt_activities_preprocess_page(&$variables) {
     $description[] = t('Subject to changes during the week');
 
     $variables['field_core_introduction'] = [
-      '#markup' => '<p>' . $description[0] . '</p><p>' . $description[1] . '</p>',
+      '#markup' => '<p>' . $description[0] . '</p><p><em>' . $description[1] . '</em></p>',
     ];
 
     if (isset($variables['format']) && $variables['format'] == 'pdf') {
       $result = _dt_exposed_filter_data_get_date_facet_tags($view);
-      $filter = implode($result['filter']);
-      $variables['node']->title .= ' ' . strtolower(trim($filter, '"'));
+      $variables['node']->title .= ' ' . lcfirst(trim($result['filter'][0], '"'));
 
       $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'
         . $variables['node']->content;

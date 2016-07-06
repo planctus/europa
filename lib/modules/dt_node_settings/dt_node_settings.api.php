@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains hook implementation documentation for dt_node_settings.

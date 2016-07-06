@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains helper functions used by entityreference_titleoverwrite.

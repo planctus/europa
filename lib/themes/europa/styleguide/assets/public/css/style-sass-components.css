@@ -1384,11 +1384,12 @@ Styleguide banner.video
     height: 100%; }
 
 .banner__caption {
-  background: #ececec;
-  font-size: 0.778em;
-  padding: 0.500em 1em;
   width: 100%;
-  max-width: 100%; }
+  max-width: 100%;
+  padding: 0.725em 1em;
+  background: #ececec;
+  line-height: 1.435em;
+  font-size: 0.778em; }
 
 .banner__paragraph {
   margin-top: 1em;
@@ -1431,7 +1432,6 @@ Styleguide breadcrumb
   .breadcrumb ol,
   .breadcrumb ul {
     list-style: none;
-    list-style-image: none;
     padding: 0;
     margin: 0;
     max-width: none; }
@@ -1781,13 +1781,14 @@ Markup: html/date-block.html
 Styleguide date-block
 */
 .date-block {
-  background: #f2f2f2;
-  border-bottom: 0.222em solid #FED437;
-  width: 5.556em;
+  position: relative;
+  display: inline-block;
+  min-width: 5.556em;
   margin-right: 0.75em;
   padding: 0.7em;
-  text-align: center;
-  position: relative; }
+  background: #f2f2f2;
+  border-bottom: 0.222em solid #FED437;
+  text-align: center; }
   .date-block:after {
     content: " ";
     position: absolute;
@@ -2268,6 +2269,9 @@ Styleguide file.2
     height: auto;
     min-height: 260px; }
 
+.file-image {
+  padding: 0; }
+
 .file-video--withbackground {
   background: #ececec; }
 
@@ -2293,8 +2297,9 @@ Styleguide file.2
   line-height: initial; }
 
 .file__caption {
-  font-size: 0.778em;
-  padding: 0.5em; }
+  padding: 0.725em 1em;
+  line-height: 1.435em;
+  font-size: 0.778em; }
 
 .file__language {
   font-weight: bold;
@@ -2320,7 +2325,7 @@ Styleguide file.2
   width: 100%; }
 
 .file--condensed {
-  padding: 0em; }
+  padding: 0; }
 
 .file--bare {
   margin: 0;
@@ -2531,12 +2536,6 @@ Styleguide footer
   display: block;
   margin-right: 20px; }
 
-.footer__disclaimer {
-  padding-top: 8px; }
-  .footer__disclaimer > * {
-    width: 100%;
-    display: block; }
-
 .footer__menu {
   padding-left: 0;
   margin: 0; }
@@ -2591,11 +2590,7 @@ Styleguide footer
   .footer__label {
     display: inline-block; }
     .footer__label ~ .footer__menu {
-      display: inline-block; }
-  .footer__disclaimer > * {
-    width: auto;
-    display: inline-block;
-    margin-right: 4px; } }
+      display: inline-block; } }
 
 .footer a {
   padding-right: 1.1em !important; }
@@ -3754,6 +3749,15 @@ Styleguide listing.1
   display: none; }
 
 /*
+Listing default with div's
+
+Default implementation of the listing component with div's.
+
+Markup: html/listing-withdivs.html
+
+Styleguide listing.1.1
+*/
+/*
 Listing title
 
 Listing title is the component modifier used to style a list of titles.
@@ -3828,6 +3832,8 @@ Styleguide listing.5
 
 .listing--agenda .meta {
   margin-bottom: 0; }
+  .listing--agenda .meta div {
+    display: inline-block; }
 
 .listing--agenda .listing__item-link {
   padding: 0; }
@@ -3839,16 +3845,6 @@ Styleguide listing.5
 .listing--agenda .listing__author {
   font-size: 0.833em;
   margin-top: 1em; }
-
-.listing--agenda div.addressfield-container-inline {
-  float: left; }
-  .listing--agenda div.addressfield-container-inline:after {
-    content: ", ";
-    display: inline;
-    height: auto;
-    clear: none;
-    visibility: visible;
-    white-space: pre; }
 
 .listing--person .listing__title ~ * {
   line-height: 1.3;
@@ -4012,6 +4008,8 @@ a.listing__title {
     display: table; }
   .listing__wrapper:after {
     clear: both; }
+  .listing__wrapper .listing {
+    max-width: inherit; }
 
 .listing__item {
   border-bottom: 1px solid #ececec;
@@ -4123,11 +4121,11 @@ a.listing__title {
   position: absolute; }
 
 .listing__read-more {
-  margin-top: 0.5em;
+  padding-top: 0.5em;
   text-align: right;
   font-weight: 600;
   display: block;
-  float: right;
+  clear: both;
   text-transform: uppercase;
   font-size: 0.833em; }
   .listing__read-more:after {
@@ -4142,7 +4140,7 @@ This is actually a modifier that applies changes to the listing__item element.
 
 Markup: html/listing--column-left.html
 
-Styleguide listing.1.1
+Styleguide listing.1.2
 */
 .listing--column-left .listing__column-main {
   width: auto;
@@ -4660,10 +4658,13 @@ Styleguide messages
     font-size: inherit;
     font-weight: bold;
     padding-top: 0; }
+  .messages ul, .feedback-message ul,
   .messages p, .feedback-message p {
     max-width: 95%;
     margin-bottom: 0;
     font-size: 0.889em; }
+  .messages li, .feedback-message li {
+    list-style-type: none; }
   .messages > :last-child, .feedback-message > :last-child {
     padding-bottom: 0; }
 
@@ -4842,27 +4843,27 @@ Styleguide page-header.informational-home
     color: #fff; }
   .page-header a {
     color: #fff; }
-    .page-header a:hover:not(.breadcrumb__link, .btn) {
+    .page-header a:hover:not(.breadcrumb__link):not(.btn):not(.inpage-nav__navbar .inpage-nav__toggle) {
       color: #ffd617; }
     .page-header a:focus {
       outline: 3px solid #ffd617;
       outline-offset: 2px;
       text-decoration: underline; }
-    .site-political .page-header a[href^="http"]:not(.is-internal, .listing__title):not([href*="europa.eu"]) {
+    .site-political .page-header a[href^="http"]:not(.is-internal):not(.listing__title):not([href*="europa.eu"]) {
       padding-right: 1.1em;
       display: inline-block; }
-      .site-political .page-header a[href^="http"]:not(.is-internal, .listing__title):not([href*="europa.eu"]):after {
+      .site-political .page-header a[href^="http"]:not(.is-internal):not(.listing__title):not([href*="europa.eu"]):after {
         position: absolute;
         line-height: 2.2; }
-      .site-political .page-header a[href^="http"]:not(.is-internal, .listing__title):not([href*="europa.eu"]).btn, .site-political .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal, .listing__title):not([href*="europa.eu"]), .inpage-nav__navbar .site-political .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal, .listing__title):not([href*="europa.eu"]) {
+      .site-political .page-header a[href^="http"]:not(.is-internal):not(.listing__title):not([href*="europa.eu"]).btn, .site-political .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not(.listing__title):not([href*="europa.eu"]), .inpage-nav__navbar .site-political .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal):not(.listing__title):not([href*="europa.eu"]) {
         padding-right: 2.1em; }
-    .site-information .page-header a[href^="http"]:not(.is-internal, .listing__title) {
+    .site-information .page-header a[href^="http"]:not(.is-internal):not(.listing__title) {
       padding-right: 1.1em;
       display: inline-block; }
-      .site-information .page-header a[href^="http"]:not(.is-internal, .listing__title):after {
+      .site-information .page-header a[href^="http"]:not(.is-internal):not(.listing__title):after {
         position: absolute;
         line-height: 2.2; }
-      .site-information .page-header a[href^="http"]:not(.is-internal, .listing__title).btn, .site-information .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal, .listing__title), .inpage-nav__navbar .site-information .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal, .listing__title) {
+      .site-information .page-header a[href^="http"]:not(.is-internal):not(.listing__title).btn, .site-information .page-header .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not(.listing__title), .inpage-nav__navbar .site-information .page-header a[href^="http"].inpage-nav__toggle:not(.is-internal):not(.listing__title) {
         padding-right: 2.1em; }
   .page-header .page-header__top,
   .page-header .page-header__main,
@@ -5088,7 +5089,8 @@ Styleguide: siteheader
   @media (min-width: 992px) {
     .site-header .site-header__logo {
       position: relative;
-      top: 15px; }
+      top: 15px;
+      margin-bottom: 1em; }
     .site-header {
       padding: 14px 0; } }
   @media print {
@@ -5219,24 +5221,22 @@ Markup: html/search-form.html
 Styleguide: siteheader.searchform
 */
 .search-form {
+  display: inline-block;
   margin-bottom: 1em;
   overflow: hidden;
   border: 1px solid #b3b4b5; }
-  .search-form > div {
-    display: table;
-    border-collapse: separate; }
-  .search-form .search-form__textfield-wrapper,
-  .search-form .search-form__btn-wrapper {
+  .search-form .search-form__textfield-wrapper {
     position: relative;
-    display: table-cell; }
+    display: table-cell;
+    margin-bottom: 0;
+    border: 3px solid transparent; }
   .search-form .search-form__btn-wrapper {
-    width: 1%;
-    vertical-align: middle;
-    white-space: nowrap; }
+    font-size: inherit; }
 
 .search-form__textfield {
-  width: 100%;
-  margin: 0;
+  min-height: 2.325em;
+  height: 2.325em;
+  font-size: inherit;
   border: none; }
 
 .search-form__btn {
@@ -5257,21 +5257,20 @@ Styleguide: siteheader.searchform
     text-indent: 0; }
 
 @media (min-width: 992px) {
-  .search-form > div {
-    display: block; }
-  .search-form .search-form__textfield-wrapper {
-    float: left; }
-  .search-form .search-form__btn-wrapper {
-    float: left;
-    width: auto;
-    display: block;
-    vertical-align: inherit;
-    white-space: inherit; }
+  .search-form {
+    margin-bottom: 0; }
+    .search-form .search-form__textfield-wrapper,
+    .search-form .search-form__btn-wrapper {
+      float: left; }
   .search-form__btn {
     padding: 0 1em;
     text-indent: 0; }
     .search-form__btn:before {
       display: none !important; } }
+
+@media (min-width: 480px) {
+  .search-form__textfield {
+    min-height: 2.375em; } }
 
 .site-menu {
   margin-bottom: 0; }
@@ -5726,10 +5725,10 @@ Markup: html/top-image.html
 Styleguide top-image
 */
 .top-image {
-  overflow: hidden; }
+  overflow: hidden;
+  text-align: center; }
   .top-image picture {
-    display: block;
-    text-align: center; }
+    display: inline-block; }
 
 .views-exposed-form .views-exposed-widget {
   padding: 0; }

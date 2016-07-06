@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_policy.features.field_instance.inc
@@ -1239,9 +1240,9 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',

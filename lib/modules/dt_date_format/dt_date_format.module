@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * EC date format definition.
@@ -109,9 +110,9 @@ function dt_date_format_field_formatter_view($obj_type, $object, $field, $instan
 
     if ($display['settings']['render_box']) {
       // Build the array.
-      $markup = '<span class="date-block__day-text">' . implode(' - ', $date_object->getDays()) . '</span>';
-      $markup .= '<span class="date-block__day">' . implode(' - ', $date_object->getDays('d')) . '</span>';
-      $markup .= '<span class="date-block__month">' . implode(' - ', $date_object->getMonths()) . '</span>';
+      $markup = '<span class="date-block__day-text">' . implode('-', $date_object->getDays()) . '</span>';
+      $markup .= '<span class="date-block__day">' . implode('-', $date_object->getDays('d')) . '</span>';
+      $markup .= '<span class="date-block__month">' . implode('-', $date_object->getMonths()) . '</span>';
 
       return [
         [

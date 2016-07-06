@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_news.features.wysiwyg.inc
