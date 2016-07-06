@@ -121,6 +121,7 @@ features[image][] = teaser_image_module_picture_empty_srcset_1x
 features[menu_custom][] = menu-dt-breadcrumb-menu
 features[menu_custom][] = menu-dt-menu-social-media
 features[menu_custom][] = menu-dt-service-links
+features[metatag][] = node
 features[picture_mapping][] = header_image
 features[picture_mapping][] = highlight_image
 features[picture_mapping][] = teaser_image
