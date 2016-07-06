@@ -125,4 +125,7 @@ features_exclude[dependencies][date] = date
 features_exclude[dependencies][image] = image
 features_exclude[dependencies][taxonomy] = taxonomy
 features_exclude[dependencies][views] = views
+features_exclude[dependencies][link] = link
+features_exclude[dependencies][mediafield] = mediafield
+features_exclude[dependencies][number] = number
 multisite_version = 2.2
