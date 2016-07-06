@@ -285,11 +285,13 @@ function _dt_event_ds_fields_status_message($field) {
       }
       break;
 
-    case DT_EVENT_STATE_RESCHEDULED:
-      $render_config['#message_title'] = t('This event has been rescheduled');
-      $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
-      $render_config['#message_classes'][] = 'warning';
-      $render_config['#message_type'] = 'Warning message';
+    case DT_EVENT_STATE_FUTURE:
+      if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
+        $render_config['#message_title'] = t('This event has been rescheduled');
+        $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
+        $render_config['#message_classes'][] = 'warning';
+        $render_config['#message_type'] = 'Warning message';
+      }
       break;
 
     case DT_EVENT_STATE_CANCELLED:
@@ -321,8 +323,10 @@ function _dt_event_ds_fields_status_message($field) {
  */
 function _dt_event_ds_fields_status_label($field) {
   switch ($field['entity']->event_status) {
-    case DT_EVENT_STATE_RESCHEDULED:
-      $label = t('Rescheduled');
+    case DT_EVENT_STATE_FUTURE:
+      if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
+        $label = t('Rescheduled');
+      }
       break;
 
     case DT_EVENT_STATE_CANCELLED:
@@ -391,7 +395,6 @@ function _dt_event_ds_fields_book_your_seat($field) {
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
-    DT_EVENT_STATE_RESCHEDULED,
   ];
 
   // Few conditions should be met.
@@ -465,7 +468,6 @@ function _dt_event_ds_fields_livestreaming($field) {
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
-    DT_EVENT_STATE_RESCHEDULED,
   ];
 
   // Few conditions should be met.
