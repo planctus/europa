@@ -28,12 +28,11 @@ class FacetapiUrlViews extends FacetapiUrlProcessorStandard {
       }
       // Only add facets with a value.
       if (!empty($facet_value)) {
-        $parameters[$filter_key][] = preg_replace('/^facet__(.*)__\B/', '', $facet_key, 1) . ':' . $facet_value;
+        $parameters[$filter_key][] = str_replace(':', urlencode(':'), preg_replace('/^facet__(.*)__\B/', '', $facet_key, 1)) . ':' . $facet_value;
       }
       // In all cases, we remove the key from the parameters.
       unset($parameters[$facet_key]);
     }
-
     return $parameters;
   }
 

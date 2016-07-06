@@ -21,10 +21,11 @@ Feature: Events listing
 
     Given I am logged in as a user with the "administrator" role
     And "Event" content:
-      | title        | status | field_event_status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date |
-      | Energy event | 1      | no                 | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       |
-      | Food event   | 1      | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
-      | Extra event  | 1      | no                 | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       |
+      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date | field_core_location               |
+      | Energy event  | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       |                                   |
+      | Belgium event | 1      | Energy            | Budget                 | no                    | no                            | Dialogue         | 1469952000       | country: BE - locality: Brussel   |
+      | Food event    | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: NL - locality: Amsterdam |
+      | Extra event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: FR - locality: Paris     |
     And I index all indexes
 
   Scenario: On the events listing page I should see the events.
@@ -44,6 +45,23 @@ Feature: Events listing
     And I select "Conference" from "Event type"
     And I select "Budget" from "Organizer"
     And I select "ClimateAction" from "Organizer"
+    And I select "Belgium" from "Location"
+    And I select "Netherlands" from "Location"
+    And I select "France" from "Location"
+
+  Scenario Outline: I should be able to filter by Country
+    Given I am on "Events"
+    And I select "<country>" from "Location"
+    And I press the "Refine results" button
+    Then I should see "<should_see>"
+    And I should not see "<should_not_see_1>"
+    And I should not see "<should_not_see_2>"
+
+    Examples:
+      | country | should_see   | should_not_see_1 | should_not_see_2 |
+      | Belgium | Energy event | Food event       | Extra event      |
+      | Netherlands | Food event   | Energy event     | Extra event      |
+      | France      | Extra event  | Energy event     | Food event       |
 
   Scenario Outline: I should be able to filter by various filters on the event listing page (select)
     Given I am on "Events"
