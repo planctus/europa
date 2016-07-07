@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the base method for FacetInFilters widgets.
