@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Event ds fields.
@@ -261,7 +262,7 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
 function _dt_event_ds_fields_status_message($field) {
   // Default config.
   $render_config = [
-    '#theme' => 'dt_core_status_message',
+    '#theme' => 'europa_status_message',
     '#message_classes' => ['messages--icon-center'],
   ];
 
@@ -271,29 +272,37 @@ function _dt_event_ds_fields_status_message($field) {
   }
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
-      $render_config['#message_title'] = t('This event is going on right now');
+      $render_config['#message_title'] = t('This event has started.');
 
       // If live stream is available we add it to the message.
-      if (_dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])) {
+      if (
+        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING
+        && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])
+      ) {
         $render_config['#message_body'] = l(t('Watch live streaming'), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
-        $render_config['#message_type'] = 'live';
+        $render_config['#message_classes'][] = 'live';
+        $render_config['#message_type'] = 'Live streaming message';
       }
       break;
 
-    case DT_EVENT_STATE_RESCHEDULED:
-      $render_config['#message_title'] = t('This event has been rescheduled');
-      $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
-      $render_config['#message_type'] = 'warning';
+    case DT_EVENT_STATE_FUTURE:
+      if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
+        $render_config['#message_title'] = t('This event has been rescheduled');
+        $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
+        $render_config['#message_classes'][] = 'warning';
+        $render_config['#message_type'] = 'Warning message';
+      }
       break;
 
     case DT_EVENT_STATE_CANCELLED:
-      $render_config['#message_title'] = t('This event has been cancelled');
+      $render_config['#message_title'] = t('This event has been cancelled.');
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
-      $render_config['#message_type'] = 'warning';
+      $render_config['#message_classes'][] = 'warning';
+      $render_config['#message_type'] = 'Warning message';
       break;
 
     case DT_EVENT_STATE_PAST:
-      $render_config['#message_title'] = t('This event has ended');
+      $render_config['#message_title'] = t('This event has ended.');
       break;
 
     default:
@@ -314,8 +323,10 @@ function _dt_event_ds_fields_status_message($field) {
  */
 function _dt_event_ds_fields_status_label($field) {
   switch ($field['entity']->event_status) {
-    case DT_EVENT_STATE_RESCHEDULED:
-      $label = t('Rescheduled');
+    case DT_EVENT_STATE_FUTURE:
+      if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
+        $label = t('Rescheduled');
+      }
       break;
 
     case DT_EVENT_STATE_CANCELLED:
@@ -384,7 +395,6 @@ function _dt_event_ds_fields_book_your_seat($field) {
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
-    DT_EVENT_STATE_RESCHEDULED,
   ];
 
   // Few conditions should be met.
@@ -404,7 +414,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
       $emw->field_event_live_streaming_link->value()
     ) {
-      $button_text = t('Watch live now');
+      $button_text = t('Watch live');
       $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
     }
 
@@ -458,7 +468,6 @@ function _dt_event_ds_fields_livestreaming($field) {
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
-    DT_EVENT_STATE_RESCHEDULED,
   ];
 
   // Few conditions should be met.
@@ -470,7 +479,7 @@ function _dt_event_ds_fields_livestreaming($field) {
         $replacement = [
           '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'h:i (T)', $timezone),
         ];
-        $streaming_text = t('<strong>Or watch live streaming</strong> at @time', $replacement);
+        $streaming_text = t('<strong>Watch live</strong> at @time', $replacement);
         break;
 
       case DT_EVENT_LIVE_STREAM_ONGOING:
@@ -552,11 +561,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_j - ed_j sd_F sd_Y');
+          $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_j sd_F - ed_j ed_F sd_Y');
+          $date_object->setFormat('sd_j sd_F – ed_j ed_F sd_Y');
         }
         break;
 
@@ -574,11 +583,11 @@ function _dt_event_ds_fields_header_event($field) {
         }
         // Not the same day, but the same month.
         elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-          $date_object->setFormat('sd_l sd_j - ed_l ed_j sd_F');
+          $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
         }
         // Not the same day or month. (fallback).
         else {
-          $date_object->setFormat('sd_l sd_j sd_F - ed_l ed_j ed_F');
+          $date_object->setFormat('sd_l sd_j sd_F – ed_l ed_j ed_F');
         }
     }
 

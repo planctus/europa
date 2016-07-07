@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_banner_video.default_picture_mapping.inc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_highlights.strongarm.inc

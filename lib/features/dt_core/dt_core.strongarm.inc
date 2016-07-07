@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_core.strongarm.inc
@@ -146,7 +147,7 @@ function dt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'easy_breadcrumb-include_title_segment';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['easy_breadcrumb-include_title_segment'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -183,6 +184,27 @@ function dt_core_strongarm() {
     'user' => 0,
   );
   $export['entity_translation_entity_types'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_punctuation_left_parenthesis';
+  $strongarm->value = '1';
+  $export['pathauto_punctuation_left_parenthesis'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_punctuation_right_parenthesis';
+  $strongarm->value = '1';
+  $export['pathauto_punctuation_right_parenthesis'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_punctuation_slash';
+  $strongarm->value = '1';
+  $export['pathauto_punctuation_slash'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_team.default_picture_mapping.inc

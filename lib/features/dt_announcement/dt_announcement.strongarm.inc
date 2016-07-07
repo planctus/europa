@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_announcement.strongarm.inc
@@ -139,7 +140,7 @@ function dt_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_announcement';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_announcement'] = $strongarm;
 
   $strongarm = new stdClass();

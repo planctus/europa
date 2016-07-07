@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Department feature.
@@ -13,7 +14,7 @@ function dt_department_migrate_api() {
   return array(
     'api' => 2,
     'groups' => array(
-      'NextEuropa' => array(
+      'NextEuropa Digital Transformation' => array(
         'title' => t('Stage initial content, department tasks.'),
       ),
     ),

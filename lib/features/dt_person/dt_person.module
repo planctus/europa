@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Person feature.
@@ -13,7 +14,7 @@ function dt_person_migrate_api() {
   return array(
     'api' => 2,
     'groups' => array(
-      'NextEuropa' => array(
+      'NextEuropa Digital Transformation' => array(
         'title' => t('Including taxonomy terms in the Person roles vocabulary.'),
       ),
     ),

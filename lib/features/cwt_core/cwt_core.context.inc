@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_core.context.inc
@@ -26,17 +27,23 @@ function cwt_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'cwt_core-cwt_header_site_tab_switcher' => array(
+          'module' => 'cwt_core',
+          'delta' => 'cwt_header_site_tab_switcher',
+          'region' => 'header_top',
+          'weight' => '-10',
+        ),
         'cwt_core-translation_selector' => array(
           'module' => 'cwt_core',
           'delta' => 'translation_selector',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-64',
         ),
         'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
           'module' => 'nexteuropa_europa_search',
           'delta' => 'nexteuropa_europa_search_form',
           'region' => 'header',
-          'weight' => '-8',
+          'weight' => '-63',
         ),
         'easy_breadcrumb-easy_breadcrumb' => array(
           'module' => 'easy_breadcrumb',
@@ -54,7 +61,13 @@ function cwt_core_context_default_contexts() {
           'module' => 'nexteuropa_feedback',
           'delta' => 'nexteuropa_feedback',
           'region' => 'footer_top',
-          'weight' => '-42',
+          'weight' => '-64',
+        ),
+        'cwt_core-cwt_footer_site_tab_switcher' => array(
+          'module' => 'cwt_core',
+          'delta' => 'cwt_footer_site_tab_switcher',
+          'region' => 'footer_top',
+          'weight' => '-63',
         ),
         'menu-menu-dt-menu-social-media' => array(
           'module' => 'menu',

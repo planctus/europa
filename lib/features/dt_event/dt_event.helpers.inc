@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains all non hook, helper function for dt_event.
@@ -16,7 +17,10 @@ function _dt_event_entity_add_status_property(&$entity) {
 
   // We should always have this set. But we make sure by doing this that we
   // are not working with bad entity's.
-  if ($emw->__isset('field_event_status')) {
+  if (!empty($entity->field_event_collection) && !$emw->field_event_collection->value() && $emw->__isset('field_event_status')) {
+
+    // Always set rescheduled initially to false.
+    $entity->event_status_rescheduled = 0;
 
     // Based on the state, we set the property.
     switch ($emw->field_event_status->value()) {
@@ -26,13 +30,14 @@ function _dt_event_entity_add_status_property(&$entity) {
         break;
 
       case 'rescheduled':
-        // Rescheduled events.
-        $entity->event_status = DT_EVENT_STATE_RESCHEDULED;
-        break;
-
       case 'no':
+
+        if ($emw->field_event_status->value() == 'rescheduled') {
+          $entity->event_status_rescheduled = 1;
+        }
+
         // If it has no special state, we base it on the dates.
-        if ($emw->__isset('field_event_date')) {
+        if (!empty($entity->field_event_date) && $emw->__isset('field_event_date')) {
           $start_date = $emw->field_event_date->value->value();
 
           // We always need a start date.

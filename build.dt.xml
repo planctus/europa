@@ -264,6 +264,12 @@
         />
     </target>
 
+    <target name="delete-platform-vendor">
+        <phingcall target="delete-folder">
+            <property name="folder.to.delete" value="${platform.build.dir}/vendor" />
+        </phingcall>
+    </target>
+
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."

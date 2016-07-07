@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_policy.views_default.inc
@@ -28,6 +29,7 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
@@ -48,24 +50,24 @@ function dt_policy_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_title_field|title_field_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'title';
-  /* Field: Content: Description */
+  /* Field: Field: Description */
   $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
   $handler->display->display_options['fields']['field_core_description']['table'] = 'field_data_field_core_description';
   $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';
   $handler->display->display_options['fields']['field_core_description']['label'] = '';
   $handler->display->display_options['fields']['field_core_description']['element_label_colon'] = FALSE;
-  /* Field: Content: Introduction */
+  /* Field: Field: Introduction */
   $handler->display->display_options['fields']['field_core_introduction']['id'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['table'] = 'field_data_field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
   $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Field: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Sort criterion: Content: Title (title_field) */
+  /* Sort criterion: Field: Title (title_field) */
   $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';

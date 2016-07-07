@@ -22,6 +22,22 @@
   }
 }
 
+// .listing--agenda modifier.
+.listing--agenda {
+  // override on the address module css rules.
+  div.addressfield-container-inline:after {
+    display: inline;
+    height: auto;
+    clear: none;
+    visibility: visible;
+  }
+
+  .meta__item .locality-block:after {
+    content: ",\00a0";
+    white-space: pre;
+  }
+}
+
 .print-content {
   .view-agenda {
     .filters__result-count,
