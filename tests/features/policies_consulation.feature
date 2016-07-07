@@ -26,8 +26,8 @@ I should be able to create consulation content
       | Impact Assessment title |
 
     Given "policy" content:
-      | title                  | field_core_introduction | field_policy_input |
-      | Policy with assessment | Introduction            | Impact Assessment title  |
+      | title                  | field_core_introduction | field_policy_input      |
+      | Policy with assessment | Introduction            | Impact Assessment title |
 
 
     And I am logged in as a user with the "editor" role

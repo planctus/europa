@@ -1,4 +1,4 @@
-@api @shared
+@api @information @political
 Feature: Search in views in any given language
   To deliver the best user experience
   As a user
@@ -12,7 +12,7 @@ Feature: Search in views in any given language
     And the "<language>" language is available
     And I go to "/topics_en"
     Then I should see "<sourcetitle>"
-    When I fill in "edit-combine" with "<sourcetitle>"
+    When I fill in "by keyword" with "<sourcetitle>"
     And I press "edit-submit-topics"
     Then I should see "<sourcetitle>" in the ".view-id-topics .view-content" element
     When I follow "<sourcetitle>"
@@ -38,6 +38,9 @@ Feature: Search in views in any given language
       | <sourcetitle> | bar  | en       | 1      | speech                  | Brussels                    | bar                     | A page (default) in this website |
     And the "<language>" language is available
     And I go to "/announcements_en"
+    Then I fill in the following:
+      | Containing | <sourcetitle> |
+    Then I press "Refine results"
     Then I should see "<sourcetitle>"
     When I fill in "edit-combine" with "<sourcetitle>"
     And I press "edit-submit-announcements"
@@ -48,6 +51,9 @@ Feature: Search in views in any given language
     And I fill in "Moderation state" with "published"
     And I press "Save"
     And I go to "/announcements_<language>"
+    Then I fill in the following:
+      | Containing | <search> |
+    Then I press "edit-submit-announcements"
     Then I should see "<title>"
     When I fill in "edit-combine" with "<search>"
     And I press "edit-submit-announcements"
