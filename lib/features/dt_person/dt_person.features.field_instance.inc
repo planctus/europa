@@ -132,7 +132,7 @@ function dt_person_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 72,
+      'weight' => 74,
     ),
   );
 
@@ -486,7 +486,7 @@ function dt_person_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 71,
     ),
   );
 
@@ -570,7 +570,7 @@ function dt_person_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 71,
+      'weight' => 73,
     ),
   );
 
@@ -646,7 +646,7 @@ function dt_person_field_default_field_instances() {
         'size' => 150,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 72,
     ),
   );
 
