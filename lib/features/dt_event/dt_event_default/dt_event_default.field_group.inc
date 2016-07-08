@@ -1697,6 +1697,7 @@ function dt_event_default_field_group_info() {
   // Included for use with string extractors like potx.
   t('About');
   t('After the event');
+  t('Agenda');
   t('Contact');
   t('Content');
   t('Context nav');
@@ -1704,12 +1705,10 @@ function dt_event_default_field_group_info() {
   t('Documents');
   t('Editorial settings');
   t('Events');
-  t('What others are saying');
   t('Latest section');
   t('Left');
   t('Live feed');
   t('Meta');
-  t('Upcoming events');
   t('Past events');
   t('Practical info left');
   t('Practical info right');
@@ -1718,10 +1717,11 @@ function dt_event_default_field_group_info() {
   t('Related links');
   t('Right');
   t('Row');
-  t('Agenda');
   t('Section');
   t('Speakers');
   t('Summary');
+  t('Upcoming events');
+  t('What others are saying');
   t('row');
   t('video');
 

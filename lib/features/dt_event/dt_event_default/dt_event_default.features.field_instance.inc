@@ -2872,7 +2872,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 4,
     ),
   );
@@ -4026,6 +4026,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   // Translatables
   // Included for use with string extractors like potx.
   t('Add the link where you must register in order to attend the event.');
+  t('Agenda');
   t('All places have been booked.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
@@ -4036,7 +4037,6 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   t('Date and time of live streaming');
   t('Description');
   t('Details concerning the timing and schedule of an event. This can be limited or extended.');
-  t('Registration fee');
   t('Event date and time');
   t('Event type');
   t('Events in the collection');
@@ -4068,6 +4068,7 @@ For collection, this is a text with more information about the collection.');
   t('Location image');
   t('Main video or image of the event. Is displayed at the top of the page.');
   t('More info on the status. For example reason of cancellation or former date etc.');
+  t('Number of places');
   t('On what day does the event start?
 On what day does the event end?');
   t('Online only');
@@ -4094,9 +4095,9 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
 ```');
   t('Registration');
   t('Registration deadline');
+  t('Registration fee');
   t('Related links');
   t('Report on the course of the event');
-  t('Agenda');
   t('Scribble id');
   t('Select one or more departments that organize the event.
 Note: this may need to be extended to external and 3rd party organizers as well.');
@@ -4105,19 +4106,16 @@ Note: this may need to be extended to external and 3rd party organizers as well.
   t('Social media profile links');
   t('Speakers');
   t('Status description');
+  t('Summary');
   t('Tagline');
-  t('Who should attend');
   t('This is displayed as \'meta\' information in addition to the event title. Events can also be filtered by \'event type\'.');
   t('Title');
-  t('Title Text');
-  t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
   t('To which topics does the event or collection relate?');
   t('Topic');
   t('Total number of places that are available. Indicates the size of the event.');
-  t('Number of places');
   t('Website');
   t('What do you want to create?');
-  t('Summary');
+  t('Who should attend');
 
   return $field_instances;
 }
