@@ -76,7 +76,7 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
     return;
   }
 
-  // Get the key from the correct choice
+  // Get the key from the correct choice.
   $default_choice_key = key($possible_choices);
   // Set the default value.
   $form[$field_name][LANGUAGE_NONE][0]['default']['#default_value'] = [$default_choice_key];
