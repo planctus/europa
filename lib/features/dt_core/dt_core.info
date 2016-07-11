@@ -32,6 +32,7 @@ dependencies[] = nexteuropa_formatters
 dependencies[] = nexteuropa_inpage_nav
 dependencies[] = nexteuropa_metatags
 dependencies[] = nexteuropa_views
+dependencies[] = og_role_override
 dependencies[] = picture
 dependencies[] = retina_images
 dependencies[] = strongarm
