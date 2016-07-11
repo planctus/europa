@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * @file
  * dt_person.default_picture_mapping.inc
