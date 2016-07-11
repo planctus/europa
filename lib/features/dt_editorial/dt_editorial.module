@@ -56,8 +56,11 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
   }
 
   $field_name = 'og_group_ref';
-  // Check if the field exists.
-  if (!isset($form[$field_name])) {
+  $node = $form_state['node'];
+  $is_new_node = !isset($node->nid);
+
+  // Check if the field exists and it's a new node.
+  if (!isset($form[$field_name]) || !$is_new_node) {
     return;
   }
 
