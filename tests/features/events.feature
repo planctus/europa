@@ -22,8 +22,7 @@ Feature: Events listing
     Given I am logged in as a user with the "administrator" role
     And "Event" content:
       | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date | field_core_location               |
-      | Energy event  | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       |                                   |
-      | Belgium event | 1      | Energy            | Budget                 | no                    | no                            | Dialogue         | 1469952000       | country: BE - locality: Brussel   |
+      | Energy event  | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       | country: BE - locality: Brussel   |
       | Food event    | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: NL - locality: Amsterdam |
       | Extra event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: FR - locality: Paris     |
     And I index all indexes
@@ -58,8 +57,8 @@ Feature: Events listing
     And I should not see "<should_not_see_2>"
 
     Examples:
-      | country | should_see   | should_not_see_1 | should_not_see_2 |
-      | Belgium | Energy event | Food event       | Extra event      |
+      | country     | should_see   | should_not_see_1 | should_not_see_2 |
+      | Belgium     | Energy event | Food event       | Extra event      |
       | Netherlands | Food event   | Energy event     | Extra event      |
       | France      | Extra event  | Energy event     | Food event       |
 
