@@ -143,7 +143,7 @@ function dt_person_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '10',
+          'weight' => '4',
         ),
         'scheduler_settings' => array(
           'weight' => '8',
@@ -152,7 +152,7 @@ function dt_person_strongarm() {
           'weight' => '5',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '5',
         ),
       ),
       'display' => array(),

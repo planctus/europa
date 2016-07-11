@@ -205,3 +205,48 @@ function dt_person_update_7108() {
     }
   }
 }
+
+/**
+ * DTTSB-606: Updating Type of Person defaults.
+ */
+function dt_person_update_7109(&$sandbox) {
+  // Initial settings.
+  if (!isset($sandbox['max'])) {
+    // Reverting dt_person.
+    features_revert_module('dt_person');
+    // Query all nid item.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'person');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = 100;
+  $nids = db_select('node', 'n')
+    ->condition('n.type', 'person')
+    ->fields('n', array('nid'))
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit)
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = entity_load('node', $nids);
+    foreach ($nodes as $node) {
+      // Update of field_type_of_person.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $wrapper->field_type_of_person->set(0);
+      $wrapper->save();
+    }
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
