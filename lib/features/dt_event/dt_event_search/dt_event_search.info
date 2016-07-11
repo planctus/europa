@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation
 dependencies[] = ctools
 dependencies[] = dt_event
+dependencies[] = dt_event_default
 dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = search_api

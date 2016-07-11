@@ -232,7 +232,7 @@ function dt_event_search_default_search_api_server() {
           },
           "field_event_collection" : {
             "table" : "search_api_db_event_index",
-            "column" : "field_event_collection_1",
+            "column" : "field_event_collection",
             "type" : "string",
             "boost" : "1.0"
           }

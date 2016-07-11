@@ -5,7 +5,6 @@ package = NextEuropa Digital Transformation
 dependencies[] = conditional_fields
 dependencies[] = dt_date_format
 dependencies[] = dt_event
-dependencies[] = dt_event_search
 dependencies[] = field_group
 features[conditional_fields][] = node:event
 features[ctools][] = ds:ds:1
