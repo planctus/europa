@@ -188,7 +188,7 @@ function _dt_policy_next_step_time_start_date_validate($element, &$form_state, $
   $steps_in_bullets_is_empty = empty($steps_in_bullets);
 
   if (($start_date_is_empty && !$end_date_is_empty) ||
-      ($start_date_is_empty && !$steps_in_bullets_is_empty)) {
+    ($start_date_is_empty && !$steps_in_bullets_is_empty)) {
     form_error($element['time_date_start'], t('Start date is required.'));
   }
 }
@@ -261,6 +261,7 @@ function dt_policy_next_step_field_formatter_info() {
       'field types' => array('dt_policy_next_step_field'),
       'settings' => array(
         'modifier' => '',
+        'timeline_expander_disable' => 0,
         'date_formatter' => '',
         'show_timezone' => 1,
       ),
@@ -277,6 +278,12 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
 
   $element = array();
 
+  $element['timeline_expander_disable'] = array(
+    '#title' => t('Disable timeline expander'),
+    '#type' => 'checkbox',
+    '#default_value' => isset($settings['timeline_expander_disable']) ? $settings['timeline_expander_disable'] : 0,
+    '#description' => t('Choose whether to display all timeline items at once.'),
+  );
   $element['modifier'] = array(
     '#title' => t('Modifier'),
     '#type' => 'select',
@@ -313,11 +320,13 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $elements = array();
   if (!empty($items)) {
+
+    $timeline_expander_disable = isset($display['settings']['timeline_expander_disable']) ? $display['settings']['timeline_expander_disable'] : 0;
     $modifier = !empty($display['settings']['modifier']) ? ' ' . $display['settings']['modifier'] : '';
     $date_formatter = empty($display['settings']['date_formatter']) ? 'H.i' : $display['settings']['date_formatter'];
     $show_timezone = isset($display['settings']['show_timezone']) ? $display['settings']['show_timezone'] : 1;
 
-    $elements['#prefix'] = '<div class="timeline' . $modifier . '">';
+    $elements['#prefix'] = '<div class="timeline' . $modifier . '" data-expander-disable=' . $timeline_expander_disable . '>';
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {
       $item = _dt_policy_next_step_sanitize($item, $langcode);
