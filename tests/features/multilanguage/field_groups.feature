@@ -18,7 +18,5 @@ Feature: Field groups should follow the content language and should be translate
     And I translate the string "Featured" to "German" with "Im Bild"
     And I go to add "de" translation
     And I fill in "title_field[de][0][value]" with "test de"
-    Then show last response
     And I press "Save"
-    Then show last response
     Then I should see the heading "Im Bild"
