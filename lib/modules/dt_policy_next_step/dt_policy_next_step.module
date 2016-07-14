@@ -314,7 +314,7 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
   $elements = array();
   if (!empty($items)) {
     $modifier = !empty($display['settings']['modifier']) ? ' ' . $display['settings']['modifier'] : '';
-    $date_formatter = empty($display['settings']['date_formatter']) ? 'H:i' : $display['settings']['date_formatter'];
+    $date_formatter = empty($display['settings']['date_formatter']) ? 'H.i' : $display['settings']['date_formatter'];
     $show_timezone = isset($display['settings']['show_timezone']) ? $display['settings']['show_timezone'] : 1;
 
     $elements['#prefix'] = '<div class="timeline' . $modifier . '">';
