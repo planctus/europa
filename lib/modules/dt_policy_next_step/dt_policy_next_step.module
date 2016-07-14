@@ -384,6 +384,7 @@ function dt_policy_next_step_theme() {
  * Formats a next step default.
  */
 function theme_dt_policy_next_step_formatter_default($vars) {
+  static $delta = 0;
   $element = $vars['element'];
   $widget_settings = $vars['field']['widget']['settings'];
   $timeline_type = isset($widget_settings['value']['timeline_type']) ? $widget_settings['value']['timeline_type'] : $widget_settings['timeline_type'];
@@ -408,7 +409,8 @@ function theme_dt_policy_next_step_formatter_default($vars) {
       if (!empty($element['time_date_end'])) {
         $output .= ' - ' . date($date_formatter, strtotime($element['time_date_end']));
       }
-      if ($show_timezone && isset($element['timezone'])) {
+      // If timezone is desired and set, put it only on the first item.
+      if ($show_timezone && isset($element['timezone']) && $delta == 0) {
         $output .= ' (' . $element['timezone'] . ')';
       }
       $output .= '</div>';
@@ -420,5 +422,7 @@ function theme_dt_policy_next_step_formatter_default($vars) {
   }
 
   $output .= '</div>';
+
+  ++$delta;
   return $output;
 }
