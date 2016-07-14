@@ -54,6 +54,32 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['field_editorial_types'])) {
     $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
   }
+
+  $field_name = 'og_group_ref';
+  $node = $form_state['node'];
+  $is_new_node = !isset($node->nid);
+
+  // Check if the field exists and it's a new node.
+  if (!isset($form[$field_name]) || !$is_new_node) {
+    return;
+  }
+
+  // Get the possible choices.
+  $possible_choices = $form[$field_name][LANGUAGE_NONE][0]['default']['#options'];
+  if (isset($possible_choices['_none'])) {
+    unset($possible_choices['_none']);
+  }
+  $number_of_choices = count($possible_choices);
+
+  // If there is more then one possible choice do nothing.
+  if ($number_of_choices != 1) {
+    return;
+  }
+
+  // Get the key from the correct choice.
+  $default_choice_key = key($possible_choices);
+  // Set the default value.
+  $form[$field_name][LANGUAGE_NONE][0]['default']['#default_value'] = [$default_choice_key];
 }
 
 /**

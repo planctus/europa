@@ -45,6 +45,9 @@ projects[nodequeue][version] = "2.0-beta1"
 projects[node_convert][subdir] = "contrib"
 projects[node_convert][version] = "1.2"
 
+projects[og_role_override][subdir] = "contrib"
+projects[og_role_override][version] = "2.2"
+
 projects[picture][subdir] = "contrib"
 projects[picture][version] = "2.9"
 

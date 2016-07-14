@@ -1,4 +1,4 @@
-@api @shared
+@api @information
 Feature: Contact phone should be converted to HTML links.
 When I log into the website
 As an editor

@@ -22,7 +22,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '9',
+    'weight' => '68',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -52,7 +52,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '8',
+    'weight' => '67',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -79,7 +79,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '0',
+    'weight' => '3',
     'children' => array(
       0 => 'group_editorial_settings',
       1 => 'group_person_contact',
@@ -159,16 +159,16 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Profile',
-    'weight' => '1',
+    'weight' => '65',
     'children' => array(
-      0 => 'field_person_existing_profile',
-      1 => 'field_person_first_name',
-      2 => 'field_person_gender',
-      3 => 'field_person_last_name',
-      4 => 'field_person_photo',
-      5 => 'field_person_role',
-      6 => 'field_person_tagline',
-      7 => 'field_core_legacy_link',
+      0 => 'field_person_first_name',
+      1 => 'field_person_gender',
+      2 => 'field_person_last_name',
+      3 => 'field_person_photo',
+      4 => 'field_person_role',
+      5 => 'field_person_tagline',
+      6 => 'field_core_legacy_link',
+      7 => 'field_role_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -194,7 +194,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Technical fields',
-    'weight' => '6',
+    'weight' => '66',
     'children' => array(
       0 => 'title_field',
     ),

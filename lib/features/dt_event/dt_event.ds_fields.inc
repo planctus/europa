@@ -546,11 +546,22 @@ function _dt_event_ds_fields_header_event($field) {
     );
 
     switch ($field['entity']->event_status) {
-      // Ongoing, it shows the current date.
+      // Ongoing, apply the right date format.
       case DT_EVENT_STATE_ONGOING:
-        // If it is ongoing, we use the current date.
-        $date_object->setStartDate(time());
-        $date_object->setFormat('sd_l sd_j sd_F');
+        // Same date||day||hour (Tuesday 17 March).
+        if ($date_object->isSameDate(TRUE)) {
+          // If it is ongoing, we use the current date.
+          $date_object->setStartDate(time());
+          $date_object->setFormat('sd_l sd_j sd_F');
+        }
+        // Not the same day, but the same month.
+        elseif ($date_object->isSameDate(FALSE, 'Ym')) {
+          $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
+        }
+        // Not the same day or month. (fallback).
+        else {
+          $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
+        }
         break;
 
       // Past event, it shows also the year.

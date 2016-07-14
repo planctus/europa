@@ -30,7 +30,27 @@ Feature: Announcements block
       | Topic        | field_core_topics     | should        |
       | Priority     | field_core_priorities | should        |
 
-  @shared @brp
+  @political
+  Scenario Outline: Visitors should see the latests announcements block on content types
+    Given I am logged in as a user with the "administrator" role
+    Given "<content_name>" content:
+      | title                             | status | field_core_description |
+      | <content_name> with announcements | 1      | Sample description     |
+    Given "Announcement" content:
+      | title                          | status | <reference_fieldname>             |
+      | Announcement on <content_name> | 1      | <content_name> with announcements |
+    When I go to "admin/content"
+    And I follow "<content_name> with announcements"
+    Then I <label_visible> see an ".field--announcement-block h2" element
+    Then I should see the link "Announcement on <content_name>"
+
+    Examples:
+      | content_name | reference_fieldname   | label_visible |
+      | Policy       | field_core_policies   | should not    |
+      | Topic        | field_core_topics     | should        |
+      | Priority     | field_core_priorities | should        |
+
+  @information @political
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role
     Given "Page" content:
@@ -50,7 +70,7 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on Page"
 
-  @shared
+  @information @political
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
     Given "Priority policy area" content:
@@ -70,7 +90,7 @@ Feature: Announcements block
     Then I should see an ".field--announcement-block h2" element
     Then I should see the link "Announcement on PPA"
 
-  @information
+  @information @political
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     Given "Social Networks" terms:
@@ -99,7 +119,7 @@ Feature: Announcements block
     Then I should see "Other social networks" in the ".social-media-links" element
     Then I should see "Facebook" in the ".social-media-links" element
 
-  @information
+  @information @political
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
     Given "Featured item" content:
@@ -120,4 +140,3 @@ Feature: Announcements block
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
     Then I should see "Featured item" in the ".featured-item" element
-
