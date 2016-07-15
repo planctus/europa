@@ -86,3 +86,9 @@
     }
   }
 }
+
+@include breakpoint(screen-md-min) {
+  #commissioners > div > h3 {
+    float: left;
+  }
+}

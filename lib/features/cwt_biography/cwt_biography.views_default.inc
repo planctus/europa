@@ -219,6 +219,17 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_team_term']['alter']['text'] = '<span class="term">([field_team_term])</span>';
   $handler->display->display_options['fields']['field_team_term']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_team_term']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Custom term */
+  $handler->display->display_options['fields']['field_biography_custom_term']['id'] = 'field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['table'] = 'field_data_field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['field'] = 'field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_custom_term']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['alter']['text'] = '<span class="term">([field_biography_custom_term])</span>';
+  $handler->display->display_options['fields']['field_biography_custom_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['empty'] = '[field_team_term]';
+  $handler->display->display_options['fields']['field_biography_custom_term']['type'] = 'text_plain';
   /* Field: role_masculine */
   $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
   $handler->display->display_options['fields']['name_field']['table'] = 'field_data_name_field';
@@ -283,7 +294,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="meta meta--header">
-  <div class="meta__item meta__item--type">[field_gender] [field_team_term]</div>
+  <div class="meta__item meta__item--type">[field_gender] [field_biography_custom_term]</div>
   </div>
   <h1>[field_biography_last_name]</h1>
   <p>[field_biography_tagline]</p>';
@@ -1614,6 +1625,10 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'biography' => 'biography',
   );
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1629,6 +1644,24 @@ function cwt_biography_views_default_views() {
     'biography' => 'biography',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Address - Country */
+  $handler->display->display_options['filters']['field_biography_address_country']['id'] = 'field_biography_address_country';
+  $handler->display->display_options['filters']['field_biography_address_country']['table'] = 'field_data_field_biography_address';
+  $handler->display->display_options['filters']['field_biography_address_country']['field'] = 'field_biography_address_country';
+  $handler->display->display_options['filters']['field_biography_address_country']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_biography_address_country']['group'] = 2;
+  /* Filter criterion: Content: E-mail (field_biography_email) */
+  $handler->display->display_options['filters']['field_biography_email_email']['id'] = 'field_biography_email_email';
+  $handler->display->display_options['filters']['field_biography_email_email']['table'] = 'field_data_field_biography_email';
+  $handler->display->display_options['filters']['field_biography_email_email']['field'] = 'field_biography_email_email';
+  $handler->display->display_options['filters']['field_biography_email_email']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_biography_email_email']['group'] = 2;
+  /* Filter criterion: Content: Press contact (field_biography_press_contact) */
+  $handler->display->display_options['filters']['field_biography_press_contact_value']['id'] = 'field_biography_press_contact_value';
+  $handler->display->display_options['filters']['field_biography_press_contact_value']['table'] = 'field_data_field_biography_press_contact';
+  $handler->display->display_options['filters']['field_biography_press_contact_value']['field'] = 'field_biography_press_contact_value';
+  $handler->display->display_options['filters']['field_biography_press_contact_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_biography_press_contact_value']['group'] = 2;
 
   /* Display: Contact block (biography) */
   $handler = $view->new_display('block', 'Contact block (biography)', 'block');
