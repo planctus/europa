@@ -293,7 +293,7 @@ function dt_contact_field_default_field_instances() {
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
-        'default_country' => 'BE',
+        'default_country' => '',
         'format_handlers' => array(
           'address' => 'address',
           'organisation' => 'organisation',
