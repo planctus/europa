@@ -18,6 +18,7 @@
     "pear/archive_tar": "^1.4@dev",
     "pear/versioncontrol_git": "dev-master",
     "pfrenssen/phpcs-pre-push": "1.0",
+    "pfrenssen/multisite-review": "*",
     "phing/phing": "~2.10",
     "php": ">=5.4.0",
     "typhonius/behattask": "1.0"
@@ -79,6 +80,18 @@
     {
       "type": "composer",
       "url": "http://packagist.drupal-composer.org"
+    },
+    {
+      "type":"package",
+      "package": {
+        "name": "pfrenssen/multisite-review",
+        "version":"2",
+        "source": {
+          "url": "https://github.com/pfrenssen/multisite_review.git",
+          "type": "git",
+          "reference":"7.x-2.x"
+        }
+      }
     }
   ],
   "scripts": {

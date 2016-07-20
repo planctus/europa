@@ -113,7 +113,7 @@ function cwt_activities_field_default_field_bases() {
       'tz_handling' => 'none',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   return $field_bases;

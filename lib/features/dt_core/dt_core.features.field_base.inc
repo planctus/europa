@@ -189,7 +189,7 @@ function dt_core_field_default_field_bases() {
       'tz_handling' => 'site',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_core_date_updated'.
@@ -219,7 +219,7 @@ function dt_core_field_default_field_bases() {
       'tz_handling' => 'none',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_core_description'.

@@ -103,7 +103,7 @@
     <target name="make-dev" depends="unpack-platform">
         <echo msg="Make the subsite." />
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="${subsite.make}" />
+            <property name="drush.make.target.file" value="${development.make.dev}" />
             <property name="drush.make.root" value="${platform.build.dir}" />
         </phingcall>
     </target>
