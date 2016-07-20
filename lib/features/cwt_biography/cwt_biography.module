@@ -91,6 +91,10 @@ function cwt_biography_node_view($node, $view_mode, $langcode) {
  */
 function cwt_biography_field_group_pre_render(&$element, $group, &$form) {
   if ($node = menu_get_object('node')) {
+    // Remove team if none set.
+    if ($node->type == 'biography' && empty($node->field_biography_team)) {
+      unset($element['field_editorial_section']);
+    }
     if ($node->type == 'biography' && $role = field_get_items('node', $node, 'field_biography_role')) {
       $role_term = taxonomy_term_load($role[0]['tid']);
       $is_president = !$role_term ? FALSE : _commissioner_uuid_is('president', $role_term->uuid);
@@ -210,4 +214,17 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
   }
 
   return FALSE;
+}
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ */
+function cwt_biography_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
+  if ($context['entity_type'] == 'node' && $context['bundle'] == 'biography' && $context['view_mode'] == 'full' && empty($vars['content']['group_bio_contact'])) {
+    foreach ($layout_render_array['top'] as &$item) {
+      if (!empty($item['group_bio_top_wrapper'])) {
+        unset($item['group_bio_top_wrapper']['group_bio_col']['group_bio_top_footer']['collapse_button']);
+      }
+    }
+  }
 }

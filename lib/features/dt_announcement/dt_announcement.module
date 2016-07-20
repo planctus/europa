@@ -370,8 +370,11 @@ function _dt_announcement_get_abbreviation($nid) {
  *   The type of the node.
  */
 function _dt_announcement_get_node_type($nid) {
-  return db_query("SELECT type FROM {node} WHERE nid=:nid",
-    array(':nid' => $nid))->fetchField();
+  $query = db_select('node', 'nd');
+  $query->fields('nd', ['type']);
+  $query->condition('nid', $nid);
+  $result = $query->execute()->fetch();
+  return isset($result->type) ? $result->type : FALSE;
 }
 
 /**

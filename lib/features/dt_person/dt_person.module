@@ -72,7 +72,13 @@ function dt_person_field_attach_view_alter(&$output, $context) {
 
       // If all the persons have the same title, we update our label.
       if ($same_title && isset($check_entity->field_person_role)) {
-        $wrapper_label = $check_entity->field_person_role->value()->name;
+        if (module_exists('i18n')) {
+          $term = i18n_taxonomy_localize_terms(taxonomy_term_load($check_entity->field_person_role->value()->tid));
+          $wrapper_label = $term->name;
+        }
+        else {
+          $wrapper_label = $check_entity->field_person_role->value()->name;
+        }
       }
 
       // We process the data again, with the new information we have.

@@ -972,7 +972,7 @@ function cwt_team_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = '[field_team_block_title]';
+  $handler->display->display_options['title'] = 'Former Commissioner';
   $handler->display->display_options['css_class'] = 'listing--column-left';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -1340,6 +1340,13 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  /* Filter criterion: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['filters']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['filters']['uuid']['operator'] = '!=';
+  $handler->display->display_options['filters']['uuid']['value'] = 'ad48f1e7-ee20-4d76-ae88-7c5bb0567e48';
 
   /* Display: President */
   $handler = $view->new_display('block', 'President', 'block_1');
@@ -1479,6 +1486,239 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  /* Filter criterion: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['filters']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['filters']['uuid']['operator'] = '!=';
+  $handler->display->display_options['filters']['uuid']['value'] = 'ad48f1e7-ee20-4d76-ae88-7c5bb0567e48';
+
+  /* Display: Former Commissioner */
+  $handler = $view->new_display('block', 'Former Commissioner', 'block_4');
+  $handler->display->display_options['display_comment'] = 'This display is altered to filter the results on the contents of the "Team members by hierarchy" nodequeue, and order it by the position in the queue. If the biography is not available in the current language it will use the default language as a fallback. See cwt_team_views_query_alter().';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Title (field_biography_role) (translated) */
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['id'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['table'] = 'field_data_field_biography_role';
+  $handler->display->display_options['relationships']['field_biography_role_tid_i18n']['field'] = 'field_biography_role_tid_i18n';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['id'] = 'field_team_membership_target_id';
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['table'] = 'field_data_field_team_membership';
+  $handler->display->display_options['relationships']['field_team_membership_target_id']['field'] = 'field_team_membership_target_id';
+  /* Relationship: Content: Editorial section (field_editorial_section) (translated) */
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['id'] = 'field_editorial_section_tid_i18n';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['table'] = 'field_data_field_editorial_section';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['field'] = 'field_editorial_section_tid_i18n';
+  $handler->display->display_options['relationships']['field_editorial_section_tid_i18n']['relationship'] = 'field_team_membership_target_id';
+  /* Relationship: Content: Status (field_biography_status) (translated) */
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['id'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['table'] = 'field_data_field_biography_status';
+  $handler->display->display_options['relationships']['field_biography_status_tid_i18n']['field'] = 'field_biography_status_tid_i18n';
+  /* Relationship: Content translation: Source translation */
+  $handler->display->display_options['relationships']['tnid']['id'] = 'tnid';
+  $handler->display->display_options['relationships']['tnid']['table'] = 'node';
+  $handler->display->display_options['relationships']['tnid']['field'] = 'tnid';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'tnid';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'team_members_by_hierarchy' => 'team_members_by_hierarchy',
+    'biographies_by_project_teams' => 0,
+    'highlights' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Plural */
+  $handler->display->display_options['fields']['field_type_plural']['id'] = 'field_type_plural';
+  $handler->display->display_options['fields']['field_type_plural']['table'] = 'field_data_field_type_plural';
+  $handler->display->display_options['fields']['field_type_plural']['field'] = 'field_type_plural';
+  $handler->display->display_options['fields']['field_type_plural']['relationship'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['fields']['field_type_plural']['label'] = '';
+  $handler->display->display_options['fields']['field_type_plural']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_type_plural']['element_label_colon'] = FALSE;
+  /* Field: Content: Portrait */
+  $handler->display->display_options['fields']['field_biography_portrait']['id'] = 'field_biography_portrait';
+  $handler->display->display_options['fields']['field_biography_portrait']['table'] = 'field_data_field_biography_portrait';
+  $handler->display->display_options['fields']['field_biography_portrait']['field'] = 'field_biography_portrait';
+  $handler->display->display_options['fields']['field_biography_portrait']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_portrait']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_portrait']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_portrait']['alter']['text'] = '<div class="member-details-image">[field_biography_portrait]</div>';
+  $handler->display->display_options['fields']['field_biography_portrait']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_portrait']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_biography_portrait']['settings'] = array(
+    'image_style' => 'members_responsive_custom_user_min_width_480px_1x',
+    'image_link' => '',
+  );
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['table'] = 'field_data_name_field';
+  $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['relationship'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<span class="term-[tid] [name_field] label role">[name_field]</span>';
+  $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
+  /* Field: Taxonomy term: Feminine form */
+  $handler->display->display_options['fields']['field_biography_role_feminine']['id'] = 'field_biography_role_feminine';
+  $handler->display->display_options['fields']['field_biography_role_feminine']['table'] = 'field_data_field_biography_role_feminine';
+  $handler->display->display_options['fields']['field_biography_role_feminine']['field'] = 'field_biography_role_feminine';
+  $handler->display->display_options['fields']['field_biography_role_feminine']['relationship'] = 'field_biography_role_tid_i18n';
+  $handler->display->display_options['fields']['field_biography_role_feminine']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_role_feminine']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_role_feminine']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_role_feminine']['empty'] = '[name_field]';
+  /* Field: Content: Custom term */
+  $handler->display->display_options['fields']['field_biography_custom_term']['id'] = 'field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['table'] = 'field_data_field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['field'] = 'field_biography_custom_term';
+  $handler->display->display_options['fields']['field_biography_custom_term']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_custom_term']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['alter']['text'] = ' ([field_biography_custom_term-value])';
+  $handler->display->display_options['fields']['field_biography_custom_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_custom_term']['type'] = 'text_plain';
+  /* Field: Content: Gender */
+  $handler->display->display_options['fields']['field_gender']['id'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['table'] = 'field_data_field_gender';
+  $handler->display->display_options['fields']['field_gender']['field'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['label'] = '';
+  $handler->display->display_options['fields']['field_gender']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_gender']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_gender']['alter']['text'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[field_biography_role_feminine][field_biography_custom_term]</span>';
+  $handler->display->display_options['fields']['field_gender']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_gender']['empty'] = '<span class="term-[tid] [name_field] meta__item meta__item--type role">[name_field][field_biography_custom_term]</span>';
+  $handler->display->display_options['fields']['field_gender']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid_1']['id'] = 'tid_1';
+  $handler->display->display_options['fields']['tid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid_1']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid_1']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['fields']['tid_1']['label'] = '';
+  $handler->display->display_options['fields']['tid_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid_1']['separator'] = '';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name_field_1']['id'] = 'name_field_1';
+  $handler->display->display_options['fields']['name_field_1']['table'] = 'field_data_name_field';
+  $handler->display->display_options['fields']['name_field_1']['field'] = 'name_field';
+  $handler->display->display_options['fields']['name_field_1']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['fields']['name_field_1']['label'] = '';
+  $handler->display->display_options['fields']['name_field_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_field_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_field_1']['alter']['text'] = '<span class="term-[tid_1] [name_field_1] label status">[name_field_1]</span>';
+  $handler->display->display_options['fields']['name_field_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field_1']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['name_field_1']['link_to_entity'] = 0;
+  /* Field: Content: Source language path */
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['id'] = 'cwt_team_source_language_path';
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['table'] = 'node';
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['field'] = 'cwt_team_source_language_path';
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['label'] = '';
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['cwt_team_source_language_path']['absolute'] = TRUE;
+  /* Field: Content: First name */
+  $handler->display->display_options['fields']['field_biography_first_name']['id'] = 'field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['table'] = 'field_data_field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['field'] = 'field_biography_first_name';
+  $handler->display->display_options['fields']['field_biography_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Last name */
+  $handler->display->display_options['fields']['field_biography_last_name']['id'] = 'field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['table'] = 'field_data_field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['field'] = 'field_biography_last_name';
+  $handler->display->display_options['fields']['field_biography_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['text'] = '<div class="member-details-name"><span class="first-name">[field_biography_first_name]</span> <span class="last-name">[field_biography_last_name]</span></div>';
+  $handler->display->display_options['fields']['field_biography_last_name']['alter']['path'] = '[cwt_team_source_language_path]';
+  $handler->display->display_options['fields']['field_biography_last_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Tagline */
+  $handler->display->display_options['fields']['field_biography_tagline']['id'] = 'field_biography_tagline';
+  $handler->display->display_options['fields']['field_biography_tagline']['table'] = 'field_data_field_biography_tagline';
+  $handler->display->display_options['fields']['field_biography_tagline']['field'] = 'field_biography_tagline';
+  $handler->display->display_options['fields']['field_biography_tagline']['label'] = '';
+  $handler->display->display_options['fields']['field_biography_tagline']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_tagline']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[cwt_team_source_language_path]" class="listing__item-link is-internal">
+  <div class="listing__column-second">
+[field_biography_portrait]
+ </div>
+ <div class="listing__column-main">
+  <div class="meta">[field_gender]</div>
+<h3 class="listing__title">[field_biography_last_name]</h3>
+<div>[field_biography_tagline]</div>
+</div>
+</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = '[cwt_team_source_language_path]';
+  $handler->display->display_options['fields']['nothing']['alter']['alt'] = '[field_biography_last_name]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'biography' => 'biography',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
+  /* Filter criterion: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['filters']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['filters']['uuid']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['filters']['uuid']['value'] = 'ad48f1e7-ee20-4d76-ae88-7c5bb0567e48';
   $export['team_members'] = $view;
 
   $view = new view();
