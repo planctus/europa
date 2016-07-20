@@ -164,7 +164,7 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
       $element['time_date_end'] = array(
         '#title' => t('Schedule item end'),
         '#type' => 'date_popup',
-        '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
+        '#default_value' => isset($items[$delta]['time_date_end']) ? $items[$delta]['time_date_end'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),
       );
