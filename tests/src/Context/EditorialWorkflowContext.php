@@ -2,6 +2,8 @@
 
 namespace Drupal\nexteuropa\Context;
 
+use Behat\Gherkin\Node\TableNode;
+
 /**
  * Contains editorial workflow specific step definitions.
  */
@@ -178,6 +180,101 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     }
     $group = $this->getCurrentGroupFromUrl();
     $this->addMembertoGroup($role_name, $group, 'node', $user);
+  }
+
+  /**
+   * Creates content from table with revision.
+   *
+   * @param string $content_type
+   *   Content type.
+   * @param \Behat\Gherkin\Node\TableNode $table
+   *   Table with data.
+   *
+   * @Given :content_type content with revisions:
+   */
+  public function contentWithRevisions($content_type, TableNode $table) {
+    foreach ($table->getHash() as $row) {
+      $node = (object) $row;
+      $node->type = $content_type;
+
+      // Use author information if available.
+      if (isset($node->author)) {
+        $user = user_load_by_name($node->author);
+        $node->uid = $user->uid;
+        // Create the node with uid information.
+        $new_node = $this->nodeCreate($node);
+        // Manually update the table, the driver doesn't do it.
+        db_update('node_revision')
+          ->fields(['uid' => $user->uid])
+          ->condition('nid', $new_node->nid)
+          ->execute();
+      }
+
+    }
+  }
+
+  /**
+   * Save a history record for a moderated node.
+   *
+   * @param string $node
+   *   The node being acted upon.
+   * @param string $new_state
+   *   The new moderation state.
+   * @param string $old_state
+   *   The former moderation state.
+   *
+   * @return object
+   *   The new history record as saved.
+   */
+  public function updateRevisionHistory($node, $new_state, $old_state) {
+    $vid_count = db_select('node_revision', 'r')
+      ->condition('r.nid', $node->nid)
+      ->condition('r.vid', $node->vid, '>')
+      ->countQuery()->execute()->fetchField();
+
+    $current = ($vid_count == 0);
+
+    // Build a history record.
+    $new_revision = (object) array(
+      'from_state' => $old_state,
+      'state' => $new_state,
+      'nid' => $node->nid,
+      'vid' => $node->vid,
+      'uid' => $this->user->uid,
+      'is_current' => $current,
+      'published' => ($new_state == workbench_moderation_state_published()),
+      'stamp' => $_SERVER['REQUEST_TIME'],
+    );
+
+    // If this is the new 'current' moderation record, it should be the only one
+    // flagged 'current' in {workbench_moderation_node_history}.
+    if ($new_revision->is_current) {
+      db_update('workbench_moderation_node_history')
+        ->condition('nid', $node->nid)
+        ->fields(array('is_current' => 0))
+        ->execute();
+    }
+
+    // If this revision is to be published, the new moderation record should be
+    // the only one flagged 'published' in both
+    // {workbench_moderation_node_history} AND {node_revision}.
+    if ($new_revision->published) {
+      db_update('workbench_moderation_node_history')
+        ->condition('nid', $node->nid)
+        ->condition('vid', $node->vid, '!=')
+        ->fields(array('published' => 0))
+        ->execute();
+      db_update('node_revision')
+        ->condition('nid', $node->nid)
+        ->condition('vid', $node->vid, '!=')
+        ->fields(array('status' => 0))
+        ->execute();
+    }
+
+    // Save the node history record.
+    drupal_write_record('workbench_moderation_node_history', $new_revision);
+
+    return $new_revision;
   }
 
 }
