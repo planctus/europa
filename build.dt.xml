@@ -264,12 +264,6 @@
         />
     </target>
 
-    <target name="delete-platform-vendor">
-        <phingcall target="delete-folder">
-            <property name="folder.to.delete" value="${platform.build.dir}/vendor" />
-        </phingcall>
-    </target>
-
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."
@@ -301,6 +295,13 @@
             name="rebuild-dev-db"
             description="Rebuild dev environment with database"
             depends="build-dev, generate-settings, restore-ac-db"
+    />
+
+    <!-- Custom target to build the test environment -->
+    <target
+            name="build-test-env"
+            description="Build a test environment for CPHP"
+            depends="install-build-dependencies, make-dev, link-dev-resources, install-platform-dev-dependencies"
     />
 
 </project>
