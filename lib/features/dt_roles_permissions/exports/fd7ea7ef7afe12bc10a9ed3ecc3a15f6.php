@@ -6,8 +6,6 @@
  */
 
 $permissions['editorial team member'] = array(
-  'dt editorial mark linguistic review',
-  'dt editorial mark content review',
   'access administration menu',
   'access administration pages',
   'access bean overview',
@@ -15,16 +13,12 @@ $permissions['editorial team member'] = array(
   'access contextual links',
   'access user profiles',
   'access workbench',
-  'administer menu',
-  'administer taxonomy',
+  'administer nodes',
   'assign node weight',
   'create files',
-  'create translation jobs',
   'create url aliases',
   'override default scheduler time',
   'schedule (un)publishing of nodes',
-  'show format selection for bean',
-  'submit translation jobs',
   'translate any entity',
   'use workbench_moderation my drafts tab',
   'use workbench_moderation needs review tab',
@@ -38,4 +32,5 @@ $permissions['editorial team member'] = array(
   'view own private files',
   'view own unpublished content',
   'view revisions',
+  'view the administration theme',
 );
