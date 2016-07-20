@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+include_once 'dt_event_search.features.inc';
+
+/**
+ * Implements hook_post_features_enable_feature().
+ *
+ * This will make sure all the tables are created upon install.
+ */
+function dt_event_search_post_features_enable_feature($component) {
+  if ($server = search_api_server_load('information_sapi_server')) {
+    if ($index = search_api_index_load('event_index')) {
+      $index->save();
+      $server->addIndex($index);
+    }
+  }
+}

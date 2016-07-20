@@ -2,13 +2,13 @@
 
 /**
  * @file
- * dt_event.facetapi_defaults.inc
+ * dt_event_search.facetapi_defaults.inc
  */
 
 /**
  * Implements hook_facetapi_default_facet_settings().
  */
-function dt_event_facetapi_default_facet_settings() {
+function dt_event_search_facetapi_default_facet_settings() {
   $export = array();
 
   $facet = new stdClass();
