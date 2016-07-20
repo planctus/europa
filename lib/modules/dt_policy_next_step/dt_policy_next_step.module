@@ -300,11 +300,11 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
     '#description' => t('!rules formatting rules can be applied',
       array('!rules' => l(t('These'), 'http://php.net/manual/en/function.date.php'))),
   );
-  $element['timezone'] = array(
+  $element['show_timezone'] = array(
     '#type' => 'select',
     '#title' => t('Show timezone information'),
     '#description' => t('Enable the display of the timezone information in the front-end.'),
-    '#default_value' => isset($settings['timezone']) ? $settings['timezone'] : 1,
+    '#default_value' => isset($settings['show_timezone']) ? $settings['show_timezone'] : 1,
     '#options' => array(
       1 => t('Yes'),
       0 => t('No'),
