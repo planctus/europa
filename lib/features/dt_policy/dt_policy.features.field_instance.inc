@@ -18,7 +18,7 @@ function dt_policy_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Choose one or more Directorates-General that are responsible for the policy.
 
-Type name of department to search for it. Don\'t create a new department.',
+    Type name of department to search for it. Don\'t create a new department.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -85,7 +85,7 @@ Type name of department to search for it. Don\'t create a new department.',
 * Make a direct connection to people’s lives and business interests
 * Where a policy benefits a particular group of people, present it from their perspective
 
-**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
+    **Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -176,7 +176,7 @@ Type name of department to search for it. Don\'t create a new department.',
 * mention human before economic or technical benefits
 * do not give historical overview
 
-**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
+    **Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -391,7 +391,7 @@ Type name of department to search for it. Don\'t create a new department.',
 
 Type name of commissioner to search for it.
 
-Don\'t add vice-president, unless there is no commissioner responsible.',
+    Don\'t add vice-president, unless there is no commissioner responsible.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -453,7 +453,7 @@ Don\'t add vice-president, unless there is no commissioner responsible.',
     'deleted' => 0,
     'description' => 'Choose one or multiple policy areas the policy belongs to.
 
-**Type name of policy area to search for it. Don\'t create a new policy area.**',
+    **Type name of policy area to search for it. Don\'t create a new policy area.**',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -796,7 +796,7 @@ Include sub-headings, which should:
 * apply webwriting guidelines
 
 https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -957,7 +957,7 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
 * short phrase – no punctuation
 * indicate the Commission\'s intention  or desired outcome
 * prioritise real world objectives over EU methodologies, instruments or programmes
-* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
+    * well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1113,7 +1113,7 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
     'deleted' => 0,
     'description' => 'Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
 
-A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
+    A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1172,7 +1172,7 @@ A policy action can be a law, directive, decision, funding, guidance issued as p
 If policy input does not yet exist in the CMS, create it by clicking on "policy input".
 
 When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1707,7 +1707,7 @@ Avoid:
 * titles of laws or packages (e.g. 6th energy package)
 * EU processes and concepts (e.g. open coordination, single market)
 
-**Example:** Efficient power production',
+    **Example:** Efficient power production',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
