@@ -43,6 +43,9 @@ function dt_editorial_enable() {
       ->condition('rid', $contributor_rid)
       ->execute();
   }
+
+  // Disable certain NE workbench views.
+  _dt_editorial_disable_ne_workbench();
 }
 
 /**
@@ -50,4 +53,32 @@ function dt_editorial_enable() {
  */
 function dt_editorial_disable() {
   drupal_set_message(t('Digital transformation editorial is now disabled on your site.'));
+}
+
+/**
+ * Disables several core views which are replaced by DTT views.
+ */
+function _dt_editorial_disable_ne_workbench() {
+  // The views below are replaced by a set of requirements.
+  // DTTSB-745, DTTSB-743, DTTSB-127, DTTSB-126.
+  $views_disable = [
+    'workbench_recent_content',
+    'workbench_moderation',
+  ];
+  $views_status = variable_get('views_defaults', []);
+  foreach ($views_disable as $view_name) {
+    $views_status[$view_name] = TRUE;
+  }
+  variable_set('views_defaults', $views_status);
+  if (function_exists('views_invalidate_cache')) {
+    views_invalidate_cache();
+  }
+}
+
+/**
+ * DTTSB-745: Disable NE workbench screens.
+ */
+function dt_editorial_update_7101() {
+  // Disable certain NE workbench views.
+  _dt_editorial_disable_ne_workbench();
 }

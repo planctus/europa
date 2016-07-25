@@ -179,8 +179,8 @@ function dt_person_ds_fields_info() {
     'function' => '_dt_person_token_replace_fullname',
     'properties' => array(
       'class' => 'full-name',
-      'first_name' => '[node:field_person_last_name]',
-      'last_name' => '[node:field_person_first_name]',
+      'first_name' => '[node:field_person_first_name]',
+      'last_name' => '[node:field_person_last_name]',
       'link' => '[node:legacy-link]',
     ),
   );
