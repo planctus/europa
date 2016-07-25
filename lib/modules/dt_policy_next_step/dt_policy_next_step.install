@@ -112,11 +112,11 @@ function dt_policy_next_step_update_7101() {
   foreach ($fields_migrate as $field_name) {
     foreach ($table_prefixes as $prefix) {
       foreach ($table_suffixes as $suffix) {
-        $schema = drupal_get_schema($prefix . $field_name);
-        if (!$spec = $schema['fields'][$field_name . $suffix]) {
-          $spec = $schema_suffixes[$suffix];
-        }
         if (!db_field_exists($prefix . $field_name, $field_name . $suffix)) {
+          $schema = drupal_get_schema($prefix . $field_name);
+          if (!$spec = $schema['fields'][$field_name . $suffix]) {
+            $spec = $schema_suffixes[$suffix];
+          }
           db_add_field($prefix . $field_name, $field_name . $suffix, $spec);
         }
       }
