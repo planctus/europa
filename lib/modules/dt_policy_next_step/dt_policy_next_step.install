@@ -79,6 +79,27 @@ function dt_policy_next_step_update_7101() {
   $table_prefixes = ['field_data_', 'field_revision_'];
   $table_suffixes = ['_timezone', '_time_date_start', '_time_date_end'];
 
+  $schema_suffixes = array(
+    '_timezone' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'description' => "Definition of timezone to use for the dates",
+      'not null' => FALSE,
+    ),
+    '_time_date_start' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "Start date of the item",
+      'not null' => FALSE,
+    ),
+    '_time_date_end' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "End date of the item",
+      'not null' => FALSE,
+    ),
+  );
+
   // Accumulate the list of fields to extend.
   $fields_migrate = [];
   foreach (field_info_fields() as $field) {
@@ -92,11 +113,13 @@ function dt_policy_next_step_update_7101() {
     foreach ($table_prefixes as $prefix) {
       foreach ($table_suffixes as $suffix) {
         $schema = drupal_get_schema($prefix . $field_name);
+        if (!$spec = $schema['fields'][$field_name . $suffix]) {
+          $spec = $schema_suffixes[$suffix];
+        }
         if (!db_field_exists($prefix . $field_name, $field_name . $suffix)) {
-          db_add_field($prefix . $field_name, $field_name . $suffix, $schema['fields'][$field_name . $suffix]);
+          db_add_field($prefix . $field_name, $field_name . $suffix, $spec);
         }
       }
     }
   }
-
 }
