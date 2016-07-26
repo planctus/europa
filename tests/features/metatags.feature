@@ -14,7 +14,7 @@ Feature: As an anonymous user
 
     Examples:
       | title             | date-published      | expected-string | expected-meta |
-      | Test announcement | 1992-01-26 17:45:00 | 26 January 1992 | 26/01/1992    |
+      | Test announcement | 696384000 | 26 January 1992 | 26/01/1992    |
 
   @api @brp
   Scenario: Users should see the meta description on Initiative content.

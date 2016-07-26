@@ -74,8 +74,8 @@ Feature: Announcements block
   Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
     Given I am logged in as a user with the "administrator" role
     Given "Priority policy area" content:
-      | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content |
-      | PPA with announcements | 1      | Sample description     | Disable                      | default                 |
+      | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content          |
+      | PPA with announcements | 1      | Sample description     | Disable                      | A page (default) in this website |
     Given "Announcement" content:
       | title               | status | field_core_pri_policy_areas |
       | Announcement on PPA | 1      | PPA with announcements      |

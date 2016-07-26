@@ -1,6 +1,7 @@
 name = CWT Activities
 description = Activities for biographies (Calendar)
 core = 7.x
+php = 5.5
 package = CWT
 dependencies[] = addressfield
 dependencies[] = dt_date_format
@@ -71,3 +72,4 @@ features_exclude[dependencies][strongarm] = strongarm
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][entityreference] = entityreference
 files[] = migrations/cwt_activities.migrations.calendar_item_types.inc
+multisite_version = 2.2

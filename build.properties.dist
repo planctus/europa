@@ -207,6 +207,14 @@ phpcs.progress = 1
 # The location of the file containing the global configuration options.
 phpcs.global.config = ${project.basedir}/vendor/squizlabs/php_codesniffer/CodeSniffer.conf
 
+# Whether or not to run a coding standards check before doing a git push. Note
+# that this will abort the push if the coding standards check fails.
+phpcs.prepush.enable = 1
+
+# The source and destination paths of the git pre-push hook.
+phpcs.prepush.source = ${project.basedir}/vendor/pfrenssen/phpcs-pre-push/pre-push
+phpcs.prepush.destination = ${project.basedir}/.git/hooks/pre-push
+
 
 # Host configuration
 # ------------------
@@ -254,6 +262,19 @@ cf.template = single-server
 # AWS CodeDeploy
 # --------------
 deploy.serviceRole = arn:aws:iam::918396081007:role/CodeDeploy
+
+
+# Subsite starterkit
+# ------------------
+
+# The location of the subsite starterkit repository.
+starterkit.repository = https://github.com/ec-europa/subsite-starterkit.git
+
+# The branch of the subsite starterkit that will be tracked.
+starterkit.branch = master
+
+# The name of the git remote for the starterkit.
+starterkit.remote = starterkit
 
 
 # Build defaults
