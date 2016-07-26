@@ -17,7 +17,7 @@ function dt_event_default_field_default_field_instances() {
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'For event, there are separate fields for schedule, speakers, and practical information. 
-For collection, this is a text with more information about the collection.',
+    For collection, this is a text with more information about the collection.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -231,7 +231,7 @@ For collection, this is a text with more information about the collection.',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Select one or more departments that organize the event.
-Note: this may need to be extended to external and 3rd party organizers as well.',
+    Note: this may need to be extended to external and 3rd party organizers as well.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1785,7 +1785,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'bundle' => 'event',
     'deleted' => 0,
     'description' => 'On what day does the event start?
-On what day does the event end?',
+    On what day does the event end?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2313,7 +2313,7 @@ only enter this in the input field:
 
 ```
 http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
-```',
+    ```',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3054,16 +3054,25 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
       ),
       'event_collection' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 42,
+        'module' => 'dt_policy_next_step',
+        'settings' => array(
+          'date_formatter' => '',
+          'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 0,
+        ),
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 20,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3081,7 +3090,10 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 1,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 37,
@@ -3112,8 +3124,12 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'rows' => 10,
-        'size' => 10,
+        'value' => array(
+          'rows' => '',
+          'size' => '',
+          'timeline_type' => 'timeline_schedule',
+          'timezone' => 1,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 18,

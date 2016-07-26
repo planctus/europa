@@ -18,6 +18,25 @@ function dt_policy_next_step_field_schema($field) {
     'steps_in_bullets' => array(
       'type' => 'text',
       'size' => 'big',
+      'description' => "Rich text description",
+      'not null' => FALSE,
+    ),
+    'timezone' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'description' => "Definition of timezone to use for the dates",
+      'not null' => FALSE,
+    ),
+    'time_date_start' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "Start date of the item",
+      'not null' => FALSE,
+    ),
+    'time_date_end' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "End date of the item",
       'not null' => FALSE,
     ),
   );
@@ -29,4 +48,78 @@ function dt_policy_next_step_field_schema($field) {
     'columns' => $columns,
     'indexes' => $indexes,
   );
+}
+
+/**
+ * Implements hook_enable().
+ */
+function dt_policy_next_step_enable() {
+  drupal_set_message(t('DT Policy Next Step module has been enabled.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function dt_policy_next_step_disable() {
+  drupal_set_message(t('DT Policy Next Step module has been disabled.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_policy_next_step_uninstall() {
+  // Remove tables.
+  drupal_set_message(t('DT Policy Next Step module has been uninstalled.'));
+}
+
+/**
+ * DTTSB-236: Extending dt_policy_next_step_field.
+ */
+function dt_policy_next_step_update_7101() {
+  $table_prefixes = ['field_data_', 'field_revision_'];
+  $table_suffixes = ['_timezone', '_time_date_start', '_time_date_end'];
+
+  $schema_suffixes = array(
+    '_timezone' => array(
+      'type' => 'text',
+      'size' => 'big',
+      'description' => "Definition of timezone to use for the dates",
+      'not null' => FALSE,
+    ),
+    '_time_date_start' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "Start date of the item",
+      'not null' => FALSE,
+    ),
+    '_time_date_end' => array(
+      'type' => 'varchar',
+      'length' => 255,
+      'description' => "End date of the item",
+      'not null' => FALSE,
+    ),
+  );
+
+  // Accumulate the list of fields to extend.
+  $fields_migrate = [];
+  foreach (field_info_fields() as $field) {
+    if ($field['type'] == 'dt_policy_next_step_field') {
+      $f_name = $field['field_name'];
+      $fields_migrate[$f_name] = $f_name;
+    }
+  }
+  // Extend tables, if necessary.
+  foreach ($fields_migrate as $field_name) {
+    foreach ($table_prefixes as $prefix) {
+      foreach ($table_suffixes as $suffix) {
+        if (!db_field_exists($prefix . $field_name, $field_name . $suffix)) {
+          $schema = drupal_get_schema($prefix . $field_name);
+          if (!$spec = $schema['fields'][$field_name . $suffix]) {
+            $spec = $schema_suffixes[$suffix];
+          }
+          db_add_field($prefix . $field_name, $field_name . $suffix, $spec);
+        }
+      }
+    }
+  }
 }

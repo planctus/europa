@@ -822,7 +822,9 @@ function dt_priority_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 18,
@@ -853,9 +855,12 @@ function dt_priority_default_field_default_field_instances() {
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 255,
+        'value' => array(
+          'rows' => 5,
+          'size' => 255,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 59,

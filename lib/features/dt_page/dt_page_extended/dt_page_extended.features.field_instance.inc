@@ -1186,13 +1186,15 @@ function dt_page_extended_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Set the next steps.
 This will appear as a timeline on the page.
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 32,
@@ -1201,7 +1203,9 @@ This will appear as a timeline on the page.
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 9,
@@ -1216,7 +1220,9 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 20,
@@ -1241,9 +1247,12 @@ This will appear as a timeline on the page.
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 1,
+        'value' => array(
+          'rows' => 5,
+          'size' => 1,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 34,
