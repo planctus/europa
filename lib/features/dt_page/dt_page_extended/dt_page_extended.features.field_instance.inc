@@ -1186,7 +1186,7 @@ function dt_page_extended_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Set the next steps.
 This will appear as a timeline on the page.
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',

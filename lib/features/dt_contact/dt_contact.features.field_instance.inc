@@ -180,7 +180,7 @@ function dt_contact_field_default_field_instances() {
 <li>xxx xx xx: Phone number</li>
 <li>description: label of the phone, always between ( ) - optional</li>
 </ul> </p>
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'inline',
