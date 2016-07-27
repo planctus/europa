@@ -85,7 +85,7 @@ Feature: In order to guarantee that content can be managed only by the appropria
 
   Scenario Outline: "My Drafts" section permissions
     Given I am logged in as "<user>"
-    When I go to "admin/workbench/drafts-page"
+    When I go to "admin/workbench/my-drafts"
     Then I <see_draft_group_1> see "Draft1"
     And I <see_draft_group_2> see "Draft2"
 
