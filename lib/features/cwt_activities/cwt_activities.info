@@ -7,6 +7,7 @@ dependencies[] = addressfield
 dependencies[] = dt_date_format
 dependencies[] = field_group
 dependencies[] = multiple_selects
+dependencies[] = migrate
 features[context][] = agenda
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1

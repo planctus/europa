@@ -50,6 +50,18 @@ function _dt_core_content_language_order() {
 }
 
 /**
+ * Implements hook_dt_header_background_info().
+ */
+function cwt_core_dt_header_background_info() {
+  return [
+    [
+      'view_mode' => 'college',
+      'content_type' => 'team',
+    ],
+  ];
+}
+
+/**
  * Implements hook_boot().
  */
 function cwt_core_boot() {

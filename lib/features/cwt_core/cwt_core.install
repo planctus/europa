@@ -29,12 +29,25 @@ function cwt_core_install() {
     user_role_save($role);
   }
 
+  $theme_list = array(
+    'europa',
+    'commissioner',
+  );
+
+  theme_enable($theme_list);
+
+  variable_set('theme_default', 'commissioner');
   // Adding value to Nexteuropa feedback form settings.
   variable_set('nexteuropa_feedback_form_id', '1040');
   // Enabling the social media sharing module if it's not already.
   if (!module_exists('dt_social_media_sharing')) {
     module_enable(array('dt_social_media_sharing'));
   }
+
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+  // Set the default header background image.
+  _dt_header_background_set_default_header_background();
 
   // Remove the platform Breadcrumb menu.
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
@@ -566,4 +579,21 @@ function cwt_core_update_7143() {
   // Resetting permissions.
   include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
   cwt_core_reset_default_permissions();
+}
+
+/**
+ * DTTSB-123: Set default header background.
+ */
+function cwt_core_update_7144() {
+  $theme_list = array(
+    'europa',
+    'commissioner',
+    'bootstrap',
+  );
+  theme_enable($theme_list);
+  variable_set('theme_default', 'commissioner');
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+  // Set the default header background image.
+  _dt_header_background_set_default_header_background();
 }

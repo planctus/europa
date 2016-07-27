@@ -2,13 +2,13 @@
 
 /**
  * @file
- * dt_core.default_breakpoint_group.inc
+ * dt_europa_settings.default_breakpoint_group.inc
  */
 
 /**
  * Implements hook_default_breakpoint_group().
  */
-function dt_core_default_breakpoint_group() {
+function dt_europa_settings_default_breakpoint_group() {
   $export = array();
 
   $breakpoint_group = new stdClass();
