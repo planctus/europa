@@ -6,7 +6,19 @@
  */
 
 include_once 'dt_contact.features.inc';
-define('DT_CONTACT_PHONE_FIELD', 'field_contact_phone_number');
+
+/**
+ * Helper function for defining phone fields.
+ *
+ * @return array
+ *   Array of contact's phone fields.
+ */
+function _dt_contact_phone_fields() {
+  return [
+    'field_contact_phone_number' => 'Phone number',
+    'field_contact_mobile_number' => 'Mobile number',
+  ];
+}
 
 /**
  * Implements hook_node_view().
@@ -35,7 +47,9 @@ function dt_contact_node_view($node, $view_mode, $langcode) {
  * telephone numbers field.
  */
 function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form[DT_CONTACT_PHONE_FIELD])) {
+  // Checking the phone fields on the form if exists.
+  $is_phone_field = !empty(array_diff(array_keys($form), array_keys(_dt_contact_phone_fields())));
+  if ($is_phone_field) {
     $form['#validate'][] = '_dt_contact_phone_validate';
   }
 }
@@ -44,14 +58,16 @@ function dt_contact_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Callback handler for phone field validation.
  */
 function _dt_contact_phone_validate($form, &$form_state) {
-  $lang = $form[DT_CONTACT_PHONE_FIELD]['#language'];
-  if ($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']) {
-    $contact_phone = trim($form_state['values'][DT_CONTACT_PHONE_FIELD][$lang][0]['value']);
-    // Validate the current phone number.
-    foreach (_dt_shared_functions_contactphone_patterns() as $pattern_values) {
-      preg_match($pattern_values['pattern'], $contact_phone, $matches);
-      if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
-        form_set_error(DT_CONTACT_PHONE_FIELD, $pattern_values['explain']);
+  foreach (_dt_contact_phone_fields() as $key => $item) {
+    $lang = $form[$key]['#language'];
+    if ($form_state['values'][$key][$lang][0]['value']) {
+      $contact_phone = trim($form_state['values'][$key][$lang][0]['value']);
+      // Validate the current phone number.
+      foreach (_dt_shared_functions_contactphone_patterns($item) as $pattern_values) {
+        preg_match($pattern_values['pattern'], $contact_phone, $matches);
+        if (!isset($matches[$pattern_values['return_key']]) && isset($pattern_values['required'])) {
+          form_set_error($key, $pattern_values['explain']);
+        }
       }
     }
   }

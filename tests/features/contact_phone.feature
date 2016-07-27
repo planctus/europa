@@ -6,8 +6,8 @@ I should be able to create contact content
 
   Scenario Outline:
     Given "contact" content:
-      | title   | field_contact_phone_number | status |
-      | <title> | <phones> <label>           | 1      |
+      | title   | field_contact_phone_number | field_contact_mobile_number | status |
+      | <title> | <phones> <label>           | <phones> <label>            | 1      |
 
     And I am logged in as a user with the "editor" role
     And I go to "admin/content"
@@ -42,8 +42,9 @@ I should be able to create contact content
     Given I am logged in as a user with the "editor" role
     When I go to "node/add/contact"
     Then I fill in the following:
-      | Name         | <title>          |
-      | Phone number | <phones> <label> |
+      | Name          | <title>          |
+      | Phone number  | <phones> <label> |
+      | Mobile number | <phones> <label> |
 
     Then I press "Save"
     Then I should see "<err>"
