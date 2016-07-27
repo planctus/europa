@@ -45,10 +45,11 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       $commissioner_taxonomy_id = key(taxonomy_get_term_by_name('commissioner', 'person_roles'));
 
       // Rebuild our commissioner list.
-      $commissioner_list = array();
+      $commissioner_list = [];
 
       // Set our check default to true.
       $same_title = TRUE;
+      $last_title_tid = NULL;
 
       // Check if titles are different.
       foreach ($element['#items'] as $key => $item) {
@@ -61,13 +62,13 @@ function dt_person_field_attach_view_alter(&$output, $context) {
           'obj' => $item,
         );
 
-        // Save the last id we checked.
-        $last_title_tid = $check_entity->field_person_role->value()->tid;
-
         // Check if the tid is the same. If not set our variable to false.
-        if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
+        if (!empty($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
           $same_title = FALSE;
         }
+
+        // Save the last id we checked.
+        $last_title_tid = $check_entity->field_person_role->value()->tid;
       }
 
       // If all the persons have the same title, we update our label.
