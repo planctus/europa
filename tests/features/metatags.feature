@@ -13,8 +13,8 @@ Feature: As an anonymous user
     Then the metatag attribute "date" should have the value "<expected-meta>"
 
     Examples:
-      | title             | date-published      | expected-string | expected-meta |
-      | Test announcement | 696384000 | 26 January 1992 | 26/01/1992    |
+      | title             | date-published | expected-string | expected-meta |
+      | Test announcement | 696384000      | 26 January 1992 | 26/01/1992    |
 
   @api @brp
   Scenario: Users should see the meta description on Initiative content.

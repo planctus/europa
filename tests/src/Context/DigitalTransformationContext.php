@@ -384,6 +384,55 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Test if a css selector is available.
+   *
+   * @Then /^I should see the css selector "([^"]*)"$/
+   * @Then /^I should see the CSS selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iShouldSeeTheCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty($element)) {
+      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+  }
+
+  /**
+   * Test if a css selector is not available.
+   *
+   * @Then /^I should not see the css selector "([^"]*)"$/
+   * @Then /^I should not see the CSS selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iShouldNotSeeTheCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty(!$element)) {
+      throw new \Exception(sprintf("The page '%s' contains the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+  }
+
+  /**
+   * Click testing of an element which has a css selector.
+   *
+   * @When /^(?:|I )click the element with CSS selector "([^"]*)"$/
+   * @When /^(?:|I )click the element with css selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iClickTheElementWithCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty($element)) {
+      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+    $element->click();
+  }
+
+  /**
    * Indexes all indexes.
    *
    * @Given I index all indexes

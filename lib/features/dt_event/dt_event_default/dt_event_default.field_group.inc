@@ -643,7 +643,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Agenda',
-    'weight' => '42',
+    'weight' => '49',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -1128,20 +1128,21 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '79',
+    'weight' => '33',
     'children' => array(
       0 => 'field_core_departments',
       1 => 'field_event_available_languages',
-      2 => 'field_event_date',
-      3 => 'field_event_entrance_fee',
-      4 => 'field_event_number_seats',
-      5 => 'field_event_parent_events',
-      6 => 'field_event_target_audience',
-      7 => 'field_event_website',
+      2 => 'field_event_entrance_fee',
+      3 => 'field_event_number_seats',
+      4 => 'field_event_parent_events',
+      5 => 'field_event_target_audience',
+      6 => 'field_event_website',
+      7 => 'event_type_of_event',
       8 => 'hr_2',
-      9 => 'book_your_seat_bottom',
-      10 => 'livestreaming_bottom',
-      11 => 'dt_event_address_oneline',
+      9 => 'attend',
+      10 => 'dt_event_address_oneline',
+      11 => 'dt_event_status_message_2',
+      12 => 'dt_event_date_and_time',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1233,7 +1234,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '80',
+    'weight' => '34',
     'children' => array(
       0 => 'field_event_location_image',
     ),

@@ -2,13 +2,13 @@
 
 /**
  * @file
- * Contains the markup for the message block.
+ * Contains the markup for the status message.
  */
 ?>
-<div class="messages <?php print $message_classes; ?>">
+<div class="<?php print $message_classes; ?>">
 
   <?php if ($message_title): ?>
-    <h3><?php print ($message_type ? '<span class="sr-only">' . $message_type . ': </span>' : '') . $message_title; ?></h3>
+    <strong><?php print ($message_type ? '<span class="sr-only">' . $message_type . ': </span>' : '') . $message_title; ?></strong>
   <?php else: ?>
     <?php print ($message_type ? '<span class="sr-only">' . $message_type . ': </span>' : ''); ?>
   <?php endif; ?>

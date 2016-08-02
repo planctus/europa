@@ -1,4 +1,4 @@
-@api @information
+@api @information @wip
 Feature: In order to guarantee that content can be managed only by the appropriate users
   As a product owner
   I want to have the editorial workflow control access
@@ -18,4 +18,3 @@ Feature: In order to guarantee that content can be managed only by the appropria
     When I go to "admin/content"
     And I follow "Draft announcement"
     And I follow "Edit draft"
-    Then show last response
