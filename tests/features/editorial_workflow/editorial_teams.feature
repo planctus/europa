@@ -5,26 +5,25 @@ Feature: In order to guarantee that content can be managed only by the appropria
 
   Background:
     Given users:
-      | name           | mail                      | status | roles       |
-      | Mike_First     | MikeFirst@example.com     | 1      |             |
-      | Agatha_First   | AgathaFirst@example.com   | 1      | contributor |
-      | Vanessa_First  | VanessaFirst@example.com  | 1      | contributor |
-      | Rocky_First    | RockyFirst@example.com    | 1      | contributor |
-      | Mike_Second    | MikeSecond@example.com    | 1      |             |
-      | Agatha_Second  | AgathaSecond@example.com  | 1      | contributor |
-      | Vanessa_Second | VanessaSecond@example.com | 1      | contributor |
-      | Rocky_Second   | RockySecond@example.com   | 1      | contributor |
-      | Mike_Both      | MikeBoth@example.com      | 1      |             |
-      | Agatha_Both    | AgathaBoth@example.com    | 1      | contributor |
-      | Vanessa_Both   | VanessaBoth@example.com   | 1      | contributor |
-      | Rocky_Both     | RockyBoth@example.com     | 1      | contributor |
+      | name           | mail                      | status | roles                                  |
+      | Mike_First     | MikeFirst@example.com     | 1      |                                        |
+      | Agatha_First   | AgathaFirst@example.com   | 1      | editorial team member                            |
+      | Vanessa_First  | VanessaFirst@example.com  | 1      | editorial team member                            |
+      | Rocky_First    | RockyFirst@example.com    | 1      | editorial team member                            |
+      | Mike_Second    | MikeSecond@example.com    | 1      |                                        |
+      | Agatha_Second  | AgathaSecond@example.com  | 1      | editorial team member                            |
+      | Vanessa_Second | VanessaSecond@example.com | 1      | editorial team member                            |
+      | Rocky_Second   | RockySecond@example.com   | 1      | editorial team member                            |
+      | Mike_Both      | MikeBoth@example.com      | 1      |                                        |
+      | Agatha_Both    | AgathaBoth@example.com    | 1      | editorial team member                            |
+      | Vanessa_Both   | VanessaBoth@example.com   | 1      | editorial team member                            |
+      | Rocky_Both     | RockyBoth@example.com     | 1      | editorial team member                            |
+      | William        | William@example.com       | 1      | web transformer, editorial team member |
 
-    Given I am viewing an "editorial_team" content:
-      | title                        | First team               |
-      | status                       | 1                        |
-      | language                     | en                       |
-      | og_roles_permissions[und]    | 0                        |
-      | field_editorial_types[und][] | announcement, basic-page |
+    Given "Editorial team" content:
+      | title      | field_editorial_types    | language |
+      | First team | announcement, basic_page | und      |
+    And I go to "content/first-team"
     And I add "Mike_First" to the group as "member"
     And I add "Agatha_First" to the group as "author"
     And I add "Vanessa_First" to the group as "validator"
@@ -34,12 +33,10 @@ Feature: In order to guarantee that content can be managed only by the appropria
     And I add "Vanessa_Both" to the group as "validator"
     And I add "Rocky_Both" to the group as "reviewer"
 
-    Given I am viewing an "editorial_team" content:
-      | title                        | Second team              |
-      | status                       | 1                        |
-      | language                     | en                       |
-      | og_roles_permissions[und]    | 0                        |
-      | field_editorial_types[und][] | announcement, department |
+    Given "Editorial team" content:
+      | title       | field_editorial_types    | language |
+      | Second team | announcement, department | und      |
+    And I go to "content/second-team"
     And I add "Mike_Second" to the group as "member"
     And I add "Agatha_Second" to the group as "author"
     And I add "Vanessa_Second" to the group as "validator"
@@ -67,6 +64,8 @@ Feature: In order to guarantee that content can be managed only by the appropria
       | Expired2               | 0      | expired                        | Second team  | Agatha_Second |
 
   @wip
+  # @wip because of a drupal-driver limitation. See: https://github.com/jhedstrom/DrupalDriver/pull/99
+  # Once it is resolved and the new version is used we can remove the @wip tag.
   Scenario Outline: users are allowed to edit only content types for their group
     Given I am logged in as "<user>"
     And I go to "node/add/<type>"
@@ -82,6 +81,9 @@ Feature: In order to guarantee that content can be managed only by the appropria
       | Agatha_Both   | announcement | 200      |
       | Agatha_Both   | department   | 200      |
       | Agatha_Both   | basic-page   | 200      |
+      | William       | announcement | 200      |
+      | William       | department   | 200      |
+      | William       | basic-page   | 200      |
 
   Scenario Outline: "My Drafts" section permissions
     Given I am logged in as "<user>"
@@ -182,7 +184,7 @@ Feature: In order to guarantee that content can be managed only by the appropria
 
     Examples:
       | user          | can_create_content | can_access_my_drafts | can_access_content_in_review | can_access_content_in_validation | can_access_other_content |
-      | Agatha_First  | should             | should               | should                       | should                           | should                    |
-      | Rocky_First   | should not         | should not           | should                       | should                           | should not                |
-      | Vanessa_First | should not         | should not           | should                       | should                           | should                    |
-      | Mike_First    | should not         | should not           | should not                   | should not                       | should not                |
+      | Agatha_First  | should             | should               | should                       | should                           | should                   |
+      | Rocky_First   | should not         | should not           | should                       | should                           | should not               |
+      | Vanessa_First | should not         | should not           | should                       | should                           | should                   |
+      | Mike_First    | should not         | should not           | should not                   | should not                       | should not               |

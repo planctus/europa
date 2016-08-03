@@ -285,7 +285,7 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['access']['type'] = 'dt_access_control';
   $handler->display->display_options['access']['editorial-access-control'] = array(
     'editorial_team' => array(
-      4 => '4',
+      'author' => 'author',
     ),
   );
   $handler->display->display_options['cache']['type'] = 'none';
@@ -513,6 +513,16 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
   $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['og_access_override'] = array(
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'validator' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
+  );
 
   /* Display: Drafts page */
   $handler = $view->new_display('page', 'Drafts page', 'drafts_page');
@@ -740,6 +750,16 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+  $handler->display->display_options['og_access_override'] = array(
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'validator' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
+  );
   $handler->display->display_options['path'] = 'admin/workbench/my-drafts';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'My Drafts';
@@ -763,8 +783,14 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['title'] = 'Content I\'ve edited';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'view all';
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'use workbench_moderation my drafts tab';
+  $handler->display->display_options['access']['type'] = 'dt_access_control';
+  $handler->display->display_options['access']['editorial-access-control'] = array(
+    'editorial_team' => array(
+      'author' => 'author',
+      'validator' => 'validator',
+      'reviewer' => 'reviewer',
+    ),
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -988,6 +1014,16 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
   $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['og_access_override'] = array(
+    'validator' => 'validator',
+    'reviewer' => 'reviewer',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
+  );
 
   /* Display: Content review page */
   $handler = $view->new_display('page', 'Content review page', 'content_review_page');
@@ -998,9 +1034,9 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['access']['type'] = 'dt_access_control';
   $handler->display->display_options['access']['editorial-access-control'] = array(
     'editorial_team' => array(
-      4 => '4',
-      5 => '5',
-      7 => '7',
+      'author' => 'author',
+      'validator' => 'validator',
+      'reviewer' => 'reviewer',
     ),
   );
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -1084,14 +1120,14 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
   $handler->display->display_options['og_access_override'] = array(
-    5 => '5',
-    7 => '7',
-    1 => 0,
-    2 => 0,
-    3 => 0,
-    4 => 0,
-    8 => 0,
-    9 => 0,
+    'validator' => 'validator',
+    'reviewer' => 'reviewer',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
   );
   $handler->display->display_options['path'] = 'admin/workbench/content-in-review';
   $handler->display->display_options['menu']['type'] = 'tab';
@@ -1119,8 +1155,8 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['access']['type'] = 'dt_access_control';
   $handler->display->display_options['access']['editorial-access-control'] = array(
     'editorial_team' => array(
-      4 => '4',
-      5 => '5',
+      'author' => 'author',
+      'validator' => 'validator',
     ),
   );
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1365,14 +1401,14 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
   $handler->display->display_options['og_access_override'] = array(
-    5 => '5',
-    1 => 0,
-    2 => 0,
-    3 => 0,
-    4 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
+    'validator' => 'validator',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
   );
 
   /* Display: Other Content page */
@@ -1384,8 +1420,8 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['access']['type'] = 'dt_access_control';
   $handler->display->display_options['access']['editorial-access-control'] = array(
     'editorial_team' => array(
-      4 => '4',
-      5 => '5',
+      'author' => 'author',
+      'validator' => 'validator',
     ),
   );
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -1487,14 +1523,14 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
   $handler->display->display_options['og_access_override'] = array(
-    5 => '5',
-    1 => 0,
-    2 => 0,
-    3 => 0,
-    4 => 0,
-    41 => 0,
-    46 => 0,
-    51 => 0,
+    'validator' => 'validator',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
   );
   $handler->display->display_options['path'] = 'admin/workbench/other-content';
   $handler->display->display_options['menu']['type'] = 'tab';
@@ -1522,9 +1558,9 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['access']['type'] = 'dt_access_control';
   $handler->display->display_options['access']['editorial-access-control'] = array(
     'editorial_team' => array(
-      4 => '4',
-      5 => '5',
-      7 => '7',
+      'author' => 'author',
+      'validator' => 'validator',
+      'reviewer' => 'reviewer',
     ),
   );
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1752,6 +1788,16 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
   $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['og_access_override'] = array(
+    'validator' => 'validator',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
+  );
 
   /* Display: Validation pending */
   $handler = $view->new_display('page', 'Validation pending', 'validation_pending_page');
@@ -1981,14 +2027,14 @@ function dt_editorial_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
   $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
   $handler->display->display_options['og_access_override'] = array(
-    5 => '5',
-    1 => 0,
-    2 => 0,
-    3 => 0,
-    4 => 0,
-    41 => 0,
-    46 => 0,
-    51 => 0,
+    'validator' => 'validator',
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
   );
   $handler->display->display_options['path'] = 'admin/workbench/content-in-validation';
   $handler->display->display_options['menu']['type'] = 'tab';

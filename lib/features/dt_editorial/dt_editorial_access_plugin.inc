@@ -16,20 +16,7 @@ class dt_editorial_access_plugin extends views_plugin_access {
    * Shows a message in the Views admin panel.
    */
   function summary_title() {
-    if ($groups = $this->options['editorial-access-control']) {
-      foreach ($groups as $group_name => $grids) {
-        if ($selected_roles = count($grids)) {
-          if ($selected_roles > 1) {
-            return t('Multiple roles selected.');
-          }
-          // Only one role selected.
-          $rid = reset($grids);
-          $role = og_role_load($rid);
-          return $role->group_bundle . ': ' . $role->name;
-        }
-      }
-    }
-    return t('No group role(s) selected');
+    return t('Configure');
   }
 
   /**
@@ -85,7 +72,7 @@ class dt_editorial_access_plugin extends views_plugin_access {
           '#type' => 'checkboxes',
           '#title' => $bundle_name,
           '#default_value' => $this->options['editorial-access-control'][$bundle_key],
-          '#options' => array_map('check_plain', $group_roles),
+          '#options' => array_combine($group_roles, $group_roles),
         ];
       }
     }
@@ -97,6 +84,7 @@ class dt_editorial_access_plugin extends views_plugin_access {
   function options_submit(&$form, &$form_state) {
     $access_groups = $form_state['values']['access_options']['editorial-access-control'];
     foreach ($access_groups as $group_name => $group_values) {
+      // Save only the selected values.
       $form_state['values']['access_options']['editorial-access-control'][$group_name] = array_filter($group_values);
     }
   }

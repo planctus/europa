@@ -48,7 +48,7 @@ function dt_editorial_dt_shared_functions_views_config_alter(&$settings) {
     // Prepare the options element.
     $roles_options = [];
     foreach ($roles as $role) {
-      $roles_options[$role->rid] = $role->name . ' (' . $role->group_bundle . ')';
+      $roles_options[$role->name] = $role->name . ' (' . $role->group_bundle . ')';
     }
 
     $settings['og_access_override'] = [
@@ -67,26 +67,12 @@ function dt_editorial_dt_shared_functions_views_config_alter(&$settings) {
 function dt_editorial_views_query_alter(&$view, &$query) {
   global $user;
   $current_display = $view->current_display;
-  $roles_bypass = [];
-
   // Check if OG access permissions are set for the given display type.
   if (isset($view->display[$current_display]->display_options['og_access_override'])) {
-
     // These are the OG roles which are set to by-pass the access control.
-    $rids_bypass = $view->display[$current_display]->display_options['og_access_override'];
-
-    // Convert the settings to a workable array.
-    if (count($rids_bypass)) {
-      foreach ($rids_bypass as $role) {
-        if (is_numeric($role)) {
-          $roles_bypass[$role] = $role;
-        }
-      }
-    }
-
+    $roles_bypass = array_filter($view->display[$current_display]->display_options['og_access_override']);
     // Check if the user can by-pass access control.
     $user_bypass = _dt_editorial_user_is_member($user, $roles_bypass);
-
     // A double check after the data consistency check.
     if (count($roles_bypass) && $user_bypass) {
       // Altering the query if necessary.
@@ -118,7 +104,8 @@ function _dt_editorial_user_is_member($user, $roles = []) {
   // If the user has any OG roles.
   if (isset($user_memberships) && count($user_memberships)) {
     // And the role of the user is part of the bypass list.
-    if (in_array($user_memberships['rid'], $roles)) {
+    $role = og_role_load($user_memberships['rid']);
+    if (in_array($role->name, $roles)) {
       // Give a by-pass.
       return TRUE;
     }
@@ -233,8 +220,8 @@ function _dt_editorial_access_control($context, $account = NULL) {
         $group_group_type = trim($group[$gid]->type, ' ');
         // Group specific user roles, optimistically matched to context.
         $group_user_roles = og_get_user_roles($group_entity_type, $gid, $account->uid);
-        foreach ($group_user_roles as $rid => $role_name) {
-          if (isset($context[$group_group_type][$rid])) {
+        foreach ($group_user_roles as $role_name) {
+          if (isset($context[$group_group_type][$role_name])) {
             return TRUE;
           }
         }

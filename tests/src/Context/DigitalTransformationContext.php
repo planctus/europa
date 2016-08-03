@@ -124,7 +124,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then I edit the node
    */
   public function iEditTheNode() {
-    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/edit');
+    $this->getSession()->visit($this->currentNode()->getEditPath());
   }
 
   /**
