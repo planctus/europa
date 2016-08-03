@@ -597,3 +597,17 @@ function cwt_core_update_7144() {
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
 }
+
+/**
+ * DTTSB-927 Removing fields groups from editorial section.
+ */
+function cwt_core_update_7145() {
+  $obsolete_groups = array(
+    'group_team_settings',
+    'group_term',
+  );
+  foreach ($obsolete_groups as $group_name) {
+    $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
+}

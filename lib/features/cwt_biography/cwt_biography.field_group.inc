@@ -753,33 +753,6 @@ function cwt_biography_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_config|taxonomy_term|biography_roles|form';
-  $field_group->group_name = 'group_config';
-  $field_group->entity_type = 'taxonomy_term';
-  $field_group->bundle = 'biography_roles';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Role specific configuration',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_declaration_of_interest',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-config field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_config|taxonomy_term|biography_roles|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_message|node|biography|full';
   $field_group->group_name = 'group_message';
   $field_group->entity_type = 'node';
@@ -877,7 +850,6 @@ function cwt_biography_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Calendar');
   t('Announcements');
   t('Assistant');
   t('Assistants');
@@ -886,6 +858,7 @@ function cwt_biography_field_group_info() {
   t('Bio top wrapper');
   t('Biography');
   t('Blog');
+  t('Calendar');
   t('Column');
   t('Contact');
   t('Content');
@@ -897,7 +870,6 @@ function cwt_biography_field_group_info() {
   t('Metadata');
   t('Portfolio');
   t('Responsibilities');
-  t('Role specific configuration');
   t('Team');
   t('Technical fields');
   t('Timeline');
