@@ -939,3 +939,12 @@ function dt_core_update_7169() {
   // Revert the feature.
   features_revert(['dt_core']);
 }
+
+/**
+ * DTTSB-827: Revoke some permissions from editorial team member.
+ */
+function dt_core_update_7170() {
+  if (_dt_roles_permissions_import_import('editorial team member', TRUE)) {
+    drupal_set_message(t('Role "editorial team member" updated.'));
+  }
+}
