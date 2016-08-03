@@ -58,3 +58,11 @@ I should be able to create contact content
       | 31 7053 00         | No + at the begging                |                                  | Country code missing or in wrong format, ex:+32                              |
       | +31 7053 00        | Miss ()                            | Phone - European Commission BE   | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
       | +31 7053 00        | Miss close (                       | (Phone - European Commission BE  | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
+
+  Scenario: Phone number validation should not occur on content types that have no phone fields
+    Given I am logged in as a user with the "editor" role
+    When I go to "node/add/basic-page"
+    Then I fill in the following:
+      | Title | Phone number test |
+    Then I press "Save"
+    Then I should not see "Undefined index: field_contact_phone_number in"
