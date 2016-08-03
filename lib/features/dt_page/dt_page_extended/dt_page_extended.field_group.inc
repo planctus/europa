@@ -27,6 +27,7 @@ function dt_page_extended_field_group_info() {
       0 => 'body',
       1 => 'field_core_publications',
       2 => 'field_core_next_steps',
+      3 => 'field_core_files',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -82,11 +83,12 @@ function dt_page_extended_field_group_info() {
     'children' => array(
       0 => 'group_background',
       1 => 'group_banner',
-      2 => 'group_editorial_settings',
-      3 => 'group_featured_item',
-      4 => 'group_page_architecture',
-      5 => 'group_page_main',
-      6 => 'group_related',
+      2 => 'group_documents',
+      3 => 'group_editorial_settings',
+      4 => 'group_featured_item',
+      5 => 'group_page_architecture',
+      6 => 'group_page_main',
+      7 => 'group_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -109,7 +111,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -168,11 +170,11 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Page Architecture',
-    'weight' => '17',
+    'weight' => '18',
     'children' => array(
-      0 => 'field_core_parent',
-      1 => 'field_core_children',
-      2 => 'field_core_parents',
+      0 => 'field_core_children',
+      1 => 'field_core_parents',
+      2 => 'field_core_parent',
       3 => 'field_core_quick_nav_links',
     ),
     'format_type' => 'tab',
@@ -234,6 +236,7 @@ function dt_page_extended_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_core_publications',
+      1 => 'field_core_files',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
