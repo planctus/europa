@@ -272,7 +272,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What others are saying',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'dt_event_scribble_embed',
     ),
@@ -886,6 +886,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_events|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_image_video|node|event|event_past';
+  $field_group->group_name = 'group_image_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Images and videos',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_gallery',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Images and videos',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="images-video"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_image_video|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1706,6 +1736,7 @@ function dt_event_default_field_group_info() {
   t('Documents');
   t('Editorial settings');
   t('Events');
+  t('Images and videos');
   t('Latest section');
   t('Left');
   t('Live feed');

@@ -31,15 +31,19 @@ function dt_core_info_install() {
     'dt_page_extended',
     'dt_site_menu',
     'dt_consultation_default',
-    'dt_event_default',
   );
   module_enable($features);
 
   // Enabling information sub-theme.
-  theme_enable(array('information'));
+  theme_enable(['europa', 'information']);
   variable_set('theme_default', 'information');
+
+  // Enable features that rely on the theme.
+  module_enable(['dt_event_default']);
+
   // Disabling unnecessary themes.
-  theme_disable(array('europa', 'ec_resp', 'seven'));
+  theme_disable(['ec_resp']);
+
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 

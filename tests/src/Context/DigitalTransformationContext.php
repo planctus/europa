@@ -24,7 +24,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * The file context helper.
    *
-   *   * @var Drupal\nexteuropa\Helpers\FileContextHelper
+   * @var \Drupal\nexteuropa\Helpers\FileContextHelper
    *   The filecontexthelper.
    */
   private $fileContextHelper;

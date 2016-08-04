@@ -315,6 +315,11 @@
         <exec command='php src/Phing/generateSettings.php "${drupal.db.url}" "${platform.build.dir}"' escape="false"/>
     </target>
 
+    <!-- Symlink the test content. -->
+    <target name="link-test-content">
+        <symlink target="${project.basedir}/resources/test_content/dt_test_content" link="${platform.build.subsite.modules.dir}/dt_test_content" />
+    </target>
+
     <!-- Chaining target to rebuild dev environment -->
     <target
             name="rebuild-dev-db"

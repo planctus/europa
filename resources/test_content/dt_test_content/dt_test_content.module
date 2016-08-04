@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the Digital transformation test content feature.
+ */
+
+include_once 'dt_test_content.features.inc';

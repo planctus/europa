@@ -516,7 +516,7 @@ function dt_social_network_links_taxonomy_term_update($term) {
  * Implements hook_image_style_flush().
  */
 function dt_social_network_links_image_style_flush($style) {
-  if ($style['name'] == 'social_network_icon') {
+  if (isset($style['name']) && $style['name'] == 'social_network_icon') {
     _dt_social_network_links_generate_css();
   }
 }

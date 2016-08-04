@@ -532,9 +532,10 @@ function dt_event_default_field_default_field_instances() {
         'weight' => 77,
       ),
       'event_past' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'dt_gallery',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'dt_gallery',
         'weight' => 76,
       ),
       'full' => array(
@@ -1305,10 +1306,9 @@ function dt_event_default_field_default_field_instances() {
       ),
       'event_past' => array(
         'label' => 'hidden',
-        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 48,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -2316,7 +2316,7 @@ iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&de
 only enter this in the input field:
 
 ```
-http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
     ```',
     'display' => array(
       'default' => array(
@@ -4101,7 +4101,7 @@ iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&de
 only enter this in the input field:
 
 ```
-http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
     ```');
   t('Registration');
   t('Registration deadline');
