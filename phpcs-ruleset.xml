@@ -95,14 +95,4 @@
         <exclude-pattern>*.*</exclude-pattern>
     </rule>
 
-    <!-- Exclude version check. -->
-    <rule ref="Drupal.InfoFiles.AutoAddedKeys.Version">
-        <exclude-pattern>*.*</exclude-pattern>
-    </rule>
-
-    <!-- Exclude version check. -->
-    <rule ref="Drupal.InfoFiles.AutoAddedKeys.Project">
-        <exclude-pattern>*.*</exclude-pattern>
-    </rule>
-
 </ruleset>
