@@ -403,6 +403,17 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Sets the current node as the frontpage.
+   *
+   * @Given I set the current page as frontpage
+   */
+  public function iSetTheCurrentPageAsFrontpage() {
+    variable_set('site_frontpage', ltrim($this->currentNode()
+      ->getNodePath(), '/'));
+    variable_set('weight_frontpage', 0);
+  }
+
+  /**
    * Test if a css selector is available.
    *
    * @Then /^I should see the css selector "([^"]*)"$/
