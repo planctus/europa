@@ -73,6 +73,25 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Changes the language of the page to the requested language.
+   *
+   * @Then I change the language to :language_name
+   */
+  public function iChangeTheLanguageTo($language_name) {
+    $available_languages = language_list('name');
+
+    if (isset($available_languages[$language_name])) {
+      $language_code = $available_languages[$language_name]->prefix;
+    }
+    else {
+      throw new ExpectationException('Requested language ' . $language_name . ' not found or inactive', $this->getSession());
+    }
+
+    // Redirect the user to the new language page.
+    $this->getSession()->visit($this->currentNode()->getNodePath() . '_' . $language_code);
+  }
+
+  /**
    * Goes to translation form.
    *
    * @When I go to add :target translation

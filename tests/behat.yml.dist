@@ -32,5 +32,6 @@ default:
           - '${behat.subcontexts.path}'
       region_map:
         tabs: '.tabs--primary'
+        secondary_language_selector: '.lang-selector-page'
   formatters:
     ${behat.formatter.name}: ~
