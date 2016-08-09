@@ -320,6 +320,28 @@
         <symlink target="${project.basedir}/resources/test_content/dt_test_content" link="${platform.build.subsite.modules.dir}/dt_test_content" />
     </target>
 
+    <property name="snapshot" value="${phing.project.tmp.dir}/snapshot.sql"/>
+    <target name="snapshot" description="Creates a snapshot of the local database">
+        <delete file="${snapshot}" failonerror="false"/>
+        <!-- Make snapshot -->
+        <exec command="${drush.bin} --root=${platform.build.dir} sql-dump --result-file=${snapshot}"/>
+        <echo msg="Snapshot of local database created"/>
+    </target>
+
+    <target name="restore-snapshot" description="Restores a snapshot of the local database">
+        <if>
+            <available file="${snapshot}" type="file"/>
+            <then>
+                <!-- Make snapshot -->
+                <exec command="cat ${snapshot} | ${drush.bin} --root=${platform.build.dir} -y sqlc"/>
+                <echo msg="Local database restored from snapshot"/>
+            </then>
+            <else>
+                <echo msg="There is no available snapshot to restore." />
+            </else>
+        </if>
+    </target>
+
     <!-- Chaining target to rebuild dev environment -->
     <target
             name="rebuild-dev-db"

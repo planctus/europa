@@ -88,6 +88,11 @@ For more information about testing within our project, [Read this article](https
 * `./bin/phing rebuild-dev-db` rebuilds the codebase, creates a settings file
   and restores the database.
   This is espeically usefull for peer reviewing tickets.
+  
+* `./bin/phing snapshot` Creates a dump from the local database.
+  
+* `./bin/phing restore-snapshot` Restores a database dump previously created
+  by `./bin/phing snapshot`
 
 * `drush en dt_dev -y; drush frdt -y` After running those commands, all the
   feature fields will be unlocked.
