@@ -53,6 +53,27 @@ function dt_person_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_person_agenda_introduction'.
+  $field_bases['field_person_agenda_introduction'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_person_agenda_introduction',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_person_first_name'.
   $field_bases['field_person_first_name'] = array(
     'active' => 1,
@@ -177,6 +198,28 @@ function dt_person_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_person_role_title'.
+  $field_bases['field_person_role_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_person_role_title',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_person_tagline'.
   $field_bases['field_person_tagline'] = array(
     'active' => 1,
@@ -196,28 +239,6 @@ function dt_person_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_role_title'.
-  $field_bases['field_role_title'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_role_title',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 1,
-    'module' => 'text',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'max_length' => 150,
-    ),
-    'translatable' => 1,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_type_of_person'.

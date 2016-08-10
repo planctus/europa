@@ -22,7 +22,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '68',
+    'weight' => '70',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -40,6 +40,63 @@ function dt_person_field_group_info() {
     ),
   );
   $field_groups['group_editorial_settings|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_agenda|node|person|form';
+  $field_group->group_name = 'group_person_agenda';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_content';
+  $field_group->data = array(
+    'label' => 'Agenda',
+    'weight' => '69',
+    'children' => array(
+      0 => 'field_person_agenda_introduction',
+      1 => 'field_core_links',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-person-agenda field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_person_agenda|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_biography_cv|node|person|form';
+  $field_group->group_name = 'group_person_biography_cv';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_content';
+  $field_group->data = array(
+    'label' => 'Biography and CV',
+    'weight' => '68',
+    'children' => array(
+      0 => 'field_core_file',
+      1 => 'field_core_next_steps',
+      2 => 'body',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-person-biography-cv field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_person_biography_cv|node|person|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -79,12 +136,14 @@ function dt_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'group_editorial_settings',
-      1 => 'group_person_contact',
-      2 => 'group_person_profile',
-      3 => 'group_person_technical',
+      1 => 'group_person_agenda',
+      2 => 'group_person_biography_cv',
+      3 => 'group_person_contact',
+      4 => 'group_person_profile',
+      5 => 'group_person_technical',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -168,7 +227,7 @@ function dt_person_field_group_info() {
       4 => 'field_person_role',
       5 => 'field_person_tagline',
       6 => 'field_core_legacy_link',
-      7 => 'field_role_title',
+      7 => 'field_person_role_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -212,6 +271,8 @@ function dt_person_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Agenda');
+  t('Biography and CV');
   t('Contact');
   t('Content');
   t('Editorial settings');
