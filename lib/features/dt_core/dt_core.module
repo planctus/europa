@@ -441,7 +441,6 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
     }
   }
   catch (DTCoreParentCircular $e) {
-
     return TRUE;
   }
   // Check if our node is among its future relatives.
@@ -887,6 +886,21 @@ function dt_core_preprocess_views_view(&$variables) {
 }
 
 /**
+ * Implements hook_metatag_info().
+ */
+function dt_core_metatag_info() {
+  $info['tags']['last-modified'] = array(
+    'label' => t('Last modified'),
+    'class' => 'DrupalTextMetaTag',
+    'context' => array('node'),
+    'name' => 'last-modified',
+    'description' => '',
+  );
+
+  return $info;
+}
+
+/**
  * Implements hook_metatag_metatags_view_alter().
  *
  * Because of SEO recommendations, description meta tag
@@ -926,6 +940,24 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
       }
     }
   }
+
+  if ($options['entity_type'] == "node") {
+    // Only non-helper content type nodes should have last-modified meta.
+    if (variable_get('dt_node_settings_helper_node_type_' . $options['entity']->type, 0) === 1) {
+      unset($output['last-modified']);
+    }
+    else {
+      // Get the node object.
+      $node_object = entity_metadata_wrapper('node', $options['entity']);
+
+      // If field_core_date_updated exists update metatag,
+      // else leave the default value.
+      if ($node_object->__isset('field_core_date_updated')) {
+        $date_updated = $node_object->field_core_date_updated->value();
+        $output['last-modified']['#attached']['drupal_add_html_head'][0][0]['#value'] = format_date($date_updated, 'custom', 'd/m/Y');
+      }
+    }
+  }
 }
 
 /**
@@ -939,7 +971,7 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
  */
 function _dt_core_menu_link($link, $lang = FALSE) {
   $lang = $lang ? $lang : LANGUAGE_NONE;
-  if ($link != '<front>' &&  $link != '<nolink>') {
+  if ($link != '<front>' && $link != '<nolink>') {
     $source = drupal_lookup_path('source', $link, $lang);
     if (!$source) {
       $view = drupal_valid_path($link);

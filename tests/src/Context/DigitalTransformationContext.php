@@ -273,6 +273,22 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Assess a metatag does not exist.
+   *
+   * @Then the metatag attribute :metatag should not exist
+   *
+   * @throws ExpectationException
+   *   If it does not match.
+   */
+  public function theMetatagAttributeShouldNotExist($metatag) {
+    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
+
+    if (is_object($element)) {
+      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does exist'));
+    }
+  }
+
+  /**
    * Creates a language.
    *
    * @param string $langcode
@@ -460,6 +476,19 @@ class DigitalTransformationContext extends RawDrupalContext {
         ->getCurrentUrl(), $css_selector));
     }
     $element->click();
+  }
+
+  /**
+   * Sets the last modified date.
+   *
+   * @Then I set the last modified date to :arg1
+   */
+  public function iSetTheLastModifiedDateTo($arg1) {
+    $node = $this->currentNode()->getNode();
+    db_update('node')
+      ->fields(array('changed' => strtotime($arg1)))
+      ->condition('nid', $node->nid)
+      ->execute();
   }
 
   /**
