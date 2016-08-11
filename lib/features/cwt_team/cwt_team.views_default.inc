@@ -1079,15 +1079,16 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['tid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['tid_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['tid_1']['separator'] = '';
-  /* Field: Taxonomy term: Name */
+  /* Field: status_tag */
   $handler->display->display_options['fields']['name_field_1']['id'] = 'name_field_1';
   $handler->display->display_options['fields']['name_field_1']['table'] = 'field_data_name_field';
   $handler->display->display_options['fields']['name_field_1']['field'] = 'name_field';
   $handler->display->display_options['fields']['name_field_1']['relationship'] = 'field_biography_status_tid_i18n';
+  $handler->display->display_options['fields']['name_field_1']['ui_name'] = 'status_tag';
   $handler->display->display_options['fields']['name_field_1']['label'] = '';
   $handler->display->display_options['fields']['name_field_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name_field_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name_field_1']['alter']['text'] = '<span class="term-[tid_1] [name_field_1] label status">[name_field_1]</span>';
+  $handler->display->display_options['fields']['name_field_1']['alter']['text'] = '<span class="label-term-status term-[tid_1] label label--upper label--status">[name_field_1]</span>';
   $handler->display->display_options['fields']['name_field_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field_1']['type'] = 'text_plain';
   $handler->display->display_options['fields']['name_field_1']['link_to_entity'] = 0;
@@ -1133,8 +1134,9 @@ function cwt_team_views_default_views() {
 [field_biography_portrait]
  </div>
  <div class="listing__column-main">
-  <div class="meta">
- <span class="meta__item meta__item--type">[field_gender]</span>
+  <div>
+<span class="meta">[field_gender]</span>
+[name_field_1]
  </div>
 <h3 class="listing__title">[field_biography_last_name]</h3>
 <div>[field_biography_tagline]</div>

@@ -203,4 +203,9 @@ section #timeline {
   #commissioners > div > h3 {
     float: left; } }
 
+.label-term-status {
+  display: none; }
+  .label-term-status.term-43, .label-term-status.term-47 {
+    display: inline-block; }
+
 /*# sourceMappingURL=style.css.map */

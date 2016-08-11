@@ -92,3 +92,14 @@
     float: left;
   }
 }
+
+// Hide/show commissioners status.
+.label-term-status {
+  display: none;
+
+  // On leave and Designate.
+  &.term-43,
+  &.term-47 {
+    display: inline-block;
+  }
+}
