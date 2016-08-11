@@ -324,8 +324,7 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
         $term = taxonomy_term_load($item['social_network']);
         $title = $title == $item['url'] ? $term->name : $title;
         $classname = 'icon-social';
-        if ($term) {
-          $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname');
+        if ($term && $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname')) {
           $classname .= ' ' . $class['#items'][0]['safe_value'];
         }
 

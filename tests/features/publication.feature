@@ -1,36 +1,47 @@
 @api @information @political
 Feature: Publication content type should have 2 types of visualization.
-When I log into the website
-As an editor
-I should be able to create single or collection publications.
+  As an editor
+  I should be able to create single or collection publications.
 
   Scenario: One publication containing files (document)
-    Given "Publication" content:
-      | title                              | field_publication_collection | field_core_description | field_core_files               | status |
-      | Activity Report 2014 Communication | 0                            | Content description    | DG COMM - Activity Report 2014 | 1      |
-    And I am logged in as a user with the "editor" role
-    And I go to "admin/content"
-    And I follow "Activity Report 2014 Communication"
+    Given "file" content:
+      | title         | status | language |
+      | My File Title | 1      | en       |
+    Given I am viewing a "Publication" content:
+      | title                           | Activity Report 2014 Communication |
+      | field_core_date_updated:value   | 1400980800                         |
+      | field_core_date_updated:value2  | 1400980800                         |
+      | field_core_date_published:value | 1400980800                         |
+      | field_core_date_published:value | 1400980800                         |
+      | field_publication_collection    | 0                                  |
+      | field_core_description          | Content description                |
+      | field_core_files                | My File Title                      |
+      | status                          | 1                                  |
     Then I should see text matching "Files"
     But I should not see text matching "Documents"
 
   Scenario: Collection of publications (documents)
-    Given "Publication" content:
-      | title                  | field_publication_collection | field_core_description | field_core_publications            | status |
-      | Publication collection | 1                            | Content description    | Activity Report 2014 Communication | 1      |
-    And I am logged in as a user with the "editor" role
-    And I go to "admin/content"
-    And I follow "Publication collection"
+    Given I am viewing a "Publication" content:
+      | title                           | Publication collection             |
+      | field_publication_collection    | 1                                  |
+      | field_core_description          | Content description                |
+      | field_core_publications         | Activity Report 2014 Communication |
+      | status                          | 1                                  |
+      | field_core_date_updated:value   | 1400980800                         |
+      | field_core_date_updated:value2  | 1400980800                         |
+      | field_core_date_published:value | 1400980800                         |
+      | field_core_date_published:value | 1400980800                         |
     Then I should see text matching "Documents"
     And I should see text matching "Collection"
 
   Scenario Outline: Anonymous users can see the date published value in the last-modified metatag
-    Given I am an anonymous user
-    When I am viewing a "Publication" content:
-      | title                     | <title>          |
-      | field_core_date_published | <date-published> |
-      | field_core_date_updated   | <date-updated>   |
-      | status                    | 1                |
+    Given I am viewing a "Publication" content:
+      | title                            | <title>          |
+      | field_core_date_published:value  | <date-published> |
+      | field_core_date_published:value2 | <date-published> |
+      | field_core_date_updated:value    | <date-updated>   |
+      | field_core_date_updated:value2   | <date-updated>   |
+      | status                           | 1                |
     Then the metatag attribute "last-modified" should have the value "<expected-meta>"
 
     Examples:

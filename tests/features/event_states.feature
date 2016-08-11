@@ -4,16 +4,17 @@ Feature: Checking different state of events
   I should be able to see different buttons or messages
 
   Scenario Outline: Status messages before event.
-    Before the event:
-      - Current time < Event start time
-    Status message:
-      - Status field: "no", then see no message.
-      - Status field: "reschedule", then see message: "The event has been rescheduled".
-      - Status field: "cancelled", then see message: "The event has been cancelled".
+  Before the event:
+  - Current time < Event start time
+  Status message:
+  - Status field: "no", then see no message.
+  - Status field: "reschedule", then see message: "The event has been rescheduled".
+  - Status field: "cancelled", then see message: "The event has been cancelled".
     Given I am viewing an "Event" content:
       | title                     | <title>         |
       | field_event_status        | <event_status>  |
       | field_event_date:value    | 1893456000      |
+      | field_event_date:value2   | 1893456000      |
       | field_event_date:timezone | Europe/Budapest |
       | status                    | 1               |
     Then I should <is_message> the css selector ".field--dt-event-status-message-1"
@@ -26,12 +27,12 @@ Feature: Checking different state of events
 
   # "Book your seat" should appears.
   Scenario: "Book your seat" button should appears.
-    "Book your seat" button displaying criteria:
-      - Before the event or event is ongoing.
-      - Have registration link, minimum the link.
-      - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
-      - Not "Fully booked".
-      - When the event status is not "cancelled".
+  "Book your seat" button displaying criteria:
+  - Before the event or event is ongoing.
+  - Have registration link, minimum the link.
+  - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
+  - Not "Fully booked".
+  - When the event status is not "cancelled".
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
       | field_event_status                    | no                                                         |
@@ -40,6 +41,7 @@ Feature: Checking different state of events
       | field_event_registration_end:value    | 1893456000                                                 |
       | field_event_registration_end:timezone | Europe/Budapest                                            |
       | field_event_date:value                | 1893456000                                                 |
+      | field_event_date:value2               | 1893456000                                                 |
       | field_event_date:timezone             | Europe/Budapest                                            |
       | status                                | 1                                                          |
     Then I should see the link "Registration title"
@@ -71,6 +73,7 @@ Feature: Checking different state of events
       | field_event_is_fully_booked | no                                       |
       | field_event_registration    | Registration title - http://localhost    |
       | field_event_date:value      | 1893456000                               |
+      | field_event_date:value2     | 1893456000                               |
       | field_event_date:timezone   | Europe/Budapest                          |
       | status                      | 1                                        |
     Then I should not see the link "Registration title"
@@ -79,13 +82,14 @@ Feature: Checking different state of events
   # Fully booked.
   Scenario: "Book your seat" button should not appears, when event is fully booked.
     Given I am viewing an "Event" content:
-      | title                                 | Book your seat test, fully booked     |
-      | field_event_status                    | no                                    |
-      | field_event_is_fully_booked           | yes                                   |
-      | field_event_registration              | Registration title - http://localhost |
-      | field_event_date:value                | 1893456000                            |
-      | field_event_date:timezone             | Europe/Budapest                       |
-      | status                                | 1                                     |
+      | title                       | Book your seat test, fully booked     |
+      | field_event_status          | no                                    |
+      | field_event_is_fully_booked | yes                                   |
+      | field_event_registration    | Registration title - http://localhost |
+      | field_event_date:value      | 1893456000                            |
+      | field_event_date:value2     | 1893456000                            |
+      | field_event_date:timezone   | Europe/Budapest                       |
+      | status                      | 1                                     |
     Then I should not see the link "Registration title"
 
   # Following registration deadline.
@@ -98,6 +102,7 @@ Feature: Checking different state of events
       | field_event_registration_end:value    | 42854400                                         |
       | field_event_registration_end:timezone | Europe/Budapest                                  |
       | field_event_date:value                | 1893456000                                       |
+      | field_event_date:value2               | 1893456000                                       |
       | field_event_date:timezone             | Europe/Budapest                                  |
       | status                                | 1                                                |
     Then I should not see the link "Registration title"
@@ -106,21 +111,22 @@ Feature: Checking different state of events
   # Registration link is missing.
   Scenario: "Book your seat" button should not appears, when registration link is missing.
     Given I am viewing an "Event" content:
-      | title                                 | Book your seat test, registration link is missing |
-      | field_event_status                    | no                                                |
-      | field_event_is_fully_booked           | no                                                |
-      | field_event_date:value                | 1893456000                                        |
-      | field_event_date:timezone             | Europe/Budapest                                   |
-      | status                                | 1                                                 |
+      | title                       | Book your seat test, registration link is missing |
+      | field_event_status          | no                                                |
+      | field_event_is_fully_booked | no                                                |
+      | field_event_date:value      | 1893456000                                        |
+      | field_event_date:value2     | 1893456000                                        |
+      | field_event_date:timezone   | Europe/Budapest                                   |
+      | status                      | 1                                                 |
     Then I should not see the link "Registration title"
 
   # "Watch live" button.
   Scenario: "Watch live" button should appears.
-    In case of the following conjunction:
-      - "Live streaming available": yes.
-      - "Date and time of live streaming" current moment is between start and end time of live streaming.
-      - When the event status is not "cancelled".
-      - "Live streaming link" is given.
+  In case of the following conjunction:
+  - "Live streaming available": yes.
+  - "Date and time of live streaming" current moment is between start and end time of live streaming.
+  - When the event status is not "cancelled".
+  - "Live streaming link" is given.
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, button should appears |
       | field_event_status                          | no                                               |
@@ -131,6 +137,7 @@ Feature: Checking different state of events
       | field_event_live_streaming_date:timezone    | Europe/Budapest                                  |
       | field_event_live_streaming_link             | http://localhost                                 |
       | field_event_date:value                      | 1893456000                                       |
+      | field_event_date:value2                     | 1893456000                                       |
       | field_event_date:timezone                   | Europe/Budapest                                  |
       | status                                      | 1                                                |
     Then I should see the link "Watch live"
@@ -147,6 +154,7 @@ Feature: Checking different state of events
       | field_event_live_streaming_date:timezone    | Europe/Budapest                            |
       | field_event_live_streaming_link             | http://localhost                           |
       | field_event_date:value                      | 1893456000                                 |
+      | field_event_date:value2                     | 1893456000                                 |
       | field_event_date:timezone                   | Europe/Budapest                            |
       | status                                      | 1                                          |
     Then I should not see the link "Watch live"
@@ -155,7 +163,7 @@ Feature: Checking different state of events
   Scenario: "Watch live" button should not appears, when there is no live streaming.
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, no live streaming |
-      | field_event_status                          | no                                    |
+      | field_event_status                          | no                                           |
       | field_event_is_live_streaming               | no                                           |
       | field_event_live_streaming_date:show_todate | 1                                            |
       | field_event_live_streaming_date:value       | 42854400                                     |
@@ -163,6 +171,7 @@ Feature: Checking different state of events
       | field_event_live_streaming_date:timezone    | Europe/Budapest                              |
       | field_event_live_streaming_link             | http://localhost                             |
       | field_event_date:value                      | 1893456000                                   |
+      | field_event_date:value2                     | 1893456000                                   |
       | field_event_date:timezone                   | Europe/Budapest                              |
       | status                                      | 1                                            |
     Then I should not see the link "Watch live"
@@ -170,15 +179,17 @@ Feature: Checking different state of events
   # Current time is before broadcasting start.
   Scenario: "Watch live" button should not appears, when current time is before is before broadcasting start.
     Given I am viewing an "Event" content:
-      | title                                       | Watch live streaming test, current time is before broadcasting start |
-      | field_event_status                          | no                                                                   |
-      | field_event_is_live_streaming               | yes                                                                  |
-      | field_event_live_streaming_date:value       | 1893456000                                                           |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                                                      |
-      | field_event_live_streaming_link             | http://localhost                                                     |
-      | field_event_date:value                      | 1893456000                                                           |
-      | field_event_date:timezone                   | Europe/Budapest                                                      |
-      | status                                      | 1                                                                    |
+      | title                                    | Watch live streaming test, current time is before broadcasting start |
+      | field_event_status                       | no                                                                   |
+      | field_event_is_live_streaming            | yes                                                                  |
+      | field_event_live_streaming_date:value    | 1893456000                                                           |
+      | field_event_live_streaming_date:value2    | 1893456000                                                           |
+      | field_event_live_streaming_date:timezone | Europe/Budapest                                                      |
+      | field_event_live_streaming_link          | http://localhost                                                     |
+      | field_event_date:value                   | 1893456000                                                           |
+      | field_event_date:value2                  | 1893456000                                                           |
+      | field_event_date:timezone                | Europe/Budapest                                                      |
+      | status                                   | 1                                                                    |
     Then I should not see the link "Watch live"
 
   # Current time is outside of broadcasting interval.
@@ -193,6 +204,7 @@ Feature: Checking different state of events
       | field_event_live_streaming_date:timezone    | Europe/Budapest                                                             |
       | field_event_live_streaming_link             | http://localhost                                                            |
       | field_event_date:value                      | 1893456000                                                                  |
+      | field_event_date:value2                     | 1893456000                                                                  |
       | field_event_date:timezone                   | Europe/Budapest                                                             |
       | status                                      | 1                                                                           |
     Then I should not see the link "Watch live"
@@ -208,6 +220,7 @@ Feature: Checking different state of events
       | field_event_live_streaming_date:value2      | 1893456000                                |
       | field_event_live_streaming_date:timezone    | Europe/Budapest                           |
       | field_event_date:value                      | 1893456000                                |
+      | field_event_date:value2                     | 1893456000                                |
       | field_event_date:timezone                   | Europe/Budapest                           |
       | status                                      | 1                                         |
     Then I should not see the link "Watch live"

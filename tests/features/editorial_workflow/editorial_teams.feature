@@ -7,22 +7,22 @@ Feature: In order to guarantee that content can be managed only by the appropria
     Given users:
       | name           | mail                      | status | roles                                  |
       | Mike_First     | MikeFirst@example.com     | 1      |                                        |
-      | Agatha_First   | AgathaFirst@example.com   | 1      | editorial team member                            |
-      | Vanessa_First  | VanessaFirst@example.com  | 1      | editorial team member                            |
-      | Rocky_First    | RockyFirst@example.com    | 1      | editorial team member                            |
+      | Agatha_First   | AgathaFirst@example.com   | 1      | editorial team member                  |
+      | Vanessa_First  | VanessaFirst@example.com  | 1      | editorial team member                  |
+      | Rocky_First    | RockyFirst@example.com    | 1      | editorial team member                  |
       | Mike_Second    | MikeSecond@example.com    | 1      |                                        |
-      | Agatha_Second  | AgathaSecond@example.com  | 1      | editorial team member                            |
-      | Vanessa_Second | VanessaSecond@example.com | 1      | editorial team member                            |
-      | Rocky_Second   | RockySecond@example.com   | 1      | editorial team member                            |
+      | Agatha_Second  | AgathaSecond@example.com  | 1      | editorial team member                  |
+      | Vanessa_Second | VanessaSecond@example.com | 1      | editorial team member                  |
+      | Rocky_Second   | RockySecond@example.com   | 1      | editorial team member                  |
       | Mike_Both      | MikeBoth@example.com      | 1      |                                        |
-      | Agatha_Both    | AgathaBoth@example.com    | 1      | editorial team member                            |
-      | Vanessa_Both   | VanessaBoth@example.com   | 1      | editorial team member                            |
-      | Rocky_Both     | RockyBoth@example.com     | 1      | editorial team member                            |
+      | Agatha_Both    | AgathaBoth@example.com    | 1      | editorial team member                  |
+      | Vanessa_Both   | VanessaBoth@example.com   | 1      | editorial team member                  |
+      | Rocky_Both     | RockyBoth@example.com     | 1      | editorial team member                  |
       | William        | William@example.com       | 1      | web transformer, editorial team member |
 
     Given "Editorial team" content:
-      | title      | field_editorial_types    | language |
-      | First team | announcement, basic_page | und      |
+      | title      | field_editorial_types    |
+      | First team | announcement, basic_page |
     And I go to "content/first-team"
     And I add "Mike_First" to the group as "member"
     And I add "Agatha_First" to the group as "author"
@@ -34,8 +34,8 @@ Feature: In order to guarantee that content can be managed only by the appropria
     And I add "Rocky_Both" to the group as "reviewer"
 
     Given "Editorial team" content:
-      | title       | field_editorial_types    | language |
-      | Second team | announcement, department | und      |
+      | title       | field_editorial_types    |
+      | Second team | announcement, department |
     And I go to "content/second-team"
     And I add "Mike_Second" to the group as "member"
     And I add "Agatha_Second" to the group as "author"

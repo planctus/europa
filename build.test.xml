@@ -32,8 +32,15 @@
             features and modules which need to be enabled after installation.
          -->
          <phingcall target="enable-install-modules" />
+
         <!-- No mather how installed, the dt features need to be reverted after install -->
          <phingcall target="revert-dt-features" />
+
+        <!-- Rebuild node access after Subsites modules activation -->
+        <phingcall target="rebuild-node-access" />
+
+        <!-- Set private files -->
+        <phingcall target="set-private-files" />
     </target>
 
     <!-- Enable required modules after installation of the profile. -->
@@ -184,4 +191,15 @@
         depends="install, enable-development-modules, revert-dt-features"
     />
 
+    <!-- Rebuild node access. -->
+    <target name="rebuild-node-access">
+        <drush
+            command="php-eval"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <param>"node_access_rebuild()"</param>
+        </drush>
+    </target>
 </project>

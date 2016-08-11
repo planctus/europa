@@ -65,7 +65,7 @@
     <!-- Addititonal custom cphp test targets -->
     <target name="test-multisite-requirements" description="Tests the multisite requirements">
         <drush
-                command="cr"
+                command="code-review"
                 assume="yes"
                 bin="${drush.bin}"
                 pipe="yes"
@@ -80,6 +80,12 @@
             <option name="check-directory">${multisite-review.directory}</option>
         </drush>
     </target>
+
+    <target
+            name="build-test-env"
+            description="Build a test environment for CPHP"
+            depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-platform-dev-dependencies, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
+    />
 
     <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="add-dt-dev">
         <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
@@ -318,6 +324,15 @@
     <!-- Symlink the test content. -->
     <target name="link-test-content">
         <symlink target="${project.basedir}/resources/test_content/dt_test_content" link="${platform.build.subsite.modules.dir}/dt_test_content" />
+    </target>
+
+    <!-- Set private files -->
+    <target name="set-private-files">
+        <mkdir dir="${platform.build.files.dir}/private_files" />
+        <chmod mode="0755" failonerror="false" verbose="false" quiet="true">
+            <fileset dir="${platform.build.files.dir}/private_files" />
+        </chmod>
+        <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path '${platform.build.files.dir}/private_files'"/>
     </target>
 
     <property name="snapshot" value="${phing.project.tmp.dir}/snapshot.sql"/>

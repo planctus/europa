@@ -62,7 +62,7 @@ function drush_eurovoc($op = 'quickstart') {
       if (drush_confirm(dt('Do you really want to continue?'))) {
         // First clear the vocabulary to re-do everything.
         drush_log(dt('Clearing the vocabulary ...'), 'status');
-        if ($cleared = _nexteuropa_eurovoc_clear_eurovoc_vocabulary()) {
+        if (_nexteuropa_eurovoc_clear_eurovoc_vocabulary()) {
           drush_log(dt('EuroVoc vocabulary was cleared successfully.'), 'success');
         }
         else {
@@ -171,7 +171,7 @@ function _nexteuropa_eurovoc_get_data() {
       drush_log(dt('A existing data folder was deleted from @path', ['@path' => $path]), 'notice');
     }
 
-    // Decompress the zip archive
+    // Decompress the zip archive.
     drush_tarball_extract($filename);
 
   }
@@ -211,7 +211,7 @@ function _nexteuropa_eurovoc_get_concept() {
 function _nexteuropa_eurovoc_clear() {
   if (drush_confirm(dt('Do you really want to continue?'))) {
     drush_log(dt('Clearing the vocabulary ...'), 'status');
-    if ($cleared = _nexteuropa_eurovoc_clear_eurovoc_vocabulary()) {
+    if (_nexteuropa_eurovoc_clear_eurovoc_vocabulary()) {
       drush_log(dt('EuroVoc vocabulary was cleared successfully.'), 'success');
     }
     else {

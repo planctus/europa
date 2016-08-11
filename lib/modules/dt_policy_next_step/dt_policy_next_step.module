@@ -9,32 +9,32 @@
  * Implements hook_field_info().
  */
 function dt_policy_next_step_field_info() {
-  return array(
-    'dt_policy_next_step_field' => array(
+  return [
+    'dt_policy_next_step_field' => [
       'label' => t('Next step'),
       'description' => t('Next step field for NextEuropa Strategy Policy.'),
-      'settings' => array(
+      'settings' => [
         'max_length' => 255,
         'rows' => 5,
         'timezone' => 1,
         'timeline_type' => 'timeline',
-      ),
+      ],
       'default_widget' => 'dt_policy_next_step_widget',
       'default_formatter' => 'dt_policy_next_step_formatter_default',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
  * Implements hook_field_widget_info().
  */
 function dt_policy_next_step_field_widget_info() {
-  return array(
-    'dt_policy_next_step_widget' => array(
+  return [
+    'dt_policy_next_step_widget' => [
       'label' => t('Next step'),
-      'field types' => array('dt_policy_next_step_field'),
-    ),
-  );
+      'field types' => ['dt_policy_next_step_field'],
+    ],
+  ];
 }
 
 /**
@@ -44,65 +44,65 @@ function dt_policy_next_step_field_widget_settings_form($field, $instance) {
   $widget = $instance['widget'];
   $settings = $widget['settings'];
 
-  $element['timeline_type'] = array(
+  $element['timeline_type'] = [
     '#title' => t('Select type'),
     '#type' => 'radios',
     '#default_value' => isset($settings['value']['timeline_type']) ? $settings['value']['timeline_type'] : $settings['timeline_type'],
     '#description' => t('This option will define visualization'),
-    '#options' => array(
+    '#options' => [
       'timeline' => t('Timeline'),
       'timeline_schedule' => t('Timeline Schedule'),
-    ),
-  );
+    ],
+  ];
 
   // Settings available if the type is a default Timeline.
   // Max lenght settings.
-  $element['size'] = array(
+  $element['size'] = [
     '#type' => 'textfield',
     '#title' => t('Size of when/timeframe'),
     '#default_value' => isset($settings['value']['size']) ? $settings['value']['size'] : $settings['size'],
     '#required' => FALSE,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#states' => array(
-      'visible' => array(
-        ':input[name*="timeline_type"]' => array('value' => 'timeline'),
-      ),
-      'required' => array(
-        ':input[name*="timeline_type"]' => array('value' => 'timeline'),
-      ),
-    ),
-  );
-  $element['rows'] = array(
+    '#element_validate' => ['element_validate_integer_positive'],
+    '#states' => [
+      'visible' => [
+        ':input[name*="timeline_type"]' => ['value' => 'timeline'],
+      ],
+      'required' => [
+        ':input[name*="timeline_type"]' => ['value' => 'timeline'],
+      ],
+    ],
+  ];
+  $element['rows'] = [
     '#type' => 'textfield',
     '#title' => t('Rows of steps in bullet'),
     '#default_value' => isset($settings['value']['rows']) ? $settings['value']['rows'] : $settings['rows'],
     '#required' => FALSE,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#states' => array(
-      'visible' => array(
-        ':input[name*="timeline_type"]' => array('value' => 'timeline'),
-      ),
-      'required' => array(
-        ':input[name*="timeline_type"]' => array('value' => 'timeline'),
-      ),
-    ),
-  );
+    '#element_validate' => ['element_validate_integer_positive'],
+    '#states' => [
+      'visible' => [
+        ':input[name*="timeline_type"]' => ['value' => 'timeline'],
+      ],
+      'required' => [
+        ':input[name*="timeline_type"]' => ['value' => 'timeline'],
+      ],
+    ],
+  ];
 
   // Settings available if the type is a Timeline Schedule.
-  $element['timezone'] = array(
+  $element['timezone'] = [
     '#type' => 'checkbox',
     '#title' => t('Use timezone functionality'),
     '#description' => t('Enable attaching this information ot the timeline item.'),
     '#default_value' => isset($settings['value']['timezone']) ? $settings['value']['timezone'] : $settings['timezone'],
     '#return_value' => 1,
-    '#states' => array(
-      'visible' => array(
-        ':input[name*="timeline_type"]' => array('value' => 'timeline_schedule'),
-      ),
-    ),
-  );
+    '#states' => [
+      'visible' => [
+        ':input[name*="timeline_type"]' => ['value' => 'timeline_schedule'],
+      ],
+    ],
+  ];
 
-  return array('value' => $element);
+  return ['value' => $element];
 }
 
 /**
@@ -121,57 +121,57 @@ function dt_policy_next_step_field_widget_form(&$form, &$form_state, $field, $in
   }
 
   // Item description.
-  $element['steps_in_bullets'] = array(
+  $element['steps_in_bullets'] = [
     '#title' => t('Step in bullets'),
     '#type' => 'text_format',
     '#description' => t('Please give the steps in bullet bulleted list format.'),
     '#default_value' => isset($items[$delta]['steps_in_bullets']) ? $items[$delta]['steps_in_bullets'] : NULL,
     '#rows' => isset($settings['rows']) ? $settings['rows'] : 5,
-    '#attributes' => array('class' => array('text-full')),
+    '#attributes' => ['class' => ['text-full']],
     '#format' => 'full_html',
     '#weight' => 100,
-  );
+  ];
 
   switch ($timeline_type) {
     case 'timeline':
-      $element['when_timeframe'] = array(
+      $element['when_timeframe'] = [
         '#title' => t('When/timeframe'),
         '#type' => 'textfield',
         '#description' => t('Please provide date and time information.'),
         '#default_value' => isset($items[$delta]['when_timeframe']) ? $items[$delta]['when_timeframe'] : NULL,
-      );
+      ];
       break;
 
     case 'timeline_schedule':
       if ($timezone) {
-        $element['timezone'] = array(
+        $element['timezone'] = [
           '#type' => 'date_timezone',
           '#date_label_position' => 'above',
           '#options' => system_time_zones(),
           '#default_value' => isset($items[$delta]['timezone']) ? $items[$delta]['timezone'] : date_default_timezone(),
           '#description' => t('Will be displayed on the first item of the timeline list.'),
           '#required' => FALSE,
-        );
+        ];
       }
-      $element['time_date_start'] = array(
+      $element['time_date_start'] = [
         '#title' => t('Schedule item start'),
         '#type' => 'date_popup',
         '#required' => FALSE,
         '#default_value' => isset($items[$delta]['time_date_start']) ? $items[$delta]['time_date_start'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),
-      );
-      $element['time_date_end'] = array(
+      ];
+      $element['time_date_end'] = [
         '#title' => t('Schedule item end'),
         '#type' => 'date_popup',
         '#default_value' => isset($items[$delta]['time_date_end']) ? $items[$delta]['time_date_end'] : '',
         '#date_format' => 'm-d-Y H:i',
         '#description' => t('The time will be displayed for the user.'),
-      );
+      ];
+
+      $element['#element_validate'] = ['_dt_policy_next_step_time_start_date_validate'];
       break;
   }
-
-  $element['#element_validate'] = array('_dt_policy_next_step_time_start_date_validate');
 
   return $element;
 }
@@ -226,15 +226,15 @@ function dt_policy_next_step_field_validate($entity_type, $entity, $field, $inst
     // Check the length on when/timeframe.
     if (!empty($item['when_timeframe'])) {
       if (!empty($field['settings']['max_length']) && drupal_strlen($item['when_timeframe']) > $field['settings']['max_length']) {
-        $errors[$field['when_timeframe']][$langcode][$delta][] = array(
+        $errors[$field['when_timeframe']][$langcode][$delta][] = [
           'error' => 'dt_policy_next_step_max_length',
           'message' => t('%name: the value may not be longer than %max characters.',
-            array(
+            [
               '%name' => $instance['label'],
               '%max' => $field['settings']['max_length'],
-            )
+            ]
           ),
-        );
+        ];
       }
     }
   }
@@ -255,18 +255,18 @@ function dt_policy_next_step_field_widget_error($element, $error, $form, &$form_
  * Implements hook_field_formatter_info().
  */
 function dt_policy_next_step_field_formatter_info() {
-  return array(
-    'dt_policy_next_step_formatter_default' => array(
+  return [
+    'dt_policy_next_step_formatter_default' => [
       'label' => 'Next step format',
-      'field types' => array('dt_policy_next_step_field'),
-      'settings' => array(
+      'field types' => ['dt_policy_next_step_field'],
+      'settings' => [
         'modifier' => '',
         'timeline_expander_disable' => 0,
         'date_formatter' => '',
         'show_timezone' => 1,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -276,40 +276,40 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
 
-  $element = array();
+  $element = [];
 
-  $element['timeline_expander_disable'] = array(
+  $element['timeline_expander_disable'] = [
     '#title' => t('Disable timeline expander'),
     '#type' => 'checkbox',
     '#default_value' => isset($settings['timeline_expander_disable']) ? $settings['timeline_expander_disable'] : 0,
     '#description' => t('Choose whether to display all timeline items at once.'),
-  );
-  $element['modifier'] = array(
+  ];
+  $element['modifier'] = [
     '#title' => t('Modifier'),
     '#type' => 'select',
-    '#options' => array(
+    '#options' => [
       '' => t('None'),
       'timeline--nopadding' => t('No padding'),
-    ),
+    ],
     '#default_value' => $settings['modifier'],
-  );
-  $element['date_formatter'] = array(
+  ];
+  $element['date_formatter'] = [
     '#title' => t('Dates formatter'),
     '#type' => 'textfield',
     '#default_value' => isset($settings['date_formatter']) ? $settings['date_formatter'] : 'H:i',
     '#description' => t('!rules formatting rules can be applied',
-      array('!rules' => l(t('These'), 'http://php.net/manual/en/function.date.php'))),
-  );
-  $element['show_timezone'] = array(
+      ['!rules' => l(t('These'), 'http://php.net/manual/en/function.date.php')]),
+  ];
+  $element['show_timezone'] = [
     '#type' => 'select',
     '#title' => t('Show timezone information'),
     '#description' => t('Enable the display of the timezone information in the front-end.'),
     '#default_value' => isset($settings['show_timezone']) ? $settings['show_timezone'] : 1,
-    '#options' => array(
+    '#options' => [
       1 => t('Yes'),
       0 => t('No'),
-    ),
-  );
+    ],
+  ];
 
   return $element;
 }
@@ -318,7 +318,7 @@ function dt_policy_next_step_field_formatter_settings_form($field, $instance, $v
  * Implements hook_field_formatter_view().
  */
 function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $elements = array();
+  $elements = [];
   if (!empty($items)) {
 
     $timeline_expander_disable = isset($display['settings']['timeline_expander_disable']) ? $display['settings']['timeline_expander_disable'] : 0;
@@ -330,14 +330,14 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
     $elements['#suffix'] = '</div>';
     foreach ($items as $delta => $item) {
       $item = _dt_policy_next_step_sanitize($item, $langcode);
-      $elements[$delta] = array(
+      $elements[$delta] = [
         '#theme' => $display['type'],
         '#element' => $item,
         '#field' => $instance,
         '#display' => $display,
         '#date_formatter' => $date_formatter,
         '#show_timezone' => $show_timezone,
-      );
+      ];
     }
   }
 
@@ -376,17 +376,17 @@ function _dt_policy_next_step_sanitize($items, $langcode) {
  * Implements hook_theme().
  */
 function dt_policy_next_step_theme() {
-  return array(
-    'dt_policy_next_step_formatter_default' => array(
-      'variables' => array(
+  return [
+    'dt_policy_next_step_formatter_default' => [
+      'variables' => [
         'element' => NULL,
         'field' => NULL,
-        'modifiers' => array(),
+        'modifiers' => [],
         'date_formatter' => '',
         'show_timezone' => '',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**

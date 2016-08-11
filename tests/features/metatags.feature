@@ -1,11 +1,11 @@
 @api
-Feature: As an anonymous user
-  I want to be able to see additional information in the metatags
+Feature: Content specific metatag behaviour
+  Anonymous users and search robots
+  need to see additional information in the metatags
 
   @information @political
   Scenario Outline: Anonymous users can see the date published value in the date metatag on article's
-    Given I am an anonymous user
-    When I am viewing a "Announcement" content:
+    Given I am viewing a "Announcement" content:
       | title                     | <title>          |
       | field_core_date_published | <date-published> |
       | status                    | 1                |
@@ -26,10 +26,10 @@ Feature: As an anonymous user
 
   @information
   Scenario Outline: Anonymous users can see the changed date value in last-modified metatag on nodes
-    Given I am an anonymous user
-    When I am viewing a "Topic" content:
-      | title  | <title> |
-      | status | 1       |
+    Given I am viewing a "Topic" content:
+      | title  | <title>   |
+      | status | 1         |
+      | body   | body text |
     And I set the last modified date to "<date-changed>"
     Then the cache has been cleared
     And I reload the page
@@ -38,3 +38,19 @@ Feature: As an anonymous user
     Examples:
       | title          | date-changed | expected-meta |
       | Test Topic One | 2016/06/30   | 30/06/2016    |
+
+  @information @political
+  Scenario Outline: Content language in meta tag
+    Given I am viewing an "Page" content:
+      | title       | <title>         |
+      | description | <description>   |
+      | language    | <language_code> |
+      | status      | 1               |
+    Then I should see "<title>" in the "title" element
+    Then the language metatag should have the value "<language>"
+
+    Examples:
+      | title     | description | language | language_code |
+      | nid en    | Node Engl   | en       | en            |
+      | nid fr    | Node fren   | fr       | fr            |
+      | nid pt-pt | Node PT     | pt       | pt-pt         |

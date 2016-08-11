@@ -73,8 +73,8 @@ Feature: Search in views in any given language
       | title      |
       | Department |
     Given "Person" content:
-      | title  |
-      | Person |
+      | title  | field_person_role |
+      | Person | Commissioner      |
     Given "Policy" content:
       | title         | field_policy_detail_body | language | status | field_policy_detail_objectives | field_policy_sharable_banner | field_core_department | field_core_persons | field_core_policy_areas | field_core_introduction |
       | <sourcetitle> | bar                      | en       | 1      | Detail objective               | no sharable banner           | Department            | Person             | PolicyArea              | Intro                   |

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains drush commands for exporting permissions.

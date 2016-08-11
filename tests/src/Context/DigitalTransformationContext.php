@@ -22,6 +22,13 @@ class DigitalTransformationContext extends RawDrupalContext {
   private $languageList;
 
   /**
+   * List of files currently on the site.
+   *
+   * @var array
+   */
+  private $startFiles;
+
+  /**
    * The file context helper.
    *
    * @var \Drupal\nexteuropa\Helpers\FileContextHelper
@@ -88,7 +95,8 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
 
     // Redirect the user to the new language page.
-    $this->getSession()->visit($this->currentNode()->getNodePath() . '_' . $language_code);
+    $this->visitPath($this->currentNode()
+        ->getNodePath() . '_' . $language_code);
   }
 
   /**
@@ -97,7 +105,8 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @When I go to add :target translation
    */
   public function iGoToAddTranslationFrom($target) {
-    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
+    $this->visitPath($this->currentNode()
+      ->getAddTranslationPath($target));
   }
 
   /**
@@ -106,7 +115,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Given I go to the group roles page
    */
   public function iGoToTheGroupRolesPage() {
-    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
+    $this->visitPath($this->currentNode()->getGroupRolesPath());
   }
 
   /**
@@ -125,7 +134,8 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()), $this->getSession());
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()
+      ->getCurrentUrl()), $this->getSession());
   }
 
   /**
@@ -134,16 +144,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current html
    */
   public function printCurrentHtml() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
-  }
-
-  /**
-   * Goes to the edit page.
-   *
-   * @Then I edit the node
-   */
-  public function iEditTheNode() {
-    $this->getSession()->visit($this->currentNode()->getEditPath());
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()
+      ->getPage()
+      ->getHtml()), $this->getSession());
   }
 
   /**
@@ -249,7 +252,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    *   If it does not match.
    */
   public function assertLanguageMetaRegion($value) {
-    $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', "head > meta[http-equiv=content-language]");
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new ExpectationException(sprintf('The content-language metatag does not contain %s', $value), $this->getSession());
@@ -265,7 +270,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    *   If it does not match.
    */
   public function theMetatagAttributeShouldHaveTheValue($metatag, $value) {
-    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value), $this->getSession());
@@ -324,15 +331,18 @@ class DigitalTransformationContext extends RawDrupalContext {
       ->execute();
 
     if (empty($result['node'])) {
-      $params = array(
+      $params = [
         '@title' => $target_title,
         '@type' => $input_id,
-      );
+      ];
       throw new ExpectationException(format_string("Node @title of @type not found.", $params), $this->getSession());
     }
     $target_nid = key($result['node']);
 
-    $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
+    $this->getSession()
+      ->getPage()
+      ->find('css', "#$input_id")
+      ->setValue("$target_title ($target_nid)");
   }
 
   /**
@@ -378,17 +388,6 @@ class DigitalTransformationContext extends RawDrupalContext {
       ->getPage()
       ->find('css', "#$input_id")
       ->setValue("$linked_token");
-  }
-
-  /**
-   * Cleans up files after every scenario.
-   *
-   * @AfterScenario
-   */
-  public function cleanUpFiles($event) {
-    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
-      file_delete($file, TRUE);
-    }
   }
 
   /**
@@ -499,6 +498,93 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function iIndexAllIndexes() {
     search_api_cron();
+  }
+
+  /**
+   * Switches to an Iframe by ID.
+   *
+   * @When I switch to the frame :frame
+   */
+  public function iSwitchToTheFrame($frame) {
+    $this->getSession()->switchToIFrame($frame);
+  }
+
+  /**
+   * Leave the I frames.
+   *
+   * @When I switch out of all frames
+   */
+  public function iSwitchOutOfAllFrames() {
+    $this->getSession()->switchToIFrame();
+  }
+
+  /**
+   * Check the file behind a link.
+   *
+   * This is currently the only working solution. This can be improved.
+   *
+   * @Then I get the file :filename after clicking :link
+   */
+  public function iGetTheFileAfterClicking($filename, $link) {
+    // Get the link.
+    $link = $this->getSession()->getPage()->findLink($link);
+
+    // Go to the actual url.
+    $matches = [];
+    preg_match('/file\/(\d*)\/download/', $link->getAttribute('href'), $matches);
+
+    if (isset($matches[1]) && $file_entity = entity_load('file', [$matches[1]])) {
+      $file_entity = reset($file_entity);
+
+      if ($file_entity->filename !== $filename) {
+        throw new ExpectationException('File download goes to the file ' . $file_entity->filename . ' instead of ' . $filename . '.', $this->getSession());
+      }
+    }
+    else {
+      throw new ExpectationException('Unable to load the file.', $this->getSession());
+    }
+  }
+
+  /**
+   * Gathers the current file entity's.
+   *
+   * @BeforeScenario
+   */
+  public function getStartFiles() {
+    if (is_array($this->startFiles)) {
+      return $this->startFiles;
+    }
+    $this->startFiles = $this->getFileIds();
+    return $this->startFiles;
+  }
+
+  /**
+   * Cleans up files after every scenario.
+   *
+   * @AfterScenario
+   */
+  public function cleanUpFiles($event) {
+    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
+      file_delete($file, TRUE);
+    }
+    $diff = array_diff($this->getFileIds(), $this->startFiles);
+
+    foreach ($diff as $fid) {
+      entity_delete('file', $fid);
+    }
+  }
+
+  /**
+   * Helper function to get all the file id's.
+   *
+   * @return array
+   *   File id's.
+   */
+  public function getFileIds() {
+    $query = new \EntityFieldQuery();
+    $query->entityCondition('entity_type', 'file');
+    $result = $query->execute();
+    return array_keys($result['file']);
   }
 
 }

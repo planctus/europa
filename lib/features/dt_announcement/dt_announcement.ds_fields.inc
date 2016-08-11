@@ -71,7 +71,7 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   // Lets call the entity by its name.
   $node = $field['entity'];
 
-  if (!variable_get('dt_latest_visibility', TRUE) || (isset($node->field_department_news_link) && !empty($node->field_department_news_link))) {
+  if (!variable_get('dt_shared_functions_dt_latest_visibility', TRUE) || (isset($node->field_department_news_link) && !empty($node->field_department_news_link))) {
     return NULL;
   }
 

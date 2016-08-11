@@ -21,10 +21,10 @@ Feature: Events listing
 
     Given I am logged in as a user with the "administrator" role
     And "Event" content:
-      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date | field_core_location               |
-      | Energy event  | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000       | country: BE - locality: Brussel   |
-      | Food event    | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: NL - locality: Amsterdam |
-      | Extra event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000       | country: FR - locality: Paris     |
+      | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               |
+      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000             | 1469952000              | Europe/Budapest           | country: BE - locality: Brussel   |
+      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000             | 1469952000              | Europe/Budapest           | country: NL - locality: Amsterdam |
+      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000             | 1469952000              | Europe/Budapest           | country: FR - locality: Paris     |
     And I index all indexes
 
   Scenario: On the events listing page I should see the events.

@@ -3,7 +3,6 @@ Feature: In order to make roles and permissions management easy
   As an administrator user
   I want to have the same roles and permissions in each Editorial team
 
-
   Scenario: Check the default settings for the group type
     Given I am logged in as a user with the "administrator" role
     And am on "admin/config/group/roles/node/editorial_team"
