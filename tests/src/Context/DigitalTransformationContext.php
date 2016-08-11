@@ -405,13 +405,14 @@ class DigitalTransformationContext extends RawDrupalContext {
 
     // Check all table elements for their position.
     foreach ($table->getHash() as $n => $repeatedelement) {
+      $child = $children[$n];
       // If it is not in the correct spot, we show an error.
-      if ($children[$n]->find('css', $element)->getText() !== $repeatedelement['text']) {
+      if ($child->getText() !== $repeatedelement['text']) {
         $variables = [
           '@position' => $n,
           '@element' => $element,
           '@text' => $repeatedelement['text'],
-          '@falsetext' => $children[$n]->find('css', $element)->getText(),
+          '@falsetext' => $child->getText(),
         ];
         throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables), $this->getSession());
       }

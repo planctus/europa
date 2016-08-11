@@ -11,25 +11,8 @@
 function dt_editorial_enable() {
   drupal_set_message(t('Digital transformation editorial is now active on your site.'));
 
-  // The objective here is to change the order of the workflow states:
-  // Expired by Archived.
-  $state_weight = array(
-    'draft' => -10,
-    'needs_review' => -9,
-    'request_validation' => -8,
-    'validated' => -7,
-    'published' => -6,
-    'archived' => -5,
-    'expired' => -4,
-  );
-
-  $types = workbench_moderation_states();
-  foreach ($types as $type) {
-    db_update('workbench_moderation_states')
-      ->fields(array('weight' => $state_weight[$type->name]))
-      ->condition('name', $type->name)
-      ->execute();
-  }
+  // Reset workbench moderation states order.
+  _dt_editorial_reorder_states();
 
   $roles = og_roles('node', 'editorial_team');
   // Delete the og role publisher.
@@ -76,9 +59,43 @@ function _dt_editorial_disable_ne_workbench() {
 }
 
 /**
+ * Re-order moderation states created by different modules.
+ */
+function _dt_editorial_reorder_states() {
+  $state_weight = array(
+    'draft' => -10,
+    'needs_review' => -9,
+    'request_validation' => -8,
+    'under_validation' => -7,
+    'validated' => -6,
+    'published' => -5,
+    'archived' => -4,
+    'expired' => -3,
+  );
+
+  $types = workbench_moderation_states();
+  foreach ($types as $type) {
+    db_update('workbench_moderation_states')
+      ->fields(array('weight' => $state_weight[$type->name]))
+      ->condition('name', $type->name)
+      ->execute();
+  }
+}
+
+/**
  * DTTSB-745: Disable NE workbench screens.
  */
 function dt_editorial_update_7101() {
   // Disable certain NE workbench views.
   _dt_editorial_disable_ne_workbench();
+}
+
+/**
+ * DTTSB-745: Reset workbench moderation states order.
+ */
+function dt_editorial_update_7102() {
+  // Revert feature so we have the new state.
+  features_revert_module('dt_roles_permissions');
+  // Re-order.
+  _dt_editorial_reorder_states();
 }

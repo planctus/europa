@@ -63,6 +63,7 @@ features[views_view][] = workbench_moderation_needs_review
 features[views_view][] = workbench_moderation_other_content
 features[views_view][] = workbench_moderation_validation_pending
 features[workbench_moderation_states][] = request_validation
+features[workbench_moderation_states][] = under_validation
 features[workbench_moderation_transitions][] = draft:expired
 features[workbench_moderation_transitions][] = draft:published
 features[workbench_moderation_transitions][] = draft:request_validation
