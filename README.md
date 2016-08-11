@@ -104,6 +104,18 @@ For more information about testing within our project, [Read this article](https
 * `drush en dt_test_content` will enable the "dummy content" feature that
   install preconfigured entities for you to test with.
 
+### Common platform deploy package storage
+
+To avoid the need to download the deploy-package-*.tar.gz multiple times when used
+in different instances, optionally you can set up a symlink to a common storage folder.
+
+Ideally you could point this symlink to the folder that is synced with the Google Drive
+folder where these files are kept. Like this new version will also be immediately uploaded
+and shared with the whole team.
+
+You can set this up by defining your folder in the `platform.package.storage` in your
+`build.properties.local`
+
 ### Peer reviewing
 
 To enhance our peer reviewing, we have implied a few rules:
