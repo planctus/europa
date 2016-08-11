@@ -111,8 +111,8 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   // identifiers, we should display the between facet.
   if (array_key_exists('date_filter_min', $displays) || array_key_exists('date_filter_max', $displays)) {
 
-    $start = isset($displays['date_filter_min']) ? $displays['date_filter_min']['value']['date'] : NULL;
-    $end = isset($displays['date_filter_max']) ? $displays['date_filter_max']['value']['date'] : NULL;
+    $start = isset($displays['date_filter_min']) ? filter_xss($displays['date_filter_min']['value']['date']) : NULL;
+    $end = isset($displays['date_filter_max']) ? filter_xss($displays['date_filter_max']['value']['date']) : NULL;
 
     $displays['date_between'] = [
       'label' => '',
@@ -131,10 +131,10 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
       }
       if (!is_array($data['value']) && !empty($data['value'])) {
         // If the data has a vocabulary. We get the term. This is a fallback.
-        if (isset($data['vocabulary']) && $term = i18n_taxonomy_localize_terms(taxonomy_term_load($data['value']))) {
+        if (isset($data['vocabulary']) && $term = i18n_taxonomy_localize_terms(taxonomy_term_load(filter_xss($data['value'])))) {
           $data['value'] = $term->name;
         }
-        $vars['exposed_filters'][$data['label']] = $data['value'];
+        $vars['exposed_filters'][$data['label']] = filter_xss($data['value']);
       }
     }
   }
