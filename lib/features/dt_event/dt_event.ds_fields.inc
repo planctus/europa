@@ -375,11 +375,12 @@ function _dt_event_ds_fields_status_label($field) {
     case DT_EVENT_STATE_CANCELLED:
       $label = t('Cancelled');
       break;
-
-    default:
-      return NULL;
   }
-  return '<span class="label label--upper label--meta-medium label--status">' . $label . '</span>';
+
+  if (isset($label)) {
+    return '<span class="label label--upper label--meta-medium label--status">' . $label . '</span>';
+  }
+  return NULL;
 }
 
 /**

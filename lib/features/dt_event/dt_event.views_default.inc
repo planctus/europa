@@ -376,6 +376,17 @@ function dt_event_views_default_views() {
   /* Display: Upcoming and current events */
   $handler = $view->new_display('block', 'Upcoming and current events', 'block');
   $handler->display->display_options['link_url'] = '/events/!1';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Event date and time - end date (field_event_date:value2) */
+  $handler->display->display_options['sorts']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['sorts']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['sorts']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['sorts']['field_event_date_value2']['relationship'] = 'field_event_children_events_target_id';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

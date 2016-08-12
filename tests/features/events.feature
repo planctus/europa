@@ -19,13 +19,25 @@ Feature: Events listing
       | Dialogue   |
       | Conference |
 
-    Given I am logged in as a user with the "administrator" role
-    And "Event" content:
+    Given "Event" content:
       | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               |
-      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1469952000             | 1469952000              | Europe/Budapest           | country: BE - locality: Brussel   |
-      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000             | 1469952000              | Europe/Budapest           | country: NL - locality: Amsterdam |
-      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1469952000             | 1469952000              | Europe/Budapest           | country: FR - locality: Paris     |
+      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel   |
+      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1969952002             | 1969952002              | Europe/Budapest           | country: NL - locality: Amsterdam |
+      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris     |
     And I index all indexes
+
+  Scenario: Event collection "Upcoming events".
+    Given I am viewing an "Event" content:
+      | title                       | Event collection                      |
+      | field_event_collection      | A collection with multiple events     |
+      | field_event_children_events | Energy event, Food event, Extra event |
+      | status                      | 1                                     |
+    Then I should see an ".field--current-and-upcoming-events" element
+    Then I should see the following in the repeated ".listing__title" element within the context of the ".field--current-and-upcoming-events" element:
+      | text         |
+      | Energy event |
+      | Extra event  |
+      | Food event   |
 
   Scenario: On the events listing page I should see the events.
     Given I am on "events"
