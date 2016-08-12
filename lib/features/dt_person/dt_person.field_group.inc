@@ -228,6 +228,7 @@ function dt_person_field_group_info() {
       5 => 'field_person_tagline',
       6 => 'field_core_legacy_link',
       7 => 'field_person_role_title',
+      8 => 'field_core_departments',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

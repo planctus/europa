@@ -98,7 +98,7 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Add contact details of the person. If you want to add additional contact details (for example for the press contact), use an additional contact reference, with a title override \'press contact\'.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -128,7 +128,7 @@ function dt_person_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_contact',
-    'label' => 'Contact',
+    'label' => 'Contact group',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -138,21 +138,63 @@ function dt_person_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'fields' => array(),
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
-        'type_settings' => array(
-          'allow_existing' => 1,
-          'delete_references' => 0,
-          'label_plural' => 'contacts',
-          'label_singular' => 'contact',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 1,
-        ),
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-person-field_core_departments'.
+  $field_instances['node-person-field_core_departments'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'To which department does the person belong?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 14,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_departments',
+    'label' => 'Department',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 74,
     ),
   );
 
@@ -285,7 +327,7 @@ function dt_person_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 74,
+      'weight' => 75,
     ),
   );
 
@@ -703,7 +745,7 @@ function dt_person_field_default_field_instances() {
   $field_instances['node-person-field_person_photo'] = array(
     'bundle' => 'person',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Will be shown as a square. 160px by 160px or 60 by 60px',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -769,9 +811,13 @@ function dt_person_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'avportal' => 0,
+          'dailymotion' => 0,
           'node' => 0,
           'private' => 'private',
           'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
@@ -782,6 +828,7 @@ function dt_person_field_default_field_instances() {
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
           'upload' => 'upload',
         ),
       ),
@@ -924,7 +971,7 @@ function dt_person_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Only shown on the person\'s profile page, below the page title.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -961,7 +1008,6 @@ function dt_person_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'basic_html' => 'basic_html',
-          'dt_editor' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
           'plain_text' => 'plain_text',
@@ -972,9 +1018,6 @@ function dt_person_field_default_field_instances() {
           'formats' => array(
             'basic_html' => array(
               'weight' => 5,
-            ),
-            'dt_editor' => array(
-              'weight' => -10,
             ),
             'filtered_html' => array(
               'weight' => -9,
@@ -996,6 +1039,10 @@ function dt_person_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 3,
       ),
       'type' => 'text_textarea',
@@ -1415,12 +1462,14 @@ function dt_person_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add contact details of the person. If you want to add additional contact details (for example for the press contact), use an additional contact reference, with a title override \'press contact\'.');
   t('Add links to details on the agenda or agenda items. For example "Meetings with organisations and self-employed individuals" (which links to transparency site).');
   t('Agenda introduction');
   t('Biography');
   t('Biography introduction');
   t('CV upload');
-  t('Contact');
+  t('Contact group');
+  t('Department');
   t('Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'');
   t('Feminine version');
   t('First Name');
@@ -1432,6 +1481,7 @@ function dt_person_field_default_field_instances() {
   t('Leave blank for general cases. Automatically taking values from Role+First name+Last name on first save. Could be changed at any time later.');
   t('Legacy link');
   t('Links');
+  t('Only shown on the person\'s profile page, below the page title.');
   t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Plural form');
   t('Portrait photo');
@@ -1440,7 +1490,9 @@ function dt_person_field_default_field_instances() {
   t('Tagline');
   t('The full CV in PDF format.');
   t('Title');
+  t('To which department does the person belong?');
   t('What type of person are you adding');
+  t('Will be shown as a square. 160px by 160px or 60 by 60px');
 
   return $field_instances;
 }
