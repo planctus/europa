@@ -188,7 +188,7 @@
     <target
         name="install-dev"
         description="Install a local development version of the subsite."
-        depends="install, enable-development-modules, revert-dt-features"
+        depends="add-dt-dev, install, enable-development-modules, revert-dt-features"
     />
 
     <!-- Rebuild node access. -->
