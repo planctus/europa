@@ -284,6 +284,12 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
   }
 
+  // Enforce default value (Use group defaults) and hide Group Content Access.
+  if (isset($form['group_content_access']) && isset($form['group_content_access'][LANGUAGE_NONE])) {
+    $form['group_content_access']['#attributes']['class'][] = 'element-hidden';
+    $form['group_content_access'][LANGUAGE_NONE]['#attributes']['disabled'] = 'disabled';
+  }
+
   $field_name = 'og_group_ref';
   $node = $form_state['node'];
   $is_new_node = !isset($node->nid);

@@ -3,6 +3,7 @@
 namespace Drupal\nexteuropa\Context;
 
 use Behat\Gherkin\Node\TableNode;
+use Behat\Mink\Exception\ExpectationException;
 
 /**
  * Contains editorial workflow specific step definitions.
@@ -57,10 +58,10 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     }
     list($gid) = entity_extract_ids($group_type, $group);
 
-    $membership = og_group($group_type, $gid, array(
+    $membership = og_group($group_type, $gid, [
       "entity type" => 'user',
       "entity" => $user,
-    ));
+    ]);
 
     if (!$membership) {
       throw new \Exception("The Organic Group membership could not be created.");
@@ -117,7 +118,7 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     $group = $this->getCurrentGroupFromUrl();
 
     // Create the group content.
-    $properties = array('og_group_ref' => $group->nid);
+    $properties = ['og_group_ref' => $group->nid];
     // Creating the node will automatically redirect the browser to view it.
     $this->createNode($content_entity_type, $properties);
   }
@@ -133,13 +134,13 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
    *
    * @override
    */
-  public function createNode($type, $properties = array()) {
+  public function createNode($type, $properties = []) {
 
-    $node = (object) array(
+    $node = (object) [
       'title' => Random::name(25),
       'type' => $type,
       'uid' => 1,
-    );
+    ];
 
     if ($properties) {
       foreach ($properties as $key => $value) {
@@ -235,7 +236,7 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     $current = ($vid_count == 0);
 
     // Build a history record.
-    $new_revision = (object) array(
+    $new_revision = (object) [
       'from_state' => $old_state,
       'state' => $new_state,
       'nid' => $node->nid,
@@ -244,14 +245,14 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
       'is_current' => $current,
       'published' => ($new_state == workbench_moderation_state_published()),
       'stamp' => $_SERVER['REQUEST_TIME'],
-    );
+    ];
 
     // If this is the new 'current' moderation record, it should be the only one
     // flagged 'current' in {workbench_moderation_node_history}.
     if ($new_revision->is_current) {
       db_update('workbench_moderation_node_history')
         ->condition('nid', $node->nid)
-        ->fields(array('is_current' => 0))
+        ->fields(['is_current' => 0])
         ->execute();
     }
 
@@ -262,12 +263,12 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
       db_update('workbench_moderation_node_history')
         ->condition('nid', $node->nid)
         ->condition('vid', $node->vid, '!=')
-        ->fields(array('published' => 0))
+        ->fields(['published' => 0])
         ->execute();
       db_update('node_revision')
         ->condition('nid', $node->nid)
         ->condition('vid', $node->vid, '!=')
-        ->fields(array('status' => 0))
+        ->fields(['status' => 0])
         ->execute();
     }
 
@@ -275,6 +276,31 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     drupal_write_record('workbench_moderation_node_history', $new_revision);
 
     return $new_revision;
+  }
+
+  /**
+   * Checks if the Group content access corresponds with the requirement.
+   *
+   * @Then the current nodes Group content access should be :value
+   */
+  public function theCurrentNodesGroupContentAccessShouldBe($value) {
+    // Get the node.
+    $node = $this->currentNode()->getNode();
+
+    // Get the allowed values.
+    $og_content_access = og_access_og_fields_info();
+    $allowed_values = $og_content_access['group_content_access']['field']['settings']['allowed_values'];
+
+    $key = array_search($value, $allowed_values);
+
+    if (FALSE !== $key) {
+      if ((string) $node->group_content_access[LANGUAGE_NONE][0]['value'] !== (string) $key) {
+        throw new ExpectationException($value . ' is not the configured value for Group content access', $this->getSession());
+      }
+    }
+    else {
+      throw new ExpectationException($value . ' is not a valid group content access value', $this->getSession());
+    }
   }
 
 }
