@@ -39,6 +39,14 @@ Feature: Events listing
       | Extra event  |
       | Food event   |
 
+  Scenario: Empty events should display no results messages
+    Given I am viewing an "Event" content:
+      | title                  | Event collection                  |
+      | field_event_collection | A collection with multiple events |
+      | status                 | 1                                 |
+    Then I should see "No past events available." in the ".tab-content" element
+    Then I should see "No events planned." in the ".tab-content" element
+
   Scenario: On the events listing page I should see the events.
     Given I am on "events"
     Then I should see "Energy event"
