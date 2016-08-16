@@ -115,7 +115,7 @@ function dt_contact_field_default_field_instances() {
           'link_title' => '',
         ),
         'type' => 'link_button_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -125,7 +125,7 @@ function dt_contact_field_default_field_instances() {
           'link_title' => '',
         ),
         'type' => 'link_button_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -397,9 +397,10 @@ function dt_contact_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 30,
+        'type' => 'social_network_link_theme_css',
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -408,10 +409,11 @@ function dt_contact_field_default_field_instances() {
         'weight' => 33,
       ),
       'teaser' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'type' => 'social_network_link_theme_css',
+        'weight' => 6,
       ),
       'title' => array(
         'label' => 'hidden',
@@ -458,13 +460,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -509,13 +511,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
     ),
     'entity_type' => 'node',
@@ -568,13 +570,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'node',
@@ -657,7 +659,7 @@ function dt_contact_field_default_field_instances() {
 <li>xxx xx xx: Phone number</li>
 <li>description: label of the phone, always between ( ) - optional</li>
 </ul> </p>
-');
+    ');
   t('Postal address');
   t('Social media profile links');
 

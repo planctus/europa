@@ -126,6 +126,13 @@ function dt_contact_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_social_network_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Social media',
+        ),
+      ),
+    ),
   );
   $export['node|contact|teaser'] = $ds_fieldsetting;
 
@@ -153,7 +160,8 @@ function dt_contact_ds_layout_settings_info() {
         2 => 'field_contact_mobile_number',
         3 => 'field_contact_postal_mail',
         4 => 'field_contact_email_address',
-        5 => 'field_contact_link_form',
+        5 => 'field_core_social_network_links',
+        6 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
@@ -162,6 +170,7 @@ function dt_contact_ds_layout_settings_info() {
       'field_contact_mobile_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
       'field_contact_email_address' => 'ds_content',
+      'field_core_social_network_links' => 'ds_content',
       'field_contact_link_form' => 'ds_content',
     ),
     'classes' => array(),
@@ -192,7 +201,8 @@ function dt_contact_ds_layout_settings_info() {
         3 => 'field_contact_mobile_number',
         4 => 'field_contact_postal_mail',
         5 => 'field_contact_email_address',
-        6 => 'field_contact_link_form',
+        6 => 'field_core_social_network_links',
+        7 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
@@ -202,6 +212,7 @@ function dt_contact_ds_layout_settings_info() {
       'field_contact_mobile_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
       'field_contact_email_address' => 'ds_content',
+      'field_core_social_network_links' => 'ds_content',
       'field_contact_link_form' => 'ds_content',
     ),
     'classes' => array(),
