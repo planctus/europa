@@ -31,13 +31,25 @@ Feature: Content specific metatag behaviour
       | status | 1         |
       | body   | body text |
     And I set the last modified date to "<date-changed>"
-    Then the cache has been cleared
+    And the cache has been cleared
     And I reload the page
     Then the metatag attribute "last-modified" should have the value "<expected-meta>"
 
     Examples:
       | title          | date-changed | expected-meta |
       | Test Topic One | 2016/06/30   | 30/06/2016    |
+
+  @information
+  Scenario: Anonymous users can see the changed date value in last-modified metatag on the frontpage
+    Given I am viewing a "Page" content:
+      | title  | Test page 1 |
+      | status | 1           |
+      | body   | body text   |
+    And I set the last modified date to "2016/06/30"
+    And I set the current page as frontpage
+    And the cache has been cleared
+    And I reload the page
+    Then the metatag attribute "last-modified" should have the value "30/06/2016"
 
   @information @political
   Scenario Outline: Content language in meta tag

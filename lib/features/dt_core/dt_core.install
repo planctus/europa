@@ -948,3 +948,12 @@ function dt_core_update_7170() {
     drupal_set_message(t('Role "editorial team member" updated.'));
   }
 }
+
+/**
+ * DTTSB-888: Generate the required vocabulary there is no upgrade.
+ */
+function dt_core_update_7171() {
+  if (module_exists('nexteuropa_metatags')) {
+    nexteuropa_metatags_install();
+  }
+}
