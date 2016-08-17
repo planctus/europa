@@ -1,5 +1,9 @@
 # Tests
 
+## Debugging
+
+As some context are not correctly debugging, you can configure your test runner with the following environment variable: `XDEBUG=1`.
+
 ## Uploading files
 
 We can utilize behat to work with file uploads.

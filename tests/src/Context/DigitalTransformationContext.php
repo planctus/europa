@@ -288,7 +288,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    *   If it does not match.
    */
   public function theMetatagAttributeShouldNotExist($metatag) {
-    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (is_object($element)) {
       throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does exist'));
@@ -486,7 +488,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function iSetTheLastModifiedDateTo($arg1) {
     $node = $this->currentNode()->getNode();
     db_update('node')
-      ->fields(array('changed' => strtotime($arg1)))
+      ->fields(['changed' => strtotime($arg1)])
       ->condition('nid', $node->nid)
       ->execute();
   }
@@ -585,6 +587,17 @@ class DigitalTransformationContext extends RawDrupalContext {
     $query->entityCondition('entity_type', 'file');
     $result = $query->execute();
     return array_keys($result['file']);
+  }
+
+  /**
+   * Sets the xdebug cookie.
+   *
+   * @BeforeStep
+   */
+  public function xdebugCookie() {
+    if ('1' === getenv('XDEBUG')) {
+      $this->getSession()->setCookie('XDEBUG_SESSION', 'PHPSTORM');
+    }
   }
 
 }
