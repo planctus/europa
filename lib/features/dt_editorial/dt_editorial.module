@@ -8,6 +8,63 @@
 include_once 'dt_editorial.features.inc';
 
 /**
+ * Implements hook_views_data_alter().
+ */
+function dt_editorial_views_data_alter(&$data) {
+  $data['node']['revision_current_user'] = array(
+    'title' => t('Current user has a revision: boolean'),
+    'help' => t('All nodes where the currently authenticated user has a revision'),
+    'group' => t('DT Editorial'),
+    'real field' => 'nid',
+    'filter' => array(
+      'handler' => 'dt_editorial_handler_filter_revision_current_user',
+    ),
+  );
+}
+
+// @codingStandardsIgnoreStart
+
+/**
+ * Views filter handler.
+ */
+class dt_editorial_handler_filter_revision_current_user extends views_handler_filter_boolean_operator {
+
+  /**
+   * {@inheritdoc}
+   */
+  function construct() {
+    $this->definition['type'] = 'yes-no';
+    $this->definition['use equal'] = TRUE;
+    $this->definition['no_operator'] = TRUE;
+    parent::construct();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  function query($group_by = FALSE) {
+    $this->ensure_my_table();
+
+    // Custom specifics.
+    global $user;
+    $placeholder = ":node_uid_revision";
+
+    // Modify the query only if run. '1' is 'on' for the filter.
+    if ($this->value) {
+      $args = [$user->uid];
+
+      $this->query->add_where_expression($this->options['group'], "$this->table_alias.uid IN($placeholder) " . "OR
+      ((SELECT COUNT(*) FROM {node_revision} nr WHERE nr.uid IN($placeholder) AND nr.nid = $this->table_alias.nid) > 0)", array($placeholder => $args),
+        $args);
+    }
+
+  }
+
+}
+
+// @codingStandardsIgnoreEnd
+
+/**
  * Implements hook_menu_alter().
  */
 function dt_editorial_menu_alter(&$items) {
@@ -517,7 +574,8 @@ function dt_editorial_preprocess_views_view_fields(&$variables) {
  */
 function dt_editorial_preprocess_views_view(&$variables) {
   if ($variables['view']->name == "current_user_with_editorial_groups" &&
-    $variables['view']->current_display == "block_editorial_roles") {
+    $variables['view']->current_display == "block_editorial_roles"
+  ) {
     $variables['theme_hook_suggestions'][] = "dt_editorial_views_view";
   }
 }

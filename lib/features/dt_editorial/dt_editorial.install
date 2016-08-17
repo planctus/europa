@@ -99,3 +99,11 @@ function dt_editorial_update_7102() {
   // Re-order.
   _dt_editorial_reorder_states();
 }
+
+/**
+ * DTTSB-956: Enable better exposed filters.
+ */
+function dt_editorial_update_7103() {
+  // Disable certain NE workbench views.
+  module_enable(['better_exposed_filters']);
+}
