@@ -112,3 +112,21 @@ function nexteuropa_file_update_7104(&$sandbox) {
     $sandbox['#finished'] = 1;
   }
 }
+
+/**
+ * Deleting field_core_description field instance.
+ *
+ * Migrate file type and origin terms.
+ */
+function nexteuropa_file_update_7105() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_description', 'file')) {
+    field_delete_instance($instance);
+  }
+
+  // Revert to create the new taxonomies and fields.
+  features_revert_module('nexteuropa_file');
+
+  // This will run the migration task.
+  _nexteuropa_file_migrate_file_types();
+}

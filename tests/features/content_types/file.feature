@@ -14,6 +14,7 @@ Feature: File content type
       | title  | File Title |
       | status | 1          |
     And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
     And I click "Browse"
     And I switch to the frame "mediaBrowser"
     # <-- Media frame
@@ -38,6 +39,7 @@ Feature: File content type
       | status   | 1             |
       | language | en            |
     And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
     And I click "Browse"
     And I switch to the frame "mediaBrowser"
     # <-- Media frame
@@ -60,6 +62,7 @@ Feature: File content type
       | nl       | Mijn bestands titel | 1      |
     And I change the language to "Dutch"
     And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
     And I click "Browse"
     And I switch to the frame "mediaBrowser"
     # <-- Media frame
