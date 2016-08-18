@@ -224,6 +224,11 @@ function _dt_editorial_create_access() {
   // Get OG information about the current user.
   $user_groups = _dt_editorial_get_user_og_roles($user);
 
+  // If the user member of web transformer.
+  if (array_search('web transformer', $user->roles)) {
+    return TRUE;
+  }
+
   // If the user is a member of any group.
   if (isset($user_groups)) {
     $rid = $user_groups['rid'];
@@ -265,6 +270,12 @@ function _dt_editorial_create_access() {
 function _dt_editorial_access_control($context, $account = NULL) {
   global $user;
   $account = isset($account) ? $account : $user;
+
+  // If the user member of web transformer.
+  if (array_search('web transformer', $account->roles)) {
+    return TRUE;
+  }
+
   // Get the user's groups:
   if ($user_groups = og_get_groups_by_user($account)) {
     // OG is very flexible, mind the type of entity.
@@ -389,11 +400,11 @@ function dt_editorial_og_user_access_alter(&$perm, $context) {
   $roles = og_get_user_roles($context['group_type'], $context['group']->nid, $context['account']->uid);
   $group_enabled_types = _dt_editorial_group_enabled_types($context['group']);
   $custom_role_permissions = _dt_editorial_custom_og_permissions($roles);
-  if (!empty($roles) && $group_enabled_types && $custom_role_permissions) {
+  if (!empty($roles) && $custom_role_permissions) {
     foreach ($og_content_types as $og_content_type) {
       // Content type is not allowed for this group, so revoke all permissions
       // that have been added eventually by default.
-      if (!in_array($og_content_type, $group_enabled_types)) {
+      if (!$group_enabled_types || !in_array($og_content_type, $group_enabled_types)) {
         $perm['create ' . $og_content_type . ' content'] = FALSE;
         $perm['delete own ' . $og_content_type . ' content'] = FALSE;
         $perm['delete any ' . $og_content_type . ' content'] = FALSE;
