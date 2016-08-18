@@ -1069,3 +1069,44 @@ function _dt_core_menu_item_name_get($name, $menu) {
     return FALSE;
   }
 }
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function dt_core_node_view_alter(&$build) {
+  if (isset($build['#bundle']) && $build['#bundle'] == 'basic_page' && isset($build['body'])) {
+    $build['#pre_render'][] = '_dt_core_replace_headings';
+  }
+}
+
+/**
+ * Pre render to replace the heading with ids.
+ *
+ * @param array $element
+ *   The element we are handeling.
+ *
+ * @return array
+ *   The updated element.
+ */
+function _dt_core_replace_headings($element) {
+  foreach (element_children($element['body']) as $key) {
+    if (isset($element['body'][$key]['#markup'])) {
+      // Replace the #markup.
+      $element['body'][$key]['#markup'] = preg_replace_callback('/<h2>(.*)<\/h2>/', '_dt_core_replace_h2', $element['body'][$key]['#markup']);
+    }
+  }
+  return $element;
+}
+
+/**
+ * Helper function to add missing header ids.
+ *
+ * @param string $matches
+ *   The matches.
+ *
+ * @return string
+ *   The fixed title.
+ */
+function _dt_core_replace_h2($matches) {
+  return '<h2 id="' . drupal_clean_css_identifier($matches[1]) . '">' . $matches[1] . '</h2>';
+}
