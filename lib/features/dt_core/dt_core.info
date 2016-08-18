@@ -76,6 +76,7 @@ features[field_base][] = field_core_tagline
 features[field_base][] = field_core_top_task_link
 features[field_base][] = field_core_top_tasks_links
 features[field_base][] = field_core_type_content
+features[field_base][] = field_core_date_opening
 features[field_base][] = name_field
 features[menu_custom][] = menu-dt-breadcrumb-menu
 features[menu_custom][] = menu-dt-menu-social-media
