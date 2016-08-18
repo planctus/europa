@@ -1,5 +1,4 @@
 @api @shared
-# Tagged with @wip because cphp is not playing well yet with phantomjs.
 Feature: File content type
   In order to fill in the website
   As an editor
@@ -30,6 +29,35 @@ Feature: File content type
     Then I should see "English" in the ".region-content .file" element
     Then I should see the link "Download"
     Then I get the file "test_en.pdf" after clicking "Download"
+
+  @javascript @information
+  Scenario: When a file is not translated, and displayed on a translated node, it should display it's native language
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "file" content:
+      | title    | My File Title |
+      | status   | 1             |
+      | language | en            |
+    And I click "New draft" in the "tabs" region
+    And I click "Browse"
+    And I switch to the frame "mediaBrowser"
+    # <-- Media frame
+    And I attach the file "test_en.pdf" to "files[upload]"
+    And I press "Next"
+    And I press "Next"
+    # Media frame -->
+    And I switch out of all frames
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
+    And I press "Save"
+
+    And I translate the string "English" to "Dutch" with "Engels"
+    And I am viewing a "Department" content:
+      | title                       | Department    |
+      | status                      | 1             |
+      | field_department_organigram | My File Title |
+      | language                    | nl            |
+    Then I should see "Engels" in the ".region-content .file" element
+
 
   @javascript
   Scenario: Files can be translated
