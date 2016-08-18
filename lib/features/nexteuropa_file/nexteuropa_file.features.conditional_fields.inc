@@ -24,7 +24,7 @@ function nexteuropa_file_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -174,7 +174,7 @@ function nexteuropa_file_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -324,7 +324,7 @@ function nexteuropa_file_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -474,7 +474,7 @@ function nexteuropa_file_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,

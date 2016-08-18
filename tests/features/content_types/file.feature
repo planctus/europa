@@ -38,6 +38,7 @@ Feature: File content type
       | status   | 1             |
       | language | en            |
     And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
     And I click "Browse"
     And I switch to the frame "mediaBrowser"
     # <-- Media frame
