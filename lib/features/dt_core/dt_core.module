@@ -1108,5 +1108,5 @@ function _dt_core_replace_headings($element) {
  *   The fixed title.
  */
 function _dt_core_replace_h2($matches) {
-  return '<h2 id="' . drupal_clean_css_identifier($matches[1]) . '">' . $matches[1] . '</h2>';
+  return '<h2 id="' . drupal_html_id($matches[1]) . '">' . $matches[1] . '</h2>';
 }
