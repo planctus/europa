@@ -147,7 +147,13 @@ function drush_eurovoc($op = 'quickstart') {
  * Drush helper to get the EuroVoc data.
  */
 function _nexteuropa_eurovoc_get_data() {
-  $path = drupal_get_path('module', 'nexteuropa_eurovoc') . '/' . EUROVOC_DATA_FOLDER;
+  $path = DRUPAL_ROOT . '/' . variable_get('file_private_path') . '/' . EUROVOC_DATA_FOLDER;
+
+  // Remove any existing EuroVoc data.
+  if (is_dir($path)) {
+    drush_delete_dir($path, TRUE);
+    drush_log(dt('A existing data folder was deleted from @path', ['@path' => $path]), 'notice');
+  }
 
   // Create the path if it does not exist.
   if (!is_dir($path)) {
@@ -155,29 +161,11 @@ function _nexteuropa_eurovoc_get_data() {
     drush_log(dt('Directory @path was created', ['@path' => $path]), 'notice');
   }
 
-  // Set the directory to the download location.
-  $olddir = getcwd();
-  chdir($path);
-
   // Download the zip archive.
-  if ($filepath = drush_download_file(EUROVOC_ZIP_URL)) {
-    $filename = basename($filepath);
-    $dirname = EUROVOC_DATA_FOLDER;
-
-    // Remove any existing EuroVoc data.
-    if (is_dir($dirname) || is_dir(EUROVOC_DATA_FOLDER)) {
-      drush_delete_dir($dirname, TRUE);
-      drush_delete_dir(EUROVOC_DATA_FOLDER, TRUE);
-      drush_log(dt('A existing data folder was deleted from @path', ['@path' => $path]), 'notice');
-    }
-
+  if ($filepath = drush_download_file(EUROVOC_ZIP_URL, $path . '/data.zip')) {
     // Decompress the zip archive.
-    drush_tarball_extract($filename);
-
+    drush_tarball_extract($filepath);
   }
-
-  // Set working directory back to the previous working directory.
-  chdir($olddir);
 }
 
 /**

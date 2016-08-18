@@ -5,7 +5,7 @@ namespace Drupal\nexteuropa_eurovoc;
 /**
  * Class EuroVoc.
  */
-class EuroVoc {
+class EuroVoc extends EuroVocBase {
 
   // List of file names which contain concept relationships.
   private $relationships = [
@@ -29,7 +29,7 @@ class EuroVoc {
     // Go through the XML files and convert the data into an array.
     $relationships_table = [];
     foreach ($relationships as $relationship => $relationship_file) {
-      $file = $this->getDataPath() . $relationship_file . '.xml';
+      $file = $this->getDataPath() . '/' . $relationship_file . '.xml';
       if (file_exists($file)) {
         $file_xml = simplexml_load_file($file, 'SimpleXMLElement', LIBXML_COMPACT);
         $file_array = json_decode(json_encode($file_xml), 1);
@@ -39,17 +39,6 @@ class EuroVoc {
 
     // Place the array of relationships into the instance state.
     $this->setRelationshipsTable($relationships_table);
-  }
-
-  /**
-   * Equivalent to _nexteuropa_eurovoc_get_data_full_path() in this namespace.
-   *
-   * @return string
-   *   The path to the folder containing XML files to parse.
-   */
-  public function getDataPath() {
-    $module_path = drupal_get_path('module', 'nexteuropa_eurovoc');
-    return DRUPAL_ROOT . '/' . $module_path . '/data/';
   }
 
   /**

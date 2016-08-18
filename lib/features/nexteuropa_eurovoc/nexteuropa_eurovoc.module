@@ -15,6 +15,14 @@
 
 include_once 'nexteuropa_eurovoc.features.inc';
 include_once 'nexteuropa_eurovoc.migrate.inc';
+include_once 'nexteuropa_eurovoc.config.php';
+
+/**
+ * Implements hook_post_features_enable_feature().
+ */
+function nexteuropa_eurovoc_post_features_enable_feature($component) {
+  features_revert_module('nexteuropa_eurovoc');
+}
 
 /**
  * Implements hook_query_alter().

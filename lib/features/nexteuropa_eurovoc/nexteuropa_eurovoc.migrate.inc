@@ -27,17 +27,17 @@ function nexteuropa_eurovoc_migrate_api() {
     'migrations' => [
       'EuroVocDomainsMigration' => [
         'class_name' => 'NexteuropaEuroVocDomainsMigration',
-        'group_name' => 'NextEuropa',
+        'group_name' => 'NextEuropa EuroVoc',
         'description' => t('Import EuroVoc Domains.'),
       ],
       'EuroVocThesauriMigration' => [
         'class_name' => 'NexteuropaEuroVocThesauriMigration',
-        'group_name' => 'NextEuropa',
+        'group_name' => 'NextEuropa EuroVoc',
         'description' => t('Import EuroVoc Thesauri.'),
       ],
       'EuroVocDescriptorsMigration' => [
         'class_name' => 'NexteuropaEuroVocDescriptorsMigration',
-        'group_name' => 'NextEuropa',
+        'group_name' => 'NextEuropa EuroVoc',
         'description' => t('Import EuroVoc Descriptors.'),
       ],
     ],

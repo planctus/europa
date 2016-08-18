@@ -8,7 +8,7 @@ This module facilitates the import and usage of [EuroVoc](http://publications.eu
 
 This will do everything necessary:
 - clear the vocabulary if necessary
-- download the archive with XML files
+- download an archive with XML files in Drupal private folder
 - un-zip the archive and clear up unnecessary files
 - import all concepts (long operation)
 - import translations for the imported concepts
@@ -60,9 +60,11 @@ $ drush eurovoc t
 
 Rollback examples
 ```
+// Individual rollback.
 $ drush mi --rollback EuroVocDomainsMigration
-$ drush mi --rollback EuroVocThesauriMigration
-$ drush mi --rollback EuroVocDescriptorsMigration
+
+// Rollback of all importers related to EuroVoc.
+$ drush mr --group="NextEuropa EuroVoc"
 
 // This is only for development purposes!
 $ drush mi --rollback --all

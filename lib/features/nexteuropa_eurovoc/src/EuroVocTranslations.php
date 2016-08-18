@@ -7,10 +7,11 @@ namespace Drupal\nexteuropa_eurovoc;
  *
  * @package Drupal\nexteuropa_eurovoc
  */
-class EuroVocTranslations {
+class EuroVocTranslations extends EuroVocBase {
 
   // This is the data the user wants to get in the end.
   protected $translations;
+
   // EuroVoc => Drupal codes.
   private $languages = [
     'bg' => 'bg',
@@ -67,7 +68,7 @@ class EuroVocTranslations {
     foreach ($patterns as $pattern => $pattern_data) {
       foreach ($this->getLanguages() as $lg_ev => $lg_dr) {
         // Load XML files and prepare the information in more convenient way.
-        $file_tmp = $this->getDataPath() . $pattern . '_' . $lg_ev . '.xml';
+        $file_tmp = $this->getDataPath() . '/' . $pattern . '_' . $lg_ev . '.xml';
         if (file_exists($file_tmp)) {
           $file_tmp_xml = simplexml_load_file(
             $file_tmp,
@@ -82,17 +83,6 @@ class EuroVocTranslations {
     }
     // Add the info to the instance state of translations.
     $this->setTranslations($translations);
-  }
-
-  /**
-   * Equivalent to _nexteuropa_eurovoc_get_data_full_path() in this namespace.
-   *
-   * @return string
-   *   The path to the folder containing XML files to parse.
-   */
-  public function getDataPath() {
-    $module_path = drupal_get_path('module', 'nexteuropa_eurovoc');
-    return DRUPAL_ROOT . '/' . $module_path . '/data/';
   }
 
   /**

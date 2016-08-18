@@ -32,7 +32,7 @@ class NexteuropaEuroVocDomainsMigration extends XMLMigration {
 
     // Source.
     $xml_folder = _nexteuropa_eurovoc_get_data_full_path();
-    $items_url = $xml_folder . 'dom_en.xml';
+    $items_url = $xml_folder . '/dom_en.xml';
     $item_xpath = '/DOMAINES/RECORD';
     $item_ID_xpath = 'DOMAINE_ID';
     $this->source = new MigrateSourceXML($items_url, $item_xpath, $item_ID_xpath, $fields);
@@ -92,7 +92,7 @@ class NexteuropaEuroVocThesauriMigration extends XMLMigration {
 
     // Source.
     $xml_folder = _nexteuropa_eurovoc_get_data_full_path();
-    $items_url = $xml_folder . 'thes_en.xml';
+    $items_url = $xml_folder . '/thes_en.xml';
     $item_xpath = '/THESAURUS/RECORD';
     $item_ID_xpath = 'THESAURUS_ID';
     $this->source = new MigrateSourceXML($items_url, $item_xpath, $item_ID_xpath, $fields);
@@ -131,7 +131,6 @@ class NexteuropaEuroVocThesauriMigration extends XMLMigration {
    * {@inheritdoc}
    */
   public function prepareRow($row) {
-
     $row->parent_id = substr($row->THESAURUS_ID, 0, 2);
   }
 
@@ -169,7 +168,7 @@ class NexteuropaEuroVocDescriptorsMigration extends XMLMigration {
 
     // Source.
     $xml_folder = _nexteuropa_eurovoc_get_data_full_path();
-    $items_url = $xml_folder . 'desc_en.xml';
+    $items_url = $xml_folder . '/desc_en.xml';
     $item_xpath = '/DESCRIPTEUR/RECORD';
     $item_ID_xpath = 'DESCRIPTEUR_ID';
     $this->source = new MigrateSourceXML($items_url, $item_xpath, $item_ID_xpath, $fields);

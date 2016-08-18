@@ -12,8 +12,7 @@ use Drupal\nexteuropa_eurovoc\EuroVocTranslations;
  * Retrieve path to XML data folder.
  */
 function _nexteuropa_eurovoc_get_data_full_path() {
-  $module_path = drupal_get_path('module', 'nexteuropa_eurovoc');
-  return DRUPAL_ROOT . '/' . $module_path . '/data/';
+  return DRUPAL_ROOT . '/' . variable_get('file_private_path') . '/' . EUROVOC_DATA_FOLDER;
 }
 
 /**
