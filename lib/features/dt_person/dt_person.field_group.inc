@@ -159,6 +159,34 @@ function dt_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_meta|node|person|event_speaker';
+  $field_group->group_name = 'group_person_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'event_speaker';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_person_role',
+      1 => 'field_person_role_title',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'modifier' => '',
+        'classes' => 'group-person-meta field-group-meta_wrapper',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_person_meta|node|person|event_speaker'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person_meta|node|person|meta';
   $field_group->group_name = 'group_person_meta';
   $field_group->entity_type = 'node';
@@ -178,6 +206,38 @@ function dt_person_field_group_info() {
     ),
   );
   $field_groups['group_person_meta|node|person|meta'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_name|node|person|event_speaker';
+  $field_group->group_name = 'group_person_name';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'event_speaker';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Name',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_person_tagline',
+      1 => 'full_name_nolink',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'show_label' => 0,
+        'label_element' => 'div',
+        'classes' => 'group-person-name field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_person_name|node|person|event_speaker'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

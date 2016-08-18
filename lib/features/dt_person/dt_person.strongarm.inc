@@ -139,6 +139,24 @@ function dt_person_strongarm() {
       'file' => array(
         'custom_settings' => FALSE,
       ),
+      'event_speaker' => array(
+        'custom_settings' => TRUE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

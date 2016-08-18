@@ -256,7 +256,7 @@ function dt_person_update_7109(&$sandbox) {
  */
 function dt_person_update_7110() {
   // Removing a field.
-  $field_name = 'field_role_title';
+  $field_name = 'field_person_role_title';
   if (field_info_field($field_name) !== NULL) {
     field_delete_field($field_name);
   }

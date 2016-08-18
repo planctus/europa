@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ * Contains update and uninstall hooks for entityreference_remoteoverride.
+ */
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Deletes the added field for every field using the module.
+ */
+function entityreference_remoteoverride_uninstall() {
+  module_load_include('module', 'entityreference_remoteoverride', 'entityreference_remoteoverride');
+  // Fetch all the fields.
+  $fields = field_info_fields();
+  // Loop through the fields.
+  foreach ($fields as $field_name => $field_data) {
+    // Only check for entityreference fields.
+    if (isset($field_data['type']) && $field_data['type'] == 'entityreference') {
+      // See if it as ever been touched by the module.
+      if (isset($field_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'])) {
+        $overwrite_behavior = $field_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior'];
+        foreach ($overwrite_behavior['overrideable_fields'] as $field_override_name) {
+          // Set the schema name.
+          $field_schema_name = $field_name . '_' . _entityreference_remoteoverride_generate_system_name($field_override_name);
+          // The data table.
+          $data_table_name = 'field_data_' . $field_name;
+          if (db_field_exists($data_table_name, $field_schema_name)) {
+            // Delete the field.
+            db_drop_field($data_table_name, $field_schema_name);
+          }
+          // The revision table.
+          $revision_table_name = 'field_revision_' . $field_name;
+          if (db_field_exists($revision_table_name, $field_schema_name)) {
+            // Delete the field.
+            db_drop_field($revision_table_name, $field_schema_name);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Upgrade path from entityreference_titleoverwrite. This will check if there
+ * are titleoverwrite fields and will migrate the schema.
+ */
+function entityreference_remoteoverride_enable() {
+  if (module_exists('entityreference_titleoverwrite')) {
+    module_load_include('module', 'entityreference_remoteoverride', 'entityreference_remoteoverride');
+    // Fetch all the fields.
+    $fields = field_info_fields();
+    // Loop through the fields.
+    foreach ($fields as $field_name => $field_data) {
+      // Only check for entityreference fields.
+      if (isset($field_data['type']) && $field_data['type'] == 'entityreference') {
+        // See if it as ever been touched by the module.
+        if (isset($field_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status'])) {
+          if ($field_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['status']) {
+            // The field spec.
+            $spec = [
+              'type' => 'varchar',
+              'description' => 'title_field override',
+              'length' => 255,
+              'not null' => FALSE,
+            ];
+
+            // The field names in the database.
+            $new_schema_field_name = $field_name . '_' . _entityreference_remoteoverride_generate_system_name('title_field');
+            $old_schema_field_name = $field_name . '_title_override';
+
+            // The actual field to add to the schema.
+            $field_schema_name = $field_name . '_' . $new_schema_field_name;
+
+            // Rename the data table.
+            $data_table_name = 'field_data_' . $field_name;
+            if (!db_field_exists($data_table_name, $field_schema_name)) {
+              db_change_field($data_table_name, $old_schema_field_name, $new_schema_field_name, $spec);
+            }
+
+            // Rename the revision table.
+            $revision_table_name = 'field_revision_' . $field_name;
+            if (!db_field_exists($revision_table_name, $field_schema_name)) {
+              db_change_field($revision_table_name, $old_schema_field_name, $new_schema_field_name, $spec);
+            }
+
+            // Change the field configuration.
+            // Last step is to update the database config.
+            $query = db_select('field_config', 'fc');
+            $query->addField('fc', 'data');
+            $query->addField('fc', 'field_name');
+            $query->condition('field_name', $field_name, '=');
+            $result = $query->execute()->fetchAssoc();
+            // Unserialize the data.
+            if (isset($result['data'])) {
+              $unserialized_data = unserialize($result['data']);
+              // Add the titleoverwrite config if it is not there.
+              if (!isset($unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'])) {
+                $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'] = 1;
+                $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['override_mandatory'] = $unserialized_data['settings']['handler_settings']['behaviors']['overwrite_title_mandatory'];
+                $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'] = ['title_field' => 'title_field'];
+                unset($unserialized_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']);
+                // Store back the data.
+                db_update('field_config')
+                  ->fields([
+                    'data' => serialize($unserialized_data),
+                  ])
+                  ->condition('field_name', $field_name, '=')
+                  ->execute();
+              }
+            }
+          }
+        }
+      }
+    }
+    // Disable the entityreference_titleoverwrite module.
+    module_disable(['entityreference_titleoverwrite']);
+    drupal_set_message(t('Entityreference_titleoverwrite has been disabled, please uninstall the module and remove it from the installation'));
+  }
+}

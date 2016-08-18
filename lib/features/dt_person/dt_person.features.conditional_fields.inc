@@ -924,7 +924,7 @@ function dt_person_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -945,21 +945,14 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        6 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
         3 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        6 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -973,6 +966,20 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
+        5 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
         7 => array(
           1 => 1,
           2 => 2,
@@ -980,7 +987,14 @@ function dt_person_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
+        9 => array(
+          1 => 1,
+          2 => 2,
+          5 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        10 => array(
           1 => 1,
           2 => 2,
           5 => 0,
@@ -1002,15 +1016,11 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
-        6 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        5 => array(
-          1 => 1,
-          3 => 0,
-        ),
         3 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        6 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1018,11 +1028,23 @@ function dt_person_conditional_fields_default_fields() {
           1 => 1,
           3 => 0,
         ),
+        5 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        11 => array(
+          1 => 1,
+          3 => 0,
+        ),
         7 => array(
           1 => 1,
           3 => 0,
         ),
-        8 => array(
+        9 => array(
+          1 => 1,
+          3 => 0,
+        ),
+        10 => array(
           1 => 1,
           3 => 0,
         ),
@@ -1052,7 +1074,7 @@ function dt_person_conditional_fields_default_fields() {
       'effect_options' => array(),
       'element_view' => array(
         1 => 1,
-        2 => 2,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,

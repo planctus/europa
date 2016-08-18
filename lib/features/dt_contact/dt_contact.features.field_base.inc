@@ -138,8 +138,11 @@ function dt_contact_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
-          'titleoverwrite_field_behavior' => array(
-            'overwrite_title_mandatory' => 0,
+          'remoteoverride_field_behavior' => array(
+            'overrideable_fields' => array(
+              'title_field' => 'title_field',
+            ),
+            'overwrite_title_mandatory' => FALSE,
             'status' => 1,
           ),
           'tmgmt_field_behavior' => array(

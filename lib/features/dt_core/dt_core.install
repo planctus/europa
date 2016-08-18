@@ -949,7 +949,7 @@ function dt_core_update_7169() {
   }
   field_cache_clear();
   // Revert the feature.
-  features_revert(['dt_core']);
+  features_revert_module('dt_core');
 }
 
 /**

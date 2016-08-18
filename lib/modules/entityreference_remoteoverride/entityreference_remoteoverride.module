@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Contains the overrides and hooks to enable an override on entityreference.
+ */
+
+// Load additional required files.
+module_load_include('inc', 'entityreference_remoteoverride', 'entityreference_remoteoverride.helpers');
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function entityreference_remoteoverride_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'entityreference') {
+    return 'plugins/' . $plugin;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * This form is used to populate the widget with a second input field to set a
+ * overwritten title.
+ */
+function entityreference_remoteoverride_field_widget_entityreference_autocomplete_form_alter(&$element, &$form_state, $context) {
+  if (isset($context['field']['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior'])) {
+    // Get the config.
+    $overwrite_behavior = $context['field']['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior'];
+
+    // Set required.
+    $required = FALSE;
+    if ($form_state['build_info']['form_id'] <> 'field_ui_field_edit_form') {
+      $required = isset($overwrite_behavior['override_mandatory']) ? $overwrite_behavior['override_mandatory'] : FALSE;
+    }
+
+    // If it is enabled we allow the override.
+    if (isset($overwrite_behavior['status']) && $overwrite_behavior['status'] == 1) {
+      $weight = 1;
+      foreach ($overwrite_behavior['overrideable_fields'] as $field_name) {
+        // Get the field data. We will also load the instance for the first type
+        // that we are referencing, we need to provide a readeable label.
+        if ($field_label = _entityreference_remoteoverride_get_readable_label($context['field']['settings'], $field_name)) {
+          $field_base_data = field_info_field($field_name);
+          $field_name_dynamic = _entityreference_remoteoverride_generate_system_name($field_name);
+
+          // Add the element.
+          $element[$field_name_dynamic] = [
+            '#weight' => $weight,
+            '#title' => $field_label,
+            '#description' => t('Override the field %field_label on the remote entity', ['%field_label' => $field_label]),
+            '#type' => 'textfield',
+            '#maxlength' => $field_base_data['settings']['max_length'],
+            '#default_value' => isset($context['items'][$context['delta']][$field_name_dynamic]) ? $context['items'][$context['delta']][$field_name_dynamic] : '',
+            '#size' => 60,
+            '#required' => $required,
+          ];
+          $weight++;
+        }
+      }
+
+      // Change the weight of target_id.
+      $element['target_id']['#weight'] = $weight;
+    }
+  }
+}

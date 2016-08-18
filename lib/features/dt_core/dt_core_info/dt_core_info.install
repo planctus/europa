@@ -179,3 +179,19 @@ function dt_core_info_update_7114() {
   ];
   module_enable($modules);
 }
+
+/**
+ * DTTSB-881 updating old overwrite modules.
+ */
+function dt_core_info_update_7115() {
+  if (!module_exists('entityreference_remoteoverride')) {
+    module_enable(['entityreference_remoteoverride', 'entityreference_remoteoverride_tmgmt']);
+  }
+  // Revert person content type.
+  features_revert_module('dt_person');
+  // Upgrade the field.
+  _entityreference_remoteoverride_add_table_field('field_core_persons', ['field_person_role_title']);
+  // Disable the old implementation.
+  module_disable(['entityreference_titleoverwrite', 'entityreference_titleoverwrite_tmgmt']);
+  drupal_uninstall_modules(['entityreference_titleoverwrite_tmgmt', 'entityreference_titleoverwrite'], FALSE);
+}

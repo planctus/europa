@@ -30,8 +30,12 @@ function dt_person_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
-          'titleoverwrite_field_behavior' => array(
-            'status' => 0,
+          'remoteoverride_field_behavior' => array(
+            'overrideable_fields' => array(
+              'field_person_role_title' => 'field_person_role_title',
+            ),
+            'overwrite_title_mandatory' => FALSE,
+            'status' => 1,
           ),
           'tmgmt_field_behavior' => array(
             'status' => 0,
