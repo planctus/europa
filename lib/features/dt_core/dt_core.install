@@ -33,7 +33,7 @@ function dt_core_install() {
   variable_set('node_admin_theme', 1);
 
   // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!).
-  variable_set('cce_basic_config_admin_pages', array());
+  variable_set('cce_basic_config_admin_pages', []);
 
   // Applying a default set of buttons to the Full HTML profile.
   _dt_apply_wysiwyg_buttons();
@@ -53,7 +53,7 @@ function dt_core_install() {
  * Implements hook_uninstall().
  */
 function dt_core_uninstall() {
-  $contexts = variable_get('context_status', array());
+  $contexts = variable_get('context_status', []);
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
 }
@@ -62,9 +62,9 @@ function dt_core_uninstall() {
  * Enabling About the EC and Strategy classes and also Homepage Core feature.
  */
 function dt_core_update_7101() {
-  $slices = array(
+  $slices = [
     'dt_aboutec_core',
-  );
+  ];
   module_enable($slices);
 }
 
@@ -72,14 +72,14 @@ function dt_core_update_7101() {
  * Enabling Announcements feature.
  */
 function dt_core_update_7102() {
-  module_enable(array('dt_announcement'));
+  module_enable(['dt_announcement']);
 }
 
 /**
  * Enable Europa theme.
  */
 function dt_core_update_7103() {
-  theme_enable(array('europa'));
+  theme_enable(['europa']);
   variable_set('theme_default', 'europa');
 }
 
@@ -87,28 +87,28 @@ function dt_core_update_7103() {
  * Removing admin pages to use default theme(WATCH OUT FOR THAT IN THE FUTURE).
  */
 function dt_core_update_7104() {
-  variable_set('cce_basic_config_admin_pages', array());
+  variable_set('cce_basic_config_admin_pages', []);
 }
 
 /**
  * Enabling adressfield and inline_entity_form.
  */
 function dt_core_update_7105() {
-  module_enable(array('addressfield', 'inline_entity_form'));
+  module_enable(['addressfield', 'inline_entity_form']);
 }
 
 /**
  * Enabling DT contact feature containing contact content type.
  */
 function dt_core_update_7106() {
-  module_enable(array('dt_contact'));
+  module_enable(['dt_contact']);
 }
 
 /**
  * Enabling Nexteuropa feedback form.
  */
 function dt_core_update_7107() {
-  module_enable(array('nexteuropa_feedback'));
+  module_enable(['nexteuropa_feedback']);
 }
 
 /**
@@ -122,7 +122,7 @@ function dt_core_update_7108() {
  * Enabling Announcements feature.
  */
 function dt_core_update_7109() {
-  module_enable(array('nexteuropa_page'));
+  module_enable(['nexteuropa_page']);
 }
 
 /**
@@ -139,8 +139,8 @@ function dt_core_update_7110() {
  */
 function dt_core_update_7111() {
   if (module_exists('dashboard')) {
-    module_disable(array('dashboard'));
-    drupal_uninstall_modules(array('dashboard'));
+    module_disable(['dashboard']);
+    drupal_uninstall_modules(['dashboard']);
   }
 }
 
@@ -148,11 +148,11 @@ function dt_core_update_7111() {
  * Enabling Metatag modules.
  */
 function dt_core_update_7112() {
-  $meta_modules = array(
+  $meta_modules = [
     'metatag',
     'metatag_views',
     'metatag_opengraph',
-  );
+  ];
   module_enable($meta_modules);
 }
 
@@ -160,9 +160,9 @@ function dt_core_update_7112() {
  * Enabling DT date formats module.
  */
 function dt_core_update_7113() {
-  $modules = array(
+  $modules = [
     'dt_date_format',
-  );
+  ];
   module_enable($modules);
 }
 
@@ -171,10 +171,10 @@ function dt_core_update_7113() {
  */
 function dt_core_update_7114() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_topic',
     'dt_toplink',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.
@@ -187,26 +187,26 @@ function dt_core_update_7114() {
  * Revering menu_links, menu_custom and context in dt_core.
  */
 function dt_core_update_7115() {
-  features_revert(array(
-    'dt_core' => array('menu_links', 'menu_custom', 'context'),
-  ));
+  features_revert([
+    'dt_core' => ['menu_links', 'menu_custom', 'context'],
+  ]);
 }
 
 /**
  * Enabling Legacy link module.
  */
 function dt_core_update_7116() {
-  $modules = array(
+  $modules = [
     'nexteuropa_legacy_link',
-  );
+  ];
   module_enable($modules);
 
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_department',
     'dt_person',
     'dt_priority',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.
@@ -219,9 +219,9 @@ function dt_core_update_7116() {
  * Enabling multisite_maxlength module.
  */
 function dt_core_update_7117() {
-  $modules = array(
+  $modules = [
     'multisite_maxlength',
-  );
+  ];
   module_enable($modules);
   features_revert_module('nexteuropa_page');
 }
@@ -237,16 +237,16 @@ function dt_core_update_7118() {
  * Enabling dt_exposed_filter_data.
  */
 function dt_core_update_7119() {
-  $modules = array(
+  $modules = [
     'dt_exposed_filter_data',
-  );
+  ];
   module_enable($modules);
 
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_announcement',
     'dt_department',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
@@ -259,11 +259,11 @@ function dt_core_update_7119() {
  */
 function dt_core_update_7120() {
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_announcement',
     'dt_contact',
     'dt_person',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
@@ -276,11 +276,11 @@ function dt_core_update_7120() {
  */
 function dt_core_update_7121() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_department',
     'dt_person',
     'dt_priority',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.
@@ -304,7 +304,7 @@ function dt_core_update_7122() {
 
   // Disable the filter format as well.
   db_update('filter_format')
-    ->fields(array('status' => 0))
+    ->fields(['status' => 0])
     ->condition('format', $profile)
     ->execute();
 
@@ -316,16 +316,16 @@ function dt_core_update_7122() {
  * Enabling dt_social_network_links.
  */
 function dt_core_update_7123() {
-  $modules = array(
+  $modules = [
     'dt_social_network_links',
-  );
+  ];
   module_enable($modules);
 
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_social_network_links',
     'dt_department',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
@@ -337,7 +337,7 @@ function dt_core_update_7123() {
  * Enable dt_roles_permissions module.
  */
 function dt_core_update_7124() {
-  module_enable(array('dt_roles_permissions'));
+  module_enable(['dt_roles_permissions']);
 }
 
 /**
@@ -345,20 +345,20 @@ function dt_core_update_7124() {
  */
 function dt_core_update_7125() {
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_department' => 'department',
     'dt_announcement' => 'announcement',
     'nexteuropa_page' => 'page',
-  );
+  ];
 
   // Reverting the features.
   features_revert_module('dt_core');
   foreach ($features as $feature => $content_type) {
     features_revert_module($feature);
-    drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
+    drupal_set_message(t('Reverted %feature.', ['%feature' => $feature]));
     // Copy the field content.
     _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_links');
-    drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+    drupal_set_message(t('Copied %content_type.', ['%content_type' => $content_type]));
 
     // Remove field instance.
     if ($instance = field_info_instance('node', 'field_core_link', $content_type)) {
@@ -371,7 +371,7 @@ function dt_core_update_7125() {
  * Enable dt_page module.
  */
 function dt_core_update_7126() {
-  module_enable(array('dt_page'));
+  module_enable(['dt_page']);
 }
 
 /**
@@ -380,7 +380,10 @@ function dt_core_update_7126() {
 function dt_core_update_7127() {
   $delete = url('admin/config/search/path/delete_bulk');
   $update = url('admin/config/search/path/update_bulk');
-  drupal_set_message(t('Please <a href="!delete">bulk delete</a> and <a href="!update">update all aliases</a>!', array('!delete' => $delete, '!update' => $update)));
+  drupal_set_message(t('Please <a href="!delete">bulk delete</a> and <a href="!update">update all aliases</a>!', [
+    '!delete' => $delete,
+    '!update' => $update,
+  ]));
 }
 
 /**
@@ -388,15 +391,15 @@ function dt_core_update_7127() {
  */
 function dt_core_update_7128() {
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_department',
     'dt_topic',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
     features_revert_module($feature);
-    drupal_set_message(t('Reverted %feature.', array('%feature' => $feature)));
+    drupal_set_message(t('Reverted %feature.', ['%feature' => $feature]));
   }
 }
 
@@ -419,9 +422,9 @@ function dt_core_update_7129() {
   ) {
     // Set status to 1.
     $updated = db_update('filter')
-      ->fields(array(
+      ->fields([
         'status' => 1,
-      ))
+      ])
       ->condition('format', 'full_html', '=')
       ->condition('module', 'ckeditor_link', '=')
       ->condition('name', 'ckeditor_link_filter', '=')
@@ -439,7 +442,7 @@ function dt_core_update_7129() {
  * Enable dt_site_menu module.
  */
 function dt_core_update_7130() {
-  module_enable(array('dt_site_menu'));
+  module_enable(['dt_site_menu']);
 }
 
 /**
@@ -462,11 +465,11 @@ function dt_core_update_7132() {
 function dt_core_update_7133() {
   // Enabling dt_information_core only on information site.
   // Because the hook_updates will not running on a new install.
-  module_enable(array('dt_information_core'));
-  $features = array(
+  module_enable(['dt_information_core']);
+  $features = [
     'dt_core',
     'dt_information_core',
-  );
+  ];
   // Reverting the features.
   foreach ($features as $feature) {
     features_revert_module($feature);
@@ -477,14 +480,14 @@ function dt_core_update_7133() {
  * Enable nexteuropa_formatters module.
  */
 function dt_core_update_7134() {
-  module_enable(array('nexteuropa_formatters'));
+  module_enable(['nexteuropa_formatters']);
 }
 
 /**
  * Enabling nexteuropa_views module.
  */
 function dt_core_update_7135() {
-  module_enable(array('nexteuropa_views'));
+  module_enable(['nexteuropa_views']);
 }
 
 /**
@@ -493,14 +496,14 @@ function dt_core_update_7135() {
 function dt_core_update_7136() {
   // Checking dt_information_core, if it is enabled on the site.
   if (module_exists('dt_information_core')) {
-    module_disable(array('dt_information_core'));
-    module_enable(array('dt_core_info'));
+    module_disable(['dt_information_core']);
+    module_enable(['dt_core_info']);
   }
 
   // Checking dt_political_core, if it is enabled on the site.
   if (module_exists('dt_political_core')) {
-    module_disable(array('dt_political_core'));
-    module_enable(array('dt_core_pol'));
+    module_disable(['dt_political_core']);
+    module_enable(['dt_core_pol']);
   }
 }
 
@@ -515,7 +518,7 @@ function dt_core_update_7137($sandbox) {
  * Enabling dt_language_selector_site_popup.
  */
 function dt_core_update_7138() {
-  module_enable(array('dt_language_selector_site_popup'));
+  module_enable(['dt_language_selector_site_popup']);
 }
 
 /**
@@ -525,10 +528,14 @@ function dt_core_update_7139() {
   $query = db_update('node')->expression('title', 'RTRIM(title)')->execute();
   drupal_set_message(t("<strong>%query</strong> node title(s) have been fixed.", ['%query' => $query]));
 
-  $query = db_update('$field_data_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
+  $query = db_update('$field_data_title_field')
+    ->expression('title_field_value', 'RTRIM(title_field_value)')
+    ->execute();
   drupal_set_message(t("<strong>%query</strong> title_field\'s title(s) have been fixed.", ['%query' => $query]));
 
-  $query = db_update('$field_revision_title_field')->expression('title_field_value', 'RTRIM(title_field_value)')->execute();
+  $query = db_update('$field_revision_title_field')
+    ->expression('title_field_value', 'RTRIM(title_field_value)')
+    ->execute();
   drupal_set_message(t("<strong>%query</strong> revision_title_field title(s) have been fixed.", ['%query' => $query]));
 }
 
@@ -550,13 +557,13 @@ function dt_core_update_7141() {
  * Resetting Views settings related to Nexteuropa BEM listing.
  */
 function dt_core_update_7142() {
-  $features = array(
+  $features = [
     'dt_announcement',
     'dt_department',
     'dt_policy',
     'dt_policy_area',
     'dt_topic',
-  );
+  ];
   // Reverting the features.
   foreach ($features as $feature) {
     // If module enabled, that revert.
@@ -588,9 +595,9 @@ function dt_core_update_7143() {
  * NEXTEUROPA-4747: Enabling dt_node_settings to introduce helper content types.
  */
 function dt_core_update_7144() {
-  module_enable(array('dt_node_settings'));
+  module_enable(['dt_node_settings']);
 
-  $helper_types = array(
+  $helper_types = [
     'article',
     'banner_quote',
     'banner_video',
@@ -605,7 +612,7 @@ function dt_core_update_7144() {
     'toplink',
     'editorial_team',
     'file',
-  );
+  ];
 
   foreach ($helper_types as $type) {
     variable_set('dt_node_settings_helper_node_type_' . $type, 1);
@@ -632,19 +639,19 @@ function dt_core_update_7146() {
  * Enabling dt_shared_functions module.
  */
 function dt_core_update_7147() {
-  module_enable(array('dt_shared_functions'));
+  module_enable(['dt_shared_functions']);
 }
 
 /**
  * NEXTEUROPA-4834: Update features for the modified timeline.
  */
 function dt_core_update_7148() {
-  $features = array(
+  $features = [
     'dt_page',
     'dt_policy',
     'dt_pri_policy_area_default',
     'dt_priority_default',
-  );
+  ];
   // Reverting the features.
   foreach ($features as $feature) {
     // If module enabled, that revert.
@@ -665,7 +672,7 @@ function dt_core_update_7149() {
  * NEXTEUROPA-7131: Enabling dt_help_text module.
  */
 function dt_core_update_7150() {
-  module_enable(array('dt_help_text'));
+  module_enable(['dt_help_text']);
 }
 
 /**
@@ -673,7 +680,7 @@ function dt_core_update_7150() {
  */
 function dt_core_update_7151() {
   // DT features.
-  $features = array(
+  $features = [
     'dt_class',
     'dt_banner',
     'dt_contact',
@@ -683,7 +690,7 @@ function dt_core_update_7151() {
     'dt_publication',
     'dt_social_network_links',
     'nexteuropa_file',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
@@ -708,7 +715,7 @@ function dt_core_update_7151() {
   }
 
   // DT project-specific fields.
-  $dt_fields = array(
+  $dt_fields = [
     'field_banner_caption',
     'field_banner_video_file',
     'field_class_related_links',
@@ -719,7 +726,7 @@ function dt_core_update_7151() {
     'field_person_tagline',
     'field_policy_caption',
     'field_policy_featured_file',
-  );
+  ];
   $available_fields = array_keys($fields);
   foreach ($dt_fields as $field_name) {
     // Check if the field exist in the current instance.
@@ -730,9 +737,9 @@ function dt_core_update_7151() {
 
   // The following is somehow not done by dt_featured_item_update_7101().
   // List of fields to delete.
-  $fields_to_delete = array(
+  $fields_to_delete = [
     'field_feat_item_ref_or_url',
-  );
+  ];
 
   // Handle the fields to delete.
   foreach ($fields_to_delete as $field_name) {
@@ -766,7 +773,7 @@ function dt_core_update_7153() {
  * NEXTEUROPA-6007: Create a block for social sharing.
  */
 function dt_core_update_7154() {
-  module_enable(array('dt_social_media_sharing'));
+  module_enable(['dt_social_media_sharing']);
 }
 
 /**
@@ -782,7 +789,7 @@ function dt_core_update_7155() {
  * NEXTEUROPA-4905: Enabling conditional_fields.
  */
 function dt_core_update_7156() {
-  module_enable(array('conditional_fields'));
+  module_enable(['conditional_fields']);
 }
 
 /**
@@ -796,11 +803,11 @@ function dt_core_update_7157() {
  * NEXTEUROPA-7529: Enabling Corresponding Entity References.
  */
 function dt_core_update_7158() {
-  $modules = array(
+  $modules = [
     'table_element',
     'field_object',
     'cer',
-  );
+  ];
   module_enable($modules);
 }
 
@@ -809,7 +816,7 @@ function dt_core_update_7158() {
  */
 function dt_core_update_7159() {
   // Enable the dt header background custom module.
-  module_enable(array('dt_header_background'));
+  module_enable(['dt_header_background']);
 }
 
 /**
@@ -823,7 +830,7 @@ function dt_core_update_7160() {
  * Enabling ec_embedded_video to enable the cookie overlay.
  */
 function dt_core_update_7161() {
-  module_enable(array('ec_embedded_video'));
+  module_enable(['ec_embedded_video']);
 }
 
 /**
@@ -837,14 +844,14 @@ function dt_core_update_7162() {
  * NEXTEUROPA-7770 - Enabling DT wysiwyg update ckeditor settings.
  */
 function dt_core_update_7163() {
-  module_enable(array('dt_wysiwyg'));
+  module_enable(['dt_wysiwyg']);
 }
 
 /**
  * Enabling nexteuropa_metatags.
  */
 function dt_core_update_7164() {
-  module_enable(array('nexteuropa_metatags'));
+  module_enable(['nexteuropa_metatags']);
   // Somehow it needs to be reverted.
   features_revert_module('nexteuropa_metatags');
 }
@@ -854,7 +861,7 @@ function dt_core_update_7164() {
  */
 function dt_core_update_7165() {
   features_revert_module('dt_core');
-  $image_styles = array(
+  $image_styles = [
     'header_image_breakpoints_theme_europa_medium_2x',
     'header_image_breakpoints_theme_europa_mobile_2x',
     'header_image_breakpoints_theme_europa_narrow_2x',
@@ -870,9 +877,9 @@ function dt_core_update_7165() {
     'teaser_image_breakpoints_theme_europa_narrow_2x',
     'teaser_image_breakpoints_theme_europa_normal_2x',
     'teaser_image_breakpoints_theme_europa_wide_2x',
-  );
+  ];
   foreach ($image_styles as $item) {
-    image_style_flush(array('name' => $item));
+    image_style_flush(['name' => $item]);
   }
 }
 
@@ -925,7 +932,9 @@ function dt_core_update_7169() {
       // Add the field.
       db_add_field($table, $column_name . '_temp', $param);
       // Convert the data.
-      db_update($table)->expression($column_name . '_temp', "UNIX_TIMESTAMP($column_name)")->execute();
+      db_update($table)
+        ->expression($column_name . '_temp', "UNIX_TIMESTAMP($column_name)")
+        ->execute();
       // Drop the table.
       db_drop_field($table, $column_name);
       // Rename the updated column.
@@ -933,7 +942,10 @@ function dt_core_update_7169() {
     }
 
     // Change info in the database.
-    db_update('field_config')->fields(['type' => 'datestamp'])->condition('field_name', $field)->execute();
+    db_update('field_config')
+      ->fields(['type' => 'datestamp'])
+      ->condition('field_name', $field)
+      ->execute();
   }
   field_cache_clear();
   // Revert the feature.
@@ -956,4 +968,12 @@ function dt_core_update_7171() {
   if (module_exists('nexteuropa_metatags')) {
     nexteuropa_metatags_install();
   }
+}
+
+/**
+ * DTTSB-750: Remove main taxonomy from the database.
+ */
+function dt_core_update_7172() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('main_taxonomy');
+  taxonomy_vocabulary_delete($vocabulary->vid);
 }

@@ -15,3 +15,15 @@
 
 include_once 'nexteuropa_eurovoc.features.inc';
 include_once 'nexteuropa_eurovoc.migrate.inc';
+
+/**
+ * Implements hook_query_alter().
+ *
+ * As this is a complex parent child query, we have to modify it so that the
+ * distinct is added in the correct spot.
+ */
+function nexteuropa_eurovoc_query_alter(QueryAlterableInterface $query) {
+  if (isset($query->alterTags['eurovoc_filter_query'])) {
+    $query->groupBy('taxonomy_term_data.tid');
+  }
+}

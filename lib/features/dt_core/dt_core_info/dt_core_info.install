@@ -169,3 +169,13 @@ function dt_core_info_update_7113() {
   // Enabling dt call for proposal.
   module_enable(array('dt_call_for_proposal_default'));
 }
+
+/**
+ * DTTSB-750: Enable eurovoc.
+ */
+function dt_core_info_update_7114() {
+  $modules = [
+    'nexteuropa_eurovoc',
+  ];
+  module_enable($modules);
+}

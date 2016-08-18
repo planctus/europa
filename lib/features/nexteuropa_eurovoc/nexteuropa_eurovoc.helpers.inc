@@ -169,11 +169,13 @@ function _nexteuropa_eurovoc_get_eurovoc_terms() {
       // Re-organize the to save from level-specific iterations later.
       foreach ($terms as $term) {
         // These field values are not translatable, EMW operation saving.
-        $eurovoc_id = $term->field_eurovoc_id[LANGUAGE_NONE][0]['value'];
-        $eurovoc_level = $term->field_eurovoc_level[LANGUAGE_NONE][0]['value'];
-        // If the term is categorized in any EuroVoc level.
-        if ($eurovoc_level != '') {
-          $results[$eurovoc_level][$eurovoc_id] = $term;
+        if (isset($term->field_eurovoc_id) && $term->field_eurovoc_level) {
+          $eurovoc_id = $term->field_eurovoc_id[LANGUAGE_NONE][0]['value'];
+          $eurovoc_level = $term->field_eurovoc_level[LANGUAGE_NONE][0]['value'];
+          // If the term is categorized in any EuroVoc level.
+          if ($eurovoc_level != '') {
+            $results[$eurovoc_level][$eurovoc_id] = $term;
+          }
         }
       }
     }

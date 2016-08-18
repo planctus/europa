@@ -825,6 +825,7 @@ function dt_priority_default_field_default_field_instances() {
           'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
           'show_timezone' => 0,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 18,
@@ -1364,6 +1365,65 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority-field_eurovoc_taxonomy'.
+  $field_instances['node-priority-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'priority',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 51,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 62,
+    ),
+  );
+
   // Exported field_instance: 'node-priority-group_content_access'.
   $field_instances['node-priority-group_content_access'] = array(
     'bundle' => 'priority',
@@ -1590,6 +1650,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Select the related topics.');
   t('Select the timeline of this Priority.');
   t('Social Network Links');
+  t('Taxonomy');
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('The main objectives of the Priority. Use bullets and limit to a sentence per bullet.');
   t('Title');

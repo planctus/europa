@@ -138,12 +138,13 @@ function dt_person_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_editorial_settings',
-      1 => 'group_person_agenda',
-      2 => 'group_person_biography_cv',
-      3 => 'group_person_contact',
-      4 => 'group_person_profile',
-      5 => 'group_person_technical',
+      0 => 'group_taxonomy',
+      1 => 'group_editorial_settings',
+      2 => 'group_person_agenda',
+      3 => 'group_person_biography_cv',
+      4 => 'group_person_contact',
+      5 => 'group_person_profile',
+      6 => 'group_person_technical',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -270,6 +271,33 @@ function dt_person_field_group_info() {
   );
   $field_groups['group_person_technical|node|person|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|person|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_content';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '68',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|person|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Agenda');
@@ -280,6 +308,7 @@ function dt_person_field_group_info() {
   t('Meta');
   t('Name');
   t('Profile');
+  t('Taxonomy');
   t('Technical fields');
 
   return $field_groups;

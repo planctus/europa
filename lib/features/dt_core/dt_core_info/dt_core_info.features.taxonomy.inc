@@ -35,30 +35,5 @@ function dt_core_info_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'main_taxonomy' => (object) array(
-      'name' => 'Main taxonomy',
-      'machine_name' => 'main_taxonomy',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'language' => 'und',
-      'i18n_mode' => 1,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
   );
 }

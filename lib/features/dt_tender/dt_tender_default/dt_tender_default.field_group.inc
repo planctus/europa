@@ -14,6 +14,33 @@ function dt_tender_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|tender|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tender';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_tender_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|tender|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_tender_content|node|tender|form';
   $field_group->group_name = 'group_tender_content';
   $field_group->entity_type = 'node';
@@ -173,8 +200,9 @@ function dt_tender_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_tender_content',
-      1 => 'group_tender_editorial',
+      0 => 'group_taxonomy',
+      1 => 'group_tender_content',
+      2 => 'group_tender_editorial',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -222,6 +250,7 @@ function dt_tender_default_field_group_info() {
   t('Departments');
   t('Editorial settings');
   t('Meta');
+  t('Taxonomy');
   t('Topics');
 
   return $field_groups;
