@@ -3589,8 +3589,8 @@ function cwt_biography_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('AV portal link');
   t('Address');
-  t('Calendar transparency text');
   t('Assistants');
+  t('Calendar transparency text');
   t('Classname');
   t('Collapse button text');
   t('Comment');

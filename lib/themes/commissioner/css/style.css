@@ -208,4 +208,8 @@ section #timeline {
   .label-term-status.term-43, .label-term-status.term-47 {
     display: inline-block; }
 
+.meta.term-39 .meta__item--type:after,
+.meta.term-45 .meta__item--type:after {
+  content: ''; }
+
 /*# sourceMappingURL=style.css.map */

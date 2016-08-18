@@ -103,3 +103,11 @@
     display: inline-block;
   }
 }
+
+// Handle In office, No longer in office meta type.
+.meta.term-39,
+.meta.term-45 {
+  .meta__item--type:after {
+    content: '';
+  }
+}
