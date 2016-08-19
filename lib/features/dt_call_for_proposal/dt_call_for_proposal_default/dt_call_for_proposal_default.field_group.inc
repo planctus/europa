@@ -205,7 +205,6 @@ function dt_call_for_proposal_default_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_core_background',
-      1 => 'field_core_description',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -374,6 +373,7 @@ function dt_call_for_proposal_default_field_group_info() {
   t('Editorial settings');
   t('Main section');
   t('Meta');
+  t('Publications');
   t('Related');
   t('Topics');
 
