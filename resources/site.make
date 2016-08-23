@@ -22,6 +22,7 @@ projects[breakpoints][version] = "1.3"
 
 projects[cer][subdir] = "contrib"
 projects[cer][version] = "3.0-alpha7"
+projects[cer][patch][] = "https://www.drupal.org/files/issues/cer-2373761-entity_api_exception-6.patch"
 
 ; Required by cer module.
 projects[table_element][subdir] = "contrib"
