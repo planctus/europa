@@ -59,5 +59,7 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
       // Replace the toolbar with our new, grouped toolbar.
       $settings['toolbar'] = $new_toolbar;
     }
+
+    drupal_add_js($base_url . '/' . drupal_get_path('module', 'dt_wysiwyg') . '/dt_wyswyg_ckeditor_config.js');
   }
 }
