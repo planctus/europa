@@ -371,6 +371,7 @@
             delete-dev,
             make-dev,
             link-dev-resources,
+            make-theme,
             install-dev-dependencies,
             link-behat,
             setup-behat,
