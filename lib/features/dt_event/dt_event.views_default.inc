@@ -50,7 +50,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['order'] = 'DESC';
-  /* Contextual filter: Indexed Node: Part of collection */
+  /* Contextual filter: Indexed Node: Part of */
   $handler->display->display_options['arguments']['field_event_parent_events']['id'] = 'field_event_parent_events';
   $handler->display->display_options['arguments']['field_event_parent_events']['table'] = 'search_api_index_event_index';
   $handler->display->display_options['arguments']['field_event_parent_events']['field'] = 'field_event_parent_events';
@@ -63,26 +63,29 @@ function dt_event_views_default_views() {
   $handler->display->display_options['arguments']['field_event_parent_events']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['field_event_parent_events']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_event_parent_events']['not'] = 0;
-  /* Filter criterion: Indexed Node: fulltext search */
-  $handler->display->display_options['filters']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['group'] = 1;
-  $handler->display->display_options['filters']['search_api_aggregation_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator_id'] = 'search_api_aggregation_1_op';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['label'] = 'Contains';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['operator'] = 'search_api_aggregation_1_op';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['identifier'] = 'search_api_aggregation_1';
-  $handler->display->display_options['filters']['search_api_aggregation_1']['expose']['remember_roles'] = array(
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['operator'] = 'OR';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Keywords';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
     6 => 0,
-    4 => 0,
     5 => 0,
+    3 => 0,
+    4 => 0,
     7 => 0,
-    9 => 0,
-    10 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'search_api_aggregation_1' => 'search_api_aggregation_1',
   );
   /* Filter criterion: Facets: Exposed facet */
   $handler->display->display_options['filters']['facet_filter']['id'] = 'facet_filter';
@@ -120,7 +123,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['facet_filter_5']['field'] = 'facet_filter';
   $handler->display->display_options['filters']['facet_filter_5']['group'] = 1;
   $handler->display->display_options['filters']['facet_filter_5']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['facet_filter_5']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['facet_filter_5']['expose']['label'] = 'Location';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['operator'] = 'facet_filter_5_op';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['identifier'] = 'facet_filter_5';
   $handler->display->display_options['filters']['facet_filter_5']['expose']['remember_roles'] = array(
@@ -250,6 +253,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_collection']['value'] = array(
     0 => '0',
   );
+  $handler->display->display_options['filters']['field_event_collection']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -273,7 +277,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['title'] = 'Events list';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'All events for [node_title]';
+  $handler->display->display_options['use_more_text'] = 'View all events for [node_title]';
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -374,6 +378,24 @@ function dt_event_views_default_views() {
   $handler->display->display_options['link_url'] = '/events/!1';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Event date and time - end date (field_event_date:value2) */
+  $handler->display->display_options['sorts']['field_event_date_value2']['id'] = 'field_event_date_value2';
+  $handler->display->display_options['sorts']['field_event_date_value2']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['sorts']['field_event_date_value2']['field'] = 'field_event_date_value2';
+  $handler->display->display_options['sorts']['field_event_date_value2']['relationship'] = 'field_event_children_events_target_id';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'No events planned.';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -412,6 +434,13 @@ function dt_event_views_default_views() {
   /* Display: Past events */
   $handler = $view->new_display('block', 'Past events', 'block_1');
   $handler->display->display_options['link_url'] = '/events/!1';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'No past events available.';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

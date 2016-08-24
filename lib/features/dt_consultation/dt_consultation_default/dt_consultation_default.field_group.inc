@@ -9,7 +9,7 @@
  * Implements hook_field_group_info().
  */
 function dt_consultation_default_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -25,10 +25,10 @@ function dt_consultation_default_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_description',
-      2 => 'field_core_introduction',
-      3 => 'field_core_legacy_link',
-      4 => 'field_consultation_status',
+      1 => 'field_consultation_status',
+      2 => 'field_core_description',
+      3 => 'field_core_introduction',
+      4 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -40,7 +40,7 @@ function dt_consultation_default_field_group_info() {
       ),
     ),
   );
-  $export['group_consultation_content|node|consultation|form'] = $field_group;
+  $field_groups['group_consultation_content|node|consultation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -70,7 +70,7 @@ function dt_consultation_default_field_group_info() {
       ),
     ),
   );
-  $export['group_consultation_editorial|node|consultation|form'] = $field_group;
+  $field_groups['group_consultation_editorial|node|consultation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -97,7 +97,7 @@ function dt_consultation_default_field_group_info() {
       ),
     ),
   );
-  $export['group_consultation_meta|node|consultation|teaser'] = $field_group;
+  $field_groups['group_consultation_meta|node|consultation|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -114,6 +114,7 @@ function dt_consultation_default_field_group_info() {
     'children' => array(
       0 => 'group_consultation_content',
       1 => 'group_consultation_editorial',
+      2 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -123,7 +124,41 @@ function dt_consultation_default_field_group_info() {
       ),
     ),
   );
-  $export['group_consultation_tabgroup|node|consultation|form'] = $field_group;
+  $field_groups['group_consultation_tabgroup|node|consultation|form'] = $field_group;
 
-  return $export;
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|consultation|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consultation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_consultation_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|consultation|form'] = $field_group;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Content');
+  t('Editorial settings');
+  t('Meta');
+  t('Taxonomy');
+
+  return $field_groups;
 }

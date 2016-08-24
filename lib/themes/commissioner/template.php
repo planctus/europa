@@ -25,7 +25,7 @@ function commissioner_preprocess_page(&$variables) {
     // Get term name.
     $term = $variables['page']['content']['system_main']['term_heading']['term']['#term']->name;
     if ($taxonomy == 'tags') {
-      $variables['title'] = drupal_set_title(t('Tag') . ': ' . $term);
+      $variables['title'] = drupal_set_title(t('Tag: !term', ['!term' => $term]));
     }
   }
 
@@ -149,10 +149,6 @@ function commissioner_preprocess_html(&$variables) {
  * Implements template_preprocess_node().
  */
 function commissioner_preprocess_node(&$variables) {
-  if ($variables['view_mode'] == 'team_cabinet_member') {
-    $variables['content']['body']['#title'] = t('Responsibilities');
-  }
-
   unset($variables['content']['links']['comment']['#links']['comment-add']);
 }
 

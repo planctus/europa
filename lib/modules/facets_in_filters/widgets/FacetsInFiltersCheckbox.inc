@@ -8,30 +8,38 @@
 /**
  * Class FacetsInFiltersCheckbox.
  */
-class FacetsInFiltersCheckbox extends FacetapiWidget {
+class FacetsInFiltersCheckbox extends FacetsInFiltersFilterBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function facetFieldType() {
+    return 'checkboxes';
+  }
 
   /**
    * {@inheritdoc}
    */
   public function execute() {
-    drupal_add_js(drupal_get_path('module', 'facets_in_filters') . '/js/FacetsInFilters.js');
     $element = &$this->build[$this->facet['field alias']];
 
-    foreach ($element as $ind => &$option) {
-      $value = url(current_path(), ['query' => $option['#query']]);
-      $name = 'facets_' . $this->key . '_' . $ind;
+    // Get the identifier.
+    $identifier = $this->getFacetIdentifier($this->facetFieldType());
+
+    foreach ($element as &$option) {
       $title = $option['#markup'];
+      // Add the count if the setting implies to do it.
+      $title .= !$this->getSetting('hide_facet_count') && !empty($option['#count']) ? ' (' . $option['#count'] . ')' : '';
       $option['#type'] = 'markup';
       $option['#prefix'] = '<div class="checkbox">';
       $option['#suffix'] = '</div>';
       $option['#markup'] = '<input type="checkbox" ';
-      $option['#markup'] .= 'name="' . $name . '" id="' . $name . '" ';
+      $option['#markup'] .= 'name="' . $identifier . '" id="' . $identifier . '" ';
       if ($option['#active']) {
         $option['#markup'] .= 'checked="checked" ';
       }
-      $option['#markup'] .= 'value="' . $value . '"/>';
-      $option['#markup'] .= '<label for="' . $name . '">' . $title . '</label>';
-      $option['#markup'] .= '<input type="hidden" value="' . $value . '" name="' . $name . '" id="' . $name . '" />';
+      $option['#markup'] .= '/>';
+      $option['#markup'] .= '<label for="' . $identifier . '">' . $title . '</label>';
     }
 
     // Take a copy.
@@ -39,9 +47,9 @@ class FacetsInFiltersCheckbox extends FacetapiWidget {
 
     // Recreate the array.
     $element = [];
-    $element['facets'] = $clone;
-    $element['facets']['#prefix'] = '<div class="facet-trigger" id="' . drupal_clean_css_identifier('filters_in_facets_' . $this->settings->facet) . '">';
-    $element['facets']['#suffix'] = '</div>';
+
+    $element['facets']['checkboxes'] = $clone;
+    $this->addElementWrapper($element['facets']);
   }
 
 }

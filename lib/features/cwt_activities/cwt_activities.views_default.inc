@@ -435,7 +435,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['label'] = '';
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_wrapper_class'] = 'listing-item-event-date';
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
@@ -721,8 +721,6 @@ function cwt_activities_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -739,7 +737,7 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_start_end_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_start_end_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_start_end_date']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'date_event_date';
+  $handler->display->display_options['fields']['field_start_end_date']['type'] = 'commissioner_date_event_date';
   $handler->display->display_options['fields']['field_start_end_date']['settings'] = array(
     'format_type' => 'ec_date_j_f_y',
     'fromto' => 'both',
@@ -759,11 +757,34 @@ function cwt_activities_views_default_views() {
   $handler->display->display_options['fields']['field_editorial_section_multiple']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_editorial_section_multiple']['type'] = 'bold_last';
   $handler->display->display_options['fields']['field_editorial_section_multiple']['delta_offset'] = '0';
+  /* Field: Content: Address - Locality (i.e. City) */
+  $handler->display->display_options['fields']['field_activity_address_locality']['id'] = 'field_activity_address_locality';
+  $handler->display->display_options['fields']['field_activity_address_locality']['table'] = 'field_data_field_activity_address';
+  $handler->display->display_options['fields']['field_activity_address_locality']['field'] = 'field_activity_address_locality';
+  $handler->display->display_options['fields']['field_activity_address_locality']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_address_locality']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_address_locality']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_address_locality']['alter']['text'] = '[field_activity_address_locality], ';
+  $handler->display->display_options['fields']['field_activity_address_locality']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_address_locality']['element_default_classes'] = FALSE;
+  /* Field: Content: Address - Country */
+  $handler->display->display_options['fields']['field_activity_address_country']['id'] = 'field_activity_address_country';
+  $handler->display->display_options['fields']['field_activity_address_country']['table'] = 'field_data_field_activity_address';
+  $handler->display->display_options['fields']['field_activity_address_country']['field'] = 'field_activity_address_country';
+  $handler->display->display_options['fields']['field_activity_address_country']['label'] = '';
+  $handler->display->display_options['fields']['field_activity_address_country']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_address_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_activity_address_country']['alter']['text'] = '[field_activity_address_country]: ';
+  $handler->display->display_options['fields']['field_activity_address_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_address_country']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_activity_address_country']['display_name'] = 1;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<strong>[field_activity_address_locality][field_activity_address_country]</strong>[title]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'span';

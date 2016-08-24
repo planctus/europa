@@ -55,10 +55,10 @@ function dt_priority_default_field_group_info() {
     'label' => 'Background',
     'weight' => '27',
     'children' => array(
-      0 => 'field_core_publications',
-      1 => 'field_core_background',
-      2 => 'field_core_next_steps',
-      3 => 'field_core_objective',
+      0 => 'field_core_background',
+      1 => 'field_core_next_steps',
+      2 => 'field_core_objective',
+      3 => 'field_core_publications',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -175,12 +175,12 @@ function dt_priority_default_field_group_info() {
     'weight' => '22',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_description',
-      2 => 'field_core_header_image',
-      3 => 'field_core_image',
-      4 => 'field_core_introduction',
-      5 => 'field_core_legacy_link',
-      6 => 'field_core_social_network_links',
+      1 => 'field_core_introduction',
+      2 => 'field_core_description',
+      3 => 'field_core_header_image',
+      4 => 'field_core_image',
+      5 => 'field_core_social_network_links',
+      6 => 'field_core_legacy_link',
       7 => 'field_core_parent',
     ),
     'format_type' => 'tab',
@@ -294,7 +294,7 @@ function dt_priority_default_field_group_info() {
   $field_group->parent_name = 'group_priority_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '28',
+    'weight' => '29',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -429,11 +429,11 @@ function dt_priority_default_field_group_info() {
     'label' => 'Related',
     'weight' => '24',
     'children' => array(
-      0 => 'field_core_departments',
-      1 => 'field_core_persons',
-      2 => 'field_core_policy_areas',
-      3 => 'field_core_topics',
-      4 => 'field_core_links',
+      0 => 'field_core_persons',
+      1 => 'field_core_departments',
+      2 => 'field_core_links',
+      3 => 'field_core_policy_areas',
+      4 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -490,13 +490,14 @@ function dt_priority_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_priority_background',
-      1 => 'group_priority_banner',
-      2 => 'group_priority_content',
-      3 => 'group_priority_editorial',
-      4 => 'group_priority_featured_item',
-      5 => 'group_priority_policy',
-      6 => 'group_priority_related',
+      0 => 'group_taxonomy',
+      1 => 'group_priority_background',
+      2 => 'group_priority_banner',
+      3 => 'group_priority_content',
+      4 => 'group_priority_editorial',
+      5 => 'group_priority_featured_item',
+      6 => 'group_priority_policy',
+      7 => 'group_priority_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -542,6 +543,33 @@ function dt_priority_default_field_group_info() {
   );
   $field_groups['group_priority_whatnext|node|priority|full'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|priority|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'priority';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_priority_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|priority|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Background');
@@ -558,6 +586,7 @@ function dt_priority_default_field_group_info() {
   t('Policy areas');
   t('Related');
   t('Related links');
+  t('Taxonomy');
   t('What\'s next?');
 
   return $field_groups;

@@ -18,6 +18,11 @@ function cwt_team_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'team';
   $ds_fieldsetting->view_mode = 'college';
   $ds_fieldsetting->settings = array(
+    'commissioners_no_longer_in_office' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'team_meta' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -198,6 +203,21 @@ function cwt_team_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'commissioners_no_longer_in_office';
+  $ds_field->label = 'Commissioners no longer in office';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'views|team_members-block_4',
+    'block_render' => '1',
+  );
+  $export['commissioners_no_longer_in_office'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'team_contact_image';
   $ds_field->label = 'Team contact - image';
   $ds_field->field_type = 6;
@@ -289,23 +309,24 @@ function cwt_team_ds_layout_settings_info() {
         8 => 'body',
         9 => 'group_team_tab_role',
         10 => 'group_team_links',
-        11 => 'field_team_links',
-        12 => 'cwt_team_president',
-        13 => 'cwt_team_name',
-        14 => 'group_team_tab_project_team',
+        11 => 'cwt_team_president',
+        12 => 'cwt_team_name',
+        13 => 'group_team_tab_project_team',
+        14 => 'field_team_links',
         15 => 'group_team_tabs',
-        16 => 'group_team_members',
+        16 => 'commissioners_no_longer_in_office',
         17 => 'group_team_tab_name',
-        18 => 'group_team_comissioners',
-        19 => 'group_team_files',
-        20 => 'cwt_team_project_team',
-        21 => 'field_team_attachments',
-        22 => 'social_bookmark_webtools',
-        23 => 'group_team_president',
+        18 => 'group_team_members',
+        19 => 'group_team_comissioners',
+        20 => 'group_team_files',
+        21 => 'cwt_team_project_team',
+        22 => 'field_team_attachments',
+        23 => 'social_bookmark_webtools',
+        24 => 'group_team_president',
       ),
       'bottom_header' => array(
-        5 => 'field_illustrative_image',
-        6 => 'group_team_top_image',
+        5 => 'group_team_top_image',
+        6 => 'field_illustrative_image',
       ),
     ),
     'fields' => array(
@@ -314,19 +335,20 @@ function cwt_team_ds_layout_settings_info() {
       'team_meta' => 'left_header',
       'title' => 'left_header',
       'field_team_tagline' => 'left_header',
-      'field_illustrative_image' => 'bottom_header',
       'group_team_top_image' => 'bottom_header',
+      'field_illustrative_image' => 'bottom_header',
       'group_team_role' => 'central',
       'body' => 'central',
       'group_team_tab_role' => 'central',
       'group_team_links' => 'central',
-      'field_team_links' => 'central',
       'cwt_team_president' => 'central',
       'cwt_team_name' => 'central',
       'group_team_tab_project_team' => 'central',
+      'field_team_links' => 'central',
       'group_team_tabs' => 'central',
-      'group_team_members' => 'central',
+      'commissioners_no_longer_in_office' => 'central',
       'group_team_tab_name' => 'central',
+      'group_team_members' => 'central',
       'group_team_comissioners' => 'central',
       'group_team_files' => 'central',
       'cwt_team_project_team' => 'central',

@@ -50,15 +50,6 @@ class DTCoreParentCircular extends Exception {
  */
 function dt_core_theme($existing, $type, $theme, $path) {
   return [
-    'dt_core_status_message' => [
-      'template' => 'status_message',
-      'path' => drupal_get_path('module', 'dt_core') . '/templates',
-      'variables' => [
-        'message_title' => '',
-        'message_body' => '',
-        'message_classes' => '',
-      ],
-    ],
     'site_switcher_tabs' => [
       'file' => 'dt_core.theme.inc',
       'variables' => [
@@ -66,15 +57,6 @@ function dt_core_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function dt_core_preprocess_dt_core_status_message(&$variables) {
-  if (isset($variables['message_classes']) && is_array($variables['message_classes'])) {
-    $variables['message_classes'] = ' ' . implode(' ', $variables['message_classes']);
-  }
 }
 
 /**
@@ -91,11 +73,11 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
       foreach ($types as $machine_name) {
         $type = node_type_get_type($machine_name);
         $current_separator = $types_count > 1 && $i == $types_count - 2 ? ' ' . t('or') : $separator;
-        $links .= l($type->name, 'node/add/' . str_replace('_', '-', $machine_name), array('attributes' => array('target' => '_blank'))) . $current_separator . ' ';
+        $links .= l($type->name, 'node/add/' . str_replace('_', '-', $machine_name), ['attributes' => ['target' => '_blank']]) . $current_separator . ' ';
         $i++;
       }
       $links = rtrim($links, $separator . ' ');
-      $description = '<p>' . t('In case the content you try to refer to does not exist yet you can create it by going to !links.', array('!links' => $links)) . '</p>';
+      $description = '<p>' . t('In case the content you try to refer to does not exist yet you can create it by going to !links.', ['!links' => $links]) . '</p>';
       if (isset($element['target_id'])) {
         $element['target_id']['#description'] = $description . $element['target_id']['#description'];
       }
@@ -110,13 +92,13 @@ function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
  * Implements hook_block_info().
  */
 function dt_core_block_info() {
-  $blocks['dt_header_site_tab_switcher'] = array(
+  $blocks['dt_header_site_tab_switcher'] = [
     'info' => t('Header site tab switcher'),
-  );
+  ];
 
-  $blocks['dt_footer_site_tab_switcher'] = array(
+  $blocks['dt_footer_site_tab_switcher'] = [
     'info' => t('Footer site tab switcher'),
-  );
+  ];
 
   return $blocks;
 }
@@ -125,7 +107,7 @@ function dt_core_block_info() {
  * Implements hook_block_view().
  */
 function dt_core_block_view($delta = '') {
-  $block = array();
+  $block = [];
   switch ($delta) {
     case 'dt_header_site_tab_switcher':
     case 'dt_footer_site_tab_switcher':
@@ -145,18 +127,18 @@ function dt_core_block_view($delta = '') {
  *   Result to be rendered.
  */
 function _dt_core_get_blocks_content($delta) {
-  $result = array();
+  $result = [];
   switch ($delta) {
     case 'dt_header_site_tab_switcher':
-      $result = array(
-        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--header')),
-      );
+      $result = [
+        '#markup' => theme('site_switcher_tabs', ['modifier' => 'site-switcher--header']),
+      ];
       break;
 
     case 'dt_footer_site_tab_switcher':
-      $result = array(
-        '#markup' => theme('site_switcher_tabs', array('modifier' => 'site-switcher--footer')),
-      );
+      $result = [
+        '#markup' => theme('site_switcher_tabs', ['modifier' => 'site-switcher--footer']),
+      ];
       break;
   }
   return $result;
@@ -167,7 +149,7 @@ function _dt_core_get_blocks_content($delta) {
  */
 function _dt_apply_wysiwyg_buttons() {
   // Enable a set of CKEditor buttons for DT project on the "Full HTML" profile.
-  $default = array(
+  $default = [
     'Anchor',
     'Bold',
     'Italic',
@@ -190,17 +172,17 @@ function _dt_apply_wysiwyg_buttons() {
     'PasteFromWord',
     'Undo',
     'ShowBlocks',
-  );
+  ];
   multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'default', $default);
 
-  $lite = array(
+  $lite = [
     'lite_AcceptAll',
     'lite_RejectOne',
     'lite_RejectAll',
     'lite_ToggleShow',
     'lite_AcceptOne',
     'lite_ToggleTracking',
-  );
+  ];
   multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'lite', $lite);
 }
 
@@ -275,14 +257,14 @@ function _dt_core_path_update_relatives($path) {
  */
 function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children', $no_alias_only = FALSE, $original_nid = NULL) {
   if (!isset($field_name) || !field_info_field($field_name)) {
-    return array();
+    return [];
   }
   $original_nid = !$original_nid ? $nid : $original_nid;
-  $affected_nodes = array();
+  $affected_nodes = [];
 
   if ($direction == 'parents') {
     $result = db_select('field_data_' . $field_name, 'p')
-      ->fields('p', array($field_name . '_target_id'))
+      ->fields('p', [$field_name . '_target_id'])
       ->condition('entity_id', $nid, '=')
       ->condition('delta', '0', '=')
       ->execute()
@@ -292,15 +274,15 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
     // Check if parent has already an alias.
     if ($nids) {
       if ($no_alias_only && drupal_get_path_alias('node/' . $nids[0]) != ('node/' . $nids[0])) {
-        return array();
+        return [];
       }
 
       // Item is among its own parents.
       if (in_array($original_nid, $nids)) {
         throw new DTCoreParentCircular(
-          t('Node !nid is among its own parents', array(
+          t('Node !nid is among its own parents', [
             '!nid' => $original_nid,
-          ))
+          ])
         );
       }
     }
@@ -317,9 +299,9 @@ function _dt_core_node_get_relatives($nid, $field_name, $direction = 'children',
     // Item is among its own children.
     if ($nids && in_array($original_nid, $nids)) {
       throw new DTCoreParentCircular(
-        t('Node !nid is among its own children', array(
+        t('Node !nid is among its own children', [
           '!nid' => $original_nid,
-        ))
+        ])
       );
     }
   }
@@ -361,7 +343,7 @@ function dt_core_exit() {
   }
 
   $nids_to_update = $GLOBALS['dt_core_nodes_to_update_alias'];
-  $GLOBALS['dt_core_nodes_to_update_alias'] = array();
+  $GLOBALS['dt_core_nodes_to_update_alias'] = [];
   foreach ($nids_to_update as $relatives) {
     // Paths update using the update method of the pathauto module.
     // Doing it one by one instead of using
@@ -451,7 +433,7 @@ function dt_core_node_validate($node, $form, &$form_state) {
  *   There is a circular reference between the two nodes.
  */
 function _dt_core_detect_circular_reference($nid, $parent_nid) {
-  $relatives = array();
+  $relatives = [];
   try {
     foreach ($GLOBALS['dt_core_parent_fields'] as $field_name) {
       // Look for relatives of the future parent.
@@ -459,7 +441,6 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
     }
   }
   catch (DTCoreParentCircular $e) {
-
     return TRUE;
   }
   // Check if our node is among its future relatives.
@@ -481,7 +462,7 @@ function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
   // Check the vocabulary if exist.
   if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name)) {
     // Creating term.
-    $term = array();
+    $term = [];
     $term['vocabulary_machine_name'] = $vocabulary_machine_name;
     $term['vid'] = $vocabulary->vid;
     $term['name'] = $term_name;
@@ -499,7 +480,7 @@ function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
  *   Field to enable entity translation on.
  */
 function _dt_core_enable_entity_translation($field_name, &$sandbox) {
-  $context = array('sandbox' => &$sandbox);
+  $context = ['sandbox' => &$sandbox];
   module_load_include('inc', 'entity_translation', 'entity_translation.admin');
   entity_translation_translatable_switch(TRUE, $field_name);
   entity_translation_translatable_batch(TRUE, $field_name, TRUE, $context);
@@ -524,9 +505,9 @@ function dt_core_form_locale_languages_overview_form_alter(&$form, &$form_state)
  * @param array $languages
  *   Language codes of languages to be enabled.
  */
-function _dt_core_enable_languages($languages = array()) {
+function _dt_core_enable_languages($languages = []) {
   module_load_include('inc', 'locale', 'locale.admin');
-  $form_state = array();
+  $form_state = [];
   foreach ($languages as $key => $langcode) {
     // Enable language.
     multisite_config_service('locale')->addLanguage($langcode);
@@ -540,19 +521,19 @@ function _dt_core_enable_languages($languages = array()) {
     // "pt-pt" as default prefix). We need to change this to "pt".
     if ($langcode == 'pt-pt') {
       db_update('languages')
-        ->fields(array(
+        ->fields([
           'name' => 'Portuguese',
           'prefix' => 'pt',
-        ))
+        ])
         ->condition('language', $langcode)
         ->execute();
     }
     // English does not have a default prefix but we rely on it, so we add it.
     if ($langcode == 'en') {
       db_update('languages')
-        ->fields(array(
+        ->fields([
           'prefix' => 'en',
-        ))
+        ])
         ->condition('language', $langcode)
         ->execute();
     }
@@ -623,7 +604,7 @@ function dt_core_element_info_alter(&$cache) {
  *   List of languages.
  */
 function _dt_core_ec_official_languages() {
-  return array(
+  return [
     'bg',
     'cs',
     'da',
@@ -648,7 +629,7 @@ function _dt_core_ec_official_languages() {
     'sl',
     'fi',
     'sv',
-  );
+  ];
 }
 
 /**
@@ -658,7 +639,7 @@ function _dt_core_ec_official_languages() {
  *   List of languages that need to be lower case.
  */
 function _dt_core_lower_case_languages() {
-  return array(
+  return [
     'bg',
     'cs',
     'da',
@@ -678,7 +659,7 @@ function _dt_core_lower_case_languages() {
     'sl',
     'fi',
     'sv',
-  );
+  ];
 }
 
 /**
@@ -706,19 +687,19 @@ function _dt_core_transform_language_to_lower_case(array $language_codes) {
     // other cases notifiy about the error, and make the function return FALSE.
     if ($query) {
       // Create our log message.
-      $watchdog_content = array(
+      $watchdog_content = [
         'message' => 'Language %langcode updated to lower case.',
         'type' => WATCHDOG_INFO,
-        'replacement' => array('%langcode' => $langcode),
-      );
+        'replacement' => ['%langcode' => $langcode],
+      ];
     }
     else {
       // Create our log message.
-      $watchdog_content = array(
+      $watchdog_content = [
         'message' => 'Could not update language %langcode to lower case. This might come due to the fact the language is not yet available or it already is updated.',
         'type' => WATCHDOG_WARNING,
-        'replacement' => array('%langcode' => $langcode),
-      );
+        'replacement' => ['%langcode' => $langcode],
+      ];
       // We had one error, but we can finish other querys. Set our return
       // parameter to false, so that we can continue the query and return false
       // afterwards.
@@ -769,12 +750,12 @@ function dt_core_views_query_alter(&$view, &$query) {
 
     // Create new join object.
     $join = new views_join();
-    $join->definition = array(
+    $join->definition = [
       'table formula' => $sub_query,
       'left_field' => 'nid',
       'field' => 'translated_id',
       'left_table' => 'node',
-    );
+    ];
     $join->left_table = 'node';
     $join->field = 'translated_id';
     $join->left_field = 'nid';
@@ -785,12 +766,12 @@ function dt_core_views_query_alter(&$view, &$query) {
     $join->extra = 'title_field.expression = (SELECT Min(' . str_replace('title_field.language', 'language', $order_by_case) . ') FROM field_data_title_field WHERE entity_id = title_field.translated_id)';
 
     // Do the actual join.
-    $query->table_queue['title_field'] = array(
+    $query->table_queue['title_field'] = [
       'alias' => 'title_field',
       'table' => $sub_query,
       'relationship' => 'node',
       'join' => $join,
-    );
+    ];
 
     // Replace the title sort fields with our custom.
     foreach ($query->orderby as $key => &$value) {
@@ -832,7 +813,7 @@ function dt_core_views_query_alter(&$view, &$query) {
  */
 function _dt_core_get_plurial_content_types($bundle) {
   // Forming plurals for existing content types.
-  $plurals = array(
+  $plurals = [
     'announcement' => t("announcements"),
     'page' => t("pages"),
     'contact' => t("contacts"),
@@ -851,7 +832,7 @@ function _dt_core_get_plurial_content_types($bundle) {
     'class' => t("classes"),
     'topic' => t("topics"),
     'toplink' => t("top links"),
-  );
+  ];
 
   $singular = node_type_get_name($bundle);
   // If user preference for plural form - use it, otherwise use the label.
@@ -859,13 +840,13 @@ function _dt_core_get_plurial_content_types($bundle) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = drupal_strtolower(t("@bundles", array('@bundle' => $singular)));
+    $plural = drupal_strtolower(t("@bundles", ['@bundle' => $singular]));
   }
 
-  $forms = array(
+  $forms = [
     'singular' => drupal_strtolower($singular),
     'plural' => $plural,
-  );
+  ];
 
   return $forms;
 }
@@ -905,6 +886,20 @@ function dt_core_preprocess_views_view(&$variables) {
 }
 
 /**
+ * Implements hook_metatag_info().
+ */
+function dt_core_metatag_info() {
+  $info['tags']['last-modified'] = [
+    'label' => t('Last modified'),
+    'class' => 'DrupalTextMetaTag',
+    'name' => 'last-modified',
+    'description' => '',
+  ];
+
+  return $info;
+}
+
+/**
  * Implements hook_metatag_metatags_view_alter().
  *
  * Because of SEO recommendations, description meta tag
@@ -934,13 +929,31 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
       // Our token.
       $token = '[dt_tokens:dt_publish_date]';
       // Replaced.
-      $token_replaced = token_replace($token, array('node' => $options['entity']));
+      $token_replaced = token_replace($token, ['node' => $options['entity']]);
       // Make sure that it has been replaced.
       $replaced = !strpos($token_replaced, $token);
       // Only when we have successfully replaced te token, we add it to our meta
       // tag. In other cases we dont do anything with it.
       if ($replaced) {
         $output['date']['#attached']['drupal_add_html_head'][0][0]['#value'] = $token_replaced;
+      }
+    }
+  }
+
+  if (isset($options['entity_type']) && $options['entity_type'] == "node") {
+    // Only non-helper content type nodes should have last-modified meta.
+    if (variable_get('dt_node_settings_helper_node_type_' . $options['entity']->type, 0) === 1) {
+      unset($output['last-modified']);
+    }
+    else {
+      // Get the node object.
+      $node_object = entity_metadata_wrapper('node', $options['entity']);
+
+      // If field_core_date_updated exists update metatag,
+      // else leave the default value.
+      if ($node_object->__isset('field_core_date_updated')) {
+        $date_updated = $node_object->field_core_date_updated->value();
+        $output['last-modified']['#attached']['drupal_add_html_head'][0][0]['#value'] = format_date($date_updated, 'custom', 'd/m/Y');
       }
     }
   }
@@ -957,7 +970,7 @@ function dt_core_metatag_metatags_view_alter(&$output, $instance, $options) {
  */
 function _dt_core_menu_link($link, $lang = FALSE) {
   $lang = $lang ? $lang : LANGUAGE_NONE;
-  if ($link != '<front>' &&  $link != '<nolink>') {
+  if ($link != '<front>' && $link != '<nolink>') {
     $source = drupal_lookup_path('source', $link, $lang);
     if (!$source) {
       $view = drupal_valid_path($link);
@@ -965,7 +978,7 @@ function _dt_core_menu_link($link, $lang = FALSE) {
         return $link;
       }
       else {
-        $link = url($link, array('absolute' => TRUE));
+        $link = url($link, ['absolute' => TRUE]);
       }
     }
     else {
@@ -1007,7 +1020,7 @@ function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang
   $link = _dt_core_menu_link($link, $lang);
   $plid = ($plid > 0) ? $plid : 0;
 
-  $item = array(
+  $item = [
     'menu_name' => $menu,
     'module' => $module,
     'customized' => 1,
@@ -1021,8 +1034,8 @@ function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang
     'hidden' => 0,
     'weight' => $weight,
     'i18n_menu' => 1,
-    'options' => array('title' => $link),
-  );
+    'options' => ['title' => $link],
+  ];
 
   menu_link_save($item);
 
@@ -1043,7 +1056,7 @@ function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang
  */
 function _dt_core_menu_item_name_get($name, $menu) {
   $mlid = db_select('menu_links', 'ml')
-    ->fields('ml', array('mlid'))
+    ->fields('ml', ['mlid'])
     ->condition('link_title', $name)
     ->condition('menu_name', $menu)
     ->execute()
@@ -1055,4 +1068,45 @@ function _dt_core_menu_item_name_get($name, $menu) {
   else {
     return FALSE;
   }
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function dt_core_node_view_alter(&$build) {
+  if (isset($build['#bundle']) && $build['#bundle'] == 'basic_page' && isset($build['body'])) {
+    $build['#pre_render'][] = '_dt_core_replace_headings';
+  }
+}
+
+/**
+ * Pre render to replace the heading with ids.
+ *
+ * @param array $element
+ *   The element we are handeling.
+ *
+ * @return array
+ *   The updated element.
+ */
+function _dt_core_replace_headings($element) {
+  foreach (element_children($element['body']) as $key) {
+    if (isset($element['body'][$key]['#markup'])) {
+      // Replace the #markup.
+      $element['body'][$key]['#markup'] = preg_replace_callback('/<h2>(.*)<\/h2>/', '_dt_core_replace_h2', $element['body'][$key]['#markup']);
+    }
+  }
+  return $element;
+}
+
+/**
+ * Helper function to add missing header ids.
+ *
+ * @param string $matches
+ *   The matches.
+ *
+ * @return string
+ *   The fixed title.
+ */
+function _dt_core_replace_h2($matches) {
+  return '<h2 id="' . drupal_html_id($matches[1]) . '">' . $matches[1] . '</h2>';
 }

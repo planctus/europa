@@ -114,9 +114,9 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(
           'links' => 1,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
@@ -316,9 +316,9 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(
           'links' => 1,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'meta',
@@ -456,9 +456,9 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(
           'links' => 1,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => 1,
           'use_content_language' => TRUE,
           'view_mode' => 'file',
@@ -585,9 +585,9 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'teaser',
@@ -732,6 +732,65 @@ function dt_publication_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-publication-field_eurovoc_taxonomy'.
+  $field_instances['node-publication-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'publication',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 50,
     ),
   );
 
@@ -994,9 +1053,9 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'teaser',
@@ -1292,6 +1351,7 @@ function dt_publication_field_default_field_instances() {
   t('Select one or more content types that are related to this publication and order them.');
   t('Select one or more publications to which the collection belongs.');
   t('Summary or abstract of the publication');
+  t('Taxonomy');
   t('The text displayed (along with title and publication type) when this publication is in a listing');
   t('This is displayed as \'meta\' information in addition to the publication title.');
   t('Title');

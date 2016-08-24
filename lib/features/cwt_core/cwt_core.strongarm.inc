@@ -14,6 +14,13 @@ function cwt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'admin_theme';
+  $strongarm->value = 'seven';
+  $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'chosen_disable_search';
   $strongarm->value = 0;
   $export['chosen_disable_search'] = $strongarm;
@@ -1343,6 +1350,41 @@ function cwt_core_strongarm() {
     'aggregated_item_types' => 0,
   );
   $export['workbench_access_taxonomy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_header_background_activate_listing';
+  $strongarm->value = TRUE;
+  $export['dt_header_background_activate_listing'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_header_background_per_content_type';
+  $strongarm->value = FALSE;
+  $export['dt_header_background_per_content_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'dt_header_background_which_content_type';
+  $strongarm->value = array(
+    0 => 'article',
+    1 => 'activities',
+    2 => 'biography',
+    3 => 'biography_assistant',
+    4 => 'biography_timeline',
+    5 => 'commisioner_blog_post',
+    6 => 'highlight',
+    7 => 'aggregated_news',
+    8 => 'news_importer',
+    9 => 'team',
+    10 => 'team_priority',
+    11 => 'custom_page',
+    12 => 'page',
+  );
+  $export['dt_header_background_which_content_type'] = $strongarm;
 
   return $export;
 }

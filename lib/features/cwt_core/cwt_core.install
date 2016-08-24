@@ -29,12 +29,25 @@ function cwt_core_install() {
     user_role_save($role);
   }
 
+  $theme_list = array(
+    'europa',
+    'commissioner',
+  );
+
+  theme_enable($theme_list);
+
+  variable_set('theme_default', 'commissioner');
   // Adding value to Nexteuropa feedback form settings.
   variable_set('nexteuropa_feedback_form_id', '1040');
   // Enabling the social media sharing module if it's not already.
   if (!module_exists('dt_social_media_sharing')) {
     module_enable(array('dt_social_media_sharing'));
   }
+
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+  // Set the default header background image.
+  _dt_header_background_set_default_header_background();
 
   // Remove the platform Breadcrumb menu.
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
@@ -557,4 +570,38 @@ function cwt_core_update_7141() {
 function cwt_core_update_7142() {
   module_enable(['dt_date_format']);
   module_disable(['commissioner_date']);
+}
+
+/**
+ * Reset of permissions (7143)
+ *
+ * Set default header background (7144)
+ * Removing fields groups from editorial section.
+ */
+function cwt_core_update_7145() {
+  // Resetting permissions.
+  include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
+  cwt_core_reset_default_permissions();
+
+  // Set default header background.
+  $theme_list = array(
+    'europa',
+    'commissioner',
+    'bootstrap',
+  );
+  theme_enable($theme_list);
+  variable_set('theme_default', 'commissioner');
+  // Enable the dt header background custom module.
+  module_enable(array('dt_header_background'));
+  // Set the default header background image.
+  _dt_header_background_set_default_header_background();
+
+  $obsolete_groups = array(
+    'group_team_settings',
+    'group_term',
+  );
+  foreach ($obsolete_groups as $group_name) {
+    $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
+    field_group_group_export_delete($group, FALSE);
+  }
 }

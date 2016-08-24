@@ -713,7 +713,8 @@ function dt_pri_policy_area_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-priority_policy_area-field_core_latest_visibility'.
+  // Exported field_instance:
+  // 'node-priority_policy_area-field_core_latest_visibility'.
   $field_instances['node-priority_policy_area-field_core_latest_visibility'] = array(
     'bundle' => 'priority_policy_area',
     'default_value' => array(
@@ -1001,7 +1002,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
@@ -1010,7 +1013,9 @@ function dt_pri_policy_area_default_field_default_field_instances() {
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 38,
@@ -1035,9 +1040,12 @@ function dt_pri_policy_area_default_field_default_field_instances() {
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 255,
+        'value' => array(
+          'rows' => 5,
+          'size' => 255,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 59,
@@ -1854,6 +1862,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Header Background Image');
   t('Image');
   t('Introduction');
+  t('Latest visibility');
   t('Legacy link');
   t('Link');
   t('Name of the priority policy area');
@@ -1875,6 +1884,7 @@ function dt_pri_policy_area_default_field_default_field_instances() {
   t('Select the related departments.');
   t('Select the related topics.');
   t('Select the timeline of this Priority policy area.');
+  t('Select this checkbox to show the latest block in this page');
   t('Social Network Links');
   t('The content of this field is used for when the Priority policy area is displayed in a list element.');
   t('The main objectives of the Priority policy area. Use bullets and limit to a sentence per bullet.');

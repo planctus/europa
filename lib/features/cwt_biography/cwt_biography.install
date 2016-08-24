@@ -107,3 +107,11 @@ function cwt_biography_update_7109() {
   $context = context_load('biography');
   context_delete($context);
 }
+
+/**
+ * DTTSB-923: Biography role field group delete.
+ */
+function cwt_biography_update_7110() {
+  $group = field_group_load_field_group('group_config', 'taxonomy_term', 'biography_roles', 'form');
+  field_group_group_export_delete($group, FALSE);
+}

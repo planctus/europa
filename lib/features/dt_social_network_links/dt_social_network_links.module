@@ -324,8 +324,7 @@ function dt_social_network_links_field_formatter_view($obj_type, $object, $field
         $term = taxonomy_term_load($item['social_network']);
         $title = $title == $item['url'] ? $term->name : $title;
         $classname = 'icon-social';
-        if ($term) {
-          $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname');
+        if ($term && $class = field_view_field('taxonomy_term', $term, 'field_social_network_classname')) {
           $classname .= ' ' . $class['#items'][0]['safe_value'];
         }
 
@@ -516,7 +515,7 @@ function dt_social_network_links_taxonomy_term_update($term) {
  * Implements hook_image_style_flush().
  */
 function dt_social_network_links_image_style_flush($style) {
-  if ($style['name'] == 'social_network_icon') {
+  if (isset($style['name']) && $style['name'] == 'social_network_icon') {
     _dt_social_network_links_generate_css();
   }
 }
@@ -541,7 +540,7 @@ function dt_social_network_links_migrate_api() {
   return array(
     'api' => 2,
     'groups' => array(
-      'NextEuropa' => array(
+      'NextEuropa Digital Transformation' => array(
         'title' => t('Stage initial content, social networks.'),
       ),
     ),

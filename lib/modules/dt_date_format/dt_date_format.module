@@ -15,7 +15,7 @@ use Drupal\dt_date_format\DtDateRangeFormat;
 function dt_date_format_field_formatter_info() {
   return [
     'date_event_date' => [
-      'label' => t('Event formatter (example: 11 - 14 October 2013)'),
+      'label' => t('Event formatter (example: 10 - 14 October 2013)'),
       'field types' => [
         'datetime',
         'date',
@@ -103,22 +103,21 @@ function dt_date_format_date_formats() {
 /**
  * Implements hook_field_formatter_view().
  */
-function dt_date_format_field_formatter_view($obj_type, $object, $field, $instance, $langcode, $items, $display) {
+function dt_date_format_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   foreach ($items as $item) {
     // Get the timestamp regardless of the date format.
     $date_object = new DtDateRangeFormat($item['value'], $item['value2'], $item['date_type']);
 
     if ($display['settings']['render_box']) {
       // Build the array.
-      $markup = '<span class="date-block__day-text">' . implode(' - ', $date_object->getDays()) . '</span>';
-      $markup .= '<span class="date-block__day">' . implode(' - ', $date_object->getDays('d')) . '</span>';
-      $markup .= '<span class="date-block__month">' . implode(' - ', $date_object->getMonths()) . '</span>';
-
       return [
         [
-          '#markup' => $markup,
-          '#prefix' => '<div class="date-block">',
-          '#suffix' => '</div>',
+          '#theme' => 'dt_date_format_block',
+          '#date_days_name' => implode('-', $date_object->getDays()),
+          '#date_days' => implode('-', $date_object->getDays('d')),
+          '#date_months' => implode('-', $date_object->getMonths()),
+          '#date_years' => implode('-', $date_object->getYears()),
+          '#entity' => $entity,
         ],
       ];
     }
@@ -145,4 +144,26 @@ function dt_date_format_field_formatter_view($obj_type, $object, $field, $instan
   }
 
   return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_date_format_theme($existing, $type, $theme, $path) {
+  return [
+    'dt_date_format_block' => [
+      'template' => 'dt_date_format_block',
+      'path' => drupal_get_path('module', 'dt_date_format') . '/templates',
+      'variables' => [
+        'modifier_classes' => '',
+        'date_days_name' => '',
+        'show_days_name' => TRUE,
+        'date_days' => '',
+        'date_months' => '',
+        'date_years' => '',
+        'show_years' => FALSE,
+        'entity' => '',
+      ],
+    ],
+  ];
 }

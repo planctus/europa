@@ -320,6 +320,7 @@ function dt_announcement_field_group_info() {
       2 => 'group_announcement_related',
       3 => 'group_editorial_settings',
       4 => 'group_media',
+      5 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -342,7 +343,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -389,6 +390,35 @@ function dt_announcement_field_group_info() {
   );
   $field_groups['group_media|node|announcement|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|announcement|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+      1 => 'field_eurovoc_taxonomy_select',
+      2 => 'field_optgroup',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|announcement|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Content');
@@ -400,6 +430,7 @@ function dt_announcement_field_group_info() {
   t('Meta');
   t('Related content');
   t('Right Sidebar');
+  t('Taxonomy');
 
   return $field_groups;
 }

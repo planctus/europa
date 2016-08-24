@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * DT Core module drush integration.

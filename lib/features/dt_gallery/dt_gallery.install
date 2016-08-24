@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Defines the install and update hooks for dt_gallery.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function dt_gallery_enable() {
+  module_load_include('inc', 'dt_gallery', 'dt_gallery.image_styles');
+  _dt_gallery_get_picture_presets();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_gallery_uninstall() {
+  // Delete the picture mappings.
+  module_load_include('inc', 'dt_gallery', 'dt_gallery.image_styles');
+  _dt_gallery_get_picture_presets('delete');
+  // Delete all the image styles we defined.
+  $image_styles = array_keys(dt_gallery_image_default_styles());
+  $image_styles[] = 'gallery_grid_phone';
+  $image_styles[] = 'gallery_grid_2x_phone';
+  foreach ($image_styles as $style) {
+    image_style_delete($style);
+  }
+}

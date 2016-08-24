@@ -67,65 +67,10 @@ function cwt_core_field_group_info() {
   );
   $field_groups['group_custom_metadata|node|custom_page|form'] = $field_group;
 
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_team_settings|taxonomy_term|editorial_sections|form';
-  $field_group->group_name = 'group_team_settings';
-  $field_group->entity_type = 'taxonomy_term';
-  $field_group->bundle = 'editorial_sections';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Team',
-    'weight' => '6',
-    'children' => array(
-      0 => 'field_team_block_description',
-      1 => 'field_team_block_title',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-team-settings field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_team_settings|taxonomy_term|editorial_sections|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_term|taxonomy_term|editorial_sections|form';
-  $field_group->group_name = 'group_term';
-  $field_group->entity_type = 'taxonomy_term';
-  $field_group->bundle = 'editorial_sections';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Term',
-    'weight' => '1',
-    'children' => array(),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_term|taxonomy_term|editorial_sections|form'] = $field_group;
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Content');
   t('Metadata');
-  t('Team');
-  t('Term');
 
   return $field_groups;
 }

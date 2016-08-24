@@ -30,3 +30,10 @@ function dt_event_default_update_7101() {
     field_delete_field('field_event_press_contact');
   }
 }
+
+/**
+ * DTTSB-770: Enable the search feature.
+ */
+function dt_event_default_update_7102() {
+  module_enable(['dt_event_search']);
+}

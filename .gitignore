@@ -28,3 +28,4 @@ lib/features/myproject_core
 lib/modules/example_module
 lib/src/MyGroup
 lib/themes/example_theme
+phantomjsdriver.log

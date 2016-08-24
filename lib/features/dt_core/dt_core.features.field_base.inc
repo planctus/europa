@@ -11,6 +11,36 @@
 function dt_core_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_core_date_opening'.
+  $field_bases['field_core_date_opening'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_date_opening',
+    'indexes' => array(),
+    'locked' => 1,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datestamp',
+  );
+
   // Exported field_base: 'description_field'.
   $field_bases['description_field'] = array(
     'active' => 1,
@@ -189,7 +219,7 @@ function dt_core_field_default_field_bases() {
       'tz_handling' => 'site',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_core_date_updated'.
@@ -219,7 +249,7 @@ function dt_core_field_default_field_bases() {
       'tz_handling' => 'none',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_core_description'.
@@ -591,6 +621,8 @@ function dt_core_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'rows' => 5,
+      'timeline_type' => 'timeline',
+      'timezone' => 0,
     ),
     'translatable' => 1,
     'type' => 'dt_policy_next_step_field',

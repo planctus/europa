@@ -475,7 +475,7 @@ function dt_event_field_default_field_bases() {
             'status' => 0,
           ),
           'views-select-list' => array(
-            'status' => 0,
+            'status' => 1,
           ),
         ),
         'view' => array(
@@ -570,6 +570,8 @@ function dt_event_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'rows' => 5,
+      'timeline_type' => 'timeline',
+      'timezone' => 1,
     ),
     'translatable' => 1,
     'type' => 'dt_policy_next_step_field',

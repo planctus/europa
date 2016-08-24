@@ -101,14 +101,14 @@ class FileContextHelper {
   protected function getTestFiles($type, $size = NULL) {
     if (empty($this->generatedTestFiles)) {
       // Generate binary test files.
-      $lines = array(64, 1024);
+      $lines = [64, 1024];
       $count = 0;
       foreach ($lines as $line) {
         simpletest_generate_file('binary-' . $count++, 64, $line, 'binary');
       }
 
       // Generate text test files.
-      $lines = array(16, 256, 1024, 2048, 20480);
+      $lines = [16, 256, 1024, 2048, 20480];
       $count = 0;
       foreach ($lines as $line) {
         simpletest_generate_file('text-' . $count++, 64, $line, 'text');
@@ -124,7 +124,7 @@ class FileContextHelper {
       $this->generatedTestFiles = TRUE;
     }
 
-    $files = array();
+    $files = [];
     $types_array = [
       'binary',
       'html',
@@ -148,7 +148,7 @@ class FileContextHelper {
         }
       }
     }
-    usort($files, array($this, 'drupalCompareFiles'));
+    usort($files, [$this, 'drupalCompareFiles']);
     return $files;
   }
 
@@ -184,23 +184,23 @@ class FileContextHelper {
    * @return string
    *   Filter markup.
    */
-  protected function generateJsonTokenMarkup($fid, $count = 1, $view_mode = 'preview', array $attributes = array(), array $fields = array()) {
+  protected function generateJsonTokenMarkup($fid, $count = 1, $view_mode = 'preview', array $attributes = [], array $fields = []) {
     $markup = '';
     // Merge default atttributes.
-    $attributes += array(
+    $attributes += [
       'height' => 100,
       'width' => 100,
       'classes' => 'media-element file_' . $view_mode,
-    );
+    ];
 
     // Build the data that is used in a media tag.
-    $data = array(
+    $data = [
       'fid' => $fid,
       'type' => 'media',
       'view_mode' => $view_mode,
       'attributes' => $attributes,
       'fields' => $fields,
-    );
+    ];
 
     // Create the file usage markup.
     for ($i = 1; $i <= $count; $i++) {

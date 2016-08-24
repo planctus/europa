@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * DT Policy input install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_call_for_proposal_default_install() {
+  $t = get_t();
+  drupal_set_message($t('NextEuropa call_for_proposal feature is installed on your site.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_call_for_proposal_default_uninstall() {
+  $t = get_t();
+  drupal_set_message($t('NextEuropa call_for_proposal feature is uninstalled on your site.'));
+}

@@ -24,16 +24,17 @@ function dt_policy_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_policy_banner',
-      1 => 'group_policy_common',
-      2 => 'group_policy_details',
-      3 => 'group_policy_editorial',
-      4 => 'group_policy_implementation',
-      5 => 'group_policy_input',
-      6 => 'group_policy_keyfiles',
-      7 => 'group_policy_next_steps',
-      8 => 'group_policy_other_relations',
-      9 => 'group_policy_related',
+      0 => 'group_taxonomy',
+      1 => 'group_policy_banner',
+      2 => 'group_policy_common',
+      3 => 'group_policy_details',
+      4 => 'group_policy_editorial',
+      5 => 'group_policy_implementation',
+      6 => 'group_policy_input',
+      7 => 'group_policy_keyfiles',
+      8 => 'group_policy_next_steps',
+      9 => 'group_policy_other_relations',
+      10 => 'group_policy_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -177,7 +178,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_policy_detail_body',
       1 => 'field_policy_detail_file',
@@ -319,7 +320,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Key files',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_policy_keyfiles',
     ),
@@ -371,7 +372,7 @@ function dt_policy_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Next steps',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_policy_next_steps',
     ),
@@ -607,6 +608,33 @@ function dt_policy_field_group_info() {
   );
   $field_groups['group_policy_tabs|node|policy|full'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|policy|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'policy';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|policy|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Actions');
@@ -628,6 +656,7 @@ function dt_policy_field_group_info() {
   t('Policy input');
   t('Relations with other content types');
   t('Social Media');
+  t('Taxonomy');
 
   return $field_groups;
 }

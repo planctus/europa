@@ -2,6 +2,9 @@
 
 namespace Drupal\nexteuropa\Context;
 
+use Behat\Gherkin\Node\TableNode;
+use Behat\Mink\Exception\ExpectationException;
+
 /**
  * Contains editorial workflow specific step definitions.
  */
@@ -55,10 +58,10 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     }
     list($gid) = entity_extract_ids($group_type, $group);
 
-    $membership = og_group($group_type, $gid, array(
+    $membership = og_group($group_type, $gid, [
       "entity type" => 'user',
       "entity" => $user,
-    ));
+    ]);
 
     if (!$membership) {
       throw new \Exception("The Organic Group membership could not be created.");
@@ -115,7 +118,7 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     $group = $this->getCurrentGroupFromUrl();
 
     // Create the group content.
-    $properties = array('og_group_ref' => $group->nid);
+    $properties = ['og_group_ref' => $group->nid];
     // Creating the node will automatically redirect the browser to view it.
     $this->createNode($content_entity_type, $properties);
   }
@@ -131,13 +134,13 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
    *
    * @override
    */
-  public function createNode($type, $properties = array()) {
+  public function createNode($type, $properties = []) {
 
-    $node = (object) array(
+    $node = (object) [
       'title' => Random::name(25),
       'type' => $type,
       'uid' => 1,
-    );
+    ];
 
     if ($properties) {
       foreach ($properties as $key => $value) {
@@ -178,6 +181,126 @@ class EditorialWorkflowContext extends DigitalTransformationContext {
     }
     $group = $this->getCurrentGroupFromUrl();
     $this->addMembertoGroup($role_name, $group, 'node', $user);
+  }
+
+  /**
+   * Creates content from table with revision.
+   *
+   * @param string $content_type
+   *   Content type.
+   * @param \Behat\Gherkin\Node\TableNode $table
+   *   Table with data.
+   *
+   * @Given :content_type content with revisions:
+   */
+  public function contentWithRevisions($content_type, TableNode $table) {
+    foreach ($table->getHash() as $row) {
+      $node = (object) $row;
+      $node->type = $content_type;
+
+      // Use author information if available.
+      if (isset($node->author)) {
+        $user = user_load_by_name($node->author);
+        $node->uid = $user->uid;
+        // Create the node with uid information.
+        $new_node = $this->nodeCreate($node);
+        // Manually update the table, the driver doesn't do it.
+        db_update('node_revision')
+          ->fields(['uid' => $user->uid])
+          ->condition('nid', $new_node->nid)
+          ->execute();
+      }
+
+    }
+  }
+
+  /**
+   * Save a history record for a moderated node.
+   *
+   * @param string $node
+   *   The node being acted upon.
+   * @param string $new_state
+   *   The new moderation state.
+   * @param string $old_state
+   *   The former moderation state.
+   *
+   * @return object
+   *   The new history record as saved.
+   */
+  public function updateRevisionHistory($node, $new_state, $old_state) {
+    $vid_count = db_select('node_revision', 'r')
+      ->condition('r.nid', $node->nid)
+      ->condition('r.vid', $node->vid, '>')
+      ->countQuery()->execute()->fetchField();
+
+    $current = ($vid_count == 0);
+
+    // Build a history record.
+    $new_revision = (object) [
+      'from_state' => $old_state,
+      'state' => $new_state,
+      'nid' => $node->nid,
+      'vid' => $node->vid,
+      'uid' => $this->user->uid,
+      'is_current' => $current,
+      'published' => ($new_state == workbench_moderation_state_published()),
+      'stamp' => $_SERVER['REQUEST_TIME'],
+    ];
+
+    // If this is the new 'current' moderation record, it should be the only one
+    // flagged 'current' in {workbench_moderation_node_history}.
+    if ($new_revision->is_current) {
+      db_update('workbench_moderation_node_history')
+        ->condition('nid', $node->nid)
+        ->fields(['is_current' => 0])
+        ->execute();
+    }
+
+    // If this revision is to be published, the new moderation record should be
+    // the only one flagged 'published' in both
+    // {workbench_moderation_node_history} AND {node_revision}.
+    if ($new_revision->published) {
+      db_update('workbench_moderation_node_history')
+        ->condition('nid', $node->nid)
+        ->condition('vid', $node->vid, '!=')
+        ->fields(['published' => 0])
+        ->execute();
+      db_update('node_revision')
+        ->condition('nid', $node->nid)
+        ->condition('vid', $node->vid, '!=')
+        ->fields(['status' => 0])
+        ->execute();
+    }
+
+    // Save the node history record.
+    drupal_write_record('workbench_moderation_node_history', $new_revision);
+
+    return $new_revision;
+  }
+
+  /**
+   * Checks if the Group content access corresponds with the requirement.
+   *
+   * @Then the current nodes Group content access should be :value
+   */
+  public function theCurrentNodesGroupContentAccessShouldBe($value) {
+    // Get the node.
+    $node = $this->currentNode()->getNode();
+
+    // Get the allowed values.
+    $og_content_access = og_access_og_fields_info();
+    $allowed_values = $og_content_access['group_content_access']['field']['settings']['allowed_values'];
+
+    $key = array_search($value, $allowed_values);
+
+    if (FALSE !== $key) {
+      if ((string) $node->group_content_access[LANGUAGE_NONE][0]['value'] !== (string) $key) {
+        throw new ExpectationException($value . ' is not the configured value for Group content access', $this->getSession());
+      }
+    }
+    else {
+      throw new ExpectationException($value . ' is not a valid group content access value', $this->getSession());
+    }
   }
 
 }

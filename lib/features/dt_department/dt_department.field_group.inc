@@ -24,11 +24,12 @@ function dt_department_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_department_contact',
-      1 => 'group_editorial_settings',
-      2 => 'group_person',
-      3 => 'group_priorities',
-      4 => 'group_profile_information',
+      0 => 'group_taxonomy',
+      1 => 'group_department_contact',
+      2 => 'group_editorial_settings',
+      3 => 'group_person',
+      4 => 'group_priorities',
+      5 => 'group_profile_information',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -303,7 +304,7 @@ function dt_department_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -422,6 +423,33 @@ function dt_department_field_group_info() {
   );
   $field_groups['group_profile_information|node|department|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|department|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'department';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|department|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Contact');
@@ -434,6 +462,7 @@ function dt_department_field_group_info() {
   t('Related links');
   t('Responsibilities');
   t('Responsibilities, tasks');
+  t('Taxonomy');
 
   return $field_groups;
 }

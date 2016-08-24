@@ -62,7 +62,32 @@
         <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
     </target>
 
-    <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="">
+    <!-- Addititonal custom cphp test targets -->
+    <target name="test-multisite-requirements" description="Tests the multisite requirements">
+        <drush
+                command="code-review"
+                assume="yes"
+                bin="${drush.bin}"
+                pipe="yes"
+                verbose="${drush.verbose}"
+                root="${platform.build.dir}">
+            <param>${multisite-review.pattern}</param>
+            <option name="exclude-checks">${multisite-review.excludechecks}</option>
+            <option name="multisite-version">${multisite-review.msversion}</option>
+            <option name="php-version">${multisite-review.phpversion}</option>
+            <option name="break-cphp">TRUE</option>
+            <option name="include">${multisite-review.path}</option>
+            <option name="check-directory">${multisite-review.directory}</option>
+        </drush>
+    </target>
+
+    <target
+            name="build-test-env"
+            description="Build a test environment for CPHP"
+            depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-platform-dev-dependencies, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
+    />
+
+    <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="add-dt-dev">
         <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
         </drush>
         <echo msg="Database dropped."/>
@@ -246,6 +271,12 @@
         </if>
     </target>
 
+    <!-- Symlink dt_dev module. -->
+    <target name="add-dt-dev">
+        <symlink target="${project.basedir}/resources/dt_dev"
+                 link="${platform.build.subsite.modules.dir}/dt_dev"/>
+    </target>
+
     <!-- Download development modules. -->
     <target name="download-development-modules-acceptance" depends="generate-development-makefile">
         <echo msg="Download development modules."/>
@@ -262,12 +293,6 @@
                 passthru="true"
                 checkreturn="true"
         />
-    </target>
-
-    <target name="delete-platform-vendor">
-        <phingcall target="delete-folder">
-            <property name="folder.to.delete" value="${platform.build.dir}/vendor" />
-        </phingcall>
     </target>
 
     <target
@@ -296,11 +321,54 @@
         <exec command='php src/Phing/generateSettings.php "${drupal.db.url}" "${platform.build.dir}"' escape="false"/>
     </target>
 
+    <!-- Symlink the test content. -->
+    <target name="link-test-content">
+        <symlink target="${project.basedir}/resources/test_content/dt_test_content" link="${platform.build.subsite.modules.dir}/dt_test_content" />
+    </target>
+
+    <!-- Set private files -->
+    <target name="set-private-files">
+        <mkdir dir="${platform.build.files.dir}/private_files" />
+        <chmod mode="0755" failonerror="false" verbose="false" quiet="true">
+            <fileset dir="${platform.build.files.dir}/private_files" />
+        </chmod>
+        <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path '${platform.build.files.dir}/private_files'"/>
+    </target>
+
+    <property name="snapshot" value="${phing.project.tmp.dir}/snapshot.sql"/>
+    <target name="snapshot" description="Creates a snapshot of the local database">
+        <delete file="${snapshot}" failonerror="false"/>
+        <!-- Make snapshot -->
+        <exec command="${drush.bin} --root=${platform.build.dir} sql-dump --result-file=${snapshot}"/>
+        <echo msg="Snapshot of local database created"/>
+    </target>
+
+    <target name="restore-snapshot" description="Restores a snapshot of the local database">
+        <if>
+            <available file="${snapshot}" type="file"/>
+            <then>
+                <!-- Make snapshot -->
+                <exec command="cat ${snapshot} | ${drush.bin} --root=${platform.build.dir} -y sqlc"/>
+                <echo msg="Local database restored from snapshot"/>
+            </then>
+            <else>
+                <echo msg="There is no available snapshot to restore." />
+            </else>
+        </if>
+    </target>
+
     <!-- Chaining target to rebuild dev environment -->
     <target
             name="rebuild-dev-db"
             description="Rebuild dev environment with database"
             depends="build-dev, generate-settings, restore-ac-db"
+    />
+
+    <!-- Custom target to build the test environment -->
+    <target
+            name="build-test-env"
+            description="Build a test environment for CPHP"
+            depends="install-build-dependencies, make-dev, link-dev-resources, install-platform-dev-dependencies"
     />
 
 </project>

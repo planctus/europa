@@ -14,7 +14,7 @@ function dt_publication_migrate_api() {
   return array(
     'api' => 2,
     'groups' => array(
-      'NextEuropa' => array(
+      'NextEuropa Digital Transformation' => array(
         'title' => t('Stage initial content, publication types.'),
       ),
     ),
@@ -50,9 +50,11 @@ function dt_publication_field_group_pre_render(&$element, $group, & $form) {
     }
 
     // Set the label to the correct element.
-    $element['#group']->label = isset($ds_field_settings[$valid_element]['formatter_settings']['ft']['lb']) ?
-      $ds_field_settings[$valid_element]['formatter_settings']['ft']['lb'] :
-      $element[$valid_element]['#title'];
+    if (isset($valid_element)) {
+      $element['#group']->label = isset($ds_field_settings[$valid_element]['formatter_settings']['ft']['lb']) ?
+        $ds_field_settings[$valid_element]['formatter_settings']['ft']['lb'] :
+        $element[$valid_element]['#title'];
+    }
   }
 }
 
