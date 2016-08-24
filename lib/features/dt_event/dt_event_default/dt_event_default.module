@@ -1,7 +1,17 @@
 <?php
+
 /**
  * @file
  * Default feature.
  */
 
 include_once 'dt_event_default.features.inc';
+
+/**
+ * Implements hook_post_features_enable_feature().
+ *
+ * We only enable dt_event_search after this feature is correctly installed.
+ */
+function dt_event_default_post_features_enable_feature($component) {
+  module_enable(['dt_event_search']);
+}

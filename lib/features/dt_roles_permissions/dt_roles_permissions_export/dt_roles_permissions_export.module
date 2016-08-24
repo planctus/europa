@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Dt_roles_permissions export functionality.
@@ -87,9 +88,6 @@ function _dt_roles_permissions_get_export_data($role) {
   // Iterate for each selected role.
   $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
   $perms = user_role_permissions(array($role->rid => $role->name));
-  if ($role->name == 'editor') {
-    echo print_r($perms);
-  }
   // Loop the items.
   foreach ($perms[$role->rid] as $perm => $val) {
     $export_data .= "  '" . $perm . "',\n";

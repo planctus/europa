@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_topic.field_group.inc
@@ -23,12 +24,13 @@ function dt_topic_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_editorial_settings',
-      1 => 'group_topic_contact',
-      2 => 'group_topic_content',
-      3 => 'group_topic_details',
-      4 => 'group_topic_related',
-      5 => 'group_topic_task',
+      0 => 'group_taxonomy',
+      1 => 'group_editorial_settings',
+      2 => 'group_topic_contact',
+      3 => 'group_topic_content',
+      4 => 'group_topic_details',
+      5 => 'group_topic_related',
+      6 => 'group_topic_task',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -104,6 +106,33 @@ function dt_topic_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|topic|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'topic';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|topic|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_topic_contact|node|topic|form';
   $field_group->group_name = 'group_topic_contact';
   $field_group->entity_type = 'node';
@@ -112,7 +141,7 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_core_social_network_links',
     ),
@@ -263,13 +292,12 @@ function dt_topic_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Further information',
-    'weight' => '13',
+    'weight' => '12',
     'children' => array(
       0 => 'field_topic_commission_actions',
       1 => 'field_topic_objectives',
       2 => 'field_topic_targets',
-      3 => 'field_core_link',
-      4 => 'field_core_links',
+      3 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -530,6 +558,7 @@ function dt_topic_field_group_info() {
   t('Social Bookmark Webtools section group wrapper');
   t('Task');
   t('Tasks');
+  t('Taxonomy');
   t('Topic specific tasks');
   t('What the Commission is doing');
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_event_default.field_group.inc
@@ -270,14 +271,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'From the audience',
-    'weight' => '10',
+    'label' => 'What others are saying',
+    'weight' => '9',
     'children' => array(
       0 => 'dt_event_scribble_embed',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'From the audience',
+      'label' => 'What others are saying',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -613,12 +614,12 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_collection';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'weight' => '18',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -641,12 +642,12 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
-    'weight' => '42',
+    'label' => 'Agenda',
+    'weight' => '49',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -669,14 +670,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'weight' => '14',
     'children' => array(
       0 => 'field_event_schedule',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Schedule',
+      'label' => 'Agenda',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -787,14 +788,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_past';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'What happened',
+    'label' => 'Summary',
     'weight' => '8',
     'children' => array(
       0 => 'field_event_what_happened',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'What happened',
+      'label' => 'Summary',
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
@@ -817,14 +818,14 @@ function dt_event_default_field_group_info() {
   $field_group->mode = 'event_collection';
   $field_group->parent_name = 'group_events';
   $field_group->data = array(
-    'label' => 'Ongoing and future',
+    'label' => 'Upcoming events',
     'weight' => '86',
     'children' => array(
       0 => 'current_and_upcoming_events',
     ),
     'format_type' => 'bootstrap_fieldgroup_nav_item',
     'format_settings' => array(
-      'label' => 'Ongoing and future',
+      'label' => 'Upcoming events',
       'instance_settings' => array(
         'classes' => '',
       ),
@@ -885,6 +886,36 @@ function dt_event_default_field_group_info() {
     ),
   );
   $field_groups['group_events|node|event|event_collection'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_image_video|node|event|event_past';
+  $field_group->group_name = 'group_image_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'event';
+  $field_group->mode = 'event_past';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Images and videos',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_gallery',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Images and videos',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="images-video"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_image_video|node|event|event_past'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1127,20 +1158,21 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '79',
+    'weight' => '33',
     'children' => array(
       0 => 'field_core_departments',
       1 => 'field_event_available_languages',
-      2 => 'field_event_date',
-      3 => 'field_event_entrance_fee',
-      4 => 'field_event_number_seats',
-      5 => 'field_event_parent_events',
-      6 => 'field_event_target_audience',
-      7 => 'field_event_website',
+      2 => 'field_event_entrance_fee',
+      3 => 'field_event_number_seats',
+      4 => 'field_event_parent_events',
+      5 => 'field_event_target_audience',
+      6 => 'field_event_website',
+      7 => 'event_type_of_event',
       8 => 'hr_2',
-      9 => 'book_your_seat_bottom',
-      10 => 'livestreaming_bottom',
-      11 => 'dt_event_address_oneline',
+      9 => 'attend',
+      10 => 'dt_event_address_oneline',
+      11 => 'dt_event_status_message_2',
+      12 => 'dt_event_date_and_time',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1232,7 +1264,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = 'group_row';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '80',
+    'weight' => '34',
     'children' => array(
       0 => 'field_event_location_image',
     ),
@@ -1696,6 +1728,7 @@ function dt_event_default_field_group_info() {
   // Included for use with string extractors like potx.
   t('About');
   t('After the event');
+  t('Agenda');
   t('Contact');
   t('Content');
   t('Context nav');
@@ -1703,12 +1736,11 @@ function dt_event_default_field_group_info() {
   t('Documents');
   t('Editorial settings');
   t('Events');
-  t('From the audience');
+  t('Images and videos');
   t('Latest section');
   t('Left');
   t('Live feed');
   t('Meta');
-  t('Ongoing and future');
   t('Past events');
   t('Practical info left');
   t('Practical info right');
@@ -1717,10 +1749,11 @@ function dt_event_default_field_group_info() {
   t('Related links');
   t('Right');
   t('Row');
-  t('Schedule');
   t('Section');
   t('Speakers');
-  t('What happened');
+  t('Summary');
+  t('Upcoming events');
+  t('What others are saying');
   t('row');
   t('video');
 

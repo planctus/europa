@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @file
  * Contains permissions export for role editor.
  */
 
 $permissions['editor'] = array(
+  'dt editorial mark linguistic review',
+  'dt editorial mark content review',
   'access administration menu',
   'access administration pages',
   'access broken links report',

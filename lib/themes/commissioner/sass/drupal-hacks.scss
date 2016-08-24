@@ -22,32 +22,92 @@
   }
 }
 
-.print-content {
-  .filters__result-count,
-  .filters__active-facets {
-    display: none;
+// .listing--agenda modifier.
+.listing--agenda {
+  // override on the address module css rules.
+  div.addressfield-container-inline:after {
+    display: inline;
+    height: auto;
+    clear: none;
+    visibility: visible;
   }
 
-  .date-block {
-    width: auto;
-    margin: 0;
-    padding: 0;
-    background: none;
-    text-align: left;
-    border-bottom: none;
+  .meta__item .locality-block:after {
+    content: ",\00a0";
+    white-space: pre;
+  }
+}
 
-    .date-block__day-text,
-    .date-block__day,
-    .date-block__month {
-      display: inline;
-      font-size: 0.800em;
-      font-weight: bold;
-      line-height: 1;
+.print-content {
+  .view-agenda {
+    .filters__result-count,
+    .filters__active-facets {
+      display: none;
+    }
+
+    .view-content {
+      padding-top: 1em;
+    }
+
+    .views-row {
+      margin: 0;
+      padding: 0;
+      line-height: normal;
+    }
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      line-height: normal;
+      border-top: 1px solid #bebebe;
+    }
+
+    .date-block {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      background: none;
+      text-align: left;
+      border-bottom: none;
+
+      .date-block__day-text,
+      .date-block__day,
+      .date-block__month {
+        display: inline;
+        font-size: 0.800em;
+        font-weight: bold;
+        line-height: normal;
+      }
+    }
+
+    .listing__author__pdf,
+    .listing__title__pdf {
+      font-size: 0.950em;
     }
   }
+}
 
-  .listing__author__pdf,
-  .listing__title__pdf {
-    font-size: 0.950em;
+@include breakpoint(screen-md-min) {
+  #commissioners > div > h3 {
+    float: left;
+  }
+}
+
+// Hide/show commissioners status.
+.label-term-status {
+  display: none;
+
+  // On leave and Designate.
+  &.term-43,
+  &.term-47 {
+    display: inline-block;
+  }
+}
+
+// Handle In office, No longer in office meta type.
+.meta.term-39,
+.meta.term-45 {
+  .meta__item--type:after {
+    content: '';
   }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_event.ds.inc
@@ -93,6 +94,24 @@ function dt_event_ds_custom_fields_info() {
     'block_render' => '2',
   );
   $export['event_related_events'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'event_type_of_event';
+  $ds_field->label = 'Event: Type of event';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = 'event|*';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '[node:field_event_type]',
+      'format' => 'plain_text',
+    ),
+    'use_token' => 1,
+  );
+  $export['event_type_of_event'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;

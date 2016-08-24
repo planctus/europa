@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Code for the Digital transformation gallery feature.
+ */
+
+include_once 'dt_gallery.features.inc';
+
+/**
+ * @file
+ * Code for the Digital transformation gallery feature.
+ */
+
+/**
+ * Helper files.
+ */
+module_load_include('inc', 'dt_gallery', 'dt_gallery.image_styles');
+module_load_include('inc', 'dt_gallery', 'dt_gallery.helpers');
+module_load_include('inc', 'dt_gallery', 'dt_gallery.formatter');
+
+/**
+ * Implements hook_theme().
+ */
+function dt_gallery_theme($existing, $type, $theme, $path) {
+  return [
+    'mediagallery_item' => [
+      'template' => 'mediagallery__item',
+      'path' => drupal_get_path('module', 'dt_gallery') . '/templates',
+      'variables' => [
+        'size' => '',
+        'image' => '',
+        'type' => '',
+        'caption' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_post_features_revert().
+ *
+ * Makes sure the picture styles are reinitialized.
+ */
+function dt_gallery_post_features_revert($component) {
+  _dt_gallery_get_picture_presets();
+}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Digital Transformation File install.
@@ -64,7 +65,68 @@ function nexteuropa_file_update_7103() {
 
   // Order the fields added by the soft configuration correctly.
   features_revert_module('nexteuropa_file');
+}
 
-  // Change db records from 'und' to default site language.
-  _dt_shared_fix_field_language('field_core_file');
+/**
+ * DTTSB-826: Update field_title from title at file bundle.
+ */
+function nexteuropa_file_update_7104(&$sandbox) {
+  // Initial settings.
+  if (!isset($sandbox['max'])) {
+    // Query all file contents, which has no title_field.
+    // These are the content, which had been created before
+    // the 'title_field' was added to the file content type.
+    $count_query = db_select('node', 'n');
+    $count_query->leftJoin('field_data_title_field', 'f', 'n.nid = f.entity_id');
+    $count_query->condition('type', 'file')
+      ->isNull('f.title_field_value')
+      ->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = variable_get('title_field_replacement_batch_size', 5);
+  $query = db_select('node', 'n');
+  $query->leftJoin('field_data_title_field', 'f', 'n.nid = f.entity_id');
+  $query
+    ->condition('n.type', 'file')
+    ->fields('n', ['nid'])
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit);
+  $nids = $query
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    // Using the function, which copy from the 'title' field
+    // to 'field_title' at 'file' bundle.
+    title_field_replacement_init('node', 'file', 'title', $nids);
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
+
+/**
+ * Deleting field_core_description field instance.
+ *
+ * Migrate file type and origin terms.
+ */
+function nexteuropa_file_update_7105() {
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_description', 'file')) {
+    field_delete_instance($instance);
+  }
+
+  // Revert to create the new taxonomies and fields.
+  features_revert_module('nexteuropa_file');
+
+  // This will run the migration task.
+  _nexteuropa_file_migrate_file_types();
 }

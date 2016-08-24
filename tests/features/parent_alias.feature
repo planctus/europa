@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: Aliases based on parent node's URL alias
   In order to reflect the hierarchy in the URL aliases
   As an editor

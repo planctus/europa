@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * DT wysiwyg overrides ckeditor buttons.
@@ -8,32 +9,55 @@
  * Implements hook_wysiwyg_editor_settings_alter().
  */
 function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
-  if ($context['profile']->editor == 'ckeditor') {
-    global $base_url;
-    $default_buttons = $settings['toolbar'][0];
-    // Remove buttons described on the ticket NEXTEUROPA-7770.
-    $buttons_remove = array(
-      'JustifyBlock',
-      'ShowBlocks',
-      'HorizontalRule',
-      'FontSize',
-      'Font',
-      'Smiley',
-      'break',
-    );
-    $default_buttons = array_diff($default_buttons, $buttons_remove);
 
-    // Re-arrange default buttons and assign.
-    $settings['toolbar'][0] = array_values($default_buttons);
+  global $base_url;
+
+  if ($context['profile']->editor == 'ckeditor') {
     // Apply source formating when viewing html source.
     $settings['apply_source_formatting'] = 1;
-    // Available default values: "address;pre;h2;h3;h4;h5;h6;div".
-    $settings['format_tags'] = "address;h2;h3;h4;h5;h6;div";
+    $settings['cleanup_on_startup'] = TRUE;
+
+    // Remove formats on paste.
+    $settings['forcePasteAsPlainText'] = TRUE;
+
+    // Available default values: "p;h2;h3;h4;h5;h6".
+    $settings['format_tags'] = "Paragraph;h2;h3;h4;h5;h6";
+
+    // Change the default format p.
+    $settings['format_Paragraph']['name'] = 'Paragraph';
+    $settings['format_Paragraph']['element'] = 'p';
+
     // Settings ckeditor to use theme css.
-    $settings['contentsCss'] = array(
+    $settings['contentsCss'] = [
       '0' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass-base.css',
       '1' => $base_url . '/' . drupal_get_path('theme', 'europa') . '/css/style-sass-components.css',
-    );
+    ];
+
     $settings['bodyClass'] = 'padding-wysiwyg-body';
+
+    // Make sure the toolbar is there.
+    if (!empty($settings['toolbar'])) {
+      $new_toolbar = [];
+      // These are our desired groupings.
+      $new_toolbar[] = ['Format'];
+      $new_toolbar[] = ['Bold'];
+      $new_toolbar[] = ['Link', 'NextEuropaToken', 'Unlink', 'Anchor'];
+      $new_toolbar[] = ['BulletedList', 'NumberedList', 'Outdent', 'Indent'];
+      $new_toolbar[] = ['media', 'Blockquote', 'Table'];
+      $new_toolbar[] = ['RemoveFormat'];
+      $new_toolbar[] = ['Undo', 'Maximize'];
+      $new_toolbar[] = [
+        'lite_AcceptAll',
+        'lite_RejectAll',
+        'lite_AcceptOne',
+        'lite_RejectOne',
+        'lite_ToggleShow',
+        'lite_ToggleTracking',
+      ];
+      $new_toolbar[] = ['Source'];
+
+      // Replace the toolbar with our new, grouped toolbar.
+      $settings['toolbar'] = $new_toolbar;
+    }
   }
 }

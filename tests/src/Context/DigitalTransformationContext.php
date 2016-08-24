@@ -22,9 +22,16 @@ class DigitalTransformationContext extends RawDrupalContext {
   private $languageList;
 
   /**
+   * List of files currently on the site.
+   *
+   * @var array
+   */
+  private $startFiles;
+
+  /**
    * The file context helper.
    *
-   *   * @var Drupal\nexteuropa\Helpers\FileContextHelper
+   * @var \Drupal\nexteuropa\Helpers\FileContextHelper
    *   The filecontexthelper.
    */
   private $fileContextHelper;
@@ -73,12 +80,33 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
+   * Changes the language of the page to the requested language.
+   *
+   * @Then I change the language to :language_name
+   */
+  public function iChangeTheLanguageTo($language_name) {
+    $available_languages = language_list('name');
+
+    if (isset($available_languages[$language_name])) {
+      $language_code = $available_languages[$language_name]->prefix;
+    }
+    else {
+      throw new ExpectationException('Requested language ' . $language_name . ' not found or inactive', $this->getSession());
+    }
+
+    // Redirect the user to the new language page.
+    $this->visitPath($this->currentNode()
+        ->getNodePath() . '_' . $language_code);
+  }
+
+  /**
    * Goes to translation form.
    *
    * @When I go to add :target translation
    */
   public function iGoToAddTranslationFrom($target) {
-    $this->getSession()->visit($this->currentNode()->getAddTranslationPath($target));
+    $this->visitPath($this->currentNode()
+      ->getAddTranslationPath($target));
   }
 
   /**
@@ -87,7 +115,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Given I go to the group roles page
    */
   public function iGoToTheGroupRolesPage() {
-    $this->getSession()->visit($this->currentNode()->getGroupRolesPath());
+    $this->visitPath($this->currentNode()->getGroupRolesPath());
   }
 
   /**
@@ -106,7 +134,8 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current page
    */
   public function printCurrentPage() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getCurrentUrl()), $this->getSession());
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()
+      ->getCurrentUrl()), $this->getSession());
   }
 
   /**
@@ -115,16 +144,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then print current html
    */
   public function printCurrentHtml() {
-    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()->getPage()->getHtml()));
-  }
-
-  /**
-   * Goes to the edit page.
-   *
-   * @Then I edit the node
-   */
-  public function iEditTheNode() {
-    $this->getSession()->visit($this->getSession()->getCurrentUrl() . '/edit');
+    throw new ExpectationException(sprintf("The current page is: %s", $this->getSession()
+      ->getPage()
+      ->getHtml()), $this->getSession());
   }
 
   /**
@@ -230,7 +252,9 @@ class DigitalTransformationContext extends RawDrupalContext {
    *   If it does not match.
    */
   public function assertLanguageMetaRegion($value) {
-    $element = $this->getSession()->getPage()->find('css', "head > meta[http-equiv=content-language]");
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', "head > meta[http-equiv=content-language]");
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new ExpectationException(sprintf('The content-language metatag does not contain %s', $value), $this->getSession());
@@ -246,10 +270,30 @@ class DigitalTransformationContext extends RawDrupalContext {
    *   If it does not match.
    */
   public function theMetatagAttributeShouldHaveTheValue($metatag, $value) {
-    $element = $this->getSession()->getPage()->find('css', 'head > meta[name="' . $metatag . '"]');
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
       throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value), $this->getSession());
+    }
+  }
+
+  /**
+   * Assess a metatag does not exist.
+   *
+   * @Then the metatag attribute :metatag should not exist
+   *
+   * @throws ExpectationException
+   *   If it does not match.
+   */
+  public function theMetatagAttributeShouldNotExist($metatag) {
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > meta[name="' . $metatag . '"]');
+
+    if (is_object($element)) {
+      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does exist'));
     }
   }
 
@@ -289,15 +333,18 @@ class DigitalTransformationContext extends RawDrupalContext {
       ->execute();
 
     if (empty($result['node'])) {
-      $params = array(
+      $params = [
         '@title' => $target_title,
         '@type' => $input_id,
-      );
+      ];
       throw new ExpectationException(format_string("Node @title of @type not found.", $params), $this->getSession());
     }
     $target_nid = key($result['node']);
 
-    $this->getSession()->getPage()->find('css', "#$input_id")->setValue("$target_title ($target_nid)");
+    $this->getSession()
+      ->getPage()
+      ->find('css', "#$input_id")
+      ->setValue("$target_title ($target_nid)");
   }
 
   /**
@@ -346,17 +393,6 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
-   * Cleans up files after every scenario.
-   *
-   * @AfterScenario
-   */
-  public function cleanUpFiles($event) {
-    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
-      file_delete($file, TRUE);
-    }
-  }
-
-  /**
    * Test implementation.
    *
    * @Then I should see the following in the repeated :element element within the context of the :parentelement element:
@@ -370,16 +406,197 @@ class DigitalTransformationContext extends RawDrupalContext {
 
     // Check all table elements for their position.
     foreach ($table->getHash() as $n => $repeatedelement) {
+      $child = $children[$n];
       // If it is not in the correct spot, we show an error.
-      if ($children[$n]->find('css', $element)->getText() !== $repeatedelement['text']) {
+      if ($child->getText() !== $repeatedelement['text']) {
         $variables = [
           '@position' => $n,
           '@element' => $element,
           '@text' => $repeatedelement['text'],
-          '@falsetext' => $children[$n]->find('css', $element)->getText(),
+          '@falsetext' => $child->getText(),
         ];
         throw new ExpectationException(format_string("The element @element at position @position does not contain @text but @falsetext", $variables), $this->getSession());
       }
+    }
+  }
+
+  /**
+   * Sets the current node as the frontpage.
+   *
+   * @Given I set the current page as frontpage
+   */
+  public function iSetTheCurrentPageAsFrontpage() {
+    variable_set('site_frontpage', ltrim($this->currentNode()
+      ->getNodePath(), '/'));
+    variable_set('weight_frontpage', 0);
+  }
+
+  /**
+   * Test if a css selector is available.
+   *
+   * @Then /^I should see the css selector "([^"]*)"$/
+   * @Then /^I should see the CSS selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iShouldSeeTheCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty($element)) {
+      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+  }
+
+  /**
+   * Test if a css selector is not available.
+   *
+   * @Then /^I should not see the css selector "([^"]*)"$/
+   * @Then /^I should not see the CSS selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iShouldNotSeeTheCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty(!$element)) {
+      throw new \Exception(sprintf("The page '%s' contains the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+  }
+
+  /**
+   * Click testing of an element which has a css selector.
+   *
+   * @When /^(?:|I )click the element with CSS selector "([^"]*)"$/
+   * @When /^(?:|I )click the element with css selector "([^"]*)"$/
+   *
+   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
+   */
+  public function iClickTheElementWithCssSelector($css_selector) {
+    $element = $this->getSession()->getPage()->find("css", $css_selector);
+    if (empty($element)) {
+      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
+        ->getCurrentUrl(), $css_selector));
+    }
+    $element->click();
+  }
+
+  /**
+   * Sets the last modified date.
+   *
+   * @Then I set the last modified date to :arg1
+   */
+  public function iSetTheLastModifiedDateTo($arg1) {
+    $node = $this->currentNode()->getNode();
+    db_update('node')
+      ->fields(['changed' => strtotime($arg1)])
+      ->condition('nid', $node->nid)
+      ->execute();
+  }
+
+  /**
+   * Indexes all indexes.
+   *
+   * @Given I index all indexes
+   */
+  public function iIndexAllIndexes() {
+    search_api_cron();
+  }
+
+  /**
+   * Switches to an Iframe by ID.
+   *
+   * @When I switch to the frame :frame
+   */
+  public function iSwitchToTheFrame($frame) {
+    $this->getSession()->switchToIFrame($frame);
+  }
+
+  /**
+   * Leave the I frames.
+   *
+   * @When I switch out of all frames
+   */
+  public function iSwitchOutOfAllFrames() {
+    $this->getSession()->switchToIFrame();
+  }
+
+  /**
+   * Check the file behind a link.
+   *
+   * This is currently the only working solution. This can be improved.
+   *
+   * @Then I get the file :filename after clicking :link
+   */
+  public function iGetTheFileAfterClicking($filename, $link) {
+    // Get the link.
+    $link = $this->getSession()->getPage()->findLink($link);
+
+    // Go to the actual url.
+    $matches = [];
+    preg_match('/file\/(\d*)\/download/', $link->getAttribute('href'), $matches);
+
+    if (isset($matches[1]) && $file_entity = entity_load('file', [$matches[1]])) {
+      $file_entity = reset($file_entity);
+
+      if ($file_entity->filename !== $filename) {
+        throw new ExpectationException('File download goes to the file ' . $file_entity->filename . ' instead of ' . $filename . '.', $this->getSession());
+      }
+    }
+    else {
+      throw new ExpectationException('Unable to load the file.', $this->getSession());
+    }
+  }
+
+  /**
+   * Gathers the current file entity's.
+   *
+   * @BeforeScenario
+   */
+  public function getStartFiles() {
+    if (is_array($this->startFiles)) {
+      return $this->startFiles;
+    }
+    $this->startFiles = $this->getFileIds();
+    return $this->startFiles;
+  }
+
+  /**
+   * Cleans up files after every scenario.
+   *
+   * @AfterScenario
+   */
+  public function cleanUpFiles($event) {
+    foreach ($this->fileContextHelper->getGeneratedTestFiles() as $file) {
+      file_delete($file, TRUE);
+    }
+    $diff = array_diff($this->getFileIds(), $this->startFiles);
+
+    foreach ($diff as $fid) {
+      entity_delete('file', $fid);
+    }
+  }
+
+  /**
+   * Helper function to get all the file id's.
+   *
+   * @return array
+   *   File id's.
+   */
+  public function getFileIds() {
+    $query = new \EntityFieldQuery();
+    $query->entityCondition('entity_type', 'file');
+    $result = $query->execute();
+    return array_keys($result['file']);
+  }
+
+  /**
+   * Sets the xdebug cookie.
+   *
+   * @BeforeStep
+   */
+  public function xdebugCookie() {
+    if ('1' === getenv('XDEBUG')) {
+      $this->getSession()->setCookie('XDEBUG_SESSION', 'PHPSTORM');
     }
   }
 

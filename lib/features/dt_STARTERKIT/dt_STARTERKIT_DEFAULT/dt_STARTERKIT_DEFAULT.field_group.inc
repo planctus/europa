@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function dt_STARTERKIT_DEFAULT_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -27,8 +27,9 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       1 => 'field_core_introduction',
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
+      4 => 'field_core_background',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
@@ -38,7 +39,7 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $field_groups['group_STARTERKIT_CONTENT_NAME_content|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -68,7 +69,7 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $field_groups['group_STARTERKIT_CONTENT_NAME_editorial|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -82,19 +83,18 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
   $field_group->data = array(
     'label' => 'Meta',
     'weight' => '0',
-    'children' => array(
-      0 => 'content_type_label',
-    ),
+    'children' => array(),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
-      'label' => 'Meta',
+      'formatter' => '',
       'instance_settings' => array(
         'modifier' => '',
-        'classes' => '',
+        'classes' => 'group-STARTERKIT_CONTENT_NAME-meta field-group-meta_wrapper',
+        'required_fields' => 1,
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser'] = $field_group;
+  $field_groups['group_STARTERKIT_CONTENT_NAME_meta|node|STARTERKIT_CONTENT_NAME|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +120,7 @@ function dt_STARTERKIT_DEFAULT_field_group_info() {
       ),
     ),
   );
-  $export['group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
+  $field_groups['group_STARTERKIT_CONTENT_NAME_tabgroup|node|STARTERKIT_CONTENT_NAME|form'] = $field_group;
 
-  return $export;
+  return $field_groups;
 }

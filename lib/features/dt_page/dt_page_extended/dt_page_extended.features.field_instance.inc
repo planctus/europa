@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_page_extended.features.field_instance.inc
@@ -516,6 +517,106 @@ function dt_page_extended_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_core_files'.
+  $field_instances['node-basic_page-field_core_files'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select one or more files and order them.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 46,
+      ),
+      'event_collection' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 70,
+      ),
+      'event_livestream' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 74,
+      ),
+      'event_past' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => 1,
+          'use_content_language' => 1,
+          'view_mode' => 'file',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 60,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'file',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 18,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_files',
+    'label' => 'Files',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 34,
     ),
   );
 
@@ -1185,13 +1286,16 @@ function dt_page_extended_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Set the next steps.
 This will appear as a timeline on the page.
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 32,
@@ -1200,7 +1304,10 @@ This will appear as a timeline on the page.
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 9,
@@ -1215,7 +1322,10 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 0,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 20,
@@ -1240,12 +1350,15 @@ This will appear as a timeline on the page.
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'rows' => 5,
-        'size' => 1,
+        'value' => array(
+          'rows' => 5,
+          'size' => 1,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -1968,6 +2081,77 @@ This will appear as a timeline on the page.
     ),
   );
 
+  // Exported field_instance: 'node-basic_page-field_eurovoc_taxonomy'.
+  $field_instances['node-basic_page-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'basic_page',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 41,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 36,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-group_content_access'.
   $field_instances['node-basic_page-group_content_access'] = array(
     'bundle' => 'basic_page',
@@ -2196,6 +2380,7 @@ This will appear as a timeline on the page.
   t('Description');
   t('Documents');
   t('Featured item');
+  t('Files');
   t('Free field');
   t('Group content visibility');
   t('Groups audience');
@@ -2219,6 +2404,7 @@ This will appear as a timeline on the page.
   t('Select a featured content item in case you want to highlight a certain page during a limited period in time.');
   t('Select and order the related commissioners.');
   t('Select documents that belong to the content of this page.');
+  t('Select one or more files and order them.');
   t('Select the related departments.');
   t('Select the related policy area(s).');
   t('Select the related priority or priorities.');
@@ -2227,8 +2413,9 @@ This will appear as a timeline on the page.
   t('Select this checkbox to show the latest block in this page');
   t('Set the next steps.
 This will appear as a timeline on the page.
-');
+    ');
   t('Social media profile links');
+  t('Taxonomy');
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('Title');
   t('Type selection');

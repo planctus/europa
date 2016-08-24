@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_biography.field_group.inc
@@ -52,7 +53,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Calendar',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'agenda_block',
     ),
@@ -62,7 +63,7 @@ function cwt_biography_field_group_info() {
       'instance_settings' => array(
         'show_label' => '1',
         'label_element' => 'h2',
-        'attributes' => 'id="agenda"',
+        'attributes' => 'id="calendar"',
         'modifier' => '',
         'layout' => 'col-md-9',
         'classes' => 'group-bio-agenda field-group-section_group',
@@ -114,7 +115,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Blog',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'blog_block',
     ),
@@ -148,7 +149,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = 'group_bio_top_wrapper';
   $field_group->data = array(
     'label' => 'Column',
-    'weight' => '61',
+    'weight' => '6',
     'children' => array(
       0 => 'group_bio_contextual',
       1 => 'group_bio_top_footer',
@@ -178,7 +179,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '21',
+    'weight' => '23',
     'children' => array(
       0 => 'field_biography_address',
       1 => 'field_biography_phone',
@@ -244,7 +245,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'contact',
     ),
@@ -314,7 +315,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = 'group_bio_col';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'departments',
       1 => 'topics',
@@ -404,6 +405,7 @@ function cwt_biography_field_group_info() {
     'weight' => '24',
     'children' => array(
       0 => 'field_biography_message',
+      1 => 'field_biography_custom_term',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -441,8 +443,7 @@ function cwt_biography_field_group_info() {
       7 => 'field_biography_agenda_text',
       8 => 'field_core_collapse_button_text',
       9 => 'language',
-      10 => 'field_biography_team_intro',
-      11 => 'group_bio_message',
+      10 => 'group_bio_message',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -467,7 +468,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Announcements',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'announcements_block',
     ),
@@ -501,7 +502,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Responsibilities',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_biography_mission_letter',
@@ -537,7 +538,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bio Top',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'group_bio_top_wrapper',
     ),
@@ -567,7 +568,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Team',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_biography_team',
       1 => 'field_editorial_section',
@@ -659,7 +660,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Biography',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'timeline_block',
     ),
@@ -693,7 +694,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = 'group_bio_col';
   $field_group->data = array(
     'label' => 'Bio top footer',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_biography_av_portal',
       1 => 'field_social_networks',
@@ -727,7 +728,7 @@ function cwt_biography_field_group_info() {
   $field_group->parent_name = 'group_bio_row';
   $field_group->data = array(
     'label' => 'Bio top wrapper',
-    'weight' => '59',
+    'weight' => '5',
     'children' => array(
       0 => 'field_biography_portrait',
       1 => 'group_bio_col',
@@ -752,29 +753,34 @@ function cwt_biography_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_config|taxonomy_term|biography_roles|form';
-  $field_group->group_name = 'group_config';
-  $field_group->entity_type = 'taxonomy_term';
-  $field_group->bundle = 'biography_roles';
-  $field_group->mode = 'form';
+  $field_group->identifier = 'group_message|node|biography|full';
+  $field_group->group_name = 'group_message';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'biography';
+  $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Role specific configuration',
-    'weight' => '4',
+    'label' => 'Info message',
+    'weight' => '1',
     'children' => array(
-      0 => 'field_declaration_of_interest',
+      0 => 'field_biography_message',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Info message',
       'instance_settings' => array(
+        'id' => '',
+        'classes' => 'alert alert-block messages info messages--icon-center',
         'description' => '',
-        'classes' => 'group-config field-group-tab',
-        'required_fields' => 1,
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
+      'formatter' => 'open',
     ),
   );
-  $field_groups['group_config|taxonomy_term|biography_roles|form'] = $field_group;
+  $field_groups['group_message|node|biography|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -844,7 +850,6 @@ function cwt_biography_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Calendar');
   t('Announcements');
   t('Assistant');
   t('Assistants');
@@ -853,17 +858,18 @@ function cwt_biography_field_group_info() {
   t('Bio top wrapper');
   t('Biography');
   t('Blog');
+  t('Calendar');
   t('Column');
   t('Contact');
   t('Content');
   t('Contextual navigation');
   t('Curriculum Vitae');
   t('Embedded Contact Form');
+  t('Info message');
   t('Message');
   t('Metadata');
   t('Portfolio');
   t('Responsibilities');
-  t('Role specific configuration');
   t('Team');
   t('Technical fields');
   t('Timeline');

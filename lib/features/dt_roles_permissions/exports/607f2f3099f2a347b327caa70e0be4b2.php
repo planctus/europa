@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains permissions export for role translator.

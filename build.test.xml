@@ -32,8 +32,15 @@
             features and modules which need to be enabled after installation.
          -->
          <phingcall target="enable-install-modules" />
+
         <!-- No mather how installed, the dt features need to be reverted after install -->
          <phingcall target="revert-dt-features" />
+
+        <!-- Rebuild node access after Subsites modules activation -->
+        <phingcall target="rebuild-node-access" />
+
+        <!-- Set private files -->
+        <phingcall target="set-private-files" />
     </target>
 
     <!-- Enable required modules after installation of the profile. -->
@@ -110,6 +117,20 @@
             showSniffCodes="${phpcs.sniffcodes}"
             standard="${phpcs.standard}"
         />
+
+        <!-- Set up the git pre-push hook. -->
+        <phingcall target="disable-pre-push"/>
+        <if>
+            <equals arg1="${phpcs.prepush.enable}" arg2="1" />
+            <then>
+                <symlink link="${phpcs.prepush.destination}" target="${phpcs.prepush.source}" overwrite="true" />
+            </then>
+        </if>
+    </target>
+
+    <!-- Disable the PHP CodeSniffer pre-push hook. -->
+    <target name="disable-pre-push" description="Disable the coding standards check when pushing to a git repository.">
+        <delete file="${phpcs.prepush.destination}" failonerror="false" />
     </target>
 
     <!-- Set up Behat. -->
@@ -145,11 +166,40 @@
         />
     </target>
 
+    <!-- Check that the subsite starterkit is up-to-date. -->
+    <target name="check-starterkit">
+        <echo msg="Checking if the subsite starterkit is up-to-date." />
+        <checkstarterkit
+            starterkitRepository="${starterkit.repository}"
+            starterkitBranch="${starterkit.branch}"
+            starterkitRemote="${starterkit.remote}"
+            subsiteRepository="${project.basedir}"
+        />
+    </target>
+
+    <!-- Run a full static analysis. -->
+    <target
+        name="mjolnir"
+        description="The Hammer Of Thor will execute a full static analysis. Run this before sending a delivery to QA. Before starting this, make sure to do a full clean build + installation."
+        depends="check-starterkit, setup-behat, behat"
+    />
+
     <!-- Install a development version of the subsite. -->
     <target
         name="install-dev"
         description="Install a local development version of the subsite."
-        depends="install, enable-development-modules, revert-dt-features"
+        depends="add-dt-dev, install, enable-development-modules, revert-dt-features"
     />
 
+    <!-- Rebuild node access. -->
+    <target name="rebuild-node-access">
+        <drush
+            command="php-eval"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <param>"node_access_rebuild()"</param>
+        </drush>
+    </target>
 </project>

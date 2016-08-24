@@ -1,22 +1,9 @@
 <?php
+
 /**
  * @file
  * dt_social_media_sharing.install
  */
-
-/**
- * Implements hook_enable().
- */
-function dt_social_media_sharing_enable() {
-  drupal_set_message('Digital transformation social media sharing is now active on your site.');
-}
-
-/**
- * Implements hook_disable().
- */
-function dt_social_media_sharing_disable() {
-  drupal_set_message('Digital transformation social media sharing is now disabled on your site.');
-}
 
 /**
  * Implements hook_uninstall().

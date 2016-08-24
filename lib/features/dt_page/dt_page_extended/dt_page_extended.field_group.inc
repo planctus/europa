@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_page_extended.field_group.inc
@@ -26,6 +27,7 @@ function dt_page_extended_field_group_info() {
       0 => 'body',
       1 => 'field_core_publications',
       2 => 'field_core_next_steps',
+      3 => 'field_core_files',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -79,13 +81,15 @@ function dt_page_extended_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_background',
-      1 => 'group_banner',
-      2 => 'group_editorial_settings',
-      3 => 'group_featured_item',
-      4 => 'group_page_architecture',
-      5 => 'group_page_main',
-      6 => 'group_related',
+      0 => 'group_taxonomy',
+      1 => 'group_background',
+      2 => 'group_banner',
+      3 => 'group_documents',
+      4 => 'group_editorial_settings',
+      5 => 'group_featured_item',
+      6 => 'group_page_architecture',
+      7 => 'group_page_main',
+      8 => 'group_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -108,7 +112,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -167,11 +171,11 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Page Architecture',
-    'weight' => '17',
+    'weight' => '18',
     'children' => array(
-      0 => 'field_core_parent',
-      1 => 'field_core_children',
-      2 => 'field_core_parents',
+      0 => 'field_core_children',
+      1 => 'field_core_parents',
+      2 => 'field_core_parent',
       3 => 'field_core_quick_nav_links',
     ),
     'format_type' => 'tab',
@@ -233,6 +237,7 @@ function dt_page_extended_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_core_publications',
+      1 => 'field_core_files',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -456,6 +461,33 @@ function dt_page_extended_field_group_info() {
   );
   $field_groups['group_related|node|basic_page|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_taxonomy|node|basic_page|form';
+  $field_group->group_name = 'group_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '16',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_taxonomy|node|basic_page|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('10 priorities');
@@ -471,6 +503,7 @@ function dt_page_extended_field_group_info() {
   t('Page Architecture');
   t('Related');
   t('Related links');
+  t('Taxonomy');
   t('What\'s next?');
 
   return $field_groups;

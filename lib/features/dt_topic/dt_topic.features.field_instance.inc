@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_topic.features.field_instance.inc
@@ -477,9 +478,9 @@ function dt_topic_field_default_field_instances() {
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => 'sidebar-field-group__main',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
@@ -779,6 +780,71 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-topic-field_eurovoc_taxonomy'.
+  $field_instances['node-topic-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'topic',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 45,
+    ),
+  );
+
   // Exported field_instance: 'node-topic-field_topic_commission_actions'.
   $field_instances['node-topic-field_topic_commission_actions'] = array(
     'bundle' => 'topic',
@@ -1052,9 +1118,9 @@ function dt_topic_field_default_field_instances() {
         'settings' => array(
           'links' => 1,
           'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => 'listing--line-left',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'teaser',
@@ -1374,6 +1440,7 @@ function dt_topic_field_default_field_instances() {
   t('Select the commissioner responsible for this topic.');
   t('Social Network Links');
   t('Targets');
+  t('Taxonomy');
   t('The link(s) at the bottom of the page in the form of "See what other EU institutions are doing on TOPIC"');
   t('Title');
   t('Topic specific tasks');

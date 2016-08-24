@@ -1,8 +1,324 @@
 <?php
+
 /**
  * @file
- * Code for the dt_editorial feature.
+ * Code for the Digital Transformation editorial feature.
  */
+
+include_once 'dt_editorial.features.inc';
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function dt_editorial_views_data_alter(&$data) {
+  $data['node']['revision_current_user'] = array(
+    'title' => t('Current user has a revision: boolean'),
+    'help' => t('All nodes where the currently authenticated user has a revision'),
+    'group' => t('DT Editorial'),
+    'real field' => 'nid',
+    'filter' => array(
+      'handler' => 'dt_editorial_handler_filter_revision_current_user',
+    ),
+  );
+}
+
+// @codingStandardsIgnoreStart
+
+/**
+ * Views filter handler.
+ */
+class dt_editorial_handler_filter_revision_current_user extends views_handler_filter_boolean_operator {
+
+  /**
+   * {@inheritdoc}
+   */
+  function construct() {
+    $this->definition['type'] = 'yes-no';
+    $this->definition['use equal'] = TRUE;
+    $this->definition['no_operator'] = TRUE;
+    parent::construct();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  function query($group_by = FALSE) {
+    $this->ensure_my_table();
+
+    // Custom specifics.
+    global $user;
+    $placeholder = ":node_uid_revision";
+
+    // Modify the query only if run. '1' is 'on' for the filter.
+    if ($this->value) {
+      $args = [$user->uid];
+
+      $this->query->add_where_expression($this->options['group'], "$this->table_alias.uid IN($placeholder) " . "OR
+      ((SELECT COUNT(*) FROM {node_revision} nr WHERE nr.uid IN($placeholder) AND nr.nid = $this->table_alias.nid) > 0)", array($placeholder => $args),
+        $args);
+    }
+
+  }
+
+}
+
+// @codingStandardsIgnoreEnd
+
+/**
+ * Implements hook_menu_alter().
+ */
+function dt_editorial_menu_alter(&$items) {
+  // Based on DTTSB-745 requiring them to be out of the screens.
+  $items['admin/workbench/comment']['access callback'] = FALSE;
+  $items['admin/workbench/comment/new']['access callback'] = FALSE;
+  $items['admin/workbench/comment/approval']['access callback'] = FALSE;
+  $items['admin/workbench/linkchecker']['access callback'] = FALSE;
+  $items['admin/workbench/create']['access callback'] = '_dt_editorial_create_access';
+}
+
+/**
+ * Implements hook_views_plugins().
+ */
+function dt_editorial_views_plugins() {
+  $plugins = [
+    'access' => [
+      'dt_access_control' => [
+        'title' => t('DT Editorial Access Control'),
+        'help' => t('Some other special restriction rules.'),
+        'handler' => 'dt_editorial_access_plugin',
+        'uses options' => TRUE,
+        'path' => drupal_get_path('module', 'dt_editorial'),
+      ],
+    ],
+  ];
+  return $plugins;
+}
+
+/**
+ * Custom function returning additional views configuration.
+ */
+function dt_editorial_dt_shared_functions_views_config_alter(&$settings) {
+  // hook_dt_shared_functions_views_config_alter() does not support checkboxes.
+  $roles = _dt_editorial_get_og_roles();
+  if (count($roles)) {
+
+    // Prepare the options element.
+    $roles_options = [];
+    foreach ($roles as $role) {
+      $roles_options[$role->name] = $role->name . ' (' . $role->group_bundle . ')';
+    }
+
+    $settings['og_access_override'] = [
+      '#type' => 'checkboxes',
+      '#title' => t('OG roles to bypass filter | (revision user) User: Current (Yes) |'),
+      '#description' => t('The filter query will be unset for users having these roles'),
+      '#default_value' => '',
+      '#options' => array_map('check_plain', $roles_options),
+    ];
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dt_editorial_views_query_alter(&$view, &$query) {
+  global $user;
+  $current_display = $view->current_display;
+  // Check if OG access permissions are set for the given display type.
+  if (isset($view->display[$current_display]->display_options['og_access_override'])) {
+    // These are the OG roles which are set to by-pass the access control.
+    $roles_bypass = array_filter($view->display[$current_display]->display_options['og_access_override']);
+    // Check if the user can by-pass access control.
+    $user_bypass = _dt_editorial_user_is_member($user, $roles_bypass);
+    // A double check after the data consistency check.
+    if (count($roles_bypass) && $user_bypass) {
+      // Altering the query if necessary.
+      foreach ($query->where as &$condition_group) {
+        foreach ($condition_group['conditions'] as $key => $condition) {
+          // The current user filter is an object.
+          if (gettype($condition['field']) == 'object') {
+            unset($condition_group['conditions'][$key]);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Checks if $user has any OG role that will bypass access based on $roles.
+ *
+ * @param object $user
+ *   The user object to get OG roles from, for comparison with $roles.
+ * @param array $roles
+ *   The list of OG rids that provide by-pass access.
+ *
+ * @return bool
+ *   Whether a $user has a by-pass for a given set of $roles.
+ */
+function _dt_editorial_user_is_member($user, $roles = []) {
+  $user_memberships = _dt_editorial_get_user_og_roles($user);
+  // If the user has any OG roles.
+  if (isset($user_memberships) && count($user_memberships)) {
+    // And the role of the user is part of the bypass list.
+    $role = og_role_load($user_memberships['rid']);
+    if (in_array($role->name, $roles)) {
+      // Give a by-pass.
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Helper to search for OG roles.
+ *
+ * @param string $role_name
+ *   Search query string.
+ *
+ * @return mixed $result
+ *   The list of OG roles with all db fields.
+ */
+function _dt_editorial_get_og_roles($role_name = NULL) {
+  $query = db_select('og_role');
+  $query->fields('og_role');
+  if ($role_name) {
+    $query->condition('name', $role_name . '=');
+  }
+  $result = $query->execute()->fetchAllAssoc('rid');
+  return $result;
+}
+
+/**
+ * Returns an array of OG rids for the given account.
+ *
+ * @param null|object $account
+ *   The user account object, current global user will be used if not specified.
+ *
+ * @return array $result
+ *   List of groups' information about the given user account.
+ */
+function _dt_editorial_get_user_og_roles($account = NULL) {
+  global $user;
+  $account = isset($account) ? $account : $user;
+
+  // List of OG groups the user has a role in.
+  $result = db_select('og_users_roles', 'our')
+    ->fields('our')
+    ->condition('uid', $account->uid, '=')
+    ->execute()
+    ->fetchAssoc();
+
+  return $result;
+}
+
+/**
+ * Special DT Editorial access override for a workbench tab.
+ *
+ * @return bool
+ *   Whether a user can access the 'Create content' tab in workbench screens.
+ */
+function _dt_editorial_create_access() {
+  global $user;
+
+  // Get OG information about the current user.
+  $user_groups = _dt_editorial_get_user_og_roles($user);
+
+  // If the user member of web transformer.
+  if (array_search('web transformer', $user->roles)) {
+    return TRUE;
+  }
+
+  // If the user is a member of any group.
+  if (isset($user_groups)) {
+    $rid = $user_groups['rid'];
+    $all_roles = _dt_editorial_get_og_roles();
+    foreach ($all_roles as $role) {
+      if ($rid == $role->rid && 'author' == $role->name) {
+        // The user has a role which is the Author => allow.
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Access callback for the dt_editorial_access_plugin access plugin.
+ *
+ * Determine if the specified user has access to a view on the basis of
+ * permissions. If the $account argument is omitted, the current user
+ * is used.
+ *
+ * @param array $context
+ *   Array containing groups and role ids, in the form of:
+ *   <code>
+ *   <?php
+ *   $context = [
+ *    'editorial_team' => [4, 5],
+ *    'another_og_group' => [1, 2, 3],
+ *   ];
+ *   ?>
+ *   </code>.
+ * @param mixed $account
+ *   User account object, optional.
+ *
+ * @return bool
+ *    Whether the user has access permissions for $context.
+ */
+function _dt_editorial_access_control($context, $account = NULL) {
+  global $user;
+  $account = isset($account) ? $account : $user;
+
+  // If the user member of web transformer.
+  if (array_search('web transformer', $account->roles)) {
+    return TRUE;
+  }
+
+  // Get the user's groups:
+  if ($user_groups = og_get_groups_by_user($account)) {
+    // OG is very flexible, mind the type of entity.
+    foreach ($user_groups as $group_entity_type => $groups) {
+      // For the groups of a given entity type.
+      foreach ($groups as $gid) {
+        // Get info about a single group.
+        $group = entity_load($group_entity_type, [$gid]);
+        // Trimming is fixing node data default behavior.
+        $group_group_type = trim($group[$gid]->type, ' ');
+        // Group specific user roles, optimistically matched to context.
+        $group_user_roles = og_get_user_roles($group_entity_type, $gid, $account->uid);
+        foreach ($group_user_roles as $role_name) {
+          if (isset($context[$group_group_type][$role_name])) {
+            return TRUE;
+          }
+        }
+      }
+    }
+  }
+  // Deny access by default.
+  return FALSE;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function dt_editorial_permission() {
+  return [
+    'dt editorial mark linguistic review' => [
+      'title' => t('Mark linguistic review checkbox'),
+      'description' => t('Allow the user to mark the linguistic review checkbox'),
+    ],
+    'dt editorial mark content review' => [
+      'title' => t('Mark content review checkbox'),
+      'description' => t('Allow the user to mark the content review checkbox'),
+    ],
+    'use workbench_moderation other content tab' => [
+      'title' => t('Use "Other content" workbench tab'),
+      'description' => t('Access for content in: Validated, Published, Archived and Expired states'),
+    ],
+  ];
+}
 
 /**
  * Fetch list of Group Content node types.
@@ -35,6 +351,38 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['field_editorial_types'])) {
     $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
   }
+
+  // Enforce default value (Use group defaults) and hide Group Content Access.
+  if (isset($form['group_content_access']) && isset($form['group_content_access'][LANGUAGE_NONE])) {
+    $form['group_content_access']['#attributes']['class'][] = 'element-hidden';
+    $form['group_content_access'][LANGUAGE_NONE]['#attributes']['disabled'] = 'disabled';
+  }
+
+  $field_name = 'og_group_ref';
+  $node = $form_state['node'];
+  $is_new_node = !isset($node->nid);
+
+  // Check if the field exists and it's a new node.
+  if (!isset($form[$field_name]) || !$is_new_node) {
+    return;
+  }
+
+  // Get the possible choices.
+  $possible_choices = $form[$field_name][LANGUAGE_NONE][0]['default']['#options'];
+  if (isset($possible_choices['_none'])) {
+    unset($possible_choices['_none']);
+  }
+  $number_of_choices = count($possible_choices);
+
+  // If there is more then one possible choice do nothing.
+  if ($number_of_choices != 1) {
+    return;
+  }
+
+  // Get the key from the correct choice.
+  $default_choice_key = key($possible_choices);
+  // Set the default value.
+  $form[$field_name][LANGUAGE_NONE][0]['default']['#default_value'] = [$default_choice_key];
 }
 
 /**
@@ -52,11 +400,11 @@ function dt_editorial_og_user_access_alter(&$perm, $context) {
   $roles = og_get_user_roles($context['group_type'], $context['group']->nid, $context['account']->uid);
   $group_enabled_types = _dt_editorial_group_enabled_types($context['group']);
   $custom_role_permissions = _dt_editorial_custom_og_permissions($roles);
-  if (!empty($roles) && $group_enabled_types && $custom_role_permissions) {
+  if (!empty($roles) && $custom_role_permissions) {
     foreach ($og_content_types as $og_content_type) {
       // Content type is not allowed for this group, so revoke all permissions
       // that have been added eventually by default.
-      if (!in_array($og_content_type, $group_enabled_types)) {
+      if (!$group_enabled_types || !in_array($og_content_type, $group_enabled_types)) {
         $perm['create ' . $og_content_type . ' content'] = FALSE;
         $perm['delete own ' . $og_content_type . ' content'] = FALSE;
         $perm['delete any ' . $og_content_type . ' content'] = FALSE;
@@ -125,6 +473,7 @@ function _dt_editorial_custom_og_permissions($roles) {
       'delete any [type] content' => FALSE,
       'update own [type] content' => TRUE,
       'update any [type] content' => FALSE,
+      'access content in other_content tab' => TRUE,
     ],
     'validator' => [
       'create [type] content' => FALSE,
@@ -132,6 +481,7 @@ function _dt_editorial_custom_og_permissions($roles) {
       'delete any [type] content' => TRUE,
       'update own [type] content' => FALSE,
       'update any [type] content' => TRUE,
+      'access content in other_content tab' => TRUE,
     ],
     'reviewer' => [
       'create [type] content' => FALSE,
@@ -160,4 +510,95 @@ function _dt_editorial_custom_og_permissions($roles) {
   }
 
   return !empty($perms) ? $perms : FALSE;
+}
+
+/**
+ * Implements hook_og_permission().
+ */
+function dt_editorial_og_permission() {
+  $items = [];
+
+  $items['access content in other_content tab'] = [
+    'title' => t('Access content in Other content tab'),
+    'description' => t('The tab should be accessible only for author and validator roles.'),
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_dt_node_settings_config_fields().
+ */
+function dt_editorial_dt_node_settings_config_fields($form) {
+  return [
+    'dt_editorial_linguistic_review' => [
+      '#type' => 'checkbox',
+      '#title' => 'Linguistic review',
+      '#default_value' => FALSE,
+      '#access' => user_access('dt editorial mark linguistic review'),
+    ],
+    'dt_editorial_content_review' => [
+      '#type' => 'checkbox',
+      '#title' => 'Content review',
+      '#default_value' => FALSE,
+      '#access' => user_access('dt editorial mark content review'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_workbench_content_alter().
+ */
+function dt_editorial_workbench_content_alter(&$output) {
+  if (!empty($output)) {
+    $output['workbench_current_user'] = array(
+      '#title' => t('My Profile'),
+      '#view' => 'current_user_with_editorial_groups',
+      '#view_display' => 'block_editorial_roles',
+      '#attributes' => array('class' => array('left', 'clearfix')),
+      '#theme' => 'workbench_element',
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_editorial_preprocess_views_view_fields(&$variables) {
+  if ($variables['view']->name == "current_user_with_editorial_groups" &&
+    $variables['view']->current_display == "attachment_edit_roles" &&
+    isset($variables['row']->og_membership_gid)
+  ) {
+    $gid = $variables['row']->og_membership_gid;
+
+    if (is_numeric($gid) && og_user_access('node', $gid, 'manage members')) {
+      $variables['fields']['gid']->content = l(t("Manage users"), "group/node/" . $gid . "/admin/people_en");
+    }
+    else {
+      $variables['fields']['gid']->content = "";
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dt_editorial_preprocess_views_view(&$variables) {
+  if ($variables['view']->name == "current_user_with_editorial_groups" &&
+    $variables['view']->current_display == "block_editorial_roles"
+  ) {
+    $variables['theme_hook_suggestions'][] = "dt_editorial_views_view";
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_editorial_theme($existing, $type, $theme, $path) {
+  return array(
+    'dt_editorial_views_view' => array(
+      'path' => drupal_get_path('module', 'dt_editorial') . '/templates',
+      'template' => 'dt-editorial--views-view',
+    ),
+  );
 }

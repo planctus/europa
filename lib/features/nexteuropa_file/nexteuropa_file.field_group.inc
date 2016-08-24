@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * nexteuropa_file.field_group.inc
@@ -49,10 +50,11 @@ function nexteuropa_file_field_group_info() {
     'label' => 'Editorial settings',
     'weight' => '-3',
     'children' => array(
-      0 => 'group_content_access',
-      1 => 'og_group_ref',
+      0 => 'og_group_ref',
+      1 => 'group_content_access',
       2 => 'scheduler_settings',
       3 => 'language',
+      4 => 'field_file_exclude_from_search',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -80,8 +82,13 @@ function nexteuropa_file_field_group_info() {
     'weight' => '-4',
     'children' => array(
       0 => 'field_core_file',
-      1 => 'field_core_description',
-      2 => 'title_field',
+      1 => 'title_field',
+      2 => 'field_core_date_published',
+      3 => 'field_file_link_upload',
+      4 => 'field_file_location',
+      5 => 'field_file_unique_identifier',
+      6 => 'field_core_legacy_link',
+      7 => 'field_file_type_file',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

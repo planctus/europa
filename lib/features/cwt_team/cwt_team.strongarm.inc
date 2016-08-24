@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_team.strongarm.inc

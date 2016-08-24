@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Site switcher tab - political and info sites options.

@@ -1,0 +1,8 @@
+name = Entityreference Remoteoverride - TMGMT support
+description = Add TMGMT support to the entityreference remoteoverride module.
+core = 7.x
+package = Entity
+
+dependencies[] = tmgmt_field
+dependencies[] = entityreference_tmgmt
+dependencies[] = entityreference_remoteoverride

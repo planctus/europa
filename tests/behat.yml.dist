@@ -14,10 +14,15 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
       javascript_session: 'selenium2'
+      browser_name: phantomjs
+      selenium2:
+        wd_host: "http://127.0.0.1:8643/wd/hub/"
+        capabilities:
+          version: ''
       base-url: '${behat.base_url}'
       show_cmd:  open %s
+      files_path: %paths.base%/dummy_files
     Drupal\DrupalExtension:
       api_driver: 'drupal'
       blackbox: ~
@@ -32,5 +37,6 @@ default:
           - '${behat.subcontexts.path}'
       region_map:
         tabs: '.tabs--primary'
+        secondary_language_selector: '.lang-selector-page'
   formatters:
     ${behat.formatter.name}: ~

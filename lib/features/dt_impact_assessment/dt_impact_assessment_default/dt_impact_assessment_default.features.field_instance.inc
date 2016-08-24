@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_impact_assessment_default.features.field_instance.inc
@@ -214,6 +215,59 @@ function dt_impact_assessment_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-impact_assessment-field_eurovoc_taxonomy'.
+  $field_instances['node-impact_assessment-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'impact_assessment',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-impact_assessment-group_content_access'.
   $field_instances['node-impact_assessment-group_content_access'] = array(
     'bundle' => 'impact_assessment',
@@ -262,7 +316,7 @@ function dt_impact_assessment_default_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 49,
     ),
     'widget_type' => 'options_select',
   );
@@ -323,7 +377,7 @@ function dt_impact_assessment_default_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 9,
+      'weight' => 48,
     ),
   );
 
@@ -379,6 +433,7 @@ function dt_impact_assessment_default_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
+  t('Taxonomy');
   t('The general introduction for the item, please only use one paragraph.');
   t('Title');
   t('Used for when the item is appearing in a list on another page.');
