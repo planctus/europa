@@ -113,8 +113,3 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 
 libraries[marked][download][type] = "get"
 libraries[marked][download][url] = "https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"
-
-; ======
-; Themes
-; ======
-includes[] = "../lib/themes/europa/europa.make"
