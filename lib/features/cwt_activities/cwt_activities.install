@@ -108,3 +108,42 @@ function cwt_activities_update_7105() {
   // Revert the feature.
   features_revert(['dt_core']);
 }
+
+/**
+ * DTTSB-990: cwt_activities_update_7105 for _value2 of date with range.
+ */
+function cwt_activities_update_7106() {
+  $fields = [
+    'field_start_end_date',
+  ];
+
+  foreach ($fields as $field) {
+    $tables = ['field_data_' . $field, 'field_revision_' . $field];
+    $column_name = $field . '_value2';
+
+    // Temporary data.
+    $param = [
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ];
+
+    // Update base and revision.
+    foreach ($tables as $table) {
+      // Add the field.
+      db_add_field($table, $column_name . '_temp', $param);
+      // Convert the data.
+      db_update($table)->expression($column_name . '_temp', "UNIX_TIMESTAMP($column_name)")->execute();
+      // Drop the table.
+      db_drop_field($table, $column_name);
+      // Rename the updated column.
+      db_change_field($table, $column_name . '_temp', $column_name, ['type' => 'int']);
+    }
+
+    // Change info in the database.
+    db_update('field_config')->fields(['type' => 'datestamp'])->condition('field_name', $field)->execute();
+  }
+  field_cache_clear();
+  // Revert the feature.
+  features_revert(['cwt_activities']);
+}
