@@ -1000,8 +1000,6 @@ function _dt_core_menu_link($link, $lang = FALSE) {
  *   The parent item mlid.
  * @param string $title
  *   The link title.
- * @param string $module
- *   Module machine name.
  * @param string $weight
  *   Weight of the menu item.
  * @param string $lang
@@ -1016,20 +1014,20 @@ function _dt_core_menu_link($link, $lang = FALSE) {
  * @return int
  *   The mlid of the created menu item.
  */
-function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
+function _dt_core_menu_item($menu, $link, $plid, $title, $weight, $lang = 'en', $tsid = NULL, $nolink = FALSE, $logs = FALSE) {
   $link = _dt_core_menu_link($link, $lang);
   $plid = ($plid > 0) ? $plid : 0;
 
   $item = [
     'menu_name' => $menu,
-    'module' => $module,
+    'module' => 'menu',
     'customized' => 1,
     'language' => $lang,
     'plid' => $plid,
     'enabled' => 1,
     'expanded' => 1,
     'link_path' => $link,
-    'locked' => TRUE,
+    'locked' => FALSE,
     'link_title' => $title,
     'hidden' => 0,
     'weight' => $weight,

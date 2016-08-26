@@ -177,3 +177,21 @@ function dt_core_pol_update_7108() {
 function dt_core_pol_update_7109() {
   module_enable(array('dt_page_extended'));
 }
+
+/**
+ * DTTSB-954: Update menu items.
+ */
+function dt_core_pol_update_7110() {
+  // Collect all menu link items which assigned to 'dt_core_pol' module.
+  $mlids = db_select('menu_links', 'ml')
+    ->condition('module', 'dt_core_pol')
+    ->fields('ml', ['mlid'])
+    ->execute()
+    ->fetchCol();
+  // Update all these items by 'menu' module.
+  foreach ($mlids as $mlid) {
+    $menu_link = menu_link_load($mlid);
+    $menu_link['module'] = 'menu';
+    menu_link_save($menu_link);
+  }
+}
