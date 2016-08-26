@@ -207,9 +207,11 @@ function dt_person_update_7108() {
 }
 
 /**
- * DTTSB-606: Updating Type of Person defaults.
+ * Updating Type of Person defaults. (7109)
+ *
+ * Delete field field_role_title.
  */
-function dt_person_update_7109(&$sandbox) {
+function dt_person_update_7110(&$sandbox) {
   // Initial settings.
   if (!isset($sandbox['max'])) {
     // Reverting dt_person.
@@ -249,12 +251,7 @@ function dt_person_update_7109(&$sandbox) {
   else {
     $sandbox['#finished'] = 1;
   }
-}
 
-/**
- * Delete field field_role_title.
- */
-function dt_person_update_7110() {
   // Removing a field.
   $field_name = 'field_person_role_title';
   if (field_info_field($field_name) !== NULL) {

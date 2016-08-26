@@ -157,24 +157,26 @@ function dt_core_info_update_7110() {
 }
 
 /**
- * DTTSB-945: Call for proposal.
+ * DTTSB-821: Enable integration modules.
  */
-function dt_core_info_update_7113() {
-  // Enabling dt call for proposal.
-  module_enable(['dt_call_for_proposal_default']);
+function dt_core_info_update_7116() {
+  $modules = [
+    'nexteuropa_integration',
+    'integration_producer_ui',
+    'integration_consumer_ui',
+  ];
+  module_enable($modules);
 }
 
 /**
- * DTTSB-750: Enable eurovoc.
- */
-function dt_core_info_update_7114() {
-  module_enable(['nexteuropa_eurovoc']);
-}
-
-/**
- * DTTSB-881: Updating old overwrite modules.
+ * Call for proposal. (7113)
+ *
+ * Enable eurovoc. (7114)
+ * updating old overwrite modules.
  */
 function dt_core_info_update_7115() {
+  module_enable(['dt_call_for_proposal_default', 'nexteuropa_eurovoc']);
+
   if (!module_exists('entityreference_remoteoverride')) {
     module_enable(['entityreference_remoteoverride', 'entityreference_remoteoverride_tmgmt']);
   }
@@ -185,16 +187,4 @@ function dt_core_info_update_7115() {
   // Disable the old implementation.
   module_disable(['entityreference_titleoverwrite', 'entityreference_titleoverwrite_tmgmt']);
   drupal_uninstall_modules(['entityreference_titleoverwrite_tmgmt', 'entityreference_titleoverwrite'], FALSE);
-}
-
-/**
- * DTTSB-821: Enable integration modules.
- */
-function dt_core_info_update_7116() {
-  $modules = [
-    'nexteuropa_integration',
-    'integration_producer_ui',
-    'integration_consumer_ui',
-  ];
-  module_enable($modules);
 }

@@ -83,27 +83,18 @@ function _dt_editorial_reorder_states() {
 }
 
 /**
- * DTTSB-745: Disable NE workbench screens.
+ * Disable NE workbench screens. (7101)
+ *
+ * Reset workbench moderation states order. (7102).
+ * Enable better exposed filters.
  */
-function dt_editorial_update_7101() {
+function dt_editorial_update_7103() {
   // Disable certain NE workbench views.
   _dt_editorial_disable_ne_workbench();
-}
-
-/**
- * DTTSB-745: Reset workbench moderation states order.
- */
-function dt_editorial_update_7102() {
   // Revert feature so we have the new state.
   features_revert_module('dt_roles_permissions');
   // Re-order.
   _dt_editorial_reorder_states();
-}
-
-/**
- * DTTSB-956: Enable better exposed filters.
- */
-function dt_editorial_update_7103() {
   // Disable certain NE workbench views.
   module_enable(['better_exposed_filters']);
 }

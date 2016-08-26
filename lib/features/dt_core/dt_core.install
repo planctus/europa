@@ -904,16 +904,17 @@ function dt_core_update_7167() {
 }
 
 /**
- * DTTSB-822: Enabling og_role_override for editorial workflow.
+ * Enabling og_role_override for editorial workflow (7168)
+ *
+ * Convert datetime to timestamp fields (7169)
+ * Revoke some permissions from editorial team member (7170)
+ * Generate the required vocabulary there is no upgrade (7171)
+ * Remove main taxonomy from the database.
  */
-function dt_core_update_7168() {
+function dt_core_update_7172() {
+  // Enabling og_role_override for editorial workflow.
   module_enable(['og_role_override']);
-}
-
-/**
- * DTTSB-725: Convert datetime to timestamp fields.
- */
-function dt_core_update_7169() {
+  // Convert datetime to timestamp fields.
   $fields = [
     'field_core_date_published',
     'field_core_date_updated',
@@ -953,30 +954,16 @@ function dt_core_update_7169() {
   field_cache_clear();
   // Revert the feature.
   features_revert_module('dt_core');
-}
 
-/**
- * DTTSB-827: Revoke some permissions from editorial team member.
- */
-function dt_core_update_7170() {
+  // Revoke some permissions from editorial team member.
   if (_dt_roles_permissions_import_import('editorial team member', TRUE)) {
     drupal_set_message(t('Role "editorial team member" updated.'));
   }
-}
-
-/**
- * DTTSB-888: Generate the required vocabulary there is no upgrade.
- */
-function dt_core_update_7171() {
+  // Generate the required vocabulary there is no upgrade.
   if (module_exists('nexteuropa_metatags')) {
     nexteuropa_metatags_install();
   }
-}
 
-/**
- * DTTSB-750: Remove main taxonomy from the database.
- */
-function dt_core_update_7172() {
   $vocabulary = taxonomy_vocabulary_machine_name_load('main_taxonomy');
   taxonomy_vocabulary_delete($vocabulary->vid);
 }

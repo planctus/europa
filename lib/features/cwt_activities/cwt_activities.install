@@ -62,18 +62,15 @@ function cwt_activities_update_7103() {
 }
 
 /**
- * DTTSB-662 - Adding terms to the calendar item types vocabulary.
+ * Convert datetime to datestamp fields.
+ *
+ * Adding terms to the calendar item types. (7104)
  */
-function cwt_activities_update_7104() {
+function cwt_activities_update_7105() {
   // Make sure that destination vocabularies exists.
   features_revert(array('cwt_activities' => array('taxonomy')));
   _cwt_activities_migrate_calendar_item_types();
-}
 
-/**
- * DTTSB-725: Convert datetime to datestamp fields.
- */
-function cwt_activities_update_7105() {
   $fields = [
     'field_start_end_date',
   ];
