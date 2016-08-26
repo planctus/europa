@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "47f81ad27ab1295bbff5b5e4d6ca8639",
+    "hash": "105f42b8d097a61ff42ea4293bb189bd",
     "content-hash": "da738bc0686dc8df17424e30cb26c2aa",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.18.37",
+            "version": "3.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0d4abd38caf09fbda9177e8c1fd2a9ec73d71d66"
+                "reference": "3cb90413129da42c9d3289d542bee0ae1049892c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0d4abd38caf09fbda9177e8c1fd2a9ec73d71d66",
-                "reference": "0d4abd38caf09fbda9177e8c1fd2a9ec73d71d66",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3cb90413129da42c9d3289d542bee0ae1049892c",
+                "reference": "3cb90413129da42c9d3289d542bee0ae1049892c",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-08-04 21:27:47"
+            "time": "2016-08-23 20:58:48"
         },
         {
             "name": "composer/installers",
@@ -289,16 +289,16 @@
         },
         {
             "name": "continuousphp/aws-sdk-phing",
-            "version": "0.1.9",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/continuousphp/aws-sdk-phing.git",
-                "reference": "392673363e138239879811b90d62c16d8573009b"
+                "reference": "61822d2c32403a88ceca9fc11b8ee6d0d06ab822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/continuousphp/aws-sdk-phing/zipball/392673363e138239879811b90d62c16d8573009b",
-                "reference": "392673363e138239879811b90d62c16d8573009b",
+                "url": "https://api.github.com/repos/continuousphp/aws-sdk-phing/zipball/61822d2c32403a88ceca9fc11b8ee6d0d06ab822",
+                "reference": "61822d2c32403a88ceca9fc11b8ee6d0d06ab822",
                 "shasum": ""
             },
             "require": {
@@ -324,7 +324,7 @@
             ],
             "description": "phing tasks for Amazon AWS",
             "homepage": "https://github.com/continuousphp/aws-sdk-phing",
-            "time": "2016-02-05 21:13:25"
+            "time": "2016-08-10 14:27:37"
         },
         {
             "name": "continuousphp/phing-tasks",

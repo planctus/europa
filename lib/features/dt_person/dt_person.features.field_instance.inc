@@ -20,10 +20,22 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 21,
+        'weight' => 40,
       ),
       'meta' => array(
         'label' => 'above',
@@ -113,10 +125,20 @@ function dt_person_field_default_field_instances() {
         'weight' => 30,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'row_two',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'above',
@@ -162,12 +184,27 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 14,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'above',
@@ -212,10 +249,22 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 19,
+        'weight' => 42,
       ),
       'meta' => array(
         'label' => 'above',
@@ -293,6 +342,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -352,10 +407,26 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 20,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
+        'weight' => 37,
       ),
       'meta' => array(
         'label' => 'above',
@@ -417,6 +488,18 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
           'date_formatter' => '',
@@ -425,7 +508,7 @@ function dt_person_field_default_field_instances() {
           'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
-        'weight' => 17,
+        'weight' => 41,
       ),
       'meta' => array(
         'label' => 'above',
@@ -465,6 +548,74 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_eurovoc_taxonomy'.
+  $field_instances['node-person-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'person',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 76,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_person_agenda_introduction'.
   $field_instances['node-person-field_person_agenda_introduction'] = array(
     'bundle' => 'person',
@@ -474,10 +625,22 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 36,
       ),
       'meta' => array(
         'label' => 'above',
@@ -543,65 +706,6 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_eurovoc_taxonomy'.
-  $field_instances['node-person-field_eurovoc_taxonomy'] = array(
-    'bundle' => 'person',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 14,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'name' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_eurovoc_taxonomy',
-    'label' => 'Taxonomy',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference_view_widget',
-      'settings' => array(
-        'allow_duplicates' => 0,
-        'close_modal' => 1,
-        'pass_argument' => 0,
-        'pass_arguments' => '',
-        'rendered_entity' => 0,
-        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
-        'view_mode' => 'full',
-      ),
-      'type' => 'entityreference_view_widget',
-      'weight' => 76,
-    ),
-  );
-
   // Exported field_instance: 'node-person-field_person_first_name'.
   $field_instances['node-person-field_person_first_name'] = array(
     'bundle' => 'person',
@@ -623,10 +727,9 @@ function dt_person_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -711,7 +814,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',
@@ -765,10 +868,9 @@ function dt_person_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -863,13 +965,22 @@ function dt_person_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'image',
+        'module' => 'picture',
         'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
           'image_link' => '',
-          'image_style' => 'medium',
+          'picture_mapping' => 'person_full',
         ),
-        'type' => 'image',
-        'weight' => 5,
+        'type' => 'picture',
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -966,10 +1077,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 35,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'i18n_taxonomy_term_reference_plain',
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1026,11 +1138,11 @@ function dt_person_field_default_field_instances() {
         'weight' => 3,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1107,19 +1219,19 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
       'event_speaker' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
         'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1208,6 +1320,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1268,7 +1386,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1337,7 +1455,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1414,7 +1532,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',

@@ -90,6 +90,124 @@ function dt_person_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'in_page_navigation' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'full_name_nolink' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h1',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_person_photo' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_role' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'body' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_file' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_next_steps' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_agenda_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_role_title' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_core_departments' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
+  );
+  $export['node|person|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|person|meta';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'person';
@@ -192,6 +310,83 @@ function dt_person_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|person|event_speaker'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|person|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'person';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'person';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left_header' => array(
+        0 => 'group_meta',
+        1 => 'full_name_nolink',
+        2 => 'field_person_tagline',
+        11 => 'field_person_role',
+        12 => 'field_person_role_title',
+      ),
+      'biography_image' => array(
+        3 => 'field_person_photo',
+      ),
+      'biography_column' => array(
+        4 => 'group_context_nav',
+        5 => 'field_core_departments',
+      ),
+      'top' => array(
+        6 => 'field_core_contact',
+      ),
+      'left' => array(
+        7 => 'in_page_navigation',
+      ),
+      'central' => array(
+        8 => 'group_biography',
+        9 => 'group_agenda',
+        10 => 'social_bookmark_webtools',
+        13 => 'field_person_agenda_introduction',
+        14 => 'field_core_links',
+        15 => 'body',
+        16 => 'field_core_next_steps',
+        17 => 'field_core_file',
+      ),
+    ),
+    'fields' => array(
+      'group_meta' => 'left_header',
+      'full_name_nolink' => 'left_header',
+      'field_person_tagline' => 'left_header',
+      'field_person_photo' => 'biography_image',
+      'group_context_nav' => 'biography_column',
+      'field_core_departments' => 'biography_column',
+      'field_core_contact' => 'top',
+      'in_page_navigation' => 'left',
+      'group_biography' => 'central',
+      'group_agenda' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'field_person_role' => 'left_header',
+      'field_person_role_title' => 'left_header',
+      'field_person_agenda_introduction' => 'central',
+      'field_core_links' => 'central',
+      'body' => 'central',
+      'field_core_next_steps' => 'central',
+      'field_core_file' => 'central',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'biography_image' => 'div',
+      'biography_column' => 'div',
+      'top' => 'div',
+      'left' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|person|full'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
