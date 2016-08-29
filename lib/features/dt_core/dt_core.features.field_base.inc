@@ -11,36 +11,6 @@
 function dt_core_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_date_opening'.
-  $field_bases['field_core_date_opening'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_core_date_opening',
-    'indexes' => array(),
-    'locked' => 1,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'entity_translation_sync' => FALSE,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datestamp',
-  );
-
   // Exported field_base: 'description_field'.
   $field_bases['description_field'] = array(
     'active' => 1,
@@ -190,6 +160,36 @@ function dt_core_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_core_date_opening'.
+  $field_bases['field_core_date_opening'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_date_opening',
+    'indexes' => array(),
+    'locked' => 1,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'field_core_date_published'.
@@ -734,6 +734,50 @@ function dt_core_field_default_field_bases() {
           'priority_policy_area' => 'priority_policy_area',
           'publication' => 'publication',
           'topic' => 'topic',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_core_press_contacts'.
+  $field_bases['field_core_press_contacts'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_press_contacts',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'remoteoverride_field_behavior' => array(
+            'override_mandatory' => 0,
+            'overrideable_fields' => array(),
+            'status' => 1,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'contact' => 'contact',
         ),
       ),
       'target_type' => 'node',

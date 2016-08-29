@@ -248,3 +248,29 @@ function dt_announcement_update_7114() {
   }
 
 }
+
+/**
+ * DTTSB-539: Announcement changes.
+ */
+function dt_announcement_update_7115() {
+  $obsolete_fields = [
+    'field_announcement_contact',
+    'field_core_pri_policy_areas',
+  ];
+
+  // Reverting creates the new field for the migration.
+  features_revert_module('dt_announcement');
+  _dt_shared_field_value_copy('node', 'announcement', 'field_announcement_contact', 'field_core_press_contacts');
+
+  // Removing obsolete field group and field.
+  if ($sidebar = field_group_load_field_group('group_announcement_rsb_content', 'node', 'announcement', 'form')) {
+    field_group_group_export_delete($sidebar, FALSE);
+  }
+
+  foreach ($obsolete_fields as $field) {
+    if ($instance = field_info_instance('node', $field, 'announcement')) {
+      field_delete_instance($instance);
+    }
+  }
+
+}

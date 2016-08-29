@@ -2,7 +2,7 @@
 Feature: Only consultations should be visible.
 When I log into the website
 As an editor
-I should be able to create consulation content
+I should be able to create consultation content
 
   Scenario: Adding a consultation
     Given "consultation" content:

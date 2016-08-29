@@ -10,7 +10,7 @@ Feature: Announcements block
     And I press "Save configuration"
 
   @information
-  Scenario Outline: Visitors should see the latests announcements block on content types
+  Scenario Outline: Visitors should see the latest announcements block on content types
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
       | title                             | status | field_core_description |
