@@ -200,33 +200,6 @@ function dt_publication_ds_field_settings_info() {
 }
 
 /**
- * Implements hook_ds_custom_fields_info().
- */
-function dt_publication_ds_custom_fields_info() {
-  $export = array();
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'collection_label';
-  $ds_field->label = 'Collection label';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = 'publication|*';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => 'Collection',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 0,
-  );
-  $export['collection_label'] = $ds_field;
-
-  return $export;
-}
-
-/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_publication_ds_layout_settings_info() {
