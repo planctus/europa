@@ -43,9 +43,9 @@ function brp_pager_link($variables) {
     $parameters['page'] = $new_page;
   }
 
-  $query = array();
+  $query = [];
   if (count($parameters)) {
-    $query = drupal_get_query_parameters($parameters, array());
+    $query = drupal_get_query_parameters($parameters, []);
   }
   if ($query_pager = pager_get_query_parameters()) {
     $query = array_merge($query, $query_pager);
@@ -55,18 +55,18 @@ function brp_pager_link($variables) {
   if (!isset($attributes['title'])) {
     static $titles = NULL;
     if (!isset($titles)) {
-      $titles = array(
+      $titles = [
         t('« first') => t('Go to first page'),
         t('‹ previous') => t('Go to previous page'),
         t('next ›') => t('Go to next page'),
         t('last »') => t('Go to last page'),
-      );
+      ];
     }
     if (isset($titles[$text])) {
       $attributes['title'] = $titles[$text];
     }
     elseif (is_numeric($text)) {
-      $attributes['title'] = t('Go to page @number', array('@number' => $text));
+      $attributes['title'] = t('Go to page @number', ['@number' => $text]);
     }
   }
 
@@ -90,10 +90,10 @@ function brp_pager_link($variables) {
       $base[] = $part;
     }
     $url = implode('/', $base);
-    $attributes['href'] = url($url, array('query' => $query));
+    $attributes['href'] = url($url, ['query' => $query]);
   }
   else {
-    $attributes['href'] = url($_GET['q'], array('query' => $query));
+    $attributes['href'] = url($_GET['q'], ['query' => $query]);
   }
 
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
@@ -123,16 +123,16 @@ function brp_status_messages($variables) {
   $display = $variables['display'];
   $output = '';
 
-  $status_heading = array(
+  $status_heading = [
     'status' => t('Status message'),
     'error' => t('Error message'),
     'warning' => t('Warning message'),
     'info' => t('Informative message'),
-  );
+  ];
 
   // Map Drupal message types to their corresponding Bootstrap classes.
   // @see http://twitter.github.com/bootstrap/components.html#alerts
-  $status_class = array(
+  $status_class = [
     'status' => 'success',
     'error' => 'danger',
     'warning' => 'warning',
@@ -140,7 +140,7 @@ function brp_status_messages($variables) {
     // @see drupal_set_message()
     // @see theme_status_messages()
     'info' => 'info',
-  );
+  ];
   // Specific for  BRP for better user experience.
   $errors = drupal_get_messages('error');
   if ($errors) {

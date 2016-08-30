@@ -385,7 +385,7 @@ function brp_feedbackfield_ds_fields_info($entity_type) {
       ],
     ];
 
-    return array($entity_type => $fields);
+    return [$entity_type => $fields];
   }
 }
 
@@ -1097,7 +1097,7 @@ function brp_feedbackfield_form_system_site_information_settings_alter(&$form, &
     '#default_value' => variable_get('brp_feedbackfield_rules_url', ''),
     '#size' => 40,
     '#maxlength' => 128,
-    '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#field_prefix' => url(NULL, ['absolute' => TRUE]) . (variable_get('clean_url', 0) ? '' : '?q='),
     '#description' => t('This page is displayed when should give back the BRP feedback rules.'),
   ];
   $form['brp_feedback_personal_data'] = [
@@ -1113,7 +1113,7 @@ function brp_feedbackfield_form_system_site_information_settings_alter(&$form, &
     '#description' => t('This will link to the personal data page, from the feedback form.'),
     '#size' => 40,
     '#maxlength' => 128,
-    '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#field_prefix' => url(NULL, ['absolute' => TRUE]) . (variable_get('clean_url', 0) ? '' : '?q='),
   ];
 
   // Process of form submit and validate.

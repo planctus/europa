@@ -25,14 +25,14 @@ class BRPTermsMigration extends Migration {
     $this->localize = $arguments['localized'];
     $this->description = t('Import Dgs terms');
     $this->map = new MigrateSQLMap($this->machineName,
-      array(
-        'code' => array(
+      [
+        'code' => [
           'type' => 'varchar',
           'length' => '255',
           'not null' => TRUE,
           'description' => 'Dgs data',
-        ),
-      ),
+        ],
+      ],
       MigrateDestinationTerm::getKeySchema()
     );
     $path = drupal_get_path('module', 'brp_local_importer') . '/data/' . $arguments['data_file'];
@@ -42,17 +42,17 @@ class BRPTermsMigration extends Migration {
     }
     $this->source = new MigrateSourceCSV($path,
       _brp_local_importer_csv_cols(),
-      array(
+      [
         'header_rows' => 1,
         'delimiter' => ',',
-      )
+      ]
     );
     $this->destination = new MigrateDestinationTerm($arguments['destination_voc']);
 
     $this->addFieldMapping('name', 'label');
     $this->addFieldMapping('field_taxonomy_ws_key', 'code');
     $this->addUnmigratedDestinations(
-      array(
+      [
         'description',
         'description_field',
         'description_field:format',
@@ -82,7 +82,7 @@ class BRPTermsMigration extends Migration {
         'parent_name',
         'path',
         'weight',
-      )
+      ]
     );
   }
 

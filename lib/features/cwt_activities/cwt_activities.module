@@ -22,10 +22,10 @@ function cwt_activities_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Calendar exposed filter.
-  if (in_array($form['#id'], array('views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list'))
+  if (in_array($form['#id'], ['views-exposed-form-agenda-list', 'views-exposed-form-agenda-print-list'])
     && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     // Rewrite for action URL to original URL @see cwt_core_url_inbound_alter().
-    $form['#action'] = url($original_path_cached['original_path'], array('absolute' => TRUE));
+    $form['#action'] = url($original_path_cached['original_path'], ['absolute' => TRUE]);
     $form['date_filter_min']['value']['#attributes']['placeholder'] = t('Choose a date');
     $form['date_filter_max']['value']['#attributes']['placeholder'] = t('Choose a date');
 
@@ -115,7 +115,7 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
         // Limit allowed sections to children of the selected editorial section.
         // So in exposed filter only these values are available.
         $allowed_terms = taxonomy_get_children($editorial_section->tid);
-        $allowed_values = array();
+        $allowed_values = [];
         foreach ($allowed_terms as $term) {
           $allowed_values[$term->tid] = $term->tid;
         }
@@ -161,11 +161,11 @@ function cwt_activities_views_pre_render(&$view) {
           . '<span class="rss-link__icon icon-social icon-social--print"></span>'
           . '<span class="rss-link__text">';
         $pdf_link_suffix = '</span></div></div>';
-        $pdf_link_options = array(
+        $pdf_link_options = [
           'query' => $full_query_parameters,
           'html' => TRUE,
-          'attributes' => array('rel' => 'nofollow'),
-        );
+          'attributes' => ['rel' => 'nofollow'],
+        ];
 
         $print_pdf_link = l($pdf_link_prefix . t('Print these calendar items')
           . $pdf_link_suffix, '/printpdf/' . $print_path, $pdf_link_options);
@@ -180,7 +180,7 @@ function cwt_activities_views_pre_render(&$view) {
     // in the template.
     if (isset($view->exposed_input['field_editorial_section_multiple_tid'])) {
       $term = taxonomy_term_load($view->exposed_input['field_editorial_section_multiple_tid']);
-      $token = !$term ? '' : (' ' . t('for %commissioner', array('%commissioner' => $term->name)));
+      $token = !$term ? '' : (' ' . t('for %commissioner', ['%commissioner' => $term->name]));
       $view->items_count['#suffix'] = $token;
     }
   }
@@ -221,15 +221,15 @@ function cwt_activities_node_view($node, $view_mode, $langcode) {
  * Implements hook_ds_fields_info().
  */
 function cwt_activities_ds_fields_info($entity_type) {
-  $fields = array();
+  $fields = [];
 
-  $fields['agenda_with_who'] = array(
+  $fields['agenda_with_who'] = [
     'title' => t('With whom'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_cwt_activities_ds_fields_agenda_withwho',
-  );
+  ];
 
-  return array('node' => $fields);
+  return ['node' => $fields];
 }
 
 /**
@@ -257,20 +257,20 @@ function _cwt_activities_ds_fields_agenda_withwho($field) {
  * Implements hook_migrate_api().
  */
 function cwt_activities_migrate_api() {
-  return array(
+  return [
     'api' => 2,
-    'groups' => array(
-      'NextEuropa Digital Transformation' => array(
+    'groups' => [
+      'NextEuropa Digital Transformation' => [
         'title' => t('Stage initial content, calendar item types.'),
-      ),
-    ),
-    'migrations' => array(
-      'CwtActivitiesTypes' => array(
+      ],
+    ],
+    'migrations' => [
+      'CwtActivitiesTypes' => [
         'class_name' => 'CwtActivitiesTypesMigration',
         'group_name' => 'NextEuropa Digital Transformation',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -281,7 +281,7 @@ function _cwt_activities_migrate_calendar_item_types() {
   // Force registration of migration classes.
   migrate_static_registration();
   // Make sure that destination vocabularies exists.
-  features_revert(array('cwt_activities' => array('taxonomy')));
+  features_revert(['cwt_activities' => ['taxonomy']]);
   // Import calendar item types vocabulary's terms.
   Migration::getInstance('CwtActivitiesTypes')->processImport();
 }

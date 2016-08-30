@@ -11,15 +11,15 @@ include_once 'dt_editorial.features.inc';
  * Implements hook_views_data_alter().
  */
 function dt_editorial_views_data_alter(&$data) {
-  $data['node']['revision_current_user'] = array(
+  $data['node']['revision_current_user'] = [
     'title' => t('Current user has a revision: boolean'),
     'help' => t('All nodes where the currently authenticated user has a revision'),
     'group' => t('DT Editorial'),
     'real field' => 'nid',
-    'filter' => array(
+    'filter' => [
       'handler' => 'dt_editorial_handler_filter_revision_current_user',
-    ),
-  );
+    ],
+  ];
 }
 
 // @codingStandardsIgnoreStart
@@ -551,13 +551,13 @@ function dt_editorial_dt_node_settings_config_fields($form) {
  */
 function dt_editorial_workbench_content_alter(&$output) {
   if (!empty($output)) {
-    $output['workbench_current_user'] = array(
+    $output['workbench_current_user'] = [
       '#title' => t('My Profile'),
       '#view' => 'current_user_with_editorial_groups',
       '#view_display' => 'block_editorial_roles',
-      '#attributes' => array('class' => array('left', 'clearfix')),
+      '#attributes' => ['class' => ['left', 'clearfix']],
       '#theme' => 'workbench_element',
-    );
+    ];
   }
 }
 
@@ -595,10 +595,10 @@ function dt_editorial_preprocess_views_view(&$variables) {
  * Implements hook_theme().
  */
 function dt_editorial_theme($existing, $type, $theme, $path) {
-  return array(
-    'dt_editorial_views_view' => array(
+  return [
+    'dt_editorial_views_view' => [
       'path' => drupal_get_path('module', 'dt_editorial') . '/templates',
       'template' => 'dt-editorial--views-view',
-    ),
-  );
+    ],
+  ];
 }

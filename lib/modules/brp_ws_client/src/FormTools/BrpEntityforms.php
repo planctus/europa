@@ -25,15 +25,15 @@ class BrpEntityforms {
    * Injects entityform setting.
    */
   public function injectEntityformSettings() {
-    $this->form['data']['brp_client'] = array(
+    $this->form['data']['brp_client'] = [
       '#type' => 'fieldset',
       '#title' => t('BRP WS Client settings'),
       '#collapsible' => FALSE,
       '#group' => 'additional_settings',
       '#weight' => 50,
-    );
+    ];
 
-    $this->form['data']['brp_client']['connection'] = array(
+    $this->form['data']['brp_client']['connection'] = [
       '#title' => "BRP WS Connection / Integration",
       '#type' => 'select',
       '#options' => BrpTools::getConnectionList(BrpProps::CONNECTION_TYPE),
@@ -41,7 +41,7 @@ class BrpEntityforms {
       '#default_value' => empty(
       $this->form['#entityform_type']->data['brp_client']['connection']) ? ''
       : (string) $this->form['#entityform_type']->data['brp_client']['connection'],
-    );
+    ];
   }
 
 }

@@ -55,16 +55,16 @@ class BrpFields {
    */
   private function fieldSettingsForm($service) {
     $settings = $this->form['#instance']['settings'];
-    $this->form['instance']['settings']['brp_ws_fields'] = array(
+    $this->form['instance']['settings']['brp_ws_fields'] = [
       '#title' => t('BRP WS Client settings'),
       '#type' => 'fieldset',
       '#weight' => '50',
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
       '#tree' => TRUE,
-    );
+    ];
 
-    $field_map = isset($settings['brp_ws_fields']['field_map']) ? $settings['brp_ws_fields']['field_map'] : array();
+    $field_map = isset($settings['brp_ws_fields']['field_map']) ? $settings['brp_ws_fields']['field_map'] : [];
 
     // Get the correct options in a multidimension readable array.
     if ($type = $this->getFieldType()) {
@@ -80,14 +80,14 @@ class BrpFields {
       }
     }
 
-    $this->form['instance']['settings']['brp_ws_fields']['field_map'] = array(
+    $this->form['instance']['settings']['brp_ws_fields']['field_map'] = [
       '#title' => t('BRP WS field'),
       '#type' => 'select',
       '#options' => isset($options) ? $options : [],
       '#default_value' => !empty($field_map) ? (string) $field_map : 0,
       '#empty_value' => 0,
       '#empty_option' => t('- BRP WS integration disabled -'),
-    );
+    ];
   }
 
   /**

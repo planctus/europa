@@ -10,9 +10,9 @@
  */
 function dt_homepage_core_install() {
   // Enabling functional features.
-  $features = array(
+  $features = [
     'dt_info_homepage',
-  );
+  ];
   module_enable($features);
 }
 
@@ -28,9 +28,9 @@ function dt_homepage_core_uninstall() {
  */
 function dt_homepage_core_update_7101() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_info_homepage',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.

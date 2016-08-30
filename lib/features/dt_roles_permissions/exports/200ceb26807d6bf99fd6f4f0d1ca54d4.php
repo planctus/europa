@@ -5,7 +5,7 @@
  * Contains permissions export for role administrator.
  */
 
-$permissions['administrator'] = array(
+$permissions['administrator'] = [
   'dt editorial mark linguistic review',
   'dt editorial mark content review',
   'accept translation jobs',
@@ -436,4 +436,4 @@ $permissions['administrator'] = array(
   'masquerade as user',
   'masquerade as any user',
   'administer masquerade',
-);
+];

@@ -52,7 +52,7 @@
               <span class="rss-link__label label">
                 <?php print t('Get updates:'); ?>
               </span>
-              <?php print l('<span class="rss-link__icon icon-social icon-social--rss"></span>' . '<span class="rss-link__text">' . t('RSS') . '</span>', $feed_link, array('html' => TRUE)); ?>
+              <?php print l('<span class="rss-link__icon icon-social icon-social--rss"></span>' . '<span class="rss-link__text">' . t('RSS') . '</span>', $feed_link, ['html' => TRUE]); ?>
             </div>
           </div>
         <?php endif; ?>

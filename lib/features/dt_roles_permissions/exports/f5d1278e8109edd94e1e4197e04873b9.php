@@ -5,6 +5,6 @@
  * Contains permissions export for role tester.
  */
 
-$permissions['tester'] = array(
+$permissions['tester'] = [
   'view any site_menu bean',
-);
+];

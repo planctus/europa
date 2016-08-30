@@ -91,9 +91,9 @@ function dt_core_brp_theme($existing, $type, $theme, $path) {
  */
 function dt_core_brp_block_info() {
   // Block to display user name and the option to login/logout.
-  $blocks['dt_brp_user_menu'] = array(
+  $blocks['dt_brp_user_menu'] = [
     'info' => t('BRP user menu'),
-  );
+  ];
 
   return $blocks;
 }
@@ -102,7 +102,7 @@ function dt_core_brp_block_info() {
  * Implements hook_block_view().
  */
 function dt_core_brp_block_view($delta = '') {
-  $block = array();
+  $block = [];
 
   switch ($delta) {
     case 'dt_brp_user_menu':
@@ -125,13 +125,13 @@ function dt_core_brp_block_view($delta = '') {
  *   Result to be rendered.
  */
 function _dt_core_brp_get_blocks_content($delta) {
-  $result = array();
+  $result = [];
 
   switch ($delta) {
     case 'dt_brp_user_menu':
-      $result = array(
+      $result = [
         '#markup' => theme('site_user_menu'),
-      );
+      ];
       break;
   }
 

@@ -13,11 +13,11 @@ class BrpClientMetadataList implements \ClientsConnectionTestingInterface {
    * Alter function for setting up labels for the test form.
    */
   public function testLabels() {
-    return array(
+    return [
       'label' => t('Web Service Metadata index'),
       'description' => t('Show available service metadata schemas.'),
       'button' => t('Get metadata index'),
-    );
+    ];
   }
 
   /**

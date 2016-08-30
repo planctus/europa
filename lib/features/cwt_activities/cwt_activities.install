@@ -68,7 +68,7 @@ function cwt_activities_update_7103() {
  */
 function cwt_activities_update_7105() {
   // Make sure that destination vocabularies exists.
-  features_revert(array('cwt_activities' => array('taxonomy')));
+  features_revert(['cwt_activities' => ['taxonomy']]);
   _cwt_activities_migrate_calendar_item_types();
 
   $fields = [

@@ -24,10 +24,10 @@ function dt_site_menu_uninstall() {
  */
 function _dt_site_init_menu() {
   // Create empty menu bean.
-  $menu_values = array(
+  $menu_values = [
     'label' => 'Information Site Menu',
     'type' => 'site_menu',
-  );
+  ];
 
   $menu = entity_create('bean', $menu_values);
   entity_save('bean', $menu);
@@ -38,29 +38,29 @@ function _dt_site_init_menu() {
   $context->name = 'dt_site_menu';
   $context->description = '';
   $context->tag = 'Digital Transformation';
-  $context->conditions = array(
-    'sitewide' => array(
-      'values' => array(
+  $context->conditions = [
+    'sitewide' => [
+      'values' => [
         1 => 1,
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'bean-information-site-menu' => array(
+      ],
+    ],
+  ];
+  $context->reactions = [
+    'block' => [
+      'blocks' => [
+        'bean-information-site-menu' => [
           'module' => 'bean',
           'delta' => 'information-site-menu',
           'region' => 'header_bottom',
           'weight' => '-10',
-        ),
-      ),
-    ),
-  );
+        ],
+      ],
+    ],
+  ];
 
   context_save($context);
   $link = url("block/information-site-menu/edit");
-  drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', array('!edit' => $link)));
+  drupal_set_message(t('The site menu has been created, you can set it up <a href="!edit">here</a>!', ['!edit' => $link]));
 }
 
 /**
@@ -103,11 +103,11 @@ function _dt_site_menu_migration() {
   }
 
   // Creating the topics link.
-  $topics_link = array(
+  $topics_link = [
     'url' => '/topics',
     'title' => 'All topics A-Z >',
-    'attributes' => array(),
-  );
+    'attributes' => [],
+  ];
   $menu->field_site_menu_topic_link->set($topics_link);
 
   $menu->save();
@@ -118,14 +118,14 @@ function _dt_site_menu_migration() {
  */
 function _dt_site_menu_delete_fields() {
   // Definition of fields to remove.
-  $obsolete_fields = array(
+  $obsolete_fields = [
     'field_site_menu_first' => 'bean-site_menu-field_site_menu_first',
     'field_site_menu_second' => 'bean-site_menu-field_site_menu_second',
     'field_site_menu_third' => 'bean-site_menu-field_site_menu_third',
     'field_site_menu_fourth' => 'bean-site_menu-field_site_menu_fourth',
     'field_site_menu_fifth' => 'bean-site_menu-field_site_menu_fifth',
     'field_site_menu_sixth' => 'bean-site_menu-field_site_menu_sixth',
-  );
+  ];
 
   foreach ($obsolete_fields as $field_base => $field_instance) {
     if ($instance = field_info_instance('bean', $field_base, 'site_menu')) {

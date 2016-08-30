@@ -24,28 +24,28 @@ function dt_impact_assessment_uninstall() {
  * NEXTEUROPA-7204: Data Migration from Policy Input to Impact Assessment.
  */
 function dt_impact_assessment_update_7101($sandbox) {
-  $features = array('dt_policy', 'dt_policy_input', 'dt_impact_assessment');
+  $features = ['dt_policy', 'dt_policy_input', 'dt_impact_assessment'];
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
 
   // Enable Node Convert module.
   if (!module_exists('node_convert')) {
-    module_enable(array('node_convert'));
+    module_enable(['node_convert']);
   }
 
   // Set up source.
   $source_bundle = 'policy_input';
   // Automatically converted source fields.
-  $source_fields = array(
+  $source_fields = [
     'field_core_introduction',
-  );
+  ];
   // Set up destination.
   $destination_bundle = 'impact_assessment';
   // Automatically converted destination fields.
-  $destination_fields = array(
+  $destination_fields = [
     'field_core_description',
-  );
+  ];
   // Set up query.
   $query = new EntityFieldQuery();
   // Mount query.

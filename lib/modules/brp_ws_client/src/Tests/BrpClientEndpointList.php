@@ -13,11 +13,11 @@ class BrpClientEndpointList implements \ClientsConnectionTestingInterface {
    * Alter function for setting up labels for the test form.
    */
   public function testLabels() {
-    return array(
+    return [
       'label' => t('Web Service endpoints index'),
       'description' => t('Show available endpoints/services.'),
       'button' => t('Get endpoints'),
-    );
+    ];
   }
 
   /**

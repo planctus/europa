@@ -101,4 +101,22 @@
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
         <exclude-pattern>*.features.wysiwyg.inc</exclude-pattern>
     </rule>
+
+    <!-- Disallow short array -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax">
+        <severity>0</severity>
+        <!-- Exclude features generated files from this rule -->
+        <exclude-pattern>*.ds.*.inc</exclude-pattern>
+        <exclude-pattern>*.default_*.inc</exclude-pattern>
+        <exclude-pattern>*.file_default_displays.*.inc</exclude-pattern>
+        <exclude-pattern>*.views_default.*.inc</exclude-pattern>
+        <exclude-pattern>*.facetapi_defaults.*.inc</exclude-pattern>
+        <exclude-pattern>*.custom_formatters.*.inc</exclude-pattern>
+        <exclude-pattern>*.context.*.inc</exclude-pattern>
+        <exclude-pattern>*.strongarm.*.inc</exclude-pattern>
+        <exclude-pattern>*.variable.*.inc</exclude-pattern>
+        <exclude-pattern>*.features.*.inc</exclude-pattern>
+        <exclude-pattern>*.field_group.inc</exclude-pattern>
+        <exclude-pattern>src/Phing</exclude-pattern>
+    </rule>
 </ruleset>

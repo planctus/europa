@@ -13,11 +13,11 @@ class BrpClientEndpointBrowser implements \ClientsConnectionTestingInterface {
    * Alter function for setting up labels for the test form.
    */
   public function testLabels() {
-    return array(
+    return [
       'label' => t('Web Service Endpoint browser'),
       'description' => t('Shows responses form given service/endpoint.'),
       'button' => t('Browse'),
-    );
+    ];
   }
 
   /**
@@ -27,23 +27,23 @@ class BrpClientEndpointBrowser implements \ClientsConnectionTestingInterface {
     $element['#collapsible'] = TRUE;
     $element['#collapsed'] = FALSE;
 
-    $element['params']['meta_endpoint'] = array(
+    $element['params']['meta_endpoint'] = [
       '#type' => 'textfield',
       '#title' => t('Paste endpoint.'),
       '#required' => TRUE,
-      '#default_value' => array(),
-    );
+      '#default_value' => [],
+    ];
 
-    $element['params']['create_dump'] = array(
+    $element['params']['create_dump'] = [
       '#type' => 'checkbox',
       '#title' => t('Create file dump with exact endpoint HTTP response.'),
-    );
+    ];
 
     $dump_list_view_link = l(t('Admin view with dump list'), '/admin/brp-client-json-dumps');
-    $element['params']['dumps_link'] = array(
+    $element['params']['dumps_link'] = [
       '#type' => 'item',
       '#markup' => $dump_list_view_link,
-    );
+    ];
 
     return $element;
   }

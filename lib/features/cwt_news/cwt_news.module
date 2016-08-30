@@ -11,12 +11,12 @@ include_once 'cwt_news.features.inc';
  * Implements hook_permission().
  */
 function cwt_news_permission() {
-  return array(
-    'edit links on aggregated news items' => array(
+  return [
+    'edit links on aggregated news items' => [
       'title' => t('Edit links on aggregated news items'),
       'description' => t('Allow user to edit links field on aggregated_news content type'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**

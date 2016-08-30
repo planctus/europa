@@ -12,86 +12,86 @@ use Drupal\dt_core_brp\BrpTools;
  * Implements hook_rules_action_info().
  */
 function brp_ws_client_rules_action_info() {
-  $actions = array(
-    'brp_ws_client_get_all_initiatives' => array(
+  $actions = [
+    'brp_ws_client_get_all_initiatives' => [
       'label' => t('Get all initiatives IDs list.'),
-      'parameter' => array(
-        'connection_name' => array(
+      'parameter' => [
+        'connection_name' => [
           'type' => 'text',
           'label' => t('Connection name'),
           'description' => t('Select connection that suppose to be checked.'),
           'options list' => '_brp_client_ws_connection_name_options',
           'restriction' => 'input',
-        ),
-      ),
-      'provides' => array(
-        'initiatives_id_list' => array(
+        ],
+      ],
+      'provides' => [
+        'initiatives_id_list' => [
           'type' => 'list<integer>',
           'label' => t('Initiatives IDs list.'),
-        ),
-      ),
+        ],
+      ],
       'group' => t('BRP WS Client'),
-    ),
-    'brp_ws_client_get_initiative_by_id' => array(
+    ],
+    'brp_ws_client_get_initiative_by_id' => [
       'label' => t('Get initiative by ID'),
-      'parameter' => array(
-        'connection_name' => array(
+      'parameter' => [
+        'connection_name' => [
           'type' => 'text',
           'label' => t('Connection name'),
           'description' => t('Select connection that suppose to be checked.'),
           'options list' => '_brp_client_ws_connection_name_options',
           'restriction' => 'input',
-        ),
-        'initiative_id' => array(
+        ],
+        'initiative_id' => [
           'type' => 'text',
           'label' => t("Initiative ID"),
-        ),
-      ),
-      'provides' => array(
-        'remote_initiative' => array(
+        ],
+      ],
+      'provides' => [
+        'remote_initiative' => [
           'type' => 'remote_initiative',
           'label' => t('Remote initiative object.'),
-        ),
-      ),
+        ],
+      ],
       'group' => t('BRP WS Client'),
-    ),
-    'brp_ws_client_send_feedback' => array(
+    ],
+    'brp_ws_client_send_feedback' => [
       'label' => t('Send feedback'),
-      'parameter' => array(
-        'ef_submission' => array(
+      'parameter' => [
+        'ef_submission' => [
           'type' => 'entityform',
           'label' => t('Entity form feedback submission'),
-        ),
-      ),
-      'provides' => array(
-        'response' => array(
+        ],
+      ],
+      'provides' => [
+        'response' => [
           'type' => 'remote_feedback',
           'label' => t('Remote feedback object.'),
-        ),
-      ),
+        ],
+      ],
       'group' => t('BRP WS Client'),
-    ),
-    'brp_ws_client_feedback_submitted' => array(
+    ],
+    'brp_ws_client_feedback_submitted' => [
       'label' => t('Feedback submitted'),
       'group' => t('BRP WS Client'),
-    ),
-    'brp_ws_client_send_report' => array(
+    ],
+    'brp_ws_client_send_report' => [
       'label' => t('Send report'),
-      'parameter' => array(
-        'ef_submission' => array(
+      'parameter' => [
+        'ef_submission' => [
           'type' => 'entityform',
           'label' => t('Entity form report submission'),
-        ),
-      ),
-      'provides' => array(
-        'response' => array(
+        ],
+      ],
+      'provides' => [
+        'response' => [
           'type' => 'remote_report',
           'label' => t('Remote report object.'),
-        ),
-      ),
+        ],
+      ],
       'group' => t('BRP WS Client'),
-    ),
-  );
+    ],
+  ];
 
   return $actions;
 }
@@ -108,12 +108,12 @@ function brp_ws_client_rules_action_info() {
 function brp_ws_client_get_all_initiatives($connection_name) {
   $client = clients_connection_load($connection_name);
   if (!$initiatives_list = $client->getAllInitiativesIds()) {
-    $initiatives_list = array();
+    $initiatives_list = [];
   }
 
-  return array(
+  return [
     'initiatives_id_list' => $initiatives_list,
-  );
+  ];
 }
 
 /**
@@ -130,12 +130,12 @@ function brp_ws_client_get_all_initiatives($connection_name) {
 function brp_ws_client_get_initiative_by_id($connection_name, $initiative_id) {
   $client = clients_connection_load($connection_name);
   if (!$remote_initiative = $client->getInitiativeById($initiative_id)) {
-    $remote_initiative = array();
+    $remote_initiative = [];
   }
 
-  return array(
+  return [
     'remote_initiative' => $remote_initiative,
-  );
+  ];
 }
 
 /**
@@ -148,16 +148,16 @@ function brp_ws_client_get_initiative_by_id($connection_name, $initiative_id) {
  *    Array with all imitative IDs.
  */
 function brp_ws_client_send_feedback($ef_submission) {
-  $remote_feedback = array();
+  $remote_feedback = [];
   if ($connection_name = BrpTools::getConnectionNameFromEntityform(BrpProps::FEEDBACK_FORM_BUNDLE)) {
     $client = clients_connection_load($connection_name);
     $request_data = $client::prepareRequestData($ef_submission);
     $remote_feedback = $client->sendPostRequest(BrpProps::SERVICE_FEEDBACK, $request_data);
   }
 
-  return array(
+  return [
     'remote_feedback' => $remote_feedback,
-  );
+  ];
 }
 
 /**
@@ -182,14 +182,14 @@ function brp_ws_client_feedback_submitted() {
  *    HTTP response remote report array.
  */
 function brp_ws_client_send_report($ef_submission) {
-  $remote_report = array();
+  $remote_report = [];
   if ($connection_name = BrpTools::getConnectionNameFromEntityform(BrpProps::FEEDBACK_REPORT_FORM_BUNDLE)) {
     $client = clients_connection_load($connection_name);
     $request_data = $client::prepareRequestData($ef_submission);
     $remote_report = $client->sendPostRequest(BrpProps::SERVICE_FEEDBACK_REPORT, $request_data);
   }
 
-  return array(
+  return [
     'remote_report' => $remote_report,
-  );
+  ];
 }

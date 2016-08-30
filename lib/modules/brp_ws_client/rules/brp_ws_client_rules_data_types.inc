@@ -9,26 +9,26 @@
  * Implements hook_rules_data_info().
  */
 function brp_ws_client_rules_data_info() {
-  return array(
-    'remote_initiative' => array(
+  return [
+    'remote_initiative' => [
       'label' => t('Remote initiative'),
       'wrap' => TRUE,
       'group' => t('BRP WS Client'),
       'property info' => _rules_remote_initiative_data_info(),
-    ),
-    'remote_feedback' => array(
+    ],
+    'remote_feedback' => [
       'label' => t('Remote feedback'),
       'wrap' => TRUE,
       'group' => t('BRP WS Client'),
       'property info' => _rules_remote_feedback_data_info(),
-    ),
-    'remote_report' => array(
+    ],
+    'remote_report' => [
       'label' => t('Remote report'),
       'wrap' => TRUE,
       'group' => t('BRP WS Client'),
       'property info' => _rules_remote_report_data_info(),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -38,116 +38,116 @@ function brp_ws_client_rules_data_info() {
  *    Property structure array.
  */
 function _rules_remote_initiative_data_info() {
-  return array(
-    'createdDate' => array(
+  return [
+    'createdDate' => [
       'type' => 'text',
       'label' => t('createdDate'),
-    ),
-    'modifiedDate' => array(
+    ],
+    'modifiedDate' => [
       'type' => 'text',
       'label' => t('modifiedDate'),
-    ),
-    'id' => array(
+    ],
+    'id' => [
       'type' => 'text',
       'label' => t('id'),
-    ),
-    'reference' => array(
+    ],
+    'reference' => [
       'type' => 'text',
       'label' => t('reference'),
-    ),
-    'title' => array(
+    ],
+    'title' => [
       'type' => 'text',
       'label' => t('title'),
-    ),
-    'publishedDate' => array(
+    ],
+    'publishedDate' => [
       'type' => 'text',
       'label' => t('publishedDate'),
-    ),
-    'feedbackPeriod' => array(
+    ],
+    'feedbackPeriod' => [
       'type' => 'text',
       'label' => t('feedbackPeriod'),
-    ),
-    'endDate' => array(
+    ],
+    'endDate' => [
       'type' => 'text',
       'label' => t('endDate'),
-    ),
-    'dg' => array(
+    ],
+    'dg' => [
       'type' => 'text',
       'label' => t('dg'),
-    ),
-    'unit' => array(
+    ],
+    'unit' => [
       'type' => 'text',
       'label' => t('unit'),
-    ),
-    'type' => array(
+    ],
+    'type' => [
       'type' => 'text',
       'label' => t('type'),
-    ),
-    'comment' => array(
+    ],
+    'comment' => [
       'type' => 'text',
       'label' => t('comment'),
-    ),
-    'institution' => array(
+    ],
+    'institution' => [
       'type' => 'text',
       'label' => t('institution'),
-    ),
-    'authorName' => array(
+    ],
+    'authorName' => [
       'type' => 'text',
       'label' => t('authorName'),
-    ),
-    'authorSurname' => array(
+    ],
+    'authorSurname' => [
       'type' => 'text',
       'label' => t('authorSurname'),
-    ),
-    'authorMail' => array(
+    ],
+    'authorMail' => [
       'type' => 'text',
       'label' => t('authorMail'),
-    ),
-    'authorPhoneNumber' => array(
+    ],
+    'authorPhoneNumber' => [
       'type' => 'text',
       'label' => t('authorPhoneNumber'),
-    ),
-    'committee' => array(
+    ],
+    'committee' => [
       'type' => 'text',
       'label' => t('committee'),
-    ),
-    'expertGroup' => array(
+    ],
+    'expertGroup' => [
       'type' => 'text',
       'label' => t('expertGroup'),
-    ),
-    'totalFeedback' => array(
+    ],
+    'totalFeedback' => [
       'type' => 'text',
       'label' => t('totalFeedback'),
-    ),
-    'reportedFeedback' => array(
+    ],
+    'reportedFeedback' => [
       'type' => 'text',
       'label' => t('reportedFeedback'),
-    ),
-    'reviewedFeedback' => array(
+    ],
+    'reviewedFeedback' => [
       'type' => 'text',
       'label' => t('reviewedFeedback'),
-    ),
-    'toBeReviewedFeedback' => array(
+    ],
+    'toBeReviewedFeedback' => [
       'type' => 'text',
       'label' => t('toBeReviewedFeedback'),
-    ),
-    'firstReportDate' => array(
+    ],
+    'firstReportDate' => [
       'type' => 'text',
       'label' => t('firstReportDate'),
-    ),
-    'status' => array(
+    ],
+    'status' => [
       'type' => 'text',
       'label' => t('status'),
-    ),
-    'daysElapsedSinceFirstReport' => array(
+    ],
+    'daysElapsedSinceFirstReport' => [
       'type' => 'text',
       'label' => t('daysElapsedSinceFirstReport'),
-    ),
-    'code' => array(
+    ],
+    'code' => [
       'type' => 'text',
       'label' => t('code'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -157,12 +157,12 @@ function _rules_remote_initiative_data_info() {
  *    Property structure array.
  */
 function _rules_remote_feedback_data_info() {
-  return array(
-    'id' => array(
+  return [
+    'id' => [
       'type' => 'text',
       'label' => t('id'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -172,10 +172,10 @@ function _rules_remote_feedback_data_info() {
  *    Property structure array.
  */
 function _rules_remote_report_data_info() {
-  return array(
-    'id' => array(
+  return [
+    'id' => [
       'type' => 'text',
       'label' => t('id'),
-    ),
-  );
+    ],
+  ];
 }

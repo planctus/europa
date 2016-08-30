@@ -189,10 +189,10 @@ function brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_al
 
   // Notifies the user upon leaving the page.
   $form['#attached']['libraries_load'][] = ['areyousure'];
-  drupal_add_js('(function($){ $(\'form\').areYouSure(); })(jQuery);', array(
+  drupal_add_js('(function($){ $(\'form\').areYouSure(); })(jQuery);', [
     'type' => 'inline',
     'scope' => 'footer',
-  ));
+  ]);
 }
 
 /**

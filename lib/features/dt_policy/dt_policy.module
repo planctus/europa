@@ -12,10 +12,10 @@ include_once 'dt_policy.features.inc';
  */
 function dt_policy_block_info() {
 
-  $blocks['dt_policy_actions'] = array(
+  $blocks['dt_policy_actions'] = [
     'info' => t('Policy Actions'),
     'cache' => DRUPAL_NO_CACHE,
-  );
+  ];
 
   return $blocks;
 }
@@ -24,7 +24,7 @@ function dt_policy_block_info() {
  * Implements hook_block_view().
  */
 function dt_policy_block_view($delta = '') {
-  $block = array();
+  $block = [];
 
   switch ($delta) {
     case 'dt_policy_actions':
@@ -48,17 +48,17 @@ function dt_policy_block_view($delta = '') {
         return $a->created <= $b->created;
       });
 
-      $items = array();
+      $items = [];
       foreach ($actions as $key => $action) {
         $teaser = node_view($action, 'teaser');
         $items[$key] = drupal_render($teaser);
       }
 
       $block['content'] = theme('nexteuropa_bem_item_list',
-        array(
+        [
           'items' => $items,
-          'modifiers' => array('listing--teaser'),
-        )
+          'modifiers' => ['listing--teaser'],
+        ]
       );
       break;
   }

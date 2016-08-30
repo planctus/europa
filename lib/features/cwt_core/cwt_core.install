@@ -13,26 +13,26 @@ function cwt_core_install() {
   multisite_drupal_toolbox_remove_context('homepage');
 
   $weight = db_select('system', 's')
-              ->fields('s', array('weight'))
+              ->fields('s', ['weight'])
               ->condition('name', 'cce_basic_config', '=')
               ->execute()
               ->fetchField();
   db_update('system')
-    ->fields(array('weight' => $weight + 1))
+    ->fields(['weight' => $weight + 1])
     ->condition('name', 'cwt_core', '=')
     ->execute();
 
   // Create the 'Section editor' and 'Site manager' roles.
-  foreach (array('section editor', 'site manager') as $role_name) {
+  foreach (['section editor', 'site manager'] as $role_name) {
     $role = new stdClass();
     $role->name = $role_name;
     user_role_save($role);
   }
 
-  $theme_list = array(
+  $theme_list = [
     'europa',
     'commissioner',
-  );
+  ];
 
   theme_enable($theme_list);
 
@@ -41,11 +41,11 @@ function cwt_core_install() {
   variable_set('nexteuropa_feedback_form_id', '1040');
   // Enabling the social media sharing module if it's not already.
   if (!module_exists('dt_social_media_sharing')) {
-    module_enable(array('dt_social_media_sharing'));
+    module_enable(['dt_social_media_sharing']);
   }
 
   // Enable the dt header background custom module.
-  module_enable(array('dt_header_background'));
+  module_enable(['dt_header_background']);
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
 
@@ -57,7 +57,7 @@ function cwt_core_install() {
  * Implements hook_uninstall().
  */
 function cwt_core_uninstall() {
-  $contexts = variable_get('context_status', array());
+  $contexts = variable_get('context_status', []);
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
 }
@@ -88,22 +88,22 @@ function cwt_core_update_7101() {
  * Enabling the bio_timeline module.
  */
 function cwt_core_update_7102() {
-  module_enable(array('bio_timeline'));
+  module_enable(['bio_timeline']);
 }
 
 /**
  * Disabling the bio_timeline module and enabling the inline_entity_form.
  */
 function cwt_core_update_7103() {
-  module_enable(array('inline_entity_form'));
-  module_disable(array('bio_timeline'));
+  module_enable(['inline_entity_form']);
+  module_disable(['bio_timeline']);
 }
 
 /**
  * Enabling the inline_entity_form.
  */
 function cwt_core_update_7104() {
-  module_enable(array('date_popup_authored'));
+  module_enable(['date_popup_authored']);
 }
 
 /**
@@ -124,14 +124,14 @@ function cwt_core_update_7105() {
  * Enable breakpoints and picture modules.
  */
 function cwt_core_update_7106() {
-  module_enable(array('breakpoints', 'picture'));
+  module_enable(['breakpoints', 'picture']);
 }
 
 /**
  * Enable Jquery Multi module.
  */
 function cwt_core_update_7107() {
-  module_enable(array('jqmulti'));
+  module_enable(['jqmulti']);
 }
 
 /**
@@ -139,12 +139,12 @@ function cwt_core_update_7107() {
  */
 function cwt_core_update_7108() {
   $weight = db_select('system', 's')
-              ->fields('s', array('weight'))
+              ->fields('s', ['weight'])
               ->condition('name', 'cce_basic_config', '=')
               ->execute()
               ->fetchField();
   db_update('system')
-    ->fields(array('weight' => $weight + 1))
+    ->fields(['weight' => $weight + 1])
     ->condition('name', 'cwt_core', '=')
     ->execute();
 }
@@ -191,8 +191,8 @@ function cwt_core_update_7113() {
   if ($entityform_type) {
     entityform_type_delete($entityform_type);
   }
-  module_disable(array('entityform', 'ajax_form_entity'));
-  drupal_uninstall_modules(array('entityform', 'ajax_form_entity'), FALSE);
+  module_disable(['entityform', 'ajax_form_entity']);
+  drupal_uninstall_modules(['entityform', 'ajax_form_entity'], FALSE);
 }
 
 /**
@@ -212,14 +212,14 @@ function cwt_core_update_7114() {
  * Related to custom block titles etc.
  */
 function cwt_core_update_7115() {
-  $obsolete_fields = array(
+  $obsolete_fields = [
     'field_news_block_title',
     'field_news_block_description',
     'field_blog_block_description',
     'field_social_block_title',
     'field_activity_block_title',
     'field_activity_block_description',
-  );
+  ];
 
   foreach ($obsolete_fields as $field_name) {
     if (field_info_field($field_name) !== NULL) {
@@ -227,10 +227,10 @@ function cwt_core_update_7115() {
     }
   }
 
-  $obsolete_groups = array(
+  $obsolete_groups = [
     'group_biography_settings',
     'group_agenda',
-  );
+  ];
   foreach ($obsolete_groups as $group_name) {
     $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
     field_group_group_export_delete($group, FALSE);
@@ -241,7 +241,7 @@ function cwt_core_update_7115() {
  * Create the 'Section editor' and 'Site manager' roles.
  */
 function cwt_core_update_7116() {
-  foreach (array('section editor', 'site manager') as $role_name) {
+  foreach (['section editor', 'site manager'] as $role_name) {
     if (!user_role_load_by_name($role_name)) {
       $role = new stdClass();
       $role->name = $role_name;
@@ -274,11 +274,11 @@ function cwt_core_update_7119() {
  * Enable and revert the Commissioner's News module.
  */
 function cwt_core_update_7120() {
-  module_enable(array('cwt_news'));
+  module_enable(['cwt_news']);
 
   $feature = features_get_features('cwt_news', TRUE);
   $components = array_keys($feature->info['features']);
-  features_revert(array('cwt_news' => $components));
+  features_revert(['cwt_news' => $components]);
 }
 
 /**
@@ -288,10 +288,10 @@ function cwt_core_update_7121() {
   // Retrieve a list of all previously imported news items along with the
   // editorial section that is set on the importer.
   $query = db_select('feeds_item', 'f')
-    ->fields('f', array('entity_id'))
+    ->fields('f', ['entity_id'])
     ->condition('f.entity_type', 'node');
   $query->innerJoin('field_data_field_editorial_section', 'es', 'f.feed_nid = es.entity_id');
-  $query->fields('es', array('field_editorial_section_tid'));
+  $query->fields('es', ['field_editorial_section_tid']);
   $mapping = $query->execute()->fetchAllKeyed();
 
   // Loop over the nodes and update their editorial sections.
@@ -307,13 +307,13 @@ function cwt_core_update_7121() {
  */
 function cwt_core_update_7122() {
   $role = user_role_load_by_name('editor');
-  $permissions = array(
+  $permissions = [
     'create aggregated_news content',
     'delete any aggregated_news content',
     'delete own aggregated_news content',
     'edit any aggregated_news content',
     'edit own aggregated_news content',
-  );
+  ];
   user_role_revoke_permissions($role->rid, $permissions);
 }
 
@@ -321,33 +321,33 @@ function cwt_core_update_7122() {
  * Enable and revert the Commissioner's Highlights.
  */
 function cwt_core_update_7123() {
-  module_enable(array('cwt_highlights'));
+  module_enable(['cwt_highlights']);
 
   $feature = features_get_features('cwt_highlights', TRUE);
   $components = array_keys($feature->info['features']);
-  features_revert(array('cwt_highlights' => $components));
+  features_revert(['cwt_highlights' => $components]);
 }
 
 /**
  * Disable the Multisite multilingual references.
  */
 function cwt_core_update_7124() {
-  module_disable(array('multisite_multilingual_references'));
+  module_disable(['multisite_multilingual_references']);
 }
 
 /**
  * Add permissions for custom page content type to certain roles.
  */
 function cwt_core_update_7125() {
-  foreach (array('administrator', 'site manager') as $name) {
+  foreach (['administrator', 'site manager'] as $name) {
     $role = user_role_load_by_name($name);
-    user_role_grant_permissions($role->rid, array(
+    user_role_grant_permissions($role->rid, [
       'create custom_page content',
       'delete any custom_page content',
       'delete own custom_page content',
       'edit any custom_page content',
       'edit own custom_page content',
-    ));
+    ]);
   }
 }
 
@@ -355,9 +355,9 @@ function cwt_core_update_7125() {
  * Grant permissions to use full_access_text_filter.
  */
 function cwt_core_update_7126() {
-  foreach (array('site manager', 'administrator') as $name) {
+  foreach (['site manager', 'administrator'] as $name) {
     $role = user_role_load_by_name($name);
-    user_role_grant_permissions($role->rid, array('use text format full_access_text_filter'));
+    user_role_grant_permissions($role->rid, ['use text format full_access_text_filter']);
   }
 }
 
@@ -392,7 +392,7 @@ function cwt_core_update_7127() {
 function cwt_core_update_7128() {
 
   $rid = user_role_load_by_name('blog editor')->rid;
-  $names = array(
+  $names = [
     'anatoko',
     'anderpe',
     'apostio',
@@ -420,11 +420,11 @@ function cwt_core_update_7128() {
     'tochami',
     'vandkar',
     'vickest',
-  );
+  ];
 
   foreach ($names as $name) {
     $uid = user_load_by_name($name)->uid;
-    user_multiple_role_edit(array($uid), 'add_role', $rid);
+    user_multiple_role_edit([$uid], 'add_role', $rid);
   }
 }
 
@@ -455,8 +455,8 @@ function cwt_core_update_7129() {
  * Enable Nexteuropa feedback module and add the form id.
  */
 function cwt_core_update_7130() {
-  module_enable(array('nexteuropa_feedback'));
-  module_disable(array('cwt_feedback'));
+  module_enable(['nexteuropa_feedback']);
+  module_disable(['cwt_feedback']);
   variable_set('nexteuropa_feedback_form_id', '1040');
 
   features_revert_module('cwt_core');
@@ -466,7 +466,7 @@ function cwt_core_update_7130() {
  * Enable several modules that were dependencies for dt_core.
  */
 function cwt_core_update_7131() {
-  $modules_to_enable = array(
+  $modules_to_enable = [
     'bootstrap_fieldgroup',
     'ds',
     'ds_extras',
@@ -476,7 +476,7 @@ function cwt_core_update_7131() {
     'nexteuropa_ds_layouts',
     'nexteuropa_views',
     'retina_images',
-  );
+  ];
   module_enable($modules_to_enable);
 }
 
@@ -484,16 +484,16 @@ function cwt_core_update_7131() {
  * Enable the dt_language_selector_site_popup module.
  */
 function cwt_core_update_7132() {
-  module_enable(array('dt_language_selector_site_popup'));
+  module_enable(['dt_language_selector_site_popup']);
 }
 
 /**
  * Enable nexteuropa display suite fields.
  */
 function cwt_core_update_7133() {
-  $modules_to_enable = array(
+  $modules_to_enable = [
     'nexteuropa_ds_fields',
-  );
+  ];
   module_enable($modules_to_enable);
 }
 
@@ -501,7 +501,7 @@ function cwt_core_update_7133() {
  * Enabling dt_shared_functions module.
  */
 function cwt_core_update_7134() {
-  module_enable(array('dt_shared_functions'));
+  module_enable(['dt_shared_functions']);
 }
 
 /**
@@ -515,14 +515,14 @@ function cwt_core_update_7135() {
  * NEXTEUROPA-7290 - Revert variable component.
  */
 function cwt_core_update_7136() {
-  features_revert(array('cwt_core' => array('variable')));
+  features_revert(['cwt_core' => ['variable']]);
 }
 
 /**
  * HOTFIX - Enabling the dt_social_media_sharing module.
  */
 function cwt_core_update_7137() {
-  module_enable(array('dt_social_media_sharing'));
+  module_enable(['dt_social_media_sharing']);
 }
 
 /**
@@ -546,7 +546,7 @@ function cwt_core_update_7139() {
  * NEXTEUROPA-8826 - Enable Metatags module.
  */
 function cwt_core_update_7140() {
-  module_enable(array('nexteuropa_metatags'));
+  module_enable(['nexteuropa_metatags']);
 }
 
 /**
@@ -584,22 +584,22 @@ function cwt_core_update_7145() {
   cwt_core_reset_default_permissions();
 
   // Set default header background.
-  $theme_list = array(
+  $theme_list = [
     'europa',
     'commissioner',
     'bootstrap',
-  );
+  ];
   theme_enable($theme_list);
   variable_set('theme_default', 'commissioner');
   // Enable the dt header background custom module.
-  module_enable(array('dt_header_background'));
+  module_enable(['dt_header_background']);
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
 
-  $obsolete_groups = array(
+  $obsolete_groups = [
     'group_team_settings',
     'group_term',
-  );
+  ];
   foreach ($obsolete_groups as $group_name) {
     $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
     field_group_group_export_delete($group, FALSE);

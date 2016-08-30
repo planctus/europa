@@ -5,7 +5,7 @@
  * Contains permissions export for role anonymous user.
  */
 
-$permissions['anonymous user'] = array(
+$permissions['anonymous user'] = [
   'access comments',
   'access content',
   'access PDF version',
@@ -19,4 +19,4 @@ $permissions['anonymous user'] = array(
   'view any site_menu bean',
   'view files',
   'view private files',
-);
+];

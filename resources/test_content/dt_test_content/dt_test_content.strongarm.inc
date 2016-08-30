@@ -9,7 +9,7 @@
  * Implements hook_strongarm().
  */
 function dt_test_content_strongarm() {
-  $export = array();
+  $export = [];
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

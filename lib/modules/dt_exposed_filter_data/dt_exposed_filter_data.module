@@ -9,14 +9,14 @@
  * Implements hook_theme().
  */
 function dt_exposed_filter_data_theme() {
-  return array(
-    'exposed_filter_data' => array(
+  return [
+    'exposed_filter_data' => [
       'template' => 'dt_exposed_filter_data',
-      'variables' => array(
+      'variables' => [
         'view' => NULL,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**

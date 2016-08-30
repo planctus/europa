@@ -38,7 +38,7 @@ class BrpTools {
 
         if (fwrite($handle, $output) === FALSE) {
           watchdog('BrpTools', 'Cannot write log file %file',
-            array('%file' => $logfile), WATCHDOG_ERROR);
+            ['%file' => $logfile], WATCHDOG_ERROR);
           return FALSE;
         }
 
@@ -83,7 +83,7 @@ class BrpTools {
    *    Used as a source for a select form field.
    */
   public static function getConnectionList($connection_type) {
-    $options = array('' => t('- Select -'));
+    $options = ['' => t('- Select -')];
     // Load all connections.
     $connections_object = clients_connection_load_all();
     foreach ($connections_object as $connection) {
@@ -120,7 +120,7 @@ class BrpTools {
     }
 
     watchdog('BrpTools', 'Cannot create JSON dump %file',
-      array('%file' => $file_path_and_name), WATCHDOG_ERROR);
+      ['%file' => $file_path_and_name], WATCHDOG_ERROR);
 
     return FALSE;
   }
@@ -140,7 +140,7 @@ class BrpTools {
   public static function recursiveArraySearch($needle, $haystack) {
     foreach ($haystack as $key => $value) {
       if ($needle == $value) {
-        return array($key);
+        return [$key];
       }
       elseif (is_array($value) && $subkey = self::recursiveArraySearch($needle, $value)) {
         array_unshift($subkey, $key);
@@ -232,7 +232,7 @@ class BrpTools {
 
     if (!isset($vocabulary)) {
       watchdog('BRP', 'Bad vocabulary query: %q',
-        array('%q' => $voc), WATCHDOG_INFO);
+        ['%q' => $voc], WATCHDOG_INFO);
       return FALSE;
     }
 
@@ -253,7 +253,7 @@ class BrpTools {
     }
 
     watchdog('BRP', 'No terms found for the desired query for vocabulary %vid',
-      array('%vid' => $vocabulary->vid), WATCHDOG_INFO);
+      ['%vid' => $vocabulary->vid], WATCHDOG_INFO);
 
     return FALSE;
   }

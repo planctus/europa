@@ -9,9 +9,9 @@
  * Implements hook_views_api().
  */
 function facets_in_filters_views_api() {
-  return array(
+  return [
     'api' => 3,
-  );
+  ];
 }
 
 /**

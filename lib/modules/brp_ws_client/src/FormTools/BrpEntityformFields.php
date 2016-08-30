@@ -53,7 +53,7 @@ class BrpEntityformFields {
    * Provides select fields which are integrated with BRP WS Client.
    */
   protected function getFormIntegratedSelectFields() {
-    $select_fields = array();
+    $select_fields = [];
     foreach ($this->fieldInstances as $key => $field_instance) {
       if ($field_instance['widget']['module'] == 'options'
         && isset($field_instance['settings']['brp_ws_fields'])

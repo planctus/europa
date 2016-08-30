@@ -40,7 +40,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
     // List of fields we should disable. These fields are used to filter by
     // query parameter. As these are filterd by id, they are of no use for the
     // end user.
-    $fields_to_disable = array(
+    $fields_to_disable = [
       'persons',
       'announcement',
       'policies',
@@ -48,7 +48,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
       'pri_policy_areas',
       'topics',
       'pages',
-    );
+    ];
 
     // Fix the fields by setting #access to false. We hide these fields because
     // the end user should not manually filter on these. Also, if we would
@@ -73,9 +73,9 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
 function dt_announcement_views_pre_render(&$view) {
   $custom_readmore = FALSE;
   // List of views that use this logic:
-  $view_announcements_blocks = array(
+  $view_announcements_blocks = [
     'latest_block',
-  );
+  ];
 
   // Initialize button text as empty to avoid bug reported on NEXTEUROPA-7227.
   $alter_button_text = '';
@@ -131,16 +131,16 @@ function dt_announcement_views_pre_render(&$view) {
         }
 
         // Our replacement array.
-        $replacement_array = array(
-          'token' => array(
+        $replacement_array = [
+          'token' => [
             '[node_title]',
             '[abbreviation]',
-          ),
-          'replacement' => array(
+          ],
+          'replacement' => [
             $view->build_info['substitutions']['%1'],
             strpos($variable_read_more_text, '[abbreviation]') ? _dt_announcement_get_abbreviation($nid) : '',
-          ),
-        );
+          ],
+        ];
 
         if ($custom_readmore) {
           // Modify the output.
@@ -170,9 +170,9 @@ function dt_announcement_views_pre_render(&$view) {
       // support multiple values.
       $url = url(
         'announcements',
-        array(
-          'query' => isset($url_query) ? $url_query : array(),
-        )
+        [
+          'query' => isset($url_query) ? $url_query : [],
+        ]
       );
 
       // Update the url of our link to the new one. We also need to alter our
@@ -203,14 +203,14 @@ function dt_announcement_views_query_alter(&$view, &$query) {
     // Get our Query parameters. Here we use an exclude array because on an ajax
     // request we always have every parameter. And we try to keep the amount of
     // node_load() calls to a minimum.
-    $exclude = array(
+    $exclude = [
       'department',
       'combine',
       'type',
       'date_before',
       'date_after',
       'q',
-    );
+    ];
     // Now get our query parameters without the elements above.
     $query_parameters = drupal_get_query_parameters(NULL, $exclude);
     // Loop our exposed input fields. We go over them all and check if it is in
@@ -307,7 +307,7 @@ function dt_announcement_views_query_alter(&$view, &$query) {
  */
 function _dt_announcement_get_content_reference_fields($entity_type) {
   // Inintialize variables.
-  $field_join_list = array();
+  $field_join_list = [];
   $counter = 0;
 
   // Get our cached ctools export object. We use the field_group function for

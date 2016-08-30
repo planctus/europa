@@ -5,7 +5,7 @@
  * Contains permissions export for role contributor.
  */
 
-$permissions['contributor'] = array(
+$permissions['contributor'] = [
   'access administration menu',
   'access administration pages',
   'access helper content types',
@@ -143,4 +143,4 @@ $permissions['contributor'] = array(
   'view own private files',
   'view own unpublished content',
   'view revisions',
-);
+];

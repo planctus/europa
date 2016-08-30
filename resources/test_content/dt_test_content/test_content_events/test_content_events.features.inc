@@ -10,6 +10,6 @@
  */
 function test_content_events_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => "1");
+    return ["version" => "1"];
   }
 }

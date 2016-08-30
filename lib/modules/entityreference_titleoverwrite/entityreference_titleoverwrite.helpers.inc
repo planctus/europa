@@ -21,12 +21,12 @@ function _entityreference_titleoverwrite_add_table_field($field_name) {
   $field_schema_name = $field_name . '_title_override';
 
   // The new fields properties.
-  $field_schema_information = array(
+  $field_schema_information = [
     'type' => 'varchar',
     'description' => 'Title override',
     'length' => 255,
     'not null' => FALSE,
-  );
+  ];
 
   // The data table.
   $data_table_name = 'field_data_' . $field_name;
@@ -55,9 +55,9 @@ function _entityreference_titleoverwrite_add_table_field($field_name) {
       $unserialized_data['settings']['handler_settings']['behaviors']['titleoverwrite_field_behavior']['overwrite_title_mandatory'] = 0;
       // Store back the data.
       $update_query = db_update('field_config')
-        ->fields(array(
+        ->fields([
           'data' => serialize($unserialized_data),
-        ))
+        ])
         ->condition('field_name', $field_name, '=')
         ->execute();
     }

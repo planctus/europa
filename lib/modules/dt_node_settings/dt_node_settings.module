@@ -9,32 +9,32 @@
  * Implements hook_permission().
  */
 function dt_node_settings_permission() {
-  return array(
-    'configure helper content types' => array(
+  return [
+    'configure helper content types' => [
       'title' => t('Configure helper content types'),
       'description' => t('Allow configurations of helper content types'),
-    ),
-    'access helper content types' => array(
+    ],
+    'access helper content types' => [
       'title' => t('Access helper content types'),
       'description' => t('Allow access to full view of helper content types'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
  * Implements hook_menu().
  */
 function dt_node_settings_menu() {
-  $items = array();
-  $items['admin/config/content/helper_node_types/settings'] = array(
+  $items = [];
+  $items['admin/config/content/helper_node_types/settings'] = [
     'title' => 'Helper content types settings',
     'description' => 'Indicate helper content types for the system.',
     'page callback' => 'drupal_get_form',
-    'access arguments' => array('configure helper content types'),
-    'page arguments' => array('dt_node_settings_helpers_overall'),
+    'access arguments' => ['configure helper content types'],
+    'page arguments' => ['dt_node_settings_helpers_overall'],
     'file' => 'dt_node_settings.admin.inc',
     'file path' => drupal_get_path('module', 'dt_node_settings'),
-  );
+  ];
   return $items;
 }
 
@@ -43,24 +43,24 @@ function dt_node_settings_menu() {
  */
 function dt_node_settings_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'node_type_form' && user_access('access helper content types')) {
-    $form['dt_node_settings'] = array(
+    $form['dt_node_settings'] = [
       '#type' => 'fieldset',
       '#title' => t('DT specific node settings'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#group' => 'additional_settings',
-    );
+    ];
 
-    $form['dt_node_settings']['helper_content_type'] = array(
+    $form['dt_node_settings']['helper_content_type'] = [
       '#type' => 'checkbox',
       '#title' => t('Helper content type'),
       '#default_value' => variable_get('dt_node_settings_helper_node_type_' . $form['#node_type']->type, 0),
-      '#options' => array(
+      '#options' => [
         0 => t('Disabled'),
         1 => t('Enabled'),
-      ),
+      ],
       '#description' => t('Require special permissions to access to full view of pages of this type.'),
-    );
+    ];
 
     $form['#submit'][] = 'dt_node_settings_helpers_single_submit';
   }

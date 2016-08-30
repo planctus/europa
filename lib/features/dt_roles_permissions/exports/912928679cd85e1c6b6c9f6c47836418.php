@@ -5,7 +5,7 @@
  * Contains permissions export for role site manager.
  */
 
-$permissions['site manager'] = array(
+$permissions['site manager'] = [
   'accept translation jobs',
   'access administration menu',
   'access administration pages',
@@ -97,4 +97,4 @@ $permissions['site manager'] = array(
   'view bean page',
   'masquerade as user',
   'masquerade as any user',
-);
+];

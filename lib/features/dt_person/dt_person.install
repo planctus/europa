@@ -13,7 +13,7 @@ function _dt_person_roles_import() {
   // Force registration of migration classes.
   migrate_static_registration();
   // Make sure that destination vocabularies exists.
-  features_revert(array('dt_person' => array('taxonomy')));
+  features_revert(['dt_person' => ['taxonomy']]);
   // Import person_roles vocabulary terms.
   Migration::getInstance('DTPersonRolesMigrator')->processImport();
 }
@@ -61,9 +61,9 @@ function dt_person_uninstall() {
  */
 function dt_person_update_7101() {
   features_revert(
-    array(
-      'dt_person' => array('field_base', 'field_instance', 'field_group'),
-    )
+    [
+      'dt_person' => ['field_base', 'field_instance', 'field_group'],
+    ]
   );
 }
 
@@ -77,9 +77,9 @@ function dt_person_update_7102() {
   // Reverting feature.
   features_revert_module('dt_person');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_person' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_person' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -90,7 +90,7 @@ function dt_person_update_7103() {
   _dt_person_remove_body_field();
 
   // Removing a list of fields.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_core_priorities',
     'field_person_intro',
     'field_person_status',
@@ -101,7 +101,7 @@ function dt_person_update_7103() {
     'field_person_cv',
     'field_person_document',
     'field_person_role',
-  );
+  ];
 
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
@@ -109,10 +109,10 @@ function dt_person_update_7103() {
     }
   }
 
-  $instances = array(
+  $instances = [
     'field_core_topics',
     'field_core_department',
-  );
+  ];
   foreach ($instances as $field_instance) {
     if ($instance = field_info_instance('node', $field_instance, 'person')) {
       field_delete_instance($instance);
@@ -120,14 +120,14 @@ function dt_person_update_7103() {
   }
 
   // Removing a list of groups.
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_body',
     'group_person_responsibility',
     'group_person_biography',
     'group_person_cv',
     'group_person_documents',
     'group_person_related',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', 'person', 'form');
@@ -146,9 +146,9 @@ function dt_person_update_7103() {
  */
 function dt_person_update_7104() {
   // Removing a list of fields.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_person_existing_profile',
-  );
+  ];
 
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
@@ -161,7 +161,7 @@ function dt_person_update_7104() {
  * Working out automatic title and removing required attribute.
  */
 function dt_person_update_7105() {
-  module_enable(array('auto_entitylabel'));
+  module_enable(['auto_entitylabel']);
   features_revert_module('dt_person');
 }
 
@@ -185,7 +185,7 @@ function dt_person_update_7107() {
  * NEXTEUROPA-4788: Revert related features.
  */
 function dt_person_update_7108() {
-  $features_to_revert = array(
+  $features_to_revert = [
     'dt_person',
     'dt_announcement',
     'dt_page',
@@ -197,7 +197,7 @@ function dt_person_update_7108() {
     'dt_priority_default',
     'dt_publication',
     'dt_topic',
-  );
+  ];
   // Revert the feature.
   foreach ($features_to_revert as $feature) {
     if (module_exists($feature)) {
@@ -227,7 +227,7 @@ function dt_person_update_7110(&$sandbox) {
   $limit = 100;
   $nids = db_select('node', 'n')
     ->condition('n.type', 'person')
-    ->fields('n', array('nid'))
+    ->fields('n', ['nid'])
     ->orderBy('n.nid')
     ->range($sandbox['position'], $limit)
     ->execute()

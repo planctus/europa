@@ -9,20 +9,20 @@
  * Implements hook_install().
  */
 function dt_core_pol_install() {
-  $dt_modules = array(
+  $dt_modules = [
     'dt_pri_policy_area_default',
     'dt_priority_default',
     'dt_page_extended',
     // Roles and permissions.
     'dt_roles_permissions',
-  );
+  ];
   module_enable($dt_modules);
 
   // Enabling europa base theme.
-  theme_enable(array('political'));
+  theme_enable(['political']);
   variable_set('theme_default', 'political');
   // Disabling unnecessary themes.
-  theme_disable(array('ec_resp', 'seven'));
+  theme_disable(['ec_resp', 'seven']);
 
   // Enabling EC official languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
@@ -41,7 +41,7 @@ function dt_core_pol_install() {
     variable_set('site_frontpage', 'node/' . $nid);
     // Set alias for the home page.
     $node = node_load($nid);
-    $node->path = array('alias' => 'index', 'pathauto' => 0);
+    $node->path = ['alias' => 'index', 'pathauto' => 0];
     node_save($node);
   }
 
@@ -49,7 +49,7 @@ function dt_core_pol_install() {
   _dt_core_pol_menu_footer();
 
   // Enable the dt header background custom module.
-  module_enable(array('dt_header_background'));
+  module_enable(['dt_header_background']);
 
   // Set the default header background image.
   _dt_header_background_set_default_header_background();
@@ -62,7 +62,7 @@ function dt_core_pol_install() {
  * Implements hook_uninstall().
  */
 function dt_core_pol_uninstall() {
-  $contexts = variable_get('context_status', array());
+  $contexts = variable_get('context_status', []);
   unset($contexts['site_wide'], $contexts['homepage']);
   variable_set('context_status', $contexts);
   drupal_set_message(t('NextEuropa Subject feature is uninstalled on your site.'));
@@ -73,7 +73,7 @@ function dt_core_pol_uninstall() {
  */
 function dt_core_pol_update_7101() {
   // The features to revert.
-  $features = array(
+  $features = [
     'dt_core',
     'dt_core_pol',
     'dt_pri_policy_area',
@@ -81,7 +81,7 @@ function dt_core_pol_update_7101() {
     'dt_priority',
     'dt_priority_default',
     'dt_publication',
-  );
+  ];
 
   // Reverting the features.
   foreach ($features as $feature) {
@@ -93,14 +93,14 @@ function dt_core_pol_update_7101() {
  * Hotfix: Enabling dt_page content type on political site instance.
  */
 function dt_core_pol_update_7102() {
-  module_enable(array('dt_page'));
+  module_enable(['dt_page']);
 }
 
 /**
  * Roles and permissions.
  */
 function dt_core_pol_update_7103() {
-  module_enable(array('dt_roles_permissions', 'dt_roles_permissions_import'));
+  module_enable(['dt_roles_permissions', 'dt_roles_permissions_import']);
 }
 
 /**
@@ -108,12 +108,12 @@ function dt_core_pol_update_7103() {
  */
 function dt_core_pol_update_7104() {
   // Enable the custom context.
-  features_revert(array(
-    'dt_core_pol' => array(
+  features_revert([
+    'dt_core_pol' => [
       'context',
       'variable',
-    ),
-  ));
+    ],
+  ]);
 }
 
 /**
@@ -129,10 +129,10 @@ function dt_core_pol_update_7105() {
  */
 function dt_core_pol_update_7106() {
   // Revert the relevant components.
-  features_revert(array(
-    'dt_core_pol' => array('context', 'menu_links'),
-    'dt_core' => array('menu_custom'),
-  ));
+  features_revert([
+    'dt_core_pol' => ['context', 'menu_links'],
+    'dt_core' => ['menu_custom'],
+  ]);
 
   // Create the menu items.
   _dt_core_pol_menu_footer();
@@ -143,7 +143,7 @@ function dt_core_pol_update_7106() {
  */
 function dt_core_pol_update_7107() {
   // Enabling  political theme and setting it as the default one.
-  theme_enable(array('political'));
+  theme_enable(['political']);
   variable_set('theme_default', 'political');
 
   // Title of the menu item used as the home page link in the breadcrumb.
@@ -160,7 +160,7 @@ function dt_core_pol_update_7107() {
   variable_set('site_frontpage', 'node/' . $nid);
   // Set alias for the home page.
   $node = node_load($nid);
-  $node->path = array('alias' => 'index', 'pathauto' => 0);
+  $node->path = ['alias' => 'index', 'pathauto' => 0];
   node_save($node);
 }
 
@@ -175,7 +175,7 @@ function dt_core_pol_update_7108() {
  * DTTSB-313: Enable dt_page_extended.
  */
 function dt_core_pol_update_7109() {
-  module_enable(array('dt_page_extended'));
+  module_enable(['dt_page_extended']);
 }
 
 /**

@@ -229,7 +229,7 @@ function dt_event_preprocess_easy_breadcrumb(&$variables) {
   if (_dt_event_is_live_path()) {
     // Add node segment for Event.
     $node = menu_get_object();
-    $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), array(), 'node/' . $node->nid);
+    $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), [], 'node/' . $node->nid);
     $variables['segments_quantity']++;
   }
 }

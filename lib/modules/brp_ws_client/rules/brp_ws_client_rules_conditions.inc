@@ -12,22 +12,22 @@ use Drupal\dt_core_brp\BrpProps;
  * Implements hook_rules_condition_info().
  */
 function brp_ws_client_rules_condition_info() {
-  return array(
-    'brp_ws_client_check_status' => array(
+  return [
+    'brp_ws_client_check_status' => [
       'label' => t('Check connection status'),
       'group' => 'BRP WS Client' ,
       'module' => 'brp_ws_client',
-      'parameter' => array(
-        'connection_name' => array(
+      'parameter' => [
+        'connection_name' => [
           'type' => 'text',
           'label' => t('Connection name'),
           'description' => t('Select connection that suppose to be checked.'),
           'options list' => '_brp_client_ws_connection_name_options',
           'restriction' => 'input',
-        ),
-      ),
-    ),
-  );
+        ],
+      ],
+    ],
+  ];
 }
 
 /**

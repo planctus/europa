@@ -406,7 +406,7 @@ function _build_brp_initiative_attachments($field) {
         $render_config['#theme'] = 'brp_initiative_attachments';
         $title = $field['entity']->title;
         if ($counter) {
-          array_push($main_doc, array('multiple' => t('PART @counter', array('@counter' => $counter))));
+          array_push($main_doc, ['multiple' => t('PART @counter', ['@counter' => $counter])]);
           $counter++;
         }
 
@@ -452,7 +452,7 @@ function _build_brp_initiative_attachments($field) {
  *    Returns array with Main doc or Annex docs.
  */
 function _brp_intiative_search_attchments($docs, $key, $value) {
-  $result = array();
+  $result = [];
   foreach ($docs as $attachments => $attachment) {
     if ($attachment[$key] == $value) {
       $result[] = $docs[$attachments];
@@ -480,7 +480,7 @@ function _brp_initiative_create_attachment(&$render_config, $attachment, $title,
   $render_config['#file_title'] = $title;
   $render_config['#attachments'] = url('/initiative/' . $remote_initiative_id . '/attachment/' . $attachment[BrpProps::INITIATIVES_ATTACHMENTS_DOCID]);
   $render_config['#file_lang'] = $lang[1][drupal_strtolower($attachment[BrpProps::INITIATIVES_ATTACHMENTS_LANGUAGE])]->name;
-  $render_config['#file_pages'] = (isset($attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES])) ? t('- @pages pages', array('@pages' => $attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES])) : FALSE;
+  $render_config['#file_pages'] = (isset($attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES])) ? t('- @pages pages', ['@pages' => $attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES]]) : FALSE;
   $render_config['#file_type'] = $separator . BrpProps::INITIATIVES_ATTACHMENTS_DOCTYPE;
   $render_config['#file_size'] = $separator . format_size($attachment[BrpProps::INITIATIVES_ATTACHMENTS_SIZE]);
   $render_config['#button_title'] = t('Download');
@@ -611,12 +611,12 @@ function brp_initiative_preprocess_easy_breadcrumb(&$variables) {
     $node = menu_get_object();
     if ($node) {
       $wrapper = entity_metadata_wrapper('node', $node);
-      $variables['breadcrumb'][] = _easy_breadcrumb_build_item($wrapper->field_brp_inve_reference->value(), array(), 'node/' . $node->nid);
+      $variables['breadcrumb'][] = _easy_breadcrumb_build_item($wrapper->field_brp_inve_reference->value(), [], 'node/' . $node->nid);
       $variables['segments_quantity']++;
       // Individual feedback.
       if (is_numeric($feedback)) {
         // Add segment for the all Feedback page.
-        $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('Feedback'), array(), _brp_initiative_get_feedback_link($node));
+        $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('Feedback'), [], _brp_initiative_get_feedback_link($node));
         $variables['segments_quantity']++;
       }
     }
@@ -662,7 +662,7 @@ function brp_initiative_field_formatter_info() {
  * Implements hook_field_formatter_view().
  */
 function brp_initiative_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $element = array();
+  $element = [];
   if (!empty($items)) {
     $formatter = $display['type'];
     switch ($formatter) {

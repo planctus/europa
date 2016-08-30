@@ -19,9 +19,9 @@ function brp_initiative_install() {
  * Enable several modules that are dependencies for brp_initiative.
  */
 function brp_initiative_enable() {
-  $modules_to_enable = array(
+  $modules_to_enable = [
     'dt_list_view_content',
-  );
+  ];
   module_enable($modules_to_enable);
 }
 
@@ -39,10 +39,10 @@ function brp_initiative_update_7101() {
  * Force remove of fields.
  */
 function brp_initiative_update_7102() {
-  $fields = array(
+  $fields = [
     'field_brp_inve_leading_service',
     'field_brp_inve_initiative_type',
-  );
+  ];
   foreach ($fields as $field_name) {
     if (field_info_field($field_name)) {
       field_delete_field($field_name);
@@ -52,11 +52,11 @@ function brp_initiative_update_7102() {
   features_revert_module('brp_initiative');
 
   // Enable several modules that are dependencies for brp_initiative.
-  $modules_to_enable = array(
+  $modules_to_enable = [
     'search_api',
     'search_api_db',
     'search_api_views',
-  );
+  ];
   module_enable($modules_to_enable);
 }
 

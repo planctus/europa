@@ -42,7 +42,7 @@ class BrpClientApi {
    * @return mixed
    *    Response array
    */
-  public function sendRequest($resource_path = '', $http_method = BrpProps::REQUEST_GET, $data = array()) {
+  public function sendRequest($resource_path = '', $http_method = BrpProps::REQUEST_GET, $data = []) {
     // Setting variables required by drupal_http_request function.
     $request_url = $this->brpClient->endpoint . $resource_path;
     $options = $this->prepareOptions($http_method, $data);
@@ -82,10 +82,10 @@ class BrpClientApi {
    *    Request data array.
    */
   protected function prepareOptions($http_method, $data) {
-    $options = array(
+    $options = [
       'headers' => $this->prepareHeaders(),
       'method'  => $http_method,
-    );
+    ];
     switch ($http_method) {
       case BrpProps::REQUEST_GET:
         break;
@@ -108,10 +108,10 @@ class BrpClientApi {
    *   Array with headers.
    */
   protected function prepareHeaders() {
-    $headers = array(
+    $headers = [
       'Accept' => 'application/json',
       'Content-Type' => 'application/json',
-    );
+    ];
 
     return $headers;
   }
@@ -131,17 +131,17 @@ class BrpClientApi {
   protected function handleRestError(&$response) {
     if ($response->code != 200) {
       watchdog('brp_ws_client', 'Error with REST request. Error was code @code
-      with error "@error" and message "@message".', array(
+      with error "@error" and message "@message".', [
         '@code'     => $response->code,
         '@error'    => $response->error,
         '@message'  => isset($response->status_message) ? $response->status_message : '(no message)',
-      ));
+      ]);
 
       BrpTools::logToFile($this->prepareResponseErrorDump($response, BrpProps::RESPONSE_ERROR_DESC));
 
-      throw new ClientException(t("BRP WS Client request error, got message '@message'.", array(
+      throw new ClientException(t("BRP WS Client request error, got message '@message'.", [
         '@message' => isset($response->status_message) ? $response->status_message : $response->error,
-      )), $response->code);
+      ]), $response->code);
     }
   }
 
@@ -189,13 +189,13 @@ class BrpClientApi {
       BrpTools::logToFile($this->prepareResponseErrorDump($response, $error_message));
 
       watchdog('brp_ws_client', 'Decoding JSON response error. Error message:
-       "@message".', array(
+       "@message".', [
          '@message'  => $error_message,
-       )
+       ]
       );
 
       throw new ClientException(t("Malformed data error. Data received was: '@data'.",
-      array('@data' => $response->data)), $response->code);
+      ['@data' => $response->data]), $response->code);
     }
   }
 
@@ -214,12 +214,12 @@ class BrpClientApi {
     $error_date = date('Y_m_d_T_H_i_s');
     $file_name = 'brp_ws_client_error_' . $error_date;
 
-    return array(
+    return [
       'error_filename' => $file_name,
       'module' => basename(__FILE__),
       'date' => date('Y_m_d_T_H_i_s'),
       'http_response' => $response,
-    );
+    ];
   }
 
   /**

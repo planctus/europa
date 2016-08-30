@@ -15,7 +15,7 @@ function brp_ws_client_form_node_type_form_alter(&$form, $form_state) {
   if (isset($form['type'])) {
     $type = $form['#node_type'];
 
-    $form['brp_client'] = array(
+    $form['brp_client'] = [
       '#type' => 'fieldset',
       '#title' => t('BRP WS Client settings'),
       '#collapsible' => TRUE,
@@ -23,9 +23,9 @@ function brp_ws_client_form_node_type_form_alter(&$form, $form_state) {
       '#group' => 'additional_settings',
       '#weight' => 130,
       '#tree' => FALSE,
-    );
+    ];
 
-    $form['brp_client']['brp_client_node_connection'] = array(
+    $form['brp_client']['brp_client_node_connection'] = [
       '#title' => "BRP WS Connection / Integration",
       '#type' => 'select',
       '#options' => BrpTools::getConnectionList(BrpProps::CONNECTION_TYPE),
@@ -33,7 +33,7 @@ function brp_ws_client_form_node_type_form_alter(&$form, $form_state) {
       '#default_value' => variable_get('brp_ws_client_node_connection_' . $type->type, ''),
       '#empty_value' => 0,
       '#empty_option' => t('- BRP WS integration disabled -'),
-    );
+    ];
   }
 }
 

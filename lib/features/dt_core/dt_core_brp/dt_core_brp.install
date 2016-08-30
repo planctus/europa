@@ -11,7 +11,7 @@
 function dt_core_brp_install() {
   // These is a minimal config, with time we will
   // add functionality/modules if needed.
-  $dt_classes = array(
+  $dt_classes = [
     // Roles and permissions.
     'dt_header_background',
     'dt_wysiwyg',
@@ -29,21 +29,21 @@ function dt_core_brp_install() {
     // Other modueles.
     'dt_page_default',
     'l10n_update',
-  );
+  ];
   module_enable($dt_classes);
 
   // Enable the search api feature.
   module_enable(['brp_initiative_search']);
 
   // Enable brp theme.
-  theme_enable(array('brp'));
+  theme_enable(['brp']);
   variable_set('theme_default', 'brp');
 
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
   // Removing admin pages to use default, (WATCH OUT FOR THAT IN THE FUTURE).
-  variable_set('cce_basic_config_admin_pages', array());
+  variable_set('cce_basic_config_admin_pages', []);
 
   // Enabling admin theme for node pages.
   variable_set('node_admin_theme', 1);
@@ -58,9 +58,9 @@ function dt_core_brp_install() {
   _dt_shared_functions_delete('menu-breadcrumb-menu', 'menu', 'menu');
 
   // Reverting the features.
-  $features = array(
+  $features = [
     'dt_core',
-  );
+  ];
   foreach ($features as $feature) {
     // If module enabled, that revert.
     if (module_exists($feature)) {
@@ -119,7 +119,7 @@ function dt_core_brp_update_7102() {
  */
 function dt_core_brp_update_7103() {
   // Enable brp theme.
-  theme_enable(array('brp'));
+  theme_enable(['brp']);
   variable_set('theme_default', 'brp');
 }
 

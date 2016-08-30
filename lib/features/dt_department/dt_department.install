@@ -18,7 +18,7 @@ function _dt_department_remove_all_department_tasks() {
   $efq->propertyCondition('vid', $vocabulary->vid, '=');
   $result = $efq->execute();
   if (!isset($result['taxonomy_term'])) {
-    drupal_set_message(t('No terms to delete in vocabulary @voc.', array('@voc' => $vocabulary_machine_name)));
+    drupal_set_message(t('No terms to delete in vocabulary @voc.', ['@voc' => $vocabulary_machine_name]));
   }
   else {
     foreach ($result['taxonomy_term'] as $term) {
@@ -35,7 +35,7 @@ function _dt_department_migrate_department_tasks() {
   // Force registration of migration classes.
   migrate_static_registration();
   // Make sure that destination vocabularies exists.
-  features_revert(array('dt_department' => array('taxonomy')));
+  features_revert(['dt_department' => ['taxonomy']]);
   // Import department_tasks vocabulary's terms.
   Migration::getInstance('DTDepartmentTasks')->processImport();
 }
@@ -74,9 +74,9 @@ function dt_department_update_7102() {
   // Reverting feature.
   features_revert_module('dt_department');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_department' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_department' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -96,9 +96,9 @@ function dt_department_update_7104() {
   // Reverting feature.
   features_revert_module('dt_department');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_department' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_department' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -106,9 +106,9 @@ function dt_department_update_7104() {
  */
 function dt_department_update_7105() {
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_department_main_tasks',
-  );
+  ];
 
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
@@ -118,10 +118,10 @@ function dt_department_update_7105() {
 
   // Remove the fieldgroups.
   $type = 'department';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_cta',
     'group_topics',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
@@ -138,10 +138,10 @@ function dt_department_update_7105() {
 function dt_department_update_7106() {
   // Remove the fieldgroups.
   $type = 'department';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_cta',
     'group_topics',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
@@ -197,9 +197,9 @@ function dt_department_update_7111() {
  */
 function dt_department_update_7112() {
   // We will store some data for a second run.
-  $alterdata = array();
+  $alterdata = [];
   // List of fields we'll merge.
-  $types_to_merge = array('Directorate-General (policy)', 'Directorate-General (operational)');
+  $types_to_merge = ['Directorate-General (policy)', 'Directorate-General (operational)'];
   // Entity query.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
@@ -224,7 +224,7 @@ function dt_department_update_7112() {
         $department->field_core_ecorganisation[LANGUAGE_NONE]['0']['value'] = 'Directorate-General';
         // Update and reset cache.
         field_attach_update('node', $department);
-        entity_get_controller('node')->resetCache(array($nid));
+        entity_get_controller('node')->resetCache([$nid]);
       }
     }
   }
@@ -243,7 +243,7 @@ function dt_department_update_7112() {
         $department->field_department_dg_type[LANGUAGE_NONE]['0']['value'] = $alterdata[$nid]['dg_type'];
         // Update and reset cache.
         field_attach_update('node', $department);
-        entity_get_controller('node')->resetCache(array($nid));
+        entity_get_controller('node')->resetCache([$nid]);
       }
     }
   }

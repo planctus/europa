@@ -9,17 +9,17 @@
  * Implements hook_menu().
  */
 function dt_roles_permissions_export_menu() {
-  $items = array();
+  $items = [];
 
-  $items['admin/people/permissions/dt_roles_permissions_export'] = array(
-    'access arguments' => array('administer site configuration'),
+  $items['admin/people/permissions/dt_roles_permissions_export'] = [
+    'access arguments' => ['administer site configuration'],
     'description' => 'Export permissions',
     'file' => 'dt_roles_permissions_export.admin.inc',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('dt_roles_permissions_export_page'),
+    'page arguments' => ['dt_roles_permissions_export_page'],
     'title' => 'Permission export',
     'type' => MENU_LOCAL_TASK,
-  );
+  ];
 
   return $items;
 }
@@ -87,7 +87,7 @@ function _dt_roles_permissions_get_export_data($role) {
   $export_data .= "\n";
   // Iterate for each selected role.
   $export_data .= "\$permissions['" . $role->name . "'] = array(\n";
-  $perms = user_role_permissions(array($role->rid => $role->name));
+  $perms = user_role_permissions([$role->rid => $role->name]);
   // Loop the items.
   foreach ($perms[$role->rid] as $perm => $val) {
     $export_data .= "  '" . $perm . "',\n";

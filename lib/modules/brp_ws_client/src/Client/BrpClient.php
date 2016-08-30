@@ -142,11 +142,11 @@ class BrpClient extends \clients_connection_base {
       cache_set($cache_tag, $fields, 'cache', time() + BrpProps::CONNECTION_SETTINGS_CACHE);
     }
 
-    $this->fields = array(
+    $this->fields = [
       'initiative' => $fields['initiative'],
       'feedback' => $fields['feedback'],
       'feedback_report' => $fields['feedback_report'],
-    );
+    ];
 
   }
 
@@ -157,7 +157,7 @@ class BrpClient extends \clients_connection_base {
    *    Array with all of initiatives IDs.
    */
   public function getAllInitiativesIds() {
-    $initiatives_ids = array();
+    $initiatives_ids = [];
 
     $response = $this->sendGetRequest(BrpProps::SERVICE_INITIATIVES);
     if ($response['code'] == 200 && $response['page']['totalElements'] > 0) {
@@ -201,7 +201,7 @@ class BrpClient extends \clients_connection_base {
    *    Fields array for initiative.
    */
   private function getMetaFieldsInfo($meta_endpoint, $meta_descriptor) {
-    $fields = array();
+    $fields = [];
     $meta_desc = $this->getMetaDescriptorsById(
       $meta_endpoint,
       $meta_descriptor
@@ -259,7 +259,7 @@ class BrpClient extends \clients_connection_base {
    */
   public static function getIntegratedFieldsFromEntity($entity_type, $entity_bundle) {
     $field_instances = field_info_instances($entity_type, $entity_bundle);
-    $integrated_fields = array();
+    $integrated_fields = [];
     foreach ($field_instances as $key => $field_instance) {
       if (isset($field_instance['settings']['brp_ws_fields'])
         && $field_instance['settings']['brp_ws_fields']['field_map']
@@ -281,7 +281,7 @@ class BrpClient extends \clients_connection_base {
    *    Array with prepared request data.
    */
   public static function prepareRequestData($ef_submission) {
-    $request_data = array();
+    $request_data = [];
 
     // Get mapped fields collection.
     switch ($ef_submission->type) {

@@ -25,9 +25,9 @@ function dt_topic_uninstall() {
  */
 function dt_topic_update_7101() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_topic',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.
@@ -47,7 +47,7 @@ function dt_topic_update_7102() {
  * Updating Topic content type nodes path aliases.
  */
 function dt_topic_update_7103() {
-  $nodes = node_load_multiple(array(), array('type' => 'topic'));
+  $nodes = node_load_multiple([], ['type' => 'topic']);
   foreach ($nodes as $node) {
     pathauto_node_update_alias($node, 'update ');
   }
@@ -81,10 +81,10 @@ function dt_topic_update_7106() {
  */
 function dt_topic_update_7107() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_core',
     'dt_topic',
-  );
+  ];
   // Reverting the features.
   foreach ($features as $feature) {
     features_revert_module($feature);
@@ -120,7 +120,7 @@ function dt_topic_update_7109() {
 
   // Set default title to the new multi-value field again.
   $ids = db_select('node', 'n')
-    ->fields('n', array('nid'))
+    ->fields('n', ['nid'])
     ->condition('type', 'topic', '=')
     ->execute()
     ->fetchCol();

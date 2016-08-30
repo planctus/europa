@@ -9,7 +9,7 @@
  * Implements hook_default_rules_configuration().
  */
 function brp_ws_client_default_rules_configuration() {
-  $config = array();
+  $config = [];
   $rule = '';
   // Getting all BRP WS Client rules configuration files.
   $rules_path = drupal_get_path('module', 'brp_ws_client') . '/rules';

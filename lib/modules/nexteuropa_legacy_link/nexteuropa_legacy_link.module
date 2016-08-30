@@ -80,10 +80,10 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
 
       if ($element['#field_type'] == 'entityreference') {
         // Skip entity reference fields not targeting nodes.
-        $valid_targets = array(
+        $valid_targets = [
           'node',
           'taxonomy_term',
-        );
+        ];
 
         $check_types = isset($field['settings']['target_type']) && in_array($field['settings']['target_type'], $valid_targets);
         $check_setting = !isset($display['settings']['link']) || !isset($field['settings']['target_type']);
@@ -95,23 +95,23 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
         foreach ($element['#items'] as $delta => $item) {
           // Check if item has Legacy link.
           if (isset($item['entity']->legacy)) {
-            $element[$delta] = array('#markup' => l($item['entity']->title, $item['entity']->legacy));
+            $element[$delta] = ['#markup' => l($item['entity']->title, $item['entity']->legacy)];
           }
         }
       }
       // Taxonomy term reference.
       else {
-        $fromatters = array('taxonomy_term_reference_link');
+        $fromatters = ['taxonomy_term_reference_link'];
         if (in_array($display['type'], $fromatters)) {
           foreach ($element['#items'] as $delta => $item) {
             $term = taxonomy_term_load($item['tid']);
             $link = isset($term->legacy) ? $term->legacy : url('taxonomy/term/' . $item['tid']);
 
-            $element[$delta] = array(
+            $element[$delta] = [
               '#type' => 'link',
               '#title' => $term->name,
               '#href' => $link,
-            );
+            ];
           }
         }
       }
@@ -123,25 +123,25 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
  * Implements hook_token_info().
  */
 function nexteuropa_legacy_link_token_info() {
-  return array(
-    'tokens' => array(
-      'node' => array(
-        'legacy-link' => array(
+  return [
+    'tokens' => [
+      'node' => [
+        'legacy-link' => [
           'name' => t("Legacy link with fallback."),
           'description' => t('When the field_core_legacy_link exists and not empty, the token gives back the legacy link, else the node url.'),
-        ),
-      ),
-    ),
-  );
+        ],
+      ],
+    ],
+  ];
 }
 
 /**
  * Implements hook_tokens().
  */
-function nexteuropa_legacy_link_tokens($type, $tokens, $data = array(), $options = array()) {
-  $replacements = array();
+function nexteuropa_legacy_link_tokens($type, $tokens, $data = [], $options = []) {
+  $replacements = [];
   if ($type == 'node' && !empty($data['node'])) {
-    $url_options = array('absolute' => TRUE);
+    $url_options = ['absolute' => TRUE];
     $node = $data['node'];
     foreach ($tokens as $name => $original) {
       switch ($name) {
