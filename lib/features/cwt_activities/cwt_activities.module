@@ -61,14 +61,14 @@ function cwt_activities_views_query_alter(&$view, &$query) {
     // If start date field value is empty, adds to the query view the condition
     // to return all items from now forward.
     if (empty($view->exposed_raw_input['date_filter_min']['value'])) {
-      $date = date('Y-m-d', time());
+      $date = time();
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '>=');
     }
     // If end date field value is empty, adds to the query view the condition
     // to return only the items to this date.
     if (empty($view->exposed_raw_input['date_filter_max']['value'])) {
       // Return all items for the next 2 Sundays from the previous Friday.
-      $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
+      $date = date('U', strtotime('last friday +10 days')) - 1;
       $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
     }
     // Agenda views override date sorting, granularity should be: 'day'.
@@ -77,10 +77,10 @@ function cwt_activities_views_query_alter(&$view, &$query) {
     }
   }
   elseif ($view->name == 'activities' && $view->current_display == 'block') {
-    $date = date('Y-m-d', time());
+    $date = time();
     $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value', $date, '>=');
 
-    $date = date('Y-m-d', strtotime('last friday +9 days')) . ' 23:59:59';
+    $date = date('U', strtotime('last friday +10 days')) - 1;
     $query->add_where(0, 'field_data_field_start_end_date.field_start_end_date_value2', $date, '<=');
   }
 }
