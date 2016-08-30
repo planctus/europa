@@ -39,8 +39,22 @@ function dt_list_view_content_preprocess_page(&$variables) {
     if ($views_content = _dt_list_view_get_bean_content($view)) {
       // If we have, and there is an introduction, push it to the variables.
       if (isset($views_content['introduction'])) {
-        $variables['field_core_introduction'] = $views_content['introduction']['value'];
+        $variables['field_core_introduction'] = filter_xss($views_content['introduction']['value']);
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Here we modify the output of the view, we set the title prefix the content.
+ */
+function dt_list_view_content_preprocess_views_view(&$variables) {
+  if ($views_content = _dt_list_view_get_bean_content($variables['view'])) {
+    if (isset($views_content['content']['value'])) {
+      // Set the content if available.
+      $variables['title_prefix'] = filter_xss($views_content['content']['value']);
     }
   }
 }
@@ -102,18 +116,9 @@ function _dt_list_view_get_bean_content($view) {
  */
 function dt_list_view_content_views_pre_view($view, &$display_id, &$args) {
   if ($views_content = _dt_list_view_get_bean_content($view)) {
-    // Set the content if available.
-    if (isset($views_content['content'])) {
-      $header_options = array(
-        'content' => $views_content['content']['value'],
-        'format' => $views_content['content']['format'],
-        'empty' => 1,
-      );
-      $view->add_item($display_id, 'header', 'views', 'area', $header_options);
-    }
     // Set the description if available.
     if (isset($views_content['description'])) {
-      $view->description = $views_content['description'];
+      $view->description = filter_xss($views_content['description']);
     }
   }
 }

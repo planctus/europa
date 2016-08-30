@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Adds the required hooks in this file brp_nal_corporate_bodies.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function brp_nal_corporate_bodies_enable() {
+  drupal_set_message(t('BRP NAL Corporate Bodies feature is enabled on your site.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function brp_nal_corporate_bodies_disable() {
+  drupal_set_message(t('BRP NAL Corporate Bodies feature has been disabled.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function brp_nal_corporate_bodies_uninstall() {
+  drupal_set_message(t('BRP NAL Corporate Bodies feature has been uninstalled.'));
+}

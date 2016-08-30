@@ -53,25 +53,28 @@ Feature: In-page navigation
       | Related links |
 
   @brp
-  Scenario: Inpage navigation should have the correct order on Page content
-    Given a "File" with the title "File Example"
-    Given "Publication" content:
-      | title               | field_core_files | field_publication_collection | status |
-      | Publication example | File Example     | 0                            | 1      |
+  Scenario: Inpage navigation should have the correct order on Page content with initiatives
+    Given "Initiative" content:
+      | title              | status | field_core_description |
+      | Initiative example | 1      | Initiative Title       |
     Given I am viewing a "Page" content:
-      | title                         | Content title                                  |
-      | body:value                    | <h2 id="inpage">Inpage</h2><h2>InpageNoId</h2> |
-      | body:format                   | full_html                                      |
-      | status                        | 1                                              |
-      | field_core_links              | test - http://test.domain                      |
-      | field_core_description        | description                                    |
-      | field_core_introduction       | content intro                                  |
-      | field_core_latest_visibility  | Enable                                         |
-      | field_core_in_page_navigation | Enable                                         |
+      | title                         | Content title               |
+      | body:value                    | <h2 id="inpage">Inpage</h2> |
+      | body:format                   | full_html                   |
+      | status                        | 1                           |
+      | field_core_links              | test - http://test.domain   |
+      | field_core_description        | description                 |
+      | field_core_introduction       | content intro               |
+      | field_core_latest_visibility  | Enable                      |
+      | field_core_in_page_navigation | Enable                      |
+    And I set the current page as frontpage
+    And I reload the page
     Then I should see an ".inpage-nav__wrapper" element
     Then I should see the following in the repeated ".inpage_nav__list-item" element within the context of the ".inpage-nav__list" element:
-      | text          |
-      | Related links |
+      | text               |
+      | Inpage             |
+      | Latest initiatives |
+      | Related links      |
 
   @information
   Scenario: Inpage navigation should have the correct order on Department content

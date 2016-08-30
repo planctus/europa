@@ -1,0 +1,284 @@
+<?php
+
+/**
+ * @file
+ * Code for the brp_feedback_form feature.
+ *
+ * @todo: Get initiative context and assign this to initiative field.
+ * @todo: Check if the user account is filled with ECAS information.
+ * @todo: Integrate with Roles to remove submission after store in web service.
+ * @todo: Connection to web services API.
+ */
+
+include_once 'brp_feedback_form.features.inc';
+
+use Drupal\dt_core_brp\BrpTools;
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * For defining external libraries.
+ */
+function brp_feedback_form_libraries_info() {
+  $libraries['areyousure'] = [
+    'name' => 'Are you sure',
+    'vendor url' => 'https://github.com/codedance/jquery.AreYouSure',
+    'download url' => 'https://github.com/codedance/jquery.AreYouSure/blob/master/jquery.are-you-sure.js',
+    'version arguments' => [
+      'file' => 'jquery.are-you-sure.js',
+      'pattern' => '/Version: (1.9.(\d))/',
+    ],
+    'files' => [
+      'js' => ['jquery.are-you-sure.js'],
+    ],
+  ];
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  global $language;
+
+  $wrapper = entity_metadata_wrapper('user', $user->uid);
+  // Adding a validation handler to the form.
+  $form['#validate'][] = '_brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_validate';
+
+  // We need to get the context for the initiative ID.
+  if ($initiative = menu_get_object()) {
+    $form['field_brp_fb_initiative_id'][LANGUAGE_NONE][0]['value']['#default_value']
+      = $initiative->field_brp_inve_id[LANGUAGE_NONE][0]['value'];
+
+    $initiative_info_link = '<strong>'
+      . t('<a href="@url">View this initiative</a>', [
+        '@url' => url('node/' . $initiative->nid),
+      ])
+      . '</strong><br>';
+  }
+
+  // Adding user-agent information and hiding field.
+  $form['field_brp_fb_ua'][LANGUAGE_NONE][0]['value']['#default_value'] = $_SERVER['HTTP_USER_AGENT'];
+  $form['field_brp_fb_ua']['#type'] = 'hidden';
+
+  // Adding user name information and hiding field.
+  $form['field_brp_fb_ecas_login'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->name->value();
+  $form['field_brp_fb_ecas_login']['#type'] = 'hidden';
+
+  // Wrapping the form in a class to scope the javascript behaviors and placing
+  // the pre-instruction text.
+  $form['#prefix'] = '<div class="initiative-feedback-form"><p>'
+    . (isset($initiative_info_link) ? $initiative_info_link : '')
+    . t('Fields marked with an asterisk ( * ) are required.')
+    . '</p>';
+  $form['#suffix'] = '</div>';
+
+  // Transparency register number description text and fix for language in
+  // the link.
+  $form['field_brp_fb_trnumber'][LANGUAGE_NONE]['#prefix'] = '<div>';
+  $form['field_brp_fb_trnumber'][LANGUAGE_NONE]['#suffix'] = '<p class="help-block">'
+    . t('Check if your organisation is on the <a href="@url" target="_blank">transparency register</a>.', [
+      '@url' => 'http://ec.europa.eu/transparencyregister/public/homePage.do?redir=false&locale=' . $language->language,
+    ])
+    . ' ' . t("(It's a voluntary database for organisations seeking to influence EU decision-making).")
+    . '</p></div>';
+
+  // Country description text.
+  $form['field_brp_fb_country'][LANGUAGE_NONE]['#suffix'] = '<p class="help-block">'
+    . t('Please add your country of origin, or that of your organisation.')
+    . '</p>';
+
+  // Hide initiative_id field.
+  $form['field_brp_fb_initiative_id'][LANGUAGE_NONE][0]['#type'] = 'hidden';
+
+  // Setting readonly fields.
+  $form['field_brp_fb_fname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+  $form['field_brp_fb_surname'][LANGUAGE_NONE][0]['value']['#attributes']['disabled'] = TRUE;
+  $form['field_brp_fb_email'][LANGUAGE_NONE][0]['email']['#attributes']['disabled'] = TRUE;
+
+  // Force Maxlenght on feedback body field, using UI seems to be not enough.
+  $form['field_brp_fb_body'][LANGUAGE_NONE][0]['value']['#maxlength_js'] = TRUE;
+  $form['field_brp_fb_body'][LANGUAGE_NONE][0]['value']['#maxlength'] = 4000;
+
+  // Assign default user data, fields are not translated.
+  $form['field_brp_fb_fname'][LANGUAGE_NONE][0]['value']['#default_value']
+    = $wrapper->field_firstname->value();
+  $form['field_brp_fb_surname'][LANGUAGE_NONE][0]['value']['#default_value']
+    = $wrapper->field_lastname->value();
+  $form['field_brp_fb_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;
+
+  // Feedback language.
+  $language_options = $form['field_brp_fb_language'][LANGUAGE_NONE]['#options'];
+  $languages_drupal = language_list();
+  // Building a list of languages based on the Drupal installed languages.
+  $languages = [];
+  foreach ($languages_drupal as $lang => $lang_object) {
+    if ($lang == 'pt-pt') {
+      $lang = 'pt';
+    }
+    $languages[drupal_strtoupper($lang)] = $lang_object->native;
+  }
+  if ($languages) {
+    // Preserving the none option.
+    $languages = ['_none' => $language_options['_none']] + $languages;
+    // Attaching the list of values to the field.
+    $form['field_brp_fb_language'][LANGUAGE_NONE]['#options'] = $languages;
+    // Assign default site language language field.
+    $form['field_brp_fb_language'][LANGUAGE_NONE]['#default_value'] = drupal_strtoupper($language->language);
+  }
+
+  // User types.
+  $user_types_options = $form['field_brp_fb_user_type'][LANGUAGE_NONE]['#options'];
+  // Getting the list of values.
+  if ($user_types = BrpTools::buildOptionsFromVocabulary('brp_user_type', 'field_taxonomy_ws_key')) {
+    uasort($user_types, '_brp_feedback_compare_ascii');
+    // Find and remove 'Other' element and put to the end.
+    $other = $user_types['OTHER'];
+    unset($user_types['OTHER']);
+    $user_types = $user_types + ['OTHER' => $other];
+    // Preserving the none option.
+    $user_types = ['_none' => $user_types_options['_none']] + $user_types;
+    // Attaching the list of values to the field.
+    $form['field_brp_fb_user_type'][LANGUAGE_NONE]['#options'] = $user_types;
+  }
+
+  // Company size.
+  $company_size_options = $form['field_brp_fb_companysize'][LANGUAGE_NONE]['#options'];
+  // Getting the list of values.
+  if ($sizes = BrpTools::buildOptionsFromVocabulary('brp_company_size', 'field_taxonomy_ws_key')) {
+    // Preserving the none option.
+    $sizes = ['_none' => $company_size_options['_none']] + $sizes;
+    // Attaching the list of values to the field.
+    $form['field_brp_fb_companysize'][LANGUAGE_NONE]['#options'] = $sizes;
+  }
+
+  // Countries.
+  $countries_options = $form['field_brp_fb_country'][LANGUAGE_NONE]['#options'];
+  if ($countries = BrpTools::buildOptionsFromVocabulary('nal_countries', 'field_iso3')) {
+    // Sorting countries array; get defined locale first.
+    uasort($countries, '_brp_feedback_compare_ascii');
+
+    // Preserving the none option.
+    $countries = ['_none' => $countries_options['_none']] + $countries;
+    // Attaching the list of values to the field.
+    $form['field_brp_fb_country'][LANGUAGE_NONE]['#options'] = $countries;
+  }
+
+  // Scope.
+  $scope_options = $form['field_brp_fb_scope'][LANGUAGE_NONE]['#options'];
+  // Getting the list of values.
+  if ($scopes = BrpTools::buildOptionsFromVocabulary('brp_scope', 'field_taxonomy_ws_key')) {
+    uasort($scopes, '_brp_feedback_compare_ascii');
+    // Preserving the none option.
+    $scopes = ['_none' => $scope_options['_none']] + $scopes;
+    // Attaching the list of values to the field.
+    $form['field_brp_fb_scope'][LANGUAGE_NONE]['#options'] = $scopes;
+  }
+
+  // I agree field.
+  $personal_data_link = (variable_get('brp_feedbackfield_personal_data', '')) ?
+    l(t('personal data protection provisions'), variable_get('brp_feedbackfield_personal_data', ''), ['attributes' => ['target' => '_blank']]) :
+    t('personal data protection provisions');
+  $form['field_brp_fb_agree'][LANGUAGE_NONE]['#title'] .= $personal_data_link;
+
+  // Publication fields.
+  $form['field_brp_fb_publication']['#after_build'][]
+    = '_brp_feedback_form_field_brp_fb_publication_after_build';
+
+  // Notifies the user upon leaving the page.
+  $form['#attached']['libraries_load'][] = ['areyousure'];
+  drupal_add_js('(function($){ $(\'form\').areYouSure(); })(jQuery);', array(
+    'type' => 'inline',
+    'scope' => 'footer',
+  ));
+}
+
+/**
+ * Implements after_build callback for field_brp_fb_publication.
+ *
+ * Changes the titles of the publication options.
+ */
+function _brp_feedback_form_field_brp_fb_publication_after_build($element, &$form_state) {
+  $element[LANGUAGE_NONE][0]['#title'] = '<p>' . t('Anonymous') . '<br>' . t('Your personal details (name, organisation name and size, transparency register number) will not be published, however some details will be published (country of origin).') . '</p>';
+  $element[LANGUAGE_NONE][1]['#title'] = '<p>' . t('Public') . '<br>' . t('Your personal details (name, organisation name and size, transparency register number, country of origin) will be published with your feedback.') . '</p>';
+
+  return $element;
+}
+
+/**
+ * Implements validate callback for brp_feedback_form.
+ */
+function _brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_validate($form, &$form_state) {
+  // Validation for the register number. Format ex. 988359621494-15.
+  $value = $form_state['values']['field_brp_fb_trnumber'][LANGUAGE_NONE][0]['value'];
+  if (!empty($value) && !preg_match('/^\d{6,14}-\d{2}$/', $value)) {
+    form_set_error('field_brp_fb_trnumber', t('Transparency register number is invalid.'));
+  }
+  if (form_get_errors()) {
+    // Set  a default message to be treated in the template.
+    drupal_set_message(t('brp_form_error'), 'error');
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function brp_feedback_form_form_brp_initiatives_feedback_report_entityform_edit_form_alter(&$form, &$form_state, $form_id) {
+  // Wrapping the form in a class to scope the javascript behaviors.
+  $form['#prefix'] = '<div class="initiative-feedback-report-form">';
+  $form['#suffix'] = '</div>';
+
+  $form['name_field']['#access'] = FALSE;
+  $form['field_brp_fb_report_email']['#access'] = FALSE;
+
+  /*
+   * @todo Commented until confirmation about email and name field which are not
+   * available in BRP web service
+   *
+   * Assign default user data, fields are not translated.
+   * global $user;
+   * $wrapper = entity_metadata_wrapper('user', $user->uid);
+   * $form['name_field']['#type'] = 'hidden';
+   * $form['field_brp_fb_report_email']['#type'] = 'hidden';
+   * $form['name_field']['#default_value'] =
+   * $wrapper->field_firstname->value() .
+   * ' ' . $wrapper->field_lastname->value();
+   * $form['field_brp_fb_report_email']['#default_value'] = $user->mail;
+   */
+
+  $fb_id = _brp_initiative_get_feedback_id_from_path($form['#action']);
+  $form['field_brp_fb_initiative_id'][LANGUAGE_NONE][0]['value']['#default_value'] = $fb_id;
+  // Make field hidden.
+  $form['field_brp_fb_initiative_id']['#type'] = 'hidden';
+
+  // Report taxonomy field.
+  if ($report = BrpTools::buildOptionsFromVocabulary('brp_report', 'field_taxonomy_ws_key')) {
+    $form['field_brp_fb_report_type'][LANGUAGE_NONE]['#options'] = $report;
+  }
+
+  $form['actions']['cancel'] = [
+    '#markup' => l(t('Cancel'), _brp_initiative_get_feedback_link(menu_get_object(), $fb_id), ["attributes" => ["class" => "btn"]]),
+  ];
+}
+
+/**
+ * Helper function to sort countries list.
+ *
+ * @param string $a
+ *   String to be processed.
+ * @param string $b
+ *   String to be processed.
+ *
+ * @return int
+ *   Calculated value.
+ */
+function _brp_feedback_compare_ascii($a, $b) {
+  setlocale(LC_ALL, "en_US.utf8");
+
+  $at = iconv(mb_detect_encoding($a), 'ascii//TRANSLIT', $a);
+  $bt = iconv(mb_detect_encoding($b), 'ascii//TRANSLIT', $b);
+
+  return strcmp($at, $bt);
+}

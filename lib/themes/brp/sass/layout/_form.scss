@@ -1,0 +1,48 @@
+// Initiative feedback form.
+
+.initiative-feedback-form {
+  .help-block {
+    max-width: none;
+  }
+
+  .field-name-field-brp-fb-trnumber,
+  .field-name-field-brp-fb-country {
+    .form-item {
+      margin-bottom: 0;
+
+      input,
+      select {
+        margin-bottom: 0.6em;
+      }
+    }
+
+    .help-block {
+      max-width: 32em;
+    }
+  }
+
+  .field-name-field-brp-fb-publication > p,
+  .field-name-field-brp-fb-agree > p {
+    max-width: none;
+    margin-top: -0.6875em;
+    margin-left: 2.0620em;
+    font-size: 0.889em;
+  }
+
+  .field-name-field-brp-fb-publication > p {
+    margin-left: 0;
+  }
+}
+
+@include breakpoint(screen-sm-min) {
+  .initiative-feedback-form {
+    input[type="text"],
+    select {
+      width: 40%;
+    }
+
+    .field-name-field-brp-fb-agree > p {
+      max-width: 60%;
+    }
+  }
+}

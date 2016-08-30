@@ -18,10 +18,15 @@ Feature: Content specific metatag behaviour
 
   @brp
   Scenario: Users should see the meta description on Initiative content.
+    Given "nal_resource_types" terms:
+      | name         | description                   |
+      | ResourceType | The resource type description |
     Given I am viewing a "Initiative" content:
-      | title                  | Initiative Title            |
-      | field_core_description | Initiative meta description |
-      | status                 | 1                           |
+      | title                        | Initiative Title            |
+      | field_core_description       | Initiative meta description |
+      | status                       | 1                           |
+      | field_brp_inve_resource_type | ResourceType                |
+      | field_brp_inve_id            | 1                           |
     Then the metatag attribute "description" should have the value "Initiative meta description"
 
   @information

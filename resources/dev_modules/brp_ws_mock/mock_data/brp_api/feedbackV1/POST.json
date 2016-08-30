@@ -1,0 +1,46 @@
+{
+  "createdDate" : "2016/08/22 09:02:18",
+  "modifiedDate" : "2016/08/22 09:02:18",
+  "id" : 88,
+  "feedback" : "bar",
+  "dateFeedback" : "2016/08/22 09:02:18",
+  "language" : "EN",
+  "userType" : "BUSINESS_ASSOCIATION",
+  "firstName" : "rob",
+  "surname" : "harings",
+  "email" : "",
+  "country" : "BEL",
+  "organization" : "bar",
+  "tr_number" : null,
+  "companySize" : "SMALL",
+  "scope" : null,
+  "publication" : "WITHINFO",
+  "status" : "PUBLISHED",
+  "reviewed" : false,
+  "hasToBeReviewed" : false,
+  "reportsNumber" : 0,
+  "englishfeedback" : null,
+  "firstReportDate" : null,
+  "referenceInitiative" : "Ares(2016)212998",
+  "statusChanged" : false,
+  "historyEventOccurs" : false,
+  "historyType" : null,
+  "userAgent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36",
+  "login" : "admin",
+  "daysElapsedSinceFirstReport" : 0,
+  "_links" : {
+    "self" : {
+      "href" : "https://webgate.ec.europa.eu:80/brp/api/feedbackV1/88"
+    },
+    "feedbackV1" : {
+      "href" : "https://webgate.ec.europa.eu:80/brp/api/feedbackV1/88{?projection}",
+      "templated" : true
+    },
+    "initiative" : {
+      "href" : "https://webgate.ec.europa.eu:80/brp/api/feedbackV1/88/initiative"
+    },
+    "reports" : {
+      "href" : "https://webgate.ec.europa.eu:80/brp/api/feedbackV1/88/reports"
+    }
+  }
+}

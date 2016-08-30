@@ -1,0 +1,53 @@
+{
+  "_links": {
+    "accounts": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/accounts"
+    },
+    "reportsV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/reportsV1"
+    },
+    "roles": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/roles{?page,size,sort}",
+      "templated": true
+    },
+    "initiativesV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1{?page,size,sort,projection}",
+      "templated": true
+    },
+    "permissions": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/permissions{?page,size,sort}",
+      "templated": true
+    },
+    "feedbackHistory": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackHistory{?projection}",
+      "templated": true
+    },
+    "feedbackV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1{?page,size,sort,projection}",
+      "templated": true
+    },
+    "expertGroups": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/expertGroups"
+    },
+    "dgs": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/dgs{?page,size,sort}",
+      "templated": true
+    },
+    "committees": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/committees"
+    },
+    "messages": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/messageBundle"
+    },
+    "reporting": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/reporting"
+    },
+    "search": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search"
+    },
+    "profile": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/profile"
+    }
+  },
+  "code": "200"
+}

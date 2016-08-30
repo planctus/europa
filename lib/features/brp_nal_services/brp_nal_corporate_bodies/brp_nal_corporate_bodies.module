@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Code for the BRP NAL corporate bodies feature.
+ */
+
+include_once 'brp_nal_corporate_bodies.features.inc';
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function brp_nal_corporate_bodies_feeds_presave(FeedsSource $source, $entity, $item) {
+  if ($source->importer->id == 'nal_corporate_bodies_importer') {
+    $dgs = _brp_nal_corporate_bodies_get_dgs();
+    $authority_code = $entity->field_authority_code[LANGUAGE_NONE][0]['value'];
+    if (!in_array($authority_code, $dgs)) {
+      $entity->feeds_item->skip = TRUE;
+    }
+  }
+}
+
+/**
+ * Helper reading the CSV file limiting importer.
+ *
+ * @return array
+ *   The result of opening the /data/dgs_en.csv file.
+ */
+function _brp_nal_corporate_bodies_get_dgs_csv() {
+  $csvFile = __DIR__ . '/data/dgs_en.csv';
+  $line_of_text = [];
+  if ($file_handle = fopen($csvFile, 'r')) {
+    while (!feof($file_handle)) {
+      $line_of_text[] = fgetcsv($file_handle, 1024);
+    }
+    fclose($file_handle);
+  }
+  return $line_of_text;
+}
+
+/**
+ * Helper to return the clean list of dgs.
+ *
+ * @return array
+ *    The result is an array only with names of the directorates.
+ */
+function _brp_nal_corporate_bodies_get_dgs() {
+  $dgs_csv = _brp_nal_corporate_bodies_get_dgs_csv();
+  $dgs_out = [];
+  if (isset($dgs_csv) && count($dgs_csv) > 0) {
+    for ($i = 1; $i < count($dgs_csv); $i++) {
+      $dgs_out[] = $dgs_csv[$i][0];
+    }
+  }
+  return $dgs_out;
+}

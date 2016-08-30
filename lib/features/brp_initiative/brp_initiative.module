@@ -1,0 +1,723 @@
+<?php
+
+/**
+ * @file
+ * Code for the BRP initiatives feature.
+ */
+
+include_once 'brp_initiative.features.inc';
+
+// Custom Rules elements.
+module_load_include('inc', 'brp_initiative', 'rules/brp_initiative_rules_actions');
+module_load_include('inc', 'brp_initiative', 'rules/brp_initiative_rules_conditions');
+
+use Drupal\dt_core_brp\BrpProps;
+
+/**
+ * Implements hook_init().
+ */
+function brp_initiative_init() {
+  // Check if the service is available.
+  $client = clients_connection_load(BrpProps::CONNECTION_NAME);
+
+  // Pattern to match for.
+  $pattern = 'service_down*' . PHP_EOL . 'user*';
+
+  // All checks for redirecting.
+  if (!$client->checkConnectionStatus() && !user_access('access administration menu') && !drupal_match_path(current_path(), $pattern)) {
+    drupal_set_message(t('This page cannot be displayed because the web service is currently unavailable. Please try again later.'), 'warning', FALSE);
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ *
+ * Based on the path, we change the view mode.
+ */
+function brp_initiative_entity_view_mode_alter(&$view_mode, $context) {
+  $current_path = _brp_initiative_is_feedback_path();
+
+  switch (TRUE) {
+    case $current_path == 'feedback':
+      $view_mode = 'feedback';
+      break;
+
+    case $current_path == 'add_feedback':
+      $status = _brp_initiative_get_status($context['entity']);
+      if ($status['status'] == BrpProps::BRP_INITIATIVE_OPEN) {
+        $view_mode = 'add_feedback';
+      }
+      break;
+
+    case $current_path == 'add_report_feedback':
+      $view_mode = 'add_report_feedback';
+      break;
+
+    case is_int($current_path):
+      $view_mode = 'detail_feedback';
+      break;
+  }
+}
+
+/**
+ * Implements hook_entity_prepare_view().
+ */
+function brp_initiative_entity_prepare_view($entities, $type, $langcode) {
+  if ($type == 'node' && _brp_initiative_is_feedback_path()) {
+    foreach ($entities as &$entity) {
+      // By unsetting this, we ensure that we render the correct view mode.
+      unset($entity->entity_view_prepared);
+    }
+  }
+}
+
+/**
+ * Implements hook_url_inbound_alter().
+ *
+ * Alter the path passed to the system.
+ */
+function brp_initiative_url_inbound_alter(&$path, $original_path, $path_language) {
+  $virtual_parts = [
+    '/' . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH . '/add',
+    '/' . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH,
+  ];
+
+  $current_path = _brp_initiative_is_feedback_path($original_path);
+
+  switch (TRUE) {
+    case ($current_path == 'feedback'):
+    case ($current_path == 'add_feedback'):
+      $path = drupal_lookup_path('source', str_replace($virtual_parts, '', $path), $path_language);
+      break;
+
+    case (is_int($current_path) && $current_path > 0):
+      $path = drupal_lookup_path('source', preg_replace("/\/" . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH . "\/F[0-9]*/", '', $path));
+      break;
+
+    case ($current_path == 'add_report_feedback'):
+      $rep_pattern = "/\/" . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH . "\/F[0-9]*\/" . BrpProps::BRP_INITIATIVE_REPORT_FEEDBACK_PATH . '/';
+      $path = drupal_lookup_path('source', preg_replace($rep_pattern, '', $path));
+      break;
+
+    default:
+      // Redirect ISC reference pattern to real alias based on ARES.
+      // "initiatives/isc-123-1234" should redirect to
+      // "initiatives/ares-567-5678" if that alias exists.
+      if (preg_match("/isc-[0-9]*-[0-9]*$/", $original_path, $matches)) {
+        // Find the corresponding Initiative.
+        $isc = drupal_strtoupper(str_replace('-', '/', $matches[0]));
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'brp_initiative')
+          ->fieldCondition('field_brp_inve_isc', 'value', $isc, '=');
+        $result = $query->execute();
+        if (isset($result['node'])) {
+          $node = array_shift($result['node']);
+          drupal_goto('node/' . $node->nid);
+        }
+      }
+      break;
+
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function brp_initiative_theme() {
+  return [
+    'brp_initiative_feedback_section' => [
+      'template' => 'brp_initiative_feedback_section',
+      'path' => drupal_get_path('module', 'brp_initiative') . '/templates',
+      'variables' => [
+        'title' => '',
+        'intro' => '',
+        'status_label' => '',
+        'message' => '',
+        'button' => '',
+      ],
+    ],
+    'brp_initiative_status_label' => [
+      'template' => 'brp_initiative_status_label',
+      'path' => drupal_get_path('module', 'brp_initiative') . '/templates',
+      'variables' => [
+        'status_class' => '',
+        'status_text' => '',
+      ],
+    ],
+    'brp_initiative_attachments' => [
+      'template' => 'brp_initiative_attachments',
+      'path' => drupal_get_path('module', 'brp_initiative') . '/templates',
+      'variables' => [
+        'attachments' => '',
+        'file_title' => '',
+        'file_lang' => '',
+        'file_pages' => '',
+        'file_type' => '',
+        'file_size' => '',
+        'available_translations' => '',
+        'file_translation' => '',
+        'file_translation_link' => '',
+        'button_title' => '',
+        'attachment_type' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Helper function to get the initiative status.
+ *
+ * @param object $node
+ *   The node object to get the status for.
+ *
+ * @return string/bool
+ *   Returns a constant if valid, false otherwise.
+ *
+ * @todo: Move to class in dt_core_brp.
+ */
+function _brp_initiative_get_status($node) {
+  $mwo = entity_metadata_wrapper('node', $node);
+
+  $has_start_date = $mwo->__isset('field_brp_inve_fb_start_date');
+  $has_end_date = $mwo->__isset('field_brp_inve_fb_end_date');
+
+  if ($has_start_date && $has_end_date) {
+    $start_date = $mwo->field_brp_inve_fb_start_date->value();
+    $end_date = $mwo->field_brp_inve_fb_end_date->value();
+
+    // Check if in the future.
+    if ($start_date > time()) {
+      $status = BrpProps::BRP_INITIATIVE_UPCOMING;
+    }
+
+    // Check if currently running.
+    if ($start_date < time() && $end_date > time()) {
+      $status = BrpProps::BRP_INITIATIVE_OPEN;
+    }
+
+    // Check if closed.
+    if ($end_date < time()) {
+      $status = BrpProps::BRP_INITIATIVE_CLOSED;
+    }
+
+    return [
+      'start_date' => $start_date,
+      'end_date' => $end_date,
+      'status' => $status,
+    ];
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ *
+ * Declare my custom field.
+ */
+function brp_initiative_ds_fields_info($entity_type) {
+  $fields = [];
+
+  if ($entity_type == 'node') {
+    $fields['brp_initiative_feedback_block'] = [
+      'title' => t('BRP feedback block'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|full'],
+      'function' => '_build_brp_initiative_feedback_section',
+    ];
+    $fields['brp_initiative_status_label'] = [
+      'title' => t('BRP initiative status'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => '_build_brp_initiative_status_label',
+    ];
+    $fields['brp_initiative_attachments'] = [
+      'title' => t('BRP initiative file attchments'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => '_build_brp_initiative_attachments',
+    ];
+
+    return [$entity_type => $fields];
+  }
+}
+
+/**
+ * Helper to build the feedback field.
+ *
+ * @param array $field
+ *   Array of properties required to render the field.
+ *
+ * @return string
+ *    Rendered content.
+ */
+function _build_brp_initiative_status_label($field) {
+  if (!isset($field['entity']) || $field['entity']->type !== 'brp_initiative') {
+    return FALSE;
+  }
+
+  // Get the feedback status.
+  $feedback_status = _brp_initiative_get_status($field['entity']);
+
+  // Start our render config.
+  $render_config['#theme'] = 'brp_initiative_status_label';
+
+  // Set the correct message and status class.
+  $render_config['#status_class'] = '';
+  if ($feedback_status['status'] == BrpProps::BRP_INITIATIVE_OPEN) {
+    $render_config['#status_text'] = t('Feedback status: Open');
+    $render_config['#status_class'] = ' label--highlight';
+  }
+  elseif ($feedback_status['status'] == BrpProps::BRP_INITIATIVE_CLOSED) {
+    $render_config['#status_text'] = t('Feedback status: Closed');
+    $render_config['#status_class'] = ' label--status';
+  }
+
+  if ($field['view_mode'] == 'full') {
+    $render_config['#status_class'] .= ' label--block';
+  }
+  elseif ($field['view_mode'] == 'teaser') {
+    $render_config['#status_class'] .= ' label--meta';
+  }
+
+  return drupal_render($render_config);
+}
+
+/**
+ * Helper to build the feedback field.
+ *
+ * @param array $field
+ *   Array of properties required to render the field.
+ *
+ * @return string
+ *   Returns themed render array.
+ */
+function _build_brp_initiative_feedback_section($field) {
+  if (!isset($field['entity']) || $field['entity']->type !== 'brp_initiative') {
+    return FALSE;
+  }
+
+  // Get the feedback status.
+  $feedback_status = _brp_initiative_get_status($field['entity']);
+
+  // This should be a temporary check. But currently there are no visualizations
+  // for upcoming.
+  if (!in_array($feedback_status['status'], [
+    BrpProps::BRP_INITIATIVE_CLOSED,
+    BrpProps::BRP_INITIATIVE_OPEN,
+  ])
+  ) {
+    return FALSE;
+  }
+
+  // Button attributes.
+  $button_attributes = [
+    'attributes' => [
+      'class' => [
+        'btn',
+        'btn-ctn',
+      ],
+    ],
+  ];
+  // Default message.
+  $message = '';
+  // Get the feedback if available in message.
+  $initiative_type_id = $field['entity']->field_brp_inve_resource_type[LANGUAGE_NONE][0]['tid'];
+  if ($initiative_type_id) {
+    if (!($message = _brp_initiative_initiative_message($initiative_type_id))) {
+      // Default message.
+      $message = t('All feedback received may be published on the European Commission webpage and will be summarized and presented to the European Parliament and Council, with the aim of feeding into the legislative debate.');
+    }
+  }
+  // Initialize our render array.
+  $render_config['#theme'] = 'brp_initiative_feedback_section';
+  // Intro text.
+  $render_config['#intro'] = t('The Commission would like to hear your views.');
+
+  // Set our status label. We can simply render the label field itself.
+  $render_config['#status_label'] = _build_brp_initiative_status_label($field);
+
+  if ($feedback_status['status'] == BrpProps::BRP_INITIATIVE_OPEN) {
+    $render_config['#button'] = l(t('Give feedback'), _brp_initiative_get_feedback_link($field['entity'], 'add'), $button_attributes);
+    $render_config['#message'] = $message;
+
+  }
+  elseif ($feedback_status['status'] == BrpProps::BRP_INITIATIVE_CLOSED) {
+    $render_config['#button'] = l(t('All feedback'), _brp_initiative_get_feedback_link($field['entity']), $button_attributes);
+  }
+
+  // Return it to the front end.
+  return drupal_render($render_config);
+}
+
+/**
+ * Helper to retrieve initiative message.
+ *
+ * @param int $initiative_type_id
+ *   The Initiative resource type id.
+ *
+ * @return string
+ *   Description configured in the term or default text.
+ */
+function _brp_initiative_initiative_message($initiative_type_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('bundle', 'feedback_rules')
+    ->fieldCondition('field_fbrules_init_types', 'tid', $initiative_type_id);
+
+  $result = $query->execute();
+
+  if (isset($result['taxonomy_term'])) {
+    $feedback_term = array_keys($result['taxonomy_term']);
+    $feedback_rules = i18n_taxonomy_localize_terms(taxonomy_term_load($feedback_term[0]));
+    $rule = entity_metadata_wrapper('taxonomy_term', $feedback_rules);
+
+    return $rule->description->value();
+  }
+}
+
+/**
+ * Builds all attachments files for each initiative.
+ *
+ * @param array $field
+ *   Array of properties required to render the field.
+ *
+ * @return string
+ *   Returns themed render array.
+ */
+function _build_brp_initiative_attachments($field) {
+  $remote_initiative_id = (int) $field['entity']->field_brp_inve_id[LANGUAGE_NONE][0]['value'];
+  // Dynamic load initiative information about files.
+  $client = clients_connection_load(BrpProps::CONNECTION_NAME);
+  // Get all initiative data passing initiative id.
+  $remote_initiative = $client->getInitiativeById($remote_initiative_id);
+  // In case there are attachments.
+  if (isset($remote_initiative[BrpProps::INITIATIVES_ATTACHMENTS]) && !empty($remote_initiative[BrpProps::INITIATIVES_ATTACHMENTS])) {
+    $attachments = $remote_initiative[BrpProps::INITIATIVES_ATTACHMENTS];
+    $output = '';
+    // Get array index for MAIN Attachment.
+    $main_docs = _brp_intiative_search_attchments($attachments, BrpProps::INITIATIVES_ATTACHMENTS_TYPE, BrpProps::INITIATIVES_ATTACHMENTS_TYPE_MAIN);
+    if ($main_docs) {
+      // Replacing PART with Main if more than one Main attach.
+      $counter = (count($main_docs) > 1) ? 1 : FALSE;
+      // Display MAIN attachment(s).
+      foreach ($main_docs as $main_doc) {
+        $render_config['#theme'] = 'brp_initiative_attachments';
+        $title = $field['entity']->title;
+        if ($counter) {
+          array_push($main_doc, array('multiple' => t('PART @counter', array('@counter' => $counter))));
+          $counter++;
+        }
+
+        _brp_initiative_create_attachment($render_config, $main_doc, $title, $remote_initiative_id);
+        $output .= drupal_render($render_config);
+        unset($render_config);
+      }
+    }
+    // Display ANNEX attachment(s).
+    $annex_docs = _brp_intiative_search_attchments($attachments, BrpProps::INITIATIVES_ATTACHMENTS_TYPE, BrpProps::INITIATIVES_ATTACHMENTS_TYPE_ANNEX);
+    if ($annex_docs) {
+      $counter = (count($annex_docs) > 1) ? 1 : FALSE;
+      foreach ($annex_docs as $annex_doc) {
+        $render_config['#theme'] = 'brp_initiative_attachments';
+        $title = $field['entity']->title . ' - ' . drupal_strtolower(BrpProps::INITIATIVES_ATTACHMENTS_TYPE_ANNEX);
+        if ($counter) {
+          $title .= ' ' . $counter;
+          $counter++;
+        }
+        _brp_initiative_create_attachment($render_config, $annex_doc, $title, $remote_initiative_id);
+        $output .= drupal_render($render_config);
+        unset($render_config);
+      }
+    }
+    // Returns render attachments.
+    return $output;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper function to search and collect initiatives attachments.
+ *
+ * @param array $docs
+ *    Initiatives documents.
+ * @param string $key
+ *    Key we search for.
+ * @param string $value
+ *    Value we search for.
+ *
+ * @return array
+ *    Returns array with Main doc or Annex docs.
+ */
+function _brp_intiative_search_attchments($docs, $key, $value) {
+  $result = array();
+  foreach ($docs as $attachments => $attachment) {
+    if ($attachment[$key] == $value) {
+      $result[] = $docs[$attachments];
+    }
+  }
+
+  return $result;
+}
+
+/**
+ * Helper to create the theme attachments.
+ *
+ * @param array $render_config
+ *   Theme array.
+ * @param array $attachment
+ *   Current attachment.
+ * @param string $title
+ *   The title of the attachment.
+ * @param int $remote_initiative_id
+ *   The current initiative id.
+ */
+function _brp_initiative_create_attachment(&$render_config, $attachment, $title, $remote_initiative_id) {
+  $lang = language_list('enabled');
+  $separator = ' - ';
+  $render_config['#file_title'] = $title;
+  $render_config['#attachments'] = url('/initiative/' . $remote_initiative_id . '/attachment/' . $attachment[BrpProps::INITIATIVES_ATTACHMENTS_DOCID]);
+  $render_config['#file_lang'] = $lang[1][drupal_strtolower($attachment[BrpProps::INITIATIVES_ATTACHMENTS_LANGUAGE])]->name;
+  $render_config['#file_pages'] = (isset($attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES])) ? t('- @pages pages', array('@pages' => $attachment[BrpProps::INITIATIVES_ATTACHMENTS_PAGES])) : FALSE;
+  $render_config['#file_type'] = $separator . BrpProps::INITIATIVES_ATTACHMENTS_DOCTYPE;
+  $render_config['#file_size'] = $separator . format_size($attachment[BrpProps::INITIATIVES_ATTACHMENTS_SIZE]);
+  $render_config['#button_title'] = t('Download');
+  $main_or_part = isset($attachment[0]['multiple']) ? $attachment[0]['multiple'] : BrpProps::INITIATIVES_ATTACHMENTS_TYPE_MAIN;
+  $render_config['#attachment_type'] = ($attachment[BrpProps::INITIATIVES_ATTACHMENTS_TYPE] === BrpProps::INITIATIVES_ATTACHMENTS_TYPE_MAIN)
+    ? $separator . $main_or_part : FALSE;
+}
+
+/**
+ * Helper function to construct the links.
+ *
+ * @param object $node
+ *   The node object to render the path for.
+ * @param string $target
+ *   The target suffix, not including backslash.
+ *
+ * @return string
+ *   The full alias path.
+ */
+function _brp_initiative_get_feedback_link($node, $target = NULL) {
+  if (isset($target)) {
+    $target = '/' . $target;
+  }
+  // Get our base path.
+  return url(drupal_get_path_alias($node->path['source']) . '/' . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH . $target);
+}
+
+/**
+ * Helper function to check if current path is a feedback path.
+ *
+ * @param string $path
+ *   The current path.
+ *
+ * @return string/bool
+ *   Returns false if no match, in other cases it will return the actual result.
+ *   Or in case of detail_feedback it will return the feedback id.
+ */
+function _brp_initiative_is_feedback_path($path = NULL) {
+  // Get our alias.
+  $alias = isset($path) ? $path : check_url(request_uri());
+
+  // Explode. And make sure there's no empty ones.
+  $parts = array_values(array_filter(explode('/', $alias)));
+
+  // We only use the last 2 parts of the url.
+  $check_parts = array_slice($parts, -2, 2);
+
+  // We have to make sure that part 1, contains feedback. Only if this is the
+  // case we can assume that its a feedback slug. In other cases, we must make
+  // sure that part 0 is matching feedback, and that the part 1 is present.
+  if (isset($check_parts[1]) && preg_match('/\/' . BrpProps::BRP_INITIATIVE_FEEDBACK_PATH . '(_[a-zA-Z]{2}\b|(\/\b$|\b$)|(_[a-zA-Z]{2}?(\?page=[0-9])))/', $alias)) {
+    return 'feedback';
+  }
+  elseif (isset($check_parts[1]) && strpos($check_parts[1], BrpProps::BRP_INITIATIVE_REPORT_FEEDBACK_PATH) === 0
+    && is_int(intval($check_parts[0]))
+  ) {
+    return 'add_report_feedback';
+  }
+  elseif (isset($check_parts[0]) && $check_parts[0] == BrpProps::BRP_INITIATIVE_FEEDBACK_PATH && isset($check_parts[1])) {
+
+    switch (TRUE) {
+      case (FALSE !== strpos($check_parts[1], 'add')):
+        return 'add_feedback';
+
+      case (preg_match_all("/F[0-9]*/", $check_parts[1], $matches)):
+        // Check if its a valid URL feedback structure,
+        // redirect to initiative page if not valid.
+        if (preg_match_all("/F([0-9]*)([a-zA-Z]*)/", $check_parts[1], $matches)) {
+          if (isset($matches[2][0]) && $matches[2][0]) {
+            $initiative_path = [
+              $parts[0],
+              $parts[1],
+              $parts[2],
+            ];
+            drupal_set_message(t("The feedback F@feedback_id was not found or doesn't exist.", ['@feedback_id' => $matches[0][0]]), 'warning');
+            drupal_goto(implode('/', $initiative_path));
+          }
+        }
+        // Feedback id is valid, return only the numeric value.
+        return intval(drupal_substr($check_parts[1], 1));
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Helper function to get the feedback from the path.
+ *
+ * @param string $path
+ *   The current path.
+ *
+ * @return string/bool
+ *   Returns false if no match, in other cases it will return the actual result.
+ *   Or in case of detail_feedback it will return the feedback id.
+ */
+function _brp_initiative_get_feedback_id_from_path($path = NULL) {
+  // Get our alias.
+  $alias = isset($path) ? $path : check_url(request_uri());
+
+  // Explode. And make sure there's no empty ones.
+  $parts = array_values(array_filter(explode('/', $alias)));
+
+  // We only use the last 2 parts of the url.
+  $check_parts = array_slice($parts, -2, 2);
+
+  if (isset($check_parts[1]) && strpos($check_parts[1], BrpProps::BRP_INITIATIVE_REPORT_FEEDBACK_PATH) === 0
+    && is_int(intval(drupal_substr($check_parts[0], 1)))
+  ) {
+    return intval(drupal_substr($check_parts[0], 1));
+  }
+  elseif (isset($check_parts[0]) && $check_parts[0] == BrpProps::BRP_INITIATIVE_FEEDBACK_PATH
+    && isset($check_parts[1]) && is_int(intval(drupal_substr($check_parts[1], 1)))
+  ) {
+    return intval(drupal_substr($check_parts[1], 1));
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_preprocess_easy_breadcrumb().
+ */
+function brp_initiative_preprocess_easy_breadcrumb(&$variables) {
+  // Feedback pages.
+  if ($feedback = _brp_initiative_is_feedback_path()) {
+    // Add node segment for Initiative.
+    $node = menu_get_object();
+    if ($node) {
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $variables['breadcrumb'][] = _easy_breadcrumb_build_item($wrapper->field_brp_inve_reference->value(), array(), 'node/' . $node->nid);
+      $variables['segments_quantity']++;
+      // Individual feedback.
+      if (is_numeric($feedback)) {
+        // Add segment for the all Feedback page.
+        $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('Feedback'), array(), _brp_initiative_get_feedback_link($node));
+        $variables['segments_quantity']++;
+      }
+    }
+  }
+}
+
+/**
+ * Helper function for reverting Search API setting.
+ *
+ * Feature does not process the feature modules in the right order.
+ * The feature_lock guarantees that the locked feature will be processed at
+ * first. In this case the Search API export should be processed first, than
+ * should come the other modules (like: Views exports).
+ * At the hook_update should call this helper function for reverting Search API
+ * settings.
+ */
+function _brp_initiative_revert_seach_api() {
+  // Unlock Serach API server for reverting.
+  features_feature_unlock('brp_initiative', 'search_api_server');
+  // Revert Search API server settings.
+  features_revert(['brp_initiative' => ['search_api_server']]);
+  // Locking back.
+  features_feature_lock('brp_initiative', 'search_api_server');
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function brp_initiative_field_formatter_info() {
+  return [
+    'commitee' => [
+      'label' => t('Commitee link brp'),
+      'field types' => ['text'],
+    ],
+    'expert_group' => [
+      'label' => t('Expert group link'),
+      'field types' => ['text'],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function brp_initiative_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  if (!empty($items)) {
+    $formatter = $display['type'];
+    switch ($formatter) {
+      case 'commitee':
+      case 'expert_group':
+        foreach ($items as $delta => $item) {
+          // Make the phone value a link, if possible.
+          $value = _brp_initiative_commitee_expert($item['safe_value'], $formatter);
+          $element[$delta] = [
+            '#markup' => $value,
+          ];
+        }
+        break;
+    }
+  }
+
+  return $element;
+}
+
+/**
+ * Helper function to get expert group and committee values.
+ *
+ * @param string $value
+ *    Initital value.
+ * @param string $type
+ *    Type of field to be processed.
+ *
+ * @return string
+ *    Final value processed.
+ */
+function _brp_initiative_commitee_expert($value, $type) {
+  if ($type == 'commitee') {
+    $url = 'http://ec.europa.eu/transparency/regcomitology/index.cfm';
+
+    return l($value, $url, [
+      'attributes' =>
+        ['class' => "is-external"],
+      'external' => TRUE,
+    ]);
+  }
+  else {
+    global $language;
+
+    $query = [
+      'groupID' => drupal_substr($value, -4),
+      'Lang' => drupal_strtoupper($language->language),
+    ];
+    $url = 'http://ec.europa.eu/transparency/regexpert/index.cfm?do=groupDetail.groupDetail';
+
+    return l($value, $url, [
+      'query' => $query,
+      'attributes' => [
+        'class' => "is-external",
+      ],
+      'external' => TRUE,
+    ]);
+  }
+}

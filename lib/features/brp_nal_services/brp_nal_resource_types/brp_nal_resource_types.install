@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Adds the required hooks in this file brp_nal_resource_types.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function brp_nal_resource_types_enable() {
+  drupal_set_message(t('BRP NAL resource types feature is enabled on your site.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function brp_nal_resource_types_disable() {
+  drupal_set_message(t('BRP NAL resource types feature has been disabled.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function brp_nal_resource_types_uninstall() {
+  drupal_set_message(t('BRP NAL resource types feature has been uninstalled.'));
+}

@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Drush code for the module.
+ */
+
+/**
+ * Implements hook_drush_command().
+ */
+function brp_nal_corporate_bodies_drush_command() {
+
+  $items['brp-nal-corporate-bodies-import'] = [
+    'description' => t('Runs feeds importer for NAL corporate bodies taxonomy.'),
+    'aliases' => ['brp-nal-corporate-bodies-import'],
+    'callback' => 'drush_nal_corporate_bodies_import',
+  ];
+
+  $items['brp-nal-corporate-bodies-translate'] = [
+    'description' => t('Translates NAL countries taxonomy terms.'),
+    'aliases' => ['brp-nal-corporate-bodies-translate'],
+    'callback' => 'drush_nal_corporate_bodies_translate',
+  ];
+
+  return $items;
+}
+
+/**
+ * Callback for brp-nal-corporate-bodies-import.
+ */
+function drush_nal_corporate_bodies_import() {
+  // Loading common functions useful for NAL service.
+  module_load_include('inc', 'brp_nal_services', 'brp_nal_services.helpers');
+  _brp_nal_services_run_importer('nal_corporate_bodies_importer', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
+}
+
+/**
+ * Callback for brp-nal-corporate-bodies-translate command.
+ */
+function drush_nal_corporate_bodies_translate() {
+  // Loading common functions useful for NAL service.
+  module_load_include('inc', 'brp_nal_services', 'brp_nal_services.helpers');
+  _brp_nal_services_create_translations('nal_corporate_bodies', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
+}

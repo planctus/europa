@@ -11,7 +11,6 @@ $permissions['anonymous user'] = array(
   'access PDF version',
   'access print',
   'access site-wide contact form',
-  'access user profiles',
   'post comments',
   'search content',
   'use advanced search',

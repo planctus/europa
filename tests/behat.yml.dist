@@ -3,11 +3,13 @@ default:
     default:
       contexts:
         - FeatureContext
+        - Drupal\DrupalExtension\Context\BatchContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\nexteuropa\Context\DrupalContext
         - Drupal\nexteuropa\Context\MinkContext
         - Drupal\nexteuropa\Context\EditorialWorkflowContext
+        - Drupal\nexteuropa\Context\BetterRegulationContext
         - Drupal\nexteuropa\Context\TranslationContext
       filters:
         tags: "~@wip&&${behat.test_tags}"
@@ -37,6 +39,8 @@ default:
           - '${behat.subcontexts.path}'
       region_map:
         tabs: '.tabs--primary'
+        error_list: '.alert-block'
         secondary_language_selector: '.lang-selector-page'
+        pager: '.pager'
   formatters:
     ${behat.formatter.name}: ~

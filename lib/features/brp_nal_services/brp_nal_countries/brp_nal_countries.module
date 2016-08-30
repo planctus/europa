@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Code for the BRP NAL countries feature.
+ */
+
+include_once 'brp_nal_countries.features.inc';
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function brp_nal_countries_feeds_presave(FeedsSource $source, $entity, $item) {
+  if ($source->importer->id == 'nal_countries_importer') {
+    if (empty($entity->field_iso3[LANGUAGE_NONE][0]['value'])) {
+      $entity->feeds_item->skip = TRUE;
+    }
+  }
+}

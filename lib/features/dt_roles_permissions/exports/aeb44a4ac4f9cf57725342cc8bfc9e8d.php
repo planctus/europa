@@ -15,7 +15,6 @@ $permissions['authenticated user'] = array(
   'access send by email',
   'access site-wide contact form',
   'access user contact forms',
-  'access user profiles',
   'access workbench',
   'post comments',
   'search content',

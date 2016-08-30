@@ -41,6 +41,7 @@
     <!-- Exclude third party code. -->
     <exclude-pattern>resources/cloudformation</exclude-pattern>
     <exclude-pattern>resources/codedeploy</exclude-pattern>
+    <exclude-pattern>resources/vendor</exclude-pattern>
 
     <!-- Exclude entityreference handlers -->
     <exclude-pattern>*/behavior/*.class.php</exclude-pattern>

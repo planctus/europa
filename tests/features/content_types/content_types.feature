@@ -1,4 +1,4 @@
-@api
+@api @political
 Feature: Content type configuration
   In order to fill in the website
   As an editor

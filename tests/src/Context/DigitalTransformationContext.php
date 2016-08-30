@@ -7,6 +7,7 @@ use Behat\Mink\Exception\ExpectationException;
 use Drupal\nexteuropa\Helpers\NodeContextHelper;
 use Drupal\nexteuropa\Helpers\FileContextHelper;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Behat\Mink\Exception\ElementNotFoundException;
 
 /**
  * Contains digital transformation specific step defenitions.
@@ -421,17 +422,6 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
-   * Sets the current node as the frontpage.
-   *
-   * @Given I set the current page as frontpage
-   */
-  public function iSetTheCurrentPageAsFrontpage() {
-    variable_set('site_frontpage', ltrim($this->currentNode()
-      ->getNodePath(), '/'));
-    variable_set('weight_frontpage', 0);
-  }
-
-  /**
    * Test if a css selector is available.
    *
    * @Then /^I should see the css selector "([^"]*)"$/
@@ -597,6 +587,62 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function xdebugCookie() {
     if ('1' === getenv('XDEBUG')) {
       $this->getSession()->setCookie('XDEBUG_SESSION', 'PHPSTORM');
+    }
+  }
+
+  /**
+   * Sets the current node as the frontpage.
+   *
+   * @Given I set the current page as frontpage
+   */
+  public function iSetTheCurrentPageAsFrontpage() {
+    variable_set('site_frontpage', ltrim($this->currentNode()
+      ->getNodePath(), '/'));
+    variable_set('weight_frontpage', 0);
+  }
+
+  /**
+   * Selects an element form a chosen box.
+   *
+   * This requires @javascript.
+   *
+   * @Given /^I select "([^"]*)" from "([^"]*)" chosen\.js select box$/
+   */
+  public function iSelectFromChosenJsSelectBox($option, $select) {
+    $select = str_replace('\\"', '"', $select);
+    $option = str_replace('\\"', '"', $option);
+
+    $page = $this->getSession()->getPage();
+    $field = $page->findField($select, TRUE);
+
+    if (NULL === $field) {
+      throw new ElementNotFoundException($this->getSession()
+        ->getDriver(), 'form field', 'id|name|label|value', $select);
+    }
+
+    $id = $field->getAttribute('id');
+    $opt = $field->find('named', ['option', $option]);
+    $val = $opt->getValue();
+
+    $javascript = "jQuery('#$id').val('$val');
+                  jQuery('#$id').trigger('chosen:updated');
+                  jQuery('#$id').trigger('change');";
+
+    $this->getSession()->executeScript($javascript);
+  }
+
+  /**
+   * Checks if the current url matches the requirements.
+   *
+   * @Then the current URL should be :alias
+   */
+  public function theCurrentUrlShouldBe($alias) {
+    if (substr($alias, 0, 1) !== '/') {
+      $alias = '/' . $alias;
+    }
+    $current_url = str_replace($GLOBALS['base_url'], '', $this->getSession()->getCurrentUrl());
+    if ($current_url !== $alias) {
+      throw new ExpectationException('The URL ' . $alias . ' does not match the requirements. The current URL is: ' . $current_url, $this->getSession());
     }
   }
 

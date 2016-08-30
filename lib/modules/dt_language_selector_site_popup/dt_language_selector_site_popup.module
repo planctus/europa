@@ -13,9 +13,11 @@
 function dt_language_selector_site_popup_preprocess_block(&$variables) {
   if (isset($variables['block']->bid)
     && $variables['block']->bid === 'language_selector_site-language_selector_site') {
+    global $language;
+
+    // Initialize variables.
     $lang_code = $variables['elements']['code']['#markup'];
     $lang_name = $variables['elements']['label']['#markup'];
-    // Initialize variables.
     $code = '<span class="lang-select-site__code"><span class="icon icon--language lang-select-site__icon"></span><span class="lang-select-site__code-text">' . $lang_code . '</span></span>';
     $label = '<span class="lang-select-site__label">' . $lang_name . '</span>';
 
@@ -31,6 +33,14 @@ function dt_language_selector_site_popup_preprocess_block(&$variables) {
       ),
       'query' => array(drupal_get_destination()),
     );
+
+    if (module_exists('brp_initiative')) {
+      if (_brp_initiative_is_feedback_path() !== FALSE) {
+        // Get feedback path.
+        $alias = substr(check_url(request_uri()), 0, -strlen('_' . ($language->language == 'pt-pt' ? $language->prefix : $language->language)));
+        $options['query'] = array('destination' => $alias);
+      }
+    }
 
     // Add class to block.
     $variables['classes_array'][] = 'lang-select-site';

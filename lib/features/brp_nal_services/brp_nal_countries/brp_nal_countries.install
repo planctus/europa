@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Adds the required hooks in this file brp_nal_countries.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function brp_nal_countries_enable() {
+  drupal_set_message(t('BRP NAL Countries feature is enabled on your site.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function brp_nal_countries_disable() {
+  drupal_set_message(t('BRP NAL Countries feature has been disabled.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function brp_nal_countries_uninstall() {
+  drupal_set_message(t('BRP NAL Countries feature has been uninstalled.'));
+}

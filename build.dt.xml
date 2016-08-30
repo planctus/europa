@@ -271,10 +271,10 @@
         </if>
     </target>
 
-    <!-- Symlink dt_dev module. -->
+    <!-- Symlink dt development modules module. -->
     <target name="add-dt-dev">
-        <symlink target="${project.basedir}/resources/dt_dev"
-                 link="${platform.build.subsite.modules.dir}/dt_dev"/>
+        <symlink target="${project.basedir}/resources/dev_modules"
+                 link="${platform.build.subsite.modules.dir}/dev_modules"/>
     </target>
 
     <!-- Download development modules. -->
