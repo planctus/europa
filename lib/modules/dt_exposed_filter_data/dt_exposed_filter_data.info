@@ -4,3 +4,5 @@ dependencies[] = views
 dependencies[] = dt_date_format
 package = Views
 core = 7.x
+php = 5.5
+multisite_version = 2.2

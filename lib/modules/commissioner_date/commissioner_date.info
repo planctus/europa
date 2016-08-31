@@ -2,3 +2,5 @@ name = Commissioner Event Date
 description = Add custom formatter for dates
 package = COMM
 core = 7.x
+php = 5.5
+multisite_version = 2.2
