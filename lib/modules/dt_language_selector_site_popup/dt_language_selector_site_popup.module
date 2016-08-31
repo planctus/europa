@@ -70,7 +70,7 @@ function dt_language_selector_site_popup_preprocess_splash(&$variables) {
   // Prepare links href when destination is set.
   // Use case: use site level language selector.
   if (isset($_GET['destination'])) {
-    $href_array = parse_url($_GET['destination']);
+    $href_array = drupal_parse_url($_GET['destination']);
     $href = $href_array['path'];
 
     if (strpos($href, 'node/') == 0 &&

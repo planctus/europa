@@ -81,9 +81,6 @@ projects[search_api_db][version] = "1.5"
 projects[facetapi_bonus][subdir] = "contrib"
 projects[facetapi_bonus][version] = "1.2"
 
-projects[facetapi_select][subdir] = "contrib"
-projects[facetapi_select][version] = "1.1"
-
 projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0

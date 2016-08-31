@@ -4,3 +4,5 @@ core = 7.x
 package = Entity
 
 dependencies[] = entityreference
+php = 5.5
+multisite_version = 2.2
