@@ -582,7 +582,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * Sets the xdebug cookie.
    *
-   * @BeforeStep
+   * @BeforeScenario
    */
   public function xdebugCookie() {
     if ('1' === getenv('XDEBUG')) {
