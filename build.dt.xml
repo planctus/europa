@@ -347,7 +347,8 @@
         <if>
             <available file="${snapshot}" type="file"/>
             <then>
-                <!-- Make snapshot -->
+                <exec command="${drush.bin} --root=${platform.build.dir} -y sql-drop"/>
+                <echo msg="Local database deleted"/>
                 <exec command="cat ${snapshot} | ${drush.bin} --root=${platform.build.dir} -y sqlc"/>
                 <echo msg="Local database restored from snapshot"/>
             </then>
