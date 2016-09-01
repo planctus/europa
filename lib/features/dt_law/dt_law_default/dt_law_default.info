@@ -15,7 +15,6 @@ features[ds_field_settings][] = node|law|teaser
 features[ds_layout_settings][] = node|law|full
 features[ds_layout_settings][] = node|law|teaser
 features[features_api][] = api:2
-features[field_group][] = group_law_background|node|law|full
 features[field_group][] = group_law_content|node|law|form
 features[field_group][] = group_law_departments|node|law|full
 features[field_group][] = group_law_documents|node|law|form

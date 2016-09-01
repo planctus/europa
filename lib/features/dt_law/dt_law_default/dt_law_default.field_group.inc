@@ -14,37 +14,6 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_law_background|node|law|full';
-  $field_group->group_name = 'group_law_background';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'law';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Background',
-    'weight' => '5',
-    'children' => array(
-      0 => 'field_core_description',
-      1 => 'field_core_background',
-    ),
-    'format_type' => 'section_group',
-    'format_settings' => array(
-      'label' => 'Background',
-      'instance_settings' => array(
-        'classes' => 'group-law-background field-group-section_group',
-        'show_label' => '0',
-        'label_element' => 'h2',
-        'attributes' => 'id="Background"',
-        'modifier' => '',
-        'layout' => '',
-      ),
-    ),
-  );
-  $field_groups['group_law_background|node|law|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_law_content|node|law|form';
   $field_group->group_name = 'group_law_content';
   $field_group->entity_type = 'node';
