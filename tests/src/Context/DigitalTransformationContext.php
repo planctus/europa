@@ -7,7 +7,6 @@ use Behat\Mink\Exception\ExpectationException;
 use Drupal\nexteuropa\Helpers\NodeContextHelper;
 use Drupal\nexteuropa\Helpers\FileContextHelper;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Behat\Mink\Exception\ElementNotFoundException;
 
 /**
  * Contains digital transformation specific step defenitions.
@@ -422,38 +421,6 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
-   * Test if a css selector is available.
-   *
-   * @Then /^I should see the css selector "([^"]*)"$/
-   * @Then /^I should see the CSS selector "([^"]*)"$/
-   *
-   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
-   */
-  public function iShouldSeeTheCssSelector($css_selector) {
-    $element = $this->getSession()->getPage()->find("css", $css_selector);
-    if (empty($element)) {
-      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
-        ->getCurrentUrl(), $css_selector));
-    }
-  }
-
-  /**
-   * Test if a css selector is not available.
-   *
-   * @Then /^I should not see the css selector "([^"]*)"$/
-   * @Then /^I should not see the CSS selector "([^"]*)"$/
-   *
-   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
-   */
-  public function iShouldNotSeeTheCssSelector($css_selector) {
-    $element = $this->getSession()->getPage()->find("css", $css_selector);
-    if (empty(!$element)) {
-      throw new \Exception(sprintf("The page '%s' contains the css selector '%s'", $this->getSession()
-        ->getCurrentUrl(), $css_selector));
-    }
-  }
-
-  /**
    * Click testing of an element which has a css selector.
    *
    * @When /^(?:|I )click the element with CSS selector "([^"]*)"$/
@@ -587,6 +554,23 @@ class DigitalTransformationContext extends RawDrupalContext {
   public function xdebugCookie() {
     if ('1' === getenv('XDEBUG')) {
       $this->getSession()->setCookie('XDEBUG_SESSION', 'PHPSTORM');
+    }
+  }
+
+  /**
+   * Generates a number of nodes of a type.
+   *
+   * @Given I have :quantity :type content:
+   */
+  public function generateNodes($quantity, $type, TableNode $table) {
+    foreach ($table->getHash() as $nodeHash) {
+      $node = (object) $nodeHash;
+      $node->type = $type;
+      for ($i = 0; $i < $quantity; $i++) {
+        $new_node = clone($node);
+        $new_node->title  = $new_node->title . " $i";
+        $this->nodeCreate($new_node);
+      }
     }
   }
 
