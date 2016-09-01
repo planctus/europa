@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Facetapi in filters module install file.
+ */
+
+/**
+ * Disable facetapi_select.
+ */
+function facets_in_filters_update_7102() {
+  if (module_exists('facetapi_select')) {
+    module_disable(array('facetapi_select'));
+    drupal_uninstall_modules(array('facetapi_select'));
+  }
+}
