@@ -1,7 +1,49 @@
 <?php
+
 /**
  * @file
  * Code for the File feature.
  */
 
 include_once 'nexteuropa_file.features.inc';
+
+/**
+ * Implements hook_migrate_api().
+ */
+function nexteuropa_file_migrate_api() {
+  return array(
+    'api' => 2,
+    'groups' => array(
+      'NextEuropa Digital Transformation' => array(
+        'title' => t('Stage initial content, file types.'),
+      ),
+    ),
+    'migrations' => array(
+      'NextEuropaFileTypes' => array(
+        'class_name' => 'NextEuropaFileTypesMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+      'NextEuropaFileOrigins' => array(
+        'class_name' => 'NextEuropaFileOriginsMigration',
+        'group_name' => 'NextEuropa Digital Transformation',
+      ),
+    ),
+  );
+}
+
+/**
+ * Helper function migrating social networks.
+ */
+function _nexteuropa_file_migrate_file_types() {
+  // Migrate module is needed.
+  if (module_exists('migrate')) {
+    // Force registration of migration classes.
+    migrate_static_registration();
+    // Import file_types and file_origins vocabulary's terms.
+    Migration::getInstance('NextEuropaFileTypes')->processImport();
+    Migration::getInstance('NextEuropaFileOrigins')->processImport();
+  }
+  else {
+    return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
+  }
+}

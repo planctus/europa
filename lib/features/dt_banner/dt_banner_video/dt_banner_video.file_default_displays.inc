@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_banner_video.file_default_displays.inc

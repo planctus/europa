@@ -45,6 +45,9 @@ projects[nodequeue][version] = "2.0-beta1"
 projects[node_convert][subdir] = "contrib"
 projects[node_convert][version] = "1.2"
 
+projects[og_role_override][subdir] = "contrib"
+projects[og_role_override][version] = "2.2"
+
 projects[picture][subdir] = "contrib"
 projects[picture][version] = "2.9"
 
@@ -57,6 +60,7 @@ projects[entityform][version] = "2.0-rc1"
 projects[conditional_fields][subdir] = "contrib"
 projects[conditional_fields][version] = "3.0-alpha2"
 projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/conditional_fields-entity-translation-support-2125191-2.patch"
+projects[conditional_fields][patch][] = "https://www.drupal.org/files/issues/fix_dependent_fields_in_IE-1373656-21.patch"
 
 projects[retina_images][subdir] = "contrib"
 projects[retina_images][version] = "1.0-beta4"
@@ -76,12 +80,15 @@ projects[search_api_db][version] = "1.5"
 projects[facetapi_bonus][subdir] = "contrib"
 projects[facetapi_bonus][version] = "1.2"
 
-projects[facetapi_select][subdir] = "contrib"
-projects[facetapi_select][version] = "1.1"
-
 projects[custom_formatters][subdir] = "contrib"
 projects[custom_formatters][version] = "2.2"
 projects[custom_formatters][do_recursion] = 0
+
+projects[entityreference_view_widget][subdir] = "contrib"
+projects[entityreference_view_widget][version] = "2.0-rc7"
+
+projects[views_tree][subdir] = "contrib"
+projects[views_tree][version] = "2.0"
 
 ; Required by custom_formatters.
 ; Originally these are done via custom_formatters.make but we switched off
@@ -102,8 +109,3 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 
 libraries[marked][download][type] = "get"
 libraries[marked][download][url] = "https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"
-
-; ======
-; Themes
-; ======
-includes[] = "../lib/themes/europa/europa.make"

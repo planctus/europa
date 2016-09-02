@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_tender.strongarm.inc
@@ -62,6 +63,19 @@ function dt_tender_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_settings_node__tender';
+  $strongarm->value = array(
+    'default_language' => 'xx-et-default',
+    'hide_language_selector' => 0,
+    'exclude_language_none' => 1,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_node__tender'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__tender';
   $strongarm->value = array(
     'view_modes' => array(
@@ -69,7 +83,7 @@ function dt_tender_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -104,6 +118,21 @@ function dt_tender_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -129,15 +158,8 @@ function dt_tender_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'helper_content_type_tender';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['helper_content_type_tender'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'dt_node_settings_helper_node_type_tender';
-  $strongarm->value = 1;
-  $export['dt_node_settings_helper_node_type_tender'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -164,7 +186,7 @@ function dt_tender_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tender';
-  $strongarm->value = 4;
+  $strongarm->value = '4';
   $export['language_content_type_tender'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -206,19 +228,6 @@ function dt_tender_strongarm() {
   $strongarm->name = 'node_submitted_tender';
   $strongarm->value = 1;
   $export['node_submitted_tender'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_node__tender';
-  $strongarm->value = array(
-    'default_language' => 'xx-et-default',
-    'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
-    'lock_language' => 0,
-    'shared_fields_original_only' => 0,
-  );
-  $export['entity_translation_settings_node__tender'] = $strongarm;
 
   return $export;
 }

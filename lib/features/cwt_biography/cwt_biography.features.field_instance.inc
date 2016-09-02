@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_biography.features.field_instance.inc
@@ -206,7 +207,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 41,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -293,13 +294,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 36,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -389,13 +390,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 39,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -460,7 +461,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -527,6 +528,100 @@ function cwt_biography_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'node-biography-field_biography_custom_term'.
+  $field_instances['node-biography-field_biography_custom_term'] = array(
+    'bundle' => 'biography',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Usually this is a time range following the same format as the Team\'s term: YYYY-YYYY',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'team_cabinet_member' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_biography_custom_term',
+    'label' => 'Custom term',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'custom_text_filter' => 'custom_text_filter',
+          'filtered_html' => 'filtered_html',
+          'full_access_text_filter' => 'full_access_text_filter',
+          'full_html' => 'full_html',
+          'news_text_filter' => 'news_text_filter',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'custom_text_filter' => array(
+              'weight' => 0,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_access_text_filter' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'news_text_filter' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 26,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-biography-field_biography_cv'.
   $field_instances['node-biography-field_biography_cv'] = array(
     'bundle' => 'biography',
@@ -538,13 +633,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 46,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -626,13 +721,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 48,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -711,7 +806,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'full' => array(
         'label' => 'inline',
@@ -769,13 +864,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 49,
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
@@ -829,13 +924,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 51,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -915,13 +1010,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 50,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -1006,9 +1101,10 @@ function cwt_biography_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 40,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1071,7 +1167,7 @@ function cwt_biography_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -1265,7 +1361,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 38,
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
@@ -1352,7 +1448,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 43,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1422,7 +1518,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1432,7 +1528,7 @@ function cwt_biography_field_default_field_instances() {
           'image_style' => 'biography_portrait_160x160',
         ),
         'type' => 'image',
-        'weight' => 60,
+        'weight' => 5,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1533,13 +1629,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 31,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -1626,13 +1722,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 19,
       ),
       'full' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 45,
       ),
       'team_cabinet_member' => array(
         'label' => 'inline',
@@ -1685,13 +1781,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'full' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 47,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1749,13 +1845,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 52,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -1813,7 +1909,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 37,
       ),
       'team_cabinet_member' => array(
         'label' => 'hidden',
@@ -1900,7 +1996,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1963,13 +2059,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 53,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2035,13 +2131,13 @@ function cwt_biography_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 31,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 30,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2128,13 +2224,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 18,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 44,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2213,7 +2309,7 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -2280,13 +2376,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 33,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2339,13 +2435,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 40,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2402,13 +2498,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 35,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2461,13 +2557,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 34,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -2526,7 +2622,7 @@ function cwt_biography_field_default_field_instances() {
           'icon_image_style' => '',
         ),
         'type' => 'social_network_link_default',
-        'weight' => 31,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -2582,13 +2678,13 @@ function cwt_biography_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 42,
       ),
       'team_cabinet_member' => array(
         'label' => 'above',
@@ -3493,12 +3589,13 @@ function cwt_biography_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('AV portal link');
   t('Address');
-  t('Calendar transparency text');
   t('Assistants');
+  t('Calendar transparency text');
   t('Classname');
   t('Collapse button text');
   t('Comment');
   t('Curriculum Vitae');
+  t('Custom term');
   t('Date');
   t('Declaration of interests');
   t('Departments');
@@ -3536,6 +3633,7 @@ function cwt_biography_field_default_field_instances() {
   t('Title');
   t('Topics');
   t('Type');
+  t('Usually this is a time range following the same format as the Team\'s term: YYYY-YYYY');
   t('When a biography is partially translated it will be redirected to its English version when accessed directly, on the other hand in the college members lists the content of the partial translation will be displayed. English content cannot be partially translated and it will be displayed even if it is marked as such.');
 
   return $field_instances;

@@ -1,5 +1,6 @@
 name = DT Date format
 description = EC date format definition like j F Y.
 core = 7.x
-
+php = 5.5
 registry_autoload[] = PSR-4
+multisite_version = 2.2

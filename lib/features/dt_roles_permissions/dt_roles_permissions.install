@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * DT roles and permissions install file.
@@ -66,4 +67,14 @@ function dt_roles_permissions_update_7104() {
   }
 
   return $msg;
+}
+
+/**
+ * DTTSB-822: Reverting for permissions, and import new web transformer.
+ */
+function dt_roles_permissions_update_7105() {
+  // Reverting for getting web transformer role.
+  features_revert_module(['dt_roles_permissions']);
+  // Import web transformer role.
+  _dt_roles_permissions_import_import('web transformer');
 }

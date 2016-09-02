@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_call_for_proposal_install() {
+  // Apply default dt configuration to "Policy input" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('call_for_proposal');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_call_for_proposal_uninstall() {
+  drupal_set_message(t('NextEuropa call_for_proposal feature is uninstalled on your site.'));
+}

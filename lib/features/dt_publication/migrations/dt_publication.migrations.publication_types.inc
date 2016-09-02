@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Publication types taxonomy term migration file.

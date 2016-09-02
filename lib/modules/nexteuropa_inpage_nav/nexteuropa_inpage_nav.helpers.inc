@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains all helper functions used in nexteuropa inpage nav.
@@ -148,8 +149,8 @@ function _nexteuropa_inpage_nav_get_field_anchors($field, $ds_field = NULL) {
   // In case of a text summary we parse the code as well.
   if (in_array($field['#field_type'], ['text_with_summary', 'text_long'])) {
     // Loop over all the items as it might be multi value.
-    foreach ($field['#items'] as $item) {
-      $anchors += isset($item['value']) ? _nexteuropa_inpage_nav_get_anchors_from_markup($item['value']) : NULL;
+    foreach (element_children($field) as $item) {
+      $anchors += isset($field[$item]['#markup']) ? _nexteuropa_inpage_nav_get_anchors_from_markup($field[$item]['#markup']) : NULL;
     }
   }
   // We should also check for the Label.
@@ -225,7 +226,7 @@ function _nexteuropa_inpage_nav_recursive_anchors(&$childs, &$has_child, $childr
 
     unset($element[$field]);
 
-    if (substr($field, 0, 6) == 'group_') {
+    if (drupal_substr($field, 0, 6) == 'group_') {
       _nexteuropa_inpage_nav_recursive_anchors($childs, $has_child, $element['#groups'][$field]->children, $element, $field);
     }
   }

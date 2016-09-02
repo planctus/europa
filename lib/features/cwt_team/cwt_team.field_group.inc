@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_team.field_group.inc
@@ -51,12 +52,16 @@ function cwt_team_field_group_info() {
     'label' => 'Commissioners',
     'weight' => '8',
     'children' => array(
-      0 => 'group_team_tabs',
+      0 => 'commissioners_no_longer_in_office',
+      1 => 'group_team_tabs',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Commissioners',
       'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => 'id="commissioners"',
         'modifier' => '',
         'layout' => 'col-md-8',
         'classes' => '',
@@ -89,7 +94,7 @@ function cwt_team_field_group_info() {
         'attributes' => '',
         'modifier' => 'section__group--full-width',
         'layout' => '',
-        'classes' => 'section__group--highlight-grey row',
+        'classes' => 'section__group--highlight-grey',
       ),
     ),
   );
@@ -177,6 +182,9 @@ function cwt_team_field_group_info() {
     'format_settings' => array(
       'label' => 'Files',
       'instance_settings' => array(
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'attributes' => '',
         'modifier' => '',
         'layout' => 'col-md-8',
         'classes' => '',

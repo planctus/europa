@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * cwt_biography.default_picture_mapping.inc

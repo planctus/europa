@@ -1,0 +1,9 @@
+.date-combo {
+  position: relative;
+}
+
+.date-combo  .date-float {
+  position: absolute;
+  bottom: 6em;
+  left: 1em;
+}

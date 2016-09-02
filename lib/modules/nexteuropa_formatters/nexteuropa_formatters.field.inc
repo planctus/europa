@@ -5,13 +5,24 @@
  * Adding BEM related custom field formatters.
  */
 
-global $_nexteuropa_formatters_listing_view_modes;
-$_nexteuropa_formatters_listing_view_modes = array(
-  'title',
-  'meta',
-  'teaser',
-  'image_label',
-);
+/**
+ * Helper function to get the available view modes.
+ *
+ * @return array
+ *   Array of items that can use the formatter.
+ */
+function _nexteuropa_formatters_get_listing_view_modes() {
+  $items = [
+    'title',
+    'meta',
+    'teaser',
+    'image_label',
+  ];
+
+  drupal_alter('nexteuropa_formatters_view_modes', $items);
+
+  return $items;
+}
 
 /**
  * Implements hook_field_formatter_info().
@@ -308,8 +319,8 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
 
         // Default render array.
         $render_array = [
-          '#prefix' => '<div class="listing__item">',
-          '#suffix' => '</div>',
+          '#prefix' => '<li class="listing__item">',
+          '#suffix' => '</li>',
         ];
 
         switch ($field['type']) {
@@ -412,7 +423,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
               if ($date_updated = $node_wrapper->field_core_date_updated->value()) {
                 $element[$delta] = array(
                   '#markup' => '<span class="context-nav__item">' .
-                  format_date(strtotime($item['value']), 'ec_date_j_f_y') . ' ' .
+                  format_date($item['value'], 'ec_date_j_f_y') . ' ' .
                   t('(last update on: @date)',
                     array('@date' => format_date($date_updated, 'ec_date_j_f_y'))) .
                   '</span>',
@@ -421,7 +432,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
               else {
                 $element[$delta] = array(
                   '#markup' => '<span class="context-nav__item">' .
-                  format_date(strtotime($item['value']), 'ec_date_j_f_y') .
+                  format_date($item['value'], 'ec_date_j_f_y') .
                   '</span>',
                 );
               }
@@ -466,8 +477,10 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
 
       case 'telephone':
         foreach ($items as $delta => $item) {
+          // Label to display.
+          $label = isset($instance['label']) ? $instance['label'] : '';
           // Make the phone value a link, if possible.
-          $telf = dt_shared_function_phonetohtml($item['safe_value']);
+          $telf = dt_shared_function_phonetohtml($label, $item['safe_value']);
           $element[$delta] = array(
             '#markup' => $telf,
           );
@@ -643,6 +656,25 @@ function _nexteuropa_formatters_tags_item_link($item_title, $item_link) {
 
 /**
  * Helper function to link listing title field view.
+ *
+ * @param array $field
+ *   The field structure.
+ * @param array $instance
+ *   The field instance.
+ * @param array $items
+ *   Array of values for this field.
+ * @param array $display
+ *   The display settings to use, as found in the 'display' entry of instance
+ *   definitions. The array notably contains the following keys and values;
+ *   - type: The name of the formatter to use.
+ *   - settings: The array of formatter settings.
+ * @param array $formatter
+ *   The formatter settings.
+ * @param array $element
+ *   The full element we are working with.
+ *
+ * @return array
+ *   A renderable array for the element.
  */
 function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, $instance, $items, $display, $formatter, $element) {
   foreach ($items as $delta => $item) {
@@ -669,12 +701,12 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
         );
 
         if (isset($title_item_modifier) && $title_item_modifier !== '') {
-          $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
-          $element[$delta]['#suffix'] = '</div>';
+          $element[$delta]['#prefix'] = '<li class="listing__item ' . $title_item_modifier . '">';
+          $element[$delta]['#suffix'] = '</li>';
         }
         else {
-          $element[$delta]['#prefix'] = '<div class="listing__item">';
-          $element[$delta]['#suffix'] = '</div>';
+          $element[$delta]['#prefix'] = '<li class="listing__item">';
+          $element[$delta]['#suffix'] = '</li>';
         }
         break;
 
@@ -696,20 +728,20 @@ function _nexteuropa_formatters_link_listing_title_field_formatter_view($field, 
           '#display' => $display,
         );
 
-        if (isset($title_item_link_modifier) && $title_item_link_modifier !== '') {
+        if (isset($title_item_link_modifier) && !empty($title_item_link_modifier)) {
           $element[$delta]['#options']['attributes']['class'] = 'listing__item-link' . ' ' . $title_item_link_modifier;
         }
         else {
           $element[$delta]['#options']['attributes']['class'] = 'listing__item-link';
         }
 
-        if (isset($title_item_modifier) && $title_item_modifier !== '') {
-          $element[$delta]['#prefix'] = '<div class="listing__item ' . $title_item_modifier . '">';
-          $element[$delta]['#suffix'] = '</div>';
+        if (isset($title_item_modifier) && !empty($title_item_modifier)) {
+          $element[$delta]['#prefix'] = '<li class="listing__item ' . $title_item_modifier . '">';
+          $element[$delta]['#suffix'] = '</li>';
         }
         else {
-          $element[$delta]['#prefix'] = '<div class="listing__item">';
-          $element[$delta]['#suffix'] = '</div>';
+          $element[$delta]['#prefix'] = '<li class="listing__item">';
+          $element[$delta]['#suffix'] = '</li>';
         }
         break;
     }
@@ -750,8 +782,6 @@ function nexteuropa_formatters_field_formatter_info_alter(&$info) {
  * Implements hook_field_formatter_settings_form_alter().
  */
 function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_form, $context) {
-  global $_nexteuropa_formatters_listing_view_modes;
-
   if (
     isset($context['instance']['display'][$context['view_mode']]['type']) &&
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
@@ -771,7 +801,7 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
   if (
     isset($context['instance']['display'][$context['view_mode']]['type']) &&
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
-    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], _nexteuropa_formatters_get_listing_view_modes())
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
@@ -809,7 +839,10 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
       '#description' => t('Class names separated by spaces.'),
     );
   }
-  elseif ($context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title') {
+  elseif (
+    isset($context['instance']['display'][$context['view_mode']]['type']) &&
+    $context['instance']['display'][$context['view_mode']]['type'] == 'link_listing_title'
+  ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
 
@@ -840,8 +873,6 @@ function nexteuropa_formatters_field_formatter_settings_form_alter(&$settings_fo
  * Implements hook_field_formatter_settings_summary_alter().
  */
 function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary, $context) {
-  global $_nexteuropa_formatters_listing_view_modes;
-
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
     $context['instance']['display'][$context['view_mode']]['settings']['view_mode'] == 'file'
@@ -868,7 +899,7 @@ function nexteuropa_formatters_field_formatter_settings_summary_alter(&$summary,
 
   if (
     $context['instance']['display'][$context['view_mode']]['type'] == 'entityreference_entity_view' &&
-    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], $_nexteuropa_formatters_listing_view_modes)
+    in_array($context['instance']['display'][$context['view_mode']]['settings']['view_mode'], _nexteuropa_formatters_get_listing_view_modes())
   ) {
     $display = $context['instance']['display'][$context['view_mode']];
     $settings = $display['settings'];
@@ -974,6 +1005,12 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
 
 /**
  * Helper to theme the markup of file translations.
+ *
+ * @param array $item
+ *   The item to work with.
+ *
+ * @return string
+ *   The markup as a string.
  */
 function _nexteuropa_formatters_attach_translations($item) {
   $node = node_load(key($item['node']));
@@ -1041,6 +1078,12 @@ function nexteuropa_formatters_ds_fields_info($entity_type) {
 
 /**
  * Helper function to display test title.
+ *
+ * @param array $field
+ *   The field array to work with.
+ *
+ * @return mixed
+ *   The rendered view or false.
  */
 function _nexteuropa_formatters_theme_ds_team_field($field) {
   $view_machine_name = isset($field['properties']['view_machine_name']) ? $field['properties']['view_machine_name'] : NULL;

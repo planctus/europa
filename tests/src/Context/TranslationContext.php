@@ -45,7 +45,7 @@ class TranslationContext extends RawDrupalContext {
 
     // If it is not available, exception.
     if (!isset($langcode)) {
-      throw new ExpectationException($language . " is not found in the enabled languages.");
+      throw new ExpectationException($language . " is not found in the enabled languages.", $this->getSession());
     }
 
     $report = [

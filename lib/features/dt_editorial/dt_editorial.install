@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * DT Editorial install file.
@@ -10,25 +11,8 @@
 function dt_editorial_enable() {
   drupal_set_message(t('Digital transformation editorial is now active on your site.'));
 
-  // The objective here is to change the order of the workflow states:
-  // Expired by Archived.
-  $state_weight = array(
-    'draft' => -10,
-    'needs_review' => -9,
-    'request_validation' => -8,
-    'validated' => -7,
-    'published' => -6,
-    'archived' => -5,
-    'expired' => -4,
-  );
-
-  $types = workbench_moderation_states();
-  foreach ($types as $type) {
-    db_update('workbench_moderation_states')
-      ->fields(array('weight' => $state_weight[$type->name]))
-      ->condition('name', $type->name)
-      ->execute();
-  }
+  // Reset workbench moderation states order.
+  _dt_editorial_reorder_states();
 
   $roles = og_roles('node', 'editorial_team');
   // Delete the og role publisher.
@@ -42,6 +26,9 @@ function dt_editorial_enable() {
       ->condition('rid', $contributor_rid)
       ->execute();
   }
+
+  // Disable certain NE workbench views.
+  _dt_editorial_disable_ne_workbench();
 }
 
 /**
@@ -49,4 +36,65 @@ function dt_editorial_enable() {
  */
 function dt_editorial_disable() {
   drupal_set_message(t('Digital transformation editorial is now disabled on your site.'));
+}
+
+/**
+ * Disables several core views which are replaced by DTT views.
+ */
+function _dt_editorial_disable_ne_workbench() {
+  // The views below are replaced by a set of requirements.
+  // DTTSB-745, DTTSB-743, DTTSB-127, DTTSB-126.
+  $views_disable = [
+    'workbench_recent_content',
+    'workbench_moderation',
+  ];
+  $views_status = variable_get('views_defaults', []);
+  foreach ($views_disable as $view_name) {
+    $views_status[$view_name] = TRUE;
+  }
+  variable_set('views_defaults', $views_status);
+  if (function_exists('views_invalidate_cache')) {
+    views_invalidate_cache();
+  }
+}
+
+/**
+ * Re-order moderation states created by different modules.
+ */
+function _dt_editorial_reorder_states() {
+  $state_weight = array(
+    'draft' => -10,
+    'needs_review' => -9,
+    'request_validation' => -8,
+    'under_validation' => -7,
+    'validated' => -6,
+    'published' => -5,
+    'archived' => -4,
+    'expired' => -3,
+  );
+
+  $types = workbench_moderation_states();
+  foreach ($types as $type) {
+    db_update('workbench_moderation_states')
+      ->fields(array('weight' => $state_weight[$type->name]))
+      ->condition('name', $type->name)
+      ->execute();
+  }
+}
+
+/**
+ * Disable NE workbench screens. (7101)
+ *
+ * Reset workbench moderation states order. (7102).
+ * Enable better exposed filters.
+ */
+function dt_editorial_update_7103() {
+  // Disable certain NE workbench views.
+  _dt_editorial_disable_ne_workbench();
+  // Revert feature so we have the new state.
+  features_revert_module('dt_roles_permissions');
+  // Re-order.
+  _dt_editorial_reorder_states();
+  // Disable certain NE workbench views.
+  module_enable(['better_exposed_filters']);
 }

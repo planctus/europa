@@ -219,12 +219,30 @@ class DtDateRangeFormat {
    *   Array with start and end date.
    */
   public function getMonths($format = 'M') {
-    $days[] = $this->formatDate($this->startDate, $format);
+    $months[] = $this->formatDate($this->startDate, $format);
     // Check if it is the same month.
     if (!$this->isSameDate(FALSE, 'm')) {
-      $days[] = $this->formatDate($this->endDate, $format);
+      $months[] = $this->formatDate($this->endDate, $format);
     }
-    return $days;
+    return $months;
+  }
+
+  /**
+   * Gets an array of years. It will return an array with 1 element if equal.
+   *
+   * @param string $format
+   *   How to format the year.
+   *
+   * @return array
+   *   Array with start and end date.
+   */
+  public function getYears($format = 'Y') {
+    $years[] = $this->formatDate($this->startDate, $format);
+    // Check if it is the same month.
+    if (!$this->isSameDate(FALSE, 'Y')) {
+      $years[] = $this->formatDate($this->endDate, $format);
+    }
+    return $years;
   }
 
   /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_policy.features.field_instance.inc
@@ -17,7 +18,7 @@ function dt_policy_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Choose one or more Directorates-General that are responsible for the policy.
 
-Type name of department to search for it. Don\'t create a new department.',
+    Type name of department to search for it. Don\'t create a new department.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -84,7 +85,7 @@ Type name of department to search for it. Don\'t create a new department.',
 * Make a direct connection to people’s lives and business interests
 * Where a policy benefits a particular group of people, present it from their perspective
 
-**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
+    **Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -175,7 +176,7 @@ Type name of department to search for it. Don\'t create a new department.',
 * mention human before economic or technical benefits
 * do not give historical overview
 
-**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
+    **Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -390,7 +391,7 @@ Type name of department to search for it. Don\'t create a new department.',
 
 Type name of commissioner to search for it.
 
-Don\'t add vice-president, unless there is no commissioner responsible.',
+    Don\'t add vice-president, unless there is no commissioner responsible.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -452,7 +453,7 @@ Don\'t add vice-president, unless there is no commissioner responsible.',
     'deleted' => 0,
     'description' => 'Choose one or multiple policy areas the policy belongs to.
 
-**Type name of policy area to search for it. Don\'t create a new policy area.**',
+    **Type name of policy area to search for it. Don\'t create a new policy area.**',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -619,6 +620,71 @@ Don\'t add vice-president, unless there is no commissioner responsible.',
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-policy-field_eurovoc_taxonomy'.
+  $field_instances['node-policy-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'policy',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 26,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 51,
     ),
   );
 
@@ -795,7 +861,7 @@ Include sub-headings, which should:
 * apply webwriting guidelines
 
 https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -956,7 +1022,7 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
 * short phrase – no punctuation
 * indicate the Commission\'s intention  or desired outcome
 * prioritise real world objectives over EU methodologies, instruments or programmes
-* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
+    * well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1112,7 +1178,7 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
     'deleted' => 0,
     'description' => 'Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
 
-A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
+    A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1171,7 +1237,7 @@ A policy action can be a law, directive, decision, funding, guidance issued as p
 If policy input does not yet exist in the CMS, create it by clicking on "policy input".
 
 When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
-',
+    ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1301,7 +1367,10 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => 'timeline--nopadding',
+          'show_timezone' => 0,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 44,
@@ -1332,8 +1401,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'rows' => 5,
-        'size' => 255,
+        'value' => array(
+          'rows' => 5,
+          'size' => 255,
+          'timeline_type' => 'timeline',
+          'timezone' => 0,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 42,
@@ -1700,7 +1773,7 @@ Avoid:
 * titles of laws or packages (e.g. 6th energy package)
 * EU processes and concepts (e.g. open coordination, single market)
 
-**Example:** Efficient power production',
+    **Example:** Efficient power production',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1790,27 +1863,27 @@ Avoid:
 * mention human before economic or technical benefits
 * do not give historical overview
 
-**Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.');
+    **Example:** When power plants generate electricity, they also produce heat. Recovering and using this heat could reduce the EU\'s greenhouse gas emissions by up to 250 million tonnes by 2020, roughly equivalent to a year’s worth of emissions from 61 coal-fired power plants.');
   t('Author');
   t('Bulleted list, 3-5 bullets. Provide information about planned actions. Give specific dates and timelines.');
   t('Caption');
   t('Choose one or more Directorates-General that are responsible for the policy.
 
-Type name of department to search for it. Don\'t create a new department.');
+    Type name of department to search for it. Don\'t create a new department.');
   t('Choose one or more commissioners that are responsible for the policy.
 
 Type name of commissioner to search for it.
 
-Don\'t add vice-president, unless there is no commissioner responsible.');
+    Don\'t add vice-president, unless there is no commissioner responsible.');
   t('Choose one or more consultations or impact assessments that are particularly important for this policy. Search for them by typing the title.
 
 If policy input does not yet exist in the CMS, create it by clicking on "policy input".
 
 When naming it, try not to start with the type of action or law - e.g. avoid saying: Directive on....
-');
+    ');
   t('Choose one or multiple policy areas the policy belongs to.
 
-**Type name of policy area to search for it. Don\'t create a new policy area.**');
+    **Type name of policy area to search for it. Don\'t create a new policy area.**');
   t('Choose one, but only if policy belongs to one of the 10 priorities.');
   t('Description');
   t('Description will be used as abstract (metadata description) in all list views
@@ -1820,7 +1893,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
 * Make a direct connection to people’s lives and business interests
 * Where a policy benefits a particular group of people, present it from their perspective
 
-**Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.');
+    **Example:** Power plants can become much more efficient when, on top of the electricity they generate, the heat they create is captured.');
   t('Details body');
   t('Featured audiovisual file');
   t('Featured video or image or slideshow');
@@ -1840,7 +1913,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
 * short phrase – no punctuation
 * indicate the Commission\'s intention  or desired outcome
 * prioritise real world objectives over EU methodologies, instruments or programmes
-* well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given');
+    * well-known, high profile EU initiatives can be mentioned. In this case, explanations or links must be given');
   t('Paragraph');
   t('Parent');
   t('Part of topic(s)');
@@ -1852,8 +1925,9 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
   t('Responsible department(s)');
   t('Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
 
-A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ');
+    A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ');
   t('Sharable banner');
+  t('Taxonomy');
   t('The title should use everyday terms
 [break]
 Avoid:
@@ -1861,7 +1935,7 @@ Avoid:
 * titles of laws or packages (e.g. 6th energy package)
 * EU processes and concepts (e.g. open coordination, single market)
 
-**Example:** Efficient power production');
+    **Example:** Efficient power production');
   t('Title');
   t('Write only if the policy needs more explanation.
 
@@ -1875,7 +1949,7 @@ Include sub-headings, which should:
 * apply webwriting guidelines
 
 https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide-style-0_en
-');
+    ');
 
   return $field_instances;
 }

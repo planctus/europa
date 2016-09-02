@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the CWT Team feature.
@@ -61,7 +62,7 @@ function cwt_team_nodequeue_autocomplete() {
   );
 
   if (in_array($queue->name, $filtered_queues)) {
-    $matches = cwt_team_nodequeue_autocomplete_default_language($queue, $subqueue, $string);
+    $matches = _cwt_team_nodequeue_autocomplete_default_language($queue, $subqueue, $string);
   }
   else {
     $matches = _nodequeue_autocomplete($sqid, $string);
@@ -91,7 +92,7 @@ function cwt_team_nodequeue_autocomplete() {
  *
  * @see _nodequeue_autocomplete()
  */
-function cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdClass $subqueue, $string) {
+function _cwt_team_nodequeue_autocomplete_default_language(stdClass $queue, stdClass $subqueue, $string) {
   global $user;
 
   $matches = array();

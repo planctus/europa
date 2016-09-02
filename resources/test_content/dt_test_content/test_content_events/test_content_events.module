@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Code for the Test content - Events feature.
+ */
+
+include_once 'test_content_events.features.inc';
+
+/**
+ * Implements hook_post_features_revert().
+ */
+function test_content_events_post_features_revert($component) {
+  cache_clear_all();
+}

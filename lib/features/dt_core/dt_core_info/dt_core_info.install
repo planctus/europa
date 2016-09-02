@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Digital Transformation Core install file.
@@ -30,15 +31,21 @@ function dt_core_info_install() {
     'dt_page_extended',
     'dt_site_menu',
     'dt_consultation_default',
-    'dt_event_default',
+    'dt_call_for_proposal_default',
+    'dt_tender_default',
   );
   module_enable($features);
 
   // Enabling information sub-theme.
-  theme_enable(array('information'));
+  theme_enable(['europa', 'information']);
   variable_set('theme_default', 'information');
+
+  // Enable features that rely on the theme.
+  module_enable(['dt_event_default']);
+
   // Disabling unnecessary themes.
-  theme_disable(array('europa', 'ec_resp', 'seven'));
+  theme_disable(['ec_resp']);
+
   // Enable languages.
   _dt_core_enable_languages(_dt_core_ec_official_languages());
 
@@ -153,4 +160,25 @@ function dt_core_info_update_7110() {
     }
   }
   module_enable(array('dt_event_default'));
+}
+
+/**
+ * Call for proposal. (7113)
+ *
+ * Enable eurovoc. (7114)
+ * updating old overwrite modules.
+ */
+function dt_core_info_update_7115() {
+  module_enable(['dt_call_for_proposal_default', 'nexteuropa_eurovoc']);
+
+  if (!module_exists('entityreference_remoteoverride')) {
+    module_enable(['entityreference_remoteoverride', 'entityreference_remoteoverride_tmgmt']);
+  }
+  // Revert person content type.
+  features_revert_module('dt_person');
+  // Upgrade the field.
+  _entityreference_remoteoverride_add_table_field('field_core_persons', ['field_person_role_title']);
+  // Disable the old implementation.
+  module_disable(['entityreference_titleoverwrite', 'entityreference_titleoverwrite_tmgmt']);
+  drupal_uninstall_modules(['entityreference_titleoverwrite_tmgmt', 'entityreference_titleoverwrite'], FALSE);
 }

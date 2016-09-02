@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_event_default.features.field_instance.inc
@@ -16,7 +17,7 @@ function dt_event_default_field_default_field_instances() {
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'For event, there are separate fields for schedule, speakers, and practical information. 
-For collection, this is a text with more information about the collection.',
+    For collection, this is a text with more information about the collection.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -52,7 +53,7 @@ For collection, this is a text with more information about the collection.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 53,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -240,7 +241,7 @@ For collection, this is a text with more information about the collection.',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Select one or more departments that organize the event.
-Note: this may need to be extended to external and 3rd party organizers as well.',
+    Note: this may need to be extended to external and 3rd party organizers as well.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -270,7 +271,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 32,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'inline',
@@ -279,7 +280,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 51,
+        'weight' => 92,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -297,7 +298,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_departments',
-    'label' => 'Organizing department',
+    'label' => 'Organiser',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -346,13 +347,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 57,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 46,
       ),
       'meta' => array(
         'label' => 'above',
@@ -466,7 +467,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 63,
       ),
       'meta' => array(
         'label' => 'above',
@@ -531,16 +532,17 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'weight' => 77,
       ),
       'event_past' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'dt_gallery',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 71,
+        'type' => 'dt_gallery',
+        'weight' => 76,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 68,
       ),
       'meta' => array(
         'label' => 'above',
@@ -627,13 +629,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 62,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 49,
       ),
       'meta' => array(
         'label' => 'above',
@@ -830,13 +832,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 58,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 60,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1028,13 +1030,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 67,
       ),
       'full' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 53,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -1114,7 +1116,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 63,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1217,7 +1219,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
           'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
-          'view_mode' => 'meta',
+          'view_mode' => 'event_speaker',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 17,
@@ -1233,10 +1235,10 @@ Note: this may need to be extended to external and 3rd party organizers as well.
           'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
-          'view_mode' => 'meta',
+          'view_mode' => 'event_speaker',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 40,
+        'weight' => 18,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1304,10 +1306,9 @@ Note: this may need to be extended to external and 3rd party organizers as well.
       ),
       'event_past' => array(
         'label' => 'hidden',
-        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'social_network_link_theme_css',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 48,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1381,13 +1382,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 61,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 48,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1519,7 +1520,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
-    'label' => 'Topics',
+    'label' => 'Topic',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1570,14 +1571,14 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 28,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 47,
+        'weight' => 87,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -1673,13 +1674,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 65,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 51,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1750,13 +1751,13 @@ Note: this may need to be extended to external and 3rd party organizers as well.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 56,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 45,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1794,7 +1795,7 @@ Note: this may need to be extended to external and 3rd party organizers as well.
     'bundle' => 'event',
     'deleted' => 0,
     'description' => 'On what day does the event start?
-On what day does the event end?',
+    On what day does the event end?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1832,19 +1833,13 @@ On what day does the event end?',
           'same_day_format' => 'sd_j sd_F sd_Y, sd_H:sd_i - ed_H:ed_i (sd_T)',
         ),
         'type' => 'date_event_date',
-        'weight' => 25,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'inline',
-        'module' => 'dt_date_format',
-        'settings' => array(
-          'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
-          'render_box' => 0,
-          'same_date_format' => 'sd_l sd_j sd_F',
-          'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
-        ),
-        'type' => 'date_event_date',
-        'weight' => 42,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 70,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1925,14 +1920,14 @@ On what day does the event end?',
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 52,
       ),
       'full' => array(
         'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 49,
+        'weight' => 89,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -1950,7 +1945,7 @@ On what day does the event end?',
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_entrance_fee',
-    'label' => 'Entrance fee(s)',
+    'label' => 'Registration fee',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2030,13 +2025,13 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 70,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 59,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2103,13 +2098,13 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 71,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 62,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2176,13 +2171,13 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 66,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 52,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2251,13 +2246,13 @@ On what day does the event end?',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 72,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 64,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2321,8 +2316,8 @@ iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&de
 only enter this in the input field:
 
 ```
-http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
-```',
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
+    ```',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2347,13 +2342,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 73,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 65,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2554,7 +2549,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 69,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2639,13 +2634,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 75,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 66,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2746,7 +2741,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 51,
       ),
       'full' => array(
         'label' => 'inline',
@@ -2758,7 +2753,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 48,
+        'weight' => 88,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -2776,7 +2771,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_number_seats',
-    'label' => 'Total number of seats',
+    'label' => 'Number of places',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2830,7 +2825,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 33,
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'inline',
@@ -2839,7 +2834,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 52,
+        'weight' => 93,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -2857,7 +2852,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_parent_events',
-    'label' => 'Part of collection',
+    'label' => 'Part of',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2871,7 +2866,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'entityreference_autocomplete',
       'weight' => 4,
     ),
   );
@@ -2906,13 +2901,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 68,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 55,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3001,13 +2996,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 69,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 58,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3063,16 +3058,25 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 21,
       ),
       'event_collection' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 42,
+        'module' => 'dt_policy_next_step',
+        'settings' => array(
+          'date_formatter' => '',
+          'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 0,
+        ),
+        'type' => 'dt_policy_next_step_formatter_default',
+        'weight' => 20,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3084,13 +3088,16 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 50,
       ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'dt_policy_next_step',
         'settings' => array(
+          'date_formatter' => '',
           'modifier' => '',
+          'show_timezone' => 1,
+          'timeline_expander_disable' => 1,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 37,
@@ -3111,7 +3118,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_schedule',
-    'label' => 'Schedule',
+    'label' => 'Agenda',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3121,8 +3128,12 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
       'active' => 1,
       'module' => 'dt_policy_next_step',
       'settings' => array(
-        'rows' => 10,
-        'size' => 10,
+        'value' => array(
+          'rows' => '',
+          'size' => '',
+          'timeline_type' => 'timeline_schedule',
+          'timezone' => 1,
+        ),
       ),
       'type' => 'dt_policy_next_step_widget',
       'weight' => 18,
@@ -3159,13 +3170,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 74,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 67,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3263,13 +3274,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 64,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 50,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3334,13 +3345,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 60,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 47,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3437,14 +3448,14 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 29,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 50,
+        'weight' => 90,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -3462,7 +3473,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_target_audience',
-    'label' => 'Target audience',
+    'label' => 'Who should attend',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -3613,14 +3624,14 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 34,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'inline',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 53,
+        'weight' => 94,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -3710,7 +3721,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 61,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3728,7 +3739,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_event_what_happened',
-    'label' => 'What happened',
+    'label' => 'Summary',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -3809,13 +3820,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 55,
       ),
       'full' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 56,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3888,13 +3899,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 59,
       ),
       'full' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 57,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3978,13 +3989,13 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 54,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 54,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -4025,6 +4036,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   // Translatables
   // Included for use with string extractors like potx.
   t('Add the link where you must register in order to attend the event.');
+  t('Agenda');
   t('All places have been booked.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');
   t('Aspect ratio 8:3 (w:h). Minimum width: 2400 px');
@@ -4035,7 +4047,6 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   t('Date and time of live streaming');
   t('Description');
   t('Details concerning the timing and schedule of an event. This can be limited or extended.');
-  t('Entrance fee(s)');
   t('Event date and time');
   t('Event type');
   t('Events in the collection');
@@ -4043,7 +4054,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
   t('Featured video or image');
   t('Files');
   t('For event, there are separate fields for schedule, speakers, and practical information. 
-For collection, this is a text with more information about the collection.');
+    For collection, this is a text with more information about the collection.');
   t('Fully booked');
   t('Group content visibility');
   t('Groups audience');
@@ -4067,12 +4078,13 @@ For collection, this is a text with more information about the collection.');
   t('Location image');
   t('Main video or image of the event. Is displayed at the top of the page.');
   t('More info on the status. For example reason of cancellation or former date etc.');
+  t('Number of places');
   t('On what day does the event start?
-On what day does the event end?');
+    On what day does the event end?');
   t('Online only');
   t('Only used in case the title of the collection is for example a proper name, which requires a one short phrase. Or in case there is an \'official\' tagline.');
-  t('Organizing department');
-  t('Part of collection');
+  t('Organiser');
+  t('Part of');
   t('Photos, videos or audio files');
   t('Picture of the (entrance of the) location. Aspect ratio 4:3 (w:h). Minimum width: 320 px');
   t('Please enter the URL (information in src="") you can find in the embed code of the live stream.
@@ -4089,34 +4101,31 @@ iframe src="http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&de
 only enter this in the input field:
 
 ```
-http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm 
-```');
+http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://ec.europa.eu/avservices/video/player/config.cfm
+    ```');
   t('Registration');
   t('Registration deadline');
+  t('Registration fee');
   t('Related links');
   t('Report on the course of the event');
-  t('Schedule');
   t('Scribble id');
   t('Select one or more departments that organize the event.
-Note: this may need to be extended to external and 3rd party organizers as well.');
+    Note: this may need to be extended to external and 3rd party organizers as well.');
   t('Select one or more files and order them.');
   t('Select one or more photos, videos, or audio files that were captured at the event and order them');
   t('Social media profile links');
   t('Speakers');
   t('Status description');
+  t('Summary');
   t('Tagline');
-  t('Target audience');
   t('This is displayed as \'meta\' information in addition to the event title. Events can also be filtered by \'event type\'.');
   t('Title');
-  t('Title Text');
-  t('Title text is used in the tool tip when a user hovers their mouse over the image. Adding title text makes it easier to understand the context of an image and improves usability.');
   t('To which topics does the event or collection relate?');
-  t('Topics');
+  t('Topic');
   t('Total number of places that are available. Indicates the size of the event.');
-  t('Total number of seats');
   t('Website');
   t('What do you want to create?');
-  t('What happened');
+  t('Who should attend');
 
   return $field_instances;
 }

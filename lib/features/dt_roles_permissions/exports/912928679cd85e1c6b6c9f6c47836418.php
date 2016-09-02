@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains permissions export for role site manager.
@@ -13,6 +14,7 @@ $permissions['site manager'] = array(
   'administer tmgmt',
   'administer translation tasks',
   'administer users',
+  'administer menu',
   'assign node weight',
   'bypass node access',
   'bypass workbench moderation',

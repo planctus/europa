@@ -1,0 +1,8 @@
+name = Entityreference remote override
+description = Allows you to override remote entity's based on data on the local entity
+core = 7.x
+package = Entity
+
+dependencies[] = entityreference
+php = 5.5
+multisite_version = 2.2

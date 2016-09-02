@@ -1,0 +1,11 @@
+Document;icon-filetype--document
+Data;icon-filetype--data
+Image;icon-filetype--image
+Presentation;icon-filetype--presentation
+Form;icon-filetype--form
+Video;icon-filetype--video
+Audio;icon-filetype--audio
+Package (eg. zip File);icon-filetype--package
+Print Material (Booklet/Brochure/Magazine/Flyer);icon-filetype--print
+Spreadsheet;icon-filetype--spreadsheet
+CSV;icon-filetype--csv

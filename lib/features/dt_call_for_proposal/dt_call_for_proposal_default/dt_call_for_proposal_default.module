@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Default feature.
+ */
+
+include_once 'dt_call_for_proposal_default.features.inc';

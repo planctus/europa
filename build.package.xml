@@ -6,7 +6,7 @@
         Create unique filename from configuration so we can be sure to
         have the correct version.
     -->
-    <property name="platform.package.tarball.versioned" value="${phing.project.tmp.dir}/deploy-package-${platform.package.reference}.tar.gz" override="true" />
+    <property name="platform.package.tarball.versioned" value="${platform.package.destination}/deploy-package-${platform.package.reference}.tar.gz" override="true" />
 
     <!-- Delete the previous development build. -->
     <target name="delete-dev">
@@ -103,7 +103,7 @@
     <target name="make-dev" depends="unpack-platform">
         <echo msg="Make the subsite." />
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="${subsite.make}" />
+            <property name="drush.make.target.file" value="${subsite.make.dev}" />
             <property name="drush.make.root" value="${platform.build.dir}" />
         </phingcall>
     </target>
@@ -112,7 +112,7 @@
     <target name="make-theme">
         <echo msg="Make the subsite." />
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="lib/themes/europa/europa.make" />
+            <property name="drush.make.target.file" value="${project.basedir}/lib/themes/europa/europa.make" />
             <property name="drush.make.root" value="${platform.build.dir}" />
         </phingcall>
     </target>
@@ -189,6 +189,17 @@
         <!-- Symlink composer configuration. -->
         <symlink link="${platform.build.subsite.composer.json}" target="${subsite.resources.composer.json}" />
         <symlink link="${platform.build.subsite.composer.lock}" target="${subsite.resources.composer.lock}" />
+        <!-- Symlink Behat binary and test directory from platform build. -->
+        <!-- See https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-11706 for more information. -->
+        <symlink link="bin/behat" target="${platform.build.dir}/vendor/bin/behat" overwrite="true"/>
+        <symlink link="${platform.build.dir}/tests" target="${project.basedir}/tests" overwrite="true"/>
+    </target>
+
+    <!-- Symlink the Behat bin and test directory in the subsite folder. -->
+    <target name="link-behat">
+        <echo msg="Symlink the Behat bin and test directory in './sites/all'." />
+        <symlink link="bin/behat" target="${platform.build.subsite.dir}/vendor/bin/behat" overwrite="true"/>
+        <symlink link="${platform.build.subsite.dir}/tests" target="${project.basedir}/tests" overwrite="true"/>
     </target>
 
     <!-- Copy subsite resources into the build folder. -->
@@ -225,15 +236,36 @@
 
     <!-- Install Composer dependencies for the build system. -->
     <target name="install-build-dependencies">
+        <echo msg="Run 'composer install' in platform root." />
         <composer command="install" composer="${composer.bin}">
             <arg value="--working-dir=${project.basedir}" />
         </composer>
     </target>
 
-    <!-- Install Composer dependencies for the subsite. -->
+    <!-- Install Composer dev dependencies for the subsite. -->
     <target name="install-dev-dependencies">
+        <echo msg="Run 'composer install' in the subsite folder for development purposes." />
         <composer command="install" composer="${composer.bin}">
             <arg value="--working-dir=${platform.build.subsite.dir}" />
+        </composer>
+    </target>
+
+
+    <!-- Install Composer development dependencies for the platform. -->
+    <!-- Note: this is a temporary workaround until we get Composer to work properly with sub-sites. -->
+    <!-- See https://webgate.ec.europa.eu/CITnet/jira/browse/NEXTEUROPA-11706 for more information. -->
+    <target name="install-platform-dev-dependencies">
+        <composer command="install" composer="${composer.bin}">
+            <arg value="--working-dir=${platform.build.dir}" />
+        </composer>
+    </target>
+
+    <!-- Install Composer dist dependencies for the subsite. -->
+    <target name="install-dist-dependencies">
+        <echo msg="Run 'composer install --no-dev' in the build destination folder." />
+        <composer command="install" composer="${composer.bin}">
+            <arg value="--working-dir=${dist.build.dir}" />
+            <arg value="--no-dev" />
         </composer>
     </target>
 
@@ -256,6 +288,25 @@
 
     <!-- Download the platform. -->
     <target name="download-platform">
+        <if>
+            <not>
+                <available file="${platform.package.destination}" type="dir" />
+            </not>
+            <then>
+            <!-- Create the destination directory if it doesn't exist. -->
+                <mkdir dir="${platform.package.destination}" />
+                <!-- Symlink it to the common storage. -->
+                <if>
+                    <not>
+                        <equals arg1="${platform.package.storage}" arg2=""/>
+                    </not>
+                    <then>
+                        <symlink link="${platform.package.destination}" target="${platform.package.storage}" overwrite="true"/>
+                    </then>
+                </if>
+            </then>
+        </if>
+
         <!--
             The platform is very large so downloading it can take a long time.
             Only download it when it hasn't yet been downloaded.
@@ -265,8 +316,6 @@
                 <available file="${platform.package.tarball.versioned}" type="file" />
             </not>
             <then>
-                <!-- Create the destination directory if it doesn't exist. -->
-                <mkdir dir="${platform.package.destination}" />
                 <echo msg="Starting to download the platform. Depending on your connection this can take between 5-15 minutes. Go get some coffee." />
                 <echo msg="This file will only be downloaded once and will be cached in ${platform.package.tarball.versioned}." />
                 <echo msg="You can delete this cached file whenever you want to download a new version of the platform." />
@@ -317,19 +366,41 @@
     <target
         name="build-dev"
         description="Build a local development version of the subsite."
-        depends="install-build-dependencies, delete-dev, make-dev, link-dev-resources, make-theme, install-dev-dependencies, setup-behat, update-htaccess, setup-php-codesniffer, download-development-modules"
-    />
-
-    <target
-        name="build-test-env"
-        description="Build a test environment for CPHP"
-        depends="install-build-dependencies, make-dev, link-dev-resources"
+        depends="
+            install-build-dependencies,
+            delete-dev,
+            make-dev,
+            link-dev-resources,
+            make-theme,
+            install-dev-dependencies,
+            link-behat,
+            setup-behat,
+            update-htaccess,
+            setup-files-directory,
+            setup-php-codesniffer,
+            download-development-modules,
+            build-custom"
     />
 
     <target
         name="build-dist"
         description="Build a version of the subsite intended to distribute as a release package."
-        depends="install-build-dependencies, delete-dist, make-dist, copy-dist-resources"
+        depends="
+            install-build-dependencies,
+            delete-dist,
+            make-dist,
+            copy-dist-resources,
+            install-dist-dependencies,
+            build-custom"
     />
 
+	<!-- Setup file directory -->
+    <target name="setup-files-directory">
+		 <if>
+            <istrue value="${platform.build.files.dir}" />
+            <then>
+                <mkdir dir="${platform.build.files.dir}/private_files" />
+            </then>
+        </if>
+    </target>
 </project>

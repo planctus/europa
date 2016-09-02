@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_person.strongarm.inc
@@ -138,11 +139,29 @@ function dt_person_strongarm() {
       'file' => array(
         'custom_settings' => FALSE,
       ),
+      'event_speaker' => array(
+        'custom_settings' => TRUE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '10',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
           'weight' => '8',
@@ -151,7 +170,7 @@ function dt_person_strongarm() {
           'weight' => '5',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '3',
         ),
       ),
       'display' => array(),

@@ -9,6 +9,14 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function cwt_activities_install() {
+  // Migrating calendar item types.
+  _cwt_activities_migrate_calendar_item_types();
+}
+
+/**
  * Implements hook_enable().
  */
 function cwt_activities_enable() {
@@ -51,4 +59,49 @@ function cwt_activities_update_7103() {
   if ($instance = field_info_instance('node', 'field_team_priorities', 'activities')) {
     field_delete_instance($instance);
   }
+}
+
+/**
+ * Convert datetime to datestamp fields.
+ *
+ * Adding terms to the calendar item types. (7104)
+ */
+function cwt_activities_update_7105() {
+  // Make sure that destination vocabularies exists.
+  features_revert(array('cwt_activities' => array('taxonomy')));
+  _cwt_activities_migrate_calendar_item_types();
+
+  $fields = [
+    'field_start_end_date',
+  ];
+
+  foreach ($fields as $field) {
+    $tables = ['field_data_' . $field, 'field_revision_' . $field];
+    $column_name = $field . '_value';
+
+    // Temporary data.
+    $param = [
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ];
+
+    // Update base and revision.
+    foreach ($tables as $table) {
+      // Add the field.
+      db_add_field($table, $column_name . '_temp', $param);
+      // Convert the data.
+      db_update($table)->expression($column_name . '_temp', "UNIX_TIMESTAMP($column_name)")->execute();
+      // Drop the table.
+      db_drop_field($table, $column_name);
+      // Rename the updated column.
+      db_change_field($table, $column_name . '_temp', $column_name, ['type' => 'int']);
+    }
+
+    // Change info in the database.
+    db_update('field_config')->fields(['type' => 'datestamp'])->condition('field_name', $field)->execute();
+  }
+  field_cache_clear();
+  // Revert the feature.
+  features_revert(['dt_core']);
 }

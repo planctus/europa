@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * dt_contact.field_group.inc
@@ -25,6 +26,7 @@ function dt_contact_field_group_info() {
     'children' => array(
       0 => 'field_contact_phone_number',
       1 => 'field_contact_postal_mail',
+      2 => 'field_contact_mobile_number',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

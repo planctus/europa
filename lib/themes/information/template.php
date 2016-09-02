@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * template.php
@@ -27,20 +28,5 @@ function information_preprocess_page(&$variables) {
   if (drupal_is_front_page()) {
     $variables['logo_classes'] .= ' logo--logotype';
     $variables['node']->ceiling = 'ceiling';
-  }
-}
-
-/**
- * Implements hook_preprocess_field().
- */
-function information_preprocess_field(&$variables) {
-  // Changing label for the field to display stripped out values.
-  switch ($variables['element']['#field_name']) {
-    case 'field_core_ecorganisation':
-      $field_value = $variables['element']['#items'][0]['value'];
-      $field_value_stripped = explode(" (", $field_value);
-
-      $variables['items'][0]['#markup'] = $field_value_stripped[0];
-      break;
   }
 }

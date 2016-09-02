@@ -5,3 +5,5 @@ package = tmgmt
 
 dependencies[] = entityreference
 dependencies[] = tmgmt
+php = 5.5
+multisite_version = 2.2

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Person feature.
@@ -13,7 +14,7 @@ function dt_person_migrate_api() {
   return array(
     'api' => 2,
     'groups' => array(
-      'NextEuropa' => array(
+      'NextEuropa Digital Transformation' => array(
         'title' => t('Including taxonomy terms in the Person roles vocabulary.'),
       ),
     ),
@@ -44,10 +45,11 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       $commissioner_taxonomy_id = key(taxonomy_get_term_by_name('commissioner', 'person_roles'));
 
       // Rebuild our commissioner list.
-      $commissioner_list = array();
+      $commissioner_list = [];
 
       // Set our check default to true.
       $same_title = TRUE;
+      $last_title_tid = NULL;
 
       // Check if titles are different.
       foreach ($element['#items'] as $key => $item) {
@@ -60,18 +62,24 @@ function dt_person_field_attach_view_alter(&$output, $context) {
           'obj' => $item,
         );
 
-        // Save the last id we checked.
-        $last_title_tid = $check_entity->field_person_role->value()->tid;
-
         // Check if the tid is the same. If not set our variable to false.
-        if (isset($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
+        if (!empty($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
           $same_title = FALSE;
         }
+
+        // Save the last id we checked.
+        $last_title_tid = $check_entity->field_person_role->value()->tid;
       }
 
       // If all the persons have the same title, we update our label.
       if ($same_title && isset($check_entity->field_person_role)) {
-        $wrapper_label = $check_entity->field_person_role->value()->name;
+        if (module_exists('i18n')) {
+          $term = i18n_taxonomy_localize_terms(taxonomy_term_load($check_entity->field_person_role->value()->tid));
+          $wrapper_label = $term->name;
+        }
+        else {
+          $wrapper_label = $check_entity->field_person_role->value()->name;
+        }
       }
 
       // We process the data again, with the new information we have.
@@ -172,8 +180,8 @@ function dt_person_ds_fields_info() {
     'function' => '_dt_person_token_replace_fullname',
     'properties' => array(
       'class' => 'full-name',
-      'first_name' => '[node:field_person_last_name]',
-      'last_name' => '[node:field_person_first_name]',
+      'first_name' => '[node:field_person_first_name]',
+      'last_name' => '[node:field_person_last_name]',
       'link' => '[node:legacy-link]',
     ),
   );
@@ -236,4 +244,16 @@ function _dt_person_token_replace($field) {
     return $value;
   }
   return NULL;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function dt_person_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'person' && $build['#view_mode'] == 'event_speaker') {
+    if ($build['#node']->entity_reference_has_override && isset($build['field_person_role_title'][0]['#markup'])) {
+      $build['field_person_role']['#access'] = FALSE;
+      $build['field_person_role_title']['#access'] = TRUE;
+    }
+  }
 }

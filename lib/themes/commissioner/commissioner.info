@@ -3,7 +3,6 @@ description = Based on Bootstrap Sub-theme.
 core = 7.x
 base theme = europa
 php = 5.2.4
-
 ; ========================================
 ; Regions
 ; ========================================
@@ -32,3 +31,4 @@ stylesheets[all][] = css/style.css
 ;; Scripts
 ;;;;;;;;;;;;;;;;;;;;;
 scripts[] = 'js/commissioner.js'
+multisite_version = 2.2
