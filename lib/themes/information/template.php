@@ -20,10 +20,6 @@ function information_form_views_exposed_form_alter(&$form, &$form_state, $form_i
  * Implements hook_preprocess_page().
  */
 function information_preprocess_page(&$variables) {
-  // Temporary variable that should be removed once the beta notification
-  // is gone.
-  $variables['node_about_beta'] = url('node/1108');
-
   // Adding a modifier for a specific case that will change the logo.
   if (drupal_is_front_page()) {
     $variables['logo_classes'] .= ' logo--logotype';
