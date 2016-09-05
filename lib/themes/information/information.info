@@ -53,3 +53,4 @@ settings[bootstrap_breadcrumb_title] = 1
 settings[bootstrap_cdn] = ""
 
 settings[toggle_slogan] = 0
+multisite_version = 2.2
