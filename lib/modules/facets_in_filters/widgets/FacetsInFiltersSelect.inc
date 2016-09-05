@@ -125,7 +125,6 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
     ];
 
     $form['#submit'] = empty($form['#submit']) ? [] : $form['#submit'];
-    $form['#submit'][] = 'facetapi_select_facet_settings_form_submit';
   }
 
   /**
@@ -162,7 +161,7 @@ class FacetsInFiltersSelect extends FacetsInFiltersFilterBase {
     }
 
     $i18n_name = [
-      'facetapi_select',
+      'facetsinfilters_select',
       $name,
       str_replace(':', '_', $key),
       'label',
