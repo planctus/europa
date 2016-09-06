@@ -390,6 +390,7 @@
             delete-dist,
             make-dist,
             copy-dist-resources,
+            make-theme,
             install-dist-dependencies,
             build-custom"
     />
