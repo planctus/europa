@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Code for the NextEuropa Integration Announcement Consumer feature.
+ */
+
+use Drupal\integration\Exceptions\BaseException;
+use Drupal\integration_consumer\ConsumerFactory;
+
+include_once 'dt_integration_announcement_consumer.features.inc';
+
+/**
+ * Implements hook_cron().
+ */
+function dt_integration_announcement_consumer_cron() {
+  try {
+    $consumer = ConsumerFactory::getInstance('announcement');
+    $consumer->processImport();
+  }
+  catch (BaseException $e) {
+    watchdog_exception("integration", $e);
+  }
+}
+
+/**
+ * Implements hook_integration_consumer_migrate_post_import().
+ */
+function dt_integration_announcement_consumer_integration_consumer_migrate_post_import($consumer) {
+  $map = $consumer->getMap();
+  foreach ($map as $key) {
+    $nid = $key->destid1;
+    $node = node_load($nid);
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper->field_core_type_content->set('default');
+    $wrapper->field_core_introduction->format->set('full_html');
+    $wrapper->status = 1;
+    $wrapper->save();
+    workbench_moderation_moderate($node, 'published');
+  }
+}

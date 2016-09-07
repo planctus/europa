@@ -33,6 +33,10 @@ function dt_core_info_install() {
     'dt_consultation_default',
     'dt_call_for_proposal_default',
     'dt_tender_default',
+    'nexteuropa_integration',
+    'integration_producer_ui',
+    'integration_consumer_ui',
+    'dt_integration_announcement_consumer',
   ];
   module_enable($features);
 
@@ -157,18 +161,6 @@ function dt_core_info_update_7110() {
 }
 
 /**
- * DTTSB-821: Enable integration modules.
- */
-function dt_core_info_update_7116() {
-  $modules = [
-    'nexteuropa_integration',
-    'integration_producer_ui',
-    'integration_consumer_ui',
-  ];
-  module_enable($modules);
-}
-
-/**
  * Call for proposal. (7113)
  *
  * Enable eurovoc. (7114)
@@ -187,4 +179,23 @@ function dt_core_info_update_7115() {
   // Disable the old implementation.
   module_disable(['entityreference_titleoverwrite', 'entityreference_titleoverwrite_tmgmt']);
   drupal_uninstall_modules(['entityreference_titleoverwrite_tmgmt', 'entityreference_titleoverwrite'], FALSE);
+}
+
+/**
+ * DTTSB-821: Enable integration modules.
+ */
+function dt_core_info_update_7116() {
+  $modules = [
+    'nexteuropa_integration',
+    'integration_producer_ui',
+    'integration_consumer_ui',
+  ];
+  module_enable($modules);
+}
+
+/**
+ * DTTSB-851: Enable integration announcement consumer.
+ */
+function dt_core_info_update_7117() {
+  module_enable(['dt_integration_announcement_consumer']);
 }
