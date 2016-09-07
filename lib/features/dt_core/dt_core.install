@@ -959,10 +959,6 @@ function dt_core_update_7172() {
   if (_dt_roles_permissions_import_import('editorial team member', TRUE)) {
     drupal_set_message(t('Role "editorial team member" updated.'));
   }
-  // Generate the required vocabulary there is no upgrade.
-  if (module_exists('nexteuropa_metatags')) {
-    nexteuropa_metatags_install();
-  }
 
   $vocabulary = taxonomy_vocabulary_machine_name_load('main_taxonomy');
   taxonomy_vocabulary_delete($vocabulary->vid);
