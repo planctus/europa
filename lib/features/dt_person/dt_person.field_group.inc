@@ -26,8 +26,9 @@ function dt_person_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      2 => 'field_core_listing_disable_link',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -54,8 +55,8 @@ function dt_person_field_group_info() {
     'label' => 'Agenda',
     'weight' => '69',
     'children' => array(
-      0 => 'field_person_agenda_introduction',
-      1 => 'field_core_links',
+      0 => 'field_core_links',
+      1 => 'field_person_agenda_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -82,9 +83,9 @@ function dt_person_field_group_info() {
     'label' => 'Biography and CV',
     'weight' => '68',
     'children' => array(
-      0 => 'field_core_file',
-      1 => 'field_core_next_steps',
-      2 => 'body',
+      0 => 'body',
+      1 => 'field_core_file',
+      2 => 'field_core_next_steps',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -138,13 +139,13 @@ function dt_person_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_taxonomy',
-      1 => 'group_editorial_settings',
-      2 => 'group_person_agenda',
-      3 => 'group_person_biography_cv',
-      4 => 'group_person_contact',
-      5 => 'group_person_profile',
-      6 => 'group_person_technical',
+      0 => 'group_editorial_settings',
+      1 => 'group_person_agenda',
+      2 => 'group_person_biography_cv',
+      3 => 'group_person_contact',
+      4 => 'group_person_profile',
+      5 => 'group_person_technical',
+      6 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -288,8 +289,8 @@ function dt_person_field_group_info() {
       4 => 'field_person_role',
       5 => 'field_person_tagline',
       6 => 'field_core_legacy_link',
-      7 => 'field_person_role_title',
-      8 => 'field_core_departments',
+      7 => 'field_core_departments',
+      8 => 'field_person_role_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
