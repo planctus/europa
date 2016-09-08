@@ -88,16 +88,37 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
     // If it is different from the default option, we can assume it has data.
     if (isset($exposed_input[$identifier]) && $exposed_input[$identifier] !== $all_string) {
       $displays[$identifier]['label'] = $filter->options['expose']['label'];
-      // If we can get the value from the filter we use it.
-      if (isset($filter->value_options) && is_array($filter->value_options) && isset($filter->value_options[$exposed_input[$identifier]])) {
-        $displays[$identifier]['value'] = $filter->value_options[$exposed_input[$identifier]];
+
+      // Get more information about the class.
+      $reflection_class = new ReflectionClass($filter);
+
+      // Check if the class has the value_options property.
+      if ($reflection_class->hasProperty('value_options')) {
+        // We need to know if we can access the property, otherwise we use it in
+        // a different way.
+        $property = $reflection_class->getProperty('value_options');
+
+        // If we can get the value from the filter we use it.
+        if ($property->isPublic() && isset($filter->value_options[$exposed_input[$identifier]])) {
+          $displays[$identifier]['value'] = $filter->value_options[$exposed_input[$identifier]];
+        }
+        elseif ($reflection_class->hasMethod('value_form')) {
+          // We emulate the form building and take the values from there.
+          $form = [];
+          $form_state = ['exposed' => TRUE];
+          $filter->value_form($form, $form_state);
+          if (isset($form['value']['#options']) && isset($form['value']['#options'][$exposed_input[$identifier]])) {
+            $displays[$identifier]['value'] = $form['value']['#options'][$exposed_input[$identifier]];
+          }
+        }
       }
-      // Fallback to the original value.
-      else {
+
+      // The last fallback is the original value.
+      if (!isset($displays[$identifier]['value'])) {
         if (isset($filter->definition['vocabulary'])) {
           $displays[$identifier]['vocabulary'] = $filter->definition['vocabulary'];
         }
-        // We can sometimes depending on the filter,have a nested array.
+        // We can sometimes depending on the filter, have a nested array.
         if (isset($exposed_input[$identifier]['value']['date'])) {
           $exposed_input[$identifier] = $exposed_input[$identifier]['value'];
         }
