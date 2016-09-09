@@ -13,7 +13,7 @@ function printcolor {
 
 ## Defining variables.
 DBUSER=root
-DBPASS=root
+DBPASS=""
 DBNAME=tmpdbprtbl
 DBHOST=127.0.0.1
 VERBOSE="" #--verbose
@@ -35,40 +35,45 @@ select opt in "${options[@]}" "Quit" ; do
     fi
 done
 
+## Use mysql password only if set.
+if (( $DBPASS -ne "" )) ; then
+    $DBPASS = "-p$DBPASS"
+fi
+
 ## Processing the files.
 printcolor "## Starting to process <<< $opt >>>"
 printcolor "## Please note that this operation might take a long time depending on the size of the database."
 printcolor "## Notify the team to avoid deployments and that the target instance will be down during this operation."
 
 printcolor "\n## Creating temporary database: $DBNAME"
-mysqladmin -u $DBUSER -p$DBPASS create $DBNAME
+mysqladmin -u $DBUSER $DBPASS create $DBNAME
 
 printcolor "\n## Importing database file: $opt into $DBNAME"
-mysql -u $DBUSER -p$DBPASS $DBNAME < $tmp_path/dumps/$opt
+mysql -u $DBUSER $DBPASS $DBNAME < $tmp_path/dumps/$opt
 
 printcolor "\n## Sanitizing database (empty's passwords and e-mail)"
-mysql -u $DBUSER -p$DBPASS $DBNAME -e "UPDATE users SET pass='pass', mail='mail@mail.mail'"
+mysql -u $DBUSER $DBPASS $DBNAME -e "UPDATE users SET pass='pass', mail='mail@mail.mail'"
 
 printcolor "\n## Rename fpfis-admin to admin"
-mysql -u $DBUSER -p$DBPASS $DBNAME -e "UPDATE users SET name='admin' where name='fpfis-admin'"
+mysql -u $DBUSER $DBPASS $DBNAME -e "UPDATE users SET name='admin' where name='fpfis-admin'"
 
 printcolor "\n## Disabling ECAS"
-mysql -u $DBUSER -p$DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%ecas%\""
+mysql -u $DBUSER $DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%ecas%\""
 
 printcolor "\n## Disabling other modules by the platform"
-mysql -u $DBUSER -p$DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%gelf_log%\""
-mysql -u $DBUSER -p$DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%skippy_cookie%\""
+mysql -u $DBUSER $DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%gelf_log%\""
+mysql -u $DBUSER $DBPASS $DBNAME -e "UPDATE system SET status=0 where name like \"%skippy_cookie%\""
 
 printcolor "\n## Truncate cache tables"
 list="cache cache_block cache_bootstrap cache_field cache_filter cache_form cache_image cache_menu cache_page cache_path cache_token cache_update"
 for varname in $list; do
   echo "> Truncating $varname"
-  mysql -u $DBUSER -p$DBPASS $DBNAME -e "TRUNCATE TABLE $varname;"
+  mysql -u $DBUSER $DBPASS $DBNAME -e "TRUNCATE TABLE $varname;"
 done
 
 printcolor "\n## Dumping the ac ready db to: $tmp_path/ready/$opt"
 mkdir -p $tmp_path/ready
-mysqldump -u $DBUSER -p$DBPASS --no-create-db $DBNAME > $tmp_path/ready/$opt
+mysqldump -u $DBUSER $DBPASS --no-create-db $DBNAME > $tmp_path/ready/$opt
 
 printcolor "\n## Uploading the database to the remote"
 prompt="Please choose the target alias:"
@@ -135,4 +140,4 @@ for command in "${commands[@]}"; do
 done
 
 printcolor "\n## Dropping temporary database: $DBNAME"
-printf 'y' | mysqladmin -u $DBUSER -p$DBPASS drop $DBNAME
+printf 'y' | mysqladmin -u $DBUSER $DBPASS drop $DBNAME
