@@ -25,6 +25,18 @@ function dt_person_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 21,
       ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -169,6 +181,18 @@ function dt_person_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 14,
       ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -216,6 +240,18 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'file_default',
         'weight' => 19,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'meta' => array(
         'label' => 'above',
@@ -293,6 +329,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -357,6 +399,18 @@ function dt_person_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 20,
       ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -408,6 +462,69 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_core_listing_disable_link'.
+  $field_instances['node-person-field_core_listing_disable_link'] = array(
+    'bundle' => 'person',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this for when you don\'t have a good legacy link or you don\'t have a full set of information to create a detail page, this is helpful when you want to only list a person in a list.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 22,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_listing_disable_link',
+    'label' => 'Use this person only in lists with no link or detail page',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_core_next_steps'.
   $field_instances['node-person-field_core_next_steps'] = array(
     'bundle' => 'person',
@@ -426,6 +543,18 @@ function dt_person_field_default_field_instances() {
         ),
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 17,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'meta' => array(
         'label' => 'above',
@@ -465,6 +594,77 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_eurovoc_taxonomy'.
+  $field_instances['node-person-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'person',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 14,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 76,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_person_agenda_introduction'.
   $field_instances['node-person-field_person_agenda_introduction'] = array(
     'bundle' => 'person',
@@ -478,6 +678,18 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 14,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'meta' => array(
         'label' => 'above',
@@ -540,65 +752,6 @@ function dt_person_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 82,
-    ),
-  );
-
-  // Exported field_instance: 'node-person-field_eurovoc_taxonomy'.
-  $field_instances['node-person-field_eurovoc_taxonomy'] = array(
-    'bundle' => 'person',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 14,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'name' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_eurovoc_taxonomy',
-    'label' => 'Taxonomy',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'taxonomy-index' => array(
-          'status' => TRUE,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference_view_widget',
-      'settings' => array(
-        'allow_duplicates' => 0,
-        'close_modal' => 1,
-        'pass_argument' => 0,
-        'pass_arguments' => '',
-        'rendered_entity' => 0,
-        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
-        'view_mode' => 'full',
-      ),
-      'type' => 'entityreference_view_widget',
-      'weight' => 76,
     ),
   );
 
@@ -1107,19 +1260,19 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
       'event_speaker' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
         'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1207,6 +1360,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1626,6 +1785,7 @@ function dt_person_field_default_field_instances() {
   t('Biography');
   t('Biography introduction');
   t('CV upload');
+  t('Check this for when you don\'t have a good legacy link or you don\'t have a full set of information to create a detail page, this is helpful when you want to only list a person in a list.');
   t('Contact group');
   t('Department');
   t('Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'');
@@ -1650,6 +1810,7 @@ function dt_person_field_default_field_instances() {
   t('The full CV in PDF format.');
   t('Title');
   t('To which department does the person belong?');
+  t('Use this person only in lists with no link or detail page');
   t('What type of person are you adding');
   t('Will be shown as a square. 160px by 160px or 60 by 60px');
 
