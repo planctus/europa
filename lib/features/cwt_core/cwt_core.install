@@ -9,8 +9,15 @@
  * Implements hook_install().
  */
 function cwt_core_install() {
+  // Disable some contexts coming from the platform.
   multisite_drupal_toolbox_remove_context('site_wide');
   multisite_drupal_toolbox_remove_context('homepage');
+
+  // Enabling admin theme for node pages.
+  variable_set('node_admin_theme', 1);
+
+  // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!).
+  variable_set('cce_basic_config_admin_pages', []);
 
   $weight = db_select('system', 's')
               ->fields('s', ['weight'])
@@ -29,14 +36,10 @@ function cwt_core_install() {
     user_role_save($role);
   }
 
-  $theme_list = [
-    'europa',
-    'commissioner',
-  ];
-
-  theme_enable($theme_list);
-
+  // Enabling commissioner sub-theme.
+  theme_enable(['europa', 'commissioner']);
   variable_set('theme_default', 'commissioner');
+
   // Adding value to Nexteuropa feedback form settings.
   variable_set('nexteuropa_feedback_form_id', '1040');
   // Enabling the social media sharing module if it's not already.
@@ -583,14 +586,10 @@ function cwt_core_update_7145() {
   include_once drupal_get_path('module', 'cwt_core') . '/cwt_core.default_permissions.inc';
   cwt_core_reset_default_permissions();
 
-  // Set default header background.
-  $theme_list = [
-    'europa',
-    'commissioner',
-    'bootstrap',
-  ];
-  theme_enable($theme_list);
+  // Enabling commissioner sub-theme.
+  theme_enable(['europa', 'commissioner']);
   variable_set('theme_default', 'commissioner');
+
   // Enable the dt header background custom module.
   module_enable(['dt_header_background']);
   // Set the default header background image.
@@ -604,4 +603,16 @@ function cwt_core_update_7145() {
     $group = field_group_load_field_group($group_name, 'taxonomy_term', 'editorial_sections', 'form');
     field_group_group_export_delete($group, FALSE);
   }
+}
+
+/**
+ * DTTSB-1013: Permissions.
+ *
+ * Enabling admin theme for node pages and removing admin pages to use
+ * default theme.
+ */
+function cwt_core_update_7146() {
+  variable_set('node_admin_theme', 1);
+  // Removing admin pages to use default theme(WATCH OUT FOR THAT!!!!!!).
+  variable_set('cce_basic_config_admin_pages', []);
 }
