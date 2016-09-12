@@ -202,12 +202,12 @@ function _nexteuropa_legacy_link_get($entity_type, $entity, $langcode = NULL) {
 function _nexteuropa_legacy_link_prevent_link($entity_type, $entity) {
   $wrapper = entity_metadata_wrapper($entity_type, $entity);
 
+  $type_content_conditions = isset($entity->field_core_type_content) && $wrapper->__isset('field_core_type_content') && $wrapper->field_core_type_content->value() == 'textblock';
+  $listing_disable_conditions = isset($entity->field_core_listing_disable_link) && $wrapper->__isset('field_core_listing_disable_link') && $wrapper->field_core_listing_disable_link->value();
+
   // Checking of type of content (if it is exists).
-  if ($wrapper->__isset('field_core_type_content')) {
-    $content_type = $wrapper->field_core_type_content->value();
-    if ($content_type == 'textblock') {
-      return TRUE;
-    }
+  if ($type_content_conditions || $listing_disable_conditions) {
+    return TRUE;
   }
 
   return FALSE;

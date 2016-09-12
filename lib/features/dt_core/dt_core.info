@@ -45,6 +45,7 @@ features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = description_field
+features[field_base][] = field_core_listing_disable_link
 features[field_base][] = field_core_abbreviation
 features[field_base][] = field_core_background
 features[field_base][] = field_core_child_policies

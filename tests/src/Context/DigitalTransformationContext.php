@@ -185,15 +185,16 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then the selects :selector should be set to :value
    */
   public function theSelectsShouldBeSetTo($selector, $value) {
-    $selects = $this->getSession()->getPage()->findAll('css', $selector);
-    if ($selects === NULL) {
-      throw new ExpectationException('Could not find select element matching the selector: ' . $selector, $this->getSession());
-    }
-    foreach ($selects as $select) {
-      if ($select->getValue() !== $value) {
-        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be', $this->getSession());
-      }
-    }
+    $this->assertSession()->elementAttributeContains('css', $selector . ' option[selected="selected"]', 'value', $value);
+  }
+
+  /**
+   * Check select box value.
+   *
+   * @Then the selects :selector should not be set to :value
+   */
+  public function theSelectsShouldNotBeSetTo($selector, $value) {
+    $this->assertSession()->elementAttributeNotContains('css', $selector . ' option[selected="selected"]', 'value', $value);
   }
 
   /**
