@@ -5,6 +5,7 @@ default:
         - FeatureContext
         - Drupal\DrupalExtension\Context\BatchContext
         - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MarkupContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\nexteuropa\Context\DrupalContext
         - Drupal\nexteuropa\Context\MinkContext
@@ -38,9 +39,11 @@ default:
         paths:
           - '${behat.subcontexts.path}'
       region_map:
+        main_content: '.main-content'
         tabs: '.tabs--primary'
         error_list: '.alert-block'
         secondary_language_selector: '.lang-selector-page'
         pager: '.pager'
+        speakers: '#speakers'
   formatters:
     ${behat.formatter.name}: ~
