@@ -125,6 +125,14 @@
 </nav>
 <?php endif; ?>
 
+<?php if (!empty($page['utility'])): ?>
+  <div class="utility">
+    <div class="container-fluid">
+      <?php print render($page['utility']); ?>
+    </div>
+  </div>
+<?php endif; ?>
+
 <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
   <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
     <div class="container-fluid">

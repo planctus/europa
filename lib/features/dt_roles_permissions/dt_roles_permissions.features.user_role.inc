@@ -53,5 +53,11 @@ function dt_roles_permissions_user_default_roles() {
     'weight' => 6,
   );
 
+  // Exported role: web transformer.
+  $roles['draft viewer'] = (object) array(
+    'name' => 'Draft viewer',
+    'weight' => 9,
+  );
+
   return $roles;
 }

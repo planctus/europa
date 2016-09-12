@@ -45,12 +45,6 @@ function dt_core_brp_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
-        'dt_core_brp-dt_brp_user_menu' => array(
-          'module' => 'dt_core_brp',
-          'delta' => 'dt_brp_user_menu',
-          'region' => 'utility',
-          'weight' => '-10',
-        ),
         'dt_core-dt_footer_site_tab_switcher' => array(
           'module' => 'dt_core',
           'delta' => 'dt_footer_site_tab_switcher',

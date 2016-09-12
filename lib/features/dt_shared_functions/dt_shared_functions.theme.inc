@@ -17,26 +17,17 @@
  */
 function theme_site_user_menu($variables) {
   global $user;
-  global $base_url;
 
-  $logout_url = $base_url . '/ecaslogout';
-  $user_profile = user_load($user->uid);
-  $user_wrapper = entity_metadata_wrapper('user', $user_profile);
-
-  $user_fullname = '';
-  if (isset($user_wrapper->field_firstname) && !empty($user_wrapper->field_firstname->value())) {
-    $user_fullname .= $user_wrapper->field_firstname->value();
+  if (module_exists('ecas')) {
+    $logout_url = url('/ecaslogout');
   }
-  if (isset($user_wrapper->field_lastname) && !empty($user_wrapper->field_lastname->value())) {
-    $user_fullname .= (empty($user_fullname) ? '' : ' ') . $user_wrapper->field_lastname->value();
-  }
-  if (empty($user_fullname)) {
-    $user_fullname .= $user_wrapper->name->value();
+  else {
+    $logout_url = url('/user/logout');
   }
 
   $items = [];
   $items[] = [
-    'data' => t('Logged in as') . ' ' . $user_fullname,
+    'data' => t('Logged in as') . ' ' . format_username($user),
     'class' => ['site-user-menu__option'],
   ];
   $items[] = [

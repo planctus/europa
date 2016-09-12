@@ -309,6 +309,10 @@ function dt_editorial_permission() {
       'title' => t('Mark linguistic review checkbox'),
       'description' => t('Allow the user to mark the linguistic review checkbox'),
     ],
+    'view drafts' => [
+      'title' => t('View drafts'),
+      'description' => t('View drafts of pages'),
+    ],
     'dt editorial mark content review' => [
       'title' => t('Mark content review checkbox'),
       'description' => t('Allow the user to mark the content review checkbox'),
@@ -601,4 +605,15 @@ function dt_editorial_theme($existing, $type, $theme, $path) {
       'template' => 'dt-editorial--views-view',
     ],
   ];
+}
+
+/**
+ * Implements hook_workbench_moderation_access_alter().
+ *
+ * If the user has view drafts permission than we allow him.
+ */
+function dt_editorial_workbench_moderation_access_alter(&$access, $op, $node) {
+  if ($op == 'view revisions' && user_access('view drafts') && user_access('view moderation history')) {
+    $access = TRUE;
+  }
 }

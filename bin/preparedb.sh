@@ -132,6 +132,9 @@ commands=(
 "ucrt agenda_validator"
 "upwd --password=\"testing123\" agenda_validator"
 "user-add-role \"agenda validator\" agenda_validator"
+"ucrt draft_viewer"
+"upwd --password=\"testing123\" draft_viewer"
+"user-add-role \"draft viewer\" draft_viewer"
 )
 
 for command in "${commands[@]}"; do
