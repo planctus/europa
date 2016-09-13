@@ -321,6 +321,10 @@ function dt_editorial_permission() {
       'title' => t('Use "Other content" workbench tab'),
       'description' => t('Access for content in: Validated, Published, Archived and Expired states'),
     ],
+    'navigate draft to draft' => [
+      'title' => t('Navigate from draft to draft'),
+      'description' => t('Allow user to navigate from a draft node to another node and show the draft revision in case it exists'),
+    ],
   ];
 }
 
@@ -615,5 +619,35 @@ function dt_editorial_theme($existing, $type, $theme, $path) {
 function dt_editorial_workbench_moderation_access_alter(&$access, $op, $node) {
   if ($op == 'view revisions' && user_access('view drafts') && user_access('view moderation history')) {
     $access = TRUE;
+  }
+}
+
+/**
+ * Implements hook_url_outbound_alter().
+ */
+function dt_editorial_url_outbound_alter(&$path, &$options, $original_path) {
+  // Redirect to draft.
+  if (isset($options['entity_type']) && $options['entity_type'] == "node"
+    && user_access('navigate draft to draft')
+    && workbench_moderation_node_type_moderated($options['entity']->type)
+  ) {
+    $page_node = &drupal_static(__FUNCTION__);
+    $page_node_viewing_draft = &drupal_static(__FUNCTION__ . '_viewing_draft');
+    if (!isset($page_node)) {
+      $page_node = menu_get_object();
+      $needle = '/draft';
+      $page_node_viewing_draft = (substr(current_path(), -strlen($needle)) === $needle);
+    }
+    if (!empty($page_node) && isset($page_node->nid)
+      && $page_node->nid !== $options['entity']->nid
+    ) {
+      if ($page_node_viewing_draft) {
+        // Current page viewing node in its' draft version.
+        if (!workbench_moderation_node_is_current($options['entity'])) {
+          // Node has draft version, change path link.
+          $path .= "/draft";
+        }
+      }
+    }
   }
 }

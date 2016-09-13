@@ -88,3 +88,11 @@ function dt_roles_permissions_update_7106() {
   // Import Draft viewer role.
   _dt_roles_permissions_import_import('Draft viewer');
 }
+
+/**
+ * DTTSB-1017: Import new permission for role Draft viewer.
+ */
+function dt_roles_permissions_update_7107() {
+  // Import Draft viewer role.
+  _dt_roles_permissions_import_import('Draft viewer');
+}

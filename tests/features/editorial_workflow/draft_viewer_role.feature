@@ -43,3 +43,54 @@ Feature: Draft viewer role
     And I am logged in as "Draft viewer user"
     Then I go to "lorem-ipsum-basic-page"
     Then I should see the link "View draft" in the "tabs" region
+
+  Scenario: Should see the draft/published version of a related node.
+    Given users:
+      | name              | mail                      | status | roles        |
+      | Draft viewer user | draft_user_test1@test.com | 1      | Draft viewer |
+
+    Given "Announcement" content:
+      | title    | status | language | field_core_type_content | field_core_description | field_announcement_type | field_core_date_published | field_core_introduction | body        | field_announcement_location |
+      | Ann. one | 1      | en       | default                 | A test description.    | press_release           | 1456790400                | A test introduction     | A test body | Brussels                    |
+      | Ann. two | 1      | en       | default                 | A test description.    | press_release           | 1456790400                | A test introduction     | A test body | Brussels                    |
+
+    Given I am logged in as "Draft viewer user"
+    And I am viewing an "Announcement" content:
+      | title                       | Announcement lipsum |
+      | status                      | 1                   |
+      | language                    | en                  |
+      | field_core_type_content     | default             |
+      | field_core_description      | A test description. |
+      | field_announcement_type     | press_release       |
+      | field_core_date_published   | 1456790400          |
+      | field_core_introduction     | A test introduction |
+      | body                        | A test body         |
+      | field_announcement_location | Brussels            |
+      | field_core_announcement     | Ann. one, Ann. two  |
+    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
+    Then I should see the link "Ann. two" linking to "/announcements/ann-two_en"
+
+    Given I am logged in as a user with the "administrator" role
+    Then I am at "/announcements/ann-one_en"
+    Then I follow "New draft" in the "tabs" region
+    Then I fill in "title_field[en][0][value]" with "Ann. one draft"
+    Then I uncheck "Generate automatic URL alias"
+    Then I press the "Save" button
+
+    Given I am logged in as "Draft viewer user"
+    And I am at "/announcements/announcement-lipsum_en"
+    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
+
+    Given I am logged in as a user with the "administrator" role
+    And I am at "/announcements/announcement-lipsum_en"
+    Then I follow "New draft" in the "tabs" region
+    Then I fill in "title_field[en][0][value]" with "Announcement lipsum draft"
+    Then I uncheck "Generate automatic URL alias"
+    Then I press the "Save" button
+
+    Given I am logged in as "Draft viewer user"
+    And I am at "/announcements/announcement-lipsum_en"
+    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
+    Then I follow "View draft" in the "tabs" region
+    Then I follow "Ann. one"
+    Then I should see "Ann. one draft"
