@@ -169,6 +169,11 @@ function _dt_apply_wysiwyg_buttons() {
     'lite_ToggleTracking',
   ];
   multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'lite', $lite);
+
+  $abbr = [
+    'Abbr',
+  ];
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'abbr', $abbr);
 }
 
 /**

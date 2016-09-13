@@ -11,7 +11,7 @@
 function dt_core_brp_install() {
   // These is a minimal config, with time we will
   // add functionality/modules if needed.
-  $dt_classes = [
+  $dt_modules = [
     // Roles and permissions.
     'dt_header_background',
     'dt_wysiwyg',
@@ -30,7 +30,7 @@ function dt_core_brp_install() {
     'dt_page_default',
     'l10n_update',
   ];
-  module_enable($dt_classes);
+  module_enable($dt_modules);
 
   // Enable the search api feature.
   module_enable(['brp_initiative_search']);

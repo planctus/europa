@@ -43,7 +43,7 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
       $new_toolbar[] = ['Bold'];
       $new_toolbar[] = ['Link', 'NextEuropaToken', 'Unlink', 'Anchor'];
       $new_toolbar[] = ['BulletedList', 'NumberedList', 'Outdent', 'Indent'];
-      $new_toolbar[] = ['media', 'Blockquote', 'Table'];
+      $new_toolbar[] = ['media', 'Blockquote', 'Abbr', 'Table'];
       $new_toolbar[] = ['RemoveFormat'];
       $new_toolbar[] = ['Undo', 'Maximize'];
       $new_toolbar[] = [
