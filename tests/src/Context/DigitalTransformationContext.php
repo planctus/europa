@@ -631,4 +631,27 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
   }
 
+  /**
+   * Checks if in an input contains a given value.
+   *
+   * @param string $input_name
+   *    The input name attribute to search for.
+   * @param string $expected_value
+   *    The input value to assert.
+   *
+   * @throws ExpectationException
+   *    If no elements are found or if value is not as expected.
+   *
+   * @Then the input with name :input_name should have the value :expected_value
+   */
+  public function theInputWithNameShouldHaveTheValue($input_name, $expected_value) {
+    $element = $this->getSession()
+                    ->getPage()
+                    ->find('css', 'input[name="' . $input_name . '"]');
+
+    if (!is_object($element) || $expected_value !== $element->getAttribute('value')) {
+      throw new ExpectationException(sprintf('The ' . $input_name . ' input does not contain %s', $expected_value), $this->getSession());
+    }
+  }
+
 }
