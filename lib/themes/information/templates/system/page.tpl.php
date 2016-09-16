@@ -125,14 +125,6 @@
 </nav>
 <?php endif; ?>
 
-<?php if (!empty($page['utility'])): ?>
-  <div class="utility">
-    <div class="container-fluid">
-      <?php print render($page['utility']); ?>
-    </div>
-  </div>
-<?php endif; ?>
-
 <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
   <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
     <div class="container-fluid">
@@ -170,11 +162,11 @@
         <div class="col-lg-9">
           <?php print render($title_prefix); ?>
           <h1>
-              <?php if (drupal_is_front_page() && !empty($site_name)): ?>
-                <?php print $site_name; ?>
-              <?php elseif (!empty($title)): ?>
-                <?php print $title; ?>
-              <?php endif; ?>
+            <?php if (drupal_is_front_page() && !empty($site_name)): ?>
+              <?php print $site_name; ?>
+            <?php elseif (!empty($title)): ?>
+              <?php print $title; ?>
+            <?php endif; ?>
           </h1>
           <?php print render($title_suffix); ?>
 
@@ -185,6 +177,14 @@
       </div>
     </div>
   </div>
+  
+  <?php if (!empty($page['utility'])): ?>
+    <div class="utility">
+      <div class="container-fluid">
+        <?php print render($page['utility']); ?>
+      </div>
+    </div>
+  <?php endif; ?>
 
   <!-- Generic sections -->
   <div class="container-fluid">
