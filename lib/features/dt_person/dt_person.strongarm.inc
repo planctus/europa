@@ -101,7 +101,7 @@ function dt_person_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'meta' => array(
         'custom_settings' => TRUE,

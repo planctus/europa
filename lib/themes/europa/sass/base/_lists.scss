@@ -12,13 +12,10 @@ ol {
 }
 
 .region-content {
-  ul:not(.listing),
+  ul:not(.listing, .field__items),
   ol {
-    @extend .paragraph;
-    margin-left: 0;
-    margin-right: 0;
+    max-width: 32em;
     margin-bottom: 30px;
-    padding-left: 18px;
   }
 }
 
