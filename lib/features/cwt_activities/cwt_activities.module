@@ -302,7 +302,7 @@ function cwt_activities_preprocess_page(&$variables) {
       $end = !empty($exposed_inputs['date_filter_max']['value']) ? filter_xss($exposed_inputs['date_filter_max']['value']) : '';
 
       $result = _dt_exposed_filter_data_get_date_facet_tags($start, $end);
-      $variables['node']->title .= ' ' . lcfirst(trim($result['filter'][0], '"'));
+      $variables['node']->title .= ' ' . lcfirst(trim($result, '"'));
 
       $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'
         . $variables['node']->content;
