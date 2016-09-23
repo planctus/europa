@@ -37,6 +37,7 @@ function dt_core_info_install() {
     'integration_producer_ui',
     'integration_consumer_ui',
     'dt_integration_announcement_consumer',
+    'dt_file_import',
   ];
   module_enable($features);
 
@@ -198,4 +199,11 @@ function dt_core_info_update_7116() {
  */
 function dt_core_info_update_7117() {
   module_enable(['dt_integration_announcement_consumer']);
+}
+
+/**
+ * DTTSB-885: Enable dt_file_import.
+ */
+function dt_core_info_update_7118() {
+  module_enable(['dt_file_import']);
 }

@@ -281,7 +281,9 @@ function _dt_core_enable_languages($languages = []) {
  * If a whitespace has been entered after a title, we remove it.
  */
 function dt_core_node_presave($node) {
-  $node->title = rtrim($node->title);
+  if (isset($node->title)) {
+    $node->title = rtrim($node->title);
+  }
 }
 
 /**

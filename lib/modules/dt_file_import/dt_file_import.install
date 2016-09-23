@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Digital Transformation File Import install file.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function dt_file_import_enable() {
+  // Activation message.
+  drupal_set_message(t('DT File Import feature is now active on your site.'));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function dt_file_import_disable() {
+  drupal_set_message(t('DT File Import feature is now disabled on your site.'));
+  migrate_static_registration();
+}
+
+/**
+ * Implements hook_install().
+ */
+function dt_file_import_install() {
+  $directory = file_default_scheme() . '://file_import';
+  file_prepare_directory($directory, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_file_import_uninstall() {
+  // Delete the variables created by this module.
+  variable_del('dt_file_import_fid');
+  variable_del('dt_file_import_file_path');
+}

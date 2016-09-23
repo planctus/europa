@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Import -->
+  <xs:element name="import">
+    <xs:complexType>
+      <xs:sequence>
+
+        <!-- File translations -->
+        <xs:element name="file_translations">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- File translation -->
+              <xs:element name="file_translation" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Source page URL -->
+                    <xs:element name="source_page_url" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="[h][t]{2}[p]://.*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Source file URL -->
+                    <xs:element name="source_file_url" minOccurs="1" maxOccurs="1" nillable="false">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="[h][t]{2}[p]://.*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Source link text, just a helper for content editor -->
+                    <xs:element name="source_link_title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Title -->
+                    <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Target filename -->
+                    <xs:element name="target_filename" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Language -->
+                    <xs:element name="language" minOccurs="1" maxOccurs="1" nillable="false">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="bg"/>
+                          <xs:enumeration value="cs"/>
+                          <xs:enumeration value="da"/>
+                          <xs:enumeration value="de"/>
+                          <xs:enumeration value="et"/>
+                          <xs:enumeration value="el"/>
+                          <xs:enumeration value="en"/>
+                          <xs:enumeration value="es"/>
+                          <xs:enumeration value="fr"/>
+                          <xs:enumeration value="ga"/>
+                          <xs:enumeration value="hr"/>
+                          <xs:enumeration value="it"/>
+                          <xs:enumeration value="lv"/>
+                          <xs:enumeration value="lt"/>
+                          <xs:enumeration value="hu"/>
+                          <xs:enumeration value="mt"/>
+                          <xs:enumeration value="nl"/>
+                          <xs:enumeration value="pl"/>
+                          <xs:enumeration value="pt-pt"/>
+                          <xs:enumeration value="ro"/>
+                          <xs:enumeration value="sk"/>
+                          <xs:enumeration value="sl"/>
+                          <xs:enumeration value="fi"/>
+                          <xs:enumeration value="sv"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- File ID -->
+                    <xs:element name="fid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- File translations end -->
+
+        <!-- Files -->
+        <xs:element name="files">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- File -->
+              <xs:element name="file" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- File ID -->
+                    <xs:element name="fid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Publication ID -->
+                    <xs:element name="pid" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                    <!-- Type of file -->
+                    <xs:element name="type_of_file" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Document"/>
+                          <xs:enumeration value="Data"/>
+                          <xs:enumeration value="Image"/>
+                          <xs:enumeration value="Presentation"/>
+                          <xs:enumeration value="Form"/>
+                          <xs:enumeration value="Video"/>
+                          <xs:enumeration value="Audio"/>
+                          <xs:enumeration value="Package (eg. zip File)"/>
+                          <xs:enumeration
+                            value="Print Material (Booklet/Brochure/Magazine/Flyer)"/>
+                          <xs:enumeration value="Spreadsheet"/>
+                          <xs:enumeration value="CSV"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Date of publication -->
+                    <xs:element name="date_of_publication" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                    <!-- Where do you link to? (File origins, like: No Source, EUR-lex, EC Annual reports... ) -->
+                    <xs:element name="file_location" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="No Source"/>
+                          <xs:enumeration value="EUR-lex"/>
+                          <xs:enumeration value="EC Annual reports"/>
+                          <xs:enumeration value="Open data portal"/>
+                          <xs:enumeration value="Eurofound"/>
+                          <xs:enumeration value="EU Bookshop"/>
+                          <xs:enumeration value="EU Publications Office"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- What do you want to do? (Like: upload, link a file.) -->
+                    <xs:element name="file_link_upload" minOccurs="1" maxOccurs="1" nillable="false">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Upload the file"/>
+                          <xs:enumeration value="Link to file"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Unique identifier -->
+                    <xs:element name="file_unique_identifier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Files end -->
+
+        <!-- Publication translations -->
+        <xs:element name="publication_translations">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Publication translation -->
+              <xs:element name="publication_translation" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Language -->
+                    <xs:element name="language" minOccurs="1" maxOccurs="1" nillable="false">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="2"/>
+                          <xs:maxLength value="4"/>
+                          <xs:enumeration value="bg"/>
+                          <xs:enumeration value="cs"/>
+                          <xs:enumeration value="da"/>
+                          <xs:enumeration value="de"/>
+                          <xs:enumeration value="et"/>
+                          <xs:enumeration value="el"/>
+                          <xs:enumeration value="en"/>
+                          <xs:enumeration value="es"/>
+                          <xs:enumeration value="fr"/>
+                          <xs:enumeration value="ga"/>
+                          <xs:enumeration value="hr"/>
+                          <xs:enumeration value="it"/>
+                          <xs:enumeration value="lv"/>
+                          <xs:enumeration value="lt"/>
+                          <xs:enumeration value="hu"/>
+                          <xs:enumeration value="mt"/>
+                          <xs:enumeration value="nl"/>
+                          <xs:enumeration value="pl"/>
+                          <xs:enumeration value="pt-pt"/>
+                          <xs:enumeration value="ro"/>
+                          <xs:enumeration value="sk"/>
+                          <xs:enumeration value="sl"/>
+                          <xs:enumeration value="fi"/>
+                          <xs:enumeration value="sv"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Publication ID -->
+                    <xs:element name="pid" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                    <!-- Title -->
+                    <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Description -->
+                    <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Summary of abstract of the publication -->
+                    <xs:element name="summary_of_abstract" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Contact information -->
+                    <xs:element name="core_contact" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Publication translations end -->
+
+        <!-- Publications -->
+        <xs:element name="publications">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Publication -->
+              <xs:element name="publication" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Publication  ID -->
+                    <xs:element name="pid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Publication type -->
+                    <xs:element name="publication_type" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="National Plan"/>
+                          <xs:enumeration value="Planning and management documents"/>
+                          <xs:enumeration value="Progress Report"/>
+                          <xs:enumeration value="Communication"/>
+                          <xs:enumeration value="Report"/>
+                          <xs:enumeration value="White Paper"/>
+                          <xs:enumeration value="Impact Assessment"/>
+                          <xs:enumeration value="Working Document"/>
+                          <xs:enumeration value="Consultation"/>
+                          <xs:enumeration value="Official Document"/>
+                          <xs:enumeration value="National Report"/>
+                          <xs:enumeration value="Law"/>
+                          <xs:enumeration value="Brochures"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- First published on -->
+                    <xs:element name="date_published" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                    <!-- Last updated on -->
+                    <xs:element name="date_updated" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                    <!-- Published by -->
+                    <xs:element name="publication_authors" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Publication origin -->
+                    <xs:element name="publication_origin" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="EC Annual reports"/>
+                          <xs:enumeration value="EU Bookshop"/>
+                          <xs:enumeration value="EU Publications Office"/>
+                          <xs:enumeration value="EUR-lex"/>
+                          <xs:enumeration value="Eurofound"/>
+                          <xs:enumeration value="No Source"/>
+                          <xs:enumeration value="Open data portal"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Identifier of the publication-->
+                    <xs:element name="publication_referenceno" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Related topic -->
+                    <xs:element name="core_topics" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Related content -->
+                    <xs:element name="publication_rel_content" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Related department -->
+                    <xs:element name="core_departments" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Related policy -->
+                    <xs:element name="core_policies" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Taxonomy (EUROVOC) -->
+                    <xs:element name="eurovoc_taxonomy" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Publications end -->
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
