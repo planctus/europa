@@ -104,6 +104,9 @@ function _dt_core_node_reference_aliases_regenerate($start_data, $is_node = TRUE
  *   If it is for the circular check.
  */
 function dt_core_build_node_reference_tree($nid, &$data, $field, $type, $level = 0, $circular_check = FALSE) {
+  if (!field_info_field($field)) {
+    return;
+  }
   if ($type == 'parent') {
     $query = db_select('field_data_' . $field, 'parent');
     $query->addField('parent', $field . '_target_id', 'target_id');
