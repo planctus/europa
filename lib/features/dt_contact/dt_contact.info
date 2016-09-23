@@ -22,6 +22,7 @@ features[field_base][] = field_contact_mobile_number
 features[field_base][] = field_contact_phone_number
 features[field_base][] = field_contact_postal_mail
 features[field_base][] = field_core_contact
+features[field_base][] = field_core_contacts
 features[field_group][] = group_contact_contact|node|contact|form
 features[field_group][] = group_contact_content|node|contact|form
 features[field_group][] = group_contact_online_contact|node|contact|form

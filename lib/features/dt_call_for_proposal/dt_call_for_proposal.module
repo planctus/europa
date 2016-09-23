@@ -2,7 +2,85 @@
 
 /**
  * @file
- * Code for the DT Policy input feature.
+ * Code for the DT call for proposal feature.
  */
 
 include_once 'dt_call_for_proposal.features.inc';
+
+/**
+ * Implements hook_entity_load().
+ */
+function dt_call_for_proposal_entity_load($entities, $type) {
+  if ($type == 'node') {
+    foreach ($entities as &$entity) {
+      if ($entity->type == 'call_for_proposal') {
+        // Set the value forthe status field.
+        _dt_call_for_proposal_calculate_status($entity);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entitycache_ENTITY_TYPE_load().
+ */
+function dt_call_for_proposal_entitycache_node_load($entities) {
+  foreach ($entities as &$entity) {
+    if ($entity->type == 'call_for_proposal') {
+      // Set the value for the status field.
+      _dt_call_for_proposal_calculate_status($entity);
+    }
+  }
+}
+
+/**
+ * Helper function to add the set the status field value dynamically.
+ *
+ * @param object $entity
+ *   The call for proposal entity.
+ */
+function _dt_call_for_proposal_calculate_status(&$entity) {
+  $opening = FALSE;
+  // Entity metadata wrapper, so we dont have to think about languages.
+  $wrapper = entity_metadata_wrapper('node', $entity);
+  // Get the opening time.
+  if ($wrapper->__isset('field_core_date_opening') && !empty($wrapper->field_core_date_opening->value())) {
+    $opening = $wrapper->field_core_date_opening->value();
+  }
+
+  if (!($opening)) {
+    // If we cannot calculate the status, we don't override its value.
+    return;
+  }
+  else {
+    if ($wrapper->__isset('field_core_date_closing')) {
+      // Closing date is optional, if it's not set we assume it is the
+      // "end of the day", considering that opening date has day granualarity.
+      $closing = !empty($wrapper->field_core_date_closing->value()) ? $wrapper->field_core_date_closing->value() : $opening + 86399;
+
+      // If we have multiple values for the closing date we use the last.
+      $closing = is_array($closing) ? end($closing) : $closing;
+    }
+  }
+
+  $now = time();
+
+  if ($now < $opening) {
+    $wrapper->field_cfp_status->set('upcoming');
+  }
+  elseif ($now < $closing && $now >= $opening) {
+    $wrapper->field_cfp_status->set('open');
+  }
+  else {
+    $wrapper->field_cfp_status->set('closed');
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dt_call_for_proposal_form_node_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#node']->type == 'call_for_proposal') {
+    $form['#attached']['js'][] = drupal_get_path('module', 'dt_call_for_proposal') . '/js/dt_call_for_proposal.js';
+  }
+}

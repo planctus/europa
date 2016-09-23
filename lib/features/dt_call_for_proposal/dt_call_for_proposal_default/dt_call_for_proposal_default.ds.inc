@@ -19,7 +19,7 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'content_type_label' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -30,7 +30,7 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
       ),
     ),
     'title' => array(
-      'weight' => '1',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -51,6 +51,11 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
           'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
           'meta_modifier' => 'meta__item--type',
         ),
+      ),
+    ),
+    'field_core_files' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
       ),
     ),
   );
@@ -104,19 +109,19 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'group_cfp_meta',
-        1 => 'content_type_label',
-        2 => 'title',
-        3 => 'field_cfp_status',
+        0 => 'content_type_label',
+        2 => 'group_cfp_meta',
+        3 => 'title',
         4 => 'field_core_introduction',
+        5 => 'field_cfp_status',
       ),
       'central' => array(
-        5 => 'field_core_background',
-        7 => 'group_cfp_main_section',
-        8 => 'group_cfp_departments',
-        9 => 'group_cfp_topics',
-        10 => 'group_cfp_documents',
-        11 => 'field_core_publications',
+        1 => 'field_core_files',
+        7 => 'field_core_background',
+        8 => 'group_cfp_main_section',
+        9 => 'group_cfp_departments',
+        10 => 'group_cfp_topics',
+        11 => 'group_cfp_documents',
         12 => 'field_core_departments',
         13 => 'field_core_topics',
       ),
@@ -125,18 +130,18 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'group_cfp_meta' => 'left_header',
       'content_type_label' => 'left_header',
+      'field_core_files' => 'central',
+      'group_cfp_meta' => 'left_header',
       'title' => 'left_header',
-      'field_cfp_status' => 'left_header',
       'field_core_introduction' => 'left_header',
-      'field_core_background' => 'central',
+      'field_cfp_status' => 'left_header',
       'in_page_navigation' => 'left',
+      'field_core_background' => 'central',
       'group_cfp_main_section' => 'central',
       'group_cfp_departments' => 'central',
       'group_cfp_topics' => 'central',
       'group_cfp_documents' => 'central',
-      'field_core_publications' => 'central',
       'field_core_departments' => 'central',
       'field_core_topics' => 'central',
     ),

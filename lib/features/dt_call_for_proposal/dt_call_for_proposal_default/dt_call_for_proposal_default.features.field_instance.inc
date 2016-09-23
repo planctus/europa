@@ -83,12 +83,12 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => -1,
     ),
   );
 
-  // Exported field_instance: 'node-call_for_proposal-field_cfp_programme'.
-  $field_instances['node-call_for_proposal-field_cfp_programme'] = array(
+  // Exported field_instance: 'node-call_for_proposal-field_cfp_contacts'.
+  $field_instances['node-call_for_proposal-field_core_contacts'] = array(
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
@@ -96,69 +96,239 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 35,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 43,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_cfp_programme',
-    'label' => 'Programme',
+    'field_name' => 'field_core_contacts',
+    'label' => 'Contact',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -7,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'apply_chosen' => '',
       ),
-      'type' => 'text_textfield',
+      'type' => 'options_select',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-call_for_proposal-field_eurovoc_taxonomy'.
+  $field_instances['node-call_for_proposal-field_eurovoc_taxonomy'] = array(
+    'bundle' => 'call_for_proposal',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 40,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_eurovoc_taxonomy',
+    'label' => 'Taxonomy',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'eurovoc_taxonomy_browser|entityreference_view_widget_1',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 42,
+    ),
+  );
+
+  // Exported field_instance: 'node-call_for_proposal-field_cfp_program'.
+  $field_instances['node-call_for_proposal-field_cfp_program'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '- for label: Name of the funding programme associated with the call.
+- for link/reference: \'homepage\' of the funding programme',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cfp_program',
+    'label' => 'Programme',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 0,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-call_for_proposal-field_cfp_publication'.
+  $field_instances['node-call_for_proposal-field_cfp_publication'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '- label: Official Journal reference
+- URL: link to the Official Journal',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cfp_publication',
+    'label' => 'Publication in the official journal',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
       'weight' => 1,
     ),
   );
@@ -214,7 +384,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please follow the guidelines on how the info in this field should be structured.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -240,7 +410,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_background',
-    'label' => 'Background',
+    'label' => 'Main content of the call',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -248,6 +418,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
           'basic_html' => 'basic_html',
           'filtered_html' => 'filtered_html',
           'full_html' => 'full_html',
+          'full_html_track' => 0,
           'plain_text' => 'plain_text',
         ),
         'allowed_formats_toggle' => 0,
@@ -261,6 +432,9 @@ function dt_call_for_proposal_default_field_default_field_instances() {
               'weight' => -9,
             ),
             'full_html' => array(
+              'weight' => -10,
+            ),
+            'full_html_track' => array(
               'weight' => -10,
             ),
             'plain_text' => array(
@@ -288,11 +462,76 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-call_for_proposal-field_core_date_closing'.
+  $field_instances['node-call_for_proposal-field_core_date_closing'] = array(
+    'bundle' => 'call_for_proposal',
+    'deleted' => 0,
+    'description' => 'general: When does/did the call close for applications? (the deadline)
+for date: If no time is specified, use 23:59. 
+for details: Use this for specific information about the deadline. For example if it only applies to certain types of projects.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 45,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_date_closing',
+    'label' => 'Closing date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => '',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-call_for_proposal-field_core_date_opening'.
   $field_instances['node-call_for_proposal-field_core_date_opening'] = array(
     'bundle' => 'call_for_proposal',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'When does/did the call open for applications?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -324,7 +563,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_date_opening',
-    'label' => 'Opening date',
+    'label' => 'Open date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -347,7 +586,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -356,7 +595,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
   $field_instances['node-call_for_proposal-field_core_date_published'] = array(
     'bundle' => 'call_for_proposal',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'When was this call first published or put online?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -402,7 +641,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_date_published',
-    'label' => 'First published on',
+    'label' => 'Published on',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -425,7 +664,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 3,
+      'weight' => 0,
     ),
   );
 
@@ -434,7 +673,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select the related departments.',
+    'description' => 'The authoring department',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -483,7 +722,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_departments',
-    'label' => 'Related departments',
+    'label' => 'Department',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -491,15 +730,15 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
+        'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 5,
+      'type' => 'options_select',
+      'weight' => 6,
     ),
   );
 
@@ -508,7 +747,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Description will be used as abstract and metadata description.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -535,7 +774,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_description',
     'label' => 'Description',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -582,12 +821,153 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-call_for_proposal-field_core_details'.
+  $field_instances['node-call_for_proposal-field_core_details'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 46,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_details',
+    'label' => 'Details',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_track' => 'full_html_track',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'full_html_track' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-call_for_proposal-field_core_files'.
+  $field_instances['node-call_for_proposal-field_core_files'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'file',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_files',
+    'label' => 'Files',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-call_for_proposal-field_core_introduction'.
   $field_instances['node-call_for_proposal-field_core_introduction'] = array(
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Short explanation of the call for proposals.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -601,7 +981,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -615,7 +995,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'field_name' => 'field_core_introduction',
     'info_value' => NULL,
     'label' => 'Introduction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -667,7 +1047,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If the details of the call are hosted on another site, please fill out the URL here. This implies that no detailed call page will exist, but the call can be listed though.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -722,49 +1102,31 @@ function dt_call_for_proposal_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 0,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-call_for_proposal-field_core_next_steps'.
-  $field_instances['node-call_for_proposal-field_core_next_steps'] = array(
+  // Exported field_instance: 'node-call_for_proposal-field_core_links'.
+  $field_instances['node-call_for_proposal-field_core_links'] = array(
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Set the deadlines for this call for proposal.
-    ',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'dt_policy_next_step',
-        'settings' => array(
-          'date_formatter' => '',
-          'modifier' => '',
-          'show_timezone' => 0,
-          'timeline_expander_disable' => 0,
-        ),
-        'type' => 'dt_policy_next_step_formatter_default',
-        'weight' => 32,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 40,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'structured_navigation' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
-      ),
-      'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -773,100 +1135,39 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_next_steps',
-    'label' => 'Deadline',
+    'field_name' => 'field_core_links',
+    'label' => 'Related links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
       'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'dt_policy_next_step',
-      'settings' => array(
-        'value' => array(
-          'rows' => 2,
-          'size' => 1,
-          'timeline_type' => 'timeline',
-          'timezone' => 1,
-        ),
-      ),
-      'type' => 'dt_policy_next_step_widget',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-call_for_proposal-field_core_publications'.
-  $field_instances['node-call_for_proposal-field_core_publications'] = array(
-    'bundle' => 'call_for_proposal',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select documents that belong to the content of this page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 31,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_item_modifier' => '',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => '',
-          'use_content_language' => TRUE,
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 17,
-      ),
-      'structured_navigation' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 48,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 33,
-      ),
-      'title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_publications',
-    'label' => 'Documents',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 33,
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 8,
     ),
   );
 
@@ -876,7 +1177,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'default_value' => NULL,
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'Select the related topics.',
+    'description' => 'Topic(s) the call relates to',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -931,7 +1232,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_topics',
-    'label' => 'Related Topics',
+    'label' => 'Topics',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -944,16 +1245,81 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-call_for_proposal-field_grants_awarded_link'.
+  $field_instances['node-call_for_proposal-field_grants_awarded_link'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Link to information on the recipients who where awarded grants from this call. For example link to the financial transparency system.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 44,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_grants_awarded_link',
+    'label' => 'Grants awarded link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 0,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 4,
     ),
   );
 
@@ -1093,7 +1459,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'above',
@@ -1134,28 +1500,45 @@ function dt_call_for_proposal_default_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Background');
+  t('- for label: Name of the funding programme associated with the call.
+- for link/reference: \'homepage\' of the funding programme');
+  t('- label: Official Journal reference
+- URL: link to the Official Journal');
+  t('Main content of the call');
   t('Call reference');
-  t('Deadline');
+  t('Closing date');
+  t('Contact');
+  t('Department');
   t('Description');
-  t('Documents');
-  t('First published on');
+  t('Details');
+  t('Files');
+  t('Grants awarded link');
   t('Group content visibility');
   t('Groups audience');
+  t('If the details of the call are hosted on another site, please fill out the URL here. This implies that no detailed call page will exist, but the call can be listed though.');
   t('Introduction');
   t('Legacy link');
-  t('Opening date');
+  t('Link to information on the recipients who where awarded grants from this call. For example link to the financial transparency system.');
+  t('Open date');
+  t('Please follow the guidelines on how the info in this field should be structured.');
   t('Programme');
-  t('Related Topics');
-  t('Related departments');
-  t('Select documents that belong to the content of this page.');
-  t('Select the related departments.');
-  t('Select the related topics.');
-  t('Set the deadlines for this call for proposal.
-    ');
+  t('Publication in the official journal');
+  t('Publications');
+  t('Published on');
+  t('Related links');
   t('Status');
+  t('The authoring department');
   t('Title');
+  t('Topic(s) the call relates to');
+  t('Topics');
   t('What is the status of this call for proposal');
+  t('When was this call first published or put online?');
+  t('Description will be used as abstract and metadata description.');
+  t('Short explanation of the call for proposals.');
+  t('When does/did the call open for applications?');
+  t('general: When does/did the call close for applications? (the deadline)
+for date: If no time is specified, use 23:59. 
+for details: Use this for specific information about the deadline. For example if it only applies to certain types of projects.');
 
   return $field_instances;
 }

@@ -14,6 +14,102 @@ function dt_call_for_proposal_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_basic_info|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_basic_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_tabgroup';
+  $field_group->data = array(
+    'label' => 'Basic information',
+    'weight' => '6',
+    'children' => array(
+      0 => 'title_field',
+      1 => 'field_cfp_call_reference',
+      2 => 'field_cfp_status',
+      3 => 'field_core_date_published',
+      4 => 'field_core_departments',
+      5 => 'field_core_description',
+      6 => 'field_core_introduction',
+      7 => 'field_core_legacy_link',
+      8 => 'field_core_topics',
+      9 => 'field_core_date_opening',
+      10 => 'field_cfp_program',
+      11 => 'field_cfp_publication',
+      12 => 'field_grants_awarded_link',
+      13 => 'group_cfp_closing_date',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-basic-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_cfp_basic_info|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_closing_date|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_closing_date';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_basic_info';
+  $field_group->data = array(
+    'label' => 'Closing date',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_date_closing',
+      1 => 'field_core_details',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-closing-date field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_cfp_closing_date|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_contacts|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_contacts';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_tabgroup';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_contacts',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-contacts field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_cfp_contacts|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cfp_content|node|call_for_proposal|form';
   $field_group->group_name = 'group_cfp_content';
   $field_group->entity_type = 'node';
@@ -22,7 +118,7 @@ function dt_call_for_proposal_default_field_group_info() {
   $field_group->parent_name = 'group_cfp_tabgroup';
   $field_group->data = array(
     'label' => 'Content',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_background',
@@ -46,33 +142,6 @@ function dt_call_for_proposal_default_field_group_info() {
     ),
   );
   $field_groups['group_cfp_content|node|call_for_proposal|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_cfp_deadline|node|call_for_proposal|form';
-  $field_group->group_name = 'group_cfp_deadline';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'call_for_proposal';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cfp_tabgroup';
-  $field_group->data = array(
-    'label' => 'Deadline',
-    'weight' => '11',
-    'children' => array(
-      0 => 'field_core_next_steps',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-cfp-deadline field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_cfp_deadline|node|call_for_proposal|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -107,33 +176,6 @@ function dt_call_for_proposal_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_cfp_documents|node|call_for_proposal|form';
-  $field_group->group_name = 'group_cfp_documents';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'call_for_proposal';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cfp_tabgroup';
-  $field_group->data = array(
-    'label' => 'Publications',
-    'weight' => '10',
-    'children' => array(
-      0 => 'field_core_publications',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-cfp-documents field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $field_groups['group_cfp_documents|node|call_for_proposal|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_cfp_documents|node|call_for_proposal|full';
   $field_group->group_name = 'group_cfp_documents';
   $field_group->entity_type = 'node';
@@ -144,7 +186,7 @@ function dt_call_for_proposal_default_field_group_info() {
     'label' => 'Documents',
     'weight' => '8',
     'children' => array(
-      0 => 'field_core_publications',
+      0 => 'field_core_files',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -190,6 +232,34 @@ function dt_call_for_proposal_default_field_group_info() {
     ),
   );
   $field_groups['group_cfp_editorial|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_main_content|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_main_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_tabgroup';
+  $field_group->data = array(
+    'label' => 'Main content',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_core_background',
+      1 => 'field_core_files',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-main-content field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_cfp_main_content|node|call_for_proposal|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -288,10 +358,9 @@ function dt_call_for_proposal_default_field_group_info() {
   $field_group->parent_name = 'group_cfp_tabgroup';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_core_departments',
-      1 => 'field_core_topics',
+      0 => 'field_core_links',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -318,11 +387,12 @@ function dt_call_for_proposal_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_cfp_content',
-      1 => 'group_cfp_related',
-      2 => 'group_cfp_documents',
-      3 => 'group_cfp_deadline',
-      4 => 'group_cfp_editorial',
+      0 => 'group_cfp_basic_info',
+      1 => 'group_cfp_contacts',
+      2 => 'group_cfp_editorial',
+      3 => 'group_cfp_main_content',
+      4 => 'group_cfp_related',
+      5 => 'group_cfp_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -333,6 +403,33 @@ function dt_call_for_proposal_default_field_group_info() {
     ),
   );
   $field_groups['group_cfp_tabgroup|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_taxonomy|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_tabgroup';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_eurovoc_taxonomy',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-taxonomy field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_cfp_taxonomy|node|call_for_proposal|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -366,15 +463,18 @@ function dt_call_for_proposal_default_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Basic information');
+  t('Closing date');
+  t('Contact');
   t('Content');
-  t('Deadline');
   t('Departments');
   t('Documents');
   t('Editorial settings');
+  t('Main content');
   t('Main section');
   t('Meta');
-  t('Publications');
   t('Related');
+  t('Taxonomy');
   t('Topics');
 
   return $field_groups;
