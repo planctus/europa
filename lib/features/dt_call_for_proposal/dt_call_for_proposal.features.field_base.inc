@@ -106,7 +106,7 @@ function dt_call_for_proposal_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
@@ -143,7 +143,7 @@ function dt_call_for_proposal_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
