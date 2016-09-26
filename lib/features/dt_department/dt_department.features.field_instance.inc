@@ -426,6 +426,63 @@ function dt_department_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-department-field_core_latest_visibility'.
+  $field_instances['node-department-field_core_latest_visibility'] = array(
+    'bundle' => 'department',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 42,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Show news on the front-end for this node',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 45,
+    ),
+  );
+
   // Exported field_instance: 'node-department-field_core_legacy_link'.
   $field_instances['node-department-field_core_legacy_link'] = array(
     'bundle' => 'department',
@@ -1760,7 +1817,7 @@ function dt_department_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 49,
     ),
     'widget_type' => 'options_select',
   );
@@ -1833,7 +1890,7 @@ function dt_department_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 10,
+      'weight' => 48,
     ),
   );
 
@@ -2043,6 +2100,7 @@ function dt_department_field_default_field_instances() {
   t('Related priorities');
   t('Related work areas');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
+  t('Show news on the front-end for this node');
   t('Social Network Links');
   t('Staff Search Link');
   t('Tasks description');

@@ -66,28 +66,32 @@ function dt_announcement_ds_field_format_summary($field) {
  *
  * @param array $field
  *   Array containing field related information.
+ *
+ * @return mixed
+ *   NULL - when not necessary to display the block.
+ *   string - as a rendered html.
  */
 function _dt_announcement_ds_fields_announcement_block($field) {
   // Lets call the entity by its name.
   $node = $field['entity'];
 
-  if (!variable_get('dt_shared_functions_dt_latest_visibility', TRUE) || (isset($node->field_department_news_link) && !empty($node->field_department_news_link))) {
+  // A department content type rebels to global settings: DTTSB-1003.
+  $is_latest_visible = variable_get('dt_shared_functions_dt_latest_visibility', TRUE);
+  $is_department = ($node->type == 'department');
+  if (
+    (!$is_department && !$is_latest_visible) ||
+    ($is_department && !empty($node->field_department_news_link)) ||
+    (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 0)
+  ) {
+    // Global setting to hide the latest block.
     return NULL;
-  }
-
-  // If the node has the field_core_latest_visibility field then we should use
-  // it as a secondary check.
-  if (isset($node->field_core_latest_visibility) && is_array($node->field_core_latest_visibility)) {
-    if (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 0) {
-      return NULL;
-    }
   }
 
   // Default settings.
   $show_featured = isset($field['formatter_settings']['show_featured_item']) ? $field['formatter_settings']['show_featured_item'] : FALSE;
   $show_social_media = isset($field['formatter_settings']['show_social_media']) ? $field['formatter_settings']['show_social_media'] : FALSE;
 
-  // Set our announcements view..
+  // Set our announcements view.
   $news_items = views_embed_view('announcements', 'latest_block');
 
   // Get the social media to render.

@@ -5,7 +5,7 @@ Feature: Announcements block
 
   Background:
     Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
+    When I go to "admin/appearance/settings"
     And I check the box "Would you like to show the latest block when it is available?"
     And I press "Save configuration"
 
@@ -140,3 +140,18 @@ Feature: Announcements block
     Then I should see "Latest" in the ".field--announcement-block h2" element
     Then I should see the link "Announcement on page"
     Then I should see "Featured item" in the ".featured-item" element
+
+  @information
+  Scenario: Department content type latest visibility can override global settings
+    Given "Department" content:
+      # Content which wants to display latest component.
+      | title                   | status | field_core_latest_visibility[und] |
+      | Department of Rebellion | 1      | 1                                 |
+    Given I am logged in as a user with the "administrator" role
+    When I go to "admin/appearance/settings"
+    # Global setting that the latest should not be visible anywhere.
+    And I uncheck the box "Would you like to show the latest block when it is available?"
+    And I press "Save configuration"
+    When I go to "admin/content"
+    And I follow "Department of Rebellion"
+    Then I should see "Latest" in the ".field--announcement-block h2" element
