@@ -321,10 +321,18 @@ function cwt_core_views_pre_render(&$view) {
       if ($view->name == 'activities') {
         // Calendar global list follow the pattern "[Team_node_path]/blog".
         $biography = menu_get_object();
+        // The language of the current page.
+        $language = $biography->language;
+
         $wrapper = entity_metadata_wrapper('node', $biography);
-        $team = $wrapper->field_team_membership->raw();
         $query['field_editorial_section_multiple_tid'] = $wrapper->field_editorial_section->raw();
-        $path = drupal_get_path_alias('node/' . $team) . '/' . $lists[$view->name];
+
+        // Get the translations of the target base.
+        $team = $wrapper->field_team_membership->raw();
+        $team_translations = translation_node_get_translations($team);
+        // Respect the node id of the base translation for the current language.
+        $tnid = $team_translations[$language]->nid;
+        $path = drupal_get_path_alias('node/' . $tnid) . '/' . $lists[$view->name];
       }
       else {
         // Blog lists follow the pattern "[node_path]/blog".
