@@ -66,14 +66,14 @@ function dt_contact_field_default_field_instances() {
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -115,7 +115,7 @@ function dt_contact_field_default_field_instances() {
           'link_title' => '',
         ),
         'type' => 'link_button_default',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -125,7 +125,7 @@ function dt_contact_field_default_field_instances() {
           'link_title' => '',
         ),
         'type' => 'link_button_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -163,6 +163,81 @@ function dt_contact_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-contact-field_contact_location_office'.
+  $field_instances['node-contact-field_contact_location_office'] = array(
+    'bundle' => 'contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Office: Enter office identification (eg. BERL 04/347)',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_contact_location_office',
+    'label' => 'Location, Office',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_track' => 'full_html_track',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'full_html_track' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
     ),
   );
 
@@ -400,7 +475,7 @@ function dt_contact_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -413,7 +488,7 @@ function dt_contact_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'title' => array(
         'label' => 'hidden',
@@ -460,13 +535,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -511,13 +586,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'node',
@@ -570,13 +645,13 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 32,
       ),
     ),
     'entity_type' => 'node',
@@ -636,9 +711,11 @@ function dt_contact_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Link to form');
+  t('Location, Office');
   t('Mobile number');
   t('Name');
   t('Name of office, organisation or person the contact details refer to.');
+  t('Office: Enter office identification (eg. BERL 04/347)');
   t('Phone number');
   t('Please use the following format:
 <strong>+cc r xxx xx xx (description)</strong>

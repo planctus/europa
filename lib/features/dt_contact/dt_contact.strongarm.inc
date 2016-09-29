@@ -133,6 +133,9 @@ function dt_contact_strongarm() {
       'structured_navigation' => array(
         'custom_settings' => FALSE,
       ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
