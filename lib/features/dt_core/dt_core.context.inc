@@ -14,6 +14,38 @@ function dt_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'core-sitewide';
+  $context->description = '';
+  $context->tag = 'Sitewide';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dt_shared_functions-dt_shared_functions_user_menu' => array(
+          'module' => 'dt_shared_functions',
+          'delta' => 'dt_shared_functions_user_menu',
+          'region' => 'utility',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Sitewide');
+  $export['core-sitewide'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'dt_core_non_homepage_pages';
   $context->description = '';
   $context->tag = 'Digital Transformation';

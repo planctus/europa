@@ -78,3 +78,21 @@ function dt_roles_permissions_update_7105() {
   // Import web transformer role.
   _dt_roles_permissions_import_import('web transformer');
 }
+
+/**
+ * DTTSB-1018: Reverting for permissions, and import new role Draft viewer.
+ */
+function dt_roles_permissions_update_7106() {
+  // Reverting for getting Draft viewer role.
+  features_revert_module(['dt_roles_permissions']);
+  // Import Draft viewer role.
+  _dt_roles_permissions_import_import('Draft viewer');
+}
+
+/**
+ * DTTSB-1017: Import new permission for role Draft viewer.
+ */
+function dt_roles_permissions_update_7107() {
+  // Import Draft viewer role.
+  _dt_roles_permissions_import_import('Draft viewer');
+}

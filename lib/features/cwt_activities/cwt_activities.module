@@ -90,7 +90,7 @@ function cwt_activities_views_query_alter(&$view, &$query) {
  */
 function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
   // Modify the view with the start/end date.
-  if ($display_id == 'moderate_all_page' && $view->name == 'workbench_moderation') {
+  if ($view->name == 'workbench_moderation' && $display_id == 'moderate_all_page') {
     $options = [
       'format_type' => 'long',
       'fromto' => 'both',
@@ -101,10 +101,8 @@ function cwt_activities_views_pre_view(&$view, &$display_id, &$args) {
       'relationship' => 'nid',
     ];
     $view->add_item($view->current_display, 'field', 'field_data_field_start_end_date', 'field_start_end_date', $options, 'field_start_end_date');
-    return;
   }
-
-  if ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
+  elseif ($view->name == 'agenda' && $original_path_cached = &drupal_static('cwt_core_orignal_path')) {
     if (isset($original_path_cached['nid'])) {
       // Load node the Calendar belongs to in the first place.
       // Use its editorial section in first contextual filter.
@@ -132,7 +130,8 @@ function cwt_activities_views_pre_render(&$view) {
   if ($view->name == 'workbench_moderation' && $view->current_display == 'moderate_all_page') {
     // First get the keys.
     $keys = array_keys($view->field);
-    $first_key = array_shift(array_slice($keys, 0, 1)); ;
+    $keys_sliced = array_slice($keys, 0, 1);
+    $first_key = array_shift($keys_sliced);
     $last_key = end($keys);
 
     // Store the values.
@@ -143,10 +142,8 @@ function cwt_activities_views_pre_render(&$view) {
 
     // Put them in place.
     $view->field = [$last_key => $last_item] + $view->field + [$first_key => $first_item];
-    return;
   }
-
-  if ($view->name == 'agenda' && $view->current_display == 'list') {
+  elseif ($view->name == 'agenda' && $view->current_display == 'list') {
     // Adds the print PDF link to the views header.
     if (isset($view->header['area_text_custom']->options['content'])) {
       $header_content = $view->header['area_text_custom']->options['content'];
@@ -300,7 +297,11 @@ function cwt_activities_preprocess_page(&$variables) {
     ];
 
     if (isset($variables['format']) && $variables['format'] == 'pdf') {
-      $result = _dt_exposed_filter_data_get_date_facet_tags($view);
+      $exposed_inputs = $view->exposed_raw_input;
+      $start = !empty($exposed_inputs['date_filter_min']['value']) ? filter_xss($exposed_inputs['date_filter_min']['value']) : '';
+      $end = !empty($exposed_inputs['date_filter_max']['value']) ? filter_xss($exposed_inputs['date_filter_max']['value']) : '';
+
+      $result = _dt_exposed_filter_data_get_date_facet_tags($start, $end);
       $variables['node']->title .= ' ' . lcfirst(trim($result['filter'][0], '"'));
 
       $variables['node']->content = $description[0] . '<br><em>' . $description[1] . '</em>'

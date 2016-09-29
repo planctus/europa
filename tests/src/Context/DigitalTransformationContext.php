@@ -185,16 +185,15 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then the selects :selector should be set to :value
    */
   public function theSelectsShouldBeSetTo($selector, $value) {
-    $this->assertSession()->elementAttributeContains('css', $selector . ' option[selected="selected"]', 'value', $value);
-  }
-
-  /**
-   * Check select box value.
-   *
-   * @Then the selects :selector should not be set to :value
-   */
-  public function theSelectsShouldNotBeSetTo($selector, $value) {
-    $this->assertSession()->elementAttributeNotContains('css', $selector . ' option[selected="selected"]', 'value', $value);
+    $selects = $this->getSession()->getPage()->findAll('css', $selector);
+    if ($selects === NULL) {
+      throw new ExpectationException('Could not find select element matching the selector: ' . $selector, $this->getSession());
+    }
+    foreach ($selects as $select) {
+      if ($select->getValue() !== $value) {
+        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be', $this->getSession());
+      }
+    }
   }
 
   /**
@@ -422,49 +421,6 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
-   * Sets the current node as the frontpage.
-   *
-   * @Given I set the current page as frontpage
-   */
-  public function iSetTheCurrentPageAsFrontpage() {
-    variable_set('site_frontpage', ltrim($this->currentNode()
-      ->getNodePath(), '/'));
-    variable_set('weight_frontpage', 0);
-  }
-
-  /**
-   * Test if a css selector is available.
-   *
-   * @Then /^I should see the css selector "([^"]*)"$/
-   * @Then /^I should see the CSS selector "([^"]*)"$/
-   *
-   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
-   */
-  public function iShouldSeeTheCssSelector($css_selector) {
-    $element = $this->getSession()->getPage()->find("css", $css_selector);
-    if (empty($element)) {
-      throw new \Exception(sprintf("The page '%s' does not contain the css selector '%s'", $this->getSession()
-        ->getCurrentUrl(), $css_selector));
-    }
-  }
-
-  /**
-   * Test if a css selector is not available.
-   *
-   * @Then /^I should not see the css selector "([^"]*)"$/
-   * @Then /^I should not see the CSS selector "([^"]*)"$/
-   *
-   * @see: http://www.grasmash.com/article/behat-step-i-should-see-css-selector
-   */
-  public function iShouldNotSeeTheCssSelector($css_selector) {
-    $element = $this->getSession()->getPage()->find("css", $css_selector);
-    if (empty(!$element)) {
-      throw new \Exception(sprintf("The page '%s' contains the css selector '%s'", $this->getSession()
-        ->getCurrentUrl(), $css_selector));
-    }
-  }
-
-  /**
    * Click testing of an element which has a css selector.
    *
    * @When /^(?:|I )click the element with CSS selector "([^"]*)"$/
@@ -593,11 +549,107 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * Sets the xdebug cookie.
    *
-   * @BeforeStep
+   * @BeforeScenario
    */
   public function xdebugCookie() {
     if ('1' === getenv('XDEBUG')) {
       $this->getSession()->setCookie('XDEBUG_SESSION', 'PHPSTORM');
+    }
+  }
+
+  /**
+   * Generates a number of nodes of a type.
+   *
+   * @Given I have :quantity :type content:
+   */
+  public function generateNodes($quantity, $type, TableNode $table) {
+    foreach ($table->getHash() as $nodeHash) {
+      $node = (object) $nodeHash;
+      $node->type = $type;
+      for ($i = 0; $i < $quantity; $i++) {
+        $new_node = clone($node);
+        $new_node->title  = $new_node->title . " $i";
+        $this->nodeCreate($new_node);
+      }
+    }
+  }
+
+  /**
+   * Sets the current node as the frontpage.
+   *
+   * @Given I set the current page as frontpage
+   */
+  public function iSetTheCurrentPageAsFrontpage() {
+    variable_set('site_frontpage', ltrim($this->currentNode()
+      ->getNodePath(), '/'));
+    variable_set('weight_frontpage', 0);
+  }
+
+  /**
+   * Selects an element form a chosen box.
+   *
+   * This requires @javascript.
+   *
+   * @Given /^I select "([^"]*)" from "([^"]*)" chosen\.js select box$/
+   */
+  public function iSelectFromChosenJsSelectBox($option, $select) {
+    $select = str_replace('\\"', '"', $select);
+    $option = str_replace('\\"', '"', $option);
+
+    $page = $this->getSession()->getPage();
+    $field = $page->findField($select, TRUE);
+
+    if (NULL === $field) {
+      throw new ElementNotFoundException($this->getSession()
+        ->getDriver(), 'form field', 'id|name|label|value', $select);
+    }
+
+    $id = $field->getAttribute('id');
+    $opt = $field->find('named', ['option', $option]);
+    $val = $opt->getValue();
+
+    $javascript = "jQuery('#$id').val('$val');
+                  jQuery('#$id').trigger('chosen:updated');
+                  jQuery('#$id').trigger('change');";
+
+    $this->getSession()->executeScript($javascript);
+  }
+
+  /**
+   * Checks if the current url matches the requirements.
+   *
+   * @Then the current URL should be :alias
+   */
+  public function theCurrentUrlShouldBe($alias) {
+    if (substr($alias, 0, 1) !== '/') {
+      $alias = '/' . $alias;
+    }
+    $current_url = str_replace($GLOBALS['base_url'], '', $this->getSession()->getCurrentUrl());
+    if ($current_url !== $alias) {
+      throw new ExpectationException('The URL ' . $alias . ' does not match the requirements. The current URL is: ' . $current_url, $this->getSession());
+    }
+  }
+
+  /**
+   * Checks if in an input contains a given value.
+   *
+   * @param string $input_name
+   *    The input name attribute to search for.
+   * @param string $expected_value
+   *    The input value to assert.
+   *
+   * @throws ExpectationException
+   *    If no elements are found or if value is not as expected.
+   *
+   * @Then the input with name :input_name should have the value :expected_value
+   */
+  public function theInputWithNameShouldHaveTheValue($input_name, $expected_value) {
+    $element = $this->getSession()
+                    ->getPage()
+                    ->find('css', 'input[name="' . $input_name . '"]');
+
+    if (!is_object($element) || $expected_value !== $element->getAttribute('value')) {
+      throw new ExpectationException(sprintf('The ' . $input_name . ' input does not contain %s', $expected_value), $this->getSession());
     }
   }
 

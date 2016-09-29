@@ -184,6 +184,11 @@ function _dt_apply_wysiwyg_buttons() {
     'lite_ToggleTracking',
   ];
   multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'lite', $lite);
+
+  $abbr = [
+    'Abbr',
+  ];
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'abbr', $abbr);
 }
 
 /**
@@ -1109,4 +1114,57 @@ function _dt_core_replace_headings($element) {
  */
 function _dt_core_replace_h2($matches) {
   return '<h2 id="' . drupal_html_id($matches[1]) . '">' . $matches[1] . '</h2>';
+}
+
+/**
+ * Adds a role to a given user.
+ *
+ * @param object $account
+ *   Drupal user object.
+ * @param string $role_apply
+ *   Role name to add to the user roles.
+ */
+function _dt_core_add_user_role($account, $role_apply) {
+  if (isset($account) && isset($role_apply)) {
+    if (!array_search($role_apply, $account->roles)) {
+      if ($role = user_role_load_by_name($role_apply)) {
+        user_multiple_role_edit([$account->uid], 'add_role', $role->rid);
+      }
+    }
+  }
+}
+
+/**
+ * Checks whether a given user account is part of a given organization.
+ *
+ * @param object $account
+ *   The user object.
+ * @param string $org
+ *   The organization to match against.
+ *
+ * @return bool
+ *   Whether $account is a member of $org.
+ */
+function _dt_core_check_user_organization($account, $org = 'COMM.A.5') {
+  if (isset($account)) {
+    $user_emw = entity_metadata_wrapper('user', $account->uid);
+    if ($user_emw->__isset('field_creator')) {
+      // If the user has ECAS data about their working place/organization.
+      if ($creator = $user_emw->field_creator->value()) {
+        if (strstr($creator, $org)) {
+          return TRUE;
+        }
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function dt_core_user_login(&$edit, $account) {
+  if (_dt_core_check_user_organization($account)) {
+    _dt_core_add_user_role($account, 'draft viewer');
+  }
 }

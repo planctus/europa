@@ -100,8 +100,8 @@ function dt_contact_field_default_field_instances() {
     'bundle' => 'contact',
     'default_value' => array(
       0 => array(
-        'title' => 'Ask a question',
-        'url' => 'http://ec.europa.eu/contact/index_en.htm',
+        'title' => '',
+        'url' => '',
       ),
     ),
     'deleted' => 0,
