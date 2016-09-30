@@ -61,3 +61,31 @@ function dt_call_for_proposal_default_update_7001() {
     }
   }
 }
+
+/**
+ * DTTSB-1065 - Call for proposals update.
+ */
+function dt_call_for_proposal_default_update_7002() {
+  $fields = [
+    'field_core_details',
+  ];
+
+  foreach ($fields as $field) {
+    // Remove field.
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+
+  $groups = [
+    'group_cfp_closing_date',
+  ];
+
+  foreach ($groups as $group_name) {
+    // Remove a fieldgroup.
+    if ($group = field_group_load_field_group($group_name, 'node', 'call_for_proposal', 'form')) {
+      ctools_include('export');
+      field_group_group_export_delete($group, FALSE);
+    }
+  }
+}

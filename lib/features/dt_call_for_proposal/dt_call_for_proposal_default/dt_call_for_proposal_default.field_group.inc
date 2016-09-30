@@ -35,9 +35,10 @@ function dt_call_for_proposal_default_field_group_info() {
       8 => 'field_core_topics',
       9 => 'field_core_date_opening',
       10 => 'field_cfp_program',
-      11 => 'field_cfp_publication',
+      11 => 'field_core_date_closing',
       12 => 'field_grants_awarded_link',
-      13 => 'group_cfp_closing_date',
+      13 => 'field_cfp_publication',
+      14 => 'group_cfp_deadlines',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -50,35 +51,6 @@ function dt_call_for_proposal_default_field_group_info() {
     ),
   );
   $field_groups['group_cfp_basic_info|node|call_for_proposal|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_cfp_closing_date|node|call_for_proposal|form';
-  $field_group->group_name = 'group_cfp_closing_date';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'call_for_proposal';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_cfp_basic_info';
-  $field_group->data = array(
-    'label' => 'Closing date',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_core_date_closing',
-      1 => 'field_core_details',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-cfp-closing-date field-group-fieldset',
-        'required_fields' => 1,
-        'id' => '',
-      ),
-    ),
-  );
-  $field_groups['group_cfp_closing_date|node|call_for_proposal|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -106,6 +78,34 @@ function dt_call_for_proposal_default_field_group_info() {
     ),
   );
   $field_groups['group_cfp_contacts|node|call_for_proposal|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_cfp_deadlines|node|call_for_proposal|form';
+  $field_group->group_name = 'group_cfp_deadlines';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'call_for_proposal';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_cfp_basic_info';
+  $field_group->data = array(
+    'label' => 'Multiple deadlines',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_deadlines',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cfp-deadlines field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_cfp_deadlines|node|call_for_proposal|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -464,7 +464,6 @@ function dt_call_for_proposal_default_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Basic information');
-  t('Closing date');
   t('Contact');
   t('Content');
   t('Departments');

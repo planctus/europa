@@ -49,7 +49,8 @@ function _dt_call_for_proposal_calculate_status(&$entity) {
   }
 
   if (!($opening)) {
-    // If we cannot calculate the status, we don't override its value.
+    // If we cannot calculate the status, weset it to open.
+    $wrapper->field_cfp_status->set('open');
     return;
   }
   else {
@@ -58,7 +59,8 @@ function _dt_call_for_proposal_calculate_status(&$entity) {
       // "end of the day", considering that opening date has day granualarity.
       $closing = !empty($wrapper->field_core_date_closing->value()) ? $wrapper->field_core_date_closing->value() : $opening + 86399;
 
-      // If we have multiple values for the closing date we use the last.
+      // This is not needed anymore since the field has been limited to 1 value,
+      // but it's harmless and it will work in case thi setting will change.
       $closing = is_array($closing) ? end($closing) : $closing;
     }
   }
@@ -81,6 +83,7 @@ function _dt_call_for_proposal_calculate_status(&$entity) {
  */
 function dt_call_for_proposal_form_node_form_alter(&$form, &$form_state, $form_id) {
   if ($form['#node']->type == 'call_for_proposal') {
+    $form['field_cfp_status']['#access'] = 0;
     $form['#attached']['js'][] = drupal_get_path('module', 'dt_call_for_proposal') . '/js/dt_call_for_proposal.js';
   }
 }

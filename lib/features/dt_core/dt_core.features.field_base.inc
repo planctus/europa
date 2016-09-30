@@ -1005,7 +1005,7 @@ function dt_core_field_default_field_bases() {
   // Exported field_base: 'field_core_date_closing'.
   $field_bases['field_core_date_closing'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_core_date_closing',
@@ -1032,25 +1032,34 @@ function dt_core_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_core_details'.
-  $field_bases['field_core_details'] = array(
+  // Exported field_base: 'field_core_date_closing'.
+  $field_bases['field_core_deadlines'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_details',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
+    'field_name' => 'field_core_deadlines',
+    'indexes' => array(),
     'locked' => 1,
-    'module' => 'text',
+    'module' => 'date',
     'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
       'entity_translation_sync' => FALSE,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => 'UTC',
+      'todate' => '',
+      'tz_handling' => 'date',
     ),
-    'translatable' => 1,
-    'type' => 'text_long',
+    'translatable' => 0,
+    'type' => 'datestamp',
   );
 
   // Exported field_base: 'name_field'.
