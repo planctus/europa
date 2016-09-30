@@ -1296,8 +1296,9 @@ function dt_event_default_field_default_field_instances() {
       ),
       'event_past' => array(
         'label' => 'hidden',
+        'module' => 'dt_social_network_links',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'social_network_link_theme_css',
         'weight' => 48,
       ),
       'full' => array(

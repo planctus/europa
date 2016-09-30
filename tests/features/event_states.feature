@@ -25,8 +25,8 @@ Feature: Checking different state of events
       | Event status test: rescheduled     | event is rescheduled | see        | This event has been rescheduled |
       | Event status test: cancelled       | event is cancelled   | see        | This event has been cancelled   |
 
-  # "Book your seat" should appears.
-  Scenario: "Book your seat" button should appears.
+  # "Book your seat" should appear.
+  Scenario: "Book your seat" button should appear.
   "Book your seat" button displaying criteria:
   - Before the event or event is ongoing.
   - Have registration link, minimum the link.
@@ -46,8 +46,8 @@ Feature: Checking different state of events
       | status                                | 1                                                          |
     Then I should see the link "Registration title"
 
-  # "Book your seat" should appears.
-  Scenario: "Book your seat" button should appears, when only registration link added.
+  # "Book your seat" should appear.
+  Scenario: "Book your seat" button should appear, when only registration link added.
     Given I am logged in as a user with the "administrator" role
     And I go to "node/add/event"
     And I fill in the following:
@@ -66,7 +66,7 @@ Feature: Checking different state of events
     Then I should see the link "Book your seat"
 
   # Status: "cancelled'.
-  Scenario: "Book your seat" button should not appears, when event status is "cancelled".
+  Scenario: "Book your seat" button should not appear, when event status is "cancelled".
     Given I am viewing an "Event" content:
       | title                       | Book your seat test, status is cancelled |
       | field_event_status          | event is cancelled                       |
@@ -80,7 +80,7 @@ Feature: Checking different state of events
 
 
   # Fully booked.
-  Scenario: "Book your seat" button should not appears, when event is fully booked.
+  Scenario: "Book your seat" button should not appear, when event is fully booked.
     Given I am viewing an "Event" content:
       | title                       | Book your seat test, fully booked     |
       | field_event_status          | no                                    |
@@ -93,7 +93,7 @@ Feature: Checking different state of events
     Then I should not see the link "Registration title"
 
   # Following registration deadline.
-  Scenario: "Book your seat" button should not appears, after registration deadline.
+  Scenario: "Book your seat" button should not appear, after registration deadline.
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, after registration deadline |
       | field_event_status                    | no                                               |
@@ -109,7 +109,7 @@ Feature: Checking different state of events
 
 
   # Registration link is missing.
-  Scenario: "Book your seat" button should not appears, when registration link is missing.
+  Scenario: "Book your seat" button should not appear, when registration link is missing.
     Given I am viewing an "Event" content:
       | title                       | Book your seat test, registration link is missing |
       | field_event_status          | no                                                |
@@ -120,8 +120,22 @@ Feature: Checking different state of events
       | status                      | 1                                                 |
     Then I should not see the link "Registration title"
 
+  # Past event with social media profile links box.
+  Scenario: Event is in the past, should see social media profile links box.
+    Given I am viewing an "Event" content:
+      | title                                          | Event is in the past |
+      | field_event_status                             | no                   |
+      | field_event_is_fully_booked                    | no                   |
+      | field_event_date:value                         | 1472724000           |
+      | field_event_date:value2                        | 1472724000           |
+      | field_event_date:timezone                      | Europe/Budapest      |
+      | field_core_social_network_links:title          | Facebook             |
+      | field_core_social_network_links:url            | fb.com               |
+      | status                                         | 1                    |
+    Then I should see "Follow the latest progress and get involved."
+
   # "Watch live" button.
-  Scenario: "Watch live" button should appears.
+  Scenario: "Watch live" button should appear.
   In case of the following conjunction:
   - "Live streaming available": yes.
   - "Date and time of live streaming" current moment is between start and end time of live streaming.
@@ -143,7 +157,7 @@ Feature: Checking different state of events
     Then I should see the link "Watch live"
 
   # Event cancelled.
-  Scenario: "Watch live" button should not appears, when the event "cancelled".
+  Scenario: "Watch live" button should not appear, when the event "cancelled".
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, event cancelled |
       | field_event_status                          | event is cancelled                         |
@@ -160,7 +174,7 @@ Feature: Checking different state of events
     Then I should not see the link "Watch live"
 
   # No live streaming.
-  Scenario: "Watch live" button should not appears, when there is no live streaming.
+  Scenario: "Watch live" button should not appear, when there is no live streaming.
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, no live streaming |
       | field_event_status                          | no                                           |
@@ -177,7 +191,7 @@ Feature: Checking different state of events
     Then I should not see the link "Watch live"
 
   # Current time is before broadcasting start.
-  Scenario: "Watch live" button should not appears, when current time is before is before broadcasting start.
+  Scenario: "Watch live" button should not appear, when current time is before is before broadcasting start.
     Given I am viewing an "Event" content:
       | title                                    | Watch live streaming test, current time is before broadcasting start |
       | field_event_status                       | no                                                                   |
@@ -193,7 +207,7 @@ Feature: Checking different state of events
     Then I should not see the link "Watch live"
 
   # Current time is outside of broadcasting interval.
-  Scenario: "Watch live" button should not appears, when current time is outside of broadcasting interval.
+  Scenario: "Watch live" button should not appear, when current time is outside of broadcasting interval.
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, current time is outside of broadcasting interval |
       | field_event_status                          | no                                                                          |
@@ -210,7 +224,7 @@ Feature: Checking different state of events
     Then I should not see the link "Watch live"
 
   # There is no stream link given.
-  Scenario: "Watch live" button should not appears, when no stream link.
+  Scenario: "Watch live" button should not appear, when no stream link.
     Given I am viewing an "Event" content:
       | title                                       | Watch live streaming test, no stream link |
       | field_event_status                          | no                                        |
