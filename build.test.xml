@@ -135,25 +135,34 @@
 
     <!-- Set up Behat. -->
     <target name="setup-behat">
-        <if>
-            <available file="${behat.yml.path}" type="file" property="behat.yml.available" />
-            <then>
-                <echo message="Deleting existing behat.yml configuration file" />
-                <delete file="${behat.yml.path}" failonerror="false" />
-            </then>
-        </if>
-        <echo message="Creating behat.yml configuration file" />
-        <loadfile property="behat.yml.content" file="${behat.yml.template}">
+        <copy todir="${behat.dir}">
+            <fileset dir="${behat.dir}" casesensitive="yes">
+                <include name="*.yml.dist"/>
+            </fileset>
             <filterchain>
-                <replacetokens>
-                    <token key="project.code.dir" value="${project.code.dir}" />
-                    <token key="drupal.site.dir" value="${drupal.site.dir}" />
+                <replacetokens begintoken="${" endtoken="}">
                     <token key="behat.base_url" value="${behat.base_url}" />
+                    <token key="behat.test_tags" value="${behat.test_tags}" />
+                    <token key="platform.build.dir" value="${platform.build.dir}" />
+                    <token key="behat.subcontexts.path" value="${behat.subcontexts.path}" />
+                    <token key="flickr.key" value="${flickr.key}" />
+                    <token key="flickr.secret" value="${flickr.secret}" />
+                    <token key="drush.bin" value="${drush.bin}" />
                     <token key="behat.formatter.name" value="${behat.formatter.name}" />
+                    <token key="integration.server.port" value="${integration.server.port}" />
+                    <token key="varnish.server.port" value="${varnish.server.port}" />
                 </replacetokens>
             </filterchain>
-        </loadfile>
-        <echo message="${behat.yml.content}" file="${behat.yml.path}" />
+            <mapper type="glob" from="*.yml.dist" to="*.yml" />
+        </copy>
+        <symlink link="${phing.project.build.dir}" overwrite="true">
+            <fileset dir="${behat.dir}" casesensitive="yes">
+                <include name="*.yml"/>
+            </fileset>
+        </symlink>
+        <symlink link="${phing.project.build.dir}/features" target="../tests/features" />
+        <symlink link="${phing.project.build.dir}/tests" target="../tests" />
+        <symlink link="bin/behat" target="../${phing.project.build.dir}/vendor/bin/behat" overwrite="true"/>
     </target>
 
     <!-- Run Behat tests. -->
