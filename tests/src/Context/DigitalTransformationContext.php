@@ -16,8 +16,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * List of languages.
    *
-   * @var array $languageList
-   *   List of available languages.
+   * @var array
    */
   private $languageList;
 
@@ -95,8 +94,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
 
     // Redirect the user to the new language page.
-    $this->visitPath($this->currentNode()
-        ->getNodePath() . '_' . $language_code);
+    $this->visitPath($this->currentNode()->getNodePath() . '_' . $language_code);
   }
 
   /**
@@ -194,7 +192,8 @@ class DigitalTransformationContext extends RawDrupalContext {
    * @Then the selects :selector should not be set to :value
    */
   public function theSelectsShouldNotBeSetTo($selector, $value) {
-    $this->assertSession()->elementAttributeNotContains('css', $selector . ' option[selected="selected"]', 'value', $value);
+    $this->assertSession()
+      ->elementAttributeNotContains('css', $selector . ' option[selected="selected"]', 'value', $value);
   }
 
   /**
@@ -569,7 +568,7 @@ class DigitalTransformationContext extends RawDrupalContext {
       $node->type = $type;
       for ($i = 0; $i < $quantity; $i++) {
         $new_node = clone($node);
-        $new_node->title  = $new_node->title . " $i";
+        $new_node->title = $new_node->title . " $i";
         $this->nodeCreate($new_node);
       }
     }
@@ -646,12 +645,62 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function theInputWithNameShouldHaveTheValue($input_name, $expected_value) {
     $element = $this->getSession()
-                    ->getPage()
-                    ->find('css', 'input[name="' . $input_name . '"]');
+      ->getPage()
+      ->find('css', 'input[name="' . $input_name . '"]');
 
     if (!is_object($element) || $expected_value !== $element->getAttribute('value')) {
       throw new ExpectationException(sprintf('The ' . $input_name . ' input does not contain %s', $expected_value), $this->getSession());
     }
+  }
+
+  /**
+   * Selects an element from a autocomplete field.
+   *
+   * @When /^I select the first autocomplete option for "([^"]*)" on the "([^"]*)" field$/
+   */
+  public function iSelectFirstAutocomplete($prefix, $identifier) {
+    $session = $this->getSession();
+    $page = $session->getPage();
+    $element = $page->findField($identifier);
+    if (empty($element)) {
+      throw new \Exception(sprintf('We couldn\'t find "%s" on the page', $identifier));
+    }
+    $page->fillField($identifier, $prefix);
+
+    $xpath = $element->getXpath();
+    $driver = $session->getDriver();
+
+    // Autocomplete.js uses key down/up events directly.
+    // Press the backspace key.
+    $driver->keyDown($xpath, 8);
+    $driver->keyUp($xpath, 8);
+
+    // Retype the last character.
+    $chars = str_split($prefix);
+    $last_char = array_pop($chars);
+    $driver->keyDown($xpath, $last_char);
+    $driver->keyUp($xpath, $last_char);
+
+    // Wait for AJAX to finish.
+    $this->getSession()->wait(5000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+
+    // And make sure the autocomplete is showing.
+    $this->getSession()->wait(5000, 'jQuery("#autocomplete").show().length > 0');
+
+    // And wait for 1 second just to be sure.
+    sleep(1);
+
+    // Press the down arrow to select the first option.
+    $driver->keyDown($xpath, 40);
+    $driver->keyUp($xpath, 40);
+
+    // Press the Enter key to confirm selection, copying the value into the
+    // field.
+    $driver->keyDown($xpath, 13);
+    $driver->keyUp($xpath, 13);
+
+    // Wait for AJAX to finish.
+    $this->getSession()->wait(5000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
   }
 
 }
