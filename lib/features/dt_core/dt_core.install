@@ -973,3 +973,14 @@ function dt_core_update_7173() {
   // Applying a default set of buttons to the Full HTML profile.
   _dt_apply_wysiwyg_buttons();
 }
+
+/**
+ * DTTSB-1039: Update translation of field_core_quick_nav_links.
+ */
+function dt_core_update_7174(&$sandbox) {
+  // Reverting core.
+  features_revert_module('dt_core');
+
+  // Update field.
+  _dt_core_enable_entity_translation('field_core_quick_nav_links', $sandbox);
+}
