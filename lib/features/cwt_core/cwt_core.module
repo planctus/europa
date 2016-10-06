@@ -100,36 +100,6 @@ function cwt_core_init() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
- *
- * All new nodes should default to English.
- *
- * @see https://webgate.ec.europa.eu/CITnet/jira/browse/CWT-267
- */
-function cwt_core_form_node_form_alter(&$form, &$form_state, $form_id) {
-  // Check if:
-  // - We are creating a new node.
-  // - Translation is enabled for the node.
-  // - English is available as a translation option.
-  if (empty($form['#node']->nid) && i18n_node_type_enabled($form['#node']) && !empty($form['language']['#options']['en'])) {
-    // We might be creating a new node that is a translation of an existing
-    // node using the i18n_node module. In that case we should not default to
-    // English but to the language that is defined in the context.
-    // @see i18n_node_i18n_context_language().
-    if (module_exists('i18n_node') && !empty($_GET['translation']) && !empty($_GET['target']) && $language_context = i18n_language_context()) {
-      $langcode = $language_context->language;
-    }
-    // Default to English.
-    else {
-      $langcode = 'en';
-    }
-    $form['language']['#default_value'] = $langcode;
-    // Hide the field, so the user cannot change the language.
-    $form['language']['#disabled'] = TRUE;
-  }
-}
-
-/**
  * Implements hook_views_post_render().
  */
 function cwt_core_views_post_render(&$view, &$output, &$cache) {
