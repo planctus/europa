@@ -45,7 +45,8 @@ function test_content_events_uuid_features_default_content() {
     'body' => array(
       'en' => array(
         0 => array(
-          'value' => '<p>Extended description of the event.</p>',
+          'value' => '<p>Extended description of the event.</p>
+',
           'summary' => '',
           'format' => 'full_html',
         ),
@@ -125,7 +126,8 @@ function test_content_events_uuid_features_default_content() {
     'field_event_what_happened' => array(
       'en' => array(
         0 => array(
-          'value' => '<p>Event summary</p>',
+          'value' => '<p>Event summary</p>
+',
           'format' => 'full_html',
         ),
       ),
@@ -186,17 +188,27 @@ function test_content_events_uuid_features_default_content() {
           'data' => NULL,
         ),
         9 => array(
-          'fid' => 6,
+          'fid' => 14,
           'title' => NULL,
           'data' => NULL,
         ),
         10 => array(
-          'fid' => 10,
+          'fid' => 6,
           'title' => NULL,
           'data' => NULL,
         ),
         11 => array(
+          'fid' => 10,
+          'title' => NULL,
+          'data' => NULL,
+        ),
+        12 => array(
           'fid' => 11,
+          'title' => NULL,
+          'data' => NULL,
+        ),
+        13 => array(
+          'fid' => 15,
           'title' => NULL,
           'data' => NULL,
         ),
@@ -206,7 +218,8 @@ function test_content_events_uuid_features_default_content() {
     'field_core_introduction' => array(
       'en' => array(
         0 => array(
-          'value' => '<p>Event introduction</p>',
+          'value' => '<p>Event introduction</p>
+',
           'format' => 'full_html',
         ),
       ),
@@ -235,10 +248,11 @@ function test_content_events_uuid_features_default_content() {
           'translate' => 0,
           'created' => 1467380495,
           'entity_uuid' => '9d4f343f-baf8-4de8-b291-26a94c0a93ec',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
+    'event_status_rescheduled' => 0,
     'event_status' => 3,
     'event_livestream_status' => NULL,
     'metatags' => array(
@@ -249,6 +263,7 @@ function test_content_events_uuid_features_default_content() {
         ),
       ),
     ),
+    'entity_type' => 'node',
     'rdf_mapping' => array(
       'rdftype' => array(
         0 => 'sioc:Item',
@@ -324,9 +339,50 @@ function test_content_events_uuid_features_default_content() {
     'print_pdf_display_urllist' => 1,
     'print_pdf_size' => NULL,
     'print_pdf_orientation' => NULL,
+    'workbench_moderation' => array(
+      'current' => (object) array(
+        'hid' => 5,
+        'vid' => 6,
+        'nid' => 2,
+        'from_state' => 'published',
+        'state' => 'published',
+        'uid' => 1,
+        'stamp' => 1475585924,
+        'published' => 1,
+        'is_current' => 1,
+        'title' => 'Demo Past Event',
+        'timestamp' => 1475585924,
+      ),
+      'published' => (object) array(
+        'hid' => 5,
+        'vid' => 6,
+        'nid' => 2,
+        'from_state' => 'published',
+        'state' => 'published',
+        'uid' => 1,
+        'stamp' => 1475585924,
+        'published' => 1,
+        'is_current' => 1,
+        'title' => 'Demo Past Event',
+        'timestamp' => 1475585924,
+      ),
+      'my_revision' => (object) array(
+        'hid' => 5,
+        'vid' => 6,
+        'nid' => 2,
+        'from_state' => 'published',
+        'state' => 'published',
+        'uid' => 1,
+        'stamp' => 1475585924,
+        'published' => 1,
+        'is_current' => 1,
+        'title' => 'Demo Past Event',
+        'timestamp' => 1475585924,
+      ),
+    ),
     'pathauto_perform_alias' => FALSE,
     'date' => '2016-07-01 15:41:35 +0200',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   return $nodes;
 }

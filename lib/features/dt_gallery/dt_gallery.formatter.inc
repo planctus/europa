@@ -5,17 +5,19 @@
  * Contains the formatter implementation for dt_gallery.
  */
 
+use Drupal\dt_gallery\DtGallery;
+
 /**
  * Implements hook_field_formatter_info().
  */
 function dt_gallery_field_formatter_info() {
   return [
-    'dt_gallery' => array(
+    'dt_gallery' => [
       'label' => t('Digital transformation: Gallery'),
-      'field types' => array(
+      'field types' => [
         'media',
-      ),
-    ),
+      ],
+    ],
   ];
 }
 
@@ -37,53 +39,79 @@ function dt_gallery_field_formatter_view($entity_type, $entity, $field, $instanc
     '#suffix' => '</div>',
   ];
 
-  // Algorithm for the images.
-  $total_images = count($items);
-  $images_per_row = 4;
-  $rows = ceil($total_images / $images_per_row);
+  $gallery = new DtGallery($items);
 
-  // Initialize the rows.
-  $image_rows = [];
+  /* @var $row_items \Drupal\dt_gallery\DtGalleryRow */
+  foreach ($gallery->getRows() as $row_id => $row_items) {
 
-  // Build an array of images per row.
-  for ($i = 0; $i <= $rows; $i++) {
-    $image_rows[$i] = array_slice($items, $i * 4, 4);
-    // If the images in the row are less then 4, we can stop.
-    if (count($image_rows[$i]) < 4) {
-      break;
-    }
-  }
-
-  foreach ($image_rows as $row_id => $row_items) {
-    // The row.
+    // Prepare the row render array.
     $render_array[$row_id] = [
       '#prefix' => '<div class="row">',
       '#suffix' => '</div>',
     ];
-    // Get the sizes.
-    $sizes = _dt_gallery_get_sizes_for_row($row_items);
 
-    // Loop over the items.
-    foreach ($row_items as $img_id => $img) {
+    // Loop over the items in the row.
+    /* @var $item \Drupal\dt_gallery\DtGalleryItemBase */
+    foreach ($row_items as $item_id => $item) {
+
       // Image to render inside the item.
-      $fallback_image_style = 'gallery_grid_' . $sizes[$img_id];
+      $fallback_image_style = 'gallery_grid_' . $item->getSize();
+      switch ($item->getFile()->type) {
+
+        default:
+        case 'image':
+          $image_data = [
+            'title' => $item->getTitle(),
+            'alt' => $item->getAlt(),
+            'uri' => $item->getUri(),
+          ];
+          break;
+
+        case 'video':
+          // Get the preview, and based on that we can chose how we render it.
+          $preview = file_view_file($item->getFile(), 'preview');
+
+          // If it is the large icon formatter, we simply take the path to that
+          // icon to our own image rendering array.
+          if (!isset($preview['#path'])) {
+            $icon_dir = variable_get('media_icon_base_directory', 'public://media-icons') . '/' . variable_get('media_icon_set', 'default');
+            $uri = file_icon_path($item->getFile(), $icon_dir);
+          }
+          else {
+            $uri = $preview['#path'];
+          }
+
+          $image_data = [
+            'title' => $preview['#file']->title,
+            'alt' => $preview['#file']->alt,
+            'uri' => $uri,
+          ];
+
+          unset($preview);
+
+          break;
+      }
+
+      // Build the image render array.
       $image = [
         '#theme' => 'picture',
-        '#uri' => $img['file']->uri,
+        '#uri' => $image_data['uri'],
         '#style_name' => $fallback_image_style,
-        '#breakpoints' => picture_get_mapping_breakpoints(picture_mapping_load('gallery_responsive_grid_' . $sizes[$img_id])),
+        '#breakpoints' => picture_get_mapping_breakpoints(picture_mapping_load('gallery_responsive_grid_' . $item->getSize())),
         '#attributes' => [
-          'title' => $img['file']->title,
-          'alt' => $img['file']->alt,
+          'title' => $image_data['title'],
+          'alt' => $image_data['alt'],
         ],
       ];
+
       // The mediagallery_item.
-      $render_array[$row_id][$img_id] = [
+      $render_array[$row_id][$item_id] = [
         '#theme' => 'mediagallery_item',
-        '#size' => $sizes[$img_id],
+        '#size' => $item->getSize(),
         '#image' => drupal_render($image),
-        '#caption' => _dt_gallery_image_get_caption($img['file']),
-        '#type' => _dt_gallery_image_get_type_icon($img['file']),
+        '#caption' => $item->getCaption(),
+        '#type' => $item->getIcon(),
+        '#hasicon' => (FALSE !== $item->getIcon()) ? ' has-icon' : '',
       ];
     }
   }

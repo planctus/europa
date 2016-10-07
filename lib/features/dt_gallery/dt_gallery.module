@@ -16,7 +16,6 @@ include_once 'dt_gallery.features.inc';
  * Helper files.
  */
 module_load_include('inc', 'dt_gallery', 'dt_gallery.image_styles');
-module_load_include('inc', 'dt_gallery', 'dt_gallery.helpers');
 module_load_include('inc', 'dt_gallery', 'dt_gallery.formatter');
 
 /**
@@ -32,6 +31,7 @@ function dt_gallery_theme($existing, $type, $theme, $path) {
         'image' => '',
         'type' => '',
         'caption' => '',
+        'hasicon' => '',
       ],
     ],
   ];

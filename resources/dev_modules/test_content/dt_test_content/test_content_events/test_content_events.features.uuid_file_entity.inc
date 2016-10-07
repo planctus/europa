@@ -33,7 +33,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467621782,
           'entity_uuid' => '121fa10e-c8ec-49c8-88f6-88ae82cdeacd',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -45,6 +45,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 1024,
@@ -55,7 +56,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 1024,
     'width' => 576,
     'uuid_features_packaged_file_path' => 'assets/dummy-576x1024-white.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'Dummy image 2',
@@ -100,7 +101,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467380636,
           'entity_uuid' => '1bca4f03-390e-4f5e-bf42-2fc16aef2d78',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -112,6 +113,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 900,
@@ -122,7 +124,48 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 900,
     'width' => 600,
     'uuid_features_packaged_file_path' => 'assets/dummy-600x900-goemetry.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+  );
+  $files[] = array(
+    'filename' => 'Defected In The House Radio Show 16.09.16 Guest Mix Sam Divine',
+    'uri' => 'youtube://v/JO9VeAwTEtk',
+    'filemime' => 'video/youtube',
+    'filesize' => 0,
+    'status' => 1,
+    'type' => 'video',
+    'uuid' => '406d1671-7633-45a8-b6f1-24a1bf0d98a9',
+    'field_tags' => array(),
+    'field_video_description' => array(),
+    'translations' => (object) array(
+      'original' => 'en',
+      'data' => array(
+        'en' => array(
+          'entity_type' => 'file',
+          'language' => 'en',
+          'source' => '',
+          'status' => 1,
+          'translate' => 0,
+          'created' => 1475585804,
+          'entity_uuid' => '406d1671-7633-45a8-b6f1-24a1bf0d98a9',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+        ),
+      ),
+    ),
+    'metatags' => array(
+      'en' => array(
+        'revisit-after' => array(
+          'value' => 15,
+          'period' => 'day',
+        ),
+      ),
+    ),
+    'entity_type' => 'file',
+    'rdf_mapping' => array(),
+    'metadata' => array(),
+    'alt' => '',
+    'title' => '',
+    'uuid_features_packaged_file_path' => 'assets/JO9VeAwTEtk',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'dummy-375x500-menu.jpg',
@@ -146,7 +189,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467621762,
           'entity_uuid' => '5403a9af-6c21-4a64-9f92-215e39d29230',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -158,6 +201,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 500,
@@ -168,7 +212,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 500,
     'width' => 375,
     'uuid_features_packaged_file_path' => 'assets/dummy-375x500-menu.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => '1500x350.png',
@@ -192,7 +236,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467637294,
           'entity_uuid' => '74103801-0e9e-4b7d-8c67-1d31735a4246',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -204,6 +248,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 350,
@@ -214,7 +259,96 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 350,
     'width' => 1500,
     'uuid_features_packaged_file_path' => 'assets/1500x350.png',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+  );
+  $files[] = array(
+    'filename' => 'flame.avi',
+    'uri' => 'public://flame.avi',
+    'filemime' => 'video/x-msvideo',
+    'filesize' => 289280,
+    'status' => 1,
+    'type' => 'video',
+    'uuid' => '932d7309-81e2-418b-9c11-ed78f146a098',
+    'field_tags' => array(),
+    'field_video_description' => array(
+      'und' => array(
+        0 => array(
+          'value' => 'Flame avi description Flame avi description Flame avi description Flame avi description',
+          'format' => NULL,
+        ),
+      ),
+    ),
+    'translations' => (object) array(
+      'original' => 'en',
+      'data' => array(
+        'en' => array(
+          'entity_type' => 'file',
+          'language' => 'en',
+          'source' => '',
+          'status' => 1,
+          'translate' => 0,
+          'created' => 1475582984,
+          'entity_uuid' => '932d7309-81e2-418b-9c11-ed78f146a098',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+        ),
+      ),
+    ),
+    'metatags' => array(
+      'en' => array(
+        'revisit-after' => array(
+          'value' => 15,
+          'period' => 'day',
+        ),
+      ),
+    ),
+    'entity_type' => 'file',
+    'rdf_mapping' => array(),
+    'metadata' => array(),
+    'alt' => '',
+    'title' => '',
+    'uuid_features_packaged_file_path' => 'assets/flame.avi',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+  );
+  $files[] = array(
+    'filename' => '!!! ERROR !!! retrieving the video title',
+    'uri' => 'avportal://v/I126675',
+    'filemime' => 'video/avportal',
+    'filesize' => 0,
+    'status' => 1,
+    'type' => 'video',
+    'uuid' => 'a9ef0f62-b1ec-4519-9ca2-7c07dddbb99f',
+    'field_tags' => array(),
+    'field_video_description' => array(),
+    'translations' => (object) array(
+      'original' => 'en',
+      'data' => array(
+        'en' => array(
+          'entity_type' => 'file',
+          'language' => 'en',
+          'source' => '',
+          'status' => 1,
+          'translate' => 0,
+          'created' => 1475585839,
+          'entity_uuid' => 'a9ef0f62-b1ec-4519-9ca2-7c07dddbb99f',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
+        ),
+      ),
+    ),
+    'metatags' => array(
+      'en' => array(
+        'revisit-after' => array(
+          'value' => 15,
+          'period' => 'day',
+        ),
+      ),
+    ),
+    'entity_type' => 'file',
+    'rdf_mapping' => array(),
+    'metadata' => array(),
+    'alt' => '',
+    'title' => '',
+    'uuid_features_packaged_file_path' => 'assets/I126675',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'Dummy image 1',
@@ -259,7 +393,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467702349,
           'entity_uuid' => 'b9fdd119-46b3-4e2f-ade5-4a0e4eb0fdb0',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -690,6 +824,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'path' => array(
       'pathauto' => 1,
@@ -704,7 +839,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'width' => 683,
     'pathauto_perform_alias' => FALSE,
     'uuid_features_packaged_file_path' => 'assets/dummy-683x1024-map.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => '350x1500.png',
@@ -728,7 +863,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467637275,
           'entity_uuid' => 'c3eccd87-b1f2-40db-9661-c29d7ae0ea56',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -740,6 +875,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 1500,
@@ -750,7 +886,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 1500,
     'width' => 350,
     'uuid_features_packaged_file_path' => 'assets/350x1500.png',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'dummy-200x200-reddots.jpg',
@@ -774,7 +910,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467621992,
           'entity_uuid' => 'd494bfed-5661-467b-a311-4e14d93e41d8',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -786,6 +922,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 200,
@@ -796,7 +933,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 200,
     'width' => 200,
     'uuid_features_packaged_file_path' => 'assets/dummy-200x200-reddots.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'dummy-540x960-circus.jpg',
@@ -820,7 +957,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467621802,
           'entity_uuid' => 'd8b881a6-8f5d-4587-8122-64d689ac7a99',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -832,6 +969,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 960,
@@ -842,7 +980,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 960,
     'width' => 540,
     'uuid_features_packaged_file_path' => 'assets/dummy-540x960-circus.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   $files[] = array(
     'filename' => 'dummy-454x280-utrecht.jpg',
@@ -866,7 +1004,7 @@ function test_content_events_uuid_features_default_file_entities() {
           'translate' => 0,
           'created' => 1467621822,
           'entity_uuid' => 'e995eb2e-f1ba-412c-9de5-c6eb472f4003',
-          'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+          'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
         ),
       ),
     ),
@@ -878,6 +1016,7 @@ function test_content_events_uuid_features_default_file_entities() {
         ),
       ),
     ),
+    'entity_type' => 'file',
     'rdf_mapping' => array(),
     'metadata' => array(
       'height' => 280,
@@ -888,7 +1027,7 @@ function test_content_events_uuid_features_default_file_entities() {
     'height' => 280,
     'width' => 454,
     'uuid_features_packaged_file_path' => 'assets/dummy-454x280-utrecht.jpg',
-    'user_uuid' => '77c75ce2-683f-4b8a-8caa-17af2705ba2c',
+    'user_uuid' => '9c012b8a-7cb0-407b-8711-56c8f079fa51',
   );
   return $files;
 }
