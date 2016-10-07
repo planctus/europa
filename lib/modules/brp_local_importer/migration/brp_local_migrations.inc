@@ -100,12 +100,12 @@ class BRPTermsMigration extends Migration {
     // Translate terms if required.
     if ($this->localize) {
       // Loading function to create translations.
-      module_load_include('inc', 'brp_nal_services', 'brp_nal_services.helpers');
+      module_load_include('inc', 'dt_nal_services', 'dt_nal_services.helpers');
       // Load current term.
       $term = taxonomy_term_load($entity->tid);
       $languages = language_list();
       foreach ($languages as $lang_values) {
-        _brp_nal_services_translate_term($term->name, $row->{$lang_values->language}, $lang_values->language);
+        _dt_nal_services_translate_term($term->name, $row->{$lang_values->language}, $lang_values->language);
       }
     }
   }

@@ -1,8 +1,0 @@
-<?php
-
-/**
- * @file
- * Code for the BRP NAL services.
- */
-
-include_once 'brp_nal_services.helpers.inc';

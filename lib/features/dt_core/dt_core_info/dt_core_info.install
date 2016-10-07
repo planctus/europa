@@ -38,6 +38,9 @@ function dt_core_info_install() {
     'integration_consumer_ui',
     'dt_integration_announcement_consumer',
     'dt_file_import',
+    // NAL service integrations.
+    'dt_nal_services',
+    'dt_nal_countries',
   ];
   module_enable($features);
 
@@ -206,4 +209,11 @@ function dt_core_info_update_7117() {
  */
 function dt_core_info_update_7118() {
   module_enable(['dt_file_import']);
+}
+
+/**
+ * DTTSB-1052: Enable NAL Countries.
+ */
+function dt_core_info_update_7119() {
+  module_enable(['dt_nal_services', 'dt_nal_countries']);
 }
