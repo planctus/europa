@@ -36,7 +36,6 @@ function dt_core_info_install() {
     'nexteuropa_integration',
     'integration_producer_ui',
     'integration_consumer_ui',
-    'dt_integration_announcement_consumer',
   ];
   module_enable($features);
 
@@ -191,11 +190,4 @@ function dt_core_info_update_7116() {
     'integration_consumer_ui',
   ];
   module_enable($modules);
-}
-
-/**
- * DTTSB-851: Enable integration announcement consumer.
- */
-function dt_core_info_update_7117() {
-  module_enable(['dt_integration_announcement_consumer']);
 }
