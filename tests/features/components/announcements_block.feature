@@ -71,26 +71,6 @@ Feature: Announcements block
     Then I should see the link "Announcement on Page"
 
   @information @political
-  Scenario: Editors can toggle the display of the latest announcements block on Priority Policy Areas
-    Given I am logged in as a user with the "administrator" role
-    Given "Priority policy area" content:
-      | title                  | status | field_core_description | field_core_latest_visibility | field_core_type_content          |
-      | PPA with announcements | 1      | Sample description     | Disable                      | A page (default) in this website |
-    Given "Announcement" content:
-      | title               | status | field_core_pri_policy_areas |
-      | Announcement on PPA | 1      | PPA with announcements      |
-    When I go to "admin/content"
-    And I follow "PPA with announcements"
-    Then I should not see an ".field--announcement-block" element
-    Then I should not see the link "Announcement on PPA"
-    When I follow "New draft" in the "tabs" region
-    And I check "Latest visibility"
-    And I fill in "Moderation state" with "published"
-    And I press "Save"
-    Then I should see an ".field--announcement-block h2" element
-    Then I should see the link "Announcement on PPA"
-
-  @information @political
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     Given "Social Networks" terms:

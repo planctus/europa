@@ -291,7 +291,6 @@ function dt_announcement_field_group_info() {
       4 => 'field_core_policies',
       5 => 'field_core_priorities',
       6 => 'field_core_pages',
-      7 => 'field_core_pri_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

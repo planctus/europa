@@ -271,6 +271,10 @@ function dt_announcement_update_7115() {
     if ($instance = field_info_instance('node', $field, 'announcement')) {
       field_delete_instance($instance);
     }
+    // If the field base is still left remove it as well.
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
   }
 
 }
