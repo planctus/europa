@@ -162,6 +162,7 @@ function dt_announcement_field_default_field_bases() {
         'infographic' => 'infographic',
         'legal_document' => 'legal document',
         'document' => 'document',
+        'weekly_meeting' => 'weekly meeting',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,

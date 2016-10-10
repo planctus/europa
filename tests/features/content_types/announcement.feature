@@ -40,3 +40,19 @@ Feature: Announcement content type
     And I should see "Location" in the ".page-content" element
     And I should see "Author" in the ".page-content" element
     And I should see "Reference" in the ".page-content" element
+
+  @information @political
+  Scenario: I should be able to select different announcement types.
+    Given I am logged in as a user with the "administrator" role
+    And I go to "node/add/announcement"
+    Then I should have the following options for "Announcement type":
+      | press release  |
+      | speech         |
+      | news article   |
+      | announcement   |
+      | blog post      |
+      | statement      |
+      | factsheet      |
+      | legal document |
+      | document       |
+      | weekly meeting |
