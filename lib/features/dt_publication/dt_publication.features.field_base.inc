@@ -142,7 +142,7 @@ function dt_publication_field_default_field_bases() {
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'list_integer',
   );
 

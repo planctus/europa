@@ -178,3 +178,27 @@ function dt_publication_update_7109() {
     }
   }
 }
+
+/**
+ * DTTSB-1049: Update translation of collection at Publications.
+ */
+function dt_publication_update_7110() {
+  // Update fields in the publication content type.
+  features_revert_module('dt_publication');
+
+  $tables = [
+    'field_data_field_publication_collection',
+    'field_revision_field_publication_collection',
+  ];
+  foreach ($tables as $table) {
+    // Delete non English translations, and keep the 'und'.
+    db_delete($table)
+      ->condition('language', 'en', '!=')
+      ->execute();
+    // Update all English value to LANGUAGE_NONE.
+    db_update($table)
+      ->fields(['language' => LANGUAGE_NONE])
+      ->condition('language', 'en', '=')
+      ->execute();
+  }
+}
