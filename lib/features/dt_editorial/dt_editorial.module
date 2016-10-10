@@ -636,7 +636,7 @@ function dt_editorial_url_outbound_alter(&$path, &$options, $original_path) {
     if (!isset($page_node)) {
       $page_node = menu_get_object();
       $needle = '/draft';
-      $page_node_viewing_draft = (substr(current_path(), -strlen($needle)) === $needle);
+      $page_node_viewing_draft = (drupal_substr(current_path(), -strlen($needle)) === $needle);
     }
     if (!empty($page_node) && isset($page_node->nid)
       && $page_node->nid !== $options['entity']->nid

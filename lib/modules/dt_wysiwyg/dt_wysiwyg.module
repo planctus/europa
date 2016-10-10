@@ -46,7 +46,6 @@ function dt_wysiwyg_wysiwyg_include_directory($type) {
 /**
  * Implements hook_INCLUDE_plugin().
  */
-// @codingStandardsIgnoreLine
 function dt_wysiwyg_dt_headings_plugin() {
   $plugins['dt_headings'] = [
     'title' => t('Headings, detailed'),

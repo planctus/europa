@@ -474,9 +474,6 @@ function dt_announcement_ds_layout_settings_info() {
         16 => 'field_core_subject',
         17 => 'field_core_links',
       ),
-      'right' => array(
-        9 => 'field_announcement_contact',
-      ),
       'right_header' => array(
         10 => 'field_announcement_type',
       ),
@@ -491,7 +488,6 @@ function dt_announcement_ds_layout_settings_info() {
       'field_announcement_media' => 'left',
       'field_announcement_image' => 'left',
       'field_announcemnt_img_prominence' => 'left',
-      'field_announcement_contact' => 'right',
       'field_announcement_type' => 'right_header',
       'field_core_location' => 'central',
       'field_core_topics' => 'central',

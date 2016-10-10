@@ -4,28 +4,21 @@ Feature: Draft viewer role
   As a registered user
   I need to have a draft viewer role to see drafts in the system
 
-  Background:
-    Given users:
-    # They're all administrators to make it easy for the test to go around the site.
-      | name              | mail                   | status | roles         | field_creator              |
-      | harinro_test      | harinro@mail.mail      | 1      | administrator | eu.europa.ec/DIGIT.A.3.003 |
-      | asselva_test      | asselva@mail.mail      | 1      | administrator | eu.europa.ec/COMM.A.5.002  |
-      | site_manager_test | site_manager@mail.mail | 1      | administrator |                            |
-
-
   Scenario Outline: Users part of of DG COMM A5 unit should receive the role automatically
-    Given I am logged in as "<user>"
+    Given users:
+      | name   | mail   | status   | roles   | field_creator   |
+      | <user> | <mail> | <status> | <roles> | <field_creator> |
+    And I am logged in as "<user>"
+    And I am logged in as a user with the "administer users,administer permissions" permission
     And I go to "admin/people"
-    And I follow "<user>"
-    And I click "Edit" in the "tabs" region
+    And I click "edit" in the "<user>" row
     Then the checkbox "Draft viewer" <is_expected> be checked
 
     Examples:
-      | user              | is_expected |
-      | harinro_test      | should not  |
-      | asselva_test      | should      |
-      | site_manager_test | should not  |
-
+      | user              | is_expected | mail                   | status | roles         | field_creator              |
+      | harinro_test      | should not  | harinro@mail.mail      | 1      | administrator | eu.europa.ec/DIGIT.A.3.003 |
+      | asselva_test      | should      | asselva@mail.mail      | 1      | administrator | eu.europa.ec/COMM.A.5.002  |
+      | site_manager_test | should not  | site_manager@mail.mail | 1      | administrator |                            |
 
   Scenario: The user should see the option "View draft" when a node has a draft version.
     Given users:
