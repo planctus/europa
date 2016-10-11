@@ -16,7 +16,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * List of languages.
    *
-   * @var array $languageList
+   * @var array
    *   List of available languages.
    */
   private $languageList;
@@ -96,7 +96,7 @@ class DigitalTransformationContext extends RawDrupalContext {
 
     // Redirect the user to the new language page.
     $this->visitPath($this->currentNode()
-        ->getNodePath() . '_' . $language_code);
+      ->getNodePath() . '_' . $language_code);
   }
 
   /**
@@ -645,8 +645,8 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function theInputWithNameShouldHaveTheValue($input_name, $expected_value) {
     $element = $this->getSession()
-                    ->getPage()
-                    ->find('css', 'input[name="' . $input_name . '"]');
+      ->getPage()
+      ->find('css', 'input[name="' . $input_name . '"]');
 
     if (!is_object($element) || $expected_value !== $element->getAttribute('value')) {
       throw new ExpectationException(sprintf('The ' . $input_name . ' input does not contain %s', $expected_value), $this->getSession());

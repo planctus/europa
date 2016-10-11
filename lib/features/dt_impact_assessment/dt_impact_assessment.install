@@ -50,8 +50,8 @@ function dt_impact_assessment_update_7101($sandbox) {
   $query = new EntityFieldQuery();
   // Mount query.
   $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', $source_bundle)
-        ->fieldCondition('field_policy_input_type', 'value', 'impact_assessment', '=');
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition('field_policy_input_type', 'value', 'impact_assessment', '=');
   // Setup the amount of steps.
   $limit = 100;
 
