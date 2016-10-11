@@ -20,10 +20,10 @@ function cwt_core_install() {
   variable_set('cce_basic_config_admin_pages', []);
 
   $weight = db_select('system', 's')
-              ->fields('s', ['weight'])
-              ->condition('name', 'cce_basic_config', '=')
-              ->execute()
-              ->fetchField();
+    ->fields('s', ['weight'])
+    ->condition('name', 'cce_basic_config', '=')
+    ->execute()
+    ->fetchField();
   db_update('system')
     ->fields(['weight' => $weight + 1])
     ->condition('name', 'cwt_core', '=')
@@ -142,10 +142,10 @@ function cwt_core_update_7107() {
  */
 function cwt_core_update_7108() {
   $weight = db_select('system', 's')
-              ->fields('s', ['weight'])
-              ->condition('name', 'cce_basic_config', '=')
-              ->execute()
-              ->fetchField();
+    ->fields('s', ['weight'])
+    ->condition('name', 'cce_basic_config', '=')
+    ->execute()
+    ->fetchField();
   db_update('system')
     ->fields(['weight' => $weight + 1])
     ->condition('name', 'cwt_core', '=')

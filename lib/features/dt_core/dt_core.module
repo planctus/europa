@@ -1056,7 +1056,7 @@ function _dt_core_menu_item($menu, $link, $plid, $title, $module, $weight, $lang
  * @param string $menu
  *   Name of the menu.
  *
- * @return bool/int
+ * @return boolint
  *   False or menu id.
  */
 function _dt_core_menu_item_name_get($name, $menu) {

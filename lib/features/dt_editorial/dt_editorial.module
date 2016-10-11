@@ -176,7 +176,7 @@ function _dt_editorial_user_is_member($user, $roles = []) {
  * @param string $role_name
  *   Search query string.
  *
- * @return mixed $result
+ * @return mixed
  *   The list of OG roles with all db fields.
  */
 function _dt_editorial_get_og_roles($role_name = NULL) {
@@ -195,7 +195,7 @@ function _dt_editorial_get_og_roles($role_name = NULL) {
  * @param null|object $account
  *   The user account object, current global user will be used if not specified.
  *
- * @return array $result
+ * @return array
  *   List of groups' information about the given user account.
  */
 function _dt_editorial_get_user_og_roles($account = NULL) {

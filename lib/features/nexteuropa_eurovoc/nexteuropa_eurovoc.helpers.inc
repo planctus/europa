@@ -219,7 +219,7 @@ function _nexteuropa_eurovoc_translate_terms() {
 /**
  * Translates a term name in a given language.
  *
- * @param {Mixed} obj|string $term
+ * @param object|string $term
  *   The term name to translate.
  * @param string $term_translation
  *   The translation to input in the localisation db set.

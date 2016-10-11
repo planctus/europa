@@ -100,10 +100,6 @@ projects[form_builder][version] = "1.0"
 projects[options_element][subdir] = "contrib"
 projects[options_element][version] = "1.7"
 
-projects[wysiwyg_abbr][subdir] = "contrib"
-projects[wysiwyg_abbr][version] = "1.0"
-projects[wysiwyg_abbr][patch][] = "https://www.drupal.org/files/issues/2362309-2-wysiwyg_abbr_ckeditor_module.patch"
-
 ; End custom_formatters specific.
 
 ; =========

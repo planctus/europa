@@ -1,0 +1,6 @@
+name = WYSIWYG Abbreviation
+description = A plugin to easily manage abbreviations in CKEditor
+core = 7.x
+package = wysiwyg
+php = 5.5
+multisite_version = 2.2
