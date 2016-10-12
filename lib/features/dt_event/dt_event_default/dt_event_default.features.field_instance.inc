@@ -43,7 +43,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 55,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -246,7 +246,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 63,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -325,7 +325,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 67,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -337,7 +337,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 59,
       ),
       'full' => array(
         'label' => 'above',
@@ -429,7 +429,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 83,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -513,7 +513,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 75,
+        'weight' => 88,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -607,7 +607,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 69,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -619,7 +619,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 64,
       ),
       'full' => array(
         'label' => 'above',
@@ -810,7 +810,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 80,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -822,7 +822,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 60,
       ),
       'full' => array(
         'label' => 'above',
@@ -1008,7 +1008,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 73,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1020,7 +1020,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 69,
       ),
       'full' => array(
         'label' => 'inline',
@@ -1106,7 +1106,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 65,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1190,7 +1190,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 56,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1299,7 +1299,7 @@ function dt_event_default_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 48,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1373,7 +1373,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 63,
       ),
       'full' => array(
         'label' => 'above',
@@ -1463,7 +1463,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 47,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1549,7 +1549,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 59,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1653,7 +1653,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 71,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1665,7 +1665,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 67,
       ),
       'full' => array(
         'label' => 'above',
@@ -1730,7 +1730,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 66,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1742,7 +1742,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 58,
       ),
       'full' => array(
         'label' => 'above',
@@ -1806,7 +1806,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 57,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1816,15 +1816,9 @@ function dt_event_default_field_default_field_instances() {
       ),
       'event_past' => array(
         'label' => 'inline',
-        'module' => 'dt_date_format',
-        'settings' => array(
-          'fallback' => 'sd_j sd_F sd_Y, sd_H:sd_i - ed_j ed_F sd_Y, ed_H:ed_i (sd_T)',
-          'render_box' => 0,
-          'same_date_format' => 'sd_j sd_F sd_Y',
-          'same_day_format' => 'sd_j sd_F sd_Y, sd_H:sd_i - ed_H:ed_i (sd_T)',
-        ),
-        'type' => 'date_event_date',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'full' => array(
         'label' => 'inline',
@@ -1899,7 +1893,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 61,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -1911,7 +1905,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 54,
       ),
       'full' => array(
         'label' => 'inline',
@@ -2004,7 +1998,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 79,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2016,7 +2010,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 72,
       ),
       'full' => array(
         'label' => 'above',
@@ -2077,7 +2071,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 82,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2089,7 +2083,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 71,
+        'weight' => 73,
       ),
       'full' => array(
         'label' => 'above',
@@ -2150,7 +2144,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 72,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2162,7 +2156,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 68,
       ),
       'full' => array(
         'label' => 'above',
@@ -2225,7 +2219,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 71,
+        'weight' => 84,
       ),
       'event_livestream' => array(
         'label' => 'hidden',
@@ -2237,7 +2231,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 72,
+        'weight' => 74,
       ),
       'full' => array(
         'label' => 'above',
@@ -2321,7 +2315,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 72,
+        'weight' => 85,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2333,7 +2327,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 73,
+        'weight' => 75,
       ),
       'full' => array(
         'label' => 'above',
@@ -2412,7 +2406,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 58,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2519,7 +2513,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 76,
+        'weight' => 89,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2613,7 +2607,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 73,
+        'weight' => 86,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2625,7 +2619,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 75,
+        'weight' => 77,
       ),
       'full' => array(
         'label' => 'above',
@@ -2720,7 +2714,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 60,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2732,7 +2726,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 53,
       ),
       'full' => array(
         'label' => 'inline',
@@ -2801,7 +2795,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 64,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2880,7 +2874,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 75,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2892,7 +2886,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 70,
       ),
       'full' => array(
         'label' => 'above',
@@ -2975,7 +2969,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 78,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -2987,7 +2981,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 71,
       ),
       'full' => array(
         'label' => 'above',
@@ -3061,7 +3055,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 52,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3073,7 +3067,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 52,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -3143,7 +3137,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 74,
+        'weight' => 87,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3155,7 +3149,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 74,
+        'weight' => 76,
       ),
       'full' => array(
         'label' => 'above',
@@ -3247,7 +3241,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 70,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3259,7 +3253,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 66,
       ),
       'full' => array(
         'label' => 'above',
@@ -3318,7 +3312,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 68,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3330,7 +3324,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 62,
       ),
       'full' => array(
         'label' => 'above',
@@ -3420,7 +3414,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 62,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3522,7 +3516,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 34,
       ),
       'event_livestream' => array(
         'label' => 'hidden',
@@ -3596,7 +3590,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 65,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3687,7 +3681,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 81,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3793,7 +3787,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 76,
       ),
       'event_livestream' => array(
         'label' => 'hidden',
@@ -3805,7 +3799,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 57,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -3872,7 +3866,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 77,
       ),
       'event_livestream' => array(
         'label' => 'hidden',
@@ -3884,7 +3878,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 61,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -3962,7 +3956,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 74,
       ),
       'event_livestream' => array(
         'label' => 'above',
@@ -3974,7 +3968,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 56,
       ),
       'full' => array(
         'label' => 'above',

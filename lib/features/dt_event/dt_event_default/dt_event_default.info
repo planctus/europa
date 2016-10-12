@@ -7,7 +7,6 @@ dependencies[] = dt_date_format
 dependencies[] = dt_event
 dependencies[] = dt_gallery
 dependencies[] = field_group
-dependencies[] = text
 php = 5.5
 features[conditional_fields][] = node:event
 features[ctools][] = ds:ds:1

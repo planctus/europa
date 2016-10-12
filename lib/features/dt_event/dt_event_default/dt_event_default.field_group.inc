@@ -272,7 +272,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'What others are saying',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'dt_event_scribble_embed',
     ),
@@ -330,7 +330,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -542,7 +542,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_core_files',
     ),
@@ -643,7 +643,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Agenda',
-    'weight' => '49',
+    'weight' => '51',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -729,7 +729,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_core_persons',
     ),
@@ -898,7 +898,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images and videos',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_core_gallery',
     ),
@@ -1123,12 +1123,12 @@ function dt_event_default_field_group_info() {
     'children' => array(
       0 => 'field_core_departments',
       1 => 'field_event_available_languages',
-      2 => 'field_event_date',
-      3 => 'field_event_parent_events',
-      4 => 'field_event_target_audience',
-      5 => 'field_event_website',
-      6 => 'hr_2',
-      7 => 'dt_event_address_oneline',
+      2 => 'field_event_parent_events',
+      3 => 'field_event_target_audience',
+      4 => 'field_event_website',
+      5 => 'hr_2',
+      6 => 'dt_event_address_oneline',
+      7 => 'dt_event_date_and_time',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1324,7 +1324,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'group_row',
     ),
@@ -1384,7 +1384,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related events',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'event_related_events',
     ),
@@ -1481,7 +1481,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related links',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_core_links',
     ),
