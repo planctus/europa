@@ -295,7 +295,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
     'field_data_field_core_date_published.field_core_date_published_value' => 'field_data_field_core_date_published.field_core_date_published_value',
   );
-  /* Filter criterion: Content: Related commissioners (field_core_persons) */
+  /* Filter criterion: Content: Related commissioners (field_core_persons:target_id) */
   $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
   $handler->display->display_options['filters']['field_core_persons_target_id']['table'] = 'field_data_field_core_persons';
   $handler->display->display_options['filters']['field_core_persons_target_id']['field'] = 'field_core_persons_target_id';
@@ -386,26 +386,6 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['operator'] = 'field_core_priorities_target_id_op';
   $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['identifier'] = 'priorities';
   $handler->display->display_options['filters']['field_core_priorities_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    6 => 0,
-    4 => 0,
-    5 => 0,
-    7 => 0,
-    9 => 0,
-  );
-  /* Filter criterion: Content: Priority policy areas (field_core_pri_policy_areas) */
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['id'] = 'field_core_pri_policy_areas_target_id';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['table'] = 'field_data_field_core_pri_policy_areas';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['field'] = 'field_core_pri_policy_areas_target_id';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['operator_id'] = 'field_core_pri_policy_areas_target_id_op';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['label'] = 'Priority policy areas';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['operator'] = 'field_core_pri_policy_areas_target_id_op';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['identifier'] = 'pri_policy_areas';
-  $handler->display->display_options['filters']['field_core_pri_policy_areas_target_id']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,

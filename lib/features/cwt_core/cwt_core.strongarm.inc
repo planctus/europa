@@ -928,7 +928,7 @@ function cwt_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nexteuropa_europa_search_url';
-  $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do?&queryText=business&query_source=BETA&summary=summary&swlang=en';
+  $strongarm->value = 'http://ec.europa.eu/geninfo/query/index.do?';
   $export['nexteuropa_europa_search_url'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -18,7 +18,7 @@
       <div class="asset" id="<?php echo filter_xss($item_key); ?>">
         <?php foreach ($item as $field_key => $field): ?>
           <?php
-            $key = substr($field_key, 1);
+            $key = drupal_substr($field_key, 1);
             $key = base64_decode(str_pad(strtr($key, '-_', '+/'), strlen($key) % 4, '=', STR_PAD_RIGHT));
           ?>
         <div class="atom" id="<?php echo filter_xss($field_key); ?>" label="<?php echo filter_xss($field['#label']); ?>" context="[<?php echo filter_xss($key); ?>]"><?php echo filter_xss($field['#text']); ?></div>

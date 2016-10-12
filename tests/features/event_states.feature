@@ -17,7 +17,7 @@ Feature: Checking different state of events
       | field_event_date:value2   | 1893456000      |
       | field_event_date:timezone | Europe/Budapest |
       | status                    | 1               |
-    Then I should <is_message> the css selector ".field--dt-event-status-message-1"
+    Then I should <is_message> an ".field--dt-event-status-message-1" element
     Then I should <is_message> "<message>"
     Examples:
       | title                              | event_status         | is_message | message                         |

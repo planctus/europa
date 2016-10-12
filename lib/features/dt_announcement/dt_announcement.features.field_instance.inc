@@ -64,7 +64,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -128,63 +128,6 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_announcement_contact'.
-  $field_instances['node-announcement-field_announcement_contact'] = array(
-    'bundle' => 'announcement',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 9,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
-      'meta' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_announcement_contact',
-    'label' => 'Contact press officer',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'apply_chosen' => '',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-announcement-field_announcement_department'.
   $field_instances['node-announcement-field_announcement_department'] = array(
     'bundle' => 'announcement',
@@ -202,10 +145,16 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 28,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 3,
       ),
       'meta' => array(
         'label' => 'above',
@@ -237,7 +186,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -274,7 +223,7 @@ function dt_announcement_field_default_field_instances() {
           'picture_mapping' => 'header_image',
         ),
         'type' => 'picture',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -364,7 +313,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'meta' => array(
         'label' => 'above',
@@ -446,10 +395,10 @@ function dt_announcement_field_default_field_instances() {
         'settings' => array(
           'title_class' => '',
           'title_link' => '',
-          'title_style' => '',
+          'title_style' => '_none',
         ),
         'type' => 'title_linked',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -530,7 +479,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',
@@ -655,10 +604,20 @@ function dt_announcement_field_default_field_instances() {
         'weight' => 23,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 9,
       ),
       'meta' => array(
         'label' => 'above',
@@ -696,7 +655,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 31,
     ),
   );
 
@@ -732,7 +691,7 @@ function dt_announcement_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -815,7 +774,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'contextual_date' => '',
-          'expander_has_expander' => FALSE,
+          'expander_has_expander' => 0,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
@@ -859,7 +818,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 30,
     ),
   );
 
@@ -881,7 +840,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1059,7 +1018,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1132,7 +1091,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1180,7 +1139,7 @@ function dt_announcement_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 22,
     ),
   );
 
@@ -1204,7 +1163,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1236,7 +1195,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 24,
+      'weight' => 34,
     ),
   );
 
@@ -1298,7 +1257,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 29,
     ),
   );
 
@@ -1323,7 +1282,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1361,15 +1320,14 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 17,
+      'weight' => 27,
     ),
   );
 
-  // Exported field_instance: 'node-announcement-field_core_pri_policy_areas'.
-  $field_instances['node-announcement-field_core_pri_policy_areas'] = array(
+  // Exported field_instance: 'node-announcement-field_core_press_contacts'.
+  $field_instances['node-announcement-field_core_press_contacts'] = array(
     'bundle' => 'announcement',
     'default_value' => NULL,
-    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1380,38 +1338,43 @@ function dt_announcement_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 21,
+        'weight' => 37,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_core_pri_policy_areas',
-    'label' => 'Priority policy areas',
+    'field_name' => 'field_core_press_contacts',
+    'label' => 'Press contacts',
     'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1419,14 +1382,12 @@ function dt_announcement_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
-        'apply_chosen' => '',
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 23,
+      'weight' => 11,
     ),
   );
 
@@ -1450,7 +1411,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 26,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1484,7 +1445,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 22,
+      'weight' => 32,
     ),
   );
 
@@ -1510,7 +1471,7 @@ function dt_announcement_field_default_field_instances() {
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'contextual_date' => '',
-          'expander_has_expander' => FALSE,
+          'expander_has_expander' => 0,
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
@@ -1553,7 +1514,7 @@ function dt_announcement_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 28,
     ),
   );
 
@@ -1579,7 +1540,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1633,7 +1594,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1679,6 +1640,94 @@ function dt_announcement_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-announcement-field_publication_referenceno'.
+  $field_instances['node-announcement-field_publication_referenceno'] = array(
+    'bundle' => 'announcement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => 0,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 4,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_publication_referenceno',
+    'label' => 'Identifier of the publication',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => -7,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-announcement-group_content_access'.
   $field_instances['node-announcement-group_content_access'] = array(
     'bundle' => 'announcement',
@@ -1701,7 +1750,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1753,7 +1802,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1824,7 +1873,7 @@ function dt_announcement_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1872,7 +1921,6 @@ function dt_announcement_field_default_field_instances() {
   t('Background information');
   t('Body');
   t('Comment');
-  t('Contact press officer');
   t('Contains background information on the subject that can not be automatically pulled onto the page by linking to associated subjects, departments, policies,...');
   t('Departments');
   t('Description');
@@ -1881,11 +1929,13 @@ function dt_announcement_field_default_field_instances() {
   t('First published on');
   t('Group content visibility');
   t('Groups audience');
+  t('Identifier of the publication');
   t('Introduction');
   t('Legacy link');
   t('Location');
   t('Persons');
   t('Policies');
+  t('Press contacts');
   t('Priorities');
   t('Priority policy areas');
   t('Related pages');

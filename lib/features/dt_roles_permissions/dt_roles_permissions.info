@@ -29,6 +29,7 @@ features[user_role][] = site manager
 features[user_role][] = tester
 features[user_role][] = translator
 features[user_role][] = web transformer
+features[user_role][] = draft viewer
 features_exclude[dependencies][cce_basic_config] = cce_basic_config
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][features] = features

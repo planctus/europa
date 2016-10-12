@@ -52,8 +52,8 @@ function dt_consultation_update_7101($sandbox) {
   $query = new EntityFieldQuery();
   // Mount query.
   $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', $source_bundle)
-        ->fieldCondition('field_policy_input_type', 'value', 'consultation', '=');
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition('field_policy_input_type', 'value', 'consultation', '=');
   // Setup the amount of steps.
   $limit = 100;
 

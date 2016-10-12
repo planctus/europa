@@ -6,6 +6,59 @@
  */
 
 /**
+ * Implements hook_ckeditor_plugin().
+ */
+function dt_wysiwyg_ckeditor_plugin() {
+  return [
+    'dt_headings' => [
+      'name' => 'dt_headings',
+      'desc' => t('Headings, detailed'),
+      'path' => drupal_get_path('module', 'dt_wysiwyg') . '/plugins/dt_headings',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function dt_wysiwyg_wysiwyg_plugin($editor, $version) {
+  if ($editor == 'ckeditor') {
+    return [
+      'dt_headings' => [
+        'path' => drupal_get_path('module', 'dt_wysiwyg') . '/plugins/dt_headings',
+        'load' => TRUE,
+        'buttons' => ['dt_headings' => t('Headings, detailed')],
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_wysiwyg_include_directory().
+ */
+function dt_wysiwyg_wysiwyg_include_directory($type) {
+  switch ($type) {
+    case 'plugins':
+      return $type;
+  }
+}
+
+/**
+ * Implements hook_INCLUDE_plugin().
+ */
+function dt_wysiwyg_dt_headings_plugin() {
+  $plugins['dt_headings'] = [
+    'title' => t('Headings, detailed'),
+    'vendor url' => 'http://drupal.org/project/wysiwyg',
+    'icon file' => 'dt_headings.png',
+    'icon title' => t('Headings, detailed'),
+    'settings' => [],
+  ];
+
+  return $plugins;
+}
+
+/**
  * Implements hook_wysiwyg_editor_settings_alter().
  */
 function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
@@ -39,11 +92,11 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
     if (!empty($settings['toolbar'])) {
       $new_toolbar = [];
       // These are our desired groupings.
-      $new_toolbar[] = ['Format'];
+      $new_toolbar[] = ['Format', 'dt_headings'];
       $new_toolbar[] = ['Bold'];
       $new_toolbar[] = ['Link', 'NextEuropaToken', 'Unlink', 'Anchor'];
       $new_toolbar[] = ['BulletedList', 'NumberedList', 'Outdent', 'Indent'];
-      $new_toolbar[] = ['media', 'Blockquote', 'Table'];
+      $new_toolbar[] = ['media', 'Blockquote', 'Abbr', 'Table'];
       $new_toolbar[] = ['RemoveFormat'];
       $new_toolbar[] = ['Undo', 'Maximize'];
       $new_toolbar[] = [

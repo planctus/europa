@@ -22,6 +22,7 @@ projects[breakpoints][version] = "1.3"
 
 projects[cer][subdir] = "contrib"
 projects[cer][version] = "3.0-alpha7"
+projects[cer][patch][] = "https://www.drupal.org/files/issues/cer-2373761-entity_api_exception-6.patch"
 
 ; Required by cer module.
 projects[table_element][subdir] = "contrib"
@@ -99,8 +100,6 @@ projects[form_builder][version] = "1.0"
 projects[options_element][subdir] = "contrib"
 projects[options_element][version] = "1.7"
 
-libraries[editarea][download][type] = "get"
-libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
 ; End custom_formatters specific.
 
 ; =========
@@ -109,3 +108,14 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 
 libraries[marked][download][type] = "get"
 libraries[marked][download][url] = "https://raw.githubusercontent.com/chjj/marked/master/marked.min.js"
+
+libraries[editarea][download][type] = "get"
+libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/editarea/EditArea/EditArea%200.8.2/editarea_0_8_2.zip?r=&ts=1334742944&use_mirror=internode"
+
+libraries[areyousure][download][type] = "get"
+libraries[areyousure][download][url] = "https://raw.githubusercontent.com/codedance/jquery.AreYouSure/098b3d3a35a0bd09fd3bbab514dd7d2f4159e680/jquery.are-you-sure.js"
+
+; ======
+; Themes
+; ======
+includes[] = "../lib/themes/europa/europa.make"

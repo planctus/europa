@@ -963,3 +963,13 @@ function dt_core_update_7172() {
   $vocabulary = taxonomy_vocabulary_machine_name_load('main_taxonomy');
   taxonomy_vocabulary_delete($vocabulary->vid);
 }
+
+/**
+ * Enabling wysiwyg_abbr for Abbr button.
+ */
+function dt_core_update_7173() {
+  module_enable(['wysiwyg_abbr']);
+
+  // Applying a default set of buttons to the Full HTML profile.
+  _dt_apply_wysiwyg_buttons();
+}

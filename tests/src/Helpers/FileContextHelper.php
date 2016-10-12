@@ -9,11 +9,15 @@ class FileContextHelper {
 
   /**
    * Whether the files were copied to the test files directory.
+   *
+   * @var bool
    */
   protected $generatedTestFiles = FALSE;
 
   /**
    * List of files generated.
+   *
+   * @var array
    */
   protected $generatedTestFilesList = [];
 

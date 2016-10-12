@@ -11,7 +11,7 @@
 function dt_roles_permissions_install() {
   $t = get_t();
   drupal_set_message($t('DT roles and permissions feature is installed on your site.'));
-  module_enable(array('dt_roles_permissions_import'));
+  module_enable(['dt_roles_permissions_import']);
 }
 
 /**
@@ -25,7 +25,7 @@ function dt_roles_permissions_uninstall() {
  * Revert feature.
  */
 function dt_roles_permissions_update_7101() {
-  features_revert_module(array('dt_roles_permissions'));
+  features_revert_module(['dt_roles_permissions']);
 }
 
 /**
@@ -34,14 +34,14 @@ function dt_roles_permissions_update_7101() {
  * Revert feature.
  */
 function dt_roles_permissions_update_7102() {
-  features_revert_module(array('dt_roles_permissions'));
+  features_revert_module(['dt_roles_permissions']);
 }
 
 /**
  * NEXTEUROPA-6289: Enable the importer module.
  */
 function dt_roles_permissions_update_7103() {
-  module_enable(array('dt_roles_permissions_import'));
+  module_enable(['dt_roles_permissions_import']);
 }
 
 /**
@@ -77,4 +77,16 @@ function dt_roles_permissions_update_7105() {
   features_revert_module(['dt_roles_permissions']);
   // Import web transformer role.
   _dt_roles_permissions_import_import('web transformer');
+}
+
+/**
+ * DTTSB-1018: Reverting for permissions, and import new role Draft viewer.
+ *
+ * DTTSB-1017: Import new permission for role Draft viewer. (7107)
+ */
+function dt_roles_permissions_update_7106() {
+  // Reverting for getting Draft viewer role.
+  features_revert_module(['dt_roles_permissions']);
+  // Import Draft viewer role.
+  _dt_roles_permissions_import_import('Draft viewer');
 }
