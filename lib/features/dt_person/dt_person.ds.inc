@@ -106,7 +106,7 @@ function dt_person_ds_field_settings_info() {
       ),
     ),
     'social_bookmark_webtools' => array(
-      'weight' => '9',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -160,6 +160,13 @@ function dt_person_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_departments' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
     'field_core_file' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -193,13 +200,6 @@ function dt_person_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
           'meta_modifier' => 'meta__item--type',
-        ),
-      ),
-    ),
-    'field_core_departments' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Departments',
         ),
       ),
     ),
@@ -322,39 +322,49 @@ function dt_person_ds_layout_settings_info() {
     'regions' => array(
       'left_header' => array(
         0 => 'group_meta',
-        1 => 'full_name_nolink',
-        2 => 'field_person_tagline',
-        11 => 'field_person_role',
-        12 => 'field_person_role_title',
-      ),
-      'biography_image' => array(
-        3 => 'field_person_photo',
-      ),
-      'biography_column' => array(
-        4 => 'group_context_nav',
-        5 => 'field_core_departments',
-      ),
-      'top' => array(
-        6 => 'field_core_contact',
-      ),
-      'left' => array(
-        7 => 'in_page_navigation',
+        3 => 'full_name_nolink',
+        6 => 'field_person_tagline',
+        19 => 'field_person_role',
+        20 => 'field_person_role_title',
       ),
       'central' => array(
-        8 => 'group_biography',
-        9 => 'group_agenda',
-        10 => 'social_bookmark_webtools',
-        13 => 'field_person_agenda_introduction',
-        14 => 'field_core_links',
-        15 => 'body',
-        16 => 'field_core_next_steps',
-        17 => 'field_core_file',
+        1 => 'field_person_agenda_introduction',
+        2 => 'field_core_next_steps',
+        4 => 'body',
+        5 => 'field_core_links',
+        7 => 'field_core_file',
+        8 => 'field_core_publications',
+        9 => 'field_core_files',
+        15 => 'group_biography',
+        16 => 'group_agenda',
+        17 => 'group_articles_presentation',
+        18 => 'social_bookmark_webtools',
+      ),
+      'biography_image' => array(
+        10 => 'field_person_photo',
+      ),
+      'biography_column' => array(
+        11 => 'group_context_nav',
+        12 => 'field_core_departments',
+      ),
+      'top' => array(
+        13 => 'field_core_contact',
+      ),
+      'left' => array(
+        14 => 'in_page_navigation',
       ),
     ),
     'fields' => array(
       'group_meta' => 'left_header',
+      'field_person_agenda_introduction' => 'central',
+      'field_core_next_steps' => 'central',
       'full_name_nolink' => 'left_header',
+      'body' => 'central',
+      'field_core_links' => 'central',
       'field_person_tagline' => 'left_header',
+      'field_core_file' => 'central',
+      'field_core_publications' => 'central',
+      'field_core_files' => 'central',
       'field_person_photo' => 'biography_image',
       'group_context_nav' => 'biography_column',
       'field_core_departments' => 'biography_column',
@@ -362,14 +372,10 @@ function dt_person_ds_layout_settings_info() {
       'in_page_navigation' => 'left',
       'group_biography' => 'central',
       'group_agenda' => 'central',
+      'group_articles_presentation' => 'central',
       'social_bookmark_webtools' => 'central',
       'field_person_role' => 'left_header',
       'field_person_role_title' => 'left_header',
-      'field_person_agenda_introduction' => 'central',
-      'field_core_links' => 'central',
-      'body' => 'central',
-      'field_core_next_steps' => 'central',
-      'field_core_file' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(

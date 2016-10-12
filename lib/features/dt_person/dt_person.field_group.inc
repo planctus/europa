@@ -45,6 +45,37 @@ function dt_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_articles_presentation|node|person|full';
+  $field_group->group_name = 'group_articles_presentation';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Articles and presentations',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_core_publications',
+      1 => 'field_core_files',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Articles and presentations',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-articles-presentation field-group-html-element',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="article-presentation"',
+      ),
+    ),
+  );
+  $field_groups['group_articles_presentation|node|person|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_biography|node|person|full';
   $field_group->group_name = 'group_biography';
   $field_group->entity_type = 'node';
@@ -111,7 +142,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '70',
+    'weight' => '72',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -169,7 +200,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Agenda',
-    'weight' => '69',
+    'weight' => '70',
     'children' => array(
       0 => 'field_core_links',
       1 => 'field_person_agenda_introduction',
@@ -200,8 +231,8 @@ function dt_person_field_group_info() {
     'weight' => '68',
     'children' => array(
       0 => 'body',
-      1 => 'field_core_file',
-      2 => 'field_core_next_steps',
+      1 => 'field_core_next_steps',
+      2 => 'field_core_file',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -226,7 +257,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '67',
+    'weight' => '66',
     'children' => array(
       0 => 'field_core_contact',
     ),
@@ -257,11 +288,12 @@ function dt_person_field_group_info() {
     'children' => array(
       0 => 'group_editorial_settings',
       1 => 'group_person_agenda',
-      2 => 'group_person_biography_cv',
-      3 => 'group_person_contact',
-      4 => 'group_person_profile',
-      5 => 'group_person_technical',
-      6 => 'group_taxonomy',
+      2 => 'group_person_documents',
+      3 => 'group_person_biography_cv',
+      4 => 'group_person_contact',
+      5 => 'group_person_profile',
+      6 => 'group_person_technical',
+      7 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -272,6 +304,34 @@ function dt_person_field_group_info() {
     ),
   );
   $field_groups['group_person_content|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_documents|node|person|form';
+  $field_group->group_name = 'group_person_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_content';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '69',
+    'children' => array(
+      0 => 'field_core_publications',
+      1 => 'field_core_files',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-person-documents field-group-tab',
+        'required_fields' => 0,
+      ),
+    ),
+  );
+  $field_groups['group_person_documents|node|person|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -396,7 +456,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Profile',
-    'weight' => '65',
+    'weight' => '64',
     'children' => array(
       0 => 'field_person_first_name',
       1 => 'field_person_gender',
@@ -432,7 +492,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Technical fields',
-    'weight' => '66',
+    'weight' => '65',
     'children' => array(
       0 => 'title_field',
     ),
@@ -459,7 +519,7 @@ function dt_person_field_group_info() {
   $field_group->parent_name = 'group_person_content';
   $field_group->data = array(
     'label' => 'Taxonomy',
-    'weight' => '68',
+    'weight' => '71',
     'children' => array(
       0 => 'field_eurovoc_taxonomy',
     ),
@@ -478,11 +538,13 @@ function dt_person_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Agenda');
+  t('Articles and presentations');
   t('Biography');
   t('Biography and CV');
   t('Contact');
   t('Content');
   t('Context navigation');
+  t('Documents');
   t('Editorial settings');
   t('Meta');
   t('Name');

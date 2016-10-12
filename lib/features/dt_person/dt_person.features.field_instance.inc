@@ -35,7 +35,7 @@ function dt_person_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 40,
+        'weight' => 1,
       ),
       'meta' => array(
         'label' => 'above',
@@ -264,7 +264,7 @@ function dt_person_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 42,
+        'weight' => 2,
       ),
       'meta' => array(
         'label' => 'above',
@@ -323,6 +323,86 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_core_files'.
+  $field_instances['node-person-field_core_files'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => 1,
+          'use_content_language' => TRUE,
+          'view_mode' => 'file',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 3,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_files',
+    'label' => 'Files',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_core_legacy_link'.
   $field_instances['node-person-field_core_legacy_link'] = array(
     'bundle' => 'person',
@@ -346,7 +426,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 36,
       ),
       'meta' => array(
         'label' => 'above',
@@ -426,7 +506,7 @@ function dt_person_field_default_field_instances() {
           'nexteuropa_title_listing_modifier' => '',
         ),
         'type' => 'link_listing_title',
-        'weight' => 37,
+        'weight' => 1,
       ),
       'meta' => array(
         'label' => 'above',
@@ -507,7 +587,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -562,7 +642,7 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'dt_policy_next_step',
         'settings' => array(
           'date_formatter' => '',
@@ -571,18 +651,6 @@ function dt_person_field_default_field_instances() {
           'timeline_expander_disable' => 0,
         ),
         'type' => 'dt_policy_next_step_formatter_default',
-        'weight' => 41,
-      ),
-      'event_speaker' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
         'weight' => 0,
       ),
       'meta' => array(
@@ -623,6 +691,100 @@ function dt_person_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-person-field_core_publications'.
+  $field_instances['node-person-field_core_publications'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select documents that belong to the content of this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 31,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => TRUE,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 2,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 48,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_publications',
+    'label' => 'Publication',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 33,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_eurovoc_taxonomy'.
   $field_instances['node-person-field_eurovoc_taxonomy'] = array(
     'bundle' => 'person',
@@ -645,7 +807,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 40,
       ),
       'meta' => array(
         'label' => 'above',
@@ -711,22 +873,20 @@ function dt_person_field_default_field_instances() {
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 36,
-      ),
-      'event_speaker' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
       'meta' => array(
@@ -816,7 +976,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -901,7 +1061,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 39,
       ),
       'meta' => array(
         'label' => 'above',
@@ -957,7 +1117,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1102,7 +1262,7 @@ function dt_person_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 0,
+      'default_image' => 22321,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'myfiles',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1411,7 +1571,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 38,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1473,7 +1633,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1542,7 +1702,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 37,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1619,7 +1779,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1836,6 +1996,7 @@ function dt_person_field_default_field_instances() {
   t('Department');
   t('Depends on team membership. E.g \'president\'; \'vice-president\'; \'commissioner\'');
   t('Feminine version');
+  t('Files');
   t('First Name');
   t('Gender');
   t('Group content visibility');
@@ -1849,8 +2010,10 @@ function dt_person_field_default_field_instances() {
   t('Please use an absolute URL! For example: http://example.com or https://example.com<br/>In case this page is a placeholder and should lead to a legacy page, use this field to define the legacy page\'s URL.');
   t('Plural form');
   t('Portrait photo');
+  t('Publication');
   t('Role');
   t('Role/Title');
+  t('Select documents that belong to the content of this page.');
   t('Tagline');
   t('Taxonomy');
   t('The full CV in PDF format.');
