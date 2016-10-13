@@ -980,7 +980,18 @@ function dt_core_update_7173() {
 function dt_core_update_7174(&$sandbox) {
   // Reverting core.
   features_revert_module('dt_core');
-
   // Update field.
   _dt_core_enable_entity_translation('field_core_quick_nav_links', $sandbox);
+}
+
+/**
+ * Enabling redirect module and update perm.
+ *
+ * @see https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1078
+ */
+function dt_core_update_7175() {
+  module_enable(['redirect']);
+  // Update permissions so that site managers and editors
+  // can access redirect settings for each node.
+  features_revert_module('dt_roles_permissions');
 }

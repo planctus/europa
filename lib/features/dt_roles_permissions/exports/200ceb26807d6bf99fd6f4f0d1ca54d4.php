@@ -93,6 +93,7 @@ $permissions['administrator'] = [
   'administer print',
   'administer quicktabs',
   'administer realname',
+  'administer redirects',
   'administer rules',
   'administer scheduler',
   'administer search',

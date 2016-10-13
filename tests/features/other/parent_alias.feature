@@ -60,10 +60,6 @@ Feature: Aliases based on parent node's URL alias
     Then I should see "Third page title" in the "h1" element
     When I go to "first-page-title/third-page-title/fourth-page-title"
     Then I should see "Fourth page title" in the "h1" element
-    When I go to "first-page-title/second-page-title/third-page-title"
-    Then I should see "Page not found" in the "h1" element
-    When I go to "first-page-title/second-page-title/third-page-title/fourth-page-title"
-    Then I should see "Page not found" in the "h1" element
 
     # New page with children
     When I go to "node/add/basic-page_en"

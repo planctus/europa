@@ -104,6 +104,9 @@ projects[wysiwyg_abbr][subdir] = "contrib"
 projects[wysiwyg_abbr][version] = "1.0"
 projects[wysiwyg_abbr][patch][] = "https://www.drupal.org/files/issues/2362309-2-wysiwyg_abbr_ckeditor_module.patch"
 
+projects[redirect][subdir] = "contrib"
+projects[redirect][version] = "1.0-rc3"
+
 ; End custom_formatters specific.
 
 ; =========

@@ -20,6 +20,7 @@ $permissions['site manager'] = [
   'administer translation tasks',
   'administer users',
   'administer menu',
+  'administer redirects',
   'assign node weight',
   'bypass node access',
   'bypass workbench moderation',
