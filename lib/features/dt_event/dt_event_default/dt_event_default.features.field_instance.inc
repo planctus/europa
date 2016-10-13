@@ -1938,6 +1938,7 @@ function dt_event_default_field_default_field_instances() {
           'basic_html' => 0,
           'filtered_html' => 'filtered_html',
           'full_html' => 0,
+          'full_html_track' => 0,
           'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 0,
@@ -1953,6 +1954,9 @@ function dt_event_default_field_default_field_instances() {
             'full_html' => array(
               'weight' => -10,
             ),
+            'full_html_track' => array(
+              'weight' => -10,
+            ),
             'plain_text' => array(
               'weight' => -8,
             ),
@@ -1960,7 +1964,7 @@ function dt_event_default_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
