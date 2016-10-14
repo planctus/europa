@@ -198,12 +198,14 @@ function dt_core_field_default_field_bases() {
             'status' => 0,
           ),
         ),
+        'limit_bundles_to_host' => 1,
         'sort' => array(
           'type' => 'none',
         ),
         'target_bundles' => array(
           'basic_page' => 'basic_page',
           'class' => 'class',
+          'law' => 'law',
           'policy' => 'policy',
           'policy_area' => 'policy_area',
           'priority' => 'priority',
@@ -748,12 +750,14 @@ function dt_core_field_default_field_bases() {
             'status' => 0,
           ),
         ),
+        'limit_bundles_to_host' => 1,
         'sort' => array(
           'type' => 'none',
         ),
         'target_bundles' => array(
           'basic_page' => 'basic_page',
           'class' => 'class',
+          'law' => 'law',
           'policy' => 'policy',
           'policy_area' => 'policy_area',
           'priority' => 'priority',

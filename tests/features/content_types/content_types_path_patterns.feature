@@ -14,6 +14,7 @@ Feature: I want to be see each content type in their defined URL path pattern
       | Announcement         | Announcement test title         | announcement-test-title         | announcements/     |
       | Department           | Department test title           | department-test-title           | departments/       |
       | Information homepage | Information Homepage test title | information-homepage-test-title |                    |
+      | Law                  | Law test title                  | law-test-title                  | law/               |
       | Page                 | Page test title                 | page-test-title                 |                    |
       | Policy               | Policy test title               | policy-test-title               | policies/          |
       | Policy area          | Policy area test title          | policy-area-test-title          | strategy/          |

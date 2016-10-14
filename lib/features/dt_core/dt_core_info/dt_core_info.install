@@ -41,6 +41,7 @@ function dt_core_info_install() {
     // NAL service integrations.
     'dt_nal_services',
     'dt_nal_countries',
+    'dt_law_default',
   ];
   module_enable($features);
 
