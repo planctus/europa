@@ -323,14 +323,15 @@
 
     <!-- Symlink the test content. -->
     <target name="link-test-content">
-        <symlink target="${project.basedir}/resources/test_content/dt_test_content" link="${platform.build.subsite.modules.dir}/dt_test_content" />
+        <symlink target="${project.basedir}/resources/test_content/dt_test_content"
+                 link="${platform.build.subsite.modules.dir}/dt_test_content"/>
     </target>
 
     <!-- Set private files -->
     <target name="set-private-files">
-        <mkdir dir="${platform.build.files.dir}/private_files" />
+        <mkdir dir="${platform.build.files.dir}/private_files"/>
         <chmod mode="0755" failonerror="false" verbose="false" quiet="true">
-            <fileset dir="${platform.build.files.dir}/private_files" />
+            <fileset dir="${platform.build.files.dir}/private_files"/>
         </chmod>
         <exec command="${drush.bin} --root=${platform.build.dir} vset file_temporary_path '${platform.build.files.dir}/private_files'"/>
     </target>
@@ -347,13 +348,25 @@
         <if>
             <available file="${snapshot}" type="file"/>
             <then>
+
+                <trycatch property="error">
+                    <try>
+                        <pdosqlexec url="mysql:host=${drupal.db.host}" userid="${drupal.db.user}" password="${drupal.db.password}">
+                            CREATE DATABASE ${drupal.db.name};
+                        </pdosqlexec>
+                    </try>
+                    <catch>
+                        <echo message="${error}"/>
+                    </catch>
+                </trycatch>
+
                 <exec command="${drush.bin} --root=${platform.build.dir} -y sql-drop"/>
                 <echo msg="Local database deleted"/>
                 <exec command="cat ${snapshot} | ${drush.bin} --root=${platform.build.dir} -y sqlc"/>
                 <echo msg="Local database restored from snapshot"/>
             </then>
             <else>
-                <echo msg="There is no available snapshot to restore." />
+                <echo msg="There is no available snapshot to restore."/>
             </else>
         </if>
     </target>
