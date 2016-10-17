@@ -118,3 +118,15 @@ Feature: File content type
     And I reload the page
     Then I should see the link "Downloaden"
     Then I get the file "test_nl.pdf" after clicking "Download"
+
+  Scenario: I can add external links to a file
+    Given "File" content:
+      | title      | status | field_core_legacy_link  |
+      | File title | 1      | Link - http://google.be |
+    And I am viewing a "Page":
+      | title            | Page external file |
+      | status           | 1                  |
+      | field_core_files | File title         |
+    Then I should see "File title" in the ".file" element
+    Then I should see "English" in the ".file" element
+    Then I should see the link "Download" linking to "http://google.be"
