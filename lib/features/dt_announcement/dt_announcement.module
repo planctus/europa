@@ -137,7 +137,7 @@ function dt_announcement_views_pre_render(&$view) {
             '[abbreviation]',
           ],
           'replacement' => [
-            $view->build_info['substitutions']['%1'],
+            strip_tags(filter_xss(decode_entities($view->build_info['substitutions']['%1']))),
             strpos($variable_read_more_text, '[abbreviation]') ? _dt_announcement_get_abbreviation($nid) : '',
           ],
         ];

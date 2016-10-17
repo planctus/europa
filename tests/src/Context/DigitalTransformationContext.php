@@ -703,4 +703,13 @@ class DigitalTransformationContext extends RawDrupalContext {
     $this->getSession()->wait(5000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
   }
 
+  /**
+   * Sets a variable to a value.
+   *
+   * @Given I set the variable :variable to :value
+   */
+  public function iSetTheVariableTo($variable, $value) {
+    variable_set($variable, $value);
+  }
+
 }

@@ -6,12 +6,6 @@ Feature: Legacy links
   As an anonymous user
   I should be able to see legacy link content that is not full view mode
 
-  Background:
-    Given I am logged in as a user with the "administrator" role
-    When I go to "admin/appearance/settings_en"
-    And I check the box "Would you like to show the latest block when it is available?"
-    And I press "Save configuration"
-
   @information @political
   Scenario: Show external legacy link on announcement teaser
     Given "Page" content:
@@ -20,6 +14,7 @@ Feature: Legacy links
     Given "Announcement" content:
       | title                      | language | status | field_core_type_content              | field_core_legacy_link         | field_core_pages | field_announcement_type | field_announcement_location |
       | Announcement title on page | en       | 1      | Teaser linking to external resources | title - http://example.en/test | Content title    | press release           | Brussels                    |
+    And I set the variable "dt_shared_functions_dt_latest_visibility" to "1"
     And I am logged in as a user with the "administrator" role
     And I go to "admin/content"
     And I follow "Content title"
@@ -45,13 +40,14 @@ Feature: Legacy links
   @information @political
   Scenario: As an anonymous user I should see the referenced legacy link teaser
     Given I am not logged in
-    Given I am viewing a "Page" content:
+    And I set the variable "dt_shared_functions_dt_latest_visibility" to "1"
+    And I am viewing a "Page" content:
       | title                        | Content title       |
       | language                     | en                  |
       | field_core_description       | Content description |
       | status                       | 1                   |
       | field_core_latest_visibility | Enable              |
-    Given "Announcement" content:
+    And "Announcement" content:
       | title                      | language | status | field_core_type_content              | field_core_legacy_link         | field_core_pages | field_announcement_type | field_announcement_location |
       | Announcement title on page | en       | 1      | Teaser linking to external resources | title - http://example.en/test | Content title    | press release           | Brussels                    |
     When I reload the page
