@@ -22,10 +22,12 @@ function nexteuropa_file_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'field_core_file',
+        1 => 'field_core_legacy_link',
       ),
     ),
     'fields' => array(
       'field_core_file' => 'ds_content',
+      'field_core_legacy_link' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
