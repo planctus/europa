@@ -53,6 +53,40 @@ function dt_core_install() {
 }
 
 /**
+ * Implements hook_requirements().
+ */
+function dt_core_requirements($phase) {
+  $requirements = [];
+  $t = get_t();
+
+  switch ($phase) {
+    case 'runtime':
+      $hitme = libraries_load('hitme');
+      if (!$hitme['installed']) {
+        $requirements['hitme_js'] = [
+          'title' => $t('HitMe JavaScript file'),
+          'severity' => REQUIREMENT_ERROR,
+          'description' => $t('You need to download the !hitme and extract the entire contents of the archive into the %path directory on your server.', [
+            '!hitme' => l($t('HitMe JavaScript file'), 'https://github.com/roelvangils/jquery-hitMe/'),
+            '%path' => 'sites/all/libraries',
+          ]),
+          'value' => $t('Not Installed'),
+        ];
+      }
+      else {
+        $requirements['hitme_js'] = [
+          'title' => $t('HitMe JavaScript file'),
+          'severity' => REQUIREMENT_OK,
+          'value' => $t('Installed'),
+        ];
+      }
+      break;
+  }
+
+  return $requirements;
+}
+
+/**
  * Implements hook_uninstall().
  */
 function dt_core_uninstall() {

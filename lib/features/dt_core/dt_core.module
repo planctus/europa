@@ -6,7 +6,7 @@
  */
 
 // Our global views tag.
-define("DT_CORE_VIEWS_TAG", "digital_transformation");
+define('DT_CORE_VIEWS_TAG', 'digital_transformation');
 
 include_once 'dt_core.ds_fields.inc';
 include_once 'dt_core.features.inc';
@@ -28,6 +28,30 @@ class DTCoreDestinationFieldError extends Exception {
  * Fields are of same tye Exception.
  */
 class DTCoreFieldTypeAreNotSame extends Exception {
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function dt_core_libraries_info() {
+  $libraries['hitme'] = [
+    'name' => 'hitMe',
+    'vendor url' => 'https://github.com/roelvangils/jquery-hitMe',
+    'download url' => 'https://raw.githubusercontent.com/roelvangils/jquery-hitMe/master/dist/jquery.hitMe-min.js',
+    'version callback' => '_dt_core_no_version_callback',
+    'files' => [
+      'js' => ['jquery.hitMe-min.js'],
+    ],
+  ];
+
+  return $libraries;
+}
+
+/**
+ * Helper function to bypass version check.
+ */
+function _dt_core_no_version_callback() {
+  return TRUE;
 }
 
 /**

@@ -56,7 +56,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -194,7 +194,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 52,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -276,7 +276,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 71,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -349,7 +349,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -463,7 +463,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 70,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -538,7 +538,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 78,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -631,7 +631,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 47,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -732,7 +732,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -834,7 +834,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 65,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -938,7 +938,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 53,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1032,7 +1032,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 56,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1121,7 +1121,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1234,7 +1234,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 55,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1312,7 +1312,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1385,7 +1385,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 46,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1499,7 +1499,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 51,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1575,7 +1575,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 62,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1677,7 +1677,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 49,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1754,7 +1754,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1918,7 +1918,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 66,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2026,7 +2026,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 63,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2099,7 +2099,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 69,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2172,7 +2172,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 54,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2247,7 +2247,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 72,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2343,7 +2343,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 74,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2442,7 +2442,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 60,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2544,7 +2544,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 80,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2635,7 +2635,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 76,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2748,7 +2748,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 64,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2829,7 +2829,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 73,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2902,7 +2902,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 57,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2997,7 +2997,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 61,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3089,7 +3089,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 50,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3165,7 +3165,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 77,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3269,7 +3269,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 48,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3340,7 +3340,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3444,7 +3444,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 68,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3620,7 +3620,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 75,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3710,7 +3710,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 67,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3815,7 +3815,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 58,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3894,7 +3894,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 59,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3984,7 +3984,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 79,
       ),
       'teaser' => array(
         'label' => 'hidden',

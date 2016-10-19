@@ -465,10 +465,20 @@ function dt_event_default_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'link' => '0',
+        'link' => '1',
         'wrapper' => 'h3',
         'class' => 'listing__title',
         'ft' => array(),
+      ),
+    ),
+    'book_your_seat' => array(
+      'weight' => '69',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
     'dt_event_header' => array(
@@ -477,7 +487,9 @@ function dt_event_default_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'teaser_version' => 1,
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
       ),
     ),
     'dt_event_status_label' => array(
@@ -488,11 +500,6 @@ function dt_event_default_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_reset',
         ),
-      ),
-    ),
-    'field_event_date' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_event_type' => array(
@@ -684,8 +691,6 @@ function dt_event_default_ds_layout_settings_info() {
       'past_events' => 'top_bottom_left',
       'current_and_upcoming_events' => 'top_bottom_left',
       'about_heading' => 'central',
-      'past_events' => 'top_bottom_left',
-      'current_and_upcoming_events' => 'top_bottom_left',
       'field_core_tagline' => 'left_header',
       'body' => 'central',
       'field_core_media' => 'top_middle_left',
@@ -1040,7 +1045,7 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'event';
   $ds_layout->view_mode = 'meta';
-  $ds_layout->layout = 'ne_1col';
+  $ds_layout->layout = 'ne_1col_hitme';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
@@ -1052,6 +1057,7 @@ function dt_event_default_ds_layout_settings_info() {
         5 => 'group_meta_wrapper',
         6 => 'title',
         7 => 'dt_event_header',
+        8 => 'book_your_seat',
       ),
     ),
     'fields' => array(
@@ -1063,6 +1069,7 @@ function dt_event_default_ds_layout_settings_info() {
       'group_meta_wrapper' => 'main',
       'title' => 'main',
       'dt_event_header' => 'main',
+      'book_your_seat' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

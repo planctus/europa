@@ -16,7 +16,6 @@ function dt_event_ds_fields_info($entity_type) {
   $fields = [];
 
   if ($entity_type == 'node') {
-
     $fields[$entity_type]['book_your_seat'] = [
       'title' => t('Event: Book your seat button'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -205,11 +204,14 @@ function _dt_event_ds_fields_scribble_embed($field) {
     $markup = [
       '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
     ];
+
     if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
       $markup['#prefix'] = '<p>' . t("What's happening in different social media channels") . '</p>';
     }
+
     return drupal_render($markup);
   }
+
   return NULL;
 }
 
@@ -230,9 +232,11 @@ function _dt_event_ds_fields_stream_embed($field) {
       $markup = [
         '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
       ];
+
       return drupal_render($markup);
     }
   }
+
   return NULL;
 }
 
@@ -274,9 +278,11 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
         '#markup' => '<div class="col-md-6">' . drupal_render($date) . '</div><div class="col-md-6 text-right"><p>' . l(t('Event details'), 'node/' . $entity->getIdentifier()) . '</p></div>',
         '#suffix' => '</div>',
       ];
+
       return drupal_render($markup);
     }
   }
+
   return NULL;
 }
 
@@ -305,6 +311,7 @@ function _dt_event_ds_fields_status_message($field) {
   if (!isset($field['entity']->event_status)) {
     return NULL;
   }
+
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
       $render_config['#message_title'] = t('This event has started.');
@@ -373,6 +380,7 @@ function _dt_event_ds_fields_status_label($field) {
   if (isset($label)) {
     return '<span class="label label--upper label--meta-medium label--status">' . $label . '</span>';
   }
+
   return NULL;
 }
 
@@ -408,6 +416,7 @@ function _dt_event_ds_fields_address_oneline($field) {
     if (isset($field['formatter_settings']['show_link']) && $field['formatter_settings']['show_link']) {
       return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
     }
+
     return $address;
   }
 }
@@ -442,6 +451,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
   $emw = entity_metadata_wrapper('node', $field['entity']);
 
   // List of states, in which one could register for an event.
+  // List of states, in which one could register for an event.
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
@@ -457,6 +467,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
     if (
       $emw->field_event_registration_end->value() > time()
       && $emw->field_event_registration->value()
+      && $field['view_mode'] !== 'meta'
     ) {
       $registration = $emw->field_event_registration->value();
       // Our button text will default if not filled in.
@@ -464,12 +475,12 @@ function _dt_event_ds_fields_book_your_seat($field) {
       $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
     }
     // Special case if ongoing and live stream is available.
-    if (
+    elseif (
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
       $emw->field_event_live_streaming_link->value()
     ) {
-      $button_text = t('Watch live');
       $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
+      $button_text = t('Watch live streaming');
     }
 
     if (isset($button_text) && isset($button_link)) {
@@ -479,12 +490,15 @@ function _dt_event_ds_fields_book_your_seat($field) {
           'class' => [
             'btn',
             'btn-ctn',
-            'pull-left',
             'btn--no-margin-bottom',
           ],
         ],
         'html' => TRUE,
       ];
+
+      if ($field['view_mode'] === 'meta') {
+        $attributes['attributes']['class'][] = 'listing__btn';
+      }
 
       // Return the link.
       return l($button_text, $button_link, $attributes);
@@ -685,7 +699,6 @@ function _dt_event_ds_fields_header_event($field) {
 
     // Cancelled, it shows the date with a modifier.
     $modifier = $field['entity']->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
-
     // Add the date markup.
     $formatted_date = _dt_event_date_display($field, $entity, TRUE);
     $markup .= '<div class="' . $modifier . 'page-header__date icon icon--calendar">' . $formatted_date . '</div>';
@@ -719,17 +732,20 @@ function _dt_event_ds_fields_header_event($field) {
   ];
 
   if ($is_streaming && (!in_array($field['entity']->event_status, $unavailable_states))) {
+    $is_streaming_modifier_class = ' listing__status-container--inline';
     $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
   }
 
   // Start building the render array.
-  $output = [
-    '#markup' => $markup,
-  ];
+  $output = ['#markup' => $markup];
 
   // Depending on the date placement we add our prefix and suffix.
   if (!$teaser_mode) {
     $output['#prefix'] = '<div class="page-header__eventinfo">';
+    $output['#suffix'] = '</div>';
+  }
+  else {
+    $output['#prefix'] = '<div class="listing__status-container' . (isset($is_streaming_modifier_class) ? $is_streaming_modifier_class : '') . '">';
     $output['#suffix'] = '</div>';
   }
 
@@ -754,9 +770,7 @@ function _dt_event_ds_fields_date_and_time($field) {
     // Add the date markup.
     $markup = ($field['entity']->event_status == DT_EVENT_STATE_CANCELLED) ? '<del>' . $formatted_date . '</del>' : $formatted_date;
     // Start building the render array.
-    $output = [
-      '#markup' => $markup,
-    ];
+    $output = ['#markup' => $markup];
   };
 
   return drupal_render($output);

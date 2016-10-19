@@ -122,6 +122,9 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 libraries[areyousure][download][type] = "get"
 libraries[areyousure][download][url] = "https://raw.githubusercontent.com/codedance/jquery.AreYouSure/098b3d3a35a0bd09fd3bbab514dd7d2f4159e680/jquery.are-you-sure.js"
 
+libraries[hitme][download][type] = "get"
+libraries[hitme][download][url] = "https://raw.githubusercontent.com/roelvangils/jquery-hitMe/master/dist/jquery.hitMe-min.js"
+
 ; ======
 ; Themes
 ; ======

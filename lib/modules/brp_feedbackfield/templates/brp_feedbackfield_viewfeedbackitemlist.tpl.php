@@ -6,7 +6,7 @@
  */
 ?>
 <?php if ($link): ?>
-  <div class="listing__item listing__item--fullwidth">
+  <div class="listing__item">
     <a href="<?php print $link; ?>" class="listing__item-link">
       <div class="meta">
         <span class="meta__item"><?php print $created_date; ?></span>

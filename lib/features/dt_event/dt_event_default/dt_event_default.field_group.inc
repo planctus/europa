@@ -90,8 +90,9 @@ function dt_event_default_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'title',
-      1 => 'dt_event_header',
-      2 => 'group_meta_wrapper',
+      1 => 'book_your_seat',
+      2 => 'dt_event_header',
+      3 => 'group_meta_wrapper',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
