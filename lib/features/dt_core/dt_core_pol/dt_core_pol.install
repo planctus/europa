@@ -15,6 +15,7 @@ function dt_core_pol_install() {
     'dt_page_extended',
     // Roles and permissions.
     'dt_roles_permissions',
+    'dt_list_view_content',
   ];
   module_enable($dt_modules);
 
@@ -194,4 +195,11 @@ function dt_core_pol_update_7110() {
     $menu_link['module'] = 'menu';
     menu_link_save($menu_link);
   }
+}
+
+/**
+ * Enable dt_list_view_content.
+ */
+function dt_core_pol_update_7111() {
+  module_enable(['dt_list_view_content']);
 }

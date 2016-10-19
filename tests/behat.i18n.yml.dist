@@ -47,5 +47,6 @@ default:
         secondary_language_selector: '.lang-selector-page'
         pager: '.pager'
         speakers: '#speakers'
+        sidebar: '.region-sidebar-first'
   formatters:
     ${behat.formatter.name}: ~

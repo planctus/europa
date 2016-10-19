@@ -27,6 +27,12 @@ function dt_announcement_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dt_list_view_content-views_related_links' => array(
+          'delta' => 'views_related_links',
+          'module' => 'dt_list_view_content',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
         'views--exp-announcements-page_1' => array(
           'module' => 'views',
           'delta' => '-exp-announcements-page_1',
