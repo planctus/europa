@@ -63,7 +63,7 @@ function dt_call_for_proposal_default_update_7001() {
 }
 
 /**
- * DTTSB-1065 - Call for proposals update.
+ * DTTSB-1065/1066 - Call for proposals update.
  */
 function dt_call_for_proposal_default_update_7002() {
   $fields = [
@@ -79,6 +79,8 @@ function dt_call_for_proposal_default_update_7002() {
 
   $groups = [
     'group_cfp_closing_date',
+    'group_cfp_departments',
+    'group_cfp_topics',
   ];
 
   foreach ($groups as $group_name) {

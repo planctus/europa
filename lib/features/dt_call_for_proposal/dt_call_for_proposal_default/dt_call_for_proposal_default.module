@@ -6,3 +6,4 @@
  */
 
 include_once 'dt_call_for_proposal_default.features.inc';
+module_load_include('inc', 'dt_call_for_proposal_default', 'dt_call_for_proposal_default.ds_fields');
