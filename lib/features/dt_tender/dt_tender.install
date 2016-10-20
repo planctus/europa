@@ -19,3 +19,20 @@ function dt_tender_install() {
 function dt_tender_uninstall() {
   drupal_set_message(t('NextEuropa tender feature is uninstalled on your site.'));
 }
+
+/**
+ * Removing unnecessary fields.
+ */
+function dt_tender_update_7001() {
+  // Remove the field.
+  $fields_to_remove = [
+    'field_tender_deadline',
+    'field_tender_contract_notice',
+  ];
+
+  foreach ($fields_to_remove as $field_name) {
+    if (field_info_field($field_name) !== NULL) {
+      field_delete_field($field_name);
+    }
+  }
+}

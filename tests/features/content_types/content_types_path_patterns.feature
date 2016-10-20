@@ -19,7 +19,7 @@ Feature: I want to be see each content type in their defined URL path pattern
       | Policy               | Policy test title               | policy-test-title               | policies/          |
       | Policy area          | Policy area test title          | policy-area-test-title          | strategy/          |
       | Temporary class      | Class test title                | class-test-title                |                    |
-      | Tender               | Tender test title               | tender-test-title               | tender/            |
+      | Call for tenders     | Tender test title               | tender-test-title               | tender/            |
       | Topic                | Topic test title                | topic-test-title                | topics/            |
 
   @information

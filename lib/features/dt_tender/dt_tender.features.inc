@@ -23,9 +23,9 @@ function dt_tender_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_tender_node_info() {
   $items = array(
     'tender' => array(
-      'name' => t('Tender'),
+      'name' => t('Call for tenders'),
       'base' => 'node_content',
-      'description' => t('Create content of type Tender.'),
+      'description' => t('Create content of type Call for tenders.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

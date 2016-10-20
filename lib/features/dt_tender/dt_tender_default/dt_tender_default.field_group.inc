@@ -55,12 +55,10 @@ function dt_tender_default_field_group_info() {
       1 => 'body',
       2 => 'field_core_departments',
       3 => 'field_core_topics',
-      4 => 'field_tender_contract_notice',
-      5 => 'field_tender_deadline',
-      6 => 'field_tender_status',
-      7 => 'field_core_description',
-      8 => 'field_core_introduction',
-      9 => 'field_core_legacy_link',
+      4 => 'field_tender_status',
+      5 => 'field_core_description',
+      6 => 'field_core_introduction',
+      7 => 'field_core_legacy_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -85,7 +83,7 @@ function dt_tender_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Departments',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_departments',
     ),
@@ -130,6 +128,36 @@ function dt_tender_default_field_group_info() {
     ),
   );
   $field_groups['group_tender_documents|node|tender|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tender_documents|node|tender|full';
+  $field_group->group_name = 'group_tender_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tender';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_core_files',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'classes' => 'group-tender-documents field-group-tab',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="documents"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_tender_documents|node|tender|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -253,7 +281,7 @@ function dt_tender_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Topics',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_core_topics',
     ),
