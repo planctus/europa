@@ -27,6 +27,18 @@ function dt_announcement_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-853486dff58ad0ea58da907af7babd9c' => array(
+          'module' => 'views',
+          'delta' => '853486dff58ad0ea58da907af7babd9c',
+          'region' => 'content_top',
+          'weight' => '-10',
+        ),
+        'views-b719acfefcf2fde5d5b6d51df090a12f' => array(
+          'module' => 'views',
+          'delta' => 'b719acfefcf2fde5d5b6d51df090a12f',
+          'region' => 'content_top',
+          'weight' => '-9',
+        ),
         'dt_list_view_content-views_related_links' => array(
           'delta' => 'views_related_links',
           'module' => 'dt_list_view_content',

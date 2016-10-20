@@ -38,7 +38,7 @@ function dt_announcement_form_views_exposed_form_alter(&$form, &$form_state, $fo
   if ($form['#id'] == 'views-exposed-form-announcements-page-1') {
 
     // List of fields we should disable. These fields are used to filter by
-    // query parameter. As these are filterd by id, they are of no use for the
+    // query parameter. As these are filtered by id, they are of no use for the
     // end user.
     $fields_to_disable = [
       'persons',
@@ -76,6 +76,18 @@ function dt_announcement_views_pre_render(&$view) {
   $view_announcements_blocks = [
     'latest_block',
   ];
+
+  // Scroll to #main-content if there is a query.
+  if ($view->name == 'announcements' && $view->current_display == 'page_1') {
+    $query = drupal_get_query_parameters();
+    if (count($query)) {
+      // If view is page_1 and has query.
+      drupal_add_js(drupal_get_path('theme', 'europa') . '/js/libraries/jquery.scrollTo.min.js');
+      drupal_add_js('(function () { jQuery.scrollTo("#main-content", 0, {axis:"y"}); })(jQuery);',
+        ['type' => 'inline', 'scope' => 'footer']
+      );
+    }
+  }
 
   // Initialize button text as empty to avoid bug reported on NEXTEUROPA-7227.
   $alter_button_text = '';

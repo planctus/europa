@@ -47,6 +47,15 @@ Feature: Announcements block
       | Topic        | field_core_topics     | should        |
       | Priority     | field_core_priorities | should        |
 
+  Scenario: Visitors should see sticky and promoted highlights above announcements list
+    Given "Announcement" content:
+      | title                   | status | sticky | promote |
+      | Sticky Announcement     | 1      | 1      | 0       |
+      | Promoted Announcement 1 | 1      | 0      | 1       |
+    When I go to "announcements_en"
+    Then the ".node-announcement.node-sticky .featured-item" element should contain "Sticky Announcement"
+    Then the ".node-announcement.node-promoted .featured-item" element should contain "Promoted Announcement 1"
+
   @information @political
   Scenario: Editors can toggle the display of the latest announcements block on Pages
     Given I am logged in as a user with the "administrator" role

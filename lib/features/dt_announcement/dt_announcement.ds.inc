@@ -263,6 +263,65 @@ function dt_announcement_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|announcement|highlight';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'announcement';
+  $ds_fieldsetting->view_mode = 'highlight';
+  $ds_fieldsetting->settings = array(
+    'field_announcement_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_announcement_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'p',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_core_date_published' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|announcement|highlight'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|announcement|meta';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'announcement';
@@ -452,55 +511,50 @@ function dt_announcement_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_6_3_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'title',
-        3 => 'field_core_introduction',
-      ),
       'left' => array(
-        1 => 'og_group_ref',
+        0 => 'og_group_ref',
         4 => 'group_content_access',
         5 => 'field_announcement_info',
         6 => 'field_announcement_media',
         7 => 'field_announcement_image',
-        8 => 'field_announcemnt_img_prominence',
+      ),
+      'left_header' => array(
+        1 => 'title',
+        3 => 'field_core_introduction',
       ),
       'central' => array(
         2 => 'body',
-        11 => 'field_core_location',
-        12 => 'field_core_topics',
-        13 => 'field_core_policies',
-        14 => 'field_core_department',
-        15 => 'field_core_announcement',
-        16 => 'field_core_subject',
-        17 => 'field_core_links',
+        9 => 'field_core_topics',
+        10 => 'field_core_policies',
+        11 => 'field_core_department',
+        12 => 'field_core_announcement',
+        13 => 'field_core_links',
       ),
       'right_header' => array(
-        10 => 'field_announcement_type',
+        8 => 'field_announcement_type',
       ),
     ),
     'fields' => array(
-      'title' => 'left_header',
       'og_group_ref' => 'left',
+      'title' => 'left_header',
       'body' => 'central',
       'field_core_introduction' => 'left_header',
       'group_content_access' => 'left',
       'field_announcement_info' => 'left',
       'field_announcement_media' => 'left',
       'field_announcement_image' => 'left',
-      'field_announcemnt_img_prominence' => 'left',
       'field_announcement_type' => 'right_header',
-      'field_core_location' => 'central',
       'field_core_topics' => 'central',
       'field_core_policies' => 'central',
       'field_core_department' => 'central',
       'field_core_announcement' => 'central',
-      'field_core_subject' => 'central',
       'field_core_links' => 'central',
     ),
     'classes' => array(),
     'wrappers' => array(
       'left_header' => 'div',
       'right_header' => 'div',
+      'top' => 'div',
       'left' => 'div',
       'central' => 'div',
       'right' => 'div',
@@ -606,6 +660,48 @@ function dt_announcement_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|announcement|highlight';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'announcement';
+  $ds_layout->view_mode = 'highlight';
+  $ds_layout->layout = 'ne_featured_item';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'featured_image' => array(
+        0 => 'field_announcement_image',
+      ),
+      'meta' => array(
+        1 => 'field_announcement_type',
+        2 => 'field_core_date_published',
+      ),
+      'main' => array(
+        3 => 'title_field',
+        4 => 'field_core_description',
+      ),
+    ),
+    'fields' => array(
+      'field_announcement_image' => 'featured_image',
+      'field_announcement_type' => 'meta',
+      'field_core_date_published' => 'meta',
+      'title_field' => 'main',
+      'field_core_description' => 'main',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'featured_image' => 'div',
+      'meta' => 'div',
+      'main' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => 'content',
+    'layout_link_custom' => '',
+  );
+  $export['node|announcement|highlight'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|announcement|meta';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'announcement';
@@ -681,6 +777,24 @@ function dt_announcement_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|announcement|teaser'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function dt_announcement_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'highlight';
+  $ds_view_mode->label = 'Highlight';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['highlight'] = $ds_view_mode;
 
   return $export;
 }
