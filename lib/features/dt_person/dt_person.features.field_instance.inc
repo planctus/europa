@@ -37,6 +37,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -140,6 +146,22 @@ function dt_person_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 5,
       ),
+      'job' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => 'listing--no-link',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'job',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 2,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -206,6 +228,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'context_nav_item',
         'weight' => 5,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -266,6 +294,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'file_default',
         'weight' => 2,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -319,7 +353,86 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 89,
+      'weight' => 88,
+    ),
+  );
+
+  // Exported field_instance: 'node-person-field_core_jobs'.
+  $field_instances['node-person-field_core_jobs'] = array(
+    'bundle' => 'person',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 23,
+      ),
+      'event_speaker' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'job' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'job',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 3,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'name' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_jobs',
+    'label' => 'Jobs',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
     ),
   );
 
@@ -428,6 +541,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 36,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -508,6 +627,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'link_listing_title',
         'weight' => 1,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -572,9 +697,8 @@ function dt_person_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 22,
       ),
       'event_speaker' => array(
@@ -588,6 +712,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 41,
       ),
       'meta' => array(
         'label' => 'above',
@@ -653,6 +783,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 0,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -687,7 +823,7 @@ function dt_person_field_default_field_instances() {
         ),
       ),
       'type' => 'dt_policy_next_step_widget',
-      'weight' => 88,
+      'weight' => 87,
     ),
   );
 
@@ -809,6 +945,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 40,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -888,6 +1030,12 @@ function dt_person_field_default_field_instances() {
         ),
         'type' => 'smart_trim_format',
         'weight' => 0,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -978,6 +1126,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'meta' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -1063,6 +1217,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 39,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1118,6 +1278,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 34,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1229,6 +1395,25 @@ function dt_person_field_default_field_instances() {
         'type' => 'picture',
         'weight' => 3,
       ),
+      'job' => array(
+        'label' => 'hidden',
+        'module' => 'picture',
+        'settings' => array(
+          'colorbox_settings' => array(
+            'colorbox_caption' => 'auto',
+            'colorbox_caption_custom' => '',
+            'colorbox_gallery' => 'post',
+            'colorbox_gallery_custom' => '',
+            'colorbox_group' => '',
+            'colorbox_multivalue_index' => NULL,
+          ),
+          'fallback_image_style' => '',
+          'image_link' => '',
+          'picture_mapping' => 'person_meta',
+        ),
+        'type' => 'picture',
+        'weight' => 4,
+      ),
       'meta' => array(
         'label' => 'hidden',
         'module' => 'picture',
@@ -1330,6 +1515,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 27,
       ),
+      'job' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'meta' => array(
         'label' => 'hidden',
         'module' => 'i18n_taxonomy',
@@ -1390,6 +1581,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 28,
+      ),
+      'job' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1479,6 +1676,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'job' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1573,6 +1776,12 @@ function dt_person_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 38,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
       'meta' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1634,6 +1843,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 35,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1703,6 +1918,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 37,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1780,6 +2001,12 @@ function dt_person_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2002,6 +2229,7 @@ function dt_person_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('If possible, use the standard text for Commissioners and Directors-General.');
+  t('Jobs');
   t('Last Name');
   t('Leave blank for general cases. Automatically taking values from Role+First name+Last name on first save. Could be changed at any time later.');
   t('Legacy link');

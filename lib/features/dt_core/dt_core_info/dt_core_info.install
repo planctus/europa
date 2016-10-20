@@ -219,3 +219,11 @@ function dt_core_info_update_7118() {
 function dt_core_info_update_7119() {
   module_enable(['dt_nal_services', 'dt_nal_countries']);
 }
+
+/**
+ * DTTSB-1057: Enable the job content type.
+ */
+function dt_core_info_update_7120() {
+  module_enable(['dt_job', 'dt_job_default']);
+  features_revert_module('dt_person');
+}

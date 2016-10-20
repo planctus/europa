@@ -495,6 +495,7 @@ function dt_person_field_group_info() {
     'weight' => '65',
     'children' => array(
       0 => 'title_field',
+      1 => 'field_core_jobs',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

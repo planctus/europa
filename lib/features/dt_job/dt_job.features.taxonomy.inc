@@ -2,23 +2,23 @@
 
 /**
  * @file
- * dt_person.features.taxonomy.inc
+ * dt_job.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function dt_person_taxonomy_default_vocabularies() {
+function dt_job_taxonomy_default_vocabularies() {
   return array(
-    'person_roles' => (object) array(
-      'name' => 'Person roles',
-      'machine_name' => 'person_roles',
-      'description' => 'Describes the roles a person can have in the system.',
-      'hierarchy' => 0,
+    'job_role_types' => (object) array(
+      'name' => 'Job Role types',
+      'machine_name' => 'job_role_types',
+      'description' => '',
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'language' => 'und',
-      'i18n_mode' => 1,
+      'i18n_mode' => 0,
       'entity_type' => 'taxonomy_vocabulary',
       'rdf_mapping' => array(
         'rdftype' => array(

@@ -25,6 +25,12 @@ function dt_contact_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'job' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -67,6 +73,13 @@ function dt_contact_field_default_field_instances() {
         'settings' => array(),
         'type' => 'email_default',
         'weight' => 5,
+      ),
+      'job' => array(
+        'label' => 'inline',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -116,6 +129,12 @@ function dt_contact_field_default_field_instances() {
         ),
         'type' => 'link_button_default',
         'weight' => 7,
+      ),
+      'job' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -264,6 +283,13 @@ function dt_contact_field_default_field_instances() {
         'type' => 'telephone',
         'weight' => 2,
       ),
+      'job' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'telephone',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
@@ -344,6 +370,13 @@ function dt_contact_field_default_field_instances() {
         'type' => 'telephone',
         'weight' => 1,
       ),
+      'job' => array(
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'telephone',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'nexteuropa_formatters',
@@ -420,6 +453,18 @@ function dt_contact_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => 3,
       ),
+      'job' => array(
+        'label' => 'inline',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            'address' => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'addressfield',
@@ -483,6 +528,13 @@ function dt_contact_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'job' => array(
+        'label' => 'inline',
+        'module' => 'dt_social_network_links',
+        'settings' => array(),
+        'type' => 'social_network_link_theme_css',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'module' => 'dt_social_network_links',
@@ -537,6 +589,12 @@ function dt_contact_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 33,
       ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -587,6 +645,12 @@ function dt_contact_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -646,6 +710,12 @@ function dt_contact_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'job' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',

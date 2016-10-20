@@ -91,6 +91,9 @@ projects[entityreference_view_widget][version] = "2.0-rc7"
 projects[views_tree][subdir] = "contrib"
 projects[views_tree][version] = "2.0"
 
+projects[hierarchical_select][subdir] = "contrib"
+projects[hierarchical_select][version] = "3.0-beta7"
+
 ; Required by custom_formatters.
 ; Originally these are done via custom_formatters.make but we switched off
 ; recursion, to avoid duplicate modules.
