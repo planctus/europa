@@ -517,8 +517,8 @@ function dt_event_default_field_group_info() {
       0 => 'body',
       1 => 'field_core_contact',
       2 => 'field_core_links',
-      3 => 'field_core_persons',
-      4 => 'field_event_schedule',
+      3 => 'field_event_schedule',
+      4 => 'field_event_speakers',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -732,7 +732,7 @@ function dt_event_default_field_group_info() {
     'label' => 'Speakers',
     'weight' => '13',
     'children' => array(
-      0 => 'field_core_persons',
+      0 => 'field_event_speakers',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -762,7 +762,7 @@ function dt_event_default_field_group_info() {
     'label' => 'Speakers',
     'weight' => '13',
     'children' => array(
-      0 => 'field_core_persons',
+      0 => 'field_event_speakers',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(

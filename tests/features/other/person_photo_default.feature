@@ -14,10 +14,11 @@ Feature: Event person photo default
 
     # "Event speaker" view mode
     Given "Event" content:
-      | title         | status | field_core_persons | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location             |
+      | title         | status | field_event_speakers | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location             |
       | Speaker event | 1      | Joan Person        | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel |
     And I index all indexes
     Given I am on "events/speaker-event"
+    Then show last response
     Then I see the "img.img-responsive" element with the "src" attribute set to "person_photo_female" in the "speakers" region
 
     # "Meta" view mode
@@ -39,7 +40,7 @@ Feature: Event person photo default
 
     # "Event speaker" view mode
     Given "Event" content:
-      | title         | status | field_core_persons | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location             |
+      | title         | status | field_event_speakers | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location             |
       | Speaker event | 1      | Joe Person         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel |
     And I index all indexes
     Given I am on "events/speaker-event"

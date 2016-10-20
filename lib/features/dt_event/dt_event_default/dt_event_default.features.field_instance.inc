@@ -343,7 +343,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 48,
       ),
       'meta' => array(
         'label' => 'above',
@@ -457,7 +457,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 63,
+        'weight' => 65,
       ),
       'meta' => array(
         'label' => 'above',
@@ -532,7 +532,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 68,
+        'weight' => 70,
       ),
       'meta' => array(
         'label' => 'above',
@@ -625,7 +625,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 51,
       ),
       'meta' => array(
         'label' => 'above',
@@ -828,7 +828,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 60,
+        'weight' => 62,
       ),
       'meta' => array(
         'label' => 'above',
@@ -981,7 +981,7 @@ function dt_event_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -1026,7 +1026,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 53,
+        'weight' => 55,
       ),
       'meta' => array(
         'label' => 'inline',
@@ -1170,101 +1170,6 @@ function dt_event_default_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_core_persons'.
-  $field_instances['node-event-field_core_persons'] = array(
-    'bundle' => 'event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 20,
-      ),
-      'event_collection' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 56,
-      ),
-      'event_livestream' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 51,
-      ),
-      'event_past' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_item_modifier' => '',
-          'nexteuropa_listing_modifier' => 'listing--column-left',
-          'nexteuropa_listing_wrapper_modifier' => 'listing--no-border',
-          'show_translations' => '',
-          'use_content_language' => 1,
-          'view_mode' => 'event_speaker',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 17,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_item_modifier' => '',
-          'nexteuropa_listing_modifier' => 'listing--column-left',
-          'nexteuropa_listing_wrapper_modifier' => 'listing--no-border',
-          'show_translations' => '',
-          'use_content_language' => 1,
-          'view_mode' => 'event_speaker',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 18,
-      ),
-      'meta' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 55,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_persons',
-    'label' => 'Speakers',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 17,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_core_social_network_links'.
   $field_instances['node-event-field_core_social_network_links'] = array(
     'bundle' => 'event',
@@ -1379,7 +1284,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 50,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1671,7 +1576,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 53,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1748,7 +1653,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 47,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1818,13 +1723,13 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 50,
       ),
       'full' => array(
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 70,
+        'weight' => 72,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -2020,7 +1925,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 59,
+        'weight' => 61,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2093,7 +1998,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 62,
+        'weight' => 64,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2166,7 +2071,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 52,
+        'weight' => 54,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2241,7 +2146,7 @@ function dt_event_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 64,
+        'weight' => 66,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2337,7 +2242,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 65,
+        'weight' => 67,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2538,7 +2443,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 69,
+        'weight' => 71,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2629,7 +2534,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 66,
+        'weight' => 68,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2896,7 +2801,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 55,
+        'weight' => 57,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2991,7 +2896,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 58,
+        'weight' => 60,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3159,7 +3064,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 67,
+        'weight' => 69,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3223,6 +3128,95 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     ),
   );
 
+  // Exported field_instance: 'node-event-field_event_speakers'.
+  $field_instances['node-event-field_event_speakers'] = array(
+    'bundle' => 'event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 14,
+      ),
+      'event_collection' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'event_livestream' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'event_past' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'two_columns',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => 'listing--column-left',
+          'nexteuropa_listing_wrapper_modifier' => 'listing--no-border',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'event_speaker',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 39,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'two_columns',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => 'listing--column-left',
+          'nexteuropa_listing_wrapper_modifier' => 'listing--no-border',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'event_speaker',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 37,
+      ),
+      'meta' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_event_speakers',
+    'label' => 'Speakers',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 17,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_event_status'.
   $field_instances['node-event-field_event_status'] = array(
     'bundle' => 'event',
@@ -3263,7 +3257,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 52,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3334,7 +3328,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 49,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3704,7 +3698,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 61,
+        'weight' => 63,
       ),
       'meta' => array(
         'label' => 'above',
@@ -3809,7 +3803,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 56,
+        'weight' => 58,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3888,7 +3882,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 57,
+        'weight' => 59,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -3978,7 +3972,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 54,
+        'weight' => 56,
       ),
       'meta' => array(
         'label' => 'hidden',

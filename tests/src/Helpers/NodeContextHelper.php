@@ -91,16 +91,6 @@ class NodeContextHelper {
   }
 
   /**
-   * Get the node edit path.
-   *
-   * @return string
-   *   The url as string.
-   */
-  public function getEditPath() {
-    return $this->getNodePath() . '/edit';
-  }
-
-  /**
    * Get the add translation path.
    *
    * @param string $target
