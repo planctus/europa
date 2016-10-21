@@ -110,181 +110,11 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear All';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['bef'] = array(
-    'general' => array(
-      'allow_secondary' => 0,
-      'secondary_label' => 'Advanced options',
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
-    ),
-    'field_core_date_updated_value' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'is_secondary' => 0,
-        'any_label' => '',
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
-          ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
-        ),
-        'rewrite' => array(
-          'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-        ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
-      ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
-    ),
-    'field_publication_type_tid_i18n' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
-        'is_secondary' => 0,
-        'any_label' => '',
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-            1 => 'vocabulary',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
-          ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
-        ),
-        'rewrite' => array(
-          'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-        ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
-      ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
-    ),
-    'field_core_nal_countries_tid_i18n' => array(
-      'bef_format' => 'default',
-      'more_options' => array(
-        'bef_select_all_none' => FALSE,
-        'bef_collapsible' => 0,
-        'is_secondary' => 0,
-        'any_label' => '',
-        'bef_filter_description' => '',
-        'tokens' => array(
-          'available' => array(
-            0 => 'global_types',
-            1 => 'vocabulary',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
-          ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
-        ),
-        'rewrite' => array(
-          'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-        ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
-      ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
-    ),
-    'secondary_label' => NULL,
-    'collapsible_label' => NULL,
-    'combine_rewrite' => NULL,
-    'reset_label' => NULL,
-    'bef_filter_description' => NULL,
-    'any_label' => NULL,
-    'filter_rewrite_values' => NULL,
-  );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -293,7 +123,8 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['style_options']['listing_item_modifier'] = '';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'title';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';

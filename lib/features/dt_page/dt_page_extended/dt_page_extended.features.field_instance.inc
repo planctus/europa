@@ -380,7 +380,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 46,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
@@ -473,7 +473,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 38,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -568,6 +568,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'links' => TRUE,
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
@@ -640,7 +641,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 48,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -735,7 +736,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 47,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -841,7 +842,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 45,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -996,7 +997,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 44,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1057,7 +1058,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 43,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1136,7 +1137,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 41,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1379,7 +1380,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 51,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1446,7 +1447,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 36,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1809,7 +1810,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 37,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
@@ -1889,7 +1890,7 @@ This will appear as a timeline on the page.
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 39,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2040,7 +2041,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 40,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2100,7 +2101,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2173,7 +2174,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 50,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2241,7 +2242,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 49,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2321,7 +2322,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 42,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
