@@ -46,6 +46,14 @@ function dt_call_for_proposal_default_ds_fields_info($entity_type) {
       'use_token' => FALSE,
     ];
 
+    $fields[$entity_type]['dt_call_for_proposal_deadline'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['call_for_proposal|teaser'],
+      'title' => t('Dt call for proposal: Deadline (teaser)'),
+      'function' => '_dt_call_for_proposal_ds_fields_deadline',
+      'use_token' => FALSE,
+    ];
+
     return [$entity_type => $fields[$entity_type]];
   }
 }
@@ -97,8 +105,8 @@ function _dt_call_for_proposal_ds_fields_status_message($field) {
       break;
 
     case 'closed':
-      if ($emw->__isset('field_core_date_closing') && $emw->__isset('field_grants_awarded_link')) {
-        $date_closing = $emw->field_core_date_closing->value();
+      if ($emw->__isset('field_core_deadlines') && $emw->__isset('field_grants_awarded_link')) {
+        $date_closing = $emw->field_core_deadlines->value();
         $render_config['#message_body'] = '';
 
         if (!empty($date_closing)) {
@@ -150,6 +158,9 @@ function _dt_call_for_proposal_ds_fields_meta_item($field) {
 /**
  * Helper function to build the "publication date".
  *
+ * It is a field build combining two fields, a date field and a link field.
+ * We basically show them one after the other.
+ *
  * @param array $field
  *   Holds the current context of the field.
  *
@@ -167,6 +178,47 @@ function _dt_call_for_proposal_ds_fields_published($field) {
   }
   else {
     $output = $open_date;
+  }
+
+  return $output;
+}
+
+/**
+ * Helper function to build the "deadline" field display in teaser view mode.
+ *
+ * The logic behind this is that there is a controller field defining three
+ * different deadline "models", in the teaser view mode of cfp only when this
+ * field is set to single_stage then we show the date (the last value in a multi
+ * ple values field), otherwise we show the deadline model.
+ *
+ * @param array $field
+ *   Holds the current context of the field.
+ *
+ * @return string
+ *   The field markup.
+ */
+function _dt_call_for_proposal_ds_fields_deadline($field) {
+  $emw = entity_metadata_wrapper('node', $field['entity']);
+  // Value for the "controller" field.
+  $model = $emw->field_cfp_deadline_model->value();
+  // Values for the date field.
+  $deadlines = $emw->field_core_deadlines->value();
+  $output = '';
+
+  switch ($model) {
+    case 'single_stage':
+      // In case the field contains multiple values we use the last one.
+      $deadlines = is_array($deadlines) ? end($deadlines) : $deadlines;
+      $deadline = format_date($deadlines, 'ec_date_j_f_y');
+      // We show the date in this case.
+      $output = $deadline;
+      break;
+
+    case 'two_stage':
+    case 'multiple_stage':
+      // We show the "value" of the deadline model field in those cases.
+      $output = $emw->field_cfp_deadline_model->label();
+      break;
   }
 
   return $output;

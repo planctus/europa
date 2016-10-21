@@ -112,13 +112,6 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_date_closing' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Closing date',
-        ),
-      ),
-    ),
     'field_core_links' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -150,14 +143,20 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'call_for_proposal';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '14',
-      'label' => 'hidden',
+    'dt_call_for_proposal_deadline' => array(
+      'weight' => '4',
+      'label' => 'inline',
       'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
-          'meta_modifier' => 'meta__item--type',
+          'lb' => 'Deadline',
+        ),
+      ),
+    ),
+    'field_cfp_call_reference' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Reference',
         ),
       ),
     ),
@@ -165,7 +164,15 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'lb' => 'Call status',
           'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_cfp_program' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Programme',
         ),
       ),
     ),
@@ -205,12 +212,11 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
         18 => 'field_cfp_call_reference',
         19 => 'dt_call_for_proposal_published',
         20 => 'field_core_date_opening',
-        21 => 'field_core_date_closing',
-        22 => 'field_grants_awarded_link',
-        23 => 'hr_1',
-        24 => 'field_cfp_program',
-        25 => 'field_core_topics',
-        26 => 'field_core_departments',
+        21 => 'field_grants_awarded_link',
+        22 => 'hr_1',
+        23 => 'field_cfp_program',
+        24 => 'field_core_topics',
+        25 => 'field_core_departments',
       ),
       'left_header' => array(
         1 => 'group_cfp_meta',
@@ -248,7 +254,6 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
       'field_cfp_call_reference' => 'central',
       'dt_call_for_proposal_published' => 'central',
       'field_core_date_opening' => 'central',
-      'field_core_date_closing' => 'central',
       'field_grants_awarded_link' => 'central',
       'hr_1' => 'central',
       'field_cfp_program' => 'central',
@@ -283,16 +288,22 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_cfp_meta',
         1 => 'title_field',
-        2 => 'field_core_description',
-        3 => 'content_type_label',
-        4 => 'field_cfp_status',
+        2 => 'field_cfp_call_reference',
+        3 => 'field_core_date_opening',
+        4 => 'dt_call_for_proposal_deadline',
+        5 => 'field_cfp_program',
+        6 => 'field_core_topics',
+        7 => 'field_cfp_status',
       ),
     ),
     'fields' => array(
       'group_cfp_meta' => 'main',
       'title_field' => 'main',
-      'field_core_description' => 'main',
-      'content_type_label' => 'main',
+      'field_cfp_call_reference' => 'main',
+      'field_core_date_opening' => 'main',
+      'dt_call_for_proposal_deadline' => 'main',
+      'field_cfp_program' => 'main',
+      'field_core_topics' => 'main',
       'field_cfp_status' => 'main',
     ),
     'classes' => array(),

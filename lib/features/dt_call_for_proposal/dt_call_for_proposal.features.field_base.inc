@@ -33,6 +33,33 @@ function dt_call_for_proposal_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_cfp_deadline_model'.
+  $field_bases['field_cfp_deadline_model'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cfp_deadline_model',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'single_stage' => 'Single-stage',
+        'two_stage' => 'Two-stage',
+        'multiple_stage' => 'Multiple cut-off',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_cfp_programme'.
   $field_bases['field_cfp_program'] = array(
     'active' => 1,

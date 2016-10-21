@@ -85,8 +85,15 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
           'taxonomy_term',
         ];
 
+        // Multiple values field have a different key.
+        $use_link = isset($display['settings']['link']) ? $display['settings']['link'] : FALSE;
+
+        if (!$use_link) {
+          $use_link = isset($display['settings']['links']) ? $display['settings']['links'] : FALSE;
+        }
+
         $check_types = isset($field['settings']['target_type']) && in_array($field['settings']['target_type'], $valid_targets);
-        $check_setting = !isset($display['settings']['link']) || !isset($field['settings']['target_type']);
+        $check_setting = !empty($use_link) || !isset($field['settings']['target_type']);
 
         if ($check_setting && $check_types) {
           continue;
@@ -94,7 +101,7 @@ function nexteuropa_legacy_link_field_attach_view_alter(&$output, $context) {
 
         foreach ($element['#items'] as $delta => $item) {
           // Check if item has Legacy link.
-          if (isset($item['entity']->legacy)) {
+          if (isset($item['entity']->legacy) && $use_link) {
             $element[$delta] = ['#markup' => l($item['entity']->title, $item['entity']->legacy)];
           }
         }

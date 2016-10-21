@@ -54,13 +54,11 @@ function _dt_call_for_proposal_calculate_status(&$entity) {
     return;
   }
   else {
-    if ($wrapper->__isset('field_core_date_closing')) {
+    if ($wrapper->__isset('field_core_deadlines')) {
       // Closing date is optional, if it's not set we assume it is the
       // "end of the day", considering that opening date has day granualarity.
-      $closing = !empty($wrapper->field_core_date_closing->value()) ? $wrapper->field_core_date_closing->value() : $opening + 86399;
-
-      // This is not needed anymore since the field has been limited to 1 value,
-      // but it's harmless and it will work in case thi setting will change.
+      $closing = !empty($wrapper->field_core_deadlines->value()) ? $wrapper->field_core_deadlines->value() : $opening + 86399;
+      // We use the last value in case we have multiple.
       $closing = is_array($closing) ? end($closing) : $closing;
     }
   }

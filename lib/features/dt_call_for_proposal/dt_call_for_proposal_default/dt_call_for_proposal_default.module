@@ -7,3 +7,40 @@
 
 include_once 'dt_call_for_proposal_default.features.inc';
 module_load_include('inc', 'dt_call_for_proposal_default', 'dt_call_for_proposal_default.ds_fields');
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function dt_call_for_proposal_default_preprocess_field(&$vars) {
+  if ($vars['element']['#field_name'] == 'field_cfp_status') {
+
+    $emw = entity_metadata_wrapper('node', $vars['element']['#object']);
+    $status = $emw->field_cfp_status->value();
+    $status = !empty($status) ? $status : $vars['element']['#items'][0]['value'];
+    $prefix = t('Call status:');
+    $new_status = $prefix . ' ' . $status;
+
+    // Existing classes.
+    preg_match('#class="(.*?)"#', $vars['element'][0]['#markup'], $classes);
+    // Current output.
+    preg_match('#>(.*?)<#', $vars['element'][0]['#markup'], $old_status);
+
+    $existing = $classes[1];
+
+    switch ($status) {
+      case 'upcoming':
+        $classes[1] .= ' label--next';
+        break;
+
+      case 'open':
+        $classes[1] .= ' label--highlight';
+        break;
+
+      case 'closed':
+        $classes[1] .= ' label--status';
+        break;
+    }
+
+    $vars['items'][0]['#markup'] = $vars['element'][0]['#markup'] = str_replace([$existing, $old_status[1]], [$classes[1], $new_status], $vars['element'][0]['#markup']);
+  }
+}
