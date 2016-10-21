@@ -24,11 +24,11 @@ function dt_publication_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_taxonomy',
-      1 => 'group_editorial_settings',
-      2 => 'group_publication_contact',
-      3 => 'group_publication_content',
-      4 => 'group_publication_related',
+      0 => 'group_editorial_settings',
+      1 => 'group_publication_contact',
+      2 => 'group_publication_content',
+      3 => 'group_publication_related',
+      4 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -386,6 +386,8 @@ function dt_publication_field_group_info() {
     'weight' => '23',
     'children' => array(
       0 => 'field_eurovoc_taxonomy',
+      1 => 'field_core_nal_countries',
+      2 => 'field_core_tags',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

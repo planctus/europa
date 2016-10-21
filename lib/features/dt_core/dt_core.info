@@ -81,6 +81,7 @@ features[field_base][] = field_core_quick_nav_links
 features[field_base][] = field_core_section_intro
 features[field_base][] = field_core_social_network_links
 features[field_base][] = field_core_tagline
+features[field_base][] = field_core_tags
 features[field_base][] = field_core_top_task_link
 features[field_base][] = field_core_top_tasks_links
 features[field_base][] = field_core_type_content

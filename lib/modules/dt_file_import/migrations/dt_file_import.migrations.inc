@@ -128,6 +128,8 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
       'date_updated' => t('Last updated on'),
       'published_by' => t('Published by'),
       'publication_origin' => t('Origin'),
+      'core_nal_countries' => t('NAL Countries'),
+      'core_tags' => t('Tags'),
       'publication_referenceno' => t('Identifier of the publication'),
       'core_topics' => t('Related topics'),
       'publication_rel_content' => t('Related content'),
@@ -152,7 +154,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
       [
         'pid' => [
           'type' => 'varchar',
-          'length' => 6,
+          'length' => 20,
           'not null' => TRUE,
         ],
       ],
@@ -192,6 +194,26 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
     $this->addFieldMapping('field_publication_origin:create_term')
       ->defaultValue(FALSE);
     $this->addFieldMapping('field_publication_origin:ignore_case')
+      ->defaultValue(TRUE);
+
+    // NAL Countries.
+    $this->addFieldMapping('field_core_nal_countries', 'core_nal_countries')
+      ->xpath('publication_origin');
+    $this->addFieldMapping('field_core_nal_countries:source_type')
+      ->defaultValue('name');
+    $this->addFieldMapping('field_core_nal_countries:create_term')
+      ->defaultValue(FALSE);
+    $this->addFieldMapping('field_core_nal_countries:ignore_case')
+      ->defaultValue(TRUE);
+
+    // Tags.
+    $this->addFieldMapping('field_core_tags', 'core_tags')
+      ->xpath('publication_origin');
+    $this->addFieldMapping('field_core_tags:source_type')
+      ->defaultValue('name');
+    $this->addFieldMapping('field_core_tags:create_term')
+      ->defaultValue(TRUE);
+    $this->addFieldMapping('field_core_tags:ignore_case')
       ->defaultValue(TRUE);
 
     // Publication reference number.

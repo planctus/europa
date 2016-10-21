@@ -81,6 +81,9 @@ function dt_publication_strongarm() {
         'metatags' => array(
           'weight' => '3',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

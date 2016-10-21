@@ -251,6 +251,10 @@
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
+                    <!-- NAL Countries -->
+                    <xs:element name="core_nal_countries" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Tags -->
+                    <xs:element name="core_tags" type="xs:string" minOccurs="0" maxOccurs="1"/>
                     <!-- Identifier of the publication-->
                     <xs:element name="publication_referenceno" type="xs:string" minOccurs="0" maxOccurs="1"/>
                     <!-- Related topic -->
