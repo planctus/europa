@@ -18,6 +18,11 @@ function dt_site_menu_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'site_menu';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
+    'field_site_menu_classes' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_site_menu_topic_link' => array(
       'formatter_settings' => array(
         'ft' => array(

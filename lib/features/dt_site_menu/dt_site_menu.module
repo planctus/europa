@@ -6,3 +6,98 @@
  */
 
 include_once 'dt_site_menu.features.inc';
+
+/**
+ * Implements hook_field_language_alter().
+ */
+function dt_site_menu_field_language_alter(&$display_language, &$context) {
+  if ($context['entity_type'] == 'bean' && $context['entity']->getInfo()['type'] == 'site_menu') {
+    $context['language'] = $GLOBALS['language']->language;
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function dt_site_menu_field_formatter_info() {
+  return [
+    'entityreference_entity_view_ifl' => [
+      'label' => t('Rendered entity (interface language)'),
+      'description' => t('Display the referenced entities rendered by entity_view() in the interface language.'),
+      'field types' => ['entityreference'],
+      'settings' => [
+        'view_mode' => 'default',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function dt_site_menu_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $element = [];
+
+  if ($display['type'] == 'entityreference_entity_view_ifl') {
+    $entity_info = entity_get_info($field['settings']['target_type']);
+    $options = ['default' => t('Default')];
+    if (!empty($entity_info['view modes'])) {
+      foreach ($entity_info['view modes'] as $view_mode => $view_mode_settings) {
+        $options[$view_mode] = $view_mode_settings['label'];
+      }
+    }
+
+    $element['view_mode'] = [
+      '#type' => 'select',
+      '#options' => $options,
+      '#title' => t('View mode'),
+      '#default_value' => $display['settings']['view_mode'],
+      '#access' => count($options) > 1,
+    ];
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ */
+function dt_site_menu_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  entityreference_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, $items, $displays);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dt_site_menu_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $result = [];
+  if ($display['type'] == 'entityreference_entity_view_ifl') {
+    // Rebuild the items list to contain only those with access.
+    foreach ($items as $key => $item) {
+      if (empty($item['access'])) {
+        unset($items[$key]);
+      }
+    }
+
+    $target_langcode = $GLOBALS['language']->language;
+
+    foreach ($items as $delta => $item) {
+      // Protect ourselves from recursive rendering.
+      static $depth = 0;
+      $depth++;
+      if ($depth > 20) {
+        throw new EntityReferenceRecursiveRenderingException(t('Recursive rendering detected when rendering entity @entity_type(@entity_id). Aborting rendering.', [
+          '@entity_type' => $entity_type,
+          '@entity_id' => $item['target_id'],
+        ]));
+      }
+
+      $target_entity = clone $item['entity'];
+      unset($target_entity->content);
+      $result[$delta] = entity_view($field['settings']['target_type'], [$item['target_id'] => $target_entity], $display['settings']['view_mode'], $target_langcode, FALSE);
+      $depth = 0;
+    }
+  }
+  return $result;
+}
