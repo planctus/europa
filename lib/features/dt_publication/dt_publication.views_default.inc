@@ -125,6 +125,14 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'title';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'Publications List';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Results';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -186,7 +194,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['filters']['field_core_date_updated_value']['group'] = 1;
   $handler->display->display_options['filters']['field_core_date_updated_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator_id'] = 'field_core_date_updated_value_op';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Year';
+  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Last updated on (field_core_date_updated)';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator'] = 'field_core_date_updated_value_op';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['identifier'] = 'field_core_date_updated_value';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['remember_roles'] = array(
@@ -204,6 +212,7 @@ function dt_publication_views_default_views() {
     10 => 0,
   );
   $handler->display->display_options['filters']['field_core_date_updated_value']['granularity'] = 'year';
+  $handler->display->display_options['filters']['field_core_date_updated_value']['default_to_date'] = '-15';
   $handler->display->display_options['filters']['field_core_date_updated_value']['year_range'] = '+1:-10';
   /* Filter criterion: Content: Publication type (field_publication_type) (translated) */
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['id'] = 'field_publication_type_tid_i18n';
