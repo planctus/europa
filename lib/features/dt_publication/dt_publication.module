@@ -179,7 +179,7 @@ function _dt_publication_collections() {
 }
 
 /**
- *
+ * Implements hook_views_pre_view().
  */
 function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
 
@@ -212,7 +212,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
           }
         }
 
-        // Publication Type.
+        // Publication type.
         $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid'];
         if ($predefined_type) {
           $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
