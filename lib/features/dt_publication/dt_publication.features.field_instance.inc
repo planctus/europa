@@ -255,7 +255,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -374,7 +374,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -578,10 +578,16 @@ function dt_publication_field_default_field_instances() {
         'weight' => 29,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -692,7 +698,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -739,10 +745,16 @@ function dt_publication_field_default_field_instances() {
         'weight' => 30,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'contextual_date' => '',
+          'expander_has_expander' => FALSE,
+          'expander_trim_at' => 0,
+          'expander_trim_to' => 0,
+        ),
+        'type' => 'context_nav_item',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -849,7 +861,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -969,7 +981,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1014,7 +1026,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1264,7 +1276,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1322,7 +1334,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1392,7 +1404,7 @@ function dt_publication_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
