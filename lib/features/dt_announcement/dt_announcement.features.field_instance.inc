@@ -2098,7 +2098,6 @@ function dt_announcement_field_default_field_instances() {
   t('Policies');
   t('Press contacts');
   t('Priorities');
-  t('Priority policy areas');
   t('Related pages');
   t('Responsible department');
   t('Sources');

@@ -154,13 +154,13 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Content: Introduction */
+  /* Field: Field: Introduction */
   $handler->display->display_options['fields']['field_core_introduction']['id'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['table'] = 'field_data_field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['field'] = 'field_core_introduction';
   $handler->display->display_options['fields']['field_core_introduction']['label'] = '';
   $handler->display->display_options['fields']['field_core_introduction']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Field: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
@@ -233,7 +233,7 @@ function dt_announcement_views_default_views() {
     'announcement' => 'announcement',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Related departments (field_core_department) (reference filter) */
+  /* Filter criterion: Content: Departments (field_core_department) (reference filter) */
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['id'] = 'field_core_department_target_id_entityreference_filter';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['table'] = 'field_data_field_core_department';
   $handler->display->display_options['filters']['field_core_department_target_id_entityreference_filter']['field'] = 'field_core_department_target_id_entityreference_filter';
@@ -362,7 +362,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Related policy (field_core_policies) */
+  /* Filter criterion: Content: Policies (field_core_policies) */
   $handler->display->display_options['filters']['field_core_policies_target_id']['id'] = 'field_core_policies_target_id';
   $handler->display->display_options['filters']['field_core_policies_target_id']['table'] = 'field_data_field_core_policies';
   $handler->display->display_options['filters']['field_core_policies_target_id']['field'] = 'field_core_policies_target_id';
@@ -402,7 +402,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Related topics (field_core_topics) */
+  /* Filter criterion: Content: Topics (field_core_topics) */
   $handler->display->display_options['filters']['field_core_topics_target_id']['id'] = 'field_core_topics_target_id';
   $handler->display->display_options['filters']['field_core_topics_target_id']['table'] = 'field_data_field_core_topics';
   $handler->display->display_options['filters']['field_core_topics_target_id']['field'] = 'field_core_topics_target_id';

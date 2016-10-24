@@ -14,7 +14,7 @@ function dt_announcement_ds_fields_info($entity_type) {
   $fields = [];
 
   if ($entity_type == 'node') {
-    $fields['node']['announcement_block'] = [
+    $fields[$entity_type]['announcement_block'] = [
       'title' => t('Full announcement section'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'function' => '_dt_announcement_ds_fields_announcement_block',
@@ -38,6 +38,16 @@ function dt_announcement_ds_fields_info($entity_type) {
           'show_social_media' => TRUE,
           'label' => 'Latest',
         ],
+      ],
+    ];
+
+    $fields[$entity_type]['announcement_author_in_meta'] = [
+      'title' => t('Announcement: Author (Responsible Department)'),
+      'ui_limit' => ['announcement|*'],
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'function' => '_nexteuropa_ds_fields_token_replace',
+      'properties' => [
+        'value' => '[node:field-announcement-department:title]',
       ],
     ];
   }
