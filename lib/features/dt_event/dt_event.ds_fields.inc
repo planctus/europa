@@ -467,7 +467,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
     if (
       $emw->field_event_registration_end->value() > time()
       && $emw->field_event_registration->value()
-      && $field['view_mode'] !== 'meta'
+      && $field['view_mode'] !== 'teaser'
     ) {
       $registration = $emw->field_event_registration->value();
       // Our button text will default if not filled in.
@@ -496,7 +496,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
         'html' => TRUE,
       ];
 
-      if ($field['view_mode'] === 'meta') {
+      if ($field['view_mode'] === 'teaser') {
         $attributes['attributes']['class'][] = 'listing__btn';
       }
 
