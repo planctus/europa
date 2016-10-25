@@ -215,7 +215,7 @@ function dt_publication_ds_custom_fields_info() {
   );
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
-    'block' => 'views|948ec71bd5c8980c33c245a5c15e8af9',
+    'block' => 'views|publication_list-block',
     'block_render' => '3',
   );
   $export['publications_list'] = $ds_field;
