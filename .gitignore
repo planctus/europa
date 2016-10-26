@@ -29,3 +29,7 @@ lib/modules/example_module
 lib/src/MyGroup
 lib/themes/example_theme
 phantomjsdriver.log
+
+# Ignore QA symlinks
+src/Phing/QualityAssuranceSubsiteTask.php
+src/Phing/QualityAssuranceTask.php

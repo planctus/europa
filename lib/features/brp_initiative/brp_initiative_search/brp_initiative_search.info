@@ -18,3 +18,4 @@ features_exclude[dependencies][context] = context
 features_exclude[dependencies][nexteuropa_views] = nexteuropa_views
 features_exclude[dependencies][views] = views
 multisite_version = 2.2
+php = 5.5

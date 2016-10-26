@@ -22,10 +22,10 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
-    And I click "Publishing options"
-    And I select "Published" from "Moderation state"
     And I click "Editorial settings"
     And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
     And I press "Save"
     Then I should see "File Title" in the ".region-content .file" element
     Then I should see "English" in the ".region-content .file" element
@@ -49,10 +49,10 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
-    And I click "Publishing options"
-    And I select "Published" from "Moderation state"
     And I click "Editorial settings"
     And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
     And I press "Save"
 
     And I translate the string "English" to "Dutch" with "Engels"
@@ -81,10 +81,10 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
-    And I click "Publishing options"
-    And I select "Published" from "Moderation state"
     And I click "Editorial settings"
     And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
     And I press "Save"
 
     Then I should see "My File Title" in the ".region-content .file" element
@@ -106,10 +106,10 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
-    And I click "Publishing options"
-    And I select "Published" from "Moderation state"
     And I click "Editorial settings"
     And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
     And I press "Save"
 
     Then I should see "Mijn bestands titel" in the ".region-content .file" element

@@ -9,9 +9,6 @@
  * Implements hook_install().
  */
 function dt_node_settings_install() {
-  $t = get_t();
-  drupal_set_message($t('You can now indicate helper content types at the <a href="@settings-url">admin/config/content/dt_node_settings/settings</a>.', ['@settings-url' => url('admin/config/content/dt_node_settings/settings')]));
-
   // Initialize the schema update.
   $schema['node_revision'] = [];
   dt_node_settings_schema_alter($schema);

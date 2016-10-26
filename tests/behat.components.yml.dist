@@ -20,11 +20,9 @@ default:
     Behat\MinkExtension:
       goutte: ~
       javascript_session: 'selenium2'
-      browser_name: phantomjs
+      browser_name: ${behat.browser}
       selenium2:
-        wd_host: "http://127.0.0.1:8643/wd/hub/"
-        capabilities:
-          version: ''
+        wd_host: '${behat.seleniumuri}'
       base-url: '${behat.base_url}'
       show_cmd:  open %s
       files_path: %paths.base%/dummy_files

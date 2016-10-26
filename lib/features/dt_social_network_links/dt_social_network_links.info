@@ -3,7 +3,6 @@ description = The feature provides the functionality related to social networks
 core = 7.x
 package = NextEuropa Digital Transformation
 php = 5.5
-explanation = Field type(s) in use - see <a href="/admin/reports/fields_en">Field list</a>
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_social_network_classname

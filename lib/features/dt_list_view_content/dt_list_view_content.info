@@ -26,3 +26,4 @@ features[field_instance][] = bean-list_view_content-field_list_view_views
 features[field_instance][] = bean-list_view_content-title_field
 features_exclude[dependencies][options] = options
 multisite_version = 2.2
+php = 5.5

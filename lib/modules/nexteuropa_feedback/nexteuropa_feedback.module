@@ -141,8 +141,16 @@ function nexteuropa_feedback_form_theme($form) {
   $accordion['compliment']['#collapsible'] = TRUE;
   $accordion['compliment']['#collapsed'] = TRUE;
 
+  $link_options = [
+    'attributes' => [
+      'data-toggle' => 'collapse',
+      'class' => 'feedback-form__trigger',
+    ],
+    'fragment' => 'feedback-form__content',
+    'external' => TRUE,
+  ];
   $static['feedback-trigger'] = [
-    '#markup' => '<a href="#feedback-form__content" class="feedback-form__trigger" data-toggle="collapse">' . t('Report a problem or give feedback on this page') . '</a>',
+    '#markup' => l(t('Report a problem or give feedback on this page'), '', $link_options),
   ];
   $static['feedback-text'] = [
     '#markup' => '<div class="feedback-form__text">' . t('I have a') . '</div>',
@@ -248,7 +256,7 @@ function _nexteuropa_feedback_send_webtools($form, &$form_state) {
   $data = array_merge($values, $data);
   $options = [
     'method' => 'POST',
-    'data' => http_build_query($data),
+    'data' => drupal_http_build_query($data),
     'timeout' => 5,
   ];
 
