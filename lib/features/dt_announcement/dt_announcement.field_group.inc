@@ -210,7 +210,7 @@ function dt_announcement_field_group_info() {
       0 => 'field_announcement_location',
       1 => 'field_announcement_type',
       2 => 'field_core_date_published',
-      3 => 'author',
+      3 => 'announcement_author_in_meta',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

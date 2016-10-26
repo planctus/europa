@@ -3,6 +3,7 @@ description = Subtheme of europa base theme for the DTT Better Regulation Portal
 base theme = europa
 core = 7.x
 php = 5.2.4
+multisite_version=2.2
 
 ; ========================================
 ; Regions

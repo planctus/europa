@@ -184,17 +184,17 @@ Feature: Checking different state of events
   Scenario: "Watch live streaming" button should not appear, when the event "cancelled".
     Given I am viewing an "Event" content:
       | title                                       | Live streaming test, event cancelled |
-      | field_event_status                          | event is cancelled                         |
-      | field_event_is_live_streaming               | yes                                        |
-      | field_event_live_streaming_date:show_todate | 1                                          |
-      | field_event_live_streaming_date:value       | 42854400                                   |
-      | field_event_live_streaming_date:value2      | 1893456000                                 |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                            |
-      | field_event_live_streaming_link             | http://localhost                           |
-      | field_event_date:value                      | 1893456000                                 |
-      | field_event_date:value2                     | 1893456000                                 |
-      | field_event_date:timezone                   | Europe/Budapest                            |
-      | status                                      | 1                                          |
+      | field_event_status                          | event is cancelled                   |
+      | field_event_is_live_streaming               | yes                                  |
+      | field_event_live_streaming_date:show_todate | 1                                    |
+      | field_event_live_streaming_date:value       | 42854400                             |
+      | field_event_live_streaming_date:value2      | 1893456000                           |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                      |
+      | field_event_live_streaming_link             | http://localhost                     |
+      | field_event_date:value                      | 1893456000                           |
+      | field_event_date:value2                     | 1893456000                           |
+      | field_event_date:timezone                   | Europe/Budapest                      |
+      | status                                      | 1                                    |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
     And I go to "events"
@@ -204,17 +204,17 @@ Feature: Checking different state of events
   Scenario: "Watch live streaming" button should not appear, when there is no live streaming.
     Given I am viewing an "Event" content:
       | title                                       | Live streaming test, no live streaming |
-      | field_event_status                          | no                                           |
-      | field_event_is_live_streaming               | no                                           |
-      | field_event_live_streaming_date:show_todate | 1                                            |
-      | field_event_live_streaming_date:value       | 42854400                                     |
-      | field_event_live_streaming_date:value2      | 1893456000                                   |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                              |
-      | field_event_live_streaming_link             | http://localhost                             |
-      | field_event_date:value                      | 1893456000                                   |
-      | field_event_date:value2                     | 1893456000                                   |
-      | field_event_date:timezone                   | Europe/Budapest                              |
-      | status                                      | 1                                            |
+      | field_event_status                          | no                                     |
+      | field_event_is_live_streaming               | no                                     |
+      | field_event_live_streaming_date:show_todate | 1                                      |
+      | field_event_live_streaming_date:value       | 42854400                               |
+      | field_event_live_streaming_date:value2      | 1893456000                             |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                        |
+      | field_event_live_streaming_link             | http://localhost                       |
+      | field_event_date:value                      | 1893456000                             |
+      | field_event_date:value2                     | 1893456000                             |
+      | field_event_date:timezone                   | Europe/Budapest                        |
+      | status                                      | 1                                      |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
     And I go to "events"
@@ -224,16 +224,16 @@ Feature: Checking different state of events
   Scenario: "Watch live streaming" button should not appear, when current time is before is before broadcasting start.
     Given I am viewing an "Event" content:
       | title                                    | Live streaming test, current time is before broadcasting start |
-      | field_event_status                       | no                                                                   |
-      | field_event_is_live_streaming            | yes                                                                  |
-      | field_event_live_streaming_date:value    | 1893456000                                                           |
-      | field_event_live_streaming_date:value2   | 1893456000                                                           |
-      | field_event_live_streaming_date:timezone | Europe/Budapest                                                      |
-      | field_event_live_streaming_link          | http://localhost                                                     |
-      | field_event_date:value                   | 1893456000                                                           |
-      | field_event_date:value2                  | 1893456000                                                           |
-      | field_event_date:timezone                | Europe/Budapest                                                      |
-      | status                                   | 1                                                                    |
+      | field_event_status                       | no                                                             |
+      | field_event_is_live_streaming            | yes                                                            |
+      | field_event_live_streaming_date:value    | 1893456000                                                     |
+      | field_event_live_streaming_date:value2   | 1893456000                                                     |
+      | field_event_live_streaming_date:timezone | Europe/Budapest                                                |
+      | field_event_live_streaming_link          | http://localhost                                               |
+      | field_event_date:value                   | 1893456000                                                     |
+      | field_event_date:value2                  | 1893456000                                                     |
+      | field_event_date:timezone                | Europe/Budapest                                                |
+      | status                                   | 1                                                              |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
     And I go to "events"
@@ -243,17 +243,17 @@ Feature: Checking different state of events
   Scenario: "Watch live streaming" button should not appear, when current time is outside of broadcasting interval.
     Given I am viewing an "Event" content:
       | title                                       | Live streaming test, current time is outside of broadcasting interval |
-      | field_event_status                          | no                                                                          |
-      | field_event_is_live_streaming               | yes                                                                         |
-      | field_event_live_streaming_date:show_todate | 1                                                                           |
-      | field_event_live_streaming_date:value       | 1893456000                                                                  |
-      | field_event_live_streaming_date:value2      | 1893456001                                                                  |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                                                             |
-      | field_event_live_streaming_link             | http://localhost                                                            |
-      | field_event_date:value                      | 1893456000                                                                  |
-      | field_event_date:value2                     | 1893456000                                                                  |
-      | field_event_date:timezone                   | Europe/Budapest                                                             |
-      | status                                      | 1                                                                           |
+      | field_event_status                          | no                                                                    |
+      | field_event_is_live_streaming               | yes                                                                   |
+      | field_event_live_streaming_date:show_todate | 1                                                                     |
+      | field_event_live_streaming_date:value       | 1893456000                                                            |
+      | field_event_live_streaming_date:value2      | 1893456001                                                            |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                                                       |
+      | field_event_live_streaming_link             | http://localhost                                                      |
+      | field_event_date:value                      | 1893456000                                                            |
+      | field_event_date:value2                     | 1893456000                                                            |
+      | field_event_date:timezone                   | Europe/Budapest                                                       |
+      | status                                      | 1                                                                     |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
     And I go to "events"
@@ -263,16 +263,16 @@ Feature: Checking different state of events
   Scenario: "Watch live streaming" button should not appear, when no stream link.
     Given I am viewing an "Event" content:
       | title                                       | Live streaming test, no stream link |
-      | field_event_status                          | no                                        |
-      | field_event_is_live_streaming               | yes                                       |
-      | field_event_live_streaming_date:show_todate | 1                                         |
-      | field_event_live_streaming_date:value       | 42854400                                  |
-      | field_event_live_streaming_date:value2      | 1893456000                                |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                           |
-      | field_event_date:value                      | 1893456000                                |
-      | field_event_date:value2                     | 1893456000                                |
-      | field_event_date:timezone                   | Europe/Budapest                           |
-      | status                                      | 1                                         |
+      | field_event_status                          | no                                  |
+      | field_event_is_live_streaming               | yes                                 |
+      | field_event_live_streaming_date:show_todate | 1                                   |
+      | field_event_live_streaming_date:value       | 42854400                            |
+      | field_event_live_streaming_date:value2      | 1893456000                          |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                     |
+      | field_event_date:value                      | 1893456000                          |
+      | field_event_date:value2                     | 1893456000                          |
+      | field_event_date:timezone                   | Europe/Budapest                     |
+      | status                                      | 1                                   |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
     And I go to "events"
@@ -424,3 +424,14 @@ Feature: Checking different state of events
       | 1420102800       | 1451642400     | 1           | 1 January 2015 - 1 January 2016                | 1 January 2015, 9.00 - 1 January 2016, 10.00 (GMT)                 |
       # FUTURE:          Mon, 01 Jan 2035 10:00:00 GMT - Sat, 15 Mar 2036 10:00:00 GMT
       | 2051258400       | 2089188000     | 1           | Monday 1 January 2035 - Saturday 15 March 2036 | Monday 1 January 2035, 10.00 - Saturday 15 March 2036, 10.00 (GMT) |
+
+  Scenario: Create internal link with teaser view mode in other nodes
+    Given "Event" content:
+      | title              | language | nid     | is_new | status | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_event_status |
+      | Test Event to show | en       | 1234567 | 1      | 1      | 1893456000             | 1893456000              | Europe/Budapest           | no                 |
+    And I am viewing a "Page" content:
+      | title       | Event teaser view mode test                         |
+      | body:value  | [node:1234567:view-mode:teaser]{Test event to show} |
+      | body:format | full_html                                           |
+      | status      | 1                                                   |
+    Then I should see an ".node.node-event.node-teaser.view-mode-teaser" element

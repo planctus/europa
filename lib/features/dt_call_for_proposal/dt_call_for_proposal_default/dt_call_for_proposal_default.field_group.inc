@@ -35,9 +35,9 @@ function dt_call_for_proposal_default_field_group_info() {
       8 => 'field_core_topics',
       9 => 'field_core_date_opening',
       10 => 'field_cfp_program',
-      11 => 'field_core_date_closing',
-      12 => 'field_grants_awarded_link',
-      13 => 'field_cfp_publication',
+      11 => 'field_grants_awarded_link',
+      12 => 'field_cfp_publication',
+      13 => 'field_cfp_deadline_model',
       14 => 'group_cfp_deadlines',
     ),
     'format_type' => 'tab',
@@ -156,7 +156,7 @@ function dt_call_for_proposal_default_field_group_info() {
   $field_group->parent_name = 'group_cfp_basic_info';
   $field_group->data = array(
     'label' => 'Multiple deadlines',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_core_deadlines',
     ),
@@ -191,10 +191,9 @@ function dt_call_for_proposal_default_field_group_info() {
       2 => 'field_core_topics',
       3 => 'field_core_date_opening',
       4 => 'field_cfp_program',
-      5 => 'field_core_date_closing',
-      6 => 'field_grants_awarded_link',
-      7 => 'hr_1',
-      8 => 'dt_call_for_proposal_published',
+      5 => 'field_grants_awarded_link',
+      6 => 'hr_1',
+      7 => 'dt_call_for_proposal_published',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -370,7 +369,6 @@ function dt_call_for_proposal_default_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_cfp_status',
-      1 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(

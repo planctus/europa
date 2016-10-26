@@ -91,3 +91,19 @@ function dt_call_for_proposal_default_update_7002() {
     }
   }
 }
+
+/**
+ * DTTSB-1133 - Call for proposals update.
+ */
+function dt_call_for_proposal_default_update_7003() {
+  $fields = [
+    'field_core_date_closing',
+  ];
+
+  foreach ($fields as $field) {
+    // Remove field.
+    if (field_info_field($field)) {
+      field_delete_field($field);
+    }
+  }
+}

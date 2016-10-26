@@ -240,7 +240,7 @@ function dt_announcement_views_query_alter(&$view, &$query) {
           if ($node->type == "basic_page") {
             $node->type = "page";
           }
-          $view->custom_filters[ucfirst($node->type)] = $node->title;
+          $view->custom_filters[drupal_ucfirst($node->type)] = $node->title;
         }
       }
     }

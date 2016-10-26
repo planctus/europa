@@ -34,9 +34,10 @@ function dt_call_for_proposal_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -88,6 +89,55 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-call_for_proposal-field_cfp_deadline_model'.
+  $field_instances['node-call_for_proposal-field_cfp_deadline_model'] = array(
+    'bundle' => 'call_for_proposal',
+    'default_value' => array(
+      0 => array(
+        'value' => 'single_stage',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 46,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cfp_deadline_model',
+    'label' => 'Deadline model',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-call_for_proposal-field_cfp_program'.
   $field_instances['node-call_for_proposal-field_cfp_program'] = array(
     'bundle' => 'call_for_proposal',
@@ -111,10 +161,11 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'weight' => 30,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'link_title_plain',
+        'weight' => 5,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -160,7 +211,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
     'bundle' => 'call_for_proposal',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'label: Official Journal reference
+    'description' => '- Title: Official Journal reference
 - URL: link to the Official Journal',
     'display' => array(
       'default' => array(
@@ -180,7 +231,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -242,9 +293,11 @@ function dt_call_for_proposal_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'i18n_field',
-        'settings' => array(),
-        'type' => 'i18n_list_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'label_modifiers' => 'upper',
+        ),
+        'type' => 'label',
         'weight' => 15,
       ),
     ),
@@ -291,7 +344,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 41,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -385,7 +438,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 32,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -405,76 +458,6 @@ function dt_call_for_proposal_default_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance: 'node-call_for_proposal-field_core_date_closing'.
-  $field_instances['node-call_for_proposal-field_core_date_closing'] = array(
-    'bundle' => 'call_for_proposal',
-    'deleted' => 0,
-    'description' => 'When does/did the call close for applications? If there is no specific time, 23:59 will be used.
-This date will also defines when the status of the call changes from \'open\' to \'closed\'.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-        ),
-        'type' => 'date_default',
-        'weight' => 45,
-      ),
-      'full' => array(
-        'label' => 'inline',
-        'module' => 'dt_date_format',
-        'settings' => array(
-          'fallback' => 'sd_j sd_F sd_Y, sd_H:sd_i sd_T',
-          'render_box' => 0,
-          'same_date_format' => 'sd_j sd_F sd_Y, sd_H:sd_i sd_T',
-          'same_day_format' => 'sd_j sd_F sd_Y , sd_H:sd_i sd_T',
-        ),
-        'type' => 'date_event_date',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_date_closing',
-    'label' => 'Closing date (only mandatory for single stage calls)',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'blank',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 1,
-        'input_format' => 'd/m/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 3,
     ),
   );
 
@@ -514,9 +497,17 @@ This date will also defines when the status of the call changes from \'open\' to
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'ec_date_j_f_y',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -594,7 +585,7 @@ This date will also defines when the status of the call changes from \'open\' to
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 40,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -631,8 +622,8 @@ This date will also defines when the status of the call changes from \'open\' to
   $field_instances['node-call_for_proposal-field_core_deadlines'] = array(
     'bundle' => 'call_for_proposal',
     'deleted' => 0,
-    'description' => 'Fill these out in case of multiple deadlines/cut-off dates or stages.
-If you need to provide details for these dates, please enter this in Main content > Description of the call.',
+    'description' => 'Enter the deadline for submission of applications. If no time is specified, use 23:59. In the case of multiple deadlines (either two-stage or multiple cut-offs), add additional deadlines below. If you need to provide further details relating to these dates, please enter this in the main body text (Main content > Description of the call).
+Note: the status of the calls change from open to closed when the last deadline has passed.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -658,7 +649,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 36,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -726,7 +717,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 46,
       ),
       'title' => array(
         'label' => 'above',
@@ -780,10 +771,9 @@ If you need to provide details for these dates, please enter this in Main conten
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 39,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -873,7 +863,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -921,7 +911,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 42,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -999,7 +989,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 43,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1069,7 +1059,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1150,9 +1140,12 @@ If you need to provide details for these dates, please enter this in Main conten
       ),
       'teaser' => array(
         'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 34,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 0,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
       ),
       'title' => array(
         'label' => 'above',
@@ -1220,7 +1213,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
       'title' => array(
         'label' => 'above',
@@ -1286,7 +1279,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1354,7 +1347,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 44,
       ),
     ),
     'entity_type' => 'node',
@@ -1409,7 +1402,7 @@ If you need to provide details for these dates, please enter this in Main conten
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 45,
       ),
     ),
     'entity_type' => 'node',
@@ -1504,19 +1497,21 @@ If you need to provide details for these dates, please enter this in Main conten
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('- Title: Official Journal reference
+- URL: link to the Official Journal');
   t('- Title: the name of the funding programme that the call belongs to.
 - URL: the URL to the \'homepage\' of the funding programme');
   t('Call reference');
-  t('Closing date (only mandatory for single stage calls)');
   t('Contact');
   t('Deadline');
+  t('Deadline model');
   t('Department');
   t('Description');
   t('Description of the call');
   t('Description will be used as abstract and metadata description.');
+  t('Enter the deadline for submission of applications. If no time is specified, use 23:59. In the case of multiple deadlines (either two-stage or multiple cut-offs), add additional deadlines below. If you need to provide further details relating to these dates, please enter this in the main body text (Main content > Description of the call).
+Note: the status of the calls change from open to closed when the last deadline has passed.');
   t('Files');
-  t('Fill these out in case of multiple deadlines/cut-off dates or stages.
-If you need to provide details for these dates, please enter this in Main content > Description of the call.');
   t('Funding programme');
   t('Grants awarded link');
   t('Group content visibility');
@@ -1537,12 +1532,8 @@ If you need to provide details for these dates, please enter this in Main conten
   t('Topic(s) the call relates to.');
   t('Topics');
   t('What is the status of this call for proposal');
-  t('When does/did the call close for applications? If there is no specific time, 23:59 will be used.
-This date will also defines when the status of the call changes from \'open\' to \'closed\'.');
   t('When does/did the call open for applications?');
   t('When was this call published in the Official Journal?');
-  t('label: Official Journal reference
-- URL: link to the Official Journal');
 
   return $field_instances;
 }

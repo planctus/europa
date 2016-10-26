@@ -24,6 +24,11 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
     $this->team = [];
     $this->xmlFilePath = isset($arguments['dt_file_import_file_path']) ? $arguments['dt_file_import_file_path'] : variable_get('dt_file_import_file_path', FALSE);
     $this->xml = $this->xmlFilePath ? simplexml_load_file($this->xmlFilePath) : simplexml_load_string('');
+    // Giving value for folder and check if exists.
+    $this->folder = 'public://file_import/';
+    if (!file_prepare_directory($this->folder, FILE_CREATE_DIRECTORY)) {
+      drupal_mkdir($this->folder);
+    }
   }
 
   /**
@@ -198,7 +203,8 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 
     // NAL Countries.
     $this->addFieldMapping('field_core_nal_countries', 'core_nal_countries')
-      ->xpath('publication_origin');
+      ->separator(',')
+      ->xpath('core_nal_countries');
     $this->addFieldMapping('field_core_nal_countries:source_type')
       ->defaultValue('name');
     $this->addFieldMapping('field_core_nal_countries:create_term')
@@ -208,7 +214,8 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 
     // Tags.
     $this->addFieldMapping('field_core_tags', 'core_tags')
-      ->xpath('publication_origin');
+      ->separator(',')
+      ->xpath('core_tags');
     $this->addFieldMapping('field_core_tags:source_type')
       ->defaultValue('name');
     $this->addFieldMapping('field_core_tags:create_term')
@@ -218,6 +225,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 
     // Publication reference number.
     $this->addFieldMapping('field_publication_referenceno', 'publication_referenceno')
+      ->separator(',')
       ->xpath('publication_referenceno');
 
     // Reference fields.
@@ -520,6 +528,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
 
     // What do you want to do? E.g.: Link to file, Upload the file.
     $this->addFieldMapping('field_file_link_upload', 'file_link_upload')
+      ->defaultValue('Upload the file')
       ->xpath('file_link_upload')
       ->callback([$this, 'fileLinkUploadMap']);
 
@@ -535,6 +544,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
 
     // Publication reference number.
     $this->addFieldMapping('field_file_unique_identifier', 'file_unique_identifier')
+      ->separator(',')
       ->xpath('file_unique_identifier');
 
     // Publication import.
@@ -788,7 +798,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     if (isset($entity->pid)) {
       $publication = node_load($entity->pid);
       if (isset($publication)) {
-        $publication->field_core_files[LANGUAGE_NONE][0]['target_id'] = $entity->nid;
+        $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $entity->nid;
         node_save($publication);
       }
     }
@@ -810,7 +820,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     $filename = isset($xml->target_filename) ? (string) $xml->target_filename : file_munge_filename(preg_replace('@^.*/@', '', $uri), '', TRUE);
 
     if (!empty($buffer = $this->getFileContentByCurl($uri))) {
-      if ($file_object = file_save_data($buffer, 'public://file_import/' . $filename, FILE_EXISTS_RENAME)) {
+      if ($file_object = file_save_data($buffer, $this->folder . $filename, FILE_EXISTS_RENAME)) {
         $file_object->display = '1';
         return $file_object;
       }

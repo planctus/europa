@@ -34,7 +34,7 @@ Feature: Announcement content type
     And I should see "Share this page:" in the ".social-media-links--webtool-horizontal" element
     And I should see "RelatedTopic" in the ".page-content" element
     And I should see "RelatedDepartment" in the ".page-content" element
-    And I should see "Anonymous" in the ".meta--header" element
+    And I should see "RelatedDepartment" in the ".page-header" element
     And I should see "Published" in the ".page-content" element
     And I should see "Last update" in the ".page-content" element
     And I should see "Location" in the ".page-content" element

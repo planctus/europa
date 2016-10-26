@@ -97,7 +97,7 @@ function _dt_core_node_reference_aliases_regenerate($start_data, $is_node = TRUE
  * @param string $field
  *   The field.
  * @param string $type
- *   The type (parent or child)
+ *   The type (parent or child).
  * @param int $level
  *   The current level.
  * @param bool $circular_check

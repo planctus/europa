@@ -498,6 +498,66 @@ function dt_event_default_ds_field_settings_info() {
   );
   $export['node|event|meta'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|event|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'event';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h3',
+        'class' => 'listing__title',
+        'ft' => array(),
+      ),
+    ),
+    'book_your_seat' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_header' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'teaser_version' => 1,
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'dt_event_status_label' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_event_type' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+  );
+  $export['node|event|teaser'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -559,8 +619,8 @@ function dt_event_default_ds_layout_settings_info() {
         41 => 'field_core_gallery',
       ),
       'top_top' => array(
-        34 => 'book_your_seat',
-        37 => 'livestreaming',
+        33 => 'book_your_seat',
+        36 => 'livestreaming',
       ),
     ),
     'fields' => array(
@@ -1065,6 +1125,50 @@ function dt_event_default_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|event|meta'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|event|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'event';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ne_1col_hitme';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'main' => array(
+        0 => 'field_event_type',
+        1 => 'group_meta_wrapper',
+        2 => 'dt_event_status_label',
+        3 => 'title',
+        4 => 'dt_event_header',
+        5 => 'book_your_seat',
+        6 => 'field_event_date',
+        7 => 'group_activity_left',
+        8 => 'group_activity_right',
+      ),
+    ),
+    'fields' => array(
+      'field_event_type' => 'main',
+      'group_meta_wrapper' => 'main',
+      'dt_event_status_label' => 'main',
+      'title' => 'main',
+      'dt_event_header' => 'main',
+      'book_your_seat' => 'main',
+      'field_event_date' => 'main',
+      'group_activity_left' => 'main',
+      'group_activity_right' => 'main',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|event|teaser'] = $ds_layout;
 
   return $export;
 }

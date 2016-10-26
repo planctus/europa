@@ -4,7 +4,8 @@
   },
   "require-dev": {
     "behat/behat": "~3.1.0@rc",
-    "drupal/drupal-extension": "~3.1.0"
+    "drupal/drupal-extension": "~3.2.0",
+    "symfony/console": "2.8.12"
   },
   "autoload": {
     "psr-4": {

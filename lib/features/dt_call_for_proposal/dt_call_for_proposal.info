@@ -15,6 +15,7 @@ features[field_base][] = field_core_call_for_proposal
 features[field_base][] = field_core_call_for_proposals
 features[field_base][] = field_grants_awarded_link
 features[field_base][] = field_cfp_publication
+features[field_base][] = field_cfp_deadline_model
 features[node][] = call_for_proposal
 features[variable][] = comment_anonymous_call_for_proposal
 features[variable][] = comment_call_for_proposal

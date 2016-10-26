@@ -61,7 +61,7 @@ function _commissioner_bundle_forms($bundle) {
   }
 
   $forms = [
-    'singular' => ucfirst(drupal_strtolower($singular)),
+    'singular' => drupal_ucfirst(drupal_strtolower($singular)),
     'plural' => $plural,
   ];
 

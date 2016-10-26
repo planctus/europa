@@ -1,14 +1,14 @@
 {
   "_comment_git_wrapper": "Master branch of git-wrapper has a fix for backwards compatibility with older versions of git. Revert to stable when 1.7.1 is released.",
   "require": {
-    "oomphinc/composer-installers-extender": "*",
-    "continuousphp/aws-sdk-phing": "~0.1",
+    "continuousphp/aws-sdk-phing": "~0.2",
     "continuousphp/phing-tasks": "~0.1.3",
     "continuousphp/sdk": "~0.3.2",
     "cpliakas/git-wrapper": "dev-master as 1.7.1",
-    "drupal/coder": "^8.2.5",
+    "drupal/coder": "8.2.7",
     "drupal/phing-drush-task": "1.0",
-    "drush/drush": "~8.0",
+    "drush/drush": "8.x",
+    "ec-europa/qa-automation": "^1.0",
     "ext-json": "*",
     "ext-phar": "*",
     "ext-xml": "*",
@@ -28,6 +28,10 @@
       "NextEuropa\\": "src"
     }
   },
+  "require-dev": {
+    "behat/behat": "~3.1.0@rc",
+    "symfony/console": "2.8.12"
+  },
   "repositories": [
     {
       "type": "vcs",
@@ -43,8 +47,14 @@
           "type": "git",
           "reference": "7.x-1.0"
         },
-        "autoload": { "classmap": [ "DrushTask.php" ] },
-        "include-path": [ "." ]
+        "autoload": {
+          "classmap": [
+            "DrushTask.php"
+          ]
+        },
+        "include-path": [
+          "."
+        ]
       }
     },
     {
@@ -57,8 +67,14 @@
           "type": "git",
           "reference": "0ea666882cba3099dfa4feeb02e1bb85b2c0bde9"
         },
-        "autoload": { "classmap": [ "BehatTask.php" ] },
-        "include-path": [ "." ]
+        "autoload": {
+          "classmap": [
+            "BehatTask.php"
+          ]
+        },
+        "include-path": [
+          "."
+        ]
       }
     },
     {
@@ -79,14 +95,26 @@
       "url": "http://packagist.drupal-composer.org"
     },
     {
-      "type":"package",
+      "type": "package",
       "package": {
         "name": "pfrenssen/multisite-review",
-        "version":"2",
+        "version": "2",
         "source": {
           "url": "https://github.com/pfrenssen/multisite_review.git",
           "type": "git",
-          "reference":"7.x-2.x"
+          "reference": "7.x-2.x"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ec-europa/qa-automation",
+        "version": "1.0",
+        "source": {
+          "url": "https://github.com/ec-europa/qa-automation.git",
+          "type": "git",
+          "reference": "master"
         }
       }
     }
@@ -97,11 +125,5 @@
   "config": {
     "bin-dir": "bin/",
     "secure-http": false
-  },
-  "extra": {
-    "installer-types": ["drupal-drush"],
-    "installer-paths": {
-      "vendor/drush/drush/{$name}/": ["type:drupal-drush"]
-    }
   }
 }

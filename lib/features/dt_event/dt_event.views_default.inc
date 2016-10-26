@@ -44,7 +44,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'meta';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
   /* Sort criterion: Event date and time: Start date (indexed) */
   $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'search_api_index_event_index';
@@ -376,9 +376,13 @@ function dt_event_views_default_views() {
   /* Display: Upcoming and current events */
   $handler = $view->new_display('block', 'Upcoming and current events', 'block');
   $handler->display->display_options['link_url'] = '/events/!1';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'No events planned.';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Event date and time - end date (field_event_date:value2) */
   $handler->display->display_options['sorts']['field_event_date_value2']['id'] = 'field_event_date_value2';
@@ -390,12 +394,8 @@ function dt_event_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* No results behavior: Global: Unfiltered text */
-  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = 'No events planned.';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
