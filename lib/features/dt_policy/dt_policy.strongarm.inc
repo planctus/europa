@@ -125,13 +125,16 @@ function dt_policy_strongarm() {
           'weight' => '4',
         ),
         'scheduler_settings' => array(
-          'weight' => '4',
+          'weight' => '57',
         ),
         'language' => array(
-          'weight' => '1',
+          'weight' => '54',
         ),
         'metatags' => array(
           'weight' => '40',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

@@ -657,6 +657,57 @@ function dt_priority_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-priority-field_core_latest_visibility'.
+  $field_instances['node-priority-field_core_latest_visibility'] = array(
+    'bundle' => 'priority',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 52,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 64,
+    ),
+  );
+
   // Exported field_instance: 'node-priority-field_core_legacy_link'.
   $field_instances['node-priority-field_core_legacy_link'] = array(
     'bundle' => 'priority',
@@ -1468,7 +1519,7 @@ function dt_priority_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 59,
+      'weight' => 67,
     ),
   );
 
@@ -1529,7 +1580,7 @@ function dt_priority_default_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'og_complex',
-      'weight' => 58,
+      'weight' => 66,
     ),
   );
 
@@ -1629,6 +1680,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Header Background Image');
   t('Image');
   t('Introduction');
+  t('Latest visibility');
   t('Legacy link');
   t('Name of the Priority');
   t('Next steps');
@@ -1649,6 +1701,7 @@ function dt_priority_default_field_default_field_instances() {
   t('Select the related departments.');
   t('Select the related topics.');
   t('Select the timeline of this Priority.');
+  t('Select this checkbox to show the latest block in this page');
   t('Social Network Links');
   t('Taxonomy');
   t('The content of this field is used for when the Priority is displayed in a list element.');
