@@ -56,7 +56,7 @@ function cwt_activities_exposed_submit(&$form, &$form_state) {
  * If start date exposed filter is empty, will only display calendar items from
  * the current date forward.
  */
-function cwt_activities_views_query_alter(&$view, &$query) {
+function cwt_activities_views_query_alter(&$view, $query) {
   if ($view->name == 'agenda') {
     // If start date field value is empty, adds to the query view the condition
     // to return all items from now forward.
@@ -73,7 +73,7 @@ function cwt_activities_views_query_alter(&$view, &$query) {
     }
     // Agenda views override date sorting, granularity should be: 'day'.
     if (($key = array_search('field_data_field_start_end_date_field_start_end_date_value', array_column($query->orderby, 'field'))) !== FALSE) {
-      $query->orderby[$key]['field'] = "DATE_FORMAT(field_data_field_start_end_date.field_start_end_date_value, '%Y%m%d')";
+      $query->orderby[$key]['field'] = "DATE_FORMAT(FROM_UNIXTIME(field_data_field_start_end_date.field_start_end_date_value), '%Y%m%d')";
     }
   }
   elseif ($view->name == 'activities' && $view->current_display == 'block') {
