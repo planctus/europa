@@ -47,3 +47,10 @@ function _nexteuropa_file_migrate_file_types() {
     return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
   }
 }
+
+/**
+ * Implements hook_file_default_types_alter().
+ */
+function nexteuropa_file_file_default_types_alter(&$types) {
+  $types['document']->mimetypes[] = 'application/zip';
+}

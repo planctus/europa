@@ -87,11 +87,17 @@ function _dt_announcement_ds_fields_announcement_block($field) {
 
   // A department content type rebels to global settings: DTTSB-1003.
   $is_latest_visible = variable_get('dt_shared_functions_dt_latest_visibility', TRUE);
-  $is_department = ($node->type == 'department');
+  // Some content types can opt in to show block even if global setting is off.
+  // This is done through a checkbox: 'field_core_latest_visibility'.
+  $opt_in_content_type = field_info_instance('node', 'field_core_latest_visibility', $node->type);
+  $opt_in_content_type_default = !$opt_in_content_type ? FALSE : $opt_in_content_type['default_value'][0]['value'];
+  // Per node checkbox to control visibility on $opt_in_content_type(s).
+  // If field is not filled in yet, fall back to the field's default value.
+  $opt_in_node = (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 1) ? TRUE : $opt_in_content_type_default;
   if (
-    (!$is_department && !$is_latest_visible) ||
-    ($is_department && !empty($node->field_department_news_link)) ||
-    (isset($field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value']) && $field['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] == 0)
+    (!$opt_in_content_type && !$is_latest_visible) ||
+    ($opt_in_content_type && !empty($node->field_department_news_link)) ||
+    !$opt_in_node
   ) {
     // Global setting to hide the latest block.
     return NULL;

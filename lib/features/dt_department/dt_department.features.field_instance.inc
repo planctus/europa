@@ -435,7 +435,7 @@ function dt_department_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select this checkbox to show the latest block in this page',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -466,7 +466,7 @@ function dt_department_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_latest_visibility',
-    'label' => 'Show news on the front-end for this node',
+    'label' => 'Latest visibility',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2085,6 +2085,7 @@ function dt_department_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Introduction');
+  t('Latest visibility');
   t('Legacy link');
   t('Legacy links');
   t('Link');
@@ -2099,8 +2100,8 @@ function dt_department_field_default_field_instances() {
   t('Priorities introduction');
   t('Related priorities');
   t('Related work areas');
+  t('Select this checkbox to show the latest block in this page');
   t('Short name, does not include type of department. E.g. \'Energy\' instead of \'Directorate-General for Energy\'.');
-  t('Show news on the front-end for this node');
   t('Social Network Links');
   t('Staff Search Link');
   t('Tasks description');

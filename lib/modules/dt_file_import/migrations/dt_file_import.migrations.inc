@@ -9,7 +9,6 @@
  * Global settings.
  */
 abstract class DtFileImportGeneralMigration extends XMLMigration {
-
   protected $xmlFilePath;
   protected $xml;
 
@@ -167,8 +166,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
     );
 
     // Mapped fields.
-    $this->addFieldMapping('title')
-      ->defaultValue(t('Publication title is missing'));
+    $this->addFieldMapping('title', 'title');
 
     // Publication type.
     $this->addFieldMapping('field_publication_type', 'publication_type')
@@ -406,20 +404,39 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Prepare the row to check for english title otherwise skip.
+   *
+   * @param object $row
+   *    The raw data from the import.
+   *
+   * @return bool
+   *    Return false to skip the row
+   */
+  public function prepareRow($row) {
+    $xml = $this->getPublicationTranslationElementByPidAndLanguage($row->pid, 'en');
+    // If the English title exists in the XML file, then assign the value
+    // to the title.
+    if ($xml && isset($xml->title)) {
+      $row->title = $xml->title;
+      return TRUE;
+    }
+    else {
+      $this->queueMessage('The publication title has no english version so it is not imported! (PID: ' . $row->pid . ')');
+      return FALSE;
+    }
+  }
+
+  /**
    * When a row import completed.
    *
-   * @param object $entity
+   * @param object|\stdClass $entity
    *   The entity, which already in the database.
    * @param \stdClass $row
    *   Imported row from migration.
    */
-  public function complete($entity, stdClass $row) {
+  public function complete(stdClass $entity, stdClass $row) {
     // Publication languages.
     $publication_languages = $this->getPublicationLanguages($row->pid);
-
-    // English title, if empty then indicate it in the title text.
-    $xml = $this->getPublicationTranslationElementByPidAndLanguage($row->pid, 'en');
-    $entity->title = isset($xml->title) ? (string) $xml->title : t('Publication title is missing, nid: @title', ['@title' => $entity->nid]);
 
     // Publication collection default setting: 0 - One publication.
     $entity->field_publication_collection[LANGUAGE_NONE][0]['value'] = 0;
@@ -502,15 +519,14 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
       [
         'fid' => [
           'type' => 'varchar',
-          'length' => 6,
+          'length' => 20,
           'not null' => TRUE,
         ],
       ],
       MigrateDestinationNode::getKeySchema()
     );
 
-    $this->addFieldMapping('title')
-      ->defaultValue(t('File title is missing'));
+    $this->addFieldMapping('title', 'title');
 
     // Type of file.
     $this->addFieldMapping('field_file_type_file', 'type_of_file')
@@ -548,6 +564,8 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
       ->xpath('file_unique_identifier');
 
     // Publication import.
+    // The `pid` is not a valid field at file content type,
+    // but somehow we should find the related publication entity.
     $this->addFieldMapping('pid', 'pid')
       ->xpath('pid')
       ->sourceMigration('DTPublication');
@@ -716,7 +734,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
    *   Source value from XML.
    *
    * @return mixed
-   *   - FALSE: If there is no mappad value.
+   *   - FALSE: If there is no mapped value.
    *   - string: mapped value.
    */
   protected function fileLinkUploadMap($value) {
@@ -727,20 +745,39 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Prepare the row to check for english title otherwise skip.
+   *
+   * @param object $row
+   *    The raw data from the import.
+   *
+   * @return bool
+   *    Return false to skip the row.
+   */
+  public function prepareRow($row) {
+    $xml = $this->getFileTranslationElementByFidAndLanguage($row->fid, 'en');
+    // If the English title exists in the XML file, then assign the value
+    // to the title.
+    if ($xml && isset($xml->title)) {
+      $row->title = $xml->title;
+      return TRUE;
+    }
+    else {
+      $this->queueMessage('The file title has no english version so it is not imported! (FID: ' . $row->fid . ')');
+      return FALSE;
+    }
+  }
+
+  /**
    * When a row import completed.
    *
-   * @param object $entity
+   * @param object|\stdClass $entity
    *   The entity, which already in the database.
    * @param \stdClass $row
    *   Imported row from migration.
    */
-  public function complete($entity, stdClass $row) {
+  public function complete(stdClass $entity, stdClass $row) {
     // Languages.
     $file_languages = $this->getFileLanguages($row->fid);
-
-    // English title, if empty then indicate it in the text.
-    $xml = $this->getFileTranslationElementByFidAndLanguage($row->fid, 'en');
-    $entity->title = isset($xml->title) ? (string) $xml->title : t('File title is missing, nid: @title', ['@title' => $entity->nid]);
 
     // Translation setting at the content.
     $data = [];
@@ -757,6 +794,11 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
       switch ($row->file_link_upload) {
         // Download and store a file.
         case 'Upload the file':
+          $file = $this->getFile($xml);
+          // Skip the full process if there is no file provided.
+          if (empty($file)) {
+            break 2;
+          }
           $entity->field_core_file[$language][] = (array) $this->getFile($xml);
           break;
 
@@ -768,7 +810,6 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
             'attribute' => [],
           ];
           break;
-
       }
 
       // Node specific data.
@@ -785,21 +826,29 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
       ];
     }
 
-    // Adding language specific settings to file node.
-    $entity->translations = (object) [
-      'original' => 'en',
-      'data' => $data,
-    ];
+    // Delete the node if there is no file imported and no link given.
+    // We need to do this here because translation need a nid, and we don't
+    // have nid in prepare process to provide for the entity object.
+    if (!isset($entity->field_core_file) && !isset($entity->field_core_legacy_link)) {
+      node_delete($entity->nid);
+    }
+    else {
+      // Adding language specific settings to file node.
+      $entity->translations = (object) [
+        'original' => 'en',
+        'data' => $data,
+      ];
 
-    // Store file node.
-    node_save($entity);
+      // Store file node.
+      node_save($entity);
 
-    // Publication update.
-    if (isset($entity->pid)) {
-      $publication = node_load($entity->pid);
-      if (isset($publication)) {
-        $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $entity->nid;
-        node_save($publication);
+      // Publication update.
+      if (isset($entity->pid)) {
+        $publication = node_load($entity->pid);
+        if (isset($publication)) {
+          $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $entity->nid;
+          node_save($publication);
+        }
       }
     }
   }
@@ -808,7 +857,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
    * Get the file object.
    *
    * @param object $xml
-   *   XML obejct of file translation.
+   *   XML object of file translation.
    *
    * @return mixed
    *   - NULL if no file object.
@@ -819,7 +868,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     // Giving a value for the filename.
     $filename = isset($xml->target_filename) ? (string) $xml->target_filename : file_munge_filename(preg_replace('@^.*/@', '', $uri), '', TRUE);
 
-    if (!empty($buffer = $this->getFileContentByCurl($uri))) {
+    if (!empty($buffer = $this->getFileContentByCurl($uri, $xml->fid))) {
       if ($file_object = file_save_data($buffer, $this->folder . $filename, FILE_EXISTS_RENAME)) {
         $file_object->display = '1';
         return $file_object;
@@ -833,21 +882,28 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
    * Get the file content, using CURL.
    *
    * @param string $url
-   *   Remote file for donwload.
+   *   Remote file for download.
+   * @param string $fid
+   *   The file ID from the source.
    *
    * @return string
    *   Content.
    *
    * @see: http://stackoverflow.com/questions/697472/php-file-get-contents-returns-failed-to-open-stream-http-request-failed#answer-697540
    */
-  private function getFileContentByCurl($url) {
+  private function getFileContentByCurl($url, $fid) {
     $curl_handle = curl_init();
     curl_setopt($curl_handle, CURLOPT_URL, $url);
     curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl_handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1");
     $query = curl_exec($curl_handle);
+    $curl_info = curl_getinfo($curl_handle);
+    if ($curl_info['http_code'] != 200) {
+      $this->queueMessage('The target url of the file is not accessible: (' . $url . ') (FID: ' . $fid . ')');
+    }
     curl_close($curl_handle);
+
     return $query;
   }
 
