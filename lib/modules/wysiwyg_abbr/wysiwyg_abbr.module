@@ -45,7 +45,6 @@ function wysiwyg_abbr_wysiwyg_plugin($editor, $version) {
           'internal' => FALSE,
         ],
       ];
-      break;
   }
 }
 
