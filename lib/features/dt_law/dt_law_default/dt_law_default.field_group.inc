@@ -14,6 +14,37 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_background|node|law|full';
+  $field_group->group_name = 'group_law_background';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Background',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_core_description',
+      1 => 'field_core_background',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Background',
+      'instance_settings' => array(
+        'classes' => 'group-law-background field-group-section_group',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => 'id="Background"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_law_background|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_law_content|node|law|form';
   $field_group->group_name = 'group_law_content';
   $field_group->entity_type = 'node';
@@ -25,10 +56,12 @@ function dt_law_default_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_description',
-      2 => 'field_core_introduction',
-      3 => 'field_core_legacy_link',
-      4 => 'field_law_status',
+      1 => 'field_core_short_title',
+      2 => 'field_core_description',
+      3 => 'field_core_introduction',
+      4 => 'field_core_legacy_link',
+      5 => 'field_law_status',
+      6 => 'field_core_background',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -45,6 +78,93 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_departments|node|law|full';
+  $field_group->group_name = 'group_law_departments';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Departments',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_core_departments',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Departments',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="departments"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_law_departments|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_documents|node|law|form';
+  $field_group->group_name = 'group_law_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_law_tabgroup';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_publications',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-law-documents field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_law_documents|node|law|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_documents|node|law|full';
+  $field_group->group_name = 'group_law_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_core_publications',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="documents"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_law_documents|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_law_editorial|node|law|form';
   $field_group->group_name = 'group_law_editorial';
   $field_group->entity_type = 'node';
@@ -53,7 +173,7 @@ function dt_law_default_field_group_info() {
   $field_group->parent_name = 'group_law_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -75,6 +195,65 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_extra|node|law|form';
+  $field_group->group_name = 'group_law_extra';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_law_tabgroup';
+  $field_group->data = array(
+    'label' => 'Extra fields',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_law_reference_number',
+      1 => 'field_law_entry_date',
+      2 => 'field_law_date_apply',
+      3 => 'field_law_link_to_full_text',
+      4 => 'field_law_link_to_summary',
+      5 => 'field_core_laws',
+      6 => 'field_law_law_type',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-law-extra field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_law_extra|node|law|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_meta|node|law|full';
+  $field_group->group_name = 'group_law_meta';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Meta',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_law_status',
+      1 => 'content_type_label',
+    ),
+    'format_type' => 'meta_wrapper',
+    'format_settings' => array(
+      'label' => 'Meta',
+      'instance_settings' => array(
+        'modifier' => 'meta--header',
+      ),
+    ),
+  );
+  $field_groups['group_law_meta|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_law_meta|node|law|teaser';
   $field_group->group_name = 'group_law_meta';
   $field_group->entity_type = 'node';
@@ -85,8 +264,7 @@ function dt_law_default_field_group_info() {
     'label' => 'Meta',
     'weight' => '0',
     'children' => array(
-      0 => 'field_law_status',
-      1 => 'content_type_label',
+      0 => 'content_type_label',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -102,6 +280,97 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_policies|node|law|full';
+  $field_group->group_name = 'group_law_policies';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Policies',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_policies',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Policies',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="policies"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_law_policies|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_priorities|node|law|full';
+  $field_group->group_name = 'group_law_priorities';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Piorities',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_core_priorities',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Piorities',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="priorities"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_law_priorities|node|law|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_law_related|node|law|form';
+  $field_group->group_name = 'group_law_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'law';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_law_tabgroup';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_core_departments',
+      1 => 'field_core_topics',
+      2 => 'field_core_priorities',
+      3 => 'field_core_policies',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Related',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-law-related field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $field_groups['group_law_related|node|law|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_law_tabgroup|node|law|form';
   $field_group->group_name = 'group_law_tabgroup';
   $field_group->entity_type = 'node';
@@ -112,9 +381,11 @@ function dt_law_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_taxonomy',
-      1 => 'group_law_content',
+      0 => 'group_law_content',
+      1 => 'group_law_documents',
       2 => 'group_law_editorial',
+      3 => 'group_law_related',
+      4 => 'group_law_extra',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -129,36 +400,46 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_taxonomy|node|law|form';
-  $field_group->group_name = 'group_taxonomy';
+  $field_group->identifier = 'group_law_topics|node|law|full';
+  $field_group->group_name = 'group_law_topics';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'law';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_law_tabgroup';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Taxonomy',
-    'weight' => '9',
+    'label' => 'Topics',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_eurovoc_taxonomy',
+      0 => 'field_core_topics',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'section_group',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Topics',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-taxonomy field-group-tab',
-        'required_fields' => 1,
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="topics"',
+        'modifier' => '',
+        'layout' => '',
       ),
     ),
   );
-  $field_groups['group_taxonomy|node|law|form'] = $field_group;
+  $field_groups['group_law_topics|node|law|full'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Background');
   t('Content');
+  t('Departments');
+  t('Documents');
   t('Editorial settings');
+  t('Extra fields');
   t('Meta');
-  t('Taxonomy');
+  t('Piorities');
+  t('Policies');
+  t('Related');
+  t('Topics');
 
   return $field_groups;
 }

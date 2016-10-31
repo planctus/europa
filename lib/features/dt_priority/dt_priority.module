@@ -46,7 +46,7 @@ function dt_priority_permission() {
 function dt_priority_form_priority_node_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['weight'])) {
     foreach ($form['weight']['weight_weight']["#options"] as $key => $value) {
-      if (substr($key, 0, 1) == '-') {
+      if (drupal_substr($key, 0, 1) == '-') {
         unset($form['weight']['weight_weight']["#options"][$key]);
       }
     }

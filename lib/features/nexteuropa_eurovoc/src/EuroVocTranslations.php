@@ -9,10 +9,18 @@ namespace Drupal\nexteuropa_eurovoc;
  */
 class EuroVocTranslations extends EuroVocBase {
 
-  // This is the data the user wants to get in the end.
+  /**
+   * This is the data the user wants to get in the end.
+   *
+   * @var array
+   */
   protected $translations;
 
-  // EuroVoc => Drupal codes.
+  /**
+   * EuroVoc => Drupal codes.
+   *
+   * @var array
+   */
   private $languages = [
     'bg' => 'bg',
     'cs' => 'cs',

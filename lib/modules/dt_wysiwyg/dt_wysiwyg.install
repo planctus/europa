@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dt_wysiwyg_install() {
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'dt_headings', ['dt_headings']);
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html_track', 'dt_headings', ['dt_headings']);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dt_wysiwyg_uninstall() {
+  multisite_config_service('wysiwyg')->removeButtonsFromProfile('full_html', 'dt_headings', ['dt_headings']);
+  multisite_config_service('wysiwyg')->removeButtonsFromProfile('full_html_track', 'dt_headings', ['dt_headings']);
+}
+
+/**
+ * DTTSB-962 - Add dialog for creating h2 with ids.
+ */
+function dt_wysiwyg_update_7101() {
+  // Add the button to the full_html and full_html_track toolbar.
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html', 'dt_headings', ['dt_headings']);
+  multisite_config_service('wysiwyg')->addButtonsToProfile('full_html_track', 'dt_headings', ['dt_headings']);
+}

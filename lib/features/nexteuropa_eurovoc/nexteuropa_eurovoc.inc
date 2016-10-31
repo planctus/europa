@@ -131,7 +131,7 @@ class NexteuropaEuroVocThesauriMigration extends XMLMigration {
    * {@inheritdoc}
    */
   public function prepareRow($row) {
-    $row->parent_id = substr($row->THESAURUS_ID, 0, 2);
+    $row->parent_id = drupal_substr($row->THESAURUS_ID, 0, 2);
   }
 
 }

@@ -1,0 +1,52 @@
+.icon--after {
+  text-decoration: none;
+  font-family: 'EuropaIcons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  margin-left: 4px;
+  line-height: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@media print {
+  .hidden-print {
+    display: none !important; } }
+
+.initiative-feedback-form .help-block {
+  max-width: none; }
+
+.initiative-feedback-form .field-name-field-brp-fb-trnumber .form-item,
+.initiative-feedback-form .field-name-field-brp-fb-country .form-item {
+  margin-bottom: 0; }
+  .initiative-feedback-form .field-name-field-brp-fb-trnumber .form-item input,
+  .initiative-feedback-form .field-name-field-brp-fb-trnumber .form-item select,
+  .initiative-feedback-form .field-name-field-brp-fb-country .form-item input,
+  .initiative-feedback-form .field-name-field-brp-fb-country .form-item select {
+    margin-bottom: 0.6em; }
+
+.initiative-feedback-form .field-name-field-brp-fb-trnumber .help-block,
+.initiative-feedback-form .field-name-field-brp-fb-country .help-block {
+  max-width: 32em; }
+
+.initiative-feedback-form .field-name-field-brp-fb-publication > p,
+.initiative-feedback-form .field-name-field-brp-fb-agree > p {
+  max-width: none;
+  margin-top: -0.6875em;
+  margin-left: 2.0620em;
+  font-size: 0.889em; }
+
+.initiative-feedback-form .field-name-field-brp-fb-publication > p {
+  margin-left: 0; }
+
+@media (min-width: 768px) {
+  .initiative-feedback-form input[type="text"],
+  .initiative-feedback-form select {
+    width: 40%; }
+  .initiative-feedback-form .field-name-field-brp-fb-agree > p {
+    max-width: 60%; } }
+
+/*# sourceMappingURL=style.css.map */

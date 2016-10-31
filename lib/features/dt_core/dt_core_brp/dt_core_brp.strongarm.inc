@@ -14,23 +14,58 @@ function dt_core_brp_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_language_negotiation';
-  $strongarm->value = 'current';
-  $export['nexteuropa_europa_search_language_negotiation'] = $strongarm;
+  $strongarm->name = 'easy_breadcrumb-home_segment_title';
+  $strongarm->value = 'European Commission';
+  $export['easy_breadcrumb-home_segment_title'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_query_source';
-  $strongarm->value = 'BETA';
-  $export['nexteuropa_europa_search_query_source'] = $strongarm;
+  $strongarm->name = 'easy_breadcrumb-include_home_segment';
+  $strongarm->value = 0;
+  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'nexteuropa_europa_search_url';
-  $strongarm->value = 'http://www.acceptance.ec.europa.eu/geninfo/query/index.do';
-  $export['nexteuropa_europa_search_url'] = $strongarm;
+  $strongarm->name = 'l10n_update_check_disabled';
+  $strongarm->value = 0;
+  $export['l10n_update_check_disabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_check_frequency';
+  $strongarm->value = '30';
+  $export['l10n_update_check_frequency'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_check_mode';
+  $strongarm->value = '3';
+  $export['l10n_update_check_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_download_store';
+  $strongarm->value = 'sites/all/translations';
+  $export['l10n_update_download_store'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_import_mode';
+  $strongarm->value = '1';
+  $export['l10n_update_import_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'l10n_update_rebuild_projects';
+  $strongarm->value = 1;
+  $export['l10n_update_rebuild_projects'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -45,6 +80,27 @@ function dt_core_brp_strongarm() {
   $strongarm->name = 'menu_secondary_links_source';
   $strongarm->value = '';
   $export['menu_secondary_links_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_language_negotiation';
+  $strongarm->value = 'current';
+  $export['nexteuropa_europa_search_language_negotiation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_query_source';
+  $strongarm->value = '';
+  $export['nexteuropa_europa_search_query_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nexteuropa_europa_search_url';
+  $strongarm->value = 'http://ec.europa.eu/geninfo/query/index.do?';
+  $export['nexteuropa_europa_search_url'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -99,29 +155,15 @@ function dt_core_brp_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
-  $strongarm->value = 'European Commission BRP';
+  $strongarm->value = 'European Commission Beta';
   $export['site_name'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_slogan';
-  $strongarm->value = 'BRP SLOGAN';
+  $strongarm->value = '';
   $export['site_slogan'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'easy_breadcrumb-home_segment_title';
-  $strongarm->value = 'European Commission';
-  $export['easy_breadcrumb-home_segment_title'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'easy_breadcrumb-include_home_segment';
-  $strongarm->value = 1;
-  $export['easy_breadcrumb-include_home_segment'] = $strongarm;
 
   return $export;
 }

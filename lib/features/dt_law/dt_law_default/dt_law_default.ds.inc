@@ -13,6 +13,72 @@ function dt_law_default_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|law|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'law';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'content_type_label' => array(
+      'weight' => '29',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'in_page_navigation' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_law_status' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_core_background' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|law|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|law|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'law';
@@ -65,6 +131,74 @@ function dt_law_default_ds_field_settings_info() {
  */
 function dt_law_default_ds_layout_settings_info() {
   $export = array();
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|law|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'law';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left_header' => array(
+        0 => 'group_law_meta',
+        1 => 'title',
+        2 => 'field_core_introduction',
+        14 => 'content_type_label',
+        15 => 'field_law_status',
+      ),
+      'left' => array(
+        3 => 'in_page_navigation',
+      ),
+      'central' => array(
+        4 => 'field_core_publications',
+        5 => 'field_core_topics',
+        6 => 'field_core_background',
+        7 => 'group_law_departments',
+        8 => 'group_law_topics',
+        9 => 'group_law_policies',
+        10 => 'group_law_priorities',
+        11 => 'field_core_departments',
+        12 => 'group_law_documents',
+        13 => 'field_core_policies',
+        16 => 'field_core_priorities',
+      ),
+    ),
+    'fields' => array(
+      'group_law_meta' => 'left_header',
+      'title' => 'left_header',
+      'field_core_introduction' => 'left_header',
+      'in_page_navigation' => 'left',
+      'field_core_publications' => 'central',
+      'field_core_topics' => 'central',
+      'field_core_background' => 'central',
+      'group_law_departments' => 'central',
+      'group_law_topics' => 'central',
+      'group_law_policies' => 'central',
+      'group_law_priorities' => 'central',
+      'field_core_departments' => 'central',
+      'group_law_documents' => 'central',
+      'field_core_policies' => 'central',
+      'content_type_label' => 'left_header',
+      'field_law_status' => 'left_header',
+      'field_core_priorities' => 'central',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'right_header' => 'div',
+      'top' => 'div',
+      'left' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|law|full'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

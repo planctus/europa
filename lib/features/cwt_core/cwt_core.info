@@ -28,6 +28,7 @@ dependencies[] = file_entity
 dependencies[] = dt_europa_settings
 dependencies[] = i18n_taxonomy
 dependencies[] = jquery_update
+dependencies[] = dt_wysiwyg
 dependencies[] = language_selector_site
 dependencies[] = link
 dependencies[] = media

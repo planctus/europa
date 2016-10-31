@@ -26,14 +26,15 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'body',
-      2 => 'field_announcement_contact',
-      3 => 'field_announcement_department',
-      4 => 'field_announcement_location',
-      5 => 'field_announcement_type',
-      6 => 'field_core_introduction',
-      7 => 'field_core_description',
-      8 => 'field_core_legacy_link',
-      9 => 'field_core_date_published',
+      2 => 'field_announcement_department',
+      3 => 'field_announcement_location',
+      4 => 'field_announcement_type',
+      5 => 'field_core_introduction',
+      6 => 'field_core_description',
+      7 => 'field_core_legacy_link',
+      8 => 'field_core_date_published',
+      9 => 'field_publication_referenceno',
+      10 => 'field_core_press_contacts',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -62,8 +63,9 @@ function dt_announcement_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_announcement_info',
-      2 => 'field_core_links',
-      3 => 'related_announcements',
+      2 => 'field_core_introduction',
+      3 => 'field_core_links',
+      4 => 'social_bookmark_webtools',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -110,6 +112,36 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_announcement_contextual2|node|announcement|full';
+  $field_group->group_name = 'group_announcement_contextual2';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contextual meta',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_announcement_department',
+      1 => 'field_publication_referenceno',
+      2 => 'location',
+      3 => 'published',
+      4 => 'changed_date',
+    ),
+    'format_type' => 'context_nav',
+    'format_settings' => array(
+      'label' => 'Contextual meta',
+      'instance_settings' => array(
+        'classes' => '',
+        'modifier' => '',
+      ),
+    ),
+  );
+  $field_groups['group_announcement_contextual2|node|announcement|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_announcement_contextual|node|announcement|full';
   $field_group->group_name = 'group_announcement_contextual';
   $field_group->entity_type = 'node';
@@ -118,7 +150,7 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contextual navigation',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
       0 => 'field_core_department',
       1 => 'field_core_persons',
@@ -145,10 +177,9 @@ function dt_announcement_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main Section',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'group_announcement_content',
-      1 => 'group_announcement_rsb_content',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -179,6 +210,7 @@ function dt_announcement_field_group_info() {
       0 => 'field_announcement_location',
       1 => 'field_announcement_type',
       2 => 'field_core_date_published',
+      3 => 'author',
     ),
     'format_type' => 'meta_wrapper',
     'format_settings' => array(
@@ -259,7 +291,6 @@ function dt_announcement_field_group_info() {
       4 => 'field_core_policies',
       5 => 'field_core_priorities',
       6 => 'field_core_pages',
-      7 => 'field_core_pri_policy_areas',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -276,31 +307,32 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_announcement_rsb_content|node|announcement|full';
-  $field_group->group_name = 'group_announcement_rsb_content';
+  $field_group->identifier = 'group_contact|node|announcement|full';
+  $field_group->group_name = 'group_contact';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'announcement';
   $field_group->mode = 'full';
-  $field_group->parent_name = 'group_announcement_main';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Right Sidebar',
+    'label' => 'Contact',
     'weight' => '7',
     'children' => array(
-      0 => 'social_bookmark_webtools',
+      0 => 'field_core_press_contacts',
     ),
-    'format_type' => 'html-element',
+    'format_type' => 'section_group',
     'format_settings' => array(
-      'label' => 'Right Sidebar',
+      'label' => 'Contact',
       'instance_settings' => array(
-        'classes' => 'sidebar-field-group__sidebar',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
         'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
       ),
     ),
   );
-  $field_groups['group_announcement_rsb_content|node|announcement|full'] = $field_group;
+  $field_groups['group_contact|node|announcement|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -393,6 +425,36 @@ function dt_announcement_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_related|node|announcement|full';
+  $field_group->group_name = 'group_related';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'announcement';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Related',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_core_announcement',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Related',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_related|node|announcement|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_taxonomy|node|announcement|form';
   $field_group->group_name = 'group_taxonomy';
   $field_group->entity_type = 'node';
@@ -404,8 +466,6 @@ function dt_announcement_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_eurovoc_taxonomy',
-      1 => 'field_eurovoc_taxonomy_select',
-      2 => 'field_optgroup',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -421,15 +481,17 @@ function dt_announcement_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Contact');
   t('Content');
   t('Context information');
+  t('Contextual meta');
   t('Contextual navigation');
   t('Editorial settings');
   t('Featured Media');
   t('Main Section');
   t('Meta');
+  t('Related');
   t('Related content');
-  t('Right Sidebar');
   t('Taxonomy');
 
   return $field_groups;

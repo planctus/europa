@@ -42,8 +42,8 @@ function dt_funding_update_7101(&$sandbox) {
   $destination_fields = array();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', $source_bundle)
-        ->fieldCondition('field_policy_imp_type', 'value', 'funding', '=');
+    ->entityCondition('bundle', $source_bundle)
+    ->fieldCondition('field_policy_imp_type', 'value', 'funding', '=');
   // Setup the amount of steps.
   $limit = 100;
 
