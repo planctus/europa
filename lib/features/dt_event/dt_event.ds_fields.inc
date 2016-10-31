@@ -548,7 +548,7 @@ function _dt_event_ds_fields_livestreaming($field) {
       case DT_EVENT_LIVE_STREAM_FUTURE:
         $timezone = $field['entity']->field_event_live_streaming_date[LANGUAGE_NONE][0]['timezone'];
         $replacement = [
-          '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'h:i (T)', $timezone),
+          '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'H:i (T)', $timezone),
         ];
         $streaming_text = t('<strong>Watch live</strong> at @time', $replacement);
         break;
