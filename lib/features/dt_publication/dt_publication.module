@@ -183,61 +183,50 @@ function _dt_publication_collections() {
  */
 function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
 
-  if ($view->name == 'publication_list' && $display_id == 'block') {
-    if ($node = menu_get_object()) {
-      if (!$node->field_publications_visibility[LANGUAGE_NONE][0]['value']) {
-        $view->executed = TRUE;
-        $view->build = TRUE;
+  if ($view->name == 'publication_list' && $display_id == 'block' && $node = menu_get_object()) {
+    if (empty($node->field_publications_visibility) || !$node->field_publications_visibility[LANGUAGE_NONE][0]['value']) {
+      $view->executed = TRUE;
+      $view->build = TRUE;
+    }
+    else {
+      $prev_filters = $view->display_handler->get_option('filters');
+
+      // Country.
+      $predefined_country = NULL;
+      if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_core_nal_countries_tid_i18n']['value'][$predefined_country] = $predefined_country;
       }
-      else {
-        $prev_filters = $view->display_handler->get_option('filters');
 
-        // Country.
-        $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid'];
-        if ($predefined_country) {
-          $prev_filters['field_core_nal_countries_tid_i18n']['value'][$predefined_country] = $predefined_country;
-        }
-        if (!$node->field_publications_country_on[LANGUAGE_NONE][0]['value']) {
-          if (!$predefined_country) {
-            unset($prev_filters['field_core_nal_countries_tid_i18n']);
-          }
-          else {
-            $prev_filters['field_core_nal_countries_tid_i18n']['exposed'] = FALSE;
-          }
-        }
-
-        // Year.
-        $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value'];
-        if ($predefined_year) {
-          $prev_filters['field_core_date_updated_value']['value']['value'] = date('Y', $predefined_year);
-        }
-
-        if (!$node->field_publications_year_on[LANGUAGE_NONE][0]['value']) {
-          if (!$predefined_year) {
-            unset($prev_filters['field_core_date_updated_value']);
-          }
-          else {
-            $prev_filters['field_core_date_updated_value']['exposed'] = FALSE;
-          }
-        }
-
-        // Publication type.
-        $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid'];
-        if ($predefined_type) {
-          $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
-        }
-
-        if (!$node->field_publications_type_on[LANGUAGE_NONE][0]['value']) {
-          if (!$predefined_type) {
-            unset($prev_filters['field_publication_type_tid_i18n']);
-          }
-          else {
-            $prev_filters['field_publication_type_tid_i18n']['exposed'] = FALSE;
-          }
-        }
-
-        $view->display_handler->override_option('filters', $prev_filters);
+      // Year.
+      $predefined_year = NULL;
+      if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
+        $prev_filters['field_core_date_updated_value']['value']['value'] = date('Y', $predefined_year);
       }
+
+      // Publication type.
+      $predefined_type = NULL;
+      if (!empty($node->field_publications_type) && $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
+      }
+
+      $exp_filters = [
+        'field_core_nal_countries_tid_i18n' => ['field_publications_country_on', $predefined_country],
+        'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
+        'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
+      ];
+
+      foreach ($exp_filters as $exp_filter_key => $exp_filter) {
+        if (!$node->{$exp_filter[0]}[LANGUAGE_NONE][0]['value']) {
+          if (!$exp_filter[1]) {
+            unset($prev_filters[$exp_filter_key]);
+          }
+          else {
+            $prev_filters[$exp_filter_key]['exposed'] = FALSE;
+          }
+        }
+      }
+
+      $view->display_handler->override_option('filters', $prev_filters);
     }
   }
 }
