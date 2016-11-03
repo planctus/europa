@@ -82,6 +82,21 @@ Feature: Checking different state of events
     Then I should see the link "Registratie titel" linking to "http://google.be"
 
 
+      # "Book your seat" should appear.
+  Scenario: "Book your seat" can link to an e-mail adress
+    Given I am viewing an "Event" content:
+      | title                                 | Book your seat test, button should appears, link and title |
+      | field_event_status                    | no                                                         |
+      | field_event_is_fully_booked           | no                                                         |
+      | field_event_registration              | Registration title - mailto:info@ec.europa.eu              |
+      | field_event_registration_end:value    | 1893456000                                                 |
+      | field_event_registration_end:timezone | Europe/Budapest                                            |
+      | field_event_date:value                | 1893456000                                                 |
+      | field_event_date:value2               | 1893456000                                                 |
+      | field_event_date:timezone             | Europe/Budapest                                            |
+      | status                                | 1                                                          |
+    Then I should see the link "Registration title" linking to "mailto:info@ec.europa.eu"
+
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear, when only registration link added.
     Given I am logged in as a user with the "administrator" role

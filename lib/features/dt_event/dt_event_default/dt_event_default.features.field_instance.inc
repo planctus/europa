@@ -2776,7 +2776,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
     'bundle' => 'event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add the link where you must register in order to attend the event.',
+    'description' => 'Add the link where you must register in order to attend the event. Note: you can use mailto:example@mail.com to insert an e-mail.',
     'display' => array(
       'default' => array(
         'label' => 'above',
