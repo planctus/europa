@@ -18,15 +18,20 @@ function dt_page_extended_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'basic_page';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'publications_list' => array(
-      'weight' => '12',
-      'label' => 'above',
-      'format' => 'default',
-    ),
     'priorities_preprocess' => array(
       'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'publications_list' => array(
+      'weight' => '12',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
     ),
     'title' => array(
       'weight' => '0',
@@ -226,11 +231,8 @@ function dt_page_extended_ds_layout_settings_info() {
         22 => 'field_core_persons',
         23 => 'field_core_topics',
       ),
-      'left' => array(
-        5 => 'in_page_navigation',
-      ),
       'central' => array(
-        6 => 'priorities_preprocess',
+        5 => 'priorities_preprocess',
         7 => 'group_page_priorities',
         8 => 'body',
         9 => 'group_page_free_field',
@@ -244,6 +246,9 @@ function dt_page_extended_ds_layout_settings_info() {
         17 => 'field_core_files',
         18 => 'field_core_links',
       ),
+      'left' => array(
+        6 => 'in_page_navigation',
+      ),
     ),
     'fields' => array(
       'title' => 'left_header',
@@ -251,8 +256,8 @@ function dt_page_extended_ds_layout_settings_info() {
       'field_core_children' => 'top',
       'group_page_contextual_navigation' => 'top',
       'field_core_banner' => 'top',
-      'in_page_navigation' => 'left',
       'priorities_preprocess' => 'central',
+      'in_page_navigation' => 'left',
       'group_page_priorities' => 'central',
       'body' => 'central',
       'group_page_free_field' => 'central',
