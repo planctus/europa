@@ -33,23 +33,14 @@ function dt_gallery_field_formatter_prepare_view($entity_type, $entities, $field
  * Implements hook_field_formatter_view().
  */
 function dt_gallery_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  // Initialize the element.
+  $render_array = NULL;
 
-  $render_array = [
-    '#prefix' => '<div class="mediagallery">',
-    '#suffix' => '</div>',
-  ];
-
+  // Start a gallery object.
   $gallery = new DtGallery($items);
 
   /* @var $row_items \Drupal\dt_gallery\DtGalleryRow */
   foreach ($gallery->getRows() as $row_id => $row_items) {
-
-    // Prepare the row render array.
-    $render_array[$row_id] = [
-      '#prefix' => '<div class="row">',
-      '#suffix' => '</div>',
-    ];
-
     // Loop over the items in the row.
     /* @var $item \Drupal\dt_gallery\DtGalleryItemBase */
     foreach ($row_items as $item_id => $item) {
@@ -104,7 +95,24 @@ function dt_gallery_field_formatter_view($entity_type, $entity, $field, $instanc
         ],
       ];
 
-      // The mediagallery_item.
+      // Prepare the render array in case it does not exist.
+      if (NULL === $render_array) {
+        $render_array = [
+          '#prefix' => '<div class="mediagallery">',
+          '#suffix' => '</div>',
+        ];
+      }
+
+      // Prepare the row render array. We should check if it is existing as we
+      // don't want to render empty items.
+      if (!isset($render_array[$row_id])) {
+        $render_array[$row_id] = [
+          '#prefix' => '<div class="row">',
+          '#suffix' => '</div>',
+        ];
+      }
+
+      // Add the gallery item to the render array.
       $render_array[$row_id][$item_id] = [
         '#theme' => 'mediagallery_item',
         '#size' => $item->getSize(),
@@ -115,5 +123,6 @@ function dt_gallery_field_formatter_view($entity_type, $entity, $field, $instanc
       ];
     }
   }
+
   return $render_array;
 }
