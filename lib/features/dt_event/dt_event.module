@@ -295,6 +295,6 @@ function dt_event_nexteuropa_formatters_view_modes_alter(&$view_modes) {
  */
 function dt_event_preprocess_dt_event_status(&$variables) {
   if (isset($variables['message_body'])) {
-    $variables['message_body'] = drupal_html_to_text($variables['message_body']);
+    $variables['message_body'] = filter_xss($variables['message_body']);
   }
 }
