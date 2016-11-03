@@ -119,6 +119,18 @@ Feature: File content type
     Then I should see the link "Downloaden"
     Then I get the file "test_nl.pdf" after clicking "Download"
 
+    When I am viewing a "Publication":
+      | title                           | Publication title |
+      | language                        | en                |
+      | status                          | 1                 |
+      | field_core_files                | My File Title     |
+      | field_core_date_updated:value   | 1400980800        |
+      | field_core_date_updated:value2  | 1400980800        |
+      | field_core_date_published:value | 1400980800        |
+      | field_core_date_published:value | 1400980800        |
+    And I click "Available languages (1)"
+    Then I should see "version" in the ".file__translations-item .file__title" element
+
   Scenario: I can add external links to a file
     Given "File" content:
       | title      | status | field_core_legacy_link  |
@@ -138,7 +150,7 @@ Feature: File content type
       | title  | File Title |
       | status | 1          |
       | nid    | 99999      |
-     | is_new | 1          |
+      | is_new | 1          |
 
     And I click "New draft" in the "tabs" region
     And I select the radio button "Upload the file."
