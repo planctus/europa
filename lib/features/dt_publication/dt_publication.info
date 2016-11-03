@@ -117,6 +117,7 @@ features_exclude[dependencies][title] = title
 features_exclude[dependencies][smart_trim] = smart_trim
 features_exclude[dependencies][views] = views
 features_exclude[dependencies][entity] = entity
+features_exclude[dependencies][entityreference_view_widget] = entityreference_view_widget
 features_exclude[field_base][title_field] = title_field
 features_exclude[field_base][og_group_ref] = og_group_ref
 features_exclude[field_base][group_content_access] = group_content_access
