@@ -55,8 +55,8 @@ function dt_person_field_group_info() {
     'label' => 'Articles and presentations',
     'weight' => '9',
     'children' => array(
-      0 => 'field_core_publications',
-      1 => 'field_core_files',
+      0 => 'field_core_files',
+      1 => 'field_core_publications',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

@@ -174,13 +174,6 @@ function dt_person_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_core_links' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
     'field_core_next_steps' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -200,6 +193,13 @@ function dt_person_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
           'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_core_files' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
@@ -368,32 +368,32 @@ function dt_person_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'group_meta',
         3 => 'full_name_nolink',
-        6 => 'field_person_tagline',
+        7 => 'field_person_tagline',
         19 => 'field_person_role',
         20 => 'field_person_role_title',
       ),
       'central' => array(
         1 => 'field_person_agenda_introduction',
-        2 => 'field_core_next_steps',
-        4 => 'body',
-        5 => 'field_core_links',
-        7 => 'field_core_file',
-        8 => 'field_core_publications',
-        9 => 'field_core_files',
+        2 => 'body',
+        4 => 'field_core_links',
+        5 => 'field_core_next_steps',
+        6 => 'field_core_publications',
+        9 => 'field_core_file',
+        10 => 'field_core_files',
         15 => 'group_biography',
         16 => 'group_agenda',
         17 => 'group_articles_presentation',
         18 => 'social_bookmark_webtools',
       ),
       'biography_image' => array(
-        10 => 'field_person_photo',
+        8 => 'field_person_photo',
       ),
       'biography_column' => array(
         11 => 'group_context_nav',
-        12 => 'field_core_departments',
+        13 => 'field_core_departments',
       ),
       'top' => array(
-        13 => 'field_core_contact',
+        12 => 'field_core_contact',
       ),
       'left' => array(
         14 => 'in_page_navigation',
@@ -402,18 +402,18 @@ function dt_person_ds_layout_settings_info() {
     'fields' => array(
       'group_meta' => 'left_header',
       'field_person_agenda_introduction' => 'central',
-      'field_core_next_steps' => 'central',
-      'full_name_nolink' => 'left_header',
       'body' => 'central',
+      'full_name_nolink' => 'left_header',
       'field_core_links' => 'central',
-      'field_person_tagline' => 'left_header',
-      'field_core_file' => 'central',
+      'field_core_next_steps' => 'central',
       'field_core_publications' => 'central',
-      'field_core_files' => 'central',
+      'field_person_tagline' => 'left_header',
       'field_person_photo' => 'biography_image',
+      'field_core_file' => 'central',
+      'field_core_files' => 'central',
       'group_context_nav' => 'biography_column',
-      'field_core_departments' => 'biography_column',
       'field_core_contact' => 'top',
+      'field_core_departments' => 'biography_column',
       'in_page_navigation' => 'left',
       'group_biography' => 'central',
       'group_agenda' => 'central',

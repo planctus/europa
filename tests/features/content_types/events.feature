@@ -435,3 +435,14 @@ Feature: Checking different state of events
       | body:format | full_html                                           |
       | status      | 1                                                   |
     Then I should see an ".node.node-event.node-teaser.view-mode-teaser" element
+
+  Scenario: Gallery should not show if no media is uploaded
+    Given I am viewing an "Event" content:
+      | title                       | Past event      |
+      | field_event_status          | no              |
+      | field_event_is_fully_booked | no              |
+      | field_event_date:value      | 1472724000      |
+      | field_event_date:value2     | 1472724000      |
+      | field_event_date:timezone   | Europe/Budapest |
+      | status                      | 1               |
+    Then I should not see "Images and videos"
