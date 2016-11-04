@@ -162,6 +162,9 @@ function dt_info_homepage_strongarm() {
         'language' => array(
           'weight' => '5',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

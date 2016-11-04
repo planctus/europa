@@ -24,3 +24,13 @@ function _dt_core_pol_menu_footer() {
     $weight++;
   }
 }
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function dt_core_pol_entity_view_mode_alter(&$view_mode, $context) {
+  // Set the view mode of Political homepage.
+  if ($view_mode == 'full' && isset($context['entity']->type) && $context['entity']->type == 'info_homepage') {
+    $view_mode = 'homepage_political';
+  }
+}
