@@ -2511,7 +2511,7 @@ This will appear as a timeline on the page.
     'label' => 'Publications Year',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
