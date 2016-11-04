@@ -192,7 +192,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['filters']['field_core_date_updated_value']['group'] = 1;
   $handler->display->display_options['filters']['field_core_date_updated_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator_id'] = 'field_core_date_updated_value_op';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Last updated on (field_core_date_updated)';
+  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Year';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator'] = 'field_core_date_updated_value_op';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['identifier'] = 'field_core_date_updated_value';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['remember_roles'] = array(
